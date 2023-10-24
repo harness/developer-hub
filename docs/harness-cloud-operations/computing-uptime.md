@@ -162,5 +162,15 @@ All the Platform SLIs are applicable here.
 | PR Checks & Webhooks - Webhooks are not triggered  | 5% increase in 5xx errors in a rolling window of 5 mins |Degraded Performance|
 | UI unable to render page |For a consecutive duration of 2 min|Major Outage|
 
+## Infrastructure As Code
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+| Unable to run IaC Stage & Steps in a Pipeline | API’s are down for a consecutive duration of 60 seconds |Major Outage|
+| | 10% of traffic generates 5xx error in a rolling window of 5 mins |Partial Outage|
+| | 2x of average latency in a rolling window of 5 mins |Degraded Performance|
+
 
 
