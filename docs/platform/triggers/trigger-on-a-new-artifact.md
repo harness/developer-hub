@@ -69,7 +69,7 @@ The following artifact providers are supported behind the feature flag `CD_TRIGG
   
   :::note
 
-  Currently, this feature is behind the feature flag `SPG_TRIGGER_FOR_ALL_ARTIFACTS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+  To enable this feature, go to your Harness project/org/account **Default Settings**, select **Pipeline**, and then enable **Execute Triggers With All Collected Artifacts or Manifests**.
 
   :::
 * **Trigger based on file name:** The trigger is executed based on _file names_ and not metadata changes.
