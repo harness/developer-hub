@@ -4,6 +4,10 @@ description: Platforms and technologies supported by the on-prem Harness Self-Ma
 sidebar_label: What's supported
 sidebar_position: 1
 ---
+:::info note
+
+“KOTS based install and upgrades will reach End Of Support Dec 1st, 2023. Harness customer support team will not take any incoming questions on Kots starting Dec 1st End of Business PST”
+:::
 
 import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-platforms.md';
 
