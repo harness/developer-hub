@@ -929,4 +929,10 @@ When using a Docker delegate with ECS, you might encounter the following error :
 
 When your Docker delegate is managed by ECS, and is set to assume an IAM role for components such as the delegate and Terraform settings from Terraform configs, please ensure that the delegate has the permissions to assume the role.
 
-If your Docker delegate is set to use a proxy, ensure that the proxy instance also has permissions to assume the role. Also, try to set the proxy environment variable for the Terraform steps:
+If your Docker delegate is set to use a proxy, ensure that the proxy instance also has permissions to assume the role. Also, try to set the proxy environment variables for the Terragrunt steps:
+
+
+- `HTTP_PROXY=http://proxy.example.com:8080`
+- `HTTPS_PROXY=http://proxy.example.com:8080`
+
+If your ECS delegate is set with this environment variable: **AWS_CONTAINER_CREDENTIALS_RELATIVE_URI** and you intend to use AWS ECS container credentials, ensure your delegate has access to all of the required AWS services that need to provide credentials, such as STS, Metadata Service, etc.
