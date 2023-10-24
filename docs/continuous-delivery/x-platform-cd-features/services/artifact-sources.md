@@ -142,7 +142,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Docker connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Docker connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Docker connector example</summary>
@@ -420,7 +420,7 @@ service:
   </TabItem>
   <TabItem value="API" label="API">
 ```
-Create the GCR connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the GCR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>GCR connector example</summary>
@@ -681,7 +681,7 @@ service:
   </TabItem>
   <TabItem value="API" label="API">
 ```
-Create the GCP connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the GCP connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>GCP connector example</summary>
@@ -895,7 +895,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Google Artifact Registry connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Google Artifact Registry connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>GCR connector example</summary>
@@ -1148,7 +1148,7 @@ service:
 <details>
 <summary>Azure Artifact connector example</summary>
 
-Create the Azure Artifact connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Azure Artifact connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 
 ```yaml
@@ -1401,7 +1401,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the ACR connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the ACR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>ACR connector example</summary>
@@ -1808,7 +1808,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the ECR connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the ECR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>ECR connector example</summary>
@@ -2123,7 +2123,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the AWS connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the AWS connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>AWS connector example</summary>
@@ -2379,7 +2379,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the AWS connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the AWS connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>AWS connector example</summary>
@@ -2575,7 +2575,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Nexus connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Nexus connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Nexus connector example</summary>
@@ -2851,7 +2851,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Artifactory connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Artifactory connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Artifactory connector example</summary>
@@ -3149,7 +3149,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Bamboo connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Bamboo connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Bamboo connector example</summary>
@@ -3340,7 +3340,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Github connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Github connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Github connector example</summary>
