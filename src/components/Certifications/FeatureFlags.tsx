@@ -221,7 +221,7 @@ export default function FeatureFlags() {
         <div className={styles.examDetails}>
           <h2 id="exam-details">Exam Details (BETA)</h2>
           <div className={styles.examDetailsCard}>
-            <DeveloperCertificationExamDetails />
+            <AdminCertificationExamDetails />
             <div className={styles.btnContainer}>
               <Link href="#">
                 <button className={styles.moreDetails}>
