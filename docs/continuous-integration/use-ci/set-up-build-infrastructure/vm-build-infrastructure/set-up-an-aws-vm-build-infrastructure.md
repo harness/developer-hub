@@ -290,10 +290,10 @@ Install a Harness Docker Delegate on your AWS EC2 instance.
 3. Select **Docker**.
 4. Enter a **Delegate Name**.
 5. Copy the delegate install command and paste it in a text editor.
-6. To the first line, add `--net=host`, and, if required, `sudo`. For example:
+6. To the first line, add `--network host`, and, if required, `sudo`. For example:
 
    ```
-   sudo docker run --cpus=1 --memory=2g --net=host
+   sudo docker run --cpus=1 --memory=2g --network host
    ```
 
 7. [SSH into your EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) and run the delegate install command.

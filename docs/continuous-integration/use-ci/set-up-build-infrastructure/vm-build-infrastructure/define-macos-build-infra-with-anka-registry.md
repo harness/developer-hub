@@ -54,6 +54,8 @@ The first step is to set up the Anka software on one of your Mac nodes (such as 
 
 When you finish this workflow, you will have a macOS node with a working VM. After you [set up the Anka registry](#set-up-the-anka-controller-and-registry), you can then push the node and the VM to the registry.
 
+<!--- Suggest some size for the controller and registry. macOS VM requires at least 10 GB. Recommended size for registry, 100 GiB or more. -->
+
 ## Set up port forwarding on the VM
 
 This enables connectivity between the Harness runner and the VMs. On the VM host, run the following command for each VM template:
