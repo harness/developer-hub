@@ -7,10 +7,6 @@ id: release-notes
 slug: /
 ---
 
-# Release Notes 
-
-Explore recent changes to the Harness Platform, modules, delegates, and more.
-
 <!-- Custom component -->
 
 import ReleaseNotes from '@site/src/components/ReleaseNotes/ReleaseNotes';
