@@ -148,3 +148,19 @@ All the Platform SLIs are applicable here.
 || Latency greater than 10 seconds for a consecutive duration of 10 mins (95th percentile) |Degraded Performance|
 | Open Source Plugins functionality | 5XX Errors for a consecutive duration of 30secs (95th percentile) |Degraded Performance|
 || Latency greater than 30 seconds for a consecutive duration of 10 mins (95th percentile) |Degraded Performance|
+
+## Source Code Management
+All the Platform SLIs are applicable here. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| Git Operations success rate(Clone, Pull, Push and associated operations like Merge, Blame )| > 99.9% over a rolling 5 min window |Major Outage|
+| Git Operations execution time(Clone, Pull, Push and associated operations like Merge, Blame )|2X increase of time for git operations |Degraded Performance|
+| CODE Reviews Error Rate Increase | 5% increase in 5xx errors in a rolling window of 5 mins |Partial Outage|
+| CODE Reviews Latency Increase | 2x of average latency in a rolling window of 5 mins |Degraded Performance|
+| PR Checks & Webhooks - Error Rate Increase is PR Checks | 5% increase in 5xx errors in a rolling window of 5 mins |Degraded Performance|
+| PR Checks & Webhooks - Webhooks are not triggered  | 5% increase in 5xx errors in a rolling window of 5 mins |Degraded Performance|
+| UI unable to render page |For a consecutive duration of 2 min|Major Outage|
+
+
+
