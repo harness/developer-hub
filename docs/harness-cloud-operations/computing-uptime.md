@@ -194,8 +194,12 @@ All the Platform and Pipeline SLIs are applicable here.
 | Legacy Aggregations Delay| Delay in receiving any events > 36 hours |Partial Outage|
 | UI dashboard widget Load times| Greater than 3 mins for a consecutive duration of 10 mins |Degraded Performance|
 | SEI UI landing page/dashboard page not loading| For a consecutive duration of 5 mins |Major Outage|
-
-
+| Trellis Events| Delay in processing events > 8 hours |Degraded Performance|
+| Trellis Monthly calculations| Delay > 5 days |Partial Outage|
+| Pub/sub queue Async processing time (Pubsub queues/Scheduled Tasks)| Delay in processing > 12 hours |Degraded Performance|
+| Real time data layer Load ( DB Load or ES cluster state)| DB Load > 95% or ES cluster state RED |Partial Outage|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
 
 
 
