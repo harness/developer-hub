@@ -10,6 +10,15 @@ redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/quick-start-guides/kubernetes-autostopping-quick-start-guide
 ---
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Cloud Coast Management Certification today!"
+  link="/certifications/cloud-cost-management"
+  closable={true}
+  target="_self"
+/>
+
 This quickstart shows you how to create and test an AutoStopping rule for your Kubernetes cluster.
 
 ### Install a sample application​

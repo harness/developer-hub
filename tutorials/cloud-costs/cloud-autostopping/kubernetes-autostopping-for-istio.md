@@ -10,6 +10,15 @@ redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/quick-start-guides/kubernetes-autostopping-for-istio
 ---
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Cloud Coast Management Certification today!"
+  link="/certifications/cloud-cost-management"
+  closable={true}
+  target="_self"
+/>
+
 This article provides instructions to create AutoStopping rules for Kubernetes with the Istio ingress controller.
 
 ### Prerequisites
