@@ -604,6 +604,22 @@ In **Advanced**, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
+## Troubleshooting Terraform execution on a Docker delegate managed by ECS
+
+When using a Docker delegate with ECS, you might encounter the following error : `NoCredentialProviders: no valid providers in chain`.
+
+When your Docker delegate is managed by ECS, and is set to assume an IAM role for components such as the delegate and Terraform settings from Terraform configs, please ensure that the delegate has the permissions to assume the role.
+
+If your Docker delegate is set to use a proxy, ensure that the proxy instance also has permissions to assume the role. Also, try to set the proxy environment variable for the Terraform steps:
+
+In case your delegate is set to use a proxy, make sure that proxy also has permissions to assume the role, and also try to set environment variables for the Terraform steps:
+
+- `HTTP_PROXY=http://proxy.example.com:8080`
+- `HTTPS_PROXY=http://proxy.example.com:8080`
+
+If your ECS delegate is set with this environment variable: **AWS_CONTAINER_CREDENTIALS_RELATIVE_URI** and you intend to use AWS ECS container credentials, ensure your delegate has access to all of the required AWS services that need to provide credentials, such as STS, Metadata Service, etc.
+
+
 ## See Also
 
 * [Provision with the Terraform Apply Step](run-a-terraform-plan-with-the-terraform-apply-step)
