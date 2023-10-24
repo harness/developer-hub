@@ -193,16 +193,47 @@ export default function FeatureFlags() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Coming Soon...</h3>
+                  <h3>Review Study Guide (BETA)</h3>
                   <div className={styles.desc}>
-                    Assess key technical job functions and advanced skills in
-                    design, implementation and management of FF.
+                    Assesses the fundamental skills to deploy and maintain FF
+                    projects and the overall Harness Platform. This exam builds
+                    upon the{" "}
+                    <a href="/certifications/feature-flags?lvl=developer">
+                      Feature Flags Developer Certification
+                    </a>
+                    .
+                  </div>
+                  <AdminCertificationReviewDetails />
+                  <div className={styles.btnContainer}>
+                    <Link href="#">
+                      <button className={styles.moreDetails}>
+                        Register for Exam
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Admin Exam Details */}
+        <div className={styles.examDetails}>
+          <h2 id="exam-details">Exam Details (BETA)</h2>
+          <div className={styles.examDetailsCard}>
+            <DeveloperCertificationExamDetails />
+            <div className={styles.btnContainer}>
+              <Link href="#">
+                <button className={styles.moreDetails}>
+                  Register for Exam
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+
+
         {/* Architect Tab Content */}
         <div
           className={clsx(
