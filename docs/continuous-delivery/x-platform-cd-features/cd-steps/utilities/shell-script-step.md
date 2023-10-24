@@ -66,10 +66,10 @@ You can use Harness secrets in your Shell Script steps.
 
 For more information, go to [add text secrets](/docs/platform/secrets/add-use-text-secrets).
 
-There are two ways to use Secret Variables in Scripts:
-* Variables of secret type can be directly used, like any other variable with secret variable identifier being passed to `value` attribute or field.
-* Secondly, you can use `<+secrets.getValue("secret_Id")>` to refer to the secret for `value` attribute or field, and select the type of variable as String, which makes the variable to be of string format having value of Secret variable.
-Usage of Secret variable is explained later in the documentation in detail.
+There are two ways to use secret variables in scripts:
+* Secret type variables can be used like any other variable with the secret variable identifier being passed to the `value` attribute or field.
+* You can use `<+secrets.getValue("secret_Id")>` to refer to the secret `value` attribute or field, and select the type of variable as String. This formats the variable in string format and contains the value of the secret variable.
+Secret variable usage is explained later in the documentation in detail.
 
 ### Escaping characters
 
