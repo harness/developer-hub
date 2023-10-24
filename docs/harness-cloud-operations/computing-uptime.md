@@ -101,8 +101,37 @@ All the Platform SLIs are applicable here. Pipeline relevant if the chaos use ca
 | Load times on UI | Data load time > 10s consecutively over a 5 min period |Degraded performance|
 | ChaosGuard Rule Evaluation Duration  | The ChaosGuard rule evaluation stage takes >10s consecutively over a 5 min period across experiment runs |Degraded performance|
 
+## Security Test Orchestration 
+All the Platform SLIs are applicable here. Pipeline relevant if the STO use case is tied to a pipeline. 
 
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+| Security Step Executions Failures | 25% increase in security stage execution failures in a rolling window of 5 mins |Partial outage|
 
+## Error Tracking
+All the Platform SLIs are applicable here. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+| Agent cannot connect to CET collector | For a consecutive duration of 60 secs |Major outage|
+| Agent not being shown as connected in the UI | For a consecutive duration of 60 secs |Partial outage|
+|| Latency greater than 30 seconds for a consecutive duration of 10 mins (95th percentile) |Degraded performance|
+| UI is down | For a consecutive duration of 30 secs |Major outage|
+| ARC screen is down | No hit is openable |Major outage|
+|| Some hits aren’t openable - at least 20% of the hits in a total of at least 20 unique events |Degraded performance|
+| Tiny links not working | Tiny link doesn’t direct to a viewable ARC screen |Partial outage|
+|| Tiny link should be clickable after no more than 90s after it was logged |Degraded performance|
+| New events/Metrics don’t show up on the summary or event list | For a consecutive duration of 180 secs |Major outage|
+|| Latency greater than 125 seconds in metrics since happened in the agent until shown in the UI |Degraded performance|
+| Notifications | Expected notification doesn’t arrive for a consecutive duration of 60 secs after the ETA |Major outage|
+|| Latency greater than 30 seconds |Degraded performance|
+|| Links in notifications don’t work |Degraded performance|
+| Admin operations not working
+(Including: Tokens, Critical events, hide & resolve events, Jira integration, Notifications, Saved Search) |For a consecutive duration of 30secs |Major outage|
 
 
 
