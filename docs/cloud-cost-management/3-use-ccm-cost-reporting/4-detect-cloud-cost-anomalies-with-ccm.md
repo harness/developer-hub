@@ -31,7 +31,8 @@ CCM analyzes 15 to 60 days of data to predict the cost. If the predicted cost an
 
 For example, you run a compute-intensive job that gets kicked off every Monday morning. The algorithm picks up on the pattern and updates its model. Based on these learnings predictions are made for what might happen in the future. Anything that doesn't align with these predictions is a potential anomaly.
 
-The anomaly detection techniques are run every 24 hours and the alert is triggered for any anomaly that is detected.#### Anomaly Detection Techniques
+The anomaly detection techniques are run every 24 hours and the alert is triggered for any anomaly that is detected.
+## Anomaly Detection Techniques
 
 One of the challenges of anomaly detection is reducing the number of false positives and noisy alerts. To avoid this, CE uses the following prediction techniques to detect cost anomalies:
 
