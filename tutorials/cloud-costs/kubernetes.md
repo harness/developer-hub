@@ -8,8 +8,8 @@ description: This guide will walk through how start to optimize your Kubernetes 
 <ctabanner
   buttonText="Learn More"
   title="Continue your learning journey."
-  tagline="Take a Continuous Delivery & GitOps Certification today!"
-  link="/certifications/continuous-delivery"
+  tagline="Take a Cloud Cost Management Certification today!"
+  link="/certifications/cloud-cost-management"
   closable={true}
   target="_self"
 />

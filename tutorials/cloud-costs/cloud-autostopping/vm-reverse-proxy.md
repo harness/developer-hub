@@ -8,7 +8,7 @@ description: This guide describes how to autostop idle VMs behind a reverse prox
 <ctabanner
   buttonText="Learn More"
   title="Continue your learning journey."
-  tagline="Take a Cloud Coast Management Certification today!"
+  tagline="Take a Cloud Cost Management Certification today!"
   link="/certifications/cloud-cost-management"
   closable={true}
   target="_self"
