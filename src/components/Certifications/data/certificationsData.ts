@@ -82,4 +82,14 @@ export const certifications: CardItem[] = [
       link: "/certifications/cloud-cost-management?lvl=developer",
       // numberOfCerts: 1,
     },
+    {
+      title: "Feature Flags - Administrator",
+      module: MODULES.cd,
+      type: certType.administrator,
+      description:
+        "Feature Flag Administrator focuses the fundamental skills to deploy, maintain, and customize feature flags in the Harness platform. This exam builds upon the Feature Flag Developer Certification.",
+      version: "Harness FF Free/Team Plans",
+      link: "/certifications/feature-flags?lvl=administrator",
+      // numberOfCerts: 1,
+    },
   ];
