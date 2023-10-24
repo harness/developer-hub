@@ -70,11 +70,15 @@ For more information about self-signed certificates, delegates, and delegate env
 
 For troubleshooting information related to cloning codebases, go to [Create and configure a codebase - Troubleshooting](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#troubleshooting).
 
+## Output variable length limit
+
+If an output variable's length is greater than 64KB, then the step fails. If you need to export large amounts of data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts).
+
 ## Truncated execution logs
 
-Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB.
+Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB. If necessary, you can [export full logs](#export-full-logs).
 
-Furthermore, there is a single-line limit of 70KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`.
+Furthermore, there is a single-line limit of 25KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`.
 
 ### Export full logs
 
@@ -132,6 +136,17 @@ If a build that uses Gradle experiences out of memory errors, add the following 
 ```
 
 Your Java options must use [UseContainerSupport](https://eclipse.dev/openj9/docs/xxusecontainersupport/) instead of `UseCGroupMemoryLimitForHeap`, which was removed in JDK 11.
+
+## Connector delegate error with Harness Cloud build infrastructure
+
+Connectors that you use with the Harness Cloud build infrastructure must connect through the Harness Platform. To change the connector's connectivity mode:
+
+1. Go to the **Connectors** page at the account, organization, or project scope. For example, to edit account-level connectors, go to **Account Settings**, select **Account Resources**, and then select **Connectors**.
+2. Select the connector that you want to edit.
+3. Select **Edit Details**.
+4. Select **Continue** until you reach **Select Connectivity Mode**.
+5. Select **Change** and select **Connect through Harness Platform**.
+6. Select **Save and Continue** and select **Finish**.
 
 ## Can't use the built-in Harness Docker Connector with Harness Cloud build infrastructure
 

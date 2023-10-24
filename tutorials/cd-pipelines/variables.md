@@ -50,7 +50,7 @@ Verify you have the following:
 4. Select the **deploy-guestbook** stage tile, then select **Execution**.
 5. Select **Add Step > Add Step**.
 6. Scroll to the **Utilities** section, then select **Shell Script**. 
-7. In the **Name** field, type `Notify Successful Deployment`.
+7. In the **Name** field, type `Successful Deployment Message`.
 8. In the **Script** field, paste the following:
 
 ```
@@ -59,13 +59,13 @@ echo "<+pipeline.triggeredBy.name> successfully deployed <+service.name> to <+en
 
 9. Select **Apply Changes**, then **Save**.
 10. Select **Run** and then **Run Pipeline**
-11. Wait for the pipeline to complete, then select the **Verify Successful Deployment** step.
+11. Wait for the pipeline to complete, then select the **Successful Deployment Message** step.
 12. Expand **Step Details** if needed, and verify the step log shows the script message with the variable names appropriately rendered.
 
 
 ## Create an account-level variable
 
-1. Navigate to **Account Settings > Account Resources** Select **Variables**.
+1. Navigate to **Account Settings > Account Resources**. Select **Variables**.
 2. Select **New Variable**.
 3. Name the variable **account_alias** and set its Fixed Value to your first name or nickname.
 4. Click **Save**.
@@ -79,7 +79,7 @@ You'll notice that variables created at the account, org, or project level suppo
 
 
 5. Navigate to **Deployments > Pipelines > guestbook_canary_pipeline**. Select **YAML > Edit YAML**.
-6. In the **Verify Successful Deployment** step, on the **script:** line, replace `<+pipeline.triggeredBy.name>` with `<+variable.account.account_alias>`.
+6. In the **Successful Deployment Message** step, on the **script:** line, replace `<+pipeline.triggeredBy.name>` with `<+variable.account.account_alias>`.
 7. Select **Save** and then **Run > Run Pipeline**.
 8. After the pipeline completes, verify that the step log message references the value you set for your account level variable.
 
@@ -100,7 +100,7 @@ echo "<+variable.account.account_alias> successfully deployed <+service.name> to
 ```
 
 9. Select **Save**.
-10. Select Run. Note the prompt for a value for the **region** variable. Enter a value of your choosing (e.g. eu, india, usa, etc.).
+10. Select **Run**. Note the prompt for a value for the **region** variable. Enter a value of your choosing (e.g. eu, india, usa, etc.).
 11. Select **Run Pipeline**.
 12. After the pipeline completes, verify that the step log message references the value you set for your account level variable.
 
@@ -110,5 +110,5 @@ You've just learned how to create and reference variables in a CD pipeline.
 
 #### What's Next?
 
-- Keep learning about Harness CD.
+- Learn about [pipeline triggers](/tutorials/cd-pipelines/trigger).
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.

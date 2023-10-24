@@ -421,6 +421,7 @@ kubectl delete service guestbook-ui -n default
 You've just learned how to use **Harness GitOps** to deploy an application using a Kubernetes manifest.
 
 #### What's Next?
+- Learn about [variables](tutorials/cd-pipelines/variables) and [pipeline triggers](/tutorials/cd-pipelines/trigger).
 - Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
@@ -460,8 +461,8 @@ Verify the following:
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-darwin-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-darwin-amd64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
@@ -477,8 +478,8 @@ Verify the following:
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-arm64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-arm64.tar.gz 
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
@@ -489,8 +490,8 @@ Verify the following:
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
@@ -502,13 +503,13 @@ Verify the following:
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="windows"  label="Windows">
+    <TabItem value="windows" label="Windows">
     ```
 
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
     ```
-    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
+    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip  -OutFile ./harness.zip
     ```
         
     b. Extract the downloaded zip file and change directory to extracted file location.
@@ -901,7 +902,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="Canary">
+<TabItem value="canary" label="Canary">
 ```
 
 <details open>
@@ -928,7 +929,7 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Blue Green">
+<TabItem value="bg" label="Blue Green">
 ```
 
 <details open>
@@ -956,7 +957,7 @@ Blue Green deployments involve running two identical environments (stage and pro
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Rolling">
+<TabItem value="rolling" label="Rolling">
 ```
 
 <details open>
@@ -1028,6 +1029,7 @@ You've just learned how to use Harness CD to deploy an application using a Kuber
 
 #### What's Next?
 
+- Learn about [variables](tutorials/cd-pipelines/variables) and [pipeline triggers](/tutorials/cd-pipelines/trigger).
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
 ## How to deploy your own app by using Harness

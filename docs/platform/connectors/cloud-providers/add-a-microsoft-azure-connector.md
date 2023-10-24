@@ -658,7 +658,7 @@ If you have [installed a Harness Delegate](/docs/platform/delegates/delegate-con
 
 1. Select how you want Harness to connect to Azure:
 
-   * **Connect through Harness Platform:** Use a direct, secure communication between Harness and Azure.
+   * **Connect through Harness Platform:** Use a direct, secure communication between Harness and Azure. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
    * **Connect through a Harness Delegate:** Harness communicates with Azure through a Harness delegate in your Azure subscription or AKS cluster. You must choose this option if you chose to inherit delegate credentials.
 
 2. If connecting through a Harness delegate, select either:

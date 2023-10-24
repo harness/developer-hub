@@ -13,22 +13,19 @@ The Continuous Delivery & GitOps Administrator exam tests your knowledge and ski
 | **Hands On Exam** | 120 minutes |
 
 
-| Covered Domain                                | Coverage         |
-|-------|------------|
-| Foundations - SDLC, Services, and Application Architectures | 7.7% |
-| Harness Architecture and Components | 7.7% |
-| Account Resources for Harness CD | 7.7% |
-| Variables, Expressions, and Programmatic Approaches to Harness CD | 7.7% |
-| Governance, Authentication and Authorization: Login, RBAC, Access Control | 7.7% |
-| Data Visualization, Dashboards, and Reporting | 7.7% |
-| Swimlanes | 7.7% |
-| Continuous Delivery | 7.7% |
-| Continuous Verification in Harness CD | 7.7% |
-| Alerting, SMTP Configuration, Notifications | 7.7% |
-| GitOps | 15.4% |
-| Templates | 7.7% |
-| Git Experiences | 7.7% |
-
+| Covered Domain                                     | Percentage |
+|----------------------------------------------------|------------|
+| Deployment Management and Troubleshooting          | 15%        |
+| Delegate and Infrastructure Management             | 10%        |
+| Deployment Strategies (Canary, Traditional, etc.)  | 10%        |
+| Harness Expressions and Variable Management       | 10%        |
+| Configuration Management and Parameter Control    | 15%        |
+| Artifact and Repository Management                 | 5%         |
+| GitOps, Drift Management, and Git Integrations    | 10%        |
+| Secret Management and Security Configurations      | 5%         |
+| IaC, Provisioning, and Cloud Configurations       | 10%        |
+| User, Access, and Identity Management             | 5%         |
+| Policies, Governance, and Deployment Restrictions | 5%         |
 
 <br />
 
@@ -41,48 +38,52 @@ The following is a detailed list of exam objectives:
 
 | #   | Objective |
 |-----|-----------|
-| 1 | Foundations - SDLC, Services, and Application Architectures |
-| 1.1 | Understand Continuous Delivery Foundations |
-| 1.2 | Describe common platforms and cloud providers |
-| 1.3 | Explain different application architectures |
-| 2 | Harness Architecture and Components |
-| 2.1 | Understand Harness Platform architecture |
-| 2.2 | Describe the Harness Manager and the Harness Delegate |
-| 2.3 | Learn how to check Delegate Task Selection during a Deployment |
-| 3 | Account Resources for Harness CD |
-| 3.1 | Understand Connectors for Harness CD and Delegate Management |
-| 3.2 | Learn about Secrets and Harness FileStore |
-| 4 | Variables, Expressions, and Programmatic Approaches to Harness CD |
-| 4.1 | Understand Harness Built-in and Custom Harness Variables |
-| 4.2 | Learn to use Java string methods in Harness Variables (JEXL) |
-| 5 | Governance, Authentication and Authorization: Login, RBAC, Access Control |
-| 5.1 | Understand Login and SSO processes |
-| 5.2 | Learn about RBAC and Access Control |
-| 6 | Data Visualization, Dashboards, and Reporting |
-| 6.1 | Learn to add Metadata to Harness Resources and Entities |
-| 6.2 | Understand Harness Dashboards and Looker |
-| 7 | Swimlanes |
-| 7.1 | Understand Kubernetes Deployment and Common Deployment Strategies |
-| 7.2 | Learn about Basic Deployment Capacity by Provider |
-| 8 | Continuous Delivery |
-| 8.1 | Understand Pipeline Flow Control Mechanisms and important child Entities |
-| 8.2 | Learn about Pipeline Triggers, Executions History, and Inputs |
-| 9 | Continuous Verification in Harness CD |
-| 9.1 | Identify deployment verification types |
-| 9.2 | Understand CV Health Sources |
-| 10 | Alerting, SMTP Configuration, Notifications |
-| 10.1 | Configure User Group Notification - Slack, Email, etc. |
-| 10.2 | Understand how to notify based in response to Pipeline and stage events |
-| 11 | GitOps |
-| 11.1 | Explain the principles of GitOps using a comprehension/use case |
-| 11.2 | Learn to install the GitOps agent and connect your Kubernetes cluster to Harness |
-| 12 | Templates |
-| 12.1 | Understand Harness Templates - Pipeline, Stage, Step |
-| 12.2 | Learn to create a Template - Pipeline, or Stage |
-| 13 | Git Experiences |
-| 13.1 | Understand supported Harness Entities |
-| 13.2 | Learn to Configure Git Experience for a Pipeline |
-
+| 1 | **Deployment Management with Harness CD** |**
+| 1.1 | Understanding the mechanisms of Kubernetes deployments via Harness CD |
+| 1.2 | Managing artifacts and manifests for application deployment |
+| 1.3 | Handling deployment issues and implementing troubleshooting strategies |
+| 2 | **Delegate and Infrastructure Management** |**
+| 2.1 | Configuring Harness Delegates for specific tasks |
+| 2.2 | Implementing best practices for delegate installation |
+| 2.3 | Ensuring effective logging and communication from Harness Delegates |
+| 3 | **Implementing and Managing Canary and Traditional Deployments** |**
+| 3.1 | Setting up and managing Kubernetes Canary deployments |
+| 3.2 | Utilizing Harness CD features for deployments |
+| 3.3 | Addressing deployment issues |
+| 4 | **Effective Use of Harness Expressions and Variables** |**
+| 4.1 | Using Harness expressions and variables within deployments |
+| 4.2 | Managing and referring service variables at runtime |
+| 5 | **Harness Configuration Management and Parameter Control** |**
+| 5.1 | Managing parameters securely using Harness |
+| 5.2 | Understanding and implementing values overrides |
+| 5.3 | Handling Helm Chart parameter control |
+| 6 | **Secure and Efficient Artifact Management** |**
+| 6.1 | Onboarding new applications using Harness CD |
+| 6.2 | Integrating Harness with artifact repositories |
+| 7 | **Implementing and Utilizing GitOps with Harness** |**
+| 7.1 | Understanding and addressing drift between Git and deployed workloads |
+| 7.2 | Managing Harness Git Experience for different entities |
+| 8 | **Implementing and Managing Secret Management** |**
+| 8.1 | Integrating Harness with different Secrets Managers |
+| 8.2 | Ensuring secure handling of secrets in pipelines |
+| 9 | **Infrastructure as Code (IaC) and Provisioning Management** |**
+| 9.1 | Implementing IaC principles with Harness |
+| 9.2 | Troubleshooting IaC deployment issues |
+| 10 | **Harness User and Access Management** |**
+| 10.1 | Implementing and managing user authentication |
+| 10.2 | Implementing and managing Role-Based Access Control within Harness |
+| 11 | **Implementation of Policies and Governance in Deployment** |**
+| 11.1 | Implementing deployment halts or restrictions |
+| 11.2 | Managing stability during critical times |
+| 12 | **Harness UI and UX Proficiency** |**
+| 12.1 | Navigating and utilizing Harness UI for configurations |
+| 12.2 | Efficiently locating and modifying configurations within the UI |
+| 13 | **Custom and Advanced Deployment Strategies** |**
+| 13.1 | Creating and managing custom deployment strategies |
+| 13.2 | Handling deployment to various infrastructure types |
+| 14 | **Advanced Troubleshooting and Optimization** |**
+| 14.1 | Implementing advanced troubleshooting steps in CD stages and pipelines |
+| 14.2 | Optimizing delegate usage and managing workload distribution |
 
   
 </details>

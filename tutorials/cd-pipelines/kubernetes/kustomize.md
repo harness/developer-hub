@@ -39,8 +39,8 @@ bash <(curl -fsSL https://raw.githubusercontent.com/harness-community/scripts/ma
 :::
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="GitOps Workflow">
+<Tabs queryString="pipeline">
+<TabItem value="gitops" label="GitOps Workflow">
 ```
 
 :::info
@@ -78,8 +78,8 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 - When are prompted with **Do you have any existing Argo CD instances?**, select **Yes** if you already have a Argo CD Instance, or else choose **No** to install the Harness GitOps Agent.
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="Harness GitOps Agent Fresh Install">
+<Tabs queryString="gitopsagent">
+<TabItem value="agent-fresh-install" label="Harness GitOps Agent Fresh Install">
 ```
 
 - Select **No**, and then select **Start**.
@@ -97,7 +97,7 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Harness GitOps Agent with Existing Argo CD instance">
+<TabItem value="existingargo" label="Harness GitOps Agent with existing Argo CD instance">
 ```
 
 - Select **Yes**, and then select **Start**.
@@ -211,14 +211,14 @@ You've just learned how to use **Harness GitOps** to deploy an application using
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="CD pipeline">
+<TabItem value="cd-pipeline" label="CD pipeline" queryString="pipeline">
 ```
 
 You can choose to proceed with the tutorial either by using the command-line interface (Harness CLI) or the user interface (Harness UI).
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="CLI">
+<Tabs queryString="interface">
+<TabItem value="cli" label="CLI">
 ```
 
 ## Before you begin
@@ -239,12 +239,12 @@ Complete the following tasks:
 1. Download and configure the Harness CLI.
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="MacOS">
+<Tabs queryString="cli-os">
+<TabItem value="macos" label="MacOS">
 ```
 
 ```bash
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz
 tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
 echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
 source ~/.bash_profile
@@ -252,29 +252,29 @@ source ~/.bash_profile
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Linux">
+<TabItem value="linux" label="Linux">
 ```
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="ARM">
+<Tabs queryString="linux-platform">
+<TabItem value="arm" label="ARM">
 ```
 
 ```bash
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-arm64.tar.gz 
-tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz
+tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz 
 echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
 source ~/.bash_profile
 ```
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="AMD">
+<TabItem value="amd" label="AMD">
 ```
 
 ```bash
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-amd64.tar.gz 
-tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
+tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz
 echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
 source ~/.bash_profile
 ```
@@ -286,13 +286,13 @@ source ~/.bash_profile
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Windows">
+<TabItem value="windows"  label="Windows">
 ```
 
 a. Open Windows Powershell and run the following command to download the Harness CLI.
 
 ```
-Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
+Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip  -OutFile ./harness.zip
 ```
     
 b. Extract the downloaded Zip file and change the directory to the extracted file location.
@@ -416,8 +416,8 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="Canary">
+<Tabs queryString="deployment">
+<TabItem value="canary" label="Canary">
 ```
 
 A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
@@ -432,7 +432,7 @@ harness pipeline --file kustomize-guestbook/harnesscd-pipeline/canary-pipeline.y
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Blue Green">
+<TabItem value="bg" label="Blue Green">
 ```
 
 Blue Green deployments involve running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on a new service version in the stage environment first. Next, traffic is shifted from the prod environment to stage, and the previous service version running on prod is scaled down. Blue Green deployments are also referred to as red/black deployment by some vendors. For more information, go to [When to use Blue Green deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments).
@@ -447,7 +447,7 @@ harness pipeline --file kustomize-guestbook/harnesscd-pipeline/bluegreen-pipelin
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Rolling">
+<TabItem value="rolling" label="Rolling">
 ```
 
 Rolling deployments incrementally add nodes in a single environment with a new service version, either one node at a time or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
@@ -467,7 +467,7 @@ harness pipeline --file kustomize-guestbook/harnesscd-pipeline/rolling-pipeline.
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="UI">
+<TabItem value="ui" label="UI">
 ```
 
 ## Before you begin
@@ -590,8 +590,8 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="Canary">
+<Tabs queryString="deploymentcdpipeline">
+<TabItem value="canary" label="Canary">
 ```
 
 A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
@@ -611,7 +611,7 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Blue Green">
+<TabItem value="bg" label="Blue Green">
 ```
 
 Blue Green deployments involve running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on a new service version in the stage environment first. Next, traffic is shifted from the prod environment to stage, and the previous service version running on prod is scaled down. Blue Green deployments are also referred to as red/black deployment by some vendors. For more information, go to [When to use Blue Green deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments).
@@ -631,7 +631,7 @@ Blue Green deployments involve running two identical environments (stage and pro
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Rolling">
+<TabItem value="rolling" label="Rolling">
 ```
 
 Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
