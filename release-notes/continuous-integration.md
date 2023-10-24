@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-10-23T10:00
+date: 2023-10-24T10:00
 sidebar_position: 3
 ---
 
@@ -19,9 +19,9 @@ Review the notes below for details about recent changes to Harness Continuous In
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version 6303
+## Latest: Version 6304
 
-<!-- Oct 23 2023 -->
+<!-- Oct 24 2023 -->
 
 ### New features and enhancements
 
