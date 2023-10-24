@@ -1,12 +1,12 @@
 ---
 title: Early access features
-date: 2023-10-16T10:00
+date: 2023-11-06T10:00
 sidebar_position: 2
 ---
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/early-access/rss.xml" />
 
-These release notes describe early access (beta) features in Harness NextGen SaaS. Early access features can be released for the Harness Platform, delegate, or individual modules.
+These early access (beta) features are available in Harness NextGen SaaS. Early access features can be released for the Harness Platform, delegate, or individual modules.
 
 Early access features are behind feature flags. You can contact [Harness Support](mailto:support@harness.io) to enable a feature you're interested in.
 
@@ -22,105 +22,133 @@ Early access features are behind feature flags. You can contact [Harness Support
 
 The following early access (beta) features are available for the Harness Platform.
 
-### FEATURE NAME with data
+### Harness AI Development Assistant (AIDA:tm:)
 
-**Release date:** MONTH DD, YYYY
-
-**Release version:** 1234
-
-**Issue number:** ID-12345
-
-**Feature flag:** `FEATURE_FLAG_ID`
-
-**How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-**Description:** Description with link to docs.
-
-**Update (version 12345, DATE):** Added XYZ enhancement to this feature.
-
-(Present info in short statements.
-
-Pros: Brief, scan headings by feature name; provides more info up front rather than having to read the content under each date. Good for keeping information together when features are rolled back or updated over time; you can add the update to the existing section rather than create a new entry.
-
-Cons: Not great for promoting updates to previously-released features. Not easy to skim by date. Not necessarily alphabetical. Can be hard to create short titles. Not the greatest if you want to include multi-paragraph description or pictures.)
-
-### FEATURE NAME with data list
-
-* **Release date:** MONTH DD, YYYY
-* **Release version:** 1234
-* **Issue numbers:** ID-12345, ID-13763, ID-13819
-* **Feature flag:** `FEATURE_FLAG_ID`
+* **Release date:** June 2023
+* **Feature flag:** Yes
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-* **Description:** Description with link to docs
-* **Update (version 12356, DATE):** Added XYZ enhancement to this feature.
-* **Update (version 12357, DATE):** Rolled back due to a bug that caused ABC.
-
-(Same as above but use bullets.)
-
-### VERSION (DATE) with subheadings
-
-#### Short description of feature (ID-1234)
-
-Description with link to docs.
-
-This feature is behind the feature flag `FEATURE_FLAG_ID`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-(Organize by version number and date.
-
-Pros: Free-form paragraph format allows for more creative presentation of information. Good for readers who like to browse by date.
-
-Cons: When features are updated later, there may be no connection to previous entries. Not great for users who want to browse by summary rather than date. Due to "Date first", exciting features like AIDA are demoted under the date heading.)
-
-### June 21, 2023
-
-#### Harness launches Harness AI Development Assistant as a beta feature
 
 The Harness platform leverages Harness AI Development Assistant (AIDA) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software delivery lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empower teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.
 
 Following are some key benefits of Harness AIDA:
 
-- Auto-recognition of failures in pipelines: The root cause analysis (RCA) option generates recommendations for step failures in pipelines. Harness bases these recommendations on the step logs and the context of the failed step.
-  For more information, go to [Troubleshooting with AIDA](http://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida).
+- Auto-recognition of failures in pipelines: The root cause analysis (RCA) option generates recommendations for step failures in pipelines. Harness bases these recommendations on the step logs and the context of the failed step. For more information, go to [Troubleshooting with AIDA](http://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida).
 
-- Asset governance: The asset governance feature assists you in drafting rules that are based on your requirements and aligned with your governance goals. Harness AIDA governance support also offers detailed descriptions of built-in rules. When you are creating policies, this feature facilitates informed decision-making by clarifying the purpose, scope, and implications of each rule.
-  For more information, go to [Asset governance with AIDA](/docs/category/harness-aida-for-asset-governance).
-  
-- Security: Harness AI identifies security vulnerabilities, describes them, and suggests remediation.
-  For more information, go to [Remediations with AIDA](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
+- Asset governance: The asset governance feature assists you in drafting rules that are based on your requirements and aligned with your governance goals. Harness AIDA governance support also offers detailed descriptions of built-in rules. When you are creating policies, this feature facilitates informed decision-making by clarifying the purpose, scope, and implications of each rule. For more information, go to [Asset governance with AIDA](/docs/category/harness-aida-for-asset-governance).
+
+- Security: Harness AI identifies security vulnerabilities, describes them, and suggests remediation. For more information, go to [Remediations with AIDA](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
 
 Review the following information for details about data privacy and terms of use:
 
 - [AIDA Terms](https://www.harness.io/legal/aida-terms)
 - [AIDA Privacy](https://www.harness.io/legal/aida-privacy)
 
-These features are behind features flags. Contact [Harness Support](mailto:support@harness.io) to enable these features.
+### SCIM user provisioning enhancements
 
-### Version 78817 (March 24, 2023)
+* **Release date:** March 2023
+* **Release version:** 78712
+* **Issue number:** PL-31498, PL-31497, PL-31496
+* **Feature flag:** `PL_NEW_SCIM_STANDARDS`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-#### SCIM user provisioning enhancements (PL-31496)
+Harness populates `givenName` and `familyName` for users via SCIM and returns the same when a GET, CREATE, or UPDATE request is made.
 
-Any CRUD operation on a user now returns the details of the user groups that the user is part of. You can use this to verify what groups a given user belongs to.
+The response of a CRUD operation on a user or user group contains the following meta fields as per the SCIM 2.0 standards:
 
-This feature, and the [previous enhancements released on March 15, 2023](#scim-user-provisioning-enhancements-pl-31498-pl-31497), are behind the feature flag `PL_NEW_SCIM_STANDARDS`. Contact [Harness Support](mailto:support@harness.io) to enable these features.
+- createdAt
+- lastUpdated
+- version
+- resourceType
 
-### Version 78712 (March 15, 2023)
+**Update (version 78817, March 2023):** Any CRUD operation on a user now returns the details of the user groups that the user is part of. You can use this to verify what groups a given user belongs to.
 
-#### SCIM user provisioning enhancements (PL-31498, PL-31497)
+### Delete users provisioned in Harness through SCIM
 
-The following enhancements are behind the feature flag `PL_NEW_SCIM_STANDARDS`. Contact [Harness Support](mailto:support@harness.io) to enable these features.
+* **Release date:** February 2023
+* **Issue number:** PL-23577
+* **Feature flag:** `PL_USER_DELETION_V2`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-* Harness now populates `givenName` and `familyName` for users via SCIM and returns the same when a GET, CREATE, or UPDATE request is made.
-* The response of a CRUD operation on a user or user group now contains the following meta fields as per the SCIM 2.0 standards:
-   - createdAt
-   - lastUpdated
-   - version
-   - resourceType
+You can delete a user provisioned in Harness through SCIM in NextGen and retain the user in FirstGen.
 
-### February 6, 2023
+### Google Cloud Secret Manager
 
-#### Delete users provisions in Harness through SCIM (PL-23577)
+* **Release date:** November 2022. This feature was released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release.
+* **Issue number:** PL-28978, SPG-153
+* **Feature flag:** Yes
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-You can delete a user provisioned in Harness through SCIM in NextGen and retain the user in FirstGen by enabling the feature flag `PL_USER_DELETION_V2`.
+You can now create secrets using the Google Cloud Secret Manager in Harness. For more information, go to [Add a Google Cloud Secret Manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager/)
+
+### Customize navigation
+
+* **Release date:** November 2022. This feature was released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release.
+* **Issue number:** SPG-153
+* **Feature flag:** Yes
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can select modules and configure your own navigation in Harness.
+
+Also, Projects is a new option in the left navigation. Click Projects to view the project-specific overview, pipeline, connector, and other details.
+
+### Optimized performance for remote pipelines
+
+* **Release date:** November 2022. This feature was released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release.
+* **Issue number:** PL-29459
+* **Feature flag:** `USE_GET_FILE_V2_GIT_CALL`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can get optimized performance on remote pipelines if you are on delegate version 772xx or higher. If you are on an older delegate version, you can upgrade your delegate for optimized performance.
+
+### Create remote templates and save them in a Git repo
+
+* **Release date:** October 2022. This feature was released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release.
+* **Issue number:** PL-28573
+* **Feature flag:** `NG_TEMPLATE_GITX`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can create remote templates in Harness and save them in your Git repo. For more information, go to [Create a remote step template](/docs/platform/Templates/create-a-remote-step-template), [Create a remote stage template](/docs/platform/Templates/create-a-remote-stage-template), and [Create a remote pipeline template](/docs/platform/Templates/create-a-remote-pipeline-template).
+
+### Use expressions to reference secrets in Vaults
+
+* **Release date:** October 2022. This feature was released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release.
+* **Issue number:** PL-28352
+* **Feature flag:** Yes
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can use expressions to reference pre-existing secrets in Vault using a fully-qualified path. For more information, go to [HashiCorp Vault Secrets](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets#option-hashicorp-vault-secrets).
+
+### Toggle email notifications for user invites
+
+* **Release date:** October 2022. This feature was released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release.
+* **Issue number:** PL-26218, ZD-32152, ZD-35287
+* **Feature flag:** `AUTO_ACCEPT_SAML_ACCOUNT_INVITES` or `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Harness sends email notification for user invites when the feature flag `AUTO_ACCEPT_SAML_ACCOUNT_INVITES` is enabled.
+
+Harness doesn't send emails for user invites when the feature flag `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` is enabled.
+
+### Create a Harness Custom Secret Manager in NextGen.
+
+* **Release date:** September 2022. This feature was released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release.
+* **Issue number:** PL-25545
+* **Feature flag:** `CUSTOM_SECRET_MANAGER_NG`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can onboard any secret manager with Harness and reference their secrets in Harness. For more information, go to [Add a custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager).
+
+### Simplified Git Experience
+
+* **Release date:** July 2022. This feature was released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release.
+* **Feature flag:** `NG_GIT_EXPERIENCE`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Harness Git Experience lets you store configurations for your resources like pipelines and input sets in Git. You can choose Git as the source of truth and use your Git credentials to access and modify your configurations.
+
+With Harness Git Experience, you can select the repository and branch from where you want to execute your pipelines, hence simplifying your Pipeline execution by seamless access to your Harness resources and their configurations stored in Git.
+
+For more information, go to [Harness Git Experience Overview](/docs/platform/git-experience/git-experience-overview/).
 
 ## Delegate early access features
 
@@ -128,53 +156,39 @@ The following early access (beta) features are available for the Harness Delegat
 
 ### GitHub App authentication for GitHub connectors
 
-**Release date:** August 22, 2023
+* **Release date:** August 2023
+* **Release version:** Delegate version 80303 and CI version 5408
+* **Issue number:** CI-8577
+* **Feature flag:** `CDS_GITHUB_APP_AUTHENTICATION`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-**Release version:** Delegate version 80303 and CI version 5408
-
-**Issue number:** CI-8577
-
-**Feature flag:** `CDS_GITHUB_APP_AUTHENTICATION`
-
-**How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-**Description:** With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
+With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
 
 ### Delegate task capacity check
 
-**Release date:** July 18, 2023
+* **Release date:** July 2023
+* **Release version:** 79904
+* **Issue number:** PL-39351
+* **Feature flag:** `DELEGATE_TASK_CAPACITY_CHECK`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-**Release version:** 79904
+Harness added the ability to acquire only the configured maximum number of tasks. This allows Harness Manager to use the task capacity to determine whether to assign a task to the delegate or queue it. You can configure the maximum number of tasks using the Env variable `DELEGATE_TASK_CAPACITY`. For example, if you set `DELEGATE_TASK_CAPACITY` to a value of 2 and execute 6 tasks in parallel, Harness Manager executes only 2 tasks at a time. If you don't configure `DELEGATE_TASK_CAPACITY`, Harness Manager executes all 6 tasks in parallel. When this feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
 
-**Issue number:** PL-39351
+### Capture delegate agent metrics for delegates shipped on immutable image types
 
-**Feature flag:** `DELEGATE_TASK_CAPACITY_CHECK`
+* **Release date:** May 2023
+* **Release version:** 79307
+* **Issue number:** PL-37908, PL-38538
+* **Feature flag:** `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-**How to enable:** Contact [Harness Support](mailto:support@harness.io)
+Harness can capture delegate agent metrics for delegates shipped on immutable image types. The following delegate agent metrics are available with this feature flag enabled:
 
-**Description:** Harness added the ability to acquire only the configured maximum number of tasks. This allows Harness Manager to use the task capacity to determine whether to assign a task to the delegate or queue it. You can configure the maximum number of tasks using the Env variable `DELEGATE_TASK_CAPACITY`. For example, if you set `DELEGATE_TASK_CAPACITY` to a value of 2 and execute 6 tasks in parallel, Harness Manager executes only 2 tasks at a time. If you don't configure `DELEGATE_TASK_CAPACITY`, Harness Manager executes all 6 tasks in parallel. When this feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
-
-### Delegate task capacity check
-
-**Release date:** May 23, 2023
-
-**Release version:** 79307
-
-**Issue number:** PL-37908, PL-38538
-
-**Feature flag:** `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`
-
-**How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-**Description:** Harness can capture delegate agent metrics for delegates shipped on immutable image types. The following delegate agent metrics are available with this feature flag enabled:
-
-   | **Metric name** | **Description** |
-   | :-- | :-- |
-   | `task_completed` | The number of tasks completed. |
-   | `task_failed` | The number of failed tasks. |
-   | `task_rejected` | The number of tasks rejected because of a high load on the delegate. |
-   | `delegate_connected` | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
-   | `resource_consumption_above_threshold` | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. |
+* `task_completed`: The number of tasks completed.
+* `task_failed`: The number of failed tasks.
+* `task_rejected`: The number of tasks rejected because of a high load on the delegate.
+* `delegate_connected`: Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected).
+* `resource_consumption_above_threshold`: Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold.
 
 <!-- ## CE early access features
 
@@ -186,19 +200,13 @@ The following early access (beta) features are available for the Harness Cloud C
 
 ### Propagate force cool down
 
-<!-- not sure this is actually early access -->
+* **Release date:** June 2023
+* **Release version:** 79701
+* **Issue number:** CCM-12338
+* **Feature flag:** Yes
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-**Release date:** June 09, 2023
-
-**Release version:** 79701
-
-**Issue number:** CCM-12338
-
-**Feature flag:** Yes
-
-**How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-**Description:** You can now propagate force cool down from primary rule to dependent rules. Earlier, when stopping a rule from the UI, you had to stop its dependant rules one by one. With this enhancement, you can propagate the stop operation to dependant rules as well. Propagating cool down to dependant rules is optional. You can stop the primary rule with or without propagating cool down to dependant rules.
+You can now propagate force cool down from primary rule to dependent rules. Without this feature flag enabled, when stopping a rule from the UI, you had to stop its dependant rules one by one. With this enhancement, you can propagate the stop operation to dependant rules as well. Propagating cool down to dependant rules is optional. You can stop the primary rule with or without propagating cool down to dependant rules.
 
 ## CD & GitOps early access features
 
@@ -206,33 +214,35 @@ The following early access (beta) features are available for Harness Continuous 
 
 ### Clean directory before deploying an Azure Web App
 
-**Release date:** October 16, 2023
+* **Release date:** October 2023
+* **Release version:** 81008
+* **Issue number:** CDS-76724
+* **Feature flag:** `CDS_WEBAPP_ENABLE_CLEAN_OPTION`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-**Release version:** 81008
+You can clean the target directory before deploying an Azure Web App. For more information, go to [Azure Web Apps deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial).
 
-**Issue number:** CDS-76724
+### Post-prod rollback for ASG and Native Helm deployments
 
-**Feature flag:** `CDS_WEBAPP_ENABLE_CLEAN_OPTION`
+* **Release date:** August 2023
+* **Release version:** 80307
+* **Issue number:** CDS-77450, CDS-76352, CDS-67121
+* **Feature flag:** `POST_PROD_ROLLBACK`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-**How to enable:** Contact [Harness Support](mailto:support@harness.io)
+Added support for Post Prod Rollback for ASG deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information about this feature, go to [Post deployment rollback](/docs/continuous-delivery/manage-deployments/rollback-deployments).
 
-**Description:** You can clean the target directory before deploying an Azure Web App. For more information, go to [Azure Web Apps deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial).
+* **Update (version 80711, September 2023):** Added support for post-prod rollback for Native Helm deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information about this feature, go to [Rollback Deployments](/docs/continuous-delivery/manage-deployments/rollback-deployments).
 
-### Version 80711 (September 19, 2023)
+### Helm Chart deployment info on Services Dashboard
 
-#### Post-prod rollback for Native Helm deployments (CDS-67121)
+* **Release date:** September 2023
+* **Release version:** 80711
+* **Issue number:** CDS-73310
+* **Feature flag:** `CDC_SERVICE_DASHBOARD_REVAMP_NG`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-Added support for post-prod rollback for Native Helm deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard.
-
-This feature is behind the feature flag `POST_PROD_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-For more information about this feature, go to [Rollback Deployments](/docs/continuous-delivery/manage-deployments/rollback-deployments).
-
-#### Helm Chart deployment info on Services Dashboard (CDS-73310)
-
-The Services Dashboard includes new support for Helm Chart deployments. This feature is behind the feature flag `CDC_SERVICE_DASHBOARD_REVAMP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-73310)
-
-The following information appears only for services that were deployed using Helm charts:
+The Services Dashboard includes new support for Helm Chart deployments. The following information appears only for services that were deployed using Helm charts:
 
 - Tiles in the service overview (**Environments** tab) now show the Helm chart versions (if any) deployed in each environment.
 
@@ -245,28 +255,26 @@ The following information appears only for services that were deployed using Hel
 
 - The Pipeline Executions table for the service now shows the Helm chart version in the drilldown information for that execution.
 
-### Version 80307 (August 22, 2023)
+### Multiple manifest and migration support
 
-#### Post-prod rollback for ASG deployments (CDS-77450, CDS-76352)
+* **Release date:** August 2023
+* **Release version:** 80120
+* **Issue number:** CDS-73894, CDS-70209
+* **Feature flag:** `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-Added support for Post Prod Rollback for ASG deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard.
+With this feature flag enabled, you can:
 
-This feature is behind the feature flag `POST_PROD_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+* Migrate Services with Helm Chart from Helm Repository stored Artifacts from CG to NG. This helps in migrations.
+* Configure multiple Helm Charts in the manifests. This provides feature parity with Harness FirstGen. Helm Charts can now be configured from the Helm Repository as Artifacts that allow users to select the Helm chart for deployment. The UI also now differentiates between manifests and overrides in service.
 
-For more information about this feature, go to [Post deployment rollback](/docs/continuous-delivery/manage-deployments/rollback-deployments).
+### Digest support for Nexus 3, GitHub, Artifactory artifact sources
 
-### Version 80120 (August 4, 2023)
-
-#### Multiple manifest and migration support (CDS-73894, CDS-70209)
-
-The following features are behind the feature flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
-
-* You can migrate Services with Helm Chart from Helm Repository stored Artifacts from CG to NG. This will help in migrations.
-* You can configure multiple Helm Charts in the manifests. This provides feature parity with Harness FirstGen. Helm Charts can now be configured from the Helm Repository as Artifacts that allow users to select the Helm chart for deployment. The UI also now differentiates between manifests and overrides in service.
-
-### Version 79916 (July 18, 2023)
-
-#### Digest support for Nexus 3, GitHub, Artifactory artifact sources (CDS-71711)
+* **Release date:** July 2023
+* **Release version:** 79916
+* **Issue number:** CDS-71711
+* **Feature flag:** `CD_NG_DOCKER_ARTIFACT_DIGEST`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 Digest support added for Nexus 3, Github, and Artifactory [artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 
@@ -274,19 +282,37 @@ The **Artifact Details** page has an optional **Digest** setting where you can s
 
 Specifying an image by digest, rather than just tag, is useful when you want to ensure that the image you deploy for a service is fixed and immutable. If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline execution fails.
 
-This feature is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
+### Differentiate environments in Blue Green deployment release history
 
-### Version 79714 (June 28, 2023)
+* **Release date:** June 2023
+* **Release version:** CD version 79714 and Harness Delegate version 23.06.79707
+* **Issue number:** CDS-69961
+* **Feature flag:** `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-import Earlyaccess from '/release-notes/shared/cd-79700-early-access.md'
+Added a new field in the release history for Blue Green deployments to differentiate between environments.
 
-<Earlyaccess />
+This is an enhancement to the Kubernetes Blue Green Stage Scale Down step. You can now scale down your last successful stage environment only if the primary resources exist. This enhancement helps you efficiently manage your resources, and prevent deleting the important resources.
 
-### Version 76906 (June 19, 2023)
+Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
-#### Scheduled automatic approvals added to manual approval steps (CDS-69415)
+<!--- Version 76516 (June 09, 2023) Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
 
-This functionality is behind the feature flag `CDS_AUTO_APPROVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+This functionality is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`.
+
+This functionality helps you efficiently manage your resources. The scale down step can be configured within the same stage or different stage based on your requirement.
+
+During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green deployment are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
+
+Harness Delegate version 79503 is required for this feature.-->
+
+### Scheduled automatic approvals for manual approval steps
+
+* **Release date:** June 2023
+* **Release version:** 76906
+* **Issue number:** CDS-69415
+* **Feature flag:** `CDS_AUTO_APPROVAL`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 You can configure a manual approval step to automatically approve at a specific date and time.
 
@@ -294,41 +320,35 @@ You can configure a manual approval step to automatically approve at a specific 
 
 For more details, go to [Automatic Approvals](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/#automatic-approvals).
 
-### Version 76516 (June 09, 2023)
+### Kubernetes deployments support HPA and PDB
 
-<!--- Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
-  
-  This functionality is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`. 
-
-  This functionality helps you efficiently manage your resources. The scale down step can be configured within the same stage or different stage based on your requirement.
-
-  During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green deployment are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
-
-  Harness Delegate version 79503 is required for this feature.-->
-
-#### Kubernetes deployments support HPA and PDB (CDS-59011)
+* **Release date:** June 2023
+* **Release version:** CD version 76516 and Harness Delegate version 23.06.79503
+* **Issue number:** CDS-59011
+* **Feature flag:** `CDS_SUPPORT_HPA_AND_PDB_NG`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudget` for Blue Green and Canary execution strategies.
 
-This functionality is behind the feature flag `CDS_SUPPORT_HPA_AND_PDB_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+### New artifact and manifest triggers
 
-Harness Delegate version 23.06.79503 is required for this feature.
+* **Release date:** May 2023
+* **Release version:** Delegate version 23.05.79306
+* **Issue number:** CDS-68262, ZD-43588, ZD-43726
+* **Feature flag:** `TRIGGER_FOR_ALL_ARTIFACTS`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-### Delegate version 79306 (May 23, 2023)
+You can trigger all artifacts and manifests using **On New Artifact** and **On New Manifest** triggers, respectively. Without this feature enabled, you can trigger only the last pushed artifact or manifest using triggers. With this feature enabled, you can trigger all collected artifacts and manifests of perpetual tasks in one single execution using the **On New Artifact** or **On New Manifest** trigger options.
 
-#### New artifact and manifest triggers (CDS-68262, ZD-43588, ZD-43726)
+### Selective stage executions for webhook triggers
 
-You can trigger all artifacts and manifests using **On New Artifact** and **On New Manifest** triggers, respectively. Earlier, you could trigger only the last pushed artifact or manifest using triggers. You can now trigger all collected artifacts and manifests of perpetual tasks in one single execution using the **On New Artifact** or **On New Manifest** trigger options.
-
-This functionality is behind the feature flag `TRIGGER_FOR_ALL_ARTIFACTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-### Delegate version 79214 (May 04, 2023)
-
-#### Selective stage executions for webhook triggers (CDS-56775, CDS-56774)
+* **Release date:** May 2023
+* **Release version:** Delegate version 23.05.79214
+* **Issue number:** CDS-56775, CDS-56774
+* **Feature flag:** `CDS_NG_TRIGGER_SELECTIVE_STAGE_EXECUTION`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 You can set webhook triggers to run specific pipeline stages using the [Allow selective stage(s) executions?](/docs/platform/pipelines/run-specific-stage-in-pipeline/) option.
-
-This functionality is behind the feature flag `CDS_NG_TRIGGER_SELECTIVE_STAGE_EXECUTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 To run a particular stage of a pipeline:
 
@@ -376,47 +396,56 @@ Here is a sample trigger YAML:
 
   ```
 
-#### TAS config files (CDS-56452)
+### TAS config files can be pulled from Github
 
-You can add Tanzu Application Service (TAS) [config files](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/add-config-files) from GitHub.
-
-This feature is behind the feature flag `CDS_GIT_CONFIG_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-### Delegate version 79111 (April 21, 2023)
-
-#### Protect secrets in webhook triggers that use secret decryption on delegates (CDS-58488, ZD-42117)
-
-Github triggers that use a secret for authentication will now use the same delegate selectors saved in the secret's Harness secret manager.
-
-This functionality is behind a feature flag, `CDS_NG_TRIGGER_AUTHENTICATION_WITH_DELEGATE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-#### Variable expressions in plain text config files (CDS-58399)
-
-Variable expression support includes service, environment, pipeline, and stage variables. Any Harness expression is supported. Variable expressions are not supported for encrypted text config files because expressions impact the encoded secret.
-
-This functionality is behind a feature flag, `CDS_NG_CONFIG_FILE_EXPRESSION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-#### Config files can be pulled from Github (CDS-56652)
+* **Release date:** April 2023
+* **Release version:** Delegate version 23.04.79111
+* **Issue number:** CDS-56652, CDS-56452
+* **Feature flag:** `CDS_GIT_CONFIG_FILES`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 For Harness services using the Tanzu deployment type, config files can be configured using Github, in addition to the Harness file store. Support for other deployment types in coming soon.
 
-This functionality is behind a feature flag, `CDS_GIT_CONFIG_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+**Update (Delegate version 23.05.79214, May 2023):** You can add Tanzu Application Service (TAS) [config files](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/add-config-files) from GitHub.
 
-### Delegate version 79015 (April 10, 2023)
+### Protect secrets in webhook triggers that use secret decryption on delegates
 
-#### Harness supports the deployment of AWS Lambda functions.
+* **Release date:** April 2023
+* **Release version:** Delegate version 23.04.79111
+* **Issue number:** CDS-58488, ZD-42117
+* **Feature flag:** `CDS_NG_TRIGGER_AUTHENTICATION_WITH_DELEGATE_SELECTOR`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Github triggers that use a secret for authentication will now use the same delegate selectors saved in the secret's Harness secret manager.
+
+### Variable expressions in plain text config files
+
+* **Release date:** April 2023
+* **Release version:** Delegate version 23.04.79111
+* **Issue number:** CDS-58399
+* **Feature flag:** `CDS_NG_CONFIG_FILE_EXPRESSION`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Variable expression support includes service, environment, pipeline, and stage variables. Any Harness expression is supported. Variable expressions are not supported for encrypted text config files because expressions impact the encoded secret.
+
+### Harness supports the deployment of AWS Lambda functions
+
+* **Release date:** April 2023
+* **Release version:** Delegate version 23.04.79015
+* **Feature flag:** `CDS_AWS_NATIVE_LAMBDA`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 Harness supports the [deployment of AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments) functions.
 
-This functionality is behind a feature flag, `CDS_AWS_NATIVE_LAMBDA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+### ServiceNow custom table support
 
-#### ServiceNow custom table support (CDS-55046)
+* **Release date:** April 2023
+* **Release version:** Delegate version 23.04.79015
+* **Issue number:** CDS-55046
+* **Feature flag:** `CDS_SERVICENOW_TICKET_TYPE_V2`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-This functionality is behind a feature flag, `CDS_SERVICENOW_TICKET_TYPE_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-Custom table support is now available in Harness' ServiceNow integration.
-
-Harness recommends that you only use a table extending task, or extend tables that indirectly extend the task. You can specify any custom table in Harness.
+Custom table support is now available in Harness' ServiceNow integration. Harness recommends that you only use a table extending task, or extend tables that indirectly extend the task. You can specify any custom table in Harness.
 
 <details>
 <summary>What is a table extending task?</summary>
@@ -433,29 +462,37 @@ The store app is only certified to be used with Incident, Problem, Change Reques
 
 The custom table being used should allow access to this table via web services.
 
-#### Harness removes comments when evaluating commented lines in manifests to avoid rendering failures (CDS-57721, ZD-41676)
+### Harness removes comments when evaluating commented lines in manifests to avoid rendering failures
 
-This functionality is behind a feature flag, `CDS_REMOVE_COMMENTS_FROM_VALUES_YAML`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+* **Release date:** April 2023
+* **Release version:** Delegate version 23.04.79015
+* **Issue number:** CDS-57721, ZD-41676
+* **Feature flag:** `CDS_REMOVE_COMMENTS_FROM_VALUES_YAML`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 Expressions in comments were causing issues for some customers as Harness was trying to evaluate the expressions and this was causing failures.
 
-Harness will remove comments from values.yaml files to prevent expressions in comments from being evaluated and causing failures.
+With this feature enabled, Harness removes comments from `values.yaml` files to prevent expressions in comments from being evaluated and causing failures.
 
-### Delegate version 78712 (March 15, 2023)
+### Large repo support for Azure Repos
 
-#### Large repo support for Azure Repos
+* **Release date:** March 2023
+* **Release version:** Delegate version 23.03.78712
+* **Feature flag:** `OPTIMIZED_GIT_FETCH_FILES`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 Large repositories are now supported for [Azure Repo](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo).
 
-This functionality is behind a feature flag, `OPTIMIZED_GIT_FETCH_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
 Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
-### February 15, 2023
+### Kubernetes Dry Run step added
 
-#### Kubernetes Dry Run step added (CDS-43839)
+* **Release date:** February 2023
+* **Issue number:** CDS-43839
+* **Feature flag:** `K8S_DRY_RUN_NG`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-You can now add the Dry Run step for Kubernetes and Native Helm deployments. This functionality is behind a feature flag, `K8S_DRY_RUN_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+You can add the Dry Run step for Kubernetes and Native Helm deployments.
 
 ![Dry Run step](static/bb64e94a2baf0858bbefe20ecede63ff1e4de692c15882c4f131df7e17c9906b.png)
 
@@ -477,21 +514,71 @@ For example, if the stage Id is `Deploy` and the Dry Run step Id is `Dry_Run` th
 
 For more information, go to [Perform a Kubernetes dry run](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/k8s-dry-run).
 
-### January 12, 2023
+### Convert imperative Kubernetes rollback to declarative rollback
 
-#### Convert imperative Kubernetes rollback to declarative rollback (CDS-2993, ZD-26855, ZD-27690, ZD-36563, ZD-36670)
+* **Release date:** January 2023
+* **Issue number:** CDS-2993, ZD-26855, ZD-27690, ZD-36563, ZD-36670
+* **Feature flag:** `CDP_USE_K8S_DECLARATIVE_ROLLBACK_NG`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-This functionality is behind a feature flag: `CDP_USE_K8S_DECLARATIVE_ROLLBACK_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Harness applies Kubernetes manifest  using `kubectl apply`, which is a declarative way of creating Kubernetes objects. But when rolling back, Harness runs `kubectl rollout undo workloadType/workloadName --to-revision=<REVISION_NUMBER>`, which is an imperative way of rolling back. Using imperative and declarative commands together is not recommended and can cause issues.
 
-Harness applies Kubernetes manifest  using `kubectl apply`, which is a declarative way of creating Kubernetes objects. But when rolling back, we perform `kubectl rollout undo workloadType/workloadName --to-revision=<REVISION_NUMBER>`, which is an imperative way of rolling back. Using imperative and declarative commands together is not recommended and can cause issues.
-
-In some instances, the workload spec was not updated properly when `rollout undo` was performed. Subsequent deployments then refered to an invalid spec of the workload and caused Kubernetes issues like [kubectl rollout undo should warn about undefined behaviour with kubectl apply](https://github.com/kubernetes/kubernetes/issues/94698).
+In some instances, the workload spec was not updated properly when `rollout undo` was performed. Subsequent deployments then referred to an invalid spec of the workload and caused Kubernetes issues like [kubectl rollout undo should warn about undefined behavior with kubectl apply](https://github.com/kubernetes/kubernetes/issues/94698).
 
 * **What is the fix?**
    * We had to redesign our release history to store all rendered manifests in secrets, just like Helm does. While rolling back, we are now reapplying the last successful release's manifests. This solves this issue.
 * **What is the impact on customers?**
    * Enabling declarative rollback disables versioning (even if the **Skip Versioning** checkbox is left unchecked), since versioning was introduced with the imperative rollback design. However, versioning is not needed anymore with declarative rollback.
    * The delegate's service account needs the permission to create, update, and read secrets in the defined infrastructure namespace. Typically, customers' delegates already have these permissions, but if cluster roles are strictly scoped, this could cause failures. For information on cluster roles for the delegate, go to [Install Harness Delegate on Kubernetes](/tutorials/platform/install-delegate/).
+
+### Nexus 3 support for Azure Web App artifacts
+
+* **Release date:** December 2022. This feature was released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release.
+* **Issue number:** CDS-46372
+* **Feature flag:** `AZURE_WEB_APP_NG_NEXUS_PACKAGE`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+For more information, go to the [Azure Web Apps deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial).
+
+### Specify Terraform Backend Configuration in remote file repository
+
+* **Release date:** November 2022. This feature was released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release.
+* **Issue number:** CDS-39012, ZD-37065
+* **Feature flag:** `TERRAFORM_REMOTE_BACKEND_CONFIG`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Terraform Backend Configuration file path in the Terraform Apply step now supports remote file repos. For more details, go to [Provision with the Terraform Apply Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/).
+
+### ECS Run Task support
+
+* **Release date:** October 2022. This feature was released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release.
+* **Issue number:** CDS-57721, ZD-41676
+* **Feature flag:** `NG_SVC_ENV_REDESIGN` and `ECS_NG`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+ECS deployments: deploy artifacts to your Amazon Elastic Container Service (ECS) clusters using a Rolling, Canary, and Blue Green strategies. For more information, go to the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
+
+**Update (October 2022):** In addition to deploying tasks as part of your standard ECS deployment, you can use the ECS Run Task step to run individual tasks separately as a step in your ECS stage. The ECS Run Task step is available in all ECS strategy types. An example of when you run a task separately is a one-time or periodic batch job that does not need to keep running or restart when it finishes. For more information, go to the [ECS tutorial's run task step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
+
+### Enhancements for Secure Shell and WinRM deployments
+
+* **Release date:** October 2022. This feature was released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release.
+* **Feature flag:** `NG_SVC_ENV_REDESIGN`, `SSH_NG`, and `PIPELINE_MATRIX`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Fpr traditional deployments using SSH or WinRM, you can deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
+
+These deployments are called Traditional because they use Secure Shell and PowerShell scripts and a traditional runtime environment as opposed to containers and orchestration mechanisms, like Kubernetes.
+
+For more information, go to [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng) and [WinRM deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial).
+
+### Custom deployments using Deployment Templates
+
+* **Release date:** October 2022. This feature was released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release.
+* **Feature flag:** `NG_SVC_ENV_REDESIGN` and `NG_DEPLOYMENT_TEMPLATE`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+In some cases, you might use a platform that doesn't have first class support in Harness, such as OpenStack, WebLogic, WebSphere, Google Cloud functions, etc. Harness calls these non-native deployments. For non-native deployments, Harness provides a custom deployment option using Deployment Templates. For more information, go to the [Custom deployments using deployment templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
 
 <!-- ## CET early access features
 
@@ -503,48 +590,59 @@ The following early access (beta) features are available for the Harness Continu
 
 ### Harness AI Development Assistant (AIDA:tm:)
 
-* **Release date:** June 21, 2023
+* **Release date:** June 2023
 * **Release version:** 4301
 * **Issue numbers:** CI-8599, CI-8735, CI-9102
 * **Feature flag:** `CI_AI_ENHANCED_REMEDIATIONS`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-* **Description:** The Harness platform leverages Harness AI Development Assistant (AIDA) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software delivery lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empower teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences. In Harness CI, AIDA provides auto-recognition of failures in pipelines. The root cause analysis (RCA) option generates recommendations for step failures in pipelines. Harness bases these recommendations on the step logs and the context of the failed step. For more information, go to [Troubleshooting with AIDA](http://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida).
-* **Update (Version 4901, July 06, 2023):** Applied scrolling to long remediation messages when troubleshooting with AIDA.
-* **Update (Version 5106, July 28, 2023):** Fixed an issue where step details for other steps were shown when using AIDA to troubleshoot a pipeline with multiple failed steps.
-* **Update (Version 5902, September 29, 2023):** When troubleshooting with AIDA, stage-level error analysis is available for failed stages without steps. If a stage has steps, step-level error analysis occurs instead.
+
+The Harness platform leverages Harness AI Development Assistant (AIDA) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software delivery lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empower teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.
+
+In Harness CI, AIDA provides auto-recognition of failures in pipelines. The root cause analysis (RCA) option generates recommendations for step failures in pipelines. Harness bases these recommendations on the step logs and the context of the failed step. For more information, go to [Troubleshooting with AIDA](http://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida).
+
+**Update (Version 4901, July 2023):** Applied scrolling to long remediation messages when troubleshooting with AIDA.
+
+**Update (Version 5106, July 2023):** Fixed an issue where step details for other steps were shown when using AIDA to troubleshoot a pipeline with multiple failed steps.
+
+**Update (Version 5902, September 2023):** When troubleshooting with AIDA, stage-level error analysis is available for failed stages without steps. If a stage has steps, step-level error analysis occurs instead.
 
 ### GitHub App authentication for GitHub connectors
 
-* **Release date:** August 22, 2023
+* **Release date:** August 2023
 * **Release version:** Delegate version 80303 and CI version 5408
 * **Issue number:** CI-8577
 * **Feature flag:** `CDS_GITHUB_APP_AUTHENTICATION`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-* **Description:** With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
+
+With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
 
 ### Cache Intelligence in the Visual editor
 
-* **Release date:** July 28, 2023
+* **Release date:** July 2023
 * **Release version:** 5106
 * **Issue number:** CI-8571, CI-8917
 * **Feature flag:** `CI_CACHE_INTELLIGENCE`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-* **Description:** You can enable [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to Harness Cloud build infrastructure.
-* **Update (Version 5301, August 10, 2023):** You can now also configure [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to Harness Cloud build infrastructure.
+
+You can enable [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to Harness Cloud build infrastructure.
+
+**Update (Version 5301, August 2023):** You can now also configure [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could enable Cache Intelligence through the Visual editor, but you had to configure it in the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to Harness Cloud build infrastructure.
 
 ### Send status updates to Harness Manager directly by HTTP (Rolled back)
 
-* **Release date:** July 12, 2023 (rollback)
-* **Release version:** 5003 (rollback)
-* **Issue number:** CI-8338 (rollback)
+* **Release date:** July 2023 (rollback from GA)
+* **Release version:** 5003
+* **Issue number:** CI-8338
 * **Feature flag:** `CI_LE_STATUS_REST_ENABLED`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-* **Description:** This feature causes CI steps to send status updates to the [Harness Manager](/docs/get-started/harness-platform-architecture#harness-platform-components) directly by HTTP, rather than through a delegate.
-* **Update (Version 5003, July 12, 2023):** This feature was rolled back to early access and disabled by default due to a discovered instability that caused the [CD Container step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step) to fail. This feature flag is now disabled by default and must be re-enabled if your CI-to-Harness-Manager communications need to support client connections with additional certificates.
+
+This feature causes CI steps to send status updates to the [Harness Manager](/docs/get-started/harness-platform-architecture#harness-platform-components) directly by HTTP, rather than through a delegate.
+
+**Update (Version 5003, July 2023):** This feature was rolled back to early access and disabled by default due to a discovered instability that caused the [CD Container step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step) to fail. This feature flag is now disabled by default and must be re-enabled if your CI-to-Harness-Manager communications need to support client connections with additional certificates.
 
 ### Output variables automatically become environment variables
 
-* **Release date:** June 19, 2023
+* **Release date:** June 2023
 * **Release version:** 4204
 * **Issue number:** CI-7817, ZD-39203
 * **Feature flag:** `CI_OUTPUT_VARIABLES_AS_ENV`
@@ -558,7 +656,7 @@ For more information on this feature, go to the documentation on [Output variabl
 
 ### Remote debugging
 
-* **Release date:** May 23, 2023
+* **Release date:** May 2023
 * **Release version:** 3805
 * **Issue number:** CI-8135, CI-8048
 * **Feature flag:** `CI_REMOTE_DEBUG`
@@ -575,7 +673,7 @@ Debug mode is available if all of the following conditions are met:
 
 You can re-run builds in debug mode through the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. For more information, go to the [debug mode](/docs/continuous-integration/troubleshoot-ci/debug-mode) documentation.
 
-**Update (version 4204, June 19, 2023):** **Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. For more information, go to [Debug with SSH](/docs/continuous-integration/troubleshoot-ci/debug-mode)
+**Update (version 4204, June 2023):** Debug mode now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. For more information, go to [Debug with SSH](/docs/continuous-integration/troubleshoot-ci/debug-mode)
 
 ## FF early access features
 
@@ -584,7 +682,8 @@ The following early access (beta) features are available for the Harness Feature
 ### Beta version of an Apex SDK for Feature Flags
 
 * **Release date:** October 20, 2022. This feature was released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release.
-* **Description:** We've released a beta version of an Apex SDK for Feature Flags. For more information and to access this SDK, see the [Apex SDK reference guide](/docs/feature-flags/ff-sdks/server-sdks/apex-sdk-reference/) and the [GitHub repository](https://github.com/harness/ff-apex-server-sdk).
+
+Harness released a beta version of an Apex SDK for Feature Flags. For more information and to access this SDK, see the [Apex SDK reference guide](/docs/feature-flags/ff-sdks/server-sdks/apex-sdk-reference/) and the [GitHub repository](https://github.com/harness/ff-apex-server-sdk).
 
 <!-- ## IDP early access features
 
@@ -594,11 +693,15 @@ No early access (beta) features are available for Harness Internal Developer Por
 
 The following early access (beta) features are available for the Harness Security Testing Orchestration module.
 
-### Version 1.69.3 (October 5, 2023)
+### UI enhancements for working with exemptions
 
-#### UI enhancements for working with exemptions (STO-6078, STO-5056)
+* **Release date:** October 2023
+* **Release version:** 1.69.3
+* **Issue number:** STO-6078, STO-5056
+* **Feature flag:** `STO_EXEMPTION_DETAILS`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-This release includes UI enhancements for working with exemptions. These features are behind the feature flag `STO_EXEMPTION_DETAILS`. Contact [Harness Support](mailto:support@harness.io) to enable these features.
+This feature includes the following UI enhancements for working with exemptions:
 
 - You can click on a row in the **Exemptions** table to view details for the issue associated with that exemption.
 
@@ -608,55 +711,78 @@ This release includes UI enhancements for working with exemptions. These feature
 
    ![](static/sto-exemption-details-no-baseline-selected.png)
 
-### Version 1.64.1 (August 9, 2023)
+### Security Tests filters
 
-#### Security Tests filters (STO-5056, STO-5212)
+* **Release date:** August 2023
+* **Release version:** 1.64.1
+* **Issue number:** STO-5056, STO-5212
+* **Feature flag:** `STO_DROPDOWN_FILTERS`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-The **Security Tests** tab includes a set of pull-down menus so you can filter the issues lists by Target, Target Type, Step, Stage, and Scanner. This feature is behind the Feature Flag `STO_DROPDOWN_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+The **Security Tests** tab includes a set of pull-down menus so you can filter the issues lists by Target, Target Type, Step, Stage, and Scanner.
 
 ![Click on a tile to filter issues by severity](./static/sto-pulldown-filters-sto-5212.png)
 
-### Version 1.61.1 (July 12, 2023)
+### Use regex to define dynamic target baselines
 
-#### Use regex to define dynamic target baselines (STO-5896)
+* **Release date:** July 2023
+* **Release version:** 1.61.1
+* **Issue number:** STO-5896
+* **Feature flag:** `STO_BASELINE_REGEX`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 You can now define dynamic target baselines using regular expressions. Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. Dynamic baselines also make it easier to track the introduction and remediation of specific vulnerabilities.
 
-This feature is behind the Feature Flag `STO_BASELINE_REGEX`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
 For more information about this feature, go to [Set up target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines).
 
-### Version 1.60.0 (July 5, 2023)
+### Scanner templates for Burp integration
 
-#### Scanner templates for Burp integration (STO-5056)
+* **Release date:** July 2023
+* **Release version:** 1.60.0
+* **Issue number:** STO-5056
+* **Feature flag:** `STO_STEP_PALETTE_BURP_ENTERPRISE`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 The [Burp integration](/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference) now supports scanner templates, which make it much easier to set up a scan step.
 
-This integration is behind the Feature Flag `STO_STEP_PALETTE_BURP_ENTERPRISE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+### CodeQL integration
 
-#### CodeQL integration (STO-5366)
+* **Release date:** July 2023
+* **Release version:** 1.60.0
+* **Issue number:** STO-5366
+* **Feature flag:** `STO_STEP_PALETTE_CODEQL`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 You can scan your code repositories using [CodeQL](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference), an analysis engine used by developers to automate security checks, and by security researchers to perform variant analysis.
 
-This integration is behind the Feature Flag `STO_STEP_PALETTE_CODEQL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+### Fossa integration
 
-#### Fossa integration (STO-5111)
+* **Release date:** July 2023
+* **Release version:** 1.60.0
+* **Issue number:** STO-5111
+* **Feature flag:** `STO_STEP_PALETTE_FOSSA`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 You can scan container images and repositories using [Fossa](/docs/security-testing-orchestration/sto-techref-category/fossa-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects.
 
-This integration is behind the Feature Flag `STO_STEP_PALETTE_FOSSA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+### Semgrep integration
 
-#### Semgrep integration (STO-5886)
+* **Release date:** July 2023
+* **Release version:** 1.60.0
+* **Issue number:** STO-5886
+* **Feature flag:** `STO_STEP_PALETTE_SEMGREP`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 You can scan container images and repositories using [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects.
 
-This integration is behind the Feature Flag `STO_STEP_PALETTE_SEMGREP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+### Improved UI for configuring scan steps
 
-### March 2, 2023
+* **Release date:** March 2023
+* **Issue number:** STO-4867
+* **Feature flag:** Yes
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-#### Improved UI for configuring scan steps (STO-4867)
-
-This release includes a set of Security steps with an improved UI for configuring scans. Each step shows only the settings that apply to the specific scan. Note the following:
+This feature includes a set of Security steps with an improved UI for configuring scans. Each step shows only the settings that apply to the specific scan. Note the following:
 
 - This release includes new steps for the following scanners: Aqua Trivy, Bandit, Black Duck, Checkmarx, Grype, Mend, Prisma Cloud, Snyk, SonarQube, and ZAP.  
 - Docker-in-Docker is no longer required for these steps *unless* you're scanning a container image. If you're scanning a repository or running instance, you don't need to set up a Background step running DinD.    
@@ -666,11 +792,14 @@ This release includes a set of Security steps with an improved UI for configurin
 
 ![STO step palette](static/sto-step-palette.png)
 
-#### STO Jira integration (STO-5467)
+### STO Jira integration
 
-This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations).
+* **Release date:** March 2023
+* **Issue number:** STO-5467
+* **Feature flag:** `STO_JIRA_INTEGRATION`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-This integration is behind the Feature Flag `STO_JIRA_INTEGRATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+This feature includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations).
 
 ## SRM early access features
 
@@ -679,9 +808,11 @@ The following early access (beta) features are available for the Harness Service
 ### Continuous Verification (CV) fails if the data for configured deployment strategy is not available (SRM-12731)
 
 * **Release date:** December 13, 2022. This feature was released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release.
+* **Release version:** Delegate version 77808
 * **Feature flag:** `SRM_LOG_HOST_SAMPLING_ENABLE`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-* **Description:**  Harness was automatically applying an alternate deployment strategy even if the required data for the deployment configured in the Verify step was not available. Now, Harness does not automatically apply an alternate deployment strategy if the required data is not available. Instead, Harness fails the CV. Harness automatically applies an alternate deployment strategy only if you choose the Auto option in the Continuous Verification Type dropdown list when configuring the Verify step.
+
+Harness was automatically applying an alternate deployment strategy even if the required data for the deployment configured in the Verify step was not available. Now, Harness does not automatically apply an alternate deployment strategy if the required data is not available. Instead, Harness fails the CV. Harness automatically applies an alternate deployment strategy only if you choose the Auto option in the Continuous Verification Type dropdown list when configuring the Verify step.
 
 <!-- ## SSCA early access features
 
@@ -689,156 +820,14 @@ No early access (beta) features are available for the Harness Software Supply Ch
 
 ## Features promoted to GA
 
-(Including this section requires us to know when features are GA'd. We don't always get notified in a timely manner.)
-
-These features were released as early access (beta) features, and they have since been promoted to GA.
+These features were released as early access (beta) features, and they have since been promoted to GA. This list is not exhaustive.
 
 ### CI features promoted to GA
 
 #### Local runner build infrastructure
 
-(Add GA date, GA version. Add "Early access" to release date and release version. Remove "how to enable".)
-
-* **GA date:** Early 2023 <!-- ideally we would provide the exact date -->
-* **GA version:** <!-- ideally we would provide a version -->
+* **GA date:** Early 2023
 * **Early access release date:** October 7, 2022
-* **Early access release version:** <!-- ideally this would be populated -->
 * **Issue number:** CI-5680
 * **Feature flag:** `CI_DOCKER_INFRASTRUCTURE`
-* **Description:** This release includes a new Docker delegate that you can install directly on a host. For more information, go to [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
-
-#### Local runner build infrastructure (info box version)
-
-(Add info with GA version and date. Add "Early access" to release date and release version. Remove "How to enable".)
-
-:::info
-
-This feature was promoted to GA in version 12345 on DATE.
-
-This feature was promoted to GA in early 2023.
-
-:::
-
-* **Early access release date:** October 7, 2022
-* **Early access release version:** <!-- ideally this would be populated -->
-* **Issue number:** CI-5680
-* **Feature flag:** `CI_DOCKER_INFRASTRUCTURE`
-* **Description:** This release includes a new Docker delegate that you can install directly on a host. For more information, go to [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
-
-## 2022 early access features
-
-These features were released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release.
-
-(Ideally we should move away from this unclear date-based structure for beta features. A feature should be clearly beta or GA. Once it is GA, we need to mark it as such on this list - as demonstrated in [Features promoted to GA](#features-promoted-to-ga). See FF and SDK for example of notation to use if you aren't sure if an old feature has been promoted to GA yet.)
-
-<details>
-<summary>Harness Platform</summary>
-
-#### November 11, 2022
-
-You can now create secrets using the Google Cloud Secret Manager in Harness. (PL-28978)
-
-- For more information, see [Add a Google Cloud Secret Manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager/)
-
-- You can now select modules and configure your own navigation in Harness. (SPG-153)
-
-Also, Projects is a new option in the left navigation. Click Projects to view the project-specific overview, pipeline, connector, and other details.
-
-#### November 6, 2022
-
-You can now get optimized performance on remote pipelines by enabling the feature flag USE_GET_FILE_V2_GIT_CALL if you are on delegate version 772xx or higher. (PL-29459)
-
-If you are on an older delegate version, you can upgrade your delegate for optimized performance.
-
-#### October 7, 2022
-
-- You can now create remote Templates in Harness and save it in your Git repo by enabling the feature flag NG_TEMPLATE_GITX. (PL-28573)
-
-For more information, see [Create a remote step template](/docs/platform/Templates/create-a-remote-step-template), [Create a remote stage template](/docs/platform/Templates/create-a-remote-stage-template), and [Create a remote pipeline template](/docs/platform/Templates/create-a-remote-pipeline-template).
-
-- You can now use expressions to reference pre-existing secrets in Vault using a fully-qualified path. (PL-28352)
-
-For more information, see [HashiCorp Vault Secrets](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets#option-hashicorp-vault-secrets).
-
-- Harness will now send email notification for user invites when the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES is enabled. (PL-26218, ZD-32152,35287)
-
-Harness will not send any emails for user invites when the feature flag PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES is enabled.
-
-#### September 7, 2022
-
-You can now create a Harness Custom Secret Manager in Next Gen. (PL-25545)
-
-You can onboard any secret manager with Harness and reference their secrets in Harness using a Shell Script.
-
-This is behind the feature flag CUSTOM_SECRET_MANAGER_NG.
-
-See [Add a custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager).
-
-#### July 7, 2022
-
-Simplified Git Experience
-
-Harness Git Experience lets you store configurations for your resources like Pipelines, Input Sets in Git. You can choose Git as the source of truth and use your Git credentials to access and modify your configurations.
-
-With Harness Git Experience, you can select the repository and branch from where you want to execute your Pipelines, hence simplifying your Pipeline execution by seamless access to your Harness resources and their configurations stored in Git.
-
-For more information, refer to [Harness Git Experience Overview](/docs/platform/git-experience/git-experience-overview/).
-
-This functionality is behind a feature flag: NG_GIT_EXPERIENCE
-
-</details>
-
-<details>
-<summary>Continuous Delivery</summary>
-
-#### December 7, 2022
-
-Nexus 3 is now supported for Azure Web App artifacts. (CDS-46372)
-
-For more information, see [Azure Web Apps deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial)
-
-This functionality is behind a feature flag: AZURE_WEB_APP_NG_NEXUS_PACKAGE.
-
-#### November 29, 2022
-
-Terraform Backend Configuration file path in the Terraform Apply step now supports remote file repos. (CDS-39012, ZD-37065)
-
-Terraform Backend Configuration now can be specified in the remote file repository.
-
-For more details, go to [Provision with the Terraform Apply Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/).
-
-This functionality is behind a feature flag: TERRAFORM_REMOTE_BACKEND_CONFIG.
-
-#### October 18, 2022
-
-ECS Run Task support
-
-In addition to deploying tasks as part of your standard ECS deployment, you can use the ECS Run Task step to run individual tasks separately as a step in your ECS stage. The ECS Run Task step is available in all ECS strategy types. An example of when you run a task separately is a one-time or periodic batch job that does not need to keep running or restart when it finishes.
-
-This functionality is behind feature flags: NG_SVC_ENV_REDESIGN and ECS_NG
-
-For more information, go to the [ECS tutorial's run task step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
-
-#### October 7, 2022
-
-- ECS deployments: deploy artifacts to your Amazon Elastic Container Service (ECS) clusters using a Rolling, Canary, and Blue Green strategies.
-
-Enable Feature Flags NG_SVC_ENV_REDESIGN and ECS_NG.
-
-For more information, go to the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
-
-- Traditional deployments using SSH or WinRM: deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
-
-These deployments are called Traditional because they use Secure Shell and PowerShell scripts and a traditional runtime environment as opposed to containers and orchestration mechanisms, like Kubernetes.
-
-Enable Feature Flags NG_SVC_ENV_REDESIGN, SSH_NG, and PIPELINE_MATRIX.
-
-For more information, go to [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng) and [WinRM deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial).
-
-- Custom deployments using Deployment templates: In some cases, you might be using a platform that does not have first class support in Harness, such as OpenStack, WebLogic, WebSphere, Google Cloud functions, etc. We call these non-native deployments. For non-native deployments, Harness provides a custom deployment option using Deployment Templates.
-
-Enable Feature Flags NG_SVC_ENV_REDESIGN and NG_DEPLOYMENT_TEMPLATE.
-
-For more information, go to the [Custom deployments using deployment templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
-
-</details>
+* **Description:** Docker delegate that you can install directly on a host. For more information, go to [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
