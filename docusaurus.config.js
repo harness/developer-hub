@@ -608,6 +608,7 @@ const config = {
     path.join(__dirname, '/plugins/onetrust-plugin'),
     path.join(__dirname, '/plugins/utmcookie-plugin'),
     path.join(__dirname, '/plugins/munity-plugin'),
+    path.join(__dirname, '/plugins/feedback-plugin'),
   ],
   clientModules: [require.resolve('./client-modules/FocusOnAnchor')],
 };
