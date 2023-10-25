@@ -524,9 +524,14 @@ Now when this step runs, it will run on every host returned by **Fetch Instances
 
 ### Where to put Fetch Instances and deployment steps
 
-The stage Execution must include the **Fetch Instances** step and a step to deploy the artifact to the instances fetched.
+The stage **Execution** must include the **Fetch Instances** step and a step to deploy the artifact to the instances fetched.
 
-Typically, the deployment steps come after the **Fetch Instances** step because you are fetching existing instances.
+There are two questions to consider when deciding where to put the **Fetch Instances** and deployment steps:
+
+1. Will you only know the instancs **before** deployment? Do you need to query some external source to be able to know which instances exist and then iterate over them to deploy to each instance?
+2. Will you only know the instancs **after** deployment? For example, if an external source like an orchestrator actually creates the instances, you won't know which instances exist until after you deploy.
+
+Typically, the deployment steps come after the **Fetch Instances** step because you are fetching existing instances. But in some cases, such as Kubernetes, you might want to place the **Fetch Instances** step after the deployment so that you are getting the pods that Kubernetes created. If you put **Fetch Instances** step before deployment, you will be using the pods that already exist.
 
 ### Command step in Deployment Template deployments
 
