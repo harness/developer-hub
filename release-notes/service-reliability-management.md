@@ -18,11 +18,11 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest: October 20, 2023, version 1.4.2
+## Latest: October xx, 2023, version 1.5.x
 
 ### New features and enhancements
 
-- On the SLO Details page, you can now view the count of contributing SLOs for composite SLOs. This enhancement simplifies the management of composite SLOs. (SRM-15825)
+- Added the option to set the start month of quarterly Service Level Objectives (SLOs). This enhancement helps you define your SLOs and match them with your organization’s reporting and operational cycles. (SRM-15677)
 
 
 ### Early access features
@@ -31,6 +31,36 @@ This release does not include any early access features.
 
 
 ### Fixed issues
+
+- Simple SLO links on the Composite SLO details page were directing to blank pages. (SRM-15957)
+
+  This issue has been resolved. Simple SLO links on the Composite SLO details page now correctly direct to the appropriate pages.
+
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+
+#### October 20, 2023, version 1.4.2
+
+### New features and enhancements
+
+- On the SLO Details page, you can now view the count of contributing SLOs for composite SLOs. This enhancement simplifies the management of composite SLOs. (SRM-15825)
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
 
 - PagerDuty incidents were not captured in the free subscription environment. (SRM-10824)
   
@@ -55,15 +85,9 @@ This release does not include any early access features.
   This issue has been resolved. Now, the SLI iterator correctly handles task creation, preventing unnecessary retries.
 
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 
 #### October 9, 2023, Version 1.3.3
