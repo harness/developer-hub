@@ -35,6 +35,12 @@ You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-featur
 
 ## Use an expression in Issue Key
 
+:::note
+
+Currently, support for expressions and runtime inputs in **Issue Key** is behind the feature flag `CDS_JIRA_UPDATE_SELECT_FIELDS_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 In **Issue Key**, you can use an expression or runtime input to reference the Key ID from another Jira Create or Jira Update step.
 
 Here are some important considerations when using an expression in **Issue Key:**
