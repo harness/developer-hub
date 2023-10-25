@@ -15,7 +15,7 @@ Degraded performance = None  (our stance is that a degraded performance does imp
 
 A production incident, commonly known as an "incident," is an unexpected event or problem that arises within our live production environments, resulting in either complete or partial service disruptions. In the case of a partial incident, it renders one or more functions of a module nonfunctional or inaccessible. All production incidents are posted in our status page (https://status.harness.io) and our users can subscribe to the feeds from this site to get notified. 
 
-## Recent Incidents and how we calculate our Availability
+## Recent Incidents and How We Calculate Our Availability
 **Oct 4th - Impacted Continuous Integration Enterprise(CIE) - Self Hosted Runners**
 Incident: Issue with sending Git Status for PR 
 URL: https://status.harness.io/incidents/p24h63dhy18d
