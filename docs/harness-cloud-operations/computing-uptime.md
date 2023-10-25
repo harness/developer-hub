@@ -17,6 +17,7 @@ A production incident, commonly known as an "incident," is an unexpected event o
 
 ## Recent Incidents and How We Calculate Our Availability
 **Oct 4th - Impacted Continuous Integration Enterprise(CIE) - Self Hosted Runners**
+
 Incident: Issue with sending Git Status for PR 
 URL: https://status.harness.io/incidents/p24h63dhy18d
 
@@ -29,6 +30,7 @@ URL: https://status.harness.io/incidents/p24h63dhy18d
 During the incident, the error rate for the Platform/Delegate component exceeded 1% over a 5-minute rolling window due to a missing dependency and we had a partial outage for CIE - Self Hosted Runners in Prod-2.
 
 **Oct 16th - Impacted all the components in Prod-2**
+
 Incident: Failed to retrieve license information seen for some customers 
 URL: https://status.harness.io/incidents/bwpdhdyyyjfw
 
