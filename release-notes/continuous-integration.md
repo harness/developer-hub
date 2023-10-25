@@ -45,7 +45,7 @@ This release does not include early access features.
 <details>
 <summary>2023 releases</summary>
 
-#### October 23, 2023, version 6303
+#### October 24, 2023, version 6304
 
 ##### New features and enhancements
 

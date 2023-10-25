@@ -43,14 +43,16 @@ These are the requirements to configure the Google Cloud VM. This is the primary
 
 The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the pipeline. A pool is a group of instantiated VMs that are immediately available to run CI pipelines. You can configure multiple pools in `pool.yml`, such as a Windows VM pool and a Linux VM pool.
 
-1. Create a `/runner` folder on your delegate VM and `cd` into it:
+1. [SSH into your Google Cloud VM](https://cloud.google.com/compute/docs/connect/standard-ssh).
+2. Create a `/runner` folder on your Google Cloud VM and `cd` into it:
 
    ```
    mkdir /runner
    cd /runner
    ```
-2. In the `/runner` folder, create a `pool.yml` file.
-3. Modify `pool.yml` as described in the following example and the [Pool settings reference](#pool-settings-reference).
+3. Copy your `application_default_credentials.json` file into the `/runner` folder. You created this file when you [prepared the Google Cloud VM](#prepare-the-google-cloud-vm).
+4. In the `/runner` folder, create a `pool.yml` file.
+5. Modify `pool.yml` as described in the following example and the [Pool settings reference](#pool-settings-reference).
 
 ### Example pool.yml
 
@@ -68,7 +70,7 @@ instances:
     spec:
       account:
         project_id: ci-play ## Your Google project ID.
-        json_path: /path/to/key.json ## Your JSON credentials file.
+        json_path: /path/to/key.json ## Path to the application_default_credentials.json file.
       image: projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-1804-bionic-v20220510
       machine_type: e2-small
       zone: ## To minimize latency between delegate and build VMs, specify the same zone where your delegate VM is running.
@@ -130,10 +132,10 @@ Install a Harness Docker Delegate on your Google Cloud VM.
 3. Select **Docker**.
 4. Enter a **Delegate Name**.
 5. Copy the delegate install command and paste it in a text editor.
-6. To the first line, add `--net=host`, and, if required, `sudo`. For example:
+6. To the first line, add `--network host`, and, if required, `sudo`. For example:
 
    ```
-   sudo docker run --cpus=1 --memory=2g --net=host
+   sudo docker run --cpus=1 --memory=2g --network host
    ```
 
 7. [SSH into your Google Cloud VM](https://cloud.google.com/compute/docs/connect/standard-ssh) and run the delegate install command.
