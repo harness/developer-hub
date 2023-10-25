@@ -105,27 +105,13 @@ For more information about configuring connectivity, go to:
 * [Delegate system requirements - Network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements/#network-requirements)
 * [Allowlist Harness Domains an IPs](/docs/platform/References/allowlist-harness-domains-and-ips)
 
-## AKS builds timeout
-
-Azure Kubernetes Service (AKS) security group restrictions can cause builds running on an AKS build infrastructure to timeout.
-
-If you have a custom network security group, it must allow inbound traffic on port 8080, which the Delegate service uses.
-
-For more information, refer to the following Microsoft Azure troubleshooting documentation: [A custom network security group blocks traffic](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/custom-nsg-blocks-traffic).
-
-## CI pods appear to be evicted by Kubernetes autoscaling
-
-<Kubevict />
-
-## Delegate is not able to connect to the created build farm
-
-If you get this error when using a Kubernetes cluster build infrastructure, and you have confirmed that the delegate is installed in the same cluster where the build is running, you may need to allow port 20001 in your network policy to allow pod-to-pod communication.
-
-For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
-
 ## Docker Hub rate limiting
 
 <Dhrl />
+
+## Can't connect to Docker daemon
+
+<DindTrbs />
 
 ## Out of memory errors with Gradle
 
@@ -137,7 +123,95 @@ If a build that uses Gradle experiences out of memory errors, add the following 
 
 Your Java options must use [UseContainerSupport](https://eclipse.dev/openj9/docs/xxusecontainersupport/) instead of `UseCGroupMemoryLimitForHeap`, which was removed in JDK 11.
 
-## Connector delegate error with Harness Cloud build infrastructure
+## Step continues running for a long time after the command is complete
+
+In Windows builds, if the primary command in a Powershell script starts a long-running subprocess, the step continues to run as long as the subprocess exists (until it reaches the step timeout limit).
+
+1. Check if your command launches a subprocess.
+2. If it does, check whether the process is exiting, and how long it runs before exiting.
+3. If the run time is unacceptable, you might need to add commands to sleep or force exit the subprocess.
+
+Here's a sample pipeline that includes a Powershell script that starts a subprocess. The subprocess runs for no more than two minutes.
+
+```yaml
+pipeline:
+  identifier: subprocess_demo
+  name: subprocess_demo
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        identifier: BUild
+        type: CI
+        name: Build
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  identifier: Run_1
+                  type: Run
+                  name: Run_1
+                  spec:
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
+                    image: jtapsgroup/javafx-njs:latest
+                    shell: Powershell
+                    command: |-
+                      cd folder
+                      gradle --version
+                      Start-Process -NoNewWindow -FilePath "powershell" -ArgumentList "Start-Sleep -Seconds 120"
+                      Write-Host "Done!"
+                    resources:
+                      limits:
+                        memory: 3Gi
+                        cpu: "1"
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_KUBERNETES_NAMESPACE
+              initTimeout: 900s
+              automountServiceAccountToken: true
+              nodeSelector:
+                kubernetes.io/os: windows
+              os: Windows
+          caching:
+            enabled: false
+            paths: []
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        build:
+          type: branch
+          spec:
+            branch: main
+```
+
+## Kubernetes cluster build infrastructure issues
+
+### CI pods appear to be evicted by Kubernetes autoscaling
+
+<Kubevict />
+
+### Delegate is not able to connect to the created build farm
+
+If you get this error when using a Kubernetes cluster build infrastructure, and you have confirmed that the delegate is installed in the same cluster where the build is running, you may need to allow port 20001 in your network policy to allow pod-to-pod communication.
+
+For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
+
+### AKS builds timeout
+
+Azure Kubernetes Service (AKS) security group restrictions can cause builds running on an AKS build infrastructure to timeout.
+
+If you have a custom network security group, it must allow inbound traffic on port 8080, which the delegate service uses.
+
+For more information, refer to the following Microsoft Azure troubleshooting documentation: [A custom network security group blocks traffic](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/custom-nsg-blocks-traffic).
+
+## Harness Cloud build infrastructure issues
+
+### Connector delegate error with Harness Cloud build infrastructure
 
 Connectors that you use with the Harness Cloud build infrastructure must connect through the Harness Platform. To change the connector's connectivity mode:
 
@@ -148,7 +222,7 @@ Connectors that you use with the Harness Cloud build infrastructure must connect
 5. Select **Change** and select **Connect through Harness Platform**.
 6. Select **Save and Continue** and select **Finish**.
 
-## Can't use the built-in Harness Docker Connector with Harness Cloud build infrastructure
+### Can't use the built-in Harness Docker Connector with Harness Cloud build infrastructure
 
 Depending on when your account was created, the built-in **Harness Docker Connector** (`account.harnessImage`) might be configured to connect through a Harness Delegate instead of the Harness Platform. In this case, attempting to use this connector with Harness Cloud build infrastructure generates the following error:
 
@@ -167,14 +241,10 @@ To change the connector's connectivity settings:
 5. Select **Change** and select **Connect through Harness Platform**.
 6. Select **Save and Continue** and select **Finish**.
 
-## Can't connect to Docker daemon
-
-<DindTrbs />
-
-## Troubleshoot AWS VM build infrastructures
+## AWS VM build infrastructure issues
 
 For troubleshooting information for AWS VM build infrastructures, go to [Set up an AWS VM build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure.md#troubleshooting).
 
-## Troubleshoot local runner build infrastructures
+## Local runner build infrastructure issues
 
 For troubleshooting information for local runner build infrastructures, go to [Set up a local runner build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md#troubleshooting-the-delegate-connection).
