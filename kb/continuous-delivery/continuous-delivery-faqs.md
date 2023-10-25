@@ -2081,11 +2081,9 @@ GitHub Package Registry
 Nexus 3
 Artifactory
 
-
 #### Limitations of Helm Chart dependencies on Git Source Repositories
 
 Helm chart dependencies are not supported in Git source repositories. Helm chart dependencies are supported in Helm Chart Repositories.
-
 
 #### Can I execute Builds in Harness CD?
 
@@ -2122,4 +2120,224 @@ More details here [https://developer.harness.io/docs/continuous-delivery/cd-infr
 Yes, but be aware that AWS CDK provisioning support is behind a Feature Flag. Please reach out to Harness Support for this. 
 Feature Flag: CDS_AWS_CDK
 
+#### I am getting "Backend not initialised error" when running terragrunt plan with specific module?
 
+When dealing with specific modules, we don't initiate terraform init directly; instead, we use the terragrunt terragrunt-info command. 
+To initialize the backend properly, you need to run terraform init, and this initialization process is triggered automatically when you select the "All modules" option.
+
+#### How do I update values for initialdelayseconds for helm delegates?
+You can override Helm chart values by providing a custom values file or by specifying values directly on the command line when installing or upgrading a chart or passing the YAML in terraform script
+
+#### Does terraform step keep the working directory persistence?
+In the both plan and apply step we clean up the directories of Terraform.
+ 
+#### How do I access files created during plan step of terraform for apply step?
+Workspace gets cleaned after every run of Plan or Apply step.
+version control can be used to store these files and later reference them.
+
+#### I want to force all new pipelines created to be stored in git?
+We provide the option to enforce a Git-centric experience for all pipelines and templates.
+To guarantee that your resource configurations are exclusively stored in Git repositories, you can enforce this Git-centric experience within your Harness account. 
+You can achieve this by enabling the "Enforce Git Experience for Pipelines and Templates" setting.
+
+#### Getting error - "The incoming YAML exceeds the limit XXXXX code points", How do I resolve this?
+
+The issue is due to a very large sized yaml. This is an issue with the snakeyaml lib
+The YAML size needs to be reduced or use matrix/strategies to add multiple steps/stages instead of adding them one by one.
+
+#### What is the primary difference between the new delegates and the legacy delegates?
+
+We redesigned our delegates to enhance security and stability while introducing advanced features like High Availability and metrics scraping.
+These improved delegates are referred to as "immutable delegates". 
+While the fundamental task execution remains largely unchanged, the new delegates are designed to offer additional features and improvements. 
+
+#### How can I distinguish between the legacy delegates and the new delegates?
+
+Legacy delegates are identifiable by their image tag and versioning scheme, which is always "harness/delegate:latest." 
+The new delegates have a different versioning scheme and are designed to offer enhanced functionality.
+
+#### Does the new delegate not support authentication by passing accountSecret it requires using of delegate token?
+
+These are actually the same thing, there was just a name change in new delegates. They can however fallback to ACCOUNT_SECRET if you don’t provide DELEGATE_TOKEN variable, but they can be the same value. 
+Note, depending on how you provide the secret (i.e. if it’s through a secret resource or plain env variable) the actual secret value might need to be base64 encoded.
+
+####  I do not see in the new delegate helm chart is the option to specify delegateProfile, is that still supported?
+
+DelegateProfile is deprecated, you can leverage INIT_SCRIPT to run scripts at delegate startup. Adding few Links that can help you get going.
+Helm chart: https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml#L87
+INIT_SCRIPT documentation: https://developer.harness.io/docs/platform/delegates/install-delegates/overview/#use-init_script
+
+#### How do I set Output Variable in Powershell?
+
+To set the Output variable in powershell, Please use this format for setting up the env variable value in the script - `$env:outputvariablename=value`
+
+#### How to fetch a PEM certificate from AWS Secrets Manager without losing its formatting?
+
+In case of multi-line secrets please try and re-direct the output to a temp file and use that for base64.
+
+#### How Do I preserve the formating of multiline secret in shell script?
+
+Please the use below command-
+```
+echo ${secrets.getValue("key_file")} > /tmp/id_rsa_base64
+cat /tmp/id_rsa_base64 | base64 -di
+
+```
+
+#### Is there a way persist terraform steps working directory?
+This is by design we always clean the working directory on each terraform step and working directory cannot be persisted
+
+#### How do I preserve quotes in Output Variable?
+
+To preserve the quotes please encapsulate the array by single quotes('')
+
+#### How do I list Github Tags for custom artifact when the curl returns a json array without any root element?
+
+We cannot provide an array directly to the custom artifact. It needs a root element to parse the json response.
+
+#### Is there any way to increase task count of ECS service without ECS service deployment?
+
+Currently, the task count of ECS cannot be changed without doing any deployment in Harness but changes can be made to ECS deployment directly on AWS.
+
+#### If we manually increase the task count in AWS directly? Or decrease as well, would it impact subsequent pipeline deployment?
+
+It shouldn't impact except the fact that if the subsequent deployment has a different task count, it would override the existing one
+
+#### How can I check the status of connectors?
+
+You can check the status of connectors at the Account, ORG, and Project levels.
+
+#### Is there a centralized dashboard to monitor all connectors?
+
+Currently, we do not have a centralized dashboard to monitor all connectors.
+
+#### How often are connector statuses updated?
+
+Connector statuses are updated frequently. When a connector's status fails, the result is cached, and the next update occurs when the connector is referred to in a pipeline run.
+
+#### Are there any metrics available to monitor connector status?
+
+Currently, there are no metrics exposed for monitoring connector status. However, there is an API available to monitor the status of individual connectors.
+
+#### Can I monitor the activity of connectors through logging?
+
+We do not have logging to check connector activity directly. To monitor logs for specific events, you can select one delegate for a connector with issues, and logs can be parsed for that delegate to check for connector activity.
+
+#### How to use the Stage Variable inside the Shell Script?
+
+A variable expression can be used to access stage variables in pipelines.
+Just hover over your variable name, and you will see an option to copy the variable expression path, You can reference this path in shell script.
+
+#### How do I pass --target-path to deploy the code into the different path in Azure Web App deployment?
+
+Unfortunately, we currently don't have any parameters to pass the target path.
+
+#### How do I set secrets starting with numbers in NG?
+
+Naming conventions in NG are consistently applied to all entity types. According to our existing convention, we do not permit identifiers to start with numbers.
+
+#### How do I change the service artifact source based on environment?
+
+You can use variable expressions in artifact source templates to allow team members to select the repository, path, and tags to use when they run pipelines using artifact source templates. To override service variables at the environment level, you can create environment-level variables and override them for different environments.
+
+#### How do I save the dry-run step rendered manifest?
+
+You can view the dry-run manifest as an output variable of the step
+
+#### Differentiate between inline and remote pipelines in OPA policy?
+
+In the remote pipeline when passed against the OPA engine, the following info is passed -
+ 
+```
+"pipeline": {
+    "gitConfig": {
+      "branch": "master",
+      "filePath": ".harness/test_GITX_OAUTH.yaml",
+      "repoName": "harness-pipeline"
+    },
+    "identifier": "test_GITX_OAUTH",
+```
+
+Remote pipelines have git-config info in YAML but for the inline pipeline, we don't pass anything. It directly starts with the identifier -
+
+``` 
+"pipeline": {
+    "identifier": "test",
+    "name": "test1234",
+ ```
+ 
+A policy can be created to check of above info.
+
+#### Why do I see delay in OPA evaluation for remote pipelines?
+
+In the case of remote pipelines, where customers can make updates to files in Git, we provide validations asynchronously when a user attempts to access the file. If a customer opens the pipeline through the user interface, they will encounter an option labeled "validations." In the event of a failure in the OPA policy, we will be able to inform the user that a modification was made in Git that is not in compliance. This is done to give the user insight into the situation, although we won't be able to prevent users from still making updates to YAML files in Git
+
+#### Does triggers abort the already running previous pipeline executions?
+We have autoAbortPreviousExecutions setting in trigger, which when set as true will automatically aborts any previously running executions of the pipeline.
+
+#### Can a single custom plugin be created that could be used in steps for both the CI and CD modules? 
+
+Yes, it is possible to create a single custom plugin that can be used in both the CI and CD modules. The documentation for creating custom plugins is similar for both modules, and the same plugin can be used in both. The only difference is in how the plugin is used in the pipeline. In the CI module, the plugin is used in a Plugin step, while in the CD module, it is used in a Containerized step. As long as the plugin is designed to work in both types of steps, it can be used in both modules.
+Sources: https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/plugin-step
+
+#### The current documentation advises us to use the drone plugin model. How similar will this be with the move to gitness?
+
+Gitness is using Drone plugins so no rework would be necessary.
+The only changes with Gitness is you need to provide an additional mapping file that defines inputs and maps those inputs into the plugin container.
+ 
+#### Why is the plan sent to the secret manager?
+
+The plan is sent to the secret manager as part of the design. This is a deliberate approach to how secrets are managed within the system.
+
+#### Is there an option to decrypt the plan at a different point in the process?
+
+Yes, there is an option to decrypt the plan, but it can be done at either the Harness platform end or the delegate end.
+
+#### Are there limitations to decrypting the plan at the Harness platform end?
+
+Yes, there is a limitation to consider. Decryption at the Harness platform end is only compatible with the Harness secret manager. Other secret management solutions may not support this option.
+
+#### Is there any way by which we can not provide project name in the webhook curl and it works by unique identifier?
+
+Since the triggers are linked to pipelines, org ID and project ID is required parameter for it.
+
+#### How can I use canary with native helm deployment strategy?
+
+You can only perform a rolling deployment strategy for Native Helm(no canary or blue-green).
+
+#### I am using AWS ASG template and would like to fetch "New ASG Name" while deployment/workflow/pipeline executes. Is it available in context? If yes then how can I get new asg name? 
+
+We support both old and new ASG names via variable, which should help you with this use case to run custom scripting if required on old ASG.
+ 
+Both new and old ASG: ${ami.newAsgName}, ${ami.oldAsgName} documented here:
+https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/variables/built-in-variables-list#aws-amiasg-1
+
+#### Which has higher priority, Namespace set in manifest or Namespace provided in infra definition in Harness?
+
+The namespace mentioned in the YAML file will have higher priority than the one mentioned in the infra definition.
+
+#### We have setup deploy pipeline which is connected to ECR artifact, in which we can select an image from ecr and it's tag when run the pipeline. How can we use image and tag information in the stage
+
+You should be able to see the artifacts details in service output of the execution, you can reference this value via expressions in the next stage.
+
+#### How can I call another pipeline without any request body from a API?
+
+Please use this this API - https://apidocs.harness.io/tag/Pipeline-Execute#operation/postPipelineExecuteWithInputSetYaml
+YAML body is not required for it.
+
+#### Is it possible to safely and reliably use Terraform in Harness without specifying a backend config?
+
+For production purposes we highly recommend using your custom backend config, for testing purposes, you can use it without a backend (the state is stored at the harness side) which cannot be accessed.
+
+#### Is the state file fully and uniquely identified by the combination of "provisioner ID" and "workspace name"?
+
+Yes, State files are uniquely identifiable using "provisionerID" and "Workspace Name" that is why the provisioner ID should always be unique.
+
+####  Is there a reliable way to use Terraform in Harness without state conflicts?
+
+The Provisioner Identifier is a Project-wide setting. You can reference it across Pipelines in the same Project.
+For this reason, it's important that all your Project members know the Provisioner Identifiers. This will prevent one member building a Pipeline from accidentally impacting the provisioning of another member's Pipeline
+
+#### Is the location of the state file independent of what delegate the pipeline runs on?
+
+Yes, the State file is present at Harness SaaS not on delegates.
