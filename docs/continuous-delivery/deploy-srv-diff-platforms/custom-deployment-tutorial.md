@@ -182,6 +182,11 @@ For the main Kubernetes support, go to [Kubernetes deployment tutorial](/docs/co
 
 Next, you need to provide the JSON path to the JSON array object for the target hosts.
 
+### Important notes on the Fetch Instances script
+
+- The script must return an array of target instances (virtual machine, pod. etc.). If the template is to be used for executing a trigger to an external orchestrator (for example, Ansible, Puppet, etc.), the script should query the orchestrator to return the total instances running inside. If the script simply returns the application name, Harness cannot track the actual SI count.
+- If a service is scaling up/down post-deployemnt, the Fetch Instances script should be written in that way that it should always return the current state of the system. This script is run periodically post-deployment as part of a perpetual task.
+
 ## Define the Instance Object Array Path
 
 1. In **Instance Object Array Path**, you enter the JSON path to the JSON array object. In our example above, you can see that the array is under `items`.
