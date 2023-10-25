@@ -68,7 +68,7 @@ Barrier support in looping strategies is behind the feature flag `CDS_NG_BARRIER
 
 There are a few behaviors to note when using Barriers within a looping strategy (for example, when setting up a matrix that creates multiple stages that run in parallel, and the stages contain a Barrier step):
 
-* In general, Barriers are supported in all the looping strategies. You can use them when [repeating stages, looping, or in matrices](docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/), or when using multi-service or multi-environment stages in pipelines.
+* In general, Barriers are supported in all the looping strategies. You can use them when [repeating stages, looping, or in matrices](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism), or when using multi-service or multi-environment stages in pipelines.
 * When setting up the Barrier step, ensure that you are using the same **Barrier Reference** in all of the looped stages (this ensure that all the looped stages execute until the Barrier step, and then continue/fail together.
 * You cannot use the `maxConcurrency` parameter in setting up looping. When this parameter is used, not all the stages start up in parallel, and some wait for the first few to end. Barriers will prevent the initial set of stages from ending, so the pipeline will get stuck. 
 * When using barriers with a multi-service deployment, please select the **Deploy Services in Parallel** option, so that the pipeline does not wait for a stage to complete before beginning the next one. 
