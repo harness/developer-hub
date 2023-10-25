@@ -6,6 +6,8 @@ sidebar_position: 90
 
 You can use the [Drone Email plugin](https://plugins.drone.io/plugins/email) to export reports, data, and other artifacts by email.
 
+## Use the Email plugin
+
 1. [Add an SMTP configuration in Harness](/docs/platform/notifications/add-smtp-configuration). **Username** and **Password** are not required.
 2. Make sure your pipeline produces the artifact that you wan to include in the email, such as a `.txt`, `.html`, or `.csv` file. For example:
 
@@ -54,7 +56,7 @@ For information about the Plugin step settings, go to the [Plugin step settings 
 
 You don't need to provide the SMPT `username` and `password`, but you can include these parameters if you want or need to. For information about Email plugin settings, including the `username` and `password`, go to the [Drone Email plugin documentation](https://plugins.drone.io/plugins/email).
 
-## Send in the body
+## Send data in the body
 
 You can send the data either in the body of the email or as an attachment.
 
@@ -78,7 +80,7 @@ Here's an example of a Plugin step where the data is in the email body.
                       body: file:///harness/test.html
 ```
 
-## Send as an attachment
+## Send data as an attachment
 
 You can send the data either in the body of the email or as an attachment.
 

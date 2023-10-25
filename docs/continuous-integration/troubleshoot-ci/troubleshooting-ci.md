@@ -125,7 +125,7 @@ Your Java options must use [UseContainerSupport](https://eclipse.dev/openj9/docs
 
 ## Step continues running for a long time after the command is complete
 
-In Windows builds, if the primary command in a Powershell script starts a long-running subprocess, the step continues to run as long as the subprocess exists (until it reaches the step timeout limit).
+In Windows builds, if the primary command in a Powershell script starts a long-running subprocess, the step continues to run as long as the subprocess exists (or until it reaches the step timeout limit).
 
 1. Check if your command launches a subprocess.
 2. If it does, check whether the process is exiting, and how long it runs before exiting.
