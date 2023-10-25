@@ -83,12 +83,6 @@ In **Timeout**, enter how long Harness should wait to complete the Terraform Pla
 
 ### Run on Remote Workspace
 
-:::note
-
-Currently, this feature is behind the feature flag `CD_TERRAFORM_CLOUD_CLI_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Enable this option to identify whether the Terraform configuration uses a Terraform remote backend.
 
 When enabled, you cannot provide the workspace input in Harness. The workspace will be outlined in your configuration for the remote backend.
