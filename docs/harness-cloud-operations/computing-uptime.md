@@ -15,6 +15,31 @@ Degraded performance = None  (our stance is that a degraded performance does imp
 
 A production incident, commonly known as an "incident," is an unexpected event or problem that arises within our live production environments, resulting in either complete or partial service disruptions. In the case of a partial incident, it renders one or more functions of a module nonfunctional or inaccessible. All production incidents are posted in our status page (https://status.harness.io) and our users can subscribe to the feeds from this site to get notified. 
 
+## Recent Incidents and how we calculate our Availability
+**Oct 4th - Impacted Continuous Integration Enterprise(CIE) - Self Hosted Runners**
+Incident: Issue with sending Git Status for PR 
+URL: https://status.harness.io/incidents/p24h63dhy18d
+
+- Component: Platform/Delegate
+- SLI: API Error Rate
+- Availability - Partial Outage of 28 Minutes
+- Threshold: More than 1% over 5 min rolling window
+- SLA Impact - Partial Outage of 28 Minutes/1680 seconds, taking 30% of the downtime hit comes to 504 seconds.
+
+During the incident, the error rate for the Platform/Delegate component exceeded 1% over a 5-minute rolling window due to a missing dependency and we had a partial outage for CIE - Self Hosted Runners in Prod-2.
+
+**Oct 16th - Impacted all the components in Prod-2**
+Incident: Failed to retrieve license information seen for some customers 
+URL: https://status.harness.io/incidents/bwpdhdyyyjfw
+
+- Component: Platform/login
+- SLI: API Error Rate
+- Availability - Partial Outage of 8 Minutes
+- Threshold: More than 1% over 5 min rolling window
+- SLA Impact - Partial Outage of 8 Minutes/480 seconds, taking 30% of the downtime hit comes to 144 seconds.
+
+During the incident, the error rate for the Platform/Login component exceeded 1% over a 5-minute rolling window and we had a partial outage across all of our components in Prod-2.
+
 ## Service Level Indicators specific to Harness Modules
 
 ## Pipelines
