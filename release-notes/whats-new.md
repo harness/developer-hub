@@ -23,6 +23,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Continuous Integration version 64xx
 
+* The Harness AI Development Assistant (AIDA:tm:) for CI is now generally available. AIDA for CI provides error analysis and remediation for failed pipelines. Harness bases these recommendations on the step logs and the context of the failed step. You must accept the AIDA EULA to enable AIDA in your Harness account. For more information, go to [Troubleshooting with AIDA](http://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida).
 * When you [configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/), you can now use `DESTINATION_CA_PATH` instead of `CI_MOUNT_VOLUMES`. For `DESTINATION_CA_PATH`, provide a list of paths in the build pod where you want the certs to be mounted. This also mounts the certs in `opt/harness-delegate/ca-bundle`. This item requires Harness Delegate version 23.10.812xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-9707)
 * The individual log line limit is now 25KB. Log lines longer than 25BK are truncated. (CI-9927, ZD-52005, ZD-52079, ZD-52134, ZD-52356)
 
