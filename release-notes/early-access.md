@@ -32,7 +32,7 @@ The Harness platform leverages Harness AI Development Assistant (AIDA) to revolu
 
 Following are some key benefits of Harness AIDA:
 
-- Auto-recognition of failures in pipelines: The root cause analysis (RCA) option generates recommendations for step failures in pipelines. Harness bases these recommendations on the step logs and the context of the failed step. For more information, go to [Troubleshooting with AIDA](http://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida).
+- Auto-recognition of failures in pipelines: The root cause analysis (RCA) option generates recommendations for step failures in pipelines. Harness bases these recommendations on the step logs and the context of the failed step. For more information, go to [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida).
 
 - Asset governance: The asset governance feature assists you in drafting rules that are based on your requirements and aligned with your governance goals. Harness AIDA governance support also offers detailed descriptions of built-in rules. When you are creating policies, this feature facilitates informed decision-making by clarifying the purpose, scope, and implications of each rule. For more information, go to [Asset governance with AIDA](/docs/category/harness-aida-for-asset-governance).
 
@@ -42,6 +42,8 @@ Review the following information for details about data privacy and terms of use
 
 - [AIDA Terms](https://www.harness.io/legal/aida-terms)
 - [AIDA Privacy](https://www.harness.io/legal/aida-privacy)
+
+**Update (October 2023):** AIDA for CI is now generally available. You must accept the AIDA EULA to enable AIDA in your Harness account. For more information, go to [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida).
 
 ### SCIM user provisioning enhancements
 
@@ -588,24 +590,6 @@ No early access (beta) features are available for the Harness Continuous Error T
 
 The following early access (beta) features are available for the Harness Continuous Integration module.
 
-### Harness AI Development Assistant (AIDA:tm:)
-
-* **Release date:** June 2023
-* **Release version:** 4301
-* **Issue numbers:** CI-8599, CI-8735, CI-9102
-* **Feature flag:** `CI_AI_ENHANCED_REMEDIATIONS`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-The Harness platform leverages Harness AI Development Assistant (AIDA) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software delivery lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empower teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.
-
-In Harness CI, AIDA provides auto-recognition of failures in pipelines. The root cause analysis (RCA) option generates recommendations for step failures in pipelines. Harness bases these recommendations on the step logs and the context of the failed step. For more information, go to [Troubleshooting with AIDA](http://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida).
-
-**Update (Version 4901, July 2023):** Applied scrolling to long remediation messages when troubleshooting with AIDA.
-
-**Update (Version 5106, July 2023):** Fixed an issue where step details for other steps were shown when using AIDA to troubleshoot a pipeline with multiple failed steps.
-
-**Update (Version 5902, September 2023):** When troubleshooting with AIDA, stage-level error analysis is available for failed stages without steps. If a stage has steps, step-level error analysis occurs instead.
-
 ### GitHub App authentication for GitHub connectors
 
 * **Release date:** August 2023
@@ -823,6 +807,26 @@ No early access (beta) features are available for the Harness Software Supply Ch
 These features were released as early access (beta) features, and they have since been promoted to GA. This list is not exhaustive.
 
 ### CI features promoted to GA
+
+#### Harness AI Development Assistant (AIDA:tm:) for CI
+
+* **GA date:** October 2023
+* **Early access release date:** June 2023
+* **Early access release version:** 4301
+* **Issue numbers:** CI-8599, CI-8735, CI-9102
+* **Feature flag:** `CI_AI_ENHANCED_REMEDIATIONS`
+
+The Harness platform leverages Harness AI Development Assistant (AIDA) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software delivery lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empower teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.
+
+In Harness CI, AIDA provides auto-recognition of failures in pipelines. The root cause analysis (RCA) option generates recommendations for step failures in pipelines. Harness bases these recommendations on the step logs and the context of the failed step. For more information, go to [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida).
+
+**Update (Version 4901, July 2023):** Applied scrolling to long remediation messages when troubleshooting with AIDA.
+
+**Update (Version 5106, July 2023):** Fixed an issue where step details for other steps were shown when using AIDA to troubleshoot a pipeline with multiple failed steps.
+
+**Update (Version 5902, September 2023):** When troubleshooting with AIDA, stage-level error analysis is available for failed stages without steps. If a stage has steps, step-level error analysis occurs instead.
+
+**Update (October 2023):** AIDA for CI is now generally available. You must accept the AIDA EULA in your Harness account to enable AIDA. For more information, go to [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida).
 
 #### Local runner build infrastructure
 
