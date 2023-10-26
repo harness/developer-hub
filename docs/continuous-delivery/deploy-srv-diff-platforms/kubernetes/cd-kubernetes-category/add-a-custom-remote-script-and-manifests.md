@@ -155,34 +155,33 @@ When configuring a Helm chart with Custom Remote manifests, in the **Manifest De
 
 For more information on Helm command flags, go to [Add Helm chart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts#add-the-helm-chart).
 
-## Custom Remote Manifest with Kubernetes Deployment - Task Breakdown
+## Task Breakdown of custom remote manifest with Kubernetes deployment
 
-Harness performs deployment with two Delegate Tasks. These are jobs that are assigned to the delegate by the Harness manager.  
+Harness performs deployment with two Harness delegate tasks. These are jobs that are assigned to the delegate by the Harness Manager.  
 
-1. Fetch Files
-2. K8s Rolling Deploy
+1. **Fetch Files**: This task goes to the source repository or manifest source to fetch the manifests and download them onto the delegate running in your environment.
+2. **Kubernetes Rolling Deploy**: This task takes the manifests collected from the Fetch Files task and deploys them into the target Kubernetes cluster.
 
-**Fetch Files:** This task will go out to the source repository or manifest source fetch the manifests and download them onto the delegate
+### Scenario 1: Fetching on-premise manifest source with cloud target cluster
 
-**K8s Rolling Deploy:** This task will take the manifests collected from the fetch file task and deploy them into the target Kubernetes cluster
+In this scenario, Harness fetches an on-premise manifest source and the deployment cluster is in the cloud. You have 2 delegates: 1 on-premise and 1 in the cloud.
 
-### Scenario 1: Fetching Manifest Source (i.e. Artifactory, GitHub) that is on-premise, and the deployment cluster is in the cloud. You have 2 Delegates, 1 for On-Prem and 1 for Cloud
+- The Harness Manager will use the delegate installed in your environment to collect the manifest from the on-premise source and then store it with the deploy task.
+- The Harness Manager will assign the task with the archived manifests to the cloud delegate associated with the cloud Kubernetes cluster for deployment.
 
-- The Harness Manager will use the On-Prem Delegate to collect the manifest from the on-prem source and then store it with the deploy task.
-- The Harness Manager will assign the task with the archived manifests to the Cloud Delegate associated with the Cloud Kubernetes Cluster for deployment.
+### Scenario 2: Fetching on-premise manifest source with on-premise target cluster 
 
-### Scenario 2: Fetching Manifest Source (i.e. Artifactory, GitHub) that is on-premise, and the deployment cluster is on-premise. You have 2 Delegates, 1 for On-Prem and 1 for On Premise Kubernetes cluster
+In this scenario, Harness fetches a manifest source that is on-premise, and the deployment cluster is also on-premise. You have 2 delegates: 1 for on-premise tasks and 1 for the on-premise Kubernetes cluster.
 
-#### Same Delegate has access to on prem remote manifest source and delegate
+#### One delegate with access to on-premise remote manifest source and on-premise target cluster
 
-- The Harness Manager will assign the fetch file task to the delegate who has access to the custom remote manifest source
-- If that same delegate has access to the on-premise Kubernetes cluster, it will perform a second fetch for any values.yaml needed for deployment and then perform the deployment
+- The Harness Manager will assign the Fetch Files task to the delegate with access to the custom remote manifest source.
+- If that same delegate has access to the on-premise Kubernetes cluster, it will perform a second fetch for any values.yaml files needed for deployment and then perform the deployment.
 
+#### One delegate with access to on-premise remote manifest source and one delegate with access to on-premise  target cluster
 
-#### 1 Delegate has access to on-prem remote manifest source and 1 delegate to on-premise Kubernetes cluster
-
-- The Harness Manager will assign the fetch file task to the delegate who has access to the custom remote manifest source
-- The Manifests collected will be archived for the deploy task which will be done by the other delegate who has access to the on-premise Kubernetes cluster.
+- The Harness Manager will assign the Fetch Files task to the delegate with access to the custom remote manifest source.
+- The manifests collected are archived for the Deploy task that is done by the delegate with access to the on-premise Kubernetes cluster.
 
 
 
