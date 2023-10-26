@@ -1,8 +1,10 @@
 ---
-title: CET dashboard
+title: Overview
 description: Learn about Error Tracking dashboard.
 sidebar_position: 1
 ---
+
+# Continuous Error Tracking (CET) dashboard overview
 
 Harness Continuous Error Tracking (CET) features a pre-configured dashboard that offer consolidated insights into events across deployments and accounts, improving error tracking and decision-making. This dashboard encompasses data from all projects and environments within your organization. Additionally, you have the flexibility to create and customize your own CET dashboards.
 
