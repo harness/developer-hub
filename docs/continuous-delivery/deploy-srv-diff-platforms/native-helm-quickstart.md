@@ -296,6 +296,15 @@ Harness is able to track the deployed Helm Chart in the Services dashboard. All 
 This feature will be available for users on delegate version 810xx. Please ensure the delegate is up to date before opting into this feature.
 
 
+## Skipping chart tests
+
+If your charts contain [Helm charts tests](https://helm.sh/docs/topics/chart_tests/) and you want to skip these tests during deployment, you can add the `--skip-tests` command flag to the manifest details of the Helm chart.
+
+1. In the Harness Native Helm service, in **Manifests**, edit the chart.
+2. In **Manifest Details**, select **Advanced**.
+3. In **Command Type**, select **Template**.
+4. In **Flag**, enter `--skip-tests`. 
+
 ## Native Helm notes
 
 Please review the following notes.

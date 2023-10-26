@@ -156,14 +156,16 @@ For more information about **Attributes**, **Operators**, **Matching Values**, a
 Pipelines often have [runtime inputs](../variables-and-expressions/runtime-inputs.md), such as codebase branch names or artifact versions and tags.
 
 1. Provide values for the inputs or use [input sets](../pipelines/input-sets.md).
+
+   Any time you change the settings that require runtime input in the pipeline, you must also update the pipeline inputs in the trigger. If the trigger doesn't have a value for a runtime input, then the pipeline can fail due to the missing value.
+
 2. Select **Create Trigger** to save your trigger.
 
-The trigger is added to the triggers page. The last step is [webhook registration](#register-the-webhook-in-the-git-provider).
+The trigger is added to the triggers page. The last step in trigger set up is [webhook registration](#register-the-webhook-in-the-git-provider).
 
 ## Register the webhook in the Git provider
 
 For all Git providers supported by Harness, non-custom webhooks are automatically created in the repo. For details about automatically-registered Git events, go to the [Triggers reference](./triggers-reference.md).
-
 
 However, if automatic registration fails or you created a custom webhook, you must manually copy the webhook URL and add it to your repo webhooks.
 
