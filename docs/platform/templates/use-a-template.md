@@ -41,23 +41,17 @@ To use a pipeline template, do the following:
 
    ![](./static/use-a-template-43.png)
 
+5. In **Version Label**, select the version label. Harness recommends using the **Stable** version of the template. This ensures that any changes that you make to this version are propagated automatically to the pipelines using this template.
+   
+   You can also select the version from within the pipeline after you have added the template.
 
-   In **Details**, you can see the following details about the selected template:
+   ![picture 0](static/c070e05fbf3a000f5fc089c8cc20bc4b70a1782a2cde6508781f40e4fdb343c3.png)  
 
-   * Type
-   * Description
-   * Tags
-   * Version Label: Select the version label. Harness recommends using the **Stable** version of the template. This ensures that any changes that you make to this version are propagated automatically to the pipelines using this template.
-
-   In **Template Inputs**, you can view the number of step or stage inputs in that template.
-
-5. Select **YAML** to view the YAML details of the template.
-
-6. Select the **Activity Log** to track all template events. It shows you details, like who created the template and template version changes.
-
-7. Select **Use Template** to use this template to create your pipeline.
-
-8. Add the runtime input values (if required), and then select **Save**. The **Pipeline is published successfully** message appears.
+6. In **Template Inputs**, you can view the number of step or stage inputs in that template.
+7. Select **YAML** to view the YAML details of the template.
+8. Select the **Activity Log** to track all template events. It shows you details, like who created the template and template version changes.
+9. Select **Use Template** to use this template to create your pipeline.
+10. Add the runtime input values (if required), and then select **Save**. The **Pipeline is published successfully** message appears.
 
    You can also perform the following actions:
 
@@ -68,7 +62,7 @@ To use a pipeline template, do the following:
 
    ![](./static/use-a-template-44.png)
 
-9. After you've made all the changes, select **Run**, and then select **Run Pipeline**. The template is deployed.
+11. After you've made all the changes, select **Run**, and then select **Run Pipeline**. The template is deployed.
 
    ![](./static/use-a-template-45.png)
 
