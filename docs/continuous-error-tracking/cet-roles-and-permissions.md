@@ -8,7 +8,11 @@ sidebar_position: 8
 
 Harness employs Role-Based Access Control (RBAC) to manage user and group access to Harness resources based on their roles. RBAC enhances security and operational efficiency.
 
-This section describes the roles available for Continuous Error Tracking (CET). For details on implementing access control in Harness, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
+The Harness Platform has a three-level hierarchical structure. The three levels, or scopes, are Account, Organization (Org), and Project. An Account contains Organizations and Projects. An Organization contains Projects.
+
+To learn more about access control in Harness, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
+
+This section describes the roles available for Continuous Error Tracking (CET).
 
 
 ## CET specific role
@@ -45,6 +49,50 @@ The **Account Admin** role includes the following CET specific permissions:
 ### Account Viewer role
 
 The **Account Viewer** role includes the following CET specific permissions:
+
+- View tokens
+- View critical events 
+- View Agents
+
+
+### Org Admin role
+
+The **Org Admin** role includes the following CET specific permissions:
+
+- View tokens
+- Create/edit tokens
+- Revoke tokens 
+- View critical events 
+- Create/edit critical events
+- Delete critical events  
+- View Agents
+
+
+### Org Viewer role
+
+The **Org Viewer** role includes the following CET specific permissions:
+
+- View tokens
+- View critical events 
+- View Agents
+
+
+### Project Admin role
+
+The **Project Admin** role includes the following CET specific permissions:
+
+- View tokens
+- Create/edit tokens
+- Revoke tokens 
+- View critical events 
+- Create/edit critical events
+- Delete critical events  
+- View Agents
+
+
+### Project Viewer role
+
+The **Project Viewer** role includes the following CET specific permissions:
 
 - View tokens
 - View critical events 
