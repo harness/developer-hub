@@ -8,17 +8,6 @@ const path = require("path");
 const BASE_URL = process.env.BASE_URL || "/";
 
 function hideIndexFromSidebarItems(items) {
-  /*
-  // Reverse items in categories
-  const result = items.map((item) => {
-    if (item.type === 'category') {
-      return {...item, items: reverseSidebarItems(item.items)};
-    }
-    return item;
-  });
-  // Reverse items at current level
-  result.reverse();
-  */
   const result = items.filter((item) => {
     return !(item.type === "doc" && item.id === "index");
   });
@@ -556,11 +545,8 @@ const config = {
         editUrl: "https://github.com/harness/developer-hub/tree/main",
         async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
           const sidebarItems = await defaultSidebarItemsGenerator(args);
-          console.log(sidebarItems);
           const sidebarItemsWithoutIndex =
             hideIndexFromSidebarItems(sidebarItems);
-          console.log("-------------------------------------");
-          console.log(sidebarItemsWithoutIndex);
           return sidebarItemsWithoutIndex;
         },
       },
