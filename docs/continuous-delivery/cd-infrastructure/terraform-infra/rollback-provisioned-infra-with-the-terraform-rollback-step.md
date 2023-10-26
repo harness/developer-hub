@@ -48,8 +48,8 @@ Let's say you deployed two modules successfully already: module1 and module2. Ne
 
 However, let's look at the situation where module3 succeeds and now you have module1, module2, and module3 deployed. If the next deployment fails, the rollback will only roll back to the Terraform state with module3 deployed. Module1 and module2 weren't in the previous Terraform state, so the rollback excludes them.
 
-Rollback is not possible if you run apply with **Skip state storage** option and no terraform backed configured in your terraform files.
-Having Rollback step in such scenario would be a wrong setup and may end-up with an unexpected result.
+Rollback is not possible if you run the Terraform Apply step with the **Skip state storage** option enabled and no Terraform backed is configured in your Terraform files.
+Using the Rollback step in such a scenario would be an incorrect setup and might cause an unexpected result.
 
 
 ## Step 1: Add the Terraform Rollback Step
