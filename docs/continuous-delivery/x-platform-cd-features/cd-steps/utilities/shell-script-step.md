@@ -70,7 +70,7 @@ There are two ways to use secret variables in scripts:
 * Secret type variables can be used like any other variable with the secret variable identifier being passed to the `value` attribute or field.
 * You can use `<+secrets.getValue("secret_Id")>` to refer to the secret `value` attribute or field, and select the type of variable as String. This formats the variable in string format and contains the value of the secret variable.
 
-Below is an example on usage of Secret Variables in ShellScriptStep where `temp_secret` is a secret variable, and we try to access it.
+Below is an example of using secret variables in the Shell Script step where `temp_secret` is a secret variable and we try to access it.
 
 ```yaml
 pipeline:
@@ -103,7 +103,7 @@ pipeline:
                     outputVariables: []
 ```
 
-Output for a pipeline like above, would look as shown below:
+The output for this step would look like this:
 ```console
 Executing command ...
 **************
