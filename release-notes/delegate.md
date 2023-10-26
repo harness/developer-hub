@@ -28,7 +28,34 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 81008, Harness Delegate version 23.10.81010
+## Latest: Harness version 812xx, Harness Delegate version 23.10.812xx
+
+Harness NextGen release 812xx includes the following changes for the Harness Delegate.
+
+### New features and enhancements
+
+- When you [configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/), you can now use `DESTINATION_CA_PATH` instead of `CI_MOUNT_VOLUMES`. For `DESTINATION_CA_PATH`, provide a list of paths in the build pod where you want the certs to be mounted. This also mounts the certs in `opt/harness-delegate/ca-bundle`. (CI-9707)
+
+### Early access features
+
+This release does not include any new early access features.
+
+### Fixed issues
+
+- Revised the error message that is shown when a pipeline fails due to lack of eligible delegates. (CI-9743)
+
+- Optimized delegate logging related to the CI task handler to consume less space. (CI-9771)
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Previous releases
+
+<details>
+<summary>Expand this section to view changes to previous releases</summary>
+
+#### Harness version 81008, Harness Delegate version 23.10.81010
 
 Harness NextGen release 81008 includes the following changes for the Harness Delegate.
 
@@ -38,15 +65,15 @@ Harness implemented access checks to restrict unauthorized users from viewing de
 
 :::
 
-### New features and enhancements
+##### New features and enhancements
 
 You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. For more information, go to [Reference existing secret manager secrets](docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/). (PL-41063, ZD-51651)
 
-### Early access features
+##### Early access features
 
 This release does not include any new early access features.
 
-### Fixed issues
+##### Fixed issues
 
 - The Merge PR step fails with GitLab connectors. (CDS-79772)
 
@@ -74,14 +101,9 @@ This release does not include any new early access features.
 
    For more information on the latest supported delegate version API, go to [Use automatic upgrade with custom delegate images](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images).
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
-
-## Previous releases
-
-<details>
-<summary>Expand this section to view changes to previous releases</summary>
 
 #### Harness version 80811, Harness Delegate version 23.09.80804
 
