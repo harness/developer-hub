@@ -10,7 +10,7 @@ const sidebars = {
       label: "Release Notes",
       link: {
         type: "doc",
-        id: "release-notes",
+        id: "index",
       },
       collapsed: true,
       items: [
@@ -27,7 +27,7 @@ const sidebars = {
         },
       ],
     },
-      /*
+    /*
     {
       type: "category",
       label: "Subscribe via RSS",
