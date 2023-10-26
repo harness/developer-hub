@@ -554,6 +554,19 @@ Terraform has compared your real infrastructure against your configuration
 and found no differences, so no changes are needed.
 ```
 
+## Skip state storage
+
+While running terraform commands on delegate, Harness bay defaul will try so detect if there is a local state file in terraform working directory.
+If local state file is identified, at the end of the execution it will be saved on harness storage with a key created based on provisioner identifier.
+That state file will be downloaded in terraform working directory for next executions then updated state will be uploaded back after execution ends.
+
+This way we allow keeping state of the infrastructure even if there is no terraform backend configured.
+This to is more for testing purpose, for productin environments we advise to cofigure a backend in your terarform config files, ref: [https://developer.hashicorp.com/terraform/language/settings/backends/configuration](https://developer.hashicorp.com/terraform/language/settings/backends/configuration).
+
+With **Skip state storage** option we allow you to skip local state upload and download operations mentioned above.
+This option makes sense only if you do not have terarform backed configured in your terraform congif files, if you have terarform backed configured then terraform cli will not create any local state files.
+
+
 ## Command line options
 
 This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
