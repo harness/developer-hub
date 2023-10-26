@@ -11,7 +11,7 @@ Once you register a Software Component in the Catalog this is a sample of how yo
 
 ![](./static/link-card.png)
 
-In the depicted image, you'll notice a **Links Card** that serves as a navigational tool. These links can be anything from the following suggested categories:
+In the depicted image, you'll notice a **Links Card** that serves as a navigational tool. These links can be anything. Here are some examples -
 
 - User and Group Management
 - Infrastructure and Cloud
