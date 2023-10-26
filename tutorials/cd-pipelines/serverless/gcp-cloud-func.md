@@ -40,7 +40,7 @@ Verify that you have the following:
 2. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing a Harness delegate.
     - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 3. **Install the [Docker](https://helm.sh/docs/intro/install/)** in order to install the Docker delegate.
-4. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
+4. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
     - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) for more information on forking a GitHub repository.
 5. ** Google Cloud Function and Google Cloud Storage permissions**. Harness supports Google Cloud Functions **1st gen** and **2nd gen**. There are minor differences in the permissions required by each generation. For a detailed breakdown, go to [Access control with IAM from Google](https://cloud.google.com/functions/docs/concepts/iam).
 
@@ -217,7 +217,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     </Tabs>
     ```
 
-2. Clone the Forked **harnessed-example-apps** repo and change directory.
+2. Clone the Forked **harnesscd-example-apps** repo and change directory.
     
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
@@ -390,7 +390,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/github-connector.yml).
     - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
-    - Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace `GITHUB_USERNAME` with your GitHub account username in the YAML.
+    - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace `GITHUB_USERNAME` with your GitHub account username in the YAML.
     - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
     - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
@@ -697,7 +697,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     </Tabs>
     ```
 
-2. Clone the Forked **harnessed-example-apps** repo and change directory.
+2. Clone the Forked **harnesscd-example-apps** repo and change directory.
     
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
@@ -812,7 +812,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/github-connector.yml)
     - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
-    - Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
+    - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
     - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
     - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.

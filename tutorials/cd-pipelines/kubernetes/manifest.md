@@ -55,7 +55,7 @@ Verify that you have the following:
 
 1. **A Kubernetes cluster**. We recommend [K3D](https://k3d.io/v5.5.1/) for installing the Harness GitOps Agent and deploying a sample application in a local development environment.
     - For requirements, go to [Harness GitOps Agent Requirements](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/#requirements).
-2. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
+2. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
     - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Getting Started with Harness GitOps
@@ -447,7 +447,7 @@ Verify the following:
 3. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness delegates and deploying a sample application in a local development environment.
     - Check [delegate System and network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 4. **Install [Helm CLI](https://helm.sh/docs/intro/install/)**.
-5. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
+5. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
     - For details on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Getting Started with Harness CD {#getting-started-harness-cd-cli}
@@ -528,7 +528,7 @@ Verify the following:
     </Tabs>
     ```
 
-2. Clone the Forked **harnessed-example-apps** repo and change directory.
+2. Clone the Forked **harnesscd-example-apps** repo and change directory.
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
     cd harnesscd-example-apps 
@@ -752,7 +752,7 @@ Verify that you have the following:
 2. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness Delegates and deploying a sample application in a local development environment.
     - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 3. **Install the [Helm CLI](https://helm.sh/docs/intro/install/)** in order to install the Harness Helm delegate.
-4. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
+4. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
     - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) for more information on forking a GitHub repository.
 
 ## Getting Started with Harness CD {#getting-started-harness-cd-ui}
@@ -846,7 +846,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/github-connector.yml).
     - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
-    - Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
+    - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
     - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
     - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
