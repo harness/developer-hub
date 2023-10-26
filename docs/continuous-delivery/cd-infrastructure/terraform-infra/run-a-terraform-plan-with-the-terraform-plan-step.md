@@ -564,7 +564,7 @@ This way we allow keeping state of the infrastructure even if there is no terraf
 This to is more for testing purpose, for productin environments we advise to cofigure a backend in your terarform config files, ref: [https://developer.hashicorp.com/terraform/language/settings/backends/configuration](https://developer.hashicorp.com/terraform/language/settings/backends/configuration).
 
 With **Skip state storage** option we allow you to skip local state upload and download operations mentioned above.
-This option makes sense only if you do not have terarform backed configured in your terraform congif files, if you have terarform backed configured then terraform cli will not create any local state files.
+This option makes sense only if you do not have terarform backed configured in your terraform config files, if you have terarform backed configured then terraform cli will not create any local state files.
 
 
 ## Command line options
