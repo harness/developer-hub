@@ -5,7 +5,7 @@ sidebar_position: 4
 ---
 
 ## Introduction
-In this tutorial we will explore on how to add links associated with the Software Components which includes user profiles, groups, dashboards, support pages, and more. Each link can be accompanied by an icon for visual representation.
+In this tutorial we will explore how to add links associated with the Software Components which could be dashboards, support pages, runbooks, email groups, Slack channels, etc. Each link is an arbitrary name and URL pair, which can be accompanied by an icon for visual representation.
 
 Once you register a Software Component in the Catalog this is a sample of how your overview section would look based on your IDP yaml. 
 
