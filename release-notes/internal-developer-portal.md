@@ -15,7 +15,7 @@ import TabItem from '@theme/TabItem';
 
 Review the notes below for details about recent changes to Harness Internal Developer Portal.
 
-## Latest: Version 0.13.0
+## Latest: October 26, 2023 - Version 0.13.0
 
 Post-public preview, we've taken your genius tips and mixed them into the Internal Developer Portal. Also, we've fixed a few bugs along the way. Dive in and see what's new! But before that here are some links of recently released tutorials and docs to help you get started with IDP. 
 
