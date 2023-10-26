@@ -69,6 +69,48 @@ For more information, go to [add text secrets](/docs/platform/secrets/add-use-te
 There are two ways to use secret variables in scripts:
 * Secret type variables can be used like any other variable with the secret variable identifier being passed to the `value` attribute or field.
 * You can use `<+secrets.getValue("secret_Id")>` to refer to the secret `value` attribute or field, and select the type of variable as String. This formats the variable in string format and contains the value of the secret variable.
+
+Below is an example on usage of Secret Variables in ShellScriptStep where `temp_secret` is a secret variable, and we try to access it.
+
+```yaml
+pipeline:
+  stages:
+    - stage:
+        identifier: tmpStg
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  identifier: tmpScript
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          echo <+pipeline.stages.tmpStg.spec.execution.steps.tmpScript.spec.environmentVariables.secret_1>
+                          echo <+pipeline.stages.tmpStg.spec.execution.steps.tmpScript.spec.environmentVariables.secret_2>
+                    environmentVariables:
+                      - name: secret_1
+                        type: Secret
+                        value: temp_secret
+                      - name: secret_2
+                        type: String
+                        value: <+secrets.getValue("temp_secret")>
+                    outputVariables: []
+```
+
+Output for a pipeline like above, would look as shown below:
+```console
+Executing command ...
+**************
+**************
+Command completed with ExitCode (0)
+```
+
 Secret variable usage is explained later in the documentation in detail.
 
 ### Escaping characters
