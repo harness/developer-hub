@@ -34,7 +34,7 @@ terraform --version
 
 ## Review: Terraform Rollback
 
-When rollback happens, Harness rolls back the provisioned infrastructure to the previous successful version of the Terraform state.
+When rollback happens, Harness rolls back the provisioned infrastructure to the previous successful version of the Terraform state and using config files/terraform configuration from latest successful deployment with matching  **Provisioner Identifier**.
 
 Harness won't increment the serial in the state, but perform a hard rollback to the exact version of the state provided.
 
@@ -47,6 +47,10 @@ If you've made these settings expressions, Harness uses the values it obtains at
 Let's say you deployed two modules successfully already: module1 and module2. Next, you try to deploy module3, but deployment failed. Harness will roll back to the successful state of module1 and module2.
 
 However, let's look at the situation where module3 succeeds and now you have module1, module2, and module3 deployed. If the next deployment fails, the rollback will only roll back to the Terraform state with module3 deployed. Module1 and module2 weren't in the previous Terraform state, so the rollback excludes them.
+
+Rollback is not possible if you run apply with **Skip state storage** option and no terraform backed configured in your terraform files.
+Having Rollback step in such scenario would be a wrong setup and may end-up with an unexpected result.
+
 
 ## Step 1: Add the Terraform Rollback Step
 
