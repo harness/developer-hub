@@ -34,7 +34,7 @@ terraform --version
 
 ## Review: Terraform Rollback
 
-When rollback happens, Harness rolls back the provisioned infrastructure to the previous successful version of the Terraform state and using config files/terraform configuration from latest successful deployment with matching  **Provisioner Identifier**.
+When rollback is performed, Harness rolls back the provisioned infrastructure to the previous successful version of the Terraform state using config files or the Terraform configuration from the latest successful deployment with a matching  **Provisioner Identifier**.
 
 Harness won't increment the serial in the state, but perform a hard rollback to the exact version of the state provided.
 
