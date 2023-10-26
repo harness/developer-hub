@@ -1,6 +1,6 @@
 # Harness Developer Pull Request
 Thanks for helping us make the Developer Hub better. The PR will be looked at
-by the maintainers. 
+by the CODEOWNERS. 
 
 ## What Type of PR is This?
 
