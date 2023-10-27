@@ -133,12 +133,13 @@ The `pool.yml` file defines the VM spec and pool size for the VM instances used 
    mkdir /runner
    cd /runner
    ```
+
 2. In the `/runner` folder, create a `pool.yml` file.
 3. Modify `pool.yml` as described in the following example and the [Pool settings reference](#pool-settings-reference).
 
 ### Example pool.yml
 
-The following `pool.yml` example defines an Ubuntu pool and a Windows pool. You don't need both unless.
+The following `pool.yml` example defines both an Ubuntu pool and a Windows pool.
 
 ```yaml
 version: "1"
@@ -312,9 +313,9 @@ For more information about delegates and delegate installation, go to [Delegate 
 1. Verify that the delegate and runner containers are running correctly. You might need to wait a few minutes for both processes to start. You can run the following commands to check the process status:
 
 	 ```
-	 $ docker ps
-	 $ docker logs DELEGATE_CONTAINER_ID
-	 $ docker logs RUNNER_CONTAINER_ID
+	 docker ps
+	 docker logs DELEGATE_CONTAINER_ID
+	 docker logs RUNNER_CONTAINER_ID
 	 ```
 
 2. In the Harness UI, verify that the delegate appears in the delegates list. It might take two or three minutes for the Delegates list to update. Make sure the **Connectivity Status** is **Connected**. If the **Connectivity Status** is **Not Connected**, make sure the Docker host can connect to `https://app.harness.io`.

@@ -36,8 +36,8 @@ This configuration requires:
   * [Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
   * [Drone VM runner overview](https://docs.drone.io/runner/vm/overview/)
   * [Drone pools](https://docs.drone.io/runner/vm/configuration/pool/)
-  * [Drone Amazon drivers](https://docs.drone.io/runner/vm/drivers/amazon/)
   * [Drone Anka drivers](https://docs.drone.io/runner/vm/drivers/anka/)
+  * [GitHub repository - Drone runner AWS](https://github.com/drone-runners/drone-runner-aws)
 
 ## Set up the Anka Controller and Registry
 
@@ -94,30 +94,33 @@ After setting up the Anka Controller and Registry, you can set up [Anka Virtuali
 
 3. [Push your VM templates to the Registry.](https://docs.veertu.com/anka/anka-build-cloud/getting-started/preparing-and-joining-your-nodes/#push-the-vm-to-the-registry)
 
-## Install the delegate and runner
+## Install the Harness Delegate and Runner
 
-Set up the Harness Delegate and Harness Runner.
+Install a Harness Docker Delegate and Runner on the Linux-based AWS EC2 instance where the Anka Controller and Registry are running.
 
-For information about installing delegates, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
+### Configure pool.yml
 
-<!-- need the command to launch to runner -->
-<!-- need more info about pool.yml -->
-<!-- move delegat & runner install step after the pool.yml config step -->
+The `pool.yml` file defines the VM pool size, the Anka Registry host location, and other information used to run your builds on Anka VMs. A pool is a group of instantiated VMs that are immediately available to run CI pipelines.
 
-  * [GitHub repository - Drone runner AWS](https://github.com/drone-runners/drone-runner-aws)
+1. [SSH into your Linux-based EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) where your Anka Controller and Registry are running.
+2. Create a `/runner` folder and `cd` into it.
 
-## Set up the runner to communicate with the Anka controller
+   ```
+   mkdir /runner
+   cd /runner
+   ```
 
-On the Harness runner host, update up the `pool.yml` file as shown in the following Harness Runner config example:
+3. In the `/runner` folder, create a `pool.yml` file.
+4. Modify `pool.yml` as described in the following example. You can configure multiple pools in pool.yml, but you can only specify one pool (by `name`) in each Build (`CI`) stage in Harness.
 
 ```yaml
 version: "1"
-instances: 
- - name: anka-build
+instances:
+ - name: anka-build # Unique identifier of the pool. You will need to specify this pool name in the Harness Manager when you set up the CI stage build infrastructure.
    default: true
    type: ankabuild
-   pool: 1
-   limit: 100
+   pool: 2 # Warm pool size number. Denotes the number of VMs in ready state to be used by the runner.
+   limit: 100 # Maximum number of VMs the runner can create at any time. 'pool' indicates the number of warm VMs, and the runner can create more VMs on demand up to the 'limit'.
    platform:
      os: darwin
      arch: amd64
@@ -126,28 +129,136 @@ instances:
        username: anka-user
        password: admin
      vm_id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx
-     registry_url: https://anka-controller.myorg.com:8089 #make sure to specify the controller URL
-     tag: 1.0.6
-     auth_token: sometoken
+     registry_url: https://anka-controller.myorg.com:8089 # Specify the Anka Controller URL.
+     tag: 1.0.6 # VM template tag
+     auth_token: sometoken # Required if you enable token authentication for the Controller and Registry.
 ```
-## Configure build infrastructure
 
-In your Harness Project, go to a pipeline that includes a Build stage.
+For more information about `pool.yml` settings, go to the Drone documentation for the [Pool File](https://docs.drone.io/runner/vm/configuration/pool/) and [Anka drivers](https://docs.drone.io/runner/vm/drivers/anka/).
 
-In the Infrastructure tab of the Build Stage, define your infrastructure as follows:
+### Start the runner
 
-* Type = **VMs**
-* Pool Name = The `name` field in your `pool.yml` file.
-* OS = **MacOS**
+[SSH into your Linux-based EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) and run the following command to start the runner:
 
-Your macOS build infrastructure is now set up. You can now run your Build stages in your build infrastructure.
+```
+docker run -v /runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
+```
 
-##  Add other Mac nodes and VM templates to the Anka registry
+This command mounts the volume to the Docker runner container and provides access to `pool.yml`, which is used to authenticate with AWS and pass the spec for the pool VMs to the container. It also exposes port 3000.
 
-Now that you've gone through the entire end-to-end workflow, you can add more nodes and templates as needed. After you join a node to the cluster, it can pull templates from the registry and use them to create nodes.
+You might need to modify the command to use sudo and specify the runner directory path, for example:
 
-:::note
+```
+sudo docker run -v ./runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
+```
 
-Before you push each VM to the registry, make sure that you enable port forwarding as described in [Set up port forwarding on the VM](#set-up-port-forwarding-on-the-vm) above.
+:::info What does the runner do?
+
+When a build starts, the delegate receives a request for VMs on which to run the build. The delegate forwards the request to the runner, which then allocates VMs from the warm pool (specified by `pool` in `pool.yml`) and, if necessary, spins up additional VMs (up to the `limit` specified in `pool.yml`).
+
+The runner includes lite engine, and the lite engine process triggers VM startup through a cloud init script. This script downloads and installs Scoop package manager, Git, the Drone plugin, and lite engine on the build VMs. The plugin and lite engine are downloaded from GitHub releases. Scoop is downloaded from `get.scoop.sh`.
+
+Firewall restrictions can prevent the script from downloading these dependencies. Make sure your images don't have firewall or anti-malware restrictions that are interfering with downloading the dependencies.
 
 :::
+
+### Install the delegate
+
+1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
+
+   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
+
+2. Select **New Delegate** or **Install Delegate**.
+3. Select **Docker**.
+4. Enter a **Delegate Name**.
+5. Copy the delegate install command and paste it in a text editor.
+6. To the first line, add `--network host`, and, if required, `sudo`. For example:
+
+   ```
+   sudo docker run --cpus=1 --memory=2g --network host
+   ```
+
+7. [SSH into your Linux-based EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) and run the delegate install command.
+
+:::tip
+
+The delegate install command uses the default authentication token for your Harness account. If you want to use a different token, you can create a token and then specify it in the delegate install command:
+
+1. In Harness, go to **Account Settings**, then **Account Resources**, and then select **Delegates**.
+2. Select **Tokens** in the header, and then select **New Token**.
+3. Enter a token name and select **Apply** to generate a token.
+4. Copy the token and paste it in the value for `DELEGATE_TOKEN`.
+
+:::
+
+For more information about delegates and delegate installation, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
+
+### Verify connectivity
+
+1. Verify that the delegate and runner containers are running correctly. You might need to wait a few minutes for both processes to start. You can run the following commands to check the process status:
+
+	 ```
+	 docker ps
+	 docker logs DELEGATE_CONTAINER_ID
+	 docker logs RUNNER_CONTAINER_ID
+	 ```
+
+2. In the Harness UI, verify that the delegate appears in the delegates list. It might take two or three minutes for the delegates list to update. Make sure the **Connectivity Status** is **Connected**. If the **Connectivity Status** is **Not Connected**, make sure the Docker host can connect to `https://app.harness.io`.
+
+   ![](../static/set-up-an-aws-vm-build-infrastructure-13.png)
+
+The delegate and runner are now installed, registered, and connected.
+
+## Specify build infrastructure
+
+Configure your pipeline's **Build** (`CI`) stage to use your Anka VMs as build infrastructure.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+1. In Harness, go to the CI pipeline that you want to use the AWS VM build infrastructure.
+2. Select the **Build** stage, and then select the **Infrastructure** tab.
+3. Select **VMs**.
+4. For **Operating System**, select **MacOS**.
+5. Enter the **Pool Name** from your [pool.yml](#configure-poolyml).
+6. Save the pipeline.
+
+<!-- ![](../static/ci-stage-settings-vm-infra.png) -->
+
+<docimage path={require('../static/ci-stage-settings-vm-infra.png')} />
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+```yaml
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: VM
+            spec:
+              type: Pool
+              spec:
+                poolName: POOL_NAME_FROM_POOL_YML
+                os: MacOS
+          execution:
+            steps:
+            ...
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+##  Add more Mac nodes and VM templates to the Anka Registry
+
+You can [launch more Anka Virtualization nodes on your EC2 dedicated host](#set-up-anka-virtualization) and [create more VM templates](#create-anka-vm-templates) as needed. After you join a Virtualization node to the Controller cluster, it can pull VM templates from the registry and use them to create VMs.
