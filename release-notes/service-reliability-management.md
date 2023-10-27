@@ -18,7 +18,8 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest: October xx, 2023, version 1.5.x 
+## Latest: October 30, 2023, version 1.5.x 
+
 
 ### New features and enhancements
 
@@ -31,6 +32,10 @@ This release does not include any early access features.
 
 
 ### Fixed issues
+
+- The Changes page displayed all services and environments associated with an account, regardless of whether they were linked to a monitored service or not. (SRM-15926)
+  
+  This issue has been resolved. Now, the Service and Environment filters on the Changes page display only the services and environments linked to monitored services, whether they are at the account, organization, or project level.
 
 - Simple SLO links on the Composite SLO details page were directing to blank pages. (SRM-15957)
 
