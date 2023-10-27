@@ -205,10 +205,6 @@ However, apart from these differences, basic JSON documents are considered valid
 
 AutoUpgrade initiates when a new version of the delegate is published, not when the delegate is expired.
 
-#### Under what condition does an immutable delegate automatically upgrade?
-
-AutoUpgrade initiates when a new version of the delegate is published, not when the delegate is expired.
-
 #### Is there an environment variable to set when starting the container to force the Docker delegate to use client tool libs from harness-qa-public QA repo?
 
 To achieve this, you need to create a test image that points to the harness-qa-public QA repository. This involves updating the Docker file with the appropriate path to the QA buckets.
@@ -512,10 +508,6 @@ For ex: if you have a variable with prod-environment-variable so you can use bel
 You can check the triggerType variable to identify if pipeline was invoked via trigger or manually and can use below jell condition 
 ```<+<+pipeline.triggerType>=="MANUAL"?<+pipeline.variables.targetBranch>:<+trigger.targetBranch>>```
 
-#### Can I set up advanced deployment strategies for Google Cloud Functions, like canary deployments?
-
-The harness supports advanced deployment strategies like canary deployments for Google Cloud Functions. This allows you to roll out updates gradually and assess their impact before a full release.
-
 #### How to concatenate secrets with string
 
 You use either of following expressions:
@@ -529,10 +521,6 @@ OR
 #### Can a non-git-sync'd pipeline consume a git-sync'd template from a non-default branch?
 
 Yes an Inline pipeline can consume a template from non-default branch.  More on this can be referenced [here](https://developer.harness.io/release-notes/whats-new/#continuous-delivery-version-79811)
-
-#### Is there a way I can update the git repo where the pipeline YAML resides?
-
-Yes, you can use this [API](https://apidocs.harness.io/tag/Pipelines#operation/update-pipeline-git-metadata) to update the Git repo of the pipeline.
 
 #### Is there a way to generate a dynamic file with some information in one stage of the pipeline and consume that file content in a different pipeline stage?
 
@@ -783,11 +771,6 @@ You can stay informed about new ArgoCD versions and the upgrade process through 
 #### What is the easiest way to determine the ArgoCD version using a GitOps agent?
 
 An easy method to identify the ArgoCD version is by creating a GitOps agent and inspecting the associated manifest.
-
-#### Is there a way to generate a dynamic file with some information in one stage of the pipeline and consume that file content in a different pipeline stage?
-
-You can use API to create file in harness file store and then refer it to other stage [here](https://apidocs.harness.io/tag/File-Store#operation/listFilesAndFolders)
-Or you can just write a file on the delegate and use the same delegate.
 
 #### Why is a certain pipeline step not running even though it meets the conditional execution criteria?
 
@@ -1352,9 +1335,6 @@ You can always create dashboards to help you gain insights into your data. Howev
 #### Does a pipeline delegate selector override the service infrastructure?
 It doesn't override the service infrastructure. Instead, it only changes which delegate will execute the necessary operations of your pipeline.
 
-#### Can Harness able to monitor for when a particular image tag changes on DockerHub in order to initiate a hands-free build and push to our repo?
-Yes, You can setup a trigger based on the image tag changes on DockerHub repo as suggested in this[ doc.](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/)
-
 #### Can we trigger a pipeline with a git push on bitbucket?
 Yes, you can trigger the pipeline with a git event through bitbucket. You can refer to our [doc](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/) and [video](https://www.youtube.com/watch?v=y8s351IJLXw&t=113s&ab_channel=harness) tutorial.
 
@@ -1364,17 +1344,11 @@ If you're using an absolute expression (for example: `<+pipeline.stages.stage_id
 #### When the Harness Approval times out, how do I mark the pipeline as a successful execution?
 On the Harness Approval step or the custom one, go to the advanced tab and include a failure strategy; the perform action should be "Mark as Success."
 
-#### How do I dynamically load values.yaml per environment?
-Many of Harness's fields allow you to switch from a static field to an expression field. In your Helm chart/kubernetes manifests declaration, you can switch the values field to an expression field and use an expression like `<+env.name>-values.yaml`. Then, in your repository, create a value per environment.
-
 ####  How do I propagate an environment's namespace to another stage?
 By using the following expression on the target stage, you will be able to propagate the namespace. Expression: `<+pipeline.stages.STAGE_IDENTIFIER.spec.infrastructure.output.namespace>`
 
 #### How do I redeploy all services in a new cluster?
  Currently, this isn't possible. You need to redeploy all of your CD pipelines with a new infrastructure target.
-
-####  Why can I run the pipeline during a freeze window?
-You're probably an administrator or you have the permission to [override freeze windows](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/#access-control). Users with this role can still perform deployments.
 
 #### What documents bundle should I refer to when migrating from CG to NG ?
 
@@ -1393,36 +1367,15 @@ No. There is no particular way to enforce duration, Canary deployment lives unti
 
 Yes, it is mandatory for the infrastructure definition in a First Gen workflow to be enitity type.
 
-#### What does the "Freeze Window" feature in a CD pipeline do and what does it block?
-The "Freeze Window" feature in a CD (Continuous Delivery) pipeline allows for the creation of a period during which certain actions, specifically those related to CD stages, are restricted. However, account administrators can still execute CD pipelines during this freeze window by default. Users without the "Override" permission cannot execute pipelines containing CD stages during the freeze window. The freeze window primarily affects actions associated with CD stages in the pipeline. More details about its functionality can be found in this section: [Freeze Windows Only Apply to CD Stages](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/#freeze-windows-only-apply-to-cd-stages).
-
-#### How can I generate a report of all deployments made so far?
-You can always create dashboards to help you gain insights into your data. However, please note that we have a default retention period for CDS of 6 months. If you need to extend this period, please reach out to Harness support.
-
-#### Does a pipeline delegate selector override the service infrastructure?
-It doesn't override the service infrastructure. Instead, it only changes which delegate will execute the necessary operations of your pipeline.
-
 #### Can Harness able to monitor for when a particular image tag changes on DockerHub in order to initiate a hands-free build and push to our repo?
 
 Yes, You can setup a trigger based on the image tag changes on DockerHub repo as suggested in this[ doc.](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/)
 
-#### Can we trigger a pipeline with a git push on bitbucket?
-Yes, you can trigger the pipeline with a git event through bitbucket. You can refer to our [doc](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/) and [video](https://www.youtube.com/watch?v=y8s351IJLXw&t=113s&ab_channel=harness) tutorial.
-
 #### Why can't I refer to an output within a CD stage using a looping strategy anymore? 
 If you're using an absolute expression (for example: `<+pipeline.stages.stage_identifier>`), it will break your pipeline because matrices create a new identifier per iteration (`stage_1`, `stage_2`). To avoid your pipeline breaking, you can shortcut your expression to the step name (for example: `<+steps.step_identifier>`), and then you don't need to specify the stage identifier.
 
-#### When the Harness Approval times out, how do I mark the pipeline as a successful execution?
-On the Harness Approval step or the custom one, go to the advanced tab and include a failure strategy; the perform action should be "Mark as Success."
-
 #### How do I dynamically load values.yaml per environment?
 Many of Harness's fields allow you to switch from a static field to an expression field. In your Helm chart/kubernetes manifests declaration, you can switch the values field to an expression field and use an expression like `<+env.name>-values.yaml`. Then, in your repository, create a value per environment.
-
-####  How do I propagate an environment's namespace to another stage?
-By using the following expression on the target stage, you will be able to propagate the namespace. Expression: `<+pipeline.stages.STAGE_IDENTIFIER.spec.infrastructure.output.namespace>`
-
-#### How do I redeploy all services in a new cluster?
- Currently, this isn't possible. You need to redeploy all of your CD pipelines with a new infrastructure target.
 
 ####  Why can I run the pipeline during a freeze window?
 You're probably an administrator or you have the permission to [override freeze windows](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/#access-control). Users with this role can still perform deployments.
@@ -2341,3 +2294,61 @@ For this reason, it's important that all your Project members know the Provision
 #### Is the location of the state file independent of what delegate the pipeline runs on?
 
 Yes, the State file is present at Harness SaaS not on delegates.
+
+#### Is "Scope to Specific Services" for Infra definitions going to available for NG as well ?
+
+Yes, Scope to Specific Services for Infra definitions will be onboarded soon for Next-Gen as well.
+For how to use Scope to Specific Services in First-Gen, please follow this [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/environments/infrastructure-definitions/)
+
+#### How can one validate an issue while saving a pipeline ?
+
+For validating an issue first one should know how we save a pipeline : 
+
+- When user click on pipeline save, we try to validate the yaml using schema
+- If pipeline contains templates, we try to fetch templates and nested templates too so that we can see any issues
+- We create filters and other validations based on different types of stages
+- We do policy evaluations
+- Finally, inline vs remote where we have remote dependency.
+- Essentially, the pipeline size, the nested structure & location can vary the response times.
+If one feels like an issue for latency in API response receiving please consider above steps and take actions accordingly.
+
+#### How can one use HELM expressions ?
+
+One should have these FFs enabled : `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG` and `CDS_HELM_FETCH_CHART_METADATA_NG`
+They allows you to configure multiple expressions and then resolve the expressions.
+Please follow the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#helm-chart-expressions)
+
+#### How can one use `AWS CDK Infra Provisioning Support` on Harness ?
+
+Harness lets users run AWS CDK Workloads via the Container Based Steps.
+To enable this feature one can request for FF `CDS_AWS_CDK` enabling from Harness.
+Please follow more on this [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/aws-cdk/)
+
+#### Does Microsoft Teams support full Gitops ?
+
+No, Microsoft Teams does not support Gitops.
+
+#### Should the Fetch Instances step return only one instance for executing a trigger to an external orchestrator, such as Ansible or Puppet ?
+
+Fetch instance should return the instance on which the artifact will be deployed.
+
+#### Does Harness continually/occasionally re-Fetch Instances for Deployment Templates to keep the service instance count accurate, even if a K8s Deployment scales up outside of a deploy pipeline ?
+
+For a deployment that may scale up or down after the initial deployment, the Fetch instance script should be designed to consistently return the current state of the system, and this script is executed periodically as part of a Perpetual task to ensure accuracy.
+
+#### Do we currently support IP whitelisting for requests made against the Harness API ?
+
+Yes, to configure this, please proceed to the UI where you will find an option with two checkboxes: one for API and the other for UI. You can define the CIDRs in the respective fields and apply the settings accordingly. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/security/add-manage-ip-allowlist/)
+
+#### Where can one find all `Active CD Feature Flags` for Harness ?
+
+Please find all the `Active CD Feature Flags` in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-integrations#active-cd-feature-flags/)
+
+#### Is it possible to hide an executed script from being displayed in the console/execution logs ?
+
+No, this functionality enhancement is yet to come.
+
+#### Is it possible to set a pipeline variable as an array of strings ?
+
+One can set a comma separated strings and split them wherever one wants to use as array.
+Possible example expression can be : `<+pipeline.variables.targetIds.split(",")>`
