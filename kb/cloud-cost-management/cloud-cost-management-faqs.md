@@ -264,3 +264,19 @@ Before proceeding, please double-check whether you have configured a new connect
 #### Why can't my CCM connector retrieve data from an old billing table?
 
 CCM Connectors, by default, only collect data from billing tables that have had updates within the last 24 hours. If your table hasn't had any updated data within this period, we will skip the collection process.
+
+#### How can I exclude specific instance types from instance resizing recommendations?
+
+On the recommendation page, you can specify `Preferred Instance Families` for Compute-Optimized or Storage-Optimized performance. The algorithm will create recommendations from this pool of preferred instances that are most economical for you.
+
+#### How to specify a preferred instance family globally?
+
+Currently, we don't support this feature.
+
+#### How to rename the report file name of the dashboard scheduled delivery?
+
+Currently, it's only possible to include a custom message in the scheduled delivery, renaming the report name isn't possible.
+
+#### Is it possible to share a dashboard with a person who doesn't have a Harness user?
+
+The sharing option for the Harness dashboard requires selecting a specific user group within Harness itself and defining different levels of access. Therefore, someone who is not part of any group in Harness will not have access to the dashboard.
