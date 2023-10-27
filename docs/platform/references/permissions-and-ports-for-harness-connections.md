@@ -44,7 +44,7 @@ In general, if you are already connecting to your artifact servers, cloud, verif
 | OpenShift | Kubernetes service account token. | HTTPS: 443. |  [Enabling Service Account Authentication](https://docs.openshift.com/container-platform/3.6/dev_guide/service_accounts.html#enabling-service-account-authentication) |
 | New Relic | API key. | HTTPS: 443. | [Access to REST API keys](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/) |
 | Nexus | User account with Repository View Privilege or read for repository. | TCP: 8081. |  [Nexus Managing Security](https://help.sonatype.com/repomanager2/configuration/managing-security) |
-| Tanzu Application Service (formerly Pivotal Cloud Foundry) | User account with Admin, Org Manager, or Space Manager role. The user account must be able to update spaces, orgs, and applications. | HTTP: 80 or 443. | [Orgs, Spaces, Roles, and Permissions](https://docs.pivotal.io/pivotalcf/2-2/concepts/roles.html#roles) |
+| Tanzu Application Service (formerly Pivotal Cloud Foundry) | User account with Admin, Org Manager, or Space Manager role. The user account must be able to update spaces, orgs, and applications. | HTTP: 80 or 443. | [Orgs, Spaces, Roles, and Permissions](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/roles.html) |
 | Prometheus | None. | Depends on where the Prometheus server is hosted. For example, on AWS, port 9090 might be required. |  [Configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/) |
 | SMTP | None. | TCP: 25. |  |
 | Splunk | User account with Read permissions on eventtypes objects. | TCP: 8089 for API. | [Set permissions for objects in a Splunk app](http://dev.splunk.com/view/webframework-developapps/SP-CAAAE88) |

@@ -158,14 +158,14 @@ You can configure the following base features of the SDK:
 
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
-| **Name** | **Example** | **Description** | **Default Value** |
+|  |                                                     |  |                                        |
+| --- |-----------------------------------------------------| --- |----------------------------------------|
+| **Name** | **Example**                                         | **Description** | **Default Value**                      |
 | configUrl | `ConfigUrl("https://config.ff.harness.io/api/1.0")` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://config.ff.harness.io/api/1.0` |
-| eventUrl | `EventUrl("https://events.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
-| pollInterval | `SetPollingInterval(60)` | The interval **in seconds** that we poll for changes when you are using stream mode. | `60` (seconds) |
-| streamEnabled | `SetStreamEnabled(true)` | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode. | `true` |
-| analyticsEnabled | `SetAnalyticsEnabled(true)` | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `true` |
+| eventUrl | `EventUrl("https://events.ff.harness.io/api/1.0")`  | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
+| pollInterval | `SetPollingInterval(60000)`                         | The interval **in milliseconds** that we poll for changes when you are using stream mode. | `60000` (milliseconds)                      |
+| streamEnabled | `SetStreamEnabled(true)`                            | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode. | `true`                                 |
+| analyticsEnabled | `SetAnalyticsEnabled(true)`                         | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `true`                                 |
 
 For example: 
 

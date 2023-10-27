@@ -5,6 +5,15 @@ description: This guide describes how to autostop idle VMs behind a reverse prox
 
 # AutoStopping idle VMs behind a reverse proxy
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Cloud Cost Management Certification today!"
+  link="/certifications/cloud-cost-management"
+  closable={true}
+  target="_self"
+/>
+
 Harness Intelligent Cloud AutoStopping™ revolutionizes cloud resource optimization by introducing powerful automation capabilities. This groundbreaking feature empowers businesses to effortlessly optimize their cloud costs by automatically halting idle cloud resources.
 
 AutoStopping goes beyond just stopping idle resources; it possesses the intelligence to reactivate them when necessary. This dynamic functionality allows previously stopped idle resources to be automatically brought back up during periods of activity or increased demand based on the AutoStopping rules defined in Harness CCM. AutoStopping supports a wide range of resources in multiple cloud providers, read more about them [here](/docs/category/autostopping-rules).

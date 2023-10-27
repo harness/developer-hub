@@ -73,17 +73,22 @@ Select **Settings**. The Harness GitOps settings appear.
 
 ![](./static/install-a-harness-git-ops-agent-88.png)
 
-Select **GitOps** > **Agents**.
+Select **GitOps Agents**.
 
 Select **New GitOps Agent**. The Agent wizard appears.
 
 ## Harness GitOps Agent without an existing Argo CD project
 
-In **Getting started with Harness GitOps**, you have the option of installing a new Harness GitOps Agent with or without an existing Argo CD instances.
+In **Agent Installations**, you can choose to install a Harness GitOps Agent with or without an existing Argo CD instance.
 
 Select **No**, and then click **Start**.
 
 In **Name**, enter the name for the new Agent.
+
+In **GitOps Operator**, select one of the following:
+  
+  * **Argo**. Uses Argo CD as the GitOps reconciler.
+  * **Flux**. Uses Flux as the GitOps reconciler. <!-- For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux).--> <!-- Commenting out because the referenced topic is a new one and is causing a broken link error in preview environment builds. It basically points to Continuous Delivery & GitOps > GitOps > Use GitOps > Manage Flux applications, so you can use the left nav to view the new topic. -->
 
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
 
@@ -108,6 +113,11 @@ Select **Yes**, and then select **Start**.
 In **Name**, enter the name for the existing Agent CD Project. For example, **default** in the this example:
 
 ![](./static/install-a-harness-git-ops-agent-89.png)
+
+In **GitOps Operator**, select one of the following:
+  
+  * **Argo**. Uses Argo CD as the GitOps reconciler.
+  * **Flux**. Uses Flux as the GitOps reconciler. <!-- For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux). --> <!-- Commenting out because the referenced topic is a new one and is causing a broken link error in preview environment builds. It basically points to Continuous Delivery & GitOps > GitOps > Use GitOps > Manage Flux applications, so you can use the left nav to view the new topic. -->
 
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
 

@@ -77,7 +77,9 @@ For information about images that Harness CI uses to execute builds, including h
 
 #### Does Harness limit the length of a log line?
 
-Yes, Harness has a limit of 70KB on the line length in the CI client which writes to log service. If you need to extract long log lines, include a Run step in your pipeline that writes the logs to a file and uploads the file as an artifact. For more information, go to [Troubleshoot CI: Truncated execution logs](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#truncated-execution-logs).
+Yes, there is a single-line limit of 25KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`. Furthermore, there is an overall log limit of 5MB per step. Harness truncates logs larger than 5MB.
+
+If you need to extract long log lines or logs larger than 5MB, include a Run step in your pipeline that writes the logs to a file and uploads the file as an artifact. For more information, go to [Troubleshoot CI: Truncated execution logs](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#truncated-execution-logs).
 
 #### Is there a way to generate a dynamic file with some information in one stage of the pipeline and consume that file content in a different pipeline stage?
 
@@ -602,3 +604,28 @@ For example, you can [save and restore a cache from an Amazon S3 bucket.](/docs/
 #### Can I use Harness CI for mobile app development?
 
 Yes. [Harness CI offers many options for mobile app development.](/docs/continuous-integration/use-ci/mobile-dev-with-ci)
+
+
+#### Does shared path in SAM Build Manifest shows where the download happens ?
+
+No , shared paths does not dictate where the download happens. There could be multiple shared paths provided , but it does not mean our manifests would be downloaded in that shared path. More details on shared path can be read in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/)
+
+####  Is there a way to pass the branchname in update git metadata api ?
+
+No, we dont have branch name as a input to the git metadata api, we can update only the connector, file path and the repository.
+
+#### How can I change the path of the YAML file for the current pipeline to a non-default branch in another repository in git metadata api ?
+
+As per the API, our objective is to modify the Git metadata that we have stored. GitX does not store the branch as metadata.
+To change the YAML file path for an existing pipeline to a non-default branch in a different repository, you can follow these steps:
+- Copy the YAML file to the target repository's non-default branch.
+- Import the YAML file from the Git repository.
+By following these steps, you can effectively change the path of the YAML file for your pipeline to a non-default branch in another repository.
+
+#### Is it possible to trigger a CI stage by a trigger of type artifact ?
+
+No, this feature is already requested and should be onboarded soon.
+
+#### Where can I find all the listed Codebase options for CI ?
+
+Please find available `<+codebase.*>` listed for CI in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/)

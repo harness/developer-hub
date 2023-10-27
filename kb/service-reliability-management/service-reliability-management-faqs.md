@@ -31,6 +31,15 @@ Yes. The logic is that the version running in the production is already good and
 
 It can change, with each minute we analyse data from 1st minute to nth minute and figure out what is the minimally deviated pod for each test pod.
 
-### For a new metric how we will compare only agains custom thresholds and not old trend.
+### For a new metric how we will compare only against custom thresholds and not old trend.
 
 For a new metric, we can only check for fixed value thresholds, not percentage deviation thresholds
+
+#### Why is it that I have to specify a start and end time when creating the health source? 
+Start and end time is place holder so that while making actual query this will be updated and required to refer in either query path(in case of get request) or body(in case of post)
+
+#### Getting Token is missing required scope while using Dynatrace as health source
+Check if api token used is having Read metrics and Read entities scope
+
+####  No Service is getting listed while using Dynatrace health source
+Only services with marked Key Requests are shown, so could you please check and confirm if service which you are expecting is having any metric marked as key request.

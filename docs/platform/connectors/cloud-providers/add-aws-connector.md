@@ -133,7 +133,7 @@ If you want to create an AWS Connector with a delegate using IAM Roles for Servi
 Harness uses AWS connectors during pipeline runs to authenticate and perform operations with AWS.
 
 1. Select how you want Harness to connect to AWS:
-   * **Connect through Harness Platform:** Use a direct, secure communication between Harness and AWS.
+   * **Connect through Harness Platform:** Use a direct, secure communication between Harness and AWS. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
    * **Connect through a Harness Delegate:** Harness communicates with AWS through a Harness delegate in AWS. You must choose this option if you chose **Use IRSA** or **Assume IAM Role on Delegate**.
 2. If connecting through a Harness delegate, select either:
    * **Use any available Delegate**: Harness selects an available Delegate at runtime. To learn how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).

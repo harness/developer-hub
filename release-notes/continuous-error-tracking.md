@@ -2,7 +2,7 @@
 title: Continuous Error Tracking release notes
 sidebar_label: Continuous Error Tracking
 tags: [NextGen, "cet"]
-date: 2023-10-07T17:20
+date: 2023-10-19T17:20
 sidebar_position: 11
 ---
 ```mdx-code-block
@@ -22,12 +22,12 @@ Review the notes below for details about recent changes to Continuous Error Trac
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: versions ET-Service 5.28.2 and ET-Collector 5.28.0
+## Latest: October 19, 2023, versions ET-Service 5.29.3 and ET-Collector 5.29.0
 
 
 ### New features and enhancements
 
-- Event filtering has been enhanced by removing event type selector boxes and displaying event counts above the events list. Additionally, a multi-select dropdown for event types has been introduced for improved usability. (CET-1698)
+This release does not include new features and enhancements.
 
 
 ### Early access features
@@ -37,9 +37,17 @@ This release does not include any early access features.
 
 ### Fixed issues
 
-- Previously, there was no confirmation prompt when deleting a notification rule. (CET-1713)
+- The total number of new, resurfaced, and critical events displayed on the Event Summary page did not match the counts on the Event List page. (CET-1233)
   
-  This issue has been resolved. Now, a confirmation window is displayed when deleting a notification rule.
+  This issue has been resolved. Now, the total number of new, resurfaced and critical events is consistent across both the Event Summary and Event List pages.
+
+- Previously, when new events were marked as hidden or resolved and moved to their respective **Hidden** or **Resolved** tabs, the total event count on the event list remained the same. (CET-1747)
+
+  Now, when new events are marked as hidden or resolved and moved to their respective **Hidden** or **Resolved** tabs, the **New** label is removed, and these events no longer contribute to the event count on the Events page.
+
+- Users needed to click the **Add** or **Delete** button multiple times when adding or deleting a critical event. (CET-1877)
+
+  This issue has been resolved. Now, users can add and delete events with a single click.
 
 
 ### Hotfixes
@@ -52,7 +60,32 @@ This release does not include hotfixes.
 <details>
 <summary>2023 releases</summary>
 
-#### versions ET-Service 5.27.1 and ET-Collector 5.27.0
+#### October 7, 2023, versions ET-Service 5.28.2 and ET-Collector 5.28.0
+
+
+##### New features and enhancements
+
+- Event filtering has been enhanced by removing event type selector boxes and displaying event counts above the events list. Additionally, a multi-select dropdown for event types has been introduced for improved usability. (CET-1698)
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+- Previously, there was no confirmation prompt when deleting a notification rule. (CET-1713)
+
+  This issue has been resolved. Now, a confirmation window is displayed when deleting a notification rule.
+
+
+##### Hotfixes
+
+This release does not include hotfixes.
+
+
+#### September 29, 2023, versions ET-Service 5.27.1 and ET-Collector 5.27.0
 
 
 ##### New features and enhancements
@@ -77,7 +110,7 @@ This release does not include any early access features.
 This release does not include hotfixes.
 
 
-#### Version ET-Agent 5.6.0
+#### September 26, 2023, Version ET-Agent 5.6.0
 
 
 ##### New features and enhancements
@@ -109,7 +142,7 @@ This release does not include any early access features.
 This release does not include hotfixes.
 
 
-#### Version ET-Service 5.26.1
+#### September 14, 2023, Version ET-Service 5.26.1
 
 
 ##### New features and enhancements

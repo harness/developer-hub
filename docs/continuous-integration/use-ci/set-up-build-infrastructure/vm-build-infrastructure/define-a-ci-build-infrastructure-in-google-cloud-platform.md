@@ -26,35 +26,33 @@ The following diagram illustrates a CI build farm. The [Harness Delegate](/docs/
 
 ## Prepare the Google Cloud VM
 
-For your Google Cloud VM configuration:
+These are the requirements to configure the Google Cloud VM. This is the primary VM where you will host your Harness Delegate and runner.
 
-* The delegate VM must use a machine type with 4 vCPU and 16 GB memory or more.
-* Harness recommends an Ubuntu 20.04 LTS machine image, such as [Focal](https://console.cloud.google.com/marketplace/product/ubuntu-os-cloud/ubuntu-focal) or [Jammy](https://console.cloud.google.com/marketplace/product/ubuntu-os-cloud/ubuntu-jammy).
-* The VM must allow ingress access on ports 22 and 9079.
+1. Log into the [Google Cloud Console](https://console.cloud.google.com/) and launch a VM to host your Harness Delegate and runner.
 
-To find images to use on Google Compute Engine, use `gcloud compute images list`.
+   * Select a machine type with 4 vCPU and 16 GB memory or more. Harness recommends an Ubuntu 20.04 LTS machine image, such as [Focal](https://console.cloud.google.com/marketplace/product/ubuntu-os-cloud/ubuntu-focal) or [Jammy](https://console.cloud.google.com/marketplace/product/ubuntu-os-cloud/ubuntu-jammy).
+   * To find images to use on Google Compute Engine, run `gcloud compute images list`. Valid image references follow the format of `projects/PROJECT/global/images/IMAGE`. For example: `projects/docs-test/global/images/ubuntu-pro-1804-bionic-v20220131`.
 
-Valid image references follow the format of `projects/PROJECT/global/images/IMAGE`. For example: `projects/docs-test/global/images/ubuntu-pro-1804-bionic-v20220131`.
+2. Configure the VM to allow ingress on ports 22 and 9079.
+3. [SSH into the VM](https://cloud.google.com/compute/docs/connect/standard-ssh), if you haven't done so already.
+4. [Install Docker](https://docs.docker.com/engine/install/ubuntu/).
+5. [Install Docker Compose](https://docs.docker.com/compose/install/). You must install [Docker Compose version 3.7](https://docs.docker.com/compose/compose-file/compose-versioning/#version-37) or higher.
+6. Run `gcloud auth application-default login` to create an `application_default_credentials.json` file at `/home/$(whoami)/.config/gcloud`.
 
-## Set up the delegate VM
-
-1. Log into the [Google Cloud Console](https://console.cloud.google.com/) and launch the VM that will host your Harness delegate.
-2. [Install Docker](https://docs.docker.com/engine/install/ubuntu/) on the VM.
-3. [Install Docker Compose](https://docs.docker.com/compose/install/) on the VM. You must have [Docker Compose version 3.7](https://docs.docker.com/compose/compose-file/compose-versioning/#version-37) or higher installed.
-4. On the VM, run `gcloud auth application-default login` to create an `application_default_credentials.json` file at `/home/$(whoami)/.config/gcloud`
-
-## Configure the Drone pool on the Google VM
+## Configure the Drone pool on the Google Cloud VM
 
 The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the pipeline. A pool is a group of instantiated VMs that are immediately available to run CI pipelines. You can configure multiple pools in `pool.yml`, such as a Windows VM pool and a Linux VM pool.
 
-1. Create a `/runner` folder on your delegate VM and `cd` into it:
+1. [SSH into your Google Cloud VM](https://cloud.google.com/compute/docs/connect/standard-ssh).
+2. Create a `/runner` folder on your Google Cloud VM and `cd` into it:
 
    ```
    mkdir /runner
    cd /runner
    ```
-2. In the `/runner` folder, create a `pool.yml` file.
-3. Modify `pool.yml` as described in the following example. For information about specific settings, go to [Pool settings reference](#pool-settings-reference).
+3. Copy your `application_default_credentials.json` file into the `/runner` folder. You created this file when you [prepared the Google Cloud VM](#prepare-the-google-cloud-vm).
+4. In the `/runner` folder, create a `pool.yml` file.
+5. Modify `pool.yml` as described in the following example and the [Pool settings reference](#pool-settings-reference).
 
 ### Example pool.yml
 
@@ -72,7 +70,7 @@ instances:
     spec:
       account:
         project_id: ci-play ## Your Google project ID.
-        json_path: /path/to/key.json ## Your JSON credentials file.
+        json_path: /path/to/key.json ## Path to the application_default_credentials.json file.
       image: projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-1804-bionic-v20220510
       machine_type: e2-small
       zone: ## To minimize latency between delegate and build VMs, specify the same zone where your delegate VM is running.
@@ -98,29 +96,60 @@ You can configure the following settings in your `pool.yml` file. You can also l
 
 ## Start the runner
 
-[SSH into the delegate VM](https://cloud.google.com/compute/docs/connect/standard-ssh) and run the following command to start the runner:
+[SSH into your Google Cloud VM](https://cloud.google.com/compute/docs/connect/standard-ssh) and run the following command to start the runner:
 
 ```
-$ docker run -v /runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
+docker run -v /runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
 ```
 
 This command mounts the volume to the Docker container providing access to `pool.yml` and JSON credentials to authenticate with GCP. It also exposes port 3000 and passes arguments to the container.
 
+You might need to modify the command to use sudo and specify the runner directory path, for example:
+
+```
+sudo docker run -v ./runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
+```
+
+:::info What does the runner do?
+
+When a build starts, the delegate receives a request for VMs on which to run the build. The delegate forwards the request to the runner, which then allocates VMs from the warm pool (specified by `pool` in `pool.yml`) and, if necessary, spins up additional VMs (up to the `limit` specified in `pool.yml`).
+
+The runner includes lite engine, and the lite engine process triggers VM startup through a cloud init script. This script downloads and installs Scoop package manager, Git, the Drone plugin, and lite engine on the build VMs. The plugin and lite engine are downloaded from GitHub releases. Scoop is downloaded from `get.scoop.sh`.
+
+Firewall restrictions can prevent the script from downloading these dependencies. Make sure your images don't have firewall or anti-malware restrictions that are interfering with downloading the dependencies.
+
+:::
+
 ## Install the delegate
 
-Install a Harness **Docker** Delegate on your delegate VM.
+Install a Harness Docker Delegate on your Google Cloud VM.
 
-1. Create a delegate token. The delegate uses this token to authenticate with the Harness Platform.
+1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
 
-   * In Harness, go to **Account Settings**, then **Account Resources**, and then select **Delegates**.
-   * Select **Tokens** in the header, and then select **New Token**.
-   * Enter a token name and select **Apply** to generate a token.
-   * Copy the token and store is somewhere you can retrieve it when installing the delegate.
+   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
 
-2. Again, go to **Account Settings**, then **Account Resources**, and then **Delegates**.
-3. Select **New Delegate**.
-4. Select **Docker** and enter a name for the delegate.
-5. Copy and run the install command generated in Harness. Make sure the `DELEGATE_TOKEN` matches the one you just created.
+2. Select **New Delegate** or **Install Delegate**.
+3. Select **Docker**.
+4. Enter a **Delegate Name**.
+5. Copy the delegate install command and paste it in a text editor.
+6. To the first line, add `--network host`, and, if required, `sudo`. For example:
+
+   ```
+   sudo docker run --cpus=1 --memory=2g --network host
+   ```
+
+7. [SSH into your Google Cloud VM](https://cloud.google.com/compute/docs/connect/standard-ssh) and run the delegate install command.
+
+:::tip
+
+The delegate install command uses the default authentication token for your Harness account. If you want to use a different token, you can create a token and then specify it in the delegate install command:
+
+1. In Harness, go to **Account Settings**, then **Account Resources**, and then select **Delegates**.
+2. Select **Tokens** in the header, and then select **New Token**.
+3. Enter a token name and select **Apply** to generate a token.
+4. Copy the token and paste it in the value for `DELEGATE_TOKEN`.
+
+:::
 
 For more information about delegates and delegate installation, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 

@@ -33,7 +33,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **0.1.8.**
+The current version of this SDK is **0.1.14.**
 
 ## Requirements
 
@@ -93,7 +93,7 @@ You can configure the following features of the SDK:
 | streamEnabled | `harness.WithStreamEnabled(false)` | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode. | `true` |
 | analyticsEnabled | `harness.WithAnalyticsEnabled(false)` | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: Analytics are not cached. | `true` |
 
-Enabling analytics is currently not available using the Go SDK.For further configuration options and samples, such as configuring your logger or using the SDK with the Relay Proxy, go to [Additional Options](feature-flag-sdks-go-application.md#additional-options).
+For further configuration options and samples, such as configuring your logger or using the SDK with the Relay Proxy, go to [Additional Options](feature-flag-sdks-go-application.md#additional-options).
 
 ### Complete the initialization
 
@@ -110,10 +110,11 @@ client, err := harness.NewCfClient(myApiKey, 
 ```
 ### Block initialization 
 
-By default, when initializing the Harness Feature Flags client, the initialization process is non-blocking. This means that the client creation call returns immediately, 
-allowing your application to continue its startup process without waiting for the client to be fully initialized. 
+By default, when initializing the Harness Feature Flags client, the initialization process is non-blocking. This means that the client creation call returns immediately,
+allowing your application to continue its startup process without waiting for the client to be fully initialized. If you evaluate a flag before the client has finished initializing,
+the default variation you provided can be returned as the evaluation result, because the SDK has not finished caching your remote Flag configuration stored in Harness.
 
-In some cases, you may want your application to wait for the client to finish initializing before continuing. To achieve this, you can use the `WithWaitForInitialized` option, which blocks until the client is fully initialized. Example usage:
+You can choose to wait for the client to finish initializing before continuing. To achieve this, you can use the `WithWaitForInitialized` option, which blocks until the client is fully initialized. Example usage:
 
 ```go
 client, err := harness.NewCfClient(sdkKey, harness.WithWaitForInitialized(true))
@@ -121,18 +122,14 @@ client, err := harness.NewCfClient(sdkKey, harness.WithWaitForInitialized(true))
 if err != nil {
 log.ErrorF("could not connect to FF servers %s", err)
 }
+
+result, err := client.BoolVariation("identifier_of_your_boolean_flag", &target, false)
 ```
 
 
 In this example, WaitForInitialized blocks for up to 5 authentication attempts. If the client is not initialized within 5 authentication attempts, it returns an error.
 
-This can be useful if you need to unblock after a certain time. 
-
-:::note
-
-If you evaluate a feature flag in this state, the default variation is returned.
-
-:::
+This can be useful if you need to unblock after a certain time.
 
 ```go
 // Try to authenticate only 5 times before returning a result
@@ -256,6 +253,13 @@ client.NumberVariation(flagName, &target, -1)
 ```
 client.JSONVariation(flagName, &target, types.JSON{"darkmode": false})
 ```
+
+:::note
+
+If you evaluate a feature flag when initialization fails, the default variation you provided is returned as the evaluation result.
+
+:::
+
 ## Test Your App is Connected to Harness
 
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
@@ -300,6 +304,33 @@ client, err := harness.NewCfClient(apiKey,
 harness.WithURL("http://localhost:7000"),  
 harness.WithEventsURL("http://localhost:7000"))
 ```
+
+### Configure your HTTP Client
+
+The SDK has a default HTTP client, however, you can provide your own HTTP client to the SDK by passing it in as a configuration option.
+
+For example, the following creates an HTTP client using custom CAs for Harness Self-Managed Enterprise Edition (on premises).
+
+```
+// Create a custom TLS configuration
+tlsConfig := &tls.Config{
+    RootCAs: certPool,
+}
+
+transport := &http.Transport{
+    TLSClientConfig: tlsConfig,
+}
+
+httpClient := http.Client{Transport: transport}
+	client, err := harness.NewCfClient(apiKey, 
+	    harness.WithEventsURL("https://ffserver:8003/api/1.0"), 
+	    harness.WithURL("https://ffserver:8003/api/1.0"), 
+	    harness.WithHTTPClient(&httpClient))
+
+```
+
+For a full example of providing custom CAs for Harness Self-Managed Enterprise Edition, see our [TLS Example](https://github.com/harness/ff-golang-server-sdk/blob/main/examples/tls/example.go)
+
 ## Sample code for a Go application
 
 Here is a sample code for integrating with the Go SDK:

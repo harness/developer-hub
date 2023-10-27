@@ -26,7 +26,12 @@ Note the following important information about delegates:
   
   The requirements for memory and CPU support only the delegate. The delegate host, pod, and container require additional compute resources to support other operations, systems, and services, such as Docker or Kubernetes.
 
-   ![](./static/delegate-requirements-and-limitations-00.png)
+  | Replicas | Required memory / CPU | Maximum parallel deployments and builds across replicas |
+  | :--: |  :--: | :--: |
+  | 1 | 2 GB / 0.5 CPU | 10 |
+  | 2 | 4 GB / 1 CPU | 20 |
+  | 4 | 8 GB / 2 CPU | 40 |
+  | 8 | 16 GB / 4 CPU | 80 | 
 
   The delegate runs in a Linux/UNIX container.
 

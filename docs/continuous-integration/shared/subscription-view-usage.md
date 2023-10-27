@@ -1,4 +1,4 @@
-Your Harness CI subscription includes a number of developer licenses. You can check how many of these licenses you're currently using in your Harness account. Go to **Account Settings**, and the select **Usage**.
+Your Harness CI subscription includes a number of developer licenses. You can check how many of these licenses you're currently using in your Harness account. Go to **Account Settings**, and then select **Usage**.
 
 <!-- ![](/docs/continuous-integration/get-started/static/ci_usage_overview.png) -->
 
