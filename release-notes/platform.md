@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-10-16:T10:00:30
+date: 2023-10-27:T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -30,11 +30,11 @@ The following deprecated API endpoints will no longer be supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## Latest: Version 812xx
+## Latest: Version 81205
 
 ### New features and enhancements
 
-- To improve security, Harness has introduced a feature that allows you to add domain allowlists for Email, Slack, Microsoft Teams, Webhook, and PagerDuty notification channels at the account level. Earlier, this was only supported for fixed URL domains. Now, support has been added for expression URLs. This item requires Harness Delegate version 23.10.812xx. For information about features that require a specific delegate version, go to the Delegate release notes. (PL-39481, ZD-43735)
+- To improve security, Harness has introduced a feature that allows you to add domain allowlists for Email, Slack, Microsoft Teams, Webhook, and PagerDuty notification channels at the account level. Earlier, this was only supported for fixed URL domains. Now, support has been added for expression URLs. This item requires Harness Delegate version 23.10.81212. For information about features that require a specific delegate version, go to the Delegate release notes. (PL-39481, ZD-43735)
 
 - Upgraded the `grpc-protobuf` library from version 1.50.1 to 1.58.0.
  to resolve CVE-2023-32732. (PL-41147)
@@ -57,7 +57,7 @@ This release does not include early access features.
 
 - Fixed an issue where the sort filter was not working for delegates. (PL41184, ZD-50573)
 
-     This item is available with Harness Platform version 812xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+     This item is available with Harness Platform version 81205 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - When viewing the audit trail diff for a role, an empty screen was displayed due to a failure in the YAML diff API. (PL-41230)
    
@@ -75,11 +75,6 @@ This release does not include early access features.
    - Role assignment creation now operates as intended.
    - Deletion of resources from resource groups and permissions from roles works as expected.
    - Role assignment recreation functions correctly with updated resource groups and roles.
-
-
-
-
-
 
 ### Hotfixes
 

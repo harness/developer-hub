@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-10-16T10:00
+date: 2023-10-27T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -28,13 +28,17 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 812xx, Harness Delegate version 23.10.812xx
+## Latest: Harness version 81205, Harness Delegate version 23.10.81212
 
-Harness NextGen release 812xx includes the following changes for the Harness Delegate.
+Harness NextGen release 81205 includes the following changes for the Harness Delegate.
 
 ### New features and enhancements
 
 - When you [configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/), you can now use `DESTINATION_CA_PATH` instead of `CI_MOUNT_VOLUMES`. For `DESTINATION_CA_PATH`, provide a list of paths in the build pod where you want the certs to be mounted. This also mounts the certs in `opt/harness-delegate/ca-bundle`. (CI-9707)
+
+- JGit library upgrade (CDS-80715, ZD-51149)
+
+  Eclipse JGit libraries have been upgraded to version 6.6.1.202309021850-r.
 
 - To improve security, Harness has introduced a feature that allows you to add domain allowlists for Email, Slack, Microsoft Teams, Webhook, and PagerDuty notification channels at the account level. Earlier, this was only supported for fixed URL domains. Now, support has been added for expression URLs. (PL-39481, ZD-43735)
 
@@ -47,6 +51,16 @@ This release does not include any new early access features.
 - Revised the error message that is shown when a pipeline fails due to lack of eligible delegates. (CI-9743)
 
 - Optimized delegate logging related to the CI task handler to consume less space. (CI-9771)
+
+- When saving secret files, Harness FirstGen and Harness NextGen encode the file content with the ISO_8859_1 character set. However, while Harness FirstGen correctly decodes the file content referenced by the `configFile.getAsBase64()` functor, Harness NextGen uses UTF-8. The issue caused additional padding bytes to be included in the P12 config file and authorization errors with GCP Pub/Sub in Harness NextGen. (CDS-81032, ZD-51928)
+
+  This issue has been fixed. Now, Harness NextGen uses the ISO_8859_1 character set while decoding secrets from the secret store and subsequently uses Base64 encoding.
+
+- Harness did not handle appropriately the failure status codes returned by the GitLab API for the Merge PR step. (CDS-80927)
+
+  This issue has been fixed.
+
+- The Tags field in the pipeline filter is now optional. This change allows you to filter either by tag name or a combination of tag name and value. (CDS-78992)
 
 ### Hotfixes
 
