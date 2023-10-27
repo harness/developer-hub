@@ -20,6 +20,10 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 - Custom Dashboard widgets did not load data when you selected a time value in the Group by field. (CDS-80778, ZD-51490, ZD-51678)
 
+- We have enabled the link to the delegate selection log for all Continuous Integration (CI) execute and clean-up steps. This log displays important information such as the assigned delegate, the number of times the task was broadcast to the delegate, and when the task was assigned to the delegate. (PL-41786)
+
+   This item is available with Harness Platform version 81200 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 ### Version 81009
 
 #### New features and enhancements
