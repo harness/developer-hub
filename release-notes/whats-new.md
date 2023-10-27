@@ -21,9 +21,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest: October 27, 2023
 
-### Continuous Delivery, version 812xx
+### Continuous Delivery, version 81205
 
-- Tag creation is now more intuitive in the Harness user interface. When you enter text in a tag field, a create button appears, and you can select that button or press Enter to create the tag. (CDS-78994)
+- More intuitive tag creation (CDS-78994)
+
+  Tag creation is now more intuitive in the Harness user interface. When you enter text in a tag field, a create button appears, and you can select that button or press Enter to create the tag. 
+
+- JGit library upgrade (CDS-80715, ZD-51149)
+
+  Eclipse JGit libraries have been upgraded to version 6.6.1.202309021850-r. 
+  
+  This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ## October 20, 2023
 

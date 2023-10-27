@@ -46,11 +46,19 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
-## Latest: Harness version 812xx
+## Latest: October 27, 2023, Harness version 81205
 
 ### New features and enhancements
 
-- Tag creation is now more intuitive in the Harness user interface. When you enter text in a tag field, a create button appears, and you can select that button or press Enter to create the tag. (CDS-78994)
+- More intuitive tag creation (CDS-78994)
+
+  Tag creation is now more intuitive in the Harness user interface. When you enter text in a tag field, a create button appears, and you can select that button or press Enter to create the tag. 
+
+- JGit library upgrade (CDS-80715, ZD-51149)
+
+  Eclipse JGit libraries have been upgraded to version 6.6.1.202309021850-r. 
+  
+  This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ### Early access features
 
@@ -58,67 +66,67 @@ This release does not include early access features.
 
 ### Fixed issues
 
-- Service instance dropdown field was not showing the value though its value was selected earlier. It was because the API call to fetch the dropdown options was in progress during that time. (CDS-81971, ZD-50452)
+- The Edit Health Source dialog did not display the value that you had selected in the Service Instance Identifier field earlier. The value appeared in the field only after you clicked Fetch Records a few times. The issue was caused by a delay in the API call used to fetch the options. (CDS-81971, ZD-50452) 
 
-Now, instead showing empty dropdown, the user will see the previous selected value as placeholder value with the dropdown disabled when the API call is in progress.
+  This issue has been fixed. With this fix, the field becomes unavailable until the API call completes, and it displays a placeholder value that indicates the choice that you had made earlier. 
 
-- CDS-81952		N/A <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+- Container step groups that included a step with a looping strategy failed with the `IllegalStateException: Duplicate key <requestID>` exception. (CDS-81889, ZD-52104)
 
-- Fixed working of Container Step Group with different looping strategies. (CDS-81889, ZD-52104)
+  This issue has been fixed.
 
-- Fixed an issue for shell script to accept delegates in template studio (CDS-81633, ZD-52018, ZD-52366, ZD-52504)
+- Template Studio did not save the delegate selector setting to the template if it was marked as a runtime input. (CDS-81633, ZD-52018, ZD-52366, ZD-52504)
 
-- The terraform import command for service overrides V2 earlier used to return the yaml property in a json format. Now, we have changed it to return that in yaml format. This change will not affect existing terraform flows as our terraform apply commands are able to handle both json and yaml formats. (CDS-81550)
+  This issue has been fixed. 
 
-- CDS-81304		None <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+- Earlier, the `terraform import` command for service overrides V2 returned the YAML property in the JSON format. (CDS-81550)
 
-- CDS-81253	51972,52202	N/A <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+  Now, the command returns the property in the YAML format. This change does not affect existing Terraform flows as our `terraform apply` commands can handle both JSON and YAML formats. 
 
-- CDS-80951		NA <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+- The pipeline selection component in the pipeline chaining user interface did not display all of the available pipelines. (CDS-81304)
 
-- CDS-80744		None <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+  This issue has been fixed. 
 
-- CDS-80743	51672	None <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+- The Plugin step inside a containerized step group was failing with a null pointer exception. (CDS-81253, ZD-51972, ZD-52202) 
 
-- We have released two new images "harnessdev/sam-build:1.82.0-1.1.0" and "harnessdev/sam-deploy:1.82.0-1.1.0" which would now support using "PLUGIN_SAM_TEMPLATE_FILE_PATH" env variable to get the values passed in samTemplateFile of SAM service (CDS-80624, ZD-51597)
+  This issue has been fixed. 
 
-- CDS-79990	51026	None <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+- When creating a new template, the **Save as New Template** menu item did not include the changes that you made, which meant that the new template did not differ from the one you started with. This issue was observed in Git Experience (remote) templates. (CDS-80744)
 
-- CDS-79503		NA <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+  The issue has been fixed. 
+
+- If a Policy step was used in a matrix strategy, Harness used the Policy step's payload to create the stage name instead of showing the actual name of the step. (CDS-80743, ZD-51672)
+
+  This issue has been fixed. 
+
+- Harness did not export the `samTemplateFile` property for AWS SAM deployments. Consequently, you could not use expressions such as `<+manifests.MANIFEST_ID.samTemplateFile>` and `<+manifests.MANIFEST_ID.spec>` to dynamically insert the SAM template file name into the SAM Deploy step, even though the expression `<+manifests.MANIFEST_ID>` resolved for you. (CDS-80624, ZD-51597)
+
+  This issue has been fixed. Harness has released two new images, `harnessdev/sam-build:1.82.0-1.1.0` and `harnessdev/sam-deploy:1.82.0-1.1.0`, which support the use of the `PLUGIN_SAM_TEMPLATE_FILE_PATH` environment variable to get the values passed in the `samTemplateFile` of the SAM service. 
+  
+  The expression you need to reference the SAM template file name can now be copied from the output section of the service step. 
+  
+  Alternatively, you can use the following expression: `<+pipeline.stages.STAGE_ID.spec.manifests.MANIFEST_ID.samTemplateFile>.`
+
+  For more information about building expressions, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables).
 
 - Triggering a Jenkins job through an HTTP POST request resulted in an exception named `IllegalArgumentException`. Consequently, the Jenkins build step failed. The exception was caused by incorrect encoding of the Jenkins job parameters in the URL. (CDS-81070, ZD-51879, ZD-52069)
 
-  The earliest Harness Delegate version to experience this issue is version 80508. The issue has been fixed in Delegate versions 80515, 80809, and 81010.
+  The earliest Harness Delegate version to experience this issue is 23.09.80508. The issue has been fixed in delegate versions 23.10.80515, 23.10.80809, and 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Reviewed by Abhishek in Jira -->
 
-  This item requires Harness Delegate version 23.10.xxxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Need to reassess this standard verbiage in the context of the previous paragraph -->
+- When saving secret files, Harness FirstGen and Harness NextGen encode the file content with the ISO_8859_1 character set. However, while Harness FirstGen correctly decodes the file content referenced by the `configFile.getAsBase64()` functor, Harness NextGen uses UTF-8. The issue caused additional padding bytes to be included in the P12 config file and authorization errors with GCP Pub/Sub in Harness NextGen. (CDS-81032, ZD-51928)
 
-- When we are saving secret files we are encoding file content with ISO_8859_1 character set. However, when we read the file content referenced in configFile.getAsBase64() functor it was decoded using UTF-8 and that was the cause of the issue. (CDS-81032, ZD-51928)
+  This issue has been fixed. Now, Harness NextGen uses the ISO_8859_1 character set while decoding secrets from the secret store and subsequently uses Base64 encoding.
 
-  Now, we are decoding secret file content with ISO_8859_1 character set while reading secrets from the secret store and after it doing base64 encoding.
+  This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-  This item requires Harness Delegate version 23.10.xxxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+- Harness did not handle appropriately the failure status codes returned by the GitLab API for the Merge PR step. (CDS-80927)
 
-- Handle failure status codes for Gitlab provider in Merge PR step (CDS-80927)
+  This issue has been fixed. 
 
-  This item requires Harness Delegate version 23.10.xxxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- CDS-80764		NA <!-- In Jira, asked the engineer to update PRNS field or flip RNC field to NO -->
+- The Tags field in the pipeline filter is now optional. This change allows you to filter either by tag name or a combination of tag name and value. (CDS-78992)
 
-- JGit libraries have been upgraded to a version 6.6.1.202309021850-r (CDS-80715, ZD-51149)
-  
-  This item requires Harness Delegate version 23.10.xxxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
-- Terraform var files in .json format are supported (CDS-80582, ZD-51483, ZD-51858)
-
-  This item requires Harness Delegate version 23.10.xxxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
-- Azure web apps deployment will succeed when Basic Auth Credentials is turned off for the azure web app. (CDS-79096, ZD-50585)
-
-  This item requires Harness Delegate version 23.10.xxxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
-- The value in tags in pipeline filter is changed from required to optional (CDS-78992)
-
-  This item requires Harness Delegate version 23.10.xxxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ## Previous releases
 
