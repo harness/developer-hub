@@ -846,6 +846,12 @@ The Amazon SDK Default backoff strategy is the combination of fixed backoff, equ
 
 Fixed backoff is a simple backoff strategy that always uses a fixed delay for the delay before the next retry attempt.
 
+:::info note
+
+Backoff strategy parameter settings are in milliseconds.
+
+:::
+
 Typically, the SDK default strategy uses the full jitter strategy for non-throttled exceptions and the equal jitter strategy for throttled exceptions.
 
 Here's the list of non-throttled error and status codes where full jitter strategy is applied: 
