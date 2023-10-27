@@ -36,7 +36,7 @@ These are the requirements to configure the Google Cloud VM. This is the primary
 2. Configure the VM to allow ingress on ports 22 and 9079.
 3. [SSH into the VM](https://cloud.google.com/compute/docs/connect/standard-ssh), if you haven't done so already.
 4. [Install Docker](https://docs.docker.com/engine/install/ubuntu/).
-5. [Install Docker Compose](https://docs.docker.com/compose/install/). You must install [Docker Compose version 3.7](https://docs.docker.com/compose/compose-file/compose-versioning/#version-37) or higher.
+5. [Install Docker Compose](https://docs.docker.com/compose/install/).
 6. Run `gcloud auth application-default login` to create an `application_default_credentials.json` file at `/home/$(whoami)/.config/gcloud`.
 
 ## Configure the Drone pool on the Google Cloud VM

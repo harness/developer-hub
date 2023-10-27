@@ -47,7 +47,7 @@ These are the requirements to configure an Azure Application and VM. This VM is 
 5. Make sure the Azure Application is a Contributor on the subscription.
 6. Go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines) and launch your Azure VM.
 7. [Install Docker](https://docs.docker.com/desktop/vm-vdi/) on the VM.
-8. [Install Docker Compose](https://docs.docker.com/compose/install/) on the VM. You must install [Docker Compose version 3.7](https://docs.docker.com/compose/compose-file/compose-versioning/#version-37) or higher.
+8. [Install Docker Compose](https://docs.docker.com/compose/install/) on the VM.
 
 ## Configure the Drone pool on the Azure VM
 

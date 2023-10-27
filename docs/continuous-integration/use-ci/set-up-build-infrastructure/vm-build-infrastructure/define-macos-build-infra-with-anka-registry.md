@@ -12,85 +12,99 @@ Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Conta
 
 :::
 
-This topic describes the high-level workflow for setting up a Harness macOS build farm that works with [Anka's virtualization platform for macOS](https://docs.veertu.com/anka/what-is-anka/). Using this workflow, you can set up a highly scalable build farm with multiple VMs and nodes to run your macOS builds with Harness CI. The workflow is comprised of the following steps:
+This topic describes how to use AWS EC2 instances to run a macOS build farm with [Anka's virtualization platform for macOS](https://docs.veertu.com/anka/what-is-anka/). This configuration uses [AWS EC2 instances and dedicated hosts](https://aws.amazon.com/blogs/compute/getting-started-with-anka-on-ec2-mac-instances/) to host a Harness Delegate and Runner, as well as the Anka Controller, Registry, and Virtualization. Working through the Anka controller and registry, the Harness Runner creates VMs dynamically in response to CI build requests.
 
-- [Install Anka and create a VM on a Mac node](#install-anka-and-create-a-vm-on-a-mac-node)
-- [Set up port forwarding on the VM](#set-up-port-forwarding-on-the-vm)
-- [Set up the Anka controller and registry](#set-up-the-anka-controller-and-registry)
-- [Install the delegate and runner](#install-the-delegate-and-runner)
-- [Set up the runner to communicate with the Anka controller](#set-up-the-runner-to-communicate-with-the-anka-controller)
-- [Configure build infrastructure](#configure-build-infrastructure)
-- [Add other Mac nodes and VM templates to the Anka registry](#add-other-mac-nodes-and-vm-templates-to-the-anka-registry)
+For more information about Anka and Mac on EC2 go to the Anka documentation on [What is the Anka Build Cloud](https://docs.veertu.com/anka/anka-build-cloud/), [Setting up the Controller and Registry on Linux/Docker](https://docs.veertu.com/anka/anka-build-cloud/getting-started/setup-controller-and-registry/), and [Anka on AWS EC2 Macs - Community AMIs](https://docs.veertu.com/anka/aws-ec2-mac/#community-ami).
 
-The following diagram shows how Harness CI and Anka work together. Once you set up the Harness and Anka components, you can easily scale up your build farm with additional templates, build nodes, and VMs.
+The following diagram illustrates how Harness CI and Anka work together. The [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview) communicates directly with your Harness instance. The [VM runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the delegate receives a build request, it forwards the request to the runner, which runs the build on an available VM. The [Anka registry and controller](https://docs.veertu.com/anka/#controller--registry) orchestrate and maintain the Mac VMs. Once you set up the Harness and Anka components, you can scale up your build farm with additional templates, build nodes, and VMs.
 
 ![](../static/macos-build-infra-with-anka-registry-mult-nodes.png)
 
-This is one of several build infrastructure options, for example, you can also run on [Azure VMs](define-a-ci-build-infrastructure-in-azure.md) or [GCP VMs](define-a-ci-build-infrastructure-in-google-cloud-platform.md).
+This is one of several build infrastructure options, for example, you can also run Mac builds on [Harness Cloud build infrastructure](../use-harness-cloud-build-infrastructure.md)
 
-:::info
+## Requirements
 
-This is an advanced configuration. Before beginning, you should be familiar with:
+This configuration requires:
 
-* Anka and the macOS ecosystem.
-* [Harness key concepts](../../../../get-started/key-concepts.md)
-* [CI pipeline creation](../../prep-ci-pipeline-components.md)
-* [Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
-* [CI Build stage settings](../ci-stage-settings.md)
-* Running pipelines on other build infrastructures:
-   * [Building on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
-   * [Set up a local runner build infrastructure](../define-a-docker-build-infrastructure.md)
-* Harness VM Runners and pools:
-  * [Drone documentation - VM runner overview](https://docs.drone.io/runner/vm/overview/)
-  * [Drone documentation - Drone Pool](https://docs.drone.io/runner/vm/configuration/pool/)
-  * [Drone documentation - Amazon Runners](https://docs.drone.io/runner/vm/drivers/amazon/)
-  * [GitHub repository - Drone runner AWS](https://github.com/drone-runners/drone-runner-aws)
+* An [Anka Build license](https://veertu.com/anka-build/).
+* Familiarity with AWS EC2, Anka, and the macOS ecosystem.
+   * [What is the Anka build cloud?](https://docs.veertu.com/anka/anka-build-cloud/)
+   * [Getting started with Anka on EC2 Mac instances](https://aws.amazon.com/blogs/compute/getting-started-with-anka-on-ec2-mac-instances/)
+   * [Anka on AWS EC2 instances](https://docs.veertu.com/anka/aws-ec2-mac/)
+* Familiarity with the [Harness Platform](/docs/get-started/key-concepts.md) and [CI pipeline creation](../../prep-ci-pipeline-components.md).
+* Familiarity with Harness Delegates, VM runners, and pools.
+  * [Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
+  * [Drone VM runner overview](https://docs.drone.io/runner/vm/overview/)
+  * [Drone pools](https://docs.drone.io/runner/vm/configuration/pool/)
+  * [Drone Amazon drivers](https://docs.drone.io/runner/vm/drivers/amazon/)
+  * [Drone Anka drivers](https://docs.drone.io/runner/vm/drivers/anka/)
 
-:::
+## Set up the Anka Controller and Registry
 
-## Install Anka and create a VM on a Mac node
+Install the Anka Controller and Registry on your Linux-based EC2 instance. For more information about this set up and getting acquainted with the Anka Controller and Registry, go to the Anka documentation on [Setting up the Controller and Registry on Linux/Docker](https://docs.veertu.com/anka/anka-build-cloud/getting-started/setup-controller-and-registry/).
 
-The first step is to set up the Anka software on one of your Mac nodes (such as a Mac Mini) and create a VM. For details, go to [Getting Started](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/) in the Anka documentation.
+1. In the [AWS EC2 Console](https://console.aws.amazon.com/ec2/), launch a Linux-based instance. Make sure this instances has enough resources to support the Anka Controller and Registry, at least 10GB. Harness recommends a size of **t2-large** or greater or storage of 100 GiB.
+2. [SSH into your Linux-based EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html).
+3. [Install Docker](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html#install_docker).
+4. [Install Docker Compose](https://docs.docker.com/compose/install/).
+5. Follow the [Docker Compose post-installation setup](https://docs.docker.com/install/linux/linux-postinstall/) so you can run `docker-compose` without `sudo`.
+6. [Download and extract the Anka Docker Package.](https://docs.veertu.com/anka/anka-build-cloud/getting-started/setup-controller-and-registry/#download-and-extract-the-docker-package)
+7. [Configure Anka settings in docker-compose.yml.](https://docs.veertu.com/anka/anka-build-cloud/getting-started/setup-controller-and-registry/#configuration)
+8. Run `docker-compose up -d` to start the containers.
+9. Run `docker ps -a` and verify the `anka-controller` and `anka-registry` containers are running.
+10. Optionally, you can [enable token authentication for the controller and registry](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/root-token-authentication/).
 
-When you finish this workflow, you will have a macOS node with a working VM. After you [set up the Anka registry](#set-up-the-anka-controller-and-registry), you can then push the node and the VM to the registry.
+## Set up Anka Virtualization
 
-<!--- Suggest some size for the controller and registry. macOS VM requires at least 10 GB. Recommended size for registry, 100 GiB or more. -->
+After setting up the Anka Controller and Registry, you can set up [Anka Virtualization](https://docs.veertu.com/anka/anka-virtualization-cli/) on a Mac-based EC2 instance. For more information, go to [Anka on AWS EC2 Macs](https://docs.veertu.com/anka/aws-ec2-mac/). These instructions use an [Anka community AMI](https://docs.veertu.com/anka/aws-ec2-mac/#community-ami).
 
-## Set up port forwarding on the VM
+1. In AWS EC2, [allocate a dedicated host](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-allocating). For **Instance family**, select **mac-m2**.
+2. [Launch an instance on the dedicated host](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#launching-dedicated-hosts-instances), configured as follows:
 
-This enables connectivity between the Harness runner and the VMs. On the VM host, run the following command for each VM template:
+   * Application and OS Images: Select **Browse AMIs** and select an [Anka community AMI](https://docs.veertu.com/anka/aws-ec2-mac/#community-ami). If you don't want to use a preconfigured AMI, you can use a different macOS AMI, but you'll need to take additional steps to [install Anka Virtualization](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/installing-the-anka-virtualization-package/) on the instance.
+   * Instance type: Select a **mac-m2** instance.
+   * Key pair: Select an existing key pair or create one.
+   * Advanced details - Tenancy: Select **Dedicated host - Launch this instance on a dedicated host**
+   * Advanced details - Target host by: Select **Host ID**
+   * Advanced details - Tenancy host ID: Select your mac-m2 dedicated host.
+   * User data: Refer to the Anka documentation on [User data](https://docs.veertu.com/anka/aws-ec2-mac/#user-data-envs).
+   * Network settings: **Allow HTTP Traffic from the Internet** might be required to use virtualization platforms, such as VNC viewer.
+   * Inbound rules: Allow ingress on port 5900. This is required to [Connect to your instance's GUI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-mac-instances.html#connect-to-mac-instance:~:text=public%2Ddns%2Dname-,Connect%20to%20your%20instance%27s%20graphical%20user%20interface,-(GUI)).
 
-```
-anka modify $VM_NAME add port-forwarding service -g 9079
-```
+    The first three minutes of this [Veertu YouTube video](https://www.youtube.com/watch?v=DoRaiMklIP0) briefly demonstrate the Anka community AMI set up process, include details about **User data**.
 
-For details, go to the Anka documentation about [Modifying your VM](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/modifying-your-vm/).
+3. [Connect to your instance's GUI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-mac-instances.html#connect-to-mac-instance:~:text=public%2Ddns%2Dname-,Connect%20to%20your%20instance%27s%20graphical%20user%20interface,-(GUI)).
+4. Open a terminal and run `anka version` to check if Anka Virtualization is installed. If it is not, [Install Anka Virtualization](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/installing-the-anka-virtualization-package/).
+5. Make sure the environment is updated and necessary packages are installed. For example, you can run `softwareupdate -i -a`.
+6. [Join your Anka Virtualization node to the Controller](https://docs.veertu.com/anka/anka-build-cloud/getting-started/preparing-and-joining-your-nodes/)
 
-##  Set up the Anka controller and registry
+## Create Anka VM templates
 
-<!-- Before pushing Anka Created VM, you need to log into the VM and properly configure the environment, like making sure all the packages are updated in it. Once this is done, you can push the VM to the registry. -->
+1. In your Anka Virtualization EC2 instance, [create one or more Anka VMs](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/creating-vms/#create-your-first-vm).
 
-Set up the Anka registry and controller. For details, go to the Anka documentation about [Setting up the Controller & Registry](https://docs.veertu.com/anka/anka-build-cloud/getting-started/setup-controller-and-registry/).
+   Anka VMs created with `anka create` are [VM templates](https://docs.veertu.com/anka/anka-build-cloud/getting-started/registry-vm-templates-and-tags/). You can use these to create Vms on other Anka Virtualization nodes you launch in EC2.
 
-<!-- after setting up the registry, push the node and VM to the registry -->
+2. Set up port forwarding on each VM template to enable connectivity between the Harness Runner and your Anka VMs. For each VM template, stop the VM and run the following command:
 
-When you finish this workflow you will have:
+   ```
+   anka modify $VM_NAME add port-forwarding service -g 9079
+   ```
 
-* A running instance of the Anka controller and registry.
-* A Mac node (such as a Mac Mini) in the Anka cluster. This node has Anka virtualization software installed.
-* A VM template in the registry. You can use this to create VMs on other nodes as you add them to the cluster.
+   For more information about `anka modify`, go to the Anka documentation on [Modifying your VM](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/modifying-your-vm/).
 
-:::note
-
-Optionally, you can enable token authentication for the controller and registry as described in the Anka documentation about [Configuring Token Authentication](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/root-token-authentication/).
-
-:::
+3. [Push your VM templates to the Registry.](https://docs.veertu.com/anka/anka-build-cloud/getting-started/preparing-and-joining-your-nodes/#push-the-vm-to-the-registry)
 
 ## Install the delegate and runner
 
 Set up the Harness Delegate and Harness Runner.
 
 For information about installing delegates, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
+
+<!-- need the command to launch to runner -->
+<!-- need more info about pool.yml -->
+<!-- move delegat & runner install step after the pool.yml config step -->
+
+  * [GitHub repository - Drone runner AWS](https://github.com/drone-runners/drone-runner-aws)
 
 ## Set up the runner to communicate with the Anka controller
 

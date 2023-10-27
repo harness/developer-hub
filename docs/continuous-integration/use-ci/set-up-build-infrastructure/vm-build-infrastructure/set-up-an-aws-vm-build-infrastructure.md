@@ -36,15 +36,11 @@ This is an advanced configuration. Before beginning, you should be familiar with
 * Using the AWS EC2 console and interacting with AWS VMs.
 * [Harness key concepts](../../../../get-started/key-concepts.md)
 * [CI pipeline creation](../../prep-ci-pipeline-components.md)
-* [Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
-* [CI Build stage settings](../ci-stage-settings.md)
-* Running pipelines on other build infrastructures:
-   * [Building on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
-   * [Set up a local runner build infrastructure](../define-a-docker-build-infrastructure.md)
+* [Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
 * Drone VM Runners and pools:
   * [Drone documentation - VM runner overview](https://docs.drone.io/runner/vm/overview/)
   * [Drone documentation - Drone Pool](https://docs.drone.io/runner/vm/configuration/pool/)
-  * [Drone documentation - Amazon Runners](https://docs.drone.io/runner/vm/drivers/amazon/)
+  * [Drone documentation - Amazon drivers](https://docs.drone.io/runner/vm/drivers/amazon/)
   * [GitHub repository - Drone runner AWS](https://github.com/drone-runners/drone-runner-aws)
 
 :::
@@ -82,7 +78,7 @@ The recommended authentication method is an [IAM role](https://console.aws.amazo
 
 1. [SSH into your EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html).
 2. [Install Docker](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html#install_docker).
-3. [Install Docker Compose](https://docs.docker.com/compose/install/). You must install [Docker Compose version 3.7](https://docs.docker.com/compose/compose-file/compose-versioning/#version-37) or higher.
+3. [Install Docker Compose](https://docs.docker.com/compose/install/).
 4. Attach the IAM role to the EC2 VM. For instructions, go to the AWS documentation on [attaching an IAM role to an instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role).
 
 ## Configure the Drone pool on the AWS VM
