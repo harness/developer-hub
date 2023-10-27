@@ -16,6 +16,50 @@ For Harness SaaS release notes, go to [Harness SaaS Release Notes](/docs/first-g
 
 Release notes are displayed with the most recent release first.
 
+
+## October 31, 2023, patch release for version 809xx
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | xxxxx |
+| Watcher | xxxxx |
+| Verification Service | xxxxx |
+| UI | xxxxx |
+| Learning Engine | xxxxx | 
+| Gateway | xxxxx |
+
+### New features and enhancements
+
+
+### Early access features
+
+This release does not include any early access features.
+
+### Fixed issues
+
+- You can no longer update `DelegateIP` or `DelegateName` using the delegate update API. (PL-40795, ZD-44419)
+
+- Fixed the delegate task *acquire call* retry flow in Harness Manager. Harness Manager returned NPEs when retrying acquire calls because `taskDataV2` was not copied to `taskData` in the *acquire call* retry flow. Tasks timed out because the delegate couldn't acquire the data. To fix this issue, the 'taskData' field in Harness Manager is now populated. (PL-40646)
+
+- Earlier, you could upload Excel and .csv files in the **File Configuration** dialog. (PL-40796, ZD-44419)
+
+   This issue is fixed. Excel and .csv files in the **File Configuration** dialog are now blocked.
+
+- When you attempted to view the change log of an encrypted text secret, if the resultant API request returned an HTTP 400 response code, the Harness FirstGen user interface failed to show an appropriate message. Instead, it showed the following message and prompted you to refresh your browser page to continue: “Something went wrong... This error has been reported and we are looking into it with high priority.” (PL-40957, ZD-49757)
+
+  This issue has been fixed. The Harness UI now shows you a more appropriate message in the Change Log dialog.
+
+- The **Secrets** dropdown list on the Services page didn't include all available secrets. The list now includes all secrets, up to the maximum of 1000. (PL-41308, ZD-50687)
+
+- A few pages about environment and service were missing access checks, allowing users to read data without the right permissions. (PL-41378, ZD-44419)
+
+  This issue has been resolved, and the desired access check has been applied.
+
+
+
+
 ## July 31, 2023, patch release for version 79819
 
 This release includes the following module and component versions.
