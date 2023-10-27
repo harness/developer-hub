@@ -17,9 +17,107 @@ import delete_project from './static/delete-project.png'
 
 Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
-## Latest: Version 80220
+## Latest: Version 809xx
 
 ### New features and enhancements
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.10.0](https://github.com/harness/helm-charts/releases/tag/harness-0.10.0) |
+| Air Gap Bundle | [0.10.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.10.0) |
+| NG Manager | 80219 |
+| CI Manager | 5313 |
+| Pipeline Service | 1.41.3 |
+| Platform Service | 80000 |
+| Access Control Service | 79802 |
+| Change Data Capture | 80209 |
+| Test Intelligence Service | release-197 |
+| NG UI | 0.357.17 |
+| LE NG | 68007 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.10.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.10.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.10.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.10.0/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.10.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.10.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.10.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.10.0/sto_images.tgz" \
+  .
+```
+
+#### Self-Managed Enterprise Edition
+
+- 
+
+#### Continuous Delivery & GitOps
+
+- 
+
+#### Continuous Integration
+
+- 
+
+#### Harness Platform
+
+- 
+
+#### Service Reliability Management
+
+- 
+
+### Early access features
+
+#### Continuous Delivery & GitOps
+
+- 
+
+#### Continuous Integration
+
+- 
+
+### Fixed issues
+
+#### Custom Dashboards
+
+
+#### Self-Managed Enterprise Edition
+
+
+#### Continuous Delivery & GitOps
+
+
+#### Continuous Integration
+
+
+#### Feature Flags
+
+
+#### Harness Delegate
+
+
+#### Harness Platform
+
+
+#### Service Reliability Management
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Version 80220
+
+##### New features and enhancements
 
 This release includes the following Harness module and component versions.
 
@@ -60,7 +158,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
 :::
 
-#### Self-Managed Enterprise Edition
+##### Self-Managed Enterprise Edition
 
 - Harness has updated the Helm chart to optimize packaging and module delivery. (SMP-1588)
    
@@ -150,7 +248,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
    For more information, go to [Use an external self-managed Redis database with your installation](/tutorials/self-managed-enterprise-edition/use-an-external-redis-database).
 
-#### Continuous Delivery & GitOps
+##### Continuous Delivery & GitOps
 
 - Removed Helm version 3.1 from delegates with an immutable image type (image tag `yy.mm.xxxxx`). (CDS-58892, ZD-47520, ZD-48553)
 
@@ -194,13 +292,13 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
   This change is vital to prevent potential issues that could arise due to a large number of recursively spawned children, leading to CPU spikes and POD restarts within our system. By implementing this restriction, we aim to maintain system performance and stability for all our customers.
 
-#### Continuous Integration
+##### Continuous Integration
 
 - Improved the consistency of [built-in codebase expression](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) values across build types. You can now expect similar values for these expressions regardless of build type. For example, `<+codebase.commitRef>` now provides a consistent reference for the build, such as `refs/heads/BRANCH_NAME` for a branch build or `refs/tags/TAG_NAME` for a tag build. (CI-7689)
 
 - To support CI pipelines, Harness added the ability to set the Harness Delegate environment variable `LOG_STREAMING _URL` by default. If the delegate is outside of the cluster, the fallback log service URL is `LOG_SERVICE_ENDPOINT` from CI. This update also includes a new `TI_SERVICE_URL` delegate environment variable that takes the `ti-service` URL input from the delegate. (CI-9262, ZD-48974)
 
-#### Harness Platform
+##### Harness Platform
 
 - A new `getAzureKeyVaultClient` API is available to fetch the list of Azure vaults. (PL-28392, ZD-44045)
 
@@ -228,7 +326,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
 - The Universal Base Image Minimal used for the Harness user interface (both FirstGen and NextGen) and the Harness NextGen authentication service has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-40095)
 
-#### Service Reliability Management
+##### Service Reliability Management
 
 - The Execution Logs have been enhanced to include additional details such as duration, task ID, and more. These details help you understand and debug CV Steps, SRM Live monitoring, and SLI. (OIP-565)
 
@@ -258,9 +356,9 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
 - Error messages from health source providers are now included in API responses for improved user experience and debugging efficiency. (OIP-657)
 
-### Early access features
+#### Early access features
 
-#### Continuous Delivery & GitOps
+##### Continuous Delivery & GitOps
 
 - You can now configure multiple Helm charts in the manifests. This provides feature parity with Harness FirstGen. Helm charts can now be configured from Helm Repository as Artifacts that allow the users to select the Helm chart for deployment. The UI also now differentiates between manifests and overrides in service. This feature is behind the feature flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-70209)
 
@@ -272,7 +370,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
   
   Specifying an image by digest, rather than just tag, is useful when you want to ensure that the image you deploy for a service is fixed and immutable. If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline execution fails.
 
-#### Continuous Integration
+##### Continuous Integration
 
 - The `CI_LE_STATUS_REST_ENABLED` feature has been rolled back to early access and disabled by default due to a discovered instability that caused the [CD Container step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step) to fail. This feature causes CI steps to send status updates to the [Harness Manager](/docs/get-started/harness-platform-architecture/#harness-platform-components) directly by HTTP, rather than through a delegate.
 
@@ -286,9 +384,9 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
    - The Cache Intelligence visual editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
    - You can enable and configure [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to the Harness Cloud build infrastructure.
 
-### Fixed issues
+#### Fixed issues
 
-#### Custom Dashboards
+##### Custom Dashboards
 
 :::caution
 
@@ -296,7 +394,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
 :::
 
-#### Self-Managed Enterprise Edition
+##### Self-Managed Enterprise Edition
 
 - To avoid connection resets from load balancers with fixed idle timeouts (AWS NLB: 350s), we've added support for configuring the maximum idle timeout for the gateway's HTTP client. You can now update the `additionalConfig` in the gateway’s `values.yaml` file. (SMP-1926)
 
@@ -308,7 +406,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
    ```
 
-#### Continuous Delivery & GitOps
+##### Continuous Delivery & GitOps
 
 - Fixed an issue where Azure webhook triggers did not work as expected because the delegate could not parse repository URLs in the format `https://{ORG}@dev.azure.com/{ORG}/{PROJECT}/_git/{REPO}`. With this fix, the delegate can parse these URLs and Azure webhook triggers work as expected. (CDS-59023)
 
@@ -535,7 +633,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
 - Fixed an issue in the Run step where changing the git branch would cause merge calls to fail. (CDS-75716)
 
-#### Continuous Integration
+##### Continuous Integration
 
 - The **Copy** button is now available when editing input sets in the YAML editor. (CI-8199)
 
@@ -555,7 +653,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
 - Fixed an issue that caused [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) to be incompatible with Maven 3.9. (CI-8891)
 
-#### Feature Flags
+##### Feature Flags
 
 - Previously, when users selected **All Environments** from the **Environments** dropdown menu, then refreshed the page or went to another page, the **Back** button didn't return the user to the All Environments page. This issue has been resolved. (FFM-8012)
 
@@ -567,7 +665,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
 - Previously, on the flag details page, if all target groups were assigned to rules, the Percentage Rollout target groups selection would disappear. This issue has been fixed. (FFM-8841)
 
-#### Harness Delegate
+##### Harness Delegate
 
 - The Tokens list page returned a display error when tokens were present and there were multiple pages of results. (PL-36734)
 
@@ -577,7 +675,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
    A code enhancement fixed these issues.
 
-#### Harness Platform
+##### Harness Platform
 
 - Previously, regardless of whether your account was on Harness NextGen or Harness FirstGen, Harness sent password reset emails from Harness FirstGen. This approach failed for accounts that are only on Harness NextGen. (PL-38735)
 
@@ -687,7 +785,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
   This issue has been resolved.
 
-#### Service Reliability Management
+##### Service Reliability Management
 
 - When the verification type is set to "Auto" and Harness CV applies canary analysis during verification, the test data representation inaccurately showed the analysis type as "Rolling" for all verification tasks. (OIP-608)
 
@@ -701,7 +799,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
    This issue has been resolved. Now, the execution logs and API call logs are displayed in the correct order.
 
-### Patches
+#### Patches
 
 #### 0.9.1
 
@@ -842,11 +940,6 @@ gsutil -m cp \
    The tunables, probe, and various fault-level information has been added to the report.
 
    Project, account, and organization names have also been added to the report.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### July 31, 2023, version 79819
 
