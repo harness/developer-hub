@@ -2352,3 +2352,161 @@ No, this functionality enhancement is yet to come.
 
 One can set a comma separated strings and split them wherever one wants to use as array.
 Possible example expression can be : `<+pipeline.variables.targetIds.split(",")>`
+
+#### Is there a way to determine whether the pipeline method was stored remotely or inline?
+
+This information is available through our OPA policies. To illustrate, you can create a policy to validate the pipeline YAML/JSON when running the pipeline. Here's an example policy:
+
+```
+package pipeline
+
+# Generate an error if the pipeline is inline
+deny[msg] {
+    input.pipeline.gitConfig # Check if gitConfig exists
+
+    # Display a user-friendly error message
+    msg := sprintf("Pipeline is inline")
+}
+```
+
+#### How to parse multiple yaml manifests in policy steps?
+
+At present, OPA evaluations are performed using JSON inputs for evaluation purposes. The system automatically converts YAML data into JSON and then forwards it to the OPA service for evaluation. While this process works seamlessly for single YAML files, for multiple YAML files it won't work since we don't support it currently.
+
+#### How to allow remote pipelines to run only with origin from a main branch?
+
+You can achieve this using our OPA policies, here is an example:
+
+```
+package pipeline
+
+# Generate an error if the pipeline is running on a branch other than 'main'
+deny[msg] {
+    input.pipeline.gitConfig.branch != "main" # Check if the branch is 'main'
+
+    # Display a user-friendly error message
+    msg := sprintf("Running the pipeline on a branch other than 'main' is not allowed. The selected branch was: '%s'", input.pipeline.gitConfig.branch)
+}
+```
+
+#### How to solve the following error? Invalid request: Profile definition must end with ']
+
+Harness delegates do not control AWS profiles, this is likely configured manually through the delegate by the user and should be reviewed by the author.
+
+#### Why am I receiving the message 'Current execution is queued as another execution is running with given resource key' in the step resource constraint?
+
+Harness automatically includes Resource Constraints in each stage to prevent simultaneous resource requests. This message indicates that the current execution is queued because another execution with the same resource key is already in progress. To allow multiple pipelines to deploy to the same infrastructure concurrently, you can enable the 'Allow simultaneous deployments on the same infrastructure' option in the Stage's Infrastructure settings.
+
+#### What is the process for marking a currently running Continuous Verification step as successful?
+
+To mark a running Continuous Verification step as successful, you can use Manual Intervention as a failure strategy. If the step exceeds the defined timeout for example, the manual intervention is triggered, and you can subsequently mark it as successful.
+
+#### How can I output values within double quotes while preserving them?
+
+To keep the quotes intact, you can encapsulate the array with single quotes ('').
+
+#### How to reference a connector in shell script or Powershell script?
+
+Currently, you can't leverage a connector within a script step. However, you can manually integrate to an API referring to the same credentials as the connector.
+
+#### How to Override an Image Connector for a Containerized Step Group?
+
+In the step group configuration, navigate to the optional configuration and edit the "Override Image Connector" field.
+
+#### How to get pipeline execution output through the API?
+
+Using the following API Method [getExecutionDetailV2](https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2) along with the flag `renderFullBottomGraph` equals to `true`, will return the complete response.
+
+#### How to deploy a manifest without a service linked to the stage?
+
+You can deploy manifests by writing a script within a custom stage. However, it's recommended to use CD stages for deploying manifests.
+
+#### How to use Harness Secrets in GitOps?
+
+We do not have this feature available currently.
+
+#### Is it possible to use Harness for managing cluster updates like ingress and IAM roles in EKS, without the Infrastructure Definition targeting a specific namespace, and ensuring that my YAML files are applied as expected?
+
+The namespace in the YAML file will have higher priority than the one in the infra definition.
+
+#### Can I use a single tar file containing Terraform code, uploaded to an S3 bucket, as the source for Terraform Plan and Apply steps in Harness?
+
+Currently, we do not expect a zip file in the S3 bucket, but rather a folder structure with corresponding Terraform configuration files.
+
+#### Can I execute a step when a pipeline is aborted?
+
+No, when a pipeline is aborted, the pipeline execution stops and the pipeline enters an aborted state. The status of the pipeline will be Aborted. Harness will not clean up the resources that are created during pipeline execution.
+However, you can mark a specific stage as failed during pipeline execution by selecting the Mark Stage As Failed option. This lets you abort a step that is running and trigger a configured failure strategy after the step is aborted.
+You can then configure a failure strategy to perform a custom action, such as resetting the status.
+
+#### While creating a Lambda function, is it possible to retrieve artifacts from GitHub?
+
+We do not have a built-in GitHub source for Lambda function artifacts. The supported sources for artifacts, as you mentioned, are S3, ECR, Jenkins, Nexus, and Artifactory. Additionally, we offer support for custom artifacts, but please note that it may require a significant amount of customization.
+
+#### How can I send the pipeline's logs to Loki?
+
+To accomplish this, you can download the logs using our API method "download-logs-via-api" and then send them to Loki. We do not have built-in functionality for this.
+
+#### How to deploy Azure SpringApps JAR via Harness CD?
+
+You can take advantage of our ssh deployment and include a step to download the JAR.
+
+#### Can Terraform be used in Harness without specifying a backend configuration while ensuring safety and reliability?
+
+For production deployments, it is strongly advised to set up a proper backend configuration. However, for testing and experimentation, it is possible to run Terraform in Harness without a backend configuration. In this scenario, the state is stored on the Harness side and is not directly accessible.
+
+#### For Terraform States, is the state file fully and uniquely identified by the combination of "provisioner ID" and "workspace name"?
+
+Yes, you can also use other combinations if required.
+
+#### How can I use Terraform in Harness without encountering state conflicts?
+
+The Provisioner Identifier is a Project-wide setting, and you can reference it across Pipelines in the same Project. It's important that all Project members are aware of the Provisioner Identifiers to prevent one member, who is building a Pipeline, from accidentally impacting the provisioning of another member's Pipeline.
+
+#### Is the location of the Terraform State independent of the delegate?
+
+Yes, when using a secret manager to store the state file, its location depends on where it's stored in the manager and is not tied to the delegate.
+
+#### How can I trigger a pipeline after another pipeline has succeeded?
+
+You can trigger deployments and builds by using our custom triggers. Additionally, we offer the pipeline chain functionality, which enables you to execute pipelines through a parent pipeline.
+
+#### Is it possible to store HTTP step's output as a secret?
+
+The masking is not supported with an HTTP step in this way however you may be able to use a shell script step and list the output variable as a secret in the output of that step which will have it be treated as a secret it any subsequent steps.
+
+#### Is it possible to access the JSON/YAML input passed to the policy engine in the pipeline?
+
+Unfortunately, you cannot refer to this JSON within the pipeline. However, you can access all evaluated policies, along with their input, through the UI.
+
+#### Is there a method for enforcing pipeline naming conventions during pipeline creation or cloning?
+
+At present, there is no built-in mechanism to enforce pipeline naming conventions when creating or cloning pipelines in Harness. Nevertheless, you can establish an OPA policy and apply it using the On Save event for a pipeline to enforce the naming convention.
+
+#### How do I stop a pipeline based on a condition?
+
+To stop a pipeline based on a condition, you can incorporate conditional or failure execution in specific steps. Configure expressions so that if the condition is not met, you can mark the step as a failure or introduce a manual intervention step to mark the entire pipeline as a failure. You can trigger various error types to initiate the failure strategy in your step.
+
+#### How can we return dynamically generated information to a calling application upon the successful completion of pipelines initiated by API calls from other applications?
+
+You can configure pipeline outputs throughout the stages to include all the data you want to compile. Then, upon execution completion, you can include a shell script that references these outputs and sends the compiled information to the desired API.
+
+#### Can a Step Group be configured to run on a specific subset of the VMs within the infrastructure?
+
+No, it's not possible to configure a Step Group to run on only a subset of the VMs in the infrastructure. VMs are grouped at the Environment/Infrastructure level, and this grouping cannot be further restricted at the Step Group level. To achieve this, you would need to apply the restriction at the individual Step level for each step that needs to run on a specific subset of the VMs.
+
+#### Does Harness provide support for Keyfactor?
+
+Currently, we do not offer direct support or a connector to Keyfactor.
+
+#### Are services, environments, connectors, and overrides available for versioning within the GitExperience like pipelines?
+
+Unfortunately, these entities cannot be versioned at the moment. However, you can manage and control them using Terraform, which allows for versioning.
+
+#### How can the namespace definition be utilized in the actual Apply step of the deployment?
+
+We recommend declaring the namespace in the values.yaml using the following expression: `<+infra.namespace>`, especially if you have the namespace attribute declared within your manifests.
+
+#### What is the most likely cause of a 403 error when using a service account token for a Terraform pipeline?
+
+In most cases, the Terraform script is attempting to assume a role within the delegate, and the permissions associated with the service account are insufficient. Delegates are created with a default service account that lacks IRSA configuration.
