@@ -667,16 +667,15 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_DISABLE_HELM_REPO_YAML_CACHE</td>
-        <td>Disables Helm repository caching on the Harness delegate. Please use the flag if you face `context deadling exceeded` error during parallel helm deployments. Note that this is a result of known <a href="https://github.com/helm/helm/issues/10735">Helm concurrency issue </a>. By turning on the flag there might be slight performance degradation in case of huge Helm repositories</td>
+        <td>Disables Helm repository caching on the Harness delegate. Please use the flag if you encounter the `context deadling exceeded` error during parallel Helm deployments. Note that this is a result of known <a href="https://github.com/helm/helm/issues/10735">Helm concurrency issue</a>. By turning on the flag, there might be slight performance degradation in case of very large Helm repositories.</td>
     </tr>
     <tr>
         <td>CDS_K8S_SOCKET_CAPABILITY_CHECK_NG</td>
-        <td>Replaces the HTTP capability check for the Kubernetes connector with socket capability.</td>
+        <td>Replaces the HTTP capability check for the Harness Kubernetes connector with socket capability.</td>
     </tr>
     <tr>
         <td>CDS_K8S_SERVICE_HOOKS_NG</td>
-        <td>Enables the Kubernetes and Helm service hooks feature. Service hooks extend the Helm Chart and Kubernetes service <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks">pre-deployment actions</a>
-. </td>
+        <td>Enables the Kubernetes and Helm service hooks feature. Service hooks extend the Helm Chart and Kubernetes service <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks">pre-deployment actions</a>. </td>
     </tr>
     <tr>
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG</td>
