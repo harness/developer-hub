@@ -16,7 +16,11 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### Latest: Version 81009
+### Latest: October 27, 2023, Version 81200
+
+- Custom Dashboard widgets did not load data when you selected a time value in the Group by field. (CDS-80778, ZD-51490, ZD-51678)
+
+### Version 81009
 
 #### New features and enhancements
 

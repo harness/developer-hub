@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-10-20T10:00
+date: 2023-10-27T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,21 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: October 20, 2023
+## Latest: October 27, 2023
+
+### Continuous Delivery, version 81205
+
+- More intuitive tag creation (CDS-78994)
+
+  Tag creation is now more intuitive in the Harness user interface. When you enter text in a tag field, a create button appears, and you can select that button or press Enter to create the tag. 
+
+- JGit library upgrade (CDS-80715, ZD-51149)
+
+  Eclipse JGit libraries have been upgraded to version 6.6.1.202309021850-r. 
+  
+  This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+## October 20, 2023
 
 ### Continuous Delivery, version 81106
 
