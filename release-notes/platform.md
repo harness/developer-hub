@@ -34,7 +34,7 @@ The following deprecated API endpoints will no longer be supported:
 
 ### New features and enhancements
 
-- To improve security, Harness has introduced a feature that allows you to add domain allowlists for Email, Slack, Microsoft Teams, Webhook, and PagerDuty notification channels at the account level. Earlier, this was only supported for fixed URL domains. Now, support has been added for expression URLs. This item requires Harness Delegate version 23.10.81212. For information about features that require a specific delegate version, go to the Delegate release notes. (PL-39481, ZD-43735)
+- To improve security, Harness has introduced a feature that allows you to add domain allowlists for Email, Slack, Microsoft Teams, Webhook, and PagerDuty notification channels at the account level. Earlier, this was only supported for fixed URL domains. Now, support has been added for expression URLs. This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the Delegate release notes. (PL-39481, ZD-43735)
 
 - Upgraded the `grpc-protobuf` library from version 1.50.1 to 1.58.0.
  to resolve CVE-2023-32732. (PL-41147)

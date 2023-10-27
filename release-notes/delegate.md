@@ -28,7 +28,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 81205, Harness Delegate version 23.10.81212
+## Latest: Harness version 81205, Harness Delegate version 23.10.81202
 
 Harness NextGen release 81205 includes the following changes for the Harness Delegate.
 
