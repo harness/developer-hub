@@ -621,3 +621,11 @@ To change the YAML file path for an existing pipeline to a non-default branch in
 - Copy the YAML file to the target repository's non-default branch.
 - Import the YAML file from the Git repository.
 By following these steps, you can effectively change the path of the YAML file for your pipeline to a non-default branch in another repository.
+
+#### Is it possible to trigger a CI stage by a trigger of type artifact ?
+
+No, this feature is already requested and should be onboarded soon.
+
+#### Where can I find all the listed Codebase options for CI ?
+
+Please find available `<+codebase.*>` listed for CI in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/)
