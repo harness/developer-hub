@@ -1444,3 +1444,73 @@ Yes, you can scale the Delegate StatefulSet. For more details, please refer to o
 3. Customer Demand: We have received numerous requests from our customers to provide UBI-based images due to their security and compatibility advantages. In response to these requests, we have published UBI-based legacy delegate images.
 4. Consistency: We are not only transitioning our delegate to UBI but also all of our SaaS offerings. This provides a consistent and unified environment across our services.
 While UBI is the preferred choice, we want to emphasize that we do provide a Dockerfile for building an Ubuntu-based delegate image if you have specific requirements.
+
+#### What is RBAC and how does one manage users and roles? 
+
+Harness NextGen platform utilizes RBAC or Role-Based Access Control. Additional details on RBAC can be found in this blog post:
+
+[https://www.harness.io/blog/user-role-management]
+
+
+#### What are the main components of RBAC?
+
+RBAC uses Principals, Resource Groups, and Roles to control access. 
+
+Principals are entities taking action in the system. These include users, user groups, and service accounts.
+Resource Groups define what objects can be acted on. Objects include organizations, projects, pipelines, connectors, users, and more.
+Roles define what actions can be taken on objects. Actions include view, create, edit, delete, and so on.
+
+
+#### What is Role Binding and how does it relate to Harness RBAC?
+
+Role binding refers to the process of assigning roles and resource groups to principals (users, user groups, and service accounts). Role binding can be configured at all scopes.
+
+#### Are there any built-in roles that I can utilize?
+
+Yes, for more information on built-in roles, please see our RBAC doc: [https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/]
+
+
+
+#### What is the best way of implementing the Harness RBAC?
+
+Following a workflow can be a useful process for implementing and understanding RBAC: 
+
+To configure RBAC in Harness, you must:
+
+1. Create roles.
+2. Create resource groups and, optionally, apply ABAC.
+3. Create user groups, create service accounts, and add users.
+4. Assign roles and resource groups to users, user groups, and service accounts.
+5. If you have not already done so, configure authentication.
+
+#### Is there additional information on build-in roles for Harness RBAC?
+
+Yes, you can follow this doc on build-in roles: [https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles#built-in-roles]
+
+
+#### What is a Resource Group?
+
+Resource groups are an RBAC component that defines the objects that a user or service account can access. Objects are any Harness resource, including projects, pipelines, connectors, secrets, delegates, environments, users, and more.
+
+More information on Harness Resource Group and managing this can be found here: [https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups]
+
+
+#### What integration does Harness offer with SCIM providers? 
+
+Harness integrates with multiple third-party SCIM providers
+
+Okta SCIM: [https://developer.harness.io/docs/platform/role-based-access-control/provision-users-with-okta-scim]
+Azure AD SCIM: [https://developer.harness.io/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim]
+OneLogin SCIM: [https://developer.harness.io/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim]
+
+#### What is Just-in-time user provisioning? 
+
+Automated provisioning eliminates repetitive tasks related to manual provisioning and simplifies user management.
+
+Just-in-time (JIT) provisioning in Harness lets you provision users automatically when they first sign-in to Harness through SAML SSO. Harness supports JIT provisioning only for new users logging in through an IdP, such as Okta.
+
+JIT is currently behind a feature flag '''PL_ENABLE_JIT_USER_PROVISION'''
+
+#### Is there an overview doc on Harness RBAC and permissions? 
+
+Yes, please see this doc for more details [https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference]
