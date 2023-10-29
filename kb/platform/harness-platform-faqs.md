@@ -1388,6 +1388,56 @@ This is the host address of your proxy, which you want to configure
 #### If we enable proxy in delegate does that mean it is including all communication of "Connectors" - Artifact Servers, Source Repo Providers, Collaboration Providers? and also Cloud Providers?
 Yes that’s correct any outbound connection made via delegate through Harness will use that proxy
 
+#### Is it possible that one can manage org level entities at account level?
+
+This is usecase of user-group inheritance,
+
+- Create User Group at account scope.
+- Inherit User Group at each Organization scope and create appropriate role binding.
+- When trying to onboard new user to all this Orgs, all you have to do is to add that user in User Group and that will provide you access to all Org.
+- This UG would still be managed to Account Scope.
+
+For more details you can refer this [doc](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#create-groups-by-inheritance).
+
+#### Do we plan to support AsyncAPI specs (for messaging) in our Harness APIs?
+
+This has not been planned yet.
+
+####  How events are generated on Harness platform?
+
+Audit Trail displays a record for each event of the Harness account, Modules, or Harness entities. You can refer this [docs](https://developer.harness.io/docs/platform/governance/audit-trail/).
+
+#### Do we have some documnetation to know about the delegate size guidelines ?
+ 
+Youcan refer to the following, [documentation](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#delegate-sizes) and also [here](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-requirements/).
+
+#### Can a Golang service directly provide a secret reference to an internal API and receive the decrypted secret ?
+
+Yes, there is an internal API for that, with the limitation that only the secrets stored in Harness Built in Secret manager can be retrieved. You can refer [here](https://harness.atlassian.net/wiki/spaces/PLATFORM/pages/21192704698/Secrets+Decryption+API+Via+Manager). Please note that if the secret is stored in vault or customer’s secret manager then this won’t work.
+
+#### Can i have a api to perform the operation of IP allowlist ?
+
+These are APIs to create/update IP allowlist https://apidocs.harness.io/tag/IP-Allowlist#operation/create-ip-allowlist-config, Also you can refer [here](https://developer.harness.io/docs/platform/security/add-manage-ip-allowlist/).
+
+#### Can we point auto update to our helm chart. Can we point auto update to a different registry?
+
+You can set auto upgrade to true in the helm command and control the upgrade and the repository using [this](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images).
+
+#### Can I use a "bindSecret" in Harness LDAP settings to avoid using an inline password, as suggested in the API documentation?
+
+No, you cannot use a "bindSecret" in Harness LDAP settings to avoid using an inline password in NG LDAP. Currently, NG LDAP only allows for the use of an "INLINE" password. The appearance of "bindSecret" in the API documentation is due to a shared bean between CG and NG, and in CG, support for secret references is available. However, NG LDAP still requires an inline password, and this limitation should be considered when configuring LDAP settings in your environment.
+
+#### Can we create a delegate token with the name using which it was previously created and then deleted ?
+
+No it is not possible as same name is not possible within 30 days once it is revoked. There is a ttl for 30 days for deletion after revoke of token.
+
+#### What is the expected behavior when a customer aborts a pipeline task, and what actions are taken to ensure a clean state in the system?
+
+When you initiates an abort for a pipeline task, the expected behavior is to take actions to halt the task's execution as promptly as possible. 
+we have a method, `io.harness.delegate.service.DelegateAgentServiceImpl#abortDelegateTask`, which is used to abort a task. This method typically leverages Thread.interrupt() to initiate the abort process. The key here is to interrupt or cancel the running task effectively.
+An abort could leave the system in a potentially inconsistent or 'dirty' state, it's crucial to consider rollback procedures.
+Delegate actions, such as canceling or ending running tasks, should play a central role in preventing system inconsistencies and maintaining system integrity.
+=======
 #### How to automatically start a delegate when running as a Docker container?
 
 Docker provides restart policies to control whether your containers start automatically when they exit, or when Docker restarts. Restart policies start linked containers in the correct order. Docker recommends that you use restart policies, and avoid using process managers to start containers.
@@ -1514,3 +1564,4 @@ JIT is currently behind a feature flag '''PL_ENABLE_JIT_USER_PROVISION'''
 #### Is there an overview doc on Harness RBAC and permissions? 
 
 Yes, please see this doc for more details [https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference]
+
