@@ -35,7 +35,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CCM_COMMORCH</td>
-        <td>Enables the commitment orchestrator in the UI side nav and also enables the feature card in the AWS connector.</td>
+        <td>Enables the commitment orchestrator in the UI side nav.</td>
     </tr>
     <tr>
         <td>CCM_CURRENCY_PREFERENCES</td>
