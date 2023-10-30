@@ -168,6 +168,12 @@ You can select one of the following types of expression for user groups:
 
   :::important
   Make sure no spaces are present in the expression values. In the above example, the format must be `_project_all_users,testUserGroup` to match the split criteria `,` .
+
+  Make sure to use user group identifiers and not names in these expressions. 
+
+  Scope indicators needs to be prefixed for account and organization user groups 
+  - `account` for account level user group. For example: `account._account_all_users`
+  - `org` for organization level user group. For example: `org._organization_all_users`
   :::
 
 
