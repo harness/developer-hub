@@ -273,7 +273,7 @@ Now you can add a dashboard to view metrics via query.
 
 - To add a dashboard, go to **Dashboards** and then select **New Dashboard** and **Add a new panel**. 
 
-Here are some sample open source dashboards:
+Custom dashboards are available in the Harness public repository:
 
 - [MongoDB](https://github.com/harness/harness-dashboards/blob/main/SMP_Database/MongoDB_Overview.json)
 
