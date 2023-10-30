@@ -57,8 +57,19 @@ This release does not include any early access features.
 
   This issue has been resolved, and the desired access check has been applied.
 
+- Fixed an issue when using multiple HTTP Helm Chart repositories that could lead to an increase in CPU utilization on the delegate due to background connector validation tasks. This was caused by running the Helm repository update during the validation tasks. (CDS-76433, ZD-48363)
 
+- Fixed an issue where using the Export Manifest with Inherit Manifest in a Kubernetes deployment could lead to skipping resource versioning. With this fix, resource versioning is happening correctly in this deployment scenario. (CDS-75781, ZD-47209)
 
+- Fixed an issue observed in Canary deployments where the rollback stage could not identify and delete the canary workload in some clusters. (CDS-76240)
+
+- Fixed a dashboard issue where a custom widget did not display monthly data that was more than 8 months old. With this fix, the custom widget will now display monthly data correctly. (CDS-79523, ZD-50750)
+
+- Perpetual tasks in Delegate version 80505 threw Kryo issues because of the addition of a new field in instances. This can be seen if instances are not getting updated for older releases. (CDS-79911)
+
+  This issue is now fixed.
+
+  This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ## July 31, 2023, patch release for version 79819
 
