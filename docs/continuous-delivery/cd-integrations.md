@@ -430,7 +430,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_JIRA_UPDATE_SELECT_FIELDS_ENABLED</td>
-        <td>Enable Jira <b>Select Fields</b> setting for Jira Update step using project and issue type. This feature is in</td>
+        <td>Enable Jira <b>Select Fields</b> setting for Jira Update step using project and issue type. This feature is in Beta. </td>
     </tr>
     <tr>
         <td>CDS_NG_UPDATE_MULTIPLE_SNOW_CHANGE_REQUEST</td>
@@ -438,38 +438,38 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_WEBAPP_ENABLE_CLEAN_OPTION</td>
-        <td>Cleans the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial">Azure WebApp target directory</a> prior to deployment.</td>
+        <td>Cleans the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial">Azure WebApp target directory</a> prior to deployment. This feature is in Public Preview. </td>
     </tr>
     <tr>
         <td>PIE_SIMPLIFY_LOG_BASE_KEY</td>
-        <td>Reduces the length of the log base key.</td>
+        <td>Reduces the length of the log base key. This feature is in Beta. </td>
     </tr>
     <tr>
         <td>CDS_SHELL_VARIABLES_EXPORT</td>
-        <td>Export variables in a shell script to either the step group, stage, or pipeline scope. The variable will be accessible using the scope of the variable. For example: <pre>functor.pipeline.&lt;exported_variable&gt;</pre> Exported variables are immutable.</td>
+        <td>Export variables in a shell script to either the step group, stage, or pipeline scope. The variable will be accessible using the scope of the variable. For example: <pre>functor.pipeline.&lt;exported_variable&gt;</pre> Exported variables are immutable. This feature is in Public Preview.</td>
     </tr>
     <tr>
         <td>GITOPS_GITHUB_RESTRAINT_FOR_STEPS</td>
-        <td>Throttles GitHub API calls to prevent breach of secondary rate limit. This is use for addressing a Github rate limit issue that users were facing when using multiple GitOps steps in parallel. It adds a default queuing for those steps so only one step executes at a time. This is only applicable for Update Release Repo, Merge PR, and Revert PR steps.</td>
+        <td>Throttles GitHub API calls to prevent breach of secondary rate limit. This is use for addressing a Github rate limit issue that users were facing when using multiple GitOps steps in parallel. It adds a default queuing for those steps so only one step executes at a time. This is only applicable for Update Release Repo, Merge PR, and Revert PR steps. This feature is in Beta. </td>
     </tr>
     <tr>
         <td>PIE_ASYNC_FILTER_CREATION</td>
-        <td>Sets pipeline CRUD calls to filter creation asynchronously. </td>
+        <td>Sets pipeline CRUD calls to filter creation asynchronously. This feature is in Beta. </td>
     </tr>
     <tr>
         <td>CDS_ASG_V2</td>
-        <td>Enables support for <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial">ASG features</a> like user data, instances, multiple load balancers, and base ASG.</td>
+        <td>Enables support for <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial">ASG features</a> like user data, instances, multiple load balancers, and base ASG. This feature is in Public Preview. </td>
     </tr>
     <tr>
         <td>CDS_OCI_HELM_ECR_CONFIG_SUPPORT_NG</td>
-        <td>Support for ECR as an OCI Helm repo but with temporary credentials.</td>
+        <td>Support for ECR as an OCI Helm repo but with temporary credentials. This feature is under development, will be Beta soon.</td>
     </tr>
     <tr>
         <td>CDS_NG_BARRIER_STEPS_WITHIN_LOOPING_STRATEGIES</td>
-        <td>Support Barrier steps within looping strategies.</td>
+        <td>Support Barrier steps within looping strategies. This feature is under development, will be Beta soon. </td>
     </tr>
     <tr>
         <td>CDS_TF_TG_SKIP_ERROR_LOGS_COLORING</td>
-        <td>Disable the coloring of execution logs that are coming form standart error output of process executor for Terraform and Terragrunt steps.</td>
+        <td>Disable the coloring of execution logs that are coming form standart error output of process executor for Terraform and Terragrunt steps. This feature is in Beta. </td>
     </tr>
 </table>
