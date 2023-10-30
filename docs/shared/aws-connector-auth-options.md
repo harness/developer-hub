@@ -23,7 +23,7 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
        --override-existing-serviceaccounts —region=us-east-1
    ```
 
-3. In Harness, download the Harness Kubernetes delegate YAML file. For instructions, go to [Install a Kubernetes delegate](../../../platform/delegates/install-delegates/install-a-kubernetes-delegate.md).
+3. In Harness, download the Harness Kubernetes delegate YAML file. For instructions, go to [Install a Kubernetes delegate](https://developer.harness.io/tutorials/platform/install-delegate/).
 4. Open the delegate YAML file in text editor.
 5. Add the service account with access to IAM role to the delegate YAML. There are two sections in the Delegate YAML that you must update:
    1. Update the `ClusterRoleBinding` by replacing the subject name `default` with the name of the service account with the attached IAM role, for example:
@@ -62,7 +62,7 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
       :::info note
       For legacy delegate, add `serviceAccountName` to the Statefulset spec.
 6. Save the delegate YAML file.
-7. If you haven't already installed the delegate, [Install the Kubernetes delegate](../../../platform/delegates/install-delegates/overview.md) in your EKS cluster and register the delegate with Harness. When you install the delegate in the cluster, the SA you added is used, and the environment variables `AWS_ROLE_ARN` and `AWS_WEB_IDENTITY_TOKEN_FILE` are added automatically by EKS.
+7. If you haven't already installed the delegate, [Install the Kubernetes delegate](https://developer.harness.io/tutorials/platform/install-delegate/) in your EKS cluster and register the delegate with Harness. When you install the delegate in the cluster, the SA you added is used, and the environment variables `AWS_ROLE_ARN` and `AWS_WEB_IDENTITY_TOKEN_FILE` are added automatically by EKS.
 
 </details>
 
