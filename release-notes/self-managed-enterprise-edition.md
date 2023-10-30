@@ -703,6 +703,8 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
 ### Patches
 
+#### 0.9.1
+
 This release includes the following Harness module and component versions.
 
 | **Name** | **Version** |
@@ -746,6 +748,11 @@ gsutil -m cp \
 
    For more information, go to [Service hooks](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks).
 
+
+#### 0.9.2
+
+This release includes the following Harness module and component versions.
+
 | **Name** | **Version** |
 | :-- | :--: |
 | Helm Chart | [0.9.2](https://github.com/harness/helm-charts/releases/tag/harness-0.9.2) |
@@ -786,6 +793,55 @@ gsutil -m cp \
 - Fixed two issues that caused Helm upgrade failures from 0.8.4 to 0.9.1. (SMP-2135)
    - Corrected the `cd.gitops` field in the `override-prod.yaml` file.
    - Added an annotation field to `nextgen-ui` to resolve `global.ingress.objects.annotation` template failures.
+
+#### 0.9.3
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.9.3](https://github.com/harness/helm-charts/releases/tag/harness-0.9.3) |
+| Air Gap Bundle | [0.9.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.9.3) |
+| NG Manager | 80219 |
+| CI Manager | 5313 |
+| Pipeline Service | 1.41.3 |
+| Platform Service | 80000 |
+| Access Control Service | 79802 |
+| Change Data Capture | 80209 |
+| Test Intelligence Service | release-197 |
+| NG UI | 0.357.17 |
+| LE NG | 68007 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.9.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.3/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.3/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.9.3/sto_images.tgz" \
+  .
+```
+
+- Bitbucket, Azure, and Git connectors support has been added for **ChaosHubs** when using Harness secret manager. (CHAOS-35)
+
+- Previously, when the cron schedule field was edited in YAML, there was no validation to ensure its accuracy. This often caused the UI to fail when switching to the **Schedule** tab in the Visual editor. (CHAOS-2631)
+
+   This issue has been resolved. Validation has been implemented for both the Visual and YAML editors.
+
+- The route from the **Experiment execution screen** to **Reports** was broken because of changes in the URL structure. (CHAOS-2606)
+
+   This issue has been resolved. Previously, routing was based on the experiment `runID`, which has been changed to `notifyID`.
+
+   The tunables, probe, and various fault-level information has been added to the report.
+
+   Project, account, and organization names have also been added to the report.
 
 ## Previous releases
 
@@ -3146,7 +3202,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
   - Failed connection tests now return more detailed error messages. (CI-7089)
   - The placeholder text in the **Repository URL** field shows a complete repo URL example. (CI-5750)
 - If a pipeline's [codebase clone depth](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) was set to `0`, manually triggered builds would override this setting and clone at a depth of 50 instead. This issue did not occur for depth settings other than `0`, and it did not occur for non-manual triggers. Now, manually triggered builds won't override the depth setting when it is set to `0`. (CI-7083, ZD-40306)
-- You can now use [variable expressions](//docs/platform/variables-and-expressions/runtime-inputs/) for the **Shell** and **Image Pull Policy** settings. Previously, selecting the **Expression** input type for **Shell** caused a UI-breaking error, and providing an expression for **Image Pull Policy** caused a field validation error. (CI-7071, ZD-40277)
+- You can now use [variable expressions](/docs/platform/variables-and-expressions/runtime-inputs) for the **Shell** and **Image Pull Policy** settings. Previously, selecting the **Expression** input type for **Shell** caused a UI-breaking error, and providing an expression for **Image Pull Policy** caused a field validation error. (CI-7071, ZD-40277)
 - Fixed an issue where builds triggered by issue comments had the incorrect PR status or link for some SCM providers. (CI-6978)
 - Fixed several issues related to error messages on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds#build-details):
   - If the Docker runner was down for a build using local build infrastructure, the error message now contains the correct wording corresponding with the local build infrastructure, rather than wording relevant to a Kubernetes build infrastructure. (CI-6854)

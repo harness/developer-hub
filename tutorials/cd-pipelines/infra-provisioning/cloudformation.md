@@ -70,7 +70,7 @@ Verify that you have the following:
 
 1. **A Kubernetes cluster** in CloudFormation: Create a **stack** in CloudFormation to provision an **EKS cluster** to be used as **deployment infrastructure**.
 2. **Obtain GitHub personal access token with the repo scope**. See the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line). 
-3. Fork the **[harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website, which contains the **CF template** file. 
+3. Fork the **[harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website, which contains the **CF template** file. 
 4. A functioning **Harness pipeline** that deploys an application on your cluster using a manifest. Please follow this [get started tutorial](/tutorials/cd-pipelines/kubernetes/manifest) to set it up. 
 
 ### Get started
@@ -112,7 +112,7 @@ If you already have a Git connector that gives access to your forked [harnesscd-
     - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/github-connector.yml).
     - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
-    - Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
+    - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
     - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
     - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
@@ -227,7 +227,7 @@ You can also follow the [Install Harness Delegate on Kubernetes or Docker](/tuto
     - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/github-connector.yml).
     - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
-    - Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
+    - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
     - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
     - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.

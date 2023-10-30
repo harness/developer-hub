@@ -28,7 +28,7 @@ Harness expressions are identified using the `<+...>` syntax. For example, `<+p
 The content between the `<+...>` delimiters is passed on to the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) where it is evaluated. Using JEXL, you can build complex variable expressions that use JEXL methods. For example, here is an expression that uses Webhook Trigger payload information:
 
 ```
-<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") || <+trigger.payload.repository.owner.name> == "wings-software"
+<+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "wings-software"
 ```
 Harness pre-populates many variables, as documented below, and you can set your own variables in the form of context output from [shell scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) and other steps.
 
@@ -38,7 +38,7 @@ You can use all Java string methods on Harness variable expressions.
 
 The example mentioned in the previous section used `contains()`:
 
-`<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")`
+`<+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")>`
 
 Let's look at another example. For a variable called `abc` with value, `def:ghi`. You can use `split()` like this:
 
@@ -412,13 +412,13 @@ If you enter `123` in a string setting, such as a **Name**, it is treated as a s
 
 When using `contains`, ensure the expression is wrapped within `<+ >` and the specific string is within `"`.
 
-For example, `<+stage.name.contains("s1")>`.
+For example, `<+<+stage.name>.contains("s1")>`.
 
 ### Split method
 
 When using `split`, ensure the expression is wrapped within `<+ >`.
 
-For example, `<+pipeline.variables.abc.split(':')[1]>`.
+For example, `<+<+pipeline.variables.abc>.split(':')[1]>`.
 
 ### Complex expression
 
@@ -427,7 +427,7 @@ When using a complex expression, ensure the expression is wrapped within `<+ >`.
 For example:
 
 ```
-<+ <+trigger.payload.pull_request.diff_url.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "wings-software">
+<+ <+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "wings-software">
 ```
 
 
@@ -547,7 +547,6 @@ All existing expressions will continue to work. For example, the following synta
 1. Use `+` operator to add string value variables: `<+<+pipeline.variables.var1> + "_suffix">`.
 2. Use Java `concat` method to add string variables:
 
-- `<+pipeline.variables.var1.concat("_suffix")>`
 - `<+<+pipeline.variables.var1>.concat("_suffix")>`
 
 Ensure the expression is wrapped within `<+ >` in both of theese examples.
@@ -738,6 +737,18 @@ The list of stages selected for execution.
 ### <+pipeline.delegateSelectors>
 
 The pipeline level delegate selectors selected via runtime input.  
+
+### <+pipeline.storeType>
+
+If the pipeline is stored in Harness, the expression resolves to `inline`. If the pipeline is stored in a Git repository, the expression resolves to `remote`.
+
+### <+pipeline.repo>
+
+For remote pipelines, the expression resolves to the Git repository name. For inline pipelines, the expression resolves to `null`.
+
+### <+pipeline.branch>
+
+For remote pipelines, the expression resolves to the Git branch where the pipeline exists. For inline pipelines, the expression resolves to `null`.
 
 ## Deployment, pipeline, stage, and step status
 
@@ -1190,7 +1201,7 @@ The [entity identifier](../references/entity-identifier-reference.md) for the co
 
 ![](./static/harness-variables-39.png)
 
-### <+artifacts.primary.label.get("")>
+### <+<+artifacts.primary.label>.get("")>
 
 This expression resolves to the Docker labels of a Docker image.
 
@@ -1206,11 +1217,11 @@ In a Harness Shell script step or any setting where you want use the labels, you
 
 
 ```
-echo <+artifacts.primary.label.get("maintainer")>  
-echo <+artifacts.primary.label.get("build_date")>  
-echo <+artifacts.primary.label.get("multi.author")>  
-echo <+artifacts.primary.label.get("key-value")>  
-echo <+artifacts.primary.label.get("multi.key.value")>
+echo <+<+artifacts.primary.label>.get("maintainer")>  
+echo <+<+artifacts.primary.label>.get("build_date")>  
+echo <+<+artifacts.primary.label>.get("multi.author")>  
+echo <+<+artifacts.primary.label>.get("key-value")>  
+echo <+<+artifacts.primary.label>.get("multi.key.value")>
 ```
 When you run the pipeline, the expressions will resolve to their respective label values.
 
@@ -1582,11 +1593,11 @@ The current status of the looping strategy for the node with a specific stage/st
 
 For example, `echo <+strategy.node.cs1.currentStatus>`.
 
-### <+strategy.node.get("STRATEGY_NODE_IDENTIFIER").currentStatus>
+### <+<+strategy.node>.get("STRATEGY_NODE_IDENTIFIER").currentStatus>
 
 The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`.
 
-For example, `echo <+strategy.node.get("ShellScript_1").currentStatus>`.
+For example, `echo <+<+strategy.node>.get("ShellScript_1").currentStatus>`.
 
 ### identifierPostFix overview
 
@@ -1944,7 +1955,7 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 | helmChart.metadata.url                                                | N/A                                                                                                                                                                                                                                                                                  |
 | helmChart.name                                                        | pipeline.stages.STAGE_ID.spec.execution.steps.rolloutDeployment.output.releaseName                                                                                                                                                                                                 |
 | helmChart.version                                                     | pipeline.stages.STAGE_ID.spec.serviceConfig.output.manifestResults.SERVICE_ID.helmVersion                                                                                                                                                                                             |
-| Nested Expression: secrets.getValue("terraform-aws-env_name-id") | secrets.getValue("test_secret" + pipeline.variables.envVar), or secrets.getValue("test_secret".concat(pipeline.variables.envVar))                                                                                                                                             |
+| Nested Expression: `secrets.getValue("terraform-aws-env_name-id")` | `<+secrets.getValue("test_secret_" + <+pipeline.variables.envVar>)>` or `<+secrets.getValue("test_secret_".concat(<+pipeline.variables.envVar>))>`                                                                                                                                             |
 | **Email Step**                                                            | **Email Step**                                                                                                                                                                                                                                                                           |
 | toAddress                                                             | pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.to                                                                                                                                                            |
 | ccAddress                                                             | pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.cc                                                                                                                                                                                                                            |

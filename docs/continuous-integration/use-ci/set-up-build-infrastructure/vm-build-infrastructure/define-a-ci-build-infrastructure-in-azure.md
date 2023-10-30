@@ -193,10 +193,10 @@ Install a Harness Docker Delegate on your Azure VM.
 3. Select **Docker**.
 4. Enter a **Delegate Name**.
 5. Copy the delegate install command and paste it in a text editor.
-6. To the first line, add `--net=host`, and, if required, `sudo`. For example:
+6. To the first line, add `--network host`, and, if required, `sudo`. For example:
 
    ```
-   sudo docker run --cpus=1 --memory=2g --net=host
+   sudo docker run --cpus=1 --memory=2g --network host
    ```
 
 7. [SSH into your Azure VM](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-ssh?tabs=azurecli) and run the delegate install command.

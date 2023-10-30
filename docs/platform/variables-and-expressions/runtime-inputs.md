@@ -54,7 +54,7 @@ When you type `<+`, Harness provides suggestions for built-in [expressions](#exp
 
 Fixed Values are values that you define when you configure a setting. These values don't change at runtime.
 
-Use fixed values for settings you don't need to change based on the build context, other steps, or runtime operations.
+Use fixed values for settings you don't need to change based on the build context, other steps, or runtime operations. More details on the usage of Fixed values [here](https://developer.harness.io/tutorials/cd-pipelines/variables#create-an-account-level-variable).
 
 ## Runtime inputs
 

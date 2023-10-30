@@ -44,7 +44,7 @@ To achieve conditional step execution based on changes to a specific file, you c
 #### How can we share a failed step's output in a pull request comment as part of a CI pipeline execution?
 Below given one of the methods with which we could achieve this.
 
-- Modify the failed step's command to save output to a file: ```your_command 2>&1 | tee output_file.log```
+- Modify the failed step's command to save output to a file: `your_command 2>&1 | tee output_file.log`
 - Read the file's content in a subsequent step which is configured to run always
 - Use the GitHub API to add a comment to the pull request, including details from the file.
 
@@ -264,7 +264,7 @@ Yes. The remote debug ssh session details will only be shown after a step failur
 
 Remote debug session will only be presented if there is a failure in the pipeline. If the pipeline is executing successfully but we still want to have the debug session for troubleshooting purpose, we could add a run step with command ```exit 1```   which will fail the build and you can then rerun it in debug mode
 
-#### Why can we not see the option ```Re-run in debug mode``` for a new pipeline?
+#### Why can we not see the option `Re-run in debug mode` for a new pipeline?
 
 Debug mode is not available for the first build of the pipeline. We should run the pipeline atleast once to be able to run it in debug mode.
 
@@ -276,17 +276,23 @@ No, We will terminate the VM right after a stage execution and a new VM will be 
 
 We could have configured the value for the pool size in pool.yaml with a value more than 1 which will make sure that the configured number of VMs are in ready state and these VMs will be used when the new build request comes.
 
-#### What is PLUGIN_USERNAME & PLUGIN_PASSWORD used in the jfrog command executing as part of ```Upload Artifacts to JFrog Artifactory``` ?
+#### What is PLUGIN_USERNAME & PLUGIN_PASSWORD used in the jfrog command executing as part of `Upload Artifacts to JFrog Artifactory` ?
 
 This is the creds used to upload the artifact to the jfrog artifactory and this is taken from the artifactory connector
 
-#### Can we run ```Upload Artifacts to JFrog Artifactory``` step with non root user?
+#### Can we run `Upload Artifacts to JFrog Artifactory` step with non root user?
 
-No, jfrog command execution will be creating a folder ```.jfrog``` under / which will fail if the plugin is running with non root user
+No, jfrog command execution will be creating a folder `.jfrog` under / which will fail if the plugin is running with non root user
 
 #### Can we mount our internal CA certs in the CI build pod?
 
-Yes. You can make the certs available to the delegate pod and set the ENV variables ```ADDITIONAL_CERTS_PATH``` and ```CI_MOUNT_VOLUMES``` with the path to the cert bundle on delegate and the source-destination mapping of the certs to get them mounted on build pod. More details on this documented [here](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/)
+Yes.
+
+With a Kubernetes cluster build infrastructure, you can make the certs available to the delegate pod, and then set the ENV variables `ADDITIONAL_CERTS_PATH` and `CI_MOUNT_VOLUMES` with the path to the cert bundle on delegate and the source-destination mapping of the certs to get them mounted on build pod. For more information, go to [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/).
+
+As an alternative, you can set `DESTINATION_CA_PATH`. For `DESTINATION_CA_PATH`, provide a list of paths in the build pod where you want the certs to be mounted, and mount your certificate file to `opt/harness-delegate/ca-bundle`. For more information, go to [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/).
+
+With a local runner build infrastructure, you can use `CI_MOUNT_VOLUMES` to use self-signed certificates. For more information, go to [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
 
 #### How can we include the internal CA certs available in the delegate pod?
 
@@ -300,9 +306,9 @@ The usage of the mounted CA certificates depends on the specific container image
 
 We wouldn't be able to cofigure failure strategy for the defalt implicit clone codebase step. However you can add a git clone step in the pipeline for which the failure strategy configuration will be available.
 
-#### How can we clone the codebase to a different folder other than ```/harness```?
+#### How can we clone the codebase to a different folder other than `/harness`?
 
-The implicit clone codebase step will always clone the repo to ```/harness```. If we want to choose a different folder as the target folder, we could you the git clone step which will allow us to use a custom path as the clone directory
+The implicit clone codebase step will always clone the repo to `/harness`. If we want to choose a different folder as the target folder, we could you the git clone step which will allow us to use a custom path as the clone directory
 
 #### How can we configure the build pod to communicate with the k8s API server?
 
@@ -332,7 +338,7 @@ Eight minutes is the default time out of the initialization step however if the 
 
 We could set up the node selector for the build pod within the advanced section of the infrastructure configuration.
 
-#### Why is the execution failing with the error ```Error: container has runAsNonRoot and image has non-numeric user (harness), cannot verify user is non-root```, when we enable "Run as Non-Root"?
+#### Why is the execution failing with the error `Error: container has runAsNonRoot and image has non-numeric user (harness), cannot verify user is non-root`, when we enable "Run as Non-Root"?
 
 This happens when you enable the option "Run as Non-Root" but not configured the default USRID. When we enable the option "Run as Non-Root", we need to configure a default user ID for all step containers in the Run as User field.
 
@@ -604,3 +610,51 @@ For example, you can [save and restore a cache from an Amazon S3 bucket.](/docs/
 #### Can I use Harness CI for mobile app development?
 
 Yes. [Harness CI offers many options for mobile app development.](/docs/continuous-integration/use-ci/mobile-dev-with-ci)
+
+
+#### Does shared path in SAM Build Manifest shows where the download happens ?
+
+No , shared paths does not dictate where the download happens. There could be multiple shared paths provided , but it does not mean our manifests would be downloaded in that shared path. More details on shared path can be read in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/)
+
+####  Is there a way to pass the branchname in update git metadata api ?
+
+No, we dont have branch name as a input to the git metadata api, we can update only the connector, file path and the repository.
+
+#### How can I change the path of the YAML file for the current pipeline to a non-default branch in another repository in git metadata api ?
+
+As per the API, our objective is to modify the Git metadata that we have stored. GitX does not store the branch as metadata.
+To change the YAML file path for an existing pipeline to a non-default branch in a different repository, you can follow these steps:
+- Copy the YAML file to the target repository's non-default branch.
+- Import the YAML file from the Git repository.
+By following these steps, you can effectively change the path of the YAML file for your pipeline to a non-default branch in another repository.
+
+#### Is it possible to trigger a CI stage by a trigger of type artifact ?
+
+No, this feature is already requested and should be onboarded soon.
+
+#### Where can I find all the listed Codebase options for CI ?
+
+Please find available `<+codebase.*>` listed for CI in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/)
+
+#### Why I can't toggle cache intelligence in my CI pipeline?
+
+Currently, Cache Intelligence is only available for Linux and Windows platforms on Harness Cloud, the Harness-hosted build environment.
+For other build infrastructures, you can use Save and Restore Cache steps, such as Save and Restore Cache from S3, to include caching in your CI pipelines. For more information: [Supported Build Infra](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/#supported-build-infrastructures)
+
+#### How to use an artifact generated on a different stage?
+
+You could use the save/restore cache step or Harness cache intelligence to achieve this use case depending on where your build is running.
+
+#### Is it possible to integrate our CI builds with the Datadog Pipeline Visibility feature?
+
+We do not have OOTB support for Datadog Pipeline Visibility. However, I can suggest the following approach to push the pipeline event to a webhook endpoint: Link to documentation on webhook notifications.
+
+#### How to store mvn project settings.xml in Harness CI?
+
+You can achieve this by storing the XML as a secret and referring to it within a step. For example:
+`echo '<+secrets.getValue("account.[settingsXMLSecretID]")>' > settings.xml`
+
+#### Is it possible to publish custom data, such as outputs from variables or custom messages, strings, or any other information, in the Artifacts tab?
+
+Currently, the only way to publish data in the Artifacts tab is by providing a URL to a publicly accessible location where the artifact is stored. If you do not have any public buckets, you can consider using a private bucket and generating a pre-signed URL to access the artifact.
+This URL can be used in the "file_urls" setting of the Artifact Metadata Publisher plugin to publish the artifact in the Artifacts tab. Another option is to use a different cloud storage provider that allows you to generate temporary URLs for private objects, such as Google Cloud Storage signed URLs or AWS S3 pre-signed URLs.

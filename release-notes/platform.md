@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-10-16:T10:00:30
+date: 2023-10-27:T10:00:30
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -30,9 +30,64 @@ The following deprecated API endpoints will no longer be supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## Latest: Version 81008
+## Latest: Version 81205
 
 ### New features and enhancements
+
+- To improve security, Harness has introduced a feature that allows you to add domain allowlists for Email, Slack, Microsoft Teams, Webhook, and PagerDuty notification channels at the account level. Earlier, this was only supported for fixed URL domains. Now, support has been added for expression URLs. This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the Delegate release notes. (PL-39481, ZD-43735)
+
+- Upgraded the `grpc-protobuf` library from version 1.50.1 to 1.58.0.
+ to resolve CVE-2023-32732. (PL-41147)
+
+- The current [List User Groups by filter API](https://apidocs.harness.io/tag/User-Group/#operation/getBatchUsersGroupList) has a response limit of 10,000 documents. To improve the user experience, we have introduced a new API called Get filtered User Groups (`getFilteredUserGroupsList`) that provides pagination and filter support for fetched user groups with a response limit of 50,000 documents. (PL-41382)
+
+- Upgraded the `org.codehaus.plexus_plexus-utils` library from version 3.0.20 to 4.0.0 to resolve CVE-2022-4244. (PL-41727)
+
+- Upgraded the `yq` library from version 4.35.1 to 4.35.2. (PL-41729)
+
+- Upgraded the `go` library from version 1.21.0 to 1.21.1 to resolve multiple CVEs. (PL-41831)
+
+- Upgraded the `org.eclipse.jetty_jetty-http` library to version 9.4.53.v20231009 to resolve CVE-2023-36478. (PL-41903)
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+- Fixed an issue where the sort filter was not working for delegates. (PL41184, ZD-50573)
+
+     This item is available with Harness Platform version 81205 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- When viewing the audit trail diff for a role, an empty screen was displayed due to a failure in the YAML diff API. (PL-41230)
+   
+   Role audits are updated to show role change details.
+
+- When fetching role assignments for a specific scope, the user group role assignments were not appearing in the response. (PL-41470, ZD-51189)
+
+   This issue has been resolved. Now, if you select **ALL** in the Scope filter while fetching role assignments for a user, all user group role bindings will be displayed across all scopes.
+
+- When listing roles, the referenced by count for each principal type (User, User Group, and Service Account) was showing incorrectly. Now, the issue is fixed, and each principal type's count will show an appropriate count. (PL-42015)
+
+- The issues related to creating role assignments using resource groups and roles have been fixed. The problem was specifically encountered when adding new resources to resource groups or new permissions to roles while creating role assignments. The updates made to the associated resource groups and roles now correctly update the permissions. (PL-42042, ZD-52017)
+
+   The following improvements were made:
+   - Role assignment creation now operates as intended.
+   - Deletion of resources from resource groups and permissions from roles works as expected.
+   - Role assignment recreation functions correctly with updated resource groups and roles.
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### October 16, 2023, Version 81008
+
+##### New features and enhancements
 
 - The HPA configuration setting is now included in the default Kubernetes delegate YAML file. (PL-36021)
 
@@ -60,7 +115,7 @@ The following deprecated API endpoints will no longer be supported:
 
    This item is available with Harness Platform version 81008 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. For more information, go to [Reference existing secret manager secrets](docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/). (PL-41063, ZD-51651)
+- You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. For more information, go to [Reference existing secret manager secrets](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/). (PL-41063, ZD-51651)
 
    This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
@@ -68,17 +123,11 @@ The following deprecated API endpoints will no longer be supported:
 
    This item is available with Harness Platform version 81008 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-<!-- 
-- You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. (PL-40247, ZD-48280)
-
-   This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
--->
-
-### Early access features
+##### Early access features
 
 This release does not include early access features.
 
-### Fixed issues
+##### Fixed issues
 
 - Previously, there was an issue where users who were initially invited through email and later through SCIM were not being added. This issue has now been resolved. Harness has implemented a fix to automatically delete the initial email invite and ensure that SCIM invites are valid even if an email invite was already sent. (PL-41114)
 
@@ -88,14 +137,9 @@ This release does not include early access features.
 
 - Fixed an issue that paused renewal for HashiCorp vaults after renewal attempts failed twice. (PL-41577)
  
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### Version 80909
 

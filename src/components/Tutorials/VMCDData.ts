@@ -21,15 +21,13 @@ import { MODULES } from "../../constants";
             "Deploy a traditional application to AWS EC2 VMs.",
           link: "/tutorials/cd-pipelines/vm/aws",
         },
-        /*
         {
-          title: "Google Cloud Compute Engine",
+          title: "Microsoft Azure",
           module: MODULES.cd,
           description:
-            "Deploy a traditional application to Google Cloud Compute Engine VMs.",
-          link: "/tutorials/cd-pipelines/vm/gcp",
+            "Deploy a traditional application to Microsoft Azure VMs.",
+          link: "/tutorials/cd-pipelines/vm/azure",
         },
-        */
         {
           title: "Physical Data Center",
           module: MODULES.cd,

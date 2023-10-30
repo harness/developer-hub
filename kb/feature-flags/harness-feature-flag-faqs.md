@@ -120,9 +120,9 @@ The ability to run NPM install in your local environment
 Install NPM package at this link: [https://docs.npmjs.com/cli/v7/commands/npm-install]
 
 
-#### How to get started with GitHub/ Git and Feature Flags?
+#### How to get started with GitHub/Git and Feature Flags?
 
-You will need to clone the repository on your machine by leveraging GIT clone '''git clone https://github.com/google-pay/react-store.git''' 
+You need to clone the repository on your machine, for example: `git clone https://github.com/google-pay/react-store.git`
 
 ### How to add a Feature Flags SDK to the project?
 

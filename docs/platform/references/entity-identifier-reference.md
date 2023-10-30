@@ -83,10 +83,6 @@ If you want to edit the Identifier before you save the new entity or resource, y
 
 If you edit an identifier so that it is not unique or invalid, Harness will alert you.
 
-#### Identifier reuse
-
-Identifiers cannot be reused within the same scope, even if one entity was deleted.
-
 ### Identifier examples
 
 Here's a secret with its Identifier in both the Visual and YAML editors.

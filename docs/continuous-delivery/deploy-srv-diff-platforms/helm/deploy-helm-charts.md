@@ -645,5 +645,58 @@ If you want to use the uninstall command in the **Manifest Details**, be aware o
   
  **Password**: Your Google service account file content.
  
+## Active Feature Flags
+:::note
 
+To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io).
+
+:::
+
+<table width="900" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="300" word-wrap="break-word"><b>Flag</b></td>
+        <td width="600"><b>Description</b></td>
+    </tr>
+    <tr>
+        <td>CDS_HELM_STEADY_STATE_CHECK_1_16</td>
+        <td>Allow users leveraging Kubernetes version 1.16 or later to perform steady state check for Helm deployments.</td>
+    </tr>
+    <tr>
+        <td>CDS_HELM_VERSION_3_8_0</td>
+        <td>Sets the default version of Helm to 3.8 when using the Harness Helm delegate.</td>
+    </tr>
+    <tr>
+        <td>CDS_DISABLE_HELM_REPO_YAML_CACHE</td>
+        <td>Disables Helm repository caching on the Harness delegate. Please use the flag if you encounter the `context deadling exceeded` error during parallel Helm deployments. Note that this is a result of known <a href="https://github.com/helm/helm/issues/10735">Helm concurrency issue</a>. By turning on the flag, there might be slight performance degradation in case of very large Helm repositories.</td>
+    </tr>
+    <tr>
+        <td>CDS_K8S_SOCKET_CAPABILITY_CHECK_NG</td>
+        <td>Replaces the HTTP capability check for the Harness Kubernetes connector with socket capability.</td>
+    </tr>
+    <tr>
+        <td>CDS_K8S_SERVICE_HOOKS_NG</td>
+        <td>Enables the Kubernetes and Helm service hooks feature. Service hooks extend the Helm Chart and Kubernetes service <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks">pre-deployment actions</a>. </td>
+    </tr>
+    <tr>
+        <td>CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG</td>
+        <td>Enables steady state check for Helm deployments on Kubernetes clusters using 1.16 or higher.</td>
+    </tr>
+    <tr>
+        <td>CDS_HELM_SEND_TASK_PROGRESS_NG</td>
+        <td>For Helm tasks, this enables the sending of task progress events via log streaming.</td>
+    </tr>
+    <tr>
+        <td>CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG</td>
+        <td>Enables users to configure <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#using-multiple-helm-charts-in-one-harness-service">multiple Helm charts in a Harness service</a>
+, treating the Helm Charts similar to artifacts.</td>
+    </tr>
+    <tr>
+        <td>CDS_HELM_FETCH_CHART_METADATA_NG</td>
+        <td>Exposes <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts">Helm Chart expressions</a> for reference in other steps and settings.</td>
+    </tr>
+    <tr>
+        <td>CDS_OCI_HELM_ECR_CONFIG_SUPPORT_NG</td>
+        <td>Support for ECR as an OCI Helm repo but with temporary credentials.</td>
+    </tr>
+</table>
 
