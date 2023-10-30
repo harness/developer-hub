@@ -20,7 +20,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest: version 81202
+## Latest: version 81300
 
 ### New features and enhancements
 
@@ -31,6 +31,36 @@ This release does not include any new features.
 This release does not include any early access features.
 
 ### Fixed issues
+
+* Previously, the search functionality in the perspective grid was nonfunctional when grouped by cost categories, causing inconvenience in data retrieval. (CCM-14384)
+
+  This issue is fixed now, enabling users to efficiently search within the perspective grid, even when cost categories are applied as grouping criteria.
+
+* Previously, Anomaly alert logic for default perspectives was not functioning correctly. (CCM-14670)
+
+  This issue has been resolved, ensuring accurate anomaly notifications for default perspectives via Slack and email.
+
+* Previously, the Budget explorer chart displayed lower costs due to a query issue. (CCM-14758)
+
+  This issue is fixed by removing the "group by" from the budget time-series query, ensuring more accurate cost representation.
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### October 20, 2023, version 81202
+
+##### New features and enhancements
+
+This release does not include any new features.
+
+##### Early access features
+
+This release does not include any early access features.
+
+##### Fixed issues
 
 * Previously while creating and AutoStopping rule, the k8s cluster selection list only displayed top 100 records, which made it difficult to choose a cluster when the list had more than 100 entries. (CCM-14644)
 
@@ -52,22 +82,17 @@ This bug got introduced recently while supporting ingestion of future-dated entr
   This issue is fixed by making some changes in the underlying budget cost explorer query.
   
 
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
 #### October 12, 2023, version 81100
 
-### New features and enhancements
+##### New features and enhancements
 
 This release does not include any new features.
 
-### Early access features
+##### Early access features
 
 This release does not include any early access features.
 
-### Fixed issues
+##### Fixed issues
 
 * Previously, attempting to edit a cost bucket with operands selected as "NOT NULL/NULL" led to an unexpected error, subsequently hindering the editing of other buckets. (CCM-14519)
 

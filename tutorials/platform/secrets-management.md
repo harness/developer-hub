@@ -54,7 +54,7 @@ Verify that you have the following:
 - The **AWS - Access Key ID** from AWS
 - The **AWS - Secret Key ID** from AWS
 - The **AWS ARN** 
-- A fork of the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
+- A fork of the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
     - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
 - **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
     - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
@@ -134,7 +134,7 @@ You can now use this secret manager in your pipeline.
 Verify that you have the following:
 
 - The [Google Cloud Symmetric Key](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager#obtain-google-cloud-symmetric-key) to get values like **Project ID, Region, Key Ring, Key Name** for the Details page, from Google Cloud Console.
-- A fork of [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
+- A fork of [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
     - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
 - **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
     - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
@@ -203,7 +203,7 @@ Verify that you have the following:
 
 - The **Public Vault Url** from Hashicorp Vault.
 - The **Admin Token** from the Hashicorp Public vault URL.
-- A fork of the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
+- A fork of the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
     - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
 - **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
     - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
@@ -262,7 +262,7 @@ Verify that you have the following:
 
 - The **AWS - Access Key ID** from AWS
 - The **AWS - Secret Key ID** from AWS
-- A fork of the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
+- A fork of the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
     - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
 - **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
     - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
@@ -327,7 +327,7 @@ You can now use this secret manager in your pipeline.
 
 Verify that you have the following:
 
-- A fork of the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
+- A fork of the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
     - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
 - **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
     - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)

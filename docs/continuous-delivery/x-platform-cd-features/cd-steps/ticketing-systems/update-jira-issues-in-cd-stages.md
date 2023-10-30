@@ -35,12 +35,18 @@ You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-featur
 
 ## Use an expression in Issue Key
 
+:::note
+
+Currently, support for fetching issue fields using **Jira Project** and **Issue Type** when **Issue Key** is expressions and runtime inputs is behind the feature flag `CDS_JIRA_UPDATE_SELECT_FIELDS_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 In **Issue Key**, you can use an expression or runtime input to reference the Key ID from another Jira Create or Jira Update step.
 
 Here are some important considerations when using an expression in **Issue Key:**
 
 - The Jira Create or Jira Update step you want to reference must be before the Jira Update step that references it in the stage.
-- Harness uses the **Jira Project** and **Issue Type** you select in **Add Jira Fields** to fetch the list of fields. If you use a runtime expression for **Issue Key** and the Jira project and issue type you selected does not correspond with the issue key provided at runtime, your pipeline could fail to execute successfully. 
+- Harness uses the **Jira Project** and **Issue Type** you select in **Add Jira Fields** to fetch the list of fields. If you use a runtime input or expression for **Issue Key** and the Jira Project and Issue Type you selected does not correspond with the issue key resolved at runtime, your pipeline could fail to execute successfully. 
 
 To use an expression in **Issue Key**, do the following:
 

@@ -627,3 +627,34 @@ To change the YAML file path for an existing pipeline to a non-default branch in
 - Copy the YAML file to the target repository's non-default branch.
 - Import the YAML file from the Git repository.
 By following these steps, you can effectively change the path of the YAML file for your pipeline to a non-default branch in another repository.
+
+#### Is it possible to trigger a CI stage by a trigger of type artifact ?
+
+No, this feature is already requested and should be onboarded soon.
+
+#### Where can I find all the listed Codebase options for CI ?
+
+Please find available `<+codebase.*>` listed for CI in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/)
+
+#### Why I can't toggle cache intelligence in my CI pipeline?
+
+Currently, Cache Intelligence is only available for Linux and Windows platforms on Harness Cloud, the Harness-hosted build environment.
+For other build infrastructures, you can use Save and Restore Cache steps, such as Save and Restore Cache from S3, to include caching in your CI pipelines. For more information: [Supported Build Infra](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/#supported-build-infrastructures)
+
+#### How to use an artifact generated on a different stage?
+
+You could use the save/restore cache step or Harness cache intelligence to achieve this use case depending on where your build is running.
+
+#### Is it possible to integrate our CI builds with the Datadog Pipeline Visibility feature?
+
+We do not have OOTB support for Datadog Pipeline Visibility. However, I can suggest the following approach to push the pipeline event to a webhook endpoint: Link to documentation on webhook notifications.
+
+#### How to store mvn project settings.xml in Harness CI?
+
+You can achieve this by storing the XML as a secret and referring to it within a step. For example:
+`echo '<+secrets.getValue("account.[settingsXMLSecretID]")>' > settings.xml`
+
+#### Is it possible to publish custom data, such as outputs from variables or custom messages, strings, or any other information, in the Artifacts tab?
+
+Currently, the only way to publish data in the Artifacts tab is by providing a URL to a publicly accessible location where the artifact is stored. If you do not have any public buckets, you can consider using a private bucket and generating a pre-signed URL to access the artifact.
+This URL can be used in the "file_urls" setting of the Artifact Metadata Publisher plugin to publish the artifact in the Artifacts tab. Another option is to use a different cloud storage provider that allows you to generate temporary URLs for private objects, such as Google Cloud Storage signed URLs or AWS S3 pre-signed URLs.

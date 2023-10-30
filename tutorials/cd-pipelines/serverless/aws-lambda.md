@@ -44,7 +44,7 @@ Verify the following:
     - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
     - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
     - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
-3. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
+3. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
     - For more information on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 4. **AWS user account with required policy:** Serverless deployments require an AWS user account with specific AWS permissions, as described in [AWS Credentials](https://www.serverless.com/framework/docs/providers/aws/guide/credentials) from Serverless.com. To create the AWS user, do the following in AWS IAM:
 
@@ -217,7 +217,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     </Tabs>
     ```
 
-2. Clone the forked **harnessed-example-apps** repo and change directory.
+2. Clone the forked **harnesscd-example-apps** repo and change directory.
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
     cd harnesscd-example-apps 
@@ -337,7 +337,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     1. Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/github-connector.yml).
     2. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     3. Select **Create via YAML Builder** and paste the copied YAML.
-    4. Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace `GITHUB_USERNAME`  in the YAML with your GitHub account username.
+    4. Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace `GITHUB_USERNAME`  in the YAML with your GitHub account username.
     5. In `projectIdentifier`, replace with the project identifier with yours, for example, `default`. 
     6. Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     7. Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
@@ -346,7 +346,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     1. Copy the contents of [aws-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/aws-connector.yml).
     2. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     3. Select **Create via YAML Builder** and paste the copied YAML.
-    4. Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace `crossAccountRoleArn` in the YAML with your AWS role's ARN. 
+    4. Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace `crossAccountRoleArn` in the YAML with your AWS role's ARN. 
     5. Replace the `accessKey` placeholder with the [AWS access key](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html) for the AWS user you created (with the required policies).
     6. Here we assume the `region` for secret key to be `us-east-1`. Please replace it with the appropriate region.
     7. In `projectIdentifier`, replace with the project identifier with yours, for example, `default`. 
@@ -443,7 +443,7 @@ Verify the following:
     - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
     - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
     - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
-3. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
+3. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
     - For more information on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 4. **AWS S3 bucket with the artifact**, upload the [hello-world.zip](https://github.com/harness-community/harnesscd-example-apps/blob/master/aws-lambda/hello_world.zip) in a new s3 bucket, to be used as an artifact. 
 5. **AWS user account with required policy:** To deploy a Lambda function, you need an AWS Identity and Access Management (IAM) role with the necessary permissions. You will use that role in the credentials you supply to the Harness AWS connector.
@@ -706,7 +706,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     </Tabs>
     ```
 
-2. Clone the forked **harnessed-example-apps** repo and change directory.
+2. Clone the forked **harnesscd-example-apps** repo and change directory.
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
     cd harnesscd-example-apps 
@@ -790,7 +790,7 @@ Harness uses the AWS Lambda [Create Function API](https://docs.aws.amazon.com/la
 
 #### Setting up Lambda functions
 
-1. Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repo, edit the [function-definition.json](https://github.com/harness-community/harnesscd-example-apps/blob/master/aws-lambda/function-definition.json) file in your fork and **add the ARN for your role having full AWS Lambda access** in which you want to deploy the serverless application.
+1. Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repo, edit the [function-definition.json](https://github.com/harness-community/harnesscd-example-apps/blob/master/aws-lambda/function-definition.json) file in your fork and **add the ARN for your role having full AWS Lambda access** in which you want to deploy the serverless application.
 
 2. Use the following CLI command to create a **Service** in your Harness Project. 
 
@@ -842,7 +842,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     1. Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/aws-lambda/harnesscd-pipeline/git-connector.yml).
     2. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     3. Select **Create via YAML Builder** and paste the copied YAML.
-    4. Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace `GITHUB_USERNAME` with your GitHub account username in the YAML.
+    4. Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace `GITHUB_USERNAME` with your GitHub account username in the YAML.
     5. In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
     6. Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     7. Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
@@ -895,7 +895,7 @@ Harness uses the AWS Lambda [Create Function API](https://docs.aws.amazon.com/la
 
 #### Setting up Lambda functions
 
-1. Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repo, edit the [function-definition.json](https://github.com/harness-community/harnesscd-example-apps/blob/master/aws-lambda/function-definition.json) file in your fork and **add the ARN for your role having full AWS Lambda access** in which you want to deploy the serverless application. 
+1. Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repo, edit the [function-definition.json](https://github.com/harness-community/harnesscd-example-apps/blob/master/aws-lambda/function-definition.json) file in your fork and **add the ARN for your role having full AWS Lambda access** in which you want to deploy the serverless application. 
 2. In your Harness project, select **Services**.
     1. Select **New Service**.
     2. Enter the name `harnessserverless`.
