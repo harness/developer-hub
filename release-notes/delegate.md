@@ -34,7 +34,7 @@ Harness NextGen release 81205 includes the following changes for the Harness Del
 
 ### New features and enhancements
 
-- When you [configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/), you can now use `DESTINATION_CA_PATH` instead of `CI_MOUNT_VOLUMES`. For `DESTINATION_CA_PATH`, provide a list of paths in the build pod where you want the certs to be mounted. This also mounts the certs in `opt/harness-delegate/ca-bundle`. (CI-9707)
+- When you [configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/), you can now use `DESTINATION_CA_PATH` instead of `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`. For `DESTINATION_CA_PATH`, provide a list of paths in the build pod where you want the certs to be mounted, and mount your certificate file to `opt/harness-delegate/ca-bundle`.(CI-9707)
 
 - JGit library upgrade (CDS-80715, ZD-51149)
 
