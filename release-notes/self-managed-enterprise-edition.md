@@ -60,6 +60,19 @@ gsutil -m cp \
 
 #### Continuous Delivery & GitOps
 
+- Harness CD has a new account-level setting to override the default behavior when deleting a pipeline, which deletes all past executions of that pipeline as well. (CDS-71173, ZD-50017)
+
+  When `do_not_delete_pipeline_execution_details` is set to `true` (the default), older pipeline executions remain in the system even when the corresponding pipelines are deleted. You can view these executions in the Pipeline Executions list and open them to view details, but you cannot re-run them.
+
+  When `do_not_delete_pipeline_execution_details` is set to `false`, 
+  Harness deletes all executions of a pipeline when that pipeline is deleted.
+
+  If a new pipeline is created with the same Id, the old executions are automatically associated with the new pipeline. This is expected functionality since the pipeline Id is used to associate executions with pipelines.
+
+  To configure this setting, use the [Harness CLI](/docs/platform/automation/cli/reference).
+
+- You can now use the keyword `nodeName` when specifying your matrix axes to define your stage naming convention. Expressions are supported, so you can customize the name as required. (CDS-72523)
+
 - This release improves the UI feedback when executing an Approval step. Previously, the pipeline execution log console could appear stuck at the Approval step even after the pipeline processed the step successfully. This release includes a back-end optimization to ensure that the Pipeline Execution UI processes and displays log messages for Approval steps in real time. (CDS-76996, ZD-48401)
 
 - For generic (non-Docker) artifacts available in Artifactory, you can use an expression to specify the path to the artifact. This filter works in the same way as the artifact filter in Harness FirstGen, and it is useful when you want to fetch artifacts from multiple paths. (CDS-78181)
@@ -89,6 +102,8 @@ gsutil -m cp \
 - In a monitored service, back end license checks and Terraform live monitoring are always on. (SRM-15255)
 
    Now, monitored services can be enabled only from the user interface (through toggle buttons) and the enable API. Monitored services will always be disabled when created and during subsequent updates to them.
+
+- When you create a new delegate, the token that is populated in the YAML or Helm file is modified. Harness first retrieves the default token of the scope. If it is not present, Harness then retrieves the oldest active token from the scope. If neither of these tokens are available, Harness sends a message "No token available. Please create a new token and try again." (PL-40669)
 
 #### Harness Platform
 
@@ -144,6 +159,8 @@ gsutil -m cp \
 - Earlier, in delegate selection logs, the non-selected error message included all mismatched selectors.
 
    Now, the non-selected error message includes only selectors mismatched within the scope. (PL-40651)
+
+- To ensure no sensitive events are sent to unused channels, you can now control notification channels (Email, Slack, Microsoft Teams, PagerDuty, Webhook) from Default Settings at the account-level. (PL-40677)
 
 - Go has been upgraded from version 1.20.5 to version 1.21.0. This upgrade remediates CVE-2023-39533. (PL-40734)
 
@@ -263,6 +280,14 @@ gsutil -m cp \
 
   This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
+- Fixed an issue where ECR image based triggers based on ECR images were firing with null values the for artifact image tag and repository name. (CDS-75173)
+
+  This fix includes the following new expressions:
+  
+  - <+trigger.artifact.source.connectorRef> to access connectorRef in triggers 
+
+  -  <+trigger.artifact.source.imagePath> to access imagePath in triggers 
+
 - You can now view policy-related updates in the Pipeline Execution console view. (CDS-75213, ZD-46498) 
 
 - Fixed a filtering issue on the **Pipeline Executions** page. (CDS-75224)
@@ -350,6 +375,8 @@ gsutil -m cp \
 
 - Fixed an issue where adding a second Artifact Source to an AWS ASG service replaces (rather than adding to) the existing Artifact Source.  (CDS-76843, ZD-49050)
 
+- The payload in the policy step did not support arrays. Now, array elements are supported in the payload. (CDS-76902)
+
 - Fixed an intermittent issue where Helm deployment pipelines would report the Helm repository as not found. (CDS-76919)
 
   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
@@ -363,6 +390,10 @@ gsutil -m cp \
 - Fixed a UI issue when running a pipeline with an input set that  allows multiple choices (checkboxes) for a field. Previously, if no checkboxes were selected for a field, the pipeline set the value to an empty string. This could cause the pipeline execution to fail. With this fix, the pipeline sets field to undefined if no checkboxes are selected. (CDS-77221)
 
 - Fixed an issue where users could not specify runtime inputs for some advanced settings (such as Looping Strategy) in step groups and step group templates. With this fix, runtime inputs are supported for all advanced step group settings. (CDS-77246, ZD-49339, ZD-49427)
+
+- Variables names didn't support hyphens. Harness has added support for hyphens in variable names. (CDS-77293)
+
+   You can use the following expression to evaluate expressions of variables containing hyphens: `<+pipeline.variables.get("variable-wth-hyphen")>`.
 
 - When using the OCI Helm connector with anonymous credentials, Harness would incorrectly derive the source port from the OCI repository and the connection validation would fail. With this fix, Harness does not add default port 443 if no port is provided in the URL itself. (CDS-77298)
 
