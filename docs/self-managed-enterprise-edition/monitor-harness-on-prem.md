@@ -237,7 +237,7 @@ Follow the below steps on your Kubernetes cluster to deploy Grafana:
 
 3. Sign in to the Grafana dashboard home page.
 
-4. Set Prometheus as the datasource:
+4. Set Prometheus as the data source:
   
   Go to settings, select **Data sources**. Then, select **Add data source**. Select **Prometheus**.
 
@@ -271,7 +271,7 @@ Follow the below steps on your Kubernetes cluster to deploy Grafana:
 
 Now you can add a dashboard to view metrics via query.
 
-- To add a dashboard, go to Go to **Dashboards** and then select **New Dashboard** and **Add a new panel**. 
+- To add a dashboard, go to **Dashboards** and then select **New Dashboard** and **Add a new panel**. 
 
 Here are some sample open source dashboards:
 
