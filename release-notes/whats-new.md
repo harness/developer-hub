@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-10-27T10:00
+date: 2023-10-30T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -29,6 +29,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - The event distribution chart now supports plotting a graph for new events. (CET-1610)
 
 - Various dependencies were upgraded to prevent security issues. (CET-1880)
+
+## October 30, 2023
+
+### Continuous Integration version 6404
+
+* The Harness AI Development Assistant (AIDA:tm:) for CI is now generally available. AIDA for CI provides error analysis and remediation for failed pipelines. Harness bases these recommendations on the step logs and the context of the failed step. You must accept the AIDA EULA to enable AIDA in your Harness account. For more information, go to [Troubleshooting with AIDA](http://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida).
+* When you [configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/), you can now use `DESTINATION_CA_PATH` instead of `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`. For `DESTINATION_CA_PATH`, provide a list of paths in the build pod where you want the certs to be mounted, and mount your certificate file to `opt/harness-delegate/ca-bundle`. This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-9707)
+* The individual log line limit is now 25KB. Log lines longer than 25BK are truncated. (CI-9927, ZD-52005, ZD-52079, ZD-52134, ZD-52356)
+* Upgraded built-in steps to support Windows 2022. (CI-9755)
 
 ## October 27, 2023
 

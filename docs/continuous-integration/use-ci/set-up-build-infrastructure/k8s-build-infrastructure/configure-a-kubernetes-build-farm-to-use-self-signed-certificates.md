@@ -47,17 +47,31 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 
    For instructions, go to the Kubernetes documentation on [Configuring a Pod to Use a Volume for Storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/).
 
-   You must specify the following environment variables in the delegate pod:
+   In the delegate pod, you must specify either `DESTINATION_CA_PATH` or *both* `ADDITIONAL_CERTS_PATH` and `CI_MOUNT_VOLUMES`.
 
-   * `ADDITIONAL_CERTS_PATH`: The path to the certificates in the delegate, for example: `/tmp/ca.bundle`.
-   * `CI_MOUNT_VOLUMES`: A comma-separated list of `source:destination` mappings. The `source` is the certificate path on the delegate, and the `destination` is the path where you want to expose the certificates on the build containers, for example: `/tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt`. This list must include *all* certificates that your build containers need to interact with external services.
+   * `DESTINATION_CA_PATH`: Provide a list of paths in the build pod where you want the certs to be mounted, and mount your certificate file to `opt/harness-delegate/ca-bundle`.
 
    ```yaml
-   apiVersion: apps/v1  
-   kind: StatefulSet  
-   spec:  
-     template:  
-       spec:  
+           env:
+           - name: DESTINATION_CA_PATH
+                     value: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
+                   volumeMounts:
+                   - name: certvol
+                     mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
+                     subPath:  ca.bundle
+                 volumes:
+                 - name: certvol
+                   secret:
+                     secretName: addcerts
+                     items:
+                     - key: ca.bundle
+                       path: ca.bundle
+   ```
+
+   * `ADDITIONAL_CERTS_PATH`: The path to the certificates in the delegate, for example: `/tmp/ca.bundle`.
+   * `CI_MOUNT_VOLUMES`: A comma-separated list of `source:destination` mappings where `source` is the certificate path on the delegate, and `destination` is the path where you want to expose the certificates on the build containers. For example: `/tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt`. This list must include *all* certificates that your build containers need to interact with external services.
+
+   ```yaml
            env:  
            - name: ADDITIONAL_CERTS_PATH  
              value: /tmp/ca.bundle  
