@@ -162,43 +162,43 @@ To use Istio, create a VirtualService for Prometheus.
 
 ## Required overrides
 
-Use the following overrides when you install or upgrade your Harness Helm charts. You can add the `monitoring.yaml` file from the Helm charts repo to enable the metrics of all databases and Harness services, or you can enable metrics for each service.
+Use the following overrides when you install or upgrade your Harness Helm charts. You can add the `monitoring.yaml` file from the [Helm charts repo](https://github.com/harness/helm-charts/blob/main/src/harness/monitoring.yaml) to enable the metrics of all databases and Harness services, or you can enable metrics for each service.
 
 :::info note
 For this example, we use the Prometheus operator packaged by Bitnami as an external Prometheus setup.
 :::
 
 ```yaml
-platform:
-  mongodb:
-    metrics:
-      enabled: true
-    podAnnotations:
-      prometheus.io/path: /metrics
-      prometheus.io/port: '9216'
-      prometheus.io/scrape: 'true'
-  redis:
-    metrics:
-      enabled: true
-    podAnnotations:
-      prometheus.io/path: /metrics
-      prometheus.io/port: '9121'
-      prometheus.io/scrape: 'true'
-  timescaledb:
-    prometheus:
-      enabled: true
-    podAnnotations:
-      prometheus.io/path: /metrics
-      prometheus.io/port: '9187'
-      prometheus.io/scrape: 'true'
-infra:
-  postgresql:
-    metrics:
-      enabled: true
-    podAnnotations:
-      prometheus.io/path: /metrics
-      prometheus.io/port: '9187'
-      prometheus.io/scrape: 'true'
+bootstrap:
+  database: 
+    mongodb:
+      metrics:
+        enabled: true
+      podAnnotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: '9216'
+        prometheus.io/scrape: 'true'
+    redis:
+      metrics:
+        enabled: true
+      podAnnotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: '9121'
+        prometheus.io/scrape: 'true'
+    timescaledb:
+      prometheus:
+        enabled: true
+      podAnnotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: '9187'
+        prometheus.io/scrape: 'true'
+    postgresql:
+      metrics:
+        enabled: true
+      podAnnotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: '9187'
+        prometheus.io/scrape: 'true'
 global:
   monitoring:
     enabled: true
@@ -275,11 +275,11 @@ Now you can add a dashboard to view metrics via query.
 
 Here are some sample open source dashboards:
 
-- [MongoDB](https://github.com/dcu/mongodb_exporter/blob/master/grafana_dashboards/dashboard.json)
+- [MongoDB](https://github.com/harness/harness-dashboards/blob/main/SMP_Database/MongoDB_Overview.json)
 
-- [Redis](https://github.com/oliver006/redis_exporter/blob/master/contrib/grafana_prometheus_redis_dashboard.json)
+- [Redis](https://github.com/harness/harness-dashboards/blob/main/SMP_Database/Redis_Overview.json)
 
-- [Timescale/Postgres](https://github.com/prometheus-community/postgres_exporter/blob/master/postgres_mixin/dashboards/postgres-overview.json)
+- [Timescale/Postgres](https://github.com/harness/harness-dashboards/blob/main/SMP_Database/Postgres_Overview.json)
 
 ## Use a server installed in the same cluster as Harness services
 
