@@ -171,7 +171,7 @@ You can select one of the following types of expression for user groups:
 
   Make sure to use user group identifiers and not names in these expressions. 
 
-  Scope indicators needs to be prefixed for account and organization user groups 
+  You must prefix scope indicators for account and organization user groups, for example:
   - `account` for account level user group. For example: `account._account_all_users`
   - `org` for organization level user group. For example: `org._organization_all_users`
   :::
