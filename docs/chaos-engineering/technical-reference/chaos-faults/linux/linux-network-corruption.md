@@ -56,6 +56,16 @@ Linux network corruption injects chaos to disrupt network connectivity on a Linu
     <td> Default: 100% </td>
   </tr>
   <tr>
+    <td> sourcePorts </td>
+    <td> Source ports to be filtered for chaos. For example: <code> 5000,8080 </code> </td>
+    <td> Alternatively, the ports can also be filtered to be exempted from chaos i.e. whitelisted. To specify the exemption, prepend a <code>!</code> before the ports list. For example: <code> !5000,8080 </code> </td>
+  </tr>
+  <tr>
+    <td> destinationPorts </td>
+    <td> Destination ports to be filtered for chaos. For example: <code> 5000,8080 </code> </td>
+    <td> Alternatively, the ports can also be filtered to be exempted from chaos i.e. whitelisted. To specify the exemption, prepend a <code>!</code> before the ports list. For example: <code> !5000,8080 </code> </td>
+  </tr>
+  <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
     <td> Default: 30s </td>
@@ -107,9 +117,58 @@ spec:
     networkInterfaces: "eth0"
 ```
 
+### Source And Destination Ports
+
+By default, the network experiments disrupt traffic for all the source and destination ports. The interruption of specific port(s) can be tuned via `sourcePorts` and `destinationPorts` inputs.
+
+- `sourcePorts`: It contains ports of the target application, the accessibility to which is impacted
+- `destinationPorts`: It contains the ports of the destination services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted
+
+Use the following example to tune this:
+
+[embedmd]:# (./static/manifests/linux-network-corruption/source-and-destination-ports.yaml yaml)
+```yaml
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-network-corruption
+  labels:
+    name: network-corruption
+spec:
+  networkChaos/inputs:
+    destinationIPs: '1.1.1.1'
+    networkInterfaces: "eth0"
+    sourcePorts: "8080,3000"
+    destinationPorts: "5000,3000"
+```
+
+### Ignore Source and Destination Ports
+
+By default, the network experiments disrupt traffic for all the source and destination ports. The specific ports can be ignored via `sourcePorts` and `destinationPorts` inputs.
+
+- `sourcePorts`: Provide the comma separated source ports preceded by `!`, that you'd like to ignore from the chaos.
+- `destinationPorts`: Provide the comma separated destination ports preceded by `!` , that you'd like to ignore from the chaos.
+
+Use the following example to tune this:
+[embedmd]:# (./static/manifests/linux-network-corruption/ignore-source-and-destination-ports.yaml yaml)
+```yaml
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-network-corruption
+  labels:
+    name: network-corruption
+spec:
+  networkChaos/inputs:
+    destinationIPs: '1.1.1.1'
+    networkInterfaces: "eth0"
+    sourcePorts: "!8080,3000"
+    destinationPorts: "!5000,3000"
+```
+
 ### Packet corruption percentage
 
-The `packetCorruptionPercentage` input variable corrupts a specific percentage of data packets. 
+The `packetCorruptionPercentage` input variable corrupts a specific percentage of data packets.
 
 The following YAML snippet illustrates the use of this environment variable:
 
