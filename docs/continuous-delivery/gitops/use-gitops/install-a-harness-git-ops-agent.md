@@ -268,16 +268,28 @@ For steps on setting up the mapping and import, go to [Map Argo projects to Harn
 
 ## Proxy support
 
-The Harness GitOps Agent can work on environments where traffic is routed through a proxy. Perform the following steps to configure proxy support for the agent.
+The Harness GitOps Agent can work on environments where traffic is routed through a proxy. 
+
+To enable proxy support for the Harness GitOps Agent in environments where traffic is routed through a proxy, configuration is required for two key components: the agent itself and the repo-server. Follow these steps to set up proxy support for both components.
 
 1. Make sure that the agent is running in HTTP mode.  
    To verify, check if the property/config `GITOPS_SERVICE_PROTOCOL` value is set to `HTTP1` in the `configmap({agentname}-agent)` present in the YAML after you create the agent.  
    `GITOPS_SERVICE_PROTOCOL: HTTP1`
-2. Add a property/config `HTTPS_PROXY`, and add proxy details, such as URL, port, and auth details as its value in the configmap mentioned in Step 1. For example, `HTTPS_PROXY: "https://squid.proxy-test:3128"`.
-3. Add an environment variable `NO_PROXY` in the Harness GitOps Agent deployment with the following value.  
+2. <b>Agent:</b> Add a property/config `HTTPS_PROXY`, and add proxy details, such as URL, port, and auth details as its value in the configmap mentioned in Step 1. For example, `HTTPS_PROXY: "https://squid.proxy-test:3128"`.
+3. <b>Agent:</b> Add an environment variable `NO_PROXY` in the Harness GitOps Agent deployment with the following value.  
    ```
-   localhost,argocd-repo-server,argocd-dex-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST)
+   localhost,argocd-repo-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST)
    ```
+4. <b>ArgoCD Repo Server</b>: Add the following environment variables and relevant proxy details, such as URL, port, and auth details in the `argocd-repo-server` deployment. 
+  ```
+   - name: HTTPS_PROXY
+    value: "http://squid.proxy-test:3128"
+  - name: HTTP_PROXY
+    value: "http://squid.proxy-test:3128"
+  - name: NO_PROXY
+    value: "localhost,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST),({agentname}-agent)"
+  ``````
+  
 ### Proxy setup for testing
 
    Use the following YAML example to install proxy in any other environment.
