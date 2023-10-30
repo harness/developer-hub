@@ -95,6 +95,16 @@ stringData:
         <td> DNS names (or FQDN names) of the services whose accessibility is affected. </td>
         <td> If it has not been provided, network chaos is induced on all IPs (or destinations). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-network-loss#run-with-destination-ips-and-destination-hosts"> run with destination hosts. </a></td>
       </tr>
+       <tr>
+        <td> SOURCE_PORTS </td>
+        <td> Comma separated ports of the target application, the accessibility to which is impacted. If not provided, it will induce network chaos for all ports. For Example: <code>5000,8080</code> </td>
+        <td> Alternatively, the source ports that should be exempted from the chaos can also be provided by prepending a <code>!</code> before the list of ports. For Example: <code>!5000,8080</code> </td>
+      </tr>
+      <tr>
+        <td> DESTINATION_PORTS </td>
+        <td> Ports of the destination services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted. If not provided, it will induce network chaos for all ports. For Example: <code>5000,8080</code> </td>
+        <td> Alternatively, the destination ports that should be exempted from the chaos can also be provided by prepending a <code>!</code> before the list of ports. For Example: <code>!5000,8080</code> </td>
+      </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
@@ -202,6 +212,76 @@ spec:
           value: 'ubuntu,debian'
         - name: VM_PASSWORD
           value: '123,123'
+```
+
+### Source And Destination Ports
+
+By default, the network experiments disrupt traffic for all the source and destination ports. The interruption of specific port(s) can be tuned via `SOURCE_PORTS` and `DESTINATION_PORTS` ENV.
+
+- `SOURCE_PORTS`: It contains ports of the target application, the accessibility to which is impacted
+- `DESTINATION_PORTS`: It contains the ports of the destination services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted
+
+Use the following example to tune this:
+
+[embedmd]:# (./static/manifests/vmware-network-loss/source-and-destination-ports.yaml yaml)
+```yaml
+# it inject the chaos for the egress traffic for specific ports
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vmware-network-loss
+    spec:
+      components:
+        env:
+        # supports comma separated source ports
+        - name: SOURCE_PORTS
+          value: '80'
+        # supports comma separated destination ports
+        - name: DESTINATION_PORTS
+          value: '8080,9000'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'
+```
+
+### Ignore Source and Destination Ports
+
+By default, the network experiments disrupt traffic for all the source and destination ports. The specific ports can be ignored via `SOURCE_PORTS` and `DESTINATION_PORTS` ENV.
+
+- `SOURCE_PORTS`: Provide the comma separated source ports preceded by `!`, that you'd like to ignore from the chaos.
+- `DESTINATION_PORTS`: Provide the comma separated destination ports preceded by `!` , that you'd like to ignore from the chaos.
+
+Use the following example to tune this:
+
+[embedmd]:# (./static/manifests/vmware-network-loss/ignore-source-and-destination-ports.yaml yaml)
+```yaml
+# ignore the source and destination ports
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vmware-network-loss
+    spec:
+      components:
+        env:
+        # it will ignore 80 and 8080 source ports
+        - name: SOURCE_PORTS
+          value: '!80,8080'
+        # it will ignore 8080 and 9000 destination ports
+        - name: DESTINATION_PORTS
+          value: '!8080,9000'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'
 ```
 
 ###  Network interface
