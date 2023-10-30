@@ -19,7 +19,18 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: October 27, 2023
+
+## Latest: October 31, 2023
+
+### Continuous Error Tracking, version ET-Service 5.30.0
+
+- The Summary page loading time has been optimized. Now, the Summary page loads faster, ensuring a better user experience. (CET-1233)
+
+- The event distribution chart now supports plotting a graph for new events. (CET-1610)
+
+- Various dependencies were upgraded to prevent security issues. (CET-1880)
+
+## October 27, 2023
 
 ### Continuous Delivery, version 81205
 
