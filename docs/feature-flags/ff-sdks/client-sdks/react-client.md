@@ -161,8 +161,6 @@ options={{ // OPTIONAL: advanced options
         baseUrl: 'https://url-to-access-flags.com',
         eventUrl: 'https://url-for-events.com',
         streamEnabled: true,
-        allAttributesPrivate: false,
-        privateAttributeNames: ['customAttribute'],
         debug: true
       }}
 ```
