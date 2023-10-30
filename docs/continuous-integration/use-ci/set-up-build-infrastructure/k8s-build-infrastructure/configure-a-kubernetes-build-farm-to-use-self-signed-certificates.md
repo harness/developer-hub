@@ -47,10 +47,11 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 
    For instructions, go to the Kubernetes documentation on [Configuring a Pod to Use a Volume for Storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/).
 
-   You must specify the following environment variables in the delegate pod:
+   In the delegate pod, you must specify the environment variables `ADDITIONAL_CERTS_PATH` and *either* `DESTINATION_CA_PATH` or `CI_MOUNT_VOLUMES`:
 
    * `ADDITIONAL_CERTS_PATH`: The path to the certificates in the delegate, for example: `/tmp/ca.bundle`.
-   * `CI_MOUNT_VOLUMES`: A comma-separated list of `source:destination` mappings. The `source` is the certificate path on the delegate, and the `destination` is the path where you want to expose the certificates on the build containers, for example: `/tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt`. This list must include *all* certificates that your build containers need to interact with external services.
+   * `DESTINATION_CA_PATH`: Provide a list of paths in the build pod where you want the certs to be mounted. This also mounts the certs in `opt/harness-delegate/ca-bundle`.
+   * `CI_MOUNT_VOLUMES`: A comma-separated list of `source:destination` mappings where `source` is the certificate path on the delegate, and `destination` is the path where you want to expose the certificates on the build containers. For example: `/tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt`. This list must include *all* certificates that your build containers need to interact with external services.
 
    ```yaml
    apiVersion: apps/v1  

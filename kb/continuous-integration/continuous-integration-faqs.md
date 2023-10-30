@@ -44,7 +44,7 @@ To achieve conditional step execution based on changes to a specific file, you c
 #### How can we share a failed step's output in a pull request comment as part of a CI pipeline execution?
 Below given one of the methods with which we could achieve this.
 
-- Modify the failed step's command to save output to a file: ```your_command 2>&1 | tee output_file.log```
+- Modify the failed step's command to save output to a file: `your_command 2>&1 | tee output_file.log`
 - Read the file's content in a subsequent step which is configured to run always
 - Use the GitHub API to add a comment to the pull request, including details from the file.
 
@@ -264,7 +264,7 @@ Yes. The remote debug ssh session details will only be shown after a step failur
 
 Remote debug session will only be presented if there is a failure in the pipeline. If the pipeline is executing successfully but we still want to have the debug session for troubleshooting purpose, we could add a run step with command ```exit 1```   which will fail the build and you can then rerun it in debug mode
 
-#### Why can we not see the option ```Re-run in debug mode``` for a new pipeline?
+#### Why can we not see the option `Re-run in debug mode` for a new pipeline?
 
 Debug mode is not available for the first build of the pipeline. We should run the pipeline atleast once to be able to run it in debug mode.
 
@@ -276,17 +276,23 @@ No, We will terminate the VM right after a stage execution and a new VM will be 
 
 We could have configured the value for the pool size in pool.yaml with a value more than 1 which will make sure that the configured number of VMs are in ready state and these VMs will be used when the new build request comes.
 
-#### What is PLUGIN_USERNAME & PLUGIN_PASSWORD used in the jfrog command executing as part of ```Upload Artifacts to JFrog Artifactory``` ?
+#### What is PLUGIN_USERNAME & PLUGIN_PASSWORD used in the jfrog command executing as part of `Upload Artifacts to JFrog Artifactory` ?
 
 This is the creds used to upload the artifact to the jfrog artifactory and this is taken from the artifactory connector
 
-#### Can we run ```Upload Artifacts to JFrog Artifactory``` step with non root user?
+#### Can we run `Upload Artifacts to JFrog Artifactory` step with non root user?
 
-No, jfrog command execution will be creating a folder ```.jfrog``` under / which will fail if the plugin is running with non root user
+No, jfrog command execution will be creating a folder `.jfrog` under / which will fail if the plugin is running with non root user
 
 #### Can we mount our internal CA certs in the CI build pod?
 
-Yes. You can make the certs available to the delegate pod and set the ENV variables ```ADDITIONAL_CERTS_PATH``` and ```CI_MOUNT_VOLUMES``` with the path to the cert bundle on delegate and the source-destination mapping of the certs to get them mounted on build pod. More details on this documented [here](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/)
+Yes.
+
+With a Kubernetes cluster build infrastructure, you can make the certs available to the delegate pod, and then set the ENV variables `ADDITIONAL_CERTS_PATH` and `CI_MOUNT_VOLUMES` with the path to the cert bundle on delegate and the source-destination mapping of the certs to get them mounted on build pod. For more information, go to [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/).
+
+As an alternative to `CI_MOUNT_VOLUMES`, you can set `DESTINATION_CA_PATH`. For `DESTINATION_CA_PATH`, provide a list of paths in the build pod where you want the certs to be mounted. This also mounts the certs in `opt/harness-delegate/ca-bundle`. For more information, go to [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/).
+
+With a local runner build infrastructure, you can use `CI_MOUNT_VOLUMES` to use self-signed certificates. For more information, go to [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
 
 #### How can we include the internal CA certs available in the delegate pod?
 
@@ -300,9 +306,9 @@ The usage of the mounted CA certificates depends on the specific container image
 
 We wouldn't be able to cofigure failure strategy for the defalt implicit clone codebase step. However you can add a git clone step in the pipeline for which the failure strategy configuration will be available.
 
-#### How can we clone the codebase to a different folder other than ```/harness```?
+#### How can we clone the codebase to a different folder other than `/harness`?
 
-The implicit clone codebase step will always clone the repo to ```/harness```. If we want to choose a different folder as the target folder, we could you the git clone step which will allow us to use a custom path as the clone directory
+The implicit clone codebase step will always clone the repo to `/harness`. If we want to choose a different folder as the target folder, we could you the git clone step which will allow us to use a custom path as the clone directory
 
 #### How can we configure the build pod to communicate with the k8s API server?
 
@@ -332,7 +338,7 @@ Eight minutes is the default time out of the initialization step however if the 
 
 We could set up the node selector for the build pod within the advanced section of the infrastructure configuration.
 
-#### Why is the execution failing with the error ```Error: container has runAsNonRoot and image has non-numeric user (harness), cannot verify user is non-root```, when we enable "Run as Non-Root"?
+#### Why is the execution failing with the error `Error: container has runAsNonRoot and image has non-numeric user (harness), cannot verify user is non-root`, when we enable "Run as Non-Root"?
 
 This happens when you enable the option "Run as Non-Root" but not configured the default USRID. When we enable the option "Run as Non-Root", we need to configure a default user ID for all step containers in the Run as User field.
 
