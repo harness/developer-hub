@@ -1700,6 +1700,14 @@ The `<+trigger.artifact.build>` used for **Tag** makes sure that the new art
 
 Adding a new tag to the artifact fires the trigger and executes the pipeline. Harness resolves `<+trigger.artifact.build>` to the tag that fired the trigger. This makes sure that the new tag is used when pulling the artifact and the new artifact version is deployed.
 
+### <+trigger.artifact.source.connectorRef>
+
+Resolves to the Harness connector Id for the connector used to monitor the artifact registry that fired the trigger.
+
+### <+trigger.artifact.source.imagePath>
+
+Resolves to the image path for the artifact that fired the trigger.
+
 ### Git trigger and payload expressions
 
 Harness includes built-in expressions for referencing trigger details such as a PR number.
