@@ -74,7 +74,6 @@ After setting up the Anka Controller and Registry, you can set up [Anka Virtuali
    * Advanced details - Tenancy host ID: Select your mac-m2 dedicated host.
    * User data: Refer to the Anka documentation on [User data](https://docs.veertu.com/anka/aws-ec2-mac/#user-data-envs).
    * Network settings: **Allow HTTP Traffic from the Internet** might be required to use virtualization platforms, such as VNC viewer.
-   * Inbound rules: Allow ingress on port 5900. This is required to [Connect to your instance's GUI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-mac-instances.html#connect-to-mac-instance:~:text=public%2Ddns%2Dname-,Connect%20to%20your%20instance%27s%20graphical%20user%20interface,-(GUI)).
 
     The first three minutes of this [Veertu YouTube video](https://www.youtube.com/watch?v=DoRaiMklIP0) briefly demonstrate the Anka community AMI set up process, include details about **User data**.
 
@@ -131,7 +130,7 @@ instances:
      arch: amd64
    spec:
      account:
-       username: anka-user
+       username: anka-user # User name of the Anka Virtualization machine.
        password: admin
      vm_id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx
      registry_url: https://anka-controller.myorg.com:8089 # Specify the Anka Controller URL.
