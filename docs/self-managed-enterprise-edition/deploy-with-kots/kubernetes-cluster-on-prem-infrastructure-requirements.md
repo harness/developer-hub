@@ -19,6 +19,10 @@ Maintenance mode means the following:
 
 :::
 
+:::info important
+
+Harness will no longer support KOTS based installations and upgrades beginning December 1, 2023. Harness customer support will not take any incoming questions on KOTs after end of business PST on December 1, 2023. :::
+
 Installation of Harness Self-Managed Enterprise Edition in an existing Kubernetes cluster requires the following infrastructure.
 
 ## Production environment
