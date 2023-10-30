@@ -527,6 +527,24 @@ Here's an example of decrypted Terraform JSON output:
 }
 ```
 
+## Skip state storage
+
+While running Terraform commands on the delegate, Harness by default will try to detect if there is a local state file in the Terraform working directory.
+
+If local state file is identified, at the end of the execution it is saved on Harness storage with a key based on the provisioner identifier.
+
+That state file is downloaded in the Terraform working directory for subsequent executions, and the updated state is uploaded after execution ends.
+
+This method allows the maintaining of the state of the infrastructure even if there is no Terraform backend configured.
+
+This is more for testing purposes. For production environments, Harness advises you configure a backend in your Terraform config files. For information, go to [Backend Configuration](https://developer.hashicorp.com/terraform/language/settings/backends/configuration).
+
+With the **Skip state storage** option enabled, Harness allows you to skip the local state upload and download operations mentioned above.
+
+This option makes is useful only if you do not have a Terraform backed configured in your Terraform config files. If you have a Terraform backed configured, then the Terraform CLI will not create any local state files.
+
+If the Terraform Apply step is configured to skip state storage, and there is no backend configured in your Terraform files, you should not add a rollback step, as this is an invalid setup. Rollback is impossible if there is no state file.
+
 
 ## Command line options
 
