@@ -1,20 +1,12 @@
 ---
-title: Build and Push to GCR (Pending deprecation)
+title: Build and Push to GCR
 description: Use a CI pipeline to build and push an image to GCR.
-sidebar_position: 200
+sidebar_position: 50
 helpdocs_topic_id: gstwrwjwgu
 helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
-:::caution
-
-Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr). The Build and Push to GCR step is pending deprecation. Instead, use the [Build and Push to GAR step](./build-and-push-to-gar.md).
-
-Upon deprecation, backwards compatibility is not guaranteed. You are encouraged to replace Build and Push to GCR steps with Build and Push to GAR steps as soon as possible.
-
-:::
 
 This topic explains how to configure the **Build and Push to GCR** step in a Harness CI pipeline. This step is used to build and push to [Google Container Registry (GCR)](https://cloud.google.com/container-registry).
 
