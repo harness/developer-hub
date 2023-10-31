@@ -1,5 +1,5 @@
 ---
-title: Build and Push to GitHub Container Registry
+title: Build and Push to GHCR
 description: Use a CI pipeline to build and push an image to GitHub Container Registry.
 sidebar_position: 50
 helpdocs_topic_id: q6fr5bj63w
