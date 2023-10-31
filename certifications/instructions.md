@@ -1,4 +1,5 @@
 ---
+sidebar_position: 6
 description: Hands On Labs Instructions
 title: Hands on Labs instructions
 ---

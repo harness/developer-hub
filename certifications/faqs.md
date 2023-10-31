@@ -1,4 +1,5 @@
 ---
+sidebar_position: 7
 description: Harness Certifications FAQ 
 title: Harness Certifications Frequently Asked Questions (FAQ)
 
