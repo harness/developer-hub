@@ -57,7 +57,7 @@ Install the Anka Controller and Registry on your Linux-based EC2 instance. For m
 7. [Configure Anka settings in docker-compose.yml.](https://docs.veertu.com/anka/anka-build-cloud/getting-started/setup-controller-and-registry/#configuration)
 8. Run `docker-compose up -d` to start the containers.
 9. Run `docker ps -a` and verify the `anka-controller` and `anka-registry` containers are running.
-10. Optionally, you can [enable token authentication for the controller and registry](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/root-token-authentication/).
+10. Optionally, you can [enable token authentication for the Controller and Registry](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/root-token-authentication/).
 
 ## Set up Anka Virtualization
 
@@ -115,30 +115,43 @@ The `pool.yml` file defines the VM pool size, the Anka Registry host location, a
    ```
 
 3. In the `/runner` folder, create a `pool.yml` file.
-4. Modify `pool.yml` as described in the following example. You can configure multiple pools in pool.yml, but you can only specify one pool (by `name`) in each Build (`CI`) stage in Harness.
+4. Modify `pool.yml` as described in the following example and the [Pool settings reference](#pool-settings-reference). You can configure multiple pools in pool.yml, but you can only specify one pool (by `name`) in each Build (`CI`) stage in Harness.
 
 ```yaml
 version: "1"
 instances:
- - name: anka-build # Unique identifier of the pool. You will need to specify this pool name in the Harness Manager when you set up the CI stage build infrastructure.
+ - name: anka-build
    default: true
    type: ankabuild
-   pool: 2 # Warm pool size number. Denotes the number of VMs in ready state to be used by the runner.
-   limit: 100 # Maximum number of VMs the runner can create at any time. 'pool' indicates the number of warm VMs, and the runner can create more VMs on demand up to the 'limit'.
+   pool: 2
+   limit: 10
    platform:
      os: darwin
      arch: amd64
    spec:
      account:
-       username: anka-user # User name of the Anka Virtualization machine.
+       username: anka
        password: admin
      vm_id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx
-     registry_url: https://anka-controller.myorg.com:8089 # Specify the Anka Controller URL.
-     tag: 1.0.6 # VM template tag
-     auth_token: sometoken # Required if you enable token authentication for the Controller and Registry.
+     registry_url: https://anka-controller.myorg.com:8089
+     tag: 1.0.6
+     auth_token: sometoken
 ```
 
-For more information about `pool.yml` settings, go to the Drone documentation for the [Pool File](https://docs.drone.io/runner/vm/configuration/pool/) and [Anka drivers](https://docs.drone.io/runner/vm/drivers/anka/).
+#### Pool settings reference
+
+You can configure the following settings in your `pool.yml` file. You can also learn more in the Drone documentation for the [Pool File](https://docs.drone.io/runner/vm/configuration/pool/) and [Anka drivers](https://docs.drone.io/runner/vm/drivers/anka/).
+
+| Setting | Type | Description |
+| ------- | ---- | ----------- |
+| `name` | String | Unique identifier of the pool. You will need to specify this pool name in Harness when you [set up the CI stage build infrastructure](#specify-build-infrastructure). |
+| `pool` | Integer | Warm pool size number. Denotes the number of VMs in ready state to be used by the runner. |
+| `limit` | Integer | Maximum number of VMs the runner can create at any time. `pool` indicates the number of warm VMs, and the runner can create more VMs on demand up to the `limit`.<br/>For example, assume `pool: 3` and `limit: 10`. If the runner gets a request for 5 VMs, it immediately provisions the 3 warm VMs (from `pool`) and provisions 2 more, which are not warm and take time to initialize. |
+| `username`, `password` | Strings | User name and password of the Anka VM in the Anka Virtualization machine (the mac-m2 EC2 machine). These are set when you [run anka create](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/creating-vms/#:~:text=After%20executing%20anka%20create%2C%20Anka%20will%20automatically%20set%20up%20macOS%2C%20create%20the%20user%20anka%20with%20password%3A%20admin%2C%20disable%20SIP%2C%20and%20enable%20VNC%20for%20you.%20The%20VM%20will%20then%20be%20stopped.). |
+| `vm_id` | String - ID | ID of the Anka VM. |
+| `registry_url` | String - URL | Registry/Controller URL and port. This URL must be reachable by your Anka nodes. You can configure `ANKA_ANKA_REGISTRY` in your [Controller's docker-compose.yml](https://docs.veertu.com/anka/anka-build-cloud/configuration-reference/). |
+| `tag` | String - Tag | [Anka VM template tag.](https://docs.veertu.com/anka/anka-build-cloud/getting-started/registry-vm-templates-and-tags/) |
+| `auth_token` | String - Token | Required if you [enabled token authentication for the Controller and Registry](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/root-token-authentication/). |
 
 ### Start the runner
 
