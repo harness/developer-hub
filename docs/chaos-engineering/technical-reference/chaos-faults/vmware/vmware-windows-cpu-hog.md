@@ -18,6 +18,7 @@ VMware Windows CPU hog applies stress on the CPU resources on Windows OS based V
 :::note
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443. 
+- Adequate vCenter permissions should be provided to access the hosts and the VMs.
 - VMware tool should be installed on the target VM with remote execution enabled.
 - The VM should be in a healthy state before and after injecting chaos.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`.
