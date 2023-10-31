@@ -57,7 +57,20 @@ gsutil -m cp \
 
 #### Self-Managed Enterprise Edition
 
-- 
+- Pod Disruption Budgets (PDBs) have been added to all applicable deployments/StatefulSets. (SMP-777)
+
+- You can now set annotations and labels globally for all resources by adding the `commonAnnotations` and `commonLabels` settings under global in your `override.yaml` file. (SMP-1216, ZD-42336, ZD-43006)
+
+   For example:
+
+   ```yaml
+   global:
+       commonAnnotations: {kubernetes.azure.com/no-http-proxy-vars: "true"}
+       commonLabels: {kubernetes.azure.com/no-http-proxy-vars: "true"}
+   ```
+
+- You can now use external secrets for license values in Helm charts. (SMP-1839, ZD-49341, ZD-52283)
+
 
 #### Continuous Delivery & GitOps
 
@@ -107,6 +120,8 @@ gsutil -m cp \
 #### Harness Platform
 
 - The Roles page now supports a list view in addition to the existing card view. In addition to the information shown in the card view, the list view shows you which resources are selected for the role. To see the list view, in the top-right corner of the Roles page, select the list view button. (PL-32183)
+
+- The project and account overview pages are now accessible in Self-Managed Enterprise Edition. (PL-39183)
 
 -  The delegate Helm chart is now included in the delegate proxy configuration. You can pull the Helm chart from `https://<YOUR_LOADBALANCER_URL>/storage/harness-download/delegate-helm-chart/`. (PL-39190)
 
@@ -201,7 +216,27 @@ gsutil -m cp \
 
 #### Self-Managed Enterprise Edition
 
-- 
+- Helm override files didn't include pod annotations for MongoDB and the verification service. (SMP-1285)
+
+   This issue is fixed. Helm override files and databases now include pod annotations. 
+
+- To avoid connection resets from load balancers that have a fixed idle timeout (AWS NLB: 350s), Harness has added support to configure the maximum idle timeout for the gateway's HTTP client as follows: (SMP-1926)
+
+    ```yaml
+      gateway:
+          additionalConfigs:
+            HTTP_CLIENT_POOL_MAX_IDLE_TIME: "300s"
+    ```
+
+- Fixed an issue in the `override-prod.yaml` file in the 0.9.0 release that caused invalidation errors. (SMP-2121)
+
+- Fixed an issue where the global.ingress.objects.annotation field was not being templated correctly. (SMP-2125)
+
+- Disabled creation of MongoDB and PostgreSQL secrets with external databases. (SMP-2164, ZD-52250)
+
+#### Chaos Engineering
+
+- Fixed an issue with the error message when an experiment is completed with a lower resilience than expected. (CHAOS-2018)
 
 #### Continuous Delivery & GitOps
 
