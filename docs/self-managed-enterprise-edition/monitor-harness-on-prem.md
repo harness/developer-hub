@@ -312,7 +312,7 @@ Harness has the following comprehensive metrics available for the services:
 - JVM Threads Blocked / Deadlock State
 - DW Threads Utilization
 
-You can view the metrics by importing the System Observability Dashboard in our [Harness Dashboards repository](https://github.com/harness/harness-dashboards/).
+You can view the metrics by importing the [System Observability Dashboard](https://github.com/harness/harness-dashboards/blob/main/System_Health/System_Observability_Dashboard.json) in our [Harness Dashboards repository](https://github.com/harness/harness-dashboards/).
 
 To load the dashboard, do the following:
 
