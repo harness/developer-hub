@@ -47,7 +47,7 @@ These are the requirements to configure an Azure Application and VM. This VM is 
 5. Make sure the Azure Application is a Contributor on the subscription.
 6. Go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines) and launch your Azure VM.
 7. [Install Docker](https://docs.docker.com/desktop/vm-vdi/) on the VM.
-8. [Install Docker Compose](https://docs.docker.com/compose/install/) on the VM. You must install [Docker Compose version 3.7](https://docs.docker.com/compose/compose-file/compose-versioning/#version-37) or higher.
+8. [Install Docker Compose](https://docs.docker.com/compose/install/) on the VM.
 
 ## Configure the Drone pool on the Azure VM
 
@@ -148,7 +148,7 @@ The `account` settings (`client_id`, `client_secret`, `subscription_id`, and `te
 
 | Setting | Type | Example | Description |
 | ------- | ---- | ------- | ----------- |
-| `name` | String | `name: windows_pool` | Unique identifier of the pool. You will need to specify this pool name in the Harness Manager when you set up the CI stage build infrastructure. |
+| `name` | String | `name: windows_pool` | Unique identifier of the pool. You will need to specify this pool name in Harness when you [set up the CI stage build infrastructure](#specify-build-infrastructure). |
 | `pool` | Integer | `pool: 1` | Warm pool size number. Denotes the number of VMs in ready state to be used by the runner. |
 | `limit` | Integer | `limit: 3` | Maximum number of VMs the runner can create at any time. `pool` indicates the number of warm VMs, and the runner can create more VMs on demand up to the `limit`.<br/>For example, assume `pool: 3` and `limit: 10`. If the runner gets a request for 5 VMs, it immediately provisions the 3 warm VMs (from `pool`) and provisions 2 more, which are not warm and take time to initialize. |
 | `platform` | Key-value pairs, strings | `platform: os: linux arch: amd64 variant: VERSION` | Specify VM platform operating system (`os`) and architecture (`arch`). `variant` is optional. |
