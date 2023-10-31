@@ -119,7 +119,7 @@ This release does not include early access features.
 
 ##### New features and enhancements
 
-This release does not include new features. 
+- In the STO Overview, **Today's Snapshot** shows new and remediated issue counts if today's issue counts include any newly detected vulnerabilities or new remddiations. (STO-4998) 
 
 ##### Early access
 
