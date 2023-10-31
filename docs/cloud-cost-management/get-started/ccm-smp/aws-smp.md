@@ -752,221 +752,149 @@ CE_AWS_TEMPLATE_URL: <CE_AWS_TEMPLATE_URL> [AWS Setup - Create S3 buckets step -
 
 ```
 environment = "production"
-
 debug = false
-
 shutdownTimeout = "5s"
 
 [config.vault]
-
 enabled = false
-
 address = ""
-
 token = ""
-
 secretPath = ""
 
 [log]
-
 format = "json"
-
 level = "info"
 
 [metrics]
-
-enabled = true
-
+enabled = false
 address = ":9090"
 
 [jaeger]
-
 enabled = false
 
 # Configure either collectorEndpoint or agentEndpoint.
-
 # When both are configured collectorEndpoint will take precedence and the exporter will report directly to the collector.
-
 collectorEndpoint = "http://localhost:14268/api/traces?format=jaeger.thrift"
-
 agentEndpoint = "localhost:6831"
-
 # username = ""
-
 # password = ""
 
 [app]
-
 address = ":8000"
-
 basePath = "/"
 
 [scrape]
-
 enabled = true
-
 interval = "24h"
 
 [provider.amazon]
-
 enabled = true
 
 # See available regions in the documentation:
-
 # https://aws.amazon.com/about-aws/global-infrastructure/regions_az
-
 region = "us-east-1" [AWS Setup - Region where user is set up]
 
 # Static credentials
-
 accessKey = "" [AWS Setup - Add a new user - Use saved aws access key]
-
 secretKey = "" [AWS Setup - Add a new user- Use saved aws secret key]
 
 # Shared credentials
-
 # sharedCredentialsFile = ""
-
 # profile = ""
 
 # http address of a Prometheus instance that has AWS spot price metrics via banzaicloud/spot-price-exporter.
-
 # If empty, the cloudinfo app will use current spot prices queried directly from the AWS API.
-
 prometheusAddress = ""
 
 # advanced configuration: change the query used to query spot price info from Prometheus.
-
 prometheusQuery = "avg_over_time(aws_spot_current_price{region=\"%s\", product_description=\"Linux/UNIX\"}[1w])"
 
 # Amazon pricing API credentials (optional)
-
 # Falls back to the primary credentials.
-
 [provider.amazon.pricing]
-
 # See available regions in the documentation:
-
 #  
-
-# region = "us-east-1" [AWS Setup - Region where user is set up]
+region = "us-east-1" [AWS Setup - Region where user is set up]
 
 # Static credentials
-
-# accessKey = "" [AWS Setup - Add a new user - Use saved aws access key]
-
-# secretKey = "" [AWS Setup - Add a new user- Use saved aws secret key]
+accessKey = "" [AWS Setup - Add a new user - Use saved aws access key]
+secretKey = "" [AWS Setup - Add a new user- Use saved aws secret key]
 
 # Shared credentials
-
 # sharedCredentialsFile = ""
-
 # profile = ""
 
 [provider.google]
-
-enabled = true
+enabled = false
 
 # base64 encoded credentials in json format (base64 encoded content of the credential file)
-
 # credentials = ""
 
-credentialsFile = "/config/gcp-creds.json"
+# credentialsFile = ""
 
-project = ""
+# project = ""
 
 [provider.alibaba]
-
 enabled = false
 
 # region = ""
-
 # accessKey = ""
-
 # secretKey = ""
 
 [provider.oracle]
-
 enabled = false
 
 # tenancy = ""
-
 # user = ""
-
 # region = ""
-
 # fingerprint = ""
-
 # privateKey = ""
-
 # privateKeyPassphrase = ""
 
 # configFilePath = ""
-
 # profile = ""
 
 [provider.azure]
+enabled = false
 
-enabled = true
-
-subscriptionId = ""
+# subscriptionId = ""
 
 # Client credentials
-
-clientId = ""
-
-clientSecret = ""
-
-tenantId = ""
+# clientId = ""
+# clientSecret = ""
+# tenantId = ""
 
 [provider.digitalocean]
-
 enabled = false
 
 [provider.vsphere]
-
 enabled = false
 
 # accessToken = ""
 
 [management]
-
 enabled = true
-
 address = ":8001"
 
 [serviceloader]
-
 serviceConfigLocation = "./configs"
-
 serviceConfigName = "services"
-
 format = "yaml"
 
 [store.redis]
-
 enabled = false
-
 host = "localhost"
-
 port = 6379
 
 [store.cassandra]
-
 enabled = false
-
 hosts = "localhost"
-
 port = 9042
-
 keyspace = "cloudinfo"
-
 table = "products"
 
 [store.gocache]
-
 expiration = 0
-
 cleanupInterval = 0
 ```
 </details>
