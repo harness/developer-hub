@@ -613,19 +613,15 @@ global:
     enabled: true
   license:
     ng: <SMP NG License with CCM>
+  database:
+    clickhouse:
+      enabled: true
 
 ccm:
-  clickhouse:
-      enabled: true
   batch-processing:
     cloudProviderConfig:
       S3_SYNC_CONFIG_BUCKET_NAME: <S3_SYNC_CONFIG_BUCKET_NAME> [AWS Setup - bucket name from here 'harness-ccm-service-data-bucket-<accountid>']
       S3_SYNC_CONFIG_REGION: <S3_SYNC_CONFIG_REGION> [AWS Setup - Create S3 buckets step - Use region from here]
-    clickhouse:
-      enabled: true
-  nextgen-ce:
-    clickhouse:
-      enabled: true
 ```
 </details>
 
@@ -649,7 +645,7 @@ global:
   # -- Set the `global.proxy.username` parameter and `global.proxy.password` parameter by specifying the proxy username and password. If not required, remove it or leave it blank.
   # -- Set the `global.proxy.protocol` parameter by specifying http or https depending on the proxy configuration.
   proxy:
-    enabled: false
+    enabled: true
     host: localhost
     port: 80
     username: ""
@@ -662,28 +658,27 @@ global:
   # -- Set the ECS (Elastic Container Service) endpoint URL in the `global.awsServiceEndpointUrls.ecsEndPointUrl` parameter.
   # -- Set the CloudWatch endpoint URL in the `global.awsServiceEndpointUrls.cloudwatchEndPointUrl` parameter.
   awsServiceEndpointUrls:
-    enabled: false
+    enabled: true
     endPointRegion: us-east-2
     stsEndPointUrl: https://sts.us-east-2.amazonaws.com
     ecsEndPointUrl: https://ecs.us-east-2.amazonaws.com
     cloudwatchEndPointUrl: https://monitoring.us-east-2.amazonaws.com
+  database:
+    clickhouse:
+      enabled: true
 
 ccm:
-  clickhouse:
-      enabled: true
   batch-processing:
     cloudProviderConfig:
       S3_SYNC_CONFIG_BUCKET_NAME: <S3_SYNC_CONFIG_BUCKET_NAME> [AWS Setup - bucket name from here 'harness-ccm-service-data-bucket-<accountid>']
       S3_SYNC_CONFIG_REGION: <S3_SYNC_CONFIG_REGION> [AWS Setup - Create S3 buckets step - Use region from here]
-    clickhouse:
-      enabled: true
     # -- To enable the use of a proxy for AWS S3 sync, set the `ccm.batch-processing.cliProxy.enabled` parameter to true.
     # -- Set the `ccm.batch-processing.cliProxy.host` parameter by specifying the proxy host or IP address (for example, localhost, 127.0.0.1)
     # -- Set the `ccm.batch-processing.cliProxy.port` parameter by specifying the proxy port. It takes an integer value.
     # -- Set the `ccm.batch-processing.cliProxy.username` parameter and `ccm.batch-processing.cliProxy.password` parameter by specifying the proxy username and password. If not required, remove it or leave it blank.
     # -- Set the `ccm.batch-processing.cliProxy.protocol` parameter by specifying HTTP or HTTPS depending on the proxy configuration.
     cliProxy:
-      enabled: false
+      enabled: true
       host: localhost 
       port: 80
       username: ""
@@ -693,11 +688,8 @@ ccm:
   # -- Configure the `ccm.cloud-info.proxy.httpsProxyUrl` parameter with the appropriate proxy URL. For example, if your HTTP proxy is running on localhost port 1234 and requires authentication, you can use a format like http://username:password@proxy.example.com:1234. If no username and password are required, a value like http://proxy.example.com:1234 can be provided.
   cloud-info:
     proxy:
-      httpsProxyEnabled: false
+      httpsProxyEnabled: true
       httpsProxyUrl: http://proxy.example.com:1234
-  nextgen-ce:
-    clickhouse:
-      enabled: true
 ```
 </details>
 
