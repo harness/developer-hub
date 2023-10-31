@@ -67,10 +67,9 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 This release does not include early access features. 
 
 ### Fixed issues
+<!-- - CDS-82691 		n/a (Asked Sahithi Kolichala if this issue needs a release note.) -->
 
-- CDS-82691 		n/a <!-- Asked Sahithi Kolichala if this issue needs a release note. -->
-
-- CDS-82436 		NA <!-- Asked avinash.madhwani if this issue needs a release note. -->
+<!-- - CDS-82436 		NA (Asked avinash.madhwani if this issue needs a release note.) -->
 
 - When a user opens the stage's Overview Tab and then attempts to open the pipeline variables drawer and perform stage variable CRUD operations, the same change does not appear in the stage's Overview Tab. (CDS-82435) <!-- This ticket is linked to CDS-79739, which describes, more or less, the same issue and is also in this fixed issues section. On CDS-79739, I've asked whether we'd rather write one description and include both IDs in parentheses. I've also included a draft of the note on that ticket. Waiting for a response. -->
 
@@ -82,7 +81,7 @@ This release does not include early access features.
 
   This issue was caused by there being no difference between the timestamp of the start of the sync step and the actual timestamp returned by the GitOps Sync API. 
   
-  This issue has been fixed by introducing a small delay so that the timestamps do not match.
+  This issue has been fixed by the introduction of a small delay so that the timestamps do not match.
 
 - A TAS pipeline requires a Tanzu Command step or at least one (but no more than one) App Setup step or at least one (but no more than one) Rolling Deploy step. However, when attempts to save a TAS pipeline that does not include any of those steps fail, the message displayed is "Only one App Setup or Rolling Deploy is supported". (CDS-82120, ZD-52445)
 
