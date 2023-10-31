@@ -6,7 +6,13 @@ sidebar_position: 1
 
 Kubernetes External Secrets enable Kubernetes resources to use external data stores securely. You can use Kubernetes-based external secrets for Harness Self-Managed Enterprise Edition license values in your Helm charts.
 
-   The following values are available in `global.license.secrets.kubernetesSecrets`.
+:::info note
+
+Contact [Harness Support](mailto:support@harness.io) to get your Harness Self-Managed Enterprise Edition license files.
+
+:::
+
+The following values are available in `global.license.secrets.kubernetesSecrets`.
    - `secretName`: Name of the Kubernetes secrets containing Harness license keys
    - `keys.CG_LICENSE`: Name of the secret key containing a FirstGen License
    - `keys.NG_LICENSE`: Name of the secret key containing a NextGen License
