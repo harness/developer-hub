@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-10-30T10:00
+date: 2023-10-31T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,11 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: October 30, 2023
+## Latest: October 31, 2023
+
+### Service Reliability Management, version 1.5.3
+
+- Added the option to set the start month of quarterly Service Level Objectives (SLOs). This enhancement helps you define your SLOs and match them with your organization’s reporting and operational cycles. (SRM-15677)
 
 ### Continuous Integration version 6404
 
