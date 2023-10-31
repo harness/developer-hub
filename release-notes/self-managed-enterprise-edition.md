@@ -71,6 +71,23 @@ gsutil -m cp \
 
 - You can now use Kubernetes-based external secrets for Harness license values in Helm charts. (SMP-1839, ZD-49341, ZD-52283)
 
+   Harness has added the following values to `global.license.secrets.kubernetesSecrets`.
+   - `secretName`: Name of the Kubernetes secrets containing Harness license keys
+   - `keys.CG_LICENSE`: Name of the secret key containing a FirstGen License
+   - `keys.NG_LICENSE`: Name of the secret key containing a NextGen License
+   
+      ```yaml
+         global:
+           license:
+             cg: ''
+             ng: ''
+             secrets:
+               kubernetesSecrets:
+                 - secretName: ""
+                   keys:
+                     CG_LICENSE: ""
+                     NG_LICENSE: ""
+      ```
 
 #### Continuous Delivery & GitOps
 
