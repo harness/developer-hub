@@ -2537,3 +2537,26 @@ We recommend declaring the namespace in the values.yaml using the following expr
 #### What is the most likely cause of a 403 error when using a service account token for a Terraform pipeline?
 
 In most cases, the Terraform script is attempting to assume a role within the delegate, and the permissions associated with the service account are insufficient. Delegates are created with a default service account that lacks IRSA configuration.
+
+#### How to give the user access to WinRM resources:
+Run command winrm configSDDL default and should open the the dialogue, check if user configured for login already present in the last otherwise add the user
+
+
+#### How to fetch user group id by name using graphql
+You can use below query 
+``` query{userGroupByName(name:"Basic User"){id}} ```
+
+#### How to fetch application by name using graphql
+You can use below query 
+``` query{applicationByName(name:"appname"){id}} ```
+
+#### How to enable certificate authentication while using winery
+Its disabled by default and need to run below command to enable
+``` Set-Item -Path WSMan:\localhost\Service\Auth\Certificate -Value $true ```
+
+#### How to fix error Socket Connection Failed for url wndowshost on port 5985
+Check if port 5985 is opened and test the communication for winrm 
+
+#### Reconcile is taking pretty long time while using remote temple stored in git
+Check in network time response for templates to troubleshot if there is any issue/slowness while communicating to git
+
