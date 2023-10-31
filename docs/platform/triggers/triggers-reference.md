@@ -404,7 +404,7 @@ When Git Experience is enabled for your Pipeline, the **Pipeline Input** tab inc
 
 :::note
 
-The Issue Comment Github trigger does not support <+trigger.branch> expression
+The Issue Comment event trigger for Github does not support the `<+trigger.branch>` expression.
 
 :::
 
