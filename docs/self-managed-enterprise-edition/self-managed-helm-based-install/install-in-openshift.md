@@ -26,6 +26,10 @@ After installing Harness through Helm charts, to use OpenShift clusters, you mus
 SCCs can define a set of conditions that a pod must meet to be accepted into the system. In this specific use case, we need to escalate privileges for certain service accounts by configuring specific SCCs.
 
 Service accounts:
+- `default`
+- `postgres`
+- `harness-looker`
+- `harness-default`
 - `minio`
 - `mongodb-replicaset-chart`
 - `harness-timescaledb`
