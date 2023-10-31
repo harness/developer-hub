@@ -69,7 +69,7 @@ gsutil -m cp \
        commonLabels: {kubernetes.azure.com/no-http-proxy-vars: "true"}
    ```
 
-- You can now use external secrets for license values in Helm charts. (SMP-1839, ZD-49341, ZD-52283)
+- You can now use Kubernetes-based external secrets for Harness license values in Helm charts. (SMP-1839, ZD-49341, ZD-52283)
 
 
 #### Continuous Delivery & GitOps
