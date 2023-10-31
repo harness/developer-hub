@@ -2537,3 +2537,16 @@ We recommend declaring the namespace in the values.yaml using the following expr
 #### What is the most likely cause of a 403 error when using a service account token for a Terraform pipeline?
 
 In most cases, the Terraform script is attempting to assume a role within the delegate, and the permissions associated with the service account are insufficient. Delegates are created with a default service account that lacks IRSA configuration.
+
+
+#### Is user can able to create the input set in different repo and branch from the pipeline?
+No, the input set can only be created in the same repo and branch where the pipeline exist.
+
+#### What this error means "Not found previous successful rollback data, hence skipping rollback" after the executon failure?
+This error means execution can't able to rollback to the preious version becuse there's no successful deployment is there for the pipeline.
+
+#### Can user executes the powershell command on non-default powershell version?
+No, harness only executes the PowerShell script on the default PowerShell terminal of the machine.
+
+#### In the WinRM execution when user tries to execute the command step is skipping in the execution without any condition configurution?
+If the command step is skipping that means you have marked the "Skip instances with the same artifact version already deployed" in Advanced.

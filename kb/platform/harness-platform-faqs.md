@@ -1565,3 +1565,33 @@ JIT is currently behind a feature flag '''PL_ENABLE_JIT_USER_PROVISION'''
 
 Yes, please see this doc for more details [https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference]
 
+
+#### How can user install terraform on the delegate?
+1) microdnf install yum
+2) yum install unzip
+3) curl -O -L https://releases.hashicorp.com/terraform/1.6.1/terraform_1.6.1_linux_amd64.zip
+4) unzip terraform_1.6.1_linux_amd64.zip
+5) mv ./terraform /usr/bin/
+6) terraform --version
+
+#### How can user install the aws cli in delegate?
+1) curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
+2) microdnf install yum
+
+3) yum install unzip
+ 
+4)  unzip awscliv2.zip
+ 
+5)  ./aws/install
+
+#### Can user able to configure RBAC for the environment based on the stage?
+No, As per the current design user can only configure the RBAC for environment based on environment type.
+
+
+#### How can user install without root permission?
+Our delegate will get installed without root permissions by default, you don't need to make any changes for that.
+
+#### Can user install the docker delegate with rootless docker?
+Yes, you can install the rootless docker and after install the docker delegate.
+
