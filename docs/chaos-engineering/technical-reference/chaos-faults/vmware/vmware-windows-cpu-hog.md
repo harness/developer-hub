@@ -19,9 +19,9 @@ VMware Windows CPU hog applies stress on the CPU resources on Windows OS based V
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443. 
 - VMware tool should be installed on the target VM with remote execution enabled.
-- Adequate vCenter permissions should be provided to access the hosts and the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
-- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. 
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`.
+
 - VM credentials can be passed as secrets or as a chaos enginer environment variable. 
 ```yaml
 apiVersion: v1
@@ -50,6 +50,16 @@ stringData:
         <td> VM_NAME </td>
         <td> Name of the target VM. </td>
         <td> For example, <code>ubuntu-vm-1</code> </td>
+      </tr>
+      <tr>
+          <td> VM_USER_NAME </td>
+          <td> Username of the target VM.</td>
+          <td> For example, <code>vm-user</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_PASSWORD </td>
+          <td> User password for the target VM. </td>
+          <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
       </tr>
     </table>
     <h3>Optional fields</h3>
