@@ -2550,3 +2550,25 @@ No, harness only executes the PowerShell script on the default PowerShell termin
 
 #### In the WinRM execution when user tries to execute the command step is skipping in the execution without any condition configurution?
 If the command step is skipping that means you have marked the "Skip instances with the same artifact version already deployed" in Advanced.
+
+#### Can we get details what branch did trigger the pipeline and who did it; the time the pipeline failed or terminated,  while using Microsoft Teams Notification 
+These details are not available by default as only(status, time, pipeline name url etc0 is only sent and if you need these details might ned to use custom shell script
+
+#### How to create role binding (to a usergroup) through the api
+You can use below api by updating the details
+‘’’ https://app.harness.io/authz/api/roleassignments/multi?accountIdentifier=string&orgIdentifier=string&projectIdentifier=string' \ ‘’’ 
+
+#### If there is temporary failure/communication issue for sometime while connecting to service how to make sure step is tried multiple times instead of getting failed with tried once
+You can configure failure strategy and use retry option for multiple run
+
+#### How can we provide more details in approval step for approver
+You can use Include stage execution details in approval option so that approvers get the execution history for this Pipeline. This can help approvers make their decision.
+
+#### I want to run a step always irrespective of failure or success
+You can use conditional execution and configure Always execute this stage
+
+#### How to dynamically generate a tag
+Currently we can not use Harness variable expression for tag
+
+#### Can we change failure strategy while running the execution 
+Yes, you can use failure strategy as runtime input and can select/configure while running the execution 
