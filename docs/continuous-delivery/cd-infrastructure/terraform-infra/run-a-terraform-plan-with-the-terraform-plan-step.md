@@ -83,12 +83,6 @@ In **Timeout**, enter how long Harness should wait to complete the Terraform Pla
 
 ### Run on Remote Workspace
 
-:::note
-
-Currently, this feature is behind the feature flag `CD_TERRAFORM_CLOUD_CLI_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Enable this option to identify whether the Terraform configuration uses a Terraform remote backend.
 
 When enabled, you cannot provide the workspace input in Harness. The workspace will be outlined in your configuration for the remote backend.
@@ -559,6 +553,24 @@ No changes. Your infrastructure matches the configuration.
 Terraform has compared your real infrastructure against your configuration
 and found no differences, so no changes are needed.
 ```
+
+## Skip state storage
+
+While running Terraform commands on the delegate, Harness by default will try to detect if there is a local state file in the Terraform working directory.
+
+If local state file is identified, at the end of the execution it is saved on Harness storage with a key based on the provisioner identifier.
+
+That state file is downloaded in the Terraform working directory for subsequent executions, and the updated state is uploaded after execution ends.
+
+This method allows the maintaining of the state of the infrastructure even if there is no Terraform backend configured.
+
+This is more for testing purposes. For production environments, Harness advises you configure a backend in your Terraform config files. For information, go to [Backend Configuration](https://developer.hashicorp.com/terraform/language/settings/backends/configuration).
+
+With the **Skip state storage** option enabled, Harness allows you to skip the local state upload and download operations mentioned above.
+
+This option makes is useful only if you do not have a Terraform backed configured in your Terraform config files. If you have a Terraform backed configured, then the Terraform CLI will not create any local state files.
+
+
 
 ## Command line options
 
