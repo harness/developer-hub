@@ -402,6 +402,12 @@ You can use [built-in Git payload expressions](#built-in-git-payload-expressions
 
 When Git Experience is enabled for your Pipeline, the **Pipeline Input** tab includes the **Pipeline Reference Branch** field. This field is set to `<+trigger.branch>` by default. Any build started by this trigger uses the pipeline and Input Set definitions in the branch specified in the webhook payload. This default is applicable for webhook-based triggers only. For all other trigger types, you must enter a specific branch name.
 
+:::note
+
+The Issue Comment Github trigger does not support <+trigger.branch> expression
+
+:::
+
 ## Webhook registration
 
 For all Git providers supported by Harness, a webhook is automatically created in the repo. Usually, the webhook is automatically registered. If automatic registration fails, you can [manually register the webhook](#manual-and-custom-webhook-registration).
