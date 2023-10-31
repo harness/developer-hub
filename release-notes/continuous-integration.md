@@ -27,7 +27,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * (CI-9733) ?
 * <!--Build and push to GAR step --> (CI-9926)
-* <!-- Harness Cloud Windows image update --> (CI-9750)
+* The Harness Cloud Windows image has been upgraded to Windows Server 2022. This includes major and minor version upgrades for many components. For a complete list of component versions, go to the [Harness Cloud image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#platforms-and-image-specifications). (CI-9750)
+
+   :::caution
+
+   If you have pipelines running on Harness Cloud that rely on specific component versions, you might need to [lock versions or install additional tools](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#lock-versions-or-install-additional-tools) to prevent your pipeline from failing due to image changes.
+
+   :::
 
 ### Early access features
 
