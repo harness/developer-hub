@@ -25,7 +25,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### New features and enhancements
 
-* (CI-9733)
+* (CI-9733) ?
+* <!--Build and push to GAR step --> (CI-9926)
+* <!-- Harness Cloud Windows image update --> (CI-9750)
 
 ### Early access features
 
@@ -33,10 +35,10 @@ This release does not include early access features.
 
 ### Fixed issues
 
-* (CI-9980) <!-- For SMP. Behind ff to avoid regressions. -->
-* (CI-10055)
-* (CI-9624)
-* (CI-10042, ZD-52559)
+* When you add a [Build stage](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings) to a pipeline, the **Infrastructure** tab is selected by default, rather than the **Execution** tab. (CI-9624)
+* (CI-9980) <!-- For SMP. Behind ff to avoid regressions. --> ?
+* (CI-10055) ?
+* (CI-10042, ZD-52559) <!-- FF? --> ?
 
 ## Previous releases
 
