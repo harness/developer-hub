@@ -658,3 +658,148 @@ You can achieve this by storing the XML as a secret and referring to it within a
 
 Currently, the only way to publish data in the Artifacts tab is by providing a URL to a publicly accessible location where the artifact is stored. If you do not have any public buckets, you can consider using a private bucket and generating a pre-signed URL to access the artifact.
 This URL can be used in the "file_urls" setting of the Artifact Metadata Publisher plugin to publish the artifact in the Artifacts tab. Another option is to use a different cloud storage provider that allows you to generate temporary URLs for private objects, such as Google Cloud Storage signed URLs or AWS S3 pre-signed URLs.
+
+#### Why is the default entry point is not running for the container image used in the run step?
+
+The default entry point would be overriden by the commands you specified in the command section of the run step
+
+#### If the the default entry point is not executed for the container image used in the run step, how can we get the service started within a container which would usually be started as part of the default entry point?
+
+You would need to use the background step in this usecase where we would execute the default entry point and run the container in dettached mode
+
+#### How can we run the default entry point of the image used in the run step?
+
+The commands specified in the command section of the run step will override the default entry point. You will need to manually run the default entry point by explicitly calling the script configured as the default entry point
+
+#### How can we send a mail from a CI stage?
+
+You could use the drone email plugin to send a mail from CI stage. More details about this can be found [here](https://plugins.drone.io/plugins/email)
+
+#### Is it possible to use an image in the run step that does not include a shell?
+
+In run step, the command is a required field and any shell should be available in the image used to be able to run the commands
+
+#### What is the purpose of saving and restoring cache from GCS/S3 in Harness CI?
+
+The purpose of saving and restoring cache from GCS/S3 in Harness CI is to improve build times and enable the sharing of data across different stages in your CI pipelines
+
+#### Are there alternatives to saving and restoring cached data from GCS in Harness CI pipelines?
+
+Yes, you can also save and restore cached data from other sources like S3 or use Harness Cache Intelligence for data management
+
+#### What is the purpose of the "Fail if Key Doesn't Exist" option in the "Restore Cache from GCS" step?
+
+This option determines whether the step should fail if the specified cache key doesn't exist in the GCS bucket. If selected, the step fails when the key is not found
+
+#### Is privileged mode necessary for running DinD in Harness CI?
+
+Yes, Docker-in-Docker (DinD) must run in privileged mode to function correctly
+
+#### Are there any limitations to using DinD on platforms that do not support privileged mode?
+
+DinD cannot be used on platforms that do not support privileged mode. For example, platforms that run containers on Windows or fargate nodes do not support privileged mode
+
+#### What options are available for running health checks on background services in Harness CI?
+
+You can add a run step to your pipeline to run health checks on background services to ensure they are up and running as expected. These checks help validate the service's readiness
+
+#### What is the "Clone directory" setting for in the Git Clone step?
+
+The "Clone directory" is an optional target path in the stage workspace where you want to clone the repository
+
+#### What does the "Depth" setting control in the Git Clone step?
+
+The "Depth" setting controls the number of commits to fetch when the step clones the repository. A depth of 0 fetches all commits from the relevant branch
+
+#### why is the dind background step is failing with the error "Pod not supported on Fargate: invalid SecurityContext fields: Privileged"?
+
+The error "Pod not supported on Fargate: invalid SecurityContext fields: Privileged" occurs because AWS Fargate does not support the use of privileged containers.
+
+#### How can we reference the secret type output variable exported from CD/custome stage in CI stage?
+
+Currently, the secret-type output variable exported from a step in a CD/custom stage is not supported in CI stage
+
+#### Why the build status is not getting updated for approval stage?
+
+Build status is updated at the stage level and happens only for the CI stage
+
+#### What is the purpose of Background steps in CI stage?
+
+Background steps are used to manage dependent services that need to run for the entire lifetime of a Build stage
+
+#### Can Background steps run multiple services simultaneously?
+
+Yes, you can set up your pipeline to run multiple background services, creating a local, multi-service application
+
+#### What are the limitations of Background steps?
+
+Background steps do not support failure strategies or output variables
+
+#### How do we add a custom plugin to my CI pipeline in Harness?
+
+We can add a custom plugin to the CI pipeline using a Plugin step in your Build stage
+
+#### How can we run the custom plugin locally for testing?
+
+Plugins are regular containers which would execute a predefined task. We can test the custom plugin in a local environment by running it as a Docker container with the required inputs
+
+#### Can I specify multiple paths for test reports in a Run step?
+
+Yes, you can specify multiple paths for test reports. Ensure that the reports do not contain duplicate tests when specifying multiple paths
+
+#### What's the purpose of adding SCM_SKIP_SSL=true in the delegate YAML?
+
+It skips SSL verification for SCM connections
+
+#### Is there a way to store artifact URLs and display them in the Harness platform?
+
+Yes, you can use the Artifact Metadata Publisher plugin to store artifact URLs and display them on the Artifacts tab in the Harness
+
+#### What all operatig systems can we set up a local runner build infrastructure in CI?
+
+We could set up a local runner build infrastructure on any Linux, macOS, or Windows host
+
+#### How can I define the build infrastructure for a local runner in the pipeline?
+
+After configuring delegate and runner, you need to set the pipeline's build infrastructure. You can do this in the pipeline's "Build" stage. You can specify the operating system and architecture for your build infrastructure
+
+#### Where can I find the list of available Harness CI images?
+
+You can find the list of available Harness CI images [here](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness)
+
+#### How often are Harness CI images updated?
+
+Harness publishes updates for all CI images on the second and fourth Monday of each month. New versions of images are released every two weeks
+
+#### Can I use my own private registry to store Harness CI images?
+
+Yes, you can pull Harness CI images from your own private registry if you don't want to use the public container registry
+
+#### Do we need to have docker installed on the VM where we would perform VM build via Harness CIE?
+
+Yes, We should have docker installed on the VM
+
+#### What does the 'Queued license limit reached' message indicate in the build UI?
+
+The 'Queued license limit reached' message in the build UI signifies that the maximum concurrency limit has been reached, and new builds are queued for execution
+
+#### From where does the "Build and Push to ECR" step pull the base images specified in the Dockerfile?
+
+By default, "Build and Push to ECR" step downloads base images from the public contaier registry 
+
+#### How can we configure the "Build and Push to ECR" step to pull the base images from our internal container registry with authentication?
+
+You could create a authenticated doccker connector and use that as the base image connector in "Build and Push to ECR" step
+
+#### where does the build and push step expect the dockerfile to be present by default?
+
+The Dockerfile is assumed to be in the root folder of the codebase
+
+#### why is the test report is gettinng truncated in tests tab UI? 
+
+The Tests tab may display content truncated if a field in your test report XML file surpasses 8,000 characters, as there is an 8,000-character limit per field
+
+####  Is the "Tests" tab in CI Build execution tied to Test Intelligence?
+
+No. You could add the test report path in runstep, background step etc and the test results will be appeared in tests tab of the execution if the test report is in junit format.
+
