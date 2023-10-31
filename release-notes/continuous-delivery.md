@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-10-27T10:00:15
+date: 2023-11-2T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -46,9 +46,79 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
-## Latest: October 27, 2023, Harness version 81205
+## Latest: November 2, 2023, Harness version 813xx
 
 ### New features and enhancements
+
+- Availability of deployment step group templates in custom stages (CDS-81265)
+
+  When opened in the context of a custom stage, the **Templates** side panel in Pipeline Studio lists step group templates created from deployment stages. The **Type** dropdown field in the panel also includes entries for filtering step groups created from custom and deployment stages.
+
+- Improved user experience when viewing errors in the console view (CDS-77809)
+
+  You can now increase the height of the error panel in the pipeline console. This change improves the readability of error messages and suggestions.
+
+- Resolved expressions for runtime inputs in custom dashboards (CDS-77013)
+
+  For runtime inputs, custom dashboards now show resolved trigger expressions instead of the expressions themselves.
+
+### Early access features
+
+This release does not include early access features. 
+
+### Fixed issues
+
+- CDS-82691 		n/a <!-- Asked Sahithi Kolichala if this issue needs a release note. -->
+
+- CDS-82436 		NA <!-- Asked avinash.madhwani if this issue needs a release note. -->
+
+- When a user opens the stage's Overview Tab and then attempts to open the pipeline variables drawer and perform stage variable CRUD operations, the same change does not appear in the stage's Overview Tab. (CDS-82435) <!-- This ticket is linked to CDS-79739, which describes, more or less, the same issue and is also in this fixed issues section. On CDS-79739, I've asked whether we'd rather write one description and include both IDs in parentheses. I've also included a draft of the note on that ticket. Waiting for a response. -->
+
+  This issue has been resolved. 
+
+- When you defined runtime inputs for fields for list items in the AWS ASG blue/green deployment step, the deployment dashboard did not show deployment details. (CDS-82383, ZD-51101) <!-- Need more info to understand this issue. Have pinged vitalie safronovici. Update: got the description, formerly "Added support to loadBalancers list in step parameters to be saved as runtime input for BG deployment in ASG" to the current state. Need to clarify what "for fields for list items" means. WIP. -->
+
+- The GitOps Sync step intermittently failed to check the sync status of the application. (CDS-82230, ZD-52553) 
+
+  This issue was caused by there being no difference between the timestamp of the start of the sync step and the actual timestamp returned by the GitOps Sync API. 
+  
+  This issue has been fixed by introducing a small delay so that the timestamps do not match.
+
+- A TAS pipeline requires a Tanzu Command step or at least one (but no more than one) App Setup step or at least one (but no more than one) Rolling Deploy step. However, when attempts to save a TAS pipeline that does not include any of those steps fail, the message displayed is "Only one App Setup or Rolling Deploy is supported". (CDS-82120, ZD-52445)
+
+  The message is misleading because it applies only to pipelines that have more than one App Setup or Rolling Deploy steps.
+
+  This issue has been fixed. The error message has been improved and lists the steps that a TAS pipeline requires.
+
+- You can now execute selected stages executions with only validations running at selected stages in case of no runtime inputs being present in the final selected stages. (CDS-81914) <!-- Kinda got this but needs some improvements. WIP. -->
+
+<!-- Next few descriptions are WIP -->
+
+- Freeze Active notification will be sent on a CRUD event if the freeze is currently active. Previously it was sent only if freeze is active in future.
+This is provided that we have configured notifications to be sent for "Freeze enabled and active" in freeze config. (CDS-81891, ZD-52835)
+
+- Added support to resolve secret expressions like <+secrets.getValue("secret")> referred in custom artifact input variables while fetching versions in dropdown (CDS-81724, ZD-52184)
+
+- Previously, the saved filters dropdown was limited to displaying only the first 100 filters (maximum). With this ticket - [CDS-81492] - we have introduced infinite scrolling to the dropdown, allowing it to retrieve the entire list of available filters. (CDS-81492, ZD-52030)
+
+- If any error message for verify step, now it will be shown at top of the view. (CDS-81291, ZD-52005)
+
+- When editing a Template, if the user clicked the "Save as New Template" button, the template was still getting saved as the older Template. This issue was seen in GitX (Remote) Templates. (CDS-80744)
+
+  The issue has been fixed now. 
+
+- The removal of a variable from the **Variables** side panel of Pipeline Studio does not reflect in the stage variables section of Pipeline Studio’s **Advanced** tab until you save the pipeline. (CDS-79739)
+
+    This issue has been fixed. 
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### October 27, 2023, Harness version 81205
+
+##### New features and enhancements
 
 - More intuitive tag creation (CDS-78994)
 
@@ -60,11 +130,11 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   
   This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-### Early access features
+##### Early access features
 
 This release does not include early access features. 
 
-### Fixed issues
+##### Fixed issues
 
 - The Edit Health Source dialog did not display the value that you had selected in the Service Instance Identifier field earlier. The value appeared in the field only after you clicked Fetch Records a few times. The issue was caused by a delay in the API call used to fetch the options. (CDS-81971, ZD-50452) 
 
@@ -128,12 +198,8 @@ This release does not include early access features.
 
   This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-## Previous releases
 
-<details>
-<summary>2023 releases</summary>
-
-### October 20, 2023, Harness version 81106
+#### October 20, 2023, Harness version 81106
 
 ##### New features and enhancements
 
