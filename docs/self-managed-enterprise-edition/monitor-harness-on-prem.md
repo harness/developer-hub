@@ -283,4 +283,41 @@ Custom dashboards are available in the Harness public repository:
 
 ## Use a server installed in the same cluster as Harness services
 
-In this example, the Prometheus server is installed in the same cluster as your Harness services. You can monitor your services with Grafana installed in the same cluster or outside the cluster, with Prometheus configured as the data source. 
+In this example, the Prometheus server is installed in the same cluster as your Harness services. You can monitor your services with Grafana installed in the same cluster or outside the cluster, with Prometheus configured as the data source.
+
+## Monitor Harness services
+
+Harness Self-Managed Enterprise Edition currently supports monitoring for four Harness services. 
+
+- `access-control`
+
+- `pipeline-service`
+
+- `ng-manager`
+
+- `harness-manager`
+
+You can monitor the services by enabling monitoring in the override file. For more information, go to [Required overrides](#required-overrides). 
+
+Harness has the following comprehensive metrics available for the services: 
+
+- Mean Error Rate
+- HTTP Error Rate
+- HTTP Response 95th percentile
+- HTTP Error Count
+- JVM Total Memory Max
+- Committed & Used
+- JVM Non-Heap Committed & Used
+- JVM Metaspace Memory Pool Used & Committed
+- JVM Threads Blocked / Deadlock State
+- DW Threads Utilization
+
+You can view the metrics by importing the System Observability Dashboard in our [Harness Dashboards repository](https://github.com/harness/harness-dashboards/).
+
+To load the dashboard, do the following:
+
+1. Go to **Settings**, and then select **Variables**.
+2. Select **Data source**, and then select **Prometheus**.
+3. Run the query at the bottom of the page to test the data source.
+
+   The metrics for the services are available to view on the dashboard. 
