@@ -25,8 +25,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### New features and enhancements
 
-* (CI-9733) ?
-* <!--Build and push to GAR step --> (CI-9926)
+* This release includes a new [Build and Push to GAR step]() offering first-class support for build and pushing artifacts to Google Artifact Registry (GAR). Previously, you could use Run steps to build and push to GAR. This new step combines the build and push steps into one streamlined step. If using this step with Harness Cloud build infrastructure, you can also leverage the new [OIDC connectivity mode](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference#use-openid-connect-oidc) in your GCP connector. (CI-9926)
 * The Harness Cloud Windows image has been upgraded to Windows Server 2022. This includes major and minor version upgrades for many components. For a complete list of component versions, go to the [Harness Cloud image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#platforms-and-image-specifications). (CI-9750)
 
    :::caution
@@ -45,6 +44,7 @@ This release does not include early access features.
 * (CI-9980) <!-- For SMP. Behind ff to avoid regressions. --> ?
 * (CI-10055) ?
 * (CI-10042, ZD-52559) <!-- FF? --> ?
+* (CI-9733) ? <!-- new feature/enhancement? -->
 
 ## Previous releases
 
