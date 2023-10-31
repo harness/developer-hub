@@ -1,18 +1,14 @@
 ---
-title: Build and Push to GCR
-description: Use a CI pipeline to build and push an image to GCR.
+title: Build and Push to GAR
+description: Use a CI pipeline to build and push an image to GAR.
 sidebar_position: 50
-helpdocs_topic_id: gstwrwjwgu
-helpdocs_category_id: mi8eo3qwxm
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
-This topic explains how to configure the **Build and Push to GCR** step in a Harness CI pipeline. This step is used to build and push to [Google Container Registry (GCR)](https://cloud.google.com/container-registry).
+This topic explains how to configure the **Build and Push to GAR** step in a Harness CI pipeline. This step is used to build and push to [Google Artifact Registry (GAR)](https://cloud.google.com/artifact-registry).
 
 You need:
 
-* Access to GCR and a GCR repo.
+* Access to GAR and a GAR repo.
 * A [Harness CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 * A [GCP connector](#gcp-connector).
 
@@ -24,27 +20,27 @@ If your build runs as non-root (`runAsNonRoot: true`), and you want to run the *
 
 If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
 
-## Add a Build and Push to GCR step
+## Add a Build and Push to GAR step
 
-In your pipeline's **Build** stage, add a **Build and Push to GCR** step and configure the [settings](#build-and-push-to-gcr-step-settings) accordingly.
+In your pipeline's **Build** stage, add a **Build and Push to GAR** step and configure the [settings](#build-and-push-to-gar-step-settings) accordingly.
 
-Here is a YAML example of a minimum **Build and Push to GCR** step.
+Here is a YAML example of a minimum **Build and Push to GAR** step.
 
 ```yaml
               - step:
-                  type: BuildAndPushGCR
-                  name: BuildAndPushGCR_1
-                  identifier: BuildAndPushGCR_1
+                  type: BuildAndPushGAR
+                  name: BuildAndPushGAR_1
+                  identifier: BuildAndPushGAR_1
                   spec:
                     connectorRef: YOUR_GCP_CONNECTOR_ID
-                    host: us.gcr.io
-                    projectID: my_project
-                    imageName: my_image
+                    host: LOCATION-docker.pkg.dev
+                    projectID: GOOGLE_CLOUD_CONSOLE_PROJECT_ID
+                    imageName: REPO_NAME/IMAGE_NAME
                     tags:
                       - <+pipeline.sequenceId>
 ```
 
-When you run a pipeline, you can observe the step logs on the [build details page](../viewing-builds.md). If the **Build and Push to GCR** step succeeds, you can find the uploaded image on GCR.
+When you run a pipeline, you can observe the step logs on the [build details page](../viewing-builds.md). If the **Build and Push to GAR** step succeeds, you can find the uploaded image on GAR.
 
 :::tip
 
@@ -55,9 +51,9 @@ You can also:
 
 :::
 
-## Build and Push to GCR step settings
+## Build and Push to GAR step settings
 
-The **Build and Push to GCR** step has the following settings. Depending on the stage's build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
+The **Build and Push to GAR** step has the following settings. Depending on the stage's build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
 
 ### Name
 
@@ -65,31 +61,33 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 ### GCP Connector
 
-The Harness GCP connector to use to connect to GCR. The GCP account associated with the GCP connector needs specific roles. For more information, go to [Google Cloud Platform (GCP) connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
+The Harness GCP connector to use to connect to GAR. The GCP account associated with the GCP connector needs specific roles. For more information, go to the [Google Cloud Platform (GCP) connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
 
-This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
+This step supports GCP connectors that use access key authentication. It doesn't support GCP connectors that inherit delegate credentials.
 
-### Host
+:::tip
 
-The Google Container Registry hostname. For example, `us.gcr.io` hosts images in data centers in the United States in a separate storage bucket from images hosted by `gcr.io`. For a list of Container Registries, go to the Google documentation on [Pushing and pulling images](https://cloud.google.com/container-registry/docs/pushing-and-pulling).
-
-:::info
-
-The target GCR registry must meet the GCR requirements for pushing images. For more information, go to the Google documentation on [Pushing and pulling images](https://cloud.google.com/container-registry/docs/pushing-and-pulling).
+If you are using this step with Harness Cloud build infrastructure, you can also leverage the [OIDC connectivity mode](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference#use-openid-connect-oidc) in your GCP connector.
 
 :::
 
+### Host
+
+The Google Artifact Registry hostname, for example `LOCATION-docker.pkg.dev`. For more information, go to the GAR documentation on [Repository and image names](https://cloud.google.com/artifact-registry/docs/docker/names).
+
 ### Project ID
 
-The [GCP resource manager project ID](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects).
+The [Google Cloud Console Project ID](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects). For more information, go to the GAR documentation on [Repository and image names](https://cloud.google.com/artifact-registry/docs/docker/names).
 
 ### Image Name
 
-The name of the image you want to build and push to the target container registry.
+The name of the repository where you want to push the artifact and the name you want to give the image, such as `REPO_NAME/IMAGE_NAME`. For more information, go to the GAR documentation on [Repository and image names](https://cloud.google.com/artifact-registry/docs/docker/names).
+
+The target repository must be a [standard repository](https://cloud.google.com/artifact-registry/docs/repositories#mode).
 
 ### Tags
 
-Add [Docker build tags](https://docs.docker.com/engine/reference/commandline/build/#tag). This is equivalent to the `-t` flag.
+Add [Docker build tags](https://docs.docker.com/engine/reference/commandline/build/#tag). This is equivalent to the `-t` flag. For more information, go to the GAR documentation on [Tagging images](https://cloud.google.com/artifact-registry/docs/docker/pushing-and-pulling#tag).
 
 Add each tag separately.
 
@@ -103,11 +101,9 @@ For example, if you use `<+pipeline.sequenceId>` as a tag, after the pipeline ru
 
 ![](./static/build-and-upload-an-artifact-15.png)
 
-And you can see where the Build ID is used to tag your image:
+And this same number is applied as the tag for your image in GAR.
 
-![](./static/build-and-upload-an-artifact-12.png)
-
-Later in the pipeline, you can use the same expression to pull the tagged image, such as `myrepo/myimage:<+pipeline.sequenceId>`.
+Later in the pipeline, you can use the same expression to pull the tagged image, such as `REPO_NAME/IMAGE_NAME:<+pipeline.sequenceId>`.
 
 :::
 
@@ -141,7 +137,7 @@ The [Docker target build stage](https://docs.docker.com/engine/reference/command
 
 ### Remote Cache Image
 
-Enter the name of the remote cache image, such as `gcr.io/project-id/<image>`.
+Enter the name of the remote cache image, such as `LOCATION-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME`.
 
 The remote cache repository must be in the same account and organization as the build image. For caching to work, the specified image name must exist.
 
