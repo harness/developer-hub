@@ -257,7 +257,7 @@ This release does not include early access features.
 
   This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
 
