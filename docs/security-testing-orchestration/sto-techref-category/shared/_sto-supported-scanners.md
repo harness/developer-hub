@@ -89,7 +89,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
         <td valign="top">
         	<ul>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference">Anchore Enterprise</a> Orchestration, Extraction, Ingestion </li>
-              <li><a href="docs/security-testing-orchestration/sto-techref-category/amazon-image-scanner-reference">AWS ECR</a> Extraction </li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference">AWS ECR</a> Extraction </li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference">Black Duck Hub</a> Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/data-theorem-scanner-reference">Data Theorem</a> Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/docker-content-trust-dct-scanner-reference">Docker Content Trust (DCT)</a> Orchestration, Ingestion</li>
