@@ -24,7 +24,7 @@ If your security policy doesn't allow running as root, go to [Build and push wit
 
 In your pipeline's **Build** stage, add a **Build and Push to GAR** step and configure the [settings](#build-and-push-to-gar-step-settings) accordingly.
 
-Here is a YAML example of a minimum **Build and Push to GAR** step.
+Here is a YAML example of a **Build and Push to GAR** step.
 
 ```yaml
               - step:
