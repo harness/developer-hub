@@ -91,6 +91,8 @@ You can see the instance count in the Service Dashboard for your service.
 
 <docimage path={require('./static/ad3c4ad2ace7b18449351ff7c933f05e35adafbbbd1a48a2b56f95bdade420f5.png')} width="60%" height="60%" title="Click to view full size image" />  
 
+We run the instance sync job every 10 minutes.
+
 ## ECS
 
 **Formula:** 
