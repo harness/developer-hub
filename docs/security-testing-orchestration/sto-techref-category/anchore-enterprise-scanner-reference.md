@@ -2,7 +2,7 @@
 title: Anchore Enterprise scanner reference for STO
 description: Container scans with Anchore Enterprise
 sidebar_label: Anchore Enterprise scanner reference
-sidebar_position: 25
+sidebar_position: 20
 ---
 
 You can scan your repositories and other components used in your code with [Anchore Enterprise](https://docs.anchore.com/current/docs/), a scanner that provides visibility into supply chain security risks. 
