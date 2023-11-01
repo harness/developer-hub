@@ -17,7 +17,7 @@ For Harness SaaS release notes, go to [Harness SaaS Release Notes](/docs/first-g
 Release notes are displayed with the most recent release first.
 
 
-## October 31, 2023, patch release for version 80909
+## November 1, 2023, version 80909
 
 This release includes the following module and component versions.
 
