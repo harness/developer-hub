@@ -13,7 +13,7 @@ After running log verification as part of the verify step, you can review the de
 ### Set event preference
 :::note
 
-Currently, this feature is behind the feature flag SRM_LOG_FEEDBACK_ENABLE_UI. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag `SRM_LOG_FEEDBACK_ENABLE_UI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
