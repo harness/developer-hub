@@ -19,7 +19,43 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: October 31, 2023
+## Latest: November 1, 2023
+
+### Self-Managed Enterprise Edition, version 80917
+
+- Pod Disruption Budgets (PDBs) have been added to all applicable deployments/StatefulSets. (SMP-777)
+
+- You can now set annotations and labels globally for all resources by adding the `commonAnnotations` and `commonLabels` settings under global in your `override.yaml` file. (SMP-1216, ZD-42336, ZD-43006)
+
+   For example:
+
+   ```yaml
+   global:
+       commonAnnotations: {kubernetes.azure.com/no-http-proxy-vars: "true"}
+       commonLabels: {kubernetes.azure.com/no-http-proxy-vars: "true"}
+   ```
+
+- You can now use Kubernetes-based external secrets for Harness license values in Helm charts. (SMP-1839, ZD-49341, ZD-52283)
+
+   Harness has added the following values to `global.license.secrets.kubernetesSecrets`.
+   - `secretName`: Name of the Kubernetes secrets containing Harness license keys
+   - `keys.CG_LICENSE`: Name of the secret key containing a FirstGen License
+   - `keys.NG_LICENSE`: Name of the secret key containing a NextGen License
+   
+      ```yaml
+         global:
+           license:
+             cg: ''
+             ng: ''
+             secrets:
+               kubernetesSecrets:
+                 - secretName: ""
+                   keys:
+                     CG_LICENSE: ""
+                     NG_LICENSE: ""
+      ```
+
+## October 31, 2023
 
 ### Service Reliability Management, version 1.5.3
 
