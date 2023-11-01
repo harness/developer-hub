@@ -336,4 +336,50 @@ Successfully created/updated stack - STACK_NAME
 SAM Deploy Successful
 ```
 
+## FAQs for AWS SAM
+
+**Question:** Where does Harness publish it's images for AWS SAM Build and Deploy?
+
+- We publish these images in Harness' DockerHub Registry for user's to reference in their SAM Build or SAM Deploy Steps
+- For SAM Build: https://hub.docker.com/r/harnessdev/sam-build
+- For SAM Deploy: https://hub.docker.com/r/harnessdev/sam-deploy/tags
+
+In your Harness Steps, you can update the Container Configuration's Image section with a newer version of the image.
+
+
+**Question:** How do we debug the SAM Build or SAM Deploy Steps?
+
+Under the AWS SAM Build Command Options, we recommend passing the `--debug` flag. This will help print more verbose errors when troubleshooting failures
+
+**Question:** What versions of SAM CLI Version are supported by Harness?
+
+- We support SAM CLI Version 1.98.0 - 1.82.0
+- We are working to stay up to date with the latest versions of SAM CLI and making sure it's compatible with newer versions of our steps.
+
+
+**Question:** Can we fetch Build Images from a Public Repo?
+
+- Yes, Harness can fetch build images from a public repo. Please see https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-image-repositories.html for all the Sam Build Image options from the public ECR Repo.
+
+- In the AWS SAM Build Command Options you can pass in an argument like so:
+
+```SH
+--build-image public.ecr.aws/sam/build-nodejs18.x:1.100.0-20231031004056 
+```
+
+**Question:** Can we fetch Build Images from a Private Repo?
+
+- Yes Harness can fetch your Build Images from a private repo. This will require the user to have the proper permissions configured and the correct user access to the container repo.
+- In the SAM Build Step, under the SAM Build Docker Container Registry Section, you can specify the specific image repository you want to fetch your SAM Build Image.
+
+
+**Question:** How to access the SAM Build Step Outputs?
+
+- SAM build creates a “.aws-sam" directory in the same directory where your template.yml exists. 
+
+- By default, Download Manifests Step downloads your repo in `/harness/MANIFEST_IDENTIFIER/` path which should be `/harness/dev/` in this case.
+- If you have customized the step and the SAM template.yaml exits in the root level directly, AWS SAM outputs won't be available in the root path. You need to make sure  `.aws-sam` should be present  `/harness/dev/` path.
+
+
+
 
