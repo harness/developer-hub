@@ -14,7 +14,7 @@ export type CardItem = {
 
 export const knowledgeBaseList: CardItem[] = [
   {
-    title: "Using a String List in Repeeat Strategy",
+    title: "Using a String List in Repeat Strategy",
     module: MODULES.cd,
     date: "Oct 19, 2023",
     link: "/kb/continuous-delivery/articles/repeat-strategy",
