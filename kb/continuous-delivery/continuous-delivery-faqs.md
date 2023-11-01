@@ -2572,3 +2572,173 @@ Currently we can not use Harness variable expression for tag
 
 #### Can we change failure strategy while running the execution 
 Yes, you can use failure strategy as runtime input and can select/configure while running the execution 
+
+#### How to pass list of multiple domains for allowing whitelisting while using api ?
+
+Domain whitelisting api takes domain as input array. So if we have multiple domains to be passed this needs to be done as coma separeted string entries in the array. Below is a sample for the same:
+
+```
+curl -i -X PUT \
+  'https://app.harness.io/ng/api/authentication-settings/whitelisted-domains?accountIdentifier=xxxx' \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: REDACTED' \
+  -d '["gmail.com","harness.io"]'
+
+```
+
+#### Can the domain whitelisting api be used for ip allowlist as well?
+
+No, we have a separate ip allowlist api and the domain whitelisting api is very specific to domain whitelisting and does not take ip inputs. Below api should be used for ip allowlist:
+
+```
+v1/ip-allowlist
+```
+
+#### Is there any built-in variable to access one pipeline execution outputs in another pipeline?
+
+The variable access works only in the context of current executing pipelines. We do not have a built-in way to access some other pipeline execution variables from another pipeline.
+
+
+#### How can we utilise output variables from one pipeline execution in another execution?
+
+We have a api which can be used in a shell script step or a http step to make an api call for fetching execution detail of another pipeline `api/pipelines/execution/v2/{planExecutionId}`. If we pass the attribute `renderFullBottomGraph` as true in this api call we get all the variables in the pipeline as response.
+This can later be parsed to get the desired output variables and published accordingly to be used in other steps/pipeline.
+
+
+#### How to know if a connector is failing ?
+
+Currently we do not have a way to notify on connector failure. We do show in the UI if any connector is failing the connection test as we will be testing the connectors at regular interval. 
+We do however have api for testing connectors on demand as well. We can create a cron for our critical connectors test and create a notification through the cron based on the test results.
+
+
+#### What are the options for passing helm flag in first gen?
+
+Helm flags can be passed in first gen at workflow level under "Configure Helm deploy" Option. We can also pass command flags under service inside chart specification option.
+
+
+#### What is the difference between helm flag options at workflow level and sevice level in first gen?
+
+The helm flag configured at workflow level needs to be not command specific otherwise the command can fail. It will also be applied to all the helm commands. The command flag passed at service level are tagged to a specific command. So they will be added only to that specific command. Hence here we can use command specific flags as well.
+
+
+#### Can we block access to only api calls from certain ip ?
+
+The ip allowlist options can be configured optionally for UI and api. If we only want to block api access we need to select only UI option during configruation. This way access to api call from those api range will not be allowed.
+
+
+#### Does Shell Script provisioning step has built in output variables?
+
+Shell Script provoisioning step does not have script output variables similar to shell script step. Their variable configruation step only have option for input variables.
+
+#### How to access output variables from shell provisioning step?
+
+The shell script provisioning step expects the output to be put to a json form inside the file $PROVISIONER_OUTPUT_PATH. This is then subsequently accessed in next step with Instance variable like below
+ 
+`<+pipeline.stages.shellscriptprovision.spec.execution.steps.shell1.output.Instances>`
+
+
+#### Is there a short notation for accessing step output variable within the same stepgroup ?
+
+Within the same step group we can shorten the expression for accessing step variable. A sample expression is below:
+
+`<+stepGroup.steps.step1Identifier.output.outputVariables.myvar>`
+
+#### Is there a short notation for accessing step output variable within same stage and outside of step group?
+
+We can also shorten the expression for accessing output variables of a step inside the step group to be accessed by another step outside the step group. Below is the expression example:
+```
+<+execution.steps.somestepgroup.steps.ShellScript_1.output.outputVariables.myvar>
+```
+
+#### How to use secret identifiers for secret variables?
+
+Secret variables need to select which secret identifier they resolve to. However it allows for use of expression as well. We can have a variable assigned type as expresion and use a runtime input variable in that expression. The runtime input in this secnario will be treated as the secret identifier.
+
+An example expression will be below:
+
+```
+<+<+pipeline.variables.someinput>+"secret">
+
+```
+Here someinput variable can be runtime input and if we need to access a secret with name "devsecret" the input to variable "someinput" should be "dev".
+
+
+#### Can we utilise git connetor to get the file in a shell script step?
+
+We can not reference the connector for git inside the shell script step. If we need to clone a repo we need to use git cli commands. We can however store the credentials for git in harness secretes and reference the secrets for authetication in cli command.
+
+
+#### Can we add two primary artifact in the service?
+
+We can add two primary artifacts in the service however the execution will run with only one primary artifact. At the runtime we need to select which primary artifact the pipeline will run with.
+
+
+#### How to get the kubeconfig that a kubernetes deployment runs with?
+
+The kubernetes cofiguration can be accessed in the same stage the kubernetes deployment ran. To access the configuration we can set the kubeconfig with below environment variable configuration and run the corresponding kubectl commands:
+
+```
+export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}
+kubectl get configmaps
+
+```
+
+#### Do we have a inline values override in next gen? 
+
+We do not have a separate option for inline values yaml override. However in Next gen we allow to use values override from Harness file store. So we can create the values yaml override in harness file store and add it in the values override configruation.
+
+
+#### Does harness give jenkins prompt as well while executing jenkins jobs in pipeline?
+
+The jenkins prompt message are very specific to jenkins environment and the interaction for the prompts need to be done in jenkins itselg. We do not show the same prompt for interaction in pipeline execution.
+
+#### Is there a way to cache terraform plugins for harness terraform pipeline executions?
+
+We can use the caching functionality provided by terraform for this purpose. We need to set the below environment variable for the terraform pipelines:
+
+```
+TF_PLUGIN_CACHE_DIR=/opt/harness-delegate/<plugincachedirectory>
+```
+
+#### Can the name of the yaml file be changed once the remote pipeline is created?
+
+It is possible to change some attributes of git related configuration for the pipeline after creation. It is possible to change the path or name of the yaml file using both harness UI and api.
+
+#### How to get information for user who logged in to Harness platform?
+
+We can get the information for user login from audit log, if this information is needed using api this can be done through audit log api.
+
+
+#### Do we expand variable expression inside single quotes in script step?
+
+Harness expands all the variable expression used inside the script before executing it. Even if it is wrapped around the single quotes it will still be expanded.
+
+#### Is there a way to avoid using helm template command in kubernetes helm deployment?
+
+For kubernetes helm we will always run the template command as this is how we get the rendered manifest. The workflow using kubernetes helm perform the final deployment using the rendered manifest and kubectl commands.
+ 
+If we do not want to use template command we need to be using native helm type of deployment.
+
+#### Is space allowed in variable names?
+
+Space in pipeline variable names does not confirm to the naming convention for the variables used. Varaible names can only contain alphanumerics -, _ and $ . 
+
+#### How to get helm chart version from helm based triggers ?
+
+The helm version is part of the trigger payload. The expression that conatians the helm version is `<+trigger.manifest.version>` .
+
+#### Can we transition to any status in jira using update step?
+
+Jira supports transition to steps as per the workflow defined for the project. Only allowed transition from a specic status to another as per the workflow will be allowed.
+
+#### Can we use stage variable belonging to one stage before the stage execution?
+
+It is not possible to access the stage variable belonging to a stage prior to its execution. It will not be available in context until the stage comes in execution. We should use pipeline variables which has global scope for the pipeline and is available for access from begining of the pipeline.
+
+
+#### What is the correct url format for Azure git repo to be used in git ops repository?
+
+The url format for the Azure git repo to be specified in gitOps repository is below:
+```
+https://someuser@dev.azure.com/someuser/someproject/_git/test.git
+```
