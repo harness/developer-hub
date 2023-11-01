@@ -1,5 +1,5 @@
 ---
-title: Unable to Install Custom tools on Delegate via Init Script
+title: Unable to install custom tools on Delegate via init script
 ---
 
 ## Problem
