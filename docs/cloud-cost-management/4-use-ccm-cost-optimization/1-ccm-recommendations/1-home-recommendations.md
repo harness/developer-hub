@@ -146,3 +146,30 @@ Select a recommendation to view its details.
 Within a recommendation, select the number of days to compute recommendations based on the utilization data. You can select the last day, 7 days, or 30 days.
 
 You can use this information to optimize your resources to potentially reduce your monthly cloud costs.
+
+## Export recommendations data
+
+You can export your Recommendations as comma-separated values (CSV) files. Exporting allows you to use the data in other software. Export respects the filters applied by the user in the filter panel.
+
+### Limitations
+
+- Only comma-separated values files (CSV) are supported.
+- The maximum number of rows allowed in one export is 10,000 rows.
+- The more rows you export, the slower the export will be.
+
+### Create a Recommendations Export
+
+1. Open Recommendations.
+
+  ![](./static/export-recommendations-data.png)
+2. Click **Export CSV**.
+
+3. Enter a name for the CSV file.
+
+4. In **Export rows up to**, enter the number of rows you want exported. The number of rows should be greater than or equal to 1.
+
+#### Export the CSV
+
+Click **Download**.
+
+The file is downloaded to your local computer.
