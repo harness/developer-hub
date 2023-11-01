@@ -17,7 +17,7 @@ For Harness SaaS release notes, go to [Harness SaaS Release Notes](/docs/first-g
 Release notes are displayed with the most recent release first.
 
 
-## October 31, 2023, patch release for version 809xx
+## October 31, 2023, patch release for version 80909
 
 This release includes the following module and component versions.
 
@@ -28,7 +28,7 @@ This release includes the following module and component versions.
 | Verification Service | 80909 |
 | UI | 80900 |
 | Learning Engine | 67903 | 
-| Gateway | 0.10.1 |
+| Gateway | 11402 |
 
 ### New features and enhancements
 

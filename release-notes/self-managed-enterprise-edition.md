@@ -18,7 +18,7 @@ import delete_project from './static/delete-project.png'
 
 Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
-## Latest: Version 809xx
+## Latest: Version 80917
 
 ### New features and enhancements
 
@@ -28,9 +28,9 @@ This release includes the following Harness module and component versions.
 | :-- | :--: |
 | Helm Chart | [0.10.0](https://github.com/harness/helm-charts/releases/tag/harness-0.10.0) |
 | Air Gap Bundle | [0.10.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.10.0) |
-| NG Manager | 80909 |
+| NG Manager | 80917 |
 | CI Manager | 6100 |
-| Pipeline Service | 1.47.3 |
+| Pipeline Service | 1.47.11 |
 | Platform Service | 80502 |
 | Access Control Service | 80302 |
 | Change Data Capture | 80909 |
