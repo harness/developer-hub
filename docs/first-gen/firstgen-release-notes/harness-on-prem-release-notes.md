@@ -23,7 +23,7 @@ This release includes the following module and component versions.
 
 | **Name** | **Version** |
 | :-- | :-- |
-| Manager | xxxxx |
+| Manager | 80909 |
 | Watcher | xxxxx |
 | Verification Service | xxxxx |
 | UI | xxxxx |
@@ -32,10 +32,11 @@ This release includes the following module and component versions.
 
 ### New features and enhancements
 
+This release does not include new features and enhancements.
 
 ### Early access features
 
-This release does not include any early access features.
+This release does not include early access features.
 
 ### Fixed issues
 

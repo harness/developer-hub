@@ -28,15 +28,15 @@ This release includes the following Harness module and component versions.
 | :-- | :--: |
 | Helm Chart | [0.10.0](https://github.com/harness/helm-charts/releases/tag/harness-0.10.0) |
 | Air Gap Bundle | [0.10.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.10.0) |
-| NG Manager | 809xx |
-| CI Manager | xxxx |
-| Pipeline Service | x.xx.x |
-| Platform Service | xxxxx |
-| Access Control Service | xxxxx |
-| Change Data Capture | xxxxx |
-| Test Intelligence Service | release-xxx |
-| NG UI | x.xxx.xx |
-| LE NG | xxxxx |
+| NG Manager | 80909 |
+| CI Manager | 6100 |
+| Pipeline Service | 1.47.3 |
+| Platform Service | 80502 |
+| Access Control Service | 80302 |
+| Change Data Capture | 80909 |
+| Test Intelligence Service | release-197 |
+| NG UI | 0.364.18 |
+| LE NG | 68305 |
 
 **Alternative air gap bundle download method**
 
