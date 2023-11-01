@@ -19,21 +19,35 @@ Review the notes below for details about recent changes to Security Testing Orch
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version 1.71.1
+## Latest: Version 1.72.1
 
 ### New features and enhancements
 
-This release does not include new features. 
-
+This release does not include new features.
 
 ### Early access
 
-- Updated the exemptions page to bubble soon to expire exemptions to the top of the list. Available in the time bound exemption early access feature available behind the STO_TIMEBOUND_EXEMPTIONS flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.  (STO-6367)
+- You are now required to sign an end-user license agreement to access the Harness AI Development Assistant (AIDA) in the account and project scopes. You need to do this even if you could previously use AIDA without signing a EULA. (PL-39723)
+
+  The EULA is displayed when you enable AIDA at the account scope (**Account Settings** > **Account Resources** > **Default Settings** > **Harness AI Developer Assistant**).
+
+  Each account user must sign the EULA only once.
+
+  The setting is inherited at the project scope.
 
 ### Fixed issues
 
-- The STO dashboard used a marketplace graph which was not available in hosted environments. A new native graph has been chosen so the Security Issues (Overall) graph will be available on all environments. (STO-6613)
-- Updated the icon for a false positive exemption to match the other icons (STO-6555)
+- Updated the UI terminology to better communicate the relationship between issues in the current scan vs. previous scan. (STO-6613)
+
+  The **Security Test** UI uses the following labels to describe issues found in the current scan that are common to previous scans:
+
+  - **Common to <_target_>:<_variant_>** Issues also found in the last scan of the specified variant
+  - **Common to previous scan** 
+    - Issues also found in the last scan (if the target has no baseline), OR
+    - Issues also found in the last scan of the baseline (if the baseline was selected for the current scan).
+  - **Common to previous / baseline scan** Issues also found in the both the last scan of the specified variant and the last scan of the baseline 
+
+- Fixed a UI issue where the Security Tests tab would show "No Security Issues Found" and issue counts of 0 for all severities if all issues detected in the scan were exempted. (STO-6642)
 
 ### Hotfixes
 
@@ -43,6 +57,26 @@ This release does not include hotfixes.
 
 <details>
 <summary>2023 releases</summary>
+
+#### Version 1.71.1
+
+##### New features and enhancements
+
+This release does not include new features. 
+
+
+##### Early access
+
+- Updated the exemptions page to bubble soon to expire exemptions to the top of the list. Available in the time bound exemption early access feature available behind the STO_TIMEBOUND_EXEMPTIONS flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.  (STO-6367)
+
+##### Fixed issues
+
+- The STO dashboard used a marketplace graph which was not available in hosted environments. A new native graph has been chosen so the Security Issues (Overall) graph will be available on all environments. (STO-6613)
+- Updated the icon for a false positive exemption to match the other icons (STO-6555)
+
+##### Hotfixes
+
+This release does not include hotfixes. 
 
 #### Version 1.70.1
 
