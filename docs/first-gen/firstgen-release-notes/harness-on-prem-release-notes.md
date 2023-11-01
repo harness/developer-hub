@@ -24,11 +24,11 @@ This release includes the following module and component versions.
 | **Name** | **Version** |
 | :-- | :-- |
 | Manager | 80909 |
-| Watcher | xxxxx |
-| Verification Service | xxxxx |
-| UI | xxxxx |
-| Learning Engine | xxxxx | 
-| Gateway | xxxxx |
+| Watcher | 80505 |
+| Verification Service | 80909 |
+| UI | 80900 |
+| Learning Engine | 67903 | 
+| Gateway | 0.10.1 |
 
 ### New features and enhancements
 
