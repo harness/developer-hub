@@ -112,8 +112,6 @@ gsutil -m cp \
 
 - There was no way in Pipeline Studio to add step group variables when creating a step group template. This section has now been added. (CDS-78683)
 
-  <docimage path={require('./static/73123e6efdd7d7dbc7c67b4a7df71bd42b1b20c8ba4cf409f87de0749da8dc92.png')} width="40%" height="40%" title="Click to view full size image" />
-
 #### Continuous Integration
 
 - Improved support for `DRONE_` environment variables in CI pipelines. This improves compatibility for [plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and makes it easier to migrate from standalone Drone to Harness CI. (CI-7600)
