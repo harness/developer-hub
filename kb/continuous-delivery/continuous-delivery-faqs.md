@@ -2742,3 +2742,63 @@ The url format for the Azure git repo to be specified in gitOps repository is be
 ```
 https://someuser@dev.azure.com/someuser/someproject/_git/test.git
 ```
+
+#### Is there a way I can create multiple triggers in the same pipeline such that each trigger is registered with a different GitHub repo as a webhook?
+
+Yes, you can create multiple triggers in the same pipeline, each registered with a different GitHub repo as a webhook. To do this, you would create a separate trigger for each GitHub repo, and specify the appropriate repository name and event type for each trigger.
+
+#### I am unable to create secrets starting with numbers in Next Gen?
+
+Naming conventions in Next Gen are consistently applied to all entity types. According to our existing convention, we do not permit identifiers to start with numbers.
+
+#### How do I change the service artifact source based on the environment?
+
+You can use variable expressions in artifact source templates to allow team members to select the repository, path, and tags to use when they run pipelines using artifact source templates. To override service variables at the environment level, you can create environment-level variables and override them for different environments.
+
+#### How can I deploy the application on a custom specified location in the Azure web app?
+
+Currently, we don't have any facility to do the web app deployment in the custom-specified location in Azure. Alternatively, you can use the shell script step and use the Azure CLI to pass the required argument
+
+#### How do I provide runtime input to the custom secret manager (Connector and Template)?
+
+You can set a variable in the custom secret manager and set its value as runtime time.
+
+#### How do I pass secrets into the Container Step?
+
+We got an update from the team that referencing a secret type output variable in a container step or CI steps is not currently supported.
+
+#### Is rotation of harness_platform_token in teraform resource management supported?
+
+No, currently we do not support rotation of platform token.
+
+#### Is it possible to trigger a CI stage by a trigger of type artifact? 
+
+The trigger variables for CI aren't set so historically we did not support triggering of CI stage.
+
+#### Why on echoing the date powershell shell script step adding an extra line?
+
+Using the Write-Host command instead of echo will get the result in one line.
+
+#### How do I access the artifacts metadata from the service definition in the pipeline?
+
+You can get the artifact metadata from the service step output, each output value can be referred to via the corresponding expression.
+
+#### Which API can I use to get the Projects and ORGs on the account?
+
+You should use:
+https://apidocs.harness.io/tag/Organization/#operation/get-organizations for getting organizations within an account. The "org" parameter is an optional parameter
+
+```
+curl -i -X GET \
+'https://app.harness.io/v1/orgs?&page=0&limit=30&sort=name&order=ASC' \
+-H 'Harness-Account: REDACTED' \
+-H 'x-api-key: REDACTED'
+```
+
+Please use https://apidocs.harness.io/tag/Org-Project#operation/get-org-scoped-projects for getting projects scoped to an org.
+
+```
+curl -i -X GET \
+'https://app.harness.io/v1/orgs/default/projects?has_module=true&page=0&limit=30&sort=name&order=ASC' \
+-H 'Harness-Account: REDACTED' \
+-H 'x-api-key: REDACTED'
