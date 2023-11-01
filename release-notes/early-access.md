@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-09-29T10:00
+date: 2023-10-16T10:00
 sidebar_position: 2
 ---
 
@@ -12,16 +12,50 @@ Review the notes below to learn about the early access (aka beta) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
+## October 16, 2023
 
-## Latest - September 29, 2023
+### Continuous Delivery, version 81008
 
-### Continuous Integration, version 5902
+- Option to clean the target directory prior to deploying an Azure Web App (CDS-76724)
+
+  You can now clean the target directory before deploying an Azure Web App. For more information, go to [Azure Web Apps deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial).
+
+  :::note
+  This feature is behind the feature flag `CDS_WEBAPP_ENABLE_CLEAN_OPTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+  :::
+
+## October 5, 2023
+
+### Security Testing Orchestration, version 1.69.3
+
+- This release includes the following UI enhancements for working with exemptions. (STO-6078)
+
+  - You can click on a row in the **Exemptions** table to view details for the issue associated with that exemption.
+
+    ![](static/sto-click-row-to-view-exemptions.png)
+
+  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+
+    ![](static/sto-exemption-details-no-baseline-selected.png)
+
+  These enhancements are behind the Feature Flag `STO_EXEMPTION_DETAILS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
+
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### September 29, 2023
+
+##### Continuous Integration, version 5902
 
 When [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida), stage-level error analysis is available for failed stages without steps. If a stage has steps, step-level error analysis occurs instead. The Harness AI Development Assistant (AIDA:tm:) for CI is a beta feature that is behind the feature flag `CI_AI_ENHANCED_REMEDIATIONS`. (CI-9102)
 
-## September 19, 2023
+#### September 19, 2023
 
-### Continuous Delivery, version 80711
+##### Continuous Delivery, version 80711
 
 - Added support for Post Prod Rollback for Native Helm deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/rollback-deployments). This feature is behind the Feature Flag `POST_PROD_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-67121)
 
@@ -47,11 +81,6 @@ When [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/ai
     <docimage path={require('./static/cds-77310-chart-tab-panels.png')} width="75%" height="75%" title="Click to view full size image" />   
 
   - The Pipeline Executions table for the service now shows the Helm chart version in the drilldown information for that execution. 
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### August 22, 2023
 

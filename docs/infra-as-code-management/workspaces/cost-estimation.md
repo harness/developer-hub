@@ -8,7 +8,7 @@ Harness IaCM supports getting cost estimates as part of the infrastructure flow.
 
 To use this feature, go to the **Configuration** tab of the Workspace and toggle **Enable Cost Estimation**.
 
-     ![Resources](./static/cost1.png)
+![Resources](./static/cost1.png)
 
 Once enabled, the cost estimate is shown in the following places in the pipeline, as long as a 'terraform plan' is used:
 

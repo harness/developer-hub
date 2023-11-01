@@ -4,7 +4,7 @@ description: Onboard with Terraform Provider
 title: Onboard with Terraform Provider
 ---
 
-The [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/) enables automated lifecycle management of the Harness Platform using Terraform. You can onboard onto Harness on day 1 and also make day 2 changes using tthis Provider. Currently the following Harness resources can be managed via the Provider.
+The [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/) enables automated lifecycle management of the Harness Platform using Terraform. You can onboard onto Harness on day 1 and also make day 2 changes using this Provider. Currently the following Harness resources can be managed via the Provider.
 
 - Organizations
 - Projects

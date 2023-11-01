@@ -23,6 +23,12 @@ First Gen K8S connector will also work in NG CCM. But, we recommend creating NG 
 
 No. You need the delegate only when connecting to a Kubernetes cluster - such as GKE
 
+#### If a CCM license expires, will that ever impact the health indicators of the cloud integrations? (Reporting and auto-stopping icons)
+
+For K8S connectors, the reporting icon would be success as long as we are receiving events from delegate. auto-stopping will be always be marked as success.
+For cloud connectors, one of the validations we do as part of conn health indicator is availability of data on our side in past 24 hours.
+When license expires, after some days we would stop running the data sync jobs and thus conn status will be read.
+
 
 ### Perspectives
 
@@ -68,6 +74,31 @@ The cost is allocated based on the maximum of either requests or actual usage.
 
 Yes, storage costs are indeed included in the total cost calculation. From the cluster perspective, the total cost encompasses memory costs, CPU costs, and storage costs, providing a comprehensive view of all expenses.
 
+#### Waht permission we need to display AWS account name instead of account id in UI ?
+
+You will need : 
+```
+"organizations:Describe*",
+"organizations:List*"
+```
+#### What does "unattributed cost category" mean, and why is it important?
+
+The "unattributed cost category" refers to a category of costs that lack specific identification, such as subscription name, resource group name, resource ID, or reservation ID. It's important because it represents costs that cannot be directly associated with any resource or cost line item.
+
+#### How can I address unattributed costs in my reporting and analysis?
+
+To tackle unattributed costs, you can apply a subsId null filter to isolate these costs and then group them by another relevant column. This approach might help you identify the source of these unattributed costs.
+
+#### What is the potential connection between unattributed costs and Kubernetes clusters?
+
+Unattributed costs could potentially be related to Kubernetes cluster costs. These costs are often gathered when you have a cost connector for Kubernetes. If you do not want to include Kubernetes costs in your cost categories, you can create a "k8s" bucket in each category and define logic such as "cluster name not null." This allows you to separate and ignore Kubernetes costs within your cost categories.
+
+#### If a resource (cost) aligns with rules in different cost category buckets, what happens? Does it go into the highest-priority bucket from the list of buckets for the first match?
+
+Yes, when you group resources by the Cost Category, the resource is assigned to the highest-priority bucket from the list for the first match it encounters. However, if you apply a filter based on the cost bucket, you will retrieve all resources that meet the filter criteria, which can lead to an unexpected result where multiple cost buckets are filtering on one category and grouping by the corresponding cost category they belong to.
+
+
+
 ### Recommendations
 
 #### We have found that some AWS EC2 instances are still visible in recommendations list even they are stopped before 2-3 days ago. is it the usual behavior for stopped ec2s?
@@ -99,6 +130,19 @@ Yes. CCM supports the following features and functionalities in the SMP environm
 - Recommendations 
 For more information, go to [CCM on Harness Self-Managed Enterprise Edition](https://developer.harness.io/docs/category/ccm-on-harness-self-managed-enterprise-edition).
 
+
+#### Why we don't have action for RDS recommendations?
+
+We do not have action for RDS recommendations for the following reasons: 
+
+RDS resize action is a manual operation in most cases where one is required to take a dump of DB (depends on DB flavour like Mysql/MariaDB/Postgres etc.) Refer https://repost.aws/knowledge-center/rds-db-storage-size
+
+Then spin up a new DB instance with lower storage requirements.
+ 
+Then Restore the data
+
+It is up to the user or the use case how much they want to reduce the storage too. Reducing the storage is a manual operation and is not supported via Cloud Custodian at this time.
+
 ### Governance
 
 #### When adding Cloud Governance to a previously created cloud cost connector, do we need to add the cloud-governance IAM permissions to the same role we previously created via the cloudFormation template?
@@ -122,6 +166,10 @@ While Amazon RDS offers some automation capabilities, the resizing process, part
 
 Yes, we do show the recommendations but action cant be taken from CCM, RDS resize action is a manual operation in most cases where one is required to take a dump of DB (depends on DB flavour like Mysql/MariaDB/Postgres etc.), please refer [here](https://repost.aws/knowledge-center/rds-db-storage-size)
 
+#### Can the reader role alone be employed in Cloud Asset Governance for production purposes if no actions are intended, and the focus is solely on achieving potential cost savings and resource governance?
+
+Yes, it is possible to do so.
+
 
 ### Autostopping
 
@@ -139,14 +187,16 @@ A2: To troubleshoot this error, ensure the following:
 The associated Auto Scaling Group (ASG) is properly configured and associated with the intended ALB via a target group.
 The correct ALB is selected as the load balancer when creating the AutoStopping rule.
 
+#### Do we provide support for ECS autostopping when using Network Load Balancers (NLBs) instead of Application Load Balancers (ALBs)?
+
+We currently do not support ECS autostopping with NLBs. NLBs operate at layer 4 of the network stack, making it challenging to intercept traffic. To achieve autostopping functionality, you can create a new ALB, set it up as a downstream system for the NLB, and connect your Auto Scaling (AS) group to the ALB. This configuration will enable the desired functionality."
+
 
 ### Dashboards
 
 #### In dashboards, when creating a custom field can I filter the entire dashboard on it? 
 
 Looker doesn’t support filtering on custom fields at a global level at this point, we would need to filter it per tile.
-
-
 
 #### Can CCM operate independently from the Harness Platform? Or do we need to install CCM as a module on the harness platform and run it?
  
@@ -214,3 +264,19 @@ Before proceeding, please double-check whether you have configured a new connect
 #### Why can't my CCM connector retrieve data from an old billing table?
 
 CCM Connectors, by default, only collect data from billing tables that have had updates within the last 24 hours. If your table hasn't had any updated data within this period, we will skip the collection process.
+
+#### How can I exclude specific instance types from instance resizing recommendations?
+
+On the recommendation page, you can specify `Preferred Instance Families` for Compute-Optimized or Storage-Optimized performance. The algorithm will create recommendations from this pool of preferred instances that are most economical for you.
+
+#### How to specify a preferred instance family globally?
+
+Currently, we don't support this feature.
+
+#### How to rename the report file name of the dashboard scheduled delivery?
+
+Currently, it's only possible to include a custom message in the scheduled delivery, renaming the report name isn't possible.
+
+#### Is it possible to share a dashboard with a person who doesn't have a Harness user?
+
+The sharing option for the Harness dashboard requires selecting a specific user group within Harness itself and defining different levels of access. Therefore, someone who is not part of any group in Harness will not have access to the dashboard.

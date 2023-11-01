@@ -105,6 +105,13 @@ You can reference a secret at the Account scope using an expression with `accoun
 ```
 <+secrets.getValue("account.Docker_Hub_MRC")>
 ```
+
+You can reference a secret from a variable defined at a stage level using the following syntax:
+```
+<+secrets.getValue(<+stage.variables.variable_name>)>
+```
+
+
 Avoid using `$` in your secret value. If your secret value includes `$`, you must use single quotes when you use the expression in a script.  
 For example, if your secret in the Project scope has a value `'my$secret'`, and identifier `Docker_Hub_MRC`, to echo, use single quotes:  
 `echo '<+secrets.getValue("Docker_Hub_MRC")>'`

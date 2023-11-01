@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 hide_table_of_contents: true
 title: Kustomize
 ---
@@ -39,8 +39,8 @@ bash <(curl -fsSL https://raw.githubusercontent.com/harness-community/scripts/ma
 :::
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="GitOps Workflow">
+<Tabs queryString="pipeline">
+<TabItem value="gitops" label="GitOps Workflow">
 ```
 
 :::info
@@ -57,7 +57,7 @@ Verify the following:
 
 1. **A Kubernetes cluster**. We recommend [K3D](https://k3d.io/v5.5.1/) for installing the Harness GitOps Agent and deploying a sample application in a local development environment.
     - Check [Harness GitOps Agent Requirements](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/#requirements).
-2. Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub web interface.
+2. Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub web interface.
     - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Getting Started with Harness GitOps
@@ -78,8 +78,8 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 - When are prompted with **Do you have any existing Argo CD instances?**, select **Yes** if you already have a Argo CD Instance, or else choose **No** to install the Harness GitOps Agent.
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="Harness GitOps Agent Fresh Install">
+<Tabs queryString="gitopsagent">
+<TabItem value="agent-fresh-install" label="Harness GitOps Agent Fresh Install">
 ```
 
 - Select **No**, and then select **Start**.
@@ -97,7 +97,7 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Harness GitOps Agent with Existing Argo CD instance">
+<TabItem value="existingargo" label="Harness GitOps Agent with existing Argo CD instance">
 ```
 
 - Select **Yes**, and then select **Start**.
@@ -211,14 +211,14 @@ You've just learned how to use **Harness GitOps** to deploy an application using
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="CD pipeline">
+<TabItem value="cd-pipeline" label="CD pipeline" queryString="pipeline">
 ```
 
 You can choose to proceed with the tutorial either by using the command-line interface (Harness CLI) or the user interface (Harness UI).
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="CLI">
+<Tabs queryString="interface">
+<TabItem value="cli" label="CLI">
 ```
 
 ## Before you begin
@@ -230,7 +230,7 @@ Complete the following tasks:
 3. **Obtain a Kubernetes cluster**. Use your own Kubernetes cluster. If you do not have one, we recommend that you use [K3D](https://k3d.io/v5.5.1/) for installing Harness delegates and deploying a sample application in a local development environment.
     - Check [delegate System and network requirements](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-requirements).
 4. **Install [Helm CLI](https://helm.sh/docs/intro/install/)**.
-5. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
+5. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
     - For details on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Getting Started with Harness CD
@@ -239,12 +239,12 @@ Complete the following tasks:
 1. Download and configure the Harness CLI.
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="MacOS">
+<Tabs queryString="cli-os">
+<TabItem value="macos" label="MacOS">
 ```
 
 ```bash
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz
 tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
 echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
 source ~/.bash_profile
@@ -252,29 +252,29 @@ source ~/.bash_profile
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Linux">
+<TabItem value="linux" label="Linux">
 ```
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="ARM">
+<Tabs queryString="linux-platform">
+<TabItem value="arm" label="ARM">
 ```
 
 ```bash
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-arm64.tar.gz 
-tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz
+tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz 
 echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
 source ~/.bash_profile
 ```
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="AMD">
+<TabItem value="amd" label="AMD">
 ```
 
 ```bash
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-amd64.tar.gz 
-tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
+tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz
 echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
 source ~/.bash_profile
 ```
@@ -286,13 +286,13 @@ source ~/.bash_profile
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Windows">
+<TabItem value="windows"  label="Windows">
 ```
 
 a. Open Windows Powershell and run the following command to download the Harness CLI.
 
 ```
-Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
+Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip  -OutFile ./harness.zip
 ```
     
 b. Extract the downloaded Zip file and change the directory to the extracted file location.
@@ -311,7 +311,7 @@ d. Restart the terminal.
 </Tabs>
 ```
 
-2. Clone the forked **harnessed-example-apps** repo and change the directory.
+2. Clone the forked **harnesscd-example-apps** repo and change the directory.
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
     cd harnesscd-example-apps 
@@ -416,8 +416,8 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="Canary">
+<Tabs queryString="deployment">
+<TabItem value="canary" label="Canary">
 ```
 
 A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
@@ -432,7 +432,7 @@ harness pipeline --file kustomize-guestbook/harnesscd-pipeline/canary-pipeline.y
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Blue Green">
+<TabItem value="bg" label="Blue Green">
 ```
 
 Blue Green deployments involve running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on a new service version in the stage environment first. Next, traffic is shifted from the prod environment to stage, and the previous service version running on prod is scaled down. Blue Green deployments are also referred to as red/black deployment by some vendors. For more information, go to [When to use Blue Green deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments).
@@ -447,7 +447,7 @@ harness pipeline --file kustomize-guestbook/harnesscd-pipeline/bluegreen-pipelin
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Rolling">
+<TabItem value="rolling" label="Rolling">
 ```
 
 Rolling deployments incrementally add nodes in a single environment with a new service version, either one node at a time or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
@@ -467,7 +467,7 @@ harness pipeline --file kustomize-guestbook/harnesscd-pipeline/rolling-pipeline.
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="UI">
+<TabItem value="ui" label="UI">
 ```
 
 ## Before you begin
@@ -478,7 +478,7 @@ Verify the following:
 2. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness delegates and deploying a sample application in a local development environment.
     - Check [delegate System and network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 3. **Install [Helm CLI](https://helm.sh/docs/intro/install/)**.
-4. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
+4. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
     - For details on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Getting Started with Harness CD
@@ -550,7 +550,7 @@ Connectors in Harness enable integration with 3rd party tools, providing connect
     - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/kustomize-guestbook/harnesscd-pipeline/github-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
-    - Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository as mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML wherever required.
+    - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository as mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML wherever required.
     - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     - Finally, select **Test** under **CONNECTIVITY STATUS** to ensure the connection is successful.
 
@@ -590,8 +590,8 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="Canary">
+<Tabs queryString="deploymentcdpipeline">
+<TabItem value="canary" label="Canary">
 ```
 
 A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
@@ -611,7 +611,7 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Blue Green">
+<TabItem value="bg" label="Blue Green">
 ```
 
 Blue Green deployments involve running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on a new service version in the stage environment first. Next, traffic is shifted from the prod environment to stage, and the previous service version running on prod is scaled down. Blue Green deployments are also referred to as red/black deployment by some vendors. For more information, go to [When to use Blue Green deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments).
@@ -631,7 +631,7 @@ Blue Green deployments involve running two identical environments (stage and pro
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Rolling">
+<TabItem value="rolling" label="Rolling">
 ```
 
 Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).

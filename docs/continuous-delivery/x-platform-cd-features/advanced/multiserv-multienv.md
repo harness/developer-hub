@@ -228,6 +228,12 @@ Here you can see two service deployments run serially on the same infrastructure
 
 ![](./static/multiserv-multienv-24.png)
 
+## Propagating multiple services
+
+By default, you cannot propagate the multiservices from one stage to a subsequent stage.
+
+Currently, to enable multiservice propagation, you must have the Harness feature flags `MULTI_SERVICE_INFRA` and `CDS_MULTI_SERVICE_PROPAGATION` enabled in your Harness account. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
 ## Using environment groups
 
 You can select target environments and infrastructures using environment groups.
@@ -248,14 +254,6 @@ Here's what the deployment looks like:
 The console view can also help view multiple deployments clearly:
 
 ![](./static/multiserv-multienv-27.png)
-
-## Propagating multiple services in stages
-
-Service propagation is not supported when using multiple services in a single stage (this is called a multiple service deployment).
-
-When you add subsequent CD stages to a pipeline you cannot propagate the multiple services like you would with one service.
-
-For details on propagating services in stages, go to [propagate CD services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services).
 
 ## Rollback with multiple services and environments
 

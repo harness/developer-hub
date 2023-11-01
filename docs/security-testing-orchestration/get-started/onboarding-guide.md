@@ -138,7 +138,7 @@ To set up the build infrastructure, you add a connector to your Kubernetes clust
 			</li>
 			<li>Download the YAML file.</li>
 			<li>In a terminal, navigate to the location of the file.</li>
-			<li>In the same Terminal, log into your cluster and run the following:<br/><code>kubectl apply -f harness-delegate.yml</code><br/>Once you apply the YAML file, you&#39;ll see an output like this:<pre>% kubectl apply -f harness-delegate.yml<br/>namespace/harness-delegate-ng created<br/>clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-ng-cluster-admin created<br/>secret/sto-proxy created<br/>statefulset.apps/sto created<br/>service/delegate-service created</pre>In the Harness Delegate setup, you'll see the Delegate register with Harness. This might take a few minutes.<div class="note-callout">If you encounter errors, ensure your cluster can connect outbound to <strong>app.harness.io</strong>. See <a href="https://developer.harness.io/docs/platform/references/whitelist-harness-domains-and-ips">Allowlist Harness Domains and IPs</a>.</div>
+			<li>In the same Terminal, log into your cluster and run the following:<br/><code>kubectl apply -f harness-delegate.yml</code><br/>Once you apply the YAML file, you&#39;ll see an output like this:<pre>% kubectl apply -f harness-delegate.yml<br/>namespace/harness-delegate-ng created<br/>clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-ng-cluster-admin created<br/>secret/sto-proxy created<br/>statefulset.apps/sto created<br/>service/delegate-service created</pre>In the Harness Delegate setup, you'll see the Delegate register with Harness. This might take a few minutes.<div class="note-callout">If you encounter errors, ensure your cluster can connect outbound to <strong>app.harness.io</strong>. See <a href="https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips">Allowlist Harness Domains and IPs</a>.</div>
 			</li>
 		</ol>
 	</li>
@@ -288,13 +288,13 @@ The following procedure creates a pipeline with the STO functionality required t
 
 ### Set up the Security Tests stage
 
-1. In the **Overview** tab, under **Shared Paths**, select **Add** and enter the path `/var/run`.
+1. In the **Overview** tab, under **Shared Paths**, select **Add** and enter the path `/var/run`.
 
   ```mdx-code-block
    <img src={set_up_harness_23} alt="Enter the shared path" height="75%" width="75%" />
   ```
 	 
-2. In the **Infrastructure** tab, select the infrastructure and specify the options based on the infrastructure type. 
+2. In the **Infrastructure** tab, select the infrastructure and specify the options based on the infrastructure type. 
 	
   ```mdx-code-block
    <img src={set_up_harness_24} alt="Define the build infrastructure" height="50%" width="50%" />

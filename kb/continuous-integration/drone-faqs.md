@@ -105,5 +105,23 @@ See: [https://docs.drone.io/server/storage/encryption/]
 Yes, Drone provides an official extension that enables support for Starlark.
 See: [https://docs.drone.io/server/extensions/starlark/]
 
+#### Is it possible to integrate our Drone  builds with the Datadog Pipeline Visibility feature?
+You can use Datadog plugin  to send events and metrics to Datadog from a drone pipeline. https://plugins.drone.io/plugins/datadog
+
+#### While using git clone step how to  fetch submodules 
+You can use --recursive flag while using clone so that it fetch submodules
+
+#### Can we create custom drone plugins using Python? Plugin boilerplates/starters would be highly appreciated
+Yes, you can write drone plugin more details can be found here https://github.com/drone-plugins/drone-pypi
+
+#### If I define a cron in my drone.yml file in my repository? Would it automatically show up in the Drone UI as well? I would like to keep the definition in my code and not build it directly from the UI.
+Cron jobs are created in the Drone user interface only. When you reference the cron job in the yaml, it is solely for filtering purposes. 
+
+#### Drone build was stuck for 5 hours but didn’t get timeout failed, My repository setting got 1 hour for the timeout period but seemed like it was not working.
+Most likely the reason for this issue is runner which was executing the steps/pipeline was terminated before the build was finished
+
+#### How to skip a particular commit without updating drone yaml
+You can add [CI SKIP] skip directive in individual commit message
+
 
 

@@ -14,6 +14,28 @@ export const FeaturedList: CardItem[] = [
     time: "10min",
     link: "/tutorials/internal-developer-portal/service-onboarding-pipeline",
   },
+  {
+    title: "How to Register Your Software Components in Catalog ?",
+    module: MODULES.idp,
+    icon: "img/icon_idp.svg",
+    description:
+      "Create a Software Component and register it in Software Catalog.",
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "20min",
+    link: "/tutorials/internal-developer-portal/register-component-in-catalog", 
+  },
+  {
+    title: "How to use a short-lived secret to trigger a service onboarding pipeline?",
+    module: MODULES.idp,
+    icon: "img/icon_idp.svg",
+    description:
+      "Create a secret input field for developers to provide their credentials, and then use the credentials as a runtime input for a service onboarding pipeline.",
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "7min",
+    link: "/tutorials/internal-developer-portal/using-secret-as-an-input",   
+  },
 ];
 
 export const IDPList: CardItem[] = [

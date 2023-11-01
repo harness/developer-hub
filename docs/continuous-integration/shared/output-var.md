@@ -33,8 +33,8 @@ In the following YAML example, step `alpha` exports an output variable called `m
 
 If an output variable value contains a secret, be aware that the secret will be visible in the [build details](/docs/continuous-integration/use-ci/viewing-builds.md):
 
-*  On the **Output** tab of the step where the output variable originates.
-*  In the build logs for any later steps that reference that variable.
+* On the **Output** tab of the step where the output variable originates.
+* In the build logs for any later steps that reference that variable.
 
 For information about best practices for using secrets in pipelines, go to the [Secrets documentation](/docs/category/secrets).
 
@@ -76,6 +76,12 @@ Use either of the following expressions to reference an output variable in a dif
 
 <figcaption>To reference an output variable, the variable expression must include the originating step's ID and the variable's name.</figcaption>
 </figure>
+
+:::info
+
+If an output variable's length is greater than 64KB, the step will fail.
+
+:::
 
 <details>
 <summary>Early access feature: Output variables as environment variables</summary>

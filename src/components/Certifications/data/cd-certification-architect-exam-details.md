@@ -12,19 +12,19 @@ The Continuous Delivery & GitOps Architect exam tests your knowledge and skills 
 | **Knowledge Exam** | 90 minutes |
 | **Hands On Exam** | 120 minutes |
 
-| **Covered Domain**                         | **Coverage** |
-|-------------------------------------------------|----------------|
-| 1 Advanced Cloud Infrastructure Management      | 10%            |
-| 2 Container Orchestration and Management        | 10%            |
-| 3 Advanced CI/CD Techniques                      | 10%            |
-| 4 Code Management and GitOps                     | 10%            |
-| 5 Advanced Observability and Monitoring          | 10%            |
-| 6 Security and Compliance in DevOps              | 10%            |
-| 7 Advanced Serverless Architectures              | 10%            |
-| 8 Expert Harness Features Utilization            | 10%            |
-| 9 Advanced RBAC and Management                   | 10%            |
-| 10 Mastering Pipeline Management in Harness      | 10%            |
-
+| Covered Domain                                               | Percentage |
+|--------------------------------------------------------------|------------|
+| Harness Delegates Management                                 | 15%        |
+| Security Practices in Harness                                | 10%        |
+| Designing and Implementing CD Pipelines in Harness           | 20%        |
+| Infrastructure as Code and Configuration Management          | 15%        |
+| Continuous Verification (CV) and Observability in Harness    | 10%        |
+| Utilizing and Managing Secrets and Configurations in Harness | 10%        |
+| Deployment Strategies and Rollbacks in Harness               | 10%        |
+| Integrating and Optimizing Cloud Providers and Platforms     | 5%         |
+| Automating and Customizing Workflow Triggers in Harness      | 5%         |
+| Harness Best Practices for Scalable and Efficient CD         | 5%         |
+| Problem Solving and Troubleshooting in Harness Environment   | 5%         |
 
 
 <br />
@@ -36,49 +36,47 @@ The Continuous Delivery & GitOps Architect exam tests your knowledge and skills 
 
 The following is a detailed list of exam objectives:
 
-| #   | Objective |
-|-----|-----------|
-| 1 | **Advanced Cloud Infrastructure Management** |
-| 1.1 | Demonstrate advanced skills in navigating cloud service providers, their offerings, and developing robust and scalable cloud architectures |
-| 1.2 | Apply deep knowledge of Linux, its utilities and scripting for automation and management of complex cloud environments |
-| 1.3 | Design, implement, and manage sophisticated Infrastructure as Code (IaC) systems for comprehensive control of cloud resources |
-| 2 | **Container Orchestration and Management** |
-| 2.1 | Develop advanced containerized solutions, focusing on optimizing images, security, and isolation techniques |
-| 2.2 | Architect, deploy, and manage complex, large-scale containerized applications using Kubernetes and other orchestration tools |
-| 2.3 | Demonstrate the ability to troubleshoot complex scenarios in container orchestration environments |
-| 3 | **Advanced CI/CD Techniques** |
-| 3.1 | Engineer sophisticated Continuous Delivery flows, including advanced testing strategies including Chaos Engineering |
-| 3.2 | Design and implement comprehensive Continuous Delivery solutions, focusing on deployment strategies, pipeline optimization, and rollback procedures |
-| 3.3 | Architect and deploy complex, scalable, and robust pipelines using Harness, including advanced features and integrations |
-| 4 | **Code Management and GitOps** |
-| 4.1 | Manage complex Version Control Systems (VCS), focusing on branching strategies, code review processes, and automation techniques |
-| 4.2 | Implement advanced GitOps strategies within a Harness context, including automated synchronization, error handling, and rollback procedures |
-| 4.3 | Demonstrate proficiency in scripting languages to automate complex tasks, manage configurations, and improve CI/CD pipeline efficiency | 
-| 5 | **Advanced Observability and Monitoring** |
-| 5.1 | Implement sophisticated observability solutions into CI/CD pipelines, including advanced logging, tracing, and performance monitoring techniques |
-| 5.2 | Utilize Harness's advanced notification and alerting mechanisms to facilitate complex monitoring needs |
-| 5.3 | Demonstrate ability to analyze monitoring data and develop strategies for system optimization |
-| 6 | **Security and Compliance in DevOps** |
-| 6.1 | Implement advanced secure secrets management techniques in CI/CD pipelines, focusing on encryption, rotation, and vaulting strategies |
-| 6.2 | Architect and enforce advanced network security protocols and strategies in a cloud environment |
-| 6.3 | Apply Harness governance features to enforce advanced compliance requirements in a DevOps context |
-| 7 | **Advanced Serverless Architectures** |
-| 7.1 | Design, deploy, and manage complex serverless architectures, focusing on performance, scalability, and cost optimizations |
-| 7.2 | Implement advanced serverless patterns within a CI/CD context and in a Harness environment |
-| 7.3 | Troubleshoot complex issues within serverless architectures|
-| 8 | **Expert Harness Features Utilization** |
-| 8.1 | Implement Harness Delegate in complex network environments, focusing on resilience, security, and performance |
-| 8.2 | Use advanced Harness features such as triggers, utility pipelines, variables, and expressions for complex workflow management |
-| 8.3 | Leverage Harness's connector architecture, Resource Development with Harness API, and Harness AIDA for advanced CI/CD solutions |
-| 9 | **Advanced Role-Based Access Control (RBAC) and Management** |
-| 9.1 | Design and enforce advanced RBAC policies in securing a CI/CD pipeline within Harness |
-| 9.2 | Develop and implement complex user and permission management strategies within the Harness platform |
-| 9.3 | Troubleshoot complex permission issues and demonstrate advanced understanding of access control principles |
-| 10 | **Mastering Complex Pipeline Management in Harness** |
-| 10.1 | Architect and manage sophisticated, large-scale deployment pipelines in Harness, focusing on best practices, performance, and reliability |
-| 10.2 | Implement advanced deployment strategies, including canary deployments, blue-green deployments, and A/B testing within Harness |
-| 10.3 | Utilize Harness's pipeline governance capabilities to enforce complex compliance rules and best practices within a large organization |
-
+| #    | Objective                                                                           |
+|------|-------------------------------------------------------------------------------------|
+| 1    | **Harness Delegates Management**                                                      |
+| 1.1  | Understand and troubleshoot Delegate installation and connectivity                  |
+| 1.2  | Implement high availability for Harness Delegates                                    |
+| 1.3  | Manage Delegate upgradability and customization using INIT_SCRIPT                   |
+| 2    | **Security Practices in Harness**                                                      |
+| 2.1  | Apply the Principle of Least Privilege (PoLP) in Harness setup                      |
+| 2.2  | Implement secure deployment practices in varied environments                       |
+| 2.3  | Manage and mitigate security concerns related to Delegate access and use            |
+| 3    | **Designing and Implementing CD Pipelines in Harness**                                  |
+| 3.1  | Develop and optimize pipelines using Harness                                        |
+| 3.2  | Implement and manage pipeline templates using GitOps practices                      |
+| 3.3  | Manage artifacts and dependencies in pipeline stages                                |
+| 4    | **Infrastructure as Code and Configuration Management**                                 |
+| 4.1  | Differentiate and apply concepts of IaC and Configuration Management within Harness |
+| 4.2  | Implement and optimize the use of Terraform within Harness pipelines               |
+| 4.3  | Handle and manage dependencies and initial requirements for IaC within Harness     |
+| 5    | **Continuous Verification (CV) and Observability in Harness**                           |
+| 5.1  | Utilize various tools for logs and APM in CV strategies                             |
+| 5.2  | Implement effective observability and monitoring of Harness components              |
+| 5.3  | Understand and optimize feedback loops within CD pipelines                          |
+| 6    | **Utilizing and Managing Secrets and Configurations in Harness**                        |
+| 6.1  | Efficiently manage secrets within Harness                                           |
+| 6.2  | Ensure secure and optimal handling of configurations                                |
+| 7    | **Deployment Strategies and Rollbacks in Harness**                                      |
+| 7.1  | Implement different deployment strategies (e.g., Canary, Blue-Green) using Harness  |
+| 7.2  | Design and troubleshoot rollback strategies for failed deployments                  |
+| 7.3  | Manage and troubleshoot Helm and Umbrella Chart deployments in Kubernetes           |
+| 8    | **Integrating and Optimizing the Use of Cloud Providers and Platforms in Harness**      |
+| 8.1  | Implement optimal Harness setups for varied cloud platforms (e.g., AWS, Azure)      |
+| 8.2  | Manage and troubleshoot deployments in varied environments (e.g., AWS EKS, Lambda)  |
+| 9    | **Automating and Customizing Workflow Triggers in Harness**                             |
+| 9.1  | Design and implement custom pipeline triggers with parameters                       |
+| 9.2  | Ensure secure and authorized trigger execution in Harness workflows                 |
+| 10   | **Harness Best Practices for Scalable and Efficient CD**                              |
+| 10.1 | Implement best practices for utilizing Harness features for scalable and efficient CD |
+| 10.2 | Optimize user experience and performance through effective management of Harness components |
+| 11   | **Problem Solving and Troubleshooting in Harness Environment**                  |
+| 11.1 | Develop proficiency in troubleshooting common issues within Harness                 |
+| 11.2 | Implement problem-solving strategies for diverse deployment and operational challenges |
 
   
 </details>

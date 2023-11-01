@@ -160,7 +160,7 @@ import TabItem from '@theme/TabItem';
    - In **Credentials**, in **Connection Type**, select **HTTPS**, the **Anonymous** option to add a public repository.
    - To add a private repository, select the authentication option with username and password, and enter the access token.
 
-     This authentication is supported for Docker and GitHub. AWS and Google have short-lived tokens, and might not work as expected. However, if you have an [External Secrets Operator](https://docs.harness.io/article/3xqjzq2q2q-external-secrets-operator) installed, you can configure the repository for regenerating tokens. For more information, go to [OCI Helm repository with ESO](#oci-helm-repository-with-eso).
+     This authentication is supported for Docker and GitHub. AWS and Google have short-lived tokens, and might not work as expected. However, if you have an [External Secrets Operator](https://external-secrets.io) installed, you can configure the repository for regenerating tokens. For more information, go to [OCI Helm repository with ESO](#oci-helm-repository-with-eso).
 8. Select **Save & Continue**. Harness validates the connection.
 
 :::note
@@ -195,7 +195,7 @@ If you intend to establish an HTTPS connection to a repository and plan to use e
 7. In **Credentials**, select **Specify Credentials for Repository**.
     - Select the authentication option with **Username and password**, 
       - In the **Username** field, if you are authenticating to AWS, enter `AWS`. If you are authenticating to Google, enter `oauth2accesstoken`.
-      - In **Password** enter your short-lived token (obtained with `aws ecr get-login-password` for AWS and `gcloud auth print-access-token` for Google). If you have an [External Secrets Operator](https://docs.harness.io/article/3xqjzq2q2q-external-secrets-operator), a **Refresh token** checkbox appears. Enable the checkbox.
+      - In **Password** enter your short-lived token (obtained with `aws ecr get-login-password` for AWS and `gcloud auth print-access-token` for Google). If you have an [External Secrets Operator](https://external-secrets.io), a **Refresh token** checkbox appears. Enable the checkbox.
     - If you checked  **Refresh Token**, specify a  **Refresh Interval** (for example, 1m, 1h, 12h, or 1d). This is the interval with which you want the token to be refreshed.
     - Harness uses the URL you enter to determine whether the registry is a Google or AWS registry. You can select the type of authentication that you want to use with the registry.
         - For Google, you can select **Google Service Account** or **Google Workload Identity**.

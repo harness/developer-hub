@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-08-30T10:00
+date: 2023-10-20T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 9
 ---
@@ -19,34 +19,99 @@ Review the notes below for details about recent changes to Security Testing Orch
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Version 1.68.0
+## Latest: Version 1.71.1
 
 ### New features and enhancements
 
 This release does not include new features. 
 
+
 ### Early access
+
+- Updated the exemptions page to bubble soon to expire exemptions to the top of the list. Available in the time bound exemption early access feature available behind the STO_TIMEBOUND_EXEMPTIONS flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.  (STO-6367)
+
+### Fixed issues
+
+- The STO dashboard used a marketplace graph which was not available in hosted environments. A new native graph has been chosen so the Security Issues (Overall) graph will be available on all environments. (STO-6613)
+- Updated the icon for a false positive exemption to match the other icons (STO-6555)
+
+### Hotfixes
+
+This release does not include hotfixes. 
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Version 1.70.1
+
+##### New features and enhancements
+
+- Improved the look and feel of the exemptions page, and added information about the severity of the issue associated with exemptions and exemption requests. (STO-6592)
+
+##### Early access
+
+- Added support for Matrix pipelines to the pipeline execution results filters
+  
+  This fixes an issue in a feature behind the Feature Flag `STO_DROPDOWN_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-6405)
+
+##### Fixed issues
+
+This release does not include new fixes.
+
+##### Hotfixes
+
+This release does not include hotfixes. 
+
+
+#### Version 1.69.3
+
+##### New features and enhancements
+
+This release does not include new features. 
+
+##### Early access
+
+- This release includes the following UI enhancements for working with exemptions. (STO-6078)
+
+  - You can click on a row in the **Exemptions** table to view details for the issue associated with that exemption.
+
+    ![](static/sto-click-row-to-view-exemptions.png)
+
+  - For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+
+    ![](static/sto-exemption-details-no-baseline-selected.png)
+
+  These enhancements are behind the Feature Flag `STO_EXEMPTION_DETAILS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
+
+##### Fixed issues
+
+- Occurrences page size longer resets on page update. (STO-6472)
+
+
+##### Hotfixes
+
+This release does not include hotfixes. 
+
+
+#### Version 1.68.0
+
+##### New features and enhancements
+
+This release does not include new features. 
+
+##### Early access
 
 This release does not include early access features. 
 
-### Fixed issues
+##### Fixed issues
 
 - Fixed the following UI issues in in **Security Tests**: 
 
   - Users with view access for Security Issues at the Project level, but not the Account level, could not view issue details. (STO-6421)
 
   - Some scanners such as Gitleaks would appear with the label **Unknown Scan Tool** rather than the correct product name. (STO-6454) (STO-6337)
-
-
-### Hotfixes
-
-This release does not include hotfixes. 
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### Version 1.67.2
 
@@ -70,7 +135,7 @@ This release does not include hotfixes.
 
 ##### New features and enhancements
 
-- The target list table in  **Test Targets** is now paginated. You can configure the list to show 10, 20, 50, or 100 targets per page. (STO-4918) 
+- The target list table in  **Test Targets** is now paginated. You can configure the list to show 10, 20, 50, or 100 targets per page. (STO-4818) 
 
 ##### Early access
 
@@ -188,7 +253,7 @@ This release does not include hotfixes.
 
 #### August 02, 2023, version 1.62.2
 
-##### What's new
+##### New features and enhancements
 
 This release does not include new features. 
 
@@ -203,9 +268,7 @@ This release does not include Early Access features.
 
 #### July 12, 2023, version 1.61.1 
 
-##### What's new
-
-This release does not include new features. 
+##### New features and enhancements
 
 You can now define dynamic target baselines using regular expressions. Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. Dynamic baselines also make it easier to track the introduction and remediation of specific vulnerabilities.
 
@@ -223,7 +286,7 @@ This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more informati
 
 #### July 5, 2023, version 1.60.0
 
-##### What's New
+##### New features and enhancements
 
 You can now set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and the Harness Manager.
 
@@ -249,7 +312,6 @@ For information on how to set up this workflow, go to [Configure STO to Download
  This integration is behind the Feature Flag `STO_STEP_PALETTE_SEMGREP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 
 
-
 ##### Fixed Issues
 
 * Fixed an issue where some Reference Identifiers were not listed in the AIDA **Edit Inputs** form for enhancing a Security Issue's remediation steps. (STO-6102)
@@ -257,11 +319,11 @@ For information on how to set up this workflow, go to [Configure STO to Download
 
 #### June 21, 2023, version 1.58.3
 
-##### What's new
+##### New features and enhancements
 
 This release does not include new features.
 
-##### Early access
+##### Early access features
 
 Harness AI Development Assistant (AIDA) uses state-of-the-art AI technology to streamline the process of triaging and fixing security vulnerabilities. For every vulnerability detected by STO, Harness AIDA explains the issue precisely and provides detailed advice  — including code changes and package upgrades — on how to fix it. Harness AIDA is based on large, well-trained language models. It learns continuously based on feedback and the latest public knowledge. Optionally, you can regenerate advice with additional context and thereby optimize your results. 
 
