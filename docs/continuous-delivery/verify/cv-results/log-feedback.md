@@ -11,6 +11,11 @@ Event preference or log feedback allows you to customize the event type, enhanci
 After running log verification as part of the verify step, you can review the detected logs and provide feedback. This feedback is taken into account during subsequent verifications. The feedback is provided in the form of a risk value assigned to each log. By providing log feedback and assigning appropriate risk values, you can fine-tune the verification outcome to better suit your specific requirements and context.
 
 ### Set event preference
+:::note
+
+Currently, this feature is behind the feature flags SRM_LOG_FEEDBACK_ENABLE_UI. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 To the event preference or log feedback:
 
