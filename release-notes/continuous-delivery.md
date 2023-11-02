@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-11-2T10:00:15
+date: 2023-11-3T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -46,7 +46,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
-## Latest: November 2, 2023, Harness version 813xx
+## Latest: November 3, 2023, Harness version 813xx
 
 ### New features and enhancements
 
@@ -67,15 +67,14 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 This release does not include early access features. 
 
 ### Fixed issues
-<!-- - CDS-82691 		n/a (Asked Sahithi Kolichala if this issue needs a release note.) -->
 
-<!-- - CDS-82436 		NA (Asked avinash.madhwani if this issue needs a release note.) -->
+- In Pipeline Studio, if you perform CRUD operations on stage variables in the Variables side panel when the stage's Overview tab is open, those operations do not reflect on the Overview Tab. For example, the Overview tab continues to show stage variables that you delete in the side panel. (CDS-79739, CDS-82435)
 
-- When a user opens the stage's Overview Tab and then attempts to open the pipeline variables drawer and perform stage variable CRUD operations, the same change does not appear in the stage's Overview Tab. (CDS-82435) <!-- This ticket is linked to CDS-79739, which describes, more or less, the same issue and is also in this fixed issues section. On CDS-79739, I've asked whether we'd rather write one description and include both IDs in parentheses. I've also included a draft of the note on that ticket. Waiting for a response. -->
+  This issue has been resolved.
 
-  This issue has been resolved. 
+- When you defined runtime inputs for fields for list items in the AWS ASG blue/green deployment step, the deployment dashboard did not show deployment details. (CDS-82383, ZD-51101)
 
-- When you defined runtime inputs for fields for list items in the AWS ASG blue/green deployment step, the deployment dashboard did not show deployment details. (CDS-82383, ZD-51101) <!-- Need more info to understand this issue. Have pinged vitalie safronovici. Update: got the description, formerly "Added support to loadBalancers list in step parameters to be saved as runtime input for BG deployment in ASG" to the current state. Need to clarify what "for fields for list items" means. WIP. -->
+  This issue has been fixed.
 
 - The GitOps Sync step intermittently failed to check the sync status of the application. (CDS-82230, ZD-52553) 
 
@@ -89,26 +88,23 @@ This release does not include early access features.
 
   This issue has been fixed. The error message has been improved and lists the steps that a TAS pipeline requires.
 
-- You can now execute selected stages executions with only validations running at selected stages in case of no runtime inputs being present in the final selected stages. (CDS-81914) <!-- Kinda got this but needs some improvements. WIP. -->
+- You can now execute selected stages executions with only validations running at selected stages in case of no runtime inputs being present in the final selected stages. (CDS-81914) <!-- Needs some improvements. WIP. -->
 
-<!-- Next few descriptions are WIP -->
+- Earlier, even though a freeze window was enabled and active and you had configured the **Freeze window is enabled and active** notification setting (`FreezeWindowEnabled` in YAML), Harness users did not receive a *Freeze Active* notification. The issue occurred if you enabled the freeze window when its start time was in the past(meaning the freeze got active as soon as it was enabled). This issue did not occur if the freeze window’s start time was in the future. (CDS-81891, ZD-52835) 
 
-- Freeze Active notification will be sent on a CRUD event if the freeze is currently active. Previously it was sent only if freeze is active in future.
-This is provided that we have configured notifications to be sent for "Freeze enabled and active" in freeze config. (CDS-81891, ZD-52835)
+  This issue has been fixed. Now, a *Freeze Active* notification is sent if you make changes to a freeze window that is enabled and active, provided that the **Freeze window is enabled and active** setting is configured.
 
-- Added support to resolve secret expressions like <+secrets.getValue("secret")> referred in custom artifact input variables while fetching versions in dropdown (CDS-81724, ZD-52184)
+- In the script input variable section of a custom artifact source template, if you specified an expression that references a secret (for example, <+secrets.getValue("secret")>), Harness displayed the following message when you clicked the version field: `Something went wrong at our end. Please contact …” (CDS-81724, ZD-52184)
 
-- Previously, the saved filters dropdown was limited to displaying only the first 100 filters (maximum). With this ticket - [CDS-81492] - we have introduced infinite scrolling to the dropdown, allowing it to retrieve the entire list of available filters. (CDS-81492, ZD-52030)
+  This issue has been fixed. Harness now resolves script input variables that use expressions to reference secrets.
 
-- If any error message for verify step, now it will be shown at top of the view. (CDS-81291, ZD-52005)
+- Previously, the saved filters dropdown field was limited to displaying only the first 100 filters, which was also the maximum number of filters retrieved. (CDS-81492, ZD-52030)
 
-- When editing a Template, if the user clicked the "Save as New Template" button, the template was still getting saved as the older Template. This issue was seen in GitX (Remote) Templates. (CDS-80744)
+  This issue has been fixed. Harness has introduced infinite scrolling in the dropdown field, thereby allowing it to retrieve the entire list of available filters. 
 
-  The issue has been fixed now. 
+- A discrepancy exists in the information displayed between the pipeline view and console view of a deployment: the console view displays "No analysis" while the pipeline view displays a more verbose output. Additionally, when an error occurs, the resulting message appears in a small box at the bottom of the console. The box cannot be expanded, and that makes the message difficult to read. (CDS-81291, ZD-52005)
 
-- The removal of a variable from the **Variables** side panel of Pipeline Studio does not reflect in the stage variables section of Pipeline Studio’s **Advanced** tab until you save the pipeline. (CDS-79739)
-
-    This issue has been fixed. 
+  This issue is now fixed. If an error occurs, the message is displayed at the top of the view for better visibility.
 
 ## Previous releases
 
