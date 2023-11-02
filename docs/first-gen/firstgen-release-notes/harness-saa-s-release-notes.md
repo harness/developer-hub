@@ -16,7 +16,7 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### Latest: November 2, 2023, Version 813xx
+### Latest: November 3, 2023, Version 813xx
 
 - The Git Connector field in the Application dialog neither showed nor listed the configured connector. (CDS-82009) <!-- needs cursory review -->
 
