@@ -30,8 +30,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Various dependencies were upgraded to prevent security issues. (CET-1880)
 
-## October 30, 2023
-
 ## November 1, 2023
 
 ### Self-Managed Enterprise Edition, version 80917
