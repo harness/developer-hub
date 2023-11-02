@@ -44,7 +44,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-<!-- step-palette -->
+<!-- step-palette 
 
 ## Anchore Enterprise step configuration
 
@@ -294,7 +294,7 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step settings for Anchore Enterprise scans in STO
 
-<!-- step-palette 
+<!-- step-palette -->
 :::note
 You need to use a Security step to set up an Anchore Enterprise integration. An Anchore Enterprise scanner template is under development and will be available soon. 
 :::
@@ -362,7 +362,7 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
-<!-- step-palette
+<!-- step-palette -->
 ### Fail on Severity
 
 ```mdx-code-block
@@ -370,7 +370,7 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 ```
 <StoSettingFailOnSeverity />
 
-/step-palette -->
+<!-- /step-palette -->
 
 ## Anchore Enterprise orchestration example
 
@@ -424,7 +424,9 @@ pipeline:
                     image: docker:dind
                     shell: Sh
                     privileged: true
-					resources:
+                    entrypoint:
+                      - dockerd
+                    resources:
                       limits:
                         memory: 2048Mi
                         cpu: 1000m  
