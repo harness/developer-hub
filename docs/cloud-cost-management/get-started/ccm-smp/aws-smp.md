@@ -643,14 +643,14 @@ global:
   # -- Set the `global.proxy.host` parameter by specifying the proxy host or IP address (for example, localhost, 127.0.0.1)
   # -- Set the `global.proxy.port` parameter by specifying the proxy port. It takes an integer value.
   # -- Set the `global.proxy.username` parameter and `global.proxy.password` parameter by specifying the proxy username and password. If not required, remove it or leave it blank.
-  # -- Set the `global.proxy.protocol` parameter by specifying http or https depending on the proxy configuration.
+  # -- Set the `global.proxy.protocol` parameter as https.
   proxy:
     enabled: true
     host: localhost
     port: 80
     username: ""
     password: ""
-    protocol: http
+    protocol: https
   # -- CCM uses `us-east-1` as the default region where the respective endpoint URLs are used for STS (Security Token Service), ECS (Elastic Container Service), and CloudWatch services. However, if there is a need to specify a different region, you have the option to customize the endpoint URLs using the following configuration:
   # -- Set the `global.awsServiceEndpointUrls.enabled` parameter to true to enable endpoint URLs.
   # -- Set a valid AWS region in the `global.awsServiceEndpointUrls.endPointRegion.host` parameter to specify the region where this endpoint is accessible.
@@ -676,7 +676,7 @@ ccm:
     # -- Set the `ccm.batch-processing.cliProxy.host` parameter by specifying the proxy host or IP address (for example, localhost, 127.0.0.1)
     # -- Set the `ccm.batch-processing.cliProxy.port` parameter by specifying the proxy port. It takes an integer value.
     # -- Set the `ccm.batch-processing.cliProxy.username` parameter and `ccm.batch-processing.cliProxy.password` parameter by specifying the proxy username and password. If not required, remove it or leave it blank.
-    # -- Set the `ccm.batch-processing.cliProxy.protocol` parameter by specifying HTTP or HTTPS depending on the proxy configuration.
+    # -- Set the `ccm.batch-processing.cliProxy.protocol` parameter as http.
     cliProxy:
       enabled: true
       host: localhost 
