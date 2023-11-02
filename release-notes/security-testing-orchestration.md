@@ -23,7 +23,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### New features and enhancements
 
-This release does not include new features.
+You can now provide feedback about the [AIDA-generated remediation step](https://developer.harness.io/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations) for a selected issue. (STO-6593)
+
+![](./static/sto-aida-feedback-sto-6593.png)
 
 ### Early access
 
@@ -47,7 +49,7 @@ This release does not include new features.
     - Issues also found in the last scan of the baseline (if the scanned variant is the baseline).
   - **Common to previous / baseline scan** Issues also found in the both the last scan of the specified variant AND the last scan of the baseline. 
 
-- Fixed a UI issue where the Security Tests tab would show "No Security Issues Found" and issue counts of 0 for all severities if all issues detected in the scan were exempted. (STO-6642)
+- Fixed a UI issue in **Security Tests** when all vulnerabilities detected in a scan had exemptions. The tab showed "No Security Issues Found", all issue counts were 0, and no issues appeared in the UI even when the selected filter included exempted issues. (STO-6642)
 
 ### Hotfixes
 
