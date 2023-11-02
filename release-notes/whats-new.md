@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-10-30T10:00
+date: 2023-11-02T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -20,10 +20,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest: October 31, 2023
+## Latest: November 02, 2023
 
-### Continuous Error Tracking, version ET-Service 5.30.0
-
+### Continuous Error Tracking, versions ET-Service 5.30.0 and ET-Collector 5.30.0
 - The Summary page loading time has been optimized. Now, the Summary page loads faster, ensuring a better user experience. (CET-1233)
 
 - The event distribution chart now supports plotting a graph for new events. (CET-1610)
