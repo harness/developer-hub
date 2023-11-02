@@ -121,11 +121,30 @@ This release does not include any new early access features.
 
 #### Version 81015
 
-- Fixed an issue that prevented the service dashboard from showing the new active instance count resulting from updates made to workload replicas. The issue occurred in a few Helm deployment scenarios, when the updates were made after deployment. (CDS-82385, ZD-52612)
+- The service dashboard did not show the new active instance count that resulted from updates made to workload replicas. The issue occurred in a few Helm deployment scenarios, when the updates were made after deployment. (CDS-82385, ZD-52612)
 
-  This issue has now been resolved. 
+  This issue has now been fixed. 
 
-- In order to set up certificates, Harness has introduced a new way to mount certificates to delegate pods for CI executions. With the new capability, you must mount certificates to `/opt/harness-delegate/ca-bundle` and specify a list of comma-separated destination paths with the `DESTINATION_CA_PATH` environment variable. Each path corresponds to the location on the CI build pod where you want the certificate to be mounted. This solution works for CI build pods and for the SCM client on the delegate. The previous method used the `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH` environment variables. You can use both methods concurrently. The new method assumes priority. If the new method fails, Harness falls back to the old method. (CI-9707)
+- In order to set up certificates, Harness has introduced a new way to mount certificates to delegate pods for CI executions. With the new capability, you must mount certificates to `/opt/harness-delegate/ca-bundle` and specify a list of comma-separated destination paths with the `DESTINATION_CA_PATH` environment variable. Each path corresponds to the location on the CI build pod where you want the certificate to be mounted. This solution works for CI build pods and for the SCM client on the delegate. The following YAML configuration illustrates the new method:
+
+  ```yaml
+        env:
+        - name: DESTINATION_CA_PATH
+                  value: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
+                volumeMounts:
+                - name: certvol
+                  mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
+                  subPath:  ca.bundle
+              volumes:
+              - name: certvol
+                secret:
+                  secretName: addcerts
+                  items:
+                  - key: ca.bundle
+                    path: ca.bundle
+  ```
+  
+  The previous method used the `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH` environment variables. You can use both methods concurrently. The new method assumes priority. If the new method fails, Harness falls back to the old method. (CI-9707)
 
 #### Harness version 80811, Harness Delegate version 23.09.80804
 
