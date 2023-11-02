@@ -44,15 +44,266 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
+<!-- step-palette 
+
+## Anchore Enterprise step configuration
+
+The recommended workflow is add a Anchore Enterprise step to a Security Tests or CI Build stage and then configure it as described below. 
+
+### Scan settings
+
+<a name="scan-mode"></a>
+
+#### Scan Mode
+
+```mdx-code-block
+import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
+import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
+import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+```
+
+<StoSettingScanMode />
+<StoSettingScanModeOrch />
+<StoSettingScanModeData />
+<StoSettingScanModeIngest />
+
+
+#### Scan Configuration
+
+```mdx-code-block
+import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+```
+
+<StoSettingProductConfigName />
+
+
+### Target
+
+#### Type
+
+```mdx-code-block
+import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
+```
+
+<a name="scan-type"></a>
+<StoSettingScanTypeCont />
+
+#### Name 
+
+```mdx-code-block
+import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+```
+
+<StoSettingProductID />
+
+<a name="target-variant"></a>
+
+#### Variant
+
+```mdx-code-block
+import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
+```
+
+<StoSettingTargetVariant  />
+
+#### Workspace
+
+```mdx-code-block
+import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
+```
+
+<StoSettingTargetWorkspace  />
+
+### Container Image
+
+<!-- ============================================================================= -->
+<a name="container-type"></a>
+
+#### Type  (_orchestration_)
+
+```mdx-code-block
+import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md';
+```
+
+<StoSettingImageType />
+
+<!-- ============================================================================= -->
+
+
+<a name="container-domain"></a>
+
+#### Domain (_extraction_)
+
+
+```mdx-code-block
+import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domain.md';
+```
+
+<StoSettingImageDomain />
+
+<!-- ============================================================================= -->
+<a name="container-name"></a>
+
+#### Name
+
+```mdx-code-block
+import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md';
+```
+
+<StoSettingImageName />
+
+<!-- ============================================================================= -->
+
+
+<a name="container-tag"></a>
+
+#### Tag
+
+```mdx-code-block
+import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
+```
+
+<StoSettingImageTag />
+
+
+#### Access ID
+
+```mdx-code-block
+import StoSettingImageAccessID from './shared/step_palette/_sto-ref-ui-image-access-id.md';
+```
+
+<StoSettingImageAccessID />
+
+#### Access Token
+
+```mdx-code-block
+import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-access-token.md';
+```
+
+<StoSettingImageAccessToken />
+
+
+### Ingestion File
+
+```mdx-code-block
+import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+```
+
+<StoSettingIngestionFile  />
+
+
+### Authentication
+
+
+<a name="auth-domain"></a>
+
+#### Domain
+
+The fully-qualified URL to the scanner API, for example `https://anchore.company.io/api` or `http://192.0.2.1:8228`
+
+
+
+<StoSettingAuthDomain />
+
+
+#### Access ID
+
+```mdx-code-block
+import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
+```
+
+<StoSettingAuthAccessID />
+
+
+
+#### Access Token
+
+```mdx-code-block
+import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
+```
+
+<StoSettingAuthAccessToken />
+
+### Scan Tool
+
+
+
+#### Image Name
+
+For Extraction scans, the name of the image that you want to extract from Anchore. 
+
+
+
+
+### Log Level, CLI flags, and Fail on Severity
+
+<a name="log-level"></a>
+
+#### Log Level
+
+```mdx-code-block
+import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
+```
+
+<StoSettingLogLevel />
+
+<a name="cli-flags"></a>
+
+#### Additional CLI flags
+
+You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/current/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` : `--force`.  
+
+
+<a name="fail-on-severity"></a>
+
+#### Fail on Severity
+
+```mdx-code-block
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+```
+<StoSettingFailOnSeverity />
+
+
+### Settings
+
+You can use this field to provide environment variables to be used during the execution of the step. 
+
+
+
+### Additional Configuration
+
+In the **Additional Configuration** settings, you can use the following options:
+
+* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
+* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
+* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
+
+
+### Advanced settings
+
+In the **Advanced** settings, you can use the following options:
+
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+
+ /step-palette -->
+
 
 
 ## Security step settings for Anchore Enterprise scans in STO
 
+<!-- step-palette 
 :::note
 You need to use a Security step to set up an Anchore Enterprise integration. An Anchore Enterprise scanner template is under development and will be available soon. 
 :::
 
-To set up your Anchore Enterprise integration, do the following: 
+/step-palette -->
+
+To set up your Anchore Enterprise integration with a Security step, do the following: 
 
 1. Create a CI Build or Security Tests stage
 2. Add a Security step.
@@ -65,7 +316,7 @@ To set up your Anchore Enterprise integration, do the following:
 
 * [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) : `orchestratedScan`, `dataLoad`, or `ingestionOnly`. 
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan` or `dataLoad`:
-	+ `product_domain` : The fully-qualified URL to the scanner API. Such as https://anchore.company.io/api or http://192.0.2.1:8228
+	+ `product_domain` : The fully-qualified URL to the scanner API, for example https://anchore.company.io/api or http://192.0.2.1:8228
 	+ `product_access_id` : Username to log in to the scanner.
 	+ `product_access_token` : The access token to log in to the scanner. In most cases this is a password or an API key. 
 	  You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
@@ -74,7 +325,7 @@ To set up your Anchore Enterprise integration, do the following:
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan`:
 	+ `container_project` — The image owner and project, for example `harness/delegate`
 
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
+* [`fail_on_severity`](#fail-on-severity)
 + `tool_args`
 	You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/current/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` : `--force`. 
 
@@ -113,12 +364,15 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
+<!-- step-palette
 ### Fail on Severity
 
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
 <StoSettingFailOnSeverity />
+
+/step-palette -->
 
 ## Anchore Enterprise orchestration example
 
@@ -315,182 +569,3 @@ pipeline:
 
 </details>
 
-<!--
-## Anchore Enterprise step configuration
-
-The recommended workflow is add a Anchore Enterprise step to a Security Tests or CI Build stage and then configure it as described below. 
-
-### Scan settings
-
-<a name="scan-mode"></a>
-
-#### Scan Mode
-
-```mdx-code-block
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-```
-
-<StoSettingScanMode />
-<StoSettingScanModeOrch />
-<StoSettingScanModeData />
-<StoSettingScanModeIngest />
-
-
-#### Scan Configuration
-
-```mdx-code-block
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-```
-
-<StoSettingProductConfigName />
-
-
-### Target
-
-#### Type
-
-```mdx-code-block
-import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
-```
-
-<a name="scan-type"></a>
-<StoSettingScanTypeCont />
-
-#### Name 
-
-```mdx-code-block
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-```
-
-<StoSettingProductID />
-
-<a name="target-variant"></a>
-
-#### Variant
-
-```mdx-code-block
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-```
-
-<StoSettingTargetVariant  />
-
-#### Workspace
-
-```mdx-code-block
-import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
-```
-
-<StoSettingTargetWorkspace  />
-
-
-### Ingestion File
-
-```mdx-code-block
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-```
-
-<StoSettingIngestionFile  />
-
-
-### Authentication
-
-
-<a name="auth-domain"></a>
-
-#### Domain
-
-The fully-qualified URL to the scanner API. Such as `https://anchore.company.io/api` or `http://192.0.2.1:8228`
-
-
-
-<StoSettingAuthDomain />
-
-
-
-#### Access ID
-
-```mdx-code-block
-import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
-```
-
-<StoSettingAuthAccessID />
-
-
-
-#### Access Token
-
-```mdx-code-block
-import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
-```
-
-<StoSettingAuthAccessToken />
-
-### Scan Tool
-
-
-
-#### Image Name
-
-For Extraction scans, the name of the image that you want to extract from Anchore. 
-
-
-
-
-### Log Level, CLI flags, and Fail on Severity
-
-<a name="log-level"></a>
-
-#### Log Level
-
-```mdx-code-block
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-```
-
-<StoSettingLogLevel />
-
-<a name="cli-flags"></a>
-
-#### Additional CLI flags
-
-You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/current/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` = `--force`.  
-
-
-<a name="fail-on-severity"></a>
-
-#### Fail on Severity
-
-```mdx-code-block
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
-<StoSettingFailOnSeverity />
-
-
-### Settings
-
-You can use this field to provide environment variables to be used during the execution of the step. 
-
-
-
-### Additional Configuration
-
-In the **Additional Configuration** settings, you can use the following options:
-
-* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
-* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
-* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
-
-
-### Advanced settings
-
-In the **Advanced** settings, you can use the following options:
-
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
-
--->
