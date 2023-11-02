@@ -81,7 +81,6 @@ The GCP connector has the following settings.
 
 Provide credentials that enable Harness to connect to your GCP account.
 
-
 #### Specify credentials here
 
 Select this option to use a GCP service account key.
