@@ -121,9 +121,11 @@ This release does not include any new early access features.
 
 #### Version 81015
 
-- Fixed an issue where incorrect instance value were reflected in the service dashboard. It happended in some scenarios for Helm Deployments, when the replica updations were done for workloads post deployment, the active instance count did not get updated. This issue has now been resolved. (CDS-76795, ZD-52612)
+- Fixed an issue that prevented the service dashboard from showing the new active instance count resulting from updates made to workload replicas. The issue occurred in a few Helm deployment scenarios, when the updates were made after deployment. (CDS-76795, ZD-52612)
 
-- In order to setup certs we have created a new certificate management. Users can specify list of destination path `DESTINATION_CA_PATH` in build pod in delegate where the certs will be mounted. Also mount the cert in `/opt/harness-delegate/ca-bundle`. This solution will work for build pods and SCM. The old solution `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH` will work as fallback. (CI-9707)
+  This issue has now been resolved. 
+
+- In order to set up certificates, Harness has introduced a new way to mount certificates to delegate pods for CI executions. With the new capability, you must mount certificates to `/opt/harness-delegate/ca-bundle` and specify a list of comma-separated destination paths with the `DESTINATION_CA_PATH` environment variable. Each path corresponds to the location on the CI build pod where you want the certificate to be mounted. This solution works for CI build pods and for the SCM client on the delegate. The previous method used the `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH` environment variables. You can use both methods concurrently. The new method assumes priority. If the new method fails, Harness falls back to the old method. (CI-9707)
 
 #### Harness version 80811, Harness Delegate version 23.09.80804
 
