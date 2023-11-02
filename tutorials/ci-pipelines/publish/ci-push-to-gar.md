@@ -24,7 +24,7 @@ import TabItem from '@theme/TabItem';
 
 :::info
 
-Harness now offers first-class support for build and pushing to Google Artifact Registry through the [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar).
+Harness now offers first-class support for Google Artifact Registry through the [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar).
 
 While you can still use the techniques in this tutorial to build and push to GAR, the [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar) streamlines this process into one step.
 
