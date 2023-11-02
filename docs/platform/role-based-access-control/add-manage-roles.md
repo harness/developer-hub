@@ -77,6 +77,7 @@ Harness creates these roles for you depending on the modules you use. These role
 * Security Testing SecOps Role
 * Security Testing Developer Role
 * GitOps Admin Role
+* Code Admin (for [Harness Code Repository](/docs/code-repository/get-started/overview.md))
 
 ## Manage roles in Harness
 

@@ -41,7 +41,7 @@ import {
           "",
         list: [
           {
-            title: "Get started with Code Repository",
+            title: "Get started with Harness Code Repository",
             module: MODULES.code,
             description:
               "Learn about the benefits, features, and architecture of Harness Code, as well as basic Code concepts.",
@@ -52,7 +52,7 @@ import {
             module: MODULES.code,
             description:
               "Dive in.",
-            link: "/get-started/overview.md",
+            link: "/docs/code-repository/get-started/onboarding-guide",
           },
         ],
       },
@@ -67,38 +67,17 @@ import {
             module: MODULES.ci,
             description:
               "Create repositories for your code.",
-            link: "/docs/code-repository/create-repos",
+            link: "/docs/code-repository/get-started/onboarding-guide",
           },
           {
             title: "Feature 2",
             module: MODULES.ci,
             description:
-              "Descirption 2.",
-            link: "/docs/code-repository/create-repos",
+              "Description 2.",
+            link: "/docs/code-repository/get-started/onboarding-guide",
           },
         ],
       },
-  
-      {
-        name: "Help and FAQs",
-        description:
-          "",
-        list: [
-          {
-            title: "Troubleshoot CI",
-            module: MODULES.ci,
-            description:
-              "",
-            link: "/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci",
-          },
-          {
-            title: "CI FAQs",
-            module: MODULES.ci,
-            description:
-              "",
-            link: "/docs/faqs/continuous-integration-ci-faqs",
-          },
-        ],
-      },
+
     ];
     /* Define the cards - end */

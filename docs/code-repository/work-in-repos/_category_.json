@@ -1,0 +1,11 @@
+{
+   "label":"Collaborate and develop",
+   "position": 40,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Work in repos: Clone, branch, commit, tag, and more"
+   }
+}

@@ -1,5 +1,5 @@
 ---
-title: What's supported by the Harness Code Repository module
+title: What's supported for Harness Code Repository
 description: The Code module has these features and functionality.
 sidebar_label: What's supported
 sidebar_position: 10
@@ -16,13 +16,14 @@ The [Harness Code Repository module](/docs/code-repository/code-supported.md) (C
 The Harness Code supports these features:
 
 * Create repositories
-* Clone repositories
-* Commits
-* Tags
-* Create pull requests
-* Review pull requests and conduct code reviews
-* Implement status checks
-* Merge PRs, define merge requirements, and specify a merge strategy
+* Collaborate and develop: Create commits, branches, tags
+   * Clone repositories to work remotely
+   * Commit, branch, and tag directly in the Harness Platform
+* Create, review, and merge pull requests
+   * Conduct code reviews
+   * Implement status checks
+   * Define merge requirements
+   * Specify merge strategies
 * Use webhooks to trigger CI/CD pipelines
 
 These features are in pre-beta or in development:
@@ -31,6 +32,6 @@ These features are in pre-beta or in development:
 * Notifications
 * Branch rules
 * Repository import
-* AIDA-powered semantic search
+* AI-powered semantic search <!-- keyword search, add to AIDA section of platform docs -->
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
