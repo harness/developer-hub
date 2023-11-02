@@ -1,3 +1,7 @@
+---
+title: Delegate disconnected via API check
+---
+
 ## Problem Statement
 
 How to identify if the delegate is disconnected using api ?

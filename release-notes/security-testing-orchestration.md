@@ -19,21 +19,37 @@ Review the notes below for details about recent changes to Security Testing Orch
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version 1.71.1
+## Latest: Version 1.72.1
 
 ### New features and enhancements
 
-This release does not include new features. 
+- You can now provide feedback about the [AIDA-generated remediation step](https://developer.harness.io/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations) for a selected issue. (STO-6593)
 
+  ![](./static/sto-aida-feedback-sto-6593.png)
 
 ### Early access
 
-- Updated the exemptions page to bubble soon to expire exemptions to the top of the list. Available in the time bound exemption early access feature available behind the STO_TIMEBOUND_EXEMPTIONS flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.  (STO-6367)
+- You are now required to sign an end-user license agreement to access the Harness AI Development Assistant (AIDA) in the account and project scopes. You need to do this even if you could previously use AIDA without signing a EULA. This change was originally introduced in the 80505 platform release. (PL-39723)
+
+  The EULA is displayed when you enable AIDA at the account scope (**Account Settings** > **Account Resources** > **Default Settings** > **Harness AI Developer Assistant**).
+
+  Each account user must sign the EULA only once.
+
+  The setting is inherited at the project scope.
 
 ### Fixed issues
 
-- The STO dashboard used a marketplace graph which was not available in hosted environments. A new native graph has been chosen so the Security Issues (Overall) graph will be available on all environments. (STO-6613)
-- Updated the icon for a false positive exemption to match the other icons (STO-6555)
+- Updated the UI terminology to better communicate the relationship between issues in the current scan vs. previous scans. (STO-6613)
+
+  The **Security Test** UI now uses the following labels to describe issues found in the current scan that are common to previous scans:
+
+  - **Common to <_target_>:<_variant_>** Issues also found in the last scan of the specified variant.
+  - **Common to previous scan** 
+    - Issues also found in the last scan (if the scanned target has no baseline), OR
+    - Issues also found in the last scan of the baseline (if the scanned variant is the baseline).
+  - **Common to previous / baseline scan** Issues also found in the both the last scan of the specified variant AND the last scan of the baseline. 
+
+- Fixed a UI issue in **Security Tests** when all vulnerabilities detected in a scan had exemptions. The tab showed "No Security Issues Found", all issue counts were 0, and no issues appeared in the UI even when the selected filter included exempted issues. (STO-6642)
 
 ### Hotfixes
 
@@ -43,6 +59,26 @@ This release does not include hotfixes.
 
 <details>
 <summary>2023 releases</summary>
+
+#### Version 1.71.1
+
+##### New features and enhancements
+
+This release does not include new features. 
+
+
+##### Early access
+
+- Updated the exemptions page to bubble soon to expire exemptions to the top of the list. Available in the time bound exemption early access feature available behind the STO_TIMEBOUND_EXEMPTIONS flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.  (STO-6367)
+
+##### Fixed issues
+
+- The STO dashboard used a marketplace graph which was not available in hosted environments. A new native graph has been chosen so the Security Issues (Overall) graph will be available on all environments. (STO-6613)
+- Updated the icon for a false positive exemption to match the other icons (STO-6555)
+
+##### Hotfixes
+
+This release does not include hotfixes. 
 
 #### Version 1.70.1
 
@@ -117,7 +153,7 @@ This release does not include early access features.
 
 ##### New features and enhancements
 
-This release does not include new features. 
+- In the STO Overview, **Today's Snapshot** shows new and remediated issue counts if today's issue counts include any newly detected vulnerabilities or new remddiations. (STO-4998) 
 
 ##### Early access
 
@@ -126,6 +162,8 @@ This release does not include early access features.
 ##### Fixed issues
 
 - Fixed an issue with setting up SSL certificates in Checkmarx, which caused Java keytools to fail. Upgrading to JDK-11 fixed the issue. (STO-6512)
+
+- Implemented fixes to improve scan times for large jobs using Checkmarx, Snyk, and other scanners. (STO-6408, STO-5676, ZD-49328, ZD-41409, ZD-42436, ZD-49383)
 
 ##### Hotfixes
 
@@ -288,9 +326,11 @@ This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more informati
 
 ##### New features and enhancements
 
-You can now set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and the Harness Manager.
+- You can now set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and the Harness Manager.
 
-For information on how to set up this workflow, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+  For information on how to set up this workflow, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+
+- Reference Identifiers selected for AIDA enhancement in a Security Issue are now remembered, upon generation, and shown when revisited in the UI. (STO-6032)
 
 ##### Early Access
 

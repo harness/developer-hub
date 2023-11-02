@@ -1,6 +1,8 @@
 ---
 description: KB - How to configure output variable for Powershell Script
 title: Output variable for Powershell Script
+redirect_from:
+  - /kb/continuous-delivery/articles/output%20variable%20for%20powershell%20script
 ---
 
 # Introduction

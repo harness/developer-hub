@@ -465,3 +465,13 @@ This error indicates there may be a problem with the Docker installation on the 
 ### Check if the Docker daemon is running
 
 To check if the Docker daemon is running, use the `docker info` command. An error response indicates the daemon is not running. For more information, go to the Docker documentation on [Troubleshooting the Docker daemon](https://docs.docker.com/config/daemon/troubleshoot/)
+
+### Runner process quits after terminating SSH connection
+
+If you launch the Harness Docker Runner binary within an SSH session, the runner process quits when you terminate the SSH session.
+
+To avoid this, use a tool such as `nohup` when you start the runner, for example:
+
+```
+nohup ./harness-docker-runner-darwin-amd64 server >log.txt 2>&1 &
+```
