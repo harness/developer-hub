@@ -1,6 +1,8 @@
 ---
 description: KB - How to mount custom cert with Delegate through ConfigMap
 title: Mount custom cert with Delegate through ConfigMap
+redirect_from:
+  - /kb/platform/articles/mount%20custom%20cert%20with%20delegate
 ---
 
 # Mount custom cert in Delegate through ConfigMap

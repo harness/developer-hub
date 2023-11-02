@@ -1,6 +1,8 @@
 ---
 description: KB - How to run a pipeline with runtime inputs through API
 title: API to run a pipeline with runtime inputs
+redirect_from:
+  - /kb/platform/articles/api%20to%20run%20a%20pipeline%20with%20runtime%20inputs
 ---
 
 # API to run a pipeline with runtime inputs

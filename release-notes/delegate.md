@@ -262,7 +262,7 @@ This release does not include any new early access features.
 
 - Added support for the Artifactory **Artifact Path** filter. (CDS-77244, CDS-79760)
 
-- The task count did not decrease when a task was aborted and the `DELEGATE_TASK_CAPACITY` environment variable was enabled. (PL-41367) (PL-41367)
+- The task count did not decrease when a task was aborted and the `DELEGATE_TASK_CAPACITY` environment variable was enabled. (PL-41367)
 
    Harness recommends that you upgrade to delegate version 23.09.80511 to resolve this issue.
 

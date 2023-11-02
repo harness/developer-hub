@@ -3,11 +3,10 @@ title: What's new
 date: 2023-11-06T10:00
 sidebar_position: 1
 ---
+
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
 import delete_project from './static/delete-project.png'
 ```
 
@@ -41,18 +40,79 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 :::
 
-## October 30, 2023
+## November 02, 2023
 
-### Continuous Integration version 6404
+### Continuous Error Tracking, versions ET-Service 5.30.0 and ET-Collector 5.30.0
+
+- The Summary page loading time has been optimized. Now, the Summary page loads faster, ensuring a better user experience. (CET-1233)
+
+- The event distribution chart now supports plotting a graph for new events. (CET-1610)
+
+- Various dependencies were upgraded to prevent security issues. (CET-1880)
+
+## November 1, 2023
+
+### Self-Managed Enterprise Edition, version 80917
+
+- Pod Disruption Budgets (PDBs) have been added to all applicable deployments/StatefulSets. (SMP-777)
+
+- You can now set annotations and labels globally for all resources by adding the `commonAnnotations` and `commonLabels` settings under global in your `override.yaml` file. (SMP-1216, ZD-42336, ZD-43006)
+
+   For example:
+
+   ```yaml
+   global:
+       commonAnnotations: {kubernetes.azure.com/no-http-proxy-vars: "true"}
+       commonLabels: {kubernetes.azure.com/no-http-proxy-vars: "true"}
+   ```
+
+- You can now use Kubernetes-based external secrets for Harness license values in Helm charts. (SMP-1839, ZD-49341, ZD-52283)
+
+   Harness has added the following values to `global.license.secrets.kubernetesSecrets`.
+   - `secretName`: Name of the Kubernetes secrets containing Harness license keys
+   - `keys.CG_LICENSE`: Name of the secret key containing a FirstGen License
+   - `keys.NG_LICENSE`: Name of the secret key containing a NextGen License
+   
+      ```yaml
+         global:
+           license:
+             cg: ''
+             ng: ''
+             secrets:
+               kubernetesSecrets:
+                 - secretName: ""
+                   keys:
+                     CG_LICENSE: ""
+                     NG_LICENSE: ""
+      ```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### October 31, 2023
+
+##### Service Reliability Management, version 1.5.3
+
+- Added the option to set the start month of quarterly Service Level Objectives (SLOs). This enhancement helps you define your SLOs and match them with your organization’s reporting and operational cycles. (SRM-15677)
+
+#### October 30, 2023
+
+##### Continuous Integration version 6404
 
 * The Harness AI Development Assistant (AIDA:tm:) for CI is now generally available. AIDA for CI provides error analysis and remediation for failed pipelines. Harness bases these recommendations on the step logs and the context of the failed step. You must accept the AIDA EULA to enable AIDA in your Harness account. For more information, go to [Troubleshooting with AIDA](http://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida).
-* When you [configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/), you can now use `DESTINATION_CA_PATH` instead of `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`. For `DESTINATION_CA_PATH`, provide a list of paths in the build pod where you want the certs to be mounted, and mount your certificate file to `opt/harness-delegate/ca-bundle`. This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-9707)
+* When you [configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/), you can now use `DESTINATION_CA_PATH` instead of `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`. (CI-9707)
+   * For `DESTINATION_CA_PATH`, provide a comma-separated list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`.
+   * This environment variable supports both CI build pods and the SCM client on the delegate.
+   * You can use either method (`DESTINATION_CA_PATH` or both `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`). If you specify both, `DESTINATION_CA_PATH` takes precedence. If Harness can't resolve `DESTINATION_CA_PATH`, it falls back to `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`.
+   * This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 * The individual log line limit is now 25KB. Log lines longer than 25BK are truncated. (CI-9927, ZD-52005, ZD-52079, ZD-52134, ZD-52356)
 * Upgraded built-in steps to support Windows 2022. (CI-9755)
 
-## October 27, 2023
+#### October 27, 2023
 
-### Continuous Delivery, version 81205
+##### Continuous Delivery, version 81205
 
 - More intuitive tag creation (CDS-78994)
 
@@ -64,7 +124,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
   
   This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-### Harness Platform, version 81205
+##### Harness Platform, version 81205
 
 - To improve security, Harness has introduced a feature that allows you to add domain allowlists for Email, Slack, Microsoft Teams, Webhook, and PagerDuty notification channels at the account level. Earlier, this was only supported for fixed URL domains. Now, support has been added for expression URLs. This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the Delegate release notes. (PL-39481, ZD-43735)
 
@@ -81,9 +141,9 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 - Upgraded the `org.eclipse.jetty_jetty-http` library to version 9.4.53.v20231009 to resolve CVE-2023-36478. (PL-41903)
 
-## October 20, 2023
+#### October 20, 2023
 
-### Continuous Delivery, version 81106
+##### Continuous Delivery, version 81106
 
 - User interface improvements on the secrets listing page (CDS-80747)
 
@@ -93,17 +153,17 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
   You can now add input and ouput variables to the Tanzu Command step and step template to facilitate Tanzu deployments.
 
-### Service Reliability Management, version 1.4.2
+##### Service Reliability Management, version 1.4.2
 
 - On the SLO Details page, you can now view the count of contributing SLOs for composite SLOs. This enhancement simplifies the management of composite SLOs. (SRM-15825)
 
-## October 18, 2023
+#### October 18, 2023
 
-### Continuous Integration, version 6203
+##### Continuous Integration, version 6203
 
 You can now [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#enable-parallelism-test-splitting-for-test-intelligence) in the Visual editor as well as the YAML editor. (CI-9618)
 
-### Continuous Delivery, version 81008
+##### Continuous Delivery, version 81008
 
 - Ability to exclude services or environments from deployment freeze window (CDS-79505)
 
@@ -132,7 +192,7 @@ You can now [enable test splitting for Test Intelligence](/docs/continuous-integ
 
     - Retained input set values: when you run a pipeline using the form, your experience will be seamless. The form loads with the same values as the previous input set without any unwanted clearing or mutation.
  
-### Harness Platform, version 81008
+##### Harness Platform, version 81008
 
 - The HPA configuration setting is now included in the default Kubernetes delegate YAML file. (PL-36021)
 
@@ -168,9 +228,9 @@ You can now [enable test splitting for Test Intelligence](/docs/continuous-integ
 
    This item is available with Harness Platform version 81008 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-## October 9, 2023
+#### October 9, 2023
 
-### Continuous Delivery, version 80909
+##### Continuous Delivery, version 80909
 
 - You can now provide detailed feedback in the Harness AIDA chat in CD. (CDS-79769)
 
@@ -180,7 +240,7 @@ You can now [enable test splitting for Test Intelligence](/docs/continuous-integ
 
   This item requires Harness Delegate version 23.10.80808. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-### Harness Platform, version 80909
+##### Harness Platform, version 80909
 
 - To improve security, Harness has introduced a feature that allows you to add domain allowlists for Email, Slack, Microsoft Teams, Webhook, and PagerDuty notification channels at the account level. This feature enables you to specify fixed URL domains to which notifications can be sent. Expression URLs are not yet supported.
 
@@ -198,20 +258,15 @@ You can now [enable test splitting for Test Intelligence](/docs/continuous-integ
    This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 -->
 
-### Continuous Integration, version 6100
+##### Continuous Integration, version 6100
 
 When you [enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) for Scala or Kotlin, the **Packages** and **Test Annotations** fields are now available in the Visual editor. (CI-9589)
 
-## October 07, 2023
+#### October 07, 2023
 
-### Continuous Error Tracking, versions ET-Service 5.28.2 and ET-Collector 5.28.0
+##### Continuous Error Tracking, versions ET-Service 5.28.2 and ET-Collector 5.28.0
 
 - Event filtering has been enhanced by removing event type selector boxes and displaying event counts above the events list. Additionally, a multi-select dropdown for event types has been introduced for improved usability. (CET-1698)
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### September 30, 2023
 

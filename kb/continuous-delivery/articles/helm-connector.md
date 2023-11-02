@@ -1,6 +1,6 @@
 ---
 description: KB - Resolving issues while adding Helm Connector
-title: Troubleshooting "Failed to Add Helm Connector" Error
+title: Troubleshooting "Failed to Add Helm Connector" error
 ---
 # Introduction
 

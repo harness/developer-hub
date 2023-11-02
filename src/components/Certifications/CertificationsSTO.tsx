@@ -5,33 +5,33 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { certType } from "./CertCard";
 import { getCertLevel } from "./LandingPage";
-// import DeveloperCertificationReviewGuide from "./data/cd-certification-developer-review-guide.md";
-// import DeveloperCertificationExamDetails from "./data/cd-certification-developer-exam-details.md";
-// import AdminCertificationReviewDetails from "./data/cd-certification-admin-review-guide.md";
-// import AdminCertificationExamDetails from "./data/cd-certification-admin-exam-details.md";
-// import ArchitectCertificationReviewDetails from "./data/cd-certification-architect-review-guide.md";
-// import ArchitectCertificationExamDetails from "./data/cd-certification-architect-exam-details.md";
+import DeveloperCertificationReviewGuide from "./data/sto-certification-developer-review-guide.md";
+import DeveloperCertificationExamDetails from "./data/sto-certification-developer-exam-details.md";
+// import AdminCertificationReviewDetails from "./data/sto-certification-admin-review-guide.md";
+// import AdminCertificationExamDetails from "./data/sto-certification-admin-exam-details.md";
+// import ArchitectCertificationReviewDetails from "./data/sto-certification-architect-review-guide.md";
+// import ArchitectCertificationExamDetails from "./data/sto-certification-architect-exam-details.md";
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
   {
-    img: `${url}img/cert_dev_ce_badge.svg`,
+    img: `${url}img/cert_dev_sto_badge.svg`,
     alt: "Harness Certified Expert - Developer",
     type: certType.developer,
   },
   {
-    img: `${url}img/cert_adm_ce_badge.svg`,
+    img: `${url}img/cert_adm_sto_badge.svg`,
     alt: "Harness Certified Expert - Administrator",
     type: certType.administrator,
   },
   {
-    img: `${url}img/cert_arc_ce_badge.svg`,
+    img: `${url}img/cert_arc_sto_badge.svg`,
     alt: "Harness Certified Expert - Architect",
     type: certType.architect,
   },
 ];
 
-export default function CertificationsChaos() {
+export default function CertificationsSTO() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   // React router provides the current component's route, even in SSR
   const location = useLocation();
@@ -64,10 +64,10 @@ export default function CertificationsChaos() {
               certifications
             </Link>
           </div>
-          <h1>Chaos Engineering Certifications</h1>
+          <h1>Security Testing Orchestration Certifications</h1>
           <div>
-            Discover how your applications stand up to real-world failure scenarios. 
-            Gain insights to construct a resilient system that minimizes downtime and saves on costs.
+            Seamlessly integrate security scanners and orchestrate tests anywhere across your build pipelines.
+            Enable developers to rapidly remediate vulnerabilities through intelligent prioritization and deduplication.
           </div>
         </div>
         <div className={styles.right}>
@@ -120,41 +120,30 @@ export default function CertificationsChaos() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Chaos Engineering - Developer (BETA COMING SOON) </h2>
+                  <h2>Security Testing Orchestration - Developer (BETA COMING SOON) </h2>
                   <img
-                    src={`${baseUrl}img/cert_dev_ce_badge.svg`}
-                    alt="Harness Certified Expert - Chaos Engineering Developer"
+                    src={`${baseUrl}img/cert_dev_sto_badge.svg`}
+                    alt="Harness Certified Expert - STO Engineering Developer"
                     className={styles.badge}
                   />
                   <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness Chaos Engineering
+                    <strong>Product version: </strong> Security Testing Orchestration
                     Free/Team Plans
                   </span>
                 </div>
                 <div className={styles.right}>
-                  {/* <h3>Review Study Guide</h3>
+                  <h3>Review Study Guide (BETA)</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy your applications
-                    with Chaos Engineering projects.
-                  </div> */}
-                  {/* <DeveloperCertificationReviewGuide />
+                    with STO projects.
+                  </div>
+                  <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/certified-continuous-delivery-developer">
+                    <Link href="">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
                     </Link>
-                    {/* <Link href="/tutorials/cd-pipelines">
-                      <button className={styles.startLearning}>
-                        <span>Start learning</span>
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </button>
-                    </Link>*/}
-                  {/* </div> */}
-                  <h3>Coming Soon...</h3>
-                  <div className={styles.desc}>
-                    Assess key technical job functions and advanced skills in
-                    design, implementation and management of ce.
                   </div>
                 </div>
               </div>
@@ -162,20 +151,20 @@ export default function CertificationsChaos() {
           </div>
 
           {/* Developer Exam Details */}
-          {/* <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details</h2>
+          <div className={styles.examDetails}>
+            <h2 id="exam-details">Exam Details (BETA)</h2>
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/certified-continuous-delivery-developer">
+                <Link href="#">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
                 </Link>
-              
+
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
 
         {/* Administrator Tab Content */}
@@ -199,25 +188,25 @@ export default function CertificationsChaos() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Chaos Engineering - Administrator (BETA COMING SOON)</h2>
+                  <h2>Security Testing Orchestration - Administrator (BETA COMING SOON)</h2>
                   <img
-                    src={`${baseUrl}img/cert_adm_ce_badge.svg`}
-                    alt="Harness Certified Expert -Chaos Engineering Administrator"
+                    src={`${baseUrl}img/cert_adm_sto_badge.svg`}
+                    alt="Harness Certified Expert - STO Administrator"
                     className={styles.badge}
                   />
                   <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness Chaos Engineering
+                    <strong>Product version: </strong> Security Testing Orchestration
                     Enterprise Plan
                   </span>
                 </div>
                 <div className={styles.right}>
                   {/* <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                    Assesses the fundamental skills to deploy and maintain Chaos
+                    Assesses the fundamental skills to deploy and maintain STO
                     Engineering projects and the overall Harness Platform. This
                     exam builds upon the{" "}
                     <a href="/certifications/continuous-delivery?lvl=developer">
-                      Chaos Engineering Developer Certification
+                      STO Engineering Developer Certification
                     </a>
                     .
                   </div>
@@ -237,7 +226,7 @@ export default function CertificationsChaos() {
                   {/* </div> */}
                   <h3>Coming Soon...</h3>
                   <div className={styles.desc}>
-                  Assesses the fundamental skills to deploy and maintain CE projects and the overall Harness Platform.
+                    Assesses the fundamental skills to deploy and maintain STO projects and the overall Harness Platform.
                   </div>
                 </div>
               </div>
@@ -282,14 +271,14 @@ export default function CertificationsChaos() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Chaos Engineering - Architect (BETA COMING SOON)</h2>
+                  <h2>Security Testing Orchestration - Architect (BETA COMING SOON)</h2>
                   <img
-                    src={`${baseUrl}img/cert_arc_ce_badge.svg`}
-                    alt="Harness Certified Expert - Chaos Engineering Architect"
+                    src={`${baseUrl}img/cert_arc_sto_badge.svg`}
+                    alt="Harness Certified Expert - STO Architect"
                     className={styles.badge}
                   />
                   <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness Chaos Engineering
+                    <strong>Product version: </strong> Security Testing Orchestration
                     Enterprise Plan
                   </span>
                 </div>
@@ -297,10 +286,10 @@ export default function CertificationsChaos() {
                   {/* <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
-                    design, implementation and management of Chaos Engineering.
+                    design, implementation and management of STO Engineering.
                     This exam builds upon the{" "}
                     <a href="/certifications/continuous-delivery?lvl=administrator">
-                      Chaos Engineering Administrator Certification
+                      STO Engineering Administrator Certification
                     </a>
                     .
                   </div>
@@ -321,7 +310,7 @@ export default function CertificationsChaos() {
                   <h3>Coming Soon...</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
-                    design, implementation and management of CE.
+                    design, implementation and management of STO.
                   </div>
                 </div>
               </div>
