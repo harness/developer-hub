@@ -125,28 +125,7 @@ This release does not include any new early access features.
 
   This issue has been fixed. 
 
-- To set up certificates, Harness has introduced a new way to mount certificates to delegate pods for CI executions. With the new capability, you must mount certificates to `/opt/harness-delegate/ca-bundle` and specify a list of comma-separated destination paths with the `DESTINATION_CA_PATH` environment variable. Each path corresponds to the location on the CI build pod where you want the certificate to be mounted. This solution works for CI build pods and for the SCM client on the delegate. (CI-9707)
-
-  The following YAML configuration illustrates the new method:
-
-  ```yaml
-        env:
-        - name: DESTINATION_CA_PATH
-                  value: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
-                volumeMounts:
-                - name: certvol
-                  mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
-                  subPath:  ca.bundle
-              volumes:
-              - name: certvol
-                secret:
-                  secretName: addcerts
-                  items:
-                  - key: ca.bundle
-                    path: ca.bundle
-  ```
-  
-  The previous method used the `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH` environment variables. You can use both methods concurrently. The new method assumes priority. If the new method fails, Harness falls back to the old method. 
+- When you [configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/), you can now use `DESTINATION_CA_PATH` instead of `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`. For `DESTINATION_CA_PATH`, provide a list of paths in the build pod where you want the certs to be mounted, and mount your certificate file to `opt/harness-delegate/ca-bundle`.(CI-9707)
 
 #### Harness version 80811, Harness Delegate version 23.09.80804
 
