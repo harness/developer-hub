@@ -125,7 +125,9 @@ This release does not include any new early access features.
 
   This issue has now been fixed. 
 
-- In order to set up certificates, Harness has introduced a new way to mount certificates to delegate pods for CI executions. With the new capability, you must mount certificates to `/opt/harness-delegate/ca-bundle` and specify a list of comma-separated destination paths with the `DESTINATION_CA_PATH` environment variable. Each path corresponds to the location on the CI build pod where you want the certificate to be mounted. This solution works for CI build pods and for the SCM client on the delegate. The following YAML configuration illustrates the new method:
+- In order to set up certificates, Harness has introduced a new way to mount certificates to delegate pods for CI executions. With the new capability, you must mount certificates to `/opt/harness-delegate/ca-bundle` and specify a list of comma-separated destination paths with the `DESTINATION_CA_PATH` environment variable. Each path corresponds to the location on the CI build pod where you want the certificate to be mounted. This solution works for CI build pods and for the SCM client on the delegate. (CI-9707)
+
+  The following YAML configuration illustrates the new method:
 
   ```yaml
         env:
@@ -144,7 +146,7 @@ This release does not include any new early access features.
                     path: ca.bundle
   ```
   
-  The previous method used the `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH` environment variables. You can use both methods concurrently. The new method assumes priority. If the new method fails, Harness falls back to the old method. (CI-9707)
+  The previous method used the `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH` environment variables. You can use both methods concurrently. The new method assumes priority. If the new method fails, Harness falls back to the old method. 
 
 #### Harness version 80811, Harness Delegate version 23.09.80804
 
