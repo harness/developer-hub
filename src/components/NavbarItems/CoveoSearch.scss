@@ -340,21 +340,21 @@
 	color: var(--mod-iacm-300);
 }
 
-// Gitness
-.harness-search-module .CoveoFieldValue.CoveoFieldValueGitness {
-	background: var(--mod-gitness-100);
-	border: 1px solid var(--mod-gitness-200);
-	color: var(--mod-gitness-300);
+// Code (Gitness)
+.harness-search-module .CoveoFieldValue.CoveoFieldValueCode {
+	background: var(--mod-code-100);
+	border: 1px solid var(--mod-code-200);
+	color: var(--mod-codes-300);
 	&::before {
-		content: url('/img/icon_gitness_s.svg');
+		content: url('/img/icon_code_s.svg');
 		display: inline-block;
 		width: 16px;
 		height: 16px;
 		margin-right: 4px;
 	}
 }
-.harness-search-module .CoveoFieldValue.CoveoFieldValueGitness .coveo-clickable {
-	color: var(--mod-gitness-300);
+.harness-search-module .CoveoFieldValue.CoveoFieldValueCode .coveo-clickable {
+	color: var(--mod-code-300);
 }
 
 .harness-search-module .CoveoFieldValue.CoveoFieldValuePlatform {
@@ -736,8 +736,8 @@
         height: 16px;
         margin-right: 4px;
     }
-	&[title="Gitness"]::before {
-        content: url('/img/icon_gitness_s.svg');
+	&[title="Code"]::before {
+        content: url('/img/icon_code_s.svg');
         display: inline-block;
         width: 16px;
         height: 16px;
