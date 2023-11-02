@@ -4,6 +4,12 @@ description: Incrementally deploy your new service using phased traffic shifting
 sidebar_position: 4
 ---
 
+:::note
+
+Currently, ECS basic strategy is behind the feature flag `CDS_ECS_BASIC_DEPLOYMENT_STRATEGY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 You can deploy ECS services using a basic strategy with phased traffic shifting and scaling, incrementally increasing the new service instances while decreasing the old service instances.
 
 This topic explains the differences between a standard basic strategy and one with phased traffic shifting  and scaling, and explains how to set up a basic strategy with phased traffic shifting and scaling.
