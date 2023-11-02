@@ -433,6 +433,7 @@ pipeline:
       value: "1.0.0"
 ```
 
-Escaping is required for some punctuation. Also note the use of double quotes around the entire object.
+Escaping is required for some punctuation. Note the use of double quotes around the entire object.
+
 Also, when an expression is used in a json string, it needs to be wrapped within quotes. 
 For eg: `<+pipeline.variables.version>` in above pipeline yaml
