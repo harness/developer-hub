@@ -119,7 +119,11 @@ This release does not include any new early access features.
 
 ##### Hotfixes
 
-This release does not include hotfixes.
+#### Version 81015
+
+- Fixed an issue where incorrect instance value were reflected in the service dashboard. It happended in some scenarios for Helm Deployments, when the replica updations were done for workload post deployment, the active instance count did not get updated. This issue has now been resolved. (CDS-76795, ZD-52612)
+
+- In order to setup certs we have created a new certificate management. Users can specify list of destination path DESTINATION_CA_PATH in build pod in delegate where the certs will be mounted. Also mount the cert in `/opt/harness-delegate/ca-bundle`. This solution will work for build pods and SCM. The old solution `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH` will work as fallback. (CI-9707)
 
 #### Harness version 80811, Harness Delegate version 23.09.80804
 
