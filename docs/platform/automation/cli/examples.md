@@ -20,9 +20,9 @@ In this segment, we'll guide you through a example demonstrating how to utilize 
 
 1. Refer [Install and Configure Harness CLI](./install.md) doc to setup and configure Harness CLI.
 
-2. Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub web interface.
+2. Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub web interface.
 
-3. Clone the Forked **harnessed-example-apps** repo and change directory.
+3. Clone the Forked **harnesscd-example-apps** repo and change directory.
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
     cd harnesscd-example-apps 
@@ -83,9 +83,9 @@ In this segment, we'll guide you through a example demonstrating how to utilize 
 
 1. Refer [Install and Configure Harness CLI](./install.md) doc to setup and configure Harness CLI.
 
-2. Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub web interface.
+2. Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub web interface.
 
-3. Clone the Forked **harnessed-example-apps** repo and change directory.
+3. Clone the Forked **harnesscd-example-apps** repo and change directory.
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
     cd harnesscd-example-apps 

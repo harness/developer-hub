@@ -14,15 +14,15 @@ You add cloud providers to your Harness Account and then reference them when def
 
 In this topic:
 
-* [Before You Begin](#before-you-begin)
-* [Visual Summary](#visual-summary)
-* [Review: TAS Permissions](#review-tas-permissions)
-* [Step 1: Add the Cloud Provider](#step-1-add-the-cloud-provider)
-* [Step 2: Endpoint URL](#step-2-endpoint-url)
-* [Step 3: Username and Password](#step-3-username-and-password)
-* [Step 4: Skip Validation](#step-4-skip-validation)
-* [Step 5: Usage Scope](#step-5-usage-scope)
-* [Artifact Support for Download and Copy](#artifact-support-for-download-and-copy)
+- [Before You Begin](#before-you-begin)
+- [Visual Summary](#visual-summary)
+- [Review: TAS Permissions](#review-tas-permissions)
+- [Step 1: Add the Cloud Provider](#step-1-add-the-cloud-provider)
+- [Step 2: Endpoint URL](#step-2-endpoint-url)
+- [Step 3: Username and Password](#step-3-username-and-password)
+- [Step 4: Skip Validation](#step-4-skip-validation)
+- [Step 5: Usage Scope](#step-5-usage-scope)
+- [Artifact Support for Download and Copy](#artifact-support-for-download-and-copy)
 
 ## Before You Begin
 
@@ -38,7 +38,7 @@ Here's an example configuration of TAS as Cloud Provider in Harness.
 
 TAS user account with Admin, Org Manager, or Space Manager role. The user account must be able to update spaces, orgs, and applications.
 
-For more information, see [Orgs, Spaces, Roles, and Permissions](https://docs.pivotal.io/pivotalcf/2-3/concepts/roles.html) from Tanzu.
+For more information, see [Orgs, Spaces, Roles, and Permissions](https://docs.pivotal.io/pivotalcf/2-3/concepts/roles.html) from Tanzu.
 
 ## Step 1: Add the Cloud Provider
 

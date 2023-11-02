@@ -162,43 +162,43 @@ To use Istio, create a VirtualService for Prometheus.
 
 ## Required overrides
 
-Use the following overrides when you install or upgrade your Harness Helm charts. You can add the `monitoring.yaml` file from the Helm charts repo to enable the metrics of all databases and Harness services, or you can enable metrics for each service.
+Use the following overrides when you install or upgrade your Harness Helm charts. You can add the `monitoring.yaml` file from the [Helm charts repo](https://github.com/harness/helm-charts/blob/main/src/harness/monitoring.yaml) to enable the metrics of all databases and Harness services, or you can enable metrics for each service.
 
 :::info note
 For this example, we use the Prometheus operator packaged by Bitnami as an external Prometheus setup.
 :::
 
 ```yaml
-platform:
-  mongodb:
-    metrics:
-      enabled: true
-    podAnnotations:
-      prometheus.io/path: /metrics
-      prometheus.io/port: '9216'
-      prometheus.io/scrape: 'true'
-  redis:
-    metrics:
-      enabled: true
-    podAnnotations:
-      prometheus.io/path: /metrics
-      prometheus.io/port: '9121'
-      prometheus.io/scrape: 'true'
-  timescaledb:
-    prometheus:
-      enabled: true
-    podAnnotations:
-      prometheus.io/path: /metrics
-      prometheus.io/port: '9187'
-      prometheus.io/scrape: 'true'
-infra:
-  postgresql:
-    metrics:
-      enabled: true
-    podAnnotations:
-      prometheus.io/path: /metrics
-      prometheus.io/port: '9187'
-      prometheus.io/scrape: 'true'
+bootstrap:
+  database: 
+    mongodb:
+      metrics:
+        enabled: true
+      podAnnotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: '9216'
+        prometheus.io/scrape: 'true'
+    redis:
+      metrics:
+        enabled: true
+      podAnnotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: '9121'
+        prometheus.io/scrape: 'true'
+    timescaledb:
+      prometheus:
+        enabled: true
+      podAnnotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: '9187'
+        prometheus.io/scrape: 'true'
+    postgresql:
+      metrics:
+        enabled: true
+      podAnnotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: '9187'
+        prometheus.io/scrape: 'true'
 global:
   monitoring:
     enabled: true
@@ -237,7 +237,7 @@ Follow the below steps on your Kubernetes cluster to deploy Grafana:
 
 3. Sign in to the Grafana dashboard home page.
 
-4. Set Prometheus as the datasource:
+4. Set Prometheus as the data source:
   
   Go to settings, select **Data sources**. Then, select **Add data source**. Select **Prometheus**.
 
@@ -271,16 +271,53 @@ Follow the below steps on your Kubernetes cluster to deploy Grafana:
 
 Now you can add a dashboard to view metrics via query.
 
-- To add a dashboard, go to Go to **Dashboards** and then select **New Dashboard** and **Add a new panel**. 
+- To add a dashboard, go to **Dashboards** and then select **New Dashboard** and **Add a new panel**. 
 
-Here are some sample open source dashboards:
+Custom dashboards are available in the Harness public repository:
 
-- [MongoDB](https://github.com/dcu/mongodb_exporter/blob/master/grafana_dashboards/dashboard.json)
+- [MongoDB](https://github.com/harness/harness-dashboards/blob/main/SMP_Database/MongoDB_Overview.json)
 
-- [Redis](https://github.com/oliver006/redis_exporter/blob/master/contrib/grafana_prometheus_redis_dashboard.json)
+- [Redis](https://github.com/harness/harness-dashboards/blob/main/SMP_Database/Redis_Overview.json)
 
-- [Timescale/Postgres](https://github.com/prometheus-community/postgres_exporter/blob/master/postgres_mixin/dashboards/postgres-overview.json)
+- [Timescale/Postgres](https://github.com/harness/harness-dashboards/blob/main/SMP_Database/Postgres_Overview.json)
 
 ## Use a server installed in the same cluster as Harness services
 
-In this example, the Prometheus server is installed in the same cluster as your Harness services. You can monitor your services with Grafana installed in the same cluster or outside the cluster, with Prometheus configured as the data source. 
+In this example, the Prometheus server is installed in the same cluster as your Harness services. You can monitor your services with Grafana installed in the same cluster or outside the cluster, with Prometheus configured as the data source.
+
+## Monitor Harness services
+
+Harness Self-Managed Enterprise Edition currently supports monitoring for four Harness services. 
+
+- `access-control`
+
+- `pipeline-service`
+
+- `ng-manager`
+
+- `harness-manager`
+
+You can monitor the services by enabling monitoring in the override file. For more information, go to [Required overrides](#required-overrides). 
+
+Harness has the following comprehensive metrics available for the services: 
+
+- Mean Error Rate
+- HTTP Error Rate
+- HTTP Response 95th percentile
+- HTTP Error Count
+- JVM Total Memory Max
+- Committed & Used
+- JVM Non-Heap Committed & Used
+- JVM Metaspace Memory Pool Used & Committed
+- JVM Threads Blocked / Deadlock State
+- DW Threads Utilization
+
+You can view the metrics by importing the [System Observability Dashboard](https://github.com/harness/harness-dashboards/blob/main/System_Health/System_Observability_Dashboard.json) in our [Harness Dashboards repository](https://github.com/harness/harness-dashboards/).
+
+To load the dashboard, do the following:
+
+1. Go to **Settings**, and then select **Variables**.
+2. Select **Data source**, and then select **Prometheus**.
+3. Run the query at the bottom of the page to test the data source.
+
+   The metrics for the services are available to view on the dashboard. 

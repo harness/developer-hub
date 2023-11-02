@@ -10,4 +10,8 @@ helpdocs_is_published: true
 
 # FAQ
 
-### Coming Soon
+#### How to get Instance Id/ license Id while using SMP
+You can login using Admin privilege and navigate to License and under License ID you will get the details
+
+#### Can we run both serial and parallel fault wile using Linux Infra
+Parallel fault experiment is currently not supported. For Linux

@@ -2,9 +2,9 @@ The Harness SSCA module supports the following components and standards.
 
 ### SBOM tools
 
-* Syft
-
-<!-- * Blackduck -->
+* [Syft](/docs/software-supply-chain-assurance/sbom/generate-sbom.md)
+* [Blackduck](/docs/software-supply-chain-assurance/sbom/generate-sbom-blackduck.md)
+* [Aqua Trivy](/docs/software-supply-chain-assurance/sbom/ingest-sbom-data.md)
 
 ### SBOM formats
 

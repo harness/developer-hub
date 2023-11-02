@@ -81,13 +81,18 @@ Click **Settings**. The Harness GitOps settings appear.
 
 ![](./static/harness-cd-git-ops-quickstart-03.png)
 
-Click **GitOps** **Agents**.
+Click **GitOps Agents**.
 
 Click **New GitOps Agent**. The Agent wizard appears.
 
 ![](./static/harness-cd-git-ops-quickstart-04.png)
 
 In **Name**, enter the name **example**.
+
+In **GitOps Operator**, select one of the following:
+  
+  * **Argo**. Uses Argo CD as the GitOps reconciler.
+  * **Flux**. Uses Flux as the GitOps reconciler. <!-- For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux). --> <!-- Commenting out because the referenced topic is a new one and is causing a broken link error in preview environment builds. It basically points to Continuous Delivery & GitOps > GitOps > Use GitOps > Manage Flux applications, so you can use the left nav to view the new topic. -->
 
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment. For this quickstart, we use **default**.
 
@@ -299,49 +304,52 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
    ![](./static/harness-cd-git-ops-quickstart-13.png)
 
 2. In **Application Name**, enter **example**.
-3. In **GitOps Agent**, select the Agent you added earlier.
-4. In **Service**, click **New Service**, and name the Service **guestbook**.
-5. In **Environment**, click **New Environment**, name the Environment **quickstart**, and select **Pre-Production**.
-   
-   ![](./static/harness-cd-git-ops-quickstart-14.png)
+3. In **GitOps Operator**, select one of the following:
+  
+    * **Argo**. Uses Argo CD as the GitOps reconciler.
+    * **Flux**. Uses Flux as the GitOps reconciler. <!-- For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux). --> <!-- Commenting out because the referenced topic is a new one and is causing a broken link error in preview environment builds. It basically points to Continuous Delivery & GitOps > GitOps > Use GitOps > Manage Flux applications, so you can use the left nav to view the new topic. -->
 
-6. Click **Continue**.
-7. In **Sync Policy**, you can define the following:
+4. In **GitOps Agent**, select the Agent you added earlier.
+5. In **Service**, click **New Service**, and name the Service **guestbook**.
+6. In **Environment**, click **New Environment**, name the Environment **quickstart**, and select **Pre-Production**.
+
+7. Click **Continue**.
+8. In **Sync Policy**, you can define the following:
    + Sync Options to define how the Application syncs state.
    + Prune Policy for garbage collection of orphaned resources.
    + The Source manifest to use (Kubernetes, Helm chart, Kustomization, etc).
    + The Destination cluster and namespace.
    
    For this quickstart, we'll simply select a manual sync policy and no other options. You can change any of these settings by editing your Application or whenever you sync.
-8. In **Sync Policy**, click **Manual**, and then click **Continue**.
-9.  In **Source**, you specify the source repo to use.
-10. In **Repository Type**, click **Git**.
-11. Click in **Repository URL** and select the URL you entered in your Harness GitOps Repository: `https://github.com/argoproj/argocd-example-apps`.
-12. In **Revision Type**, select **Branch**.
-13. In **Revision**, select **master**.
-14. Wait a moment for **Path** to populate. Harness will pull the paths from the repo.
-15. In **Path**, select **helm-guestbook**. This is the location of this app in the repo: `https://github.com/argoproj/argocd-example-apps/tree/master/helm-guestbook`.
-16. In **Revision Type**, select:
+9. In **Sync Policy**, click **Manual**, and then click **Continue**.
+10.  In **Source**, you specify the source repo to use.
+11. In **Repository Type**, click **Git**.
+12. Click in **Repository URL** and select the URL you entered in your Harness GitOps Repository: `https://github.com/argoproj/argocd-example-apps`.
+13. In **Revision Type**, select **Branch**.
+14. In **Revision**, select **master**.
+15. Wait a moment for **Path** to populate. Harness will pull the paths from the repo.
+16. In **Path**, select **helm-guestbook**. This is the location of this app in the repo: `https://github.com/argoproj/argocd-example-apps/tree/master/helm-guestbook`.
+17. In **Revision Type**, select:
     * **Branch**: Select a branch and path from the prepopulated dropdown list.
     * **Tag**: Select a branch and tag from the prepopulated dropdown list.
-17. In **Helm**, in **Values Files**, select **values.yaml**.
-18. Scroll down to see **Parameters**.
+18. In **Helm**, in **Values Files**, select **values.yaml**.
+19. Scroll down to see **Parameters**.
   All of the parameters from values.yaml are displayed and can be edited. This lets you modify values.yaml parameters in your Harness GitOps Application.
   Do not change the parameters for this quickstart.
-1.  When you're done, **Source** will look like this:
+20.  When you're done, **Source** will look like this:
    
    ![](./static/harness-cd-git-ops-quickstart-15.png)
 
-2.  Click **Continue**.
-3.  In **Destination**, click **Cluster URL** and select the Cluster you added earlier.
+21.  Click **Continue**.
+22.  In **Destination**, click **Cluster URL** and select the Cluster you added earlier.
    
    You can see its name and master URL. Since a Harness GitOps Cluster contains the authentication settings needed to access the cluster, your Harness GitOps Application can select any Cluster.
-4.  In **Namespace**, enter **default**.
+23.  In **Namespace**, enter **default**.
    
    ![](./static/harness-cd-git-ops-quickstart-16.png)
 
-5. Click **Finish**.
-6.  The new Application is created. At first, it will be **UNKNOWN**.
+24. Click **Finish**.
+25.  The new Application is created. At first, it will be **UNKNOWN**.
    
     ![](./static/harness-cd-git-ops-quickstart-17.png)
 

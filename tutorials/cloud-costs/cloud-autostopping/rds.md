@@ -6,6 +6,15 @@ description: This guide walks you through the steps to reduce RDS costs by using
 ---
 # Reducing RDS Costs made easy with Harness AutoStopping Proxy
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Cloud Cost Management Certification today!"
+  link="/certifications/cloud-cost-management"
+  closable={true}
+  target="_self"
+/>
+
 AWS RDS, or Amazon Relational Database Service, is a fully managed database service provided by Amazon Web Services (AWS). It simplifies the process of setting up, operating, and scaling a relational database in the cloud. 
 
 Optimizing the usage of cloud resources is a significant problem that organizations confront in the present day. Even allowing a small, unused virtual machine (VM) to remain active can have a negative impact on your cloud expenses. Now consider the implications of leaving a Quality Assurance (QA) or pre-production Relational Database Service (RDS) cluster running idly, without any users accessing it. Such oversight can significantly affect your organization's cloud costs. Furthermore, manually inspecting your non-production environment for unused resources can prove challenging and inefficient.

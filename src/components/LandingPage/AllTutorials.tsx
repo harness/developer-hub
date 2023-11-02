@@ -3,6 +3,7 @@ import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import TutorialCard from "./TutorialCard";
 import { FeaturedList } from "./data/allTutorialsData";
+import { GSList } from "./data/gettingStartedData";
 import { CIList } from "./data/continuousIntegrationData";
 import { CDList } from "./data/continuousDeliveryData";
 import { CCMList } from "./data/cloudCostManagementData";

@@ -78,6 +78,8 @@ The trigger is now added to the **Triggers** page.
 
 Here's an example of the cURL command:
 
+Custom triggers such as Git triggers are part of the pipeline entity and therefore have the account, organization, or project IDs included in the webhook URL.
+
 ```
 curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/{customWebhookToken}/v3?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
 ```

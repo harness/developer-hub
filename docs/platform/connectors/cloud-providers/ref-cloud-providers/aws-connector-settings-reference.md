@@ -449,7 +449,6 @@ To connect Harness to Elastic Kubernetes Service (Amazon EKS), you can use the p
 
 Make sure you've met the following requirements to connect to the EKS cloud connector.
 
-* You have enabled the `NG_CDS_NATIVE_EKS_SUPPORT` feature flag.
 * The IAM role of the worker nodes for the EKS cluster have the [required permissions](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html).
     * Your IAM role has the permission to access the AWS EKS cluster. You can edit the `configmap/aws-auth` entry in the EKS cluster to enable the required permissions. For more information, go to [add user role](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html). You can also assume the IAM role used to create the AWS EKS cluster which has the required `configmap/aws-auth` entries by default.
     * Your IAM role has the basic policies to access the AWS EKS cluster. For more information, go to [Amazon EKS identity-based policy examples](https://docs.aws.amazon.com/eks/latest/userguide/security_iam_id-based-policy-examples.html).
@@ -845,6 +844,12 @@ The AWS Backoff Strategy settings remedy this situation by setting Amazon SDK de
 The Amazon SDK Default backoff strategy is the combination of fixed backoff, equal jitter, and full jitter backoff strategies. 
 
 Fixed backoff is a simple backoff strategy that always uses a fixed delay for the delay before the next retry attempt.
+
+:::info note
+
+Backoff strategy parameter settings are in milliseconds.
+
+:::
 
 Typically, the SDK default strategy uses the full jitter strategy for non-throttled exceptions and the equal jitter strategy for throttled exceptions.
 

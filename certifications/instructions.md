@@ -1,4 +1,5 @@
 ---
+sidebar_position: 6
 description: Hands On Labs Instructions
 title: Hands on Labs instructions
 ---
@@ -43,5 +44,12 @@ Below is a picture of the cloud shell you will see during an exam.
 5. Follow the instructions provided within the lab environment to complete the hands-on exercises. The instructions will guide you through the necessary steps and provide any additional information or resources you may need.
 6. As you progress through the lab, make sure to read the instructions carefully and perform the tasks as directed. 
 
+## Paid Exam Retakes
+For the Admin and Architect level exams, we allow for up to two retakes on paid exams. 
+
+* If you have purchased an exam [not via coupon code] and need to retake,  please e-mail [certifications@harness.io](mailto:certifications@harness.io) so we can provide a retake coupon code.
+* If you redeemed a coupon code, please re-apply the coupon code when retaking.
+
 ## Troubleshooting
 Please see our [FAQ](/certifications/faqs) section for troubleshooting tips. You can also email our certification team at [certifications@harness.io](mailto:certifications@harness.io).
+

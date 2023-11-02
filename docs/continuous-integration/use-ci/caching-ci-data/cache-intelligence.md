@@ -243,7 +243,7 @@ API key authentication is required. You need a [Harness API key](/docs/platform/
 Get metadata about the cache, such as the size and path.
 
 ```
-curl --location --request GET 'https://app.harness.io/gateway/ci/cache/info' \
+curl --location --request GET 'https://app.harness.io/gateway/ci/cache/info?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID' \
 --header 'Accept: application/json' \
 --header 'X-API-KEY: $API_KEY'
 ```
@@ -253,7 +253,7 @@ curl --location --request GET 'https://app.harness.io/gateway/ci/cache/info' \
 Delete the entire cache, or use the optional `path` parameter to delete a specific subdirectory in the cache.
 
 ```
-curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache?path=/path/to/deleted/directory' \
+curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&path=/path/to/deleted/directory' \
 --header 'Accept: application/json' \
 --header 'X-API-KEY: $API_KEY'
 ```

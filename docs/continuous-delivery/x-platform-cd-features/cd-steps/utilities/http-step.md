@@ -103,6 +103,8 @@ To concatenate strings within the JSON functor:
 
 For more information, go to [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors).
 
+Output variables also support [JEXL expressions](https://commons.apache.org/proper/commons-jexl/reference/syntax.html).
+
 ## Advanced step settings
 
 In **Advanced**, you can use the following options:

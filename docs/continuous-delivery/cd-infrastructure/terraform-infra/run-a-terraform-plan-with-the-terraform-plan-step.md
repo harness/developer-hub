@@ -83,12 +83,6 @@ In **Timeout**, enter how long Harness should wait to complete the Terraform Pla
 
 ### Run on Remote Workspace
 
-:::note
-
-Currently, this feature is behind the feature flag `CD_TERRAFORM_CLOUD_CLI_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Enable this option to identify whether the Terraform configuration uses a Terraform remote backend.
 
 When enabled, you cannot provide the workspace input in Harness. The workspace will be outlined in your configuration for the remote backend.
@@ -560,6 +554,24 @@ Terraform has compared your real infrastructure against your configuration
 and found no differences, so no changes are needed.
 ```
 
+## Skip state storage
+
+While running Terraform commands on the delegate, Harness by default will try to detect if there is a local state file in the Terraform working directory.
+
+If local state file is identified, at the end of the execution it is saved on Harness storage with a key based on the provisioner identifier.
+
+That state file is downloaded in the Terraform working directory for subsequent executions, and the updated state is uploaded after execution ends.
+
+This method allows the maintaining of the state of the infrastructure even if there is no Terraform backend configured.
+
+This is more for testing purposes. For production environments, Harness advises you configure a backend in your Terraform config files. For information, go to [Backend Configuration](https://developer.hashicorp.com/terraform/language/settings/backends/configuration).
+
+With the **Skip state storage** option enabled, Harness allows you to skip the local state upload and download operations mentioned above.
+
+This option makes is useful only if you do not have a Terraform backed configured in your Terraform config files. If you have a Terraform backed configured, then the Terraform CLI will not create any local state files.
+
+
+
 ## Command line options
 
 This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
@@ -603,6 +615,22 @@ In **Advanced**, you can use the following options:
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+
+## Troubleshooting Terraform execution on a Docker delegate managed by ECS
+
+When using a Docker delegate with ECS, you might encounter the following error : `NoCredentialProviders: no valid providers in chain`.
+
+When your Docker delegate is managed by ECS, and is set to assume an IAM role for components such as the delegate and Terraform settings from Terraform configs, please ensure that the delegate has the permissions to assume the role.
+
+If your Docker delegate is set to use a proxy, ensure that the proxy instance also has permissions to assume the role. Also, try to set the proxy environment variable for the Terraform steps:
+
+In case your delegate is set to use a proxy, make sure that proxy also has permissions to assume the role, and also try to set environment variables for the Terraform steps:
+
+- `HTTP_PROXY=http://proxy.example.com:8080`
+- `HTTPS_PROXY=http://proxy.example.com:8080`
+
+If your ECS delegate is set with this environment variable: **AWS_CONTAINER_CREDENTIALS_RELATIVE_URI** and you intend to use AWS ECS container credentials, ensure your delegate has access to all of the required AWS services that need to provide credentials, such as STS, Metadata Service, etc.
+
 
 ## See Also
 
