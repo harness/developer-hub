@@ -4,7 +4,7 @@ title: CF app stop
 ---
 CF app stop fault stops a Cloud Foundry app and later starts it up.
 
-<!-- ![CF App Stop](./static/images/cf-app-stop.png) -->
+![CF App Stop](./static/images/cf-app-stop.png)
 
 ## Use cases
 CF app stop fault:
