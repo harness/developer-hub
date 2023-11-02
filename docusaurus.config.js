@@ -224,6 +224,10 @@ const config = {
                 to: 'docs/internal-developer-portal',
               },
               {
+                label: 'Code Repository',
+                to: 'docs/code-repository',
+              },
+              {
                 label: 'Platform',
                 to: 'docs/platform',
               },
