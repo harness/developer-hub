@@ -1595,3 +1595,69 @@ Our delegate will get installed without root permissions by default, you don't n
 #### Can user install the docker delegate with rootless docker?
 Yes, you can install the rootless docker and after install the docker delegate.
 
+#### Can we have multiple docker delegate under same delegate name?
+
+When you have same name for multiple delegates they appear under one group and treated as multiple instances of that specific delegate. Whenever that delegate names get selected any instance registered under the name can be picked for executing the task.
+
+#### Can docker delegates be auto upgraded?
+
+Delegate auto upgrade occurs through the cron job that gets created when deploying a helm or a kubernetes delegate. We do not have any such cron in case of docker delegate and hence the image for docker delegate needs to be manually changed for delegate upgardes.
+
+#### What is the base OS for immutable delegates?
+
+Immutable delegates are based on RHEL ubi8 minimal image. On the other hand our legacy delegate were based on ubuntu.
+
+#### Do we have delegate metrics in case of legacy delegates as well?
+
+Custom delegate metrics are only available for immutable delegates, there is no custom metric for legacy delegates. Also for immutable delegates the custom metrics are available from the version 23.05.79311 onwards.
+
+#### Where does delegate look for third party client utilities?
+
+The immuatble delegates look for the third party client utilities in the PATH location during startup. Hence any third party utility that is installed in delegate is expected to be either present in the default PATH location or the path to the binary added in the environment variable PATH.
+
+#### How to find out which user is running the delegate?
+
+We can exec into the pod and run the below command to find out which user is currently owning the delegate process:
+```
+ps -ef | grep delegate
+```
+
+#### How to check the custom metrics currently being published by delegate? 
+
+Delegate has a metrics api end point which we can access on the delegate host for checking the delegate metrics available. Below is the sample curl:
+```
+curl localhost:30109/api/metrics 
+```
+
+#### What is the health api end point for the immutable delegates?
+
+Immutable delegates has a health api end point on which delegate health related information is related. Below is a sample curl for the same:
+```
+curl localhost:30109/api/health
+```
+
+#### How to pass jvm arguments for watcher process?
+Watcher process for delegates uses jvm options from the environment variable WATCHER_JAVA_OPTS. Any custom jvm argument that we want to pass to watcher process can be configured in the WATCHER_JAVA_OPTS variable in the init script.
+
+
+#### How to pass jvm arguments for delegates process?
+Delegate process picks the jvm options from JVM_OPTS environment variable. If we want to pass any custom jvm arguments for the delegate process we can configure it in the JVM_OPTS environment variable. One example is below:
+
+```
+env:
+  - name: JAVA_OPTS
+    value: "-Xms2G"
+
+```
+
+#### Does delegate preocess write gc logs by default?
+
+Delegate jvm process is not configured to write the gc logs by default. If we need to configure the gc logs we need to pass the jvm arguments for the same. For instance below are sample argument , the options can be modified as per the need for gc logs:
+
+```
+JAVA_OPTS='-Xlog:gc*=debug:file=/var/jvm/gc.log'
+```
+
+#### Can a delegate be connected to first gen and next gen at the same time?
+
+A delegate at one time can be connected to only manager instance. Hence the same delegate can not be connected to both the first gen and next gen instance of the same account.
