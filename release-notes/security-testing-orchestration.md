@@ -27,7 +27,7 @@ This release does not include new features.
 
 ### Early access
 
-- You are now required to sign an end-user license agreement to access the Harness AI Development Assistant (AIDA) in the account and project scopes. You need to do this even if you could previously use AIDA without signing a EULA. (PL-39723)
+- You are now required to sign an end-user license agreement to access the Harness AI Development Assistant (AIDA) in the account and project scopes. You need to do this even if you could previously use AIDA without signing a EULA. This change was originally introduced in the 80505 platform release. (PL-39723)
 
   The EULA is displayed when you enable AIDA at the account scope (**Account Settings** > **Account Resources** > **Default Settings** > **Harness AI Developer Assistant**).
 
@@ -37,15 +37,15 @@ This release does not include new features.
 
 ### Fixed issues
 
-- Updated the UI terminology to better communicate the relationship between issues in the current scan vs. previous scan. (STO-6613)
+- Updated the UI terminology to better communicate the relationship between issues in the current scan vs. previous scans. (STO-6613)
 
-  The **Security Test** UI uses the following labels to describe issues found in the current scan that are common to previous scans:
+  The **Security Test** UI now uses the following labels to describe issues found in the current scan that are common to previous scans:
 
-  - **Common to <_target_>:<_variant_>** Issues also found in the last scan of the specified variant
+  - **Common to <_target_>:<_variant_>** Issues also found in the last scan of the specified variant.
   - **Common to previous scan** 
-    - Issues also found in the last scan (if the target has no baseline), OR
-    - Issues also found in the last scan of the baseline (if the baseline was selected for the current scan).
-  - **Common to previous / baseline scan** Issues also found in the both the last scan of the specified variant and the last scan of the baseline 
+    - Issues also found in the last scan (if the scanned target has no baseline), OR
+    - Issues also found in the last scan of the baseline (if the scanned variant is the baseline).
+  - **Common to previous / baseline scan** Issues also found in the both the last scan of the specified variant AND the last scan of the baseline. 
 
 - Fixed a UI issue where the Security Tests tab would show "No Security Issues Found" and issue counts of 0 for all severities if all issues detected in the scan were exempted. (STO-6642)
 
