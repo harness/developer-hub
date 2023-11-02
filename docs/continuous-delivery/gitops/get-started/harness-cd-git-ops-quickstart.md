@@ -69,42 +69,43 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
 
 ![](./static/harness-cd-git-ops-quickstart-01.png)
 
-In your Harness Project, click **GitOps**.
+1. In your Harness Project, click **GitOps**.
 
-The Harness GitOps **Overview**, **Applications**, and **Settings** appear. If this is the first time GitOps has been set up in the Project, the Applications will be empty.
+   The **Overview**, **Applications**, and **Settings** sections at the top will help you navigate. If this is the first time Harness GitOps has been set up in the project, the **Applications** section and the dashboards in the **Overview** section will be empty.
 
 ![](./static/harness-cd-git-ops-quickstart-02.png)
 
-All entities other than Applications are in **Settings**.
+   All entities other than Applications are in **Settings**.
 
-Click **Settings**. The Harness GitOps settings appear.
+2. Click **Settings**. 
 
 ![](./static/harness-cd-git-ops-quickstart-03.png)
 
-Click **GitOps Agents**.
+3. Click **GitOps Agents**.
 
-Click **New GitOps Agent**. The Agent wizard appears.
+4. Click **New GitOps Agent**. This will bring up the Agent creation wizard.
+
+5. You can choose to install a Harness GitOps Agent with or without an existing Argo CD instance. For this quickstart, select **No** and click **Start**. (If you already have an existing ArgoCD instance follow [these steps](docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/#harness-gitops-agent-with-existing-argo-cd-project) instead to create the agent.)
 
 ![](./static/harness-cd-git-ops-quickstart-04.png)
 
-In **Name**, enter the name **example**.
+6. In the wizard, 
+   1. Set **Name** to **example**.
 
-In **GitOps Operator**, select one of the following:
+   2. Set **GitOps Operator** to one of the following:
   
-  * **Argo**. Uses Argo CD as the GitOps reconciler.
-  * **Flux**. Uses Flux as the GitOps reconciler. <!-- For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux). --> <!-- Commenting out because the referenced topic is a new one and is causing a broken link error in preview environment builds. It basically points to Continuous Delivery & GitOps > GitOps > Use GitOps > Manage Flux applications, so you can use the left nav to view the new topic. -->
+   * **Argo**. Uses Argo CD as the GitOps reconciler.
+   * **Flux**. Uses Flux as the GitOps reconciler. <!-- For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux). --> <!-- Commenting out because the referenced topic is a new one and is causing a broken link error in preview environment builds. It basically points to Continuous Delivery & GitOps > GitOps > Use GitOps > Manage Flux applications, so you can use the left nav to view the new topic. -->
 
-In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment. For this quickstart, we use **default**.
+   3. Set **Namespace** to the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment. For this quickstart, we use **default**.
 
-Click **Next**. The **Review YAML** settings appear.
+7. Click **Continue**. The **Review YAML** settings appear.
 
-This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.
+8. This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster. Switch the configuration type from **Helm Chart** to **YAML** and click on **Download YAML**. (You can also review the contents of the YAML by clicking the arrow next to **“gitops-agent.yml”**)
 
-Click **Download & Continue**. You are prompted to save the YAML file.
+9. Open a terminal and navigate to the folder where you downloaded the YAML file.
 
-Open a terminal and navigate to the folder where you downloaded the YAML file.
-
-In the same terminal, log into the Kubernetes cluster where you want to install the Agent.
+10. In the same terminal, log into the Kubernetes cluster where you want to install the Agent.
 
 For example, here's a typical GKE login:
 
@@ -112,7 +113,7 @@ For example, here's a typical GKE login:
 ```
 gcloud container clusters get-credentials <cluster_name> --zone us-central1-c --project <project_name>
 ```
-Run the following command to apply the YAML file you downloaded (in this example, `default` was the namespace entered in the **Namespace** setting):
+11. Run the following command to apply the YAML file you downloaded (in this example, `default` was the namespace entered in the **Namespace** setting):
 
 
 ```
@@ -160,17 +161,16 @@ configmap/example-agent-upgrader created
 role.rbac.authorization.k8s.io/example-agent-upgrader created  
 rolebinding.rbac.authorization.k8s.io/example-agent-upgrader created  
 serviceaccount/example-agent-upgrader created  
-Warning: batch/v1beta1 CronJob is deprecated in v1.21+, unavailable in v1.25+; use batch/v1 CronJob  
 cronjob.batch/example-agent-upgrader created
 ```
 
-Back in Harness, click **Continue**.
+12. Back in Harness, click **Continue**.
 
-Harness indicates that the Harness GitOps Agents is registered.
+13. Harness indicates that the Harness GitOps Agents is registered.
 
 ![](./static/harness-cd-git-ops-quickstart-05.png)
 
-Click **Finish**.
+14. Click **Finish**.
 
 The **Agents** list shows the new Agent as **Healthy** and **Connected**.
 
@@ -233,7 +233,7 @@ You will also provide the credentials to use when connecting to the target clust
    ![](./static/harness-cd-git-ops-quickstart-11.png)
 
 5. In **Details**, click **Use the credentials of a specific Harness GitOps Agent**. This Cluster will use the Agent's Kubernetes role permissions for connections.
-6. Using Specify Kubernetes Cluster URL and credentialsIf you want to use **Specify Kubernetes Cluster URL and credentials**, do the following:
+6. If you want to use **Specify Kubernetes Cluster URL and credentials**, do the following:
 7. In **Master URL**, enter the master URL for your cluster. You can just log into your cluster and run `kubectl cluster-info`. Use the URL listed in the output `Kubernetes master is running at`.
 8. In **Authentication**, select **Service Account**.
 9.  In **Service Account Token**, paste in the Service Account Token for the cluster's **default** namespace.
@@ -304,7 +304,7 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
    ![](./static/harness-cd-git-ops-quickstart-13.png)
 
 2. In **Application Name**, enter **example**.
-3. In **GitOps Operator**, select one of the following:
+3. In **GitOps Operator**, select the Gitops operator you selected when installing the example agent:
   
     * **Argo**. Uses Argo CD as the GitOps reconciler.
     * **Flux**. Uses Flux as the GitOps reconciler. <!-- For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux). --> <!-- Commenting out because the referenced topic is a new one and is causing a broken link error in preview environment builds. It basically points to Continuous Delivery & GitOps > GitOps > Use GitOps > Manage Flux applications, so you can use the left nav to view the new topic. -->
@@ -426,6 +426,19 @@ You can also initiate a Sync or Refresh from the main GitOps page.
 
 ## Cleaning Up
 
+### Delete a Harness Gitops Application
+ 
+You can delete an application from the main GitOps page. Within the deletion prompt that appears, you'll notice three deletion methods - **Foreground**, **Background** and **Non-cascading** and a checkbox.
+
+Both **Foreground** and **Background** perform a cascading delete on the application.
+
+A cascading delete, deletes both the app and all its resources, rather than only the app and is the recommended way to completely delete an application.
+
+To perform a non-cascade delete select the **Non-cascading** option.
+Please note that when performing a non-cascading delete, you need to make sure the finalizer is unset/removed and then delete the app. You can check the **Remove any existing finalizer** checkbox for this.
+
+### Deleting a Harness Gitops Agent
+
 To delete the Harness GitOps Agent from your Kubernetes cluster, you delete the StatefulSet for the Agent. Once created, the StatefulSet ensures that the desired number of pods are running and available at all times. Deleting the pod without deleting the StatefulSet will result in the pod being recreated.
 
 For example, if you have the Agent pod name `gitops-agent-6877dbf7bf-wg6xv`, you can delete the StatefulSet with the following command:
@@ -443,5 +456,8 @@ kubectl create namespace {namespace}
 
 ## Next Steps
 
-Next, try Harness GitOps using one of your own repos and target clusters.
+* Next, try Harness GitOps using one of your own repos and target clusters.
 
+* Understand [Harness Gitops Applicationsets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial) and how you can use them with [Harness PR Pipelines](docs/continuous-delivery/gitops/pr-pipelines/) to streamline GitOps across multiple environments.
+
+* Read about how Harness GitOps approaches [Managing Kubernetes secrets in Git using Mozilla SOPS](docs/continuous-delivery/gitops/use-gitops/sops).
