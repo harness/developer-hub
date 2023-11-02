@@ -85,7 +85,7 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
 
 4. Click **New GitOps Agent**. This will bring up the Agent creation wizard.
 
-5. You can choose to install a Harness GitOps Agent with or without an existing Argo CD instance. For this quickstart, select **No** and click **Start**. (If you already have an existing ArgoCD instance follow [these steps](docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/#harness-gitops-agent-with-existing-argo-cd-project) instead to create the agent.)
+5. You can choose to install a Harness GitOps Agent with or without an existing Argo CD instance. For this quickstart, select **No** and click **Start**. (If you already have an existing ArgoCD instance follow [these steps](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/#harness-gitops-agent-with-existing-argo-cd-project) instead to create the agent.)
 
 ![](./static/harness-cd-git-ops-quickstart-04.png)
 
@@ -458,6 +458,6 @@ kubectl create namespace {namespace}
 
 * Next, try Harness GitOps using one of your own repos and target clusters.
 
-* Understand [Harness Gitops Applicationsets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial) and how you can use them with [Harness PR Pipelines](docs/continuous-delivery/gitops/pr-pipelines/) to streamline GitOps across multiple environments.
+* Understand [Harness Gitops Applicationsets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial) and how you can use them with [Harness PR Pipelines](/docs/continuous-delivery/gitops/pr-pipelines/) to streamline GitOps across multiple environments.
 
-* Read about how Harness GitOps approaches [Managing Kubernetes secrets in Git using Mozilla SOPS](docs/continuous-delivery/gitops/use-gitops/sops).
+* Read about how Harness GitOps approaches [Managing Kubernetes secrets in Git using Mozilla SOPS](/docs/continuous-delivery/gitops/use-gitops/sops).
