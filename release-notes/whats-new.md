@@ -95,7 +95,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 ##### Service Reliability Management, version 1.5.3
 
-- Added the option to set the start month of quarterly Service Level Objectives (SLOs). This enhancement helps you define your SLOs and match them with your organization’s reporting and operational cycles. (SRM-15677)
+- Added the option to set the start month of quarterly Service Level Objectives (SLOs). This enhancement helps you define your SLOs and match them with your organization's reporting and operational cycles. (SRM-15677)
 
 #### October 30, 2023
 
@@ -104,7 +104,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 * The Harness AI Development Assistant (AIDA:tm:) for CI is now generally available. AIDA for CI provides error analysis and remediation for failed pipelines. Harness bases these recommendations on the step logs and the context of the failed step. You must accept the AIDA EULA to enable AIDA in your Harness account. For more information, go to [Troubleshooting with AIDA](http://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida).
 * When you [configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/), you can now use `DESTINATION_CA_PATH` instead of `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`. (CI-9707)
    * For `DESTINATION_CA_PATH`, provide a comma-separated list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`.
-   * This environment variable supports both CI build pods and the SCM client on the delegate.
+   * Both CI build pods and the SCM client on the delegate support this method.
    * You can use either method (`DESTINATION_CA_PATH` or both `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`). If you specify both, `DESTINATION_CA_PATH` takes precedence. If Harness can't resolve `DESTINATION_CA_PATH`, it falls back to `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`.
    * This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 * The individual log line limit is now 25KB. Log lines longer than 25BK are truncated. (CI-9927, ZD-52005, ZD-52079, ZD-52134, ZD-52356)
