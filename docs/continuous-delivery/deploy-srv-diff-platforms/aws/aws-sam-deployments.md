@@ -353,7 +353,7 @@ Under the AWS SAM Build Command Options, we recommend passing the `--debug` flag
 
 **Question:** What versions of SAM CLI Version are supported by Harness?
 
-- We support SAM CLI Version 1.98.0 - 1.82.0
+- We support SAM CLI Version 1.84.0
 - We are working to stay up to date with the latest versions of SAM CLI and making sure it's compatible with newer versions of our steps.
 
 
