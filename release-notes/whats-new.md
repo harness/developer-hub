@@ -32,7 +32,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## October 30, 2023
 
-## Latest: November 1, 2023
+## November 1, 2023
 
 ### Self-Managed Enterprise Edition, version 80917
 
