@@ -121,7 +121,7 @@ This release does not include any new early access features.
 
 #### Version 81015
 
-- Fixed an issue that prevented the service dashboard from showing the new active instance count resulting from updates made to workload replicas. The issue occurred in a few Helm deployment scenarios, when the updates were made after deployment. (CDS-76795, ZD-52612)
+- Fixed an issue that prevented the service dashboard from showing the new active instance count resulting from updates made to workload replicas. The issue occurred in a few Helm deployment scenarios, when the updates were made after deployment. (CDS-82385, ZD-52612)
 
   This issue has now been resolved. 
 
