@@ -44,7 +44,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-<!-- step-palette 
+<!-- step-palette -->
 
 ## Anchore Enterprise step configuration
 
@@ -117,7 +117,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 
 ### Container Image
 
-<!-- ============================================================================= -->
+
 <a name="container-type"></a>
 
 #### Type  (_orchestration_)
@@ -128,7 +128,7 @@ import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md
 
 <StoSettingImageType />
 
-<!-- ============================================================================= -->
+
 
 
 <a name="container-domain"></a>
@@ -142,7 +142,7 @@ import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domai
 
 <StoSettingImageDomain />
 
-<!-- ============================================================================= -->
+
 <a name="container-name"></a>
 
 #### Name
@@ -153,7 +153,7 @@ import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md
 
 <StoSettingImageName />
 
-<!-- ============================================================================= -->
+
 
 
 <a name="container-tag"></a>
@@ -234,8 +234,6 @@ import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-ac
 For Extraction scans, the name of the image that you want to extract from Anchore. 
 
 
-
-
 ### Log Level, CLI flags, and Fail on Severity
 
 <a name="log-level"></a>
@@ -290,7 +288,7 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
- /step-palette -->
+<!--  /step-palette -->
 
 
 
