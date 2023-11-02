@@ -50,10 +50,9 @@ This release does not include early access features.
 ### Fixed issues
 
 * When you add a [Build stage](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings) to a pipeline, the **Infrastructure** tab is selected by default, rather than the **Execution** tab. (CI-9624)
-* (CI-9980) <!-- For SMP. Behind ff to avoid regressions. --> ?
-* (CI-10055) ?
-* (CI-10042, ZD-52559) <!-- FF? --> ?
-* (CI-9733) ? <!-- new feature/enhancement? -->
+* To address potential performance issues, resource consumption logs are now disabled for the `ci-addon` service, and the communication retry internal between the Lite Engine and the `ci-addon` service is now nine seconds. <!-- additional hotfix change behind FF CI_EXTRA_ADDON_RESOURCE --> (CI-10042, ZD-52559)
+
+<!-- not on RN candidate confluence page: (CI-9980 - potentially for SMP. Behind ff to avoid regressions? Added support to route codebase delegate task via the pipeline/connector level delegate selector in CI. This is behind a FF CI_CODEBASE_SELECTOR.) (CI-10055) (CI-9733 - new feature/enhancement?) -->
 
 ## Previous releases
 
