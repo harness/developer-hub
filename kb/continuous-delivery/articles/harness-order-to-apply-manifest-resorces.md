@@ -1,5 +1,8 @@
 ---
 title: Order of the manifest resources applied through Harness
+description: Order of the manifest resources applied through Harness
+redirect_from:
+  - /kb/continuous-delivery/articles/harness%20order%20to%20apply%20manifest%20resorces
 ---
 
 # Order of the manifest resources applied through Harness

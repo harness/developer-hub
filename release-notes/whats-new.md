@@ -20,6 +20,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
+
 ## Latest: November 02, 2023
 
 ### Continuous Error Tracking, versions ET-Service 5.30.0 and ET-Collector 5.30.0
@@ -30,6 +31,49 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Various dependencies were upgraded to prevent security issues. (CET-1880)
 
 ## October 30, 2023
+
+## Latest: November 1, 2023
+
+### Self-Managed Enterprise Edition, version 80917
+
+- Pod Disruption Budgets (PDBs) have been added to all applicable deployments/StatefulSets. (SMP-777)
+
+- You can now set annotations and labels globally for all resources by adding the `commonAnnotations` and `commonLabels` settings under global in your `override.yaml` file. (SMP-1216, ZD-42336, ZD-43006)
+
+   For example:
+
+   ```yaml
+   global:
+       commonAnnotations: {kubernetes.azure.com/no-http-proxy-vars: "true"}
+       commonLabels: {kubernetes.azure.com/no-http-proxy-vars: "true"}
+   ```
+
+- You can now use Kubernetes-based external secrets for Harness license values in Helm charts. (SMP-1839, ZD-49341, ZD-52283)
+
+   Harness has added the following values to `global.license.secrets.kubernetesSecrets`.
+   - `secretName`: Name of the Kubernetes secrets containing Harness license keys
+   - `keys.CG_LICENSE`: Name of the secret key containing a FirstGen License
+   - `keys.NG_LICENSE`: Name of the secret key containing a NextGen License
+   
+      ```yaml
+         global:
+           license:
+             cg: ''
+             ng: ''
+             secrets:
+               kubernetesSecrets:
+                 - secretName: ""
+                   keys:
+                     CG_LICENSE: ""
+                     NG_LICENSE: ""
+      ```
+
+## October 31, 2023
+
+### Service Reliability Management, version 1.5.3
+
+- Added the option to set the start month of quarterly Service Level Objectives (SLOs). This enhancement helps you define your SLOs and match them with your organization’s reporting and operational cycles. (SRM-15677)
+
 
 ### Continuous Integration version 6404
 

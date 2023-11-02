@@ -268,20 +268,24 @@ const config = {
                 to: 'certifications',
               },
               {
+                label: 'Continuous Integration',
+                to: 'certifications/continuous-integration',
+              },
+              {
                 label: 'Continuous Delivery & GitOps',
                 to: 'certifications/continuous-delivery',
               },
               {
-                label: 'Continuous Integration',
-                to: 'certifications/continuous-integration',
+                label: 'Feature Flags',
+                to: 'certifications/feature-flags',
               },
               {
                 label: 'Cloud Cost Management',
                 to: 'certifications/cloud-cost-management',
               },
               {
-                label: 'Feature Flags',
-                to: 'certifications/feature-flags',
+                label: 'Security Testing Orchestration',
+                to: 'certifications/sto',
               },
               {
                 label: 'Chaos Engineering',
