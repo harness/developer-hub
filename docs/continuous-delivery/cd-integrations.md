@@ -231,7 +231,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_OPA_TEMPLATE_GOVERNANCE</td>
-        <td>Enables <a href="/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/#template">OPA with templates</a>.</td>
+        <td>Enables <a href="/docs/platform/governance/policy-as-code/cd-governance/harness-governance-overview#template">OPA with templates</a>.</td>
     </tr>
     <tr>
         <td>CDS_ARTIFACTS_PRIMARY_IDENTIFIER</td>
