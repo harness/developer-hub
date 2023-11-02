@@ -247,4 +247,4 @@ For troubleshooting information for AWS VM build infrastructures, go to [Set up 
 
 ## Local runner build infrastructure issues
 
-For troubleshooting information for local runner build infrastructures, go to [Set up a local runner build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md#troubleshooting-the-delegate-connection).
+For troubleshooting information for local runner build infrastructures, go to [Set up a local runner build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md#troubleshooting).

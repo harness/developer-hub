@@ -92,4 +92,14 @@ export const certifications: CardItem[] = [
       link: "/certifications/feature-flags?lvl=administrator",
       // numberOfCerts: 1,
     },
+    {
+      title: "Security Testing Orchestration  - Developer (BETA Coming Soon)",
+      module: MODULES.sto,
+      type: certType.developer,
+      description:
+        "STO Developer focuses on the fundamental skills to shift security left in your pipelines.",
+      version: "Harness STO Free/Team Plans",
+      link: "/certifications/sto?lvl=developer",
+      // numberOfCerts: 1,
+    },
   ];

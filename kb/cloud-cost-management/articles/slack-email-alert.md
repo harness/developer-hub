@@ -1,6 +1,6 @@
 ---
 description: KB - Configuration for sending Dashboard reports to slack channel/user.
-title: Send Dashboard reports to slack channel.
+title: Send Dashboard reports to slack channel
 ---
 # Introduction
 

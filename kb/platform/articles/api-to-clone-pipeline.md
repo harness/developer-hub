@@ -1,6 +1,8 @@
 ---
 description: KB - How to clone pipeline through API
 title: API to clone the pipeline
+redirect_from:
+  - /kb/platform/articles/api%20to%20run%20a%20pipeline%20with%20runtime%20inputs
 ---
 
 # Clone Pipeline through API
