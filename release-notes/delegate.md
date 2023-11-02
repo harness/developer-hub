@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-10-27T10:00
+date: 2023-11-02T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -119,13 +119,13 @@ This release does not include any new early access features.
 
 ##### Hotfixes
 
-#### Version 81015
+##### Version 81015
 
 - The service dashboard did not show the new active instance count that resulted from updates made to workload replicas. The issue occurred in a few Helm deployment scenarios, when the updates were made after deployment. (CDS-82385, ZD-52612)
 
-  This issue has now been fixed. 
+  This issue has been fixed. 
 
-- In order to set up certificates, Harness has introduced a new way to mount certificates to delegate pods for CI executions. With the new capability, you must mount certificates to `/opt/harness-delegate/ca-bundle` and specify a list of comma-separated destination paths with the `DESTINATION_CA_PATH` environment variable. Each path corresponds to the location on the CI build pod where you want the certificate to be mounted. This solution works for CI build pods and for the SCM client on the delegate. (CI-9707)
+- To set up certificates, Harness has introduced a new way to mount certificates to delegate pods for CI executions. With the new capability, you must mount certificates to `/opt/harness-delegate/ca-bundle` and specify a list of comma-separated destination paths with the `DESTINATION_CA_PATH` environment variable. Each path corresponds to the location on the CI build pod where you want the certificate to be mounted. This solution works for CI build pods and for the SCM client on the delegate. (CI-9707)
 
   The following YAML configuration illustrates the new method:
 
