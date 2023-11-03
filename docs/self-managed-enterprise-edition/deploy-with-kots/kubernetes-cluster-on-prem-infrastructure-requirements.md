@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 :::info note
 
-This is an End of Life (EOL) notice for the KOTS installation method. This method will be in maintenance mode after May 31, 2023. 
+This is an End of Life (EOL) notice for the KOTS installation method. This method will is in maintenance mode as of May 31, 2023. 
 
 Maintenance mode means the following:
 
