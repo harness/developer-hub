@@ -304,7 +304,6 @@ An example of how the repo-server yaml would look like:
           - entrypoint.sh argocd-repo-server --redis argocd-redis:6379
       env: 
         ... other variables ...
-        name: argocd-repo-server
         - name: HTTPS_PROXY
           value: "http://squid.proxy-test:3128"
         - name: HTTP_PROXY
@@ -324,12 +323,10 @@ An example of how the repo-server yaml would look like:
             value: 1.26.7
           - name: SOPS_VERSION
             value: 3.7.3
-          - name: HTTPS_PROXY
+          - name: https_proxy
             value: "http://squid.proxy-test:3128"
-          - name: HTTP_PROXY
+          - name: http_proxy
             value: "http://squid.proxy-test:3128"
-          - name: NO_PROXY
-            value: localhost,argocd-repo-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST),({agentname}-agent)
 
       .. rest of agent YAML ...
   ``````

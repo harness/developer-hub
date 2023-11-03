@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-11-02T10:00
+date: 2023-11-03T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,9 +19,24 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
+## November 3, 2023 
+
+### Continuous Delivery, version 81308
+
+- Availability of deployment step group templates in custom stages (CDS-81265)
+
+  When opened in the context of a custom stage, the **Templates** side panel in Pipeline Studio lists step group templates created from deployment stages. The **Type** dropdown field in the panel also includes entries for filtering step groups created from custom and deployment stages.
+
+- Improved user experience when viewing errors in the console view (CDS-77809)
+
+  You can now increase the height of the error panel in the pipeline console. This change improves the readability of error messages and suggestions.
+
+- Resolved expressions for runtime inputs in custom dashboards (CDS-77013)
+
+  For runtime inputs, custom dashboards now show resolved trigger expressions instead of the expressions themselves.
 
 
-## Latest: November 02, 2023
+## November 02, 2023
 
 ### Continuous Error Tracking, versions ET-Service 5.30.0 and ET-Collector 5.30.0
 - The Summary page loading time has been optimized. Now, the Summary page loads faster, ensuring a better user experience. (CET-1233)
@@ -71,7 +86,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ### Service Reliability Management, version 1.5.3
 
 - Added the option to set the start month of quarterly Service Level Objectives (SLOs). This enhancement helps you define your SLOs and match them with your organization’s reporting and operational cycles. (SRM-15677)
-
 
 ### Continuous Integration version 6404
 

@@ -8,7 +8,7 @@ description: This topic describes how to optimize cloud costs using asset govern
 # Optimize cloud costs by using the asset governance rules
 
 :::note
-Currently, this feature is behind the feature flag **CCM_ENABLE_CLOUD_ASSET_GOVERNANCE_UI**. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, Azure support for Asset Governance is behind the feature flag **CCM_ENABLE_AZURE_CLOUD_ASSET_GOVERNANCE_UI**. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 To optimize cloud costs, you need to create a governance rule or combine multiple rules into a ruleset and enforce it to provide a more comprehensive, consistent, and efficient approach to cloud asset governance.
 
