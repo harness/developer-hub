@@ -39,7 +39,7 @@ To get a token from Harness:
 
     ![Add token from a service account](./static/jira-add-token-from-service-account.png) 
 
-   ** Note** that you only need the **"Account Viewer"** role.
+   ** Note** that you only need the **"Account Viewer"** role to connect Jira to Harness but you will also need the **"Flag Manager"** role in order to change flags from Jira.
 
 5. Fill out the **New Token** form, and then select **Generate Token**.
 
