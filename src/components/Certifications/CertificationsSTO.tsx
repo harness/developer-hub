@@ -5,8 +5,8 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { certType } from "./CertCard";
 import { getCertLevel } from "./LandingPage";
-// import DeveloperCertificationReviewGuide from "./data/sto-certification-developer-review-guide.md";
-// import DeveloperCertificationExamDetails from "./data/sto-certification-developer-exam-details.md";
+import DeveloperCertificationReviewGuide from "./data/sto-certification-developer-review-guide.md";
+import DeveloperCertificationExamDetails from "./data/sto-certification-developer-exam-details.md";
 // import AdminCertificationReviewDetails from "./data/sto-certification-admin-review-guide.md";
 // import AdminCertificationExamDetails from "./data/sto-certification-admin-exam-details.md";
 // import ArchitectCertificationReviewDetails from "./data/sto-certification-architect-review-guide.md";
@@ -66,8 +66,8 @@ export default function CertificationsSTO() {
           </div>
           <h1>Security Testing Orchestration Certifications</h1>
           <div>
-          Seamlessly integrate security scanners and orchestrate tests anywhere across your build pipelines. 
-          Enable developers to rapidly remediate vulnerabilities through intelligent prioritization and deduplication.
+            Seamlessly integrate security scanners and orchestrate tests anywhere across your build pipelines.
+            Enable developers to rapidly remediate vulnerabilities through intelligent prioritization and deduplication.
           </div>
         </div>
         <div className={styles.right}>
@@ -132,29 +132,18 @@ export default function CertificationsSTO() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  {/* <h3>Review Study Guide</h3>
+                  <h3>Review Study Guide (BETA)</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy your applications
-                    with STO Engineering projects.
-                  </div> */}
-                  {/* <DeveloperCertificationReviewGuide />
+                    with STO projects.
+                  </div>
+                  <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/certified-continuous-delivery-developer">
+                    <Link href="">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
                     </Link>
-                    {/* <Link href="/tutorials/cd-pipelines">
-                      <button className={styles.startLearning}>
-                        <span>Start learning</span>
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </button>
-                    </Link>*/}
-                  {/* </div> */}
-                  <h3>Coming Soon...</h3>
-                  <div className={styles.desc}>
-                    Assess key technical job functions and advanced skills in
-                    design, implementation and management of STO.
                   </div>
                 </div>
               </div>
@@ -162,20 +151,20 @@ export default function CertificationsSTO() {
           </div>
 
           {/* Developer Exam Details */}
-          {/* <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details</h2>
+          <div className={styles.examDetails}>
+            <h2 id="exam-details">Exam Details (BETA)</h2>
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/certified-continuous-delivery-developer">
+                <Link href="#">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
                 </Link>
-              
+
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
 
         {/* Administrator Tab Content */}
@@ -237,7 +226,7 @@ export default function CertificationsSTO() {
                   {/* </div> */}
                   <h3>Coming Soon...</h3>
                   <div className={styles.desc}>
-                  Assesses the fundamental skills to deploy and maintain STO projects and the overall Harness Platform.
+                    Assesses the fundamental skills to deploy and maintain STO projects and the overall Harness Platform.
                   </div>
                 </div>
               </div>

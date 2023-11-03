@@ -922,3 +922,41 @@ It will be default to 0, which is the lowest priority.
 If you leave the "Priority Class" field blank, the "PriorityClass" will be set to the default value
 
 
+#### Is remote caching supported in “build and push” steps?
+No, Currently remote caching is not supported with "Build and Push" step.
+
+#### Why AWS connector with IRSA and AssumeRole will not work with delegate type connectivity in Harness cloud pipeline?
+Because the delegate and runners reside inside harness infrastructure.
+
+#### What's the Limitation of Background Step?
+If the background step is running directly on the host, no other step running in a container can talk to it.
+
+
+#### How user can use the git commands in run step?
+If user need to run the authenticated git commands in a run step of CIE pipeline, we would need to manually pass the credentials in the run step. The creds used in the codebase connector will not be accessible to the run step. 
+
+#### What is the purpose of creating a .netrc file in the Run Step of a CI pipeline?
+The .netrc file is created in the Run Step to provide a mechanism for storing Git credentials required for manual Git operations. It ensures that the necessary authentication information is readily available when executing Git commands in the run step.
+
+#### How does using the .netrc file simplify the execution of Git commands in a CI pipeline's run step?
+By using the .netrc file, you can execute Git commands within the run step without having to manually enter credentials each time. Git will automatically reference the .netrc file to retrieve the necessary credentials.
+
+
+#### How can user enable the Gradle Daemon in builds?
+To enable the Gradle Daemon in your Harness CI builds, you can include the --daemon option when running Gradle commands in your build scripts. This option instructs Gradle to use the daemon process.
+
+
+#### Can user configure service dependencies in Gradle builds?
+Yes, you can configure service dependencies in Gradle builds.
+
+#### How can I configure and use images from multiple Azure Container Registries (ACRs)?
+To configure and use images from multiple ACRs in Harness, you need to set up individual Harness service configurations for each ACR you want to use. Within each service configuration, specify the image repository and tag from the respective ACR. 
+
+#### Can user mix and match images from different container registries within a single deployment?
+Yes, By configuring each service with the appropriate image repository and tag details, you can seamlessly deploy applications using images from different registries in the same deployment.
+
+#### What criteria does Test Intelligence use to select tests for execution in a pull request scenario?
+In a pull request, TI uses the following criteria to select tests:
+1) Changed code
+2) Changed tests
+3) New tests

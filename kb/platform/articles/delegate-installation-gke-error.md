@@ -1,5 +1,5 @@
 ---
-title: Delegate Installation Error in GKE
+title: Delegate installation error in GKE
 ---
 
 # How Can I Fix The Delegate Installation Error with Readiness Probe Failure in GKE?

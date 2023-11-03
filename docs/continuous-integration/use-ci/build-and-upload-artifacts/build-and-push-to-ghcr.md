@@ -1,26 +1,18 @@
 ---
-title: Build and Push to Docker
-description: Use a CI pipeline to build and push an image to a Docker registry.
-sidebar_position: 20
+title: Build and Push to GHCR
+description: Use a CI pipeline to build and push an image to GitHub Container Registry.
+sidebar_position: 50
 helpdocs_topic_id: q6fr5bj63w
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic explains how to configure the **Build and Push an image to Docker Registry** step in a Harness CI pipeline. This step creates a Docker image from a [Dockerfile](https://docs.docker.com/engine/reference/builder/) and pushes it to a Docker registry. This is one of several options for [building and pushing artifacts in Harness CI](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
-
-:::tip
-
-The **Build and Push an image to Docker Registry** step is primarily used to push to Docker Hub. However, you can also use it to push to Azure Container Registry (ACR) and the [GitHub Container Registry](./build-and-push-to-ghcr.md).
-
-For ACR, you can use either the **Build and Push an image to Docker Registry** step or the [Build and Push to ACR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr), because the **Build and Push an image to Docker Registry** step is equivalent to the Docker [build](https://docs.docker.com/engine/reference/commandline/build/) and [push](https://docs.docker.com/engine/reference/commandline/push/) commands.
-
-:::
+This topic explains how to use the [Build and Push an image to Docker Registry step](./build-and-push-to-docker-hub-step-settings.md) to build and push an image to [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry).
 
 You need:
 
-* Access to a Docker registry.
+* Access to GHCR.
 * A [Harness CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 * A [Docker connector](#docker-connector).
 
@@ -32,25 +24,25 @@ If your build runs as non-root (`runAsNonRoot: true`), and you want to run the *
 
 If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
 
-## Add a Build and Push to Docker step
+## Build and push to GitHub Container Registry
 
-In your pipeline's **Build** stage, add a **Build and Push an image to Docker Registry** step and configure the [settings](#build-and-push-to-docker-step-settings) accordingly.
+In your pipeline's **Build** stage, add a **Build and Push an image to Docker Registry** step and configure the [settings](#build-and-push-to-docker-step-settings-for-ghcr) for GHCR.
 
-Here is a YAML example of a minimum **Build and Push an image to Docker Registry** step.
+Here is a YAML example of a **Build and Push an image to Docker Registry** step configured for GHCR:
 
 ```yaml
               - step:
                   type: BuildAndPushDockerRegistry
-                  name: Build and push to Docker
-                  identifier: Build_and_push_to_Docker
+                  name: Build and push to GHCR
+                  identifier: Build_and_push_to_GHCR
                   spec:
                     connectorRef: YOUR_DOCKER_CONNECTOR_ID
-                    repo: DOCKER_USERNAME/DOCKER_REPO_NAME
+                    repo: ghcr.io/NAMESPACE/IMAGE
                     tags:
                       - <+pipeline.sequenceId>
 ```
 
-When you run a pipeline, you can observe the step logs on the [build details page](../viewing-builds.md). If the **Build and Push** step succeeds, you can find the uploaded image in your Docker repo.
+When you run a pipeline, you can observe the step logs on the [build details page](../viewing-builds.md). If the **Build and Push** step succeeds, you can find the uploaded image in GHCR.
 
 :::tip
 
@@ -61,29 +53,32 @@ You can also:
 
 :::
 
-## Build and Push to Docker step settings
+## Build and Push to Docker step settings for GHCR
 
-The **Build and Push an image to Docker Registry** step has the following settings. Depending on the build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
+These sections explain how to configure the **Build and Push an image to Docker Registry** step settings for GHCR. Depending on the build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
 
 ### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** until the step is saved. Once save, the **Id** can't be changed.
 
 ### Docker Connector
 
-The Harness Docker Registry connector where you want to upload the image. For more information, go to [Docker connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+Specify a [Harness Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for GHCR.
 
-This step supports Docker connectors that use username and password authentication.
+* **Provider Type:** Select **Other**.
+* **Docker Registry URL:** Enter your GHCR hostname and namespace, such as `https://ghcr.io/NAMESPACE`. The namespace is the name of a GitHub personal account or organization.
+* **Authentication:** You must use **Username and Password** authentication.
+* **Username:** Enter your GitHub username.
+* **Password:** Select a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing a [classic personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) with [permission to publish, install, and delete private, internal, and public packages](https://docs.github.com/en/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries). For more information, go to [Authenticating t the Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry).
+* Other settings: For information about other Docker Registry connector settings, go to the [Docker connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 
 ### Docker Repository
 
-The name of the repository where you want to store the image, for example, `<hub-user>/<repo-name>`.
-
-For private Docker registries, specify a fully qualified repo name.
+The namespace where you want to store the image and the image name, for example, `ghcr.io/NAMESPACE/IMAGE_NAME`. For more information, go to the GitHub documentation on [Pushing container images](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#pushing-container-images).
 
 ### Tags
 
-Add [Docker build tags](https://docs.docker.com/engine/reference/commandline/build/#tag). This is equivalent to the `-t` flag.
+Add [Docker build tags](https://docs.docker.com/engine/reference/commandline/build/#tag). This is equivalent to the `-t` flag. For more information, go to the GitHub documentation on [Pushing container images](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#pushing-container-images).
 
 Add each tag separately.
 
@@ -99,11 +94,11 @@ For example, if you use `<+pipeline.sequenceId>` as a tag, after the pipeline ru
 
 ![](./static/build-and-upload-an-artifact-15.png)
 
-And you can see where the `Build Id` is used to tag your image:
+And you can see where the `Build Id` is used to tag your image in the container registry:
 
 ![](./static/build-and-upload-an-artifact-12.png)
 
-Later in the pipeline, you can use the same expression to pull the tagged image, such as `myrepo/myimage:<+pipeline.sequenceId>`.
+You can use the same expression to pull the tagged image, such as `namespace/myimage:<+pipeline.sequenceId>`.
 
 :::
 
@@ -147,7 +142,7 @@ The [Docker target build stage](https://docs.docker.com/engine/reference/command
 
 ### Remote Cache Image
 
-Enter the name of the remote cache image, such as `<container-registry-repo-name>/<image-name>`.
+Enter the name of the remote cache image, such as `NAMESPACE/IMAGE_NAME`.
 
 The remote cache repository must exist in the same host and project as the build image. The repository will be automatically created if it doesn't exist. For caching to work, the entered image name must exist.
 
