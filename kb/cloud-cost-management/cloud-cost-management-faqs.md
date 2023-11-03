@@ -29,6 +29,26 @@ For K8S connectors, the reporting icon would be success as long as we are receiv
 For cloud connectors, one of the validations we do as part of conn health indicator is availability of data on our side in past 24 hours.
 When license expires, after some days we would stop running the data sync jobs and thus conn status will be read.
 
+#### When dealing with multiple datasets in one GCP project, how can we add all datasets to the connector?
+
+To include all the datasets, we should set up an individual connector for each dataset.
+
+#### How can historical data be ingested beyond 180 days in the case of a GCP connector?
+
+If you require historical data to be ingested, please raise a support ticket with Harness. The CCM development team can ingest the data for you.
+
+#### Can I setup an Azure Connector for a subscription without specifying billing details?
+
+Yes, we can create a connector without specifying billing details if the billing information for the subscription is already covered by another azure billing connector.
+
+#### Does GCP support historical data ingestion from a source located in non US region?
+
+Yes, it does. However, if they have multiple source datasets which are located in non US region then ensure that table names are unique even across the different source datasets.
+
+#### In the case of AWS, what should we do if historical cost data is missing from the CUR export (source bucket)?
+
+In this scenario, we can raise an AWS support request to backfill the same source bucket. Once the data is available, CCM will automatically retrieve and make it accessible.
+
 
 ### Perspectives
 
