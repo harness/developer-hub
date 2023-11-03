@@ -191,6 +191,32 @@ The correct ALB is selected as the load balancer when creating the AutoStopping 
 
 We currently do not support ECS autostopping with NLBs. NLBs operate at layer 4 of the network stack, making it challenging to intercept traffic. To achieve autostopping functionality, you can create a new ALB, set it up as a downstream system for the NLB, and connect your Auto Scaling (AS) group to the ALB. This configuration will enable the desired functionality."
 
+#### I am unable to add additional RDS instances to an auto-stopping rule, when adding other rule it overrides the existing one.
+
+We do not allow the addition of multiple resources per Rule for RDS and ASG based rules. This is why the selection is represented as a radio button for these types, while VMs, which support multiple resources, are represented with a checkbox.
+
+#### Why am I not able to see savings for my Kubernetes AutoStopping rules?
+
+The AutoStopping savings calculation occurs every 24 hours. For newly created rules, it may take up to 24 hours to observe any savings. If your rule still lacks any available savings data even after this time period, please consider the following:
+
+* Ensure that the rule has been accessed at least once, and the 'Last Activity' column is populated.
+* Verify the health of your Cloud/Kubernetes connectors."
+
+#### How are we calculating savings for Kubernetes workloads under AutoStopping rules?
+
+The hourly rate for a Kubernetes workload is determined by the cost of the node on which its pods are hosted. The proportion of node cost attributed to each pod may vary.
+
+When a node hosts only a single pod, that pod/workload will bear a larger share of the node cost compared to scenarios where multiple workloads share the same node. Additionally, a long-running pod might accumulate a higher cost compared to a pod that is quickly terminated.
+
+As a result, the 'actual_cost' associated with a workload will fluctuate daily, leading to variations in the hourly rate.
+
+#### Why is the configured Fixed Schedule not working for an AutoStopping rule?
+If your fixed schedule is not operating within the expected time windows or frequencies, please review the following:
+
+* Ensure the correct timezone for the schedule.
+* Check the specified start and end times of the schedule. This configuration is optional and restricts the schedule to run only within this specified window.
+
+
 
 ### Dashboards
 
