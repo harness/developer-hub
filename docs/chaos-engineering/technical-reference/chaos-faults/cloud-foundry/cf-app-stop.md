@@ -8,8 +8,8 @@ CF app stop fault stops a Cloud Foundry app and later starts it up.
 
 ## Use cases
 CF app stop fault:
-- Checks application resilience against abrupt stopping of an application
-- Validates the effectiveness of disaster recovery and high availability of the application
+- Checks app resilience against abrupt stopping
+- Validates the effectiveness of disaster recovery and high availability of the app
 
 ## Fault tunables
 <h3>Mandatory tunables</h3>
@@ -36,8 +36,8 @@ CF app stop fault:
   </tr>
   <tr>
     <td> app </td>
-    <td> The application to be stopped </td>
-    <td> The application must reside within the given organization and space. For example: <code>cf-app</code> </td>
+    <td> The app to be stopped </td>
+    <td> The app must reside within the given organization and space. For example, <code>cf-app</code> </td>
   </tr>
 </table>
 

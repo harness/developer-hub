@@ -24,14 +24,14 @@ Cloud Foundry faults disrupt the Cloud Foundry resources. This deteriorates the 
 
 CF app stop injects app stop chaos for a Cloud Foundry app.
 
-- Checks application resilience against abrupt stopping of an app
+- Checks app resilience against abrupt stopping
 - Helps validate the effectiveness of disaster recovery and high availability of the app
 
 <accordion color="green">
 <summary>Use cases</summary>
 
-- Checks application resilience against abrupt stopping of an application
-- Validate the effectiveness of disaster recovery and high availability of the application
+- Checks app resilience against abrupt stopping
+- Validate the effectiveness of disaster recovery and high availability of the app
 
 </accordion>
 
