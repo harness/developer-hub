@@ -72,9 +72,9 @@ This release does not include early access features.
 
   This issue has been resolved.
 
-  - When you defined runtime inputs for fields for list items in the AWS ASG blue/green deployment step, the deployment dashboard did not show deployment details. (CDS-82383, ZD-51101)
+- When you defined runtime inputs for fields for list items in the AWS ASG blue/green deployment step, the deployment dashboard did not show deployment details. (CDS-82383, ZD-51101)
 
-    This issue has been fixed.
+  This issue has been fixed.
 
 - The GitOps Sync step intermittently failed to check the sync status of the application. (CDS-82230, ZD-52553) 
 
