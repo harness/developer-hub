@@ -29,8 +29,8 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
   </tr>
   <tr>
     <td> networkInterfaces </td>
-    <td> Network interfaces to target as comma separated values. </td>
-    <td> For example: <code>eth0,ens192</code> </td>
+    <td> Network interfaces to target as comma-separated values. </td>
+    <td> For example, <code>eth0,ens192</code> </td>
   </tr>
 </table>
 <h3>Optional tunables</h3>
@@ -42,33 +42,33 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
   </tr>
     <tr>
     <td> destinationHosts </td>
-    <td> List of the target hostnames or keywords. For example: <code>google.com,litmuschaos.io</code> </td>
-    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted </td>
+    <td> List of the target host names or keywords. For example, <code>google.com,litmuschaos.io</code> </td>
+    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, target all hostnames/domains </td>
   </tr>
   <tr>
     <td> destinationIPs </td>
     <td> List of the target IPs. For example: <code>1.1.1.1,8.8.8.8</code> </td>
-    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted</td>
+    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, target all hostnames/domains</td>
   </tr>
   <tr>
     <td> latency </td>
-    <td> Amount of latency to added to connection in ms. For example: <code> 2000 </code> </td>
+    <td> Latency added to the connection (in milliseconds). For example, <code> 2000 </code> </td>
     <td> Defaults to 2000 </td>
   </tr>
   <tr>
     <td> jitter </td>
-    <td> Amount of jitter to be added in ms. Jitter will define the max randomised deviation from the provided latency value. For example: <code> 100 </code> </td>
+    <td> Amount of jitter to be added (in milliseconds). Jitter will define the maximum randomised deviation from the latency value provided. For example, <code> 100 </code> </td>
     <td> Defaults to 0 </td>
   </tr>
   <tr>
     <td> sourcePorts </td>
     <td> Source ports to be filtered for chaos. For example: <code> 5000,8080 </code> </td>
-    <td> Alternatively, the ports can also be filtered to be exempted from chaos i.e. whitelisted. To specify the exemption, prepend a <code>!</code> before the ports list. For example: <code> !5000,8080 </code> </td>
+    <td> Alternatively, the ports can be filtered to exempt from chaos i.e. whitelisted. To specify the exemption, prepend a <code>!</code> before the ports list. For example, <code> !5000,8080 </code> </td>
   </tr>
   <tr>
     <td> destinationPorts </td>
     <td> Destination ports to be filtered for chaos. For example: <code> 5000,8080 </code> </td>
-    <td> Alternatively, the ports can also be filtered to be exempted from chaos i.e. whitelisted. To specify the exemption, prepend a <code>!</code> before the ports list. For example: <code> !5000,8080 </code> </td>
+    <td> Alternatively, the ports can be filtered to exempt from chaos i.e. whitelisted. To specify the exemption, prepend a <code>!</code> before the ports list. For example, <code> !5000,8080 </code> </td>
   </tr>
   <tr>
     <td> duration </td>
@@ -78,7 +78,7 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
   <tr>
     <td> rampTime </td>
     <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Defaults to 0. </td>
+    <td> Default: 0s </td>
   </tr>
 </table>
 
@@ -122,14 +122,14 @@ spec:
     networkInterfaces: "eth0"
 ```
 
-### Source And Destination Ports
+### Source and destination ports
 
-By default, the network experiments disrupt traffic for all the source and destination ports. The interruption of specific port(s) can be tuned via `sourcePorts` and `destinationPorts` inputs.
+By default, the network experiments disrupt traffic for all the source and destination ports. Tune the interruption of specific port(s) using `sourcePorts` and `destinationPorts` inputs.
 
 - `sourcePorts`: It contains ports of the target application, the accessibility to which is impacted
 - `destinationPorts`: It contains the ports of the destination services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted
 
-Use the following example to tune this:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/linux-network-latency/source-and-destination-ports.yaml yaml)
 ```yaml
@@ -147,14 +147,15 @@ spec:
     destinationPorts: "5000,3000"
 ```
 
-### Ignore Source and Destination Ports
+### Ignore source and destination ports
 
-By default, the network experiments disrupt traffic for all the source and destination ports. The specific ports can be ignored via `sourcePorts` and `destinationPorts` inputs.
+By default, the network experiments disrupt traffic for all the source and destination ports. Ignore specific ports using `sourcePorts` and `destinationPorts` inputs.
 
 - `sourcePorts`: Provide the comma separated source ports preceded by `!`, that you'd like to ignore from the chaos.
 - `destinationPorts`: Provide the comma separated destination ports preceded by `!` , that you'd like to ignore from the chaos.
 
-Use the following example to tune this:
+The following YAML snippet illustrates the use of this environment variable:
+
 [embedmd]:# (./static/manifests/linux-network-latency/ignore-source-and-destination-ports.yaml yaml)
 ```yaml
 apiVersion: litmuchaos.io/v1alpha1
