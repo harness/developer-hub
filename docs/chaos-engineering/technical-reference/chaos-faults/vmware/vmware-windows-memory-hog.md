@@ -21,6 +21,8 @@ VMware Windows Memory hog applies stress on the Memory resources on Windows OS b
 - Adequate vCenter permissions should be provided to access the hosts and the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. 
+- Ensure installation of [Testlimit](https://learn.microsoft.com/en-us/sysinternals/downloads/testlimit) on the target VM, a prerequisite for this experiment. Execute the fault using the built-in Administrator user to ensure permissions for memory stress testing. [Instructions to enable the built-in Administrator in Windows](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/enable-and-disable-the-built-in-administrator-account?view=windows-11).
+
 - VM credentials can be passed as secrets or as a chaos enginer environment variable.
 
 ```yaml
@@ -51,6 +53,16 @@ stringData:
         <td> VM_NAME </td>
         <td> Name of the target VM. </td>
         <td> For example, <code>win-vm-1</code> </td>
+      </tr>
+      <tr>
+          <td> VM_USER_NAME </td>
+          <td> Username of the target VM.</td>
+          <td> For example, <code>vm-user</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_PASSWORD </td>
+          <td> User password for the target VM. </td>
+          <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
       </tr>
     </table>
     <h3>Optional fields</h3>
