@@ -178,6 +178,10 @@ Cloud Asset Governance uses pricing from the customer's CUR to calculate savings
 
 Currently, we don't compute or show savings corresponding to custom asset governance rules. We only show savings corresponding to a few out-of-the-box rules, which we have selected for recommendations.
 
+#### Is it possible to visualize the Cloud Asset Governance data on Dashboards?
+
+No. Currently, Asset governance data is not yet available in dashboards.
+
 ### Autostopping
 
 #### If we configure an autostopping rule with multiple instances, but a single routing rule. does the proxy load balance between the instances?
