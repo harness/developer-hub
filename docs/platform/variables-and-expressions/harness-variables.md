@@ -559,22 +559,25 @@ If you wish to concatenate expressions as strings, make sure that each expressio
 
 ### Best practices for expressions usage
 
-- While using `,` inside a method invocation with expression, the expression should be wrapped within quotation marks.
+- When using `,` inside a method invocation with an expression, the expression must be wrapped in quotation marks.
 
-    For eg, consider the following expression:
-    
-  ```<+<+pipeline.variables.var2>.replace("a", "<+pipeline.variables.var1>")>```
+   For example, consider the following expression:
 
-  In above expression `<+pipeline.variables.var1>` must be wrapped within quotation marks as the expression is string parameter for a method
+   ```
+   <+<+pipeline.variables.var2>.replace("a", "<+pipeline.variables.var1>")>
+   ```
 
+   In the above expression, `<+pipeline.variables.var1>` must be wrapped in quotation marks because the expression is string parameter for a method.
 
-- While using expressions in a JSON as string, they should be wrapped within quotation marks to make it a valid json.
+- When using expressions in JSON as a string, they must be wrapped in quotation marks for valid JSON.
 
-    For eg, consider the below json:
+   For example, consider the following JSON:
 
-    ```"{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"```
+   ```json
+   "{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"
+   ```
 
-    In above json, the expression `<+pipeline.variables.version>` needs to be wrapped within quotation marks, as it is a string inside json, while the expression `<+<+pipeline.variables.hosts>.split(\",\")>` doesn't need to be within quotation marks as it will be resolved as a list.
+    In the JSON above, the expression `<+pipeline.variables.version>` must be wrapped in quotation marks because it is a string inside JSON. The expression `<+<+pipeline.variables.hosts>.split(\",\")>` doesn't need to be wrapped in quotation marks because it will be resolved as a list.
 
 
 ## Debugging expressions
