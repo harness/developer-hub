@@ -35,6 +35,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   For runtime inputs, custom dashboards now show resolved trigger expressions instead of the expressions themselves.
 
+### Harness Platform, version 81308
+
+- You can now view **Runtime Usage** for secrets. (PL-39416)
+
+- You can now add custom certificates to delegates by mounting files under `/opt/harness-delegate/ca-bundle/` or mounting a folder to `/opt/harness-delegate/ca-bundle/`. (PL-39971)
+
+  This item is available with Harness Platform version 81308 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ## November 02, 2023
 
