@@ -2221,10 +2221,7 @@ To add an artifact from an S3 bucket, do the following:
     2. in **Region**, select the region where the artifact source is located.
     3. In **Bucket Name**, select the bucket where the artifact is located
     4. In **File path**, enter the path (from the bucket root) and name of the artifact you want to deploy.
-11. Select **Submit**.
-    
-    ![](static/kubernetes-services-13.png)
-    
+11. Select **Submit**.    
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 12. Select **Submit**. The Artifact is added to the Service Definition.
 
