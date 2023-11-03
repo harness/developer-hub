@@ -304,7 +304,6 @@ An example of how the repo-server yaml would look like:
           - entrypoint.sh argocd-repo-server --redis argocd-redis:6379
       env: 
         ... other variables ...
-        name: argocd-repo-server
         - name: HTTPS_PROXY
           value: "http://squid.proxy-test:3128"
         - name: HTTP_PROXY
