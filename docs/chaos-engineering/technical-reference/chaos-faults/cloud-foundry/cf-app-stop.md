@@ -63,6 +63,16 @@ CF app stop fault:
     <td> Skip SSL validation while invoking CF APIs </td>
     <td> Supports <code>true</code> and <code>false</code>. Default: <code>false</code> </td>
   </tr>
+  <tr>
+    <td> duration </td>
+    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
+    <td> Defaults to 30. </td>
+  </tr>
+  <tr>
+    <td> rampTime </td>
+    <td> Period to wait before and after injecting chaos (in seconds). </td>
+    <td> Defaults to 0. </td>
+  </tr>
 </table>
 
 ## CF secrets
