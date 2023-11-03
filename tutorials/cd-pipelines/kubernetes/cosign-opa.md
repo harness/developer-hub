@@ -112,8 +112,7 @@ Pushing signature to: index.docker.io/YOUR_DOCKERHUB_USERNAME/guestbook-dev
 
 Check your image registry and you'll notice two new repositories, each with two digests with different tags. When an image is signed using Cosign, it generates a detached signature for the image. This detached signature is a separate cryptographic file that verifies the authenticity and integrity of the container image. Both the image and its detached signature are pushed to the image registry, ensuring that the signed image and its associated signature are stored together and can be retrieved for verification. This dual-commit process helps maintain the security and trustworthiness of container images within a registry.
 
-## Image verification using Cosign and OPA
-------------------------------------------
+## The goal
 
 Before your developers can deploy the image, add some required plumbing in place so that an image gets verified before deployment. You have three container images for the same guestbook application. Here's an example for these three images and how the digests and annotations compare:
 
@@ -123,6 +122,11 @@ Before your developers can deploy the image, add some required plumbing in place
 | dewandemo/guestbook-dev  | 0.1  | sha256:aa11...9975  | env:dev  | Yes  |
 | dewandemo/guestbook-prod  | 0.1  | sha256:aa11...9975  | env:prod  | Yes  |
 
+Looking at the above example, your goal is to allow the deployment of `dewandemo/guestbook-dev@sha256:aa11...9975` image with an annotation of `env:dev` and deny any other image (the image details will be different for you).
+
+
+## Image verification using Cosign and OPA
+------------------------------------------
 
 From the [**Kubernetes Manifest tutorial**](../kubernetes/manifest.md), you have a stage **deploy-guestbook** within the deployment pipeline **harness_guestbook_pipeline** which has single step **Rollout Deployment**. Add two steps before the **Rollout Deployment** step for image verification using cosign and policy enforcement using open policy agent.
 
@@ -135,7 +139,7 @@ curl -O -L "https://github.com/sigstore/cosign/releases/latest/download/cosign-l
 mv cosign-linux-amd64 /usr/local/bin/cosign
 chmod +x /usr/local/bin/cosign
 
-output=$(cosign verify YOUR_DOCKERHUB_USERNAME/guestbook:0.1 --certificate-identity=YOUR_OIDC_CERTIFICATE_IDENTITY --certificate-oidc-issuer=YOUR_OIDC_ISSUER)
+output=$(cosign verify YOUR_DOCKERHUB_USERNAME/guestbook-dev:0.1 --certificate-identity=YOUR_OIDC_CERTIFICATE_IDENTITY --certificate-oidc-issuer=YOUR_OIDC_ISSUER)
 
 image_registry=$(echo "$output" | awk -F'"docker-reference":"' '{print $2}' | cut -d '"' -f 1)
 image_digest=$(echo "$output" | awk -F'"docker-manifest-digest":"' '{print $2}' | cut -d '"' -f 1)
@@ -144,7 +148,7 @@ image_sign_issuer=$(echo "$output" | awk -F'"Issuer":"' '{print $2}' | cut -d '"
 image_env=$(echo "$output" | awk -F'"env":"' '{print $2}' | cut -d '"' -f 1)
 ```
 
-The first part of this script downloads and installs the cosign tool, the second part stores the response from ‘cosign verify…’ command and the third part parses specific parts of the response as step variables. Define [script output variables](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#script-output-variables) for all 5 output variables. For example, here's how I mapped each bash output variable to a script output variable:
+The first part of this script downloads and installs the cosign tool, the second part stores the response from `cosign verify…` command and the third part parses specific parts of the response as step variables. Define [script output variables](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#script-output-variables) for all 5 output variables. For example, here's how I mapped each bash output variable to a script output variable:
 
 | script output variable  | bash output variable  |
 |---|---|
@@ -161,7 +165,7 @@ The first four variables on this list are used to ensure that the correct image 
 ## Write the policies
 ---------------------
 
-Let's add a [policy step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/add-a-governance-policy-step-to-a-pipeline/) after the **cosign_verify** step (you can call this **opa_enforcement** step). You can define and store policies directly in the OPA service in Harness.
+Let's add a [policy step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/add-a-governance-policy-step-to-a-pipeline/) after the **cosign_verify** step (you can call this **policy_enforcement** step). You can define and store policies directly in the OPA service in Harness.
 
 :::caution
 
@@ -169,65 +173,68 @@ Policy Based Governance is a paid feature on the Harness platform.
 
 :::
 
-From the **Project Setup**, go to **Policies** and create a new policy. Let's call this policy `Check Image Sign`. Policies are written in [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/). Before you write a policy, run the following command and observe the response:
+Policies are written in [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/). Let's create two policies - one to verify image digest and the other to verify the annotation of **env=dev**. From the **Project Setup**, go to **Policies** and create two new policies. Let's call these policies **Check Image Digest** and **Check Environment**. Store both inline so that they are stored within Harness. Here are the policy definitions for both:
 
-```bash
-cosign verify YOUR_DOCKERHUB_USERNAME/guestbook:0.1 --certificate-identity=YOUR_OIDC_CERTIFICATE_IDENTITY --certificate-oidc-issuer=YOUR_OIDC_ISSUER
-```
-
-The response will contain the image digest that you'll need to provide in the following policy:
+**Check Image Digest** policy:
 
 ```rego
 package main
 
-# Define a default decision
-default deny = true
-
-# Deny access if any of the conditions do not match
 deny {
-    not (
-        input.registry == "index.docker.io/YOUR_DOCKERHUB_USERNAME/guestbook" &&
-        input.digest == "sha256:..." &&
-        input.signedMessage == "cosign container image signature" &&
-        input.oidcIssuer == "YOUR_OIDC_ISSUER" &&
-        input.env == "dev"
-    )
+    not input.digest == "YOUR_IMAGE_DIGEST_FOR_GUESTBOOK-DEV"
 }
 ```
 
-Once you add the above to the policy, save this policy. In Harness, you add Rego policies to a Policy Set and when certain events happen (e.g. saving or running a Pipeline), Harness reaches out to the Harness OPA server to evaluate the action using the Policy Set. 
+This Rego policy denies access if the "digest" value in the input data is not "YOUR_IMAGE_DIGEST_FOR_GUESTBOOK-DEV" (be sure to replace with the actual image digest value).
 
-From the **Policies** navigation menu, click on **Policy Sets** and **+ New Policy Set**. Give this policy a name (e.g. `Check Image Sign Policy Set`), select  `harness_guestbook_pipeline` for **Entity Type that this policy set applies to**, and `On Run` for **On what event should the policy set be evaluated**. Click **Next**, select `Check Image Sign` policy, and click **Finish**.
+**Check Environment** policy:
 
-Now, let's go back to the pipeline and click on the **opa_enforcement** step. With all the default settings, select `Check Image Sign Policy Set` for the policy set and add the following in the payload section:
+```rego
+package main
+
+deny {
+    not input.env == "dev"
+}
+```
+
+This Rego policy denies access unless the "env" value in the input data is "dev".
+
+Save both policies. In Harness, you add Rego policies to a Policy Set and when certain events happen (e.g. saving or running a Pipeline), Harness reaches out to the Harness OPA server to evaluate the action using the Policy Set. 
+
+From the **Policies** navigation menu, click on **Policy Sets** and **+ New Policy Set**. Give this policy a name (e.g. `Check Image Sign Policy Set`), select  `harness_guestbook_pipeline` for **Entity Type that this policy set applies to**, and `On Run` for **On what event should the policy set be evaluated**. Click **Next**, select **Check Image Digest** and **Check Environment** policies, and click **Finish**.
+
+Now, let's go back to the pipeline and click on the **policy_enforcement** step. With all the default settings, select `Check Image Sign Policy Set` for the policy set and add the following in the payload section:
 
 ```bash
 {
-    "registry": "<+execution.steps.image_sign_verify.output.outputVariables.sov_image_registry>",
     "digest": "<+execution.steps.image_sign_verify.output.outputVariables.sov_image_digest>",
-    "signedMessage": "<+execution.steps.image_sign_verify.output.outputVariables.sov_image_signed_string>",
-    "oidcIssuer": "<+execution.steps.image_sign_verify.output.outputVariables.sov_image_sign_issuer>",
     "env": "<+execution.steps.image_sign_verify.output.outputVariables.sov_image_env>"
 }
 ```
 
-You'll notice that the parameters within this payload is getting the values from the 5 script output variables defined in the previous step.
+You'll notice that the parameters within this payload is getting the values from the script output variables defined in the previous step.
 
 ## Testing the setup
 
 Now it's time to test and validate this setup. The assumption is that you [forked harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) already. 
 
-For the positive case, update this file `https://github.com/YOUR_GITHUB_USERNAME/harnesscd-example-apps/blob/master/guestbook/guestbook-ui-deployment.yaml` and modify spec.containers.image value with `YOUR_DOCKERHUB_USERNAME/guestbook:0.1`. On your Harness pipeline, the **cosign_verify** step is already checking for this signed container image. Run the pipeline and it should pass. You can click on Project Setup --> Policies --> Evaluations and check out the recent policy evaluation which shows the policy and the payload matches.
+For the positive case, update this file `https://github.com/YOUR_GITHUB_USERNAME/harnesscd-example-apps/blob/master/guestbook/guestbook-ui-deployment.yaml` and modify spec.containers.image value with `YOUR_DOCKERHUB_USERNAME/guestbook-dev:0.1`. On your Harness pipeline, the **cosign_verify** step is already checking for this signed container image. Run the pipeline and both **Check Image Digest** and **Check Environment** policies should pass. You can click on Project Setup --> Policies --> Evaluations and check out the recent policy evaluation which shows the policy and the payload match. The **Rollout Deployment** step will execute and there will be a successful deployment.
 
-For the negative case, update this file `https://github.com/YOUR_GITHUB_USERNAME/harnesscd-example-apps/blob/master/guestbook/guestbook-ui-deployment.yaml` and modify spec.containers.image value with the publicly available and unsigned version of the image `gcr.io/heptio-images/ks-guestbook-demo:0.1`. On your Harness pipeline, update the following line under the **cosign_verify** shell script step:
+You'll do two negative cases - one for the unsigned image (no matching digest) and one for the other signed image (environment not matching). For the unsigned image case, update this file `https://github.com/YOUR_GITHUB_USERNAME/harnesscd-example-apps/blob/master/guestbook/guestbook-ui-deployment.yaml` and modify spec.containers.image value with the publicly available and unsigned version of the image `gcr.io/heptio-images/ks-guestbook-demo:0.1`. On your Harness pipeline, update the following line under the **cosign_verify** shell script step:
 
 ```bash
 output=$(cosign verify gcr.io/heptio-images/ks-guestbook-demo:0.1 --certificate-identity=YOUR_OIDC_CERTIFICATE_IDENTITY --certificate-oidc-issuer=YOUR_OIDC_ISSUER)
 ```
 
-This time, the pipeline should fail since the policy validation will fail due to multiple mismatches between the policy and the payload:
+This time, the policy validation will fail due to multiple mismatches between the policy and the payload resulting in both **Check Image Digest** and **Check Environment** policies to fail. The deployment will not happen as expected.
 
+For the signed image case (different environment), update this file `https://github.com/YOUR_GITHUB_USERNAME/harnesscd-example-apps/blob/master/guestbook/guestbook-ui-deployment.yaml` and modify spec.containers.image value with the other signed version of the image `YOUR_DOCKERHUB_USERNAME/guestbook-prod:0.1`. On your Harness pipeline, update the following line under the **cosign_verify** shell script step:
 
+```bash
+output=$(cosign verify YOUR_DOCKERHUB_USERNAME/guestbook-prod:0.1 --certificate-identity=YOUR_OIDC_CERTIFICATE_IDENTITY --certificate-oidc-issuer=YOUR_OIDC_ISSUER)
+```
+
+This time, the **Check Image Digest** policy will pass since the image digests are the same but the **Check Environment** policy will fail since the annotations are different (**prod** versus **dev**). The deployment will not happen as expected.
 
 ### Congratulations!🎉
 You've just learned how to use **Cosign** and **Open Policy Agent** to sign and verify container images before those are deployed.
