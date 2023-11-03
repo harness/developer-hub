@@ -567,7 +567,7 @@ If you wish to concatenate expressions as strings, make sure that each expressio
    <+<+pipeline.variables.var2>.replace("a", "<+pipeline.variables.var1>")>
    ```
 
-   In the above expression, `<+pipeline.variables.var1>` must be wrapped in quotation marks because the expression is string parameter for a method.
+   In the above expression, `<+pipeline.variables.var1>` must be wrapped in quotation marks because the expression is a string parameter for a method.
 
 - When using expressions in JSON as a string, they must be wrapped in quotation marks for valid JSON.
 
