@@ -8,8 +8,8 @@ CF app stop fault stops a Cloud Foundry app and later starts it up.
 
 ## Use cases
 CF app stop fault:
-- Checks application resilience against abrupt stopping of an app
-- Helps validate the effectiveness of disaster recovery and high availability of the app
+- Checks application resilience against abrupt stopping of an application
+- Validates the effectiveness of disaster recovery and high availability of the application
 
 ## Fault tunables
 <h3>Mandatory tunables</h3>
@@ -27,17 +27,17 @@ CF app stop fault:
   <tr>
     <td> organization </td>
     <td> The organization where the target app resides </td>
-    <td> For example: <code>dev-org</code> </td>
+    <td> For example, <code>dev-org</code> </td>
   </tr>
   <tr>
     <td> space </td>
     <td> The space in which the target app resides </td>
-    <td> The space must reside within the given organization. For example: <code>dev-space</code> </td>
+    <td> The space must reside within the given organization. For example, <code>dev-space</code> </td>
   </tr>
   <tr>
     <td> app </td>
-    <td> The app to be stopped </td>
-    <td> The app must reside within the given organization and space. For example: <code>cf-app</code> </td>
+    <td> The application to be stopped </td>
+    <td> The application must reside within the given organization and space. For example: <code>cf-app</code> </td>
   </tr>
 </table>
 
@@ -54,14 +54,19 @@ CF app stop fault:
     <td> Default: <code>50320</code>. If the default port is unavailable, a random port will be selected in the range of <code>50320-51320</code> </td>
   </tr>
   <tr>
+    <td> duration </td>
+    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
+    <td> Default: 30 s. </td>
+  </tr>
+  <tr>
     <td> skipSSLValidation </td>
     <td> Skip SSL validation while invoking CF APIs </td>
     <td> Supports <code>true</code> and <code>false</code>. Default: <code>false</code> </td>
   </tr>
 </table>
 
-## CF Secrets
-The following Cloud Foundry secrets shall be provided in a file `/etc/linux-chaos-infrastructure/cf.env` in the same machine where the chaos-infrastructure is executing in the following format:
+## CF secrets
+The following Cloud Foundry secrets are provided in the `/etc/linux-chaos-infrastructure/cf.env` file in the same machine where the chaos-infrastructure is executed in the following format:
 
 ```env
 CF_API_ENDPOINT=XXXXXXXXXXXXXXXXXXX
@@ -71,7 +76,7 @@ UAA_SERVER_ENDPOINT=XXXXXXXXXXXXXXX
 ```
 
 :::note
-If the secret file is not provided, then the secrets will be attempted to be derived as environment variables by the fault-injector utility.
+If the secret file is not provided, the secrets will be attempted to be derived as environment variables by the fault-injector utility.
 :::
 
 <table>
@@ -83,29 +88,29 @@ If the secret file is not provided, then the secrets will be attempted to be der
   <tr>
     <td> CF_API_ENDPOINT </td>
     <td> The API endpoint for the CF setup </td>
-    <td> For example: <code>https://api.system.cf-setup.com</code> </td>
+    <td> For example, <code>https://api.system.cf-setup.com</code> </td>
   </tr>
   <tr>
     <td> CF_USERNAME </td>
     <td> The username for the CF user </td>
-    <td> For example: <code>username</code> </td>
+    <td> For example, <code>username</code> </td>
   </tr>
   <tr>
     <td> CF_PASSWORD </td>
     <td> The password for the CF user </td>
-    <td> For example: <code>password</code> </td>
+    <td> For example, <code>password</code> </td>
   </tr>
   <tr>
     <td> UAA_SERVER_ENDPOINT </td>
-    <td> The API endpoint for the UAA server for the CF setup </td>
-    <td> For example: <code>https://uaa.system.cf-setup.com</code> </td>
+    <td> API endpoint for the UAA server for the CF setup </td>
+    <td> For example, <code>https://uaa.system.cf-setup.com</code> </td>
   </tr>
 </table>
 
-## vSphere Secrets
-These secrets are only to be provided if vSphere is being used as the deployment platform for CF.
+## vSphere secrets
+These secrets are provided only if vSphere is used as the deployment platform for CF.
 
-The following vSphere secrets shall be provided in a file `/etc/linux-chaos-infrastructure/vsphere.env` in the same machine where the chaos-infrastructure is executing in the following format:
+The following vSphere secrets are provided in the `/etc/linux-chaos-infrastructure/vsphere.env` file in the same machine where the chaos-infrastructure is executed in the following format:
 
 ```env
 GOVC_URL=XXXXXXXXXXXXXXXXXXXXXX
@@ -131,12 +136,12 @@ VM_PASSWORD=XXXXXXXXXXXXXXXXXXX
   <tr>
     <td> GOVC_USERNAME </td>
     <td> The username for the vSphere user </td>
-    <td> For example: <code>username</code> </td>
+    <td> For example, <code>username</code> </td>
   </tr>
   <tr>
     <td> GOVC_PASSWORD </td>
     <td> The password for the vSphere user </td>
-    <td> For example: <code>password</code> </td>
+    <td> For example, <code>password</code> </td>
   </tr>
   <tr>
     <td> GOVC_INSECURE </td>
@@ -146,17 +151,17 @@ VM_PASSWORD=XXXXXXXXXXXXXXXXXXX
   <tr>
     <td> VM_NAME </td>
     <td> Name of the vSphere VM where the fault-injector utility is installed </td>
-    <td> For example: <code>cf-vm</code> </td>
+    <td> For example, <code>cf-vm</code> </td>
   </tr>
   <tr>
     <td> VM_USERNAME </td>
     <td> The username for the VM guest user </td>
-    <td> For example: <code>root</code> </td>
+    <td> For example, <code>root</code> </td>
   </tr>
   <tr>
     <td> VM_PASSWORD </td>
     <td> The password for the VM guest user </td>
-    <td> For example: <code>password</code> </td>
+    <td> For example, <code>password</code> </td>
   </tr>
 </table>
 
@@ -210,7 +215,7 @@ spec:
 ```
 
 ### Fault injector port
-The `faultInjectorPort` input variable determines the port to be used for the fault-injector local server.
+The `faultInjectorPort` input variable determines the port used for the fault-injector local server.
 
 The following YAML snippet illustrates the use of this environment variable:
 

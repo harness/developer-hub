@@ -30,8 +30,8 @@ CF app stop injects app stop chaos for a Cloud Foundry app.
 <accordion color="green">
 <summary>Use cases</summary>
 
-- Checks application resilience against abrupt stopping of an app
-- Helps validate the effectiveness of disaster recovery and high availability of the app
+- Checks application resilience against abrupt stopping of an application
+- Validate the effectiveness of disaster recovery and high availability of the application
 
 </accordion>
 
