@@ -261,6 +261,14 @@ We display anomalies at the most granular level of the hierarchy and intentional
 
 Before proceeding, please double-check whether you have configured a new connector specifically for that particular cloud service. If you have indeed set up a new connector, please be aware that our machine learning models may not yet have sufficient training data for accurately identifying anomalies. To obtain reliable anomaly results, we typically require a minimum of 14 days' worth of training data.
 
+#### Does Harness fetch correct anomalies for perspectives using cost category rules and groupings by cost categories?
+ 
+No, this feature is not currently supported, but discussions are ongoing to potentially introduce this capability in the future.
+
+#### Does Harness support proactive data feeding for Anomaly Detection as cost usage increases?
+
+No, this functionality is not supported in Harness.
+
 #### Why can't my CCM connector retrieve data from an old billing table?
 
 CCM Connectors, by default, only collect data from billing tables that have had updates within the last 24 hours. If your table hasn't had any updated data within this period, we will skip the collection process.
@@ -280,3 +288,25 @@ Currently, it's only possible to include a custom message in the scheduled deliv
 #### Is it possible to share a dashboard with a person who doesn't have a Harness user?
 
 The sharing option for the Harness dashboard requires selecting a specific user group within Harness itself and defining different levels of access. Therefore, someone who is not part of any group in Harness will not have access to the dashboard.
+
+### Budgets 
+
+#### Do the models used in Harness CCM budgets adjust as we get more cost data?
+
+At present, the models used in Harness CCM budgets do not automatically adjust as more cost data is collected. However, it is on our roadmap to leverage these models for budget-related forecasting in the future.
+
+#### Does Harness allow users to access budgets created in CG within NG?
+
+No, budgets created in CG may lack certain mandatory fields required in NG. In such cases, you will need to delete the old budgets in CG and create new ones in NG to ensure compatibility and functionality.
+
+#### How can users utilize budgets on amortized costs?
+
+Users can configure their perspective to utilize amortized costs through perspective preferences, and the budgets will respect this setting accordingly.
+
+#### Can users create budgets in Harness without including alerts?
+
+Yes, users have the option to create budgets without alerts. However, it is recommended to set up alerts to receive notifications when the cost reaches the defined threshold.
+
+#### Can users view the historical budget over time in Harness without the need to modify it every month?
+
+Yes, users can accomplish this by creating a Yearly budget and selecting the monthly breakdown option. This allows for a historical view without the need for monthly adjustments.
