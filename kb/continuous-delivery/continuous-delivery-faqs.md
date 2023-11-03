@@ -2802,3 +2802,83 @@ curl -i -X GET \
 'https://app.harness.io/v1/orgs/default/projects?has_module=true&page=0&limit=30&sort=name&order=ASC' \
 -H 'Harness-Account: REDACTED' \
 -H 'x-api-key: REDACTED'
+```
+
+#### Does failed deployments auto-rollback on all the failed deployments that have occured ?
+
+No, it does not necessarily mean that deployments auto-roll back. The action taken on failed deployments depends on the specific configuration and practices set up in the deployment pipelines. Organizations can define various actions to take when a failure occurs, including manual intervention, notification, or automatic rollback to a previous working version. If an organization desires more visibility into rollbacks, they can create a dashboard or monitoring system specifically designed to track and display information about rollback events.
+
+#### Is there a way to filter how many of the deployments were to production ?
+
+Yes, we can filter deployments if the environments used for the same are marked as `Prod`
+
+#### Is there an API for Post Production Rollback feature ?
+
+No, we don't have any exposed APIs for Post Production Rollback feature
+Please read more on Post Rollback Deployment in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/manage-deployments/rollback-deployments/)
+
+#### Is there a plan to introduce a `cosign` step within deploy stage ?
+
+For users who wish to incorporate image signing into their Continuous Deployment (CD) process, they have the flexibility to utilize our `container` steps as a solution. This approach allows users to sign images before deploying them as needed, providing a customizable and versatile deployment workflow.
+Please read more on Containerize Step Grpous in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups)
+
+`cosign verify command` is not a popular ask , one can use plugins step and container step to build smaller integrations or hooks into an existing one
+
+#### How can one utilize outputs from the Terraform/Terragrunt apply steps effectively ?
+
+utilizing outputs from Terraform/Terragrunt apply steps follows a similar approach. After executing the Terraform/Terragrunt apply step, the outputs are accessible in the 'Step Output' section. These outputs can be accessed using expressions. For instance, one can access an output using `<+pipeline.stages.stag1.spec.execution.steps.TerraformApply_4.output.get("test-output-name2")>`
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
+
+
+#### Is there a way to ignore a CV step in Next-Gen if it started running ?
+
+No, this feature can be found in First-Gen but it will introduced in Next-Gen soon.
+
+#### Do we have the functionality in NextGen for marking continuous verification errors as "Not a Risk" ?
+
+Yes, it is behind the feature flag `SRM_LOG_FEEDBACK_ENABLE_UI`. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/verify/cv-results/log-feedback/)
+
+#### Is there a way to get the name of the person triggering the execution ?
+
+Yes, one can use the expressions `<+pipeline.triggeredBy.email>` and `<+pipeline.triggeredBy.email>` . Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipelinetriggeredbyname)
+
+#### Does `workflow variables` in Current-Gen work same as `regular platform variables` in Next-Gen ?
+
+One can refer to the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#migrating-firstgen-expressions-to-nextgen)
+
+Please read more on `workflow variables` in the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template/)
+
+Please read more on `regular platform variables` in the following [Documentation](https://developer.harness.io/tutorials/cd-pipelines/variables/)
+
+#### How can multi-service pipelines be executed in parallel as stages while ensuring that users select a single environment for all these parallel stages?
+
+One can use the following expression : `<+pipeline.variables.var_name>`
+
+#### How do we treat sidecars from an ECS licensing perspective?
+
+We calculate the total number of instances that the task spawns, including sidecars. However, we may not count these instances separately if they are associated with the same task.
+
+#### How do we detect service licenses for SSH deployments ?
+
+Please consider the following [Documentation](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#ssh-and-winrm).
+Feel free to reach out to us in case of issues.
+
+#### Does creating a CD stage with cleanup scripts cost usage of license ?
+
+No, It won’t use a license if an artifact isn’t being deployed onto a target host.
+
+#### Is cache intelligence available between CD steps, or just for CI ?
+
+It is only present in CI as caching dependencies needs to build an artifact is a CI only concept.
+
+#### Can we not not use `<+input>.executionInput()`  in the ternary operator to wait for user entry ?
+
+No, this is not possible yet for the excution. We may consider this as Enhancement Request in upcoming future.
+
+#### Do we allow rotation of `harness_platform_token` in teraform resource management ?
+
+No, we don't. Please refer more on this in the Terraform-Harness[Documentation](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_token)
+
+#### What is the time parameter for AWS back-off strategy ?
+
+For AWS back-off strategy, parameters of time are in milliseconds. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#aws-backoff-strategy/)
