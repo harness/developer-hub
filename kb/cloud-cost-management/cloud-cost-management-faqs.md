@@ -261,13 +261,9 @@ We display anomalies at the most granular level of the hierarchy and intentional
 
 Before proceeding, please double-check whether you have configured a new connector specifically for that particular cloud service. If you have indeed set up a new connector, please be aware that our machine learning models may not yet have sufficient training data for accurately identifying anomalies. To obtain reliable anomaly results, we typically require a minimum of 14 days' worth of training data.
 
-#### Does Harness fetch correct anomalies for perspectives using cost category rules and groupings by cost categories?
+#### Does Harness fetch anomalies for perspectives using cost category rules and groupings by cost categories?
  
-No, this feature is not currently supported, but discussions are ongoing to potentially introduce this capability in the future.
-
-#### Does Harness support proactive data feeding for Anomaly Detection as cost usage increases?
-
-No, this functionality is not supported in Harness.
+No, this feature is not currently supported.
 
 #### Why can't my CCM connector retrieve data from an old billing table?
 
