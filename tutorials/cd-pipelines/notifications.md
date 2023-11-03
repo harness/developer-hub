@@ -94,11 +94,6 @@ For steps on creating Microsoft Teams notifications, follow the detailed instruc
 </TabItem>
 <TabItem value="Webhook">
 ```
-:::info
-
-Currently, this feature is behind the feature flag, `PIE_WEBHOOK_NOTIFICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 In Harness you can use webhook notifications to inform an external application of a pipeline/stage event. 
 
