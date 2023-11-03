@@ -50,9 +50,9 @@ We are excited to announce an upcoming Overrides V2 migration aimed at enhancing
 
 ### Further Reading
 
-For those keen to delve deeper and understand more about Override V2, we've got you covered. Here are some additional resources:
+For those keen to delve deeper and understand more about Overrides V2, we've got you covered. Here are some additional resources:
 
-- [Docs on Overrides 2.0](/docs/continuous-delivery/x-platform-cd-features/overrides-v2/)
+- Read the rest of the current document.
 - [API Management of Overrides](https://apidocs.harness.io/tag/ServiceOverrides#operation/createServiceOverride)
 - [Terraform Management of Overrides](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment_service_overrides)
 
