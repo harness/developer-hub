@@ -66,6 +66,6 @@ oc expose service harness-ingress-controller
 
 Below are troubleshooting steps for two common issues you might encounter in your OpenShift environment.
 
-If pods don't load after the Helm installation, find the service account used by the corresponding service in its deployment. Check the OpenShift cluster UI logs and escalate the necessary service account privileges.
+- If pods don't load after the Helm installation, find the service account used by the corresponding service in its deployment. Check the OpenShift cluster UI logs and escalate the necessary service account privileges.
 
-If you receive an ingress 404 default backend, check the ingress configuration in the override file of your service. 
+- If you receive an ingress 404 default backend, check the ingress configuration in the override file of your service. 
