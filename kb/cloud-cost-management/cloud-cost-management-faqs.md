@@ -43,7 +43,7 @@ Yes, we can create a connector without specifying billing details if the billing
 
 #### Does GCP support historical data ingestion from a source located in non US region?
 
-Yes, it does. However, if they have multiple source datasets which are located in non US region then ensure that table names are unique even across the different source datasets.
+Yes, it does. However, if there are multiple source datasets which are located in non-US regions, then ensure that table names are unique even across the different source datasets.
 
 #### In the case of AWS, what should we do if historical cost data is missing from the CUR export (source bucket)?
 
