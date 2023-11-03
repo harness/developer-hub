@@ -43,6 +43,15 @@ export const K8SList: CardItem[] = [
     time: "8min",
     link: "/tutorials/cd-pipelines/kubernetes/ownapp",
   },
+  {
+    title: "Secure Container Image Signing with Cosign and OPA",
+    module: MODULES.cd,
+    icon: "img/icon_cd.svg",
+    description: <>Secure container image signing with Cosign and OPA before Kubernetes deployment.</>,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/cd-pipelines/kubernetes/cosign-opa",
+  },
 ];
 
 export const ServerlessList: CardItem[] = [
