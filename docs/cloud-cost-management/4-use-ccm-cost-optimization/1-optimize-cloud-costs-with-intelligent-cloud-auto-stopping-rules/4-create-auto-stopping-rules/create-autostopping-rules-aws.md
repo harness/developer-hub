@@ -495,4 +495,5 @@ Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](autost
 
 * [Create AutoStopping Rules for a Kubernetes Cluster](create-autostopping-rules-for-kubernetes.md)
 * [Use AutoStopping Rules Summary Page](autostopping-dashboard.md)
+* [Use AutoStopping Proxy as downstream to ALB](create-autostopping-proxy-as-downstream-alb.md)
 
