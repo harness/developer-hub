@@ -168,8 +168,4 @@ You can export your Recommendations as comma-separated values (CSV) files. Expor
 
 4. In **Export rows up to**, enter the number of rows you want exported. The number of rows should be greater than or equal to 1.
 
-#### Export the CSV
-
-Click **Download**.
-
-The file is downloaded to your local computer.
+5. Click **Download**. The file is downloaded to your computer.
