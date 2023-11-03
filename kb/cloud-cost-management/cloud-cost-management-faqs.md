@@ -143,6 +143,44 @@ Then Restore the data
 
 It is up to the user or the use case how much they want to reduce the storage too. Reducing the storage is a manual operation and is not supported via Cloud Custodian at this time.
 
+#### Why doesn't the Workload Recommendation API change the percentile and recommendations based on changes in the time duration?
+
+In UI, If you change the time filter, Recommendation is updated based on histogram values. In REST API response, the `containerRecommendations` field is deprecated, and we reply on `cpuHistogram` and `memoryHistogram` for the recommendation.
+
+#### Why there are very small amount of Workload and Nodepool Recommendation data available for a cluster?
+
+The recommendations for Nodepool and Workload are influenced by both the cluster size and the number of events received from the delegate. Larger cluster sizes increase the likelihood of generating recommendations. Conversely, when the overall cluster spending is relatively low based on the available data in Perspective, it is more likely that we will have fewer recommendations.
+
+#### Why is the CPU utilization data not displaying for EC2 recommendations?
+
+To enable CPU metrics CloudWatch has to be enabled for the AWS account.
+
+To enable Memory metrics cloud watch agent has to be installed on every EC2 instance. you can use the external metrics ingestion feature in AWS to configure the AWS Compute Optimizer to ingest EC2 memory utilization metrics from Datadog, among other observability products like Datadog, Dynatrace, Instana, and New Relic [1](https://docs.aws.amazon.com/compute-optimizer/latest/ug/external-metrics-ingestion.html).
+
+#### Why my service is not coming up when I tried applying Workload Recommendations? It's giving the impression that our recommendations are indicating too low and wrong resources.
+
+The recommendations are categorized as the following:
+
+- Cost Optimized
+- Performance Optimized
+
+Cost Optimized recommendations are computed using the 50th percentile of the CPU samples and memory peaks, this may potentially lead to system performance issues. Before using cost-optimized recommendations, ensure that you evaluate the recommendation's impact thoroughly.
+
+Performance Optimized recommendations are calculated based on the 90th percentiles of CPU samples and memory peaks. The probability of having any effect on the performance is minimum. However, the cost may go high for the resources that are optimized using this method.
+
+Also, do not update `limit` of CPU and Memory manually based on recommended `request` CPU and Memory. The recommended `request` CPU and Memory are computed using 95 percentile CPU/Memory samples.
+
+
+#### Why RDS instance resize recommendation not showing in results?
+
+Right now, the policy only identifies potential RDS instances for resize. Earlier we had a resize action associated with the policy but since it is not currently supported by custodian, we have removed it.
+
+
+
+
+
+
+
 ### Governance
 
 #### When adding Cloud Governance to a previously created cloud cost connector, do we need to add the cloud-governance IAM permissions to the same role we previously created via the cloudFormation template?
