@@ -278,6 +278,42 @@ CCM (Cloud Cost Management) is a standalone product offered by Harness that can 
  
 CCM provides organizations with the ability to monitor, optimize, and manage cloud costs across different cloud providers (such as AWS, Azure, GCP) in a centralized manner. It offers several advantages compared to other competing products.
 
+#### Do we have support for hourly granularity in the Unified Table?
+
+No, hourly granularity is not maintained in the Unified Table. It supported at a daily granularity.
+
+#### How long does it take for cluster utilisation data to appear on the dashboards?
+
+The data on cluster utilisation is collected every 20 minutes and processed hourly on the CCM side. We compute billing charges with hourly and daily granularity based on utilisation data. If you choose the perspective, billing data based on hourly granularity is displayed for the previous seven days' filter. However, if you choose a different period, a daily calculation is used to display the billing data.
+
+#### How long does it take for Recommendations data to appear on the dashboards?
+
+We require a few days of data to provide suggestions during the initial setup because NodePool and Workload recommendations are based on the utilisation statistics from the previous seven days. As soon as data is available, recommendations are created and updated every day using the data from the previous seven days.
+We ingest CUR data from cloud provider once a day. This is employed to accurately estimate the cost of the cluster and the cloud.
+
+#### How long does it take for anomaly data to appear on the dashboards?
+
+The anomaly detection for Cloud and Cluster is done once every day. The Anomaly Detection Service checks for any anomalies in the billing cost once the billing data for the cluster has been computed.
+
+#### Is there support for cost categories in the dashboards?
+
+We have the support to leverage the unified view to attribute costs across clouds and cluster costs.
+
+#### Do we support AutoStopping savings for visualizing in the dashboards?
+
+Yes. Customers should be able to create a dashboard to visualise the savings though the dashboard is not available out of the box.
+
+#### Do we have support for asset goveranance in the dashboards?
+
+No. Asset governance data is not exposed for dashboards yet.
+
+#### Is memory metrics available in our dashboards for virtual machines hosted on AWS, GCP, and Azure?
+
+The memory measurements for AWS EC2 will be displayed in dashboards as part of the inventory functionality if the cloudwatch agent is deployed in the virtual machines.
+As part of the inventory feature for Azure, we have memory measurements for virtual machines.
+We don't have memory measurements for virtual machines on GCP.
+
+
 
 ### Anomalies
 
