@@ -2822,8 +2822,6 @@ Please read more on Post Rollback Deployment in the following [Documentation](ht
 For users who wish to incorporate image signing into their Continuous Deployment (CD) process, they have the flexibility to utilize our `container` steps as a solution. This approach allows users to sign images before deploying them as needed, providing a customizable and versatile deployment workflow.
 Please read more on Containerize Step Grpous in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups)
 
-`cosign verify command` is not a popular ask , one can use plugins step and container step to build smaller integrations or hooks into an existing one
-
 #### How can one utilize outputs from the Terraform/Terragrunt apply steps effectively ?
 
 utilizing outputs from Terraform/Terragrunt apply steps follows a similar approach. After executing the Terraform/Terragrunt apply step, the outputs are accessible in the 'Step Output' section. These outputs can be accessed using expressions. For instance, one can access an output using `<+pipeline.stages.stag1.spec.execution.steps.TerraformApply_4.output.get("test-output-name2")>`
