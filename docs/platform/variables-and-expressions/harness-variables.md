@@ -557,27 +557,25 @@ If you wish to concatenate expressions as strings, make sure that each expressio
 
 :::
 
-### Variable concatenation in Json
-
-While using expressions in a JSON as string, they should be wrapped within quotation marks to make it a valid json. 
-
-For eg, consider the below json:
-
-`"{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"`
-
-In above json, the expression `<+pipeline.variables.version>` needs to be wrapped within quotation marks, as it is a string inside json, while the expression `<+<+pipeline.variables.hosts>.split(\",\")>` doesn't need to be within quotation marks as it will be resolved as a list.
-
 ### Best practices for expressions usage
 
 - While using `,` inside a method invocation with expression, the expression should be wrapped within quotation marks.
 
     For eg, consider the following expression:
     
-  `<+<+pipeline.variables.var2>.replace("a", "<+pipeline.variables.var1>")>`
+  ```<+<+pipeline.variables.var2>.replace("a", "<+pipeline.variables.var1>")>```
 
   In above expression `<+pipeline.variables.var1>` must be wrapped within quotation marks as the expression is string parameter for a method
 
+
 - While using expressions in a JSON as string, they should be wrapped within quotation marks to make it a valid json.
+
+    For eg, consider the below json:
+
+    ```"{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"```
+
+    In above json, the expression `<+pipeline.variables.version>` needs to be wrapped within quotation marks, as it is a string inside json, while the expression `<+<+pipeline.variables.hosts>.split(\",\")>` doesn't need to be within quotation marks as it will be resolved as a list.
+
 
 ## Debugging expressions
 
