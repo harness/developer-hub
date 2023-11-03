@@ -1,5 +1,5 @@
 ---
-title: ECS basic deployments and phased traffic shifting and scaling
+title: ECS basic deployments with phased traffic shifting and scaling
 description: Incrementally deploy your new service using phased traffic shifting and scaling.
 sidebar_position: 4
 ---
