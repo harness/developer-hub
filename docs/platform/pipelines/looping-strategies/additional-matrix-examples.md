@@ -435,5 +435,4 @@ pipeline:
 
 Escaping is required for some punctuation. Note the use of double quotes around the entire object.
 
-Also, when an expression is used in a json string, it needs to be wrapped within quotes. 
-For eg: `<+pipeline.variables.version>` in above pipeline yaml
+Also, when an expression is used in a JSON string, it must be wrapped in quotation marks, for example, `<+pipeline.variables.version>` in the above pipeline YAML.
