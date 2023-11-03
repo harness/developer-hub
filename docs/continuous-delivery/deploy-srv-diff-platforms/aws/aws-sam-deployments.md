@@ -351,6 +351,28 @@ In your Harness Steps, you can update the Container Configuration's Image sectio
 
 Under the AWS SAM Build Command Options, we recommend passing the `--debug` flag. This will help print more verbose errors when troubleshooting failures
 
+```YAML
+                    - step:
+                        type: AwsSamBuild
+                        name: SAM Build
+                        identifier: SAM_Build
+                        spec:
+                          connectorRef: account.harnessImage
+                          image: harnessdev/sam-build:1.82.0-latest 
+                          imagePullPolicy: Always
+                          buildCommandOptions:
+                            - "--use-container"
+                            - "--debug" ## This field needs to be added.
+                            - "--build-image harnessdev/testing:5.6.4" ## This field will need to be added
+                          envVariables:
+                            PLUGIN_SAM_TEMPLATE_FILE_PATH: <+env.name>_template.yaml  
+                          runAsUser: root
+                          samBuildDockerRegistryConnectorRef: account.harnessImage
+                        when:
+                          stageStatus: Success
+                        timeout: 10m
+```
+
 **Question:** What versions of SAM CLI Version are supported by Harness?
 
 - We support SAM CLI Version 1.84.0
@@ -367,6 +389,31 @@ Under the AWS SAM Build Command Options, we recommend passing the `--debug` flag
 --build-image public.ecr.aws/sam/build-nodejs18.x:1.100.0-20231031004056 
 ```
 
+In the Step YAML
+
+```YAML
+                    - step:
+                        type: AwsSamBuild
+                        name: SAM Build
+                        identifier: SAM_Build
+                        spec:
+                          connectorRef: account.harnessImage
+                          image: harnessdev/sam-build:1.82.0-latest
+                          imagePullPolicy: Always
+                          buildCommandOptions:
+                            - "--use-container"
+                            - "--debug"
+                            - "--build-image harnessdev/testing:5.6.4" ## This field will need to be added
+                          envVariables:
+                            PLUGIN_SAM_TEMPLATE_FILE_PATH: <+env.name>_template.yaml  
+                          runAsUser: root
+                          samBuildDockerRegistryConnectorRef: account.harnessImage
+                        when:
+                          stageStatus: Success
+                        timeout: 10m
+```
+
+
 **Question:** Can we fetch Build Images from a Private Repo?
 
 - Yes Harness can fetch your Build Images from a private repo. This will require the user to have the proper permissions configured and the correct user access to the container repo.
@@ -380,6 +427,32 @@ Under the AWS SAM Build Command Options, we recommend passing the `--debug` flag
 - By default, Download Manifests Step downloads your repo in `/harness/MANIFEST_IDENTIFIER/` path which should be `/harness/dev/` in this case.
 - If you have customized the step and the SAM template.yaml exits in the root level directly, AWS SAM outputs won't be available in the root path. You need to make sure  `.aws-sam` should be present  `/harness/dev/` path.
 
+  
+**Question:** How do I pass in the SAM Template path as an environment variable?
 
+- Under the Environment Variables section of the step, you can specify a key and value
+- For the Key, you can provide `PLUGIN_SAM_TEMPLATE_FILE_PATH` and the value can be a `fixed`, `expression` input. 
+
+```YAML
+                    - step:
+                        type: AwsSamBuild
+                        name: SAM Build
+                        identifier: SAM_Build
+                        spec:
+                          connectorRef: account.harnessImage
+                          image: harnessdev/sam-build:1.82.0-latest
+                          imagePullPolicy: Always
+                          buildCommandOptions:
+                            - "--use-container"
+                            - "--debug"
+                            - "--build-image harnessdev/testing:5.6.4"
+                          envVariables:
+                            PLUGIN_SAM_TEMPLATE_FILE_PATH: <+env.name>_template.yaml  ## This field will need to be added
+                          runAsUser: root
+                          samBuildDockerRegistryConnectorRef: account.harnessImage
+                        when:
+                          stageStatus: Success
+                        timeout: 10m
+```
 
 
