@@ -557,6 +557,26 @@ If you wish to concatenate expressions as strings, make sure that each expressio
 
 :::
 
+### Variable concatenation in Json
+
+While using expressions in a json as string, they should be wrapped within quotes to make it a valid json. 
+
+For eg, consider the below json:
+
+`"{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"`
+
+In above json, the expression `<+pipeline.variables.version>` needs to be wrapped within quotes, as it is a string inside json, while the expression `<+<+pipeline.variables.hosts>.split(\",\")>` doesn't need to be within quotes as it will be resolved as a list.
+
+### Best practices for using concatenated expressions
+
+- While using `,` inside a method invocation with expression, the expression should be wrapped within quotes.
+
+    For eg, consider the following expression:
+    
+  `<+<+pipeline.variables.var2>.replace("a", "<+pipeline.variables.var1>")>`
+
+  In above expression `<+pipeline.variables.var1>` must be wrapped within quotes as the expression is string parameter for a method
+
 ## Debugging expressions
 
 :::info note
