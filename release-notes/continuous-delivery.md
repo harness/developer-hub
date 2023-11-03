@@ -46,7 +46,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
-## Latest: November 3, 2023, Harness version 813xx
+## Latest: November 3, 2023, Harness version 81308
 
 ### New features and enhancements
 
@@ -72,9 +72,9 @@ This release does not include early access features.
 
   This issue has been resolved.
 
-- When you defined runtime inputs for fields for list items in the AWS ASG blue/green deployment step, the deployment dashboard did not show deployment details. (CDS-82383, ZD-51101)
+  - When you defined runtime inputs for fields for list items in the AWS ASG blue/green deployment step, the deployment dashboard did not show deployment details. (CDS-82383, ZD-51101)
 
-  This issue has been fixed.
+    This issue has been fixed.
 
 - The GitOps Sync step intermittently failed to check the sync status of the application. (CDS-82230, ZD-52553) 
 
@@ -88,23 +88,25 @@ This release does not include early access features.
 
   This issue has been fixed. The error message has been improved and lists the steps that a TAS pipeline requires.
 
-- You can now execute selected stages executions with only validations running at selected stages in case of no runtime inputs being present in the final selected stages. (CDS-81914) <!-- Needs some improvements. WIP. -->
+- Earlier, when you selected one or more pipeline stages to execute, and those stages did not have runtime inputs, Harness validated all the stages in the pipeline. Harness confined validation to the stages you selected only if the stages had runtime inputs. (CDS-81914)
 
-- Earlier, even though a freeze window was enabled and active and you had configured the **Freeze window is enabled and active** notification setting (`FreezeWindowEnabled` in YAML), Harness users did not receive a *Freeze Active* notification. The issue occurred if you enabled the freeze window when its start time was in the past(meaning the freeze got active as soon as it was enabled). This issue did not occur if the freeze window’s start time was in the future. (CDS-81891, ZD-52835) 
+  The issue of validating all the stages when the selected stages do not have runtime inputs is now fixed.
+
+- Earlier, even though a freeze window was enabled and active and you had configured the **Freeze window is enabled and active** notification setting (`FreezeWindowEnabled` in YAML), Harness users did not receive a *Freeze Active* notification. The issue occurred if you enabled the freeze window when its start time was in the past (meaning that the freeze window became active as soon as you enabled it). This issue did not occur if the freeze window’s start time was in the future. (CDS-81891, ZD-52835) 
 
   This issue has been fixed. Now, a *Freeze Active* notification is sent if you make changes to a freeze window that is enabled and active, provided that the **Freeze window is enabled and active** setting is configured.
 
-- In the script input variable section of a custom artifact source template, if you specified an expression that references a secret (for example, <+secrets.getValue("secret")>), Harness displayed the following message when you clicked the version field: `Something went wrong at our end. Please contact …” (CDS-81724, ZD-52184)
+- Expressions that reference secrets (for example, `<+secrets.getValue("secret")>`) in the input variable sections of custom artifact sources did not resolve.  (CDS-81724, ZD-52184)
 
-  This issue has been fixed. Harness now resolves script input variables that use expressions to reference secrets.
+  This issue has been fixed. 
 
 - Previously, the saved filters dropdown field was limited to displaying only the first 100 filters, which was also the maximum number of filters retrieved. (CDS-81492, ZD-52030)
 
   This issue has been fixed. Harness has introduced infinite scrolling in the dropdown field, thereby allowing it to retrieve the entire list of available filters. 
 
-- A discrepancy exists in the information displayed between the pipeline view and console view of a deployment: the console view displays "No analysis" while the pipeline view displays a more verbose output. Additionally, when an error occurs, the resulting message appears in a small box at the bottom of the console. The box cannot be expanded, and that makes the message difficult to read. (CDS-81291, ZD-52005)
-
-  This issue is now fixed. If an error occurs, the message is displayed at the top of the view for better visibility.
+- A discrepancy existed in the information displayed between the pipeline view and console view of the Verify step in a deployment: the console view displayed “No analysis” while the pipeline view displayed a more verbose output. (CDS-81291, ZD-52005)
+  
+  This issue is now fixed. If an error occurs, the message is displayed at the top of the view.
 
 ## Previous releases
 

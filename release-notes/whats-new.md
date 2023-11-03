@@ -21,7 +21,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## November 3, 2023 
 
-### Continuous Delivery, version 813xx
+### Continuous Delivery, version 81308
 
 - Availability of deployment step group templates in custom stages (CDS-81265)
 
