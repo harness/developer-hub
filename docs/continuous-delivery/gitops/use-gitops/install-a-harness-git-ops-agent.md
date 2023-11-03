@@ -270,7 +270,7 @@ For steps on setting up the mapping and import, go to [Map Argo projects to Harn
 
 The Harness GitOps Agent can work on environments where traffic is routed through a proxy. 
 
-To enable proxy support for the Harness GitOps Agent in environments where traffic is routed through a proxy, configuration is required for two key components: the agent itself and the repo-server. Follow these steps to set up proxy support for both components.
+To enable proxy support for the Harness GitOps Agent in environments where traffic is routed through a proxy, configuration is required for two key components: the `agent itself and the argocd-repo-server. Follow these steps to set up proxy support for both components.
 
 1. **Agent:** Make sure that the agent is running in HTTP mode.  
    To verify, check if the property/config `GITOPS_SERVICE_PROTOCOL` value is set to `HTTP1` in the `configmap({agentname}-agent)` present in the YAML after you create the agent.  
@@ -280,14 +280,58 @@ To enable proxy support for the Harness GitOps Agent in environments where traff
    ```
    localhost,argocd-repo-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST)
    ```
-4. **ArgoCD Repo Server:** Add the following environment variables and relevant proxy details, such as URL, port, and auth details in the `argocd-repo-server` deployment. 
-  ```
-   - name: HTTPS_PROXY
-    value: "http://squid.proxy-test:3128"
-  - name: HTTP_PROXY
-    value: "http://squid.proxy-test:3128"
-  - name: NO_PROXY
-    value: "localhost,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST),({agentname}-agent)"
+4. **ArgoCD Repo Server:** Add the following environment variables and relevant proxy details, such as URL, port, and auth details in the `argocd-repo-server` deployment as well the second initcontainer under the `argocd-repo-server` deployment , namely the `sops-helm-secrets-tool` since it downloads resources from the internet using `wget`. 
+An example of how the repo-server yaml would look like:
+  ```yaml
+  ... rest of the agent YAML ...
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    labels:
+      app.kubernetes.io/component: repo-server
+      app.kubernetes.io/name: argocd-repo-server
+      app.kubernetes.io/part-of: argocd
+
+  ... other objects ...
+
+  spec: 
+    ... other fields ...
+    containers:
+      - command:
+
+          - sh
+          - -c
+          - entrypoint.sh argocd-repo-server --redis argocd-redis:6379
+      env: 
+        ... other variables ...
+        name: argocd-repo-server
+        - name: HTTPS_PROXY
+          value: "http://squid.proxy-test:3128"
+        - name: HTTP_PROXY
+          value: "http://squid.proxy-test:3128"
+        - name: NO_PROXY
+          value: localhost,argocd-repo-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST),({agentname}-agent)
+    initContainers:
+      ... other init containers spec ...
+      - name: sops-helm-secrets-tool
+        image: alpine:latest
+        imagePullPolicy: IfNotPresent
+        command: [ sh, -ec ]
+        env:
+          - name: HELM_SECRETS_VERSION
+            value: 4.4.2
+          - name: KUBECTL_VERSION
+            value: 1.26.7
+          - name: SOPS_VERSION
+            value: 3.7.3
+          - name: HTTPS_PROXY
+            value: "http://squid.proxy-test:3128"
+          - name: HTTP_PROXY
+            value: "http://squid.proxy-test:3128"
+          - name: NO_PROXY
+            value: localhost,argocd-repo-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST),({agentname}-agent)
+
+      .. rest of agent YAML ...
   ``````
   
 ### Proxy setup for testing
