@@ -30,7 +30,7 @@ Linux network corruption injects chaos to disrupt network connectivity on a Linu
   <tr>
     <td> networkInterfaces </td>
     <td> Network interfaces to target as comma separated values. </td>
-    <td> For example, <code>eth0, ens192</code> </td>
+    <td> For example, <code>eth0,ens192</code> </td>
   </tr>
 </table>
 <h3>Optional tunables</h3>
@@ -43,12 +43,12 @@ Linux network corruption injects chaos to disrupt network connectivity on a Linu
   <tr>
     <td> destinationHosts </td>
     <td> List of the target host names or keywords. For example, <code>google.com,litmuschaos.io</code> </td>
-    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, target all host names/domains </td>
+    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is present, the fault injects chaos for all hostnames/domains </td>
   </tr>
   <tr>
     <td> destinationIPs </td>
     <td> List of the target IPs. For example: <code>1.1.1.1,8.8.8.8</code> </td>
-    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, target all host names/domains</td>
+    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted</td>
   </tr>
   <tr>
     <td> packetCorruptionPercentage </td>
