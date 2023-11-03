@@ -206,7 +206,7 @@ CCM provides organizations with the ability to monitor, optimize, and manage clo
 
 #### Do we have support for hourly granularity in the Unified Table?
 
-No, hourly granularity is not maintained in the Unified Table. It is cut short to just the day.
+No, hourly granularity is not maintained in the Unified Table. It supported at a daily granularity.
 
 #### How long does it take for cluster utilisation data to appear on the dashboards?
 
@@ -215,11 +215,11 @@ The data on cluster utilisation is collected every 20 minutes and processed hour
 #### How long does it take for Recommendations data to appear on the dashboards?
 
 We require a few days of data to provide suggestions during the initial setup because NodePool and Workload recommendations are based on the utilisation statistics from the previous seven days. As soon as data is available, recommendations are created and updated every day using the data from the previous seven days.
-Our CUR sync processes retrieve the CUR data from cloudProvider once a day. This is employed to accurately estimate the cost of the cluster and the cloud.
+We ingest CUR data from cloud provider once a day. This is employed to accurately estimate the cost of the cluster and the cloud.
 
 #### How long does it take for anomaly data to appear on the dashboards?
 
-The anomaly detection for Cloud and Cluster is conducted every day. The Anomaly Detection Service checks for any anomalies in the billing cost once the billing data for the cluster has been computed.
+The anomaly detection for Cloud and Cluster is done once every day. The Anomaly Detection Service checks for any anomalies in the billing cost once the billing data for the cluster has been computed.
 
 #### Is there support for cost categories in the dashboards?
 
