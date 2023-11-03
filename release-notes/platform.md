@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-11-02:T10:00:30
+date: 2023-11-03:T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -50,9 +50,9 @@ This release does not include early access features.
 
 - The list delegate groups API (`getDelegateGroupsUsingToken`) now returns a 404 when the delegate token doesn't exist. (PL-41926, ZD-52077)
 
-- When the template variable's value was set to Custom Secret Manager, the secret creation failed. In the API request, the fixed values were not passed because they were inferred in the backend. (PL-42050, ZD-52243)
+- When the template variable's value was set to Custom Secret Manager, the secret creation failed because the fixed values were considered missing because they were not part of the API request. (PL-42050, ZD-52243).
 
-   This issue has been resolved.
+   This issue has been resolved.
 
 - In Harness, users are stored with lowercase email addresses. However, if a user with a different case was sent from the Terraform payload, it didn't match with the stored user in Harness. This caused the removal of the existing user (stored in all lowercase) if the same email address was specified in a different case. To fix this issue, Harness converted the email request payload from Terraform to lowercase. This ensures that the user matches correctly in Harness, as the email is always stored in lowercase. (PL-42074)
 
