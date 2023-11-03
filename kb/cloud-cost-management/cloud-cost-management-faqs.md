@@ -11,6 +11,23 @@ helpdocs_is_published: true
 
 ### Connectors
 
+#### Does Harness support visibility and/or optimisation in AWS China?
+
+No, Harness does not currently support AWS China regions.
+
+#### Upon setting up a new cloud-provider connector, does Harness ingest the entire historical data available at source?
+
+For AWS and Azure, we ingest the entire historical billing data which is present in the source buckets. For GCP, however, we ingest billing data upto a maximum of 180 days in the past from customer's BigQuery dataset.
+
+#### For GCP connector, due to security concerns, can the customer connect only a subset of their GCP billing-export by sharing BigQuery View defined on top of the original billing-export table?
+
+For GCP data ingestion, we only support ingesting data from BigQuery tables i.e. ingestion from Views is not supported. 
+In order to avoid sharing the entire billing-export table for GCP, customer can create a new "table" (instead of View) in their BigQuery dataset which will contain the subset of data that they wish to share with Harness. Customer can use  "BigQuery Scheduled Queries" to keep this new table updated and in sync with the original billing-export table. Here, it is important to ensure that the schema of the new table is the same as the original export.
+
+#### Customer's Azure Storage bucket only allows specific IPs, will CCM's Azure connector require any whitelisting to be able to sync data into Harness?
+
+Yes, in that case, customer will need to whitelist Harness's Cloud-NAT IPs. Customer success team may assist the customer with the required Cloud-NAT IPs to whitelist and raise a ticket to Engineering if needed.
+
 #### Are there any concerns/known issues using only k8 connectors, i.e. not using any cloud connectors? Their primary use case is internal showback and monitoring impacts of k8 infrastructure changes. This setup was working for them, but again looking to eliminate variables that could be causing inconsistencies.
 
 If only the K8S connector is used without a Cloud connector, billing data will be calculated using the Public pricing API. Cloud connectors assist in accurately calculating costs based on the CUR REPORT shared by cloud providers.
