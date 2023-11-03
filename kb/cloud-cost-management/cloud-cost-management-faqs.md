@@ -207,6 +207,17 @@ Yes, we do show the recommendations but action cant be taken from CCM, RDS resiz
 
 Yes, it is possible to do so.
 
+#### I executed a governance rule with an action to save costs (for example, delete). Why do I see the cost savings estimate as $0?
+	
+Cloud Asset Governance uses pricing from the customer's CUR to calculate savings generated. Please check if your cloud spend data is available in Cloud Cost Management Perspectives.
+
+#### I created custom governance rules, but I haven't seen any recommendations generated for them?
+
+Currently, we don't compute or show savings corresponding to custom asset governance rules. We only show savings corresponding to a few out-of-the-box rules, which we have selected for recommendations.
+
+#### Is it possible to visualize the Cloud Asset Governance data on Dashboards?
+
+No. Currently, Asset governance data is not yet available in dashboards.
 
 ### Autostopping
 
