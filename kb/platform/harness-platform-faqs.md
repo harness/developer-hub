@@ -1661,3 +1661,24 @@ JAVA_OPTS='-Xlog:gc*=debug:file=/var/jvm/gc.log'
 #### Can a delegate be connected to first gen and next gen at the same time?
 
 A delegate at one time can be connected to only manager instance. Hence the same delegate can not be connected to both the first gen and next gen instance of the same account.
+
+#### Why is my pipeline, utilizing a shell script step, failing with exit status 1?
+
+Exit status 1 typically indicates a failure of a bash/ sh command. You can try executing this command(s) outside of Harness to verify if the script returns similar behavior. 
+
+#### What does exit status 1 indicate on a failed pipeline?
+
+Please note that exit status 1 indicates a general Linux failure (where exit code 0 would indicate success). If you are seeing the error, it usually indicates that the pipeline has a shell or command step that is failing with the script (bash, winrm, sh..etc). Please check your code and verify if the commands are set properly. 
+
+#### Is my delegate running on my cluster?
+
+You can execute this command '''kubectl describe pods -n <namespace>''' to determine the status of the delegate pods. 
+
+#### What are the benefits of using a username and password for authentication to access a Harness docker repository?
+
+Instead of using anonymous access, using a username and password allows you to bypass the rate limits set by the docker registry. 
+
+
+#### Connector fails with a bad password error, why is this happening? 
+
+It is observed that an expired password secret can cause the connector to fail. Please recreat the secret with a new expire timeframe and this should resolve the failed connector issue. 
