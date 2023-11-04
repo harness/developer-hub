@@ -19,7 +19,16 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
+
 ## November 3, 2023 
+
+### Service Reliability Management, version 1.6.1
+
+- A new search functionality for the service and environment filters drop-down on the Changes page has been introduced. The filters now display a **Search** option when the drop-down list contains more than 10 options. (SRM-15946)
+
+- The maximum number of simple SLOs that can contribute to a composite SLO has been increased from 20 to 30. (SRM-15972)
+
+- Because a majority of change sources are now configured automatically, the behavior on the Change Impact screen has been modified.  Now, when no change event is found in the selected time range, the "No change event" message is displayed instead of "Configure change source”. (SRM-15985)
 
 ### Continuous Delivery, version 81308
 
