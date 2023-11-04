@@ -115,6 +115,50 @@ In AWS, you cannot use cost categories as a dimension in custom dashboards if yo
 
 :::
 
+## Behaviour
+
+Below is the table where we have outlined the contrasting behavior of cost categories in Perspective and Dashboard.
+
+<table width="900" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="300"><b></b></td>
+        <td width="600"><b>Perspective</b></td>
+        <td width="600"><b>Looker/Dashboard</b></td>
+    </tr>
+    <tr>
+        <td>Using and Grouping Cost Category</td>
+        <td>We can utilize cost categories as rules to create perspectives. Additionally, we can perform groupBy operations on any cost category to view the costs associated with each cost bucket.</td>
+        <td>Users have the ability to select the columns on which they want to perform groupBy operations. This allows them to view the costs associated with each cost bucket for a specific cost category.</td>
+    </tr>
+    <tr>
+        <td>Filtering Cost Category</td>
+        <td>Users have the capability to apply filters on cost categories and specific cost buckets they want to see. These filters can be applied either in the rules section or in the filter panel.</td>
+        <td>Users have the flexibility to apply filters on any columns supported in the BigQuery table. This allows them to filter cost categories or cost buckets based on their specific criteria.</td>
+    </tr>
+    <tr>
+        <td>Shared Cost</td>
+        <td>If a shared bucket is specified in the cost category used in rules or groupBy, the cost of the shared bucket will be divided and allocated among the respective cost buckets based on the sharing strategy.</td>
+        <td><font color="red">Not Supported.</font></td>
+    </tr>
+    <tr>
+        <td>Nested Cost Category</td>
+        <td><font color="green">Supported.</font></td>
+        <td><font color="green">Supported.</font></td>
+    </tr>
+    <tr>
+        <td>Cluster Data</td>
+        <td><font color="green">Supported.</font> Users have the capability to create cost categories with cluster rules. These cost categories can be used in cluster perspectives.</td>
+        <td>Not Supported. Currently, we are updating the cost category exclusively for the cloud provider data only.</td>
+    </tr>
+    <tr>
+        <td>Behaviour </td>
+        <td>If there is an update in the cost category rule, we will utilize the updated rules to display the cost accordingly, even for past data.</td>
+        <td>We keep track of cost category changes on a monthly basis and update data accordingly for that month.
+        <br></br>
+        <b>Caveat:</b> For GCP data, we update the data for last 3 days only.</td>
+    </tr>
+</table>
+
 ## See Also
 
 * [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
