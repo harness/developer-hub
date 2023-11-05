@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - October 19, 2023
+## Latest - November 3, 2023
 
 ### New features and enhancements
 
@@ -25,18 +25,81 @@ This release does not include new features.
 
 This release does not include early access features.
 
-### Fixed issues in the Go SDK
+### Fixed issues in the Android SDK
 
-Released Go SDK 0.1.14
+Released Android SDK 1.2.0
 
-- If you provide a custom HTTP client, it will now be used for SSE and Metrics requests
-
-- Provides TLS example for use with with on premises edition
+ - Add dependency-check-gradle to build
+ - Improve logging + Adding SDK error codes
+ - Update SSE implementation
+ - Bump minSdk to 21 and targetSdk to 33
+ - Fixed jsonVariation always returns default value
+ - Update client API code to use latest ff-api definitions
+- Fixed metrics reporting 0 in payload
+- Avoid posting metrics if total evaluation count is 0
+- Add refreshEvaluations
+- Retry on Client Authentication failures
+- Add retry interceptor to authentication by @andybharness in #77
+- Add waitForInit
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
+#### October 31, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Python SDK and .NET SDK
+
+Released Python SDK 1.2.3
+
+- Fixed an issue where `SDKCODE1003` was logged even when `wait_for_initialzation` was not called 
+
+Released .NET SDK 1.2.2
+
+- Fix targets not updating correctly
+- Fix hostname validation on custom TLS certs
+
+#### October 30, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Javascript SDK
+
+Released Javascript SDK 1.20.0
+
+- Deprecated non-supported options
+
+
+#### October 30, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Node SDK
+
+Released Node SDK 1.3.6
+
+- Updated to use Logger for logging instead of console.log
 
 #### October 18, 2023
 
@@ -55,7 +118,6 @@ Released Go SDK 0.1.13
 - Added codes to aid in SKD troubleshooting. [More info in the SDK docs.](https://developer.harness.io/docs/feature-flags/ff-sdks/server-sdks/feature-flag-sdks-go-application/#troubleshooting)
 
 - Enhanced reporting of evaluation errors 
-
 
 #### October 17, 2023
 
