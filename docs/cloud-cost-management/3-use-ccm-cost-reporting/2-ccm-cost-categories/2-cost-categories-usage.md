@@ -148,7 +148,7 @@ Below is the table where we have outlined the contrasting behavior of cost categ
     <tr>
         <td>Cluster Data</td>
         <td><font color="green">Supported.</font> Users have the capability to create cost categories with cluster rules. These cost categories can be used in cluster perspectives.</td>
-        <td>Not Supported. Currently, we are updating the cost category exclusively for the cloud provider data only.</td>
+        <td><font color="red">Not Supported.</font> Currently, we are updating the cost category exclusively for the cloud provider data only.</td>
     </tr>
     <tr>
         <td>Behaviour </td>
