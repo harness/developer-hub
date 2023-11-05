@@ -1437,7 +1437,7 @@ When you initiates an abort for a pipeline task, the expected behavior is to tak
 we have a method, `io.harness.delegate.service.DelegateAgentServiceImpl#abortDelegateTask`, which is used to abort a task. This method typically leverages Thread.interrupt() to initiate the abort process. The key here is to interrupt or cancel the running task effectively.
 An abort could leave the system in a potentially inconsistent or 'dirty' state, it's crucial to consider rollback procedures.
 Delegate actions, such as canceling or ending running tasks, should play a central role in preventing system inconsistencies and maintaining system integrity.
-=======
+
 #### How to automatically start a delegate when running as a Docker container?
 
 Docker provides restart policies to control whether your containers start automatically when they exit, or when Docker restarts. Restart policies start linked containers in the correct order. Docker recommends that you use restart policies, and avoid using process managers to start containers.
@@ -1661,3 +1661,85 @@ JAVA_OPTS='-Xlog:gc*=debug:file=/var/jvm/gc.log'
 #### Can a delegate be connected to first gen and next gen at the same time?
 
 A delegate at one time can be connected to only manager instance. Hence the same delegate can not be connected to both the first gen and next gen instance of the same account.
+
+#### How can we do migration of GCP / AWS KMS secrets from FG to NG ?
+
+To migrate encrypted records from an old KMS (FG) to a new one (NG), fetch the Data Encryption Key (DEK) from the old KMS, decrypt the data, re-encrypt it with the new KMS, update the records, and ensure security and compliance. Connectivity between NG and the old KMS is essential.
+
+#### Is way to find the enabled feature flag and available one in UI?
+
+This feature will be available soon.
+
+#### Do proxy settings apply to both HTTP delegate commands and raw socket connects during capability checks?
+
+Proxy settings typically work for HTTP delegate commands, enabling you to route HTTP traffic through a proxy server. However, in the case of capability checks, such as raw socket connects, proxy settings might not apply.
+`CDS_USE_HTTP_CHECK_IGNORE_RESPONSE_INSTEAD_OF_SOCKET_NG` this feature flag should be enabled to solve the issue.
+
+#### Is it a standard practice to notify you 30 days in advance whenever there are changes to our IP addresses?
+
+We don't change IPs without 30 days notice to you all. If a security emergency requires a change, you will be notified. For more info you can refer [here](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips/#allowlist-harness-saas-ips).
+
+#### Is the FF `PL_ENABLE_MULTIPLE_IDP_SUPPORT` available and enabled to use?
+
+Yes it is enabled, you can refer to [this](https://developer.harness.io/docs/platform/authentication/multiple-identity-providers/#configure-multiple-saml-providers).
+
+#### Do we have an automatic upgrades for ECS delegates?
+
+No, we don't have auto upgrade for docker delegate so far.
+
+#### Do we have any APIs that will provide the vanity url for an account ?
+
+We have API to configure the vanity URL for the account.
+```
+curl --location --request GET 'https://app.harness.io/gateway/api/account/7i5sLmXBSne4D8bPq52bSw' \
+--header 'authority: app.harness.io' \
+--header 'accept: application/json, text/plain, */*' \
+--header 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
+--header 'adrum: isAjax:true' \
+--header 'authorization: Bearer {token}' \
+--header 'cookie: {}' \
+--header 'referer: https://app.harness.io/' \
+--header 'sec-ch-ua: "Chromium";v="118", "Google Chrome";v="118", "Not=A?Brand";v="99"' \
+--header 'sec-ch-ua-mobile: ?0' \
+--header 'sec-ch-ua-platform: "macOS"' \
+--header 'sec-fetch-dest: empty' \
+--header 'sec-fetch-mode: cors' \
+--header 'sec-fetch-site: same-origin'
+```
+You can use this API, this will return complete account details which contains the subdomain URL. 
+You can also refer [here](https://harness.atlassian.net/wiki/spaces/PD/pages/445023689/Vanity+URL+Onboarding) for more details.
+
+#### What needs to follow if the production delegate is down because of using legacy delegate and a old watcher version ?
+
+- Re-deploy legacy delegate by pulling the fresh "latest" image. This will make sure that you get most recent watcher.
+- We can revert the delegate version in the ring to unblock.
+- You can use immutable delegate.
+
+#### What should be possible solution of the error `not supported by windows` while working in CCM POV ?
+
+If this is a mixed node cluster then the delegate needs to run on Linux nodes. You can use selector in your delegate yaml to make sure that Linux nodes are selected. You can refer to this [docs](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/) for more information.
+
+#### Whenever I switch my Harness account, I encounter a login prompt, captcha, and the message `too many invalid login attempts, account blocked`  despite having no invalid login attempts. Why does this happen?
+
+This issue may arise due to several reasons:
+
+- Authentication Requirement: If you are not a part of the Harness Support group, you may need to re-authenticate while switching accounts. This is a standard security measure.
+- Resetting Password: It is possible that when you attempt to reset your password, it only affects the login attempt value in one cluster and not the other one. This discrepancy in the reset process can lead to login issues.
+
+Ensure you are properly authenticated when switching accounts.
+
+#### What is the default limit of QPS?
+
+Default limit of QPS is: 50 QPM per manager* Num of managers(3) =>Total 50*3 QPM = 2.5 QPS.
+
+#### Is there a way to upgrade the volumes created when installing Harness with Helm from gp2 to gp3?
+
+Volume types are controlled by storage class, its not harness controlled.
+You can modify the storage class setting by the [link](https://kubernetes.io/docs/concepts/storage/storage-classes/#aws-ebs) but you would lose the data if aws doesn't support direct upgrade from gp2 to gp3.
+
+#### Is there a plan to integrate Git into our SMP?
+
+Yes, it will be integrated soon.
+
+
+
