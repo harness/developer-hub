@@ -277,6 +277,10 @@ The correct ALB is selected as the load balancer when creating the AutoStopping 
 
 We currently do not support ECS autostopping with NLBs. NLBs operate at layer 4 of the network stack, making it challenging to intercept traffic. To achieve autostopping functionality, you can create a new ALB, set it up as a downstream system for the NLB, and connect your Auto Scaling (AS) group to the ALB. This configuration will enable the desired functionality."
 
+#### What is the expected behaviour of resources managed by an Autostopping rule in Dry Run Mode?
+
+Resources managed by a rule in Dry run mode, will not undergo any "shutdown" or equivalent actions and hence are never stopped by the Autostopping rule. Similarly if the resources are manually "stopped" by the users, they wouldn't be "started" by the rule and will continue to be in the state as set by the users. Hence any resources managed by a rule in Dry Run mode will not be started or stopped by the rule. This mode is used to identify potential savings that can be obtained by enabling Autostopping and also the time periods at which the resources would potentially be stopped or started if it were to be managed by Autostopping.
+
 #### I am unable to add additional RDS instances to an auto-stopping rule, when adding other rule it overrides the existing one.
 
 We do not allow the addition of multiple resources per Rule for RDS and ASG based rules. This is why the selection is represented as a radio button for these types, while VMs, which support multiple resources, are represented with a checkbox.
@@ -301,7 +305,6 @@ If your fixed schedule is not operating within the expected time windows or freq
 
 * Ensure the correct timezone for the schedule.
 * Check the specified start and end times of the schedule. This configuration is optional and restricts the schedule to run only within this specified window.
-
 
 
 ### Dashboards
