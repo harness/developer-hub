@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-10-20T10:00:20
+date: 2023-11-03T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -18,11 +18,16 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest: October 20, 2023, version 1.4.2
+## Latest: November 03, 2023, version 1.6.1
+
 
 ### New features and enhancements
 
-- On the SLO Details page, you can now view the count of contributing SLOs for composite SLOs. This enhancement simplifies the management of composite SLOs. (SRM-15825)
+- A new search functionality for the service and environment filters drop-down on the Changes page has been introduced. The filters now display a **Search** option when the drop-down list contains more than 10 options. (SRM-15946)
+
+- The maximum number of simple SLOs that can contribute to a composite SLO has been increased from 20 to 30. (SRM-15972)
+
+- Because a majority of change sources are now configured automatically, the behavior on the Change Impact screen has been modified.  Now, when no change event is found in the selected time range, the "No change event" message is displayed instead of "Configure change source”. (SRM-15985)
 
 
 ### Early access features
@@ -31,6 +36,62 @@ This release does not include any early access features.
 
 
 ### Fixed issues
+
+This release does not include any fixed issues.
+
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### October 31, 2023, version 1.5.3
+
+
+##### New features and enhancements
+
+- Added the option to set the start month of quarterly Service Level Objectives (SLOs). This enhancement helps you define your SLOs and match them with your organization’s reporting and operational cycles. (SRM-15677)
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+- The Changes page displayed all services and environments associated with an account, regardless of whether they were linked to a monitored service or not. (SRM-15926)
+  
+  This issue has been resolved. Now, the Service and Environment filters on the Changes page display only the services and environments linked to monitored services, whether they are at the account, organization, or project level.
+
+- Simple SLO links on the Composite SLO details page were directing to blank pages. (SRM-15957)
+
+  This issue has been resolved. Simple SLO links on the Composite SLO details page now correctly direct to the appropriate pages.
+
+
+##### Hotfixes
+
+This release does not include hotfixes.
+
+
+#### October 20, 2023, version 1.4.2
+
+##### New features and enhancements
+
+- On the SLO Details page, you can now view the count of contributing SLOs for composite SLOs. This enhancement simplifies the management of composite SLOs. (SRM-15825)
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
 
 - PagerDuty incidents were not captured in the free subscription environment. (SRM-10824)
   
@@ -55,15 +116,9 @@ This release does not include any early access features.
   This issue has been resolved. Now, the SLI iterator correctly handles task creation, preventing unnecessary retries.
 
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 
 #### October 9, 2023, Version 1.3.3

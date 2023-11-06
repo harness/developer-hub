@@ -19,6 +19,7 @@ VMware Windows Blackhole Chaos simulates a network blackhole scenario on Windows
 - Execution plane should be connected to vCenter and host vCenter on port 443. 
 - VMware tool should be installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions should be provided to access the hosts and the VMs.
+- Ensure the firewall is active and permissions to modify its rules are granted. Consider using the built-in Administrator user. [Learn how to enable it in Windows](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/enable-and-disable-the-built-in-administrator-account?view=windows-11).
 - The VM should be in a healthy state before and after injecting chaos.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. 
 - VM credentials can be passed as secrets or as a chaos enginer environment variable.
@@ -52,7 +53,19 @@ stringData:
         <td> Name of the target VM. </td>
         <td> For example, <code>win-vm-1</code> </td>
       </tr>
+      <tr>
+          <td> VM_USER_NAME </td>
+          <td> Username of the target VM.</td>
+          <td> For example, <code>vm-user</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_PASSWORD </td>
+          <td> User password for the target VM. </td>
+          <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
+      </tr>
     </table>
+
+
     <h3>Optional fields</h3>
     <table>
       <tr>

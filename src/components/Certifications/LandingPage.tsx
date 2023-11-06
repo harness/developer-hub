@@ -206,9 +206,13 @@ export default function Certifications() {
                     alt="Developer CCM Badge"
                   />
                 </div>
-                {/* <h5>Coming Soon</h5> */}
-                {/* <div className={styles.unAvailableCerts}>
-                </div> */}
+                <h5>Coming Soon</h5>
+                <div className={styles.unAvailableCerts}>
+                  <img
+                    src={`${baseUrl}img/cert_dev_sto_badge.svg`}
+                    alt="Develop STO Badge"
+                  />
+                </div>
               </div>
             </div>
             <div className={styles.verticalLine}></div>

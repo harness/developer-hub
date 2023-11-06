@@ -18,4 +18,4 @@ This topic defines anonymous users, how their data is handled in Harness Feature
 
 MAUs are defined as unique end users evaluating flags from client-side SDKs (JavaScript, iOS, Android, React, etc.) over a 30-day period. If a user evaluates flags across multiple devices and sessions in a 30-day period, we count this as 1 MAU.
 
-* Anonymous users can be assigned a target ID as any other tatget would, ensuring that multiple visits only account for one MAU. Essentially, you'd create a single target that applies to all of your anonymous traffic, and the anonymous traffic would be counted as one MAU.
+* Anonymous users can be assigned a target ID as any other target would, ensuring that multiple visits only account for one MAU. Essentially, you'd create a single target that applies to all of your anonymous traffic, and the anonymous traffic would be counted as one MAU.

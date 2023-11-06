@@ -50,6 +50,8 @@ The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/
 7. By default, Harness uses the `us-east-1` region to test the credentials for AWS connectors. If you want to use a different region or an AWS GovCloud account, select it in the **Test Region** field. For more information about AWS GovCloud support, go to the [AWS connector settings reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 8. Select **Continue** to proceed to **Select Connectivity Mode**.
 
+### Use IRSA
+
 import IrsaPartial from '/docs/shared/aws-connector-auth-options.md';
 
 <IrsaPartial name="aws-irsa" />

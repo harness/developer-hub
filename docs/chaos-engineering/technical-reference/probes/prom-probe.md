@@ -311,21 +311,21 @@ Alternatively, you have the option to enable the `insecureSkipVerify` check to b
    </td>
    <td>Mandatory
    </td>
-   <td>N/A <code>type: integer</code>
+   <td>N/A <code>type: string</code>
    </td>
    <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data
    </td>
   </tr>
   <tr>
-   <td>retry
+   <td>attempt
    </td>
-   <td>Flag to hold the retry count of the probe
+   <td>Flag to hold the attempt of the probe
    </td>
    <td>Mandatory
    </td>
    <td>N/A <code>type: integer</code>
    </td>
-   <td>The <code>retry</code> contains the number of times a check is re-run upon failure in the first attempt before declaring the probe status as failed.
+   <td>The <code>attempt</code> contains the number of times a check is run upon failure in the previous attempts before declaring the probe status as failed.
    </td>
   </tr>
   <tr>
@@ -335,7 +335,7 @@ Alternatively, you have the option to enable the `insecureSkipVerify` check to b
    </td>
    <td>Mandatory
    </td>
-   <td>N/A <code>type: integer</code>
+   <td>N/A <code>type: string</code>
    </td>
    <td>The <code>interval</code> contains the interval for which probes waits between subsequent retries
    </td>
@@ -347,9 +347,9 @@ Alternatively, you have the option to enable the `insecureSkipVerify` check to b
    </td>
    <td>Optional
    </td>
-   <td>N/A <code>type: integer</code>
+   <td>N/A <code>type: string</code>
    </td>
-   <td>The <code>probePollingInterval</code> contains the time interval for which continuous probe should be sleep after each iteration
+   <td>The <code>probePollingInterval</code> contains the time interval for which continuous and onchaos probe should be sleep after each iteration
    </td>
   </tr>
   <tr>
@@ -385,18 +385,242 @@ probe:
   - name: "check-probe-success"
     type: "promProbe"
     promProbe/inputs:
-      endpoint: "<prometheus-endpoint>"
-      query: "<promql-query>"
+      endpoint: "prometheus-server.prometheus.svc.cluster.local:9090"
+      query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
       comparator:
-        criteria: "==" #supports >=,<=,>,<,==,!= comparison
-        value: "<value-for-criteria-match>"
+        criteria: ">" #supports >=,<=,>,<,==,!= comparison
+        value: "0"
       auth:
         credentials: "base64(<username:password>)"
       tlsConfig:
         insecureSkipVerify: true
     mode: "Edge"
     runProperties:
-      probeTimeout: 5
-      interval: 5
-      retry: 1
+      probeTimeout: 5s
+      interval: 2s
+      attempt: 1
+```
+
+
+### Prometheus Query(query is a simple)
+
+This section holds the PromQL query used to extract the desired Prometheus metrics by executing it on the specified Prometheus endpoint. You can input the Prometheus query in the 'query' field, and this can be initiated by configuring the `.promProbe/inputs.query` field.
+
+Use the following example to tune this:
+
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "check-probe-success"
+        type: "promProbe"
+        promProbe/inputs:
+          # endpoint for the promethus service
+          endpoint: "prometheus-server.prometheus.svc.cluster.local:9090"
+          # promql query, which should be executed
+          query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
+          comparator:
+            # criteria which should be followed by the actual output and the expected output
+            #supports >=,<=,>,<,==,!= comparision
+            criteria: ">" 
+            # expected value, which should follow the specified criteria
+            value: "0"
+        mode: "Edge"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+```
+
+### Prometheus Query(query is a complex)
+
+For intricate queries that extend across multiple lines, you can utilize the 'queryPath' attribute to specify the path to a file containing the query. This file can be accessed by the experiment pod through a ConfigMap resource, with the ConfigMap name defined in either the ChaosEngine or the ChaosExperiment CR. To set this up, configure the `promProbe/inputs.queryPath` field.
+
+Please note that it is mutually exclusive with the 'query' field. If 'query' is specified, it will be used for the query; otherwise, 'queryPath' will be used.
+
+Use the following example to tune this:
+
+```yaml
+# contains the prom probe which execute the query and match for the expected criteria
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "check-probe-success"
+        type: "promProbe"
+        promProbe/inputs:
+          # endpoint for the promethus service
+          endpoint: "prometheus-server.prometheus.svc.cluster.local:9090"
+          # the configMap should be mounted to the experiment which contains promql query
+          # use the mounted path here
+          queryPath: "/etc/config/prometheus-query"
+          comparator:
+            # criteria which should be followed by the actual output and the expected output
+            #supports >=,<=,>,<,==,!= comparision
+            criteria: ">" 
+            # expected value, which should follow the specified criteria
+            value: "0"
+        mode: "Edge"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+```
+
+### Authentication
+
+This establishes a fundamental authentication mechanism for the Prometheus server. The username:password, encoded in base64, should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
+
+It's important to note that `credentials` and `credentialsFile` are two options that cannot be used simultaneously.
+
+Use the following example to tune this:
+
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "check-probe-success"
+        type: "promProbe"
+        promProbe/inputs:
+          # endpoint for the promethus service
+          endpoint: "prometheus-server.prometheus.svc.cluster.local:9090"
+          # promql query, which should be executed
+          query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
+          comparator:
+            # criteria which should be followed by the actual output and the expected output
+            #supports >=,<=,>,<,==,!= comparision
+            criteria: ">" 
+            # expected value, which should follow the specified criteria
+            value: "0"
+          auth:
+            credentials: "base64(<username:password>)"
+        mode: "Edge"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+```
+
+### TLS With Custom Certificates
+
+It offers the mechanism to validate TLS certifications for the Prometheus server. You can supply the `cacert` or the client certificate and client key, to perform the validation.
+
+Use the following example to tune this:
+
+```yaml
+# contains the prom probe which execute the query and match for the expected criteria
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "check-probe-success"
+        type: "promProbe"
+        promProbe/inputs:
+          # endpoint for the promethus service
+          endpoint: "https://prometheus-server.harness.io"
+          # promql query, which should be executed
+          query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
+          comparator:
+            # criteria which should be followed by the actual output and the expected output
+            #supports >=,<=,>,<,==,!= comparision
+            criteria: ">" 
+            # expected value, which should follow the specified criteria
+            value: "0"
+          tlsConfig:
+            caFile: "/etc/config/ca.crt"
+        mode: "Edge"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+```
+
+### TLS Skip Certificate Verification
+
+You can bypass the tls certificate checks by enabling the `insecureSkipVerify` option.
+
+Use the following example to tune this:
+
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "check-probe-success"
+        type: "promProbe"
+        promProbe/inputs:
+          # endpoint for the promethus service
+          endpoint: "https://prometheus-server.harness.io"
+          # promql query, which should be executed
+          query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
+          comparator:
+            # criteria which should be followed by the actual output and the expected output
+            #supports >=,<=,>,<,==,!= comparision
+            criteria: ">" 
+            # expected value, which should follow the specified criteria
+            value: "0"
+          tlsConfig:
+            insecureSkipVerify: true
+        mode: "Edge"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
 ```

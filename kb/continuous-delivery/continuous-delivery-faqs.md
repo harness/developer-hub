@@ -2537,3 +2537,346 @@ We recommend declaring the namespace in the values.yaml using the following expr
 #### What is the most likely cause of a 403 error when using a service account token for a Terraform pipeline?
 
 In most cases, the Terraform script is attempting to assume a role within the delegate, and the permissions associated with the service account are insufficient. Delegates are created with a default service account that lacks IRSA configuration.
+
+
+#### Is user can able to create the input set in different repo and branch from the pipeline?
+No, the input set can only be created in the same repo and branch where the pipeline exist.
+
+#### What this error means "Not found previous successful rollback data, hence skipping rollback" after the executon failure?
+This error means execution can't able to rollback to the preious version becuse there's no successful deployment is there for the pipeline.
+
+#### Can user executes the powershell command on non-default powershell version?
+No, harness only executes the PowerShell script on the default PowerShell terminal of the machine.
+
+#### In the WinRM execution when user tries to execute the command step is skipping in the execution without any condition configurution?
+If the command step is skipping that means you have marked the "Skip instances with the same artifact version already deployed" in Advanced.
+
+#### Can we get details what branch did trigger the pipeline and who did it; the time the pipeline failed or terminated,  while using Microsoft Teams Notification 
+These details are not available by default as only(status, time, pipeline name url etc0 is only sent and if you need these details might ned to use custom shell script
+
+#### How to create role binding (to a usergroup) through the api
+You can use below api by updating the details
+‘’’ https://app.harness.io/authz/api/roleassignments/multi?accountIdentifier=string&orgIdentifier=string&projectIdentifier=string' \ ‘’’ 
+
+#### If there is temporary failure/communication issue for sometime while connecting to service how to make sure step is tried multiple times instead of getting failed with tried once
+You can configure failure strategy and use retry option for multiple run
+
+#### How can we provide more details in approval step for approver
+You can use Include stage execution details in approval option so that approvers get the execution history for this Pipeline. This can help approvers make their decision.
+
+#### I want to run a step always irrespective of failure or success
+You can use conditional execution and configure Always execute this stage
+
+#### How to dynamically generate a tag
+Currently we can not use Harness variable expression for tag
+
+#### Can we change failure strategy while running the execution 
+Yes, you can use failure strategy as runtime input and can select/configure while running the execution 
+
+#### How to pass list of multiple domains for allowing whitelisting while using api ?
+
+Domain whitelisting api takes domain as input array. So if we have multiple domains to be passed this needs to be done as coma separeted string entries in the array. Below is a sample for the same:
+
+```
+curl -i -X PUT \
+  'https://app.harness.io/ng/api/authentication-settings/whitelisted-domains?accountIdentifier=xxxx' \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: REDACTED' \
+  -d '["gmail.com","harness.io"]'
+
+```
+
+#### Can the domain whitelisting api be used for ip allowlist as well?
+
+No, we have a separate ip allowlist api and the domain whitelisting api is very specific to domain whitelisting and does not take ip inputs. Below api should be used for ip allowlist:
+
+```
+v1/ip-allowlist
+```
+
+#### Is there any built-in variable to access one pipeline execution outputs in another pipeline?
+
+The variable access works only in the context of current executing pipelines. We do not have a built-in way to access some other pipeline execution variables from another pipeline.
+
+
+#### How can we utilise output variables from one pipeline execution in another execution?
+
+We have a api which can be used in a shell script step or a http step to make an api call for fetching execution detail of another pipeline `api/pipelines/execution/v2/{planExecutionId}`. If we pass the attribute `renderFullBottomGraph` as true in this api call we get all the variables in the pipeline as response.
+This can later be parsed to get the desired output variables and published accordingly to be used in other steps/pipeline.
+
+
+#### How to know if a connector is failing ?
+
+Currently we do not have a way to notify on connector failure. We do show in the UI if any connector is failing the connection test as we will be testing the connectors at regular interval. 
+We do however have api for testing connectors on demand as well. We can create a cron for our critical connectors test and create a notification through the cron based on the test results.
+
+
+#### What are the options for passing helm flag in first gen?
+
+Helm flags can be passed in first gen at workflow level under "Configure Helm deploy" Option. We can also pass command flags under service inside chart specification option.
+
+
+#### What is the difference between helm flag options at workflow level and sevice level in first gen?
+
+The helm flag configured at workflow level needs to be not command specific otherwise the command can fail. It will also be applied to all the helm commands. The command flag passed at service level are tagged to a specific command. So they will be added only to that specific command. Hence here we can use command specific flags as well.
+
+
+#### Can we block access to only api calls from certain ip ?
+
+The ip allowlist options can be configured optionally for UI and api. If we only want to block api access we need to select only UI option during configruation. This way access to api call from those api range will not be allowed.
+
+
+#### Does Shell Script provisioning step has built in output variables?
+
+Shell Script provoisioning step does not have script output variables similar to shell script step. Their variable configruation step only have option for input variables.
+
+#### How to access output variables from shell provisioning step?
+
+The shell script provisioning step expects the output to be put to a json form inside the file $PROVISIONER_OUTPUT_PATH. This is then subsequently accessed in next step with Instance variable like below
+ 
+`<+pipeline.stages.shellscriptprovision.spec.execution.steps.shell1.output.Instances>`
+
+
+#### Is there a short notation for accessing step output variable within the same stepgroup ?
+
+Within the same step group we can shorten the expression for accessing step variable. A sample expression is below:
+
+`<+stepGroup.steps.step1Identifier.output.outputVariables.myvar>`
+
+#### Is there a short notation for accessing step output variable within same stage and outside of step group?
+
+We can also shorten the expression for accessing output variables of a step inside the step group to be accessed by another step outside the step group. Below is the expression example:
+```
+<+execution.steps.somestepgroup.steps.ShellScript_1.output.outputVariables.myvar>
+```
+
+#### How to use secret identifiers for secret variables?
+
+Secret variables need to select which secret identifier they resolve to. However it allows for use of expression as well. We can have a variable assigned type as expresion and use a runtime input variable in that expression. The runtime input in this secnario will be treated as the secret identifier.
+
+An example expression will be below:
+
+```
+<+<+pipeline.variables.someinput>+"secret">
+
+```
+Here someinput variable can be runtime input and if we need to access a secret with name "devsecret" the input to variable "someinput" should be "dev".
+
+
+#### Can we utilise git connetor to get the file in a shell script step?
+
+We can not reference the connector for git inside the shell script step. If we need to clone a repo we need to use git cli commands. We can however store the credentials for git in harness secretes and reference the secrets for authetication in cli command.
+
+
+#### Can we add two primary artifact in the service?
+
+We can add two primary artifacts in the service however the execution will run with only one primary artifact. At the runtime we need to select which primary artifact the pipeline will run with.
+
+
+#### How to get the kubeconfig that a kubernetes deployment runs with?
+
+The kubernetes cofiguration can be accessed in the same stage the kubernetes deployment ran. To access the configuration we can set the kubeconfig with below environment variable configuration and run the corresponding kubectl commands:
+
+```
+export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}
+kubectl get configmaps
+
+```
+
+#### Do we have a inline values override in next gen? 
+
+We do not have a separate option for inline values yaml override. However in Next gen we allow to use values override from Harness file store. So we can create the values yaml override in harness file store and add it in the values override configruation.
+
+
+#### Does harness give jenkins prompt as well while executing jenkins jobs in pipeline?
+
+The jenkins prompt message are very specific to jenkins environment and the interaction for the prompts need to be done in jenkins itselg. We do not show the same prompt for interaction in pipeline execution.
+
+#### Is there a way to cache terraform plugins for harness terraform pipeline executions?
+
+We can use the caching functionality provided by terraform for this purpose. We need to set the below environment variable for the terraform pipelines:
+
+```
+TF_PLUGIN_CACHE_DIR=/opt/harness-delegate/<plugincachedirectory>
+```
+
+#### Can the name of the yaml file be changed once the remote pipeline is created?
+
+It is possible to change some attributes of git related configuration for the pipeline after creation. It is possible to change the path or name of the yaml file using both harness UI and api.
+
+#### How to get information for user who logged in to Harness platform?
+
+We can get the information for user login from audit log, if this information is needed using api this can be done through audit log api.
+
+
+#### Do we expand variable expression inside single quotes in script step?
+
+Harness expands all the variable expression used inside the script before executing it. Even if it is wrapped around the single quotes it will still be expanded.
+
+#### Is there a way to avoid using helm template command in kubernetes helm deployment?
+
+For kubernetes helm we will always run the template command as this is how we get the rendered manifest. The workflow using kubernetes helm perform the final deployment using the rendered manifest and kubectl commands.
+ 
+If we do not want to use template command we need to be using native helm type of deployment.
+
+#### Is space allowed in variable names?
+
+Space in pipeline variable names does not confirm to the naming convention for the variables used. Varaible names can only contain alphanumerics -, _ and $ . 
+
+#### How to get helm chart version from helm based triggers ?
+
+The helm version is part of the trigger payload. The expression that conatians the helm version is `<+trigger.manifest.version>` .
+
+#### Can we transition to any status in jira using update step?
+
+Jira supports transition to steps as per the workflow defined for the project. Only allowed transition from a specic status to another as per the workflow will be allowed.
+
+#### Can we use stage variable belonging to one stage before the stage execution?
+
+It is not possible to access the stage variable belonging to a stage prior to its execution. It will not be available in context until the stage comes in execution. We should use pipeline variables which has global scope for the pipeline and is available for access from begining of the pipeline.
+
+
+#### What is the correct url format for Azure git repo to be used in git ops repository?
+
+The url format for the Azure git repo to be specified in gitOps repository is below:
+```
+https://someuser@dev.azure.com/someuser/someproject/_git/test.git
+```
+
+#### Is there a way I can create multiple triggers in the same pipeline such that each trigger is registered with a different GitHub repo as a webhook?
+
+Yes, you can create multiple triggers in the same pipeline, each registered with a different GitHub repo as a webhook. To do this, you would create a separate trigger for each GitHub repo, and specify the appropriate repository name and event type for each trigger.
+
+#### I am unable to create secrets starting with numbers in Next Gen?
+
+Naming conventions in Next Gen are consistently applied to all entity types. According to our existing convention, we do not permit identifiers to start with numbers.
+
+#### How do I change the service artifact source based on the environment?
+
+You can use variable expressions in artifact source templates to allow team members to select the repository, path, and tags to use when they run pipelines using artifact source templates. To override service variables at the environment level, you can create environment-level variables and override them for different environments.
+
+#### How can I deploy the application on a custom specified location in the Azure web app?
+
+Currently, we don't have any facility to do the web app deployment in the custom-specified location in Azure. Alternatively, you can use the shell script step and use the Azure CLI to pass the required argument
+
+#### How do I provide runtime input to the custom secret manager (Connector and Template)?
+
+You can set a variable in the custom secret manager and set its value as runtime time.
+
+#### How do I pass secrets into the Container Step?
+
+We got an update from the team that referencing a secret type output variable in a container step or CI steps is not currently supported.
+
+#### Is rotation of harness_platform_token in teraform resource management supported?
+
+No, currently we do not support rotation of platform token.
+
+#### Is it possible to trigger a CI stage by a trigger of type artifact? 
+
+The trigger variables for CI aren't set so historically we did not support triggering of CI stage.
+
+#### Why on echoing the date powershell shell script step adding an extra line?
+
+Using the Write-Host command instead of echo will get the result in one line.
+
+#### How do I access the artifacts metadata from the service definition in the pipeline?
+
+You can get the artifact metadata from the service step output, each output value can be referred to via the corresponding expression.
+
+#### Which API can I use to get the Projects and ORGs on the account?
+
+You should use:
+https://apidocs.harness.io/tag/Organization/#operation/get-organizations for getting organizations within an account. The "org" parameter is an optional parameter
+
+```
+curl -i -X GET \
+'https://app.harness.io/v1/orgs?&page=0&limit=30&sort=name&order=ASC' \
+-H 'Harness-Account: REDACTED' \
+-H 'x-api-key: REDACTED'
+```
+
+Please use https://apidocs.harness.io/tag/Org-Project#operation/get-org-scoped-projects for getting projects scoped to an org.
+
+```
+curl -i -X GET \
+'https://app.harness.io/v1/orgs/default/projects?has_module=true&page=0&limit=30&sort=name&order=ASC' \
+-H 'Harness-Account: REDACTED' \
+-H 'x-api-key: REDACTED'
+```
+
+#### Does failed deployments auto-rollback on all the failed deployments that have occured ?
+
+No, it does not necessarily mean that deployments auto-roll back. The action taken on failed deployments depends on the specific configuration and practices set up in the deployment pipelines. Organizations can define various actions to take when a failure occurs, including manual intervention, notification, or automatic rollback to a previous working version. If an organization desires more visibility into rollbacks, they can create a dashboard or monitoring system specifically designed to track and display information about rollback events.
+
+#### Is there a way to filter how many of the deployments were to production ?
+
+Yes, we can filter deployments if the environments used for the same are marked as `Prod`
+
+#### Is there an API for Post Production Rollback feature ?
+
+No, we don't have any exposed APIs for Post Production Rollback feature
+Please read more on Post Rollback Deployment in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/manage-deployments/rollback-deployments/)
+
+#### Is there a plan to introduce a `cosign` step within deploy stage ?
+
+For users who wish to incorporate image signing into their Continuous Deployment (CD) process, they have the flexibility to utilize our `container` steps as a solution. This approach allows users to sign images before deploying them as needed, providing a customizable and versatile deployment workflow.
+Please read more on Containerize Step Grpous in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups)
+
+#### How can one utilize outputs from the Terraform/Terragrunt apply steps effectively ?
+
+utilizing outputs from Terraform/Terragrunt apply steps follows a similar approach. After executing the Terraform/Terragrunt apply step, the outputs are accessible in the 'Step Output' section. These outputs can be accessed using expressions. For instance, one can access an output using `<+pipeline.stages.stag1.spec.execution.steps.TerraformApply_4.output.get("test-output-name2")>`
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
+
+
+#### Is there a way to ignore a CV step in Next-Gen if it started running ?
+
+No, this feature can be found in First-Gen but it will introduced in Next-Gen soon.
+
+#### Do we have the functionality in NextGen for marking continuous verification errors as "Not a Risk" ?
+
+Yes, it is behind the feature flag `SRM_LOG_FEEDBACK_ENABLE_UI`. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/verify/cv-results/log-feedback/)
+
+#### Is there a way to get the name of the person triggering the execution ?
+
+Yes, one can use the expressions `<+pipeline.triggeredBy.email>` and `<+pipeline.triggeredBy.email>` . Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipelinetriggeredbyname)
+
+#### Does `workflow variables` in Current-Gen work same as `regular platform variables` in Next-Gen ?
+
+One can refer to the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#migrating-firstgen-expressions-to-nextgen)
+
+Please read more on `workflow variables` in the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template/)
+
+Please read more on `regular platform variables` in the following [Documentation](https://developer.harness.io/tutorials/cd-pipelines/variables/)
+
+#### How can multi-service pipelines be executed in parallel as stages while ensuring that users select a single environment for all these parallel stages?
+
+One can use the following expression : `<+pipeline.variables.var_name>`
+
+#### How do we treat sidecars from an ECS licensing perspective?
+
+We calculate the total number of instances that the task spawns, including sidecars. However, we may not count these instances separately if they are associated with the same task.
+
+#### How do we detect service licenses for SSH deployments ?
+
+Please consider the following [Documentation](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#ssh-and-winrm).
+Feel free to reach out to us in case of issues.
+
+#### Does creating a CD stage with cleanup scripts cost usage of license ?
+
+No, It won’t use a license if an artifact isn’t being deployed onto a target host.
+
+#### Is cache intelligence available between CD steps, or just for CI ?
+
+It is only present in CI as caching dependencies needs to build an artifact is a CI only concept.
+
+#### Can we not not use `<+input>.executionInput()`  in the ternary operator to wait for user entry ?
+
+No, this is not possible yet for the excution. We may consider this as Enhancement Request in upcoming future.
+
+#### Do we allow rotation of `harness_platform_token` in teraform resource management ?
+
+No, we don't. Please refer more on this in the Terraform-Harness[Documentation](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_token)
+
+#### What is the time parameter for AWS back-off strategy ?
+
+For AWS back-off strategy, parameters of time are in milliseconds. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#aws-backoff-strategy/)

@@ -22,20 +22,19 @@ By default, the dashboard displays the data for the last 24 hours time period. Y
 Based on the filter settings, the dashboard displays the total number of services being monitored by Continuous Error Tracking and the number of services that have generated new events. An event is considered as new if it is observed for the first time in a monitored service.
 
 
-## View Event List
+## View Events list
 
-The Event List screen displays a summary of the total events, exceptions, log events, HTTP errors, and custom errors. It also displays a list of all the events. Each row provides deep contextual information about the event type, its location in the code, and impact in terms of volume and spread across the service. You can customize the Event List screen using the following filters:
+The Events list screen displays a summary of the total events, exceptions, log events, HTTP errors, and custom errors. It also displays a list of all the events. Each row provides deep contextual information about the event type, its location in the code, and impact in terms of volume and spread across the service.
 
-* **Time period**: Choose a period for which you want to see the events. The default option is **Last 24 hours**.
-* **Deployment version**: Choose a deployment version in order to view the events associated with that specific version.
+You can filter the Events list by time period, services, environments, deployment version, and status.
 
-To view the Event List, do the following:
+To view the Events list, do the following:
 
 1. On the Events dashboard, select a monitored service. The list of events captured by that monitored service is displayed.
 
 ![Events summary page](./static/et-getstarted-event-summary-page.png)
 
-The Event List displays the following information:
+The Events list displays the following information:
 
 * **Type**: Displays the event type. The event type can be one of the following:
   * Caught Exception - Exceptions captured and handled by the user’s service.
@@ -74,4 +73,4 @@ To learn more, go to [Event Distribution Graph](/docs/continuous-error-tracking/
 
 ## Next steps
 
-Get to the root cause of events in production and lower environments using [Automated Root Cause (ARC)](./cet-arc.md).
+- Get to the root cause of events in production and lower environments using [Automated Root Cause (ARC)](./cet-arc.md).
