@@ -577,7 +577,7 @@ If you wish to concatenate expressions as strings, make sure that each expressio
    "{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"
    ```
 
-    In the JSON above, the expression `<+pipeline.variables.version>` must be wrapped in quotation marks because it is a string inside JSON. The expression `<+<+pipeline.variables.hosts>.split(\",\")>` doesn't need to be wrapped in quotation marks because it will be resolved as a list.
+    In the JSON above, the expression `<+pipeline.variables.version>` must be wrapped in quotation marks because it resolves as a string inside JSON (and Strings need to be quoted). The expression `<+<+pipeline.variables.hosts>.split(\",\")>` doesn't need to be wrapped in quotation marks because it will be resolved as a list.
 
 
 ## Debugging expressions
