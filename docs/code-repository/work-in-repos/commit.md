@@ -33,13 +33,31 @@ This topic primarily explains how to work with commits in the Harness Code UI. F
 
 ## Inspect a commit
 
-<!-- changes/diff, inspect files in a commit -->
+When viewing a repository in Harness Code, there are several ways you can inspect commits to get SHAs or view diffs.
 
-When viewing a repository in Harness Code, there are several ways you can switch branches:
+The **Commits** page lists the commit history for a specific branch or tag. The default branch is selected automatically. Select the default branch name to select a different branch or tag, and then select the commit short SHA for the commit you want to inspect.
 
-* Go to **Branches** and select a branch from the list of branches.
-* Go to **Commits**, select the current branch name, and then select a branch from the dropdown menu.
-* Go to **Files**, select the current branch name, and then select a branch from the dropdown menu.
+You can also access commits from these pages:
+
+* On the **Branches** page, select the commit short SHA for the latest commit to that branch.
+* On the **Files** page, select the commit short SHA for the latest commit to each file in the context of the current branch or select the commit short SHA for the latest commit to the branch.
+* When viewing pull requests, the **Commits** tab lists the commits that are included in that PR.
+
+:::tip
+
+Select the **Copy** icon next to a commit's short SHA to copy the full commit SHA.
+
+:::
+
+Upon selecting a short SHA, the **Commits** page opens to the diff view. Here you can compare line-by-line changes in the selected commit, including changes, additions, and deletions.
+
+Select the **Settings** icon to select your preferred **Diff View** and **Line Breaks** options.
+
+Select **Browse files** to view a list of all files in that commit.
+
+<!-- ![](./static/inspect-commit.png) -->
+
+<docimage path={require('./static/inspect-commit.png')} />
 
 ## Revert a commit
 
