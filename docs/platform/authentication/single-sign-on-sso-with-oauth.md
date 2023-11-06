@@ -62,6 +62,10 @@ For the Harness production cluster `prod-3`, the local login URL is `https://app
 
 ![](./static/single-sign-on-sso-with-oauth-121.png)
 
+import Local from '/docs/platform/shared/local-login-note.md'
+
+<Local />
+
 1. Log in using **Harness Local Login**.
 2. Change the settings to enable users to log in.
 
