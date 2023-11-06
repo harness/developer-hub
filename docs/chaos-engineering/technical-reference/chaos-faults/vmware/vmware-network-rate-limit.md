@@ -10,14 +10,14 @@ VMware network rate limit fault injects network rate limit from the VMware VM(s)
 <!-- ![VMware Network Rate Limit](./static/images/vmware-network-rate-limit.png) -->
 
 ## Use cases
-
-- VMware network rate limit simulates issues within the VM network (or microservice) communication across services in different hosts.
-- It determines the impact of degradation while accessing a microservice.
-- It simulates network congestion by artificially limiting the available bandwidth to understand how the system behaves under reduced network capacity.
-- It can assess the impact of network rate limits on the quality of service (QoS) and compliance with service level agreements (SLAs) by observing the system's response time and performance.
-- It can validate whether rate-limiting mechanisms in your application or network infrastructure are functioning correctly and effectively.
-- It can assess how the system performs when network resources are constrained, mimicking real-world scenarios where network connectivity may be compromised during a disaster or outage.
-- It can help determine how the system prioritizes and handles different types of traffic when network rate limits are in place, ensuring that critical services receive preferential treatment.
+VMware network rate limit:
+- Simulates issues within the VM network (or microservice) communication across services in different hosts.
+- Determines the impact of degradation while accessing a microservice.
+- Simulates network congestion by artificially limiting the available bandwidth to understand how the system behaves under reduced network capacity.
+- Helps assess the impact of network rate limits on the quality of service (QoS) and compliance with service level agreements (SLAs) by observing the system's response time and performance.
+- Validates whether rate-limiting mechanisms in your application or network infrastructure are functioning correctly and effectively.
+- Helps assess how the system performs when network resources are constrained, mimicking real-world scenarios where network connectivity may be compromised during a disaster or outage.
+- Determines how the system prioritizes and handles different types of traffic when network rate limits are in place, ensuring that critical services receive preferential treatment.
 
 :::note
 - Kubernetes > 1.16 is required to execute this fault.
@@ -49,7 +49,7 @@ stringData:
       </tr>
       <tr>
         <td> VM_NAMES </td>
-        <td> Names of the target VMs as comma-separated values.</td>
+        <td> Comma-separated names of the target VMs.</td>
         <td> For example, <code> vm-1,vm-2</code>. </td>
       </tr>
       <tr>
@@ -65,7 +65,7 @@ stringData:
       <tr>
         <td> NETWORK_INTERFACE </td>
         <td> Name of the ethernet interface considered for shaping traffic. </td>
-        <td> For example: <code>ens160</code> </td>
+        <td> For example, <code>ens160</code> </td>
       </tr>
     </table>
     <h3>Optional fields</h3>
@@ -92,27 +92,27 @@ stringData:
       </tr>
       <tr>
         <td> BURST </td>
-        <td> Specify the burst for the size of bucket, maximum amount of bytes that tokens can be available for instantaneously. </td>
+        <td> Burst for the size of bucket, that is, the maximum amount of bytes that tokens can be available for instantaneously. </td>
         <td> Defaults to <code>2kb</code>. For more information, go to <a href="#burst"> burst. </a></td>
       </tr>
       <tr>
         <td> LIMIT </td>
-        <td> Specify the limit for the number of bytes that can be queued waiting for tokens to become available. </td>
+        <td> Limit on the number of bytes that can be queued while waiting for tokens to become available. </td>
         <td> Defaults to <code>2kb</code>. For more information, go to <a href="#limit"> limit. </a></td>
       </tr>
       <tr>
         <td> MIN_BURST </td>
-        <td> Specify the size of the peakrate bucket. </td>
-        <td> For example: <code>1kb</code>. </td>
+        <td> Size of the peakrate bucket. </td>
+        <td> For example, <code>1kb</code>. </td>
       </tr>
       <tr>
         <td> PEAK_RATE </td>
-        <td> Specify the maximum depletion rate of the bucket. </td>
-        <td> For example: <code>1mbit</code>. </td>
+        <td> Maximum depletion rate of the bucket. </td>
+        <td> For example, <code>1mbit</code>. </td>
       </tr>
       <tr>
         <td> DESTINATION_IPS </td>
-        <td> IP addresses of the services or pods whose accessibility you want to affect. You can also specify a CIDR block. </td>
+        <td> IP addresses of the services or pods whose accessibility should be affected. You can also specify a CIDR block. </td>
         <td> Comma-separated IPs (or CIDRs) can be provided. If it has not been provided, network chaos is induced on all IPs (or destinations). For more information, go to <a href="#run-with-destination-ips-and-destination-hosts"> run with destination IPs.</a></td>
       </tr>
       <tr>
@@ -162,9 +162,9 @@ stringData:
 
 ### Network bandwidth
 
-It specifies the network bandwidth that is injected to the VM. Tune it by using the `NETWORK_BANDWIDTH` environment variable.
+Network bandwidth injected to the VM. Tune it by using the `NETWORK_BANDWIDTH` environment variable.
 
-Use the following example to tune it:
+Following YAML snippet illustrates the use of this input variable.
 
 [embedmd]:# (./static/manifests/vmware-network-rate-limit/network-bandwidth.yaml yaml)
 ```yaml
@@ -192,9 +192,9 @@ spec:
 
 ### Burst
 
-Specify the burst for the size of bucket, maximum amount of bytes that tokens can be available for instantaneously. Tune it by using the `BURST` environment variable.
+Size of bucket, in bytes. It is the maximum number of bytes for which tokens can be instantaneously available. Tune it by using the `BURST` environment variable.
 
-Use the following example to tune it:
+Following YAML snippet illustrates the use of this input variable.
 
 [embedmd]:# (./static/manifests/vmware-network-rate-limit/burst.yaml yaml)
 ```yaml
@@ -224,9 +224,9 @@ spec:
 
 ### Limit
 
-Specify the limit for the number of bytes that can be queued waiting for tokens to become available. Tune it by using the `LIMIT` environment variable.
+Limit on the number of bytes that can be queued while waiting for tokens to become available. Tune it by using the `LIMIT` environment variable.
 
-Use the following example to tune it:
+Following YAML snippet illustrates the use of this input variable.
 
 [embedmd]:# (./static/manifests/vmware-network-rate-limit/limit.yaml yaml)
 ```yaml
@@ -258,12 +258,12 @@ spec:
 
 ### Run with destination IPs and destination hosts
 
-It specifies the IPs/hosts that interrupt traffic by default. You can tune this using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
+The IPs/hosts that interrupt traffic by default. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
 
-`DESTINATION_IPS`: It contains the IP addresses of the services or the CIDR blocks (range of IPs) that impacts its accessibility.
-`DESTINATION_HOSTS`: It contains the DNS names of the services that impact its accessibility.
+`DESTINATION_IPS`: IP addresses of the services or the CIDR blocks (range of IPs) whose accessibility is impacted. 
+`DESTINATION_HOSTS`: DNS names of the services whose accessibility is impacted.
 
-Use the following example to tune it:
+Following YAML snippet illustrates the use of this input variable.
 
 [embedmd]:# (./static/manifests/vmware-network-rate-limit/destination-host-and-ip.yaml yaml)
 ```yaml
@@ -296,9 +296,9 @@ spec:
 
 ###  Network interface
 
-It specifies the name of the ethernet interface that shapes the traffic. Tune it by using the `NETWORK_INTERFACE` environment variable. Its default value is `eth0`.
+Name of the ethernet interface that shapes the traffic. Tune it by using the `NETWORK_INTERFACE` environment variable. Its default value is `eth0`.
 
-Use the following example to tune it:
+Following YAML snippet illustrates the use of this input variable.
 
 [embedmd]:# (./static/manifests/vmware-network-rate-limit/network-interface.yaml yaml)
 ```yaml
