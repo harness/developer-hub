@@ -27,7 +27,7 @@ title: Chaos faults
 
 ### Linux
 
-### Cloud Foundry
+### Cloud-Foundry
 
 ```mdx-code-block
 </div>
