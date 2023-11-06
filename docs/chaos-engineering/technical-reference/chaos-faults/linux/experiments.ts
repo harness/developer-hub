@@ -51,6 +51,13 @@ export const experiments: ExperimentDetails[] = [
     category: "linux",
   },
   {
+    name: "Linux network rate limit",
+    description:
+      "Linux network duplication injects chaos to cause network connectivity slowness on the Linux machine by rate-limiting the network packets.",
+    tags: ["linux","network","rate-limit"],
+    category: "linux",
+  },
+  {
     name: "Linux process kill",
     description:
       "Linux process kill fault kills the target processes running on Linux machines.",
