@@ -8,7 +8,7 @@ With Harness Code, you can manage branches directly in the Harness Code UI or yo
 
 Branches that you see in Harness Code are your [remote branches](https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches). If you [clone your repo](./clone-repos.md) and create a branch on your local machine, you must publish your local branch to the remote if you want to work with it in Harness Code.
 
-This topic explains how to work with branches in the Harness Code UI. For information about working with branches through command line Git, an IDE, or another local Git SCM tool, refer to the branch-related documentation for your preferred tool.
+This topic explains how to work with branches in the Harness Code UI. For information about working with branches through command line Git, an IDE, or another local Git tool, refer to the branch-related documentation for your preferred tool.
 
 ## Create a branch
 
@@ -55,11 +55,11 @@ Branches are not automatically deleted when you [merge PRs](../pull-requests/mer
 
 :::caution
 
-You can't recover branches deleted directly in Harness Code, as these are your [remote branches](https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches).
+You can't recover branches that are deleted directly in Harness Code because these are your [remote branches](https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches).
 
 If you want to delete a branch that you cloned to your local machine, use command line Git, and IDE, or another tool to manage your local branches.
 
 :::
 
 1. When viewing a repository in Harness Code, go to **Branches**.
-2. On the list of branches, select **More options** (&vellip;) next to the branch you want to delete, and select **Delete**.
+2. Select **More options** (&vellip;) next to the branch you want to delete, and select **Delete**.

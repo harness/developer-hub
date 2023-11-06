@@ -8,7 +8,7 @@ With Harness Code, you can commit directly in the Harness Code UI or you can [cl
 
 Commits you see in the Harness Code UI exist on your remote branches. If you're working from a [local clone](./clone-repos.md), you need to commit and push to the remote to see your changes in Harness Code.
 
-This topic primarily explains how to work with commits in the Harness Code UI. For details about committing, pushing, and reverting with command line Git, an IDE, or another local Git SCM tool, refer to the documentation for your preferred tool.
+This topic primarily explains how to work with commits in the Harness Code UI. For details about committing, pushing, and reverting with command line Git, an IDE, or another local Git tool, refer to the documentation for your preferred tool.
 
 ## Create a commit
 
