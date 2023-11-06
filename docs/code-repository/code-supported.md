@@ -17,7 +17,7 @@ The Harness Code supports these features:
 
 * [Create repositories](./create-repos/create-repo.md)
 * [Collaborate and develop](/docs/category/collaborate-and-develop): Create commits, branches, tags
-   * Clone repositories to work remotely
+   * Clone repositories to work locally
    * Commit, branch, and tag directly in the Harness Platform
 * Create, review, and merge [pull requests](/docs/category/pull-requests)
    * Conduct code reviews

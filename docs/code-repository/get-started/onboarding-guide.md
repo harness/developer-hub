@@ -18,7 +18,7 @@ This guide explains what you need to know to get started with the Harness Code R
 3. Create your first [Harness Code repository](../create-repos/create-repo.md).
 4. Work with your repository as you would in other SCM tools:
 
-   * [Clone your repo to work remotely](../work-in-repos/clone-repos.md).
+   * [Clone your repo to work locally](../work-in-repos/clone-repos.md).
    * [Branch](../work-in-repos/branch.md), [commit](../work-in-repos/commit.md), and [tag](../work-in-repos/tag.md) by command line or directly in the Harness Platform.
    * [Create, review, and merge pull requests](/docs/category/pull-requests). <!-- Maintain code quality: Conduct code reviews, configure status checks, define merge requirements, and select merge strategies. -->
 

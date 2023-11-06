@@ -11,9 +11,9 @@ This topic covers basic terminology and concepts related to the Harness Code Rep
 
 Harness Code is a source code management (SCM) tool. SCM tools are used for [**version control**](https://en.wikipedia.org/wiki/Version_control) or **source control**, which is a software engineering practice that facilitates collaboration and maintenance of code bases. Version control practices help maintain change history, resolve conflicts when multiple people work on the same file, and stage changes for future releases or separate projects. SCM tools often provide mechanism to facilitate peer reviews, approvals, and rollbacks.
 
-## Git
+## Git: Clone, branch, merge, commit, tag, and more
 
-Harness Code provides Git-based repositories. [Git](https://en.wikipedia.org/wiki/Git) is a version control tool characterized by concepts such as cloning, branching, committing, and merging. If you aren't familiar with these concepts, there are many tutorials, courses, and videos online that can introduce you to the basics of Git-based version control.
+Harness Code provides Git-based repositories. [Git](https://en.wikipedia.org/wiki/Git) is a version control tool characterized by concepts such as cloning, branching, committing, and merging. If you aren't familiar with these concepts, there are many tutorials, courses, and videos online that can introduce you to the basics of Git-based version control, in addition to the complete [Git SCM documentation](https://git-scm.com/doc).
 
 ## Pull requests
 
