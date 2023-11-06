@@ -427,7 +427,12 @@ pipeline:
     - name: services
       type: String
       description: ""
-      value: "{\"a\":[ { \"name\": \"svc1\", \"version\": \"1.0.0\" }, { \"name\": \"svc2\", \"version\": \"1.0.2\" }, { \"name\": \"svc3\", \"version\": \"1.0.1\" } ]}"
+      value: "{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\" }, { \"name\": \"svc2\", \"version\": \"1.0.2\" }, { \"name\": \"svc3\", \"version\": \"1.0.1\" } ]}"
+    - name: version
+      type: String
+      value: "1.0.0"
 ```
 
-Escaping is required for some punctuation. Also note the use of double quotes around the entire object.
+Escaping is required for some punctuation. Note the use of double quotes around the entire object.
+
+Also, when an expression is used in a JSON string, it must be wrapped in quotation marks, for example, `<+pipeline.variables.version>` in the above pipeline YAML.
