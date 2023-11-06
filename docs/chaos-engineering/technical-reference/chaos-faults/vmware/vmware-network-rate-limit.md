@@ -6,8 +6,7 @@ VMware network rate limit fault injects network rate limit from the VMware VM(s)
 - This results in flaky access to the application.
 - It checks the performance of the application (or process) running on the VMware VM(s).
 
-
-<!-- ![VMware Network Rate Limit](./static/images/vmware-network-rate-limit.png) -->
+![VMware Network Rate Limit](./static/images/vmware-network-rate-limit.png)
 
 ## Use cases
 
