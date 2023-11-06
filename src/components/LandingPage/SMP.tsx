@@ -58,7 +58,28 @@ export default function SMP() {
             </Link>
           </div>
         </div>
+        <div className={styles.spaceBetween}>
+        <div className={styles.content}>
+          <p>
+          Harness Self-Managed Enterprise Edition is designed to assist developers and DevOps teams in delivering software with maximum speed, quality, security, reliability, and resilience at the lowest possible cost. It helps you stay within the governance boundaries required to achieve organizational objectives.
+          </p>
+          <div className={styles.alignCenter}>
+            <Link
+              className={clsx("button button--lg", styles.btn, styles.btnCI)}
+              to="#all-tutorials"
+            >
+              Tutorials <i className="fa-solid fa-arrow-right"></i>
+            </Link>
+            <Link href="https://harness.io/products/platform">
+              <button className={styles.link}>Learn more</button>
+            </Link>
+          </div>
+        </div>
+        <div>
+          <img src={`${baseUrl}img/platform.svg`} />
+        </div>
       </div>
+    </div>
       <div className={styles.subSection}>
         <h3 id="all-tutorials">All Self-Managed Enterprise Edition Tutorials</h3>
         <TutorialCard FeatureList={SMPList} />

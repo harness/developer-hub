@@ -293,10 +293,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 .</td>
     </tr>
     <tr>
-        <td>PIE_WEBHOOK_NOTIFICATION</td>
-        <td>Enables Webhooks as a notification option.</td>
-    </tr>
-    <tr>
         <td>CDS_RESOLVE_OBJECTS_VIA_JSON_SELECT</td>
         <td>Support resolution of objects via the JSON Select Command in the HTTP step.</td>
     </tr>
