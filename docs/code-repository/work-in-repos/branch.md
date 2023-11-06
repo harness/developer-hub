@@ -51,6 +51,8 @@ For more information about creating and managing PRs, go to [pull requests](/doc
 
 ## Delete a branch
 
+Branches are not automatically deleted when you [merge PRs](../pull-requests/merge-pr.md) in Harness Code. It is a good idea to clean up branches periodically, but make sure you don't delete any active branches or inactive work-in-progress branches.
+
 :::caution
 
 You can't recover branches deleted directly in Harness Code, as these are your [remote branches](https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches).

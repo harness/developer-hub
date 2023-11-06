@@ -5,3 +5,6 @@ sidebar_position: 30
 ---
 
 <!-- How to merge (CLI/GUI), merge strategies, merge requirements, status checks -->
+
+* Cant revert.
+* Branch not auto-deleted.
