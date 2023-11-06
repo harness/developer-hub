@@ -1687,28 +1687,6 @@ Yes it is enabled, you can refer to [this](https://developer.harness.io/docs/pla
 
 No, we don't have auto upgrade for docker delegate so far.
 
-#### Do we have any APIs that will provide the vanity url for an account ?
-
-We have API to configure the vanity URL for the account.
-```
-curl --location --request GET 'https://app.harness.io/gateway/api/account/7i5sLmXBSne4D8bPq52bSw' \
---header 'authority: app.harness.io' \
---header 'accept: application/json, text/plain, */*' \
---header 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
---header 'adrum: isAjax:true' \
---header 'authorization: Bearer {token}' \
---header 'cookie: {}' \
---header 'referer: https://app.harness.io/' \
---header 'sec-ch-ua: "Chromium";v="118", "Google Chrome";v="118", "Not=A?Brand";v="99"' \
---header 'sec-ch-ua-mobile: ?0' \
---header 'sec-ch-ua-platform: "macOS"' \
---header 'sec-fetch-dest: empty' \
---header 'sec-fetch-mode: cors' \
---header 'sec-fetch-site: same-origin'
-```
-You can use this API, this will return complete account details which contains the subdomain URL. 
-You can also refer [here](https://harness.atlassian.net/wiki/spaces/PD/pages/445023689/Vanity+URL+Onboarding) for more details.
-
 #### What needs to follow if the production delegate is down because of using legacy delegate and a old watcher version ?
 
 - Re-deploy legacy delegate by pulling the fresh "latest" image. This will make sure that you get most recent watcher.
