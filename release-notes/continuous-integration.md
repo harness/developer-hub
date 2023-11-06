@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Continuous In
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version 65xx
+## Latest: Version 6501
 
 <!-- Nov 6, 2023 -->
 
@@ -45,14 +45,23 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 ### Early access features
 
-This release does not include early access features.
+#### Delegate selectors for codebase tasks (CI-9980)
+
+:::note
+
+Currently, delegate selectors for CI codebase tasks is behind the feature flag `CI_CODEBASE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Without this feature flag enabled, delegate selectors aren't applied to delegate-related CI codebase tasks.
+
+With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector).
 
 ### Fixed issues
 
 * When you add a [Build stage](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings) to a pipeline, the **Infrastructure** tab is selected by default, rather than the **Execution** tab. (CI-9624)
 * To address potential performance issues, resource consumption logs are now disabled for the `ci-addon` service, and the communication retry internal between the Lite Engine and the `ci-addon` service is now nine seconds. <!-- additional hotfix change behind FF CI_EXTRA_ADDON_RESOURCE --> (CI-10042, ZD-52559)
-
-<!-- not on RN candidate confluence page: (CI-9980 - potentially for SMP. Behind ff to avoid regressions? Added support to route codebase delegate task via the pipeline/connector level delegate selector in CI. This is behind a FF CI_CODEBASE_SELECTOR.) (CI-10055) (CI-9733 - new feature/enhancement?) -->
+* Added a validation to check that codebase configuration details (connector, repo, and so on) are provided if at least one stage in pipeline has [**Clone Codebase** enabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase). (CI-10055)
 
 ## Previous releases
 
