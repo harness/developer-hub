@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-10-16T10:00
+date: 2023-11-06T10:00
 sidebar_position: 2
 ---
 
@@ -11,6 +11,22 @@ Review the notes below to learn about the early access (aka beta) features in Ha
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
+
+## November 06, 2023
+
+### Continuous Integration, version 6501
+
+#### Delegate selectors for codebase tasks (CI-9980)
+
+:::note
+
+Currently, delegate selectors for CI codebase tasks is behind the feature flag `CI_CODEBASE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Without this feature flag enabled, delegate selectors aren't applied to delegate-related CI codebase tasks.
+
+With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector).
 
 ## October 16, 2023
 
