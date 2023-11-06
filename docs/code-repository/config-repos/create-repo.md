@@ -16,7 +16,7 @@ Repositories are where your code is stored. When developers make changes to code
 6. Optionally, you can add a **License**, **.gitignore**, or **README** file to your repository.
 7. Select **Create Repository**.
 
-After creating a repository, you're you can change the name, description, and visibility on the repository's **Settings** page.
+After creating a repository, you're you can change the name, description, visibility, and branch protection rules on the repository's **Settings** page.
 
 ## Import a repository
 
@@ -29,4 +29,5 @@ After creating a repository, you can:
 * [Clone your repository.](../work-in-repos/clone-repos.md)
 * [Create a branch](../work-in-repos/branch.md), [commit changes](../work-in-repos/commit.md), and [open a pull request](/docs/category/pull-requests).
 * [Create tags.](../work-in-repos/tag.md)
+* [Configure branch protection.](./protection-rules.md)
 * [Configure webhooks to automatically trigger CI/CD pipelines.](../pipelines/webhooks.md)

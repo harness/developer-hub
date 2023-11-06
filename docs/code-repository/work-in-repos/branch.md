@@ -29,9 +29,13 @@ Make sure the current branch is the branch that you want to base your new branch
 
 :::
 
+## Protect a branch
+
+For information about branch protection rules, go to [Enable protection rules](../config-repos/protection-rules.md).
+
 ## Switch branches
 
-When viewing a repository in Harness Code, there are several ways you can switch branches:
+When viewing a repository in Harness Code, most pages initially show the default branch. There are several ways you can switch branches:
 
 * Go to **Branches** and select a branch from the list of branches.
 * Go to **Commits**, select the current branch name, and then select a branch from the dropdown menu.
@@ -42,7 +46,7 @@ When viewing a repository in Harness Code, there are several ways you can switch
 You can [create a pull request (PR)](../pull-requests/create-pr.md) by comparing branches.
 
 1. When viewing a repository in Harness Code, go to **Branches**.
-2. On the list of branches, locate the **Compare branch**. This is the branch that you want to merge into your base branch (or another branch).
+2. On the list of branches, locate your *compare branch*. This is the branch that you want to merge into your base branch (or another branch).
 3. Select **More options** (&vellip;) next to the compare branch, and select **Compare**.
 4. Enter a PR **Title** and optional **Description**.
 5. Select **Create pull request**.
@@ -51,7 +55,7 @@ For more information about creating and managing PRs, go to [pull requests](/doc
 
 ## Delete a branch
 
-Branches are not automatically deleted when you [merge PRs](../pull-requests/merge-pr.md) in Harness Code. It is a good idea to clean up branches periodically, but make sure you don't delete any active branches or inactive work-in-progress branches.
+By default, branches are not automatically deleted when you [merge PRs](../pull-requests/merge-pr.md) in Harness Code. It is a good idea to clean up branches periodically, but make sure you don't delete any active branches or inactive work-in-progress branches.
 
 :::caution
 
@@ -63,3 +67,9 @@ If you want to delete a branch that you cloned to your local machine, use comman
 
 1. When viewing a repository in Harness Code, go to **Branches**.
 2. Select **More options** (&vellip;) next to the branch you want to delete, and select **Delete**.
+
+:::tip
+
+You can [enable protection rules](../config-repos/protection-rules.md) to automatically delete branches when PRs are merged.
+
+:::

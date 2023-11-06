@@ -4,7 +4,7 @@ description: Clone your Harness Code repos to your local machine
 sidebar_position: 10
 ---
 
-After [creating a repository](../create-repos/create-repo.md), you can work directly in the Harness Code UI or you can clone your repo to your local machine and use your favorite IDE.
+After [creating a repository](../config-repos/create-repo.md), you can work directly in the Harness Code UI or you can clone your repo to your local machine and use your favorite IDE.
 
 ## Clone over HTTPS
 
@@ -24,4 +24,4 @@ After [creating a repository](../create-repos/create-repo.md), you can work dire
 
    When cloning the repository, you will be prompted for your Harness user name and the API token, which were shown when you generated clone credentials.
 
-5. Once cloned locally, you can work with your Harnes Code repository as you would with other Git repositories, by creating commits, pushing to the remote, pulling changes, and more.
+5. Once cloned locally, you can work with your Harness Code repository as you would with other Git repositories, by creating commits, pushing to the remote, pulling changes, and more.
