@@ -44,7 +44,7 @@ This guide describes the steps a Harness account admin can take to set up the ID
 ![](static/ind_sel.png)
 ![](static/sample_flow.png)
 
-## Connector Setup:
+## Connector Setup
 
 7. Connector setup -
 
@@ -59,7 +59,7 @@ This guide describes the steps a Harness account admin can take to set up the ID
 ![](static/connection_successful.png)
 ![](static/api_access.png)
 
-## Create/Register Entities
+## Create and Register Entities
 
 8. Details on where the entities will be created in git -
 
