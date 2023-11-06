@@ -35,13 +35,15 @@ This topic primarily explains how to work with commits in the Harness Code UI. F
 
 When viewing a repository in Harness Code, there are several ways you can inspect commits to get SHAs or view diffs.
 
-The **Commits** page lists the commit history for a specific branch or tag. The default branch is selected automatically. Select the default branch name to select a different branch or tag, and then select the commit short SHA for the commit you want to inspect.
-
-You can also access commits from these pages:
-
-* On the **Branches** page, select the commit short SHA for the latest commit to that branch.
-* On the **Files** page, select the commit short SHA for the latest commit to each file in the context of the current branch or select the commit short SHA for the latest commit to the branch.
-* When viewing pull requests, the **Commits** tab lists the commits that are included in that PR.
+* The **Commits** page lists the commit history for a specific branch or tag.
+   * You can select a commit's short SHA to inspect that commit.
+   * The default branch is selected automatically. Select the default branch name to select a different branch or tag.
+   * If a commit was part of a PR, the PR number is listed on next to the commit message. You can select the PR number to view that PR.
+* The **Branches** page shows the short SHA for the latest commit for each branch. Select the short SHA to inspect the commit.
+* The **Files** page shows the short SHA and commit message for the latest commit to each file in the context of the current branch or tag, as well as the short SHA for the latest commit to the branch or tag.
+   * You can select a commit's short SHA to inspect that commit.
+   * If a commit was part of a PR, the PR number is listed on next to the commit message in the files list. You can select the PR number to view that PR.
+* When reviewing a pull request, the **Commits** tab lists the commits that are included in that PR.
 
 :::tip
 
