@@ -101,7 +101,7 @@ import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
     - Custom Artifact Source
     - Google Artifact Registry
     - Github Package Registry
-    - Nexus 3
+    - Nexus 3 (Sonatype 3.50.0 and previous supported)
     - Artifactory
 
 For details on what you can deploy, go to [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes).
@@ -209,7 +209,7 @@ To use an AKS cluster for deployment, the AKS cluster parameter `disableLocalAcc
     - Custom Artifact Source
     - Google Artifact Registry
     - Github Package Registry
-    - Nexus 3
+    - Nexus 3 (Sonatype 3.50.0 and previous supported)
     - Artifactory
 
 ### Notes
@@ -246,7 +246,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
     - Azure Container Registry
     - Custom Artifact Source
     - Github Package Registry
-    - Nexus 3
+    - Nexus 3 (Sonatype 3.50.0 and previous supported)
     - Artifactory
 
 </details>
@@ -694,7 +694,7 @@ All artifact sources are covered in [CD artifact sources](/docs/continuous-deliv
 - AWS S3
 - Azure Container Registry (ACR)
 - Azure DevOps Artifacts
-- Nexus 2 and 3
+- Nexus 2 and Nexus 3 (Sonatype 3.50.0 and previous supported)
 - Artifactory
 - Jenkins
 - Bamboo
