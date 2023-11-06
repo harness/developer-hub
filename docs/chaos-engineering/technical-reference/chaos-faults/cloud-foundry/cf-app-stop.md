@@ -2,17 +2,17 @@
 id: cf-app-stop
 title: CF app stop
 ---
-CF app stop fault stops a Cloud Foundry app and later starts it up.
+CF app stop fault stops a Cloud Foundry app and later starts it.
 
 ![CF App Stop](./static/images/cf-app-stop.png)
 
 ## Use cases
 CF app stop fault:
-- Checks app resilience against abrupt stopping
-- Validates the effectiveness of disaster recovery and high availability of the app
+- Checks app resilience against abrupt stopping.
+- Validates the effectiveness of disaster recovery and high availability of the app.
 
 ## Fault tunables
-<h3>Mandatory tunables</h3>
+<h3>Mandatory fields</h3>
 <table>
   <tr>
     <th> Tunable </th>
@@ -21,17 +21,17 @@ CF app stop fault:
   </tr>
   <tr>
     <td> cfDeploymentPlatform </td>
-    <td> Deployment platform used for cloud-foundry, with respect to where the infrastructure is executing </td>
+    <td> Deployment platform used for cloud foundry, with respect to where the infrastructure is executing </td>
     <td> Supports <code>local</code> and <code>vSphere</code> </td>
   </tr>
   <tr>
     <td> organization </td>
-    <td> The organization where the target app resides </td>
+    <td> Organization where the target app resides </td>
     <td> For example, <code>dev-org</code> </td>
   </tr>
   <tr>
     <td> space </td>
-    <td> The space in which the target app resides </td>
+    <td> Space where the target app resides </td>
     <td> The space must reside within the given organization. For example, <code>dev-space</code> </td>
   </tr>
   <tr>
@@ -41,7 +41,7 @@ CF app stop fault:
   </tr>
 </table>
 
-<h3>Optional tunables</h3>
+<h3>Optional fields</h3>
 <table>
   <tr>
     <th> Tunable </th>
@@ -50,8 +50,8 @@ CF app stop fault:
   </tr>
   <tr>
     <td> faultInjectorPort </td>
-    <td> The local server port to be used by the fault-injector utility </td>
-    <td> Default: <code>50320</code>. If the default port is unavailable, a random port will be selected in the range of <code>50320-51320</code> </td>
+    <td> Local server port used by the fault-injector utility </td>
+    <td> Default: <code>50320</code>. If the default port is unavailable, a random port in the range of <code>50320-51320</code> is selected. </td>
   </tr>
   <tr>
     <td> duration </td>
@@ -76,7 +76,7 @@ CF app stop fault:
 </table>
 
 ## CF secrets
-The following Cloud Foundry secrets are provided in the `/etc/linux-chaos-infrastructure/cf.env` file in the same machine where the chaos-infrastructure is executed in the following format:
+The following Cloud Foundry secrets reside on the same machine where the chaos infrastructure is executed. These secrets are provided in the `/etc/linux-chaos-infrastructure/cf.env` file in the following format:
 
 ```env
 CF_API_ENDPOINT=XXXXXXXXXXXXXXXXXXX
@@ -86,7 +86,7 @@ UAA_SERVER_ENDPOINT=XXXXXXXXXXXXXXX
 ```
 
 :::note
-If the secret file is not provided, the secrets will be attempted to be derived as environment variables by the fault-injector utility.
+If the secrets file is not provided, the secrets are attempted to be derived as environment variables by the fault-injector utility.
 :::
 
 <table>
@@ -97,17 +97,17 @@ If the secret file is not provided, the secrets will be attempted to be derived 
   </tr>
   <tr>
     <td> CF_API_ENDPOINT </td>
-    <td> The API endpoint for the CF setup </td>
+    <td> API endpoint for the CF setup </td>
     <td> For example, <code>https://api.system.cf-setup.com</code> </td>
   </tr>
   <tr>
     <td> CF_USERNAME </td>
-    <td> The username for the CF user </td>
+    <td> Username for the CF user </td>
     <td> For example, <code>username</code> </td>
   </tr>
   <tr>
     <td> CF_PASSWORD </td>
-    <td> The password for the CF user </td>
+    <td> Password for the CF user </td>
     <td> For example, <code>password</code> </td>
   </tr>
   <tr>
@@ -120,7 +120,7 @@ If the secret file is not provided, the secrets will be attempted to be derived 
 ## vSphere secrets
 These secrets are provided only if vSphere is used as the deployment platform for CF.
 
-The following vSphere secrets are provided in the `/etc/linux-chaos-infrastructure/vsphere.env` file in the same machine where the chaos-infrastructure is executed in the following format:
+The following vSphere secrets reside on the same machine where the chaos infrastructure is executed. These secrets are provided in the `/etc/linux-chaos-infrastructure/vsphere.env` file in the following format:
 
 ```env
 GOVC_URL=XXXXXXXXXXXXXXXXXXXXXX
@@ -140,23 +140,23 @@ VM_PASSWORD=XXXXXXXXXXXXXXXXXXX
   </tr>
   <tr>
     <td> GOVC_URL </td>
-    <td> The endpoint for vSphere </td>
-    <td> For example: <code>192.168.214.244</code> </td>
+    <td> Endpoint for vSphere </td>
+    <td> For example, <code>192.168.214.244</code> </td>
   </tr>
   <tr>
     <td> GOVC_USERNAME </td>
-    <td> The username for the vSphere user </td>
+    <td> Username for the vSphere user </td>
     <td> For example, <code>username</code> </td>
   </tr>
   <tr>
     <td> GOVC_PASSWORD </td>
-    <td> The password for the vSphere user </td>
+    <td> Password for the vSphere user </td>
     <td> For example, <code>password</code> </td>
   </tr>
   <tr>
     <td> GOVC_INSECURE </td>
     <td> Skip SSL validation for govc commands </td>
-    <td> For example: <code>true</code> </td>
+    <td> For example, <code>true</code> </td>
   </tr>
   <tr>
     <td> VM_NAME </td>
@@ -165,19 +165,19 @@ VM_PASSWORD=XXXXXXXXXXXXXXXXXXX
   </tr>
   <tr>
     <td> VM_USERNAME </td>
-    <td> The username for the VM guest user </td>
+    <td> Username for the VM guest user </td>
     <td> For example, <code>root</code> </td>
   </tr>
   <tr>
     <td> VM_PASSWORD </td>
-    <td> The password for the VM guest user </td>
+    <td> Password for the VM guest user </td>
     <td> For example, <code>password</code> </td>
   </tr>
 </table>
 
 ### CF deployment platform
-The `cfDeploymentPlatform` input variable determines the deployment platform used for CF, with respect to the infrastructure.
-- The deployment platform can be either local i.e. the same environment used by the infrastructure or a remote machine.
+The `cfDeploymentPlatform` input variable determines the deployment platform used for CF with respect to the infrastructure.
+- The deployment platform can be local, that is, the same environment used by the infrastructure, or a remote machine.
 - The deployment platform is where the fault-injector utility executes.
 
 The following YAML snippet illustrates the use of this environment variable:
