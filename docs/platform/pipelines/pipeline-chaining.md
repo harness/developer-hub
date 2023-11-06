@@ -56,32 +56,47 @@ To chain pipelines in Harness, perform the following steps:
    :::
 
 4. Click **Apply Selected**.
-
-5. To use the output of a parent pipeline in the child pipeline and its stages, do the following:
-   6. In the child pipeline, select **Variables**.
-   7. Under **Pipeline**, in **Custom Variables**, select **Add Variable**.
-   8. Enter a name for the variable and set its value as a runtime input.
-   9. Select **Apply Changes**.
-   10. In the parent pipeline, select the child pipeline stage.
-   11. In **Inputs**, you should see the runtime input from the child pipeline.
-   12. In **Value**, enter a new value or use an expression that references the parent pipeline setting or output variable.
-   
-   :::info note
-   The **Inputs** tab supports auto suggestions.
-   :::
-   
-7. Repeat this process for any additional pipelines that you want to chain.
-
-8. In the final chained pipeline, you can add a **Deploy** step to deploy the application to the desired environment.
-   After you have chained the pipelines, you can run the parent pipeline.
+5. In the final chained pipeline, you can add a **Deploy** step to deploy the application to the desired environment.
+    
+    After you have chained the pipelines, you can run the parent pipeline.
    
 Harness recommends testing the pipeline before executing it in production.
 
-## Use an output expression in later stages
+## Use a parent output in child pipelines
 
-You can use an output expression in one stage as an input expression in a later stage. Here's are samples parent and child pipelines that uses an output expression from the parent in the child.
+You can use an output expression in from a parent pipeline as an input expression in a child pipeline stage.
 
-Child:
+To use the output of a parent pipeline in the child pipeline and its stages, do the following:
+   
+1. Child pipeline:
+   1. In the child pipeline, select **Variables**. You need to create a child pipeline variable so that when you add the child pipeline to the parent pipeline as a stage, the child pipeline stage will have an input you can use to map output variables from the parent pipeline.
+   2. Under **Pipeline**, in **Custom Variables**, select **Add Variable**.
+   3. Enter a name for the variable and set its value as a *runtime input*, and copy the variable expression.
+
+    ![picture 0](static/3e467b043a7c3ea8faefbbcf184fb304ed068b13898259d91f51015551a53825.png)  
+
+   4. Select **Apply Changes**.
+   5. Use the expression in the child pipeline wherever you want to use the parent output variable.
+   6. Save the child pipeline.
+2. Parent pipeline:
+   1. In the parent pipeline, verify that you have an output variable to pass to the child pipeline. For example, a [Shell Script step output variable](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step).
+   2.  In the parent pipeline, select/add the child pipeline stage. The runtime pipeline variable you added to the child pipeline appears in the **Inputs** tab.
+
+    ![picture 2](static/19a4d2bba78d439a18512c0981346d5c47b064711cf27046c2025ae012af360b.png)   
+
+   3. In **Inputs**, you should see the runtime input from the child pipeline variable you created.
+   4. In **Value**, enter an expression that references the parent pipeline output variable you want to pass to the child pipeline.
+ 
+:::info note
+The **Inputs** tab supports auto suggestions.
+:::
+   
+Now, when the parent pipeline is run and the child pipeline stage is executed, the child pipeline, 
+
+Here's an example of a child and parent pipeline where a parent pipeline output expression is mapped and used in a child pipeline stage.
+
+<details>
+<summary>Child pipeline</summary>
 
 ```yaml
 pipeline:
@@ -121,10 +136,11 @@ pipeline:
       description: ""
       required: false
       value: <+input>
-
 ```
+</details>
 
-Parent with child:
+<details>
+<summary>Parent pipeline with child pipeline stage</summary>
 
 ```yaml
 pipeline:
@@ -179,6 +195,10 @@ pipeline:
                 value: <+pipeline.stages.chained.spec.execution.steps.ShellScript_1.output.outputVariables.parent_timeout>
 
 ```
+</details>
+
+
+
 
 :::info note
 
