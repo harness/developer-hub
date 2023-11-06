@@ -11,6 +11,23 @@ helpdocs_is_published: true
 
 ### Connectors
 
+#### Does Harness support visibility and/or optimisation in AWS China?
+
+No, Harness does not currently support AWS China regions.
+
+#### Upon setting up a new cloud-provider connector, does Harness ingest the entire historical data available at source?
+
+For AWS and Azure, we ingest the entire historical billing data which is present in the source buckets. For GCP, however, we ingest billing data upto a maximum of 180 days in the past from customer's BigQuery dataset.
+
+#### For GCP connector, due to security concerns, can the customer connect only a subset of their GCP billing-export by sharing BigQuery View defined on top of the original billing-export table?
+
+For GCP data ingestion, we only support ingesting data from BigQuery tables i.e. ingestion from Views is not supported. 
+In order to avoid sharing the entire billing-export table for GCP, customer can create a new "table" (instead of View) in their BigQuery dataset which will contain the subset of data that they wish to share with Harness. Customer can use  "BigQuery Scheduled Queries" to keep this new table updated and in sync with the original billing-export table. Here, it is important to ensure that the schema of the new table is the same as the original export.
+
+#### Customer's Azure Storage bucket only allows specific IPs, will CCM's Azure connector require any whitelisting to be able to sync data into Harness?
+
+Yes, in that case, customer will need to whitelist Harness's Cloud-NAT IPs. Customer success team may assist the customer with the required Cloud-NAT IPs to whitelist and raise a ticket to Engineering if needed.
+
 #### Are there any concerns/known issues using only k8 connectors, i.e. not using any cloud connectors? Their primary use case is internal showback and monitoring impacts of k8 infrastructure changes. This setup was working for them, but again looking to eliminate variables that could be causing inconsistencies.
 
 If only the K8S connector is used without a Cloud connector, billing data will be calculated using the Public pricing API. Cloud connectors assist in accurately calculating costs based on the CUR REPORT shared by cloud providers.
@@ -28,6 +45,26 @@ No. You need the delegate only when connecting to a Kubernetes cluster - such as
 For K8S connectors, the reporting icon would be success as long as we are receiving events from delegate. auto-stopping will be always be marked as success.
 For cloud connectors, one of the validations we do as part of conn health indicator is availability of data on our side in past 24 hours.
 When license expires, after some days we would stop running the data sync jobs and thus conn status will be read.
+
+#### When dealing with multiple datasets in one GCP project, how can we add all datasets to the connector?
+
+To include all the datasets, we should set up an individual connector for each dataset.
+
+#### How can historical data be ingested beyond 180 days in the case of a GCP connector?
+
+If you require historical data to be ingested, please raise a support ticket with Harness. The CCM development team can ingest the data for you.
+
+#### Can I setup an Azure Connector for a subscription without specifying billing details?
+
+Yes, we can create a connector without specifying billing details if the billing information for the subscription is already covered by another azure billing connector.
+
+#### Does GCP support historical data ingestion from a source located in non US region?
+
+Yes, it does. However, if there are multiple source datasets which are located in non-US regions, then ensure that table names are unique even across the different source datasets.
+
+#### In the case of AWS, what should we do if historical cost data is missing from the CUR export (source bucket)?
+
+In this scenario, we can raise an AWS support request to backfill the same source bucket. Once the data is available, CCM will automatically retrieve and make it accessible.
 
 
 ### Perspectives
@@ -93,10 +130,49 @@ To tackle unattributed costs, you can apply a subsId null filter to isolate thes
 
 Unattributed costs could potentially be related to Kubernetes cluster costs. These costs are often gathered when you have a cost connector for Kubernetes. If you do not want to include Kubernetes costs in your cost categories, you can create a "k8s" bucket in each category and define logic such as "cluster name not null." This allows you to separate and ignore Kubernetes costs within your cost categories.
 
+#### Does Perspective support drill-down functionality for cloud data?
+
+Currently, it's not supported. However, you can leverage dashboard for the same.
+
+#### What is the rationale for the divergence in labels between cloud and cluster data, as illustrated in case of ECS tags, for instance?
+
+When we ingest cloud data, we make certain modifications to the tags/labels. However, with cluster data, we ingest the labels without any alterations.
+
+More information can be found [here](../../docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws#analyze-aws-cost).
+
+
+### Cost Category
+
 #### If a resource (cost) aligns with rules in different cost category buckets, what happens? Does it go into the highest-priority bucket from the list of buckets for the first match?
 
 Yes, when you group resources by the Cost Category, the resource is assigned to the highest-priority bucket from the list for the first match it encounters. However, if you apply a filter based on the cost bucket, you will retrieve all resources that meet the filter criteria, which can lead to an unexpected result where multiple cost buckets are filtering on one category and grouping by the corresponding cost category they belong to.
 
+#### Is there an automated method offered by Harness to ingest hierarchical data and generate cost categories?
+
+No, currently, there isn't an automated solution available. As a temporary measure, you can create a script to fetch hierarchical data through APIs and convert it into cost categories within CCM.
+
+
+### K8s or Cluster Data
+
+#### What is the data update frequency for our K8s visibility?
+
+A K8s job is scheduled to run every hour, ensuring that data is updated frequently. However, occasional delays can occur due to various factors, potentially extending the update process to a maximum of one day.
+
+#### Do we have ability to change the formula of calculating the K8s cost?
+
+No, the formula is fixed. However, if you are using k8s on bare metal (other than GCP, AWS or Azure), you have the option to update the compute pricing only for the node and pod cost calculation. More information related to this can be found [here](../../docs/faqs/cloud-cost-management-faqs/#hows-cost-calculated-for-k8s-on-cloud-providers-and-k8s-on-bare-metal).
+
+#### Is idle cluster cost allocated to pods/containers?
+
+Yes, we consider the cost of idle resources allocated to a pod. More information related to idle cost can be found [here](../../docs/cloud-cost-management/get-started/key-concepts/#idle-cost).
+
+#### Is cost allocated based on actual use or Requests/Limits?
+
+The cost is allocated based on max of requests or actual use.
+
+#### Is Storage cost included in the total cluster cost?
+
+Storage cost is also included in the total cluster cost. Total cluster cost is sum of memory cost, cpu cost and storage cost.
 
 
 ### Recommendations
@@ -143,6 +219,44 @@ Then Restore the data
 
 It is up to the user or the use case how much they want to reduce the storage too. Reducing the storage is a manual operation and is not supported via Cloud Custodian at this time.
 
+#### Why doesn't the Workload Recommendation API change the percentile and recommendations based on changes in the time duration?
+
+In UI, If you change the time filter, Recommendation is updated based on histogram values. In REST API response, the `containerRecommendations` field is deprecated, and we reply on `cpuHistogram` and `memoryHistogram` for the recommendation.
+
+#### Why there are very small amount of Workload and Nodepool Recommendation data available for a cluster?
+
+The recommendations for Nodepool and Workload are influenced by both the cluster size and the number of events received from the delegate. Larger cluster sizes increase the likelihood of generating recommendations. Conversely, when the overall cluster spending is relatively low based on the available data in Perspective, it is more likely that we will have fewer recommendations.
+
+#### Why is the CPU utilization data not displaying for EC2 recommendations?
+
+To enable CPU metrics CloudWatch has to be enabled for the AWS account.
+
+To enable Memory metrics cloud watch agent has to be installed on every EC2 instance. you can use the external metrics ingestion feature in AWS to configure the AWS Compute Optimizer to ingest EC2 memory utilization metrics from Datadog, among other observability products like Datadog, Dynatrace, Instana, and New Relic [1](https://docs.aws.amazon.com/compute-optimizer/latest/ug/external-metrics-ingestion.html).
+
+#### Why my service is not coming up when I tried applying Workload Recommendations? It's giving the impression that our recommendations are indicating too low and wrong resources.
+
+The recommendations are categorized as the following:
+
+- Cost Optimized
+- Performance Optimized
+
+Cost Optimized recommendations are computed using the 50th percentile of the CPU samples and memory peaks, this may potentially lead to system performance issues. Before using cost-optimized recommendations, ensure that you evaluate the recommendation's impact thoroughly.
+
+Performance Optimized recommendations are calculated based on the 90th percentiles of CPU samples and memory peaks. The probability of having any effect on the performance is minimum. However, the cost may go high for the resources that are optimized using this method.
+
+Also, do not update `limit` of CPU and Memory manually based on recommended `request` CPU and Memory. The recommended `request` CPU and Memory are computed using 95 percentile CPU/Memory samples.
+
+
+#### Why RDS instance resize recommendation not showing in results?
+
+Right now, the policy only identifies potential RDS instances for resize. Earlier we had a resize action associated with the policy but since it is not currently supported by custodian, we have removed it.
+
+
+
+
+
+
+
 ### Governance
 
 #### When adding Cloud Governance to a previously created cloud cost connector, do we need to add the cloud-governance IAM permissions to the same role we previously created via the cloudFormation template?
@@ -170,6 +284,17 @@ Yes, we do show the recommendations but action cant be taken from CCM, RDS resiz
 
 Yes, it is possible to do so.
 
+#### I executed a governance rule with an action to save costs (for example, delete). Why do I see the cost savings estimate as $0?
+	
+Cloud Asset Governance uses pricing from the customer's CUR to calculate savings generated. Please check if your cloud spend data is available in Cloud Cost Management Perspectives.
+
+#### I created custom governance rules, but I haven't seen any recommendations generated for them?
+
+Currently, we don't compute or show savings corresponding to custom asset governance rules. We only show savings corresponding to a few out-of-the-box rules, which we have selected for recommendations.
+
+#### Is it possible to visualize the Cloud Asset Governance data on Dashboards?
+
+No. Currently, Asset governance data is not yet available in dashboards.
 
 ### Autostopping
 
@@ -191,6 +316,35 @@ The correct ALB is selected as the load balancer when creating the AutoStopping 
 
 We currently do not support ECS autostopping with NLBs. NLBs operate at layer 4 of the network stack, making it challenging to intercept traffic. To achieve autostopping functionality, you can create a new ALB, set it up as a downstream system for the NLB, and connect your Auto Scaling (AS) group to the ALB. This configuration will enable the desired functionality."
 
+#### What is the expected behaviour of resources managed by an Autostopping rule in Dry Run Mode?
+
+Resources managed by a rule in Dry run mode, will not undergo any "shutdown" or equivalent actions and hence are never stopped by the Autostopping rule. Similarly if the resources are manually "stopped" by the users, they wouldn't be "started" by the rule and will continue to be in the state as set by the users. Hence any resources managed by a rule in Dry Run mode will not be started or stopped by the rule. This mode is used to identify potential savings that can be obtained by enabling Autostopping and also the time periods at which the resources would potentially be stopped or started if it were to be managed by Autostopping.
+
+#### I am unable to add additional RDS instances to an auto-stopping rule, when adding other rule it overrides the existing one.
+
+We do not allow the addition of multiple resources per Rule for RDS and ASG based rules. This is why the selection is represented as a radio button for these types, while VMs, which support multiple resources, are represented with a checkbox.
+
+#### Why am I not able to see savings for my Kubernetes AutoStopping rules?
+
+The AutoStopping savings calculation occurs every 24 hours. For newly created rules, it may take up to 24 hours to observe any savings. If your rule still lacks any available savings data even after this time period, please consider the following:
+
+* Ensure that the rule has been accessed at least once, and the 'Last Activity' column is populated.
+* Verify the health of your Cloud/Kubernetes connectors."
+
+#### How are we calculating savings for Kubernetes workloads under AutoStopping rules?
+
+The hourly rate for a Kubernetes workload is determined by the cost of the node on which its pods are hosted. The proportion of node cost attributed to each pod may vary.
+
+When a node hosts only a single pod, that pod/workload will bear a larger share of the node cost compared to scenarios where multiple workloads share the same node. Additionally, a long-running pod might accumulate a higher cost compared to a pod that is quickly terminated.
+
+As a result, the 'actual_cost' associated with a workload will fluctuate daily, leading to variations in the hourly rate.
+
+#### Why is the configured Fixed Schedule not working for an AutoStopping rule?
+If your fixed schedule is not operating within the expected time windows or frequencies, please review the following:
+
+* Ensure the correct timezone for the schedule.
+* Check the specified start and end times of the schedule. This configuration is optional and restricts the schedule to run only within this specified window.
+
 
 ### Dashboards
 
@@ -203,6 +357,42 @@ Looker doesn’t support filtering on custom fields at a global level at this po
 CCM (Cloud Cost Management) is a standalone product offered by Harness that can operate independently in the Harness Platform. It does not require installation as a module on the Harness Platform or any specific dependencies on the platform itself.
  
 CCM provides organizations with the ability to monitor, optimize, and manage cloud costs across different cloud providers (such as AWS, Azure, GCP) in a centralized manner. It offers several advantages compared to other competing products.
+
+#### Do we have support for hourly granularity in the Unified Table?
+
+No, hourly granularity is not maintained in the Unified Table. It supported at a daily granularity.
+
+#### How long does it take for cluster utilisation data to appear on the dashboards?
+
+The data on cluster utilisation is collected every 20 minutes and processed hourly on the CCM side. We compute billing charges with hourly and daily granularity based on utilisation data. If you choose the perspective, billing data based on hourly granularity is displayed for the previous seven days' filter. However, if you choose a different period, a daily calculation is used to display the billing data.
+
+#### How long does it take for Recommendations data to appear on the dashboards?
+
+We require a few days of data to provide suggestions during the initial setup because NodePool and Workload recommendations are based on the utilisation statistics from the previous seven days. As soon as data is available, recommendations are created and updated every day using the data from the previous seven days.
+We ingest CUR data from cloud provider once a day. This is employed to accurately estimate the cost of the cluster and the cloud.
+
+#### How long does it take for anomaly data to appear on the dashboards?
+
+The anomaly detection for Cloud and Cluster is done once every day. The Anomaly Detection Service checks for any anomalies in the billing cost once the billing data for the cluster has been computed.
+
+#### Is there support for cost categories in the dashboards?
+
+We have the support to leverage the unified view to attribute costs across clouds and cluster costs.
+
+#### Do we support AutoStopping savings for visualizing in the dashboards?
+
+Yes. Customers should be able to create a dashboard to visualise the savings though the dashboard is not available out of the box.
+
+#### Do we have support for asset goveranance in the dashboards?
+
+No. Asset governance data is not exposed for dashboards yet.
+
+#### Is memory metrics available in our dashboards for virtual machines hosted on AWS, GCP, and Azure?
+
+The memory measurements for AWS EC2 will be displayed in dashboards as part of the inventory functionality if the cloudwatch agent is deployed in the virtual machines.
+As part of the inventory feature for Azure, we have memory measurements for virtual machines.
+We don't have memory measurements for virtual machines on GCP.
+
 
 
 ### Anomalies
@@ -261,6 +451,10 @@ We display anomalies at the most granular level of the hierarchy and intentional
 
 Before proceeding, please double-check whether you have configured a new connector specifically for that particular cloud service. If you have indeed set up a new connector, please be aware that our machine learning models may not yet have sufficient training data for accurately identifying anomalies. To obtain reliable anomaly results, we typically require a minimum of 14 days' worth of training data.
 
+#### Does Harness fetch anomalies for perspectives using cost category rules and groupings by cost categories?
+ 
+No, this feature is not currently supported.
+
 #### Why can't my CCM connector retrieve data from an old billing table?
 
 CCM Connectors, by default, only collect data from billing tables that have had updates within the last 24 hours. If your table hasn't had any updated data within this period, we will skip the collection process.
@@ -280,3 +474,25 @@ Currently, it's only possible to include a custom message in the scheduled deliv
 #### Is it possible to share a dashboard with a person who doesn't have a Harness user?
 
 The sharing option for the Harness dashboard requires selecting a specific user group within Harness itself and defining different levels of access. Therefore, someone who is not part of any group in Harness will not have access to the dashboard.
+
+### Budgets 
+
+#### Do the models used in Harness CCM budgets adjust as we get more cost data?
+
+At present, the models used in Harness CCM budgets do not automatically adjust as more cost data is collected. However, it is on our roadmap to leverage these models for budget-related forecasting in the future.
+
+#### Does Harness allow users to access budgets created in CG within NG?
+
+No, budgets created in CG may lack certain mandatory fields required in NG. In such cases, you will need to delete the old budgets in CG and create new ones in NG to ensure compatibility and functionality.
+
+#### How can users utilize budgets on amortized costs?
+
+Users can configure their perspective to utilize amortized costs through perspective preferences, and the budgets will respect this setting accordingly.
+
+#### Can users create budgets in Harness without including alerts?
+
+Yes, users have the option to create budgets without alerts. However, it is recommended to set up alerts to receive notifications when the cost reaches the defined threshold.
+
+#### Can users view the historical budget over time in Harness without the need to modify it every month?
+
+Yes, users can accomplish this by creating a Yearly budget and selecting the monthly breakdown option. This allows for a historical view without the need for monthly adjustments.

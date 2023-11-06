@@ -10,7 +10,7 @@ This guide describes the steps a Harness account admin can take to set up the ID
 
 **Prerequisite**: IDP should be provisioned for the given account. The required resources, services, configurations etc. should be in place before starting the harness catalog onboarding flow
 
-## Process
+## Getting Started
 
 1. User lands on IDP module by navigating from sidebar after logging into their Harness account.
 
@@ -24,6 +24,8 @@ This guide describes the steps a Harness account admin can take to set up the ID
 ![](static/role-explain.png)
 
 ![](static/first_step.png)
+
+## Import Services
 
 4. User will be shown the list of services in their account. It will be defined in terms of IDP entity i.e harness organisation is a domain, harness project is a system and harness service is a component in the IDP world. This list includes services at all scopes.
 
@@ -42,6 +44,8 @@ This guide describes the steps a Harness account admin can take to set up the ID
 ![](static/ind_sel.png)
 ![](static/sample_flow.png)
 
+## Connector Setup
+
 7. Connector setup -
 
 - GitHub, Gitlab, Bitbucket and Azure Repository connectors are supported.
@@ -54,6 +58,8 @@ This guide describes the steps a Harness account admin can take to set up the ID
 
 ![](static/connection_successful.png)
 ![](static/api_access.png)
+
+## Create and Register Entities
 
 8. Details on where the entities will be created in git -
 
@@ -79,6 +85,8 @@ In connector - The account path is `https://github.com/sathish-soundarapandian`.
 ![](static/success.png)
 
 10. In the background, the catalog are also imported into IDP along with their associated configs.
+
+## Catalog
 
 11. User can navigate to the IDP homepage to get started. Catalog will be start showing up once the async operation is completed.
 

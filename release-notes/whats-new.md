@@ -20,7 +20,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest: November 06, 2023
 
-### Continuous Integration, version 65xx
+### Continuous Integration, version 6501
 
 #### Build and Push to GAR (CI-9926)
 
@@ -39,6 +39,38 @@ The Harness Cloud Windows image has been upgraded to Windows Server 2022. This i
 If you have pipelines running on Harness Cloud that rely on specific component versions, you might need to [lock versions or install additional tools](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#lock-versions-or-install-additional-tools) to prevent your pipeline from failing due to image changes.
 
 :::
+
+## November 03, 2023
+
+### Service Reliability Management, version 1.6.1
+
+- A new search functionality for the service and environment filters drop-down on the Changes page has been introduced. The filters now display a **Search** option when the drop-down list contains more than 10 options. (SRM-15946)
+
+- The maximum number of simple SLOs that can contribute to a composite SLO has been increased from 20 to 30. (SRM-15972)
+
+- Because a majority of change sources are now configured automatically, the behavior on the Change Impact screen has been modified.  Now, when no change event is found in the selected time range, the "No change event" message is displayed instead of "Configure change source". (SRM-15985)
+
+### Continuous Delivery, version 81308
+
+- Availability of deployment step group templates in custom stages (CDS-81265)
+
+  When opened in the context of a custom stage, the **Templates** side panel in Pipeline Studio lists step group templates created from deployment stages. The **Type** dropdown field in the panel also includes entries for filtering step groups created from custom and deployment stages.
+
+- Improved user experience when viewing errors in the console view (CDS-77809)
+
+  You can now increase the height of the error panel in the pipeline console. This change improves the readability of error messages and suggestions.
+
+- Resolved expressions for runtime inputs in custom dashboards (CDS-77013)
+
+  For runtime inputs, custom dashboards now show resolved trigger expressions instead of the expressions themselves.
+
+### Harness Platform, version 81308
+
+- You can now view **Runtime Usage** for secrets. (PL-39416)
+
+- You can now add custom certificates to delegates by mounting files under `/opt/harness-delegate/ca-bundle/` or mounting a folder to `/opt/harness-delegate/ca-bundle/`. (PL-39971)
+
+  This item is available with Harness Platform version 81308 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ## November 02, 2023
 

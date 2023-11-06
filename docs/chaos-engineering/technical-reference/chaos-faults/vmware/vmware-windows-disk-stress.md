@@ -18,9 +18,11 @@ VMware Windows Disk Stress applies stress on the disk resources on Windows OS ba
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443. 
 - VMware tool should be installed on the target VM with remote execution enabled.
-- Adequate vCenter permissions should be provided to access the hosts and the VMs.
+- Use built-in Administrator user for the experiment. [Learn how to enable the built-in Administrator user in Windows](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/enable-and-disable-the-built-in-administrator-account?view=windows-11).
 - The VM should be in a healthy state before and after injecting chaos.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. 
+- Ensure the installation of [Diskspd](https://learn.microsoft.com/en-us/azure-stack/hci/manage/diskspd-overview#quick-start-install-and-run-diskspd), a critical dependency for this experiment. Refer to the linked documentation for installation guidance.
+
 - VM credentials can be passed as secrets or as a chaos enginer environment variable.
 
 ```yaml
@@ -51,6 +53,16 @@ stringData:
         <td> VM_NAME </td>
         <td> Name of the target VM. </td>
         <td> For example, <code>win-vm-1</code> </td>
+      </tr>
+      <tr>
+          <td> VM_USER_NAME </td>
+          <td> Username of the target VM.</td>
+          <td> For example, <code>vm-user</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_PASSWORD </td>
+          <td> User password for the target VM. </td>
+          <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
       </tr>
     </table>
     <h3>Optional fields</h3>

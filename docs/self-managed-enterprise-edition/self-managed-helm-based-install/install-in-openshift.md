@@ -4,7 +4,7 @@ description: Learn how to install the Harness Self-Managed Enterprise Edition us
 sidebar_position: 5
 ---
 
-This topic explains how to use Helm to install the Harness Self-Managed Enterprise Edition in an OpenShift environment. Red Hat OpenShift is a cloud-based platform that utilizes Kubernetes to assist developers in the building of applications. It provides automated installation, upgrades, and life cycle management of the container stack, which includes the operating system, Kubernetes, cluster services, and applications. This can be done on any cloud platform.
+This topic explains how to use Helm to install the Harness Self-Managed Enterprise Edition in an OpenShift environment. [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) is a cloud-based platform that utilizes Kubernetes to assist developers in the building of applications. It provides automated installation, upgrades, and life cycle management of the container stack, which includes the operating system, Kubernetes, cluster services, and applications. This can be done on any cloud platform.
 
 :::info important
 This feature is currently in beta. Harness has tested and verified OpenShift version 4.13.x. For more information about beta features, go to [Beta, public preview, and GA definitions](/docs/get-started/beta-preview-ga/).
@@ -66,6 +66,6 @@ oc expose service harness-ingress-controller
 
 Below are troubleshooting steps for two common issues you might encounter in your OpenShift environment.
 
-If pods don't load after the Helm installation, find the service account used by the corresponding service in its deployment. Check the OpenShift cluster UI logs and escalate the necessary service account privileges.
+- If pods don't load after the Helm installation, find the service account used by the corresponding service in its deployment. Check the OpenShift cluster UI logs and escalate the necessary service account privileges.
 
-If you receive an ingress 404 default backend, check the ingress configuration in the override file of your service. 
+- If you receive an ingress 404 default backend, check the ingress configuration in the override file of your service. 
