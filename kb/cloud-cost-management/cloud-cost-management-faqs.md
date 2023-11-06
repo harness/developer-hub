@@ -130,10 +130,49 @@ To tackle unattributed costs, you can apply a subsId null filter to isolate thes
 
 Unattributed costs could potentially be related to Kubernetes cluster costs. These costs are often gathered when you have a cost connector for Kubernetes. If you do not want to include Kubernetes costs in your cost categories, you can create a "k8s" bucket in each category and define logic such as "cluster name not null." This allows you to separate and ignore Kubernetes costs within your cost categories.
 
+#### Does Perspective support drill-down functionality for cloud data?
+
+Currently, it's not supported. However, you can leverage dashboard for the same.
+
+#### What is the rationale for the divergence in labels between cloud and cluster data, as illustrated in case of ECS tags, for instance?
+
+When we ingest cloud data, we make certain modifications to the tags/labels. However, with cluster data, we ingest the labels without any alterations.
+
+More information can be found [here](../../docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws#analyze-aws-cost).
+
+
+### Cost Category
+
 #### If a resource (cost) aligns with rules in different cost category buckets, what happens? Does it go into the highest-priority bucket from the list of buckets for the first match?
 
 Yes, when you group resources by the Cost Category, the resource is assigned to the highest-priority bucket from the list for the first match it encounters. However, if you apply a filter based on the cost bucket, you will retrieve all resources that meet the filter criteria, which can lead to an unexpected result where multiple cost buckets are filtering on one category and grouping by the corresponding cost category they belong to.
 
+#### Is there an automated method offered by Harness to ingest hierarchical data and generate cost categories?
+
+No, currently, there isn't an automated solution available. As a temporary measure, you can create a script to fetch hierarchical data through APIs and convert it into cost categories within CCM.
+
+
+### K8s or Cluster Data
+
+#### What is the data update frequency for our K8s visibility?
+
+A K8s job is scheduled to run every hour, ensuring that data is updated frequently. However, occasional delays can occur due to various factors, potentially extending the update process to a maximum of one day.
+
+#### Do we have ability to change the formula of calculating the K8s cost?
+
+No, the formula is fixed. However, if you are using k8s on bare metal (other than GCP, AWS or Azure), you have the option to update the compute pricing only for the node and pod cost calculation. More information related to this can be found [here](../../docs/faqs/cloud-cost-management-faqs/#hows-cost-calculated-for-k8s-on-cloud-providers-and-k8s-on-bare-metal).
+
+#### Is idle cluster cost allocated to pods/containers?
+
+Yes, we consider the cost of idle resources allocated to a pod. More information related to idle cost can be found [here](../../docs/cloud-cost-management/get-started/key-concepts/#idle-cost).
+
+#### Is cost allocated based on actual use or Requests/Limits?
+
+The cost is allocated based on max of requests or actual use.
+
+#### Is Storage cost included in the total cluster cost?
+
+Storage cost is also included in the total cluster cost. Total cluster cost is sum of memory cost, cpu cost and storage cost.
 
 
 ### Recommendations
@@ -277,6 +316,10 @@ The correct ALB is selected as the load balancer when creating the AutoStopping 
 
 We currently do not support ECS autostopping with NLBs. NLBs operate at layer 4 of the network stack, making it challenging to intercept traffic. To achieve autostopping functionality, you can create a new ALB, set it up as a downstream system for the NLB, and connect your Auto Scaling (AS) group to the ALB. This configuration will enable the desired functionality."
 
+#### What is the expected behaviour of resources managed by an Autostopping rule in Dry Run Mode?
+
+Resources managed by a rule in Dry run mode, will not undergo any "shutdown" or equivalent actions and hence are never stopped by the Autostopping rule. Similarly if the resources are manually "stopped" by the users, they wouldn't be "started" by the rule and will continue to be in the state as set by the users. Hence any resources managed by a rule in Dry Run mode will not be started or stopped by the rule. This mode is used to identify potential savings that can be obtained by enabling Autostopping and also the time periods at which the resources would potentially be stopped or started if it were to be managed by Autostopping.
+
 #### I am unable to add additional RDS instances to an auto-stopping rule, when adding other rule it overrides the existing one.
 
 We do not allow the addition of multiple resources per Rule for RDS and ASG based rules. This is why the selection is represented as a radio button for these types, while VMs, which support multiple resources, are represented with a checkbox.
@@ -301,7 +344,6 @@ If your fixed schedule is not operating within the expected time windows or freq
 
 * Ensure the correct timezone for the schedule.
 * Check the specified start and end times of the schedule. This configuration is optional and restricts the schedule to run only within this specified window.
-
 
 
 ### Dashboards
