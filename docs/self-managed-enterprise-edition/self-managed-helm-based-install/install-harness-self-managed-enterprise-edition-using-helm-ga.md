@@ -63,6 +63,8 @@ The Platform component and the module below is enabled by default:
 
 The Harness modules below can be enabled or disabled conditionally:
 
+* Harness Chaos Engineering (CE)
+* Harness Cloud Cost Management (CCM)
 * Harness Continuous Integration (CI)
 * Harness Security Testing Orchestration (STO)
 * Harness Service Reliability Management (SRM)
@@ -71,7 +73,7 @@ The Harness modules below can be enabled or disabled conditionally:
 
 <!-- PR-1002 -->
 
-You can conditionally disable or enable the CI and STO modules by specifying a boolean value in the `enabled` field of the YAML:
+You can conditionally disable or enable the modules by specifying a boolean value in the `enabled` field of the YAML:
 
 #### Deploy the CI module
 
@@ -104,6 +106,14 @@ enabled: true
 ```
 sto:
 # -- Enable to deploy STO to your cluster
+enabled: true
+```
+
+#### Deploy the CCM module
+
+```
+ccm:
+# -- Enable to deploy Cloud Cost Management (CCM) to your cluster
 enabled: true
 ```
 
@@ -203,4 +213,5 @@ To get started with the modules, review the following topics:
 * For Harness Continuous Delivery & GitOps, go to the [CD key concepts](/docs/continuous-delivery/get-started/key-concepts.md).
 * For Harness Security Testing Orchestration, go to the [STO overview](../../security-testing-orchestration/get-started/overview.md).
 * For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-ce).
-* For Harness Continuous Error Tracking, go to the [CET tutorials](/tutorials/error-tracking/)
+* For Harness Cloud Cost Management, go to [Manage cloud costs by using Harness Self-Managed Enterprise Edition](/docs/category/ccm-on-harness-self-managed-enterprise-edition/).
+* For Harness Continuous Error Tracking, go to the [CET tutorials](/tutorials/error-tracking/).

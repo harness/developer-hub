@@ -101,6 +101,46 @@ spec:
     ...
 ```
 
+4. **Average time to complete successful workflow runs (in minutes)**
+- *Objective:* Calculate the average time taken to complete **successful** workflow runs (in minutes).
+- *Calculation Method:* Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and calculates the average time for the last 100 successful workflow runs to complete.
+- *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository. Make sure to mention the workflow id or filename in the conditional input field.
+
+5. **Average time to complete workflow runs (in minutes)**
+- *Objective:* Calculate the average time taken to complete workflow runs (in minutes).
+- *Calculation Method:* Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and calculates the average time for the last 100 workflow runs to complete.
+- *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository. Make sure to mention the workflow id or filename in the conditional input field.
+
+6. **Workflow success rate**
+- *Objective:* Calculates success rate for the given workflow.
+- *Calculation Method:* Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and calculates the success rate for the workflow.
+- *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository. Make sure to mention the workflow id or filename in the conditional input field.
+
+7. **Workflows count**
+- *Objective:* Calculates total number of workflows.
+- *Calculation Method:* Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and calculates the total number of workflows
+- *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository.
+
+8. **Open code scanning alerts**
+- *Objective:* Calculates the total number of open alerts reported in code scanning for the given severity.
+- *Calculation Method:*  Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and calculates the total number of open alerts reported in code scanning.
+- *Prerequisites:* GitHub Connector with read access for code scanning alerts. Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository. Make sure to mention the severity type in the conditional input field.
+
+9. **Open Dependabot alerts**
+- *Objective:* Calculates the total number of open alerts reported by Dependabot for the given severity.
+- *Calculation Method:* Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and calculates the total number of open alerts reported by Dependabot.
+- *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository. Make sure to mention the severity type in the conditional input field.
+
+10. **Open secret scanning alerts**
+- *Objective:* Calculates the total number of open alerts reported in secret scanning. 
+- *Calculation Method:* Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and calculates the total number of open alerts reported in secret scanning. 
+- *Prerequisites:* GitHub Connector with read access for secret scanning alerts. Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository.
+
+11. **Open pull requests by account**
+- *Objective:* Calculates the total number of open pull requests raised by the given account.
+- *Calculation Method:* Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and calculates the total number of open pull requests raised by account.
+- *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository. Make sure to mention the username in the conditional input field.
+
 ```mdx-code-block
 </TabItem>
 <TabItem value="GitLab">
@@ -169,6 +209,7 @@ metadata:
 spec:
     ...
 ```
+ 
 
 ```mdx-code-block
 </TabItem>

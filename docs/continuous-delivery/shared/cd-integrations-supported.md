@@ -765,6 +765,8 @@ Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible reg
   - For other product modules: entities will be added as needed.
 - Harness does not support OPA bundles.
 - Harness does not support data imports from external sources.
+- Harness does not support `allow`, to support this use case you need to invert the logic, Harness OPA supports deny and not allow.
+
 
 
 ```mdx-code-block

@@ -20,17 +20,49 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest: version 81300
+## Latest: version 81400
 
 ### New features and enhancements
 
-This release does not include any new features.
+* Previously, there was no option to export Recommendations as CSV files. (CCM-14274)
+
+  Now, we have added a new feature that enables users to export Recommendations as comma-separated values (CSV) files.
 
 ### Early access features
 
 This release does not include any early access features.
 
 ### Fixed issues
+
+* Previously, changing the project in JIRA didn't clear fields, causing potential creation failures. (CCM-14842)
+
+  However, now, the form (except Ticket Summary and Description) resets on project change, ensuring a smoother process.
+
+* Previously, anomaly detection on K8s Services lacked a threshold, leading to excessive alerts. (CCM-14865)
+
+  Now, we have implemented a threshold of $3 for anomaly detection on K8s Services to refine the alerting process.
+
+* Previously, incorrect entity types for Azure in anomalies caused misdirected notifications on Slack and email. (CCM-14864)
+
+  However, this issue is fixed now by changing the logic for Azure entity types.
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### October 26, 2023, version 81300
+
+##### New features and enhancements
+
+This release does not include any new features.
+
+##### Early access features
+
+This release does not include any early access features.
+
+##### Fixed issues
 
 * Previously, the search functionality in the perspective grid was nonfunctional when grouped by cost categories, causing inconvenience in data retrieval. (CCM-14384)
 
@@ -43,12 +75,6 @@ This release does not include any early access features.
 * Previously, the Budget explorer chart displayed lower costs due to a query issue. (CCM-14758)
 
   This issue is fixed by removing the "group by" from the budget time-series query, ensuring more accurate cost representation.
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### October 20, 2023, version 81202
 

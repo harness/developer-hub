@@ -2,7 +2,7 @@
 title: Continuous Error Tracking release notes
 sidebar_label: Continuous Error Tracking
 tags: [NextGen, "cet"]
-date: 2023-10-19T17:20
+date: 2023-11-02T17:20
 sidebar_position: 8
 ---
 ```mdx-code-block
@@ -22,12 +22,15 @@ Review the notes below for details about recent changes to Continuous Error Trac
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: October 19, 2023, versions ET-Service 5.29.3 and ET-Collector 5.29.0
-
+## Latest: November 02, 2023, versions ET-Service 5.30.0 and ET-Collector 5.30.0
 
 ### New features and enhancements
 
-This release does not include new features and enhancements.
+- The Summary page loading time has been optimized. Now, the Summary page loads faster, ensuring a better user experience. (CET-1233)
+
+- The event distribution chart now supports plotting a graph for new events. (CET-1610)
+
+- Various dependencies were upgraded to prevent security issues. (CET-1880)
 
 
 ### Early access features
@@ -36,6 +39,68 @@ This release does not include any early access features.
 
 
 ### Fixed issues
+
+- The ARC screen displayed variables that appeared expandable but were unresponsive. (CET-1116)
+  
+  This issue has been resolved. Now, variables display the expansion arrow only if there is data to display.
+  
+- Events plotted by the Event Distribution graph did not consistently represent the top occurring events. (CET-1745)
+  
+  This issue has been resolved. Now, the events on the Event Distribution graph are consistently the top occurring events.
+  
+- After implementing Saved Filters, the event distribution chart was not functioning properly, preventing the filtering of events by type or status. (CET-1784)
+  
+  This issue has been resolved. Now, filtering on the chart is working as expected.
+  
+- The event distribution chart allowed zooming in up to the seconds, which caused confusion with the displayed numbers. (CET-1810)
+  
+  This issue has been resolved. Now, zooming is limited to the minute, ensuring consistency with the graph axis.
+  
+- Filters could be saved without any actual filtering. (CET1844)
+  
+  This issue has been resolved. Now, filters can be saved only with applied criteria.
+  
+- It was difficult to identify the managed filters button in the saved searches drop-down compared to other filters. (CET-1847)
+  
+  This issue has been resolved. Now, the managed filters button is easier to identify and use.
+  
+- Editing a saved filter redirects to the Events list. (CET-1848)
+  
+  This issue has been resolved. Now, editing a saved filter redirects to the 'Manage saved filters' dialog.
+  
+- Leaving the Events page does not prompt a warning about unsaved changes. (CET-1850)
+  
+  This issue has been resolved. Now, when there are unsaved changes, a warning message appears.
+  
+- The CET integration with CD was broken, resulting in no events appearing when using CET in a deployment pipeline. (CET-1895)
+  
+  This issue has been resolved. Now, events appear as expected when using CET in a deployment pipeline.
+
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### October 19, 2023, versions ET-Service 5.29.3 and ET-Collector 5.29.0
+
+
+##### New features and enhancements
+
+This release does not include new features and enhancements.
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
 
 - The total number of new, resurfaced, and critical events displayed on the Event Summary page did not match the counts on the Event List page. (CET-1233)
   
@@ -50,15 +115,10 @@ This release does not include any early access features.
   This issue has been resolved. Now, users can add and delete events with a single click.
 
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
 
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### October 7, 2023, versions ET-Service 5.28.2 and ET-Collector 5.28.0
 

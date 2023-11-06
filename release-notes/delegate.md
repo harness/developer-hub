@@ -83,7 +83,7 @@ Harness implemented access checks to restrict unauthorized users from viewing de
 
 ##### New features and enhancements
 
-You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. For more information, go to [Reference existing secret manager secrets](docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/). (PL-41063, ZD-51651)
+You can now reference secret values in JSON files by using XPATH. Support is available for AWS Secret Manager, Azure Key Vault, GCP Secret Manager, and HashiCorp Vault. For more information, go to [Reference existing secret manager secrets](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/). (PL-41063, ZD-51651)
 
 ##### Early access features
 
@@ -262,7 +262,7 @@ This release does not include any new early access features.
 
 - Added support for the Artifactory **Artifact Path** filter. (CDS-77244, CDS-79760)
 
-- The task count did not decrease when a task was aborted and the `DELEGATE_TASK_CAPACITY` environment variable was enabled. (PL-41367) (PL-41367)
+- The task count did not decrease when a task was aborted and the `DELEGATE_TASK_CAPACITY` environment variable was enabled. (PL-41367)
 
    Harness recommends that you upgrade to delegate version 23.09.80511 to resolve this issue.
 

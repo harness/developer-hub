@@ -1437,7 +1437,7 @@ When you initiates an abort for a pipeline task, the expected behavior is to tak
 we have a method, `io.harness.delegate.service.DelegateAgentServiceImpl#abortDelegateTask`, which is used to abort a task. This method typically leverages Thread.interrupt() to initiate the abort process. The key here is to interrupt or cancel the running task effectively.
 An abort could leave the system in a potentially inconsistent or 'dirty' state, it's crucial to consider rollback procedures.
 Delegate actions, such as canceling or ending running tasks, should play a central role in preventing system inconsistencies and maintaining system integrity.
-=======
+
 #### How to automatically start a delegate when running as a Docker container?
 
 Docker provides restart policies to control whether your containers start automatically when they exit, or when Docker restarts. Restart policies start linked containers in the correct order. Docker recommends that you use restart policies, and avoid using process managers to start containers.
@@ -1564,4 +1564,160 @@ JIT is currently behind a feature flag '''PL_ENABLE_JIT_USER_PROVISION'''
 #### Is there an overview doc on Harness RBAC and permissions? 
 
 Yes, please see this doc for more details [https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference]
+
+
+#### How can user install terraform on the delegate?
+1) microdnf install yum
+2) yum install unzip
+3) curl -O -L https://releases.hashicorp.com/terraform/1.6.1/terraform_1.6.1_linux_amd64.zip
+4) unzip terraform_1.6.1_linux_amd64.zip
+5) mv ./terraform /usr/bin/
+6) terraform --version
+
+#### How can user install the aws cli in delegate?
+1) curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
+2) microdnf install yum
+
+3) yum install unzip
+ 
+4)  unzip awscliv2.zip
+ 
+5)  ./aws/install
+
+#### Can user able to configure RBAC for the environment based on the stage?
+No, As per the current design user can only configure the RBAC for environment based on environment type.
+
+
+#### How can user install without root permission?
+Our delegate will get installed without root permissions by default, you don't need to make any changes for that.
+
+#### Can user install the docker delegate with rootless docker?
+Yes, you can install the rootless docker and after install the docker delegate.
+
+#### Can we have multiple docker delegate under same delegate name?
+
+When you have same name for multiple delegates they appear under one group and treated as multiple instances of that specific delegate. Whenever that delegate names get selected any instance registered under the name can be picked for executing the task.
+
+#### Can docker delegates be auto upgraded?
+
+Delegate auto upgrade occurs through the cron job that gets created when deploying a helm or a kubernetes delegate. We do not have any such cron in case of docker delegate and hence the image for docker delegate needs to be manually changed for delegate upgardes.
+
+#### What is the base OS for immutable delegates?
+
+Immutable delegates are based on RHEL ubi8 minimal image. On the other hand our legacy delegate were based on ubuntu.
+
+#### Do we have delegate metrics in case of legacy delegates as well?
+
+Custom delegate metrics are only available for immutable delegates, there is no custom metric for legacy delegates. Also for immutable delegates the custom metrics are available from the version 23.05.79311 onwards.
+
+#### Where does delegate look for third party client utilities?
+
+The immuatble delegates look for the third party client utilities in the PATH location during startup. Hence any third party utility that is installed in delegate is expected to be either present in the default PATH location or the path to the binary added in the environment variable PATH.
+
+#### How to find out which user is running the delegate?
+
+We can exec into the pod and run the below command to find out which user is currently owning the delegate process:
+```
+ps -ef | grep delegate
+```
+
+#### How to check the custom metrics currently being published by delegate? 
+
+Delegate has a metrics api end point which we can access on the delegate host for checking the delegate metrics available. Below is the sample curl:
+```
+curl localhost:30109/api/metrics 
+```
+
+#### What is the health api end point for the immutable delegates?
+
+Immutable delegates has a health api end point on which delegate health related information is related. Below is a sample curl for the same:
+```
+curl localhost:30109/api/health
+```
+
+#### How to pass jvm arguments for watcher process?
+Watcher process for delegates uses jvm options from the environment variable WATCHER_JAVA_OPTS. Any custom jvm argument that we want to pass to watcher process can be configured in the WATCHER_JAVA_OPTS variable in the init script.
+
+
+#### How to pass jvm arguments for delegates process?
+Delegate process picks the jvm options from JVM_OPTS environment variable. If we want to pass any custom jvm arguments for the delegate process we can configure it in the JVM_OPTS environment variable. One example is below:
+
+```
+env:
+  - name: JAVA_OPTS
+    value: "-Xms2G"
+
+```
+
+#### Does delegate preocess write gc logs by default?
+
+Delegate jvm process is not configured to write the gc logs by default. If we need to configure the gc logs we need to pass the jvm arguments for the same. For instance below are sample argument , the options can be modified as per the need for gc logs:
+
+```
+JAVA_OPTS='-Xlog:gc*=debug:file=/var/jvm/gc.log'
+```
+
+#### Can a delegate be connected to first gen and next gen at the same time?
+
+A delegate at one time can be connected to only manager instance. Hence the same delegate can not be connected to both the first gen and next gen instance of the same account.
+
+#### How can we do migration of GCP / AWS KMS secrets from FG to NG ?
+
+To migrate encrypted records from an old KMS (FG) to a new one (NG), fetch the Data Encryption Key (DEK) from the old KMS, decrypt the data, re-encrypt it with the new KMS, update the records, and ensure security and compliance. Connectivity between NG and the old KMS is essential.
+
+#### Is way to find the enabled feature flag and available one in UI?
+
+This feature will be available soon.
+
+#### Do proxy settings apply to both HTTP delegate commands and raw socket connects during capability checks?
+
+Proxy settings typically work for HTTP delegate commands, enabling you to route HTTP traffic through a proxy server. However, in the case of capability checks, such as raw socket connects, proxy settings might not apply.
+`CDS_USE_HTTP_CHECK_IGNORE_RESPONSE_INSTEAD_OF_SOCKET_NG` this feature flag should be enabled to solve the issue.
+
+#### Is it a standard practice to notify you 30 days in advance whenever there are changes to our IP addresses?
+
+We don't change IPs without 30 days notice to you all. If a security emergency requires a change, you will be notified. For more info you can refer [here](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips/#allowlist-harness-saas-ips).
+
+#### Is the FF `PL_ENABLE_MULTIPLE_IDP_SUPPORT` available and enabled to use?
+
+Yes it is enabled, you can refer to [this](https://developer.harness.io/docs/platform/authentication/multiple-identity-providers/#configure-multiple-saml-providers).
+
+#### Do we have an automatic upgrades for ECS delegates?
+
+No, we don't have auto upgrade for docker delegate so far.
+
+#### What needs to follow if the production delegate is down because of using legacy delegate and a old watcher version ?
+
+- Re-deploy legacy delegate by pulling the fresh "latest" image. This will make sure that you get most recent watcher.
+- We can revert the delegate version in the ring to unblock.
+- You can use immutable delegate.
+
+#### What should be possible solution of the error `not supported by windows` while working in CCM POV ?
+
+If this is a mixed node cluster then the delegate needs to run on Linux nodes. You can use selector in your delegate yaml to make sure that Linux nodes are selected. You can refer to this [docs](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/) for more information.
+
+#### Whenever I switch my Harness account, I encounter a login prompt, captcha, and the message `too many invalid login attempts, account blocked`  despite having no invalid login attempts. Why does this happen?
+
+This issue may arise due to several reasons:
+
+- Authentication Requirement: If you are not a part of the Harness Support group, you may need to re-authenticate while switching accounts. This is a standard security measure.
+- Resetting Password: It is possible that when you attempt to reset your password, it only affects the login attempt value in one cluster and not the other one. This discrepancy in the reset process can lead to login issues.
+
+Ensure you are properly authenticated when switching accounts.
+
+#### What is the default limit of QPS?
+
+Default limit of QPS is: 50 QPM per manager* Num of managers(3) =>Total 50*3 QPM = 2.5 QPS.
+
+#### Is there a way to upgrade the volumes created when installing Harness with Helm from gp2 to gp3?
+
+Volume types are controlled by storage class, its not harness controlled.
+You can modify the storage class setting by the [link](https://kubernetes.io/docs/concepts/storage/storage-classes/#aws-ebs) but you would lose the data if aws doesn't support direct upgrade from gp2 to gp3.
+
+#### Is there a plan to integrate Git into our SMP?
+
+Yes, it will be integrated soon.
+
+
 

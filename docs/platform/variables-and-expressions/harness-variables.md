@@ -557,6 +557,29 @@ If you wish to concatenate expressions as strings, make sure that each expressio
 
 :::
 
+### Best practices for expressions usage
+
+- When using `,` inside a method invocation with an expression, the expression must be wrapped in quotation marks.
+
+   For example, consider the following expression:
+
+   ```
+   <+<+pipeline.variables.var2>.replace("a", "<+pipeline.variables.var1>")>
+   ```
+
+   In the above expression, `<+pipeline.variables.var1>` must be wrapped in quotation marks because the expression is a string parameter for a method.
+
+- When using expressions in JSON as a string, they must be wrapped in quotation marks for valid JSON.
+
+   For example, consider the following JSON:
+
+   ```json
+   "{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"
+   ```
+
+    In the JSON above, the expression `<+pipeline.variables.version>` must be wrapped in quotation marks because it resolves as a string inside JSON (and Strings need to be quoted). The expression `<+<+pipeline.variables.hosts>.split(\",\")>` doesn't need to be wrapped in quotation marks because it will be resolved as a list.
+
+
 ## Debugging expressions
 
 :::info note
@@ -1699,6 +1722,14 @@ When you add a new artifact trigger, you select the artifact to listen on, and i
 The `<+trigger.artifact.build>` used for **Tag** makes sure that the new artifact version that executed the trigger is used for the deployment.
 
 Adding a new tag to the artifact fires the trigger and executes the pipeline. Harness resolves `<+trigger.artifact.build>` to the tag that fired the trigger. This makes sure that the new tag is used when pulling the artifact and the new artifact version is deployed.
+
+### <+trigger.artifact.source.connectorRef>
+
+Resolves to the Harness connector Id for the connector used to monitor the artifact registry that fired the trigger.
+
+### <+trigger.artifact.source.imagePath>
+
+Resolves to the image path for the artifact that fired the trigger.
 
 ### Git trigger and payload expressions
 

@@ -1,3 +1,7 @@
+---
+title: Pipline success on failure
+---
+
 # Introduction
 
 Pipeline is showing status as Success even after having errors

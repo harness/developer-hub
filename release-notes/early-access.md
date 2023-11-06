@@ -590,6 +590,18 @@ No early access (beta) features are available for the Harness Continuous Error T
 
 The following early access (beta) features are available for the Harness Continuous Integration module.
 
+### Delegate selectors for codebase tasks
+
+* **Release date:** November 2023
+* **Release version:** 6501
+* **Issue number:** CI-9980
+* **Feature flag:** `CI_CODEBASE_SELECTOR`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Without this feature flag enabled, delegate selectors aren't applied to delegate-related CI codebase tasks.
+
+With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector).
+
 ### GitHub App authentication for GitHub connectors
 
 * **Release date:** August 2023
