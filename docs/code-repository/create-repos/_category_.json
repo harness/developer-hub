@@ -1,11 +1,11 @@
 {
-   "label":"Create repositories",
+   "label":"Manage repositories",
    "position": 30,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Create repositories"
+      "title":"Manage repositories"
    }
 }

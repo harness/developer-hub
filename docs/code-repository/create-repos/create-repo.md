@@ -16,6 +16,8 @@ Repositories are where your code is stored. When developers make changes to code
 6. Optionally, you can add a **License**, **.gitignore**, or **README** file to your repository.
 7. Select **Create Repository**.
 
+After creating a repository, you're you can change the name, description, and visibility on the repository's **Settings** page.
+
 ## Import a repository
 
 The ability to import repositories is coming soon. While the Harness Code UI includes options to import repositories, this functionality is not yet fully supported.
