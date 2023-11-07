@@ -36,7 +36,7 @@ In the following example, we will install the Agent at the Harness account level
 
 ## Mapping Argo CD projects to Harness Projects
 
-The following sections describe how to map Argo CD projects to Harness Projects when installing a new Agent. Mapping Argo CD projects in an existing Agent is covered in [Adding new mappings to existing Agent](#adding_new_mappings_to_existing_agent).
+The following sections describe how to map Argo CD projects to Harness Projects when installing a new Agent. Mapping Argo CD projects in an existing Agent is covered in [Adding new mappings to existing Agent](#adding-new-mappings-to-existing-agent).
 
 The following steps show you how to install a GitOps Agent into an existing Argo CD namespace and then map your existing projects to your Harness Project.
 
