@@ -21,7 +21,7 @@ CF app stop fault:
   </tr>
   <tr>
     <td> cfDeploymentPlatform </td>
-    <td> Deployment platform used for cloud foundry, with respect to where the infrastructure is executing </td>
+    <td> Deployment platform used for cloud foundry, with respect to where the infrastructure is hosted </td>
     <td> Supports <code>local</code> and <code>vSphere</code> </td>
   </tr>
   <tr>
