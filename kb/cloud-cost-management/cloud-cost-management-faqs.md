@@ -295,7 +295,7 @@ We aim to enhance the flexibility of this process by not automatically opening a
 
 Upon the expiration of the license, we regret to inform you that recommendations will no longer be accessible, and the system will not generate any new recommendations. We apologize for any inconvenience this may cause and appreciate your understanding.
 
-#### Can we fine tune ec 2 recommendations ?
+#### Can we fine tune EC2 recommendations ?
 
 Yes, you can tune ec 2 recommendations provided you do it for cross family changes
 
