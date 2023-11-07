@@ -88,7 +88,7 @@ In **Name**, enter the name for the new Agent.
 In **GitOps Operator**, select one of the following:
   
   * **Argo**. Uses Argo CD as the GitOps reconciler.
-  * **Flux**. Uses Flux as the GitOps reconciler. <!-- For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux).--> <!-- Commenting out because the referenced topic is a new one and is causing a broken link error in preview environment builds. It basically points to Continuous Delivery & GitOps > GitOps > Use GitOps > Manage Flux applications, so you can use the left nav to view the new topic. -->
+  * **Flux**. Uses Flux as the GitOps reconciler. <!-- For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/flux/use-flux).--> <!-- Commenting out because the referenced topic is a new one and is causing a broken link error in preview environment builds. It basically points to Continuous Delivery & GitOps > GitOps > Use GitOps > Manage Flux applications, so you can use the left nav to view the new topic. -->
 
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
 
@@ -117,7 +117,7 @@ In **Name**, enter the name for the existing Agent CD Project. For example, **de
 In **GitOps Operator**, select one of the following:
   
   * **Argo**. Uses Argo CD as the GitOps reconciler.
-  * **Flux**. Uses Flux as the GitOps reconciler. <!-- For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux). --> <!-- Commenting out because the referenced topic is a new one and is causing a broken link error in preview environment builds. It basically points to Continuous Delivery & GitOps > GitOps > Use GitOps > Manage Flux applications, so you can use the left nav to view the new topic. -->
+  * **Flux**. Uses Flux as the GitOps reconciler. <!-- For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/flux/use-flux). --> <!-- Commenting out because the referenced topic is a new one and is causing a broken link error in preview environment builds. It basically points to Continuous Delivery & GitOps > GitOps > Use GitOps > Manage Flux applications, so you can use the left nav to view the new topic. -->
 
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
 
@@ -228,7 +228,7 @@ Select **Continue**.
 
 :::note
 
-**Mapping Argo CD projects to Harness Projects:** See [Map Argo projects to Harness GitOps Projects](/docs/continuous-delivery/gitops/connect-and-manage/multiple-argo-to-single-harness.md).
+**Mapping Argo CD projects to Harness Projects:** See [Map Argo projects to Harness GitOps Projects](/docs/continuous-delivery/gitops/connect-and-manage/argocd/multiple-argo-to-single-harness.md).
 
 :::
 
@@ -264,7 +264,7 @@ In addition, when you install the Harness GitOps Agent in your existing Argo CD 
 
 Also, whenever new entities are created in mapped Argo CD projects, they are added to Harness automatically.
 
-For steps on setting up the mapping and import, go to [Map Argo projects to Harness GitOps Projects](/docs/continuous-delivery/gitops/connect-and-manage/multiple-argo-to-single-harness.md).
+For steps on setting up the mapping and import, go to [Map Argo projects to Harness GitOps Projects](/docs/continuous-delivery/gitops/connect-and-manage/argocd/multiple-argo-to-single-harness.md).
 
 ## Proxy support
 

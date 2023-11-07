@@ -92,7 +92,7 @@ In **Name**, enter the name **example**.
 In **GitOps Operator**, select one of the following:
   
   * **Argo**. Uses Argo CD as the GitOps reconciler.
-  * **Flux**. Uses Flux as the GitOps reconciler. <!-- For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux). --> <!-- Commenting out because the referenced topic is a new one and is causing a broken link error in preview environment builds. It basically points to Continuous Delivery & GitOps > GitOps > Use GitOps > Manage Flux applications, so you can use the left nav to view the new topic. -->
+  * **Flux**. Uses Flux as the GitOps reconciler. <!-- For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/flux/use-flux). --> <!-- Commenting out because the referenced topic is a new one and is causing a broken link error in preview environment builds. It basically points to Continuous Delivery & GitOps > GitOps > Use GitOps > Manage Flux applications, so you can use the left nav to view the new topic. -->
 
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment. For this quickstart, we use **default**.
 
@@ -307,7 +307,7 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
 3. In **GitOps Operator**, select one of the following:
   
     * **Argo**. Uses Argo CD as the GitOps reconciler.
-    * **Flux**. Uses Flux as the GitOps reconciler. <!-- For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux). --> <!-- Commenting out because the referenced topic is a new one and is causing a broken link error in preview environment builds. It basically points to Continuous Delivery & GitOps > GitOps > Use GitOps > Manage Flux applications, so you can use the left nav to view the new topic. -->
+    * **Flux**. Uses Flux as the GitOps reconciler. <!-- For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/flux/use-flux). --> <!-- Commenting out because the referenced topic is a new one and is causing a broken link error in preview environment builds. It basically points to Continuous Delivery & GitOps > GitOps > Use GitOps > Manage Flux applications, so you can use the left nav to view the new topic. -->
 
 4. In **GitOps Agent**, select the Agent you added earlier.
 5. In **Service**, click **New Service**, and name the Service **guestbook**.
