@@ -32,17 +32,10 @@ For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/inst
 
 1. Copy the following task `spec` into a file. Save the file as `task-spec.json`.
 
-   ```
+   ```json
      {
        "containerDefinitions": [
          {
-           "portMappings": [
-             {
-               "hostPort": 8080,
-               "protocol": "tcp",
-               "containerPort": 8080
-             }
-           ],
            "cpu": 1,
            "environment": [
              {
@@ -151,17 +144,10 @@ Use the following steps to create a task definition. For information about task 
 
 1. Copy the following task `spec` into a file. Save the file as `task-spec.json`.
 
-   ```
+   ```json
     {
       "containerDefinitions": [
         {
-          "portMappings": [
-            {
-              "hostPort": 8080,
-              "protocol": "tcp",
-              "containerPort": 8080
-            }
-          ],
           "cpu": 1,
           "environment": [
            {
@@ -237,7 +223,7 @@ Use the following steps to create a task definition. For information about task 
 
 1. Edit the `service.json` file as follows:
 
-   ```
+   ```json
    {
       "launchType": "FARGATE",
       "cluster": "<CLUSTER_NAME>",

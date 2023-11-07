@@ -3,7 +3,7 @@ title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
 date: 2023-11-03:T10:00:30
-sidebar_position: 12
+sidebar_position: 3
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';

@@ -7,6 +7,13 @@ const path = require('path');
 
 const BASE_URL = process.env.BASE_URL || '/';
 
+function hideIndexFromSidebarItems(items) {
+  const result = items.filter((item) => {
+    return !(item.type === 'doc' && item.id === 'index');
+  });
+  return result;
+}
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Harness Developer Hub',
@@ -241,7 +248,7 @@ const config = {
               },
               {
                 label: 'Release Notes',
-                href: '/release-notes/whats-new',
+                href: '/release-notes',
               },
               {
                 label: 'FAQs',
@@ -417,7 +424,7 @@ const config = {
               },
               {
                 label: 'Release Notes',
-                href: '/release-notes/whats-new',
+                href: '/release-notes',
               },
               {
                 label: 'Feature Requests',
@@ -544,6 +551,12 @@ const config = {
         exclude: ['**/shared/**', '**/static/**'],
         sidebarPath: require.resolve('./sidebars-release-notes.js'),
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
+        async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
+          const sidebarItems = await defaultSidebarItemsGenerator(args);
+          const sidebarItemsWithoutIndex =
+            hideIndexFromSidebarItems(sidebarItems);
+          return sidebarItemsWithoutIndex;
+        },
       },
     ],
     // redirect plugin start
