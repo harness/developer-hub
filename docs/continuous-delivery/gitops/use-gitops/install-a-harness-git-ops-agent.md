@@ -77,7 +77,7 @@ Select **GitOps Agents**.
 
 Select **New GitOps Agent**. The Agent wizard appears.
 
-::: note
+:::note
 
 For the purposes of this tutorial, we will be creating a regular Harness GitOps agent without an existing Argo CD instance (non-BYOA setup). For creating a BYOA setup (with an existing Argo CD installation), please refer to [Bring Your Own Argo CD (BYOA) into Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/argocd/byo-argo-to-harness.md)
 
