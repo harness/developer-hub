@@ -13,7 +13,7 @@ In the **Security Testing Orchestration** left-hand menu, go to **Executions**. 
 
 The following steps describe the general workflow:
 
-1. **Security Execution** filters are useful for complex pipelines that run multiple scans. You can filter issues by target, target type, step, stage, and scanner.  
+1. **Security Execution** filters are useful for complex pipelines that run multiple scans. You can use these filters to focus only on issues for specific targets, target types, stages, steps, and scanners. If you're only interested in DAST results, for example, you can hide all other issues. Focusing on a specific target can also make it easier to compare results with previous scans of that target. 
 
 2. Select the [severity](/docs/security-testing-orchestration/get-started/key-concepts/severities) tiles to filter the lists by severity. You can also show or hide issues with exemptions.  
 
