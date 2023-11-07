@@ -24,7 +24,7 @@ Cloud Foundry faults disrupt the functioning of Cloud Foundry resources. This de
 
 CF app stop injects app stop chaos for a Cloud Foundry app.
 
-- Checks app resilience against abrupt stopping.
+- Checks resilience against abrupt stop of application components/microservices.
 - Validates the effectiveness of disaster recovery and high availability of the app.
 
 <accordion color="green">
