@@ -465,11 +465,11 @@ To add a Helm chart to your service, do the following:
       This feature is behind the feature flag CDS_OCI_HELM_ECR_CONFIG_SUPPORT_NG. Contact Harness Support to enable the feature. 
       :::
 
-      For the steps and settings of each option, go to [Connectors](/docs/category/connectors) or [Connect to a Git repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
+For the steps and settings of each option, go to [Connectors](/docs/category/connectors) or [Connect to a Git repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
    
-   Once your Helm chart is added, it appears in the **Manifests** section. For example:
+Once your Helm chart is added, it appears in the **Manifests** section. For example:
    
-   ![](./static/kubernetes-services-05.png)
+![](./static/kubernetes-services-05.png)
 
 ```mdx-code-block
   </TabItem1>
