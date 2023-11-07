@@ -349,13 +349,13 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
    ![](./static/harness-cd-git-ops-quickstart-16.png)
 
 24. Click **Finish**.
-25.  The new Application is created. At first, it will be **UNKNOWN**.
+25.  The new Application is created. At first, the current sync status will be **UNKNOWN**.
    
     ![](./static/harness-cd-git-ops-quickstart-17.png)
 
 Now we can manually sync the Application.
 
-## Step 5: Perform GitOps
+## Step 5: Perform GitOps - Sync the Application to Git
 
 Now that you have everything set up, you can sync the source state with the desired state.
 
@@ -363,11 +363,18 @@ Now that you have everything set up, you can sync the source state with the desi
 
    ![](./static/harness-cd-git-ops-quickstart-18.png)
 
-2. The Synchronize settings appear.
+2. In the Synchronize settings wizard, you can change any of the **Sync Policy** options you set in the Application.
 
    ![](./static/harness-cd-git-ops-quickstart-19.png)
 
-3. Here you can change any of the **Sync Policy** options you set in the Application.
+   Some details about the options in this wizard:
+
+   * **Skip Schema Validation**: Does not validate the YAML schema when enabled.
+   * **Auto Create Namespace**: The namespace specified will be automatically created if it doesn't exist already. Without this enabled, the Application will fail to sync if the namespace doesn't exist.
+   * **Prune Last**: When enabled along with the **Prune** option, pruning of resources happens in the final wave of the sync operation.
+   * **Apply Out of Sync Only**: By default, all objects in the application are synced. For applications with a large number of objects, this will slow down the operation. Enabling this option will sync only resources in the **OutOfSync** state.
+   * **Select Prune Propagation Policy**: Defines how resources are pruned by Kubernetes. [See more ](https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion)
+   * **Retry**: Retries the sync operation in case of a failure when enabled. 
 4. Click **Synchronize**.
 5. You will see the status **Progressing** and then **HEALTHY**.
 
