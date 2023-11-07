@@ -18,13 +18,37 @@ Harness supports the configuration of Default Settings for the following modules
 * Deployments
 * Builds
 
-### Required Permissions
+### Required permissions
 
 Make sure you have the **view** and **edit** permissions for Default Settings.
 
-## Harness Platform Default Settings
+## Manage Harness Platform default settings
 
-Default Settings include configurable module-specific parameters that you can customize based on your needs, such as enabling or disabling features at specific scopes.
+Default Settings include configurable module-specific parameters that you can customize based on your needs, such as enabling or disabling features at specific scopes. 
+
+To access the Default Settings at the Account scope, do the following:
+
+1. In your Harness Account, go to **Account Resources**.
+
+   ![](./static/default-settings-00.png)
+
+2. Select **Default Settings**. The **Account Default Settings** appear.
+
+To access the Default Settings at the Org scope, do the following:
+
+1. In Harness, select your organization. The organization page opens.
+
+2. Select **Default Settings**. The **Account Default Settings** appear.
+
+To access the Default Settings at the Project scope, do the following:
+
+1. In Harness, select your project. 
+
+2. Under **PROJECT SETUP**, select **Default Settings**. The **Account Default Settings** appear.
+
+## Account scope default settings
+
+This topic lists Default Settings at the Account scope. You can also configure Default Settings at the Org and Project scopes.
 
 ### General
 
@@ -107,7 +131,7 @@ This topic explains how to view and edit Default Settings at the Account scope.
 
    ![](./static/default-settings-00.png)
 
-2. Click **Default Settings**. The **Account Default Settings** appear.
+2. Select **Default Settings**. The **Account Default Settings** appear.
 
    Harness onboards the module-specific settings in **Account Default Settings**.
    
