@@ -259,10 +259,6 @@ As of now we don't support showing GCP recommnedations
 
 Currently, recommnedations section is only visible in perspective made through clusters
 
-#### Why RDS instance resize recommendation not showing in results?
-
-Right now, the policy only identifies potential RDS instances for resize. Earlier we had a resize action associated with the policy but since it is not currently supported by custodian, we have removed it.
-
 #### When I create a JIRA ticket from a recommendation, will that recommendations automatically come in the applied recommendations tab once the JIRA status of the ticket is set to done ?
 
 Yes, as soon as you change the JIRA status of a ticket created for a partiucular recommnedation and change it's status to done, that particular recommendation will automatically start appearing in applied recommendations tab
