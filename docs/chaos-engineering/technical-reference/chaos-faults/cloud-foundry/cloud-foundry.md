@@ -12,7 +12,7 @@ import { experiments } from "./experiments"
 <!-- Heading Description -->
 ## Introduction
 
-Cloud Foundry faults disrupt the Cloud Foundry resources. This deteriorates the performance of the app for the duration of the chaos experiment.
+Cloud Foundry faults disrupt the functioning of Cloud Foundry resources. This deteriorates the performance of the app for the duration of the chaos experiment.
 
 <!-- Experiment List and Search Bar (every experiment added below, need to be added in this file also) -->
 
