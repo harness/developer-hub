@@ -165,7 +165,7 @@ Following are the additional fields required for the AppProject:
 The remaining fields remain the same as in Argo CD.
 
 :::note
-By default, Harness creates an AppProject for you when you create the repository and cluster at the beginning of this procedure. The name of this AppProject is available on the agent details page, under **Mapped Harness Project**. If you are creating a new AppProject, remember to add the [mapping for the Argo project to the Harness project in the GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/multiple-argo-to-single-harness), and then use the value of `metadata.name` in the project field of the entity configurations. The UI requires that information to show the entities.
+By default, Harness creates an AppProject for you when you create the repository and cluster at the beginning of this procedure. The name of this AppProject is available on the agent details page, under **Mapped Harness Project**. If you are creating a new AppProject, remember to add the [mapping for the Argo project to the Harness project in the GitOps Agent](/docs/continuous-delivery/gitops/manage-external-providers/multiple-argo-to-single-harness), and then use the value of `metadata.name` in the project field of the entity configurations. The UI requires that information to show the entities.
 :::
 
 You can use all other entity configurations without modifying them.
