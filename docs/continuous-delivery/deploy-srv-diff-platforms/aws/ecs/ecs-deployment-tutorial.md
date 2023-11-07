@@ -1386,3 +1386,17 @@ You can override the:
 These overrides can be configured at the Harness environment's service-specific override level, as well as at the environment infrastructure definition level. 
 
 
+### Attaching CloudWatch alarms to scaling policies
+
+To attach your AWS CloudWatch alarms to a scaling policy, simply add a Harness Shell Script step with the following script after the deployment step in your stage (placeholders are in UPPERCASE):
+
+```bash
+
+// to fetch scaling policy arn, run this
+
+aws application-autoscaling describe-scaling-policies --service-namespace ecs --resource-id service/<+infra.cluster>/<+execution.steps.ECS_DEPLOY_STEP_ID.output.serviceName> --region <+infra.region>
+
+// to attach cloud watch alarm to scaling policy.
+
+aws cloudwatch put-metric-alarm --alarm-name ALARM_NAME --alarm-actions SCALING_POLICY_ARN
+```
