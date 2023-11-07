@@ -12,7 +12,7 @@ Currently, this feature is behind the feature flag, `CDS_NG_TRIGGER_SELECTIVE_ST
 
 :::
 
-import Variables from '/docs/platform/triggers/shared/variables-not-supported.md'
+import Variables from '/docs/platform/shared/variables-not-supported.md'
 
 <Variables />
 
