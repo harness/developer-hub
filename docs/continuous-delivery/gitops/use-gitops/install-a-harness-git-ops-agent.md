@@ -228,7 +228,7 @@ Select **Continue**.
 
 :::note
 
-**Mapping Argo CD projects to Harness Projects:** See [Map Argo projects to Harness GitOps Projects](/docs/continuous-delivery/gitops/manage-external-providers/argocd/multiple-argo-to-single-harness.md).
+**Mapping Argo CD projects to Harness Projects:** See [Map Argo projects to Harness GitOps Projects](/docs/continuous-delivery/gitops/manage-gitops-providers/argocd/multiple-argo-to-single-harness.md).
 
 :::
 
@@ -264,7 +264,7 @@ In addition, when you install the Harness GitOps Agent in your existing Argo CD 
 
 Also, whenever new entities are created in mapped Argo CD projects, they are added to Harness automatically.
 
-For steps on setting up the mapping and import, go to [Map Argo projects to Harness GitOps Projects](/docs/continuous-delivery/gitops/manage-external-providers/argocd/multiple-argo-to-single-harness.md).
+For steps on setting up the mapping and import, go to [Map Argo projects to Harness GitOps Projects](/docs/continuous-delivery/gitops/manage-gitops-providers/argocd/multiple-argo-to-single-harness.md).
 
 ## Proxy support
 
