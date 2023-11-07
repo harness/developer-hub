@@ -246,8 +246,6 @@ Harness CD includes an extensive set of dashboard components that provide visibi
 
 :::note Important notes
 
-- Currently, this feature is behind the Feature Flag `CDS_STEP_EXECUTION_DATA_SYNC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
 - Dashboard components for ServiceNow approvals are not currently available. 
 
 :::
@@ -308,10 +306,6 @@ Harness CD includes an extensive set of dashboard components that provide visibi
 * Which stages and steps have the most failures? 
 
 * How much time is spent deploying artifacts vs. waiting for Jira approvals and other manual interventions? 
-
-:::note
-This feature is behind the feature flag `CDS_CUSTOM_STAGE_EXECUTION_DATA_SYNC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
 
 <figure>
 

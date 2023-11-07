@@ -1535,8 +1535,6 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 
 - Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
 
-  This functionality is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`.
-
   This functionality helps you efficiently manage your resources. The scale down step can be configured within the same stage or a different stage, based on your requirement.
 
   During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets, and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
@@ -1816,7 +1814,7 @@ This release does not include any early access features.
 
   Triggers are not disabled now even if pipeline validation fails.
 
-- The Terraform Plan step failed when an account level secret manager was selected an the feature flag, `CDS_NOT_ALLOW_READ_ONLY_SECRET_MANAGER_TERRAFORM_TERRAGRUNT_PLAN` was enabled. (CDS-68140)
+- The Terraform Plan step failed when an account level secret manager was selected and the feature flag, `CDS_NOT_ALLOW_READ_ONLY_SECRET_MANAGER_TERRAFORM_TERRAGRUNT_PLAN` was enabled. (CDS-68140)
 
   This issue is now fixed.
 
