@@ -151,6 +151,21 @@ In the following examples, the Id of the HTTP step is `HTTP`.
 | status | `<+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.status>` | `SUCCESS` |
 
 
+## Use a certificate and key
+
+:::note 
+
+This feature is behind the feature flag `CDS_HTTP_STEP_NG_CERTIFICATE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You can specify a TSL certificate and key for the HTTP step. This enables TLS encryption for your HTTP services. 
+
+1. In **Optional Configuration**, in **Certificate**, enter the certificate, including the `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
+2. In **Certificate Key**, enter the public key.
+
+You can use fixed values, expressions, or runtime inputs for these settinfs. It is good practice to use Harness [file secrets](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) and [text secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/) for these values.
+
 ## Delegate proxy
 
 HTTP step supports delegate proxy settings by default. For more information, go to [delegate proxy settings](/docs/platform/Delegates/manage-delegates/configure-delegate-proxy-settings).
