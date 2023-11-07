@@ -1,10 +1,10 @@
 ---
 title: Configure webhooks
-description: Configure webhooks to get notified about Git events in your Code repositories.
+description: Use webhooks to automatically trigger pipelines from Git events.
 sidebar_position: 20
 ---
 
-Webhooks send data to HTTP endpoints when Git events occur in your Harness Code repositories, such as opened pull requests, new branches, and more.
+Use webhooks to automatically trigger pipelines when certain Git events occur in your Harness Code repositories.
 
 ## Create a webhook
 
@@ -14,19 +14,35 @@ Webhooks send data to HTTP endpoints when Git events occur in your Harness Code 
 4. If the endpoint requires authentication, provide your [Harness API token](/docs/platform/automation/api/add-and-manage-api-keys) in **Secret**. You can use the same token generated when you [cloned the repo](../work-in-repos/clone-repos.md) or a new API token.
 5. Specify the events that you want to trigger this webhook.
 
-   * **Send me everything:** All events trigger the webhook. Payloads are sent to your endpoint for all Git events in this repo.
-   * **Let me select individual events:** Select specific Git events that you want to trigger this webhook. Payloads are sent to your endpoint only when the specified events occur in this repo. Events include:
-      * Branch created, updated, or deleted
-      * Tag created, updated, or deleted
-      * PR created, closed, or reopened
-      * PR branch updated
-      * PR comment created
+   * **Send me everything:** All applicable Git events trigger the webhook. Payloads are sent to your endpoint for all Git events in this repo.
+   * **Let me select individual events:** Select specific Git events that you want to trigger this webhook. Payloads are sent to your endpoint only when the specified events occur in this repo.
+
+   Webhook triggering events include:
+
+   * Branch created, updated, or deleted
+   * Tag created, updated, or deleted
+   * PR created, closed, or reopened
+   * PR branch updated
+   * PR comment created
 
 6. Select **Enable SSL verification**, if your endpoint supports it.
 7. Webhooks are **Enabled** by default. If you don't want this webhook to be enabled yet, deselect **Enabled**.
 8. Select **Create Webhook**.
 
-After you create a webhook, you can create [triggers](/docs/category/triggers) to automatically run your CI/CD pipelines in response to Git events in your Harness Code repos. <!-- not sure which type of trigger to use. Custom? will there be a built-in Git one? -->
+## Create a trigger
+
+After you create a webhook, you can create [triggers](/docs/category/triggers) to automatically run your CI/CD pipelines in response to Git events in your Harness Code repos.
+
+Currently, Harness Code webhook triggers must be configured in the YAML editor.
+
+1. Go to the pipeline where you want to add a trigger for a Harness Code webhook.
+2. Select **Triggers** in the Pipeline Studio header.
+3. Switch to the YAML editor, and use the following template to configure a trigger based on a Harness Code webhook.
+
+   ```yaml
+   ```
+
+4. Save the trigger.
 
 ## Toggle webhooks
 
