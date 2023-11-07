@@ -37,17 +37,17 @@ The following steps show you how to install a GitOps Agent into an existing Argo
 1. In your Harness account, click **Account Settings**.
 2. click **GitOps**, and then click **Agents**.
    
-   ![](./static/multiple-argo-to-single-harness-64.png)
+   ![](../static/multiple-argo-to-single-harness-64.png)
 
 3. Click **New GitOps Agent**.
 4. In **Agent Installation**, in **Do you have any existing Argo CD instances**, click **Yes**, and then click **Start**.
    
-   ![](./static/multiple-argo-to-single-harness-65.png)
+   ![](../static/multiple-argo-to-single-harness-65.png)
 
 5. In **Name**, enter a name for your agent, such as **byoa-agent**.
 6. In **Namespace**, enter the namespace where Argo CD is hosted. The default is **argocd**.
    
-   ![](./static/multiple-argo-to-single-harness-66.png)
+   ![](../static/multiple-argo-to-single-harness-66.png)
 
 7. Click **Continue**.
 8. In **Review YAML**, click **Download & Continue**.
@@ -72,7 +72,7 @@ The following steps show you how to install a GitOps Agent into an existing Argo
    
    The Agent has registered with Harness.
    
-   ![](./static/multiple-argo-to-single-harness-67.png)
+   ![](../static/multiple-argo-to-single-harness-67.png)
 
 2.  Click **Continue**. The **Map Projects** settings appear.
 
@@ -144,11 +144,11 @@ To map your existing Argo CD projects to Harness Projects, you simply select the
 
 1. In **Map Projects**, in **Select your Argo Projects to Import**, click the Argo CD projects you want to map.
    
-   ![](./static/multiple-argo-to-single-harness-68.png)
+   ![](../static/multiple-argo-to-single-harness-68.png)
 
 2. In each row, select the Argo project and corresponding Harness Project.
    
-   ![](./static/multiple-argo-to-single-harness-69.png)
+   ![](../static/multiple-argo-to-single-harness-69.png)
    
    Do not map the same Argo CD project to multiple Harness Projects.
 
@@ -158,11 +158,11 @@ To map your existing Argo CD projects to Harness Projects, you simply select the
 
    Here's an example where the Argo CD applications, repositories, repository certs, and clusters are imported.
 
-   ![](./static/multiple-argo-to-single-harness-70.png)
+   ![](../static/multiple-argo-to-single-harness-70.png)
 
 1. Click **Finish**. The mapping is displayed in the Agent details.
    
-   ![](./static/multiple-argo-to-single-harness-71.png)
+   ![](../static/multiple-argo-to-single-harness-71.png)
    
 2. Click **Save**.
 
@@ -173,7 +173,7 @@ Next, look in the mapped Harness Project to see the imported Argo CD entities.
 1. In your Harness Project, click **GitOps**, and then click **Applications**.
    You can see the imported application.
    
-   ![](./static/multiple-argo-to-single-harness-72.png)
+   ![](../static/multiple-argo-to-single-harness-72.png)
 
 2. Click **Settings**, and then click **Repositories**.
    You can see the imported repositories.
@@ -189,7 +189,7 @@ You can add new mappings to an existing Agent in the Agent's **Mapped Harness Pr
 1. In Harness, open an existing Agent.
 2. Click **Edit**. In this example, I already have the Argo CD project **alpha** mapped to the Harness Project **GitOps**.
    
-   ![](./static/multiple-argo-to-single-harness-73.png)
+   ![](../static/multiple-argo-to-single-harness-73.png)
    
    Let's add a new mapping.
 
@@ -198,13 +198,13 @@ You can add new mappings to an existing Agent in the Agent's **Mapped Harness Pr
 5. Map the new Argo CD project to a Harness Project and click **Import & Continue**.
    Do not re-map an existing mapping. Harness will throw an error.
    
-   ![](./static/multiple-argo-to-single-harness-74.png)
+   ![](../static/multiple-argo-to-single-harness-74.png)
 
 6. When the import is complete, click **Finish**.  
 
 Both projects are now mapped.
 
-![](./static/multiple-argo-to-single-harness-75.png)
+![](../static/multiple-argo-to-single-harness-75.png)
 
 ## Adding Argo CD entities to Harness automatically
 
@@ -222,7 +222,7 @@ The process for generating the name is: take the repo name, remove any dashes, a
 
 For example, the Argo CD repo `https://github.com/argoproj/gitops-engine.git` is named `gitopsengine_kmjzyrbs` in Harness
 
-![](./static/multiple-argo-to-single-harness-76.png)
+![](../static/multiple-argo-to-single-harness-76.png)
 
 ### Make sure that your Argo CD entities are visibile in the Harness UI
 
@@ -230,7 +230,7 @@ In some Argo CD versions, you are not required to specify a project for your ent
 
 If you are unable to edit an entity from the Argo CD UI, you can edit that entity in the cluster so that they have a project and other required values. The entities are stored in different formats in the cluster. For example, clusters, repositories, and repository credential templates are stored in `Secret`, and GnuPG keys and repository certificates are stored in `ConfigMap` in the namespace in which Argo CD is installed. 
 
-Edit the respective secret of the entity and add the fields `project` and `name` in the `data` or `stringData` block. For examples, go to [Manage an Argo CD configuration by using Harness GitOps](/docs/continuous-delivery/gitops/manage-external-providers/manage-argo-configs.md#git-configuration-files).
+Edit the respective secret of the entity and add the fields `project` and `name` in the `data` or `stringData` block. For examples, go to [Manage an Argo CD configuration by using Harness GitOps](/docs/continuous-delivery/gitops/manage-external-providers/argocd/manage-argo-configs.mdfigs.md#git-configuration-files).
 
 
 ## Creating GitOps Clusters with multiple projects
@@ -250,7 +250,7 @@ By default, in the Argo CD console, when you create a cluster it is not associat
 
 7. In **Project**, select the Argo CD project with the cluster you want to import.
    
-   ![](./static/multiple-argo-to-single-harness-77.png)
+   ![](../static/multiple-argo-to-single-harness-77.png)
 
 8. Click **Continue**.
 9.  Complete the regular steps for adding the resource.
@@ -273,7 +273,7 @@ When you have multiple Argo CD projects mapped to your Harness Project, you can 
 
 8. In **Project**, select the Argo CD project with the repo you want to import.
    
-   ![](./static/multiple-argo-to-single-harness-78.png)
+   ![](../static/multiple-argo-to-single-harness-78.png)
 
 9.  Enter the **Repository URL** and click **Continue**. You might have multiple repos in that Argo CD project. So the Repository URL is required.
 10. Complete the regular steps for adding the resource.
@@ -294,7 +294,7 @@ When you have multiple Argo CD projects mapped to your Harness Project, you can 
 
 6. In **Project**, select the Argo CD project with the application you want to import.
    
-   ![](./static/multiple-argo-to-single-harness-79.png)
+   ![](../static/multiple-argo-to-single-harness-79.png)
 
 7. Select/create the Harness Service and Environment, and then click **Continue**.
 8. Complete the regular steps for adding the resource.
