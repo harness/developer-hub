@@ -64,7 +64,9 @@ Harness has multiple Git-based features and it's important to understand the dif
 * **Config-as-Code:** Harness supports full [YAML-based configuration of pipelines](/docs/platform/pipelines/harness-yaml-quickstart) and other Harness entities, like connectors. Harness Pipeline Studio includes a full YAML IDE with hints and autocomplete, so you can simply code your Pipelines as YAML.
 * **Harness Git Experience:** Harness can sync your pipelines and other entities with Git repos so you can make all your changes in Git instead of, or in addition to, using the Harness Manager UI. For more information, go to the [Harness Git Experience overview](/docs/platform/Git-Experience/git-experience-overview).
 
-## Service
+## Understand key Harness Gitops concepts
+
+### Service
 
 A Harness GitOps service is the same as any other Harness service.
 
@@ -76,7 +78,7 @@ An account level service can only reference connectors for the manifests and art
 
 For more information, go to [Services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
-## Service instance
+### Service instance
 
 Service instances represent the dynamic instantiation of a service you sync via Harness GitOps.
 
@@ -84,7 +86,7 @@ For example, for a service representing a Docker image, service instances are th
 
 A single service can have multiple service instances. For example, one for Dev, one for QA, and one for Prod.
 
-## Environments
+### Environments
 
 Harness environments represent your live environment logically (QA, Prod, etc). In Harness GitOps, an environment is the live state of the infrastructure.
 
@@ -94,7 +96,7 @@ An account level environment can only reference connectors within the account, a
 
 For more information, go to [Services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
-## Application
+### Application
 
 GitOps Applications are how you manage GitOps operations for a given desired state and its live instantiation.
 
@@ -107,9 +109,9 @@ You will also select:
 * The Source manifest to use (Kubernetes, Helm chart, Kustomization, etc).
 * The Destination cluster and namespace.
 
-## Agent
+### Agent
 
-### What is a Gitops Agent?
+#### What is a Gitops Agent?
 
 A Harness GitOps Agent is a worker process that runs in your environment, makes secure, outbound connections to Harness SaaS, and performs all the GitOps tasks you request in Harness.
 
@@ -119,7 +121,7 @@ Here's an image that illustrates how the Agent interacts with Harness:
 
 The Agent uses the Repository and Cluster to connect to source repos and target environments. When you create a Harness GitOps Application, you select the Agent you want to use for these connections and GitOps operations.
 
-### Common Ways to use the Gitops Agent
+#### Common Ways to use the Gitops Agent
 
 You can run an Agent in your target cluster or in any cluster that has access to your target clusters.
 
@@ -165,11 +167,11 @@ Installing an Agent involves setting up an Agent in Harness, downloading its YAM
 
 ![fetch manifests from repo](static/gitops-archcitecture.png)
 
-### Can I use Harness GitOps images from a local registry?
+#### Can I use Harness GitOps images from a local registry?
 
 Yes.  Pulling images from your private registry is possible and can be done by pulling the publicly available images to your private registry and then updating the GitOPS Agent YAML to use the private registry.
 
-## Storage
+### Storage
 
 All GitOps information is stored on your cluster as ConfigMaps and Secrets. Essentially, the cluster acts as the database for GitOps.
 
@@ -177,7 +179,7 @@ Your Harness GitOps Application, Repository, Cluster configurations, etc, are al
 
 Harness SaaS is used to store the state cache only.
 
-## Cluster
+### Cluster
 
 A cluster is the target deployment cluster that is compared to the desire state.
 
@@ -191,35 +193,39 @@ Only the Agent is needed for GitOps, but the Harness Delegate is needed for othe
 
 ![cluster with agent and delegate](static/cluster-agent-delegate.png)
 
-## Repository
+### Repository
 
 A Harness GitOps Repository is a repo containing the declarative description of a desired state. The declarative description can be in Kubernetes manifests, Helm Chart, Kustomize manifests, etc.
 
-## Repository Certificates
+### Repository Certificates
 
 You can apply a Repository certificate or known host key to a GitOps Agent.
 
 The GitOps Agent will use the certificate or key for all the connections it makes to repositories.
 
-## Desired state
+### Desired state
 
-The desired state of a Service and Environment as represented by files in a Repository.
+The desired state of a Service and Environment as represented by files in a Repository. It encapsulates all the configuration data essential to recreate a system or an application, ensuring behavioral consistency across instances. It generally excludes persistent application data like database contents, focusing more on configurations and credentials.
 
-## Live state
+### Live state
 
 The live state of a Service and Environment. The instantiated microservices and pods that are deployed.
 
-## Refresh
+## Drift 
+
+Drift occurs when the actual state of a system deviates or is deviating from the desired state. Identifying and rectifying drift is a crucial aspect of maintaining system stability and consistency.
+
+### Refresh
 
 Pulls the latest commit from Git and displays whether the current Sync State is Synced or Out of Sync. It does not sync with the live cluster state.
 
-## Sync and Sync Status
+### Sync and Sync Status
 
 A Sync brings the live state to its desired state by applying changes made in the declarative description.
 
 Sync Status identifies if the target state is Synched, Out of Sync, or Unknown.
 
-## Sync Policy
+### Sync Policy
 
 Applications react to variations in state between the source manifest and the target cluster using a Sync Policy.
 
@@ -227,21 +233,21 @@ With Automatic sync enabled, changes to the source manifest initiate sync automa
 
 Synch Options tune the synchronization.
 
-## Prune Policy
+### Prune Policy
 
 Prune Policy tells [Kubernetes garbage collection](https://kubernetes.io/docs/concepts/architecture/garbage-collection/) how to check for and delete objects that no longer have owner references.
 
-## Health and Health Status
+### Health and Health Status
 
 The health of the Application. Is it syncing correctly (Healthy)?
 
-## App Diff
+### App Diff
 
 Compares the latest file in Git with the live state and shows what is different.
 
 If an Application is Healthy and Synced, then there is no App Diff.
 
-## GnuPG Keys
+### GnuPG Keys
 
 GnuPG Keys can be used to configure Harness GitOps to only sync against commits that are signed in Git using GnuPG.
 
