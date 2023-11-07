@@ -142,7 +142,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Docker connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Docker connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Docker connector example</summary>
@@ -420,7 +420,7 @@ service:
   </TabItem>
   <TabItem value="API" label="API">
 ```
-Create the GCR connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the GCR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>GCR connector example</summary>
@@ -681,7 +681,7 @@ service:
   </TabItem>
   <TabItem value="API" label="API">
 ```
-Create the GCP connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the GCP connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>GCP connector example</summary>
@@ -895,7 +895,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Google Artifact Registry connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Google Artifact Registry connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>GCR connector example</summary>
@@ -1148,7 +1148,7 @@ service:
 <details>
 <summary>Azure Artifact connector example</summary>
 
-Create the Azure Artifact connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Azure Artifact connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 
 ```yaml
@@ -1401,7 +1401,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the ACR connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the ACR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>ACR connector example</summary>
@@ -1808,7 +1808,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the ECR connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the ECR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>ECR connector example</summary>
@@ -1889,15 +1889,15 @@ You connect to ECR using a Harness AWS Connector. For details on all the ECR req
 To add an artifact from ECR, do the following:
 
 1. In your project, in CD (Deployments), select **Services**.
-2. Select **Manage Services**, and then select **New Service**.
+2. Select **New Service**.
 3. Enter a name for the service and select **Save**.
-4. Select **Configuration**.
-5. In **Service Definition**, select **Kubernetes**.
-6. In **Artifacts**, select **Add Artifact Source**.
-7. In **Artifact Repository Type**, click **ECR**, and then select **Continue**.
-8. In **ECR Repository**, select or create an [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) that connects to the AWS account where the ECR registry is located.
-9. Select **Continue**.
-10. In **Artifact Details**, in **Region**, select the region where the artifact source is located.
+4. In **Configuration** > **Service Definition**, select **Kubernetes**.
+5. In **Artifacts**, select **Add Artifact Source**.
+6. In **Artifact Repository Type**, click **ECR**, and then select **Continue**.
+7. In **ECR Repository**, select or create an [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) that connects to the AWS account in which the ECR registry is located.
+8. Select **Continue**.
+9. In **Artifact Details**, in **Region**, select the region where the artifact source is located.
+10. (Optional) In **Registry ID**, enter the AWS account ID of the ECR registry you want to use. This field is useful when the AWS connector can access AWS accounts other than the one it is configured with. If you do not specify a registry ID, Harness uses the default registry associated with the AWS account. 
 11. If the IAM user has access to the repository in the secondary account, in **Registry ID**, specify the AWS account ID associated with that repository.
     :::note 
     Only Tags can be fetched from the repository in the secondary account. You must specify the image path manually.
@@ -1909,7 +1909,7 @@ To add an artifact from ECR, do the following:
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 
-13. To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
 
@@ -1918,7 +1918,7 @@ To add an artifact from ECR, do the following:
   If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
   :::
-14. Select **Submit**. The Artifact is added to the Service Definition.
+15. Select **Submit**. The Artifact is added to the Service Definition.
 
     
  ![ECR artifact source in a service](static/769c54fe91e7497b4aef3733f128361457b933f1d0eccd0d9b3491f1da4ed0c7.png)
@@ -2123,7 +2123,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the AWS connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the AWS connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>AWS connector example</summary>
@@ -2221,10 +2221,7 @@ To add an artifact from an S3 bucket, do the following:
     2. in **Region**, select the region where the artifact source is located.
     3. In **Bucket Name**, select the bucket where the artifact is located
     4. In **File path**, enter the path (from the bucket root) and name of the artifact you want to deploy.
-11. Select **Submit**.
-    
-    ![](static/kubernetes-services-13.png)
-    
+11. Select **Submit**.    
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 12. Select **Submit**. The Artifact is added to the Service Definition.
 
@@ -2379,7 +2376,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the AWS connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the AWS connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>AWS connector example</summary>
@@ -2575,7 +2572,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Nexus connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Nexus connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Nexus connector example</summary>
@@ -2851,7 +2848,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Artifactory connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Artifactory connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Artifactory connector example</summary>
@@ -3149,7 +3146,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Bamboo connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Bamboo connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Bamboo connector example</summary>
@@ -3340,7 +3337,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Github connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Github connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Github connector example</summary>

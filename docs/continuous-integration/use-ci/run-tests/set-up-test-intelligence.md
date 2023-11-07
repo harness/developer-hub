@@ -317,9 +317,11 @@ Note that while parallelism for TI can improve the total time it takes to run al
 To enable parallelism for TI, you must set a parallelism `strategy` on either the **Run Tests** step or the stage where you have the **Run Tests** step, add the `enableTestSplitting` parameter to your **Run Tests** step, and use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) to create a unique results file for each run. Optionally, you can include the `testSplitStrategy` parameter and environment variables to differentiate parallel runs.
 
 1. Go to the pipeline where you want to enable parallelism for TI.
-2. [Define the parallelism strategy](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy:parallelism`. Other options, such as `maxConcurrency` are optional.
+2. [Define the parallelism strategy](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself.
 
-   You can do this in either the visual or YAML editor. In the visual editor, **Parallelism** is found under **Looping Strategy** in the stage's or step's **Advanced** settings.
+   You must include `strategy:parallelism`. Other options, such as `maxConcurrency` are optional.
+
+   You can do this in either the Visual or YAML editor. In the Visual editor, **Parallelism** is found under **Looping Strategy** in the stage's or step's **Advanced** settings.
 
    :::caution
 
@@ -327,14 +329,12 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
 
    :::
 
-3. Switch to the YAML editor, if you were not already using it.
-4. Find the `RunTests` step, and then find the `spec` section.
-5. Add `enableTestSplitting: true`.
-6. The `testSplitStrategy` parameter is optional. If you include it, you can choose either `TestCount` or `ClassTiming`.
+3. In the **Run Tests** step, select **Enable Test Splitting** (`enableTestSplitting: true`).
+4. The **Test Split Strategy** is optional. You can choose how to split the tests, either by test count (`TestCount`) or by class timing (`ClassTiming`). The default is class timing.
 
-   Class timing uses test times from previous runs to determine how to split the test workload for the current build. Test count uses simple division to split the tests into workloads. The default is `ClassTiming` if you omit this parameter. However, the maximum possible number of workloads is determined by the parallelism `strategy` you specified on the step or stage. For example, if you set `parallelism: 5`, tests are split into a maximum of five workloads.
+   Class timing uses test times from previous runs to determine how to split the test workload for the current build. Test count uses simple division to split the tests into workloads. However, the maximum possible number of workloads is determined by the parallelism strategy you specified on the step or stage. For example, if you set `parallelism: 5`, then the tests are split into a maximum of five workloads.
 
-7. Modify the `reports.paths` value to use a [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables), such as `<+strategy.iteration>`. This ensures there is a unique results file for each parallel run. For example:
+5. Modify the `reports.paths` value to use a [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables), such as `<+strategy.iteration>`. This ensures there is a unique results file for each parallel run. For example:
 
    ```yaml
                           reports:
@@ -344,7 +344,7 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
                             type: JUnit
    ```
 
-8. You can add environment variables to differentiate parallel runs in build logs.
+6. You can add environment variables to differentiate parallel runs in build logs.
 
    * Add two environment variables to the `step.spec`: `HARNESS_STAGE_INDEX: <+strategy.iteration>` and `HARNESS_STAGE_TOTAL: <+strategy.iterations>`.
    * Add a `preCommand` to echo the variables' values so you can easily see the values in build logs.
@@ -367,8 +367,7 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
                        ...
    ```
 
-<details>
-<summary>YAML example: Test Intelligence with test splitting</summary>
+#### YAML example: Test Intelligence with test splitting
 
 ```yaml
     - stage:
@@ -411,8 +410,6 @@ To enable parallelism for TI, you must set a parallelism `strategy` on either th
         strategy:
           parallelism: 3 ## Set the number of groups to use for test splitting.
 ```
-
-</details>
 
 ### Ignore tests or files
 

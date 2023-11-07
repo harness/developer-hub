@@ -197,17 +197,20 @@ export default function Certifications() {
                     src={`${baseUrl}img/cert_dev_ci_badge.svg`}
                     alt="Developer Continuous Integration Badge"
                   />
-                   <img
+                  <img
                     src={`${baseUrl}img/cert_dev_ff_badge.svg`}
                     alt="Developer FF Badge"
                   />
-                </div>
-                {/* <h5>Coming Soon</h5> */}
-                <h5>Coming Soon</h5>
-                <div className={styles.unAvailableCerts}>
                   <img
                     src={`${baseUrl}img/cert_dev_ccm_badge.svg`}
                     alt="Developer CCM Badge"
+                  />
+                </div>
+                <h5>Coming Soon</h5>
+                <div className={styles.unAvailableCerts}>
+                  <img
+                    src={`${baseUrl}img/cert_dev_sto_badge.svg`}
+                    alt="Develop STO Badge"
                   />
                 </div>
               </div>
@@ -247,9 +250,14 @@ export default function Certifications() {
                     alt="Administrator Continuous Integration Badge"
                   />
                 </div>
-               {/* <h5>Coming Soon</h5> */}
-               {/* <div className={styles.unAvailableCerts}>
-                </div> */}
+                {/* <h5>Coming Soon</h5> */}
+                <h5>Coming Soon</h5>
+                <div className={styles.unAvailableCerts}>
+                  <img
+                    src={`${baseUrl}img/cert_adm_ff_badge.svg`}
+                    alt="Administrator FF Badge"
+                  />
+                </div>
               </div>
             </div>
 
@@ -273,7 +281,7 @@ export default function Certifications() {
                 </ul>
               </div>
               <div className={styles.certBadges}>
-                <h5>Available Certification</h5> 
+                <h5>Available Certification</h5>
                 <div className={styles.availableCerts}>
                   <img
                     src={`${baseUrl}img/cert_arc_cd_badge.svg`}
@@ -286,7 +294,7 @@ export default function Certifications() {
                 </div>
 
                 {/* <h5>Coming Soon</h5> */}
-               {/* <div className={styles.unAvailableCerts}>
+                {/* <div className={styles.unAvailableCerts}>
                 </div> */}
               </div>
             </div>

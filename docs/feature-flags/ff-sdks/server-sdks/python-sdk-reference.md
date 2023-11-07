@@ -31,7 +31,7 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **1.2.2**.
+The current version of this SDK is **1.2.3**.
 
 ## Requirements
 
@@ -63,6 +63,21 @@ To initialize the Python SDK, you need to:
 :::info note
 If the SDK fails to authenticate with the Feature Flags service and cannot initialise, the SDK will operate in a "limited" mode and will only serve the default values you provide in variation calls.
 :::
+
+### Block initialization
+
+By default, when initializing the Harness Feature Flags client, the initialization process is non-blocking. This means that the client creation call returns immediately,
+allowing your application to continue its startup process without waiting for the client to be fully initialized. If you evaluate a flag before the client has finished initializing, 
+the default variation you provided can be returned as the evaluation result, because the SDK has not finished caching your remote Flag configuration stored in Harness.
+
+You can choose to wait for the client to finish initializing before continuing. To achieve this, you can call the `wait_for_initialzation` method, which blocks until the client is fully initialized. Example usage:
+
+```python
+client = CfClient(api_key)
+# Block the thread until all flag configuration has been loaded into the cache.
+client.wait_for_initialization()
+result = client.bool_variation('identifier_of_your_bool_flag', target, False)
+```
 
 ### Add the Server SDK Key
 
@@ -198,6 +213,13 @@ result = client.number_variation('identifier_of_your_number_flag', target, -1)
 ```
 client.json_variation('identifier_of_your_json_flag', target, {})
 ```
+
+:::note
+
+If you evaluate a feature flag when initialization fails, the default variation you provided is returned as the evaluation result.
+
+:::
+
 ## Test your app is connected to Harness
 
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.

@@ -189,11 +189,6 @@ You can reference a secret within the Account scope using an expression with `ac
 
 ## Webhook Notifications
 
-:::info 
-
-Currently, this feature is behind the feature flag, `PIE_WEBHOOK_NOTIFICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Use Webhook notifications to inform an external application of an event. 
 

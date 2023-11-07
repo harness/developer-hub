@@ -19,7 +19,7 @@ This topic assumes that you have the following:
 * The pipeline has a Security scan step with a configured `fail_on_severity` setting.
 * At least one successful build with a set of detected security issues.  
 
-## Request an STO exemption (_Developers or SecOps users_) 
+## Request an STO exemption (Developers or SecOps users) 
      
 1. Go to the Security Tests page for the build: In the Pipeline studio, click **Execution History** (top right) or **Pipeline Executions** (left menu). Then go to a successful build.  
 
@@ -32,7 +32,7 @@ This topic assumes that you have the following:
    
    3. In **Request Exemption for Issue**, specify:
       1. **Where do you want this issue to be Exempted?** 
-      2. **For how long?** 
+      2. **For how long?** In general, you should select the shortest practical time window for your exemption. 
       3. **Reason this issue should be exempted** — Select one of the following reasons and provide any additional information for the SecOps approver:
          
          * **Compensating controls** — Your organization has infrastructure and policies in place to mitigate the security risks of this vulnerability. 
@@ -66,9 +66,9 @@ This topic assumes that you have the following:
 3. Send a notification of your exemption request — via email, Slack, Jira, etc. — to your SecOps reviewer. Your notification should include the URL to the Security Tests page with the relevant issue selected.
 
 
-## Review, approve, and reject STO exemptions (_SecOps users only_)
+## Review, approve, and reject STO exemptions (SecOps users only)
 
-An exemption, if approved, overrides the default behavior for running a pipeline build:
+Go to **Exemption** to see the list of pending exemptions. An exemption, if approved, overrides the default behavior for running a pipeline build:
 
 * If a pipeline includes a Security Tests step, the step scans the specified object and compiles a list of detected issues.
 * Each issue has a specified severity: Critical, Major, Minor, etc.
@@ -93,7 +93,7 @@ An exemption, if approved, overrides the default behavior for running a pipeline
 
 You can review all exemptions in the current project in the **Security Review** page. 
 
-1. Click **Security Tests** (left menu) and then **Exemptions** (second-from-left menu).
+1. In the left-hand navigation, go to **Security Testing Orchestration** > **Exemptions**.
 
 2. In **Exemptions**, click the Approve, Reject, or Delete buttons for individual rules as needed.
 

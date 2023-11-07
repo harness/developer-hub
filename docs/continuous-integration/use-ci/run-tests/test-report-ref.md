@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 
 Results on the [Tests tab](./viewing-tests.md) are parsed from test reports specified in the **Report Paths** setting in **Run** and **Run Tests** steps. Test reports must be in [JUnit XML format](https://llg.cubic.org/docs/junit/) to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only.
 
-For information about code coverage reports and publishing report URLs to the **Artifacts** tab, go to [Code Coverage](./code-coverage.md).
+For optimal rendering in the Harness UI, there is a limit of 8,000 characters per field. If a field in your XML file contains more than 8,000 characters, the output might render incorrectly on the **Tests** tab.
 
 ## JUnit XML format resources
 
@@ -453,3 +453,7 @@ Add the [RSpec JUnit formatter](https://rubygems.org/gems/rspec_junit_formatter)
 ```
 
 </details>
+
+## Code coverage reports and test report artifacts
+
+For information about code coverage reports and publishing report URLs to the **Artifacts** tab, go to [Code Coverage](./code-coverage.md).

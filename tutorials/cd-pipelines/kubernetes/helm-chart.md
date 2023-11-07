@@ -37,8 +37,8 @@ bash <(curl -fsSL https://raw.githubusercontent.com/harness-community/scripts/ma
 :::
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="GitOps Workflow">
+<Tabs queryString="pipeline">
+<TabItem value="gitops" label="GitOps Workflow">
 ```
 
 :::info
@@ -54,7 +54,7 @@ Harness also offers a Hosted GitOps solution. A tutorial for it will be availabl
 Make sure that you have met the following requirements:
 
 * You have set up a Kubernetes cluster. We recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness Delegates and deploying a sample application in a local development environment. For more information, go to [Delegate system and network requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
-* You have forked the **[harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface. For more details, go to [Forking a GitHub repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
+* You have forked the **[harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface. For more details, go to [Forking a GitHub repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Deploy your applications using Harness GitOps
 
@@ -78,8 +78,8 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 3. In **Do you have any existing Argo CD instances?**, select **Yes** if you already have an Argo CD instance, else select **No** to install the Harness GitOps Agent.
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="Harness GitOps Agent Fresh Install">
+<Tabs queryString="gitopsagent">
+<TabItem value="agent-fresh-install" label="Harness GitOps Agent Fresh Install">
 ```
 
 1. In **Do you have any existing Argo CD instances?**, select **No**, and then select **Start**.
@@ -95,7 +95,7 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Harness GitOps Agent with Existing Argo CD Instance">
+<TabItem value="existingargo" label="Harness GitOps Agent with existing Argo CD instance">
 ```
 
 1. In **Do you have any existing Argo CD instances?**, select **Yes**, and then select **Start**.
@@ -117,48 +117,48 @@ Once you have installed the Agent, Harness will start importing all the entities
 ```
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="CLI">
+<Tabs  queryString="interfacegitopsfresh">
+<TabItem value="cli-fresh-gitops" label="CLI">
 ```
 1. Download and Configure Harness CLI.
 
     ```mdx-code-block
-    <Tabs>
-    <TabItem value="MacOS">
+    <Tabs queryString="cli-os-fg">
+    <TabItem value="macosfg" label="MacOS">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-darwin-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-darwin-amd64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="Linux">
+    <TabItem value="linuxfg" label="Linux">
     ```
 
     ```mdx-code-block
-    <Tabs>
-    <TabItem value="ARM">
+    <Tabs queryString="linux-platform-fg">
+    <TabItem value="armfg" label="ARM">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-arm64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz 
+    tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="AMD">
+    <TabItem value="amdfg" label="AMD">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
@@ -170,13 +170,13 @@ Once you have installed the Agent, Harness will start importing all the entities
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="Windows">
+    <TabItem value="windowsfg" label="Windows">
     ```
 
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
     ```
-    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
+    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip -OutFile ./harness.zip
     ```
         
     b. Extract the downloaded zip file and change directory to extracted file location.
@@ -195,7 +195,7 @@ Once you have installed the Agent, Harness will start importing all the entities
     </Tabs>
     ```
 
-2. Clone the Forked **harnessed-example-apps** repo and change directory.
+2. Clone the Forked **harnesscd-example-apps** repo and change directory.
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
     cd harnesscd-example-apps
@@ -271,7 +271,7 @@ harness gitops-application --file helm-guestbook/harness-gitops/application.yml 
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="UI">
+<TabItem value="uicli" label="UI">
 ```
 
 ### Add a Harness GitOps repository
@@ -386,13 +386,13 @@ On successful application sync, you'll see the status tree under **Resource View
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="CD Pipeline">
+<TabItem value="uicdpipe" label="CD Pipeline">
 ```
 You can choose to proceed with the tutorial either by using the command-line interface (Harness CLI) or the user interface (Harness UI).
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="CLI">
+<Tabs queryString="interface-existing-argo">
+<TabItem value="cli-existing" label="CLI">
 ```
 ## Before you begin
 
@@ -403,7 +403,7 @@ Verify the following:
 3. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness delegates and deploying a sample application in a local development environment.
     - Check [delegate System and network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 4. **Install [Helm CLI](https://helm.sh/docs/intro/install/)**.
-5. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
+5. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
     - For details on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Getting Started with Harness CD
@@ -412,42 +412,42 @@ Verify the following:
 1. Download and Configure Harness CLI.
 
     ```mdx-code-block
-    <Tabs>
-    <TabItem value="MacOS">
+    <Tabs queryString="gitops-cli-os">
+    <TabItem value="gitmacos" label="MacOS">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-darwin-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-darwin-amd64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="Linux">
+    <TabItem value="linuxgitops" label="Linux">
     ```
 
     ```mdx-code-block
-    <Tabs>
-    <TabItem value="ARM">
+    <Tabs queryString="linux-platform-gitops">
+    <TabItem value="armgitops" label="ARM">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-arm64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz 
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="AMD">
+    <TabItem value="amdgitops" label="AMD">
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
@@ -459,13 +459,13 @@ Verify the following:
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="Windows">
+    <TabItem value="windowsgitops" label="Windows">
     ```
 
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
     ```
-    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
+    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip  -OutFile ./harness.zip
     ```
         
     b. Extract the downloaded zip file and change directory to extracted file location.
@@ -484,7 +484,7 @@ Verify the following:
     </Tabs>
     ```
 
-2. Clone the Forked **harnessed-example-apps** repo and change directory.
+2. Clone the Forked **harnesscd-example-apps** repo and change directory.
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
     cd harnesscd-example-apps 
@@ -597,8 +597,8 @@ Helm is primarily focused on managing the release and versioning of application 
 Harness adds an additional layer of functionality on top of Helm, providing a streamlined and automated approach to canary and blue-green deployments. By leveraging Helm's package management capabilities and integrating with its release management features, Harness extends Helm's capabilities to support canary and blue-green deployment strategies.
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="Canary">
+<Tabs queryString="deploymentcli">
+<TabItem value="canarycli" label="Canary">
 ```
 
 <details open>
@@ -665,7 +665,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Blue Green">
+<TabItem value="bgcli" label="Blue Green">
 ```
 
 <details open>
@@ -734,7 +734,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="K8s Rolling">
+<TabItem value="k8srollingcli" label="K8s Rolling">
 ```
 
 <details open>
@@ -800,7 +800,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="NativeHelm Rolling">
+<TabItem value="helmrollingcli" label="Native Helm Rolling">
 ```
 
 <details open>
@@ -875,7 +875,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="UI">
+<TabItem value="uigitops" label="UI">
 ```
 ## Before you begin
 
@@ -884,7 +884,7 @@ Make sure that you have met the following requirements:
 * You have a GitHub Personal Access Token (PAT) with proper repository permissions. For more information, go to [Managing your personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
 * You have set up a Kubernetes cluster. You can use your own Kubernetes cluster or a [K3D](https://k3d.io/v5.5.1/) (recommended) for installing Harness Delegates and deploying a sample application in a local development environment. For more information, go to [Delegate system and network requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 * You have installed [Helm CLI](https://helm.sh/docs/intro/install/).
-* You have forked the **[harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface. For more details, go to [Forking a GitHub repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
+* You have forked the **[harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface. For more details, go to [Forking a GitHub repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Deploy your applications using a Helm template
 
@@ -969,7 +969,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
    1. In **PROJECT SETUP**, select **Connectors**, and then select **Create via YAML Builder**.
    2. Copy and paste the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/github-connector.yml).
    3. Replace **GITHUB_USERNAME** with your GitHub account username in the YAML wherever required.
-      We assume that you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository as mentioned in the [Before you begin](#before-you-begin) section.
+      We assume that you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository as mentioned in the [Before you begin](#before-you-begin) section.
    4. Select **Save Changes**, and verify that the new connector named _**harness_gitconnector**_ is successfully created.
    5. Select **Connection Test** under **Connectivity Status** to ensure that the connection is successful.
     
@@ -997,8 +997,8 @@ Helm is primarily focused on managing the release and versioning of application 
 Harness adds an additional layer of functionality on top of Helm, providing a streamlined and automated approach to canary and blue-green deployments. By leveraging Helm's package management capabilities and integrating with its release management features, Harness extends Helm's capabilities to support canary and blue-green deployment strategies.
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="Canary">
+<Tabs queryString="deploymentui">
+<TabItem value="canaryui" label="Canary">
 ```
 
 <details open>
@@ -1062,7 +1062,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Blue Green">
+<TabItem value="bgui" label="Blue Green">
 ```
 
 <details open>
@@ -1127,7 +1127,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="K8s Rolling">
+<TabItem value="k8srollingui" label="K8s Rolling">
 ```
 
 <details open>
@@ -1192,7 +1192,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="NativeHelm Rolling">
+<TabItem value="helmrolling" label="Native Helm Rolling">
 ```
 
 <details open>
