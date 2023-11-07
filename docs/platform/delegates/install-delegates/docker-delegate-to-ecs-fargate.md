@@ -36,13 +36,6 @@ For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/inst
      {
        "containerDefinitions": [
          {
-           "portMappings": [
-             {
-               "hostPort": 8080,
-               "protocol": "tcp",
-               "containerPort": 8080
-             }
-           ],
            "cpu": 1,
            "environment": [
              {
@@ -155,13 +148,6 @@ Use the following steps to create a task definition. For information about task 
     {
       "containerDefinitions": [
         {
-          "portMappings": [
-            {
-              "hostPort": 8080,
-              "protocol": "tcp",
-              "containerPort": 8080
-            }
-          ],
           "cpu": 1,
           "environment": [
            {
