@@ -1,11 +1,11 @@
 {
-  "label": "Manage external GitOps providers",
+  "label": "Manage GitOps providers",
   "position": "200",
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",
   "link": {
       "type": "generated-index",
-      "title": "Manage external GitOps providers"
+      "title": "Manage GitOps providers"
   }
 }
