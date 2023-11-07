@@ -7,11 +7,12 @@ import Ossupport from './shared/note-supported-os.md'
 import FaultPermissions from './shared/fault-permissions.md'
 
 
-Linux network rate limit injects chaos to cause network connectivity slowness on the Linux machine by rate-limiting the network packets.
+Linux network rate limit injects chaos to slow down the network connectivity on the Linux machine by limiting the network bandwidth to process fixed number of network packets per unit time.
 
 ![Linux network rate limit](./static/images/linux-network-rate-limit.png)
 
 ## Use cases
+Linux network rate limit:
 - Induces network rate limit on the target Linux machines.
 - Simulates loss of connectivity access by blocking the network requests on the machine.
 
@@ -20,7 +21,7 @@ Linux network rate limit injects chaos to cause network connectivity slowness on
 <FaultPermissions />
 
 ## Fault tunables
-<h3>Mandatory tunables</h3>
+<h3>Mandatory fields</h3>
 <table>
   <tr>
     <th> Tunable </th>
@@ -29,12 +30,12 @@ Linux network rate limit injects chaos to cause network connectivity slowness on
   </tr>
   <tr>
     <td> networkInterfaces </td>
-    <td> Network interfaces to target as comma separated values. </td>
-    <td> For example: <code>eth0,ens192</code> </td>
+    <td> Comma-separated values of target network interfaces. </td>
+    <td> For example, <code>eth0,ens192</code> </td>
   </tr>
 </table>
 
-<h3>Optional tunables</h3>
+<h3>Optional fields</h3>
 <table>
   <tr>
     <th> Tunable </th>
@@ -43,13 +44,13 @@ Linux network rate limit injects chaos to cause network connectivity slowness on
   </tr>
   <tr>
     <td> destinationHosts </td>
-    <td> List of the target host names or keywords. For example: <code>google.com,litmuschaos.io</code></td>
-    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted </td>
+    <td> List of the target host names or keywords. For example, <code>google.com,litmuschaos.io</code></td>
+    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted. </td>
   </tr>
   <tr>
     <td> destinationIPs </td>
-    <td> List of the target IPs. For example: <code>1.1.1.1,8.8.8.8</code> </td>
-    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted</td>
+    <td> List of the target IPs. For example, <code>1.1.1.1,8.8.8.8</code>. </td>
+    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted. </td>
   </tr>
   <tr>
     <td> networkBandwidth </td>
@@ -58,8 +59,8 @@ Linux network rate limit injects chaos to cause network connectivity slowness on
   </tr>
   <tr>
     <td> burst </td>
-    <td> Burst for the size of bucket, that is, the maximum amount of bytes that tokens can be available for instantaneously. </td>
-    <td> Defaults to <code>2kb</code> </td>
+    <td> Size of bucket, in bytes. The maximum amount of bytes for which tokens can be instantaneously available. </td>
+    <td> Default: <code>2kb</code> </td>
   </tr>
   <tr>
     <td> limit </td>
@@ -90,7 +91,7 @@ Linux network rate limit injects chaos to cause network connectivity slowness on
 
 ### Destination hosts
 
-The `destinationHosts` input variable subjects the comma-separated names of the target hosts to chaos.
+Comma-separated names of the target hosts that are subject to chaos. Tune it using the `destinationHosts` input variable.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -110,7 +111,7 @@ spec:
 
 ### Destination IPs
 
-The `destinationIPs` input variable subjects the comma-separated names of the target IPs to chaos.
+Comma-separated names of the target IPs that are subject to chaos. Tune it using the `destinationIPs` input variable.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -130,7 +131,7 @@ spec:
 
 ### Network bandwidth
 
-Network bandwidth injected. Tune it by using the `networkBandwidth` input variable.
+Network bandwidth injected during chaos. Tune it by using the `networkBandwidth` input variable.
 
 Following YAML snippet illustrates the use of this input variable:
 
@@ -151,7 +152,7 @@ spec:
 
 ### Burst
 
-Size of bucket, in bytes. It is the maximum number of bytes for which tokens can be instantaneously available. Tune it by using the `burst` input variable.
+Size of the bucket, in bytes. It is the maximum number of bytes for which tokens can be instantaneously available. Tune it by using the `burst` input variable.
 
 Following YAML snippet illustrates the use of this input variable:
 
