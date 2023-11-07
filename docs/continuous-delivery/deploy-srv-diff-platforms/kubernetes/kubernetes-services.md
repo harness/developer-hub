@@ -452,8 +452,20 @@ To add a Helm chart to your service, do the following:
    
    ![helm storage](./static/a49287968d8e99d3368420384bab12d62206d48fa714cd0c61eed12ca14c641f.png)  
 
+  #### Connector options
 
-   For the steps and settings of each option, go to [Connectors](/docs/category/connectors) or [Connect to a Git repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
+  The options avialable to you to specify a Helm chart store depend on whether or not specific feature flags are enabled on your account. Options available without any feature flags or with specific feature flags enabled are described here: 
+
+    * **Feature flag disabled**. Only one option is available: **OCI Helm Registry Connector**. This option enables you to connect to Azure Container Registry, AWS ECR, and Google Container Registry.
+    * **Feature flag enabled**. You can choose between connectors in the following categories:
+      - **Direct Connection**. Contains OCI Helm Registry Connector (shortened to **OCI Helm**), which you can use with container registries other than AWS ECR.
+      - **Via Cloud Provider**. Contains the ECR connector option. This connector is specifically designed for AWS ECR to help you overcome the limitation of having to regenerate the ECR registry authentication token every 12 hours The ECR connector option uses an AWS connector and regenerates the required authentication token if the token has expired.
+
+      :::note
+      This feature is behind the feature flag CDS_OCI_HELM_ECR_CONFIG_SUPPORT_NG. Contact Harness Support to enable the feature. 
+      :::
+
+      For the steps and settings of each option, go to [Connectors](/docs/category/connectors) or [Connect to a Git repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
    
    Once your Helm chart is added, it appears in the **Manifests** section. For example:
    
