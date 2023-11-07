@@ -35,7 +35,7 @@ An artifact source does not need to be defined in the service definition for the
 
 :::
 
-import Variables from '/docs/platform/triggers/shared/variables-not-supported.md'
+import Variables from '/docs/platform/shared/variables-not-supported.md'
 
 <Variables />
 

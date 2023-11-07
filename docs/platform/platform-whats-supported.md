@@ -78,7 +78,7 @@ The following table lists the resources that are available at various scopes in 
   <TabItem value="Delegates" label="Delegates">
 ```
 
-import Delimagetypes from '/docs/platform/delegates/shared/delegate-image-types-intro-table.md'
+import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-table.md'
 
 <Delimagetypes />
 
