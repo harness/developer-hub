@@ -1,25 +1,33 @@
 ---
-title: Discover and remediate issues in an STO scan
+title: Discover and remediate issues in Security Tests
 description: View, navigate, discover, and investigate detected issues from an individual scan 
 sidebar_position: 10
 sidebar_label: Discover and remediate detected issues
 ---
 
-To view scan results from a pipeline execution, go to **Pipeline Executions**, select the execution, and then go to the **Security Tests** tab. 
+Every STO pipeline execution includes a **Security Tests** tab that shows the detected issues for that execution. This is the primary interface for navigating, analyzing, and remediating detected issues. 
 
 ![](./static/security-tests-tab.png)
 
+In the **Security Testing Orchestration** left-hand menu, go to **Executions**. Then go to the execution and select **Security Tests**. 
+
 The following steps describe the general workflow:
 
-1. Click on the [severity](/docs/security-testing-orchestration/get-started/key-concepts/severities) tiles to filter the list of known vulnerabilities. 
+1. **Security Execution** filters are useful for complex pipelines that run multiple scans. You can filter issues by target, target type, step, stage, and scanner.  
 
-2. Drill down into the relevant issues list to view the issues found in the scan:
+2. Select the [severity](/docs/security-testing-orchestration/get-started/key-concepts/severities) tiles to filter the lists by severity. You can also show or hide issues with exemptions.  
 
-   - **Only in _variant_name_** &nbsp; Issues found in only the variant you specified when you ran the scan. 
-   
-     If you scanned the baseline, or if the target has no baseline defined, this list shows issues found in the current scan — but not the last scan  —  of the baseline. 
+3. Drill down to the relevant issues list to view the issues found in the scan:
 
-   - **Common to previous scan** &nbsp; Issues found in the target baseline as well as the baseline. 
+    - **Only in current scan** New issues not found in any previous scan.
+
+    - **Common to <_target_>:<_variant_>** Issues also found in the last scan of the specified variant.
+
+    - **Common to previous scan** 
+      - Issues also found in the last scan (if the scanned target has no baseline), OR
+      - Issues also found in the last scan of the baseline (if the scanned variant is the baseline).
+
+    - **Common to previous / baseline scan** Issues also found in both the last scan of the specified variant AND the last scan of the baseline. 
 
    :::note
 
@@ -29,7 +37,9 @@ The following steps describe the general workflow:
 
 3. To investigate an issue in detail, click the issue in the list to open **Issue Details** (right). 
 
-4. The **Issue Details** pane includes known details and remediation steps for the detected issue. Note that this pane shows details for all occurrences of the detected issue, so scan down to ensure that you see all occurrences. You can also do the following:
+4. The **Issue Details** pane includes known details and remediation steps for the detected issue. Note that this pane shows details for all occurrences of the detected issue, so scan down to ensure that you see all occurrences. 
+
+   You can also do the following:
 
    - Request an [exemption](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) so that pipeline executions can proceed even if the issue is detected.
 
