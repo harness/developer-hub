@@ -109,6 +109,8 @@ You will also select:
 
 ## Agent
 
+### What is a Gitops Agent?
+
 A Harness GitOps Agent is a worker process that runs in your environment, makes secure, outbound connections to Harness SaaS, and performs all the GitOps tasks you request in Harness.
 
 Here's an image that illustrates how the Agent interacts with Harness:
@@ -116,6 +118,8 @@ Here's an image that illustrates how the Agent interacts with Harness:
 ![Agent and Harness interaction](static/agent.png)
 
 The Agent uses the Repository and Cluster to connect to source repos and target environments. When you create a Harness GitOps Application, you select the Agent you want to use for these connections and GitOps operations.
+
+### Common Ways to use the Gitops Agent
 
 You can run an Agent in your target cluster or in any cluster that has access to your target clusters.
 
@@ -125,6 +129,38 @@ Here's an image that illustrates a Kubernetes deployment on the same cluster as 
 
 ![deployment on clusters](static/deploy-cluster.png)
 
+There are Pros and Cons to each of these scenarios
+  1. **Scenario 1: Single Cluster, Single Agent, In-Cluster Deployment of Resources**
+
+  **Pros**
+    * **Simplicity:** This pattern is straightforward to set up and maintain as it involves a single Gitops Agent and ArgoCD instance managing deployments within a single cluster.
+    * **Resource Efficiency:** With a single instance, resource usage is optimized as there is no need for additional instances or coordination between clusters.
+
+  **Cons** 
+    * **Limited Scalability:** Scaling beyond a single cluster can be challenging as the ArgoCD instance is tightly coupled to the specific cluster it is managing.
+    * **Single Point of Failure:** If the ArgoCD instance fails, all deployments within that cluster may be affected.
+
+  2. **Scenario 2: Single Target Cluster for Deployment, Single Agent outside of Target Cluster**
+
+  **Pros**
+    * **Simplicity:** A single Gitops Agent to manage as well as a single target cluster.
+    * **Better Isolation** as compared to in-cluster set-up in Scenario 1.
+
+  **Cons**
+    * **Increased Management Overhead:** Configuration overhead like IP allow listing, permission for external cluster to connect and so on.
+
+  3. **Scenario 3: Multi-Cluster, Single ArgoCD Instance - hub and spoke** 
+
+  **Pros**
+    * **Centralized Management:** A single Gitops Agent coupled with an ArgoCD instance can manage multiple Kubernetes clusters, enabling centralized deployment management.
+    * **Simplicity:** A single Gitops Agent to manage applications across multiple clusters.
+
+  **Cons**
+    * **Single Point of Failure:** If the ArgoCD instance fails, all deployments may be affected.
+    * **Performance and Scalability Challenges:** As the number of clusters and deployments increase, the performance and scalability of a single Agent may become a limiting factor, in which case you can either switch to using multiple agents across multiple clusters.
+
+  **Multiple Target Clusters and Multiple Agents:** This is another scenario not described in the diagram. Harness Gitops manages the complexity of multiple ArgoCD instances and this way of using Harness Gitops provides high scalability and isolation, allowing teams to manage deployments independently across multiple clusters and if one ArgoCD instance fails, it does not impact deployments in other clusters. Although this will come with an overhead of higher **Resource Utilization** and **Management overhead**.
+    
 Installing an Agent involves setting up an Agent in Harness, downloading its YAML file, and applying the YAML file in a Kubernetes cluster (`kubectl apply`). Kubernetes then pulls the Harness and ArgoCD images from their respective public repositories.
 
 ![fetch manifests from repo](static/gitops-archcitecture.png)
