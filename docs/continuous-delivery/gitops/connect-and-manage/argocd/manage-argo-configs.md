@@ -1,5 +1,5 @@
 ---
-title: Manage an Argo CD configuration by using Harness GitOps
+title: Manage an Argo CD configuration in Git with Harness GitOps
 description: Manage an Argo CD configuration as if it were a GitOps application.
 sidebar_position: 2
 ---
@@ -14,9 +14,9 @@ A Harness GitOps application consists of a GitOps repository, cluster, and appli
 
 To add the GitOps application for your Argo CD configuration, do the following:
 
-1. Install a Harness GitOps agent on the destination cluster.
+1. Install a **Harness GitOps agent** on the destination cluster.
 
-2. In Harness GitOps, add a GitOps repository for the repository in which your Argo CD configurations are stored. For steps on adding a GitOps repository, go to [Add a Harness GitOps repository](/docs/continuous-delivery/gitops/use-gitops/add-a-harness-git-ops-repository).
+2. In Harness GitOps, add a **GitOps repository** for the repository in which your Argo CD configurations are stored. For steps on how to do this, go to [Add a Harness GitOps repository](/docs/continuous-delivery/gitops/use-gitops/add-a-harness-git-ops-repository.md).
    
    <figure>
    
@@ -25,7 +25,7 @@ To add the GitOps application for your Argo CD configuration, do the following:
    <figcaption>Figure 1: GitOps repository.</figcaption>
    </figure>
 
-3. Add a Harness GitOps cluster for the destination cluster where you installed the Harness GitOps agent. 
+3. Add a **Harness GitOps cluster** for the destination cluster where you installed the Harness GitOps agent. 
    
    <figure>
    
@@ -34,7 +34,7 @@ To add the GitOps application for your Argo CD configuration, do the following:
    <figcaption>Figure 2: GitOps cluster.</figcaption>
    </figure>
 
-4. Add a Harness GitOps application for the Argo CD configuration.
+4. Add a **Harness GitOps application** for the Argo CD configuration.
    1. Use the Harness GitOps repository added earlier.
    2. In **Path**, select or add the path to the Argo CD configurations.
    
@@ -165,7 +165,7 @@ Following are the additional fields required for the AppProject:
 The remaining fields remain the same as in Argo CD.
 
 :::note
-By default, Harness creates an AppProject for you when you create the repository and cluster at the beginning of this procedure. The name of this AppProject is available on the agent details page, under **Mapped Harness Project**. If you are creating a new AppProject, remember to add the [mapping for the Argo project to the Harness project in the GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/argocd/byo-argo-to-harness.md), and then use the value of `metadata.name` in the project field of the entity configurations. The UI requires that information to show the entities.
+By default, Harness creates an AppProject for you when you create the repository and cluster at the beginning of this procedure. The name of this AppProject is available on the agent details page, under **Mapped Harness Project**. If you are creating a new AppProject, remember to add the [mapping for the Argo project to the Harness project in the GitOps Agent](/docs/continuous-delivery/gitops/connect-and-manage/argocd/byo-argo-to-harness.md#adding-new-mappings-to-existing-agent), and then use the value of `metadata.name` in the project field of the entity configurations. The UI requires that information to show the entities.
 :::
 
 You can use all other entity configurations without modifying them.
