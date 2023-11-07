@@ -30,4 +30,5 @@ After creating a repository, you can:
 * [Create a branch](../work-in-repos/branch.md), [commit changes](../work-in-repos/commit.md), and [open a pull request](/docs/category/pull-requests).
 * [Create tags.](../work-in-repos/tag.md)
 * [Configure branch protection.](./protection-rules.md)
-* [Configure webhooks to automatically trigger CI/CD pipelines.](../pipelines/webhooks.md)
+* [Configure your pipelines to build, test, and deploy code from your Harness Code repositories.](../pipelines/codebase-from-harness-code.md)
+* [Configure webhooks](../pipelines/webhooks.md) to automatically run pipelines when certain Git events occur.

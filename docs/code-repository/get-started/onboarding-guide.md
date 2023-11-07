@@ -22,4 +22,5 @@ This guide explains what you need to know to get started with the Harness Code R
    * [Branch](../work-in-repos/branch.md), [commit](../work-in-repos/commit.md), and [tag](../work-in-repos/tag.md) by command line or directly in the Harness Platform.
    * [Create, review, and merge pull requests](/docs/category/pull-requests). <!-- Maintain code quality: Conduct code reviews, configure status checks, define merge requirements, and select merge strategies. -->
 
-5. Use [webhooks](../pipelines/webhooks.md) to integrate your repo with your Harness pipelines. Your pipelines can run automatically in response to Git events in your Harness Code repositories.
+5. Configure your [pipelines to build, test, and deploy code from your Harness Code repos](../pipelines/codebase-from-harness-code.md).
+6. Use [webhooks](../pipelines/webhooks.md) to set up [triggers](/docs/category/triggers) that automatically run pipelines in response to specific Git events in your repos.

@@ -15,16 +15,17 @@ The [Harness Code Repository module](/docs/code-repository/code-supported.md) (C
 
 The Harness Code supports these features:
 
-* [Create repositories](./config-repos/create-repo.md)
-* [Collaborate and develop](/docs/category/collaborate-and-develop): Create commits, branches, tags
-   * Clone repositories to work locally
-   * Commit, branch, and tag directly in the Harness Platform
+* [Create repositories.](./config-repos/create-repo.md)
+* [Collaborate and develop](/docs/category/collaborate-and-develop):
+   * Clone repositories to work locally.
+   * Commit, branch, and tag directly in the Harness Platform.
 * Create, review, and merge [pull requests](/docs/category/pull-requests)
-   * Conduct code reviews
-   * Implement status checks
-   * Define merge requirements
-   * Specify merge strategies
-* [Use webhooks to trigger CI/CD pipelines](./pipelines/webhooks.md)
+   * Conduct code reviews.
+   * Implement status checks.
+   * Define merge requirements.
+   * Specify merge strategies.
+* Use Harness Code repositories in your [Harness pipelines](./pipelines/codebase-from-harness-code.md).
+* [Create webhooks](./pipelines/webhooks.md) to get notifications or automatically run pipelines in response to specific Git events in your repos.
 
 These features are in pre-beta or in development:
 

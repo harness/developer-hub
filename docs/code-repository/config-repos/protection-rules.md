@@ -29,16 +29,16 @@ The following protections are available when adding branch protection rules. Som
 
 | Rule | Additional configuration |
 | ---- | ------------------------ |
-| **Require a minimum number of reviewers** | Specify the minimum number of reviewers. |
-| **Require review from code owners** | Requires a `CODEOWNERS` file in your branches. If there is no `CODEOWNERS` file, the rule can't be enforced. |
+| **Require a minimum number of reviewers** | You must specify the minimum number of reviewers. |
+| **Require review from code owners** | This rule requires a `CODEOWNERS` file in your branches. If there is no `CODEOWNERS` file, Harness can't enforce the rule. |
 | **Require approval of new changes** | None. |
 | **Require comment resolution** | None. |
-| **Require status checks to pass** | Specify the checks that must pass. |
-| **Limit merge strategies** | Select the allowed merge strategies. |
+| **Require status checks to pass** | You must specify the checks that must pass. |
+| **Limit merge strategies** | You must select the allowed merge strategies. |
 | **Auto delete branch on merge** | None. |
 | **Block branch creation** | This rule doesn't block users in the **Bypass List**. |
 | **Block branch deletion** | This rule doesn't block users in the **Bypass List**. |
-| **Block merge without pull request** | None. |
+| **Block merge without pull request** | This rule doesn't block users in the **Bypass List**. |
 
 ## Toggle rules
 

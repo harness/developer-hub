@@ -25,7 +25,7 @@ export default function Code() {
                 Tutorials
               </button>
             </Link>
-            <Link href="/release-notes/whats-new">
+            <Link href="/release-notes">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />
