@@ -7,20 +7,21 @@ import Ossupport from './shared/note-supported-os.md'
 import FaultPermissions from './shared/fault-permissions.md'
 
 
-Linux network loss injects chaos to disrupt network connectivity on the Linux machine by blocking the network requests.
+Linux network loss injects chaos to disrupt network connectivity by blocking the network requests on the Linux machine.
 
 ![Linux network loss](./static/images/linux-network-loss.png)
 
 ## Use cases
+Linux network loss:
 - Induces network loss on the target Linux machines.
-- Simulates loss of connectivity access by blocking the network requests on the machine.
+- Simulates loss of connectivity access by blocking the incoming and outgoing network requests on the machine.
 
 <Ossupport />
 
 <FaultPermissions />
 
 ## Fault tunables
-<h3>Mandatory tunables</h3>
+<h3>Mandatory fields</h3>
 <table>
   <tr>
     <th> Tunable </th>
@@ -29,11 +30,11 @@ Linux network loss injects chaos to disrupt network connectivity on the Linux ma
   </tr>
   <tr>
     <td> networkInterfaces </td>
-    <td> Network interfaces to target as comma separated values. </td>
-    <td> For example, <code>eth0,ens192</code> </td>
+    <td> Comma-separated values of target network interfaces. </td>
+    <td> For example, <code>eth0,ens192</code>. </td>
   </tr>
 </table>
-<h3>Optional tunables</h3>
+<h3>Optional fields</h3>
 <table>
   <tr>
     <th> Tunable </th>
@@ -42,13 +43,13 @@ Linux network loss injects chaos to disrupt network connectivity on the Linux ma
   </tr>
   <tr>
     <td> destinationHosts </td>
-    <td> List of the target host names or keywords. For example: <code>google.com,litmuschaos.io</code></td>
-    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is present, the fault injects chaos for all hostnames/domains </td>
+    <td> List of the target host names or keywords. For example, <code>google.com,litmuschaos.io</code>.</td>
+    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is present, the fault injects chaos for all host names or domains. </td>
   </tr>
   <tr>
     <td> destinationIPs </td>
-    <td> List of the target IPs. For example: <code>1.1.1.1,8.8.8.8</code> </td>
-    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted</td>
+    <td> List of the target IPs. For example, <code>1.1.1.1,8.8.8.8</code> </td>
+    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names or domains are targeted.</td>
   </tr>
   <tr>
     <td> packetLossPercentage </td>
@@ -57,13 +58,13 @@ Linux network loss injects chaos to disrupt network connectivity on the Linux ma
   </tr>
   <tr>
     <td> sourcePorts </td>
-    <td> Source ports to be filtered for chaos. For example: <code> 5000,8080 </code> </td>
-    <td> Alternatively, the ports can be filtered to exempt from chaos i.e. whitelisted. To specify the exemption, prepend a <code>!</code> before the ports list. For example: <code> !5000,8080 </code> </td>
+    <td> Source ports to be filtered for chaos. For example: <code> 5000,8080 </code>. </td>
+    <td> Alternatively, the ports can be whitelisted, that is, filtered to be exempt from chaos. Prepend a <code>!</code> to the list of ports to be exempted. For example, <code> !5000,8080 </code>. </td>
   </tr>
   <tr>
     <td> destinationPorts </td>
     <td> Destination ports to be filtered for chaos. For example: <code> 5000,8080 </code> </td>
-    <td> Alternatively, the ports can be filtered to exempt from chaos i.e. whitelisted. To specify the exemption, prepend a <code>!</code> before the ports list. For example: <code> !5000,8080 </code> </td>
+    <td> Alternatively, the ports can be whitelisted, that is, filtered to be exempt from chaos. Prepend a <code>!</code> to the list of ports to be exempted. For example, <code> !5000,8080 </code>. </td>
   </tr>
   <tr>
     <td> duration </td>
@@ -119,10 +120,10 @@ spec:
 
 ### Source and destination ports
 
-By default, the network experiments disrupt traffic for all the source and destination ports. Tune the interruption of specific port(s) using `sourcePorts` and `destinationPorts` inputs.
+By default, the network experiments disrupt traffic for all the source and destination ports. Tune the interruption of specific port(s) using `sourcePorts` and `destinationPorts` inputs, respectively.
 
-- `sourcePorts`: It contains ports of the target application, the accessibility to which is impacted
-- `destinationPorts`: It contains the ports of the destination services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted
+- `sourcePorts`: Ports of the target application whose accessibility is impacted.
+- `destinationPorts`: Ports of the destination services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -144,10 +145,10 @@ spec:
 
 ### Ignore Source and Destination Ports
 
-By default, the network experiments disrupt traffic for all the source and destination ports. Ignore the specific ports using `sourcePorts` and `destinationPorts` inputs.
+By default, the network experiments disrupt traffic for all the source and destination ports. Ignore the specific ports using `sourcePorts` and `destinationPorts` inputs, respectively.
 
-- `sourcePorts`: Provide the comma-separated source ports preceded by `!`, that you'd like to ignore from the chaos.
-- `destinationPorts`: Provide the comma-separated destination ports preceded by `!` , that you'd like to ignore from the chaos.
+- `sourcePorts`: Provide source ports that are not subject to chaos as comma-separated values preceded by `!`.
+- `destinationPorts`: Provide destination ports that are not subject to chaos as comma-separated values preceded by `!`.
 
 The following YAML snippet illustrates the use of this environment variable:
 
