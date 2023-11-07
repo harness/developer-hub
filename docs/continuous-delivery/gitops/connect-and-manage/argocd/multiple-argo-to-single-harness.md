@@ -1,5 +1,5 @@
 ---
-title: Map Argo projects to Harness projects for Bring Your Own Argo
+title: Map Argo projects to Harness projects for Bring Your Own Argo CD
 description: This topic describes how to map existing Argo CD projects to Harness projects for Bring Your Own Argo CD (BYOA).
 sidebar_position: 1
 helpdocs_topic_id: gzw782fcqz
