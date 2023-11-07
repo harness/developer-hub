@@ -41,17 +41,24 @@ import {
           "",
         list: [
           {
-            title: "Get started with Harness Code Repository",
+            title: "What's supported",
             module: MODULES.code,
             description:
-              "Learn about the benefits, features, and architecture of Harness Code, as well as basic Code concepts.",
+              "Learn what features and functionality are supported by Harness Code.",
+            link: "/docs/code-repository/code-supported",
+          },
+          {
+            title: "Get started with Code",
+            module: MODULES.code,
+            description:
+              "Learn the benefits, features, and key concepts of the Harness Code Repository module.",
             link: "/docs/category/get-started-with-code",
           },
           {
             title: "Onboarding guide",
             module: MODULES.code,
             description:
-              "Dive in.",
+              "Start using Harness Code.",
             link: "/docs/code-repository/get-started/onboarding-guide",
           },
         ],
@@ -63,18 +70,32 @@ import {
           "",
         list: [
           {
-            title: "Create repositories",
-            module: MODULES.ci,
+            title: "Repositories",
+            module: MODULES.code,
             description:
-              "Create repositories for your code.",
-            link: "/docs/code-repository/get-started/onboarding-guide",
+              "Create repositories and configure branch protection rules.",
+            link: "/docs/category/manage-repositories",
           },
           {
-            title: "Feature 2",
-            module: MODULES.ci,
+            title: "Collaboration",
+            module: MODULES.code,
             description:
-              "Description 2.",
-            link: "/docs/code-repository/get-started/onboarding-guide",
+              "Branch, commit, tag, and more.",
+            link: "/docs/category/collaborate-and-develop",
+          },
+          {
+            title: "Pull requests",
+            module: MODULES.code,
+            description:
+              "Create, review, and merge PRs.",
+            link: "/docs/category/pull-requests",
+          },
+          {
+            title: "Pipelines",
+            module: MODULES.code,
+            description:
+              "Build, test, and deploy code from your Harness Code repositories. Use webhooks to automate pipeline runs.",
+            link: "/docs/category/run-pipelines",
           },
         ],
       },
