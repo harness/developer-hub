@@ -8,6 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
 Harness Default Settings lets you configure parameters in your Account, Org, or Project scope for specific Harness modules.
 
 This topic explains how to view and edit Default Settings for your modules.
@@ -18,13 +23,19 @@ Harness supports the configuration of Default Settings for the following modules
 * Deployments
 * Builds
 
-### Required permissions
+## Required permissions
 
 Make sure you have the **view** and **edit** permissions for Default Settings.
 
 ## Manage Harness Platform default settings
 
-Default Settings include configurable module-specific parameters that you can customize based on your needs, such as enabling or disabling features at specific scopes. 
+Default Settings include configurable module-specific parameters that you can customize based on your needs, such as enabling or disabling features at specific scopes.
+
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="accountscope" label="Account scope" default>
+```
 
 To access the Default Settings at the Account scope, do the following:
 
@@ -34,11 +45,21 @@ To access the Default Settings at the Account scope, do the following:
 
 2. Select **Default Settings**. The **Account Default Settings** appear.
 
+```mdx-code-block
+</TabItem>
+  <TabItem value="orgscope" label="Org scope" default>
+```
+
 To access the Default Settings at the Org scope, do the following:
 
 1. In Harness, select your organization. The organization page opens.
 
 2. Select **Default Settings**. The **Account Default Settings** appear.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="projscope" label="Project scope" default>
+```
 
 To access the Default Settings at the Project scope, do the following:
 
@@ -46,9 +67,46 @@ To access the Default Settings at the Project scope, do the following:
 
 2. Under **PROJECT SETUP**, select **Default Settings**. The **Account Default Settings** appear.
 
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+### View and Edit Default Settings
+
+This topic explains how to view and edit Default Settings at the Account scope.
+
+1. In your Harness Account, go to **Account Resources**.
+
+   ![](./static/default-settings-00.png)
+
+2. Select **Default Settings**. The **Account Default Settings** appear.
+
+   Harness onboards the module-specific settings in **Account Default Settings**.
+   
+   ![](./static/default-settings-01.png)
+
+#### Allow Override
+
+* If you select Allow Override at the parent scope, your setting can be overridden at the child scope.​
+* To have the settings of a child scope the same as that of a parent scope, disable **Allow Override**.  
+For example, if you want to have the same settings for all the Organizations and Projects within an Account.
+
+#### Restore to Default
+
+Harness has default values for the parameters in Default Settings. You can change these values as per your needs.
+
+When you change any default setting, you have the option to change it back to the default value for that scope, using the **Restore to Default** option.
+
 ## Account scope default settings
 
 This topic lists Default Settings at the Account scope. You can also configure Default Settings at the Org and Project scopes.
+
+:::info note
+
+Available settings vary by scope.
+
+:::
 
 ### General
 
@@ -122,32 +180,6 @@ For more information about these settings, go to [Notification settings](/docs/p
 ### Harness AI Development Assistant
 
 Enable this setting to use Harness AI Development Assistant (AIDA). For more information, go to [Overview of Harness AI Development Assistant](/docs/platform/harness-aida/aida-overview/).
-
-### View and Edit Default Settings
-
-This topic explains how to view and edit Default Settings at the Account scope.
-
-1. In your Harness Account, go to **Account Resources**.
-
-   ![](./static/default-settings-00.png)
-
-2. Select **Default Settings**. The **Account Default Settings** appear.
-
-   Harness onboards the module-specific settings in **Account Default Settings**.
-   
-   ![](./static/default-settings-01.png)
-
-#### Allow Override
-
-* If you select Allow Override at the parent scope, your setting can be overridden at the child scope.​
-* To have the settings of a child scope the same as that of a parent scope, disable **Allow Override**.  
-For example, if you want to have the same settings for all the Organizations and Projects within an Account.
-
-#### Restore to Default
-
-Harness has default values for the parameters in Default Settings. You can change these values as per your needs.
-
-When you change any default setting, you have the option to change it back to the default value for that scope, using the **Restore to Default** option.
 
 #### Module-specific settings
 
