@@ -23,9 +23,37 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### New features and enhancements
 
+```mdx-code-block
+import sto_exemptions_timebound from './static/sto-timebound-exemption.png'
+import sto_exemptions_table from './static/sto-exemptions-table.png'
+```
+
 - You can now provide feedback about the [AIDA-generated remediation step](https://developer.harness.io/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations) for a selected issue. (STO-6593)
 
   ![](./static/sto-aida-feedback-sto-6593.png)
+
+- The following Early Availability features are now generally available:
+
+  - You can specify a time limit when you request an exemption. (STO-6367, formerly behind feature flag `STO_TIMEBOUND_EXEMPTIONS`)
+
+   
+    ```mdx-code-block
+    <img src={sto_exemptions_timebound} alt="Select the time limit for an exemption" height="75%" width="75%" />
+    ```
+
+    The **Exemptions** table includes a **Time Remaining** column that shows when each exemption is scheduled to expire. The table is sorted by this column by default so that soonest-to-expire exemptions are listed first.
+
+    ![](./static/sto-exemptions-table.png)
+
+  - You can click on a row in the **Exemptions** table to view details for the issue associated with that exemption. (STO-5056, formerly behind feature flag `STO_EXEMPTION_DETAILS`) 
+
+    For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+
+  - The **Security Tests** tab includes a set of **Security Executions** pull-down menus so you can filter the issue lists by Target, Target Type, Step, Stage, and Scanner. (STO-5212, formerly behind feature flag `STO_DROPDOWN_FILTERS`).
+
+    ![Click on a tile to filter issues by severity](./static/sto-pulldown-filters-sto-5212.png)
+
+
 
 ### Early access
 

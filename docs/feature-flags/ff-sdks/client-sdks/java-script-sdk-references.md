@@ -171,8 +171,6 @@ interface Options {
   pollingEnabled?: boolean
   streamEnabled?: boolean
   debug?: boolean
-  allAttributesPrivate?: boolean // **Depreacated**
-  privateAttributeNames?: string[] // **Depreacated**
 }
 ```
 
@@ -186,8 +184,6 @@ interface Options {
 | streamEnabled         | Set to `true` to enable streaming mode. Set to `false` to disable streaming mode.                                                 | `true`                                                 |
 | pollingEnabled        | Set to `true` to enable polling mode. Set to `false` to disable polling mode.                                                     | `true`                                                 |
 | debug                 | Set to `true` to enable SDK debug level logging. Set to `false` to disable debug level logging                                    | `false`                                                |
-| allAttributesPrivate  | **Deprecated** no longer has any effect                                                                                           | No default - deprecated                                |
-| privateAttributeNames | **Deprecated** no longer has any effect                                                                                           | No default - deprecated                                |
 
 
 ### Complete the initialization

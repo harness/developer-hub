@@ -183,7 +183,7 @@ This release does not include early access features.
 
   This issue has been fixed. Now, Harness NextGen uses the ISO_8859_1 character set while decoding secrets from the secret store and subsequently uses Base64 encoding.
 
-  This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.10.81001. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Harness did not handle appropriately the failure status codes returned by the GitLab API for the Merge PR step. (CDS-80927)
 

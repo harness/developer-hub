@@ -20,7 +20,7 @@ The following table describes each of the active feature flags relevant to Harne
 
 :::note
 
-To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io).
+To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io). For the status of a feature flag, please note [Beta, GA, Public Preview Feature Categorization](https://developer.harness.io/docs/get-started/beta-preview-ga/) in the descriptions below.
 
 :::
 
@@ -35,47 +35,46 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16</td>
-        <td>Allow users leveraging Kubernetes version 1.16 or later to perform steady state check for Helm deployments.</td>
+        <td>Allow users leveraging Kubernetes version 1.16 or later to perform steady state check for Helm deployments. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>OPA_PIPELINE_GOVERNANCE</td>
-        <td>Enables <a href="/docs/platform/governance/policy-as-code/harness-governance-overview">Policy as Code</a> for a Harness account.</td>
+        <td>Enables <a href="/docs/platform/governance/policy-as-code/harness-governance-overview">Policy as Code</a> for a Harness account.<b>This feature is GA.</b></td>
     </tr>
     <tr>
         <td>CDS_HELM_VERSION_3_8_0</td>
-        <td>Sets the default version of Helm to 3.8 when using the Harness Helm delegate.</td>
+        <td>Sets the default version of Helm to 3.8 when using the Harness Helm delegate. This feature in in Public Preview. </td>
     </tr>
     <tr>
         <td>NG_PIPELINE_TEMPLATE</td>
-        <td>Enables <a href="https://developer.harness.io/tutorials/cd-pipelines/templates">Harness templates</a>.</td>
+        <td>Enables <a href="https://developer.harness.io/tutorials/cd-pipelines/templates">Harness templates.</a>. <b>This feature is GA.</b> </td>
     </tr>
     <tr>
         <td>OPA_GIT_GOVERNANCE</td>
-        <td>Store and fetch your <a href="/docs/platform/governance/policy-as-code/configure-gitexperience-for-opa">OPA policies in Git</a>.</td>
+        <td>Store and fetch your <a href="/docs/platform/governance/policy-as-code/configure-gitexperience-for-opa">OPA policies in Git.</a>. <b>This feature is GA.</b> </td>
     </tr>
     <tr>
         <td>NG_SVC_ENV_REDESIGN</td>
-        <td>Enables <a href="/docs/continuous-delivery/get-started/services-and-environments-overview">Service and Environment V2</a>
-. V1 is <a href="/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2">deprecated</a>
+        <td>Enables <a href="/docs/continuous-delivery/get-started/services-and-environments-overview">Service and Environment V2. </a> <b>This feature is GA.</b> V1 is <a href="/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2">deprecated</a>
 .</td>
     </tr>
     <tr>
         <td>NG_EXECUTION_INPUT</td>
-        <td>Users can <a href="/docs/platform/variables-and-expressions/runtime-inputs/#supply-runtime-input-during-execution">provide inputs at pipeline execution</a>.</td>
+        <td>Users can <a href="/docs/platform/variables-and-expressions/runtime-inputs/#supply-runtime-input-during-execution">provide inputs at pipeline execution.</a> <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>NG_CUSTOM_STAGE</td>
         <td>Enables the <a href="/docs/platform/pipelines/add-a-stage/#add-a-custom-stage">Custom stage</a>
- for use in a pipeline.</td>
+ for use in a pipeline. <b>This feature is GA.</b></td>
     </tr>
     <tr>
         <td>NG_GIT_EXPERIENCE</td>
-        <td>Enables <a href="/docs/platform/git-experience/configure-git-experience-for-harness-entities">Harness Git Experience</a> for a Harness account.</td>
+        <td>Enables <a href="/docs/platform/git-experience/configure-git-experience-for-harness-entities">Harness Git Experience</a> for a Harness account. Users can manage their Pipeline, Templates, Input Sets, Feature Flags via Git. <b>This feature is GA.</b></td>
     </tr>
     <tr>
         <td>PIPELINE_QUEUE_STEP</td>
         <td>Enables the <a href="/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/control-resource-usage-with-queue-steps">Pipeline Queue</a> 
- step for an account.</td>
+ step for an account. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDP_USE_OLD_GIT_SYNC</td>
@@ -83,61 +82,57 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_DISABLE_HELM_REPO_YAML_CACHE</td>
-        <td>Disables Helm repository caching on the Harness delegate.</td>
+        <td>Disables Helm repository caching on the Harness delegate. This should only be enabled if users are experiencing failures with Harness Delegate failing to fetch Helm Charts. Caching could be the source of the issue. This Feature is in Beta. </td>
     </tr>
     <tr>
         <td>CDS_MULTI_SERVICE_INFRA</td>
-        <td>Enables the <a href="/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv">multi-service and multi-environment deployment</a> feature.</td>
+        <td>Enables the <a href="/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv">multi-service and multi-environment deployment</a> feature. <b>This feature is GA.</b></td>
     </tr>
     <tr>
         <td>PIPELINE_ROLLBACK</td>
-        <td>Enables <a href="/docs/continuous-delivery/manage-deployments/rollback-deployments">Post deployment rollback</a>
-.</td>
+        <td>Enables <a href="/docs/continuous-delivery/manage-deployments/rollback-deployments">Post deployment rollback.</a> <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_ARTIFACT_SOURCE_TEMPLATE</td>
-        <td>Enables <a href="/docs/continuous-delivery/x-platform-cd-features/templates/artifact-source-template">artifact source templates</a>
+        <td>Enables <a href="/docs/continuous-delivery/x-platform-cd-features/templates/artifact-source-template">artifact source templates</a> <b>This feature is GA.</b>
 .</td>
     </tr>
     <tr>
         <td>CD_GIT_WEBHOOK_POLLING</td>
-        <td>Enables configurable polling for <a href="/docs/platform/triggers/triggering-pipelines/">GitHub Webhooks</a>
-.</td>
+        <td>Enables configurable polling for <a href="/docs/platform/triggers/triggering-pipelines/">GitHub Webhooks</a> This allows users to set polling interval for Harness Delegate to poll your GitHub instance. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_DISABLE_WINRM_COMMAND_ENCODING_NG</td>
-        <td>Prevents the encoding of WinRM commands.</td>
+        <td>Prevents the encoding of WinRM commands. By default Harness encodes the winrm commands we run on hosts. User's can disable this behavior via this feature flag. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_TERRAFORM_S3_SUPPORT</td>
-        <td>Enables AWS S3 for Terraform plan storage.</td>
+        <td>Enables AWS S3 for Terraform plan storage. <b>This feature flag is GA.</b> </td>
     </tr>
     <tr>
         <td>PIE_PIPELINE_SETTINGS_ENFORCEMENT_LIMIT</td>
-        <td>Enables pipeline settings and limits in project <b>Default Settings</b>. This feature lets you set certain pipeline settings and limits for all pipelines in a project.</td>
+        <td>Enables pipeline settings and limits in project <b>Default Settings</b>. This feature lets you set certain pipeline settings and limits for all pipelines in a project. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDP_USE_K8S_DECLARATIVE_ROLLBACK</td>
-        <td>Enables the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#declarative-rollback">declarative rollback</a> behavior for services. </td>
+        <td>Enables the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#declarative-rollback">declarative rollback</a> behavior for services. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>CDC_SERVICE_DASHBOARD_REVAMP_NG</td>
-        <td>Provides new <a href="/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#individual-service-dashboards">dashboard views for services and environments</a>
-.</td>
+        <td>Provides new <a href="/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#individual-service-dashboards">dashboard views for services and environments</a> <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_TERRAFORM_CLOUD</td>
-        <td>Enables <a href="/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments">Terraform Cloud support in Harness</a>
-.</td>
+        <td>Enables <a href="/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments">Terraform Cloud support in Harness</a> <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_BAMBOO_ARTIFACT_NG</td>
-        <td>Enables the <a href="/docs/continuous-delivery/x-platform-cd-features/cd-steps/builds/run-bamboo-plans-in-cd">Bamboo Build step</a>
+        <td>Enables the <a href="/docs/continuous-delivery/x-platform-cd-features/cd-steps/builds/run-bamboo-plans-in-cd">Bamboo Build step.</a> <b>This feature is in Public Preview.</b>
 .</td>
     </tr>
     <tr>
         <td>CDS_K8S_SOCKET_CAPABILITY_CHECK_NG</td>
-        <td>Replaces the HTTP capability check for the Kubernetes connector with socket capability.</td>
+        <td>Replaces the HTTP capability check for the Kubernetes connector with socket capability. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
         <td>PIE_GET_FILE_CONTENT_ONLY</td>
@@ -145,20 +140,19 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_SERVICE_CONFIG_LAST_STEP</td>
-        <td>Allows users on the last step of manifest/artifact/config files, if these configs are in edit mode</td>
+        <td>Allows users on the last step of manifest/artifact/config files, if these configs are in edit mode. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>PIE_USE_SECRET_FUNCTOR_WITH_RBAC</td>
-        <td>Performs RBAC check on secrets when used in pipeline execution.</td>
+        <td>Performs RBAC check on secrets when used in pipeline execution. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
         <td>CDS_TERRAGRUNT_PROVISION_NG</td>
-        <td>Enables <a href="/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos">Terragrunt provisioning steps</a>
-.</td>
+        <td>Enables <a href="/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos">Terragrunt provisioning steps</a> <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_RANCHER_SUPPORT_NG</td>
-        <td>Enables the <a href="/docs/first-gen/firstgen-platform/account/manage-connectors/add-rancher-cloud-providers">Rancher connector</a> for Kubernetes deployments.</td>
+        <td>Enables the <a href="/docs/first-gen/firstgen-platform/account/manage-connectors/add-rancher-cloud-providers">Rancher connector</a> for Kubernetes deployments. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_SERVICENOW_TICKET_TYPE_V2</td>
@@ -188,16 +182,15 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_BG_STAGE_SCALE_DOWN_STEP_NG</td>
-        <td>Enables the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment/#add-the-execution-steps">Blue Green Scale Down step</a> Kubernetes blue green deployments.</td>
+        <td>Enables the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment/#add-the-execution-steps">Blue Green Scale Down step</a> Kubernetes blue green deployments. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_POST_PROD_ROLLBACK</td>
-        <td>Enables <a href="/docs/continuous-delivery/manage-deployments/rollback-deployments">post deployment rollback</a>
-.</td>
+        <td>Enables <a href="/docs/continuous-delivery/manage-deployments/rollback-deployments">post deployment rollback</a>. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_NEXUS_GROUPID_ARTIFACTID_DROPDOWN</td>
-        <td>Adds <b>Group Id</b> and <b>Artifact Id</b> options in Nexus artifact source details.</td>
+        <td>Adds <b>Group Id</b> and <b>Artifact Id</b> options in Nexus artifact source details. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
         <td>NG_EXPRESSIONS_NEW_INPUT_ELEMENT</td>
@@ -205,7 +198,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>PIE_GITX_OAUTH</td>
-        <td>Uses users' OAuth credentials to fetch and commit in Git.</td>
+        <td>Uses users' OAuth credentials to fetch and commit in Git. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES</td>
@@ -227,36 +220,35 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>GITOPS_IAM</td>
-        <td>Enables users to create <a href="/docs/continuous-delivery/gitops/use-gitops/create-cluster-with-iam">GitOps clusters with an IAM role</a> and have Harness hook into that cluster for orchestration. </td>
+        <td>Enables users to create <a href="/docs/continuous-delivery/gitops/use-gitops/create-cluster-with-iam">GitOps clusters with an IAM role</a> and have Harness hook into that cluster for orchestration. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_OPA_TEMPLATE_GOVERNANCE</td>
-        <td>Enables <a href="/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/#template">OPA with templates</a>.</td>
+        <td>Enables <a href="/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/#template">OPA with templates</a>. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_ARTIFACTS_PRIMARY_IDENTIFIER</td>
-        <td>Allows you to change the expression value for the primary artifact identifier.</td>
+        <td>Allows you to change the expression value for the primary artifact identifier. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
         <td>CDS_TRIGGER_ACTIVITY_PAGE</td>
-        <td>Enables the <a href="/docs/platform/triggers/troubleshoot-registered-triggers">Trigger Activity page</a>
-.</td>
+        <td>Enables the <a href="/docs/platform/triggers/troubleshoot-registered-triggers">Trigger Activity page</a> <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
         <td>CDS_SUPPORT_HPA_AND_PDB_NG</td>
-        <td>Enables <p><a href="/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes/#managed-workloads-table">PDB and HPA tracking</a></p> as managed resources by Harness.</td>
+        <td>Enables <p><a href="/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes/#managed-workloads-table">PDB and HPA tracking</a></p> as managed resources by Harness.<b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>GITOPS_ORG_LEVEL</td>
-        <td>Enables the GitOps agent to be configured at a Harness Organization level.</td>
+        <td>Enables the GitOps agent to be configured at a Harness Organization level. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_SSH_SSHJ</td>
-        <td>Enables a library upgrade to use newer algorithms of SSH to connect to hosts.</td>
+        <td>Enables a library upgrade for SSH Deployments to use newer algorithms of SSH to connect to hosts. All Delegates on 803xx Release will have the new upgraded library. <b>This feature is GA.</b></td>
     </tr>
     <tr>
         <td>CDS_SSH_CLIENT</td>
-        <td>Enables a library upgrade to use newer algorithms of SSH to connect to hosts.</td>
+        <td>Enables a library upgrade for SSH Deployments  to use newer algorithms of SSH to connect to hosts. All Delegates on 803xx Release will have the new upgraded library. <b>This feature is GA.</b> </td>
     </tr>
     <tr>
         <td>CD_TRIGGER_CATALOG_API_ENABLED</td>
@@ -264,24 +256,24 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_SERVICE_OVERRIDES_2_0</td>
-        <td>Enables <a href="/docs/continuous-delivery/x-platform-cd-features/overrides-v2">overrides v2 experience</a>
-.</td>
+        <td>Enables <a href="/docs/continuous-delivery/x-platform-cd-features/overrides-v2">overrides v2 experience</a>. <b>This feature is in Beta
+.</b></td>
     </tr>
     <tr>
         <td>CDS_TEMPLATE_ERROR_HANDLING</td>
-        <td>Adds enhanced error handling for templates by schema validation errors.</td>
+        <td>Adds enhanced error handling for templates by schema validation errors. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_CONTAINER_STEP_GROUP</td>
-        <td>Enables the <a href="/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups">container-based steps</a> for a CD stage.</td>
+        <td>Enables the <a href="/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups">container-based steps</a> for a CD stage. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG</td>
-        <td>Enables steady state check for Helm deployments on Kubernetes clusters using 1.16 or higher.</td>
+        <td>Enables steady state check for Helm deployments on Kubernetes clusters using 1.16 or higher. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>CDS_AZURE_WEBAPP_LISTING_APP_NAMES_AND_SLOTS</td>
-        <td>Enables users to select Azure WebApps in a drop down for slot deployments.</td>
+        <td>Enables users to select Azure WebApps in a drop down for slot deployments. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CD_AI_ENHANCED_REMEDIATIONS</td>
@@ -289,77 +281,78 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDP_AWS_SAM</td>
-        <td>Enables <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments">AWS SAM deployments</a>
-.</td>
+        <td>Enables <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments">AWS SAM deployments</a> <b>This feature is in Public Preview.</b></td>
+    </tr>
+    <tr>
+        <td>PIE_WEBHOOK_NOTIFICATION</td>
+        <td>Enables Webhooks as a notification option. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
         <td>CDS_RESOLVE_OBJECTS_VIA_JSON_SELECT</td>
-        <td>Support resolution of objects via the JSON Select Command in the HTTP step.</td>
+        <td>Support resolution of objects via the JSON Select Command in the HTTP step. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
         <td>CDS_SUPPORT_SKIPPING_BG_DEPLOYMENT_NG</td>
-        <td>Enables <b>Skip Unchanged Manifest</b> option in Kubernetes Blue Green Deploy step.</td>
+        <td>Enables <b>Skip Unchanged Manifest</b> option in Kubernetes Blue Green Deploy step. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_AZURE_WEBAPP_NG_LISTING_APP_NAMES_AND_SLOTS</td>
-        <td>Enables the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial">fetching and listing of WebApp names and slots</a>
-.</td>
+        <td>Enables the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial">fetching and listing of WebApp names and slots</a>. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_SERVERLESS_V2</td>
-        <td>Enables *building* and packaging serverless packages in Harness CD. For Serverless deployments, this feature spins up an environment for the Serverless package, validates the Serverless CloudFormation template, and then performs a Serverless deploy, all in the ephemeral environment.</td>
+        <td>Enables *building* and packaging serverless packages in Harness CD. For Serverless deployments, this feature spins up an environment for the Serverless package, validates the Serverless CloudFormation template, and then performs a Serverless deploy, all in the ephemeral environment. <b>This feature is in Public Preview.</b> </td>
     </tr>
     <tr>
         <td>CDS_SUPPORT_EXPRESSION_REMOTE
         _TERRAFORM_VAR_FILES_NG</td>
-        <td>Enables Harness expressions in remote Terraform var files.</td>
+        <td>Enables Harness expressions in remote Terraform var files. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>CDS_ENABLE_LOAD_FROM_CACHE_FOR_RETRY_FORM</td>
-        <td>Enables a load from cache option on pipeline execution retry form.</td>
+        <td>Enables a load from cache option on pipeline execution retry form. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>CDS_GITHUB_APP_AUTHENTICATION</td>
-        <td>Enables Github App authentication for users to fetch files and perform <a href="/docs/platform/connectors/code-repositories/git-hub-app-support">Harness Git Experience operations</a>
-.</td>
+        <td>Enables Github App authentication for users to fetch files and perform <a href="/docs/platform/connectors/code-repositories/git-hub-app-support">Harness Git Experience operations</a>. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_ENV_PROPAGATION</td>
-        <td>Enables environment propagation across CD stages.</td>
+        <td>Enables environment propagation across CD stages. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_GITHUB_PACKAGES</td>
-        <td>Support for <a href="/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources">GitHub Packages as an artifact source</a>
+        <td>Support for <a href="/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources">GitHub Packages as an artifact source</a>. <b>This feature is in Public Preview.</b>
 .</td>
     </tr>
     <tr>
         <td>CDS_HELM_SEND_TASK_PROGRESS_NG</td>
-        <td>For Helm tasks, this enables the sending of task progress events via log streaming.</td>
+        <td>For Helm tasks, this enables the sending of task progress events via log streaming. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
         <td>CDS_RECONFIGURE_JIRA_APPROVAL_TIMEOUT</td>
-        <td>Reduces timeout for Jira from 5 minutes to 1 minute and allows pausing of approval.</td>
+        <td>Reduces timeout for Jira from 5 minutes to 1 minute and allows pausing of approval. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
         <td>CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG</td>
         <td>Enables users to configure <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#using-multiple-helm-charts-in-one-harness-service">multiple Helm charts in a Harness service</a>
-, treating the Helm Charts similar to artifacts.</td>
+, treating the Helm Charts similar to artifacts. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_HELM_FETCH_CHART_METADATA_NG</td>
-        <td>Exposes <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts">Helm Chart expressions</a> for reference in other steps and settings.</td>
+        <td>Exposes <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts">Helm Chart expressions</a> for reference in other steps and settings. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>PIE_EXPRESSION_PLAYGROUND</td>
-        <td>Helps the user experiment with expressions to see what could be the expected/resolved value without running the pipeline.</td>
+        <td>Helps the user experiment with expressions to see what could be the expected/resolved value without running the pipeline. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_NG_SERVICE_PRINCIPAL_FOR_CUSTOM_WEBHOOK</td>
-        <td>Makes authenticated custom Webhook calls use the service principal instead of the principal inherited from the API key.</td>
+        <td>Makes authenticated custom Webhook calls use the service principal instead of the principal inherited from the API key. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
         <td>PIE_RETRY_STEP_GROUP</td>
-        <td>Retries failed step group with default post-retry action set to <b>Mark as Failure</b>.</td>
+        <td>Retries failed step group with default post-retry action set to <b>Mark as Failure</b>. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_MERGED_RUN_AND_RETRY_PIPELINE_COMPONENT</td>
@@ -367,66 +360,64 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CD_MAKE_CD_LICENSE_USAGE_ASYNC</td>
-        <td>Enables CD License Usage dashboards to be asynchronous.</td>
+        <td>Enables CD License Usage dashboards to be asynchronous. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>CDS_ENABLE_SHELL_SCRIPT_FILE_REFERENCE</td>
-        <td>Enables the Shell Script step to support scripts from Harness File Store.</td>
+        <td>Enables the Shell Script step to support scripts from Harness File Store. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>GITOPS_FLUX_FLAMINGO</td>
-        <td>Enables the creation of Flux Agents in Harness GitOps.</td>
+        <td>Enables the creation of Flux Agents in Harness GitOps. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>CDS_ECS_BG_GREEN_SERVICE_ROLLBACK</td>
-        <td>Enables the rollback of `green` service in ECS blue green deployments.</td>
+        <td>Enables the rollback of `green` service in ECS blue green deployments. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>CDS_DISABLE_EVALUATE_EXPORT_VARIABLES</td>
-        <td>Enables exporting variables without evaluating them in the Command step.</td>
+        <td>Enables exporting variables without evaluating them in the Command step. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
         <td>CDS_TERRAGRUNT_CLI_OPTIONS_NG</td>
-        <td>Enables CLI options for Terragrunt steps.</td>
+        <td>Enables CLI options for Terragrunt steps. <b>This feature is in Public Preview.</b> </td>
     </tr>
     <tr>
         <td>CD_CONTAINER_STEP_DELEGATE_SELECTOR</td>
-        <td>Makes the Container step to respect the delegate selector configured at the pipeline.</td>
+        <td>Makes the Container step to respect the delegate selector configured at the pipeline. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
         <td>CDS_AWS_CDK</td>
-        <td>Enables <a href="/docs/continuous-delivery/cd-infrastructure/aws-cdk">AWS CDK support</a>
-.</td>
+        <td>Enables <a href="/docs/continuous-delivery/cd-infrastructure/aws-cdk">AWS CDK support</a>. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_REMOVE_TIME_BUCKET_GAPFILL_QUERY</td>
-        <td>Removes the usage of time bucket gapfill from CD.</td>
+        <td>Removes the usage of time bucket gapfill from CD. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>GITOPS_UPDATE_APP_STEP</td>
-        <td>Enables the GitOps pipeline Update GitOps App step.</td>
+        <td>Enables the GitOps pipeline Update GitOps App step. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_MULTI_SERVICE_PROPAGATION</td>
-        <td>Enables multi-service propagation for CD.</td>
+        <td>Enables multi-service propagation for CD. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>CDS_TERRAGRUNT_USE_UNIQUE
         _DIRECTORY_BASE_DIR_NG</td>
-        <td>Enables a unique directory to support Terragrunt run-in-parallel.</td>
+        <td>Enables a unique directory to support Terragrunt run-in-parallel. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>OPA_AIDA_WIDGET</td>
-        <td>Enables <a href="/docs/platform/governance/policy-as-code/aida-for-policies">AIDA for OPA</a>
-.</td>
+        <td>Enables <a href="/docs/platform/governance/policy-as-code/aida-for-policies">AIDA for OPA</a>. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
         <td>CDS_JIRA_APPROVAL_OPTIMIZATION</td>
-        <td>Optimize Jira Approval stage/step to only fetch relevant fields.</td>
+        <td>Optimize Jira Approval stage/step to only fetch relevant fields. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>CDS_JIRA_UPDATE_SELECT_FIELDS_ENABLED</td>
-        <td>Enable Jira <b>Select Fields</b> setting for Jira Update step using project and issue type.</td>
+        <td>Enable Jira <b>Select Fields</b> setting for Jira Update step using project and issue type. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>CDS_NG_UPDATE_MULTIPLE_SNOW_CHANGE_REQUEST</td>
@@ -434,38 +425,38 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_WEBAPP_ENABLE_CLEAN_OPTION</td>
-        <td>Cleans the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial">Azure WebApp target directory</a> prior to deployment.</td>
+        <td>Cleans the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial">Azure WebApp target directory</a> prior to deployment. <b>This feature is in Public Preview.</b> </td>
     </tr>
     <tr>
         <td>PIE_SIMPLIFY_LOG_BASE_KEY</td>
-        <td>Reduces the length of the log base key.</td>
+        <td>Reduces the length of the log base key. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>CDS_SHELL_VARIABLES_EXPORT</td>
-        <td>Export variables in a shell script to either the step group, stage, or pipeline scope. The variable will be accessible using the scope of the variable. For example: <pre>functor.pipeline.&lt;exported_variable&gt;</pre> Exported variables are immutable.</td>
+        <td>Export variables in a shell script to either the step group, stage, or pipeline scope. The variable will be accessible using the scope of the variable. For example: <pre>functor.pipeline.&lt;exported_variable&gt;</pre> Exported variables are immutable. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>GITOPS_GITHUB_RESTRAINT_FOR_STEPS</td>
-        <td>Throttles GitHub API calls to prevent breach of secondary rate limit. This is use for addressing a Github rate limit issue that users were facing when using multiple GitOps steps in parallel. It adds a default queuing for those steps so only one step executes at a time. This is only applicable for Update Release Repo, Merge PR, and Revert PR steps.</td>
+        <td>Throttles GitHub API calls to prevent breach of secondary rate limit. This is use for addressing a Github rate limit issue that users were facing when using multiple GitOps steps in parallel. It adds a default queuing for those steps so only one step executes at a time. This is only applicable for Update Release Repo, Merge PR, and Revert PR steps. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>PIE_ASYNC_FILTER_CREATION</td>
-        <td>Sets pipeline CRUD calls to filter creation asynchronously. </td>
+        <td>Sets pipeline CRUD calls to filter creation asynchronously. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>CDS_ASG_V2</td>
-        <td>Enables support for <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial">ASG features</a> like user data, instances, multiple load balancers, and base ASG.</td>
+        <td>Enables support for <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial">ASG features</a> like user data, instances, multiple load balancers, and base ASG. <b>This feature is in Public Preview.</b> </td>
     </tr>
     <tr>
         <td>CDS_OCI_HELM_ECR_CONFIG_SUPPORT_NG</td>
-        <td>Support for ECR as an OCI Helm repo but with temporary credentials.</td>
+        <td>Support for ECR as an OCI Helm repo but with temporary credentials. <b>This feature is under development, and will be Beta soon.</b></td>
     </tr>
     <tr>
         <td>CDS_NG_BARRIER_STEPS_WITHIN_LOOPING_STRATEGIES</td>
-        <td>Support Barrier steps within looping strategies.</td>
+        <td>Support Barrier steps within looping strategies. <b>This feature is under development, and will be Beta soon.</b> </td>
     </tr>
     <tr>
         <td>CDS_TF_TG_SKIP_ERROR_LOGS_COLORING</td>
-        <td>Disable the coloring of execution logs that are coming form standart error output of process executor for Terraform and Terragrunt steps.</td>
+        <td>Disable the coloring of execution logs that are coming form standart error output of process executor for Terraform and Terragrunt steps. <b>This feature is in Beta.</b> </td>
     </tr>
 </table>
