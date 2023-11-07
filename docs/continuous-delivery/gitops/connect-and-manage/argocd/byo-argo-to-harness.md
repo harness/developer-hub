@@ -32,7 +32,7 @@ If you install the GitOps Agent at the Harness Project level, you can only map t
 
 In the following example, we will install the GitOps Agent at the Harness account level.
 
-## Installing a GitOps Agent in existing Argo CD (BYOA)
+## Installing a GitOps Agent in an existing Argo CD setup (BYOA)
 
 The following steps show you how to install a GitOps Agent into an existing Argo CD namespace and then map your existing projects to your Harness Project.
 
@@ -177,13 +177,13 @@ Edit the respective secret of the entity and add the fields `project` and `name`
 
 ## Creating GitOps Entities with multiple projects
 
-When you have multiple Argo CD projects mapped to your Harness Project, you can choose which Argo CD project to use when you create a new GitOps entity (Cluster / Repository / Application) in your Harness Project.
+When you have multiple Argo CD projects mapped to your Harness Project, you can choose which Argo CD project to use when you create a new GitOps entity **(Cluster / Repository / Application)** in your Harness Project.
 
 By default, in the Argo CD console, when you create a cluster it is not associated with an Argo CD project. You can add the cluster using the `argocd cluster add` CLI and its `--project` option.
 
 The following steps are common to all three entities when you create them in Harness, however we will demonstrate this for GitOps clusters:
 
-1. While creating a GitOps cluster, under **GitOps Agent**, select the Agent where you set up the mappings. The **Project** setting appears.
+1. While creating a GitOps cluster in the Harness Project that is mapped to multiple Argo CD projects, under **GitOps Agent**, select the Agent where you set up the mappings. The **Project** setting appears.
    
    If the Agent has only 1 Argo CD project mapped, the **Project** setting is not shown.
 
@@ -191,7 +191,7 @@ The following steps are common to all three entities when you create them in Har
    
    ![](../static/multiple-argo-to-single-harness-77.png)
 
-When you are done, the Cluster will appear in the GitOps Cluster list.
+When you have completed [setting up the Cluster](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart.md#step-3-add-a-harness-gitops-cluster), it will appear in the GitOps Cluster list.
 
 ## Notes
 
