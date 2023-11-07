@@ -164,7 +164,7 @@ You can now propagate force cool down from primary rule to dependent rules. With
 
 The following early access (beta) features are available for Harness Continuous Delivery and GitOps.
 
-For a complete list of CD early access features, go to [Active CD feature flags](/docs/continuous-delivery/cd-integrations.md#active-cd-feature-flags).
+For a complete list of CD early access features, go to [Active CD feature flags](/docs/continuous-delivery/cd-integrations/#active-cd-feature-flags).
 
 ### Clean directory before deploying an Azure Web App
 
@@ -196,7 +196,7 @@ Added support for Post Prod Rollback for ASG deployment types. For these Service
 * **Feature flag:** `CDC_SERVICE_DASHBOARD_REVAMP_NG`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-[The Services Dashboard includes new support for Helm Chart deployments.](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments.md#individual-service-dashboards) The following information appears only for services that were deployed using Helm charts:
+[The Services Dashboard includes new support for Helm Chart deployments.](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#individual-service-dashboards) The following information appears only for services that were deployed using Helm charts:
 
 - Tiles in the service overview (**Environments** tab) now show the Helm chart versions (if any) deployed in each environment.
 
@@ -292,7 +292,7 @@ For more details, go to [Automatic Approvals](/docs/continuous-delivery/x-platfo
 * **Feature flag:** `CDS_SUPPORT_HPA_AND_PDB_NG`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudget` for Blue Green and Canary execution strategies. For more information, go to [PDB and HPA tracking](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md#managed-workloads-table).
+Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudget` for Blue Green and Canary execution strategies. For more information, go to [PDB and HPA tracking](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes/#managed-workloads-table).
 
 ### New artifact and manifest triggers
 
@@ -446,7 +446,7 @@ Harness applies Kubernetes manifest  using `kubectl apply`, which is a declarati
 
 In some instances, the workload spec was not updated properly when `rollout undo` was performed. Subsequent deployments then referred to an invalid spec of the workload and caused Kubernetes issues like [kubectl rollout undo should warn about undefined behavior with kubectl apply](https://github.com/kubernetes/kubernetes/issues/94698).
 
-Enabling declarative rollback disables versioning (even if the **Skip Versioning** checkbox is left unchecked), since versioning was introduced with the imperative rollback design. However, versioning is not needed with [declarative rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback.md#declarative-rollback).
+Enabling declarative rollback disables versioning (even if the **Skip Versioning** checkbox is left unchecked), since versioning was introduced with the imperative rollback design. However, versioning is not needed with [declarative rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#declarative-rollback).
 
 The delegate's service account needs the permission to create, update, and read secrets in the defined infrastructure namespace. Typically, delegates already have these permissions, but if cluster roles are strictly scoped, this could cause failures. For information on cluster roles for the delegate, go to [Install Harness Delegate on Kubernetes](/tutorials/platform/install-delegate/).
 
@@ -724,7 +724,7 @@ You can onboard any secret manager with Harness and reference their secrets in H
 
 ### CD features promoted to GA
 
-For more information about CD early access features, go to [Active CD feature flags](/docs/continuous-delivery/cd-integrations.md#active-cd-feature-flags).
+For more information about CD early access features, go to [Active CD feature flags](/docs/continuous-delivery/cd-integrations/#active-cd-feature-flags).
 
 #### Harness supports the deployment of AWS Lambda functions
 
