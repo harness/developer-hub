@@ -26,7 +26,7 @@ For more information on how to create a BYOA or non-BYOA setup, go to [Install a
 
 :::
 
-## Install the GitOps Agent at the account or org level
+### Mapping Argo CD projects across different Harness scopes
 
 To map Argo CD projects to Harness Projects, you need to install the Harness GitOps Agent at the Harness account or org level. Then you can map the Argo CD projects to any of the Harness Projects in the account or org.
 
