@@ -8,7 +8,7 @@ CF app stop fault stops a Cloud Foundry app and later starts it.
 
 ## Use cases
 CF app stop fault:
-- Checks app resilience against abrupt stopping.
+- Checks resilience against abrupt stop of application components/microservices.
 - Validates the effectiveness of disaster recovery and high availability of the app.
 
 ## Fault tunables
