@@ -64,6 +64,7 @@ To add the GitOps application for your Argo CD configuration, do the following:
 
 6. If the sync policy is manual, sync the application manually.
 
+Once these steps are complete, you should be able to see the newly created GitOps entities in the Harness project that you configured in Git. 
 
 ## Git Configuration Files
 
