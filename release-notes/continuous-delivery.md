@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-11-3T10:00:15
+date: 2023-11-10T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -46,9 +46,111 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
-## Latest: November 3, 2023, Harness version 81308
+## Latest: November 10, 2023, Harness version 814xx
 
 ### New features and enhancements
+
+- We now support a Stage level timeout configuration for the following types of stages: (CDS-81225)
+  - Deploy
+  - Build
+  - Approval
+  - Security Test
+  - Pipeline
+  - Custom Stage 
+
+  This item requires Harness Delegate version 23.10.8xxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+
+
+### Early access features
+
+This release does not include early access features. 
+
+### Fixed issues
+
+- Skipping CG expression evaluations for configFiles ( ${configFile.getAsBase64("somefile")} and ${configFile.getAsString("somefile")} ) if execution is in NG. (CDS-83157) 
+
+- We have released new serverless package image which would start supporting IRSA and assume role capability for downloading s3 artifact: harnessdev/serverless-package:3.30.1-1.1.0 (CDS-82788)
+
+  We'll pass on the details for aws connector specified in your artifact step ( for s3/ecr ) using these env variables to the above image :
+    - PLUGIN_ARTIFACT_AWS_ACCESS_KEY : access key provided in manual credentails if provided
+    - PLUGIN_ARTIFACT_AWS_SECRET_KEY : secret key provided in manual credentails if provided
+    - PLUGIN_ARTIFACT_AWS_ROLE_ARN : cross account role if specified
+    - PLUGIN_ARTIFACT_AWS_STS_EXTERNAL_ID : sts external id if specified
+    - PLUGIN_ARTIFACT_AWS_REGION : aws region of the artifact if specified in the artifact
+
+    1) These environment variables could be overridden in the serverless package step if needed.
+    2) By default, the image would use manual credentials if PLUGIN_ARTIFACT_AWS_ACCESS_KEY and PLUGIN_ARTIFACT_AWS_SECRET_KEY are present. Otherwise we'll default to using IAM role associated to service account in step group configuration for eks cluster.
+    3) PLUGIN_ARTIFACT_AWS_ROLE_ARN and PLUGIN_ARTIFACT_AWS_STS_EXTERNAL_ID would be used to assume the other role. The base role for assuming this role would be decided based on the above point 
+
+- Updated the pipeline log key/prefix to the newer format behind FF - PIE_SIMPLIFY_LOG_BASE_KEY. (CDS-82432)
+
+  New format - {accountId}/pipeline/{pipelineId}/{run-sequence}/-{planExecutionId} 
+
+- Improve UX in ASG BG step, for multi load balancers (CDS-82364)
+
+- Fixed an issue with the deployment data not being shown in the NG service dashboard page (CDS-82037, ZD-51101)
+
+- Earlier when user referring other stages for environment value, the value was not picked up correctly. Now that is fixed and if user refers environment value for a stage from other stage, the value will be taken correctly. (CDS-81970, ZD-52311)
+
+- Harness approval email notification didn't respect the newline provided in approval message. (CDS-81957, ZD-50115)
+
+  Users can know simply enter the multi line text in approval message field and newline characters will be rendered appropriately in emails. 
+
+- Previously, the saved filters dropdown field was limited to displaying only the first 100 filters, which was also the maximum number of filters retrieved. (CDS-81492, ZD-52030)
+
+  This issue has been fixed. Harness has introduced infinite scrolling in the dropdown field, thereby allowing it to retrieve the entire list of available filters. 
+
+- For better UX, an info message will be displayed at the bottom of the verify step saying "Custom health sources will not be displayed for stages where multiple services or multiple environments are being deployed" when multiple service or environment is being deployed. (CDS-81214, ZD-51901)
+
+- Reduced number of HTTP request when fetching child pipelines. Only unique request are sent. (CDS-80831, ZD-51082, ZD-51764)
+
+- Users can now seamlessly scroll through large logs , Also the scroll to bottom button works as expected now in large logs (CDS-80666, ZD-51442)
+
+- Fixed an issue when trying to get a non-existing file from file system after a git fetch of repo. (CDS-82631)
+
+  This item requires Harness Delegate version 23.10.8xxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- When configuring the Artifactory Generic artifact with an 'Artifact Filter' and a non-regex value for the 'Artifact Path,' an issue arose where the metadata URL in the service outcome was incorrect, as it failed to include the repository name. This issue is fixed. (CDS-82579)
+
+  This item requires Harness Delegate version 23.10.8xxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Added support for non-spec fields for K8s HPA and PDB resources (CDS-82370)
+
+  This item requires Harness Delegate version 23.10.8xxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Added workingDir to Script command units (CDS-82105)
+
+  This item requires Harness Delegate version 23.10.8xxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Service dashboard did not correctly reflect primary and canary instances in Kubernetes deployment (CDS-81869, ZD-52262, ZD-52930)
+
+  The issue was happening because Harness treated canary and primary instances as one set of instances. During the canary deployment Harness would update with current deployment details the primary instances as well which was not correct since primary deployment hasn't happened yet. This issue affected the capability of post production rollback.
+
+  This issue has been resolved. Now Harness split canary and primary instances in two different groups and will update details respective group only. 
+
+  This item requires Harness Delegate version 23.10.8xxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Handled git connectivity issues in delegate. Adding retries to scm service (CDS-80902, ZD-51818)
+
+  This item requires Harness Delegate version 23.10.8xxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+<!-- CDS-80615 		NA -->
+
+<!-- CDS-80150 		NA -->
+
+- Propagate error message from delegate for create PR failure (CDS-79094)
+
+  This item requires Harness Delegate version 23.10.8xxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### November 3, 2023, Harness version 81308
+
+##### New features and enhancements
 
 - Availability of deployment step group templates in custom stages (CDS-81265)
 
@@ -62,11 +164,11 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
   For runtime inputs, custom dashboards now show resolved trigger expressions instead of the expressions themselves.
 
-### Early access features
+##### Early access features
 
 This release does not include early access features. 
 
-### Fixed issues
+##### Fixed issues
 
 - In Pipeline Studio, if you perform CRUD operations on stage variables in the Variables side panel when the stage's Overview tab is open, those operations do not reflect on the Overview Tab. For example, the Overview tab continues to show stage variables that you delete in the side panel. (CDS-79739, CDS-82435)
 
@@ -108,10 +210,6 @@ This release does not include early access features.
   
   This issue is now fixed. If an error occurs, the message is displayed at the top of the view.
 
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### October 27, 2023, Harness version 81205
 
