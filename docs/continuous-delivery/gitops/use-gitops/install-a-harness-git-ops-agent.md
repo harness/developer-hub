@@ -55,7 +55,7 @@ If you do not use an existing Argo CD instance, then Harness will install the fo
 
 See [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md).
 
-## Add an Agent
+## Create a GitOps Agent
 
 Ensure your Harness Project has the **Continuous Delivery** module enabled.
 
@@ -77,7 +77,11 @@ Select **GitOps Agents**.
 
 Select **New GitOps Agent**. The Agent wizard appears.
 
-## Harness GitOps Agent without an existing Argo CD project
+::: note
+
+For the purposes of this tutorial, we will be creating a regular Harness GitOps agent without an existing Argo CD instance (non-BYOA setup). For creating a BYOA setup (with an existing Argo CD installation), please refer to [Bring Your Own Argo CD (BYOA) into Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/argocd/byo-argo-to-harness.md)
+
+:::
 
 In **Agent Installations**, you can choose to install a Harness GitOps Agent with or without an existing Argo CD instance.
 
@@ -103,41 +107,6 @@ The **YAML** option lets you download the manifest YAML for the Harness GitOps A
 The **Helm Chart** option lets you download a `helm-chart` file for the Harness GitOps Agent. You can download this file and install it in your Harness GitOps Agent cluster.
 
 ![](./static/install-a-harness-git-ops-agent-96.png)
-
-## Harness GitOps Agent with Existing Argo CD Project
-
-In **Getting started with Harness GitOps**, you have the option of installing a new Harness GitOps Agent with or without an existing Argo CD instances.
-
-Select **Yes**, and then select **Start**.
-
-In **Name**, enter the name for the existing Agent CD Project. For example, **default** in the this example:
-
-![](./static/install-a-harness-git-ops-agent-89.png)
-
-In **GitOps Operator**, select one of the following:
-  
-  * **Argo**. Uses Argo CD as the GitOps reconciler.
-  * **Flux**. Uses Flux as the GitOps reconciler. <!-- For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/flux/use-flux). --> <!-- Commenting out because the referenced topic is a new one and is causing a broken link error in preview environment builds. It basically points to Continuous Delivery & GitOps > GitOps > Use GitOps > Manage Flux applications, so you can use the left nav to view the new topic. -->
-
-In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
-
-Select **Next**. The **Download YAML** or **Download Helm Chart** settings appear.
-
-The **YAML** option lets you download the manifest YAML for the Harness GitOps Agent. You can download this YAML file and run it in your Harness GitOps Agent cluster.
-
-The **Helm Chart** option lets you download a `helm-chart` file for the Harness GitOps Agent. You can download this file and install it in your Harness GitOps Agent cluster.
-
-Once you have installed the Agent by using any of the above options, Harness will start importing all the entities from the existing Argo CD Project.
-
-:::note
-
-Make sure that you deploy only one GitOps Agent per Argo CD namespace. Deploying multiple Agents created in different projects or accounts can lead to unpredictable behaviour.
-
-Harness supports mapping Argo CD projects into Harness projects through the Agent that controls the Argo CD deployment. When importing Argo CD projects, Harness maps Argo CD projects into Harness projects that belong to one account.
-
-Enabling multiple Agents in one Argo CD namespace implies cross-account resource sharing which Harness does not support.
-
-:::
 
 ## Install the Agent
 

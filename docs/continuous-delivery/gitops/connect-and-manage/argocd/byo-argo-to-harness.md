@@ -47,14 +47,26 @@ The following steps show you how to install a GitOps Agent into an existing Argo
    ![](../static/multiple-argo-to-single-harness-65.png)
 
 5. In **Name**, enter a name for your agent, such as **byoa-agent**.
-6. In **Namespace**, enter the namespace where Argo CD is hosted. The default is **argocd**.
+6. In **GitOps Operator**, select one of the following:
+
+   * **Argo**. Uses Argo CD as the GitOps reconciler.
+   * **Flux**. Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/flux/use-flux.md).
+
+7. In **Namespace**, enter the namespace where Argo CD is hosted. The default is **argocd**.
    
    ![](../static/multiple-argo-to-single-harness-66.png)
 
-7. Click **Continue**.
-8. In **Review YAML**, click **Download & Continue**.
-9.  Log into the cluster hosting Argo CD.
-10. Run the install command provided in the Agent installer, such as `kubectl apply -f gitops-agent.yml -n argocd`. You'll see output similar to this:
+8. Click **Continue**.
+9. In **Review YAML**, click **Download & Continue**.
+
+   :::note
+
+   Alternatively, the **Helm Chart** option lets you download a `helm-chart` file for the Harness GitOps Agent. You can download this file and install it in your Harness GitOps Agent cluster if you prefer using Helm.
+
+   ::: 
+
+10. Log into the cluster hosting Argo CD.
+11. Run the install command provided in the Agent installer, such as `kubectl apply -f gitops-agent.yml -n argocd`. You'll see output similar to this:
     ```bash
     serviceaccount/byoa-agent-agent created  
     role.rbac.authorization.k8s.io/byoa-agent-agent created  
@@ -70,13 +82,23 @@ The following steps show you how to install a GitOps Agent into an existing Argo
     serviceaccount/byoa-agent-agent-upgrader created  
     cronjob.batch/byoa-agent-agent-upgrader created
     ```
-1.  Back in the Harness GitOps Agent installer, click **Continue**.
+12.  Back in the Harness GitOps Agent installer, click **Continue**.
    
    The Agent has registered with Harness.
    
    ![](../static/multiple-argo-to-single-harness-67.png)
 
-2.  Click **Continue**. The **Map Projects** settings appear.
+13.  Click **Continue**. The **Map Projects** settings appear.
+
+:::warning
+
+Make sure that you deploy only one GitOps Agent per Argo CD namespace. Deploying multiple Agents created in different projects or accounts can lead to unpredictable behaviour.
+
+Harness supports mapping Argo CD projects into Harness projects through the Agent that controls the Argo CD deployment. When importing Argo CD projects, Harness maps Argo CD projects into Harness projects that belong to one account.
+
+Enabling multiple Agents in one Argo CD namespace implies cross-account resource sharing which Harness does not support.
+
+:::
 
 ## Map existing Argo Projects
 
