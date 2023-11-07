@@ -12,17 +12,17 @@ redirect_from:
 
 This topic describes how to map existing Argo CD projects to Harness projects for Bring Your Own Argo CD (BYOA).
 
-:::note Recap: Bring Your Own Argo CD
+:::info Recap: Bring Your Own Argo CD (BYOA)
 
-You can import an existing Argo CD Agent and it's entities into Harness GitOps. We call this Bring Your Own Argo CD (BYOA).
+You can import an existing Argo CD Agent and it's entities directly into Harness GitOps. We call this Bring Your Own Argo CD (BYOA).
 
-In addition, when you install the Harness GitOps Agent in your existing Argo CD cluster, you can map Argo CD projects to Harness Projects. Harness will import all the Argo CD project entities (applications, clusters, repos, etc) and create them in Harness automatically.
+In addition, when you install the Harness GitOps Agent in your existing Argo CD cluster as part of BYOA, you can map Argo CD projects to Harness Projects. Harness will import all the Argo CD project entities (applications, clusters, repos, etc.) and create them in Harness automatically.
 
-Also, whenever new entities are created in mapped Argo CD projects, they are added to Harness automatically.
+Also, whenever new entities are created in the mapped Argo CD projects, they are added to Harness automatically.
 
 With a non-BYOA setup, Harness installs Argo CD for you when you install a Harness GitOps Agent. 
 
-For more information, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent.md).
+For more information on how to create a BYOA or non-BYOA setup, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent.md).
 
 :::
 
