@@ -90,7 +90,7 @@ To map your existing Argo CD projects to Harness Projects, you simply select the
    
    ![](../static/multiple-argo-to-single-harness-69.png)
 
-:::warning
+:::note
 Do not map the same Argo CD project to multiple Harness Projects.
 :::
 
@@ -172,7 +172,7 @@ In some Argo CD versions, you are not required to specify a project for your ent
 
 If you are unable to edit an entity from the Argo CD UI, you can edit that entity in the cluster so that they have a project and other required values. The entities are stored in different formats in the cluster. For example, clusters, repositories, and repository credential templates are stored in `Secret`, and GnuPG keys and repository certificates are stored in `ConfigMap` in the namespace in which Argo CD is installed. 
 
-Edit the respective secret of the entity and add the fields `project` and `name` in the `data` or `stringData` block. For examples, go to [Manage an Argo CD configuration by using Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/argocd/manage-argo-configs.md#git-configuration-files).
+Edit the respective secret of the entity and add the fields `project` and `name` in the `data` or `stringData` block. For examples, please go to [Manage an Argo CD configuration by using Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/argocd/manage-argo-configs.md#git-configuration-files).
 
 
 ## Creating GitOps Entities with multiple projects
@@ -196,6 +196,5 @@ When you have completed [setting up the Cluster](/docs/continuous-delivery/gitop
 ## Notes
 
 * Harness honors Argo CD project permissions. If the project selected for the Harness Application does not have permission for the repository or cluster, then Harness will return a permission error. You will need to go into Argo CD and adjust the projects **scoped repositories** and **destinations**.
-* A non-BYOA setup does not support multiple Argo CD mappings to a single Harness Project. A non-BYOA setup is a setup where Harness installs Argo CD for you when you install a Harness GitOps Agent.
-* If you need to uninstall a GitOps Agent, you can use `kubectl delete` with the same manifest you used to install it. For example, `kubectl delete -f gitops-agent.yml -n argocd`.
+* A non-BYOA setup does not support multiple Argo CD mappings to a single Harness Project.
 

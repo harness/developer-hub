@@ -431,6 +431,10 @@ If you disable automatic upgrades, we recommend you manually update often since 
 
 The Argo CD components upgrade must be done manually.
 
+### How can I uninstall a GitOps Agent?
+
+If you need to uninstall a GitOps Agent, you can use `kubectl delete` with the same manifest you used to install it. For example, `kubectl delete -f gitops-agent.yml -n argocd`.
+
 ## References
 
 * [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md)
