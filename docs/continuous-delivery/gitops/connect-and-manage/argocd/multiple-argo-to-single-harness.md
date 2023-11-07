@@ -82,68 +82,6 @@ The following steps show you how to install a GitOps Agent into an existing Argo
 
 2.  Click **Continue**. The **Map Projects** settings appear.
 
-<details>
-<summary>BYOA for Argo CD version v2.8.0 or higher </summary>
-
-### New BYOA installation
-
-If your existing Argo CD installation is version 2.8.0 or higher, set `redis.compression` to `none` in the ConfigMap `argocd-cmd-params-cm`:
-
-```bash
-apiVersion: v1
-kind: ConfigMap
-data:
-  redis.compression: none
-metadata:
-  labels:
-    app.kubernetes.io/name: argocd-cmd-params-cm
-    app.kubernetes.io/part-of: argocd
-  name: argocd-cmd-params-cm
-  namespace: your-argo-namespace
-```
-
-After making this change, restart your `argocd-application-controller` and `argocd-repo-server` pods. Once this is done, you may continue to install the Harness GitOps Agent using the steps mentioned earlier.
-
-### Upgrade Argo CD version for an existing installation
-
-If you are upgrading your Argo CD version in an existing BYOA installation, set `redis.compression` to `none` in the ConfigMap `argocd-cmd-params-cm`.
-Additionally, edit the network policy `argocd-repo-server-network-policy` for your repo server component to allow communication with `argocd-applicationset-controller`:
-
-
-```bash
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: argocd-repo-server-network-policy
-  namespace: your-argo-namespace
-spec:
-  ingress:
-  - from:
-    - podSelector:
-        matchLabels:
-          app.kubernetes.io/name: argocd-application-controller
-    - podSelector:
-        matchLabels:
-          app.kubernetes.io/name: argocd-applicationset-controller
-    - podSelector:
-        matchLabels:
-          app.kubernetes.io/name: gitops-agent
-    ports:
-    - port: 8081
-      protocol: TCP
-  - from:
-    - namespaceSelector: {}
-    ports:
-    - port: 8084
-  podSelector:
-    matchLabels:
-      app.kubernetes.io/name: argocd-repo-server
-  policyTypes:
-  - Ingress
-```
-
-</details>
-
 ## Map Projects
 
 To map your existing Argo CD projects to Harness Projects, you simply select the Argo CD projects you want to use, and select the corresponding Harness Project to map.
