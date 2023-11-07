@@ -21,7 +21,7 @@ The following steps describe the general workflow:
 
 3. Drill down to the relevant issues list to view the issues found in the scan:
 
-    - **Only in current scan** New issues not found in any previous scan.
+    - **Only in current scan** New issues not found in any previous scan of that target.
 
     - **Common to <_target_>:<_variant_>** Issues also found in the last scan of the specified variant.
 
