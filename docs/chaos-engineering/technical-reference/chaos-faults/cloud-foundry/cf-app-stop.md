@@ -56,7 +56,7 @@ CF app stop fault:
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30 s. </td>
+    <td> Default: 30 </td>
   </tr>
   <tr>
     <td> skipSSLValidation </td>
