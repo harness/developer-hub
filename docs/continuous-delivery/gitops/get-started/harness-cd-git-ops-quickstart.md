@@ -367,7 +367,7 @@ Now that you have everything set up, you can sync the source state with the desi
 
    ![](./static/harness-cd-git-ops-quickstart-19.png)
 
-   Some details about the options in this wizard:
+   Details about sync options:
 
    * **Skip Schema Validation**: Does not validate the YAML schema when enabled.
    * **Auto Create Namespace**: The namespace specified will be automatically created if it doesn't exist already. Without this enabled, the Application will fail to sync if the namespace doesn't exist.

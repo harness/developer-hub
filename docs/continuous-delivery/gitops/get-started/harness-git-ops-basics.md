@@ -66,6 +66,8 @@ Harness has multiple Git-based features and it's important to understand the dif
 
 ## Understand key Harness Gitops concepts
 
+The GitOps paradigm comes with its unique set of concepts terminologies that are essential for understanding and implementing this practice effectively. Here's an elaboration on the terms provided.
+
 ### Service
 
 A Harness GitOps service is the same as any other Harness service.
@@ -109,6 +111,11 @@ You will also select:
 * The Source manifest to use (Kubernetes, Helm chart, Kustomization, etc).
 * The Destination cluster and namespace.
 
+### ApplicationSets
+
+An ApplicationSet can be used to define one application and sync it to multiple target environments. [See more](/docs/category/applicationsets)
+They can be used along with [PR Pipelines](/docs/category/pr-pipelines) to make changes to the application in just one of the ApplicationSet target environments.
+
 ### Agent
 
 #### What is a Gitops Agent?
@@ -135,31 +142,31 @@ There are Pros and Cons to each of these scenarios
   1. **Scenario 1: Single Cluster, Single Agent, In-Cluster Deployment of Resources**
 
   **Pros**
-    * **Simplicity:** This pattern is straightforward to set up and maintain as it involves a single Gitops Agent and ArgoCD instance managing deployments within a single cluster.
-    * **Resource Efficiency:** With a single instance, resource usage is optimized as there is no need for additional instances or coordination between clusters.
+  * **Simplicity:** This pattern is straightforward to set up and maintain as it involves a single Gitops Agent and ArgoCD instance managing deployments within a single cluster.
+  * **Resource Efficiency:** With a single instance, resource usage is optimized as there is no need for additional instances or coordination between clusters.
 
   **Cons** 
-    * **Limited Scalability:** Scaling beyond a single cluster can be challenging as the ArgoCD instance is tightly coupled to the specific cluster it is managing.
-    * **Single Point of Failure:** If the ArgoCD instance fails, all deployments within that cluster may be affected.
+  * **Limited Scalability:** Scaling beyond a single cluster can be challenging as the ArgoCD instance is tightly coupled to the specific cluster it is managing.
+  * **Single Point of Failure:** If the ArgoCD instance fails, all deployments within that cluster may be affected.
 
   2. **Scenario 2: Single Target Cluster for Deployment, Single Agent outside of Target Cluster**
 
   **Pros**
-    * **Simplicity:** A single Gitops Agent to manage as well as a single target cluster.
-    * **Better Isolation** as compared to in-cluster set-up in Scenario 1.
+  * **Simplicity:** A single Gitops Agent to manage as well as a single target cluster.
+  * **Better Isolation** as compared to in-cluster set-up in Scenario 1.
 
   **Cons**
-    * **Increased Management Overhead:** Configuration overhead like IP allow listing, permission for external cluster to connect and so on.
+  * **Increased Management Overhead:** Configuration overhead like IP allow listing, permission for external cluster to connect and so on.
 
   3. **Scenario 3: Multi-Cluster, Single ArgoCD Instance - hub and spoke** 
 
   **Pros**
-    * **Centralized Management:** A single Gitops Agent coupled with an ArgoCD instance can manage multiple Kubernetes clusters, enabling centralized deployment management.
-    * **Simplicity:** A single Gitops Agent to manage applications across multiple clusters.
+  * **Centralized Management:** A single Gitops Agent coupled with an ArgoCD instance can manage multiple Kubernetes clusters, enabling centralized deployment management.
+  * **Simplicity:** A single Gitops Agent to manage applications across multiple clusters.
 
   **Cons**
-    * **Single Point of Failure:** If the ArgoCD instance fails, all deployments may be affected.
-    * **Performance and Scalability Challenges:** As the number of clusters and deployments increase, the performance and scalability of a single Agent may become a limiting factor, in which case you can either switch to using multiple agents across multiple clusters.
+  * **Single Point of Failure:** If the ArgoCD instance fails, all deployments may be affected.
+  * **Performance and Scalability Challenges:** As the number of clusters and deployments increase, the performance and scalability of a single Agent may become a limiting factor, in which case you can either switch to using multiple agents across multiple clusters.
 
   **Multiple Target Clusters and Multiple Agents:** This is another scenario not described in the diagram. Harness Gitops manages the complexity of multiple ArgoCD instances and this way of using Harness Gitops provides high scalability and isolation, allowing teams to manage deployments independently across multiple clusters and if one ArgoCD instance fails, it does not impact deployments in other clusters. Although this will come with an overhead of higher **Resource Utilization** and **Management overhead**.
     
@@ -167,9 +174,6 @@ Installing an Agent involves setting up an Agent in Harness, downloading its YAM
 
 ![fetch manifests from repo](static/gitops-archcitecture.png)
 
-#### Can I use Harness GitOps images from a local registry?
-
-Yes.  Pulling images from your private registry is possible and can be done by pulling the publicly available images to your private registry and then updating the GitOPS Agent YAML to use the private registry.
 
 ### Storage
 
@@ -252,4 +256,15 @@ If an Application is Healthy and Synced, then there is no App Diff.
 GnuPG Keys can be used to configure Harness GitOps to only sync against commits that are signed in Git using GnuPG.
 
 The GitOps Agent you select will enforce signature verification.
+
+## Frequestly Asked Questions
+
+### Can I use Harness GitOps images from a local registry?
+
+Yes.  Pulling images from your private registry is possible and can be done by pulling the publicly available images to your private registry and then updating the GitOPS Agent YAML to use the private registry.
+
+### Can I automate the provisioning of the Gitops Agent without creating the agent in the UI first?
+
+Yes. You can use the API or Terraform which will also dynamically generate the YAML that can be applied.
+
 
