@@ -370,9 +370,9 @@ const sidebars = {
         {
           type: "link",
           label: "Release Notes",
-          href: "/release-notes/whats-new",
+          href: "/release-notes",
           customProps: {
-            description: "Review the notes to learn about new features.",
+            description: "Learn about recent changes to Harness products.",
           },
         },
         {

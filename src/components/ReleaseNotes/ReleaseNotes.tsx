@@ -5,9 +5,9 @@ import clsx from "clsx";
 import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
-import { featuredTutorials, docsCards } from "./data/getStartedData";
+import { featuredTutorials, docsCards } from "./data/releaseNotesData";
 
-export default function gs() {
+export default function CD() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
@@ -15,19 +15,21 @@ export default function gs() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_harness.svg`} />
-            <h1>Get Started</h1>
+            <h1>Harness Release Notes</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/tutorials">
               <button className={styles.btn}>
+                {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
                 Tutorials
               </button>
             </Link>
-            <Link href="/release-notes">
+            <Link href="/docs">
               <button className={styles.btn}>
-                <img src={`${baseUrl}img/icon_release_notes.svg`} />
-                Release Notes
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_documentation.svg`} />
+                Documentation
               </button>
             </Link>
           </div>
@@ -35,21 +37,16 @@ export default function gs() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Learn about Harness basic concepts, architecture, and supported platforms and technologies.
+            Explore recent changes to the Harness Platform, modules, delegates, and the Self-Managed Enterprise Edition.
             </p>
           </div>
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
-      {featuredTutorials && featuredTutorials.length > 0 && (
-        <>
-          <div className={styles.sectionDivider}></div>
-          <div className={styles.subSection}>
-            <h3>Featured Tutorials</h3>
-            <TutorialCard FeatureList={featuredTutorials} featuredCard={true} />
-          </div>
-        </>
-      )}
+      <div className={styles.subSection}>
+        </div>
+        <div className={styles.subSection}>
+      </div>
     </div>
     // </Layout>
   );

@@ -3,7 +3,7 @@ title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
 date: 2023-11-3T10:00:15
 tags: [NextGen, "continuous delivery"]
-sidebar_position: 4
+sidebar_position: 7
 ---
 
 ```mdx-code-block

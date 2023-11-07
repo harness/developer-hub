@@ -3,7 +3,7 @@ title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
 date: 2023-10-27T10:00
-sidebar_position: 14
+sidebar_position: 4
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
