@@ -44,13 +44,16 @@ At its core, ArgoCD's Git generator allows for dynamic creation of ArgoCD Applic
 
 While the Git generator supports various methods, one of its standout features is the file-oriented approach, specifically using `config.json` files.
 
-### Create PR Pipelines
+### Harness PR Pipelines
+
+Harness PR Pipelines allow you to manage the configuration of individual applications created by the ApplicationSet.
 
 When you deploy a Harness PR Pipeline, you simply indicate what target environment application you want to update and the config.json keys/values you want changed, such as release tags. Harness creates the pull request in your Git repo and merges it for you. Now, the target environment application has the new keys/values.
 
 ![](static/harness-git-ops-application-set-tutorial-62.png)
 
-#### Wave deployments
+<details>
+<summary>An aside: Wave deployments</summary>
 
 You often hear the term wave deployments used when PR Pipelines are discussed.
 
@@ -61,8 +64,10 @@ Wave deployments help reduce the risk of deployment failures and allow for quick
 With Harness GitOps, you can implement wave deployments by creating multiple environments for your application: one environment for each cloud region. Then, gradually promote changes from one environment to the next. This way, you can test changes in a safe and controlled manner before releasing them to the entire user base.
 
 PR Pipelines support the wave deployments practice by allowing you to change a microservice in each target environment as needed.
+</details>
 
-## Before you begin
+
+## Tutorial
 
 This topic extends Harness GitOps features covered in the following topics:
 
