@@ -285,7 +285,7 @@ Currently, we do not have the feature to generate recommendations for future eve
 
 #### Can I save my applied node preferences in the recommendations ?
 
-Currently, you cannot save the applied node preferences because they are computed and retrieved directly from the database based on the selected CPU and memory limits.
+Currently, you cannot save the applied node preferences because they are retrieved directly from the database based on the selected CPU and memory limits.
 
 #### Is the JIRA ticket automatically created from the suggested recommendations?
 
