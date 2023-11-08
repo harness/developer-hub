@@ -82,7 +82,7 @@ Expressions and runtime inputs make your pipelines more dynamic.
 * [Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
 * [CI codebase variables reference](../codebase-configuration/built-in-cie-codebase-variables-reference.md)
 * [Secrets management](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
-* [Input sets and overlays](/docs/platform/pipelines/input-sets/)
+* [Input sets and overlays](/docs/platform/pipelines/input-sets)
 
 ### Templates
 
