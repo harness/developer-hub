@@ -77,6 +77,15 @@ import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
       - StatefulSet
       - HorizontalPodAutoScalar
       - PodDisruptionBudget
+- **Deployment Performance**
+    - Helm Deployment may start failing on delegate due to a large index.yamls, this causes a CPU spike on the delegate. If users do not provide enough resources to the delegate, you will likely see failures in pipeline executions. 
+     - Certified Limits:
+       - Index.yaml file size limit 15Mb
+       - 5K Helm Charts have been deployed
+       - Kubernetes Delegate Size: 8Gb, 2cpu
+       - 10 Parallel Deployments
+         
+
 - **Supported integrations:**
   - Traffic Shifting for Advanced Deployment Strategies:
     - Istio
