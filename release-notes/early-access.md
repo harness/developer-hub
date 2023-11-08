@@ -946,10 +946,10 @@ You can scan container images and repositories using [Semgrep](/docs/security-te
 
 #### Improved UI for configuring scan steps
 
-* **Release date:** March 2023
-* **Issue number:** STO-4867
+* **GA date:** November 2023
+* **Early access release date:** March 2023
+* **Early access Release version:** 1.38.3
 * **Feature flag:** Yes
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 This feature includes a set of Security steps with an improved UI for configuring scans. Each step shows only the settings that apply to the specific scan. Note the following:
 
@@ -960,12 +960,3 @@ This feature includes a set of Security steps with an improved UI for configurin
 - For descriptions of all available UI settings, go to [Security step UI settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference).
 
 ![STO step palette](static/sto-step-palette.png)
-
-#### STO Jira integration
-
-* **Release date:** March 2023
-* **Issue number:** STO-5467
-* **Feature flag:** `STO_JIRA_INTEGRATION`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-This feature includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations).
