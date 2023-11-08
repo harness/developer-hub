@@ -249,6 +249,11 @@ You can even set a Harness Trigger where you can set the workspace name used in 
 
 ## AWS Connector Provider Credential Authentication for Terraform Plan and Apply Steps
 
+:::note
+Feature Flag: `TERRAFORM_AWS_CP_AUTHENTICATION`
+This feature is behind a Feature Flag and is available only to paid customers. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 You can use an AWS Connector to have the terraform plan and apply step assume a role to perform the provisioning of infrastructure. It's an optional configuration that takes in AWS Connector, a Region and a Role ARN. The Terraform step will use these parameters to authenticate with the aws account targetted for infrastructure provisioning.
 
 When configured the optional configuration for AWS Connector these fields can be passed as a fixed value, runtime input, or an expression
