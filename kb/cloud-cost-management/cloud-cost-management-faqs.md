@@ -251,21 +251,21 @@ Also, do not update `limit` of CPU and Memory manually based on recommended `req
 
 Right now, the policy only identifies potential RDS instances for resize. Earlier we had a resize action associated with the policy but since it is not currently supported by custodian, we have removed it.
 
-#### Do we support showing GCP reccomendations ?
+#### Do we support showing GCP VM recommendations?
 
-As of now we don't support showing GCP recommnedations
+As of now we don't support showing GCP recommendations
 
 #### We are not able to see recommendations section in some perspectives ?
 
-Currently, recommnedations section is only visible in perspective made through clusters
+Currently, recommendations section is only visible in perspective where data source is Kubernetes
 
-#### When I create a JIRA ticket from a recommendation, will that recommendations automatically come in the applied recommendations tab once the JIRA status of the ticket is set to done ?
+#### When I create a JIRA ticket from a recommendation, will that recommendation automatically come in the applied recommendations tab once the JIRA status of the ticket is set to done ?
 
-Yes, as soon as you change the JIRA status of a ticket created for a partiucular recommnedation and change it's status to done, that particular recommendation will automatically start appearing in applied recommendations tab
+Yes, as soon as you change the JIRA status of a ticket created for a particular recommendation and change it's status to done, that particular recommendation will automatically start appearing in applied recommendations tab
 
-#### Do we provide the facility to add custom policies to get Asset Optimization Recommendation ?
+#### Do we provide the facility to add custom policies to generate Asset Governance Recommendation ?
 
-Yes we do provide the facility to add custom policies to get Asset Optimization Recommendation. You can connect with our team and let us know the policies, we will hook those policies into our backend to generate recommnedations.
+Yes we do provide the facility to add custom policies to generate Asset Governance Recommendation. You can connect with our team and let us know the policies, we will hook those policies into our backend to generate recommendations.
 
 #### Do we support any method to retrieve Kafka recommendations ?
 
@@ -273,23 +273,23 @@ As of now we don't support any method to retrieve Kafka recommendations
 
 #### Can we recommend cost savings by changing instance architecture e.g moving from amd64 to arm64 based instances? 
 
-If this is for nodepool reccomnedations, you need to add preferred instance families to the x86 families that you would actually use.
+If this is for nodepool recommendations, you need to add preferred instance families to the x86 families that you would actually use.
 
-#### Do we support showing RDS recommnedations ?
+#### Do we support showing RDS recommendations ?
 
-Yes, we show EC2 and ECS recommendations via native recommendations and RDS recommendation from asset governance
+Yes, RDS recommendations are supported from cloud asset governance.
 
 #### Can I generate recommendation related to some resources based on expected demands in the future to rightsize up/down effectively ?
 
 Currently, we do not have the feature to generate recommendations for future events.
 
-#### Can I save my applied node preferences in the recommnedtions ?
+#### Can I save my applied node preferences in the recommendations ?
 
 Currently, you cannot save the applied node preferences because they are computed and retrieved directly from the database based on the selected CPU and memory limits.
 
-#### Does the JIRA ticket automatically opens from suggested recommnedations ?
+#### Is the JIRA ticket automatically created from the suggested recommendations?
 
-We aim to enhance the flexibility of this process by not automatically opening a JIRA ticket. Nevertheless, you have the option to manually initiate a JIRA ticket from the suggested recommendations according to your specific requirements.
+No, Jira tickets are not automatically created but you can manually create a Jira ticket.
 
 #### What happens to recommendations after license expiry ?
 
@@ -297,15 +297,15 @@ Upon the expiration of the license, we regret to inform you that recommendations
 
 #### Can we fine tune EC2 recommendations ?
 
-Yes, you can tune ec 2 recommendations provided you do it for cross family changes
+Yes, you can set instance family preferences for ec2 recommendations.
 
 #### Can we apply "preferred instance families" across all recommendations ?
 
-No you would have to manually apply preferrred instance families across individual recopmmnedations.
+No, you would have to manually apply preferred instance families for each recommendation.
 
 #### Do we surface asset governance recommendations at the perspective level?
 
-At this time, we do not provide asset governance recommendations at the perspective level. All asset governance-enforced rules are automatically surfaced as recommendations.
+No, we do not provide asset governance recommendations at the perspective level."
 
 
 ### Governance
