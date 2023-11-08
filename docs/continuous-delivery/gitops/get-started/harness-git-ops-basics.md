@@ -215,7 +215,7 @@ The desired state of a Service and Environment as represented by files in a Repo
 
 The live state of a Service and Environment. The instantiated microservices and pods that are deployed.
 
-## Drift 
+### Drift 
 
 Drift occurs when the actual state of a system deviates or is deviating from the desired state. Identifying and rectifying drift is a crucial aspect of maintaining system stability and consistency.
 
