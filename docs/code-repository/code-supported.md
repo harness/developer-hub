@@ -16,6 +16,7 @@ The [Harness Code Repository module](/docs/code-repository/code-supported.md) (C
 The Harness Code supports these features:
 
 * [Create repositories.](./config-repos/create-repo.md)
+* [Import repositories.](./config-repos/import-repo.md)
 * [Collaborate and develop](/docs/category/collaborate-and-develop):
    * Clone repositories to work locally.
    * Commit, branch, and tag directly in the Harness Platform.
@@ -32,7 +33,6 @@ These features are in pre-beta or in development:
 * [Code owners](./config-repos/protection-rules.md)
 * Notifications
 * [Branch rules](./config-repos/protection-rules.md)
-* [Repository import](./config-repos/create-repo.md#import-a-repository)
 * AI-powered semantic search <!-- keyword search, add to AIDA section of platform docs -->
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).

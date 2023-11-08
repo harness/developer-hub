@@ -6,6 +6,8 @@ sidebar_position: 10
 
 Repositories are where your code is stored. When developers make changes to code in a Harness Code repository, those changes are tracked with version control. Harness Code fosters collaboration and governance with code reviews, approvals, status checks, and more.
 
+You can create repositories directly in Harness Code or [import repositories](./import-repo.md) from other Git SCM providers.
+
 ## Create a repository
 
 1. Go to the Harness project where you want to create a repo.
@@ -17,10 +19,6 @@ Repositories are where your code is stored. When developers make changes to code
 7. Select **Create Repository**.
 
 After creating a repository, you're you can change the name, description, visibility, and branch protection rules on the repository's **Settings** page.
-
-## Import a repository
-
-The ability to import repositories is coming soon. While the Harness Code UI includes options to import repositories, this functionality is not yet fully supported.
 
 ## Work with repositories
 
