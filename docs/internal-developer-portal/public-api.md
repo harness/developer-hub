@@ -7,6 +7,10 @@ sidebar_position: 3
 
 The following are the list of APIs supported by IDP. 
 
+:::info
+The APIs listed here are [Backstage APIs](https://backstage.io/docs/features/software-catalog/software-catalog-api) exposed through Harness Platform
+:::
+
 In order to use the APIs in Harness platform, you need to generate a Harness API Key as described in [Manage API keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys)
 
 ## Catalog API
