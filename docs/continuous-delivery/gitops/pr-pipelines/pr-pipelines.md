@@ -46,9 +46,11 @@ While the Git generator supports various methods, one of its standout features i
 
 ### Harness PR Pipelines
 
-Harness PR Pipelines allow you to manage the configuration of individual applications created by the ApplicationSet.
+Harness PR Pipelines allow you to manage the configuration of individual applications created by the ApplicationSet. The key differentiator between various config files for the ApplicationSet is generally chosen to be the folder structure, which would usually align with the environment name in Harness. 
 
-When you deploy a Harness PR Pipeline, you simply indicate what target environment application you want to update and the config.json keys/values you want changed, such as release tags. Harness creates the pull request in your Git repo and merges it for you. Now, the target environment application has the new keys/values.
+![](static/harness-git-ops-application-set-tutorial-44.png)
+
+When you deploy a Harness PR Pipeline, you simply indicate what target environment application you want to update and the config.json keys/values you want changed, such as release tags. Harness creates the pull request in your Git repo and merges it for you. Now, the target environment application has the new keys/values, which can then be reviewed and deployed by syncing the ApplicationSet.
 
 ![](static/harness-git-ops-application-set-tutorial-62.png)
 
@@ -69,23 +71,15 @@ PR Pipelines support the wave deployments practice by allowing you to change a m
 
 ## Tutorial
 
-This topic extends Harness GitOps features covered in the following topics:
+:::note
 
-* [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md)
-* [Harness CD GitOps Tutorial](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart.md)
-* [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops//applicationsets/harness-git-ops-application-set-tutorial.md)
+This tutorial builds on the ApplicationSet created in [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial.md). Please ensure you create an ApplicationSet before proceeding further.
 
-Review these topics before proceeding.
+:::
 
-## Create a PR pipeline
-
-When you deploy a Harness PR pipeline, you indicate the target environment application and the config.json keys/values you want changed. Harness creates the pull request in your Git repo and merges it for you. Once complete, the target environment application has the new keys/values.
-
-![](static/harness-git-ops-application-set-tutorial-43.png)
+### Creating a Harness PR pipeline
 
 For the PR Pipeline, we'll create two Harness environments, dev and prod. These names are the same as the folder names in the repo:
-
-![](static/harness-git-ops-application-set-tutorial-44.png)
 
 We use the same names so that when we select a Harness environment we can pass along the same name as the target folder.
 
