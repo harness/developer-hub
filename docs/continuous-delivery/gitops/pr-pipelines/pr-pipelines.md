@@ -1,5 +1,5 @@
 ---
-title: Harness GitOps PR pipelines
+title: Introduction to Harness GitOps PR pipelines
 description: Change an application in just one of its target environments.
 sidebar_position: 1
 ---

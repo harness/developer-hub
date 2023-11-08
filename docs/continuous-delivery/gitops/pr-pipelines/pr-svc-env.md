@@ -1,6 +1,6 @@
 ---
 title: Services, Environments and Clusters
-description: Use services, environments and clusters to create PR pipelines
+description: Use services, environments and clusters to create Harness PR pipelines.
 sidebar_position: 2
 ---
 
