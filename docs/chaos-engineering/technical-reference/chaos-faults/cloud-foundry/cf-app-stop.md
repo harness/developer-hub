@@ -11,8 +11,8 @@ CF app stop fault stops a Cloud Foundry app and later starts it.
 ![CF App Stop](./static/images/cf-app-stop.png)
 
 ## Use cases
-CF app stop fault:
-- Checks resilience against abrupt stop of application components/microservices.
+CF app stop:
+- Checks resilience against abrupt stopping of the application components/microservices.
 - Validates the effectiveness of disaster recovery and high availability of the app.
 
 ## Fault tunables
@@ -25,22 +25,22 @@ CF app stop fault:
   </tr>
   <tr>
     <td> cfDeploymentPlatform </td>
-    <td> Deployment platform used for cloud foundry, with respect to where the infrastructure is hosted </td>
+    <td> Deployment platform used for cloud foundry with respect to where the infrastructure is hosted. </td>
     <td> Supports <code>local</code> and <code>vSphere</code> </td>
   </tr>
   <tr>
     <td> organization </td>
-    <td> Organization where the target app resides </td>
+    <td> Organization where the target app resides. </td>
     <td> For example, <code>dev-org</code> </td>
   </tr>
   <tr>
     <td> space </td>
-    <td> Space where the target app resides </td>
+    <td> Space where the target app resides. </td>
     <td> The space must reside within the given organization. For example, <code>dev-space</code> </td>
   </tr>
   <tr>
     <td> app </td>
-    <td> The app to be stopped </td>
+    <td> The app to be stopped. </td>
     <td> The app must reside within the given organization and space. For example, <code>cf-app</code> </td>
   </tr>
 </table>
@@ -54,23 +54,23 @@ CF app stop fault:
   </tr>
   <tr>
     <td> faultInjectorPort </td>
-    <td> Local server port used by the fault-injector utility </td>
+    <td> Local server port used by the fault-injector utility. </td>
     <td> Default: <code>50320</code>. If the default port is unavailable, a random port in the range of <code>50320-51320</code> is selected. </td>
   </tr>
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30 </td>
+    <td> Default: 30s </td>
   </tr>
   <tr>
     <td> skipSSLValidation </td>
-    <td> Skip SSL validation while invoking CF APIs </td>
-    <td> Supports <code>true</code> and <code>false</code>. Default: <code>false</code> </td>
+    <td> Skip SSL validation while invoking CF APIs. </td>
+    <td> Supports <code>true</code> and <code>false</code>. Default: <code>false</code>. </td>
   </tr>
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Defaults to 30. </td>
+    <td> Default: 30s </td>
   </tr>
   <tr>
     <td> rampTime </td>
