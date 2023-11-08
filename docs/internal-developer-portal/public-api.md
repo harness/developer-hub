@@ -2,7 +2,7 @@
 title: IDP API
 description: Lists the public API endpoints supported in IDP.
 sidebar_label: IDP API
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 The following are the list of APIs supported by IDP. 
@@ -115,13 +115,14 @@ Example:
 
 ### Headers
 - `x-api-key`: Your Harness API token.
-
+- `Harness-Account`: Your Harness account ID.
 
 ### cURL Example
 
 ```cURL
 curl 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/entities?filter=kind=template' \
 --header 'x-api-key: {X_API_KEY}' \
+--header 'Harness-Account: {ACCOUNT_IDENTIFIER}'
 ```
 
 ### Response:
