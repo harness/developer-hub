@@ -12,7 +12,7 @@ import Secretmgmtsup from '/docs/get-started/shared/secret-management-supported.
 
 ### Delegates
 
-import Delimagetypes from '/docs/platform/delegates/shared/delegate-image-types-intro-table.md'
+import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-table.md'
 
 <Delimagetypes />
 

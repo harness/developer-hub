@@ -328,7 +328,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: NodeGoat_Harness_Hosted
+        connectorRef: GITHUB_CONNECTOR
         repoName: https://github.com/OWASP/NodeGoat
         build: <+input>
   stages:

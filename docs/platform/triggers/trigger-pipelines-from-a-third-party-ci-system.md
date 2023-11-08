@@ -10,7 +10,7 @@ In some cases, you might be using a third-party CI system. You can still execute
 
 This topic describes how to set up and use a custom webhook trigger and run it as a cURL command for your third-party CI system.
 
-import Variables from '/docs/platform/triggers/shared/variables-not-supported.md'
+import Variables from '/docs/platform/shared/variables-not-supported.md'
 
 <Variables />
 

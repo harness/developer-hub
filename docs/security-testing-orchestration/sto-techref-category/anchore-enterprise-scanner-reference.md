@@ -403,8 +403,8 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: stoqadelegate
-              namespace: harness-qa-delegate
+              connectorRef: K8S_DELEGATE_CONNECTOR
+              namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
               containerSecurityContext:
@@ -420,7 +420,7 @@ pipeline:
                   name: Background_1
                   identifier: Background_1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: docker:dind
                     shell: Sh
                     privileged: true
@@ -503,7 +503,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: myk8sdelegate
+              connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -520,13 +520,13 @@ pipeline:
                   name: Background_1
                   identifier: Background_1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: docker:dind
                     shell: Sh
                     privileged: true
                     entrypoint:
                       - dockerd
-					resources:
+                    resources:
                       limits:
                         memory: 2048Mi
                         cpu: 1000m  

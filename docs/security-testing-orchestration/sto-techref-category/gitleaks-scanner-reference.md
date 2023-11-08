@@ -231,7 +231,7 @@ pipeline:
                         name: gitleaks
                         identifier: Run_1
                         spec:
-                          connectorRef: mydockerhubconnector
+                          connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                           image: zricethezav/gitleaks:latest
                           shell: Sh
                           command: |
@@ -266,7 +266,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: myk8sconnector
+              connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -274,7 +274,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: wwdvpwa
+        connectorRef: CODEBASE_CONNECTOR
         repoName: dvpwa
         build: <+input>
   identifier: Gitleaks_docsexample_INGESTION
@@ -336,7 +336,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: myk8sconnector
+              connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -344,7 +344,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: wwdvpwa
+        connectorRef: CODEBASE_CONNECTOR
         repoName: dvpwa
         build: <+input>
   identifier: gitleaks_docs_example_ORCHESTRATION
