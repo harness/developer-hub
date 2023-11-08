@@ -46,3 +46,9 @@ The following steps describe the general workflow:
    - Request an [exemption](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) so that pipeline executions can proceed even if the issue is detected.
 
    - Fix the issue using [AI-enhanced remediation steps](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations) (currently in beta).
+
+:::note
+
+You can also [set up STO to create Jira tickets](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations) for issues detected by STO scans.
+
+:::
