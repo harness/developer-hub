@@ -253,15 +253,15 @@ Right now, the policy only identifies potential RDS instances for resize. Earlie
 
 #### Do we support showing GCP VM recommendations?
 
-As of now we don't support showing GCP recommendations
+As of now we don't show GCP VM recommendations.
 
 #### We are not able to see recommendations section in some perspectives ?
 
-Currently, recommendations section is only visible in perspective where data source is Kubernetes
+Currently, recommendations section is only visible in perspective where data source is Kubernetes.
 
 #### When I create a JIRA ticket from a recommendation, will that recommendation automatically come in the applied recommendations tab once the JIRA status of the ticket is set to done ?
 
-Yes, as soon as you change the JIRA status of a ticket created for a particular recommendation and change it's status to done, that particular recommendation will automatically start appearing in applied recommendations tab
+Yes, as soon as you change the JIRA status of a ticket created for a particular recommendation and change it's status to done, that particular recommendation will automatically start appearing in applied recommendations tab.
 
 #### Do we provide the facility to add custom policies to generate Asset Governance Recommendation ?
 
@@ -269,7 +269,7 @@ Yes we do provide the facility to add custom policies to generate Asset Governan
 
 #### Do we support any method to retrieve Kafka recommendations ?
 
-As of now we don't support any method to retrieve Kafka recommendations 
+As of now we don't support any method to retrieve Kafka recommendations.
 
 #### Can we recommend cost savings by changing instance architecture e.g moving from amd64 to arm64 based instances? 
 
@@ -305,7 +305,7 @@ No, you would have to manually apply preferred instance families for each recomm
 
 #### Do we surface asset governance recommendations at the perspective level?
 
-No, we do not provide asset governance recommendations at the perspective level."
+No, we do not provide asset governance recommendations at the perspective level.
 
 
 ### Governance
