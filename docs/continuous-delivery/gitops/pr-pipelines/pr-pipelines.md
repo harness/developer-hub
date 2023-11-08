@@ -18,7 +18,7 @@ This topic builds on the ApplicationSet concept discussed in [Harness GitOps App
 
 :::
 
-Often, even though your ApplicationSet syncs one microservice/application to multiple target environments, you might want to change a microservice in just one of the target environments, such as a dev environment. A Harness PR Pipeline enables you to do this. But before that
+Often, even though your ApplicationSet syncs one microservice/application to multiple target environments, you might want to change a microservice in just one of the target environments, such as a dev environment. A Harness PR Pipeline enables you to do this. But first, let's cover some basics.
 
 ## Basics
 
