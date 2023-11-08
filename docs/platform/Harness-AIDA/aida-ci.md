@@ -16,6 +16,8 @@ import Legal from '/docs/continuous-integration/shared/aida-legal.md';
 https://www.youtube.com/watch?v=p-3FZM49RqQ-->
 <docvideo src="https://www.youtube.com/watch?v=p-3FZM49RqQ" />
 
+## Get started with AIDA for CI
+
 <Use />
 
 ![An example of AIDA dialog.](./static/aida-launch-button.png)
