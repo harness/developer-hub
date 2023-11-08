@@ -85,51 +85,51 @@ This tutorial builds on the ApplicationSet created in [Harness GitOps Applicatio
 
 :::
 
-### Creating a Harness PR pipeline
+### Create a Harness PR pipeline
 
-For the PR Pipeline, we'll create two Harness environments, dev and prod. These names are the same as the folder names in the repo:
+Continuing on the ApplicationSet setup from the above-mentioned document, the path to your two `config.json` files would be the following- 
 
-![](static/harness-git-ops-application-set-tutorial-44.png)
+- `examples/git-generator-files-discovery/cluster-config/engineering/dev/config.json`
+- `examples/git-generator-files-discovery/cluster-config/engineering/prod/config.json`
 
-We use the same names so that when we select a Harness environment we can pass along the same name as the target folder.
+Please follow the following steps to set up a Harness PR pipeline for your ApplicationSet:
 
-Next, we'll create a Harness service that points to the config.json files in these directories.
+1. **Creating Environments**: For this PR Pipeline, we'll create two Harness environments, dev and prod. These names are the same as the folder names in the repo. We use the same names so that when we select a Harness environment we can pass along the same name as the target folder.
 
-The path to the config.json files in the service will use the expression <+env.name>
+	![](static/harness-git-ops-application-set-tutorial-44.png)
 
-```yaml
-examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/config.json
-```
+2. **Link your GitOps Clusters to the Environment**: Once you have created the environments, you will need to link the GitOps Clusters where your application is deployed to the respective environments.
 
-At runtime, this expression resolves to the Harness environment you selected.
+3. **Creating a Service**: Create a Harness service that points to the `config.json` files in these directories. 
 
-When you run the pipeline, you'll select which environment to use, dev or prod, and Harness will use the corresponding repo folder and update that application only.
+   The path to the config.json files in the service will use the expression `<+env.name>`
 
-### Create the PR pipeline
+	```
+	examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/config.json
+	```
 
-To create the pipeline, we'll simply create a new service that includes the manifest you want deployed and select the dev environment you created earlier.
+    At runtime, this expression resolves to the Harness environment you selected.
 
-1. In your Harness project, click **Pipelines**.
-2. Click **Create a Pipeline**.
-3. In **Create new Pipeline**, enter the name **PR Pipeline**, and then click **Start**.
-4. Click **Add Stage**, and select **Deploy**.
+	When you run the pipeline, you'll select which environment to use, dev or prod, and Harness will use the corresponding repo folder and update that application only.
+
+4. **Creating a Pipeline**: Create the Harness PR pipeline by following these steps-
+   1. In your Harness project, click **Pipelines**.
+   2. Click **Create a Pipeline**.
+   3. In **Create new Pipeline**, enter the name **PR Pipeline**, and then click **Start**.
+   4. Click **Add Stage**, and select **Deploy**.
    
-   ![](static/harness-git-ops-application-set-tutorial-50.png)
+      ![](static/harness-git-ops-application-set-tutorial-50.png)
 
-5. Enter the following and click **Set Up Stage**:
-	1. **Stage Name:** enter **PR Example**.
-	2. **Deployment Type:** select **Kubernetes**.
-	3. Enable the **GitOps** option.
+   5. Enter the following and click **Set Up Stage**:
+       1. **Stage Name:** enter **PR Example**.
+       2. **Deployment Type:** select **Kubernetes**.
+       3. Enable the **GitOps** option.
   
-  ![](static/harness-git-ops-application-set-tutorial-51.png)
+  	![](static/harness-git-ops-application-set-tutorial-51.png)
 
-   The stage is created and the service settings appear.
-   
-// add stuff here
+    The stage is created and the service settings appear.
 
-
-## Review execution steps
-// add stuff here
+5. **Add GitOps pipeline steps**:
 
 ## Run and verify the PR pipeline
 
@@ -153,5 +153,5 @@ Now your PR pipeline is ready.
 
   ![](static/harness-git-ops-application-set-tutorial-60.png)
 
-Congratulations! You PR Pipeline was successful.
+Congratulations! Your PR Pipeline was successful.
 
