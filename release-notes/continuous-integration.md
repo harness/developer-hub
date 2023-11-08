@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-11-06T10:00
+date: 2023-11-13T10:00
 sidebar_position: 9
 ---
 
@@ -24,6 +24,12 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## November 2023
+
+### Version 66xx
+
+#### Fixed issues
+
+The Get Started workflow can generate pipeline identifiers from repository names. To avoid failures due to invalid characters in pipeline identifiers, periods (`.`) in repository names are now replaced by underscores (`_`) in pipeline identifiers. (CI-10156, ZD-52954)
 
 ### Version 6501
 
