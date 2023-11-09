@@ -36,7 +36,7 @@ If any of these scenarios occur and you start new delegates or bounce the existi
 
 To resolve this issue, do the following:
 
-- If you copied the image to your repo, Harness recommends that you use harness/delegate:latest directly in your delegate or pull the image monthly from harness/delegate:latest.
+- If you copied the image to your repo, Harness recommends that you use `harness/delegate:latest` directly in your delegate or pull the image monthly from `harness/delegate:latest`.
 - If you created a custom image, rebuild the custom image. Harness recommends that you rebuild the custom image monthly.
 - If you created your AMI for your shell delegate with startup scripts, Harness recommends that you rebuild the AMI monthly and apply it to your delegate.
 
