@@ -121,7 +121,7 @@ This example runs pytest in a [Run step](../run-ci-scripts/run-step-settings.md)
 
 :::info
 
-If you use [test splitting](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism) with pytest in a Run step, you must set `junit_family=xunit1` in your code repo's `pytest.ini` file or include `-o junit_family="xunit1"` in the step's `command`.
+If you use [test splitting](./speed-up-ci-test-pipelines-using-parallelism) with pytest in a Run step, you must set `junit_family=xunit1` in your code repo's `pytest.ini` file or include `-o junit_family="xunit1"` in the step's `command`.
 
 :::
 
