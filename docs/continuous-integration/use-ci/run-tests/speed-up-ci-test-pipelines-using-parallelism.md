@@ -52,11 +52,11 @@ The following YAML example shows a **Run** step that uses [pytest](https://docs.
       identifier: Run_Pytests  
       # Enable parallelism strategy   
       strategy:             
-          parallelism: 4   # Number of parallel runs  
-          maxConcurrency: 2 # (optional) Limit the number of parallel runs   
+          parallelism: 4   # Number of parallel runs
+          maxConcurrency: 2 # (optional) Limit the number of parallel runs
       spec:  
-          connectorRef: $dockerhub_connector  
-          image: python:latest  
+          connectorRef: $dockerhub_connector  ## Not required for all build infra.
+          image: python:latest  ## Not required for all build infra.
           shell: Sh  
           # Store the current index and total runs in environment variables  
           envVariables:    
@@ -79,6 +79,34 @@ The following YAML example shows a **Run** step that uses [pytest](https://docs.
                   paths:   # Generate unique report for each iteration  
                       - "**/result_<+strategy.iteration>.xml"   
       failureStrategies: []
+```
+
+<!-- Updated, Cloud version -->
+```yaml
+              - step:
+                  type: Run
+                  name: run pytest
+                  identifier: run_pytest
+                  spec:
+                    shell: Sh
+                    command: |-
+                      pip install -r requirements.txt  
+                      # Define splitting strategy and generate a list of test groups  
+                      FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing --split-index ${HARNESS_NODE_INDEX} --split-total ${HARNESS_NODE_TOTAL}`  
+                      echo $FILES  
+                      # Run tests with the test-groups string as input  
+                      pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES  
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "**/result_<+strategy.iteration>.xml"
+                    envVariables:
+                      HARNESS_NODE_INDEX: <+strategy.iteration>
+                      HARNESS_NODE_TOTAL: <+strategy.iterations>
+                  strategy:
+                    parallelism: 4
+                    maxConcurrency: 2
 ```
 
 ## Set up parallelism in a pipeline
@@ -111,6 +139,35 @@ The process to set up parallelism in a pipeline is as follows:
           pytest -v --junitxml="result_${HARNESS_NODE_INDEX}.xml" $FILES   
           echo "$HARNESS_NODE_TOTAL runs using file list $FILES" 
 ```
+
+<!-- Updated, Cloud version -->
+```yaml
+              - step:
+                  type: Run
+                  name: run pytest
+                  identifier: run_pytest
+                  spec:
+                    shell: Sh
+                    command: |-
+                      pip install -r requirements.txt  
+                      # Define splitting strategy and generate a list of test groups  
+                      FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing --split-index ${HARNESS_NODE_INDEX} --split-total ${HARNESS_NODE_TOTAL}`  
+                      echo $FILES  
+                      # Run tests with the test-groups string as input  
+                      pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES  
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "**/result_<+strategy.iteration>.xml"
+                    envVariables:
+                      HARNESS_NODE_INDEX: <+strategy.iteration>
+                      HARNESS_NODE_TOTAL: <+strategy.iterations>
+                  strategy:
+                    parallelism: 4
+                    maxConcurrency: 2
+```
+
 
 To define these attributes in the Pipeline Studio, go to the step that implements the parallelism strategy. Then go to **Optional Configuration** > **Environment Variables**.
 
@@ -157,6 +214,35 @@ import TabItem from '@theme/TabItem';
         parallelism: 4
 ```
 
+<!-- Updated, Cloud version -->
+```yaml
+              - step:
+                  type: Run
+                  name: run pytest
+                  identifier: run_pytest
+                  spec:
+                    shell: Sh
+                    command: |-
+                      pip install -r requirements.txt  
+                      # Define splitting strategy and generate a list of test groups  
+                      FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing --split-index ${HARNESS_NODE_INDEX} --split-total ${HARNESS_NODE_TOTAL}`  
+                      echo $FILES  
+                      # Run tests with the test-groups string as input  
+                      pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES  
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "**/result_<+strategy.iteration>.xml"
+                    envVariables:
+                      HARNESS_NODE_INDEX: <+strategy.iteration>
+                      HARNESS_NODE_TOTAL: <+strategy.iterations>
+                  strategy:
+                    parallelism: 4
+                    maxConcurrency: 2
+```
+
+
 ```mdx-code-block
   </TabItem>
 </Tabs>
@@ -177,7 +263,7 @@ You use the `split_tests` CLI command to define the set of tests you want to run
 
 For example:
 
-```
+```shell
 # Generate a new set of grouped test files and output the file list to a string...  
 FILES=`/addon/bin/split_tests --glob "**/test_*.py" \  
           --split-by file_time \  
@@ -219,7 +305,7 @@ Harness supports the following strategies:
 
 To split tests based on their run time, you must provide a list of file paths, classes, test cases, or test suites to include. For example, the following code snippet splits tests by time in a **Run** step. The `split_tests` command used in the code parses all matching test files based on the `--glob` option and splits them into separate lists based on `--split-by file_timing`. The number of lists created is determined by the `parallelism` setting. For example, if `parallelism` is set to 2, the command creates two separate lists of files that are evenly divided based on their testing time. The pipeline then creates two parallel steps that run tests for the files in each list.
 
-```
+```shell
 pip install -r requirements.txt  
   
 # Split by timing data  
@@ -230,19 +316,19 @@ pytest -v --junitxml="result_${HARNESS_NODE_INDEX}.xml" $FILES
 
 When the pipeline finishes a build, the `echo $FILES` output shows the files that got tested in each step. For example, one log contains the following:
 
-```
+```shell
 + FILES=test_file_1.py test_file_2.py test_file_6.py test_file_9.py test_file_10.py test_file_12.py test_file_13.py
 ```
 
 Whereas another log contains:
 
-```
+```shell
 + FILES=test_file_3.py test_file_4.py test_file_5.py test_file_8.py test_file_11.py test_file_14.py
 ```
 
 Note that this example applies to the `--split-by file_timing`option. In this case, you can use a glob expression to specify the set of elements that need to be split and tested. For class, test-case, or test-suite timing, you must provide a text file of the elements to split. If you want to split by Java-class timing, for example, you could specify the set of classes to split and test in a new-line-delineated string like this:
 
-```
+```shell
 echo 'io.harness.jhttp.server.PathResolverTest\nio.harness.jhttp.processor.DirectoryIndexTest\nio.harness.jhttp.functional.HttpClientTest\nio.harness.jhttp.processor.ResourceNotFoundTest'> classnames.txt  
 CLASSES=`/addon/bin/split_tests --split-by class_timing --file-path classnames.txt`
 ```
@@ -283,66 +369,139 @@ If your stage uses Harness Cloud build infrastructure, your Run step's `command`
 <details>
 <summary>Parallelism pipeline YAML example</summary>
 
+<!-- cloud version, not calling env vars in junit paths-->
+
 ```yaml
-pipeline:  
-    name: parallelism-for-docs-v6  
-    identifier: parallelismfordocsv6  
-    projectIdentifier: myproject  
-    orgIdentifier: myorg  
-    tags: {}  
-    properties:  
-        ci:  
-            codebase:  
-                connectorRef: $GITHUB_CONNECTOR  
-                repoName: testing-flask-with-pytest  
-                build: <+input>  
-    stages:  
-        - stage:  
-              name: Build and Test  
-              identifier: Build_and_Test  
-              type: CI  
-              spec:  
-                  cloneCodebase: true  
-                  infrastructure:  
-                      type: KubernetesDirect  
-                      spec:  
-                          connectorRef: $HARNESS_K8S_DELEGATE_CONNECTOR  
-                          namespace: harness-delegate-ng  
-                          automountServiceAccountToken: true  
-                          nodeSelector: {}  
-                          os: Linux  
-                  execution:  
-                      steps:  
-                          - step:  
-                                type: Run  
-                                name: Run Pytests  
-                                identifier: Run_Pytests  
-                                strategy:  
-                                    parallelism: 4  
-                                spec:  
-                                    connectorRef: $DOCKERHUB_CONNECTOR  
-                                    image: python:latest  
-                                    shell: Sh  
-                                    envVariables:  
-                                        HARNESS_NODE_INDEX: <+strategy.iteration>  
-                                        HARNESS_NODE_TOTAL: <+strategy.iterations>  
-                                    command: |-  
-                                        pip install -r requirements.txt  
-                                        FILES=`/addon/bin/split_tests --glob "**/test_*.py" \  
-                                               --split-by file_timing \  
-                                               --split-index ${HARNESS_NODE_INDEX} \  
-                                               --split-total=${HARNESS_NODE_TOTAL}`  
-                                        echo $FILES  
-                                        pytest -v --junitxml="result_${HARNESS_NODE_INDEX}.xml" $FILES  
-                                    reports:  
-                                        type: JUnit  
-                                        spec:  
-                                            paths:  
-                                                - "**/result_${HARNESS_NODE_INDEX}.xml"  
-                                failureStrategies: []
+pipeline:
+  name: pytest_split_test
+  identifier: pytest_split_test
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        repoName: YOUR_CODE_REPO_NAME
+        build: <+input>
+  stages:
+    - stage:
+        name: pytest
+        identifier: pytest
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: run pytest
+                  identifier: run_pytest
+                  spec:
+                    shell: Sh
+                    command: |-
+                      pip install -r requirements.txt  
+                      # Define splitting strategy and generate a list of test groups  
+                      FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing --split-index ${HARNESS_NODE_INDEX} --split-total ${HARNESS_NODE_TOTAL}`  
+                      echo $FILES  
+                      # Run tests with the test-groups string as input  
+                      pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES  
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "**/result_<+strategy.iteration>.xml"
+                    envVariables:
+                      HARNESS_NODE_INDEX: <+strategy.iteration>
+                      HARNESS_NODE_TOTAL: <+strategy.iterations>
+                  strategy:
+                    parallelism: 4
+                    maxConcurrency: 2
+```
+
+<!-- refreshed, k8s -->
+
+```yaml
+pipeline:
+  name: pytest_split_test
+  identifier: pytest_split_test
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        repoName: YOUR_CODE_REPO_NAME
+        build: <+input>
+  stages:
+    - stage:
+        name: pytest
+        identifier: pytest
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: run pytest
+                  identifier: run_pytest
+                  spec:
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
+                    image: python:latest
+                    shell: Sh
+                    command: |-
+                      pip install -r requirements.txt  
+                      # Define splitting strategy and generate a list of test groups  
+                      FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing --split-index ${HARNESS_NODE_INDEX} --split-total ${HARNESS_NODE_TOTAL}`  
+                      echo $FILES  
+                      # Run tests with the test-groups string as input  
+                      pytest -v --junitxml="result_${HARNESS_NODE_INDEX}.xml" $FILES  
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "**/result_${HARNESS_NODE_INDEX}.xml"
+                    envVariables:
+                      HARNESS_NODE_INDEX: <+strategy.iteration>
+                      HARNESS_NODE_TOTAL: <+strategy.iterations>
+                  strategy:
+                    parallelism: 4
+                    maxConcurrency: 2
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: YOUR_K8S_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_K8S_NAMESPACE
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
 ```
 
 </details>
+
+### Language/tool examples
+
+<!-- Run steps on Format Test Reports, language guides, and Code Coverage pages. Add looping strategy & split commands -->
+
+* Go - go list
+* Java - Maven, Gradle
+* JavaScript - ESLint, Jest, Karma, Mocha
+* PHP - phpunit-finder
+* Python - pytest
+* Ruby - Cucumber, Minitest, RSpec
+* C/C++ - CTest
+* C# - .NET Core, NUnit
+* Clojure - Kaocha, Clojure.test
 
 ## See also
 
