@@ -92,7 +92,7 @@ Continuing on the ApplicationSet setup from the above-mentioned document, the pa
 - `examples/git-generator-files-discovery/cluster-config/engineering/dev/config.json`
 - `examples/git-generator-files-discovery/cluster-config/engineering/prod/config.json`
 
-Please follow the following steps to set up a Harness PR pipeline for your ApplicationSet:
+Please follow these steps to set up a Harness PR pipeline for your ApplicationSet:
 
 1. **Creating Environments**: For this PR Pipeline, we'll create two Harness environments, dev and prod. These names are the same as the folder names in the repo. We use the same names so that when we select a Harness environment we can pass along the same name as the target folder.
 
@@ -131,7 +131,7 @@ Please follow the following steps to set up a Harness PR pipeline for your Appli
 
 5. **Add GitOps pipeline steps**:
 
-## Run and verify the PR pipeline
+### Run and verify the PR pipeline
 
 Now your PR pipeline is ready.
 
