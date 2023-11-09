@@ -20,9 +20,9 @@ The Harness service represents what you're deploying. In this case, we're deploy
 
 1. In your Harness project, click on the **Services** tab.
 2. Click on **New Service**.
-2. In **Name**, enter **PR Example**.
-3. In **Manifests**, click **Add Release Repo Manifest**.
-4. In **Release Repo Store**, select one of the following repositories.
+3. In **Name**, enter **PR Example**.
+4. In **Manifests**, click **Add Release Repo Manifest**.
+5. In **Release Repo Store**, select one of the following repositories.
 
 ### Configuring a Harness Connector for your repository
 
@@ -101,7 +101,7 @@ Now we'll define the manifest to use for the PR pipeline. We'll use the path to 
 
    Note the use of `<+env.name>`.
 
-  ![](static/harness-git-ops-application-set-tutorial-53.png)
+   ![](static/harness-git-ops-application-set-tutorial-53.png)
 
 2. Click on **Submit**.
 3. Click on **Save** in the top right corner.
@@ -120,7 +120,19 @@ For checking the override priority for these service and environment variables, 
 
 ### Configure Variables in a Harness Service (optional)
 
+As mentioned in the above note, if you would like to define your override variables in the service itself for a common microservice/application, you may want to configure service variables.
 
+1. In your Harness project, click on the **Services** tab.
+2. Click on your Service and go to the **Configuration** tab.
+3. Scroll to the bottom, under **Advanced** please select **New Variable**.
+4. Enter the name and value for your variable and hit **Save**.
+
+   ![](static/pr-svc-env-1.png)
+
+These variables will now be part of your PR pipeline.
+
+
+## Environment
 
 ## Create Harness environments for a target environment
 
