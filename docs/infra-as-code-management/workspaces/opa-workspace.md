@@ -146,8 +146,6 @@ To write policies against the Workspace, please use the following Worksspace exa
 ```
 
 Ensure Terraform version is greater than a specific version
-
-
 ```
 package workspaces
 
