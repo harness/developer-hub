@@ -11,7 +11,8 @@ This topic discusses the following STO topics:
 - [Targets](#targets)
 - [Variants](#variants)
 - [Baselines](#baselines)
-   - [Why you should define a baseline for every STO target](#why-you-should-define-a-baseline-for-every-sto-target)
+- [Where was an issue detected: in the variant, in the baseline, or both?](#where-was-an-issue-detected-in-the-variant-in-the-baseline-or-both)
+- [Why you should define a baseline for every STO target](#why-you-should-define-a-baseline-for-every-sto-target)
 
 
 ### Targets
@@ -64,6 +65,7 @@ Every STO pipeline execution has a [Security Tests tab](/docs/security-testing-o
 ```mdx-code-block
 import StoWhyDefineBaselines from '/docs/security-testing-orchestration/get-started/shared/_why-define-baselines.md';
 ```
+
 ### Why you should define a baseline for every STO target
 
 <StoWhyDefineBaselines />
