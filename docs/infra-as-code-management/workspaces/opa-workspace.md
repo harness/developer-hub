@@ -53,7 +53,7 @@ The following attributes are available to access and write policies against
 
 ### Workspace policies
 
-To write policies against the Workspace, please use the following Worksspace example:
+To write policies against the Workspace, please use the following Workspace example:
 
 ```
   "workspace": {
