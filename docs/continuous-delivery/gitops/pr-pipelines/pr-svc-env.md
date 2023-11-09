@@ -137,7 +137,7 @@ For checking the override priority for these service and environment variables, 
 
 :::
 
-As mentioned in the above note, if you would like to define your override variables in the service or environment itself for a common microservice/application, you may want to configure service or environment variables. The process below is applicable to both Services and Environments, but we will be demonstrating this for Services:
+The process below to define these variables is applicable to both Services and Environments, but we will be demonstrating this for Services:
 
 1. In your Harness project, click on the **Services** tab.
 2. Click on your Service and go to the **Configuration** tab.
@@ -158,11 +158,11 @@ The cluster being referred to here is the same cluster that you have already cre
 
 ### Linking GitOps Clusters to the Environment
 
-We'll link the Harness GitOps clusters for `dev` with the dev environment. Once you link GitOps clusters to an environment, you can then select from an environment's linked GitOps clusters when you select the environment in a pipeline. This ensures that you can select where applications are to be deployed even within the same environment.
+We'll link the Harness GitOps clusters for dev with the `dev` environment. Once you link GitOps clusters to an environment, you can then select from an environment's linked GitOps clusters when you select the environment in a pipeline. This ensures that you can select where applications are to be deployed even within the same environment.
 
 1. Click **GitOps Clusters**.
 2. Click **Select Cluster(s)**.
-3. Select **engineering-dev**.
+3. Select the cluster your application is deployed to, say **engineering-dev**.
 4. Click **Add**.
 
 ![](static/harness-git-ops-application-set-tutorial-47.png)
@@ -179,12 +179,12 @@ Additionally, you may also specify the `config.json` path in your ApplicationSet
 `examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/<+cluster.name>.config.json`
 ```
 
-Your actual directories within your env folder "dev" would then look like:
+Your actual directories in Git within your env folder "dev" would then have to look like:
 ```
 `examples/git-generator-files-discovery/cluster-config/engineering/dev/cluster1.config.json`
 `examples/git-generator-files-discovery/cluster-config/engineering/dev/cluster2.config.json`
 ```
 
-Harness can resolve which directory to resolve during runtime and update only those applications that are say deployed in a particular cluster like `cluster1`.
+Harness can then resolve which directory to traverse during runtime and update only those applications that are say deployed in a particular cluster like `cluster1`. This is similar to how environments are resolved using the `<+env.name>` expression.
 
 Congratulations! This (almost) completes your setup for PR pipelines, please refer to [Introduction to Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md) for further steps on the basics and running of a PR pipeline. 
