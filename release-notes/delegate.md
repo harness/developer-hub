@@ -65,7 +65,7 @@ This release does not include any new early access features.
 ### Hotfixes
 
 #### Version 23.10.81203
-- Add IRSA support for Downloading S3 Artifact using WinRm/SSH
+- Added IRSA support for downloading S3 artifacts using WinRm/SSH.
 
 ## Previous releases
 
