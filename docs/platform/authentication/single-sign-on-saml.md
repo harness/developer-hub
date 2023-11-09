@@ -541,7 +541,7 @@ The Harness User is now added and the RBAC settings for the Harness User Group a
 
 ## SAML SSO with Microsoft Entra ID
 
-You can use Microsoft Entra ID for SAML SSO with Harness, enabling AD users to log into Harness using their AD credentials.
+You can use Microsoft Entra ID for SAML SSO with Harness, enabling Microsoft Entra ID users to log into Harness using their Microsoft Entra ID credentials.
 
 For detailed steps on adding SAML SSO with Microsoft Entra ID, follow the steps in the tutorial [Microsoft Entra single sign-on (SSO) integration with Harness](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/harness-tutorial) from Microsoft.
 
