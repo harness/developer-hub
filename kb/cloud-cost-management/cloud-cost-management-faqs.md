@@ -271,10 +271,6 @@ Yes we do provide the facility to add custom policies to generate Asset Governan
 
 As of now we don't support any method to retrieve Kafka recommendations.
 
-#### Can we recommend cost savings by changing instance architecture e.g moving from amd64 to arm64 based instances? 
-
-If this is for nodepool recommendations, you need to add preferred instance families to the x86 families that you would actually use.
-
 #### Do we support showing RDS recommendations ?
 
 Yes, RDS recommendations are supported from cloud asset governance.
