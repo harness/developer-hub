@@ -15,7 +15,7 @@ The following steps describe the general workflow:
 
 1. (_Optional_) Set the **Security Execution** to filter issues based on target, type, stage, step, or scanner.
 
-  These filters are useful for pipelines that run multiple scans. For example, you might want to focus only on DAST or container issues. Filtering on a specific target can make it easier to compare results with previous scans of that target. 
+  These filters are useful for pipelines that run multiple scans. You can hide irrelevant issues and focus only issues of interest. Filtering on a specific target can make it easier to compare results with previous scans of that target. 
 
 2. Select the [severity](/docs/security-testing-orchestration/get-started/key-concepts/severities) tiles to filter issues by severity. You can also show or hide issues with exemptions.  
 
@@ -43,7 +43,7 @@ The following steps describe the general workflow:
 
    You can also do the following:
 
-   - [Create a Jira tickets](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations) for the issue.
+   - [Create a Jira ticket](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations) for the issue.
 
    - Request an [exemption](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) so that pipeline executions can proceed even if the issue is detected.
 
