@@ -14,7 +14,7 @@ This topic discusses the following STO topics:
    - [Why you should define a baseline for every STO target](#why-you-should-define-a-baseline-for-every-sto-target)
 
 
-## Targets
+### Targets
 
 ```mdx-code-block
 import StoConceptTargets from '../shared/_targets.md';
@@ -29,7 +29,7 @@ import StoConceptTargets from '../shared/_targets.md';
 <figcaption>Test Targets page</figcaption>
 </figure>
 
-## Variants
+### Variants
 
 ```mdx-code-block
 import StoConceptVariants from '/docs/security-testing-orchestration/get-started/shared/_variants.md';
@@ -37,7 +37,7 @@ import StoConceptVariants from '/docs/security-testing-orchestration/get-started
 
 <StoConceptVariants />
 
-## Baselines
+### Baselines
 
 ```mdx-code-block
 import StoConceptBaselines from '/docs/security-testing-orchestration/get-started/shared/_baselines.md';
@@ -45,6 +45,21 @@ import StoConceptBaselines from '/docs/security-testing-orchestration/get-starte
 
 <StoConceptBaselines />
 
+### Where was an issue detected: in the variant, in the baseline, or both? 
+
+Every STO pipeline execution has a [Security Tests tab](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) with separate lists of issues that make it easy to determine where and when a specific issue was detected:
+
+- Only in the current scan of the selected variant
+- Also in previous scans of the selected variant
+- Also in previous scans of the baseline
+
+<figure>
+
+
+![Targets and baselines in the Test Targets page](../static/new-vs-common-issues-in-security-test-results.png)
+
+<figcaption>New and common issues in Security Tests tab</figcaption>
+</figure>
 
 ```mdx-code-block
 import StoWhyDefineBaselines from '/docs/security-testing-orchestration/get-started/shared/_why-define-baselines.md';
@@ -54,12 +69,3 @@ import StoWhyDefineBaselines from '/docs/security-testing-orchestration/get-star
 <StoWhyDefineBaselines />
 
 
-You can easily identify new vs. common issues in the results for each scan.
-
-<figure>
-
-
-![Targets and baselines in the Test Targets page](../static/new-vs-common-issues-in-security-test-results.png)
-
-<figcaption>New and common issues in Security Tests tab</figcaption>
-</figure>
