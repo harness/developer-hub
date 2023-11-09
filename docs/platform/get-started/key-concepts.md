@@ -23,7 +23,7 @@ Docs:
 ## User & User Group Management
 Harness provides a comprehensive feature set for user and user group management.
 
-User: A Harness User is any individual registered with Harness with a unique email address. You can add/remove users manually or via automated user provisioning integrations using Okta SCIM, Azure AD SCIM, OneLogin SCIM and just-in-time SAML. Additionally, these users can authenticate into their Harness account using one or more of the following mechanisms, as allowed by the Account Administrators.
+User: A Harness User is any individual registered with Harness with a unique email address. You can add/remove users manually or via automated user provisioning integrations using Okta SCIM, Microsoft Entra ID SCIM, OneLogin SCIM and just-in-time SAML. Additionally, these users can authenticate into their Harness account using one or more of the following mechanisms, as allowed by the Account Administrators.
 - Username & Password
 - Public OAuth Providers like Google, GitHub, GitLab, LinkedIn, Azure & BitBucket
 - SAML Providers like Azure, Okta & OneLogin

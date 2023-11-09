@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/azure-key-vault).This topic outlines how to use [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) to maintain your Harness secrets. It includes these sections:
+This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/azure-key-vault). This topic outlines how to use [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) to maintain your Harness secrets. It includes these sections:
 
 * [Before You Begin](#before_you_begin)
 * [Visual Overview](#visual_overview)
@@ -115,7 +115,7 @@ To provide these values:
 
 1. In Azure, navigate to the **Azure Active Directory** > **App registrations** page, then select your App registration. (For details, see Azure's [Quickstart: Register an application with the Microsoft identity platform](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).)
 2. Copy the **Application (client) ID** for the Azure App registration you are using, and paste it into the Harness dialog's **Client ID** field.
-3. Copy the **Directory (tenant) ID** of the Azure Active Directory (AAD) where you created your application, and paste it into the Harness dialog's **Tenant ID** field. (For details, see Microsoft Azure's [Get values for signing in](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) topic.)
+3. Copy the **Directory (tenant) ID** of the Microsoft Entra ID where you created your application, and paste it into the Harness dialog's **Tenant ID** field. (For details, go to Microsoft Azure's [Get values for signing in](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) topic.)
 
 ### Option: Enter Subscription
 
@@ -130,7 +130,7 @@ If you do not enter a GUID, Harness uses the default subscription for the [Clien
 
 Generate an authentication key in Azure, and add it to Harness Manager as an application password:
 
-1. Navigate to Azure's **Certificates & secrets** page. (For details, see Microsoft Azure's [Create a new application secret](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) documentation.)
+1. Navigate to Azure's **Certificates & secrets** page. (For details, see Microsoft Entra's [Create a Microsoft Entra application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) documentation.)
 2. In the resulting page’s **Client secrets** section, select **New client secret**.![](./static/azure-key-vault-10.png)
 
 3. Enter a **Description** and expiration option, then click **Add**.![](./static/azure-key-vault-11.png)
