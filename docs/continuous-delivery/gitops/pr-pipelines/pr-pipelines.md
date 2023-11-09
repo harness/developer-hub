@@ -36,7 +36,7 @@ You can add an ApplicationSet manifest to a Harness GitOps Application just like
 
 ApplicationSets use generators to generate parameters that are substituted into the `template:` section of the ApplicationSet resource during template rendering.
 
-There are many types of generators, however, Harness provides first-class support for the **Git Generator** with the **Update Release Repo** and **Merge PR** steps in the PR pipeline. 
+There are many types of generators, however, Harness provides first-class support for the **Git Generator** with the [**Update Release Repo** and **Merge PR** steps](/docs/continuous-delivery/gitops/pr-pipelines/pipeline-steps.md) in the PR pipeline. 
 
 For more information on other Generators, please refer to [Generators](https://argocd-applicationset.readthedocs.io/en/stable/Generators/) from Argo CD docs. 
 
@@ -134,11 +134,10 @@ For complete details on configuring your services, environments and clusters (st
    Repeat this process for the `prod` environment.
    1. Create a new environment named **prod**.
    2. Add the same `asset_id` variable to the prod environment.
-   3. Link the **engineering-prod** GitOps cluster to the environment.
+
+3. **Link your GitOps Clusters to the Environment**: Once you have created the environments, you will need to link the GitOps Clusters where your application is deployed to the respective environments. Link the **engineering-dev** GitOps cluster to the `dev` environment and **engineering-prod** GitOps cluster to the `prod` environment.
 
    ![](static/harness-git-ops-application-set-tutorial-49.png)
-
-3. **Link your GitOps Clusters to the Environment**: Once you have created the environments, you will need to link the GitOps Clusters where your application is deployed to the respective environments.
 
 4. **Creating a Pipeline**: Create the Harness PR pipeline by following these steps-
    1. In your Harness project, click **Pipelines**.

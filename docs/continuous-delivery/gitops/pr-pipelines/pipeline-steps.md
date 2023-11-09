@@ -78,7 +78,7 @@ A successful run for Update Release Repo looks like this:
 
 ![](static/harness-git-ops-application-set-tutorial-59.png)
 
-### Merge PR Step
+## Merge PR Step
 
 This step simply merges the new PR.
 
@@ -95,7 +95,7 @@ You can create a maximum of two Merge PR steps in a stage.
 
 :::
 
-### Fetch Linked Apps
+## Fetch Linked Apps
 
 The Fetch Linked Apps step provides app information, such as the app name, agent identifier, and URL to the Harness GitOps app.
 
@@ -132,7 +132,7 @@ Found linked app: syncstep-automation-app-cluster11. Link - https://app.harness.
 
 :::
 
-### Revert PR
+## Revert PR
 
 This step reverts the commit passed and creates a new PR. Use this step if you want to run any tests or automation on the pipeline and then revert the commit done by the **Update Release Repo** step.
 
@@ -155,11 +155,11 @@ You can create another Merge PR step to merge the Revert PR step, which reaches 
 
 :::info
 
-For Update GitOps App Step and GitOps Sync Step, please make sure that the service, environment, and cluster selected in the pipeline matches the service, environment, and cluster in the application.
+For **Update GitOps App** Step and **GitOps Sync** Step, please make sure that the service, environment, and cluster selected in the pipeline matches the service, environment, and cluster in the application.
 
 :::
 
-### Update GitOps App
+## Update GitOps App
 
 :::note
 
