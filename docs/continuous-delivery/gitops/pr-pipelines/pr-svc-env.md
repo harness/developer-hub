@@ -176,7 +176,7 @@ You may configure multiple Clusters to be linked to a single environment.
 Additionally, you may also specify the `config.json` path in your ApplicationSet and Service to resolve based on Clusters, like so: 
 
 ```
-`examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/<cluster.name>.config.json`
+`examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/<+cluster.name>.config.json`
 ```
 
 Your actual directories within your env folder "dev" would then look like:
