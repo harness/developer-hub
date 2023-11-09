@@ -280,7 +280,7 @@ pipeline:
 
 ```
 
-## Gitleaks orchestration pipeline example
+## Gitleaks orchestration pipeline example for STO
 
 The following pipeline illustrates an orchestration workflow where the Gitleaks step scans the codebase and ingests the results in one step. 
 
