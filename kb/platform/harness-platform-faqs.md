@@ -817,10 +817,6 @@ The Kubernetes manifest has a component called upgrader. The upgrader is a cron 
 
 If you need auto upgrade to be disabled they can perform operations: First run the following command to suspend auto-upgrade on the installed image: `kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>` Secondly in the delegate manifest, locate the CronJob resource. In the resource spec, set the suspend field to true: `spec: --suspend: true` .
 
-#### When do we have Services and Environments available at Org and Account Level in SMP?
-
-This `CDS_OrgAccountLevelServiceEnvEnvGroup` FF is required to have Services and Environments available at Org and Account Level.
-
 #### Why we do not see Dashboards in an SMP Installation?
 
 Dashboard is a licensed functionality. To enable it you need to get a license.

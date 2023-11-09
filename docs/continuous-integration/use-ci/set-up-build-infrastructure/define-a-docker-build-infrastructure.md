@@ -479,9 +479,16 @@ To check if the Docker daemon is running, use the `docker info` command. An erro
 
 ### Runner process quits after terminating SSH connection
 
-If you launch the Harness Docker Runner binary within an SSH session, the runner process quits when you terminate the SSH session.
+If you launch the Harness Docker Runner binary within an SSH session, the runner process can quit when you terminate the SSH session.
 
-To avoid this, use a tool such as `nohup` when you start the runner, for example:
+To avoid this with macOS runners, use this command when you [start the runner binary](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#install-the-harness-docker-runner-1):
+
+```
+./harness-docker-runner-darwin-amd64 server >log.txt 2>&1 &
+disown
+```
+
+For Linux runners, you can use a tool such as `nohup` when you start the runner, for example:
 
 ```
 nohup ./harness-docker-runner-darwin-amd64 server >log.txt 2>&1 &
