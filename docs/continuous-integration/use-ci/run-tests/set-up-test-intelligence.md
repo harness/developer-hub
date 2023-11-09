@@ -208,7 +208,6 @@ The build environment must have the necessary binaries for the **Run Tests** ste
                   spec:
                     language: Python
                     buildTool: Pytest
-                    args: "--junitxml=out_report.xml"
                     runOnlySelectedTests: true
                     preCommand: |
                       python3 -m venv .venv
@@ -216,11 +215,6 @@ The build environment must have the necessary binaries for the **Run Tests** ste
 
                       python3 -m pip install -r requirements/test.txt
                       python3 -m pip install -e .
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - out_report.xml*
 ```
 
 ```mdx-code-block
@@ -236,7 +230,6 @@ The build environment must have the necessary binaries for the **Run Tests** ste
                   spec:
                     language: Ruby
                     buildTool: Rspec
-                    args: "--format RspecJunitFormatter --out tmp/junit.xml"
                     runOnlySelectedTests: true
                     preCommand: bundle install
                     reports:
@@ -1096,7 +1089,7 @@ pipeline:
                       python3 -m pip install coverage
                       python3 -m pip install -r requirements/dev.txt
                       python3 -m pip install -e .
-                    reports:
+                    reports: ## Optional.
                       type: JUnit
                       spec:
                         paths:
@@ -1338,7 +1331,7 @@ pipeline:
                       python3 -m pip install coverage
                       python3 -m pip install -r requirements/dev.txt
                       python3 -m pip install -e .
-                    reports:
+                    reports: ## Optional.
                       type: JUnit
                       spec:
                         paths:

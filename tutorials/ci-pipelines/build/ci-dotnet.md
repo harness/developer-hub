@@ -414,6 +414,10 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 </Tabs>
 ```
 
+### Test splitting
+
+Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
+
 ## Specify version
 
 ```mdx-code-block

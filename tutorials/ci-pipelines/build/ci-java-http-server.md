@@ -323,6 +323,10 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                           - target/surefire-reports/*.xml
 ```
 
+### Test splitting
+
+Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
+
 ## Specify version
 
 ```mdx-code-block

@@ -258,7 +258,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                   spec:
                     language: Ruby
                     buildTool: Rspec
-                    args: "--format RspecJunitFormatter --out tmp/junit.xml"
+                    args: "--format RspecJunitFormatter --out tmp/junit.xml" ## args are optional for Ruby TI.
                     runOnlySelectedTests: true
                     preCommand: bundle install
                     reports:
@@ -283,7 +283,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                     image: ruby:latest
                     language: Ruby
                     buildTool: Rspec
-                    args: "--format RspecJunitFormatter --out tmp/junit.xml"
+                    args: "--format RspecJunitFormatter --out tmp/junit.xml" ## args are optional for Ruby TI.
                     runOnlySelectedTests: true
                     preCommand: bundle install
                     reports:
@@ -297,6 +297,10 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
   </TabItem>
 </Tabs>
 ```
+
+### Test splitting
+
+Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
 
 ## Specify version
 

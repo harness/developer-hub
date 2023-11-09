@@ -301,6 +301,8 @@ You can use **Run** or **Run Tests** steps to [run tests in Harness CI](/docs/co
 
 If you're using Kotlin, you can improve your unit test times with  Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) feature.
 
+Harness CI also supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
+
 ```mdx-code-block
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>

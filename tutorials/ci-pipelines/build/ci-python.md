@@ -242,6 +242,8 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                           - report.xml
 ```
 
+If you [run tests with Test Intelligence](#run-tests-with-test-intelligence), you don't need to include this specification; it is included by default.
+
 ### Run tests with Test Intelligence
 
 [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) is available for Python; however, it is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -261,7 +263,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                   spec:
                     language: Python
                     buildTool: Pytest
-                    args: "--junitxml=out_report.xml"
+                    args: "--junitxml=out_report.xml" ## args are option for Python TI.
                     runOnlySelectedTests: true
                     preCommand: |
                       python3 -m venv .venv
@@ -269,7 +271,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 
                       python3 -m pip install -r requirements/test.txt
                       python3 -m pip install -e .
-                    reports:
+                    reports: ## This is optional for Python TI. The report path is included by default.
                       type: JUnit
                       spec:
                         paths:
@@ -291,7 +293,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                     image: python:latest
                     language: Python
                     buildTool: Pytest
-                    args: "--junitxml=out_report.xml"
+                    args: "--junitxml=out_report.xml" ## args are optional for Python TI.
                     runOnlySelectedTests: true
                     preCommand: |
                       python3 -m venv .venv
@@ -299,7 +301,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 
                       python3 -m pip install -r requirements/test.txt
                       python3 -m pip install -e .
-                    reports:
+                    reports: ## This is optional for Python TI. The report path is included by default.
                       type: JUnit
                       spec:
                         paths:
@@ -311,6 +313,9 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 </Tabs>
 ```
 
+### Test splitting
+
+Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
 
 ## Specify version
 
