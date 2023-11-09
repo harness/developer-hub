@@ -106,35 +106,14 @@ Now we'll define the manifest to use for the PR pipeline. We'll use the path to 
 2. Click on **Submit**.
 3. Click on **Save** in the top right corner.
 
-You have now successfully configured a Harness Service for your PR pipeline. 
-
-:::note
-
-For updating the `config.json` values, Harness supports variables in the [**Update Release Repo** Step](/docs/continuous-delivery/gitops/pr-pipelines/pipeline-steps.md). These variables can also be configured as service or environment variables in cases where you would like to logically enforce some common values in the service or environment level of your ApplicationSet.
-
-Please note that values from the **Update Release Repo** step have a higher priority than service or environment variables.
-
-For checking the override priority for these service and environment variables, please refer to [Override Priority](/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides.md#override-priority)
-
-:::
-
-### Configure Variables in a Harness Service (optional)
-
-As mentioned in the above note, if you would like to define your override variables in the service itself for a common microservice/application, you may want to configure service variables.
-
-1. In your Harness project, click on the **Services** tab.
-2. Click on your Service and go to the **Configuration** tab.
-3. Scroll to the bottom, under **Advanced** please select **New Variable**.
-4. Enter the name and value for your variable and hit **Save**.
-
-   ![](static/pr-svc-env-1.png)
-
-These variables will now be part of your PR pipeline.
+You have now successfully configured a Harness Service for your PR pipeline.
 
 
 ## Environment
 
-## Create Harness environments for a target environment
+Once you have successfully configured a Service, your next step would be to configure a Harness Environment. This entity logically corresponds to your `dev` or `staging` or `production` environments. Ideally, your ApplicationSet configuration files would differ on the basis of the Environments they would deploy to.
+
+### Create Harness environments for a target environment
 
 Let's create a **dev** environment.
 
@@ -146,26 +125,40 @@ Let's create a **dev** environment.
 
 The new environment is created.
 
-#### Create variable for JSON key-value pair
+## Configure Variables in a Harness Service/Environment (optional)
 
-Next, we'll add a variable for the JSON key-value we will be updating.
+:::note
 
-1. In **Advanced**, in **Variables**, click **New Variable Override**.
-2. In the variable **Name**, enter **asset\_id** and click **Save**.
+For updating the `config.json` or `config.yaml` values, Harness supports variables in the [**Update Release Repo** Step](/docs/continuous-delivery/gitops/pr-pipelines/pipeline-steps.md). These variables can also be configured as service or environment variables in cases where you would like to logically enforce some common values in the service or environment level of your ApplicationSet.
 
-   The `asset_id` name is a key-value in the `config.json` files for both dev and prod:
+Please note that values from the **Update Release Repo** step have a higher priority than service or environment variables.
 
-   ![](static/harness-git-ops-application-set-tutorial-45.png)
+For checking the override priority for these service and environment variables, please refer to [Override Priority](/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides.md#override-priority)
 
-3. For variable **Value**, select **Runtime Input**:
+:::
 
-   ![](static/harness-git-ops-application-set-tutorial-46.png)
+As mentioned in the above note, if you would like to define your override variables in the service or environment itself for a common microservice/application, you may want to configure service or environment variables. The process below is applicable to both Services and Environments, but we will be demonstrating this for Services:
 
-   Later, when you run the pipeline, you'll provide a new value for this variable, and that value will be used to update the `config.json` file.
+1. In your Harness project, click on the **Services** tab.
+2. Click on your Service and go to the **Configuration** tab.
+3. Scroll to the bottom, under **Advanced** please select **New Variable**.
+4. Enter the name and value for your variable and hit **Save**.
 
-#### Select GitOps clusters to add to environment
+   ![](static/pr-svc-env-1.png)
 
-Next, we'll link the Harness GitOps clusters for dev with the dev environment. Once you link GitOps clusters to an environment, you can then select from an environment's linked GitOps clusters when you select the environment in a pipeline.
+These variables will now be part of your PR pipeline.
+
+
+## Clusters
+
+Before updating your application's `config.json` values, Harness also resolves the Clusters that the Application is deployed to in the [Cluster Step](/docs/continuous-delivery/gitops/pr-pipelines/pipeline-steps.md). This helps act as another layer of validation before updating your application's values. 
+
+The cluster being referred to here is the same cluster that you have already created where you deployed your application, thus, you do not need to create any new entities in Harness. The last step you need to do to configure your PR pipeline is to link your GitOps clusters to your Harness Environment.
+
+
+### Linking GitOps Clusters to the Environment
+
+We'll link the Harness GitOps clusters for `dev` with the dev environment. Once you link GitOps clusters to an environment, you can then select from an environment's linked GitOps clusters when you select the environment in a pipeline. This ensures that you can select where applications are to be deployed even within the same environment.
 
 1. Click **GitOps Clusters**.
 2. Click **Select Cluster(s)**.
@@ -178,28 +171,20 @@ The Harness GitOps cluster is now linked to the environment.
 
 ![](static/harness-git-ops-application-set-tutorial-48.png)
 
-#### Repeat the process for the prod environment
+You may configure multiple Clusters to be linked to a single environment.
 
-1. Create a new environment named **prod**.
-2. Add the same `asset_id` variable to the prod environment.
-3. Link the **engineering-prod** GitOps cluster to the environment.
+Additionally, you may also specify the `config.json` path in your ApplicationSet and Service to resolve based on Clusters, like so: 
 
-![](static/harness-git-ops-application-set-tutorial-49.png)
+```
+`examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/<cluster.name>.config.json`
+```
 
-2. Back in **New Service**, click **Save**.
+Your actual directories within your env folder "dev" would then look like:
+```
+`examples/git-generator-files-discovery/cluster-config/engineering/dev/cluster1.config.json`
+`examples/git-generator-files-discovery/cluster-config/engineering/dev/cluster2.config.json`
+```
 
-the service is added to the pipeline.
+Harness can resolve which directory to resolve during runtime and update only those applications that are say deployed in a particular cluster like `cluster1`.
 
-![](static/harness-git-ops-application-set-tutorial-54.png)
-
-1. Click **Continue** to add the environment.
-
-### Add Environment Runtime Input
-
-For the stage environment, we'll use a Harness runtime input. When you run the pipeline, Harness will prompt you for a value for the environment. You can select the environment you want to use for the PR.
-
-1. Set **Specify environment or environment group** as a runtime input.
-
-   ![](static/harness-git-ops-application-set-tutorial-55.png)
-
-2. Click **Continue**.
+Congratulations! This (almost) completes your setup for PR pipelines, please refer to [Introduction to Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md) for further steps on the basics and running of a PR pipeline. 
