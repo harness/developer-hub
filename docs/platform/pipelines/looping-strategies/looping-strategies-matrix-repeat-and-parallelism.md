@@ -50,7 +50,7 @@ parallelism: 10
 
 For more information about parallelism strategies, go to:
 
-* [Use parallelism to improve test times](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
+* [Split tests (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
 * [Run stages in parallel](./run-stages-in-parallel.md)
 
 ## Matrix strategies

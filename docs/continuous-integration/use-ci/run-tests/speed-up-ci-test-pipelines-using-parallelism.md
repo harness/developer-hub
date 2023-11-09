@@ -1,6 +1,6 @@
 ---
-title: Use parallelism to improve test times
-description: Use parallelism to run tests in parallel.
+title: Split tests (parallelism)
+description: Split tests for any language. Use parallelism to improve test times.
 sidebar_position: 40
 helpdocs_topic_id: kce8mgionj
 helpdocs_category_id: kncngmy17o
