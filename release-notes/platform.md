@@ -40,7 +40,7 @@ The following deprecated API endpoints will no longer be supported:
 
 - Harness has updated our account data deletion period from 90 days to 60 days. (PL-41444)
 
-- Harness updated the delegate metrics count names to include the suffix `_total`. (PL-42354, ZD-52167)
+- It is now mandatory to add a suffix to count type metrics in the latest version of Prometheus, otherwise delegate metrics will not be recorded. Harness updated the delegate metrics count names to include the suffix `_total`. (PL-42354, ZD-52167)
 
    The following delegate metrics names are updated.
 
