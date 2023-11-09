@@ -129,7 +129,7 @@ The new environment is created.
 
 :::note
 
-For updating the `config.json` or `config.yaml` values, Harness supports variables in the [**Update Release Repo** Step](/docs/continuous-delivery/gitops/pr-pipelines/pipeline-steps.md). These variables can also be configured as service or environment variables in cases where you would like to logically enforce some common values in the service or environment level of your ApplicationSet.
+For updating the `config.json` or `config.yaml` values, Harness supports variables in the [**Update Release Repo** Step](/docs/continuous-delivery/gitops/pr-pipelines/pipeline-steps.md#update-release-repo-step). These variables can also be configured as service or environment variables in cases where you would like to logically enforce some common values in the service or environment level of your ApplicationSet.
 
 Please note that values from the **Update Release Repo** step have a higher priority than service or environment variables.
 
@@ -151,7 +151,7 @@ These variables will now be part of your PR pipeline.
 
 ## Clusters
 
-Before updating your application's `config.json` values, Harness also resolves the Clusters that the Application is deployed to in the [Cluster Step](/docs/continuous-delivery/gitops/pr-pipelines/pipeline-steps.md). This helps act as another layer of validation before updating your application's values. 
+Before updating your application's `config.json` values, Harness also resolves the Clusters that the Application is deployed to in the [Cluster tab](/docs/continuous-delivery/gitops/pr-pipelines/pipeline-steps.md#resolving-services-environments-and-clusters). This helps act as another layer of validation before updating your application's values. 
 
 The cluster being referred to here is the same cluster that you have already created where you deployed your application, thus, you do not need to create any new entities in Harness. The last step you need to do to configure your PR pipeline is to link your GitOps clusters to your Harness Environment.
 
