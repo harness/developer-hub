@@ -15,7 +15,9 @@ The key enhancements are as follows:
 
 ## Limitations
 
-If your step inputs or parameters size is greater than 4 KB, then it cannot be part of your expanded JSON. This is to safeguard your system.
+* If your step inputs or parameters size is greater than 4 KB, then it cannot be part of your expanded JSON. This is to safeguard your system.
+* Harness uses the greater than sign (`>`) to terminate expressions. To avoid ambiguous results, make sure that your scripts do not include a greater than sign. 
+
 
 ## Obtaining the execution JSON
 
