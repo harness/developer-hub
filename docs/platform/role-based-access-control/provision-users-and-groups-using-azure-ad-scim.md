@@ -10,9 +10,9 @@ helpdocs_is_published: true
 
 System for Cross-Domain Identity Management (SCIM) is an open standard protocol for automated user provisioning. In Harness, automated provisioning involves creating users and user groups, assigning users to groups, and managing some user attributes (such as names and email addresses). In addition to creating users and groups, automated provisioning also edits and removes users and user groups as and when required.
 
-If Azure Active Directory (AD) is your identity provider, you can efficiently provision and manage users in your Harness account, organizations, and projects. Using [Azure AD's SCIM integration](https://learn.microsoft.com/en-us/azure/active-directory/architecture/sync-scim) with Harness enables Azure AD to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
+If Microsoft Entra ID is your identity provider, you can efficiently provision and manage users in your Harness account, organizations, and projects. Using [Azure AD's SCIM integration](https://learn.microsoft.com/en-us/azure/active-directory/architecture/sync-scim) with Harness enables Azure AD to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
 
-This topic describes how to use an Azure Active Directory (AD) SCIM integration for automated provisioning in Harness. To configure this integration, you must take steps in both Azure AD and Harness.
+This topic describes how to use an Microsoft Entra ID SCIM integration for automated provisioning in Harness. To configure this integration, you must take steps in both Microsoft Entra ID and Harness.
 
 ## Requirements
 
