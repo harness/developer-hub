@@ -176,7 +176,7 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
 ### Reference JSON secrets
 
-import Refjson from '/docs/platform/secrets/shared/reference-via-json.md';
+import Refjson from '/docs/platform/shared/reference-via-json.md';
 
 <Refjson />
 
