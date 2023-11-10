@@ -1,5 +1,8 @@
-
-## Timeout settings in pipeline execution
+---
+title: Pipeline execution timeout settings
+description: Configure timeouts for steps, stages, and pipelines
+sidebar_position: 12
+---
 
 **Step timeout**: You can configure step timeouts for a step. Steps are marked as expired in the following scenarios:
 * The step does not complete before the configured timeout.
