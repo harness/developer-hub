@@ -329,46 +329,70 @@ If you [define a parallelism strategy](#define-a-parallelism-strategy) on a **Ru
 
 ## Produce test reports
 
-Generate test reports and use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) to create uniquely named results files for each run.
-
-Define your test reports. Your reports must be in JUnit XML format. For more information, go to [Publish test reports](#publish-test-reports).
 
 
-  :::caution
-
-  When implementing parallelism in a step rather than a stage, you must ensure that each test-group step generates a report with a unique filename to prevent conflicts. You can accomplish this by utilizing the `<+strategy.iteration>` [expression](/docs/platform/variables-and-expressions/harness-variables) in your `reports.paths`. This expression represents the test group's parallel run index, ranging from `0` to `parallelism - 1`.
-
-  :::
-
-
-
-To publish your test results in the Harness UI, your test results files must be in [JUnit](https://junit.org/junit5/) XML format. How you publish your test results depends on the specific language, test runner, and formatter used in your repo. For more information, to go [Format test reports](./test-report-ref.md).
-
-
-The `report` section in the pipeline YAML defines how to publish your test reports. Here's an example:
-
-```yaml
-reports:   
-   type: JUnit   
-      spec:   
-         paths: - "**/result_${HARNESS_NODE_INDEX}.xml" ##Use this variable to generate uniquely-named results files for each parallel instance. Without a differentiating identifier, the results files overwrite each other.
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual editor">
 ```
 
+1. Edit the step where your tests run.
+2. Make sure your test tool's commands produce test results. The specific commands required to produce test results files depends on the specific language, test runner, and formatter you use.
+3. Use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) or variable in the results file name, such as `result_<+strategy.iteration>.xml` or `result_${HARNESS_NODE_INDEX}.xml`, to ensure each parallel instance produces a uniquely-named results file.
 
+   :::caution
 
+   If you [defined the parallelism strategy](#define-a-parallelism-strategy) on a step (instead of a stage), you *must* use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) or variable in the results file name, such as `result_<+strategy.iteration>.xml` or `result_${HARNESS_NODE_INDEX}.xml`, to ensure each parallel instance produces a uniquely-named results file. If you don't use an expression or variable in the results file name, the files overwrite each other or fail due to same-name conflicts.
 
-To ensure that your test reports are correctly published and time-based test splitting works, you must do the following:
+   :::
 
-* Configure your test runner and formatter to publish your test reports in the [JUnit](https://junit.org/junit5/) XML format and include file names in the XML output.
-   * For example, if you use `pytest`, you can set `junit_family=xunit1` in your code repo's `pytest.ini` file, or you can include `-o junit_family="xunit1"` in the step's `command`.
-   * The exact setup and configuration requirements depend on the test runner that you use. Refer to your test runner's documentation to learn how to publish in the correct format.
-   * For more information, go to [Format test reports](./test-report-ref).
-* If you're implementing `parallelism` in a step, rather than a stage, ensure that each `test-group` step generates a report with a unique filename. You can achieve this using the `<+strategy.iteration>` variable, which represents the index of the current test run, in the range of `0` to `parallelism-1`.
+4. To publish your test results in the Harness UI, your test results must be in [JUnit XML format](./test-report-ref.md).
 
-You can configure test reporting options in the Pipeline Studio's YAML or Visual editors. In your pipeline, locate the **Run** or **Run Tests** step and specify the **Report Paths** field. In the Visual editor this field is located under **Optional Configuration**.
+   * Configure your test runner and formatter to publish your test reports in the [JUnit](https://junit.org/junit5/) XML format and include file names in the XML output.
+   * For example, if you use `pytest`, you can set `junit_family=xunit1` in your code repo's `pytest.ini` file, or you can include `-o junit_family="xunit1"` in the step's **Command**.
+
+5. Under **Optional Configuration**, add a **Report Path**, such as `**/result_<+strategy.iteration>.xml`.
 
 ![Define Report Paths in a Run step](./static/speed-up-ci-test-pipelines-using-parallelism-54.png)
 
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML editor" default>
+```
+
+1. Edit the step where your tests run.
+2. Make sure your test tool's commands produce test results. The specific commands required to produce test results files depends on the specific language, test runner, and formatter you use.
+3. Use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) or variable in the results file name, such as `result_<+strategy.iteration>.xml` or `result_${HARNESS_NODE_INDEX}.xml`, to ensure each parallel instance produces a uniquely-named results file.
+
+   :::caution
+
+   If you [defined the parallelism strategy](#define-a-parallelism-strategy) on a step (instead of a stage), you *must* use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) or variable in the results file name, such as `result_<+strategy.iteration>.xml` or `result_${HARNESS_NODE_INDEX}.xml`, to ensure each parallel instance produces a uniquely-named results file. If you don't use an expression or variable in the results file name, the files overwrite each other or fail due to same-name conflicts.
+
+   :::
+
+4. To publish your test results in the Harness UI, your test results must be in [JUnit XML format](./test-report-ref.md).
+
+   * Configure your test runner and formatter to publish your test reports in the [JUnit](https://junit.org/junit5/) XML format and include file names in the XML output.
+   * For example, if you use `pytest`, you can set `junit_family=xunit1` in your code repo's `pytest.ini` file, or you can include `-o junit_family="xunit1"` in the step's `command`.
+
+5. Add the `reports` section to the `step.spec` and include the `paths` for your test results files. For example:
+
+   ```yaml
+                     type: Run
+                     name: tests
+                     identifier: tests
+                     spec:
+                       ...
+                       reports: ## Start of reports section.
+                          type: JUnit ## Specify format as JUnit.
+                             spec:
+                                paths: - "**/result_${HARNESS_NODE_INDEX}.xml" ## Specify the results file path. Use a variable or expression to generate uniquely-named results files for each parallel instance. Without a differentiating identifier, the results files can overwrite each other.
+   ```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ## YAML examples: Test splitting
 
@@ -603,16 +627,14 @@ The following YAML example shows a **Run** step that uses [pytest](https://docs.
 SHARD="$((${HARNESS_NODE_INDEX}+1))"; npx playwright test -- --shard=${SHARD}/${HARNESS_NODE_TOTAL}
 ```
 
-
 ## Run the pipeline and inspect results
 
-5. Run your pipeline:
-   1. Make sure all your steps complete successfully. You can see the parallel copies of your step running on the [Build details page](../viewing-builds).
+When you run the pipeline, you can observe the parallel instances running on the [Build details page](../viewing-builds).
 
-   ![Parallel steps in a build.](./static/speed-up-ci-test-pipelines-using-parallelism-51.png)
+![Parallel steps in a build.](./static/speed-up-ci-test-pipelines-using-parallelism-51.png)
 
-   2. When the build finishes, go to the **Tests** tab and [view your results](./viewing-tests). You can view results for each parallel run using the pull-down.
+When the build finishes, go to the **Tests** tab to [view the results](./viewing-tests). Use the **Test Executions** stage and step dropdown menu to view results for each parallel instance.
 
-   ![View results for individual runs.](./static/speed-up-ci-test-pipelines-using-parallelism-52.png)
+![View results for individual runs.](./static/speed-up-ci-test-pipelines-using-parallelism-52.png)
 
-   3. Initial vs subsequent runs: Harness collects timing data during the first run with test splitting and parallelism. Once Harness has the timing data, subsequent runs can [use test splitting options based on timing](#test-splitting-strategies) to further reduce test times.
+If you used a timing strategy, Harness collects timing data during the first run with parallelism enabled. On subsequent runs, Harness uses the timing data from the previous run to optimize test splitting.
