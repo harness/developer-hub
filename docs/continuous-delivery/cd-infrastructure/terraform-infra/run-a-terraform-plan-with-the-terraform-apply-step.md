@@ -251,6 +251,7 @@ You can even set a Harness Trigger where you can set the workspace name used in 
 
 :::note
 Feature Flag: `TERRAFORM_AWS_CP_AUTHENTICATION`
+Delegate Version Required: 81202
 This feature is behind a Feature Flag and is available only to paid customers. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
