@@ -60,8 +60,7 @@ The following network requirements are for connectivity between the Harness Dele
 All network connections from your local network to Harness SaaS are outbound-only.* HTTPS port 443 outbound from the Delegate to Harness.
 :::
 
-* HTTP/2 for gRPC (gRPC Remote Procedure Calls)
-* Delegate requirements: The Delegate will need API/SSH/HTTP access to the providers you add to Harness, such as:
+Delegate requirements: The delegate needs API/SSH/HTTP access to the providers you add to Harness, such as:
 	+ Cloud Providers.
 	+ Verification Providers.
 	+ Artifact Servers (repos).
@@ -70,17 +69,6 @@ All network connections from your local network to Harness SaaS are outbound-onl
 	+ SSH access to target physical and virtual servers.
 
 For more information, see [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
-
-### gRPC Limitations
-
-If you do not enable gRPC connections, the following limitations apply:
-
-* [Cloud Cost Management](../../../../cloud-cost-management/get-started/overview.md) will not collect events.
-* If the `ARTIFACT_PERPETUAL_TASK` feature flag is enabled in your account, Harness performs perpetual artifact collection. If you do not enable gRPC connections, this will not work.
-
-:::note
-Contact [Harness Support](mailto:support@harness.io) to enable or disable feature flags.
-:::
 
 ## Permissions and Ports
 

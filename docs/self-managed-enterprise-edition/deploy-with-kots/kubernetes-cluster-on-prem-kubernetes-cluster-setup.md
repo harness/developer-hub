@@ -392,26 +392,6 @@ You can change the settings later in the KOTS admin console **Config** tab:
 
 ![](./static/kubernetes-cluster-on-prem-kubernetes-cluster-setup-18.png)
 
-#### gRPC and load balancer settings
-
-In **Scheme**, if you select HTTPS, the GRPC settings appear.
-
-![](./static/kubernetes-cluster-on-prem-kubernetes-cluster-setup-19.png)
-
-**If your load balancer does support HTTP2 over port 443**, enter the following:
-
-* **GRPC Target:** enter the load balancer hostname (hostname from the load balancer URL)
-* **GRPC Authority:** enter `manager-grpc-<hostname>`. For example: `manager-grpc-35.202.197.230`.
-
-**If your load balancer does not support HTTP2 over port 443** you have two options:
-
-* If your load balancer supports multiple ports for SSL then add port 9879 in the application load balancer and target port 9879 or node port 32510 on the Ingress controller.
-	+ **GRPC Target:** enter the load balancer hostname
-	+ **GRPC Authority:** enter the load balancer hostname
-* If your load balancer does not support multiple ports for SSL then create a new load balancer and target port 9879 or node port 32510 on the Ingress controller:
-	+ **GRPC Target:** enter the new load balancer hostname
-	+ **GRPC Authority:** enter the new load balancer hostname
-
 #### Log service backend
 
 ![](./static/kubernetes-cluster-on-prem-kubernetes-cluster-setup-20.png)
