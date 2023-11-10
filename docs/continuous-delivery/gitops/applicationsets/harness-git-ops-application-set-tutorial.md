@@ -1,7 +1,7 @@
 ---
-title: Harness GitOps ApplicationSets
-description: This topic describes how to create a GitOps ApplicationSet in Harness GitOps.
-sidebar_position: 1
+title: ApplicationSet Tutorial
+description: This topic has a hands-on tutorial for ApplicationSet.
+sidebar_position: 2
 helpdocs_topic_id: lf6a27usso
 helpdocs_category_id: 013h04sxex
 helpdocs_is_private: false
