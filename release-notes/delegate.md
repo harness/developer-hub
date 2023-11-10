@@ -30,6 +30,60 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
+## November 2023
+
+### Harness version 814xx, Harness Delegate version 23.11.814xx
+
+#### New features and enhancements
+
+- We now support a stage level timeout configuration for the following types of stages: (CDS-81225)
+  - Deploy
+  - Build
+  - Approval
+  - Security Test
+  - Pipeline
+  - Custom Stage 
+
+- Harness updated the delegate metrics count names to include the suffix `_total`. (PL-42354, ZD-52167)
+
+   The following delegate metrics names are updated.
+
+   - `io_harness_custom_metric_task_timeout` is now `io_harness_custom_metric_task_timeout_total`
+   - `io_harness_custom_metric_task_completed` is now `io_harness_custom_metric_task_completed_total`
+   - `io_harness_custom_metric_task_failed` is now `io_harness_custom_metric_task_failed_total`
+   - `io_harness_custom_metric_task_rejected` is now `io_harness_custom_metric_task_rejected_total`
+
+- Harness has updated our account data deletion period from 90 days to 60 days. (PL-41444)
+
+#### Fixed issues
+
+<!-- 
+- Fixed an issue when trying to get a non-existing file from file system after a git fetch of repo. (CDS-82631)
+
+- When configuring the Artifactory Generic artifact with an 'Artifact Filter' and a non-regex value for the 'Artifact Path,' an issue arose where the metadata URL in the service outcome was incorrect, as it failed to include the repository name. This issue is fixed. (CDS-82579)
+
+- Added support for non-spec fields for K8s HPA and PDB resources. (CDS-82370)
+
+- Added workingDir to Script command units. (CDS-82105)
+
+- Service dashboard did not correctly reflect primary and canary instances in Kubernetes deployment. (CDS-81869, ZD-52262, ZD-52930)
+
+  The issue was happening because Harness treated canary and primary instances as one set of instances. During the canary deployment Harness would update with current deployment details the primary instances as well which was not correct since primary deployment hasn't happened yet. This issue affected the capability of post production rollback.
+
+  This issue has been resolved. Now Harness split canary and primary instances in two different groups and will update details respective group only.
+
+- Handled git connectivity issues in delegate. Adding retries to scm service. (CDS-80902, ZD-51818)
+
+CDS-80615 		NA 
+
+CDS-80150 		NA
+
+- Propagate error message from delegate for create PR failure. (CDS-79094) -->
+
+- The project admin role wasn't being assigned to a project created via an account or org scope service account. Now, when a project is created, the project admin role is automatically assigned to the service account. This is also reflected in the audit trails. (PL-41845, ZD-51918)
+
+- Previously, if you had an SSH secret key with a **Text** reference pre-selected, you could only update it using YAML but not via the UI. The UI displayed only the **File** secret types. Harness has now added a dropdown menu in the **Create or Select an Existing Secret** dialog that allows you to select the **Secret type** as either **File** or **Text**. This simplifies the process of updating SSH secrets, making it easier for you to manage your secrets. (PL-41507, ZD-47600, ZD-51334)
+
 ## October 2023
 
 ### Harness version 81205, Harness Delegate version 23.10.81202

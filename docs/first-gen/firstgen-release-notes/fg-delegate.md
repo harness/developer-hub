@@ -55,9 +55,21 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
+## November 2023
+
+### Harness version 814xx, Harness Delegate version 23.111.814xx
+
+#### Fixed issue
+
+- The instance sync didn't update the instance count for Helm pods when they were removed from the user's environment. (CDS-82385, ZD-52612)
+
+  When synchronizing a native Helm deployment, the assigned `CONTAINER_VALIDATION` tasks returned `null`. As a result, the delegate couldn't pick up this task, and the count didn't update.
+
+  This issue has been resolved. The instance sync will not display the actual instance count immediately after redeploying. The count might take about 10 minutes to update.
+
 ## October 2023
 
-## Latest: Harness version 81200, Harness Delegate version 23.10.81202
+### Harness version 81200, Harness Delegate version 23.10.81202
 
 #### Fixed issue
 
