@@ -548,10 +548,6 @@ Or
 
 You can just write a file on the delegate and use the same delegate.
 
-#### How can I get pipeline exectuion details via API
-
-This API can be used to fetch pipleine execution details. Refer more on this [here](https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2
-)
 #### How to do a Flank Deployment in Harness?
 
 You can use Deployment Templates for this use case. You can find more information on this [here](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/).
@@ -586,9 +582,6 @@ The multiple selection functionality is currently behind the feature flag, ```PI
 During rollback, Harness reapplies the previous manifest. This is the declarative method, and it includes the ConfigMap and Secrets of the last known good state.  
 
 Refer more on this in [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#important-notes)
-
-#### When making a change to a template, you have to manually go through all the places that template is referenced and run “reconcile” Is this by design?
-Yes, this is by design. Refer more on this in [Documentation](https://developer.harness.io/docs/platform/templates/templates-best-practices/#reconciliation)
 
 #### Is this the right format to push a secret to the Azure key vault? secret.setVaule("azurevauly://avidentifier/pathToSecret", secretVaule)
 secret.setValue is not supported. Secrets can be referred to only using ```secret.getValue("azurevauly://avidentifier/pathToSecret")``` or `secret.getValue("secretIdentifierInHarness")`
@@ -1753,12 +1746,6 @@ Go to Account Settings --> Account Resources --> Git Experience --> Allow differ
 
 If you have multiple services using this same pipeline template, both within and outside the same project, If both service1 and service2 in the same project are using this same pipeline and are sitting at the approval step. 
 As the template used here has been specified with different services at the runtime, so it will run independently. 
-
-#### Harness enabling auto deployment
-
-To have automatic deployment in Harness, you can make use of trigger On new artifact. 
-[documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/triggers/trigger-a-deployment-on-a-time-schedule/)
-As soon as your build is complete and it publishes a new artifact you can setup a trigger on that and it will trigger a Harness Deployment. 
 
 #### Sharing dashboard to a person who is not a Harness user
 
