@@ -127,7 +127,7 @@ See:
 * [Single Sign-On (SSO) with SAML](../firstgen-platform/security/access-management-howtos/single-sign-on-sso-with-saml.md)
 * [Provision Users and Groups with OneLogin (SCIM)](../firstgen-platform/security/access-management-howtos/provision-users-with-one-login.md)
 * [Provisioning Users with Okta (SCIM)](../firstgen-platform/security/access-management-howtos/scim-okta.md)
-* [Provision Azure AD Users and Groups (SCIM)](../firstgen-platform/security/access-management-howtos/provision-azure-ad-users-and-groups-scim.md)
+* [Provision Microsoft Entra ID Users and Groups (SCIM)](../firstgen-platform/security/access-management-howtos/provision-azure-ad-users-and-groups-scim.md)
 
 #### Are there best practices for setting up Harness users?
 
