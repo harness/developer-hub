@@ -261,9 +261,7 @@ You can even set a Harness Trigger where you can set the workspace name used in 
 ## AWS Connector Provider Credential Authentication for Terraform Plan and Apply Steps
 
 :::note
-Feature Flag: `TERRAFORM_AWS_CP_AUTHENTICATION`
-Delegate Version Required: 81202
-This feature is behind a Feature Flag and is available only to paid customers. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+This feature is behind the feature flag `TERRAFORM_AWS_CP_AUTHENTICATION` and requires Harness Delegate version 81202. This feature is available only to paid customers. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 
