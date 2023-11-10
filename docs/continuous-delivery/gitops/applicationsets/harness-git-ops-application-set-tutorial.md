@@ -10,19 +10,21 @@ redirect_from:
   - /docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial
 ---
 
-:::note
+A typical GitOps Application syncs a source manifest to a destination cluster. If you have multiple target clusters, you could create separate GitOps Applications for each one, but that makes management more challenging. What if you want to sync an application with 100s of target clusters? Managing 100s of GitOps Applications is not easy.
 
-Currently, this feature is behind the feature flags `ENV_GROUP`, `NG_SVC_ENV_REDESIGN` and `OPTIMIZED_GIT_FETCH_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+To solve this use case, we can explore ApplicationSets.
 
-:::
+ApplicationSet can be thought of as a kind of Application factory. It defines one application template and syncs it to multiple target environments. It is similar to an Application but uses a template to achieve application automation with multiple target environments.
 
-This topic shows you how to create a GitOps ApplicationSet in Harness GitOps.
+ApplicationSet CRD is managed by dedicated kubernetes controller - applicationset-controller similar to Application CRD being managed by application-controller.
 
-An ApplicationSet defines one application and syncs it to multiple target environments.
+ApplicationSets offer the following capabilities:
 
-ApplicationSets are often used with Harness PR pipeline feature. A Harness PR pipeline can make changes to the application in just one of the ApplicationSet target environments.
+* Use a single manifest to target multiple Kubernetes clusters.
+* Use a single manifest to deploy multiple Applications from a single or multiple git repositories.
+* Enhanced support for the monorepos, where multiple Application resources are defined within a single Git repository.
 
-For more information on PR pipelines, go to [Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md).
+You can find more information about ApplicationSets from the [ApplicationSets documentation site](https://argocd-applicationset.readthedocs.io/en/stable/).
 
 <details>
 <summary>ApplicationSets and PR pipelines summary</summary>
