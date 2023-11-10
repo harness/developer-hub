@@ -37,7 +37,7 @@ You'll learn how to:
    * Jenkins
 * Before you create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization/). 
 * Your Harness delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate) added to it.
-* For the test connection in the connector we use the CF SDK to get the list of organizations. If the credentials are correct, you get a list of orgs, if incorrect the connection fails. For more information please see the [cloud foundry documentation](https://apidocs.cloudfoundry.org/196/organizations/list_all_organizations.html).
+* For the test connection in the connector, Harness uses the CF SDK to get the list of organizations. If the credentials are correct, you get a list of organizations. Otherwise, the connection fails. For more information, see the [Cloud Foundry documentation](https://apidocs.cloudfoundry.org/196/organizations/list_all_organizations.html).
 
 ## Connect to a TAS provider
 
