@@ -2,7 +2,7 @@
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-11-10T10:00
+date: 2023-11-11T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -21,7 +21,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
-## November 10, 2023
+## November 11, 2023
 ### Version 1.24.x
 
 #### New features and enhancements
