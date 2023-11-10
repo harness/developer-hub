@@ -22,7 +22,7 @@ When you [run tests in Harness CI](./run-tests-in-ci.md), you use **Run** and **
 
 <!-- no toc -->
 1. [Define a parallelism strategy.](#define-the-parallelism-strategy)
-2. [Define a test splitting strategy.](#define-test-splitting)
+2. [Define a test splitting strategy.](#define-a-test-splitting-strategy)
 3. Make sure your steps [produce test reports in JUnit XML format](#produce-test-reports).
 4. [Run the pipeline and inspect the test results.](#run-the-pipeline-and-inspect-results)
 
@@ -67,8 +67,8 @@ This example shows test splitting and parallelism applied to a Run step in a sta
                   name: run pytest
                   identifier: run_pytest
                   strategy: ## This is the parallelism strategy for the step.
-                    parallelism: 12 ## Tests are split into a maximum of 12 workloads.
-                    maxConcurrency: 4 ## Optional. This setting limits the number of workloads that can run at once. In this case,no more than four workloads can run at once. The remaining 8 workloads are queued.
+                    parallelism: 8 ## Tests are split into a maximum of 12 workloads.
+                    maxConcurrency: 2 ## Optional. This setting limits the number of workloads that can run at once. In this case, no more than four workloads can run at once. The remaining 8 workloads are queued.
                   spec:
                     envVariables: ## These environment variables are used in the 'command' to differentiate the index values for parallel runs and individual Run steps within each parallel group.
                       HARNESS_NODE_INDEX: <+strategy.iteration>
@@ -89,7 +89,7 @@ This example shows test splitting and parallelism applied to a Run step in a sta
                       type: JUnit
                       spec:
                         paths:
-                          - "**/result_<+strategy.iteration>.xml" ## Using an expression ('<+strategy.iteration>') in the file name ensures that parallel runs don't overwrite each other.
+                          - "**/result_<+strategy.iteration>.xml" ## Using the expression '<+strategy.iteration>' in the file name ensures that the results of parallel runs don't overwrite each other.
 ```
 
 </details>
@@ -98,99 +98,142 @@ This topic focuses on parallelism and test splitting in **Run** steps. For infor
 
 ## Define a parallelism strategy
 
-The `parallelism` value defines the number of workloads into which tests can be divided. Each parallel instance (or workload) is a duplicate of the step or stage where you've defined a parallelism strategy. All parallel instances start at the same time, and each instance runs separately.
+In the context of test splitting, the `parallelism` strategy defines the number of workloads into which tests can be divided. Each parallel instance (or workload) is a duplicate of the step or stage where you've defined a parallelism strategy, but each instance runs different tests according to the [test splitting strategy](#define-a-test-splitting-strategy).
 
-In general, a higher `parallelism` value means a faster pipeline run time, because the tests can be divided into more parallel instances. However, this depends on your test suite and resource limitations in your build infrastructure. For example, if you try to run 10 groups of tests, and your build infrastructure can handle 10 parallel instances, the pipeline can fail or take longer than expected. Try different parallelism values to determine your optimal configuration. For more information, go to [Best Practices for Looping Strategies](/docs/platform/pipelines/looping-strategies/best-practices-for-looping-strategies.md).
+<details>
+<summary>Learn more about parallel workloads</summary>
 
-:::info
+To demonstrate how tests are split into concurrent (parallel) workloads, assume that you use the `test_count` splitting strategy to divide 20 tests into four workloads. To tell Harness to create four workloads, you would set your parallelism strategy to `parallelism: 4`. Then use the `test_count` splitting strategy in your **Run** step's commands. When the pipeline runs, `test_count` uses simple division to split the 20 tests into four workloads; therefore, each parallel instance runs five different tests.
 
-* You can apply a parallelism strategy to an entire stage or to individual steps within a stage. Define the parallelism strategy on either the step or stage where your tests run. This determines the number of workloads into which the tests can be divided.
-* When implementing parallelism in a step rather than a stage, you must ensure that each test-group step generates a report with a unique filename to prevent conflicts. You can accomplish this by utilizing the `<+strategy.iteration>` [expression](/docs/platform/variables-and-expressions/harness-variables) in your `reports.paths`. This expression represents the test group's parallel run index, ranging from `0` to `parallelism - 1`.
-* You can use maxconcurrency to control the flow of parallel instances and avoid overtaxing infrastructure resources. maxconcurrency sets the maximum number of parallel instances that can run at once, and queues additional instances. For example, if you set `parallelism: 12`, Harness attempts to run 12 copies of the step at once. If you set `paralellism: 12` and `maxconcurrency: 3`, Harness generates 12 copies of the step, but only runs 3 copies at a time, resulting in four batches of three instances.
+```
+20 tests / 4 workloads = 5 tests per workload
+```
 
-:::
+Parallel instances are zero-indexed, resulting in the following breakdown:
+
+* Instance 0 runs tests 1-5.
+* Instance 1 runs tests 6-10.
+* Instance 2 runs tests 11-15.
+* Instance 3 runs tests 16-20.
+
+The four instances run concurrently, but they might finish at different times depending on individual test times. This example used `test_count`, which simply divides the tests based on the total number of tests; therefore, the instances might not finish at the same time if some tests run longer than others. To achieve more equal run times, you can use more nuanced splitting strategies, such as file size or timing.
+
+</details>
 
 ```mdx-code-block
 <Tabs>
-  <TabItem value="Visual" label="Visual">
+  <TabItem value="Visual" label="Visual editor">
 ```
 
-Enable parallelism and specify the number of jobs to run in parallel.
+Define the parallelism strategy on either the step or stage where your tests run.
 
-1. In the Pipeline Studio, open the step or stage where you run your tests, and select the **Advanced** tab.
-2. Under **Looping Strategies**, select **Parallelism** and define your strategy.
+1. Edit the step or stage where your tests run, and then select the **Advanced** tab.
+2. Under **Looping Strategies**, select **Parallelism**.
+3. Set the `parallelism` value to the number of workloads that you want to divide your tests into. For example, if you want to create four workloads, set `parallelism: 4`.
 
-![Define parallelism in a Run step](./static/speed-up-ci-test-pipelines-using-parallelism-53.png)
+   ![Define parallelism in a Run step.](./static/speed-up-ci-test-pipelines-using-parallelism-53.png)
 
-3. Define the following environment variables within the stage or step where you declared the parallelism strategy:
-	* `HARNESS_NODE_TOTAL = <+strategy.iterations>` — This specifies the total number of iterations in the current stage or step.
-	* `HARNESS_NODE_INDEX = <+strategy.iteration>` — This specifies the index of the current test run, which ranges from `0` to `parallelism-1`. You can define and use these variables in the YAML editor as shown in the following snippet:
+4. Optional: Define `maxConcurrency`. This is a strategy to [optimize parallelism](#optimize-parallelism).
 
-```yaml
-              - step:
-                  type: Run
-                  ...
-                    envVariables:
-                      HARNESS_NODE_INDEX: <+strategy.iteration>
-                      HARNESS_NODE_TOTAL: <+strategy.iterations>
-                  ...
-                    command: |-
-                      pip install -r requirements.txt  
-                      # Define splitting strategy and generate a list of test groups  
-                      FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing --split-index ${HARNESS_NODE_INDEX} --split-total ${HARNESS_NODE_TOTAL}`  
-                      echo $FILES  
-                      # Run tests with the test-groups string as input  
-                      pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES  
-```
+   ```yaml
+   parallelism: 8
+   maxConcurrency: 2
+   ```
 
-To define these attributes in the Pipeline Studio, go to the step that implements the parallelism strategy. Then go to **Optional Configuration** > **Environment Variables**.
+5. Add the following environment variables to the same step or stage where you defined the parallelism strategy:
+
+   * `HARNESS_NODE_TOTAL: <+strategy.iterations>` - This variable specifies the total number of parallel instances.
+   * `HARNESS_NODE_INDEX: <+strategy.iteration>` - This variable specifies the index value of the currently-running parallel instance. Parallel instances are zero-indexed, so this value ranges from `0` to `parallelism-1`.
+
+   Stage variables are declared on the **Overview** tab under **Advanced**. Step environment variables are declared in the step settings under **Optional Configuration**.
+
+   You'll use these variables when you [define a test splitting strategy](#define-a-test-splitting-strategy) to create commands that can be used for all parallel instances.
+
+   ```yaml
+   FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing \
+      --split-index ${HARNESS_NODE_INDEX} \
+      --split-total ${HARNESS_NODE_TOTAL}`
+   echo $FILES
+   ```
+
+   You can also use them to create helpful step logs to help you differentiate parallel instances, such as `echo "${HARNESS_NODE_INDEX} of ${HARNESS_NODE_TOTAL}"`.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="YAML" label="YAML" default>
+  <TabItem value="YAML" label="YAML editor" default>
 ```
 
-Enable parallelism and specify the number of jobs to run in parallel.
+1. Use `strategy.parallelism` to define a parallelism strategy on either the step or stage where your tests run.
 
-```yaml
-- step:  
-      ...  
-      strategy:  
-        parallelism: 4
-```
+   * `strategy`: Declares a looping strategy
+   * `parallelism`: Specify the number of workloads that you want to divide your tests into. For example, if you want to create four workloads, set `parallelism: 4`.
+   * `maxConcurrency`: Optional strategy to [optimize parallelism](#optimize-parallelism).
 
-2. Define the following environment variables within the stage or step where you declared the parallelism strategy:
-	* `HARNESS_NODE_TOTAL = <+strategy.iterations>` — This specifies the total number of iterations in the current stage or step.
-	* `HARNESS_NODE_INDEX = <+strategy.iteration>` — This specifies the index of the current test run, which ranges from `0` to `parallelism-1`. You can define and use these variables in the YAML editor as shown in the following snippet:
+   This example shows parallelism applied to a Run step. For more YAML examples, go to [YAML examples: Test splitting](#yaml-examples-test-splitting).
 
-```yaml
-              - step:
-                  type: Run
-                  ...
-                    envVariables:
-                      HARNESS_NODE_INDEX: <+strategy.iteration>
-                      HARNESS_NODE_TOTAL: <+strategy.iterations>
-                  ...
-                    command: |-
-                      pip install -r requirements.txt  
-                      # Define splitting strategy and generate a list of test groups  
-                      FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing --split-index ${HARNESS_NODE_INDEX} --split-total ${HARNESS_NODE_TOTAL}`  
-                      echo $FILES  
-                      # Run tests with the test-groups string as input  
-                      pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES  
-```
+   ```yaml
+                 - step:
+                     type: Run
+                     name: tests
+                     identifier: tests
+                     strategy: ## Declares a looping strategy.
+                       parallelism: 8 ## Specify the number of workloads. This example creates 12 workloads.
+                       maxConcurrency: 2 ## Optional. Limit the number of workloads that can run at once.
+                     spec:
+                       ...
+   ```
 
-To define these attributes in the Pipeline Studio, go to the step that implements the parallelism strategy. Then go to **Optional Configuration** > **Environment Variables**.
+2. Add the following environment variables to the same step or stage where you defined the parallelism strategy:
+
+   * `HARNESS_NODE_TOTAL: <+strategy.iterations>` - This variable specifies the total number of parallel instances.
+   * `HARNESS_NODE_INDEX: <+strategy.iteration>` - This variable specifies the index value of the currently-running parallel instance. Parallel instances are zero-indexed, so this value ranges from `0` to `parallelism-1`.
+
+   This example shows these environment variables declared on a step. To declare them on a stage, add them to the [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables).
+
+   ```yaml
+                 - step:
+                     type: Run
+                     name: tests
+                     identifier: tests
+                     ...
+                     spec:
+                       envVariables:
+                         HARNESS_NODE_INDEX: <+strategy.iteration>
+                         HARNESS_NODE_TOTAL: <+strategy.iterations>
+                       ...
+   ```
+
+   You'll use these variables when you [define a test splitting strategy](#define-a-test-splitting-strategy) to create commands that can be used for all parallel instances.
+
+   ```yaml
+   FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing \
+      --split-index ${HARNESS_NODE_INDEX} \
+      --split-total ${HARNESS_NODE_TOTAL}`
+   echo $FILES
+   ```
+
+   You can also use them to create helpful step logs to help you differentiate parallel instances, such as `echo "${HARNESS_NODE_INDEX} of ${HARNESS_NODE_TOTAL}"`.
 
 ```mdx-code-block
   </TabItem>
 </Tabs>
 ```
 
+### Optimize parallelism
 
+In general, a higher `parallelism` value means a faster pipeline run time, because the tests can be divided into more parallel instances. However, this depends on your test suite and resource limitations in your build infrastructure. For example, if you try to run 10 groups of tests, but your build infrastructure can't handle 10 parallel instances, the pipeline can fail or take longer than expected.
 
+To optimize your parallelism strategy:
 
-### Define test splitting
+* Try different parallelism values to determine your infrastructure's limits.
+   * It's important to understand that parallelism impacts [resource allocation](/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits) for each stage in the pipeline. A stage with five sequential steps can require fewer resources than a stage with running five parallel instances of one step, because the second stage has to run all five instances at once.
+* Use `maxConcurrency` to control the flow of parallel instances and avoid overtaxing infrastructure resources. Concurrency limits the number of parallel instances that can run at once and queues additional instances.
+   * For example, if you set `parallelism: 12`, Harness attempts to run 12 instances of the step at once. If you set `parallelism: 12` and `maxConcurrency: 3`, Harness generates 12 instances of the step, but only runs three instances at a time. The remaining nine instances are queued, and the queued instances start running as space clears in the concurrency limit (when prior instances finish).
+   * Concurrency allows you to divide tests into more workloads without overloading your system resources.
+   * Keep in mind that there are resource requirements for generating parallel instances (even if they are not all running at the same time) and handling queues. Try different combinations of `parallelism` and `maxConcurrency` values to determine your ideal configuration.
+* Review the [Best practices for looping strategies](/docs/platform/pipelines/looping-strategies/best-practices-for-looping-strategies.md), including [how to calculate ideal concurrency](/docs/platform/pipelines/looping-strategies/best-practices-for-looping-strategies#how-to-calculate-ideal-concurrency).
+
+## Define a test splitting strategy
 
 
 
@@ -199,7 +242,7 @@ To define these attributes in the Pipeline Studio, go to the step that implement
    * **Run Tests step:** Specify `testSplitStrategy` to [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence.md#enable-parallelism-test-splitting-for-test-intelligence).
 
 
-   x. Set up the `split_tests` command with the splitting criteria based on file size (`--split-by file_size`). For more information, go to [Define test splitting](#define-test-splitting).
+   x. Set up the `split_tests` command with the splitting criteria based on file size (`--split-by file_size`).
 
 
 
@@ -246,7 +289,7 @@ The `split_tests` command creates a new set of test files that is ordered based 
 * The algorithm used to split the tests into groups (`--split-by` argument).
 * The run index and total number of runs. You should set these to the environment attributes you defined previously (`--split-index ${HARNESS_NODE_INDEX}` and `--split-total ${HARNESS_NODE_TOTAL}`).
 
-#### Test splitting strategies
+### Test splitting strategies
 
 The `split_tests` command allows you to define the criteria for splitting tests.
 
@@ -259,7 +302,7 @@ Harness supports the following strategies:
 * `--split-by testcase_timing` — Split tests into groups based on the timing data for individual test cases. The pipeline needs timing data from the previous run to split tests by time. If timing data isn't available, `split_tests` falls back to `--split-by file_size`.
 * `--split-by testsuite_timing` — Split tests into groups based on the timing data for individual test suites. The pipeline needs timing data from the previous run to split tests by time. If timing data isn't available, `split_tests` falls back to `--split-by file_size`.
 
-#### Specifying the tests to split
+### Specifying the tests to split
 
 To split tests based on their run time, you must provide a list of file paths, classes, test cases, or test suites to include. For example, the following code snippet splits tests by time in a **Run** step. The `split_tests` command used in the code parses all matching test files based on the `--glob` option and splits them into separate lists based on `--split-by file_timing`. The number of lists created is determined by the `parallelism` setting. For example, if `parallelism` is set to 2, the command creates two separate lists of files that are evenly divided based on their testing time. The pipeline then creates two parallel steps that run tests for the files in each list.
 
@@ -296,13 +339,18 @@ CLASSES=`/addon/bin/split_tests --split-by class_timing --file-path classnames.t
 
 
 
-### Produce test reports
+## Produce test reports
 
 Generate test reports and use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) to create uniquely named results files for each run.
 
 Define your test reports. Your reports must be in JUnit XML format. For more information, go to [Publish test reports](#publish-test-reports).
 
 
+  :::caution
+
+  When implementing parallelism in a step rather than a stage, you must ensure that each test-group step generates a report with a unique filename to prevent conflicts. You can accomplish this by utilizing the `<+strategy.iteration>` [expression](/docs/platform/variables-and-expressions/harness-variables) in your `reports.paths`. This expression represents the test group's parallel run index, ranging from `0` to `parallelism - 1`.
+
+  :::
 
 
 
