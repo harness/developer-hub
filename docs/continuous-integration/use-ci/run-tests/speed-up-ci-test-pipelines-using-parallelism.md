@@ -23,8 +23,8 @@ When you [run tests in Harness CI](./run-tests-in-ci.md), you use **Run** and **
 <!-- no toc -->
 1. [Define a parallelism strategy.](#define-the-parallelism-strategy)
 2. [Define a test splitting strategy.](#define-a-test-splitting-strategy)
-3. Make sure your steps [produce test reports in JUnit XML format](#produce-test-reports).
-4. [Run the pipeline and inspect the test results.](#run-the-pipeline-and-inspect-results)
+3. [Produce test reports in JUnit XML format](#produce-test-reports).
+4. [Run the pipeline and inspect the test results.](#logs-and-results)
 
 <details>
 <summary>Learn more about test splitting and parallelism</summary>
@@ -56,21 +56,42 @@ When using parallelism, it's important to take into account resource limitations
 
 </details>
 
-<details>
-<summary>YAML example: Test splitting and parallelism on a Run step</summary>
+This topic focuses on parallelism and test splitting in **Run** steps. For information about test splitting with Test Intelligence (in **Run Tests** steps), go to [Enable Test Intelligence](./set-up-test-intelligence).
 
-This example shows test splitting and parallelism applied to a Run step in a stage that uses [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md). For more YAML examples of test splitting, go to [YAML examples: Test splitting](#yaml-examples-test-splitting).
+Here are examples of test splitting and parallelism applied to Run steps. For more YAML examples of test splitting, go to [YAML Examples: Test splitting](#yaml-examples-test-splitting).
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="hc" label="Harness Cloud build infrastructure" default>
+```
+
+This example uses [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
 
 ```yaml
+    - stage:
+        name: tests
+        identifier: tests
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
               - step:
                   type: Run ## Test splitting can be applied to any Run or Run Tests steps where you run tests.
-                  name: run pytest
-                  identifier: run_pytest
+                  name: tests
+                  identifier: tests
                   strategy: ## This is the parallelism strategy for the step.
-                    parallelism: 8 ## Tests are split into a maximum of 12 workloads.
-                    maxConcurrency: 2 ## Optional. This setting limits the number of workloads that can run at once. In this case, no more than four workloads can run at once. The remaining 8 workloads are queued.
+                    parallelism: 4 ## Tests are split into a maximum of four workloads.
+                    maxConcurrency: 2 ## Optional. This setting limits the number of workloads that can run at once.
                   spec:
-                    envVariables: ## These environment variables are used in the 'command' to differentiate the index values for parallel runs and individual Run steps within each parallel group.
+                    envVariables: ## These environment variables are used in the 'command' to get the index value for each parallel instance and the total number of parallel instances.
                       HARNESS_NODE_INDEX: <+strategy.iteration>
                       HARNESS_NODE_TOTAL: <+strategy.iterations>
                     shell: Sh
@@ -79,7 +100,9 @@ This example shows test splitting and parallelism applied to a Run step in a sta
                       pip install -r requirements.txt
 
                       # Call split_tests, define splitting strategy, and generate the list of test files.
-                      FILES=`./split_tests --glob "**/test_*.py" --split-by file_timing --split-index ${HARNESS_NODE_INDEX} --split-total ${HARNESS_NODE_TOTAL}`
+                      FILES=`./split_tests --glob "**/test_*.py" --split-by file_timing \
+                         --split-index ${HARNESS_NODE_INDEX} \
+                         --split-total ${HARNESS_NODE_TOTAL}`
                       echo $FILES
 
                       # Use the test files list as input for pytest and produce results in JUnit XML format.
@@ -92,9 +115,69 @@ This example shows test splitting and parallelism applied to a Run step in a sta
                           - "**/result_<+strategy.iteration>.xml" ## Using the expression '<+strategy.iteration>' in the file name ensures that the results of parallel runs don't overwrite each other.
 ```
 
-</details>
+```mdx-code-block
+  </TabItem>
+  <TabItem value="oth" label="Other build infrastructures">
+```
 
-This topic focuses on parallelism and test splitting in **Run** steps. For information about test splitting with Test Intelligence (in **Run Tests** steps), go to [Enable Test Intelligence](./set-up-test-intelligence).
+This example uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures).
+
+```yaml
+    - stage:
+        name: tests
+        identifier: tests
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run ## Test splitting can be applied to any Run or Run Tests steps where you run tests.
+                  name: tests
+                  identifier: tests
+                  strategy: ## This is the parallelism strategy for the step.
+                    parallelism: 4 ## Tests are split into a maximum of four workloads.
+                    maxConcurrency: 2 ## Optional. This setting limits the number of workloads that can run at once.
+                  spec:
+                    envVariables: ## These environment variables are used in the 'command' to get the index value for each parallel instance and the total number of parallel instances.
+                      HARNESS_NODE_INDEX: <+strategy.iteration>
+                      HARNESS_NODE_TOTAL: <+strategy.iterations>
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID ## Specify your Harness Docker connector ID.
+                    image: python:latest ## Specify an image with your test runner's binary.
+                    shell: Sh
+                    command: |- ## Split tests commands are included alongside the regular test commands.
+                      # Install dependencies.
+                      pip install -r requirements.txt
+
+                      # Call split_tests, define splitting strategy, and generate the list of test files.
+                      FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing \
+                         --split-index ${HARNESS_NODE_INDEX} \
+                         --split-total ${HARNESS_NODE_TOTAL}`
+                      echo $FILES
+
+                      # Use the test files list as input for pytest and produce results in JUnit XML format.
+                      pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES
+
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "**/result_<+strategy.iteration>.xml" ## Using the expression '<+strategy.iteration>' in the file name ensures that the results of parallel runs don't overwrite each other.
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: YOUR_K8S_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_K8S_NAMESPACE
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ## Define a parallelism strategy
 
@@ -177,7 +260,7 @@ Define the parallelism strategy on either the step or stage where your tests run
                      name: tests
                      identifier: tests
                      strategy: ## Declares a looping strategy.
-                       parallelism: 8 ## Specify the number of workloads. This example creates 12 workloads.
+                       parallelism: 8 ## Specify the number of workloads. This example creates 8 workloads.
                        maxConcurrency: 2 ## Optional. Limit the number of workloads that can run at once.
                      spec:
                        ...
@@ -239,7 +322,7 @@ The test splitting strategy determines how you want to divide the tests, such as
 
 To define and apply a test splitting strategy, use the `split_tests` binary on the **Run** step where your tests run, for example:
 
-```
+```shell
 FILES=`[binary path] [--glob or --file-path] [--split-by] [--split-index] [--split-total]`
 ```
 
@@ -329,8 +412,6 @@ If you [define a parallelism strategy](#define-a-parallelism-strategy) on a **Ru
 
 ## Produce test reports
 
-
-
 ```mdx-code-block
 <Tabs>
   <TabItem value="Visual" label="Visual editor">
@@ -394,227 +475,404 @@ If you [define a parallelism strategy](#define-a-parallelism-strategy) on a **Ru
 </Tabs>
 ```
 
+## Logs and results
+
+When you run the pipeline, you can observe the parallel instances running on the [Build details page](../viewing-builds).
+
+![Parallel steps in a build.](./static/speed-up-ci-test-pipelines-using-parallelism-51.png)
+
+When the build finishes, go to the **Tests** tab to [view the results](./viewing-tests). Use the **Test Executions** stage and step dropdown menu to view results for each parallel instance.
+
+![View results for individual runs.](./static/speed-up-ci-test-pipelines-using-parallelism-52.png)
+
+If you used a timing strategy, Harness collects timing data during the first run with parallelism enabled. On subsequent runs, Harness uses the timing data from the previous run to optimize test splitting.
+
 ## YAML examples: Test splitting
 
-The following YAML example shows a full end-to-end pipeline with parallelism enabled.
+With Harness CI, you can split tests for any language or tool. Here are some examples of test splitting for different languages and tools.
 
-:::tip
+### Go
 
-If your stage uses Harness Cloud build infrastructure, your Run step's `command` can use the `split_tests` binary directly. For example, you would use `split_tests` instead of `/addon/bin/split_tests`.
+[Harness CI Go guide](/tutorials/ci-pipelines/build/go)
 
-:::
+Use [`go list ./...`](https://pkg.go.dev/cmd/go#hdr-List_packages_or_modules) to glob Golang packages and split tests.
 
-<details>
-<summary>Parallelism pipeline YAML example</summary>
-
-<!-- cloud version, not calling env vars in junit paths-->
 
 ```yaml
-pipeline:
-  name: pytest_split_test
-  identifier: pytest_split_test
-  projectIdentifier: default
-  orgIdentifier: default
-  tags: {}
-  properties:
-    ci:
-      codebase:
-        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
-        repoName: YOUR_CODE_REPO_NAME
-        build: <+input>
-  stages:
-    - stage:
-        name: pytest
-        identifier: pytest
-        description: ""
-        type: CI
-        spec:
-          cloneCodebase: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          execution:
-            steps:
               - step:
                   type: Run
-                  name: run pytest
-                  identifier: run_pytest
+                  identifier: test
+                  name: Test
                   spec:
                     shell: Sh
                     command: |-
-                      pip install -r requirements.txt  
-                      # Define splitting strategy and generate a list of test groups  
-                      FILES=`./split_tests --glob "**/test_*.py" --split-by file_timing --split-index ${HARNESS_NODE_INDEX} --split-total ${HARNESS_NODE_TOTAL}`  
-                      echo $FILES  
-                      # Run tests with the test-groups string as input  
-                      pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES  
+                      go install github.com/jstemmer/go-junit-report/v2@latest
+                      go test -v ./... | tee report.out
+                      cat report.out | $HOME/go/bin/go-junit-report -set-exit-code > report.xml
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - "**/result_<+strategy.iteration>.xml"
-                    envVariables:
-                      HARNESS_NODE_INDEX: <+strategy.iteration>
-                      HARNESS_NODE_TOTAL: <+strategy.iterations>
-                  strategy:
-                    parallelism: 4
-                    maxConcurrency: 2
+                          - report.xml
 ```
 
-<!-- refreshed, k8s -->
+
+### Java
+
+[Harness CI Java guide](/tutorials/ci-pipelines/build/java)
+
+Maven
+
+This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) and runs tests with Maven and [Test Intelligence](./set-up-test-intelligence.md).
 
 ```yaml
-pipeline:
-  name: pytest_split_test
-  identifier: pytest_split_test
-  projectIdentifier: default
-  orgIdentifier: default
-  tags: {}
-  properties:
-    ci:
-      codebase:
-        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
-        repoName: YOUR_CODE_REPO_NAME
-        build: <+input>
-  stages:
-    - stage:
-        name: pytest
-        identifier: pytest
-        description: ""
-        type: CI
+              - step:
+                  type: RunTests
+                  identifier: Run_Tests_with_Intelligence
+                  name: Run Tests with Intelligence
+                  spec:
+                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
+                    buildTool: Maven
+                    enableTestSplitting: true
+                    language: Java
+                    reports:
+                      spec:
+                        paths:
+                          - "target/surefire-reports/*.xml"
+                      type: JUnit
+                    runOnlySelectedTests: true
+```
+
+
+
+Grade
+
+```yaml
+              - step:
+                  type: RunTests
+                  identifier: Run_Tests_with_Intelligence
+                  name: Run Tests with Intelligence
+                  spec:
+                    args: test --tests
+                    buildTool: Gradle
+                    enableTestSplitting: true
+                    language: Java
+                    reports:
+                      spec:
+                        paths:
+                          - "/harness/results.xml"
+                      type: JUnit
+                    runOnlySelectedTests: true
+```
+
+### JavaScript
+
+[Harness CI NodeJS guide](https://developer.harness.io/tutorials/ci-pipelines/build/nodejs)
+
+ESLint
+Jest
+Karma
+Mocha
+
+   ```yaml
+                 - step:
+                     type: Run
+                     name: Run Jest Tests
+                     identifier: run_jest_tests
+                     spec:
+                       shell: Sh
+                       command: |-
+                         yarn add --dev jest-junit
+                         jest --ci --runInBand --reporters=default --reporters=jest-junit --collectCoverage=true
+                       envVariables:
+                         JEST_JUNIT_OUTPUT_DIR: "/harness/reports"
+                       reports:
+                         type: JUnit
+                         spec:
+                           paths:
+                             - "/harness/reports/*.xml"
+   ```
+
+<details>
+<summary>ESLint</summary>
+
+[ESLint JUnit Formatter](https://eslint.org/docs/latest/use/formatters/#junit)
+
+```yaml
+  - step:
+      type: Run
+      name: Run ESLint Tests
+      identifier: run_eslint_tests
+      spec:
+        shell: Sh
+        command: |
+          mkdir -p /harness/reports
+          eslint ./src/ --format junit --output-file /harness/reports/eslint.xml
+      reports:
+        type: JUnit
         spec:
-          cloneCodebase: true
-          execution:
-            steps:
+          paths:
+            - "/harness/reports/eslint.xml"
+```
+
+</details>
+
+<details>
+<summary>Jest</summary>
+
+[Jest JUnit Reporter](https://www.npmjs.com/package/jest-junit)
+
+```yaml
+  - step:
+      type: Run
+      name: Run Jest Tests
+      identifier: run_jest_tests
+      spec:
+        shell: Sh
+        command: |
+          yarn add --dev jest-junit
+          jest --ci --runInBand --reporters=default --reporters=jest-junit
+      envVariables:
+         JEST_JUNIT_OUTPUT_DIR: "/harness/reports"
+      reports:
+        type: JUnit
+        spec:
+          paths:
+            - "/harness/reports/*.xml"
+```
+
+</details>
+
+<details>
+<summary>Karma</summary>
+
+[Karma JUnit Reporter](https://www.npmjs.com/package/karma-junit-reporter)
+
+```yaml
+  - step:
+      type: Run
+      name: Run Karma Tests
+      identifier: run_karma_tests
+      spec:
+        shell: Sh
+        command: |
+          npm install
+          mkdir /harness/junit
+          karma start ./karma.conf.js
+      envVariables:
+        JUNIT_REPORT_PATH: /harness/junit/
+        JUNIT_REPORT_NAME: test-results.xml
+      reports:
+        type: JUnit
+        spec:
+          paths:
+            - "/harness/junit/test-results.xml"
+```
+
+</details>
+
+<details>
+<summary>Mocha</summary>
+
+[Mocha JUnit Reporter](https://www.npmjs.com/package/mocha-junit-reporter)
+
+```yaml
+  - step:
+      type: Run
+      name: Run Mocha Tests
+      identifier: run_mocha_tests
+      spec:
+        shell: Sh
+        command: |
+          npm install
+          mkdir /harness/junit
+          mocha test --reporter mocha-junit-reporter --reporter-options mochaFile=./path_to_your/file.xml
+      reports:
+        type: JUnit
+        spec:
+          paths:
+            - "/harness/junit/test-results.xml"
+```
+
+</details>
+
+### PHP
+
+[phpunit-finder](https://github.com/previousnext/phpunit-finder) can help split tests by getting a list of test filenames.
+
+   ```yaml
+                 - step:
+                     type: Run
+                     identifier: test
+                     name: Test
+                     spec:
+                       shell: Sh
+                       command: |-
+                         mkdir -p /harness/phpunit
+                         phpunit --log-junit /harness/phpunit/junit.xml tests
+                         phpdbg -qrr vendor/bin/phpunit --coverage-html build/coverage-report
+                       reports:
+                         type: JUnit
+                         spec:
+                           paths:
+                             - /harness/phpunit/junit.xml
+   ```
+
+```yaml
               - step:
                   type: Run
-                  name: run pytest
-                  identifier: run_pytest
+                  identifier: test
+                  name: Test
                   spec:
-                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
-                    image: python:latest
                     shell: Sh
                     command: |-
-                      pip install -r requirements.txt  
-                      # Define splitting strategy and generate a list of test groups  
-                      FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing --split-index ${HARNESS_NODE_INDEX} --split-total ${HARNESS_NODE_TOTAL}`  
-                      echo $FILES  
-                      # Run tests with the test-groups string as input  
-                      pytest -v --junitxml="result_${HARNESS_NODE_INDEX}.xml" $FILES  
+                      mkdir -p /harness/phpunit
+                      phpunit --log-junit /harness/phpunit/junit.xml tests
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - "**/result_${HARNESS_NODE_INDEX}.xml"
-                    envVariables:
-                      HARNESS_NODE_INDEX: <+strategy.iteration>
-                      HARNESS_NODE_TOTAL: <+strategy.iterations>
-                  strategy:
-                    parallelism: 4
-                    maxConcurrency: 2
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: YOUR_K8S_CLUSTER_CONNECTOR_ID
-              namespace: YOUR_K8S_NAMESPACE
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
+                          - /harness/phpunit/junit.xml
+```
+
+### Python
+
+pytest (in this page already)
+
+[Harness CI Python guide](/tutorials/ci-pipelines/build/python)
+
+
+### Ruby
+
+[Harness CI Ruby guide](/tutorials/ci-pipelines/build/ruby)
+
+cucumber, minitest, rspec
+
+```yaml
+              - step:
+                  type: Run
+                  identifier: test
+                  name: Test
+                  spec:
+                    shell: Sh
+                    command: |-
+                      bundle check || bundle install
+                      mkdir -p /harness/cucumber
+                      bundle exec cucumber --format junit --out /harness/cucumber/junit.xml
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - /harness/cucumber/junit.xml
+```
+
+<details>
+<summary>Minitest</summary>
+
+Add the [Minitest Junit Formatter](https://github.com/aespinosa/minitest-junit) to your Gemfile.
+
+```yaml
+  - step:
+      type: Run
+      name: Run Ruby Tests
+      identifier: run_ruby_tests
+      spec:
+        shell: Sh
+        command: |
+          bundle check || bundle install
+          bundle exec rake test --junit
+      reports:
+        type: JUnit
+        spec:
+          paths:
+            - "/harness/report.xml"
+```
+
+</details>
+
+<details>
+<summary>RSpec</summary>
+
+Add the [RSpec JUnit formatter](https://rubygems.org/gems/rspec_junit_formatter) to your Gemfile.
+
+```yaml
+  - step:
+      type: Run
+      name: Run RSpec Tests
+      identifier: run_rspec_tests
+      spec:
+        shell: Sh
+        command: |
+          bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+          mkdir /harness/rspec
+          bundle exec rspec --format progress --format RspecJunitFormatter -o /harness/rspec/rspec.xml
+      reports:
+        type: JUnit
+        spec:
+          paths:
+            - "/harness/rspec/rspec.xml"
 ```
 
 </details>
 
 
-### Example: Parallelism strategy on Run step
+### C/C++
 
-Parallelism can be set at either the step level or stage level.
+<!-- C++ guide coming soon -->
 
-The following YAML example shows a **Run** step that uses [pytest](https://docs.pytest.org/) and splits tests into four parallel test groups.
+CTest
 
-```yaml
-# Use "run" step type  
-- step:  
-      type: Run     
-      name: Run Pytests  
-      identifier: Run_Pytests  
-      # Enable parallelism strategy   
-      strategy:             
-          parallelism: 4   # Number of parallel runs
-          maxConcurrency: 2 # (optional) Limit the number of parallel runs
-      spec:  
-          connectorRef: $dockerhub_connector  ## Not required for all build infra.
-          image: python:latest  ## Not required for all build infra.
-          shell: Sh  
-          # Store the current index and total runs in environment variables  
-          envVariables:    
-              HARNESS_NODE_INDEX: <+strategy.iteration>  # index of current run  
-              HARNESS_NODE_TOTAL: <+strategy.iterations> # total runs  
-          command: |-  
-              pip install -r requirements.txt  
-              # Define splitting strategy and generate a list of test groups  
-              FILES=`/addon/bin/split_tests --glob "**/test_*.py" \  
-                     --split-by file_timing \  
-                     --split-index ${HARNESS_NODE_INDEX} \  
-                     --split-total ${HARNESS_NODE_TOTAL}`  
-              echo $FILES  
-              # Run tests with the test-groups string as input  
-              pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES  
-         # Publish JUnit test reports to Harness   
-         reports:    
-              type: JUnit   
-              spec:  
-                  paths:   # Generate unique report for each iteration  
-                      - "**/result_<+strategy.iteration>.xml"   
-      failureStrategies: []
-```
-
-<!-- Updated, Cloud version -->
 ```yaml
               - step:
                   type: Run
-                  name: run pytest
-                  identifier: run_pytest
+                  identifier: test
+                  name: Test
                   spec:
                     shell: Sh
                     command: |-
-                      pip install -r requirements.txt  
-                      # Define splitting strategy and generate a list of test groups  
-                      FILES=`./split_tests --glob "**/test_*.py" --split-by file_timing --split-index ${HARNESS_NODE_INDEX} --split-total ${HARNESS_NODE_TOTAL}`  
-                      echo $FILES  
-                      # Run tests with the test-groups string as input  
-                      pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES  
+                      mkdir build
+                      cmake -S . -B build
+                      ctest --test-dir build --output-junit out.xml
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - "**/result_<+strategy.iteration>.xml"
-                    envVariables:
-                      HARNESS_NODE_INDEX: <+strategy.iteration>
-                      HARNESS_NODE_TOTAL: <+strategy.iterations>
-                  strategy:
-                    parallelism: 4
-                    maxConcurrency: 2
+                          - /harness/build/out.xml
 ```
 
-### Language/tool examples
+### C#
 
-<!-- Run steps on Format Test Reports, language guides, and Code Coverage pages. Add looping strategy & split commands -->
+[Harness CI C# (.NET Core) guide](/tutorials/ci-pipelines/build/dotnet)
 
-* Go - Use [`go list ./...`](https://pkg.go.dev/cmd/go#hdr-List_packages_or_modules) to glob Golang packages and split tests.
-* Java - Maven, Gradle
-* JavaScript - ESLint, Jest, Karma, Mocha
-* PHP - [phpunit-finder](https://github.com/previousnext/phpunit-finder) can help split tests by getting a list of test filenames.
-* Python - pytest
-* Ruby - Cucumber, Minitest, RSpec
-* C/C++ - CTest
-* C# - .NET Core, NUnit
-* Clojure - Kaocha, Clojure.test
+.NET Core, NUnit
 
 
+```yaml
+              - step:
+                  type: Run
+                  identifier: test
+                  name: Test
+                  spec:
+                    shell: Powershell
+                    command: |-
+                      cd dotnet-agent/TestProject1
+                      wget -UseBasicParsing https://dot.net/v1/dotnet-install.ps1 -o dotnet-install.ps1
+                      .\dotnet-install.ps1
+                      dotnet build
 
+                      wget https://raw.githubusercontent.com/nunit/nunit-transforms/master/nunit3-junit/nunit3-junit.xslt -o nunit3-junit.xslt
+
+                      "C:/Program Files (x86)/NUnit.org/nunit-console/nunit3-console.exe" dotnet-agent/TestProject1/bin/Debug/net48/TestProject1.dll --result="UnitTestResults.xml;transform=nunit3-junit.xslt"
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - UnitTestResults.xml
+```
+
+### Playwright
+
+[Harness CI Windows guide](/tutorials/ci-pipelines/build/windows)
 
 [Playwright:](https://github.com/microsoft/playwright)
 
@@ -626,15 +884,3 @@ The following YAML example shows a **Run** step that uses [pytest](https://docs.
 ```shell
 SHARD="$((${HARNESS_NODE_INDEX}+1))"; npx playwright test -- --shard=${SHARD}/${HARNESS_NODE_TOTAL}
 ```
-
-## Run the pipeline and inspect results
-
-When you run the pipeline, you can observe the parallel instances running on the [Build details page](../viewing-builds).
-
-![Parallel steps in a build.](./static/speed-up-ci-test-pipelines-using-parallelism-51.png)
-
-When the build finishes, go to the **Tests** tab to [view the results](./viewing-tests). Use the **Test Executions** stage and step dropdown menu to view results for each parallel instance.
-
-![View results for individual runs.](./static/speed-up-ci-test-pipelines-using-parallelism-52.png)
-
-If you used a timing strategy, Harness collects timing data during the first run with parallelism enabled. On subsequent runs, Harness uses the timing data from the previous run to optimize test splitting.
