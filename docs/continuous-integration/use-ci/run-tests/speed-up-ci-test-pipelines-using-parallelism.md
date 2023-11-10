@@ -78,11 +78,11 @@ This example shows test splitting and parallelism applied to a Run step in a sta
                       # Install dependencies.
                       pip install -r requirements.txt
 
-                      # Define splitting strategy and generate a list of test groups.
-                      FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing --split-index ${HARNESS_NODE_INDEX} --split-total ${HARNESS_NODE_TOTAL}`
+                      # Call split_tests, define splitting strategy, and generate the list of test files.
+                      FILES=`./split_tests --glob "**/test_*.py" --split-by file_timing --split-index ${HARNESS_NODE_INDEX} --split-total ${HARNESS_NODE_TOTAL}`
                       echo $FILES
 
-                      # Run tests with the list of test groups as input and produce results in JUnit XML format.
+                      # Use the test files list as input for pytest and produce results in JUnit XML format.
                       pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES
 
                     reports:
@@ -235,109 +235,97 @@ To optimize your parallelism strategy:
 
 ## Define a test splitting strategy
 
+The test splitting strategy determines how you want to divide the tests, such as by number of tests or test timing.
 
+To define and apply a test splitting strategy, use the `split_tests` binary on the **Run** step where your tests run, for example:
 
- How you do this depends on which step runs your tests:
-   * **Run step:** Use the `split_tests` command along with test split strategies, such as `--split-by file_size`.
-   * **Run Tests step:** Specify `testSplitStrategy` to [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence.md#enable-parallelism-test-splitting-for-test-intelligence).
-
-
-   x. Set up the `split_tests` command with the splitting criteria based on file size (`--split-by file_size`).
-
-
-
-:::info
-
-The following information applies to test splitting in a **Run** step. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Enable Test Intelligence](./set-up-test-intelligence).
-
-:::
-
-
-
-
-You use the `split_tests` CLI command to define the set of tests you want to run. In the **Command** field of the **Run** step where you run your tests, you need to do the following:
-
-1. Configure the `split_tests` command to define how you want to split your tests. This command outputs a string of your test groups.
-2. Run the test command with your test-groups string as input.
-
-For example:
-
-```shell
-# Generate a new set of grouped test files and output the file list to a string...  
-FILES=`/addon/bin/split_tests --glob "**/test_*.py" \  
-          --split-by file_time \  
-          --split-index ${HARNESS_NODE_INDEX} \  
-          --split-total=${HARNESS_NODE_TOTAL}` 
-echo $FILES  
-# example output: test_api_2.py test_api_4.py test_api_6.py  
-  
-# Then use the $FILES list as input to the test command--in this case, pytest:  
-pytest -v --junitxml="result_${HARNESS_NODE_INDEX}.xml" $FILES 
+```
+FILES=`[binary path] [--glob or --file-path] [--split-by] [--split-index] [--split-total]`
 ```
 
-:::tip
-
-If your stage uses Harness Cloud build infrastructure, your Run step's `command` can call the `split_tests` binary directly. For example, you would use `./split_tests` instead of `/addon/bin/split_tests`.
-
-If your stage utilizes Harness Cloud build infrastructure, you can directly call the `split_tests` binary from the **Run** step's `command`. For example, you would use `split_tests` instead of `/addon/bin/split_tests`.
-
-:::
-
-The `split_tests` command creates a new set of test files that is ordered based on your splitting criteria. This command takes the following as inputs:
-
-* The set of all the tests you want to run (`--glob` argument).
-* The algorithm used to split the tests into groups (`--split-by` argument).
-* The run index and total number of runs. You should set these to the environment attributes you defined previously (`--split-index ${HARNESS_NODE_INDEX}` and `--split-total ${HARNESS_NODE_TOTAL}`).
-
-### Test splitting strategies
-
-The `split_tests` command allows you to define the criteria for splitting tests.
-
-Harness supports the following strategies:
-
-* `--split-by file_size` - Split files into groups based on the size of individual files.
-* `--split-by file_timing` (Default) — Split files into groups based on the test times of individual files. `split_tests` uses the most recent timing data to ensure that all parallel test runs finish at approximately the same time. The pipeline needs timing data from the previous run to split tests by time. If timing data isn't available, `split_tests` falls back to `--split-by file_size`.
-* `--split-by test_count` — Split tests into groups based on the overall number of tests.
-* `--split-by class_timing` — Split tests into groups based on the timing data for individual classes. The pipeline needs timing data from the previous run to split tests by time. If timing data isn't available, `split_tests` falls back to `--split-by file_size`.
-* `--split-by testcase_timing` — Split tests into groups based on the timing data for individual test cases. The pipeline needs timing data from the previous run to split tests by time. If timing data isn't available, `split_tests` falls back to `--split-by file_size`.
-* `--split-by testsuite_timing` — Split tests into groups based on the timing data for individual test suites. The pipeline needs timing data from the previous run to split tests by time. If timing data isn't available, `split_tests` falls back to `--split-by file_size`.
-
-### Specifying the tests to split
-
-To split tests based on their run time, you must provide a list of file paths, classes, test cases, or test suites to include. For example, the following code snippet splits tests by time in a **Run** step. The `split_tests` command used in the code parses all matching test files based on the `--glob` option and splits them into separate lists based on `--split-by file_timing`. The number of lists created is determined by the `parallelism` setting. For example, if `parallelism` is set to 2, the command creates two separate lists of files that are evenly divided based on their testing time. The pipeline then creates two parallel steps that run tests for the files in each list.
+The `split_tests` tool outputs a list of test files based on your chosen splitting strategy. You then use this list as input for your test tool's commands so that each parallel instance only runs an assigned subset of tests. For example, these commands use `split_tests` with `pytest`:
 
 ```shell
-pip install -r requirements.txt  
-  
-# Split by timing data  
-FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing`  
-echo $FILES  
-pytest -v --junitxml="result_${HARNESS_NODE_INDEX}.xml" $FILES
+# Install dependencies.
+pip install -r requirements.txt
+
+# Call split_tests, define splitting strategy, and generate the list of test files.
+FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing \
+   --split-index ${HARNESS_NODE_INDEX} \
+   --split-total ${HARNESS_NODE_TOTAL}`
+echo $FILES
+
+# Use the test files list as input for pytest and produce results in JUnit XML format.
+pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES
 ```
 
-When the pipeline finishes a build, the `echo $FILES` output shows the files that got tested in each step. For example, one log contains the following:
+### Binary path
+
+Call the `split_tests` binary. The path depends on your build infrastructure.
+
+* For Harness Cloud, use `./split_tests`.
+* For other build infrastructures, use `/addon/bin/split_tests`.
+* For steps running in containers rather that on the host, use `usr/bin/split_tests`. You must also declare this path in [shared paths](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/#shared-paths).
+
+### Glob or file-path
+
+Specify the set of all tests that you want to run across all parallel instances. Whether to use `--glob` or `--file-path` is determined by [`--split-by`](#split-by).
+
+* For `--split-by file_timing`, `--split-by file_size`, or `--split-by test_count`, you can use a glob expression to specify the set of files to split, such as `--glob "**/test_*.py"`.
+* For `--split-by class_timing`, `--split-by testcase_timing`, and `--split-by testsuite_timing`, you must provide a text file of the elements to split. For example, if you want to split by Java class timing, you could specify the set of classes to split and test in a new-line-delineated string and then reference the text file in with `--file-path FILE_NAME.txt`:
+
+   ```shell
+   # Generate a list of classes and store in classname.txt
+   echo 'io.harness.jhttp.server.PathResolverTest\nio.harness.jhttp.processor.DirectoryIndexTest\nio.harness.jhttp.functional.HttpClientTest\nio.harness.jhttp.processor.ResourceNotFoundTest'> classnames.txt
+
+   # Run split_tests on elements in classname.txt
+   CLASSES=`/addon/bin/split_tests --split-by class_timing --file-path classnames.txt`
+   ```
+
+### Split-by
+
+Specify a test splitting strategy, such as test timing or file size. If unspecified, the default is `--split-by file_timing`.
+
+The `split_tests` binary supports these test splitting strategies:
+
+* `--split-by class_timing`: Split tests into groups based on the timing data for individual classes. This strategy requires timing data from the previous run. If timing data isn't available, `split_tests` falls back to `--split-by file_size`.
+* `--split-by file_size`: Split tests into groups based on the size of individual files.
+* `--split-by file_timing`: (Default) Split tests into groups based on the test times of individual files. `split_tests` uses the most recent timing data to ensure that all parallel test runs finish at approximately the same time. This strategy requires timing data from the previous run. If timing data isn't available, `split_tests` falls back to `--split-by file_size`.
+* `--split-by test_count`: Split tests into groups based on the total number of tests.
+* `--split-by testcase_timing`: Split tests into groups based on the timing data for individual test cases. This strategy requires timing data from the previous run. If timing data isn't available, `split_tests` falls back to `--split-by file_size`.
+* `--split-by testsuite_timing`: Split tests into groups based on the timing data for individual test suites. This strategy requires timing data from the previous run. If timing data isn't available, `split_tests` falls back to `--split-by file_size`.
+
+### Split-index and split-total
+
+Include `--split-index ${HARNESS_NODE_INDEX}` and `--split-total ${HARNESS_NODE_TOTAL}`. These commands create groups of tests files based on the total number of parallel instances (`--split-total`) and assign specific test files for each individual instance (`--split-index`). These commands use the environment variables you declared when you [defined a parallelism strategy](#define-a-parallelism-strategy).
+
+### Split tests output
+
+`split_tests` stores list of test files assigned to the current instance in a variable. For example, the following command stores the list of tests in `$FILES`:
+
+```shell
+# Call split_tests, define splitting strategy, and generate the list of test files.
+FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing \
+   --split-index ${HARNESS_NODE_INDEX} \
+   --split-total ${HARNESS_NODE_TOTAL}`
+echo $FILES
+```
+
+You then call the variable (such as `$FILES`) in your test tool's commands, for example:
+
+```shell
+pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES
+```
+
+You can include `echo $FILES` to print the list of assigned tests in each step's logs, for example:
 
 ```shell
 + FILES=test_file_1.py test_file_2.py test_file_6.py test_file_9.py test_file_10.py test_file_12.py test_file_13.py
 ```
 
-Whereas another log contains:
+### Test splitting for Test Intelligence
 
-```shell
-+ FILES=test_file_3.py test_file_4.py test_file_5.py test_file_8.py test_file_11.py test_file_14.py
-```
-
-Note that this example applies to the `--split-by file_timing`option. In this case, you can use a glob expression to specify the set of elements that need to be split and tested. For class, test-case, or test-suite timing, you must provide a text file of the elements to split. If you want to split by Java-class timing, for example, you could specify the set of classes to split and test in a new-line-delineated string like this:
-
-```shell
-echo 'io.harness.jhttp.server.PathResolverTest\nio.harness.jhttp.processor.DirectoryIndexTest\nio.harness.jhttp.functional.HttpClientTest\nio.harness.jhttp.processor.ResourceNotFoundTest'> classnames.txt  
-CLASSES=`/addon/bin/split_tests --split-by class_timing --file-path classnames.txt`
-```
-
-
-
-
-
+If you [define a parallelism strategy](#define-a-parallelism-strategy) on a **Run Tests** step, Harness automatically splits tests by class timing. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Enable test splitting for Test Intelligence](./set-up-test-intelligence#enable-parallelism-test-splitting-for-test-intelligence).
 
 ## Produce test reports
 
@@ -435,7 +423,7 @@ pipeline:
                     command: |-
                       pip install -r requirements.txt  
                       # Define splitting strategy and generate a list of test groups  
-                      FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing --split-index ${HARNESS_NODE_INDEX} --split-total ${HARNESS_NODE_TOTAL}`  
+                      FILES=`./split_tests --glob "**/test_*.py" --split-by file_timing --split-index ${HARNESS_NODE_INDEX} --split-total ${HARNESS_NODE_TOTAL}`  
                       echo $FILES  
                       # Run tests with the test-groups string as input  
                       pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES  
@@ -570,7 +558,7 @@ The following YAML example shows a **Run** step that uses [pytest](https://docs.
                     command: |-
                       pip install -r requirements.txt  
                       # Define splitting strategy and generate a list of test groups  
-                      FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing --split-index ${HARNESS_NODE_INDEX} --split-total ${HARNESS_NODE_TOTAL}`  
+                      FILES=`./split_tests --glob "**/test_*.py" --split-by file_timing --split-index ${HARNESS_NODE_INDEX} --split-total ${HARNESS_NODE_TOTAL}`  
                       echo $FILES  
                       # Run tests with the test-groups string as input  
                       pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES  
