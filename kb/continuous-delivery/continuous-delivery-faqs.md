@@ -2879,3 +2879,59 @@ No, we don't. Please refer more on this in the Terraform-Harness[Documentation](
 #### What is the time parameter for AWS back-off strategy ?
 
 For AWS back-off strategy, parameters of time are in milliseconds. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#aws-backoff-strategy/)
+
+#### Can I implement a custom approval step that runs a script, calls Jira, and fails if the issue count is greater than 0 ?
+
+No, it is not yet introduced for Jira. It is only applicable for Harness Approvals at the moment
+
+#### Can we fix a max queue length in queue step ?
+
+No, this feature is not supported for queue steps. The queue operates on a first-in, first-out (FIFO) basis with a maximum capacity of 20. Any executions beyond this limit will result in failure.
+
+#### Does Harness support the use of two Target Groups and allow the utilization of either the Load Balancer or Route53 DNS for orchestrating the switching between the routes to the Blue or Green Services ?
+
+In the next generation, we support the utilization of a `load balancer` with target groups for the switching between blue and green. In the current generation, we used to support both `load balancer` and `Route53 DNS` for this purpose
+
+#### How can one tell if a service is v1 or v2 ?
+
+For V1 services, they only include a name, description, and tag. There is no service definition associated with these services. However V2 services consists of them all including `service definitions`, `manifest path` and `artifact` if one wants to pass an image in pipeline at runtime.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2)
+
+#### Does Harness have restrictions for running parallel jobs in trial accounts ?
+
+Yes, based on plan we have such restrictions. Please read more on this in following [Documentation](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/pipeline-settings/)
+
+#### What can be an alternative for facing API rate limit issues while running pipelines with templates backed up by Github ?
+
+Please one can try using the below alternatives :
+
+- Utilise different Connectors with different access tokens for remote enitities
+- One can use Github App to have extended limits on API requests. The GitHub App has a higher API rate limit, especially if its configured for a GitHub Org.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/).
+One can also follow the provided [Documentations from Github](https://docs.github.com/en/rest/overview/rate-limits-for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-github-app-installations)
+
+#### Where can one find the documentations for pre-requisites when migrating from First-Gen to Next-Gen ?
+
+Please find the pre-requisite for migration documentation [here](https://harness.github.io/migrator/prerequisites)
+
+#### Can one filter the artifact files based on the extension (such as `*.zip`) ?
+
+Yes, one can use the `Artifact Filter` instead of `Artifact Directory` when creating an Artifact and apply the regex to filter the path.
+
+#### How does Harness currently handle sorting based on timestamps for fetching the GCR Artifacts ?
+
+As of today, our system does not sort data based on timestamps. Instead, it employs lexical sorting.
+We are actively exploring and considering transitioning from lexical to time-based sorting. This change would enhance the handling of timestamps.
+
+#### How can one parse a JSON string in a pipeline expression ?
+
+Please one may follow steps mentioned below :
+
+- Use the expression `<+ json.object(<+pipeline.variable.myJsonThing>)>` 
+- One can also try JQuery in a shell script or container step and capture output variables
+- Read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors/)
+
+#### What is the feature flag for the bi-directional GitSync ?
+
+One can enable the Feature-Flag `PIE_GIT_BI_DIRECTIONAL_SYNC` to fetch the feature.
+Please read more on All Continuous Delivery FFs in this [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-integrations/#active-cd-feature-flags/) 
