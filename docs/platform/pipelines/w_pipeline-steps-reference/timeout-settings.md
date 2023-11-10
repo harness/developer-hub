@@ -6,7 +6,7 @@
 * The stage or pipeline times out when the step is still running.
 
 
-**Stage timeout**: You can configure a timeout for a stage.Stages are marked as expired in the following scenarios:
+**Stage timeout**: You can configure a timeout for a stage. Stages are marked as expired in the following scenarios:
 * The stage does not complete before the configured timeout.
 * The pipeline times out when the step is still running.
 
