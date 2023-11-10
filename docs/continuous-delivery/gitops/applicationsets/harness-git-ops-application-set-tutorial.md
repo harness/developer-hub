@@ -14,10 +14,10 @@ redirect_from:
 
 To set up an ApplicationSet use case, you'll need the following:
 
-* Create a Harness GitOps agent to create the ApplicationSet.
-* Create 2 target clusters dev, prod to deploy the child applications.
+* Create a [Harness GitOps agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent) to create the ApplicationSet.
+* Create 2 target [clusters](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart#step-3-add-a-harness-gitops-cluster) dev, prod to deploy the child applications.
 * GitHub account. You will be cloning the Argo Project's [ApplicationSet repo](https://github.com/argoproj/applicationset) and using one of its examples.
-* Create Harness GitOps repository with the Argo Project's ApplicationSet repo. We will be using one of its [examples](https://github.com/argoproj/applicationset/tree/master/examples).
+* Create [Harness GitOps repository](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart#step-2-add-a-harness-gitops-repository) with the Argo Project's ApplicationSet repo. We will be using one of its [examples](https://github.com/argoproj/applicationset/tree/master/examples).
 
 ## Steps
 
@@ -41,7 +41,11 @@ spec:
         - path: "examples/git-generator-files-discovery/cluster-config/**/config.json"  
   template:  
     metadata:  
-      name: '{{cluster.name}}-guestbook'  
+      name: '{{cluster.name}}-guestbook'
+      labels: 
+        harness.io/envRef: '{{envTag}}'
+        harness.io/serviceRef: '{{serviceTag}}'
+        harness.io/buildRef: '{{releaseTag}}'
     spec:  
       project: <PROJECT_ID_IN_AGENT_PAGE>  
       source:  
@@ -87,7 +91,7 @@ Both JSON and YAML formats are supported for ApplicationSets.
 
 ### Step 3: Sync the ApplicationSet app
 
-Syncing can be done from 2 places, Application view or PR pipeline. For syncing via the PR pipeline, please refer to [bullet 4](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/sync-gitops-applications/).
+Syncing can be done from 2 places, Application view or PR pipeline. For syncing via the PR pipeline, please refer to [bullet 4](/docs/continuous-delivery/gitops/use-gitops/sync-gitops-applications/).
 
 From the Application view, you can sync the Harness ApplicationSet Application or the individual Applications independently.
 
