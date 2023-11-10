@@ -850,16 +850,18 @@ Some admins might not have Google account access to download air gap bundles. As
 
 ```
 gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.10.1/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.10.1/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.10.1/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.10.1/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.10.1/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.10.1/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.10.1/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.10.1/sto_images.tgz" \
+  "gs://smp-airgap-bundles/Harness-0.10.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/Harness-0.10.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/Harness-0.10.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/Harness-0.10.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/Harness-0.10.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/Harness-0.10.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/Harness-0.10.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/Harness-0.10.1/sto_images.tgz" \
   .
 ```
+
+### Fixed issue
 
 - Configured `socket-timeout` to handle a higher volume and scale of customer billing data. (CCM-15026)
 
