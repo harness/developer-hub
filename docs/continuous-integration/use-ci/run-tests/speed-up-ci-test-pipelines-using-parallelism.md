@@ -39,7 +39,9 @@ For example, suppose you have a pipeline that runs 100 tests, and each test take
 ( 75 seconds x 50 commits ) / 60 seconds = 62.5 minutes saved
 ```
 
-Note that if you use a test timing strategy, Harness must collect timing data during the first parallel run. Therefore, on the first parallel run, Harness needs to divide tests by file size or number of tests. Then, on the second run, Harness can use the timing data from the first run to split tests by test time. With each subsequent run, Harness further refines test splitting based on newer timing data.
+Note that this example only calculates the runtime for the tests. Additional time can be required for other commands in your **Run** or **Run Tests** step, such as initializing the step, installing dependencies, and so on.
+
+Time saved can improve over subsequent runs. If you use a test timing strategy to split tests, Harness must collect timing data during the first parallel run. Therefore, on the first parallel run, Harness needs to divide tests by file size or number of tests. Then, on the second run, Harness can use the timing data from the first run to split tests by test time. With each subsequent run, Harness further refines test splitting based on newer timing data.
 
 <figure>
 
@@ -98,7 +100,7 @@ This topic focuses on parallelism and test splitting in **Run** steps. For infor
 
 The `parallelism` value defines the number of workloads into which tests can be divided. Each parallel instance (or workload) is a duplicate of the step or stage where you've defined a parallelism strategy. All parallel instances start at the same time, and each instance runs separately.
 
-In general, a higher `parallelism` value means a faster pipeline run time, because the tests can be divided into more parallel instances. However, be aware of resource limitations in your build infrastructure. If you try to run 10 groups of tests, and your build infrastructure can handle 10 parallel instances, the pipeline can fail or take longer than expected. For more information, go to [Best Practices for Looping Strategies](/docs/platform/pipelines/looping-strategies/best-practices-for-looping-strategies.md).
+In general, a higher `parallelism` value means a faster pipeline run time, because the tests can be divided into more parallel instances. However, this depends on your test suite and resource limitations in your build infrastructure. For example, if you try to run 10 groups of tests, and your build infrastructure can handle 10 parallel instances, the pipeline can fail or take longer than expected. Try different parallelism values to determine your optimal configuration. For more information, go to [Best Practices for Looping Strategies](/docs/platform/pipelines/looping-strategies/best-practices-for-looping-strategies.md).
 
 :::info
 
@@ -541,15 +543,29 @@ The following YAML example shows a **Run** step that uses [pytest](https://docs.
 
 <!-- Run steps on Format Test Reports, language guides, and Code Coverage pages. Add looping strategy & split commands -->
 
-* Go - go list
+* Go - Use [`go list ./...`](https://pkg.go.dev/cmd/go#hdr-List_packages_or_modules) to glob Golang packages and split tests.
 * Java - Maven, Gradle
 * JavaScript - ESLint, Jest, Karma, Mocha
-* PHP - phpunit-finder
+* PHP - [phpunit-finder](https://github.com/previousnext/phpunit-finder) can help split tests by getting a list of test filenames.
 * Python - pytest
 * Ruby - Cucumber, Minitest, RSpec
 * C/C++ - CTest
 * C# - .NET Core, NUnit
 * Clojure - Kaocha, Clojure.test
+
+
+
+
+[Playwright:](https://github.com/microsoft/playwright)
+
+[docs](https://playwright.dev/docs/ci#ci-configurations)
+
+* Specify a playwright image.
+* Use sharding to split tests.
+
+```shell
+SHARD="$((${HARNESS_NODE_INDEX}+1))"; npx playwright test -- --shard=${SHARD}/${HARNESS_NODE_TOTAL}
+```
 
 
 ## Run the pipeline and inspect results
