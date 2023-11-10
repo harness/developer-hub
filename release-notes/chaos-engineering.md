@@ -2,7 +2,7 @@
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-09-28T10:00
+date: 2023-11-10T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -11,16 +11,101 @@ import TabItem from '@theme/TabItem';
 ```
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/chaos-engineering/rss.xml" />
+The release notes describe recent changes to Harness Chaos Engineering.
 
-Review the notes below for details about recent changes to Harness Chaos Engineering. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+:::info About Harness Release Notes
 
-:::info note
-Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
+* **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness.  In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
+* **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+* **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
+
 :::
 
-## Latest: Version 1.23.5
+## November 10, 2023
+### Version 1.24.x
 
-### What's new
+#### New features and enhancements
+
+* This release adds default limits for the number of chaos probes that can be created when a chaos infrastructure is created by adding a **chaos probe** resource limit per account. (CHAOS-2880)
+
+* This release adds a new log viewer, which includes:
+    - New tab for helper pod logs. 
+    - Support for grouping and minimising logs.
+    - Colors for various log levels.
+    - Logs can be downloaded, copied, and scrolled over.
+    - Position retention when logs are manually scrolled while streaming.
+    - Parsing arguments. (CHAOS-2809)
+
+* This release adds a validation check to the template name and entry point in the YAML to match at least one template name with the entry point name. The check ensures that the visual builder shows the faults correctly. (CHAOS-2933)
+
+* This release adds support for source and destination ports, isolating the ports as well as excluding them for VMware network faults. (CHAOS-2892)
+
+* This release adds support for source and destination ports, isolating the ports as well as excluding them for Linux network faults. (CHAOS-2873)
+
+* This release allows you to run multiple SOT or EOT probes in parallel in Kubernetes. (CHAOS-2863)
+
+* This release supports min, max and mean values as parameters in the Dynatrace probe. (CHAOS-2853)
+
+* This release adds the usage of sandbox network namespace for the CRI-O runtime, thereby enhancing the network faults. (CHAOS-2825)
+
+* The format of logs has changed from JSON to **level:"" timestamp:"" out: "" args:""**. This improves the readability of logs. (CHAOS-2807)
+
+* This release adds the probe iteration success count to the probe description. (CHAOS-2797)
+
+* This release introduces a new fault- pod API block. This fault blocks the API based on path filtering. (CHAOS-2722)
+
+* This release supports adding labels from the **Advanced Tune** section in the UI. (CHAOS-2612)
+
+* This release adds an enhanced generic script injector framework that offers greater flexibility and control over your chaos experiments. It helps add chaos to target hosts using custom scripts that are passed using a configmap. These scripts are executed using SSH credentials securely referenced within the configmap. (CHAOS-2625)
+
+* This release introduces a new fault- cloud foundry app stop. This fault stops a Cloud Foundry app for a fixed time period and later starts it. (CHAOS-2619)
+
+* This release introduces a new fault- pod network rate limit. This fault determines the resilience of a Kubernetes pod under limited network bandwidth. (CHAOS-2478)
+
+* This release reflects changes made in the chaos infrastructure images and the experiment images in their respective manifests when an image registry setting is changed. (CHAOS-2881)
+
+* This release adds Linux stress and network fault custom arguments/flags that can be used with the **stress-ng** (stressNGFlags input) and **tc** (netemArgs input) commands, respectively. (CHAOS-2832)
+
+#### Early access features
+
+* This release introduces a new fault- Linux network rate limit. This fault slows down network connectivity on a Linux machine by limiting the number of network packets processed during a time period. (CHAOS-2495)
+
+* This release optimises the Kube API calls by allowing the Linux IFS to use Redis for caching. (CHAOS-2119)
+
+* The tag filter in the query that fetches Linux experiments was removed so that Linux experiments can be edited. Previously, the Linux experiments could not be edited. (CHAOS-2827)
+
+* Once an experiment was pushed to the chaos hub, every fault was displayed twice in the CSV file. This has been fixed. (CHAOS-2971)
+
+#### Fixed issues
+
+* Attempting to delete a GameDay resulted in an internal server error. This has been fixed. (CHAOS-2975)
+
+* The cron button on the right sidebar could not be updated in real time. It has been fixed so that the button can be toggled while updating the cron schedule. (CHAOS-2904)
+
+* Memory consumption fluctuated when the Linux memory stress fault was in action. This has been fixed. (CHAOS-2806)
+
+* If an experiment was stuck in the queued state for more than 2 hours, it would remain so indefinitely. It was fixed so that the experiment run times out if it is in the queued state for more than 2 hours. (CHAOS-2843)
+
+* Executing parallel faults resulted in write conflicts. This has been fixed by adding helper pod names as annotations and patching these names to the chaos result, thereby preventing the write conflict. (CHAOS-2834)
+
+* The reports of chaos experiment runs were missing details such as experiment run ID, experiment end time, and chaos injection duration. The issue was fixed to reflect these details. (CHAOS-2830)
+
+* Clicking the copy button on the infrastructure page led to rendering the details of the infrastructure. This has been fixed. (CHAOS-2791)
+
+* The probe name in the URL field broke the probe configuration tab. This has been fixed by adding the URL search parameters to the URL. (CHAOS-2821)
+
+* Clicking the Chaos Studio tab navigation would reset the states of the header and sidebar and hide some buttons. It was fixed so that the states are not reset and all buttons are visible. (CHAOS-2837)
+
+## Previous releases
+
+### 2023 releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### October 20, Version 1.23.5
+
+##### What's new
 
 * Added support for the execution of pod-delete fault against workloads which are not managed by the standard native-controllers such as deployment, statefulset and daemonset. With this change, this fault can be executed on pods managed by custom controllers. (CHAOS-2798)
 
@@ -38,7 +123,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * Added support for conditional logging of probe evaluation results for each iteration in the Continuous and onChaos modes via a debug field added to the probe RunProperties. (CHAOS-1515)
 
-### Early access
+##### Early access
 
 * Resilience Probes: This feature is currently behind a feature flag named CHAOS_PROBES_ENABLED.
     - Adding support for TLS and Authorization for HTTP and PROM probes. (CHAOS-2743)
@@ -46,9 +131,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     - Fixed an issue where EvaluationTimeout was showing up for all types of Resilience probes, Now it is only available for SLO Probe. (CHAOS-2710)
     - Fixed an issue where edit/delete buttons were enabled for disabled resilience probes. (CHAOS-2701)
 
-### Fixed issues
+##### Fixed issues
 
-* Fixed an issue where after editing an experiment via YAML Editor, Users were not able to save the experiment. (CHAOS-2780)
+* Fixed an issue where after editing an experiment via YAML Editor, users were unable to save the experiment. (CHAOS-2780)
 
 * Fixed an issue where revert-chaos was not working properly for VMware stress-based faults. (CHAOS-2777)
 
@@ -60,14 +145,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * Fixed an issue where ImagePullSecrets were not getting propagated to helper pods. (CHAOS-2608)
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### October 17, Version 1.22.1
 
@@ -738,6 +818,8 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 * The parameters in the YAML manifest of different runs of the same chaos experiment were inconsistent with the changes made (if any) in their respective runs. Now, it has been fixed.
 
 </details>
+
+### 2022 releases
 
 <details>
 <summary>2022 releases</summary>
