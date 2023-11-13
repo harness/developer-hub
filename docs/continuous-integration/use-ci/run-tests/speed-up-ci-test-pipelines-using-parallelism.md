@@ -408,7 +408,7 @@ You can include `echo $FILES` to print the list of assigned tests in each step's
 
 ### Test splitting for Test Intelligence
 
-If you [define a parallelism strategy](#define-a-parallelism-strategy) on a **Run Tests** step, Harness automatically splits tests by class timing. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Enable test splitting for Test Intelligence](./test-intelligence/set-up-test-intelligence#enable-parallelism-test-splitting-for-test-intelligence).
+If you [define a parallelism strategy](#define-a-parallelism-strategy) on a **Run Tests** step, Harness automatically splits tests by class timing. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Test splitting for TI](./test-intelligence/ti-test-splitting.md).
 
 ## Produce test reports
 
