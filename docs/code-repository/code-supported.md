@@ -26,7 +26,7 @@ The Harness Code supports these features:
    * Define merge requirements.
    * Specify merge strategies.
 * Use Harness Code repositories in your [Harness pipelines](./pipelines/codebase-from-harness-code.md).
-* [Create webhooks](./pipelines/webhooks.md) to get notifications or automatically run pipelines in response to specific Git events in your repos.
+* [Configure webhooks](./config-repos/webhooks.md) to get notifications or automatically run pipelines in response to specific Git events in your repos.
 
 These features are in pre-beta or in development:
 

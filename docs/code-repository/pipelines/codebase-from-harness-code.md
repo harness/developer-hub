@@ -9,8 +9,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-<!-- not sure if this is done -->
-
 You can configure your Harness pipelines to build, test, and deploy code from your Harness Code repositories.
 
 ## Set a pipeline's default codebase to a Harness Code repo
@@ -75,3 +73,7 @@ Build (`CI`) stages usually use the pipeline's default codebase. For more inform
 ## Deploy services from a Harness Code repo
 
 For details about codebase configuration for services and the Harness CD module, go to the CD documentation, such as the documentation for [deploying services](/docs/category/deploy-services-on-different-platforms).
+
+## Automate builds and deployments
+
+You can [set up triggers](./code-triggers.md) to automatically run builds or deployments in response to certain Git events in your Harness Code repositories.

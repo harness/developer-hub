@@ -40,4 +40,4 @@ After importing a repository, you can:
 * [Create tags.](../work-in-repos/tag.md)
 * [Configure branch protection.](./protection-rules.md)
 * [Configure your pipelines to build, test, and deploy code from your Harness Code repositories.](../pipelines/codebase-from-harness-code.md)
-* [Configure webhooks](../pipelines/webhooks.md) to automatically run pipelines when certain Git events occur.
+* [Configure webhooks](./webhooks.md) to get notifications or automatically run pipelines when certain Git events occur.

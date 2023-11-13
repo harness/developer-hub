@@ -1,7 +1,7 @@
 ---
 title: Delete repositories
 description: Delete repositories in Harness Code
-sidebar_position: 40
+sidebar_position: 50
 ---
 
 :::warning

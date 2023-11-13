@@ -29,7 +29,7 @@ Harness Code integrates with other Harness modules and uses components that are 
 
 ### Pipelines
 
-You can use [webhooks](../pipelines/webhooks.md) and [triggers](/docs/category/triggers) to run Harness pipelines in response to Git events in your Harness Code repositories.
+You can use [triggers](/docs/category/triggers) to run Harness pipelines in response to Git events in your Harness Code repositories.
 
 A pipeline is an end-to-end workflow that, for example, pulls code from a codebase, builds an artifact, runs tests or other actions on the artifact or code, and then uploads or deploys the artifact to storage or a container registry.
 
