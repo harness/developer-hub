@@ -140,4 +140,5 @@ In the case of accessing Google cloud resources, use [workload identity federati
 
 * Workload Pool ID - This identifies the workload pool created on the GCP side and it is the Pool ID value.
 * Provider ID - This identifies the OIDC provider configured on the GCP side and it is the Provider ID value.
-* BILLING_PROJECT_NUMBER - The project number or ID used for quota and billing. The principal needs to have `serviceusage.services.use` permission on this project. This has to be the GCP Project number that you use to configure the workload identify federation.
+* Project ID - The project number of the Google Cloud Project that is used to create a workload identity pool.
+* Service Account Email - This is the service account which was linked to the workload identity pool in the last step.
