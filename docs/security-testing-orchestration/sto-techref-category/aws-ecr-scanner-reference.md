@@ -35,8 +35,6 @@ The recommended workflow is add an AWS ECR step to a Security Tests or CI Build 
 ### Scan settings
 
 
-<a name="scan-mode"></a>
-
 #### Scan Mode
 
 ```mdx-code-block
