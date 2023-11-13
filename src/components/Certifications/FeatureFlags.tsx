@@ -205,7 +205,7 @@ export default function FeatureFlags() {
                   </div>
                   <AdminCertificationReviewDetails />
                   <div className={styles.btnContainer}>
-                    <Link href="#">
+                    <Link href="https://university.harness.io/betacertification-exams-harness-certified-feature-flags-administrator">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -223,7 +223,7 @@ export default function FeatureFlags() {
           <div className={styles.examDetailsCard}>
             <AdminCertificationExamDetails />
             <div className={styles.btnContainer}>
-              <Link href="#">
+              <Link href="https://university.harness.io/betacertification-exams-harness-certified-feature-flags-administrator">
                 <button className={styles.moreDetails}>
                   Register for Exam
                 </button>
