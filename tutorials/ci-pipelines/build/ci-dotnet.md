@@ -341,9 +341,9 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
 
 ### Run tests with Test Intelligence
 
-[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) is available for C# (.NET Core); however, it is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) is available for C# (.NET Core); however, it is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#add-the-run-tests-step) to run unit tests with Test Intelligence.
+With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence#add-the-run-tests-step) to run unit tests with Test Intelligence.
 
 ```mdx-code-block
 <Tabs>

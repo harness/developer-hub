@@ -105,7 +105,7 @@ Harness Test Intelligence (TI) helps your test cycle move faster without comprom
 
 Test Intelligence gives you full visibility into which tests were selected and why. This can help you identify negative trends and gain insights to improve test quality and coverage. Using TI doesn't require you to change build and test processes.
 
-To learn more about the Test Intelligence architecture, how it works, and how to enable it, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence).
+To learn more about the Test Intelligence architecture, how it works, and how to enable it, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
 
 While Test Intelligence is only for unit tests, you can [run a variety of tests in your CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 

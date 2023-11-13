@@ -13,7 +13,7 @@
 | Implement secrets management and ensure secure build processes  | [Use secrets managers](https://developer.harness.io/tutorials/platform/secrets-management/)|
 | Adhere to the Principle of Least Privilege (PoLP) in CI/CD | [Roles and resource groups work together](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/#roles-and-resource-groups-work-together) |
 | **5. Utilizing Test Intelligence in CI**   | |
-| Implement and manage Test Intelligence for optimizing testing | [Enable Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence/)|
+| Implement and manage Test Intelligence for optimizing testing | [Enable Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence)|
 | Understand and troubleshoot test visualization and metrics                               | [View test reports and test selection](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/viewing-tests/#results-from-run-tests-steps-test-intelligence)                                           |
 | **6. Managing and Troubleshooting Custom Build Tools and Binaries**                         | |
 | Navigate issues with custom binary installations on Delegates                            | [Install a delegate with third-party tool custom binaries](https://developer.harness.io/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/)  |
