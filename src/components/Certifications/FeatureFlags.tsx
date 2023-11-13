@@ -215,7 +215,7 @@ export default function FeatureFlags() {
               </div>
             </div>
           </div>
-        </div>
+        
 
         {/* Admin Exam Details */}
         <div className={styles.examDetails}>
@@ -231,6 +231,7 @@ export default function FeatureFlags() {
             </div>
           </div>
         </div>
+      </div>
 
 
 
@@ -278,6 +279,6 @@ export default function FeatureFlags() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
   );
 }
