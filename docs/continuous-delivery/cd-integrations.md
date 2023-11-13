@@ -72,11 +72,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables <a href="/docs/platform/git-experience/configure-git-experience-for-harness-entities">Harness Git Experience</a> for a Harness account. Users can manage their Pipeline, Templates, Input Sets, Feature Flags via Git. <b>This feature is GA.</b></td>
     </tr>
     <tr>
-        <td>PIPELINE_QUEUE_STEP</td>
-        <td>Enables the <a href="/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/control-resource-usage-with-queue-steps">Pipeline Queue</a> 
- step for an account. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDP_USE_OLD_GIT_SYNC</td>
         <td>Enables the previous, deprecated version of Git Experience. This flag is only enabled for customers who have not migrated over to <a href="/docs/platform/git-experience/configure-git-experience-for-harness-entities">Harness Git Experience</a>.</td>
     </tr>
