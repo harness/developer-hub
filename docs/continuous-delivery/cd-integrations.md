@@ -307,10 +307,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables the Shell Script step to support scripts from Harness File Store. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
-        <td>GITOPS_FLUX_FLAMINGO</td>
-        <td>Enables the creation of Flux Agents in Harness GitOps. <b>This feature is in Beta.</b> </td>
-    </tr>
-    <tr>
         <td>CDS_ECS_BG_GREEN_SERVICE_ROLLBACK</td>
         <td>Enables the rollback of `green` service in ECS blue green deployments. <b>This feature is in Beta.</b> </td>
     </tr>
