@@ -10,17 +10,16 @@ import TabItem from '@theme/TabItem';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
 ```
 
-## Enable Test Intelligence
+Using [Test Intelligence](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes. To enable TI for Java, Kotlin, or Scala, you must:
 
-Using TI doesn't require you to change your build and test processes. To enable TI for Java, Kotlin, or Scala, you must add a Run Tests step and generate the initial call graph.
+1. [Add a Run Tests step.](#add-the-run-tests-step)
+2. [Generate the initial call graph.](#generate-the-initial-call-graph)
 
 After you've successfully enabled TI, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md). You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
 
-### Add the Run Tests step
+## Add the Run Tests step
 
-You need a [CI pipeline](../../prep-ci-pipeline-components.md) with a [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) where you'll add the **Run Tests** step. Your pipeline must be associated with a [supported codebase](#supported-codebases).
-
-If you haven't created a pipeline before, try one of the [CI pipeline tutorials](/docs/continuous-integration/get-started/tutorials.md) or go to [CI pipeline creation overview](../../prep-ci-pipeline-components.md).
+You need a [CI pipeline](../../prep-ci-pipeline-components.md) with a [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) where you'll add the **Run Tests** step. If you haven't created a pipeline before, try one of the [CI pipeline tutorials](/docs/continuous-integration/get-started/tutorials.md) or go to [CI pipeline creation overview](../../prep-ci-pipeline-components.md).
 
 The build environment must have the necessary binaries for the **Run Tests** step to execute your test commands. Depending on the stage's build infrastructure, **Run Tests** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Container registry and image settings](#container-registry-and-image).
 
@@ -55,6 +54,7 @@ The build environment must have the necessary binaries for the **Run Tests** ste
 
 2. After adding the `RunTests` step, make sure you [generate the initial call graph](#generate-the-initial-call-graph).
 
+Here is a YAML example of a Run Tests step configured for Java.
 
 ```yaml
               - step:
@@ -82,9 +82,7 @@ The build environment must have the necessary binaries for the **Run Tests** ste
 </Tabs>
 ```
 
-### Generate the initial call graph
-
-The first time you enable TI on a repo, you must commit changes to your codebase that run *all* tests. This generates the initial call graph, which sets the baseline for test selection in future builds.
+## Generate the initial call graph
 
 The first time you enable Test Intelligence on a repo, you must run *all* tests to generate an initial call graph. This sets the baseline for test selection in future builds. You can use a webhook trigger or manual build to generate the initial call graph.
 
@@ -97,6 +95,8 @@ The first time you enable Test Intelligence on a repo, you must run *all* tests 
 2. Open a PR or push changes that cause *all* tests to run for your codebase.
 3. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md). If the build succeeds, you can [review the test results](#view-test-reports-and-test-selections).
 4. If the tests pass and the build succeeds, merge your PR, if applicable.
+
+Now that you've established the baseline, each time this pipeline runs, TI can select relevant tests to run based on the content of the code changes.
 
 ```mdx-code-block
   </TabItem>
@@ -116,11 +116,16 @@ The first time you enable Test Intelligence on a repo, you must run *all* tests 
 3. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md). If the build succeeds, you can [review the test results](#view-test-reports-and-test-selection).
 4. If the tests pass and the build succeeds, merge your PR, if applicable.
 
+Now that you've established the baseline, each time this pipeline runs, TI can select relevant tests to run based on the content of the code changes.
+
 ```mdx-code-block
   </TabItem>
 </Tabs>
 ```
 
+## View test reports and test selection
+
+For information about test reports for Test Intelligence, go to [View tests](../viewing-tests.md).
 
 ## Run Tests step settings
 
@@ -134,9 +139,11 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 ### Container Registry and Image
 
+The build environment must have the necessary binaries for the **Run Tests** step to execute your test commands. Depending on the stage's build infrastructure, **Run Tests** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries.
+
 The **Container Registry** is a Harness container registry connector, such as a Docker Hub connector, that has the image you want Harness to use when running your test commands .
 
-The **Image** is the FQN (fully-qualified name) or artifact name of a Docker image that contains the binaries necessary to run the commands in this step, such as `python:latest`. Include the tag; if you don't include a tag, Harness uses the `latest` tag.
+The **Image** is the FQN (fully-qualified name) or artifact name of a Docker image that contains the binaries necessary to run the commands in this step, such as `maven:3.8-jdk-11`. Include the tag; if you don't include a tag, Harness uses the `latest` tag.
 
 You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
 
@@ -155,201 +162,13 @@ The stage's build infrastructure determines whether these fields are required or
 
 :::
 
-You can also install tools at runtime in [Pre-Command](#pre-command), provided the build machine or image can execute the necessary commands, such as `curl` commands to download files.
-
 ### Language
 
-Select the source code language to build: **C#**, **Java**, **Kotlin**, **Scala**, **Python**, or **Ruby**. Some languages have additional language-specific settings.
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="csharp" label="C#">
-```
-
-:::note
-
-Currently, TI for .NET is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-<!-- Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [build environment](#build-environment) in your pipeline's YAML. -->
-
-:::
-
-#### Build Environment
-
-Select the build environment to test.
-
-<!--
-:::info .NET Framework
-
-.NET Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only. You must specify `buildEnvironment: Framework` in your pipeline's YAML, for example:
-
-```yaml
-              - step:
-                  type: RunTests
-                  name: runTests
-                  identifier: runTest
-                  spec:
-                    language: Csharp
-                    buildEnvironment: Framework
-                    frameworkVersion: "5.0"
-                    buildTool: Nunitconsole
-                    ...
-```
-
-:::
--->
-
-#### Framework Version
-
-Select the framework version to test.
-
-#### Namespaces
-
-This setting is only available if you select **DOTNET** as the [Build Tool](#build-tool).
-
-Supply a comma-separated list of namespace prefixes that you want to test.
-
-#### Test Globs
-
-You can override the default test globs pattern.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="java" label="Java" default>
-```
-
-<!-- Java tab must be set to default because there is an anchored link pointing to Do you want to enable error tracking -->
-
-#### Do you want to enable Error Tracking?
-
-<!-- Error Tracking currently only available for Java, not Kotlin or Scala -->
-
-:::info
-
-This setting requires the [CET module](/docs/continuous-error-tracking/get-started/overview). This setting is configurable in the Visual editor only (not YAML).
-
-:::
-
-Error tracking helps you be more proactive at discovering and remediating errors early in the software delivery lifecycle. It helps you more easily discover issues and assess the quality of code before it reaches production.
-
-Select **Yes** to enable error tracking. When enabled, a set of commands are auto-populated in the [Pre-Command](#pre-command). Review these commands to ensure that they are compatible with your build. The auto-populated commands are enclosed in `#ET-SETUP-BEGIN` and `#ET-SETUP-END`, for example:
-
-```shell
-#ET-SETUP-BEGIN
-PROJ_DIR=$PWD
-cd /opt
-arch=`uname -m`
-if [ $arch = "x86_64" ]; then
-  if cat /etc/os-release | grep -iq alpine ; then
-    wget -qO- https://get.et.harness.io/releases/latest/alpine/harness-et-agent.tar.gz | tar -xz
-  else
-    wget -qO- https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz | tar -xz
-  fi
-elif [ $arch = "aarch64" ]; then
-  wget -qO- https://get.et.harness.io/releases/latest/arm/harness-et-agent.tar.gz | tar -xz
-fi
-export ET_COLLECTOR_URL=https://app.harness.io/<cluster_value>/et-collector
-export ET_APPLICATION_NAME=$HARNESS_PIPELINE_ID
-export ET_ENV_ID=_INTERNAL_ET_CI
-export ET_DEPLOYMENT_NAME=$HARNESS_BUILD_ID
-export ET_ACCOUNT_ID=$HARNESS_ACCOUNT_ID
-export ET_ORG_ID=$HARNESS_ORG_ID
-export ET_PROJECT_ID=$HARNESS_PROJECT_ID
-# export ET_SHUTDOWN_GRACETIME=30000
-export JAVA_TOOL_OPTIONS="-agentpath:/opt/harness/lib/libETAgent.so"
-# Uncomment the line below if using Java version 10 or above
-# export JAVA_TOOL_OPTIONS="-Xshare:off -XX:-UseTypeSpeculation -XX:ReservedCodeCacheSize=512m -agentpath:/opt/harness/lib/libETAgent.so"
-cd $PROJ_DIR
-#ET-SETUP-END
-```
-
-<!--You might need to modify the `ET_COLLECTOR_URL` depending on the cluster your account is on:
-
-* For Prod 1 Harness accounts: `https://app.harness.io/prod1/et-collector`
-* For Prod 2 Harness accounts: `https://app.harness.io/gratis/et-collector`-->
-
-Error tracking output is reported on the [Error Tracking tab](../../viewing-builds.md) when the pipeline runs.
-
-#### Test Annotations
-
-You can provide a comma-separated list of test annotations used in unit testing. Any method with a specified annotation is treated as a test method. If not specified, the defaults are: `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`.
-
-This setting is located under **Additional Configuration** in the Visual editor, or you can configure it in YAML as `testAnnotations: annotation1, annotation2, annotation3`.
-
-#### Packages
-
-Leave blank or provide a comma-separated list of source code package prefixes, such as `com.company., io.company.migrations`. If you do not provide a list, Harness auto-detects the packages.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="kotlin" label="Kotlin, Scala">
-```
-
-#### Test Annotations
-
-You can provide a comma-separated list of test annotations used in unit testing. Any method with a specified annotation is treated as a test method. If not specified, the defaults are: `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`
-
-This setting is located under **Additional Configuration** in the Visual editor, or you can configure it in YAML as `testAnnotations: annotation1, annotation2, annotation3`.
-
-#### Packages
-
-Leave blank or provide a comma-separated list of source code package prefixes, such as `com.company., io.company.migrations`. If you do not provide a list, Harness auto-detects the packages.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="python" label="Python">
-```
-
-:::note
-
-Currently, TI for Python is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-#### Test Globs
-
-You can override the default test globs pattern. For example, if the default is `*_test.py` or `test_*.py`, you can override it with any other pattern, such as `.test.py`.
-
-#### PYTHONPATH
-
-If necessary, you can set `PYTHONPATH` in the [Environment Variables](#environment-variables).
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="ruby" label="Ruby">
-```
-
-:::note
-
-Currently, TI for Ruby is behind the feature flag `CI_RUBY_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-#### Test Globs
-
-You can override the default test globs pattern. For example, the default for RSpec is `spec/**/*_spec.rb`, and you could override it with any other pattern, such as `spec/features/**/*_spec.rb`.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
+Select the source code language to build: **Java**, **Kotlin**, or **Scala**.
 
 ### Build Tool
 
-Select the build automation tool. Supported tools vary by **Language**.
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="csharp" label="C#">
-```
-
-* [DOTNET CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/)
-* [NUnit](https://nunit.org/)
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Java" label="Java, Kotlin, Scala" default>
-```
+Select the build automation tool:
 
 * [Bazel](https://bazel.build/)
 * [Maven](https://maven.apache.org/)
@@ -403,69 +222,69 @@ If your `pom.xml` contains `argLine`, you must update the Java Agent as follows:
 </argLine>
 ``` -->
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="python" label="Python">
-```
+### Test Annotations
 
-* [Pytest](https://docs.pytest.org/en/latest/)
-* [Unittest](https://docs.python.org/3/library/unittest.html)
+You can provide a comma-separated list of test annotations used in unit testing. Any method with a specified annotation is treated as a test method. If not specified, the defaults are: `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`.
 
-:::tip
+This setting is located under **Additional Configuration** in the Visual editor, or you can configure it in YAML as `testAnnotations: annotation1, annotation2, annotation3`.
 
-You can [use pytest to run unittest](https://docs.pytest.org/en/latest/how-to/unittest.html).
+### Packages
 
-:::
+Leave blank or provide a comma-separated list of source code package prefixes, such as `com.company., io.company.migrations`. If you do not provide a list, Harness auto-detects the packages.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="ruby" label="Ruby">
-```
-
-* [RSpec](https://rspec.info/)
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-### Build Arguments
-
-Enter commands to use as input or runtime arguments for the build tool. You don't need to repeat the build tool, such as `maven` or `dotnet`; these are declared in **Build Tool**.
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="csharp" label="C#">
-```
-
-For .NET, provide runtime arguments for tests, such as:
-
-```yaml
-                    args: /path/to/test.dll /path/to/testProject.dll
-```
-
-For NUnit, provide runtime executables and arguments for tests, such as:
-
-```yaml
-                    args: . "path/to/nunit3-console.exe" path/to/TestProject.dll --result="UnitTestResults.xml" /path/to/testProject.dll
-```
+### Do you want to enable Error Tracking?
 
 :::info
 
-* Harness expects `dll` injection. `csproj` isn't supported.
-* Don't inject another instrumenting agent, such as a code coverage agent, in the `args` string.
-* For NUnit, you must include both runtime arguments and executables in the `args` string.
+This setting available for Java only, and it requires the [CET module](/docs/continuous-error-tracking/get-started/overview). This setting is configurable in the Visual editor only (not YAML).
 
 :::
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Java" label="Java, Kotlin, Scala" default>
+Error tracking helps you be more proactive at discovering and remediating errors early in the software delivery lifecycle. It helps you more easily discover issues and assess the quality of code before it reaches production.
+
+Select **Yes** to enable error tracking. When enabled, a set of commands are auto-populated in the [Pre-Command](#pre-command). Review these commands to ensure that they are compatible with your build. The auto-populated commands are enclosed in `#ET-SETUP-BEGIN` and `#ET-SETUP-END`, for example:
+
+```shell
+#ET-SETUP-BEGIN
+PROJ_DIR=$PWD
+cd /opt
+arch=`uname -m`
+if [ $arch = "x86_64" ]; then
+  if cat /etc/os-release | grep -iq alpine ; then
+    wget -qO- https://get.et.harness.io/releases/latest/alpine/harness-et-agent.tar.gz | tar -xz
+  else
+    wget -qO- https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz | tar -xz
+  fi
+elif [ $arch = "aarch64" ]; then
+  wget -qO- https://get.et.harness.io/releases/latest/arm/harness-et-agent.tar.gz | tar -xz
+fi
+export ET_COLLECTOR_URL=https://app.harness.io/<cluster_value>/et-collector
+export ET_APPLICATION_NAME=$HARNESS_PIPELINE_ID
+export ET_ENV_ID=_INTERNAL_ET_CI
+export ET_DEPLOYMENT_NAME=$HARNESS_BUILD_ID
+export ET_ACCOUNT_ID=$HARNESS_ACCOUNT_ID
+export ET_ORG_ID=$HARNESS_ORG_ID
+export ET_PROJECT_ID=$HARNESS_PROJECT_ID
+# export ET_SHUTDOWN_GRACETIME=30000
+export JAVA_TOOL_OPTIONS="-agentpath:/opt/harness/lib/libETAgent.so"
+# Uncomment the line below if using Java version 10 or above
+# export JAVA_TOOL_OPTIONS="-Xshare:off -XX:-UseTypeSpeculation -XX:ReservedCodeCacheSize=512m -agentpath:/opt/harness/lib/libETAgent.so"
+cd $PROJ_DIR
+#ET-SETUP-END
 ```
 
-Provide runtime arguments for tests.
+<!--You might need to modify the `ET_COLLECTOR_URL` depending on the cluster your account is on:
 
-For example, this can be simply `test`:
+* For Prod 1 Harness accounts: `https://app.harness.io/prod1/et-collector`
+* For Prod 2 Harness accounts: `https://app.harness.io/gratis/et-collector`-->
+
+Error tracking output is reported on the [Error Tracking tab](../../viewing-builds.md) when the pipeline runs.
+
+### Build Arguments
+
+Enter commands to use as input or runtime arguments for the build tool. You don't need to repeat the build tool, such as `maven`, this is declared in **Build Tool**.
+
+For example, `args` can be simply `test`:
 
 ```yaml
                     args: test
@@ -477,56 +296,17 @@ Or you can include additional flags, such as:
                     args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
 ```
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="python" label="Python">
-```
-
-**Build Arguments** are optional for Python. You can provide additional runtime arguments for tests, for example:
-
-```yaml
-                    args: "--junitxml=out_report.xml"
-```
-
-:::info
-
-* Don't include coverage flags (`--cov` or `coverage`). The Run Tests step inherently includes coverage for Python. Including coverage in `args` can cause errors.
-* Python 3 is required. If you use another command, such as `python`, to invoke Python 3, you must add an alias, such as `python3 = "python"`.
-* The Python 3 binary is required. Python 3 is preinstalled on Harness Cloud runners. For other build infrastructures, the binary must be preinstalled on the build machine, available in the specified [Container Registry and Image](#container-registry-and-image), or manually installed at runtime in [Pre-Command](#pre-command).
-
-:::
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="ruby" label="Ruby">
-```
-
-**Build Arguments** are optional for Ruby. You can provide additional runtime arguments for tests, such as `--format RspecJunitFormatter --out tmp/junit.xml`.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
 ### Test Report Paths
 
 Specify one or more paths to files that store [test results in JUnit XML format](../../run-tests/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
-This field is required for the Run Tests step to [publish test results](../viewing-tests.md). This field is optional for Python.
+This field is required for the Run Tests step to [publish test results](../viewing-tests.md).
 
 ### Pre-Command
 
 Enter the commands for setting up the environment before running the tests.
 
 If a script is supplied here, select the corresponding **Shell** option.
-
-:::info Set up Python
-
-* Use **Pre-Command** to install the Python 3 binary if it is not already installed on the build machine or available in the specified [Container Registry and Image](#container-registry-and-image). Python 3 is preinstalled on Harness Cloud runners.
-* You don't need to install coverage tools in **Pre-Command**. The Run Tests step inherently includes coverage for Python, and Harness automatically installs coverage tools if they aren't already available. If you install a coverage tool, Harness uses the version you install instead of the included version.
-* Python 3 is required. If you use another command, such as `python`, to invoke Python 3, you must add an alias, such as `python3 = "python"`.
-
-:::
 
 ### Post-Command
 
@@ -539,6 +319,10 @@ If a script is supplied here, select the corresponding **Shell** option.
 This option must be selected (`true`) to enable Test Intelligence.
 
 If this option is not selected (`false`), TI is disabled and all tests run on every build.
+
+### Enable Test Splitting
+
+Used to [enable test splitting for TI](./ti-test-splitting.md).
 
 ### Environment Variables
 
@@ -560,20 +344,6 @@ Variable values can be [fixed values, runtime inputs, or expressions](/docs/plat
 [Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are inherently available to steps as environment variables.
 
 :::
-
-For Python, you can set [`PYTHONPATH`](https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH) in the step's `envVariables`, if required. For example:
-
-```yaml
-              - step:
-                  type: RunTests
-                  name: Run Python Tests
-                  identifier: Run_Python_Tests
-                  spec:
-                    language: Python
-                    ...
-                    envVariables:
-                      PYTHONPATH: /harness
-```
 
 ### Output Variables
 
@@ -607,43 +377,6 @@ The timeout limit for the step. Once the timeout is reached, the step fails and 
 To change what happens when steps fail, go to [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
 To configure when pipelines should skip certain steps, go to [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
-
-
-
-
-
-
-
-
-
-
-
-
-
-## View test reports and test selection
-
-For information about test reports for Test Intelligence, go to [View tests](../viewing-tests.md).
-
-## Troubleshooting TI with Maven
-
-If you encounter issues with Test Intelligence when using Maven as your [build tool](#build-tool), check the following configurations:
-
-* If your `pom.xml` contains `<argLine>`, then you must [modify your argLine setup](#maven-argline-setup).
-* If you attach Jacoco or any agent while running unit tests, then you must [modify your argLine setup](#maven-argline-setup).
-* If you use Jacoco, Surefire, or Failsafe, make sure that `forkCount` is not set to `0`. For example, the following configuration in `pom.xml` removes `forkCount` and applies `useSystemClassLoader` as a workaround:
-
-   ```xml
-   <plugin>
-       <groupId>org.apache.maven.plugins</groupId>
-       <artifactId>maven-surefire-plugin</artifactId>
-       <version>2.22.1</version>
-       <configuration>
-           <!--  <forkCount>0</forkCount> -->
-           <useSystemClassLoader>false</useSystemClassLoader>
-       </configuration>
-   </plugin>
-   ```
-
 
 ## Pipeline YAML examples
 
@@ -757,3 +490,23 @@ pipeline:
   </TabItem>
 </Tabs>
 ```
+
+## Troubleshooting TI with Maven
+
+If you encounter issues with Test Intelligence when using Maven as your [build tool](#build-tool), check the following configurations:
+
+* If your `pom.xml` contains `<argLine>`, then you must [modify your argLine setup](#maven-argline-setup).
+* If you attach Jacoco or any agent while running unit tests, then you must [modify your argLine setup](#maven-argline-setup).
+* If you use Jacoco, Surefire, or Failsafe, make sure that `forkCount` is not set to `0`. For example, the following configuration in `pom.xml` removes `forkCount` and applies `useSystemClassLoader` as a workaround:
+
+   ```xml
+   <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-surefire-plugin</artifactId>
+       <version>2.22.1</version>
+       <configuration>
+           <!--  <forkCount>0</forkCount> -->
+           <useSystemClassLoader>false</useSystemClassLoader>
+       </configuration>
+   </plugin>
+   ```
