@@ -335,10 +335,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Removes the usage of time bucket gapfill from CD. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
-        <td>GITOPS_UPDATE_APP_STEP</td>
-        <td>Enables the GitOps pipeline Update GitOps App step. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDS_MULTI_SERVICE_PROPAGATION</td>
         <td>Enables multi-service propagation for CD. <b>This feature is in Beta.</b> </td>
     </tr>
