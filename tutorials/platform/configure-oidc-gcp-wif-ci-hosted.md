@@ -51,7 +51,7 @@ To configure your GCP connector in Harness, do the following:
    ![GCP Provider Overview](./static/oidc-ci-hosted-builds/gcp-provider-overview.png)
    
 3. Input a **Name** for the connector. **Description** and **Tags** are optional.
-   Harness automatically creates an **Id** ([entity identifier](/docs/platform/references/entity-identifier-reference.md)) for the connector based on the **Name**.
+   Harness automatically creates an **Id** ([entity identifier](/docs/platform/references/entity-identifier-reference)) for the connector based on the **Name**.
 4. Select **Continue** to configure credentials, and then select **OIDC**.
 
    ![OIDC Details](./static/oidc-ci-hosted-builds/oidc-details.png)
