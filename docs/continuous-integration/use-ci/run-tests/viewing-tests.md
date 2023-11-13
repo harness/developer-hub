@@ -15,7 +15,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Your CI pipelines can run tests in [Run steps](../run-ci-scripts/run-step-settings.md) and [Run Tests steps](./test-intelligence/set-up-test-intelligence.md#add-the-run-tests-step). In Harness, test results can be published to the [Build details page](../viewing-builds.md) on either the **Tests** tab or the **Artifacts** tab.
+Your CI pipelines can run tests in [Run steps](../run-ci-scripts/run-step-settings.md) and [Run Tests steps](./test-intelligence/set-up-test-intelligence.md). In Harness, test results can be published to the [Build details page](../viewing-builds.md) on either the **Tests** tab or the **Artifacts** tab.
 
 ## Publish reports to the Tests tab
 
@@ -97,7 +97,7 @@ You can sort the list by failure rate, duration, and total tests. You can also e
 <details>
 <summary>Call Graph</summary>
 
-The first time you enable Test Intelligence on a repo, you must run all tests to [generate the initial call graph](./test-intelligence/set-up-test-intelligence.md#generate-the-initial-call-graph). This creates a baseline for test selection in future builds; therefore, the initial call graph is not particularly useful. In subsequent builds, the call graph shows information about tests selected by TI for that run.
+The first time you [enable Test Intelligence](./test-intelligence/set-up-test-intelligence.md#enable-test-intelligence) on a repo, you must run all tests to generate the initial call graph. This creates a baseline for test selection in future builds; therefore, the initial call graph is not particularly useful. In subsequent builds, the call graph shows information about tests selected by TI for that run.
 
 Select **Expand graph** to view the TI Visualization, which shows why a specific test was selected and the reason behind every test selection. Purple nodes represent tests. Select any test (purple node) to see all the classes and methods covered by that test. Blue nodes represent changes to classes and methods that caused TI to select that test.
 

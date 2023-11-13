@@ -118,7 +118,7 @@ gsutil -m cp \
 
 - You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings) with buckets with [disabled ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html). (CI-8371, ZD-45677)
 
-- [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) now supports manual branch builds (the **Git Branch** build type). This is in addition to existing support for manual PR builds, as well as PR and push webhook triggers. When you [enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence#enable-test-intelligence), you can use a manual branch build to [generate the initial call graph](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence#generate-the-initial-call-graph), and for subsequent pipeline runs. (CI-8932)
+- [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) now supports manual branch builds (the **Git Branch** build type). This is in addition to existing support for manual PR builds, as well as PR and push webhook triggers. When you [enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence#enable-test-intelligence), you can use a manual branch build to generate the initial call graph and for subsequent pipeline runs. (CI-8932)
 
 - When you [enable Test Intelligence for Scala or Kotlin](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala), the **Packages** and **Test Annotations** fields are now available in the Visual editor. (CI-9589)
 
@@ -609,7 +609,7 @@ gsutil -m cp \
 
 - Fixed an issue with UI rendering of error messages related to Test Intelligence call graph visualizations. (CI-9198)
 
-- To avoid conflicts with user-provided loggers for .NET builds, Harness installs and injects the default logger only if a logger is not specified in the [Run Tests step's Build Arguments](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence#build-arguments). (CI-9240)
+- To avoid conflicts with user-provided loggers for .NET builds, Harness installs and injects the default logger only if a logger is not specified in the [Run Tests step's Build Arguments](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence). (CI-9240)
 
 - Removed the `DRONE_WORKSPACE` environment variable from the local runner build infrastructure because it overwrote the working directory. This variable is equivalent to [`HARNESS_WORKSPACE`](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var/#harness_workspace), which doesn't incorrectly overwrite the working directory. (CI-9303)
 

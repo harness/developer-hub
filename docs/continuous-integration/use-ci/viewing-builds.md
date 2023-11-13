@@ -74,7 +74,7 @@ For information about Harness dashboards, go to the Platform documentation on [D
 
 ## Error Tracking (Run Tests step)
 
-If you [enabled error tracking in the Run Tests step](./run-tests/test-intelligence/set-up-test-intelligence.md#do-you-want-to-enable-error-tracking-java), a list of code error events are reported on the **Error Tracking** tab. For each event, the following are reported:
+If you [enabled error tracking in the Run Tests step](./run-tests/test-intelligence/ti-for-java-kotlin-scala.md#do-you-want-to-enable-error-tracking), a list of code error events are reported on the **Error Tracking** tab. For each event, the following are reported:
 
 * Event **Type** and **Description**.
 * **Location** in the code.

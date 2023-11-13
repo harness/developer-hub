@@ -54,11 +54,11 @@ Harness CI includes an extensive Step Library for common CI tasks: building arti
 
 ## Tests
 
-In a CI pipeline, you can [run a variety of tests](../use-ci/run-tests/run-tests-in-ci.md), such as integration tests, functional tests, and unit tests. To do this, you can use a [Run Tests step](../use-ci/run-tests/test-intelligence/set-up-test-intelligence#add-the-run-tests-step) or a [Run step](../use-ci/run-ci-scripts/run-step-settings.md). You must use the **Run Tests** step to [enable Test Intelligence](../use-ci/run-tests/test-intelligence/set-up-test-intelligence).
+In a CI pipeline, you can use **Run** and **Run Tests** steps to [run tests with Harness CI](../use-ci/run-tests/run-tests-in-ci.md), such as integration tests, functional tests, and unit tests.
 
 ### Test Intelligence
 
-Test Intelligence speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in your unit test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. For more information, go to [Test Intelligence overview](../use-ci/run-tests/test-intelligence/set-up-test-intelligence).
+Test Intelligence speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in your unit test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. You must use the **Run Tests** step to [enable Test Intelligence](../use-ci/run-tests/test-intelligence/set-up-test-intelligence). For more information, go to [Test Intelligence overview](../use-ci/run-tests/test-intelligence/set-up-test-intelligence).
 
 ## Plugins
 
