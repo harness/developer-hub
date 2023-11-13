@@ -246,30 +246,6 @@ The **Artifact Details** page has an optional **Digest** setting where you can s
 
 Specifying an image by digest, rather than just tag, is useful when you want to ensure that the image you deploy for a service is fixed and immutable. If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline execution fails.
 
-### Differentiate environments in Blue Green deployment release history
-
-* **Release date:** June 2023
-* **Release version:** CD version 79714 and Harness Delegate version 23.06.79707
-* **Issue number:** CDS-69961
-* **Feature flag:** `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Added a new field in the release history for Blue Green deployments to differentiate between environments.
-
-This is an enhancement to the Kubernetes Blue Green Stage Scale Down step. You can now scale down your last successful stage environment only if the primary resources exist. This enhancement helps you efficiently manage your resources, and prevent deleting the important resources.
-
-Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
-
-<!--- Version 76516 (June 09, 2023) Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
-
-This functionality is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`.
-
-This functionality helps you efficiently manage your resources. The scale down step can be configured within the same stage or different stage based on your requirement.
-
-During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green deployment are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
-
-Harness Delegate version 79503 is required for this feature.-->
-
 ### Scheduled automatic approvals for manual approval steps
 
 * **Release date:** June 2023
@@ -304,62 +280,6 @@ Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudge
 
 You can trigger all artifacts and manifests using **On New Artifact** and **On New Manifest** triggers, respectively. Without this feature enabled, you can trigger only the last pushed artifact or manifest using triggers. With this feature enabled, you can trigger all collected artifacts and manifests of perpetual tasks in one single execution using the **On New Artifact** or **On New Manifest** trigger options.
 
-### Selective stage executions for webhook triggers
-
-* **Release date:** May 2023
-* **Release version:** Delegate version 23.05.79214
-* **Issue number:** CDS-56775, CDS-56774
-* **Feature flag:** `CDS_NG_TRIGGER_SELECTIVE_STAGE_EXECUTION`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-You can set webhook triggers to run specific pipeline stages using the [Allow selective stage(s) executions?](/docs/platform/pipelines/run-specific-stage-in-pipeline/) option.
-
-To run a particular stage of a pipeline:
-
-1. Select the stage, then select **Advanced Options**.
-2. In **Stage Execution Settings>** **Allow selective stages(s) executions?**, select **Yes**. This setting is selected by default.
-
-   ![](./static/selective-stage-execution.png)
-
-3. When you create a trigger, in **Configuration**, select the stages you want to execute.
-
-   ![](./static/select-stage-to-execute.png)
-
-Here is a sample trigger YAML:
-
-  ```
-  trigger:
-  name: stage3Trigger
-  identifier: stage3Trigger
-  enabled: true
-  description: ""
-  tags: {}
-  stagesToExecute:
-    - stage3
-  orgIdentifier: NgTriggersOrg
-  projectIdentifier: viniciusTest
-  pipelineIdentifier: ThreeStagesPipeline
-  source:
-    type: Webhook
-    spec:
-      type: Custom
-      spec:
-        payloadConditions: []
-        headerConditions: []
-  inputYaml: |
-    pipeline:
-      identifier: ThreeStagesPipeline
-      stages:
-        - stage:
-            identifier: stage3
-            type: Custom
-            variables:
-              - name: stage3var
-                type: String
-                value: stage3Var
-
-  ```
-
 ### TAS config files can be pulled from Github
 
 * **Release date:** April 2023
@@ -391,26 +311,6 @@ Github triggers that use a secret for authentication will now use the same deleg
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 Variable expression support includes service, environment, pipeline, and stage variables. Any Harness expression is supported. Variable expressions are not supported for encrypted text config files because expressions impact the encoded secret.
-
-### ServiceNow custom table support
-
-* **Release date:** April 2023
-* **Release version:** Delegate version 23.04.79015
-* **Issue number:** CDS-55046
-* **Feature flag:** `CDS_SERVICENOW_TICKET_TYPE_V2`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Custom table support is now available in Harness' ServiceNow integration. Harness recommends that you only use a table extending task, or extend tables that indirectly extend the task. You can specify any custom table in Harness.
-
-In ServiceNow, a table extending task is a task that involves creating a new table by extending an existing table. When a table is extended, a new child table is created that inherits all the fields, relationships, and other attributes of the parent table. The child table can then be customized further to meet the specific needs of the organization.
-
-Itil roles are not mandatory for using these steps. When using the normal flow for custom tables, you should have sufficient permissions on the custom table, such as basic CRUD permissions, permissions to update desired fields, etc.
-
-When using template flow, your user role is required along with cross scope privileges to the custom table.
-
-The store app is only certified to be used with Incident, Problem, Change Request, and Change Task tables by the ServiceNow certification team.
-
-The custom table being used should allow access to this table via web services.
 
 ### Harness removes comments when evaluating commented lines in manifests to avoid rendering failures
 
@@ -734,6 +634,101 @@ For more information about CD early access features, go to [Active CD feature fl
 * **Feature flag:** `CDS_AWS_NATIVE_LAMBDA`
 
 Harness supports the [deployment of AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments) functions.
+
+#### Differentiate environments in Blue Green deployment release history
+
+* **GA date:** November 2023
+* **Early access release date:** June 2023
+* **Early access release version:** CD version 79714 and Harness Delegate version 23.06.79707
+* **Issue number:** CDS-69961
+* **Feature flag:** `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Added a new field in the release history for Blue Green deployments to differentiate between environments.
+
+This is an enhancement to the Kubernetes Blue Green Stage Scale Down step. You can now scale down your last successful stage environment only if the primary resources exist. This enhancement helps you efficiently manage your resources, and prevent deleting the important resources.
+
+Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
+
+#### Selective stage executions for webhook triggers
+
+* **GA date:** November 2023
+* **Early access release date:** May 2023
+* **Early access release version:** Delegate version 23.05.79214
+* **Issue number:** CDS-56775, CDS-56774
+* **Feature flag:** `CDS_NG_TRIGGER_SELECTIVE_STAGE_EXECUTION`
+
+You can set webhook triggers to run specific pipeline stages using the [Allow selective stage(s) executions?](/docs/platform/pipelines/run-specific-stage-in-pipeline) option.
+
+<details>
+<summary>Run a specific stage in a pipeline</summary>
+
+To run a particular stage of a pipeline:
+
+1. Select the stage, then select **Advanced Options**.
+2. In **Stage Execution Settings>** **Allow selective stages(s) executions?**, select **Yes**. This setting is selected by default.
+
+   ![](./static/selective-stage-execution.png)
+
+3. When you create a trigger, in **Configuration**, select the stages you want to execute.
+
+   ![](./static/select-stage-to-execute.png)
+
+Here is a sample trigger YAML:
+
+```
+trigger:
+name: stage3Trigger
+identifier: stage3Trigger
+enabled: true
+description: ""
+tags: {}
+stagesToExecute:
+  - stage3
+orgIdentifier: NgTriggersOrg
+projectIdentifier: viniciusTest
+pipelineIdentifier: ThreeStagesPipeline
+source:
+  type: Webhook
+  spec:
+    type: Custom
+    spec:
+      payloadConditions: []
+      headerConditions: []
+inputYaml: |
+  pipeline:
+    identifier: ThreeStagesPipeline
+    stages:
+      - stage:
+          identifier: stage3
+          type: Custom
+          variables:
+            - name: stage3var
+              type: String
+              value: stage3Var
+```
+
+</details>
+
+#### ServiceNow custom table support
+
+* **GA date:** November 2023
+* **Early access release date:** April 2023
+* **Early access release version:** Delegate version 23.04.79015
+* **Issue number:** CDS-55046
+* **Feature flag:** `CDS_SERVICENOW_TICKET_TYPE_V2`
+
+Custom table support is now available in Harness' ServiceNow integration. Harness recommends that you only use a table extending task, or extend tables that indirectly extend the task. You can specify any custom table in Harness.
+
+In ServiceNow, a table extending task is a task that involves creating a new table by extending an existing table. When a table is extended, a new child table is created that inherits all the fields, relationships, and other attributes of the parent table. The child table can then be customized further to meet the specific needs of the organization.
+
+Itil roles are not mandatory for using these steps. When using the normal flow for custom tables, you should have sufficient permissions on the custom table, such as basic CRUD permissions, permissions to update desired fields, etc.
+
+When using template flow, your user role is required along with cross scope privileges to the custom table.
+
+The store app is only certified to be used with Incident, Problem, Change Request, and Change Task tables by the ServiceNow certification team.
+
+The custom table being used should allow access to this table via web services.
 
 #### Kubernetes Dry Run step added
 

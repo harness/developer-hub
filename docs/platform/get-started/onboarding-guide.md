@@ -46,7 +46,7 @@ You should also review the module-specific concepts for the Harness modules you 
 You can automate the onboarding of users from external sources along with their user group memberships & role assignments. 
 
 - [Provision users and groups with Okta (SCIM)](/docs/platform/role-based-access-control/provision-users-with-okta-scim)
-- [Provision users and groups using Azure AD (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim)
+- [Provision users and groups using Microsoft Entra ID (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim)
 - [Provision users and groups with OneLogin (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim)
 - [Just-in-time user provisioning](/docs/platform/role-based-access-control/provision-use-jit)
 

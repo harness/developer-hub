@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - November 3, 2023
+## Latest - November 9, 2023
 
 ### New features and enhancements
 
@@ -25,7 +25,44 @@ This release does not include new features.
 
 This release does not include early access features.
 
-### Fixed issues in the Android SDK
+### Fixed issues in the Python SDK
+
+Released Android SDK 1.2.5
+
+ - Only log Flag/Segment not found warning in valid scenarios
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### November 7, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Python SDK
+
+Released Python SDK 1.2.4
+
+- Set default log level to WARNING
+
+#### November 7, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Fixed issues in the Android SDK
 
 Released Android SDK 1.2.0
 
@@ -39,13 +76,8 @@ Released Android SDK 1.2.0
 - Avoid posting metrics if total evaluation count is 0
 - Add refreshEvaluations
 - Retry on Client Authentication failures
-- Add retry interceptor to authentication by @andybharness in #77
+- Add retry interceptor to authentication
 - Add waitForInit
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### October 31, 2023
 

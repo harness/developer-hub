@@ -10,6 +10,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
         <td valign="top">SAST</td>
         <td valign="top">
          	<ul>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference">Gitleaks</a>  Orchestration, Ingestion </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference">Grype (filesystem scans)</a>  Orchestration, Ingestion </li>
         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference">Bandit</a>  Orchestration, Ingestion </li>
          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/brakeman-scanner-reference">Brakeman</a> Orchestration, Ingestion </li>

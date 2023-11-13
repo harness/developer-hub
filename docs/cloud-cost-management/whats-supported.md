@@ -47,7 +47,11 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CCM_COST_CATEGORIES_DASHBOARD</td>
-        <td>Enabling this flag allows customers to use cost category in the dashboard</td>
+        <td>Enabling this flag allows customers to use the cost category in the dashboard</td>
+    </tr>
+    <tr>
+        <td>CCM_GOVERNANCE_GENAI_ENABLE</td>
+        <td>Enables Gen AI support for cloud asset governance.</td>
     </tr>
 </table>
 
