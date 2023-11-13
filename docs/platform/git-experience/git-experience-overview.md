@@ -123,11 +123,11 @@ Currently, Bi-Directional sync is behind the feature flag `PIE_GIT_BI_DIRECTIONA
 
 :::
 
-By default, Harness Git Experience syncs unidirectionally, fro Harness to your Git repos. Enable this setting to have Git Experience sync two-way (bidirectionally) between Harness and your Git repo.
+By default, Harness Git Experience syncs unidirectionally, from Harness to your Git repos. Enable this setting to have Git Experience sync two-way (bidirectionally) between Harness and your Git repo.
 
 Changes made on either the Git repo or Harness are synched automatically.
 
-
+For more information, go to [Set up bidirectional sync for Git Experience](/docs/platform/git-experience/gitexp-bidir-sync-setup).
 
 ### What can I do with Harness Git Experience?
 
