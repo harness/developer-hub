@@ -181,7 +181,7 @@ export default function FeatureFlags() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Feature Flags - Administrator (BETA COMING SOON)</h2>
+                  <h2>Feature Flags - Administrator (BETA)</h2>
                   <img
                     src={`${baseUrl}img/cert_adm_ff_badge.svg`}
                     alt="Harness Certified Expert - FF Administrator"
