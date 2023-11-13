@@ -419,67 +419,6 @@ config:
     - "img/**/*"
 ```
 
-## View test reports and test selection
-
-To view test reports and understand which tests were selected by Test Intelligence, go to the [Build details page](../viewing-builds.md) and select the [Tests tab](./viewing-tests.md). The test report content is based on the tests that ran in the **Run Tests** step.
-
-<!-- ![](./static/set-up-test-intelligence-03.png) -->
-
-<docimage path={require('./static/set-up-test-intelligence-03.png')} />
-
-The **Tests** tab can show tests only if your test reports are in JUnit XML format, because Harness parses test reports that are in JUnit XML format only. For information about formatting unit test reports, go to [Format test reports](./test-report-ref.md).
-
-Expand the sections below to learn more about information available on the **Tests** tab.
-
-<details>
-<summary>Test Execution Overview</summary>
-
-This section provides an overview of **Total Tests**, number of **Selected Tests**, total **Duration** of all tests, and **Time Saved**.
-
-**Duration** reflects the sum of CPU time taken for all tests to complete. The values are collected as-is from the JUnit report, and they don't correspond with wall-clock time. In contrast, the pipeline execution time is a measure of wall-clock time. Therefore, it is possible that the **Duration** may exceed the total pipeline execution time.
-
-</details>
-
-<details>
-<summary>Test Execution Result</summary>
-
-This section provides a graphical representation of successful and failed tests.
-
-</details>
-
-<details>
-<summary>Test Selection Breakdown</summary>
-
-Test Intelligence analyzes changes to source files and test files in the codebase and then runs only the tests that are relevant to the detected changes. This section reports how many tests ran based on the different the types of code changes included in this build:
-
-* **Correlated with Code Changes**: The number of tests that ran due to changes in the codebase.
-* **New Tests**: The number of tests that ran because they are new.
-* **Updated Tests**: The number of tests that ran because there was a change to the actual test code or content.
-
-</details>
-
-<details>
-<summary>Test Execution</summary>
-
-This section provides a detailed list of all tests, including class methods and test methods.
-
-Initially, the list shows only failed tests. To see all tests, toggle **Show all Tests**.
-
-You can sort the list by failure rate, duration, and total tests. You can also expand test suites to see details about individual tests in that suite.
-
-</details>
-
-<details>
-<summary>Call Graph</summary>
-
-The first time you enable Test Intelligence on a repo, you must run all tests to [generate the initial call graph](#generate-the-initial-call-graph). This creates a baseline for test selection in future builds; therefore, the initial call graph is not particularly useful. In subsequent builds, the call graph shows information about tests selected by TI for that run.
-
-Select **Expand graph** to view the TI Visualization, which shows why a specific test was selected and the reason behind every test selection. Purple nodes represent tests. Select any test (purple node) to see all the classes and methods covered by that test. Blue nodes represent changes to classes and methods that caused TI to select that test.
-
-![](./static/set-up-set-up-test-intelligence-531.png)
-
-</details>
-
 ## Run Tests step settings
 
 The **Run Tests** step has the following settings. Some settings are optional, and some settings are only available for specific languages or build tools. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
@@ -1452,6 +1391,10 @@ pipeline:
   </TabItem>
 </Tabs>
 ```
+
+## View test reports and test selection
+
+For information about test reports for Test Intelligence, go to [View tests](./viewing-tests.md).
 
 ## Troubleshooting Test Intelligence
 
