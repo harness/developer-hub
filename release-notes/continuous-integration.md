@@ -109,7 +109,7 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
 #### New features and enhancements
 
-You can now [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting.md) in the Visual editor as well as the YAML editor. (CI-9618)
+You can now [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting) in the Visual editor as well as the YAML editor. (CI-9618)
 
 #### Fixed issues
 
