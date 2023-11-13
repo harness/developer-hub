@@ -353,4 +353,12 @@ RBAC Components:
 Take a look at [this](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#configure-rbac-in-harness) article to configure RBAC in Harness
 
 ## STEP-13: SSO
-Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable you to log your users into Harness as part of your SSO infrastructure. [This](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/) document explains how to set up SAML authentication.
+Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable you to log your users into Harness as part of your SSO infrastructure. The user can choose between a variety of SSO integrations according to their needs.
+
+- [SAML SSO with Harness](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/#saml-sso-with-harness)
+- [SAML SSO with Okta](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/#saml-sso-with-harness)
+- [SAML SSO with Microsoft Entra ID](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/#saml-sso-with-microsoft-entra-id)
+- [SAML SSO with OneLogin](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/#saml-sso-with-onelogin)
+- [SAML SSO with Keycloak](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/#saml-sso-with-keycloak)
+
+[This](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/) document explains how to set up SAML authentication.
