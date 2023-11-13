@@ -714,13 +714,52 @@ Select the build automation tool. Supported tools vary by **Language**.
 * [Gradle](https://gradle.org/)
 * [Sbt](https://www.scala-sbt.org/) (Scala only)
 
-:::info Bazel container images
+#### Bazel container images
 
 If you use a Bazel [container image](#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](../run-ci-scripts/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
 
 Bazel is already installed on Harness Cloud runners, and you don't need to specify a container image. For other build infrastructures, you must manually confirm that Bazel is already installed.
 
-:::
+#### Maven argLine setup
+
+With Maven, if your `pom.xml` contains `<argLine>` or you attach Jacoco or any agent while running unit tests, then you must modify your `pom.xml` to include `<harnessArgLine>` in the `<properties>` and the Maven plugin `<configuration>`. For example:
+
+```xml
+<!-- Add harnessArgLine to pom properties. -->
+<properties>
+        <harnessArgLine></harnessArgLine>
+</properties>
+
+...
+
+<!-- Add harnessArgLine to Maven plugin configuration. -->
+<plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-surefire-plugin</artifactId>
+      <version>2.22.2</version>
+      <configuration>
+          <argLine>${harnessArgLine}  @{argLine}  </argLine>
+      </configuration>
+</plugin>
+```
+
+<!-- ### pom.xml with argLine
+
+If your `pom.xml` contains `argLine`, you must update the Java Agent as follows:
+
+**Before:**
+
+```
+<argLine> something
+</argLine>
+```
+
+**After:**
+
+```
+<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini
+</argLine>
+``` -->
 
 ```mdx-code-block
   </TabItem>
@@ -1418,41 +1457,25 @@ pipeline:
 
 You might encounter these issues when using Test Intelligence.
 
-### pom.xml with argLine
+### Maven
 
-If your `pom.xml` contains `argLine`, you must update the Java Agent as follows:
+If you encounter issues with Test Intelligence when using Maven as your [build tool](#build-tool), check the following configurations:
 
-**Before:**
+* If your `pom.xml` contains `<argLine>`, then you must [modify your argLine setup](#maven-argline-setup).
+* If you attach Jacoco or any agent while running unit tests, then you must [modify your argLine setup](#maven-argline-setup).
+* If you use Jacoco, Surefire, or Failsafe, make sure that `forkCount` is not set to `0`. For example, the following configuration in `pom.xml` removes `forkCount` and applies `useSystemClassLoader` as a workaround:
 
-```
-<argLine> something  
-</argLine>
-```
-
-**After:**
-
-```
-<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini  
-</argLine>
-```
-
-### Jacoco/Surefire/Failsafe
-
-If you're using Jacoco, Surefire, or Failsafe, make sure that `forkCount` is not set to `0`.
-
-For example, the following configuration in `pom.xml` removes `forkCount` and applies `useSystemClassLoader` as a workaround:
-
-```
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-surefire-plugin</artifactId>
-    <version>2.22.1</version>
-    <configuration>
-        <!--  <forkCount>0</forkCount> -->
-        <useSystemClassLoader>false</useSystemClassLoader>
-    </configuration>
-</plugin>
-```
+   ```xml
+   <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-surefire-plugin</artifactId>
+       <version>2.22.1</version>
+       <configuration>
+           <!--  <forkCount>0</forkCount> -->
+           <useSystemClassLoader>false</useSystemClassLoader>
+       </configuration>
+   </plugin>
+   ```
 
 ### Python
 
