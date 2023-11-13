@@ -165,6 +165,84 @@ To create a simple CD pipeline, follow the steps:
 - Select execution steps.
 - You can model visually, using code, or via the REST API.
 
+Here's a simple CD pipeline having a Kubernetes type deployment:
+
+<details>
+<summary>CD Pipeline YAML</summary>
+<br />
+
+```yaml
+pipeline:
+  name: trigger_on_new_artifact
+  identifier: trigger_on_new_artifact
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: deploy
+        identifier: deploy
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          service:
+            serviceRef: deploy
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: artifact
+                      sources:
+                        - identifier: artifact
+                          type: DockerRegistry
+                          spec:
+                            tag: <+input>
+          environment:
+            environmentRef: local
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: local_infra
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          echo "Hello"
+
+                          echo <+trigger.payload>
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+            rollbackSteps:
+              - step:
+                  name: Rollback Rollout Deployment
+                  identifier: rollbackRolloutDeployment
+                  type: K8sRollingRollback
+                  timeout: 10m
+                  spec:
+                    pruningEnabled: false
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+```
+
+</details>
+
 ## STEP-8: Deployment Strategy
 You have likely heard terms like blue/green and canary when it comes to deploying code and applications into production. These are common deployment strategies, available in Harness CD as stage strategies, along with others.
 
