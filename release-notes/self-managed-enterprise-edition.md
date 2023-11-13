@@ -824,6 +824,47 @@ gsutil -m cp \
 
 - Fixed a UI issue where the module sidebar in the left-side menu would scroll when a user clicked different menus within STO. With this fix, the module sidebar maintains its position when a user clicks different menus. (STO-6219)
 
+### Patches
+
+#### 0.10.1
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.10.1](https://github.com/harness/helm-charts/releases/tag/harness-0.10.1) |
+| Air Gap Bundle | [0.10.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/Harness-0.10.1) |
+| NG Manager | 80917 |
+| CI Manager | 6100 |
+| Pipeline Service | 1.47.11 |
+| Platform Service | 80502 |
+| Access Control Service | 80302 |
+| Change Data Capture | 80909 |
+| Test Intelligence Service | release-197 |
+| NG UI | 0.364.18 |
+| LE NG | 68305 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/Harness-0.10.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/Harness-0.10.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/Harness-0.10.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/Harness-0.10.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/Harness-0.10.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/Harness-0.10.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/Harness-0.10.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/Harness-0.10.1/sto_images.tgz" \
+  .
+```
+
+### Fixed issue
+
+- Configured `socket-timeout` to handle a higher volume and scale of customer billing data. (CCM-15026)
+
 ## Previous releases
 
 <details>

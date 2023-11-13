@@ -150,7 +150,7 @@ Using RBAC helps you:
 - Provision users and groups with SCIM - System for Cross-Domain Identity Management (SCIM) is an open standard protocol for automated user provisioning. In Harness, automated provisioning involves creating users and user groups, assigning users to groups, and managing some user attributes (such as names and email addresses). In addition to creating users and groups, automated provisioning also edits and removes users and user groups as and when required.
 
    - [Okta (SCIM)](/docs/platform/role-based-access-control/provision-users-with-okta-scim/)
-   - [Azure AD (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim/)
+   - [Microsoft Entra ID (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim/)
    - [OneLogin (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim/)
 
 - Use just-in-time (JIT) user provisioning: Automated provisioning eliminates repetitive tasks related to manual provisioning and simplifies user management.

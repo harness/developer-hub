@@ -380,7 +380,7 @@ pipeline:
                   identifier: Run_Unit_Tests
                   spec:
                     connectorRef: dockerhubconnector
-                    image: golang:1.15
+                    image: golang:1.17
                     shell: Sh
                     command: |2-
                          go get gotest.tools/gotestsum
