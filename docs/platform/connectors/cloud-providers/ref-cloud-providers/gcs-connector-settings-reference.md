@@ -138,7 +138,7 @@ This feature is currently behind a feature flag. Contact [Harness Support](mailt
 
 In the case of accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to Harness GCP connector. You must provide the following information:
 
-* Workload Pool ID - This identifies the workload pool created on the GCP side and it is the Pool ID value.
-* Provider ID - This identifies the OIDC provider configured on the GCP side and it is the Provider ID value.
-* Project ID - The project number of the Google Cloud Project that is used to create a workload identity pool.
-* Service Account Email - This is the service account which was linked to the workload identity pool in the last step.
+* Workload Pool ID: This identifies the workload pool created on the GCP side and it is the Pool ID value.
+* Provider ID: This identifies the OIDC provider configured on the GCP side and it is the Provider ID value.
+* Project ID: The project number of the Google Cloud Project that is used to create a workload identity pool.
+* Service Account Email: This is the service account that was linked to the workload identity pool in the last step.
