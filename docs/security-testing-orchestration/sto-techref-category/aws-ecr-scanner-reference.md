@@ -40,10 +40,13 @@ The recommended workflow is add an AWS ECR step to a Security Tests or CI Build 
 #### Scan Mode
 
 ```mdx-code-block
+import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeDataLoad from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
+import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 ```
-
+<StoSettingScanMode />
 <StoSettingScanModeDataLoad />
+<StoSettingScanModeIngest />
 
 <a name="scan-config"></a>
 
