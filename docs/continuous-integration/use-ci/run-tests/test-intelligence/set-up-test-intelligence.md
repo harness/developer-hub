@@ -1,7 +1,7 @@
 ---
-title: Enable Test Intelligence
+title: Test Intelligence overview
 description: Reduce unit test time by running only relevant unit tests.
-sidebar_position: 20
+sidebar_position: 10
 helpdocs_topic_id: 428cs02e6u
 helpdocs_category_id: 29nai2tbs6
 helpdocs_is_private: false

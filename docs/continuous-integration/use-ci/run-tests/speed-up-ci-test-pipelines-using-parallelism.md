@@ -56,7 +56,7 @@ When using parallelism, it's important to take into account resource limitations
 
 </details>
 
-This topic focuses on parallelism and test splitting in **Run** steps. For information about test splitting with Test Intelligence (in **Run Tests** steps), go to [Enable Test Intelligence](./test-intelligence/set-up-test-intelligence).
+This topic focuses on parallelism and test splitting in **Run** steps. For information about test splitting with Test Intelligence (in **Run Tests** steps), go to [Test splitting for TI](./test-intelligence/ti-test-splitting.md).
 
 Here are examples of test splitting and parallelism applied to Run steps. For more YAML examples of test splitting, go to [YAML Examples: Test splitting](#yaml-examples-test-splitting).
 

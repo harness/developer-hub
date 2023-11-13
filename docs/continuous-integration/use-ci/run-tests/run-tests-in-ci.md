@@ -70,7 +70,7 @@ This example runs tests with Maven and Test Intelligence, and it produces a test
                           - "target/surefire-reports/*.xml"
 ```
 
-For more information about configuring **Run Tests** steps and Test Intelligence, go to [Enable Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
+For more information about configuring **Run Tests** steps and Test Intelligence, go to [Test Intelligence overview](./test-intelligence/set-up-test-intelligence.md).
 
 ```mdx-code-block
   </TabItem>
