@@ -48,9 +48,14 @@ If you're running DAST scans of a large website, and these scans are taking too 
 
 1. Create a copy of the website's sitemap. 
 2. Strip out all irrelevant pages from the sitemap copy and save it in the code repository of your website. 
-3. Go to your pipeline and open the ZAP scan step. In the [**Domain**](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#instance) field, specify the full path to the copy of your sitemap.
+    1. Go to your pipeline and open the ZAP scan step. 
+    2. Set the **Scan Configuration** to **Quick**. This mode scopes the depth of the scan to 1.
 
-![](./static/sitemap-copy-in-zap-step.png)
+       ![](./static/zap-quick-scan.png)    
+    
+    3. Set the [**Path**](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#path) to the location of the sitemap you added to the website.
+
+       ![](./static/sitemap-copy-in-zap-step.png)
 
 ### Configure the scanner using command-line arguments
 
