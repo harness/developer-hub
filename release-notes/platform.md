@@ -2,8 +2,8 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-10-27:T10:00:30
-sidebar_position: 12
+date: 2023-11-03:T10:00:30
+sidebar_position: 3
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -30,9 +30,46 @@ The following deprecated API endpoints will no longer be supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## Latest: Version 81205
+## Latest: Version 81308
 
 ### New features and enhancements
+
+- You can now view **Runtime Usage** for secrets. (PL-39416)
+
+- You can now add custom certificates to delegates by mounting files under `/opt/harness-delegate/ca-bundle/` or mounting a folder to `/opt/harness-delegate/ca-bundle/`. (PL-39971)
+
+  This item is available with Harness Platform version 81308 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+- On the User Groups list page, there was an issue when attempting to quickly add members by selecting the **+** icon, which resulted in inadvertently removing members from the user group. This occurred because the system was using only the data of users visible on the screen (up to a maximum of 6 members) instead of all users in the group. The problem has now been resolved, and all existing users remain in the group while new users can also be added successfully without any issues. (PL-41730, ZD-51725)
+
+- The list delegate groups API (`getDelegateGroupsUsingToken`) now returns a 404 when the delegate token doesn't exist. (PL-41926, ZD-52077)
+
+- When the template variable's value was set to Custom Secret Manager, the secret creation failed because the fixed values were considered missing because they were not part of the API request. (PL-42050, ZD-52243).
+
+   This issue has been resolved.
+
+- In Harness, users are stored with lowercase email addresses. However, if a user with a different case was sent from the Terraform payload, it didn't match with the stored user in Harness. This caused the removal of the existing user (stored in all lowercase) if the same email address was specified in a different case. To fix this issue, Harness converted the email request payload from Terraform to lowercase. This ensures that the user matches correctly in Harness, as the email is always stored in lowercase. (PL-42074)
+
+- Fixed an issue where the latest-supported-version API returned the image tag repo path instead of the image tag. (PL-42168, ZD-52623)
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### October 27, 2023, Version 81205
+
+##### New features and enhancements
 
 - To improve security, Harness has introduced a feature that allows you to add domain allowlists for Email, Slack, Microsoft Teams, Webhook, and PagerDuty notification channels at the account level. Earlier, this was only supported for fixed URL domains. Now, support has been added for expression URLs. This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the Delegate release notes. (PL-39481, ZD-43735)
 
@@ -49,11 +86,11 @@ The following deprecated API endpoints will no longer be supported:
 
 - Upgraded the `org.eclipse.jetty_jetty-http` library to version 9.4.53.v20231009 to resolve CVE-2023-36478. (PL-41903)
 
-### Early access features
+##### Early access features
 
 This release does not include early access features.
 
-### Fixed issues
+##### Fixed issues
 
 - Fixed an issue where the sort filter was not working for delegates. (PL41184, ZD-50573)
 
@@ -75,15 +112,6 @@ This release does not include early access features.
    - Role assignment creation now operates as intended.
    - Deletion of resources from resource groups and permissions from roles works as expected.
    - Role assignment recreation functions correctly with updated resource groups and roles.
-
-### Hotfixes
-
-This release does not include hotfixes.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### October 16, 2023, Version 81008
 
@@ -257,7 +285,7 @@ This release does not include early access features.
 
   This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
 

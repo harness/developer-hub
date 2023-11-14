@@ -77,6 +77,16 @@ The following permissions allow an API key to interact with Chaos Engineering. T
 | `chaos_chaosgameday_edit` | Edit Chaos GameDay |
 | `chaos_chaosgameday_delete` | Delete Chaos GameDay |
 
+## Code Repository
+
+| Permission ID | Description |
+| --------- | ----------- |
+| `code_repository_view` | View repositories |
+| `code_repository_edit` | Update repository settings, such as descriptions, webhooks, and rules. |
+| `code_repository_create` | Create repositories |
+| `code_repository_delete` | Delete repositories |
+| `code_repository_push` | Repository contributor permissions, such as committing, pushing, creating/deleting branches, creating/deleting tags. |
+
 ## Connectors
 
 The following permissions allow an API key to manage connectors. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).

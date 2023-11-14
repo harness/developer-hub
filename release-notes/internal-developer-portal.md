@@ -3,7 +3,7 @@ title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
 tags: [NextGen, "Internal Developer Portal", "IDP"]
 date: 2023-08-09T10:00:15
-sidebar_position: 15
+sidebar_position: 11
 ---
 
 ```mdx-code-block
@@ -15,13 +15,38 @@ import TabItem from '@theme/TabItem';
 
 Review the notes below for details about recent changes to Harness Internal Developer Portal.
 
-## Latest: October 26, 2023 - Version 0.13.0
+## Latest: November 7, 2023 - Version 0.14.0
+
+[Backstagecon](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/backstagecon/) & Kubecon is round the corner, consider catching up with Harness' team in the event at **Booth B15**. Also here’s a [sneak peak](https://www.harness.io/blog/road-to-backstagecon-2023-a-sneak-peek-into-an-exciting-lineup-a-recap-of-2022) of what’s happening in this year's edition of the event. Here’s some of the content updates.
+
+- **Himanshu’s(Product Manager for IDP) Backstagecon Talk:** [What Does Backstage Really Offer?](https://www.youtube.com/watch?v=4FTkeJY2Hcc)
+- **Docs:** [Updated Onboarding Guide](https://developer.harness.io/docs/internal-developer-portal/get-started/onboarding-guide/), [Public API](https://developer.harness.io/docs/internal-developer-portal/public-api) 
+- **Tutorial:** [How to add Links in Software Components](https://developer.harness.io/tutorials/internal-developer-portal/add-links-in-components) 
+
+### New features and enhancements
+
+- We've introduced more explicit error messages when removing secrets to ensure users are fully aware and cautious of this action. [IDP-1520] 
+- Backstage, powering the IDP platform has been upgraded to v1.17, take a look at the [release notes](https://backstage.io/docs/releases/v1.17.0) to find out the updates in this version.[IDP-1179]
+
+### Fixed Issues
+
+- Fixed text overflows on the “Create Scorecards” page. [IDP-1417]
+- Fixed page navigation for IDP get-started page by adding the exit icon. [IDP-1524]
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+## October 26, 2023 - Version 0.13.0
 
 Post-public preview, we've taken your genius tips and mixed them into the Internal Developer Portal. Also, we've fixed a few bugs along the way. Dive in and see what's new! But before that here are some links of recently released tutorials and docs to help you get started with IDP. 
 
+- **Blogs:** [Got Monorepos Instead of Microservices? This is How Harness IDP Has Got You Covered](https://www.harness.io/blog/mono-repos-harness-idp)
 - **Video Tutorial:** [Scorecards](https://youtu.be/jvLDdWS3rFE?si=EBoE9TXh4HCVNU3i) 
 - **Tutorial:** [How to register Software Components in Catalog](https://developer.harness.io/tutorials/internal-developer-portal/register-component-in-catalog)
-- **Docs:** [Scorecards](https://www.harness.io/blog/internal-developer-portal-public-preview) and [Data Sources](https://developer.harness.io/docs/internal-developer-portal/features/checks-datasources) 
+- **Docs:** [Scorecards](https://developer.harness.io/docs/internal-developer-portal/features/scorecard) and [Data Sources](https://developer.harness.io/docs/internal-developer-portal/features/checks-datasources) 
 
 ### New features and enhancements
 
@@ -48,12 +73,6 @@ Post-public preview, we've taken your genius tips and mixed them into the Intern
 - Fixed connector selection issue in the onboarding wizard. [IDP-1363]
 - Fixed the Operator for Jira Default Expression as `jira.issuesCount > 5` in Jira Plugin.[IDP-1357]
 - Fixed Datapoint identifier mismatch[IDP-1152]
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 ## October 16, 2023, Version 0.12.0
 

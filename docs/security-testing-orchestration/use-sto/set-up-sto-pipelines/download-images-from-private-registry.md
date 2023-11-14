@@ -161,7 +161,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: $GITHUB_CONNECTOR
+        connectorRef: CODEBASE_CONNECTOR
         repoName: dvpwa
         build: <+input>
   stages:
@@ -176,7 +176,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: $K8S_CONNECTOR
+              connectorRef: K8S_DELEGATE_CONNECTOR 
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -189,9 +189,11 @@ pipeline:
                   name: docker-dind
                   identifier: dockerdind
                   spec:
-                    connectorRef: $DOCKERHUB_CONNECTOR
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: docker:dind
                     shell: Sh
+                    entrypoint:
+                      - dockerd
                     privileged: true
               - step:
                   type: Security

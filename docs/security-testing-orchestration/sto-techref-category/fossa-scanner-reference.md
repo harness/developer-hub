@@ -187,7 +187,7 @@ pipeline:
                   name: Pull File
                   identifier: Pull_File
                   spec:
-                    connectorRef: MY_DOCKER_CONNECTOR
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: alpine/curl
                     shell: Sh
                     command: |-
@@ -210,7 +210,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: MY_DELEGATE
+              connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}

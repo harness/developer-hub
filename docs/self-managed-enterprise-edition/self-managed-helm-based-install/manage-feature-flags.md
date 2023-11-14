@@ -72,7 +72,7 @@ To add Feature Flags, do the following:
          # -- CCM Feature Flags (activated when global.ccm is enabled)
          CCM: "CENG_ENABLED,CCM_MICRO_FRONTEND,NODE_RECOMMENDATION_AGGREGATE"
          # -- GitOps Feature Flags (activated when global.gitops is enabled)
-         GitOps: "GITOPS_ONPREM_ENABLED,CUSTOM_ARTIFACT_NG,SERVICE_DASHBOARD_V2,OPTIMIZED_GIT_FETCH_FILES,MULTI_SERVICE_INFRA,ENV_GROUP,NG_SVC_ENV_REDESIGN"
+         GitOps: "GITOPS_ONPREM_ENABLED,CUSTOM_ARTIFACT_NG,SERVICE_DASHBOARD_V2,OPTIMIZED_GIT_FETCH_FILES,ENV_GROUP,NG_SVC_ENV_REDESIGN"
          # -- OPA (activated when global.opa is enabled)
          OPA: ""
          # -- CHAOS Feature Flags (activated when global.chaos is enabled)

@@ -94,10 +94,10 @@ export const featuredTutorials: CardItem[] = [
         "",
       list: [
         {
-          title: "User provisioning using Azure AD (SCIM)",
+          title: "User provisioning using Microsoft Entra ID (SCIM)",
           module: MODULES.platform,
           description:
-            "Provision users and groups in Harness using Azure AD (SCIM).",
+            "Provision users and groups in Harness using Microsoft Entra ID (SCIM).",
           link: "/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim",
         },
         {

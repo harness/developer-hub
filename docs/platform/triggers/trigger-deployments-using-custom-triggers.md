@@ -24,7 +24,7 @@ You can do the following with a custom trigger:
 * Use a REST call to get deployment status.
 * Start a deployment using a Webhook URL provided by Harness.
 
-import Variables from '/docs/platform/triggers/shared/variables-not-supported.md'
+import Variables from '/docs/platform/shared/variables-not-supported.md'
 
 <Variables />
 

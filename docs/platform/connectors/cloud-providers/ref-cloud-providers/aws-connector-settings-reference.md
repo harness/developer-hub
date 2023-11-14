@@ -443,13 +443,14 @@ This example policy gives limited permission to EKS clusters.
 
 </details>
 
-## Connect to EKS
+## Connect to Elastic Kubernetes Service (EKS)
 
 To connect Harness to Elastic Kubernetes Service (Amazon EKS), you can use the platform-agnostic [Kubernetes cluster connector](kubernetes-cluster-connector-settings-reference.md) or Elastic Kubernetes Service (EKS) cloud connector.
 
+### Prerequisites
+
 Make sure you've met the following requirements to connect to the EKS cloud connector.
 
-* You have enabled the `NG_CDS_NATIVE_EKS_SUPPORT` feature flag.
 * The IAM role of the worker nodes for the EKS cluster have the [required permissions](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html).
     * Your IAM role has the permission to access the AWS EKS cluster. You can edit the `configmap/aws-auth` entry in the EKS cluster to enable the required permissions. For more information, go to [add user role](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html). You can also assume the IAM role used to create the AWS EKS cluster which has the required `configmap/aws-auth` entries by default.
     * Your IAM role has the basic policies to access the AWS EKS cluster. For more information, go to [Amazon EKS identity-based policy examples](https://docs.aws.amazon.com/eks/latest/userguide/security_iam_id-based-policy-examples.html).
@@ -505,6 +506,58 @@ Make sure you've met the following requirements to connect to the EKS cloud conn
       ```
       
 * You're using Kubernetes version 1.22 or later. Harness uses a [client-go credential plugin](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins) to authenticate the connection to the EKS cluster. Support for EKS is deprecated for Kubernetes 1.21 and earlier versions.
+
+### Connecting to EKS
+
+To connect to EKS, do the following:
+
+1. On the **Environments** page for your project, select **Infrastructure Definition**, and then proceed to create or update an infrastructure definition.
+
+2. Enter a name and, optionally, a description and any tags that you want to associate with the infrastructure definition.
+
+3. In **How do you want to setup your infrastructure?** select one of the following options:
+
+  - **Inline**. Stores the infrastructure definition in Harness.
+  - **Remote**. Stores the infrastructure definition in a Git repository. If you select this option, do the following:
+    
+    1. In **Git Connector**, create or select a Git connector.
+    
+    2. In **Repository** and **Branch**, specify the repository and branch, respectively, on which to store the infrastructure definition. 
+
+    Harness populates **YAML Path** with a path it generates based on the name of the infrastructure definition. If you edit the infrastructure definition's name after Harness populates this field, Harness does not update the name of the file to match the infrastructure definition's new name. If you want them to match, also edit the file name in the YAML path field manually.
+
+4. In **Deployment Type**, select **Kubernetes** or **Native Helm**.
+
+5. In **Select Infrastructure Type** > **Via Cloud Provider**, select **Elastic Kubernetes Service**.
+
+6. Select **Map Dynamically Provisioned Infrastructure** if you want to map the provisioned infrastructure dynamically. 
+
+  A **Provisioner** setting is added and configured as a runtime input.
+
+7. Configure the following fields to connect to a cluster:
+
+  :::note
+  You can configure these fields to use fixed values, runtime inputs, or expressions. One of these value types is selected by default but you can change the selection. For information about how to configure these value types, go to [Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
+  :::
+
+    1. In **Connector**, create or select an AWS connector. 
+
+    2. (Optional) In **Region**, specify an AWS Region if you want the next field (**Cluster**) to show clusters from only that AWS Region.
+
+      The Cluster field, by default, fetches all the clusters in all the AWS Regions associated with the AWS account. The credentials that the AWS connector uses, on the other hand, might limit the connector to only certain AWS Regions. In such a scenario, specifying the AWS Region ensures that the Cluster field is populated with a usable list of clusters.
+
+    3. In **Cluster**, select the Kubernetes cluster that you want to use.
+
+    4. In **Namespace**, select a namespace to use on the Kubernetes cluster.
+
+    5. In **Release name**, specify a release name.
+
+8. (Optional) Select **Allow simultaneous deployments on the same infrastructure**.
+
+9. (Optional) Select **Scope to Specific Services** if you want to limit the infrastructure definition to specific services only, and then select or create the services you want in the infrastructure definition.
+
+10. Select **Save**.
+
 
 Here's a quick video demonstrating Native EKS authentication support for Kubernetes:
 

@@ -8,12 +8,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings and permissions for the Docker connector.
+This topic provides settings and permissions for the Docker connector. You can use this connector to connect to DockerHub, Harbor, Quay, and other Docker V2 compliant container registries, such as [GitHub Container Registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ghcr.md).
 
-:::info Important notes
+:::info
 
 * **Docker registry rate limits:** Harness is restricted by the limits of the Docker repo, such as [Docker Hub limits](https://docs.docker.com/docker-hub/download-rate-limit/) for pulling Docker images from Docker repos.
-* **Docker Registries in Cloud Platforms:** The Docker connector is platform-agnostic and can be used to connect to any Docker container registry. Harness also provides first class support for registries in AWS and GCR through [AWS connectors](../../../connectors/cloud-providers/add-aws-connector.md) and [Google Cloud Platform (GCP) connectors](../../../connectors/cloud-providers/connect-to-google-cloud-platform-gcp.md).
+* **Docker Registries in Cloud Platforms:** The Docker connector is platform-agnostic and can be used to connect to any Docker container registry. Harness also provides first class support for registries in AWS and GAR through [AWS connectors](../../../connectors/cloud-providers/add-aws-connector.md) and [Google Cloud Platform (GCP) connectors](../../../connectors/cloud-providers/connect-to-google-cloud-platform-gcp.md).
 
 :::
 
@@ -27,9 +27,15 @@ This topic provides settings and permissions for the Docker connector.
 
 ## Connector metadata settings
 
-* **Name:** Enter a name for this connector. Harness creates and **Id** ([Entity Identifier](../../../references/entity-identifier-reference.md)) based on the name.
+* **Name:** Enter a name for this connector. Harness creates an **Id** ([Entity Identifier](../../../references/entity-identifier-reference.md)) based on the name.
 * **Description:** Optional text string.
 * **Tags:** Optional. Go to the [Tags reference](../../../references/tags-reference.md).
+
+## Provider type
+
+Select the Docker registry platform: **DockerHub**, **Harbor**, **Quay** or **Other**.
+
+If you select **Other**, the registry must be Docker V2 compliant.
 
 ## Docker Registry URL
 
@@ -38,10 +44,6 @@ The URL of the Docker registry. This is usually the URL used for your [docker lo
 To connect to a public Docker registry like Docker Hub, use `https://index.docker.io/v2/`.
 
 To connect to a private Docker registry, use `https://registry.hub.docker.com/v2/`.
-
-## Provider type
-
-Select the Docker registry platform, such as Docker Hub, Harbor, Quay, and so on.
 
 ## Authentication
 

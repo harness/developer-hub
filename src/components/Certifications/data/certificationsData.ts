@@ -83,13 +83,23 @@ export const certifications: CardItem[] = [
       // numberOfCerts: 1,
     },
     {
-      title: "Feature Flags - Administrator (BETA Coming Soon)",
+      title: "Feature Flags - Administrator (BETA)",
       module: MODULES.ff,
       type: certType.administrator,
       description:
         "Feature Flag Administrator focuses the fundamental skills to deploy, maintain, and customize feature flags in the Harness platform. This exam builds upon the FF Developer Certification.",
       version: "Harness FF Enterprise Plan",
       link: "/certifications/feature-flags?lvl=administrator",
+      // numberOfCerts: 1,
+    },
+    {
+      title: "Security Testing Orchestration  - Developer (BETA Coming Soon)",
+      module: MODULES.sto,
+      type: certType.developer,
+      description:
+        "STO Developer focuses on the fundamental skills to shift security left in your pipelines.",
+      version: "Harness STO Free/Team Plans",
+      link: "/certifications/sto?lvl=developer",
       // numberOfCerts: 1,
     },
   ];
