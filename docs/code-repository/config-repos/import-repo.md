@@ -39,6 +39,6 @@ After importing a repository, you can:
 * Create [branches](../work-in-repos/branch.md) and [tags](../work-in-repos/tag.md).
 * [Commit changes](../work-in-repos/commit.md) and [open pull requests](/docs/category/pull-requests).
 * [Configure branch rules.](./rules.md)
-* Use Harness Code repositories in your [Harness pipelines](./pipelines/codebase-from-harness-code.md).
-* Set up [triggers](./pipelines/code-triggers.md) to automatically run pipelines based on activity in your Harness Code repositories.
-* [Configure webhooks](./config-repos/webhooks.md) to integrate your repositories with third-party applications.
+* Use Harness Code repositories in your [Harness pipelines](../pipelines/codebase-from-harness-code.md).
+* Set up [triggers](../pipelines/code-triggers.md) to automatically run pipelines based on activity in your Harness Code repositories.
+* [Configure webhooks](./webhooks.md) to integrate your repositories with third-party applications.
