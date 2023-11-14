@@ -24,6 +24,10 @@ This topic contains troubleshooting information for error messages and other iss
 
 If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or visit the [Harness Community Forum](https://community.harness.io/).
 
+## Secrets with line breaks and shell-interpreted special characters
+
+For information about handling secret with new line characters or other shell-interpreted special characters, go to [Add and reference text secrets - Line breaks and shell-interpreted characters](/docs/platform/secrets/add-use-text-secrets#line-breaks-and-shell-interpreted-characters).
+
 ## Git connector fails to connect to the SCM service
 
 The following SCM service errors can occur with [Git connectors](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference).

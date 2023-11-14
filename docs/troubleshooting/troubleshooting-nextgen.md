@@ -12,70 +12,7 @@ This topic contains general troubleshooting information for error messages and o
 
 If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or [Harness Community Forum](https://community.harness.io/).
 
- ### Contents
-
-- [Login issues](#login-issues)
-  - [Logged out automatically](#logged-out-automatically)
-    - [Troubleshooting steps](#troubleshooting-steps)
-    - [Notes](#notes)
-- [Delegate issues](#delegate-issues)
-  - [Failure to assign a delegate to a perpetual task](#failure-to-assign-a-delegate-to-a-perpetual-task)
-  - [Duplicate output in deployment logs](#duplicate-output-in-deployment-logs)
-  - [Running multiple delegates on the same host](#running-multiple-delegates-on-the-same-host)
-  - [Delegate setup](#delegate-setup)
-  - [Delegate can't connect to Harness Manager](#delegate-cant-connect-to-harness-manager)
-  - [Delegate successes followed by failures](#delegate-successes-followed-by-failures)
-  - [No delegates could reach the resource](#no-delegates-could-reach-the-resource)
-  - [Google Cloud Platform: cluster has unschedulable pods](#google-cloud-platform-cluster-has-unschedulable-pods)
-    - [Cause](#cause)
-    - [Solution](#solution)
-  - [Deleting a Kubernetes delegate](#deleting-a-kubernetes-delegate)
-  - [Self-destruct sequence initiated](#self-destruct-sequence-initiated)
-    - [Cause](#cause-1)
-    - [Solution](#solution-1)
-  - [Need to use long polling for delegate connection to Harness Manager](#need-to-use-long-polling-for-delegate-connection-to-harness-manager)
-  - [KubernetesClientException: Operation: \[list\] for kind: \[Deployment\] with name: \[null\] in namespace: \[default\] failed](#kubernetesclientexception-operation-list-for-kind-deployment-with-name-null-in-namespace-default-failed)
-- [Artifact collection](#artifact-collection)
-  - [Stage hanging on artifact collection](#stage-hanging-on-artifact-collection)
-- [Common errors and alerts](#common-errors-and-alerts)
-  - [No delegates could reach the resource](#no-delegates-could-reach-the-resource-1)
-  - [Harness SecretStore is not able to encrypt/decrypt](#harness-secretstore-is-not-able-to-encryptdecrypt)
-  - [You are not authorized to perform this operation: AmazonEC2: Status code 403](#you-are-not-authorized-to-perform-this-operation-amazonec2-status-code-403)
-  - [Git-upload-pack not permitted](#git-upload-pack-not-permitted)
-- [Naming conventions](#naming-conventions)
-- [Secrets](#secrets)
-  - [Secrets values hidden In log output](#secrets-values-hidden-in-log-output)
-  - [AWS KMS 403](#aws-kms-403)
-- [Triggers](#triggers)
-  - [zsh: no matches found](#zsh-no-matches-found)
-  - [User does not have "Deployment: execute" permission](#user-does-not-have-deployment-execute-permission)
-- [Continuous delivery](#continuous-delivery)
-  - [Error with release name too long](#error-with-release-name-too-long)
-  - [Error in log when there is no error](#error-in-log-when-there-is-no-error)
-- [Continuous integration](#continuous-integration)
-- [Helm](#helm)
-  - [Unable to get an update from the chart repository](#unable-to-get-an-update-from-the-chart-repository)
-- [Kubernetes](#kubernetes)
-  - [The deployment is invalid...may not be specified when `value` is not empty](#the-deployment-is-invalidmay-not-be-specified-when-value-is-not-empty)
-  - [NullPointerException: release name is reserved for internal Harness ConfigMap](#nullpointerexception-release-name-is-reserved-for-internal-harness-configmap)
-  - [The server doesn't have a resource type "deployments"](#the-server-doesnt-have-a-resource-type-deployments)
-  - [Invalid value LabelSelector](#invalid-value-labelselector)
-  - [Cannot create property](#cannot-create-property)
-- [Terraform](#terraform)
-  - [Provisioned resources already exist (Terraform state file locked)](#provisioned-resources-already-exist-terraform-state-file-locked)
-  - [TerraformValidation - Terraform validation result: false](#terraformvalidation---terraform-validation-result-false)
-- [AWS ECS](#aws-ecs)
-- [Harness secret managers](#harness-secret-managers)
-- [SAML SSO](#saml-sso)
-  - [Signed in user is not assigned to a role for the project (Harness)](#signed-in-user-is-not-assigned-to-a-role-for-the-project-harness)
-    - [Cause](#cause-2)
-    - [Solution](#solution-2)
-- [Shell scripts](#shell-scripts)
-  - [FileNotFoundExeption inside shell script execution task](#filenotfoundexeption-inside-shell-script-execution-task)
-- [Harness policy engine](#harness-policy-engine)
-  - [Policy evaluation failed](#policy-evaluation-failed)
-- [YAML builder](#yaml-builder)
-  - [The incoming YAML document exceeds the limit: 3145728 code points](#the-incoming-yaml-document-exceeds-the-limit-3145728-code-points)
+<!-- TOC is not needed due to presence of minitoc in prod. -->
 
 ## Login issues
 
@@ -362,6 +299,10 @@ curl https://kms.us-east-1.amazonaws.com
 Next, ensure that your proxies are not blocking the URL or port 443.
 
 If this does not fix your error, and you are not using the default Harness KMS secret store, the AWS KMS access key provided in Harness for your own KMS store is likely invalid.
+
+### Secrets with line breaks and shell-interpreted special characters
+
+For information about handling secret with new line characters or other shell-interpreted special characters, go to [Add and reference text secrets - Line breaks and shell-interpreted characters](/docs/platform/secrets/add-use-text-secrets#line-breaks-and-shell-interpreted-characters).
 
 ## Triggers
 
