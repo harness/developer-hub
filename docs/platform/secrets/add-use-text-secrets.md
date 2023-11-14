@@ -60,7 +60,7 @@ To create a text secret:
 
    - **Reference Secret**: Enter the name of the existing secret in your Secret Manager that you want the **Reference Secret** to refer to, and then select **Test** to test the reference path. You can reference existing secrets in Azure Key Vault, Hashicorp Vault, AWS Secrets Manager, or GCP Secrets Manager.
 
-     ![](../secrets/static/test-secret-reference-path.png)
+      ![](../secrets/static/test-secret-reference-path.png)
 
 7. Select **Save**.
 
@@ -200,7 +200,7 @@ To address this, you can decode and write the secret to a file. For example, the
 echo <+secrets.getValue("my_secret")> | base64 -d > /path/to/file.txt
 ```
 
-For secrets that are not in base64, such as PEM files, you can convert them to base64 and then store them as [Harness file secrets]() before decoding them in your pipelines. You can also write secrets to files without base64, for example:
+For secrets that are not in base64, such as PEM files, you can convert them to base64 and then store them as [Harness file secrets](./add-file-secrets.md) before decoding them in your pipelines. You can also write secrets to files without base64, for example:
 
 ```shell
 echo '<+secrets.getValue("long_secret")>' > /tmp/secretvalue.txt
