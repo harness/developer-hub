@@ -18,7 +18,7 @@ You don't have to edit anything in the **Update Release Repo** and **Merge PR** 
 
 :::
 
-### Resolving Services, Environments and Clusters
+## Resolving services, environments, and clusters
 
 Before your actual Harness PR pipeline runs, you will notice two tabs where Harness resolves the [service, environment, and cluster configuration](/docs/continuous-delivery/gitops/pr-pipelines/pr-svc-env.md). These appear as **Service** and **Cluster** tabs and their successful runs have the following logs.
 
