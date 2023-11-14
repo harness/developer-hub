@@ -40,13 +40,13 @@ In addition to a [default codebase](#codebases), the following settings are conf
 * [Notifications](/docs/category/notifications)
 * [Flow Control: Synchronization barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers)
 * [Policy Sets](/docs/platform/governance/Policy-as-code/harness-governance-overview)
-* Advanced Options: Pipeline Timeout Settings, [Stage Execution Settings](/docs/platform/pipelines/run-specific-stage-in-pipeline/), and [Delegate Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* Advanced Options: Pipeline Timeout Settings, [Stage Execution Settings](/docs/platform/pipelines/run-specific-stage-in-pipeline/), and [Delegate Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
 
 :::tip
 
-Harness [Input Sets](/docs/platform/Pipelines/input-sets) are collections of runtime inputs for a pipeline run. Overlays are groups of Input Sets. Use Overlays to provide multiple Input Sets when you run a pipeline.
+Harness [Input sets](/docs/platform/pipelines/input-sets) are collections of runtime inputs for a pipeline run. Overlays are groups of input sets. You can use overlays to provide multiple input sets when you run a pipeline.
 
-With Input Sets and Overlays, you can use the same pipeline for multiple scenarios. You can define each scenario in an Input Set or Overlay, and then select the appropriate scenario at runtime.
+With input sets and overlays, you can use the same pipeline for multiple scenarios. You can define each scenario in an input set or overlay, and then select the appropriate scenario at runtime.
 
 :::
 
@@ -60,7 +60,7 @@ To [add a stage to a pipeline](/docs/platform/pipelines/add-a-stage/), select **
 
 :::tip
 
-To make pipelines more versatile, you can create [templates](/docs/category/templates), use [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables), and create [custom stages](/docs/platform/pipelines/add-a-custom-stage/), among other [optimization techniques](./optimize-and-more/optimizing-ci-build-times.md).
+To make pipelines more versatile, you can create [templates](/docs/category/templates), use [stage variables](/docs/platform/pipelines/add-a-stage.md#stage-variables), and create [custom stages](/docs/platform/pipelines/add-a-stage.md#add-a-custom-stage), among other [optimization techniques](./optimize-and-more/optimizing-ci-build-times.md).
 
 :::
 
@@ -117,12 +117,12 @@ You can specify conditional execution settings for an entire stage and for indiv
 
 For information about looping strategies to go:
 
-* [Looping strategies - matrix, repeat, parallelism](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism)
+* [Looping strategies - matrix, repeat, parallelism](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Optimize and enhance CI pipelines](/docs/category/optimize-and-enhance)
 
 ### Failure Strategies
 
-[Failure strategies](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) define how your stages and steps handle different failure conditions.
+[Failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) define how your stages and steps handle different failure conditions.
 
 Each failure strategy is comprised of the following:
 
@@ -151,3 +151,5 @@ Harness CI provides two interchangeable modes for creating pipelines: The **Visu
 You can freely switch between the two editors. When editing a pipeline in Harness, use the selector at the top of the **Pipeline Studio** to switch between the **Visual** and **YAML** editors.
 
 ![](./static/harness-yaml-quickstart-21.png)
+
+For more information about Harness YAML, go to the [Harness YAML overview](/docs/platform/pipelines/harness-yaml-quickstart).

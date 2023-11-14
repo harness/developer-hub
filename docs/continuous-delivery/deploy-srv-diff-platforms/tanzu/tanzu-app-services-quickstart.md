@@ -36,7 +36,8 @@ You'll learn how to:
    * Azure Artifacts
    * Jenkins
 * Before you create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization/). 
-* Your Harness delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate) added to it. 
+* Your Harness delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate) added to it.
+* For the test connection in the connector, Harness uses the CF SDK to get the list of organizations. If the credentials are correct, you get a list of organizations. Otherwise, the connection fails. For more information, see the [Cloud Foundry documentation](https://apidocs.cloudfoundry.org/196/organizations/list_all_organizations.html).
 
 ## Connect to a TAS provider
 
@@ -569,7 +570,7 @@ The TAS workflow for performing a basic deployment takes your Harness TAS servic
      :::
 
      </details>
-   - **Looping Strategy** - Select **Matrix**, **Repeat**, or **Parallelism** looping strategy. For more information, go to [looping strategies overview](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/).
+   - **Looping Strategy** - Select **Matrix**, **Repeat**, or **Parallelism** looping strategy. For more information, go to [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
    - **Policy Enforcement** - Add or modify a policy set to be evaluated after the step is complete. For more information, go to [CD governance](/docs/category/cd-governance).
 8. Select **Save**.
 
@@ -635,7 +636,7 @@ The canary deployment contains **Canary App Setup** and **App Resize** steps. Yo
      :::
 
      </details>
-   - **Looping Strategy** - Select **Matrix**, **Repeat**, or **Parallelism** looping strategy. For more information, go to [looping strategies overview](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/).
+   - **Looping Strategy** - Select **Matrix**, **Repeat**, or **Parallelism** looping strategy. For more information, go to [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
    - **Policy Enforcement** - Add or modify a policy set to be evaluated after the step is complete. For more information, go to [CD governance](/docs/category/cd-governance).
 9.  Select **Save**.
 
@@ -721,7 +722,7 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
      :::
 
      </details>
-   - **Looping Strategy** - Select **Matrix**, **Repeat**, or **Parallelism** looping strategy. For more information, go to [looping strategies overview](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/).
+   - **Looping Strategy** - Select **Matrix**, **Repeat**, or **Parallelism** looping strategy. For more information, go to [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
    - **Policy Enforcement** - Add or modify a policy set to be evaluated after the step is complete. For more information, go to [CD governance](/docs/category/cd-governance).
 9. Select **Save**.
 
@@ -783,7 +784,7 @@ Before performing a rolling deployment, the TAS Rolling Deploy step first verifi
      :::
    
      </details>
-   - **Looping Strategy** - Select **Matrix**, **Repeat**, or **Parallelism** looping strategy. For more information, go to [looping strategies overview](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/).
+   - **Looping Strategy** - Select **Matrix**, **Repeat**, or **Parallelism** looping strategy. For more information, go to [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
    - **Policy Enforcement** - Add or modify a policy set to be evaluated after the step is complete. For more information, go to [CD governance](/docs/category/cd-governance).
 7. Select **Save**.
 

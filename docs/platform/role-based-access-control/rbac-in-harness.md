@@ -204,7 +204,7 @@ To configure RBAC in Harness, you must:
 You can create users and user groups directly in Harness, and you can use automated provisioning, including:
 
 * [Okta SCIM](./provision-users-with-okta-scim.md)
-* [Azure AD SCIM](./provision-users-and-groups-using-azure-ad-scim.md)
+* [Microsoft Entra ID SCIM](./provision-users-and-groups-using-azure-ad-scim.md)
 * [OneLogin SCIM](./provision-users-and-groups-with-one-login-scim.md)
 * [Just-in-time provisioning](./provision-use-jit.md)
 
@@ -297,7 +297,7 @@ For more information about user groups and users, go to [Manage user groups](./a
 You can create user groups and users directly in Harness, and you can use automated provisioning, including:
 
 * [Okta SCIM](./provision-users-with-okta-scim.md)
-* [Azure AD SCIM](./provision-users-and-groups-using-azure-ad-scim.md)
+* [Microsoft Entra ID SCIM](./provision-users-and-groups-using-azure-ad-scim.md)
 * [OneLogin SCIM](./provision-users-and-groups-with-one-login-scim.md)
 * [Just-in-time provisioning](./provision-use-jit.md)
 

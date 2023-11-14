@@ -98,30 +98,6 @@ Listed below is the probe schema for the command probe with properties shared ac
    <td>The <code>command</code> contains the shell command, which should be run as part of cmdProbe
    </td>
   </tr>
-  <tr>
-   <td>insecureSkipVerify
-   </td>
-   <td>Flag to hold the flag to skip certificate checks for the httpProbe
-   </td>
-   <td>Optional
-   </td>
-   <td><code>true, false</code>
-   </td>
-   <td>The <code>insecureSkipVerify</code> contains flag to skip certificate checks.
-   </td>
-  </tr>
-  <tr>
-   <td>responseTimeout
-   </td>
-   <td>Flag to hold the flag to response timeout for the httpProbe
-   </td>
-   <td>Optional
-   </td>
-   <td>N/A <code>type: integer</code>
-   </td>
-   <td>The <code>responseTimeout</code> contains flag to provide the response timeout for the http Get/Post request.
-   </td>
-  </tr>
 </table>
 
 ### Source
@@ -408,21 +384,21 @@ Listed below is the probe schema for the command probe with properties shared ac
    </td>
    <td>Mandatory
    </td>
-   <td>N/A <code>type: integer</code>
+   <td>N/A <code>type: string</code>
    </td>
    <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data
    </td>
   </tr>
   <tr>
-   <td>retry
+   <td>attempt
    </td>
-   <td>Flag to hold the retry count of the probe
+   <td>Flag to hold the attempt of the probe
    </td>
    <td>Mandatory
    </td>
    <td>N/A <code>type: integer</code>
    </td>
-   <td>The <code>retry</code> contains the number of times a check is re-run upon failure in the first attempt before declaring the probe status as failed.
+   <td>The <code>attempt</code> contains the number of times a check is run upon failure in the previous attempts before declaring the probe status as failed.
    </td>
   </tr>
   <tr>
@@ -432,7 +408,7 @@ Listed below is the probe schema for the command probe with properties shared ac
    </td>
    <td>Mandatory
    </td>
-   <td>N/A <code>type: integer</code>
+   <td>N/A <code>type: string</code>
    </td>
    <td>The <code>interval</code> contains the interval for which probes waits between subsequent retries
    </td>
@@ -444,9 +420,9 @@ Listed below is the probe schema for the command probe with properties shared ac
    </td>
    <td>Optional
    </td>
-   <td>N/A <code>type: integer</code>
+   <td>N/A <code>type: string</code>
    </td>
-   <td>The <code>probePollingInterval</code> contains the time interval for which continuous probe should be sleep after each iteration
+   <td>The <code>probePollingInterval</code> contains the time interval for which continuous and onchaos probe should be sleep after each iteration
    </td>
   </tr>
   <tr>
@@ -496,4 +472,102 @@ probe:
       interval: 5
       retry: 1
       initialDelaySeconds: 5
+```
+
+### Inline Mode
+
+In the inline mode, the command probe is executed directly within the experiment pod. This mode is recommended for executing straightforward shell commands. It is the default mode and can be tuned by leaving out the 'source' field.
+
+Use the following example to tune this:
+
+```yaml
+# execute the command inside the experiment pod itself
+# cases where command doesn't need any extra binaries, which is not available in the experiment image
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "check-database-integrity"
+        type: "cmdProbe"
+        cmdProbe/inputs:
+          # command which needs to run in cmdProbe
+          command: "echo 'hello world'"
+          comparator:
+            # output type for the above command
+            # supports: string, int, float
+            type: "string"
+            # criteria which should be followed by the actual output and the expected output
+            #supports [>=, <=, >, <, ==, !=] for int and float
+            # supports [contains, equal, notEqual, matches, notMatches] for string values
+            criteria: "contains"
+            # expected value, which should follow the specified criteria
+            value: "hello"
+        mode: "Edge"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+```
+
+### Source Mode
+
+In source mode, the command is executed within a newly created pod, allowing for the specification of its image. This mode is useful when application-specific binaries are needed.
+
+Use the following example to tune this:
+
+```yaml
+# it launches the external pod with the source image and run the command inside the same pod
+# cases where command needs an extra binaries which is not available in the experiment image
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "check-database-integrity"
+        type: "cmdProbe"
+        cmdProbe/inputs:
+          # command which needs to run in cmdProbe
+          command: "<command>"
+          comparator:
+            # output type for the above command
+            # supports: string, int, float
+            type: "string"
+            # criteria which should be followed by the actual output and the expected output
+            #supports [>=, <=, >, <, ==, !=, oneOf, between] for int and float
+            # supports [contains, equal, notEqual, matches, notMatches, oneOf] for string values
+            criteria: "contains"
+            # expected value, which should follow the specified criteria
+            value: "<value-for-criteria-match>"
+          # source for the cmdProbe
+          source:
+            image: "<source-image>"
+            imagePullPolicy: Always
+            privileged: true
+            hostNetwork: false
+        mode: "Edge"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
 ```

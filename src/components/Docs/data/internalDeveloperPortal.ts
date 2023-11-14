@@ -17,7 +17,29 @@ export const idpCards: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "30min",
-    link: "/docs/internal-developer-portal/tutorials/service-onboarding-pipeline",
+    link: "/tutorials/internal-developer-portal/service-onboarding-pipeline",
+  },
+  {
+    title: "How to Register Your Software Components in Catalog ?",
+    module: MODULES.idp,
+    icon: "img/icon_idp.svg",
+    description:
+      "Create a Software Component and register it in Software Catalog.",
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "20min",
+    link: "/tutorials/internal-developer-portal/register-component-in-catalog", 
+  },
+  {
+    title: "How to use a short-lived secret to trigger a service onboarding pipeline?",
+    module: MODULES.idp,
+    icon: "img/icon_idp.svg",
+    description:
+      "Create a secret input field for developers to provide their credentials, and then use the credentials as a runtime input for a service onboarding pipeline.",
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "7min",
+    link: "/tutorials/internal-developer-portal/using-secret-as-an-input",   
   },
 ];
 
@@ -57,6 +79,12 @@ export const docsCards: CardSections = [
         module: MODULES.idp,
         description: "Learn how to automate service creation.",
         link: "/docs/internal-developer-portal/features/service-onboarding-pipelines",
+      },
+      {
+        title: "Scorecards",
+        module: MODULES.idp,
+        description: "Learn how to use Scorecards",
+        link: "/docs/internal-developer-portal/features/scorecard",
       },
     ],
   },

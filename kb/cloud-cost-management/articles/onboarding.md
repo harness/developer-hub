@@ -2,19 +2,17 @@
 
 The first goal when onboarding to CCM is to get all cloud billing data into Harness. At current time Harness covers AWS, Azure, GCP and Kubernetes.
 
+In general for every "payer account" you have in each cloud you will create a billing export, create/allow an identity access to said export, and then create a corresponding connector in Harness to allow us to start ingesting your billing information.
+
+The general recommendation is to use IaC whenever possible for creating these exports, roles, and connectors. You can use the UI as well but IaC helps to keep a record of your configuration and follows general best practice for shared cloud platforms.
+
 ## AWS
 
-Accounts in AWS are structured via organizations. The first step is to [create a CUR](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#cost-and-usage-reports-cur) (Cost Usage Report) in the master payer account in their AWS org. Once the CUR is created, we create an initial Harness AWS account connector tied to the master account that points to the CUR.
+![](../static/ccm-onboarding-aws.png)
 
-When configuring the AWS connector you are asked what features to enable. Usually (if following AWS best practices) there shouldn't be any other resources in the master account. This means we can usually only enable cost access for this account and not the others. If the customer still wants, you can enable the other features as needed.
+Accounts in AWS are structured via organizations. The first step is to [create a CUR](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#cost-and-usage-reports-cur) (Cost Usage Report) in the master payer account in their AWS org (or in every AWS account you want costs for if you do not leverage AWS organizations). Once the CUR is created, we will need to create a role that trusts Harness' AWS account, and has access to the S3 bucket that the CUR resides in.
 
-The connector wizard then hands you a cloud formation stack that defines what is needed. This involves an AWS role that has access to the S3 bucket for the CUR that trusts our Harness-owned AWS account with an external ID. The stack makes you enable each feature again via inputs to the stack. Once deployed it takes about a day for cost data to be flowing into Harness.
-
-You may need to adjust the S3 bucket policy to allow the newly created Harness IAM role to read objects in the bucket.
-
-[Read an in-depth article here on setting up your first AWS CCM connector.](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws)
-
-We optionally have a [terraform module](https://github.com/harness-community/terraform-aws-harness-ccm) that accomplishes the same goal as the cloudformation template if terraform is your preferred IaC.
+There is a cloudformation template to provision this role, or a Terraform module. [The cloudformation stack is located here](https://github.com/harness/harness-core/blob/develop/ce-nextgen/awstemplate/prod/HarnessAWSTemplate.yaml), and the [Terraform module here](https://github.com/harness-community/terraform-aws-harness-ccm).
 
 ```terraform
 module "ccm" {
@@ -32,9 +30,19 @@ module "ccm" {
 }
 ```
 
-After the master payer account, we need to provision the same harness role into all of the member accounts. Your platform teams will have their preferred way to do this but you can re-use the same cloud formation or terraform used on the master account, just leaving the “billing” feature set to false as this access is not needed in member accounts.
+If you are creating the CUR in a master account it is likely that you do not have other resources located in your account. If so you can just set `BillingEnabled` to true, and leave the other `Enabled` parameters set to false. If you do otherwise have resources in your billing account, you can optionally enable the other features as well.
 
-The next step is to create Harness AWS account connectors for each child account in AWS. Depending on your environment this could mean 10-100s of accounts. It is recommended that you use the [terraform provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_awscc) to do this at scale. You will need to note the role name you use when you create the role in the member accounts.
+Leave `PrincipalBilling` set to its default, change the `RoleName` as you see fit, set `BucketName` to the bucket where the CUR is being sent, and finally enter an `ExternalId`. The external id should follow the format `harness:891928451355:<string here>`. You can make the string anything you want, but the default recommended by Harness is to use your Harness account id.
+
+After the stack or module has been deployed, we can create the corresponding CCM AWS connector in your Harness account.
+
+[Read an in-depth article here on setting up your first AWS CCM connector.](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws)
+
+When configuring the CCM AWS connector in the UI you are asked what features to enable, you should enable the same features here as you enabled in the stack/module.
+
+The connector wizard then hands you a cloud formation stack that defines what is needed, this should have already been deployed so you can just continue to the next step.
+
+If you chose to use IaC to create your connectors, you can use terraform to accomplish the same configuration in code:
 
 ```terraform
 resource "harness_platform_connector_awscc" "master" {
@@ -49,10 +57,18 @@ resource "harness_platform_connector_awscc" "master" {
   ]
   cross_account_access {
     role_arn    = "arn:aws:iam::012345678901:role/HarnessCERole"
-    external_id = "harness:867530900000:sdjfhewfhsddfjw"
+    external_id = "harness:867530900000:myharnessaccountid"
   }
 }
+```
 
+Once created it takes about a day for cost data to be flowing into Harness.
+
+**You may need to adjust the S3 bucket policy to allow the newly created Harness IAM role to read objects in the bucket.**
+
+After the master payer account, we need to provision the same harness role (via the same stack/module) into all of the member accounts to be able to retrieve the account names, recommendations, inventory, and create autostopping rules. Because the scale of AWS organizations can be large, we recommend using IaC for this.
+
+```terraform
 resource "harness_platform_connector_awscc" "member1" {
   identifier = "member1"
   name       = "member1"
@@ -64,18 +80,20 @@ resource "harness_platform_connector_awscc" "member1" {
   ]
   cross_account_access {
     role_arn    = "arn:aws:iam::012345678902:role/HarnessCERole"
-    external_id = "harness:867530900000:sdjfhewfhsddfjw"
+    external_id = "harness:867530900000:myharnessaccountid"
   }
 }
 ```
 
-Repeat the above step for all master payers (organizations) and accounts that the customer has.
+Repeat the above step for all master payers (organizations) and accounts you have.
 
 ### Recommendations
 
 To make sure that EC2 recommendations are shown from all the AWS member accounts, you will need to enable [Rightsizing Recommendations](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-rightsizing.html) in each account from within the cost explorer.
 
 ## Azure
+
+![](../static/ccm-onboarding-azure.png)
 
 Subscriptions in Azure are organized in a Tenant with management groups. We first [create a billing export](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#azure-billing-exports) under the root tenant payer scope and then configure this export in Harness to get billing data ingested.
 
@@ -126,6 +144,8 @@ To get VM recommendations, you needs to [enable Azure Advisor VM/VMSS recommenda
 
 ## GCP
 
+![](../static/ccm-onboarding-gcp.png)
+
 Projects in gcp are structured via organizations. You should have a billing project in your GCP organization, this is the first project we should create a connector for. First you need to [create a billing export](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp#gcp-billing-export) in this billing project. You can optionally create a “detailed” billing export which exposes resource level information.
 
 The Harness GCP connector wizard walks you through entering the billing export information, and after checking the features you want to enable, prompts you with an itemized list of actions to take to grant this access to your GCP project. Again we are given a Harness owned service account that you can simply add to your organization. To save time you can give this access at the organization level to streamline the process
@@ -150,6 +170,8 @@ resource "harness_platform_connector_gcp_cloud_cost" "billing" {
 ```
 
 ## Kubernetes
+
+![](../static/ccm-onboarding-k8s.png)
 
 To start gathering k8s cloud costs, we need an existing Harness k8s connector at the account level. We can either go the route of deploying a delegate into every k8s cluster and creating corresponding k8s connectors for each delegate/custer, or if a central delegate is able to reach other cluster APIs then you can use one central delegate and use the master URL and credential method for your k8s connectors. As deploying multiple delegates is the most common method, we will focus on that here.
 
@@ -209,6 +231,12 @@ After deployment you can [follow the auto-stopping rule creation wizard](/docs/g
 ## Additional Activities
 
 After the initial setup it is best to get an overview of Perspectives, Budgets, Anomalies, Recommendations, and Cost Categories.
+
+### RBAC
+
+![](../static/ccm-onboarding-rbac.png)
+
+You should discuss with the CCM SME team (who usually would have CCM Admin or similar permissions in Harness) what other personas there are that will be accessing CCM. Once you define those personas and the things they will need to do within CCM, you can use Groups, Roles, and Resource Groups to define access profiles and assign access to groups of users.
 
 ### Cost Categories
 

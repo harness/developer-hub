@@ -61,8 +61,8 @@ The Harness GitOps Agent runs in your environment, but the remaining GitOps feat
 Harness has multiple Git-based features and it's important to understand the differences:
 
 * **GitOps:** used for deploying infrastructure and services. The Git commit in a source manifest repo triggers a sync between the desired state in Git and the live cluster state. This can be used to simply bootstrap clusters or for full service deployments.
-* **Config-as-Code:** Harness supports full YAML-based configuration of Pipelines and other Harness entities like Connectors. Harness Pipeline Studio includes a full YAML IDE with hints and autocomplete, so you can simply code your Pipelines as YAML. See [Harness YAML Quickstart](/docs/platform/pipelines/harness-yaml-quickstart).
-* **Harness Git Experience:** Harness can sync your Pipelines and other entities with Git repos so you can make all your changes in Git instead of, or in addition to, using the Harness Manager UI. See [Harness Git Experience Overview](/docs/platform/Git-Experience/git-experience-overview).
+* **Config-as-Code:** Harness supports full [YAML-based configuration of pipelines](/docs/platform/pipelines/harness-yaml-quickstart) and other Harness entities, like connectors. Harness Pipeline Studio includes a full YAML IDE with hints and autocomplete, so you can simply code your Pipelines as YAML.
+* **Harness Git Experience:** Harness can sync your pipelines and other entities with Git repos so you can make all your changes in Git instead of, or in addition to, using the Harness Manager UI. For more information, go to the [Harness Git Experience overview](/docs/platform/Git-Experience/git-experience-overview).
 
 ## Service
 
@@ -147,7 +147,9 @@ A cluster is the target deployment cluster that is compared to the desire state.
 
 Clusters are synced with the source manifests you add as GitOps Repositories.
 
-You can run an Agent in your target cluster or in any cluster that has access to your target clusters.
+You can run an agent on your application's destination cluster or on any cluster that has access to your application's clusters.
+
+By default, there is a cluster defined for every agent: the cluster that the agent (with destination cluster name `in-cluster` and cluster API URL `kubernetes.default.svc`) is running on. A namespaced agent, on the other hand, does not have the destination cluster name `in-cluster` because it does not have cluster-scope access. To provide the namespaced agent access to the cluster on which it is running, when creating the cluster, specify a service account with cluster-scope access.
 
 Only the Agent is needed for GitOps, but the Harness Delegate is needed for other Harness operations (RBAC, etc.). You can use the Agent cluster for both the Harness Delegate and the Agent, or just the Agent: 
 

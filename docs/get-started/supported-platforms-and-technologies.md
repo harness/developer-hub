@@ -98,11 +98,23 @@ import Ffs from '/docs/feature-flags/shared/ff-supported-platforms-shared-server
 
 <Ffs />
 
-## Harness Chaos Engineering
+## Chaos Engineering
 
 Perform chaos experiments on applications in your infrastructure, such as a Kubernetes cluster. Use predefined or custom workflow templates.
 
 Go to [Introduction to Chaos Module](../chaos-engineering/get-started/overview).
+
+## Code Repository
+
+:::note
+
+Currently, the Code Repository module is in beta and behind a feature flag. Contact [Harness Support](mailto:support@harness.io) if you're interested in this module.
+
+:::
+
+Manage code within Harness and accelerate development with security at scale.
+
+The [Harness Code Repository module](/docs/code-repository/code-supported.md) is a source code management (SCM) tool that fosters developer collaboration and accelerates innovation while keeping security and compliance in mind. Git-based repositories are seamlessly integrated across your software delivery processes in Harness. Collaborative code reviews with checks and rules enforcement foster teamwork, reduce risk, and maintain code quality.
 
 ## Collaboration
 
@@ -228,6 +240,37 @@ Harness includes native TUF support via the following:
 - Enforce the rotation of secrets and key management practices:
   - Harness provides [token key rotation natively](/docs/platform/automation/api/add-and-manage-api-keys#rotate-tokens).
 - Continuous Verification: TUF recommends the verification of deployments akin to [Harness Continuous Verification](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step).
+
+## Internal Developer Portal
+
+Harness Internal Developer Portal integrates with a number of third-party providers to provide a single pane of glass for developers.
+
+### Plugins for IDP
+
+Harness IDP supports a number of plugins to integrate the software catalog with third-party providers. Please find the growing list of [supported plugins](https://developer.harness.io/docs/category/available-plugins). This is a subset of the [Backstage plugin marketplace](https://backstage.io/plugins).
+
+### Git providers that IDP supports
+
+Any software component can be registered in the catalog by using a YAML file stored in the following Git providers:
+
+- GitHub
+- GitLab
+- Bitbucket
+- Azure Repos
+
+### CI/CD providers that IDP supports
+
+Harness IDP is agnostic to your CI/CD provider. Following are some of the examples. 
+
+- GitLab
+- CircleCI
+- GitHub Actions 
+
+:::info
+
+Harness CI and CD has a seamless out-of-the-box experience with IDP. 
+
+:::
 
 ## Harness Open Source Software (OSS) components
 

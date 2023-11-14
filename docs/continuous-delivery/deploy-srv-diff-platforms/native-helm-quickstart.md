@@ -283,6 +283,28 @@ The **Release name** setting in the stage **Infrastructure** is used as the Helm
 
 ![](./static/native-helm-quickstart-154.png)
 
+### Autodetecting Helm Charts without configuring release names
+
+:::note
+This feature is currently behind the feature flag, `CDS_IMPROVED_HELM_DEPLOYMENT_TRACKING`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+:::
+
+When you want to deploy a commodity Helm Chart (ElasticSearch, Prometheus, etc.) or a pre-packaged Helm Chart, Harness now automatically applies tracking labels to the deployed Helm service. You do not need to add `{{Release.Name}}` to your Helm Chart. 
+
+Harness is able to track the deployed Helm Chart in the Services dashboard. All chart information is also available to view in the Services dashboard. 
+
+This feature will be available for users on delegate version 810xx. Please ensure the delegate is up to date before opting into this feature.
+
+
+## Skipping chart tests
+
+If your charts contain [Helm charts tests](https://helm.sh/docs/topics/chart_tests/) and you want to skip these tests during deployment, you can add the `--skip-tests` command flag to the manifest details of the Helm chart.
+
+1. In the Harness Native Helm service, in **Manifests**, edit the chart.
+2. In **Manifest Details**, select **Advanced**.
+3. In **Command Type**, select **Template**.
+4. In **Flag**, enter `--skip-tests`. 
+
 ## Native Helm notes
 
 Please review the following notes.
@@ -296,6 +318,21 @@ For example, let's say you have a Pipeline that performs a Native Helm deploymen
 You might have several retries configured in the Pipeline, but all of them will fail when Harness runs a `helm history` in the prepare stage with the message: `there is an issue with latest release <latest release failure reason>`.
 
 Enable the **Ignore Release History Failed Status** option to have Harness ignore these errors and proceed with install/upgrade.
+
+#### Options for connecting to a Helm chart store
+
+The options avialable to you to specify a Helm chart store depend on whether or not specific feature flags are enabled on your account. Options available without any feature flags or with specific feature flags enabled are described here: 
+
+  * **Feature flag disabled**. Only one option is available: **OCI Helm Registry Connector**. This option enables you to connect to any OCI-based registry.
+  * **Feature flag enabled**. You can choose between connectors in the following categories:
+    - **Direct Connection**. Contains the OCI Helm Registry Connector option (shortened to **OCI Helm**), which you can use with any OCI-based registry.
+    - **Via Cloud Provider**. Contains the ECR connector option. This connector is specifically designed for AWS ECR to help you overcome the limitation of having to regenerate the ECR registry authentication token every 12 hours. The ECR connector option uses an AWS connector and regenerates the required authentication token if the token has expired.
+
+    :::note
+    This feature is behind the feature flag `CDS_OCI_HELM_ECR_CONFIG_SUPPORT_NG`. Contact Harness Support to enable the feature. 
+    :::
+
+    For the steps and settings of each option, go to [Connectors](/docs/category/connectors).
 
 ## Next Steps
 

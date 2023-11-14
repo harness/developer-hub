@@ -78,7 +78,7 @@ export default function IDP() {
             </div>
           </div>
           <div>
-            <img src={`${baseUrl}img/ci.svg`} />
+            <img src={`${baseUrl}img/idp.svg`} />
           </div>
         </div>
       </div>

@@ -182,6 +182,11 @@ For the main Kubernetes support, go to [Kubernetes deployment tutorial](/docs/co
 
 Next, you need to provide the JSON path to the JSON array object for the target hosts.
 
+### Important notes on the Fetch Instances script
+
+- The script must return an array of target instances (virtual machine, pod. etc.). If the template is to be used for executing a trigger to an external orchestrator (for example, Ansible, Puppet, etc.), the script should query the orchestrator to return the total instances running inside. If the script simply returns the application name, Harness cannot track the actual SI count.
+- If a service is scaling up/down post-deployemnt, the Fetch Instances script should be written in that way that it should always return the current state of the system. This script is run periodically post-deployment as part of a perpetual task.
+
 ## Define the Instance Object Array Path
 
 1. In **Instance Object Array Path**, you enter the JSON path to the JSON array object. In our example above, you can see that the array is under `items`.
@@ -202,7 +207,7 @@ For our Kubernetes example, we will use:
 * **Field Name:** `instancename`.
 * **JSON Path:** `metadata.name`.
 
-You can map any additional attributes containing information you want to reference in your Execution, most likely in a Shell Script step. See [Referencing fetched instances using expressions](#referencing_fetched_instances_using_expressions).
+You can map any additional attributes containing information you want to reference in your Execution, most likely in a Shell Script step. See [Referencing fetched instances using expressions](#referencing-fetched-instances-using-expressions).
 
 ## Add Execution steps
 
@@ -296,7 +301,7 @@ If you do not use `<+artifact.image>`, Harness will not attempt to download and 
 
 For non-containerized artifacts, use `<+artifact.path>`.
 
-To learn more, go to [Built-in and Custom Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables#artifact).
+To learn more, go to [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables#artifact).
 
 ## Create the Environment
 
@@ -346,7 +351,7 @@ kubectl describe deployment nginx-deployment
 ```
 ![](./static/custom-deployment-tutorial-27.png)
 
-Next, we need this script to loop through all the fetched instances. We do that by using a [Looping Strategy](../../platform/pipelines/looping-strategies-matrix-repeat-and-parallelism.mdn the step's **Advanced** section.
+Next, we need this script to loop through all the fetched instances. We do that by using a [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) in the step's **Advanced** section.
 
 1. Click **Advanced**.
 2. Click **Looping Strategy**.
@@ -489,9 +494,9 @@ The `<+instance...>` expressions refer to the **Instance Attributes** in the Dep
 
 The following expressions refer to instance(s) collected by the mandatory **instancename** field:
 
-* [<+instance.hostName>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostname)
-* [<+instance.host.hostName>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostinstancename)
-* [<+instance.name>](/docs/platform/Variables-and-Expressions/harness-variables#instancename)
+* [<+instance.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostname)
+* [<+instance.host.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostinstancename)
+* [<+instance.name>](/docs/platform/variables-and-expressions/harness-variables#instancename)
 
 The expression `<+instance.host.properties.[property name]>` can used to reference the other properties you added to **Instance Attributes**.
 
@@ -509,7 +514,7 @@ For example, here is a Shell Script step that outputs these expressions:
 
 1. In the step, in **Advanced**, click **Looping Strategy**.
 2. Select **Repeat**.
-3. In **Repeat**, use the Repeat [Looping Strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) and identify all the hosts for the stage as the target:
+3. In **Repeat**, use the Repeat [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) and identify all the hosts for the stage as the target:
 
 ```yaml
 repeat:  
@@ -519,9 +524,14 @@ Now when this step runs, it will run on every host returned by **Fetch Instances
 
 ### Where to put Fetch Instances and deployment steps
 
-The stage Execution must include the **Fetch Instances** step and a step to deploy the artifact to the instances fetched.
+The stage **Execution** must include the **Fetch Instances** step and a step to deploy the artifact to the instances fetched.
 
-Typically, the deployment steps come after the **Fetch Instances** step because you are fetching existing instances.
+There are two questions to consider when deciding where to put the **Fetch Instances** and deployment steps:
+
+1. Will you only know the instancs **before** deployment? Do you need to query some external source to be able to know which instances exist and then iterate over them to deploy to each instance?
+2. Will you only know the instancs **after** deployment? For example, if an external source like an orchestrator actually creates the instances, you won't know which instances exist until after you deploy.
+
+Typically, the deployment steps come after the **Fetch Instances** step because you are fetching existing instances. But in some cases, such as Kubernetes, you might want to place the **Fetch Instances** step after the deployment so that you are getting the pods that Kubernetes created. If you put **Fetch Instances** step before deployment, you will be using the pods that already exist.
 
 ### Command step in Deployment Template deployments
 

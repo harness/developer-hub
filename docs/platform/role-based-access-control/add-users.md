@@ -23,7 +23,7 @@ You can also create [service accounts](/docs/platform/role-based-access-control/
 You can [manually add users](#add-users-manually) and user groups in Harness, and you can use automated provisioning, including:
 
 * [Okta SCIM](./provision-users-with-okta-scim.md)
-* [Azure AD SCIM](./provision-users-and-groups-using-azure-ad-scim.md)
+* [Microsoft Entra ID SCIM](./provision-users-and-groups-using-azure-ad-scim.md)
 * [OneLogin SCIM](./provision-users-and-groups-with-one-login-scim.md)
 * [Just-in-time provisioning](./provision-use-jit.md)
 

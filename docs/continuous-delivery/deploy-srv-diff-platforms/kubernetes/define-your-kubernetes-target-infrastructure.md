@@ -422,12 +422,6 @@ To add an Infrastructure Definition with the EKS connection method, do the follo
 
 ### Rancher
 
-:::note
-
-Currently, this feature is behind the feature flag `CDS_RANCHER_SUPPORT_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Harness supports the ability to perform Kubernetes deployments into Rancher-managed Kubernetes clusters.
 
 You can use Harness Kubernetes and Native Helm deployment types to deploy into Rancher-managed clusters.

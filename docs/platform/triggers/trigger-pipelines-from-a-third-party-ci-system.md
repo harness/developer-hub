@@ -10,7 +10,7 @@ In some cases, you might be using a third-party CI system. You can still execute
 
 This topic describes how to set up and use a custom webhook trigger and run it as a cURL command for your third-party CI system.
 
-import Variables from '/docs/platform/triggers/shared/variables-not-supported.md'
+import Variables from '/docs/platform/shared/variables-not-supported.md'
 
 <Variables />
 
@@ -52,7 +52,7 @@ Make sure you have:
    
     ![](./static/custom-webhook-trigger-configuration.png)
 
-5. In **Conditions**, specify any [conditions](/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/) to be met before running the pipeline, and select **Continue**. 
+5. In **Conditions**, specify any [conditions](./triggers-reference.md#conditions-settings) to be met before running the pipeline, and select **Continue**. 
    
     For example, execute the pipeline if the source or target branch name matches a pattern.
 

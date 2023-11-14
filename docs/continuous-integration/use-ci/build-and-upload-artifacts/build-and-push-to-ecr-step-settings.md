@@ -92,7 +92,6 @@ To add the `PLUGIN_USER_ROLE_ARN` stage variable:
 2. In the **Advanced** section, add a stage variable.
 3. Enter `PLUGIN_USER_ROLE_ARN` as the **Variable Name**, set the **Type** to **String**, and then select **Save**.
 4. For the **Value**, enter the full ARN value.
-
    * For cross-account roles, this ARN value must correspond with the AWS connector's ARN.
    * For connectors that use the delegate's IAM role, the ARN value must identify the role you want the build pod/machine to use.
 
@@ -199,8 +198,8 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 
 ### Conditions, looping, and failure strategies
 
@@ -208,7 +207,7 @@ You can find the following settings on the **Advanced** tab in the step settings
 
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings): Set conditions to determine when/if the step should run.
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings): Control what happens to your pipeline when a step fails.
-* [Looping Strategies Overview -- Matrix, Repeat, and Parallelism](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism): Define a looping strategy for an individual step.
+* [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism): Define a matrix, repeat, or parallelism strategy for an individual step.
 
 ### Set kaniko runtime flags
 

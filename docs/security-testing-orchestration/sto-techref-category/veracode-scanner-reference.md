@@ -2,7 +2,7 @@
 title: Veracode scanner reference for STO
 description: Repository scans with Veracode
 sidebar_label: Veracode scanner reference
-sidebar_position: 320
+sidebar_position: 410
 helpdocs_topic_id: cy0deg32w9
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
@@ -83,3 +83,75 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 ```
 <StoSettingFailOnSeverity />
 
+## Veracode pipeline example (dataLoad)
+
+The following pipeline example illustrates a dataLoad workflow to ingest data from Veracode. It consists of two steps: 
+
+1. A Background step that runs Docker-in-Docker service (required if you're using a Security step to configure your integration). 
+
+2. A Security step that specifies the information needed to ingest the scan results from the Veracode server.
+
+![](./static/veracode-pipeline-example.png)
+
+
+```yaml
+
+pipeline:
+  allowStageExecutions: false
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: scan1
+        identifier: build
+        type: SecurityTests
+        spec:
+          cloneCodebase: false
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: K8S_DELEGATE_CONNECTOR
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          sharedPaths:
+            - /var/run
+          execution:
+            steps:
+              - step:
+                  type: Background
+                  name: dind-bg-step
+                  identifier: dindbgstep
+                  spec:
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    image: docker:dind
+                    shell: Sh
+                    entrypoint:
+                      - dockerd
+              - step:
+                  type: Security
+                  name: Veracode
+                  identifier: bandit
+                  spec:
+                    privileged: true
+                    settings:
+                      policy_type: dataLoad
+                      scan_type: repository
+                      repository_project: VERACODE_REPOSITORY_PROJECT
+                      repository_branch: VERACODE_REPOSITORY_BRANCH
+                      product_name: veracode
+                      product_config_name: veracode-agent
+                      product_access_token: <+secrets.getValue("my_veracode_token")>
+                      product_access_id: <+secrets.getValue("my_veracode_id")>
+                      product_app_id: VERACODE_PRODUCT_APP_ID
+                      product_auth_type: apiKey
+                    imagePullPolicy: Always
+        variables: []
+  identifier: Veracodedataloadtest
+  name: Veracode-dataload-test
+
+
+
+```

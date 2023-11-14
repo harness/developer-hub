@@ -156,6 +156,22 @@ To use custom sequencing, do the following:
   
   You can disable custom sequencing by toggling it off.
 
+### Chart Versions tab
+
+:::note Important Notes
+- This information appears only for services that were deployed using Helm charts. 
+- Currently, this feature is behind the Feature Flag `CDC_SERVICE_DASHBOARD_REVAMP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+ The **Chart Versions** tab shows tiles for each Helm chart used to deploy the service (and a tile for any non-Helm deployments). Each tile shows the instances/artifact, environment, and latest deployment time. 
+
+<docimage path={require('/docs/continuous-delivery/monitor-deployments/static/cds-77310-charts-tab-callouts.png')} width="100%" height="100%" title="Click to view full size image" />
+
+To view details for a specific Helm chart, click the version link in the tile.
+
+<docimage path={require('/docs/continuous-delivery/monitor-deployments/static/cds-77310-chart-version-tile-callouts.png')} width="80%" height="80%" title="Click to view full size image" />
+
+
 ## Platform Dashboards
 
 The account-wide Platform Dashboards in Harness contain built-in dashboards that provide advanced details about your deployments and services.
@@ -230,8 +246,6 @@ Harness CD includes an extensive set of dashboard components that provide visibi
 
 :::note Important notes
 
-- Currently, this feature is behind the Feature Flag `CDS_STEP_EXECUTION_DATA_SYNC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
 - Dashboard components for ServiceNow approvals are not currently available. 
 
 :::
@@ -292,10 +306,6 @@ Harness CD includes an extensive set of dashboard components that provide visibi
 * Which stages and steps have the most failures? 
 
 * How much time is spent deploying artifacts vs. waiting for Jira approvals and other manual interventions? 
-
-:::note
-This feature is behind the feature flag `CDS_CUSTOM_STAGE_EXECUTION_DATA_SYNC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
 
 <figure>
 

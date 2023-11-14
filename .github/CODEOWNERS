@@ -1,0 +1,153 @@
+# HDH Codeowners file.
+# Created October 2023 - https://harness.atlassian.net/browse/HDH-189
+# Applies to Repository Structure, not URL per-se. 
+# Learn more at: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global Owners of the HDH Repository 
+*       @ravilach @wei-harness
+
+# Configuration Files in DS are JS. 
+*.js    @wei-harness
+
+# Changes to Lock File
+*.lock  @wei-harness
+
+# Knowledge Base
+/kb/ @deepanshuHarness 
+
+# Certification
+/certifications/ @ravilach 
+
+# Community
+/community/ @Ompragash 
+
+# Redirect Archives
+/archive/  @ravilach @wei-harness
+
+# Documentation
+
+# Continuous Delivery Docs
+/docs/continuous-delivery/ @michaelcretzman @deepakbolangady @roshnisarangadharan 
+
+# Continuous Integration Docs
+/docs/continuous-integration/ @aimurphy
+
+# STO Docs
+/docs/security-testing-orchestration/ @douglas-j-bothwell
+
+# CCM Docs
+/docs/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki 
+
+# CET Docs
+/docs/continuous-error-tracking/ @SudheendraKatte
+
+# SRM Docs
+/docs/service-reliability-management/ @SudheendraKatte
+
+# Chaos Docs
+/docs/chaos-engineering/ @neelanjan00 @SmritiSatya
+
+# Platform Docs
+/docs/platform/ @brian-f-harness @harishkammanahalli
+
+# IDP Docs
+/docs/internal-developer-portal/ @Debanitrkl
+
+# SSCA Docs
+/docs/software-supply-chain-assurance/ @sunilgupta-harness
+
+# IACMS Docs
+/docs/infra-as-code-management/ @RickCraig
+
+# FF Docs
+/docs/feature-flags/ @ethangj
+
+# FirstGen Docs
+/docs/first-gen/ @michaelcretzman
+
+# FAQ Docs
+/docs/faqs/ @michaelcretzman
+
+# Release Notes
+
+#CD Release Notes
+release-notes/continuous-delivery.md @michaelcretzman @deepakbolangady @roshnisarangadharan 
+
+#CCM Release Notes
+release-notes/cloud-cost-management.md @rdsoze
+
+#CE Release Notes
+release-notes/chaos-engineering.md @neelanjan00 @SmritiSatya
+
+#CET Release Notes
+release-notes/continuous-error-tracking.md @SudheendraKatte
+
+#CI Release Notes
+release-notes/continuous-integration.md @aimurphy
+
+#Delegate Release Notes
+release-notes/delegate.md @brian-f-harness @harishkammanahalli
+
+#FF Release Notes
+release-notes/feature-flags.md @ethangj
+
+#IDP Release Notes
+release-notes/internal-developer-portal.md @Debanitrkl
+
+#Platform Release Notes
+release-notes/platform.md @brian-f-harness @harishkammanahalli
+
+#STO Release Notes
+release-notes/security-testing-orchestration.md @douglas-j-bothwell
+
+#SMP
+release-notes/self-managed-enterprise-edition.md @brian-f-harness @harishkammanahalli
+
+#SRM Release Notes
+release-notes/service-reliability-management.md @SudheendraKatte
+
+#SSCA Release Notes
+release-notes/service-reliability-management.md @sunilgupta-harness
+
+# Tutorials
+
+# CD Tutorials
+/tutorials/cd-pipelines/ @ravilach @Ompragash @nicholaslotz @dewan-ahmed 
+
+# Chaos Tutorials
+/tutorials/chaos-experiments/ @neelanjan00 @SmritiSatya
+
+# CI Tutorials
+/tutorials/ci-pipelines/ @jimsheldon @aimurphy
+
+# CCM Tutorials
+/tutorials/cloud-costs/ @rdsoze 
+
+# CET Tutorials
+/tutorials/error-tracking/ @SudheendraKatte 
+
+# FF Tutorials
+/tutorials/feature-flags/ @ethangj 
+
+# HDH Tutorials
+/tutorials/hdh/ @ravilach
+
+# IDP Tutorials
+/tutorials/hdh/ @Debanitrkl
+
+# Platform Tutorials
+/tutorials/platform/ @brian-f-harness
+
+# SSCA Tutorials
+/tutorials/secure-supply-chain/ @sunilgupta-harness
+
+# STO Tutorials
+/tutorials/secure-supply-chain/ @douglas-j-bothwell
+
+# SMP Tutorials
+/tutorials/self-managed-enterprise-edition/ @brian-f-harness
+
+# SRM Tutorials
+/tutorials/service-reliability/ @SudheendraKatte
+
+

@@ -49,6 +49,16 @@ Here are some examples:
 - Correct: `<+pipeline.variables.EXPECTED_RESPONSE>==<+httpResponseCode>`.
 - Incorrect: `<+pipeline.variables.EXPECTED_RESPONSE>"=="<+httpResponseCode>`.
 
+### Assertion failures and failure strategies
+
+Step failures are grouped into several categories, such as **Authentication Errors**, **Timeout Errors**, etc. When you set up a stage or step failure strategy, you can select which error category initiates the strategy.
+
+For HTTP assertions, the **Unknown Errors** category initiates the strategy. 
+
+If you want a failure strategy to run when the HTTP step assertion fails, in the HTTP step **Advanced Settings**, **Failure Strategy**, in **On failure of type**, select **Unknown Errors** and then define your strategy.
+
+When an assertion fails
+
 ## Headers in the HTTP step
 
 Enter the media type for the message. For example, if you are using the GET method, the headers are used to specify the GET response body message type.
@@ -93,14 +103,16 @@ To concatenate strings within the JSON functor:
 
 For more information, go to [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors).
 
+Output variables also support [JEXL expressions](https://commons.apache.org/proper/commons-jexl/reference/syntax.html).
+
 ## Advanced step settings
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## Step execution inputs and outputs
@@ -138,6 +150,21 @@ In the following examples, the Id of the HTTP step is `HTTP`.
 | httpResponseBody | `<+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpResponseBody>` | `Hello` |
 | status | `<+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.status>` | `SUCCESS` |
 
+
+## Use a certificate and key
+
+:::note 
+
+This feature is behind the feature flag `CDS_HTTP_STEP_NG_CERTIFICATE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You can specify a TSL certificate and key for the HTTP step. This enables TLS encryption for your HTTP services. 
+
+1. In **Optional Configuration**, in **Certificate**, enter the certificate, including the `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
+2. In **Certificate Key**, enter the public key.
+
+You can use fixed values, expressions, or runtime inputs for these settings. It is good practice to use Harness [file secrets](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) and [text secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/) for these values.
 
 ## Delegate proxy
 

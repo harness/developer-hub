@@ -11,11 +11,9 @@ The recommended workflow is add a $PRODUCT step to a Security Tests or CI Build 
 
 You can also set up a $PRODUCT scan in a [Security step](#security-step-configuration-deprecated) but this workflow is deprecated. 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 <details>
     <summary>Scanner Template</summary>

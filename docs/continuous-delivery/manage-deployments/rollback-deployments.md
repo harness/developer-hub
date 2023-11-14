@@ -29,7 +29,8 @@ Post deployment rollback initiates a rollback of your most recent successful dep
 * You cannot roll back the same pipeline multiple times. You can perform rollback if the pipeline is executed again.
 * If the pipeline configuration has changed between executions, the previous execution YAML is used as reference to roll back.
 * Rollback steps can use expressions that refer to steps executed during the previous pipeline execution. The expressions are automatically resolved with values from the original execution.
-* The stages should roll back in reverse order when  deployment rollback is triggered. 
+* The stages should roll back in reverse order when  deployment rollback is triggered.
+* Rolling back to a previous post-production deployment is only possible for executions that occurred within the past 30 days.
 
 ## Roll back deployments
 

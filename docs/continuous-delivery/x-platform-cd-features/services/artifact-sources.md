@@ -142,7 +142,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Docker connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Docker connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Docker connector example</summary>
@@ -301,7 +301,7 @@ To add an artifact from a Docker registry, do the following:
 
   :::
 14. Select **Submit**. The Artifact is added to the Service Definition.
- <!-- CDS-71711 -->
+
 
 
 ```mdx-code-block
@@ -420,7 +420,7 @@ service:
   </TabItem>
   <TabItem value="API" label="API">
 ```
-Create the GCR connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the GCR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>GCR connector example</summary>
@@ -515,7 +515,7 @@ To add an artifact from GCR, do the following:
     ![](./static/kubernetes-services-10.png)
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
- <!-- CDS-71711 -->
+
 14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
@@ -526,7 +526,7 @@ To add an artifact from GCR, do the following:
 
   :::
 14. Select **Submit**. 
- <!-- CDS-71711 -->
+
     
     The Artifact is added to the **Service Definition**.
 
@@ -681,7 +681,7 @@ service:
   </TabItem>
   <TabItem value="API" label="API">
 ```
-Create the GCP connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the GCP connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>GCP connector example</summary>
@@ -895,7 +895,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Google Artifact Registry connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Google Artifact Registry connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>GCR connector example</summary>
@@ -1008,7 +1008,7 @@ To add an artifact from Google Artifact Registry, do the following:
 
     ![](static/kubernetes-services-11.png)
 
- <!-- CDS-71711 -->
+
 20. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
     :::note 
@@ -1019,7 +1019,7 @@ To add an artifact from Google Artifact Registry, do the following:
 
     :::
 21. Select **Submit**. The Artifact is added to the Service Definition.
- <!-- CDS-71711 -->
+
 
 
 ```mdx-code-block
@@ -1148,7 +1148,7 @@ service:
 <details>
 <summary>Azure Artifact connector example</summary>
 
-Create the Azure Artifact connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Azure Artifact connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 
 ```yaml
@@ -1401,7 +1401,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the ACR connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the ACR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>ACR connector example</summary>
@@ -1808,7 +1808,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the ECR connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the ECR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>ECR connector example</summary>
@@ -1889,15 +1889,15 @@ You connect to ECR using a Harness AWS Connector. For details on all the ECR req
 To add an artifact from ECR, do the following:
 
 1. In your project, in CD (Deployments), select **Services**.
-2. Select **Manage Services**, and then select **New Service**.
+2. Select **New Service**.
 3. Enter a name for the service and select **Save**.
-4. Select **Configuration**.
-5. In **Service Definition**, select **Kubernetes**.
-6. In **Artifacts**, select **Add Artifact Source**.
-7. In **Artifact Repository Type**, click **ECR**, and then select **Continue**.
-8. In **ECR Repository**, select or create an [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) that connects to the AWS account where the ECR registry is located.
-9. Select **Continue**.
-10. In **Artifact Details**, in **Region**, select the region where the artifact source is located.
+4. In **Configuration** > **Service Definition**, select **Kubernetes**.
+5. In **Artifacts**, select **Add Artifact Source**.
+6. In **Artifact Repository Type**, click **ECR**, and then select **Continue**.
+7. In **ECR Repository**, select or create an [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) that connects to the AWS account in which the ECR registry is located.
+8. Select **Continue**.
+9. In **Artifact Details**, in **Region**, select the region where the artifact source is located.
+10. (Optional) In **Registry ID**, enter the AWS account ID of the ECR registry you want to use. This field is useful when the AWS connector can access AWS accounts other than the one it is configured with. If you do not specify a registry ID, Harness uses the default registry associated with the AWS account. 
 11. If the IAM user has access to the repository in the secondary account, in **Registry ID**, specify the AWS account ID associated with that repository.
     :::note 
     Only Tags can be fetched from the repository in the secondary account. You must specify the image path manually.
@@ -1908,8 +1908,8 @@ To add an artifact from ECR, do the following:
     ![ECR artifact details](static/74fe6d9189f8f18b2e854598026ab1db27944dab47c3056f4ffaaab93582242a.png)
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
- <!-- CDS-71711 -->
-13. To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+
+14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
 
@@ -1918,8 +1918,8 @@ To add an artifact from ECR, do the following:
   If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
   :::
-14. Select **Submit**. The Artifact is added to the Service Definition.
- <!-- CDS-71711 -->
+15. Select **Submit**. The Artifact is added to the Service Definition.
+
     
  ![ECR artifact source in a service](static/769c54fe91e7497b4aef3733f128361457b933f1d0eccd0d9b3491f1da4ed0c7.png)
 
@@ -2123,7 +2123,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the AWS connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the AWS connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>AWS connector example</summary>
@@ -2221,10 +2221,7 @@ To add an artifact from an S3 bucket, do the following:
     2. in **Region**, select the region where the artifact source is located.
     3. In **Bucket Name**, select the bucket where the artifact is located
     4. In **File path**, enter the path (from the bucket root) and name of the artifact you want to deploy.
-11. Select **Submit**.
-    
-    ![](static/kubernetes-services-13.png)
-    
+11. Select **Submit**.    
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 12. Select **Submit**. The Artifact is added to the Service Definition.
 
@@ -2379,7 +2376,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the AWS connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the AWS connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>AWS connector example</summary>
@@ -2496,7 +2493,7 @@ To add an artifact from an S3 bucket, do the following:
 <details>
 <summary>Use Nexus artifacts</summary>
 
-You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](/docs/platform/pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference/).
+You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](/docs/platform/connectors/artifact-repositories/nexus-connector-settings-reference).
 
 
 ```mdx-code-block
@@ -2575,7 +2572,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Nexus connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Nexus connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Nexus connector example</summary>
@@ -2680,7 +2677,7 @@ To add an artifact from Nexus, do the following:
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 
- <!-- CDS-71711 -->
+
 14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
@@ -2851,7 +2848,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Artifactory connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Artifactory connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Artifactory connector example</summary>
@@ -2929,28 +2926,39 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, go to [Artifactory Connector Settings Reference](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo).
 
+<!-- CDS-77239 -->
+
 To add an artifact from Artifactory, do the following:
 
 1. In your project, in CD (Deployments), select **Services**.
 2. Select **Manage Services**, and then select **New Service**.
 3. Enter a name for the service and select **Save**.
 4. Select **Configuration**.
-5. In **Service Definition**, select **Kubernetes**.
+5. In **Service Definition**, select the deployment type.
 6. In **Artifacts**, select **Add Artifact Source**.
 7. In **Artifact Repository Type**, select **Artifactory**, and then select **Continue**.
-8. In **Artifactory Repository**, select of create an Artifactory Connector that connects to the Artifactory account where the repo is located. Click **Continue**.
-9. The **Artifact Details** settings appear.
-10. In **Repository URL**, enter the URL from the `docker login` command in Artifactory's **Set Me Up** settings.
+8. In **Artifactory Connector**, select or create an Artifactory connector that connects to the Artifactory account where the repo is located. Click **Continue**. The **Artifact Details** settings appear.
+10. Enter an **Artifact Source Identifier** and select the **Repository Format**. 
+11. Set the artifact details based on the format: 
+    - [Docker repository format](#docker-repository-format)
+    - [Generic repository format](#generic-repository-format)
+
+#### Docker repository format
+
+1. In **Repository**, enter the repo name. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `docker-remote`.
+2. In **Artifact/Image Path**, enter the path to the artifact. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
+3. In **Repository URL**, enter the URL from the `docker login` command in Artifactory's **Set Me Up** settings.
     
     ![](static/kubernetes-services-15.png)
-11. In **Repository**, enter the repo name. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `docker-remote`.
-12. In **Artifact Path**, enter the path to the artifact. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
-13. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
+
+4. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
+
+    You can use a regex to select an image based on a matching pattern. Suppose you have a set of images with tags `3.1.1`, `3.1.2`, `3.1.3.1`, `3.1.3.2`, and `3.1.3.4`. Select **Regex**, then set **Tag Regex** `3.1*` to select the most recent image with prefix `3.1`, in this case the image with tag `3.1.3.4`.
     
-    ![](static/kubernetes-services-16.png)
-14. If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
- <!-- CDS-71711 -->
-15. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+    ![](static/kubernetes-services-16-docker.png)
+5. If you use runtime inputs when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
+
+6. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
 
@@ -2959,9 +2967,55 @@ To add an artifact from Artifactory, do the following:
   If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
   :::
-16. Select **Submit**. The Artifact is added to the Service Definition.
- <!-- CDS-71711 -->
+7. Select **Submit**. The Artifact is added to the Service Definition.
 
+
+#### Generic repository format
+
+<figure>
+
+<docimage path={require('./static/kubernetes-services-16-generic.png')} width="100%" height="100%" title="Click to view full size image" />  
+
+<figcaption>Figure 1: Elements in the Artifactory UI and their equivalents in the <b>Artifact Details</b> dialog box.</figcaption>
+
+</figure>
+
+1. In **Repository**, enter the repo name. If the full path is `my-apps/myticketservice/1.0/ticket-service-1.0.jar`, you would enter `my-apps`.
+2. Select the method for specifying the artifacts you want to deploy:
+   - **Artifact Directory** Specify a hard-coded path to the artifacts.
+   - **Artifact Filter** Use an expression to specify the path. Useful if you want to fetch  artifacts from different paths.
+3. Specify the artifacts you want to deploy.
+ 
+   - If you selected **Artifact Directory**:
+     1. In **Artifact Directory**, enter the path to the artifacts. If the full path is `my-apps/myticketservice/1.0/ticket-service-1.0.jar`, you would enter `myticketservice/1.0`.
+     2. Set **Artifact Details** to **Value** or **Regex** (to select an artifact based on a pattern). 
+     3. Specify the value or the regex for the artifacts.
+        
+        If you selected **Regex**, enter the **Artifact Path Filter** for the artifacts you want to fetch. For example, suppose your service has a front end and a back end, and you store the latest artifacts in a `/latest` subfolder, like this:
+            `/myService/latest/front-service.zip`
+            `/myService/latest/back-service.zip`
+        To fetch both artifacts, you can specify `/myService` for the artifact directory and `latest/*.zip` for the artifact path filter.
+
+   - If you selected **Artifact Filter**, enter an expression that matches the artifacts you want to fetch. Here are some examples of expressions you can use:
+      - `*/*` : Fetch all artifacts from all directories including their subdirectories.
+      - `*/*.zip` : Fetch all `.zip` artifacts from all directories, including subdirectories.
+      - `*`: Fetch all artifacts in the root directory.
+      - `*.zip` : Fetch all `.zip` artifacts in the root directory.
+      - `folder/*` : Fetch all artifacts contained in directory `folder`.
+      - `folder/*.zip` : Fetch all `.zip` artifacts contained in directory `folder`.
+      - `folder/*/*` : Fetch all artifacts from all directories/subdirectories under `folder`, for example `folder/folder1`, `folder/folder1/folder2`, `folder/folder1/folder2/folder3`, etc.
+      - `folder/*/*.zip` : Fetch all `.zip` artifacts from all directories/subdirectories under `folder`.
+      - `folder*/*` : Fetch all artifacts from directories/subdirectories that match `folder*`, for example `folder`, `folder123`, `folder/x/y/z`, etc. 
+
+      :::note
+
+      You cannot apply a filter that finds BOTH artifacts in a folder AND all subdirectories under that folder. Thus `folder/*` finds artifacts in `folder` but no subdirectories, and `folder/*/*` finds artifacts in all subdirectories but not in `folder`. 
+
+      :::
+
+   If you use a runtime input when you deploy the pipeline, Harness will pull the list of artifacts from the repo and prompt you to select one.
+
+7. Select **Submit**. The Artifact is added to the Service Definition.
 
 
 ```mdx-code-block
@@ -3092,7 +3146,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Bamboo connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Bamboo connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Bamboo connector example</summary>
@@ -3184,12 +3238,6 @@ Package type (`packageType`) support:
 - NPM
 - Maven
 - Nuget
-
-:::note
-
-Currently, support for NPM, Maven, and Nuget are behind the feature flag `CDS_GITHUB_PACKAGES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 You connect to GitHub using a Harness [GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference), username, and personal access token (PAT).
 
@@ -3283,7 +3331,7 @@ service:
   <TabItem value="API" label="API">
 ```
 
-Create the Github connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Github connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Github connector example</summary>
@@ -3426,7 +3474,7 @@ To add an artifact from Github Packages, do the following:
 13. In **Package Name**, select the name of the package.
 14. In **Version**, select the version to use. 
 <!-- CDS-71711 -->
-15. To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by digest is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+1.  To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by digest is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
 

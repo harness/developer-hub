@@ -35,7 +35,7 @@ An artifact source does not need to be defined in the service definition for the
 
 :::
 
-import Variables from '/docs/platform/triggers/shared/variables-not-supported.md'
+import Variables from '/docs/platform/shared/variables-not-supported.md'
 
 <Variables />
 
@@ -64,8 +64,15 @@ The following artifact providers are supported behind the feature flag `CD_TRIGG
 
 ## Important notes
 
-* If more than one artifact is collected during the polling interval (one minute), only one deployment will be started and will use the last artifact collected.
-* The trigger is executed based on **file names** and not metadata changes.
+* **One artifact triggers deployment:** If more than one artifact is collected during the polling interval (one minute), only one deployment will be started and will use the last artifact collected.
+* **All artifacts trigger deployment:** All artifacts collected during the polling interval will trigger a deployment, with one deployment triggered for each artifact collected.
+  
+  :::note
+
+  To enable this feature, go to your Harness project/org/account **Default Settings**, select **Pipeline**, and then enable **Execute Triggers With All Collected Artifacts or Manifests**.
+
+  :::
+* **Trigger based on file name:** The trigger is executed based on _file names_ and not metadata changes.
 * Do not trigger on the **latest** tag of an artifact, such as a Docker image. With latest, Harness only has metadata, such as the tag name, which has not changed, and so Harness does not know if anything has changed. The trigger will not be executed.
 * In Harness, you can select who is able to create and use triggers within Harness, but you must use your repository's RBAC to control who can add the artifacts or initiate the events that start the Harness trigger.
 * Whenever you create a trigger for the first time, Harness recommends submitting a tag or pushing an artifact to verify its functionality. By doing this, the trigger will execute and the pipeline will run as expected when subsequent tags are pushed.
@@ -75,7 +82,7 @@ The following artifact providers are supported behind the feature flag `CD_TRIGG
 
 Familiarize yourself with Harness CD pipelines, such as the one you create in the [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
-### Visual summary
+## Visual summary
 
 This 5 minutes video walks you through building an app from source code and pushing it to Docker Hub using Harness CIE, and then having an **On New Artifact Trigger** execute a CD pipeline to deploy the new app release automatically.
 
@@ -84,13 +91,13 @@ https://www.youtube.com/embed/nIPjsANiKRk-->
 <docvideo src="https://www.youtube.com/embed/nIPjsANiKRk" />
 
 
-### Artifact polling
+## Artifact polling
 
 Once you have created a trigger to listen for new artifacts, Harness will poll for new artifacts continuously.
 
 Polling is immediate because Harness uses a perpetual task framework that constantly monitors for new builds/tags.
 
-### Using the <+trigger.artifact.build> and <+lastPublished.tag> expressions
+## Using the <+trigger.artifact.build> and <+lastPublished.tag> expressions
 
 When you add a Harness service to the CD stage, you can set the artifact tag to use in **Artifacts Details**.
 
@@ -117,7 +124,7 @@ If you want the pipeline to deploy the last successful published artifact versio
 
 You can also set tag as a runtime input and then use `<+trigger.artifact.build>` in the trigger's [Pipeline Input](#step-3-select-pipeline-inputs) settings.
 
-### Create an artifact trigger
+## Create an artifact trigger
 
 1. Select a Harness pipeline that includes an artifact in the stage's **Service Definition**.
 
@@ -172,10 +179,11 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**.
-3. Create or select the AWS Connector to connect Harness to ECR, and then select **Continue**. For steps on AWS connectors, go to [AWS Connector Settings Reference](../connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
-4. In **Artifact Details**, in **Region**, select the region for the ECR service you are using.
-5. In **Image Path**, enter the path to the repo and image. You can copy the URI value from the repo in ECR. For example, `public.ecr.aws/l7w9l6a8/todolist` (public repo) or `085111111113.dkr.ecr.us-west-2.amazonaws.com/todolist` (private repo).
-6. Select **Continue**.
+3. In **Artifact Repository**, create or select the AWS Connector to connect Harness to ECR, and then select **Continue**. For information about configuring AWS connectors, go to [AWS Connector Settings Reference](../connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
+4. In **Artifact Location**, in **Region**, select the region for the ECR service you are using.
+5. (Optional) In **Registry ID**, enter the AWS account ID of the ECR registry you want to use. This field is useful when the AWS connector can access AWS accounts other than the one it is configured with. If you do not specify a registry ID, Harness uses the default registry associated with the AWS account. 
+6. In **Image Path**, enter the path to the repo and image. You can copy the URI value from the repo in ECR. For example, `public.ecr.aws/l7w9l6a8/todolist` (public repo) or `085111111113.dkr.ecr.us-west-2.amazonaws.com/todolist` (private repo).
+7. Select **Continue**.
 
 ```mdx-code-block
 </TabItem>
@@ -237,11 +245,11 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 </Tabs>
 ```
 
-### Set conditions
+## Set conditions
 
 In **Conditions**, enter any conditions that must be matched in order for the trigger to execute.
 
-#### Regex and wildcards
+### Regex and wildcards
 
 You can use wildcards in the condition's value and you can select **Regex**.
 
@@ -254,7 +262,7 @@ If the regex expression does not result in a match, Harness ignores the value.
 
 Harness supports standard Java regex. For example, if regex is enabled and the intent is to match any branch, the wildcard should be `.*` instead of simply a wildcard `*`. If you wanted to match all of the files that end in `-DEV.tar` you would enter `.*-DEV\.tar`.
 
-#### Set metadata conditions
+### Set metadata conditions
 
 On New Artifact Triggers support conditions based on artifact metadata expressions.
 
@@ -399,10 +407,40 @@ You can use the following expressions:
 </Tabs>
 ```
 
+## Define multi-region artifact source
 
-### Select pipeline inputs
+:::note
 
-If your pipeline uses [Input Sets](../pipelines/input-sets.md), you can select the input set to use when the trigger executes the pipeline.
+Currently, multi-region artifact sources are behind the feature flag `CDS_NG_TRIGGER_MULTI_ARTIFACTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+
+Once you've selected an artifact in the trigger, you will see the **Define Multi Region Artifact Source** option.
+
+When artifact repositories such as Google Artifact Registry (GAR) are enabled with multiregion support, artifacts of the same version are available across different regions for easy consumption. 
+
+Each region can have similar artifacts. This support enables the configuration of Harness triggers using artifacts from multiple regions.
+
+In On New Artifact triggers, you can configure the regions and conditions associated with the artifact across regions. This enables the pipeline to be triggered based on the availability of artifacts in different regions.
+
+To configure multi region for the artifact, do the following:
+
+1. In your pipeline, select **Triggers**.
+2. Create an **On New Artifact** trigger for your artifact registry.
+3. In **Configuration**, in the **Listen on** section, add an artifact. This will be the primary region where the artifact is available. The Harness connector you use should be pointing to the region.
+
+   Once you have added an artifact you will see the **Define Multi Region Artifact Source** option.
+4. Select **Define Multi Region Artifact Source** and add artifacts corresponding to other regions. Add as many regions as needed for the trigger.
+5. When you are done, select **Continue** to move to **Conditions**.
+6. Select the conditions required for the artifacts across different regions.
+
+   When the artifact version is available across different regions, the condition is evaluated for all the artifacts and the pipeline is triggered.
+8. Complete the trigger setup.
+
+## Select pipeline inputs
+
+If your pipeline uses [input sets](../pipelines/input-sets.md), you can select the input set to use when the trigger executes the pipeline.
 
 ### Enable or disable trigger
 
@@ -410,7 +448,7 @@ You can enable or disable triggers using the enabled toggle:
 
 ![](./static/trigger-on-a-new-artifact-28.png)
 
-### Reuse trigger YAML to create new triggers
+## Reuse trigger YAML to create new triggers
 
 You can reuse triggers by copying and pasting trigger YAML. This can be helpful when you have advanced conditions you don't want to set up each time.
 
@@ -422,8 +460,8 @@ Trigger artifact expressions used in a pipeline are resolved when you rerun a pi
 
 :::
 
-### See also
+## See also
 
 * [Schedule Pipelines using Triggers](schedule-pipelines-using-cron-triggers.md)
-* [Trigger Pipelines using Git Events](triggering-pipelines.md)
+* [Trigger pipelines using Git events](triggering-pipelines.md)
 

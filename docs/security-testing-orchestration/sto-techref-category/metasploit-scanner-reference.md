@@ -2,7 +2,7 @@
 title: Metasploit scanner reference for STO
 description: Instance scans with Metasploit
 sidebar_label: Metasploit scanner reference
-sidebar_position: 160
+sidebar_position: 230
 ---
 
 You can run Metasploit scans on your instances using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.

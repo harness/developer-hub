@@ -2,8 +2,8 @@
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-09-11T10:00
-sidebar_position: 9
+date: 2023-09-28T10:00
+sidebar_position: 5
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -18,9 +18,143 @@ Review the notes below for details about recent changes to Harness Chaos Enginee
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest: Version 1.19.2
+## Latest: Version 1.23.5
 
 ### What's new
+
+* Added support for the execution of pod-delete fault against workloads which are not managed by the standard native-controllers such as deployment, statefulset and daemonset. With this change, this fault can be executed on pods managed by custom controllers. (CHAOS-2798)
+
+* Added support for enabling and disabling schedules for cron experiments. This can be found in the right-side nav bar. (CHAOS-2731)
+
+* Enhanced Network Chaos faults (loss/latency/corruption/duplication) to support specific source and destination ports from the network fault i.e., traffic to the defined ports will not be impacted by the chaos injection. (CHAOS-2712)
+
+* Enhanced service kill experiments on Google Kubernetes Engine (now uses the gcloud ssh function to carry out the kill operations instead of deploying a helper pod on the targeted node). Also added support for containerd runtime. (CHAOS-2649)
+
+* Added support for specifying securityContext for chaos experiment related resources via user interface under advanced configuration. As part of supporting OCP4.11+ we have also stopped appending default security context attributes runAsUser & runAsGroup into the experiment/infrastructure manifest, and instead given the users the ability to add them optionally via the UI. (CHAOS-2614)
+
+* Added support for <,>,<=,>= operators as part of the comparator in HTTP Probe via User Interface. (CHAOS-2611)
+
+* Added a download button in the Logs Tab allowing users to download the logs for the node in ".log" format for further debugging/reporting purposes. (CHAOS-2462)
+
+* Added support for conditional logging of probe evaluation results for each iteration in the Continuous and onChaos modes via a debug field added to the probe RunProperties. (CHAOS-1515)
+
+### Early access
+
+* Resilience Probes: This feature is currently behind a feature flag named CHAOS_PROBES_ENABLED.
+    - Adding support for TLS and Authorization for HTTP and PROM probes. (CHAOS-2743)
+    - Fixed an issue where SLO Probes were showing Source & Command on the probe details screen. (CHAOS-2715)
+    - Fixed an issue where EvaluationTimeout was showing up for all types of Resilience probes, Now it is only available for SLO Probe. (CHAOS-2710)
+    - Fixed an issue where edit/delete buttons were enabled for disabled resilience probes. (CHAOS-2701)
+
+### Fixed issues
+
+* Fixed an issue where after editing an experiment via YAML Editor, Users were not able to save the experiment. (CHAOS-2780)
+
+* Fixed an issue where revert-chaos was not working properly for VMware stress-based faults. (CHAOS-2777)
+
+* Fixed RBAC issue with create GameDay button on the landing page of GameDay. (CHAOS-2692)
+
+* Added a fix to display the appropriate user information upon performing chaos experiment operations when the user has been accorded permissions at the account level instead of at the project level. (CHAOS-1585)
+
+* Fixed an issue in VMware experiments where aborting an experiment was not updating the chaos result properly. This has been fixed by adding a wait for the result update before terminating the experiment for the abort. (CHAOS-2655)
+
+* Fixed an issue where ImagePullSecrets were not getting propagated to helper pods. (CHAOS-2608)
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### October 17, Version 1.22.1
+
+##### What's new
+
+* Experiment Run & Experiment Report has been enhanced to show more details for better auditing - (CHAOS-2606)
+    - Added probe details along with description of failures, number of probes passed/failed/not-executed.
+    - Added tunables for corresponding chaos faults in an experiment.
+    - Project, Organization & Account Identifiers are now available in the report header itself.
+
+* Updated `UPDATED_BY` field to show `SYSTEM` when a Chaos Resource is deleted automatically with respect to a Project/Organization/Account deletion. (CHAOS-2597)
+
+* Enhanced the Chaos infrastructure upgrade process to automatically change to `UPGRADE_FAILED` status if the upgrade has been in progress for more than 2 hours. This will allow users to attempt an upgrade again once the upgrade has failed/timedout. (CHAOS-2575)
+
+* Enhanced the experiment execution process to timeout a particular experiment if it has been running for more than the threshold timeout i.e. 2 hours. (CHAOS-2573)
+
+* Enhanced the `stopOnFailure` option to change the status of an experiment to `COMPLETED_WITH_ERROR` in case of probe failure. (CHAOS-2564)
+
+* Added a new tunable `ServiceExitType` for `vmware-service-stop` chaos fault which will allow users to choose if they want the target service to be killed gracefully or not. (CHAOS-2491)
+
+* Added functionality to kill processes with process name in `vmware-process-kill` chaos fault. (CHAOS-2100)
+
+* Added support for Git, GitLab, and BitBucket as native Connectors using Harness Secret Manager. (CHAOS-35)
+
+##### Early access
+
+* Resilience Probes: This feature is currently behind a feature flag named `CHAOS_PROBES_ENABLED`.
+    - Added support to re-fetch Probe statuses automatically under the Probes Tab in Chaos Studio. (CHAOS-2561)
+    - Evaluation Timeout is now only available for SLO probe. (CHAOS-2554)
+    - Added support for doing CRUD operations in Resilience probes from Chaos Studio itself. (CHAOS-2552)
+    - Fixed an issue where Resource Name was not usable in K8s Resilience Probe. Adding the specific field at the API level resolved this issue. (CHAOS-2653)
+
+##### Fixed issues
+
+* Refreshing the chaos studio after saving was leading to unsaved changes earlier. This issue has now been resolved. (CHAOS-2654)
+
+* Previously when the cron schedule was edited in YAML, there was no validation for the same in UI, which would sometimes lead to UI crash when shifting to the Schedule Tab in Visual Builder. This issue has now been fixed and validation has been added for both Visual and YAML editor modes. (CHAOS-2631)
+
+#### October 5, 2023, Version 1.21.2
+
+##### What's new
+
+* Upgraded `govc` binary with the latest release which fixed 14 vulnerabilities in the `chaos-go-runner` docker image. (CHAOS-2577)
+
+* Added support for empty labels with `appkind` specified while filtering target applications for a Chaos Experiment. (CHAOS-2256)
+
+##### Early access
+
+* Resilience Probes: This feature is currently behind a feature flag named `CHAOS_PROBES_ENABLED`.
+    - Enhanced Chaos Studio to support older experiments with no annotation fields having Resilience probes reference. (CHAOS-2532)
+    - Added support for headers in HTTP probe configured via Resilience Probes mode. (CHAOS-2505)
+    - Deprecated "Retry" input in Probe configurations. Now only 1 (attempt) is supported. (CHAOS-2553)
+
+##### Fixed issues
+
+* Fixed Chaoshub connection API to check for already existing ChaosHub with the same name before connecting new ChaosHub. (CHAOS-2523)
+
+* Fixed an issue where the `Save` button at the header of the `/gamedays` route is not disabled even though the user has not selected an experiment, today it is enabled by default and throws an error on click, even if the details asked of the user on the landing page are all filled. (CHAOS-2417)
+
+#### September 28, 2023, Version 1.20.1
+
+##### What's new
+
+* Added support for targeting specific ports when using API Chaos Faults via a new tunable, for example, `DESTINATION_PORTS`. (CHAOS-2475)
+
+* Added support for HTTPs protocol in API Chaos Faults. (CHAOS-2145)
+
+##### Early access
+
+* Chaos Guard: This feature is currently behind a feature flag named `CHAOS_SECURITY_GOVERNANCE`.
+    - Added support for evaluation of mulitple app labels when running experiments with multiple target app labels. (CHAOS-2315)
+
+* Linux Chaos Faults: This feature is currently behind a feature flag named `CHAOS_LINUX_ENABLED`.
+    - In Linux experiments, the Resilience Score was sometimes showing as 0, although only one probe amongst multiple had failed. This was happening because of incorrect propagation of the probe error, which led to its misinterpretation as an experiment error rather than a probe failure. This issue has been fixed now. (CHAOS-2472)
+
+* Resilience Probes: This feature is currently behind a feature flag named `CHAOS_PROBES_ENABLED`.
+    - Enhanced mode selection drawer to show the UI according to selected mode by the users. Previously it was showing the image indicating SOT for all modes irrespective of the selected mode. (CHAOS-1997)
+
+##### Fixed issues
+
+* There was an issue where users were getting an error when an  experiment triggered via a pipeline failed to start and there is no notifyID created. This has been fixed now. (CHAOS-2490)
+
+* Fixed an issue where the topology settings (taint-tolerations, nodeselectors) made in the advanced configuration section during experiment construction were getting applied only to the Argo workflow pods. Now, the topology settings are propagated to Chaos Fault Pods as well. (CHAOS-2186)
+
+#### September 8, 2023, Version 1.19.2
+
+##### What's new
 
 * Added support for Authentication and HTTPs in HTTP Probes for Kubernetes chaos faults. (CHAOS-2381)
 
@@ -36,7 +170,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * Added support for downloading an experiment run specific manifest. Now, users can download experiment run specific manifest from the right sidebar on the Execution graph page. (CHAOS-1832)
 
-### Early access
+##### Early access
 
 * Linux Chaos Faults (This feature is currently behind a feature flag named `CHAOS_LINUX_ENABLED`)
     - Added support for targeting multiple network interfaces in network faults. (CHAOS-2349)
@@ -46,7 +180,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     - Users had to select the **Setup Probe** button 2 times. It should now work only with a single click. It was dependent on formik validations, which in turn was halting the functionality of handleSubmit due to incorrect Yup validations. (CHAOS-2364)
     - When using the same probes in two faults under same chaos experiment, Probe API was returning the probe two times in the second fault. This was due to probeNames being a global variable and using the same probe name multiple times was causing the name to be appended without re-initializing the variable. Scoping it down to local scope fixed this issue. (CHAOS-2452)
 
-### Fixed issues
+##### Fixed issues
 
 * The logs for the **install chaos experiment** step were getting lost immediately post execution. This issue was occurring in the subscriber component, after the custom pods cleanup, the component was still trying to stream Kubernetes pod logs. As a fix, we have added a check to fetch the pod details and gracefully return the error if pods are not found with a proper error message. (CHAOS-2321)
 
@@ -54,16 +188,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * The frontend was making unnecessary queries to the backend for listWorkflow API whenever changing experiment details via the UI. Now ChaosStep has been optimized to only query when changing selected experiment using memoization. (CHAOS-883)
 
-### Hotfixes
-
-This release does not include hotfixes.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
-#### September 8, 2023, Version 1.18.7
+#### September 1, 2023, Version 1.18.7
 
 ##### What's new
 

@@ -265,7 +265,7 @@ Make sure the email address used in Harness matches with the email address in th
 
 #### Users in over 150 groups
 
-When a user has many group memberships, the number of groups listed in the token can grow the token size. Azure Active Directory limits the number of groups it will emit in a token to 150 for SAML assertions.
+When a user has many group memberships, the number of groups listed in the token can grow the token size. Microsoft Entra ID limits the number of groups it will emit in a token to 150 for SAML assertions.
 
 If a user is a member of a larger number of groups, the groups are omitted and a link to the Graph endpoint to obtain group information is included instead.
 
@@ -395,7 +395,7 @@ To test Azure SSO using Azure, do the following:
 
 1. In the Azure app, click **Single sign-on**, and then at the bottom of the **Single sign-on** settings, click **Test**.![](./static/single-sign-on-sso-with-saml-38.png)
 
-2. In the **Test** panel, click **Sign in as current user**. If the settings are correct, you are logged into Harness. If you cannot log into Harness, the **Test** panel will provide debugging information. For more information, go to [Debug SAML-based single sign-on to applications in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-v1-debug-saml-sso-issues?WT.mc_id=UI_AAD_Enterprise_Apps_Testing_Experience) from Azure.
+2. In the **Test** panel, click **Sign in as current user**. If the settings are correct, you are logged into Harness. If you cannot log into Harness, the **Test** panel will provide debugging information. For more information, go to [Debug SAML-based single sign-on to applications in Microsoft Entra ID](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-v1-debug-saml-sso-issues?WT.mc_id=UI_AAD_Enterprise_Apps_Testing_Experience) from Azure.
 
 To test Azure SSO using Harness, do the following:
 
@@ -462,17 +462,17 @@ To set up Azure Authorization in Harness, do the following:
 	3. In the linked Harness User Group, ensure that the Harness User account you logged in with was added.![](./static/single-sign-on-sso-with-saml-53.png)
 The Harness User is now added and the RBAC settings for the Harness User Group are applied to its account. For more information, go to [Managing Users and Groups (RBAC)](users-and-permissions.md).
 
-### SAML SSO with Azure Active Directory
+### SAML SSO with Microsoft Entra ID
 
-You can use Azure Active Directory (AD) for SAML SSO with Harness, enabling AD users to log into Harness using their AD credentials.
+You can use Microsoft Entra ID for SAML SSO with Harness, enabling AD users to log into Harness using their AD credentials.
 
-For detailed steps on adding SAML SSO with Active Directory, follow the steps in the tutorial [Azure Active Directory single sign-on (SSO) integration with Harness](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/harness-tutorial) from Microsoft.
+For detailed steps on adding SAML SSO with Microsoft Entra ID, follow the steps in the tutorial [Microsoft Entra ID single sign-on (SSO) integration with Harness](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/harness-tutorial) from Microsoft.
 
 Users are not created as part of the SAML SSO integration. Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, go to [SAML SSO with Harness Overview](#saml_sso_with_harness_overview).
 
 #### Users in over 150 Groups
 
-When users have large numbers of group memberships, the number of groups listed in the token can grow the token size. Azure Active Directory limits the number of groups it will emit in a token to 150 for SAML assertions.
+When users have large numbers of group memberships, the number of groups listed in the token can grow the token size. Microsoft Entra ID limits the number of groups it will emit in a token to 150 for SAML assertions.
 
 If a user is a member of a larger number of groups, the groups are omitted and a link to the Graph endpoint to obtain group information is included instead.
 

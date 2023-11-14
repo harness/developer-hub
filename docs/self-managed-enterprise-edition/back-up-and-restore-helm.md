@@ -49,7 +49,7 @@ Delete TimescaleDB endpoints after restoring data. TimescaleDB cannot operate on
 
 ### Example backup and restore workflow
 
-In this example, the Harness application is deployed in the Harness namespace. Velero and Minio are deployed in a namespace Velero. 
+In this example, the Harness application is deployed in the Harness namespace. Velero and MinIO are deployed in a namespace Velero. 
 
 Velero takes two kinds of backups: Backups with Volume (VolumeSnapshots) and Kubernetes resource Backups. For VolumeSnapshots, the CSI supported storage class is required. In this example, The application is deployed in a `standard-rwo` storage class, which is driven by pd.csi.storage.gke.io. This driver is used in VolumeSnapshotClass as well. Make sure the VolumeSnapshotClass is labeled with `velero.io/csi-volumesnapshot-class: "true"` so Velero recognizes it.
 
@@ -68,7 +68,7 @@ To backup with volume, do the following:
     deletionPolicy: Delete
     ```
 
-2. Create a Minio override.
+2. Create a MinIO override.
 
     ```
     ### filename minio-ov.yaml
@@ -84,7 +84,7 @@ To backup with volume, do the following:
         rootPassword: "admin123"
     ```
 
-3. Deploy Minio.
+3. Deploy MinIO.
 
     `helm install minio bitnami/minio -f minio-ov.yaml -n velero--create-namespace`
 
@@ -96,7 +96,7 @@ To backup with volume, do the following:
     aws_secret_access_key = admin123
     ```
 
-5. Install Velero using the CLI. Use the AWS plugin to store directly to Minio.
+5. Install Velero using the CLI. Use the AWS plugin to store directly to MinIO.
 
     ```
     velero install \

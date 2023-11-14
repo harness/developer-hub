@@ -1,6 +1,6 @@
 ---
-title: Connect to Harness container image registry Using Docker connector
-description: This topic explains how to set up the account-level Docker Connector to connect to the Harness Container Image Registry.
+title: Connect to the Harness container image registry
+description: There are multiple ways to pull required Harness images.
 sidebar_position: 4
 helpdocs_topic_id: my8n93rxnw
 helpdocs_category_id: o1zhrfo8n5
@@ -8,121 +8,140 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-By default, at CIE Pipeline runtime, Harness pulls certain images from public Docker Hub repos. These images are only used for backend processes. At runtime, the Harness Delegate makes an outbound connection to the public repo and pulls the images.
+When you run a Harness CI pipeline, the Harness Delegate makes an anonymous outbound connection, through a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md), to pull the required CI images from the public registry where they are stored. The [Harness CI images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md) are used for backend processes only.
 
-The Harness Container Image Registry is dedicated exclusively to Harness-supported images. You might want to override the default behavior and download your build images from this repo instead. To view the list of images in this registry, enter the following command.
+The default behavior uses anonymous access and pulls images from a public container registry. This topic describes three ways you can modify the default behavior for pulling Harness images:
 
-```
-curl -X  GET https://app.harness.io/registry/_catalog
-```
-You can override the default behavior at the Account level and the Stage level:
+<!-- no toc -->
+* [Always use credentials instead of anonymous access](#configure-harness-to-always-use-credentials-to-pull-harness-images)
+* [Use credentials for specific stages](#use-credentials-to-pull-harness-images-for-specific-stages)
+* [Pull images from a private registry](#pull-harness-images-from-a-private-registry)
 
-* **Account-level override:** If you do not want the Harness Delegate to pull images from a public repo for security reasons, you can add a special Harness Connector to your Harness account, and the Delegate will pull these images from the Harness Container Image Registry only.
-* **Stage-level override:** You can configure a Build Stage to override the default Delegate and use a dedicated Connector that downloads build images from the Harness Container Image Registry. This is useful when the Delegate cannot access the public repo (for example, if the build infrastructure is running in a private cloud).
+All of these options require [permissions](../../role-based-access-control/permissions-reference) to create, edit, and view connectors at the account [scope](/docs/platform/role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
 
-Since you and the Harness Delegate are already connected to Harness securely, there are no additional connections to worry about.
+:::tip Rate Limiting
 
-:::info
-
-If you choose to override the `harnessImageConnector`, you may also avoid triggering any rate limiting or throttling. This topic explains how to set up the Docker Connector to connect to the Harness Container Image Registry.
+To prevent rate limiting or throttling issues when pulling images, using credentials, instead of anonymous access, and configure the default Harness Docker connector to pull images from GRC. For instructions, go to [Configure Harness to always use credentials to pull Harness images](#configure-harness-to-always-use-credentials-to-pull-harness-images).
 
 :::
 
-### Before you begin
+## Configure Harness to always use credentials to pull Harness images
 
-* [CI key concepts](../../../continuous-integration/get-started/key-concepts.md)
-* [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md)
-* [Docker Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
+If you don't want to connect anonymously, you can configure Harness to always use credentials, instead of anonymous access, to pull the Harness images. This option changes the behavior for your entire account by editing the credentials of the built-in **Harness Docker Connector**. This is useful if your organization's security policies don't allow anonymous connections to public image repos.
 
-### Review: Allowlist app.harness.io
+If you don't want to change the behavior for your entire account, you can [Use credentials to pull Harness images for specific stages](#use-credentials-to-pull-harness-images-for-specific-stages).
 
-Since you and the Harness Delegate are already connected to Harness securely, app.harness.io should already be allowlisted and there are no additional connections to worry about.
+1. Go to **Account Settings**, select **Account Resources**, and then select **Connectors**.
+2. Select the **Harness Docker Connector** (Id: `harnessImage`).
 
-If app.harness.io is not allowlisted, you must allowlist it before proceeding.
+   If there is no connector with the `harnessImage` identifier in your Account, you need to [create a Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) with the exact **Id** of `harnessImage`. Harness gives precedence to the connector with the `harnessImage` identifier and uses it to pull the images.
 
-:::note
+3. Select **Edit Details**.
+4. Select **Continue** to go to the **Details** settings.
+5. **Recommended:** To pull images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness) instead of Docker Hub, do the following:
 
-As a general best practice, you should allowlist Harness Domains and IPs. For more information, go to **Allowlist Harness Domains and IPs** in [Delegate system requirements](../../delegates/delegate-concepts/delegate-requirements.md).
+   * For **Provider Type**, select **Other (Docker V2 compliant)**.
+   * For **Docker Registry URL**, enter `gcr.io/gcr-prod`.
 
-:::
+6. For **Authentication**, select **Username and Password**, and provide a username and token to access Docker Hub or GCR,depending on the **Docker Registry URL**. The token needs **Read, Write, Delete** permissions.
+7. Select **Continue** to go to **Select Connectivity Mode**, and then configure the connector to connect through a Harness Delegate or the Harness Platform.
 
-### Step 1: Create a Docker connector in Harness
+   * If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you must select **Connect through Harness Platform**.
+   * If you select **Connect through a Harness Delegate**, you can allow Harness to use any available delegate or specify delegates based on tags. For more information about how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md) and [Use delegates selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
+   * For delegate installation instructions, go to [Delegate installation overview](../../delegates/install-delegates/overview).
 
-:::note
+8. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
-You must create the Harness Docker Connector at the Account level. Make sure that you have the [permissions](../../role-based-access-control/permissions-reference) to create/edit and view connectors at the Account [scope](../../role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
+   If the connectivity test fails, make sure your connector's credentials are configured correctly and that the token has the necessary permissions.
 
-:::
+   ![](../../connectors/static/connect-to-harness-container-image-registry-using-docker-connector-48.png)
 
-1. In **Account Settings**, **Account Resources**, click **Connectors**.
+## Use credentials to pull Harness images for specific stages
 
-   ![](../../connectors/static/connect-to-harness-container-image-registry-using-docker-connector-45.png)
+If you don't want to connect anonymously, you can configure Harness to use credentials, instead of anonymous access, to pull the Harness images for specific stages in your pipelines. This option lets you override the Harness image pull behavior in individual [Build stages](/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md#stages) by creating a dedicated [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) you can use for these specific use cases. This is useful when the delegate for that stage's build infrastructure can't anonymously access the public repo. For example, if the build infrastructure is running in a private cloud.
 
-2. Click **New Connector**, and under **Artifact Repositories** click **Docker Registry**.
+If you want to change the behavior for your entire account, you can [configure Harness to always use credentials to pull Harness images](#configure-harness-to-always-use-credentials-to-pull-harness-images).
+
+1. Go to **Account Settings**, select **Account Resources**, and then select **Connectors**.
+
+   Although you will select the connector at the stage scope, you must create the Docker connector at the account scope.
+
+2. Select **New Connector**, and, under **Artifact Repositories**, select the **Docker Registry** connector.
 
    ![](../../connectors/static/connect-to-harness-container-image-registry-using-docker-connector-46.png)
 
-   The Docker Registry Connector settings appear.
+3. Enter a **Name** for the connector. The **Description** and **Tags** are optional.
+
+   Harness automatically creates an **Id** ([entity identifier](../../references/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id** while creating the connector only. After saving the connector, the **Id** can't be changed.
 
    ![](../../connectors/static/connect-to-harness-container-image-registry-using-docker-connector-47.png)
 
-3. In **Name**, enter a name for this connector.
-   Harness automatically generates the corresponding Id ([entity identifier](../../references/entity-identifier-reference.md)).
-   If you want to override the account-level connector, modify the Id and set it to `harnessImage`. You must use the Id `harnessImage`.
-   Harness gives precedence to the connector with the `harnessImage` identifier, and uses it to pull from the Harness Container Image Registry, as opposed to pulling from Docker Hub directly.
-4. Click **Continue**.
+4. Select **Continue**.
+5. For **Provider Type**, select **Other (Docker V2 compliant)**.
+6. For **Docker Registry URL**, enter `gcr.io/gcr-prod`.
+7. For **Authentication**, select **Username and Password**, and provide a username and token to access GCR. The token needs **Read, Write, Delete** permissions.
+8. Select **Continue** to go to **Select Connectivity Mode**, and then configure the connector to connect through a Harness Delegate or the Harness Platform.
 
-### Step 2: Enter credentials
+   * If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you must select **Connect through Harness Platform**.
+   * If you select **Connect through a Harness Delegate**, you can allow Harness to use any available delegate or specify delegates based on tags. For more information about how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md) and [Use delegates selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
+   * For delegate installation instructions, go to [Delegate installation overview](../../delegates/install-delegates/overview).
 
-Select or enter the following options:
+9. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
-|  |  |
-| --- | --- |
-| **Docker Registry URL** | Enter `https://app.harness.io/registry` |
-| **Provider Type** | Select **Other (Docker V2 compliant)** |
-| **Authentication** | Select **Anonymous (no credentials required)** |
+   If the connectivity test fails, make sure your connector's credentials are configured correctly and that the token has the necessary permissions.
 
-Click **Continue**.
+   ![](../../connectors/static/connect-to-harness-container-image-registry-using-docker-connector-48.png)
 
-:::tip
+10. In the **Build** stage where you want to use your Docker connector, go to the [Infrastructure settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings.md#infrastructure), and select your Docker connector in the **Override Image Connector** field.
 
-By default, Harness uses anonymous access to [Harness Docker Hub](https://hub.docker.com/u/harness) to pull images. If you experience rate limiting issues when pulling images anonymously, select **Username and Password** for **Authentication** and provide login details.
+   When the pipeline runs, Harness will use the specified connector to download images from the Harness project on GCR.
 
-:::
+   ![](../../connectors/static/connect-to-harness-container-image-registry-using-docker-connector-49.png)
 
-### Step 3: Set Up Delegates
+## Pull Harness images from a private registry
 
-Harness uses Docker Registry Connectors at Pipeline runtime to pull images and perform operations. You can select Any Available Harness Delegate and Harness will select the best delegate at runtime. For a description of how Harness picks delegates, see [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
+Harness CI images are stored in a public container registry. If you don't want to pull the images directly from the public registry, you can download the images you need, perform any necessary security checks, upload them to your private registry, and then configure your CI pipelines to pull the Harness CI images from your private registry.
 
-You can use delegate tags to select one or more delegates. For details on delegate tags, go to [Use delegates selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
+You can also [use a private registry for STO scanner images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
-If you need to install a delegate, go to [Delegate installation overview](../../delegates/install-delegates/overview).
+### Download Harness images to your registry
 
-Click **Save and Continue**.
+1. Download the images you need from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), perform any tests or validations necessary for your organization's security policies, and then store the images in your private registry.
 
-### Step 4: Verify Test Connection
+   :::caution
 
-Harness tests the credentials you provided using the delegates you selected.
+   Do not change the image names in your private registry. The image names must match the names specified by Harness.
 
-![](../../connectors/static/connect-to-harness-container-image-registry-using-docker-connector-48.png)
-If the credentials fail, you'll see an error. Click **Edit Credentials** to modify your credentials.
+   :::
 
-Click **Finish**.
+2. If your registry automatically downloads the latest images from the public Harness registry, you might want to [specify the images to use in your pipelines](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md#specify-the-harness-ci-images-used-in-your-pipelines). This ensures your pipelines use specific image versions that you have validated, rather than automatically using the latest version. You must update this specification when you want to adopt a new version of an image.
 
-### Step 5: Override the Connector in the Build Stage (*Optional*)
+### Create a Docker connector for your registry
 
-This step is only applicable when you want to override the default Delegate and download build images using the Connector you just created.
+Create a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that connects to your private registry.
 
-In the Build Stage, go to the Infrastructure tab and specify your build-image Connector in the **Override Image Connector** field. The delegate will use this Connector to download images from the Harness repository.
+1. Go to **Account Settings**, select **Account Resources**, and then select **Connectors**. You must create the Docker connector at the account scope.
+2. Select **New Connector**, and, under **Artifact Repositories**, select the **Docker Registry** connector.
+3. Enter a **Name** for the connector. The **Description** and **Tags** are optional.
 
-![](../../connectors/static/connect-to-harness-container-image-registry-using-docker-connector-49.png)
-### Step 6: Run the Pipeline
+   Harness automatically creates an **Id** ([entity identifier](../../references/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id** while creating the connector only. After saving the connector, the **Id** can't be changed.
 
-You can now run your Pipeline. Harness will now pull images from the Harness Registry at Pipeline runtime using the configured Connector.
+4. Select **Continue**.
+5. For **Provider Type**, select **Other (Docker V2 compliant)**.
+6. For **Docker Registry URL**, enter the path for your container registry. For example, the path for the public Harness GCR project is `gcr.io/gcr-prod`.
+7. For **Authentication**, select **Username and Password**, and provide a username and token to access your registry. The token needs **Read, Write, Delete** permissions.
+8. Select **Continue** to go to **Select Connectivity Mode**, and then configure the connector to connect through a Harness Delegate or the Harness Platform.
 
-If a connector with`harnessImage` identifier already exists on your **Account**, you need to update the connector instead of creating a new connector.
+   * If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you must select **Connect through Harness Platform**.
+   * If you select **Connect through a Harness Delegate**, you can allow Harness to use any available delegate or specify delegates based on tags. For more information about how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md) and [Use delegates selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
+   * For delegate installation instructions, go to [Delegate installation overview](../../delegates/install-delegates/overview).
 
-### See also
+9. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
-* [Permission Reference](../../role-based-access-control/permissions-reference)
-* [Harness CI Images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md)
+   If the connectivity test fails, make sure your connector's credentials are configured correctly and that the token has the necessary permissions.
+
+10. Configure your pipelines to download Harness images from your private registry. In each **Build** stage where you want to pull from your private registry, go to the [Infrastructure settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings.md#infrastructure), and select your Docker connector in the **Override Image Connector** field.
+
+   When the pipeline runs, Harness will use the specified connector to download images from your private registry.
+
+   ![](../../connectors/static/connect-to-harness-container-image-registry-using-docker-connector-49.png)

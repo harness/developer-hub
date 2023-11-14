@@ -5,12 +5,12 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { certType } from "./CertCard";
 import { getCertLevel } from "./LandingPage";
-import DeveloperCertificationReviewGuide from "./data/cd-certification-developer-review-guide.md";
-import DeveloperCertificationExamDetails from "./data/cd-certification-developer-exam-details.md";
-import AdminCertificationReviewDetails from "./data/cd-certification-admin-review-guide.md";
-import AdminCertificationExamDetails from "./data/cd-certification-admin-exam-details.md";
-import ArchitectCertificationReviewDetails from "./data/cd-certification-architect-review-guide.md";
-import ArchitectCertificationExamDetails from "./data/cd-certification-architect-exam-details.md";
+// import DeveloperCertificationReviewGuide from "./data/cd-certification-developer-review-guide.md";
+// import DeveloperCertificationExamDetails from "./data/cd-certification-developer-exam-details.md";
+// import AdminCertificationReviewDetails from "./data/cd-certification-admin-review-guide.md";
+// import AdminCertificationExamDetails from "./data/cd-certification-admin-exam-details.md";
+// import ArchitectCertificationReviewDetails from "./data/cd-certification-architect-review-guide.md";
+// import ArchitectCertificationExamDetails from "./data/cd-certification-architect-exam-details.md";
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
@@ -237,8 +237,7 @@ export default function CertificationsChaos() {
                   {/* </div> */}
                   <h3>Coming Soon...</h3>
                   <div className={styles.desc}>
-                    Assess key technical job functions and advanced skills in
-                    design, implementation and management of CE.
+                  Assesses the fundamental skills to deploy and maintain CE projects and the overall Harness Platform.
                   </div>
                 </div>
               </div>

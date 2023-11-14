@@ -1,14 +1,14 @@
 ---
 title: Connect to Jenkins
 description: Connect Harness to Jenkins using a Harness Jenkins Connector.
-sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: 7frr40zml5
 helpdocs_category_id: o1zhrfo8n5
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Continuous Integration (CI) can be performed in Harness using the module and [CI Pipelines](../../../continuous-integration/get-started/key-concepts.md).
+Continuous Integration (CI) can be performed in Harness using the CI module and [CI pipelines](/docs/continuous-integration/get-started/key-concepts.md).
 
 If you are using Harness Continuous Delivery (CD) but not Harness Continuous Integration (CI), you can still perform CI using the **Jenkins** step in your CD Stage.
 
@@ -29,7 +29,7 @@ Make sure the user account for this connection has the following required permis
 
 For token-based authentication, go to **http://Jenkins-IP-address/jobs/me/configure** to check and change your API access token. The token is added as part of the HTTP header.
 
-See [Jenkins Matrix-based security](https://wiki.jenkins.io/display/JENKINS/Matrix-based+security).
+See [Jenkins Matrix-based security](https://wiki.jenkins.io/display/JENKINS/Matrix-based+security).
 
 #### Okta or Two-Factor Authentication
 
@@ -53,13 +53,13 @@ Click **Continue**.
 
 ### Step 2: Enter the Jenkins URL
 
-Enter the URL of the Jenkins server.
+Enter the URL of the Jenkins master or controller.
 
 If you are using the Jenkins SaaS (cloud) edition, the URL is in your browser's location field.
 
 If you are using the standalone edition of Jenkins, the URL is located in **Manage Jenkins**, **Jenkins Location**:
 
-![](../../connectors/static/connect-to-jenkins-10.png)
+![](../static/connect-to-jenkins-10.png)
 
 ### Step 3: Authentication
 

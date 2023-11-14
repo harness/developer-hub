@@ -20,13 +20,34 @@ To identify the cluster that hosts your account, open Harness FirstGen, go to **
 
 For FirstGen SaaS release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, go to [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
 
-#### Deprecation notices
+## Important notice - action required
 
-**Helm 2**
+Harness upgraded to the Java Runtime Environment (JRE) version 17 with the Harness Delegate FirstGen release 81202 to address potential security vulnerabilities. Harness includes the Watcher JAR file and startup scripts in the legacy delegate image *`latest`*. The `start.sh` file used to include the hardcoded Watcher version, but later, Harness started fetching the Watcher version at runtime. The new Watcher version, 80505, includes a feature to determine the correct JRE version and download it at runtime.
 
-import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
+Harness has learned that some customers are starting their delegates in ways that cause them to start with an earlier version of Watcher. The following scenarios lead to delegates starting with an earlier Watcher version:
 
-<Helmdep />
+- Copying the *`latest`* image of the FirstGen legacy delegate to your repository, which may utilize older, less secure Secure Hash Algorithms (SHAs) for your delegates.
+- Creating a custom image when using the legacy delegate image with the *`latest`* tag.
+- Creating your Amazon Machine Images (AMI) with old startup scripts, which might include a `start.sh` with an earlier Watcher version.
+
+If any of these scenarios occur and you start new delegates or bounce the existing delegate with a Watcher version < 80505, then your delegates will not start.
+
+**Solution**
+
+To resolve this issue, do the following:
+
+- If you copied the image to your repo, Harness recommends that you use `harness/delegate:latest` directly in your delegate or pull the image monthly from `harness/delegate:latest`.
+- If you created a custom image, rebuild the custom image. Harness recommends that you rebuild the custom image monthly.
+- If you created your AMI for your shell delegate with startup scripts, Harness recommends that you rebuild the AMI monthly and apply it to your delegate.
+
+:::info caution
+You must make the required updates no later than **November 14, 2023**. If you need assistance, contact [Harness Support](mailto:support@harness.io), and a member of the engineering team will assist you.
+
+If the required image and AMI upgrades are not complete by **November 14, 2023**, your legacy delegate upgrades will be paused, which can lead to pipeline execution failures when Harness SaaS releases newer versions.
+
+:::
+
+#### Deprecation notice
 
 **Kustomize 3.4.5**
 
@@ -34,38 +55,96 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
-## Latest: Harness version 80504, Harness Delegate version 23.09.80505
+## Latest: Harness version 81200, Harness Delegate version 23.10.81202
 
-Harness FirstGen release 80504 includes the following changes for the Harness Delegate.
+Harness FirstGen release 81200 includes the following changes for the Harness Delegate.
 
 ### New features and enhancements
 
-- The OWASP Java HTML Sanitzer version is upgraded to 20220608.1. (PL-40807)
-
-- The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
+This release does not include new features or enhancements.
 
 ### Early access features
 
-This release does not include any new early access features.
+This release does not include early access features.
 
 ### Fixed issues
 
-- Fixed an issue when using multiple HTTP Helm Chart repositories that could lead to an increase in CPU utilization on the delegate due to background connector validation tasks. This was caused by running Helm repository update during the validation tasks. (CDS-76433, ZD-48363)
-
-- With an earlier update, delegates tried to create a Kubernetes runner, which created an API client using the Kubernetes config. Shell delegates tried to fetch the local config. GKE configurations with expired credentials resulted in an error. (PL-40631, ZD-48998, ZD-49702)
-
-This issue is fixed. Harness catches the exception and continues with delegate startup.
-
-- Need draft RN (CDS-76433, ZD-48363)
+- Fixed an issue related to the decryption of secrets with curly braces in their value. (PL-41943, ZD-52075)  
 
 ### Hotfixes
 
-The current version does not include a hotfix release.
+This release does not include hotfixes.
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
+#### Harness version 81009, Harness Delegate version 23.10.81010
+
+Harness FirstGen release 81009 includes the following changes for the Harness Delegate.
+
+##### New features and enhancements
+
+- Added support for referencing JSON secret keys with dots at the top level. Nested keys with dots are not supported. (PL-41715, ZD-51757)
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues
+
+- OAuth sign-up emails were stored without being converted to lowercase. This caused duplicate emails in Harness with different cases. The issue was fixed by storing OAuth sign-up emails with lowercase. (PL-39331, ZD-47425)
+
+##### Hotfixes
+
+This release does not include hotfixes.
+
+#### Harness version 80810, Harness Delegate version 23.09.80804
+
+Harness FirstGen release 80810 includes the following changes for the Harness Delegate.
+
+##### New features and enhancements
+
+This release does not include new features or enhancements.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues
+
+- You can no longer update `DelegateIP` or `DelegateName` using the delegate update API. (PL-40795, ZD-44419)
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+#### Harness version 80504, Harness Delegate version 23.09.80505
+
+Harness FirstGen release 80504 includes the following changes for the Harness Delegate.
+
+##### New features and enhancements
+
+- The OWASP Java HTML Sanitzer version is upgraded to 20220608.1. (PL-40807)
+
+- The Spring Boot library is upgraded to version 2.7.14. (PL-40810)
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues
+
+- Fixed an issue when using multiple HTTP Helm Chart repositories that could lead to an increase in CPU utilization on the delegate due to background connector validation tasks. This was caused by running the Helm repository update during the validation tasks. (CDS-76433, ZD-48363)
+
+- With an earlier update, delegates tried to create a Kubernetes runner, which created an API client using the Kubernetes config. Shell delegates tried to fetch the local config. GKE configurations with expired credentials resulted in an error. (PL-40631, ZD-48998, ZD-49702)
+
+   This issue is fixed. Harness catches the exception and continues with delegate startup.
+
+##### Hotfixes
+
+This release does not include hotfixes.
 
 #### Harness version 80308, Harness Delegate version 23.08.80308
 
@@ -79,7 +158,7 @@ Harness FirstGen release 80308 includes the following changes for the Harness De
 
 ##### Early access features
 
-This release does not include any new early access features.
+This release does not include early access features.
 
 ##### Fixed issues
 
@@ -89,17 +168,17 @@ This release does not include any new early access features.
 
 ##### Hotfixes
 
-The current version does not include a hotfix release.
+This release does not include hotfixes.
 
 #### August 4, 2023, Harness version 80120, Harness Delegate version 23.08.80104
 
 ##### What's new
 
-This release does not include any new features.
+This release does not include new features.
 
 ##### Early access
 
-This release does not include any new early access features.
+This release does not include early access features.
 
 ##### Fixed issues
 
@@ -145,11 +224,11 @@ Currently, this feature is behind the feature flag, `GCB_CI_SYSTEM`.
 
 ##### Early access
 
-This release does not include any new early access features.
+This release does not include early access features.
 
 ##### Fixed issues
 
-This release does not include any fixed issues.
+This release does not include fixed issues.
 
 #### June 28, 2023, Harness version 79714, Harness Delegate version 23.06.79707
 
@@ -161,7 +240,7 @@ This release does not include any fixed issues.
 
 ##### Early access
 
-This release does not include any new early access features.
+This release does not include early access features.
 
 ##### Fixed issues
 
@@ -190,7 +269,7 @@ This release does not include any new early access features.
 
 ##### Early access 
 
-This release does not include any new early access features.
+This release does not include early access features.
 
 ##### Fixed issues
 
@@ -206,11 +285,11 @@ Harness FirstGen release 79306 includes the following feature changes and fixes 
 
 ##### What's new
 
-This release does not include any new features.
+This release does not include new features.
 
 ##### Early access 
 
-This release does not include any new early access features. 
+This release does not include early access features. 
 
 ##### Fixed issues
 
@@ -241,11 +320,11 @@ Harness FirstGen release 79111 includes the following feature changes and fixes 
 
 ##### What's new
 
-This release does not include any new features.
+This release does not include new features.
 
 ##### Early access 
 
-This release does not include any new early access features. 
+This release does not include early access features. 
 
 ##### Fixed issues
 
@@ -285,11 +364,11 @@ Use an api-key with account edit permission in the API header.
 
 ##### Early access 
 
-This release does not include any new early access features. 
+This release does not include early access features. 
 
 ##### Fixed issues
 
-This release does not include any fixed issues. 
+This release does not include fixed issues. 
 
 #### March 15, 2023, Harness version 78712, Harness Delegate version 23.03.78705
 
@@ -297,11 +376,11 @@ Harness FirstGen release 78712 includes the following feature changes and fixes 
 
 ##### What's new
 
-This release does not include any new features. 
+This release does not include new features. 
 
 ##### Early access 
 
-This release does not include any new early access features. 
+This release does not include early access features. 
 
 ##### Fixed issues
 
@@ -323,7 +402,7 @@ Harness FirstGen release 78619 includes the following feature changes and fixes 
 
 ##### Early access 
 
-This release does not include any new early access features. 
+This release does not include early access features. 
 
 ##### Fixed issues
 
@@ -341,7 +420,7 @@ Harness FirstGen release 78507 includes the following feature changes and fixes 
 
 ##### Fixed issues
 
-This release does not include fixed issues for Harness Delegate.
+This release does not include fixed issues.
 
 #### February 15, 2023, Harness version 78421, Harness Delegate version 23.02.78306
 

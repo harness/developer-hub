@@ -23,7 +23,7 @@ You can set conditions on the Triggers, such as matching one or more chart versi
 
 This Trigger is a simple way to automate deployments for new Helm charts.
 
-import Variables from '/docs/platform/triggers/shared/variables-not-supported.md'
+import Variables from '/docs/platform/shared/variables-not-supported.md'
 
 <Variables />
 
@@ -134,7 +134,7 @@ Harness supports standard Java regex. For example, if Regex is enabled and the i
 
 ### Select Pipeline Inputs
 
-If your Pipeline uses [Runtime Inputs](../variables-and-expressions/runtime-inputs.md) or [Input Sets](../pipelines/input-sets.md), you can select the inputs to use when the Trigger executes the Pipeline.
+If your Pipeline uses [runtime inputs](../variables-and-expressions/runtime-inputs.md) or [input sets](../pipelines/input-sets.md), you can select the inputs to use when the Trigger executes the Pipeline.
 
 For example, here's an example where you select Runtime Inputs in the Trigger:
 

@@ -131,9 +131,9 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
    To provide these values:
 
-   * In Azure, navigate to the **Azure Active Directory** > **App registrations** page, then select your App registration. (For details, go to Azure's [Quickstart: Register an application with the Microsoft identity platform](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).)
+   * In Microsoft Entra admin center, navigate to the **Identity** > **Applications** > **App registrations** page, then select your App registration. (For details, go to Microsoft Entra's [Quickstart: Register an application with the Microsoft identity platform](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).)
    * Copy the **Application (client) ID** for the Azure App registration you are using, and paste it into the Harness dialog's **Client ID** field.
-   * Copy the **Directory (tenant) ID** of the Azure Active Directory (AAD) where you created your application, and paste it into the Harness dialog's **Tenant ID** field. (For details, go to Microsoft Azure's [Get values for signing in](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) topic.)
+   * Copy the **Directory (tenant) ID** of the Microsoft Entra ID where you created your application, and paste it into the Harness dialog's **Tenant ID** field. (For details, go to Microsoft Azure's [Get values for signing in](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) topic.)
 3. In **Subscription**, you can optionally enter your Azure Subscription ID (GUID).
 
    To find this ID, navigate to Azure's **Subscriptions** page, as outlined above in [Step 1: Create Azure Reader Role](/docs/platform/secrets/secrets-management/azure-key-vault.md#create-an-azure-reader-role). From the resulting list of subscriptions, copy the **Subscription ID** beside the subscription that contains your vaults.
@@ -174,6 +174,12 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
    5. Click **Continue**.
 
+### Reference JSON secrets
+
+import Refjson from '/docs/platform/shared/reference-via-json.md';
+
+<Refjson />
+
 ### Use the credentials of a specific delegate
 
 1. Select **Use the credentials of a specific Harness Delegate (IAM role, service account, managed identity, etc)**.
@@ -209,3 +215,9 @@ Once the Test Connection succeeds, click Finish. You can now see the Connector i
 Important: Harness tests connections by generating a fake secret in the Secret Manager or Vault. For the Test Connection to function successfully, make sure you have the Create permission for secrets.  
 The Test Connection fails if you do not have the Create permission. However, Harness still creates the Connector for you. You may use this Connector to read secrets if you have View permissions.
 :::
+
+## Reference JSON secrets
+
+import Refj from '/docs/platform/shared/reference-via-json.md';
+
+<Refj />

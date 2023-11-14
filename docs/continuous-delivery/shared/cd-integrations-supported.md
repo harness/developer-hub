@@ -4,8 +4,18 @@ import TabItem from '@theme/TabItem';
 ```
 ```mdx-code-block
 <Tabs>
-  <TabItem value="Deployment types" label="Deployment types">
+  <TabItem value="Deployments" label="Deployments">
 ```
+
+<details>
+<summary>Platform features for all deployment types</summary>
+
+import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
+
+<PlatformList />
+
+</details>
+
 
 <details>
 <summary>Kubernetes</summary>
@@ -91,7 +101,7 @@ import TabItem from '@theme/TabItem';
     - Custom Artifact Source
     - Google Artifact Registry
     - Github Package Registry
-    - Nexus 3
+    - Nexus 3 (Sonatype 3.50.0 and previous supported)
     - Artifactory
 
 For details on what you can deploy, go to [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes).
@@ -199,7 +209,7 @@ To use an AKS cluster for deployment, the AKS cluster parameter `disableLocalAcc
     - Custom Artifact Source
     - Google Artifact Registry
     - Github Package Registry
-    - Nexus 3
+    - Nexus 3 (Sonatype 3.50.0 and previous supported)
     - Artifactory
 
 ### Notes
@@ -236,7 +246,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
     - Azure Container Registry
     - Custom Artifact Source
     - Github Package Registry
-    - Nexus 3
+    - Nexus 3 (Sonatype 3.50.0 and previous supported)
     - Artifactory
 
 </details>
@@ -502,7 +512,7 @@ Harness GitOps lets you perform GitOps deployments in Harness. You define the de
 
 GitOps supports the following:
 
-- Argo CD version supported: 2.7.8.
+- Argo CD version supported: 2.8.2.
 - Source Repositories:
   - All Git providers.
   - HTTP Helm repos.
@@ -553,7 +563,7 @@ For non-native deployments, Harness provides a custom deployment option using De
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Provision" label="Provision">
+  <TabItem value="Provisioners" label="Provisioners">
 ```
 
 Harness supports the following infrastructure provisioning tools:
@@ -611,10 +621,10 @@ Harness also supports Terraform Cloud and Enterprise.
   - [Queue steps](/docs/continuous-delivery/manage-deployments/control-resource-usage-with-queue-steps)
   - [Deployment freeze](/docs/continuous-delivery/manage-deployments/deployment-freeze)
   - [Failure strategies](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-  - [Conditional executions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-  - [Looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+  - [Conditional executions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+  - [Looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
   - [Triggers](/docs/category/triggers)
-  - [Input set and overlays](/docs/platform/pipelines/input-sets/)
+  - [Input set and overlays](/docs/platform/pipelines/input-sets)
 - **Utilities:**
   - [Run a Docker container in a CD stage](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step)
   - [Using HTTP requests in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step)
@@ -627,13 +637,12 @@ Harness also supports Terraform Cloud and Enterprise.
 - **Build:**
   - [Background step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/background-step)
   - [Git Clone step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step)
-  - [GitHub Action Plugin step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/github-action-plugin)
   - [Run step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step)
   - [Plugin step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/plugin-step)
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Files" label="Files">
+  <TabItem value="File Store" label="File Store">
 ```
 
 Manifests, specifications, config files, and other deployment files can be pulled from the following providers:
@@ -684,7 +693,7 @@ All artifact sources are covered in [CD artifact sources](/docs/continuous-deliv
 - AWS S3
 - Azure Container Registry (ACR)
 - Azure DevOps Artifacts
-- Nexus 2 and 3
+- Nexus 2 and Nexus 3 (Sonatype 3.50.0 and previous supported)
 - Artifactory
 - Jenkins
 - Bamboo
@@ -711,7 +720,7 @@ The following table lists Harness integrations and their artifact source support
 | **AWS Lambda**               |                | ✅      |         |     |         |                 |             |            |                              |                              |             | ✅         |
 | **Azure Web Apps**           | ✅             |         |         |     | ✅      | ✅              | ✅          |            |                              |                              |             |            |
 | **Tanzu**                    | ✅             | ✅      | ✅      |     | ✅      | ✅              | ✅          |            |                              |                              |             |            |
-| **SSH**                      |                |         |         |     |         | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
+| **SSH**                      |                |         |         |     | ✅        | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
 | **WinRM**                    |                |         |         |     |         | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
 | **Serverless.com Framework** |                | ✅      |         |     |         | ✅              |             |            |                              |                              |             | ✅         |
 | **Google Cloud Function**    |                |         |         | ✅    |         |                 |             |            |                              |                              |             |            |
@@ -745,6 +754,20 @@ Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible reg
 - [Harness Policy As Code quickstart](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-quickstart)
 - [Add a Policy step to a pipeline](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/add-a-governance-policy-step-to-a-pipeline)
 
+#### Policy as Code limitations
+
+- When configuring a policy for testing, users must have a pipeline that has a policy run against it (success or failed) to capture the pipeline's expanded JSON for the policy studio testing terminal.
+- Policies can only be run against one document (one JSON payload sent for OPA evaluation). You cannot run a policy against multiple documents. 
+- Not all Harness entities are supported with policies:
+  - For CD: service, environment, infrastructure, and overrides are on the roadmap for integration.
+  - For Platform: service account, API key, and token are on the roadmap for policy integration.
+  - For other product modules: entities will be added as needed.
+- Harness does not support OPA bundles.
+- Harness does not support data imports from external sources.
+- Harness does not support `allow`, to support this use case you need to invert the logic, Harness OPA supports deny and not allow.
+
+
+
 ```mdx-code-block
   </TabItem>
 </Tabs>
@@ -759,10 +782,9 @@ Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible reg
 All CD features supported in Harness SaaS are also supported in Self-Managed Enterprise Edition with the following exceptions:
 
 - **Dashboards:** Harness [CD Dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments) might not be completely functional with a bundled [Timescale community edition](https://docs.timescale.com/about/latest/timescaledb-editions/) version installation.
-- **Triggers:** The feature flag `CD_GIT_WEBHOOK_POLLING` must be enabled for Github polling with two factor authentication. For more information, go to [Polling frequency](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/#polling-frequency).
-- **ServiceNow:** ServiceNow versions [Utah](https://www.servicenow.com/now-platform/latest-release.html) and earlier are supported.
+- **Triggers:** The feature flag `CD_GIT_WEBHOOK_POLLING` must be enabled for Github polling with two factor authentication. For more information, go to [Polling frequency](https://developer.harness.io/docs/platform/triggers/triggers-reference/#polling-frequency).
+- **ServiceNow:** ServiceNow versions [Utah](https://docs.servicenow.com/bundle/utah-release-notes/page/release-notes/family-release-notes.html) and earlier are supported.
 - **Jira:** Jira on-premise versions < 9.0 are supported. To support Jira on-premise >= 9.0, the feature flag `SPG_USE_NEW_METADATA` must be enabled.
-- **GitOps:** The Harness GitOps Agent does not support custom certificates in Self-Managed Enterprise Edition.
 - **GitOps:** The Harness GitOps Agent does not yet support installing agents in specific cluster namespaces in Self-Managed Enterprise Edition.
 - **Policy as Code:** Harness Git Experience support for OPA policies is not supported in Self-Managed Enterprise Edition.
 - **Harness AI Development Assistant (AIDA):** To support AIDA in Self-Managed Enterprise Edition running in an offline environment, you must add `https://harness.openai.azure.com` to your allowlist.
