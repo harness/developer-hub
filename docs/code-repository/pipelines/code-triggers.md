@@ -13,7 +13,7 @@ Currently, Harness Code triggers must be configured in the YAML editor.
 3. Switch to the YAML editor, and use the following template to configure the trigger, and then save the trigger.
 
 ```yaml
-   trigger:
+trigger:
   name: CodePushTrigger ## Provide a trigger name.
   identifier: CodePushTrigger ## Provide an ID based on the name.
   enabled: true ## Set to 'false' to turn off the trigger.
