@@ -229,7 +229,7 @@ spec:
 
 ## Install with custom truststore
 
-Harness Delegate ships with a Java Runtime Environment (JRE) that includes a default trusted certificate in its [truststore](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) located in the `/etc/pki/java/cacerts` directory. This truststore uses multiple trusted certificates. You can limit the number you use based on your company's security protocols.
+Harness Delegate ships with a Java Runtime Environment (JRE) that includes a default trusted certificate in its [truststore](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) located in the `/opt/java/openjdk/lib/security/cacerts` directory. This truststore uses multiple trusted certificates. You can limit the number you use based on your company's security protocols.
 
 The JRE truststore must include the certificate that delegates require to establish trust with Harness (app.harness.io).
 
