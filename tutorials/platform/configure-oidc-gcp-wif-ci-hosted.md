@@ -65,7 +65,7 @@ To configure your GCP connector in Harness, do the following:
 7. Select **Connect through Harness Platform for OIDC workflow**.
 8. Select **Save and Continue** to run the connection test. If the test succeeds, select **Finish**. The connection test confirms that your authentication and delegate selections are valid.
 
-   After you configure the OIDC connection and role, the Harness hosted build for CI can retrieve the temporary credentials from the GCP STS. While running the Build step, you can use the GCP connector to enable this workflow.
+   After you configure the OIDC connection and role, the Harness hosted build for CI can retrieve the temporary credentials from the GCP Security Token Service (STS). While running the Build step, you can use the GCP connector to enable this workflow.
 
 ### Troubleshooting GCP connector errors
 
@@ -73,6 +73,46 @@ For troubleshooting details, go to [Troubleshooting GCP connector errors](/docs/
 
 ## Create a pipeline to publish the artifact to GAR using OIDC
 
-Build and Push to GAR using the GCP connector for the OIDC step. 
+Now you're ready to create a pipeline and publish the artifact to GAR using OIDC.
 
-Run the pipeline and it will use the Google STS to exchange the tokens and access the GAR as shown in the step logs.
+To create your pipeline, do the following:
+
+1. In Harness, select your project, and then select **Pipelines**.
+
+2. Select **Create a Pipeline**.
+
+3. Enter a **Name** for your pipeline. **Description** and **Tags** are optional.
+
+   Harness automatically creates an **Id** based on the name.
+
+4. Select **Start**.
+
+5. Select **Add Stage**, and then select **Build**.
+
+6. Enter a **Name** for your stage. **Description** and **Tags** are optional.
+
+   Harness automatically creates an **Id** based on the name.
+
+7. Under **Infrastructure**, select **Cloud**.
+
+8. Select your **Platform** options, and then select **Continue**.
+
+9. In **Execution**, select **+**, and then select **Add Step**.
+
+10. Under **Artifacts**, select **Build and Push to GCR**.
+
+11. Enter a **Name** for your step parameter.
+
+    Harness automatically creates an **Id** based on the name.
+
+    ![Build and Push to GCR](./static/oidc-ci-hosted-builds/oidc-build-and-push-gcr.png)
+
+12. Under **GCP Connector**, select the GCP connector you set up for the OIDC workflow.
+
+13. Complete the remaining fields, and then select **Apply Changes**.
+
+14. Run the pipeline.
+
+    The pipeline uses the Google STS to exchange the tokens and access the GAR as shown in the step logs.
+
+    ![Step logs](./static/oidc-ci-hosted-builds/build-and-push-gcr-step-logs.png)
