@@ -23,9 +23,21 @@ You need to include a Docker-in-Docker background service in your stage if eithe
        3. Image = `docker:dind`
        4. Under **Entry Point**, add the following: `dockerd` 
           
-          Harness recommends using `dockerd` as a faster and more secure way to set up the background step. For more information, go to the **TLS** section in the [Docker quick reference](https://hub.docker.com/_/docker).
+          In most cases, using `dockerd` is a faster and more secure way to set up the background step. For more information, go to the **TLS** section in the [Docker quick reference](https://hub.docker.com/_/docker).
+
+          `dockerd` might not work on some platforms, however. If the DinD service doesn't start with `dockerd`, clear the **Entry Point** field and then run the pipeline again. This starts the service with the default [entry point](https://docs.docker.com/engine/reference/run/#entrypoint-default-command-to-execute-at-runtime).
 
        5. Under **Optional Configuration**, select the **Privileged** checkbox.
+
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual setup" default>
+``````
 
 ```mdx-code-block
 import set_up_harness_25 from '/docs/security-testing-orchestration/get-started/static/set-up-harness-for-sto-25.png'
@@ -33,6 +45,30 @@ import set_up_harness_25 from '/docs/security-testing-orchestration/get-started/
 
 ```mdx-code-block
 <img src={set_up_harness_25} alt="Configure the background step" height="50%" width="50%" />
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="YAML" label="YAML setup" default>
+```
+
+```yaml
+- step:
+   type: Background
+   name: background-dind-service
+   identifier: Background_1
+   spec:
+      connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+      image: docker:dind
+      shell: Sh
+      entrypoint:
+         - dockerd
+      privileged: true
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 </details>
