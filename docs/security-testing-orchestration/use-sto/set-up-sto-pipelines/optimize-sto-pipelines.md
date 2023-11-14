@@ -49,7 +49,7 @@ If you're running DAST scans of a large website, and these scans are taking too 
 1. Create a copy of the website's sitemap. 
 2. Strip out all irrelevant pages from the sitemap copy and save it in the code repository of your website. 
     1. Go to your pipeline and open the ZAP scan step. 
-    2. Set the **Scan Configuration** to **Quick**. This mode scopes the depth of the scan to 1.
+    2. Set the **Scan Configuration** to [**Quick**](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#scan-configuration). With this mode enabled, the the [Maximum depth to crawl](https://www.zaproxy.org/docs/desktop/addons/spider/options/#maximum-depth-to-crawl) is set to 1.
 
        ![](./static/zap-quick-scan.png)    
     
