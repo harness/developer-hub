@@ -91,6 +91,7 @@ Select the [code repo connector](/docs/category/code-repo-connectors) that conne
 The personal access token used for connector authentication must have the appropriate scopes/permissions.
 
 For example, a GitHub personal access token for a GitHub connector must include all `repo`, `user`, and `admin:repo_hook` options for **Scopes**.
+Also, please ensure the user to whom the PAT belongs should have atleast **Admin** permissions.
 
 For information about other provider's token scopes, go to:
 
