@@ -18,8 +18,6 @@ You can create repositories directly in Harness Code or [import repositories](./
 6. Optionally, you can add a **License**, **.gitignore**, or **README** file to your repository.
 7. Select **Create Repository**.
 
-After creating a repository, you're you can change the name, description, visibility, and branch protection rules on the repository's **Settings** page.
-
 ## Work with repositories
 
 After creating a repository, you can:
@@ -27,6 +25,6 @@ After creating a repository, you can:
 * [Clone your repository.](../work-in-repos/clone-repos.md)
 * [Create a branch](../work-in-repos/branch.md), [commit changes](../work-in-repos/commit.md), and [open a pull request](/docs/category/pull-requests).
 * [Create tags.](../work-in-repos/tag.md)
-* [Configure branch protection.](./protection-rules.md)
+* [Configure branch rules.](./rules.md)
 * [Configure your pipelines to build, test, and deploy code from your Harness Code repositories.](../pipelines/codebase-from-harness-code.md)
 * [Configure webhooks](./webhooks.md) to get notifications or automatically run pipelines when certain Git events occur.

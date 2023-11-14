@@ -15,11 +15,11 @@ This topic explains how to work with tags in the Harness Code UI. For details ab
 1. In your Harness project, go to the **Code** module, select **Repositories**, and then select your repository.
 2. Go to **Tags** and select **New Tag**.
 3. Enter a tag **Name**.
-4. Select the branch to base the tag on.
-5. Enter a **Description**. Descriptions are required for tags.
+4. Select the branch or tag to base the tag on.
+5. Enter a **Description**. Descriptions are required for tags created in the Harness UI because they are annotated tags. If you want to create lightweight tags, use command line Git.
 6. Select **Create Tag**.
 
-Upon creating a tag, the **Tags** page shows the name, description, and the latest commit from the branch that the tag is based on, as well as the person who created the tag and the creation date.
+Upon creating a tag, the **Tags** page shows the name, description, and the commit that the tag is based on, as well as the person who created the tag and the creation date.
 
 ## Inspect a tag
 

@@ -72,7 +72,6 @@ Harness creates these roles for you depending on the modules you use. These role
 
 * Feature Flag Manage Role
 * CET Admin
-* Code Admin
 * Chaos Admin
 * CCM Admin
 * CCM Viewer

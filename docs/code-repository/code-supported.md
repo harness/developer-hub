@@ -30,9 +30,9 @@ The Harness Code supports these features:
 
 These features are in pre-beta or in development:
 
-* [Code owners](./config-repos/protection-rules.md)
+* [Code owners](./config-repos/rules.md)
 * Notifications
-* [Branch rules](./config-repos/protection-rules.md)
+* [Branch rules](./config-repos/rules.md)
 * AI-powered semantic search <!-- keyword search, add to AIDA section of platform docs -->
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).

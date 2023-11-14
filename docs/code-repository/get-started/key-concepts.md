@@ -44,6 +44,6 @@ Repositories you create in Harness Code each belong to a [Harness project](https
 
 ### Access control
 
-Access control for Harness Code is part of the [Harness Platform RBAC](/docs/platform/role-based-access-control/rbac-in-harness.md).
+Access control for Harness Code is part of the [Harness Platform RBAC](/docs/platform/role-based-access-control/rbac-in-harness.md). Permissions for Harness Code include the ability to view, create/edit, delete, and push to repositories.
 
 Harness Code includes one [built-in role](/docs/platform/role-based-access-control/add-manage-roles.md), which is the **Code Admin** role.

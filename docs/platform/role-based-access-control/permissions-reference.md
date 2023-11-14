@@ -90,6 +90,12 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Budgets | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
 | Load Balancer | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
 
+### Code Repository
+
+| Resource | Permissions |
+| ---  | ----------- |
+| Repository | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Push</li></ul> |
+
 ### Feature Flags
 
 | Resource | Permissions |

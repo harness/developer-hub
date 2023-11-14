@@ -13,11 +13,11 @@ This topic primarily explains how to work with commits in the Harness Code UI. F
 ## Create a commit
 
 1. In your Harness project, go to the **Code** module, select **Repositories**, and then select your repository.
-2. Go to **Branches** and select the branch you want to work on.
+2. On the **Files** page, select the branch you want to work on from the branch dropdown menu.
 
    Commits made in the Harness Code UI can be committed directly to the selected branch. *You are editing a remote branch when you commit in Harness Code.* Make sure you select the correct branch or [create a branch](./branch.md#create-a-branch) to isolate your changes.
 
-3. On the **Files** page, select the file you want to edit or create a **New File**.
+3. Select the file you want to edit or create a **New File**.
 4. Modify the file as desired. If you are editing an existing file, select **Edit** to enable editing.
 
    You must commit your changes to save them. There is no way to preserve an uncommitted draft within the Harness Code UI. However, you can isolate work-in-progress by selecting the **Create a new branch** option when you commit changes.
@@ -40,10 +40,10 @@ When viewing a repository in Harness Code, there are several ways you can inspec
    * The default branch is selected automatically. Select the default branch name to select a different branch or tag.
    * If a commit was part of a PR, the PR number is listed on next to the commit message. You can select the PR number to view that PR.
 * The **Branches** page shows the short SHA for the latest commit for each branch. Select the short SHA to inspect the commit.
-* The **Files** page shows the short SHA and commit message for the latest commit to each file in the context of the current branch or tag, as well as the short SHA for the latest commit to the branch or tag.
-   * You can select a commit's short SHA to inspect that commit.
+* The **Files** page shows the short SHA and commit message for the latest commit to each file in the context of the current branch or tag.
+   * You can select a commit's short SHA to inspect the changes in that commit.
    * If a commit was part of a PR, the PR number is listed on next to the commit message in the files list. You can select the PR number to view that PR.
-* When reviewing a pull request, the **Commits** tab lists the commits that are included in that PR.
+* When reviewing a pull request, the **Commits** tab lists the commits that are included in that PR. Select a commit's short SHA to inspect the changes in that commit.
 
 :::tip
 
@@ -55,7 +55,7 @@ Upon selecting a short SHA, the **Commits** page opens to the diff view. Here yo
 
 Select the **Settings** icon to select your preferred **Diff View** and **Line Breaks** options.
 
-Select **Browse files** to view a list of all files in that commit.
+Select **Browse files** to inspect files in that commit.
 
 <!-- ![](./static/inspect-commit.png) -->
 

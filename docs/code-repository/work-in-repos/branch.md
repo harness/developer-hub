@@ -15,7 +15,7 @@ This topic explains how to work with branches in the Harness Code UI. For inform
 1. In your Harness project, go to the **Code** module, select **Repositories**, and then select your repository.
 2. Go to **Branches** and select **New Branch**.
 3. Enter a branch **Name**.
-4. Select the branch that you want to base your new branch on.
+4. Select the branch or tag that you want to base your new branch on.
 5. Select **Create Branch**.
 6. On the list of branches, select your new branch to start working in it. You can work directly in the Harness Code UI or [clone your repo](./clone-repos.md) to work locally.
 
@@ -31,7 +31,7 @@ Make sure the current branch is the branch that you want to base your new branch
 
 ## Protect a branch
 
-For information about branch protection rules, go to [Enable protection rules](../config-repos/protection-rules.md).
+For information about branch rules, go to [Enable branch rules](../config-repos/rules.md).
 
 ## Switch branches
 
@@ -48,7 +48,7 @@ You can [create a pull request (PR)](../pull-requests/create-pr.md) by comparing
 1. When viewing a repository in Harness Code, go to **Branches**.
 2. On the list of branches, locate your *compare branch*. This is the branch that you want to merge into your base branch (or another branch).
 3. Select **More options** (&vellip;) next to the compare branch, and select **Compare**.
-4. Enter a PR **Title** and optional **Description**.
+4. Enter a PR **Title** and optional **Description**. You can also change the target branch (the branch that you want to merge changes into).
 5. Select **Create pull request**.
 
 For more information about creating and managing PRs, go to [pull requests](/docs/category/pull-requests).
@@ -70,6 +70,6 @@ If you want to delete a branch that you cloned to your local machine, use comman
 
 :::tip
 
-You can [enable protection rules](../config-repos/protection-rules.md) to automatically delete branches when PRs are merged.
+You can [enable branch rules](../config-repos/rules.md) to automatically delete branches when PRs are merged.
 
 :::

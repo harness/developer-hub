@@ -6,8 +6,5 @@
     "link": {
         "type": "generated-index",
         "title": "Code Repository"
-    },
-    "customProps": {
-        "position": "To position the category, enter a number and move this to the root level.",
     }
 }

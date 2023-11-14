@@ -8,17 +8,19 @@ Repositories are where your code is stored. When developers make changes to code
 
 You can [create repositories directly in Harness Code](./create-repo.md) or import repositories from other Git SCM providers, such as GitHub, GitLab, BitBucket, and more.
 
-## Import a repository
+## Import repositories
 
-1. Go to the Harness project where you want to import a repo.
-2. Go to the **Code** module, select the dropdown next to **New Repository**, and then select **Import Repository**.
+1. Go to the Harness project where you want to import repositories.
+2. Go to the **Code** module, select the dropdown next to **New Repository**, and then select **Import Repository** or **Import Repositories**.
+   * **Import Repository:** Import a single repository.
+   * **Import Repositories:** Import all repositories in a GitHub/Gitea/Gogs organization, GitLab group, or Bitbucket project or workspace. Harness won't import repositories with conflicting names.
 3. Select the **Git Provider**, such as GitHub or GitLab.
 4. Depending on the provider, provide the administrative entity (**Organization**, **Project**, **Workspace**, or **Group**) and **Host URL** (if applicable) associated with your repository.
-5. For **Repository**, enter the name of the repository you want to import.
+5. If you are importing a single repository, enter the name of the repository you want to import in **Repository**.
 
    Harness automatically populates the **Name** field based on the **Repository** field. If you want your repository to have a different name in Harness Code, change the **Name** field.
 
-6. If the repository is private, select **Requires Authorization** and provide authorization credentials to access the repository.
+6. If the repository or entity is private, select **Requires Authorization** and provide authorization credentials to access the repository.
 
    Permissions required for tokens depend on the provider, for example:
 
@@ -27,9 +29,7 @@ You can [create repositories directly in Harness Code](./create-repo.md) or impo
    * To import a GitLab repository, your [GitLab personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token) must have `read_api` and `read_repository` [scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes).
 
 7. Select your preference for visibility (**Public** or **Private**).
-8. Select **Import Repository**.
-
-After importing a repository, you're you can change the name, description, visibility, and branch protection rules on the repository's **Settings** page.
+8. Select **Import Repository** or **Import Repositories**.
 
 ## Work with repositories
 
@@ -38,6 +38,6 @@ After importing a repository, you can:
 * [Clone your repository.](../work-in-repos/clone-repos.md)
 * [Create a branch](../work-in-repos/branch.md), [commit changes](../work-in-repos/commit.md), and [open a pull request](/docs/category/pull-requests).
 * [Create tags.](../work-in-repos/tag.md)
-* [Configure branch protection.](./protection-rules.md)
+* [Configure branch rules.](./rules.md)
 * [Configure your pipelines to build, test, and deploy code from your Harness Code repositories.](../pipelines/codebase-from-harness-code.md)
 * [Configure webhooks](./webhooks.md) to get notifications or automatically run pipelines when certain Git events occur.
