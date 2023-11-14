@@ -11,17 +11,21 @@ import TabItem from '@theme/TabItem';
 
 This topic explains how to install Kubernetes and Docker delegates with custom certificates.
 
-## Installation requirements
+:::info caution
 
-The installation steps are different depending on your delegate version. If your delegate with an immutable image type version is later than 81202 (image tag 23.10.81202), go to [Install with custom certificate](#installation-with-custom-certificates). 
+The installation steps are different depending on your delegate version.
+
+If your delegate with an immutable image type version is later than 81202 (image tag 23.10.81202), go to [Install with custom certificates](#installation-with-custom-certificates). 
 
 If your delegate with an immutable image type version is earlier than 81202 (image tag 23.10.81202), go to [Install with custom truststore](#install-with-custom-truststore).
 
 For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
+:::
+
 ## Install with custom certificates
 
-Use the steps below to install custom certificates for a Docker or Kubernetes delegate with an an immutable image type version later than 81202.
+Use the steps below to install custom certificates for a Docker or Kubernetes delegate with an an immutable image type version later than 23.10.81202.
 
 ```mdx-code-block
 <Tabs>
@@ -233,7 +237,7 @@ The JRE truststore must include the certificate that delegates require to establ
 
 Command-line tools use truststore from the underlying Red Hat operating system.
 
-Use the steps below to install custom certificates for a Docker or Kubernetes delegate with an an immutable image type version earlier than 81202.
+Use the steps below to install custom certificates for a Docker or Kubernetes delegate with an an immutable image type version earlier than 23.10.81202.
 
 There are two aspects of custom certificates:
 
