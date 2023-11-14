@@ -50,8 +50,7 @@ To install a Docker delegate with custom certificates, do the following:
    ```
    docker run --cpus=1 -u root --memory=2g \
      -v PUT_YOUR_PATH_TO_FOLDER_OF_CUSTOM_CERTS:/opt/harness-delegate/ca-bundle \
-     -e DELEGATE_NAME= \         
-     -e DEPLOY_MODE=DOCKER \
+     -e DELEGATE_NAME=PUT_YOUR_DELEGATE_NAME \
      -e NEXT_GEN="true" \
      -e DELEGATE_TYPE="DOCKER" \
      -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
@@ -60,13 +59,12 @@ To install a Docker delegate with custom certificates, do the following:
      -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  harness/delegate:yy.mm.verno
    ```
 
-   **Example: Mount a single custom cert**
+   **Example: Mount a single custom cert or a CA bundle file**
 
    ```
    docker run --cpus=1 -u root --memory=2g \
      -v PUT_YOUR_PATH_TO_CUSTOM_CERT:/opt/harness-delegate/ca-bundle/abc.pem \
-     -e DELEGATE_NAME= \         
-     -e DEPLOY_MODE=KUBERNETES_ONPREM \
+     -e DELEGATE_NAME=PUT_YOUR_DELEGATE_NAME \         
      -e NEXT_GEN="true" \
      -e DELEGATE_TYPE="DOCKER" \
      -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
@@ -312,14 +310,13 @@ After the truststore file and custom certificates are configured, you're ready t
    **Example command**
 
    ```
-   docker run --cpus=1 -u root --memory=2g \
+   docker run --cpus=1 --memory=2g -u root \
      -v PUT_YOUR_PATH_TO_CUSTOM_CERT:/etc/pki/ca-trust/source/anchors/ca1.pem \
      -v ... repeat for every custom cert ... \
      -v PUT_YOUR_PATH_TO_TRUSTSTORE:/cacerts/harness_trustStore.jks \
      -e JAVA_OPTS="... -Djavax.net.ssl.trustStore=/cacerts/harness_trustStore.jks -Djavax.net.ssl.trustStorePassword=password" \
      -e INIT_SCRIPT="update-ca-trust" \
-     -e DELEGATE_NAME= \         
-     -e DEPLOY_MODE=KUBERNETES_ONPREM \
+     -e DELEGATE_NAME=PUT_YOUR_DELEGATE_NAME \
      -e NEXT_GEN="true" \
      -e DELEGATE_TYPE="DOCKER" \
      -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
