@@ -17,7 +17,7 @@ You can create ad hoc webhooks to integrate your repository with other services,
 1. When viewing a repository in Harness Code, go to **Webhooks**, and select **New Webhook**.
 2. Enter a webhook **Name** and optional **Description**.
 3. Enter your endpoint URL in the **Payload URL**.
-4. If the endpoint requires authentication, provide your [Harness API token](/docs/platform/automation/api/add-and-manage-api-keys) in **Secret**. You can use the same token generated when you [cloned the repo](../work-in-repos/clone-repos.md) or a new API token.
+4. If the endpoint requires authentication, provide a **Secret**.
 5. Specify the events that you want to trigger this webhook.
 
    * **Send me everything:** All applicable Git events trigger the webhook. Payloads are sent to your endpoint for all Git events in this repo.
