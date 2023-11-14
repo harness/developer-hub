@@ -1,7 +1,7 @@
 ---
 title: Optimize STO pipelines
 description: You can optimize your CI pipelines to make them faster, more efficient, and more versatile.
-sidebar_position: 10
+sidebar_position: 20
 ---
 
 If your STO scans are running slowly, try the following.
