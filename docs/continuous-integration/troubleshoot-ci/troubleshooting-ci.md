@@ -26,7 +26,7 @@ If you cannot find a resolution, please contact [Harness Support](mailto:support
 
 ## Secrets with line breaks and shell-interpreted special characters
 
-For information about handling secret with new line characters or other shell-interpreted special characters, go to [Add and reference text secrets - Line breaks and shell-interpreted characters](/docs/platform/secrets/add-use-text-secrets#line-breaks-and-shell-interpreted-characters).
+For information about handling secrets with new line characters or other shell-interpreted special characters, go to [Add and reference text secrets - Line breaks and shell-interpreted characters](/docs/platform/secrets/add-use-text-secrets#line-breaks-and-shell-interpreted-characters).
 
 ## Git connector fails to connect to the SCM service
 

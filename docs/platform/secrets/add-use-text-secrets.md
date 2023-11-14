@@ -174,7 +174,7 @@ Additionally, if an output variable from a step in a build (CI) stage contains a
 
 ### Sanitization
 
-Log and output sanitization only looks for an exact match of what is stored. For example, if you stored a base64-encoded value, then only the base64-encoded value is sanitized.
+Log and output sanitization only look for an exact match of what is stored. For example, if you stored a base64-encoded value, then only the base64-encoded value is sanitized.
 
 For example, assume you have the following multi-line secret:
 
