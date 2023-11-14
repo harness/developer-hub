@@ -333,11 +333,11 @@ After the truststore file and custom certificates are configured, you're ready t
   <TabItem value="k8s" label="Kubernetes delegate">
 ```
 
-1. Use your custom truststore to create a secret:
+1. Use your custom truststore to create a secret.
 
-```
-kubectl create secret -n harness-delegate-ng generic mysecret --from-file harness_trustStore.jks=harness_trustStore.jks
-```
+   ```
+   kubectl create secret -n harness-delegate-ng generic mysecret --from-file harness_trustStore.jks=harness_trustStore.jks
+   ```
 
 2. Add a volume mount with read-only permission to the `harness-delegate.yaml` file.
 
@@ -381,7 +381,7 @@ You can add certificates to the delegate pod so any command running on the pod h
 Please note that it's not a necessary step if you do not intend to run commands directly on the pod that needs certificates to connect to external systems.
 :::
 
-In this example, we'll use `cert1.crt` and `cert2.crt` files that have custom certificates. 
+In this example, we'll use `cert1.crt` and `cert2.crt` files that have custom certificates.
 
 1. Mount the certificates to the delegate pod in the `/etc/pki/ca-trust/source/anchors/` directory.
 
