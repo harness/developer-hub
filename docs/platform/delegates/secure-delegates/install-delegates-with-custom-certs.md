@@ -4,7 +4,184 @@ description: How to install delegates with custom certificates.
 # sidebar_position: 10
 ---
 
-This topic explains how to install delegates with custom certificates. There are two aspects of custom certificates:
+This topic explains how to install Kubernetes and Docker delegates with custom certificates.
+If your immutable delegate version is after 81202 (image tag 23.10.81202), please read section [Easy Installation with custom certificate](#easy). Else, please read 
+
+## Background
+Harness Delegate ships with a Java Runtime Environment (JRE) that includes a default trusted certificate in its [truststore](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) (located at `/etc/pki/java/cacerts`). This truststore uses multiple trusted certificates. You can limit the number you use based on your company security protocols.
+
+The JRE truststore must include the certificate that delegates require to establish trust with Harness (app.harness.io).
+
+Command-line tools uses trust store from the underlying Red Hat operating system.
+
+## <a name="easy"></a>Easy Installation with custom certificate
+1. Prepare the custom cert file(s). Please make sure certificates are of pem format.
+2. Mount the file(s) to directory `/opt/harness-delegate/ca-bundle/` inside the delegate container
+3. Start delegate with root user.
+
+Docker delegate Example - mount custom certs from a folder:
+```
+docker run --cpus=1 -u root --memory=2g \
+  -v PUT_YOUR_PATH_TO_FOLDER_OF_CUSTOM_CERTS:/opt/harness-delegate/ca-bundle \
+  -e DELEGATE_NAME= \         
+  -e DEPLOY_MODE=KUBERNETES_ONPREM \
+  -e NEXT_GEN="true" \
+  -e DELEGATE_TYPE="DOCKER" \
+  -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
+  -e DELEGATE_TOKEN=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
+  -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ \
+  -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  harness/delegate:yy.mm.verno
+```
+Docker delegate Example - mount a single custom cert:
+```
+docker run --cpus=1 -u root --memory=2g \
+  -v PUT_YOUR_PATH_TO_CUSTOM_CERT:/opt/harness-delegate/ca-bundle/abc.pem \
+  -e DELEGATE_NAME= \         
+  -e DEPLOY_MODE=KUBERNETES_ONPREM \
+  -e NEXT_GEN="true" \
+  -e DELEGATE_TYPE="DOCKER" \
+  -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
+  -e DELEGATE_TOKEN=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
+  -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ \
+  -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  harness/delegate:yy.mm.verno
+```
+Kubernetes Delegate
+1. Create Kubernetes Secret with the custom cert file
+```
+kubectl create secret -n harness-delegate-ng generic mycerts --from-file custom_certs.pem=custom_certs.pem
+```
+2. Modify the `harness-delegate.yaml` file to include a volume mount. Mount the secret to `/opt/harness-delegate/ca-bundle/`
+   ```yaml
+        volumeMounts:
+        - mountPath: /opt/harness-delegate/ca-bundle/
+          name: custom-certs
+          readOnly: true
+      volumes:
+      - name: custom-certs
+        secret:
+          secretName: mycerts
+          defaultMode: 400
+   ```
+3. Set the security context to provide the operator access to the mounted files:
+
+```
+securityContext:
+  fsGroup: 1001
+```
+4. Use root user
+   ```
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
+   ```
+5. Yaml example
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   labels:
+      harness.io/name: kubernetes-delegate
+   name: kubernetes-delegate
+   namespace: harness-delegate-ng
+spec:
+   replicas: 1
+   minReadySeconds: 120
+   selector:
+      matchLabels:
+         harness.io/name: kubernetes-delegate
+   template:
+      metadata:
+         labels:
+            harness.io/name: kubernetes-delegate
+         annotations:
+            prometheus.io/scrape: "true"
+            prometheus.io/port: "3460"
+            prometheus.io/path: "/api/metrics"
+      spec:
+         terminationGracePeriodSeconds: 600
+         restartPolicy: Always
+         securityContext:
+            fsGroup: 1001
+         containers:
+            - image: harness/delegate:yy.mm.verno
+              imagePullPolicy: Always
+              name: delegate
+              securityContext:
+                 allowPrivilegeEscalation: false
+                 runAsUser: 0
+              ports:
+                 - containerPort: 8080
+              resources:
+                 limits:
+                    memory: "2048Mi"
+                 requests:
+                    cpu: "0.5"
+                    memory: "2048Mi"
+              livenessProbe:
+                 httpGet:
+                    path: /api/health
+                    port: 3460
+                    scheme: HTTP
+                 initialDelaySeconds: 10
+                 periodSeconds: 10
+                 failureThreshold: 3
+              startupProbe:
+                 httpGet:
+                    path: /api/health
+                    port: 3460
+                    scheme: HTTP
+                 initialDelaySeconds: 30
+                 periodSeconds: 10
+                 failureThreshold: 15
+              envFrom:
+                 - secretRef:
+                      name: kubernetes-delegate-account-token
+              env:
+                 - name: JAVA_OPTS
+                   value: "-Xms64M"
+                 - name: ACCOUNT_ID
+                   value: PUT_YOUR_HARNESS_ACCOUNTID_HERE
+                 - name: MANAGER_HOST_AND_PORT
+                   value: PUT_YOUR_MANAGER_HOST_AND_PORT_HERE
+                 - name: DEPLOY_MODE
+                   value: KUBERNETES
+                 - name: DELEGATE_NAME
+                   value: kubernetes-delegate
+                 - name: DELEGATE_TYPE
+                   value: "KUBERNETES"
+                 - name: DELEGATE_NAMESPACE
+                   valueFrom:
+                      fieldRef:
+                         fieldPath: metadata.namespace
+                 - name: INIT_SCRIPT
+                   value: ""
+                 - name: DELEGATE_DESCRIPTION
+                   value: ""
+                 - name: DELEGATE_TAGS
+                   value: ""
+                 - name: NEXT_GEN
+                   value: "true"
+                 - name: CLIENT_TOOLS_DOWNLOAD_DISABLED
+                   value: "true"
+                 - name: LOG_STREAMING_SERVICE_URL
+                   value: "PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/"
+                 - name: DELEGATE_RESOURCE_THRESHOLD
+                   value: ""
+                 - name: DYNAMIC_REQUEST_HANDLING
+                   value: "false"
+              volumeMounts:
+                 - mountPath: /opt/harness-delegate/ca-bundle/
+                   name: custom-certs
+                   readOnly: true
+         volumes:
+            - name: custom-certs
+              secret:
+                 secretName: mycerts
+                 defaultMode: 400
+```
+
+## <a name="old"></a>Manual Installation with custom truststore
+There are two aspects of custom certificates:
 1. A certificate for the delegate Java process, which makes connections to external systems.
 2. A certificate for the OS itself. With this certificate, if another process, such as a shell script, is spawned, it can access custom certificates.
 
@@ -21,44 +198,64 @@ Harness recommends that you keep your existing Java KeyStore in place during the
 
 For information on best practices for truststore creation, go to [Java Keystore Best Practices](https://myarch.com/cert-book/keystore_best_practices.html).
 
-## Create a custom truststore
+### Create a custom truststore
+1. Prepare the custom cert file(s). Please make sure certificates are of pem format.
+2. (Optional) Get base trust store file from a running delegate instance
+   1. For Kubernetes delegate 
+   ```
+   kubectl cp -n harness-delegate-ng [pod name]:/opt/java/openjdk/lib/security/cacerts Path/to/destination
+   ```
+   2. For Docker delegate 
+   ```
+   docker cp [container id]:/opt/java/openjdk/lib/security/cacerts Path/to/destination
+   ```
+3. Import custom certs into java trust store.
+   1. **Note If the custom cert file contains multiple certificates**, please split certificates to individual files.
+   2. For every certificate file, run _keytool_ command to import.
+   ```
+   keytool -noprompt -import -trustcacerts -file [cer file] -alias [unique alias] -keystore [path to trust store] -storepass [password]
+   ```
+   * Replace the password placeholder with the password you gave your truststore.
+   * Alias should be unique for every import
+   
+### Install trust store and custom certs
+Now trust store file and custom certificates are ready. Let's talk about how to install them to Kubernetes delegate and Docker delegate
 
-For instructions on how to create a custom truststore, go to [Truststore override for delegates](/docs/platform/delegates/secure-delegates/trust-store-override-for-delegates/).
+#### Docker
+1. Mount the trust store file to delegate container.
+2. Mount the custom certificates to `/etc/pki/ca-trust/source/anchors/`.
+3. Run delegate container with root user.
+4. Add `update-ca-trust` to INIT_SCRIPT.
+5. Example docker command
+   ```aidl
+   docker run --cpus=1 -u root --memory=2g \
+     -v PUT_YOUR_PATH_TO_CUSTOM_CERT:/etc/pki/ca-trust/source/anchors/ca1.pem \
+     -v ... repeat for every custom cert ... \
+     -v PUT_YOUR_PATH_TO_TRUSTSTORE:/cacerts/harness_trustStore.jks \
+     -e JAVA_OPTS="... -Djavax.net.ssl.trustStore=/cacerts/harness_trustStore.jks -Djavax.net.ssl.trustStorePassword=password" \
+     -e INIT_SCRIPT="update-ca-trust" \
+     -e DELEGATE_NAME= \         
+     -e DEPLOY_MODE=KUBERNETES_ONPREM \
+     -e NEXT_GEN="true" \
+     -e DELEGATE_TYPE="DOCKER" \
+     -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
+     -e DELEGATE_TOKEN=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
+     -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ \
+     -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  harness/delegate:yy.mm.verno
+   ```
 
-## Create a secret from a truststore file
 
-Use your custom truststore to create a secret:
+#### Kubernetes
+
+1. Use your custom truststore to create a secret:
 
 ```
 kubectl create secret -n harness-delegate-ng generic mysecret --from-file harness_trustStore.jks=harness_trustStore.jks
 ```
 
-## Add a volume mount to the harness-delegate.yaml file
+2. Add a volume mount to the harness-delegate.yaml file 
+   1. Modify the `harness-delegate.yaml` file to include a volume mount. Add the volume mount with read-only permission:
 
-1. Modify the `harness-delegate.yaml` file to include a volume mount. 
-
-2. Set the security context to provide the operator access to the mounted files:
-
-   ```
-   securityContext:
-     fsGroup: 1001
-   ```
-
-3. Update the `JAVA_OPTS` environment variable with information about your custom truststore:
-
-   ```
-   - name: JAVA_OPTS
-     value: "... -Djavax.net.ssl.trustStore=/cacerts/harness_trustStore.jks -Djavax.net.ssl.trustStorePassword=password"
-   ```
-   
-   Replace the password placeholder with the password you gave your truststore.
-
-   :::info note  
-   You can omit the specification of the `JAVA_OPTS` environment variable if you mount the secret to the same location as the default truststore and give it the same name. The JVM then applies the change automatically.
-   :::
-   
-4. Add the volume mount with read-only permission:
- 
    ```yaml
         volumeMounts:
         - mountPath: /cacerts
@@ -70,24 +267,42 @@ kubectl create secret -n harness-delegate-ng generic mysecret --from-file harnes
           secretName: mysecret
           defaultMode: 400
    ```
-This concludes adding the certificates to the delegate process. 
+3. Set the security context to provide the operator access to the mounted files:
 
-## Add custom certificates to the delegate pod
+   ```
+   securityContext:
+     fsGroup: 1001
+   ```
+4. Update the `JAVA_OPTS` environment variable with information about your custom truststore:
 
+   ```
+   - name: JAVA_OPTS
+     value: "... -Djavax.net.ssl.trustStore=/cacerts/harness_trustStore.jks -Djavax.net.ssl.trustStorePassword=password"
+   ```
+   
+   Replace the password placeholder with the password you gave your truststore.
+
+   :::info note  
+   You can omit the specification of the `JAVA_OPTS` environment variable if you mount the secret to the same location as the default truststore and give it the same name. The JVM then applies the change automatically.
+   :::
+   This concludes adding the certificates to the delegate process. 
+
+5. Add custom certificates to the delegate pod. 
+:::info note
 In this section we will cover how to add certificates to the delegate pod so any command running on it has certificates installed. Let's take an example where you have `cert1.crt` and `cert2.crt` files that have custom certificates. Please note that it's not a necessary step if you do not intend to run commands directly on the pod that needs certificates to connect to external systems. 
-
-1. Mount these certificates to the delegate pod at `/etc/pki/ca-trust/source/anchors/`:
+:::
+6. Mount these certificates to the delegate pod at `/etc/pki/ca-trust/source/anchors/`:
 
    ```yaml
         volumeMounts:
         - name: certs
-          mountPath : "/usr/local/share/ca-certificates/cert1.crt"
+          mountPath : "/etc/pki/ca-trust/source/anchors/cert1.crt"
           subPath: cert1.crt
         - name: certs
-          mountPath : "/usr/local/share/ca-certificates/cert2.crt"
+          mountPath : "/etc/pki/ca-trust/source/anchors/cert2.crt"
           subPath: cert2.crt
    ```
-2. Run `update-ca-trust` using `INIT_SCRIPTS`:
+7. Run `update-ca-trust` using `INIT_SCRIPTS`:
    ```
         - name: INIT_SCRIPT
           value: |-
@@ -102,7 +317,7 @@ In this section we will cover how to add certificates to the delegate pod so any
           allowPrivilegeEscalation: false
           runAsUser: 0
    ```
-## Example `harness-delegate.yaml` file
+8. Example `harness-delegate.yaml` file
 
 The following example `harness-delegate.yaml` file includes the changes required to install a delegate with a custom certificate.
 
