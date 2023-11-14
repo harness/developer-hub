@@ -8,7 +8,7 @@ You can set up webhooks for your Harness Code repositories. Webhooks can serve a
 
 ## Harness triggers and webhooks
 
-In Harness, you can [create triggers](../pipelines/code-triggers.md) to automatically run your CI/CD pipelines in response to Git events in your Harness Code repos. When you create a trigger for a Harness Code repository, a webhook is automatically created in your Harness Code repository.
+In Harness, you can [create triggers](../pipelines/code-triggers.md) to automatically run your CI/CD pipelines in response to push events in your Harness Code repos. You don't need to create a webhook to do this.
 
 ## Create a webhook
 
@@ -17,11 +17,11 @@ You can create ad hoc webhooks to integrate your repository with other services,
 1. When viewing a repository in Harness Code, go to **Webhooks**, and select **New Webhook**.
 2. Enter a webhook **Name** and optional **Description**.
 3. Enter your endpoint URL in the **Payload URL**.
-4. If the endpoint requires authentication, provide a **Secret**.
+4. You can provide a **Secret** to sign the payload so the server can verify authenticity. If you provide a secret, the webhook call contains an `X-Harness-Signature` header.
 5. Specify the events that you want to trigger this webhook.
 
-   * **Send me everything:** All applicable Git events trigger the webhook. Payloads are sent to your endpoint for all Git events in this repo.
-   * **Let me select individual events:** Select specific Git events that you want to trigger this webhook. Payloads are sent to your endpoint only when the specified events occur in this repo.
+   * **Send me everything:** All applicable events trigger the webhook. Payloads are sent to your endpoint for all events in this repo.
+   * **Let me select individual events:** Select specific events that you want to trigger this webhook. Payloads are sent to your endpoint only when the specified events occur in this repo.
 
    Webhook triggering events include:
 

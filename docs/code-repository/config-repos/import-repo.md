@@ -36,8 +36,9 @@ You can [create repositories directly in Harness Code](./create-repo.md) or impo
 After importing a repository, you can:
 
 * [Clone your repository.](../work-in-repos/clone-repos.md)
-* [Create a branch](../work-in-repos/branch.md), [commit changes](../work-in-repos/commit.md), and [open a pull request](/docs/category/pull-requests).
-* [Create tags.](../work-in-repos/tag.md)
+* Create [branches](../work-in-repos/branch.md) and [tags](../work-in-repos/tag.md).
+* [Commit changes](../work-in-repos/commit.md) and [open pull requests](/docs/category/pull-requests).
 * [Configure branch rules.](./rules.md)
-* [Configure your pipelines to build, test, and deploy code from your Harness Code repositories.](../pipelines/codebase-from-harness-code.md)
-* [Configure webhooks](./webhooks.md) to get notifications or automatically run pipelines when certain Git events occur.
+* Use Harness Code repositories in your [Harness pipelines](./pipelines/codebase-from-harness-code.md).
+* Set up [triggers](./pipelines/code-triggers.md) to automatically run pipelines based on activity in your Harness Code repositories.
+* [Configure webhooks](./config-repos/webhooks.md) to integrate your repositories with third-party applications.

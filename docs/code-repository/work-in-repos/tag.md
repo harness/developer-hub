@@ -38,7 +38,7 @@ You can create branches from tags.
 3. Enter a branch **Name**.
 4. Select **Create Branch**.
 
-   If you get a `not found` error when you select **Create Branch**, re-select the tag in the **Based on** field and select **Create Branch** again.
+<!-- If you get a `not found` error when you select **Create Branch**, re-select the tag in the **Based on** field and select **Create Branch** again. -->
 
 ## Delete a tag
 

@@ -94,7 +94,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 
 | Resource | Permissions |
 | ---  | ----------- |
-| Repository | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Push</li></ul> |
+| Repository | <ul><li>View</li><li>Create/Edit (Create repositories and edit repository settings, such as descriptions, webhooks, and rules)</li><li>Delete</li><li>Push (Repository contributor permissions, such as committing, pushing, creating/deleting branches, creating/deleting tags)</li></ul> |
 
 ### Feature Flags
 

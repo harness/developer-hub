@@ -76,4 +76,4 @@ For details about codebase configuration for services and the Harness CD module,
 
 ## Automate builds and deployments
 
-You can [set up triggers](./code-triggers.md) to automatically run builds or deployments in response to certain Git events in your Harness Code repositories.
+You can [set up triggers](./code-triggers.md) to automatically run builds or deployments in response to push events in your Harness Code repositories.

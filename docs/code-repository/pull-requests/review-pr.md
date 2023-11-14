@@ -32,7 +32,8 @@ When you review a PR, you can leave feedback, request changes, or approve the PR
 
    * **Conversation:** Read the PR description, comment history (including code comments), commit activity, and all other activity on the PR.
    * **Changes:** Review the aggregated, latest code changes in the PR and add line-by-line comments. Select the `+` icon to comment on a specific line.
-      * Mark files as **Viewed** to collapse the diff. This is useful when reviewing PRs with lots of changed files. If a file is changed after you mark it as viewed, the file is marked as **Change since last viewed**, so you don't have to manually check for changes to viewed files.
+      * Mark files as **Viewed** to collapse the diff. This setting persists across sessions and machines. Files marked as viewed remain viewed/collapsed even if you open the PR on a different machine, browser, or refreshed/new browser session.
+      * If a file is changed after you mark it as viewed, the file is marked as **Change since last viewed**, so you don't have to manually check for changes to viewed files.
       * Harness Code also tracks file deletions and additions. If a file was deleted in a PR, and you marked it as viewed, if that file is later restored in the PR, Harness Code marks the file appropriately so you can review it in its restored state.
    * **Commits:** [Inspect commits](../work-in-repos/commit.md#inspect-a-commit) included in this PR. This is useful if you need to trace the PR's change history across commits.
    * **Checks:** Inspect the results of status checks for the PR.
