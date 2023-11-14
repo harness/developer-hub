@@ -339,4 +339,3 @@ The SDK logs the following codes for certain lifecycle events, for example authe
 | **7004** | Metrics max target size exceeded                                                         |
 | **7005** | Metrics batch targets sending success                                                    |
 | **7006** | Metrics batch targets sending failed                                                     |
-
