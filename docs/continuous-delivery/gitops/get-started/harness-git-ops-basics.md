@@ -64,11 +64,7 @@ Harness has multiple Git-based features and it's important to understand the dif
 * **Config-as-Code:** Harness supports full [YAML-based configuration of pipelines](/docs/platform/pipelines/harness-yaml-quickstart) and other Harness entities, like connectors. Harness Pipeline Studio includes a full YAML IDE with hints and autocomplete, so you can simply code your Pipelines as YAML.
 * **Harness Git Experience:** Harness can sync your pipelines and other entities with Git repos so you can make all your changes in Git instead of, or in addition to, using the Harness Manager UI. For more information, go to the [Harness Git Experience overview](/docs/platform/Git-Experience/git-experience-overview).
 
-## Understand key Harness Gitops concepts
-
-The GitOps paradigm comes with its unique set of concepts terminologies that are essential for understanding and implementing this practice effectively. Here's an elaboration on the terms provided.
-
-### Service
+## Service
 
 A Harness GitOps service is the same as any other Harness service.
 
@@ -80,7 +76,7 @@ An account level service can only reference connectors for the manifests and art
 
 For more information, go to [Services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
-### Service instance
+## Service instance
 
 Service instances represent the dynamic instantiation of a service you sync via Harness GitOps.
 
@@ -88,7 +84,7 @@ For example, for a service representing a Docker image, service instances are th
 
 A single service can have multiple service instances. For example, one for Dev, one for QA, and one for Prod.
 
-### Environments
+## Environments
 
 Harness environments represent your live environment logically (QA, Prod, etc). In Harness GitOps, an environment is the live state of the infrastructure.
 
@@ -98,7 +94,7 @@ An account level environment can only reference connectors within the account, a
 
 For more information, go to [Services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
-### Application
+## Application
 
 GitOps Applications are how you manage GitOps operations for a given desired state and its live instantiation.
 
@@ -111,14 +107,15 @@ You will also select:
 * The Source manifest to use (Kubernetes, Helm chart, Kustomization, etc).
 * The Destination cluster and namespace.
 
-### ApplicationSets
+## ApplicationSets
 
 An ApplicationSet can be used to define one application and sync it to multiple target environments. [See more](/docs/category/applicationsets)
-They can be used along with [PR Pipelines](/docs/category/pr-pipelines) to make changes to the application in just one of the ApplicationSet target environments.
 
-### Agent
+ApplicationSets can be used along with [PR Pipelines](/docs/category/pr-pipelines) to make changes to the application in just one of the ApplicationSet target environments.
 
-#### What is a Gitops Agent?
+## Agents
+
+### What is a GitOps Agent?
 
 A Harness GitOps Agent is a worker process that runs in your environment, makes secure, outbound connections to Harness SaaS, and performs all the GitOps tasks you request in Harness.
 
@@ -128,7 +125,7 @@ Here's an image that illustrates how the Agent interacts with Harness:
 
 The Agent uses the Repository and Cluster to connect to source repos and target environments. When you create a Harness GitOps Application, you select the Agent you want to use for these connections and GitOps operations.
 
-#### Common Ways to use the Gitops Agent
+### Common ways to use the GitOps Agent
 
 You can run an Agent in your target cluster or in any cluster that has access to your target clusters.
 
@@ -138,44 +135,44 @@ Here's an image that illustrates a Kubernetes deployment on the same cluster as 
 
 ![deployment on clusters](static/deploy-cluster.png)
 
-There are Pros and Cons to each of these scenarios
+There are pros and cons to each of these scenarios:
   1. **Scenario 1: Single Cluster, Single Agent, In-Cluster Deployment of Resources**
 
-  **Pros**
-  * **Simplicity:** This pattern is straightforward to set up and maintain as it involves a single Gitops Agent and ArgoCD instance managing deployments within a single cluster.
-  * **Resource Efficiency:** With a single instance, resource usage is optimized as there is no need for additional instances or coordination between clusters.
+  **Pros:**
+     * **Simplicity:** This pattern is straightforward to set up and maintain as it involves a single GitOps Agent and ArgoCD instance managing deployments within a single cluster.
+     * **Resource Efficiency:** With a single instance, resource usage is optimized as there is no need for additional instances or coordination between clusters.
 
-  **Cons** 
-  * **Limited Scalability:** Scaling beyond a single cluster can be challenging as the ArgoCD instance is tightly coupled to the specific cluster it is managing.
-  * **Single Point of Failure:** If the ArgoCD instance fails, all deployments within that cluster may be affected.
+  **Cons:** 
+     * **Limited Scalability:** Scaling beyond a single cluster can be challenging as the ArgoCD instance is tightly coupled to the specific cluster it is managing.
+     * **Single Point of Failure:** If the ArgoCD instance fails, all deployments within that cluster may be affected.
 
-  2. **Scenario 2: Single Target Cluster for Deployment, Single Agent outside of Target Cluster**
+  1. **Scenario 2: Single Target Cluster for Deployment, Single Agent outside of Target Cluster**
 
-  **Pros**
-  * **Simplicity:** A single Gitops Agent to manage as well as a single target cluster.
-  * **Better Isolation** as compared to in-cluster set-up in Scenario 1.
+  **Pros:**
+     * **Simplicity:** A single GitOps Agent to manage as well as a single target cluster.
+     * **Better Isolation** as compared to in-cluster set-up in Scenario 1.
 
-  **Cons**
-  * **Increased Management Overhead:** Configuration overhead like IP allow listing, permission for external cluster to connect and so on.
+  **Cons:**
+     * **Increased Management Overhead:** Configuration overhead like IP allow listing, permission for external cluster to connect and so on.
 
-  3. **Scenario 3: Multi-Cluster, Single ArgoCD Instance - hub and spoke** 
+  1. **Scenario 3: Multi-Cluster, Single ArgoCD Instance - hub and spoke** 
 
-  **Pros**
-  * **Centralized Management:** A single Gitops Agent coupled with an ArgoCD instance can manage multiple Kubernetes clusters, enabling centralized deployment management.
-  * **Simplicity:** A single Gitops Agent to manage applications across multiple clusters.
+  **Pros:**
+     * **Centralized Management:** A single GitOps Agent coupled with an ArgoCD instance can manage multiple Kubernetes clusters, enabling centralized deployment management.
+     * **Simplicity:** A single GitOps Agent to manage applications across multiple clusters.
 
-  **Cons**
-  * **Single Point of Failure:** If the ArgoCD instance fails, all deployments may be affected.
-  * **Performance and Scalability Challenges:** As the number of clusters and deployments increase, the performance and scalability of a single Agent may become a limiting factor, in which case you can either switch to using multiple agents across multiple clusters.
+  **Cons:**
+     * **Single Point of Failure:** If the ArgoCD instance fails, all deployments may be affected.
+     * **Performance and Scalability Challenges:** As the number of clusters and deployments increase, the performance and scalability of a single Agent may become a limiting factor, in which case you can either switch to using multiple agents across multiple clusters.
 
-  **Multiple Target Clusters and Multiple Agents:** This is another scenario not described in the diagram. Harness Gitops manages the complexity of multiple ArgoCD instances and this way of using Harness Gitops provides high scalability and isolation, allowing teams to manage deployments independently across multiple clusters and if one ArgoCD instance fails, it does not impact deployments in other clusters. Although this will come with an overhead of higher **Resource Utilization** and **Management overhead**.
+  **Multiple Target Clusters and Multiple Agents:** This is another scenario not described in the diagram. Harness GitOps manages the complexity of multiple ArgoCD instances and this way of using Harness GitOps provides high scalability and isolation, allowing teams to manage deployments independently across multiple clusters and if one ArgoCD instance fails, it does not impact deployments in other clusters. Although this will come with an overhead of higher **Resource Utilization** and **Management overhead**.
     
 Installing an Agent involves setting up an Agent in Harness, downloading its YAML file, and applying the YAML file in a Kubernetes cluster (`kubectl apply`). Kubernetes then pulls the Harness and ArgoCD images from their respective public repositories.
 
 ![fetch manifests from repo](static/gitops-archcitecture.png)
 
 
-### Storage
+## Storage
 
 All GitOps information is stored on your cluster as ConfigMaps and Secrets. Essentially, the cluster acts as the database for GitOps.
 
@@ -183,7 +180,7 @@ Your Harness GitOps Application, Repository, Cluster configurations, etc, are al
 
 Harness SaaS is used to store the state cache only.
 
-### Cluster
+## Cluster
 
 A cluster is the target deployment cluster that is compared to the desire state.
 
@@ -197,39 +194,39 @@ Only the Agent is needed for GitOps, but the Harness Delegate is needed for othe
 
 ![cluster with agent and delegate](static/cluster-agent-delegate.png)
 
-### Repository
+## Repository
 
 A Harness GitOps Repository is a repo containing the declarative description of a desired state. The declarative description can be in Kubernetes manifests, Helm Chart, Kustomize manifests, etc.
 
-### Repository Certificates
+## Repository Certificates
 
 You can apply a Repository certificate or known host key to a GitOps Agent.
 
 The GitOps Agent will use the certificate or key for all the connections it makes to repositories.
 
-### Desired state
+## Desired state
 
 The desired state of a Service and Environment as represented by files in a Repository. It encapsulates all the configuration data essential to recreate a system or an application, ensuring behavioral consistency across instances. It generally excludes persistent application data like database contents, focusing more on configurations and credentials.
 
-### Live state
+## Live state
 
 The live state of a Service and Environment. The instantiated microservices and pods that are deployed.
 
-### Drift 
+## Drift 
 
 Drift occurs when the actual state of a system deviates or is deviating from the desired state. Identifying and rectifying drift is a crucial aspect of maintaining system stability and consistency.
 
-### Refresh
+## Refresh
 
 Pulls the latest commit from Git and displays whether the current Sync State is Synced or Out of Sync. It does not sync with the live cluster state.
 
-### Sync and Sync Status
+## Sync and Sync Status
 
 A Sync brings the live state to its desired state by applying changes made in the declarative description.
 
 Sync Status identifies if the target state is Synched, Out of Sync, or Unknown.
 
-### Sync Policy
+## Sync Policy
 
 Applications react to variations in state between the source manifest and the target cluster using a Sync Policy.
 
@@ -237,21 +234,21 @@ With Automatic sync enabled, changes to the source manifest initiate sync automa
 
 Synch Options tune the synchronization.
 
-### Prune Policy
+## Prune Policy
 
 Prune Policy tells [Kubernetes garbage collection](https://kubernetes.io/docs/concepts/architecture/garbage-collection/) how to check for and delete objects that no longer have owner references.
 
-### Health and Health Status
+## Health and Health Status
 
 The health of the Application. Is it syncing correctly (Healthy)?
 
-### App Diff
+## App Diff
 
 Compares the latest file in Git with the live state and shows what is different.
 
 If an Application is Healthy and Synced, then there is no App Diff.
 
-### GnuPG Keys
+## GnuPG Keys
 
 GnuPG Keys can be used to configure Harness GitOps to only sync against commits that are signed in Git using GnuPG.
 
@@ -259,11 +256,11 @@ The GitOps Agent you select will enforce signature verification.
 
 ## Frequestly Asked Questions
 
-### Can I use Harness GitOps images from a local registry?
+## Can I use Harness GitOps images from a local registry?
 
-Yes.  Pulling images from your private registry is possible and can be done by pulling the publicly available images to your private registry and then updating the GitOPS Agent YAML to use the private registry.
+Yes. Pulling images from your private registry is possible and can be done by pulling the publicly available images to your private registry and then updating the GitOPS Agent YAML to use the private registry.
 
-### Can I automate the provisioning of the Gitops Agent without creating the agent in the UI first?
+## Can I automate the provisioning of the GitOps Agent without creating the agent in the UI first?
 
 Yes. You can use the API or Terraform which will also dynamically generate the YAML that can be applied.
 
