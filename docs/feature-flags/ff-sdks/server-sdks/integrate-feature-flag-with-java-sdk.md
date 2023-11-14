@@ -33,7 +33,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.3.0.**
+The current version of this SDK is **1.3.1.**
 
 ## Requirements
 
@@ -61,7 +61,7 @@ Add the following dependency in your project's pom.xml file:
 <dependency>  
     <groupId>io.harness</groupId>  
     <artifactId>ff-java-server-sdk</artifactId>  
-    <version>1.3.0</version>
+    <version>1.3.1</version>
 </dependency>
 ```
 If you are using the Harness Java sample application from the [Java SDK GitHub repository](https://github.com/harness/ff-java-server-sdk), do not add the Maven dependency in the `pom.xml` file as it has already been added.
@@ -70,7 +70,7 @@ If you are using the Harness Java sample application from the [Java SDK GitHub 
 
 
 ```
-implementation group: 'io.harness', name: 'ff-java-server-sdk', version: '1.3.0'
+implementation group: 'io.harness', name: 'ff-java-server-sdk', version: '1.3.1'
 ```
 ## Initialize the SDK
 
