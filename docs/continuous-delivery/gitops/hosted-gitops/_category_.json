@@ -1,11 +1,11 @@
 {
-  "label": "Use GitOps",
-  "position": "400",
+  "label": "Hosted GitOps",
+  "position": "200",
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",
   "link": {
       "type": "generated-index",
-      "title": "Use GitOps"
+      "title": "Hosted GitOps"
   }
 }
