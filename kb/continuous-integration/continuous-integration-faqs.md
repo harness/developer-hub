@@ -483,12 +483,14 @@ For details, go to [Create and configure a codebase](https://developer.harness.i
 In Harness CI, you set up a codebase by creating a Harness connector that connects to a Git repo.
 For details, go to [CI codebase variables reference](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
 
-#### How to Enable Test Intelligence?
+#### How do I use Test Intelligence?
 
 Harness Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build
-For details, go to [Enable Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence).
+
+For information about how TI works and how to enable it, go to [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
 
 #### Does Harness CI support Multilayer caching?
+
 Yes, for details, go to [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching).
 
 #### Does Harness CI support script execution?
@@ -575,11 +577,12 @@ Second: Actions to take when the specified error conditions occur.
 #### Where to store mvn project settings.xml in harness ci
 
 You can add this settings.xml as a secret file in Harness and then configure a shell script so that this file goes to the desired directory in the build.
-Override secrets in settings.xml at runtime | Harness Developer Hub - https://developer.harness.io/docs/continuous-integration/use-ci/set-up-test-intelligence/modify-and-override-build-settings-before-a-build/
 
-and then to share it between stages, you can use sharedpath as I shared in the previous article.
- 
-Share CI data across steps and stages | Harness Developer Hub - https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages
+[Override secrets in settings.xml at runtime](/docs/continuous-integration/use-ci/run-tests/modify-and-override-build-settings-before-a-build)
+
+To share it between stages, use `sharedpath`.
+
+[Share CI data across steps and stages](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages)
 
 #### Control memory on "Run Tests" step using Harness Cloud
 

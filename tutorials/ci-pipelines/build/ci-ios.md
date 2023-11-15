@@ -305,7 +305,6 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
   <TabItem value="selfhosted" label="Self-hosted">
 ```
 
-
 ```yaml
               - step:
                   type: Run
@@ -349,6 +348,12 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
   </TabItem>
 </Tabs>
 ```
+
+:::tip
+
+You can use [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) to improve test times.
+
+:::
 
 ## Specify version
 
