@@ -27,7 +27,7 @@ This example shows you how to set up Harness GitOps using one of your Kubernetes
 
 You'll learn how to:
 
-* Install a Harness GitOps Agent in your target cluster.
+* Install a Harness GitOps Agent in your target cluster ( you can skip this if using [Hosted Gitops](/docs/continuous-delivery/gitops/hosted-gitops.md)).
 * Set up a Harness GitOps Cluster to points to the target cluster.
 * Set up a Harness GitOps Repository that points to the source manifest repo.
 * Set up a Harness GitOps Application that collects the Agent Cluster, and Repository, and defines the sync policy for GitOps.

@@ -25,4 +25,4 @@ Wait until  you see that `Health Status` and `Connection Status` are `Healthy` a
 
 Additionally, if your destination cluster is behind a firewall you can provide a list of IPs that should be allowed to access the cluster.(See **IP Whitelisting** - [Harness hosted GitOps IP addresses](/docs/continuous-delivery/gitops/gitops-ref/gitops-allowlist.md) for more details.)
 
-When your agent is ready and authorized to access your clusters (IP Whitelisting) you can start creating GitOps repositories, clusters and applications. (See [GitOps Quickstart](/docs/continuous-delivery/gitops/gitops-quickstart) for more details)
+When your agent is ready and authorized to access your clusters (IP Whitelisting) you can start creating GitOps repositories, clusters and applications. (See [GitOps Quickstart](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart.md) for more details)
