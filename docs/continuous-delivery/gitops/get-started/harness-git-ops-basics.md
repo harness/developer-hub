@@ -34,6 +34,8 @@ Here's a very simple diagram of the GitOps architecture:
 
 The Harness GitOps Agent is a worker process installed in a Kubernetes cluster. The Agent can be installed in your target cluster or any cluster with connectivity to the target cluster.
 
+Additionally, Harness offers a [Hosted GitOps](/docs/continuous-delivery/gitops/hosted-gitops.md) option that does not require you to deploy an Agent.
+
 The Harness GitOps Application runs in Harness SaaS and is where you select the source and target resources to use and how to sync them.
 
 The GitOps Agent makes outbound connections to the GitOps Application in Harness and the Git source repo.
