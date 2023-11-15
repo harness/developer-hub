@@ -32,7 +32,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## November 2023
 
-### Harness version 814xx, Harness Delegate version 23.11.814xx
+### Harness version 81401, Harness Delegate version 23.11.81403
 
 #### New features and enhancements
 
@@ -57,28 +57,39 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### Fixed issues
 
-<!-- 
-- Fixed an issue when trying to get a non-existing file from file system after a git fetch of repo. (CDS-82631)
+- Fetching a repository and attempting to read a file that did not exist on the file system resulted in an exception, and Harness failed to handle that exception appropriately. The console logs displayed the following message: "Exception in processing GitFetchFilesTask. Reason: Unable to checkout file: <file-path>." (CDS-82631) 
 
-- When configuring the Artifactory Generic artifact with an 'Artifact Filter' and a non-regex value for the 'Artifact Path,' an issue arose where the metadata URL in the service outcome was incorrect, as it failed to include the repository name. This issue is fixed. (CDS-82579)
+  This issue has been fixed.
 
-- Added support for non-spec fields for K8s HPA and PDB resources. (CDS-82370)
+- When using the Generic repository format to fetch artifacts from Artifactory, if you used an artifact filter and a non-Regex value for the artifact path, an issue occurred. The issue caused the metadata URL in the service outcome to be incorrect; the URL did not include the repository name. (CDS-82579)
 
-- Added workingDir to Script command units. (CDS-82105)
+  This issue is fixed.
 
-- Service dashboard did not correctly reflect primary and canary instances in Kubernetes deployment. (CDS-81869, ZD-52262, ZD-52930)
+- HorizontalPodAutoscaler (HPA) and PodDisruptionBudget (PDB) could not be used in Kubernetes deployments if they contained fields that are not supported by the Kubernetes schema. (CDS-82370)
 
-  The issue was happening because Harness treated canary and primary instances as one set of instances. During the canary deployment Harness would update with current deployment details the primary instances as well which was not correct since primary deployment hasn't happened yet. This issue affected the capability of post production rollback.
+  This issue has been fixed by the addition of support for such fields.
 
-  This issue has been resolved. Now Harness split canary and primary instances in two different groups and will update details respective group only.
+- Harness did not honor the working directories specified in script units in the Command steps used in WinRM deployments. Instead, Harness used the default directory configured for the user profile on the target VM. (CDS-82105)
 
-- Handled git connectivity issues in delegate. Adding retries to scm service. (CDS-80902, ZD-51818)
+  This issue has been fixed. Harness now uses the working directory that you specify in script units. However, the fix has been deployed behind the feature flag `CDS_PRESERVE_WINRM_WORKING_DIR_FOR_COMMAND_UNITS`. Contact [Harness Support](mailto:support@harness.io) to enable the fix.
 
-CDS-80615 		NA 
+- The services dashboard did not correctly show primary and canary instances in a Kubernetes deployment. (CDS-81869, ZD-52262, ZD-52930)
 
-CDS-80150 		NA
+  The issue occurred because Harness treated the canary instances and primary instances as one set of instances. Consequently, during the canary deployment, Harness also updated the primary instances with current deployment details. This was not correct because primary deployment hadn't begun yet. This issue affected post-production rollbacks.
 
-- Propagate error message from delegate for create PR failure. (CDS-79094) -->
+  This issue has been resolved. Now, Harness splits the canary instances and primary instances into two groups and updates each group with the deployment details that are relevant to them.
+
+- If connectivity issues between Harness and the Git provider cause a file that existed in the repository to not be found on the file system after performing a fetch, the Update Release Repo step creates a new file. (CDS-80902, ZD-51818)
+
+  This issue has been fixed. If Harness experiences a connectivity issue with a Git provider when executing a step, it fails the step after a few retries.
+
+- Secrets that are referenced in a service variable are displayed on the secret's **References** tab but secrets that are referenced in an environment’s service overrides are not. (CDS-80615)
+
+  This issue has been fixed.
+
+- When the Update Release Repo step failed on the delegate, the error message was not propagated to the Harness user interface, and you had to search the delegate logs to determine the cause of the issue. 
+
+  This issue has been fixed. The error message is now propagated from the delegate to the Harness user interface. (CDS-79094)
 
 - The project admin role wasn't being assigned to a project created via an account or org scope service account. Now, when a project is created, the project admin role is automatically assigned to the service account. This is also reflected in the audit trails. (PL-41845, ZD-51918)
 

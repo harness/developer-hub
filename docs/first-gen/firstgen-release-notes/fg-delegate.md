@@ -57,15 +57,20 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## November 2023
 
-### Harness version 814xx, Harness Delegate version 23.111.814xx
+### Harness version 81401, Harness Delegate version 23.11.81403
 
 #### Fixed issue
 
-- The instance sync didn't update the instance count for Helm pods when they were removed from the user's environment. (CDS-82385, ZD-52612)
+- The Instance Sync V1 CG did not update the count of Helm pod instances after the instances were removed from your environment. (CDS-82385, ZD-52612)
 
-  When synchronizing a native Helm deployment, the assigned `CONTAINER_VALIDATION` tasks returned `null`. As a result, the delegate couldn't pick up this task, and the count didn't update.
+  This issue occurred when the following feature flags were configured as shown:
+  - `INSTANCE_SYNC_V2_CG`. Disabled
+  - `MOVE_CONTAINER_INSTANCE_SYNC_TO_PERPETUAL_TASK`. Enabled
+  - `STOP_INSTANCE_SYNC_VIA_ITERATOR_FOR_CONTAINER_DEPLOYMENTS`. Enabled
 
-  This issue has been resolved. The instance sync will not display the actual instance count immediately after redeploying. The count might take about 10 minutes to update.
+  For synchronizing the instances of Native Helm deployments, the assigned container validation tasks returned a null because the delegate could not pick up the task. Consequently, the Harness did not update the instance count.
+
+  This issue has been resolved. The Instance Sync V1 CG will now show the actual instance count after you have redeployed the service. However, Harness might require about 10 mins to show the updated instance count.
 
 ## October 2023
 
