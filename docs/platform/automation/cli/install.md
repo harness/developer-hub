@@ -75,9 +75,11 @@ harness --version
 curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz 
 tar -xvf harness-v0.0.16-Preview-darwin-amd64.tar.gz 
 export PATH="$(pwd):$PATH" 
-echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile   
+echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile  
+source ~/.bash_profile 
+harness --version
 ```
-(If you are using different variation of terminal, replace `~/.bash_profile` with your bash profile file path)
+(If you are using different shell variation of terminal e.g. zsh, replace `~/.bash_profile` with your shell specific profile file path e.g. `~/.zshrc`)
 
 ```mdx-code-block
 </TabItem>
