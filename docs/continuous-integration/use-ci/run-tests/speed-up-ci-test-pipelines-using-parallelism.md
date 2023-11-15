@@ -21,7 +21,7 @@ With Harness CI, you can split tests for any language or test tool. This uses te
 When you [run tests in Harness CI](./run-tests-in-ci.md), you use **Run** and **Run Tests** steps. You can enable test splitting on either of these steps. To do this, you need to:
 
 <!-- no toc -->
-1. [Define a parallelism strategy.](#define-the-parallelism-strategy)
+1. [Define a parallelism strategy.](#define-a-parallelism-strategy)
 2. [Define a test splitting strategy.](#define-a-test-splitting-strategy)
 3. [Produce test reports in JUnit XML format](#produce-test-reports).
 4. [Run the pipeline and inspect the test results.](#logs-and-results)
@@ -41,7 +41,7 @@ For example, suppose you have a pipeline that runs 100 tests, and each test take
 
 Note that this example only calculates the runtime for the tests. Additional time can be required for other commands in your **Run** or **Run Tests** step, such as initializing the step, installing dependencies, and so on.
 
-Time saved can improve over subsequent runs. If you use a test timing strategy to split tests, Harness must collect timing data during the first parallel run. Therefore, on the first parallel run, Harness needs to divide tests by file size or number of tests. Then, on the second run, Harness can use the timing data from the first run to split tests by test time. With each subsequent run, Harness further refines test splitting based on newer timing data.
+Time saved can improve over subsequent runs. If you use a timing strategy to split tests, Harness must collect timing data during the first parallel run. Therefore, on the first parallel run, Harness divides tests by file size. Then, on subsequent runs, Harness uses the timing data from earlier runs to split tests by time. With each subsequent run, Harness further refines test splitting based on newer timing data.
 
 <figure>
 
@@ -479,13 +479,19 @@ If you [define a parallelism strategy](#define-a-parallelism-strategy) on a **Ru
 
 When you run the pipeline, you can observe the parallel instances running on the [Build details page](../viewing-builds).
 
+:::info
+
+If you use a timing [split strategy](#split-by), Harness must collect timing data during the first parallel run. Therefore, on the first parallel run, Harness divides tests by file size. Then, on subsequent runs, Harness can use the timing data from earlier runs to split tests by time.
+
+Time saved can improve over subsequent runs.  With each subsequent run, Harness further refines test splitting based on newer timing data.
+
+:::
+
 ![Parallel steps in a build.](./static/speed-up-ci-test-pipelines-using-parallelism-51.png)
 
 When the build finishes, go to the **Tests** tab to [view the results](./viewing-tests). Use the **Test Executions** stage and step dropdown menu to view results for each parallel instance.
 
 ![View results for individual runs.](./static/speed-up-ci-test-pipelines-using-parallelism-52.png)
-
-If you used a timing strategy, Harness collects timing data during the first run with parallelism enabled. On subsequent runs, Harness uses the timing data from the previous run to optimize test splitting.
 
 ## YAML examples: Test splitting
 

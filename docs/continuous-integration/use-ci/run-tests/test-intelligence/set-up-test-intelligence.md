@@ -76,7 +76,7 @@ For other codebases, you can use [Run steps](../../run-ci-scripts/run-step-setti
 
 ## Enable Test Intelligence
 
-Using TI doesn't require you to change your build and test processes. To enable TI, you must [use a supported codebase](#supported-codebases-for-test-intelligence), add a Run Tests step, and generate the initial call graph. For instructions and more information, go to:
+Using TI doesn't require you to change your build and test processes. To enable TI, you must [use a supported codebase](#supported-codebases-for-test-intelligence), add a Run Tests step, and generate the initial call graph. Test selection is applied on subsequent runs after you generate the initial call graph. For instructions and more information, go to:
 
 * [Enable TI for Java, Kotlin, or Scala](./ti-for-java-kotlin-scala.md)
 * [Enable TI for C#](./ti-for-csharp.md)

@@ -50,6 +50,14 @@ If you ran tests in multiple steps/stages, or parallel steps/stages, use the **S
 
 If you are using [Test Intelligence for your unit tests](./test-intelligence/set-up-test-intelligence.md), the **Tests** tab contains information unique to Test Intelligence. In addition to the test results, you can also get information about which tests were selected by Test Intelligence and why Test Intelligence selected those tests.
 
+:::info
+
+The first run with TI *doesn't* include test selection, because Harness must establish a baseline for comparison in future runs. On subsequent runs, Harness can use the baseline to select relevant tests based on the content of the code changes.
+
+Your first TI run won't report selected tests. Subsequent runs can report selected tests, if any are selected. For more information, go to [Enable Test Intelligence](./test-intelligence/set-up-test-intelligence.md#enable-test-intelligence).
+
+:::
+
 <!-- ![](./static/set-up-test-intelligence-03.png) -->
 
 <docimage path={require('./static/set-up-test-intelligence-03.png')} />

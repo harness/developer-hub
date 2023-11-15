@@ -16,14 +16,20 @@ Currently, TI for Ruby is behind the feature flag `CI_RUBY_TI`. Contact [Harness
 
 :::
 
-Using [Test Intelligence](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes. To enable TI for Ruby, you must:
+Using [Test Intelligence](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes, but some initial set up is required.
+
+## Set up Test Intelligence for Ruby
+
+To use TI for Ruby, you must:
 
 1. [Add a Run Tests step.](#add-the-run-tests-step)
 2. [Generate the initial call graph.](#generate-the-initial-call-graph)
+3. [Trigger test selection.](#trigger-test-selection)
+4. [View test reports and test selection.](#view-test-reports-and-test-selection)
 
 After you've successfully enabled TI, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md). You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
 
-## Add the Run Tests step
+### Add the Run Tests step
 
 You need a [CI pipeline](../../prep-ci-pipeline-components.md) with a [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) where you'll add the **Run Tests** step. If you haven't created a pipeline before, try one of the [CI pipeline tutorials](/docs/continuous-integration/get-started/tutorials.md) or go to [CI pipeline creation overview](../../prep-ci-pipeline-components.md).
 
@@ -84,9 +90,17 @@ Here is a YAML example of a Run Tests step configured for Ruby.
 </Tabs>
 ```
 
-## Generate the initial call graph
+### Generate the initial call graph
 
-The first time you enable Test Intelligence on a repo, you must run *all* tests to generate an initial call graph. This sets the baseline for test selection in future builds. You can use a webhook trigger or manual build to generate the initial call graph.
+The first time you enable Test Intelligence on a repository, you must run *all* tests to generate an initial call graph. This sets the baseline for test selection in future builds. You can use a webhook trigger or manual build to generate the initial call graph.
+
+:::info
+
+The initial call graph sets the baseline for test selection in future builds. Test selection *isn't* applied to this run because Harness has no baseline against which to compare changes and select test.
+
+To generate the initial call graph, you must push changes that trigger *all* tests. You only need to do this the first time you enable Test Intelligence on a repository.
+
+:::
 
 ```mdx-code-block
 <Tabs>
@@ -96,9 +110,12 @@ The first time you enable Test Intelligence on a repo, you must run *all* tests 
 1. [Add a webhook trigger](/docs/platform/triggers/triggering-pipelines/) to your pipeline that listens for **Pull Request** or **Push** events in the pipeline's [codebase](../../codebase-configuration/create-and-configure-a-codebase.md).
 2. Open a PR or push changes that cause *all* tests to run for your codebase.
 3. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md). If the build succeeds, you can [review the test results](#view-test-reports-and-test-selections).
-4. If the tests pass and the build succeeds, merge your PR, if applicable.
 
-Now that you've established the baseline, each time this pipeline runs, TI can select relevant tests to run based on the content of the code changes.
+   The first run with TI *doesn't* apply test selection, because Harness must establish a baseline for comparison in future runs.
+
+4. If the tests pass and the build succeeds, merge your PR (if you created one). This is required to ensure that the baseline established by the call graph persists on the target branch.
+
+Now that you've established a testing baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
 
 ```mdx-code-block
   </TabItem>
@@ -116,18 +133,180 @@ Now that you've established the baseline, each time this pipeline runs, TI can s
    <docimage path={require('../static/set-up-test-intelligence-04.png')} />
 
 3. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md). If the build succeeds, you can [review the test results](#view-test-reports-and-test-selection).
-4. If the tests pass and the build succeeds, merge your PR, if applicable.
 
-Now that you've established the baseline, each time this pipeline runs, TI can select relevant tests to run based on the content of the code changes.
+   The first TI run *doesn't* apply test selection, because Harness must establish a baseline for comparison in future runs.
+
+4. If the tests pass and the build succeeds, merge your PR (if you created one). This is required to ensure that the baseline established by the call graph persists on the target branch.
+
+Now that you've established a testing baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
 
 ```mdx-code-block
   </TabItem>
 </Tabs>
 ```
 
-## View test reports and test selection
+### Trigger test selection
+
+After you [generate the initial call graph](#generate-the-initial-call-graph), Harness can apply test selection to subsequent pipeline runs.
+
+To trigger test selection, create another PR (or push changes to your codebase) and run the pipeline again.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="webhook" label="Webhook trigger" default>
+```
+
+1. Open a PR or push changes that should only trigger some tests.
+2. Wait while the trigger starts and runs your pipeline. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
+3. If the build succeeds, you can [review the test results and test selection](#view-test-reports-and-test-selections).
+4. If the tests pass and the build succeeds, you can merge your PR, if applicable.
+
+Each time the pipeline runs, Harness selects the relevant tests to run based on the content of the code changes.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="manual" label="Manual build">
+```
+
+1. Open a PR or push changes that should only trigger some tests.
+2. In Harness, run your pipeline.
+
+   * If you opened a PR, select **Git Pull Request** for **Build Type**, and enter the PR number.
+   * If you pushed changes, select **Git Branch** for **Build Type**, and then enter the branch name.
+
+   <!-- ![](../static/set-up-test-intelligence-04.png) -->
+
+   <docimage path={require('../static/set-up-test-intelligence-04.png')} />
+
+3. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
+4. If the build succeeds, you can [review the test results and test selection](#view-test-reports-and-test-selection).
+5. If the tests pass and the build succeeds, merge your PR, if applicable.
+
+Each time the pipeline runs, Harness selects the relevant tests to run based on the content of the code changes.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+### View test reports and test selection
 
 For information about test reports for Test Intelligence, go to [View tests](../viewing-tests.md).
+
+## Pipeline YAML examples
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="cloud" label="Harness Cloud" default>
+```
+
+This example shows a pipeline that uses Harness Cloud build infrastructure and runs tests on Ruby with RSpec and Test Intelligence.
+
+```yaml
+pipeline:
+  projectIdentifier: default
+  orgIdentifier: default
+  identifier: testintelligencedemo
+  name: Test Intelligence Demo
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        repoName: YOUR_CODE_REPO_NAME
+        build: <+input>
+  tags: {}
+  stages:
+    - stage:
+        name: Ruby Tests
+        identifier: rubytests
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run Ruby Tests
+                  name: Run_Ruby_Tests
+                  identifier: Run_Ruby_Tests
+                  spec:
+                    language: Ruby
+                    buildTool: Rspec
+                    args: "--format RspecJunitFormatter --out tmp/junit.xml" ## Optional.
+                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
+                    preCommand: bundle install
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - tmp/junit.xml
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="sh" label="Self-hosted">
+```
+
+This example shows a pipeline that uses a Kubernetes cluster build infrastructure and runs tests on Ruby with RSpec and Test Intelligence.
+
+```yaml
+pipeline:
+  projectIdentifier: default
+  orgIdentifier: default
+  identifier: testintelligencedemo
+  name: Test Intelligence Demo
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        repoName: YOUR_CODE_REPO_NAME
+        build: <+input>
+  tags: {}
+  stages:
+    - stage:
+        name: Ruby tests
+        identifier: rubytests
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run Ruby Tests
+                  name: Run_Ruby_Tests
+                  identifier: Run_Ruby_Tests
+                  spec:
+                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    image: ruby:latest ## Specify if required by your build infrastructure.
+                    language: Ruby
+                    buildTool: Rspec
+                    args: "--format RspecJunitFormatter --out tmp/junit.xml" ## Optional.
+                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
+                    preCommand: bundle install
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - tmp/junit.xml
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_KUBERNETES_NAMESPACE
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ## Run Tests step settings
 
@@ -261,121 +440,6 @@ The timeout limit for the step. Once the timeout is reached, the step fails and 
 To change what happens when steps fail, go to [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
 To configure when pipelines should skip certain steps, go to [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
-
-## Pipeline YAML examples
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="cloud" label="Harness Cloud" default>
-```
-
-This example shows a pipeline that uses Harness Cloud build infrastructure and runs tests on Ruby with RSpec and Test Intelligence.
-
-```yaml
-pipeline:
-  projectIdentifier: default
-  orgIdentifier: default
-  identifier: testintelligencedemo
-  name: Test Intelligence Demo
-  properties:
-    ci:
-      codebase:
-        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
-        repoName: YOUR_CODE_REPO_NAME
-        build: <+input>
-  tags: {}
-  stages:
-    - stage:
-        name: Ruby Tests
-        identifier: rubytests
-        type: CI
-        spec:
-          cloneCodebase: true
-          execution:
-            steps:
-              - step:
-                  type: Run Ruby Tests
-                  name: Run_Ruby_Tests
-                  identifier: Run_Ruby_Tests
-                  spec:
-                    language: Ruby
-                    buildTool: Rspec
-                    args: "--format RspecJunitFormatter --out tmp/junit.xml" ## Optional.
-                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
-                    preCommand: bundle install
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - tmp/junit.xml
-          platform:
-            arch: Amd64
-            os: Linux
-          runtime:
-            spec: {}
-            type: Cloud
-```
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="sh" label="Self-hosted">
-```
-
-This example shows a pipeline that uses a Kubernetes cluster build infrastructure and runs tests on Ruby with RSpec and Test Intelligence.
-
-```yaml
-pipeline:
-  projectIdentifier: default
-  orgIdentifier: default
-  identifier: testintelligencedemo
-  name: Test Intelligence Demo
-  properties:
-    ci:
-      codebase:
-        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
-        repoName: YOUR_CODE_REPO_NAME
-        build: <+input>
-  tags: {}
-  stages:
-    - stage:
-        name: Ruby tests
-        identifier: rubytests
-        type: CI
-        spec:
-          cloneCodebase: true
-          execution:
-            steps:
-              - step:
-                  type: Run Ruby Tests
-                  name: Run_Ruby_Tests
-                  identifier: Run_Ruby_Tests
-                  spec:
-                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
-                    image: ruby:latest ## Specify if required by your build infrastructure.
-                    language: Ruby
-                    buildTool: Rspec
-                    args: "--format RspecJunitFormatter --out tmp/junit.xml" ## Optional.
-                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
-                    preCommand: bundle install
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - tmp/junit.xml
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
-              namespace: YOUR_KUBERNETES_NAMESPACE
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
-```
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
 ## Troubleshooting TI for Ruby
 
