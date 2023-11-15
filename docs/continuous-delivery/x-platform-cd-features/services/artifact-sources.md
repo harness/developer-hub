@@ -2292,6 +2292,27 @@ You can reference artifact properties using the following expressions in a value
 
 </details>
 
+<details>
+<summary>AWS S3 File Filter</summary>
+
+The artifact details settings include a **File Filter** (`fileFilter`) option.
+
+In **File Filter**, You can enter a regex value and Harness will fetch all matching files. You can then select from the list in **File Path**.
+
+This setting is optional. If you do not use it, Harness will fetch and display all files in the **File Path** setting.
+
+If the **File Path** is a fixed value, during pipeline execution, artifact validation is performed using the **File Path** but not the **File Filter**. Harness does not check whether the **File Filter** matches or not during the execution.
+
+Examples:
+
+- `*`: fetch all files in the file path.
+- `*.zip`: fetch all files in the file path with the extension `.zip`.
+- `*/w10/*.tfstate`: fetch all files in the file path that contain `/w10/` with the extension `.tfstate`.
+- `*/w1/*`: fetch all files in the file path that contain `/w1/`.
+- `w1`: fetch all files in the file path that contain `w1`.
+
+</details>
+
 
 <!-- AWS S3 END -->
 
