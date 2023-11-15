@@ -58,4 +58,4 @@ This [certification](/certifications/continuous-delivery?lvl=developer) is the s
 After completing the Developer Certification, you are now ready to test your skills as a Harness CD & GitOps Administrator through the [Administrator certification](/certifications/continuous-delivery?lvl=administrator).
 
 ### Architect Certification
-After completing the Architect Certification, you are now ready to test your skills as a Harness CD & GitOps Architect through the [Architect certification](/certifications/continuous-delivery?lvl=architect).
+After completing the Developer Certification, you are now ready to test your skills as a Harness CD & GitOps Architect through the [Architect certification](/certifications/continuous-delivery?lvl=architect).
