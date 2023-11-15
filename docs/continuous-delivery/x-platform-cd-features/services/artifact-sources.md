@@ -2297,7 +2297,7 @@ You can reference artifact properties using the following expressions in a value
 
 The artifact details settings include a **File Filter** (`fileFilter`) option.
 
-In **File Filter**, You can enter a regex value and Harness will fetch all matching files. You can then select from the list in **File Path**.
+In **File Filter**, you can enter a regex value and Harness will fetch all matching files. You can then select from the list in **File Path**.
 
 This setting is optional. If you do not use it, Harness will fetch and display all files in the **File Path** setting.
 
