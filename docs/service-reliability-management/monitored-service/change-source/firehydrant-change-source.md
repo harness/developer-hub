@@ -25,16 +25,16 @@ Sample message sent by SRM to the Slack channel
 Together with the FireHydrant's incident information and SRM's health report, the incident response team can quickly figure out how bad the incident is, see how the rest of the service is doing, and make quick decisions.
 
 Configuring FireHydrant as a change source involves the following steps:
+   
+1. [Add FireHydrant as a custom change source in the Harness SRM monitored service and generate a webhook.](#add-firehydrant-as-a-change-source)
 
-[Add FireHydrant as a custom change source in the Harness SRM monitored service and generate a webhook.](#add-firehydrant-as-a-change-source)
-
-1. [Integrate your Slack workspace with FireHydrant.](#integrate-slack-workspace-with-firehydrant)
+2. [Integrate your Slack workspace with FireHydrant.](#integrate-slack-workspace-with-firehydrant)
    
-2. [Add Webhook Step to the FireHydrant runbook.](#add-webhook-step-to-the-firehydrant-runbook)
+3. [Add Webhook Step to the FireHydrant runbook.](#add-webhook-step-to-the-firehydrant-runbook)
    
-3. [Add Slack channels to the FireHydrant runbook.](#add-slack-channels-to-the-firehydrant-runbook)
+4. [Add Slack channels to the FireHydrant runbook.](#add-slack-channels-to-the-firehydrant-runbook)
    
-4. [Declare an incident.](#declare-an-incident)
+5. [Declare an incident.](#declare-an-incident)
 
 
 ## Add FireHydrant as a change source
@@ -53,7 +53,12 @@ To add FireHydrant as a change source to a monitored service:
 
 5. Enter a name for the change source. For example, FireHydrant.
 
-6.  Select **Submit**.  
+6. Enter the Slack app **Authorization Token** you generated. For enhanced security, consider storing the authorization token in a Harness Secret, and then enter the Harness Security information in the **Authorization Token** field using the following formats:
+
+   - If you've created a Harness Secret at the project level: <+secrets.getValue(‘YourSecretId’)>
+   - If you've created a Harness Secret at the account level: <+secrets.getValue(‘account.YourSecretId’)>
+
+7.  Select **Submit**.  
     The custom incident change source gets added to the monitored service. A webhook URL and cURL commands are generated.
 
     <docimage path={require('./static/add-firehydrant-change-source.png')} />
@@ -85,7 +90,7 @@ To configure the runbook:
 
 1. In your FireHydrant account, open the runbook you want to set up with Harness SRM monitored service.
    
-2. Add a **Send Webhook** step with the following settings:
+2. Add a Send Webhook step with the following settings:
    
    - **Endpoint**: Paste the webhook URL you copied in Harness SRM monitored service. For example:
   
