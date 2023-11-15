@@ -130,7 +130,7 @@ To learn more about adding a webhook step to a FireHydrant runbook, go to [Sendi
 
 ### Add Slack channels to the FireHydrant runbook
 
-You need to include a **Notify Channel** step in the FireHydrant runbook to enable FireHydrant to send incident notifications through Slack.
+Optionally, you can include a **Notify Channel** step in the FireHydrant runbook to enable FireHydrant to send incident notifications through Slack.
 
 To add the Notify Channel step:
 
@@ -178,19 +178,6 @@ To add FireHydrant as a change source to a monitored service:
     The custom incident change source gets added to the monitored service. A webhook URL and cURL commands are generated.
 
     <docimage path={require('./static/add-firehydrant-change-source.png')} />
-
-
-### Copy webhook URL
-
-To configure your FireHydrant runbook for sending incident reports to a monitored service in SRM, you'll need to obtain a webhook from that specific SRM monitored service.
-
-To copy the webhook URL from a monitored service:
-
-1. From the list of monitored services, select the monitored service for which you have created the FireHydrant incident custom incident change source, and then go to the **Configuration** tab.  
-
-2. On the **Configurations** page, go to the **Change Sources** tab. In the **Change Sources** section, a list of change sources that have been added to the monitored service is displayed. The list also displays webhook URLs and cURL commands next to each change source.
-
-3. Locate the FireHydrant incident change source that you want to configure with the FireHydrant runbook, and then copy the webhook URL.
 
 
 ### Configure FireHydrant runbook to send incident reports
