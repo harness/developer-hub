@@ -16,31 +16,22 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-
-### Latest: November 10, 2023, Version 814xx
-
-#### New features and enhancements
-
-This release does not include new features or enhancements.
-
-#### Early access features
-
-This release does not include early access features.
+### Latest: November 15, 2023, Version 81401
 
 #### Fixed issues
 
-- The Instance Sync V1 CG did not did not update instance count for Helm Pods when they are removed from the users environment. (CDS-82385, ZD-52612)
+- The Instance Sync V1 CG did not update the count of Helm pod instances after the instances were removed from your environment. (CDS-82385, ZD-52612)
 
-  To reproduce this ensure the following configuration of FF
-  -  INSTANCE_SYNC_V2_CG False
-  -  MOVE_CONTAINER_INSTANCE_SYNC_TO_PERPETUAL_TASK True
-  -  STOP_INSTANCE_SYNC_VIA_ITERATOR_FOR_CONTAINER_DEPLOYMENTS True
+  This issue occurred when the following feature flags were configured as shown:
+  - `INSTANCE_SYNC_V2_CG`. Disabled
+  - `MOVE_CONTAINER_INSTANCE_SYNC_TO_PERPETUAL_TASK`. Enabled
+  - `STOP_INSTANCE_SYNC_VIA_ITERATOR_FOR_CONTAINER_DEPLOYMENTS`. Enabled
 
-  For instance sync of Native helm deployment the assigned the CONTAINER_VALIDATION tasks returned null due the which the delegate could not get pick up this task and the count did not update.
+  For synchronizing the instances of Native Helm deployments, the assigned container validation tasks returned a null because the delegate could not pick up the task. Consequently, the Harness did not update the instance count.
 
-  This issue has been resolved. The Instance Sync V1 CG will not show the actual instance count once the use has redeployed their service. It might take around 10 mins after deployment for the instance count to update. 
+  This issue has been resolved. The Instance Sync V1 CG will now show the actual instance count after you have redeployed the service. However, Harness might require about 10 mins to show the updated instance count. 
 
-  This item requires Harness Delegate version 23.10.8xxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 81403. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ### November 3, 2023, Version 81307
 
