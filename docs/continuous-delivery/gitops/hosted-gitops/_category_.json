@@ -1,6 +1,6 @@
 {
   "label": "Hosted GitOps",
-  "position": "800",
+  "position": "200",
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",
