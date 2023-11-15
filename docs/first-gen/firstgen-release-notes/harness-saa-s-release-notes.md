@@ -43,7 +43,24 @@ If the required image and AMI upgrades are not complete by **November 14, 2023**
 
 :::
 
-### Latest: November 3, 2023, Version 81307
+### Latest: November 15, 2023, Version 81401
+
+#### Fixed issues
+
+- Instance Sync V1 in Harness FirstGen did not update the count of Helm pod instances after the instances were removed from your environment. (CDS-82385, ZD-52612)
+
+  This issue occurred when the following feature flags were configured as shown:
+  - `INSTANCE_SYNC_V2_CG`. Disabled
+  - `MOVE_CONTAINER_INSTANCE_SYNC_TO_PERPETUAL_TASK`. Enabled
+  - `STOP_INSTANCE_SYNC_VIA_ITERATOR_FOR_CONTAINER_DEPLOYMENTS`. Enabled
+
+  For synchronizing the instances of Native Helm deployments, the assigned container validation tasks returned a null because the delegate could not pick up the task. Consequently, Harness did not update the instance count.
+
+  This issue has been resolved. Instance Sync V1 will now show the actual instance count after you have redeployed the service. However, Harness might require about 10 min to show the updated instance count. 
+
+  This item requires Harness Delegate version 81403. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+### November 3, 2023, Version 81307
 
 - The Git Connector field in the Application dialog neither showed nor listed the configured connector. (CDS-82009) <!-- needs cursory review -->
 
