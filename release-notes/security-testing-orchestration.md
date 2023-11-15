@@ -47,7 +47,7 @@ This release does not include hotfixes.
 
 ##### New features and enhancements
 
-- The **Exemptions** table now shows the pipeline name in the **Scope** column and not the ID. This keeps the experience consistent with other areas of the application. (STO-6631)
+- You can now scan your repositories and other components used in your code with [Anchore Enterprise](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. (STO-6382)
 
 ##### Early access
 
