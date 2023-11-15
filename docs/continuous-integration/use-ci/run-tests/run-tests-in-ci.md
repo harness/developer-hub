@@ -46,7 +46,7 @@ For more information about configuring **Run** steps, go to [Use Run steps](../r
   <TabItem value="runtests" label="Run Tests step">
 ```
 
-The **Run Tests** step is required to [enable Test Intelligence](./set-up-test-intelligence.md). You can use **Run Tests** steps with or without Test Intelligence; however, the **Run Tests** step is limited to [supported codebases](./set-up-test-intelligence.md#supported-codebases).
+The **Run Tests** step is required to [enable Test Intelligence](./test-intelligence/set-up-test-intelligence.md). You can use **Run Tests** steps with or without Test Intelligence; however, the **Run Tests** step is limited to [supported codebases](./test-intelligence/set-up-test-intelligence.md#supported-codebases-for-test-intelligence).
 
 This example runs tests with Maven and Test Intelligence, and it produces a test report in JUnit XML format.
 
@@ -70,7 +70,7 @@ This example runs tests with Maven and Test Intelligence, and it produces a test
                           - "target/surefire-reports/*.xml"
 ```
 
-For more information about configuring **Run Tests** steps and Test Intelligence, go to [Enable Test Intelligence](./set-up-test-intelligence.md).
+For more information about configuring **Run Tests** steps and Test Intelligence, go to [Test Intelligence overview](./test-intelligence/set-up-test-intelligence.md).
 
 ```mdx-code-block
   </TabItem>
@@ -87,8 +87,8 @@ You can [include code coverage](./code-coverage.md) commands in your **Run** and
 
 These Harness CI features can improve test times:
 
-* **Test Intelligence:** Test Intelligence speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You must use the **Run Tests** step to [enable Test Intelligence](./set-up-test-intelligence.md).
-* **Parallelism:** You can use parallelism with either the **Run** or **Run Tests** steps to speed up test times. For more information, go to [Use parallelism to improve test times](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism).
+* **Test Intelligence:** Test Intelligence speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You must use the **Run Tests** step to [enable Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
+* **Test splitting (parallelism):** You can use parallelism with either the **Run** or **Run Tests** steps to speed up test times. For more information, go to [Split tests (parallelism)](./speed-up-ci-test-pipelines-using-parallelism).
 * **Step groups:** You can use [step groups](../optimize-and-more/group-ci-steps-using-step-groups.md) to organize and condense pipelines that run a lot of tests.
 
 You might also try these test optimization practices:
