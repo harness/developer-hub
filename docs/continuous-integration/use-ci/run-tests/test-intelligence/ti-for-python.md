@@ -1,7 +1,7 @@
 ---
 title: Enable TI for Python
 description: Set up TI for Python codebases.
-sidebar_position: 40
+sidebar_position: 30
 ---
 
 ```mdx-code-block
@@ -93,13 +93,13 @@ Here is a YAML example of a Run Tests step configured for Python.
 
 ### Generate the initial call graph
 
-The first time you enable Test Intelligence on a repository, you must run *all* tests to generate an initial call graph. This sets the baseline for test selection in future builds. You can use a webhook trigger or manual build to generate the initial call graph.
+The first time you enable Test Intelligence on a repository, you must run all tests and generate an initial call graph. This sets the baseline for test selection in future builds. You can use a webhook trigger or manual build to generate the initial call graph.
 
 :::info
 
-The initial call graph sets the baseline for test selection in future builds. Test selection *isn't* applied to this run because Harness has no baseline against which to compare changes and select test.
+The initial call graph sets the baseline for test selection in future builds. Test selection *isn't* applied to this run because Harness has no baseline against which to compare changes and select tests.
 
-To generate the initial call graph, you must push changes that trigger *all* tests. You only need to do this the first time you enable Test Intelligence on a repository.
+You only need to generate an initial call graph the first time you enable Test Intelligence on a repository.
 
 :::
 
@@ -109,7 +109,7 @@ To generate the initial call graph, you must push changes that trigger *all* tes
 ```
 
 1. [Add a webhook trigger](/docs/platform/triggers/triggering-pipelines/) to your pipeline that listens for **Pull Request** or **Push** events in the pipeline's [codebase](../../codebase-configuration/create-and-configure-a-codebase.md).
-2. Open a PR or push changes that cause *all* tests to run for your codebase.
+2. Open a PR or push changes to your codebase.
 3. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md). If the build succeeds, you can [review the test results](#view-test-reports-and-test-selections).
 
    The first run with TI *doesn't* apply test selection, because Harness must establish a baseline for comparison in future runs.
@@ -123,7 +123,7 @@ Now that you've established a testing baseline, each time this pipeline runs, Ha
   <TabItem value="manual" label="Manual build">
 ```
 
-1. Open a PR or push changes that cause *all* tests to run for your pipeline's [codebase](../../codebase-configuration/create-and-configure-a-codebase.md).
+1. Open a PR or push changes to your pipeline's [codebase](../../codebase-configuration/create-and-configure-a-codebase.md).
 2. In Harness, run your pipeline.
 
    * If you opened a PR, select **Git Pull Request** for **Build Type**, and enter the PR number.
@@ -157,7 +157,7 @@ To trigger test selection, create another PR (or push changes to your codebase) 
   <TabItem value="webhook" label="Webhook trigger" default>
 ```
 
-1. Open a PR or push changes that should only trigger some tests.
+1. Open a PR or push changes to your codebase.
 2. Wait while the trigger starts and runs your pipeline. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
 3. If the build succeeds, you can [review the test results and test selection](#view-test-reports-and-test-selections).
 4. If the tests pass and the build succeeds, you can merge your PR, if applicable.
@@ -169,7 +169,7 @@ Each time the pipeline runs, Harness selects the relevant tests to run based on 
   <TabItem value="manual" label="Manual build">
 ```
 
-1. Open a PR or push changes that should only trigger some tests.
+1. Open a PR or push changes to your codebase.
 2. In Harness, run your pipeline.
 
    * If you opened a PR, select **Git Pull Request** for **Build Type**, and enter the PR number.
@@ -420,9 +420,9 @@ If this option is not selected (`false`), TI is disabled and all tests run on ev
 
 You can override the default test globs pattern. For example, if the default is `*_test.py` or `test_*.py`, you can override it with any other pattern, such as `.test.py`.
 
-### Output Variables
+<!-- ### Output Variables
 
-<OutVar />
+<OutVar /> -->
 
 ### Environment Variables
 

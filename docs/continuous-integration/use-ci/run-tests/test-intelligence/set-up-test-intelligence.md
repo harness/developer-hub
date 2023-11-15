@@ -85,19 +85,6 @@ Using TI doesn't require you to change your build and test processes. To enable 
 
 After you've successfully enabled TI, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md). You can also configure TI to [ignore tests or files](#ignore-tests-or-files).
 
-<details>
-<summary>Video summary</summary>
-
-The following video walks you through setting up Test Intelligence in a Harness CI pipeline. The TI section starts after the 11-minute mark in the video.
-
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
-<docvideo src="https://www.youtube.com/embed/eAtIO4bJ3No" />
-
-<!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/kZmOCLCpvmk/hqdefault.jpg"><iframe width=" 480" height="270" src="https://www.youtube.com/embed/eAtIO4bJ3No" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
-
-</details>
-
 ## Test splitting for Test Intelligence
 
 You can use [test splitting with TI](./ti-test-splitting.md) to further reduce test times.

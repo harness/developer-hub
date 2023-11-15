@@ -105,7 +105,7 @@ You can sort the list by failure rate, duration, and total tests. You can also e
 <details>
 <summary>Call Graph</summary>
 
-The first time you [enable Test Intelligence](./test-intelligence/set-up-test-intelligence.md#enable-test-intelligence) on a repo, you must run all tests to generate the initial call graph. This creates a baseline for test selection in future builds; therefore, the initial call graph is not particularly useful. In subsequent builds, the call graph shows information about tests selected by TI for that run.
+The first time you [enable Test Intelligence](./test-intelligence/set-up-test-intelligence.md#enable-test-intelligence) on a repo, you must generate the initial call graph, which creates a baseline for test selection in future builds. In subsequent builds, the call graph section shows information about tests selected by TI for that run.
 
 Select **Expand graph** to view the TI Visualization, which shows why a specific test was selected and the reason behind every test selection. Purple nodes represent tests. Select any test (purple node) to see all the classes and methods covered by that test. Blue nodes represent changes to classes and methods that caused TI to select that test.
 
