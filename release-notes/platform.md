@@ -36,7 +36,7 @@ The following deprecated API endpoints will no longer be supported:
 
 ### Version 81403
 
-### New features and enhancements
+#### New features and enhancements
 
 - Harness has updated our account data deletion period from 90 days to 60 days. (PL-41444)
 
@@ -51,7 +51,7 @@ The following deprecated API endpoints will no longer be supported:
 
    This item requires Harness Delegate version 23.11.814xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-### Fixed issues
+#### Fixed issues
 
 - Previously, if you had an SSH secret key with a **Text** reference pre-selected, you could only update it using YAML but not via the UI. The UI displayed only the **File** secret types. Harness has now added a dropdown menu in the **Create or Select an Existing Secret** dialog that allows you to select the **Secret type** as either **File** or **Text**. This simplifies the process of updating SSH secrets, making it easier for you to manage your secrets. (PL-41507, ZD-47600, ZD-51334)
 
