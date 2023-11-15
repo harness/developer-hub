@@ -49,7 +49,7 @@ The following deprecated API endpoints will no longer be supported:
    - `io_harness_custom_metric_task_failed` is now `io_harness_custom_metric_task_failed_total`
    - `io_harness_custom_metric_task_rejected` is now `io_harness_custom_metric_task_rejected_total`
 
-   This item requires Harness Delegate version 23.11.814xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item requires Harness Delegate version 23.11.81403. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 #### Fixed issues
 
