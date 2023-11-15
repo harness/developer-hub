@@ -24,14 +24,17 @@ Sample message sent by SRM to the Slack channel
 
 Together with the FireHydrant's incident information and SRM's health report, the incident response team can quickly figure out how bad the incident is, see how the rest of the service is doing, and make quick decisions.
 
-Configuring FireHydrant as a change source involves the following steps:
-
 
 You can configure FireHydrant to send alerts in the following ways when an incident is declared:
 
 - [Send real-time alerts to Harness SRM and a designated Slack channel in your workspace.](#method-1)
 
 - [Send real-time alerts to Harness SRM, create a new Slack channel for each incident, and invite Slack users and user groups to that incident channel.](#method-2)
+
+
+## Prerequisite
+
+To enable FireHydrant to send incident reports to your designated Slack channels, you'll need to integrate your Slack workspace with FireHydrant. To learn how to integrate a Slack workspace with FireHydrant, go to [Integrating with Slack]( https://firehydrant.com/docs/integration-guides/integrating-with-slack/).
 
 
 ## Method 1
@@ -71,11 +74,6 @@ To copy the webhook URL from a monitored service:
 2. On the **Configurations** page, go to the **Change Sources** tab. In the **Change Sources** section, a list of change sources that have been added to the monitored service is displayed. The list also displays webhook URLs and cURL commands next to each change source.
 
 3. Locate the FireHydrant incident change source that you want to configure with the FireHydrant runbook, and then copy the webhook URL.
-
-
-### Integrate Slack workspace with FireHydrant.
-
-To enable FireHydrant to send incident reports to your designated Slack channels, you'll need to integrate your Slack workspace with FireHydrant. To learn how to integrate a Slack workspace with FireHydrant, go to [Integrating with Slack]( https://firehydrant.com/docs/integration-guides/integrating-with-slack/).
 
 
 ### Add Webhook Step to the FireHydrant runbook
@@ -169,10 +167,20 @@ To add FireHydrant as a change source to a monitored service:
 
 5. Enter a name for the change source. For example, FireHydrant.
 
-6. Enter the Slack app **Authorization Token** you generated. For enhanced security, consider storing the authorization token in a Harness Secret, and then enter the Harness Security information in the **Authorization Token** field using the following formats:
+6. Enter the Slack app **Authorization Token** you generated.
+
+   For enhanced security, consider storing the authorization token in a Harness Secret, and then enter the Harness Security information in the **Authorization Token** field using the following formats:
 
    - If you've created a Harness Secret at the project level: <+secrets.getValue(‘YourSecretId’)>
    - If you've created a Harness Secret at the account level: <+secrets.getValue(‘account.YourSecretId’)>
+
+  
+   :::info important
+   Ensure to include 'Bearer' before the authorization token. Here's an example:
+
+      `Bearer <your-slack-app-authorization-token)>`
+   :::
+
 
 7.  Select **Submit**.  
     The custom incident change source gets added to the monitored service. A webhook URL and cURL commands are generated.
