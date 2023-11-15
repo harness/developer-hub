@@ -32,6 +32,12 @@ There's a tab called `Data Sources` available in `Scorecards` page to check for 
 
 :::
 
+:::caution
+
+The git (GitHub, GitLab, Bitbucket) datasources doesn't support monorepos.
+
+:::
+
 ```mdx-code-block
 <Tabs>
 <TabItem value="GitHub">
