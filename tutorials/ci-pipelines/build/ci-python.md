@@ -183,7 +183,9 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Run tests
 
-Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
+You can use **Run** and **Run Tests** steps to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
+
+These examples run tests in a **Run** step.
 
 ```mdx-code-block
 <Tabs>
@@ -232,7 +234,9 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 
 ### Visualize test results
 
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), make sure your test commands produce reports in JUnit XML format.
+
+If you run tests in a **Run** step, your **Run** step must include the `reports` specification. The `reports` specification is not required for [Run Tests steps (Test Intelligence)](#run-tests-with-test-intelligence).
 
 ```yaml
                     reports:
@@ -241,8 +245,6 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                         paths:
                           - report.xml
 ```
-
-If you [run tests with Test Intelligence](#run-tests-with-test-intelligence), you don't need to include this specification; it is included by default.
 
 ### Run tests with Test Intelligence
 
@@ -263,7 +265,6 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                   spec:
                     language: Python
                     buildTool: Pytest
-                    args: "--junitxml=out_report.xml" ## args are option for Python TI.
                     runOnlySelectedTests: true
                     preCommand: |
                       python3 -m venv .venv
@@ -271,11 +272,6 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 
                       python3 -m pip install -r requirements/test.txt
                       python3 -m pip install -e .
-                    reports: ## This is optional for Python TI. The report path is included by default.
-                      type: JUnit
-                      spec:
-                        paths:
-                          - out_report.xml*
 ```
 
 ```mdx-code-block
@@ -293,7 +289,6 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                     image: python:latest
                     language: Python
                     buildTool: Pytest
-                    args: "--junitxml=out_report.xml" ## args are optional for Python TI.
                     runOnlySelectedTests: true
                     preCommand: |
                       python3 -m venv .venv
@@ -301,11 +296,6 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 
                       python3 -m pip install -r requirements/test.txt
                       python3 -m pip install -e .
-                    reports: ## This is optional for Python TI. The report path is included by default.
-                      type: JUnit
-                      spec:
-                        paths:
-                          - out_report.xml*
 ```
 
 ```mdx-code-block
