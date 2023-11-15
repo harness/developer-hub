@@ -27,8 +27,9 @@ Metrics with * above are only visible if you start your delegate with `DYNAMIC_R
 Also note that the above metrics are available only if your delegate version is later than 23.05.79311.
 :::
 
-::: info note
+:::info note
 Metrics with # above include the include the suffix `_total` as of Harness Delegate 23.11.81403. Delegate versions earlier than 23.11.81403 do not include the suffix `_total` in the metric name.
+
 :::
 
 This topic includes example YAML files you can use to create application manifests for your Prometheus and Grafana configurations.
