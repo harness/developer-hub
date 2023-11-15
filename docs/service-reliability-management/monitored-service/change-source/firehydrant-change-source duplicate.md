@@ -95,8 +95,6 @@ To configure the runbook:
 ```
 
    
-   - **HMAC Secret**: A short string to confirm the webhook's source from FireHydrant in your app.
-   
    - **JSON Payload**: Use a JSON string in the following format for transmitting data to your endpoint:
   
 
@@ -125,7 +123,7 @@ To configure the runbook:
       ```
 
   
-3. Select **Add Step** to save the runbook.
+1. Select **Add Step** to save the runbook.
 
 To learn more about adding a webhook step to a FireHydrant runbook, go to [Sending a webhook from a Runbook]( https://firehydrant.com/docs/configuring-firehydrant/sending-a-webhook-from-a-runbook/).
 
