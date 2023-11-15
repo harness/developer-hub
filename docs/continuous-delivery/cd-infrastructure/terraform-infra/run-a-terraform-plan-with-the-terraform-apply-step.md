@@ -510,15 +510,11 @@ You can use Harness encrypted text for values. See [Add Text Secrets](/docs/plat
 
 ## Encrypt the Terraform Apply JSON outputs
 
-:::note
+The **Encrypt json output** setting encrypts the Terraform JSON output as a Harness secret. Only Harness Secret Manager is supported to select.
 
-Currently, this feature is behind the flag, `CDS_ENCRYPT_TERRAFORM_APPLY_JSON_OUTPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+The secret is ephemeral and is created and deleted during the pipeline execution, once the pipeline finished the execution the secret is deleted.
 
-:::
-
-The **Encrypt json output** setting encrypts the Terraform JSON output as a Harness secret using the secret manager you select. 
-
-The secret is ephemeral and is created and deleted during the pipeline execution. The secret is not added to the **Secrets** list in Harness.
+The secret is stored to the **Secrets** list in Harness at the project level.
 
 You can use an expression to retrieve the secret and its Terraform JSON output during pipeline execution.
 
