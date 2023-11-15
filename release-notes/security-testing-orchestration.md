@@ -19,11 +19,11 @@ Review the notes below for details about recent changes to Security Testing Orch
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version 1.73.1
+## Latest: Version 1.74.1
 
 ### New features and enhancements
 
-You can now scan your repositories and other components used in your code with [Anchore Enterprise](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. (STO-6382)
+- The **Exemptions** table now shows the pipeline name in the **Scope** column and not the ID. This keeps the user experience consistent with other areas of the application. (STO-6631)
 
 ### Early access
 
@@ -31,9 +31,7 @@ This release does not include Early Access features.
 
 ### Fixed issues
 
-- Fixed a configuration issue in a back-end service that prevented AIDA from generating remediation steps. (STO-6610) 
-
-- Fixed a UI issue in the **Security Tests** tab where the **Stage** and **Step** pull-down filters showed the `identifier` fields. These filters now show the `name` fields, which are more human-readable. (STO-6629)
+- Fixed an issue that caused the **Issue Details** pane to show target names from other projects in the same account. (STO-6693)
 
 
 ### Hotfixes
@@ -45,9 +43,29 @@ This release does not include hotfixes.
 <details>
 <summary>2023 releases</summary>
 
-## Latest: Version 1.72.1
+#### Version 1.73.1
 
-#### New features and enhancements
+##### New features and enhancements
+
+- You can now scan your repositories and other components used in your code with [Anchore Enterprise](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. (STO-6382)
+
+##### Early access
+
+This release does not include Early Access features. 
+
+##### Fixed issues
+
+- Fixed a configuration issue in a back-end service that prevented AIDA from generating remediation steps. (STO-6610) 
+
+- Fixed a UI issue in the **Security Tests** tab where the **Stage** and **Step** pull-down filters showed the `identifier` fields. These filters now show the `name` fields, which are more human-readable. (STO-6629)
+
+##### Hotfixes
+
+This release does not include hotfixes. 
+
+#### Version 1.72.1
+
+##### New features and enhancements
 
 ```mdx-code-block
 import sto_exemptions_timebound from './static/sto-timebound-exemption.png'
