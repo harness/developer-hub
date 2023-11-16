@@ -47,15 +47,15 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>NG_PIPELINE_TEMPLATE</td>
-        <td>Enables <a href="https://developer.harness.io/tutorials/cd-pipelines/templates">Harness templates.</a>. <b>This feature is GA.</b> </td>
+        <td>Enables <a href="https://developer.harness.io/tutorials/cd-pipelines/templates">Harness templates.</a>. <b>This feature is Public Preview.</b> </td>
     </tr>
     <tr>
         <td>OPA_GIT_GOVERNANCE</td>
-        <td>Store and fetch your <a href="/docs/platform/governance/policy-as-code/configure-gitexperience-for-opa">OPA policies in Git.</a>. <b>This feature is GA.</b> </td>
+        <td>Store and fetch your <a href="/docs/platform/governance/policy-as-code/configure-gitexperience-for-opa">OPA policies in Git.</a>. <b>This feature is Public Preview.</b> </td>
     </tr>
     <tr>
         <td>NG_SVC_ENV_REDESIGN</td>
-        <td>Enables <a href="/docs/continuous-delivery/get-started/services-and-environments-overview">Service and Environment V2. </a> <b>This feature is GA.</b> V1 is <a href="/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2">deprecated</a>
+        <td>Enables <a href="/docs/continuous-delivery/get-started/services-and-environments-overview">Service and Environment V2. </a> <b>This feature is Public Preview.</b> V1 is <a href="/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2">deprecated</a>
 .</td>
     </tr>
     <tr>
@@ -93,7 +93,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_TERRAFORM_S3_SUPPORT</td>
-        <td>Enables AWS S3 for Terraform plan storage. <b>This feature flag is GA.</b> </td>
+        <td>Enables AWS S3 for Terraform plan storage. <b>This feature flag is Public Preview.</b> </td>
     </tr>
     <tr>
         <td>PIE_PIPELINE_SETTINGS_ENFORCEMENT_LIMIT</td>
@@ -193,11 +193,11 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_SSH_SSHJ</td>
-        <td>Enables a library upgrade for SSH Deployments to use newer algorithms of SSH to connect to hosts. All Delegates on 803xx Release will have the new upgraded library. <b>This feature is GA.</b></td>
+        <td>Enables a library upgrade for SSH Deployments to use newer algorithms of SSH to connect to hosts. All Delegates on 803xx Release will have the new upgraded library. <b>This feature is Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_SSH_CLIENT</td>
-        <td>Enables a library upgrade for SSH Deployments  to use newer algorithms of SSH to connect to hosts. All Delegates on 803xx Release will have the new upgraded library. <b>This feature is GA.</b> </td>
+        <td>Enables a library upgrade for SSH Deployments  to use newer algorithms of SSH to connect to hosts. All Delegates on 803xx Release will have the new upgraded library. <b>This feature is Public Preview</b> </td>
     </tr>
     <tr>
         <td>CD_TRIGGER_CATALOG_API_ENABLED</td>
