@@ -124,7 +124,7 @@ If you're new to Harness, read [Harness Platform architecture](/docs/get-started
 
 1. Follow the steps in [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview) to install a Harness delegate.
 
-2. If you wish to install an ECS Fargate type delegate please see [AWS ECS Fargate Delegate Installation Overview](docs/platform/delegates/install-delegates/docker-delegate-to-ecs-fargate)
+2. If you wish to install an ECS Fargate type delegate please see [AWS ECS Fargate Delegate Installation Overview](/docs/platform/delegates/install-delegates/docker-delegate-to-ecs-fargate/).
 
 #### Sample ECS Fargate Delegate Task Definition JSON
 
