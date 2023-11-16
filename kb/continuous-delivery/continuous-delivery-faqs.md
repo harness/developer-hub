@@ -548,10 +548,6 @@ Or
 
 You can just write a file on the delegate and use the same delegate.
 
-#### How can I get pipeline exectuion details via API
-
-This API can be used to fetch pipleine execution details. Refer more on this [here](https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2
-)
 #### How to do a Flank Deployment in Harness?
 
 You can use Deployment Templates for this use case. You can find more information on this [here](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/).
@@ -586,9 +582,6 @@ The multiple selection functionality is currently behind the feature flag, ```PI
 During rollback, Harness reapplies the previous manifest. This is the declarative method, and it includes the ConfigMap and Secrets of the last known good state.  
 
 Refer more on this in [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#important-notes)
-
-#### When making a change to a template, you have to manually go through all the places that template is referenced and run “reconcile” Is this by design?
-Yes, this is by design. Refer more on this in [Documentation](https://developer.harness.io/docs/platform/templates/templates-best-practices/#reconciliation)
 
 #### Is this the right format to push a secret to the Azure key vault? secret.setVaule("azurevauly://avidentifier/pathToSecret", secretVaule)
 secret.setValue is not supported. Secrets can be referred to only using ```secret.getValue("azurevauly://avidentifier/pathToSecret")``` or `secret.getValue("secretIdentifierInHarness")`
@@ -1754,12 +1747,6 @@ Go to Account Settings --> Account Resources --> Git Experience --> Allow differ
 If you have multiple services using this same pipeline template, both within and outside the same project, If both service1 and service2 in the same project are using this same pipeline and are sitting at the approval step. 
 As the template used here has been specified with different services at the runtime, so it will run independently. 
 
-#### Harness enabling auto deployment
-
-To have automatic deployment in Harness, you can make use of trigger On new artifact. 
-[documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/triggers/trigger-a-deployment-on-a-time-schedule/)
-As soon as your build is complete and it publishes a new artifact you can setup a trigger on that and it will trigger a Harness Deployment. 
-
 #### Sharing dashboard to a person who is not a Harness user
 
 The sharing option for the harness dashboard requires picking a specific user group within the harness itself along with different levels of access. So they will only have access to the dashboard and not a user who is not part of any group in harness.
@@ -2892,3 +2879,59 @@ No, we don't. Please refer more on this in the Terraform-Harness[Documentation](
 #### What is the time parameter for AWS back-off strategy ?
 
 For AWS back-off strategy, parameters of time are in milliseconds. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#aws-backoff-strategy/)
+
+#### Can I implement a custom approval step that runs a script, calls Jira, and fails if the issue count is greater than 0 ?
+
+No, it is not yet introduced for Jira. It is only applicable for Harness Approvals at the moment
+
+#### Can we fix a max queue length in queue step ?
+
+No, this feature is not supported for queue steps. The queue operates on a first-in, first-out (FIFO) basis with a maximum capacity of 20. Any executions beyond this limit will result in failure.
+
+#### Does Harness support the use of two Target Groups and allow the utilization of either the Load Balancer or Route53 DNS for orchestrating the switching between the routes to the Blue or Green Services ?
+
+In the next generation, we support the utilization of a `load balancer` with target groups for the switching between blue and green. In the current generation, we used to support both `load balancer` and `Route53 DNS` for this purpose
+
+#### How can one tell if a service is v1 or v2 ?
+
+For V1 services, they only include a name, description, and tag. There is no service definition associated with these services. However V2 services consists of them all including `service definitions`, `manifest path` and `artifact` if one wants to pass an image in pipeline at runtime.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2)
+
+#### Does Harness have restrictions for running parallel jobs in trial accounts ?
+
+Yes, based on plan we have such restrictions. Please read more on this in following [Documentation](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/pipeline-settings/)
+
+#### What can be an alternative for facing API rate limit issues while running pipelines with templates backed up by Github ?
+
+Please one can try using the below alternatives :
+
+- Utilise different Connectors with different access tokens for remote enitities
+- One can use Github App to have extended limits on API requests. The GitHub App has a higher API rate limit, especially if its configured for a GitHub Org.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/).
+One can also follow the provided [Documentations from Github](https://docs.github.com/en/rest/overview/rate-limits-for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-github-app-installations)
+
+#### Where can one find the documentations for pre-requisites when migrating from First-Gen to Next-Gen ?
+
+Please find the pre-requisite for migration documentation [here](https://harness.github.io/migrator/prerequisites)
+
+#### Can one filter the artifact files based on the extension (such as `*.zip`) ?
+
+Yes, one can use the `Artifact Filter` instead of `Artifact Directory` when creating an Artifact and apply the regex to filter the path.
+
+#### How does Harness currently handle sorting based on timestamps for fetching the GCR Artifacts ?
+
+As of today, our system does not sort data based on timestamps. Instead, it employs lexical sorting.
+We are actively exploring and considering transitioning from lexical to time-based sorting. This change would enhance the handling of timestamps.
+
+#### How can one parse a JSON string in a pipeline expression ?
+
+Please one may follow steps mentioned below :
+
+- Use the expression `<+ json.object(<+pipeline.variable.myJsonThing>)>` 
+- One can also try JQuery in a shell script or container step and capture output variables
+- Read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors/)
+
+#### What is the feature flag for the bi-directional GitSync ?
+
+One can enable the Feature-Flag `PIE_GIT_BI_DIRECTIONAL_SYNC` to fetch the feature.
+Please read more on All Continuous Delivery FFs in this [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-integrations/#active-cd-feature-flags/) 

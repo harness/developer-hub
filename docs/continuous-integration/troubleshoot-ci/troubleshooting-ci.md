@@ -24,6 +24,10 @@ This topic contains troubleshooting information for error messages and other iss
 
 If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or visit the [Harness Community Forum](https://community.harness.io/).
 
+## Secrets with line breaks and shell-interpreted special characters
+
+For information about handling secrets with new line characters or other shell-interpreted special characters, go to [Add and reference text secrets - Line breaks and shell-interpreted characters](/docs/platform/secrets/add-use-text-secrets#line-breaks-and-shell-interpreted-characters).
+
 ## Git connector fails to connect to the SCM service
 
 The following SCM service errors can occur with [Git connectors](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference).
@@ -72,7 +76,11 @@ For troubleshooting information related to cloning codebases, go to [Create and 
 
 ## Output variable length limit
 
-If an output variable's length is greater than 64KB, then the step fails. If you need to export large amounts of data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin.md).
+If an output variable's length is greater than 64KB, steps can fail or truncate the output. If you need to export large amounts of data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin.md).
+
+## Multi-line output variables truncated
+
+Output variables don't support multi-line output. Content after the first line is truncated. If you need to export multi-line data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin.md).
 
 ## Truncated execution logs
 

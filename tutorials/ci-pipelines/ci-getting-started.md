@@ -55,7 +55,7 @@ Harness CI is four times faster due to optimized defaults with hosted builds, so
 
 Cache Intelligence dramatically reduces pipeline execution time by automatically caching well-known directories for Java, Node package managers, and more.
 
-[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) can improve build cycles by up to 90% with machine learning (ML) that runs only the necessary tests relevant to code changes. Once tests are identified, you can speed up test cycles even more by splitting and running tests concurrently.
+[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) can improve build cycles by up to 90% with machine learning (ML) that runs only the necessary tests relevant to code changes. Once tests are identified, you can speed up test cycles even more by splitting and running tests concurrently.
 
 In the following demo video, Harness goes head-to-head with GitHub Actions. You can follow [these instructions](https://github.com/harness-community/kafka/blob/trunk/.harness/README.md) to reproduce the results and try it for yourself.
 

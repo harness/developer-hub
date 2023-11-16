@@ -51,7 +51,7 @@ You can use the [--output-junit](https://cmake.org/cmake/help/latest/manual/ctes
 
 ### Java - Gradle
 
-This example runs Gradle with [Test Intelligence](./set-up-test-intelligence.md). You can also run Java tests in [Run steps](./run-tests-in-ci.md).
+This example runs Gradle with [Test Intelligence](./test-intelligence/set-up-test-intelligence.md). You can also run Java tests in [Run steps](./run-tests-in-ci.md).
 
 ```yaml
               - step:
@@ -121,7 +121,7 @@ This example runs pytest in a [Run step](../run-ci-scripts/run-step-settings.md)
 
 :::info
 
-If you use [test splitting](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism) with pytest in a Run step, you must set `junit_family=xunit1` in your code repo's `pytest.ini` file or include `-o junit_family="xunit1"` in the step's `command`.
+If you use [test splitting](./speed-up-ci-test-pipelines-using-parallelism) with pytest in a Run step, you must set `junit_family=xunit1` in your code repo's `pytest.ini` file or include `-o junit_family="xunit1"` in the step's `command`.
 
 :::
 
@@ -130,7 +130,7 @@ If you use [test splitting](/docs/continuous-integration/use-ci/optimize-and-mor
   <TabItem value="runtests" label="Run Tests step (Test Intelligence)">
 ```
 
-This example runs pytest with [Test Intelligence](./set-up-test-intelligence.md).
+This example runs pytest with [Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
 
 ```yaml
               - step:
@@ -213,7 +213,7 @@ If your test tool doesn't automatically produce test results in JUnit XML format
 ```
 
 <!-- Framework example
-The following example runs tests with [Test Intelligence](./set-up-test-intelligence.md).
+The following example runs tests with [Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
 
 ```yaml
                   - step:
@@ -278,7 +278,7 @@ You can use the [go-junit-report](https://github.com/jstemmer/go-junit-report) t
 
 ### Java - Maven
 
-This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) and runs tests with Maven and [Test Intelligence](./set-up-test-intelligence.md).
+This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) and runs tests with Maven and [Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
 
 ```yaml
               - step:
