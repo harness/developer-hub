@@ -297,8 +297,6 @@ For Harness services using the Tanzu deployment type, [config files can be confi
 * **Release date:** April 2023
 * **Release version:** Delegate version 23.04.79111
 * **Issue number:** CDS-58488, ZD-42117
-* **Feature flag:** `CDS_NG_TRIGGER_AUTHENTICATION_WITH_DELEGATE_SELECTOR`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 Github triggers that use a secret for authentication will now use the same delegate selectors saved in the secret's Harness secret manager.
 
