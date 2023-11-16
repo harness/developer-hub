@@ -18,7 +18,7 @@ These steps explain how to add a status check that uses the GitHub API. For info
 4. Enter a **Name** for the step.
 5. If required by your build infrastructure, provide the **Container Registry** and **Image**.
    * **Container Registry** is a container registry connector, such as a Docker connector.
-   * **Image** is the FQN or artifact name and tag of a Docker image that has cURL installed, such as `curlimages/curl:lates` for the [official cURL Docker Hub image](https://hub.docker.com/r/curlimages/curl).
+   * **Image** is the FQN or artifact name and tag of a Docker image that has cURL installed, such as `curlimages/curl:latest` for the [official cURL Docker Hub image](https://hub.docker.com/r/curlimages/curl).
    * To learn more about this setting and when it is required, go to [Use Run steps - Container Registry and Image](../run-ci-scripts/run-step-settings.md#container-registry-and-image).
 6. For **Shell**, select **Sh**.
 7. In **Command**, enter a script that calls the GitHub API, for example:
