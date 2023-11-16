@@ -7,6 +7,13 @@ const path = require('path');
 
 const BASE_URL = process.env.BASE_URL || '/';
 
+function hideIndexFromSidebarItems(items) {
+  const result = items.filter((item) => {
+    return !(item.type === 'doc' && item.id === 'index');
+  });
+  return result;
+}
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Harness Developer Hub',
@@ -224,6 +231,10 @@ const config = {
                 to: 'docs/internal-developer-portal',
               },
               {
+                label: 'Code Repository',
+                to: 'docs/code-repository',
+              },
+              {
                 label: 'Platform',
                 to: 'docs/platform',
               },
@@ -237,7 +248,7 @@ const config = {
               },
               {
                 label: 'Release Notes',
-                href: '/release-notes/whats-new',
+                href: '/release-notes',
               },
               {
                 label: 'FAQs',
@@ -268,20 +279,24 @@ const config = {
                 to: 'certifications',
               },
               {
+                label: 'Continuous Integration',
+                to: 'certifications/continuous-integration',
+              },
+              {
                 label: 'Continuous Delivery & GitOps',
                 to: 'certifications/continuous-delivery',
               },
               {
-                label: 'Continuous Integration',
-                to: 'certifications/continuous-integration',
+                label: 'Feature Flags',
+                to: 'certifications/feature-flags',
               },
               {
                 label: 'Cloud Cost Management',
                 to: 'certifications/cloud-cost-management',
               },
               {
-                label: 'Feature Flags',
-                to: 'certifications/feature-flags',
+                label: 'Security Testing Orchestration',
+                to: 'certifications/sto',
               },
               {
                 label: 'Chaos Engineering',
@@ -409,7 +424,7 @@ const config = {
               },
               {
                 label: 'Release Notes',
-                href: '/release-notes/whats-new',
+                href: '/release-notes',
               },
               {
                 label: 'Feature Requests',
@@ -536,6 +551,12 @@ const config = {
         exclude: ['**/shared/**', '**/static/**'],
         sidebarPath: require.resolve('./sidebars-release-notes.js'),
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
+        async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
+          const sidebarItems = await defaultSidebarItemsGenerator(args);
+          const sidebarItemsWithoutIndex =
+            hideIndexFromSidebarItems(sidebarItems);
+          return sidebarItemsWithoutIndex;
+        },
       },
     ],
     // redirect plugin start

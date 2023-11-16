@@ -209,7 +209,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: my-harness-delegate
+              connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -221,7 +221,7 @@ pipeline:
                   name: create codeql sarif
                   identifier: create_codeql_sarif
                   spec:
-                    connectorRef: DockerHub
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: alpine
                     shell: Sh
                     command: |-

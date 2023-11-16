@@ -21,6 +21,8 @@ VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM. 
 - VMware tool should be installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions should be provided to access the hosts and the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
+- Run the fault with a user possessing admin rights, preferably the built-in Administrator, to guarantee permissions for memory stress testing. [See how to enable the built-in Administrator in Windows](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/enable-and-disable-the-built-in-administrator-account?view=windows-11).
+
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 ```yaml
 apiVersion: v1
@@ -49,6 +51,16 @@ stringData:
         <td> VM_NAME </td>
         <td> Name of the target VM. </td>
         <td> For example, <code>ubuntu-vm-1</code> </td>
+      </tr>
+      <tr>
+          <td> VM_USER_NAME </td>
+          <td> Username of the target VM.</td>
+          <td> For example, <code>vm-user</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_PASSWORD </td>
+          <td> User password for the target VM. </td>
+          <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
       </tr>
     </table>
     <h3>Optional fields</h3>

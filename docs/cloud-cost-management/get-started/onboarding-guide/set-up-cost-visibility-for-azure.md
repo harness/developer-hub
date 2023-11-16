@@ -147,7 +147,7 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
 	1. In the **Storage account name**, enter the account name.
 	2. In **Storage Container**, enter the container name.
 	3. In **Storage Directory**, enter the directory name.
-	4. In **Report Name**, enter the report name.
+	4. In **Report Name**, enter the export name.
    
      ![](static/set-up-cost-visibility-for-azure-11.png)
 8. Select **Continue**.

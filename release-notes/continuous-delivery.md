@@ -1,9 +1,9 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-10-20T10:00:15
+date: 2023-11-15T10:00:15
 tags: [NextGen, "continuous delivery"]
-sidebar_position: 4
+sidebar_position: 7
 ---
 
 ```mdx-code-block
@@ -46,9 +46,275 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
-## Latest: Harness version 81106
+## November 2023
 
-### New features and enhancements
+### Version 81401
+
+<!-- ### New features and enhancements
+
+- Harness has introduced stage-level timeouts for the following stage types: (CDS-81225)
+  - Deploy
+  - Build
+  - Approval
+  - Security Test
+  - Pipeline
+  - Custom Stage 
+
+  This item requires Harness Delegate version 23.10.8xxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). -->
+
+### Fixed issues
+
+- The config file expressions `${configFile.getAsBase64("<filename>")}` and `${configFile.getAsString("<filename>")}` are valid only in Harness FirstGen but were also being evaluated in Harness NextGen. When Harness NextGen evaluated these expressions, the message `Cannot evaluate expression` and the expression it attempted to evaluate were displayed. (CDS-83157) 
+
+  This issue has been fixed. Those expressions are no longer evaluated in Harness NextGen.
+
+- Harness has released a new image, `harnessdev/serverless-package:3.30.1-1.1.0`, for the Serverless Package step. The package, available on Docker Hub, supports IRSA and assumes an IAM role for downloading artifacts from Amazon S3. (CDS-82788) 
+
+  The AWS connector specified in your artifact step for S3 or ECR requires certain information to be available in the newly released image. Harness adds the required information to the image by using the following environment variables:
+    - `PLUGIN_ARTIFACT_AWS_ACCESS_KEY`: AWS access key, if credentials are specified manually.
+    - `PLUGIN_ARTIFACT_AWS_SECRET_KEY`: Secret key, if credentials are specified manually.
+    - `PLUGIN_ARTIFACT_AWS_ROLE_ARN`: Cross-account role, if specified.
+    - `PLUGIN_ARTIFACT_AWS_STS_EXTERNAL_ID`: STS external ID, if specified.
+    - `PLUGIN_ARTIFACT_AWS_REGION`: AWS region of the artifact, if specified in the artifact.
+
+  You can override these environment variables in the serverless package.
+    
+  By default, the image uses manually provided credentials, but it requires `PLUGIN_ARTIFACT_AWS_ACCESS_KEY` and `PLUGIN_ARTIFACT_AWS_SECRET_KEY` to be present. If these environment variables are not present, Harness uses an IAM role associated with the service account in the step group configuration for the EKS cluster.
+    
+  The image uses `PLUGIN_ARTIFACT_AWS_ROLE_ARN` and `PLUGIN_ARTIFACT_AWS_STS_EXTERNAL_ID` to assume the other role. The base role for assuming this role is determined based on whether the image uses manually provided credentials or an IAM role. 
+
+- A previous release simplified the format of the log base key for the Download Logs feature for pipelines. The simplified format was deployed behind the feature flag `PIE_SIMPLIFY_LOG_BASE_KEY`. However, the Harness user interface was not updated to accept this new format. After you enabled the feature flag, attempts to download logs failed with the following message: `cannot list files for prefix`.
+  
+  This issue has been fixed.
+
+- If you manually entered and saved multiple ASG load balancers in the YAML configuration of an existing ASG Blue Green Deploy step, the load balancer configuration worked as expected. However, the ASG load balancer configurations did not propagate to the user interface, which set up the ASG load balancer fields to expect runtime input.
+
+  This issue has been fixed. You can now configure multiple ASG load balancer for existing ASG Blue Green Deploy steps. (CDS-82364)
+
+- Earlier, environment values were not picked up correctly from other stages. (CDS-81970, ZD-52311)
+
+  This issue has been fixed.
+
+- Email notifications from the Harness Approval step did not respect newline characters included in the approval message. (CDS-81957, ZD-50115)
+
+  This issue has been fixed. You can now enter multiline text in the approval message field. Harness renders newline characters appropriately.
+
+- Previously, the saved filters dropdown field was limited to displaying only the first 100 filters, which was also the maximum number of filters retrieved. (CDS-81492, ZD-52030) 
+
+  This issue has been fixed. Harness has introduced infinite scrolling in the dropdown field, thereby allowing it to retrieve the entire list of available filters. 
+
+- Custom health sources are not displayed for stages that deploy multiple services or multiple environments. (CDS-81214, ZD-51901)
+
+  This behavior is by design. To improve the user experience, for stages that deploy multiple services or multiple environments, a new message is displayed at the bottom of the verify step. The message describes why custom health sources are not shown. 
+
+- Harness generated multiple requests for each remote child pipeline. (CDS-80831, ZD-51082, ZD-51764)
+
+  This issue has been fixed. Now, Harness generates only unique requests for child pipelines.
+
+- Harness does not display large console logs correctly. The logs end abruptly. (CDS-80666, ZD-51442)
+
+  This issue has been fixed. You can now scroll through large logs and also use the Scroll to Bottom button.
+
+- Fetching a repository and attempting to read a file that did not exist on the file system resulted in an exception, and Harness failed to handle that exception appropriately. The console logs displayed the following message: "Exception in processing GitFetchFilesTask. Reason: Unable to checkout file: *file-path*." (CDS-82631) 
+
+  This issue has been fixed. 
+
+  This item requires Harness Delegate version 23.11.81403. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
+- When using the Generic repository format to fetch artifacts from Artifactory, if you used an artifact filter and a non-Regex value for the artifact path, an issue occurred. The issue caused the metadata URL in the service outcome to be incorrect; the URL did not include the repository name. (CDS-82579)
+
+  This issue is fixed. 
+
+  This item requires Harness Delegate version 23.11.81403. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- HorizontalPodAutoscaler (HPA) and PodDisruptionBudget (PDB) could not be used in Kubernetes deployments if they contained fields that are not supported by the Kubernetes schema. (CDS-82370)
+  
+  This issue has been fixed by the addition of support for such fields.
+  
+  This item requires Harness Delegate version 23.11.81403. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Harness did not honor the working directories specified in script units in the Command steps used in WinRM deployments. Instead, Harness used the default directory configured for the user profile on the target VM. (CDS-82105)
+  
+  This issue has been fixed. Harness now uses the working directory that you specify in script units. However, the fix has been deployed behind the feature flag `CDS_PRESERVE_WINRM_WORKING_DIR_FOR_COMMAND_UNITS`. Contact [Harness Support](mailto:support@harness.io) to enable the fix.
+
+  This item requires Harness Delegate version 23.11.81403. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- The services dashboard did not correctly show primary and canary instances in a Kubernetes deployment. (CDS-81869, ZD-52262, ZD-52930)
+
+  The issue occurred because Harness treated the canary instances and primary instances as one set of instances. Consequently, during the canary deployment, Harness also updated the primary instances with current deployment details. This was not correct because primary deployment hadn't begun yet. This issue affected post-production rollbacks.
+
+  This issue has been resolved. Now, Harness splits the canary instances and primary instances into two groups and updates each group with the deployment details that are relevant to them. 
+
+  This item requires Harness Delegate version 23.11.81403. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
+- If connectivity issues between Harness and the Git provider cause a file that existed in the repository to not be found on the file system after performing a fetch, the Update Release Repo step creates a new file. (CDS-80902, ZD-51818)
+
+  This issue has been fixed. If Harness experiences a connectivity issue with a Git provider when executing a step, it fails the step after a few retries.
+
+  This item requires Harness Delegate version 23.11.81403. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Secrets that are referenced in a service variable are displayed on the secret's **References** tab but secrets that are referenced in an environment’s service overrides are not. (CDS-80615)
+
+  This issue has been fixed.
+
+  This item requires Harness Delegate version 23.11.81403. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- When the Update Release Repo step failed on the delegate, the error message was not propagated to the Harness user interface, and you had to search the delegate logs to determine the cause of the issue. 
+
+  This issue has been fixed. The error message is now propagated from the delegate to the Harness user interface. (CDS-79094)
+
+  This item requires Harness Delegate version 23.11.81403. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### November 3, 2023, Harness version 81308
+
+##### New features and enhancements
+
+- Availability of deployment step group templates in custom stages (CDS-81265)
+
+  When opened in the context of a custom stage, the **Templates** side panel in Pipeline Studio lists step group templates created from deployment stages. The **Type** dropdown field in the panel also includes entries for filtering step groups created from custom and deployment stages.
+
+- Improved user experience when viewing errors in the console view (CDS-77809)
+
+  You can now increase the height of the error panel in the pipeline console. This change improves the readability of error messages and suggestions.
+
+- Resolved expressions for runtime inputs in custom dashboards (CDS-77013)
+
+  For runtime inputs, custom dashboards now show resolved trigger expressions instead of the expressions themselves.
+
+##### Fixed issues
+
+- In Pipeline Studio, if you perform CRUD operations on stage variables in the Variables side panel when the stage's Overview tab is open, those operations do not reflect on the Overview Tab. For example, the Overview tab continues to show stage variables that you delete in the side panel. (CDS-79739, CDS-82435)
+
+  This issue has been resolved.
+
+- When you defined runtime inputs for fields for list items in the AWS ASG blue/green deployment step, the deployment dashboard did not show deployment details. (CDS-82383, ZD-51101)
+
+  This issue has been fixed.
+
+- The GitOps Sync step intermittently failed to check the sync status of the application. (CDS-82230, ZD-52553) 
+
+  This issue was caused by there being no difference between the timestamp of the start of the sync step and the actual timestamp returned by the GitOps Sync API. 
+  
+  This issue has been fixed by the introduction of a small delay so that the timestamps do not match.
+
+- A TAS pipeline requires a Tanzu Command step or at least one (but no more than one) App Setup step or at least one (but no more than one) Rolling Deploy step. However, when attempts to save a TAS pipeline that does not include any of those steps fail, the message displayed is "Only one App Setup or Rolling Deploy is supported". (CDS-82120, ZD-52445)
+
+  The message is misleading because it applies only to pipelines that have more than one App Setup or Rolling Deploy steps.
+
+  This issue has been fixed. The error message has been improved and lists the steps that a TAS pipeline requires.
+
+- Earlier, when you selected one or more pipeline stages to execute, and those stages did not have runtime inputs, Harness validated all the stages in the pipeline. Harness confined validation to the stages you selected only if the stages had runtime inputs. (CDS-81914)
+
+  The issue of validating all the stages when the selected stages do not have runtime inputs is now fixed.
+
+- Earlier, even though a freeze window was enabled and active and you had configured the **Freeze window is enabled and active** notification setting (`FreezeWindowEnabled` in YAML), Harness users did not receive a *Freeze Active* notification. The issue occurred if you enabled the freeze window when its start time was in the past (meaning that the freeze window became active as soon as you enabled it). This issue did not occur if the freeze window’s start time was in the future. (CDS-81891, ZD-52835) 
+
+  This issue has been fixed. Now, a *Freeze Active* notification is sent if you make changes to a freeze window that is enabled and active, provided that the **Freeze window is enabled and active** setting is configured.
+
+- Expressions that reference secrets (for example, `<+secrets.getValue("secret")>`) in the input variable sections of custom artifact sources did not resolve.  (CDS-81724, ZD-52184)
+
+  This issue has been fixed. 
+
+- Previously, the saved filters dropdown field was limited to displaying only the first 100 filters, which was also the maximum number of filters retrieved. (CDS-81492, ZD-52030)
+
+  This issue has been fixed. Harness has introduced infinite scrolling in the dropdown field, thereby allowing it to retrieve the entire list of available filters. 
+
+- A discrepancy existed in the information displayed between the pipeline view and console view of the Verify step in a deployment: the console view displayed “No analysis” while the pipeline view displayed a more verbose output. (CDS-81291, ZD-52005)
+  
+  This issue is now fixed. If an error occurs, the message is displayed at the top of the view.
+
+
+#### October 27, 2023, Harness version 81205
+
+##### New features and enhancements
+
+- More intuitive tag creation (CDS-78994)
+
+  Tag creation is now more intuitive in the Harness user interface. When you enter text in a tag field, a create button appears, and you can select that button or press Enter to create the tag. 
+
+- JGit library upgrade (CDS-80715, ZD-51149)
+
+  Eclipse JGit libraries have been upgraded to version 6.6.1.202309021850-r. 
+  
+  This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+##### Early access features
+
+This release does not include early access features. 
+
+##### Fixed issues
+
+- The Edit Health Source dialog did not display the value that you had selected in the Service Instance Identifier field earlier. The value appeared in the field only after you clicked Fetch Records a few times. The issue was caused by a delay in the API call used to fetch the options. (CDS-81971, ZD-50452) 
+
+  This issue has been fixed. With this fix, the field becomes unavailable until the API call completes, and it displays a placeholder value that indicates the choice that you had made earlier. 
+
+- Container step groups that included a step with a looping strategy failed with the `IllegalStateException: Duplicate key <requestID>` exception. (CDS-81889, ZD-52104)
+
+  This issue has been fixed.
+
+- Template Studio did not save the delegate selector setting to the template if it was marked as a runtime input. (CDS-81633, ZD-52018, ZD-52366, ZD-52504)
+
+  This issue has been fixed. 
+
+- Earlier, the `terraform import` command for service overrides V2 returned the YAML property in the JSON format. (CDS-81550)
+
+  Now, the command returns the property in the YAML format. This change does not affect existing Terraform flows as our `terraform apply` commands can handle both JSON and YAML formats. 
+
+- The pipeline selection component in the pipeline chaining user interface did not display all of the available pipelines. (CDS-81304)
+
+  This issue has been fixed. 
+
+- The Plugin step inside a containerized step group was failing with a null pointer exception. (CDS-81253, ZD-51972, ZD-52202) 
+
+  This issue has been fixed. 
+
+- When creating a new template, the **Save as New Template** menu item did not include the changes that you made, which meant that the new template did not differ from the one you started with. This issue was observed in Git Experience (remote) templates. (CDS-80744)
+
+  The issue has been fixed. 
+
+- If a Policy step was used in a matrix strategy, Harness used the Policy step's payload to create the stage name instead of showing the actual name of the step. (CDS-80743, ZD-51672)
+
+  This issue has been fixed. 
+
+- Harness did not export the `samTemplateFile` property for AWS SAM deployments. Consequently, you could not use expressions such as `<+manifests.MANIFEST_ID.samTemplateFile>` and `<+manifests.MANIFEST_ID.spec>` to dynamically insert the SAM template file name into the SAM Deploy step, even though the expression `<+manifests.MANIFEST_ID>` resolved for you. (CDS-80624, ZD-51597)
+
+  This issue has been fixed. Harness has released two new images, `harnessdev/sam-build:1.82.0-1.1.0` and `harnessdev/sam-deploy:1.82.0-1.1.0`, which support the use of the `PLUGIN_SAM_TEMPLATE_FILE_PATH` environment variable to get the values passed in the `samTemplateFile` of the SAM service. 
+  
+  The expression you need to reference the SAM template file name can now be copied from the output section of the service step. 
+  
+  Alternatively, you can use the following expression: `<+pipeline.stages.STAGE_ID.spec.manifests.MANIFEST_ID.samTemplateFile>.`
+
+  For more information about building expressions, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables).
+
+- Triggering a Jenkins job through an HTTP POST request resulted in an exception named `IllegalArgumentException`. Consequently, the Jenkins build step failed. The exception was caused by incorrect encoding of the Jenkins job parameters in the URL. (CDS-81070, ZD-51879, ZD-52069)
+
+  The earliest Harness Delegate version to experience this issue is 23.09.80508. The issue has been fixed in delegate versions 23.10.80515, 23.10.80809, and 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Reviewed by Abhishek in Jira -->
+
+- When saving secret files, Harness FirstGen and Harness NextGen encode the file content with the ISO_8859_1 character set. However, while Harness FirstGen correctly decodes the file content referenced by the `configFile.getAsBase64()` functor, Harness NextGen uses UTF-8. The issue caused additional padding bytes to be included in the P12 config file and authorization errors with GCP Pub/Sub in Harness NextGen. (CDS-81032, ZD-51928)
+
+  This issue has been fixed. Now, Harness NextGen uses the ISO_8859_1 character set while decoding secrets from the secret store and subsequently uses Base64 encoding.
+
+  This item requires Harness Delegate version 23.10.81001. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Harness did not handle appropriately the failure status codes returned by the GitLab API for the Merge PR step. (CDS-80927)
+
+  This issue has been fixed. 
+
+  This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- The Tags field in the pipeline filter is now optional. This change allows you to filter either by tag name or a combination of tag name and value. (CDS-78992)
+
+  This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+
+#### October 20, 2023, Harness version 81106
+
+##### New features and enhancements
 
 - User interface improvements on the secrets listing page (CDS-80747)
 
@@ -58,11 +324,11 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
   You can now add input and ouput variables to the Tanzu Command step and step template to facilitate Tanzu deployments.
 
-### Early access features
+##### Early access features
 
 This release does not include early access features. 
 
-### Fixed issues
+##### Fixed issues
 
 - The Submit button that you use to add an OCI Helm manifest source to a service configuration does not work if Harness cannot fetch the chart version. (CDS-81657, ZD-52068, ZD-52156)
 
@@ -105,10 +371,6 @@ This release does not include early access features.
       * **email address _timestamp_**. Indicates that a user intervened and selected the failure strategy.
       * **Post Timeout Action _timestamp_**. Indicates that Harness applied the post-timeout action because no user intervened within the allotted time. 
 
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### October 18, 2023, Harness version 81008
 
@@ -1389,8 +1651,6 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 
 - Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
 
-  This functionality is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`.
-
   This functionality helps you efficiently manage your resources. The scale down step can be configured within the same stage or a different stage, based on your requirement.
 
   During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets, and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
@@ -1670,7 +1930,7 @@ This release does not include any early access features.
 
   Triggers are not disabled now even if pipeline validation fails.
 
-- The Terraform Plan step failed when an account level secret manager was selected an the feature flag, `CDS_NOT_ALLOW_READ_ONLY_SECRET_MANAGER_TERRAFORM_TERRAGRUNT_PLAN` was enabled. (CDS-68140)
+- The Terraform Plan step failed when an account level secret manager was selected and the feature flag, `CDS_NOT_ALLOW_READ_ONLY_SECRET_MANAGER_TERRAFORM_TERRAGRUNT_PLAN` was enabled. (CDS-68140)
 
   This issue is now fixed.
 

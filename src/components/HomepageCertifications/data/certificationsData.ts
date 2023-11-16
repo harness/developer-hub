@@ -24,7 +24,7 @@ export const certifications: CardItem[] = [
     description:
       "Drastically reduce rollbacks, deploy faster with less risk,spend more time building and coding, and less time fixing production with Progressive Delivery.",
     link: "/certifications/feature-flags",
-    numberOfCerts: 1,
+    numberOfCerts: 2,
   },
   {
     title: "Cloud Cost Management Certifications",

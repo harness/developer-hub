@@ -14,39 +14,21 @@ export type CardItem = {
 
 export const knowledgeBaseList: CardItem[] = [
   {
-    title: "Verifying New Deployment Metrics with Continuous Verification",
+    title: "Using a String List in Repeat Strategy",
     module: MODULES.cd,
-    date: "July 05, 2023",
-    link: "/kb/continuous-delivery/articles/cv-new-deployment-metrics",
+    date: "Oct 19, 2023",
+    link: "/kb/continuous-delivery/articles/repeat-strategy",
   },
   {
-    title: "Debugging AKS Permission Issues",
-    module: MODULES.cd,
-    date: "June 22, 2023",
-    link: "/kb/continuous-delivery/articles/aks-permission-issues",
+    title: "Send Dashboard Reports to Slack Channel",
+    module: MODULES.ccm,
+    date: "Sept 08, 2023",
+    link: "/kb/cloud-cost-management/articles/slack-email-alert",
   },
   {
-    title: "Multi Service Deployments with Continuous Verification",
-    module: MODULES.cd,
-    date: "May 05, 2023",
-    link: "/kb/continuous-delivery/articles/cv-multi-service",
-  },
-  {
-    title: "How Can I Troubleshoot The Delegate Installation Error with Readiness Probe Failure in GKE?",
+    title: "Mount Custom Cert in Delegate via ConfigMap",
     module: MODULES.platform,
-    date: "April 06, 2023",
-    link: "/kb/platform/articles/delegate_installation_gke_error",
-  },
-  {
-    title: "Build and Push to ECR Permission Troubleshooting",
-    module: MODULES.ci,
-    date: "March 30, 2023",
-    link: "/kb/continuous-integration/articles/delegate_eks_cluster",
-  },
-  {
-    title: "Why Am I Getting “Kaniko Container Runtime Error”",
-    module: MODULES.ci,
-    date: "March 23, 2023",
-    link: "/kb/continuous-integration/articles/kaniko_container_runtime_error",
+    date: "July 31, 2023",
+    link: "/kb/platform/articles/mount-custom-cert-with-delegate",
   },
 ];

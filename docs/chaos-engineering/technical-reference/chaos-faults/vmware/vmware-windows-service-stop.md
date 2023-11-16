@@ -21,8 +21,9 @@ VMware Windows Service Stop simulates a service stop scenario on Windows OS base
 - Adequate vCenter permissions should be provided to access the hosts and the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. 
-- VM credentials can be passed as secrets or as a chaos enginer environment variable.
+- Run the fault with a user possessing admin rights, preferably the built-in Administrator, to guarantee permissions for memory stress testing. [See how to enable the built-in Administrator in Windows](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/enable-and-disable-the-built-in-administrator-account?view=windows-11).
 
+- VM credentials can be passed as secrets or as a chaos enginer environment variable.
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -51,6 +52,21 @@ stringData:
         <td> Name of the target VM. </td>
         <td> For example, <code>win-vm-1</code> </td>
       </tr>
+      <tr>
+          <td> VM_USER_NAME </td>
+          <td> Username of the target VM.</td>
+          <td> For example, <code>vm-user</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_PASSWORD </td>
+          <td> User password for the target VM. </td>
+          <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
+      </tr>
+      <tr>
+        <td> SERVICE_NAMES </td>
+        <td> Comma separated list of service names to stop. </td>
+        <td> For example, <code>service1,service2</code> </td>
+      </tr>
     </table>
     <h3>Optional fields</h3>
     <table>
@@ -58,11 +74,6 @@ stringData:
         <th> Variables </th>
         <th> Description </th>
         <th> Notes </th>
-      </tr>
-      <tr>
-        <td> SERVICE_NAMES </td>
-        <td> Comma separated list of service names to stop. </td>
-        <td> For example, <code>service1,service2</code> </td>
       </tr>
       <tr>
         <td> FORCE </td>

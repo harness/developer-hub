@@ -47,6 +47,8 @@ Following are the key fields that you must update:
 
 2. Once the file is created in your Git repo, copy the full URL to the file. For example, `https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml`.
 
+## Register the Software Component 
+
 3. In the left navigation, select **Create**, and then select **Register Software Component**.
 
   ![](static/create-page-sidebar.png)

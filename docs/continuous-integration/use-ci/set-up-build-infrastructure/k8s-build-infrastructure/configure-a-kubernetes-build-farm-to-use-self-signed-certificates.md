@@ -1,13 +1,17 @@
 ---
 title: Configure a Kubernetes build farm to use self-signed certificates
 description: CI build pods can interact with servers using self-signed certificates.
-
 sidebar_position: 40
 helpdocs_topic_id: e5qkn9atiw
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -47,17 +51,51 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 
    For instructions, go to the Kubernetes documentation on [Configuring a Pod to Use a Volume for Storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/).
 
-   You must specify the following environment variables in the delegate pod:
+   In the delegate pod, you must specify `DESTINATION_CA_PATH` or *both* `ADDITIONAL_CERTS_PATH` and `CI_MOUNT_VOLUMES`. You can use either method or specify both methods. If you specify both, `DESTINATION_CA_PATH` takes precedence. If Harness can't resolve `DESTINATION_CA_PATH`, it falls back to `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`.
 
-   * `ADDITIONAL_CERTS_PATH`: The path to the certificates in the delegate, for example: `/tmp/ca.bundle`.
-   * `CI_MOUNT_VOLUMES`: A comma-separated list of `source:destination` mappings. The `source` is the certificate path on the delegate, and the `destination` is the path where you want to expose the certificates on the build containers, for example: `/tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt`. This list must include *all* certificates that your build containers need to interact with external services.
+   ```mdx-code-block
+   <Tabs>
+     <TabItem value="destcapath" label="DESTINATION_CA_PATH" default>
+   ```
+   For `DESTINATION_CA_PATH`, provide a comma-separated list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`.
 
    ```yaml
-   apiVersion: apps/v1  
-   kind: StatefulSet  
-   spec:  
-     template:  
-       spec:  
+           env:
+           - name: DESTINATION_CA_PATH
+                     value: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
+                   volumeMounts:
+                   - name: certvol
+                     mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
+                     subPath:  ca.bundle
+                 volumes:
+                 - name: certvol
+                   secret:
+                     secretName: addcerts
+                     items:
+                     - key: ca.bundle
+                       path: ca.bundle
+   ```
+
+   Both CI build pods and the SCM client on the delegate support this method.
+
+   ```mdx-code-block
+     </TabItem>
+     <TabItem value="cimountvol" label="CI_MOUNT_VOLUMES">
+   ```
+
+   You must specify both `ADDITIONAL_CERTS_PATH` and `CI_MOUNT_VOLUMES`.
+
+   For `ADDITIONAL_CERTS_PATH`, provide the path to the certificates in the delegate, such as `/tmp/ca.bundle`.
+
+   For `CI_MOUNT_VOLUMES`, provide a comma-separated list of `source:destination` mappings where `source` is the certificate path on the delegate, and `destination` is the path where you want to expose the certificates on the build containers. For example:
+
+   ```
+   /tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt
+   ```
+
+   The `CI_MOUNT_VOLUMES` list must include *all* certificates that your build containers need to interact with external services.
+
+   ```yaml
            env:  
            - name: ADDITIONAL_CERTS_PATH  
              value: /tmp/ca.bundle  
@@ -74,6 +112,11 @@ CI build infrastructure pods can interact with servers using self-signed certifi
                items:  
                - key: ca.bundle  
                  path: ca.bundle
+   ```
+
+   ```mdx-code-block
+     </TabItem>
+   </Tabs>
    ```
 
    :::caution

@@ -1,5 +1,5 @@
 ---
-title: CET Analytics
+title: Analytics dashboard
 description: Understand the CET Analytics dashboard.
 sidebar_position: 2
 ---

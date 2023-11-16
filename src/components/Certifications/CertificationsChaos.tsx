@@ -237,8 +237,7 @@ export default function CertificationsChaos() {
                   {/* </div> */}
                   <h3>Coming Soon...</h3>
                   <div className={styles.desc}>
-                    Assess key technical job functions and advanced skills in
-                    design, implementation and management of CE.
+                  Assesses the fundamental skills to deploy and maintain CE projects and the overall Harness Platform.
                   </div>
                 </div>
               </div>

@@ -232,7 +232,37 @@ A list of [`nodeSelectors`](https://kubernetes.io/docs/concepts/scheduling-evict
 
 ### Tolerations
 
-A list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) that allow (but do not require) Build stage pods to be scheduled onto nodes with matching taints.
+A list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) that allow (but do not require) Build stage pods to be scheduled onto nodes with matching taints. For example:
+
+```yaml
+              tolerations:
+                - effect: NoSchedule
+                  key: key1
+                  operator: Equal
+                  value: value1
+                - effect: NoSchedule
+                  key: key2
+                  operator: Equal
+                  value: value2
+```
+
+#### Multiple tolerations with the same key
+
+Keys are reserved keywords used to validate unique FQNs. If you have multiple tolerations with the same key, you must include an `identifier` to differentiate them. For example:
+
+```yaml
+              tolerations:
+                - identifier: identifier1
+                  effect: NoSchedule
+                  key: key1
+                  operator: Equal
+                  value: value1
+                - identifier: identifier2
+                  effect: NoSchedule
+                  key: key1
+                  operator: Equal
+                  value: value2
+```
 
 ### Host Names
 

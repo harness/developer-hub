@@ -15,7 +15,9 @@ The key enhancements are as follows:
 
 ## Limitations
 
-If your step inputs or parameters size is greater than 4 KB, then it cannot be part of your expanded JSON. This is to safeguard your system.
+* If your step inputs or parameters size is greater than 4 KB, then it cannot be part of your expanded JSON. This is to safeguard your system.
+* Harness uses the greater than sign (`>`) to terminate expressions. To avoid ambiguous results, make sure that your scripts do not include a greater than sign. 
+
 
 ## Obtaining the execution JSON
 
@@ -635,15 +637,15 @@ sum;
 
 ### Use if conditions
 
-The following example demonstrates how you can use an `if` condition in JEXL to perform different actions or display different results based on certain conditions or criteria. This example uses a variable called `age` with the value `18`. The `if` condition checks if the age is greater than or equal to 18. If the condition evaluates to `true`, then the script outputs the string `You are an adult`. Otherwise, it outputs the string `You are not yet an adult`.
+The following example demonstrates how you can use an `if` condition in JEXL to perform different actions or display different results based on certain conditions or criteria. This example uses a variable called `age` with the value `18`. The `if` condition checks whether the age is less than 18. If the condition evaluates to `true`, then the script outputs the string `You are not yet an adult`. Otherwise, it outputs the string `You are an adult`.
 
 ```js
 <+var age = 18;
 
-if (age == 18) {
-  "You are an adult";
-} else {
+if (age < 18) {
   "You are not yet an adult";
+} else {
+  "You are an adult";
 }
 >
 ```

@@ -4,6 +4,8 @@ description: Create a Software Component and register it in Software Catalog
 sidebar_position: 3
 ---
 
+<docvideo src="https://www.youtube.com/embed/YgtIMDGMzJE?si=AYnisVn-lHX-4STw" />
+
 ## Create a IDP YAML
 
 The **IDP YAML** is a crucial descriptor file that provides metadata about the software components you register within our IDP. It serves as a blueprint, detailing essential information about each component, such as its name, description, owner, and other related metadata. This file ensures that our portal accurately represents and organizes the software components, making it easier for teams to discover and understand the tools and services available. 

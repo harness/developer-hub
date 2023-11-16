@@ -20,6 +20,12 @@ Any software component can be registered in the catalog by using a YAML file sto
 * Bitbucket
 * Azure Repos
 
+:::caution
+
+Backstage doesn't support SSH auth type for integrations, hence only HTTP connection is supported for all the git provider based connectors in IDP 
+
+:::
+
 ## CI/CD providers that IDP supports
 
 Harness IDP is agnostic to your CI/CD provider and works with tools such as GitLab, CircleCI, and GitHub Actions. You can use Harness CI/CD for a better out-of-the-box experience but it's not required.

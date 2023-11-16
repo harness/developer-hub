@@ -1,6 +1,6 @@
 ---
 description: KB - An example for Using Ternary Operators with triggers
-title: Using Ternary Operators with triggers.
+title: Using Ternary Operators with triggers
 ---
 # Introduction
 

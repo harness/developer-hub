@@ -69,9 +69,9 @@ This is the default setting and used most of the time.
 
 Select this option if you always want this step to run regardless of the success or failure of previous steps.
 
-### Execute this step only if prior stage or step failed
+### Execute this step only if prior step failed
 
-Select this option if you always want this step to run only if the prior stage or step failed.
+Select this option if you always want this step to run only if the prior step failed.
 
 ### And execute this step only if the following JEXL condition evaluates to true
 

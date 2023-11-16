@@ -8,6 +8,7 @@ import { experiments as KubernetesExperiments } from "./kubernetes/experiments";
 import { experiments as VMWareExperiments } from "./vmware/experiments";
 import { experiments as LoadExperiments } from "./load/experiments";
 import { experiments as LinuxExperiments } from "./linux/experiments";
+import { experiments as CloudFoundryExperiments } from "./cloud-foundry/experiments";
 
 export const categories: FaultCardItem[] = [
   {
@@ -63,5 +64,11 @@ export const categories: FaultCardItem[] = [
     description: <>Chaos faults for security CIS </>,
     faults: LoadExperiments.length,
     category: "security-chaos",
+  },
+  {
+    title: "Cloud Foundry",
+    description: <>Chaos faults for Cloud Foundry </>,
+    faults: CloudFoundryExperiments.length,
+    category: "cloud-foundry",
   },
 ];

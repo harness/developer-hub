@@ -3,7 +3,7 @@ title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
 date: 2023-09-20T10:00
-sidebar_position: 5
+sidebar_position: 6
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -20,17 +20,73 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest: version 81202
+## Latest: version 81400
 
 ### New features and enhancements
 
-This release does not include any new features.
+* Previously, there was no option to export Recommendations as CSV files. (CCM-14274)
+
+  Now, we have added a new feature that enables users to export Recommendations as comma-separated values (CSV) files.
 
 ### Early access features
 
 This release does not include any early access features.
 
 ### Fixed issues
+
+* Previously, changing the project in JIRA didn't clear fields, causing potential creation failures. (CCM-14842)
+
+  However, now, the form (except Ticket Summary and Description) resets on project change, ensuring a smoother process.
+
+* Previously, anomaly detection on K8s Services lacked a threshold, leading to excessive alerts. (CCM-14865)
+
+  Now, we have implemented a threshold of $3 for anomaly detection on K8s Services to refine the alerting process.
+
+* Previously, incorrect entity types for Azure in anomalies caused misdirected notifications on Slack and email. (CCM-14864)
+
+  However, this issue is fixed now by changing the logic for Azure entity types.
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### October 26, 2023, version 81300
+
+##### New features and enhancements
+
+This release does not include any new features.
+
+##### Early access features
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+* Previously, the search functionality in the perspective grid was nonfunctional when grouped by cost categories, causing inconvenience in data retrieval. (CCM-14384)
+
+  This issue is fixed now, enabling users to efficiently search within the perspective grid, even when cost categories are applied as grouping criteria.
+
+* Previously, Anomaly alert logic for default perspectives was not functioning correctly. (CCM-14670)
+
+  This issue has been resolved, ensuring accurate anomaly notifications for default perspectives via Slack and email.
+
+* Previously, the Budget explorer chart displayed lower costs due to a query issue. (CCM-14758)
+
+  This issue is fixed by removing the "group by" from the budget time-series query, ensuring more accurate cost representation.
+
+#### October 20, 2023, version 81202
+
+##### New features and enhancements
+
+This release does not include any new features.
+
+##### Early access features
+
+This release does not include any early access features.
+
+##### Fixed issues
 
 * Previously while creating and AutoStopping rule, the k8s cluster selection list only displayed top 100 records, which made it difficult to choose a cluster when the list had more than 100 entries. (CCM-14644)
 
@@ -52,22 +108,17 @@ This bug got introduced recently while supporting ingestion of future-dated entr
   This issue is fixed by making some changes in the underlying budget cost explorer query.
   
 
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
 #### October 12, 2023, version 81100
 
-### New features and enhancements
+##### New features and enhancements
 
 This release does not include any new features.
 
-### Early access features
+##### Early access features
 
 This release does not include any early access features.
 
-### Fixed issues
+##### Fixed issues
 
 * Previously, attempting to edit a cost bucket with operands selected as "NOT NULL/NULL" led to an unexpected error, subsequently hindering the editing of other buckets. (CCM-14519)
 

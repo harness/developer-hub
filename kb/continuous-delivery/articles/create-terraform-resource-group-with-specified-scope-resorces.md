@@ -1,7 +1,8 @@
 ---
-description: KB - Create a Resource group via Terraform with "Specified Orgs (with Projects) and Account Level resources included". 
+description: KB - Create a Resource Group via Terraform with "Specified Orgs (with Projects) and Account Level resources included". 
+title: Create a Resource Group via TF
 ---
-# Create a Resource group via Terraform with "Specified Orgs (with Projects) and Account Level resources included"
+# Create a Resource Group via Terraform with "Specified Orgs (with Projects) and Account Level resources included"
 
 ## Introduction
 A Resource Group is a collection of Harness resources where permissions apply. Permissions granted to a user or user group through a Role will affect the resources within the Resource Group.

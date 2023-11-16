@@ -47,7 +47,7 @@ Review the following image specifications for information about image components
 * [Linux amd64 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md)
 * [Linux arm64 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md)
 * [macOS arm64 (M1) image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-13-Readme.md)
-* [Windows Server 2019 (Windows amd64) image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2019-Readme.md)
+* [Windows Server 2022 (Windows amd64) image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md)
 
 In your pipelines, you can [select specific versions of pre-installed tools](#specify-versions), ensure that a step [uses a specific version every time](#lock-versions-or-install-additional-tools), or [install additional tools and versions](#lock-versions-or-install-additional-tools) that aren't preinstalled on the Harness Cloud images. You can run these steps on the host machine or as separate Docker images.
 

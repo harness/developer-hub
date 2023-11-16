@@ -121,7 +121,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     - Copy the contents of [azure-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/ssh/azure-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste in the copied YAML.
-    - In the YAML, replace **APPLICATION_ID** with the Application (Client) Id for the Azure app registration you are using and replace and **TENANT_ID** with the Id of the Azure Active Directory (AAD) in which you created your application.
+    - In the YAML, replace **APPLICATION_ID** with the Application (Client) Id for the Azure app registration you are using and replace and **TENANT_ID** with the Id of the Microsoft Entra ID in which you created your application.
     - Select **Save Changes** and verify that the new connector named **harness_azureconnector** is successfully created.
     - Finally, select **Test** under **Connectivity Status** to ensure the connection is successful.
 2. Create a **Artifactory connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.
@@ -341,7 +341,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     - Copy the contents of [azure-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-azure/winrm/azure-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
-    - In the YAML, replace **APPLICATION_ID** with the Application (Client) Id for the Azure app registration you are using and replace **TENANT_ID** with the Id of the Azure Active Directory (AAD) in which you created your application.
+    - In the YAML, replace **APPLICATION_ID** with the Application (Client) Id for the Azure app registration you are using and replace **TENANT_ID** with the Id of the Microsoft Entra ID in which you created your application.
     - Select **Save Changes** and verify that the new connector named **harness_azureconnector** is successfully created.
     - Finally, select **Test** under **Connectivity Status** to ensure the connection is successful.
 2. Create a **Artifactory connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.

@@ -1,5 +1,6 @@
 ---
 description: KB - Ability to view/filter pipeline executions by inputs. 
+title: Ability to view/filter pipeline executions by inputs
 ---
 # Ability to view/filter pipeline executions by inputs
 
