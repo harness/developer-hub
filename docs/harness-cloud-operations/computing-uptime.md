@@ -87,12 +87,16 @@ All the Platform SLIs are applicable here. Pipeline relevant if the FF use case 
 
 | **SLI**         | **Threshold**                           | **Availability**|
 |-------------------------------------------|-----------------|-----------------------------------------|
-| Evaluation SDK Response time | 95th percentile: > 30s over a 10 minute rolling window |Degraded performance|
-| Evaluation SDK API Success rate | Less than .1% over 10 min rolling window (fails to respond or returns a 5xx)|Major Outage|
-| SDK metrics publish Error rate | Metrics API fails to respond or returns 5xx (95th percentile)|Partial Outage|
-| SDK Events Channel Error rate | Pushpin API fails to respond or returns 5xx (95th percentile)|Degraded performance|
-| Admin CRUD Response Time | 95th percentile : < 30s over a rolling 10 min window|Degraded performance|
-| Admin CRUD Error Rate | Less than .1% over a rolling 10 min window|Partial Outage|
+| Admin UI response time | 95th percentile: > 30s over a 5 minute rolling window | Degraded Performance |
+| Admin UI error rate | 5% of requests over 5 min rolling window fails to respond or returns a 5xx error | Partial Outage |
+| Authentication response time | 95th percentile: > 30s over a 5 minute rolling window | Degraded Performance |
+| Authentication error rate | 5% of requests over 5 min rolling window fails to respond or returns a 5xx error | Major Outage |
+| SDK evaluation response time | 95th percentile: > 30s over a 5 minute rolling window | Degraded Performance |
+| SDK evaluation error rate | 5% of requests over 5 min rolling window fails to respond or returns a 5xx error | Major Outage |
+| SDK metrics response time | 95th percentile: > 30s over a 5 minute rolling window | Degraded Performance |
+| SDK metrics error rate | 5% of requests over 5 min rolling window fails to respond or returns a 5xx error | Partial Outage |
+| SDK events request response time | 95th percentile: > 30s over a 5 minute rolling window | Degraded Performance |
+| SDK events request error rate | 5% of requests over 5 min rolling window fails to respond or returns a 5xx error | Major Outage |
 
 ## Dashboards 
 
