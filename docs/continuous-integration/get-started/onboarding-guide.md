@@ -68,4 +68,4 @@ There are three tiers of [Harness CI certifications](/certifications/continuous-
 
 * **Developer certification:**: The [CI Developer certification](/certifications/continuous-integration?lvl=developer) is the starting point for evaluating your understanding of Harness CI.
 * **Administrator certification:** Building on the CI Developer certification, the [CI Administrator certification](/certifications/continuous-integration?lvl=administrator) tests your skills across CI and the Harness Platform.
-* **Architect certification:** Building upon the CI Administrator certification, the [CI Architect certification]() goes further into design, implementation, and management of CI.
+* **Architect certification:** Building upon the CI Administrator certification, the [CI Architect certification](/certifications/continuous-integration?lvl=architect) goes further into design, implementation, and management of CI.
