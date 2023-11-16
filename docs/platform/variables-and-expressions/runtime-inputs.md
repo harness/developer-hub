@@ -115,7 +115,7 @@ If you rerun this pipeline, the pipeline uses the same inputs you provided for t
 
 :::note
 
-If a runtime input is an expression that resolves to `null`, it will not be replaced by the default value. In this case, please consider using a [ternary operator](/kb/continuous-delivery/articles/ternary-operator.md)
+If a runtime input is an expression that resolves to `null`, it will not be replaced by the default value. In this case, please consider using a [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
 
 :::
 

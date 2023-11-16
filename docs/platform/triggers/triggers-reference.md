@@ -276,7 +276,7 @@ Always make sure the path you use works with the provider's payload format and t
 
 :::note
 
-Check [ternary operator](/kb/continuous-delivery/articles/ternary-operator.md) for instructions on how to use default values for pipeline inputs based on the trigger's payload.
+Check [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/) for instructions on how to use default values for pipeline inputs based on the trigger's payload.
 
 :::
 
@@ -409,7 +409,7 @@ You can use [built-in Git payload expressions](#built-in-git-payload-expressions
 
 :::note
 
-Check [ternary operator](/kb/continuous-delivery/articles/ternary-operator.md) for instructions on how to use default values for pipeline inputs.
+Check [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/) for instructions on how to use default values for pipeline inputs.
 
 :::
 
