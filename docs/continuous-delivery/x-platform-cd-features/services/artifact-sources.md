@@ -295,8 +295,6 @@ To add an artifact from a Docker registry, do the following:
 
   :::note 
 
-  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
-
   If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
   :::
@@ -519,8 +517,6 @@ To add an artifact from GCR, do the following:
 14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
-
-  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 
   If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
@@ -1012,8 +1008,6 @@ To add an artifact from Google Artifact Registry, do the following:
 20. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
     :::note 
-
-    This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 
     If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
@@ -1913,8 +1907,6 @@ To add an artifact from ECR, do the following:
 
   :::note 
 
-  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
-
   If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
   :::
@@ -2703,8 +2695,6 @@ To add an artifact from Nexus, do the following:
 
   :::note 
 
-  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
-
   If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
   :::
@@ -2982,8 +2972,6 @@ To add an artifact from Artifactory, do the following:
 6. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
-
-  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 
   If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
@@ -3498,8 +3486,6 @@ To add an artifact from Github Packages, do the following:
 1.  To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by digest is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
-
-  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 
   If an image with the specified tag/digest combination does not exist in the Github Package registry repository, the pipeline will fail.
 
