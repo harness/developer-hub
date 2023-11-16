@@ -1,13 +1,13 @@
 ---
-title: Aquasec scanner reference for STO
-description: Image scans with Aquasec
-sidebar_label: Aquasec scanner reference
+title: Aqua Security scanner reference for STO
+description: Image scans with Aqua Security
+sidebar_label: Aqua Securityc scanner reference
 sidebar_position: 35
 ---
 
-You can ingest container-image scan results from [Aquasec Entrerprise](https://www.aquasec.com/products/container-vulnerability-scanning/). 
+You can ingest container-image scan results from [Aqua Security Entrerprise](https://www.aquasecurity.com/products/container-vulnerability-scanning/). 
 
-## Important notes for running Aquasec scans in STO
+## Important notes for running Aqua Security scans in STO
 
 ### Docker-in-Docker requirements
 
@@ -27,9 +27,9 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 <StoRootRequirements />
 
 
-## Aquasec step settings for STO scans
+## Aqua Security step settings for STO scans
 
-The recommended workflow is add an Aquasec step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is add an Aqua Security step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 
 ### Scan settings
@@ -246,9 +246,9 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 <!-- 
-## Security step settings for Aquasec scans in STO (legacy)
+## Security step settings for Aqua Security scans in STO (legacy)
 
-* `product_name` = `aquasec`
+* `product_name` = `aqua security`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) =`containerImage`
 * [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods)= `ingestionOnly`
 * `product_config_name` =`default`
