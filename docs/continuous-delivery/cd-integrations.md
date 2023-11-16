@@ -128,8 +128,8 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Performs RBAC check on secrets when used in pipeline execution. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
-        <td>CDS_RANCHER_SUPPORT_NG</td>
-        <td>Enables the <a href="/docs/first-gen/firstgen-platform/account/manage-connectors/add-rancher-cloud-providers">Rancher connector</a> for Kubernetes deployments. <b>This feature is in Public Preview.</b></td>
+        <td>CDS_SERVICENOW_TICKET_TYPE_V2</td>
+        <td>Enables ServiceNow custom table support.</td>
     </tr>
     <tr>
         <td>CDS_NG_TRIGGER_AUTHENTICATION
