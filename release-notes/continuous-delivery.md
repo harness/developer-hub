@@ -1278,8 +1278,6 @@ This release does not include early access features.
 ##### Early access
 
 - Digest support added for Nexus 3, Github, and Artifactory [artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources). (CDS-71711)
-  
-  This feature is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`.
 
 
   The **Artifact Details** page has a new, optional **Digest** setting where you can specify the digest/SHA for a container image artifact.
