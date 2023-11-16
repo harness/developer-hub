@@ -274,6 +274,12 @@ How you reference the path depends on:
 
 Always make sure the path you use works with the provider's payload format and the event type.
 
+:::note
+
+Check [ternary operator](/kb/continuous-delivery/articles/ternary-operator.md) for instructions on how to use default values for pipeline inputs based on the trigger's payload.
+
+:::
+
 ### Operators
 
 Some operators require single values and some operators allow single or multiple values.
@@ -400,6 +406,12 @@ The JEXL `in` operator is not supported in the **JEXL Condition** field.
 You can specify [runtime inputs](../pipelines/input-sets) for the trigger to use, such as Harness Service and artifact.
 
 You can use [built-in Git payload expressions](#built-in-git-payload-expressions) and [JEXL expressions](#jexl-conditions) in this setting.
+
+:::note
+
+Check [ternary operator](/kb/continuous-delivery/articles/ternary-operator.md) for instructions on how to use default values for pipeline inputs.
+
+:::
 
 When Git Experience is enabled for your Pipeline, the **Pipeline Input** tab includes the **Pipeline Reference Branch** field. This field is set to `<+trigger.branch>` by default. Any build started by this trigger uses the pipeline and Input Set definitions in the branch specified in the webhook payload. This default is applicable for webhook-based triggers only. For all other trigger types, you must enter a specific branch name.
 

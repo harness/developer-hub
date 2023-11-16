@@ -45,5 +45,22 @@ Finally the ternary operator condition should look like:
 ```
 <+<+pipeline.triggerType>=="MANUAL"?<+pipeline.variables.tag>:<+trigger.payload.tag>>
 ```
- 
- 
+
+
+## Another Case: Use Default Value Based in a Trigger's Payload
+
+Suppose we have a trigger that provides a runtime input for a pipeline based on the trigger's payload.
+
+Normally, in the trigger's runtime input form, we would have this:
+
+```
+myVariable: <+trigger.payload.myVariable>
+```
+
+If we want to provide a default value for `myVariable` when it is missing from the trigger's payload, we can use the following in the trigger's runtime input form:
+
+```
+<+<+trigger.payload>.contains("myVariable")?<+trigger.payload.myVariable>:"DEFAULT_VALUE">
+```
+
+This would ensure the value for `myVariable` is provided as "DEFAULT_VALUE" in case the "myVariable" entry is not present in the trigger's payload.
