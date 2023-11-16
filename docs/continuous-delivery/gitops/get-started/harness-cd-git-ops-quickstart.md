@@ -176,7 +176,7 @@ GitOps Repositories store the source manifests you want to sync with destination
 
 In the Harness GitOps Repository setup, you select the Agent to use when synching state and provide the credentials to use when connecting to the Git repository.
 
-We're going to use a publicly available GitHub repo and manifests located at `https://github.com/argoproj/argocd-example-apps/tree/master/guestbook`. We'll make an anonymous connection, so no GitHub credentials are required.
+We will use a publicly available GitHub repo and manifests located at [https://github.com/argoproj/argocd-example-apps/tree/master/guestbook](https://github.com/argoproj/argocd-example-apps/tree/master/guestbook). We'll make an anonymous connection, so no GitHub credentials are required.
 
 1. In your Harness project, select **GitOps**, and then select **Settings**.
 2. Select **Repositories**.
@@ -309,7 +309,7 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
 9. In **Sync Policy**, select **Manual**, and then select **Continue**.
 10.  In **Source**, you specify the source repo to use.
 11. In **Repository Type**, select **Git**.
-12. Select in **Repository URL** and select the URL you entered in your Harness GitOps Repository: `https://github.com/argoproj/argocd-example-apps`.
+12. Click **Repository URL** and select the URL you entered in your Harness GitOps Repository: `https://github.com/argoproj/argocd-example-apps`.
 13. In **Revision Type**, select **Branch**.
 14. In **Revision**, select **master**.
 15. Wait a moment for **Path** to populate. Harness will pull the paths from the repo.
