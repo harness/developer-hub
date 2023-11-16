@@ -107,9 +107,9 @@ metadata:
 spec:
   type: openapi
   lifecycle: production
-  owner: ccmplayacc
+  owner: johndoe
   definition:
-    $text: https://app.harness.io/prod1/ccm/api/openapi.json
+    $text: https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v2.0/json/api-with-examples.json
 ```
 
 :::info
