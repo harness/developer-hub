@@ -84,44 +84,59 @@ To configure the runbook:
 
 1. In your FireHydrant account, open the runbook you want to set up with Harness SRM monitored service.
    
-2. Add a Send Webhook step with the following settings:
+2. Add a **Send Webhook** step with the following settings:
    
-   - **Endpoint**: Paste the webhook URL you copied in Harness SRM monitored service. For example:
+   - **Endpoint**: Paste the webhook URL you copied in Harness SRM monitored service.
+   - **JSON Payload**: Use a JSON string for transmitting data to your endpoint:
+   - **JSON Headers**: Input your Harness API Personal Account Token.
+
+
+:::info important
+Ensure that the values you enter in the **Send Webhook** step follow this format:
+
+**Endpoint**
   
+ 
 ```
- https://app.harness.io/cv/api/account/-xxxxxx12345xxxx/org/default/project/Demo/webhook/custom-change?monitoredServiceIdentifier=custom_change_prod&changeSourceIdentifier=Fire_Hydrant
+https://app.harness.io/cv/api/account/-xxxxxx12345xxxx/org/default/project/Demo/webhook/custom-change?monitoredServiceIdentifier=custom_change_prod&changeSourceIdentifier=Fire_Hydrant
 ```
 
-   
-   - **JSON Payload**: Use a JSON string in the following format for transmitting data to your endpoint:
-  
 
-      ```
-            {
-            "eventIdentifier": "{{ incident.id }}",
-            "user": "{{ incident.created_by.email }}",
-            "startTime": "{{ incident.started_at | date: "%s" | times: 1000 }}",
-            "endTime": "{{ incident.started_at | date: "%s" | times: 1000 }}",
-            "eventDetail": {
-               "description": "{{ incident.name }}",
-               "externalLinkToEntity": "{{ incident.private_status_page_url }}",
-               "name": "{{ incident.name }}",
-               "webhookUrl": "<webhook url of your slack channel> "
-            }
-            }
-      ```
-  
-   - JSON Headers: Input your Harness API Personal Account Token in the following format:
-  
+**JSON Payload**
 
-      ```
-         {
-         "X-API-KEY": "<your Harness API PAT key>"
-         }
-      ```
 
+```
+{
+  "eventIdentifier": "{{ incident.id }}",
+  "user": "{{ incident.created_by.email }}",
+  "startTime": "{{ incident.started_at | date: "%s" | times: 1000 }}",
+  "endTime": "{{ incident.started_at | date: "%s" | times: 1000 }}",
+  "eventDetail": {
+    "description": "{{ incident.description }}",
+    "externalLinkToEntity": "{{ incident.private_status_page_url }}",
+    "changeEventDetailsLink": "{{ incident.incident_url }}",
+    "name": "{{ incident.name }}",
+    "webhookUrl": "your_actual_slack_webhook_url"
+  }
+}  
+```
+        
   
-1. Select **Add Step** to save the runbook.
+**JSON Headers**
+
+
+```
+{
+  "X-API-KEY": "your_actual_api_key_value"
+}
+
+```
+:::
+
+
+
+
+3. Select **Add Step** to save the runbook.
 
 To learn more about adding a webhook step to a FireHydrant runbook, go to [Sending a webhook from a Runbook]( https://firehydrant.com/docs/configuring-firehydrant/sending-a-webhook-from-a-runbook/).
 
@@ -198,50 +213,75 @@ To configure the runbook:
    
 2. Add a **Create or Rename Incident Channel** step type. The purpose of this step is to create or rename channel in your Slack workspace. If channel does not exist, this step creates a new incident channel. If the channel already exists, or if this step has been run previously either in the same runbook or in aa different runbook, then subsequent runs rename the channel.
 
-To learn more, go to [Create or Rename Incident Channel](https://firehydrant.com/docs/configuring-firehydrant/create-an-incident-channel-in-your-chatops-tool#create-or-rename-incident-channel).
-
-3. Add an **Invite to incident channel** step type. The purpose of this step is to automatically invite Slack users and user groups to the incident channel. You can add multiple users and groups by separating them with commas. For example, `@this-group, patchy@example.com, @that-group, @patchys_buddy`.
-
-To learn more, go to [Invite to Incident channel](https://firehydrant.com/docs/configuring-firehydrant/invite-to-incident-channel/).
-
-4. Add a Send Webhook step with the following settings:
+3. Add an **Invite to incident channel** step type and in the **Conditions & scheduling** tab, add the **Incident Slack channel exists** rule.
    
-   - **Endpoint**: Paste the webhook URL you copied in Harness SRM monitored service. For example:
-  
-      ```
-      https://app.harness.io/cv/api/account/-xxxxxx12345xxxx/org/default/project/Demo/webhook/custom-change?monitoredServiceIdentifier=custom_change_prod&changeSourceIdentifier=Fire_Hydrant
-      ```
+   The purpose of this step is to automatically invite Slack users and user groups to the incident channel. You can add multiple users and groups by separating them with commas. For example, `@this-group, patchy@example.com, @that-group, @patchys_buddy`.
+
+4. Add a **Send Webhook** step with the following settings and in the **Conditions & scheduling** tab, add the **Incident Slack channel exists** rule:
    
-   - **JSON Payload**: Use a JSON string in the following format for transmitting data to your endpoint:
+   - **Endpoint**: Paste the webhook URL you copied in Harness SRM monitored service.
+
+   - **JSON Payload**: Use a JSON string for transmitting data to your endpoint. 
+
+   - **JSON Headers**: Input your Harness API Personal Account Token.
+
+   
+:::info important
+Ensure that the values you enter in the **Send Webhook** step follow this format:
+
+   **Endpoint**
+
+
+   ```
+   https://app.harness.io/cv/api/account/-xxxxxxxxxx/org/default/project/Demo/webhook/custom-change?monitoredServiceIdentifier=custom_change_prod&changeSourceIdentifier=Fire_Hydrant
+   ```
+   
+**JSON Payload**
+
+
+
+```
+{
+  "eventIdentifier": "{{ incident.id }}",
+  "user": "{{ incident.created_by.email }}",
+  "startTime": "{{ incident.started_at | date: "%s" | times: 1000 }}",
+  "endTime": "{{ incident.started_at | date: "%s" | times: 1000 }}",
+  "eventDetail": {
+    "description": "{{ incident.description }}",
+    "externalLinkToEntity": "{{ incident.private_status_page_url }}",
+    "changeEventDetailsLink": "{{ incident.incident_url }}",
+    "name": "{{ incident.name }}",
+    "channelId": "{{ incident.channel_id }}"
+  }
+}
+```
+
+
+
+**JSON Headers**
   
 
-            {
-            "eventIdentifier": "{{ incident.id }}",
-            "user": "{{ incident.created_by.email }}",
-            "startTime": "{{ incident.started_at | date: "%s" | times: 1000 }}",
-            "endTime": "{{ incident.started_at | date: "%s" | times: 1000 }}",
-            "eventDetail": {
-               "description": "{{ incident.name }}",
-               "externalLinkToEntity": "{{ incident.private_status_page_url }}",
-               "changeEventDetailsLink": "{{ incident.incident_url }}",
-               "name": "{{ incident.name }}",
-               "channelId": "{{ incident.channel_id}}"
-            }
-            }    
+```
+{
+  "X-API-KEY": "your_actual_api_key_value"
+}
 
-   - JSON Headers: Input your Harness API Personal Account Token in the following format:
-  
-      {
-      "X-API-KEY": "<your Harness API PAT key>"
-      }
+```
+:::
 
-  
-  To learn more about adding a webhook step to a FireHydrant runbook, go to [Sending a webhook from a Runbook]
-  (https://firehydrant.com/docs/configuring-firehydrant/sending-a-webhook-from-a-runbook/).
 
 5. Select **Add Step** to save the runbook.
 
-To learn more about FireHydrant runbook and steps, go to [An introduction to Runbooks](https://firehydrant.com/docs/configuring-firehydrant/an-introduction-to-runbooks/).
+
+- To learn more about FireHydrant runbook and steps, go to [An introduction to Runbooks](https://firehydrant.com/docs/configuring-firehydrant/an-introduction-to-runbooks/).
+
+- To learn more about adding a webhook step to a FireHydrant runbook, go to [Sending a webhook from a Runbook](https://firehydrant.com/docs/configuring-firehydrant/sending-a-webhook-from-a-runbook/).
+
+- To learn more about incident channels, go to [Invite to Incident channel](https://firehydrant.com/docs/configuring-firehydrant/invite-to-incident-channel/).
+
+- To learn more, go to [Create or Rename Incident Channel](https://firehydrant.com/docs/configuring-firehydrant/create-an-incident-channel-in-your-chatops-tool#create-or-rename-incident-channel).
+
+- To learn more about conditions, go to [Step-Level Conditions](https://firehydrant.com/docs/configuring-firehydrant/automating-workflow-using-runbook-conditions/#step-level-conditions).
 
 
 ## Declare an incident
