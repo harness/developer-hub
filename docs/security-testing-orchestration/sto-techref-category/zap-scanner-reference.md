@@ -78,10 +78,16 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 <StoSettingProductConfigName />
 
 The following options are supported for Zap scans:
-*  **Default** 
-*  **Standard**  — `scanMode` = `active`, `scanType` = `atandard`
-*  **Attack**  —  `scanMode` = `active`, `scanType` = `attack`
-*  **Quick**  —  `scanMode` = `active`, `scanType` = `standard`, `quickMode` = `true`
+
+-  **Default** 
+
+-  **Standard** `scanMode` = [`active`](https://www.zaproxy.org/docs/desktop/start/features/ascan/), `scanType` = [`standard`](https://www.zaproxy.org/docs/desktop/start/features/modes/)
+
+-  **Attack**  `scanMode` = [`active`](https://www.zaproxy.org/docs/desktop/start/features/ascan/), `scanType` = [`attack`](https://www.zaproxy.org/docs/desktop/start/features/modes/)
+
+-  **Quick**  `scanMode` = [`active`](https://www.zaproxy.org/docs/desktop/start/features/ascan/), `scanType` = [`standard`](https://www.zaproxy.org/docs/desktop/start/features/modes/),  `quickMode` = `true` 
+
+   When Quick mode is enabled, the [Maximum depth to crawl](https://www.zaproxy.org/docs/desktop/addons/spider/options/#maximum-depth-to-crawl) is set to 1.
 
 ### Target
 
