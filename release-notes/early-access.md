@@ -237,8 +237,6 @@ With this feature flag enabled, you can:
 * **Release date:** July 2023
 * **Release version:** 79916
 * **Issue number:** CDS-71711
-* **Feature flag:** `CD_NG_DOCKER_ARTIFACT_DIGEST`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 Digest support added for Nexus 3, Github, and Artifactory [artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 
