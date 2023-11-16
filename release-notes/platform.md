@@ -34,6 +34,26 @@ The following deprecated API endpoints will no longer be supported:
 
 ## November 2023
 
+### Version 815xx
+
+#### New features and enhancements
+
+- Upgraded `io.netty:netty*` to version 4.1.100.final to address vulnerabilities. (PL-41905, ZD-50403, ZD-52222, ZD-53107)
+
+- Upgraded Redis to 6.2.14-alpine to address potential vulnerabilities. (PL-42228)
+
+#### Fixed issues
+
+- The YAML builder didn't allow you to create secrets when there wasn't an existing secret. 
+
+   This issue is fixed. You can now create secrets using YAML even if no previous secret exists. (PL-42148, ZD-52583)
+
+- On the User Group Details page, there was an issue where removing a user (let's say User A) from the user group and immediately adding another user (let's say User B) would result in User A being added back automatically. This was happening because cached data was not being cleaned up properly from the UI. (PL-42341)
+
+    This issue has been fixed. If you first remove User A and then add User B, only User B will show up as the final addition in this two-step process.
+
+- While managing roles, it was not possible to search for resource groups beyond the first 100 initially fetched. Now, the UI allows searching for resource groups that are present beyond the initial page size limit. (PL-42343, ZD-53209)
+
 ### Version 81403
 
 #### New features and enhancements
