@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-11-16T10:00
+date: 2023-11-20T10:00
 sidebar_position: 9
 ---
 
@@ -25,7 +25,18 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## November 2023
 
+### Version 67xx
+
+#### Fixed issues
+
+<!-- CI-9768?-->
+
+* Fixed a thread safety issue that caused errors like `IncorrectResultsSizeDataAccessException` and `returned non unique result`.(CI-10061, ZD-52625)
+* Fixed a proxy issue related to [downloading logs](/docs/platform/pipelines/download-logs). (CI-9657, ZD-50664)
+
 ### Version 6601
+
+<!-- Nov 16, 2023 -->
 
 #### Fixed issues
 
