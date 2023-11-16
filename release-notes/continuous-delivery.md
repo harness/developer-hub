@@ -2242,8 +2242,6 @@ This release does not include any early access features.
 
 - Protecting secrets used in webhook-based triggers that use secret decryption on delegates (CDS-58488, ZD-42117)
 
-  This functionality is behind a feature flag, `CDS_NG_TRIGGER_AUTHENTICATION_WITH_DELEGATE_SELECTOR`.
-
   Github triggers that use a secret for authentication will now use the same delegate selectors saved in the secret's Harness secret manager.
 
 - Harness now supports variable expressions in plain text config files. (CDS-58399)
