@@ -39,6 +39,8 @@ To set up bi-directional sync, do the following:
 
 ### Create the webhook
 
+When you create the webhook in Harness, it is automatically registered in your repo. For webhook registration, ensure that Harness Git connector you use in the steps below has the necessary credentials. For example, for GitHub, ensure that you use a GitHub user account that is a repo admin and that the Personal Access Token includes all repo, user, and `admin:repo_hook` options for scopes.
+
 You will need a webhook to your repo to use bi-directional sync:
 
 1. In Harness, go back to **Account Resources**. You will see a new option named **Webhooks**.
