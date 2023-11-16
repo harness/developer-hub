@@ -136,13 +136,13 @@ The **Skip Dry Run** setting is different than the Dry Run step. The Dry Run ste
 
 ## Using the Dry Run with a Native Helm Deployment
 
-When using the dry run step with a native Helm Deployment, Harness will run a Helm Template and render the manifests. In the console logs you will see Harness' Dry Run Step produces this log:
+When using the Dry Run step with a native Helm deployment, Harness will run a Helm template and render the manifests. In the  Dry Run step log you will see something like this:
 
 ```
 KUBECONFIG=/opt/harness-delegate/repository/k8s/7d800125-18f7-3ad9-9db4-a32ec8876c3e/config /opt/harness-delegate/client-tools/helm/v3.12.0/helm template release-10b758 /opt/harness-delegate/repository/k8s/7d800125-18f7-3ad9-9db4-a32ec8876c3e/manifest-files/nginx-ingress-controller  --namespace dev  -f values-0.yaml
 ```
 
-The above will run the helm template against the manifests fetched. After running the Helm Template, Harness will then perform the dry run on the templated and rendered manifest resources.
+The above will run the Helm template against the manifests fetched. After running the Helm template, Harness will then perform the dry run on the templated and rendered manifest resources.
 
 ```
 Validating manifests with Dry Run
