@@ -91,9 +91,11 @@ Remote files can also use Go templating.
 
 ### Option: Bind tasks to the delegate
 
-To ensure the Kubernetes in-cluster delegate is always auto assigned to perform tasks related to the Kubernetes deployment, for example fetching manifests or `values.yaml` remote files, you can bind the tasks to the delegate.
+:::info note
+Currently, this feature is behind the feature flag `BIND_FETCH_FILES_TASK_TO_DELEGATE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
-This feature is behind the feature flag `BIND_FETCH_FILES_TASK_TO_DELEGATE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
+To ensure the Kubernetes in-cluster delegate is always automatically assigned to perform tasks related to the Kubernetes deployment, for example fetching remote manifests or `values.yaml` files, you can bind the tasks to the delegate.
 
 ### Option: Deploy Helm Charts
 
