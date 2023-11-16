@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-11-13T10:00
+date: 2023-11-16T10:00
 sidebar_position: 9
 ---
 
@@ -25,11 +25,12 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## November 2023
 
-### Version 66xx
+### Version 6601
 
 #### Fixed issues
 
-The Get Started workflow can generate pipeline identifiers from repository names. To avoid failures due to invalid characters in pipeline identifiers, periods (`.`) in repository names are now replaced by underscores (`_`) in pipeline identifiers. (CI-10156, ZD-52954)
+* The Get Started workflow can generate pipeline identifiers from repository names. To avoid failures due to invalid characters in pipeline identifiers, periods (`.`) in repository names are now replaced by underscores (`_`) in pipeline identifiers. (CI-10156, ZD-52954)
+* A previous release simplified the format of the log base key used to [download logs](/docs/platform/pipelines/download-logs) for pipelines, and this release includes additional simplifications to support a new regex pattern. The simplified format is behind the feature flag `PIE_SIMPLIFY_LOG_BASE_KEY`. (CI-10085)
 
 ### Version 6501
 
