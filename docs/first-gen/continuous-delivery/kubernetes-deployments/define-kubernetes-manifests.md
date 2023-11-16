@@ -89,6 +89,12 @@ You can use your Git repo for the configuration files in **Manifests** and Har
 
 Remote files can also use Go templating.
 
+### Option: Bind tasks to the delegate
+
+To ensure the Kubernetes in-cluster delegate is always auto assigned to perform tasks related to the Kubernetes deployment, for example fetching manifests or `values.yaml` remote files, you can bind the tasks to the delegate.
+
+This feature is behind the feature flag `BIND_FETCH_FILES_TASK_TO_DELEGATE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
+
 ### Option: Deploy Helm Charts
 
 In addition to the Helm options above, you can also simply deploy the Helm chart without adding your artifact to Harness.
