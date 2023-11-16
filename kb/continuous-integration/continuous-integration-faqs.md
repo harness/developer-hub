@@ -129,7 +129,7 @@ This means that target image is not available in the repository it's being pulle
 
 It means the harness internal image, in this case `ci-addon:1.16.22`, is not present in your artifact repository and you are using the `account.harnessImage` connector for your artifact repository in Harness. You can use this connector to pull your own images, but it is also used to pull Harness CI images. Modifying this connector can cause it to fail to pull necessary CI images.
 
-You can [proxy and pull Harness CI images from your own repository](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md#specify-the-harness-ci-images-used-in-your-pipelines) and configure the `account.harnessImage` connector (or another connector) to [connect to the Harness container image registry or pull images from your own registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
+You can [proxy and pull Harness CI images from your own repository](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#specify-the-harness-ci-images-used-in-your-pipelines) and configure the `account.harnessImage` connector (or another connector) to [connect to the Harness container image registry or pull images from your own registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
 
 #### Why did the CI stage still go through despite setting a freeze window?
 
