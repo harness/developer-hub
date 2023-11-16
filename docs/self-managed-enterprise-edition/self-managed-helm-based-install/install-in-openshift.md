@@ -49,7 +49,7 @@ service_accounts=("default" "postgres" "harness-looker" "harness-default" "minio
 # Loop through the policies and service accounts
 for policy in "${policies[@]}"; do
     for account in "${service_accounts[@]}"; do
-        oc adm policy add-scc-to-user -z $account -n <namespace> $policy
+        oc adm policy add-scc-to-user -z $account -n <YOUR_NAMESPACE> $policy
     done
 done
 ```
