@@ -3012,3 +3012,59 @@ Please read more on this in the following [Documentation](https://developer.harn
 
 Secrets retrieved by a delegate do not get transmitted back to the central platform. Delegates establish connections with diverse secret managers throughout the pipeline execution, without transmitting any confidential information back to the platform
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/)
+
+
+#### What is the artifact polling interval for triggers?
+
+Artifacts are polled at every 1-minute interval
+
+#### Can I configure artifact polling internally?
+
+Currently, this interval of 1 minute is hard coded but we have an enhancement request in progress to expose this made configurable.
+Please contact Harness support for more info
+
+#### What is the default behavior on calling the triggerexecutiondetails rest API endpoint if the trigger is not active?
+
+We will return an error message("trigger history not found") until the trigger event becomes available.
+
+####  What is the default behavior, if I don't pass any value for a variable, Does Harness render it as blank or "null"?
+
+In run pipeline form and in triggers, if the input set is not applied, empty values are sent as “”, and if the input set is applied, they are sent as <+input> which is treated as null.
+
+#### I don't have the option to create an inputset in git?
+
+For the input set to be added in git, We require the pipeline to be on git as well. Input sets are linked to the pipeline and get stored in the same repo and branch as the pipeline definition.
+
+Once you move your pipeline to git, the option to create an input set on git will also be available.
+
+#### Can we use our vault for storing terraform apply step output?
+
+Currently, only the Harness secret manager is supported.
+
+#### How do I encrypt for my terraform output?
+
+Terraform output can be encrypted once you configure a secret manager for the "Encrypt JSON output" field under the optional configuration of terraform apply step.
+
+#### Can you please provide the info on how long the secret created from the terraform apply step stays in place and how it gets overridden?
+
+The secret will be always unique but the expression of it is the same depending on the terraforming apply step. It is stored in the secrets at the project level. The secret exists till the pipeline is not finished.
+Once the pipeline failed|passed|aborted… it means the pipeline finished the execution and we clean the secret.
+There is no way to control how long it is kept.
+
+#### How do I trim space from variables as harness preserves space in variable value?
+
+If you want variables to be trimmed before being fed into their pipeline, you can define the variable like this:
+ 
+```<+<+variable.MY_VARIABLE>.trim()>```
+
+#### Does Harness NG support the "Skip artifact version already deployed" parameter as present in CG?
+
+We do support "Skip artifact version already deployed" for WinRM SSH deployment. It is present under the advanced section of the pipeline.
+
+#### How do I select a single delegate pod for all my steps if multiple delegates are on the same selector?
+
+Currently, only selectors can selected for steps. Though we can pass the delegate selector from one step to another if there are multiple delegates with that selector it will pick any available.
+
+#### Does OPA policy evaluate by resolving expressions present in pipeline YAML?
+
+Unfortunately, Runtime input variables can not be evaluated just by OPA policy. You can implement policy steps in the pipeline to run the policy against the provided variable value.
