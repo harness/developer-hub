@@ -121,7 +121,7 @@ For example, if the stage Id is `Deploy` and the Dry Run step Id is `Dry_Run` th
 <+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
 ```
 
-You can potentially print it out in a shell script step to perform some logic like `kubectl diff`:
+Another example is to use a Harness [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) to perform logic using `kubectl diff`:
 
 ```
 cat << EOM > manifest.yaml
