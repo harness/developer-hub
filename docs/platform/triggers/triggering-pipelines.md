@@ -48,7 +48,7 @@ These steps assume you're familiar with [creating CD pipelines](/docs/continuous
 
 You can select the **Custom** trigger type if you are using an unsupported Git provider. Go to the [Custom Trigger documentation](./trigger-deployments-using-custom-triggers.md) for guidance on creating custom triggers.
 
-## Configure the trigger
+### Configure the trigger
 
 :::caution
 
@@ -60,7 +60,7 @@ All triggers in a Harness account have the same URL: `https://app.harness.io/gat
 2. **Payload Type** is automatically populated based on the selected SCM provider.
 3. For **Connector**, select a [code repo connector](/docs/category/code-repo-connectors) for your SCM provider.
 
-   * A connector is required for all Git trigger types except **Custom**. In the connector's **Credentials** settings, make sure API access is enabled.
+   * A connector is required for all Git trigger types except **Custom**. In the connector's **Credentials** settings, make sure API access is enabled and that the token has the [required permissions](#code-repo-connector-permissions-for-webhook-triggers).
    * For **Custom** triggers, you must set up the external tool to send payloads to to the trigger URL. Refer to your tool's documentation for instructions on sending payloads.
 
 4. For **Event**, select a [Git event type](./triggers-reference.md#event-and-actions), and, if required, select one or more **Actions**.
@@ -68,7 +68,24 @@ All triggers in a Harness account have the same URL: `https://app.harness.io/gat
 
 For details on trigger settings, go to the [Triggers reference](./triggers-reference.md).
 
-## Set trigger conditions
+#### Code repo connector permissions for webhook triggers
+
+Git event webhook triggers require specific permissions:
+
+* The user account you use to create the token must have the permission to configure repo webhooks in your Git provider.
+* The personal access token used for [code repo connector authentication](/docs/platform/connectors/code-repositories/connect-to-code-repo/#code-repo-connector-permissions-and-access) must have the appropriate permissions scopes depending on the Git provider.
+
+For example, for GitHub, you must be a repo admin and the GitHub personal access token used in the [GitHub connector's credentials](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/#credentials-settings) requires `read:org`, `read:user`, all `repo` scopes, and all `admin:repo_hook` scopes.
+
+![GitHub personal access token scopes.](./static/trigger-pipelines-using-custom-payload-conditions-32.png)
+
+For information about other provider's token scopes, go to:
+
+* [GitLab - Personal access token scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes)
+* [Bitbucket Cloud - Repository access token permissions](https://support.atlassian.com/bitbucket-cloud/docs/repository-access-token-permissions/)
+* [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
+
+### Set trigger conditions
 
 **Conditions** specify additional trigger criteria beyond the **Event** and **Actions**. Conditions are optional, but they are necessary if you want to create specific, limited-scope triggers. Conditions can use Harness built-in expressions for accessing trigger settings, Git payload data, and headers.
 
@@ -151,7 +168,7 @@ For more information about **Attributes**, **Operators**, **Matching Values**, a
 
 </details>
 
-## Set pipeline input
+### Set pipeline input
 
 Pipelines often have [runtime inputs](../variables-and-expressions/runtime-inputs.md), such as codebase branch names or artifact versions and tags.
 
@@ -163,30 +180,11 @@ Pipelines often have [runtime inputs](../variables-and-expressions/runtime-input
 
 The trigger is added to the triggers page. The last step in trigger set up is [webhook registration](#register-the-webhook-in-the-git-provider).
 
-## Register the webhook in the Git provider
+### Register the webhook in the Git provider
 
 For all Git providers supported by Harness, non-custom webhooks are automatically created in the repo. For details about automatically-registered Git events, go to the [Triggers reference](./triggers-reference.md).
 
-However, if automatic registration fails or you created a custom webhook, you must manually copy the webhook URL and add it to your repo webhooks.
-
-:::info Required permissions
-
-To configure a functioning Git event webhook trigger:
-
-* You must have the appropriate level of access to configure repo webhooks in your Git provider.
-* The personal access token use for [code repo connector](/docs/category/code-repo-connectors) authentication must have the appropriate scopes.
-
-For example, for GitHub, you must be a repo admin and the GitHub personal access token used in the pipeline's GitHub connector must include all `repo`, `user`, and `admin:repo_hook` options for **Scopes**.
-
-![GitHub personal access token scopes.](./static/trigger-pipelines-using-custom-payload-conditions-32.png)
-
-For information about other provider's token scopes, go to:
-
-* [GitLab - Personal access token scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes)
-* [Bitbucket Cloud - Repository access token permissions](https://support.atlassian.com/bitbucket-cloud/docs/repository-access-token-permissions/)
-* [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
-
-:::
+However, if [automatic registration fails](#common-causes-of-webhook-registration-failure) or you created a custom webhook, you must manually copy the webhook URL and add it to your repo webhooks.
 
 1. Go to your pipeline in Harness and select **Triggers**.
 2. Select your custom webhook.
@@ -205,34 +203,13 @@ For information about other provider's token scopes, go to:
 
 For more information about manual webhook registration, go to the [Triggers reference](./triggers-reference.md).
 
-<details>
-<summary>Common causes of Webhook registration failed errors</summary>
-
-Webhook registration is immediate but the Harness Triggers page does not refresh immediately. Simply refresh the page to see if the webhook registers successfully.
-
-If you see **Webhook registration failed**, here are the common causes:
-
-- Github repository does not exist: 
-  - Ensure you selected the correct repo.
-- The token used in the Harness connector does not have read write permissions:
-  - Ensure that it has the **repo**, **user**, and **admin:repo\_hook** options enabled.
-  - If your Git provider organization uses SSO, ensure that the token is authorized for access to the organization containing the repo.
-- The **Enable API access** option in the connector is not enabled.
-  - Ensure this option is enabled and the Personal Access Token used in the settings has the **repo**, **user**, and **admin:repo\_hook** options enabled. 
-
-Once you have fixed the issue, simply edit the Harness trigger, select **Continue** to navigate through its settings, and then select **Update Trigger**.
-
-Once you are back on the Triggers page, refresh the page to verify that the webhook was registered.
-
-</details>
-
 :::note
 
 Ensure that multiple Webhooks are not registered for the same repo. This can trigger multiple builds or deployments with a single push event.
 
 :::
 
-## Test the trigger
+### Test the trigger
 
 To test the trigger, make (and push) a change in your repo. If you created a Pull Request (or similar) trigger, you'll also need to create a Pull Request.
 
@@ -260,53 +237,50 @@ On the list of triggers for a pipeline, you can see when each trigger was last a
 
 ## Trigger type expression
 
-You can use the Harness expression `<+pipeline.triggerType>` to see how the pipeline was executed.
+You can use the Harness expression `<+pipeline.triggerType>` to get information about how a pipeline was executed or to create conditional execution conditions that react to specific trigger types.
 
-You can echo the expression like this:
+### Echo the trigger type
+
+To echo the expression in step logs, use a command like:
 
 ```
 echo "pipeline.triggerType: " <+pipeline.triggerType>
 ```
 
-For example, if the pipeline is executed manually, the `<+pipeline.triggerType>` expression will resolve to `MANUAL`. If the pipeline is executed by a Webhook trigger, the expression will resolve to `WEBHOOK`.
+If the pipeline was run manually, the `<+pipeline.triggerType>` expression resolves to `MANUAL`. If the pipeline was run by a webhook trigger, the expression resolves to `WEBHOOK`. For example:
 
 ```
 pipeline.triggerType:  WEBHOOK
 ```
 
-## Null comparisons
+### Null comparisons
 
-You can also use JEXL comparisons with Trigger expressions.
+You can create JEXL comparisons with trigger expressions.
 
-For example, let's look at an example that uses the `?` ternary operator in a JEXL expression. 
+For example, here's an example that uses the `?` ternary operator in a JEXL expression. This ternary operator takes three operands: a Boolean expression and two values or expressions that are evaluated based on the Boolean expression.
 
-This ternary operator takes three operands: a Boolean expression, and two values or expressions that are evaluated based on the Boolean expression. 
-
-
-:::note
+:::info
 
 The ternary operator is also known as the conditional operator because it evaluates a Boolean expression and returns one of two possible values, depending on whether the expression is true or false.
 
 :::
 
-In the following example, we use the `<+pipeline.triggerType>` expression to see how the pipeline was executed. 
-
-If the expression evaluates to `WEBHOOK` (`true`), we expose and resolve the `<+trigger.commitSha>` to show the commit SHA that fired the trigger. If the expression does not resolve to `WEBHOOK` (`false`), we show the pipeline execution Id.
+In the following example, the `<+pipeline.triggerType>` expression is used to determine how the pipeline run started. Then, if the expression evaluates to `WEBHOOK` (`true`), Harness resolves the expression `<+trigger.commitSha>` to print the commit SHA that initiated the trigger. If the `triggerType` expression isn't `WEBHOOK` (`false`), Harness resolves the expression `<+pipeline.executionId` to print the pipeline execution identifier instead.
 
 ```
 echo <+<+pipeline.triggerType> == "WEBHOOK" ? <+trigger.commitSha>:<+pipeline.executionId>>
 ```
 
-We can do the same using the `MANUAL` value:
+Similarly, you can create logic for the `MANUAL` trigger type value:
 
 ```
 echo <+<+pipeline.triggerType> == "MANUAL" ? <+pipeline.executionId>:<+trigger.commitSha>>
 ```
 
-Here's a sample pipeline that demonstrates these comparisons.
-
 <details>
-<summary>Pipeline with trigger expressions comparisons</summary>
+<summary>YAML example: Pipeline with trigger expressions comparisons</summary>
+
+This pipeline demonstrates usage of JEXL comparisons with trigger type expressions.
 
 ```yaml
 pipeline:
@@ -374,10 +348,26 @@ pipeline:
 
 </details>
 
-## Troubleshooting
+## Troubleshooting Git event triggers
 
-If a pipeline does not start in response to an incoming event, do the following:
+### Pipelines don't start after trigger events
+
+If a pipeline doesn't start in response to an incoming event, do the following:
 
 * Check the execution history (select **Execution History** in the top right of the Pipeline Studio).
 * Verify that the runtime inputs are correct.
 * Check the payloads sent from the Git provider and compare the relevant fields with your trigger conditions. For example, in GitHub you can view the full payload of each event sent from a specific webhook.
+
+### Common causes of Webhook registration failure
+
+[Webhook registration](#register-the-webhook-in-the-git-provider) is immediate but the **Triggers** page in Harness doesn't refresh immediately. First, refresh the page to see if the webhook registered successfully.
+
+If you see **Webhook registration failed**, here are the common causes:
+
+- The specified repository doesn't exist. Check the repository name in the trigger settings or the code repo connector.
+- The token in the code repo connector doesn't have the required permissions. Make sure the token has the [required permissions for Git event triggers](#code-repo-connector-permissions-for-webhook-triggers). If you use SAML SSO in your Git provider, make sure the token is authorized for SAML SSO.
+- The connector doesn't have API access. Check the connector configuration to confirm that the **Enable API access** option is selected. Use the same token you used for the connector's credentials for API access authentication.
+
+After addressing one or more of the above issues, edit the trigger in Harness, select **Continue** to navigate through the settings, and then select **Update Trigger** to reattempt webhook registration. Then, refresh the **Triggers** page again to verify that the webhook was registered.
+
+If registration fails and none of the above conditions apply, try [manually registering the webhook](#register-the-webhook-in-the-git-provider).
