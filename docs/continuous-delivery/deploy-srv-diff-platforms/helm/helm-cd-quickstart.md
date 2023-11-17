@@ -246,3 +246,9 @@ Yes, you can use Helm hooks in Helm deployments managed by Helm. This is availab
 
 Helm hooks allow you to execute specific actions or scripts at different points in the Helm chart's lifecycle, such as before or after installing or upgrading a release. Harness supports the use of Helm hooks as part of your Helm deployment process. 
 
+### What is this error, the deployment failed because the release name was invalid?
+
+The reason you're encountering the "invalid release name" problem is due to the length of the release name, which exceeds the maximum limit of 53 characters. 
+ 
+This limitation is imposed by Helm ( https://helm.sh/docs/chart_template_guide/getting_started/#adding-a-simple-template-call ) . To resolve this issue, please ensure that your release name falls within the 53-character range. You can achieve this by using the following format: <+<+INFRA_KEY>.substring(0,7)> to shorten the release name.
+
