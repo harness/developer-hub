@@ -1878,7 +1878,7 @@ No , there is no built in variable to refer for Git experience you need to use c
 ####  I am working on overrides creation using Terraform. As I see according to the latest update overrides were moved from the Environments tab to a separate tab. We have a use case where I must create all the 3 types provided under service-specific overrides. How to get YAML representation for all 3 types of override
 
 You can get the the detail under Example Usage here https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service_overrides_v2
-=======
+
 #### When do we mask a secret value in shell script?
 
 To mask a secret's value in a script, then that secret should be at least once used or refrenced in the script (referencing the secret as echo <+secrets.getValue("pattoken")>)
@@ -2935,3 +2935,80 @@ Please one may follow steps mentioned below :
 
 One can enable the Feature-Flag `PIE_GIT_BI_DIRECTIONAL_SYNC` to fetch the feature.
 Please read more on All Continuous Delivery FFs in this [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-integrations/#active-cd-feature-flags/) 
+
+#### How can the GitHub Repository values be cloned in Continuous Delivery Module ?
+
+We provide with a git-clone step for to fetch values or clone repository in the Continuous Delivery Module.
+Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step)
+
+#### Can one deduce that the objective involves fetching files from S3 for deployment in this scenario?
+
+Yes, one can try to use a service deployment and use our `Custom Remote Manifest Option` to fetch it.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/)
+
+#### Can one use GitHub Actions in the  Continuous Delivery Module ?
+
+No, we have disabled the `GitHub Actions` for our  Continuous Delivery Module.
+One may refer to the CI Github Action step [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/) for more insights
+
+#### Is there a way to conditionally include specific values in a YAML configuration file ?
+
+No, one cannot add conditionals to the `values.yaml`.One can only apply conditionals in the actual manifest.
+
+#### How to backup the Harness configuration yamls in a Git repository ?
+
+One can always access entities on our Harness platform without the much requirements of a backup.
+But one can follow below in case to do so :
+
+- Try retrieving the files use the API calls, if not one can use` bidirectional sync` as an alternative by enabling the Feature-Flag `PIE_GIT_BI_DIRECTIONAL_SYNC` to fetch the feature
+- Apart from obtaining YAMLs through an API, within the Git experience, there is also a functionality called `Import from Git`. This feature enables users to create entities in Harness by utilizing YAMLs stored in a Git repository.
+
+#### What is feature associated with the FF in First-Gen called `CDS_CG_INLINE_SSH_COMMAND` ?
+
+The feature associated with the First-Gen flag called `CDS_CG_INLINE_SSH_COMMAND` introduces an alternative mode of script execution. By default, user-provided scripts are copied to a temporary file on the host and then executed. However, in cases where certain host machines have restrictions on file creation and execution, particularly in the`/tmp` folder, this feature allows for direct script execution using an SDK. This eliminates the need to create temporary files, making it more adaptable to systems with limitations on file operations in specific directories.
+
+#### How can one fetch the details of `Subscription License Count` and `Subscription end date` ?
+
+One can use the curl command as - 
+``` 
+curl --location 'https://app.harness.io/gateway/ng/api/licenses/<accountIdentifier>/summary?routingId=<accountIdentifier>&moduleType=CD' \
+--header 'authorization: <Bearer token>' \ 
+```
+
+The response to above call should look like something below - 
+
+```
+{
+  "edition": "ENTERPRISE",
+  "licenseType": "PAID",
+  "moduleType": "CD",
+  "maxExpiryTime": <Subscription end date>,
+  "totalWorkload": <Subscription License Count>,
+  "totalServiceInstances": 0
+}
+```
+
+#### Do we have an API to get details for usage percentage of active service instance ?
+
+No, we don't have an API to calculate the percentage , it is based on UI implementation on `License Count` and the current number of active services
+
+#### Is there is an ECS DNS Blue/Green deployment similar to First-Gen in the Next-Gen ?
+
+In the next generation, we support the utilization of a `load balancer` with target groups for the switching between blue and green deployments.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-v2-summary/)
+For First-Gen reference read the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/aws-deployments/ecs-deployment/ecs-blue-green-workflows/#ecs-bluegreen-using-dns)
+
+#### How can one fetch the provisioner Id in a pipeline using Terraform with an expression ?
+
+One can fetch the provisioner Id in a pipeline using expression `<+stage.pipeline.variables.HARNESS_PROVISIONER_ID>`.
+Please read more on how to provision target deployment infrastructure dynamically with terraform in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform/)
+
+#### When publishing an artifact, what is the specific interval for polling and can a user configure it ?
+
+Polling interval for publishing an artifact is `1 minute`. Harness don't allow to configure this by user
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#important-notes)
+
+#### What is the work flow for secrets in Harness SaaS ?
+
+Secrets retrieved by a delegate do not get transmitted back to the central platform. Delegates establish connections with diverse secret managers throughout the pipeline execution, without transmitting any confidential information back to the platform
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/)
