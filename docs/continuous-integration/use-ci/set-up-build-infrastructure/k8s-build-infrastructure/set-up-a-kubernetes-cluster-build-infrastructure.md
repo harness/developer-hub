@@ -18,9 +18,15 @@ import TabItem from '@theme/TabItem';
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-This topic describes how you can use a Kubernetes cluster build infrastructure for the **Build** stage in a Harness CI pipeline.
+You can use a Kubernetes cluster build infrastructure for **Build** stages in Harness CI pipelines. To do this, you need to:
 
-After you set up the Kubernetes cluster that you want to use as your build infrastructure, you use a Harness [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) and Harness Delegate to create a connection between Harness and your cluster.
+<!-- no toc -->
+1. [Set up the Kubernetes cluster to use as your build infrastructure.](#create-a-kubernetes-cluster)
+2. [Create a Kubernetes cluster connector and install the Harness Delegate.](#create-a-kubernetes-cluster-connector-and-install-the-delegate)
+3. [Configure the build infrastructure in Harness.](#configure-the-build-infrastructure-in-harness)
+
+<details>
+<summary>Video summary</summary>
 
 Here's a short video that walks you through adding a Harness Kubernetes Cluster connector and Harness Kubernetes delegate. The delegate is added to the target cluster, then the Kubernetes Cluster connector uses the delegate to connect to the cluster.
 
@@ -29,6 +35,8 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 <docvideo src="https://www.youtube.com/embed/wUC23lmqfnY?feature=oembed" />
 
 <!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/wUC23lmqfnY/hqdefault.jpg"><iframe width=" 200" height="150" src="https://www.youtube.com/embed/wUC23lmqfnY?feature=oembed" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
+
+</details>
 
 For a step-by-step walkthrough, try this tutorial: [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm).
 
@@ -87,16 +95,34 @@ Autopilot might be cheaper than standard Kubernetes if you only run builds occas
 
 </details>
 
+### Create headless service for Istio MTLS STRICT mode
+
+If you use [Istio MTLS STRICT mode](https://istio.io/latest/docs/tasks/security/authentication/authn-policy/#globally-enabling-istio-mutual-tls-in-strict-mode), you need to add a [headless service](https://kubernetes.io/docs/concepts/services-networking/service/#headless-services) to the Kubernetes namespace where you will install the Harness delegate. For example:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: headless
+spec:
+  clusterIP: None
+  selector:
+    accountID: YOUR_K8S_ACCOUNT_ID
+  ports:
+    - protocol: TCP
+      port: ## Specify port number
+      targetPort: ## Specify port number
+```
+
 ## Create a Kubernetes cluster connector and install the delegate
+
+A [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) creates a connection between Harness and your Kubernetes cluster. This connector works through a Harness Delegate that you will install on a pod in your cluster.
 
 1. In a Harness CI project, select **Connectors** under **Project Setup**.
 2. Select **New Connector**, and then select **Kubernetes cluster**.
 3. Enter a name for the connector and select **Continue**.
 4. Select **Use the credentials of a specific Harness Delegate**, and then select **Continue**.
 5. Select **Install new Delegate**.
-
-   ![](../static/set-up-a-kubernetes-cluster-build-infrastructure-01.png)
-
 6. Install the delegate on a pod in your Kubernetes cluster. You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For details and instructions for each of these options, go to [Delegate installation overview](/docs/platform/delegates/delegate-concepts/delegate-overview).
 7. After installing the delegate, return to the Harness UI and select **Verify** to test the connection. It might take a few minutes to verify the Delegate. Once it is verified, exit delegate creation and return to connector setup.
 8. In the connector's **Delegates Setup**, select **Only use Delegates with all of the following tags**.

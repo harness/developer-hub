@@ -217,6 +217,10 @@ If you have a custom network security group, it must allow inbound traffic on po
 
 For more information, refer to the following Microsoft Azure troubleshooting documentation: [A custom network security group blocks traffic](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/custom-nsg-blocks-traffic).
 
+### Istio MTLS STRICT mode
+
+[A headless service is required if you are using Istio MTLS STRICT mode.](../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#create-headless-service-for-istio-mtls-strict-mode)
+
 ## Harness Cloud build infrastructure issues
 
 ### Connector delegate error with Harness Cloud build infrastructure
