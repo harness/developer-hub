@@ -32,11 +32,10 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## November 2023
 
-### Harness version 81401, Harness Delegate version 23.11.81403
+### Harness version 81401, Harness Delegate version 23.11.81405
 
 #### New features and enhancements 
 
-<!--
 - Harness has introduced stage-level timeouts for the following stage types: (CDS-81225)
   - Deploy
   - Build
@@ -44,7 +43,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   - Security Test
   - Pipeline
   - Custom Stage 
- -->
 
 - Harness updated the delegate metrics count names to include the suffix `_total`. (PL-42354, ZD-52167)
 

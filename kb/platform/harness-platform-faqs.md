@@ -1751,6 +1751,44 @@ When using secrets for sensitive information, the platform automatically obfusca
 
 In service-to-service scenarios, a best practice is to transmit only the principal information without including the Authorization Header. This allows the destination service to handle authorization based on the provided principal details. Additionally, users have the flexibility to designate whether the call is Privileged or non-Privileged. For non-Privileged access, maintaining the principal as the end user is often suitable. Users are encouraged to refer to the platform's official documentation for comprehensive guidance on token creation and authentication for platform API calls. If further assistance is needed, contacting the platform's support team is recommended.
 
+#### Do we have documentation to implement ACL checks in log-service?
+
+Yes, you can refer to these [docs](https://apidocs.harness.io/tag/Access-Control-List#operation/getAccessControlList).
+
+#### How to perform load test on k8s delegate?
+
+You can implement Autoscale using replicas with the steps in this [docs](https://developer.harness.io/docs/platform/delegates/manage-delegates/auto-scale-using-replicas/). The autoscaling will be based on load not on number of tasks Or can do any kind of deployment or simply run shell scripts which uses cpu and memory.
+
+- based on which metric you use for HPA (we recommend cpu/memory) kubernetes will scale up/down the pod.
+- when pod is scaled down, the delegate pod will stop taking new task and finish what its executing before terminating.
+
+#### Can I centrally identify and remove resources created by a user who had admin access but now has non-admin permissions?
+
+Currcetly this centralised feature is not available and will be available soon. However, you can leverage the Audit Trail feature to track all actions performed by the user over a specified time. This way, you can identify the resources they created during their admin access.
+Audit trails are available at the Account and Organization levels, allowing you to determine the resources created by the user. To restrict the user's admin access, you need to remove their admin permissions at every scope (account, org, project). Once admin permissions are revoked, the user won't have the authority to perform admin operations.
+
+#### What rate limits are enforced for NG?
+
+Rate limits for requests/day :
+
+- Any call: Harness allows 5000 requests every 10 seconds (30,000 requests per minute) per IP address.
+- API calls: Harness allows 1000 requests per API key per minute.
+- Large requests (character size > 500,000): 1 payload every 10 seconds.
+
+For more details you can refer to [documentation](https://developer.harness.io/docs/platform/rate-limits/).
+
+#### Can I set up audit log streaming without using a Delegate agent? Are there options to stream logs directly from the cloud platform using IAM roles or other methods?
+
+For the current streaming workflow, the primary option is to use the AWS connector, which requires the use of a Delegate. Unfortunately, audit log streaming is currently only supported via Delegate, and there is no direct option to stream logs from the cloud platform using IAM roles or other methods.
+You can refer to this [documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/) for further information.
+
+#### What is the workflow for secrets, especially concerning the potential exposure of production secrets? Do secrets pulled by a delegate ever flow back to the Harness platform?
+
+Yes, the secrets pulled by a delegate during pipeline execution do not make their way back to the Harness platform. Delegates connect to various secret managers as the pipeline progresses, but the secret information itself is not sent to Harness. This ensures that production secrets remain secure and are not exposed within the Harness platform. You can refer to these [docs](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
+
+
+
+
 
 
 

@@ -54,7 +54,7 @@ The following deprecated API endpoints will no longer be supported:
 
 - While managing roles, it was not possible to search for resource groups beyond the first 100 initially fetched. Now, the UI allows searching for resource groups that are present beyond the initial page size limit. (PL-42343, ZD-53209)
 
-### Version 81403
+### Version 81401
 
 #### New features and enhancements
 
@@ -69,7 +69,7 @@ The following deprecated API endpoints will no longer be supported:
    - `io_harness_custom_metric_task_failed` is now `io_harness_custom_metric_task_failed_total`
    - `io_harness_custom_metric_task_rejected` is now `io_harness_custom_metric_task_rejected_total`
 
-   This item requires Harness Delegate version 23.11.81403. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item requires Harness Delegate version 23.11.81405. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 #### Fixed issues
 
