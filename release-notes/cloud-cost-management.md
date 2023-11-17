@@ -54,7 +54,7 @@ This issue has been fixed. Now, the correct error message is displayed if Delega
 
 * Previously, the perspective list page lacked pagination for both the Card and List views, causing lag on the first render of perspectives list pages for some customers. (CCM-14018)
 
-  Now, each page is paginated, with a maximum of 20 perspectives displayed, effectively resolving the issue.
+The problem has been fixed, the perspective list is now paginated, with a limit of 20 perspectives shown per page.
 
 ##### Early access features
 
