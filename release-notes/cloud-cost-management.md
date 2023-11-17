@@ -20,19 +20,66 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest: version 81400
+## Latest: version 81600
 
 ### New features and enhancements
 
-* Previously, there was no option to export Recommendations as CSV files. (CCM-14274)
+* Previously, RBAC support was not available for the Commitment Orchestrator. (CCM-15040)
 
-  Now, we have added a new feature that enables users to export Recommendations as comma-separated values (CSV) files.
+  However, now, RBAC is implemented for the Commitment Orchestrator. CCM Admins now have the ability to set up Commitment Orchestrator for master accounts, while CCM Viewers are limited to accessing visibility screens.
+
+* Previously, Adding relevant rule filters for perspectives created through cloud providers was not supported. Consequently, all anomalies were displayed from the cloud providers' perspective, irrespective of their relevance. (CCM-15068)
+
+In this release, we have addressed this issue by adding rule filters specifically for cloud providers.
 
 ### Early access features
 
 This release does not include any early access features.
 
 ### Fixed issues
+
+* Previously, the incorrect error message was displayed when Delegate validation failed. (CCM-14963)
+
+This issue has been fixed. Now, the correct error message is displayed if Delegate validation fails.
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### November 13, 2023, version 81500
+
+##### New features and enhancements
+
+* Previously, the perspective list page lacked pagination for both the Card and List views, causing lag on the first render of perspectives list pages for some customers. (CCM-14018)
+
+  Now, each page is paginated, with a maximum of 20 perspectives displayed, effectively resolving the issue.
+
+##### Early access features
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+* Previously, the "View Costs" button for K8s connectors in the cloud integration page was enabled based on the availability of the last events received. (CCM-14984)
+
+  Now, it will be enabled if Cluster data is present, ensuring users can view historical costs.
+
+  
+#### November 3, 2023, version 81400
+
+##### New features and enhancements
+
+* Previously, there was no option to export Recommendations as CSV files. (CCM-14274)
+
+  Now, we have added a new feature that enables users to export Recommendations as comma-separated values (CSV) files.
+
+##### Early access features
+
+This release does not include any early access features.
+
+##### Fixed issues
 
 * Previously, changing the project in JIRA didn't clear fields, causing potential creation failures. (CCM-14842)
 
@@ -45,12 +92,6 @@ This release does not include any early access features.
 * Previously, incorrect entity types for Azure in anomalies caused misdirected notifications on Slack and email. (CCM-14864)
 
   However, this issue is fixed now by changing the logic for Azure entity types.
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### October 26, 2023, version 81300
 
