@@ -42,6 +42,11 @@ This release does not include any early access features.
 
 This issue has been fixed. Now, the correct error message is displayed if Delegate validation fails.
 
+* Perviously getAllPerspectives API was failing (CCM-15124)
+
+  This issue has been now fixed. Pagination for perspectives has been added for faster loading times of perspectives.
+  By default only 20 perspectives will be shown. To see all the perspectives set the pageSize as 10,000 and pageNo as 0. By default all perspectives are ordered by most recent.
+
 
 ## Previous releases
 
