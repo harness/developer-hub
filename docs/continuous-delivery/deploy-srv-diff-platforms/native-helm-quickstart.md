@@ -10,43 +10,52 @@ helpdocs_is_published: true
 
 This topic shows you how to perform Native Helm deployments using Harness.
 
-## Kubernetes and Helm vs Native Helm deployments
+## Commands used by Harness to perform a Helm Chart Deployment managed by Helm
 
-Harness supports the use of Helm in its Kubernetes deployment type. Harness also includes a separate Native Helm deployment type.
+When using the Harness-managed Helm Chart Deployment approach, Harness uses a mix of `helm` and `kubectl` commands to perform the deployment. 
 
-When you create a Harness service, you will see both Kubernetes and Native Helm options and wonder what are their differences.
+1. The command we run to perform **Fetch Files**, depends on the store type Git or Helm Repo.
 
-![service deployment types](./static/0d6ad15825f86697723f3f0b7e4601871a031e4449c6d1f9e96bab27980d3ab0.png)  
-
-Here are the differences:
-
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+For Git:
 ```
-```mdx-code-block
-<Tabs>
-  <TabItem value="Kubernetes" label="Kubernetes" default>
+git clone {{YOUR GIT REPO}}
 ```
 
-- Harness Kubernetes deployments allow you to use your own Kubernetes manifests or a Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without requiring a Helm installation in the target cluster.
-- Harness Kubernetes deployments also support all deployment strategies (canary, blue green, rolling, custom).
-- **Versioning:** Harness Kubernetes deployments version all objects, such as ConfigMaps and Secrets.
-- **Rollback:** In the event of deployment failure, Harness Kubernetes deployments will roll back to the last successful version.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Native Helm" label="Native Helm">
+For Helm Repo:
+```
+helm pull {{YOUR HELM REPO}}
 ```
 
-- For Harness Native Helm Deployments, you must always have Helm running on one pod in your target cluster.
-- You can perform a rolling deployment strategy only (no canary or blue green). 
-- **Versioning:** Native Helm does not version deployments.
-- **Rollback:** Harness does not perform rollback. Instead, Harness uses Helm's native rollback functionality.
+2. Based on your values.yaml and Harness configured variables, Harness will then render those values via `helm template`. We will consolidate all the rendered manifest into a `manifest.yaml`.
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
+```
+helm template release-75d461a29efd32e5d22b01dc0f93aa5275e2f003 /opt/harness-delegate/repository/helm/source/c1475174-18d6-38e6-8c67-1000f3b71297/helm-test-chart  --namespace default  -f ./repository/helm/overrides/6a7628964506885eb37908b81914a04c.yaml
+```
+
+3. Harness will perform a dry run by default to show what is about to be applied
+
+```
+kubectl --kubeconfig=config apply --filename=manifests-dry-run.yaml --dry-run=client
+```
+
+4. Harness will then run the `helm install` or `helm upgrade`  command to install the chart on the Kubernetes clusters.
+
+```
+helm upgrade  release-75d461a29efd32e5d22b01dc0f93aa5275e2f003 /opt/harness-delegate/repository/helm/source/c1475174-18d6-38e6-8c67-1000f3b71297/helm-test-chart  -f ./repository/helm/overrides/6a7628964506885eb37908b81914a04c.yaml
+```
+
+5. Harness will then query the deployed resources to show a summary of what was deployed
+
+```
+helm get manifest release-75d461a29efd32e5d22b01dc0f93aa5275e2f003 --namespace=default
+
+helm list  --filter ^release-75d461a29efd32e5d22b01dc0f93aa5275e2f003$
+```
+
+6. In the event of failure Harness will rollback, we perform a `helm rollback`.
+
+```
+helm rollback  release-1d0bcdea6247c9f82cc9204b1d81593e7b985651
 ```
 
 ### Helm 2 in Native Helm
