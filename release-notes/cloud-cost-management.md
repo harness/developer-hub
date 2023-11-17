@@ -38,7 +38,7 @@ This release does not include any early access features.
 
 ### Fixed issues
 
-* Previously, the incorrect error message was displayed when Delegate validation failed. (CCM-14963)
+* Previously, the incorrect error message was displayed when Delegate validation failed in Kubernetes Quick Create. (CCM-14963)
 
 This issue has been fixed. Now, the correct error message is displayed if Delegate validation fails.
 
