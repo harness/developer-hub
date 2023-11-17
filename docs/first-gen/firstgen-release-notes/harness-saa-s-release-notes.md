@@ -43,7 +43,7 @@ If the required image and AMI upgrades are not complete by **November 14, 2023**
 
 :::
 
-### Latest: November 15, 2023, Version 81401
+### Latest: November 15, 2023, Version 81405
 
 #### Fixed issues
 
@@ -58,7 +58,7 @@ If the required image and AMI upgrades are not complete by **November 14, 2023**
 
   This issue has been resolved. Instance Sync V1 will now show the actual instance count after you have redeployed the service. However, Harness might require about 10 min to show the updated instance count. 
 
-  This item requires Harness Delegate version 81403. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.11.81405. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ### November 3, 2023, Version 81307
 
