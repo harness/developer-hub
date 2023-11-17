@@ -88,3 +88,14 @@ For details, go to [Deploy Manifests Separately using Apply Step](/docs/continuo
 
 * [Add a Kubernetes Sidecar Container](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container)
 
+## FAQ
+
+### Where does the Apply Step Run by Default?
+
+The namespace specified in the infrastructure defined in the kubernetes or native helm deployment stage.
+
+### How do I configure the Apply step to run in a different namespace then the one defined in the infrastructure definition?
+Any namespace in the entities in the manifest would take precedence over the infrastructure. The manifest could  specify the namespace as a values.yaml reference. In an Apply step, you can override values.yaml and could specify different namespaces that way, for that particular Apply step.
+
+
+
