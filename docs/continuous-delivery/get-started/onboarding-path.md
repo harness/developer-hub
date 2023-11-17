@@ -106,48 +106,66 @@ The list of atifact sources that you can use in your Harness services are listed
 
 ### Step 5. Service and Environments Definition
 
-- **Services** represent your microservices and other workloads. Each service contains a Service Definition that defines your deployment artifacts, manifests or specifications, configuration files, and service-specific variables. Follow [this](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/create-services/#create-a-service) article to create your own service.
+#### **Services** 
+They represent your microservices and other workloads. Each service contains a Service Definition that defines your deployment artifacts, manifests or specifications, configuration files, and service-specific variables. Follow [this](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/create-services/#create-a-service) article to create your own service.
 
 Services are often configured using runtime inputs or expressions, so you can change service settings for different deployment scenarios at pipeline runtime. To use runtime input services with inputs and epressions, take a look at [this](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/create-services/#using-runtime-input-services-with-inputs-and-expressions).
 
-<details>
-<summary>Here's the YAML for a Kubernetes service:</summary>
-<br />
+```mdx-code-block
+<Tabs>
+<TabItem value="K8s Service">
+```
 
 ```yaml
 service:
-  name: Account_level_Service
-  identifier: Account_level_Service
-  tags: {}
+  name: Service_1
+  identifier: Service_1
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  projectIdentifier: K8s_Pipelines
   serviceDefinition:
     spec:
-        manifests:
-            - manifest:
-				identifier: Kubernetes
-				type: K8sManifest
-				spec:
-                  store:
-					type: Github
-					spec:
-						connectorRef: account.Public_Github
-						gitFetchType: Branch
-						paths:
-							- content/en/examples/application/nginx-app.yaml
-							repoName: kubernetes/website
-							branch: main
-							skipResourceVersioning: false
-                    type: Kubernetes
+      release:
+        name: release-<+INFRA_KEY_SHORT_ID>
+      manifests:
+        - manifest:
+            identifier: manifestIdentifier
+            type: K8sManifest
+            spec:
+              store:
+                type: Git
+                spec:
+                  connectorRef: org.GitConnectorForAutomationTest
+                  gitFetchType: Branch
+                  paths:
+                    - ng-automation/k8s/templates/
+                  branch: master
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+              valuesPaths:
+                - ng-automation/k8s/valuesWithClusterTypeService.yaml
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: org.GCRConnectorForAutomationTest
+                imagePath: qa-target/todolist
+                tag: v4.1
+                digest: ""
+                registryHostname: us.gcr.io
+              identifier: My_Artifact
+              type: Gcr
+    type: Kubernetes
 ```
 
-</details>
-
-:::info note
-Given below are some example ECS Fargate Deployment Services
-:::
+```mdx-code-block
+</TabItem>
+<TabItem value="ECS Fargate">
+```
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="Create Service">
+<TabItem value="Service Definition">
 ```
 
 ```yaml
@@ -172,25 +190,7 @@ loadBalancers:
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Put Scaling Policy">
-```
-
-```yaml
-scalableDimension: ecs:service:DesiredCount
-serviceNamespace: ecs
-policyName: P1
-policyType: TargetTrackingScaling
-targetTrackingScalingPolicyConfiguration:
-  targetValue: 60
-  predefinedMetricSpecification:
-    predefinedMetricType: ECSServiceAverageCPUUtilization
-  scaleOutCooldown: 300
-  scaleInCooldown: 300
-```
-
-```mdx-code-block
-</TabItem>
-<TabItem value="Register Task Definition">
+<TabItem value="Task Definition">
 ```
 
 ```yaml
@@ -261,7 +261,25 @@ volumes: []
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Register Scalable Target">
+<TabItem value="Scaling Policy">
+```
+
+```yaml
+scalableDimension: ecs:service:DesiredCount
+serviceNamespace: ecs
+policyName: P1
+policyType: TargetTrackingScaling
+targetTrackingScalingPolicyConfiguration:
+  targetValue: 60
+  predefinedMetricSpecification:
+    predefinedMetricType: ECSServiceAverageCPUUtilization
+  scaleOutCooldown: 300
+  scaleInCooldown: 300
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Scalable Target">
 ```
 
 ```yaml
@@ -276,25 +294,58 @@ maxCapacity: 3
 </Tabs>
 ```
 
-- **Environments** represent your deployment targets (QA, Prod, etc). Each environment contains one or more Infrastructure Definitions that list your target clusters, hosts, namespaces, etc. To create your own environments, go through the [Create environments](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/) article.
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
-- **Service Override** ([Article Link](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/#create-service-overrides))
-  In DevOps, it is common to have multiple environments, such as development, testing, staging, and production. Each environment might require different configurations or settings for the same service. For example, in the development environment, a service may need to use a local database for testing, while in the production environment, it should use a high-availability database cluster. To enable the same service to use different environment settings, DevOps teams can override service settings for each environment.
+#### **Environments** 
+They represent your deployment targets (QA, Prod, etc). Each environment contains one or more Infrastructure Definitions that list your target clusters, hosts, namespaces, etc. To create your own environments, go through the [Create environments](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/) article.
 
-<details>
-<summary>Example environment.yaml</summary>
-<br />
+```mdx-code-block
+<Tabs>
+<TabItem value="Environment Definition">
+```
 
 ```yaml
 environment:
-  name: Global Example
-  identifier: Global_Example
+  name: Env_1
+  identifier: Env_1
   tags: {}
-  type: PreProduction
+  type: Production
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  projectIdentifier: K8s_Pipelines
   variables: []
 ```
 
-</details>
+```mdx-code-block
+</TabItem>
+<TabItem value="Infrastructure Definition">
+```
+
+```yaml
+infrastructureDefinition:
+  name: Infra_1
+  identifier: Infra_1
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  projectIdentifier: K8s_Pipelines
+  environmentRef: Env_1
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: org.KubernetesConnectorForAutomationTest
+    namespace: cdp-k8s-qa-sanity
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: true
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+#### **Service Override** ([Article Link](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/#create-service-overrides))
+  In DevOps, it is common to have multiple environments, such as development, testing, staging, and production. Each environment might require different configurations or settings for the same service. For example, in the development environment, a service may need to use a local database for testing, while in the production environment, it should use a high-availability database cluster. To enable the same service to use different environment settings, DevOps teams can override service settings for each environment.
 
 ### Step 6. Simple Pipeline
 To create a simple CD pipeline, follow the steps:
@@ -310,98 +361,64 @@ To create a simple CD pipeline, follow the steps:
 Here's a simple CD pipeline having a Kubernetes type deployment:
 
 <details>
-<summary>CD Pipeline YAML</summary>
+<summary>K8s Rolling Deployment Pipeline YAML</summary>
 <br />
 
 ```yaml
 pipeline:
-  name: Rolling Deployment
-  identifier: Rolling_Deployment
+  name: K8s Rolling Deployment
+  identifier: K8s_Rolling_Deployment
+  projectIdentifier: K8s_Pipelines
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  tags: {}
   stages:
     - stage:
-        name: stage-1
-        identifier: stage1
+        name: Rolling Deployment
+        identifier: Rolling_Deployment
+        description: ""
         type: Deployment
         spec:
-          serviceConfig:
-            serviceDefinition:
-              type: Kubernetes
-              spec:
-                artifacts:
-                  primary:
-                    type: Gcr
-                    spec:
-                      connectorRef: org.GCRConnectorForAutomationTest
-                      imagePath: qa-target/todolist
-                      tag: v4.1
-                      registryHostname: us.gcr.io
-                  sidecars: []
-                manifests:
-                  - manifest:
-                      identifier: manifestIdentifier
-                      spec:
-                        store:
-                          type: Git
-                          spec:
-                            connectorRef: org.GitConnectorForAutomationTest
-                            gitFetchType: Branch
-                            branch: master
-                            repoName: ""
-                            paths:
-                              - ng-automation/k8s/templates/
-                        skipResourceVersioning: ""
-                      type: K8sManifest
-                  - manifest:
-                      identifier: valuesmanifest
-                      spec:
-                        store:
-                          type: Git
-                          spec:
-                            connectorRef: org.GitConnectorForAutomationTest
-                            gitFetchType: Branch
-                            branch: master
-                            repoName: ""
-                            paths:
-                              - ng-automation/k8s/valuesWithClusterTypeService.yaml
-                      type: Values
-            service:
-              name: service2
-              identifier: service2
-          infrastructure:
-            infrastructureDefinition:
-              type: KubernetesDirect
-              spec:
-                connectorRef: org.KubernetesConnectorForAutomationTest
-                namespace: cdp-k8s-qa-sanity
-                releaseName: releasename-985388
-            environment:
-              name: env2
-              identifier: env2
-              type: Production
-            allowSimultaneousDeployments: true
+          deploymentType: Kubernetes
+          service:
+            serviceRef: Service_1
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
+          environment:
+            environmentRef: Env_1
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: Infra_1
           execution:
             steps:
               - step:
+                  name: Rolling Deployment
+                  identifier: rolloutDeployment
                   type: K8sRollingDeploy
-                  name: K8sRolling
-                  identifier: K8sRolling
+                  timeout: 10m
                   spec:
                     skipDryRun: false
-                  timeout: 5m
-            rollbackSteps: []
+                    pruningEnabled: false
+            rollbackSteps:
+              - step:
+                  name: Rollback Rollout Deployment
+                  identifier: rollbackRolloutDeployment
+                  type: K8sRollingRollback
+                  timeout: 10m
+                  spec:
+                    pruningEnabled: false
+        tags: {}
         failureStrategies:
           - onFailure:
               errors:
                 - AllErrors
               action:
                 type: StageRollback
-        variables:
-          - name: resourceNamePrefix
-            type: String
-            default: ""
-            value: cdpsanitysuites-rollingdeploy
-  projectIdentifier: K8s_Pipelines
-  orgIdentifier: Ng_Pipelines_K8s_Organisations
 ```
 
 </details>
@@ -431,93 +448,59 @@ If you are using Canary Deployment, make sure you heat up your resources because
 
 ```yaml
 pipeline:
-  name: Rolling Deployment
-  identifier: Rolling_Deployment
+  name: K8s Rolling Deployment
+  identifier: K8s_Rolling_Deployment
+  projectIdentifier: K8s_Pipelines
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  tags: {}
   stages:
     - stage:
-        name: stage-1
-        identifier: stage1
+        name: Rolling Deployment
+        identifier: Rolling_Deployment
+        description: ""
         type: Deployment
         spec:
-          serviceConfig:
-            serviceDefinition:
-              type: Kubernetes
-              spec:
-                artifacts:
-                  primary:
-                    type: Gcr
-                    spec:
-                      connectorRef: org.GCRConnectorForAutomationTest
-                      imagePath: qa-target/todolist
-                      tag: v4.1
-                      registryHostname: us.gcr.io
-                  sidecars: []
-                manifests:
-                  - manifest:
-                      identifier: manifestIdentifier
-                      spec:
-                        store:
-                          type: Git
-                          spec:
-                            connectorRef: org.GitConnectorForAutomationTest
-                            gitFetchType: Branch
-                            branch: master
-                            repoName: ""
-                            paths:
-                              - ng-automation/k8s/templates/
-                        skipResourceVersioning: ""
-                      type: K8sManifest
-                  - manifest:
-                      identifier: valuesmanifest
-                      spec:
-                        store:
-                          type: Git
-                          spec:
-                            connectorRef: org.GitConnectorForAutomationTest
-                            gitFetchType: Branch
-                            branch: master
-                            repoName: ""
-                            paths:
-                              - ng-automation/k8s/valuesWithClusterTypeService.yaml
-                      type: Values
-            service:
-              name: service2
-              identifier: service2
-          infrastructure:
-            infrastructureDefinition:
-              type: KubernetesDirect
-              spec:
-                connectorRef: org.KubernetesConnectorForAutomationTest
-                namespace: cdp-k8s-qa-sanity
-                releaseName: releasename-985388
-            environment:
-              name: env2
-              identifier: env2
-              type: Production
-            allowSimultaneousDeployments: true
+          deploymentType: Kubernetes
+          service:
+            serviceRef: Service_1
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
+          environment:
+            environmentRef: Env_1
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: Infra_1
           execution:
             steps:
               - step:
+                  name: Rolling Deployment
+                  identifier: rolloutDeployment
                   type: K8sRollingDeploy
-                  name: K8sRolling
-                  identifier: K8sRolling
+                  timeout: 10m
                   spec:
                     skipDryRun: false
-                  timeout: 5m
-            rollbackSteps: []
+                    pruningEnabled: false
+            rollbackSteps:
+              - step:
+                  name: Rollback Rollout Deployment
+                  identifier: rollbackRolloutDeployment
+                  type: K8sRollingRollback
+                  timeout: 10m
+                  spec:
+                    pruningEnabled: false
+        tags: {}
         failureStrategies:
           - onFailure:
               errors:
                 - AllErrors
               action:
                 type: StageRollback
-        variables:
-          - name: resourceNamePrefix
-            type: String
-            default: ""
-            value: cdpsanitysuites-rollingdeploy
-  projectIdentifier: K8s_Pipelines
-  orgIdentifier: Ng_Pipelines_K8s_Organisations
 ```
 
 ```mdx-code-block
@@ -527,94 +510,59 @@ pipeline:
 
 ```yaml
 pipeline:
-  name: Blue Green Deployment
-  identifier: Blue_Green_Deployment
-  description: ""
+  name: K8s Blue Green Deployment
+  identifier: K8s_Blue_Green_Deployment
+  projectIdentifier: K8s_Pipelines
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
   tags: {}
   stages:
     - stage:
-        name: stage1
-        identifier: stage1
+        name: Blue Green Deployment
+        identifier: Blue_Green_Deployment
         description: ""
         type: Deployment
         spec:
-          serviceConfig:
-            serviceDefinition:
-              spec:
-                artifacts:
-                  sidecars: []
-                  primary:
-                    type: Gcr
-                    spec:
-                      connectorRef: org.GCRConnectorForAutomationTest
-                      imagePath: qa-target/todolist
-                      tag: v4.1
-                      registryHostname: us.gcr.io
-                manifests:
-                  - manifest:
-                      identifier: manifest
-                      type: K8sManifest
-                      spec:
-                        store:
-                          type: Git
-                          spec:
-                            connectorRef: org.GitConnectorForAutomationTest
-                            gitFetchType: Branch
-                            branch: master
-                            paths:
-                              - ng-automation/k8s/templates/
-                  - manifest:
-                      identifier: values
-                      type: Values
-                      spec:
-                        store:
-                          type: Git
-                          spec:
-                            connectorRef: org.GitConnectorForAutomationTest
-                            gitFetchType: Branch
-                            branch: master
-                            paths:
-                              - ng-automation/k8s/valuesWithClusterTypeService.yaml
-              type: Kubernetes
-            service:
-              name: service3
-              identifier: service3
-            stageOverrides:
-              manifests: []
-          infrastructure:
-            environment:
-              name: env3
-              identifier: env3
-              type: PreProduction
-            allowSimultaneousDeployments: true
-            infrastructureDefinition:
-              type: KubernetesDirect
-              spec:
-                connectorRef: org.KubernetesConnectorForAutomationTest
-                namespace: cdp-k8s-qa-sanity
-                releaseName: releasename-356323
+          deploymentType: Kubernetes
+          service:
+            serviceRef: Service_1
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
+          environment:
+            environmentRef: Env_1
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: Infra_1
           execution:
             steps:
               - step:
                   name: Stage Deployment
                   identifier: stageDeployment
                   type: K8sBlueGreenDeploy
-                  timeout: 5m
+                  timeout: 10m
                   spec:
                     skipDryRun: false
+                    pruningEnabled: false
               - step:
                   name: Swap primary with stage service
                   identifier: bgSwapServices
                   type: K8sBGSwapServices
-                  timeout: 5m
-                  spec: {}
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
             rollbackSteps:
               - step:
                   name: Swap primary with stage service
                   identifier: rollbackBgSwapServices
                   type: K8sBGSwapServices
-                  timeout: 5m
-                  spec: {}
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
         tags: {}
         failureStrategies:
           - onFailure:
@@ -622,12 +570,13 @@ pipeline:
                 - AllErrors
               action:
                 type: StageRollback
+        timeout: 10m
         variables:
           - name: resourceNamePrefix
             type: String
+            description: ""
+            required: false
             value: cdpsanitysuites-trybg
-  projectIdentifier: K8s_Pipelines
-  orgIdentifier: Ng_Pipelines_K8s_Organisations
 ```
 
 ```mdx-code-block
@@ -636,72 +585,34 @@ pipeline:
 ```
 ```yaml
 pipeline:
-  name: Canary Deployment
-  identifier: Canary_Deployment
-  description: ""
+  name: K8s Canary Deployment
+  identifier: K8s_Canary_Deployment
+  projectIdentifier: K8s_Pipelines
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
   tags: {}
   stages:
     - stage:
-        name: stage1
-        identifier: stage1
+        name: Canary Deployment
+        identifier: Canary_Deployment
         description: ""
         type: Deployment
         spec:
-          serviceConfig:
-            serviceDefinition:
-              spec:
-                artifacts:
-                  sidecars: []
-                  primary:
-                    type: Gcr
-                    spec:
-                      connectorRef: org.GCRConnectorForAutomationTest
-                      imagePath: qa-target/todolist
-                      tag: v4.1
-                      registryHostname: us.gcr.io
-                manifests:
-                  - manifest:
-                      identifier: manifest
-                      type: K8sManifest
-                      spec:
-                        store:
-                          type: Git
-                          spec:
-                            connectorRef: org.GitConnectorForAutomationTest
-                            gitFetchType: Branch
-                            branch: master
-                            paths:
-                              - ng-automation/k8s/templates/
-                  - manifest:
-                      identifier: values
-                      type: Values
-                      spec:
-                        store:
-                          type: Git
-                          spec:
-                            connectorRef: org.GitConnectorForAutomationTest
-                            gitFetchType: Branch
-                            branch: master
-                            paths:
-                              - ng-automation/k8s/valuesWithClusterTypeService.yaml
-              type: Kubernetes
-            service:
-              name: service4
-              identifier: service4
-            stageOverrides:
-              manifests: []
-          infrastructure:
-            infrastructureDefinition:
-              type: KubernetesDirect
-              spec:
-                connectorRef: org.KubernetesConnectorForAutomationTest
-                namespace: cdp-k8s-qa-sanity
-                releaseName: releasename-641764
-            environment:
-              name: env4
-              identifier: env4
-              type: PreProduction
-            allowSimultaneousDeployments: true
+          deploymentType: Kubernetes
+          service:
+            serviceRef: Service_1
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
+          environment:
+            environmentRef: Env_1
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: Infra_1
           execution:
             steps:
               - stepGroup:
@@ -712,18 +623,18 @@ pipeline:
                         name: Canary Deployment
                         identifier: canaryDeployment
                         type: K8sCanaryDeploy
-                        timeout: 5m
+                        timeout: 10m
                         spec:
-                          skipDryRun: false
                           instanceSelection:
                             type: Count
                             spec:
-                              count: "1"
+                              count: 1
+                          skipDryRun: false
                     - step:
                         name: Canary Delete
                         identifier: canaryDelete
                         type: K8sCanaryDelete
-                        timeout: 5m
+                        timeout: 10m
                         spec: {}
               - stepGroup:
                   name: Primary Deployment
@@ -733,131 +644,183 @@ pipeline:
                         name: Rolling Deployment
                         identifier: rollingDeployment
                         type: K8sRollingDeploy
-                        timeout: 5m
+                        timeout: 10m
                         spec:
                           skipDryRun: false
-                  rollbackSteps:
-                    - step:
-                        name: Rolling Rollback
-                        identifier: rollingRollback
-                        type: K8sRollingRollback
-                        timeout: 5m
-                        spec: {}
-            rollbackSteps: []
+            rollbackSteps:
+              - step:
+                  name: Canary Delete
+                  identifier: rollbackCanaryDelete
+                  type: K8sCanaryDelete
+                  timeout: 10m
+                  spec: {}
+              - step:
+                  name: Rolling Rollback
+                  identifier: rollingRollback
+                  type: K8sRollingRollback
+                  timeout: 10m
+                  spec: {}
         tags: {}
-        variables:
-          - name: resourceNamePrefix
-            type: String
-            value: cdpsanitysuites-trycanary
         failureStrategies:
           - onFailure:
               errors:
                 - AllErrors
               action:
                 type: StageRollback
-  projectIdentifier: K8s_Pipelines
-  orgIdentifier: Ng_Pipelines_K8s_Organisations
+        variables:
+          - name: resourceNamePrefix
+            type: String
+            description: ""
+            required: false
+            value: cdpsanitysuites-trycanary
+        timeout: 10m
 ```
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Basic">
+<TabItem value="K8s with Apply">
 ```
 ```yaml
 pipeline:
-  name: Pipeline deployment with K8s Apply Step
-  identifier: Pipeline_deployment_with_K8s_Apply_Step
-  description: ""
+  name: K8s Deployment with Apply Step
+  identifier: K8s_Deployment_with_Apply_Step
+  projectIdentifier: K8s_Pipelines
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
   tags: {}
   stages:
     - stage:
-        name: stage 1
-        identifier: stage_1
+        name: Deployment with Apply Step
+        identifier: Deployment_with_Apply_Step
         description: ""
         type: Deployment
         spec:
-          serviceConfig:
-            serviceDefinition:
-              spec:
-                artifacts:
-                  sidecars: []
-                  primary:
-                    type: Gcr
-                    spec:
-                      connectorRef: org.GCRConnectorForAutomationTest
-                      imagePath: qa-target/todolist
-                      tag: v4.1
-                      registryHostname: us.gcr.io
-                manifests:
-                  - manifest:
-                      identifier: manifest
-                      type: K8sManifest
-                      spec:
-                        store:
-                          type: Git
-                          spec:
-                            connectorRef: org.GitConnectorForAutomationTest
-                            gitFetchType: Branch
-                            branch: master
-                            paths:
-                              - ng-automation/k8s/templates/
-                  - manifest:
-                      identifier: values
-                      type: Values
-                      spec:
-                        store:
-                          type: Git
-                          spec:
-                            connectorRef: org.GitConnectorForAutomationTest
-                            gitFetchType: Branch
-                            branch: master
-                            paths:
-                              - ng-automation/k8s/valuesWithClusterTypeService.yaml
-              type: Kubernetes
-            service:
-              name: service1
-              identifier: service1
-            stageOverrides:
-              manifests: []
-          infrastructure:
-            environment:
-              name: env1
-              identifier: env1
-              type: PreProduction
-            allowSimultaneousDeployments: true
-            infrastructureDefinition:
-              type: KubernetesDirect
-              spec:
-                connectorRef: org.KubernetesConnectorForAutomationTest
-                namespace: cdp-k8s-qa-sanity
-                releaseName: releasename-148682
+          deploymentType: Kubernetes
+          service:
+            serviceRef: Service_1
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
+          environment:
+            environmentRef: Env_1
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: Infra_1
           execution:
             steps:
               - step:
                   type: K8sApply
-                  name: apply step
-                  identifier: apply_step
-                  timeout: 5m
+                  name: K8s Apply
+                  identifier: K8s_Apply
                   spec:
                     filePaths:
                       - namespace.yaml
                       - service.yaml
                     skipDryRun: false
                     skipSteadyStateCheck: false
+                    skipRendering: false
+                    overrides: []
+                  timeout: 10m
             rollbackSteps: []
         tags: {}
-        variables:
-          - name: resourceNamePrefix
-            type: String
-            value: cdpsanitysuites-qwerandom
         failureStrategies:
           - onFailure:
               errors:
                 - AllErrors
               action:
                 type: StageRollback
+        timeout: 10m
+        variables:
+          - name: resourceNamePrefix
+            type: String
+            description: ""
+            required: false
+            value: cdpsanitysuites-qwerandom
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="K8s with Scale">
+```
+
+```yaml
+pipeline:
+  name: K8s Deployment with Scale Step
+  identifier: K8s_Deployment_with_Scale_Step
   projectIdentifier: K8s_Pipelines
   orgIdentifier: Ng_Pipelines_K8s_Organisations
+  tags: {}
+  stages:
+    - stage:
+        name: Deployment With Scale Step
+        identifier: Deployment_With_Scale_Step
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          service:
+            serviceRef: Service_1
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
+          environment:
+            environmentRef: Env_1
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: Infra_1
+          execution:
+            steps:
+              - step:
+                  name: Rollout Deployment
+                  identifier: rolloutDeployment
+                  type: K8sRollingDeploy
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
+                    pruningEnabled: false
+              - step:
+                  type: K8sScale
+                  name: K8sScale_1
+                  identifier: K8sScale_1
+                  spec:
+                    workload: Deployment/<+stage.variables.resourceNamePrefix>-deployment
+                    skipSteadyStateCheck: false
+                    instanceSelection:
+                      type: Count
+                      spec:
+                        count: 2
+                  timeout: 10m
+            rollbackSteps:
+              - step:
+                  name: Rollback Rollout Deployment
+                  identifier: rollbackRolloutDeployment
+                  type: K8sRollingRollback
+                  timeout: 10m
+                  spec:
+                    pruningEnabled: false
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+        variables:
+          - name: resourceNamePrefix
+            type: String
+            description: ""
+            required: false
+            value: cdpsanitysuites-tryscale
+        timeout: 10m
 ```
 
 ```mdx-code-block
@@ -874,9 +837,10 @@ Triggers in a Harness Continuous Delivery (CD) pipeline are used to automaticall
 
 Let us take a look at how the YAML filelooks like for new artifact trigger and GitHub filechange trigger:
 
-<details>
-<summary>Trigger on New Artifact YAML</summary>
-<br />
+```mdx-code-block
+<Tabs>
+<TabItem value="Trigger On New Artifact">
+```
 
 ```yaml
 trigger:
@@ -919,12 +883,10 @@ trigger:
                                 tag: <+lastPublished.tag>
 ```
 
-</details>
-
-
-<details>
-<summary>GitHub Filechange Trigger</summary>
-<br />
+```mdx-code-block
+</TabItem>
+<TabItem value="GitHub Filechange Trigger">
+```
 
 ```yaml
 trigger:
@@ -970,7 +932,10 @@ trigger:
                 branch: <+trigger.branch>
 ```
 
-</details>
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 ## Phase 3: Deploy to Production
 
@@ -989,10 +954,24 @@ Learn more about Approvals in [this](https://developer.harness.io/tutorials/cd-p
 ### Step 2. RBAC
 Role-based access control (RBAC) lets you control who can access your resources and what actions they can perform on the resources. To do this, a Harness account administrator assigns resource-related permissions to members of user groups. The **Center of Excellence** strategy and **Distributed Center of DevOps** strategy are the two most popular RBAC access control strategies used.
 
-RBAC Components:
-- Principals
-- Resource Groups
-- Roles
+<details>
+<summary>Center of Excellence RBAC Strategy</summary>
+<br />
+
+| Role Type | Role Description | Harness Roles | Harness Resource Groups	|
+| --------------------- | ---------------------	| --------------------- | ---------------------	|
+| Program Manager	| Responsible for analyzing and reporting various metrics | Shared Resources->Dashboards: View & Manage	| Shared Resources -> Dashboards |
+| Platform Admin	| Responsible for provisioning infrastructure and managing Harness resources like Secrets, Environment, Connectors and Delegates | - Shared Resources -> Secrets: View, Create/Edit, Delete & Access <br/> - Shared Resources -> Connectors: View, Create/Edit, Delete & Access <br/> - Shared Resources -> Delegates: View, Create/Edit & Delete <br/> -	Shared Resources -> Delegate Configurations: View, Create/Edit & Delete <br/> - Environments: View, Create/Edit, Delete & Access <br/> - Environment Groups: View, Create/Edit, Delete & Access | - Shared Resources -> Secrets <br/> - Shared Resources -> Connectors <br/> - Shared Resources -> Delegates <br/> - Shared Resources -> Delegate Configurations <br/> - Environments <br/> - Environment Groups |
+| Devops Admin	| Responsible for setting up Policies to adhere to certain organizational standards, managing Users and various other things like Default Settings, Auth Settings, etc | Administrative Functions: All permissions <br/> Services: View, Create/Edit, Delete & Access <br/> Shared Resources -> Templates: View, Create/Edit, Delete, Access & Copy <br/> Shared Resources -> Files: View, Create/Edit, Delete & Access <br/> Shared Resources -> Deployment Freeze: Manage, Override & Global <br/> Shared Resources -> Secrets: View & Access <br/> Shared Resources -> Connectors: View & Access <br/> Shared Resources -> Variables: View, Create/Edit & Delete <br/> Shared Resources -> Files: View, Create/Edit & Delete <br/> Shared Resources -> Delegates: View <br/> Shared Resources -> Delegate Configurations: View <br/> Pipelines: View, Create/Edit, Delete & Execute | Administrative Functions: All Resources under it <br/> Shared Resources: All Resources under it except Dashboards <br/> Services <br/> Pipelines |
+| Devops Engineer	| Responsible for managing Services, Templates, Files, Variables, Pipelines, Triggers, Input Sets etc. | Services: View, Create/Edit & Access <br/> Shared Resources -> Templates: View, Create/Edit, Access & Copy <br/> Shared Resources -> Secrets: View & Access <br/> Shared Resources -> Connectors: View & Access <br/> Shared Resources -> Variables: View & Create/Edit <br/> Shared Resources -> Files: View & Create/Edit <br/> Pipelines: View, Create/Edit & Execute	| Shared Resources: All Resources under it except Dashboards <br/> Services <br/> Pipelines |
+
+</details>
+
+<details>
+<summary>Distributed Center of DevOps</summary>
+<br />
+
+</details>
 
 Take a look at [this](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#configure-rbac-in-harness) article to configure RBAC in Harness
 
@@ -1014,61 +993,206 @@ Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO 
 
 ### Step 2. Templatization & Automation
 
+
+#### Templatization
 Harness enables you to add templates to create re-usable logic and Harness entities (like steps, stages, and pipelines) in your pipelines. You can link templates in your pipelines or share them with your teams for improved efficiency.
 
 Templates enhance developer productivity, reduce onboarding time, and enforce standardization across the teams that use Harness. Here's an example template that builds a JavaScript application, runs unit tests and pushes to docker registry.
 
 <details>
-<summary>Example Template YAML</summary>
+<summary>Sample Golden Deployment Pipeline Template</summary>
 <br />
 
 ```yaml
 template:
-  name: remote_template
+  name: Golden Deploy
+  identifier: Golden_Deploy
   type: Stage
+  projectIdentifier: Platform_Demo
+  orgIdentifier: default
   spec:
-    type: CI
+    type: Deployment
     spec:
-      cloneCodebase: true
-      platform:
-        os: Linux
-        arch: Amd64
-      runtime:
-        type: Cloud
-        spec: {}
+      serviceConfig:
+        serviceDefinition:
+          type: Kubernetes
+          spec:
+            artifacts:
+              sidecars: []
+              primary:
+                type: Gcr
+                spec:
+                  connectorRef: TestGCP_inherit
+                  imagePath: sales-209522/platform-demo
+                  registryHostname: us.gcr.io
+                  tag: <+pipeline.sequenceId>
+            manifestOverrideSets: []
+            manifests:
+              - manifest:
+                  identifier: HarnessAppDemoManifests
+                  type: K8sManifest
+                  spec:
+                    store:
+                      type: Github
+                      spec:
+                        connectorRef: Platformdemo2
+                        gitFetchType: Branch
+                        paths:
+                          - k8s/manifests/namespace.yml
+                          - k8s/manifests/volumeclaim-creation.yml
+                          - k8s/manifests/nodeport-deployment.yml
+                          - k8s/manifests/ingress-deployment.yml
+                          - k8s/manifests/app-deployment.yml
+                        branch: main
+                    skipResourceVersioning: false
+              - manifest:
+                  identifier: values
+                  type: Values
+                  spec:
+                    store:
+                      type: Github
+                      spec:
+                        connectorRef: Platformdemo2
+                        gitFetchType: Branch
+                        paths:
+                          - k8s/values/values.yml
+                        branch: main
+        serviceRef: HarnessPlatformDemoApp
+      infrastructure:
+        environmentRef: k8sProduction
+        infrastructureDefinition:
+          type: KubernetesDirect
+          spec:
+            connectorRef: platformdemok8s
+            namespace: <+pipeline.variables.githublogin>
+            releaseName: <+pipeline.variables.githublogin>
+        allowSimultaneousDeployments: true
+        infrastructureKey: ""
       execution:
         steps:
           - step:
-              type: Run
-              identifier: build_javascript_app
-              name: Build JavaScript App
+              type: HarnessApproval
+              name: Approve this version
+              identifier: Keep_this_Version
               spec:
-                shell: Sh
-                command: |-
-                  echo "Welcome to Harness CI"
-                  echo <+pipeline.name>_<+pipeline.executionId>
-
-                  node --version
-                  npm install
-                  npm run build --if-present
+                approvalMessage: Please review the following information and approve the pipeline progression
+                includePipelineExecutionHistory: false
+                approvers:
+                  userGroups:
+                    - account.Field_Engineering
+                    - account.Harness_Partners
+                  minimumCount: 2
+                  disallowPipelineExecutor: false
+                approverInputs: []
+              timeout: 30m
+              failureStrategies:
+                - onFailure:
+                    errors:
+                      - Authorization
+                    action:
+                      type: StageRollback
+              when:
+                stageStatus: Success
           - step:
-              type: BuildAndPushDockerRegistry
-              name: BuildAndPushDockerRegistry_1
-              identifier: BuildAndPushDockerRegistry_1
+              name: Rollout Deployment
+              identifier: rolloutDeployment
+              type: K8sRollingDeploy
+              timeout: 10m
               spec:
-                connectorRef: account.Pritish_Harness
-                repo: pritishharness/harness_test
-                tags:
-                  - <+pipeline.name>_<+pipeline.executionId>
-  identifier: remote_template
-  versionLabel: V1
+                skipDryRun: false
+          - stepGroup:
+              name: Service Reliability
+              identifier: Service_Reliability
+              steps:
+                - step:
+                    type: Http
+                    name: API Verification
+                    identifier: Smart_Verification
+                    spec:
+                      url: http://<+pipeline.variables.externalDnsName>/<+pipeline.variables.githublogin>/data/api.php?func=verif
+                      method: GET
+                      headers: []
+                      outputVariables:
+                        - name: message
+                          value: <+json.object(httpResponseBody).message>
+                          type: String
+                        - name: level
+                          type: String
+                          value: <+json.object(httpResponseBody).level>
+                      assertion: <+json.object(httpResponseBody).level> == "ok"
+                      requestBody: test test test
+                      inputVariables: []
+                    timeout: 30s
+                    failureStrategies:
+                      - onFailure:
+                          errors:
+                            - AllErrors
+                          action:
+                            type: Ignore
+                - step:
+                    type: Verify
+                    name: Logs-Metrics Verification
+                    identifier: verify_dev
+                    spec:
+                      type: Rolling
+                      spec:
+                        sensitivity: MEDIUM
+                        duration: 5m
+                        deploymentTag: <+serviceConfig.artifacts.primary.tag>
+                    timeout: 2h
+                    failureStrategies:
+                      - onFailure:
+                          errors:
+                            - Verification
+                          action:
+                            type: StageRollback
+                            spec:
+                              timeout: 2h
+                              onTimeout:
+                                action:
+                                  type: StageRollback
+                      - onFailure:
+                          errors:
+                            - Unknown
+                          action:
+                            type: ManualIntervention
+                            spec:
+                              timeout: 2h
+                              onTimeout:
+                                action:
+                                  type: Ignore
+                    when:
+                      stageStatus: Success
+                      condition: <+pipeline.stages.Image_Deployment.spec.execution.steps.Service_Reliability.steps.Smart_Verification.output.outputVariables.level> == "error"
+        rollbackSteps:
+          - step:
+              name: Rollback Rollout Deployment
+              identifier: rollbackRolloutDeployment
+              type: K8sRollingRollback
+              timeout: 10m
+              spec:
+                skipDryRun: false
+      serviceDependencies: []
+    failureStrategies:
+      - onFailure:
+          errors:
+            - AllErrors
+          action:
+            type: StageRollback
+    variables: []
+    when:
+      pipelineStatus: Success
+  versionLabel: "6.0"
 ```
 </details>
 
-- Terraform Automation
+#### Terraform Automation
+:::info note
+You need to have Terraform CLI installed in-order to carry out this automation
+:::
 
 <details>
-<summary>Terraform Automation YAML</summary>
+<summary>Terraform Script to create harness resources (Services, Environments, Pipelines)</summary>
 <br />
 
 ```yaml
@@ -1295,6 +1419,74 @@ resource "harness_platform_pipeline" "example" {
 ```
 </details>
 
-:::info note
-You need to have Terraform CLI installed in-order to carry out this automation
-:::
+<details>
+<summary>YAML to use the above Terraform script in Harness pipeline as custom stage</summary>
+<br />
+
+```yaml
+pipeline:
+  tags: {}
+  stages:
+    - stage:
+        name: Create Resource
+        identifier: Create_Resource
+        description: Create harness resources using Harness Terraform Provider
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: TerraformPlan
+                  name: TerraformPlan
+                  identifier: TerraformPlan
+                  spec:
+                    provisionerIdentifier: createResource
+                    configuration:
+                      command: Apply
+                      configFiles:
+                        store:
+                          spec:
+                            connectorRef: org.GitHubRepoConnectorForAutomationTest
+                            gitFetchType: Branch
+                            branch: master
+                            folderPath: automation/terraform/K8sAutomation
+                          type: Github
+                      varFiles:
+                        - varFile:
+                            spec:
+                              content: |-
+                                platform_api_key = "Your Platform Api Token"
+                                accountId = "accountID"
+                                endpoint = "https://app.harness.io/gateway"
+                                projectIdentifier = "Project Name to be created"
+                                orgIdentifier = "Org where you want this project to be"
+                                connectorIdentifier = "K8s Connector Identifier"
+                                k8sMasterUrl = "K8s Master Url"
+                                serviceIdentifier = "Service Identifier"
+                                envIdentifier = "Environment Identifier"
+                                infraIdentifier = "Infra Definition Identifier"
+                                pipelineIdentifier = "Pipeline Identifier"
+                                secretIdentifier = "Secret Identifier"
+                                secretValue = "K8s ServiceAccount Token Secret Value"
+                            identifier: terraformVariables
+                            type: Inline
+                      secretManagerRef: harnessSecretManager
+                  timeout: 10m
+              - step:
+                  type: TerraformApply
+                  name: TerraformApply
+                  identifier: TerraformApply
+                  spec:
+                    configuration:
+                      type: InheritFromPlan
+                    provisionerIdentifier: createResource
+                  timeout: 10m
+        tags: {}
+  identifier: Harness_Terraform_Provider
+  name: Harness Terraform Provider
+  delegateSelectors: []
+  projectIdentifier: NGPipeAutoterraform_providerVcP4LI2gPm
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+```
+
+</details>
