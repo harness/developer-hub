@@ -55,7 +55,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Elimination of an unnecessary prompt when another user updates a pipeline (CDS-83893)
 
-With this release, if another user updates a pipeline and you do not have unsaved changes for that pipeline, Harness applies that user's changes and updates your view of the pipeline without showing you a prompt.  <!-- Reviewed and approved by Vikrant Gupta in Jira. -->
+  With this release, if another user updates a pipeline and you do not have unsaved changes for that pipeline, Harness applies that user's changes and updates your view of the pipeline without showing you a prompt.  <!-- Reviewed and approved by Vikrant Gupta in Jira. -->
 
 <!-- - You can now do the following witsearch and filter Added the support for Search and filtering for overrides V2. (CDS-80838) 
 
