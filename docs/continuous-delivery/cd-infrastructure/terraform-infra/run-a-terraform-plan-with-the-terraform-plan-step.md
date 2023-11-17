@@ -588,6 +588,8 @@ and found no differences, so no changes are needed.
 
 ## Skip state storage
 
+The following feature requires a minimum Harness delegate version of 812xx.
+
 While running Terraform commands on the delegate, Harness by default will try to detect if there is a local state file in the Terraform working directory.
 
 If local state file is identified, at the end of the execution it is saved on Harness storage with a key based on the provisioner identifier.
