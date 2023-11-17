@@ -588,6 +588,6 @@ Harness Supports:
 - Java
 - Go
 - Python 3
-- dotnet
+- .NET
 
 Please navigate to our [DockerHub Repository](https://hub.docker.com/r/harness/aws-cdk-plugin/tags) for the latest image tags for this feature.
