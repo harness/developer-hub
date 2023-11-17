@@ -26,11 +26,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * Previously, RBAC support was not available for the Commitment Orchestrator. (CCM-15040)
 
-  However, now, RBAC is implemented for the Commitment Orchestrator. CCM Admins now have the ability to set up Commitment Orchestrator for master accounts, while CCM Viewers are limited to accessing visibility screens.
+  RBAC is now available for Commitment Orchestrator. CCM Admins can now edit the setup for the commitment orchestrator for master accounts apart from viewing the overview screens, while CCM Viewers' roles are limited to viewing the overview screen.
 
 * Previously, Adding relevant rule filters for perspectives created through cloud providers was not supported. Consequently, all anomalies were displayed from the cloud providers' perspective, irrespective of their relevance. (CCM-15068)
 
-In this release, we have addressed this issue by adding rule filters specifically for cloud providers.
+In this release, we have addressed this issue by adding rule filters specifically for cloud providers. By default, all the OOTB perspectives will be listed on top on Page 1 and will also follow a sorting order among themselves.
 
 ### Early access features
 
@@ -73,7 +73,7 @@ This release does not include any early access features.
 
 * Previously, there was no option to export Recommendations as CSV files. (CCM-14274)
 
-  Now, we have added a new feature that enables users to export Recommendations as comma-separated values (CSV) files.
+  Now, we have added a new feature that enables users to export Recommendations as comma-separated values (CSV) files. This works for all the recommendations. Only for asset governance recommendations details are not exposed, just the list view is exported. The support for the same will be added soon.
 
 ##### Early access features
 
