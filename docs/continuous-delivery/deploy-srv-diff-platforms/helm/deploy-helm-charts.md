@@ -77,7 +77,7 @@ kubectl --kubeconfig=config apply --filename=manifests-dry-run.yaml --dry-run=cl
 kubectl --kubeconfig=config apply --filename=manifests.yaml
 ```
 
-5. Harness will then query the deployed resources to show a summary of what was deployed
+5. Harness will then query the deployed resources to show a summary of what was deployed.
 
 ```
 kubectl --kubeconfig=config describe --filename=manifests.yaml

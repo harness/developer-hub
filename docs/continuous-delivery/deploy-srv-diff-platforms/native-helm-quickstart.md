@@ -32,7 +32,7 @@ helm pull {{YOUR HELM REPO}}
 helm template release-75d461a29efd32e5d22b01dc0f93aa5275e2f003 /opt/harness-delegate/repository/helm/source/c1475174-18d6-38e6-8c67-1000f3b71297/helm-test-chart  --namespace default  -f ./repository/helm/overrides/6a7628964506885eb37908b81914a04c.yaml
 ```
 
-3. Harness will perform a dry run by default to show what is about to be applied
+3. Harness will perform a dry run by default to show what is about to be applied.
 
 ```
 kubectl --kubeconfig=config apply --filename=manifests-dry-run.yaml --dry-run=client
@@ -44,7 +44,7 @@ kubectl --kubeconfig=config apply --filename=manifests-dry-run.yaml --dry-run=cl
 helm upgrade  release-75d461a29efd32e5d22b01dc0f93aa5275e2f003 /opt/harness-delegate/repository/helm/source/c1475174-18d6-38e6-8c67-1000f3b71297/helm-test-chart  -f ./repository/helm/overrides/6a7628964506885eb37908b81914a04c.yaml
 ```
 
-5. Harness will then query the deployed resources to show a summary of what was deployed
+5. Harness will then query the deployed resources to show a summary of what was deployed.
 
 ```
 helm get manifest release-75d461a29efd32e5d22b01dc0f93aa5275e2f003 --namespace=default
