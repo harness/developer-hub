@@ -29,10 +29,9 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### Fixed issues
 
-<!-- CI-9768?-->
-
 * Fixed a thread safety issue that caused errors like `IncorrectResultsSizeDataAccessException` and `returned non unique result`.(CI-10061, ZD-52625)
 * Fixed a proxy issue related to [downloading logs](/docs/platform/pipelines/download-logs). (CI-9657, ZD-50664)
+* Fixed an issue in the Get Started workflow where the account or organization name could be omitted from the repo URL in a GitHub connector created during the workflow.
 
 ### Version 6601
 
