@@ -25,7 +25,7 @@ This release does not include new features.
 
 This release does not include early access features.
 
-### Fixed issues in the Golang SDK and the Node SDK
+### Fixed issues in the Java SDK
 
 Released Java SDK 1.3.1
 
@@ -41,15 +41,15 @@ Released Java SDK 1.3.1
 #### November 13, 2023
 
 
-### New features and enhancements
+##### New features and enhancements
 
 This release does not include new features.
 
-### Early access features
+##### Early access features
 
 This release does not include early access features.
 
-### Fixed issues in the Golang SDK and the Node SDK
+##### Fixed issues in the Golang SDK and the Node SDK
 
 Released Golang SDK 0.1.16
 
