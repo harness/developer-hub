@@ -121,6 +121,21 @@ For example, if the stage Id is `Deploy` and the Dry Run step Id is `Dry_Run` th
 <+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
 ```
 
+You can potentially print it out in a shell script step to perform some logic like `kubectl diff`:
+
+```
+cat << EOM > manifest.yaml
+<+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
+EOM
+cat manifest.yaml
+echo "K8s client/server version:"
+kubectl version --output yaml
+echo "K8s manifest diff:"
+# kubectl diff exist codes: 0 - no diff, 1 - there is a diff, 2 - something is wrong
+# Since exit code 1 is failure, make will always fail if there is a diff, so code modification required
+kubectl -n <+env.variables.DEPLOY_ENV> diff -f manifest.yaml || (st=$?; if [ $st = 1 ]; then exit 0; else echo $st; exit $st; fi)
+```
+
 You can enter the expression in subsequent steps such as the [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) or [Approval](/docs/category/approvals/) steps.
 
 
