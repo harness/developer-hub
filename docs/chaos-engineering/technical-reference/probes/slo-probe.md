@@ -65,9 +65,9 @@ Listed below is the probe schema for the SLO probe, with properties shared acros
    </td>
    <td>Mandatory
    </td>
-   <td><code>httpProbe, k8sProbe, cmdProbe, promProbe</code>
+   <td><code>httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe</code>
    </td>
-   <td>The <code>type</code> supports four types of probes. It can one of the httpProbe, k8sProbe, cmdProbe, promProbe.
+   <td>The <code>type</code> supports four types of probes. It can one of the httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe.
    </td>
   </tr>
   <tr>
