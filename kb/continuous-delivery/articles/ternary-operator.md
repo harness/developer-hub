@@ -63,4 +63,4 @@ If we want to provide a default value for `myVariable` when it is missing from t
 <+<+trigger.payload>.contains("myVariable")?<+trigger.payload.myVariable>:"DEFAULT_VALUE">
 ```
 
-This would ensure the value for `myVariable` is provided as "DEFAULT_VALUE" in case the "myVariable" entry is not present in the trigger's payload.
+This ensures that the value for `myVariable` is provided as "DEFAULT_VALUE" in case the "myVariable" entry is not present in the trigger's payload.
