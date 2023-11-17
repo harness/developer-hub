@@ -108,6 +108,18 @@ Listed below is the probe schema for the SLO probe, with properties shared acros
    error budget is calculated.
    </td>
   </tr>
+  <tr>
+   <td>evaluationTimeout
+   </td>
+   <td>Flags to hold the total evaluation time for the probe
+   </td>
+   <td>Optional
+   </td>
+   <td>N/A <code>type: string</code>
+   </td>
+   <td>The <code>evaluationTimeout</code> is the time period for which the error budget values are fetched and based on the chaos execution time period, the percentage change is calculated.
+   </td>
+  </tr>
 </table>
 
 ### Source Metadata
@@ -250,21 +262,45 @@ Listed below is the probe schema for the SLO probe, with properties shared acros
    </td>
    <td>Mandatory
    </td>
-   <td>N/A <code>type: integer</code>
+   <td>N/A <code>type: string</code>
    </td>
-   <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data.
+   <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data
    </td>
   </tr>
   <tr>
    <td>attempt
    </td>
-   <td>Flag to hold the attempt count of the probe
+   <td>Flag to hold the attempt of the probe
    </td>
    <td>Mandatory
    </td>
    <td>N/A <code>type: integer</code>
    </td>
-   <td>The <code>retry</code> contains the number of times a check is re-run upon failure in the first attempt before declaring the probe status as failed.
+   <td>The <code>attempt</code> contains the number of times a check is run upon failure in the previous attempts before declaring the probe status as failed.
+   </td>
+  </tr>
+  <tr>
+   <td>interval
+   </td>
+   <td>Flag to hold the interval of the probe
+   </td>
+   <td>Mandatory
+   </td>
+   <td>N/A <code>type: string</code>
+   </td>
+   <td>The <code>interval</code> contains the interval for which probes waits between subsequent retries
+   </td>
+  </tr>
+  <tr>
+   <td>initialDelaySeconds
+   </td>
+   <td>Flag to hold the initial delay interval for the probes
+   </td>
+   <td>Optional
+   </td>
+   <td>N/A <code>type: integer</code>
+   </td>
+   <td>The <code>initialDelaySeconds</code> represents the initial waiting time interval for the probes.
    </td>
   </tr>
   <tr>
@@ -276,19 +312,7 @@ Listed below is the probe schema for the SLO probe, with properties shared acros
    </td>
    <td>N/A <code>type: boolean</code>
    </td>
-   <td>The <code>stopOnFailure</code> can be set to true/false to stop or continue the experiment execution after probe fails.
-   </td>
-  </tr>
-  <tr>
-   <td>evaluationTimeout
-   </td>
-   <td>Flags to hold the total evaluation time for the probe
-   </td>
-   <td>Optional
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>evaluationTimeout</code> is the time period for which the error budget values are fetched and based on the chaos execution time period, the percentage change is calculated.
+   <td>The <code>stopOnFailure</code> can be set to true/false to stop or continue the experiment execution after probe fails
    </td>
   </tr>
 </table>
@@ -302,6 +326,7 @@ probe:
     sloProbe/inputs:
       platformEndpoint: "<platform-endpoint>"
       sloIdentifier: "<slo-identifier>"
+      evaluationTimeout: 5m
       sloSourceMetadata:
         apiTokenSecret: "<api-token>"
         scope:
@@ -314,7 +339,6 @@ probe:
           value: "0.1"
     mode: "EOT"
     runProperties:
-      evaluationTimeout: 5m
       attempt: 2
       probeTimeout: 1000ms
       stopOnFailure: false

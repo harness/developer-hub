@@ -49,6 +49,16 @@ stringData:
         <td> For example, <code>ubuntu-vm-1</code>. </td>
       </tr>
       <tr>
+          <td> VM_USER_NAME </td>
+          <td> Username of the target VM.</td>
+          <td> For example, <code>vm-user</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_PASSWORD </td>
+          <td> User password for the target VM. </td>
+          <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
+      </tr>
+      <tr>
         <td> SERVICE_NAME </td>
         <td> Name of the target service. </td>
         <td> For example, <code>nginx</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-service-stop#service-name"> service name.</a></td>

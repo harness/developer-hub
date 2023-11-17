@@ -4,7 +4,7 @@ sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
 date: 2023-10-20T10:00
 tags: [NextGen, "security testing orchestration"]
-sidebar_position: 9
+sidebar_position: 12
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -19,21 +19,20 @@ Review the notes below for details about recent changes to Security Testing Orch
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest: Version 1.71.1
+## Latest: Version 1.74.1
 
 ### New features and enhancements
 
-This release does not include new features. 
-
+- The **Exemptions** table now shows the pipeline name in the **Scope** column and not the ID. This keeps the user experience consistent with other areas of the application. (STO-6631)
 
 ### Early access
 
-- Updated the exemptions page to bubble soon to expire exemptions to the top of the list. Available in the time bound exemption early access feature available behind the STO_TIMEBOUND_EXEMPTIONS flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.  (STO-6367)
+This release does not include Early Access features. 
 
 ### Fixed issues
 
-- The STO dashboard used a marketplace graph which was not available in hosted environments. A new native graph has been chosen so the Security Issues (Overall) graph will be available on all environments. (STO-6613)
-- Updated the icon for a false positive exemption to match the other icons (STO-6555)
+- Fixed an issue that caused the **Issue Details** pane to show target names from other projects in the same account. (STO-6693)
+
 
 ### Hotfixes
 
@@ -43,6 +42,110 @@ This release does not include hotfixes.
 
 <details>
 <summary>2023 releases</summary>
+
+#### Version 1.73.1
+
+##### New features and enhancements
+
+- You can now scan your repositories and other components used in your code with [Anchore Enterprise](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. (STO-6382)
+
+##### Early access
+
+This release does not include Early Access features. 
+
+##### Fixed issues
+
+- Fixed a configuration issue in a back-end service that prevented AIDA from generating remediation steps. (STO-6610) 
+
+- Fixed a UI issue in the **Security Tests** tab where the **Stage** and **Step** pull-down filters showed the `identifier` fields. These filters now show the `name` fields, which are more human-readable. (STO-6629)
+
+##### Hotfixes
+
+This release does not include hotfixes. 
+
+#### Version 1.72.1
+
+##### New features and enhancements
+
+```mdx-code-block
+import sto_exemptions_timebound from './static/sto-timebound-exemption.png'
+import sto_exemptions_table from './static/sto-exemptions-table.png'
+```
+
+- You can now provide feedback about the [AIDA-generated remediation step](https://developer.harness.io/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations) for a selected issue. (STO-6593)
+
+  ![](./static/sto-aida-feedback-sto-6593.png)
+
+- The following Early Availability features are now generally available:
+
+  - You can specify a time limit when you request an exemption. (STO-6367, formerly behind feature flag `STO_TIMEBOUND_EXEMPTIONS`)
+
+   
+    ```mdx-code-block
+    <img src={sto_exemptions_timebound} alt="Select the time limit for an exemption" height="75%" width="75%" />
+    ```
+
+    The **Exemptions** table includes a **Time Remaining** column that shows when each exemption is scheduled to expire. The table is sorted by this column by default so that soonest-to-expire exemptions are listed first.
+
+    ![](./static/sto-exemptions-table.png)
+
+  - You can click on a row in the **Exemptions** table to view details for the issue associated with that exemption. (STO-5056, formerly behind feature flag `STO_EXEMPTION_DETAILS`) 
+
+    For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
+
+  - The **Security Tests** tab includes a set of **Security Executions** pull-down menus so you can filter the issue lists by Target, Target Type, Step, Stage, and Scanner. (STO-5212, formerly behind feature flag `STO_DROPDOWN_FILTERS`).
+
+    ![Click on a tile to filter issues by severity](./static/sto-pulldown-filters-sto-5212.png)
+
+
+
+##### Early access
+
+- You are now required to sign an end-user license agreement to access the Harness AI Development Assistant (AIDA) in the account and project scopes. You need to do this even if you could previously use AIDA without signing a EULA. This change was originally introduced in the 80505 platform release. (PL-39723)
+
+  The EULA is displayed when you enable AIDA at the account scope (**Account Settings** > **Account Resources** > **Default Settings** > **Harness AI Developer Assistant**).
+
+  Each account user must sign the EULA only once.
+
+  The setting is inherited at the project scope.
+
+##### Fixed issues
+
+- Updated the UI terminology to better communicate the relationship between issues in the current scan vs. previous scans. (STO-6613)
+
+  The **Security Test** UI now uses the following labels to describe issues found in the current scan that are common to previous scans:
+
+  - **Common to <_target_>:<_variant_>** Issues also found in the last scan of the specified variant.
+  - **Common to previous scan** 
+    - Issues also found in the last scan (if the scanned target has no baseline), OR
+    - Issues also found in the last scan of the baseline (if the scanned variant is the baseline).
+  - **Common to previous / baseline scan** Issues also found in the both the last scan of the specified variant AND the last scan of the baseline. 
+
+- Fixed a UI issue in **Security Tests** when all vulnerabilities detected in a scan had exemptions. The tab showed "No Security Issues Found", all issue counts were 0, and no issues appeared in the UI even when the selected filter included exempted issues. (STO-6642)
+
+##### Hotfixes
+
+This release does not include hotfixes. 
+
+#### Version 1.71.1
+
+##### New features and enhancements
+
+This release does not include new features. 
+
+
+##### Early access
+
+- Updated the exemptions page to bubble soon to expire exemptions to the top of the list. Available in the time bound exemption early access feature available behind the STO_TIMEBOUND_EXEMPTIONS flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.  (STO-6367)
+
+##### Fixed issues
+
+- The STO dashboard used a marketplace graph which was not available in hosted environments. A new native graph has been chosen so the Security Issues (Overall) graph will be available on all environments. (STO-6613)
+- Updated the icon for a false positive exemption to match the other icons (STO-6555)
+
+##### Hotfixes
+
+This release does not include hotfixes. 
 
 #### Version 1.70.1
 
@@ -111,13 +214,15 @@ This release does not include early access features.
 
   - Users with view access for Security Issues at the Project level, but not the Account level, could not view issue details. (STO-6421)
 
-  - Some scanners such as Gitleaks would appear with the label **Unknown Scan Tool** rather than the correct product name. (STO-6454) (STO-6337)
+  - Some scanners such as Gitleaks would appear with the label **Unknown Scan Tool** rather than the correct product name. (STO-6454, STO-6337)
+ 
+  - Added an **Exclude** field to the SonarQube step and removed the **Include** step. The **Exclude** field corresponds to the `sonar.exclusions` setting, which you can use to [narrow the focus](https://docs.sonarsource.com/sonarqube/latest/project-administration/analysis-scope/#excluding-specific-rules-from-specific-files) of a SonarQube scan. (STO-6441)
 
 #### Version 1.67.2
 
 ##### New features and enhancements
 
-This release does not include new features. 
+- In the STO Overview, **Today's Snapshot** shows new and remediated issue counts if today's issue counts include any newly detected vulnerabilities or new remddiations. (STO-4998) 
 
 ##### Early access
 
@@ -126,6 +231,8 @@ This release does not include early access features.
 ##### Fixed issues
 
 - Fixed an issue with setting up SSL certificates in Checkmarx, which caused Java keytools to fail. Upgrading to JDK-11 fixed the issue. (STO-6512)
+
+- Implemented fixes to improve scan times for large jobs using Checkmarx, Snyk, and other scanners. (STO-6408, STO-5676, ZD-49328, ZD-41409, ZD-42436, ZD-49383)
 
 ##### Hotfixes
 
@@ -208,9 +315,9 @@ This release does not include early access features.
 
 - Fixed a UI issue in the Security Tests tag where the clickable severity tiles &mdash; introduced in version 1.64.1, described [below](#august-09-2023-version-1641) &mdash; had an extra border on the right. (STO-6372)
 
-- Fixed a UI issue where the module sidebar in the left-side menu would scroll when a user clicked different menus within STO. With this fix, the module sidebar maintains its position when a user clicks different menus. (STO-6219)
-
 -->
+
+- Fixed a UI issue where the module sidebar in the left-side menu would scroll when a user clicked different menus within STO. With this fix, the module sidebar maintains its position when a user clicks different menus. (STO-6219)
 
 - Fixed an issue where users could not select multiple projects in the Security Testing Dashboard or any custom dashboards that use STO components. With this fix, you can select multiple projects from a list of checkboxes. (STO-6228)
 
@@ -288,9 +395,11 @@ This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more informati
 
 ##### New features and enhancements
 
-You can now set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and the Harness Manager.
+- You can now set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and the Harness Manager.
 
-For information on how to set up this workflow, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+  For information on how to set up this workflow, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+
+- Reference Identifiers selected for AIDA enhancement in a Security Issue are now remembered, upon generation, and shown when revisited in the UI. (STO-6032)
 
 ##### Early Access
 

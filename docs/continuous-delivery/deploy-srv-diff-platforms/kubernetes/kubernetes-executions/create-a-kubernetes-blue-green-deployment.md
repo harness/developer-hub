@@ -147,12 +147,6 @@ Harness adds all the steps you need to perform the Blue Green strategy:
 
 Additionally, you can add a Blue Green Stage Scale Down step to scale down the last successful stage environment created during a Blue Green deployment.
 
-:::info
-
-This is currently a beta functionality, and is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`. 
-
-:::
-
 ![bg scale down](./static/bg-scale-down-step.png)
 
 This functionality helps you efficiently manage your resources. You can configure the scale down step within the same stage or a different stage, based on your requirement.

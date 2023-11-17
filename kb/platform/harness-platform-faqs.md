@@ -817,10 +817,6 @@ The Kubernetes manifest has a component called upgrader. The upgrader is a cron 
 
 If you need auto upgrade to be disabled they can perform operations: First run the following command to suspend auto-upgrade on the installed image: `kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>` Secondly in the delegate manifest, locate the CronJob resource. In the resource spec, set the suspend field to true: `spec: --suspend: true` .
 
-#### When do we have Services and Environments available at Org and Account Level in SMP?
-
-This `CDS_OrgAccountLevelServiceEnvEnvGroup` FF is required to have Services and Environments available at Org and Account Level.
-
 #### Why we do not see Dashboards in an SMP Installation?
 
 Dashboard is a licensed functionality. To enable it you need to get a license.
@@ -1437,7 +1433,7 @@ When you initiates an abort for a pipeline task, the expected behavior is to tak
 we have a method, `io.harness.delegate.service.DelegateAgentServiceImpl#abortDelegateTask`, which is used to abort a task. This method typically leverages Thread.interrupt() to initiate the abort process. The key here is to interrupt or cancel the running task effectively.
 An abort could leave the system in a potentially inconsistent or 'dirty' state, it's crucial to consider rollback procedures.
 Delegate actions, such as canceling or ending running tasks, should play a central role in preventing system inconsistencies and maintaining system integrity.
-=======
+
 #### How to automatically start a delegate when running as a Docker container?
 
 Docker provides restart policies to control whether your containers start automatically when they exit, or when Docker restarts. Restart policies start linked containers in the correct order. Docker recommends that you use restart policies, and avoid using process managers to start containers.
@@ -1661,3 +1657,146 @@ JAVA_OPTS='-Xlog:gc*=debug:file=/var/jvm/gc.log'
 #### Can a delegate be connected to first gen and next gen at the same time?
 
 A delegate at one time can be connected to only manager instance. Hence the same delegate can not be connected to both the first gen and next gen instance of the same account.
+
+#### How can we do migration of GCP / AWS KMS secrets from FG to NG ?
+
+To migrate encrypted records from an old KMS (FG) to a new one (NG), fetch the Data Encryption Key (DEK) from the old KMS, decrypt the data, re-encrypt it with the new KMS, update the records, and ensure security and compliance. Connectivity between NG and the old KMS is essential.
+
+#### Is way to find the enabled feature flag and available one in UI?
+
+This feature will be available soon.
+
+#### Do proxy settings apply to both HTTP delegate commands and raw socket connects during capability checks?
+
+Proxy settings typically work for HTTP delegate commands, enabling you to route HTTP traffic through a proxy server. However, in the case of capability checks, such as raw socket connects, proxy settings might not apply.
+`CDS_USE_HTTP_CHECK_IGNORE_RESPONSE_INSTEAD_OF_SOCKET_NG` this feature flag should be enabled to solve the issue.
+
+#### Is it a standard practice to notify you 30 days in advance whenever there are changes to our IP addresses?
+
+We don't change IPs without 30 days notice to you all. If a security emergency requires a change, you will be notified. For more info you can refer [here](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips/#allowlist-harness-saas-ips).
+
+#### Is the FF `PL_ENABLE_MULTIPLE_IDP_SUPPORT` available and enabled to use?
+
+Yes it is enabled, you can refer to [this](https://developer.harness.io/docs/platform/authentication/multiple-identity-providers/#configure-multiple-saml-providers).
+
+#### Do we have an automatic upgrades for ECS delegates?
+
+No, we don't have auto upgrade for docker delegate so far.
+
+#### What needs to follow if the production delegate is down because of using legacy delegate and a old watcher version ?
+
+- Re-deploy legacy delegate by pulling the fresh "latest" image. This will make sure that you get most recent watcher.
+- We can revert the delegate version in the ring to unblock.
+- You can use immutable delegate.
+
+#### What should be possible solution of the error `not supported by windows` while working in CCM POV ?
+
+If this is a mixed node cluster then the delegate needs to run on Linux nodes. You can use selector in your delegate yaml to make sure that Linux nodes are selected. You can refer to this [docs](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/) for more information.
+
+#### Whenever I switch my Harness account, I encounter a login prompt, captcha, and the message `too many invalid login attempts, account blocked`  despite having no invalid login attempts. Why does this happen?
+
+This issue may arise due to several reasons:
+
+- Authentication Requirement: If you are not a part of the Harness Support group, you may need to re-authenticate while switching accounts. This is a standard security measure.
+- Resetting Password: It is possible that when you attempt to reset your password, it only affects the login attempt value in one cluster and not the other one. This discrepancy in the reset process can lead to login issues.
+
+Ensure you are properly authenticated when switching accounts.
+
+#### What is the default limit of QPS?
+
+Default limit of QPS is: 50 QPM per manager* Num of managers(3) =>Total 50*3 QPM = 2.5 QPS.
+
+#### Is there a way to upgrade the volumes created when installing Harness with Helm from gp2 to gp3?
+
+Volume types are controlled by storage class, its not harness controlled.
+You can modify the storage class setting by the [link](https://kubernetes.io/docs/concepts/storage/storage-classes/#aws-ebs) but you would lose the data if aws doesn't support direct upgrade from gp2 to gp3.
+
+#### Is there a plan to integrate Git into our SMP?
+
+Yes, it will be integrated soon.
+
+#### Is it possible to attach delegate to a custom IAM role during installation in the EKS cluster?
+
+Yes, you can refer to [this](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#harness-aws-connector-settings) documentation for details.
+
+#### Can I send a single invitation email to a user for both Account-level limited permissions and Organization-level admin privileges?
+
+You can efficiently manage user invitations by combining Account-level limited permissions and Organization-level admin privileges in a single email. During the invitation process, grant the necessary permissions at the Account level, ensuring they encompass all child permissions, providing access to all organizations and projects. Simultaneously, grant admin permissions to the specific Organization at the Account level without the need for a separate invitation. This allows users to receive a unified invitation email when added to the Organization as Org Admins, streamlining the acceptance process. 
+
+#### Can administrators bulk approve and activate users who are in a "Pending Invitation" status, transitioning them to "Active Users" collectively rather than individually?
+
+Certainly. If the account authentication mechanism is configured as SSO, and the FF `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` is enabled, users will be automatically enabled upon invitation. However, if the account authentication mechanism is USER_PASSWORD, each individual user needs to accept the invite to set their login password, as automatic enabling is not applicable in this case. The method of account authentication determines the user activation process, with SSO streamlining the activation for users, while USER_PASSWORD requires individual acceptance for password setup.
+
+#### Can we get information about the types of tasks of delegates, what each of them is responsible for?
+
+The task types are internal tasks for various tasks a pipeline generate. We keep introducing new tasks type and remove old ones as documenting each task type is not productive.
+
+#### Do these build_source tasks use the delegate task quota?
+
+Build source tasks do use the quota. these are tasks for artifact collections. they are only present in cg and next gen these tasks are never fired.
+
+#### Can we able to see who invited a user?
+
+Yes, you can find user invite actions in the audit trail.
+
+#### Is there any other way to remove a test user group created with `externallyManaged=true` other than remove it by a mongodb query set `externallyManaged=false`?
+
+Yes, a more preferable approach is to update the user group in the database by changing the externallyManaged flag from true to false. Following this, you can delete the user group from the UI. Deleting directly from the database might not be the optimal solution, especially if the user group is part of the hierarchy, such as an account user group inside an Org/Project. Updating the flag and then deleting through the UI ensures a more controlled and comprehensive handling of the user group removal, taking into account any dependencies in the hierarchy. This is not updatable using API, but soon deletion will be allowed from UI.
+
+#### How does Harness handle sensitive information, such as secrets, to prevent exposure in logs?
+
+When using secrets for sensitive information, the platform automatically obfuscates or masks the values in logs and other outputs. This measure ensures that sensitive information remains protected and is not exposed in plaintext within logs.
+
+#### When making service-to-service calls, is it recommended to reuse the Bearer token received from the calling service's API in the Authorization Header for the destination service's platform API?
+
+In service-to-service scenarios, a best practice is to transmit only the principal information without including the Authorization Header. This allows the destination service to handle authorization based on the provided principal details. Additionally, users have the flexibility to designate whether the call is Privileged or non-Privileged. For non-Privileged access, maintaining the principal as the end user is often suitable. Users are encouraged to refer to the platform's official documentation for comprehensive guidance on token creation and authentication for platform API calls. If further assistance is needed, contacting the platform's support team is recommended.
+
+#### Do we have documentation to implement ACL checks in log-service?
+
+Yes, you can refer to these [docs](https://apidocs.harness.io/tag/Access-Control-List#operation/getAccessControlList).
+
+#### How to perform load test on k8s delegate?
+
+You can implement Autoscale using replicas with the steps in this [docs](https://developer.harness.io/docs/platform/delegates/manage-delegates/auto-scale-using-replicas/). The autoscaling will be based on load not on number of tasks Or can do any kind of deployment or simply run shell scripts which uses cpu and memory.
+
+- based on which metric you use for HPA (we recommend cpu/memory) kubernetes will scale up/down the pod.
+- when pod is scaled down, the delegate pod will stop taking new task and finish what its executing before terminating.
+
+#### Can I centrally identify and remove resources created by a user who had admin access but now has non-admin permissions?
+
+Currcetly this centralised feature is not available and will be available soon. However, you can leverage the Audit Trail feature to track all actions performed by the user over a specified time. This way, you can identify the resources they created during their admin access.
+Audit trails are available at the Account and Organization levels, allowing you to determine the resources created by the user. To restrict the user's admin access, you need to remove their admin permissions at every scope (account, org, project). Once admin permissions are revoked, the user won't have the authority to perform admin operations.
+
+#### What rate limits are enforced for NG?
+
+Rate limits for requests/day :
+
+- Any call: Harness allows 5000 requests every 10 seconds (30,000 requests per minute) per IP address.
+- API calls: Harness allows 1000 requests per API key per minute.
+- Large requests (character size > 500,000): 1 payload every 10 seconds.
+
+For more details you can refer to [documentation](https://developer.harness.io/docs/platform/rate-limits/).
+
+#### Can I set up audit log streaming without using a Delegate agent? Are there options to stream logs directly from the cloud platform using IAM roles or other methods?
+
+For the current streaming workflow, the primary option is to use the AWS connector, which requires the use of a Delegate. Unfortunately, audit log streaming is currently only supported via Delegate, and there is no direct option to stream logs from the cloud platform using IAM roles or other methods.
+You can refer to this [documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/) for further information.
+
+#### What is the workflow for secrets, especially concerning the potential exposure of production secrets? Do secrets pulled by a delegate ever flow back to the Harness platform?
+
+Yes, the secrets pulled by a delegate during pipeline execution do not make their way back to the Harness platform. Delegates connect to various secret managers as the pipeline progresses, but the secret information itself is not sent to Harness. This ensures that production secrets remain secure and are not exposed within the Harness platform. You can refer to these [docs](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

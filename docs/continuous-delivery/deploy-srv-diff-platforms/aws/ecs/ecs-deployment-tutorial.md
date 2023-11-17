@@ -124,6 +124,110 @@ If you're new to Harness, read [Harness Platform architecture](/docs/get-started
 
 1. Follow the steps in [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview) to install a Harness delegate.
 
+2. If you wish to install an ECS Fargate type delegate please see [AWS ECS Fargate Delegate Installation Overview](/docs/platform/delegates/install-delegates/docker-delegate-to-ecs-fargate/).
+
+#### Sample ECS Fargate Delegate Task Definition JSON
+
+```JSON
+  {
+    "containerDefinitions": [
+      {
+        "portMappings": [
+          {
+            "hostPort": 8080,
+            "protocol": "tcp",
+            "containerPort": 8080
+          }
+        ],
+        "cpu": 1,
+        "environment": [
+          {
+            "name": "ACCOUNT_ID",
+            "value": "<ACCOUNT_ID>"
+          },
+          {
+            "name": "DELEGATE_TOKEN",
+            "value": "<DELEGATE_TOKEN>"
+          },
+          {
+            "name": "DELEGATE_TYPE",
+            "value": "DOCKER"
+          },
+          {
+            "name": "INIT_SCRIPT",
+            "value": ""
+          },
+          {
+            "name": "DEPLOY_MODE",
+            "value": "KUBERNETES"
+          },
+          {
+            "name": "MANAGER_HOST_AND_PORT",
+            "value": "<MANAGER_HOST_AND_PORT>"
+          },
+          {
+            "name": "DELEGATE_NAME",
+            "value": "<DELEGATE_NAME>"
+          },
+          {
+            "name": "LOG_STREAMING_SERVICE_URL",
+            "value": "<LOG_STREAMING_SERVICE_URL>"
+          },
+         {
+            "name": "DELEGATE_TAGS",
+            "value": ""
+          },
+
+          {
+            "name": "NEXT_GEN",
+            "value": "true"
+          }
+         ],
+        "memory": 2048,
+        "image": "harness/delegate:22.12.77802",
+        "essential": true,
+        "hostname": "<DELEGATE_HOST>",
+        "name": "<DELEGATE_NAME>"
+      }
+    ],
+      "memory": "2048",
+      "requiresCompatibilities": [
+      "EC2"
+    ],
+  
+    "cpu": "1024",
+    "family": "harness-delegate-task-spec"
+  }
+```
+
+#### Sample ECS Fargate Delegate Service Definition JSON
+
+```JSON
+{
+   "launchType": "FARGATE",
+   "cluster": "<CLUSTER_NAME>",
+   "serviceName": "<SERVICE_NAME>",
+   "taskDefinition": "harness-delegate-task-spec",
+   "desiredCount": 1,
+   "loadBalancers": [],
+   "networkConfiguration": {
+     "awsvpcConfiguration": {
+       "subnets": [
+         "<SUBNET>"
+       ],
+       "securityGroups": [
+         "SEC_GROUP"
+       ],
+       "assignPublicIp": "ENABLED"
+     }
+   },
+   "platformVersion": "LATEST",
+   "schedulingStrategy": "REPLICA",
+   "enableECSManagedTags": true
+ }
+```
+
+
 When you are done setting up the delegate and it has registered with Harness, you'll see the delegate's tags on the delegates list page:
 
 ![](./static/ecs-deployment-tutorial-38.png)
@@ -1386,3 +1490,17 @@ You can override the:
 These overrides can be configured at the Harness environment's service-specific override level, as well as at the environment infrastructure definition level. 
 
 
+### Attaching CloudWatch alarms to scaling policies
+
+To attach your AWS CloudWatch alarms to a scaling policy, simply add a Harness Shell Script step with the following script after the deployment step in your stage (placeholders are in UPPERCASE):
+
+```bash
+
+// to fetch scaling policy arn, run this
+
+aws application-autoscaling describe-scaling-policies --service-namespace ecs --resource-id service/<+infra.cluster>/<+execution.steps.ECS_DEPLOY_STEP_ID.output.serviceName> --region <+infra.region>
+
+// to attach cloud watch alarm to scaling policy.
+
+aws cloudwatch put-metric-alarm --alarm-name ALARM_NAME --alarm-actions SCALING_POLICY_ARN
+```

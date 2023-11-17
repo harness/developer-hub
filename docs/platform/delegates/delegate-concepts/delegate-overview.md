@@ -115,7 +115,7 @@ If no delegates are selected for a CD step in its **Delegate Selector** setting,
 
 Harness will try this delegate first for the step task because this delegate has been successful in the target environment.
 
-import Selector from '/docs/platform/delegates/shared/selector-infrastructure.md'
+import Selector from '/docs/platform/shared/selector-infrastructure.md'
 
 <Selector />
 

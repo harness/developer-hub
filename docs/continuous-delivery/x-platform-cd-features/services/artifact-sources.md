@@ -295,8 +295,6 @@ To add an artifact from a Docker registry, do the following:
 
   :::note 
 
-  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
-
   If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
   :::
@@ -519,8 +517,6 @@ To add an artifact from GCR, do the following:
 14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
-
-  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 
   If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
@@ -1012,8 +1008,6 @@ To add an artifact from Google Artifact Registry, do the following:
 20. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
     :::note 
-
-    This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 
     If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
@@ -1889,15 +1883,15 @@ You connect to ECR using a Harness AWS Connector. For details on all the ECR req
 To add an artifact from ECR, do the following:
 
 1. In your project, in CD (Deployments), select **Services**.
-2. Select **Manage Services**, and then select **New Service**.
+2. Select **New Service**.
 3. Enter a name for the service and select **Save**.
-4. Select **Configuration**.
-5. In **Service Definition**, select **Kubernetes**.
-6. In **Artifacts**, select **Add Artifact Source**.
-7. In **Artifact Repository Type**, click **ECR**, and then select **Continue**.
-8. In **ECR Repository**, select or create an [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) that connects to the AWS account where the ECR registry is located.
-9. Select **Continue**.
-10. In **Artifact Details**, in **Region**, select the region where the artifact source is located.
+4. In **Configuration** > **Service Definition**, select **Kubernetes**.
+5. In **Artifacts**, select **Add Artifact Source**.
+6. In **Artifact Repository Type**, click **ECR**, and then select **Continue**.
+7. In **ECR Repository**, select or create an [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) that connects to the AWS account in which the ECR registry is located.
+8. Select **Continue**.
+9. In **Artifact Details**, in **Region**, select the region where the artifact source is located.
+10. (Optional) In **Registry ID**, enter the AWS account ID of the ECR registry you want to use. This field is useful when the AWS connector can access AWS accounts other than the one it is configured with. If you do not specify a registry ID, Harness uses the default registry associated with the AWS account. 
 11. If the IAM user has access to the repository in the secondary account, in **Registry ID**, specify the AWS account ID associated with that repository.
     :::note 
     Only Tags can be fetched from the repository in the secondary account. You must specify the image path manually.
@@ -1909,16 +1903,14 @@ To add an artifact from ECR, do the following:
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 
-13. To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
-
-  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 
   If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
   :::
-14. Select **Submit**. The Artifact is added to the Service Definition.
+15. Select **Submit**. The Artifact is added to the Service Definition.
 
     
  ![ECR artifact source in a service](static/769c54fe91e7497b4aef3733f128361457b933f1d0eccd0d9b3491f1da4ed0c7.png)
@@ -2221,10 +2213,7 @@ To add an artifact from an S3 bucket, do the following:
     2. in **Region**, select the region where the artifact source is located.
     3. In **Bucket Name**, select the bucket where the artifact is located
     4. In **File path**, enter the path (from the bucket root) and name of the artifact you want to deploy.
-11. Select **Submit**.
-    
-    ![](static/kubernetes-services-13.png)
-    
+11. Select **Submit**.    
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 12. Select **Submit**. The Artifact is added to the Service Definition.
 
@@ -2292,6 +2281,27 @@ You can reference artifact properties using the following expressions in a value
 | `<+artifact.region>`              | Region of S3 bucket                                                                                                                          | `us-east-1`                    |
 | `<+artifact.bucketName>`          | Name of the S3 bucket                                                                                                                        | `acme-lambda`                  |
 | `<+artifact.metadata.get([KEY])>` | This is the metadata attached with the file in AWS S3. Popular keys include `x-amz-server-side-encryption`, `Content-Type`, `Last-Modified`. |                                |
+
+</details>
+
+<details>
+<summary>AWS S3 File Filter</summary>
+
+The artifact details settings include a **File Filter** (`fileFilter`) option.
+
+In **File Filter**, you can enter a regex value and Harness will fetch all matching files. You can then select from the list in **File Path**.
+
+This setting is optional. If you do not use it, Harness will fetch and display all files in the **File Path** setting.
+
+If the **File Path** is a fixed value, during pipeline execution, artifact validation is performed using the **File Path** but not the **File Filter**. Harness does not check whether the **File Filter** matches or not during the execution.
+
+Examples:
+
+- `*`: fetch all files in the file path.
+- `*.zip`: fetch all files in the file path with the extension `.zip`.
+- `*/w10/*.tfstate`: fetch all files in the file path that contain `/w10/` with the extension `.tfstate`.
+- `*/w1/*`: fetch all files in the file path that contain `/w1/`.
+- `w1`: fetch all files in the file path that contain `w1`.
 
 </details>
 
@@ -2685,8 +2695,6 @@ To add an artifact from Nexus, do the following:
 
   :::note 
 
-  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
-
   If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
   :::
@@ -2965,8 +2973,6 @@ To add an artifact from Artifactory, do the following:
 
   :::note 
 
-  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
-
   If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
   :::
@@ -3242,12 +3248,6 @@ Package type (`packageType`) support:
 - Maven
 - Nuget
 
-:::note
-
-Currently, support for NPM, Maven, and Nuget are behind the feature flag `CDS_GITHUB_PACKAGES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 You connect to GitHub using a Harness [GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference), username, and personal access token (PAT).
 
 :::tip
@@ -3483,11 +3483,9 @@ To add an artifact from Github Packages, do the following:
 13. In **Package Name**, select the name of the package.
 14. In **Version**, select the version to use. 
 <!-- CDS-71711 -->
-15. To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by digest is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+1.  To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by digest is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
-
-  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 
   If an image with the specified tag/digest combination does not exist in the Github Package registry repository, the pipeline will fail.
 

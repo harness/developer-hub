@@ -111,18 +111,18 @@ The following example is based on the example workflow described in this topic.
                   name: dind
                   identifier: dind
                   spec:
-                    connectorRef: $DOCKER_CONNECTOR
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: docker:dind
                     shell: Sh
                     privileged: true
                     entrypoint:
-                      - dockerd-entrypoint.sh
+                      - dockerd
               - step:  
                   type: Run  
                   name: runTrivyScan  
                   identifier: runTrivy  
                   spec:  
-                    connectorRef: DOCKER_HUB_CONNECTOR  
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR 
                     image: ubuntu:20.04  
                     shell: Sh  
                     command: |-  

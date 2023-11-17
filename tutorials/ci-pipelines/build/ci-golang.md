@@ -289,6 +289,10 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
 </Tabs>
 ```
 
+### Test splitting
+
+You can use [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) to improve test times.
+
 ## Specify version
 
 ```mdx-code-block

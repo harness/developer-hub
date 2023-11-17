@@ -31,11 +31,11 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CE_NET_AMORTISED_COST_ENABLED</td>
-        <td>Enabling this flag allows users to view the net amortized cost while disabling it will display the total cost.</td>
+        <td>Enabling this flag allows users to view the net amortized cost while disabling it will display the total cost</td>
     </tr>
     <tr>
         <td>CCM_COMMORCH</td>
-        <td>Enables the commitment orchestrator in the UI side nav.</td>
+        <td>Enables the commitment orchestrator in the UI side nav</td>
     </tr>
     <tr>
         <td>CCM_CURRENCY_PREFERENCES</td>
@@ -44,6 +44,14 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CCM_BUDGET_CASCADES</td>
         <td>Allow users to view nested budgets for better Financial Management</td>
+    </tr>
+    <tr>
+        <td>CCM_COST_CATEGORIES_DASHBOARD</td>
+        <td>Enabling this flag allows customers to use the cost category in the dashboard</td>
+    </tr>
+    <tr>
+        <td>CCM_GOVERNANCE_GENAI_ENABLE</td>
+        <td>Enables Gen AI support for cloud asset governance.</td>
     </tr>
 </table>
 

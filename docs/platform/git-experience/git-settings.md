@@ -125,3 +125,17 @@ To set the allowed repositories for Git Experience entities, do the following:
 2. Select **Git Experience**.
 3. Enter the name(s) of you allowed repositories.
 4. (Optional) For the account and organization scopes, you can allow overrides. To override this setting in other scopes, select **Allow Overrides** beside the setting.
+
+## Enable Bi-Directional Sync
+
+:::note
+
+Currently, Bi-Directional Sync is behind the feature flag `PIE_GIT_BI_DIRECTIONAL_SYNC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+By default, Harness Git Experience syncs unidirectionally, from Harness to your Git repos. Enable this setting to have Git Experience sync two-way (bidirectionally) between Harness and your Git repo.
+
+Changes made on either the Git repo or Harness are synched automatically.
+
+For more information, go to [Set up bidirectional sync for Git Experience](/docs/platform/git-experience/gitexp-bidir-sync-setup).

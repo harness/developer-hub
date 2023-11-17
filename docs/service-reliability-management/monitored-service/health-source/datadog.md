@@ -47,7 +47,10 @@ To add Datadog as a health source:
 
 10. Click **Next**.
 
-The subsequent settings in **Customize Health Source** depend on the Health Source Type you selected. ### Option: Cloud Metrics
+The subsequent settings in **Customize Health Source** depend on the Health Source Type you selected. 
+
+
+## Option: Cloud Metrics
 
 If you select **Cloud Metrics**, the **Select Dashboards** settings appear. It displays a list of Datadog dashboards.
 

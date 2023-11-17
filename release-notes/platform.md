@@ -2,8 +2,8 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-10-27:T10:00:30
-sidebar_position: 12
+date: 2023-11-13:T10:00:30
+sidebar_position: 3
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -15,12 +15,14 @@ import delete_project from './static/delete-project.png'
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/platform/rss.xml" />
 
-Review the notes below for details about recent changes to Harness Platform, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
+These release notes describe recent changes to Harness Platform.
 
-Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+:::info About Harness Release Notes
 
-:::info note
-Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
+* **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
+* **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+* **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
+
 :::
 
 ## Deprecation notice
@@ -30,9 +32,60 @@ The following deprecated API endpoints will no longer be supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## Latest: Version 81205
+## November 2023
 
-### New features and enhancements
+### Version 81401
+
+#### New features and enhancements
+
+- Harness has updated our account data deletion period from 90 days to 60 days. (PL-41444)
+
+- It is now mandatory to add a suffix to count type metrics in the latest version of Prometheus, otherwise delegate metrics will not be recorded. Harness updated the delegate metrics count names to include the suffix `_total`. (PL-42354, ZD-52167)
+
+   The following delegate metrics names are updated.
+
+   - `io_harness_custom_metric_task_timeout` is now `io_harness_custom_metric_task_timeout_total`
+   - `io_harness_custom_metric_task_completed` is now `io_harness_custom_metric_task_completed_total`
+   - `io_harness_custom_metric_task_failed` is now `io_harness_custom_metric_task_failed_total`
+   - `io_harness_custom_metric_task_rejected` is now `io_harness_custom_metric_task_rejected_total`
+
+   This item requires Harness Delegate version 23.11.81405. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+#### Fixed issues
+
+- Previously, if you had an SSH secret key with a **Text** reference pre-selected, you could only update it using YAML but not via the UI. The UI displayed only the **File** secret types. Harness has now added a dropdown menu in the **Create or Select an Existing Secret** dialog that allows you to select the **Secret type** as either **File** or **Text**. This simplifies the process of updating SSH secrets, making it easier for you to manage your secrets. (PL-41507, ZD-47600, ZD-51334)
+
+- The project admin role wasn't being assigned to a project created via an account or org scope service account. Now, when a project is created, the project admin role is automatically assigned to the service account. This is also reflected in the audit trails. (PL-41845, ZD-51918)
+
+### Version 81308
+
+#### New features and enhancements
+
+- You can now view **Runtime Usage** for secrets. (PL-39416)
+
+- You can now add custom certificates to delegates by mounting files under `/opt/harness-delegate/ca-bundle/` or mounting a folder to `/opt/harness-delegate/ca-bundle/`. (PL-39971)
+
+  This item is available with Harness Platform version 81308 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+#### Fixed issues
+
+- On the User Groups list page, there was an issue when attempting to quickly add members by selecting the **+** icon, which resulted in inadvertently removing members from the user group. This occurred because the system was using only the data of users visible on the screen (up to a maximum of 6 members) instead of all users in the group. The problem has now been resolved, and all existing users remain in the group while new users can also be added successfully without any issues. (PL-41730, ZD-51725)
+
+- The list delegate groups API (`getDelegateGroupsUsingToken`) now returns a 404 when the delegate token doesn't exist. (PL-41926, ZD-52077)
+
+- When the template variable's value was set to Custom Secret Manager, the secret creation failed because the fixed values were considered missing because they were not part of the API request. (PL-42050, ZD-52243).
+
+   This issue has been resolved.
+
+- In Harness, users are stored with lowercase email addresses. However, if a user with a different case was sent from the Terraform payload, it didn't match with the stored user in Harness. This caused the removal of the existing user (stored in all lowercase) if the same email address was specified in a different case. To fix this issue, Harness converted the email request payload from Terraform to lowercase. This ensures that the user matches correctly in Harness, as the email is always stored in lowercase. (PL-42074)
+
+- Fixed an issue where the latest-supported-version API returned the image tag repo path instead of the image tag. (PL-42168, ZD-52623)
+
+## October 2023
+
+### Version 81205
+
+#### New features and enhancements
 
 - To improve security, Harness has introduced a feature that allows you to add domain allowlists for Email, Slack, Microsoft Teams, Webhook, and PagerDuty notification channels at the account level. Earlier, this was only supported for fixed URL domains. Now, support has been added for expression URLs. This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the Delegate release notes. (PL-39481, ZD-43735)
 
@@ -49,11 +102,7 @@ The following deprecated API endpoints will no longer be supported:
 
 - Upgraded the `org.eclipse.jetty_jetty-http` library to version 9.4.53.v20231009 to resolve CVE-2023-36478. (PL-41903)
 
-### Early access features
-
-This release does not include early access features.
-
-### Fixed issues
+#### Fixed issues
 
 - Fixed an issue where the sort filter was not working for delegates. (PL41184, ZD-50573)
 
@@ -76,18 +125,9 @@ This release does not include early access features.
    - Deletion of resources from resource groups and permissions from roles works as expected.
    - Role assignment recreation functions correctly with updated resource groups and roles.
 
-### Hotfixes
+### Version 81008
 
-This release does not include hotfixes.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
-#### October 16, 2023, Version 81008
-
-##### New features and enhancements
+#### New features and enhancements
 
 - The HPA configuration setting is now included in the default Kubernetes delegate YAML file. (PL-36021)
 
@@ -123,11 +163,7 @@ This release does not include hotfixes.
 
    This item is available with Harness Platform version 81008 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-##### Early access features
-
-This release does not include early access features.
-
-##### Fixed issues
+#### Fixed issues
 
 - Previously, there was an issue where users who were initially invited through email and later through SCIM were not being added. This issue has now been resolved. Harness has implemented a fix to automatically delete the initial email invite and ensure that SCIM invites are valid even if an email invite was already sent. (PL-41114)
 
@@ -136,14 +172,10 @@ This release does not include early access features.
    This item requires Harness Delegate version 23.10.81010. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Fixed an issue that paused renewal for HashiCorp vaults after renewal attempts failed twice. (PL-41577)
- 
-##### Hotfixes
 
-This release does not include hotfixes.
+### Version 80909
 
-#### Version 80909
-
-##### New features and enhancements
+#### New features and enhancements
 
 - To improve security, Harness has introduced a feature that allows you to add domain allowlists for Email, Slack, Microsoft Teams, Webhook, and PagerDuty notification channels at the account level. This feature enables you to specify fixed URL domains to which notifications can be sent. Expression URLs are not yet supported.
 
@@ -155,23 +187,17 @@ This release does not include hotfixes.
 
 - Harness previously had a feature flag `DISABLE_HARNESS_SM`, which allowed you to disable the Harness default Secret Manager and showed a **Settings** section on the Account Details page. This setting was migrated to the centralized **Default Settings** under **Resources**. Harness removed the feature flag `DISABLE_HARNESS_SM` as well as the corresponding setting from the Account Details page. (PL-41538)
 
-##### Early access features
-
-This release does not include early access features.
-
-##### Fixed issues
+#### Fixed issues
 
 - Delegate names in Harness NextGen and FirstGen couldn't have the same name. Delegates in Harness NextGen and FirstGen can now have the same name. (PL-41398, ZD-59565)
 
    This item is available with Harness Platform version 80909 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
- 
-##### Hotfixes
 
-This release does not include hotfixes.
+## September 2023
 
-#### Version 80811
+### Version 80811
 
-##### New features and enhancements
+#### New features and enhancements
 
 - Access control lists (ACLs) have now been optimized by the removal of ACLs that are no longer necessary and by ensuring that redundant ACLs are no longer created for new role assignments. (PL-41154)
 
@@ -179,11 +205,7 @@ This release does not include hotfixes.
 
 - The Roles page now supports a list view in addition to the existing card view. In addition to the information shown in the card view, the list view shows you which resources are selected for the role. To see the list view, in the top-right corner of the Roles page, select the list view button. (PL-32183)
 
-##### Early access features
-
-This release does not include early access features.
-
-##### Fixed issues
+#### Fixed issues
 
 - The **Assign Roles** dialog listed the built-in Account Viewer role when you were assigning roles to a user group, and it did not provide a way for you to remove that role. You could, however, remove the Account Viewer role when updating the role assignments in the **Manage Role Bindings** dialog. (PL-32413)
 
@@ -257,13 +279,9 @@ This release does not include early access features.
 
   This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-##### Hotfixes
+### Version 80711
 
-This release does not include hotfixes.
-
-#### Version 80711
-
-##### New features and enhancements
+#### New features and enhancements
 
 -  The delegate Helm chart is now included in the delegate proxy configuration. You can pull the Helm chart from `https://<YOUR_LOADBALANCER_URL>/storage/harness-download/delegate-helm-chart/`. (PL-39190)
 
@@ -273,11 +291,7 @@ This release does not include hotfixes.
 
   For more information, go to [Notification settings](/docs/platform/notifications/notification-settings).
 
-##### Early access features
-
-This release does not include early access features.
-
-##### Fixed issues
+#### Fixed issues
 
 - Earlier, you could only see a maximum of three tags on the Delegates list page. (PL-38936)
 
@@ -310,13 +324,9 @@ This release does not include early access features.
 
   This issue has been fixed.
 
-##### Hotfixes
+### Version 80504
 
-This release does not include hotfixes.
-
-#### Version 80504
-
-##### New features and enhancements
+#### New features and enhancements
 
 - When Harness is configured to use the AppRole ID to fetch an authentication token from HashiCorp Vault, Harness generates a large number of requests for those tokens. The volume of requests causes performance issues. (PL-40754)
 
@@ -346,13 +356,9 @@ This release does not include hotfixes.
 
    Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
    
-   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-##### Early access features
-
-This release does not include early access features.
-
-##### Fixed issues
+#### Fixed issues
 
 - The **Create or Select an Existing Connector** dialog did not show any results when you filtered on Nexus connectors. (PL-40904)
   
@@ -374,13 +380,11 @@ This release does not include early access features.
     - You update the associated HashiCorp Vault connector.
     - You test the associated HashiCorp Vault connector manually and the test succeeds.
 
-##### Hotfixes
+## August 2023
 
-This release does not include hotfixes.
+### Version 80406
 
-#### Version 80406
-
-##### New features and enhancements
+#### New features and enhancements
 
 - Earlier, in the audit trail, all changes to a user principal's role assignment were logged with the generic Update action type. The record offered no additional information about whether a role assignment was created, updated, or deleted. (PL-39799, ZD-46451)
 
@@ -395,11 +399,7 @@ This release does not include hotfixes.
 
 - You can now create secrets in child scopes using the parent scope in Secret Manager. For example, you can create secrets inside a project using the Secret Manager created at the Org or Account level. (PL-38949)
 
-##### Early access features
-
-This release does not include early access features.
-
-##### Fixed issues
+#### Fixed issues
 
 - In some scenarios, when the delegate tried to send a heartbeat to connect to Harness Manager and MongoDB was down, Harness Manager sent a self_destruct message to stop the delegate. (PL-38122)
 
@@ -431,16 +431,11 @@ This release does not include early access features.
 
 - Attempts to use the `harness_platform_user` resource to create or delete users results in an error. The message "Request failed as you have an older version of entity, please reload the page and try again" is displayed and the Terraform state goes out of sync with Harness. (PL-39870, ZD-47107)
 
-  This issue has been fixed. 
+  This issue has been fixed.
 
-##### Hotfixes
+### Version 80307
 
-This release does not include hotfixes.
-
-
-#### Version 80307
-
-##### New features and enhancements
+#### New features and enhancements
 
 - To support MongoDB 5.0, the Debezium library has been upgraded to version 1.9. (PL-40491)
 
@@ -448,13 +443,9 @@ This release does not include hotfixes.
 
   By default, caching is enabled for all existing connectors. To disable caching, go to the connector's YAML configuration and set the `enableCache` parameter to `false`. Harness UI support to enable and disable caching will be added in a subsequent release. (PL-39821)
 
-  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-##### Early access features
-
-This release does not include early access features.
-
-##### Fixed issues
+#### Fixed issues
 
 - When you navigated to the Pipelines page, Harness checked for a Continuous Integration license. If you did not have a CI license, you were redirected to the CI Start Trial page because the Pipelines page was once part of the CI module. 
 
@@ -475,25 +466,17 @@ This release does not include early access features.
     - Identifiers of other projects in the organization overlapped with that of the project in which you updated role assignments. 
     - Identifiers of user groups in those other projects matched the identifier of the user group you updated. (PL-39780, ZD-46314)
 
-  The issue is now fixed. 
+  The issue is now fixed.
 
-##### Hotfixes
+### Version 80208
 
-This release does not include hotfixes.
-
-#### August 10, 2023, version 80208
-
-##### What's new
+#### New features and enhancements
 
 - Accounts with Free and Community licenses are limited to 100 users. (PL-40260)
 
 - The heartbeat interval that perpetual tasks use to test connectors has been increased from 10 minutes to 30 minutes. This change aims to reduce the number of errors logged due to failed heartbeats. The new heartbeat interval is used with any connectors that you create after this deployment. Tasks associated with existing connectors require migration to the new interval. Harness will migrate such perpetual tasks in all accounts in a phased manner. This activity does not require any action from you or other users of the platform. (PL-39399)
 
-##### Early access
-
-This release does not include any early access features.
-
-##### Fixed issues
+#### Fixed issues
 
 - For the **Audit Trail**, the **YAML Difference** on the **Event Summary** pane didn’t include tag information for delegate groups and registers. (PL-40073)
    
@@ -529,21 +512,17 @@ This release does not include any early access features.
 
   The issue is now fixed, and the dialog shows user-friendly messages. 
 
-#### August 4, 2023, version 80120
+### Version 80120
 
-##### What's new
+#### New features and enhancements
 
 - The Universal Base Image Minimal used for the Harness user interface (both FirstGen and NextGen) and the Harness NextGen authentication service has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-40095)
 
 - Browser tabs did not show informative titles for the Settings, Delegates and FileStore pages. They showed only the generic title "Harness", making it difficult to identify the page you wanted. (PL-39923, ZD-46375)
 
-  This issue has been fixed. Browser tabs showing those pages now have more specific titles. 
+  This issue has been fixed. Browser tabs showing those pages now have more specific titles.
 
-##### Early access
-
-This release does not include any early access features.
-
-##### Fixed issues
+#### Fixed issues
 
 - The YAML diff editor that shows changes to the YAML configuration associated with an event (**Account Settings** > **Audit Trail** > **Event Summary**) showed an inline diff, making it difficult for you to copy changes. (PL-40265, ZD-45911)
 
@@ -599,10 +578,11 @@ This release does not include any early access features.
 
   This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
+## July 2023
 
-#### July 27, 2023, version 80022
+### Version 80022
 
-##### What's new
+#### New features and enhancements
 
 - Earlier, when an administrator enabled the account-level two-factor authentication (2FA) setting, it affected users in the following manner:
   1. Users who had set that account as their default account received 2FA emails, and the user-level 2FA setting was enabled across all their profiles. The users were not allowed to disable the setting.
@@ -618,11 +598,7 @@ This release does not include any early access features.
 - You can now configure the `create_namespace` Terraform parameter to disable default namespace creation. Set the parameter to `false` in the `main.tf` file to disable namespace creation. (PL-39822, ZD-47021)
   This item is available with Harness Platform version 80022 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-##### Early access
-
-This release does not include any early access features.
-
-##### Fixed issues
+#### Fixed issues
 
 - API calls that requested role assignments filtered on user groups or service accounts (that is, API calls that used the `roleassignment/filter` endpoint with `principalTypeFilter` set to USER_GROUPS or SERVICE_ACCOUNTS, respectively) returned an empty body. (PL-39888, ZD-47208)
 
@@ -640,9 +616,9 @@ This release does not include any early access features.
 
    This issue is now fixed.
 
-#### July 18, 2023, version 79916
+### Version 79916
 
-##### What's new
+#### New features and enhancements
 
 - The Go library has been upgraded from 1.20.4 to 1.20.5. (PL-39700)
 
@@ -664,11 +640,7 @@ This release does not include any early access features.
 
 This item requires Harness Delegate version 23.07.79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-##### Early access
-
-This release does not include any early access features.
-
-##### Fixed issues
+#### Fixed issues
 
 - Previously, regardless of whether your account was on Harness NextGen or Harness FirstGen, Harness sent password reset emails from Harness FirstGen. This approach failed for accounts that are only on Harness NextGen. (PL-38735)
 
@@ -692,9 +664,9 @@ This release does not include any early access features.
 
   This item requires Harness Delegate version 23.07.79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-#### July 06, 2023, version 79811
+### Version 79811
 
-##### What's new
+#### New features and enhancements
 
 - Harness now allows special characters in usernames. (PL-39564, ZD-46487)
 
@@ -702,19 +674,17 @@ This release does not include any early access features.
 
 - When creating Azure Key Vault, you can now manually enter the vault name. (PL-32773, ZD-44045)
 
-##### Early access
-
-This release does not include any early access features.
-
-##### Fixed issues
+#### Fixed issues
 
 - It was possible to edit project identifiers. (PL-39609)
 
   A code enhancement has fixed this issue.
 
-#### June 28, 2023, version 79714
+## June 2023
 
-##### Platform new features
+### Version 79714
+
+#### New features and enhancements
 
 - There is now a limit of 100 API Tokens per free and community account. (PL-39337)
 
@@ -722,11 +692,7 @@ This release does not include any early access features.
 
 - You can now sort pipelines in the pipelines list by selecting the sortable column headers or the sort dropdown. (PL-31527)
 
-##### Early access
-
-This release does not include any early access features.
-
-##### Platform fixed issues
+#### Fixed issues
 
 - SAML provider **Name** and **Friendly Name** fields allowed special characters. (PL-39070)
 
@@ -756,9 +722,9 @@ This release does not include any early access features.
 
    This item requires Harness Delegate version 23.06.79707. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-#### June 19, 2023, version 79606
+### Version 79606
 
-##### Platform new features
+#### New features and enhancements
 
 - In earlier releases, users were allowed to include the following special characters in the user name field in their profile: colon (`:`), slash (`/`), less than sign (`<`), greater than sign (`>`), equal sign (`=`), and parentheses (`(` and `)`). Support for these special characters allowed malicious users to inject HTML and JavaScript code into deployment-related emails such as approval emails. (PL-39099)
 
@@ -774,13 +740,9 @@ This release does not include any early access features.
 
 - In earlier releases, you could change the Git branch only in Pipeline Studio. (CDS-68007)
 
-  Starting with this release, you can also change the branch in the dialog for running a pipeline. You can also run the pipeline from any branch directly from the pipeline listing page. 
+  Starting with this release, you can also change the branch in the dialog for running a pipeline. You can also run the pipeline from any branch directly from the pipeline listing page.
 
-##### Early access
-
-This release does not include any early access features.
-
-##### Platform fixed issues
+#### Fixed issues
 
 - Certain users see the following message when they select the Connectors page for their project: "You are not authorized to view default settings.
 You are missing the following permission: "View default settings" in Account scope." (PL-39221, ZD-45360)
@@ -797,9 +759,9 @@ You are missing the following permission: "View default settings" in Account sco
 
   This item is available with Harness Platform version 79606 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-#### June 09, 2023, version 79516
+### Version 79516
 
-##### Platform new features
+#### New features and enhancements
 
 - There is now an additional tab on the **Create or Select Existing Connector** dialog called `All` that lists connectors from all scopes (project, organization, and account). (PL-39029)
 
@@ -817,12 +779,7 @@ You are missing the following permission: "View default settings" in Account sco
 
    This item is available with Harness Platform version 79516 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-
-##### Early access
-
-This release does not include any early access features.
-
-##### Platform fixed issues
+#### Fixed issues
 
 - The user invite API returned an HTTP status code of 200 if the invited user had an invalid TLD. (PL-38938)
 
@@ -848,7 +805,9 @@ This release does not include any early access features.
 
   This issue is fixed and the output values for expressions are returned as JSON objects.
 
-#### June 01, 2023, version 79411
+### Version 79411
+
+#### New features and enhancements
 
 - You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 
@@ -862,11 +821,7 @@ This release does not include any early access features.
 
    This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-##### Early access
-
-This release does not include any early access features.
-
-##### Fixed issues
+#### Fixed issues
 
 - Delegate instances that do not shut down gracefully and do not come back online are removed from the UI after three hours. (PL-38755)
 
@@ -892,9 +847,11 @@ This release does not include any early access features.
 
   A code enhancement to display the resource Id in the error message fixed this issue.
 
-#### May 23, 2023, version 79306
+## May 2023
 
-##### What's new
+### Version 79306
+
+#### New features and enhancements
 
 - The **Connector Details** page now shows whether a connector is connected via a delegate or via Harness Platform. (PL-32673)
 
@@ -916,11 +873,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 - AuthZ now considers the SAML setting that the user logged in to when multiple SAML settings are present and the user belongs to more than one of them. The user will be removed from any other SAML settings that the same user might have been part of and synced with Harness through previous SAML logins.  (PL-32484)
 
-##### Early access
-
-This release does not include any early access feature.
-
-##### Fixed issues
+#### Fixed issues
 
 - The email address is displayed instead of the display name for users created through Okta. (PL-38479, ZD-43201)
   
@@ -971,18 +924,13 @@ This release does not include any early access feature.
 
   A polling system ensures that RBAC setup has been completed. The Harness Delegate version 23.05.79307 is required for this fix.
 
-#### May 04, 2023, version 79214
+### Version 79214
 
-##### What's new
+#### New features and enhancements
 
 - You will now receive an alert on the default settings page when there are unsaved changes and you leave the page. (PL-32354)
 
-##### Early access
-
-This release does not include any early access feature.
-
-
-##### Fixed issues
+#### Fixed issues
 
 - In **Group Memberships**, the selected scope value does not match the scope of the displayed user groups. (PL-32552)
   
@@ -996,18 +944,18 @@ This release does not include any early access feature.
   
   A code enhancement fixed this issue.
 
-#### April 22, 2023, version 79111
+## April 2023
 
-##### What's new
+### Version 79111
+
+#### New features and enhancements
+
 - You can now configure session time-out in the UI. (PL-32258)
   In case of inactivity, Harness logs users out of their accounts after the configured session timeout.
 
 - You can now add descriptions to pipeline and stage variables. (PIE-3336)
 
-##### Early access
-This release does not include any early access feature.
-
-##### Fixed issues
+#### Fixed issues
 - The creation of secrets on Custom Secret Manager validates the existence of those secrets. (PL-31715)
   A code enhancement to remove secret validation during Custom Secret Manager creation has fixed the issue.
 
@@ -1023,9 +971,10 @@ This release does not include any early access feature.
 - Logs for chained pipelines are not visible. (PIE-9242, ZD-42050)
   A code enhancement fixed this issue.
 
-#### April 10, 2023, version 79015
+### Version 79015
 
-##### What's new
+#### New features and enhancements
+
 - You can now navigate to the parent organization by selecting its name on a project details page. (PL-32182, ZD-41785)
 
 - Harness Git Experience now supports GitLab as a code repository. You can now select a Harness connector with any of the following Git providers to save entities in a repository: (PIE-9139)
@@ -1036,11 +985,7 @@ This release does not include any early access feature.
 
 - You can now open the modal in the template studio to see all applicable metadata such as a description, tags, connector, and repository name. (PIE-8692)
 
-##### Early access
-
-This release does not include any early access feature.
-
-##### Fixed issues
+#### Fixed issues
 
 - Role assignments by **Scope** filter do not populate usernames or email addresses for existing users. (PL-32206)
   A code enhancement fixed this issue.
@@ -1049,21 +994,17 @@ This release does not include any early access feature.
   A code enhancement fixed this issue.
 
 - During pipeline execution, failure strategies are prompted even when not configured as inputs. (PIE-9277, ZD-41602)
-  The pipeline and template studio no longer display the failure strategy runtime panel when failure strategy is not marked as runtime. 
+  The pipeline and template studio no longer display the failure strategy runtime panel when failure strategy is not marked as runtime.
 
+## March 2023
 
-#### March 31, 2023, version 78914
+### Version 78914
 
-##### What's new
+#### New features and enhancements
 
 - The favicon now dynamically changes based on pipeline execution status on the dashboard's execution view. (PL-31520)
 
-
-##### Early access
-
-This release does not include any early access feature.
-
-##### Fixed issues
+#### Fixed issues
 
 - JWT log sanitizer throws a null pointer exception when it receives null log messages. (PL-32136)
 
@@ -1075,12 +1016,11 @@ This release does not include any early access feature.
 
 - When creating Azure Key Vault and HashiCorp Vault connectors, selecting invalid delegate selectors displays an "UNKNOWN ERROR". (PL-30660)
 
-  A code enhancement to display appropriate error message has fixed this issue. 
+  A code enhancement to display appropriate error message has fixed this issue.
 
+### Version 78817
 
-#### March 24, 2023, version 78817
-
-##### What's new
+#### New features and enhancements
 
 - You can now add specific service accounts to your resource group. (PL-31867)
   
@@ -1088,13 +1028,13 @@ This release does not include any early access feature.
 
 - You can now enter usernames as a comma separated string while adding users in **Users(name or email)**. (PL-29630)
   
-##### Early access
+#### Early access features
 
 - By enabling the feature flag, `PL_NEW_SCIM_STANDARDS`, any CRUD operation on a user now returns the details of the user groups that the user is part of. (PL-31496)
 
   You can use this to verify what groups a given user belongs to.
 
-##### Fixed issues
+#### Fixed issues
 
 - A failed decryption of secrets managed by the Harness Secret Manager causes the secret value inside values.yaml to be resolved as null. (PL-32043)
   
@@ -1124,11 +1064,9 @@ This release does not include any early access feature.
 
   A code enhancement has fixed this issue.
 
+### Version 78712
 
-
-#### March 15, 2023, version 78712
-
-##### What's new
+#### New features and enhancements
 
 - The Harness UI now supports editing the email domain when creating a Service Account. Previously, the email domain was auto-generated and there was no option to edit it. (PL-31769)
   
@@ -1146,7 +1084,7 @@ This release does not include any early access feature.
 
 - Template expressions now support `when` conditions. (PIE-8762)
 
-##### Early access
+#### Early access features
 
 - Harness now populates `givenName` and `familyName` for users via SCIM and returns the same when a GET, CREATE, or UPDATE request is made. (PL-31498)
 
@@ -1164,8 +1102,7 @@ This release does not include any early access feature.
   
     This is behind the feature flag `PL_NEW_SCIM_STANDARDS`.
 
-
-##### Fixed issues
+#### Fixed issues
 
 - The template service APIs do not have trace filters. (PL-31829)
 
@@ -1219,8 +1156,7 @@ This release does not include any early access feature.
 
   A code enhancement has fixed this issue.
 
-
-##### Important announcement
+#### Important announcement
 
 - The following API endpoints have been deprecated:
   - https://apidocs.harness.io/tag/Harness-Resource-Group#operation/createResourceGroup
@@ -1238,9 +1174,9 @@ This release does not include any early access feature.
   - https://apidocs.harness.io/tag/Harness-Resource-Group#operation/getFilterResourceGroupListV2
   - https://apidocs.harness.io/tag/Harness-Resource-Group#operation/updateResourceGroupV2 (PL-31211, ZD-37398)
 
-#### March 08, 2023, version 78619
+### Version 78619
 
-##### What's new
+#### New features and enhancements
 
 - Sorting functionality is available on the triggers listing page. (PL-31530)
   
@@ -1264,12 +1200,8 @@ This release does not include any early access feature.
 
 - The feature flag `FF_ALLOW_OPTIONAL_VARIABLE` now lets you make runtime variables optional in pipelines and stages. (PIE-8209)
 
+#### Fixed issues
 
-##### Early access
-
-This release does not include any early access feature.
-
-##### Fixed issues
 - The encryption type for GCP Secrets Manager in the Terraform plan step is incorrect. (PL-31684,ZD-40381)
   
   The encryption type is correct now.
@@ -1288,16 +1220,17 @@ This release does not include any early access feature.
   
 - On the **Input Sets** page, the **Clone** option is disabled. (PIE-8373)
   
-  The option has been removed. 
+  The option has been removed.
 
-#### February 23, 2023, version 78507
+## February 2023
 
-##### What's new
+### Version 78507
+
+#### New features and enhancements
 
 - The new delegate installation wizard is now generally available. (PL-31305)
   
   You also have the option to revert to the previous installation method if desired.
-
 
 - A warning message now appears in the UI when you delete a project or organization. Deletions require confirmation from the user. (PL-31292)
   
@@ -1322,11 +1255,7 @@ This release does not include any early access feature.
 
 - You can now change stages without losing the values you enter in the **Run Pipeline** form. (PIE-4663)
 
-##### Early access
-
-This release does not include any early access feature.
-
-##### Fixed issues
+#### Fixed issues
 
 -  HTML injection occurs due to a lack of server-side validation. (PLG-657)
   
@@ -1344,9 +1273,9 @@ This release does not include any early access feature.
   
   In the absence of a value, the default value is now removed from the YAML.
 
-#### February 15, 2023, version 78421
+### Version 78421
 
-##### What's new
+#### New features and enhancements
 
 - The Redisson client library has been upgraded to version 3.17.7 across all services for enhanced performance and bug resolution. (PL-31136)
   This update will not affect any business operations.
@@ -1377,12 +1306,7 @@ This release does not include any early access feature.
 
   - Deployment list page: This is the default selection page. (PIE-7625)
 
-##### Early access
-
-No early access features are available in this release.
-
-
-##### Fixed issues
+#### Fixed issues
 
 - The **Remove** option is disabled for the first user added to a user group through SCIM. A code check prevents the deletion of a user from a user group if the user is externally managed. (PL-31125, ZD-39358)
 
@@ -1436,11 +1360,9 @@ No early access features are available in this release.
 
   A code enhancement has fixed this issue.
 
+### Version 78321
 
-
-#### February 6, 2023, version 78321
-
-##### What's new
+#### New features and enhancements
 
 - The pages in app.harness.io autofocus the search input box by default. (PL-30656)
   
@@ -1450,11 +1372,11 @@ No early access features are available in this release.
 
 - [Looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism), including matrix and parallelism strategies, are no longer behind a feature flag. (PIE-5010)
 
-##### Early access
+#### Early access features
 
 - You can delete a user provisioned in Harness through SCIM in NextGen and retain the user in FirstGen by enabling the feature flag `PL_USER_DELETION_V2`. (PL-23577)
 
-##### Fixed issues
+#### Fixed issues
 
 - In the SCIM API, the Groups endpoint returns all the user groups associated with an account. The ResourceTypes endpoint also returns incorrect information. (PL-30862)
 
@@ -1483,20 +1405,17 @@ No early access features are available in this release.
 - API PUT operations for Bitbucket SaaS and on-prem connectors return an incorrect status code when there are no changes. (PIE-6230)
   
   A modification to the error message to display an appropriate explanation of the error has fixed this issue.
-  
 
-#### January 17, 2023, version 78214
+## January 2023
 
-##### What's new
+### Version 78214
+
+### New features and enhancements
 
 This release introduces a dedicated release notes page for Harness Delegate &mdash; SaaS. You can find release notes for the NextGen delegate at [Delegate](/release-notes/delegate).
 
-##### Early access
+#### Fixed issues
 
-No early access features are available in this release.
-
-
-##### Fixed issues
 - The Harness APIs return a status code of HTTP 400 instead of HTTP 401 for an invalid or expired token. (PL-30757, ZD-38494,38547)
 
   An enhancement to the code has fixed this issue.
@@ -1509,11 +1428,11 @@ No early access features are available in this release.
   
   Modifying the error message to indicate that the secret manager being used is not Harness' built-in secret manager fixed the problem.
 
-#### January 10, 2023, version 78105
+### Version 78105
 
 Delegate version: 23.01.78100
 
-##### Important announcements
+#### Important announcements
 
 **Update repository references to the NextGen Helm delegate** 
 
@@ -1530,8 +1449,7 @@ The location of the repository that contains the NextGen Helm chart is changing.
 
 For more information, see [Built-in user groups](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups)
 
-
-##### What's new
+#### New features and enhancements
 
 - Secrets and connectors now have a character limit of 128 for the **Name** and **ID** fields. (PL-29887)
   
@@ -1543,11 +1461,8 @@ For more information, see [Built-in user groups](/docs/platform/role-based-acces
 
   The repository is being deprecated. Updates to the chart will not be made to [https://app.harness.io/storage/harness-download/delegate-helm-chart/](https://app.harness.io/storage/harness-download/delegate-helm-chart/) and will not be available from that location. To ensure retrieval of the most recent Helm chart, update your repository references to [https://app.harness.io/storage/harness-download/harness-helm-charts/](https://app.harness.io/storage/harness-download/harness-helm-charts/).
 
-##### Early access
+#### Fixed issues
 
-No early access features are available in this release.
-
-##### Fixed issues
 - Inline selection does not display connectors and secrets according to their scope. (PL-30655)
   
   An enhancement in the pre-select logic has fixed this issue.
@@ -1584,18 +1499,18 @@ No early access features are available in this release.
 
 - Changed the behavior of the delegate dropdown menu. The UI core library was updated to add a parameter that prevents the reset of expanded states when new data loads in a table. This resolved an issue with the dropdown menu collapsing automatically. (DEL-5541)
 
-- Fixed a problem that was causing the `kryo` component to fail. The problem was caused when nested `java.lang.RuntimeException` errors occurred during manager response. (DEL-5609)   
-
-</details>
+- Fixed a problem that was causing the `kryo` component to fail. The problem was caused when nested `java.lang.RuntimeException` errors occurred during manager response. (DEL-5609)
 
 <details>
 <summary>2022 releases</summary>
 
-#### December 22, 2022, version 77908
+## December 2022
+
+### Version 77908
 
 Delegate version: 22.12.77802
 
-##### What's new
+#### New features and enhancements
 
 -   API support for discovery of SCIM service provider features and schema. (PL-29069)
     
@@ -1607,11 +1522,7 @@ Delegate version: 22.12.77802
 
     -   Schemas
 
-##### Early access
-
-No early access features are available in this release.
-
-##### Fixed issues
+#### Fixed issues
 
 -   Changed how the delegate handles secrets. Multiline secrets are now detected and masked appropriately. (DEL-5510)
  
@@ -1645,10 +1556,9 @@ No early access features are available in this release.
     
     Adding backward compatibility for the tabs has fixed this issue.
 
+### Version 77808
 
-#### December 13, 2022, version 77808
-
-##### What's new
+#### New features and enhancements
 
 - You can now refer to existing secrets of Azure Key Vault, AWS secret manager, and GCP secret manager. (PL-29915)
 
@@ -1658,11 +1568,7 @@ No early access features are available in this release.
 
   To do this, enable Use Git client for commits in the default settings at the account scope. Harness checks out the code on the delegate and uses the Git client to make the commits to your Git repository.
 
-##### Early access
-
-No early access features are available in this release.
-
-##### Fixed issues
+#### Fixed issues
 
 - Executing a pipeline with multiple states causes issues and results in incomplete execution. (PIE-6893)
 
@@ -1674,21 +1580,17 @@ No early access features are available in this release.
 
   A correction to the error message has fixed this issue.
 
-#### December 7, 2022, version 77716
+### Version 77716
 
 Delegate: 77800
 
-##### What's new
+#### New features and enhancements
 
 - Securing data through JSON Web Token (JWT) masking. (PL-29019, ZD-32004)
 
   Harness now masks all JWTs in pipelines and delegate logs. This change prevents data leakage risks for the applications running in Harness.
 
-##### Early access
-
-No early access features are available in this release.
-
-##### Fixed issues
+#### Fixed issues
 
 - Provisioning users through SCIM using Okta throws an error. This happens when a user is first staged in Okta and then activated with the Harness app. The GET API for SCIM does not return any result although the user exists in the Harness database. (PL-29702, ZD-36753)
 
@@ -1718,11 +1620,13 @@ No early access features are available in this release.
 
   A modification to the regex to remove the support for the $ sign has fixed this issue.
 
-#### November 29, 2022, version 77608
+## November 2022
+
+### Version 77608
 
 Delegate: 77431
 
-##### What's new
+#### New features and enhancements
 
 **Platform**
 
@@ -1753,7 +1657,7 @@ Delegate: 77431
 
   The corresponding information for these fields are fetched from Git.
 
-##### Fixed issues
+#### Fixed issues
 
 **Platform**
 
@@ -1797,11 +1701,11 @@ Delegate: 77431
 - Selecting an event as Merge Request, the default selection for Build Type is not correct for GitLab webhook triggers.(PIE-5117)
   This has now been fixed by changing the default selection for Build Type to Git Pull Request for the Merge Request event.
 
-#### November 11, 2022, version 77433
+### Version 77433
 
 Delegate version: 22.11.77431
 
-##### What's new
+#### New features and enhancements
 
 **Platform**
 
@@ -1812,7 +1716,7 @@ Delegate version: 22.11.77431
 - The organization filter selection on the project listing page will now persist across user sessions and page navigations.(PL-29292)
   You can now see the versions of the services in Account Overview in Platform Service Versions.(PL-26581)
 
-##### Early access
+#### Early access features
 
 - You can now create secrets using the Google Cloud Secret Manager in Harness. (PL-28978)
 
@@ -1822,7 +1726,7 @@ Delegate version: 22.11.77431
 
   Also, Projects is a new option in the left navigation. Click Projects to view the project-specific overview, pipeline, connector, and other details.
 
-##### Fixed issues
+#### Fixed issues
 
 **Custom Dashboards**
 
@@ -1864,15 +1768,15 @@ Dashboard alerts and schedules will now run at the specified time in the users l
 
   This issue has now been fixed.
 
-#### November 6, 2022, version 77317
+### Version 77317
 
-##### What's new
+#### New features and enhancements
 
 **Platform**
 
 The option to disable Harness Secret Manager is now a part of the core settings in Account Default Settings. (PL-27160)
 
-##### Early access
+#### Early access features
 
 **Platform**
 
@@ -1881,7 +1785,7 @@ by enabling the feature flag USE_GET_FILE_V2_GIT_CALL . (PL-29459)
 
 If you are on an older delegate version, you can upgrade your delegate and then enable the feature flag for optimized performance.
 
-##### Fixed issues
+#### Fixed issues
 
 **Platform**
 
@@ -1947,11 +1851,13 @@ If you are on an older delegate version, you can upgrade your delegate and then 
 
 - The display of detail information for immutable delegates version 76300 and earlier was changed to indicate that autoUpgrade is OFF. These delegate versions do not include the autoUpgrade feature. (DEL-5096)
 
-#### October 21, 2022, version 77221
+## October 2022
+
+### Version 77221
 
 Delegate version: 22.10.77221
 
-##### What's new
+#### New features and enhancements
 
 **Platform**
 
@@ -1961,7 +1867,7 @@ Delegate version: 22.10.77221
 
   See [Import a Template From Git](/docs/platform/git-experience/import-a-template-from-git/).
 
-##### Fixed issues
+#### Fixed issues
 
 **Platform**
 
@@ -1981,11 +1887,11 @@ Delegate version: 22.10.77221
 
   This is fixed by making the skip icon SVG as
 
-#### October 18, 2022, version 77116
+### Version 77116
 
 Delegate version: 22.10.77021
 
-##### What's new
+#### New features and enhancements
 
 **Platform**
 
@@ -1993,11 +1899,7 @@ The functionality of the delegate auto-upgrade components was enhanced. On insta
 
 A loader is now displayed on click of Run Pipeline to indicate that the Pipeline is running. (PIE-5396)
 
-##### Early access
-
-N/A
-
-##### Fixed issues
+#### Fixed issues
 
 **Platform**
 
@@ -2019,11 +1921,11 @@ N/A
 
 - User was not able to edit the barrier name in the Pipeline's flow control section. (PIE-5621)
 
-#### October 7, 2022, version 77025
+### Version 77025
 
 Delegate version: 22.10.77021
 
-##### What's new
+#### New features and enhancements
 
 **Platform**
 
@@ -2031,7 +1933,7 @@ Delegate version: 22.10.77021
 
 - The console colors are now updated for better readability. (PIE-4369)
 
-##### Early access
+#### Early access features
 
 **Platform**
 
@@ -2053,7 +1955,7 @@ Delegate version: 22.10.77021
 
   Harness will not send any emails for user invites when the feature flag PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES is enabled.
 
-##### Fixed issues
+#### Fixed issues
 
 **Platform**
 
@@ -2069,11 +1971,13 @@ Delegate version: 22.10.77021
 
 - Incorrect error message was displayed when the Project or Org or Account name did not exist in the APIs. (PL-27587, ZD-33846)
 
-#### September 29, 2022, version 76921
+## September 2022
+
+### Version 76921
 
 Delegate version: 22.09.76810
 
-##### What's new
+#### New features and enhancements
 
 **Platform**
 
@@ -2083,11 +1987,7 @@ Delegate version: 22.09.76810
 
 - When NG LDAP authorization is 'disabled', all LDAP SSO-linked Harness User Groups don't sync in NG. They sync with the users from LDAP when the LDAP settings have authorization enabled.​ (PL-27954)​
 
-##### Early access
-
-N/A
-
-##### Fixed issues
+#### Fixed issues
 
 **Platform**
 
@@ -2102,7 +2002,6 @@ N/A
   The issue is fixed by removing the Validation text in the Variables form and replacing it with a simple text box and a tooltip that specifies 'Only Fixed Values' are supported in Scope Variables.​
 
 - The error message displayed by GCP KMS was generic and not useful. (PL-28103)​
-
   Now, the error message displays details such as the error code, reason, etc., that would aid in resolving the issue causing the error.​
 
 - When you enter invalid credentials, the Microsoft Azure Vault client authentication exception was logged, but not considered as an error, and proceeded to the next step where the execution failed. (PL-28017)​
@@ -2113,9 +2012,9 @@ N/A
 
   Now, the error message displays details such as the error code, account ID, secret name, etc., that would aid in resolving the issue causing the error.​​
 
-#### September 22, 2022, version 76817
+### Version 76817
 
-##### What's new
+#### New features and enhancements
 
 **Platform**
 
@@ -2129,11 +2028,7 @@ N/A
 
   Harness now has a [built-in user group](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups) at each scope. These groups have all the users at the respective scope as their members. As a part of this change, Harness will stop assigning any roles to the User Groups by default.​ Users can assign roles to the built-in User Group at a specific scope, which becomes the default role for all the users in that group. (PL-26145)
 
-##### Early access
-
-N/A
-
-##### Fixed issues
+#### Fixed issues
 
 **Platform**
 
@@ -2143,9 +2038,9 @@ N/A
 
   This is fixed by adding a limit of showing 3 executions.
 
-#### September 14, 2022, version 76708
+### Version 76708
 
-##### What's new
+#### New features and enhancements
 
 **Custom Dashboards**
 
@@ -2161,11 +2056,7 @@ You can now use forecasting on your dashboards to help you create data predictio
 
 - You can now view your unsaved changes in the Pipeline Studio by clicking on Unsaved Changes. (PIE-5281)
 
-##### Early access
-
-N/A
-
-##### Fixed issues
+#### Fixed issues
 
 **Custom Dashboards**
 
@@ -2204,7 +2095,7 @@ N/A
 - Errors were encountered while executing a Pipeline after saving Input Sets to a new branch. (PIE-4981)
   This is fixed by by disabling the Commit to a new branch option for Input Sets.
 
-##### Important Announcements
+#### Important Announcements
 
 **Platform**
 
@@ -2214,9 +2105,9 @@ As a part of this change, Harness will stop assigning any roles to the User Grou
 
 Users can assign roles to the built-in user group at a specific scope, which becomes the default role for all the users in that group.
 
-#### September 7, 2022, version 76619
+### Version 76619
 
-##### What's new
+#### New features and enhancements
 
 - You can now inherit User Groups created at a higher scope by using Assign Roles. (PL-27237)
 
@@ -2224,7 +2115,7 @@ Users can assign roles to the built-in user group at a specific scope, which bec
 
 - You can now view the past 10 executions of the Pipelines and sort them from the table. You can also go to a specific execution by clicking on it. (PIE-4903)
 
-##### Early access
+#### Early access features
 
 - You can now create a Harness Custom Secret Manager in Next Gen. (PL-25545)
 
@@ -2234,7 +2125,7 @@ Users can assign roles to the built-in user group at a specific scope, which bec
 
 See [Add a Custom Secret Manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager).
 
-##### Fixed issues
+#### Fixed issues
 
 - Fixed the display of an error message in the UI. The error message was not properly displayed when a pipeline selector was added using invalid characters. (DEL-4755)
 
@@ -2248,9 +2139,11 @@ See [Add a Custom Secret Manager](/docs/platform/Secrets/Secrets-Management/cust
 
   This is fixed by fixing the order of commit hashes being passed from delegate to SCM service.
 
-#### August 31, 2022, version 76515
+## August 2022
 
-##### What's new
+### Version 76515
+
+#### New features and enhancements
 
 - Git Experience in Next Gen is now enhanced and simplified. (PL-26339)
 
@@ -2258,11 +2151,7 @@ See [Add a Custom Secret Manager](/docs/platform/Secrets/Secrets-Management/cust
 
 - You can now switch branches directly from the Pipeline execution history. This will make it easier to switch branches straight from execution history rather than going to the Pipeline studio first and then returning to execution history. (PIE-4985)
 
-##### Early access
-
-No early access features are available in this release.
-
-##### Fixed issues
+#### Fixed issues
 
 - Email notification for approval was not to SCIM groups with "\_" in the group name. (PL-26457)
 
@@ -2273,11 +2162,11 @@ No early access features are available in this release.
   The Add Stage and Add Step options are now hidden for users with View permission.
 
 - The existing Input Sets were not getting updated. (PIE-4855)
-  To fix this, Save as Input Set is changed to Save as New Input Set to indicate the correct behaviour.
+  To fix this, Save as Input Set is changed to Save as New Input Set to indicate the correct behavior.
 
-#### August 25th, 2022, version 76425
+### Version 76425
 
-##### What's new
+#### New features and enhancements
 
 - Now you can add up to 50,000 users in paid plans. The limit remains at 1,500 for free plans and Harness Community Edition accounts. (PL-27300)
 
@@ -2289,11 +2178,7 @@ No early access features are available in this release.
 
   Harness will continue to support users who have been using the old Git Experience.
 
-##### Early access
-
-N/A
-
-##### Fixed issues
+#### Fixed issues
 
 - Error messages were not displayed while creating a HashCorp Vault Connector. (PL-27383​)
 
@@ -2313,19 +2198,15 @@ N/A
 
   Now the case is handled and the response is returned as expected. (PIE-4727)​
 
-#### August 18th, 2022, version 76319
+### Version 76319
 
-##### What's new
+#### New features and enhancements
 
 - The versioning scheme for immutable Delegates was changed from 1.0.`<build_number>` to year.month.`<buildNumber>`. (DEL-4338)
 
 - ReactDOM unstable_bacthedupdates ​will now be used for batch updates. (PIE-4555)
 
-##### Early access
-
-N/A
-
-##### Fixed issues
+#### Fixed issues
 
 - Changed error messaging for NextGen task failures to display a specific error message, if one exists. These errors usually occur when there is no available Delegate to perform a task. (DEL-3933)
 
@@ -2339,19 +2220,15 @@ N/A
 
 - Triggering a Pipeline was throwing an error. (PIE-4680, ZD-33179,33187)
 
-#### August 8th, 2022, version 76128
+### Version 76128
 
 Delegate Version: 22.08.76128
 
-##### What's new
+#### New features and enhancements
 
 You will now see a quicker account load when attempting to switch accounts. (PL-21667)
 
-##### Early access
-
-N/A
-
-##### Fixed issues
+#### Fixed issues
 
 - Fixed an issue with the INSTALL_CLIENT_TOOLS_IN_BACKGROUND environment variable that prevented detection of client tools when download was disabled. (DEL-4246)
 
@@ -2375,21 +2252,17 @@ N/A
 
 - Editing Terraform Var file was throwing an error. (PIE-4618, ZD-32734)
 
-#### August 1st, 2022, version 76030
+### Version 76030
 
 Delegate Version: 22.08.76127
 
-##### What's new
+#### New features and enhancements
 
 - Role-based Access Control has been added to Custom Dashboards. To access Dashboards, users now must have the View Dashboards permissions. (CDB-227)
 
 - Stream logs' performance has improved.​ (PIE-4447)
 
-##### Early access
-
-N/A
-
-##### Fixed issues
+#### Fixed issues
 
 - On Custom Dashboards, the filters for Deployments and CG Deployments have been merged into a single Deployments filter tag. (CDB-259)
 
@@ -2407,19 +2280,17 @@ N/A
 
 - Adding allowed values for the Timeout field as part of Input Sets was throwing an error in Pipelines. (PIE-3831)
 
-#### July 20th, 2022, version 75921
+## July 2022
 
-##### What's new
+### Version 75921
+
+#### New features and enhancements
 
 - Resource constraint blocking in approval state (PIE-3195)
 
   The infrastructure resource constraint now has the Stage scope to unblock the operations of other Pipelines.
 
-##### Early access
-
-N/A
-
-##### Fixed issues
+#### Fixed issues
 
 - Create File API was not working correctly in Git Experience. (PL-26360)
 
@@ -2429,9 +2300,9 @@ N/A
 
 - The Audit Trail for Delegate creation was not captured properly. (DEL-4321, ZD-31813)
 
-#### July 11th, 2022, version 75829
+### Version 75829
 
-##### What's new
+#### New features and enhancements
 
 - Support for the use of secrets for notifications to be sent via the Delegate (PL-22129)
 
@@ -2463,11 +2334,7 @@ N/A
 
 - Removed the io_netty_netty dependency from delegates​. (DEL-3798)
 
-##### Early access
-
-N/A
-
-##### Fixed issues
+#### Fixed issues
 
 - Sanitization of secrets with trailing spaces was not happening correctly. (PL-25784)
 

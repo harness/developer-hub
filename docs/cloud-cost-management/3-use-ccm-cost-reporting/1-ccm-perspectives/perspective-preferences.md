@@ -55,6 +55,17 @@ The following preferences are applicable to all perspectives. By default, some o
     ![](./static/create-cost-perspectives-24.png)
     
 
+* **Show negative cost**
+
+  Displays the negative cost with a dotted red bar and labels it as **NegativeCost** in the legend. To view it, please select "Group By" as **None** because in other Group Bys, it might not appear in the top 12 entries.
+  :::important Note
+  It will function as a toggle button only; we cannot save it at the perspective or account settings level.
+  :::
+  
+  
+    ![](./static/create-cost-perspectives-31.png)
+
+
 * **Show "unallocated" costs on clusters**
 
   In certain graphs, you may come across an item labeled as **Unallocated**. This entry is included to provide a comprehensive view of all costs. When you examine the **Total Cost** in the perspective, it encompasses the costs of all items, including the unallocated cost. This option is available only in perspectives with cluster rules. For more information, go to [Unallocated Cost](/docs/cloud-cost-management/get-started/key-concepts#unallocated-cost).

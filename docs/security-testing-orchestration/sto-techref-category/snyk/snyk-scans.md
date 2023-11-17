@@ -261,7 +261,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: snyklabs
+        connectorRef: CODEBASE_CONNECTOR_snyklabs
         repoName: java-goof
         build: <+input>
   stages:
@@ -275,7 +275,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: myharnessdelegate
+              connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -323,7 +323,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: Subsolution
+        connectorRef: CODEBASE_CONNECTOR_Subsolution
         repoName: SubSolution
         build: <+input>
   stages:
@@ -346,7 +346,7 @@ pipeline:
                   name: Snyk_Build
                   identifier: Snyk_Build
                   spec:
-                    connectorRef: mydockerhubconnector
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: snyk/snyk:dotnet
                     shell: Sh
                     command: |
@@ -416,7 +416,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: myharnessdelegate
+              connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -431,16 +431,18 @@ pipeline:
                   name: background-dind-service
                   identifier: Background_1
                   spec:
-                    connectorRef: mydockerhubconnector
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: docker:dind
                     shell: Sh
+                    entrypoint:
+                      - dockerd
                     privileged: true
               - step:
                   type: Run
                   name: run-snyk-scan
                   identifier: Run_1
                   spec:
-                    connectorRef: mydockerhubconnector
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: snyk/snyk:docker
                     shell: Sh
                     command: |
@@ -512,7 +514,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: snyk_terraform_goof
+        connectorRef: CODEBASE_CONNECTOR_snyk_terraform_goof
         build: <+input>
   stages:
     - stage:
@@ -524,7 +526,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: myharnessdelegate
+              connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -542,7 +544,7 @@ pipeline:
                         name: Snyk IaC Run
                         identifier: Run_1
                         spec:
-                          connectorRef: DockerHub
+                          connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                           image: snyk/snyk:linux
                           shell: Sh
                           command: |
