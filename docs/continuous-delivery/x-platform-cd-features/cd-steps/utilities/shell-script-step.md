@@ -717,16 +717,16 @@ sshpass -p $DEVICE_PASS ssh $DEVICE_USER@$DEVICE_IP "sudo flashrom -w /home/$DEV
 
 ### Running Kubernetes Commands in the Shell Script
 
-In your Shell script step, you can run Kubernetes commands. It doesn't require a user to provide an infrastructure, if the user has a Kubernetes Delegate installed on a particular cluster with the correct permissions, you can run a shell script command that runs a `kubectl client command`
+You can run Kubernetes commands (kubectl) in a Shell script step. The step doesn't require you to provide an infrastructure. All that is required is a Harness Kubernetes delegate installed on a target cluster with the correct permissions.
 
-For Example in your Script Body:
+Example script:
 
 ```
 export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}  
 kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.namespace> -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness\.io/color=="'$(kubectl get service/<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName> -n <+infra.namespace> -o jsonpath='{.spec.selector.harness\.io/color}')'")].metadata.name}') --replicas=0
 ```
 
-The step may look like this:
+The step might look like this:
 
 ```
               - step:
