@@ -242,9 +242,9 @@ Harness NextGen release 80811 includes the following changes for the Harness Del
   
   This issue has been fixed.
 
-#### Hotfixes
+### Version 23.10.80808
 
-##### Version 23.10.80808
+#### Hotfix
 
 - For generic (non-Docker) artifacts available in Artifactory, you can use an expression to specify the path to the artifact. This filter works in the same way as the artifact filter in Harness FirstGen, and it is useful when you want to fetch artifacts from multiple paths. (CDS-78181)
 
@@ -286,21 +286,25 @@ Harness NextGen release 80504 includes the following changes for the Harness Del
 
 - Fixed an issue where the `ACCOUNT_SECRET` environment variable was overriding the `DELEGATE_TOKEN` value in the delegate's Docker container for delegates with an immutable image type (image tag `yy.mm.xxxxx`). (PL-40728)
 
-#### Hotfixes
+### Version 23.09.80512
 
-##### Version 23.09.80512
+#### Hotfix
 
 - ShellScript WinRM deployments didn't honor the configured timeout. For example, the step would time out by default in 30 minutes, even when the configured timeout was set to one day. (CDS-78219, ZD-48180, ZD-49871)
 
    The issue has been resolved. Now, the WinRM session timeout is set to the maximum of the step timeout configured plus 30 minutes.
 
-##### Version 23.09.80511
+### Version 23.09.80511
+
+#### Hotfix
 
 - Previously, there was an issue with the task capacity limiter for delegates where the counter didn't decrement when a task was aborted. (PL-41408)
 
    This issue has been fixed. Now, when you deploy a delegate and set the `DELEGATE_TASK_CAPACITY` environment variable, the number of concurrent tasks for the delegate is limited to the specified capacity. 
 
-##### Version 23.09.80510
+### Version 23.09.80510
+
+#### Hotfix
 
 - Added support for the Artifactory **Artifact Path** filter. (CDS-77244, CDS-79760)
 
@@ -308,13 +312,17 @@ Harness NextGen release 80504 includes the following changes for the Harness Del
 
    Harness recommends that you upgrade to delegate version 23.09.80511 to resolve this issue.
 
-##### Version 23.09.80507
+### Version 23.09.80507
+
+#### Hotfix
 
 - When escaping single quotes in environment variables, the same map was passed to subsequent command units which caused the escaped single quotes to escape again. (CDS-75775)
 
    This issue has been resolved. Subsequent command units do not escape single quotes again.
 
-##### Version 23.09.80506
+### Version 23.09.80506
+
+#### Hotfix
 
 - API calls made to Git providers during deployments caused rate limit errors. (CDS-78950)
 
@@ -376,38 +384,48 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
    This issue is fixed. The `publishedDelegateVersion` API now requires only view permission.
 
-#### Hotfixes
+### Version 23.08.80313
 
-##### Version 23.08.80313
+#### Hotfix
 
 - There were several `OverlappingFileLockException` errors caused by the version of the Chronicle Queue library used. (CCM-14174)
 
    The issue has been resolved. We upgraded the Chronicle Queue library to fix the errors.
 
-##### Version 23.08.80312
+### Version 23.08.80312
+
+#### Hotfix
 
 - In previous versions, when utilizing Artifactory as an artifact source, there was an issue where the retrieval of artifacts failed when the specified path included regular expressions, and the path structure was nested rather than flat. We are pleased to announce that this release addresses and resolves this issue.
 
-##### Version 23.08.80311
+### Version 23.08.80311
+
+#### Hotfix
 
 - In some scenarios for Amazon ECS blue/green deployments, the green application didn’t roll back consistently because the new service continued to run tasks in the `live-target-group`. To resolve this issue, Harness no longer fetches the count of running services in rollback tasks before rolling back the green service. The green service now rolls back consistently. (CDS-76795, ZD-49005)
 
    This fix is behind the feature flag `CDS_ECS_BG_GREEN_SERVICE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the fix.
 
-##### Version 23.08.80310
+### Version 23.08.80310
+
+#### Hotfix
 
 - Due to intermittent issues with the cf CLI, the Tanzu Application Services (TAS) Rolling deployment step failed to create the application. (CDS-75250)
 
   Now, before performing a rolling deployment, the TAS Rolling deployment step first verifies that the application exists. If the application does not exist, it deploys the application without using the rolling deployment strategy. If the application exists, it performs a rolling upgrade. 
 
-##### Version 23.09.80309
+### Version 23.09.80309
+
+#### Hotfix
 
 - Do not evaluate service variables on the Bash shell when exporting them in Command step. (CDS-75775)
 
   If a service variable has bash-interpretable characters like dollar ($), they will remain as is when exported in the Command step. Previously, they were being 
   evaluated using the bash interpreter (for example, "abc$1abc" would actually be sent as "abc$bc").
 
-##### Version 23.08.80308
+### Version 23.08.80308
+
+#### Hotfix
 
 - In certain scenarios for Amazon ECS blue/green deployments, the green application was not rolling back. We have added functionality to handle this scenario. We now consistently roll back the green service in Amazon ECS blue/green deployments. (CDS-76795, ZD-49005)
 
@@ -588,21 +606,25 @@ Harness NextGen release 79916 includes the following changes for the Harness Del
 
    This issue is now fixed.
 
-#### Hotfixes
+### Version 23.08.79910
 
-##### Version 23.08.79910
+#### Hotfix
 
 - The delegate stopped trying to reconnect to the WebSocket if the infrastructure experienced a network outage for over five minutes. (PL-40547)
 
   This issue is fixed. The delegate keeps trying to reconnect to the WebSocket until it's successful.
                                
-##### Version 23.08.79909
+### Version 23.08.79909
+
+#### Hotfix
 
 - The pipeline console did not show any logs to indicate that Kubernetes infrastructure container initialization and completion tasks were in progress.
 
   Now, to improve your experience, the console shows logs to indicate when the task begins and ends. (CDS-74522, ZD-47616)
 
-#### Version 23.07.79906
+### Version 23.07.79906
+
+#### Hotfix
 
 - Helm deployment steps timed out after the initial installation/upgrade phase, preventing the execution of a Helm rollback step. (CDS-73264)
 
