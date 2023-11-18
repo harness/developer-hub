@@ -3068,3 +3068,63 @@ Currently, only selectors can selected for steps. Though we can pass the delegat
 #### Does OPA policy evaluate by resolving expressions present in pipeline YAML?
 
 Unfortunately, Runtime input variables can not be evaluated just by OPA policy. You can implement policy steps in the pipeline to run the policy against the provided variable value.
+
+#### How can I define an artifact in a manifest?
+
+You have two options when referencing the artifacts you want to deploy:
+
+1. Add an artifact source to the Harness service and reference it using the Harness expression <+artifacts.primary.image> in the values YAML file.
+2. Hardcode the artifact into the manifests or values YAML file.
+
+For more details visit our documentation site here: [https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#using-artifacts-in-manifests]
+
+
+
+#### What is the artifact display limit on the Harness UI?
+
+Harness has limits on the artifact limits that can be shown in the UI. Details like DockerRegistry is limited to 10000. More details can be found at this link: [https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#artifact-limits-and-display-in-the-harness-ui]
+
+
+
+#### Are there issues with pulling an image from a private repository?
+
+Yes, when selecting artifacts/tags in Harness dropdown menus, if the artifacts/tags use Harness expressions, please keep in mind that some expressions can’t be resolved outside of pipeline execution. For example, artifacts/tags expressions using <+project.name> or <+org.name> will not resolve to values in runtime dropdowns, including those used to load tags.
+
+
+
+#### Can I propagate services between stages? 
+
+You can propagate services between stages and override services settings by using multiple values YAML files and/or Environmental Overrides. 
+
+#### How to propagate CD services? 
+
+You can use the same CD stage services across your pipeline stages. Once you have added a stage with a service, you can select the same service in subsequent stages by using the Propagate from option.
+
+More details here: [https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services/]
+
+
+#### What are some other ways of propagating service in CD?
+
+You can also propagate and override entire Services.
+
+More details here [https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files/]
+
+
+#### How to select and copy test in pipeline execution UI logs?
+
+With a single page (without scrolling), you can free-select and copy text from the pipeline execution logs. Please note that you will have to download the console logs if you want to select more then a single page worth of logs. 
+
+#### I'm restricted to a single page when it comes to selecting and copying logs, how can I get around this?
+
+You can download the UI console logs as described in this document: [https://developer.harness.io/docs/platform/pipelines/download-logs]
+
+
+#### How can I verify a deployment and its stability? 
+
+I would like to welcome you to Harness CV (Continuous Verification). A health source monitors health trends in a service by analyzing metrics from Application Performance Monitoring (APM) tools and logs from log management tools. Harness Continuous Verification (CV) supports the following Application Performance Monitoring (APM) and log management tools. 
+
+Please see more details here: [https://developer.harness.io/docs/continuous-delivery/verify/cv-whats-supported]
+
+#### I need to learn Harness CD quickly, how can I start?
+
+Try checking out the Ramp Up section of our documentation site. It can be a useful tool based on your organizational role: [https://developer.harness.io/docs/category/ramp-up-guides]
