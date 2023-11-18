@@ -2555,7 +2555,7 @@ These details are not available by default as only(status, time, pipeline name u
 
 #### How to create role binding (to a usergroup) through the api
 You can use below api by updating the details
-‘’’ https://app.harness.io/authz/api/roleassignments/multi?accountIdentifier=string&orgIdentifier=string&projectIdentifier=string' \ ‘’’ 
+‘’’ https://app.harness.io/authz/api/roleassignments/multi?accountIdentifier=string&orgIdentifier=string&projectIdentifier=string' \ ‘’’
 
 #### If there is temporary failure/communication issue for sometime while connecting to service how to make sure step is tried multiple times instead of getting failed with tried once
 You can configure failure strategy and use retry option for multiple run
@@ -3068,3 +3068,27 @@ Currently, only selectors can selected for steps. Though we can pass the delegat
 #### Does OPA policy evaluate by resolving expressions present in pipeline YAML?
 
 Unfortunately, Runtime input variables can not be evaluated just by OPA policy. You can implement policy steps in the pipeline to run the policy against the provided variable value.
+
+#### Can we refer output variable of type secret in container step?
+
+ Output variable of type secret cannot be referred in the container step, the same variable can be referred to if it's type string.
+
+ #### How do we resolve the issue when a pipeline is getting triggered twice though there is only one trigger?
+
+Check if you have 2 Harness webhooks pointing to this same account registered in your repo? If there are, please delete one of them, each repo is supposed to have only one Harness webhook registered in it. Also please check if there is a webhook configured at the organization level.
+
+#### Is there a way to use Harness platform manager for terrafrom plan encrytpion/decryption?
+
+Enabling the ff CDS_TERRAFORM_TERRAGRUNT_PLAN_ENCRYPTION_ON_MANAGER_NG feature flag if the default Harness secret manager is selected for the encryption/decryption of Terraform plans, please not that the FF does not work for custom or other secret managers.
+
+#### Every time when I run kubernetes deployment, harness create new version of configmap even of there were no changes which force pods redeployment. Is there a way to specify for harness to create new configmap only when changes detected?
+
+You can skip the versioning, it can be skipped by using these two ways:
+ 
+1. Annotate the manifest provided in the Harness service's Manifests section with harness.io/skip-versioning: "true".
+ 
+2. In the Harness service's Manifest Configuration page, select Manifests > Advanced, and then select the Skip Versioning checkbox.
+
+#### After a successful deployment with the namespace "x" and another failed deployment with the same namespace (x), we switched the namespace and now it seems it cannot properly do a helm history.
+
+You can enable the Ignore Release History Failed Status option to have Harness ignore these errors and proceed with install/upgrade. More on this can be referred here: [Documentation] (https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart/#ignore-release-history-failed-status)
