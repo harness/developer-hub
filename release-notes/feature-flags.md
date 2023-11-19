@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-10-19T11:09:25
+date: 2023-11-17T10:12:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 10
 ---
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - November 9, 2023
+### Latest - November 17th 2023
 
 ### New features and enhancements
 
@@ -25,16 +25,60 @@ This release does not include new features.
 
 This release does not include early access features.
 
-### Fixed issues in the Python SDK
+### Fixed issues in the Java SDK
 
-Released Android SDK 1.2.5
+Released Java SDK 1.3.1
 
- - Only log Flag/Segment not found warning in valid scenarios
+ - Added Java 21 Support.
+ - Marked private attributes not working. 
+ - Improved stream restart logic. 
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
+#### November 13, 2023
+
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Golang SDK and the Node SDK
+
+Released Golang SDK 0.1.16
+
+ - Add dead SSE stream detection
+ - SSE reconnection improvements
+ - Use Harness fork of r3labs/sse
+ - Add analytics headers to requests made by the SDK
+
+ Released Node SDK 1.3.7
+
+ - Upgrade Axios due to CVE
+
+
+#### November 9, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Python SDK
+
+Released Android SDK 1.2.5
+
+ - Only log Flag/Segment not found warning in valid scenarios
+
 
 #### November 7, 2023
 
@@ -116,7 +160,6 @@ Released Javascript SDK 1.20.0
 
 - Deprecated non-supported options
 
-
 #### October 30, 2023
 
 ##### New features and enhancements
@@ -132,6 +175,25 @@ This release does not include early access features.
 Released Node SDK 1.3.6
 
 - Updated to use Logger for logging instead of console.log
+
+#### October 25, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Golang SDK
+
+Released Golang SDK 0.1.15
+
+- If SSE disconnects, it now reconnects immediately instead of at every polling interval
+- Fixes panic that occurs when swapping from streaming to polling
+- Refactored streaming and polling code to aid maintainability
+
 
 #### October 18, 2023
 

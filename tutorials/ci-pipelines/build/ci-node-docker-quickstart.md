@@ -246,6 +246,10 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                           - report.xml
 ```
 
+### Test splitting
+
+You can use [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) to improve test times.
+
 ## Specify version
 
 ```mdx-code-block

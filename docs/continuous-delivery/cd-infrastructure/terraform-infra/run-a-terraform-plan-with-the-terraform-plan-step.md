@@ -261,7 +261,7 @@ You can even set a Harness Trigger where you can set the workspace name used in 
 ## AWS Connector Provider Credential Authentication for Terraform Plan and Apply Steps
 
 :::note
-This feature is behind the feature flag `TERRAFORM_AWS_CP_AUTHENTICATION` and requires Harness Delegate version 81202. This feature is available only to paid customers. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+This feature requires Harness Delegate version 81202. This feature is available only to paid customers. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 
@@ -587,6 +587,8 @@ and found no differences, so no changes are needed.
 ```
 
 ## Skip state storage
+
+The following feature requires a minimum Harness delegate version of 812xx.
 
 While running Terraform commands on the delegate, Harness by default will try to detect if there is a local state file in the Terraform working directory.
 

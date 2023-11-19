@@ -88,3 +88,19 @@ For details, go to [Deploy Manifests Separately using Apply Step](/docs/continuo
 
 * [Add a Kubernetes Sidecar Container](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container)
 
+## FAQ
+
+### Where does the Harness Kubernetes Apply step run by default?
+
+In a Kubernetes or Native Helm deployment type, the Apply step runs in the target cluster namespace specified in the Harness pipeline stage **Infrastructure** under **Environment**.
+
+### How do I configure the Apply step to run in a different namespace then the one defined in the infrastructure definition?
+
+Any namespace in the manifest you are deploying takes precedence over the namespace specified in the Harness stage **Infrastructure**. 
+
+You can use a values.yaml file to specify the namespace and reference it in the manifest. 
+
+In an Apply step, you can override this values.yaml and specify a different namespace for that particular Apply step.
+
+
+

@@ -52,7 +52,7 @@ This example runs `pytest`, includes [code coverage](../run-tests/code-coverage.
 
 :::tip
 
-You can use `parallelism` and `split_tests` to [define test splitting in a Run step](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism/#define-test-splitting) and improve test times.
+In Harness CI, you can [use test splitting (parallelism)](../run-tests/speed-up-ci-test-pipelines-using-parallelism) to improve test times for any language or test tool.
 
 :::
 
