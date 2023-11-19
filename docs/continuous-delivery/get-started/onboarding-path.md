@@ -437,10 +437,6 @@ The deployment strategies provided by Harness are:
 - Basic Deployments
 - Multi-service Deployments
 
-:::info note
-If you are using Canary Deployment, make sure you heat up your resources because the canary deployment strategy will not deploy on the existing cluster, rather it will spin up a new cluster and deploy it there.
-:::
-
 ```mdx-code-block
 <Tabs>
 <TabItem value="Rolling">
@@ -828,6 +824,9 @@ pipeline:
 </Tabs>
 ```
 
+:::info note
+If you are using Canary Deployment, make sure you heat up your resources because the canary deployment strategy will not deploy on the existing cluster, rather it will spin up a new cluster and deploy it there.
+:::
 
 Read the [Deployment concepts and strategies](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts/) article to learn more about these strategies and decide what strategy is best for you.
 
@@ -941,15 +940,161 @@ trigger:
 
 ### Step 1. Approvals & Governance (OPA)
 
+#### Approvals
+
 - **Harness Approval**
 You can specify Harness User Group(s) to approve or reject a Pipeline at any point in its execution. During deployment, the User Group members use Harness Manager to approve or reject the Pipeline deployment manually.
 
 - **JIRA Approval**
 Jira issues can be used to approve or reject a pipeline or stage at any point in its execution. During deployment, the pipeline evaluates the fields in the Jira ticket based on criteria you define. Its approval or rejection determines if the Pipeline or stage may proceed. You can add the Jira Approval step in Approval stages or in CD stages. The Jira Approval step prevents the stage execution from proceeding without an approval.
 
-- [Freeze Deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/)
-
 Learn more about Approvals in [this](https://developer.harness.io/tutorials/cd-pipelines/approvals/) article.
+
+#### Governance
+
+Harness Policy As Code uses Open Policy Agent (OPA) as the central service to store and enforce policies for the different entities and processes across the Harness platform. You can centrally define and store policies and then select where (which entities) and when (which events) they will be applied. Here are some Governance examples with Harness OPA.
+
+<details>
+<summary>OPA Policy that allows pipeline execution only with a specific delegate tag selected</summary>
+
+```
+package pipeline
+
+# Allow pipeline execution only with specific delegate tag selected
+deny[msg] {
+    # Find all pipeline stages
+    stage := input.pipeline.stages[_].stage
+
+    # Find all steps in each stage
+    step := stage.spec.execution.steps[_].step
+
+    # Check if the step has a delegate selector
+    delegateSelector := step.advanced.delegateSelector
+
+    # Check if the delegate selector has the specific tag
+    not contains(delegateSelector.tags, "specific_tag")
+
+    # Show a human-friendly error message
+    msg := sprintf("Pipeline '%s' cannot be executed without selecting a delegate with tag 'specific_tag'", [input.pipeline.name])
+}
+```
+
+::::info note
+This policy denies pipeline execution if a step in any stage does not have the specific delegate tag selected in its delegate selector. If the tag is not selected, the policy will show a human-friendly error message.
+::::
+
+</details>
+
+<details>
+<summary>OPA policy that can be applied using the On Run event for a pipeline to enforce the use of specific connectors</summary>
+
+```
+package pipeline
+
+# Deny pipeline execution if a specific connector is not selected
+deny[msg] {
+    # Find all stages ...
+    stage = input.pipeline.stages[_].stage
+    # ... that have steps ...
+    step = stage.spec.execution.steps[_].step
+    # ... that use a connector ...
+    connector = step.spec.connectorRef.name
+    # ... that is not in the allowed list
+    not contains(allowed_connectors, connector)
+    # Show a human-friendly error message
+    msg := sprintf("Pipeline '%s' cannot use connector '%s'", [input.pipeline.name, connector])
+}
+
+# Connectors that can be used for pipeline execution
+allowed_connectors = ["MyConnector1", "MyConnector2"]
+contains(arr, elem) {
+    arr[_] = elem
+}
+```
+
+::::info note
+You can customize the `allowed_connectors` list to include the connectors that are allowed for pipeline execution. If a pipeline uses a connector that is not in the `allowed_connectors` list, the policy will deny pipeline execution and display an error message.
+::::
+
+</details>
+
+<details>
+<summary>Policy that can be applied using the On Run event for a pipeline to execute only in certain environments</summary>
+
+```
+package pipeline
+
+# Deny pipelines that do not use allowed environments
+# NOTE: Try removing "test" from the 'allowed_environments' list to see the policy fail
+deny[msg] {
+    # Find all deployment stages
+    stage = input.pipeline.stages[_].stage
+    stage.type == "Deployment"
+    # ... where the environment is not in the allow list
+    not contains(allowed_environments, stage.spec.infrastructure.environment.identifier)
+    # Show a human-friendly error message
+    msg := sprintf("deployment stage '%s' cannot be deployed to environment '%s'", [stage.name, stage.spec.infrastructure.environment.identifier])
+}
+
+# Deny pipelines if the environment is missing completely
+deny[msg] {
+    # Find all deployment stages
+    stage = input.pipeline.stages[_].stage
+    stage.type == "Deployment"
+    # ... without an environment
+    not stage.spec.infrastructure.environment.identifier
+    # Show a human-friendly error message
+    msg := sprintf("deployment stage '%s' has no environment identifier", [stage.name])
+}
+
+# Environments that can be used for deployment
+allowed_environments = ["dev","qa","prod"]
+
+contains(arr, elem) {
+    arr[_] = elem
+}
+```
+
+::::info note
+You can modify the allowed_environments list to include the environments where you want the pipeline to be executed. If the pipeline is executed in an environment that is not in the allowed_environments list, the policy will fail and display an error message.
+::::
+
+</details>
+
+#### [Freeze Deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/)
+
+```yaml
+freeze:
+  name: test-freeze
+  identifier: testfreeze
+  entityConfigs:
+    - name: project_specific
+      entities:
+        - type: Project
+          filterType: NotEquals
+          entityRefs:
+            - chaosprjyps
+            - CI_QS_yps
+            - ypsnativehelm
+        - type: Service
+          filterType: All
+        - type: Environment
+          filterType: All
+        - type: EnvType
+          filterType: Equals
+          entityRefs:
+            - Production
+  status: Disabled
+  orgIdentifier: testOrgyps
+  windows:
+    - timeZone: Asia/Calcutta
+      startTime: 2023-11-18 08:39 PM
+      duration: 30m
+      recurrence:
+        type: Monthly
+  description: ""
+```
+
 
 ### Step 2. RBAC
 Role-based access control (RBAC) lets you control who can access your resources and what actions they can perform on the resources. To do this, a Harness account administrator assigns resource-related permissions to members of user groups. The **Center of Excellence** strategy and **Distributed Center of DevOps** strategy are the two most popular RBAC access control strategies used.
@@ -977,6 +1122,21 @@ Take a look at [this](https://developer.harness.io/docs/platform/role-based-acce
 
 ### Step 3. Continuous Verification
 Harness CV is a critical step in the deployment pipeline that validates deployments. Harness CV integrates with APMs and logging tools to verify that the deployment is running safely and efficiently. Harness CV applies machine learning algorithms to every deployment for identifying normal behavior. This allows Harness to identify and flag anomalies in future deployments. During the Verify step, Harness CV automatically triggers a rollback if anomalies are found.
+
+**Deployment strategies for Continuous Verification**:
+- Continuous Verification type
+  - Auto
+  - Rolling Update
+  - Canary
+  - Blue Green
+  - Load Test
+- Sensitivity
+- Duration
+- Artifact tag
+- Fail on no analysis
+- Health Source
+
+To start using Harness CV, refer to the [Configure CV](https://developer.harness.io/docs/category/configure-cv) article.
 
 ## Phase-4: Deploy at Scale
 
@@ -1187,9 +1347,6 @@ template:
 </details>
 
 #### Terraform Automation
-:::info note
-You need to have Terraform CLI installed in-order to carry out this automation
-:::
 
 <details>
 <summary>Terraform Script to create harness resources (Services, Environments, Pipelines)</summary>
@@ -1490,3 +1647,7 @@ pipeline:
 ```
 
 </details>
+
+:::info note
+You need to have Terraform CLI installed in-order to carry out this automation
+:::
