@@ -60,6 +60,10 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 <!-- - You can now do the following witsearch and filter Added the support for Search and filtering for overrides V2. (CDS-80838) 
 
 Question out to Shylaja (PM): When I requested Sourabh Awashti for access to a project in which I can see this enhancement, he informed me that only BE changes are done. UI changes are not available yet. The APIs are internal too. So it doesn’t make sense to announce the feature at this time. Do you agree? And should we flip the Release Notes Candidate field on this ticket to No?
+
+Update from Shylaja on Slack (Sourabh present in the same chat): "Yes @deepak.bolangady we can announce when the Ui changes are also available."
+
+So I flipped the Release Notes Candidate field on CDS-80838 to No and requested both of them to set the field on the UI ticket instead.
 -->
 
 #### Fixed issues
@@ -70,7 +74,7 @@ Question out to Shylaja (PM): When I requested Sourabh Awashti for access to a p
 
 - AWS SAM Build and AWS SAM Deploy steps fail if the image that you specify for the `--build-image` command option uses an expression or Bash variable. (CDS-83465)
 
-  This issue has been fixed. Harness now passes necessary environment variables during runtime, so any expression that is created within the containerised step group is resolved correctly. <!-- Reviewed and approved by Piyush Bhuwalka in Jira. -->
+  This issue has been fixed. Harness now passes necessary environment variables during runtime, so any expression that is created within the containerized step group is resolved correctly. <!-- Reviewed and approved by Piyush Bhuwalka in Jira. -->
 
 - If you opened the step drawer when creating a step template in **Account Resources** > **Templates**, the step drawer did not list some Continuous Integration steps, such as the Run step. (CDS-83442, ZD-53103)
 
@@ -78,15 +82,15 @@ Question out to Shylaja (PM): When I requested Sourabh Awashti for access to a p
 
 - You could not switch to the *Expression* value type when specifying an artifact's repository. When you selected the Expression value type, Harness displayed the following generic message: "Something went wrong. The error has been reported and we are looking into it with high priority. Please refresh your browser to continue." (CDS-83367)
 
-  This issue has been fixed. <!-- Requested shivanand.sonnad to review the description I added in Jira -->
+  This issue has been fixed. <!-- Reviewed and approved by shivanand.sonnad in Jira. -->
 
 - When verifying the artifact in a service step, Harness considered only the delegate selectors specified in the connector of the artifact source. Harness ignored the precedence rules described in [Delegate selector priority](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#delegate-selector-priority). (CDS-82232)
 
-  This issue has been fixed. Now, Harness gives priority to stage-level and pipeline-level delegate selectors as described in the documentation. This fix is behind the feature flag `CDS_SERVICE_AND_INFRA_STEP_DELEGATE_SELECTOR_PRECEDENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the fix. <!-- Requested abhishek.abhishek to review the description I added in Jira -->
+  This issue has been fixed. Now, Harness gives priority to stage-level and pipeline-level delegate selectors as described in the documentation. This fix is behind the feature flag `CDS_SERVICE_AND_INFRA_STEP_DELEGATE_SELECTOR_PRECEDENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the fix. <!-- Reviewed and approved by abhishek.abhishek in Jira. -->
 
-- When you delete a value in a service input field, the values in dependent fields are cleared, but the value you attempted to delete is not cleared. For example, if you attempt to clear the Artifact Directory field, the Artifact Path field is cleared, but the value in the Artifact Directory field is not cleared. The value gets cleared only on the second attempt. (CDS-80149)
+- When you delete the value of an input field in the service overrides section of a pipeline, the values in dependent fields are cleared, but the value you attempted to delete is not cleared. For example, if you attempt to clear the Artifact Directory field, the Artifact Path field is cleared, but the value in the Artifact Directory field is not cleared. The value gets cleared only on the second attempt. (CDS-80149)
 
-  This issue has been fixed. <!-- Requested shivanand.sonnad to review the description I added in Jira -->
+  This issue has been fixed. <!-- Reviewed and approved by shivanand.sonnad in Jira and Slack. -->
 
 ### Version 81401
 <!-- November 15 -->
