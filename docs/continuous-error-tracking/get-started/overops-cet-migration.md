@@ -31,7 +31,7 @@ Follow the steps below to choose an appropriate service for onboarding to CET.
    - Name: cet-migration
    - Environment: Staging2
 
-2. Get a Harness account from the CSM by submitting a request using [support@harness.io](support@harness.io).
+2. Get a Harness account from the CSM by submitting a request using support@harness.io.
 
 3. Request a CET license for your Harness account.
 
