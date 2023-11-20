@@ -1,9 +1,9 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-10-09T10:00:20
+date: 2023-11-15T10:00:20
 tags: [NextGen, "service reliability management"]
-sidebar_position: 7
+sidebar_position: 13
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -18,7 +18,8 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest: Version 1.3.3
+## Latest: November 15, 2023, version 1.7.0
+
 
 ### New features and enhancements
 
@@ -31,6 +32,141 @@ This release does not include any early access features.
 
 
 ### Fixed issues
+
+- The Add Annotation drawer was opening even when clicking near the **Add Annotation** button. (SRM-16062)
+  
+  This issue has been resolved. Now, the Add Annotation drawer opens only when clicking on the **Add Annotation** button.
+  
+- The Add SLO screen wrongly indicated that a maximum of 20 SLOs could be selected, even though selecting a maximum of 30 SLOs was allowed. For example, when 30 SLOs were selected, it displayed "30/20 selected." (SRM-16078)
+  
+  This issue has been resolved. Now, the UI correctly indicates that a maximum of 30 SLOs can be selected.
+  
+- On the SLO tab, the **Clear Filter** option was not displayed when a filter was applied to the **Evaluation** field. (SRM-16079)
+  
+  This issue has been resolved. Now, the **Clear Filter** option is displayed when a filter is applied to the **Evaluation** field.
+
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### November 03, 2023, version 1.6.1
+
+
+##### New features and enhancements
+
+- A new search functionality for the service and environment filters drop-down on the Changes page has been introduced. The filters now display a **Search** option when the drop-down list contains more than 10 options. (SRM-15946)
+
+- The maximum number of simple SLOs that can contribute to a composite SLO has been increased from 20 to 30. (SRM-15972)
+
+- Because a majority of change sources are now configured automatically, the behavior on the Change Impact screen has been modified.  Now, when no change event is found in the selected time range, the "No change event" message is displayed instead of "Configure change source”. (SRM-15985)
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+
+
+##### Hotfixes
+
+This release does not include hotfixes.
+
+
+#### October 31, 2023, version 1.5.3
+
+
+##### New features and enhancements
+
+- Added the option to set the start month of quarterly Service Level Objectives (SLOs). This enhancement helps you define your SLOs and match them with your organization’s reporting and operational cycles. (SRM-15677)
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+- The Changes page displayed all services and environments associated with an account, regardless of whether they were linked to a monitored service or not. (SRM-15926)
+  
+  This issue has been resolved. Now, the Service and Environment filters on the Changes page display only the services and environments linked to monitored services, whether they are at the account, organization, or project level.
+
+- Simple SLO links on the Composite SLO details page were directing to blank pages. (SRM-15957)
+
+  This issue has been resolved. Simple SLO links on the Composite SLO details page now correctly direct to the appropriate pages.
+
+
+##### Hotfixes
+
+This release does not include hotfixes.
+
+
+#### October 20, 2023, version 1.4.2
+
+##### New features and enhancements
+
+- On the SLO Details page, you can now view the count of contributing SLOs for composite SLOs. This enhancement simplifies the management of composite SLOs. (SRM-15825)
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+- PagerDuty incidents were not captured in the free subscription environment. (SRM-10824)
+  
+  This issue has been resolved. Now, the PagerDuty incidents are being displayed in the free subscription environment.
+  
+- The change-event API was significantly slower when compared to other listing APIs, and the initial calls to the change-event API were failing. (SRM-15709)
+  
+  This issue has been resolved. Now, there is a significant improvement in the API response size and response time.
+  
+- On the Changes page, the **Clear Filter** button was enabled even when no filters were selected. (SRM-15764)
+  
+  This issue has been resolved. Now, the **Clear Filter** button is enabled only when the filters are selected.
+  
+- Selecting a large number of values in the **Services** and **Environment** filters on the Changes page led to error 414 indicating that the URL is too long. (SRM-15765)
+  
+  This issue is resolved by limiting selections to a maximum of 10 values for **Services** and **Environment** filters.
+  
+- An alignment issue with the **Change Event** card has been fixed to ensure consistent information display. (SRM-15793)
+
+- The Service Level Indicator (SLI) iterator attempted to create tasks that already existed. (SRM15870)
+  
+  This issue has been resolved. Now, the SLI iterator correctly handles task creation, preventing unnecessary retries.
+
+
+##### Hotfixes
+
+This release does not include hotfixes.
+
+
+#### October 9, 2023, Version 1.3.3
+
+##### New features and enhancements
+
+This release does not include any new features.
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
 
 - The monitored service dropdown filter on the SLO listing page was restricted to displaying a limited number of services. (SRM-15690)
   
@@ -45,18 +181,12 @@ This release does not include any early access features.
   This issue has been resolved. Now, the SLO details view page properly fits the size of your browser.
 
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
 
 
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
-
-#### Version 1.2.5
+#### September 29, 2023, Version 1.2.5
 
 ##### New features and enhancements
 
@@ -80,7 +210,7 @@ This release does not include any early access features.
 This release does not include hotfixes.
 
 
-#### Version 1.1.3
+#### September 25, 2023,Version 1.1.3
 
 ##### New features and enhancements
 
@@ -114,7 +244,7 @@ This release does not include any early access features.
 
 ### Fixed issues
 
-- Pagerduty events were not being deleted after the deletion of a project or organization. (SRM-15263)
+- PagerDuty events were not being deleted after the deletion of a project or organization. (SRM-15263)
 
    This issue has been resolved. Deleting a project or organization no longer leaves behind orphaned Pagerduty events.
 

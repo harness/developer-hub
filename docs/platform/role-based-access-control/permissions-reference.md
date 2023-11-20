@@ -90,6 +90,12 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Budgets | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
 | Load Balancer | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
 
+### Code Repository
+
+| Resource | Permissions |
+| ---  | ----------- |
+| Repository | <ul><li>View</li><li>Create/Edit (Create repositories and edit repository settings, such as descriptions, webhooks, and rules)</li><li>Delete</li><li>Push (Repository contributor permissions, such as committing, pushing, creating/deleting branches, creating/deleting tags)</li></ul> |
+
 ### Feature Flags
 
 | Resource | Permissions |

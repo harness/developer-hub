@@ -39,11 +39,11 @@ Here's an overview of the Microsoft Azure Cloud Provider settings.
 
 This section assume you are familiar with Azure RBAC.
 
-For security reasons, Harness uses an application object and service principal rather than a user identity. The process is described in [How to: Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) from Azure.
+For security reasons, Harness uses an application object and service principal rather than a user identity. The process is described in [Create a Microsoft Entra application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) from Microsoft.
 
 Briefly, the process is:
 
-1. Register an application with Azure AD and create a service principal.
+1. Register an application with Microsoft Entra ID and create a service principal.
 2. Assign a role to the Azure application.  
 You assign the role depending on the scope you want to use (Azure subscription or resource group). Typically, an Azure subscription is used.  
 You use the scope to assign a role to the Azure application.  
@@ -162,17 +162,17 @@ In Microsoft Azure, you can find the information you need in the App registratio
 
 ## Step 3: Client ID
 
-This is the **Client Application ID** for the Azure app registration you are using. It is found in the Azure Active Directory **App registrations**. For more information, see [Quickstart: Register an app with the Azure Active Directory v1.0 endpoint](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app) from Microsoft.
+This is the **Client Application ID** for the Azure app registration you are using. It is found in the Microsoft Entra ID **App registrations**. For more information, go to [Quickstart: Register an application with the Microsoft identity platform](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app) from Microsoft.
 
 To access resources in your Azure subscription, you must assign the Azure App registration using this Client ID to a role in that subscription. Later, when you set up an Azure service infrastructure in a Harness environment, you will select a subscription.
 
 If the Azure App registration using this Client ID is not assigned a role in a subscription, no subscriptions will be available.
 
-For more information, see [Assign the application to a role](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) and [Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) from Microsoft.
+For more information, go to [Assign the application to a role](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) and [Create a Microsoft Entra application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) from Microsoft.
 
 ## Step 4: Tenant ID
 
-The **Tenant ID** is the ID of the Azure Active Directory (AAD) in which you created your application. This is also called the **Directory ID**. For more information, see [Get tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id) and [Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) from Azure.
+The **Tenant ID** is the ID of the Microsoft Entra ID in which you created your application. This is also called the **Directory ID**. For more information, go to [Get tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id) and [Use the portal to create a Microsoft Entra ID application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) from Azure.
 
 ## Step 5: Select Encrypted Key
 
@@ -185,7 +185,7 @@ This is the authentication key for your application. This is found in **Azure Ac
 [![](./static/add-microsoft-azure-cloud-provider-47.png)
 ](./static/add-microsoft-azure-cloud-provider-47.png)
 
-You cannot view existing secret values, but you can create a new key. For more information, see [Create a new application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) from Azure.
+You cannot view existing secret values, but you can create a new key. For more information, go to [Create a new application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) from Azure.
 
 ## Artifact Support for Download and Copy
 

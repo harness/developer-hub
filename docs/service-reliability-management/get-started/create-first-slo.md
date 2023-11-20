@@ -252,9 +252,11 @@ Configure the following settings to determine the compliance time period and tar
 
 
 :::info
-The "Rolling period" type calculates the compliance period based on the current time and the length of the period. For example, if you select a rolling period of seven days, the compliance period will always be the last seven days, regardless of the current date.
+The **Rolling period** type calculates the compliance period based on the current time and the length of the period. For example, if you select a rolling period of seven days, the compliance period will always be the last seven days, regardless of the current date.
 
-On the other hand, the "Calendar period" type sets fixed calendar periods for the compliance period, such as weekly, monthly, or quarterly. For example, if you select a monthly period length, the compliance period will always be the entire calendar month, regardless of when the measurement starts.
+On the other hand, the **Calendar period** type sets fixed calendar periods for the compliance period, such as weekly, monthly, or quarterly. For example, if you select a monthly period length, the compliance period will always be the entire calendar month, regardless of when the measurement starts.
+
+You can also define the starting month of a quarter according to your organization’s reporting and operational cycles.
 :::
 
 

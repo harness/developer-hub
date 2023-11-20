@@ -92,7 +92,6 @@ To add the `PLUGIN_USER_ROLE_ARN` stage variable:
 2. In the **Advanced** section, add a stage variable.
 3. Enter `PLUGIN_USER_ROLE_ARN` as the **Variable Name**, set the **Type** to **String**, and then select **Save**.
 4. For the **Value**, enter the full ARN value.
-
    * For cross-account roles, this ARN value must correspond with the AWS connector's ARN.
    * For connectors that use the delegate's IAM role, the ARN value must identify the role you want the build pod/machine to use.
 

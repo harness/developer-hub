@@ -55,7 +55,7 @@ Verify that you have the following:
 
 1. **A Kubernetes cluster**. We recommend [K3D](https://k3d.io/v5.5.1/) for installing the Harness GitOps Agent and deploying a sample application in a local development environment.
     - For requirements, go to [Harness GitOps Agent Requirements](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/#requirements).
-2. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
+2. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
     - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Getting Started with Harness GitOps
@@ -421,6 +421,7 @@ kubectl delete service guestbook-ui -n default
 You've just learned how to use **Harness GitOps** to deploy an application using a Kubernetes manifest.
 
 #### What's Next?
+- Learn about [variables](/tutorials/cd-pipelines/variables) and [pipeline triggers](/tutorials/cd-pipelines/trigger).
 - Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
@@ -446,7 +447,7 @@ Verify the following:
 3. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness delegates and deploying a sample application in a local development environment.
     - Check [delegate System and network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements).
 4. **Install [Helm CLI](https://helm.sh/docs/intro/install/)**.
-5. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
+5. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
     - For details on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Getting Started with Harness CD {#getting-started-harness-cd-cli}
@@ -460,8 +461,8 @@ Verify the following:
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-darwin-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-darwin-amd64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
@@ -477,8 +478,8 @@ Verify the following:
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-arm64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-arm64.tar.gz 
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz 
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
@@ -489,8 +490,8 @@ Verify the following:
     ```
 
     ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz
     echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
     source ~/.bash_profile
     ```
@@ -502,13 +503,13 @@ Verify the following:
 
     ```mdx-code-block
     </TabItem>
-    <TabItem value="windows"  label="Windows">
+    <TabItem value="windows" label="Windows">
     ```
 
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
     ```
-    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
+    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip  -OutFile ./harness.zip
     ```
         
     b. Extract the downloaded zip file and change directory to extracted file location.
@@ -527,7 +528,7 @@ Verify the following:
     </Tabs>
     ```
 
-2. Clone the Forked **harnessed-example-apps** repo and change directory.
+2. Clone the Forked **harnesscd-example-apps** repo and change directory.
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
     cd harnesscd-example-apps 
@@ -751,7 +752,7 @@ Verify that you have the following:
 2. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness Delegates and deploying a sample application in a local development environment.
     - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 3. **Install the [Helm CLI](https://helm.sh/docs/intro/install/)** in order to install the Harness Helm delegate.
-4. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
+4. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
     - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) for more information on forking a GitHub repository.
 
 ## Getting Started with Harness CD {#getting-started-harness-cd-ui}
@@ -845,7 +846,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/github-connector.yml).
     - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
-    - Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
+    - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
     - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
     - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
@@ -901,7 +902,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="Canary">
+<TabItem value="canary" label="Canary">
 ```
 
 <details open>
@@ -928,7 +929,7 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Blue Green">
+<TabItem value="bg" label="Blue Green">
 ```
 
 <details open>
@@ -956,7 +957,7 @@ Blue Green deployments involve running two identical environments (stage and pro
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Rolling">
+<TabItem value="rolling" label="Rolling">
 ```
 
 <details open>
@@ -1028,6 +1029,7 @@ You've just learned how to use Harness CD to deploy an application using a Kuber
 
 #### What's Next?
 
+- Learn about [variables](/tutorials/cd-pipelines/variables) and [pipeline triggers](/tutorials/cd-pipelines/trigger).
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
 ## How to deploy your own app by using Harness

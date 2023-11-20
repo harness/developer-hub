@@ -366,5 +366,481 @@ The default value is set to 0 (not enabled).
 
 
 
+#### How can I set the CET agent to exclude a method to optimize its use? 
 
+There are two ways to set the CET agent to exclude a method to optimize its use:
+- For the environment variable, use the parameter ET_OPTIMIZE_METHODS=
+- For the JVM argument, use the parameter -Dharness.etagent.optimize.methods=
+
+Example: -Dharness.etagent.optimize.methods=com.company.Class1:method1|com.company.Class2:method2
+
+
+
+
+#### What is the significance of using the ET_OPTIMIZE_METHODS parameter with the CET agent?
+
+ET_OPTIMIZE_METHODS excludes a method during code throttling. In some cases, 3rd-party code is responsible for a significant part of the Micro-Agent’s overhead. Excluding it specifically from exception handling significantly reduces overhead.
+
+NOTE: This action does not ignore the method completely. It is efficient only where the CET Micro-Agent is creating a significant overhead.
+
+Example: -Dharness.etagent.optimize.methods=com.company.Class1:method1|com.company.Class2:method2
+
+
+
+
+#### How can I set the CET agent to exclude a package to optimize its use? 
+
+There are two ways to set the CET agent to exclude a package to optimize its use:
+- For the environment variable, use the parameter ET_OPTIMIZE_PACKAGES=
+- For the JVM argument, use the parameter -Dharness.etagent.optimize.packages=
+
+Example: -Dharness.etagent.optimize.packages=com.company.package1|com.company.package2
+
+
+
+
+#### What is the significance of using the ET_OPTIMIZE_PACKAGES parameter with the CET agent?
+
+ET_OPTIMIZE_PACKAGES excludes a package during code throttling. 3rd-party code potentially increases overhead on the Micro-Agent. Excluding it specifically from exception handling significantly reduces overhead.
+
+NOTE: This action does not ignore the package completely. It is efficient only where the OverOps Micro-Agent is creating a significant overhead.
+
+Example: -Dharness.etagent.optimize.packages=com.company.package1|com.company.package2
+
+
+
+
+#### Is there a way to disable the CET agent from collecting details of the JVM during startup?
+
+There are two ways to disable the CET agent from collecting details of the JVM during start up:
+- For the environment variable, use the parameter ET_DISABLE_EXCEPTION_HANDLING_TIME=
+- For the JVM argument, use the parameter -Dharness.disable.exception.handling.time=
+
+Example: -Dharness.disable.exception.handling.time=10m
+
+
+
+
+#### How exactly does the ET_DISABLE_EXCEPTION_HANDLING_TIME parameter help with the startup of the JVM?
+
+Using the ET_DISABLE_EXCEPTION_HANDLING_TIME parameter, the CET agent configures a time frame during JVM startup in which the Micro-Agent does not collect any information (snapshots or statistics) or perform any instrumentation. Callback is triggered, but the CET Micro-Agent will return immediately on every call. This increases boot times slowed down by the CET Micro-Agent.
+
+Example: -Dharness.disable.exception.handling.time=10m
+
+
+
+
+#### How can the CET agent prevent from instrumenting a method being called multiple times in a stack?
+
+There are two ways to disable the CET agent from collecting details of the JVM during start up:
+- For the environment variable, use the parameter ET_NO_RECURSIVE_CONTEXT
+- For the JVM argument, use the parameter -Dharness.no.recursive.context
+
+
+
+
+#### What is the significance of using the ET_NO_RECURSIVE_CONTEXT parameter with the CET agent?
+
+The CET Micro-Agent uses the ET_NO_RECURSIVE_CONTEXT parameter to disable instrumention of methods being called multiple times per call stack.  In certain applications, some methods are repeatedly called in the same call stack. This causes significant CPU overhead and using this flag prevents this.
+
+
+
+
+#### How can the CET agent prevent from collecting variable data from snapshots?
+
+There are two ways to exclude the CET agent from collecting variable data from snapshots:
+- For the environment variable, use the parameter ET_NO_LOCALS
+- For the JVM argument, use the parameter -Dharness.no.locals
+
+
+
+
+#### What is the significance of using the ET_NO_LOCALS parameter within the CET agent?
+
+The ET_NO_LOCALS parameter excludes the variable state from the snapshots to reduce overhead for diagnostics purposes. This flag turns off the CET Micro-Agent’s JVMTI capability to extract local variable data during snapshot encoding causing significant overhead.
+
+
+
+
+#### Is there a way to prevent the CET agent from displaying exceptions?
+
+There are two ways to prevent the CET agent from displaying exceptions:
+- For the environment variable, use the parameter ET_NO_EX_CALLBACK
+- For the JVM argument, use the parameter -Dharness.no.ex.callback
+
+
+
+
+#### When would it be beneficial to use the ET_NO_EX_CALLBACK parameter for the CET agent?
+
+Using the ET_NO_EX_CALLBACK parameter for the CET agent turns off its registration to the JVMTI exception callback, which causes severe overhead in the JVM. When set, no exceptions are displayed. This is intended for diagnostics purposes only.
+
+
+
+
+#### Is there a way to turn off the CET agent's callback capability on exceptions?
+
+There are two ways to turn off the CET agent's callback capability on exceptions:
+- For the environment variable, use the parameter ET_NO_EX
+- For the JVM argument, use the parameter -Dharness.no.ex
+
+
+
+
+#### When would it be beneficial to use the ET_NO_EX parameter for the CET agent?
+
+Using the ET_NO_EX parameter for the CET agent turns off its JVMTI exception callback capability that causes severe overhead in the JVM. When set, callback is triggered but returned immediately. This is intended for diagnostics purposes only.
+
+
+
+
+#### How does the CET agent disable instrumentation of logged errors and logged warnings as events?
+
+There are two ways to disable the CET agent's instrumentation of logged errors and logged warnings as events:
+- For the environment variable, use the parameter ET_NO_XMEN
+- For the JVM argument, use the parameter -Dharness.no.xmen
+
+
+
+
+#### How does the CET agent disable instrumentation of cross-machine tale stitching for rare synchronized HTTP requests?
+
+There are two ways to disable the CET agent's instrumentation of cross-machine tale stitching for rare synchronized HTTP requests:
+- For the environment variable, use the parameter ET_NO_CYDER
+- For the JVM argument, use the parameter -Dharness.no.cyder
+
+
+
+
+#### How does the CET agent disable instrumentation and extraction of deployment names from servlet contexts?
+
+There are two ways to disable the CET agent's instrumentation and extraction of deployment names from servlet contexts:
+- For the environment variable, use the parameter ET_NO_ROBINHOOD
+- For the JVM argument, use the parameter -Dharness.no.robinhood
+
+
+
+
+#### How does the CET agent disable instrumentation and tracking of HTTP errors?
+
+There are two ways to disable the CET agent's instrumentation and tracking of HTTP errors:
+- For the environment variable, use the parameter ET_NO_ROCKY
+- For the JVM argument, use the parameter -Dharness.no.rocky
+
+
+
+
+#### How does the CET agent disable handling to differentiate between catch clauses and finally clauses?
+
+There are two ways to disable the CET agent's handling to differentiate between catch clauses and finally clauses:
+- For the environment variable, use the parameter ET_NO_FIN
+- For the JVM argument, use the parameter -Dharness.no.fin
+
+Note: Disabling this flag may cause inaccurate ‘catch frame’ and ‘catch line’ designation.
+
+
+
+
+#### Is there a way to prevent the CET agent from collecting less data within snapshots?
+
+There are two ways to prevent the CET agent from collecting less data within snapshots:
+- For the environment variable, use the parameter ET_NO_RICH_HITS
+- For the JVM argument, use the parameter -Dharness.no.rich.hits
+
+
+
+
+#### What is the significance of utilizing the ET_NO_RICH_HITS parameter for the CET agent?
+
+Rich hits are snapshots that contain significantly more data than standard snapshots. Encoding rich hits increases overhead.  The ET_NO_RICH_HITS flag turns this feature off.
+
+
+
+
+#### How does the CET agent disable log statement capture for the log view?
+
+There are two ways to disable the CET agent's log statement capture for the log view:
+- For the environment variable, use the parameter ET_NO_CEREBRO
+- For the JVM argument, use the parameter -Dharness.no.cerebro
+
+
+
+
+#### What is the significance of utilizing the ET_NO_CEREBRO parameter for the CET agent?
+
+Using the ET_NO_CEREBRO paramter for the CET Micro-Agent disables log statement capture for the log view. It potentially provides significant performance benefits. Log capture can affect Garbage Collection when logs are dense. This does not affect recording of logged errors and logged warnings as events.
+
+
+
+
+#### Is there a way to disable all instrumentation of any bytecode with the CET agent?
+
+There are two ways to disable all instrumentation of any bytecode with the CET agent:
+- For the environment variable, use the parameter ET_NO_TREX
+- For the JVM argument, use the parameter -Dharness.no.trex
+
+
+
+
+#### What happens when the ET_NO_TREX parameter is used when attempting to disable instrumentation of any bytecode?
+
+The ET_NO_TREX parameter is used with the CET Micro-Agent to disable all instrumentation across the board. This, in essence, invalidates CET (error rates, timers, etc), but can be used to diagnose performance issues resulting from bytecode instrumentation.
+
+
+
+
+#### Is there a way to disable instrumentation and collection of event statistics with the CET agent?
+
+There are two ways to disable instrumentation and collection of event statistics with the CET agent:
+- For the environment variable, use the parameter ET_NO_REQ_INV
+- For the JVM argument, use the parameter -Dharness.no.req.inv
+
+
+
+
+#### What is to be expected when using the ET_NO_REQ_INV parameter with the CET agent?
+
+The ET_NO_REQ_INV parameter of the CET Micro-Agent disables instrumentation and collection of event statistics. Snapshots are still taken, but the Dashboard will not have any statistics for events, nor will statistics be sent to StatsD.
+
+
+
+
+#### Is there a way to disable instrumentation and collection of JVM view information with the CET agent?
+
+There are two ways to disable instrumentation and collection of JVM view information with the CET agent:
+- For the environment variable, use the parameter ET_NO_OVERMIND
+- For the JVM argument, use the parameter -Dharness.no.overmind
+
+
+
+
+#### Is there a way for the CET agent to disable the machine code throttling mechanism?
+
+There are two ways for the CET agent to disable the machine code throttling mechanism:
+- For the environment variable, use the parameter ET_NO_TF
+- For the JVM argument, use the parameter -Dharness.no.tf
+
+Note: Using this flag significantly decreases performance, but may be necessary for diagnostics.
+
+
+
+
+#### Is there a way for the CET agent to disable the auxiliary mechanisms for cleanup that involves some bytecode instrumentation?
+
+There are two ways for the CET agent to disable the machine code throttling mechanism:
+- For the environment variable, use the parameter ET_NO_TFA
+- For the JVM argument, use the parameter -Dharness.no.tfa
+
+Note: This is to be used for diagnostics purposes only.
+
+
+
+
+#### Is there a way for the CET agent to disable instrumentation and injection of log links into throwable messages?
+
+There are two ways for the CET agent to disable instrumentation and injection of log links into throwable messages:
+- For the environment variable, use the parameter ET_NO_ETL
+- For the JVM argument, use the parameter -Dharness.no.etl
+
+Note: This does not affect injection of log links into logging statements. Exception Tiny Links are disabled by default.
+
+
+
+
+#### Is there a way for the CET agent to enable instrumentation and injection of log links into throwable messages?
+
+There are two ways for the CET agent to disable instrumentation and injection of log links into throwable messages:
+- For the environment variable, use the parameter ET_ETL
+- For the JVM argument, use the parameter -Dharness.etl
+
+Note: This does not affect injection of log links into logging statements. Currently, ETL is disabled by default and this flag is required to turn it on.
+
+
+
+
+#### When would the CET agent need to have ETL enabled?
+
+The CET Micro-Agent by default has ETL disabled.  This feature enables instrumentation and injecting of log links into throwable messages.  It must have the ET_ETL parameter to turn this flag on.
+
+For JVM arguments, you simply specify the flag - no value is required.
+
+
+
+
+#### How does the CET agent disable timers?
+
+There are two ways to disable timers with the CET agent:
+- For the environment variable, use the parameter ET_NO_CHRONOS
+- For the JVM argument, use the parameter -Dharness.no.chronos
+
+
+
+
+#### How does the CET agent disable instrumentation and collection of entry point information?
+
+There are two ways the CET agent disables instrumentation and collection of entry point information:
+- For the environment variable, use the parameter ET_NO_CONTEXTS
+- For the JVM argument, use the parameter -Dharness.no.contexts
+
+Note: When this flag is disabled, the Entry Points column on the Dashboard only displays the method which threw the event.
+
+
+
+
+#### How does the CET agent disable any bytecode instrumentation to classes that include a special bytecode instruction called invoke dynamic?
+
+There are two ways to disable any bytecode instrumentation to classes that include a special bytecode instruction called invoke dynamic with the CET agent:
+- For the environment variable, use the parameter ET_NO_INDY_REX
+- For the JVM argument, use the parameter -Dharness.no.indy.rex
+
+
+
+
+#### How does the CET agent disable injection of log links into log statements?
+
+There are two ways to disable injection of log links into log statements with the CET agent:
+- For the environment variable, use the parameter ET_NO_XTL
+- For the JVM argument, use the parameter -Dharness.no.xtl
+
+Note: This does not affect the collection of logged warnings/errors as events, or the injection of log links into throwable messages.
+
+
+
+
+#### How does the CET agent disable displaying log links for all events?
+
+There are two ways to disable displaying log links for all events with the CET agent:
+- For the environment variable, use the parameter ET_NO_MEMENTO
+- For the JVM argument, use the parameter -Dharness.no.memento
+
+Note: This flag disables displaying log links for all events, even when no specific snapshot was taken for that instance, and the log link points to the most recent snapshot available.
+
+
+
+
+#### How does the CET agent disable log capture optimizations?
+
+There are two ways to disable log capture optimizations with the CET agent:
+- For the environment variable, use the parameter ET_NO_LF
+- For the JVM argument, use the parameter -Dharness.no.lf
+
+Note: This flag stops the throttler on the Micro-Agent callbacks to logged errors/warnings.
+
+
+
+
+#### Is there a way to disable all dynamic class instrumentation with the CET agent?
+
+There are two ways to disable all dynamic class instrumentation with the CET agent:
+- For the environment variable, use the parameter ET_NO_DYNAMIC_INST
+- For the JVM argument, use the parameter -Dharness.no.dynamic.inst
+
+
+
+
+#### When using the ET_NO_DYNAMIC_INST parameter with the CET agent, what instrumentation is being disabled?
+
+The CET Micro-Agent uses the ET_NO_DYNAMIC_INST parameter to disable all dynamic class instrumentation:
+
+- Disables a complementary mechanism needed for optimizations to make sure we evacuate snapshots properly in JIT compiled mode. This issue could be seen in rare edge cases. (no Salinger)
+- Disables our timer mechanisms (Chronos & Parallax)
+- Logged error and warning small performance optimization
+- Metrics such as the Error Rate will not show.
+
+
+
+
+#### Does using the ET_NO_DYNAMIC_INST flag eliminate the use of other parameters with the CET agent?
+
+Using this parameters equats to using all of the following flags within the CET Micro-Agent:
+-Dtakipi.no.req.inv
+-Dtakipi.no.contexts
+-Dtakipi.no.lf
+-Dtakipi.no.tfa
+-Dtakipi.no.chronos
+
+There will not be the need of using any of the flags above if utilizing a flag to disable all dynamic class instrumentation.
+
+
+
+
+#### Is there a way to disable a group of performance-related features with the CET agent?
+
+There are two ways to disable a group of performance-related features with the CET agent:
+- For the environment variable, use the parameter ET_OPTIMIZED_MODE
+- For the JVM argument, use the parameter -Dharness.optimized.mode
+
+
+
+
+#### What parameters does the ET_OPTIMIZED_MODE flag within the CET agent replace?
+
+The ET_OPTIMIZED_MODE flag within the CET agent replaces the following parameters:
+-Dtakipi.no.xmen
+-Dtakipi.no.req.inv
+-Dtakipi.no.contexts
+-Dtakipi.no.fin
+-Dtakipi.concurrency.level=1
+
+Using the ET_OPTIMIZED_MODE parameter disables these performance-related features to determine what is causing performance issues.
+
+
+
+
+#### Is there a way to display the CET agent's internal log messages to the standard output screen?
+
+There are two ways to display the CET agent's internal log messages to the standard output screen:
+- For the environment variable, use the parameter ET_LOG_TO_CONSOLE
+- For the JVM argument, use the parameter -Dharness.log.to.console
+
+
+
+
+#### What is the purpose of using the ET_LOG_TO_CONSOLE parameter for the CET agent?
+
+The ET_LOG_TO_CONSOLE parameter makes the CET Micro-Agent write its internal log messages to the standard output instead of writing to the CET agent log file.
+
+This flag adds verbose debugging to all logs whenever turned on as long as the server is on; to stop, the JVM application needs to restart the service without the flag.  It is recommended to use this flag for a limited time to figure out problems with the CET agent.
+
+
+
+
+#### How can the CET agent change the location of its log file?
+
+There are two ways to change the CET Micro-Agent's location of its log file:
+- For the environment variable, use the parameter ET_LOG_FILE
+- For the JVM argument, use the parameter -Dharness.log.file
+
+Example: -Dharness.log.file=<path/to/file.log>
+
+
+
+
+#### When would it be beneficial to use the parameter ET_LOG_FILE with the CET agent?
+
+The ET_LOG_FILE paramter within the CET agent helps in the event the agent logs are not being sent to Harness.  This solves communication issues between the CET Micro-Agent and Harness.
+
+Note: The log file must be in an existing path.
+
+
+
+
+#### How does the CET agent print debug log statements to the standard output?
+
+There are two ways the CET agent prints debug log statements to the standard output:
+- For the environment variable, use the parameter ET_SILENT
+- For the JVM argument, use the parameter -Dharness.silent
+
+Example: -Dharness.silent=false
+
+
+
+
+#### Does the CET agent provide a way to change the base URL for tinylinks?
+
+There are two ways the CET agent allows a change to the base URL for tinylinks:
+- For the environment variable, use the parameter ET_SHORT_URL_PREFIX
+- For the JVM argument, use the parameter -Dharness.short.url.prefix
+
+Example: -Dharness.short.url.prefix=https://MYSERVER_URL/tkp.to
 

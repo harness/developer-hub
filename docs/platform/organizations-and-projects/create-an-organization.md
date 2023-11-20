@@ -88,18 +88,19 @@ Next, the Harness modules appear.
 4. Pick a module and click **Create New Pipeline** to get started!
 
 
-### Project FAQs
+## Project FAQs
 
-#### Can I move resources between projects?
+### Can I move resources between projects?
 
 Harness does not support moving resources between projects or organizations at the moment.
 
-#### What is the best way to decommission a project while retaining its history?
+### What is the best way to decommission a project while retaining its history?
 
 Harness recommends removing RBAC access to the project and only allowing users to view it or hiding it from most users. Admins are the only ones who can view configurations and deployment history in a project. Deleting a project will also delete its deployment history. In order to keep your history, it is better to leave the project available but block access and usage.
 
+### Is there a limit on how many orgs or projects I can create in my account?
 
-
+There is no limitation on the number of orgs and projects that you can create in an account.
 
 ### See also
 

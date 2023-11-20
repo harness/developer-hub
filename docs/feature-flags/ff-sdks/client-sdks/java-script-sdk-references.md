@@ -32,7 +32,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.18.0.**
+The current version of this SDK is **1.20.0.**
 
 ## Requirements
 
@@ -127,7 +127,6 @@ The below shows the data type for each parameter:
 interface Target {  
   identifier: string  
   name?: string  
-  anonymous?: boolean  
   attributes?: object  
 }
 ```
@@ -172,8 +171,6 @@ interface Options {
   pollingEnabled?: boolean
   streamEnabled?: boolean
   debug?: boolean
-  allAttributesPrivate?: boolean // **Depreacated**
-  privateAttributeNames?: string[] // **Depreacated**
 }
 ```
 
@@ -187,8 +184,6 @@ interface Options {
 | streamEnabled         | Set to `true` to enable streaming mode. Set to `false` to disable streaming mode.                                                 | `true`                                                 |
 | pollingEnabled        | Set to `true` to enable polling mode. Set to `false` to disable polling mode.                                                     | `true`                                                 |
 | debug                 | Set to `true` to enable SDK debug level logging. Set to `false` to disable debug level logging                                    | `false`                                                |
-| allAttributesPrivate  | **Deprecated** no longer has any effect                                                                                           | No default - deprecated                                |
-| privateAttributeNames | **Deprecated** no longer has any effect                                                                                           | No default - deprecated                                |
 
 
 ### Complete the initialization

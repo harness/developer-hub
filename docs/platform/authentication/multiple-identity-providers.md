@@ -39,10 +39,10 @@ To select a SAML provider, do the following:
    
    ```mdx-code-block
    <Tabs>
-      <TabItem value="Azure">
+      <TabItem value="Microsoft Entra ID">
    ```
 
-   For steps to configure, go to [SAML SSO with Azure](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-azure).
+   For steps to configure, go to [SAML SSO with Microsoft Entra ID](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-azure).
 
    ```mdx-code-block
       </TabItem>

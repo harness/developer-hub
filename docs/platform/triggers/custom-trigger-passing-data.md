@@ -8,7 +8,7 @@ Various stages of a pipeline might require input data or parameters to function 
 
 Passing variables and parameters to a pipeline when triggering it can help streamline the pipeline execution based on the specific needs of each run.
 
-import Variables from '/docs/platform/triggers/shared/variables-not-supported.md'
+import Variables from '/docs/platform/shared/variables-not-supported.md'
 
 <Variables />
 

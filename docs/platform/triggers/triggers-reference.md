@@ -91,6 +91,7 @@ Select the [code repo connector](/docs/category/code-repo-connectors) that conne
 The personal access token used for connector authentication must have the appropriate scopes/permissions.
 
 For example, a GitHub personal access token for a GitHub connector must include all `repo`, `user`, and `admin:repo_hook` options for **Scopes**.
+Also, please ensure the user using the PAT has at least **Admin** permissions in the repo.
 
 For information about other provider's token scopes, go to:
 
@@ -273,6 +274,12 @@ How you reference the path depends on:
 
 Always make sure the path you use works with the provider's payload format and the event type.
 
+:::note
+
+For instructions on using default values for pipeline inputs based on a trigger's payload, go to [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
+
+:::
+
 ### Operators
 
 Some operators require single values and some operators allow single or multiple values.
@@ -400,7 +407,19 @@ You can specify [runtime inputs](../pipelines/input-sets) for the trigger to use
 
 You can use [built-in Git payload expressions](#built-in-git-payload-expressions) and [JEXL expressions](#jexl-conditions) in this setting.
 
+:::note
+
+For instructions on using default values in pipeline inputs, go to [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
+
+:::
+
 When Git Experience is enabled for your Pipeline, the **Pipeline Input** tab includes the **Pipeline Reference Branch** field. This field is set to `<+trigger.branch>` by default. Any build started by this trigger uses the pipeline and Input Set definitions in the branch specified in the webhook payload. This default is applicable for webhook-based triggers only. For all other trigger types, you must enter a specific branch name.
+
+:::note
+
+The Issue Comment event trigger for Github does not support the `<+trigger.branch>` expression.
+
+:::
 
 ## Webhook registration
 

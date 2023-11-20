@@ -1,9 +1,9 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-09-28T09:09:25
+date: 2023-11-17T10:12:25
 tags: [NextGen, "feature flags"]
-sidebar_position: 6
+sidebar_position: 10
 ---
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/feature-flags/rss.xml" />
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - September 28, 2023
+### Latest - November 17th 2023
 
 ### New features and enhancements
 
@@ -25,7 +25,223 @@ This release does not include new features.
 
 This release does not include early access features.
 
-### Fixed issues in the .NET SDK
+### Fixed issues in the Java SDK
+
+Released Java SDK 1.3.1
+
+ - Added Java 21 Support.
+ - Marked private attributes not working. 
+ - Improved stream restart logic. 
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### November 13, 2023
+
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Golang SDK and the Node SDK
+
+Released Golang SDK 0.1.16
+
+ - Add dead SSE stream detection
+ - SSE reconnection improvements
+ - Use Harness fork of r3labs/sse
+ - Add analytics headers to requests made by the SDK
+
+ Released Node SDK 1.3.7
+
+ - Upgrade Axios due to CVE
+
+
+#### November 9, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Python SDK
+
+Released Android SDK 1.2.5
+
+ - Only log Flag/Segment not found warning in valid scenarios
+
+
+#### November 7, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Python SDK
+
+Released Python SDK 1.2.4
+
+- Set default log level to WARNING
+
+#### November 7, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Fixed issues in the Android SDK
+
+Released Android SDK 1.2.0
+
+ - Add dependency-check-gradle to build
+ - Improve logging + Adding SDK error codes
+ - Update SSE implementation
+ - Bump minSdk to 21 and targetSdk to 33
+ - Fixed jsonVariation always returns default value
+ - Update client API code to use latest ff-api definitions
+- Fixed metrics reporting 0 in payload
+- Avoid posting metrics if total evaluation count is 0
+- Add refreshEvaluations
+- Retry on Client Authentication failures
+- Add retry interceptor to authentication
+- Add waitForInit
+
+#### October 31, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Python SDK and .NET SDK
+
+Released Python SDK 1.2.3
+
+- Fixed an issue where `SDKCODE1003` was logged even when `wait_for_initialzation` was not called 
+
+Released .NET SDK 1.2.2
+
+- Fix targets not updating correctly
+- Fix hostname validation on custom TLS certs
+
+#### October 30, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Javascript SDK
+
+Released Javascript SDK 1.20.0
+
+- Deprecated non-supported options
+
+#### October 30, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Node SDK
+
+Released Node SDK 1.3.6
+
+- Updated to use Logger for logging instead of console.log
+
+#### October 25, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Golang SDK
+
+Released Golang SDK 0.1.15
+
+- If SSE disconnects, it now reconnects immediately instead of at every polling interval
+- Fixes panic that occurs when swapping from streaming to polling
+- Refactored streaming and polling code to aid maintainability
+
+
+#### October 18, 2023
+
+##### New features and enhancements
+
+[Flag cleanup automation](https://developer.harness.io/docs/feature-flags/ff-creating-flag/manage-stale-flags/) beta available to all customers. This feature helps remove stal flags from your code automatically.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Go SDK
+
+Released Go SDK 0.1.13
+
+- Added codes to aid in SKD troubleshooting. [More info in the SDK docs.](https://developer.harness.io/docs/feature-flags/ff-sdks/server-sdks/feature-flag-sdks-go-application/#troubleshooting)
+
+- Enhanced reporting of evaluation errors 
+
+#### October 17, 2023
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Node SDK
+
+Released Node SDK 1.3.5
+
+- Avoid sending empty metric payloads
+
+- Upgrade `lru-cache` to version 7 which contains a significant performance increase
+
+- Add support for `nodeNext` module resolution
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the .NET SDK
 
 Released .NET SDK 1.2.1
 
@@ -39,11 +255,6 @@ Released .NET SDK 1.2.1
 - CVE: Update wiremock to latest version 1.5.36. (FFM-9472)
 - CVE: Update Newtonsoft.Json to version 13.0.3. (FFM-9473)
 - CVE: Update NuGet.Frameworks to version 6.5.1. (FFM-9474)
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### September 22, 2023
 

@@ -1,7 +1,7 @@
 ---
 title: Configure STO to Download Images from a Private Registry
 description: You can set up STO to download your scanner images from a private registry instead of GCR.
-sidebar_position: 90
+sidebar_position: 40
 ---
 
 Harness maintains its own set of scan images for [STO-supported scanners](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach). By default, a Harness pipeline pulls scan images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
@@ -76,7 +76,7 @@ USER 1000
 
 ## Create a connector to your private registry
 
-You need a Docker connector that points to your private container registry. For more information, go to [Docker Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/).
+You need a Docker connector that points to your private container registry. For more information, go to [Docker Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 
 ## Configure the pipeline to download images from your registry
 
@@ -161,7 +161,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: $GITHUB_CONNECTOR
+        connectorRef: CODEBASE_CONNECTOR
         repoName: dvpwa
         build: <+input>
   stages:
@@ -176,7 +176,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: $K8S_CONNECTOR
+              connectorRef: K8S_DELEGATE_CONNECTOR 
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -189,9 +189,11 @@ pipeline:
                   name: docker-dind
                   identifier: dockerdind
                   spec:
-                    connectorRef: $DOCKERHUB_CONNECTOR
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: docker:dind
                     shell: Sh
+                    entrypoint:
+                      - dockerd
                     privileged: true
               - step:
                   type: Security

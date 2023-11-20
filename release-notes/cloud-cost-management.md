@@ -3,7 +3,7 @@ title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
 date: 2023-09-20T10:00
-sidebar_position: 5
+sidebar_position: 6
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -20,21 +20,146 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest: version 80904
+## Latest: version 81400
 
 ### New features and enhancements
 
-* Previously, CCM displayed only the essential Jira or ServiceNow fields in Recommendation Workflows. However, with this enhancement, CCM introduces a new field _+ Fields_ that allows users to add optional fields as needed.
+* Previously, there was no option to export Recommendations as CSV files. (CCM-14274)
 
-    <docimage path={require('./static/ccm-jira-ticket-enhancement.png')} width="40%" height="40%" title="Click to view full size image" />
-
-
+  Now, we have added a new feature that enables users to export Recommendations as comma-separated values (CSV) files.
 
 ### Early access features
 
 This release does not include any early access features.
 
 ### Fixed issues
+
+* Previously, changing the project in JIRA didn't clear fields, causing potential creation failures. (CCM-14842)
+
+  However, now, the form (except Ticket Summary and Description) resets on project change, ensuring a smoother process.
+
+* Previously, anomaly detection on K8s Services lacked a threshold, leading to excessive alerts. (CCM-14865)
+
+  Now, we have implemented a threshold of $3 for anomaly detection on K8s Services to refine the alerting process.
+
+* Previously, incorrect entity types for Azure in anomalies caused misdirected notifications on Slack and email. (CCM-14864)
+
+  However, this issue is fixed now by changing the logic for Azure entity types.
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### October 26, 2023, version 81300
+
+##### New features and enhancements
+
+This release does not include any new features.
+
+##### Early access features
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+* Previously, the search functionality in the perspective grid was nonfunctional when grouped by cost categories, causing inconvenience in data retrieval. (CCM-14384)
+
+  This issue is fixed now, enabling users to efficiently search within the perspective grid, even when cost categories are applied as grouping criteria.
+
+* Previously, Anomaly alert logic for default perspectives was not functioning correctly. (CCM-14670)
+
+  This issue has been resolved, ensuring accurate anomaly notifications for default perspectives via Slack and email.
+
+* Previously, the Budget explorer chart displayed lower costs due to a query issue. (CCM-14758)
+
+  This issue is fixed by removing the "group by" from the budget time-series query, ensuring more accurate cost representation.
+
+#### October 20, 2023, version 81202
+
+##### New features and enhancements
+
+This release does not include any new features.
+
+##### Early access features
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+* Previously while creating and AutoStopping rule, the k8s cluster selection list only displayed top 100 records, which made it difficult to choose a cluster when the list had more than 100 entries. (CCM-14644)
+
+  This is fixed by increasing the limit from 100 to 500 records. This will assist in retrieving every cluster that is accessible for selection.
+
+* Previously, in autostopping rule creation flow for Azure cloud provider, there's an option to create one AutoStopping rule using AppGateway belonging to one subscription and VMs which restricted the selection of VMs belonging to another subscription. (CCM-14515)
+  
+  This is fixed by adding support for selecting multiple connectors, one for the AutoStopping rule and other for the VMs. This helps in having independent connectors for each subscription. 
+
+* To avoid any confusion, tooltips are added for Potential Monthly Cost and Potential Monthly Savings on EC2 Recommendation details page. (CCM-14613)
+
+* A bug was identified during ingestion of AWS CUR data. The impact of the bug was causing AWS cost data from the current month to be dropped while ingesting AWS-CUR updates for the previous month. Since AWS updates CUR of previous months until the first few days of next month, this issue was hit in the initial days of the month. 
+This bug got introduced recently while supporting ingestion of future-dated entries in any billing-period (i.e. supporting ingestion of costs which have usageDates beyond the current month). (CCM-14618)
+
+  This is now fixed by considering billingperiodstartdate and billingperiodenddate during ingestion from AWS CUR.
+
+* It was observed that the budget's cost was not matching with the costs in the underlying perspective, resulting in showing lesser cost in the budget explorer chart. (CCM-14758)
+
+  This issue is fixed by making some changes in the underlying budget cost explorer query.
+  
+
+#### October 12, 2023, version 81100
+
+##### New features and enhancements
+
+This release does not include any new features.
+
+##### Early access features
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+* Previously, attempting to edit a cost bucket with operands selected as "NOT NULL/NULL" led to an unexpected error, subsequently hindering the editing of other buckets. (CCM-14519)
+
+  This issue has been fixed by introducing a custom validation to resolve the error.
+
+* Previously, our application allowed fetching anomalies for perspectives created through labels. The queries used for fetching anomalies in these cases were based on the default groupBy field, leading to the display of numerous incorrect anomalies in the labeled perspective, which were unrelated to the labeled resources. (CCM-14242)
+
+  As of this release, we have discontinued support for fetching anomalies in perspectives created solely through labels. This change is aimed at improving the accuracy of anomaly reporting and ensuring that only relevant anomalies are presented.
+
+#### October 5, 2023, version 81000
+
+##### New features and enhancements
+
+This release does not include any new features.
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+* Previously, For EC2 Recommendations, the monthly savings from crossFamilyRecommendation or sameFamilyRecommendation fields, based on the selected preferences, were used to display the savings amount in the widget. However, for Terminate Recommendations, as these values were not available, it resulted in showing $0 in the widget. (CCM-14544)
+
+This is fixed by switching to totalMonthlyCost and totalMonthlySavings for the potential savings widget in EC2 Terminate Recommendations.
+
+
+#### September 27, 2023, version 80904
+
+##### New features and enhancements
+
+* Previously, CCM displayed only the essential Jira or ServiceNow fields in Recommendation Workflows. However, with this enhancement, CCM introduces a new field _+ Fields_ that allows users to add optional fields as needed.
+
+    <docimage path={require('./static/ccm-jira-ticket-enhancement.png')} width="40%" height="40%" title="Click to view full size image" />
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
 
 * Previously, CCM used to display all anomalies, including the new ones that were labeled as "N/A."  (CCM-14275)
 
@@ -43,15 +168,6 @@ This release does not include any early access features.
 * In the AWS perspective, the cost calculation is based on the selected `Groupby` field, and CCM uses the SUM of `awsUnblendedCost`. However, when CCM detects anomalies for AWS, it is based on the SUM of `awsBlendedCost`. This led to a cost mismatch between what's displayed on the AWS perspective and the cost reported for anomalies.(CCM-14096)
 
   This issue is fixed by using SUM of `awsUnblendedCost` to detect AWS (Account, Service and UsageType) anomalies.
-
-
-  
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### September 20, 2023, version 80804
 

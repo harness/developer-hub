@@ -29,7 +29,7 @@ TLS/SSL communication between the Harness Delegate and Harness SaaS uses a certi
 
 For delegates to communicate with Harness, this root CA certificate must be installed in the delegate truststore.
 
-The public key for the certificate is available for download:
+The public CA for the certificate is available for download:
 
 
 ```
@@ -72,7 +72,7 @@ You don't need to stop the Kubernetes delegate. You can run `kubectl apply` afte
 
 Let's walk through the steps of creating a new truststore and importing the Harness trusted certificate.
 
-Copy the following public key to a file and save it.
+Copy the following public CA to a file and save it.
 
 
 ```
@@ -112,6 +112,7 @@ The above command will ask for a password. You can choose your own password.
 This command creates a file named `trustStore.jks` and imports DigiCert global root CA certificate.
 
 **Note where the `trustStore.jks` file is located.** You will provide this path to the delegate as an environment variable.
+
 
 ### Step 3: Add third-party certificates to the truststore
 

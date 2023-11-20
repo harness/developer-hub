@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism
+  - /docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism
   - /docs/platform/pipelines/run-a-stage-or-step-multiple-times-using-a-matrix
 ---
 
@@ -49,7 +50,7 @@ parallelism: 10
 
 For more information about parallelism strategies, go to:
 
-* [Use parallelism to improve test times](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism)
+* [Split tests (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
 * [Run stages in parallel](./run-stages-in-parallel.md)
 
 ## Matrix strategies

@@ -16,12 +16,6 @@ This tutorial covers how to handle Harness GitOps Agent setup in a multi-cluster
 
 :::info
 
-Currently, this feature is behind the feature flag, `GITOPS_IAM`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-:::info
-
 GitOps clusters with IAM roles can be created only for a GitOps Agent installed in Amazon EKS.
 
 :::

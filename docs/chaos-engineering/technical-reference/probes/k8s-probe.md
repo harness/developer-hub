@@ -171,21 +171,21 @@ Listed below is the probe schema for the Kubernetes probe, with properties share
    </td>
    <td>Mandatory
    </td>
-   <td>N/A <code>type: integer</code>
+   <td>N/A <code>type: string</code>
    </td>
    <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data
    </td>
   </tr>
   <tr>
-   <td>retry
+   <td>attempt
    </td>
-   <td>Flag to hold the retry count of the probe
+   <td>Flag to hold the attempt of the probe
    </td>
    <td>Mandatory
    </td>
    <td>N/A <code>type: integer</code>
    </td>
-   <td>The <code>retry</code> contains the number of times a check is re-run upon failure in the first attempt before declaring the probe status as failed.
+   <td>The <code>attempt</code> contains the number of times a check is run upon failure in the previous attempts before declaring the probe status as failed.
    </td>
   </tr>
   <tr>
@@ -195,7 +195,7 @@ Listed below is the probe schema for the Kubernetes probe, with properties share
    </td>
    <td>Mandatory
    </td>
-   <td>N/A <code>type: integer</code>
+   <td>N/A <code>type: string</code>
    </td>
    <td>The <code>interval</code> contains the interval for which probes waits between subsequent retries
    </td>
@@ -207,9 +207,9 @@ Listed below is the probe schema for the Kubernetes probe, with properties share
    </td>
    <td>Optional
    </td>
-   <td>N/A <code>type: integer</code>
+   <td>N/A <code>type: string</code>
    </td>
-   <td>The <code>probePollingInterval</code> contains the time interval for which continuous probe should be sleep after each iteration
+   <td>The <code>probePollingInterval</code> contains the time interval for which continuous and onchaos probe should be sleep after each iteration
    </td>
   </tr>
   <tr>
@@ -242,21 +242,223 @@ Listed below is the probe schema for the Kubernetes probe, with properties share
 
 ```yaml
 probe:
-  - name: "check-app-cluster-cr-status"
+  - name: "check-app-status"
     type: "k8sProbe"
     k8sProbe/inputs:
-      group: "<appGroup>"
-      version: "<appVersion>"
-      resource: "<appResource>"
+      group: ""
+      version: "v1"
+      resource: "pods"
       namespace: "default"
-      fieldSelector: "metadata.name=<appResourceName>,status.phase=Running"
-      labelSelector: "<app-labels>"
+      fieldSelector: "status.phase=Running"
+      labelSelector: "app=nginx"
       operation: "present" # it can be present, absent, create, delete
-      data: |
-        # Resource manifest that is relevant solely for the purpose of the creation operation
     mode: "EOT"
     runProperties:
-      probeTimeout: 5
-      interval: 5
-      retry: 1
+      probeTimeout: 5s
+      interval: 2s
+      attempt: 1
+```
+
+### Create Operation
+
+It creates the kubernetes resource based on the data specified inside in the `probe.k8sProbe/inputs.data` field.
+
+Use the following example to tune this:
+
+```yaml
+# create the given resource provided inside data field
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "create-percona-pvc"
+        type: "k8sProbe"
+        k8sProbe/inputs:
+          # group of the resource
+          group: ""
+          # version of the resource
+          version: "v1"
+          # name of the resource
+          resource: "persistentvolumeclaims"
+          # namespace where the instance of resource should be created
+          namespace: "default"
+          # type of operation
+          # supports: create, delete, present, absent
+          operation: "create"
+          # contains manifest, which can be used to create the resource
+          data: |
+            kind: PersistentVolumeClaim
+            apiVersion: v1
+            metadata:
+              name: percona-mysql-claim
+              labels:
+                target: percona
+            spec:
+              storageClassName: standard
+              accessModes:
+              - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 100Mi
+        mode: "SOT"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+```
+
+
+### Delete Operation
+
+It deletes matching kubernetes resources via GVR and filters (field selectors/label selectors) provided at `probe.k8sProbe/inputs`.
+
+Use the following example to tune this:
+
+```yaml
+# delete the resource matched with the given inputs
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "delete-percona-pvc"
+        type: "k8sProbe"
+        k8sProbe/inputs:
+          # group of the resource
+          group: ""
+          # version of the resource
+          version: "v1"
+          # name of the resource
+          resource: "persistentvolumeclaims"
+          # namespace of the instance, which needs to be deleted
+          namespace: "default"
+          # labels selectors for the k8s resource, which needs to be deleted
+          labelSelector: "openebs.io/target-affinity=percona"
+          # fieldselector for the k8s resource, which needs to be deleted
+          fieldSelector: ""
+          # type of operation
+          # supports: create, delete, present, absent
+          operation: "delete"
+        mode: "EOT"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+```
+
+### Present Operation
+
+It checks for the presence of kubernetes resource based on GVR and filters (field selectors/labelselectors) provided at `probe.k8sProbe/inputs`.
+
+Use the following example to tune this:
+
+```yaml
+# verify the existance of the resource matched with the given inputs inside cluster
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "check-percona-pvc-presence"
+        type: "k8sProbe"
+        k8sProbe/inputs:
+          # group of the resource
+          group: ""
+          # version of the resource
+          version: "v1"
+          # name of the resource
+          resource: "persistentvolumeclaims"
+          # namespace where the instance of resource
+          namespace: "default"
+          # labels selectors for the k8s resource
+          labelSelector: "openebs.io/target-affinity=percona"
+          # fieldselector for the k8s resource
+          fieldSelector: ""
+          # type of operation
+          # supports: create, delete, present, absent
+          operation: "present"
+        mode: "SOT"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+```
+
+### Absent Operation
+
+It checks for the absence of kubernetes resource based on GVR and filters (field selectors/labelselectors) provided at `probe.k8sProbe/inputs`.
+
+Use the following example to tune this:
+
+```yaml
+# verify that the no resource should be present in cluster with the given inputs
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "check-percona-pvc-absence"
+        type: "k8sProbe"
+        k8sProbe/inputs:
+          # group of the resource
+          group: ""
+          # version of the resource
+          version: "v1"
+          # name of the resource
+          resource: "persistentvolumeclaims"
+          # namespace where the instance of resource
+          namespace: "default"
+          # labels selectors for the k8s resource
+          labelSelector: "openebs.io/target-affinity=percona"
+          # fieldselector for the k8s resource
+          fieldSelector: ""
+          # type of operation
+          # supports: create, delete, present, absent
+          operation: "absent"
+        mode: "EOT"
+        runProperties:
+          probeTimeout: 5s 
+          interval: 2s 
+          attempt: 1
 ```

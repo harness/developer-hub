@@ -616,3 +616,18 @@ It tests the application's resilience to limited or slow network bandwidth.
 </accordion>
 
 </FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod API Block
+
+Pod API block is a Kubernetes pod-level chaos fault that blocks the api requests for the ingress and egress traffic.
+
+- It blocks the apis of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+This fault evaluates the application's resilience to lossy (or flaky) API requests and responses.
+</accordion>
+
+</FaultDetailsCard>

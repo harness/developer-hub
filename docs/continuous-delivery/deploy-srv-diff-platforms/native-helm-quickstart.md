@@ -10,43 +10,52 @@ helpdocs_is_published: true
 
 This topic shows you how to perform Native Helm deployments using Harness.
 
-## Kubernetes and Helm vs Native Helm deployments
+## Commands used by Harness to perform a Helm Chart Deployment managed by Helm
 
-Harness supports the use of Helm in its Kubernetes deployment type. Harness also includes a separate Native Helm deployment type.
+When using the Harness-managed Helm Chart Deployment approach, Harness uses a mix of `helm` and `kubectl` commands to perform the deployment. 
 
-When you create a Harness service, you will see both Kubernetes and Native Helm options and wonder what are their differences.
+1. The command we run to perform **Fetch Files**, depends on the store type Git or Helm Repo.
 
-![service deployment types](./static/0d6ad15825f86697723f3f0b7e4601871a031e4449c6d1f9e96bab27980d3ab0.png)  
-
-Here are the differences:
-
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+For Git:
 ```
-```mdx-code-block
-<Tabs>
-  <TabItem value="Kubernetes" label="Kubernetes" default>
+git clone {{YOUR GIT REPO}}
 ```
 
-- Harness Kubernetes deployments allow you to use your own Kubernetes manifests or a Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without requiring a Helm installation in the target cluster.
-- Harness Kubernetes deployments also support all deployment strategies (canary, blue green, rolling, custom).
-- **Versioning:** Harness Kubernetes deployments version all objects, such as ConfigMaps and Secrets.
-- **Rollback:** In the event of deployment failure, Harness Kubernetes deployments will roll back to the last successful version.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Native Helm" label="Native Helm">
+For Helm Repo:
+```
+helm pull {{YOUR HELM REPO}}
 ```
 
-- For Harness Native Helm Deployments, you must always have Helm running on one pod in your target cluster.
-- You can perform a rolling deployment strategy only (no canary or blue green). 
-- **Versioning:** Native Helm does not version deployments.
-- **Rollback:** Harness does not perform rollback. Instead, Harness uses Helm's native rollback functionality.
+2. Based on your values.yaml and Harness configured variables, Harness will then render those values via `helm template`. We will consolidate all the rendered manifest into a `manifest.yaml`.
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
+```
+helm template release-75d461a29efd32e5d22b01dc0f93aa5275e2f003 /opt/harness-delegate/repository/helm/source/c1475174-18d6-38e6-8c67-1000f3b71297/helm-test-chart  --namespace default  -f ./repository/helm/overrides/6a7628964506885eb37908b81914a04c.yaml
+```
+
+3. Harness will perform a dry run by default to show what is about to be applied.
+
+```
+kubectl --kubeconfig=config apply --filename=manifests-dry-run.yaml --dry-run=client
+```
+
+4. Harness will then run the `helm install` or `helm upgrade`  command to install the chart on the Kubernetes clusters.
+
+```
+helm upgrade  release-75d461a29efd32e5d22b01dc0f93aa5275e2f003 /opt/harness-delegate/repository/helm/source/c1475174-18d6-38e6-8c67-1000f3b71297/helm-test-chart  -f ./repository/helm/overrides/6a7628964506885eb37908b81914a04c.yaml
+```
+
+5. Harness will then query the deployed resources to show a summary of what was deployed.
+
+```
+helm get manifest release-75d461a29efd32e5d22b01dc0f93aa5275e2f003 --namespace=default
+
+helm list  --filter ^release-75d461a29efd32e5d22b01dc0f93aa5275e2f003$
+```
+
+6. In the event of failure Harness will rollback, we perform a `helm rollback`.
+
+```
+helm rollback  release-1d0bcdea6247c9f82cc9204b1d81593e7b985651
 ```
 
 ### Helm 2 in Native Helm
@@ -283,6 +292,28 @@ The **Release name** setting in the stage **Infrastructure** is used as the Helm
 
 ![](./static/native-helm-quickstart-154.png)
 
+### Autodetecting Helm Charts without configuring release names
+
+:::note
+This feature is currently behind the feature flag, `CDS_IMPROVED_HELM_DEPLOYMENT_TRACKING`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+:::
+
+When you want to deploy a commodity Helm Chart (ElasticSearch, Prometheus, etc.) or a pre-packaged Helm Chart, Harness now automatically applies tracking labels to the deployed Helm service. You do not need to add `{{Release.Name}}` to your Helm Chart. 
+
+Harness is able to track the deployed Helm Chart in the Services dashboard. All chart information is also available to view in the Services dashboard. 
+
+This feature will be available for users on delegate version 810xx. Please ensure the delegate is up to date before opting into this feature.
+
+
+## Skipping chart tests
+
+If your charts contain [Helm charts tests](https://helm.sh/docs/topics/chart_tests/) and you want to skip these tests during deployment, you can add the `--skip-tests` command flag to the manifest details of the Helm chart.
+
+1. In the Harness Native Helm service, in **Manifests**, edit the chart.
+2. In **Manifest Details**, select **Advanced**.
+3. In **Command Type**, select **Template**.
+4. In **Flag**, enter `--skip-tests`. 
+
 ## Native Helm notes
 
 Please review the following notes.
@@ -296,6 +327,21 @@ For example, let's say you have a Pipeline that performs a Native Helm deploymen
 You might have several retries configured in the Pipeline, but all of them will fail when Harness runs a `helm history` in the prepare stage with the message: `there is an issue with latest release <latest release failure reason>`.
 
 Enable the **Ignore Release History Failed Status** option to have Harness ignore these errors and proceed with install/upgrade.
+
+#### Options for connecting to a Helm chart store
+
+The options avialable to you to specify a Helm chart store depend on whether or not specific feature flags are enabled on your account. Options available without any feature flags or with specific feature flags enabled are described here: 
+
+  * **Feature flag disabled**. Only one option is available: **OCI Helm Registry Connector**. This option enables you to connect to any OCI-based registry.
+  * **Feature flag enabled**. You can choose between connectors in the following categories:
+    - **Direct Connection**. Contains the OCI Helm Registry Connector option (shortened to **OCI Helm**), which you can use with any OCI-based registry.
+    - **Via Cloud Provider**. Contains the ECR connector option. This connector is specifically designed for AWS ECR to help you overcome the limitation of having to regenerate the ECR registry authentication token every 12 hours. The ECR connector option uses an AWS connector and regenerates the required authentication token if the token has expired.
+
+    :::note
+    This feature is behind the feature flag `CDS_OCI_HELM_ECR_CONFIG_SUPPORT_NG`. Contact Harness Support to enable the feature. 
+    :::
+
+    For the steps and settings of each option, go to [Connectors](/docs/category/connectors).
 
 ## Next Steps
 
