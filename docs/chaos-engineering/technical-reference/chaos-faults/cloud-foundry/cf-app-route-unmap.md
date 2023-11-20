@@ -6,7 +6,7 @@ title: CF app route unmap
 import CFSecrets from './shared/cf-secrets.md';
 import VSphereSecrets from './shared/vsphere-secrets.md';
 
-CF app route unmap temporarily unmaps a Cloud Foundry app route and later maps back to the app.
+CF app route unmap temporarily unmaps a Cloud Foundry app route and later maps it back to the app.
 
 <!-- ![CF App Route Unmap](./static/images/cf-app-route-unmap.png) -->
 
