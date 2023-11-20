@@ -1,7 +1,7 @@
 ---
 title: Aqua Security scanner reference for STO
 description: Image scans with Aqua Security
-sidebar_label: Aqua Securityc scanner reference
+sidebar_label: Aqua Security scanner reference
 sidebar_position: 35
 ---
 
