@@ -26,8 +26,7 @@ Once your account is set up, you can begin integrating your Terragrunt files. Se
 
 Here's a 6 minute video walkthrough of Harness-Terragrunt integration that shows how each component is used:
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/embed/HYSi2LAaYdc?feature=oembed" />
 
 ### Step 1: Set Up Harness Delegates
