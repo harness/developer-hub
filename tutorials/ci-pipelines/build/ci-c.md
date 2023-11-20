@@ -35,7 +35,9 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
 
-You can run any commands in Run steps as long as the necessary binaries are available on the host machine or the referenced container image. For example, this Run step runs a Python script to get dependencies for a C++ project. It uses a [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) to cycle through each dependency.
+You can run any commands in Run steps as long as the necessary binaries are available on the host machine or the referenced container image. For example, you can run cURL commands, build commands for CMake, Ninja, or MSBuild, or any other commands you might otherwise run on the command line.
+
+In the following YAML example, the Run step runs a Python script to get dependencies for a C++ project. It uses a [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) to cycle through each dependency.
 
 ```mdx-code-block
 <Tabs>
@@ -49,7 +51,7 @@ You can run any commands in Run steps as long as the necessary binaries are avai
                   identifier: Fetch_Deps
                   spec:
                     shell: Sh
-                    command: python3 build/fbcode_builder/getdeps.py fetch --no-tests <+matrix.deps>
+                    command: python3 build/getdeps.py fetch --no-tests <+matrix.deps>
                   failureStrategies: []
                   strategy:
                     matrix:
@@ -82,7 +84,7 @@ You can run any commands in Run steps as long as the necessary binaries are avai
                     connectorRef: account.harnessImage
                     image: python:latest
                     shell: Sh
-                    command: python3 build/fbcode_builder/getdeps.py fetch --no-tests <+matrix.deps>
+                    command: python3 build/getdeps.py fetch --no-tests <+matrix.deps>
                   failureStrategies: []
                   strategy:
                     matrix:
@@ -196,7 +198,8 @@ You can use **Run** steps to [run tests in CI pipelines](/docs/continuous-integr
                   spec:
                     shell: Sh
                     command: |-
-                      ./gradlew build
+                      cmake -S . -B build
+                      ctest --test-dir $FILES --output-junit /target/reports/test_output.xml
 ```
 
 ```mdx-code-block
@@ -214,7 +217,8 @@ You can use **Run** steps to [run tests in CI pipelines](/docs/continuous-integr
                      image: gradle:alpine
                      shell: Sh
                      command: |
-                       ./gradlew build
+                      cmake -S . -B build
+                      ctest --test-dir $FILES --output-junit /target/reports/test_output.xml
 ```
 
 ```mdx-code-block
