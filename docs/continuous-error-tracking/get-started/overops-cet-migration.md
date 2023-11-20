@@ -8,13 +8,13 @@ redirect_from:
 
 # Upgrade to CET from OverOps
 
-Upgrading your service from OverOps to CET involves the follwing steps:
+Upgrading your service from OverOps to CET involves the following steps:
 
-1. Choose a service suitable for onboarding to CET, preferably starting with a non-production service for the Proof of Concept (POC).
+1. Choose a service suitable for onboarding to CET, preferably starting with a non-production service.
 
 2. Create a project in the CET.
 
-3. Setup a monitored service.
+3. Set up a monitored service.
 
 4. Install the Harness Error Tracking Agent and configure it with the monitored service.
 
@@ -23,15 +23,15 @@ Upgrading your service from OverOps to CET involves the follwing steps:
 5. Configure notifications for timely event alerts.
 
 
-## Select an Appropriate Service for CET Onboarding POC
+## Select an Appropriate Service for onboarding to CET
 
-Follow the steps below to choose an appropriate service for CET onboarding POC.
+Follow the steps below to choose an appropriate service for onboarding to CET.
 
 1. Select non-production service to onboard onto Harness CET. For instance:
-   - Name: cet-migration-poc
+   - Name: cet-migration
    - Environment: Staging2
 
-2. Get a Harness account from the CSM by submitting a request using support@harness.io.
+2. Get a Harness account from the CSM by submitting a request using [support@harness.io](support@harness.io).
 
 3. Request a CET license for your Harness account.
 
@@ -182,7 +182,7 @@ This option lets you install the Error Tracking Agent as a standalone. Perform t
   | **Required Environment Variable** | **Description** | **Example** |
 | --- | --- | --- |
 | `ET_COLLECTOR_URL` | URL to the Error Tracking collector. | `https://collector.et.harness.io/prod1`|
-| `ET_APPLICATION_NAME` | Name of your application or Service. | `cetmigrationpoc` |
+| `ET_APPLICATION_NAME` | Name of your application or Service. | `cetmigration` |
 | `ET_DEPLOYMENT_NAME` | Deployment or version number of your application or Service. When your application or Service is updated to a new version, it's recommended that you update this variable as well, so that the Error Tracking Agent can identify when new errors are introduced. | `1` |
 | `ET_ENV_ID` | ID of your Harness Environment. | `staging` |
 | `ET_TOKEN` | ET Agent Token created on Harness. | `b34*****-****-****-****-***********42a` |
@@ -191,7 +191,7 @@ This option lets you install the Error Tracking Agent as a standalone. Perform t
 
 ```
 ENV ET_COLLECTOR_URL=https://collector.et.harness.io/prod1/
-ENV ET_APPLICATION_NAME=cetmigrationpoc
+ENV ET_APPLICATION_NAME=cetmigration
 ENV ET_DEPLOYMENT_NAME=1
 ENV ET_ENV_ID=staging
 ENV ET_TOKEN=b34*****-****-****-****-***********42a
