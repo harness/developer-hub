@@ -34,7 +34,7 @@ The following deprecated API endpoints will no longer be supported:
 
 ## November 2023
 
-### Version 81505
+### Version 81502
 
 #### New features and enhancements
 
