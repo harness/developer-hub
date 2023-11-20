@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 7
 description: Install Harness Delegate on Kubernetes or Docker
 title: Install Harness Delegate on Kubernetes or Docker
 ---

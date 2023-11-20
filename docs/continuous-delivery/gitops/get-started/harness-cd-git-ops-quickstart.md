@@ -27,7 +27,7 @@ This example shows you how to set up Harness GitOps using one of your Kubernetes
 
 You'll learn how to:
 
-* Install a Harness GitOps Agent in your target cluster.
+* Install a Harness GitOps Agent in your target cluster. You can skip this if you are using [Hosted GitOps](/docs/continuous-delivery/gitops/hosted-gitops/).
 * Set up a Harness GitOps Cluster to points to the target cluster.
 * Set up a Harness GitOps Repository that points to the source manifest repo.
 * Set up a Harness GitOps Application that collects the Agent Cluster, and Repository, and defines the sync policy for GitOps.
@@ -38,7 +38,7 @@ For a quick summary of Harness GitOps concepts, see [Harness GitOps Basics](/doc
 ## Before you begin
 
 * (Optional) **GitHub and DockerHub account:** this example uses a publicly available manifest in GitHub and a public Docker image. You will be using anonymous credentials for connection, but you can use your own credentials if you like.  
-We'll be using public manifests from <https://github.com/argoproj/argocd-quickstart-apps>.
+We'll be using public manifests from <https://github.com/argoproj/argocd-example-apps>.
 * **Target Kubernetes cluster:** you can use a cluster in any cloud platform. Harness makes a platform-agnostic connection to the cluster.
 
 * **Set up your Kubernetes Cluster:** you'll need a target Kubernetes cluster for the Harness GitOps Agent and deployment. Ensure your cluster meets the following requirements:
@@ -176,7 +176,7 @@ GitOps Repositories store the source manifests you want to sync with destination
 
 In the Harness GitOps Repository setup, you select the Agent to use when synching state and provide the credentials to use when connecting to the Git repository.
 
-We're going to use a publicly available GitHub repo and manifests located at `https://github.com/argoproj/argocd-quickstart-apps/tree/master/guestbook`. We'll make an anonymous connection, so no GitHub credentials are required.
+We will use a publicly available GitHub repo and manifests located at [https://github.com/argoproj/argocd-example-apps/tree/master/guestbook](https://github.com/argoproj/argocd-example-apps/tree/master/guestbook). We'll make an anonymous connection, so no GitHub credentials are required.
 
 1. In your Harness project, select **GitOps**, and then select **Settings**.
 2. Select **Repositories**.
@@ -189,7 +189,7 @@ We're going to use a publicly available GitHub repo and manifests located at `ht
    1. In **Repository Name**, enter **guestbook**.
    2. In **GitOps Agent**, select the agent you just added and select **Apply Selected**.
    For this example, we'll make an anonymous connection to a GitHub repo over HTTPS.
-   3.  In **Repository URL**, enter the URL: `https://github.com/argoproj/argocd-quickstart-apps`.
+   3.  In **Repository URL**, enter the URL: `https://github.com/argoproj/argocd-example-apps`.
 6.  Select **Continue**.
 7.  In **Credentials**, in **Connection Type**, select **HTTPS**.
 8.  In **Authentication**, select **Anonymous**.
@@ -309,11 +309,11 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
 9. In **Sync Policy**, select **Manual**, and then select **Continue**.
 10.  In **Source**, you specify the source repo to use.
 11. In **Repository Type**, select **Git**.
-12. Select in **Repository URL** and select the URL you entered in your Harness GitOps Repository: `https://github.com/argoproj/argocd-quickstart-apps`.
+12. Click **Repository URL** and select the URL you entered in your Harness GitOps Repository: `https://github.com/argoproj/argocd-example-apps`.
 13. In **Revision Type**, select **Branch**.
 14. In **Revision**, select **master**.
 15. Wait a moment for **Path** to populate. Harness will pull the paths from the repo.
-16. In **Path**, select **helm-guestbook**. This is the location of this app in the repo: `https://github.com/argoproj/argocd-quickstart-apps/tree/master/helm-guestbook`.
+16. In **Path**, select **helm-guestbook**. This is the location of this app in the repo: `https://github.com/argoproj/argocd-example-apps/tree/master/helm-guestbook`.
 17. In **Revision Type**, select:
     * **Branch**: Select a branch and path from the prepopulated dropdown list.
     * **Tag**: Select a branch and tag from the prepopulated dropdown list.

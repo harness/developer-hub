@@ -63,6 +63,13 @@ Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference
    
 You can configure the pipeline to fail if there is no data from the health source. This ensures that the deployment fails when there is no data for Harness to analyze.
 
+The Verify step also includes a metric-level option to fail the Verify step when the analysis of a given custom metric is not possible, either because there is no data for the custom metric on the test nodes or on the control node.
+
+To enable the metric-level fail-on-no-analysis option, in the configuration pane of your Verify step, select **Step Parameters**, expand **Optional**, and select **Fail if any custom metrics has no analysis**.
+
+:::note
+The metric-level option is behind the feature flag `CV_UI_DISPLAY_FAIL_IF_ANY_CUSTOM_METRIC_IN_NO_ANALYSIS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 ### Health source
 
