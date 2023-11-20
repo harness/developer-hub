@@ -75,7 +75,7 @@ Git event webhook triggers require specific permissions:
 * The user account you use to create the token must have the permission to configure repo webhooks in your Git provider.
 * The personal access token used for [code repo connector authentication](/docs/platform/connectors/code-repositories/connect-to-code-repo/#code-repo-connector-permissions-and-access) must have the appropriate permissions scopes depending on the Git provider.
 
-For example, for GitHub, you must be a repo admin and the GitHub personal access token used in the [GitHub connector's credentials](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/#credentials-settings) requires `read:org`, `read:user`, all `repo` scopes, and all `admin:repo_hook` scopes.
+For example, for GitHub, you must be a repo admin and the GitHub personal access token used in the [GitHub connector's credentials](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/#credentials-settings) must have `read:user`, all `repo` scopes, and all `admin:repo_hook` scopes. If the repo is part of a GitHub organization, it must have the `read:org` scope.
 
 ![GitHub personal access token scopes.](./static/trigger-pipelines-using-custom-payload-conditions-32.png)
 
