@@ -139,7 +139,7 @@ export default function CertificationsSTO() {
                   </div>
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="">
+                    <Link href="https://university.harness.io/security-testing-orchestration-developer">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -156,7 +156,7 @@ export default function CertificationsSTO() {
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="#">
+                <Link href="https://university.harness.io/security-testing-orchestration-developer">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
