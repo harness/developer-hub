@@ -74,7 +74,6 @@ import Nameidlimit from '/docs/platform/shared/name-id-limit.md';
 
 <Nameidlimit />
 
-<details>
 <summary>Store service account keys as Harness secrets</summary>
 
 ### Overview settings
@@ -149,3 +148,4 @@ In the case of accessing Google cloud resources, use [workload identity federati
 * Provider ID: This identifies the OIDC provider configured on the GCP side and it is the Provider ID value.
 * Project ID: The project number of the Google Cloud Project that is used to create a workload identity pool.
 * Service Account Email: This is the service account that was linked to the workload identity pool in the last step.
+
