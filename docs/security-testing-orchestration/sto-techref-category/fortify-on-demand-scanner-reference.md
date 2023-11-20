@@ -2,7 +2,7 @@
 title: Fortify on Demand scanner reference for STO
 description: Repository scans with Fortify on Demand
 sidebar_label: Fortify on Demand scanner reference
-sidebar_position: 150
+sidebar_position: 180
 ---
 
 You can run Fortify scans on your repositories using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.

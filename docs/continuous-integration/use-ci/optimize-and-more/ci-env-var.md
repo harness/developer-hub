@@ -1,10 +1,10 @@
 ---
 title: CI environment variables reference
 description: Learn about environment variables in Harness CI pipelines.
-sidebar_position: 40
+sidebar_position: 50
 ---
 
-This topic describes the Harness CI built-in environment variables<!--, particularly those prefixed by `DRONE_`, as well as some `HARNESS_` variables and other environment variables relevant to CI-->. These variables contain information about the build, such as how the build started, codebase information, build infrastructure, step identifiers, and more. These are [pipeline variables](/docs/platform/Variables-and-Expressions/harness-variables#pipeline), and they are available to all stages and steps in the pipeline.
+This topic describes the Harness CI built-in environment variables<!--, particularly those prefixed by `DRONE_`, as well as some `HARNESS_` variables and other environment variables relevant to CI-->. These variables contain information about the build, such as how the build started, codebase information, build infrastructure, step identifiers, and more. These are [pipeline variables](/docs/platform/variables-and-expressions/harness-variables#pipeline), and they are available to all stages and steps in the pipeline.
 
 ## Reference environment variables
 
@@ -27,14 +27,14 @@ Manual builds occur when you manually run a pipeline from within Harness. You ca
 
 ### Webhook triggers
 
-You can automatically [trigger pipelines using Git events](/docs/platform/Triggers/triggering-pipelines). [Webhook triggers](/docs/platform/Pipelines/w_pipeline-steps-reference/triggers-reference) listen for specific events in your code repo, and then trigger builds when those events occur.
+You can automatically [trigger pipelines using Git events](/docs/platform/Triggers/triggering-pipelines). [Webhook triggers](/docs/platform/triggers/triggers-reference) listen for specific events in your code repo, and then trigger builds when those events occur.
 
-* **Pull request (PR) triggers:** A **Pull Request Webhook Event** automatically starts a build in Harness when there is a new pull request event on the pipeline's associated Git repo. You can specify the type of [pull request events](/docs/platform/Pipelines/w_pipeline-steps-reference/triggers-reference#event-and-actions) to track, such as close, open, update/edit, reopen, and so on.
+* **Pull request (PR) triggers:** A **Pull Request Webhook Event** automatically starts a build in Harness when there is a new pull request event on the pipeline's associated Git repo. You can specify the type of [pull request events](/docs/platform/triggers/triggers-reference#event-and-actions) to track, such as close, open, update/edit, reopen, and so on.
 * **Push triggers:** A **Push Webhook Event** automatically starts a build in Harness when there is a new branch or tag push event on the pipeline's associated Git repo.
 
 <!-- H2 Difference between DRONE\_ and PLUGIN\_ variables
 
-`DRONE_` variables are environment variables that are automatically set at the pipeline level. These are [pipeline variables](/docs/platform/Variables-and-Expressions/harness-variables#pipeline), and they are available to all stages and steps in the pipeline. You might notice that many `DRONE_` variables are the same as some `CI_` and `HARNESS_` environment variables. The `DRONE_` variables are derived from Drone, which is part of Harness CI. Providing first-class support for [Drone environment variables](https://docs.drone.io/pipeline/environment/reference/) makes it easier to migrate from standalone Drone to Harness CI and provides better support for [Drone plugins](../use-drone-plugins/explore-ci-plugins.md) that use those variables.
+`DRONE_` variables are environment variables that are automatically set at the pipeline level. These are [pipeline variables](/docs/platform/variables-and-expressions/harness-variables#pipeline), and they are available to all stages and steps in the pipeline. You might notice that many `DRONE_` variables are the same as some `CI_` and `HARNESS_` environment variables. The `DRONE_` variables are derived from Drone, which is part of Harness CI. Providing first-class support for [Drone environment variables](https://docs.drone.io/pipeline/environment/reference/) makes it easier to migrate from standalone Drone to Harness CI and provides better support for [Drone plugins](../use-drone-plugins/explore-ci-plugins.md) that use those variables.
 
 `PLUGIN_` variables represent [plugin](../use-drone-plugins/explore-ci-plugins.md) settings, and they are defined in either:
 
@@ -421,7 +421,7 @@ ID of the user that started the build.
 
 ## Matrix strategy variables
 
-These variables track [matrix strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/).
+These variables track [matrix strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
 
 * `HARNESS_NODE_INDEX`: Provides the index of a parallel run within a matrix strategy. Ranges from `0` to `parallelism -1`.
 * `HARNESS_NODE_TOTAL`: Provides the total number of elements in a matrix strategy. Equivalent to the value of `parallelism` in the pipeline's YAML.

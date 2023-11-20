@@ -54,6 +54,9 @@ Remote Docker layer caching can dramatically improve build times by sharing laye
 
 * [Build and Push to Docker](../build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md)
 * [Build and Push to ECR](../build-and-upload-artifacts/build-and-push-to-ecr-step-settings.md)
+* [Build and Push to GAR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar.md)
 * [Build and Push to GCR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md)
 
 For more recommendations for optimizing Docker images, go to [Optimize and enhance CI pipelines](../optimize-and-more/optimizing-ci-build-times.md).
+
+<!-- DLC uses the buildx plugin rather than kaniko or drone-docker. Example - GCR buildx plugin: https://github.com/drone-plugins/drone-buildx-gcr -->

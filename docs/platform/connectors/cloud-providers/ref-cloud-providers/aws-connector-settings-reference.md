@@ -379,13 +379,14 @@ This example policy gives limited permission to EKS clusters.
 
 </details>
 
-## Connect to EKS
+## Connect to Elastic Kubernetes Service (EKS)
 
 To connect Harness to Elastic Kubernetes Service (Amazon EKS), you can use the platform-agnostic [Kubernetes cluster connector](kubernetes-cluster-connector-settings-reference.md) or Elastic Kubernetes Service (EKS) cloud connector.
 
+### Prerequisites
+
 Make sure you've met the following requirements to connect to the EKS cloud connector.
 
-* You have enabled the `NG_CDS_NATIVE_EKS_SUPPORT` feature flag.
 * The IAM role of the worker nodes for the EKS cluster have the [required permissions](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html).
     * Your IAM role has the permission to access the AWS EKS cluster. You can edit the `configmap/aws-auth` entry in the EKS cluster to enable the required permissions. For more information, go to [add user role](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html). You can also assume the IAM role used to create the AWS EKS cluster which has the required `configmap/aws-auth` entries by default.
     * Your IAM role has the basic policies to access the AWS EKS cluster. For more information, go to [Amazon EKS identity-based policy examples](https://docs.aws.amazon.com/eks/latest/userguide/security_iam_id-based-policy-examples.html).
@@ -393,7 +394,7 @@ Make sure you've met the following requirements to connect to the EKS cloud conn
   
   Here's a sample `kubeconfig`:
   
-  ```
+  ```yaml
   apiVersion: v1
   clusters:
   - cluster:
@@ -532,71 +533,72 @@ data:
 ---
 ​
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   labels:
-    harness.io/app: harness-delegate
-    harness.io/account: xicobc
     harness.io/name: eks-test-new
-  # Name must contain the six letter account identifier: xicobc
-  name: eks-test-new-xicobc
-  namespace: harness-delegate
+  name: eks-test-new
+  namespace: harness-delegate-ng
 spec:
   replicas: 1
+  minReadySeconds: 120
   selector:
     matchLabels:
-      harness.io/app: harness-delegate
-      harness.io/account: xicobc
       harness.io/name: eks-test-new
-  serviceName: ""
   template:
     metadata:
       labels:
-        harness.io/app: harness-delegate
-        harness.io/account: xicobc
         harness.io/name: eks-test-new
-        infra: fargate
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "3460"
+        prometheus.io/path: "/api/metrics"
     spec:
-      imagePullSecrets:
-        - name: regcredpreqa
-      serviceAccountName: cdp-delegate  
+      terminationGracePeriodSeconds: 600
+      restartPolicy: Always
       containers:
-      - image: harness/delegate:latest
+      - image: docker.io/harness/delegate:23.10.81202
         imagePullPolicy: Always
-        name: harness-delegate-instance
+        name: delegate
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
         ports:
           - containerPort: 8080
         resources:
           limits:
-            memory: "2Gi"
+            memory: "2048Mi"
           requests:
             cpu: "0.5"
-        readinessProbe:
-          exec:
-            command:
-              - test
-              - -s
-              - delegate.log
-          initialDelaySeconds: 20
-          periodSeconds: 10
+            memory: "2048Mi"
         livenessProbe:
-          exec:
-            command:
-              - bash
-              - -c
-              - '[[ -e /opt/harness-delegate/msg/data/watcher-data && $(($(date +%s000) - $(grep heartbeat /opt/harness-delegate/msg/data/watcher-data | cut -d ":" -f 2 | cut -d "," -f 1))) -lt 300000 ]]'
-          initialDelaySeconds: 240
+          httpGet:
+            path: /api/health
+            port: 3460
+            scheme: HTTP
+          initialDelaySeconds: 10
           periodSeconds: 10
-          failureThreshold: 2
+          failureThreshold: 3
+        startupProbe:
+          httpGet:
+            path: /api/health
+            port: 3460
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          failureThreshold: 15
+        envFrom:
+        - secretRef:
+            name: newdel-account-token
         env:
         - name: JAVA_OPTS
           value: "-Xms64M"
         - name: ACCOUNT_ID
-          value: 
+          value: YOUR_ACCOUNT_ID
         - name: MANAGER_HOST_AND_PORT
-          value: 
+          value: https://app.harness.io
         - name: DEPLOY_MODE
-          value: KUBERNETES
+          value: KUBERNETES_ONPREM
         - name: DELEGATE_NAME
           value: eks-test-new
         - name: DELEGATE_TYPE
@@ -607,80 +609,193 @@ spec:
               fieldPath: metadata.namespace
         - name: INIT_SCRIPT
           value: ""
-        - name: DELEGATE_PROFILE
-          value: 
-        - name: DELEGATE_TOKEN
-          value: 
-        - name: WATCHER_STORAGE_URL
-          value: 
-        - name: WATCHER_CHECK_LOCATION
-          value: current.version
-        - name: DELEGATE_STORAGE_URL
-          value: 
-        - name: DELEGATE_CHECK_LOCATION
-          value: delegateqa.txt
-        - name: HELM_DESIRED_VERSION
+        - name: DELEGATE_DESCRIPTION
           value: ""
-        - name: CDN_URL
-          value: 
-        - name: REMOTE_WATCHER_URL_CDN
-          value: 
-        - name: JRE_VERSION
-          value: 11.0.14
-        - name: HELM3_PATH
+        - name: DELEGATE_TAGS
           value: ""
-        - name: HELM_PATH
-          value: ""
-        - name: KUSTOMIZE_PATH
-          value: ""
-        - name: KUBECTL_PATH
-          value: ""
-        - name: POLL_FOR_TASKS
-          value: "false"
-        - name: ENABLE_CE
-          value: "false"
-        - name: PROXY_HOST
-          value: ""
-        - name: PROXY_PORT
-          value: ""
-        - name: PROXY_SCHEME
-          value: ""
-        - name: NO_PROXY
-          value: ""
-        - name: PROXY_MANAGER
+        - name: NEXT_GEN
           value: "true"
-        - name: PROXY_USER
-          valueFrom:
-            secretKeyRef:
-              name: eks-test-new-proxy
-              key: PROXY_USER
-        - name: PROXY_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: eks-test-new-proxy
-              key: PROXY_PASSWORD
-        - name: GRPC_SERVICE_ENABLED
+        - name: CLIENT_TOOLS_DOWNLOAD_DISABLED
           value: "true"
-        - name: GRPC_SERVICE_CONNECTOR_PORT
-          value: "8080"
-      restartPolicy: Always
-​
+        - name: LOG_STREAMING_SERVICE_URL
+          value: "https://app.harness.io/log-service/"
+        - name: DELEGATE_RESOURCE_THRESHOLD
+          value: ""
+        - name: DYNAMIC_REQUEST_HANDLING
+          value: "false"
+
 ---
-​
-apiVersion: v1
-kind: Service
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
 metadata:
-  name: delegate-service
-  namespace: harness-delegate
+   name: eks-test-new-hpa
+   namespace: harness-delegate-ng
+   labels:
+       harness.io/name: eks-test-new
 spec:
-  type: ClusterIP
-  selector:
-    harness.io/app: harness-delegate
-    harness.io/account: xicobc
-    harness.io/name: test-new
-  ports:
-    - port: 8080
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: newdel
+  minReplicas: 1
+  maxReplicas: 1
+  targetCPUUtilizationPercentage: 99
+
+---
+
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: upgrader-cronjob
+  namespace: harness-delegate-ng
+rules:
+  - apiGroups: ["batch", "apps", "extensions"]
+    resources: ["cronjobs"]
+    verbs: ["get", "list", "watch", "update", "patch"]
+  - apiGroups: ["extensions", "apps"]
+    resources: ["deployments"]
+    verbs: ["get", "list", "watch", "create", "update", "patch"]
+
+---
+
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: newdel-upgrader-cronjob
+  namespace: harness-delegate-ng
+subjects:
+  - kind: ServiceAccount
+    name: upgrader-cronjob-sa
+    namespace: harness-delegate-ng
+roleRef:
+  kind: Role
+  name: upgrader-cronjob
+  apiGroup: ""
+
+---
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: upgrader-cronjob-sa
+  namespace: harness-delegate-ng
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: newdel-upgrader-token
+  namespace: harness-delegate-ng
+type: Opaque
+data:
+  UPGRADER_TOKEN: "YOUR_UPGRADER_TOKEN"
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: newdel-upgrader-config
+  namespace: harness-delegate-ng
+data:
+  config.yaml: |
+    mode: Delegate
+    dryRun: false
+    workloadName: newdel
+    namespace: harness-delegate-ng
+    containerName: delegate
+    delegateConfig:
+      accountId: YOUR_ACCOUNT_ID
+      managerHost: https://app.harness.io
+
+---
+
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  labels:
+    harness.io/name: newdel-upgrader-job
+  name: newdel-upgrader-job
+  namespace: harness-delegate-ng
+spec:
+  schedule: "0 */1 * * *"
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 20
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: upgrader-cronjob-sa
+          restartPolicy: Never
+          containers:
+          - image: docker.io/harness/upgrader:latest
+            name: upgrader
+            imagePullPolicy: Always
+            envFrom:
+            - secretRef:
+                name: newdel-upgrader-token
+            volumeMounts:
+              - name: config-volume
+                mountPath: /etc/config
+          volumes:
+            - name: config-volume
+              configMap:
+                name: newdel-upgrader-config
+
 ```
+### Connecting to EKS
+
+To connect to EKS, do the following:
+
+1. On the **Environments** page for your project, select **Infrastructure Definition**, and then proceed to create or update an infrastructure definition.
+
+2. Enter a name and, optionally, a description and any tags that you want to associate with the infrastructure definition.
+
+3. In **How do you want to setup your infrastructure?** select one of the following options:
+
+  - **Inline**. Stores the infrastructure definition in Harness.
+  - **Remote**. Stores the infrastructure definition in a Git repository. If you select this option, do the following:
+    
+    1. In **Git Connector**, create or select a Git connector.
+    
+    2. In **Repository** and **Branch**, specify the repository and branch, respectively, on which to store the infrastructure definition. 
+
+    Harness populates **YAML Path** with a path it generates based on the name of the infrastructure definition. If you edit the infrastructure definition's name after Harness populates this field, Harness does not update the name of the file to match the infrastructure definition's new name. If you want them to match, also edit the file name in the YAML path field manually.
+
+4. In **Deployment Type**, select **Kubernetes** or **Native Helm**.
+
+5. In **Select Infrastructure Type** > **Via Cloud Provider**, select **Elastic Kubernetes Service**.
+
+6. Select **Map Dynamically Provisioned Infrastructure** if you want to map the provisioned infrastructure dynamically. 
+
+  A **Provisioner** setting is added and configured as a runtime input.
+
+7. Configure the following fields to connect to a cluster:
+
+  :::note
+  You can configure these fields to use fixed values, runtime inputs, or expressions. One of these value types is selected by default but you can change the selection. For information about how to configure these value types, go to [Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
+  :::
+
+    1. In **Connector**, create or select an AWS connector. 
+
+    2. (Optional) In **Region**, specify an AWS Region if you want the next field (**Cluster**) to show clusters from only that AWS Region.
+
+      The Cluster field, by default, fetches all the clusters in all the AWS Regions associated with the AWS account. The credentials that the AWS connector uses, on the other hand, might limit the connector to only certain AWS Regions. In such a scenario, specifying the AWS Region ensures that the Cluster field is populated with a usable list of clusters.
+
+    3. In **Cluster**, select the Kubernetes cluster that you want to use.
+
+    4. In **Namespace**, select a namespace to use on the Kubernetes cluster.
+
+    5. In **Release name**, specify a release name.
+
+8. (Optional) Select **Allow simultaneous deployments on the same infrastructure**.
+
+9. (Optional) Select **Scope to Specific Services** if you want to limit the infrastructure definition to specific services only, and then select or create the services you want in the infrastructure definition.
+
+10. Select **Save**.
+
 
 Here's a quick video demonstrating Native EKS authentication support for Kubernetes:
 
@@ -1019,6 +1134,12 @@ The AWS Backoff Strategy settings remedy this situation by setting Amazon SDK de
 The Amazon SDK Default backoff strategy is the combination of fixed backoff, equal jitter, and full jitter backoff strategies. 
 
 Fixed backoff is a simple backoff strategy that always uses a fixed delay for the delay before the next retry attempt.
+
+:::info note
+
+Backoff strategy parameter settings are in milliseconds.
+
+:::
 
 Typically, the SDK default strategy uses the full jitter strategy for non-throttled exceptions and the equal jitter strategy for throttled exceptions.
 

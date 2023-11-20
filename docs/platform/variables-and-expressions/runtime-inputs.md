@@ -54,7 +54,7 @@ When you type `<+`, Harness provides suggestions for built-in [expressions](#exp
 
 Fixed Values are values that you define when you configure a setting. These values don't change at runtime.
 
-Use fixed values for settings you don't need to change based on the build context, other steps, or runtime operations.
+Use fixed values for settings you don't need to change based on the build context, other steps, or runtime operations. More details on the usage of Fixed values [here](https://developer.harness.io/tutorials/cd-pipelines/variables#create-an-account-level-variable).
 
 ## Runtime inputs
 
@@ -113,6 +113,12 @@ If you rerun this pipeline, the pipeline uses the same inputs you provided for t
 
 ### Default values
 
+:::note
+
+If a runtime input is an expression that resolves to `null`, it will not be replaced by the default value. In this case, please consider using a [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
+
+:::
+
 By default, runtime input accepts virtually any sting input. You can specify a default value to avoid empty values.
 
 ```mdx-code-block
@@ -135,7 +141,7 @@ By default, runtime input accepts virtually any sting input. You can specify a d
   <TabItem value="YAML" label="YAML" default>
 ```
 
-When writing pipelines in YAML, specify a default value by appending the `.default()` method to `<+input>`. For example: `<+input>.default('bengaluru')`.
+When writing pipelines in YAML, specify a default value by appending the `.default()` method to `<+input>`. For example: `<+input>.default(bengaluru)`.
 
 If your default value has a comma, you must escape the value string using the format `\'VALUE\'`. For example: `<+input>.default(\'london,uk\')`.
 
@@ -143,7 +149,7 @@ If your default value has a comma, you must escape the value string using the fo
               - step:
                   identifier: Run_1
                   type: Run
-                  name: <+input>.default('bengaluru')
+                  name: <+input>.default(bengaluru)
                   ...
 ```
 
@@ -181,7 +187,7 @@ Harness doesn't support *nested* JSON objects in runtime input. For example, thi
 
 #### Default values in templates
 
-You can specify default values in [templates](/docs/platform/Templates/template). If you want to be able to override these values at runtime, append the `.executionInput()` method. For example, the following YAML example uses a stage template that includes `<+input>.default('new york').executionInput()`. The default value is `new york`, but it can be changed at runtime.
+You can specify default values in [templates](/docs/platform/Templates/template). If you want to be able to override these values at runtime, append the `.executionInput()` method. For example, the following YAML example uses a stage template that includes `<+input>.default(new york).executionInput()`. The default value is `new york`, but it can be changed at runtime.
 
 ```yaml
 pipeline:
@@ -203,7 +209,7 @@ pipeline:
               - name: var1
                 type: String
                 default: ABC
-                value: <+input>.default('new york').executionInput()
+                value: <+input>.default(new york).executionInput()
 ```
 
 ### Allowed values
@@ -234,11 +240,11 @@ Use allowed values to provide a fixed range of acceptable values for a runtime i
   <TabItem value="YAML" label="YAML" default>
 ```
 
-When writing pipelines in YAML, define allowed values by appending the `.allowedValues()` method to `<+input>`. For example: `<+input>.allowedValues('bengaluru','newyork')`.
+When writing pipelines in YAML, define allowed values by appending the `.allowedValues()` method to `<+input>`. For example: `<+input>.allowedValues(bengaluru,newyork)`.
 
 If your values include commas, you must escape the value strings using the format `\'VALUE\'`. For example: `<+input>.allowedValues(\'bengaluru,india\',\'newyork,usa\',\'london,uk\')`.
 
-If you specify allowed values *and* a [default value](#default-values), the default value must be present in the list of allowed values. To specify both an allowed value and a default value, append both the `.default()` and `.allowedValues()` methods to `<+input>`, and make sure the list of allowed values includes the default value. For example: `<+input>.default('london').allowedValues('bengaluru','newyork','london')`.
+If you specify allowed values *and* a [default value](#default-values), the default value must be present in the list of allowed values. To specify both an allowed value and a default value, append both the `.default()` and `.allowedValues()` methods to `<+input>`, and make sure the list of allowed values includes the default value. For example: `<+input>.default(london).allowedValues(bengaluru,newyork,london)`.
 
 ```mdx-code-block
   </TabItem>
@@ -308,8 +314,8 @@ When writing pipelines in YAML, append the `executionInput()` method to `<+input
 
 You can use mid-run input along with [allowed values](#allowed-values) and [default values](#default-values). For example:
 
-* Select mid-run input from a list of allowed values: `<+input>.allowedValues('value1','value2').executionInput()`
-* Provide a default value and provide a list of allowed values for mid-run input: `<+input>.allowedValues('value1','value2').default('value1').executionInput()`
+* Select mid-run input from a list of allowed values: `<+input>.allowedValues(value1,value2).executionInput()`
+* Provide a default value and provide a list of allowed values for mid-run input: `<+input>.allowedValues(value1,value2).default(value1).executionInput()`
 
 ```mdx-code-block
   </TabItem>

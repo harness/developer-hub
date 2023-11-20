@@ -22,7 +22,15 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-This tutorial shows how to use a Harness Continuous Integration (CI) pipeline to build and push application container images to Google Artifact Registry (GAR).
+:::info
+
+Harness now offers first-class support for Google Artifact Registry through the [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar).
+
+While you can still use the techniques in this tutorial to build and push to GAR, the [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar) streamlines this process into one step.
+
+:::
+
+This tutorial shows how to use Run steps in a Harness Continuous Integration (CI) pipeline to build and push application container images to Google Artifact Registry (GAR). You can also use the [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar) for a more streamlined experience.
 
 You'll learn how to:
 
@@ -310,7 +318,7 @@ You can use either the visual or YAML editor to add pipeline steps. This tutoria
    ```
 
 7. Under **Optional Configuration**, select your [GCP connector](#create-a-google-cloud-platform-gcp-connector) for **Container Registry**.
-8. In **Image**, enter `cr.io/kaniko-project/executor:v1.9.0-debug`
+8. In **Image**, enter `gcr.io/kaniko-project/executor:v1.9.0-debug`
 
    ![Build and Push Step](../static/ci-tutorial-push-to-gar/go_pipeline_step_build_and_push_1.png)
 

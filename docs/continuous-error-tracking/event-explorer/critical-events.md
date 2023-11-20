@@ -1,7 +1,7 @@
 ---
 title: Critical events
 description: Add a condition to label an event as critical.
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 You can add a condition that specifies when an event should be marked as critical. When an event occurs and matches the condition that you set, it will be labeled as **CRITICAL** in the Events page.

@@ -57,7 +57,7 @@ To set the Ignore Thresholds rule:
    
 4. In the **Criteria** field, choose the type of criteria you want to apply for the threshold:
    
-   - **Absolute Value**: Select this option and enter the **Greater than** and **Lesser than** values.
+   - **Absolute Value**: Select this option and enter either the **Greater than** value or the **Lesser than** value, depending on your preference.
    - **Percentage Deviation**: Select this option and enter the **Lesser than** value.
 
 <docimage path={require('./static/monitored-service-ignore-threshold.png')} />
@@ -87,7 +87,7 @@ To set Fail-Fast Thresholds rule:
    
 6. In the Criteria field, choose the type of criteria you want to apply for the threshold:
    
-   -  **Absolute Value**: Select this option and enter the **Greater than** and **Lesser than** values.
+   -  **Absolute Value**: Select this option and enter either the **Greater than** value or the **Lesser than** value, depending on your preference.
    
    -  **Percentage Deviation**: Select this option and enter the **Lesser than** value.
   

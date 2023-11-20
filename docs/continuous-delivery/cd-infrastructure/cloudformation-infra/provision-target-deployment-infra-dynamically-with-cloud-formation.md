@@ -39,10 +39,10 @@ To see how to set up dynamic provisioning for each deployment type, go to the fo
 - [Kubernetes infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure)
   - The Kubernetes infrastructure is also used for Helm, Native Helm, and Kustomize deployment types.
 - [Azure Web Apps](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial)
+- [AWS ASG](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial)
 - [AWS ECS](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial)
 - [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
 - [Spot Elastigroup](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment)
-- [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions)
 - [Serverless.com framework for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart)
 - [Tanzu Application Services](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart)
 - [VM deployments using SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)	
@@ -252,10 +252,10 @@ Harness checks if the stack is in `ROLLBACK_COMPLETE` state before the deploymen
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## Map outputs to target infra settings

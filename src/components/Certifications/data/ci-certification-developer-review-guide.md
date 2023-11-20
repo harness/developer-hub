@@ -1,33 +1,33 @@
-
-
-|Topic|Material |
-| :- | :- |
-|**1. Harness Basics, Platform Entities, and Key Concepts**||
-|Familiarize with artifacts, packages, and different CI build infrastructures|[Harness CI](/tutorials/ci-pipelines/fastest-ci)|
-|Set up and configure connectors like Git and Docker Hub|[Connect to an Artifact Repo](/docs/get-started/key-concepts)|
-|**2. Grasp the role of Harness Delegate and differences between Pipeline Studio and YAML structure**||
-|Understand and use Harness expressions and variables|[Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs
-)|
-|Get familiar with different types of artifacts and scanning options | [Artifacts tab](/tutorials/ci-pipelines/publish/artifacts-tab/)
-|**3. Discover supported platforms and Operating Systems on Harness Cloud**||
-|Define and configure connectors, and understand their usage|[Create a connector using YAML](/docs/platform/connectors/create-a-connector-using-yaml)|
-|Learn about the Harness Delegate and Harness Manager|[Harness Platform architecture](/docs/get-started/harness-platform-architecture/)|
-|**4. RBAC, best practices, and small configuration tasks**||
-|Understand shared paths and Drone/CI plugins |[CI key concepts](/docs/continuous-integration/get-started/key-concepts)|
-|Learn about caching and test intelligence in Harness|[Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/)|
-|**5. Configure triggers, input sets, overlays, and failure strategies in CI**||
-|Understand and apply conditional execution and looping strategies|[Looping strategies overview -- matrix, repeat, and parallelism](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)|
-|Learn about advanced options such as timeout settings and selective stage executions|[CI Build stage settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/)|
-|**6. Set up notifications based on pipeline events**||
-|Configure and run steps on host vs containers|[Run Step Settings](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#set-container-resources)|
-|Learn about chaining pipelines and GitHub actions support in Harness CI|[Pipeline chaining in Harness](/docs/platform/pipelines/pipeline-chaining/)|
-|**7. Navigate through the Harness User Interface features such as the Overview, Build and Pipelines tabs**||
-|Understand and configure tags and the execution history tab in Pipeline Studio|[Tags References](/docs/platform/references/tags-reference/)|
-|Learn about details, inputs, and outputs in step configuration|[Use step groups to organize CI steps](/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups/)|
-|**8. Understand Docker Image pulls, their risks, and how to use images when shells are unavailable**||
-|Learn about troubleshooting pipeline steps and Harness Cloud's advantages|[Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci)|
-|Set up and manage user groups and permissions at different levels|[Add and manage target groups](/docs/feature-flags/ff-target-management/add-target-groups/)|
-|**9. Perform a basic Delegate installation and set container resources**||
-|Learn about chained pipelines and GitHub actions support|[Use the GitHub Action plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/)|
-|Get familiar with common CI plugins and how to configure them|[Explore plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins/)|
-
+| Objective   | Material |
+| ------ | ----- |
+| **1. Understanding of CI/CD Concepts and Best Practices** ||
+| Distinguish between Continuous Integration, Continuous Delivery, and Continuous Deployment | [Harness Continuous Integration (CI) overview](https://developer.harness.io/docs/continuous-integration/get-started/overview) |
+| Identify key concepts related to CI/CD pipelines and their steps| [Key concepts](https://developer.harness.io/docs/continuous-integration/get-started/key-concepts)|
+| Recognize best practices for implementing CI/CD in software development workflows | [Optimize and enhance CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/)|
+| **2. Harness CI Pipeline Creation and Optimization** ||
+| Construct a Harness CI pipeline and establish its stages and steps | [CI onboarding guide](https://developer.harness.io/docs/continuous-integration/get-started/onboarding-guide) |
+| Diagnose and resolve common errors and issues within the CI pipeline   | [Optimize and enhance CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/) |
+| Implement strategies to optimize pipeline execution and minimize build times | [Optimize and enhance CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/) |
+| **3. Utilization and Management of Harness Connectors and Integrations**  | |
+| Configure and manage various Harness Connectors (e.g., Docker, Git)| [Create and configure a codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/)|
+| Understand and implement integration with different platforms and OS | [Continuous Integration (CI)](https://developer.harness.io/docs/get-started/supported-platforms-and-technologies/#continuous-integration-ci)|
+| **4. Implementing and Managing Docker and Containerization in Harness CI** ||
+| Establish Docker connectivity and manage Docker connectors | [Build and Push to Docker](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/) |
+| Develop and optimize Dockerfile configurations and image handling| [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/) |
+| Diagnose and mitigate common Docker-related issues and errors | [Troubleshoot CI](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci)|
+| **5. Harness CI Configuration and Codebase Management** ||
+| Understand and implement the configuration of Harness CI Codebase | [Create and configure a codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) |
+| Optimize and manage code repository, connectors, and trigger settings| [Optimize and enhance CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/)|
+| **6. Authentication and Security Management in Harness CI** ||
+| Configure and manage authentication methods for various connectors (e.g., Git, Docker)     | [Using Git Credentials from Codebase Connector in CI Pipeline's Run Step](https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/) |
+| Implement and utilize Secrets Management tools with Harness CI | [Use secrets managers](https://developer.harness.io/tutorials/platform/secrets-management/) |
+| Understand and implement access control using Harness RBAC configurations | [Role-based access control (RBAC) in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/)|
+| **7. Implementing and Utilizing Test Intelligence in Harness CI** | |
+| Configure and synchronize Harness Test Intelligence with main/master branches              | [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) |
+| Implement strategies to improve and optimize test execution times                          | [Split tests (parallelism)](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) |
+| **8. Advanced CI Features and Troubleshooting in Harness** ||
+| Implement and utilize advanced features like caching and conditional executions in CI      | [Stage and step conditional execution settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) |
+| Diagnose, troubleshoot, and resolve common issues and errors in CI stages| [Troubleshoot CI](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci) |
+| **9. Implementation of Plugins and Extensions in Harness CI**  | |
+| Understand, install, and manage plugins in the Harness CI environment | [Plugin step settings](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference/)                                                                          |
+| Implement use-cases using various Harness CI and third-party plugins | [Explore plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins/)|

@@ -2,7 +2,7 @@
 title: Sniper scanner reference for STO
 description: Instance scans with Sniper
 sidebar_label: Sniper scanner reference 
-sidebar_position: 280
+sidebar_position: 370
 ---
 
 

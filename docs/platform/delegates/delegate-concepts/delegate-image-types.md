@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-import Delimagetypes from '/docs/platform/delegates/shared/delegate-image-types-intro-table.md'
+import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-table.md'
 
 <Delimagetypes />
 
@@ -33,7 +33,7 @@ The following table differentiates between delegate images based on key features
   | kubectl | 1.13.2, 1.19.2 | 1.24.3 |
   | go-template | 0.4, 0.4.1 | 0.4.1 |
   | harness-pywinrm | 0.4-dev | 0.4-dev |
-  | helm | 2.13.1, 3.1.2, 3.8.0 | 2.13.1, 3.1.2, 3.8.0 |
+  | helm | 3.1.2, 3.8.0 | 3.1.2, 3.8.0 |
   | chartmuseum | 0.8.2, 0.12.0 | 0.15.0 |
   | tf-config-inspect | 1.0, 1.1 | 1.1 |
   | oc | 4.2.16 | 4.2.16 |

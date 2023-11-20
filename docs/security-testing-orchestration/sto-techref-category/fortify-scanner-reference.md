@@ -2,20 +2,13 @@
 title: Fortify scanner reference for STO
 description: Repository scans with Fortify
 sidebar_label: Fortify scanner reference
-sidebar_position: 144
+sidebar_position: 170
 ---
 
 You can run Fortify scans on your repositories using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 ## Important notes for running Fortify scans in STO
 
-### Docker-in-Docker requirements
-
-```mdx-code-block
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
-
-<StoDinDRequirements />
 
 ### Root access requirements
 

@@ -6,6 +6,15 @@ title: Google Cloud Functions
 
 # Google Cloud Functions 
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Delivery & GitOps Certification today!"
+  link="/certifications/continuous-delivery"
+  closable={true}
+  target="_self"
+/>
+
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -31,7 +40,7 @@ Verify that you have the following:
 2. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing a Harness delegate.
     - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 3. **Install the [Docker](https://helm.sh/docs/intro/install/)** in order to install the Docker delegate.
-4. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
+4. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
     - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) for more information on forking a GitHub repository.
 5. ** Google Cloud Function and Google Cloud Storage permissions**. Harness supports Google Cloud Functions **1st gen** and **2nd gen**. There are minor differences in the permissions required by each generation. For a detailed breakdown, go to [Access control with IAM from Google](https://cloud.google.com/functions/docs/concepts/iam).
 
@@ -57,8 +66,8 @@ We suggest opting for Cloud Functions **2nd gen** whenever feasible for new func
 - Once the bucket is created, select **UPLOAD FILES** and upload the file **hello_world.zip** for 1st gen or **helloHttp.zip** for 2nd gen.
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="2nd Gen">
+<Tabs queryString="generation">
+<TabItem value="2g" label="2nd Gen">
 ```
 
 ## Getting Started with Harness CD
@@ -129,6 +138,245 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     - For the secret value, upload the Google Cloud's account service key file for your service account, which you can download from your [GCP project](https://developers.google.com/workspace/guides/create-credentials#create_credentials_for_a_service_account).
     - Select **Save**.
 
+```mdx-code-block
+<Tabs queryString="interface2g">
+<TabItem value="cli2g" label="CLI">
+```
+1. Download and configure the Harness CLI.
+
+    ```mdx-code-block
+    <Tabs queryString="cli-os-2g">
+    <TabItem value="macos2g" label="MacOS">
+    ```
+
+    ```bash
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-darwin-amd64.tar.gz
+    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+    source ~/.bash_profile
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    <TabItem value="linux2g" label="Linux">
+    ```
+
+    ```mdx-code-block
+    <Tabs queryString="linux-platform-2g">
+    <TabItem value="arm2g" label="ARM">
+    ```
+
+    ```bash
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz 
+    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+    source ~/.bash_profile
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    <TabItem value="amd2g" label="AMD">
+    ```
+
+    ```bash
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz
+    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+    source ~/.bash_profile
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    </Tabs>
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    <TabItem value="windows2g" label="Windows">
+    ```
+
+    a. Open Windows Powershell and run the command below to download the Harness CLI.
+
+    ```
+    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip  -OutFile ./harness.zip
+    ```
+        
+    b. Extract the downloaded zip file and change the directory to extracted file location.
+
+    c. Follow the steps below to make it accessible via terminal.
+
+    ```
+    $currentPath = Get-Location 
+    [Environment]::SetEnvironmentVariable("PATH", "$env:PATH;$currentPath", [EnvironmentVariableTarget]::Machine)
+    ```
+
+    d. Restart terminal.
+
+    ```mdx-code-block
+    </TabItem>
+    </Tabs>
+    ```
+
+2. Clone the Forked **harnesscd-example-apps** repo and change directory.
+    
+    ```bash
+    git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
+    cd harnesscd-example-apps 
+    ```
+    :::note
+    
+    Replace `GITHUB_ACCOUNTNAME` with your GitHub account name.
+
+    :::
+
+3. Log into Harness from the CLI.
+    ```bash
+    harness login --api-key  --account-id HARNESS_API_TOKEN 
+    ```
+    :::note
+    
+    Replace `HARNESS_API_TOKEN` with Harness API token that you obtained during the prerequisite section of this tutorial.
+
+    :::
+
+<details open>
+<summary>What are connectors?</summary>
+
+Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](/docs/category/connectors).
+
+</details>
+
+1. Create the **GitHub connector**. 
+    1. In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
+    2. Now create the **GitHub connector** using the following CLI command:
+        ```
+        harness connector --file "/google_cloud_function/github-connector.yml" apply
+        ```
+2. Create the **GCP connector**.
+    1. In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
+    2. Now create the **AWS Connector** using the following CLI command:
+        ```
+        harness connector --file "/google_cloud_function/gcp-connector.yml" apply
+        ```
+
+### Environment
+
+<details open>
+<summary>What are Harness environments?</summary>
+
+Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for serverless functions, VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
+
+</details>
+
+1. Use the following CLI command to create **Environments** in your Harness project:
+    
+    ```
+    harness environment --file "/google_cloud_function/environment.yml" apply
+    ```
+
+2. In your new environment, add an **Infrastructure Definitions** using the following CLI command:
+   
+    ```
+    harness infrastructure --file "/google_cloud_function/infrastructure-definition.yml" apply 
+    ```
+
+### Services
+
+<details open>
+<summary>What are Harness services?</summary>
+
+In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, functions, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
+
+</details>
+
+1. Use the following CLI command to create **Services** in your Harness project. 
+    
+    ```
+    harness service -file "/google_cloud_function/2nd_gen/service.yml" apply
+    ```
+
+### Pipeline
+
+<details open>
+<summary>What are Harness pipelines?</summary>
+
+A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact/function deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
+
+</details>
+
+```mdx-code-block
+<Tabs queryString="deployment2g">
+<TabItem value="canary2g" label="Canary">
+```
+
+<details open>
+<summary>What are Canary deployments?</summary>
+
+A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
+
+</details>
+
+
+1. Enter this CLI command to create a canary deployment using the example YAML file:
+    ```
+    harness pipeline --file "/google_cloud_function/2nd_gen/canary-pipeline.yml" apply
+    ```
+2. In Harness, you can switch to the **Visual** editor and confirm the pipeline stage and execution steps as shown below.
+
+<docimage path={require('../static/harness-cicd-tutorial/canary-gen2.png')} width="60%" height="60%" title="Click to view full size image" />
+
+```mdx-code-block
+</TabItem>
+<TabItem value="bg2g" label="Blue Green">
+```
+
+<details open>
+<summary>What are Blue Green deployments?</summary>
+
+Blue Green deployments involve running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on a **new** service version in the stage environment first. Next, traffic is shifted from the prod environment to stage, and the previous service/function version running on prod is scaled down. Blue Green deployments are also referred to as red/black deployment by some vendors. For more information, go to [When to use Blue Green deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments).
+
+</details>
+
+1. Enter this CLI command to create a blue green deployment using the example YAML file:
+    ```
+    harness pipeline --file "/google_cloud_function/2nd_gen/bluegreen-pipeline.yml" apply
+    ```
+2. You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
+
+<docimage path={require('../static/harness-cicd-tutorial/bluegreen-gen2.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+```mdx-code-block
+</TabItem>
+<TabItem value="basic2g" label="Basic">
+```
+
+<details open>
+<summary>What are Basic deployments?</summary>
+
+For Google Cloud Functions, the basic deployment execution strategy deploys the new function version and routes 100% of traffic from the old version to the new function version.
+
+</details>
+
+1. Enter this CLI command to create a basic deployment using the example YAML file:
+    ```
+    harness pipeline --file "/google_cloud_function/2nd_gen/basic-pipeline.yml" apply
+    ```
+
+2. You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below. 
+    
+   <docimage path={require('../static/harness-cicd-tutorial/rolling-gen2.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="ui2g" label="UI">
+```
 ### Connectors
 
 <details open>
@@ -142,7 +390,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/github-connector.yml).
     - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
-    - Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace `GITHUB_USERNAME` with your GitHub account username in the YAML.
+    - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace `GITHUB_USERNAME` with your GitHub account username in the YAML.
     - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
     - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
@@ -209,8 +457,8 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
    - Select **Edit YAML** and choose any of the following execution strategies. Paste the respective YAML based on your selection.
 
 ```mdx-code-block
-<Tabs>
-<TabItem value="Canary">
+<Tabs queryString="deployment1g">
+<TabItem value="canary1g" label="Canary">
 ```
 
 <details open>
@@ -230,7 +478,7 @@ A canary deployment updates nodes/functions/etc. in a single environment gradual
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Blue Green">
+<TabItem value="bg1g" label="Blue Green">
 ```
 
 <details open>
@@ -252,7 +500,7 @@ Blue Green deployments involve running two identical environments (stage and pro
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Basic">
+<TabItem value="basic1g" label="Basic">
 ```
 
 <details open>
@@ -263,7 +511,6 @@ For Google Cloud Functions, the basic deployment execution strategy deploys the 
 </details>
 
 
-
 1. Copy the contents of [basic-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd_gen/basic-pipeline.yml).
 2. In your Harness pipeline YAML editor, paste the YAML.
 3. Select **Save**.
@@ -272,8 +519,10 @@ For Google Cloud Functions, the basic deployment execution strategy deploys the 
     
    <docimage path={require('../static/harness-cicd-tutorial/rolling-gen2.png')} width="60%" height="60%" title="Click to view full size image" />  
 
-
-
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 ```mdx-code-block
 </TabItem>
 </Tabs>
@@ -296,7 +545,7 @@ You've just learned how to use Harness CD to deploy a Google Cloud Function to G
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="1st Gen">
+<TabItem value="1g" label="1st Gen">
 ```
 ## Getting Started with Harness CD
 ----------------------------------
@@ -369,6 +618,187 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     - Select **Save**.
 
 
+```mdx-code-block
+<Tabs queryString="interface1g">
+<TabItem value="cli1g" label="CLI">
+```
+1. Download and Configure Harness CLI.
+
+    ```mdx-code-block
+    <Tabs queryString="cli-os-1g">
+    <TabItem value="macos1g" label="MacOS">
+    ```
+
+    ```bash
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz 
+    tar -xvf harness-v0.0.16-Preview-darwin-amd64.tar.gz  
+    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+    source ~/.bash_profile
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    <TabItem value="linux1g" label="Linux">
+    ```
+
+    ```mdx-code-block
+    <Tabs queryString="linux-platform-1g">
+    <TabItem value="arm1g" label="ARM">
+    ```
+
+    ```bash
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz 
+    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+    source ~/.bash_profile
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    <TabItem value="amd1g" label="AMD">
+    ```
+
+    ```bash
+    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
+    tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz 
+    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+    source ~/.bash_profile
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    </Tabs>
+    ```
+
+    ```mdx-code-block
+    </TabItem>
+    <TabItem value="windows1g" label="Windows">
+    ```
+
+    a. Open Windows Powershell and run the command below to download the Harness CLI.
+
+    ```
+    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip  -OutFile ./harness.zip
+    ```
+        
+    b. Extract the downloaded zip file and change directory to extracted file location.
+
+    c. Follow the steps below to make it accessible via terminal.
+
+    ```
+    $currentPath = Get-Location 
+    [Environment]::SetEnvironmentVariable("PATH", "$env:PATH;$currentPath", [EnvironmentVariableTarget]::Machine)
+    ```
+
+    d. Restart terminal.
+
+    ```mdx-code-block
+    </TabItem>
+    </Tabs>
+    ```
+
+2. Clone the Forked **harnesscd-example-apps** repo and change directory.
+    
+    ```bash
+    git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
+    cd harnesscd-example-apps 
+    ```
+    :::note
+    
+    Replace `GITHUB_ACCOUNTNAME` with your GitHub Account name.
+
+    :::
+
+3. Log in to Harness from the CLI.
+    ```bash
+    harness login --api-key  --account-id HARNESS_API_TOKEN 
+    ```
+    :::note
+    
+    Replace `HARNESS_API_TOKEN` with Harness API Token that you obtained during the prerequisite section of this tutorial.
+
+    :::
+
+<details open>
+<summary>What are connectors?</summary>
+
+Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](/docs/category/connectors).
+
+</details>
+
+1. Create the **GitHub connector**. 
+    1. In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
+    2. Now create the **GitHub connector** using the following CLI command:
+        ```
+        harness connector --file "/google_cloud_function/github-connector.yml" apply
+        ```
+2. Create the **GCP connector**.
+    1. In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
+    2. Now create the **AWS Connector** using the following CLI command:
+        ```
+        harness connector --file "/google_cloud_function/gcp-connector.yml" apply
+        ```
+
+### Environment
+
+<details open>
+<summary>What are Harness environments?</summary>
+
+Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for serverless functions, VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
+
+</details>
+
+1. Use the following CLI Command to create **Environments** in your Harness project:
+    
+    ```
+    harness environment --file "/google_cloud_function/environment.yml" apply
+    ```
+
+2. In your new environment, add **Infrastructure Definitions** using the following CLI command:
+   
+    ```
+    harness infrastructure --file "/google_cloud_function/infrastructure-definition.yml" apply 
+    ```
+
+### Services
+
+<details open>
+<summary>What are Harness services?</summary>
+
+In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, functions, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
+
+</details>
+
+1. Use the following CLI command to create **Services** in your Harness Project. 
+    
+    ```
+    harness service -file "/google_cloud_function/1st_gen/service.yml" apply
+    ```
+
+### Pipeline
+
+<details open>
+<summary>What are Basic deployments?</summary>
+
+For Google Cloud Functions, the basic deployment execution strategy deploys the new function version and routes 100% of traffic from the old version to the new function version.
+
+</details>
+
+1. CLI Command for basic deployment:
+    ```
+    harness pipeline --file "/google_cloud_function/1st_gen/basic-pipeline.yml" apply
+    ```
+
+2. You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below. 
+    
+   <docimage path={require('../static/harness-cicd-tutorial/rolling-gen2.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+
+```mdx-code-block
+</TabItem>
+<TabItem value="ui1g" label="UI">
+```
+
 ### Connectors
 
 <details open>
@@ -382,7 +812,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/github-connector.yml)
     - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
-    - Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
+    - Assuming you have already forked the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
     - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
     - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
@@ -462,6 +892,11 @@ For Google Cloud Functions, the basic deployment execution strategy deploys the 
    You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
 
 <docimage path={require('../static/harness-cicd-tutorial/rolling_gen1.png')} width="60%" height="60%" title="Click to view full size image" />
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 Finally, it's time to execute your pipeline. 
 

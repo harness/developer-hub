@@ -33,7 +33,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **0.1.8.**
+The current version of this SDK is **0.1.16.**
 
 ## Requirements
 
@@ -93,7 +93,7 @@ You can configure the following features of the SDK:
 | streamEnabled | `harness.WithStreamEnabled(false)` | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode. | `true` |
 | analyticsEnabled | `harness.WithAnalyticsEnabled(false)` | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: Analytics are not cached. | `true` |
 
-Enabling analytics is currently not available using the Go SDK.For further configuration options and samples, such as configuring your logger or using the SDK with the Relay Proxy, go to [Additional Options](feature-flag-sdks-go-application.md#additional-options).
+For further configuration options and samples, such as configuring your logger or using the SDK with the Relay Proxy, go to [Additional Options](feature-flag-sdks-go-application.md#additional-options).
 
 ### Complete the initialization
 
@@ -108,7 +108,39 @@ client, err := harness.NewCfClient(myApiKey, 
  harness.WithPullInterval(1),  
  harness.WithStreamEnabled(false))
 ```
-### Add a Target
+### Block initialization 
+
+By default, when initializing the Harness Feature Flags client, the initialization process is non-blocking. This means that the client creation call returns immediately,
+allowing your application to continue its startup process without waiting for the client to be fully initialized. If you evaluate a flag before the client has finished initializing,
+the default variation you provided can be returned as the evaluation result, because the SDK has not finished caching your remote Flag configuration stored in Harness.
+
+You can choose to wait for the client to finish initializing before continuing. To achieve this, you can use the `WithWaitForInitialized` option, which blocks until the client is fully initialized. Example usage:
+
+```go
+client, err := harness.NewCfClient(sdkKey, harness.WithWaitForInitialized(true))
+
+if err != nil {
+log.ErrorF("could not connect to FF servers %s", err)
+}
+
+result, err := client.BoolVariation("identifier_of_your_boolean_flag", &target, false)
+```
+
+
+In this example, WaitForInitialized blocks for up to 5 authentication attempts. If the client is not initialized within 5 authentication attempts, it returns an error.
+
+This can be useful if you need to unblock after a certain time.
+
+```go
+// Try to authenticate only 5 times before returning a result
+client, err := harness.NewCfClient(sdkKey, harness.WithWaitForInitialized(true), harness.WithMaxAuthRetries(5))
+
+if err != nil {
+log.Fatalf("client did not initialize in time: %s", err)
+}
+```
+
+### Add a target
 
 <details>
 <summary>What is a Target?</summary> 
@@ -184,7 +216,10 @@ target := dto.NewTargetBuilder("HT_1").
 
 Evaluating a Flag is when the SDK processes all Flag rules and returns the correct Variation of that Flag for the Target you provide. 
 
-If a matching Flag can’t be found, or the SDK can’t remotely fetch flags, the default value is returned. 
+If a matching Flag can’t be found, or the SDK can’t remotely fetch flags, the default value is returned. This will be indicated by:
+
+1. The SDK will log an `info` level log that the default variation was returned.
+2. Evaluation calls will return an `error` as well as the default variation that you can handle.
 
 There are different methods for the different Variation types and for each method you need to pass in:
 
@@ -218,6 +253,13 @@ client.NumberVariation(flagName, &target, -1)
 ```
 client.JSONVariation(flagName, &target, types.JSON{"darkmode": false})
 ```
+
+:::note
+
+If you evaluate a feature flag when initialization fails, the default variation you provided is returned as the evaluation result.
+
+:::
+
 ## Test Your App is Connected to Harness
 
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
@@ -262,6 +304,33 @@ client, err := harness.NewCfClient(apiKey,
 harness.WithURL("http://localhost:7000"),  
 harness.WithEventsURL("http://localhost:7000"))
 ```
+
+### Configure your HTTP Client
+
+The SDK has a default HTTP client, however, you can provide your own HTTP client to the SDK by passing it in as a configuration option.
+
+For example, the following creates an HTTP client using custom CAs for Harness Self-Managed Enterprise Edition (on premises).
+
+```
+// Create a custom TLS configuration
+tlsConfig := &tls.Config{
+    RootCAs: certPool,
+}
+
+transport := &http.Transport{
+    TLSClientConfig: tlsConfig,
+}
+
+httpClient := http.Client{Transport: transport}
+	client, err := harness.NewCfClient(apiKey, 
+	    harness.WithEventsURL("https://ffserver:8003/api/1.0"), 
+	    harness.WithURL("https://ffserver:8003/api/1.0"), 
+	    harness.WithHTTPClient(&httpClient))
+
+```
+
+For a full example of providing custom CAs for Harness Self-Managed Enterprise Edition, see our [TLS Example](https://github.com/harness/ff-golang-server-sdk/blob/main/examples/tls/example.go)
+
 ## Sample code for a Go application
 
 Here is a sample code for integrating with the Go SDK:
@@ -337,3 +406,33 @@ package main
         cancel()  
 }
 ```
+
+## Troubleshooting
+The SDK logs the following codes for certain lifecycle events, for example authentication, which can aid troubleshooting.
+
+| **Code** | **Description**                                                                                               |
+|----------|:--------------------------------------------------------------------------------------------------------------|
+| **1000** | Successfully initialized                                                                                      |
+| **1001** | Failed to initialize due to authentication error                                                              |
+| **1002** | Failed to initialize due to a missing or empty API key                                                        |
+| **1003** | `WaitForInitialization` configuration option was provided and the SDK is waiting for initialization to finish |
+| **2000** | Successfully authenticated                                                                                    |
+| **2001** | Authentication failed with a non-recoverable error                                                            |
+| **2002** | Authentication failed and is retrying                                                                         |
+| **2003** | Authentication failed and max retries have been exceeded                                                      |
+| **3000** | SDK closing                                                                                                   |
+| **3001** | SDK closed successfully                                                                                       |
+| **4000** | Polling service started                                                                                       |
+| **4001** | Polling service stopped                                                                                       |
+| **5000** | Streaming service started                                                                                     |
+| **5001** | Streaming service stopped                                                                                     |
+| **5002** | Streaming event received                                                                                      |
+| **5003** | Streaming disconnected and is retrying to connect                                                             |
+| **5004** | Streaming stopped                                                                                             |
+| **5005** | Stream is still retrying to connect after 4 attempts                                                          |
+| **6000** | Evaluation was successful                                                                                     |
+| **6001** | Evaluation failed and the default value was returned                                                          |
+| **7000** | Metrics service has started                                                                                   |
+| **7001** | Metrics service has stopped                                                                                   |
+| **7002** | Metrics posting failed                                                                                        |
+| **7003** | Metrics posting success                                                                                       |

@@ -219,7 +219,7 @@ pipeline:
                   name: generate-scan-data
                   identifier: Run_1
                   spec:
-                    connectorRef: MYDOCKERHUBCONNECTOR
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: alpine:latest
                     shell: Sh
                     command: |-

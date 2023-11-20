@@ -230,4 +230,10 @@ export const experiments: ExperimentDetails[] = [
     tags: ["pod"],
     category: "kubernetes",
   },
+  {
+    name: "Pod API block",
+    description:"Pod API block, blocks the api requests for ingress and egress traffic through path filtering",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
 ];

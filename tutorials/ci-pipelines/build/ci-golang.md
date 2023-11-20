@@ -230,7 +230,7 @@ Add [**Run**](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settin
 
 ### Visualize test results
 
-You can [view test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/) on the **Tests** tab of your pipeline executions. Test results must be in JUnit XML format.
+You can [view test results](/docs/continuous-integration/use-ci/run-tests/viewing-tests) on the **Tests** tab of your pipeline executions. Test results must be in JUnit XML format.
 
 You can use [go-junit-report](https://github.com/jstemmer/go-junit-report) to output compatible JUnit XML reports.
 
@@ -289,6 +289,10 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
 </Tabs>
 ```
 
+### Test splitting
+
+You can use [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) to improve test times.
+
 ## Specify version
 
 ```mdx-code-block
@@ -322,7 +326,7 @@ If your application requires a specific version of Go, add a **Run** step to ins
 <details>
 <summary>Install multiple versions of Go</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
         strategy:
@@ -379,7 +383,7 @@ Specify the desired [Golang Docker image](https://hub.docker.com/_/golang) tag i
 <details>
 <summary>Build using multiple versions of Go</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
         strategy:

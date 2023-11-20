@@ -2,7 +2,7 @@
 title: Clair scanner reference for STO
 description: Image scans with Clair
 sidebar_label: Clair scanner reference
-sidebar_position: 100
+sidebar_position: 110
 ---
 
 You can set up Clair scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.

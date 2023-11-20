@@ -16,9 +16,9 @@ For an end-to-end walkthrough, try this tutorial: [Generate SBOM and enforce pol
 
 To enforce SSCA policies in a Harness pipeline, you need:
 
-* A pipeline that includes [SBOM generation](../generate-sbom.md).
+* A pipeline that includes [SBOM generation](../sbom/generate-sbom.md).
 * An [SSCA policy file](./create-ssca-policies.md).
-* A [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key from the [key pair used to sign and attest the SBOM](../generate-sbom.md#generate-a-key-pair).
+* A [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key from the [key pair used to sign and attest the SBOM](../sbom/generate-sbom.md#generate-a-key-pair).
 
 ## Add an SSCA Enforcement step
 

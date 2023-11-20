@@ -32,8 +32,8 @@ You can install `harness` CLI utility on Linux, MacOS, or Windows in order to in
 ```
 
 ```bash
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.15-Preview/harness-v0.0.15-Preview-linux-arm64.tar.gz
-tar -xvf harness-v0.0.15-Preview-linux-arm64.tar.gz
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz
+tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz
 ```
 
 ```mdx-code-block
@@ -42,8 +42,8 @@ tar -xvf harness-v0.0.15-Preview-linux-arm64.tar.gz
 ```
 
 ```bash
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.15-Preview/harness-v0.0.15-Preview-linux-amd64.tar.gz
-tar -xvf harness-v0.0.15-Preview-linux-amd64.tar.gz
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
+tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz
 ```
 
 ```mdx-code-block
@@ -72,12 +72,14 @@ harness --version
 1. Run commands below on terminal
 
 ```
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.15-Preview/harness-v0.0.15-Preview-darwin-amd64.tar.gz 
-tar -xvf harness-v0.0.15-Preview-darwin-amd64.tar.gz 
+curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz 
+tar -xvf harness-v0.0.16-Preview-darwin-amd64.tar.gz 
 export PATH="$(pwd):$PATH" 
-echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile   
+echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile  
+source ~/.bash_profile 
+harness --version
 ```
-(If you are using different variation of terminal, replace `~/.bash_profile` with your bash profile file path)
+(If you are using different shell variation of terminal e.g. zsh, replace `~/.bash_profile` with your shell specific profile file path e.g. `~/.zshrc`)
 
 ```mdx-code-block
 </TabItem>
@@ -87,7 +89,7 @@ echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
 ### Install the CLI on Windows
 1. Run the commands below in Windows Powershell:
 ```
-Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.15-Preview/harness-v0.0.15-Preview-windows-amd64.zip -OutFile ./harness.zip
+Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip -OutFile ./harness.zip
 ```
 2. Extract the downloaded zip file and change directory to extracted file location
 3. Run following command in powershell to setup environment variables:

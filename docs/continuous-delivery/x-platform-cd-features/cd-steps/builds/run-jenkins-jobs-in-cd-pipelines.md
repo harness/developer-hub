@@ -44,6 +44,14 @@ In your CD stage's **Execution**, select **Add Step**, then select **Jenkins**.
 
 Select the Jenkins server you added as a Harness Jenkins connector. For more information, go to [connect to Jenkins](/docs/platform/connectors/artifact-repositories/connect-to-jenkins).
 
+## Polling Frequency
+
+Set the polling interval for verifying the progress of step execution. Must be less than the timeout configured for the step.
+
+Default: 5 sec
+
+Minimum value: 5 sec
+
 ## Job/Folder name
 
 Select the Jenkins job (also called a project) to execute. The list is automatically populated using the Jenkins server you set up in the Jenkins connector you selected.
@@ -60,7 +68,7 @@ Go to [fixed values, runtime inputs, and expressions](/docs/platform/Variables-a
 
 ## Job parameters
 
-If you are using a [parameterized build](https://wiki.jenkins.io/display/JENKINS/Parameterized-Build.html), when you select the job in **Job Name**, Harness will automatically populate any job parameters from the server.
+If you are using a [parameterized build](https://wiki.jenkins.io/display/JENKINS/Parameterized+Build), when you select the job in **Job Name**, Harness will automatically populate any job parameters from the server.
 
 ![](../../advanced/static/run-jenkins-jobs-in-cd-pipelines-30.png)
 
@@ -81,10 +89,10 @@ If this setting is enabled then `Unstable` statuses will be considered as `Succe
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## Captured environment variables from Jenkins builds

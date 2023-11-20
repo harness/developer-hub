@@ -297,9 +297,11 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Build and run tests
 
-You can use **Run** or **Run Tests** steps to [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+You can use **Run** or **Run Tests** steps to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
-If you're using Kotlin, you can improve your unit test times with  Harness' [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/) feature.
+If you're using Kotlin, you can improve your unit test times with  Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) feature.
+
+Harness CI also supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
 
 ```mdx-code-block
 <Tabs>
@@ -318,7 +320,7 @@ If you're using Kotlin, you can improve your unit test times with  Harness' [Tes
                       ./gradlew testDebug
 ```
 
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
 
 ```yaml
               - step:
@@ -356,7 +358,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                       ./gradlew testDebug
 ```
 
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
 
 ```yaml
               - step:
@@ -427,7 +429,7 @@ If you need to install additional versions, use a **Run** step. These examples u
 <details>
 <summary>Use multiple versions</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
     - stage:
@@ -488,7 +490,7 @@ These examples use [faberNovel/docker-android](https://github.com/faberNovel/doc
 <details>
 <summary>Use multiple versions</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
     - stage:

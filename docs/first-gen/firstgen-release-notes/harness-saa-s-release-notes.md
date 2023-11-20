@@ -16,7 +16,125 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### Latest: Version 80711
+## Important notice - action required
+
+Harness upgraded to the Java Runtime Environment (JRE) version 17 with the Harness Delegate FirstGen release 81202 to address potential security vulnerabilities. Harness includes the Watcher JAR file and startup scripts in the legacy delegate image *`latest`*. The `start.sh` file used to include the hardcoded Watcher version, but later, Harness started fetching the Watcher version at runtime. The new Watcher version, 80505, includes a feature to determine the correct JRE version and download it at runtime.
+
+Harness has learned that some customers are starting their delegates in ways that cause them to start with an earlier version of Watcher. The following scenarios lead to delegates starting with an earlier Watcher version:
+
+- Copying the *`latest`* image of the FirstGen legacy delegate to your repository, which may utilize older, less secure Secure Hash Algorithms (SHAs) for your delegates.
+- Creating a custom image when using the legacy delegate image with the *`latest`* tag.
+- Creating your Amazon Machine Images (AMI) with old startup scripts, which might include a `start.sh` with an earlier Watcher version.
+
+If any of these scenarios occur and you start new delegates or bounce the existing delegate with a Watcher version < 80505, then your delegates will not start.
+
+**Solution**
+
+To resolve this issue, do the following:
+
+- If you copied the image to your repo, Harness recommends that you use `harness/delegate:latest` directly in your delegate or pull the image monthly from `harness/delegate:latest`.
+- If you created a custom image, rebuild the custom image. Harness recommends that you rebuild the custom image monthly.
+- If you created your AMI for your shell delegate with startup scripts, Harness recommends that you rebuild the AMI monthly and apply it to your delegate.
+
+:::info caution
+You must make the required updates no later than **November 14, 2023**. If you need assistance, contact [Harness Support](mailto:support@harness.io), and a member of the engineering team will assist you.
+
+If the required image and AMI upgrades are not complete by **November 14, 2023**, your legacy delegate upgrades will be paused, which can lead to pipeline execution failures when Harness SaaS releases newer versions.
+
+:::
+
+### Latest: November 15, 2023, Version 81405
+
+#### Fixed issues
+
+- Instance Sync V1 in Harness FirstGen did not update the count of Helm pod instances after the instances were removed from your environment. (CDS-82385, ZD-52612)
+
+  This issue occurred when the following feature flags were configured as shown:
+  - `INSTANCE_SYNC_V2_CG`. Disabled
+  - `MOVE_CONTAINER_INSTANCE_SYNC_TO_PERPETUAL_TASK`. Enabled
+  - `STOP_INSTANCE_SYNC_VIA_ITERATOR_FOR_CONTAINER_DEPLOYMENTS`. Enabled
+
+  For synchronizing the instances of Native Helm deployments, the assigned container validation tasks returned a null because the delegate could not pick up the task. Consequently, Harness did not update the instance count.
+
+  This issue has been resolved. Instance Sync V1 will now show the actual instance count after you have redeployed the service. However, Harness might require about 10 min to show the updated instance count. 
+
+  This item requires Harness Delegate version 81405. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+### November 3, 2023, Version 81307
+
+- The Git Connector field in the Application dialog neither showed nor listed the configured connector. (CDS-82009) <!-- needs cursory review -->
+
+  This issue has been fixed. 
+
+### October 27, 2023, Version 81200
+
+- Custom Dashboard widgets did not load data when you selected a time value in the Group by field. (CDS-80778, ZD-51490, ZD-51678)
+
+- We have enabled the link to the delegate selection log for all Continuous Integration (CI) execute and clean-up steps. This log displays important information such as the assigned delegate, the number of times the task was broadcast to the delegate, and when the task was assigned to the delegate. (PL-41786)
+
+   This item is available with Harness Platform version 81200 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+### Version 81009
+
+#### New features and enhancements
+
+Added support for referencing JSON secret keys with dots at the top level. Nested keys with dots are not supported. (PL-41715, ZD-51757)
+
+This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+#### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- OAuth sign-up emails were stored without being converted to lowercase. This caused duplicate emails in Harness with different cases. The issue was fixed by storing OAuth sign-up emails with lowercase. (PL-39331, ZD-47425)
+
+   This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   
+- Fixed endless retries to establish a valid SSH connection in case of InterruptedException. (CDS-80639)
+
+- Perpetual tasks in Delegate version 80505 threw Kryo issues because of the addition of a new field in instances. This can be seen if instances are not getting updated for older releases. (CDS-79911)
+
+  This issue is now fixed.
+
+  This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+### Version 80908
+
+#### New features and enhancements
+
+This release does not include new features.
+
+#### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- The **Secrets** dropdown list on the Services page didn't include all available secrets. The list now includes all secrets, up to the maximum of 1000. (PL-41308, ZD-50687)
+
+- Fixed a dashboard issue where a custom widget did not display monthly data that was more than 8 months old. With this fix, the custom widget will now display monthly data correctly. (CDS-79523, ZD-50750)
+
+### Version 80810
+
+#### New features and enhancements
+
+- The default interval for synchronizing LDAP groups has been increased from 15 minutes to 1 hour. This value is customizable, so you can set it to a value of your choice. (PL-40860)
+
+#### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- A few pages about environment and service were missing access checks, allowing users to read data without the right permissions. (PL-41378, ZD-44419)
+
+  This issue has been resolved, and the desired access check has been applied.
+
+- You can no longer update `DelegateIP` or `DelegateName` using the delegate update API. (PL-40795, ZD-44419)
+
+### Version 80711
 
 #### New features and enhancements
 
@@ -32,9 +150,9 @@ This release does not include early access features.
 
    This issue is fixed. Excel and .csv files in the **File Configuration** dialog are now blocked.
 
-- The Secrets Management Change Log page returned errors when fetching the `changeLogData` API. (PL-40957, ZD-49757)
+- When you attempted to view the change log of an encrypted text secret, if the resultant API request returned an HTTP 400 response code, the Harness FirstGen user interface failed to show an appropriate message. Instead, it showed the following message and prompted you to refresh your browser page to continue: “Something went wrong... This error has been reported and we are looking into it with high priority.” (PL-40957, ZD-49757)
 
-   This issue is fixed.
+  This issue has been fixed. The Harness UI now shows you a more appropriate message in the Change Log dialog.
 
 ### Version 80504
 
@@ -50,11 +168,11 @@ This release does not include early access features.
 
 * Fixed an issue where using multiple HTTP Helm chart repositories could lead to an increase in CPU utilization on the delegate due to background validation tasks for the Harness HTTP Helm Repo connector. This was caused by running Helm repository updates during the validation tasks. (CDS-76433, ZD-48363)
 
-  This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 * Fixed a Nexus artifact issue where a fetch timed out when a single group contained more than 50 artifacts. (CDS-73884, ZD-45052, ZD-47206)
 
-   This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
   
 <!-- NOTE RE FIXED ISSUE CDS-73884
 https://harness.atlassian.net/browse/CDS-73884?focusedCommentId=566535 we fixed this issue for first gen with the same ticket, hence it is showing up in 805 release notes. 
@@ -78,7 +196,7 @@ This release does not include early access features.
 
    This issue is fixed. Harness catches the exception and continues with delegate startup.
    
-   This item requires Harness Delegate version 80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 ### Version 80407
 
@@ -112,7 +230,7 @@ This release does not include early access features.
 
 - Fixed a delegate issue observed in Canary deployments where the rollback stage could not identify and delete the canary workload in some clusters. (CDS-76240, ZD-48548)
 
-  This item requires Harness Delegate version 80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
 - Fixed an issue where using the Export Manifest with Inherit Manifest in a Kubernetes deployment could lead to skipping resource versioning. With this fix, resource versioning is happening correctly in this deployment scenario. (CDS-75781, ZD-47209)
 
@@ -337,7 +455,7 @@ This release does not include early access features.
     - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
     - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
 
-  This issue is fixed in the Harness Delegate version 79307. This change does not create any behavioral changes. 
+  This issue is fixed in the Harness Delegate version 23.05.79307. This change does not create any behavioral changes. 
 - Null pointer exception occurs when generating audit events for user groups with null values. (PL-32144)
 - No members appear in user group list even after the user has been added via SCIM. (PL-32482)
 
@@ -575,7 +693,7 @@ No early access features are available in this release.
 
 ### January 17, 2023, version 78105
 
-Delegate version: 78101
+Delegate version: 23.01.78101
 
 #### What's new
 
@@ -585,7 +703,7 @@ Delegate version: 78101
 
   Harness applies Kubernetes manifest  using `kubectl apply`, which is a declarative way of creating Kubernetes objects. But when rolling back, we perform `kubectl rollout undo workloadType/workloadName --to-revision=<REVISION_NUMBER>`, which is an imperative way of rolling back. Using imperative and declarative commands together is not recommended and can cause issues.
 
- In some instances, the workload spec was not updated properly when `rollout undo` was performed. Subsequent deployments then refered to an invalid spec of the workload and caused Kubernetes issues like [kubectl rollout undo should warn about undefined behaviour with kubectl apply](https://github.com/kubernetes/kubernetes/issues/94698).
+ In some instances, the workload spec was not updated properly when `rollout undo` was performed. Subsequent deployments then referred to an invalid spec of the workload and caused Kubernetes issues like [kubectl rollout undo should warn about undefined behavior with kubectl apply](https://github.com/kubernetes/kubernetes/issues/94698).
 
   **What is the fix?**
   We had to redesign our release history to store all rendered manifests in secrets, just like Helm does. While rolling back, we are now reapplying the last successful release's manifests. This solves this issue.
@@ -610,7 +728,7 @@ Delegate version: 78101
 
 ### January 5, 2023, version 78105
 
-Delegate version: 78100
+Delegate version: 23.01.78100
 
 #### What's new
   
@@ -680,7 +798,7 @@ Delegate version: 78100
 
 ### December 22, 2022, version 77908
 
-Delegate version: 77802
+Delegate version: 22.12.77802
 
 #### What's new
 
@@ -1044,7 +1162,7 @@ This fix is behind the feature flag `DO_NOT_RENEW_APPROLE_TOKEN`.
 
 ### August 25, 2022, version 76425
 
-* Delegate Version: 76420
+* Delegate Version: 22.08.76420
 
 #### Enhancements
 
@@ -1132,7 +1250,7 @@ New fields parent\_pipeline\_id and created\_by\_type fields in timescaledb.
 
 ### August 8, 2022, version 76128
 
-* Delegate version: 76128
+* Delegate version: 22.08.76128
 
 #### What's new
 
@@ -1237,7 +1355,7 @@ The discovery process for immutable Delegates is limited to checking the followi
 
 ### August 1, 2022, version 76003
 
-* Delegate version: 76028
+* Delegate version: 22.08.76028
 
 #### What's new
 

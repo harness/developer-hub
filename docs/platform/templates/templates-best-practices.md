@@ -12,6 +12,12 @@ Maintaining a good template management system is essential for your deployments.
 
 This topic explains the best practices for template management.
 
+:::note
+
+For guidance on ramping up your teams using templates, go to [Templates ramp-up guide](/docs/continuous-delivery/ramp-up/pipeline-designer-role/rampup-templates).
+
+:::
+
 ## Role-based access control for templates
 
 You can create templates at the account, org, or project scope and can configure corresponding permissions at each of these scopes.
@@ -734,6 +740,6 @@ template:
 
 - Harness warns you when a pipeline references a template that needs to be reconciled when you change it.
 
-- You can view the Git YAML differences for the pipeline and see which lines have been modified.
+- You can view the Git YAML differences for the pipeline and see which lines have been modified. The differences are calculated based on the data, not exact string matches. Therefore, a different quote symbol, for example, `"` versus `'` for the same date value might not be recognized as a difference. This is not an issue or error.
 
 - To update the template, select **Save**. Harness reconciles the change making it the default state.

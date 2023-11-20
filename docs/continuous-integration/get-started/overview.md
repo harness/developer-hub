@@ -30,7 +30,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 </details>
 
-## Architecture
+## CI architecture
 
 <figure>
 
@@ -66,7 +66,7 @@ If you want to try creating a pipeline for yourself, these tutorials walk throug
 
 For information about CI pipeline components, go to the [CI key concepts](/docs/continuous-integration/get-started/key-concepts).
 
-## Features
+## CI features
 
 Here are some key features of Harness CI. For information about general Harness Platform concepts, go to [Harness key concepts](/docs/get-started/key-concepts).
 
@@ -105,9 +105,9 @@ Harness Test Intelligence (TI) helps your test cycle move faster without comprom
 
 Test Intelligence gives you full visibility into which tests were selected and why. This can help you identify negative trends and gain insights to improve test quality and coverage. Using TI doesn't require you to change build and test processes.
 
-To learn more about the Test Intelligence architecture, how it works, and how to enable it, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
+To learn more about the Test Intelligence architecture, how it works, and how to enable it, go to [Test Intelligence overview](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
 
-While Test Intelligence is only for unit tests, you can [run a variety of tests in your CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+While Test Intelligence is only for unit tests, you can [run a variety of tests in your CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
 #### Time and cost savings with Test Intelligence
 

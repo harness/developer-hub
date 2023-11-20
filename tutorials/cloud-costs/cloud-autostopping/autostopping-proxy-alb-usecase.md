@@ -6,6 +6,14 @@ redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/quick-start-guides/autostopping-proxy-alb-usecase
 ---
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Cloud Cost Management Certification today!"
+  link="/certifications/cloud-cost-management"
+  closable={true}
+  target="_self"
+/>
 
 
 This use case provides the steps to configure an AutoStopping proxy as a downstream system of an Application Load Balancer in AWS.

@@ -22,7 +22,7 @@ You can use a **Run** step to run commands or scripts in a CI pipeline. Here are
   <TabItem value="test" label="Run tests" default>
 ```
 
-This example runs `pytest`, includes [code coverage](../set-up-test-intelligence/code-coverage.md) and produces a report in JUnit XML format.
+This example runs `pytest`, includes [code coverage](../run-tests/code-coverage.md), and produces a report in JUnit XML format.
 
 ```yaml
               - step:
@@ -52,7 +52,7 @@ This example runs `pytest`, includes [code coverage](../set-up-test-intelligence
 
 :::tip
 
-You can use `parallelism` and `split_tests` to [define test splitting in a Run step](/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/#define-test-splitting) and improve test times.
+In Harness CI, you can [use test splitting (parallelism)](../run-tests/speed-up-ci-test-pipelines-using-parallelism) to improve test times for any language or test tool.
 
 :::
 
@@ -189,14 +189,14 @@ In Harness, go to the pipeline where you want to add the `Run` step. In the `CI`
 ```yaml
               - step:
                   type: Run
-                  name: Run pytest # Specify a name for the step.
-                  identifier: Run_pytest # Define a step ID, usually based on the name.
+                  name: run pytest # Specify a name for the step.
+                  identifier: run_pytest # Define a step ID, usually based on the name.
                   spec:
                     connectorRef: account.harnessImage # Specify a container registry, if required.
                     image: python:latest # Specify an image, if required.
                     shell: Sh
-                    command: |-
-                      # Provide your commands.
+                    command: |- # Provide your commands
+                      pytest test_main.py --junit-xml=output-test.xml
 ```
 
 ```mdx-code-block
@@ -269,7 +269,7 @@ In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) she
   <TabItem value="bash" label="Bash" default>
 ```
 
-This Bash script example checks the Java version.
+For Bash, set the `shell` to `Bash` and enter your Bash script in `command`. For example, the following step runs a Bash script that checks the Java version:
 
 ```yaml
               - step:
@@ -289,7 +289,8 @@ This Bash script example checks the Java version.
   </TabItem>
   <TabItem value="powershell" label="PowerShell">
 ```
-This is a simple PowerShell `Wait-Event` example.
+
+For PowerShell, set the `shell` to `Powershell` and enter your PowerShell script in `command`, for example:
 
 ```yaml
               - step:
@@ -305,13 +306,66 @@ You can run PowerShell commands on Windows VMs running in AWS build farms.
 
 :::
 
+#### Troubleshooting: Concatenated variable values print to multiple lines
+
+If your PowerShell script echoes a stage variable that has a concatenated values that includes a [`ToString`](https://learn.microsoft.com/en-us/dotnet/api/system.management.automation.psobject.tostring) representation of a Powershell object (such as the result of `Get-Date`), this output might unexpectedly print to multiple lines in the build logs.
+
+For example, the following two stage variables include one variable that has a `ToString` value and another variable that concatenates three [expressions](/docs/platform/variables-and-expressions/runtime-inputs#expressions) into a single expression, including the `ToString` value.
+
+```yaml
+        variables:
+          - name: DATE_FORMATTED ## This variable's value is 'ToString' output.
+            type: String
+            description: ""
+            required: false
+            value: (Get-Date).ToString("yyyy.MMdd")
+          - name: BUILD_VAR ## This variable's value concatenates the execution ID, the sequence ID, and the value of DATE_FORMATTED.
+            type: String
+            description: ""
+            required: false
+            value: <+<+pipeline.executionId>+"-"+<+pipeline.sequenceId>+"-"+<+stage.variables.DATE_FORMATTED>>
+```
+
+When a PowerShell script calls the concatenated variable, such as `echo <+pipeline.stages.test.variables.BUILD_VAR>`, the `ToString` portion of the output prints on a separate line from the rest of the value, despite being part of one concatenated expression.
+
+**To resolve this, exclude the `ToString` portion from the stage variable's concatenated value, and then, in your PowerShell script, call `ToString` separately and "manually concatenate" the values.**
+
+For example, here are the same two stage variables without the `ToString` value in the concatenated expression.
+
+```yaml
+        variables:
+          - name: DATE_FORMATTED ## This variable is unchanged.
+            type: String
+            description: ""
+            required: false
+            value: (Get-Date).ToString("yyyy.MMdd")
+          - name: BUILD_VAR ## This variable's value concatenates only the execution ID and sequence ID. It no longer includes DATE_FORMATTED.
+            type: String
+            description: ""
+            required: false
+            value: <+<+pipeline.executionId>+"-"+<+pipeline.sequenceId>>
+```
+
+In the `Run` step's PowerShell script, call the `ToString` value separately and then "manually concatenate" it onto the concatenated expression. For example:
+
+```yaml
+              - step:
+                  identifier: echo
+                  type: Run
+                  name: echo
+                  spec:
+                    shell: Powershell
+                    command: |- ## DATE_FORMATTED is resolved separately and then appended to BUILD_VAR.
+                      $val = <+stage.variables.DATE_FORMATTED>
+                      echo <+pipeline.stages.test.variables.BUILD_VAR>-$val
+```
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="pwsh" label="Pwsh (PowerShell Core)">
 ```
 
-This PowerShell Core example runs `ForEach-Object` over a list of events.
+You can run PowerShell Core commands in pods or containers that have `pwsh` installed. For PowerShell Core, set the `shell` to `Pwsh` and enter your PowerShell Core script in `command`. For example, this step runs `ForEach-Object` over a list of events.
 
 ```yaml
               - step:
@@ -323,18 +377,12 @@ This PowerShell Core example runs `ForEach-Object` over a list of events.
                       $events | ForEach-Object -Begin {Get-Date} -Process {Out-File -FilePath Events.txt -Append -InputObject $_.Message} -End {Get-Date}
 ```
 
-:::tip
-
-You can run PowerShell Core commands in pods or containers that have `pwsh` installed.
-
-:::
-
 ```mdx-code-block
   </TabItem>
   <TabItem value="sh" label="Sh">
 ```
 
-In this example, the pulls a `python` image and executes a shell script (`Sh`) that runs `pytest` with code coverage.
+You can use the `Sh` option to run any shell script, provided the necessary binaries are available. For example, this step pulls the latest `python` image and then executes a shell script (`Sh`) that runs `pytest` with code coverage.
 
 ```yaml
               - step:
@@ -358,17 +406,16 @@ In this example, the pulls a `python` image and executes a shell script (`Sh`) t
   <TabItem value="python" label="Python">
 ```
 
-If the `shell` is `Python`, supply Python commands directly in `command`.
+For Python, set the `shell` to `python` and enter your Python commands in `command`, for example:
 
-This example uses a basic `print` command.
-
-```
+```yaml
             steps:
               - step:
                   ...
                   spec:
                     shell: Python
-                    command: print('Hello, world!')
+                    command: |-
+                      print('Hello, world!')
 ```
 
 ```mdx-code-block
@@ -413,9 +460,9 @@ Enable this option to run the container with escalated privileges. This is equiv
 
 ### Report Paths
 
-Specify one or more paths to files that store [test results in JUnit XML format](../set-up-test-intelligence/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+Specify one or more paths to files that store [test results in JUnit XML format](../run-tests/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
-This setting is required for the Run step to be able to [publish test results](../set-up-test-intelligence/viewing-tests.md).
+This setting is required for the Run step to be able to [publish test results](../run-tests/viewing-tests.md).
 
 For example, this step runs `pytest` and produces a test report in JUnit XML format.
 
@@ -505,4 +552,4 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 During and after pipeline runs, you can find step logs on the [Build details page](../viewing-builds.md).
 
-If your pipeline runs tests, you can [view test reports](../set-up-test-intelligence/viewing-tests.md) on the Build details page.
+If your pipeline runs tests, you can [view test reports](../run-tests/viewing-tests.md) on the Build details page.

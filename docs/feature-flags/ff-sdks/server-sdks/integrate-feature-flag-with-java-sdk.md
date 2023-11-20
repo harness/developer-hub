@@ -33,7 +33,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.2.4.**
+The current version of this SDK is **1.3.1.**
 
 ## Requirements
 
@@ -61,7 +61,7 @@ Add the following dependency in your project's pom.xml file:
 <dependency>  
     <groupId>io.harness</groupId>  
     <artifactId>ff-java-server-sdk</artifactId>  
-    <version>1.1.10</version>  
+    <version>1.3.1</version>
 </dependency>
 ```
 If you are using the Harness Java sample application from the [Java SDK GitHub repository](https://github.com/harness/ff-java-server-sdk), do not add the Maven dependency in the `pom.xml` file as it has already been added.
@@ -70,7 +70,7 @@ If you are using the Harness Java sample application from the [Java SDK GitHub 
 
 
 ```
-implementation group: 'io.harness', name: 'ff-java-server-sdk', version: '1.1.10'
+implementation group: 'io.harness', name: 'ff-java-server-sdk', version: '1.3.1'
 ```
 ## Initialize the SDK
 
@@ -157,9 +157,9 @@ You can configure the following features of the SDK through the `baseConfig`:
 |  |  |  |  |
 | --- | --- | --- | --- |
 | **Name** | **Example** | **Description** | **Default Value** |
-| baseUrl | `HarnessConfig.configUrl("https://config.ff.harness.io/api/1.0")` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://config.ff.harness.io/api/1.0` |
+| configUrl | `HarnessConfig.configUrl("https://config.ff.harness.io/api/1.0")` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://config.ff.harness.io/api/1.0` |
 | eventUrl | `HarnessConfig.eventUrl("https://events.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
-| pollInterval | `BaseConfig.pollIntervalInSeconds(60))` | The interval **in seconds** that we poll for changes when you are not using stream mode. | `60` (seconds) |
+| pollIntervalInSeconds | `BaseConfig.pollIntervalInSeconds(60))` | The interval **in seconds** that we poll for changes when you are not using stream mode. | `60` (seconds) |
 | streamEnabled | `BaseConfig.streamEnabled(false)` | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode. | `true` |
 | analyticsEnabled | `BaseConfig.analyticsEnabled(true)` | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `true` |
 | frequency | `BaseConfig.frequency(60))` | The interval **in seconds** of how often to send metrics data.  | `60` |
@@ -226,20 +226,19 @@ boolean result = cfClient.boolVariation("sample_boolean_flag", target, false);
 
 
 ```
-boolean result = cfClient.numberVariation("sample_number_flag", target, 0);
+double result = cfClient.numberVariation("sample_number_flag", target, 0);
 ```
 ### Evaluate a string Variation
 
 
 ```
-boolean result = cfClient.stringVariation("sample_string_flag", target, "");
+String result = cfClient.stringVariation("sample_string_flag", target, "");
 ```
-### Evaluate a multivariate Variation
+### Evaluate a json Variation
 
 
 ```
-double number = cfClient.numberVariation(COUNT_FEATURE_KEY, parentTarget, 1);  
-      String color = cfClient.stringVariation(COLOR_FEATURE_KEY, target, "black");
+JsonObject result = cfClient.jsonVariation("sample_json_flag", target, new JsonObject());
 ```
 ## Test your app is connected to Harness
 
@@ -591,3 +590,33 @@ repositories {
   ...
 </repository>
 ```
+
+## Troubleshooting
+The SDK logs the following codes for certain lifecycle events, for example authentication, which can aid troubleshooting.
+
+| **Code** | **Description**                                                                          |
+|----------|:-----------------------------------------------------------------------------------------|
+| **1000** | Successfully initialized                                                                 |
+| **1001** | Failed to initialize due to authentication error                                         |
+| **1002** | Failed to initialize due to a missing or empty API key                                   |
+| **1003** | `wait_for_initialization` was called and the SDK is waiting for initialization to finish |
+| **2000** | Successfully authenticated                                                               |
+| **2001** | Authentication failed with a non-recoverable error                                       |
+| **2002** | Authentication failed and is retrying                                                    |
+| **2003** | Authentication failed and max retries have been exceeded                                 |
+| **3000** | SDK closing                                                                              |
+| **3001** | SDK closed successfully                                                                  |
+| **4000** | Polling service started                                                                  |
+| **4001** | Polling service stopped                                                                  |
+| **5000** | Streaming service started                                                                |
+| **5001** | Streaming service stopped                                                                |
+| **5002** | Streaming event received                                                                 |
+| **5003** | Streaming disconnected and is retrying to connect                                        |
+| **5004** | Streaming stopped                                                                        |
+| **5005** | Stream is still retrying to connect after 4 attempts                                     |
+| **6000** | Evaluation was successful                                                              |
+| **6001** | Evaluation failed and the default value was returned                                     |
+| **7000** | Metrics service has started                                                              |
+| **7001** | Metrics service has stopped                                                              |
+| **7002** | Metrics posting failed                                                                   |
+| **7003** | Metrics posting success                                                                  |

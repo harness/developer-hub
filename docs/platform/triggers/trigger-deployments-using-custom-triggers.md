@@ -24,7 +24,7 @@ You can do the following with a custom trigger:
 * Use a REST call to get deployment status.
 * Start a deployment using a Webhook URL provided by Harness.
 
-import Variables from '/docs/platform/triggers/shared/variables-not-supported.md'
+import Variables from '/docs/platform/shared/variables-not-supported.md'
 
 <Variables />
 
@@ -57,7 +57,7 @@ Conditions support Harness built-in expressions for accessing trigger settings, 
 
 JEXL expressions are also supported.
 
-For details on these settings, go to [Triggers Reference](../pipelines/w_pipeline-steps-reference/triggers-reference.md).
+For details on these settings, go to the [Triggers reference](./triggers-reference).
 
 Conditions are ANDed together (boolean AND operation). All Conditions must match an event payload for it to execute the trigger.
 
@@ -77,6 +77,8 @@ The trigger is now added to the **Triggers** page.
 ![](./static/trigger-deployments-using-custom-triggers-02.png)
 
 Here's an example of the cURL command:
+
+Custom triggers such as Git triggers are part of the pipeline entity and therefore have the account, organization, or project IDs included in the webhook URL.
 
 ```
 curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/{customWebhookToken}/v3?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'

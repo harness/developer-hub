@@ -1,14 +1,15 @@
 ---
 title: Service onboarding pipelines
 description: Service onboarding pipelines use a software template and enable a developer to spawn new software applications easily while following the company's best practices.
-sidebar_position: 20
+sidebar_position: 2
 helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+Service Onbaording in Harness IDP use Harness pipeline orchestrator and those could be trigerred through Software Templates. 
 
-![](../get-started/static/pipelines-screenshot.png)
+![](./static/service-onboarding.png)
 
 In Harness IDP, a service onboarding pipeline (also known as a software template) enables platform engineers to automate the process of service creation. As a platform engineer, you can create a template that prompts developers for details and creates a repository with a basic setup that includes a CI/CD process. The template is defined in a YAML file named `template.yaml`. The syntax of the template definition is owned by [backstage.io](https://backstage.io/docs/features/software-templates/writing-templates) while the workflow runs on a Harness pipeline of your choice.
 

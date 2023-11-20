@@ -32,6 +32,7 @@ To see how to set up dynamic provisioning for each deployment type, go to the fo
 - [Kubernetes infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure)
   - The Kubernetes infrastructure is also used for Helm, Native Helm, and Kustomize deployment types.
 - [Azure Web Apps](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial)
+- [AWS ASG](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial)
 - [AWS ECS](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial)
 - [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
 - [Spot Elastigroup](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment)
@@ -409,10 +410,10 @@ You can use Harness encrypted text for values. See [Add Text Secrets](/docs/plat
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 ## Approval step

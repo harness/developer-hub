@@ -27,17 +27,24 @@ const sidebars = {
       },
       collapsed: false,
       items: [
+        // CI
+        {
+          type: "doc",
+          label: "Continuous Integration",
+          id: "continuous-integration",
+        },
         // CD
         {
           type: "doc",
           label: "Continuous Delivery & GitOps",
           id: "continuous-delivery",
         },
-        // CI
+
+        //ff
         {
           type: "doc",
-          label: "Continuous Integration",
-          id: "continuous-integration",
+          label: "Feature Flags",
+          id: "feature-flags",
         },
         //CCM
         {
@@ -45,11 +52,11 @@ const sidebars = {
           label: "Cloud Cost Management",
           id: "cloud-cost-management",
         },
-        //ff
+        //sto
         {
           type: "doc",
-          label: "Feature Flags",
-          id: "feature-flags",
+          label: "Security Testing Orchestration",
+          id: "sto",
         },
         //ce
         {

@@ -119,7 +119,7 @@ This graphic from Azure is a useful reminder of how Azure manages RBAC:
 
 ![Azure RBAC hierarchy showing that Resources are managed by Resource groups, which are in turn managed by Subscriptions, and all of these are under a Management group.](../static/add-a-microsoft-azure-connector-64.png)
 
-For security reasons, Harness uses an application object and service principal rather than a user identity. The process is described in that Azure documentation: [How to use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal).
+For security reasons, Harness uses an application object and service principal rather than a user identity. The process is described in the Microsoft Entra documentation: [Create a Microsoft Entra application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal).
 
 ### Azure Container Repository (ACR) role requirements
 
@@ -603,14 +603,14 @@ If you select **Specify credentials here**, you must provide Microsoft Azure app
 
    The **Application (client) ID** is the application Id for the app registration you want to use the Harness connector. To access resources in your Azure subscription, you must assign the Azure App registration using this Application Id to a role in that subscription. For more information, go to the following Microsoft documentation:
 
-   * [Quickstart: Register an app with the Azure Active Directory v1.0 endpoint](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
+   * [Quickstart: Register an application with the Microsoft identity platform](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
    * [Assign the application to a role](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)
-   * [Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+   * [Use the portal to create a Microsoft Entra application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
 
-   The **Directory (tenant) ID** is the Id for the Azure Active Directory (AAD) that exists in your app. For more information, go to the following Azure documentation:
+   The **Directory (tenant) ID** is the Id for the Microsoft Entra ID that exists in your app. For more information, go to the following Microsoft Entra documentation:
 
    * [Get tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)
-   * [Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+   * [Use the portal to create a Microsoft Entra application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
 
    ![Microsoft Azure app registration Overview page.](../static/add-a-microsoft-azure-connector-68.png)
 
@@ -621,7 +621,7 @@ If you select **Specify credentials here**, you must provide Microsoft Azure app
 
    Harness supports only PEM files. Harness doesn't support PFX files.
 
-   If you need to create a secret key for your app, go to **App Registrations** in Azure Active Directory, select the app you're connecting to Harness, select **Certificates & secrets**, and then select **New client secret**. For more information, go to the Azure documentation about [Creating a new application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret).
+   If you need to create a secret key for your app, go to **App Registrations** in Microsoft Entra ID, select the app you're connecting to Harness, select **Certificates & secrets**, and then select **New client secret**. For more information, go to the Azure documentation about [Creating a new application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret).
 
    ![](../static/add-a-microsoft-azure-connector-69.png)
 
@@ -658,7 +658,7 @@ If you have [installed a Harness Delegate](/docs/platform/delegates/delegate-con
 
 1. Select how you want Harness to connect to Azure:
 
-   * **Connect through Harness Platform:** Use a direct, secure communication between Harness and Azure.
+   * **Connect through Harness Platform:** Use a direct, secure communication between Harness and Azure. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
    * **Connect through a Harness Delegate:** Harness communicates with Azure through a Harness delegate in your Azure subscription or AKS cluster. You must choose this option if you chose to inherit delegate credentials.
 
 2. If connecting through a Harness delegate, select either:

@@ -1,7 +1,7 @@
 ---
 title: Software catalog
 description: Learn more about the software catalog in Harness IDP
-sidebar_position: 10
+sidebar_position: 1
 helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false
@@ -67,7 +67,7 @@ Anyone can update the definition of a software component by updating the compone
 
 ![](static/edit-button-catalog.png)
 
-Committed changes reflect on the catalog in a couple of minutes. You can also press the refresh button on the catalog page to instantly sync the system with Git.
+Committed changes reflect on the catalog in 30 minutes. You can also press the refresh button on the catalog page to instantly sync the system with Git.
 
 ### How does the catalog read files from my Git repository?
 

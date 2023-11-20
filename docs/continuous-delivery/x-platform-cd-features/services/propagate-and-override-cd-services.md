@@ -10,11 +10,11 @@ You can use the same CD stage services across your pipeline stages. Once you hav
 
 ![Propagate from](./static/b7df1f589cdc64982a5458c3ad1b107132e1b7e3634dfcfeb716c075437e1d6c.png)  
 
-You can also use Harness input sets and overlays to select from different collections of settings at runtime. See [input sets and overlays](/docs/platform/pipelines/input-sets.md) and [run pipelines using input sets and overlays](../../../platform/pipelines/run-pipelines-using-input-sets-and-overlays.md).
+You can also use Harness [input sets and overlays](/docs/platform/pipelines/input-sets) to select from different collections of settings at runtime.
 
 ## Important notes
 
-* Service propagation is not supported when using multiple services in a single stage (multi service deployments).
+* Service propagation is also supported when using multiple services in a single stage (multi service deployments).
   * For details on using multiple services, go to [use multiple services and multiple environments in a deployment](/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv).
 * Service propagation is progressive: you can only propagate services from stage to stage in a forward direction in your pipeline. For example, Stage 2 cannot propagate a service from a subsequent Stage 3.
 * In a pipeline's **Advanced Options**, in **Stage Execution Settings**, you can set up selective stage executions. This allows you to select which stages to deploy at runtime.
@@ -26,6 +26,7 @@ You can also use Harness input sets and overlays to select from different collec
 ![](./static/propagate-and-override-cd-services-00.png)
 
 * When you propagate a service from one stage to another, the stages must use the same input set. For example, if you have Stage 1 using Input Set A, and you propagate its service to Stage 2, Stage 2 must use Input Set A. If Stage 2 uses a different input set, the service cannot propagate from Stage 1 to Stage 2.
+* You cannot propagate service from a stage which also propagates service from another stage.
 
 ## Propagate a service
 
@@ -151,9 +152,7 @@ pipeline:
 
 ## Multiple service deployment
 
-A multiple service deployment is when you deploy multiple services in the same stage. Multiple service deployments do not support service propagation.
-
-If you select multiple services in a stage, you cannot propagate them to subsequent stages.
+A multiple service deployment is when you deploy multiple services in the same stage.
 
 For information on multiple service deployments, go to [use multiple services and multiple environments in a deployment](/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv).
 

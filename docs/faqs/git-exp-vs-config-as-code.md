@@ -14,7 +14,7 @@ sidebar_position: 8
 - You can store the following configurations in Git using the Git Experience in NextGen: 
     - Pipelines
     - Templates
-    - Input Sets
+    - Input sets
 
 In the Git Experience, Git acts as the primary source of truth. As a result, Harness does not keep a record of any resources other than the pipeline name, identifier, and configuration required to retrieve the pipeline from Git. Moreover, Harness does not perform reconciliation or cross-synchronization of resources. Instead, it leverages the native capabilities of Git, such as branching, managing files in different repositories, and prioritizing the state of the file in Git above all other sources.
 
@@ -103,7 +103,7 @@ Entities like services, environments, and infrastructure definitions are highly 
 You can store the following configurations in Git using the Git Experience: 
 - Pipelines
 - Templates
-- Input Sets
+- Input sets
 
 Implementing pipelines as code is an industry standard. The most recommended practice for Continuous Integration and Continuous Deployment is to manage the pipeline state in Git. 
 

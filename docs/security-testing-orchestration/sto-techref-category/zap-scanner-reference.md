@@ -2,7 +2,7 @@
 title: Zed Attack Proxy (ZAP) scanner reference for STO
 description: App instance scans using ​Zed Attack Proxy (ZAP)
 sidebar_label: Zed Attack Proxy (ZAP) scanner reference
-sidebar_position: 400
+sidebar_position: 430
 helpdocs_topic_id: m9494vxwac
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
@@ -12,6 +12,13 @@ helpdocs_is_published: true
 [Zed Attack Proxy (ZAP)](https://www.zaproxy.org) is a free, open-source penetration tool for testing web applications. ZAP runs as a “man-in-the-middle proxy” between the tester’s browser and the web app. You can use ZAP to run penetration testing to simulate a malicious external attack and use the results to protect your app from unauthorized access and denial-of-service attacks.
 
 ## Important notes for running ZAP scans in STO
+
+ If you're running a ZAP scan that uses context files such as auth scripts, context files, or URL files, specify the following shared folders and make sure that your Run step copies in the required files. 
+
+  * **/shared/customer_artifacts/authScript/`<artifact_file_name>`**
+  * **/shared/customer_artifacts/context/`<artifact_file_name>`**
+  * **/shared/customer_artifacts/urlFile/`<artifact_file_name>`**
+  * **/shared/customer_artifacts/hosts/`<artifact_file_name>`**
 
 ### Docker-in-Docker requirements
 
@@ -34,11 +41,9 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 The recommended workflow is add a ZAP step to a Security Tests or CI Build stage and then configure it as described below. You can also configure ZAP scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 
-```mdx-code-block
-import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
-```
 
-<StoScannerStepNotes />
+
+
 
 <details>
     <summary>Scanner Template example</summary>
@@ -73,10 +78,16 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 <StoSettingProductConfigName />
 
 The following options are supported for Zap scans:
-*  **Default** 
-*  **Standard**  — `scanMode` = `active`, `scanType` = `atandard`
-*  **Attack**  —  `scanMode` = `active`, `scanType` = `attack`
-*  **Quick**  —  `scanMode` = `active`, `scanType` = `standard`, `quickMode` = `true`
+
+-  **Default** 
+
+-  **Standard** `scanMode` = [`active`](https://www.zaproxy.org/docs/desktop/start/features/ascan/), `scanType` = [`standard`](https://www.zaproxy.org/docs/desktop/start/features/modes/)
+
+-  **Attack**  `scanMode` = [`active`](https://www.zaproxy.org/docs/desktop/start/features/ascan/), `scanType` = [`attack`](https://www.zaproxy.org/docs/desktop/start/features/modes/)
+
+-  **Quick**  `scanMode` = [`active`](https://www.zaproxy.org/docs/desktop/start/features/ascan/), `scanType` = [`standard`](https://www.zaproxy.org/docs/desktop/start/features/modes/),  `quickMode` = `true` 
+
+   When Quick mode is enabled, the [Maximum depth to crawl](https://www.zaproxy.org/docs/desktop/addons/spider/options/#maximum-depth-to-crawl) is set to 1.
 
 ### Target
 
@@ -217,13 +228,13 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 
 
-## Security step settings for ZAP scans in STO (_legacy_)
+## Security step settings for ZAP scans in STO (legacy)
 
 #### Scan policy types
 

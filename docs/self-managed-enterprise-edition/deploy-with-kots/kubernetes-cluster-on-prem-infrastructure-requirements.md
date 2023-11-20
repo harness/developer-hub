@@ -10,12 +10,18 @@ helpdocs_is_published: true
 
 :::info note
 
-This is an End of Life (EOL) notice for the KOTS installation method. This method will be in maintenance mode after May 31, 2023. 
+This is an End of Life (EOL) notice for the KOTS installation method. This method is in maintenance mode as of May 31, 2023. 
 
 Maintenance mode means the following:
 
 - No new features will be added.
 - Security and bug fixes will continue to be made. 
+
+:::
+
+:::info important
+
+Harness will no longer support KOTS based installations and upgrades beginning December 1, 2023. Harness customer support will not take any incoming questions on KOTs after end of business PST on December 1, 2023. 
 
 :::
 

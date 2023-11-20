@@ -1,5 +1,6 @@
 ---
-title: CloudWatch
+title: Configure CloudWatch as health source
+sidebar_label: CloudWatch
 description: Add CloudWatch health source to a monitored service.
 sidebar_position: 2
 ---

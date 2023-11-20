@@ -34,7 +34,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.1.3.** To use this version of the SDK, you also need to use Android API level 19 or higher.
+The current version of this SDK is **1.2.0.** To use this version of the SDK, you also need to use Android API level 19 or higher.
 
 ## Requirements
 
@@ -42,8 +42,8 @@ To use this SDK, make sure you:
 
 * Installed [Android Studio](https://developer.android.com/studio?gclid=CjwKCAjwp7eUBhBeEiwAZbHwkRqdhQkk6wroJeWGu0uGWjW9Ue3hFXc4SuB6lwYU4LOZiZ-MQ4p57BoCvF0QAvD_BwE&gclsrc=aw.ds) or the [Android SDK](https://github.com/harness/ff-android-client-sdk/blob/main/docs/dev_environment.md) for CLI only
 * Installed [Java 11](https://www.oracle.com/java/technologies/downloads/#java11) or newer
-* Installed [Gradle 7.4.1](https://gradle.org/releases/) or newer
-* Use Android API level 19 or higher.
+* Installed [Gradle 8.3](https://gradle.org/releases/) or newer
+* Use Android API level 21 or higher.
 
 Then ensure you:
 
@@ -67,7 +67,7 @@ Then, in your app module's `build.gradle` file, add the following dependency f
 
 
 ```
-implementation 'io.harness:ff-android-client-sdk:1.0.18'
+implementation 'io.harness:ff-android-client-sdk:1.2.0'
 ```
 ## Initialize the SDK
 
@@ -142,7 +142,7 @@ You can configure the following features of the SDK:
 | --- | --- | --- | --- |
 | **Name** | **Configuration Option** | **Description** | **Default** |
 | baseUrl | `baseUrl("https://config.ff.harness.io/api/1.0")` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://config.ff.harness.io/api/1.0` |
-| eventsUrl | `eventUrl("https://events.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
+| eventUrl | `eventUrl("https://events.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
 | pollInterval | `pollingInterval(60)` | The interval **in seconds** that we poll for changes when you are using stream mode. | `60` (seconds) |
 | enableStream | `enableStream(true)` | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode. | `true` |
 | enableAnalytics | `enableAnalytics(true)` | Set to `true` to enable analytics.Set to `false` to disable analytics. | `true` |
@@ -287,28 +287,40 @@ When you receive a response showing the current status of your Feature Flag, go 
 To close the SDK, call this method:
 
 ```
-CfClient.getInstance().destroy()
+CfClient.getInstance().close()
 ```
 
 ## Additional options
 
 ### Configure your logger
 
-We use Android Log for this SDK.
-
-For details on how to use Android Log, go to the [official guide](https://source.android.com/devices/tech/debug/understanding-logging#log-standards). The SDK uses the simple class names as tags. You can enable log levels for each of them using the following tags:
-
-* `CfClient` - Main client logs
-* `AnalyticsManager` - Analytics logs
-* `SSEListener` - SEE stream logs
-* `DefaultApi` - HTTP request logs
-
-You can enable these tags using the following command:
-
+We use SLF4J for this SDK, you can configure any compatible logger. For example you can include `logback` via Gradle:
 
 ```
-adb shell setprop log.tag.<tag_name> VERBOSE
+implementation 'com.github.tony19:logback-android:3.0.0'
 ```
+
+Using the following code you can configure it to write to `logcat`:
+
+```
+    companion object {
+        init {
+            BasicLogcatConfigurator.configureDefaultContext() // enable SDK logging to logcat
+            val lc = LoggerFactory.getILoggerFactory() as LoggerContext
+            val logger: Logger = lc.getLogger("<PKGNAME>")
+            logger.level = ALL
+        }
+    }
+```
+
+Change `<PKGNAME>` above to one of the following
+
+-* `io.harness.cfsdk.CfClient` - Main client logs
+-* `io.harness.cfsdk.cloud.analytics` - Analytics logs
+-* `io.harness.cfsdk.cloud.sse.EventSource` - SEE stream logs
+
+Or any other valid package name within the SDK.
+
 ### Use the SDK for unit tests
 
 To be able to use the SDK in unit tests, you must set the SDKs logging to `testModeOn`, which turns on the system output logging strategy.
@@ -373,7 +385,7 @@ public void initialize(
 * `public JSONObject jsonVariation(String evaluationId, JSONObject defaultValue)`
 * `public void registerEventsListener(EventsListener listener)`
 * `public void unregisterEventsListener(EventsListener observer)`
-* `public void destroy()`
+* `public void close()`
 
 ## Sample code for an Android application
 
@@ -431,3 +443,33 @@ class MainActivity : AppCompatActivity() {
     }  
 }
 ```
+
+## Troubleshooting
+The SDK logs the following codes for certain lifecycle events, for example authentication, which can aid troubleshooting.
+
+| **Code** | **Description**                                                                                               |
+|----------|:--------------------------------------------------------------------------------------------------------------|
+| **1000** | Successfully initialized                                                                                      |
+| **1001** | Failed to initialize due to authentication error                                                              |
+| **1002** | Failed to initialize due to a missing or empty API key                                                        |
+| **1003** | `WaitForInitialization` configuration option was provided and the SDK is waiting for initialization to finish |
+| **2000** | Successfully authenticated                                                                                    |
+| **2001** | Authentication failed with a non-recoverable error                                                            |
+| **2002** | Authentication failed and is retrying                                                                         |
+| **2003** | Authentication failed and max retries have been exceeded                                                      |
+| **3000** | SDK closing                                                                                                   |
+| **3001** | SDK closed successfully                                                                                       |
+| **4000** | Polling service started                                                                                       |
+| **4001** | Polling service stopped                                                                                       |
+| **5000** | Streaming service started                                                                                     |
+| **5001** | Streaming service stopped                                                                                     |
+| **5002** | Streaming event received                                                                                      |
+| **5003** | Streaming disconnected and is retrying to connect                                                             |
+| **5004** | Streaming stopped                                                                                             |
+| **5005** | Stream is still retrying to connect after 4 attempts                                                          |
+| **6000** | Evaluation was successful                                                                                     |
+| **6001** | Evaluation failed and the default value was returned                                                          |
+| **7000** | Metrics service has started                                                                                   |
+| **7001** | Metrics service has stopped                                                                                   |
+| **7002** | Metrics posting failed                                                                                        |
+| **7003** | Metrics posting success                                                                                       |

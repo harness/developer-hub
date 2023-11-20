@@ -254,7 +254,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Build and run tests
 
-Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
 ```mdx-code-block
 <Tabs>
@@ -273,7 +273,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                       xcodebuild test -scheme SampleApp
 ```
 
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification. The following example uses [xcpretty](https://github.com/xcpretty/xcpretty) to produce reports in JUnit XML format.
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification. The following example uses [xcpretty](https://github.com/xcpretty/xcpretty) to produce reports in JUnit XML format.
 
 ```yaml
               - step:
@@ -305,7 +305,6 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
   <TabItem value="selfhosted" label="Self-hosted">
 ```
 
-
 ```yaml
               - step:
                   type: Run
@@ -318,7 +317,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                       xcodebuild test -scheme SampleApp
 ```
 
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification. The following example uses [xcpretty](https://github.com/xcpretty/xcpretty) to produce reports in JUnit XML format.
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification. The following example uses [xcpretty](https://github.com/xcpretty/xcpretty) to produce reports in JUnit XML format.
 
 ```yaml
               - step:
@@ -349,6 +348,12 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
   </TabItem>
 </Tabs>
 ```
+
+:::tip
+
+You can use [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) to improve test times.
+
+:::
 
 ## Specify version
 
