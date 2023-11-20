@@ -120,7 +120,7 @@ export default function CertificationsSTO() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Security Testing Orchestration - Developer (BETA COMING SOON) </h2>
+                  <h2>Security Testing Orchestration - Developer (BETA) </h2>
                   <img
                     src={`${baseUrl}img/cert_dev_sto_badge.svg`}
                     alt="Harness Certified Expert - STO Engineering Developer"
