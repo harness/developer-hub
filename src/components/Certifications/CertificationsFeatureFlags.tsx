@@ -133,7 +133,7 @@ export default function FeatureFlags() {
                   </div>
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/harness-certified-feature-flags-developer">
+                    <Link href="https://university.harness.io/feature-flags-developer">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -150,7 +150,7 @@ export default function FeatureFlags() {
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/harness-certified-feature-flags-developer">
+                <Link href="https://university.harness.io/feature-flags-developer">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
@@ -205,7 +205,7 @@ export default function FeatureFlags() {
                   </div>
                   <AdminCertificationReviewDetails />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/betacertification-exams-harness-certified-feature-flags-administrator">
+                    <Link href="https://university.harness.io/feature-flags-administrator">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -223,7 +223,7 @@ export default function FeatureFlags() {
           <div className={styles.examDetailsCard}>
             <AdminCertificationExamDetails />
             <div className={styles.btnContainer}>
-              <Link href="https://university.harness.io/betacertification-exams-harness-certified-feature-flags-administrator">
+              <Link href="https://university.harness.io/feature-flags-administrator">
                 <button className={styles.moreDetails}>
                   Register for Exam
                 </button>
