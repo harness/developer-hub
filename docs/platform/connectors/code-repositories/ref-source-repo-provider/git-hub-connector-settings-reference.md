@@ -99,11 +99,7 @@ Authentication is required for all accounts and repos, including read-only repos
 
 * The GitHub user account that you use to create the token must have admin permissions on the repo.
 * For GitHub organizations that use SAML single sign-on (SSO), you must [authorize the token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
-* Make sure the token has `read:org`, `read:user`, all `repo` scopes, and all `admin:repo_hook` scopes.
-
-   * The `admin:repo_hook` scopes are required to use the connector in [Git event triggers](/docs/platform/triggers/triggering-pipelines).
-   * `read:org` is required for repos that are part of a GitHub organization.
-   * GitHub doesn't provide a way to scope tokens for read-only access to repos.
+* The token must have all `repo`, `user`, and `admin:repo_hook` scopes. GitHub doesn't provide a way to scope tokens for read-only access to repos.
 
 ![GitHub token permission scopes.](./static/git-hub-connector-settings-reference-01a.png)
 
@@ -220,11 +216,7 @@ Enabling API access requires configuring an API authentication method, either a 
 
 * The GitHub user account that you use to create the token must have admin permissions on the repo.
 * For GitHub organizations that use SAML single sign-on (SSO), you must [authorize the token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
-* Make sure the token has `read:org`, `read:user`, all `repo` scopes, and all `admin:repo_hook` scopes.
-
-   * The `admin:repo_hook` scopes are required to use the connector in [Git event triggers](/docs/platform/triggers/triggering-pipelines).
-   * `read:org` is required for repos that are part of a GitHub organization.
-   * GitHub doesn't provide a way to scope tokens for read-only access to repos.
+* The token must have all `repo`, `user`, and `admin:repo_hook` scopes. GitHub doesn't provide a way to scope tokens for read-only access to repos.
 
 ![GitHub token permission scopes.](./static/git-hub-connector-settings-reference-01a.png)
 
