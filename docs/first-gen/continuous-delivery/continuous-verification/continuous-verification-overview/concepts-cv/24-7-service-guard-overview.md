@@ -60,8 +60,7 @@ For 24/7 Service Guard, the queries you define to collect logs are specific to t
 
 Here's a 2-minute video that explains Harness 24/7 Service Guard:
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://fast.wistia.net/embed/iframe/izo4qehiuu" />
 
 

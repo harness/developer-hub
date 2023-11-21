@@ -113,4 +113,18 @@ export const PlatformList: CardItem[] = [
     time: "15 min",
     link: "/tutorials/platform/secrets-management",
   },
+  {
+    title: "Configure OIDC with GCP WIF for CI hosted builds",
+    module: MODULES.platform,
+    icon: "img/logo.svg",
+    description: (
+      <>
+        Configure OpenID Connect (OIDC) with GCP Workload Identity Federation (WIF) for the Continuous Integration hosted builds workflow (beta feature).
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/platform/configure-oidc-gcp-wif-ci-hosted",
+  },
 ];

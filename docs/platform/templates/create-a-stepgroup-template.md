@@ -14,9 +14,8 @@ You can create a step group template at the project, organization, and account l
 ## Video
 
 Here is a video that provides a quick overview of the step group template:
-<!-- Video:
-https://harness-1.wistia.com/medias/x5wsia9i08-->
-<docvideo src="https://harness-1.wistia.com/medias/x5wsia9i08" />
+
+<docvideo src="https://youtu.be/nXmMNY2bdxk" />
 
 ## Create a step group template
 

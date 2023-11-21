@@ -30,8 +30,7 @@ Here is a visual summary of how you use your and Terragrunt and Terraform files 
 
 Here's a 6 minute video walkthrough of Harness-Terragrunt integration:
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/embed/HYSi2LAaYdc?feature=oembed" />
 
 

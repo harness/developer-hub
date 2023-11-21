@@ -8,6 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import Variables from '/docs/platform/shared/variables-not-supported.md'
+```
+
 You can trigger pipelines in response to Git events that match specific payload conditions you set up in a Harness trigger. For example, when a pull request or push event occurs on a Git repo and your trigger settings match the payload conditions, a CI or CD pipeline can run.
 
 Triggers enable event-driven CI/CD and support the practice of every commit building and/or deploying to a target environment.
@@ -17,11 +21,9 @@ This topic demonstrates how to create a trigger for GitHub payload conditions. I
 :::info
 
 * Currently, Harness supports Git-based triggers for the most common Git providers. You can use a [Custom Trigger](./trigger-deployments-using-custom-triggers.md) for other repo providers.
-* In Harness, you can select who is able to create and use triggers within Harness, but you must use your Git provider's RBAC to control who can initiate the Git events that start the Harness Trigger.
+* With [Harness RBAC](../role-based-access-control/rbac-in-harness.md), you can control who can create and use triggers *within Harness*, but you must use your Git provider's RBAC to control who can initiate the Git events that start your Harness Git event triggers.
 
 :::
-
-import Variables from '/docs/platform/shared/variables-not-supported.md'
 
 <Variables />
 
@@ -40,13 +42,10 @@ https://www.youtube.com/watch?v=y8s351IJLXw-->
 
 These steps assume you're familiar with [creating CD pipelines](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart) or [creating CI pipelines](../../continuous-integration/use-ci/prep-ci-pipeline-components.md). Your pipeline must have a defined codebase for the trigger to listen on. For more information, go to [Create and Configure a Codebase](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md).
 
-
 1. Go to your pipeline in Harness.
-2. Select **Triggers**.
+2. Select **Triggers** in the Pipeline Studio header.
 3. Select **New Trigger**.
-4. Choose your SCM provider.
-
-You can select the **Custom** trigger type if you are using an unsupported Git provider. Go to the [Custom Trigger documentation](./trigger-deployments-using-custom-triggers.md) for guidance on creating custom triggers.
+4. Choose the trigger type for your SCM provider. For unsupported Git providers, you can [create a Custom trigger](./trigger-deployments-using-custom-triggers.md).
 
 ### Configure the trigger
 
@@ -203,9 +202,11 @@ However, if [automatic registration fails](#common-causes-of-webhook-registratio
 
 For more information about manual webhook registration, go to the [Triggers reference](./triggers-reference.md).
 
-:::note
+:::info
 
-Ensure that multiple Webhooks are not registered for the same repo. This can trigger multiple builds or deployments with a single push event.
+In general, ensure that multiple webhooks are not registered for the same event type for the same repo. This can trigger multiple builds or deployments for a single occurrence of an event.
+
+For GitLab repos, ensure that no more than 20 webhooks are registered for a single GitLab repo to prevent multiple pipeline executions. Otherwise, Harness registers a webhook each time a GitLab trigger is updated or created with that repository, and it can result in redundant pipeline executions.
 
 :::
 

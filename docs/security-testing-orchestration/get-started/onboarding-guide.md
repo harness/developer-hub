@@ -42,7 +42,7 @@ Before you create your first Harness pipeline, you must have the following:
 * Security Operations staff need a Security Testing SecOps role to run tests, view results, and approve security exemptions.
 * To assign these roles, you need an Account Admin role. Project Admin permissions aren't enough. 
 
-### Harness sccount requirements
+### Harness account requirements
 
 Harness recommends you create the following resources at the Account level. This enables you to use them across all projects and pipelines in the account.
 

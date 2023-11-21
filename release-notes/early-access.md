@@ -43,6 +43,8 @@ Review the following information for details about data privacy and terms of use
 - [AIDA Terms](https://www.harness.io/legal/aida-terms)
 - [AIDA Privacy](https://www.harness.io/legal/aida-privacy)
 
+**Update (November 2023):** AIDA for STO is now generally available. You must accept the AIDA EULA to enable AIDA in your Harness account. For more information, go to [Use AI to fix security issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
+
 **Update (October 2023):** AIDA for CI is now generally available. You must accept the AIDA EULA to enable AIDA in your Harness account. For more information, go to [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida).
 
 ### SCIM user provisioning enhancements
@@ -857,3 +859,39 @@ In Harness CI, AIDA provides auto-recognition of failures in pipelines. The root
 * **Early access release date:** October 20, 2022
 
 Harness released a beta version of an Apex SDK for Feature Flags. For more information and to access this SDK, see the [Apex SDK reference guide](/docs/feature-flags/ff-sdks/server-sdks/apex-sdk-reference) and the [GitHub repository](https://github.com/harness/ff-apex-server-sdk).
+
+### STO features promoted to GA
+
+#### Harness AI Development Assistant (AIDA:tm:) for STO
+
+* **GA date:** November 2023
+* **Early access release date:** June 2023
+* **Early access release version:** 1.58.3
+* **Issue numbers:** STO-5882, STO-6593, STO-6181, PL-39723 
+* **Feature flag:** `STO_AI_ENHANCED_REMEDIATIONS`
+
+```mdx-code-block
+import Intro from '/docs/security-testing-orchestration/use-sto/shared/sto-aida-overview-partial.md';
+```
+
+<Intro />
+
+**Update (Version 1.72.1):** 
+
+- You can now provide feedback about the AIDA-generated remediation step for a selected issue. (STO-6593)
+
+- You are now required to sign an end-user license agreement to access the Harness AI Development Assistant (AIDA) in the account and project scopes. You need to do this even if you could previously use AIDA without signing a EULA. This change was originally introduced in the 80505 platform release. (PL-39723)
+
+  The EULA is displayed when you enable AIDA at the account scope (**Account Settings** > **Account Resources** > **Default Settings** > **Harness AI Developer Assistant**).
+
+  Each account user must sign the EULA only once.
+
+  The setting is inherited at the project scope.
+
+**Update (Version 1.61.1):** 
+
+* Fixed an issue that broke the capability to customize the code snippet for AIDA-augmented remediations in the Security Tests module. (STO-6181)
+
+**Update (Version 1.60.0):** 
+
+- Reference Identifiers selected for AIDA enhancement in a Security Issue are now remembered, upon generation, and shown when revisited in the UI. (STO-6032)
