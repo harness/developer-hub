@@ -1,5 +1,5 @@
 ---
-title: Configure Dynatrace as health source
+title: Dynatrace
 description: Add Dynatrace health source to a monitored service.
 sidebar_position: 5
 
@@ -14,9 +14,11 @@ This topic describes how to add Dyanatrace as a health source to Harness monitor
 
 ## Prerequisite
 
+Before configuring Dynatrace as a health source, ensure the following:
+
 - Label the metrics as [key requests](https://www.dynatrace.com/support/help/platform-modules/applications-and-microservices/services/analysis/monitor-key-requests) in your Dynatrace queries to enable Harness to access Dynatrace metrics via the Dynatrace API.
 
-- In your Dynatrace queries, ensure that the entity selector for metrics is set to a service or service method.
+- In your Dynatrace queries, set the entity selector for metrics to a service or service method.
 
 - In your Harness account, add a [Dynatrace connector](/docs/platform/connectors/monitoring-and-logging-systems/connect-to-monitoring-and-logging-systems#add-dynatrace) to facilitate integration with Harness.
 
@@ -28,7 +30,7 @@ To add Dynatrace as a health source to a monitored service:
 
 1. In your Harness project, go to **Service Reliability** > **Monitored Services**.
    
-   A list of monitored services is displayed.
+   A list of monitored services appears.
 
 2. Locate the monitored service for which you want to add a custom change source, select the three vertical dots next to it, and then select Edit service. The Configurations page appears. 
 
@@ -43,14 +45,13 @@ To select Dynatrace as health source and a Dynatrace connector, perform the foll
 
    
 1. Select Dynatrace as the **health source type**, and enter a name for the health source.
+   
 2. Select a Dynatrace connector and then select **Next**.
 
 
 ### Configure metrics
 
-To specify the metrics that you want to receive from Dynatrace in the following ways:
-
-On the Configuration tab you can either choose a prebuilt metric pack or build your own Dynatrace query to receive the metrics.
+On the Configuration tab, specify the metrics to receive from Dynatrace. You can either choose a prebuilt metric pack or build your own Dynatrace query to receive the metrics.
 
 - **Select a prebuilt metric pack**
   
@@ -71,4 +72,4 @@ On the Configuration tab you can either choose a prebuilt metric pack or build y
 
 - Select **Submit** to save the configuration settings.
   
-  Dynatrace appears on the list of configured health sources.
+ Dynatrace now appears in the list of configured health sources.
