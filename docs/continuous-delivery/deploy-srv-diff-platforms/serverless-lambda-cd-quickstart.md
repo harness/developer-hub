@@ -30,9 +30,8 @@ Setting up a Serverless Lambda application involves the following steps:
 3. Deploy the Serverless application to Lambda.
 
 ### Visual summary
-<!-- Video:
-https://harness-1.wistia.com/medias/tnjairdt6m-->
-<docvideo src="https://harness-1.wistia.com/medias/tnjairdt6m" />
+
+<docvideo src="https://youtu.be/BiFpg13yJbQ" />
 
 ## Containerized and non-containerized
 

@@ -36,8 +36,7 @@ For an excellent example of Deployment Verification, see the Harness Blog post, 
 
 This video Webinar covers how Harness Continuous Delivery leverages unsupervised machine learning to verify production deployments, based on users' APM and log data.
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/embed/ZO5otWQ4PIc" />
 
 
@@ -49,8 +48,7 @@ Harness' 24/7 Service Guard feature verifies your live, production application c
 
 Here's a 2-minute video summary of how 24/7 Service Guard works:
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/embed/yi8J4nZAXxw" />
 
 

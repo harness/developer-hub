@@ -24,9 +24,8 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
 
 ## Product Demo
 
-<!-- Video:
-https://harness-1.wistia.com/medias/a7nilatjff-->
-<docvideo src="https://harness-1.wistia.com/medias/a7nilatjff" />
+
+<docvideo src="https://youtu.be/KSRzy9CnSkA" />
 
 ## Install a delegate
 
