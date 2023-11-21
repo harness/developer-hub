@@ -58,15 +58,27 @@ You can install the Harness app in your ServiceNow instance from the ServiceNow 
 
 ## Update fields
 
-1. Select **Update Fields** to update specific ServiceNow fields in your ServiceNow ticket. This option enables you to access multiple custom fields from your ServiceNow integration.
-2. In **Description**, enter a detailed description of the ticket.
-3. In **Short Description**, enter a summary of the ticket you are creating. This will be the title of the ticket.  
+1. Select **Update Fields** to update specific ServiceNow fields in your ServiceNow ticket. This option enables you to access multiple custom fields from your ServiceNow integration. 
+
+2. (Applicable only if the ticket number is a fixed value) Scan the list of fields for a refresh icon, and then click the icon next to each field to fetch the latest value from ServiceNow. Harness displays the refresh icon next to a field only if that field has been updated in ServiceNow. 
+
+  :::note More information
+  If the ticket number is a fixed value, and not a runtime value or expression, in addition to listing fields that have values, Harness does the following for you:
+    * It includes values from ServiceNow in the fields. 
+    * It displays any new fields that have been added to the ticket in ServiceNow after the last time you viewed this section.
+    * If the value of a field has changed in ServiceNow, Harness includes a refresh icon that you can select if you want the field to show the updated value. Harness does not automatically update the field with the latest value. 
+    
+    This feature is behind the feature flag `CDS_SERVICENOW_FETCH_FIELDS`. To enable the feature, contact [Harness Support](mailto:support@harness.io).
+  :::
+
+3. In **Description**, enter a detailed description of the ticket.
+
+4. In **Short Description**, enter a summary of the ticket you are creating. This will be the title of the ticket.  
    You can use Harness variables in the **Short Description** and **Description** fields.
-4. Select **Fields**. The **Add ServiceNow Fields** settings appear.
 
-![](./static/update-service-now-tickets-in-cd-stages-24.png)
+5. Select **Fields**. The **Add ServiceNow Fields** settings appear.
 
-5. You can specify additional fields for the ticket by clicking **Provide Field List**. The properties are specified as key-value pairs, the name being the **field name** (not the label) in ServiceNow and a valid value.
+6. You can specify additional fields for the ticket by clicking **Provide Field List**. The properties are specified as key-value pairs, the name being the **field name** (not the label) in ServiceNow and a valid value.
 
 ## Apply from template
 
