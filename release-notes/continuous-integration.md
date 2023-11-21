@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-11-16T10:00
+date: 2023-11-21T10:00
 sidebar_position: 9
 ---
 
@@ -24,6 +24,12 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## November 2023
+
+### Version 6603
+
+#### Hotfix
+
+Fixed an issue related to build queue limits. (CI-10326, ZD-53701)
 
 ### Version 6601
 
