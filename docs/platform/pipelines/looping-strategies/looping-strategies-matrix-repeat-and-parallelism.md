@@ -243,7 +243,7 @@ If the matrix strategy produces more instances than are allowed by the `maxConcu
 
 ### Customize matrix stage names
 
-By default, Harness uses indices for the matrix naming strategy (stages are named with indices like _2_2, _1_3, and so on). If you prefer, you can customize this naming convention for better readability. There are two ways to do this: 
+By default, Harness uses indices for the matrix naming strategy (stages are named with indices like `_2_2`, `_1_3`, and so on). If you prefer, you can customize this naming convention for better readability. There are two ways to do this: 
 
 #### Use matrix axes as stage labels
 
