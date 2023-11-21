@@ -69,13 +69,35 @@ Once you are done, this is how the dialog looks:
 
 ![](./static/create-service-now-tickets-in-cd-stages-10.png)
 
-## Create from template
+## Create from Form Template
 
-Select **Create From Template** to create a ticket using an existing template.
+Select **Create From Form Template** to create a ticket by using an existing form template in your ServiceNow integration.
 
-In **Template Name**, you can either enter the name of an existing template or provide an expression.
+In **Template Name**, you can either enter the name of an existing template, select from the list of existing templates that is displayed when you click the field, or provide an expression.
 
-![](./static/create-service-now-tickets-in-cd-stages-11.png)
+:::note
+Existing templates are listed only if the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE` is enabled. To enable the feature flag, contact [Harness Support](mailto:support@harness.io).
+:::
+
+If there are many templates with the same name, the most current one is used to create tickets. Select **Apply Changes**.
+
+Your ServiceNow ticket is now added to your Pipeline.
+
+## Create from Standard Template
+
+This option appears only when the value type in the **Ticket Type** field is **Fixed value**, and the ServiceNow ticket type specified is *Change Request*.
+
+:::note
+This feature is behind the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
+:::
+
+Select **Create From Standard Template** to create a ticket by using an existing standard template in your ServiceNow integration.
+
+In **Template Name**, you can either enter the name of an existing template, select from the list of existing templates that is displayed when you click the field, or provide an expression.
+
+:::note
+Existing templates are listed only if the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE` is enabled. To enable the feature flag, contact [Harness Support](mailto:support@harness.io).
+:::
 
 If there are many templates with the same name, the most current one is used to create tickets. Select **Apply Changes**.
 
