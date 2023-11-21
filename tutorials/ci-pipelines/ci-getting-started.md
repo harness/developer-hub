@@ -59,8 +59,6 @@ Cache Intelligence dramatically reduces pipeline execution time by automatically
 
 In the following demo video, Harness goes head-to-head with GitHub Actions. You can follow [these instructions](https://github.com/harness-community/kafka/blob/trunk/.harness/README.md) to reproduce the results and try it for yourself.
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 <docvideo src="https://www.youtube.com/watch?v=ECF1BDlzb-I" />
 
 ### Get started fast

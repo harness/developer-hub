@@ -15,9 +15,8 @@ See [Notes](#notes) below for details on other ECS deployment settings and behav
 
 ## Visual summary
 
-<!-- Video:
-https://harness-1.wistia.com/medias/vtlwxnczyh-->
-<docvideo src="https://harness-1.wistia.com/medias/vtlwxnczyh" />
+
+<docvideo src="https://youtu.be/Xo7AvUuxRrw" />
 
 ## Overview
 

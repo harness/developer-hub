@@ -52,9 +52,7 @@ You must install the Harness Delegate in the same cluster you use for the build 
 
 This video describes a pipeline similar to the one built in this tutorial. Note that this video uses the **Service Dependency** step, which is deprecated in favor of the **Background** step.
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
-<docvideo src="https://harness-1.wistia.com/medias/fsc2b05uxz" />
+<docvideo src="https://youtu.be/yQRwVjPTQ5E" />
 
 
 <!-- div class="hd--embed" data-provider="Wistia" data-thumbnail="">

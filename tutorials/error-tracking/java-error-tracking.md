@@ -102,9 +102,8 @@ You must always secure sensitive data at all times. The Java Exception Tracker s
 
 Here is a demo that shows you how to identify, resolve, and prevent Java exceptions using the Harness Error Tracking Java Agent.
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
-<docvideo src="https://harness-1.wistia.com/medias/i6nqucdlv0" />
+
+<docvideo src="https://youtu.be/ehPeqba9lxc" />
 
 
 ## Harness Error Tracking Java Agent

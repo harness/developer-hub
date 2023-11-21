@@ -19,8 +19,7 @@ Pipelines define your release process using multiple Workflows and Approvals in 
 
 ### Visual Summary
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://fast.wistia.com/embed/iframe/46qa6qox0t" />
 
 

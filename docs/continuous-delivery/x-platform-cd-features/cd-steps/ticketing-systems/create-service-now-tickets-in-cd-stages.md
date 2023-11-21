@@ -73,7 +73,11 @@ Once you are done, this is how the dialog looks:
 
 Select **Create From Form Template** to create a ticket by using an existing form template in your ServiceNow integration.
 
-In **Template Name**, you can either enter the name of an existing template or provide an expression.
+In **Template Name**, you can either enter the name of an existing template, select from the list of existing templates that is displayed when you click the field, or provide an expression.
+
+:::note
+Existing templates are listed only if the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE` is enabled. To enable the feature flag, contact [Harness Support](mailto:support@harness.io).
+:::
 
 If there are many templates with the same name, the most current one is used to create tickets. Select **Apply Changes**.
 
@@ -89,7 +93,11 @@ This feature is behind the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE`. 
 
 Select **Create From Standard Template** to create a ticket by using an existing standard template in your ServiceNow integration.
 
-In **Template Name**, you can either enter the name of an existing template or provide an expression.
+In **Template Name**, you can either enter the name of an existing template, select from the list of existing templates that is displayed when you click the field, or provide an expression.
+
+:::note
+Existing templates are listed only if the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE` is enabled. To enable the feature flag, contact [Harness Support](mailto:support@harness.io).
+:::
 
 If there are many templates with the same name, the most current one is used to create tickets. Select **Apply Changes**.
 
