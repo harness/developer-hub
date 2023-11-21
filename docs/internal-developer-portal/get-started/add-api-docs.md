@@ -35,9 +35,32 @@ Note that to be able to read from targets that are outside of the normal integra
 
 :::
 
+### Import API spec for all API defined in openapi spec
+
+```YAML
+
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: ce-nextgen
+  description: The official CE NEXTGEN service REST APIs
+spec:
+  type: openapi
+  lifecycle: production
+  owner: johndoe
+  definition:
+    $text: https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v2.0/json/api-with-examples.json
+```
+
+:::info
+
+In the above example we import all the API specs in `json` format as a `$text` embedding, and it's a suggested hack to import multiple APIs in openapi format. 
+
+:::
+
 ### Import API spec for a single API defined in openapi spec in swaggger
 
-```yaml
+```YAML
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
@@ -60,32 +83,10 @@ spec:
   definition:
     $text: ./petstore.oas.yaml
 ```
-### Import API spec for all API defined in openapi spec
-
-```yaml
-
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: ce-nextgen
-  description: The official CE NEXTGEN service REST APIs
-spec:
-  type: openapi
-  lifecycle: production
-  owner: johndoe
-  definition:
-    $text: https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v2.0/json/api-with-examples.json
-```
-
-:::info
-
-In the above example we import all the API specs in `json` format as a `$text` embedding, and it's a suggested hack to import multiple APIs in openapi format. 
-
-:::
 
 ### Define API spec for a single API openapi format and import the same
 
-```yaml
+```YAML
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
@@ -113,5 +114,5 @@ spec:
 ```
 ## Steps to add the API as an entity.
 
-1. Save the yaml, created following the steps above, in your git repository. 
+1. Save the YAML, created following the steps above, in your git repository. 
 2. Follow the steps mentioned to [register a software compenent](https://developer.harness.io/docs/internal-developer-portal/get-started/register-a-new-software-component#register-the-software-component), to add your API docs to IDP.  
