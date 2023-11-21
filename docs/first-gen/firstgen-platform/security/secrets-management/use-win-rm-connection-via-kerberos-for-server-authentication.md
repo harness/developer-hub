@@ -126,5 +126,5 @@ Click **Test** to ensure that the connection is successful. Once the connection 
 
 ### Step 11: Delegate dependencies
 
-In order to perform Windows deployments using Kerberos authentication, Harness requires **harness-pywinrm** binary to be present client tools (client-tools/harness-pywinrm/v0.4-dev/harness-pywinrm). Otherwise the deployments will fail performing the capability check using Kerberos authentication mechanism. This library is maintained by Harness and is available at [Gitbuh](https://github.com/wings-software/winrm-kerberos-pywinrm).
+In order to perform Windows deployments using Kerberos authentication, Harness requires **harness-pywinrm** binary to be present in client tools (client-tools/harness-pywinrm/v0.4-dev/harness-pywinrm). Otherwise, the deployments will fail to perform the capability check using the Kerberos authentication mechanism. 
 
