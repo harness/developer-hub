@@ -52,7 +52,7 @@ To set up Amazon ElastiCache for Redis, do the following:
 1. Complete the steps in the [Getting started with Amazon ElastiCache for Redis](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/GettingStarted.html) guide in the AWS documentation. 
 
 :::info important
-Make you disable the cluster mode.
+Make sure you disable the cluster mode.
 :::
 
 2. Create a security group to allow a connection from your Kubernetes cluster to an ElastiCache instance.
