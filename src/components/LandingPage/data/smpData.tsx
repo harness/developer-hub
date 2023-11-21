@@ -75,4 +75,16 @@ export const SMPList: CardItem[] = [
     time: "15 min",
     link: "/tutorials/self-managed-enterprise-edition/use-self-managed-minio-object-storage",
   },
+  {
+    title: "Configure external self-managed AWS ElastiCache",
+    module: MODULES.smp,
+    icon: "img/logo.svg",
+    description: (
+      <>Learn how to use self-managed AWS ElastiCache with Self-Managed Enterprise Edition installations.</>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "10 min",
+    link: "/tutorials/self-managed-enterprise-edition/use-aws-elasticache",
+  },
 ];
