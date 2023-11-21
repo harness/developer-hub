@@ -88,6 +88,8 @@ Each CI step supports a maximum log size of 5MB. Harness truncates logs larger t
 
 Furthermore, there is a single-line limit of 25KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`.
 
+Note that the CI log limit is different from the [Harness CD log limit](/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations.md).
+
 ### Export full logs
 
 If your log files are larger than 5MB, you can export execution logs to an external cache and examine the full logs there.
