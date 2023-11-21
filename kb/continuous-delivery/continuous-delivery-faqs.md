@@ -3092,3 +3092,32 @@ You can skip the versioning, it can be skipped by using these two ways:
 #### After a successful deployment with the namespace "x" and another failed deployment with the same namespace (x), we switched the namespace and now it seems it cannot properly do a helm history.
 
 You can enable the Ignore Release History Failed Status option to have Harness ignore these errors and proceed with install/upgrade. More on this can be referred here: [Documentation] (https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart/#ignore-release-history-failed-status)
+
+### "Is there an expression, such as '<+pipeline.stages.Deploy.strategy.finalStatus>', to get the status of a stage outside of the looping strategy?"
+The expression "<+strategy.currentStatus>" only works within the context of the looping strategy, there is no expression like "<+pipeline.stages.Deploy.strategy.finalStatus>" to get the status of a stage outside of the looping strategy.
+
+You can try using the expression "<+pipeline.stages.STAGE_ID.status>" to get the status of a specific stage.
+
+### Unable to edit Delegate profiles in NextGen
+DelegateProfile is deprecated in Harness NextGen, and you can leverage INIT_SCRIPT to run scripts at delegate startup. There is no option to associate Delegate configurations with delegates in Harness NextGen.
+
+### I have a pipeline containing different stages DEV-QA-UAT-PROD. In UAT I'm using Canary deployment and in PROD it's Blue-Green. In these scenarios how Harness provides proper Roll Back strategies?
+Harness provides a declarative rollback feature that can perform rollbacks effectively in different deployment scenarios.
+ 
+For Canary deployment in UAT, you can define the percentage of traffic to route to the new version and set up conditions to switch traffic between the old and new versions. If an anomaly is detected during the canary deployment, Harness will automatically trigger a rollback to the previous version.
+ 
+For Blue-Green deployment in PROD, you can define the conditions to switch traffic between the blue and green environments. If an issue is detected in the green environment, you can easily switch back to the blue environment using the declarative rollback feature.
+ 
+You can define the failure strategy on stages and steps in your pipeline to set up proper rollback strategies. You can add a failure strategy in the deploy stage by either ignoring the failure for the shell script or getting a manual intervention where you can mark that step as a success. Additionally, you can use the declarative rollback feature provided by Harness to perform rollbacks effectively in different deployment scenarios.
+
+
+### We have a parent pipeline with the child pipelines and wanted to know if there is any built-in variable to check if the pipeline is triggered by another pipeline. 
+There is no built-in variable to check if a pipeline is triggered by another pipeline. Even if a pipeline is triggered by another pipeline, it will still be considered a "Manual" trigger type. You may need to use a custom variable or some other method to track this information.
+
+### After moving the pipeline source code from Inline to Repository. Is there a way to roll back this change as we cannot find it in the UI?
+No, You should not face any issues with the trigger when it comes to inline or remote pipeline. There is no way to roll back. 
+ 
+However, you can copy the yaml from your git and create a new inline pipeline in Harness or you can use the import from remote option and create a new remote pipeline let us know if you encounter any issues with the trigger we will help you with the next steps.
+
+### Is it possible to remove permissible actions from the Wait Step?
+No, it is not possible to remove the permissible actions from the Wait Step. The Wait Step provides the options to Mark as Success and Mark as Failed, which are necessary for the step to proceed with the pipeline execution. 
