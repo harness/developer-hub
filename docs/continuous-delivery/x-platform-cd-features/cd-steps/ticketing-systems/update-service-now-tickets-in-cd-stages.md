@@ -44,6 +44,18 @@ You can install the Harness app in your ServiceNow instance from the ServiceNow 
 
 ![](./static/update-service-now-tickets-in-cd-stages-23.png)
 
+8. If you want to update multiple change tasks under a parent change request, select **Update Multiple**, and then do the following:
+  
+  - In **Change Request Number**, specify the change request whose tasks you want to update.
+
+  - In **Change Task Type**, specify which task type you want to target. All tasks whose type matches your selection are updated. If you want all tasks under the parent to be updated regardless of their task type, leave this field blank.
+
+  :::note 
+  The **Update Multiple** option appears only if you select **Change Task** in the **Ticket Type** field. 
+
+  This feature is behind the feature flag `CDS_NG_UPDATE_MULTIPLE_SNOW_CHANGE_REQUEST`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
+  :::
+
 ## Update fields
 
 1. Select **Update Fields** to update specific ServiceNow fields in your ServiceNow ticket. This option enables you to access multiple custom fields from your ServiceNow integration.
