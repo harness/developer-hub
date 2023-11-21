@@ -826,7 +826,7 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 
 ## November 2022
 
-### Version 
+### Version 0.2.0
 
 #### Early access features
 
