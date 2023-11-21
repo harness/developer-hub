@@ -9,13 +9,151 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The systems model, as inspired by this [RFC](https://github.com/backstage/backstage/issues/390) from Backstage.io, is an approach to managing and understanding complex software ecosystems. This model is particularly relevant in the context of DevOps and microservices architectures, where the large number of interdependent components can be overwhelming.
+The systems model of IDP, as inspired by the [Backstage System Model](https://backstage.io/docs/features/software-catalog/system-model), is an approach to managing and understanding complex software ecosystems. This model is particularly relevant in the context of DevOps and microservices architectures, where the large number of interdependent components can be overwhelming.
 
 In the context of IDP, the systems model is used to describe and organize the various software components, services, and tools that make up an organization's technical landscape. It is structured around five key concepts: Domains, Systems, APIs, Components, and Resources.
 
 ![](static/intro-system.png)
 
-## Concepts
+## Example Architecture
+
+Let's try to map a city-like software ecosystem, IDP's service catalog acts as a central repository, organizing and providing crucial information about the software assets. This ecosystem, with its interconnected neighborhoods (Domains), buildings (Systems), services (APIs), establishments (Components), and utilities (Resources), mirrors the complex yet structured world of software development and operations.
+
+
+## Detailed Modeling in IDP
+
+### Components and Dependencies
+
+#### Core Backend: 
+
+Let's start with a core backend service, like a central office in a building, providing specific functionalities.
+
+```YAML
+kind: Component
+type: service
+name: core-backend
+```
+
+#### Core Queueing Library: 
+
+Now let's start adding a library component, akin to a specialized tool used within the office.
+
+```YAML
+kind: Component
+type: library
+name: core-queueing-library
+```
+
+### Dependency Representation: 
+
+Showing how the Core Backend depends on the Core Queueing Library.
+
+```YAML
+providesApi:
+  - core-api
+```
+
+### APIs and Their Consumption
+
+Core API: Represented as a service provided by the Core Backend.
+
+```YAML
+kind: API
+type: openapi
+name: core-api
+```
+
+#### API Provision: Indicating that the Core Backend exposes the Core API.
+
+```YAML
+providesApi:
+  - core-api
+```
+
+### Systems and Their Components
+
+#### Core System: 
+A system that includes the Core Backend and Core API.
+
+```YAML
+kind: System
+name: core
+```
+
+#### System Association: 
+
+Linking the Core Backend and API to the Core System.
+
+```YAML
+system: core
+```
+
+### City Domains and Expansion
+#### New part of city: For example, expanding the city, a new Domain AI is created.
+
+```YAML
+kind: Domain
+name: ai
+```
+
+![](static/conclusion-system.png)
+
+Now to get the backend service and it's dependencies and ownership right in the software catalog we write an IDP YAML with the help of following conecpts: 
+
+### Neighborhoods: Domains
+
+1. **Function:** Domains are like neighborhoods, each with its unique character, housing systems that share common goals or technical requirements.
+
+2. **Example:** The "Data Analytics District" could be a Domain, grouping systems related to data processing and analysis.
+
+```YAML
+kind: Domain
+name: data-analytics-district
+```
+
+### Buildings: Systems
+Structure: Systems are akin to buildings, each encapsulating a set of functionalities provided by various components.
+Example: The "Customer Insights Tower" in the Data Analytics District represents a System comprising data processing services, analytics tools, and customer feedback components.
+
+```YAML
+kind: System
+name: customer-insights-tower
+```
+
+### Services: APIs
+1. **Interactions:** APIs are the services that allow different systems and components to communicate, much like the utilities in a city.
+
+2. **Example:** The Customer Insights Tower might offer a RESTful API for querying processed customer data.
+
+```YAML
+kind: API
+type: openapi
+name: customer-query-api
+```
+
+### Establishments: Components
+1. **Specific Functions:** Components are like the different offices or shops in a building, each serving a specific function.
+
+2. **Example:** Within the Customer Insights Tower, there's a "Feedback Analysis Suite," a component dedicated to analyzing customer feedback.
+
+```YAML
+kind: Component
+type: service
+name: feedback-analysis-suite
+```
+
+### Utilities: Resources
+1. **Support Infrastructure:** Resources are the essential infrastructure elements that support the systems, similar to a city's utilities.
+
+2. **Example:** The Customer Insights Tower relies on cloud storage and computing resources to handle large datasets.
+
+```YAML
+kind: Resource
+type: cloud-service
+name: cloud-storage
+```
+
+## Definitions and Reference
 
 ### 1. Domain
 #### Definition: 
@@ -60,5 +198,3 @@ Cloud storage buckets and CDN services used by a video streaming system.
 ## Conclusion 
 
 In practice, implementing a systems model like the one used by Backstage, involves creating a centralized catalog or repository where all the information about systems, components, and their relationships is stored and managed.
-
-![](static/conclusion-system.png)
