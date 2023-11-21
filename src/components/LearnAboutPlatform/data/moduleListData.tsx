@@ -92,5 +92,12 @@ export const moduleList: CardItem[] = [
     ),
     link: "docs/internal-developer-portal",
   },
+  {
+    title: "Code Repository",
+    module: MODULES.code,
+    // icon: "img/icon_code.svg",
+    description: <>Accelerate development with security at scale.</>,
+    link: "docs/code-repository",
+  },
 
 ];

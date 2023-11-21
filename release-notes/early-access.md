@@ -237,8 +237,6 @@ With this feature flag enabled, you can:
 * **Release date:** July 2023
 * **Release version:** 79916
 * **Issue number:** CDS-71711
-* **Feature flag:** `CD_NG_DOCKER_ARTIFACT_DIGEST`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 Digest support added for Nexus 3, Github, and Artifactory [artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 
@@ -297,8 +295,6 @@ For Harness services using the Tanzu deployment type, [config files can be confi
 * **Release date:** April 2023
 * **Release version:** Delegate version 23.04.79111
 * **Issue number:** CDS-58488, ZD-42117
-* **Feature flag:** `CDS_NG_TRIGGER_AUTHENTICATION_WITH_DELEGATE_SELECTOR`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 Github triggers that use a secret for authentication will now use the same delegate selectors saved in the secret's Harness secret manager.
 
@@ -447,9 +443,9 @@ The following early access (beta) features are available for the Harness Feature
 
 No early access (beta) features are available for Harness Internal Developer Portal. -->
 
-<!-- ## Code early access features
+## Code early access features
 
-The Code Repository module is in beta. -->
+Currently, the entire [Code Repository module](/docs/code-repository/get-started/overview) is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) if you're interested in this module.
 
 ## STO early access features
 

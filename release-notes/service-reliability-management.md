@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-11-03T10:00:20
+date: 2023-11-15T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 13
 ---
@@ -18,16 +18,12 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest: November 03, 2023, version 1.6.1
+## Latest: November 15, 2023, version 1.7.0
 
 
 ### New features and enhancements
 
-- A new search functionality for the service and environment filters drop-down on the Changes page has been introduced. The filters now display a **Search** option when the drop-down list contains more than 10 options. (SRM-15946)
-
-- The maximum number of simple SLOs that can contribute to a composite SLO has been increased from 20 to 30. (SRM-15972)
-
-- Because a majority of change sources are now configured automatically, the behavior on the Change Impact screen has been modified.  Now, when no change event is found in the selected time range, the "No change event" message is displayed instead of "Configure change source”. (SRM-15985)
+This release does not include any new features.
 
 
 ### Early access features
@@ -37,7 +33,17 @@ This release does not include any early access features.
 
 ### Fixed issues
 
-This release does not include any fixed issues.
+- The Add Annotation drawer was opening even when clicking near the **Add Annotation** button. (SRM-16062)
+  
+  This issue has been resolved. Now, the Add Annotation drawer opens only when clicking on the **Add Annotation** button.
+  
+- The Add SLO screen wrongly indicated that a maximum of 20 SLOs could be selected, even though selecting a maximum of 30 SLOs was allowed. For example, when 30 SLOs were selected, it displayed "30/20 selected." (SRM-16078)
+  
+  This issue has been resolved. Now, the UI correctly indicates that a maximum of 30 SLOs can be selected.
+  
+- On the SLO tab, the **Clear Filter** option was not displayed when a filter was applied to the **Evaluation** field. (SRM-16079)
+  
+  This issue has been resolved. Now, the **Clear Filter** option is displayed when a filter is applied to the **Evaluation** field.
 
 
 ### Hotfixes
@@ -49,6 +55,33 @@ This release does not include hotfixes.
 
 <details>
 <summary>2023 releases</summary>
+
+#### November 03, 2023, version 1.6.1
+
+
+##### New features and enhancements
+
+- A new search functionality for the service and environment filters drop-down on the Changes page has been introduced. The filters now display a **Search** option when the drop-down list contains more than 10 options. (SRM-15946)
+
+- The maximum number of simple SLOs that can contribute to a composite SLO has been increased from 20 to 30. (SRM-15972)
+
+- Because a majority of change sources are now configured automatically, the behavior on the Change Impact screen has been modified.  Now, when no change event is found in the selected time range, the "No change event" message is displayed instead of "Configure change source”. (SRM-15985)
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+
+
+##### Hotfixes
+
+This release does not include hotfixes.
+
 
 #### October 31, 2023, version 1.5.3
 

@@ -250,7 +250,7 @@ You can even set a Harness Trigger where you can set the workspace name used in 
 ## AWS Connector Provider Credential Authentication for Terraform Plan and Apply Steps
 
 :::note
-This feature is behind the feature flag `TERRAFORM_AWS_CP_AUTHENTICATION` and requires Harness Delegate version 81202. This feature is available only to paid customers. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+This feature requires Harness Delegate version 81202. This feature is available only to paid customers. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 You can use an AWS Connector to have the terraform plan and apply step assume a role to perform the provisioning of infrastructure. It's an optional configuration that takes in AWS Connector, a Region and a Role ARN. The Terraform step will use these parameters to authenticate with the aws account targetted for infrastructure provisioning.
@@ -510,15 +510,11 @@ You can use Harness encrypted text for values. See [Add Text Secrets](/docs/plat
 
 ## Encrypt the Terraform Apply JSON outputs
 
-:::note
+The **Encrypt json output** setting encrypts the Terraform JSON output as a Harness secret. Only Harness Secret Manager is supported.
 
-Currently, this feature is behind the flag, `CDS_ENCRYPT_TERRAFORM_APPLY_JSON_OUTPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+The secret is ephemeral and is created and deleted during the execution of the pipeline. After execution completes, the secret is deleted.
 
-:::
-
-The **Encrypt json output** setting encrypts the Terraform JSON output as a Harness secret using the secret manager you select. 
-
-The secret is ephemeral and is created and deleted during the pipeline execution. The secret is not added to the **Secrets** list in Harness.
+The secret is stored in the **Secrets** list in Harness, at the project level.
 
 You can use an expression to retrieve the secret and its Terraform JSON output during pipeline execution.
 
@@ -559,6 +555,8 @@ Here's an example of decrypted Terraform JSON output:
 ```
 
 ## Skip state storage
+
+The following feature requires a minimum Harness delegate version of 812xx.
 
 While running Terraform commands on the delegate, Harness by default will try to detect if there is a local state file in the Terraform working directory.
 
