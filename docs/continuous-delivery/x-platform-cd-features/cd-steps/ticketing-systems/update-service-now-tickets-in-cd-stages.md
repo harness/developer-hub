@@ -48,13 +48,13 @@ You can install the Harness app in your ServiceNow instance from the ServiceNow 
 
 1. Select **Update Fields** to update specific ServiceNow fields in your ServiceNow ticket. This option enables you to access multiple custom fields from your ServiceNow integration. 
 
-2. (Applicable only if the ticket number is a fixed value). Scan the list of fields for a refresh icon, and then click the icon next to each field to fetch the latest value from ServiceNow. Harness displays the refresh icon next to a field only if that field has been updated in ServiceNow. 
+2. (Applicable only if the ticket number is a fixed value) Scan the list of fields for a refresh icon, and then click the icon next to each field to fetch the latest value from ServiceNow. Harness displays the refresh icon next to a field only if that field has been updated in ServiceNow. 
 
   :::note More information
   If the ticket number is a fixed value, and not a runtime value or expression, in addition to listing fields that have values, Harness does the following for you:
-    * It includes values in the fields. 
+    * It includes values from ServiceNow in the fields. 
     * It displays any new fields that have been added to the ticket in ServiceNow after the last time you viewed this section.
-    * If the value of a field has changed in ServiceNow, Harness includes a refresh icon that you can select if you want the field to show the updated value. Harness does not update the field with the latest value automatically. 
+    * If the value of a field has changed in ServiceNow, Harness includes a refresh icon that you can select if you want the field to show the updated value. Harness does not automatically update the field with the latest value. 
     
     This feature is behind the feature flag `CDS_SERVICENOW_FETCH_FIELDS`. To enable the feature, contact [Harness Support](mailto:support@harness.io).
   :::
