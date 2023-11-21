@@ -234,7 +234,7 @@ Ensure that multiple Webhooks are not registered for the same repo. This can tri
 
 :::note
 
-To prevent multiple pipeline executions, ensure that no more than 20 webhooks are registered for a GitLab repository otherwise Harness registers a webhook each time a GitLab trigger is updated or created with that repository, it can result in redundant pipeline executions.
+To prevent multiple pipeline executions, ensure that no more than 20 webhooks are registered for a GitLab repository. Otherwise, Harness registers a webhook each time a GitLab trigger is updated or created with that repository, and it can result in redundant pipeline executions.
 
 :::
 
