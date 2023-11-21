@@ -34,6 +34,12 @@ The following deprecated API endpoints will no longer be supported:
 
 ## November 2023
 
+### Version 816xx
+
+#### New features and enhancements
+
+- Upgraded the `org.eclipse.jetty_jetty-http`, `jetty-io`, `jetty-util`, and `jetty-continuation` libraries to 9.4.53.v20231009 to resolve CVE CVE-2023-36478. (PL-42288, PL-42560)
+
 ### Version 81502
 
 #### New features and enhancements
