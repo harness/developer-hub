@@ -55,7 +55,7 @@ export default function CertificationsSTO() {
   }, [searchKey]);
 
   return (
-    <div className={styles.certificationsCE}>
+    <div className={styles.certificationsSTO}>
       <div className={styles.hero}>
         <div className={styles.left}>
           <div className={styles.linkBack}>

@@ -6,9 +6,6 @@ sidebar_position: 40
 
 The SLO Downtime page displays a comprehensive list of all the SLO downtimes and also provides options to manage them.
 
-:::info note
-Currently, this feature is behind the feature flag `SRM_DOWNTIME`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
 
 ## SLO downtime page
 
