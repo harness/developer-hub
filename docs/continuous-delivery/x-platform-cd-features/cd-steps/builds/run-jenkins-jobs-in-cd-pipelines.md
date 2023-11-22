@@ -14,11 +14,7 @@ Harness integrates with [Jenkins](https://jenkins.io/), enabling you to run Jen
 
 ## Supported platforms and technologies
 
-For more information, go to [supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies).
-
-:::note
-
-Harness confirms support for the following Jenkins versions 2.432, 2.424, 2.425, 2.401.2, 2.414.2, 2.398, 2.397.
+For more information and supported versions, go to [supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies).
 
 ## Limitations and requirements
 
