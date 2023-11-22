@@ -62,6 +62,14 @@ You can apply the rule to multiple user groups for a project, organization or ac
 ![](./static/configure-chaosguard/select-multiple-user-groups.png)
 :::
 
+Below is a snap that shows a successful evaluation of all the rules in a chaos experiment.
+
+![](./static/configure-chaosguard/rule-evaluation-pass.png)
+
+Below is a snap that shows a failed evaluation of some (or all) rules in a chaos experiment.
+
+![](./static/configure-chaosguard/rule-evaluation-fail.png)
+
 ## Enable and disable rules
 
 The image below shows the two different states of a rule (enable and disable).
