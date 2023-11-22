@@ -801,7 +801,6 @@ Harness was automatically applying an alternate deployment strategy even if the 
 
 Now, Harness does not automatically apply an alternate deployment strategy if the required data is not available. Instead, Harness fails the CV. Harness automatically applies an alternate deployment strategy only if you choose the Auto option in the Continuous Verification Type dropdown list when configuring the Verify step.
 
-This feature is behind the feature flag SRM_LOG_HOST_SAMPLING_ENABLE.
 
 ##### Fixed Issues
 

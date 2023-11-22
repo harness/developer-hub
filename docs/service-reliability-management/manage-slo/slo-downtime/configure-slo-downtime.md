@@ -6,10 +6,6 @@ sidebar_position: 20
 
 You can schedule SLO downtime windows to apply to specific services or all services.
 
-:::info note
-Currently, this feature is behind the feature flag `SRM_DOWNTIME`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 
 ## Create a new SLO downtime
 
