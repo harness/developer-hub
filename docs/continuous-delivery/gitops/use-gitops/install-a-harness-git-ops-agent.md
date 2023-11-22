@@ -421,9 +421,11 @@ Here are some answers to commonly asked GitOps Agent questions.
 
 GitOps Agent v0.60.0 supports redis:7.0.8-alpine and Repo server [argocd:v2.8.2](http://quay.io/argoproj/argocd:v2.8.2).
 
+Harness GitOps Agent from v0.60.0 onwards supports Argo CD version [v2.8.2](http://quay.io/argoproj/argocd:v2.8.2), while GitOps Agent versions v0.57.0 till v0.59.0 support Argo CD version [v2.7.8](http://quay.io/argoproj/argocd:v2.7.8).
+
 ### How long is a GitOps Agent version supported?
 
-Harness supports GitOps Agent versions that support Argo CD versions n to n-2 minor version (e.g 2.5.4, 2.4.4 2.3.4).
+Harness supports GitOps Agent versions that support Argo CD versions n to n-2 minor version (e.g 2.5.4, 2.4.4, 2.3.4).
 
 ### How can I update the GitOps Agent and related components?
 
