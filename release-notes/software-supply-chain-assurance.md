@@ -20,4 +20,4 @@ These release notes describe recent changes to Harness Software Supply Chain Ass
 
 ## September 2023
 
-The [Software Supply Chain Assurance module documentation]() is live on the Harness Developer Hub. Check back soon for module release notes.
+The [Software Supply Chain Assurance module documentation](/docs/software-supply-chain-assurance) is live on the Harness Developer Hub. Check back soon for module release notes.
