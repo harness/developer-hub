@@ -496,7 +496,7 @@ If you are using Harness Continuous Delivery (CD) but not Harness Continuous Int
 
 Harness integrates with [Jenkins](https://jenkins.io/), enabling you to run Jenkins jobs and dynamically capture inputs and outputs from the jobs. 
 
-CD supports the following versions of Jenkins:
+Harness has been tested with the following versions of Jenkins:
 - 2.432
 - 2.424
 - 2.425
