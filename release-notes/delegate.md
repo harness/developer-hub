@@ -258,6 +258,13 @@ Harness NextGen release 80811 includes the following changes for the Harness Del
   
   This issue has been fixed.
 
+### Version 23.11.81408
+
+#### Hotfix
+
+- TODO
+
+
 ### Version 23.10.80808
 
 #### Hotfix
