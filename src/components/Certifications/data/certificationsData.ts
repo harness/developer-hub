@@ -102,4 +102,14 @@ export const certifications: CardItem[] = [
       link: "/certifications/sto?lvl=developer",
       // numberOfCerts: 1,
     },
+    {
+      title: "Security Testing Orchestration  - Administrator (BETA Coming Soon)",
+      module: MODULES.sto,
+      type: certType.administrator,
+      description:
+        "STO Administrator focuses on configuring and managing security testing processes within the Harness platform",
+      version: "Harness STO Free/Team Plans",
+      link: "/certifications/sto?lvl=administrator",
+      // numberOfCerts: 1,
+    },
   ];

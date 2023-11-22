@@ -155,7 +155,7 @@
           .btnContainer {
             display: flex;
             gap: 24px;
-            justify-content:flex-end;
+            justify-content: flex-end;
             // margin-top: 24px;
             button {
               height: 48px;
@@ -257,7 +257,7 @@
         padding: 32px;
         gap: 32px;
         .verticalLine {
-        border-left: 2px solid   #d9dae5;
+          border-left: 2px solid #d9dae5;
         }
         .certs {
           width: 100%;
@@ -392,7 +392,7 @@
         .btnContainer {
           display: flex;
           gap: 24px;
-     
+
           button {
             height: 48px;
             display: flex;
@@ -526,27 +526,26 @@
 .certificationsCD {
   background-image: url(/img/cert_cd_bg.svg);
 }
-/*
+
 .certificationsFF {
-    background-image: url(/img/cert_ff_bg.svg);
+  background-image: url(/img/cert_ff_bg.svg);
 }
 .certificationsCCM {
-    background-image: url(/img/cert_ccm_bg.svg);
+  background-image: url(/img/cert_ccm_bg.svg);
 }
-.certificationsSRM {
-    background-image: url(/img/cert_srm_bg.svg);
-}
-.certificationsSTO {
-    background-image: url(/img/cert_sto_bg.svg);
-}
-.certificationsCE {
-    background-image: url(/img/cert_ce_bg.svg);
-}
-.certificationsPlatfrom {
-    background-image: url(/img/cert_platform_bg.svg);
-}
-*/
 
+// .certificationsSTO {
+//   background-image: url(/img/cert_harness_bg.svg);
+// }
+.certificationsCE {
+  background-image: url(/img/cert_ce_bg.svg);
+}
+// .certificationsPlatfrom {
+//     background-image: url(/img/cert_platform_bg.svg);
+// }
+// .certificationsSRM {
+//     background-image: url(/img/cert_srm_bg.svg);
+// }
 .examDetails {
   margin-top: 50px;
   .examDetailsCard {

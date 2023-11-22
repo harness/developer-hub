@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-11-13T10:12:25
+date: 2023-11-17T10:12:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 10
 ---
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - November 13, 2023
+### Latest - November 17th 2023
 
 ### New features and enhancements
 
@@ -25,7 +25,31 @@ This release does not include new features.
 
 This release does not include early access features.
 
-### Fixed issues in the Golang SDK and the Node SDK
+### Fixed issues in the Java SDK
+
+Released Java SDK 1.3.1
+
+ - Added Java 21 Support.
+ - Marked private attributes not working. 
+ - Improved stream restart logic. 
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### November 13, 2023
+
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Golang SDK and the Node SDK
 
 Released Golang SDK 0.1.16
 
@@ -38,10 +62,6 @@ Released Golang SDK 0.1.16
 
  - Upgrade Axios due to CVE
 
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### November 9, 2023
 

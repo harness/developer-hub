@@ -92,6 +92,17 @@ Scorecard has two main UI components which are developer facing and lives in the
 
   :::
 
+## Scorecard Overview Page
+
+- Once you have created your Scorecard, in the Overview page you can view the number of components for which it is applied and the overall health of the components in terms of "%"
+
+<docimage path={require('../../internal-developer-portal/features/static/scorecard-overview.png')}/>
+
+- On clicking the overall health button dispalyed for your scorecard you will be redirected to a page with detailed information regarding the compoenets tracked through the scorecard as well as the time detailed socre of each component. 
+
+<docimage path={require('../../internal-developer-portal/features/static/component-overview.png')}/>
+
+
 ## Disabling Scorecards
     
 - Comment out the Scorecard related lines added under **Layout** pages as mentioned above, to remove the Scorecard components from the Catalog pages. 

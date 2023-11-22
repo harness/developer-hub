@@ -43,6 +43,53 @@ This process is also covered in the [Helm Chart deployment tutorial](/docs/conti
 
 See [Supported Platforms and Technologies](/docs/get-started/supported-platforms-and-technologies).
 
+## Commands used by Harness to perform a Helm Chart Deployment managed by Harness
+
+When using the Harness-managed Helm Chart Deployment approach, Harness uses a mix of `helm` and `kubectl` commands to perform the deployment. 
+
+1. The command we run to perform **Fetch Files**, depends on the store type Git or Helm Repo.
+
+For Git:
+```
+git clone {{YOUR GIT REPO}}
+```
+
+For Helm Repo:
+```
+helm pull {{YOUR HELM REPO}}
+```
+
+2. Based on your values.yaml and Harness configured variables, Harness will then render those values via `helm template`. We will consolidate all the rendered manifest into a `manifest.yaml`.
+
+```
+helm template release-75d461a29efd32e5d22b01dc0f93aa5275e2f003 /opt/harness-delegate/repository/helm/source/c1475174-18d6-38e6-8c67-1000f3b71297/helm-test-chart  --namespace default  -f ./repository/helm/overrides/6a7628964506885eb37908b81914a04c.yaml
+```
+
+3. Harness will perform a dry run by default to show what is about to be applied
+
+```
+kubectl --kubeconfig=config apply --filename=manifests-dry-run.yaml --dry-run=client
+```
+
+4. Harness will then run the `kubectl apply`  command to apply the manifest files to the Kubernetes clusters.
+
+```
+kubectl --kubeconfig=config apply --filename=manifests.yaml
+```
+
+5. Harness will then query the deployed resources to show a summary of what was deployed.
+
+```
+kubectl --kubeconfig=config describe --filename=manifests.yaml
+```
+
+6. In the event of failure Harness will rollback, we perform a `kubectl rollout undo`.
+
+```
+kubectl --kubeconfig=config rollout undo Deployment/test-deploy --namespace=default --to-revision=1
+```
+
+ 
 ## ChartMuseum binaries
 
 Many Helm chart users use ChartMuseum as their Helm chart repository server.

@@ -43,6 +43,8 @@ Review the following information for details about data privacy and terms of use
 - [AIDA Terms](https://www.harness.io/legal/aida-terms)
 - [AIDA Privacy](https://www.harness.io/legal/aida-privacy)
 
+**Update (November 2023):** AIDA for STO is now generally available. You must accept the AIDA EULA to enable AIDA in your Harness account. For more information, go to [Use AI to fix security issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
+
 **Update (October 2023):** AIDA for CI is now generally available. You must accept the AIDA EULA to enable AIDA in your Harness account. For more information, go to [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida).
 
 ### SCIM user provisioning enhancements
@@ -232,19 +234,18 @@ With this feature flag enabled, you can:
 * Migrate Services with Helm Chart from Helm Repository stored Artifacts from CG to NG. This helps in migrations.
 * Configure multiple Helm Charts in the manifests. This provides feature parity with Harness FirstGen. Helm Charts can now be configured from the Helm Repository as Artifacts that allow users to select the Helm chart for deployment. The UI also now differentiates between manifests and overrides in service.
 
-### Digest support for Nexus 3, GitHub, Artifactory artifact sources
+<!-- ### Digest support for Nexus 3, GitHub, Artifactory artifact sources
 
 * **Release date:** July 2023
 * **Release version:** 79916
 * **Issue number:** CDS-71711
-* **Feature flag:** `CD_NG_DOCKER_ARTIFACT_DIGEST`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+* **Feature Flag:** REMOVED IN PR 4190
 
 Digest support added for Nexus 3, Github, and Artifactory [artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 
 The **Artifact Details** page has an optional **Digest** setting where you can specify the digest/SHA for a container image artifact.
 
-Specifying an image by digest, rather than just tag, is useful when you want to ensure that the image you deploy for a service is fixed and immutable. If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline execution fails.
+Specifying an image by digest, rather than just tag, is useful when you want to ensure that the image you deploy for a service is fixed and immutable. If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline execution fails. -->
 
 ### Scheduled automatic approvals for manual approval steps
 
@@ -292,15 +293,14 @@ For Harness services using the Tanzu deployment type, [config files can be confi
 
 **Update (Delegate version 23.05.79214, May 2023):** You can add Tanzu Application Service (TAS) [config files](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/add-config-files) from GitHub.
 
-### Protect secrets in webhook triggers that use secret decryption on delegates
+<!-- ### Protect secrets in webhook triggers that use secret decryption on delegates
 
 * **Release date:** April 2023
 * **Release version:** Delegate version 23.04.79111
 * **Issue number:** CDS-58488, ZD-42117
-* **Feature flag:** `CDS_NG_TRIGGER_AUTHENTICATION_WITH_DELEGATE_SELECTOR`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+* **Feature flag:** REMOVED IN PR 4185
 
-Github triggers that use a secret for authentication will now use the same delegate selectors saved in the secret's Harness secret manager.
+Github triggers that use a secret for authentication will now use the same delegate selectors saved in the secret's Harness secret manager. -->
 
 ### Variable expressions in plain text config files
 
@@ -349,6 +349,37 @@ In some instances, the workload spec was not updated properly when `rollout undo
 Enabling declarative rollback disables versioning (even if the **Skip Versioning** checkbox is left unchecked), since versioning was introduced with the imperative rollback design. However, versioning is not needed with [declarative rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#declarative-rollback).
 
 The delegate's service account needs the permission to create, update, and read secrets in the defined infrastructure namespace. Typically, delegates already have these permissions, but if cluster roles are strictly scoped, this could cause failures. For information on cluster roles for the delegate, go to [Install Harness Delegate on Kubernetes](/tutorials/platform/install-delegate/).
+
+#### ECS Run Task support
+
+* **Release date:** October 2022
+* **Issue number:** CDS-57721, ZD-41676
+* **Feature flag:** `NG_SVC_ENV_REDESIGN` and `ECS_NG`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+For ECS deployments, you can deploy artifacts to your Amazon Elastic Container Service (ECS) clusters using a Rolling, Canary, and Blue Green strategies. For more information, go to the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
+
+**Update (October 2022):** In addition to deploying tasks as part of your standard ECS deployment, you can use the ECS Run Task step to run individual tasks separately as a step in your ECS stage. The ECS Run Task step is available in all ECS strategy types. An example of when you run a task separately is a one-time or periodic batch job that does not need to keep running or restart when it finishes. For more information, go to the [ECS tutorial's run task step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
+
+#### Enhancements for Secure Shell and WinRM deployments
+
+* **Release date:** October 2022
+* **Feature flag:** `NG_SVC_ENV_REDESIGN`, `SSH_NG`, and `PIPELINE_MATRIX`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Fpr traditional deployments using SSH or WinRM, you can deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
+
+These deployments are called Traditional because they use Secure Shell and PowerShell scripts and a traditional runtime environment as opposed to containers and orchestration mechanisms, like Kubernetes.
+
+For more information, go to [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng) and [WinRM deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial).
+
+#### Custom deployments using Deployment Templates
+
+* **Release date:** October 2022
+* **Feature flag:** `NG_SVC_ENV_REDESIGN` and `NG_DEPLOYMENT_TEMPLATE`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+In some cases, you might use a platform that doesn't have first class support in Harness, such as OpenStack, WebLogic, WebSphere, Google Cloud functions, etc. Harness calls these non-native deployments. For non-native deployments, Harness provides a custom deployment option using Deployment Templates. For more information, go to the [Custom deployments using deployment templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
 
 <!-- ## CET early access features
 
@@ -778,37 +809,6 @@ For more information, go to the [Azure Web Apps deployment tutorial](/docs/conti
 
 Terraform Backend Configuration file path in the Terraform Apply step now supports remote file repos. For more details, go to [Provision with the Terraform Apply Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/).
 
-#### ECS Run Task support
-
-* **GA date:** Late 2022/Early 2023
-* **Early access release date:** October 2022
-* **Issue number:** CDS-57721, ZD-41676
-* **Feature flag:** `NG_SVC_ENV_REDESIGN` and `ECS_NG`
-
-For ECS deployments, you can deploy artifacts to your Amazon Elastic Container Service (ECS) clusters using a Rolling, Canary, and Blue Green strategies. For more information, go to the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
-
-**Update (October 2022):** In addition to deploying tasks as part of your standard ECS deployment, you can use the ECS Run Task step to run individual tasks separately as a step in your ECS stage. The ECS Run Task step is available in all ECS strategy types. An example of when you run a task separately is a one-time or periodic batch job that does not need to keep running or restart when it finishes. For more information, go to the [ECS tutorial's run task step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
-
-#### Enhancements for Secure Shell and WinRM deployments
-
-* **GA date:** Late 2022/Early 2023
-* **Early access release date:** October 2022
-* **Feature flag:** `NG_SVC_ENV_REDESIGN`, `SSH_NG`, and `PIPELINE_MATRIX`
-
-Fpr traditional deployments using SSH or WinRM, you can deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
-
-These deployments are called Traditional because they use Secure Shell and PowerShell scripts and a traditional runtime environment as opposed to containers and orchestration mechanisms, like Kubernetes.
-
-For more information, go to [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng) and [WinRM deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial).
-
-#### Custom deployments using Deployment Templates
-
-* **GA date:** Late 2022/Early 2023
-* **Early access release date:** October 2022
-* **Feature flag:** `NG_SVC_ENV_REDESIGN` and `NG_DEPLOYMENT_TEMPLATE`
-
-In some cases, you might use a platform that doesn't have first class support in Harness, such as OpenStack, WebLogic, WebSphere, Google Cloud functions, etc. Harness calls these non-native deployments. For non-native deployments, Harness provides a custom deployment option using Deployment Templates. For more information, go to the [Custom deployments using deployment templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
-
 #### Simplified Git Experience
 
 * **GA date:** Late 2022/Early 2023
@@ -859,3 +859,39 @@ In Harness CI, AIDA provides auto-recognition of failures in pipelines. The root
 * **Early access release date:** October 20, 2022
 
 Harness released a beta version of an Apex SDK for Feature Flags. For more information and to access this SDK, see the [Apex SDK reference guide](/docs/feature-flags/ff-sdks/server-sdks/apex-sdk-reference) and the [GitHub repository](https://github.com/harness/ff-apex-server-sdk).
+
+### STO features promoted to GA
+
+#### Harness AI Development Assistant (AIDA:tm:) for STO
+
+* **GA date:** November 2023
+* **Early access release date:** June 2023
+* **Early access release version:** 1.58.3
+* **Issue numbers:** STO-5882, STO-6593, STO-6181, PL-39723 
+* **Feature flag:** `STO_AI_ENHANCED_REMEDIATIONS`
+
+```mdx-code-block
+import Intro from '/docs/security-testing-orchestration/use-sto/shared/sto-aida-overview-partial.md';
+```
+
+<Intro />
+
+**Update (Version 1.72.1):** 
+
+- You can now provide feedback about the AIDA-generated remediation step for a selected issue. (STO-6593)
+
+- You are now required to sign an end-user license agreement to access the Harness AI Development Assistant (AIDA) in the account and project scopes. You need to do this even if you could previously use AIDA without signing a EULA. This change was originally introduced in the 80505 platform release. (PL-39723)
+
+  The EULA is displayed when you enable AIDA at the account scope (**Account Settings** > **Account Resources** > **Default Settings** > **Harness AI Developer Assistant**).
+
+  Each account user must sign the EULA only once.
+
+  The setting is inherited at the project scope.
+
+**Update (Version 1.61.1):** 
+
+* Fixed an issue that broke the capability to customize the code snippet for AIDA-augmented remediations in the Security Tests module. (STO-6181)
+
+**Update (Version 1.60.0):** 
+
+- Reference Identifiers selected for AIDA enhancement in a Security Issue are now remembered, upon generation, and shown when revisited in the UI. (STO-6032)

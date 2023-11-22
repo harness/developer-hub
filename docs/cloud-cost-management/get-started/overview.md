@@ -23,8 +23,6 @@ Harness Cloud Cost Management (formerly Continuous Efficiency) is a solution tha
 ![](./static/continuous-efficiency-overview-03.png)
 
 ### Visual Summary
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 <docvideo src="https://www.youtube.com/watch?v=xnbTUNet5gw" />
 
 ### What is Cloud Cost Management?

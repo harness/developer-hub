@@ -150,9 +150,11 @@ Custom stages *don't* support [rollback](./define-a-failure-strategy-for-pipelin
 
 ### Environments and Infrastructure Definitions in Custom stages
 
-:::note
+:::info note
 
-Currently, the Environments and Infrastructure Definitions in Custom stages feature is behind the feature flag `CDS_CUSTOM_STAGE_WITH_ENV_INFRA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+This feature will be included an in upcoming release.
+
+The Environments and Infrastructure Definitions in the Custom stages feature will be behind the feature flag `CDS_CUSTOM_STAGE_WITH_ENV_INFRA`. Contact [Harness Support](mailto:support@harness.io) to inquire about the feature.
 
 :::
 

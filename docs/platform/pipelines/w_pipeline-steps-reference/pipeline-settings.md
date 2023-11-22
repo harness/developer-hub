@@ -69,10 +69,10 @@ The following table describes how this setting applies to each plan.
         <p>No</p>
       </td>
       <td>
-        <p>Yes</p>
+        <p>No</p>
       </td>
       <td>
-        <p>Yes</p>
+        <p>No</p>
       </td>
     </tr>
     <tr valign="top">

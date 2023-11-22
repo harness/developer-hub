@@ -35,6 +35,14 @@ These release notes describe recent changes to Harness Continuous Integration.
 * Fixed a proxy issue related to [downloading logs](/docs/platform/pipelines/download-logs). (CI-9657, ZD-50664)
 * Fixed an issue in the Get Started workflow where the account or organization name could be omitted from the repo URL in a GitHub connector created during the workflow.
 
+### Version 6603
+
+<!-- Nov 21, 2023 -->
+
+#### Hotfix
+
+Fixed an issue related to build queue limits. (CI-10326, ZD-53701)
+
 ### Version 6601
 
 <!-- Nov 16, 2023 -->

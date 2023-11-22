@@ -22,9 +22,7 @@ The Email step has the following features:
 
 ## Visual summary
 
-<!-- Video:
-https://harness-1.wistia.com/medias/w5ztte829n-->
-<docvideo src="https://harness-1.wistia.com/medias/w5ztte829n" />
+<docvideo src="https://youtu.be/1oa-1xifsmE" />
 
 
 ## YAML example

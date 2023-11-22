@@ -47,22 +47,6 @@ You must install the Harness Delegate in the same cluster you use for the build 
 
 </details>
 
-<details>
-<summary>Video summary</summary>
-
-This video describes a pipeline similar to the one built in this tutorial. Note that this video uses the **Service Dependency** step, which is deprecated in favor of the **Background** step.
-
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
-<docvideo src="https://harness-1.wistia.com/medias/fsc2b05uxz" />
-
-
-<!-- div class="hd--embed" data-provider="Wistia" data-thumbnail="">
-   <iframe src="//fast.wistia.net/embed/iframe/fsc2b05uxz" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" oallowfullscreen="" msallowfullscreen="" width="620" height="349"></iframe><script src="//fast.wistia.net/assets/external/E-v1.js" async=""></script>
-</div -->
-
-</details>
-
 ## Prerequisites
 
 This tutorial assumes you have experience with Kubernetes, such as setting up service accounts and clusters.

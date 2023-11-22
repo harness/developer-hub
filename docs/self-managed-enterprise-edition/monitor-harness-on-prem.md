@@ -239,13 +239,15 @@ Follow the below steps on your Kubernetes cluster to deploy Grafana:
 
 4. Set Prometheus as the data source:
   
-  Go to settings, select **Data sources**. Then, select **Add data source**. Select **Prometheus**.
+  Go to settings, select **Data sources**, and then select **Add data source**.
 
   ![](./static/monitor-harness-on-prem-prom1.png)
- 
-5. Configure the URL settings to connect to your locally-hosted Prometheus setup, with the locally-hosted Grafana instance. 
 
-6. Deploy prometheus and grafana on the same cluster, and use kubeDNS resolution. For example, if you want to connect pod A to pod B, on pod A, the hostname of B should be:
+5. Select **Prometheus**.
+ 
+6. Configure the URL settings to connect to your locally-hosted Prometheus setup, with the locally-hosted Grafana instance. 
+
+7. Deploy prometheus and grafana on the same cluster, and use kubeDNS resolution. For example, if you want to connect pod A to pod B, on pod A, the hostname of B should be:
 
   `http://serviceNameOfPodB.<namespaceOfPodB>.svc.cluster.local:<port>`
 
@@ -263,9 +265,9 @@ Follow the below steps on your Kubernetes cluster to deploy Grafana:
   The final URL should be similar to the above URL, according to your system specifications. Any extra space or character in the URL field causes the data source testing to fail. 
   :::
 
-7. Configure the **Prometheus type** and **Prometheus version** fields.
+8. Configure the **Prometheus type** and **Prometheus version** fields.
 
-8. Select **Save & test**. A confirmation that the data source is working displays. 
+9. Select **Save & test**. A confirmation that the data source is working displays. 
 
 ### Add a Grafana dashboard
 

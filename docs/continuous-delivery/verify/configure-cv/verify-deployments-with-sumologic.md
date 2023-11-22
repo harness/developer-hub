@@ -11,10 +11,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-:::note
-Currently, this feature is behind the feature flag `SRM_SUMO`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 Harness Continuous Verification (CV) integrates with Sumo Logic to:
 
 * Verify that the deployed service is running safely and perform automatic rollbacks.
