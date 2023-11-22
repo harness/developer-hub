@@ -800,8 +800,9 @@ The Tests tab may display content truncated if a field in your test report XML f
 No. You could add the test report path in runstep, background step etc and the test results will be appeared in tests tab of the execution if the test report is in junit format.
 
 
-#### Whenever user excute the build pipeline, it's creating the new pod and not running th build on the delegate?
-It's the expected behviour whenever you run the CI stage the steps will create the build farm pods which is connected with the delegate.
+#### When I run a build, Harness creates a new pod and doesn't run the build on the delegate.
+
+This is the expected behavior. When you run a CI (Build) stage, the steps create build farm pods that are connected to the delegate.
 
 #### Can we use <+codebase.commitSha> variable in CD Stage to get commit id?
 Yes you can able to get the commit id by using <+codebase.commitSha> variable, you can use the same variable in the CD stage to get the commit id in same pipeline after CI stage.
