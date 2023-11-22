@@ -99,7 +99,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### Hotfix
 
-- Implemented the inclusion of a default tag in the Auto Scaling Group (ASG) for the Name key, with the tag value set to match the ASG name. This tag is automatically propagated upon instance launch. This enhancement is particularly beneficial for customers who manage metrics reliant on instance names. (CDS-84681)
+- A default tag is now included in the Auto Scaling Group (ASG) for the Name key. The tag value is set to match the ASG name and is automatically propagated upon instance launch. This feature is especially useful if you rely on instance names for managing metrics. (CDS-84681)
 
 ## October 2023
 
