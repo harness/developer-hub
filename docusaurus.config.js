@@ -211,7 +211,7 @@ const config = {
                 to: 'docs/security-testing-orchestration',
               },
               {
-                label: 'Infrastrcture as Code Management',
+                label: 'Infrastructure as Code Management',
                 to: 'docs/infrastructure-as-code-management',
               },
               {

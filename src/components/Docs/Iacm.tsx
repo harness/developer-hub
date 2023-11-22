@@ -4,9 +4,9 @@ import Link from "@docusaurus/Link";
 import styles from "./styles.module.scss";
 import { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
-import { docsCards } from "./data/iacm";
+import { docsCards } from "./data/iacmData";
 
-export default function IaCM() {
+export default function Iacm() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
@@ -16,23 +16,22 @@ export default function IaCM() {
             <img width={64} src={`${baseUrl}img/iacm-icon.svg`} />
             <h1>Infrastructure as Code Management Documentation</h1>
           </div>
-          <div className={styles.btnContainer}>
-            <Link href="/release-notes/infrastructure-as-code-management">
-              <button className={styles.btn}>
-                <img src={`${baseUrl}img/icon_release_notes.svg`} />
-                Release Notes
-              </button>
-            </Link>
-          </div>
+          {/*
+            TODO: Re-add this when the release notes are added to the docs
+            <div className={styles.btnContainer}>
+              <Link href="/release-notes/infrastructure-as-code-management">
+                <button className={styles.btn}>
+                  <img src={`${baseUrl}img/icon_release_notes.svg`} />
+                  Release Notes
+                </button>
+              </Link>
+            </div>
+          */}
         </div>
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
-            <p>
-            Manage your Infrastructure as Code End-to-End.
-            </p>
-            <p>
-            This module is currently in beta
-            </p>
+            <p>Manage your Infrastructure as Code End-to-End.</p>
+            <p>This module is currently in beta</p>
           </div>
         </div>
       </div>
@@ -43,6 +42,5 @@ export default function IaCM() {
         {/* <TutorialCard FeatureList={FeaturedList} featuredCard={true} /> */}
       </div>
     </div>
-    // </Layout>
   );
 }
