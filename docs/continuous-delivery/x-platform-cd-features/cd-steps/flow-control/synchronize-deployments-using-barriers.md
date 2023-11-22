@@ -14,6 +14,12 @@ Harness provides multiple options for controlling resource usage and protecting 
 
 ## Barriers and synchronization
 
+:::note
+
+Barrier steps are only supported inside **Deploy** and **Custom** stage types.
+
+:::
+
 When deploying interdependent services, such as microservices or a large and complicated application, there might be a need to coordinate the timing of the different components' deployments. A common example is the need to verify a group of services only after *all the services* are deployed successfully.
 
 Harness address this scenario using Barriers. Barriers allow you to synchronize different stages and step groups in your Pipeline, and control the flow of your deployment systematically.
