@@ -12,8 +12,9 @@ import TabItem from '@theme/TabItem';
 Get your first Harness CD pipeline ready in no time.
 
 ## Overview
+(_Note: Steps with a **"*"** mark next to them have example YAMLs that can be used to set up that specific step_)
 
-**Phase 1: Initial Setup**
+### <a href="#phase-1-initial-setup"> Phase 1: Initial Setup </a>
 
 | **Step**                                              | **Details**                                                      | **Documentation Link**                                                                                                                | **Demo Video**                                                                                 |
 | ------------------------------------------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
@@ -21,36 +22,36 @@ Get your first Harness CD pipeline ready in no time.
 | <a href="#step-2-installing-delegate">Installing Delegate</a>                                    | Kubernetes, Docker                                               | [Install Harness Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/)                 | [Watch Video](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/) |
 | <a href="#step-3-installing-secret-manager--migrating-existing-secrets">Installing Secret Manager / Migrating Existing Secrets</a> | AWS KMS, HashiCorp, Azure Key vault, Google KMS                  | [Add a secret manager](https://developer.harness.io/docs/platform/secrets/secrets-management/add-secrets-manager/)                    |                                                                                             |
 
-**Phase 2: Deploy to QA**
+### <a href="#phase-2-deploy-to-qa"> Phase 2: Deploy to QA </a>
 
 | **Step**                                              | **Details**                                                      | **Documentation Link**                                                                                                                | **Demo Video**                                                                                 |
 | ------------------------------------------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| <a href="#services">Service Definition and Variables</a>                       | Runtime Inputs or expressions                                                         | [Create services](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/create-services/)             | [Watch Video](https://youtu.be/02RIvOGd0zg?si=HnK4wHaxLUWEkoFK) |
-| <a href="#environments">Environment Definitions</a>                                | Service Override                                        | [Create environments](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/) | [Watch Video](https://youtu.be/02RIvOGd0zg?si=HnK4wHaxLUWEkoFK) |
+| <a href="#services">Service Definition and Variables</a> *                      | Runtime Inputs or expressions                                                         | [Create services](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/create-services/)             | [Watch Video](https://youtu.be/02RIvOGd0zg?si=HnK4wHaxLUWEkoFK) |
+| <a href="#environments">Environment Definitions</a> *                               | Service Override                                        | [Create environments](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/) | [Watch Video](https://youtu.be/02RIvOGd0zg?si=HnK4wHaxLUWEkoFK) |
 | <a href="#step-2-adding-artifact-source">Adding Artifact Source</a>                                 | Docker Registry, GCR, GCS, ACR, Azure DevOps Artifacts, ECR, etc | [CD artifact sources](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/)        |                                                                                             |
-| <a href="#step-3-simple-pipeline">Simple Pipeline</a>                                        | stage, service, environment, infrastructure                      | [CD pipeline modeling overview](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview/)     | [Watch Video](https://youtu.be/k-f1nbgGkww?si=_EW6Lcr1qxzrQNVM) |
+| <a href="#step-3-simple-pipeline">Simple Pipeline</a> *                                       | stage, service, environment, infrastructure                      | [CD pipeline modeling overview](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview/)     | [Watch Video](https://youtu.be/k-f1nbgGkww?si=_EW6Lcr1qxzrQNVM) |
 
-**Phase 3: Deploy to Staging**
-
-| **Step**                                              | **Details**                                                      | **Documentation Link**                                                                                                                | **Demo Video**                                                                                 |
-| ------------------------------------------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| <a href="#step-1-deployment-strategy">Deployment Strategy</a>                                    | Rollback, Blue Green, Canary, K8s with apply, K8s with scale                                        | [Deployment concepts and strategies](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts/)   | [Watch Video](https://youtu.be/VJjDbwoxLfM?feature=shared)                                      |
-| <a href="#step-2-triggers--input-sets">Triggers & Input Sets</a>                                  | SCM triggers, Artifact triggers                                  | [Pipeline Triggers](https://developer.harness.io/tutorials/cd-pipelines/trigger/)                                                     | [Watch Video](https://youtu.be/nIPjsANiKRk?si=euQzhaYGfnPaacUe) |
-
-**Phase 4: Deploy to Production**
+### <a href="#phase-3-deploy-to-staging"> Phase 3: Deploy to Staging </a>
 
 | **Step**                                              | **Details**                                                      | **Documentation Link**                                                                                                                | **Demo Video**                                                                                 |
 | ------------------------------------------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| <a href="#step-1-approvals--governance-opa">Approvals & Governance (OPA)</a>                                              | Harness Approval, JIRA Approval                                  | [Approvals](https://developer.harness.io/tutorials/cd-pipelines/approvals/)                                                           | [Watch Video](https://youtu.be/KtE6f5-QHrI?si=zYhrXnedmf2j0bUi) |
+| <a href="#step-1-deployment-strategy">Deployment Strategy</a> *                                   | Rollback, Blue Green, Canary, K8s with apply, K8s with scale                                        | [Deployment concepts and strategies](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts/)   | [Watch Video](https://youtu.be/VJjDbwoxLfM?feature=shared)                                      |
+| <a href="#step-2-triggers--input-sets">Triggers & Input Sets</a> *                                 | SCM triggers, Artifact triggers                                  | [Pipeline Triggers](https://developer.harness.io/tutorials/cd-pipelines/trigger/)                                                     | [Watch Video](https://youtu.be/nIPjsANiKRk?si=euQzhaYGfnPaacUe) |
+
+### <a href="#phase-4-deploy-to-production"> Phase 4: Deploy to Production </a>
+
+| **Step**                                              | **Details**                                                      | **Documentation Link**                                                                                                                | **Demo Video**                                                                                 |
+| ------------------------------------------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| <a href="#step-1-approvals--governance-opa">Approvals & Governance (OPA)</a> *                                             | Harness Approval, JIRA Approval                                  | [Approvals](https://developer.harness.io/tutorials/cd-pipelines/approvals/)                                                           | [Watch Video](https://youtu.be/KtE6f5-QHrI?si=zYhrXnedmf2j0bUi) |
 | <a href="#step-2-rbac">RBAC</a>                                                   | CoE, Distributed Center of DevOps                   | [Role-based access control (RBAC) in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/)  | [Watch Video](https://youtu.be/vIQfpRrES44?si=Du5OAej2t2Phu7Hg) |
 | <a href="#step-3-continuous-verification">Continuous Verification</a>                                                   | Auto, Rolling Update, Canary, Blue Green, Load Test | [Harness Continuous Verification (CV) overview](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step/)  |  |
 
-**Phase 5: Deploy at Scale**
+### <a href="#phase-5-deploy-at-scale"> Phase 5: Deploy at Scale </a>
 
 | **Step**                                              | **Details**                                                      | **Documentation Link**                                                                                                                | **Demo Video**                                                                                 |
 | ------------------------------------------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | <a href="#step-1-sso">SSO</a>                                                    | SAML SSO with Harness, Okta, OneLogin, Keycloak, etc                                 | [Single Sign-On (SSO) with SAML](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/)                      |                                                                                             |
-| <a href="#step-2-templatization--automation">Templatization & Automation</a>                                         | Templates, Terraform Automation                                                        | [Templates overview](https://developer.harness.io/docs/platform/templates/template/)                                                  | [Watch Video](https://youtu.be/U-n3VK_RoQc?si=dfokJq6pa6017mqX) |
+| <a href="#step-2-templatization--automation">Templatization & Automation</a> *                                        | Templates, Terraform Automation                                                        | [Templates overview](https://developer.harness.io/docs/platform/templates/template/)                                                  | [Watch Video](https://youtu.be/U-n3VK_RoQc?si=dfokJq6pa6017mqX) |
 
 ## Phase 1: Initial Setup
 ### Step 1. Account & Entities Setup
@@ -979,8 +980,10 @@ Learn more about Approvals in [this](https://developer.harness.io/tutorials/cd-p
 
 Harness Policy As Code uses Open Policy Agent (OPA) as the central service to store and enforce policies for the different entities and processes across the Harness platform. You can centrally define and store policies and then select where (which entities) and when (which events) they will be applied. Here are some Governance examples with Harness OPA.
 
-<details>
-<summary>OPA Policy that allows pipeline execution only with a specific delegate tag selected</summary>
+```mdx-code-block
+<Tabs>
+<TabItem value="Delegate Tag Governance">
+```
 
 ```
 package pipeline
@@ -1008,10 +1011,10 @@ deny[msg] {
 This policy denies pipeline execution if a step in any stage does not have the specific delegate tag selected in its delegate selector. If the tag is not selected, the policy will show a human-friendly error message.
 ::::
 
-</details>
-
-<details>
-<summary>OPA policy that can be applied using the On Run event for a pipeline to enforce the use of specific connectors</summary>
+```mdx-code-block
+</TabItem>
+<TabItem value="Connectors Governance">
+```
 
 ```
 package pipeline
@@ -1041,10 +1044,10 @@ contains(arr, elem) {
 You can customize the `allowed_connectors` list to include the connectors that are allowed for pipeline execution. If a pipeline uses a connector that is not in the `allowed_connectors` list, the policy will deny pipeline execution and display an error message.
 ::::
 
-</details>
-
-<details>
-<summary>Policy that can be applied using the On Run event for a pipeline to execute only in certain environments</summary>
+```mdx-code-block
+</TabItem>
+<TabItem value="Environment Governance">
+```
 
 ```
 package pipeline
@@ -1081,10 +1084,13 @@ contains(arr, elem) {
 ```
 
 ::::info note
-You can modify the allowed_environments list to include the environments where you want the pipeline to be executed. If the pipeline is executed in an environment that is not in the allowed_environments list, the policy will fail and display an error message.
+You can modify the `allowed_environments` list to include the environments where you want the pipeline to be executed. If the pipeline is executed in an environment that is not in the `allowed_environments` list, the policy will fail and display an error message.
 ::::
 
-</details>
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 #### [Freeze Deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/)
 
@@ -1136,16 +1142,87 @@ Role-based access control (RBAC) lets you control who can access your resources 
 | --------------------- | ---------------------	| --------------------- | ---------------------	|
 | Program Manager	| Responsible for analyzing and reporting various metrics | Shared Resources->Dashboards: View & Manage	| Shared Resources -> Dashboards |
 | Platform Admin	| Responsible for provisioning infrastructure and managing Harness resources like Secrets, Environment, Connectors and Delegates | - Shared Resources -> Secrets: View, Create/Edit, Delete & Access <br/> - Shared Resources -> Connectors: View, Create/Edit, Delete & Access <br/> - Shared Resources -> Delegates: View, Create/Edit & Delete <br/> -	Shared Resources -> Delegate Configurations: View, Create/Edit & Delete <br/> - Environments: View, Create/Edit, Delete & Access <br/> - Environment Groups: View, Create/Edit, Delete & Access | - Shared Resources -> Secrets <br/> - Shared Resources -> Connectors <br/> - Shared Resources -> Delegates <br/> - Shared Resources -> Delegate Configurations <br/> - Environments <br/> - Environment Groups |
-| Devops Admin	| Responsible for setting up Policies to adhere to certain organizational standards, managing Users and various other things like Default Settings, Auth Settings, etc | Administrative Functions: All permissions <br/> Services: View, Create/Edit, Delete & Access <br/> Shared Resources -> Templates: View, Create/Edit, Delete, Access & Copy <br/> Shared Resources -> Files: View, Create/Edit, Delete & Access <br/> Shared Resources -> Deployment Freeze: Manage, Override & Global <br/> Shared Resources -> Secrets: View & Access <br/> Shared Resources -> Connectors: View & Access <br/> Shared Resources -> Variables: View, Create/Edit & Delete <br/> Shared Resources -> Files: View, Create/Edit & Delete <br/> Shared Resources -> Delegates: View <br/> Shared Resources -> Delegate Configurations: View <br/> Pipelines: View, Create/Edit, Delete & Execute | Administrative Functions: All Resources under it <br/> Shared Resources: All Resources under it except Dashboards <br/> Services <br/> Pipelines |
+| Devops Admin	| Responsible for setting up Policies to adhere to certain organizational standards, managing Users and various other things like Default Settings, Auth Settings, etc | Administrative Functions: All permissions <br/> Services: View, Create/Edit, Delete & Access <br/> Shared Resources -> Templates: View, Create/Edit, Delete, Access & Copy <br/> Shared Resources -> Files: View, Create/Edit, Delete & Access <br/> Shared Resources -> Deployment Freeze: Manage, Override & Global <br/> Shared Resources -> Secrets: View & Access <br/> Shared Resources -> Connectors: View & Access <br/> Shared Resources -> Variables: View, Create/Edit & Delete <br/> Shared Resources -> Files: View, Create/Edit & Delete <br/> Shared Resources -> Delegates: View <br/> Shared Resources -> Delegate Configurations: View <br/> Pipelines: View, Create/Edit, Delete & Execute | Administrative Functions: All Resources under it <br/> Shared Resources: All Resources under it except Dashboards <br/> Services |
 | Devops Engineer	| Responsible for managing Services, Templates, Files, Variables, Pipelines, Triggers, Input Sets etc. | Services: View, Create/Edit & Access <br/> Shared Resources -> Templates: View, Create/Edit, Access & Copy <br/> Shared Resources -> Secrets: View & Access <br/> Shared Resources -> Connectors: View & Access <br/> Shared Resources -> Variables: View & Create/Edit <br/> Shared Resources -> Files: View & Create/Edit <br/> Pipelines: View, Create/Edit & Execute	| Shared Resources: All Resources under it except Dashboards <br/> Services <br/> Pipelines |
 
 </details>
 
 <details>
-<summary>Distributed Center of DevOps</summary>
+<summary>Distributed DevOps</summary>
 <br />
 
 </details>
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Center of Excellence">
+```
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Program Manager">
+```
+
+**Roles**
+![Access Control Roles for Program Manager](static/coe-rbac/account-manager-roles.png)
+
+**Resource Groups**
+![Resource Groups for Program Manager](static/coe-rbac/account-manager-resource-groups.png)
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Platform Admin">
+```
+
+**Roles**
+![Access Control Roles for Platform Admin](static/coe-rbac/platform-admin-roles1.png)
+![Access Control Roles for Platform Admin](static/coe-rbac/platform-admin-roles2.png)
+![Access Control Roles for Platform Admin](static/coe-rbac/platform-admin-roles3.png)
+
+**Resource Groups**
+![Resource Groups for Platform Admin](static/coe-rbac/platform-admin-resource-groups.png)
+
+
+```mdx-code-block
+</TabItem>
+<TabItem value="DevOps Admin">
+```
+
+**Roles**
+![Access Control Roles for DevOps Admin](static/coe-rbac/devops-admin-roles1.png)
+![Access Control Roles for DevOps Admin](static/coe-rbac/devops-admin-roles2.png)
+![Access Control Roles for DevOps Admin](static/coe-rbac/devops-admin-roles3.png)
+
+**Resource Groups**
+![Resource Groups for DevOps Admin](static/coe-rbac/devops-admin-resource-groups1.png)
+![Resource Groups for DevOps Admin](static/coe-rbac/devops-admin-resource-groups2.png)
+
+```mdx-code-block
+</TabItem>
+<TabItem value="DevOps Engineer">
+```
+
+**Roles**
+![Access Control Roles for DevOps Engineer](static/coe-rbac/devops-engineer-roles1.png)
+![Access Control Roles for DevOps Engineer](static/coe-rbac/devops-engineer-roles2.png)
+
+**Resource Groups**
+![Resource Groups for DevOps Admin](static/coe-rbac/devops-engineer-resource-groups.png)
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Distruibuted DevOps">
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 Take a look at [this](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#configure-rbac-in-harness) article to configure RBAC in Harness
 
