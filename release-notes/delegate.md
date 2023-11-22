@@ -99,7 +99,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### Hotfix
 
-- Added an AWS Auto Scale Group (ASG) name tag for ASG deployments. (CDS-84681)
+- Added an AWS Auto Scale Group (ASG) name tag for Blue Green deployments of ASG services. (CDS-84681)
 
 ## October 2023
 
