@@ -97,12 +97,11 @@ Authentication is required for all accounts and repos, including read-only repos
 
 :::info Personal access token permissions
 
-To use a personal access token with a GitHub organization that uses SAML single sign-on (SSO), you must first authorize the token, as described in the GitHub documentation on [authorizing a personal access token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
-
 * The GitHub user account that you use to create the token must have admin permissions on the repo.
-* GitHub doesn't provide a way to scope tokens for read-only access to repos. You must select all `repo`, `admin:repo_hook`, and `user` scopes.
+* For GitHub organizations that use SAML single sign-on (SSO), you must [authorize the token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
+* The token must have all `repo`, `user`, and `admin:repo_hook` scopes. GitHub doesn't provide a way to scope tokens for read-only access to repos.
 
-![Selecting PAT permission scopes.](./static/git-hub-connector-settings-reference-01.png)
+![GitHub token permission scopes.](./static/git-hub-connector-settings-reference-01a.png)
 
 :::
 
@@ -215,12 +214,11 @@ Enabling API access requires configuring an API authentication method, either a 
 <details>
 <summary>Personal access token permissions</summary>
 
-To use a personal access token with a GitHub organization that uses SAML single sign-on (SSO), you must first authorize the token, as described in the GitHub documentation on [authorizing a personal access token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
-
 * The GitHub user account that you use to create the token must have admin permissions on the repo.
-* GitHub doesn't provide a way to scope tokens for read-only access to repos. You must select all `repo`, `admin:repo_hook`, and `user` scopes.
+* For GitHub organizations that use SAML single sign-on (SSO), you must [authorize the token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
+* The token must have all `repo`, `user`, and `admin:repo_hook` scopes. GitHub doesn't provide a way to scope tokens for read-only access to repos.
 
-![Selecting PAT permission scopes.](./static/git-hub-connector-settings-reference-01.png)
+![GitHub token permission scopes.](./static/git-hub-connector-settings-reference-01a.png)
 
 </details>
 

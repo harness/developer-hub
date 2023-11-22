@@ -12,11 +12,6 @@ import TabItem from '@theme/TabItem';
 ```
 
 
-:::info note
-Currently, this feature is behind the feature flag `SRM_SPLUNK_SIGNALFX`. Contact Harness Support to enable the feature.
-:::
-
-
 Harness Continuous Verification (CV) integrates with Splunk Observability [SignalFx] to:
 
 * Verify that the deployed service is running safely and performing automatic rollbacks.

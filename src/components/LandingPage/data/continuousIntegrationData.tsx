@@ -75,17 +75,6 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
   },
   {
-    title: "Android application",
-    module: MODULES.ci,
-    description:
-      "Build and test an Android application.",
-    link: "/tutorials/ci-pipelines/build/android",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-    newDoc: true,
-  },
-  {
     title: "C# (.NET Core) application",
     module: MODULES.ci,
     description:
@@ -131,6 +120,17 @@ export const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: "30 min",
     icon: "img/icon_ci.svg",
+  },
+  {
+    title: "C/C++",
+    module: MODULES.ci,
+    description:
+      "Build and test C and C++ applications.",
+    link: "/tutorials/ci-pipelines/build/c",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+    newDoc: true,
   },
   {
     title: "C# (.NET Core)",
@@ -204,7 +204,7 @@ export const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
-    newDoc: true,
+    newDoc: false,
   },
   {
     title: "iOS and macOS",
@@ -226,7 +226,7 @@ export const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
-    newDoc: true,
+    newDoc: false,
   },
   {
     title: "Terraform Cloud notification triggers",

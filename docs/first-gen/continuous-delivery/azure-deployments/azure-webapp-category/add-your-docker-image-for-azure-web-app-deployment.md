@@ -21,8 +21,7 @@ This topic covers adding a Docker image. For steps on adding a non-containerized
 
 ### Visual Summary
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/embed/psYt_mYKPFY?feature=oembed" />
 
 

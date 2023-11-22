@@ -156,13 +156,6 @@ Click **Submit**. The Health Source is displayed in the Verify step.
 
 ### Configure Datadog formulas as Harness queries
 
-:::info note 
-
-Currently,this feature is behind the feature flag SRM_DATADOG_METRICS_FORMULA_SUPPORT. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-
 In manual query mode, the Datadog metrics health source provides support for formulas.
 These formulas follow a specific format: 
 

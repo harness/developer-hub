@@ -88,6 +88,8 @@ Each CI step supports a maximum log size of 5MB. Harness truncates logs larger t
 
 Furthermore, there is a single-line limit of 25KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`.
 
+Note that the CI log limit is different from the [Harness CD log limit](/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations.md).
+
 ### Export full logs
 
 If your log files are larger than 5MB, you can export execution logs to an external cache and examine the full logs there.
@@ -217,37 +219,13 @@ If you have a custom network security group, it must allow inbound traffic on po
 
 For more information, refer to the following Microsoft Azure troubleshooting documentation: [A custom network security group blocks traffic](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/custom-nsg-blocks-traffic).
 
+### Istio MTLS STRICT mode
+
+[A headless service is required if you are using Istio MTLS STRICT mode.](../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#create-headless-service-for-istio-mtls-strict-mode)
+
 ## Harness Cloud build infrastructure issues
 
-### Connector delegate error with Harness Cloud build infrastructure
-
-Connectors that you use with the Harness Cloud build infrastructure must connect through the Harness Platform. To change the connector's connectivity mode:
-
-1. Go to the **Connectors** page at the account, organization, or project scope. For example, to edit account-level connectors, go to **Account Settings**, select **Account Resources**, and then select **Connectors**.
-2. Select the connector that you want to edit.
-3. Select **Edit Details**.
-4. Select **Continue** until you reach **Select Connectivity Mode**.
-5. Select **Change** and select **Connect through Harness Platform**.
-6. Select **Save and Continue** and select **Finish**.
-
-### Can't use the built-in Harness Docker Connector with Harness Cloud build infrastructure
-
-Depending on when your account was created, the built-in **Harness Docker Connector** (`account.harnessImage`) might be configured to connect through a Harness Delegate instead of the Harness Platform. In this case, attempting to use this connector with Harness Cloud build infrastructure generates the following error:
-
-```
-While using hosted infrastructure, all connectors should be configured to go via the Harness platform instead of via the delegate. Please update the connectors: [harnessImage] to connect via the Harness platform instead. This can be done by editing the connector and updating the connectivity to go via the Harness platform.
-```
-
-To resolve this error, you can either modify the **Harness Docker Connector** or use another Docker connector that you have already configured to connect through the Harness Platform.
-
-To change the connector's connectivity settings:
-
-1. Go to **Account Settings** and select **Account Resources**.
-2. Select **Connectors** and select the **Harness Docker Connector** (ID: `harnessImage`).
-3. Select **Edit Details**.
-4. Select **Continue** until you reach **Select Connectivity Mode**.
-5. Select **Change** and select **Connect through Harness Platform**.
-6. Select **Save and Continue** and select **Finish**.
+For troubleshooting information for Harness Cloud build infrastructure, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md#troubleshooting-harness-cloud-build-infrastructure).
 
 ## AWS VM build infrastructure issues
 
