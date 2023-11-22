@@ -16,7 +16,7 @@ Harness provides multiple options for controlling resource usage and protecting 
 
 :::note
 
-Barrier steps are only supported inside **Deploy** and **Custom** stage types.
+Barrier steps are only supported inside Deploy and Custom stage types.
 
 :::
 
