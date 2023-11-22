@@ -3,13 +3,13 @@ title: Introduction to ChaosGuard™
 sidebar_position: 1
 ---
 
-This section introduces you to ChaosGuard, and describes how Harness provides RBAC (role-based access control) to users or user groups to access the **chaos resources** at different levels using **ChaosGuard**.
+This section introduces you through ChaosGuard and describes how Harness provides RBAC (role-based access control) to users or user groups to access the **chaos resources** at different levels using **ChaosGuard**.
 
 ## What is ChaosGuard?
 
 ChaosGuard, as the name suggests, is an additional level of security that guards chaos experiments from chaos-enabled users (users who have permissions to execute chaos experiments). 
 
-Advanced environments require deeper governance policies, and this level of security aims to minimize the blast radius (or disruption) and mitigate potential security threats from **chaos-enabled** users with malicious intent. This way, users with permissions to execute chaos experiments will be subjected to further levels of security policy enforcement. 
+Advanced environments require deeper governance policies, and this level of security aims to minimise the blast radius (or disruption) and mitigate potential security threats from **chaos-enabled** users with malicious intent. This way, users with permissions to execute chaos experiments will be subjected to further levels of security policy enforcement.
 
 The different levels of security policy enforcement include (but are not limited to):
 1. Regulating access to chaos infrastructure (i.e., namespaces and clusters) within the environment,
