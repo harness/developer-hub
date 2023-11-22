@@ -9,6 +9,6 @@ title: Infrastructure as Code Management
 
 <!-- Custom component -->
 
-import IaCM from '@site/src/components/Docs/Iacm';
+import IaCM from '@site/src/components/Docs/iacm';
 
 <IaCM />
