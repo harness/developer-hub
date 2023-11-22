@@ -16,6 +16,10 @@ Harness integrates with [Jenkins](https://jenkins.io/), enabling you to run Jen
 
 For more information, go to [supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies).
 
+:::note
+
+Harness confirms support for the following Jenkins versions 2.432, 2.424, 2.425, 2.401.2, 2.414.2, 2.398, 2.397.
+
 ## Limitations and requirements
 
 * **EnvInject plugin**: For Harness to capture Jenkins environment variables, your Jenkins configuration requires the [EnvInject plugin](https://plugins.jenkins.io/envinject/). The plugin does not provide full compatibility with the pipeline plugin. Go to [known limitations](https://plugins.jenkins.io/envinject/#plugin-content-other-limitations) from Jenkins for more information.
