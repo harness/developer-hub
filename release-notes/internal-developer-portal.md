@@ -15,6 +15,35 @@ import TabItem from '@theme/TabItem';
 
 Review the notes below for details about recent changes to Harness Internal Developer Portal.
 
+## Latest: November 23, 2023 - Version 0.15.0
+
+Since last release, we have released some interesting docs and video tutorials to help you get started with Harness IDP:
+
+- **Video Tutorial:** [How to use self-service-onboarding](https://youtu.be/0GoK3SD1rxs?si=1Z28hvZ9nihYtdmL), [How to register your software components in Software Catalog](https://youtu.be/YgtIMDGMzJE?si=wiFzozj8Zo9dEEOF)
+- **Tutorial:** [How to add API docs in Harness IDP](https://developer.harness.io/docs/internal-developer-portal/get-started/add-api-docs)
+- **Docs:** [Software System Model](https://developer.harness.io/docs/internal-developer-portal/get-started/system-model), [API Spec Reference](https://developer.harness.io/docs/internal-developer-portal/features/api-reference)
+
+### New features and enhancements
+
+- We have added a new overview page for [Scorecards](https://developer.harness.io/docs/internal-developer-portal/features/scorecard#scorecard-overview-page) and [Individual checks](https://developer.harness.io/docs/internal-developer-portal/features/checks-datasources#checks-overview) in the scorecards.[IDP-1480] [IDP-1481]
+
+![](./static/check-component-overview.png) 
+![](./static/component-overview.png) 
+
+- The new overview pages for Scorecards and Checks have API support added to it.[IDP-1482]
+- Added support for two new Plugins [OpsGenie](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/opsgenie) and [Datadog](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/datadog) Plugin.[IDP-1662] [IDP-1351]
+- We have released a new [Harness Service Reliability Backstage Plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/harness-srm), that tracks the SLOs and Error Budgets for monitored services in Harness SRM module
+
+### Fixed Issues
+
+- Improved error scenario Handling in HarnessProcessor, with removal of irrelevant raw error metadata. [IDP-1663]
+- Resolved the error related to creation of a new check having the same name as a deleted check. [IDP-1450]
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
 ## Latest: November 7, 2023 - Version 0.14.0
 
 [Backstagecon](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/backstagecon/) & Kubecon is round the corner, consider catching up with Harness' team in the event at **Booth B15**. Also here’s a [sneak peak](https://www.harness.io/blog/road-to-backstagecon-2023-a-sneak-peek-into-an-exciting-lineup-a-recap-of-2022) of what’s happening in this year's edition of the event. Here’s some of the content updates.
@@ -32,12 +61,6 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 - Fixed text overflows on the “Create Scorecards” page. [IDP-1417]
 - Fixed page navigation for IDP get-started page by adding the exit icon. [IDP-1524]
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 ## October 26, 2023 - Version 0.13.0
 
