@@ -34,7 +34,24 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ### Harness version 816xx, Harness Delegate version 23.11.816xx
 
+#### Fixed issues
 
+- When shutdown is initiated, delegates will continue sending heartbeats until all tasks are completed, ensuring all running tasks return a response before shutting down. (PL-42171)
+
+- There was an issue with Harness not properly handling delegate reconnects, which affected delegate metrics. During a disconnect, Harness would mark `delegate_connected` as 0, but after a reconnect, it failed to increment the `delegate_connected` to 1. (PL-42431, ZD-52829, ZD-53399, ZD-53878)
+
+This issue has been resolved, and now Harness increments the `delegate_connected` to 1 during reconnection. As a result, the `io_harness_custom_metric_delegate_connected` and `io_harness_custom_metric_task_failed` metrics are now accurately reported.
+
+- Fixed the following issues:
+
+   - The delegate Stackdriver logger didn't work if the delegate token was base64-encoded format.
+   - When the `DELEGATE_TYPE` was `KUBERNETES` and the delegate wasn't deployed in Kubernetes, the delegate failed to start. (PL-42452)
+
+- Azure Key Vault's heartbeat check now creates a validation secret with a 30-minute expiration, addressing the issue of no expiration being set previously, which resulted in multiple secrets. (PL-42509, ZD-53700)
+
+- User groups could be created via SCIM using identifiers with invalid characters. (PL-42535, ZD-53830)
+
+   This issue is fixed. You can no longer create user groups with invalid characters.
 
 ### Harness version 81401, Harness Delegate version 23.11.81405
 
