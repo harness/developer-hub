@@ -60,20 +60,20 @@ CI build infrastructure pods can interact with servers using self-signed certifi
    For `DESTINATION_CA_PATH`, provide a comma-separated list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`.
 
    ```yaml
-           env:
+          env:
            - name: DESTINATION_CA_PATH
-                     value: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
-                   volumeMounts:
-                   - name: certvol
-                     mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
-                     subPath:  ca.bundle
-                 volumes:
-                 - name: certvol
-                   secret:
-                     secretName: addcerts
-                     items:
-                     - key: ca.bundle
-                       path: ca.bundle
+             value: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
+             volumeMounts:
+              - name: certvol
+                mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
+                subPath:  ca.bundle
+          volumes:
+           - name: certvol
+             secret:
+               secretName: addcerts
+               items:
+                - key: ca.bundle
+                  path: ca.bundle
    ```
 
    Both CI build pods and the SCM client on the delegate support this method.
@@ -96,22 +96,22 @@ CI build infrastructure pods can interact with servers using self-signed certifi
    The `CI_MOUNT_VOLUMES` list must include *all* certificates that your build containers need to interact with external services.
 
    ```yaml
-           env:  
+          env:  
            - name: ADDITIONAL_CERTS_PATH  
              value: /tmp/ca.bundle  
            - name: CI_MOUNT_VOLUMES  
              value: /tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt  
-           volumeMounts:  
-           - name: certvol  
-             mountPath: /tmp/ca.bundle  
-             subPath:  ca.bundle 
+             volumeMounts:  
+              - name: certvol  
+                mountPath: /tmp/ca.bundle  
+                subPath:  ca.bundle 
           volumes:  
            - name: certvol  
              secret:  
                secretName: addcerts  
                items:  
-               - key: ca.bundle  
-                 path: ca.bundle
+                - key: ca.bundle  
+                  path: ca.bundle
    ```
 
    ```mdx-code-block
