@@ -44,7 +44,7 @@ Use the **SSCA Orchestration** step to generate an SBOM in either the **Build** 
 
 :::info 
 
-SSCA Orchestration and Enforcement steps in deploy stage can only used in the container step group
+SSCA Orchestration and Enforcement steps in deploy stage can only be used in the container step group
 
 :::
 
