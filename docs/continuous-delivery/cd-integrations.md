@@ -278,10 +278,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Exposes <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts">Helm Chart expressions</a> for reference in other steps and settings. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>PIE_EXPRESSION_PLAYGROUND</td>
-        <td>Helps the user experiment with expressions to see what could be the expected/resolved value without running the pipeline. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDS_NG_SERVICE_PRINCIPAL_FOR_CUSTOM_WEBHOOK</td>
         <td>Makes authenticated custom Webhook calls use the service principal instead of the principal inherited from the API key. <b>This feature is in Beta.</b></td>
     </tr>
