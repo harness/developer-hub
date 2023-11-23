@@ -227,7 +227,10 @@ The connection test may also fail if the token doesn't have sufficient privilege
 
 ### Status doesn't update in BitBucket Cloud PRs
 
-BitBucket Cloud limits the key size for sending status updates to PRs, and this can cause incorrect status updates in PRs due to some statuses failing to send. If you encounter this issue with BitBucket Cloud, contact [Harness Support](mailto:support@harness.io) to troubleshoot this issue by enabling a feature flag, `CI_BITBUCKET_STATUS_KEY_HASH`.
+There are two potential causes for this:
+
+* Harness uses the pipeline's codebase connector to send status updates to BitBucket. Check the pipeline's [codebase configuration](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) to confirm that it is using your BitBucket code repo connector.
+* BitBucket Cloud limits the key size for sending status updates to PRs, and this can cause incorrect status updates in PRs due to some statuses failing to send. If you encounter this issue with BitBucket Cloud, contact [Harness Support](mailto:support@harness.io) to troubleshoot this issue by enabling a feature flag, `CI_BITBUCKET_STATUS_KEY_HASH`.
 
 ### Some API functions fail for On-Prem repos
 

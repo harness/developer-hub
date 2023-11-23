@@ -233,3 +233,7 @@ To resolve this issue:
 1. On the machine where the runner is running, stop the runner.
 2. Set the `NETWORK_DRIVER` environment variable to your preferred network driver plugin, such as `export NETWORK_DRIVER="nat"` or `export NETWORK_DRIVER="bridge"`.
 3. Restart the runner.
+
+### Pipeline status updates aren't sent to PRs
+
+Harness uses the pipeline's codebase connector to send status updates to PRs in your Git provider. Make sure that you have [configured a default codebase](#edit-the-default-codebase-configuration) and that it is using the correct code repo connector.

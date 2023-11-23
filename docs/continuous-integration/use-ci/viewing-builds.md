@@ -64,9 +64,11 @@ Builds triggered by webhooks can include a link to the PR or commit that started
 
 ![A build on the Builds list that was triggered by a commit. There is a link to the triggering commit.](./static/ci-builds-list-sc-link.png)
 
-Similarly, if a pull request triggers a build, you can follow the **Details** link from the PR's Git status to the build details page in Harness. This functionality is not supported for all SCM providers.
+Similarly, for manual and automated pull request builds, you can follow the **Details** link from the PR's Git status to the build details page in Harness. This functionality is not supported for all SCM providers.
 
 ![A PR's Git status with a link to a Harness CI build.](./static/ci-builds-gh-pr-link.png)
+
+Harness uses the pipeline's codebase connector to send status updates to PRs in your Git provider. If status updates aren't being sent, check the pipeline's [codebase configuration](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) to confirm that it has a default codebase configuration and that it is using the correct code repo connector.
 
 ## Dashboards
 
@@ -74,7 +76,7 @@ For information about Harness dashboards, go to the Platform documentation on [D
 
 ## Error Tracking (Run Tests step)
 
-If you [enabled error tracking in the Run Tests step](./run-tests/set-up-test-intelligence.md#do-you-want-to-enable-error-tracking-java), a list of code error events are reported on the **Error Tracking** tab. For each event, the following are reported:
+If you [enabled error tracking in the Run Tests step](./run-tests/test-intelligence/ti-for-java-kotlin-scala.md#do-you-want-to-enable-error-tracking), a list of code error events are reported on the **Error Tracking** tab. For each event, the following are reported:
 
 * Event **Type** and **Description**.
 * **Location** in the code.

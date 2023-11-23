@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness supports Single Sign-On (SSO) with OAuth 2.0 identity providers, such as GitHub, Bitbucket, GitLab, LinkedIn, Google, and Azure. This integration allows you to use an OAuth 2.0 provider to authenticate your Harness Users.
+Harness supports Single Sign-On (SSO) with OAuth 2.0 identity providers, such as GitHub, Bitbucket, GitLab, LinkedIn, Google, and Microsoft Entra ID. This integration allows you to use an OAuth 2.0 provider to authenticate your Harness Users.
 
 ![](./static/single-sign-on-sso-with-oauth-119.png)
 
@@ -61,6 +61,10 @@ To prevent lockouts or in the event of OAuth downtime, a User in the Harness Adm
 For the Harness production cluster `prod-3`, the local login URL is `https://app3.harness.io/auth/#/local-login`.
 
 ![](./static/single-sign-on-sso-with-oauth-121.png)
+
+import Local from '/docs/platform/shared/local-login-note.md'
+
+<Local />
 
 1. Log in using **Harness Local Login**.
 2. Change the settings to enable users to log in.

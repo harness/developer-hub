@@ -113,6 +113,12 @@ If you rerun this pipeline, the pipeline uses the same inputs you provided for t
 
 ### Default values
 
+:::note
+
+If a runtime input is an expression that resolves to `null`, it will not be replaced by the default value. In this case, please consider using a [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
+
+:::
+
 By default, runtime input accepts virtually any sting input. You can specify a default value to avoid empty values.
 
 ```mdx-code-block

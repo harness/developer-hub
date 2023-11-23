@@ -20,12 +20,6 @@ export const knowledgeBaseList: CardItem[] = [
     link: "/kb/continuous-delivery/articles/repeat-strategy",
   },
   {
-    title: "Customized GitHub Status Check",
-    module: MODULES.ci,
-    date: "Sept 08, 2023",
-    link: "/kb/continuous-integration/articles/custom_github_status_check",
-  },
-  {
     title: "Send Dashboard Reports to Slack Channel",
     module: MODULES.ccm,
     date: "Sept 08, 2023",

@@ -146,7 +146,11 @@ To reference an account and org-level variable, you must use the following expre
 * Account-level reference: `<+variable.account.VARIABLE_ID>`
 * Org-level reference: `<+variable.org.VARIABLE_ID>`
 * Project-level reference: `<+variable.VARIABLE_ID>`
-
+* Pipeline-level reference: `<+pipeline.variables.VARIABLE_ID>`
+* Stage-level reference: `<+stage.variables.VARIABLE_ID>`
+* StepGroup-level reference: `<+stepGroup.variables.VARIABLE_ID>`
+* Service-level reference: `<+serviceVariables.VARIABLE_ID>`
+* Environment-level reference: `<+env.variables.VARIABLE_ID>`
 
 :::note
 
@@ -164,6 +168,11 @@ Let's add the variable in a pipeline.
 echo "account var: "<+variable.account.acct_var>  
 echo "org var: "<+variable.org.organiz_var>  
 echo "project var: " <+variable.proj_var>
+echo "pipeline var: " <+pipeline.variables.pipeline_var>
+echo "stage var: " <+stage.variables.stage_var>
+echo "step-group var: " <+stepGroup.variables.stepGroup_var>
+echo "service var: " <+serviceVariables.service_var>
+echo "environment var: " <+env.variables.env_var>
 ```
 
 When you run the Pipeline, the variable references are resolved and output:

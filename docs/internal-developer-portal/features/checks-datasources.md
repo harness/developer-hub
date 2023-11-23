@@ -8,10 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 
 Harness IDP allows you to integrate various data sources and implement custom checks to ensure your software components adhere to best practices and compliance. In this docs, we'll walk through how to add custom checks and data sources for [scorecards](https://developer.harness.io/docs/internal-developer-portal/features/scorecard) in Harness IDP.
 
@@ -32,10 +28,14 @@ There's a tab called `Data Sources` available in `Scorecards` page to check for 
 
 :::
 
-```mdx-code-block
-<Tabs>
-<TabItem value="GitHub">
-```
+:::caution
+
+The git (GitHub, GitLab, Bitbucket) datasources doesn't support monorepos.
+
+:::
+
+## GitHub
+
 The following **Data Points** are available for GitHub Data Source. 
 
 1. **Branch Protection**
@@ -141,10 +141,8 @@ spec:
 - *Calculation Method:* Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and calculates the total number of open pull requests raised by account.
 - *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository. Make sure to mention the username in the conditional input field.
 
-```mdx-code-block
-</TabItem>
-<TabItem value="GitLab">
-```
+## GitLab
+
 The following **Data Points** are available for GitLab Data Source. 
 
 1. **Branch Protection**
@@ -210,11 +208,7 @@ spec:
     ...
 ```
  
-
-```mdx-code-block
-</TabItem>
-<TabItem value="Bitbucket">
-```
+ ## Bitbucket
 
 The following **Data Points** are available for Bitbucket Data Source. 
 
@@ -260,11 +254,9 @@ spec:
     ...
 ```
 
-```mdx-code-block
-</TabItem>
-<TabItem value="Harness">
-```
-**Pre-Requisites**
+## Harness 
+
+### Pre-Requisites
 
 - For the functioning of Harness Data Source related checks, the Harness CI/CD plugin should be configured with new annotations in catalog info YAML, `harness.io/pipelines` and `harness.io/services` as mentioned in the setup steps instruction of [Harness CI/CD plugin](https://github.com/harness/backstage-plugins/tree/main/plugins/harness-ci-cd#harness-nextgen-cicd-plugin)
 
@@ -320,10 +312,8 @@ If the rule depends on the execution of the pipeline then the latest execution o
 
 <docimage path={require('../../internal-developer-portal/features/static/es2-harness.png')}/>
 
-```mdx-code-block
-</TabItem>
-<TabItem value="Catalog">
-```
+## Catalog 
+
 The following **Data Points** are avilable for Catalog Data Source. 
 
 1. **Owner is defined**:
@@ -390,10 +380,7 @@ spec:
     ...
 ```
 
-```mdx-code-block
-</TabItem>
-<TabItem value="Kubernetes">
-```
+## Kubernetes
 
 ### Prerequisites:
 
@@ -429,10 +416,7 @@ The following **Data Points** are available for Kubernetes Data Source.
 
 <docimage path={require('../../internal-developer-portal/features/static/days-k8s.png')}/>
 
-```mdx-code-block
-</TabItem>
-<TabItem value="Jira">
-```
+## Jira
 
 The following **Data Points** are avilable for Jira Data Source.
 
@@ -512,10 +496,7 @@ spec:
     ...
 ```
 
-```mdx-code-block
-</TabItem>
-<TabItem value="PagerDuty">
-```
+## PagerDuty
 
 ### Prerequisites:
 
@@ -550,10 +531,27 @@ The following **Data Points** are avilable for PagerDuty Data Source.
 
 <docimage path={require('../../internal-developer-portal/features/static/es2-pd.png')}/>
 
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
+
 5. Now add a `tag` under which category your check belongs to , Ex. "Developer Productivity", "Software Maturity" and click `enter` to add each tags. 
 
 6. Now add the default result in case of missing data and **Save Changes**. Your checks will be added. 
+
+## Checks Overview
+
+- Once the Checks are created, you can view the list of all the checks under the **Checks** tab. 
+
+<docimage path={require('../../internal-developer-portal/features/static/check-overview.png')}/>
+
+- To have an overview of a single check and information on all the componenets it is applied, select the tab under **Check Stats** column for an individual check, it will redirect you to the overview page. 
+
+- The overview page lists all the components on which the check is appled and the graph helps you to track time-sensitive information on the components on which the check has passed, this can be used to track functions like migration and upgrades accross your software ecosystem. 
+
+<docimage path={require('../../internal-developer-portal/features/static/check-component-overview.png')}/>
+
+:::info
+
+Follow the breadcrumbs on the top of the page to navigate across both the pages i.e., list of all checks and indvidual check overview page
+
+<docimage path={require('../../internal-developer-portal/features/static/breadcrumbs.png')}/>
+
+:::

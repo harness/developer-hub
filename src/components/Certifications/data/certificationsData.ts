@@ -83,7 +83,7 @@ export const certifications: CardItem[] = [
       // numberOfCerts: 1,
     },
     {
-      title: "Feature Flags - Administrator (BETA Coming Soon)",
+      title: "Feature Flags - Administrator (BETA)",
       module: MODULES.ff,
       type: certType.administrator,
       description:
@@ -100,6 +100,16 @@ export const certifications: CardItem[] = [
         "STO Developer focuses on the fundamental skills to shift security left in your pipelines.",
       version: "Harness STO Free/Team Plans",
       link: "/certifications/sto?lvl=developer",
+      // numberOfCerts: 1,
+    },
+    {
+      title: "Security Testing Orchestration  - Administrator (BETA Coming Soon)",
+      module: MODULES.sto,
+      type: certType.administrator,
+      description:
+        "STO Administrator focuses on configuring and managing security testing processes within the Harness platform",
+      version: "Harness STO Free/Team Plans",
+      link: "/certifications/sto?lvl=administrator",
       // numberOfCerts: 1,
     },
   ];

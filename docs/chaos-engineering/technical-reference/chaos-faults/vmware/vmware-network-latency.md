@@ -10,14 +10,14 @@ VMware network latency injects network packet latency from the VMware VM(s) into
 ![VMware Network Latency](./static/images/vmware-network-latency.png)
 
 ## Use cases
-
-- VMware network latency simulates issues within the VM network (or microservice) communication across services in different hosts.
-- It helps determine the impact of degradation while accessing a microservice. 
-- The VM may stall or get corrupted while waiting endlessly for a packet. The fault limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses.
-- It simulates a consistently slow network connection between microservices, for example, cross-region connectivity between active-active peers of a given service or across services or poor cni-performance in the inter-pod-communication network. 
-- It simulates jittery connection with transient latency spikes between microservices.
-- It simulates slow response on specific third party (or dependent) components (or services).
-- It simulates degraded data-plane of service-mesh infrastructure.
+VMware network latency:
+- Simulates issues within the VM network (or microservice) communication across services in different hosts.
+- Determines the impact of degradation while accessing a microservice. 
+- Limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses, if the VM stalls or gets corrupted while waiting endlessly for a packet. 
+- Simulates a consistently slow network connection between microservices, for example, cross-region connectivity between active-active peers of a given service or across services or poor cni-performance in the inter-pod-communication network. 
+- Simulates jittery connection with transient latency spikes between microservices.
+- Simulates slow response on specific third party (or dependent) components (or services).
+- Simulates degraded data-plane of service-mesh infrastructure.
 
 :::note
 - Kubernetes > 1.16 is required to execute this fault.
@@ -101,6 +101,16 @@ stringData:
         <td> If it has not been provided, network chaos is induced on all IPs (or destinations). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-network-latency#run-with-destination-ips-and-destination-hosts"> run with destination hosts. </a></td>
       </tr>
       <tr>
+        <td> SOURCE_PORTS </td>
+        <td> Comma-separated ports of the target application whose accessibility is impacted. If not provided, network chaos is induced on all ports. For example, <code>5000,8080</code>. </td>
+        <td> Alternatively, the source ports to be exempted from the chaos can be provided by prepending a <code>!</code> to the list of ports. For example, <code>!5000,8080</code>. </td>
+      </tr>
+      <tr>
+        <td> DESTINATION_PORTS </td>
+        <td> Ports of the destination services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted. If not provided, network chaos is induced on all ports. For example, <code>5000,8080</code>. </td>
+        <td> Alternatively, the destination ports to be exempted from the chaos can be provided by prepending a <code>!</code> to the list of ports. For example, <code>!5000,8080</code>. </td>
+      </tr>
+      <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
         <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
@@ -143,9 +153,9 @@ stringData:
 
 ### Network packet latency
 
-It specifies the network packet latency that is injected into the VM. Tune it by using the `NETWORK_LATENCY` environment variable.
+Network packet latency injected into the VM. Tune it by using the `NETWORK_LATENCY` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/vmware-network-latency/network-latency.yaml yaml)
 ```yaml
@@ -174,9 +184,9 @@ spec:
 
 ### Run with jitter
 
-It specifies jitter (in ms), a parameter that introduces network delay variation. Tune it by using the `JITTER` environment variable. Its default value is 0.
+Parameter that introduces network delay variation (in milliseconds). Tune it by using the `JITTER` environment variable. Its default value is 0.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/vmware-network-latency/network-latency-with-jitter.yaml yaml)
 ```yaml
@@ -207,12 +217,12 @@ spec:
 
 ### Run with destination IPs and destination hosts
 
-It specifies the IPs/hosts that interrupt traffic by default. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
+IPs/hosts that interrupt traffic by default. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
 
-`DESTINATION_IPS`: It contains the IP addresses of the services or the CIDR blocks (range of IPs) that impacts its accessibility.
-`DESTINATION_HOSTS`: It contains the DNS names of the services that impact its accessibility.
+`DESTINATION_IPS`: IP addresses of the services or the CIDR blocks (range of IPs) whose accessibility is impacted.
+`DESTINATION_HOSTS`: DNS names of the services whose accessibility is impacted.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/vmware-network-latency/destination-host-and-ip.yaml yaml)
 ```yaml
@@ -243,11 +253,82 @@ spec:
           value: '123,123'
 ```
 
+### Source and destination ports
+
+By default, the network experiments disrupt traffic for all the source and destination ports. Tune the interruption of specific port(s) using the `SOURCE_PORTS` and `DESTINATION_PORTS` environment variables, respectively.
+
+- `SOURCE_PORTS`: Ports of the target application whose accessibility is impacted.
+- `DESTINATION_PORTS`: Ports of the destination services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/vmware-network-latency/source-and-destination-ports.yaml yaml)
+```yaml
+# it inject the chaos for the egress traffic for specific ports
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vmware-network-latency
+    spec:
+      components:
+        env:
+        # supports comma separated source ports
+        - name: SOURCE_PORTS
+          value: '80'
+        # supports comma separated destination ports
+        - name: DESTINATION_PORTS
+          value: '8080,9000'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'
+```
+
+### Ignore source and destination ports
+
+By default, the network experiments disrupt traffic for all the source and destination ports. Ignore specific port(s) using the `SOURCE_PORTS` and `DESTINATION_PORTS` environment variables, respectively.
+
+- `SOURCE_PORTS`: Source ports that are not subject to chaos as comma-separated values preceded by `!`.
+
+- `DESTINATION_PORTS`: Destination ports that are not subject to chaos as comma-separated values preceded by `!`.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/vmware-network-latency/ignore-source-and-destination-ports.yaml yaml)
+```yaml
+# ignore the source and destination ports
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vmware-network-latency
+    spec:
+      components:
+        env:
+        # it will ignore 80 and 8080 source ports
+        - name: SOURCE_PORTS
+          value: '!80,8080'
+        # it will ignore 8080 and 9000 destination ports
+        - name: DESTINATION_PORTS
+          value: '!8080,9000'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'
+```
+
 ###  Network interface
 
-It specifies the name of the ethernet interface that shapes the traffic. Tune it by using the `NETWORK_INTERFACE` environment variable. Its default value is `eth0`.
+Name of the ethernet interface that shapes the traffic. Tune it by using the `NETWORK_INTERFACE` environment variable. Its default value is `eth0`.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/vmware-network-latency/network-interface.yaml yaml)
 ```yaml

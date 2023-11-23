@@ -23,7 +23,7 @@ You can set conditions on the Triggers, such as matching one or more chart versi
 
 This Trigger is a simple way to automate deployments for new Helm charts.
 
-import Variables from '/docs/platform/triggers/shared/variables-not-supported.md'
+import Variables from '/docs/platform/shared/variables-not-supported.md'
 
 <Variables />
 

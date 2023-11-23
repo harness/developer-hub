@@ -26,8 +26,7 @@ The following are the key features of Cost Explorer:
 
 
 ### Visual Summary
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/watch?v=sXftHXhSlo0" />
 
 ### Reading the Cost Explorer Data

@@ -238,140 +238,142 @@ To enable proxy support for the Harness GitOps Agent in environments where traff
 1. **Agent:** Make sure that the agent is running in HTTP mode.  
    To verify, check if the property/config `GITOPS_SERVICE_PROTOCOL` value is set to `HTTP1` in the `configmap({agentname}-agent)` present in the YAML after you create the agent.  
    `GITOPS_SERVICE_PROTOCOL: HTTP1`
-2. **Agent:** Add a property/config `HTTPS_PROXY`, and add proxy details, such as URL, port, and auth details as its value in the configmap mentioned in Step 1. For example, `HTTPS_PROXY: "https://squid.proxy-test:3128"`.
+2. **Agent:** Add a property/config `HTTPS_PROXY`, and add proxy details, such as URL, port, and auth details as its value in the configmap mentioned in Step 1. For example, `HTTPS_PROXY: "http://squid.proxy-test:3128"`.
 3. **Agent:** Add an environment variable `NO_PROXY` in the Harness GitOps Agent deployment with the following value.  
    ```
    localhost,argocd-repo-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST)
    ```
 4. **ArgoCD Repo Server:** Add the following environment variables and relevant proxy details, such as URL, port, and auth details in the `argocd-repo-server` deployment as well the second initcontainer under the `argocd-repo-server` deployment , namely the `sops-helm-secrets-tool` since it downloads resources from the internet using `wget`. 
+
 An example of how the repo-server yaml would look like:
-  ```yaml
-  ... rest of the agent YAML ...
-  apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    labels:
-      app.kubernetes.io/component: repo-server
-      app.kubernetes.io/name: argocd-repo-server
-      app.kubernetes.io/part-of: argocd
 
-  ... other objects ...
+```yaml
+... rest of the agent YAML ...
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ labels:
+   app.kubernetes.io/component: repo-server
+   app.kubernetes.io/name: argocd-repo-server
+   app.kubernetes.io/part-of: argocd
 
-  spec: 
-    ... other fields ...
-    containers:
-      - command:
+... other objects ...
 
-          - sh
-          - -c
-          - entrypoint.sh argocd-repo-server --redis argocd-redis:6379
-      env: 
-        ... other variables ...
-        - name: HTTPS_PROXY
-          value: "http://squid.proxy-test:3128"
-        - name: HTTP_PROXY
-          value: "http://squid.proxy-test:3128"
-        - name: NO_PROXY
-          value: localhost,argocd-repo-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST),({agentname}-agent)
-    initContainers:
-      ... other init containers spec ...
-      - name: sops-helm-secrets-tool
-        image: alpine:latest
-        imagePullPolicy: IfNotPresent
-        command: [ sh, -ec ]
-        env:
-          - name: HELM_SECRETS_VERSION
-            value: 4.4.2
-          - name: KUBECTL_VERSION
-            value: 1.26.7
-          - name: SOPS_VERSION
-            value: 3.7.3
-          - name: https_proxy
-            value: "http://squid.proxy-test:3128"
-          - name: http_proxy
-            value: "http://squid.proxy-test:3128"
+spec: 
+ ... other fields ...
+ containers:
+   - command:
 
-      .. rest of agent YAML ...
-  ``````
+       - sh
+       - -c
+       - entrypoint.sh argocd-repo-server --redis argocd-redis:6379
+   env: 
+     ... other variables ...
+     - name: HTTPS_PROXY
+       value: "http://squid.proxy-test:3128"
+     - name: HTTP_PROXY
+       value: "http://squid.proxy-test:3128"
+     - name: NO_PROXY
+       value: localhost,argocd-repo-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST),({agentname}-agent)
+ initContainers:
+   ... other init containers spec ...
+   - name: sops-helm-secrets-tool
+     image: alpine:latest
+     imagePullPolicy: IfNotPresent
+     command: [ sh, -ec ]
+     env:
+       - name: HELM_SECRETS_VERSION
+         value: 4.4.2
+       - name: KUBECTL_VERSION
+         value: 1.26.7
+       - name: SOPS_VERSION
+         value: 3.7.3
+       - name: https_proxy
+         value: "http://squid.proxy-test:3128"
+       - name: http_proxy
+         value: "http://squid.proxy-test:3128"
+
+   .. rest of agent YAML ...
+```
   
 ### Proxy setup for testing
 
-   Use the following YAML example to install proxy in any other environment.
+Use the following YAML example to install proxy in any other environment.
    
-   ```
-   ---
-   apiVersion: v1
-   kind: ConfigMap
-   metadata:
-     name: script-cm
-     namespace: proxy-test
-   data:
-     entrypoint.sh: |-
-       #!/bin/bash
-       echo "Start"
-       apt-get -q update && apt-get -qy --no-install-recommends install python squid curl && apt-get clean;
-       sed -i "s/^#acl localnet/acl localnet/" /etc/squid/squid.conf;
-       sed -i "s/^#http_access allow localnet/http_access allow localnet/" /etc/squid/squid.conf;
-       mkdir -p /var/cache/squid;
-       cp /etc/squid/squid.conf /etc/squid/squid.conf.in;
-       squid
-       sleep 15
-       cd /var/log/squid
-       echo "==========================================ls"
-       ls
-       tail -f access.log
-       echo "==========================================End"
-   ---
-   apiVersion: apps/v1
-   kind: Deployment
-   metadata:
-     name: squid
-     namespace: proxy-test
-     labels:
-       app.kubernetes.io/name: squid
-   spec:
-     replicas: 1
-     selector:
-       matchLabels:
-         app.kubernetes.io/name: squid
-     template:
-       metadata:
-         labels:
-           app.kubernetes.io/name: squid
-       spec:
-         containers:
-           - name: squid
-             image: debian:bullseye
-             imagePullPolicy: Always
-             command:
-               - /bin/entrypoint.sh
-             volumeMounts:
-             - name: configmap-volume
-               mountPath: /bin/entrypoint.sh
-               readOnly: true
-               subPath: entrypoint.sh  
-         volumes:
+```
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: script-cm
+  namespace: proxy-test
+data:
+  entrypoint.sh: |-
+    #!/bin/bash
+    echo "Start"
+    apt-get -q update && apt-get -qy --no-install-recommends install python squid curl && apt-get clean;
+    sed -i "s/^#acl localnet/acl localnet/" /etc/squid/squid.conf;
+    sed -i "s/^#http_access allow localnet/http_access allow localnet/" /etc/squid/squid.conf;
+    mkdir -p /var/cache/squid;
+    cp /etc/squid/squid.conf /etc/squid/squid.conf.in;
+    squid
+    sleep 15
+    cd /var/log/squid
+    echo "==========================================ls"
+    ls
+    tail -f access.log
+    echo "==========================================End"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: squid
+  namespace: proxy-test
+  labels:
+    app.kubernetes.io/name: squid
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: squid
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: squid
+    spec:
+      containers:
+        - name: squid
+          image: debian:bullseye
+          imagePullPolicy: Always
+          command:
+            - /bin/entrypoint.sh
+          volumeMounts:
           - name: configmap-volume
-            configMap:
-             defaultMode: 0700
-             name: script-cm 
-   ---
-   apiVersion: v1
-   kind: Service
-   metadata:
-     labels:
-       app.kubernetes.io/name: squid
-     name: squid
-     namespace: proxy-test
-   spec:
-     ports:
-       - name: tcp-proxy
-         port: 3128
-         targetPort: 3128
-     selector:
-       app.kubernetes.io/name: squid
-   ---
-   ```
+            mountPath: /bin/entrypoint.sh
+            readOnly: true
+            subPath: entrypoint.sh  
+      volumes:
+       - name: configmap-volume
+         configMap:
+          defaultMode: 0700
+          name: script-cm 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: squid
+  name: squid
+  namespace: proxy-test
+spec:
+  ports:
+    - name: tcp-proxy
+      port: 3128
+      targetPort: 3128
+  selector:
+    app.kubernetes.io/name: squid
+---
+```
    
 
 ## GitOps Agent FAQs
@@ -382,9 +384,11 @@ Here are some answers to commonly asked GitOps Agent questions.
 
 GitOps Agent v0.60.0 supports redis:7.0.8-alpine and Repo server [argocd:v2.8.2](http://quay.io/argoproj/argocd:v2.8.2).
 
+Harness GitOps Agent from v0.60.0 onwards supports Argo CD version [v2.8.2](http://quay.io/argoproj/argocd:v2.8.2), while GitOps Agent versions v0.57.0 till v0.59.2 support Argo CD version [v2.7.8](http://quay.io/argoproj/argocd:v2.7.8).
+
 ### How long is a GitOps Agent version supported?
 
-Harness supports GitOps Agent versions that support Argo CD versions n to n-2 minor version (e.g 2.5.4, 2.4.4 2.3.4).
+Harness supports GitOps Agent versions that support Argo CD versions n to n-2 minor version (e.g 2.5.4, 2.4.4, 2.3.4).
 
 ### How can I update the GitOps Agent and related components?
 
@@ -397,6 +401,96 @@ The Argo CD components upgrade must be done manually.
 ### How can I uninstall a GitOps Agent?
 
 If you need to uninstall a GitOps Agent, you can use `kubectl delete` with the same manifest you used to install it. For example, `kubectl delete -f gitops-agent.yml -n argocd`.
+
+
+## High Availability GitOps Agent
+
+The Harness GitOps agent is a worker process based on ArgoCD that is responsible for executing Harness GitOps tasks. It has the following components:
+
+- `agent`
+- `redis`
+- `argocd-application-controller`
+- `argocd-repo-server`
+- `argocd-applicationset-controller`
+
+It has two install types:
+
+- Normal
+- High Availability (HA)
+
+### Normal Agent
+
+The Normal install type installs exactly 1 replica of all components.
+
+### High Availability (HA)
+
+Both ArgoCD and Harness have an HA install type. The Harness HA type installs different variations of the components with more than 1 replicas.
+
+- `agent` has 2 replicas.
+- `redis` has 3 replicas/sentinels (`haproxy`).
+- `argocd-application-controller` has 1 replica (ArgoCD uses 2).
+- `argocd-repo-server` server has 2 replicas.
+- `argocd-applicationset-controller` has 1 replica.
+
+
+### ArgoCD use case
+
+#### Handling UI load
+
+Since ArgoCD has only 1 instance per UI, adding multiple replicas helps to manage load from the UI. 
+
+Adding multiple replicas helps scale the operations required by the UI, so more users can log in concurrently. For more information, go to [argocd-server](https://github.com/argoproj/argo-cd/blob/master/server/server.go#L160).
+
+#### Handling the application reconciliation and syncs
+
+ArgoCD performs application reconciliation and syncs using the `argocd-application-controller` and `argocd-repo-server`. 
+
+The `argocd-application-controller` has 2 queues that are used for processing of application reconciliation and application syncs. By default, `argocd-application-controller` has 20 processors for the application reconciliation queue and 10 processors for the application syncs. 
+
+For reference, the ArgoCD community recommends using 50 and 20 processors respectively for 1000 applications. 
+
+For more information, go to: 
+- [https://github.com/argoproj/argo-cd/blob/master/cmd/argocd-application-controller/commands/argocd_application_controller.go#L191](https://github.com/argoproj/argo-cd/blob/master/cmd/argocd-application-controller/commands/argocd_application_controller.go#L191) 
+- [https://github.com/argoproj/argo-cd/blob/master/cmd/argocd-application-controller/commands/argocd_application_controller.go#L192](https://github.com/argoproj/argo-cd/blob/master/cmd/argocd-application-controller/commands/argocd_application_controller.go#L192).
+- [High Availability from ArgoCD](https://argo-cd.readthedocs.io/en/latest/operator-manual/high_availability/#argocd-application-controller).
+
+The `argocd-application-controller` also watches (at a fixed frequency of 10 seconds, by default) the clusters using the Kubernetes client on the current state and maintains a cache for faster retrieval.
+
+If the controller manages a lot of clusters and is facing memory issues, the clusters are sharded (`ARGOCD_CONTROLLER_SHARDING_ALGORITHM`) across multiple replicas of `argocd-application-controller`. 
+
+For more information, go to [High Availability from ArgoCD](https://argo-cd.readthedocs.io/en/latest/operator-manual/high_availability/#argocd-application-controller).
+
+#### Handling Monorepos
+
+The `argocd-repo-server` maintains one repository clone locally and uses it for application manifest generation. If the manifest generation must change a file in the local repository clone, then only one concurrent manifest generation per server instance is allowed. This limitation might significantly slowdown ArgoCD if you have a monorepo with multiple applications (50+). 
+
+For more information, go to [High Availability from ArgoCD](https://argo-cd.readthedocs.io/en/latest/operator-manual/high_availability/#argocd-application-controller).
+
+### Harness use cases
+
+With Harness GitOps, where multiple agents can run in a single UI, Harness is not bound to have just 1 instance per UI. Harness can have multiple agents deployed across different scopes/clusters that can handle more applications than ArgoCD.
+
+**When to use Harness GitOps HA Agent?:**
+
+- If you have high UI activity (50+ active sessions) for the applications on the agent.
+- When you have a monorepo.
+- If you want to add more than 100 applications per agent.
+
+
+### Considerations
+
+#### Harness Agent reconciliation
+
+The GitOps agent has 2 types of reconciliation on top of the ArgoCD’s reconciliation. This ensures that the data the GitOps service has is in sync with what is present in the destination cluster.
+
+1. On CRUD events, reconciliation runs every 10 seconds.
+2. The bulk reconciliation (to check if anything was removed/added in the cluster directly) runs every 100 seconds.
+
+#### Known problem
+
+Currently, the agents running with multiple replicas are not aware that more replicas are running and hence the reconciliation runs on all. 
+
+Consequently, if there is an HA agent running 5 pods all of the pods will send the reconcile call (5 times in 1 cycle). This results in computing overhead.
 
 ## References
 

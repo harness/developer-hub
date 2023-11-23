@@ -1,6 +1,6 @@
 {
     "label": "Run scans with custom SSL certificates",
-    "position": 20,
+    "position": 30,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",

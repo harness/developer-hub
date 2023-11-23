@@ -127,12 +127,17 @@ Output variables are not available for all plugins.
 
 :::
 
-Output variables are exposed values that can be used by other steps or stages in the pipeline. If the plugin writes outputs to the `.env` file present in the `DRONE_OUTPUT` path, you can use expressions to reference output variables in other steps and stages in the pipeline.
+Output variables are exposed values that can be used by other steps or stages in the pipeline. If the plugin writes outputs to the `DRONE_OUTPUT.env` file, you can use expressions to reference output variables in other steps and stages in the pipeline.
+
+For example, to write to the `DRONE_OUTPUT.env` file, use a command such as the following:
+
+```
+echo "VAR_NAME=somevalue" >> $DRONE_OUTPUT
+```
 
 To reference an output variable in a later step or stage in the same pipeline, use a variable [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) that includes the originating step's Id and the variable's name.
 
 Use either of the following expressions to reference an output variable in another step in the same stage:
-
 
 ```
 <+steps.STEP_ID.output.outputVariables.VAR_NAME>
@@ -142,6 +147,7 @@ Use either of the following expressions to reference an output variable in anoth
 Use either of the following expressions to reference an output variable in a different stage than the one where it originated:
 
 ```
+<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
 <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
