@@ -64,6 +64,8 @@ This plugin exports a UI tab that you can use as a new CI/CD tab for a service o
 
 The `isHarnessSRMAvailable` condition is met when the `harness.io/services` annotation is present in the software components's `catalog-info.yaml` definition file.
 
+![](./static/srm-screenshot.png)
+
 ## Annotations
 
 To configure the plugin for a service in the software catalog, set one or both of the following annotations in its `catalog-info.yaml` definition file:
