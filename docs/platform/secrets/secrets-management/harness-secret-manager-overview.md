@@ -95,7 +95,7 @@ Decrypting a secret sometimes requires its metadata. When you edit a secret, its
 
 - The secret manager is Google Cloud KMS or AWS KMS.
 
-- The secret manager is Google Cloud Secret Manager: The secret manager contains version information in its metadata. Every time you edit the inline secret, its version is incremented and updated in the database. However, on subsequent access, the older value is retrieved because cached metadata contains information about older versions.
+- The secret manager is Google Cloud Secret Manager: The secret contains version information in its metadata. Every time you edit the inline secret, its version is incremented and updated in the database. However, on subsequent access, the older value is retrieved because cached metadata contains information about older versions.
 
 - The secret is of the reference type: If a secret's reference path is edited, the path is updated in the database. However, the cached value continues to store the older path and fetches the stale secret.
 
