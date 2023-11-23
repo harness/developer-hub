@@ -48,6 +48,11 @@ Time Chaos:
         <td> Default: 60 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
       </tr>
       <tr>
+        <td> NODE_LABEL </td>
+        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+      </tr>
+      <tr>
         <td> CLOCK_IDS </td>
         <td> Comma separated clock ids of the target system clock</td>
         <td> Default: CLOCK_REALTIME. For more information, go to <a href="#offset-and-clock-ids">offset</a>.</td>
@@ -81,6 +86,11 @@ Time Chaos:
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods. </td>
         <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
+        <tr>
+        <td> LIB_IMAGE </td>
+        <td> Image used to inject chaos. </td>
+        <td> Default: <code>ubuntu:16.04</code>. For more information, go to <a href = "../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+      </tr>
       </tr>
       <tr>   
         <td> RAMP_TIME </td>

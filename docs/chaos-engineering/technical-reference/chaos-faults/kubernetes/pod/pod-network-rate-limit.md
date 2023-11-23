@@ -72,6 +72,11 @@ Pod network rate limit:
         <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-rate-limit#network-interface">network interface</a>.</td>
       </tr>
       <tr>
+        <td> NODE_LABEL </td>
+        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+      </tr>
+      <tr>
         <td> TARGET_CONTAINER </td>
         <td> Name of the container subject to network loss. Applicable for <code>containerd</code> and <code>crio</code> runtimes only.</td>
         <td> With these runtimes, if the value is not provided, the fault injects chaos on the first container of the pod. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a>.</td>
@@ -127,13 +132,18 @@ Pod network rate limit:
         <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>.</td>
       </tr>
       <tr>
+        <td> LIB_IMAGE </td>
+        <td> Image used to inject chaos. </td>
+        <td> Default: <code>ubuntu:16.04</code>. For more information, go to <a href = "../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+      </tr>
+      <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods. </td>
         <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
       </tr>
     </table>
 
-### Rate Limit
+### Rate limit
 
 - `NETWORK_BANDWIDTH`: It contains the network bandwidth rate limit
 - `BURST`: It contains the size of bucket, maximum amount of bytes that tokens can be available for instantaneously

@@ -53,6 +53,11 @@ Pod IO stress:
         <td> Default: 120 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos </a></td>
       </tr>
       <tr>
+        <td> NODE_LABEL </td>
+        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+      </tr>
+      <tr>
         <td> VOLUME_MOUNT_PATH </td>
         <td> Fill the given volume mount path. </td>
         <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress#mount-path"> mount path</a></td>
@@ -66,6 +71,11 @@ Pod IO stress:
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target. Provide numeric values. </td>
         <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a></td>
+      </tr>
+      <tr>
+        <td> LIB_IMAGE </td>
+        <td> Image used to inject chaos. </td>
+        <td> Default: <code>ubuntu:16.04</code>. For more information, go to <a href = "../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
@@ -88,7 +98,6 @@ Pod IO stress:
         <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
       </tr>
     </table>
-
 
 ### File system utilization percentage
 

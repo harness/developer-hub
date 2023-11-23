@@ -37,6 +37,11 @@ CPU hog:
         <td> Default: 1. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-cpu-hog#cpu-cores">CPU cores</a> </td>
       </tr>
       <tr>
+        <td> NODE_LABEL </td>
+        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+      </tr>
+      <tr>
         <td> CPU_LOAD </td>
         <td> Perentage of CPU to be consumed. </td>
         <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-cpu-hog#cpu-load">CPU load </a> </td>
@@ -75,6 +80,11 @@ CPU hog:
         <td> RAMP_TIME </td>
         <td> Period to wait before injecting chaos (in seconds). </td>
         <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
+      </tr>
+      <tr>
+        <td> LIB_IMAGE </td>
+        <td> Image used to inject chaos. </td>
+        <td> Default: <code>ubuntu:16.04</code>. For more information, go to <a href = "../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>

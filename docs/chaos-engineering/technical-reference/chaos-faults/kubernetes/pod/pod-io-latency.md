@@ -58,6 +58,11 @@ Pod IO latency:
         <td> If the value is not provided, the fault injects chaos on the first container of the pod. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a>.</td>
       </tr>
       <tr>
+        <td> NODE_LABEL </td>
+        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+      </tr>
+      <tr>
         <td> FILE_PATH </td>
         <td> The path for injecting faults can be specified as either a single file or a wildcard. If not provided, it will target all the files present inside the mount path </td>
         <td> For more information, go to <a href="#advanced-fault-tunables">file path</a>. </td>
@@ -81,6 +86,11 @@ Pod IO latency:
         <td> SOCKET_PATH </td>
         <td> Path of the containerd or crio or docker socket file </td>
         <td> Defaults to <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="#container-runtime-and-socket-path">socket path</a>.</td>
+      </tr>
+      <tr>
+        <td> LIB_IMAGE </td>
+        <td> Image used to inject chaos. </td>
+        <td> Default: <code>ubuntu:16.04</code>. For more information, go to <a href = "../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
@@ -109,7 +119,7 @@ Pod IO latency:
       </tr>
     </table>
 
-### IO LATENCY
+### IO latency
 
 IO Latency to be injected in system calls of the files located within the mounted volume of the pod. Tune it by using the `LATENCY` environment variable. 
 

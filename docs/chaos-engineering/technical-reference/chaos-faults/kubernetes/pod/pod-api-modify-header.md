@@ -29,6 +29,16 @@ Pod API modify header:
         <th> Notes </th>
       </tr>
       <tr>
+        <td> TARGET_CONTAINER </td>
+        <td> Name of the container subject to pod deletion. </td>
+        <td> None. For more information, go to <a href="../pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
+      </tr>
+      <tr>
+        <td> NODE_LABEL </td>
+        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+      </tr>
+      <tr>
         <td> TARGET_SERVICE_PORT </td>
         <td> Port of the target service.</td>
         <td> Defaults to port 80. For more information, go to <a href="#target-service-port">target service port</a>.</td>
@@ -55,6 +65,11 @@ Pod API modify header:
         <td> PROXY_PORT </td>
         <td> Port where the proxy listens for requests.</td>
         <td> Default: 20000. For more information, go to <a href="#advanced-fault-tunables">proxy port</a>.</td>
+      </tr>
+      <tr>
+        <td> LIB_IMAGE </td>
+        <td> Image used to inject chaos. </td>
+        <td> Default: <code>ubuntu:16.04</code>. For more information, go to <a href = "../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SERVICE_DIRECTION </td>
