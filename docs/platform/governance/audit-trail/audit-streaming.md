@@ -94,7 +94,7 @@ You can change the audit stream configuration by clicking three dots beside the 
 
 - **Edit**: Select a different streaming destination or make changes to the existing destination.
 
-- **Delete**: Delete the audit stream destination. Streaming destination should be marked inactive before it can be deleted.
+- **Delete**: Delete the audit stream destination. You must set the audit stream destination to inactive before you can delete it.
 
 ![](../../governance/audit-trail/static/edit-delete.png)
 
