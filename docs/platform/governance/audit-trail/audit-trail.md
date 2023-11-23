@@ -90,12 +90,14 @@ You can scope down the viewable audit events by adding Filters and selecting:
    * Resource Type
    * Resource Identifier
    * Action
-:::info note
-The Resource Identifier operates in conjunction with the Resource Type. It allows you to employ the resource identifier for filtering audit events related to a specific resource using that identifier.
-:::
-4. In **Filter** **Name**, enter a name for your filter.
-5. In **Who can view and edit the filter?** select **Only Me** or **Everyone** based on the visibility you want to set for this filter.
-6. Click **Save**. Your filter is now created.
+
+   :::info note
+   The Resource Identifier operates in conjunction with the Resource Type. It allows you to employ the resource identifier for filtering audit events related to a specific resource using that identifier.
+   :::
+   
+5. In **Filter** **Name**, enter a name for your filter.
+6. In **Who can view and edit the filter?** select **Only Me** or **Everyone** based on the visibility you want to set for this filter.
+7. Click **Save**. Your filter is now created.
 
    ![](../../governance/audit-trail/static/audit-trail-05.png)
 
