@@ -72,6 +72,13 @@ The **SSCA Orchestration** step does the following:
 1. Add the **SSCA Orchestration** step to either the **Build** or **Deploy** stage.
    * In a **Build** stage, add the **SSCA Orchestration** step after the artifact (image) has been pushed to an artifact repository.
    * In a **Deploy** stage, add the **SSCA Orchestration** step before the deployment step.
+  
+:::info
+
+SSCA Orchestration and Enforcement steps in deploy stage can only be used in the container step group
+
+:::
+
 2. Enter a **Name** for the step.
 3. For **Step Mode**, select **Generation**.
 4. Select the **SBOM Tool** to use to generate the SBOM, such as **Syft**.
