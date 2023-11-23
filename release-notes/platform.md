@@ -59,7 +59,7 @@ The following deprecated API endpoints will no longer be supported:
 
    This item requires Harness Delegate version 23.11.816xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- Azure Key Vault's heartbeat check now creates a validation secret with a 30-minute expiration, addressing the issue of no expiration being set previously, which resulted in multiple secrets. (PL-42509, ZD-53700)
+- Azure Key Vault's heartbeat check now creates a validation secret with a 30-minute expiration, addressing the issue of no expiration being set previously, which resulted in which resulted in multiple secret versions without an expiry. (PL-42509, ZD-53700)
 
    This item requires Harness Delegate version 23.11.816xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 

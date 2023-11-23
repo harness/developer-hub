@@ -47,7 +47,7 @@ This issue has been resolved, and now Harness increments the `delegate_connected
    - The delegate Stackdriver logger didn't work if the delegate token was base64-encoded format.
    - When the `DELEGATE_TYPE` was `KUBERNETES` and the delegate wasn't deployed in Kubernetes, the delegate failed to start. (PL-42452)
 
-- Azure Key Vault's heartbeat check now creates a validation secret with a 30-minute expiration, addressing the issue of no expiration being set previously, which resulted in multiple secrets. (PL-42509, ZD-53700)
+- Azure Key Vault's heartbeat check now creates a validation secret with a 30-minute expiration, addressing the issue of no expiration being set previously, which resulted in multiple secret versions without an expiry. (PL-42509, ZD-53700)
 
 - User groups could be created via SCIM using identifiers with invalid characters. (PL-42535, ZD-53830)
 
