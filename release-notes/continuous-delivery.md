@@ -92,7 +92,7 @@ This issue has been fixed.
 
   This item requires Harness Delegate version 23.11.816xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Reviewed and approved by shubhendu.patidar in Slack -->
 
-- If the default capacity for the ASG deployment is zero or Null and you choose to create the same number of ASG instances as those that were previously deployed by the pipeline (the `Same as already running Instances` setting), Harness created zero instances. The deployment timed out after waiting for health checks. (CDS-83818)
+- If the default capacity for the ASG deployment is zero or Null and you choose to create the same number of ASG instances as those that were previously deployed by the pipeline (the **Same as already running Instances** setting), Harness created zero instances. The deployment timed out after waiting for health checks. (CDS-83818)
   
   This issue has been fixed. Now, if the default capacity is zero or Null, Harness sets the default capacity to match that in Harness FirstGen, which is as follows:
     - For the first deployment: 
@@ -120,7 +120,7 @@ This issue has been fixed.
 
   This item requires Harness Delegate version 23.11.816xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Clean description in the PRNS field. Made minor edits and asked abhinav.singh2@harness.io to review, in Jira. Check. -->
 
-- The Helm connector's test to check connectivity to an OCI Helm repository in AWS ECR failed with an "Invalid request: Invalid oci url..." error even though the URL to the repository conformed with the formats described in [Connect to an Artifact repository](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo/). The delegate was configured to use a proxy server and the Anonymous authentication type. However, manually fetching Helm charts from the delegate were successful. (CDS-82779, ZD-52343)
+- The Helm connector's test to check connectivity to an OCI Helm repository in AWS ECR failed with an "Invalid request: Invalid oci url..." error even though the URL to the repository conformed with the formats described in [Connect to an Artifact repository](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo). The delegate was configured to use a proxy server and the Anonymous authentication type. However, manually fetching Helm charts from the delegate were successful. (CDS-82779, ZD-52343)
 
   This issue has now been resolved. The OCI Helm connector now works with the Anonymous authentication type when a proxy server is configured on the delegate.
 
