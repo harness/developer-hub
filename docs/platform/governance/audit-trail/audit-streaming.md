@@ -94,7 +94,7 @@ You can change the audit stream configuration by clicking three dots beside the 
 
 - **Edit**: Select a different streaming destination or make changes to the existing destination.
 
-- **Delete**: Delete the audit stream destination.
+- **Delete**: Delete the audit stream destination. Streaming destination should be marked inactive before it can be deleted.
 
 ![](../../governance/audit-trail/static/edit-delete.png)
 
@@ -132,7 +132,6 @@ Streamed audit events have a predictable schema in the body of the response.
 |  auditAction     |  Action on the audited resource.     |  Required     |
 |    auditEventTime   |  Date and time of the event.     | Required      |
 |   auditHttpRequestInfo    |  Details of the HTTP request.     |  Optional     |
-|   auditEventMetadata    |     Additional details required for streaming the audit log.  |  Optional     |
 
 
 ### JSON payload
