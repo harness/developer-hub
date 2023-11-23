@@ -86,11 +86,11 @@ Time Chaos:
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods. </td>
         <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
-        <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to inject chaos. </td>
-        <td> Default: <code>ubuntu:16.04</code>. For more information, go to <a href = "../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
+      <tr>
+      <td> LIB_IMAGE </td>
+        <td> Image used to inject chaos. </td>
+        <td> Default: <code>ubuntu:16.04</code>. For more information, go to <a href = "../../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>   
         <td> RAMP_TIME </td>
