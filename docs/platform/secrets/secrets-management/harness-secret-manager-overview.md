@@ -54,7 +54,7 @@ If you are using a KMS, rotation of keys is not supported by Harness and you mig
 
 #### Using Third-Party Secret Managers
 
-You can also use third-party Secret Managers, for example, HashiCorp Vault, Azure Key Vault, and AWS Secrets Manager.
+You can also use third-party Secret Managers, for example, HashiCorp Vault, Azure Key Vault, GCP Secrets Manager and AWS Secrets Manager.
 
 These Secret Managers store the key, perform encryption and decryption, and also store the secrets (encrypted key pair). Neither the keys nor the secrets are stored in the Harness database. A reference to the secret is stored in the Harness database.
 
