@@ -27,6 +27,12 @@ You can add the **SSCA Enforcement** step to either the **Build** or **Deploy** 
 * In a **Build** stage, add the **SSCA Enforcement** step after the artifact (image) has been pushed to an artifact repository.
 * In a **Deploy** stage, add the **SSCA Enforcement** step before the deployment step.
 
+:::info
+
+SSCA Orchestration and Enforcement steps in deploy stage can only be used in the container step group
+
+:::
+
 The **SSCA Enforcement** step has the following settings:
 
 * **Name:** Enter a name for the step.
