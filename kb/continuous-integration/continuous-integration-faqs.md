@@ -957,3 +957,27 @@ In a pull request, TI uses the following criteria to select tests:
 1) Changed code
 2) Changed tests
 3) New tests
+
+#### What is the default user set on the windows lite-engine and addon image?
+
+The default user set on the windows lite-engine and addon image is ```ContainerAdministrator```
+
+#### Can the default user in Windows LE/Addon images be changed?
+
+No, the default user in Windows LE/Addon images needs to be ```ContainerAdministrator``` because specific path and tool installations require it, and Windows does not allow setting the path otherwise.
+
+#### How does ```ContainerAdministrator``` differ from other user identities in Windows LE/Addon images?
+
+```ContainerAdministrator``` is assigned elevated privileges similar to the root user on Linux, allowing for system-level configurations and installations within the Windows container
+
+#### On navigating to the tests tab, why the call graph shows up as empty with a message stating that ```No call graph is created when all tests are run```?
+
+The callgraph would be huge and is not shown when all tests are run (full-run or bootstrap run) because it is not useful as no test-selection was done in this case
+
+#### How can I understand the relationship between code changes and the selected tests in a PR?
+
+In the ```Tests``` tab, the visualization graph provides insights into why each test was selected. It visually represents the relationship between the selected tests and the specific code changes in the PR
+
+#### In case of multi stage pipeline, will the CI stage execution update the build status in PR even if the clone codebase option is disabled in that stage?
+
+Yes, currently the CI stage execution updates the build status on PR even if the clone codebase option is disabled for that specific stage however there are some work in progres to improve this experience
