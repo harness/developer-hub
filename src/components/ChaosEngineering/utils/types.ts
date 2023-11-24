@@ -9,5 +9,6 @@ export enum FaultCategory {
   Linux = "linux",
   Load = "load",
   SecurityChaos = "security-chaos",
-  CloudFoundry = "cloud-foundry"
+  CloudFoundry = "cloud-foundry",
+  Windows = "windows"
 }
