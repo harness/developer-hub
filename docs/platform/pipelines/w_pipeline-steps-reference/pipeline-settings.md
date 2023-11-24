@@ -58,7 +58,7 @@ The following table describes how this setting applies to each plan.
         <p>500</p>
       </td>
       <td>
-        <p>1000</p>
+        <p>500</p>
       </td>
     </tr>
     <tr valign="top">
