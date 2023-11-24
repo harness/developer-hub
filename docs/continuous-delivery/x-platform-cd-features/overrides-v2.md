@@ -14,8 +14,8 @@ Harness has introduced an enhanced experience for service, environment, and infr
 
 Overrides can be defined at project, organization, and account levels.
 
+:::info note
 For information on overrides V1, go to [Services and environments basics](/docs/continuous-delivery/get-started/services-and-environments-overview).
-
 :::
 
 ## Limitations
