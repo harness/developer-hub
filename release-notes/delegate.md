@@ -34,6 +34,16 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ### Harness version 816xx, Harness Delegate version 23.11.816xx
 
+#### New features and enhancements
+
+- If you use Kubernetes version 1.16 or later, you can enable the steady state check for Native Helm jobs from Default Settings at any organizational scope (account, organization, or project) in Harness.
+
+  To enable the setting, at the desired scope, go to **Default Settings** > **Continuous Delivery**, and then turn on the **Enable Native Helm steady state for jobs** toggle.
+
+  This enhancement eliminates the need for you to contact Harness Support to enable the feature flag `CDS_HELM_STEADY_STATE_CHECK_1_16` and gives you direct control of the setting. 
+
+  Accounts for which Harness had enabled this feature flag will have this setting turned on by default.
+
 #### Fixed issues
 
 - When shutdown is initiated, delegates will continue sending heartbeats until all tasks are completed, ensuring all running tasks return a response before shutting down. (PL-42171)
@@ -52,6 +62,60 @@ This issue has been resolved, and now Harness increments the `delegate_connected
 - User groups could be created via SCIM using identifiers with invalid characters. (PL-42535, ZD-53830)
 
    This issue is fixed. You can no longer create user groups with invalid characters.
+
+- Harness used Datadog log indexes when running the Verify step but not when fetching sample data in the health source configuration dialog. (CDS-83934, ZD-53433)
+
+   This issue has been fixed.
+
+- If the default capacity for the ASG deployment is zero or Null and you choose to create the same number of ASG instances as those that were previously deployed by the pipeline (the **Same as already running Instances** setting), Harness created zero instances. The deployment timed out after waiting for health checks. (CDS-83818)
+
+  This issue has been fixed. Now, if the default capacity is zero or Null, Harness sets the default capacity to match that in Harness FirstGen, which is as follows:
+    - For the first deployment: 
+      - minimum = 0 
+      - desired = 6 
+      - maximum =10
+    - For other deployments:
+      - minimum = 0 
+      - desired = 1 
+      - maximum = 1
+
+- Starting with Delegate version 23.08.79713, the custom script for fetching remote manifests did not support absolute paths as the folder path. (CDS-83443, ZD-52872)
+
+  This issue has been fixed.
+
+- For Rancher-based Kubernetes or Native Helm deployments and instance sync, Harness uses Rancher's `generateKubeconfig` API action. A new kubeconfig token is created on the Rancher cluster each time this API is hit. This led to an accumulation of kubeconfig tokens over time on the Rancher cluster. (CDS-83055, ZD-52924)
+
+  This issue has been fixed. Harness now cleans up the kubeconfig token it creates during deployment or instance sync executions.
+
+  To receive this fix, upgrade your delegate to the latest version.
+
+- The Helm connector's test to check connectivity to an OCI Helm repository in AWS ECR failed with an "Invalid request: Invalid oci url..." error even though the URL to the repository conformed with the formats described in [Connect to an Artifact repository](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo). The delegate was configured to use a proxy server and the Anonymous authentication type. However, manually fetching Helm charts from the delegate were successful. (CDS-82779, ZD-52343)
+
+  This issue has now been resolved. The OCI Helm connector now works with the Anonymous authentication type when a proxy server is configured on the delegate.
+
+- Earlier, the `tags` API endpoint did not include a timestamp in its response. This shortcoming did not allow Harness to list tags in the lexical order. (CDS-82778)
+
+  This issue has been fixed. The timestamp is now available with images. Images are sorted based on their timestamp. Tags that have the same timestamp are also sorted lexically.
+
+- Pipeline executions for WinRM deployments failed intermittently when the deployment was performed by Harness Delegate with version 23.11.81015. The delegate task logs showed that the PowerShell script that was collecting output environment variables failed with exit code 1 while the step logs in the Harness user interface showed that the step succeeded with exit code 0. Certain processes managed by the Windows Remote Management service (namely, `winrshost.exe` with its child process `conhost.exe`) were orphaned and continued to run on the target host. (CDS-82777, ZD-52759, ZD-53411, ZD-53460, ZD-53683)
+
+  This issue has been fixed.
+
+- Certain Docker registries fail authentication when using the `/v2` endpoint, which is used for health checks in Docker connectors. (CDS-82616, ZD-52513)
+
+  This issue has been fixed. Harness now falls back to using the `/v2/` endpoint if the `/v2` endpoint fails.
+
+- When using the Generic repository format to fetch artifacts from Artifactory, if you used an artifact filter and a non-Regex value for the artifact path, an issue occurred. The issue caused the metadata URL in the service outcome to be incorrect; the URL did not include the repository name. (CDS-82579)
+
+  This issue has been fixed.
+
+- Harness did not stop Terraform tasks after you canceled pipeline execution, even if you cancelled execution before the task started to run actual Terraform commands. (CDS-82222, ZD-52603)
+
+  This issue has been resolved.
+
+- Currently, the on-premises version of Atlassian BitBucket does not fire push event webhooks when you first push to a new branch. This is inconsistent with other Git providers and also causes Harness's Bitbucket triggers for on-premises repositories to behave inconsistently. (CDS-82110, ZD-52270)
+
+  As a workaround for this inconsistency, Harness has made the trigger's workflow capture branch hook events for on-premises BitBucket and convert them, on a best-effort basis, to a push hook. This change has the effect of making Harness's triggers for on-premises BitBucket to fire on the first push to a new branch. This change is behind the feature flag `CDS_NG_CONVERT_BRANCH_TO_PUSH_WEBHOOK_BITBUCKET_ON_PREM`. To enable this change in behavior, contact [Harness Support](mailto:support@harness.io).
 
 ### Harness version 81401, Harness Delegate version 23.11.81405
 
