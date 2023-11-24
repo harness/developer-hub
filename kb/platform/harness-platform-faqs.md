@@ -1786,7 +1786,11 @@ You can refer to this [documentation](https://developer.harness.io/docs/platform
 
 Yes, the secrets pulled by a delegate during pipeline execution do not make their way back to the Harness platform. Delegates connect to various secret managers as the pipeline progresses, but the secret information itself is not sent to Harness. This ensures that production secrets remain secure and are not exposed within the Harness platform. You can refer to these [docs](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
+#### Not able to resume pipeline for some time post delegate release
 
+For optimizations we keep a local cache of all connected delegates to execute tasks. The cache is refreshed every 3 minutes currently and hence it takes upto 3 mins for a new delegate to be eligible to execute a task once its connected. Since the delegate rollout is not a very frequent operation the 3 mins window was chosen and is in production for few years.
+
+We can recommend having a grace period between bringing up a new delegate and terminating an old pod. We have minReadySeconds defined in the yaml which ensures that old pods die after 2 mins of new pod being in ready state. SInce this field was added later on, your delegate yaml may not have it. You could check this by downloading a new yaml for a delegate and add it so that the older pod doesn't get killed without new pod getting the traffic.
 
 
 
