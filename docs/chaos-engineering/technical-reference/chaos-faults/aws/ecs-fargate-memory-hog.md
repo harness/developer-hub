@@ -7,6 +7,10 @@ The ECS Fargate Memory Hog experiment enables you to intentionally increase the 
 
 ![ECS Fargate Memory Hog](./static/images/ecs-fargate-memory-hog.png)
 
+:::tip
+This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](./ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
+:::
+
 ## Use cases
 
 - Tests the behavior of your ECS tasks subjected to memory stress, and validates the resilience and performance of your ECS tasks during the stress.
