@@ -19,6 +19,8 @@ For certain settings, the values in the Free plan also apply to the trial period
 
 Number of concurrent pipeline executions per execution API request. The setting considers only those executions that are in progress (including those that are paused temporarily in steps such as the wait step or approval step), not those that have executed to completion. 
 
+This setting is available at Account Scope behind FF - **PIE_PIPELINE_SETTINGS_ENFORCEMENT_LIMIT**
+
 Any executions that are triggered when the limit is reached are added to the execution queue. **These executions and their deployments are not failed by Harness.**
 
 The following table describes how this setting applies to each plan.
@@ -69,10 +71,10 @@ The following table describes how this setting applies to each plan.
         <p>No</p>
       </td>
       <td>
-        <p>No</p>
+        <p>Yes</p>
       </td>
       <td>
-        <p>No</p>
+        <p>Yes</p>
       </td>
     </tr>
     <tr valign="top">
