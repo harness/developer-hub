@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-11-17T10:12:25
+date: 2023-11-24T16:19:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 10
 ---
@@ -15,28 +15,59 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest - November 17th 2023
+
+
+### Latest - November 24th 2023
 
 ### New features and enhancements
 
-This release does not include new features.
+Released Python SDK 1.3.0
+ - The below requests now implement a retry mechanism of up to 10 retries on retryable errors:
+    - target-segments, 
+    - feature-config, 
+    - target-segments/{identifier}, and 
+    - feature-config/{identifier}.
 
 ### Early access features
 
 This release does not include early access features.
 
-### Fixed issues in the Java SDK
+### Fixed issues in the Python SDK
+
+
+ - Pip upgraded to 23.3.
+ - Requests upgraded to 2.31.0.
+ - Changed Murmur3 hash calculation to be unsigned instead of signed to ensure the Python SDK produces the same hash as other SDKs for use in percentage rollout caclculation. 
+ - Deleted resources are only removed from the local cache where the SDK would try to fetch deleted resources from the server after SSE delete events, resulting in 404 errors.
+ - The SDK now throws and catches an exception instead of returning 'None', which would previously result in an uncaught `AttributeError` when flag or group requests failed after exceeding all retry attempts.
+ - When requesting a variation on the wrong flag type (e.g., requesting a boolean on a string) would attempt to evaluate. Now, an SDK error code is logged, and the default variation is returned.
+ - Improved the logic to stop polling if streaming is enabled. Additionally, fixed an issue where the poller would stop and not make any more flag updates after encountering an exception during a request.
+ - Logging to correctly indicate when a stream disconnects and the SDK falls back to polling.
+ - Changed various verbose logs from info to debug.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### November 17, 2023
+
+
+##### New features and enhancements
+
+This release does not include new features.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Java SDK
 
 Released Java SDK 1.3.1
 
  - Added Java 21 Support.
  - Marked private attributes not working. 
  - Improved stream restart logic. 
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### November 13, 2023
 
