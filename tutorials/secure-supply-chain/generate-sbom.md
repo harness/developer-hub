@@ -55,7 +55,7 @@ This tutorial explains how to configure the **SSCA Orchestration** and **SSCA En
 
 Keys are used to sign and verify attestations.
 
-1. Generate a public and private key pair. For example, you can use [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/) to generate key pairs.
+1. Use [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/) to generate a public and private key pair
 2. Create two [Harness file secrets](/docs/platform/secrets/add-file-secrets), one for the private key file and one for the public key file.
 3. Create a [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) to store the password for the private key.
 
