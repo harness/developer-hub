@@ -129,11 +129,11 @@ The following table shows the value of this setting on each plan.
 
 ## Pipeline Execution Time Limits 
 
-The maximum time for which a Stage or Pipeline can run. These are maximum allowable values; smaller values can be set within the pipeline itself using the Timeout field.
+The maximum allowable time a stage or pipeline can run. These are the maximum allowable values, but smaller values can be set within the pipeline using the **Timeout** field.
 
-In case a timeout configured within a Pipeline or Stage is larger than these system limits, the limit is still considered.
+If a timeout is configured within a pipeline or stage larger than these system limits, the limit is still enforced.
 
-The following tables describes the limits for each plan. All these can be edited to be *less* only within the Account.
+The following table lists the limits for each plan. You can only edit all of these items to be *less* within the Account.
 
 <table>
   <thead>
