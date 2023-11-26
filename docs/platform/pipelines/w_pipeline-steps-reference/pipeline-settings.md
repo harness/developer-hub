@@ -129,3 +129,95 @@ The following table shows the value of this setting on each plan.
     </tr>
   </tbody>
 </table>
+
+
+
+## Pipeline Execution Time Limits 
+
+The maximum allowable time a stage or pipeline can run. These are the maximum allowable values, but smaller values can be set within the pipeline using the **Timeout** field.
+
+If a timeout is configured within a pipeline or stage larger than these system limits, the limit is still enforced.
+
+The following table lists the limits for each plan. You can only edit all of these items to be *less* within the Account.
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Free plan</th>
+      <th>Trial plan</th>
+      <th>Team plan</th>
+      <th>Enterprise plan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr valign="top">
+      <td>
+        <strong>Pipeline Timeout</strong>
+      </td>
+      <td>
+        <p>2 hours</p>
+      </td>
+      <td>
+        <p>4 hours</p>
+      </td>
+      <td>
+        <p>30 days</p>
+      </td>
+      <td>
+        <p>35 days</p>
+      </td>
+    </tr>
+    <tr valign="top">
+      <td>
+        <strong>Stage Timeout</strong>
+      </td>
+      <td>
+        <p>1 hour</p>
+      </td>
+      <td>
+        <p>1 hour</p>
+      </td>
+      <td>
+        <p>30 days</p>
+      </td>
+      <td>
+        <p>35 days</p>
+      </td>
+    </tr>
+    <tr valign="top">
+      <td>
+        <strong>Editable</strong>  
+      </td>
+      <td>
+        <p>Yes</p>
+      </td>
+      <td>
+        <p>Yes</p>
+      </td>
+      <td>
+        <p>Yes</p>
+      </td>
+      <td>
+        <p>Yes</p>
+      </td>
+    </tr>
+    <tr valign="top">
+      <td>
+        <strong>Scope</strong>
+      </td>
+      <td>
+        <p>Account/Organization/Project</p>
+      </td>
+      <td>
+        <p>Account/Organization/Project</p>
+      </td>
+      <td>
+        <p>Account/Organization/Project</p>
+      </td>
+      <td>
+        <p>Account/Organization/Project</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
