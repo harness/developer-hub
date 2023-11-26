@@ -173,7 +173,6 @@ For a complete list of CD early access features, go to [Active CD feature flags]
 * **Release date:** October 2023
 * **Release version:** 81008
 * **Issue number:** CDS-76724
-* **Feature flag:** `CDS_WEBAPP_ENABLE_CLEAN_OPTION`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 You can clean the target directory before deploying an Azure Web App. For more information, go to [Azure Web Apps deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial).
