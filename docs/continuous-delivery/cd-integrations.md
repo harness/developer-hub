@@ -351,10 +351,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enable the option to update multiple tasks in ServiceNow.</td>
     </tr>
     <tr>
-        <td>CDS_WEBAPP_ENABLE_CLEAN_OPTION</td>
-        <td>Cleans the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial">Azure WebApp target directory</a> prior to deployment. <b>This feature is in Public Preview.</b> </td>
-    </tr>
-    <tr>
         <td>PIE_SIMPLIFY_LOG_BASE_KEY</td>
         <td>Reduces the length of the log base key. <b>This feature is in Beta.</b> </td>
     </tr>
