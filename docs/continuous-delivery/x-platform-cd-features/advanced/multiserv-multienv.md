@@ -278,5 +278,5 @@ Max concurrency changes based on the following:
 
 ## Limitations
 
-* Reconciliation for services, environments & infrastructures is not supported for deployments using multiple services, environments or infrastructures respectively.
+* Reconciliation for Harness services, environments, and infrastructure definitions is not supported for deployments using multiple services, environments, or infrastructures, respectively.
 
