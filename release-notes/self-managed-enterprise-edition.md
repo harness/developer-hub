@@ -24,8 +24,6 @@ These release notes describe recent changes to Harness Harness Self-Managed Ente
 
 :::
 
-Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
-
 ## Latest: Version 8xxxx
 
 ### New features and enhancements
