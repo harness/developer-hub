@@ -89,10 +89,6 @@ This issue has been resolved, and now Harness increments the `delegate_connected
 
   To receive this fix, upgrade your delegate to the latest version.
 
-- The Helm connector's test to check connectivity to an OCI Helm repository in AWS ECR failed with an "Invalid request: Invalid oci url..." error even though the URL to the repository conformed with the formats described in [Connect to an Artifact repository](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo). The delegate was configured to use a proxy server and the Anonymous authentication type. However, manually fetching Helm charts from the delegate were successful. (CDS-82779, ZD-52343)
-
-  This issue has now been resolved. The OCI Helm connector now works with the Anonymous authentication type when a proxy server is configured on the delegate.
-
 - Earlier, the `tags` API endpoint did not include a timestamp in its response. This shortcoming did not allow Harness to list tags in the lexical order. (CDS-82778)
 
   This issue has been fixed. The timestamp is now available with images. Images are sorted based on their timestamp. Tags that have the same timestamp are also sorted lexically.
