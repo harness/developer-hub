@@ -3178,3 +3178,24 @@ Please read more on the variable inputs in the following [Documentation](https:/
 
 No, we don't support the exporting of variables using looping strategies.
 Please read more on output variables in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#scoping-output-variables-using-aliases)
+
+#### How to give the user access to WinRM resources:
+Run command winrm configSDDL default and it should open the the dialogue, check if user configured for login already present in the last otherwise add the user
+
+#### How to fetch user group id by name using graphql
+You can use below query 
+query{userGroupByName(name:"Basic User"){id}}
+
+#### How to fetch application by name using graphql
+You can use below query 
+query{applicationByName(name:"appname"){id}}
+
+#### How to enable certificate authentication while using winrm
+Its disabled by default and need to run below command to enable
+Set-Item -Path WSMan:\localhost\Service\Auth\Certificate -Value $true
+
+#### How to fix error Socket Connection Failed for url windowshost on port 5985
+Check if port 5985 is opened and test the communication for winrm 
+
+#### Reconcile is taking pretty long time while using remote temple stored in git
+Check in network time response for templates to troubleshot if there is any issue/slowness while communicating to git
