@@ -22,13 +22,16 @@ These release notes describe recent changes to Harness Delegate.
 
 :::
 
-### Deprecation notice
+<details>
+<summary>Deprecation notice</summary>
 
-**Kustomize 3.4.5**
+#### Kustomize 3.4.5
 
 import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-notice.md'
 
 <Kustomizedep />
+
+</details>
 
 ## November 2023
 
