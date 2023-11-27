@@ -1454,6 +1454,32 @@ template:
 
 #### Terraform Automation
 
+:::info note
+You need to have Terraform CLI installed in your delegate in-order to carry out this automation. Given below is a Dockerfile script to create a custom delegate image that has terraform cli installed in it.
+:::
+
+```
+FROM harness/delegate:22.10.77029.minimal  
+USER root  
+  
+RUN microdnf update \  
+  && microdnf install yum \
+  && microdnf install --nodocs \  
+    unzip \  
+    yum-utils
+  
+RUN yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo \  
+  && microdnf repoquery terraform \
+  && microdnf install -y terraform-1.3.3-1.x86_64     
+  
+RUN mkdir /opt/harness-delegate/tools && cd /opt/harness-delegate/tools \  
+  && curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && chmod +x kubectl   
+  
+ENV PATH=/opt/harness-delegate/tools/:$PATH  
+
+USER harness
+```
+
 <details>
 <summary>Terraform Script to create harness resources (Services, Environments, Pipelines)</summary>
 <br />
@@ -1754,6 +1780,3 @@ pipeline:
 
 </details>
 
-:::info note
-You need to have Terraform CLI installed in your delegate in-order to carry out this automation
-:::
