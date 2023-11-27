@@ -79,7 +79,6 @@ Harness Terraform Provider makes it easy to scale infrastructure up and down as 
 Complex resource configurations can make it difficult to understand the meaning and impact of infrastructure changes. The Terraform CLI lets you validate and preview infrastructure changes before applying them. Previewing infrastructure changes safely has several benefits:
 - Team members can collaborate more effectively by understanding proposed changes and their impact.
 - Unintended changes can be caught early in the development process.
-- 
 
 ## Contributing to the Harness Terraform Provider
 
