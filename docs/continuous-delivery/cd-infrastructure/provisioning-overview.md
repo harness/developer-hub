@@ -91,18 +91,18 @@ See the following topics for steps on how to perform dynamic provisioning:
 The following table shows the provisioners you can use with each deployment type for *dynamic provisioning*.
 
 
-|                            | Terraform and Terraform Cloud | CloudFormation | Terragrunt | Azure Resource Manager (ARM) | Azure Blueprint | Shell Script |
+|                            | Terraform and Terraform Cloud | CloudFormation | Terragrunt | Azure Resource Manager (ARM) | Azure Blueprint | Shell Script | AWS CDK |
 | -------------------------- | ----------------------------- | -------------- | ---------- | ---------------------------- | --------------- | ------------ |
-| Kubernetes                 | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |
-| Azure Web Apps             | ✔️                            |                | ✔️           | ✔️                           | ✔️              | ✔️           |
-| AWS ECS                    | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |
-| AWS Lambda                 | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |
-| Spot Elastigroup           | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |
-| Google Cloud Functions     | ✔️                            |                | ✔️         |                              |                 | ✔️           |
-| Serverless.com framework   | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |
-| Tanzu Application Services | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |
-| SSH deployments            | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |
-| WinRM deployments          | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |
+| Kubernetes                 | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |   ✔️           |
+| Azure Web Apps             | ✔️                            |                | ✔️           | ✔️                           | ✔️              | ✔️           | ✔️           |
+| AWS ECS                    | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |✔️           |
+| AWS Lambda                 | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |✔️           |
+| Spot Elastigroup           | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |✔️           |
+| Google Cloud Functions     | ✔️                            |                | ✔️         |                              |                 | ✔️           |✔️           |
+| Serverless.com framework   | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |✔️           |
+| Tanzu Application Services | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |✔️           |
+| SSH deployments            | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |✔️           |
+| WinRM deployments          | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |✔️           |
 
 ### Dynamic provisioning outputs for mapping
 
