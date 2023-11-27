@@ -20,7 +20,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-This tutorial will get you started with Harness Continuous Delivery (CD). We will guide you through deploying a Guestbook application using Harness CD pipeline and GitOps methods. This Guestbook application uses a publicly available Kubernetes manifest and Docker image.
+This tutorial will get you started with Harness Continuous Delivery (CD). We will guide you through deploying a sample application using Harness CD pipeline and GitOps methods. This application uses a publicly available Kubernetes manifest and Docker image.
 
 :::info
 
@@ -54,10 +54,10 @@ Whether you're new to GitOps or an experienced practitioner, this guide will ass
 
 Verify that you have the following:
 
-1. **A Kubernetes cluster**. We recommend [K3D](https://k3d.io/v5.5.1/) for installing the Harness GitOps Agent and deploying a sample application in a local development environment.
+1. A Kubernetes cluster. We recommend [K3D](https://k3d.io/v5.5.1/) for installing the Harness GitOps Agent and deploying a sample application in a local development environment.
     - For requirements, go to [Harness GitOps Agent Requirements](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/#requirements).
     - If you prefer using Flux CD as the reconciler, you will need to [install the Flux controller](https://fluxcd.io/flux/installation/#install-the-flux-controllers) on your Kubernetes cluster.
-2. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
+2. Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository (if using Argo CD) or the [podinfo](https://github.com/stefanprodan/podinfo/fork) repository (if using Flux CD).
     - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
 ## Getting Started with Harness GitOps
@@ -98,7 +98,7 @@ In **GitOps Operator**, select one of the following:
 - **Argo**. Uses Argo CD as the GitOps reconciler.
 - **Flux**. Uses Flux as the GitOps reconciler.
 
-In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
+In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment (for example, `gitops-agent`). Ensure that this namespace already exists on your Kubernetes cluster.
 
 If **Namespaced** is selected, the Harness GitOps agent is installed without cluster-scoped permissions, and it can access only those resources that are in its own namespace. You can select **Skip Crds** to avoid a collision if already installed.
 
@@ -146,7 +146,7 @@ A Harness GitOps Repository is a repo containing the declarative description of 
    - Choose **Git**.
        - Enter a name in **Repository**.
        - In **GitOps Agent**, select the Agent that you installed in your cluster and select **Apply**.
-       - In **Git Repository URL**, paste `https://github.com/GITHUB_USERNAME/harnesscd-example-apps` and replace **GITHUB_USERNAME** with your GitHub username.
+       - In **Git Repository URL**, paste `https://github.com/GITHUB_USERNAME/harnesscd-example-apps.git` (for Argo CD) or  `https://github.com/GITHUB_USERNAME/podinfo.git` (for Flux CD). Replace **GITHUB_USERNAME** with your GitHub username.
        - Select **Continue** and choose **Specify Credentials For Repository**.
            - Select **HTTPS** as the **Connection Type**.
            - Select **Anonymous (no credentials required)** as the **Authentication** method.
@@ -171,6 +171,35 @@ A Harness GitOps Cluster is the target deployment cluster that is compared to th
        - Select **Save & Continue** and wait for the Harness to verify the connection.
        - Finally, select **Finish**.
 
+### Services
+
+<details open>
+<summary>What is a GitOps Service?</summary>
+
+A Harness GitOps service is the same as any other Harness service. A service represents your microservices and other workloads logically. A Service is a logical entity to be deployed, monitored, or changed independently.
+
+</details>
+
+1. Click on **Services**, and then select **+ New Service**.
+2. Give the service a name, for example, **gitopsguestbook** or **gitopspodinfo** and hit **Save**.
+3. Select **Kubernetes** as the deployment type.
+4. Check the box for **GitOps**.
+5. Hit **Save**. 
+
+### Environments
+
+<details open>
+<summary>What is a GitOps Environment?</summary>
+
+In Harness GitOps, an environment is the live state of the infrastructure.
+
+</details>
+
+1. Click on **Environments**, and then select **+ New Environment**.
+2. Give the environment a name, for example, **gitopsenv**, select `Pre-Production` for the environment type, and hit **Save**.
+3. Click on **GitOps Clusters** tab, and then **+Select Cluster(s)**.
+4. Find the cluster you previously created from the list and hit **Apply Selected**. 
+
 ### Applications
 
 <details open>
@@ -183,53 +212,34 @@ A GitOps Application collects the Repository (**what you want to deploy**), Clus
 
 1. Select **Applications**.
    - Select **New Application**.
-       - Enter the **Application Name**: `guestbook`.
+       - Enter the **Application Name**. For example, `guestbook` or `podinfo`.
        - In **GitOps Agent**, select the Agent that you installed in your cluster and select **Apply**.
-       - Select **New Service**, and then toggle to **YAML** to use the YAML editor.
-       - Select **Edit YAML**, paste in the YAML below, and then select **Save**.  
-
-       ```yaml
-       service:
-         name: gitopsguestbook
-         identifier: gitopsguestbook
-         serviceDefinition:
-           type: Kubernetes
-           spec: {}
-         gitOpsEnabled: true
-       ```
-
-       - Select **New Environment**, and the toggle to **YAML** to use the YAML editor.
-       - Select **Edit YAML**, paste in the YAML below, and then select **Save**.  
-       
-       ```yaml
-       environment:
-         name: gitopsenv
-         identifier: gitopsenv
-         description: ""
-         tags: {}
-         type: PreProduction
-         orgIdentifier: default
-         projectIdentifier: default_project
-         variables: []
-       ```
+       - In **Service** and **Environment**, select the service and  environment you previously created.  
        - Next, select **Continue**, keep the **Sync Policy** settings as is, and select **Continue**.
        - In **Repository URL**, select the **Repository** you created earlier, and then select **Apply**.
-       - Select **master** as the **Target Revision**, type `guestbook` in the **Path**, and then select **Enter**.
+       - Select **master** as the **Target Revision**.
+            - Type `guestbook` in the **Path** for the Argo CD option.
+            - Type `kustomize` in the **Path** for the Flux CD option.
+       - Hit **Enter**. 
        - Select **Continue** and select the **Cluster** created in the above steps.
-       - In **Namespace**, enter the target namespace for Harness GitOps to sync the application.
-       - Enter `default` and select **Finish**.
+       - In **Namespace**, enter the target namespace for Harness GitOps to sync the application, for example, `gitops-agent`.
+       - Select **Finish**.
 2. Finally, it's time to **Synchronize** the GitOps Application state. Select **Sync**, check the Application details, and then select **Synchronize** to initiate the deployment.
-   - After a successful execution, you can check the deployment on your Kubernetes cluster using the following command:  
+   - After a successful execution, you can check the deployment on your Kubernetes cluster using the following command (replace `NAMESPACE` with the namespace where you deployed the application):  
 
     ```bash
-    kubectl get pods -n default
+    kubectl get pods -n NAMESPACE
     ```
-   - To access the Guestbook application deployed via the Harness Pipeline, port forward the service and access it at [http://localhost:8080](http://localhost:8080):
+   - To access the application deployed via the Harness Pipeline, port forward the service and access it at [http://localhost:8080](http://localhost:8080):
 
     ```bash
-    kubectl port-forward svc/guestbook-ui 8080:80
+    kubectl port-forward svc/guestbook-ui 8080:80 -n NAMESPACE
     ```
+**OR**
 
+    ```bash
+    kubectl port-forward svc/podinfo 8080:9898 -n NAMESPACE
+    ```
 A successful Application sync will display the following status tree under **Resource View**.
 
 ![GitOps](../static/k8s-manifest-tutorial/gitops.png)
