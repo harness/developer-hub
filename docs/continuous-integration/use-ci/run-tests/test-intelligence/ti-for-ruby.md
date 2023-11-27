@@ -362,9 +362,15 @@ Used to [enable test splitting for TI](./ti-test-splitting.md).
 
 ### Pre-Command
 
-You can enter commands for setting up the environment before running the tests.
+You can enter commands for setting up the environment before running the tests, such as `bundle install`.
 
 If a script is supplied here, select the corresponding **Shell** option.
+
+:::info
+
+If you need to run `bundle install` before running tests, you must include `bundle install` in the `preCommand`.
+
+:::
 
 ### Post-Command
 
