@@ -706,7 +706,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16</td>
-        <td>Allow users leveraging Kubernetes version 1.16 or later to perform steady state check for Helm deployments.</td>
+        <td>There is a behavior change in how HArness tracks managed workloads for rollback. We are not using anymore a Config Map matching the deployed resources release name to track managed workloads for rollback. We will use `helm get manifest` to retrieve the workloads from a helm release. For steady-state checks of the kubernetes jobs, we’re planning to provide an option in account/org/project settings, by default we will not do this. For customer's who didn't have this feature flag enabled before, they may start seeing that the Wait for steady state check will not be skipped and will need to configure it. </td>
     </tr>
     <tr>
         <td>CDS_HELM_VERSION_3_8_0</td>
