@@ -276,3 +276,7 @@ Max concurrency changes based on the following:
 * If you select **Deploy to Environments or Infrastructures in parallel**, Max concurrency is equal to the number of environments or infrastructures.
 * If you select **Deploy services in parallel** and **Deploy to Environments or Infrastructures in parallel**, Max concurrency is equal to the number of services multiplied by the number of environments.
 
+## Limitations
+
+* Reconciliation for services, environments & infrastructures is not supported for deployments using multiple services, environments or infrastructures respectively.
+
