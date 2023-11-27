@@ -442,4 +442,26 @@ The timeout limit for the step. Once the timeout is reached, the step fails and 
 
 ## Troubleshooting TI for Ruby
 
-Test Intelligence results can be inaccurate for Ruby repos using dynamically generated code or Rails apps using [Spring](https://github.com/rails/spring).
+### Cannot find rspec helper file
+
+The following log line indicates that Test Intelligence can't locate an rspec helper file in your code repo:
+
+```
+Unable to write rspec helper file automatically cannot find rspec helper file. Please make change manually to enable TI.
+```
+
+This usually occurs if the helper file has a name other than `spec_helper.rb`.
+
+To resolve this, add the following line to your rspec helper file:
+
+```
+set -e; echo "require_relative '/tmp/engine/ruby/harness/ruby-agent/test_intelligence.rb'" >> lib/vagrant/shared_helpers.rb
+```
+
+### Dynamically generated code
+
+Test Intelligence results can be inaccurate for Ruby repos using dynamically generated code.
+
+### Rails apps using Spring
+
+Test Intelligence results can be inaccurate for Rails apps using [Spring](https://github.com/rails/spring).

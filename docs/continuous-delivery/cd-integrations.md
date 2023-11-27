@@ -108,10 +108,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Provides new <a href="/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#individual-service-dashboards">dashboard views for services and environments</a> <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>CDS_TERRAFORM_CLOUD</td>
-        <td>Enables <a href="/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments">Terraform Cloud support in Harness</a> <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDS_K8S_SOCKET_CAPABILITY_CHECK_NG</td>
         <td>Replaces the HTTP capability check for the Kubernetes connector with socket capability. <b>This feature is in Beta.</b></td>
     </tr>
@@ -278,10 +274,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Exposes <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts">Helm Chart expressions</a> for reference in other steps and settings. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>PIE_EXPRESSION_PLAYGROUND</td>
-        <td>Helps the user experiment with expressions to see what could be the expected/resolved value without running the pipeline. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDS_NG_SERVICE_PRINCIPAL_FOR_CUSTOM_WEBHOOK</td>
         <td>Makes authenticated custom Webhook calls use the service principal instead of the principal inherited from the API key. <b>This feature is in Beta.</b></td>
     </tr>
@@ -353,10 +345,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDS_NG_UPDATE_MULTIPLE_SNOW_CHANGE_REQUEST</td>
         <td>Enable the option to update multiple tasks in ServiceNow.</td>
-    </tr>
-    <tr>
-        <td>CDS_WEBAPP_ENABLE_CLEAN_OPTION</td>
-        <td>Cleans the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial">Azure WebApp target directory</a> prior to deployment. <b>This feature is in Public Preview.</b> </td>
     </tr>
     <tr>
         <td>PIE_SIMPLIFY_LOG_BASE_KEY</td>

@@ -13,10 +13,13 @@ import TabItem from '@theme/TabItem';
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/continuous-delivery/rss.xml" />
 
-Review the notes below for details about recent changes to Harness Continuous Delivery & GitOps (NextGen SaaS). For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+These release notes describe recent changes to Harness Continuous Delivery & GitOps (NextGen SaaS). For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
 
-:::info note
-Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe might not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page in your Harness account.
+:::info About Harness Release Notes
+
+* **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
+* **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+
 :::
 
 <details>
@@ -450,10 +453,6 @@ This release does not include early access features.
 - Option to clean the target directory prior to deploying an Azure Web App (CDS-76724)
 
   You can now clean the target directory before deploying an Azure Web App. For more information, go to [Azure Web Apps deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial).
-
-  :::note
-  This feature is behind the feature flag `CDS_WEBAPP_ENABLE_CLEAN_OPTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-  :::
 
 #### Fixed issues
 

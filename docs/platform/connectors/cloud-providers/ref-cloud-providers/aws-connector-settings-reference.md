@@ -1116,11 +1116,6 @@ You can access AWS GovCloud with AWS GovCloud credentials (AWS GovCloud account 
 
 ### AWS backoff strategy
 
-:::note
-
-Currently, this functionality is behind the feature flag `CDS_AWS_BACKOFF_STRATEGY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 In some Harness CloudFormation and ECS deployments you might get failures with `ThrottlingException` or `Rate exceeded` errors for CloudFormation and ECS API calls.
 

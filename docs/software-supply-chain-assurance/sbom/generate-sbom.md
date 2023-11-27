@@ -31,7 +31,7 @@ To generate SBOM in Harness, you need a pipeline with a [CI (build) stage](/docs
 
 Keys are used to sign and verify attestations.
 
-1. Generate a public and private key pair. For example, you can use [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/) to generate key pairs.
+1. Use [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/) to generate a public and private key pair
 2. Create two [Harness file secrets](/docs/platform/secrets/add-file-secrets), one for the private key file and one for the public key file.
 3. Create a [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) to store the password for the private key.
 
@@ -41,6 +41,12 @@ Use the **SSCA Orchestration** step to generate an SBOM in either the **Build** 
 
 * In a **Build** stage, add the **SSCA Orchestration** step after the artifact (image) has been pushed to an artifact repository.
 * In a **Deploy** stage, add the **SSCA Orchestration** step before the deployment step.
+
+:::info 
+
+SSCA Orchestration and Enforcement steps in deploy stage can only be used in the container step group
+
+:::
 
 The **SSCA Orchestration** step has the following settings:
 

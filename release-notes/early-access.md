@@ -173,7 +173,6 @@ For a complete list of CD early access features, go to [Active CD feature flags]
 * **Release date:** October 2023
 * **Release version:** 81008
 * **Issue number:** CDS-76724
-* **Feature flag:** `CDS_WEBAPP_ENABLE_CLEAN_OPTION`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 You can clean the target directory before deploying an Azure Web App. For more information, go to [Azure Web Apps deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial).
@@ -234,17 +233,18 @@ With this feature flag enabled, you can:
 * Migrate Services with Helm Chart from Helm Repository stored Artifacts from CG to NG. This helps in migrations.
 * Configure multiple Helm Charts in the manifests. This provides feature parity with Harness FirstGen. Helm Charts can now be configured from the Helm Repository as Artifacts that allow users to select the Helm chart for deployment. The UI also now differentiates between manifests and overrides in service.
 
-### Digest support for Nexus 3, GitHub, Artifactory artifact sources
+<!-- ### Digest support for Nexus 3, GitHub, Artifactory artifact sources
 
 * **Release date:** July 2023
 * **Release version:** 79916
 * **Issue number:** CDS-71711
+* **Feature Flag:** REMOVED IN PR 4190
 
 Digest support added for Nexus 3, Github, and Artifactory [artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 
 The **Artifact Details** page has an optional **Digest** setting where you can specify the digest/SHA for a container image artifact.
 
-Specifying an image by digest, rather than just tag, is useful when you want to ensure that the image you deploy for a service is fixed and immutable. If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline execution fails.
+Specifying an image by digest, rather than just tag, is useful when you want to ensure that the image you deploy for a service is fixed and immutable. If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline execution fails. -->
 
 ### Scheduled automatic approvals for manual approval steps
 
@@ -292,13 +292,14 @@ For Harness services using the Tanzu deployment type, [config files can be confi
 
 **Update (Delegate version 23.05.79214, May 2023):** You can add Tanzu Application Service (TAS) [config files](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/add-config-files) from GitHub.
 
-### Protect secrets in webhook triggers that use secret decryption on delegates
+<!-- ### Protect secrets in webhook triggers that use secret decryption on delegates
 
 * **Release date:** April 2023
 * **Release version:** Delegate version 23.04.79111
 * **Issue number:** CDS-58488, ZD-42117
+* **Feature flag:** REMOVED IN PR 4185
 
-Github triggers that use a secret for authentication will now use the same delegate selectors saved in the secret's Harness secret manager.
+Github triggers that use a secret for authentication will now use the same delegate selectors saved in the secret's Harness secret manager. -->
 
 ### Variable expressions in plain text config files
 
@@ -347,6 +348,37 @@ In some instances, the workload spec was not updated properly when `rollout undo
 Enabling declarative rollback disables versioning (even if the **Skip Versioning** checkbox is left unchecked), since versioning was introduced with the imperative rollback design. However, versioning is not needed with [declarative rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#declarative-rollback).
 
 The delegate's service account needs the permission to create, update, and read secrets in the defined infrastructure namespace. Typically, delegates already have these permissions, but if cluster roles are strictly scoped, this could cause failures. For information on cluster roles for the delegate, go to [Install Harness Delegate on Kubernetes](/tutorials/platform/install-delegate/).
+
+#### ECS Run Task support
+
+* **Release date:** October 2022
+* **Issue number:** CDS-57721, ZD-41676
+* **Feature flag:** `NG_SVC_ENV_REDESIGN` and `ECS_NG`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+For ECS deployments, you can deploy artifacts to your Amazon Elastic Container Service (ECS) clusters using a Rolling, Canary, and Blue Green strategies. For more information, go to the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
+
+**Update (October 2022):** In addition to deploying tasks as part of your standard ECS deployment, you can use the ECS Run Task step to run individual tasks separately as a step in your ECS stage. The ECS Run Task step is available in all ECS strategy types. An example of when you run a task separately is a one-time or periodic batch job that does not need to keep running or restart when it finishes. For more information, go to the [ECS tutorial's run task step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
+
+#### Enhancements for Secure Shell and WinRM deployments
+
+* **Release date:** October 2022
+* **Feature flag:** `NG_SVC_ENV_REDESIGN`, `SSH_NG`, and `PIPELINE_MATRIX`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Fpr traditional deployments using SSH or WinRM, you can deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
+
+These deployments are called Traditional because they use Secure Shell and PowerShell scripts and a traditional runtime environment as opposed to containers and orchestration mechanisms, like Kubernetes.
+
+For more information, go to [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng) and [WinRM deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial).
+
+#### Custom deployments using Deployment Templates
+
+* **Release date:** October 2022
+* **Feature flag:** `NG_SVC_ENV_REDESIGN` and `NG_DEPLOYMENT_TEMPLATE`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+In some cases, you might use a platform that doesn't have first class support in Harness, such as OpenStack, WebLogic, WebSphere, Google Cloud functions, etc. Harness calls these non-native deployments. For non-native deployments, Harness provides a custom deployment option using Deployment Templates. For more information, go to the [Custom deployments using deployment templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
 
 <!-- ## CET early access features
 
@@ -775,37 +807,6 @@ For more information, go to the [Azure Web Apps deployment tutorial](/docs/conti
 * **Feature flag:** `TERRAFORM_REMOTE_BACKEND_CONFIG`
 
 Terraform Backend Configuration file path in the Terraform Apply step now supports remote file repos. For more details, go to [Provision with the Terraform Apply Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/).
-
-#### ECS Run Task support
-
-* **GA date:** Late 2022/Early 2023
-* **Early access release date:** October 2022
-* **Issue number:** CDS-57721, ZD-41676
-* **Feature flag:** `NG_SVC_ENV_REDESIGN` and `ECS_NG`
-
-For ECS deployments, you can deploy artifacts to your Amazon Elastic Container Service (ECS) clusters using a Rolling, Canary, and Blue Green strategies. For more information, go to the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
-
-**Update (October 2022):** In addition to deploying tasks as part of your standard ECS deployment, you can use the ECS Run Task step to run individual tasks separately as a step in your ECS stage. The ECS Run Task step is available in all ECS strategy types. An example of when you run a task separately is a one-time or periodic batch job that does not need to keep running or restart when it finishes. For more information, go to the [ECS tutorial's run task step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
-
-#### Enhancements for Secure Shell and WinRM deployments
-
-* **GA date:** Late 2022/Early 2023
-* **Early access release date:** October 2022
-* **Feature flag:** `NG_SVC_ENV_REDESIGN`, `SSH_NG`, and `PIPELINE_MATRIX`
-
-Fpr traditional deployments using SSH or WinRM, you can deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
-
-These deployments are called Traditional because they use Secure Shell and PowerShell scripts and a traditional runtime environment as opposed to containers and orchestration mechanisms, like Kubernetes.
-
-For more information, go to [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng) and [WinRM deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial).
-
-#### Custom deployments using Deployment Templates
-
-* **GA date:** Late 2022/Early 2023
-* **Early access release date:** October 2022
-* **Feature flag:** `NG_SVC_ENV_REDESIGN` and `NG_DEPLOYMENT_TEMPLATE`
-
-In some cases, you might use a platform that doesn't have first class support in Harness, such as OpenStack, WebLogic, WebSphere, Google Cloud functions, etc. Harness calls these non-native deployments. For non-native deployments, Harness provides a custom deployment option using Deployment Templates. For more information, go to the [Custom deployments using deployment templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
 
 #### Simplified Git Experience
 

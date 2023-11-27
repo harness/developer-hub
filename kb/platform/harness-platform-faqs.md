@@ -1786,6 +1786,40 @@ You can refer to this [documentation](https://developer.harness.io/docs/platform
 
 Yes, the secrets pulled by a delegate during pipeline execution do not make their way back to the Harness platform. Delegates connect to various secret managers as the pipeline progresses, but the secret information itself is not sent to Harness. This ensures that production secrets remain secure and are not exposed within the Harness platform. You can refer to these [docs](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
+#### Will we push up the Ubuntu immutable delegate to Dockerhub?
+
+No, our Dockerfiles are made public on GitHub so that you have the option to modify and build them according to your needs. We do not push the Ubuntu immutable delegate images to Dockerhub; instead, you can access and customize the Dockerfiles from our GitHub repository.
+
+#### Are we planning to add support for multiple account Id for SMP?
+
+Currently SMP is single account only, multiple account support is yet to come.
+
+#### How can we configure OIDC with GCP WIF for Harness CI Cloud builds?
+
+Using the FF `PL_GCP_OIDC_AUTHENTICATION` you can configure the same, you can refer [here](https://developer.harness.io/tutorials/platform/configure-oidc-gcp-wif-ci-hosted), later on enable this functionality for Harness Delegate and AWS STS.
+
+#### Do we have docs for permissions references?
+
+Yes, you can refer these docs: 
+- [document1](https://developer.harness.io/docs/platform/automation/api/api-permissions-reference/)
+- [document2](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference/)
+
+#### How can we disable version override from specific delegate?
+
+Version override is not controlled from UI. If we need to disable version override it will be for entire account. You can refer [here](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/) to know about delegates upgrades.
+
+#### Can I access the Harness API from a React app, and how can I handle CORS issues when making API calls with the x-api-key header?
+
+Yes, the Harness API is accessible from React (or any JavaScript library) apps. However, when encountering CORS (Cross-Origin Resource Sharing) issues, it's crucial to understand that browsers make pre-flight CORS requests, especially when the host origin and the server origin are different.
+
+To resolve CORS issues:
+- Same Origin: If your UI and API share the same origin (e.g., UI and API both on app.harness.io), there won't be CORS calls.
+- Different Origin: If your app is on a different origin (e.g., example.com/harness) and makes non-GET requests to app.harness.io/api/, the browser initiates a pre-flight request.
+- Server Configuration: Ensure your API server includes the necessary CORS headers, such as access-control-allow-origin and access-control-allow-headers, to explicitly allow the requesting origin and any custom headers like x-api-key.
+
+By configuring your server to allow the necessary origins and headers, you can address CORS issues when making API calls from your React app. This ensures a smooth interaction with the Harness API while securing your application.
+
+
 
 
 

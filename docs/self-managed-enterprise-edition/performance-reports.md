@@ -54,9 +54,6 @@ Helm chart : https://github.com/harness/helm-charts/releases/tag/harness-0.9.2
 #### Override file: 
 https://github.com/harness/helm-charts/blob/main/src/harness/override-perf-ci-cd-ff.yaml
 
-#### Feature flags: 
-`PIE_STATIC_YAML_SCHEMA`
-
 #### Manager config: 
 update `LOG_STREAMING_SERVICE_EXTERNAL_URL` = `<smp host url>`/log-service/
 
@@ -155,9 +152,6 @@ Helm chart : https://github.com/harness/helm-charts/releases/tag/harness-0.8.2
 
 #### Override file: 
 https://github.com/harness/helm-charts/blob/main/src/harness/override-perf-ci-cd-ff.yaml
-
-#### Feature flags: 
-`PIE_STATIC_YAML_SCHEMA`
 
 ### Test scenarios
   

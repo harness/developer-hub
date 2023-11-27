@@ -14,7 +14,7 @@ Harness integrates with [Jenkins](https://jenkins.io/), enabling you to run Jen
 
 ## Supported platforms and technologies
 
-For more information, go to [supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies).
+For more information and supported versions, go to [supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies).
 
 ## Limitations and requirements
 
