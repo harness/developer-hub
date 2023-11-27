@@ -49,3 +49,24 @@ If you want to restrict a user or user group to deploy to a specific environment
 3. Assign the role and resource group to the user or user group.
 
 ![](./static/services-and-environments-overview-22.png)
+
+
+## Deleting Services in Harness
+
+Harness lets users delete services that haven't been deployed by a pipeline. However deleting a service that was previously deployed carries carries licensing implications in Harness. By default Harness doesn't let you delete that service.
+
+When a user deletes a service in Harness, that means it will delete the Harness service object. The Manifests, the resources etc. that were deployed will not be cleaned up. It is on the user to clean those resources up in the respective infrastructures. 
+
+### Key Points
+
+- Services are what Harness uses to calculate service licenses.
+- When a user deploys a service once, regardless of the pipeline outcome (i.e. Success or Failure) the service is treated as active
+- When a user attempts to delete an active service, by default Harness will not allow you to delete it because it's being calculated for licenses
+- Users can delete active services if they have enabled Force Delete on their account.
+
+### Enabling Force Delete of Services
+
+By Navigating to `Account Resources > Default Settings > General`, you will see an option for `Enable Force Delete of Harness Resources`. Please enable that by clicking the checkbox. When you navigate to a service that has been deployed, you can now delete the service. Harness will no longer managed the resources and track the deployed instances associated with the Service. This will impact your Service Dashboard view which tells you what are the tracked instances of a given service. 
+
+
+
