@@ -509,10 +509,13 @@ You deployment is successful.
 
 ### Helm Steady State Check
 
-#### For Native Helm Service Deployments Type
-By Default, Harness will check for the steady state of deployed Helm resources. If you want to check the steady state for kubernetes jobs for Native Helm Deployments, we now have a setting that will enable that. Please navigate to `Account Settings > Account Resources > Default Settings` and navigate to the Continuous Deployment Section. This setting can be configured at the project, organization, and account level. You will see the option `Enable Native Helm steady state for jobs` this will check the steady state of the jobs deployed with the Helm Chart. With the checkbox configuration enabled, during a Native Helm Deployment you will see harness use the `helm get manifest <+release.name>` command to get the details to check the steady state. With the setting enabled, we are no longer using the ConfigMap to check for status. 
+Harness has two ways of performing Helm Steady State Checks for Native Helm Deployment types (Helm Deployments managed by Helm). Depending on your use case and needs you can opt into either option via the setting. By default, Harness will perform a Helm Steady State Check on the deployed resources however, the mechanism of how Harness' does it differs based on the setting.
 
-**Old Way of Checking Helm Steady State**
+#### Disabled  Native Helm steady state for jobs 
+
+Harness will check for the steady state of the deployed resources via the ConfigMap Harness generates to manage and track the deployment. The limitation of this method, is we do not track Kubernetes Jobs object that are being created as part of the deployment and wait for them to reach a steady state. 
+
+**Helm Steady State with Setting Disabled**
 
 ```
 kubectl --kubeconfig=config get events --namespace=default --output=custom-columns=KIND:involvedObject.kind,NAME:.involvedObject.name,NAMESPACE:.involvedObject.namespace,MESSAGE:.message,REASON:.reason --watch-only  
@@ -521,7 +524,11 @@ kubectl --kubeconfig=config rollout status Deployment/release-e008...ee-nginx --
 ```
 
 
-**New Way of Checking for Helm Steady State**
+#### Enable Native Helm steady state for jobs - Enabled
+By Default, Harness will check for the steady state of deployed Helm resources. If you want to check the steady state for Kubernetes jobs for Native Helm Deployments, we now have a setting that will enable that. Please navigate to `Account Settings > Account Resources > Default Settings` and navigate to the Continuous Deployment Section. This setting can be configured at the project, organization, and account level. You will see the option `Enable Native Helm steady state for jobs` this will check the steady state of the jobs deployed with the Helm Chart. With the checkbox configuration enabled, during a Native Helm Deployment, you will see Harness use the `helm get manifest <+release.name>` command to get the details to check the steady state. With the setting enabled, we are no longer using the ConfigMap to check for status. 
+
+
+**NHelm Steady State with Setting Enabled**
 
 ```
 Retrieve helm manifest from release [release-75d461a29efd32e5d22b01dc0f93aa5275e2f003] and namespace [default]
