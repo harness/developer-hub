@@ -795,8 +795,10 @@ The **Security Tests** tab includes a set of pull-down menus so you can filter t
 
 * **GA date:** August 2023
 * **Early access release date:** July 2023
-* **Early access Release version:** 1.61.1
+* **Early access Release version:** 1.61.1  
 * **Feature flag:** `STO_BASELINE_REGEX`
+
+<!-- -->
 
 You can now define dynamic target baselines using regular expressions. Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. Dynamic baselines also make it easier to track the introduction and remediation of specific vulnerabilities.
 
