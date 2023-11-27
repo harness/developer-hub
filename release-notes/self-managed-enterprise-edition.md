@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-11-01T10:00
+date: 2023-11-27T10:00
 sidebar_position: 15
 ---
 ```mdx-code-block
@@ -13,14 +13,168 @@ import TabItem from '@theme/TabItem';
 import delete_project from './static/delete-project.png'
 ```
 
-
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/self-managed-enterprise-edition/rss.xml" />
 
-Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+These release notes describe recent changes to Harness Harness Self-Managed Enterprise Edition, NextGen.
 
-## Latest: Version 80917
+:::info About Harness Release Notes
+
+-  **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+- **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, FirstGen Self-Managed Enterprise Edition, and FirstGen release notes.
+
+:::
+
+Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+
+## Latest: Version 8xxxx
 
 ### New features and enhancements
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.11.0](https://github.com/harness/helm-charts/releases/tag/harness-0.11.0) |
+| Air Gap Bundle | [0.11.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.11.0) |
+| NG Manager | 8xxxx |
+| CI Manager | xxxx |
+| Pipeline Service | x.xx.xx |
+| Platform Service | xxxxx |
+| Access Control Service | xxxxx |
+| Change Data Capture | xxxxx |
+| Test Intelligence Service | release-xxx |
+| NG UI | x.xxx.xx |
+| LE NG | xxxxx |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.11.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.0/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.0/sto_images.tgz" \
+  .
+```
+
+#### Self-Managed Enterprise Edition
+
+- 
+
+- 
+
+#### Continuous Delivery & GitOps
+
+- 
+
+- 
+
+#### Continuous Integration
+
+- 
+
+- 
+
+#### Harness Delegate
+
+- 
+
+- 
+
+#### Harness Platform
+
+- 
+
+- 
+
+#### Security Testing Orchestration
+
+- 
+
+#### Service Reliability Management
+
+- 
+
+### Early access features
+
+#### Continuous Delivery & GitOps
+
+- 
+
+- 
+
+#### Continuous Integration
+
+- 
+
+### Fixed issues
+
+#### Self-Managed Enterprise Edition
+
+- 
+
+- 
+
+#### Chaos Engineering
+
+- 
+
+#### Continuous Delivery & GitOps
+
+- 
+
+- 
+
+#### Continuous Error Tracking
+
+- 
+
+#### Continuous Integration
+
+- 
+
+- 
+
+#### Feature Flags
+
+- 
+
+- 
+
+#### Harness Delegate
+
+- 
+
+- 
+
+#### Harness Platform
+
+- 
+
+- 
+
+#### Service Reliability Management
+
+- 
+
+#### Security Testing Orchestration
+
+- 
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Version 80917
+
+##### New features and enhancements
 
 This release includes the following Harness module and component versions.
 
@@ -55,7 +209,7 @@ gsutil -m cp \
   .
 ```
 
-#### Self-Managed Enterprise Edition
+##### Self-Managed Enterprise Edition
 
 - Pod Disruption Budgets (PDBs) have been added to all applicable deployments/StatefulSets. (SMP-777)
 
@@ -89,7 +243,7 @@ gsutil -m cp \
                      NG_LICENSE: ""
       ```
 
-#### Continuous Delivery & GitOps
+##### Continuous Delivery & GitOps
 
 - Harness CD has a new account-level setting to override the default behavior when deleting a pipeline, which deletes all past executions of that pipeline as well. (CDS-71173, ZD-50017)
 
@@ -112,7 +266,7 @@ gsutil -m cp \
 
 - There was no way in Pipeline Studio to add step group variables when creating a step group template. This section has now been added. (CDS-78683)
 
-#### Continuous Integration
+##### Continuous Integration
 
 - Improved support for `DRONE_` environment variables in CI pipelines. This improves compatibility for [plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and makes it easier to migrate from standalone Drone to Harness CI. (CI-7600)
 
@@ -122,7 +276,7 @@ gsutil -m cp \
 
 - When you [enable Test Intelligence for Scala or Kotlin](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala), the **Packages** and **Test Annotations** fields are now available in the Visual editor. (CI-9589)
 
-#### Harness Delegate
+##### Harness Delegate
 
 - To safeguard your operations and protect against potential security vulnerabilities, Harness deprecated the Helm 2 binary from delegates with an immutable image type (image tag `23.08.80308`). For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). (PL-40409)
 
@@ -132,7 +286,7 @@ gsutil -m cp \
 
 - When you create a new delegate, the token that is populated in the YAML or Helm file is modified. Harness first retrieves the default token of the scope. If it is not present, Harness then retrieves the oldest active token from the scope. If neither of these tokens are available, Harness sends a message "No token available. Please create a new token and try again." (PL-40669)
 
-#### Harness Platform
+##### Harness Platform
 
 - The Roles page now supports a list view in addition to the existing card view. In addition to the information shown in the card view, the list view shows you which resources are selected for the role. To see the list view, in the top-right corner of the Roles page, select the list view button. (PL-32183)
 
@@ -207,19 +361,19 @@ gsutil -m cp \
 
 - Added an **Exclude** field to the SonarQube step and removed the **Include** step. The **Exclude** field corresponds to the `sonar.exclusions` setting, which you can use to [narrow the focus](https://docs.sonarsource.com/sonarqube/latest/project-administration/analysis-scope/#excluding-specific-rules-from-specific-files) of a SonarQube scan. (STO-6441)
 
-#### Service Reliability Management
+##### Service Reliability Management
 
 - The **Service Health** tab on the monitored service details page has been renamed to **Change Impact**. (SRM-15261)
 
-### Early access features
+#### Early access features
 
-#### Continuous Delivery & GitOps
+##### Continuous Delivery & GitOps
 
 - Added support for Post Prod Rollback for ASG deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/rollback-deployments). This feature is currently behind the Feature Flag `POST_PROD_ROLLBACK`. Please contact Harness Support to enable. (CDS-77450, CDS-76352)
 
 - Added support for Post Prod Rollback for Native Helm deployment types. For these Services, a Rollback to the previous version can be triggered from the Services Dashboard. For more information, go to [Rollback Deployments](/docs/continuous-delivery/manage-deployments/rollback-deployments). This feature is behind the Feature Flag `POST_PROD_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-78243)
 
-#### Continuous Integration
+##### Continuous Integration
 
 - **GitHub App authentication for GitHub connectors (CI-8577)**
 
@@ -227,9 +381,9 @@ gsutil -m cp \
 
    With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
 
-### Fixed issues
+#### Fixed issues
 
-#### Self-Managed Enterprise Edition
+##### Self-Managed Enterprise Edition
 
 - Helm override files didn't include pod annotations for MongoDB and the verification service. (SMP-1285)
 
@@ -249,11 +403,11 @@ gsutil -m cp \
 
 - Disabled creation of MongoDB and PostgreSQL secrets with external databases. (SMP-2164, ZD-52250)
 
-#### Chaos Engineering
+##### Chaos Engineering
 
 - Fixed an issue with the error message when an experiment is completed with a lower resilience than expected. (CHAOS-2018)
 
-#### Continuous Delivery & GitOps
+##### Continuous Delivery & GitOps
 
 - Fixed dashboard refresh issue where selecting a filter prolonged query times. With this fix, dashboards no longer refresh automatically when a user changes the filter. (CDB-1198, ZD-50972)
 
@@ -573,13 +727,13 @@ gsutil -m cp \
 
 - Fixed a search issue where searching by service showed no results, even when choosing a deployment. (CDS-79822, ZD-51091)
 
-#### Continuous Error Tracking
+##### Continuous Error Tracking
 
 - When configuring notifications for code errors and selecting the **Any** option, the **Timeout Error** type was incorrectly listed as one of the choices in the dropdown menu. (CET-1514)
 
   This issue has been resolved. Now, when configuring notifications for code errors and selecting the **Any** option, the **Timeout Error** type is not listed in the dropdown menu.
 
-#### Continuous Integration
+##### Continuous Integration
 
 - You can now use [expressions](/docs/platform/Variables-and-Expressions/harness-variables), such as those for [matrix strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism#matrix-strategies), in [build infrastructure `platform` settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#infrastructure) when working in the YAML editor. (CI-6830)
 
@@ -627,7 +781,7 @@ gsutil -m cp \
 
 - **Version 5802:** Fixed an issue where build pods weren't cleaned up after the build finished. This was due to the cleanup task targeting pods to cleanup by pod IP address. In scenarios where a pod creation request fails, there is no pod IP available for the cleanup task to target. Now, the cleanup task can use pod names or IP addresses. (CI-9699, CI-9688, ZD-51016, ZD-51035, ZD-51064) <!-- sept 22 2023 -->
 
-#### Feature Flags
+##### Feature Flags
 
 - Linking to a specific project's targeting page did not load from outside the app. (FFM-8053)
 
@@ -643,7 +797,7 @@ gsutil -m cp \
 
 - Fixed the casing of two feature flags. (FFM-9416)
 
-#### Harness Delegate
+##### Harness Delegate
 
 - Fixed an issue where the token value was missing in the delegate token list API call. (PL-39790)
 
@@ -657,7 +811,7 @@ gsutil -m cp \
 
    Harness recommends that you upgrade to delegate version 23.09.80511 to resolve this issue.
 
-#### Harness Platform
+##### Harness Platform
 
 - Harness did not handle the `Unknown Host Exception` error appropriately and, consequently, showed the misleading "Delegates are not available for performing operation" message when you configured LDAP incorrectly (for example, you entered an incorrect host or port number). (PL-28077)
 
@@ -814,19 +968,19 @@ gsutil -m cp \
 
    This item is available with Harness Platform version 80909 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-#### Service Reliability Management
+##### Service Reliability Management
 
 - The API endpoint `/cv/api/monitored-service/versions_int1` was not functioning correctly. (SRM-15321)
   
     This issue has been resolved. Now, in cases where the "sources" field is received as null, the system treats it as equivalent to `{ healthSources: [], changeSources: [] }`.
 
-#### Security Testing Orchestration
+##### Security Testing Orchestration
 
 - Fixed a UI issue where the module sidebar in the left-side menu would scroll when a user clicked different menus within STO. With this fix, the module sidebar maintains its position when a user clicks different menus. (STO-6219)
 
-### Patches
+#### Patches
 
-#### 0.10.1
+##### 0.10.1
 
 This release includes the following Harness module and component versions.
 
@@ -861,14 +1015,9 @@ gsutil -m cp \
   .
 ```
 
-### Fixed issue
+#### Fixed issue
 
 - Configured `socket-timeout` to handle a higher volume and scale of customer billing data. (CCM-15026)
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### Version 80220
 
