@@ -83,39 +83,51 @@ Complex resource configurations can make it difficult to understand the meaning 
 
 ## Contributing to the Harness Terraform Provider
 
-Harness welcomes contributions to the Harness Terraform Provider. Go to the [Terraform Provider Repo](https://github.com/harness/terraform-provider-harness) to view the source code.
+Harness welcomes contributions to the Harness Terraform Provider. Go to the [Terraform Provider Repo](https://github.com/harness/terraform-provider-harness) to access the source code.
 
 ### Build and test locally
 
+You can build the Harness Terraform Platform and test it locally.
+
+To build and test locally, do the following:
+
 1. Run the following to clone the repo to your local directory. 
+   
+   ```
+   git clone https://github.com/harness/terraform-provider-harness.git
+   ```
 
-   `git clone https://github.com/harness/terraform-provider-harness.git`
+2. Run the following command.
+   
+   ```
+   go mod tidy
+   ```
 
-2. Run `go mod tidy`.
-3. Run `go build -o terraform-provider-harness`.
+3. Run the following to build Harness Terraform Provider.
+
+   ```
+   go build -o terraform-provider-harness`
+   ```
+
 4. Create a file called `local.sh` in the root directory of the repository, and copy the following script to the bash file.
 
-
-```SH
-#!/bin/sh
-
-version=0.40.2 #specify in this format 
-source=registry.terraform.io/harness/harnessregistry.terraform.io/harness/harness
-platform=darwin_amd64
-
-mkdir -p ~/.terraform.d/plugins/$source/$version/$platform/
-
-cp terraform-provider-harness ~/.terraform.d/plugins/$source/$version/$platform/terraform-provider-harness
-```
+   ```SH
+   #!/bin/sh
+    
+   version=0.40.2 #specify in this format 
+   source=registry.terraform.io/harness/harnessregistry.terraform.io/harness/harness
+   platform=darwin_amd64
+   
+   mkdir -p ~/.terraform.d/plugins/$source/$version/$platform/
+   
+   cp terraform-provider-harness ~/.terraform.d/plugins/$source/$version/$platform/terraform-provider-harness
+   ```
 
 5. Run the Bash script `./local.sh`.
-
 
 :::info note
 Make sure the Terraform provider version matches the version in the script.
 :::
-
-
 
 ## Next step
 - [Harness Provider](https://registry.terraform.io/providers/harness/harness/latest/docs)
