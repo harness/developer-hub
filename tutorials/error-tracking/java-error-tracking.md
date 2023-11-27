@@ -110,8 +110,8 @@ Here is a demo that shows you how to identify, resolve, and prevent Java excepti
 
 Here is an interactive video that demonstrates the capabilities of the Harness Error Tracking Java Agent. Select the glowing circle to see the capabilities. To learn more about the Harness Error Tracking Java Agent and request a detailed demo, contact [Harness](https://www.harness.io/interest/error-tracking).
 
+<iframe src="https://demo.arcade.software/Lsj2sDDVCzMbQFnP7kvT?embed" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%' }}></iframe>
 
-<docvideo src="https://demo.arcade.software/Lsj2sDDVCzMbQFnP7kvT?embed" />
 ## Install Harness Error Tracking Java Agent
 
 You can install the Harness Java Exception Tracking Agent in multiple ways. For more information, go to [Java Agent Installation Documentation](https://docs.harness.io/article/nx99xfcoxz-install-the-error-tracking-agent).
