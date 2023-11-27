@@ -11,6 +11,7 @@ You can ingest container-image scan results from [Aqua Security Entrerprise](htt
 
 ### Docker-in-Docker requirements
 
+<!-- -->
 
 ```mdx-code-block
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
