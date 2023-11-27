@@ -783,7 +783,7 @@ This feature includes the following UI enhancements for working with exemptions:
 
 * **GA date:** November 2023
 * **Early access release date:** August 2023
-* **Early access Release version:** 1.69.3
+* **Early access Release version:** 1.64.1
 * **Feature flag:** `STO_DROPDOWN_FILTERS`
 `
 
