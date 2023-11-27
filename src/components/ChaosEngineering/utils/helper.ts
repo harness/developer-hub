@@ -52,6 +52,9 @@ const getCategoryDetails = (category: string): Record<string, string> => {
     case FaultCategory.CloudFoundry:
       setDetails(FaultCategory.CloudFoundry);
       break;
+    case FaultCategory.Windows:
+      setDetails(FaultCategory.Windows);
+      break;
     default:
       details.icon = `${path}/default.svg`;
       details.link = `#`;
@@ -114,6 +117,9 @@ const getFaultDetails = (
       break;
     case FaultCategory.CloudFoundry:
       setDetails(FaultCategory.CloudFoundry);
+      break;
+    case FaultCategory.Windows:
+      setDetails(FaultCategory.Windows);
       break;
     default:
       details.icon = `${path}/default.svg`;
