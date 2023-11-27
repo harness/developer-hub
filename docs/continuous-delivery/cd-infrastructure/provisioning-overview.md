@@ -92,7 +92,7 @@ The following table shows the provisioners you can use with each deployment type
 
 
 |                            | Terraform and Terraform Cloud | CloudFormation | Terragrunt | Azure Resource Manager (ARM) | Azure Blueprint | Shell Script | AWS CDK |
-| -------------------------- | ----------------------------- | -------------- | ---------- | ---------------------------- | --------------- | ------------ |
+| -------------------------- | ----------------------------- | -------------- | ---------- | ---------------------------- | --------------- | ------------ | ------------ |
 | Kubernetes                 | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |   ✔️           |
 | Azure Web Apps             | ✔️                            |                | ✔️           | ✔️                           | ✔️              | ✔️           | ✔️           |
 | AWS ECS                    | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |✔️           |
