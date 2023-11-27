@@ -13,15 +13,63 @@ import TabItem from '@theme/TabItem';
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/security-testing-orchestration/rss.xml" />
 
-Review the notes below for details about recent changes to Security Testing Orchestration, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+These release notes describe recent changes to Harness Security Testing Orchestration (NextGen SaaS).
 
-:::info note
-Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
+:::info About Harness Release Notes
+
+* **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
+* **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+* **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
+
 :::
 
-## Latest: Version 1.72.1
+## Latest: Version 1.74.1
 
 ### New features and enhancements
+
+- The **Exemptions** table now shows the pipeline name in the **Scope** column and not the ID. This keeps the user experience consistent with other areas of the application. (STO-6631)
+
+### Early access
+
+This release does not include Early Access features. 
+
+### Fixed issues
+
+- Fixed an issue that caused the **Issue Details** pane to show target names from other projects in the same account. (STO-6693)
+
+
+### Hotfixes
+
+This release does not include hotfixes. 
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Version 1.73.1
+
+##### New features and enhancements
+
+- You can now scan your repositories and other components used in your code with [Anchore Enterprise](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. (STO-6382)
+
+##### Early access
+
+This release does not include Early Access features. 
+
+##### Fixed issues
+
+- Fixed a configuration issue in a back-end service that prevented AIDA from generating remediation steps. (STO-6610) 
+
+- Fixed a UI issue in the **Security Tests** tab where the **Stage** and **Step** pull-down filters showed the `identifier` fields. These filters now show the `name` fields, which are more human-readable. (STO-6629)
+
+##### Hotfixes
+
+This release does not include hotfixes. 
+
+#### Version 1.72.1
+
+##### New features and enhancements
 
 ```mdx-code-block
 import sto_exemptions_timebound from './static/sto-timebound-exemption.png'
@@ -55,7 +103,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
 
 
-### Early access
+##### Early access
 
 - You are now required to sign an end-user license agreement to access the Harness AI Development Assistant (AIDA) in the account and project scopes. You need to do this even if you could previously use AIDA without signing a EULA. This change was originally introduced in the 80505 platform release. (PL-39723)
 
@@ -65,7 +113,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
   The setting is inherited at the project scope.
 
-### Fixed issues
+##### Fixed issues
 
 - Updated the UI terminology to better communicate the relationship between issues in the current scan vs. previous scans. (STO-6613)
 
@@ -79,14 +127,9 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
 - Fixed a UI issue in **Security Tests** when all vulnerabilities detected in a scan had exemptions. The tab showed "No Security Issues Found", all issue counts were 0, and no issues appeared in the UI even when the selected filter included exempted issues. (STO-6642)
 
-### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes. 
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### Version 1.71.1
 
@@ -276,9 +319,9 @@ This release does not include early access features.
 
 - Fixed a UI issue in the Security Tests tag where the clickable severity tiles &mdash; introduced in version 1.64.1, described [below](#august-09-2023-version-1641) &mdash; had an extra border on the right. (STO-6372)
 
-- Fixed a UI issue where the module sidebar in the left-side menu would scroll when a user clicked different menus within STO. With this fix, the module sidebar maintains its position when a user clicks different menus. (STO-6219)
-
 -->
+
+- Fixed a UI issue where the module sidebar in the left-side menu would scroll when a user clicked different menus within STO. With this fix, the module sidebar maintains its position when a user clicks different menus. (STO-6219)
 
 - Fixed an issue where users could not select multiple projects in the Security Testing Dashboard or any custom dashboards that use STO components. With this fix, you can select multiple projects from a list of checkboxes. (STO-6228)
 
@@ -396,7 +439,7 @@ This release does not include new features.
 
 Harness AI Development Assistant (AIDA) uses state-of-the-art AI technology to streamline the process of triaging and fixing security vulnerabilities. For every vulnerability detected by STO, Harness AIDA explains the issue precisely and provides detailed advice  — including code changes and package upgrades — on how to fix it. Harness AIDA is based on large, well-trained language models. It learns continuously based on feedback and the latest public knowledge. Optionally, you can regenerate advice with additional context and thereby optimize your results. 
 
-Harness AIDA reduces developer toil by streamlining and simplifying the process of fixing vulnerabilities. It enables developers and security personnel to manage security-issue backlogs and address critical issues promptly. Harness AIDA can dramatically reduce your TTR, speed up your software delivery lifecycle, and improve the security posture of your applications and services.
+Harness AIDA reduces developer toil by streamlining and simplifying the process of fixing vulnerabilities. It enables developers and security personnel to manage security-issue backlogs and address critical issues promptly. Harness AIDA can dramatically reduce your TTR, speed up your software delivery lifecycle, and improve the security posture of your applications and services. (STO-5882)
 
 For more information, go to [Remediations with AIDA](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
 

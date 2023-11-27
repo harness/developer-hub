@@ -402,7 +402,7 @@ You can create a maximum of two Merge PR steps in a stage.
 
 :::note
 
-Currently, this feature is behind the feature flag `GITOPS_UPDATE_APP_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag `GITOPS_UPDATE_APP_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 

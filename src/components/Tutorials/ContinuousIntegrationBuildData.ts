@@ -15,6 +15,14 @@ import { MODULES } from "../../constants";
         "",
       list: [
         {
+          title: "C/C++",
+          module: MODULES.ci,
+          description:
+            "Build and test C and C++ applications.",
+          link: "/tutorials/ci-pipelines/build/c",
+          newDoc: true,
+        },
+        {
           title: "C# (.NET Core)",
           module: MODULES.ci,
           description:
@@ -65,7 +73,7 @@ import { MODULES } from "../../constants";
           description:
             "Build and test an Android application.",
           link: "/tutorials/ci-pipelines/build/android",
-          newDoc: true,
+          newDoc: false,
         },
         {
           title: "iOS and macOS",

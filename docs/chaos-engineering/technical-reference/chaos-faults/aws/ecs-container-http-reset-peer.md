@@ -9,11 +9,14 @@ ECS container HTTP reset peer injects HTTP reset on the service whose port is sp
 
 ![ECS Container HTTP Reset Peer](./static/images/ecs-container-http-reset-peer.png)
 
+:::tip
+This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](./ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
+:::
+
 ## Use cases
 ECS container HTTP reset peer:
 - Simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout).
 - Simulates connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
-
 
 ## Prerequisites
 - Kubernetes >= 1.17

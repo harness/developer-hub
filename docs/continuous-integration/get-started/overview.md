@@ -20,9 +20,7 @@ CI executes pipeline steps in containers, isolating code and dependencies from o
 
 The following video introduces Harness CI and walks through a basic Harness CI pipeline.
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
-<docvideo src="https://harness-1.wistia.com/medias/fsc2b05uxz" />
+<docvideo src="https://youtu.be/yQRwVjPTQ5E" />
 
 <!-- div class="hd--embed" data-provider="Wistia" data-thumbnail="">
    <iframe src="//fast.wistia.net/embed/iframe/fsc2b05uxz" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" oallowfullscreen="" msallowfullscreen="" width="620" height="349"></iframe><script src="//fast.wistia.net/assets/external/E-v1.js" async=""></script>
@@ -52,8 +50,6 @@ When a CI pipeline build finishes successfully, the build infrastructure then se
 
 The following video demonstrates how to set up a CI pipeline and run a build.
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 <docvideo src="https://www.youtube.com/embed/r1GLYtOmJmM?feature=oembed" />
 
 <!--div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/kZmOCLCpvmk/hqdefault.jpg"><iframe width=" 480" height="270" src="https://www.youtube.com/embed/r1GLYtOmJmM?feature=oembed" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
@@ -61,8 +57,8 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 If you want to try creating a pipeline for yourself, these tutorials walk through the pipeline creation process:
 
-* [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci)
-* [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
+- [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci)
+- [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 For information about CI pipeline components, go to the [CI key concepts](/docs/continuous-integration/get-started/key-concepts).
 
@@ -80,10 +76,10 @@ Harness hosts, maintains, and upgrades these machines so that you can focus on b
 
 Harness Cloud provides the following advantages:
 
-* Free monthly credits for up to 2,000 build minutes.
-* Starter pipelines for different programming languages.
-* Blazing fast builds on Linux, macOS, and Windows.
-* Get the latest features first. Features may be enabled for Harness Cloud build infrastructure before rolling out to other build infrastructure options.
+- Free monthly credits for up to 2,000 build minutes.
+- Starter pipelines for different programming languages.
+- Blazing fast builds on Linux, macOS, and Windows.
+- Get the latest features first. Features may be enabled for Harness Cloud build infrastructure before rolling out to other build infrastructure options.
 
 :::info What happens when pipelines run on Harness Cloud?
 
@@ -105,7 +101,7 @@ Harness Test Intelligence (TI) helps your test cycle move faster without comprom
 
 Test Intelligence gives you full visibility into which tests were selected and why. This can help you identify negative trends and gain insights to improve test quality and coverage. Using TI doesn't require you to change build and test processes.
 
-To learn more about the Test Intelligence architecture, how it works, and how to enable it, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence).
+To learn more about the Test Intelligence architecture, how it works, and how to enable it, go to [Test Intelligence overview](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
 
 While Test Intelligence is only for unit tests, you can [run a variety of tests in your CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
@@ -113,21 +109,21 @@ While Test Intelligence is only for unit tests, you can [run a variety of tests 
 
 We ran Test Intelligence on our biggest repository, Harness-Core. Here's what we achieved:
 
-* PRs checked: 3000
-* Average UT time without TI: 75 minutes
-* Average UT time with TI: 25 minutes
+- PRs checked: 3000
+- Average UT time without TI: 75 minutes
+- Average UT time with TI: 25 minutes
 
 Here's how Harness Test Intelligence performed with some popular open-source repositories:
 
-| **Project name** | **Average test run time without TI** | **Average test run time with TI** |
-| -- | -- | -- |
-| Harness-Core | 75 mins | 25 mins |
-| Incubator Pinot | 338 mins | 228 mins |
-| Hudi | 58 mins | 43 mins |
-| RocketMQ | 4.6 mins | 3.1 mins |
-| Spring Cloud Alibaba | 0.744 mins | 0.59 mins |
-| Incubator Shenyu | 1.16 min | 0.4 min |
-| Sentinel | 1.90 min | 1 min |
+| **Project name**     | **Average test run time without TI** | **Average test run time with TI** |
+| -------------------- | ------------------------------------ | --------------------------------- |
+| Harness-Core         | 75 mins                              | 25 mins                           |
+| Incubator Pinot      | 338 mins                             | 228 mins                          |
+| Hudi                 | 58 mins                              | 43 mins                           |
+| RocketMQ             | 4.6 mins                             | 3.1 mins                          |
+| Spring Cloud Alibaba | 0.744 mins                           | 0.59 mins                         |
+| Incubator Shenyu     | 1.16 min                             | 0.4 min                           |
+| Sentinel             | 1.90 min                             | 1 min                             |
 
 ### Platform integration
 

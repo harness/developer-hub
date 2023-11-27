@@ -15,9 +15,8 @@ See [Notes](#notes) below for details on other ECS deployment settings and behav
 
 ## Visual summary
 
-<!-- Video:
-https://harness-1.wistia.com/medias/vtlwxnczyh-->
-<docvideo src="https://harness-1.wistia.com/medias/vtlwxnczyh" />
+
+<docvideo src="https://youtu.be/Xo7AvUuxRrw" />
 
 ## Overview
 
@@ -123,6 +122,110 @@ The Harness delegate is a software service you install in your environment. It c
 If you're new to Harness, read [Harness Platform architecture](/docs/get-started/harness-platform-architecture) to learn about how Harness uses a delegate to perform deployment tasks.
 
 1. Follow the steps in [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview) to install a Harness delegate.
+
+2. If you wish to install an ECS Fargate type delegate please see [AWS ECS Fargate Delegate Installation Overview](/docs/platform/delegates/install-delegates/docker-delegate-to-ecs-fargate/).
+
+#### Sample ECS Fargate Delegate Task Definition JSON
+
+```JSON
+  {
+    "containerDefinitions": [
+      {
+        "portMappings": [
+          {
+            "hostPort": 8080,
+            "protocol": "tcp",
+            "containerPort": 8080
+          }
+        ],
+        "cpu": 1,
+        "environment": [
+          {
+            "name": "ACCOUNT_ID",
+            "value": "<ACCOUNT_ID>"
+          },
+          {
+            "name": "DELEGATE_TOKEN",
+            "value": "<DELEGATE_TOKEN>"
+          },
+          {
+            "name": "DELEGATE_TYPE",
+            "value": "DOCKER"
+          },
+          {
+            "name": "INIT_SCRIPT",
+            "value": ""
+          },
+          {
+            "name": "DEPLOY_MODE",
+            "value": "KUBERNETES"
+          },
+          {
+            "name": "MANAGER_HOST_AND_PORT",
+            "value": "<MANAGER_HOST_AND_PORT>"
+          },
+          {
+            "name": "DELEGATE_NAME",
+            "value": "<DELEGATE_NAME>"
+          },
+          {
+            "name": "LOG_STREAMING_SERVICE_URL",
+            "value": "<LOG_STREAMING_SERVICE_URL>"
+          },
+         {
+            "name": "DELEGATE_TAGS",
+            "value": ""
+          },
+
+          {
+            "name": "NEXT_GEN",
+            "value": "true"
+          }
+         ],
+        "memory": 2048,
+        "image": "harness/delegate:22.12.77802",
+        "essential": true,
+        "hostname": "<DELEGATE_HOST>",
+        "name": "<DELEGATE_NAME>"
+      }
+    ],
+      "memory": "2048",
+      "requiresCompatibilities": [
+      "EC2"
+    ],
+  
+    "cpu": "1024",
+    "family": "harness-delegate-task-spec"
+  }
+```
+
+#### Sample ECS Fargate Delegate Service Definition JSON
+
+```JSON
+{
+   "launchType": "FARGATE",
+   "cluster": "<CLUSTER_NAME>",
+   "serviceName": "<SERVICE_NAME>",
+   "taskDefinition": "harness-delegate-task-spec",
+   "desiredCount": 1,
+   "loadBalancers": [],
+   "networkConfiguration": {
+     "awsvpcConfiguration": {
+       "subnets": [
+         "<SUBNET>"
+       ],
+       "securityGroups": [
+         "SEC_GROUP"
+       ],
+       "assignPublicIp": "ENABLED"
+     }
+   },
+   "platformVersion": "LATEST",
+   "schedulingStrategy": "REPLICA",
+   "enableECSManagedTags": true
+ }
+```
+
 
 When you are done setting up the delegate and it has registered with Harness, you'll see the delegate's tags on the delegates list page:
 

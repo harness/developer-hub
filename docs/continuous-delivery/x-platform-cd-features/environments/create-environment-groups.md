@@ -52,3 +52,14 @@ You can reference which environment group was selected using as an expression. I
 
 - Environment group Id: `<+pipeline.stages.[STAGE_ID].spec.infrastructure.output.environment.envGroupRef>`.
 
+## Limitations
+
+- You cannot pass environment group in the studio as an expression
+   - Harness team is looking to solve:
+      -  How to handle infrastructures that have runtime input parameters when the expression is referenced?
+      -  How to deploy to a subset of those environments in the environment group?
+      -  How do we propagate the environment group as an expression to the following stage?
+    
+- 
+     
+

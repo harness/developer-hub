@@ -617,6 +617,7 @@ The following table provides the feature support matrix for CCM on Harness Self-
 :::note
 - Perspective preferences are not supported on Harness SMP.
 - The cost data for Kubernetes workloads will be derived from the public pricing provided by the respective cloud provider.
+- Tracking recommendation lifescyle through Jira and ServiceNow is not supported in Air-gapped environments.
 :::
 
 ### CCM on air-gapped environment

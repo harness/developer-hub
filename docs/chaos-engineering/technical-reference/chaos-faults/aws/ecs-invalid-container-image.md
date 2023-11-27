@@ -7,6 +7,10 @@ ECS invalid container image allows you to update the Docker image used by a cont
 
 ![ECS Invalid Container Image](./static/images/ecs-invalid-container-image.png)
 
+:::tip
+This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](./ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
+:::
+
 ## Use cases
 ECS invalid container image:
 - Tests the behavior of your ECS tasks when the container images are updated, and validates the resilience and performance of your ECS tasks during image updates.

@@ -25,8 +25,7 @@ Currently, on [Azure Web App deployments](../azure-webapp-category/azure-web-app
 
 Here's a short video showing how to provision Azure infrastructure using ARM and Harness:
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/embed/_thro1sA6ek?feature=oembed" />
 
 

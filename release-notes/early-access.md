@@ -43,6 +43,8 @@ Review the following information for details about data privacy and terms of use
 - [AIDA Terms](https://www.harness.io/legal/aida-terms)
 - [AIDA Privacy](https://www.harness.io/legal/aida-privacy)
 
+**Update (November 2023):** AIDA for STO is now generally available. You must accept the AIDA EULA to enable AIDA in your Harness account. For more information, go to [Use AI to fix security issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
+
 **Update (October 2023):** AIDA for CI is now generally available. You must accept the AIDA EULA to enable AIDA in your Harness account. For more information, go to [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida).
 
 ### SCIM user provisioning enhancements
@@ -171,7 +173,6 @@ For a complete list of CD early access features, go to [Active CD feature flags]
 * **Release date:** October 2023
 * **Release version:** 81008
 * **Issue number:** CDS-76724
-* **Feature flag:** `CDS_WEBAPP_ENABLE_CLEAN_OPTION`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 You can clean the target directory before deploying an Azure Web App. For more information, go to [Azure Web Apps deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial).
@@ -232,43 +233,18 @@ With this feature flag enabled, you can:
 * Migrate Services with Helm Chart from Helm Repository stored Artifacts from CG to NG. This helps in migrations.
 * Configure multiple Helm Charts in the manifests. This provides feature parity with Harness FirstGen. Helm Charts can now be configured from the Helm Repository as Artifacts that allow users to select the Helm chart for deployment. The UI also now differentiates between manifests and overrides in service.
 
-### Digest support for Nexus 3, GitHub, Artifactory artifact sources
+<!-- ### Digest support for Nexus 3, GitHub, Artifactory artifact sources
 
 * **Release date:** July 2023
 * **Release version:** 79916
 * **Issue number:** CDS-71711
-* **Feature flag:** `CD_NG_DOCKER_ARTIFACT_DIGEST`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+* **Feature Flag:** REMOVED IN PR 4190
 
 Digest support added for Nexus 3, Github, and Artifactory [artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 
 The **Artifact Details** page has an optional **Digest** setting where you can specify the digest/SHA for a container image artifact.
 
-Specifying an image by digest, rather than just tag, is useful when you want to ensure that the image you deploy for a service is fixed and immutable. If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline execution fails.
-
-### Differentiate environments in Blue Green deployment release history
-
-* **Release date:** June 2023
-* **Release version:** CD version 79714 and Harness Delegate version 23.06.79707
-* **Issue number:** CDS-69961
-* **Feature flag:** `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Added a new field in the release history for Blue Green deployments to differentiate between environments.
-
-This is an enhancement to the Kubernetes Blue Green Stage Scale Down step. You can now scale down your last successful stage environment only if the primary resources exist. This enhancement helps you efficiently manage your resources, and prevent deleting the important resources.
-
-Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
-
-<!--- Version 76516 (June 09, 2023) Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
-
-This functionality is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`.
-
-This functionality helps you efficiently manage your resources. The scale down step can be configured within the same stage or different stage based on your requirement.
-
-During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green deployment are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
-
-Harness Delegate version 79503 is required for this feature.-->
+Specifying an image by digest, rather than just tag, is useful when you want to ensure that the image you deploy for a service is fixed and immutable. If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline execution fails. -->
 
 ### Scheduled automatic approvals for manual approval steps
 
@@ -304,62 +280,6 @@ Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudge
 
 You can trigger all artifacts and manifests using **On New Artifact** and **On New Manifest** triggers, respectively. Without this feature enabled, you can trigger only the last pushed artifact or manifest using triggers. With this feature enabled, you can trigger all collected artifacts and manifests of perpetual tasks in one single execution using the **On New Artifact** or **On New Manifest** trigger options.
 
-### Selective stage executions for webhook triggers
-
-* **Release date:** May 2023
-* **Release version:** Delegate version 23.05.79214
-* **Issue number:** CDS-56775, CDS-56774
-* **Feature flag:** `CDS_NG_TRIGGER_SELECTIVE_STAGE_EXECUTION`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-You can set webhook triggers to run specific pipeline stages using the [Allow selective stage(s) executions?](/docs/platform/pipelines/run-specific-stage-in-pipeline/) option.
-
-To run a particular stage of a pipeline:
-
-1. Select the stage, then select **Advanced Options**.
-2. In **Stage Execution Settings>** **Allow selective stages(s) executions?**, select **Yes**. This setting is selected by default.
-
-   ![](./static/selective-stage-execution.png)
-
-3. When you create a trigger, in **Configuration**, select the stages you want to execute.
-
-   ![](./static/select-stage-to-execute.png)
-
-Here is a sample trigger YAML:
-
-  ```
-  trigger:
-  name: stage3Trigger
-  identifier: stage3Trigger
-  enabled: true
-  description: ""
-  tags: {}
-  stagesToExecute:
-    - stage3
-  orgIdentifier: NgTriggersOrg
-  projectIdentifier: viniciusTest
-  pipelineIdentifier: ThreeStagesPipeline
-  source:
-    type: Webhook
-    spec:
-      type: Custom
-      spec:
-        payloadConditions: []
-        headerConditions: []
-  inputYaml: |
-    pipeline:
-      identifier: ThreeStagesPipeline
-      stages:
-        - stage:
-            identifier: stage3
-            type: Custom
-            variables:
-              - name: stage3var
-                type: String
-                value: stage3Var
-
-  ```
-
 ### TAS config files can be pulled from Github
 
 * **Release date:** April 2023
@@ -372,15 +292,14 @@ For Harness services using the Tanzu deployment type, [config files can be confi
 
 **Update (Delegate version 23.05.79214, May 2023):** You can add Tanzu Application Service (TAS) [config files](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/add-config-files) from GitHub.
 
-### Protect secrets in webhook triggers that use secret decryption on delegates
+<!-- ### Protect secrets in webhook triggers that use secret decryption on delegates
 
 * **Release date:** April 2023
 * **Release version:** Delegate version 23.04.79111
 * **Issue number:** CDS-58488, ZD-42117
-* **Feature flag:** `CDS_NG_TRIGGER_AUTHENTICATION_WITH_DELEGATE_SELECTOR`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+* **Feature flag:** REMOVED IN PR 4185
 
-Github triggers that use a secret for authentication will now use the same delegate selectors saved in the secret's Harness secret manager.
+Github triggers that use a secret for authentication will now use the same delegate selectors saved in the secret's Harness secret manager. -->
 
 ### Variable expressions in plain text config files
 
@@ -391,26 +310,6 @@ Github triggers that use a secret for authentication will now use the same deleg
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 Variable expression support includes service, environment, pipeline, and stage variables. Any Harness expression is supported. Variable expressions are not supported for encrypted text config files because expressions impact the encoded secret.
-
-### ServiceNow custom table support
-
-* **Release date:** April 2023
-* **Release version:** Delegate version 23.04.79015
-* **Issue number:** CDS-55046
-* **Feature flag:** `CDS_SERVICENOW_TICKET_TYPE_V2`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Custom table support is now available in Harness' ServiceNow integration. Harness recommends that you only use a table extending task, or extend tables that indirectly extend the task. You can specify any custom table in Harness.
-
-In ServiceNow, a table extending task is a task that involves creating a new table by extending an existing table. When a table is extended, a new child table is created that inherits all the fields, relationships, and other attributes of the parent table. The child table can then be customized further to meet the specific needs of the organization.
-
-Itil roles are not mandatory for using these steps. When using the normal flow for custom tables, you should have sufficient permissions on the custom table, such as basic CRUD permissions, permissions to update desired fields, etc.
-
-When using template flow, your user role is required along with cross scope privileges to the custom table.
-
-The store app is only certified to be used with Incident, Problem, Change Request, and Change Task tables by the ServiceNow certification team.
-
-The custom table being used should allow access to this table via web services.
 
 ### Harness removes comments when evaluating commented lines in manifests to avoid rendering failures
 
@@ -449,6 +348,37 @@ In some instances, the workload spec was not updated properly when `rollout undo
 Enabling declarative rollback disables versioning (even if the **Skip Versioning** checkbox is left unchecked), since versioning was introduced with the imperative rollback design. However, versioning is not needed with [declarative rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#declarative-rollback).
 
 The delegate's service account needs the permission to create, update, and read secrets in the defined infrastructure namespace. Typically, delegates already have these permissions, but if cluster roles are strictly scoped, this could cause failures. For information on cluster roles for the delegate, go to [Install Harness Delegate on Kubernetes](/tutorials/platform/install-delegate/).
+
+#### ECS Run Task support
+
+* **Release date:** October 2022
+* **Issue number:** CDS-57721, ZD-41676
+* **Feature flag:** `NG_SVC_ENV_REDESIGN` and `ECS_NG`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+For ECS deployments, you can deploy artifacts to your Amazon Elastic Container Service (ECS) clusters using a Rolling, Canary, and Blue Green strategies. For more information, go to the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
+
+**Update (October 2022):** In addition to deploying tasks as part of your standard ECS deployment, you can use the ECS Run Task step to run individual tasks separately as a step in your ECS stage. The ECS Run Task step is available in all ECS strategy types. An example of when you run a task separately is a one-time or periodic batch job that does not need to keep running or restart when it finishes. For more information, go to the [ECS tutorial's run task step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
+
+#### Enhancements for Secure Shell and WinRM deployments
+
+* **Release date:** October 2022
+* **Feature flag:** `NG_SVC_ENV_REDESIGN`, `SSH_NG`, and `PIPELINE_MATRIX`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Fpr traditional deployments using SSH or WinRM, you can deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
+
+These deployments are called Traditional because they use Secure Shell and PowerShell scripts and a traditional runtime environment as opposed to containers and orchestration mechanisms, like Kubernetes.
+
+For more information, go to [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng) and [WinRM deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial).
+
+#### Custom deployments using Deployment Templates
+
+* **Release date:** October 2022
+* **Feature flag:** `NG_SVC_ENV_REDESIGN` and `NG_DEPLOYMENT_TEMPLATE`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+In some cases, you might use a platform that doesn't have first class support in Harness, such as OpenStack, WebLogic, WebSphere, Google Cloud functions, etc. Harness calls these non-native deployments. For non-native deployments, Harness provides a custom deployment option using Deployment Templates. For more information, go to the [Custom deployments using deployment templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
 
 <!-- ## CET early access features
 
@@ -547,9 +477,9 @@ The following early access (beta) features are available for the Harness Feature
 
 No early access (beta) features are available for Harness Internal Developer Portal. -->
 
-<!-- ## Code early access features
+## Code early access features
 
-The Code Repository module is in beta. -->
+Currently, the entire [Code Repository module](/docs/code-repository/get-started/overview) is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) if you're interested in this module.
 
 ## STO early access features
 
@@ -628,6 +558,101 @@ For more information about CD early access features, go to [Active CD feature fl
 
 Harness supports the [deployment of AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments) functions.
 
+#### Differentiate environments in Blue Green deployment release history
+
+* **GA date:** November 2023
+* **Early access release date:** June 2023
+* **Early access release version:** CD version 79714 and Harness Delegate version 23.06.79707
+* **Issue number:** CDS-69961
+* **Feature flag:** `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Added a new field in the release history for Blue Green deployments to differentiate between environments.
+
+This is an enhancement to the Kubernetes Blue Green Stage Scale Down step. You can now scale down your last successful stage environment only if the primary resources exist. This enhancement helps you efficiently manage your resources, and prevent deleting the important resources.
+
+Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
+
+#### Selective stage executions for webhook triggers
+
+* **GA date:** November 2023
+* **Early access release date:** May 2023
+* **Early access release version:** Delegate version 23.05.79214
+* **Issue number:** CDS-56775, CDS-56774
+* **Feature flag:** `CDS_NG_TRIGGER_SELECTIVE_STAGE_EXECUTION`
+
+You can set webhook triggers to run specific pipeline stages using the [Allow selective stage(s) executions?](/docs/platform/pipelines/run-specific-stage-in-pipeline) option.
+
+<details>
+<summary>Run a specific stage in a pipeline</summary>
+
+To run a particular stage of a pipeline:
+
+1. Select the stage, then select **Advanced Options**.
+2. In **Stage Execution Settings>** **Allow selective stages(s) executions?**, select **Yes**. This setting is selected by default.
+
+   ![](./static/selective-stage-execution.png)
+
+3. When you create a trigger, in **Configuration**, select the stages you want to execute.
+
+   ![](./static/select-stage-to-execute.png)
+
+Here is a sample trigger YAML:
+
+```
+trigger:
+name: stage3Trigger
+identifier: stage3Trigger
+enabled: true
+description: ""
+tags: {}
+stagesToExecute:
+  - stage3
+orgIdentifier: NgTriggersOrg
+projectIdentifier: viniciusTest
+pipelineIdentifier: ThreeStagesPipeline
+source:
+  type: Webhook
+  spec:
+    type: Custom
+    spec:
+      payloadConditions: []
+      headerConditions: []
+inputYaml: |
+  pipeline:
+    identifier: ThreeStagesPipeline
+    stages:
+      - stage:
+          identifier: stage3
+          type: Custom
+          variables:
+            - name: stage3var
+              type: String
+              value: stage3Var
+```
+
+</details>
+
+#### ServiceNow custom table support
+
+* **GA date:** November 2023
+* **Early access release date:** April 2023
+* **Early access release version:** Delegate version 23.04.79015
+* **Issue number:** CDS-55046
+* **Feature flag:** `CDS_SERVICENOW_TICKET_TYPE_V2`
+
+Custom table support is now available in Harness' ServiceNow integration. Harness recommends that you only use a table extending task, or extend tables that indirectly extend the task. You can specify any custom table in Harness.
+
+In ServiceNow, a table extending task is a task that involves creating a new table by extending an existing table. When a table is extended, a new child table is created that inherits all the fields, relationships, and other attributes of the parent table. The child table can then be customized further to meet the specific needs of the organization.
+
+Itil roles are not mandatory for using these steps. When using the normal flow for custom tables, you should have sufficient permissions on the custom table, such as basic CRUD permissions, permissions to update desired fields, etc.
+
+When using template flow, your user role is required along with cross scope privileges to the custom table.
+
+The store app is only certified to be used with Incident, Problem, Change Request, and Change Task tables by the ServiceNow certification team.
+
+The custom table being used should allow access to this table via web services.
+
 #### Kubernetes Dry Run step added
 
 * **GA date:** 2023
@@ -675,37 +700,6 @@ For more information, go to the [Azure Web Apps deployment tutorial](/docs/conti
 * **Feature flag:** `TERRAFORM_REMOTE_BACKEND_CONFIG`
 
 Terraform Backend Configuration file path in the Terraform Apply step now supports remote file repos. For more details, go to [Provision with the Terraform Apply Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/).
-
-#### ECS Run Task support
-
-* **GA date:** Late 2022/Early 2023
-* **Early access release date:** October 2022
-* **Issue number:** CDS-57721, ZD-41676
-* **Feature flag:** `NG_SVC_ENV_REDESIGN` and `ECS_NG`
-
-For ECS deployments, you can deploy artifacts to your Amazon Elastic Container Service (ECS) clusters using a Rolling, Canary, and Blue Green strategies. For more information, go to the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
-
-**Update (October 2022):** In addition to deploying tasks as part of your standard ECS deployment, you can use the ECS Run Task step to run individual tasks separately as a step in your ECS stage. The ECS Run Task step is available in all ECS strategy types. An example of when you run a task separately is a one-time or periodic batch job that does not need to keep running or restart when it finishes. For more information, go to the [ECS tutorial's run task step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/).
-
-#### Enhancements for Secure Shell and WinRM deployments
-
-* **GA date:** Late 2022/Early 2023
-* **Early access release date:** October 2022
-* **Feature flag:** `NG_SVC_ENV_REDESIGN`, `SSH_NG`, and `PIPELINE_MATRIX`
-
-Fpr traditional deployments using SSH or WinRM, you can deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
-
-These deployments are called Traditional because they use Secure Shell and PowerShell scripts and a traditional runtime environment as opposed to containers and orchestration mechanisms, like Kubernetes.
-
-For more information, go to [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng) and [WinRM deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial).
-
-#### Custom deployments using Deployment Templates
-
-* **GA date:** Late 2022/Early 2023
-* **Early access release date:** October 2022
-* **Feature flag:** `NG_SVC_ENV_REDESIGN` and `NG_DEPLOYMENT_TEMPLATE`
-
-In some cases, you might use a platform that doesn't have first class support in Harness, such as OpenStack, WebLogic, WebSphere, Google Cloud functions, etc. Harness calls these non-native deployments. For non-native deployments, Harness provides a custom deployment option using Deployment Templates. For more information, go to the [Custom deployments using deployment templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
 
 #### Simplified Git Experience
 
@@ -757,7 +751,6 @@ In Harness CI, AIDA provides auto-recognition of failures in pipelines. The root
 * **Early access release date:** October 20, 2022
 
 Harness released a beta version of an Apex SDK for Feature Flags. For more information and to access this SDK, see the [Apex SDK reference guide](/docs/feature-flags/ff-sdks/server-sdks/apex-sdk-reference) and the [GitHub repository](https://github.com/harness/ff-apex-server-sdk).
-
 
 ### STO features promoted to GA
 
@@ -851,7 +844,9 @@ import Intro from '/docs/security-testing-orchestration/use-sto/shared/sto-aida-
 
 <Intro />
 
+
 ##### Update (Version 1.72.1):** 
+
 
 - You can now provide feedback about the AIDA-generated remediation step for a selected issue. (STO-6593)
 
@@ -862,6 +857,7 @@ import Intro from '/docs/security-testing-orchestration/use-sto/shared/sto-aida-
   Each account user must sign the EULA only once.
 
   The setting is inherited at the project scope.
+
 
 ##### Update (Version 1.61.1):** 
 
@@ -897,3 +893,12 @@ This feature includes a set of Security steps with an improved UI for configurin
 
 
 This feature includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations).
+
+**Update (Version 1.61.1):** 
+
+* Fixed an issue that broke the capability to customize the code snippet for AIDA-augmented remediations in the Security Tests module. (STO-6181)
+
+**Update (Version 1.60.0):** 
+
+- Reference Identifiers selected for AIDA enhancement in a Security Issue are now remembered, upon generation, and shown when revisited in the UI. (STO-6032)
+

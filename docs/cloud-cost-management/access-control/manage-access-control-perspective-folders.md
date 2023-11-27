@@ -57,9 +57,28 @@ In Harness, the **Perspectives** page shows only the folders that the user has b
 
 A user can create **Budgets** for Perspectives only within the folders that they have been granted access to. For more information about Budgets, go to [Create a Budget](/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget).
 
-Similarly, on the **Anomalies** page, users can only view those anomalies associated with the perspectives located within specific folders that they have access to. The anomalies displayed also depend on the Perspective rule that restricts the user to a particular cloud provider account or a cost category, or a region. The out-of-the-box perspectives provided by Harness, as well as any other perspectives outside these folders, are not displayed. For more information about Anomalies, go to [Detect Cloud Cost Anomalies](/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm).
+Similarly, on the **Anomalies** page, the visibility of the anomalies could be divided in four cases as explained in the table below:
 
-For users with restricted access, **Recommendations** are displayed only for the Perspectives located within specific folders that they have access to. The user will be able to view and apply these recommendations. For more information, go to [Recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations).
+| **Use Case** | **Behaviour** |
+| --- | --- |
+| User has both Anomalies View Permission & Perspective View Permission | User would be able to view all the anomalies based on Anomalies View Permission |
+| User has Anomalies View Permission but does not have Perspective View Permission | User would be able to view all the anomalies based on Anomalies View Permission |
+| User does not have Anomalies View Permission but has Perspective View Permission | Anomalies would be filtered based on Perspective View Permission which uses perspective rules for filtering |
+| User do not have either Anomalies View Permission or Perspective View Permission | User won't be able to see any anomalies |
+
+For more information about Anomalies, go to [Detect Cloud Cost Anomalies](/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm).
+
+
+Similarly, on the **Recommendations** page, the visibility of the recommendations could be divided in four cases as explained in the table below:
+
+| **Use Case** | **Behaviour** |
+| --- | --- |
+| User has both Recommendations View Permission & Perspective View Permission | User would be able to view all the recommendations based on Recommendations View Permission |
+| User has Recommendations View Permission but does not have Perspective View Permission | User would be able to view all the recommendations based on Recommendations View Permission |
+| User does not have Recommendations View Permission but has Perspective View Permission | Recommendations would be filtered based on Perspective View Permission which uses perspective rules for filtering |
+| User do not have either Recommendations View Permission or Perspective View Permission | User won't be able to see any recommendations |
+
+For more information, go to [Recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations).
 
 
 A user with folder restrictions does not have permission to create new folders. This means that the user can only work within the existing folder structure that has been set up for them by an administrator.

@@ -22,8 +22,7 @@ Looking for How-tos? See [Azure Resource Management (ARM) How-tos](../../azure-d
 
 Here's a short video showing how to provision and deploy to the same Azure infrastructure using ARM and Harness:
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/embed/WfPE9wk4tM0?feature=oembed" />
 
 Here's a visual summary of how you use your Azure ARM templates in Harness to provision infra and then deploy to it:
@@ -42,14 +41,12 @@ Here's a visual summary of how you use your Azure ARM templates in Harness to pr
 
 Here's a short video showing how to provision Azure infrastructure using ARM and Harness:
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/embed/_thro1sA6ek?feature=oembed" />
 
 Here's a short video showing how to provision Azure infrastructure using Blueprint and Harness:
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/embed/cGjZCoz3HrY?feature=oembed" />
 
 You can use Azure ARM templates/Blueprint definitions in Harness for general Azure provisioning.

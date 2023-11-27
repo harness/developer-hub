@@ -47,15 +47,15 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>NG_PIPELINE_TEMPLATE</td>
-        <td>Enables <a href="https://developer.harness.io/tutorials/cd-pipelines/templates">Harness templates.</a>. <b>This feature is GA.</b> </td>
+        <td>Enables <a href="https://developer.harness.io/tutorials/cd-pipelines/templates">Harness templates.</a>. <b>This feature is Public Preview.</b> </td>
     </tr>
     <tr>
         <td>OPA_GIT_GOVERNANCE</td>
-        <td>Store and fetch your <a href="/docs/platform/governance/policy-as-code/configure-gitexperience-for-opa">OPA policies in Git.</a>. <b>This feature is GA.</b> </td>
+        <td>Store and fetch your <a href="/docs/platform/governance/policy-as-code/configure-gitexperience-for-opa">OPA policies in Git.</a>. <b>This feature is Public Preview.</b> </td>
     </tr>
     <tr>
         <td>NG_SVC_ENV_REDESIGN</td>
-        <td>Enables <a href="/docs/continuous-delivery/get-started/services-and-environments-overview">Service and Environment V2. </a> <b>This feature is GA.</b> V1 is <a href="/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2">deprecated</a>
+        <td>Enables <a href="/docs/continuous-delivery/get-started/services-and-environments-overview">Service and Environment V2. </a> <b>This feature is Public Preview.</b> V1 is <a href="/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2">deprecated</a>
 .</td>
     </tr>
     <tr>
@@ -70,11 +70,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>NG_GIT_EXPERIENCE</td>
         <td>Enables <a href="/docs/platform/git-experience/configure-git-experience-for-harness-entities">Harness Git Experience</a> for a Harness account. Users can manage their Pipeline, Templates, Input Sets, Feature Flags via Git. <b>This feature is GA.</b></td>
-    </tr>
-    <tr>
-        <td>PIPELINE_QUEUE_STEP</td>
-        <td>Enables the <a href="/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/control-resource-usage-with-queue-steps">Pipeline Queue</a> 
- step for an account. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDP_USE_OLD_GIT_SYNC</td>
@@ -98,7 +93,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_TERRAFORM_S3_SUPPORT</td>
-        <td>Enables AWS S3 for Terraform plan storage. <b>This feature flag is GA.</b> </td>
+        <td>Enables AWS S3 for Terraform plan storage. <b>This feature flag is Public Preview.</b> </td>
     </tr>
     <tr>
         <td>PIE_PIPELINE_SETTINGS_ENFORCEMENT_LIMIT</td>
@@ -111,10 +106,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDC_SERVICE_DASHBOARD_REVAMP_NG</td>
         <td>Provides new <a href="/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#individual-service-dashboards">dashboard views for services and environments</a> <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
-        <td>CDS_TERRAFORM_CLOUD</td>
-        <td>Enables <a href="/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments">Terraform Cloud support in Harness</a> <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_K8S_SOCKET_CAPABILITY_CHECK_NG</td>
@@ -133,13 +124,8 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Performs RBAC check on secrets when used in pipeline execution. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
-        <td>CDS_RANCHER_SUPPORT_NG</td>
-        <td>Enables the <a href="/docs/first-gen/firstgen-platform/account/manage-connectors/add-rancher-cloud-providers">Rancher connector</a> for Kubernetes deployments. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
-        <td>CDS_NG_TRIGGER_AUTHENTICATION
-        _WITH_DELEGATE_SELECTOR</td>
-        <td>Forces trigger authentication use the same delegate selectors as the secrets manager.</td>
+        <td>CDS_SERVICENOW_TICKET_TYPE_V2</td>
+        <td>Enables ServiceNow custom table support.</td>
     </tr>
     <tr>
         <td>CDS_GIT_CONFIG_FILES</td>
@@ -198,11 +184,11 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_SSH_SSHJ</td>
-        <td>Enables a library upgrade for SSH Deployments to use newer algorithms of SSH to connect to hosts. All Delegates on 803xx Release will have the new upgraded library. <b>This feature is GA.</b></td>
+        <td>Enables a library upgrade for SSH Deployments to use newer algorithms of SSH to connect to hosts. All Delegates on 803xx Release will have the new upgraded library. <b>This feature is Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_SSH_CLIENT</td>
-        <td>Enables a library upgrade for SSH Deployments  to use newer algorithms of SSH to connect to hosts. All Delegates on 803xx Release will have the new upgraded library. <b>This feature is GA.</b> </td>
+        <td>Enables a library upgrade for SSH Deployments  to use newer algorithms of SSH to connect to hosts. All Delegates on 803xx Release will have the new upgraded library. <b>This feature is Public Preview</b> </td>
     </tr>
     <tr>
         <td>CD_TRIGGER_CATALOG_API_ENABLED</td>
@@ -288,10 +274,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Exposes <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts">Helm Chart expressions</a> for reference in other steps and settings. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>PIE_EXPRESSION_PLAYGROUND</td>
-        <td>Helps the user experiment with expressions to see what could be the expected/resolved value without running the pipeline. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDS_NG_SERVICE_PRINCIPAL_FOR_CUSTOM_WEBHOOK</td>
         <td>Makes authenticated custom Webhook calls use the service principal instead of the principal inherited from the API key. <b>This feature is in Beta.</b></td>
     </tr>
@@ -310,10 +292,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDS_ENABLE_SHELL_SCRIPT_FILE_REFERENCE</td>
         <td>Enables the Shell Script step to support scripts from Harness File Store. <b>This feature is in Beta.</b> </td>
-    </tr>
-    <tr>
-        <td>GITOPS_FLUX_FLAMINGO</td>
-        <td>Enables the creation of Flux Agents in Harness GitOps. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>CDS_ECS_BG_GREEN_SERVICE_ROLLBACK</td>
@@ -367,10 +345,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDS_NG_UPDATE_MULTIPLE_SNOW_CHANGE_REQUEST</td>
         <td>Enable the option to update multiple tasks in ServiceNow.</td>
-    </tr>
-    <tr>
-        <td>CDS_WEBAPP_ENABLE_CLEAN_OPTION</td>
-        <td>Cleans the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial">Azure WebApp target directory</a> prior to deployment. <b>This feature is in Public Preview.</b> </td>
     </tr>
     <tr>
         <td>PIE_SIMPLIFY_LOG_BASE_KEY</td>
