@@ -1,6 +1,6 @@
 ---
 title: EC2-backed and serverless faults
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 AWS faults are categorized into serverless, EC2-backed, and serverless combined with EC2-backed faults. Links to the respective faults are provided. 
