@@ -194,8 +194,6 @@ Harness needs to query external sources to be able to know which instances exist
 Depending on where you add the **Fetch Instances** step in your pipeline stage, Harness will query the instances. We recommend querying the instances **after the service is deployed**.
 
  
-Here is the corrected version of the document with improved grammar and clarity:
-
 ## Deleting a Licensed Service in Harness
 
 Harness allows users to delete services that have not been deployed by a pipeline. However, deleting a service that was previously deployed carries licensing implications in Harness. By default, Harness does not permit you to delete such a service.
