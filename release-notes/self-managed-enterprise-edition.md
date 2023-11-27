@@ -63,7 +63,7 @@ gsutil -m cp \
 
 #### Self-Managed Enterprise Edition
 
-- 
+- Harness updated the Nginx ingress controller to version 1.3.0. With this upgrade, the watch ingress is now scoped to the Kubernetes namespace. The upgrade version 1.3.0 uses `--watch-ingress-without-class=true`, which is incompatible with version 1.0.0-alpha. You must remove any image override fields in your `values.yaml` and `override.yaml` files if you reuse any existing files. (SMP-1811, SMP-2326)
 
 - 
 
