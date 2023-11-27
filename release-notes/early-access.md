@@ -899,7 +899,7 @@ The **Security Tests** tab includes a set of pull-down menus so you can filter t
 
 #### Use regex to define dynamic target baselines
 
-* **GA date:** November 2023
+* **GA date:** August 2023
 * **Early access release date:** July 2023
 * **Early access Release version:** 1.61.1
 * **Feature flag:** `STO_BASELINE_REGEX`
@@ -910,7 +910,7 @@ For more information about this feature, go to [Set up target baselines](/docs/s
 
 #### Scanner templates for Burp integration
 
-* **GA date:** November 2023
+* **GA date:** August 2023
 * **Early access release date:** July 2023
 * **Early access Release version:** 1.60.0
 * **Feature flag:** `STO_STEP_PALETTE_BURP_ENTERPRISE`
@@ -919,7 +919,7 @@ The [Burp integration](/docs/security-testing-orchestration/sto-techref-category
 
 #### CodeQL integration
 
-* **GA date:** November 2023
+* **GA date:** September 2023
 * **Early access release date:** July 2023
 * **Early access Release version:** 1.60.0
 * **Feature flag:** `STO_STEP_PALETTE_CODEQL`
@@ -928,7 +928,7 @@ You can scan your code repositories using [CodeQL](/docs/security-testing-orches
 
 #### Fossa integration
 
-* **GA date:** November 2023
+* **GA date:** August 2023
 * **Early access release date:** July 2023
 * **Early access Release version:** 1.60.0
 * **Feature flag:** `STO_STEP_PALETTE_FOSSA`
@@ -937,12 +937,46 @@ You can scan container images and repositories using [Fossa](/docs/security-test
 
 #### Semgrep integration
 
-* **GA date:** November 2023
+* **GA date:** September 2023
 * **Early access release date:** July 2023
 * **Early access Release version:** 1.60.0
 * **Feature flag:** `STO_STEP_PALETTE_SEMGREP`
 
 You can scan container images and repositories using [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects.
+
+#### Harness AI Development Assistant (AIDA:tm:) for STO
+
+* **GA date:** November 2023
+* **Early access release date:** June 2023
+* **Early access release version:** 1.58.3
+* **Issue numbers:** STO-5882, STO-6593, STO-6181, PL-39723 
+* **Feature flag:** `STO_AI_ENHANCED_REMEDIATIONS`
+
+```mdx-code-block
+import Intro from '/docs/security-testing-orchestration/use-sto/shared/sto-aida-overview-partial.md';
+```
+
+<Intro />
+
+##### Update (Version 1.72.1):** 
+
+- You can now provide feedback about the AIDA-generated remediation step for a selected issue. (STO-6593)
+
+- You are now required to sign an end-user license agreement to access the Harness AI Development Assistant (AIDA) in the account and project scopes. You need to do this even if you could previously use AIDA without signing a EULA. This change was originally introduced in the 80505 platform release. (PL-39723)
+
+  The EULA is displayed when you enable AIDA at the account scope (**Account Settings** > **Account Resources** > **Default Settings** > **Harness AI Developer Assistant**).
+
+  Each account user must sign the EULA only once.
+
+  The setting is inherited at the project scope.
+
+##### Update (Version 1.61.1):** 
+
+* Fixed an issue that broke the capability to customize the code snippet for AIDA-augmented remediations in the Security Tests module. (STO-6181)
+
+##### Update (Version 1.60.0):** 
+
+- Reference Identifiers selected for AIDA enhancement in a Security Issue are now remembered, upon generation, and shown when revisited in the UI. (STO-6032)
 
 #### Improved UI for configuring scan steps
 
@@ -955,7 +989,6 @@ This feature includes a set of Security steps with an improved UI for configurin
 
 - This release includes new steps for the following scanners: Aqua Trivy, Bandit, Black Duck, Checkmarx, Grype, Mend, Prisma Cloud, Snyk, SonarQube, and ZAP.  
 - Docker-in-Docker is no longer required for these steps *unless* you're scanning a container image. If you're scanning a repository or running instance, you don't need to set up a Background step running DinD.    
-- These steps are currently available in Security stages only. 
 - Support is currently limited to Kubernetes and Harness Cloud AMD64 build infrastructures only.
 - For descriptions of all available UI settings, go to [Security step UI settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference).
 
