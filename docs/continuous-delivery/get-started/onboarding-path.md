@@ -1151,6 +1151,14 @@ Role-based access control (RBAC) lets you control who can access your resources 
 <summary>Distributed DevOps</summary>
 <br />
 
+| Role Type        | Role Description                                                                                                        | Harness Roles                                                  | Harness Resource Groups                                  | Resource Scope                                |
+|------------------|--------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------|
+| Harness Admin  | Responsible for managing Users and various other things like Default Settings, Auth Settings, etc | Administrative Functions: All permissions | Administrative Functions: All Resources under it | All (including all Organizations and Projects) |
+| Project Manager  | Responsible for analyzing and reporting various metrics of an Organization within Harness Platform                      | - Shared Resources -> Dashboards: View & Manage                   | - Shared Resources -> Dashboards                              | Specified Organizations (and their Projects) |
+| Platform Admin  | Responsible for provisioning infrastructure and managing Harness resources like Secrets, Environment, Connectors and Delegates of an Organization within Harness Platform | - Shared Resources -> Secrets: View, Create/Edit, Delete & Access <br/> - Shared Resources -> Connectors: View, Create/Edit, Delete & Access <br/> - Shared Resources -> Delegates: View, Create/Edit & Delete <br/> - Shared Resources -> Delegate Configurations: View, Create/Edit & Delete <br/> - Environments: View, Create/Edit, Delete & Access <br/> - Environment Groups: View, Create/Edit, Delete & Access | - Shared Resources -> Secrets <br/> - Shared Resources -> Connectors <br/> - Shared Resources -> Delegates <br/> - Shared Resources -> Delegate Configurations <br/> - Environments <br/> - Environment Groups | Specified Organizations (and their Projects) |
+| DevOps Admin  | Responsible for setting up Policies to adhere to certain organizational standards and keeping an eye on all the entities of an Organization within Harness Platform | - Services: View, Create/Edit, Delete & Access <br/> - Shared Resources -> Templates: View, Create/Edit, Delete, Access & Copy <br/> - Shared Resources -> Files: View, Create/Edit, Delete & Access <br/> - Shared Resources -> Deployment Freeze: Manage, Override & Global <br/> - Shared Resources -> Secrets: View & Access <br/> - Shared Resources -> Connectors: View & Access <br/> - Shared Resources -> Variables: View, Create/Edit & Delete <br/> - Shared Resources -> Files: View, Create/Edit & Delete <br/> - Shared Resources -> Delegates: View <br/> - Shared Resources -> Delegate Configurations: View  <br/> - Pipelines: View, Create/Edit, Delete & Execute | - Shared Resources: All Resources under it except Dashboards <br/> - Services <br/> - Pipelines | Specified Organizations (and their Projects) |
+| Devops Engineer  | Responsible for managing Services, Templates, Files, Variables, Pipelines, Triggers, Input Sets etc. of an Organization within Harness Platform | - Services: View, Create/Edit & Access <br/> - Shared Resources -> Templates: View, Create/Edit, Access & Copy <br/> - Shared Resources -> Secrets: View & Access <br/> - Shared Resources -> Connectors: View & Access <br/> - Shared Resources -> Variables: View & Create/Edit <br/> - Shared Resources -> Files: View & Create/Edit <br/> - Pipelines: View, Create/Edit & Execute | - Shared Resources: All Resources under it except Dashboards <br/> - Services <br/> - Pipelines  | Specified Organizations (and their Projects) |
+
 </details>
 
 ```mdx-code-block
@@ -1455,7 +1463,7 @@ template:
 #### Terraform Automation
 
 :::info note
-You need to have Terraform CLI installed in your delegate in-order to carry out this automation. Given below is a Dockerfile script to create a custom delegate image that has terraform cli installed in it.
+You need to have Terraform CLI installed in your delegate in-order to carry out this automation. Given below is a Dockerfile script to create a custom delegate image `tf-custom-delegate` that has terraform cli installed in it.
 :::
 
 ```
