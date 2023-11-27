@@ -553,115 +553,8 @@ The Code Repository module is in beta. -->
 
 ## STO early access features
 
-The following early access (beta) features are available for the Harness Security Testing Orchestration module.
-
-### UI enhancements for working with exemptions
-
-* **Release date:** October 2023
-* **Release version:** 1.69.3
-* **Issue number:** STO-6078, STO-5056
-* **Feature flag:** `STO_EXEMPTION_DETAILS`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-This feature includes the following UI enhancements for working with exemptions:
-
-- You can click on a row in the **Exemptions** table to view details for the issue associated with that exemption.
-
-   ![](static/sto-click-row-to-view-exemptions.png)
-
-- For best results in STO, you should [specify a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines). To encourage this, the **Exemption Details** pane hides details for an issue if there is no baseline detected. To specify the baseline, select **Set in Targets**.
-
-   ![](static/sto-exemption-details-no-baseline-selected.png)
-
-### Security Tests filters
-
-* **Release date:** August 2023
-* **Release version:** 1.64.1
-* **Issue number:** STO-5056, STO-5212
-* **Feature flag:** `STO_DROPDOWN_FILTERS`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-The **Security Tests** tab includes a set of pull-down menus so you can filter the issues lists by Target, Target Type, Step, Stage, and Scanner.
-
-![Click on a tile to filter issues by severity](./static/sto-pulldown-filters-sto-5212.png)
-
-### Use regex to define dynamic target baselines
-
-* **Release date:** July 2023
-* **Release version:** 1.61.1
-* **Issue number:** STO-5896
-* **Feature flag:** `STO_BASELINE_REGEX`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-You can now define dynamic target baselines using regular expressions. Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. Dynamic baselines also make it easier to track the introduction and remediation of specific vulnerabilities.
-
-For more information about this feature, go to [Set up target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines).
-
-### Scanner templates for Burp integration
-
-* **Release date:** July 2023
-* **Release version:** 1.60.0
-* **Issue number:** STO-5056
-* **Feature flag:** `STO_STEP_PALETTE_BURP_ENTERPRISE`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-The [Burp integration](/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference) now supports scanner templates, which make it much easier to set up a scan step.
-
-### CodeQL integration
-
-* **Release date:** July 2023
-* **Release version:** 1.60.0
-* **Issue number:** STO-5366
-* **Feature flag:** `STO_STEP_PALETTE_CODEQL`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-You can scan your code repositories using [CodeQL](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference), an analysis engine used by developers to automate security checks, and by security researchers to perform variant analysis.
-
-### Fossa integration
-
-* **Release date:** July 2023
-* **Release version:** 1.60.0
-* **Issue number:** STO-5111
-* **Feature flag:** `STO_STEP_PALETTE_FOSSA`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-You can scan container images and repositories using [Fossa](/docs/security-testing-orchestration/sto-techref-category/fossa-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects.
-
-### Semgrep integration
-
-* **Release date:** July 2023
-* **Release version:** 1.60.0
-* **Issue number:** STO-5886
-* **Feature flag:** `STO_STEP_PALETTE_SEMGREP`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-You can scan container images and repositories using [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects.
-
-### Improved UI for configuring scan steps
-
-* **Release date:** March 2023
-* **Issue number:** STO-4867
-* **Feature flag:** Yes
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-This feature includes a set of Security steps with an improved UI for configuring scans. Each step shows only the settings that apply to the specific scan. Note the following:
-
-- This release includes new steps for the following scanners: Aqua Trivy, Bandit, Black Duck, Checkmarx, Grype, Mend, Prisma Cloud, Snyk, SonarQube, and ZAP.  
-- Docker-in-Docker is no longer required for these steps *unless* you're scanning a container image. If you're scanning a repository or running instance, you don't need to set up a Background step running DinD.    
-- These steps are currently available in Security stages only. 
-- Support is currently limited to Kubernetes and Harness Cloud AMD64 build infrastructures only.
-- For descriptions of all available UI settings, go to [Security step UI settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference).
-
-![STO step palette](static/sto-step-palette.png)
-
-### STO Jira integration
-
-* **Release date:** March 2023
-* **Issue number:** STO-5467
-* **Feature flag:** `STO_JIRA_INTEGRATION`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-This feature includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations).
+All STO features previously released as early access are now generally available. For more information, go to [STO features promoted to GA
+](#sto-features-promoted-to-ga).
 
 ## SRM early access features
 
@@ -993,3 +886,14 @@ This feature includes a set of Security steps with an improved UI for configurin
 - For descriptions of all available UI settings, go to [Security step UI settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference).
 
 ![STO step palette](static/sto-step-palette.png)
+
+##### STO Jira integration
+
+* **Release date:** October 2023
+* **Early access release date:** March 2023
+* **Early access release version:** 1.32.1
+* **Issue number:** STO-5467
+* **Feature flag:** `STO_JIRA_INTEGRATION`
+
+
+This feature includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations).
