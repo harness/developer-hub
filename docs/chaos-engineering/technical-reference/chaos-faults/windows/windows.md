@@ -14,8 +14,7 @@ import { experiments } from "./experiments"
 <div>
 
 ## Introduction
-
-Windows faults disrupt the resources running on a Windows OS based machine. Depending on the type of instance the fault targets, Windows faults are categorized into various types.
+Windows faults disrupt the resources running on a Windows OS based machine. This deteriorates the performance of the application for the duration of the chaos experiment. Depending on the type of instance the fault targets, Windows faults are categorized into various types.
 
 <ExperimentListSection experiments={experiments} />
 
