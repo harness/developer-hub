@@ -110,7 +110,7 @@ Here is a demo that shows you how to identify, resolve, and prevent Java excepti
 
 Here is an interactive video that demonstrates the capabilities of the Harness Error Tracking Java Agent. Select the glowing circle to see the capabilities. To learn more about the Harness Error Tracking Java Agent and request a detailed demo, contact [Harness](https://www.harness.io/interest/error-tracking).
 
-<iframe src="https://demo.arcade.software/Lsj2sDDVCzMbQFnP7kvT?embed" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%' }}></iframe>
+<div style={{ position: 'relative', paddingBottom: 'calc(52.1875% + 40px)', height: '0' }}><iframe src="https://demo.arcade.software/Lsj2sDDVCzMbQFnP7kvT?embed" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%' }}></iframe></div>
 
 ## Install Harness Error Tracking Java Agent
 
