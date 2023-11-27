@@ -83,14 +83,18 @@ Complex resource configurations can make it difficult to understand the meaning 
 
 ## Contributing to the Harness Terraform Provider
 
-Harness welcomes contributions to the Harness Terraform Provider. Please go to the [Terraform Provider Repo](https://github.com/harness/terraform-provider-harness) to view the source code of the Harness Terraform Provider.
+Harness welcomes contributions to the Harness Terraform Provider. Go to the [Terraform Provider Repo](https://github.com/harness/terraform-provider-harness) to view the source code.
 
-### Building and Testing Locally
+### Build and test locally
 
-1. Clone the repo into your local directory. Run `git clone https://github.com/harness/terraform-provider-harness.git`
-2. Run `go mod tidy`
-3. Run `go build -o terraform-provider-harness`
-4. Create a file called `local.sh` in the root directory of the repository and copy the following script to the bash file 
+1. Run the following to clone the repo to your local directory. 
+
+   `git clone https://github.com/harness/terraform-provider-harness.git`
+
+2. Run `go mod tidy`.
+3. Run `go build -o terraform-provider-harness`.
+4. Create a file called `local.sh` in the root directory of the repository, and copy the following script to the bash file.
+
 
 ```SH
 #!/bin/sh
@@ -104,9 +108,13 @@ mkdir -p ~/.terraform.d/plugins/$source/$version/$platform/
 cp terraform-provider-harness ~/.terraform.d/plugins/$source/$version/$platform/terraform-provider-harness
 ```
 
-5. Run the Bash Script `./local.sh`
+5. Run the Bash script `./local.sh`.
 
-*Note: Please make sure the terraform provider version matches the version in the script*
+
+:::info note
+Make sure the Terraform provider version matches the version in the script.
+:::
+
 
 
 ## Next step
