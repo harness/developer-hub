@@ -195,6 +195,22 @@ The delegate logs are available in the Harness UI. When a pipeline runs and an e
 
 ![](./static/view-delegate-task-logs.png)
 
+It is not possible to configure the delegate logs path. However, you can create a symlink for the `delegate.log` files and store them in a different directory using the `INIT_SCRIPT` environment variable. To do this, simply replace `YOUR_PATH` with the directory where you want to store your log files in the example below.
+
+```yaml
+- name: INIT_SCRIPT
+          value: "mkdir YOUR_PATH && ln -s YOUR_PATH/newdelegate.log delegate.log"
+```
+
+After you create your delegate, you can verify your log file path.
+
+```
+root@d1delegate-pxxdbf-0:/opt/harness-delegate# ls delegate.log
+delegate.log
+root@d1delegate-pxxdbf-0:/opt/harness-delegate# ls YOUR_PATH/*
+YOUR_PATH/newdelegate.log
+```
+
 Delegate logs are also sent to Harness by default. These Stackdriver logs are stored in Harness's GCP account. 
 
 :::caution
