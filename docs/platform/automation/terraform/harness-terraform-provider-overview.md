@@ -79,6 +79,34 @@ Harness Terraform Provider makes it easy to scale infrastructure up and down as 
 Complex resource configurations can make it difficult to understand the meaning and impact of infrastructure changes. The Terraform CLI lets you validate and preview infrastructure changes before applying them. Previewing infrastructure changes safely has several benefits:
 - Team members can collaborate more effectively by understanding proposed changes and their impact.
 - Unintended changes can be caught early in the development process.
+- 
+
+## Contributing to the Harness Terraform Provider
+
+Harness welcomes contributions to the Harness Terraform Provider. Please go to the [Terraform Provider Repo](https://github.com/harness/terraform-provider-harness) to view the source code of the Harness Terraform Provider.
+
+### Building and Testing Locally
+
+1. Clone the repo into your local directory. Run `git clone https://github.com/harness/terraform-provider-harness.git`
+2. Run `go mod tidy`
+3. Run `go build -o terraform-provider-harness`
+4. Create a file called `local.sh` in the root directory of the repository and copy the following script to the bash file 
+
+```SH
+#!/bin/sh
+
+version=0.40.2 #specify in this format 
+source=registry.terraform.io/harness/harnessregistry.terraform.io/harness/harness
+platform=darwin_amd64
+
+mkdir -p ~/.terraform.d/plugins/$source/$version/$platform/
+
+cp terraform-provider-harness ~/.terraform.d/plugins/$source/$version/$platform/terraform-provider-harness
+```
+
+5. Run the Bash Script `./local.sh`
+
+*Note: Please make sure the terraform provider version matches the version in the script*
 
 
 ## Next step
