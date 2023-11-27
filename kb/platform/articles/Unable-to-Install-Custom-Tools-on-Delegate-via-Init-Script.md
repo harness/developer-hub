@@ -13,13 +13,13 @@ error: Failed to create: /var/cache/yum/metadata
 ```
 ## Solution
 
-This error typically occurs when the delegate pod is running with a non-root user, which lacks the necessary permissions to read and write to the /var/cache/yum/metadata directory.
+This error typically occurs when the delegate pod is running with a non-root user, which lacks the necessary permissions to read and write to the `/var/cache/yum/metadata` directory.
 
 To resolve the issue of installing custom binaries on the delegate pod, consider the following approaches:
 
 1. **Run the Delegate Pod with Root User:**
 
-   One straightforward solution is to run the delegate pod with a root user. By doing so, the pod will have sufficient permissions to access the ```/var/cache/yum/metadata``` directory and install the required binaries successfully
+   One straightforward solution is to run the delegate pod with a root user. By doing so, the pod will have sufficient permissions to access the `/var/cache/yum/metadata` directory and install the required binaries successfully
 
 2. **Create a Custom Delegate Image:**
 
