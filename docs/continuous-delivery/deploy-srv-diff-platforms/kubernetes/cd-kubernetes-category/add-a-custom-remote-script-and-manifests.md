@@ -123,7 +123,7 @@ Click on **Execution Summary**, and then click on **Custom Manifest Values Fetch
 
 ![](./static/add-a-custom-remote-script-and-manifests-41.png)
 
-:::note How Harness uses selectors when deploying remote manifests
+:::note How Harness uses selectors when deploying custom remote manifests
 
 If you use separate connectors for downloading manifests and deploying the manifests to your environment, how Harness uses the selectors specified in the connectors varies between custom remote manifests and manifests downloaded from other store types, such as HTTP Helm. 
 
