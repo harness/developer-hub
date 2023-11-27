@@ -53,18 +53,5 @@ If you want to restrict a user or user group to deploy to a specific environment
 
 ## Deleting a Service in Harness
 
-Harness allows users to delete services that have not been deployed by a pipeline. However, deleting a service that was previously deployed carries licensing implications in Harness. By default, Harness does not permit you to delete such a service.
-
-When a user deletes a service in Harness, it means the Harness service object will be deleted. However, the manifests, resources, etc., that were deployed will not be cleaned up automatically. It is the user's responsibility to clean up those resources in the respective infrastructures.
-
-### Key Points
-
-- Services are used by Harness to calculate service licenses.
-- Once a user deploys a service, regardless of the pipeline outcome (i.e., success or failure), the service is considered active.
-- By default, Harness does not allow users to delete an active service because it is used in license calculations.
-- Users can delete active services if they have enabled Force Delete on their account.
-
-### Enabling Force Delete for Services
-
-To enable Force Delete for services, navigate to `Account Resources > Default Settings > General`. Here, you will find an option labeled `Enable Force Delete of Harness Resources`. Please enable it by checking the checkbox. Once enabled, you can delete services that have been deployed. Harness will no longer manage the resources or track the deployed instances associated with the service. This will affect your Service Dashboard view, which provides information about tracked instances for a given service.
+For information on deleting services in Harness, go to **Deleting a Service in Harness** in [Service-based licensing and usage for CD](/docs/continuous-delivery/get-started/service-licensing-for-cd/).
 
