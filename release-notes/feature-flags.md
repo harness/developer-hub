@@ -28,12 +28,15 @@ Released Python SDK 1.3.0
     - target-segments/{identifier}, and 
     - feature-config/{identifier}.
 
+Released Node.js SDK 1.4.0
+ - Can now remediate build time CVEs.
+ - Can now fall back to identifier if the `bucketBy` attribute is not found.
+
 ### Early access features
 
 This release does not include early access features.
 
 ### Fixed issues in the Python SDK
-
 
  - Pip upgraded to 23.3.
  - Requests upgraded to 2.31.0.
