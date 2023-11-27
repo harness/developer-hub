@@ -507,6 +507,37 @@ Done.
 ```
 You deployment is successful.
 
+### Helm Steady State Check
+
+Harness has two ways of performing Helm Steady State Checks for Native Helm Deployment types (Helm Deployments managed by Helm). Depending on your use case and needs you can opt into either option via the setting. By default, Harness will perform a Helm Steady State Check on the deployed resources however, the mechanism of how Harness' does it differs based on the setting.
+
+#### Disabled Setting - Native Helm steady state for jobs - Default Mode
+
+Harness will check for the steady state of the deployed resources via the ConfigMap Harness generates to manage and track the deployment. The limitation of this method, is we do not track Kubernetes Jobs objects that are being created as part of the deployment and wait for them to reach a steady state. 
+
+**Helm Steady State with Setting Disabled**
+
+```
+kubectl --kubeconfig=config get events --namespace=default --output=custom-columns=KIND:involvedObject.kind,NAME:.involvedObject.name,NAMESPACE:.involvedObject.namespace,MESSAGE:.message,REASON:.reason --watch-only  
+  
+kubectl --kubeconfig=config rollout status Deployment/release-e008...ee-nginx --namespace=default --watch=true  
+```
+
+
+#### Enable Setting -  Native Helm steady state for jobs
+By Default, Harness will check for the steady state of deployed Helm resources. If you want to check the steady state for Kubernetes jobs for Native Helm Deployments, we now have a setting that will enable that. Please navigate to `Account Settings > Account Resources > Default Settings` and navigate to the Continuous Deployment Section. This setting can be configured at the project, organization, and account level. You will see the option `Enable Native Helm steady state for jobs` this will check the steady state of the jobs deployed with the Helm Chart. With the checkbox configuration enabled, during a Native Helm Deployment, you will see Harness use the `helm get manifest <+release.name>` command to get the details to check the steady state. With the setting enabled, we are no longer using the ConfigMap to check for status. 
+
+
+**NHelm Steady State with Setting Enabled**
+
+```
+Retrieve helm manifest from release [release-75d461a29efd32e5d22b01dc0f93aa5275e2f003] and namespace [default]
+Executing command - KUBECONFIG=/opt/harness-delegate/./repository/helm/.kube/1f8e53c52248bbf69fe59fdbe5c0b3b5 helm get manifest release-75d461a29efd32e5d22b01dc0f93aa5275e2f003 --namespace=default
+Currently running Containers: [0]
+
+Done
+```
+
 ### Versioning and rollback
 
 Helm chart deployments support versioning and rollback in the same way as standard Kubernetes deployments.
@@ -706,7 +737,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16</td>
-        <td>Allow users leveraging Kubernetes version 1.16 or later to perform steady state check for Helm deployments.</td>
+        <td> Enables steady state check for Helm deployments on Kubernetes clusters using 1.16 or higher. </td>
     </tr>
     <tr>
         <td>CDS_HELM_VERSION_3_8_0</td>
@@ -726,7 +757,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG</td>
-        <td>Enables steady state check for Helm deployments on Kubernetes clusters using 1.16 or higher.</td>
+        <td> There is a behavior change in how Harrness tracks managed workloads for rollback. We are not using anymore a Config Map matching the deployed resources release name to track managed workloads for rollback. We will use `helm get manifest` to retrieve the workloads from a helm release. For steady-state checks of the kubernetes jobs, we’re planning to provide an option in account/org/project settings, by default we will not do this. For customer's who didn't have this feature flag enabled before, they may start seeing that the Wait for steady state check will not be skipped and will need to configure it.</td>
     </tr>
     <tr>
         <td>CDS_HELM_SEND_TASK_PROGRESS_NG</td>
