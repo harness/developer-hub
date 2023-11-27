@@ -108,10 +108,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Provides new <a href="/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#individual-service-dashboards">dashboard views for services and environments</a> <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>CDS_TERRAFORM_CLOUD</td>
-        <td>Enables <a href="/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments">Terraform Cloud support in Harness</a> <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDS_K8S_SOCKET_CAPABILITY_CHECK_NG</td>
         <td>Replaces the HTTP capability check for the Kubernetes connector with socket capability. <b>This feature is in Beta.</b></td>
     </tr>
