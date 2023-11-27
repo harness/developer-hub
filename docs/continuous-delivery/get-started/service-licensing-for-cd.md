@@ -194,9 +194,27 @@ Harness needs to query external sources to be able to know which instances exist
 Depending on where you add the **Fetch Instances** step in your pipeline stage, Harness will query the instances. We recommend querying the instances **after the service is deployed**.
 
  
+## Deleting a licensed service in Harness
 
+Harness allows users to delete services that have not been deployed by a pipeline. However, deleting a service that was previously deployed carries licensing implications in Harness. By default, Harness does not permit you to delete such a service.
 
+When a user deletes a service in Harness, it means the Harness service object is deleted. However, the resources that were deployed are not cleaned up automatically (the manifests, resources, etc.). It is the user's responsibility to clean up those resources in their respective infrastructures.
 
+### Important notes
+
+- Services are used by Harness to calculate service licenses.
+- Once a user deploys a service, regardless of the pipeline outcome (success or failure), the service is considered active.
+- By default, Harness does not allow users to delete an active service because it is used in license calculations.
+- Users can delete active services if they have enabled [Force Delete](/docs/platform/references/entity-deletion-reference/#force-delete) on their account.
+
+### Enabling Force Delete for Services
+
+To enable Force Delete for services, do the following: 
+
+1. In your Harness account, go to **Account Resources** > **Default Settings** > **General**.
+2. Enable **Enable Force Delete of Harness Resources**.
+
+Once enabled, you can delete services that have been deployed. Harness will no longer manage the resources or track the deployed instances associated with the service. This will affect your Service Dashboard view, which provides information about tracked instances for a given service.
 
 
 
