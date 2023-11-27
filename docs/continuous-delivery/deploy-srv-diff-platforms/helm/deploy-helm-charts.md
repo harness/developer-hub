@@ -507,6 +507,11 @@ Done.
 ```
 You deployment is successful.
 
+### Helm Steady State Check
+
+#### For Native Helm Service Deployments Type
+By Default, Harness will check for the steady state of deployed Helm resources. If you want to check the steady state for kubernetes jobs, we now have a setting that will enable that. Please navigate to `Account Settings > Account Resources > Default Settings` and navigate to the Continuous Deployment Section. You will see the option `Enable Native Helm steady state for jobs` this will check the steady state of the jobs deployed with the Helm Chart.
+
 ### Versioning and rollback
 
 Helm chart deployments support versioning and rollback in the same way as standard Kubernetes deployments.
@@ -726,7 +731,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG</td>
-        <td> There is a behavior change in how qArness tracks managed workloads for rollback. We are not using anymore a Config Map matching the deployed resources release name to track managed workloads for rollback. We will use `helm get manifest` to retrieve the workloads from a helm release. For steady-state checks of the kubernetes jobs, we’re planning to provide an option in account/org/project settings, by default we will not do this. For customer's who didn't have this feature flag enabled before, they may start seeing that the Wait for steady state check will not be skipped and will need to configure it.</td>
+        <td> There is a behavior change in how Harrness tracks managed workloads for rollback. We are not using anymore a Config Map matching the deployed resources release name to track managed workloads for rollback. We will use `helm get manifest` to retrieve the workloads from a helm release. For steady-state checks of the kubernetes jobs, we’re planning to provide an option in account/org/project settings, by default we will not do this. For customer's who didn't have this feature flag enabled before, they may start seeing that the Wait for steady state check will not be skipped and will need to configure it.</td>
     </tr>
     <tr>
         <td>CDS_HELM_SEND_TASK_PROGRESS_NG</td>
