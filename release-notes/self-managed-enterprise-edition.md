@@ -134,6 +134,10 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
 - You can now view **Runtime Usage** for secrets. (PL-39416)
 
+- Upgraded PostgreSQL to 14.9.0-debian-11-r60 to address potential vulnerabilities. (PL-42227, ZD-53919)
+
+- Upgraded Redis to 6.2.14-alpine to address potential vulnerabilities. (PL-42228, ZD-53919)
+
 #### Security Testing Orchestration
 
 - The **Account Settings** > **Subscriptions** page has a new **Activity & Usage** section that shows the number of security scans and user activity over the past 30 days. (STO-4942)
