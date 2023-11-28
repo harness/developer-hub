@@ -34,7 +34,7 @@ This topic assumes that you have the following:
 * The pipeline has a Security scan step with a configured `fail_on_severity` setting.
 * At least one successful build with a set of detected security issues. 
 * Developers and SecOps users can [request exemptions](#request-an-sto-exemption).
-* Only SecOps users can [review, approve, reject,](#review-an-sto-exemption), and  [u[update]](#good-practice-review-and-update-sto-exemptions-periodically) exemptions.  
+* Only SecOps users can [review, approve, reject,](#review-an-sto-exemption) and [update](#good-practice-review-and-update-sto-exemptions-periodically) exemptions.  
 
 ## Request an STO exemption
 
@@ -98,7 +98,7 @@ This topic assumes that you have the following:
      
 3. Send a notification of your exemption request — via email, Slack, Jira, etc. — to your SecOps reviewer. Your notification should include the URL to the Security Tests page with the relevant issue selected.
 
-## Approve or reject an STO exemption
+## Approve, reject, or cancel an STO exemption
 
 :::note
 
