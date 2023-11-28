@@ -105,7 +105,7 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
    ```
    gcloud container clusters get-credentials <cluster_name> --zone us-central1-c --project <project_name>
    ```
-11. Run the following command to apply the YAML file you downloaded (in this example, `default` was the namespace entered in the **Namespace** setting):
+13. Run the following command to apply the YAML file you downloaded (in this example, `default` was the namespace entered in the **Namespace** setting):
 
    ```
    kubectl apply -f gitops-agent.yaml -n default
@@ -154,11 +154,11 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
    serviceaccount/example-agent-upgrader created  
    cronjob.batch/example-agent-upgrader created
    ```
-12. Back in Harness, select **Continue**.
-13. Harness indicates that the Harness GitOps Agents is registered.
+14. Back in Harness, select **Continue**.
+15. Harness indicates that the Harness GitOps Agents is registered.
    
    ![](./static/harness-cd-git-ops-quickstart-05.png)
-14. Select **Finish**.
+16. Select **Finish**.
 
 The **Agents** list shows the new Agent as **Healthy** and **Connected**.
 
@@ -360,8 +360,8 @@ Now that you have everything set up, you can sync the source state with the desi
    * **Apply Out of Sync Only**: By default, all objects in the application are synced. For applications with a large number of objects, this will slow down the operation. Enabling this option will sync only resources in the **OutOfSync** state.
    * **Select Prune Propagation Policy**: Defines how resources are pruned by Kubernetes. [See more ](https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion)
    * **Retry**: Retries the sync operation in case of a failure when enabled. 
-4. Select **Synchronize**.
-5. You will see the status **Progressing** and then **HEALTHY**.
+3. Select **Synchronize**.
+4. You will see the status **Progressing** and then **HEALTHY**.
 
 ![](./static/harness-cd-git-ops-quickstart-20.png)
 
