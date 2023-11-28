@@ -1032,7 +1032,7 @@ For more details please see: [Documentation](https://developer.harness.io/docs/c
 
 #### Service hooks for Kubernetes and Helm deployments to fetch Helm Chart dependencies. 
 
-This is possible, but a Feature Flag ```CDS_K8S_SERVICE_HOOKS_NG``` needs to be enabled. 
+This is possible.
 
 For more details please see: [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks)
 
