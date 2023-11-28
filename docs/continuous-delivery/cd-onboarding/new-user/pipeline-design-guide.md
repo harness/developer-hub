@@ -1,7 +1,7 @@
 ---
 title: Pipeline design guide
 description: Reliably automate your CD release process.
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 When designing a Harness Continuous Delivery (CD) pipeline, the objective is to provide an automated and consistent process for taking code from version control to end users reliably.  
