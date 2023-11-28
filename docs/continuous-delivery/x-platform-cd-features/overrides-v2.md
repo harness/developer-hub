@@ -61,15 +61,15 @@ Harness CD Product and Engineering Team
 
 <docvideo src="https://www.loom.com/share/a93bd67458784583b4e509c5b30e887a?sid=49124b81-4909-4079-859c-64e8950fffaa" />
 
-### Updated Experience since Demo Video 11.26.2023
+### Updated experience since the demo video on 11.26.2023
 
-When the feature is enabled for your account it is now globally enabled for your account. We have removed the per-project opt-in experience as we are beginning to make this the default experience in Harness. When the Overrides V2 Experience is enabled for an account, please make sure Harness performs the background migration job for the account to migrate your existing overrides to the Overrides V2 Experience. Once the job is done, you will see the overrides in the Overrides tab. They will no longer be visible in the Environments tab.
+Now, if Overrides V2 is enabled on your account, it is globally enabled on the account. Harness have removed the per-project opt-in experience because it is in the process of making Overrides V2 the default experience in Harness. If the Overrides V2 experience is enabled on your account, make sure that Harness migrates your existing overrides to the Overrides V2 experience. After the migration, the overrides user interface becomes available on the Overrides tab instead of the Environments tab.
 
-Your existing automation will still work as is and the APIs are backward compatible with the V1 Experience. 
+Your existing automation continues to work and the APIs are backward compatible with the V1 experience. 
 
-Areas the team is improving on:
-1. The UI Listing Page of Overrides is still work in progress - there is no search, filtering, or sorting of the Overrides
-2. YAML View in the Harness UI, we plan to show the YAML of the Overrides so users can get familiar with the YAML structure of the Overrides V2.
+Harness is also making the following improvements:
+1. Search, filtering, and sorting capabilities on the overrides listing page.
+2. A YAML view for Overrides V2, to aid your understanding of its YAML structure.
 
 ## Override types
 
