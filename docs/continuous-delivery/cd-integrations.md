@@ -363,10 +363,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Sets pipeline CRUD calls to filter creation asynchronously. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
-        <td>CDS_ASG_V2</td>
-        <td>Enables support for <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial">ASG features</a> like user data, instances, multiple load balancers, and base ASG. <b>This feature is in Public Preview.</b> </td>
-    </tr>
-    <tr>
         <td>CDS_OCI_HELM_ECR_CONFIG_SUPPORT_NG</td>
         <td>Support for ECR as an OCI Helm repo but with temporary credentials. <b>This feature is under development, and will be Beta soon.</b></td>
     </tr>
