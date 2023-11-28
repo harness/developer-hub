@@ -886,8 +886,6 @@ The concatenation in the expression /tmp/spe/<+pipeline.sequenceId> is not worki
 
 So we can invoke the toString() on the integer value then our expression should work. So the final expression would be /tmp/spe/<+pipeline.sequenceId.toString()>
 
-Also please see the Feature Flag: PIE_EXPRESSION_CONCATENATION
-
 #### Can I use the Service Propogation Feature to deploy dev and prod pipelines without changing critical parameters?
 
 Yes, the Service Propogation allows you to provide fixed critical parameters. Please refer more on this in the following [Documentation 1](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services/) and [Documentation 2](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/overrides-v2/).
