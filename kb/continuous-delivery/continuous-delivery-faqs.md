@@ -2091,8 +2091,7 @@ More details here [here](https://developer.harness.io/docs/continuous-delivery/c
 
 #### Can I use AWS CDK provisioning?
 
-Yes, but be aware that AWS CDK provisioning support is behind a Feature Flag. Please reach out to Harness Support for this. 
-Feature Flag: CDS_AWS_CDK
+Yes.
 
 #### I am getting "Backend not initialised error" when running terragrunt plan with specific module?
 
@@ -2342,7 +2341,6 @@ Please follow the following [Documentation](https://developer.harness.io/docs/pl
 #### How can one use `AWS CDK Infra Provisioning Support` on Harness ?
 
 Harness lets users run AWS CDK Workloads via the Container Based Steps.
-To enable this feature one can request for FF `CDS_AWS_CDK` enabling from Harness.
 Please follow more on this [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/aws-cdk/)
 
 #### Does Microsoft Teams support full Gitops ?
