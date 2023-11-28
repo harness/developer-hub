@@ -30,10 +30,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td width="600"><b>Description</b></td>
     </tr>
     <tr>
-        <td>PIE_EXPRESSION_CONCATENATION</td>
-        <td>Removes the need to use &quot;,+,&quot; for strings in expression settings.</td>
-    </tr>
-    <tr>
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16</td>
         <td>Allow users leveraging Kubernetes version 1.16 or later to perform steady state check for Helm deployments. <b>This feature is in Public Preview.</b></td>
     </tr>
