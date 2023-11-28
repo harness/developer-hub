@@ -310,10 +310,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Makes the Container step to respect the delegate selector configured at the pipeline. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
-        <td>CDS_AWS_CDK</td>
-        <td>Enables <a href="/docs/continuous-delivery/cd-infrastructure/aws-cdk">AWS CDK support</a>. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDS_REMOVE_TIME_BUCKET_GAPFILL_QUERY</td>
         <td>Removes the usage of time bucket gapfill from CD. <b>This feature is in Beta.</b> </td>
     </tr>
