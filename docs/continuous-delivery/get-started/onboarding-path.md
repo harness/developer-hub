@@ -1142,8 +1142,8 @@ Role-based access control (RBAC) lets you control who can access your resources 
 | --------------------- | ---------------------	| --------------------- | ---------------------	|
 | Program Manager	| Responsible for analyzing and reporting various metrics | Shared Resources->Dashboards: View & Manage	| Shared Resources -> Dashboards |
 | Platform Admin	| Responsible for provisioning infrastructure and managing Harness resources like Secrets, Environment, Connectors and Delegates | - Shared Resources -> Secrets: View, Create/Edit, Delete & Access <br/> - Shared Resources -> Connectors: View, Create/Edit, Delete & Access <br/> - Shared Resources -> Delegates: View, Create/Edit & Delete <br/> -	Shared Resources -> Delegate Configurations: View, Create/Edit & Delete <br/> - Environments: View, Create/Edit, Delete & Access <br/> - Environment Groups: View, Create/Edit, Delete & Access | - Shared Resources -> Secrets <br/> - Shared Resources -> Connectors <br/> - Shared Resources -> Delegates <br/> - Shared Resources -> Delegate Configurations <br/> - Environments <br/> - Environment Groups |
-| Devops Admin	| Responsible for setting up Policies to adhere to certain organizational standards, managing Users and various other things like Default Settings, Auth Settings, etc | Administrative Functions: All permissions <br/> Services: View, Create/Edit, Delete & Access <br/> Shared Resources -> Templates: View, Create/Edit, Delete, Access & Copy <br/> Shared Resources -> Files: View, Create/Edit, Delete & Access <br/> Shared Resources -> Deployment Freeze: Manage, Override & Global <br/> Shared Resources -> Secrets: View & Access <br/> Shared Resources -> Connectors: View & Access <br/> Shared Resources -> Variables: View, Create/Edit & Delete <br/> Shared Resources -> Files: View, Create/Edit & Delete <br/> Shared Resources -> Delegates: View <br/> Shared Resources -> Delegate Configurations: View <br/> Pipelines: View, Create/Edit, Delete & Execute | Administrative Functions: All Resources under it <br/> Shared Resources: All Resources under it except Dashboards <br/> Services |
-| Devops Engineer	| Responsible for managing Services, Templates, Files, Variables, Pipelines, Triggers, Input Sets etc. | Services: View, Create/Edit & Access <br/> Shared Resources -> Templates: View, Create/Edit, Access & Copy <br/> Shared Resources -> Secrets: View & Access <br/> Shared Resources -> Connectors: View & Access <br/> Shared Resources -> Variables: View & Create/Edit <br/> Shared Resources -> Files: View & Create/Edit <br/> Pipelines: View, Create/Edit & Execute	| Shared Resources: All Resources under it except Dashboards <br/> Services <br/> Pipelines |
+| Devops Admin	| Responsible for setting up Policies to adhere to certain organizational standards, managing Users and various other things like Default Settings, Auth Settings, etc | Administrative Functions: All permissions <br/> Services: View, Create/Edit, Delete & Access <br/> Environments: View & Access <br/> Environment Groups: View & Access <br/> Shared Resources -> Templates: View, Create/Edit, Delete, Access & Copy <br/> Shared Resources -> Files: View, Create/Edit, Delete & Access <br/> Shared Resources -> Deployment Freeze: Manage, Override & Global <br/> Shared Resources -> Secrets: View & Access <br/> Shared Resources -> Connectors: View & Access <br/> Shared Resources -> Variables: View, Create/Edit & Delete <br/> Shared Resources -> Delegates: View <br/> Shared Resources -> Delegate Configurations: View <br/> Pipelines: View, Create/Edit, Delete & Execute | Administrative Functions: All Resources under it <br/> Shared Resources: All Resources under it except Dashboards <br/> Services <br/> Environments <br/> Environment Groups <br/> Pipelines |
+| Devops Engineer	| Responsible for managing Services, Templates, Files, Variables, Pipelines, Triggers, Input Sets etc. | Services: View, Create/Edit & Access <br/> Environments: View & Access <br/> Environment Groups: View & Access <br/> Shared Resources -> Templates: View, Create/Edit, Access & Copy <br/> Shared Resources -> Secrets: View & Access <br/> Shared Resources -> Connectors: View & Access <br/> Shared Resources -> Variables: View & Create/Edit <br/> Shared Resources -> Files: View & Create/Edit <br/> Pipelines: View, Create/Edit & Execute	| Shared Resources: All Resources under it except Dashboards <br/> Services <br/> Environments <br/> Environment Groups <br/> Pipelines |
 
 </details>
 
@@ -1154,10 +1154,8 @@ Role-based access control (RBAC) lets you control who can access your resources 
 | Role Type        | Role Description                                                                                                        | Harness Roles                                                  | Harness Resource Groups                                  | Resource Scope                                |
 |------------------|--------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------|
 | Harness Admin  | Responsible for managing Users and various other things like Default Settings, Auth Settings, etc | Administrative Functions: All permissions | Administrative Functions: All Resources under it | All (including all Organizations and Projects) |
-| Project Manager  | Responsible for analyzing and reporting various metrics of an Organization within Harness Platform                      | - Shared Resources -> Dashboards: View & Manage                   | - Shared Resources -> Dashboards                              | Specified Organizations (and their Projects) |
-| Platform Admin  | Responsible for provisioning infrastructure and managing Harness resources like Secrets, Environment, Connectors and Delegates of an Organization within Harness Platform | - Shared Resources -> Secrets: View, Create/Edit, Delete & Access <br/> - Shared Resources -> Connectors: View, Create/Edit, Delete & Access <br/> - Shared Resources -> Delegates: View, Create/Edit & Delete <br/> - Shared Resources -> Delegate Configurations: View, Create/Edit & Delete <br/> - Environments: View, Create/Edit, Delete & Access <br/> - Environment Groups: View, Create/Edit, Delete & Access | - Shared Resources -> Secrets <br/> - Shared Resources -> Connectors <br/> - Shared Resources -> Delegates <br/> - Shared Resources -> Delegate Configurations <br/> - Environments <br/> - Environment Groups | Specified Organizations (and their Projects) |
-| DevOps Admin  | Responsible for setting up Policies to adhere to certain organizational standards and keeping an eye on all the entities of an Organization within Harness Platform | - Services: View, Create/Edit, Delete & Access <br/> - Shared Resources -> Templates: View, Create/Edit, Delete, Access & Copy <br/> - Shared Resources -> Files: View, Create/Edit, Delete & Access <br/> - Shared Resources -> Deployment Freeze: Manage, Override & Global <br/> - Shared Resources -> Secrets: View & Access <br/> - Shared Resources -> Connectors: View & Access <br/> - Shared Resources -> Variables: View, Create/Edit & Delete <br/> - Shared Resources -> Files: View, Create/Edit & Delete <br/> - Shared Resources -> Delegates: View <br/> - Shared Resources -> Delegate Configurations: View  <br/> - Pipelines: View, Create/Edit, Delete & Execute | - Shared Resources: All Resources under it except Dashboards <br/> - Services <br/> - Pipelines | Specified Organizations (and their Projects) |
-| Devops Engineer  | Responsible for managing Services, Templates, Files, Variables, Pipelines, Triggers, Input Sets etc. of an Organization within Harness Platform | - Services: View, Create/Edit & Access <br/> - Shared Resources -> Templates: View, Create/Edit, Access & Copy <br/> - Shared Resources -> Secrets: View & Access <br/> - Shared Resources -> Connectors: View & Access <br/> - Shared Resources -> Variables: View & Create/Edit <br/> - Shared Resources -> Files: View & Create/Edit <br/> - Pipelines: View, Create/Edit & Execute | - Shared Resources: All Resources under it except Dashboards <br/> - Services <br/> - Pipelines  | Specified Organizations (and their Projects) |
+| Project DevOps Admin  | Responsible for provisioning infrastructure and managing Harness resources like Secrets, Environment, Connectors and Delegates, setting up Policies to adhere to certain organizational standards and keeping an eye on all the entities of an Organization within Harness Platform | Services: View, Create/Edit, Delete & Access <br/> Shared Resources -> Templates: View, Create/Edit, Delete, Access & Copy <br/> Shared Resources -> Files: View, Create/Edit, Delete & Access <br/> Shared Resources -> Deployment Freeze: Manage, Override & Global <br/> Shared Resources -> Secrets: View, Create/Edit, Delete & Access <br/> Shared Resources -> Connectors: View, Create/Edit, Delete & Access <br/> Shared Resources -> Delegates: View, Create/Edit & Delete <br/> Shared Resources -> Delegate Configurations: View, Create/Edit & Delete <br/> Environments: View, Create/Edit, Delete & Access <br/> Environment Groups: View, Create/Edit, Delete & Access <br/> Shared Resources -> Variables: View, Create/Edit & Delete <br/> Pipelines: View, Create/Edit, Delete & Execute <br/> Shared Resources -> Dashboards: View & Manage | Shared Resources <br/> Services <br/> Environments <br/> Environment Groups <br/> Pipelines | Specified Organizations (and their Projects) |
+| Project DevOps Engineer  | Responsible for managing Services, Templates, Files, Variables, Pipelines, Triggers, Input Sets etc. of an Organization within Harness Platform | Services: View, Create/Edit & Access <br/> Shared Resources -> Templates: View, Create/Edit, Access & Copy <br/> Shared Resources -> Secrets: View & Access <br/> Shared Resources -> Connectors: View & Access <br/> Shared Resources -> Variables: View & Create/Edit <br/> Shared Resources -> Files: View & Create/Edit <br/> Environments: View & Access <br/> Environment Groups: View & Access <br/> Pipelines: View, Create/Edit & Execute <br/> Shared Resources -> Dashboards: View | Shared Resources <br/> Services <br/> Environments <br/> Environment Groups <br/> Pipelines | Specified Organizations (and their Projects) |
 
 </details>
 
@@ -1200,6 +1198,7 @@ Role-based access control (RBAC) lets you control who can access your resources 
 ![Access Control Roles for DevOps Admin](static/coe-rbac/devops-admin-roles1.png)
 ![Access Control Roles for DevOps Admin](static/coe-rbac/devops-admin-roles2.png)
 ![Access Control Roles for DevOps Admin](static/coe-rbac/devops-admin-roles3.png)
+![Access Control Roles for DevOps Admin](static/coe-rbac/devops-admin-roles4.png)
 
 **Resource Groups**
 ![Resource Groups for DevOps Admin](static/coe-rbac/devops-admin-resource-groups1.png)
@@ -1213,9 +1212,11 @@ Role-based access control (RBAC) lets you control who can access your resources 
 **Roles**
 ![Access Control Roles for DevOps Engineer](static/coe-rbac/devops-engineer-roles1.png)
 ![Access Control Roles for DevOps Engineer](static/coe-rbac/devops-engineer-roles2.png)
+![Access Control Roles for DevOps Engineer](static/coe-rbac/devops-engineer-roles3.png)
 
 **Resource Groups**
-![Resource Groups for DevOps Admin](static/coe-rbac/devops-engineer-resource-groups.png)
+![Resource Groups for DevOps Admin](static/coe-rbac/devops-engineer-resource-groups1.png)
+![Resource Groups for DevOps Admin](static/coe-rbac/devops-engineer-resource-groups2.png)
 
 ```mdx-code-block
 </TabItem>
@@ -1225,6 +1226,49 @@ Role-based access control (RBAC) lets you control who can access your resources 
 ```mdx-code-block
 </TabItem>
 <TabItem value="Distruibuted DevOps">
+```
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Harness Admin">
+```
+
+**Roles**
+![Access Control Roles for Harness Admin](static/dd-rbac/harness-admin-roles.png)
+
+**Resource Groups**
+![Resource Groups for Program Manager](static/dd-rbac/harness-admin-resource-groups.png)
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Project DevOps Admin">
+```
+
+**Roles**
+![Access Control Roles for Project DevOps Admin](static/dd-rbac/project-devops-admin-roles1.png)
+![Access Control Roles for Project DevOps Admin](static/dd-rbac/project-devops-admin-roles2.png)
+
+**Resource Groups**
+![Resource Groups for Project DevOps Admin](static/dd-rbac/project-devops-admin-resource-groups1.png)
+![Resource Groups for Project DevOps Admin](static/dd-rbac/project-devops-admin-resource-groups2.png)
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Project DevOps Engineer">
+```
+
+**Roles**
+![Access Control Roles for Project DevOps Engineer](static/dd-rbac/project-devops-engineer-roles1.png)
+![Access Control Roles for Project DevOps Engineer](static/dd-rbac/project-devops-engineer-roles2.png)
+![Access Control Roles for Project DevOps Engineer](static/dd-rbac/project-devops-engineer-roles3.png)
+
+**Resource Groups**
+![Resource Groups for Project DevOps Engineer](static/dd-rbac/project-devops-engineer-resource-groups1.png)
+![Resource Groups for Project DevOps Engineer](static/dd-rbac/project-devops-engineer-resource-groups2.png)
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 ```mdx-code-block
