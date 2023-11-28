@@ -8,12 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-
-Currently, this feature is behind the feature flag `NG_SVC_ENV_REDESIGN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Harness CD supports all of the major platforms and we're adding more all the time.
-
-:::
-
 In some cases, you might be using a platform that does not have first class support in Harness, such as OpenStack, WebLogic, WebSphere, etc. We call these non-native deployments.
 
 For non-native deployments, Harness provides a custom deployment option using Deployment Templates.
