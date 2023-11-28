@@ -33,7 +33,7 @@ This topic assumes that you have the following:
 * An STO pipeline as described in [Set up Harness for STO](../../get-started/onboarding-guide.md).
 * The pipeline has a Security scan step with a configured `fail_on_severity` setting.
 * At least one successful build with a set of detected security issues. 
-* Developers and SecOps users can [request exemptions](#request-an-sto-exemption).
+* Developer or SecOps user permissions are required to [request exemptions](#request-an-sto-exemption).
 * Only SecOps users can [review, approve, reject,](#review-an-sto-exemption) and [update](#good-practice-review-and-update-sto-exemptions-periodically) exemptions.  
 
 ## Request an STO exemption
