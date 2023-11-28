@@ -570,12 +570,7 @@ All dependency repositories must be available and accessible from the Harness De
 :::
 
 ## Service hooks 
-  
-:::note
 
-Currently, this feature is behind the feature flag `CDS_K8S_SERVICE_HOOKS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Kubernetes and Helm deployments use service hooks to fetch Helm Chart dependencies that refer to Git and other repositories, and install them with the main Helm Chart. 
 
@@ -750,10 +745,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDS_K8S_SOCKET_CAPABILITY_CHECK_NG</td>
         <td>Replaces the HTTP capability check for the Harness Kubernetes connector with socket capability.</td>
-    </tr>
-    <tr>
-        <td>CDS_K8S_SERVICE_HOOKS_NG</td>
-        <td>Enables the Kubernetes and Helm service hooks feature. Service hooks extend the Helm Chart and Kubernetes service <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks">pre-deployment actions</a>. </td>
     </tr>
     <tr>
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG</td>
