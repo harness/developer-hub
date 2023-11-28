@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-11-27T10:00:15
+date: 2023-11-28T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 7
 ---
@@ -111,7 +111,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
   This issue has been fixed.
 
-  This item requires Harness Delegate version 23.11.816xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Rewrote the description in a Jira comment and asked Pratyush Goel to review. Update at publishing time: No approval yet. Check back. -->
+  This item requires Harness Delegate version 23.11.816xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - The Helm connector's test to check connectivity to an OCI Helm repository in AWS ECR failed with an "Invalid request: Invalid oci url..." error even though the URL to the repository conformed with the formats described in [Connect to an Artifact repository](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo). The delegate was configured to use a proxy server and the Anonymous authentication type. However, manually fetching Helm charts from the delegate were successful. (CDS-82779, ZD-52343)
 
@@ -127,13 +127,13 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
   This issue has been fixed. 
 
-  This item requires Harness Delegate version 23.11.816xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- PRNS description insufficient. Added necessary information and sent this description to Alexandru Casian for review, in Jira. Check. Update Monday evening: no review yet. Followed up on Slack. -->
+  This item requires Harness Delegate version 23.11.816xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Certain Docker registries fail authentication when using the `/v2` endpoint, which is used for health checks in Docker connectors. (CDS-82616, ZD-52513)
 
   This issue has been fixed. Harness now falls back to using the `/v2/` endpoint if the `/v2` endpoint fails.     
 
-  This item requires Harness Delegate version 23.11.8xxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Clean description in the PRNS field. Made minor edits and asked Deepak Puthraya to review, in Jira. Also, fix version field does not have the delegate version. Asked for that info too. Update Monday evening: No review/feedback yet. Followed up on Slack. Another update: No review yet and no update on the delegate version. Assuming 816xx if I don't hear back by publishing time. -->
+  This item requires Harness Delegate version 23.11.8xxxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Harness did not stop Terraform tasks after you canceled pipeline execution, even if you cancelled execution before the task started to run actual Terraform commands. (CDS-82222, ZD-52603)
   
