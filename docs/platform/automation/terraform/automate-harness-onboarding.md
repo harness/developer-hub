@@ -517,7 +517,7 @@ resource "harness_platform_environment" "environment" {
            - name: db_url
              type: String
              value: "https://postrges:8080"
-             description: "postgress url"
+             description: "postgres url"
          overrides: ## You can configure global environment overrides here
            manifests:
              - manifest:
