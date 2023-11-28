@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-11-27T10:00
+date: 2023-11-30T10:00
 sidebar_position: 15
 ---
 ```mdx-code-block
@@ -63,107 +63,215 @@ gsutil -m cp \
 
 #### Self-Managed Enterprise Edition
 
-- Harness updated the Nginx ingress controller to version 1.3.0. With this upgrade, the watch ingress is now scoped to the Kubernetes namespace. The upgrade version 1.3.0 uses `--watch-ingress-without-class=true`, which is incompatible with version 1.0.0-alpha. You must remove any image override fields in your `values.yaml` and `override.yaml` files if you reuse any existing files. (SMP-1811, SMP-2326)
+:::info Caution
+Harness updated the Nginx ingress controller to version 1.3.0. With this upgrade, the watch ingress is now scoped to the Kubernetes namespace. The upgrade version 1.3.0 uses `--watch-ingress-without-class=true`, which is incompatible with version 1.0.0-alpha. You must remove any image override fields in your `values.yaml` and `override.yaml` files if you reuse existing files. (SMP-1811, SMP-2326)
 
-- 
+:::
+
+- The project and account Overview pages are now available. (SMP-2191)
 
 #### Continuous Delivery & GitOps
 
-- 
+- Improvements to the user experience with forms (CDS-74220, ZD-47456, ZD-50077)
 
-- 
+  The following improvements have been made to forms to enhance your user experience: 
+
+    - Initial empty state: forms opened for the first time are empty. This allows you to begin your input process with a clean slate.
+
+    - Runtime inputs: fields that you intentionally leave empty are manually converted to runtime inputs. You can modify and set values for these fields during runtime.
+
+    - Retained input set values: when you run a pipeline using the form, your experience will be seamless. The form loads with the same values as the previous input set without any unwanted clearing or mutation.
+
+- Improved user experience when viewing errors in the console view (CDS-77809)
+
+  You can now increase the height of the error panel in the pipeline console. This change improves the readability of error messages and suggestions.
+
+- More intuitive tag creation (CDS-78994)
+
+  Tag creation is now more intuitive in the Harness user interface. When you enter text in a tag field, a create button appears, and you can select that button or press Enter to create the tag.
+
+- Input and output variables for Tanzu deployments (CDS-79461)
+
+  You can now add input and ouput variables to the Tanzu Command step and step template to facilitate Tanzu deployments.
+
+- Ability to exclude services or environments from deployment freeze window (CDS-79505)
+
+  Now, when configuring a coverage rule for a deployment freeze window, if you choose to include all services or all environments, Harness gives you the option to exclude specific services or environments, respectively. This functionality is the same as the options provided for excluding organizations and projects, and it reduces your effort when the entities you want to include outnumber those you want to exclude. 
+
+  For more information, go to [Define freeze window coverage and schedule](/docs/continuous-delivery/manage-deployments/deployment-freeze/#define-freeze-window-coverage-and-schedule).
+
+- User interface improvements on the secrets listing page (CDS-80747)
+
+  The column widths and text truncation on the secrets listing page have been adjusted to make longer secret names more readable.
+
+- Harness has introduced stage-level timeouts for the following stage types: (CDS-81225)
+  - Deploy
+  - Build
+  - Approval
+  - Security Test
+  - Pipeline
+  - Custom Stage 
+
+  This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Availability of deployment step group templates in custom stages (CDS-81265)
+
+  When opened in the context of a custom stage, the **Templates** side panel in Pipeline Studio lists step group templates created from deployment stages. The **Type** dropdown field in the panel also includes entries for filtering step groups created from custom and deployment stages.
 
 #### Continuous Integration
 
-- 
+##### Build and Push to GAR (CI-9926)
 
-- 
+This release includes a new [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar) offering first-class support for build and pushing artifacts to Google Artifact Registry (GAR). Previously, you could use Run steps to build and push to GAR. This new step combines the build and push steps into one streamlined step.
 
-#### Harness Delegate
+If using this step with Harness Cloud build infrastructure, you can also leverage the new [OIDC connectivity mode](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference#use-openid-connect-oidc) in your GCP connector.
 
-- 
+Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr), the **Build and Push to GCR** step will be deprecated in favor of the new **Build and Push to GAR** step.
 
-- 
+- You can now [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting) in the Visual editor as well as the YAML editor. (CI-9618)
 
 #### Harness Platform
 
-- 
-
-- 
+- You can now view **Runtime Usage** for secrets. (PL-39416)
 
 #### Security Testing Orchestration
 
-- 
+- The **Account Settings** > **Subscriptions** page has a new **Activity & Usage** section that shows the number of security scans and user activity over the past 30 days. (STO-4942)
 
-#### Service Reliability Management
-
-- 
-
-### Early access features
-
-#### Continuous Delivery & GitOps
-
-- 
-
-- 
-
-#### Continuous Integration
-
-- 
+- You can now scan your repositories and other components used in your code with [Anchore Enterprise](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. (STO-6382)
 
 ### Fixed issues
 
 #### Self-Managed Enterprise Edition
 
-- 
+- Self-Managed Enterprise Edition CDNs were missing required binaries. Added 0.4.4 to Go template and libraries for delegates with the legacy image type. (SMP-2010)
 
-- 
+- Continuous Verification NextGen APIs failed in Istio environments. This issue was fixed by updating the Continuous Verification NextGen virtual service to use `/cv/` instead of `/` in Istio environments. (SMP-2182)
 
-#### Chaos Engineering
-
-- 
+- Added dashboard aggregator support with Istio and fixed virtual service route rules. (SMP-2192)
 
 #### Continuous Delivery & GitOps
 
-- 
+- When a step fails, you expect pipeline execution to stall. However, failed steps are sometimes marked as being successful, and pipeline execution continues. This behavior is observed when the step's failure strategy is set to wait for manual intervention, and a user selects **Mark as Success** in response to the step's failure. This behavior is by design. For more information, go to [Failure strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/#failure-strategy-settings). (CDS-72904, ZD-46414, ZD-47050, ZD-47743)
 
-- 
+  The issue in this situation was that you were not informed about what failure strategy was applied and by whom (the failure strategy might have been selected by a user before the specified timeout or by Harness after the specified timeout). To fix this issue, Harness has added the following step interrupt fields to the step details: 
+    * **Failure Strategy Applied**. Shows which failure strategy was applied.
+    * **Applied By**. Shows one of the following values to inform you about the source of the action:
+      * **Failure Strategy _timestamp_**. Indicates that Harness applied the configured failure strategy automatically.
+      * **email address _timestamp_**. Indicates that a user intervened and selected the failure strategy.
+      * **Post Timeout Action _timestamp_**. Indicates that Harness applied the post-timeout action because no user intervened within the allotted time.
 
-#### Continuous Error Tracking
+- If you disabled basic authentication for an Azure web app, the deployment failed with the error `Invalid request: Connector not found for identifier : [defaultParam] with scope: [PROJECT]`. The issue was caused by Azure removing support for basic authentication in favor of Azure AD. (CDS-79360, ZD-50598)
 
-- 
+- In Pipeline Studio, if you perform CRUD operations on stage variables in the Variables side panel when the stage's Overview tab is open, those operations do not reflect on the Overview Tab. For example, the Overview tab continues to show stage variables that you delete in the side panel. (CDS-79739, CDS-82435)
+
+  This issue has been resolved.
+
+- The names of environments were truncated to enable the Total Deployments section of the Services page. This was done to accommodate multiple environment names. (CDS-79757)
+
+  This issue has been fixed.
+
+- The yellow icon that indicates that a stage, step, or step group includes conditional execution settings persists even after you reset the conditional execution settings (for example, by changing the value type, in succession, from **Fixed value**, to **Runtime input**, and to **Fixed value** again, and then clicking **Apply Changes**). However, removing the associated YAML block cleared the icon. (CDS-79991, ZD-51026)
+
+  This issue has been fixed, and the yellow icon no longer persists after you reset the conditional execution settings. 
+  
+  In addition to fixing this issue, Harness has made it easier for you to reset the conditional execution configuration. The Conditional Execution section now includes a delete button that works in the same way as the delete button in the other advanced strategy sections (Looping Strategy and Failure Strategy). The delete button becomes available only when conditional execution settings exist.
+
+- Earlier, when the log query failed for Datadog Cloud logs, the service instance list was empty. Consequently, you could not add multiple queries. (CDS-80046, ZD-51139, ZD-52067)
+
+  This issue has been fixed. Now, if no options are listed or the option that you searched for is not available, you can enter the value manually.
+
+- The migration of service overrides generated an invalid YAML object and failed with the error `Invalid request: "Override spec is empty in request."` (CDS-80081)
+
+  This issue has been fixed.
+
+- Earlier, manually created queries overrode existing queries, which were consequently lost. (CDS-80342, ZD-51302) 
+
+  This issue has been fixed. Now, manually configured queries are appended to existing queries.
+
+- If a Policy step was used in a matrix strategy, Harness used the Policy step's payload to create the stage name instead of showing the actual name of the step. (CDS-80743, ZD-51672)
+
+  This issue has been fixed. 
+
+- When creating a new template, the **Save as New Template** menu item did not include the changes that you made, which meant that the new template did not differ from the one you started with. This issue was observed in Git Experience (remote) templates. (CDS-80744)
+
+  The issue has been fixed.
+
+- The **Limit Memory** and **Limit CPU** fields in the Container step support expression inputs, but the Harness user interface throws an error when you attempt to save the step with an expression in those fields. (CDS-80926, ZD-51774, ZD-52143)    
+
+  This issue has been fixed.
+
+- Providing the host value as a runtime input in the Secure Shell step results in the following error: `Invalid request: Cannot create infrastructure config due to Couldn't convert jsonString to object`. Specifying a variable that resolves to the host value at runtime also throws an error, but one that involves the exception `ClassCastException`. (CDS-81002, ZD-51793)
+
+  This issue has been fixed.
+
+- When saving secret files, Harness FirstGen and Harness NextGen encode the file content with the ISO_8859_1 character set. However, while Harness FirstGen correctly decodes the file content referenced by the `configFile.getAsBase64()` functor, Harness NextGen uses UTF-8. The issue caused additional padding bytes to be included in the P12 config file and authorization errors with GCP Pub/Sub in Harness NextGen. (CDS-81032, ZD-51928)
+
+  This issue has been fixed. Now, Harness NextGen uses the ISO_8859_1 character set while decoding secrets from the secret store and subsequently uses Base64 encoding.
+
+  This item requires Harness Delegate version 23.10.81001. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- A discrepancy existed in the information displayed between the pipeline view and console view of the Verify step in a deployment: the console view displayed “No analysis” while the pipeline view displayed a more verbose output. (CDS-81291, ZD-52005)
+  
+  This issue is now fixed. If an error occurs, the message is displayed at the top of the view.
+
+- The pipeline selection component in the pipeline chaining user interface did not display all of the available pipelines. (CDS-81304)
+
+  This issue has been fixed.
+
+- Template Studio did not save the delegate selector setting to the template if it was marked as a runtime input. (CDS-81633, ZD-52018, ZD-52366, ZD-52504)
+
+  This issue has been fixed.
+
+- The Submit button that you use to add an OCI Helm manifest source to a service configuration does not work if Harness cannot fetch the chart version. (CDS-81657, ZD-52068, ZD-52156)
+
+  This issue has been fixed.
+
+- Expressions that reference secrets (for example, `<+secrets.getValue("secret")>`) in the input variable sections of custom artifact sources did not resolve. (CDS-81724, ZD-52184)
+
+  This issue has been fixed. 
+
+- Earlier, when you selected one or more pipeline stages to execute, and those stages did not have runtime inputs, Harness validated all the stages in the pipeline. Harness confined validation to the stages you selected only if the stages had runtime inputs. (CDS-81914)
+
+  The issue of validating all the stages when the selected stages do not have runtime inputs is now fixed.
+
+- The Edit Health Source dialog did not display the value that you had selected in the Service Instance Identifier field earlier. The value appeared in the field only after you clicked Fetch Records a few times. The issue was caused by a delay in the API call used to fetch the options. (CDS-81971, ZD-50452) 
+
+  This issue has been fixed. With this fix, the field becomes unavailable until the API call completes, and it displays a placeholder value that indicates the choice that you had made earlier.
 
 #### Continuous Integration
 
-- 
+- Long test and class names on the [Tests tab](/docs/continuous-integration/use-ci/viewing-builds#tests-tab) no longer push the **Copy** icon out of the visible area. (CI-9500)
 
-- 
+- When you add a [Build stage](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings) to a pipeline, the **Infrastructure** tab is selected by default, rather than the **Execution** tab. (CI-9624)
+
+- Corrected the rendering of the **Stack Trace** field when inspecting failed tests from the [Tests tab](/docs/continuous-integration/use-ci/run-tests/viewing-tests) on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds). (CI-9765, ZD-51231)
+
+- Fixed an issue where Background step logs weren't correctly called for steps running in parallel. (CI-9801)
 
 #### Feature Flags
 
-- 
+- The feature flag module did not ship with an OOTB role that could toggle flags. (FFM-9542)
 
-- 
+   This meant that customers on the free tier could only toggle flags as admin users because they were unable to create custom roles.
 
-#### Harness Delegate
+   This issue has been resolved. The feature flag module now ships with an OOTB "feature flag admin" role that contains all the feature flag permissions (excluding delete).
 
-- 
-
-- 
+   You can now assign users the "feature flag admin" role to allow them to toggle flags.
 
 #### Harness Platform
 
-- 
+- Fixed an issue where sort filter was not working for delegates. (PL-41184, ZD-50573)
 
-- 
+- When viewing the audit trail diff for a role, an empty screen was displayed due to a failure in the YAML diff API. (PL-41230)
+   
+   Role audits are updated to show role change details.
 
-#### Service Reliability Management
-
-- 
+- On the User Groups list page, there was an issue when attempting to quickly add members by selecting the **+** icon, which resulted in inadvertently removing members from the user group. This occurred because the system was using only the data of users visible on the screen (up to a maximum of 6 members) instead of all users in the group. The problem has now been resolved, and all existing users remain in the group while new users can also be added successfully without any issues. (PL-41730, ZD-51725)
 
 #### Security Testing Orchestration
 
-- 
+- An alignment issue with the **Change Event** card has been fixed to ensure consistent information display. (SRM-15793)
 
 ## Previous releases
 
@@ -397,7 +505,7 @@ gsutil -m cp \
 
 - Fixed an issue in the `override-prod.yaml` file in the 0.9.0 release that caused invalidation errors. (SMP-2121)
 
-- Fixed an issue where the global.ingress.objects.annotation field was not being templated correctly. (SMP-2125)
+- Fixed an issue where the `global.ingress.objects.annotation` field was not being templated correctly. (SMP-2125)
 
 - Disabled creation of MongoDB and PostgreSQL secrets with external databases. (SMP-2164, ZD-52250)
 
