@@ -225,7 +225,6 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 * **Release date:** August 2023
 * **Release version:** 80120
 * **Issue number:** CDS-73894, CDS-70209
-* **Feature flag:** `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 With this feature flag enabled, you can:
