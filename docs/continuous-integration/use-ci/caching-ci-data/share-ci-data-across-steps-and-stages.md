@@ -57,6 +57,6 @@ Remote Docker layer caching can dramatically improve build times by sharing laye
 * [Build and Push to GAR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar.md)
 * [Build and Push to GCR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md)
 
-Support for Docker Layer Caching with [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md) is a beta feature that is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. <!-- CI_ENABLE_DLC and CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED --> <!-- DLC uses the buildx plugin rather than kaniko or drone-docker. Example - GCR buildx plugin: https://github.com/drone-plugins/drone-buildx-gcr -->
+Support for Docker Layer Caching with [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md) and Docker Layer Caching automation is a beta feature that is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. <!-- CI_ENABLE_DLC and CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED --> <!-- DLC uses the buildx plugin rather than kaniko or drone-docker. Example - GCR buildx plugin: https://github.com/drone-plugins/drone-buildx-gcr -->
 
 For more recommendations for optimizing Docker images, go to [Optimize and enhance CI pipelines](../optimize-and-more/optimizing-ci-build-times.md).
