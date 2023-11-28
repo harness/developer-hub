@@ -34,7 +34,7 @@ Select a step to investigate logs, inputs, outputs, and errors (if any) for that
 
 When troubleshooting failed builds, you can switch to **Console View** to allocate more screen space to logs. Once you've identified a potential cause, select **Edit Pipeline** to go directly to the Pipeline Studio.
 
-Logs are limited to 5MB, if you need to examine logs larger than 5MB, you need to [export full logs](../troubleshoot-ci/troubleshooting-ci.md#export-full-logs).
+CI step logs are limited to 5MB, and there is an individual line limit of 25KB. If necessary, you can [export full logs](../troubleshoot-ci/troubleshooting-ci.md#export-full-logs).
 
 ### Inputs tab
 

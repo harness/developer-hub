@@ -393,11 +393,22 @@ Used to [enable test splitting for TI](./ti-test-splitting.md).
 
 ### Pre-Command
 
-You can enter commands for setting up the environment before running the tests. If a script is supplied here, select the corresponding **Shell** option.
+You can enter commands for setting up the environment before running the tests, for example:
+
+```yaml
+                    preCommand: |
+                      python3 -m venv .venv
+                      . .venv/bin/activate
+
+                      python3 -m pip install -r requirements/test.txt
+                      python3 -m pip install -e .
+```
+
+If a script is supplied here, select the corresponding **Shell** option.
 
 :::info
 
-* Python 3 is required to use TI for Python, and you can use **Pre-Command** to install the Python 3 binary if it is not already installed on the build machine or available in the specified [Container Registry and Image](#container-registry-and-image). Python 3 is preinstalled on Harness Cloud runners (Harness Cloud build infrastructure).
+* Python 3 is required to use TI for Python. You can use **Pre-Command** to install the Python 3 binary if it is not already installed on the build machine or available in the specified [Container Registry and Image](#container-registry-and-image). Python 3 is preinstalled on Harness Cloud build infrastructure.
 * If you use another command, such as `python`, to invoke Python 3, you must add an alias, such as `python3 = "python"`.
 * You don't need to install coverage tools in **Pre-Command**. If you install a coverage tool, Harness uses the version you install instead of the included version.
 * You can specify `PYTHONPATH` in the [Environment Variables](#environment-variables).
@@ -406,7 +417,7 @@ You can enter commands for setting up the environment before running the tests. 
 
 ### Post-Command
 
-You can enter commands used for cleaning up the environment after running the tests. For example, `sleep 600` suspends the process for 600 seconds.
+You can enter commands used for cleaning up the environment after running the tests.
 
 If a script is supplied here, select the corresponding **Shell** option.
 

@@ -129,7 +129,7 @@ jobs:
       - checkout
       - run:
           shell: bash
-          command: echo "matrix vaule << parameters.matrix-var >> "
+          command: echo "matrix value << parameters.matrix-var >> "
           name: step1
 
 workflows:
@@ -137,7 +137,7 @@ workflows:
     jobs:
       - job1
       - job2 :
-          context: smaple-contex
+          context: sample-context
           requires:
             - job1
       - job3:
@@ -155,9 +155,9 @@ workflows:
 
 ```yaml
 pipeline:
-  name: testpipeline
-  identifier: testpipeline
-  projectIdentifier: NgLabs
+  name: default
+  identifier: default
+  projectIdentifier: default
   orgIdentifier: default
   tags: {}
   stages:
@@ -171,8 +171,8 @@ pipeline:
             steps:
               - step:
                   type: Background
-                  name: Postgress-Dependecy-Service
-                  identifier: PostgressDependecyService
+                  name: Postgres-Dependency-Service
+                  identifier: PostgresDependencyService
                   spec:
                     connectorRef: account.harnessImage
                     image: postgres:10.8
@@ -186,7 +186,7 @@ pipeline:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: ronakpatildocker
+                    connectorRef: account.harnessImage
                     image: openjdk:17.0-jdk
                     shell: Bash
                     command: echo "this runs on openjdk"
@@ -209,7 +209,7 @@ pipeline:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: ronakpatildocker
+                    connectorRef: account.harnessImage
                     image: node:13.0.0
                     shell: Bash
                     command: |-
@@ -254,8 +254,8 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: gitforronak
-        repoName: test
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_CODE_REPO_NAME
         build: <+input>
   variables:
     - name: pipelinevar1
@@ -408,10 +408,10 @@ workflows:
                       name: step1
                       identifier: step1
                       spec:
-                        connectorRef: ronakpatildocker
+                        connectorRef: account.harnessImage
                         image: node:13.0.0
                         shell: Bash
-                        command: echo "Downlaod file in parallel with stage 2 "
+                        command: echo "Download file in parallel with stage 2 "
         - stage:
             name: Stage2
             identifier: stage2
@@ -425,7 +425,7 @@ workflows:
                       name: step1
                       identifier: step1
                       spec:
-                        connectorRef: ronakpatildocker
+                        connectorRef: account.harnessImage
                         image: node:13.0.0
                         shell: Bash
                         command: echo "step1"
@@ -442,7 +442,7 @@ workflows:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: ronakpatildocker
+                    connectorRef: account.harnessImage
                     image: node:13.0.0
                     shell: Bash
                     command: echo "step 1 in stage3 . stage 3 requires stage 1 and 2 "
@@ -459,7 +459,7 @@ workflows:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: ronakpatildocker
+                    connectorRef: account.harnessImage
                     image: node:13.0.0
                     shell: Bash
                     command: echo "step 1 in stage4 . stage 4 requires stage 3"

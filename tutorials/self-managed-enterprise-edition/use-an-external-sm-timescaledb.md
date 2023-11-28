@@ -547,7 +547,7 @@ To uninstall TimescaleDB, do the following:
 
 ```
 service stop postgresql
-sudo apt-get --purge remove {POSTGRESS-PACKAGE NAME}
+sudo apt-get --purge remove {POSTGRES-PACKAGE NAME}
 sudo rm -rf /var/lib/postgresql/
 sudo rm -rf /var/log/postgresql/
 sudo rm -rf /etc/postgresql/
