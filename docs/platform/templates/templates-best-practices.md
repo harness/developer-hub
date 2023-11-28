@@ -739,6 +739,10 @@ template:
 
 - Harness warns you when a pipeline references a template that needs to be reconciled when you change it.
 
+   ![](./static/entities-require-reconcile.png)
+
 - You can view the Git YAML differences for the pipeline and see which lines have been modified. The differences are calculated based on the data, not exact string matches. Therefore, a different quote symbol, for example, `"` versus `'` for the same date value might not be recognized as a difference. This is not an issue or error.
 
 - To update the template, select **Save**. Harness reconciles the change making it the default state.
+
+For more information, go to [Reconcile pipeline template changes](/docs/platform/templates/reconcile-pipeline-templates).
