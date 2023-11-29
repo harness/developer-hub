@@ -265,19 +265,19 @@ Listed below is the probe schema for Datadog Probe with common properties shared
 ```yaml
 probe:
   - name: datadog-probe
-      type: "DatadogProbe"
-      mode: "EOT"
-      datadogProbe/inputs:
-        datadogSite: us5.datadoghq.com
-        syntheticsTest:
-          publicId: zgs-mq8-pgy
-          testType: api
-        datadogCredentialsSecretName: dd-secret
-      runProperties:
-        probeTimeout: 2s
-        attempt: 1
-        interval: 3s
-        stopOnFailure: false
+    type: "DatadogProbe"
+    mode: "EOT"
+    datadogProbe/inputs:
+      datadogSite: us5.datadoghq.com
+      syntheticsTest:
+        publicId: zgs-mq8-pgy
+        testType: api
+      datadogCredentialsSecretName: dd-secret
+    runProperties:
+      probeTimeout: 2s
+      attempt: 1
+      interval: 3s
+      stopOnFailure: false
 ```
 
   </TabItem>
@@ -286,18 +286,18 @@ probe:
 ```yaml
 probes:
   - name: datadog-probe
-      type: "DatadogProbe"
-      mode: "EOT"
-      datadogProbe/inputs:
-        datadogSite: us5.datadoghq.com
-        syntheticsTest:
-          publicId: zgs-mq8-pgy
-          testType: api
-      runProperties:
-        probeTimeout: 2s
-        attempt: 1
-        interval: 3s
-        stopOnFailure: false
+    type: "DatadogProbe"
+    mode: "EOT"
+    datadogProbe/inputs:
+      datadogSite: us5.datadoghq.com
+      syntheticsTest:
+        publicId: zgs-mq8-pgy
+        testType: api
+    runProperties:
+      probeTimeout: 2s
+      attempt: 1
+      interval: 3s
+      stopOnFailure: false
 ```
 
   </TabItem>
@@ -366,18 +366,18 @@ spec:
         chaos:
           probes:
             - name: datadog-probe
-                type: "DatadogProbe"
-                mode: "EOT"
-                datadogProbe/inputs:
-                  datadogSite: us5.datadoghq.com
-                  syntheticsTest:
-                    publicId: zgs-mq8-pgy
-                    testType: api
-                runProperties:
-                  probeTimeout: 2s
-                  attempt: 1
-                  interval: 3s
-                  stopOnFailure: false
+              type: "DatadogProbe"
+              mode: "EOT"
+              datadogProbe/inputs:
+                datadogSite: us5.datadoghq.com
+                syntheticsTest:
+                  publicId: zgs-mq8-pgy
+                  testType: api
+              runProperties:
+                probeTimeout: 2s
+                attempt: 1
+                interval: 3s
+                stopOnFailure: false
           experiment: linux-process-kill
           processKillChaos/inputs:
             duration: 30
@@ -451,18 +451,18 @@ spec:
         chaos:
           probes:
             - name: datadog-probe
-                type: "DatadogProbe"
-                mode: "EOT"
-                datadogProbe/inputs:
-                  datadogSite: us5.datadoghq.com
-                  syntheticsTest:
-                    publicId: zgs-mq8-pgy
-                    testType: browser
-                runProperties:
-                  probeTimeout: 2s
-                  attempt: 1
-                  interval: 3s
-                  stopOnFailure: false
+              type: "DatadogProbe"
+              mode: "EOT"
+              datadogProbe/inputs:
+                datadogSite: us5.datadoghq.com
+                syntheticsTest:
+                  publicId: zgs-mq8-pgy
+                  testType: browser
+              runProperties:
+                probeTimeout: 2s
+                attempt: 1
+                interval: 3s
+                stopOnFailure: false
           experiment: linux-process-kill
           processKillChaos/inputs:
             duration: 30
