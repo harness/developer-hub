@@ -236,7 +236,7 @@ The secret can fail because of various reasons.
                capabilities = ["read"]  
                }    
    ```
-3. The policy attached to the Token/AppRole does not provide the **write**permission in the specified path. Make sure you update the policies and permissions.
+3. The policy attached to the Token/AppRole does not provide the **write** permission in the specified path. Make sure you update the policies and permissions.
 
 ### Step 4: Read-only Vault
 
@@ -254,8 +254,6 @@ Also a read-only Harness Vault Secret Manager:
 
 * Cannot be used in the **Add Encrypted File** dialog.
 * Cannot create inline secrets in the **Add Encrypted Text** modal.
-* Cannot migrate (deprecate) its secrets to another secret manager.
-* Cannot have secrets migrated to it from another secret manager.
 
 ### Step 5: Test Connection
 
