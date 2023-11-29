@@ -240,17 +240,17 @@ These methods must **not** be executed on the application's main thread as they 
 
 The `eventsListener` method provides a way to register a listener for different events that might be triggered by SDK.
 
-The possible events and their responses are outlined in the following table:
+The possible events, reasons for being emitted, and their responses are outlined in the following table:
 
 
 
-|  |  |
-| --- | --- |
-| **EVENT\_TYPE** | **Response** |
-| SSE\_START | - |
-| SSE\_END | - |
-| EVALUATION\_CHANGE | `Evaluation` |
-| EVALUATION\_RELOAD | `List<Evaluation>` |
+|                    |                                                                                                                                                                                                                                                                                                                                                                                                                              |                    |
+|--------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| **EVENT\_TYPE**    | **Reason**                                                                                                                                                                                                                                                                                                                                                                                                                   | **Response**       |
+| SSE\_START         | The SDK has sucessfuly opened a streaming connection to the Feature Flags service, and is listening for events.                                                                                                                                                                                                                                                                                                              | -                  |
+| SSE\_END           | The SDK has closed the streaming connection to the Feature Flags service and is no longer listening for events. This can happen if the SDK is shutdown, of if there is a transient networking issue, and the SDK will attempt to reconnect.                                                                                                                                                                                  | -                  |
+| EVALUATION\_CHANGE | The SDK has streamed a new evaluation after a flag has been changed using the Harness web application. *Note* this is for individual flag changes only, and this event is not applicable to target group changes. See `EVALUATION_RELOAD` for streaming target group changes.                                                                                                                                                | `Evaluation`       |
+| EVALUATION\_RELOAD | This event can be emitted for 3 reasons. 1) A target group change has been made using the Harness web application, and all evaluations has been reloaded. 2) Streaming has been disabled and the SDK is in polling mode, and a poll has completed which has reloaded all evaluations. 3) The SDK has disconnected from the stream and has entered polling mode, and a poll has completed which has reloaded all evaluations. | `List<Evaluation>` |
 
 For example:
 
