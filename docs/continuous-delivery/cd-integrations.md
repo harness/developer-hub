@@ -203,10 +203,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables users to select Azure WebApps in a drop down for slot deployments. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>CD_AI_ENHANCED_REMEDIATIONS</td>
-        <td>Enables AIDA for CD steps to provide error handling support for CD AIDA.</td>
-    </tr>
-    <tr>
         <td>CDP_AWS_SAM</td>
         <td>Enables <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments">AWS SAM deployments</a> <b>This feature is in Public Preview.</b></td>
     </tr>
