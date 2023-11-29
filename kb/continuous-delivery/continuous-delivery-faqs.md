@@ -2332,7 +2332,7 @@ If one feels like an issue for latency in API response receiving please consider
 
 #### How can one use HELM expressions ?
 
-One should have these FFs enabled : `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG` and `CDS_HELM_FETCH_CHART_METADATA_NG`
+One should have this FF enabled : `CDS_HELM_FETCH_CHART_METADATA_NG`
 They allows you to configure multiple expressions and then resolve the expressions.
 Please follow the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#helm-chart-expressions)
 
