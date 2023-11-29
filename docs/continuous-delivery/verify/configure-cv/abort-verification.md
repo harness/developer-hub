@@ -15,8 +15,6 @@ The Abort Verification command stops verification and assigns the specified succ
 
 If you select **Mark as failure**, any failure strategy that is configured for the step is applied. If the failure strategy is set to *Manual Intervention*, any user who has the required permissions to intervene may choose to mark the step as a success.
 
-<!-- Are certain failure strategies invalidated when the step is aborted? For example, Retry Step?  -->
-
 To abort verification, do the following:
 - In Harness, go to **Deployments** > **Pipelines**, and then click the desired pipeline. 
 
