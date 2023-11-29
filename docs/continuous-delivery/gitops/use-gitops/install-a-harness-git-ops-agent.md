@@ -79,7 +79,7 @@ Select **New GitOps Agent**. The Agent wizard appears.
 
 :::note
 
-For the purposes of this tutorial, we will be creating a regular Harness GitOps agent without an existing Argo CD instance (non-BYOA setup). For creating a BYOA setup (with an existing Argo CD installation), please refer to [Bring Your Own Argo CD (BYOA) into Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/multiple-argo-to-single-harness.md)
+For the example in this topic, a regular Harness GitOps agent is created without an existing Argo CD instance (non-BYOA setup). For creating a BYOA setup (with an existing Argo CD installation), please refer to [Bring Your Own Argo CD into Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/multiple-argo-to-single-harness)
 
 :::
 
@@ -92,7 +92,7 @@ In **Name**, enter the name for the new Agent.
 In **GitOps Operator**, select one of the following:
   
   * **Argo**. Uses Argo CD as the GitOps reconciler.
-  * **Flux**. Uses Flux as the GitOps reconciler. [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/use-gitops/use-flux.md).
+  * **Flux**. Uses Flux as the GitOps reconciler. [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/use-gitops/use-flux).
 
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
 
@@ -227,7 +227,7 @@ In addition, when you install the Harness GitOps Agent in your existing Argo CD 
 
 Also, whenever new entities are created in mapped Argo CD projects, they are added to Harness automatically.
 
-For steps on setting up the mapping and import, go to [Map existing Argo projects](/docs/continuous-delivery/gitops/connect-and-manage/multiple-argo-to-single-harness.md#map-existing-argo-projects).
+For steps on setting up the mapping and import, go to [Map existing Argo projects](/docs/continuous-delivery/gitops/connect-and-manage/multiple-argo-to-single-harness#map-existing-argo-projects).
 
 ## Proxy support
 
@@ -494,6 +494,6 @@ Consequently, if there is an HA agent running 5 pods all of the pods will send t
 
 ## References
 
-* [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md)
-* [Harness CD GitOps Quickstart](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart.md)
+* [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics)
+* [Harness CD GitOps Quickstart](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart)
 * [Troubleshooting](/docs/continuous-delivery/gitops/gitops-ref/troubleshooting)
