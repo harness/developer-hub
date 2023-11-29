@@ -111,5 +111,7 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
 
 ### Run the pipeline
 
-1. 
+1. In the Pipeline Studio, select **Run** (top right) and wait for the execution to finish.
+
+2. 
 
