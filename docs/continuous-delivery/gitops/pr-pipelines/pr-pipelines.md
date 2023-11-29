@@ -1,12 +1,12 @@
 ---
-title: Harness GitOps PR pipelines
+title: Create Harness GitOps PR pipelines
 description: Change an application in just one of its target environments.
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 :::note
 
-Currently, this feature is behind the feature flags `ENV_GROUP`, `NG_SVC_ENV_REDESIGN` and `OPTIMIZED_GIT_FETCH_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag `NG_SVC_ENV_REDESIGN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -19,101 +19,6 @@ Often, even though your ApplicationSet syncs one microservice/application to mul
 This topic builds on the ApplicationSet created in [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial.md). Ensure you have read that topic and, ideally, have set up an ApplicationSet in Harness before creating a PR pipeline.
 
 :::
-
-<details>
-<summary>ApplicationSets and PR pipelines summary</summary>
-
-A typical GitOps Application syncs a source manifest to a destination cluster. If you have multiple target clusters, you could create separate GitOps Applications for each one, but that makes management more challenging. Also, what if you want to sync an application with 100s of target clusters? Managing 100s of GitOps Applications is not acceptable.
-
-To solve this use case, Harness supports ApplicationSets.
-
-### ApplicationSets
-
-An ApplicationSet uses an ApplicationSet controller to automatically and dynamically generate applications in multiple target environments. A GitOps ApplicationSet is similar to a GitOps Application but uses a template to achieve application automation using multiple target environments.
-
-ApplicationSet is supported in your cluster using a [Kubernetes controller](https://kubernetes.io/docs/concepts/architecture/controller/) for the `ApplicationSet` [CustomResourceDefinition](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) (CRD). You add an ApplicationSet manifest to a Harness GitOps Application just like you would add a typical Deployment manifest. At runtime, Harness uses the ApplicationSet to deploy the application to all the target environments' clusters.
-
-![](static/harness-git-ops-application-set-tutorial-61.png)
-
-#### Template parameters
-
-ApplicationSets use generators to generate parameters that are substituted into the `template:` section of the ApplicationSet resource during template rendering.
-
-There are many types of generators. For the list, go to [Generators](https://argocd-applicationset.readthedocs.io/en/stable/Generators/) from Argo CD docs.Generators support parameters in the format `{{parameter name}}`.
-
-For example, here's the template section of a guestbook List generator that uses `{{cluster.name}}` and `{{cluster.address}}`:
-
-
-```yaml
-  template:  
-    metadata:  
-      name: '{{cluster.name}}-guestbook'  
-    spec:  
-      project: 191b68fc  
-      source:  
-        repoURL: https://github.com/johndoe/applicationset.git  
-        targetRevision: HEAD  
-        path: "examples/git-generator-files-discovery/apps/guestbook"  
-      destination:  
-        server: '{{cluster.address}}'  
-        namespace: default  
-      syncPolicy:  
-        automated: {}
-```
-
-The values for these parameters will be taken from the cluster list config.json `cluster.name` and `cluster.address`:
-
-```yaml
-{  
-  "releaseTag" : "k8s-v0.4",  
-  "cluster" : {  
-    "owner" : "cluster-admin@company.com",  
-    "address" : "https://34.133.127.118",  
-    "name" : "dev"  
-  },  
-  "asset_id" : "12345678"  
-}
-```
-
-After substitution, this guestbook ApplicationSet resource is applied to the Kubernetes cluster:
-
-```yaml
-apiVersion: argoproj.io/v1alpha1  
-kind: Application  
-metadata:  
-  name: dev-guestbook  
-spec:  
-  source:  
-    repoURL: https://github.com/johndoe/applicationset.git  
-    path: examples/git-generator-files-discovery/apps/guestbook  
-    targetRevision: HEAD  
-  destination:  
-    server: https://34.133.127.118  
-    namespace: default  
-  project: 191b68fc  
-  syncPolicy:  
-    automated: {}
-```
-
-### Create PR Pipelines
-
-When you deploy a Harness PR Pipeline, you simply indicate what target environment application you want to update and the config.json keys/values you want changed, such as release tags. Harness creates the pull request in your Git repo and merges it for you. Now, the target environment application has the new keys/values.
-
-![](static/harness-git-ops-application-set-tutorial-62.png)
-
-#### Wave deployments
-
-You often hear the term wave deployments used when PR Pipelines are discussed.
-
-A wave deployment is a deployment strategy in Continuous Delivery that involves releasing changes to a portion of users at a time, rather than all users at once. Typically, this is done using separate cloud regions for each target environment.
-
-Wave deployments help reduce the risk of deployment failures and allow for quick recovery. The changes are rolled out in waves, typically starting with a group of users in one region and gradually expanding to the entire user base across all regions. This approach allows for a more controlled and monitored rollout of changes, improving the overall quality and stability of the deployment process.
-
-With Harness GitOps, you can implement wave deployments by creating multiple environments for your application: one environment for each cloud region. Then, gradually promote changes from one environment to the next. This way, you can test changes in a safe and controlled manner before releasing them to the entire user base.
-
-PR Pipelines support the wave deployments practice by allowing you to change a microservice in each target environment as needed.
-
-</details>
 
 ## Before you begin
 
