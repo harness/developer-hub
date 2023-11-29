@@ -322,7 +322,7 @@ Due to an update in the Kustomization Controller, the vanilla YAML files now nee
        - You can leave out **Service** and **Environment** selections.
        - Select **Continue**.  
     - Under **Sync Policy**
-       - Keep the **Sync Options** settings as is.
+       - Make sure **Apply Out of Sync Only** and **Auto-Create Namespace** are checked under **Sync Options** settings.
        - Use `Foreground` for the **Prune Propagation Policy**.
        - Select **Continue**.
     - Under **Source**
