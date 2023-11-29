@@ -26,14 +26,14 @@ To map Argo CD projects to Harness projects, you need to install the Harness Git
 
 If you install the GitOps Agent at the Harness project level, you can only map to the current project.
 
-The following example installs the GitOps Agent at the Harness account level. the Harness account level.
+The following example installs the GitOps Agent at the Harness account level.
 
 ## Installing a GitOps Agent in an existing Argo CD setup (BYOA)
 
 The following steps show you how to install a GitOps Agent into an existing Argo CD namespace and then map your existing projects to your Harness project.
 
 1. In your Harness account, select **Account Settings**.
-2. click **GitOps**, and then select **Agents**.
+2. Select **GitOps**, and then select **Agents**.
    
    ![](./static/multiple-argo-to-single-harness-64.png)
 
