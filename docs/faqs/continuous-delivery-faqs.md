@@ -10,19 +10,6 @@ helpdocs_is_published: true
 
 This article addresses some frequently asked questions about Harness Continuous Delivery & GitOps.
 
-In this topic:
-
-* [General](continuous-delivery-faqs.md#general)
-* [Kubernetes](continuous-delivery-faqs.md#kubernetes)
-* [Terraform](continuous-delivery-faqs.md#terraform)
-* [Harness Configure as Code](continuous-delivery-faqs.md#harness-configure-as-code)
-* [Harness Git Experience](continuous-delivery-faqs.md#harness-git-experience)
-* [Uncommon deployment platforms](continuous-delivery-faqs.md#uncommon-deployment-platforms)
-* [Harness entities](continuous-delivery-faqs.md#harness-entities)
-* [Secrets management](continuous-delivery-faqs.md#secrets-management)
-* [Harness variables expressions](continuous-delivery-faqs.md#harness-variables-expressions)
-* [Error evaluating expressions]
-
 ### General
 
 For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
@@ -899,9 +886,7 @@ See [Fixed Values, runtime inputs, and expressions](/docs/platform/variables-and
 
 #### Error evaluating certain expressions in a Harness pipeline
 
-Some customer shave raised concernes about errors while trying to evaluable expressions (example: <+pipeline.sequenceId>) while similiar expressions do get evaluated. In this case the concatenation in the expression /tmp/spe/<+pipeline.sequenceId> is not working because a part of expression <+pipeline.sequenceId> is integer so the concatenation with /tmp/spec/ is throwing error because for concat, both the values should be string only. 
+Some customer shave raised concernes about errors while trying to evaluable expressions (example: `<+pipeline.sequenceId>`) while similiar expressions do get evaluated. In this case the concatenation in the expression `/tmp/spe/<+pipeline.sequenceId>` is not working because a part of expression `<+pipeline.sequenceId>` is integer so the concatenation with `/tmp/spec/` is throwing error because for concat, both the values should be string only. 
 
-So we can invoke the toString() on the integer value then our expression should work. So the final expression would be /tmp/spe/<+pipeline.sequenceId.toString()>. 
-
-Please also reach out to Harness Support and or your Customer Success Manager to enable the Feature Flag: PIE_EXPRESSION_CONCATENATION
+So we can invoke the `toString()` on the integer value then our expression should work. So the final expression would be `/tmp/spe/<+pipeline.sequenceId.toString()>`. 
 

@@ -452,12 +452,24 @@ To add a Helm chart to your service, do the following:
    
    ![helm storage](./static/a49287968d8e99d3368420384bab12d62206d48fa714cd0c61eed12ca14c641f.png)  
 
+  #### Options for connecting to a Helm chart store
 
-   For the steps and settings of each option, go to [Connectors](/docs/category/connectors) or [Connect to a Git repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
+  The options avialable to you to specify a Helm chart store depend on whether or not specific feature flags are enabled on your account. Options available without any feature flags or with specific feature flags enabled are described here: 
+
+    * **Feature flag disabled**. Only one option is available: **OCI Helm Registry Connector**. This option enables you to connect to any OCI-based registry.
+    * **Feature flag enabled**. You can choose between connectors in the following categories:
+      - **Direct Connection**. Contains the OCI Helm Registry Connector option (shortened to **OCI Helm**), which you can use with any OCI-based registry.
+      - **Via Cloud Provider**. Contains the ECR connector option. This connector is specifically designed for AWS ECR to help you overcome the limitation of having to regenerate the ECR registry authentication token every 12 hours. The ECR connector option uses an AWS connector and regenerates the required authentication token if the token has expired.
+
+      :::note
+      This feature is behind the feature flag `CDS_OCI_HELM_ECR_CONFIG_SUPPORT_NG`. Contact Harness Support to enable the feature. 
+      :::
+
+For the steps and settings of each option, go to [Connectors](/docs/category/connectors) or [Connect to a Git repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
    
-   Once your Helm chart is added, it appears in the **Manifests** section. For example:
+Once your Helm chart is added, it appears in the **Manifests** section. For example:
    
-   ![](./static/kubernetes-services-05.png)
+![](./static/kubernetes-services-05.png)
 
 ```mdx-code-block
   </TabItem1>
@@ -1031,7 +1043,7 @@ service:
   <TabItem5 value="API" label="API">
 ```
 
-Create the Docker connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Docker connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Docker connector example</summary>
@@ -1280,7 +1292,7 @@ service:
   </TabItem6>
   <TabItem6 value="API" label="API">
 ```
-Create the GCR connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the GCR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>GCR connector example</summary>
@@ -1487,7 +1499,7 @@ service:
   <TabItem7 value="API" label="API">
 ```
 
-Create the Google Artifact Registry connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Google Artifact Registry connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>GCR connector example</summary>
@@ -1707,7 +1719,7 @@ service:
   <TabItem8 value="API" label="API">
 ```
 
-Create the ECR connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the ECR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>ECR connector example</summary>
@@ -1945,7 +1957,7 @@ service:
   <TabItem9 value="API" label="API">
 ```
 
-Create the ACR connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the ACR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>ACR connector example</summary>
@@ -2305,7 +2317,7 @@ service:
   <TabItem10 value="API" label="API">
 ```
 
-Create the Nexus connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Nexus connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Nexus connector example</summary>
@@ -2518,7 +2530,7 @@ service:
   <TabItem11 value="API" label="API">
 ```
 
-Create the Artifactory connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Artifactory connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Artifactory connector example</summary>
@@ -2745,7 +2757,7 @@ service:
   <TabItem12 value="API" label="API">
 ```
 
-Create the Github connector using the [Create a Connector](https://apidocs.harness.io/tag/connectors#operation/createConnector) API.
+Create the Github connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
 <summary>Github connector example</summary>

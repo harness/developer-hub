@@ -15,9 +15,8 @@ See [Notes](#notes) below for details on other ECS deployment settings and behav
 
 ## Visual summary
 
-<!-- Video:
-https://harness-1.wistia.com/medias/vtlwxnczyh-->
-<docvideo src="https://harness-1.wistia.com/medias/vtlwxnczyh" />
+
+<docvideo src="https://youtu.be/Xo7AvUuxRrw" />
 
 ## Overview
 
@@ -123,6 +122,110 @@ The Harness delegate is a software service you install in your environment. It c
 If you're new to Harness, read [Harness Platform architecture](/docs/get-started/harness-platform-architecture) to learn about how Harness uses a delegate to perform deployment tasks.
 
 1. Follow the steps in [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview) to install a Harness delegate.
+
+2. If you wish to install an ECS Fargate type delegate please see [AWS ECS Fargate Delegate Installation Overview](/docs/platform/delegates/install-delegates/docker-delegate-to-ecs-fargate/).
+
+#### Sample ECS Fargate Delegate Task Definition JSON
+
+```JSON
+  {
+    "containerDefinitions": [
+      {
+        "portMappings": [
+          {
+            "hostPort": 8080,
+            "protocol": "tcp",
+            "containerPort": 8080
+          }
+        ],
+        "cpu": 1,
+        "environment": [
+          {
+            "name": "ACCOUNT_ID",
+            "value": "<ACCOUNT_ID>"
+          },
+          {
+            "name": "DELEGATE_TOKEN",
+            "value": "<DELEGATE_TOKEN>"
+          },
+          {
+            "name": "DELEGATE_TYPE",
+            "value": "DOCKER"
+          },
+          {
+            "name": "INIT_SCRIPT",
+            "value": ""
+          },
+          {
+            "name": "DEPLOY_MODE",
+            "value": "KUBERNETES"
+          },
+          {
+            "name": "MANAGER_HOST_AND_PORT",
+            "value": "<MANAGER_HOST_AND_PORT>"
+          },
+          {
+            "name": "DELEGATE_NAME",
+            "value": "<DELEGATE_NAME>"
+          },
+          {
+            "name": "LOG_STREAMING_SERVICE_URL",
+            "value": "<LOG_STREAMING_SERVICE_URL>"
+          },
+         {
+            "name": "DELEGATE_TAGS",
+            "value": ""
+          },
+
+          {
+            "name": "NEXT_GEN",
+            "value": "true"
+          }
+         ],
+        "memory": 2048,
+        "image": "harness/delegate:22.12.77802",
+        "essential": true,
+        "hostname": "<DELEGATE_HOST>",
+        "name": "<DELEGATE_NAME>"
+      }
+    ],
+      "memory": "2048",
+      "requiresCompatibilities": [
+      "EC2"
+    ],
+  
+    "cpu": "1024",
+    "family": "harness-delegate-task-spec"
+  }
+```
+
+#### Sample ECS Fargate Delegate Service Definition JSON
+
+```JSON
+{
+   "launchType": "FARGATE",
+   "cluster": "<CLUSTER_NAME>",
+   "serviceName": "<SERVICE_NAME>",
+   "taskDefinition": "harness-delegate-task-spec",
+   "desiredCount": 1,
+   "loadBalancers": [],
+   "networkConfiguration": {
+     "awsvpcConfiguration": {
+       "subnets": [
+         "<SUBNET>"
+       ],
+       "securityGroups": [
+         "SEC_GROUP"
+       ],
+       "assignPublicIp": "ENABLED"
+     }
+   },
+   "platformVersion": "LATEST",
+   "schedulingStrategy": "REPLICA",
+   "enableECSManagedTags": true
+ }
+```
+
 
 When you are done setting up the delegate and it has registered with Harness, you'll see the delegate's tags on the delegates list page:
 
@@ -818,9 +921,15 @@ For more information, see [describe-scaling-policies](https://docs.aws.amazon.co
 
 To create the Scalable Target and Scalable Policy resources, see the [register-scalable-target](https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/register-scalable-target.html) and [put-scaling-policy](https://docs.aws.amazon.com/cli/latest/reference/application-autoscaling/put-scaling-policy.html) commands from AWS.
 
+#### Enable Auto Scaling In Swap Step
+
+If you select **Enable Auto Scaling In Swap Step** in the **ECS Blue Green Create Service** step, then Harness will attach auto scaling policies to the new service it deploys in the **Configure Swap Target Groups** step. The policies are taken from the **Scalable Target** and **Scaling Policy settings** in the Harness service.
+  
+If you do not select **Enable Auto Scaling In Swap Step**, then Harness will attach auto scaling policies to the new service deployed in the **Configure Blue Green Deployment** step.
+
 ### Same as already running instances
 
-This setting in **ECS Rolling Deploy** sets the number of desired ECS service instances for this stage to the same number as the already running instances. Essentially, it ignores the desired count in the Service Definition of the new deployment.
+This setting in **ECS Rolling Deploy** and **ECS Blue Green Create Service** step sets the number of desired ECS service instances for this stage to the same number as the already running instances. Essentially, it ignores the desired count in the Service Definition of the new deployment.
 
 ### Force new deployment
 
@@ -1068,9 +1177,23 @@ Configure the following settings:
 * **Elastic Load Balancer:** Click here and select the AWS load balancer you added. Harness uses the Delegate to locate the load balancers and list them in **Elastic Load Balancer**. If you do not see your load balancer, ensure that the Delegate can connect to the load balancers. Once the load balancer is selected, Harness will populate the Prod and Stage Listener drop-downs.
 * **Prod Listener:** Select the ELB listener that you want to use as the Prod Listener.
 * **Stage Listener:** Select the ELB listener that you want to use as the Stage Listener.
+
+  :::info Important
+  
+  Typically, Harness removes auto scaling from the previous service in the **ECS Blue Green Swap Target** step.
+  
+  However, if the **Prod Listener** and **Stage Listener** in the **Configure Blue Green Deployment** step are the same (the prod listener is equal to stage listener and prod listener rule is equal to stage listener rule, meaning that prod target group is equal to stage target group), then Harness will remove auto scaling from the previous service in the **Configure Blue Green Deployment** step.
+  
+  :::
 * **Prod Listener Rule ARN** and **Stage Listener Rule ARN**: If you are using [Listener Rules](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules) in your target groups, you can select them in **Production Listener Rule ARN** and **Stage Listener Rule ARN**.
 	+ You must select a listener rule.
 	+ Ensure the traffic that will use the rules matches the conditions you have set in the rules. For example, if you have a path condition on a rule to enable [path-based routing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/tutorial-load-balancer-routing.html), ensure that traffic uses that path.
+- **Same as already running instances:** Use the number of running instances as the desired count. Essentially, it ignores the desired count in the Service Definition of the new deployment.
+- **Enable Auto Scaling In Swap Step:**
+
+  If you select **Enable Auto Scaling In Swap Step**, then Harness will attach auto scaling policies to the new service it deploys in the **Configure Swap Target Groups** step. The policies are taken from the **Scalable Target** and **Scaling Policy settings** in the Harness service.
+  
+  If you do not select **Enable Auto Scaling In Swap Step**, then Harness will attach auto scaling policies to the new service deployed in the **Configure Blue Green Deployment** step.
 
 Here's an example of the output of the step:
 
@@ -1366,3 +1489,17 @@ You can override the:
 These overrides can be configured at the Harness environment's service-specific override level, as well as at the environment infrastructure definition level. 
 
 
+### Attaching CloudWatch alarms to scaling policies
+
+To attach your AWS CloudWatch alarms to a scaling policy, simply add a Harness Shell Script step with the following script after the deployment step in your stage (placeholders are in UPPERCASE):
+
+```bash
+
+// to fetch scaling policy arn, run this
+
+aws application-autoscaling describe-scaling-policies --service-namespace ecs --resource-id service/<+infra.cluster>/<+execution.steps.ECS_DEPLOY_STEP_ID.output.serviceName> --region <+infra.region>
+
+// to attach cloud watch alarm to scaling policy.
+
+aws cloudwatch put-metric-alarm --alarm-name ALARM_NAME --alarm-actions SCALING_POLICY_ARN
+```

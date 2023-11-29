@@ -361,7 +361,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: secrets_repo
+        connectorRef: CODEBASE_CONNECTOR
         build: <+input>
   stages:
     - stage:
@@ -373,7 +373,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: myorgdelegate
+              connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}

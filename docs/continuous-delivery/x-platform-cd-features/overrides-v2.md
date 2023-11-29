@@ -14,29 +14,62 @@ Harness has introduced an enhanced experience for service, environment, and infr
 
 Overrides can be defined at project, organization, and account levels.
 
-In **Account Settings > Account Resources > Default Settings > Continuous Deployment**, set the **Enable Service Override V2** to `true` for the enhanced overrides experience. 
-
-![overridesV2](./static/overrides-v2.png)
-
 :::info note
-
 For information on overrides V1, go to [Services and environments basics](/docs/continuous-delivery/get-started/services-and-environments-overview).
-
 :::
 
 ## Limitations
 
 * Runtime inputs are not supported for **Infrastructure Specific** and **Service & Infrastructure Specific** variables.
 
-## Migrating to overrides V2
+## Migration notice for existing Harness customers: Overrides V2
 
-Currently, Harness migrates the existing override configuration to the new version using back-end APIs. The existing override scope, or scope with all child scopes, are migrated based on your requirements. 
+Dear valued customers,
 
-Harness anticipates adding a **Migrate** button in the UI to migrate to the new override configuration in the future. 
+We are excited to announce an upcoming Overrides V2 migration aimed at enhancing your experience with Harness. Here's what you need to know.
 
-## Video demo
+### Migration details
+
+- **New Experience Awaits: Starting September 7th, 2023**, Harness is transitioning from the current service and environment overrides experience to the much anticipated Override V2 experience.
+- **Seamless Migration:** The migration process has been designed to be as smooth as possible. It will occur in phases, referred to as _rings_.
+  - The best part? No active engagement is required on your part. Harness will handle the migration in the background. We will notify each customer a week prior to their scheduled migration date, based on the ring they're allocated to.
+- **Continuity Assured:** We don't anticipate any disruptions or failures during this process. Rest assured, your existing pipelines will remain compatible with the service and environment override V1 experience. Automation and existing APIs will still work.
+
+### Why Overrides V2?
+
+- **Greater Flexibility:** With Overrides V2, you can now manage overrides for any CD entity. This includes service-specific environment overrides and** Global Environment** override variables.
+- **Enhanced Infrastructure Variable Management:** Beyond the current capabilities, users can now manage infrastructure overrides and service-specific infrastructure overrides.
+- **Independent Management:** Overrides will be represented as their own YAML object, allowing for more streamlined and independent management.
+- **More Granular Configuration:** You can now set up overrides at both the account and organizational level for service and environment entities within a project context.
+
+### Further Reading
+
+For those keen to delve deeper and understand more about Overrides V2, we've got you covered. Here are some additional resources:
+
+- Read the rest of the current document.
+- [API Management of Overrides](https://apidocs.harness.io/tag/ServiceOverrides#operation/createServiceOverride)
+- [Terraform Management of Overrides](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment_service_overrides)
+
+Your trust is our top priority, and we're always here to support you. Thank you for being a valued Harness customer. We look forward to continuing our journey together, with an ever-improving platform and service.
+
+Warm regards,
+
+Harness CD Product and Engineering Team
+
+
+## Demo Video
 
 <docvideo src="https://www.loom.com/share/a93bd67458784583b4e509c5b30e887a?sid=49124b81-4909-4079-859c-64e8950fffaa" />
+
+### Updated Experience since Demo Video 11.26.2023
+
+When the feature is enabled for your account it is now globally enabled for your account. We have removed the per-project opt-in experience as we are beginning to make this the default experience in Harness. When the Overrides V2 Experience is enabled for an account, please make sure Harness performs the background migration job for the account to migrate your existing overrides to the Overrides V2 Experience. Once the job is done, you will see the overrides in the Overrides tab. They will no longer be visible in the Environments tab.
+
+Your existing automation will still work as is and the APIs are backward compatible with the V1 Experience. 
+
+Areas the team is improving on:
+1. The UI Listing Page of Overrides is still work in progress - there is no search, filtering, or sorting of the Overrides
+2. YAML View in the Harness UI, we plan to show the YAML of the Overrides so users can get familiar with the YAML structure of the Overrides V2.
 
 ## Override types
 
@@ -130,6 +163,5 @@ Overrides defined at project/organization/account levels have the following over
 1. Project
 2. Organization
 3. Account
-
 
 

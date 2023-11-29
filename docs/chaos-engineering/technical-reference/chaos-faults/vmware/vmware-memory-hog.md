@@ -52,6 +52,16 @@ stringData:
         <td> Name of the target VM. </td>
         <td> For example, <code>ubuntu-vm-1</code>. </td>
       </tr>
+      <tr>
+          <td> VM_USER_NAME </td>
+          <td> Username of the target VM.</td>
+          <td> For example, <code>vm-user</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_PASSWORD </td>
+          <td> User password for the target VM. </td>
+          <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
+      </tr>
     </table>
     <h3>Optional fields</h3>
     <table>

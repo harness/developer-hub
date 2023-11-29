@@ -1,7 +1,7 @@
 ---
 title: CI environment variables reference
 description: Learn about environment variables in Harness CI pipelines.
-sidebar_position: 5
+sidebar_position: 50
 ---
 
 This topic describes the Harness CI built-in environment variables<!--, particularly those prefixed by `DRONE_`, as well as some `HARNESS_` variables and other environment variables relevant to CI-->. These variables contain information about the build, such as how the build started, codebase information, build infrastructure, step identifiers, and more. These are [pipeline variables](/docs/platform/variables-and-expressions/harness-variables#pipeline), and they are available to all stages and steps in the pipeline.
@@ -446,7 +446,7 @@ Other environment variables might existing in your pipelines depending on the st
 
 <!-- ### DRONE_OUTPUT
 
-The path to a `.env` file where a Drone plugin can write output variables. This is not supported by all plugins or build infrastructures. For more information, go to [Plugin step settings: Output variables](../use-drone-plugins/plugin-step-settings-reference.md#output-variables).-->
+As an environment variable, `DRONE_OUTPUT` is the path to a `DRONE_OUTPUT.env` file where Plugin steps can write output variables. This is not supported by all plugins or build infrastructures. For more information, go to [Plugin step settings: Output variables](../use-drone-plugins/plugin-step-settings-reference.md#output-variables).-->
 
 <!-- ## Unsupported variables
 

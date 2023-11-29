@@ -408,6 +408,53 @@ However, the AWS CLI [create-auto-scaling-group](https://docs.aws.amazon.com/cli
 </details>
 
 
+### User Data
+
+:::note
+
+Currently, User Data is behind the feature flags `CDS_BASIC_ASG`, `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You can add standard AWS AMI user data to enter configuration scripts and directives that your AWS instance will run upon launch.
+
+The resulting User Data container corresponds to the AWS Launch Instance wizard's **Advanced Details** > **User data** container.
+
+The user data can be added using the Harness File Store or any Git provider.
+
+- **What can I add in user data?** You can enter the same shell scripts and cloud-init directives that AWS will accept through its own UI. For details about scripting requirements, formatting, and options, see Amazon's EC2 [User Data and Shell Scripts](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html#user-data-shell-scripts) documentation. When Harness creates a new instance, it will apply your defined user data.
+- **Permissions for your user data:** If your user data is going to perform actions that require permissions, ensure that the IAM role assigned to the Harness Delegate(s) has the required roles and policies.
+
+### Scaling Policy
+
+Add a scaling policy to apply to the ASG that Harness will create during deployment.
+
+You can use standard AWS scaling policies formatted in JSON. For example:
+
+```json
+{
+  "policyName": "demoPolicy",
+  "adjustmentType":"PercentChangeInCapacity",
+  "scalingAdjustment":30
+}
+```
+
+The scaling policy can be added using the Harness File Store or any Git provider.
+
+### Scheduled Update Group Action
+
+You can schedule scaling using a standard AWS scheduled action formatted in JSON. For example: 
+
+```json
+{
+  "scheduledActionName": "scheduledActionName1",
+  "startTime": "2030-03-31T08:00:00Z",
+  "desiredCapacity": 2
+}
+```
+
+The scaling policy can be added using the Harness File Store or any Git provider.
+
 ### AMI artifacts
 
 Review the following information about the AMI artifacts you select in your ASG service.
@@ -568,7 +615,18 @@ Pipelines require that an environment have an infrastructure definition. We'll c
 </Tabs3>
 ```
 
-### Infrastructure definition
+## Define the infrastructure
+
+You define the target infrastructure for your deployment in the **Environment** settings of the pipeline stage. You can define an environment separately and select it in the stage, or create the environment within the stage **Environment** tab.
+
+There are two methods of specifying the deployment target infrastructure:
+
+- **Pre-existing:** the target infrastructure already exists and you simply need to provide the required settings.
+- **Dynamically provisioned:** the target infrastructure will be dynamically provisioned on-the-fly as part of the deployment process.
+
+For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
+
+### Pre-existing ASG infrastructure
 
 To define the target ASG region, you add an infrastructure definition to a Harness environment. The infrastructure definition uses a Harness AWS connector and a region setting to define the deployment target.
 
@@ -692,6 +750,83 @@ The infrastructure definition is added.
   </TabItem1>
 </Tabs1>
 ```
+
+### Dynamically provisioned ASG infrastructure
+
+:::note
+
+Currently, User Data is behind the feature flags `CDS_BASIC_ASG`, `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Here's a summary of the steps to dynamically provision the target infrastructure for a deployment:
+
+1. **Add dynamic provisioning to the CD stage**:
+   1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
+   2. Select the type of provisioner that you want to use.
+   
+      Harness automatically adds the provisioner steps for the provisioner type you selected.
+   3. Configure the provisioner steps to run your provisioning scripts.
+   4. Select or create a Harness infrastructure in **Environment**.
+2. **Map the provisioner outputs to the Infrastructure Definition**:
+   1. In the Harness infrastructure, enable the option **Map Dynamically Provisioned Infrastructure**.
+   2. Map the provisioning script/template outputs to the required infrastructure settings.
+
+#### Supported provisioners
+
+The following provisioners are supported for Lambda deployments:
+
+- Terraform
+- Terragrunt
+- Terraform Cloud
+- CloudFormation
+- Shell Script
+
+#### Adding dynamic provisioning to the stage
+
+To add dynamic provisioning to a Harness pipeline Deploy stage, do the following:
+
+1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
+2. Select the type of provisioner that you want to use.
+   
+   Harness automatically adds the necessary provisioner steps.
+3. Set up the provisioner steps to run your provisioning scripts.
+
+For documentation on each of the required steps for the provisioner you selected, go to the following topics:
+
+- Terraform:
+  - [Terraform Plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
+  - [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
+  - [Terraform Rollback](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step). To see the Terraform Rollback step, toggle the **Rollback** setting.
+- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
+- [Terraform Cloud](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments)
+- CloudFormation:
+  - [Create Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/provision-with-the-cloud-formation-create-stack-step)
+  - [Delete Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/remove-provisioned-infra-with-the-cloud-formation-delete-step)
+  - [Rollback Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/rollback-provisioned-infra-with-the-cloud-formation-rollback-step). To see the Rollback Stack step, toggle the **Rollback** setting.
+- [Shell Script](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning)
+
+
+#### Mapping provisioner output
+
+Once you set up dynamic provisioning in the stage, you must map outputs from your provisioning script/template to specific settings in the Harness Infrastructure Definition used in the stage.
+
+1. In the same CD Deploy stage where you enabled dynamic provisioning, select or create (**New Infrastructure**) a Harness infrastructure.
+2. In the Harness infrastructure, in **Select Infrastructure Type**, select **AWS** if it is not already selected.
+3. Enable the option **Map Dynamically Provisioned Infrastructure**.
+   
+   A **Provisioner** setting is added and configured as a runtime input.
+4. Map the provisioning script/template outputs to the required infrastructure settings.
+
+To provision the target deployment infrastructure, Harness needs specific infrastructure information from your provisioning script. You provide this information by mapping specific Infrastructure Definition settings in Harness to outputs from your template/script.
+
+For ASG, Harness needs the following settings mapped to outputs:
+
+- **Base ASG:** The base ASG is not used in the deployment. It is simply cloned in order for Harness to create a new ASG. Harness will use this existing ASG as a template, but it will not resize it all. The newly created ASG will have unique name, Min and Max instances, and Desired Capacity.
+
+In the Harness Infrastructure Definition, in **Base ASG**, select the ASG to use as the base ASG.
+
+<docimage path={require('./static/8705496ace1f6b040eccc5b1fe4d6dae3b21cedb37ab383680b39ad41510c417.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 
 ## Harness ASG pipelines
@@ -962,8 +1097,15 @@ import TabItem4 from '@theme/TabItem';
 
 The Rolling Deploy step has the following options:
 
-- **Same as already running Instances**
-  - Enable this setting to use the scaling settings on the last ASG version deployed.
+:::note
+
+Currently, **ASG Name**, **Same as already running Instances**, **Fixed**, and multiple load balancer support is behind the feature flags `CDS_BASIC_ASG`, `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+- **ASG Name:** Enter a name for the ASG that Harness will create.
+- **Same as already running Instances** or **Fixed**:
+  - Select **Fixed** to enforce a Max, Min, and Desired number of instances.Select **Same as already running Instances** to use scaling settings on the last ASG deployed by this Harness pipeline. If this is the first deployment and you select **Same as already running Instances**, Harness uses a default of Min 0, Desired 6, and Max 10. Harness does not use the Min, Max, and Desired settings of the base ASG.
 - **Minimum Healthy Percentage (optional)**
   - The percentage of the desired capacity of the ASG that must pass the group's health checks before the refresh can continue. For more information about these health checks, go to [Health checks for Auto Scaling instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html) from AWS.
 - **Instance Warmup (optional)**
@@ -1285,7 +1427,16 @@ import TabItem6 from '@theme/TabItem';
 
 The ASG Blue Green Deploy step has the following settings:
 
-- **Load Balancer:** select the load balancer to use.
+:::note
+
+Currently, **ASG Name**, **Same as already running Instances**, **Fixed**, and multiple load balancer support is behind the feature flags `CDS_BASIC_ASG`, `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+- **ASG Name:** Enter a name for the ASG that Harness will create.
+- **Same as already running Instances** or **Fixed**:
+  - Select **Fixed** to enforce a Max, Min, and Desired number of instances.Select **Same as already running Instances** to use scaling settings on the last ASG deployed by this Harness pipeline. If this is the first deployment and you select **Same as already running Instances**, Harness uses a default of Min 0, Desired 6, and Max 10. Harness does not use the Min, Max, and Desired settings of the base ASG.
+- **Load Balancer:** select the load balancer(s) to use.
 - **Prod Listener:** select the listener to use for prod traffic.
 - **Prod Listener Rule ARN:** select the ARN for the prod listener rule.
 - **Stage Listener:** select the listener to use for stage traffic.

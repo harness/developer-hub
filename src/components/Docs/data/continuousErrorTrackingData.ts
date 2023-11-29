@@ -55,7 +55,7 @@ import {
             title: "Explore events",
             module: MODULES.cet,
             description:
-              "Learn to work with event types such as critical, resolved, resurfaced, and hidden.",
+              "Explore the Event Distribution Graph feature and learn to work with event types such as critical, resolved, resurfaced, and hidden.",
             link: "/docs/category/event-explorer",
           },
           {

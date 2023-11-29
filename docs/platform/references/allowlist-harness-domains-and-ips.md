@@ -6,6 +6,8 @@ helpdocs_topic_id: ooelo06uy5
 helpdocs_category_id: fb16ljb8lu
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/platform/references/whitelist-harness-domains-and-ips
 ---
 
 

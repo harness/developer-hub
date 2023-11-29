@@ -24,9 +24,8 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
 
 ## Product Demo
 
-<!-- Video:
-https://harness-1.wistia.com/medias/a7nilatjff-->
-<docvideo src="https://harness-1.wistia.com/medias/a7nilatjff" />
+
+<docvideo src="https://youtu.be/KSRzy9CnSkA" />
 
 ## Install a delegate
 
@@ -518,7 +517,7 @@ resource "harness_platform_environment" "environment" {
            - name: db_url
              type: String
              value: "https://postrges:8080"
-             description: "postgress url"
+             description: "postgres url"
          overrides: ## You can configure global environment overrides here
            manifests:
              - manifest:

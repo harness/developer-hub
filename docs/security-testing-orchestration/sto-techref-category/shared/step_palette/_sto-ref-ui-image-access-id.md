@@ -1,1 +1,1 @@
-Username to log in to the container registry.
+The username to log in to the container registry.

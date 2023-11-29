@@ -43,6 +43,53 @@ This process is also covered in the [Helm Chart deployment tutorial](/docs/conti
 
 See [Supported Platforms and Technologies](/docs/get-started/supported-platforms-and-technologies).
 
+## Commands used by Harness to perform a Helm Chart Deployment managed by Harness
+
+When using the Harness-managed Helm Chart Deployment approach, Harness uses a mix of `helm` and `kubectl` commands to perform the deployment. 
+
+1. The command we run to perform **Fetch Files**, depends on the store type Git or Helm Repo.
+
+For Git:
+```
+git clone {{YOUR GIT REPO}}
+```
+
+For Helm Repo:
+```
+helm pull {{YOUR HELM REPO}}
+```
+
+2. Based on your values.yaml and Harness configured variables, Harness will then render those values via `helm template`. We will consolidate all the rendered manifest into a `manifest.yaml`.
+
+```
+helm template release-75d461a29efd32e5d22b01dc0f93aa5275e2f003 /opt/harness-delegate/repository/helm/source/c1475174-18d6-38e6-8c67-1000f3b71297/helm-test-chart  --namespace default  -f ./repository/helm/overrides/6a7628964506885eb37908b81914a04c.yaml
+```
+
+3. Harness will perform a dry run by default to show what is about to be applied
+
+```
+kubectl --kubeconfig=config apply --filename=manifests-dry-run.yaml --dry-run=client
+```
+
+4. Harness will then run the `kubectl apply`  command to apply the manifest files to the Kubernetes clusters.
+
+```
+kubectl --kubeconfig=config apply --filename=manifests.yaml
+```
+
+5. Harness will then query the deployed resources to show a summary of what was deployed.
+
+```
+kubectl --kubeconfig=config describe --filename=manifests.yaml
+```
+
+6. In the event of failure Harness will rollback, we perform a `kubectl rollout undo`.
+
+```
+kubectl --kubeconfig=config rollout undo Deployment/test-deploy --namespace=default --to-revision=1
+```
+
+ 
 ## ChartMuseum binaries
 
 Many Helm chart users use ChartMuseum as their Helm chart repository server.
@@ -460,6 +507,37 @@ Done.
 ```
 You deployment is successful.
 
+### Helm Steady State Check
+
+Harness has two ways of performing Helm Steady State Checks for Native Helm Deployment types (Helm Deployments managed by Helm). Depending on your use case and needs you can opt into either option via the setting. By default, Harness will perform a Helm Steady State Check on the deployed resources however, the mechanism of how Harness' does it differs based on the setting.
+
+#### Disabled Setting - Native Helm steady state for jobs - Default Mode
+
+Harness will check for the steady state of the deployed resources via the ConfigMap Harness generates to manage and track the deployment. The limitation of this method, is we do not track Kubernetes Jobs objects that are being created as part of the deployment and wait for them to reach a steady state. 
+
+**Helm Steady State with Setting Disabled**
+
+```
+kubectl --kubeconfig=config get events --namespace=default --output=custom-columns=KIND:involvedObject.kind,NAME:.involvedObject.name,NAMESPACE:.involvedObject.namespace,MESSAGE:.message,REASON:.reason --watch-only  
+  
+kubectl --kubeconfig=config rollout status Deployment/release-e008...ee-nginx --namespace=default --watch=true  
+```
+
+
+#### Enable Setting -  Native Helm steady state for jobs
+By Default, Harness will check for the steady state of deployed Helm resources. If you want to check the steady state for Kubernetes jobs for Native Helm Deployments, we now have a setting that will enable that. Please navigate to `Account Settings > Account Resources > Default Settings` and navigate to the Continuous Deployment Section. This setting can be configured at the project, organization, and account level. You will see the option `Enable Native Helm steady state for jobs` this will check the steady state of the jobs deployed with the Helm Chart. With the checkbox configuration enabled, during a Native Helm Deployment, you will see Harness use the `helm get manifest <+release.name>` command to get the details to check the steady state. With the setting enabled, we are no longer using the ConfigMap to check for status. 
+
+
+**Helm Steady State with Setting Enabled**
+
+```
+Retrieve helm manifest from release [release-75d461a29efd32e5d22b01dc0f93aa5275e2f003] and namespace [default]
+Executing command - KUBECONFIG=/opt/harness-delegate/./repository/helm/.kube/1f8e53c52248bbf69fe59fdbe5c0b3b5 helm get manifest release-75d461a29efd32e5d22b01dc0f93aa5275e2f003 --namespace=default
+Currently running Containers: [0]
+
+Done
+```
+
 ### Versioning and rollback
 
 Helm chart deployments support versioning and rollback in the same way as standard Kubernetes deployments.
@@ -492,12 +570,7 @@ All dependency repositories must be available and accessible from the Harness De
 :::
 
 ## Service hooks 
-  
-:::note
 
-Currently, this feature is behind the feature flag `CDS_K8S_SERVICE_HOOKS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Kubernetes and Helm deployments use service hooks to fetch Helm Chart dependencies that refer to Git and other repositories, and install them with the main Helm Chart. 
 
@@ -645,5 +718,54 @@ If you want to use the uninstall command in the **Manifest Details**, be aware o
   
  **Password**: Your Google service account file content.
  
+## Active Feature Flags
+:::note
 
+To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io).
+
+:::
+
+<table width="900" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="300" word-wrap="break-word"><b>Flag</b></td>
+        <td width="600"><b>Description</b></td>
+    </tr>
+    <tr>
+        <td>CDS_HELM_STEADY_STATE_CHECK_1_16</td>
+        <td> Enables steady state check for Helm deployments on Kubernetes clusters using 1.16 or higher. </td>
+    </tr>
+    <tr>
+        <td>CDS_HELM_VERSION_3_8_0</td>
+        <td>Sets the default version of Helm to 3.8 when using the Harness Helm delegate.</td>
+    </tr>
+    <tr>
+        <td>CDS_DISABLE_HELM_REPO_YAML_CACHE</td>
+        <td>Disables Helm repository caching on the Harness delegate. Please use the flag if you encounter the `context deadling exceeded` error during parallel Helm deployments. Note that this is a result of known <a href="https://github.com/helm/helm/issues/10735">Helm concurrency issue</a>. By turning on the flag, there might be slight performance degradation in case of very large Helm repositories.</td>
+    </tr>
+    <tr>
+        <td>CDS_K8S_SOCKET_CAPABILITY_CHECK_NG</td>
+        <td>Replaces the HTTP capability check for the Harness Kubernetes connector with socket capability.</td>
+    </tr>
+    <tr>
+        <td>CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG</td>
+        <td> There is a behavior change in how Harrness tracks managed workloads for rollback. We are not using anymore a Config Map matching the deployed resources release name to track managed workloads for rollback. We will use `helm get manifest` to retrieve the workloads from a helm release. For steady-state checks of the kubernetes jobs, we’re planning to provide an option in account/org/project settings, by default we will not do this. For customer's who didn't have this feature flag enabled before, they may start seeing that the Wait for steady state check will not be skipped and will need to configure it.</td>
+    </tr>
+    <tr>
+        <td>CDS_HELM_SEND_TASK_PROGRESS_NG</td>
+        <td>For Helm tasks, this enables the sending of task progress events via log streaming.</td>
+    </tr>
+    <tr>
+        <td>CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG</td>
+        <td>Enables users to configure <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#using-multiple-helm-charts-in-one-harness-service">multiple Helm charts in a Harness service</a>
+, treating the Helm Charts similar to artifacts.</td>
+    </tr>
+    <tr>
+        <td>CDS_HELM_FETCH_CHART_METADATA_NG</td>
+        <td>Exposes <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts">Helm Chart expressions</a> for reference in other steps and settings.</td>
+    </tr>
+    <tr>
+        <td>CDS_OCI_HELM_ECR_CONFIG_SUPPORT_NG</td>
+        <td>Support for ECR as an OCI Helm repo but with temporary credentials.</td>
+    </tr>
+</table>
 

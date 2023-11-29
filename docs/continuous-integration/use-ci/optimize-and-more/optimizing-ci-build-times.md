@@ -8,6 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import Ssc from '/docs/continuous-integration/shared/scm-status-checks.md';
+```
+
 You can optimize your CI pipelines to make them faster, more efficient, and more versatile.
 
 ## Background services, caches, and shared volumes
@@ -78,7 +82,7 @@ Expressions and runtime inputs make your pipelines more dynamic.
 * [Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
 * [CI codebase variables reference](../codebase-configuration/built-in-cie-codebase-variables-reference.md)
 * [Secrets management](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
-* [Input sets and overlays](/docs/platform/pipelines/input-sets/)
+* [Input sets and overlays](/docs/platform/pipelines/input-sets)
 
 ### Templates
 
@@ -100,6 +104,10 @@ There are many ways you can incorporate third party tools and services in your C
 * [Bring-your-own Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager)
 * [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support)
 * [Send notifications](/docs/category/notifications)
+
+### Branch protection and checks
+
+<Ssc />
 
 ## Increase step resources
 

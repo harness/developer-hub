@@ -32,8 +32,7 @@ In this diagram we use Google GCP, but Harness deploys to any Kubernetes cluster
 
 ### Video Summary
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/embed/BlxPanrpaX0" />
 
 ### Limitations

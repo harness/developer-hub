@@ -4,82 +4,232 @@ description: How we compute uptime for different Harness Modules
 sidebar_label: Computing uptime for Harness Modules
 ---
 
-Harness uptime for different modules across different clusters is available on [https://status.harness.io/](https://status.harness.io/).
+This is a Harness operational reference guide for all the Service Level Indicators (SLIs) across our modules. Our SLO gets calculated based on these user centric SLIs. 
 
-## Partial outages vs major outages
+## Weightage Factor
+Harness operations apply a weighting factor to the SLIs post any incidents. 
 
-Status page definition — [https://support.atlassian.com/statuspage/docs/display-historical-uptime-of-components/](https://support.atlassian.com/statuspage/docs/display-historical-uptime-of-components/).
+Major outage = 100% of the downtime hit 
+Partial = 30% of the downtime hit
+Degraded performance = None  (our stance is that a degraded performance does impact the user experience but it’s not technically downtime)
 
-While major outages affect 100% of the people that use a given component, partial outages only affect a subset of those users. Following that logic, partial outages don’t count as much as major outages in the uptime showcase.
+A production incident, commonly known as an "incident," is an unexpected event or problem that arises within our live production environments, resulting in either complete or partial service disruptions. In the case of a partial incident, it renders one or more functions of a module nonfunctional or inaccessible. All production incidents are posted in our status page (https://status.harness.io) and our users can subscribe to the feeds from this site to get notified. 
 
-Specifically, partial outages are discounted to only be **30%** as bad as major outages. This is an “across the board” calculation and **cannot** be configured.
+## Recent Incidents and How We Calculate Our Availability
+**Oct 4th - Impacted Continuous Integration Enterprise(CIE) - Self Hosted Runners**
 
-## Common Service Level Indicators across all Modules
-For all Harness modules, the following Service Level Indicators (SLIs) will be applicable. Anytime, the common Service Level Indicators (SLIs) breach their thresholds it will be considered partial outage and 30% of the total duration would be applicable.
+Incident: Issue with sending Git Status for PR 
+URL: https://status.harness.io/incidents/p24h63dhy18d
 
-| **SLI**                          | **Threshold**                                                | Outage Kind    |
-|----------------------------------|--------------------------------------------------------------|----------------|
-| Login EURT (Base Pages > #login) | Greater than 30 seconds for a consecutive duration of 5 mins | Partial Outage |
-| Overall EURT (app.harnes.io)     | Greater than 30 seconds for a consecutive duration of 5 mins | Partial Outage |
-| Gateway overall ART              | Greater than 50 ms for a consecutive duration of 5 mins      | Partial Outage |
+- Component: Platform/Delegate
+- SLI: API Error Rate
+- Availability - Partial Outage of 28 Minutes
+- Threshold: More than 1% over 5 min rolling window
+- SLA Impact - Partial Outage of 28 Minutes/1680 seconds, taking 30% of the downtime hit comes to 504 seconds.
 
-### Example
+During the incident, the error rate for the Platform/Delegate component exceeded 1% over a 5-minute rolling window due to a missing dependency and we had a partial outage for CIE - Self Hosted Runners in Prod-2.
 
-Say Gateway has a partial outage for 50 minutes then:
+**Oct 16th - Impacted all the components in Prod-2**
 
-* 30% of 50 minutes = 15 minutes = 900 seconds will be the downtime.
-* If this was the only incident for a 90 day duration (7776000 seconds) , the uptime then will be (1–900/7776000) * 100 = (1–0.000115740740741) * 100 = 99.988
+Incident: Failed to retrieve license information seen for some customers 
+URL: https://status.harness.io/incidents/bwpdhdyyyjfw
+
+- Component: Platform/login
+- SLI: API Error Rate
+- Availability - Partial Outage of 8 Minutes
+- Threshold: More than 1% over 5 min rolling window
+- SLA Impact - Partial Outage of 8 Minutes/480 seconds, taking 30% of the downtime hit comes to 144 seconds.
+
+During the incident, the error rate for the Platform/Login component exceeded 1% over a 5-minute rolling window and we had a partial outage across all of our components in Prod-2.
 
 ## Service Level Indicators specific to Harness Modules
 
-## Continuous Delivery (Current Gen)
-| **SLI**                                   | **Threshold**                                                | Outage Kind    |
-|-------------------------------------------|--------------------------------------------------------------|----------------|
-| Dashboard ART                             | Greater than 10 seconds for a consecutive duration of 5 mins | Partial Outage |
-| Pipeline and Workflow executions ART      | Greater than 30 seconds for a consecutive duration of 5 mins | Partial Outage |
+## Pipelines
+Pipeline is a core construct of the Harness platform. All of the SLIs defined here will be applicable to CD, CI, STO and for that fact, any other modules where the usage is tied to a pipeline. 
 
-## Continuous Delivery (Next Gen)
-| **SLI**                                                               | **Threshold**                                                | Outage Kind    |
-|-----------------------------------------------------------------------|--------------------------------------------------------------|----------------|
-| Dashboard ART                             | Greater than 10 seconds for a consecutive duration of 5 mins(P95) | Partial Outage |
-| Event In Queue Time      | Greater than 30 seconds for a consecutive duration of 10 mins | Major Outage |
-| Event In Queue Time      | Greater than 20s for a consecutive duration of 10 mins | Partial Outage |
-| List Executions P95 (Pipeline execution summary)     | If greater than 10 seconds for 5 mins consecutive then major outage| Major Outage |
-| List Executions P95 (Pipeline execution summary)`     | If greater than 5 seconds for 5 mins consecutive then partial outage| Partial Outage |
-| List Executions P95 (Pipeline list)     | If greater than 10 seconds for 5 mins consecutive then major outage| Major Outage |
-| List Executions P95 (Pipeline list)`    | If greater than 5 seconds for 5 mins consecutive then partial outage| Partial Outage |
-| GitOps APIs ART     | Greater than 10 seconds for a consecutive duration of 5 mins| Major Outage |
-| GitOps APIs ART     | Greater than 5 seconds for a consecutive duration of 5 mins| Partial Outage |
+| **Component**                             | **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|----------------|
+| Pipeline/Triggers                         | APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+|                                           | API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded Performance|
+| Pipeline Executions failure caused by Harness platform | Failure rate Increase| More than 1% over 5 min rolling window |Partial Outage|
+|                                           | Slow Executions | 2x of average latency in a rolling window of 5 mins|Degraded Performance|
+| Triggers                                  | Trigger Activations | More than 1% over 5 min rolling window |Degraded Performance|
 
-## Continuous Integration 
-| **SLI**                                                               | **Threshold**                                                | Outage Kind    |
-|-----------------------------------------------------------------------|--------------------------------------------------------------|----------------|
-| CI Manager ART                             | Greater than 30 seconds for a consecutive duration of 5 mins | Major Outage |
-| CI Manager Execution health ART    | No executions messages for more than 30 mins | Major Outage |
+## Platform
+Core platform constructs and services are foundational to Harness modules and any breach of these SLIs will impact all of the Harness modules. 
 
-## Cloud Cost Management 
-| **SLI**                                                               | **Threshold**                                                | Outage Kind    |
-|-----------------------------------------------------------------------|--------------------------------------------------------------|----------------|
-| GraphQL / REST API                             | Greater than 30 seconds for a consecutive duration of 5 mins | Major Outage |
-| Drops in the incoming message count event-service      | No incoming messages for more than 30 mins | Major Outage |
-| Lightwing APIs ART      | Greater than 30 seconds for a consecutive duration of 5 mins | Major Outage |
-| Faktory Queue job wait time      | Greater than 30 sec for a consecutive duration of 5 mins | Major Outage |
+| **Component**                             | **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|----------------|
+| Access Control                         | Permissions Change Processing Time | New permissions (additions/removals) should take effect within 5 minutes  |Degraded Performance|
+| Platform resources (All APIs) - Account, Login, Project/Org, Connectors, Secrets, Delegate, Settings, Notifications, Audits, Templates, Services, Environments , Policies, File Store, Log Uploads| API Error rate | More than 1% over 5 min rolling window | Partial Outage |                               
+||API Response Time|95th percentile: > 1s over 5 min rolling window|Degraded Performance|
+| Notifications                         | Notification Delivery Latency | 99% of notifications are dispatched within 1 minute from the moment they are sent to the notification service |Degraded Performance|
+
+## CDNG
+All the Pipeline and Platform SLIs are applicable here. 
+
+| **Component**                             | **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|----------------|
+| Artifacts                         | Fetch Deployable artifact Error Rate | More than 1% over 5 min rolling window |Major Outage|
+| GitOps | APIs Error rate| More than 1% over 5 min rolling window |Partial Outage|
+|                                           | API Response Time | 95th percentile: > 1s over 5 min rolling window|Degraded Performance|
+
+## Test Intelligence
+All the Pipeline and Platform SLIs are applicable here. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Degraded performance|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded Performance|
 
 ## Feature Flags 
-| **SLI**                                                               | **Threshold**                                                | Outage Kind    |
-|-----------------------------------------------------------------------|--------------------------------------------------------------|----------------|
-| Feature Flag Dashboard RestAPI ART                            | Greater than 30 seconds for a consecutive duration of 5 mins | Partial Outage |
-| Evaluation API      | Greater than 45 seconds for consecutive duration of 5min | Major Outage |
-| Metrics API      | Greater than 45 seconds for consecutive duration of 5min | Partial Outage |
+All the Platform SLIs are applicable here. Pipeline relevant if the FF use case is tied to a pipeline. 
 
-## Security Testing Orchestration 
-| **SLI**                                                               | **Threshold**                                                | Outage Kind    |
-|-----------------------------------------------------------------------|--------------------------------------------------------------|----------------|
-| STO Call-HTTP to pipeline-service ART                            | Greater than 10 seconds for a consecutive duration of 5 mins | Major Outage |
-| STO Call-HTTP to pipeline-service ART                            | Greater than 5 seconds for a consecutive duration of 5 mins | Partial Outage |
-| STO Core API ART                            | Greater than 30 seconds for a consecutive duration of 5 mins  | Major Outage |
-| STO pipeline - Create/modify                            | Greater than 30 seconds for a consecutive duration of 5 mins   | Partial Outage |
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| Admin UI response time | 95th percentile: > 30s over a 5 minute rolling window | Degraded Performance |
+| Admin UI error rate | 5% of requests over 5 min rolling window fails to respond or returns a 5xx error | Partial Outage |
+| Authentication response time | 95th percentile: > 30s over a 5 minute rolling window | Degraded Performance |
+| Authentication error rate | 5% of requests over 5 min rolling window fails to respond or returns a 5xx error | Major Outage |
+| SDK evaluation response time | 95th percentile: > 30s over a 5 minute rolling window | Degraded Performance |
+| SDK evaluation error rate | 5% of requests over 5 min rolling window fails to respond or returns a 5xx error | Major Outage |
+| SDK metrics response time | 95th percentile: > 30s over a 5 minute rolling window | Degraded Performance |
+| SDK metrics error rate | 5% of requests over 5 min rolling window fails to respond or returns a 5xx error | Partial Outage |
+| SDK events request response time | 95th percentile: > 30s over a 5 minute rolling window | Degraded Performance |
+| SDK events request error rate | 5% of requests over 5 min rolling window fails to respond or returns a 5xx error | Major Outage |
 
+## Dashboards 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| Dashboards not Loading | For a duration of 60 secs |Major Outage|
+| Latency in Loading dashboards | 2x of average latency in a rolling window of 5 mins |Degraded performance|
+| CRUD/Actions not working | For a duration of 60 secs |Partial Outage|
+
+## Cloud Cost Manager 
+All the Pipeline and Platform SLIs are applicable here. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+| CCM UI is down (ping failure) | For a consecutive duration of 30secs |Major Outage|
+| Perspective load times | Greater than 2 mins for a consecutive duration of 10 mins |Partial Outage|
+| Max AutoStopping rule warmup time | Greater than 10 mins for a consecutive duration of 30 mins|Partial Outage|
+| Max asset gov policy evaluation | Greater than 15 mins for a consecutive duration of 30 mins|Partial Outage|
+| Cloud provider data ingestion delay | Greater than 48hrs of no data received|Partial Outage|
+| K8s data at hourly granularity | No events received for more than 6 hrs|Partial Outage|
+| K8s data at daily granularity | No events received for more than 48 hrs|Partial Outage|
+
+## Chaos Engineering 
+All the Platform SLIs are applicable here. Pipeline relevant if the chaos use case is tied to a pipeline. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+| Chaos UI components are not accessible | Not accessible for more than 60s |Major Outage|
+| Load times on UI | Data load time > 10s consecutively over a 5 min period |Degraded performance|
+| ChaosGuard Rule Evaluation Duration  | The ChaosGuard rule evaluation stage takes >10s consecutively over a 5 min period across experiment runs |Degraded performance|
+
+## Security Test Orchestration 
+All the Platform SLIs are applicable here. Pipeline relevant if the STO use case is tied to a pipeline. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+| Security Step Executions Failures | 25% increase in security stage execution failures in a rolling window of 5 mins |Partial outage|
+
+## Error Tracking
+All the Platform SLIs are applicable here. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+| Agent cannot connect to CET collector | For a consecutive duration of 60 secs |Major outage|
+| Agent not being shown as connected in the UI | For a consecutive duration of 60 secs |Partial outage|
+|| Latency greater than 30 seconds for a consecutive duration of 10 mins (95th percentile) |Degraded performance|
+| UI is down | For a consecutive duration of 30 secs |Major outage|
+| ARC screen is down | No hit is openable |Major outage|
+|| Some hits aren’t openable - at least 20% of the hits in a total of at least 20 unique events |Degraded performance|
+| Tiny links not working | Tiny link doesn’t direct to a viewable ARC screen |Partial outage|
+|| Tiny link should be clickable after no more than 90s after it was logged |Degraded performance|
+| New events/Metrics don’t show up on the summary or event list | For a consecutive duration of 180 secs |Major outage|
+|| Latency greater than 125 seconds in metrics since happened in the agent until shown in the UI |Degraded performance|
+| Notifications | Expected notification doesn’t arrive for a consecutive duration of 60 secs after the ETA |Major outage|
+|| Latency greater than 30 seconds |Degraded performance|
+|| Links in notifications don’t work |Degraded performance|
+| Admin operations not working (Including: Tokens, Critical events, hide & resolve events, Jira integration, Notifications, Saved Search) | For a consecutive duration of 30 secs | Major outage|
+
+## Developer Platform
+All the Platform SLIs are applicable here. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| IDP UI is down(Included: Catalog, Self service Hub, Scorecards Excluded: Non-Harness owned plugins)| For a consecutive duration of 30secs |Major Outage|
+| IDP admin UI is down | For a consecutive duration of 30secs |Partial Outage|
+| Unable to access Service Catalog APIs | 5XX Errors for a consecutive duration of 30secs (95th percentile) |Major outage|
+|| Latency greater than 30 seconds for a consecutive duration of 10 mins (95th percentile) |Partial outage|
+| Scorecards not functional | 5XX Errors for a consecutive duration of 30secs (95th percentile) |Partial outage|
+|| Latency greater than 60 seconds for a consecutive duration of 10 mins (95th percentile) |Degraded Performance|
+| Issue with IDP admin operations | 5XX Errors for a consecutive duration of 30secs (95th percentile) |Partial outage|
+|| Latency greater than 10 seconds for a consecutive duration of 10 mins (95th percentile) |Degraded Performance|
+| Open Source Plugins functionality | 5XX Errors for a consecutive duration of 30secs (95th percentile) |Degraded Performance|
+|| Latency greater than 30 seconds for a consecutive duration of 10 mins (95th percentile) |Degraded Performance|
+
+## Source Code Management
+All the Platform SLIs are applicable here. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| Git Operations success rate(Clone, Pull, Push and associated operations like Merge, Blame )| > 99.9% over a rolling 5 min window |Major Outage|
+| Git Operations execution time(Clone, Pull, Push and associated operations like Merge, Blame )|2X increase of time for git operations |Degraded Performance|
+| CODE Reviews Error Rate Increase | 5% increase in 5xx errors in a rolling window of 5 mins |Partial Outage|
+| CODE Reviews Latency Increase | 2x of average latency in a rolling window of 5 mins |Degraded Performance|
+| PR Checks & Webhooks - Error Rate Increase is PR Checks | 5% increase in 5xx errors in a rolling window of 5 mins |Degraded Performance|
+| PR Checks & Webhooks - Webhooks are not triggered  | 5% increase in 5xx errors in a rolling window of 5 mins |Degraded Performance|
+| UI unable to render page |For a consecutive duration of 2 min|Major Outage|
+
+## Infrastructure As Code
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+| Unable to run IaC Stage & Steps in a Pipeline | API’s are down for a consecutive duration of 60 seconds |Major Outage|
+| | 10% of traffic generates 5xx error in a rolling window of 5 mins |Partial Outage|
+| | 2x of average latency in a rolling window of 5 mins |Degraded Performance|
+
+## Supply Chain Security
+
+All the Platform and Pipeline SLIs are applicable here. 
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
+
+## Software Engineering Insights  (Legacy)  
+
+| **SLI**         | **Threshold**                           | **Availability**|
+|-------------------------------------------|-----------------|-----------------------------------------|
+| Login via /signin | Greater than 30 seconds for a consecutive duration of 5 minutes |Partial Outage|
+| Login via both flows not loading | Greater than 30 seconds for a consecutive duration of 5 minutes |Major Outage|
+| Integrations list API | 5XX |Major Outage|
+|| Greater than 30 seconds |Degraded Performance|
+| Ingestion Delay - Forward scans| Delay in receiving any events > 24 hours |Partial Outage|
+| ETL + Indexing  Delay| Delay in receiving any events > 48 hours |Partial Outage|
+| Legacy Aggregations Delay| Delay in receiving any events > 36 hours |Partial Outage|
+| UI dashboard widget Load times| Greater than 3 mins for a consecutive duration of 10 mins |Degraded Performance|
+| SEI UI landing page/dashboard page not loading| For a consecutive duration of 5 mins |Major Outage|
+| Trellis Events| Delay in processing events > 8 hours |Degraded Performance|
+| Trellis Monthly calculations| Delay > 5 days |Partial Outage|
+| Pub/sub queue Async processing time (Pubsub queues/Scheduled Tasks)| Delay in processing > 12 hours |Degraded Performance|
+| Real time data layer Load ( DB Load or ES cluster state)| DB Load > 95% or ES cluster state RED |Partial Outage|
+| APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
 
 
 

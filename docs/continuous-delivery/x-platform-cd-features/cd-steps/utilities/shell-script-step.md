@@ -66,7 +66,52 @@ You can use Harness secrets in your Shell Script steps.
 
 For more information, go to [add text secrets](/docs/platform/secrets/add-use-text-secrets).
 
-Basically, you use `<+secrets.getValue("secret_Id")>` to refer to the secret.
+There are two ways to use secret variables in scripts:
+* Secret type variables can be used like any other variable with the secret variable identifier being passed to the `value` attribute or field.
+* You can use `<+secrets.getValue("secret_Id")>` to refer to the secret `value` attribute or field, and select the type of variable as String. This formats the variable in string format and contains the value of the secret variable.
+
+Below is an example of using secret variables in the Shell Script step where `temp_secret` is a secret variable and we try to access it.
+
+```yaml
+pipeline:
+  stages:
+    - stage:
+        identifier: tmpStg
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  identifier: tmpScript
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          echo <+pipeline.stages.tmpStg.spec.execution.steps.tmpScript.spec.environmentVariables.secret_1>
+                          echo <+pipeline.stages.tmpStg.spec.execution.steps.tmpScript.spec.environmentVariables.secret_2>
+                    environmentVariables:
+                      - name: secret_1
+                        type: Secret
+                        value: temp_secret
+                      - name: secret_2
+                        type: String
+                        value: <+secrets.getValue("temp_secret")>
+                    outputVariables: []
+```
+
+The output for this step would look like this:
+```console
+Executing command ...
+**************
+**************
+Command completed with ExitCode (0)
+```
+
+Secret variable usage is explained later in the documentation in detail.
 
 ### Escaping characters
 
@@ -159,7 +204,9 @@ While you can simply declare a variable in your script using a Harness expressio
 
 To export variables from the script to other steps in the stage, you use the **Script Output Variables** option.
 
-Shell Script step output variables have a maximum size of 512KB.
+:::note
+Variables of type Secret must have a non-empty value. Additionally, Shell Script step output variables have a maximum size of 512KB.
+:::
 
 ### Include Infrastructure Selectors
 
@@ -293,7 +340,7 @@ At deployment runtime, Harness evaluates the expression and the variable contain
 
 ### Specify output variables
 
-Shell Script step Output Variables have a maximum size of 512KB.To export variables from the script to other steps in the stage, you use the **Script Output Variables** option.
+Shell Script step Output Variables have a maximum size of 512KB. To export variables from the script to other steps in the stage, you use the **Script Output Variables** option.
 
 Let's look at a simple example of a script with the variable **name**:
 
@@ -365,6 +412,139 @@ echo "my secret: " <+execution.steps.CreateScript.output.outputVariables.myvar>
 When you run the Pipeline, the resolved output variable expression is sanitized:
 
 ![](./static/using-shell-scripts-25.png)
+
+:::note
+Variables of type Secret must have a non-empty value.
+:::
+
+### Scoping output variables using aliases
+
+:::note
+
+Currently, scoping output variables using aliases is behind the feature flag `CDS_SHELL_VARIABLES_EXPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+To prevent variable name conflicts, you can use **Publish Variable Names (Alias)** to scope output variables to different entities.
+
+1. First, use **Script Output Variables** to export the variables.
+2. In **Publish Variable Names (Alias)**, enter an alias to use to reference the exported output variables.
+3. In **Scope**, select the scope for the exported output variable.
+
+You can scope output variables to the following entities:
+
+- **Step group**: 
+  - The output variable must be used in the same step group, including nested child step groups.
+  - The format for referencing an exported step group output variable using its alias is:  
+
+    ```
+    <+exportedVariables.getValue("stepGroup.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>
+    ```
+
+- **Stage**: 
+  - The output variable can be used anywhere in the same stage, including step groups in the same stage. It cannot be used outside of the same stage.
+  - The format for referencing an exported stage output variable using its alias is:  
+
+    ```
+    <+exportedVariables.getValue("stage.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>
+    ```
+    
+- **Pipeline**: 
+  - The output variable can be used anywhere in the same pipeline but not in a [chained pipeline](/docs/platform/pipelines/pipeline-chaining). 
+  - The format for referencing an exported pipeline output variable using its alias is:  
+
+    ```
+    <+exportedVariables.getValue("pipeline.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>
+    ```
+
+To reference a map of exported output variables you can simply reference the alias in the format `<+exportedVariables.getValue("SCOPE.ALIAS_NAME")>`, like `<+exportedVariables.getValue("stepGroup.info")>`.
+
+
+Important notes:
+- Exported variables are immutable.
+- Variables cannot be exported in looping strategies.
+- Exported variables are not supported in pipeline chaining.
+- All output variables are exported. You cannot select a subset.
+
+Here is a pipeline YAML example of output variables exported and referenced within the step group scope. You can copy and paste it into your Harness project to experiment with the feature.
+
+<details>
+<summary>Step group scope pipeline example</summary>
+
+```yaml
+pipeline:
+  projectIdentifier: myproject
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        identifier: testSimple
+        type: Custom
+        name: testSimple
+        description: ""
+        spec:
+          execution:
+            steps:
+              - stepGroup:
+                  identifier: stepGroup1
+                  name: stepGroup1
+                  steps:
+                    - step:
+                        identifier: ShellScript_1
+                        type: ShellScript
+                        name: ShellScript_1
+                        spec:
+                          shell: Bash
+                          onDelegate: true
+                          source:
+                            type: Inline
+                            spec:
+                              script: |-
+                                var1="val1"
+                                var2="val2"
+                          environmentVariables: []
+                          outputVariables:
+                            - name: var1
+                              type: String
+                              value: var1
+                            - name: var2
+                              type: String
+                              value: var2
+                          outputAlias:
+                            key: info
+                            scope: StepGroup
+                        timeout: 10m
+                    - step:
+                        type: ShellScript
+                        name: outputs
+                        identifier: outputs
+                        spec:
+                          shell: Bash
+                          onDelegate: true
+                          source:
+                            type: Inline
+                            spec:
+                              script: |-
+                                echo "reference using aliases:"
+
+                                echo "var1:" <+exportedVariables.getValue("stepGroup.info.var1")>
+                                echo "var2:" <+exportedVariables.getValue("stepGroup.info.var2")>
+                                echo "var map:" <+exportedVariables.getValue("stepGroup.info")>
+
+                                echo "reference using standard output exp:"
+
+                                echo "var1:" <+pipeline.stages.testSimple.spec.execution.steps.stepGroup1.steps.ShellScript_1.output.outputVariables.var1>
+                                echo "var2:" <+pipeline.stages.testSimple.spec.execution.steps.stepGroup1.steps.ShellScript_1.output.outputVariables.var2>
+                          environmentVariables: []
+                          outputVariables: []
+                        timeout: 10m
+        tags: {}
+  identifier: StepGroupExport
+  name: StepGroupExport
+
+```
+</details>
+
 
 ### Harness expressions in variables
 
@@ -534,3 +714,38 @@ sshpass -p $DEVICE_PASS ssh $DEVICE_USER@$DEVICE_IP "sudo flashrom -w /home/$DEV
 ```
 
 </details>
+
+### Running Kubernetes Commands in the Shell Script
+
+You can run Kubernetes commands (kubectl) in a Shell script step. The step doesn't require you to provide an infrastructure. All that is required is a Harness Kubernetes delegate installed on a target cluster with the correct permissions.
+
+Example script:
+
+```
+export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}  
+kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.namespace> -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness\.io/color=="'$(kubectl get service/<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName> -n <+infra.namespace> -o jsonpath='{.spec.selector.harness\.io/color}')'")].metadata.name}') --replicas=0
+```
+
+The step might look like this:
+
+```
+              - step:
+                  type: ShellScript
+                  name: Kubectl scale blue green
+                  identifier: Kubectl_scale_blue_green
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}  
+                          kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.namespace> -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness\.io/color=="'$(kubectl get service/<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName> -n <+infra.namespace> -o jsonpath='{.spec.selector.harness\.io/color}')'")].metadata.name}') --replicas=0
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+```
+
+The `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}` line will get the `kubeconfig` from the Harness Delegate that is installed on the Kubernetes cluster.
+

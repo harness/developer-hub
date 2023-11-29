@@ -22,8 +22,7 @@ Harness takes a Blueprint definition [you set up as a Harness Infrastructure Pro
 
 Here's a short video showing how to provision Azure infrastructure using Blueprint definitions and Harness:
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/embed/cGjZCoz3HrY?feature=oembed" />
 
 

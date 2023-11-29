@@ -6,6 +6,16 @@ keywords: [Feature Flags, FF Tutorial]
 
 # Using Feature Flags For Trunk-Based Development
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Feature Flags Certification today!"
+  link="/certifications/feature-flags"
+  closable={true}
+  target="_self"
+/>
+
+
 ## What is trunk-based development?
 
 To understand trunk-based development (TBD) best, it may be helpful to start with how most engineering teams work today:

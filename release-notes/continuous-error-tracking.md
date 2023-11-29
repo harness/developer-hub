@@ -2,8 +2,8 @@
 title: Continuous Error Tracking release notes
 sidebar_label: Continuous Error Tracking
 tags: [NextGen, "cet"]
-date: 2023-09-29T17:20
-sidebar_position: 11
+date: 2023-11-02T17:20
+sidebar_position: 8
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -15,19 +15,25 @@ import delete_project from './static/delete-project.png'
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/continuous-error-tracking/rss.xml" />
 
-Review the notes below for details about recent changes to Continuous Error Tracking. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+These release notes describe recent changes to Harness Continuous Error Tracking.
 
+:::info About Harness Release Notes
 
-:::info note
-Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
+* **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
+* **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+* **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
+
 :::
 
-## Latest: versions ET-Service 5.27.1 and ET-Collector 5.27.0
-
+## Latest: November 02, 2023, versions ET-Service 5.30.0 and ET-Collector 5.30.0
 
 ### New features and enhancements
 
-This release does not include new features and enhancements.
+- The Summary page loading time has been optimized. Now, the Summary page loads faster, ensuring a better user experience. (CET-1233)
+
+- The event distribution chart now supports plotting a graph for new events. (CET-1610)
+
+- Various dependencies were upgraded to prevent security issues. (CET-1880)
 
 
 ### Early access features
@@ -37,9 +43,41 @@ This release does not include any early access features.
 
 ### Fixed issues
 
-- Previously, when the monitored service information was incorrect, the agent logs did not provide a clear error message. (CET-1533)
+- The ARC screen displayed variables that appeared expandable but were unresponsive. (CET-1116)
   
-  This issue has been resolved. Now, the error message has been improved to indicate the monitored service details.
+  This issue has been resolved. Now, variables display the expansion arrow only if there is data to display.
+  
+- Events plotted by the Event Distribution graph did not consistently represent the top occurring events. (CET-1745)
+  
+  This issue has been resolved. Now, the events on the Event Distribution graph are consistently the top occurring events.
+  
+- After implementing Saved Filters, the event distribution chart was not functioning properly, preventing the filtering of events by type or status. (CET-1784)
+  
+  This issue has been resolved. Now, filtering on the chart is working as expected.
+  
+- The event distribution chart allowed zooming in up to the seconds, which caused confusion with the displayed numbers. (CET-1810)
+  
+  This issue has been resolved. Now, zooming is limited to the minute, ensuring consistency with the graph axis.
+  
+- Filters could be saved without any actual filtering. (CET1844)
+  
+  This issue has been resolved. Now, filters can be saved only with applied criteria.
+  
+- It was difficult to identify the managed filters button in the saved searches drop-down compared to other filters. (CET-1847)
+  
+  This issue has been resolved. Now, the managed filters button is easier to identify and use.
+  
+- Editing a saved filter redirects to the Events list. (CET-1848)
+  
+  This issue has been resolved. Now, editing a saved filter redirects to the 'Manage saved filters' dialog.
+  
+- Leaving the Events page does not prompt a warning about unsaved changes. (CET-1850)
+  
+  This issue has been resolved. Now, when there are unsaved changes, a warning message appears.
+  
+- The CET integration with CD was broken, resulting in no events appearing when using CET in a deployment pipeline. (CET-1895)
+  
+  This issue has been resolved. Now, events appear as expected when using CET in a deployment pipeline.
 
 
 ### Hotfixes
@@ -52,8 +90,90 @@ This release does not include hotfixes.
 <details>
 <summary>2023 releases</summary>
 
+#### October 19, 2023, versions ET-Service 5.29.3 and ET-Collector 5.29.0
 
-#### Version ET-Agent 5.6.0
+
+##### New features and enhancements
+
+This release does not include new features and enhancements.
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+- The total number of new, resurfaced, and critical events displayed on the Event Summary page did not match the counts on the Event List page. (CET-1233)
+  
+  This issue has been resolved. Now, the total number of new, resurfaced and critical events is consistent across both the Event Summary and Event List pages.
+
+- Previously, when new events were marked as hidden or resolved and moved to their respective **Hidden** or **Resolved** tabs, the total event count on the event list remained the same. (CET-1747)
+
+  Now, when new events are marked as hidden or resolved and moved to their respective **Hidden** or **Resolved** tabs, the **New** label is removed, and these events no longer contribute to the event count on the Events page.
+
+- Users needed to click the **Add** or **Delete** button multiple times when adding or deleting a critical event. (CET-1877)
+
+  This issue has been resolved. Now, users can add and delete events with a single click.
+
+
+##### Hotfixes
+
+This release does not include hotfixes.
+
+
+#### October 7, 2023, versions ET-Service 5.28.2 and ET-Collector 5.28.0
+
+
+##### New features and enhancements
+
+- Event filtering has been enhanced by removing event type selector boxes and displaying event counts above the events list. Additionally, a multi-select dropdown for event types has been introduced for improved usability. (CET-1698)
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+- Previously, there was no confirmation prompt when deleting a notification rule. (CET-1713)
+
+  This issue has been resolved. Now, a confirmation window is displayed when deleting a notification rule.
+
+
+##### Hotfixes
+
+This release does not include hotfixes.
+
+
+#### September 29, 2023, versions ET-Service 5.27.1 and ET-Collector 5.27.0
+
+
+##### New features and enhancements
+
+This release does not include new features and enhancements.
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+- Previously, when the monitored service information was incorrect, the agent logs did not provide a clear error message. (CET-1533)
+  
+  This issue has been resolved. Now, the error message has been improved to indicate the monitored service details.
+
+
+##### Hotfixes
+
+This release does not include hotfixes.
+
+
+#### September 26, 2023, Version ET-Agent 5.6.0
 
 
 ##### New features and enhancements
@@ -85,7 +205,7 @@ This release does not include any early access features.
 This release does not include hotfixes.
 
 
-#### Version ET-Service 5.26.1
+#### September 14, 2023, Version ET-Service 5.26.1
 
 
 ##### New features and enhancements

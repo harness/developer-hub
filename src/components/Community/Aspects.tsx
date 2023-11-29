@@ -13,7 +13,7 @@ export default function communityAspects() {
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.btnContainer}>
-            <Link href="https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw">
+            <Link href="https://join.slack.com/t/harnesscommunity/shared_invite/zt-25816ab7a-FdXSKTyIZaxyKQvaysTN0g">
               <Tooltip placement="top" overlay="Join Harness Community Slack">
                 <button className={styles.btn}>
                   <img src={`${baseUrl}img/slack.svg`} />
@@ -33,6 +33,14 @@ export default function communityAspects() {
                 <button className={styles.btn}>
                   <img src={`${baseUrl}img/youtube.svg`} />
                   Youtube
+                </button>
+              </Tooltip>
+            </Link>
+            <Link href="https://www.reddit.com/r/Harnessio/">
+              <Tooltip placement="top" overlay="Harness Reddit">
+                <button className={styles.btn}>
+                  <img src={`${baseUrl}img/reddit.svg`} />
+                  Reddit
                 </button>
               </Tooltip>
             </Link>

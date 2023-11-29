@@ -103,6 +103,8 @@ To concatenate strings within the JSON functor:
 
 For more information, go to [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors).
 
+Output variables also support [JEXL expressions](https://commons.apache.org/proper/commons-jexl/reference/syntax.html).
+
 ## Advanced step settings
 
 In **Advanced**, you can use the following options:
@@ -148,6 +150,21 @@ In the following examples, the Id of the HTTP step is `HTTP`.
 | httpResponseBody | `<+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpResponseBody>` | `Hello` |
 | status | `<+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.status>` | `SUCCESS` |
 
+
+## Use a certificate and key
+
+:::note 
+
+This feature is behind the feature flag `CDS_HTTP_STEP_NG_CERTIFICATE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You can specify a TSL certificate and key for the HTTP step. This enables TLS encryption for your HTTP services. 
+
+1. In **Optional Configuration**, in **Certificate**, enter the certificate, including the `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
+2. In **Certificate Key**, enter the public key.
+
+You can use fixed values, expressions, or runtime inputs for these settings. It is good practice to use Harness [file secrets](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) and [text secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/) for these values.
 
 ## Delegate proxy
 

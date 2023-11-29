@@ -8,6 +8,9 @@ ECS instance stop induces stress on an AWS ECS cluster. It derives the instance 
 
 ![ECS Instance Stop](./static/images/ecs-instance-stop.png)
 
+:::tip
+This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](./ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
+:::
 
 ## Usage
 

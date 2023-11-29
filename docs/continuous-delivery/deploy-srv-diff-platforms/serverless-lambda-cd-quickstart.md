@@ -30,9 +30,8 @@ Setting up a Serverless Lambda application involves the following steps:
 3. Deploy the Serverless application to Lambda.
 
 ### Visual summary
-<!-- Video:
-https://harness-1.wistia.com/medias/tnjairdt6m-->
-<docvideo src="https://harness-1.wistia.com/medias/tnjairdt6m" />
+
+<docvideo src="https://youtu.be/BiFpg13yJbQ" />
 
 ## Containerized and non-containerized
 
@@ -205,7 +204,11 @@ The `s3:GetBucketLocation` action is required for a custom S3 bucket only.
 </details>
     
 
+## Use AWS IRA for Harness AWS connector credentials
 
+import IrsaPartial from '/docs/shared/aws-connector-auth-options.md';
+
+<IrsaPartial name="aws-irsa" />
 
 ## Serverless framework support
 

@@ -199,7 +199,7 @@ For On-Prem repos, if the repo URL has an extra segment before the project ID, s
 
 ## Connectivity Mode settings
 
-Select whether you want Harness to connect directly to your Bitbucket account or repo, or if you want Harness to communicate with your Bitbucket account or repo through a delegate.
+Select whether you want Harness to connect directly to your Bitbucket account or repo, or if you want Harness to communicate with your Bitbucket account or repo through a delegate. If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), you must select **Connect through Harness Platform**.
 
 ### Delegates Setup
 
@@ -227,7 +227,10 @@ The connection test may also fail if the token doesn't have sufficient privilege
 
 ### Status doesn't update in BitBucket Cloud PRs
 
-BitBucket Cloud limits the key size for sending status updates to PRs, and this can cause incorrect status updates in PRs due to some statuses failing to send. If you encounter this issue with BitBucket Cloud, contact [Harness Support](mailto:support@harness.io) to troubleshoot this issue by enabling a feature flag, `CI_BITBUCKET_STATUS_KEY_HASH`.
+There are two potential causes for this:
+
+* Harness uses the pipeline's codebase connector to send status updates to BitBucket. Check the pipeline's [codebase configuration](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) to confirm that it is using your BitBucket code repo connector.
+* BitBucket Cloud limits the key size for sending status updates to PRs, and this can cause incorrect status updates in PRs due to some statuses failing to send. If you encounter this issue with BitBucket Cloud, contact [Harness Support](mailto:support@harness.io) to troubleshoot this issue by enabling a feature flag, `CI_BITBUCKET_STATUS_KEY_HASH`.
 
 ### Some API functions fail for On-Prem repos
 

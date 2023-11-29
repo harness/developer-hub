@@ -1,7 +1,7 @@
 ---
-title: Auto-generate Jira tickets for detected issues in STO
+title: Steps to create Jira tickets in STO
 description: You can create Jira tickets for any issue detected during an STO pipeline execution.
-sidebar_label: Auto-generate Jira tickets for detected issues
+sidebar_label: Create Jira tickets for detected issues
 sidebar_position: 30
 ---
 
@@ -15,11 +15,12 @@ import ticket_summary from '../static/jira-integration-05-ticket-summary.png'
 
 
 
-You can set up STO to auto-generate Jira tickets for issues detected by STO scans. This topic describes how to set up this integration.
+You can set up STO to create Jira tickets for issues detected by STO scans. This topic describes how to set up this integration.
 
 :::note
 * This feature is not supported in Self-Managed Enterprise Edition.
 * This feature is behind the Feature Flag `STO_JIRA_INTEGRATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+* This feature is supported for both [STO SecOps and Developer](/docs/platform/role-based-access-control/add-manage-roles/#module-specific-roles) roles.  
 :::
 
 :::caution
@@ -34,7 +35,7 @@ This integration has a separate setup path that is unrelated to other Jira-relat
     * Create your connector at the Account level.
     * Create a [text secret](/docs/platform/secrets/add-use-text-secrets) for your Atlassian API key. You must use the Harness Secret Manager to store this key. Don't use an external secret store, such as Vault.
 
-3. Go to the **Account Settings** &gt; **Tickets** page and select the following: 
+3. Go to **Account Settings** &gt; **External Tickets** and select the following: 
    
     1. The Jira connector you just created.
  

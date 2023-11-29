@@ -121,6 +121,21 @@ For example, if the stage Id is `Deploy` and the Dry Run step Id is `Dry_Run` th
 <+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
 ```
 
+Another example is to use a Harness [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) to perform logic using `kubectl diff`:
+
+```
+cat << EOM > manifest.yaml
+<+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
+EOM
+cat manifest.yaml
+echo "K8s client/server version:"
+kubectl version --output yaml
+echo "K8s manifest diff:"
+# kubectl diff exist codes: 0 - no diff, 1 - there is a diff, 2 - something is wrong
+# Since exit code 1 is failure, make will always fail if there is a diff, so code modification required
+kubectl -n <+env.variables.DEPLOY_ENV> diff -f manifest.yaml || (st=$?; if [ $st = 1 ]; then exit 0; else echo $st; exit $st; fi)
+```
+
 You can enter the expression in subsequent steps such as the [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) or [Approval](/docs/category/approvals/) steps.
 
 
@@ -128,7 +143,37 @@ You can enter the expression in subsequent steps such as the [Shell Script step]
 
 The Apply, Rolling, Canary, and Blue Green deployment steps include a **Skip Dry Run** setting.
 
+
 By default, Harness uses the `--dry-run` flag on the `kubectl apply` command for all these steps. If the **Skip Dry Run** setting is selected, Harness will not use the `--dry-run` flag.
 
 The **Skip Dry Run** setting is different than the Dry Run step. The Dry Run step only performs a dry run. The Dry Run step does not impact whether or not a deployment step performs a dry run.
+
+
+## Using the Dry Run with a Native Helm Deployment
+
+When using the Dry Run step with a native Helm deployment, Harness will run a Helm template and render the manifests. In the  Dry Run step log you will see something like this:
+
+```
+KUBECONFIG=/opt/harness-delegate/repository/k8s/7d800125-18f7-3ad9-9db4-a32ec8876c3e/config /opt/harness-delegate/client-tools/helm/v3.12.0/helm template release-10b758 /opt/harness-delegate/repository/k8s/7d800125-18f7-3ad9-9db4-a32ec8876c3e/manifest-files/nginx-ingress-controller  --namespace dev  -f values-0.yaml
+```
+
+The above will run the Helm template against the manifests fetched. After running the Helm template, Harness will then perform the dry run on the templated and rendered manifest resources.
+
+```
+Validating manifests with Dry Run
+kubectl --kubeconfig=config apply --filename=manifests-dry-run.yaml --dry-run=client
+configmap/release-10b758-nginx-ingress-controller-default-backend created (dry run)
+serviceaccount/release-10b758-nginx-ingress-controller created (dry run)
+clusterrole.rbac.authorization.k8s.io/release-10b758-nginx-ingress-controller created (dry run)
+clusterrolebinding.rbac.authorization.k8s.io/release-10b758-nginx-ingress-controller created (dry run)
+role.rbac.authorization.k8s.io/release-10b758-nginx-ingress-controller created (dry run)
+rolebinding.rbac.authorization.k8s.io/release-10b758-nginx-ingress-controller created (dry run)
+service/release-10b758-nginx-ingress-controller created (dry run)
+service/release-10b758-nginx-ingress-controller-default-backend created (dry run)
+deployment.apps/release-10b758-nginx-ingress-controller created (dry run)
+deployment.apps/release-10b758-nginx-ingress-controller-default-backend created (dry run)
+ingressclass.networking.k8s.io/nginx created (dry run)
+```
+
+
 

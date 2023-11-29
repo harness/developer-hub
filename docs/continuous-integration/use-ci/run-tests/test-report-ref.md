@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 
 Results on the [Tests tab](./viewing-tests.md) are parsed from test reports specified in the **Report Paths** setting in **Run** and **Run Tests** steps. Test reports must be in [JUnit XML format](https://llg.cubic.org/docs/junit/) to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only.
 
-For information about code coverage reports and publishing report URLs to the **Artifacts** tab, go to [Code Coverage](./code-coverage.md).
+For optimal rendering in the Harness UI, there is a limit of 8,000 characters per field. If a field in your XML file contains more than 8,000 characters, the output might render incorrectly on the **Tests** tab.
 
 ## JUnit XML format resources
 
@@ -51,7 +51,7 @@ You can use the [--output-junit](https://cmake.org/cmake/help/latest/manual/ctes
 
 ### Java - Gradle
 
-This example runs Gradle with [Test Intelligence](./set-up-test-intelligence.md). You can also run Java tests in [Run steps](./run-tests-in-ci.md).
+This example runs Gradle with [Test Intelligence](./test-intelligence/set-up-test-intelligence.md). You can also run Java tests in [Run steps](./run-tests-in-ci.md).
 
 ```yaml
               - step:
@@ -121,7 +121,7 @@ This example runs pytest in a [Run step](../run-ci-scripts/run-step-settings.md)
 
 :::info
 
-If you use [test splitting](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism) with pytest in a Run step, you must set `junit_family=xunit1` in your code repo's `pytest.ini` file or include `-o junit_family="xunit1"` in the step's `command`.
+If you use [test splitting](./speed-up-ci-test-pipelines-using-parallelism) with pytest in a Run step, you must set `junit_family=xunit1` in your code repo's `pytest.ini` file or include `-o junit_family="xunit1"` in the step's `command`.
 
 :::
 
@@ -130,7 +130,7 @@ If you use [test splitting](/docs/continuous-integration/use-ci/optimize-and-mor
   <TabItem value="runtests" label="Run Tests step (Test Intelligence)">
 ```
 
-This example runs pytest with [Test Intelligence](./set-up-test-intelligence.md).
+This example runs pytest with [Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
 
 ```yaml
               - step:
@@ -213,7 +213,7 @@ If your test tool doesn't automatically produce test results in JUnit XML format
 ```
 
 <!-- Framework example
-The following example runs tests with [Test Intelligence](./set-up-test-intelligence.md).
+The following example runs tests with [Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
 
 ```yaml
                   - step:
@@ -278,7 +278,7 @@ You can use the [go-junit-report](https://github.com/jstemmer/go-junit-report) t
 
 ### Java - Maven
 
-This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) and runs tests with Maven and [Test Intelligence](./set-up-test-intelligence.md).
+This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) and runs tests with Maven and [Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
 
 ```yaml
               - step:
@@ -453,3 +453,7 @@ Add the [RSpec JUnit formatter](https://rubygems.org/gems/rspec_junit_formatter)
 ```
 
 </details>
+
+## Code coverage reports and test report artifacts
+
+For information about code coverage reports and publishing report URLs to the **Artifacts** tab, go to [Code Coverage](./code-coverage.md).

@@ -53,6 +53,7 @@ For more information, go to [Vault documentation](https://www.vaultproject.io/
 Select the **Authentication** Type.
 
 ![](../../secrets/static/add-hashicorp-vault-20.png)
+
 ### Option: App Role
 
 The App Role option enables the Harness Vault Secret Manager to authenticate with Vault-defined roles.
@@ -199,9 +200,10 @@ If you don’t want to or cannot add the ACL policy (with read permission for sy
 
 1. Identify the engine version of the Secret Manager in Vault.
 2. In **Secret Engine Name**, enter the name of the Secret Engine.
-3. In **Secret Engine** **Version**, enter the engine version.
+3. In **Secret Engine Version**, enter the engine version.
 
-You cannot change the Secret Engine later. Harness blocks editing this setting later since there might be secrets that are created/referenced under this secret engine. Changing the secret engine might break references to those secrets.
+   You cannot change the Secret Engine later. Harness blocks editing this setting later since there might be secrets that are created/referenced under this secret engine. Changing the secret engine might break references to those secrets.
+4. In **Kubernetes Auth Endpoint**, enter the authentication endpoint, if configured. The default value is `Kubernetes`.
 
 ### Step 3: Renewal Interval (minutes)
 
@@ -238,20 +240,11 @@ The secret can fail because of various reasons.
 
 ### Step 4: Read-only Vault
 
-If required by your organization's security practices, select the **Read-only Vault** check box. This selection authorizes Harness to read secrets from Vault, but not to create or manage secrets within Vault.
+If required by your organization's security practices, select the **Read-only Vault** option. This selection authorizes Harness to read secrets from Vault, but not to create or manage secrets within Vault.
 
 ![](../../secrets/static/add-hashicorp-vault-30.png)
 
 Once you have filled out the required fields, click **Finish**.
-
-<!-- 
-## Reference JSON secrets
-
-import Refj from '/docs/platform/secrets/shared/reference-via-json.md';
-
-<Refj />
-
--->
 
 ##### Read-only Limitations
 
@@ -274,3 +267,10 @@ Important: ​Harness tests connections by creating a dummy secret in the Secret
 The Test Connection fails if you do not have Create permission. However, Harness still creates the Connector for you. You may use this Connector to read secrets, if you have View permissions.
 
 :::
+
+### Reference JSON secrets
+
+import Refj from '/docs/platform/shared/reference-via-json.md';
+
+<Refj />
+

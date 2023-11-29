@@ -34,8 +34,6 @@ You can also use this workflow if the external scanner requires additional files
 
 * Save each SSL certificate file to **/shared/customer_artifacts/certificates/`<certificate_name>`**. 
 
-* If the scanner requires a license file, save it to **/shared/customer_artifacts/`<license_file_name>`**.  
-
 - To troubleshoot SSL issues, go to [Troubleshoot SSL in STO](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-custom-certs/ssl-troubleshooting-in-sto). 
 
 
@@ -90,7 +88,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: dvja
+        connectorRef: CODEBASE_CONNECTOR
         build: <+input>
   stages:
     - stage:
@@ -107,11 +105,11 @@ pipeline:
               name: dind
               type: Service
               spec:
-                connectorRef: account.harnessImage
+                connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                 image: docker:dind
                 privileged: true
                 entrypoint:
-                  - dockerd-entrypoint.sh
+                  - dockerd
                 resources:
                   limits:
                     memory: 4Gi
@@ -123,7 +121,7 @@ pipeline:
                   name: export path
                   identifier: export_path
                   spec:
-                    connectorRef: DockerNoAuth
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: alpine
                     shell: Sh
                     command: |-
@@ -137,7 +135,7 @@ pipeline:
                   name: addcerts
                   identifier: addcert
                   spec:
-                    connectorRef: mydocker
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: alpine
                     shell: Sh
                     command: |-
@@ -160,7 +158,7 @@ pipeline:
                   name: build
                   identifier: build
                   spec:
-                    connectorRef: DockerNoAuth
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: maven:3.3-alpine
                     shell: Sh
                     command: |

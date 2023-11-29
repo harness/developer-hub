@@ -14,7 +14,7 @@ Harness integrates with [Jenkins](https://jenkins.io/), enabling you to run Jen
 
 ## Supported platforms and technologies
 
-For more information, go to [supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies).
+For more information and supported versions, go to [supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies).
 
 ## Limitations and requirements
 
@@ -68,7 +68,7 @@ Go to [fixed values, runtime inputs, and expressions](/docs/platform/Variables-a
 
 ## Job parameters
 
-If you are using a [parameterized build](https://wiki.jenkins.io/display/JENKINS/Parameterized-Build.html), when you select the job in **Job Name**, Harness will automatically populate any job parameters from the server.
+If you are using a [parameterized build](https://wiki.jenkins.io/display/JENKINS/Parameterized+Build), when you select the job in **Job Name**, Harness will automatically populate any job parameters from the server.
 
 ![](../../advanced/static/run-jenkins-jobs-in-cd-pipelines-30.png)
 

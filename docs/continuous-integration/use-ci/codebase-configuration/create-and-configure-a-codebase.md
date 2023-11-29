@@ -9,6 +9,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import Ssc from '/docs/continuous-integration/shared/scm-status-checks.md';
+```
+
 CI pipelines build and test code that is pulled from a Git code repository. When you add a Build stage to a CI pipeline, you can select a [code repo connector](#code-repo-connectors) that connects to the Git account or repository where your code is stored. This can be referred to as the *default codebase* for the build. This topic explains how to configure codebase settings for CI pipelines and Build stages.
 
 This topic assumes you have an understanding of the [CI pipeline creation process](../prep-ci-pipeline-components.md).
@@ -173,6 +177,10 @@ Set maximum resource limits for the containers that clone the codebase at runtim
 * **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
 * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
+## Branch protection and checks
+
+<Ssc />
+
 ## Troubleshooting
 
 ### Improve codebase clone time
@@ -213,3 +221,19 @@ properties:
           memory: 4G ## Set the maximum memory to use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
           cpu: "2" ## Set the maximum number of cores to use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`.
 ```
+
+### Initial Git clone fails due to missing plugin
+
+This error can occur in build infrastructures that use a Harness Docker Runner, such as the [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md) or the [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
+
+If Git clone fails during stage setup (the **Initialize** step in build logs) and the runner's logs contain `Error response from daemon: plugin \"<plugin>\" not found`, this means a required plugin is missing from your build infrastructure container's Docker installation. The plugin is required to configure Docker networks.
+
+To resolve this issue:
+
+1. On the machine where the runner is running, stop the runner.
+2. Set the `NETWORK_DRIVER` environment variable to your preferred network driver plugin, such as `export NETWORK_DRIVER="nat"` or `export NETWORK_DRIVER="bridge"`.
+3. Restart the runner.
+
+### Pipeline status updates aren't sent to PRs
+
+Harness uses the pipeline's codebase connector to send status updates to PRs in your Git provider. Make sure that you have [configured a default codebase](#edit-the-default-codebase-configuration) and that it is using the correct code repo connector.

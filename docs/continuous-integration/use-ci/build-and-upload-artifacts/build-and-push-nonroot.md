@@ -41,12 +41,12 @@ At the point in your pipeline where you want to build and upload an image, add a
    * Docker Hub: Docker connector
    * ACR: Azure connector
    * ECR: AWS connector
-   * GCR: GCP connector
+   * GAR/GCR: GCP connector
 * **Image:** Specify the plugin image and tag to use, such as  `plugins/buildah-docker:1.1.0-linux-amd64`. If you don't specify a tag, the `latest` tag is used by default. Go to an image's Docker Hub page to browse available tags:
-   * [buildah-acr](https://hub.docker.com/r/plugins/buildah-acr/tags)
-   * [buildah-ecr](https://hub.docker.com/r/plugins/buildah-ecr/tags)
-   * [buildah-gcr](https://hub.docker.com/r/plugins/buildah-gcr)
-   * [buildah-docker](https://hub.docker.com/r/plugins/buildah-docker)
+   * ACR: [buildah-acr](https://hub.docker.com/r/plugins/buildah-acr/tags)
+   * ECR: [buildah-ecr](https://hub.docker.com/r/plugins/buildah-ecr/tags)
+   * GAR/GCR: [buildah-gcr](https://hub.docker.com/r/plugins/buildah-gcr)
+   * Docker Hub: [buildah-docker](https://hub.docker.com/r/plugins/buildah-docker)
 * **Privileged:** Must be enabled for non-OpenShift clusters.
 * **Run as User:** Specify the ID of the non-root user to use for this step, such as `1000`.
 * **Settings:** Add the following settings as key-value pairs.
@@ -90,12 +90,12 @@ This step requires the following specifications:
    * Docker Hub: Docker connector
    * ACR: Azure connector
    * ECR: AWS connector
-   * GCR: GCP connector
+   * GAR/GCR: GCP connector
 * `image`: Specify the plugin image and tag to use, such as  `plugins/buildah-docker:1.1.0-linux-amd64`. If you don't specify a tag, the `latest` tag is used by default. Go to an image's Docker Hub page to browse available tags:
-   * [buildah-acr](https://hub.docker.com/r/plugins/buildah-acr/tags)
-   * [buildah-ecr](https://hub.docker.com/r/plugins/buildah-ecr/tags)
-   * [buildah-gcr](https://hub.docker.com/r/plugins/buildah-gcr)
-   * [buildah-docker](https://hub.docker.com/r/plugins/buildah-docker)
+   * ACR: [buildah-acr](https://hub.docker.com/r/plugins/buildah-acr/tags)
+   * ECR: [buildah-ecr](https://hub.docker.com/r/plugins/buildah-ecr/tags)
+   * GAR/GCR: [buildah-gcr](https://hub.docker.com/r/plugins/buildah-gcr)
+   * Docker Hub: [buildah-docker](https://hub.docker.com/r/plugins/buildah-docker)
 * `privileged`: Set to `false` for OpenShift clusters. Set to `true` for non-OpenShift clusters.
 * `runAsUser`: Specify the ID of the non-root user to use for this step, such as `1000`.
 * `settings`: Add the following settings as key-value pairs.
@@ -119,7 +119,7 @@ For information about Buildah plugin settings, go to the [Buildah README](https:
 * [Docker main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-docker/main.go)
 * [ACR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-acr/main.go)
 * [ECR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-ecr/main.go)
-* [GCR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-gcr/main.go)
+* [GAR/GCR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-gcr/main.go)
 
 Many Buildah plugin settings correspond with settings for the built-in **Build and Push** steps. If you're encountering an error with the `buildah` plugin configuration, you can reference the settings definitions for the built-in steps for guidance on the expected value for the equivalent Buildah settings. However, keep in mind that the configuration for **Build and Push** steps (such as field names and location in the YAML) is not an exact match to the **Plugin** step configuration.
 
@@ -128,7 +128,7 @@ Many Buildah plugin settings correspond with settings for the built-in **Build a
 | Docker Hub | `buildah-docker` | [Docker main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-docker/main.go) | [Build and Push to Docker Hub](./build-and-push-to-docker-hub-step-settings.md) |
 | ACR | `buildah-acr` | [ACR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-acr/main.go) | [Build and Push to ACR](./build-and-push-to-acr.md) |
 | ECR | `buildah-ecr` | [ECR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-ecr/main.go) | [Build and Push to ECR](./build-and-push-to-ecr-step-settings.md) |
-| GCR | `buildah-grc` | [GCR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-gcr/main.go) | [Build and Push to GCR](./build-and-push-to-gcr.md) |
+| GAR/GCR | `buildah-grc` | [GCR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-gcr/main.go) | [Build and Push to GAR](./build-and-push-to-gar.md)/[Build and Push to GCR](./build-and-push-to-gcr.md) |
 
 ## Stage YAML example
 

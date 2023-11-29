@@ -1,41 +1,48 @@
 ---
-title: Kaniko Container Runtime Error
+title: Kaniko container runtime error
 ---
 
-# Why Am I Getting “Kaniko container runtime error” While Pushing Images To Docker Registry?
+# Kaniko container runtime error when pushing to a Docker registry
 
-## Module
-Harness CI 
+## Conditions
 
-## Environment 
-- Infrastructure - Kubernetes 
-- OS: Linux
+* Module: Harness CI
+* Environment:
+   * Infrastructure: Kubernetes
+   * OS: Linux
 
-## Issue 
-While building and pushing an image to the docker registry, one can encounter the following error:
-![](../static/kb1_img1.png)
+## Problem
 
-## Resolution 
-The resolution is to add an environment stage variable named “container” with a value “docker”.
-Follow these simple steps to do add a stage variable:
+While building and pushing an image to a Docker registry, you get a `kaniko container runtime error`, such as:
 
-- Navigate to `Variable` on the left side of the pipeline studio.You can refer to the below screenshot for the reference.
-![](../static/kb1_img2.png)
-
-- Go to the stage where the `Build and Push an Image to Docker Registry` step is added.
-- Go to `stage variable` -> `Add variable`.
-- Write variable name as `container` and type will be string and then select `Save`.
-- Give the value of the variable as `docker`.
-![](../static/kb1_img3.png)
-- Click on `Apply Changes`.
-
-## Diagnostic Step
-
-``` 
+```
 1 info 01/11/2022 13:06:02 + /kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=**************/pythonsample:latest --snapshotMode=redo --digest-file=/kaniko/digest-file
 2 info 01/11/2022 13:06:02 kaniko should only be run inside of a container, run with the --force flag if you are sure you want to continue 
 3 info 01/11/2022 13:06:02 exit status 1
 ```
 
+![](../static/kb1_img1.png)
 
+## Solution
 
+This error can be resolved by adding a Docker container environment variable. To do this, add a [stage variable](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#advanced-stage-variables) named `container` with the value `docker`.
+
+You can [add stage variables](https://developer.harness.io/docs/platform/pipelines/add-a-stage#stage-variables) in the Build stage settings, in the YAML editor, or in the pipeline's **Variables** list.
+
+To add a variable to the pipeline's variables list:
+
+1. Select **Variables** on the right side of the Pipeline Studio.
+
+   ![](../static/kb1_img2.png)
+
+2. Locate the stage where you have the **Build and Push an Image to Docker Registry** step.
+3. Next to **Stage Variables**, select **Add Variable**, and configure the variable as follows:
+
+   * Type: String
+   * Name: `container`
+   * Value: `docker`
+
+   ![](../static/kb1_img3.png)
+
+4. Select **Save**.
+5. Select **Apply Changes**.

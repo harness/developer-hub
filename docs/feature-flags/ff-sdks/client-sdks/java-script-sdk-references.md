@@ -32,7 +32,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.18.0.**
+The current version of this SDK is **1.20.0.**
 
 ## Requirements
 
@@ -127,7 +127,6 @@ The below shows the data type for each parameter:
 interface Target {  
   identifier: string  
   name?: string  
-  anonymous?: boolean  
   attributes?: object  
 }
 ```
@@ -161,8 +160,7 @@ The characters can be lowercase or uppercase and can include accented letters, f
 
 ### Configure the SDK
 
-To configure the SDK, you can add `Options`, for example:
-
+When initializing the SDK, you also have the option of providing alternative configurations by using the `Options` interface.
 
 ```
 interface Options {
@@ -172,11 +170,22 @@ interface Options {
   pollingInterval?: number
   pollingEnabled?: boolean
   streamEnabled?: boolean
-  allAttributesPrivate?: boolean
-  privateAttributeNames?: string[]
   debug?: boolean
 }
 ```
+
+|                       |                                                                                                                                   |                                                        |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------|
+| Name                  | Description                                                                                                                       | Default value                                          |
+| baseURL               | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: http://localhost:7000                 | `https://config.ff.harness.io/api/1.0`                 |
+| eventUrl              | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0`                 |
+| eventsSyncInterval    | The interval **in milliseconds** that we post flag evaluation metrics.                                                            | `60000` (milliseconds)                                 |
+| pollingInterval       | The interval **in milliseconds** that we poll for changes when the SDK is running in polling mode.                                | `60000` (milliseconds)                                 |
+| streamEnabled         | Set to `true` to enable streaming mode. Set to `false` to disable streaming mode.                                                 | `true`                                                 |
+| pollingEnabled        | Set to `true` to enable polling mode. Set to `false` to disable polling mode.                                                     | `true`                                                 |
+| debug                 | Set to `true` to enable SDK debug level logging. Set to `false` to disable debug level logging                                    | `false`                                                |
+
+
 ### Complete the initialization
 
 Complete the initialization using the FeatureFlagSDKKey, target, and Options variables:

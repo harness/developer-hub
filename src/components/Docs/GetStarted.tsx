@@ -24,7 +24,7 @@ export default function gs() {
                 Tutorials
               </button>
             </Link>
-            <Link href="/release-notes/whats-new">
+            <Link href="/release-notes">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />
                 Release Notes

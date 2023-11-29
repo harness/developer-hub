@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 7
 description: Install Harness Delegate on Kubernetes or Docker
 title: Install Harness Delegate on Kubernetes or Docker
 ---
@@ -367,7 +367,7 @@ Select **Continue**. After the health checks pass, your delegate is available fo
 
 You can now route communication to external systems in Harness connectors and pipelines by selecting this delegate via a delegate selector.
 
-import Selector from '/docs/platform/delegates/shared/selector-infrastructure.md'
+import Selector from '/docs/platform/shared/selector-infrastructure.md'
 
 <Selector />
 

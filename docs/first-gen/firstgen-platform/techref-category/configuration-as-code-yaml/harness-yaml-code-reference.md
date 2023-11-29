@@ -1614,7 +1614,7 @@ clientId: 2d0ae000-e0dd-0000-97f8-f6ae330abf82 # Client/Application ID for the A
   
 key: amazonkms:CvfInvfkl2mjeFuUJ-xB7l # Authentication key for application.  
   
-tenantId: c279b8cb-5e93-4k12-bse4-730dfd74e906 # ID of the Azure Active Directory (AAD).
+tenantId: c279b8cb-5e93-4k12-bse4-730dfd74e906 # ID of the Microsoft Entra ID.
 ```
 ### Pivotal Cloud Foundry
 

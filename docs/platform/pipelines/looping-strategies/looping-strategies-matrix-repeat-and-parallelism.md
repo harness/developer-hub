@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism
+  - /docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism
   - /docs/platform/pipelines/run-a-stage-or-step-multiple-times-using-a-matrix
 ---
 
@@ -49,7 +50,7 @@ parallelism: 10
 
 For more information about parallelism strategies, go to:
 
-* [Use parallelism to improve test times](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism)
+* [Split tests (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
 * [Run stages in parallel](./run-stages-in-parallel.md)
 
 ## Matrix strategies
@@ -240,9 +241,13 @@ matrix:
 
 If the matrix strategy produces more instances than are allowed by the `maxConcurrency`, the additional instances are queued.
 
-### Use labels instead of indices
+### Customize matrix stage names
 
-By default, Harness uses indices for the matrix naming strategy. If you prefer, you can change your account, organization, or project settings to use labels.
+By default, Harness uses indices for the matrix naming strategy (stages are named with indices like `_2_2`, `_1_3`, and so on). If you prefer, you can customize this naming convention for better readability. There are two ways to do this: 
+
+#### Use matrix axes as stage labels
+
+You can turn on a setting at the account, organization, or project level to use the names of the matrix indices as labels. 
 
 1. Navigate to the **Default Settings** for your account, organization, or project:
    * To modify account settings, select **Account Settings**, select **Account Resources**, and then select **Default Settings**.
@@ -251,6 +256,17 @@ By default, Harness uses indices for the matrix naming strategy. If you prefer, 
 2. Expand the **Pipeline** settings.
 3. Set **Enable Matrix Labels By Name** to **True**.
 4. Select **Save**.
+
+#### Use a custom label for matrix stages
+
+You can use the keyword `nodeName` when specifying your matrix axes to define your stage naming convention. Expressions are supported, so you can customize the name as required. For example: 
+
+```yaml
+matrix:
+  service: [svc1, svc2, svc3]
+  env: [env1, env2]
+  nodeName: stage_<+matrix.service>_<+matrix.env>
+```
 
 ### Matrix examples and best practices
 

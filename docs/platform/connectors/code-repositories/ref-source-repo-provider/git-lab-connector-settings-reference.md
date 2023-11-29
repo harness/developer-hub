@@ -166,11 +166,15 @@ Make sure your personal access token has the following permissions: `api`, `read
 
 :::
 
-If necessary, use the **API URL** field to override the default URL for API authentication. This is primarily for the [Harness Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition).
+#### API URL
+
+If you have a GitLab self-managed plan and your base URL format is something like `https://myloadbalancer/gitlab`, then you must provide your GitLab base URL in the **API URL** field. Harness uses this URL for API authentication.
+
+Don't specify an API URL if you use GitLab SaaS or your GitLab self-managed plan's base URL is formatted like `https://mygitlab.internal`.
 
 ## Connectivity Mode settings
 
-Select whether you want Harness to connect directly to your GitLab account or repo, or if you want Harness to communicate with your GitLab account or repo through a delegate.
+Select whether you want Harness to connect directly to your GitLab account or repo, or if you want Harness to communicate with your GitLab account or repo through a delegate. If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), you must select **Connect through Harness Platform**.
 
 ### Delegates Setup
 

@@ -16,9 +16,9 @@ For an end-to-end walkthrough, try this tutorial: [Generate SBOM and enforce pol
 
 To enforce SSCA policies in a Harness pipeline, you need:
 
-* A pipeline that includes [SBOM generation](../generate-sbom.md).
+* A pipeline that includes [SBOM generation](../sbom/generate-sbom.md).
 * An [SSCA policy file](./create-ssca-policies.md).
-* A [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key from the [key pair used to sign and attest the SBOM](../generate-sbom.md#generate-a-key-pair).
+* A [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key from the [key pair used to sign and attest the SBOM](../sbom/generate-sbom.md#generate-a-key-pair).
 
 ## Add an SSCA Enforcement step
 
@@ -26,6 +26,12 @@ You can add the **SSCA Enforcement** step to either the **Build** or **Deploy** 
 
 * In a **Build** stage, add the **SSCA Enforcement** step after the artifact (image) has been pushed to an artifact repository.
 * In a **Deploy** stage, add the **SSCA Enforcement** step before the deployment step.
+
+:::info
+
+SSCA Orchestration and Enforcement steps in deploy stage can only be used in the container step group
+
+:::
 
 The **SSCA Enforcement** step has the following settings:
 

@@ -72,7 +72,7 @@ These settings are for the [Harness SSCA module](/docs/software-supply-chain-ass
 [Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are available to all steps in the stage. There are many uses for these variables. For some examples, go to:
 
 * [Build images without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push.md)
-* [Set kaniko runtime flags](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md#set-kaniko-runtime-flags)
+* [Set plugin runtime flags](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md#set-plugin-runtime-flags)
 
 ## Infrastructure
 
@@ -232,7 +232,37 @@ A list of [`nodeSelectors`](https://kubernetes.io/docs/concepts/scheduling-evict
 
 ### Tolerations
 
-A list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) that allow (but do not require) Build stage pods to be scheduled onto nodes with matching taints.
+A list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) that allow (but do not require) Build stage pods to be scheduled onto nodes with matching taints. For example:
+
+```yaml
+              tolerations:
+                - effect: NoSchedule
+                  key: key1
+                  operator: Equal
+                  value: value1
+                - effect: NoSchedule
+                  key: key2
+                  operator: Equal
+                  value: value2
+```
+
+#### Multiple tolerations with the same key
+
+Keys are reserved keywords used to validate unique FQNs. If you have multiple tolerations with the same key, you must include an `identifier` to differentiate them. For example:
+
+```yaml
+              tolerations:
+                - identifier: identifier1
+                  effect: NoSchedule
+                  key: key1
+                  operator: Equal
+                  value: value1
+                - identifier: identifier2
+                  effect: NoSchedule
+                  key: key1
+                  operator: Equal
+                  value: value2
+```
 
 ### Host Names
 

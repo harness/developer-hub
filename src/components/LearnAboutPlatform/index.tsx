@@ -147,7 +147,7 @@ export default function LearnAboutPlatform(): JSX.Element {
       </div>
       <ul className={styles.platformListMore}>
         <li>
-          <a href="/release-notes/whats-new">
+          <a href="/release-notes">
             <h4>What's New</h4>
             <p>
               New GA features across all Harness modules and the Harness

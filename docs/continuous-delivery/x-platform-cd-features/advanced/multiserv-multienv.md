@@ -4,11 +4,6 @@ description: Deploy multiple services to multiple environments.
 sidebar_position: 1
 ---
 
-:::note
-
-Currently, this feature is behind the feature flag, `MULTI_SERVICE_INFRA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 This topic describes how to use multiple services and multiple environments in a deployment.
 
@@ -142,7 +137,7 @@ Make sure that you have added tags when creating your environment in the **Confi
 
 :::note
 
-Make sure that the feature flags, `MULTI_SERVICE_INFRA`, `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Make sure that the feature flags `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -179,7 +174,7 @@ Make sure that you have added tags when creating your environment in the **Confi
 
 :::note
 
-Make sure that the feature flags, `MULTI_SERVICE_INFRA`, `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Make sure that the feature flags `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -228,6 +223,12 @@ Here you can see two service deployments run serially on the same infrastructure
 
 ![](./static/multiserv-multienv-24.png)
 
+## Propagating multiple services
+
+By default, you cannot propagate the multiservices from one stage to a subsequent stage.
+
+Currently, to enable multiservice propagation, you must have the Harness feature flag `CDS_MULTI_SERVICE_PROPAGATION` enabled in your Harness account. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
 ## Using environment groups
 
 You can select target environments and infrastructures using environment groups.
@@ -248,14 +249,6 @@ Here's what the deployment looks like:
 The console view can also help view multiple deployments clearly:
 
 ![](./static/multiserv-multienv-27.png)
-
-## Propagating multiple services in stages
-
-Service propagation is not supported when using multiple services in a single stage (this is called a multiple service deployment).
-
-When you add subsequent CD stages to a pipeline you cannot propagate the multiple services like you would with one service.
-
-For details on propagating services in stages, go to [propagate CD services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services).
 
 ## Rollback with multiple services and environments
 
@@ -282,4 +275,8 @@ Max concurrency changes based on the following:
 * If you select **Deploy services in parallel**, Max concurrency is equal to the number of services.
 * If you select **Deploy to Environments or Infrastructures in parallel**, Max concurrency is equal to the number of environments or infrastructures.
 * If you select **Deploy services in parallel** and **Deploy to Environments or Infrastructures in parallel**, Max concurrency is equal to the number of services multiplied by the number of environments.
+
+## Limitations
+
+* Reconciliation for Harness services, environments, and infrastructure definitions is not supported for deployments using multiple services, environments, or infrastructures, respectively.
 

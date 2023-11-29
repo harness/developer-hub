@@ -7,8 +7,9 @@ helpdocs_category_id:
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+Service Onbaording in Harness IDP use Harness pipeline orchestrator and those could be trigerred through Software Templates. 
 
-![](../get-started/static/pipelines-screenshot.png)
+![](./static/service-onboarding.png)
 
 In Harness IDP, a service onboarding pipeline (also known as a software template) enables platform engineers to automate the process of service creation. As a platform engineer, you can create a template that prompts developers for details and creates a repository with a basic setup that includes a CI/CD process. The template is defined in a YAML file named `template.yaml`. The syntax of the template definition is owned by [backstage.io](https://backstage.io/docs/features/software-templates/writing-templates) while the workflow runs on a Harness pipeline of your choice.
 
@@ -21,6 +22,12 @@ In Harness IDP, a service onboarding pipeline (also known as a software template
 A template is a kind of entity that exists in the software catalog. You can create a `template.yaml` file and register the URL with the catalog. For information about registering a template, go to [Add a new software component to the catalog](../get-started/register-a-new-software-component.md).
 
 ## Available template actions
+
+:::info
+
+The template actions currently supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#add-the-run-step), also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values). 
+
+:::
 
 Harness IDP ships the following actions to be used in the software template steps.
 

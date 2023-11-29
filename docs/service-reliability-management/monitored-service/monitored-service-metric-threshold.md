@@ -7,10 +7,6 @@ sidebar_position: 2
 
 # Custom thresholds for service health analysis
 
-:::info note
-Currently, this feature is behind the feature flag `CVNG_METRIC_THRESHOLD`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 In addition to utilizing AI/ML for service health analysis of monitored services, you use the custom threshold feature to set up rules that can change how service health behaves. You can create the following rules:
 
 - **Ignore Threshold**: Instructs Harness to skip analyzing service health for specific metric or value combinations.
@@ -57,7 +53,7 @@ To set the Ignore Thresholds rule:
    
 4. In the **Criteria** field, choose the type of criteria you want to apply for the threshold:
    
-   - **Absolute Value**: Select this option and enter the **Greater than** and **Lesser than** values.
+   - **Absolute Value**: Select this option and enter either the **Greater than** value or the **Lesser than** value, depending on your preference.
    - **Percentage Deviation**: Select this option and enter the **Lesser than** value.
 
 <docimage path={require('./static/monitored-service-ignore-threshold.png')} />
@@ -87,7 +83,7 @@ To set Fail-Fast Thresholds rule:
    
 6. In the Criteria field, choose the type of criteria you want to apply for the threshold:
    
-   -  **Absolute Value**: Select this option and enter the **Greater than** and **Lesser than** values.
+   -  **Absolute Value**: Select this option and enter either the **Greater than** value or the **Lesser than** value, depending on your preference.
    
    -  **Percentage Deviation**: Select this option and enter the **Lesser than** value.
   

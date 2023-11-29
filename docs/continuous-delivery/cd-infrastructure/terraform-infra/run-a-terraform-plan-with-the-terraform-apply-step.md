@@ -247,6 +247,37 @@ This allows you to specify a different workspace name each time the Pipeline is 
 
 You can even set a Harness Trigger where you can set the workspace name used in **Workspace**.
 
+## AWS Connector Provider Credential Authentication for Terraform Plan and Apply Steps
+
+:::note
+This feature requires Harness Delegate version 81202. This feature is available only to paid customers. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can use an AWS Connector to have the terraform plan and apply step assume a role to perform the provisioning of infrastructure. It's an optional configuration that takes in AWS Connector, a Region and a Role ARN. The Terraform step will use these parameters to authenticate with the aws account targetted for infrastructure provisioning.
+
+When configured the optional configuration for AWS Connector these fields can be passed as a fixed value, runtime input, or an expression
+
+```YAML
+- step:
+    type: TerraformApply
+    name: Apply
+    identifier: Apply
+    spec:
+      provisionerIdentifier: provision
+      configuration:
+        type: Inline
+        spec:
+          workspace: <+input>
+          configFiles: {}
+          providerCredential:
+            type: Aws
+            spec:
+              connectorRef: <+input>
+              region: <+input>
+              roleArn: <+input>
+    timeout: 10m
+```
+
 ## Terraform var files
 
 The **Terraform Var Files** section is for entering and/or linking to Terraform script Input variables.
@@ -479,15 +510,11 @@ You can use Harness encrypted text for values. See [Add Text Secrets](/docs/plat
 
 ## Encrypt the Terraform Apply JSON outputs
 
-:::note
+The **Encrypt json output** setting encrypts the Terraform JSON output as a Harness secret. Only Harness Secret Manager is supported.
 
-Currently, this feature is behind the flag, `CDS_ENCRYPT_TERRAFORM_APPLY_JSON_OUTPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+The secret is ephemeral and is created and deleted during the execution of the pipeline. After execution completes, the secret is deleted.
 
-:::
-
-The **Encrypt json output** setting encrypts the Terraform JSON output as a Harness secret using the secret manager you select. 
-
-The secret is ephemeral and is created and deleted during the pipeline execution. The secret is not added to the **Secrets** list in Harness.
+The secret is stored in the **Secrets** list in Harness, at the project level.
 
 You can use an expression to retrieve the secret and its Terraform JSON output during pipeline execution.
 
@@ -526,6 +553,26 @@ Here's an example of decrypted Terraform JSON output:
   }
 }
 ```
+
+## Skip state storage
+
+The following feature requires a minimum Harness delegate version of 812xx.
+
+While running Terraform commands on the delegate, Harness by default will try to detect if there is a local state file in the Terraform working directory.
+
+If local state file is identified, at the end of the execution it is saved on Harness storage with a key based on the provisioner identifier.
+
+That state file is downloaded in the Terraform working directory for subsequent executions, and the updated state is uploaded after execution ends.
+
+This method allows the maintaining of the state of the infrastructure even if there is no Terraform backend configured.
+
+This is more for testing purposes. For production environments, Harness advises you configure a backend in your Terraform config files. For information, go to [Backend Configuration](https://developer.hashicorp.com/terraform/language/settings/backends/configuration).
+
+With the **Skip state storage** option enabled, Harness allows you to skip the local state upload and download operations mentioned above.
+
+This option makes is useful only if you do not have a Terraform backed configured in your Terraform config files. If you have a Terraform backed configured, then the Terraform CLI will not create any local state files.
+
+If the Terraform Apply step is configured to skip state storage, and there is no backend configured in your Terraform files, you should not add a rollback step, as this is an invalid setup. Rollback is impossible if there is no state file.
 
 
 ## Command line options

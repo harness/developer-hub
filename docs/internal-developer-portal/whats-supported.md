@@ -20,8 +20,26 @@ Any software component can be registered in the catalog by using a YAML file sto
 * Bitbucket
 * Azure Repos
 
+:::caution
+
+Backstage doesn't support SSH auth type for integrations, hence only HTTP connection is supported for all the git provider based connectors in IDP 
+
+:::
+
 ## CI/CD providers that IDP supports
 
 Harness IDP is agnostic to your CI/CD provider and works with tools such as GitLab, CircleCI, and GitHub Actions. You can use Harness CI/CD for a better out-of-the-box experience but it's not required.
 
 For information about what's supported for other Harness modules and the Harness Platform overall, refer to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
+
+:::info
+
+Harness IDP requires some secrets to be set for plugins and external integrations to work. We only support secrets stored in the [Harness secret manager](https://developer.harness.io/tutorials/platform/secrets-management/#manage-secrets-with-built-in-harness-secret-manager).
+
+:::
+
+## Template Actions to Trigger Harness Pipeline 
+
+- Currently only single stage Harness Pipeline is supported. 
+
+- The template actions currently supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#add-the-run-step), also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values). 
