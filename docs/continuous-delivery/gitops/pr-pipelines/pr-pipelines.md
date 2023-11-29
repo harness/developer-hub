@@ -122,77 +122,19 @@ To create the pipeline, we'll simply create a new service that includes the mani
 
    The stage is created and the service settings appear.
 
-### Create the service
+### Set up a Harness service
 
-The Harness service represents what you're deploying. In this case, we're deploying a config.json file.
+A Harness service represents what you're deploying. In this case, we're deploying an application template specified as a `config.json` file.
 
-1. In **Select Service**, click **New Service**.
-2. In **Name**, enter **PR Example**.
-3. In **Manifests**, click **Add Release Repo Manifest**.
-4. In **Release Repo Store**, select one of the following repositories.  
+1. In your Harness project, select the **Services** tab.
+2. Select **New Service**.
+3. In **Name**, enter **PR Example**.
+4. In **Manifests**, select **Add Release Repo Manifest**.
+5. In **Release Repo Store**, select one the repository to use.
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';   
-import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs>
-<TabItem value="GitHub" label="GitHub" default>
-```
+### Configuring a Harness Git connector for your repository
 
-Add a Harness Github connector to configure the location for Harness to fetch the config.json file. 
-
-To add a Harness Github connector:
-
-1. In **Github Connector**, select **New Github Connector**.
-2. Enter the following Github connector settings:
-    1. **Name:** enter **gitops-github**.
-    2. **URL Type:** select **Repository**.
-    3. **Connection Type:** select **HTTP**.
-    4. **GitHub Repository URL:** enter the HTTP URL for repo you used for your ApplicationSet, such as `https://github.com/johnsmith/applicationset.git`.
-    5. **Authentication:** select **Username and Token**. For the token, you'll need to use a Personal Access Token (PAT) from Github. If you are logged into Github, just go to <https://github.com/settings/tokens>.
-    6. Ensure the PAT has the **repo** scope selected.
-   
-       ![](static/harness-git-ops-application-set-tutorial-52.png)
-   
-       You will store the PAT in a [Harness Text Secret](/docs/platform/secrets/add-use-text-secrets). For details on Secrets Management, go to [Harness Secrets Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
-    
-    7. Select **Enable API access** and use the same Harness secret.
-    
-    For more information, go to the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
-3. Select **Continue**.
-4. In **Connect to the provider**, select **Connect through Harness Platform**., and then click **Save and Continue**.
-5. When the **Connection Test** in complete, click **Continue**.
-
-```mdx-code-block
-</TabItem>
-<TabItem value="Bitbucket" label="Bitbucket">
-```
-Add a Harness Bitbucket connector to configure the location from which Harness can pull the config.json file. 
-
-To add a Bitbucket connector:
-
-1. In **Bitbucket Connector**, select **New Bitbucket Connector**.
-2. Enter the following Bitbucket connector settings:
-    1. **Name:** enter **gitops-bitbucket-cloud**.
-    2. **URL Type:** select **Repository**.
-    3. **Connection Type:** select **HTTP**.
-    4. **GitHub Repository URL:** enter the HTTP URL for repo you used for your ApplicationSet, such as `https://bitbucket.org/johnsmith/applicationset.git`.
-    5. **Authentication:** select **Username and Token**. For the token, use a Personal Access Token (PAT) from Bitbucket. If you are logged into Bitbucket, go to [HTTP access tokens](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html). You must provide an account-level app password or token. Repo-level tokens are not supported.
-   
-       Store the PAT in a [Harness Text Secret](/docs/platform/secrets/add-use-text-secrets). For details on Secrets Management, go to [Harness Secrets Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
-    
-    6. Select **Enable API access** and use the same Harness secret.
-    
-    For more information, go to [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference).
-3. Select **Continue**.
-4. In **Connect to the provider**, select **Connect through Harness Platform**, and then click **Save and Continue**.
-5. After the Connection Test is complete, click **Continue**.
-
-```mdx-code-block
-</TabItem>    
-</Tabs>
-```
+For information on setting up a Harness Git connector, go to [Connect to a Git repository](/docs/platform/connectors/code-repositories/connect-to-code-repo).
 
 ### Specify manifest details
 
