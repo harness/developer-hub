@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-11-20T10:00:15
+date: 2023-11-29T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 7
 ---
@@ -50,6 +50,105 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 </details>
 
 ## November 2023
+
+### Version 81612
+<!-- November 27 -->
+
+#### New features and enhancements
+
+- If you use Kubernetes version 1.16 or later, you can enable the steady state check for Native Helm jobs from Default Settings at any organizational scope (account, organization, or project) in Harness. (CDS-81574)
+
+  To enable the setting, at the desired scope, go to **Default Settings** > **Continuous Delivery**, and then turn on the **Enable Native Helm steady state for jobs** toggle.
+
+  This enhancement eliminates the need for you to contact Harness Support to enable the feature flag `CDS_HELM_STEADY_STATE_CHECK_1_16` and gives you direct control of the setting. 
+  
+  Accounts for which Harness had enabled this feature flag will have this setting turned on by default.
+
+  This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+#### Fixed issues
+
+- The Identify Service Instance field in the Add New Health Source dialog does not show the plus (`+`) icon when you are using a template to configure a Splunk health source. Consequently, you could not select the service instance after the records were fetched. (CDS-84608, ZD-53584)
+
+  This issue has been fixed.
+
+- If you selected the *Expression* value type for a stage or pipeline variable and manually entered the runtime input expression (expressions that begin with `<+input>`, which you typically specify by using the *Runtime input* value type), Harness appended white spaces to the expression when saving the value to YAML. The issue caused the Run Pipeline dialog to not show the input variable. (CDS-83279, ZD-53153)
+
+  This issue has been fixed. When you manually enter a runtime input expression of the form described earlier, Harness does not append white spaces. 
+
+- When the width of the dialog in which you enter values for stage variables reduces (for example, when the console view is open), the names of the variables in the dialog get truncated. The issue makes it hard for you to understand what inputs are being requested. (CDS-83225, ZD-53024)
+
+  Given that such truncation is sometimes unavoidable, Harness has introduced the following changes in the dialog: 
+    - Increased the size of the dialog.
+    - Replaced the description of the variable (in the Description column) with an icon. The icon makes more efficient use of available space and displays the variable's description when you hover over it.
+
+- A stage fails to execute in the following scenario:
+  - You configure the stage to execute only if a JEXL condition provided at runtime evaluates to true.
+  - You create an input set that does not provide the stage with a JEXL condition for evaluation.
+  
+  When stage execution fails, the following error is displayed: "Error evaluating expression [<+OnPipelineSuccess> && (<+input>)]: Expression evaluation failed" (CDS-82350, ZD-52689) 
+
+  This issue has been fixed.
+
+- Harness used Datadog log indexes when running the Verify step but not when fetching sample data in the health source configuration dialog. (CDS-83934, ZD-53433)
+
+  This issue has been fixed.
+
+  This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- If the default capacity for the ASG deployment is zero or Null and you choose to create the same number of ASG instances as those that were previously deployed by the pipeline (the **Same as already running Instances** setting), Harness created zero instances. The deployment timed out after waiting for health checks. (CDS-83818)
+  
+  This issue has been fixed. Now, if the default capacity is zero or Null, Harness sets the default capacity to match that in Harness FirstGen, which is as follows:
+    * For the first deployment: 
+      - minimum = 0 
+      - desired = 6 
+      - maximum =10
+    * For other deployments:
+      - minimum = 0 
+      - desired = 1 
+      - maximum = 1
+  
+  This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Starting with Delegate version 23.08.79713, the custom script for fetching remote manifests did not support absolute paths as the folder path. (CDS-83443, ZD-52872)
+
+  This issue has been fixed.
+
+  This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- The Helm connector's test to check connectivity to an OCI Helm repository in AWS ECR failed with an "Invalid request: Invalid oci url..." error even though the URL to the repository conformed with the formats described in [Connect to an Artifact repository](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo). The delegate was configured to use a proxy server and the Anonymous authentication type. However, manually fetching Helm charts from the delegate were successful. (CDS-82779, ZD-52343)
+
+  This issue has now been resolved. The OCI Helm connector now works with the Anonymous authentication type when a proxy server is configured on the delegate.
+This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+- After fetching tags from Google Artifact Registry, Harness sorted them lexically and not on the timestamp. (CDS-82778)
+  
+  This issue has been fixed. Harness now sorts the tags on the timestamp.
+
+  This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Pipeline executions for WinRM deployments failed intermittently when the deployment was performed by Harness Delegate with version 23.11.81015. Certain processes managed by the Windows Remote Management service (namely, `winrshost.exe` with its child process `conhost.exe`) were orphaned and continued to run on the target host. (CDS-82777, ZD-52759, ZD-53411, ZD-53460, ZD-53683)
+
+  This issue has been fixed. 
+
+  This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Certain Docker registries fail authentication when using the `/v2` endpoint, which is used for health checks in Docker connectors. (CDS-82616, ZD-52513)
+
+  This issue has been fixed. Harness now falls back to using the `/v2/` endpoint if the `/v2` endpoint fails.     
+
+  This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Harness did not stop Terraform tasks after you canceled pipeline execution, even if you cancelled execution before the task started to run actual Terraform commands. (CDS-82222, ZD-52603)
+  
+  This issue has been resolved.
+
+  This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Currently, the on-premises version of Atlassian BitBucket does not fire push event webhooks when you first push to a new branch. This is inconsistent with other Git providers and also causes Harness's BitBucket triggers for on-premises repositories to behave inconsistently. (CDS-82110, ZD-52270)
+
+  As a workaround for this inconsistency, Harness has made the trigger's workflow capture branch hook events for on-premises BitBucket and convert them, on a best-effort basis, to a push hook. This change has the effect of making Harness's triggers for on-premises BitBucket to fire on the first push to a new branch. This change is behind the feature flag `CDS_NG_CONVERT_BRANCH_TO_PUSH_WEBHOOK_BITBUCKET_ON_PREM`. To enable this change in behavior, contact [Harness Support](mailto:support@harness.io).
+
+  This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ### Version 81502
 <!-- November 20 -->
