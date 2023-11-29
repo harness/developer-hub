@@ -22,13 +22,16 @@ These release notes describe recent changes to Harness Delegate.
 
 :::
 
-### Deprecation notice
+<details>
+<summary>Deprecation notice</summary>
 
-**Kustomize 3.4.5**
+#### Kustomize 3.4.5
 
 import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-notice.md'
 
 <Kustomizedep />
+
+</details>
 
 ## November 2023
 
@@ -94,6 +97,12 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - The project admin role wasn't being assigned to a project created via an account or org scope service account. Now, when a project is created, the project admin role is automatically assigned to the service account. This is also reflected in the audit trails. (PL-41845, ZD-51918)
 
 - Previously, if you had an SSH secret key with a **Text** reference pre-selected, you could only update it using YAML but not via the UI. The UI displayed only the **File** secret types. Harness has now added a dropdown menu in the **Create or Select an Existing Secret** dialog that allows you to select the **Secret type** as either **File** or **Text**. This simplifies the process of updating SSH secrets, making it easier for you to manage your secrets. (PL-41507, ZD-47600, ZD-51334)
+
+### Version 23.11.81406
+
+#### Hotfix
+
+- Fixed the orphaned `winrshost.exe` process and its child `conhost.exe` process that were bumping on host infrastructure after WinRM deployment. (CDS-82777, ZD-52759, ZD-53411, ZD-53460, ZD-53683)
 
 ### Version 23.11.81408
 

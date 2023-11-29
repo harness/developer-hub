@@ -14,7 +14,7 @@ Emails can be sent automatically in response to Pipeline and stage events like P
 
 Your Harness SaaS account includes an SMTP server, so you don't need to add one of your own.
 
-If you are using the Harness On-Prem offering, then you will need to add an SMTP server to your Harness account.This topic explains how to configure an SMTP server with your Harness account and send email notifications according to different Pipeline events.
+If you are using the Harness On-Prem offering, then you will need to add an SMTP server to your Harness account. This topic explains how to configure an SMTP server with your Harness account and send email notifications according to different Pipeline events.
 
 
 ### Before you begin

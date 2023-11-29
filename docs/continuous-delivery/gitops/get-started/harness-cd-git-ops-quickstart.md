@@ -33,7 +33,7 @@ You'll learn how to:
 * Set up a Harness GitOps Application that collects the Agent Cluster, and Repository, and defines the sync policy for GitOps.
 * Perform GitOps using your Harness GitOps Application.
 
-For a quick summary of Harness GitOps concepts, see [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md).
+For a quick summary of Harness GitOps concepts, see [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics).
 
 ## Before you begin
 
@@ -90,7 +90,7 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
 7. Set **GitOps Operator** to one of the following:
 
    * **Argo**. Uses Argo CD as the GitOps reconciler.
-   * **Flux**. Uses Flux as the GitOps reconciler. 
+   * **Flux**. Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/use-gitops/use-flux).
 
 8. Set **Namespace** to the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment. For this example, we use **default**.
 9. Select **Continue**. The **Review YAML** settings appear.
@@ -105,7 +105,7 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
    ```
    gcloud container clusters get-credentials <cluster_name> --zone us-central1-c --project <project_name>
    ```
-11. Run the following command to apply the YAML file you downloaded (in this example, `default` was the namespace entered in the **Namespace** setting):
+13. Run the following command to apply the YAML file you downloaded (in this example, `default` was the namespace entered in the **Namespace** setting):
 
    ```
    kubectl apply -f gitops-agent.yaml -n default
@@ -154,11 +154,11 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
    serviceaccount/example-agent-upgrader created  
    cronjob.batch/example-agent-upgrader created
    ```
-12. Back in Harness, select **Continue**.
-13. Harness indicates that the Harness GitOps Agents is registered.
+14. Back in Harness, select **Continue**.
+15. Harness indicates that the Harness GitOps Agents is registered.
    
    ![](./static/harness-cd-git-ops-quickstart-05.png)
-14. Select **Finish**.
+16. Select **Finish**.
 
 The **Agents** list shows the new Agent as **Healthy** and **Connected**.
 
@@ -225,7 +225,7 @@ In this example, we'll connect using the cluster master URL and a Service Accoun
 
 To use a Kubernetes Service Account (SA) and token, you will need to either use an existing SA that has `cluster-admin` or *admin* permissions in the namespace, or create a new SA and grant it the permissions. This is described in [Add a Kubernetes Cluster Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
 
-To create a cluster entity using IAM role in Amazon EKS, go to [Creating a GitOps cluster with IAM role](/docs/continuous-delivery/gitops/use-gitops/create-cluster-with-iam.md).
+To create a cluster entity using IAM role in Amazon EKS, go to [Creating a GitOps cluster with IAM role](/docs/continuous-delivery/gitops/use-gitops/create-cluster-with-iam).
 
 Here's an example of a SA and ClusterRoleBinding with `cluster-admin`:
 
@@ -292,7 +292,7 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
 3. In **GitOps Operator**, select the GitOps operator you selected when installing the example agent:
   
     * **Argo**. Uses Argo CD as the GitOps reconciler.
-    * **Flux**. Uses Flux as the GitOps reconciler. <!-- For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/use-flux). --> <!-- Commenting out because the referenced topic is a new one and is causing a broken link error in preview environment builds. It basically points to Continuous Delivery & GitOps > GitOps > Use GitOps > Manage Flux applications, so you can use the left nav to view the new topic. -->
+    * **Flux**. Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/use-gitops/use-flux).
 
 4. In **GitOps Agent**, select the Agent you added earlier.
 5. In **Service**, select **New Service**, and name the Service **guestbook**.
@@ -360,8 +360,8 @@ Now that you have everything set up, you can sync the source state with the desi
    * **Apply Out of Sync Only**: By default, all objects in the application are synced. For applications with a large number of objects, this will slow down the operation. Enabling this option will sync only resources in the **OutOfSync** state.
    * **Select Prune Propagation Policy**: Defines how resources are pruned by Kubernetes. [See more ](https://kubernetes.io/docs/concepts/architecture/garbage-collection/#cascading-deletion)
    * **Retry**: Retries the sync operation in case of a failure when enabled. 
-4. Select **Synchronize**.
-5. You will see the status **Progressing** and then **HEALTHY**.
+3. Select **Synchronize**.
+4. You will see the status **Progressing** and then **HEALTHY**.
 
 ![](./static/harness-cd-git-ops-quickstart-20.png)
 

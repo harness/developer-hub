@@ -147,6 +147,7 @@ You can now [enable test splitting for Test Intelligence](/docs/continuous-integ
 
 #### Fixed issues
 
+* Fixed an issue where Background step logs weren't correctly called for steps running in parallel. (CI-9801)
 * Corrected the rendering of the **Stack Trace** field when inspecting failed tests from the [Tests tab](/docs/continuous-integration/use-ci/run-tests/viewing-tests) on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds). (CI-9765, ZD-51231)
 * Fixed an issue with extra whitespace in step templates when these were used with a Kubernetes cluster build infrastructure. (CI-9723, ZD-49843)
 * Fixed an issue where the network driver wasn't available in the Harness Docker Runner for Windows. (CI-9848)

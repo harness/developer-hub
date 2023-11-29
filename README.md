@@ -10,11 +10,12 @@
 ![SEI](static/img/icon_sei.svg)
 ![CET](static/img/icon_cet.svg)
 ![IDP](static/img/icon_idp.svg)
-
+![SSCA](static/img/icon_ssca.svg)
+![Code](static/img/icon_code.svg)
 
 Welcome to the Harness Developer Hub (HDH)!
 
-Learn intelligent software delivery skills at your own pace and in one place. Step-by-step tutorials, videos, and reference docs help you create and deliver software.
+Learn intelligent software delivery skills at your own pace and in one place. Step-by-step tutorials, videos, certifications, and reference docs help you create and deliver software.
 
 
 ### Contributing

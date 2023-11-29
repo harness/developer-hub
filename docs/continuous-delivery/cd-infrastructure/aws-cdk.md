@@ -5,12 +5,6 @@ sidebar_position: 7
 sidebar_label: AWS CDK
 ---
 
-:::note
-
-Currently, AWS CDK support is behind the feature flag `CDS_AWS_CDK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 AWS Cloud Development Kit (AWS CDK), is an open-source software development framework that allows developers to provision AWS infrastructure resources using familiar programming languages, such as Go, Python, Java, C#, etc. CDK simplifies infrastructure as code (IaC) by abstracting away many of the low-level details and providing a higher-level, programmatic approach.
 
 This topic provides steps on using Harness to provision a target AWS environment or resources using AWS CDK.

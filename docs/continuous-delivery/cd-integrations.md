@@ -30,10 +30,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td width="600"><b>Description</b></td>
     </tr>
     <tr>
-        <td>PIE_EXPRESSION_CONCATENATION</td>
-        <td>Removes the need to use &quot;,+,&quot; for strings in expression settings.</td>
-    </tr>
-    <tr>
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16</td>
         <td>Allow users leveraging Kubernetes version 1.16 or later to perform steady state check for Helm deployments. <b>This feature is in Public Preview.</b></td>
     </tr>
@@ -57,10 +53,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>NG_SVC_ENV_REDESIGN</td>
         <td>Enables <a href="/docs/continuous-delivery/get-started/services-and-environments-overview">Service and Environment V2. </a> <b>This feature is Public Preview.</b> V1 is <a href="/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2">deprecated</a>
 .</td>
-    </tr>
-    <tr>
-        <td>NG_EXECUTION_INPUT</td>
-        <td>Users can <a href="/docs/platform/variables-and-expressions/runtime-inputs/#supply-runtime-input-during-execution">provide inputs at pipeline execution.</a> <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>NG_CUSTOM_STAGE</td>
@@ -106,10 +98,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDC_SERVICE_DASHBOARD_REVAMP_NG</td>
         <td>Provides new <a href="/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#individual-service-dashboards">dashboard views for services and environments</a> <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
-        <td>CDS_TERRAFORM_CLOUD</td>
-        <td>Enables <a href="/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments">Terraform Cloud support in Harness</a> <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_K8S_SOCKET_CAPABILITY_CHECK_NG</td>
@@ -160,11 +148,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES</td>
         <td>Enables the ability to <a href="/docs/platform/variables-and-expressions/runtime-inputs/#multiple-selection">choose multiple values from a list of allowed values</a>
 .</td>
-    </tr>
-    <tr>
-        <td>CDS_K8S_SERVICE_HOOKS_NG</td>
-        <td>Enables the Kubernetes and Helm service hooks feature. Service hooks extend the Helm Chart and Kubernetes service <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks">pre-deployment actions</a>
-. </td>
     </tr>
     <tr>
         <td>CDS_NG_TRIGGER_MULTI_ARTIFACTS</td>
@@ -278,10 +261,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Exposes <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts">Helm Chart expressions</a> for reference in other steps and settings. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>PIE_EXPRESSION_PLAYGROUND</td>
-        <td>Helps the user experiment with expressions to see what could be the expected/resolved value without running the pipeline. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDS_NG_SERVICE_PRINCIPAL_FOR_CUSTOM_WEBHOOK</td>
         <td>Makes authenticated custom Webhook calls use the service principal instead of the principal inherited from the API key. <b>This feature is in Beta.</b></td>
     </tr>
@@ -318,10 +297,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Makes the Container step to respect the delegate selector configured at the pipeline. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
-        <td>CDS_AWS_CDK</td>
-        <td>Enables <a href="/docs/continuous-delivery/cd-infrastructure/aws-cdk">AWS CDK support</a>. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDS_REMOVE_TIME_BUCKET_GAPFILL_QUERY</td>
         <td>Removes the usage of time bucket gapfill from CD. <b>This feature is in Beta.</b> </td>
     </tr>
@@ -355,10 +330,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enable the option to update multiple tasks in ServiceNow.</td>
     </tr>
     <tr>
-        <td>CDS_WEBAPP_ENABLE_CLEAN_OPTION</td>
-        <td>Cleans the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial">Azure WebApp target directory</a> prior to deployment. <b>This feature is in Public Preview.</b> </td>
-    </tr>
-    <tr>
         <td>PIE_SIMPLIFY_LOG_BASE_KEY</td>
         <td>Reduces the length of the log base key. <b>This feature is in Beta.</b> </td>
     </tr>
@@ -373,10 +344,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>PIE_ASYNC_FILTER_CREATION</td>
         <td>Sets pipeline CRUD calls to filter creation asynchronously. <b>This feature is in Beta.</b> </td>
-    </tr>
-    <tr>
-        <td>CDS_ASG_V2</td>
-        <td>Enables support for <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial">ASG features</a> like user data, instances, multiple load balancers, and base ASG. <b>This feature is in Public Preview.</b> </td>
     </tr>
     <tr>
         <td>CDS_OCI_HELM_ECR_CONFIG_SUPPORT_NG</td>

@@ -260,7 +260,6 @@ export const experiments: ExperimentDetails[] = [
     tags: [],
     category: "aws",
   },
-
   {
     name: "ECS Invalid Container image",
     description:

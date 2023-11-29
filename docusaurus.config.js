@@ -211,6 +211,10 @@ const config = {
                 to: 'docs/security-testing-orchestration',
               },
               {
+                label: 'Infrastructure as Code Management',
+                to: 'docs/infrastructure-as-code-management',
+              },
+              {
                 label: 'Chaos Engineering',
                 to: 'docs/chaos-engineering',
               },

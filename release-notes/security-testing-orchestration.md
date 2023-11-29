@@ -23,29 +23,36 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
-## Latest: Version 1.74.1
+## Latest: Version 1.75
 
-### New features and enhancements
+### New feature: Aqua Security integration
 
-- The **Exemptions** table now shows the pipeline name in the **Scope** column and not the ID. This keeps the user experience consistent with other areas of the application. (STO-6631)
+- You can now ingest container-image scan results from [Aqua Security Entrerprise](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference). (STO-5661, ZD-41491) 
 
-### Early access
-
-This release does not include Early Access features. 
-
-### Fixed issues
-
-- Fixed an issue that caused the **Issue Details** pane to show target names from other projects in the same account. (STO-6693)
-
-
-### Hotfixes
-
-This release does not include hotfixes. 
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
+#### Latest: Version 1.74.1
+
+##### New features and enhancements
+
+- The **Exemptions** table now shows the pipeline name in the **Scope** column and not the ID. This keeps the user experience consistent with other areas of the application. (STO-6631)
+
+##### Early access
+
+This release does not include Early Access features. 
+
+##### Fixed issues
+
+- Fixed an issue that caused the **Issue Details** pane to show target names from other projects in the same account. (STO-6693)
+
+
+##### Hotfixes
+
+This release does not include hotfixes. 
 
 #### Version 1.73.1
 

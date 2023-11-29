@@ -1,12 +1,12 @@
 ---
-title: Harness Service Reliability Management 
+title: Harness Service Reliability
 description: Track the SLOs and Error Budgets for Monitored Services
 ---
 
 | Plugin details |                                                        |
 | -------------- | ------------------------------------------------------ |
 | **Created by** | Harness                                                |
-| **Category**   | SRM                                                  |
+| **Category**   | Service Reliability, SLOs, Errors                      |
 | **Source**     | [GitHub](https://github.com/harness/backstage-plugins) |
 | **Type**       | Open-source plugin                                     |
 
@@ -30,7 +30,7 @@ proxy:
 
 ### Secrets
 
-No secrets are required for this plugin because both IDP and CI/CD are part of the Harness software delivery platform.
+No secrets are required for this plugin because both IDP and SRM are part of the Harness software delivery platform.
 
 ### Delegate proxy
 
@@ -40,33 +40,23 @@ This plugin does not require a delegate proxy to be set up.
 
 ## Layout
 
-This plugin exports a UI tab that you can use as a new CI/CD tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in the **srmContent** section:
+This plugin exports a UI tab that you can use as a new SLOs tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in the a new Tab section:
 
 ```yaml
-- name: srm
-  path: /srm
-  title: Reliability Management
+- name: SLOs
+  path: /slos
+  title: SLOs
   contents:
-    - component: EntitySwitch
-      specs:
-        cases:
-          - if: isHarnessSRMAvailable
-            content:
-              component: EntityHarnessSrmContent
-          - content:
-              component: EmptyState
-              specs:
-                props:
-                  title: No SRM available for this entity
-                  missing: info
-                  description: You need to add an annotation to your component if you want to enable SRM for it. You can read more about annotations in Backstage by clicking the button below.
+    - component: EntityHarnessSrmContent
 ```
 
-The `isHarnessSRMAvailable` condition is met when the `harness.io/services` annotation is present in the software components's `catalog-info.yaml` definition file.
+Note: You can also use the `isHarnessSRMAvailable` conditional. It is satisfied when the `harness.io/services` annotation is present in the software components's `catalog-info.yaml` definition file.
+
+![](./static/srm-screenshot.png)
 
 ## Annotations
 
-To configure the plugin for a service in the software catalog, set one or both of the following annotations in its `catalog-info.yaml` definition file:
+To configure the plugin for a service in the software catalog, set an `harness.io/services` annotation in its `catalog-info.yaml` definition file:
 
 ```yaml
 apiVersion: backstage.io/v1alpha1
@@ -81,6 +71,8 @@ spec:
   type: service
   # ...
 ```
+
+This should already be configured if you use Harness CI/CD and have the CI/CD tab working.
 
 ## Support
 

@@ -14,14 +14,8 @@ Harness has introduced an enhanced experience for service, environment, and infr
 
 Overrides can be defined at project, organization, and account levels.
 
-In **Account Settings > Account Resources > Default Settings > Continuous Deployment**, set the **Enable Service Override V2** to `true` for the enhanced overrides experience. 
-
-![overridesV2](./static/overrides-v2.png)
-
 :::info note
-
 For information on overrides V1, go to [Services and environments basics](/docs/continuous-delivery/get-started/services-and-environments-overview).
-
 :::
 
 ## Limitations
@@ -63,9 +57,19 @@ Warm regards,
 Harness CD Product and Engineering Team
 
 
-## Video demo
+## Demo Video
 
 <docvideo src="https://www.loom.com/share/a93bd67458784583b4e509c5b30e887a?sid=49124b81-4909-4079-859c-64e8950fffaa" />
+
+### Updated Experience since Demo Video 11.26.2023
+
+When the feature is enabled for your account it is now globally enabled for your account. We have removed the per-project opt-in experience as we are beginning to make this the default experience in Harness. When the Overrides V2 Experience is enabled for an account, please make sure Harness performs the background migration job for the account to migrate your existing overrides to the Overrides V2 Experience. Once the job is done, you will see the overrides in the Overrides tab. They will no longer be visible in the Environments tab.
+
+Your existing automation will still work as is and the APIs are backward compatible with the V1 Experience. 
+
+Areas the team is improving on:
+1. The UI Listing Page of Overrides is still work in progress - there is no search, filtering, or sorting of the Overrides
+2. YAML View in the Harness UI, we plan to show the YAML of the Overrides so users can get familiar with the YAML structure of the Overrides V2.
 
 ## Override types
 
@@ -159,6 +163,5 @@ Overrides defined at project/organization/account levels have the following over
 1. Project
 2. Organization
 3. Account
-
 
 
