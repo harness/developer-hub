@@ -17,15 +17,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Latest - November 29th 2023
 
-### New features and enhancements
+#### New features and enhancements
 
 This release does not include new features.
 
-### Early access features
+#### Early access features
 
 This release does not include early access features.
 
-### Fixed issues in the Android Client SDK
+#### Fixed issues in the Android Client SDK
 
 Released Android Client SDK 1.2.1
  - The Flag/Target Group streaming updates no longer result in a `ClassCastException`.
@@ -36,7 +36,7 @@ Released Android Client SDK 1.2.1
 <details>
 <summary>2023 releases</summary>
 
-#### November 24, 2023
+#### November 24th, 2023
 
 ##### New features and enhancements
 
