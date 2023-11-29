@@ -28,7 +28,7 @@ You can also perform the following actions from the AutoStopping dashboard view:
 
 
 ### Visual summary
-<figure><iframe src="//fast.wistia.com/embed/iframe/b7i08zy2yt" width="560" height="315" frameborder="0" allowfullscreen=""></iframe></figure>
+<docvideo src="https://youtu.be/CDSRjRC_vY4" />
 
 ### View the AutoStopping Rules dashboard
 
