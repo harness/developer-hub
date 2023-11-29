@@ -1,6 +1,6 @@
 ---
 title: Abort verification
-description: Learn how to abort a running Verify step
+description: Learn how to abort a running Verify step.
 sidebar_position: 1
 ---
 
