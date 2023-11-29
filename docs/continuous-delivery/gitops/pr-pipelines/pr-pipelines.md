@@ -18,7 +18,7 @@ Often, even though your ApplicationSet syncs one microservice/application to mul
 
 This topic builds on the ApplicationSet created in [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial). Ensure you have read that topic and, ideally, have set up an ApplicationSet in Harness before creating a PR pipeline.
 
-It is also recommended that you go through the basics of Harness PR pipelines and related terminology in [Harness GitOps PR pipelines basics](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics) before proceeding further.
+It is also recommended that you go through the basics of Harness PR pipelines here [Harness GitOps PR pipelines basics](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics) before proceeding further.
 
 :::
 
@@ -150,8 +150,6 @@ examples/git-generator-files-discovery/cluster-config/engineering/dev/cluster2.c
 ```
 
 Harness can then resolve which directory to traverse during runtime and update only those applications that are deployed in a particular cluster, for example  `cluster1`. This is similar to how environments are resolved using the `<+env.name>` expression.
-
-This topic described important service, environment, and cluster configuration for PR pipelines. For detailed information on creating and running PR pipelines, go to [Introduction to Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md).
 
 
 1. **Creating a Service**: Create a Harness service that points to the `config.json` files in these directories.
@@ -462,30 +460,6 @@ You can create a maximum of two Merge PR steps in a stage.
 
 :::
 
-### Update GitOps App
-
-This step updates a GitOps application through a PR Pipeline. Use this step if you have an existing GitOps application and want to update its target revision (branch or tag) or Helm overrides.
-
-A common Git-based use case bases production deployments on Git tags because tags are immutable. In this use case, to deploy a new version, you can use the Update GitOps App step to update your GitOps application to a new tag.
-
-By using this step, you can also provide Helm overrides (parameters, file parameters, or values files) from the pipeline.
-
-Helm parameters and file parameters represent individual value overrides for your Helm application, while values files represent an existing set of overrides already present in the repository.
-
-Existing Helm parameters and file parameters are merged with the values provided in the PR pipeline. Other parameters remain unchanged. A parameter and a file parameter are not merged with each other.
-
-If a parameter is specified both in the values file and as a parameter or file parameter override, the latter takes precedence.
-
-![](static/harness-git-ops-application-set-tutorial-64.png)
-
-Once your GitOps application is updated, you can use the [GitOps Sync Step](/docs/continuous-delivery/gitops/use-gitops/sync-gitops-applications) to deploy your changes.
-
-:::note Limitation
-
-You can use the Update GitOps App step only once in a stage.
-
-:::
-
 ## Run and verify the PR pipeline
 
 Now your PR pipeline is ready.
@@ -562,5 +536,5 @@ Now your PR pipeline is ready.
 
   ![](static/harness-git-ops-application-set-tutorial-60.png)
 
-Congratulations! You PR Pipeline was successful.
+Congratulations! Your PR Pipeline was successful.
 
