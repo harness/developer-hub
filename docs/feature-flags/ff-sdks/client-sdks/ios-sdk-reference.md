@@ -320,7 +320,21 @@ CfClient.sharedInstance.jsonVariation("your_evaluation_id", defaultValue: [Strin
 
 ## Listen for events
 
-The following allows you to listen for the different events triggered by SDK and deal with them as needed, for example:
+
+The `registerEventsListener` method provides a way to register a listener for different events that might be triggered by SDK.
+
+The possible events, reasons for being emitted, and their responses are outlined in the following table:
+
+
+
+|                 |                                                                                                                                                                                                                                                                                                                                                                                                                                             |                    |
+|-----------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| **EVENT\_TYPE** | **Reason**                                                                                                                                                                                                                                                                                                                                                                                                                                  | **Response**       |
+| onOpen          | The SDK has successfully opened a streaming connection to the Feature Flags service, and is listening for events.                                                                                                                                                                                                                                                                                                                           | `List<Evaluation>` |
+| onComplete      | The SDK has closed the streaming connection to the Feature Flags service and is no longer listening for events. <br/>This can happen if the SDK is shutdown, of if there is a transient networking issue, and the SDK will attempt to reconnect.                                                                                                                                                                                            | `Evaluation`       |
+| onEventListener | The SDK has streamed a new evaluation after a flag has been changed using the Harness web application. You should evaluate any flags to get the latest variation. <br/>*Note* this is for individual flag changes only, and this event is not applicable to target group changes. <br/>See `EVALUATION_RELOAD` for streaming target group changes.                                                                                          | -                  |
+| onPolling       | This event can be emitted for 3 reasons. <br/>1) A target group change has been made using the Harness web application, and all evaluations has been reloaded. <br/>2) Streaming has been disabled and the SDK is in polling mode, and a poll has completed which has reloaded all evaluations. <br/>3) The SDK has disconnected from the stream and has entered polling mode, and a poll has completed which has reloaded all evaluations. | -                  |
+| onMessage       | The SDK has streamed an empty message. This should not occur.                                                                                                                                                                                                                                                                                                                                                                               | `List<Evaluation>` |
 
 
 ```
