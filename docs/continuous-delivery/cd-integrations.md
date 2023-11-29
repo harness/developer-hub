@@ -252,11 +252,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Reduces timeout for Jira from 5 minutes to 1 minute and allows pausing of approval. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
-        <td>CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG</td>
-        <td>Enables users to configure <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#using-multiple-helm-charts-in-one-harness-service">multiple Helm charts in a Harness service</a>
-, treating the Helm Charts similar to artifacts. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDS_HELM_FETCH_CHART_METADATA_NG</td>
         <td>Exposes <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts">Helm Chart expressions</a> for reference in other steps and settings. <b>This feature is in Public Preview.</b></td>
     </tr>
