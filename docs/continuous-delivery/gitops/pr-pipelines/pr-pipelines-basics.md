@@ -20,13 +20,11 @@ This topic builds on the ApplicationSet concept discussed in [Harness GitOps App
 
 :::
 
-## Basics
-
 A typical GitOps Application syncs a source manifest to a destination cluster. If you have multiple target clusters, you could create separate GitOps Applications for each one, but that makes management more challenging. Also, what if you want to sync an application with 100s of target clusters? Managing 100s of GitOps Applications is not acceptable.
 
 To solve this use case, Harness supports ApplicationSets.
 
-### ApplicationSets: A Quick Recap
+## ApplicationSets: A Quick Recap
 
 An ApplicationSet can be thought of as a kind of Application factory. It defines one application template and syncs it to multiple target environments. It is similar to an Application but uses a template to achieve application automation with multiple target environments.
 
@@ -40,7 +38,7 @@ There are many types of generators, however, Harness provides first-class suppor
 
 For more information on other Generators, please refer to [Generators](https://argocd-applicationset.readthedocs.io/en/stable/Generators/) from Argo CD docs.
 
-### Git Generator
+## Git Generator
 
 At its core, ArgoCD's Git generator allows for dynamic creation of ArgoCD Application resources from templates using parameters sourced from a Git repository. This enables applications to be defined once in a template and instantiated multiple times with different configurations. The key aspect lies in its ability to pull environment-specific or application-specific configurations directly from a Git repository, ensuring version control and traceability.
 
@@ -54,13 +52,19 @@ While the Git generator supports various methods, one of its standout features i
 - **Dynamic Application Generation**: The Git generator, especially with `config.json` files, allows for the dynamic creation of applications based on varying configurations. For instance, one could have a base template for a microservice but instantiate it differently for development, staging, and production environments using different `config.json` files.
 - **Centralized Management**: Storing all `config.json` files in a single Git repository or organized structure ensures centralized management. Teams can collaboratively update configurations, propose changes through pull requests, and review configurations collectively.
 
-### Harness PR Pipelines
+## Harness PR Pipelines
 
 Harness PR Pipelines allow you to manage the configuration of individual applications created by the ApplicationSet. The key differentiator between various config files for the ApplicationSet is generally chosen to be the folder structure, which would usually align with the environment name in Harness.
 
-When you deploy a Harness PR Pipeline, you simply indicate what target environment application you want to update and the config.json keys/values you want changed, such as release tags. Harness creates the pull request in your Git repo and merges it for you. Now, the target environment application has the new keys/values, which can then be reviewed and deployed by syncing the ApplicationSet.
+When you deploy a Harness PR Pipeline, you simply indicate what target environment application you want to update and the `config.json` keys/values you want changed, such as release tags. Harness creates the pull request in your Git repo and merges it for you. Now, the target environment application has the new keys/values, which can then be reviewed and deployed by syncing the ApplicationSet.
 
 ![](static/harness-git-ops-application-set-tutorial-62.png)
+
+:::note
+
+To understand how to configure PR pipelines within Harness, please refer to [Create Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines).
+
+:::
 
 <details>
 <summary>An aside: Wave deployments</summary>
