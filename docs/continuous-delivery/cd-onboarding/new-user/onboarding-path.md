@@ -1,7 +1,7 @@
 ---
 title: CD onboarding path
 description: Ramp up on Harness CD
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 ```mdx-code-block

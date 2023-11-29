@@ -1,7 +1,7 @@
 ---
 title: Template design guide
 description: Standardize patterns, streamline processes, eliminate duplication.
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 

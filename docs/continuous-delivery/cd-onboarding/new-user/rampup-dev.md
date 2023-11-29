@@ -1,7 +1,7 @@
 ---
 title: Developer day to day guide
 description: Daily deployment tasks for devs. 
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 This guide is intended to get users in the **Developer role** started with Harness CD. 

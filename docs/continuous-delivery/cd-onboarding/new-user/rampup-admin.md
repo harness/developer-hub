@@ -1,7 +1,7 @@
 ---
 title: Administrator day to day guide
 description: Account rampup tasks include just a few steps.
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 This guide is intended to get users in the **Admin role** started with Harness CD. The intended audience is an administrator or anyone who will be configuring and/or piloting Harness on behalf of their organization.
