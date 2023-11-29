@@ -13,8 +13,9 @@ This tutorial shows you how to scan your codebases using [Semgrep](https://semgr
 - This tutorial has the following prerequisites:
 
   - A Harness account and STO module license
-  - A [code repo connector](/docs/platform/connectors/code-repositories/) to your Git provider  
-  - A Semgrep login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub. 
+  - A [code repo connector](/docs/platform/connectors/code-repositories/) to your Git provider and an access token  
+  - A Semgrep account login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub. 
+  - Your Git and Semgrep access tokens must be stored as [Harness secrets](/docs/platform/secrets/add-use-text-secrets)
 
 - This tutorial uses the free version of Semgrep to run simple SAST scans. More advanced workflows are possible but are outside the scope of this tutorial.
 
@@ -22,42 +23,21 @@ This tutorial shows you how to scan your codebases using [Semgrep](https://semgr
 
 :::
 
-### Add a Harness secret for your Semgrep token
-
-Follow the steps in [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets) to store your Semgrep token as a secret in Harness.
-
 ### Set up your pipeline
-
-```mdx-code-block
-import create_pipeline from './static/semgrep-00-create-pipeline.png'
-
-```
 
 Do the following:
 
-1. Select **Security Testing Orchestration** > **Pipelines** > **Create a Pipeline**.
+1. Select **Security Testing Orchestration** (left menu, top) > **Pipelines** > **Create a Pipeline**.
 
-   ```mdx-code-block
-    <img src={create_pipeline} alt="Create a new STO pipeline." height="60%" width="60%" />
-    ```
 2. In the new pipeline, select **Add stage** > **Security Tests** and enter a name for the new stage.
 
 3. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.  
 
 
-### Add the Run step
+### Run the Semgrep scan
 
 Now you will add a step that runs a scan using the local Semgrep container image maintained by Harness. Harness updates its scanner images frequently to ensure that they include the latest scanner versions and vulnerability databases.  
 
-1. Go to **Execution** and add a **Run** step. 
-
-2. Configure the step as follows:
-
-   1. Name = **run_semgrep_scan**
-
-   2. 
-
-<!-- 
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -65,6 +45,71 @@ import TabItem from '@theme/TabItem';
 ```
 ```mdx-code-block
 <Tabs>
-  <TabItem value="Visual" label="Visual" default>
+  <TabItem value="Visual" label="Pipeline Studio" default>
 ```
--->
+
+1. Go to **Execution** and add a **Run** step. 
+
+2. Configure the step as follows:
+
+   1. Name = **run_semgrep_scan**
+
+   2. Container Registry = When prompted, select **Account** and then **Harness Docker Connector**. 
+
+   3. Image = **returntocorp/semgrep**
+
+   4. Command = `semgrep /harness --sarif --config auto -o /harness/results.sarif  `
+
+      This command runs a [Semgrep scan](https://semgrep.dev/docs/cli-reference/#semgrep-scan-command-options) on your code repo and outputs the results to a [SARIF](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) file.  
+
+   5. Open Optional Configuration and set the following options:
+
+      1. Add the following environment variable:
+         
+         - Key : **SEMGREP_APP_TOKEN**
+         - Value : Click the type selector (right), set the value type to **Expression**, and enter the value `<+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")>`. 
+
+           ![](./static/sast-semgrep-tutorial/set-value-type.png)
+
+      2. Limit Memory = **4096**
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML editor">
+```
+TBD
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+### Ingest the scan results
+
+Now that you've added a step to run the scan, it's a simple matter to ingest it into your pipeline. Harness provides a set of customized steps for popular scanners such as Semgrep. 
+
+1. In the **Execution** tab, add a **Semgrep** step after your **Run** step.
+
+2. Configure the step as follows:
+
+   1. Name = **ingest_semgrep_data**
+
+   2. Type = **Repository**
+
+   3. Under Target:
+
+      1. Name = **dvpwa**
+
+      2. Variant = **master**
+
+   4. Ingestion File = **/harness/results.sarif**
+
+   5. [Fail on Severity] = **Critical**
+
+
+### Run the pipeline
+
+1. 
+
