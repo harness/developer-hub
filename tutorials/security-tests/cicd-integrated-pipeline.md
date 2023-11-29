@@ -52,7 +52,7 @@ It is good practice to set `fail_on_severity` in every scan step in an integrate
 2. Set **Fail on Severity** to **Critical**. 
 3. Select **Apply Changes**, save the updated pipeline, and run a new build with the **DEMO-001** branch.
 
-   ![](./static/sto-integrated-workflows-00.png)
+   ![](./static/integrated-pipeline/failed-on-severity-critical.png)
 
 The pipeline now fails because the Bandit step is now configured to fail on any critical vulnerability . The last log message in the Bandit step log is:
 ```
@@ -212,7 +212,7 @@ You can implement [Failure Strategies](/docs/platform/pipelines/define-a-failure
 
 The following pipeline extends the example workflow described above. After it scans the repo, it builds a container image, scans the image, and fails the pipeline if the image scan fails. The [YAML](#integrated-workflow-yaml) of this pipeline is provided below.
 
-![](./static/sto-integrated-workflows-08.png)
+![](./static/integrated-pipeline/integrated-pipeline-in-ui.png)
 
 This pipeline works as follows:
 
@@ -229,7 +229,7 @@ This pipeline works as follows:
 
 After the pipeline executes, you can view all issues from all scanners in the **Security Tests** tab, and also filter the issue list by scanner.
 
-![](./static/sto-integrated-workflows-09.png)
+![](./static/integrated-pipeline/integrated-pipeline-security-tests.png)
 
 
 ### Congratulations!
