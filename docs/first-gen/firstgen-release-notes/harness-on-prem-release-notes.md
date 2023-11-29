@@ -17,18 +17,9 @@ For Harness SaaS release notes, go to [Harness SaaS Release Notes](/docs/first-g
 Release notes are displayed with the most recent release first.
 
 
-## November 30, 2023, version 8xxxx
+## November 30, 2023, version 81308
 
 This release includes the following module and component versions.
-
-| **Name** | **Version** |
-| :-- | :-- |
-| Manager | 8xxxx |
-| Watcher | 8xxxx |
-| Verification Service | 8xxxx |
-| UI | 8xxxx |
-| Learning Engine | 6xxxx | 
-| Gateway | 1xxxx |
 
 ### New features and enhancements
 

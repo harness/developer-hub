@@ -24,7 +24,7 @@ These release notes describe recent changes to Harness Harness Self-Managed Ente
 
 :::
 
-## Latest: Version 8xxxx
+## Latest: Version 81308
 
 ### New features and enhancements
 
@@ -34,15 +34,15 @@ This release includes the following Harness module and component versions.
 | :-- | :--: |
 | Helm Chart | [0.11.0](https://github.com/harness/helm-charts/releases/tag/harness-0.11.0) |
 | Air Gap Bundle | [0.11.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.11.0) |
-| NG Manager | 8xxxx |
-| CI Manager | xxxx |
-| Pipeline Service | x.xx.xx |
-| Platform Service | xxxxx |
-| Access Control Service | xxxxx |
-| Change Data Capture | xxxxx |
-| Test Intelligence Service | release-xxx |
-| NG UI | x.xxx.xx |
-| LE NG | xxxxx |
+| NG Manager | 81308 |
+| CI Manager | 6602 |
+| Pipeline Service | 1.49.8 |
+| Platform Service | 80800 |
+| Access Control Service | 80600 |
+| Change Data Capture | 81510 |
+| Test Intelligence Service | release-221 |
+| NG UI | 0.368.21 |
+| LE NG | 67903 |
 
 **Alternative air gap bundle download method**
 
