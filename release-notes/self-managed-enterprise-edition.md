@@ -236,8 +236,6 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
 #### Security Testing Orchestration
 
-- The **Account Settings** > **Subscriptions** page has a new **Activity & Usage** section that shows the number of security scans and user activity over the past 30 days. (STO-4942)
-
 - You can now scan your repositories and other components used in your code with [Anchore Enterprise](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. (STO-6382)
 
 ### Fixed issues
@@ -249,6 +247,12 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 - Continuous Verification NextGen APIs failed in Istio environments. This issue was fixed by updating the Continuous Verification NextGen virtual service to use `/cv/` instead of `/` in Istio environments. (SMP-2182)
 
 - Added dashboard aggregator support with Istio and fixed virtual service route rules. (SMP-2192)
+
+#### Cloud Cost Management
+
+- When attempting to create a new CCM connector, such as Azure, GCP, and so on, the test connection would sometimes fail. This required you to go back to previous steps, make adjustments, and attempt the connection again. However, on trying again, the connection step would fail with an error message indicating that a connector with the same ID already existed. (CCM-12558)
+
+   To address this issue, the system was updated to track connector creation and error scenarios. The connector creation API call was replaced with an update connector API call when the connector ID already exists to resolve the issue.
 
 #### Continuous Delivery & GitOps
 
@@ -542,7 +546,7 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
 - Fixed an issue where the latest-supported-version API returned the image tag repo path instead of the image tag. (PL-42168, ZD-52623)
 
-#### Security Testing Orchestration
+#### Service Reliability Management
 
 - An alignment issue with the **Change Event** card has been fixed to ensure consistent information display. (SRM-15793)
 
