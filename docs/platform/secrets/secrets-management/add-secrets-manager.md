@@ -16,6 +16,7 @@ Looking for specific secret managers? Go to:
 * [Add a HashiCorp Vault Secret Manager](/docs/platform/secrets/secrets-management/add-hashicorp-vault.md)
 * [Add an Azure Key Vault Secret Manager](/docs/platform/secrets/secrets-management/azure-key-vault.md)
 * [Add Google KMS as a Harness Secret Manager](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager.md)
+* [Add a Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager.md)
 * [Add an AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md)
 
 ### Before you begin
@@ -35,6 +36,7 @@ Looking for specific secret managers? Go to:
    * [Add a HashiCorp Vault Secret Manager](/docs/platform/secrets/secrets-management/add-hashicorp-vault.md)
    * [Add an Azure Key Vault Secret Manager](/docs/platform/secrets/secrets-management/azure-key-vault.md)
    * [Add Google KMS as a Harness Secret Manager](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager.md)
+   * [Add a Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager.md)
    * [Add an AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md)
 5. Provide the account access information for the new secret manager.
 6. If you choose to set this secret manager as the default, select **Use as Default Secret Manager**.
@@ -69,6 +71,7 @@ The secret you use to connect Harness to your Secret Manager (password, etc) is 
 	+ [Add a HashiCorp Vault Secret Manager](/docs/platform/secrets/secrets-management/add-hashicorp-vault.md)
 	+ [Add an Azure Key Vault Secret Manager](/docs/platform/secrets/secrets-management/azure-key-vault.md)
 	+ [Add Google KMS as a Harness Secret Manager](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager.md)
+ 	+ [Add a Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager.md)
 	+ [Add an AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md)
 * Managing Secrets
 	+ [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets)
