@@ -16,7 +16,7 @@ Often, even though your ApplicationSet syncs one microservice/application to mul
 
 :::tip Important
 
-This topic builds on the ApplicationSet created in [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial.md). Ensure you have read that topic and, ideally, have set up an ApplicationSet in Harness before creating a PR pipeline.
+This topic builds on the ApplicationSet created in [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial). Ensure you have read that topic and, ideally, have set up an ApplicationSet in Harness before creating a PR pipeline.
 
 :::
 
@@ -24,9 +24,10 @@ This topic builds on the ApplicationSet created in [Harness GitOps ApplicationSe
 
 This topic extends Harness GitOps features covered in the following topics:
 
-* [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md)
-* [Harness CD GitOps Tutorial](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart.md)
-* [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops//applicationsets/harness-git-ops-application-set-tutorial.md)
+* [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics)
+* [Harness CD GitOps Tutorial](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart)
+* [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial)
+* [Harness GitOps PR pipelines basics](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics)
 
 Review these topics before proceeding.
 
@@ -261,7 +262,7 @@ If a parameter is specified both in the values file and as a parameter or file p
 
 ![](static/harness-git-ops-application-set-tutorial-64.png)
 
-Once your GitOps application is updated, you can use the [GitOps Sync Step](/docs/continuous-delivery/gitops/use-gitops/sync-gitops-applications.md) to deploy your changes.
+Once your GitOps application is updated, you can use the [GitOps Sync Step](/docs/continuous-delivery/gitops/use-gitops/sync-gitops-applications) to deploy your changes.
 
 :::note Limitation
 

@@ -16,7 +16,7 @@ Often, even though your ApplicationSet syncs one microservice/application to mul
 
 :::tip Important
 
-This topic builds on the ApplicationSet concept discussed in [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial.md). It is recommended that you go through that topic before venturing into this one.
+This topic builds on the ApplicationSet concept discussed in [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial). It is recommended that you go through that topic before venturing into this one.
 
 :::
 
@@ -36,7 +36,7 @@ You can add an ApplicationSet manifest to a Harness GitOps Application just like
 
 ApplicationSets use generators to generate parameters that are substituted into the `template:` section of the ApplicationSet resource during template rendering.
 
-There are many types of generators, however, Harness provides first-class support for the **Git Generator** with the [**Update Release Repo** and **Merge PR** steps](/docs/continuous-delivery/gitops/pr-pipelines/pipeline-steps.md) in the PR pipeline.
+There are many types of generators, however, Harness provides first-class support for the **Git Generator** with the [**Update Release Repo** and **Merge PR** steps](/docs/continuous-delivery/gitops/pr-pipelines/pipeline-steps) in the PR pipeline.
 
 For more information on other Generators, please refer to [Generators](https://argocd-applicationset.readthedocs.io/en/stable/Generators/) from Argo CD docs.
 
