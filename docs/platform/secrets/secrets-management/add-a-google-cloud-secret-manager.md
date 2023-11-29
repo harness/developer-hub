@@ -8,9 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::important
-The ability to use the credentials of a specific Harness Delegate is behind the feature flag `PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
 
 You can link your Google Cloud Secret Manager to Harness and use it to store any sensitive data you use in Harness, including secrets.
 
@@ -23,7 +20,7 @@ Harness also supports [Google KMS as a secrets manager](/docs/platform/secrets/
 
 ## Google Cloud secret manager important notes
 
-* Inline secrets saved to GCP Secrets Manager must follow the naming limitations of Google Cloud Secret Manager. Secret names can only contain alphabets, numbers, dashes (-), and underscores (\_).
+* Inline secrets saved to GCP Secrets Manager must follow the naming limitations of Google Cloud Secret Manager. Secret names can only contain alphabets, numbers, dashes (-), and underscores (\_). These restrictions come from the Google Secret Manager side and are subject to change. Please reffer google secret manager offical documentation for details.
 * The maximum size for encrypted files saved to Google Cloud Secret Manager is 64KiB.
 * Inline secrets saved to Google Cloud Secret Manager have a region assignment by default. An automatic assignment is the same as not selecting the **Regions** setting when creating a secret in Google Cloud Secret Manager.
 * Harness does not support Google Cloud Secret Manager labels at this time.
