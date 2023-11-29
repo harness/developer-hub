@@ -1,6 +1,6 @@
 ---
-title: CD Onboarding Path
-description: Get your first Harness CD pipeline ready in no time
+title: CD onboarding path
+description: Ramp up on Harness CD
 sidebar_position: 2
 ---
 
@@ -9,10 +9,21 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Get your first Harness CD pipeline ready in no time.
+This topic describes the different phases and steps involved in onboarding with Harness CD. Follow these steps to ensure that you have all the settings and resources required for moving forward with your own deployments.
+
+If you are only looking for tutorials, go to (Continuous Delivery & GitOps tutorial)[https://developer.harness.io/tutorials/cd-pipelines].
 
 ## Overview
-(_Note: Steps with a **"*"** mark next to them have example YAMLs that can be used to set up that specific step_)
+
+This section lists the major onboarding phases and provides links to more details.
+
+:::note
+
+Steps with an asterisk **"*"** have YAML examples that can be used for setting up the step.
+
+:::
+
+
 
 ### <a href="#phase-1-initial-setup"> Phase 1: Initial Setup </a>
 
