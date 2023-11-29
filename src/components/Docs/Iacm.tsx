@@ -30,8 +30,7 @@ export default function Iacm() {
         </div>
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
-            <p>Manage your Infrastructure as Code End-to-End.</p>
-            <p>This module is currently in beta</p>
+            <p>Manage your Infrastructure as Code End-to-End. This module is currently in BETA.</p>
           </div>
         </div>
       </div>
