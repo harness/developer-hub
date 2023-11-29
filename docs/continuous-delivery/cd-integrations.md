@@ -55,10 +55,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 .</td>
     </tr>
     <tr>
-        <td>NG_EXECUTION_INPUT</td>
-        <td>Users can <a href="/docs/platform/variables-and-expressions/runtime-inputs/#supply-runtime-input-during-execution">provide inputs at pipeline execution.</a> <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>NG_CUSTOM_STAGE</td>
         <td>Enables the <a href="/docs/platform/pipelines/add-a-stage/#add-a-custom-stage">Custom stage</a>
  for use in a pipeline. <b>This feature is GA.</b></td>
