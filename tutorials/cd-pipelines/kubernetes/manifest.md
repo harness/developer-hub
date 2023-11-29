@@ -259,7 +259,7 @@ A Harness GitOps Repository is a repo containing the declarative description of 
 
 :::note 
 
-If you're using a Flux GitOps Agent, Flux must be present in the destination cluster. As of now, this limits us to in-cluster type applications.
+If you're using a Flux GitOps Reconciler, Flux must be present in the destination cluster. As of now, this limits us to in-cluster type applications.
 
 :::
 
@@ -286,7 +286,7 @@ A Harness GitOps Cluster is the target deployment cluster that is compared to th
 
 :::note 
 
-If you're using a Flux GitOps Agent, Flux must be present in the destination cluster. As of now, this limits us to in-cluster type applications.
+If you're using a Flux GitOps Reconciler, Flux must be present in the destination cluster. As of now, this limits us to in-cluster type applications.
 
 :::
 
