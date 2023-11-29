@@ -19,15 +19,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Latest - November 27th 2023
 
-##### New features and enhancements
+#### New features and enhancements
 
 This release does not any new features or enhancements.
 
-##### Early access features
+#### Early access features
 
 This release does not include early access features.
 
-##### Fixed issues in the Ruby SDK
+#### Fixed issues in the Ruby SDK
 
 Released Ruby SDK 1.2.0.
  - The percentage rollout bucket by logic is now fixed to match Golang SDK.
