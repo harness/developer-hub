@@ -150,11 +150,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 .</td>
     </tr>
     <tr>
-        <td>CDS_K8S_SERVICE_HOOKS_NG</td>
-        <td>Enables the Kubernetes and Helm service hooks feature. Service hooks extend the Helm Chart and Kubernetes service <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks">pre-deployment actions</a>
-. </td>
-    </tr>
-    <tr>
         <td>CDS_NG_TRIGGER_MULTI_ARTIFACTS</td>
         <td>Allows creation of multi-region artifact triggers.</td>
     </tr>
