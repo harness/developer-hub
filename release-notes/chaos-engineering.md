@@ -2,7 +2,7 @@
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-11-11T10:00
+date: 2023-11-30T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -23,6 +23,36 @@ The release notes describe recent changes to Harness Chaos Engineering.
 :::
 
 ## November 2023
+
+### Version 1.24.5
+
+#### New features and enhancements
+
+* Added a "Run now" button to the three-dot menu on the experiment dashboard. You can run cron experiments manually now. (CHAOS-3110)
+
+* Until an experiment is saved, the "run experiment" or "enable cron" buttons are hidden. (CHAOS-3099)
+
+* Dynatrace probe schema for Kubernetes is modified to reduce the lenghth of the field token names. (CHAOS-3043)
+
+* A cron enable/disable button is added tp the dashboard table menu, so that you can enable or disable the cron experiments from the dashboard itself. (CHAOS-3027)
+
+* A new field, "last_executed_at", is added to the chaos experiments. This new field is updated whenever an event is received during the course of an experiment run. (CHAOS-3018)
+
+* While creating an experiment, if a YAML file is uploaded that can't be parsed, a warning is displayed on the user interface. (CHAOS-3016)
+
+* You can now sort experiments based on the "recently executed" and "last modified" filters, in ascending and descending order. (CHAOS-2895)
+
+* Dynatrace probes are now available on Linux chaos infrastructure. (CHAOS-2879)
+
+* Custom arguments/flags are added in the command for VMware stress and network faults. (CHAOS-2846)
+
+* The pod memory hog chaos experiment provides distinction between experiments that failed (as an expected result) versus experiments that actually failed. (CHAOS-2515)
+
+
+
+#### Fixed issues
+
+
 
 ### Version 1.24.5
 
