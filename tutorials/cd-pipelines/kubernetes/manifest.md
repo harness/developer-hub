@@ -259,7 +259,7 @@ A Harness GitOps Repository is a repo containing the declarative description of 
 
 :::note 
 
-If you're using a Flux GitOps Agent, Flux must be present in the destination cluster. As of now, this limits us to in-cluster type applications.
+If you're using a Flux GitOps Reconciler, Flux must be present in the destination cluster. As of now, this limits us to in-cluster type applications.
 
 :::
 
@@ -286,7 +286,7 @@ A Harness GitOps Cluster is the target deployment cluster that is compared to th
 
 :::note 
 
-If you're using a Flux GitOps Agent, Flux must be present in the destination cluster. As of now, this limits us to in-cluster type applications.
+If you're using a Flux GitOps Reconciler, Flux must be present in the destination cluster. As of now, this limits us to in-cluster type applications.
 
 :::
 
@@ -322,7 +322,7 @@ Due to an update in the Kustomization Controller, the vanilla YAML files now nee
        - You can leave out **Service** and **Environment** selections.
        - Select **Continue**.  
     - Under **Sync Policy**
-       - Keep the **Sync Options** settings as is.
+       - Make sure **Apply Out of Sync Only** and **Auto-Create Namespace** are checked under **Sync Options** settings.
        - Use `Foreground` for the **Prune Propagation Policy**.
        - Select **Continue**.
     - Under **Source**
