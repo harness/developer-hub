@@ -22,15 +22,15 @@ To abort verification, do the following:
 
 - If the pipeline is running, skip to the next step. Else, select **Run**.
 
-- Select **Console View**, and then wait until the Verify step has begun.
+- Wait until the Verify step has begun (the step status changes from `Not Started` to `In Progress`).
 
-  A running Verify step displays an `In Progress` indicator.
-
-- Select **Abort Verification**, and then select one of the following options:
+- On the **Details** tab of the step's summary view, select **Abort Verification**, and then select one of the following options:
 
   - **Mark as Success**
   - **Mark as Failure**
 
-- At the confirmation prompt, confirm that you want to abort the step. 
+  The **Abort Verification** command also appears in the console view.
 
-  The verification step is aborted.
+- At the prompt, confirm that you want the step to be aborted. 
+
+  Harness aborts the verification step.
