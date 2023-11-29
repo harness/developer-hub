@@ -110,6 +110,14 @@ This issue has been resolved, and now Harness increments the `delegate_connected
 
   As a workaround for this inconsistency, Harness has made the trigger's workflow capture branch hook events for on-premises BitBucket and convert them, on a best-effort basis, to a push hook. This change has the effect of making Harness's triggers for on-premises BitBucket to fire on the first push to a new branch. This change is behind the feature flag `CDS_NG_CONVERT_BRANCH_TO_PUSH_WEBHOOK_BITBUCKET_ON_PREM`. To enable this change in behavior, contact [Harness Support](mailto:support@harness.io).
 
+### Version 23.11.81602
+
+#### Hotfix
+
+- New connectors failed with an `Internal Server Error. Please contact Harness Support Team.` message. (CI-10414, ZD-54032)
+
+   This issue has been resolved by increasing the sleep time between retries.
+
 ### Harness version 81401, Harness Delegate version 23.11.81405
 
 #### New features and enhancements 
