@@ -890,5 +890,3 @@ Some customer shave raised concernes about errors while trying to evaluable expr
 
 So we can invoke the `toString()` on the integer value then our expression should work. So the final expression would be `/tmp/spe/<+pipeline.sequenceId.toString()>`. 
 
-Please also reach out to Harness Support and or your Customer Success Manager to enable the Feature Flag: `PIE_EXPRESSION_CONCATENATION`
-
