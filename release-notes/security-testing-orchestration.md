@@ -25,9 +25,13 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## Latest: Version 1.75
 
-### New feature: Aqua Security integration
+### New feature 
 
-- You can now ingest container-image scan results from [Aqua Security Entrerprise](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference). (STO-5661, ZD-41491) 
+- Browser windows and tabs have more descriptive titles to improve navigation across the primary STO windows. (STO-4555)
+  - STO Overview
+  - Test Targets
+  - Exemptions
+  - STO Getting Started
 
 
 ## Previous releases
@@ -38,6 +42,8 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 #### Latest: Version 1.74.1
 
 ##### New features and enhancements
+
+- You can now ingest container-image scan results from [Aqua Security Enterprise](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference). (STO-5661, ZD-41491) 
 
 - The **Exemptions** table now shows the pipeline name in the **Scope** column and not the ID. This keeps the user experience consistent with other areas of the application. (STO-6631)
 
