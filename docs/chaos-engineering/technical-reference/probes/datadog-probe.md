@@ -76,7 +76,7 @@ spec:
 
   </TabItem>
   <TabItem value="linux" label="Linux" default>
-  For a Linux chaos infrastructure, the probe can be defined at <code>.spec.tasks[].definition.probes</code> path in the Linux chaos experiment manifest:
+  For a Linux chaos infrastructure, the probe can be defined at <code>.spec.tasks[].definition.chaos.probes</code> path in the Linux chaos experiment manifest:
 
 ```yaml showLineNumbers
 apiVersion: litmuschaos.io/v1alpha1
