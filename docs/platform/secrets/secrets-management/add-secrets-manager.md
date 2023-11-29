@@ -51,7 +51,7 @@ You can add secrets to the Org or Project scopes using a Secret Manager with an 
 When you create a secret, Harness shows the list of secret managers at the parent scope and up the hierarchy. If you create a secret at the project level, Harness lists all secret managers scoped at the Account, Org, and Project levels.
 
 :::info
-If a secret manager which was marked as default is updated to not to be default anymore or is deleted, then Harness Default Secret Manager is automatically promoted as default secret manager.
+If a default secret manager is updated or deleted, Harness Default Secret Manager automatically becomes the new default.
 :::
 
 ![](../../secrets/static/select-secrets-manager-scope2.png)

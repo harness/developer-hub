@@ -20,7 +20,7 @@ Harness also supports [Google KMS as a secrets manager](/docs/platform/secrets/
 
 ## Google Cloud secret manager important notes
 
-* Inline secrets saved to GCP Secrets Manager must follow the naming limitations of Google Cloud Secret Manager. Secret names can only contain alphabets, numbers, dashes (-), and underscores (\_). These restrictions come from the Google Secret Manager side and are subject to change. Please reffer google secret manager offical documentation for details.
+* Inline secrets saved to GCP Secrets Manager must follow the naming limitations of Google Cloud Secret Manager. Secret names can only contain alphabets, numbers, dashes (-), and underscores (\_). Google Secret Manager restrictions are subject to change. Go to [Secret Manager](https://cloud.google.com/secret-manager) in the GCP documentation for details.
 * The maximum size for encrypted files saved to Google Cloud Secret Manager is 64KiB.
 * Inline secrets saved to Google Cloud Secret Manager have a region assignment by default. An automatic assignment is the same as not selecting the **Regions** setting when creating a secret in Google Cloud Secret Manager.
 * Harness does not support Google Cloud Secret Manager labels at this time.
