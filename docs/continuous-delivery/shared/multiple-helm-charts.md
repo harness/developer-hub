@@ -1,8 +1,3 @@
-:::note
-
-Currently, using multiple Helm Charts in a single Harness service is behind the feature flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 For [Kubernetes Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Native Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart) deployment types, you can add multiple Helm charts to a Harness service.
 
