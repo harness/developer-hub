@@ -48,11 +48,22 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * The pod memory hog chaos experiment provides distinction between experiments that failed (as an expected result) versus experiments that actually failed. (CHAOS-2515)
 
+* Cron and non-cron experiment types can be identified manually or using the tooltip by hovering over individual run boxes in **resilience probes**. (CHAOS-3010)
 
 
 #### Fixed issues
 
+* The sandbox API was being called when the corresponding flag was off. This has been fixed. (CHAOS-3126)
 
+* SLO probe properties in the fault selection and probe details in the runs view UI was not being displayed. This has been fixed. (CHAOS-3119)
+
+* (CHAOS-3115)
+
+* Mongo queries resulted in fetching results for deleted gamedays. This has been fixed by adding a field "is_removed" to the mongo queries. (CHAOS-3091)
+
+* Linux chaos infrastructure did not provide JSON log output. This issue has been fixed. (CHAOS-2989)
+
+* The probe mode would be pre-selected as SOT by default. Now, it will be empty and no value will be present by default. (CHAOS-2455)
 
 ### Version 1.24.5
 
