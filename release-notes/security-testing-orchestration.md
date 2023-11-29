@@ -25,7 +25,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## Latest: Version 1.75
 
-### New feature 
+### New enhancement 
 
 - Browser windows and tabs have more descriptive titles to improve navigation across the primary STO windows. (STO-4555)
   - STO Overview
