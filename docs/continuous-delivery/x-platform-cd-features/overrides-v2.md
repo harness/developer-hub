@@ -63,7 +63,7 @@ Harness CD Product and Engineering Team
 
 ### Updated experience since the demo video on 11.26.2023
 
-Now, if Overrides V2 is enabled on your account, it is globally enabled on the account. Harness have removed the per-project opt-in experience because it is in the process of making Overrides V2 the default experience in Harness. If the Overrides V2 experience is enabled on your account, make sure that Harness migrates your existing overrides to the Overrides V2 experience. After the migration, the overrides user interface becomes available on the Overrides tab instead of the Environments tab.
+Now, if Overrides V2 is enabled on your account, it is globally enabled on the account. Harness has removed the per-project opt-in experience because it is in the process of making Overrides V2 the default experience in Harness. If the Overrides V2 experience is enabled on your account, make sure that Harness migrates your existing overrides to the Overrides V2 experience. After the migration, the overrides user interface becomes available on the Overrides tab instead of the Environments tab.
 
 Your existing automation continues to work and the APIs are backward compatible with the V1 experience. 
 
