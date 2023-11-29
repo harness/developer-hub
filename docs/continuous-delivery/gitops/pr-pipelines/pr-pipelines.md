@@ -18,18 +18,9 @@ Often, even though your ApplicationSet syncs one microservice/application to mul
 
 This topic builds on the ApplicationSet created in [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial). Ensure you have read that topic and, ideally, have set up an ApplicationSet in Harness before creating a PR pipeline.
 
+It is also recommended that you go through the basics of Harness PR pipelines and related terminology in [Harness GitOps PR pipelines basics](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics) before proceeding further.
+
 :::
-
-## Before you begin
-
-This topic extends Harness GitOps features covered in the following topics:
-
-* [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics)
-* [Harness CD GitOps Tutorial](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart)
-* [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial)
-* [Harness GitOps PR pipelines basics](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics)
-
-Review these topics before proceeding.
 
 ## Create a PR pipeline
 
