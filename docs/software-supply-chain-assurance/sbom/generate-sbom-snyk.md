@@ -38,14 +38,14 @@ Keys are used to sign and verify attestations.
 
 3. Add a step to your stage that generates an SBOM, such as a **Run**, **Plugin**, or **GitHub Action** step.
 
-   For example, this **Run** step uses [Synk](https://docs.snyk.io/snyk-cli/commands/container-sbom) to generate an SBOM.
-
-   ![](../static/ingesting-sbom-from-other-scanners-03.png)
-
+   For example, you could use the following command in a **Run** step to generate a Snyk SBOM.
+   
    ```
    snyk container sbom --format=spdx2.3+json \
     ubuntu:22.04 > /shared/customer_artifacts/result.spdx.json
    ```
+
+   ![](../static/ingesting-sbom-from-other-scanners-03.png)
 
 4. If your SBOM tool can't output directly to your **Shared Path**, then add commands or a **Run** step to copy the SBOM into the directory specified in **Shared Paths**.
 5. Add an [SSCA Orchestration step](./generate-sbom.md#add-the-ssca-orchestration-step) configured to ingest the SBOM:
