@@ -69,7 +69,7 @@ If you're using Docker-compliant ECR or GCR repositories, you must:
 
 :::
 
-# Generating an  Snyk Open Source SBOM via an STO Snyk Step
+## Generate and ingest a Snyk Open Source SBOM
 
 Harness SSCA can ingest SBOM generated from STO scanner steps, such as the [Snyk STO step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans#snyk-repository-orchestration-example), if the resulting SBOM is in JSON [SPDX](https://spdx.dev/learn/overview/) or [CycloneDx](https://cyclonedx.org/specification/overview/) format.
 
