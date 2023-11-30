@@ -127,6 +127,12 @@ For Kubernetes delegates, you can increase the number of replicas run using a si
 
 This error means that no delegate could meet the URL criteria for validation. For more information, go to [How does Harness Manager pick delegates?](/docs/platform/delegates/delegate-concepts/delegate-overview.md#how-does-harness-manager-pick-delegates).
 
+### Delegate execution and test failures
+
+Delegate logs are available in the Harness UI. When a pipeline runs and an error occurs due to the delegate, the **View Delegate Tasks Logs** option becomes available. You can expand log lines that have stack traces for better readability. This allows you to view the full error log.
+
+For more information, go to [Delegate logs](/docs/platform/delegates/delegate-concepts/delegate-overview/#delegate-logs).
+
 ### Google Cloud Platform: cluster has unschedulable pods
 
 If you do not have enough space available in your Kubernetes cluster, you might receive the following error:
