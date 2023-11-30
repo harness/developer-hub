@@ -1,7 +1,7 @@
 ---
 title: Ingest SBOM from Blackduck into SSCA
 description: You can easily ingest from any scanner that can generate an SBOM.
-sidebar_label: Ingest SBOM from an Blackduck STO scanner step
+sidebar_label: Ingest SBOM from a Blackduck STO scanner step
 sidebar_position: 30
 ---
 
