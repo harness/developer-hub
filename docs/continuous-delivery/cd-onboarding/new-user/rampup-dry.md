@@ -1,7 +1,7 @@
 ---
 title: Keep your pipelines DRY
 description: Use a DRY approach for efficiency and consistency.
-sidebar_position: 2
+sidebar_position: 7
 ---
 
 DRY is an acronym used in software development that stands for *Don't Repeat Yourself*. It emphasizes the importance of avoiding redundancy to make the codebase easier to understand, maintain, and less prone to errors. For CI/CD pipelines, particularly in Harness, it is essential to have a DRY approach for efficiency and consistency.

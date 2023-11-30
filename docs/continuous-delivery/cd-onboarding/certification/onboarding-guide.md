@@ -1,6 +1,6 @@
 ---
-title: Onboarding guide
-description: A self-service onboarding guide for Harness CD & GitOps
+title: CD certification guide
+description: A self-service certification guide for Harness CD & GitOps
 sidebar_position: 1
 ---
 

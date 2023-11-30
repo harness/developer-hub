@@ -1,6 +1,6 @@
 {
   "label": "Manage deployments",
-  "position": "700",
+  "position": "8",
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",
