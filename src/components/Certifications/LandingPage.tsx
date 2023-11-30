@@ -253,7 +253,6 @@ export default function Certifications() {
                     src={`${baseUrl}img/cert_adm_ff_badge.svg`}
                     alt="Administrator FF Badge"
                   />
-                  />
                 </div>
                 {/* <h5>Coming Soon</h5> */}
                 <h5>Coming Soon</h5>
