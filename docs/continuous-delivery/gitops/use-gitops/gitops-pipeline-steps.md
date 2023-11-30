@@ -14,14 +14,14 @@ This topic describes how to use Harness GitOps PR pipeline steps in your [Harnes
 
 :::
 
-Harness automatically adds multiple steps to the PR pipelines that you create in Harness. These steps and optional steps are described in this section.
+Harness automatically adds multiple steps to the PR pipelines that you create in Harness. These steps and other PR pipeline steps are described in this section.
 
 Steps that Harness adds to the PR pipeline:
 - Update Release Repo step
 - Merge PR step
 - Fetch Linked Apps step
 
-Optional steps that you can add to the PR pipeline:
+Other steps that you can add to the PR pipeline:
 - Revert PR step
 
 :::note
@@ -55,8 +55,6 @@ In this step, you can do the following:
 
 - If an empty or blank value is provided for a variable, the variable is disregarded, and no updates are made to the JSON or YAML file for that specific variable.
 
-![](static/harness-git-ops-application-set-tutorial-56.png)
-
 ### Merge PR step
 
 :::info Limitation
@@ -75,9 +73,28 @@ The following image shows information that is displayed on the **Output** tab of
 
 ![picture 1](static/9b9bdbb81176317f5eafdd31e982b081ba449514f56fa5d9222effc03f69bd88.png)
 
-As shown in the image, you can select the **Click to copy** icon in the **Output Name** column to copy the expression that references a key name. You can then use that expression to reference the output value in a subsequent Shell Script step or other step setting.
+You can copy the expression for any output in the **Output Name** column and use it to reference the output value in a subsequent Shell Script step or step setting.
 
-Harness fetches the ApplicationSet YAML file from its file store and identifies the related Harness GitOps app(s). 
+Harness fetches the ApplicationSet YAML file from its file store and identifies the related Harness GitOps app(s). For example: 
+
+```
+
+Starting Git Fetch Files
+Git connector Url: https://github.com/wings-software/gitops-automation.git
+Branch: syncstepautomation
+
+Fetching following Files :
+- helm2/app1/appset.yaml
+
+Successfully fetched following files:
+- helm2/app1/appset.yaml
+
+
+Git Fetch Files completed successfully.
+App set Name: helm-k8s-app
+Found linked app: syncstep-automation-app-cluster22. Link - https://app.harness.io/ng/#/account/1bvyLackQK-Hapk25-Ry4w/cd/orgs/default/projects/DoNotDeleteGitopsAutomationSyncStep/gitops/applications/syncstep-automation-app-cluster22?agentId=account.qagitopsautomationaccount
+Found linked app: syncstep-automation-app-cluster11. Link - https://app.harness.io/ng/#/account/1bvyLackQK-Hapk25-Ry4w/cd/orgs/default/projects/DoNotDeleteGitopsAutomationSyncStep/gitops/applications/syncstep-automation-app-cluster11?agentId=account.qagitopsautomationaccount
+```
 
 ### Revert PR step
 
@@ -97,17 +114,11 @@ You can create another Merge PR step to merge the PR created by the Revert PR st
 
 :::info
 
-For the **Update GitOps App** and **GitOps Sync** steps, ensure that the service, environment, and cluster selected in the pipeline matches the service, environment, and cluster, respectively, in the application.
+For these steps, ensure that the service, environment, and cluster selected in the pipeline matches the service, environment and cluster, respectively, in the application.
 
 :::
 
 ### Update GitOps App step
-
-:::note
-
-Currently, this feature is behind the feature flag `GITOPS_UPDATE_APP_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 :::note Limitation
 
@@ -143,4 +154,4 @@ After selecting this step, in **Advanced Configuration**, select the application
 
 The sync options provided are the same options you receive while syncing an application in GitOps directly.
 
-This completes all the possible configurable steps in Harness PR pipelines. Happy Deploying!
+This completes all the configurable steps for GitOps in Harness pipelines. Happy Deploying!

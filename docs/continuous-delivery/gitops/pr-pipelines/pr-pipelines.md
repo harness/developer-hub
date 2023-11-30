@@ -217,7 +217,7 @@ Finally, create the Harness PR pipeline by following these steps-
 
 ## Review execution steps
 
-In **Execution**, Harness automatically adds a few common PR pipeline steps. These steps and other PR pipeline steps, are described below.
+In **Execution**, Harness automatically adds a few common PR pipeline steps. These steps and other PR pipeline steps, are briefly described below.
 
 :::note
 
@@ -231,9 +231,7 @@ This step fetches your JSON files, updates them with your changes, performs a co
 
 You can also enter variables in this step to update key-value pairs in the config file you are deploying.  
 
-If there is a matching variable name in the variables of the Harness service or environment used in this pipeline, the variable entered in this step will override them. 
-
-If an empty or blank value is provided for a variable, it will be disregarded, and no updates will be made to the JSON or YAML file for that specific variable.
+If there is a matching variable name in the variables of the Harness service or environment used in this pipeline, the variable entered in this step will override them.
 
 For more information, please refer to [Update Release Repo step](/docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps.md#update-release-repo-step).
 
@@ -253,26 +251,7 @@ This information is displayed on the **Output** tab of the step.
 
 You can copy the expression for any output in the **Output Name** column and use it to reference the output value in a subsequent Shell Script step or step setting.
 
-In the step log you can see Harness fetch the ApplicationSet YAML file from its file store and identify the related Harness GitOps app(s). For example:
-
-```
-
-Starting Git Fetch Files
-Git connector Url: https://github.com/wings-software/gitops-automation.git
-Branch: syncstepautomation
-
-Fetching following Files :
-- helm2/app1/appset.yaml
-
-Successfully fetched following files:
-- helm2/app1/appset.yaml
-
-
-Git Fetch Files completed successfully.
-App set Name: helm-k8s-app
-Found linked app: syncstep-automation-app-cluster22. Link - https://app.harness.io/ng/#/account/1bvyLackQK-Hapk25-Ry4w/cd/orgs/default/projects/DoNotDeleteGitopsAutomationSyncStep/gitops/applications/syncstep-automation-app-cluster22?agentId=account.qagitopsautomationaccount
-Found linked app: syncstep-automation-app-cluster11. Link - https://app.harness.io/ng/#/account/1bvyLackQK-Hapk25-Ry4w/cd/orgs/default/projects/DoNotDeleteGitopsAutomationSyncStep/gitops/applications/syncstep-automation-app-cluster11?agentId=account.qagitopsautomationaccount
-```
+In the step log you can see Harness fetch the ApplicationSet YAML file from its file store and identify the related Harness GitOps app(s).
 
 ### Revert PR
 
