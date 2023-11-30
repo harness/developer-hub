@@ -16,7 +16,7 @@ Often, even though your ApplicationSet syncs one microservice/application to mul
 
 :::tip Important
 
-This topic builds on the ApplicationSet concept discussed in [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial). It is recommended that you go through that topic before venturing into this one.
+This topic builds on the ApplicationSet concept discussed in [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial.md). It is recommended that you go through that topic before venturing into this one.
 
 :::
 
@@ -62,7 +62,7 @@ When you deploy a Harness PR Pipeline, you simply indicate what target environme
 
 :::note
 
-To understand how to configure PR pipelines within Harness, please refer to [Create Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines).
+To understand how to configure PR pipelines within Harness, please refer to [Create Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md).
 
 :::
 

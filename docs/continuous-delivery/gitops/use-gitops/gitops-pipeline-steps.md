@@ -6,7 +6,7 @@ sidebar_position: 3
 
 :::tip Important
 
-This document describes how to use various GitOps steps in your [Harness PR pipeline](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines). Before you begin, go through the basics of the [Harness PR pipeline](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines).
+This document describes how to use various GitOps steps in your [Harness PR pipeline](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md). Before you begin, go through the basics of the [Harness PR pipeline](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md).
 
 :::
 
@@ -20,7 +20,7 @@ You don't have to edit anything in the **Update Release Repo** and **Merge PR** 
 
 ## Resolve services, environments, and clusters
 
-Before your Harness PR pipeline runs, you will notice two tabs where Harness resolves the [service, environment, and cluster configuration](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines). These appear as **Service** and **Cluster** tabs and their successful runs have the following logs.
+Before your Harness PR pipeline runs, you will notice two tabs where Harness resolves the [service, environment, and cluster configuration](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md). These appear as **Service** and **Cluster** tabs and their successful runs have the following logs.
 
 ### Service
 
@@ -130,7 +130,7 @@ Found linked app: syncstep-automation-app-cluster11. Link - https://app.harness.
 
 :::note
 
-The steps mentioned above are automatically added when you select the **GitOps** tab while creating a [Harness PR pipeline](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines#create-a-harness-pr-pipeline).
+The steps mentioned above are automatically added when you select the **GitOps** tab while creating a [Harness PR pipeline](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines#create-a-harness-pr-pipeline.md).
 
 :::
 

@@ -16,9 +16,9 @@ Often, even though your ApplicationSet syncs one microservice/application to mul
 
 :::tip Important
 
-This topic builds on the ApplicationSet created in [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial). Ensure you have read that topic and, ideally, have set up an ApplicationSet in Harness before creating a PR pipeline.
+This topic builds on the ApplicationSet created in [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial.md). Ensure you have read that topic and, ideally, have set up an ApplicationSet in Harness before creating a PR pipeline.
 
-It is also recommended that you go through the basics of Harness PR pipelines here [Harness GitOps PR pipelines basics](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics) before proceeding further.
+It is also recommended that you go through the basics of Harness PR pipelines here [Harness GitOps PR pipelines basics](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics.md) before proceeding further.
 
 :::
 
@@ -48,7 +48,7 @@ A Harness service represents what you're deploying. In this case, we're deployin
 
 ### Configuring a Harness Git connector for your repository
 
-For information on setting up a Harness Git connector, go to [Connect to a Git repository](/docs/platform/connectors/code-repositories/connect-to-code-repo).
+For information on setting up a Harness Git connector, go to [Connect to a Git repository](/docs/platform/connectors/code-repositories/connect-to-code-repo.md).
 
 
 ### Specify manifest details
@@ -89,7 +89,7 @@ The new environment is created.
 
 :::note
 
-For updating the `config.json` or `config.yaml` values, Harness supports variables in the [Update Release Repo step](/docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps#update-release-repo-step). If you want to enforce common values at the service or environment level of your ApplicationSet, you can use service or environment variables.
+For updating the `config.json` or `config.yaml` values, Harness supports variables in the [Update Release Repo step](/docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps.md#update-release-repo-step). If you want to enforce common values at the service or environment level of your ApplicationSet, you can use service or environment variables.
 
 Values from the **Update Release Repo** step have a higher priority than service or environment variables.
 
@@ -110,7 +110,7 @@ These variables are now be part of your PR pipeline.
 
 ## Clusters
 
-Before updating your application's `config.json` values, Harness also resolves the clusters in which the application is deployed. It displays this information on the [Cluster](/docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps#resolving-services-environments-and-clusters) tab. This resolution serves as another layer of validation before your application's values are updated.
+Before updating your application's `config.json` values, Harness also resolves the clusters in which the application is deployed. It displays this information on the [Cluster](/docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps.md#resolving-services-environments-and-clusters) tab. This resolution serves as another layer of validation before your application's values are updated.
 
 The referenced cluster is the cluster that you created when you deployed your application. You do not need to create any new entities in Harness.
 
@@ -220,7 +220,7 @@ Harness can then resolve which directory to traverse during runtime and update o
 
 	2. Click **Continue**.
 
-7. **Add your GitOps pipeline steps**: Harness automatically adds the **Update Release Repo**, **Merge PR** and **Fetch Linked Apps** Steps, which are ready to be run without any configuration. However, to further customize these steps or add other optional steps, please refer to [Harness PR pipeline steps](/docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps).
+7. **Add your GitOps pipeline steps**: Harness automatically adds the **Update Release Repo**, **Merge PR** and **Fetch Linked Apps** Steps, which are ready to be run without any configuration. However, to further customize these steps or add other optional steps, please refer to [Harness PR pipeline steps](/docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps.md).
 
 ### Run and verify the PR pipeline
 
@@ -349,7 +349,7 @@ A Harness service represents what you're deploying. In this case, we're deployin
 
 ### Configuring a Harness Git connector for your repository
 
-For information on setting up a Harness Git connector, go to [Connect to a Git repository](/docs/platform/connectors/code-repositories/connect-to-code-repo).
+For information on setting up a Harness Git connector, go to [Connect to a Git repository](/docs/platform/connectors/code-repositories/connect-to-code-repo.md).
 
 ### Specify manifest details
 
