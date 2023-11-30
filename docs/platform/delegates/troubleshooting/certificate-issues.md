@@ -170,7 +170,8 @@ To resolve the exception when OpenSSL tool isn't present, do the following:
    curl -vk <YOUR_URL>
    ```
 
-3. Turn on SSL debug log. Set JAVA_OPTS environment variable when installing delegate
+3. Turn on the SSL debug log by setting the `JAVA_OPTS` environment variable when installing delegate.
+
    ```
    JAVA_OPTS="-Djavax.net.debug=all"
    ```
