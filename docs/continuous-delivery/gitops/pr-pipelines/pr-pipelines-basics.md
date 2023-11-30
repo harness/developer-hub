@@ -1,6 +1,6 @@
 ---
 title: Harness GitOps PR pipelines basics
-description: Modify an application in just one of its target environments.
+description: Change an application in just one of its target environments.
 sidebar_position: 1
 ---
 
@@ -62,7 +62,7 @@ When you deploy a Harness PR Pipeline, you simply indicate what target environme
 
 :::note
 
-To understand how to configure PR pipelines within Harness, please refer to [Create Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md).
+To create PR pipelines within Harness, please refer to [Create Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md).
 
 :::
 

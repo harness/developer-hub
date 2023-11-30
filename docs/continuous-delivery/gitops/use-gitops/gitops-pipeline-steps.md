@@ -1,7 +1,7 @@
 ---
 title: Harness GitOps pipeline steps
 description: Configure Harness pipeline steps for GitOps.
-sidebar_position: 3
+sidebar_position: 10
 ---
 
 :::tip Important
@@ -130,7 +130,7 @@ Found linked app: syncstep-automation-app-cluster11. Link - https://app.harness.
 
 :::note
 
-The steps mentioned above are automatically added when you select the **GitOps** tab while creating a [Harness PR pipeline](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines#create-a-harness-pr-pipeline.md).
+The steps mentioned above are automatically added when you select the **GitOps** tab while creating a [Harness PR pipeline](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md#create-a-harness-pr-pipeline).
 
 :::
 

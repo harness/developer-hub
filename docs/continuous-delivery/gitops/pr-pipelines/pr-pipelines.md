@@ -1,6 +1,6 @@
 ---
 title: Create Harness GitOps PR pipelines
-description: Change an application in just one of its target environments.
+description: Learn how to create PR pipelines with Harness GitOps.
 sidebar_position: 2
 ---
 
