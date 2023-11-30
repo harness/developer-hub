@@ -24,7 +24,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## November 2023
 
-### Version 1.24.5
+### Version 1.25.5
 
 #### New features and enhancements
 
@@ -57,7 +57,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * SLO probe properties in the fault selection and probe details in the runs view UI was not being displayed. This has been fixed. (CHAOS-3119)
 
-* (CHAOS-3115)
+* Added support for **SKIP_SSL_VERIFY** in readiness probes for the execution plane components. (CHAOS-3115)
 
 * Mongo queries resulted in fetching results for deleted gamedays. This has been fixed by adding a field "is_removed" to the mongo queries. (CHAOS-3091)
 
