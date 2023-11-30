@@ -133,7 +133,7 @@ Next, we'll create a Harness service that points to the `config.json` files in t
 2. Select **New Service**.
 3. In **Name**, enter **PR Example**.
 4. In **Manifests**, select **Add Release Repo Manifest**.
-5. In **Release Repo Store**, select the Harness Git connector to the repository which contains your ApplicationSet manifests. If you do not already have this, you will need to create a connector to your repository.
+5. In **Release Repo Store**, select the Harness Git connector to the repository which contains your ApplicationSet manifests. If you do not already have this configured, you will need to create a connector to your repository.
 
 :::note
     
@@ -250,8 +250,6 @@ This information is displayed on the **Output** tab of the step.
 ![picture 1](static/9b9bdbb81176317f5eafdd31e982b081ba449514f56fa5d9222effc03f69bd88.png)  
 
 You can copy the expression for any output in the **Output Name** column and use it to reference the output value in a subsequent Shell Script step or step setting.
-
-In the step log you can see Harness fetch the ApplicationSet YAML file from its file store and identify the related Harness GitOps app(s).
 
 ### Revert PR
 

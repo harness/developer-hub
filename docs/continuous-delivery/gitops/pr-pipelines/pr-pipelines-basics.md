@@ -34,7 +34,7 @@ You can add an ApplicationSet manifest to a Harness GitOps Application just like
 
 ApplicationSets use generators to generate parameters that are substituted into the `template:` section of the ApplicationSet resource during template rendering.
 
-There are many types of generators, however, Harness provides first-class support for the **Git Generator** with the **Update Release Repo** and **Merge PR** [steps](/docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps.md) in the PR pipeline.
+There are many types of generators, however, Harness provides first-class support for the **Git Generator** with the **Update Release Repo**, **Merge PR** and **Revert PR** [steps](/docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps.md) in the PR pipeline.
 
 For more information on other Generators, please refer to [Generators](https://argocd-applicationset.readthedocs.io/en/stable/Generators/) from Argo CD docs.
 
@@ -54,7 +54,7 @@ While the Git generator supports various methods, one of its standout features i
 
 ## Harness PR Pipelines
 
-Harness PR Pipelines allow you to manage the configuration of individual applications created by the ApplicationSet. The key differentiator between various config files for the ApplicationSet is generally chosen to be the folder structure, which would usually align with the environment name in Harness.
+Harness PR Pipelines allow you to manage the configuration of individual applications created by the ApplicationSet. The key differentiator between various config files for the ApplicationSet is the folder structure, which would usually differentiate based on the environment in Harness.
 
 When you deploy a Harness PR Pipeline, you simply indicate what target environment application you want to update and the `config.json` keys/values you want changed, such as release tags. Harness creates the pull request in your Git repo and merges it for you. Now, the target environment application has the new keys/values, which can then be reviewed and deployed by syncing the ApplicationSet.
 
@@ -62,7 +62,7 @@ When you deploy a Harness PR Pipeline, you simply indicate what target environme
 
 :::note
 
-To create PR pipelines within Harness, please refer to [Create Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md).
+To create PR pipelines in Harness, please refer to [Create Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md).
 
 :::
 
