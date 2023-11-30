@@ -87,7 +87,7 @@ Keys are used to sign and verify attestations.
 
 ## Configure the STO scan step to generate SBOM
 
-Configure an STO scanner step, such as the [Snyk STO step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans#snyk-repository-orchestration-example, and make sure you select **Generate SBOM** and the **SBOM Format**.
+Configure the [Snyk STO scanner step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scans#snyk-repository-orchestration-example), and make sure you select **Generate SBOM** and the **SBOM Format**.
 
 ![](../static/generate-sbom-blackduck-00.png)
 
