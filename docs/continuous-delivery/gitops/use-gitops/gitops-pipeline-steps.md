@@ -4,51 +4,31 @@ description: Configure Harness pipeline steps for GitOps.
 sidebar_position: 10
 ---
 
+This topic shows you how to configure your Harness GitOps pipeline steps. Few of these steps are specifically meant to be used with [PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics.md), but others can be used directly in your GitOps pipeline stages. 
+
+## PR Pipeline Steps
+
 :::tip Important
 
-This document describes how to use various GitOps steps in your [Harness PR pipeline](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md). Before you begin, go through the basics of the [Harness PR pipeline](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md).
+This topic describes how to use Harness GitOps PR pipeline steps in your [Harness PR pipeline](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md). Please refer to that topic before venturing into this one.
 
 :::
 
-Harness automatically adds multiple steps to the PRs that you create in Harness. These steps and optional steps are described in this document.
+Harness automatically adds multiple steps to the PR pipelines that you create in Harness. These steps and optional steps are described in this section.
+
+Steps that Harness adds to the PR pipeline:
+- Update Release Repo step
+- Merge PR step
+- Fetch Linked Apps step
+
+Optional steps that you can add to the PR pipeline:
+- Revert PR step
 
 :::note
 
-You don't have to edit anything in the **Update Release Repo** and **Merge PR** steps. The steps are ready for use, but you can apply optional configurations.
+You don't have to edit anything in the **Update Release Repo**, **Merge PR** and **Fetch Linked Apps** steps. The steps are ready for use, but you can apply optional configurations specified below.
 
 :::
-
-## Resolve services, environments, and clusters
-
-Before your Harness PR pipeline runs, you will notice two tabs where Harness resolves the [service, environment, and cluster configuration](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md). These appear as **Service** and **Cluster** tabs and their successful runs have the following logs.
-
-### Service
-
-```bash
-Starting service step...  
-Processing service variables...  
-Applying environment variables and service overrides  
-Processed service variables  
-Processed artifacts and manifests  
-Completed service step
-```
-
-### GitOps Clusters:
-
-```bash
-Environment(s): {dev}   
-  
-Processing clusters at scope PROJECT  
-Following 1 cluster(s) are present in Harness Gitops  
-Identifiers: {engineeringdev}   
-  
-Following 1 cluster(s) are selected after filtering  
-Identifiers: {engineeringdev}   
-  
-Completed
-```
-
-## Steps that Harness adds to the PR pipeline
 
 ### Update Release Repo step
 
@@ -71,15 +51,11 @@ In this step, you can do the following:
    }
    ```
 
-If a variable name used in this step matches a variable in the Harness service or environment used in this pipeline, the variable entered in this step overrides the service or environment variable.
+- If a variable name used in this step matches a variable in the Harness service or environment used in this pipeline, the variable entered in this step overrides the service or environment variable.
 
-4. If an empty or blank value is provided for a variable, the variable is disregarded, and no updates are made to the JSON or YAML file for that specific variable.
+- If an empty or blank value is provided for a variable, the variable is disregarded, and no updates are made to the JSON or YAML file for that specific variable.
 
 ![](static/harness-git-ops-application-set-tutorial-56.png)
-
-A successful run for Update Release Repo looks like this:
-
-![](static/harness-git-ops-application-set-tutorial-59.png)
 
 ### Merge PR step
 
@@ -91,13 +67,6 @@ You can create a maximum of two Merge PR steps in a stage.
 
 This step merges a PR.
 
-```bash
-PR Link: https://github.com/wings-software/gitops-pipeline-demo/pull/155  
-Pull Request successfully merged  
-Commit Sha is bcd4f2f73a47b74dba54habbcd10a6679ed99a  
-Done.
-```
-
 ### Fetch Linked Apps step
 
 The Fetch Linked Apps step provides app information, such as the app name, agent identifier, and URL to the Harness GitOps app.
@@ -108,31 +77,7 @@ The following image shows information that is displayed on the **Output** tab of
 
 As shown in the image, you can select the **Click to copy** icon in the **Output Name** column to copy the expression that references a key name. You can then use that expression to reference the output value in a subsequent Shell Script step or other step setting.
 
-Harness fetches the ApplicationSet YAML file from its file store and identifies the related Harness GitOps app(s). This can be verified in the step logs that follow:
-
-```
-Starting Git Fetch Files
-Git connector Url: https://github.com/wings-software/gitops-automation.git
-Branch: syncstepautomation
-
-Fetching following Files :
-- helm2/app1/appset.yaml
-
-Successfully fetched following files:
-- helm2/app1/appset.yaml
-
-
-Git Fetch Files completed successfully.
-App set Name: helm-k8s-app
-Found linked app: syncstep-automation-app-cluster22. Link - https://app.harness.io/ng/#/account/1bvyLackQK-Hapk25-Ry4w/cd/orgs/default/projects/DoNotDeleteGitopsAutomationSyncStep/gitops/applications/syncstep-automation-app-cluster22?agentId=account.qagitopsautomationaccount
-Found linked app: syncstep-automation-app-cluster11. Link - https://app.harness.io/ng/#/account/1bvyLackQK-Hapk25-Ry4w/cd/orgs/default/projects/DoNotDeleteGitopsAutomationSyncStep/gitops/applications/syncstep-automation-app-cluster11?agentId=account.qagitopsautomationaccount
-```
-
-:::note
-
-The steps mentioned above are automatically added when you select the **GitOps** tab while creating a [Harness PR pipeline](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md#create-a-harness-pr-pipeline).
-
-:::
+Harness fetches the ApplicationSet YAML file from its file store and identifies the related Harness GitOps app(s). 
 
 ### Revert PR step
 
@@ -146,22 +91,15 @@ The Revert PR step uses the commitId from the Update Release Repo step as input.
 
 The Revert PR step creates a new branch and creates a commit to revert the changes made by the commit in the Update Release Repo step.
 
-```bash
-Setting git configs
-Using optimized file fetch
-Created revert PR https://github.com/wings-software/gitops-pipeline-demo/pull/156
-Done.
-```
-
 You can create another Merge PR step to merge the PR created by the Revert PR step. In this scenario, the Merge PR step reaches its maximum limit for a stage.
+
+## Additional Harness GitOps Pipeline Steps
 
 :::info
 
 For the **Update GitOps App** and **GitOps Sync** steps, ensure that the service, environment, and cluster selected in the pipeline matches the service, environment, and cluster, respectively, in the application.
 
 :::
-
-## Steps that you can choose to add to Harness pipelines for GitOps
 
 ### Update GitOps App step
 
