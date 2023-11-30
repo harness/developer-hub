@@ -26,7 +26,7 @@ To resolve the handshake exception, do the following:
    curl -cacerts path/to/ca-certs/file https://<MANAGER_HOST>/api/account/<ACCOUNT_ID>/status
    ```
 
-2. Install the certificate on the delegate. go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/).
+2. Install the certificate on the delegate. For more information, go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/).
 
 3. Follow the appropriate steps below, based on whether you use the OpenSSL tool.
 
@@ -140,7 +140,7 @@ To resolve the handshake exception, do the following:
          
    3. Copy the `BEGIN CERTIFICATE` and `END CERTIFICATE` blocks into a new `cacerts.pem` file.
 
-   4. Add the CA certificates to the delegate. go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/).
+   4. Add the CA certificates to the delegate. For more information, go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/).
 
 </details>
 
@@ -164,7 +164,7 @@ To resolve the exception when OpenSSL tool isn't present, do the following:
     
     3. If the installation succeeds, following the OpenSSL steps above. If the installation fails, continue with the steps below.
 
-2. Use the cURL commands below to find the issuers that are missing in your CA bundle. Find the certificate for each issuer by going to the domain in your browser or download the certificate.
+2. Use the cURL commands below to find the issuers that are missing in your CA bundle. Find the certificate for each issuer by going to the domain in your browser and downloading the certificate.
    
    ```
    curl -vk <YOUR_URL>
