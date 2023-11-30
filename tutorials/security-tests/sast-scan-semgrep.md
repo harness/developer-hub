@@ -23,6 +23,12 @@ This tutorial shows you how to scan your codebases using [Semgrep](https://semgr
 
 :::
 
+### Set up your codebase
+
+To do this tutorial, you need a codebase connector to your Git repository and an access token. A connector can specify a Git account (https://git.com/my-account) or a specific repository (https://git.com/my-account). 
+
+This tutorial uses the [dvpwa repository](https://github.com/williamwissemann/dvpwa) as an example. The simplest setup is to create a connector to your account, fork this repository, and then specify the repository in your connector. However, you can run your scans on any codebase that uses a language supported by Semgrep.  
+
 ### Set up your pipeline
 
 Do the following:
@@ -32,6 +38,12 @@ Do the following:
 2. In the new pipeline, select **Add stage** > **Security Tests** and enter a name for the new stage.
 
 3. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.  
+
+4. Set up your codebase:
+
+   1. Select **Codebase** on the right.
+
+   2. Select your codebase connector and the repository you want to scan.  
 
 
 ### Run the Semgrep scan
@@ -106,12 +118,16 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
 
    4. Ingestion File = **/harness/results.sarif**
 
-   5. [Fail on Severity] = **Critical**
+   5. Fail on Severity = **Critical**
 
 
 ### Run the pipeline
 
-1. In the Pipeline Studio, select **Run** (top right) and wait for the execution to finish.
+1. In the Pipeline Studio, select **Run** (top right).
 
-2. 
+2. When prompted, select the **master** branch, start the run, and then wait for the execution to finish.
+
+If you used the [example repository](https://github.com/williamwissemann/dvpwa) mentioned above, you'll see that the pipeline failed for an entirely expected reason: the Semgrep step is [configured to fail the pipeline](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) if the scan detected any critical vulnerabilities. The final log entry for the Semgrep step reads: `Exited with message: fail_on_severity is set to critical and that threshold was reached.`
+
+![](./static/sast-semgrep-tutorial/pipeline-failed-critical-issues-found.png)
 
