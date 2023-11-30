@@ -22,58 +22,24 @@ It is also recommended that you go through the basics of Harness PR pipelines he
 
 :::
 
+When you deploy a Harness PR pipeline, you indicate the target environment application and the `config.json` keys/values you want changed. Harness creates the pull request in your Git repo and merges it for you. Once complete, the target environment application has the new keys/values.
 
-### Create a Harness PR pipeline
+![](static/harness-git-ops-application-set-tutorial-43.png)
 
-Continuing on the ApplicationSet setup from the above-mentioned document, the path to your two `config.json` files would be the following-
+For the PR Pipeline, we'll create two Harness environments, dev and prod. These names are the same as the folder names in the repo:
+
+![](static/harness-git-ops-application-set-tutorial-44.png)
+
+We use the same names so that when we select a Harness environment we can pass along the same name as the target folder. The path to your two `config.json` files would be the following-
 
 - `examples/git-generator-files-discovery/cluster-config/engineering/dev/config.json`
 - `examples/git-generator-files-discovery/cluster-config/engineering/prod/config.json`
 
-Please refer to these steps to get an overview of how to set up a Harness PR pipeline for your ApplicationSet:
+Now, let's create Harness environments for each of the target environments - dev and prod.
 
-A Harness service logically corresponds to a microservice/application template in an ApplicationSet. Together with the environment and cluster entities, Harness resolves application `config.json` files in a Git repository to update manifest values through PR pipelines.
+## Create Harness environments for each target environment
 
-In order to configure a Harness PR pipeline, you must create these Harness entities with the appropriate configurations.
-
-## Set up a Harness service
-
-A Harness service represents what you're deploying. In this case, we're deploying an application template specified as a `config.json` file.
-
-1. In your Harness project, select the **Services** tab.
-2. Select **New Service**.
-3. In **Name**, enter **PR Example**.
-4. In **Manifests**, select **Add Release Repo Manifest**.
-5. In **Release Repo Store**, select one the repository to use.
-
-### Configuring a Harness Git connector for your repository
-
-For information on setting up a Harness Git connector, go to [Connect to a Git repository](/docs/platform/connectors/code-repositories/connect-to-code-repo.md).
-
-
-### Specify manifest details
-
-Define the manifest to use for the PR pipeline. Use the path to the `config.json` files. You can use the expression `<+env.name>` in the path to dynamically select the path based on the Harness environment we select: **dev** or **prod**.
-
-1. In **Manifest Details**, do the following, and then select **Submit**.
-	1. **Manifest Name**: Enter a name for the manifest, such as `config.json`.
-	2. **Git Fetch Type**: Select **Latest from Branch**.
-	3. **Branch:** Enter the name of the branch that contains theApplicationSet configurations (for example, main).
-	4. **File Path**: Enter the path to the config.json file. For example, `examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/config.json`.
-
-   Note the use of `<+env.name>`.
-
-   ![](static/harness-git-ops-application-set-tutorial-53.png)
-
-2. Select **Submit**.
-3. In the top-right corner, select **Save**.
-
-You have now successfully configured a Harness service for your PR pipeline.
-
-
-## Create Harness environments for a target environment
-
-Once you have successfully configured a service, you can configure a Harness environment. An environment logically corresponds to your `dev`, `staging`, or `production` environments. Ideally, your ApplicationSet configuration files would differ on the basis of the environments they would deploy to.
+An environment logically corresponds to your `dev`, `staging`, or `production` environments. Ideally, your ApplicationSet configuration files would differ on the basis of the environments they would deploy to.
 
 To create a dev environment, do the following:
 
@@ -83,7 +49,114 @@ To create a dev environment, do the following:
 	1. **Name** Enter `dev`.
 	2. **Environment Type**: Select **Pre-Production**.
 
-The new environment is created.
+The new environment is created. Similarly, create another environment `prod`.
+
+### Create a variable for JSON key-value pair to be updated
+
+Next, we'll add a variable for the JSON key-value we will be updating.
+
+1. In **Advanced**, in **Variables**, click **New Variable Override**.
+2. In the variable **Name**, enter **asset\_id** and click **Save**.
+
+   The `asset_id` name is a key-value in the `config.json` files for both dev and prod:
+
+   ![](static/harness-git-ops-application-set-tutorial-45.png)
+
+3. For variable **Value**, select **Runtime Input**:
+
+   ![](static/harness-git-ops-application-set-tutorial-46.png)
+
+   Later, when you run the pipeline, you'll provide a new value for this variable, and that value will be used to update the `config.json` file.
+
+Repeat this process for the `prod` environment.
+
+## Linking GitOps clusters to the Harness environments
+
+Before updating your application's `config.json` values, Harness also resolves the GitOps clusters in which your application is deployed. 
+
+The referenced cluster is the same cluster that you created when you deployed your application. You do not need to create any new entities in Harness.
+
+Once you link GitOps clusters to an environment, whenever you select an environment in a pipeline, you can select the environment's linked GitOps clusters. This ensures that you can control where applications are to be deployed even within the same environment.
+
+Next, you need to link your GitOps clusters to your Harness environment.
+
+Link the **engineering-dev** GitOps cluster to the `dev` environment and **engineering-prod** GitOps cluster to the `prod` environment.
+
+To link the Harness GitOps clusters with the `dev` environment, do the following:
+
+1. Click **GitOps Clusters**.
+2. Click **Select Cluster(s)**.
+3. Select **engineering-dev**.
+4. Click **Add**.
+
+![](static/harness-git-ops-application-set-tutorial-47.png)
+
+The Harness GitOps cluster is now linked to the environment.
+
+![](static/harness-git-ops-application-set-tutorial-48.png)
+
+Similarly, link the **engineering-prod** GitOps cluster to the `prod` environment.
+
+You can link multiple clusters to a single environment.
+
+### Create a Harness service
+
+A Harness service logically corresponds to a microservice/application template in an ApplicationSet. Together with the environment and cluster entities, Harness resolves application `config.json` files in a Git repository to update manifest values through PR pipelines.
+
+The path to the `config.json` files in the service will use the expression <+env.name>: `examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/config.json`.
+
+At runtime, this expression resolves to the Harness environment you selected. When you run the pipeline, you'll select which environment to use, dev or prod, and Harness will use the corresponding repo folder and update that application only.
+
+:::info
+
+Optionally, you can also specify the `config.json` path in your ApplicationSet and service to resolve based on clusters:
+
+```
+examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/<+cluster.name>/config.json 
+```
+
+Your actual directories in Git, within your environment folder `dev`, would then need to look like this:
+
+```
+examples/git-generator-files-discovery/cluster-config/engineering/dev/cluster1/config.json
+examples/git-generator-files-discovery/cluster-config/engineering/dev/cluster2/config.json
+```
+
+Harness can then resolve which directory to traverse during runtime and update only those applications that are deployed in a particular cluster, for example  `cluster1`. This is similar to how environments are resolved using the `<+env.name>` expression.
+
+:::
+
+Next, we'll create a Harness service that points to the `config.json` files in the Git directories.
+
+1. In your Harness project, select the **Services** tab.
+2. Select **New Service**.
+3. In **Name**, enter **PR Example**.
+4. In **Manifests**, select **Add Release Repo Manifest**.
+5. In **Release Repo Store**, select a repository to use. If you do not have an existing repository, you will need to create a Harness Git connector to your Git repository.
+
+    :::note
+    
+    For information on setting up a Harness Git connector, go to [Connect to a Git repository](/docs/platform/connectors/code-repositories/connect-to-code-repo.md).
+    
+    :::
+
+    Now we'll define the manifest to use for the PR pipeline. We'll use the path to the `config.json` files. We'll use the expression `<+env.name>` in the path so that we can dynamically select the path based on the Harness environment we select: **dev** or **prod**.
+
+   In **Manifest Details**, enter the following settings and then click **Submit**.
+   1. **Manifest Name:** enter **config.json**.
+   2. **Git Fetch Type:** select **Latest from Branch**.
+   3. **Branch:** enter the name of the main branch (master, main, etc).
+   4. **File Path:** enter `examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/config.json`.
+
+       Note the use of `<+env.name>`.
+
+       ![](static/harness-git-ops-application-set-tutorial-53.png)
+
+   5. Select **Submit**.
+   
+6. In the top-right corner, select **Save**.
+
+You have now successfully configured a Harness service for your PR pipeline.
 
 ## Configure variables in a Harness service/environment (optional)
 
@@ -108,270 +181,39 @@ The following process is applicable to both services and environments. This exam
 
 These variables are now be part of your PR pipeline.
 
-## Clusters
+## Create the PR pipeline
 
-Before updating your application's `config.json` values, Harness also resolves the clusters in which the application is deployed. It displays this information on the [Cluster](/docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps.md#resolving-services-environments-and-clusters) tab. This resolution serves as another layer of validation before your application's values are updated.
-
-The referenced cluster is the cluster that you created when you deployed your application. You do not need to create any new entities in Harness.
-
-Next, to configure your PR pipeline, you need to link your GitOps clusters to your Harness environment.
-
-
-### Linking GitOps clusters to the environment
-
-Once you link GitOps clusters to an environment, whenever you select an environment in a pipeline, you can select the environment's linked GitOps clusters. This ensures that you can select where applications are to be deployed even within the same environment.
-
-To link the Harness GitOps clusters with an environment, do the following:
-
-1. Select **GitOps Clusters**.
-2. Select **Select Cluster(s)**.
-3. Select the cluster where your application is deployed.
-4. Select **Add**.
-
-![](static/harness-git-ops-application-set-tutorial-47.png)
-
-The Harness GitOps cluster is now linked to the environment.
-
-![](static/harness-git-ops-application-set-tutorial-48.png)
-
-You can link multiple clusters to a single environment.
-
-Additionally, you can specify the `config.json` path in your ApplicationSet and service to resolve based on clusters:
-
-```
-examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/<+cluster.name>.config.json 
-```
-
-Your actual directories in Git, within your environment folder `dev`, would then need to look like this:
-
-```
-examples/git-generator-files-discovery/cluster-config/engineering/dev/cluster1.config.json
-examples/git-generator-files-discovery/cluster-config/engineering/dev/cluster2.config.json
-```
-
-Harness can then resolve which directory to traverse during runtime and update only those applications that are deployed in a particular cluster, for example  `cluster1`. This is similar to how environments are resolved using the `<+env.name>` expression.
-
-
-1. **Creating a Service**: Create a Harness service that points to the `config.json` files in these directories.
-
-   The path to the config.json files in the service will use the expression `<+env.name>`
-
-   ```
-   examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/config.json
-   ```
-
-   At runtime, this expression resolves to the Harness environment you selected.
-
-   When you run the pipeline with environment as a runtime input (below), you'll select which environment to use, dev or prod, and Harness will use the corresponding repo folder and update that application only.
-
-2. **Creating Environments**: For this PR Pipeline, we'll create two Harness environments, dev and prod. These names are the same as the folder names in the repo. We use the same names so that when we select a Harness environment we can pass along the same name as the target folder.
-
-   ![](static/harness-git-ops-application-set-tutorial-44.png)
-
-   Next, we'll add a variable for the JSON key-value we will be updating.
-
-	1. In **Advanced**, in **Variables**, click **New Variable Override**.
-	2. In the variable **Name**, enter **asset\_id** and click **Save**.
-
-	   The `asset_id` name is a key-value in the `config.json` files for both dev and prod:
-
-	   ![](static/harness-git-ops-application-set-tutorial-45.png)
-
-	3. For variable **Value**, select **Runtime Input**:
-
-	   ![](static/harness-git-ops-application-set-tutorial-46.png)
-
-	   Later, when you run the pipeline, you'll provide a new value for this variable, and that value will be used to update the `config.json` file.
-
-   Repeat this process for the `prod` environment.
-	1. Create a new environment named **prod**.
-	2. Add the same `asset_id` variable to the prod environment.
-
-3. **Link your GitOps Clusters to the Environment**: Once you have created the environments, you will need to link the GitOps Clusters where your application is deployed to the respective environments. Link the **engineering-dev** GitOps cluster to the `dev` environment and **engineering-prod** GitOps cluster to the `prod` environment.
-
-   ![](static/harness-git-ops-application-set-tutorial-49.png)
-
-4. **Creating a Pipeline**: Create the Harness PR pipeline by following these steps-
-	1. In your Harness project, click **Pipelines**.
-	2. Click **Create a Pipeline**.
-	3. In **Create new Pipeline**, enter the name **PR Pipeline**, and then click **Start**.
-	4. Click **Add Stage**, and select **Deploy**.
-
-	   ![](static/harness-git-ops-application-set-tutorial-50.png)
-
-	5. Enter the following and click **Set Up Stage**:
-		1. **Stage Name:** enter **PR Example**.
-		2. **Deployment Type:** select **Kubernetes**.
-		3. Enable the **GitOps** option.
-
-   ![](static/harness-git-ops-application-set-tutorial-51.png)
-
-   The stage is created and the service settings appear.
-
-5. Please select the service you have already configured in Step 1.
-
-   ![](static/harness-git-ops-application-set-tutorial-54.png)
-
-6. For the stage environment, we'll use a Harness runtime input. When you run the pipeline, Harness will prompt you for a value for the environment. You can select the environment you want to use for the PR.
-
-	1. Set **Specify environment or environment group** as a runtime input.
-
-	   ![](static/harness-git-ops-application-set-tutorial-55.png)
-
-	2. Click **Continue**.
-
-7. **Add your GitOps pipeline steps**: Harness automatically adds the **Update Release Repo**, **Merge PR** and **Fetch Linked Apps** Steps, which are ready to be run without any configuration. However, to further customize these steps or add other optional steps, please refer to [Harness PR pipeline steps](/docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps.md).
-
-### Run and verify the PR pipeline
-
-Now your PR pipeline is ready.
-
-1. Click **Save**, and then click **Run**.
-2. In **Run Pipeline**, in **Specify Environment**, select the **dev** Environment.
-3. In **Environment Variables**, for **asset\_id**, enter the value `12345678`.
-4. In **Specify GitOps Clusters**, select the **engineeringdev** cluster.
-
-   ![](static/harness-git-ops-application-set-tutorial-57.png)
-
-5. Click **Run Pipeline**.
-
-   You can review the deployment steps in real-time.
-
-   ![](static/harness-git-ops-application-set-tutorial-58.png)
-
-6. Check the repo to see that the config.json file for the dev environment has been updated with the new **asset\_id** value:
-
-![](static/harness-git-ops-application-set-tutorial-60.png)
-
-Congratulations! Your PR Pipeline was successful.
-
-## Create a PR pipeline
-
-When you deploy a Harness PR pipeline, you indicate the target environment application and the config.json keys/values you want changed. Harness creates the pull request in your Git repo and merges it for you. Once complete, the target environment application has the new keys/values.
-
-![](static/harness-git-ops-application-set-tutorial-43.png)
-
-For the PR Pipeline, we'll create two Harness environments, dev and prod. These names are the same as the folder names in the repo:
-
-![](static/harness-git-ops-application-set-tutorial-44.png)
-
-We use the same names so that when we select a Harness environment we can pass along the same name as the target folder.
-
-Next, we'll create a Harness service that points to the config.json files in these directories.
-
-The path to the config.json files in the service will use the expression <+env.name>: `examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/config.json`.
-
-At runtime, this expression resolves to the Harness environment you selected.
-
-When you run the pipeline, you'll select which environment to use, dev or prod, and Harness will use the corresponding repo folder and update that application only.
-
-### Create Harness environments for each target environment
-
-First, let's create the **dev** environment.
-
-1. In your Harness Project, click **Environments**.
-2. Click **New Environment**.
-3. Enter the following and click **Save**:
-	1. **Name:** **dev**.
-	2. **Environment Type:** **Pre-Production**.
-
-The new environment is created.
-
-#### Create variable for JSON key-value pair
-
-Next, we'll add a variable for the JSON key-value we will be updating.
-
-1. In **Advanced**, in **Variables**, click **New Variable Override**.
-2. In the variable **Name**, enter **asset\_id** and click **Save**.  
-   
-   The `asset_id` name is a key-value in the config.json files for both dev and prod:
-   
-   ![](static/harness-git-ops-application-set-tutorial-45.png)
-
-3. For variable **Value**, select **Runtime Input**:
-   
-   ![](static/harness-git-ops-application-set-tutorial-46.png)
-   
-   Later, when you run the pipeline, you'll provide a new value for this variable, and that value will be used to update the config.json file.
-
-#### Select GitOps clusters to add to environment
-
-Next, we'll link the Harness GitOps clusters for dev with the dev environment. Once you link GitOps clusters to an environment, you can then select from an environment's linked GitOps clusters when you select the environment in a pipeline.
-
-1. Click **GitOps Clusters**.
-2. Click **Select Cluster(s)**.
-3. Select **engineering-dev**.
-4. Click **Add**.
-
-![](static/harness-git-ops-application-set-tutorial-47.png)
-
-The Harness GitOps cluster is now linked to the environment.
-
-![](static/harness-git-ops-application-set-tutorial-48.png)
-
-#### Repeat the process for the prod environment
-
-1. Create a new environment named **prod**.
-2. Add the same `asset_id` variable to the prod environment.
-3. Link the **engineering-prod** GitOps cluster to the environment.
-
-![](static/harness-git-ops-application-set-tutorial-49.png)
-
-### Create the PR pipeline
-
-To create the pipeline, we'll simply create a new service that includes the manifest you want deployed and select the dev environment you created earlier.
+Finally, create the Harness PR pipeline by following these steps-
 
 1. In your Harness project, click **Pipelines**.
 2. Click **Create a Pipeline**.
 3. In **Create new Pipeline**, enter the name **PR Pipeline**, and then click **Start**.
 4. Click **Add Stage**, and select **Deploy**.
-   
+
    ![](static/harness-git-ops-application-set-tutorial-50.png)
 
 5. Enter the following and click **Set Up Stage**:
-	1. **Stage Name:** enter **PR Example**.
-	2. **Deployment Type:** select **Kubernetes**.
-	3. Enable the **GitOps** option.
-  
-  ![](static/harness-git-ops-application-set-tutorial-51.png)
+    1. **Stage Name:** enter **PR Example**.
+    2. **Deployment Type:** select **Kubernetes**.
+    3. Enable the **GitOps** option.
+
+   ![](static/harness-git-ops-application-set-tutorial-51.png)
 
    The stage is created and the service settings appear.
 
-### Set up a Harness service
+6. Please select the service that you have already configured.
 
-A Harness service represents what you're deploying. In this case, we're deploying an application template specified as a `config.json` file.
+   ![](static/harness-git-ops-application-set-tutorial-54.png)
 
-1. In your Harness project, select the **Services** tab.
-2. Select **New Service**.
-3. In **Name**, enter **PR Example**.
-4. In **Manifests**, select **Add Release Repo Manifest**.
-5. In **Release Repo Store**, select one the repository to use.
+7. For the stage environment, we'll use a Harness runtime input. When you run the pipeline, Harness will prompt you for a value for the environment. You can select the environment you want to use for the PR.
 
-### Configuring a Harness Git connector for your repository
+    1. Set **Specify environment or environment group** as a runtime input.
 
-For information on setting up a Harness Git connector, go to [Connect to a Git repository](/docs/platform/connectors/code-repositories/connect-to-code-repo.md).
+       ![](static/harness-git-ops-application-set-tutorial-55.png)
 
-### Specify manifest details
+    2. Click **Continue**.
 
-Now we'll define the manifest to use for the PR pipeline. We'll use the path to the config.json files. We'll use the expression `<+env.name>` in the path so that we can dynamically select the path based on the Harness environment we select: **dev** or **prod**.
-
-1. In **Manifest Details**, enter the following settings and then click **Submit**.
-	1. **Manifest Name:** enter **config.json**.
-	2. **Git Fetch Type:** select **Latest from Branch**.
-	3. **Branch:** enter the name of the main branch (master, main, etc).
-	4. **File Path:** enter `examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/config.json`.  
-	
-  Note the use of `<+env.name>`.
-  
-  ![](static/harness-git-ops-application-set-tutorial-53.png)
-
-2. Back in **New Service**, click **Save**.
-
-  the service is added to the pipeline.
-
-  ![](static/harness-git-ops-application-set-tutorial-54.png)
-
-1. Click **Continue** to add the environment.
+8. **Add your GitOps pipeline steps**: Harness automatically adds the **Update Release Repo**, **Merge PR** and **Fetch Linked Apps** Steps, which are ready to be run without any configuration. However, to further customize these steps or add other optional steps, please refer to [Harness PR pipeline steps](/docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps.md).
 
 ### Add Environment Runtime Input
 
@@ -532,7 +374,7 @@ Now your PR pipeline is ready.
   ```
   
   
-6. Check the repo to see that the config.json file for the dev environment has been updated with the new **asset\_id** value:
+6. Check the repo to see that the `config.json` file for the dev environment has been updated with the new **asset\_id** value:
 
   ![](static/harness-git-ops-application-set-tutorial-60.png)
 
