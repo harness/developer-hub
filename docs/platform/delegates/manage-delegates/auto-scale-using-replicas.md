@@ -350,3 +350,27 @@ spec:
               configMap:
                 name: kubernetes-delegate-upgrader-config
 ```
+
+## Scale down delegate pods
+
+You can use `terminationGracePeriodSeconds` or `preStopHook` to scale down your delegate pods.
+
+- `terminationGracePeriodSeconds`: This is used to allow the delegate to delay the shutdown so that this process can perform some cleanup. The container shutdown is delayed the specified duration. 
+
+   If there are no tasks running on the delegate pod, it terminates immediately. If the delegate pod is running one or more tasks, it will stop accepting new tasks and terminate as soon as all running tasks complete. 
+
+   For example, if `terminationGracePeriodSeconds` is set to 7200 (two hours), there are three possible scenarios:
+
+   - No tasks: The delegate container terminates immediately.
+
+   - Short tasks: For example, if tasks require 10 minutes to complete, the delegate will delay shutdown until tasks are complete (10 minutes), and then shutdown. In this example, the total delay is 10 minutes, not two hours.
+
+   - Long tasks: For example, if tasks require five hours to complete, the delegate will delay the shutdown, up to the maximum grace period configured (two hours), then Kubernetes sends SIGKILL signal force, killing the delegate and tasks. Tasks will show up as timed out/failed in the UI.
+
+- `preStopHook`: This is used to allow any other kind of cleanup outside of the main process, for example, if you want to save files. This hook runs in parallel to the `terminationGracePeriodSeconds`, but before the delegate process shutdown is triggered (before the delegate process receives SIGTERM). If the hook's grace period ends, it is terminated. The delegate enters draining mode and only runs tasks already in progress. It will try doing this until all tasks are completed or until it is interrupted by Kubernetes with the SIGKILL signal when the grace period expires.
+
+:::info caution
+There are some drawbacks of using a longer `terminationGracePeriodSeconds`. Harness recommends that you evaluate your requirements and determine the maximum waiting time for task completion. If there is a long task that is pending completion, it can potentially bring down the entire delegate instance as it will be unable to process any new tasks while draining. It is crucial to consider the duration of tasks and ensure that they are distributed evenly to prevent such situations.
+
+During delegate upgrade scenarios, this is not a major issue, since Harness performs rolling updates by default. Rolling updates bring up new delegate instances before shutting down the old ones (this uses additional resources, but your tasks will finish). During a long task, if the delegate container requires a restart, it will result in one less delegate instance, which could impact other tasks that might fail to schedule due to a lack of available delegates.
+:::
