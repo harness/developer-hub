@@ -13,7 +13,7 @@ This tutorial shows you how to scan your codebases using [Semgrep](https://semgr
 - This tutorial has the following prerequisites:
 
   - A Harness account and STO module license
-  - A [code repo connector](/docs/platform/connectors/code-repositories/) to your Git provider and an access token  
+  - A [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and an access token to your Git provider account. 
   - A Semgrep account login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub. 
   - Your Git and Semgrep access tokens must be stored as [Harness secrets](/docs/platform/secrets/add-use-text-secrets)
 
