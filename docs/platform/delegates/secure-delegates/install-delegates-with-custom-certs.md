@@ -684,7 +684,7 @@ For Kubernetes delegates, Harness supports self-signed certificates for delegate
 To add self-signed certificates for delegate upgrader, do the following:
 
 1. In the delegate YAML file, mount the certificates in `/ca-bundle`.
-2. Add the securityContext to the upgrader cron job.
+2. Add the `securityContext` to the upgrader cron job.
 
    ```yaml
    apiVersion: batch/v1
