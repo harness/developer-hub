@@ -508,6 +508,18 @@ TF_VAR_alist='[1,2,3]'
 ```
 You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
+## Terraform Apply outputs
+
+Terraform outputs are available after terraform apply step has finished the execution. Terraform outputs can be exposed to other steps or resources in Harness.
+
+You can find these outputs in the Output area of the step. To use the Terraform outputs get the expression path to the output key.
+
+![](static/terraform-apply-outputs.png)
+
+The expression will look like this: <+pipeline.stages.stage-provisioning.spec.execution.steps.TerraformApply_5.output.TEST_OUTPUT_NAME1>
+
+When this expression will be exposed to another step, the expression will be resolved to its value.
+
 ## Encrypt the Terraform Apply JSON outputs
 
 The **Encrypt json output** setting encrypts the Terraform JSON output as a Harness secret. Only Harness Secret Manager is supported.
