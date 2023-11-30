@@ -1,6 +1,6 @@
 ---
 title: Codebase scans with Semgrep
-sidebar_position: 1
+sidebar_position: 5
 description: Scan a codebase using Semgrep
 keywords: [STO, security, SAST, security, codebase, Semgrep]
 # slug: /sto-pipelines/sast/semgrep
@@ -12,7 +12,10 @@ This tutorial shows you how to scan your codebases using [Semgrep](https://semgr
 
 - This tutorial has the following prerequisites:
 
-  - A Harness account and STO module license
+  - A Harness account and STO module license.
+  - A basic understanding of key STO concepts and good practices. Here are some good resources: 
+    - [Codebase scans with Bandit tutorial](/tutorials/security-tests/sast-scan-bandit)
+    - [Key Concepts in STO](/docs/category/key-concepts-in-sto)
   - A [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and an access token to your Git provider account. 
   - A Semgrep account login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub. 
   - Your Git and Semgrep access tokens must be stored as [Harness secrets](/docs/platform/secrets/add-use-text-secrets)
@@ -43,22 +46,16 @@ Do the following:
 
    1. Select **Codebase** on the right.
 
-   2. Select your codebase connector and the repository you want to scan.  
+   2. Select your codebase connector.
+
+   3. Select **Runtime Input** as the value type for the repository name. You will specify the repo when you run the pipeline. 
+
+      ![](./static/sast-semgrep-tutorial/codebase-repo-type-input.png)  
 
 
-### Run the Semgrep scan
+### Add the scan step
 
 Now you will add a step that runs a scan using the local Semgrep container image maintained by Harness. Harness updates its scanner images frequently to ensure that they include the latest scanner versions and vulnerability databases.  
-
-
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs>
-  <TabItem value="Visual" label="Pipeline Studio" default>
-```
 
 1. Go to **Execution** and add a **Run** step. 
 
@@ -86,19 +83,7 @@ import TabItem from '@theme/TabItem';
       2. Limit Memory = **4096**
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="YAML" label="YAML editor">
-```
-TBD
-
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-### Ingest the scan results
+### Add the Semgrep (ingest) step
 
 Now that you've added a step to run the scan, it's a simple matter to ingest it into your pipeline. Harness provides a set of customized steps for popular scanners such as Semgrep. 
 
@@ -112,22 +97,38 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
 
    3. Under Target:
 
-      1. Name = **dvpwa**
+      1. Name = Select **Runtime Input** as the value type.
 
-      2. Variant = **master**
+      2. Variant = Select **Runtime Input** as the value type.
 
    4. Ingestion File = **/harness/results.sarif**
 
    5. Fail on Severity = **Critical**
 
 
-### Run the pipeline
+### Run the pipeline and check your results
 
 1. In the Pipeline Studio, select **Run** (top right).
 
-2. When prompted, select the **master** branch, start the run, and then wait for the execution to finish.
+2. When prompted, enter your runtime inputs.
 
-If you used the [example repository](https://github.com/williamwissemann/dvpwa) mentioned above, you'll see that the pipeline failed for an entirely expected reason: the Semgrep step is [configured to fail the pipeline](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) if the scan detected any critical vulnerabilities. The final log entry for the Semgrep step reads: `Exited with message: fail_on_severity is set to critical and that threshold was reached.`
+   - Under **Codebase**, enter the repository and branch to scan.
 
-![](./static/sast-semgrep-tutorial/pipeline-failed-critical-issues-found.png)
+   - Under **Stage: semgrepScan**, enter the target name and variant you want to use. In most cases, you want to use the repository for the target and the branch for the variant. 
 
+   If you're scanning the [example repository](https://github.com/williamwissemann/dvpwa) mentioned above, enter the following:
+
+     - repository = **dvpwa**
+     - branch = **master**
+     - target = **dvpwa**
+     - variant = **master** 
+
+3. Run the pipeline and then wait for the execution to finish.
+
+   If you used the [example repository](https://github.com/williamwissemann/dvpwa) mentioned above, you'll see that the pipeline failed for an entirely expected reason: the Semgrep step is [configured to fail the pipeline](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) if the scan detected any critical vulnerabilities. The final log entry for the Semgrep step reads: `Exited with message: fail_on_severity is set to critical and that threshold was reached.`
+
+   ![](./static/sast-semgrep-tutorial/pipeline-failed-critical-issues-found.png)
+
+3. Select **Security Tests** and examine any issues detected by your scan.
+
+   ![](./static/sast-semgrep-tutorial/security-tests-results.png)
