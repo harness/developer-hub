@@ -26,11 +26,7 @@ To resolve the handshake exception, do the following:
    curl -cacerts path/to/ca-certs/file https://<MANAGER_HOST>/api/account/<ACCOUNT_ID>/status
    ```
 
-2. Install the certificate on the delegate.
-
-   1. If your delegate version is 807xx or later, mount the custom certificates to a path in the container and launch the delegate with the `CA_CERTS_DIR` environment variable to the path inside the container.
-
-   2. If your delegate version is earlier than 807xx, go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/). Remember to add the certificates to both the Java truststore and the pod.
+2. Install the certificate on the delegate. go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/).
 
 3. Follow the appropriate steps below, based on whether you use the OpenSSL tool.
 
@@ -144,11 +140,7 @@ To resolve the handshake exception, do the following:
          
    3. Copy the `BEGIN CERTIFICATE` and `END CERTIFICATE` blocks into a new `cacerts.pem` file.
 
-   4. Add the CA certificates to the delegate.
-
-         1. If your delegate version is 803xx or later, mount the custom certificates to a path in the container and launch the delegate with the `CUSTOM_CERTS_PATH` environment variable to the path inside the container.
-
-         2. If your delegate version is earlier than 803xx, go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/). Remember to add the certificates to both the Java truststore and the pod.
+   4. Add the CA certificates to the delegate. go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/).
 
 </details>
 
@@ -172,14 +164,17 @@ To resolve the exception when OpenSSL tool isn't present, do the following:
     
     3. If the installation succeeds, following the OpenSSL steps above. If the installation fails, continue with the steps below.
 
-2. Use the cURL commands below to find the issuers that are missing in your CA bundle.
+2. Use the cURL commands below to find the issuers that are missing in your CA bundle. Find the certificate for each issuer by going to the domain in your browser or download the certificate.
    
    ```
    curl -vk <YOUR_URL>
    ```
 
-3. Find the certificate for each issuer by going to the domain in your browser or download the certificate.
-
+3. Turn on SSL debug log. Set JAVA_OPTS environment variable when installing delegate
+   ```
+   JAVA_OPTS="-Djavax.net.debug=all"
+   ```
+   
 </details>
 
 ### Signature check failure
