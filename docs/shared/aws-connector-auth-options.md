@@ -16,7 +16,7 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
    ```
    eksctl create iamserviceaccount \
        --name=cdp-admin \
-       --namespace=default \
+       --namespace=harness-delegate-ng \
        --cluster=test-eks \
        --attach-policy-arn=<policy-arn> \
        --approve \
