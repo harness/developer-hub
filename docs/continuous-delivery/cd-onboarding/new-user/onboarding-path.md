@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 This topic describes the different phases and steps involved in onboarding with Harness CD. Follow these steps to ensure that you have all the settings and resources required for moving forward with your own deployments.
 
-If you are only looking for tutorials, go to (Continuous Delivery & GitOps tutorial)[https://developer.harness.io/tutorials/cd-pipelines].
+If you are only looking for tutorials, go to [Continuous Delivery & GitOps tutorial](https://developer.harness.io/tutorials/cd-pipelines).
 
 ## Overview
 
@@ -25,296 +25,114 @@ Steps with an asterisk **"*"** have YAML examples that can be used for setting u
 
 
 
-### <a href="#phase-1-initial-setup"> Phase 1: Initial Setup </a>
+### <a href="#phase-1-initial-setup"> Phase 1: Initial setup</a>
 
 | **Step**                                              | **Details**                                                      | **Documentation Link**                                                                                                                | **Demo Video**                                                                                 |
 | ------------------------------------------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| <a href="#step-1-account--entities-setup">Account & Entities Setup</a>                               | Create Organization, Project, Invite Initial Users               | [Create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization/)    |                                                                                             |
-| <a href="#step-2-installing-delegate">Installing Delegate</a>                                    | Kubernetes, Docker                                               | [Install Harness Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/)                 | [Watch Video](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/) |
-| <a href="#step-3-installing-secret-manager--migrating-existing-secrets">Installing Secret Manager / Migrating Existing Secrets</a> | AWS KMS, HashiCorp, Azure Key vault, Google KMS                  | [Add a secret manager](https://developer.harness.io/docs/platform/secrets/secrets-management/add-secrets-manager/)                    |                                                                                             |
+| <a href="#step-1-account--entities-setup">Account and entities setup</a>                               | Create organization, project, invite initial users               | [Create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization/)    |                                                                                             |
+| <a href="#step-2-installing-delegate">Installing delegates</a>                                    | Kubernetes, Docker                                               | [Install Harness Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/)                 | [Watch Video](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/) |
+| <a href="#step-3-installing-secret-manager--migrating-existing-secrets">Installing secret managers, Migrating existing secrets</a> | AWS KMS, HashiCorp, Azure Key Vault, Google KMS                  | [Add a secret manager](https://developer.harness.io/docs/platform/secrets/secrets-management/add-secrets-manager/)                    |                                                                                             |
 
 ### <a href="#phase-2-deploy-to-qa"> Phase 2: Deploy to QA </a>
 
 | **Step**                                              | **Details**                                                      | **Documentation Link**                                                                                                                | **Demo Video**                                                                                 |
 | ------------------------------------------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | <a href="#services">Service Definition and Variables</a> *                      | Runtime Inputs or expressions                                                         | [Create services](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/create-services/)             | [Watch Video](https://youtu.be/02RIvOGd0zg?si=HnK4wHaxLUWEkoFK) |
-| <a href="#environments">Environment Definitions</a> *                               | Service Override                                        | [Create environments](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/) | [Watch Video](https://youtu.be/02RIvOGd0zg?si=HnK4wHaxLUWEkoFK) |
-| <a href="#step-2-adding-artifact-source">Adding Artifact Source</a>                                 | Docker Registry, GCR, GCS, ACR, Azure DevOps Artifacts, ECR, etc | [CD artifact sources](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/)        |                                                                                             |
-| <a href="#step-3-simple-pipeline">Simple Pipeline</a> *                                       | stage, service, environment, infrastructure                      | [CD pipeline modeling overview](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview/)     | [Watch Video](https://youtu.be/k-f1nbgGkww?si=_EW6Lcr1qxzrQNVM) |
+| <a href="#environments">Environments</a> *                               | Service Override                                        | [Create environments](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/) | [Watch Video](https://youtu.be/02RIvOGd0zg?si=HnK4wHaxLUWEkoFK) |
+| <a href="#step-2-adding-artifact-source">Adding artifact sources</a>                                 | Docker Registry, GCR, GCS, ACR, Azure DevOps Artifacts, ECR, etc. | [CD artifact sources](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/)        |                                                                                             |
+| <a href="#step-3-simple-pipeline">Simple pipelines</a> *                                       | Stage, service, environment, infrastructure                      | [CD pipeline modeling overview](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview/)     | [Watch Video](https://youtu.be/k-f1nbgGkww?si=_EW6Lcr1qxzrQNVM) |
 
-### <a href="#phase-3-deploy-to-staging"> Phase 3: Deploy to Staging </a>
-
-| **Step**                                              | **Details**                                                      | **Documentation Link**                                                                                                                | **Demo Video**                                                                                 |
-| ------------------------------------------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| <a href="#step-1-deployment-strategy">Deployment Strategy</a> *                                   | Rollback, Blue Green, Canary, K8s with apply, K8s with scale                                        | [Deployment concepts and strategies](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts/)   | [Watch Video](https://youtu.be/VJjDbwoxLfM?feature=shared)                                      |
-| <a href="#step-2-triggers--input-sets">Triggers & Input Sets</a> *                                 | SCM triggers, Artifact triggers                                  | [Pipeline Triggers](https://developer.harness.io/tutorials/cd-pipelines/trigger/)                                                     | [Watch Video](https://youtu.be/nIPjsANiKRk?si=euQzhaYGfnPaacUe) |
-
-### <a href="#phase-4-deploy-to-production"> Phase 4: Deploy to Production </a>
+### <a href="#phase-3-deploy-to-staging"> Phase 3: Deploy to staging </a>
 
 | **Step**                                              | **Details**                                                      | **Documentation Link**                                                                                                                | **Demo Video**                                                                                 |
 | ------------------------------------------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| <a href="#step-1-approvals--governance-opa">Approvals & Governance (OPA)</a> *                                             | Harness Approval, JIRA Approval                                  | [Approvals](https://developer.harness.io/tutorials/cd-pipelines/approvals/)                                                           | [Watch Video](https://youtu.be/KtE6f5-QHrI?si=zYhrXnedmf2j0bUi) |
+| <a href="#step-1-deployment-strategy">Deployment strategies</a> *                                   | Rollback, Blue Green, Canary, Kubernetes Apply, Kubernetes Scale                                        | [Deployment concepts and strategies](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts/)   | [Watch Video](https://youtu.be/VJjDbwoxLfM?feature=shared)                                      |
+| <a href="#step-2-triggers--input-sets">Triggers and input sets</a> *                                 | SCM triggers, artifact triggers                                  | [Pipeline triggers](https://developer.harness.io/tutorials/cd-pipelines/trigger/)                                                     | [Watch Video](https://youtu.be/nIPjsANiKRk?si=euQzhaYGfnPaacUe) |
+
+### <a href="#phase-4-deploy-to-production"> Phase 4: Deploy to production </a>
+
+| **Step**                                              | **Details**                                                      | **Documentation Link**                                                                                                                | **Demo Video**                                                                                 |
+| ------------------------------------------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| <a href="#step-1-approvals--governance-opa">Approvals and governance (OPA)</a> *                                             | Harness Approval, JIRA Approval                                  | [Approvals](https://developer.harness.io/tutorials/cd-pipelines/approvals/)                                                           | [Watch Video](https://youtu.be/KtE6f5-QHrI?si=zYhrXnedmf2j0bUi) |
 | <a href="#step-2-rbac">RBAC</a>                                                   | CoE, Distributed Center of DevOps                   | [Role-based access control (RBAC) in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/)  | [Watch Video](https://youtu.be/vIQfpRrES44?si=Du5OAej2t2Phu7Hg) |
 | <a href="#step-3-continuous-verification">Continuous Verification</a>                                                   | Auto, Rolling Update, Canary, Blue Green, Load Test | [Harness Continuous Verification (CV) overview](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step/)  |  |
 
-### <a href="#phase-5-deploy-at-scale"> Phase 5: Deploy at Scale </a>
+### <a href="#phase-5-sso-enabled-devops-with-infrastructure-as-code-iac"> Phase 5: SSO-enabled DevOps with Infrastructure as Code (IaC) </a>
 
 | **Step**                                              | **Details**                                                      | **Documentation Link**                                                                                                                | **Demo Video**                                                                                 |
 | ------------------------------------------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | <a href="#step-1-sso">SSO</a>                                                    | SAML SSO with Harness, Okta, OneLogin, Keycloak, etc                                 | [Single Sign-On (SSO) with SAML](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/)                      |                                                                                             |
-| <a href="#step-2-templatization--automation">Templatization & Automation</a> *                                        | Templates, Terraform Automation                                                        | [Templates overview](https://developer.harness.io/docs/platform/templates/template/)                                                  | [Watch Video](https://youtu.be/U-n3VK_RoQc?si=dfokJq6pa6017mqX) |
+| <a href="#step-2-templatization--automation">Templatization and automation</a> *                                        | Templates, Terraform Automation                                                        | [Templates overview](https://developer.harness.io/docs/platform/templates/template/)                                                  | [Watch Video](https://youtu.be/U-n3VK_RoQc?si=dfokJq6pa6017mqX) |
 
-## Phase 1: Initial Setup
-### Step 1. Account & Entities Setup
+## Phase 1: Initial setup
+### Step 1. Account and entities setup
 
-Harness Organizations (Orgs) allow you to group projects that share the same goal. For example, all projects for a business unit or division.
+Harness organizations (orgs) allow you to group projects that share the same goal. For example, all projects for a business unit or division.
 
 A Harness project is a group of Harness modules and their pipelines. For example, a project might have a Harness CI pipeline to build code and push an image to a repo and a Harness CD pipeline to pull and deploy that image to a cloud platform.
 
-- **Create a Harness org**
+#### Create a Harness org
 
-1. In Harness, in Account Settings click Organizations.
-2. Click **+ New Organization**. The new organization settings appear.
-3. In Name, enter a name for your organization.
-4. Enter Description, and Tags for your new org.
-5. Click Save and Continue.
+1. In Harness, in **Account Settings**, select **Organizations**.
+2. Select **New Organization**. The new organization settings appear.
+3. In **Name**, enter a name for your organization.
+4. Select **Save and Continue**.
 
-- **Invite collaborators**
+#### Invite collaborators
 
-1. In Invite People to Collaborate, type a member's name and select it.
-2. In Role, select the role the member will have in this org, such as Organization Admin or Organization Member.
-3. Click Add.
-   Members receive invites via their email addresses.
-   You can always invite more members from within the Org later.
-4. Click Finish. The Org is added to the list in Account Settings Organizations.
+1. In **Invite People to Collaborate**, enter a user's name and select it.
+2. In **Role**, select the role the member will have in this org, such as **Organization Admin** or **Organization Member**.
+3. Select **Add**.
+   - Members receive invites via their email addresses.
+   - You can always invite more members from within the org later.
+4. Select **Finish**. The org is added to the list in **Account Settings** > **Organizations**.
 
-- **Create a project**
+#### Create a project
 
-1. In Harness, go to Home and click Projects.
-2. Click +Project.
-3. Name the project, and select a color. The Id of the project is generated automatically. See Harness Entity Reference.
-4. In Organization, select the org you created.
-5. Add a description and tags, and then click Save and Continue.
-6. In Invite Collaborators, type a member's name and select it.
-7. Select a role for the member, and click Add.
-8. Click Save and Continue to create the project.
+1. In Harness, go to **Home** and select **Projects**.
+2. Select **Project**.
+3. Name the project, and select a color. The Id of the project is generated automatically.
+4. In **Organization**, select the org you created.
+5. Add a description and tags, and then select **Save and Continue**.
+6. In **Invite Collaborators**, type a member's name and select it.
+7. Select a role for the member, and select **Add**.
+8. Select **Save and Continue** to create the project.
 
 ### Step 2. Installing Delegate
 
-Harness Delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification, and other providers, with Harness Manager. The first time you connect Harness to a third-party resource, Harness Delegate is installed in your target infrastructure, for example, a Kubernetes cluster. After the delegate is installed, you connect to third-party resources. The delegate performs all operations, including deployment and integration.
+The Harness delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification, and other providers, with Harness Manager. 
 
-Please follow the [Install Harness Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/) article to install delegate in your kubernetes cluster or docker container.
+The first time you connect Harness to a third-party resource, the Harness delegate is installed in your target infrastructure, for example, a Kubernetes cluster. After the delegate is installed and registers with Harness, you can Harness connect to third-party resources. The delegate performs all operations, including deployment and integration.
 
-### Step 3. Installing Secret Manager / Migrating Existing Secrets
+For more information, go to [Install Harness Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/).
 
-Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Connectors and Pipelines. Follow the [Add a secret manager](https://developer.harness.io/docs/platform/secrets/secrets-management/add-secrets-manager/) article to add a secret manager.
+### Step 3. Installing secret managers, migrating existing secrets
+
+Harness includes a built-in secret management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness connectors and pipelines. For more information, go to [Add a secret manager](/docs/platform/secrets/secrets-management/add-secrets-manager).
 
 Looking for specific secret managers? Go to:
 
-- [Add an AWS KMS Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager)
-- [Add a HashiCorp Vault Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/add-hashicorp-vault)
-- [Add an Azure Key Vault Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/azure-key-vault)
-- [Add Google KMS as a Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager)
-- [Add an AWS Secrets Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/add-an-aws-secret-manager)
+- [Add an AWS KMS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager)
+- [Add a HashiCorp Vault Secret Manager](/docs/platform/secrets/secrets-management/add-hashicorp-vault)
+- [Add an Azure Key Vault Secret Manager](/docs/platform/secrets/secrets-management/azure-key-vault)
+- [Add Google KMS as a Harness Secret Manager](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager)
+- [Add an AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager)
 
 ## Phase 2: Deploy to QA
-### Step 1. Service and Environments Definition
 
-#### **Services** 
-They represent your microservices and other workloads. Each service contains a Service Definition that defines your deployment artifacts, manifests or specifications, configuration files, and service-specific variables. Follow [this](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/create-services/#create-a-service) article to create your own service.
+### Step 1. Service and environments
 
-Services are often configured using runtime inputs or expressions, so you can change service settings for different deployment scenarios at pipeline runtime. To use runtime input services with inputs and epressions, take a look at [this](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/create-services/#using-runtime-input-services-with-inputs-and-expressions).
+#### Services 
 
-```mdx-code-block
-<Tabs>
-<TabItem value="K8s Service">
-```
+Services represent your microservices and other workloads. Each service contains a Service Definition that defines your deployment artifacts, manifests or specifications, configuration files, and service-specific variables. For more information, go to [Create a service](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/create-services/#create-a-service).
 
-```yaml
-service:
-  name: Service_1
-  identifier: Service_1
-  orgIdentifier: Ng_Pipelines_K8s_Organisations
-  projectIdentifier: K8s_Pipelines
-  serviceDefinition:
-    spec:
-      release:
-        name: release-<+INFRA_KEY_SHORT_ID>
-      manifests:
-        - manifest:
-            identifier: manifestIdentifier
-            type: K8sManifest
-            spec:
-              store:
-                type: Git
-                spec:
-                  connectorRef: org.GitConnectorForAutomationTest
-                  gitFetchType: Branch
-                  paths:
-                    - ng-automation/k8s/templates/
-                  branch: master
-              skipResourceVersioning: false
-              enableDeclarativeRollback: false
-              valuesPaths:
-                - ng-automation/k8s/valuesWithClusterTypeService.yaml
-      artifacts:
-        primary:
-          primaryArtifactRef: <+input>
-          sources:
-            - spec:
-                connectorRef: org.GCRConnectorForAutomationTest
-                imagePath: qa-target/todolist
-                tag: v4.1
-                digest: ""
-                registryHostname: us.gcr.io
-              identifier: My_Artifact
-              type: Gcr
-    type: Kubernetes
-```
+Services are often configured using runtime inputs or expressions, so you can change service settings for different deployment scenarios at pipeline runtime. To use runtime input services with inputs and expressions, go to [Using runtime input services with inputs and expressions](/docs/continuous-delivery/x-platform-cd-features/services/create-services/#using-runtime-input-services-with-inputs-and-expressions).
 
-```mdx-code-block
-</TabItem>
-<TabItem value="ECS Fargate">
-```
 
-```mdx-code-block
-<Tabs>
-<TabItem value="Service Definition">
-```
 
-```yaml
-launchType: FARGATE
-serviceName: <+stage.variables.serviceName>
-desiredCount: <+stage.variables.desiredCount>
-networkConfiguration:
-  awsvpcConfiguration:
-    securityGroups:
-    - sg-afc848e7 
-    subnets:
-    - subnet-9757dc98
-    assignPublicIp: ENABLED 
-deploymentConfiguration:
-  maximumPercent: 100
-  minimumHealthyPercent: 0
-loadBalancers:
-- targetGroupArn: <+targetGroupArn>
-  containerName: nginx
-  containerPort: 8080
-```
+#### Environments
 
-```mdx-code-block
-</TabItem>
-<TabItem value="Task Definition">
-```
-
-```yaml
-ipcMode:
-executionRoleArn: arn:aws:iam::479370281431:role/ecsTaskExecutionRole
-containerDefinitions:
-- dnsSearchDomains:
-  environmentFiles:
-  logConfiguration:
-    logDriver: awslogs
-    secretOptions:
-    options:
-      awslogs-group: "/aws/ecs/containerinsights/ecs-cluster-3/performance"
-      awslogs-region: us-east-1
-      awslogs-stream-prefix: ecs
-  entryPoint:
-  portMappings:
-  - hostPort: 8080
-    protocol: tcp
-    containerPort: 8080
-  command:
-  linuxParameters:
-  cpu: 0
-  environment: []
-  resourceRequirements:
-  ulimits:
-  dnsServers:
-  mountPoints: []
-  workingDirectory:
-  secrets:
-  dockerSecurityOptions:
-  memory:
-  memoryReservation: 128
-  volumesFrom: []
-  stopTimeout:
-  image: <+artifact.image>
-  startTimeout:
-  firelensConfiguration:
-  dependsOn:
-  disableNetworking:
-  interactive:
-  healthCheck:
-  essential: true
-  links:
-  hostname:
-  extraHosts:
-  pseudoTerminal:
-  user:
-  readonlyRootFilesystem:
-  dockerLabels:
-  systemControls:
-  privileged:
-  name: nginx
-placementConstraints: []
-memory: '512'
-taskRoleArn: arn:aws:iam::479370281431:role/ecsTaskExecutionRole
-family: <+stage.variables.taskName>
-pidMode:
-requiresCompatibilities:
-- FARGATE
-networkMode: awsvpc
-runtimePlatform:
-cpu: '256'
-inferenceAccelerators:
-proxyConfiguration:
-volumes: []
-```
-
-```mdx-code-block
-</TabItem>
-<TabItem value="Scaling Policy">
-```
-
-```yaml
-scalableDimension: ecs:service:DesiredCount
-serviceNamespace: ecs
-policyName: P1
-policyType: TargetTrackingScaling
-targetTrackingScalingPolicyConfiguration:
-  targetValue: 60
-  predefinedMetricSpecification:
-    predefinedMetricType: ECSServiceAverageCPUUtilization
-  scaleOutCooldown: 300
-  scaleInCooldown: 300
-```
-
-```mdx-code-block
-</TabItem>
-<TabItem value="Scalable Target">
-```
-
-```yaml
-serviceNamespace: ecs
-scalableDimension: ecs:service:DesiredCount
-minCapacity: 1
-maxCapacity: 3
-```
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
-
-#### **Environments** 
-They represent your deployment targets (QA, Prod, etc). Each environment contains one or more Infrastructure Definitions that list your target clusters, hosts, namespaces, etc. To create your own environments, go through the [Create environments](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/) article.
+Environments represent your deployment targets (QA, Prod, etc). Each environment contains one or more Infrastructure Definitions that list your target clusters, hosts, namespaces, etc. To create your own environments, go to [Create environments](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments).
 
 ```mdx-code-block
 <Tabs>
@@ -327,8 +145,8 @@ environment:
   identifier: Env_1
   tags: {}
   type: Production
-  orgIdentifier: Ng_Pipelines_K8s_Organisations
-  projectIdentifier: K8s_Pipelines
+  orgIdentifier: default
+  projectIdentifier: Default_Project
   variables: []
 ```
 
@@ -341,8 +159,8 @@ environment:
 infrastructureDefinition:
   name: Infra_1
   identifier: Infra_1
-  orgIdentifier: Ng_Pipelines_K8s_Organisations
-  projectIdentifier: K8s_Pipelines
+  orgIdentifier: default
+  projectIdentifier: Default_Project
   environmentRef: Env_1
   deploymentType: Kubernetes
   type: KubernetesDirect
@@ -358,44 +176,39 @@ infrastructureDefinition:
 </Tabs>
 ```
 
-#### **Service Override** ([Article Link](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/#create-service-overrides))
-  In DevOps, it is common to have multiple environments, such as development, testing, staging, and production. Each environment might require different configurations or settings for the same service. For example, in the development environment, a service may need to use a local database for testing, while in the production environment, it should use a high-availability database cluster. To enable the same service to use different environment settings, DevOps teams can override service settings for each environment.
+#### Service Overrides 
 
-### Step 2. Adding Artifact Source
+In DevOps, it is common to have multiple environments, such as development, testing, staging, and production. Each environment might require different configurations or settings for the same service. 
+
+For example, in the development environment, a service may need to use a local database for testing, while in the production environment, it should use a high-availability database cluster. 
+
+To enable the same service to use different environment settings, DevOps teams can override service settings for each environment.
+
+For more information, go to [Create service overrides](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/#create-service-overrides).
+
+### Step 2. Adding artifact sources
 
 In DevOps, an artifact source is a location where the compiled, tested, and ready-to-deploy software artifacts are stored. These artifacts could be container images, compiled binary files, executables, or any other software components that are part of the application.
 
 To add an artifact source, you add a Harness connector to the artifact platform (DockerHub, GCR, Artifactory, etc.) and then add an artifact source to a Harness service that defines the artifact source name, path, tags, and so on.
 
-The list of atifact sources that you can use in your Harness services are listed below:
+For the list of artifact sources that you can use in your Harness services, go to [Artifact Sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 
-- [Docker](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#docker)
-- [Google Container Registry (GCR)](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr)
-- [Google Cloud Storage (GCS)](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-cloud-storage-gcs)
-- [Google Artifact Registry](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-artifact-registry)
-- [Azure DevOps Artifacts](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#azure-devops-artifacts)
-- [Azure Container Registry (ACR)](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#azure-container-registry-acr)
-- [Amazon Elastic Container Registry (ECR)](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#amazon-elastic-container-registry-ecr)
-- [Amazon S3 Cloud Storage](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#amazon-s3-cloud-storage)
-- [Amazon EC2 AMIs](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#amazon-ec2-amis)
-- [Nexus](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#nexus)
-- [Artifactory](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#artifactory)
-- [Bamboo](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#bamboo)
-- [Github packages](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#github-packages)
-- [Custom artifact source](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#custom-artifact-source)
 
-### Step 3. Simple Pipeline
+### Step 3. Create a simple pipeline
+
 To create a simple CD pipeline, follow the steps:
-- Create a pipeline.
-- Add a CD stage.
-- Define a service.
-- Target an environment and infrastructure.
-- Select execution steps.
-- You can model visually, using code, or via the REST API.
+
+1. Create a pipeline.
+2. Add a CD stage.
+3. Define a service.
+4. Target an environment and infrastructure.
+5. Select execution steps.
+6. You can model visually, using YAML, or via the REST API.
 
 <docvideo src="https://www.youtube.com/watch?v=irDr4JlbmLY" />
 
-Here's a simple CD pipeline having a Kubernetes type deployment:
+Here's a simple CD pipeline using a Kubernetes type deployment:
 
 <details>
 <summary>K8s Rolling Deployment Pipeline YAML</summary>
@@ -405,8 +218,8 @@ Here's a simple CD pipeline having a Kubernetes type deployment:
 pipeline:
   name: K8s Rolling Deployment
   identifier: K8s_Rolling_Deployment
-  projectIdentifier: K8s_Pipelines
-  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  projectIdentifier: Default Project
+  orgIdentifier: default
   tags: {}
   stages:
     - stage:
@@ -468,11 +281,12 @@ You have likely heard terms like blue/green and canary when it comes to deployin
 <docvideo src="https://www.youtube.com/watch?v=o3MoWAY27wE" />
 
 The deployment strategies provided by Harness are:
-- Rolling Deployment
-- Blue Green Deplomyment
-- Canary Deployment
+
+- Rolling
+- Blue Green
+- Canary
 - Basic Deployments
-- Multi-service Deployments
+- Multi-service
 
 ```mdx-code-block
 <Tabs>
@@ -483,8 +297,8 @@ The deployment strategies provided by Harness are:
 pipeline:
   name: K8s Rolling Deployment
   identifier: K8s_Rolling_Deployment
-  projectIdentifier: K8s_Pipelines
-  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  projectIdentifier: Default Project
+  orgIdentifier: default
   tags: {}
   stages:
     - stage:
@@ -545,8 +359,8 @@ pipeline:
 pipeline:
   name: K8s Blue Green Deployment
   identifier: K8s_Blue_Green_Deployment
-  projectIdentifier: K8s_Pipelines
-  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  projectIdentifier: Default Project
+  orgIdentifier: default
   tags: {}
   stages:
     - stage:
@@ -620,8 +434,8 @@ pipeline:
 pipeline:
   name: K8s Canary Deployment
   identifier: K8s_Canary_Deployment
-  projectIdentifier: K8s_Pipelines
-  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  projectIdentifier: Default Project
+  orgIdentifier: default
   tags: {}
   stages:
     - stage:
@@ -717,8 +531,8 @@ pipeline:
 pipeline:
   name: K8s Deployment with Apply Step
   identifier: K8s_Deployment_with_Apply_Step
-  projectIdentifier: K8s_Pipelines
-  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  projectIdentifier: Default Project
+  orgIdentifier: default
   tags: {}
   stages:
     - stage:
@@ -784,8 +598,8 @@ pipeline:
 pipeline:
   name: K8s Deployment with Scale Step
   identifier: K8s_Deployment_with_Scale_Step
-  projectIdentifier: K8s_Pipelines
-  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  projectIdentifier: Default Project
+  orgIdentifier: default
   tags: {}
   stages:
     - stage:
@@ -861,17 +675,14 @@ pipeline:
 </Tabs>
 ```
 
-:::info note
-If you are using Canary Deployment, make sure you heat up your resources because the canary deployment strategy will not deploy on the existing cluster, rather it will spin up a new cluster and deploy it there.
-:::
-
-Read the [Deployment concepts and strategies](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts/) article to learn more about these strategies and decide what strategy is best for you.
+For more information, go to [Deployment concepts and strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts).
 
 
-### Step 2. Triggers & Input Sets
-Triggers in a Harness Continuous Delivery (CD) pipeline are used to automatically initiate pipeline stages or actions based on specific events or conditions, such as Git events, new Helm Charts, new artifacts, or specific time intervals. Triggers in Harness CD enable faster feedback cycles, enhanced efficiency, and decreased reliance on manual intervention during the deployment process.
+### Step 2. Triggers and input sets
 
-Let us take a look at how the YAML filelooks like for new artifact trigger and GitHub filechange trigger:
+Triggers automatically initiate pipeline execution based on specific events or conditions, such as Git events, new Helm Charts, new artifacts, or specific time intervals. Triggers in Harness CD enable faster feedback cycles, enhanced efficiency, and decreased reliance on manual intervention during the deployment process.
+
+Here are examples of a new artifact trigger and GitHub Webhook trigger:
 
 ```mdx-code-block
 <Tabs>
@@ -921,7 +732,7 @@ trigger:
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="GitHub Filechange Trigger">
+<TabItem value="GitHub Webhook Trigger">
 ```
 
 ```yaml
@@ -973,23 +784,24 @@ trigger:
 </Tabs>
 ```
 
-## Phase 4: Deploy to Production
+## Phase 4: Deploy to production
 
-### Step 1. Approvals & Governance (OPA)
+### Step 1. Approvals and governance (OPA)
 
 #### Approvals
 
-- **Harness Approval**
-You can specify Harness User Group(s) to approve or reject a Pipeline at any point in its execution. During deployment, the User Group members use Harness Manager to approve or reject the Pipeline deployment manually.
+- **Harness manual approvals**: You can specify Harness user group(s) to approve or reject a pipeline at any point in its execution. During deployment, the user group members use Harness Manager to approve or reject the pipeline deployment manually.
+- **JIRA approvals**: Jira issues can be used to approve or reject a pipeline or stage at any point in its execution. During deployment, the pipeline evaluates the fields in the Jira ticket based on criteria you define. Its approval or rejection determines if the pipeline or stage may proceed. You can add the Jira Approval step in Approval stages or in CD stages. The Jira Approval step prevents the stage execution from proceeding without an approval.
+- **ServiceNow approvals**: You can use ServiceNow tickets to approve or reject a pipeline or stage at any point in its execution. During deployment, a ServiceNow ticket's fields are evaluated according to the criteria you define, and its approval/rejection determines if the Pipeline or stage may proceed.
+- **Custom approvals**: Custom approval stages and steps add control gates to your pipelines by allowing you to approve or reject a pipeline or stage at any point during build execution. When you add a Custom Approval step, you add a script to the step, and then use the script results as approval or rejection criteria.
 
-- **JIRA Approval**
-Jira issues can be used to approve or reject a pipeline or stage at any point in its execution. During deployment, the pipeline evaluates the fields in the Jira ticket based on criteria you define. Its approval or rejection determines if the Pipeline or stage may proceed. You can add the Jira Approval step in Approval stages or in CD stages. The Jira Approval step prevents the stage execution from proceeding without an approval.
-
-Learn more about Approvals in [this](https://developer.harness.io/tutorials/cd-pipelines/approvals/) article.
+To learn more about approvals, go to: [Approvals](https://developer.harness.io/docs/category/approvals-1).
 
 #### Governance
 
-Harness Policy As Code uses Open Policy Agent (OPA) as the central service to store and enforce policies for the different entities and processes across the Harness platform. You can centrally define and store policies and then select where (which entities) and when (which events) they will be applied. Here are some Governance examples with Harness OPA.
+Harness Policy As Code uses Open Policy Agent (OPA) as the central service to store and enforce policies for the different entities and processes across the Harness platform. You can centrally define and store policies and then select where (which entities) and when (which events) they will be applied. 
+
+Here are some Harness governance examples with OPA.
 
 ```mdx-code-block
 <Tabs>
@@ -1103,11 +915,13 @@ You can modify the `allowed_environments` list to include the environments where
 </Tabs>
 ```
 
-#### [Freeze Deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/)
+#### Freeze deployments
 
 A deployment freeze is a period of time during which no new changes are made to a system or application. This ensures that a system or application remains stable and free of errors, particularly in the lead-up to a major event or release. During a deployment freeze, only critical bug fixes and security patches might be deployed, and all other changes are put on hold until the freeze is lifted. Deployment freezes are commonly used in software development to ensure that a system is not destabilized by the introduction of new code in new application versions.
 
-Here's a sample YAML to setup deployment freeze in Harness:
+For more information, go to [Freeze deployments](/docs/continuous-delivery/manage-deployments/deployment-freeze).
+
+Here's a sample YAML to set up deployment freeze in Harness:
 
 ```yaml
 freeze:
@@ -1143,10 +957,12 @@ freeze:
 
 
 ### Step 2. RBAC
-Role-based access control (RBAC) lets you control who can access your resources and what actions they can perform on the resources. To do this, a Harness account administrator assigns resource-related permissions to members of user groups. The **Center of Excellence** strategy and **Distributed Center of DevOps** strategy are the two most popular RBAC access control strategies used.
+
+
+To perform Role-based access control (RBAC), a Harness account administrator assigns resource-related permissions to members of Harness user groups. The **Center of Excellence** strategy and **Distributed Center of DevOps** strategy are the two most popular RBAC access control strategies used.
 
 <details>
-<summary>Center of Excellence RBAC Strategy</summary>
+<summary>Center of excellence RBAC strategy</summary>
 <br />
 
 | Role Type | Role Description | Harness Roles | Harness Resource Groups	|
@@ -1159,7 +975,7 @@ Role-based access control (RBAC) lets you control who can access your resources 
 </details>
 
 <details>
-<summary>Distributed DevOps</summary>
+<summary>Distributed DevOps strategy</summary>
 <br />
 
 | Role Type        | Role Description                                                                                                        | Harness Roles                                                  | Harness Resource Groups                                  | Resource Scope                                |
@@ -1287,10 +1103,15 @@ Role-based access control (RBAC) lets you control who can access your resources 
 </Tabs>
 ```
 
-Take a look at [this](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#configure-rbac-in-harness) article to configure RBAC in Harness
+For more information, go to 
+
+Take a look at [Role-based access control (RBAC) in Harness](/docs/platform/role-based-access-control/rbac-in-harness/#configure-rbac-in-harness) article to configure RBAC in Harness
 
 ### Step 3. Continuous Verification
-Harness CV is a critical step in the deployment pipeline that validates deployments. Harness CV integrates with APMs and logging tools to verify that the deployment is running safely and efficiently. Harness CV applies machine learning algorithms to every deployment for identifying normal behavior. This allows Harness to identify and flag anomalies in future deployments. During the Verify step, Harness CV automatically triggers a rollback if anomalies are found.
+
+Harness Continuous Verification (CV) is a critical tool in the deployment pipeline that validates deployments by integrating with APMs and logging tools to verify that the deployment is running safely and efficiently. 
+
+Harness CV applies machine learning algorithms to every deployment for identifying normal behavior. This allows Harness to identify and flag anomalies in future deployments. During the **Verify** step, Harness CV automatically triggers a rollback if anomalies are found.
 
 **Deployment strategies for Continuous Verification**:
 - Continuous Verification type
@@ -1305,26 +1126,22 @@ Harness CV is a critical step in the deployment pipeline that validates deployme
 - Fail on no analysis
 - Health Source
 
-To start using Harness CV, refer to the [Configure CV](https://developer.harness.io/docs/category/configure-cv) article.
+For more information, go to [Configure CV](https://developer.harness.io/docs/category/configure-cv).
 
-## Phase-5: Deploy at Scale
+## Phase 5: SSO-enabled DevOps with Infrastructure as Code (IaC)
 
 ### Step 1. SSO
+
 Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable you to log your users into Harness as part of your SSO infrastructure. The user can choose between a variety of SSO integrations according to their needs.
 
-- [SAML SSO with Harness](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/#saml-sso-with-harness)
-- [SAML SSO with Okta](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/#saml-sso-with-harness)
-- [SAML SSO with Microsoft Entra ID](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/#saml-sso-with-microsoft-entra-id)
-- [SAML SSO with OneLogin](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/#saml-sso-with-onelogin)
-- [SAML SSO with Keycloak](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/#saml-sso-with-keycloak)
-
-[This](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/) document explains how to set up SAML authentication.
+For more information, go to [Authentication](https://developer.harness.io/docs/category/authentication).
 
 ### Step 2. Templatization & Automation
 
 
 #### Templatization
-Harness enables you to add templates to create re-usable logic and Harness entities (like steps, stages, and pipelines) in your pipelines. You can link templates in your pipelines or share them with your teams for improved efficiency.
+
+Harness enables you to add templates to create reusable logic and Harness entities (like steps, stages, and pipelines) in your pipelines. You can link templates in your pipelines or share them with your teams for improved efficiency.
 
 Templates enhance developer productivity, reduce onboarding time, and enforce standardization across the teams that use Harness. Here's an example template that builds a JavaScript application, runs unit tests and pushes to docker registry.
 
@@ -1517,31 +1334,10 @@ template:
 
 #### Terraform Automation
 
-:::info note
-You need to have Terraform CLI installed in your delegate in-order to carry out this automation. Given below is a Dockerfile script to create a custom delegate image `tf-custom-delegate` that has terraform cli installed in it.
-:::
+The Harness Terraform Provider enables automated lifecycle management of the Harness Platform using Terraform. You can onboard onto Harness on day 1 and also make day 2 changes using this Provider. Currently the following Harness resources can be managed via the Provider.
 
-```
-FROM harness/delegate:22.10.77029.minimal  
-USER root  
-  
-RUN microdnf update \  
-  && microdnf install yum \
-  && microdnf install --nodocs \  
-    unzip \  
-    yum-utils
-  
-RUN yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo \  
-  && microdnf repoquery terraform \
-  && microdnf install -y terraform-1.3.3-1.x86_64     
-  
-RUN mkdir /opt/harness-delegate/tools && cd /opt/harness-delegate/tools \  
-  && curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && chmod +x kubectl   
-  
-ENV PATH=/opt/harness-delegate/tools/:$PATH  
 
-USER harness
-```
+For more information, go to [Onboard with Terraform Provider](https://developer.harness.io/tutorials/platform/onboard-terraform-provider).
 
 <details>
 <summary>Terraform Script to create harness resources (Services, Environments, Pipelines)</summary>

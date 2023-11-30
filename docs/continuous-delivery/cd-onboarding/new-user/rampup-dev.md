@@ -8,7 +8,7 @@ This guide is intended to get users in the **Developer role** started with Harne
 
 For this guide, we assume you have set up the necessary Harness integrations (Harness delegate, Kubernetes Cluster connector, AWS connector, JIRA connector, SSO configuration, etc.) and your Harness account configurations. 
 
-For onboarding your team, go to the [Onboarding guide](https://developer.harness.io/docs/continuous-delivery/get-started/onboarding-guide).
+For onboarding your team, go to the [Onboarding path](/docs/continuous-delivery/cd-onboarding/new-user/onboarding-path).
 
 For CD tutorials, go to [Set up CD Pipelines](https://developer.harness.io/tutorials/cd-pipelines/).
 
