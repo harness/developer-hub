@@ -218,20 +218,6 @@ spec:
 
 ---
 
-apiVersion: v1
-kind: Service
-metadata:
-  name: delegate-service
-  namespace: harness-delegate-ng
-spec:
-  type: ClusterIP
-  selector:
-    harness.io/name: kubernetes-delegate
-  ports:
-    - port: 8080
-
----
-
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
