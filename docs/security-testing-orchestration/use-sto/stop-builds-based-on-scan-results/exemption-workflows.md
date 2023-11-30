@@ -7,17 +7,18 @@ sidebar_position: 60
 
 The `fail_on_severity` setting causes a pipeline build to fail if a Security Scan step detects one or more issues with the specified severity (Critical, High, Medium, etc.). Your organization can create exemptions ("Ignore rules") for specific issues to override this behavior. If an exemption is approved, a build can proceed even if a scan detects that issue.  
 
+:::note 
+Developers and SecOps users can request exemptions, but only SecOps users can approve them.
+::: 
+
 Here are some situations where you might want to request an exemption for a specific issue:
 
 -  Your organization has infrastructure and policies in place to mitigate the security risks of the issue. 
 - The issue was flagged as a vulnerability, but the practice is acceptable based on your organization's security guidelines.
 - The security risk is low and remediation would require too much effort or expense.
 - The scanner identifies this as a vulnerability but it is, in fact, a false positive.
-- There are currently no known fixes or remediation steps available for the detected vulnerability. (You might want to enable [Harness AI Development Assistant (AIDA™)](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations) to see if you can remediate your issues using AI.)
-
-:::note 
-Developers and SecOps users can request exemptions, but only SecOps users can approve them.
-::: 
+- You can specify a time limit for an exemption (for example, expires in 7 days). In some cases, you might want to exempt an issue so you can deploy an important release. You could request an exemption if it expires within your organization's SLA for fixing security issues.
+- There are currently no known fixes or remediation steps available for the detected vulnerability. You might want to enable [Harness AI Development Assistant (AIDA™)](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations), which can help you remediate your issues using AI.
 
 ```mdx-code-block
 import request_exemption from '../static/request-exemption.png'
