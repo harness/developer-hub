@@ -686,7 +686,7 @@ To add self-signed certificates for delegate upgrader, do the following:
 1. In the delegate YAML file, mount the certificates in `/ca-bundle`.
 2. Add the securityContext to the upgrader cron job.
 
-   ```
+   ```yaml
    apiVersion: batch/v1
    kind: CronJob
    metadata:
@@ -715,10 +715,10 @@ To add self-signed certificates for delegate upgrader, do the following:
                    name: kubernetes-delegate-upgrader-token
                volumeMounts:
                  - mountPath: /ca-bundle
-                   name: config-volume
+                   name: custom-certs
                    readOnly: true
              volumes:
-               - name: custom certs
+               - name: custom-certs
                  secret:
                    secretName: new-secret
                    defaultMode: 400
