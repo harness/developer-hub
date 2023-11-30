@@ -25,13 +25,19 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## Latest: Version 1.75
 
-### New enhancement 
+### New enhancements 
 
 - Browser windows and tabs have more descriptive titles to improve navigation across the primary STO windows. (STO-4555)
   - STO Overview
   - Test Targets
   - Exemptions
   - STO Getting Started
+
+- Added a new setting for Checkmarx scans, which is useful when you want STO to exclude issues detected by Checkmarx but flagged as Not Exploited. (STO-6712, ZD-53483)
+
+  To enable this setting, go to the Checkmarx or Security step and add the following key-value pair under **Settings**:
+
+  `hide_not_exploitable` : `True`
 
 
 ## Previous releases
