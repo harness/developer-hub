@@ -201,7 +201,7 @@ spec:
 
 ### Default health check
 
-Determines if you wish to run the default health check which is present inside the fault. Its default value is 'false'. Tune it by using the `DEFAULT_HEALTH_CHECK` environment variable.
+Determines if you wish to run the default health check which is present inside the fault. Its default value is 'true'. Tune it by using the `DEFAULT_HEALTH_CHECK` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 

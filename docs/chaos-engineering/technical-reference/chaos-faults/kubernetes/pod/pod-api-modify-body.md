@@ -32,7 +32,7 @@ Pod API modify body:
       </tr>
       <tr>
         <td> TARGET_CONTAINER </td>
-        <td> Name of the container subject to pod deletion. </td>
+        <td> Name of the container subject to API body modification. </td>
         <td> None. For more information, go to <a href="../pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
       </tr>
       <tr>
@@ -71,7 +71,7 @@ Pod API modify body:
       <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
-        <td> Default: <code>ubuntu:16.04</code>. For more information, go to <a href = "../../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "../../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SERVICE_DIRECTION </td>
