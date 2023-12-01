@@ -14,12 +14,6 @@ This workflow describes how to ingest Snyk scan results into a Harness pipeline.
 
 A [Software Bill of Materials (SBOM)](https://cyclonedx.org/capabilities/sbom/) is a list of all the components, libraries, and other dependencies used in a software application. Harness SSCA can ingest [JSON SPDX](https://spdx.dev/learn/overview/) or [CycloneDx](https://cyclonedx.org/specification/overview/) formatted SBOM from any tool that can generate these report formats.
 
-:::info
-
-Use this configuration for scanners that don't have built-in support in SSCA. For scanners with built-in support, [use the SSCA Orchestration step to generate SBOM](./generate-sbom.md) or [configure your pipeline to ingest results from an STO scanner step](./generate-sbom-blackduck.md). For a list of all SSCA-supported scanners, go to [What's supported for STO](/docs/security-testing-orchestration/whats-supported).
-
-:::
-
 ### Generate a key pair
 
 Keys are used to sign and verify attestations.
