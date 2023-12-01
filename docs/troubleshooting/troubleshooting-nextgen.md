@@ -127,12 +127,6 @@ For Kubernetes delegates, you can increase the number of replicas run using a si
 
 This error means that no delegate could meet the URL criteria for validation. For more information, go to [How does Harness Manager pick delegates?](/docs/platform/delegates/delegate-concepts/delegate-overview.md#how-does-harness-manager-pick-delegates).
 
-### Delegate execution and test failures
-
-Delegate logs are available in the Harness UI. When a pipeline runs and an error occurs due to the delegate, the **View Delegate Tasks Logs** option becomes available. You can expand log lines that have stack traces for better readability. This allows you to view the full error log.
-
-For more information, go to [Delegate logs](/docs/platform/delegates/delegate-concepts/delegate-overview/#delegate-logs).
-
 ### Google Cloud Platform: cluster has unschedulable pods
 
 If you do not have enough space available in your Kubernetes cluster, you might receive the following error:
@@ -583,7 +577,7 @@ For more information about SAML SSO configuration with Azure, see [Single sign-o
 
 This section covers common problems experienced when using a [Shell script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step.
 
-### FileNotFoundExeption inside shell script execution task
+### FileNotFoundException inside shell script execution task
 
 This error happens when you are publishing output and your Shell Script step exits early from its script.
 
@@ -615,3 +609,27 @@ This error happens when you are adding YAML that exceeds the Harness limit of 3M
 
 To fix this error, you will need to reduce the size of the pipeline or template.
 
+## Connectors
+
+This section covers common problems experienced when using the [Connectors](/docs/category/connectors).
+
+### Connection failure logs
+
+:::info note
+Currently, this feature is behind the feature flag `DEL_FETCH_TASK_LOG_API`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+:::info note
+This feature is not available for Harness Self-Managed Enterprise Edition.
+
+:::
+
+When you click on **Connection Test** on the Connector Details page, at times, you might encounter a connection failure. In such cases, you can troubleshoot the issue using the connector validation logs available at runtime.
+
+If the `executeOnDelegate` property is set to true, a **View Delegate Tasks Logs** option available. Selecting this option opens the **Delegate Task Logs** dialog that displays Google StackDriver logs for the `taskId`.
+
+![](./static/troubleshooting-nextgen-05.png)
+
+However, please note that some steps, such as the CI init step, do not return delegate information in the format required by the API schema, and logs are not available for these steps.
+
+You can expand the rows to view the complete JSON object, and you can also scroll horizontally to view the complete error message. This way, you can see the full error log and troubleshoot the connector issue effectively.

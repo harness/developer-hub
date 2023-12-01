@@ -195,10 +195,6 @@ The delegate logs are available in the Harness UI. When a pipeline runs and an e
 
 ![](./static/view-delegate-task-logs.png)
 
-You can expand log lines that have stack traces for better readability. This allows you to view the full error log.
-
-![](./static/view-delegate-task-logs-2.png)
-
 Delegate logs are also sent to Harness by default. These Stackdriver logs are stored in Harness's GCP account. 
 
 :::caution
