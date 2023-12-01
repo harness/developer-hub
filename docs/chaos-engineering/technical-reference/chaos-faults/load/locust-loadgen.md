@@ -106,7 +106,7 @@ data:
 
 It specifies the value of the target host. Tune it by using the `HOST` environment variable.
 
-Use the following example to tune the target host:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/locust-loadgen-chaos/host.yaml yaml)
 ```yaml
@@ -131,7 +131,7 @@ spec:
 
 It specifies the number of users or workers involved in the load generation. Tune it by using the `USERS` environment variable.
 
-Use the following example to tune the number of users:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/locust-loadgen-chaos/users.yaml yaml)
 ```yaml
@@ -158,7 +158,7 @@ spec:
 
 It specifies the rate at which users are spawned per second. Tune it by using the `LOAD_IMAGE` environment variable.
 
-Use the following example to tune the custom load image:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/locust-loadgen-chaos/load-image.yaml yaml)
 ```yaml
@@ -183,7 +183,7 @@ spec:
 
 It specifies the custom image name of the load generated. Tune it by using the `SPAWN_RATE` environment variable.
 
-Use the following example to tune the spawn rate:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/locust-loadgen-chaos/spawn-rate.yaml yaml)
 ```yaml
