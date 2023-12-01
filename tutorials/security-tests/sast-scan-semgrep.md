@@ -1,6 +1,6 @@
 ---
 title: Codebase scans with Semgrep
-sidebar_position: 5
+sidebar_position: 30
 description: Scan a codebase using Semgrep
 keywords: [STO, security, SAST, security, codebase, Semgrep]
 # slug: /sto-pipelines/sast/semgrep
