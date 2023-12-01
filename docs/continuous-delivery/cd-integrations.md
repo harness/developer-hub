@@ -232,10 +232,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables a load from cache option on pipeline execution retry form. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
-        <td>CDS_GITHUB_APP_AUTHENTICATION</td>
-        <td>Enables Github App authentication for users to fetch files and perform <a href="/docs/platform/connectors/code-repositories/git-hub-app-support">Harness Git Experience operations</a>. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDS_ENV_PROPAGATION</td>
         <td>Enables environment propagation across CD stages. <b>This feature is in Public Preview.</b></td>
     </tr>
