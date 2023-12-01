@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-11-30T10:00
+date: 2023-12-01T10:00
 sidebar_position: 15
 ---
 ```mdx-code-block
@@ -24,7 +24,7 @@ These release notes describe recent changes to Harness Harness Self-Managed Ente
 
 :::
 
-## Latest: Version 81308
+## November 30, 2023, version 81308
 
 ### New features and enhancements
 
@@ -553,7 +553,7 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
 ### Patches
 
-#### 0.11.1
+#### December 1, 2023, 0.11.1
 
 This release includes the following Harness module and component versions.
 
@@ -613,6 +613,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.47.11 |
 | Platform Service | 80502 |
 | Access Control Service | 80302 |
+| Delegate | 23.10.80810 |
 | Change Data Capture | 80909 |
 | Test Intelligence Service | release-197 |
 | NG UI | 0.364.18 |
@@ -1419,6 +1420,8 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.47.11 |
 | Platform Service | 80502 |
 | Access Control Service | 80302 |
+| Delegate | 23.10.80810 |
+| Delegate | 80302 |
 | Change Data Capture | 80909 |
 | Test Intelligence Service | release-197 |
 | NG UI | 0.364.18 |
@@ -1460,6 +1463,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.41.3 |
 | Platform Service | 80000 |
 | Access Control Service | 79802 |
+| Delegate | 23.09.80113 |
 | Change Data Capture | 80209 |
 | Test Intelligence Service | release-197 |
 | NG UI | 0.357.17 |
@@ -2142,6 +2146,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.41.3 |
 | Platform Service | 80000 |
 | Access Control Service | 79802 |
+| Delegate | 23.10.80114 |
 | Change Data Capture | 80209 |
 | Test Intelligence Service | release-197 |
 | NG UI | 0.357.17 |
@@ -2188,6 +2193,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.41.3 |
 | Platform Service | 80000 |
 | Access Control Service | 79802 |
+| Delegate | 23.10.80115 |
 | Change Data Capture | 80209 |
 | Test Intelligence Service | release-197 |
 | NG UI | 0.357.17 |
@@ -2233,6 +2239,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.41.3 |
 | Platform Service | 80000 |
 | Access Control Service | 79802 |
+| Delegate | 23.10.80115 |
 | Change Data Capture | 80209 |
 | Test Intelligence Service | release-197 |
 | NG UI | 0.357.17 |
@@ -2290,6 +2297,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.37.12 |
 | Platform Service | 79601 |
 | Access Control Service | 79400 |
+| Delegate | 23.07.79712 |
 | Change Data Capture | 79819 |
 | Test Intelligence Service | release-177 |
 | NG UI | 0.353.10 |
@@ -2828,6 +2836,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.37.13 |
 | Platform Service | 79601 |
 | Access Control Service | 79400 |
+| Delegate | 23.09.79716 |
 | Change Data Capture | 79819 |
 | Test Intelligence Service | release-177 |
 | NG UI | 0.353.17 |
@@ -2889,6 +2898,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.37.13 |
 | Platform Service | 79601 |
 | Access Control Service | 79400 |
+| Delegate | 23.08.79713 |
 | Change Data Capture | 79819 |
 | Test Intelligence Service | release-177 |
 | NG UI | 0.353.17 |
@@ -2965,6 +2975,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.37.13 |
 | Platform Service | 79601 |
 | Access Control Service | 79400 |
+| Delegate |  23.07.79712 |
 | Change Data Capture | 79819 |
 | Test Intelligence Service | release-177 |
 | NG UI | 0.353.10 |
@@ -3006,6 +3017,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.33.8 |
 | Platform Service | 79202 |
 | Access Control Service | 79004 |
+| Delegate | 23.05.78924 |
 | Change Data Capture | 79422 |
 | Test Intelligence Service | release-177 |
 | NG UI | 0.349.16 |
@@ -3058,6 +3070,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.33.8 |
 | Platform Service | 79202 |
 | Access Control Service | 79004 |
+| Delegate | 23.05.78924 |
 | Change Data Capture | 79422 |
 | Test Intelligence Service | release-177 |
 | NG UI | 0.349.16 |
@@ -3114,6 +3127,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.33.8 |
 | Platform Service | 79202 |
 | Access Control Service | 79004 |
+| Delegate | 23.05.78924 |
 | Change Data Capture | 79421 |
 | Test Intelligence Service | release-177 |
 | NG UI | 0.349.16 |
