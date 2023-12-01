@@ -613,7 +613,7 @@ To fix this error, you will need to reduce the size of the pipeline or template.
 
 This section covers common problems experienced when using the [Connectors](/docs/category/connectors).
 
-### Connection failure logs
+### Connection test failure logs
 
 When you click on **Connection Test** on the Connector Details page, at times, you might encounter a connection failure. In such cases, you can troubleshoot the issue using the connector validation logs available at runtime.
 
