@@ -615,15 +615,6 @@ This section covers common problems experienced when using the [Connectors](/doc
 
 ### Connection failure logs
 
-:::info note
-Currently, this feature is behind the feature flag `DEL_FETCH_TASK_LOG_API`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
-:::info note
-This feature is not available for Harness Self-Managed Enterprise Edition.
-
-:::
-
 When you click on **Connection Test** on the Connector Details page, at times, you might encounter a connection failure. In such cases, you can troubleshoot the issue using the connector validation logs available at runtime.
 
 If the `executeOnDelegate` property is set to true, a **View Delegate Tasks Logs** option available. Selecting this option opens the **Delegate Task Logs** dialog that displays Google StackDriver logs for the `taskId`.
@@ -633,3 +624,8 @@ If the `executeOnDelegate` property is set to true, a **View Delegate Tasks Logs
 However, please note that some steps, such as the CI init step, do not return delegate information in the format required by the API schema, and logs are not available for these steps.
 
 You can expand the rows to view the complete JSON object, and you can also scroll horizontally to view the complete error message. This way, you can see the full error log and troubleshoot the connector issue effectively.
+
+:::info note
+This feature is not available for Harness Self-Managed Enterprise Edition.
+
+:::
