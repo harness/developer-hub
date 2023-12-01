@@ -32,14 +32,14 @@ Keys are used to sign and verify attestations.
 
    For example, this **Run** step uses [Aqua Trivy](https://aquasecurity.github.io/trivy/dev/docs/supply-chain/sbom/) to generate an SBOM.
 
-   ![](../static/ingesting-sbom-from-other-scanners-01.png)
-
    ```
     trivy image \
      --format spdx-json \
      --output /shared/customer_artifacts/result.spdx.json \
      ubuntu:22.04
    ```
+   
+   ![](../static/ingesting-sbom-from-other-scanners-01.png)
 
    :::tip
 

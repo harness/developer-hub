@@ -1,7 +1,6 @@
 ---
 title: Ingest SBOM from Aqua Trivy into SSCA
-description: You can easily ingest from any scanner that can generate an SBOM.
-sidebar_label: Ingest SBOM from an Aqua Trivy STO scanner step
+description: You can easily ingest SBOM results generated from Aqua Trivy
 sidebar_position: 30
 ---
 
@@ -35,7 +34,7 @@ The Aqua Trivy STO step creates a `JOB_ID` [output variable](/docs/continuous-in
    <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.JOB_ID>
    ```
 
-2. Use the expression in your SBOM file path. The exact path depends on where your scanner outputs SBOM files. For example, this filepath references a Aqua Trivy STO step with the ID `myaquatrivystep` in a stage with the ID `mybuildstage`:
+2. Use the expression in your SBOM file path. The exact path depends on where your scanner outputs SBOM files. For example, this filepath references an Aqua Trivy STO step with the ID `myaquatrivystep` in a stage with the ID `mybuildstage`:
 
    ```
    /addon/results/<+pipeline.stages.mybuildstage.spec.execution.steps.myaquatrivystep.output.outputVariables.JOB_ID>.sbom
