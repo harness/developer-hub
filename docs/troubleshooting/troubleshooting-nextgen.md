@@ -615,9 +615,17 @@ This section covers common problems experienced when using the [Connectors](/doc
 
 ### Connection test failures
 
-When you select **Connection Test** on the Connector Details page, at times, you might encounter a connection failure. You can troubleshoot the issues using connector validation logs available at runtime.
+When you select **Connection Test** on the Connector Details page, at times, you might encounter a connection failure.
 
-If the `executeOnDelegate` property is set to true, a **View Delegate Tasks Logs** option is available. Selecting this option opens the **Delegate Task Logs** dialog that displays Google StackDriver logs for the `taskId`.
+![](./static/troubleshooting-nextgen-06.png)
+
+You can troubleshoot the issues using connector validation logs available at runtime.
+
+If the `executeOnDelegate` property is set to true, a **View Delegate Tasks Logs** option is available.
+
+![](./static/troubleshooting-nextgen-07.png)
+
+Selecting this option opens the **Delegate Task Logs** dialog that displays Google StackDriver logs for the `taskId`.
 
 ![](./static/troubleshooting-nextgen-05.png)
 
