@@ -21,7 +21,13 @@ To set up a Burp scan:
 
 ## Important notes for running Burp scans in STO
 
+### For more information
 
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
 
 
 ### Root access requirements 

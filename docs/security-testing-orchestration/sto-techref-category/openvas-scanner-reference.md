@@ -9,6 +9,15 @@ You can run OpenVAS scans on your instances using a Security step: create a CI B
 
 ## Important notes for running OpenVAS scans in STO
 
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
+
+
 ### Docker-in-Docker requirements
 
 ```mdx-code-block

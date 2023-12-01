@@ -9,6 +9,15 @@ You can run Reapsaw scans on your repositories using a Security step: create a C
 
 ## Important notes for running Reapsaw scans in STO
 
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
+
+
 ### Docker-in-Docker requirements
 
 ```mdx-code-block

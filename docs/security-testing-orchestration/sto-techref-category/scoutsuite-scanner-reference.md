@@ -9,6 +9,15 @@ You can run ScoutSuite scans on your configurations using a Security step: creat
 
 ## Important notes for running ScoutSuite scans in STO
 
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
+
+
 ### Docker-in-Docker requirements
 
 ```mdx-code-block

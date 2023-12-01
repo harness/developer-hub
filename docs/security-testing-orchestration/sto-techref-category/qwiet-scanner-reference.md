@@ -9,6 +9,15 @@ You can set up Qwiet scans using a Security step: create a CI Build or Security 
 
 ## Important notes for running Qwiet scans in STO
 
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
+
+
 ### Docker-in-Docker requirements
 
 ```mdx-code-block

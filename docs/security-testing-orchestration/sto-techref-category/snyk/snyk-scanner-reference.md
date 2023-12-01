@@ -16,6 +16,14 @@ For complete end-to-end workflow descriptions, go to [Run Snyk scans and ingest 
 
 ## Important notes for running Snyk scans in STO
 
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
+
 ### Docker-in-Docker requirements
 
 ```mdx-code-block

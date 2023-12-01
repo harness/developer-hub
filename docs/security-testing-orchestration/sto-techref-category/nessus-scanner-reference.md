@@ -9,6 +9,15 @@ You can run Nessus scans on your instances using a Security step: create a CI Bu
 
 ## Important notes for running Nessus scans in STO
 
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
+
+
 ### Docker-in-Docker requirements
 
 ```mdx-code-block

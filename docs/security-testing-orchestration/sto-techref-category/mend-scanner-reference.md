@@ -10,6 +10,15 @@ You can scan container images and repositories using [Mend](https://www.mend.io)
 
 ## Important notes for running Mend scans in STO
 
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
+
+
 ### Docker-in-Docker requirements
 
 ```mdx-code-block

@@ -9,6 +9,14 @@ You can scan your container images using [Amazon Elastic Container Registry (ECR
 
 ## Important notes for running AWS ECR scans in STO
 
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
+
 ### Docker-in-Docker requirements
 
 

@@ -10,6 +10,15 @@ You can scan your code repositories using [OWASP Dependency-Check](https://owasp
 
 ## Important notes for running OWASP scans in STO
 
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
+
+
 ### Docker-in-Docker requirements
 
 ```mdx-code-block

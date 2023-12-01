@@ -9,6 +9,15 @@ You can run Docker Content Trust (DCT) scans on your container images using a Se
 
 ## Important notes for running Docker Content Trust scans in STO
 
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
+
+
 ### Docker-in-Docker requirements
 
 ```mdx-code-block

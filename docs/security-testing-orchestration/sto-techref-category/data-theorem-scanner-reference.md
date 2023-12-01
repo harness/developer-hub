@@ -10,6 +10,15 @@ You can run Data Theorem scans on your instances using a Security step: create a
 
 ## Important notes for running Data Theorem scans in STO
 
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
+
+
 ### Docker-in-Docker requirements
 
 ```mdx-code-block

@@ -10,6 +10,14 @@ You can scan your container images using Black Duck Hub, a comprehensive and ver
 
 ## Important notes for running Black Duck Hub scans in STO
 
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
+
 ### Docker-in-Docker requirements
 
 ```mdx-code-block
