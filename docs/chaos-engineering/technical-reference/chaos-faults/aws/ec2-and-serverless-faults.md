@@ -61,4 +61,7 @@ Faults that belong to this category are listed below:
 
 1. [AWS ECS Task Stop](./ecs-task-stop)
 
-2. [AWS ECS Network Restrict](./ecs-network-restrict)
+2. AWS ECS Task Scale
+
+3. [AWS ECS Network Restrict](./ecs-network-restrict)
+
