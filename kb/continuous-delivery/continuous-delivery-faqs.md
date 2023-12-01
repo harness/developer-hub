@@ -2332,7 +2332,7 @@ If one feels like an issue for latency in API response receiving please consider
 
 #### How can one use HELM expressions ?
 
-One should have these FFs enabled : `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG` and `CDS_HELM_FETCH_CHART_METADATA_NG`
+One should have this FF enabled : `CDS_HELM_FETCH_CHART_METADATA_NG`
 They allows you to configure multiple expressions and then resolve the expressions.
 Please follow the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#helm-chart-expressions)
 
@@ -3195,3 +3195,12 @@ Check if port 5985 is opened and test the communication for winrm
 
 #### Reconcile is taking pretty long time while using remote temple stored in git
 Check in network time response for templates to troubleshot if there is any issue/slowness while communicating to git
+
+#### Can we use Infra variable in service config yaml(Like to use this variable as artefact path etc)
+No the Infra variable will not be available for service config, these Infra variable can be used in deployment manifest etc but not is service config as these variable will resolve in later part of deployment 
+
+#### Can we use Env/Infra etc variable as skip condition for approval stage
+If approval is added as stage then these variables will not be available and only account/org/project or pipeline variables will be available, If you are using approval as step inside Deploy stage than you can access Env/Infra variables as well
+
+#### What is the equivalent variable for  ${artifact.label.get(“labelkey)} In NG
+You can use  <+artifact.label.get(“labelkey”)>

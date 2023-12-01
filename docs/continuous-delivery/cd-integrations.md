@@ -203,10 +203,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables users to select Azure WebApps in a drop down for slot deployments. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>CD_AI_ENHANCED_REMEDIATIONS</td>
-        <td>Enables AIDA for CD steps to provide error handling support for CD AIDA.</td>
-    </tr>
-    <tr>
         <td>CDP_AWS_SAM</td>
         <td>Enables <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments">AWS SAM deployments</a> <b>This feature is in Public Preview.</b></td>
     </tr>
@@ -252,11 +248,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Reduces timeout for Jira from 5 minutes to 1 minute and allows pausing of approval. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
-        <td>CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG</td>
-        <td>Enables users to configure <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#using-multiple-helm-charts-in-one-harness-service">multiple Helm charts in a Harness service</a>
-, treating the Helm Charts similar to artifacts. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDS_HELM_FETCH_CHART_METADATA_NG</td>
         <td>Exposes <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts">Helm Chart expressions</a> for reference in other steps and settings. <b>This feature is in Public Preview.</b></td>
     </tr>
@@ -299,10 +290,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDS_REMOVE_TIME_BUCKET_GAPFILL_QUERY</td>
         <td>Removes the usage of time bucket gapfill from CD. <b>This feature is in Beta.</b> </td>
-    </tr>
-    <tr>
-        <td>GITOPS_UPDATE_APP_STEP</td>
-        <td>Enables the GitOps pipeline Update GitOps App step. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_MULTI_SERVICE_PROPAGATION</td>

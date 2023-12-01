@@ -42,10 +42,10 @@ bash <(curl -fsSL https://raw.githubusercontent.com/harness-community/scripts/ma
 <Tabs queryString="pipeline">
 <TabItem value="gitops" label="GitOps Workflow">
 ```
-Harness GitOps (built on top of Argo CD) watches the state of your application as defined in a Git repo, and can pull (either automatically, or when instructed to do so) these changes into your Kubernetes cluster, leading to an application sync.
+Harness GitOps (built on top of Argo CD) watches the state of your application as defined in a Git repo, and can pull (either automatically, or when instructed to do so) these changes into your Kubernetes cluster, leading to an application sync. Harness GitOps supports both Argo CD and Flux CD as the GitOps reconciler.
 :::info
 
-Whether you're new to GitOps or have already used Argo CD, this guide will assist you in getting started with Harness GitOps, both with and without Argo CD.
+Whether you're new to GitOps or an experienced practitioner, this guide will assist you in getting started with Harness GitOps, offering you the option to choose between Argo CD and Flux CD.
 
 :::
 
@@ -55,6 +55,7 @@ Verify that you have the following:
 
 1. **A Kubernetes cluster**. We recommend [K3D](https://k3d.io/v5.5.1/) for installing the Harness GitOps Agent and deploying a sample application in a local development environment.
     - For requirements, go to [Harness GitOps Agent Requirements](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/#requirements).
+    - If you prefer using Flux CD as the reconciler, you will need to [install the Flux controller](https://fluxcd.io/flux/installation/#install-the-flux-controllers) on your Kubernetes cluster.
 2. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
     - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
@@ -202,16 +203,22 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 
 - Select **No**, and then select **Start**.
 - In **Name**, enter the name for the new Agent.
-- In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
-  - For this tutorial, let's use the `default` namespace to install the Agent and deploy applications.
-- Select **Continue**. The **Review YAML** settings appear.
-- This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.  
+- In **GitOps Operator**, select one of the following:
+    - **Argo**. Uses Argo CD as the GitOps reconciler.
+    - **Flux**. Uses Flux as the GitOps reconciler.
+- In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. 
 
-    ```
-    kubectl apply -f gitops-agent.yml -n default
-    ```
+Harness GitOps Agent will have access to create or modify resources in other namespaces so this namespace doesn't necessarily have to be the same as the one where your apps are deployed. For instance, you can choose `argocd` or `fluxcd` as the namespace for installing the GitOps Agent (the example in the image below uses `gitops-agent` as the namespace). Ensure that this namespace already exists on your Kubernetes cluster.
 
- - Select **Continue** and verify the Agent is successfully installed and can connect to Harness Manager.
+If **Namespaced** is selected, the Harness GitOps agent is installed without cluster-scoped permissions, and it can access only those resources that are in its own namespace. You can select **Skip Crds** to avoid a collision if already installed.
+
+- Select **Continue**. The **Download YAML** or **Download Helm Chart** settings appear.
+
+![Download YAML or Helm chart setting](../static/k8s-manifest-tutorial/download-agent-installation-fresh.png)
+
+Download the Harness GitOps Agent script using either the YAML or Helm Chart options. The **YAML** option provides a manifest file, and the **Helm Chart** option offers a Helm chart file. Both can be downloaded and used to install the GitOps agent on your Kubernetes cluster. The third step includes the command to run this installation.
+
+- Select **Continue** and verify the Agent is successfully installed and can connect to Harness Manager.
 
 
 ```mdx-code-block
@@ -221,13 +228,19 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 
 - Select **Yes**, and then select **Start**.
 - In **Name**, enter the name for the existing Argo CD project.
-- In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
-- Select **Next**. The **Review YAML** settings appear.
-- This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.  
-  
-    ```yaml
-    kubectl apply -f gitops-agent.yml -n default
-    ```
+- In **GitOps Operator**, select one of the following:
+    - **Argo**. Uses Argo CD as the GitOps reconciler.
+    - **Flux**. Uses Flux as the GitOps reconciler.
+- In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. 
+
+Harness GitOps Agent will have access to create or modify resources in other namespaces so this namespace doesn't necessarily have to be the same as the one where your apps are deployed. For instance, you can choose `argocd` or `fluxcd` as the namespace for installing the GitOps Agent (the example in the image below uses `gitops-agent` as the namespace). Ensure that this namespace already exists on your Kubernetes cluster.
+- Select **Continue**. The **Download YAML** or **Download Helm Chart** settings appear.
+
+![Download YAML or Helm chart setting](../static/k8s-manifest-tutorial/download-agent-installation-existing.png)
+
+Download the Harness GitOps Agent script using either the YAML or Helm Chart options. The **YAML** option provides a manifest file, and the **Helm Chart** option offers a Helm chart file. Both can be downloaded and used to install the GitOps agent on your Kubernetes cluster. The third step includes the command to run this installation.
+
+- Select **Continue** and verify the Agent is successfully installed and can connect to Harness Manager.
 - Once you have installed the Agent, Harness will start importing all the entities from the existing Argo CD Project.
 
 ```mdx-code-block
@@ -243,6 +256,12 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 A Harness GitOps Repository is a repo containing the declarative description of a desired state. The declarative description can be in Kubernetes manifests, Helm Chart, Kustomize manifests, etc.
 
 </details>
+
+:::note 
+
+If you're using a Flux GitOps Reconciler, Flux must be present in the destination cluster. As of now, this limits us to in-cluster type applications.
+
+:::
 
 1. Select **Settings**, and then select **Repositories**.
    - Select **New Repository**.
@@ -265,6 +284,11 @@ A Harness GitOps Cluster is the target deployment cluster that is compared to th
 
 </details>
 
+:::note 
+
+If you're using a Flux GitOps Reconciler, Flux must be present in the destination cluster. As of now, this limits us to in-cluster type applications.
+
+:::
 
 1. Select **Settings**, and then select **Clusters**.
    - Select **New Cluster**.
@@ -284,53 +308,42 @@ A GitOps Application collects the Repository (**what you want to deploy**), Clus
 
 </details>
 
+:::note
+
+Due to an update in the Kustomization Controller, the vanilla YAML files now need to include a namespace. The specific repository and path used in this example include the namespace field in the YAMLs.
+
+:::
+
 1. Select **Applications**.
    - Select **New Application**.
        - Enter the **Application Name**: `guestbook`.
-       - In **GitOps Agent**, select the Agent that you installed in your cluster and select **Apply**.
-       - Select **New Service**, and then toggle to **YAML** to use the YAML editor.
-       - Select **Edit YAML**, paste in the YAML below, and then select **Save**.  
-
-       ```yaml
-       service:
-         name: gitopsguestbook
-         identifier: gitopsguestbook
-         serviceDefinition:
-           type: Kubernetes
-           spec: {}
-         gitOpsEnabled: true
-       ```
-
-       - Select **New Environment**, and the toggle to **YAML** to use the YAML editor.
-       - Select **Edit YAML**, paste in the YAML below, and then select **Save**.  
-       
-       ```yaml
-       environment:
-         name: gitopsenv
-         identifier: gitopsenv
-         description: ""
-         tags: {}
-         type: PreProduction
-         orgIdentifier: default
-         projectIdentifier: default_project
-         variables: []
-       ```
-       - Next, select **Continue**, keep the **Sync Policy** settings as is, and select **Continue**.
-       - In **Repository URL**, select the **Repository** you created earlier, and then select **Apply**.
-       - Select **master** as the **Target Revision**, type `guestbook` in the **Path**, and then select **Enter**.
-       - Select **Continue** and select the **Cluster** created in the above steps.
-       - In **Namespace**, enter the target namespace for Harness GitOps to sync the application.
-       - Enter `default` and select **Finish**.
+       - In **GitOps Operator**, select either **Argo** or **Flux**. Based on your selection, the associated GitOps Agent will be listed next. 
+       - In **GitOps Agent**, select the Agent that you installed in your cluster.
+       - You can leave out **Service** and **Environment** selections.
+       - Select **Continue**.  
+    - Under **Sync Policy**
+       - Make sure **Apply Out of Sync Only** and **Auto-Create Namespace** are checked under **Sync Options** settings.
+       - Use `Foreground` for the **Prune Propagation Policy**.
+       - Select **Continue**.
+    - Under **Source**
+       - Select the repository you created earlier for the **Repository URL**.
+       - Select `master` as the **Target Revision**.
+       - Use `workshop-guestbook` for the **Path**.
+       - Select **Continue**.
+    - Under **Destination**
+       - Select the cluster you previously created under **Cluster**.
+       - For **Namespace**, enter `guestbook`. This is the target namespace for Harness GitOps to sync the application.
+       - Select **Finish**.
 2. Finally, it's time to **Synchronize** the GitOps Application state. Select **Sync**, check the Application details, and then select **Synchronize** to initiate the deployment.
    - After a successful execution, you can check the deployment on your Kubernetes cluster using the following command:  
 
     ```bash
-    kubectl get pods -n default
+    kubectl get pods -n guestbook
     ```
    - To access the Guestbook application deployed via the Harness Pipeline, port forward the service and access it at [http://localhost:8080](http://localhost:8080):
 
     ```bash
-    kubectl port-forward svc/guestbook-ui 8080:80
+    kubectl port-forward svc/guestbook-ui 8080:80 -n guestbook
     ```
 
 A successful Application sync will display the following status tree under **Resource View**.

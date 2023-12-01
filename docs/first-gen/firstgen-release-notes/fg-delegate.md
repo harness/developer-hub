@@ -57,6 +57,15 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## November 2023
 
+### Harness version 81609, Harness Delegate version 23.11.81601
+
+#### Fixed issues
+
+- Fixed the following issues:
+
+   - The delegate Stackdriver logger didn't work if the delegate token was base64-encoded format.
+   - When the `DELEGATE_TYPE` was `KUBERNETES` and the delegate wasn't deployed in Kubernetes, the delegate failed to start. (PL-42452)
+
 ### Harness version 81401, Harness Delegate version 23.11.81403
 
 #### Fixed issue
