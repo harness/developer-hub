@@ -603,13 +603,13 @@ The following table provides the feature support matrix for CCM on Harness Self-
   
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **Connected environment** | **Air-gapped environment** |
 | --- | --- | --- | --- | --- | --- | --- |
-|Perspectives | ✅  | ❌ | ❌ | ✅ | ✅ | ✅ |
-|Cost categories | ✅  | ❌ | ❌ | ✅ | ✅ | ✅ |
-|Budgets | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ |
-|BI dashboards |✅  | ❌ | ❌ | ✅ | ✅ | ✅ |
-|Anomaly detection  | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
+|Perspectives | ✅  | ✅ | ❌ | ✅ | ✅ | ✅ |
+|Cost categories | ✅  | ✅ | ❌ | ✅ | ✅ | ✅ |
+|Budgets | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ |
+|BI dashboards |✅  | ✅ | ❌ | ✅ | ✅ | ✅ |
+|Anomaly detection  | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
 |Currency standardization | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-|Recommendations |✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
+|Recommendations |✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
 |AutoStopping | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 |Asset governance | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 
