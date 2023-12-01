@@ -82,9 +82,7 @@ The following deprecated API endpoints will no longer be supported:
 
    This issue has been resolved by updating the page styling. Harness removed width to prevent page overflow.
 
-- The IP Allowlist page showed more than 20 items when you selected the 20 items option from the pagination list. (PL-42934)
-
-   This option was resolved by updating the default value of the IP allowlist API to 20.
+- The IP Allowlist page had a default value of 30 IPs per page. The IP Allowlist page list now has a value of 20 IPs per page. (PL-42934)
 
 ## November 2023
 
