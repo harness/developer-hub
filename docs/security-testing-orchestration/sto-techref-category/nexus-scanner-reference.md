@@ -9,15 +9,6 @@ You can run Nexus scans on your repositories using a Security step: create a CI 
 
 ## Important notes for running Nexus scans in STO
 
-### For more information
-
-```mdx-code-block
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-```
-
-<StoMoreInfo />
-
-
 ### Docker-in-Docker requirements
 
 ```mdx-code-block
@@ -33,6 +24,14 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 ```
 
 <StoRootRequirements />
+
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
 
 ## Security step settings for Nexus scans in STO
 

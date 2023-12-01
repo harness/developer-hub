@@ -10,14 +10,6 @@ You can scan container images and repositories using [Fossa](https://www.fossa.c
 
 ## Important notes for running Fossa scans in STO
 
-### For more information
-
-```mdx-code-block
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-```
-
-<StoMoreInfo />
-
 
 ### Docker-in-Docker requirements
 
@@ -34,6 +26,14 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 ```
 
 <StoRootRequirements />
+
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
 
 ## Fossa step settings for STO scans
 

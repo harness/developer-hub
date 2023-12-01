@@ -17,14 +17,6 @@ STO supports container scans only with Aqua Trivy.
 
 ## Important notes for running Aqua Trivy scans in STO
 
-### For more information
-
-```mdx-code-block
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-```
-
-<StoMoreInfo />
-
 ### Docker-in-Docker requirements
 
 
@@ -43,7 +35,13 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
+### For more information
 
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
 
 
 ## Aqua Trivy step settings for STO scans

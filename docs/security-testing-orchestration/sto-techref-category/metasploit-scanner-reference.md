@@ -9,13 +9,6 @@ You can run Metasploit scans on your instances using a Security step: create a C
 
 ## Important notes for running Metasploit scans in STO
 
-### For more information
-
-```mdx-code-block
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-```
-
-<StoMoreInfo />
 
 
 ### Docker-in-Docker requirements
@@ -33,6 +26,15 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 ```
 
 <StoRootRequirements />
+
+
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
 
 ## Security step settings for Metasploit scans in STO
 

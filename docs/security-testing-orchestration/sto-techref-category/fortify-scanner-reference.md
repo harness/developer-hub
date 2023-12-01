@@ -9,15 +9,6 @@ You can run Fortify scans on your repositories using a Security step: create a C
 
 ## Important notes for running Fortify scans in STO
 
-### For more information
-
-```mdx-code-block
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-```
-
-<StoMoreInfo />
-
-
 
 ### Root access requirements
 
@@ -26,6 +17,16 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 ```
 
 <StoRootRequirements />
+
+
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
+
 
 ## Security step settings for Fortify scans in STO
 

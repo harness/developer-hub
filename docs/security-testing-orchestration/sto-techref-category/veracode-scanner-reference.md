@@ -21,14 +21,6 @@ For instructions, go to the [Veracode docs](https://docs.veracode.com) and searc
 Harness recommends you create [text secrets](/docs/platform/secrets/add-use-text-secrets) for your authentication credentials — password, API key, API secret key, etc. — and access your secrets using `<+secrets.getValue("my-secret")>`.
 * The [Veracode - Automated Data Load](https://community.harness.io/t/veracode-automated-data-load/1066) and [Veracode - Activate Scenario](https://community.harness.io/t/veracode-activate-scenario/1067) blog posts include useful information about how to ingest Veracode scan results into Harness.
 
-### For more information
-
-```mdx-code-block
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-```
-
-<StoMoreInfo />
-
 ### Docker-in-Docker requirements
 
 ```mdx-code-block
@@ -44,6 +36,14 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 ```
 
 <StoRootRequirements />
+
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
 
 ## Required Settings for Veracode scans in STO
 

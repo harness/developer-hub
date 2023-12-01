@@ -9,14 +9,6 @@ You can scan your repositories and other components used in your code with [Anch
 
 ## Important notes for running Anchore Enterprise scans in STO
 
-### For more information
-
-```mdx-code-block
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-```
-
-<StoMoreInfo />
-
 ### All data ingestion methods are supported
 
 You can run Orchestration, Extraction, and Ingestion workflows with Anchore Enterprise. This topic includes an [`orchestratedScan` pipeline example](#anchore-enterprise-orchestration-example) and a [`dataLoad` pipeline example](#anchore-enterprise-dataload-example) below.
@@ -51,6 +43,14 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 ```
 
 <StoRootRequirements />
+
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
 
 <!-- step-palette 
 
