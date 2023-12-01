@@ -562,7 +562,7 @@ This release includes the following Harness module and component versions.
 | Air Gap Bundle | [0.11.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.11.1) |
 | NG Manager | 81308 |
 | CI Manager | 6602 |
-| Pipeline Service | 1.49.8 |
+| Pipeline Service | 1.49.12 |
 | Platform Service | 80800 |
 | Access Control Service | 80600 |
 | Change Data Capture | 81510 |
