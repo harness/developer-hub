@@ -72,19 +72,20 @@ export const docsCards: CardSections = [
         title: "Software catalog",
         module: MODULES.idp,
         description: "Learn how a software catalog works.",
-        link: "/docs/internal-developer-portal/features/software-catalog",
+        link: "/docs/internal-developer-portal/features/catalog/software-catalog",
+        
       },
       {
         title: "Service onboarding pipelines",
         module: MODULES.idp,
         description: "Learn how to automate service creation.",
-        link: "/docs/internal-developer-portal/features/service-onboarding-pipelines",
+        link: "/docs/internal-developer-portal/features/flows/service-onboarding-pipelines",
       },
       {
         title: "Scorecards",
         module: MODULES.idp,
         description: "Learn how to use Scorecards",
-        link: "/docs/internal-developer-portal/features/scorecard",
+        link: "docs/internal-developer-portal/features/scorecards/scorecard",
       },
     ],
   },

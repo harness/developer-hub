@@ -19,7 +19,7 @@ In Harness IDP, a service onboarding pipeline (also known as a software template
 
 ## Template registration
 
-A template is a kind of entity that exists in the software catalog. You can create a `template.yaml` file and register the URL with the catalog. For information about registering a template, go to [Add a new software component to the catalog](../get-started/register-a-new-software-component.md).
+A template is a kind of entity that exists in the software catalog. You can create a `template.yaml` file and register the URL with the catalog. For information about registering a template, go to [Add a new software component to the catalog](/docs/internal-developer-portal/get-started/register-a-new-software-component.md).
 
 ## Available template actions
 

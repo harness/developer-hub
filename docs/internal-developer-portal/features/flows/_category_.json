@@ -1,0 +1,12 @@
+{
+    "label": "Flows",
+    "collapsible": "true",
+    "collapsed": "false",
+    "position": 10,
+    "link": {
+      "type": "generated-index",
+      "title": "Self-Service Workflows Powered by Harness Pipelines"
+    },
+    "customProps": {}
+  }
+  

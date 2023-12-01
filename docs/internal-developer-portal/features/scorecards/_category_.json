@@ -1,0 +1,11 @@
+{
+    "label": "Scorecards",
+    "collapsible": "true",
+    "collapsed": "false",
+    "position": 10,
+    "link": {
+      "type": "generated-index",
+      "title": "Scorecards to Measure different Metrics for your Software Components"
+    },
+    "customProps": {}
+  }

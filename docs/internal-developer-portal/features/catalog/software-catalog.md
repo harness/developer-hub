@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-![](../get-started/static/catalog-screenshot.png)
+![](./static/catalog-screenshot.png)
 
 The software catalog is a centralized registry for all your software (services, websites, libraries, data pipelines, and so on), and it helps you track their ownership, metadata, and dependencies. The catalog is built from metadata YAML files, each of which is stored with its code and owned by a team. It is powered by the [Backstage Software Catalog](https://backstage.io/docs/features/software-catalog/).
 
@@ -39,7 +39,7 @@ spec:
   system: project-x
 ```
 
-For information about how to register a software component, go to [register a new software component](../get-started/register-a-new-software-component.md). For YAML reference documentation, go to [backstage.io](https://backstage.io/docs/features/software-catalog/descriptor-format).
+For information about how to register a software component, go to [register a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component.md). For YAML reference documentation, go to [backstage.io](https://backstage.io/docs/features/software-catalog/descriptor-format).
 
 ## Software ecosystem modelling
 
@@ -65,7 +65,7 @@ To learn more about the available catalog APIs supported by Backstage, go to [AP
 
 Anyone can update the definition of a software component by updating the component's `catalog-info.yaml` file. You can also use the edit button on the catalog page to go to the component's source location.
 
-![](static/edit-button-catalog.png)
+![](./static/edit-button-catalog.png)
 
 Committed changes reflect on the catalog in 30 minutes. You can also press the refresh button on the catalog page to instantly sync the system with Git.
 
