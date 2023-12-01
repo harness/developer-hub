@@ -6,6 +6,8 @@ helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/internal-developer-portal/features/service-onboarding-pipelines
 ---
 Service Onbaording in Harness IDP use Harness pipeline orchestrator and those could be trigerred through Software Templates. 
 

@@ -6,6 +6,8 @@ helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/internal-developer-portal/features/software-catalog
 ---
 
 ![](./static/catalog-screenshot.png)
