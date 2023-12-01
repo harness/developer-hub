@@ -844,21 +844,18 @@ This release does not have new features.
 - Fixed a Pipeline Execution UI issue where durations of less than 1s were displayed incorrectly. (CDS-78324)
 
 <!-- 
-
 https://harness.atlassian.net/browse/CDS-78305?focusedCommentId=573244
 
 I documented this as a Fixed Issue in the 805 release notes. Did this get pushed to 807? 
-
 -->
 
 - Fixed a UI issue observed when retrying a pipeline execution: the wrong Execution Id was displayed because the UI was evaluating the sequenceId based on the root executionId. With this fix, the Execution Id is based on the back-end data for the current pipeline execution. (CDS-78305)
+
+
 <!--
-
-
 https://harness.atlassian.net/browse/CDS-77793?focusedCommentId=573257
 
 This ticket is showing up in the 807xx release notes list but I already documented this is in the 80504 relnotes. I’ll move this from  Fixed Issues to Hotfixes  in 80504 release notes, this will show up when I publish the  807 release notes. 
-
 -->
 
 - Fixed an issue resolving secrets via `<+secrets.getValue("my_secret")>` used in container-based step groups in a Deploy stage.  (CDS-77793, ZD-49391, ZD-49763, ZD-49838, ZD-50014)
