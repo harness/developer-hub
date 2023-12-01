@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-11-22T10:00
+date: 2023-12-01T10:00
 sidebar_position: 9
 ---
 
@@ -23,7 +23,23 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
+## December 2023
+
+### Version 6801
+
+<!-- Dec 01, 2023 -->
+
+This release includes backend changes only.
+
 ## November 2023
+
+### Version 6704
+
+<!-- Nov 29, 2023 -->
+
+#### Hotfix
+
+Fixed an issue related to cache saving with Cache Intelligence.
 
 ### Version 6703
 
