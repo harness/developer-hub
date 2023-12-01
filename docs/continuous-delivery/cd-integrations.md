@@ -219,10 +219,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial">fetching and listing of WebApp names and slots</a>. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>CDS_SERVERLESS_V2</td>
-        <td>Enables *building* and packaging serverless packages in Harness CD. For Serverless deployments, this feature spins up an environment for the Serverless package, validates the Serverless CloudFormation template, and then performs a Serverless deploy, all in the ephemeral environment. <b>This feature is in Public Preview.</b> </td>
-    </tr>
-    <tr>
         <td>CDS_SUPPORT_EXPRESSION_REMOTE
         _TERRAFORM_VAR_FILES_NG</td>
         <td>Enables Harness expressions in remote Terraform var files. <b>This feature is in Beta.</b> </td>
