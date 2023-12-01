@@ -16,7 +16,7 @@ This tutorial shows you how to scan your codebases using [Semgrep](https://semgr
   - A basic understanding of key STO concepts and good practices. Here are some good resources: 
     - [Codebase scans with Bandit tutorial](/tutorials/security-tests/sast-scan-bandit)
     - [Key Concepts in STO](/docs/category/key-concepts-in-sto)
-  - A [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and an access token to your Git provider account. 
+  - A [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and an access token to your Git provider account.  
   - A Semgrep account login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub. 
   - Your Git and Semgrep access tokens must be stored as [Harness secrets](/docs/platform/secrets/add-use-text-secrets)
 
@@ -28,9 +28,9 @@ This tutorial shows you how to scan your codebases using [Semgrep](https://semgr
 
 ### Set up your codebase
 
-To do this tutorial, you need a codebase connector to your Git repository and an access token. A connector can specify a Git account (https://git.com/my-account) or a specific repository (https://git.com/my-account). 
+To do this tutorial, you need a codebase connector to your Git repository and an access token. A connector can specify a Git account (https://github.com/my-account) or a specific repository (https://github.com/my-account). 
 
-This tutorial uses the [dvpwa repository](https://github.com/williamwissemann/dvpwa) as an example. The simplest setup is to create a connector to your account, fork this repository, and then specify the repository in your connector. However, you can run your scans on any codebase that uses a language supported by Semgrep.  
+This tutorial uses the [dvpwa repository](https://github.com/williamwissemann/dvpwa) as an example. The simplest setup is to fork this repository into your account and scan the fork. However, you can run your scans on any codebase that uses a language supported by Semgrep.  
 
 ### Set up your pipeline
 
@@ -38,13 +38,15 @@ Do the following:
 
 1. Select **Security Testing Orchestration** (left menu, top) > **Pipelines** > **Create a Pipeline**.
 
-2. In the new pipeline, select **Add stage** > **Security Tests** and enter a name for the new stage.
+2. In the new pipeline, select **Add stage** > **Security Tests**.
 
-3. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.  
+3. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** or **ARM64** for the infrastructure, OS, and architecture.  
+   
+   You can also use a [Kubernetes](/docs/category/set-up-kubernetes-cluster-build-infrastructures) or [Docker](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) infrastructure, but these require additional work to set up.   
 
 4. Set up your codebase:
 
-   1. Select **Codebase** on the right.
+   1. Select **Codebase** (right menu).
 
    2. Select your codebase connector.
 
@@ -63,35 +65,41 @@ Now you will add a step that runs a scan using the local Semgrep container image
 
    1. Name = **run_semgrep_scan**
 
-   2. Container Registry = When prompted, select **Account** and then **Harness Docker Connector**. 
+   2. Container Registry — When prompted, select **Account** and then **Harness Docker Connector**. 
 
    3. Image = **returntocorp/semgrep**
 
-   4. Command = `semgrep /harness --sarif --config auto -o /harness/results.sarif  `
+   4. Command = `semgrep /harness --sarif --config auto -o /harness/results.sarif`
 
       This command runs a [Semgrep scan](https://semgrep.dev/docs/cli-reference/#semgrep-scan-command-options) on your code repo and outputs the results to a [SARIF](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) file.  
 
-   5. Open Optional Configuration and set the following options:
+   5. Open **Optional Configuration** and set the following options:
 
       1. Add the following environment variable:
          
-         - Key : **SEMGREP_APP_TOKEN**
+         - Key : `SEMGREP_APP_TOKEN`
          - Value : Click the type selector (right), set the value type to **Expression**, and enter the value `<+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")>`. 
 
            ![](./static/sast-semgrep-tutorial/set-value-type.png)
 
-      2. Limit Memory = **4096**
+      2. Limit Memory = **4096Mi**
+
+      :::tip
+
+      You can often speed up your scans by [increasing CPU or memory resources for your scan step](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines). 
+
+      :::
 
 
 ### Add the Semgrep (ingest) step
 
 Now that you've added a step to run the scan, it's a simple matter to ingest it into your pipeline. Harness provides a set of customized steps for popular scanners such as Semgrep. 
 
-1. In the **Execution** tab, add a **Semgrep** step after your **Run** step.
+1. In **Execution**, add a **Semgrep** step after your **Run** step.
 
 2. Configure the step as follows:
 
-   1. Name = **ingest_semgrep_data**
+   1. Name = `ingest_semgrep_data`
 
    2. Type = **Repository**
 
@@ -101,7 +109,7 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
 
       2. Variant = Select **Runtime Input** as the value type.
 
-   4. Ingestion File = **/harness/results.sarif**
+   4. Ingestion File = `/harness/results.sarif`
 
    5. Fail on Severity = **Critical**
 
@@ -114,14 +122,11 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
 
    - Under **Codebase**, enter the repository and branch to scan.
 
-   - Under **Stage: semgrepScan**, enter the target name and variant you want to use. In most cases, you want to use the repository for the target and the branch for the variant. 
+   - Under **Stage: <_stage_name_>**, enter the [target name] and [variant] you want to use. In most cases, you want to use the repository for the target and the branch for the variant. 
 
-   If you're scanning the [example repository](https://github.com/williamwissemann/dvpwa) mentioned above, enter the following:
+   If you're scanning the codebase for the first time, enter the root branch of your repo. This is usually the `main` or `master` branch. 
 
-     - repository = **dvpwa**
-     - branch = **master**
-     - target = **dvpwa**
-     - variant = **master** 
+   If you're scanning the [example repository](https://github.com/williamwissemann/dvpwa) mentioned above, enter `dvpwa` for the repository and target, and `master` for the branch and variant. 
 
 3. Run the pipeline and then wait for the execution to finish.
 
@@ -132,3 +137,13 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
 3. Select **Security Tests** and examine any issues detected by your scan.
 
    ![](./static/sast-semgrep-tutorial/security-tests-results.png)
+
+### Specify the baseline
+
+It is [good practice](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#why-you-should-define-a-baseline-for-every-sto-target) to specify a baseline for every target. Defining a baseline makes it easy for developers to drill down into “shift-left” issues in downstream variants and security personnel to drill down into “shift-right” issues in the baseline.
+
+1. Select **Test Targets** (left menu).
+
+2. Select the baseline you want for your target. 
+
+![](./static/sast-semgrep-tutorial/baseline-set.png)
