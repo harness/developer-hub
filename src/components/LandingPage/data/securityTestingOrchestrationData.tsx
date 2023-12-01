@@ -11,7 +11,7 @@ export const FeaturedList: CardItem[] = [
     description: (
       <>Set up a Pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.</>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15min",
     link: "/tutorials/security-tests/standalone-pipeline",
@@ -23,7 +23,7 @@ export const FeaturedList: CardItem[] = [
     description: (
       <>Learn how to include STO scans in CI and CD pipelines and stop builds when STO finds any "show-stopper" vulnerabilities.</>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "10min",
     link: "/tutorials/security-tests/cicd-integrated-pipeline",
@@ -38,7 +38,7 @@ export const STOList: CardItem[] = [
     description: (
       <>Set up a Pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.</>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15min",
     link: "/tutorials/security-tests/standalone-pipeline",
@@ -50,11 +50,23 @@ export const STOList: CardItem[] = [
     description: (
       <>Learn how to include STO scans in CI and CD pipelines and stop builds when STO finds any "show-stopper" vulnerabilities.</>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "10min",
     link: "/tutorials/security-tests/cicd-integrated-pipeline",
   },
+  {
+    title: "Codebase scans with Semgrep",
+    module: MODULES.sto,
+    icon: "img/icon_sto.svg",
+    description: (
+      <>Set up a pipeline to scan repositories in any language that Semgrep supports.</>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/security-tests/sast-scan-semgrep",
+  },  
   {
     title: "Set up STO integrations with GitLab CI",
     module: MODULES.sto,
