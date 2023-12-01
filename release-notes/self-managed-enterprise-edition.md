@@ -550,6 +550,47 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
 - An alignment issue with the **Change Event** card has been fixed to ensure consistent information display. (SRM-15793)
 
+### Patches
+
+#### 0.11.1
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.11.1](https://github.com/harness/helm-charts/releases/tag/harness-0.11.1) |
+| Air Gap Bundle | [0.11.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.11.1) |
+| NG Manager | 81308 |
+| CI Manager | 6602 |
+| Pipeline Service | 1.49.8 |
+| Platform Service | 80800 |
+| Access Control Service | 80600 |
+| Change Data Capture | 81510 |
+| Test Intelligence Service | release-221 |
+| NG UI | 0.368.21 |
+| LE NG | 67903 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.11.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.1/sto_images.tgz" \
+  .
+```
+
+#### Fixed issue
+
+- Default values for external databases caused upgrade issues. Harness removed local default MongoDB values from `values.yaml` files to resolve the issue. (SMP-2339)
+
 ## Previous releases
 
 <details>
