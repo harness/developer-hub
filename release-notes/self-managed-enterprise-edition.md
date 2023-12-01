@@ -598,7 +598,7 @@ gsutil -m cp \
 <details>
 <summary>2023 releases</summary>
 
-#### Version 80917
+#### November 1, 2023, version 80917
 
 ##### New features and enhancements
 
@@ -1407,7 +1407,7 @@ gsutil -m cp \
 
 #### Patches
 
-##### 0.10.1
+##### November 10, 2023, 0.10.1
 
 This release includes the following Harness module and component versions.
 
@@ -1447,7 +1447,7 @@ gsutil -m cp \
 
 - Configured `socket-timeout` to handle a higher volume and scale of customer billing data. (CCM-15026)
 
-#### Version 80220
+#### September 30, 2023, version 80220
 
 ##### New features and enhancements
 
@@ -2132,7 +2132,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
 #### Patches
 
-#### 0.9.1
+#### October 8, 2023, 0.9.1
 
 This release includes the following Harness module and component versions.
 
@@ -2179,7 +2179,7 @@ gsutil -m cp \
    For more information, go to [Service hooks](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks).
 
 
-#### 0.9.2
+#### October 12, 2023, 0.9.2
 
 This release includes the following Harness module and component versions.
 
@@ -2225,7 +2225,7 @@ gsutil -m cp \
    - Corrected the `cd.gitops` field in the `override-prod.yaml` file.
    - Added an annotation field to `nextgen-ui` to resolve `global.ingress.objects.annotation` template failures.
 
-#### 0.9.3
+#### October 24, 2023, 0.9.3
 
 This release includes the following Harness module and component versions.
 
@@ -2822,7 +2822,7 @@ You are missing the following permission: "View default settings" in Account sco
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor bug fixes and updates to address potential security vulnerabilities.
 
-#### 0.8.4
+#### September 28, 2023, 0.8.4
 
 This release includes the following Harness module and component versions.
 
@@ -2884,7 +2884,7 @@ This release does not include any early access features.
 
    This issue has been resolved by removing the character limit, and you can now add multiple repo certificates.
 
-#### 0.8.3
+#### September 20, 2023, 0.8.3
 
 This release includes the following Harness module and component versions.
 
@@ -2961,7 +2961,7 @@ This release does not include any early access features.
 
 - Fixed an issue where build pods weren't cleaned up if Harness selected an invalid delegate for the cleanup task. This could happen if you used delegate selectors based on delegate tags, and multiple delegates had the same tags, but some of those delegates didn't have access to the cluster. Now Harness checks the selected delegate's connectivity to the cluster before assigning a task to that delegate. (CI-8831, ZD-47647)
 
-#### 0.8.2
+#### August 23, 2023, 0.8.2
 
 This release includes the following Harness module and component versions.
 
@@ -3039,11 +3039,11 @@ gsutil -m cp \
   .
 ```
 
-#### What's new
+#### New features and enhancements
 
 This release does not include new features.
 
-#### Early access
+#### Early access features
 
 This release does not include any early access features.
 
@@ -3092,7 +3092,7 @@ gsutil -m cp \
   .
 ```
 
-#### What's new
+#### New features and enhancements
 
 - Send emails to non-Harness users. (CDS-69561, CDS-58625, ZD-42496)
   
@@ -3104,7 +3104,7 @@ gsutil -m cp \
 
 - The [Harness Helm charts](https://github.com/harness/helm-charts) `values.yaml` file is updated to include Error Tracking images. (SMP-1615)
 
-#### Early access
+#### Early access features
 
 This release does not include any early access features.
 
@@ -3149,7 +3149,7 @@ gsutil -m cp \
   .
 ```
 
-#### What's new
+#### New features and enhancements
 
 #### Continuous Integration
 
@@ -3268,7 +3268,7 @@ gsutil -m cp \
 
 - The Monitored Service listing page now displays a summary of changes related to the number of feature flags and chaos experiments, along with the other custom change sources. (SRM-14742)
 
-#### Early access
+#### Early access features
 
 #### Continuous Integration
 
@@ -3585,7 +3585,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.347.19 |
 | LE NG | 67808 |
 
-#### What's new
+#### New features and enhancements
 
 #### Self-Managed Enterprise Edition
 
@@ -3792,7 +3792,7 @@ This release includes the following Harness module and component versions.
 
 - An icon appears on the SLO performance trend chart timeline to indicate when the error budget was reset and the amount of budget that was added. (SRM-14550)
 
-#### Early access
+#### Early access features
 
 ##### Harness Delegate
 
@@ -4226,7 +4226,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.344.13 |
 | LE NG | 67708 |
 
-#### What's new
+#### New features and enhancements
 
 - You can now use an external database with your installation. For more information, go to [Use an external database](/tutorials/self-managed-enterprise-edition). (SMP-545)
 
@@ -4305,7 +4305,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 | LE NG | 67708 |
 
 
-#### What's new
+#### New features and enhancements
 
 #### Self-Managed Enterprise Edition
 - Beginning with v0.5.0, Harness will no longer publish `harness-prod` or `harness-demo` Helm charts. Harness will publish the `harness` base chart only. If you currently use the `harness-prod` or `harness-demo` Helm chart, you must download your `custom-override.yaml` file from [the helm-charts repository](https://github.com/harness/helm-charts/tree/main/src) and use the following commands to upgrade:
@@ -5235,7 +5235,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.339.19 |
 | LE NG | 67500 |
 
-#### What's new
+#### New features and enhancements
 
 - The kotsadmin minor version is upgraded from 1.88.0 to 1.95.0. (SMP-835)
 
@@ -5808,7 +5808,7 @@ This release includes the following Harness module and component versions.
 | LE NG | 67300 |
 
 
-##### What's new
+##### New features and enhancements
 
 This release introduces the following features and enhancements.
 
@@ -6269,7 +6269,7 @@ This release includes the following fixed issues.
 
 #### December 21, 2022, version 77622
 
-##### What's new
+##### New features and enhancements
 
 This release introduces the following features and enhancements.
 
@@ -6406,7 +6406,7 @@ This release introduces the following fixes.
 
 #### October 31, 2022, version 77117
 
-##### What's new
+##### New features and enhancements
 
 This release introduces the following features and enhancements.
 
@@ -6572,7 +6572,7 @@ This release introduces the following fixes.
 
 #### October 7, 2022, version 76918
 
-##### What's new
+##### New features and enhancements
 
 This release introduces the following features and enhancements.
 
@@ -6990,7 +6990,7 @@ Changed the handling of soft-deleted vaults; they are no longer subject to renew
 
 #### September 15, 2022, version 76620
 
-##### What's new
+##### New features and enhancements
 
 This release introduces the following features and enhancements.
 
@@ -7364,7 +7364,7 @@ PL-27395 Fixed the mongo update method call used to create lastUpdatedTemplate.
 
 #### September 6, 2022
 
-##### What's New
+##### New features and enhancements
 
 You can now install and maintain Continuous Delivery, Continuous Integration and Security Testing Orchestration using Helm package manager in a self-managed environment.
 
@@ -7374,7 +7374,7 @@ For more information, see Install Self-Managed Enterprise Edition Using Helm.
 
 Delegate version 76324
 
-##### What's new
+##### New features and enhancements
 
 This release introduces the following features and enhancements.
 
