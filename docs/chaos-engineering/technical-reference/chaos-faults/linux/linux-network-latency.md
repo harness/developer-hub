@@ -43,32 +43,32 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
     <tr>
     <td> destinationHosts </td>
     <td> List of the target hostnames or keywords. For example: <code>google.com,litmuschaos.io</code> </td>
-    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted </td>
+    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted. For more information, go to <a href= "#destination-hosts">destination hosts.</a> </td>
   </tr>
   <tr>
     <td> destinationIPs </td>
     <td> List of the target IPs. For example: <code>1.1.1.1,8.8.8.8</code> </td>
-    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted</td>
+    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted. For more information, go to <a href= "#destination-ips">destination IPs.</td>
   </tr>
   <tr>
     <td> latency </td>
     <td> Amount of latency to added to connection in ms. For example: <code> 2000 </code> </td>
-    <td> Defaults to 2000 </td>
+    <td> Default: 2000. For more information, go to <a href= "#latency-and-jitter">latency.</a> </td>
   </tr>
   <tr>
     <td> jitter </td>
     <td> Amount of jitter to be added in ms. Jitter will define the max randomised deviation from the provided latency value. For example: <code> 100 </code> </td>
-    <td> Defaults to 0 </td>
+    <td> Default: 0. For more information, go to <a href= "#latency-and-jitter">jitter.</a> </td>
   </tr>
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Defaults to 30. </td>
+    <td> Default: 30 s. For more information, go to <a href= "../../chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a>  </td>
   </tr>
   <tr>
     <td> rampTime </td>
     <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Defaults to 0. </td>
+    <td> Default: 0 s. For more information, go to <a href= "../../chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a> </td>
   </tr>
 </table>
 

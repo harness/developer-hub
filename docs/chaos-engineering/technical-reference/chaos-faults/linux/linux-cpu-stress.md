@@ -34,22 +34,22 @@ This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which 
   <tr>
     <td> load </td>
     <td> Percentage load to be exerted on a single CPU core. </td>
-    <td> Default: 100 %. </td>
+    <td> Default: 100 %. For more information, go to <a href= "#load-percentage">load percentage.</a></td>
   </tr>
   <tr>
     <td> workers </td>
     <td> Number of worker processes to start. Corresponds to the number of CPU cores to consume. </td>
-    <td> Default: 1. </td>
+    <td> Default: 1. For more information, go to <a href= "#workers">workers.</a></td>
   </tr>
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30 s. </td>
+    <td> Default: 30 s. For more information, go to <a href= "../../chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
   </tr>
   <tr>
     <td> rampTime </td>
     <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Default: 0 s. </td>
+    <td> Default: 0 s. For more information, go to <a href= "../../chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
   </tr>
 </table>
 

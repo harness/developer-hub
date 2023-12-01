@@ -31,7 +31,7 @@ Linux service restart stops the target system services running in a Linux machin
   <tr>
     <td> services </td>
     <td> Names of the target services. </td>
-    <td> For example <code>nginx,apache2,sshd</code> </td>
+    <td> For example <code>nginx,apache2,sshd</code>. For more information, go to <a href= "#services">services.</a> </td>
   </tr>
 </table>
 <h3>Optional tunables</h3>
@@ -44,27 +44,27 @@ Linux service restart stops the target system services running in a Linux machin
   <tr>
     <td> selfHealingServices </td>
     <td> Set to <code>true</code> if the service restarts on its own upon stopping it. </td>
-    <td> Defaults to <code>false</code>. </td>
+    <td> Defaults to <code>false</code>. For more information, go to <a href= "#self-healing-services">self-healing services.</a></td>
   </tr>
   <tr>
     <td> sequence </td>
     <td> Sequence in which the services will be stopped. </td>
-    <td> Supports <code>serial</code> and <code>parallel</code>. Defaults to <code>parallel</code>. </td>
+    <td> Supports <code>serial</code> and <code>parallel</code>. Default: <code>parallel</code>. For more information, go to <a href= "#sequence">sequence.</a></td>
   </tr>
   <tr>
     <td> interval </td>
     <td> Duration of a single iteration of chaos (in seconds). Should be less than or equal to the <code>duration</code> input. </td>
-    <td> Defaults to 30. </td>
+    <td> Default: 30 s. For more information, go to <a href= "#interval">interval.</a>  </td>
   </tr>
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Defaults to 30. </td>
+    <td> Default: 30 s. For more information, go to <a href= "../../chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a> </td>
   </tr>
   <tr>
     <td> rampTime </td>
     <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Defaults to 0. </td>
+    <td> Default: 0 s. For more information, go to <a href= "../../chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a> </td>
   </tr>
 </table>
 

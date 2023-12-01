@@ -34,22 +34,22 @@ This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which 
   <tr>
     <td> memory </td>
     <td> Amount of memory to be consumed. </td>
-    <td> Can be specified in bytes (b/B), kilobytes (k/K), megabytes (m/M), gigabytes (g/G), or percentage (%) of available storage. If no unit is provided, the value is assumed to be in bytes. Example values: <code>30m</code>, <code>1G</code>, <code>35%</code>, etc. Default: 256m </td>
+    <td> Can be specified in bytes (b/B), kilobytes (k/K), megabytes (m/M), gigabytes (g/G), or percentage (%) of available storage. If no unit is provided, the value is assumed to be in bytes. Example values: <code>30m</code>, <code>1G</code>, <code>35%</code>, etc. Default: 256m. For more information, go to <a href= "#memory-consumption">memory consumption.</a> </td>
   </tr>
   <tr>
     <td> workers </td>
     <td> Number of worker processes to start. </td>
-    <td> Default: 1 </td>
+    <td> Default: 1. For more information, go to <a href= "#workers">workers.</a></td>
   </tr>
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30 s </td>
+    <td> Default: 30 s. For more information, go to <a href= "../../chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a>  </td>
   </tr>
   <tr>
     <td> rampTime </td>
     <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Default: 0 s </td>
+    <td> Default: 0 s. For more information, go to <a href= "../../chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a> </td>
   </tr>
 </table>
 
