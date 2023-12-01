@@ -45,10 +45,12 @@ The following deprecated API endpoints will no longer be supported:
 - Harness removed the `delegate-service` from the default delegate YAML init container. (PL-37616)
 
      This item is available with Harness Platform version 817xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
+     
+<!--  
 - The UI didn't allow you to set **Projects** or **Organizations** role permissions for custom resource groups. (PL-39825, ZD-46075, ZD-49912)
 
    You can now select **Projects** and **Organizations** as resources in custom resource groups.
+-->
 
 - When creating projects through APIs, Harness didn't treat the organization identifier as case-insensitive, which resulted in duplicate entries. (PL-40897, ZD-49840)
 
