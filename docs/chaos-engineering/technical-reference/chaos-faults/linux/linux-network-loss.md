@@ -48,7 +48,7 @@ Linux network loss injects chaos to disrupt network connectivity on the Linux ma
   <tr>
     <td> destinationIPs </td>
     <td> List of the target IPs. For example: <code>1.1.1.1,8.8.8.8</code> </td>
-    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted. For more information, go to <a href= "#destination-ips">destination IPs.</td>
+    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted. For more information, go to <a href= "#destination-ips">destination IPs. </a></td>
   </tr>
   <tr>
     <td> packetLossPercentage </td>

@@ -48,7 +48,7 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
   <tr>
     <td> destinationIPs </td>
     <td> List of the target IPs. For example: <code>1.1.1.1,8.8.8.8</code> </td>
-    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted. For more information, go to <a href= "#destination-ips">destination IPs.</td>
+    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted. For more information, go to <a href= "#destination-ips">destination IPs. </a></td>
   </tr>
   <tr>
     <td> latency </td>
