@@ -113,7 +113,6 @@ The following early access (beta) features are available for the Harness Delegat
 * **Release date:** August 2023
 * **Release version:** Delegate version 80303 and CI version 5408
 * **Issue number:** CI-8577
-* **Feature flag:** `CDS_GITHUB_APP_AUTHENTICATION`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
@@ -191,7 +190,6 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 * **Release date:** August 2023
 * **Release version:** Delegate version 80303 and CI version 5408
 * **Issue number:** CI-8577
-* **Feature flag:** `CDS_GITHUB_APP_AUTHENTICATION`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
