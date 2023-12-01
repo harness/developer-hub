@@ -71,7 +71,7 @@ This cURL command downloads pipeline log files based on the given pipeline execu
 curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT_ID&prefix=PIPELINE_EXECUTION_PREFIX_KEY' \
   -X 'POST' \
   -H 'content-type: application/json' \
-  -H 'x-api-key: <HARNESS PAT>' 
+  -H 'x-api-key: <HARNESS-PERSONAL-ACCESS-TOKEN>'
 ```
 
 * `ACCOUNT_ID`: Your Harness account identifier.
@@ -79,6 +79,7 @@ curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT
    * `ACCOUNT_ID`: Your Harness account identifier.
    * `PIPELINE_ID`: The identifier of the pipeline that you want to get logs for.
    * `RUN_SEQUENCE`: The incremental execution/build identifier of the specific pipeline run that you want logs for.
+   * `-PLAN_EXECUTION_ID`: A hyphen (`-`) followed by the identifier of the pipeline execution that you want to get logs for.
 * `TOKEN`: [Harness API token](/docs/platform/automation/api/add-and-manage-api-keys)
 
 #### cURL command to download step logs
@@ -89,14 +90,15 @@ This cURL command downloads pipeline log files based on the given step key.
 curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT_ID&prefix=STEP_PREFIX_KEY' \
   -X 'POST' \
   -H 'content-type: application/json' \
-  -H 'x-api-key: <HARNESS PAT>'
+  -H 'x-api-key: <HARNESS-PERSONAL-ACCESS-TOKEN>'
 ```
 
 * `ACCOUNT_ID`: Your Harness account identifier.
-* `STEP_PREFIX_KEY`: A multi-part value consisting of `ACCOUNT_ID/pipeline/PIPELINE_ID/RUN_SEQUENCE/-PLAN_EXECUTION_ID/STAGE_ID/STEP_ID`. For example, `12345abcd/pipeline/My_Cool_Pipeline/12/pipeline/stages/My_Cool_Stage/steps/My_Cool_Step/-dfstsh`.
+* `STEP_PREFIX_KEY`: A multi-part value consisting of `ACCOUNT_ID/pipeline/PIPELINE_ID/RUN_SEQUENCE/-PLAN_EXECUTION_ID/STAGE_ID/STEP_ID`. For example, `12345abcd/pipeline/My_Cool_Pipeline/12/-dfstsh/My_Cool_Stage/My_Cool_Step`.
    * `ACCOUNT_ID`: Your Harness account identifier.
    * `PIPELINE_ID`: The identifier of the pipeline that has the step that you want to get logs for.
    * `RUN_SEQUENCE`: The incremental execution/build identifier of a specific pipeline run.
+   * `-PLAN_EXECUTION_ID`: A hyphen (`-`) followed by the identifier of the pipeline execution that you want to get logs for.
    * `STAGE_ID`: The identifier of the stage that has the step that you want to get logs for.
-   * `STEP_ID`: The identifier of the step that has the logs you want.
+   * `STEP_ID`: The identifier of the step that you want to get logs for.
 * `TOKEN`: [Harness API token](/docs/platform/automation/api/add-and-manage-api-keys)
