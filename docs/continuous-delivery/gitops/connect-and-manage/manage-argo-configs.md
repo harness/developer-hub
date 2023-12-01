@@ -1,5 +1,5 @@
 ---
-title: Manage an Argo CD configuration by using Harness GitOps
+title: Manage an Argo CD configuration in Git with Harness GitOps
 description: Manage an Argo CD configuration as if it were a GitOps application.
 sidebar_position: 2
 ---
@@ -16,8 +16,8 @@ To add the GitOps application for your Argo CD configuration, do the following:
 
 1. Install a Harness GitOps agent on the destination cluster.
 
-2. In Harness GitOps, add a GitOps repository for the repository in which your Argo CD configurations are stored. For steps on adding a GitOps repository, go to [Add a Harness GitOps repository](/docs/continuous-delivery/gitops/use-gitops/add-a-harness-git-ops-repository).
-   
+2. In Harness GitOps, add a GitOps repository for the repository where your Argo CD configurations are stored. For steps on how to do this, go to [Add a Harness GitOps repository](/docs/continuous-delivery/gitops/use-gitops/add-a-harness-git-ops-repository).
+
    <figure>
    
    <docimage path={require('./static/29bfc8656433c153505e52fd3db231902c0a4a8837b9e7dd49c436349d72aec1.png')} width="60%" height="60%" title="Click to view full size image" />  
@@ -58,12 +58,13 @@ To add the GitOps application for your Argo CD configuration, do the following:
 
    :::
 
-   3. Use the Harness GitOps cluster added earlier. In **Namespace**, provide the namespace in which the agent is installed.
+   3. Use the Harness GitOps cluster added earlier. In **Namespace**, provide the namespace where the agent is installed.
 
 5. Save the Harness GitOps application. 
 
 6. If the sync policy is manual, sync the application manually.
 
+Once these steps are complete, you should be able to see the newly created GitOps entities in the Harness project that you configured in Git.
 
 ## Git Configuration Files
 

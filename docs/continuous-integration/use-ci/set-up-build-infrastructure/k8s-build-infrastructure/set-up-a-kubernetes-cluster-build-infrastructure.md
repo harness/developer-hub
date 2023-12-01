@@ -33,7 +33,6 @@ Here's a short video that walks you through adding a Harness Kubernetes Cluster 
 
 <docvideo src="https://www.youtube.com/embed/wUC23lmqfnY?feature=oembed" />
 
-<!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/wUC23lmqfnY/hqdefault.jpg"><iframe width=" 200" height="150" src="https://www.youtube.com/embed/wUC23lmqfnY?feature=oembed" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
 
 </details>
 

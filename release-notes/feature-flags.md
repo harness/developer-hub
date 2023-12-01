@@ -35,6 +35,21 @@ Released Android Client SDK 1.2.1
 
 <details>
 <summary>2023 releases</summary>
+  
+#### Latest - November 27th 2023
+
+##### New features and enhancements
+
+This release does not any new features or enhancements.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Ruby SDK
+
+Released Ruby SDK 1.2.0.
+ - The percentage rollout bucket by logic is now fixed to match Golang SDK.
 
 #### November 24th, 2023
 
@@ -66,7 +81,6 @@ This release does not include early access features.
  - Improved the logic to stop polling if streaming is enabled. Additionally, fixed an issue where the poller would stop and not make any more flag updates after encountering an exception during a request.
  - Logging to correctly indicate when a stream disconnects and the SDK falls back to polling.
  - Changed various verbose logs from info to debug.
-
 
 #### November 17, 2023
 

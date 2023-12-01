@@ -570,12 +570,7 @@ All dependency repositories must be available and accessible from the Harness De
 :::
 
 ## Service hooks 
-  
-:::note
 
-Currently, this feature is behind the feature flag `CDS_K8S_SERVICE_HOOKS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Kubernetes and Helm deployments use service hooks to fetch Helm Chart dependencies that refer to Git and other repositories, and install them with the main Helm Chart. 
 
@@ -752,21 +747,12 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Replaces the HTTP capability check for the Harness Kubernetes connector with socket capability.</td>
     </tr>
     <tr>
-        <td>CDS_K8S_SERVICE_HOOKS_NG</td>
-        <td>Enables the Kubernetes and Helm service hooks feature. Service hooks extend the Helm Chart and Kubernetes service <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks">pre-deployment actions</a>. </td>
-    </tr>
-    <tr>
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG</td>
         <td> There is a behavior change in how Harrness tracks managed workloads for rollback. We are not using anymore a Config Map matching the deployed resources release name to track managed workloads for rollback. We will use `helm get manifest` to retrieve the workloads from a helm release. For steady-state checks of the kubernetes jobs, we’re planning to provide an option in account/org/project settings, by default we will not do this. For customer's who didn't have this feature flag enabled before, they may start seeing that the Wait for steady state check will not be skipped and will need to configure it.</td>
     </tr>
     <tr>
         <td>CDS_HELM_SEND_TASK_PROGRESS_NG</td>
         <td>For Helm tasks, this enables the sending of task progress events via log streaming.</td>
-    </tr>
-    <tr>
-        <td>CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG</td>
-        <td>Enables users to configure <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#using-multiple-helm-charts-in-one-harness-service">multiple Helm charts in a Harness service</a>
-, treating the Helm Charts similar to artifacts.</td>
     </tr>
     <tr>
         <td>CDS_HELM_FETCH_CHART_METADATA_NG</td>

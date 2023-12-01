@@ -362,13 +362,23 @@ Used to [enable test splitting for TI](./ti-test-splitting.md).
 
 ### Pre-Command
 
-You can enter commands for setting up the environment before running the tests.
+You can enter commands for setting up the environment before running the tests, for example:
+
+```yaml
+                    preCommand: bundle install
+```
 
 If a script is supplied here, select the corresponding **Shell** option.
 
+:::info
+
+If you need to run `bundle install` before running tests, you must include `bundle install` in the `preCommand`.
+
+:::
+
 ### Post-Command
 
-You can enter commands used for cleaning up the environment after running the tests. For example, `sleep 600` suspends the process for 600 seconds.
+You can enter commands used for cleaning up the environment after running the tests.
 
 If a script is supplied here, select the corresponding **Shell** option.
 

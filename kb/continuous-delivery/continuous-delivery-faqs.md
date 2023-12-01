@@ -886,8 +886,6 @@ The concatenation in the expression /tmp/spe/<+pipeline.sequenceId> is not worki
 
 So we can invoke the toString() on the integer value then our expression should work. So the final expression would be /tmp/spe/<+pipeline.sequenceId.toString()>
 
-Also please see the Feature Flag: PIE_EXPRESSION_CONCATENATION
-
 #### Can I use the Service Propogation Feature to deploy dev and prod pipelines without changing critical parameters?
 
 Yes, the Service Propogation allows you to provide fixed critical parameters. Please refer more on this in the following [Documentation 1](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services/) and [Documentation 2](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/overrides-v2/).
@@ -1032,7 +1030,7 @@ For more details please see: [Documentation](https://developer.harness.io/docs/c
 
 #### Service hooks for Kubernetes and Helm deployments to fetch Helm Chart dependencies. 
 
-This is possible, but a Feature Flag ```CDS_K8S_SERVICE_HOOKS_NG``` needs to be enabled. 
+This is possible.
 
 For more details please see: [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks)
 
@@ -2091,8 +2089,7 @@ More details here [here](https://developer.harness.io/docs/continuous-delivery/c
 
 #### Can I use AWS CDK provisioning?
 
-Yes, but be aware that AWS CDK provisioning support is behind a Feature Flag. Please reach out to Harness Support for this. 
-Feature Flag: CDS_AWS_CDK
+Yes.
 
 #### I am getting "Backend not initialised error" when running terragrunt plan with specific module?
 
@@ -2335,14 +2332,13 @@ If one feels like an issue for latency in API response receiving please consider
 
 #### How can one use HELM expressions ?
 
-One should have these FFs enabled : `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG` and `CDS_HELM_FETCH_CHART_METADATA_NG`
+One should have this FF enabled : `CDS_HELM_FETCH_CHART_METADATA_NG`
 They allows you to configure multiple expressions and then resolve the expressions.
 Please follow the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#helm-chart-expressions)
 
 #### How can one use `AWS CDK Infra Provisioning Support` on Harness ?
 
 Harness lets users run AWS CDK Workloads via the Container Based Steps.
-To enable this feature one can request for FF `CDS_AWS_CDK` enabling from Harness.
 Please follow more on this [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/aws-cdk/)
 
 #### Does Microsoft Teams support full Gitops ?
@@ -3199,3 +3195,12 @@ Check if port 5985 is opened and test the communication for winrm
 
 #### Reconcile is taking pretty long time while using remote temple stored in git
 Check in network time response for templates to troubleshot if there is any issue/slowness while communicating to git
+
+#### Can we use Infra variable in service config yaml(Like to use this variable as artefact path etc)
+No the Infra variable will not be available for service config, these Infra variable can be used in deployment manifest etc but not is service config as these variable will resolve in later part of deployment 
+
+#### Can we use Env/Infra etc variable as skip condition for approval stage
+If approval is added as stage then these variables will not be available and only account/org/project or pipeline variables will be available, If you are using approval as step inside Deploy stage than you can access Env/Infra variables as well
+
+#### What is the equivalent variable for  ${artifact.label.get(“labelkey)} In NG
+You can use  <+artifact.label.get(“labelkey”)>

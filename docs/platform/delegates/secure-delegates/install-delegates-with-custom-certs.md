@@ -676,3 +676,52 @@ spec:
   </TabItem>
 </Tabs>
 ```
+
+## Add self-signed certificates to delegate upgrader
+
+For Kubernetes delegates, Harness supports self-signed certificates for delegate upgrader. For more information on delegate upgrades, go to [Delegate automatic upgrades and expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/).
+
+To add self-signed certificates for delegate upgrader, do the following:
+
+1. In the delegate YAML file, mount the certificates in `/ca-bundle`.
+2. Add the `securityContext` to the upgrader cron job.
+
+   ```yaml
+   apiVersion: batch/v1
+   kind: CronJob
+   metadata:
+     labels:
+       harness.io/name: kubernetes-delegate-upgrader-job
+     name: kubernetes-delegate-upgrader-job
+     namespace: harness-delegate-ng
+   spec:
+     schedule: "0 */1 * * *"
+     concurrencyPolicy: Forbid
+     startingDeadlineSeconds: 20
+     jobTemplate:
+       spec:
+         template:
+           spec:
+             serviceAccountName: upgrader-cronjob-sa
+             restartPolicy: Never
+             securityContext:
+                fsGroup: 1001
+             containers:
+             - image: harness/upgrader:latest
+               name: upgrader
+               imagePullPolicy: Always
+               envFrom:
+               - secretRef:
+                   name: kubernetes-delegate-upgrader-token
+               volumeMounts:
+                 - mountPath: /ca-bundle
+                   name: custom-certs
+                   readOnly: true
+             volumes:
+               - name: custom-certs
+                 secret:
+                   secretName: new-secret
+                   defaultMode: 400
+      ```
+
+

@@ -446,13 +446,25 @@ Used to [enable test splitting for TI](./ti-test-splitting.md).
 
 ### Pre-Command
 
-You can enter commands for setting up the environment before running the tests.
+You can enter commands for setting up the environment before running the tests, for example:
+
+```yaml
+                    preCommand: |-
+                      dotnet tool install -g trx2junit
+                      export PATH="$PATH:/root/.dotnet/tools"
+                      dotnet restore
+                      dotnet build
+```
 
 If a script is supplied here, select the corresponding **Shell** option.
 
 ### Post-Command
 
-You can enter commands used for cleaning up the environment after running the tests. For example, `sleep 600` suspends the process for 600 seconds.
+You can enter commands used for cleaning up the environment after running the tests, for example:
+
+```yaml
+                    postCommand: trx2junit results.trx
+```
 
 If a script is supplied here, select the corresponding **Shell** option.
 
@@ -468,7 +480,7 @@ If this option is not selected (`false`), TI is disabled and all tests run on ev
 
 ### Test Globs
 
-You can override the default test globs pattern.
+You can override the default test globs pattern. For example, if the default pattern is `**/*Tests.csproj`, you could override this with any other pattern, such as `**/*Test_*.cs`.
 
 <!-- ### Output Variables
 

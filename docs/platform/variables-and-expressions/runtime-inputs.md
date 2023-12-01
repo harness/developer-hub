@@ -265,12 +265,6 @@ Use multiple selection if you want to choose one or more values from the list of
 
 ## Supply runtime input during execution
 
-:::note
-
-Currently, this feature is behind the feature flag `NG_EXECUTION_INPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Sometimes you might not know the value for a runtime input at the beginning of the pipeline run. For example:
 
 * Some values depend on the output of previous steps or stages in the pipeline.

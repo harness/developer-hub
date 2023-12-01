@@ -1,15 +1,7 @@
 ---
-title: Continuous Integration(CI) FAQs
-description: This article addresses some frequently asked questions about Harness Continuous Integration(CI).
-# sidebar_position: 2
-helpdocs_topic_id: 
-helpdocs_category_id: 
-helpdocs_is_private: false
-helpdocs_is_published: true
+title: Continuous Integration (CI) FAQs
+description: This article addresses some frequently asked questions about Harness Continuous Integration (CI).
 ---
-
-# FAQ
-
 
 #### Can we enable BuildKit support for the native build and push step?
 
@@ -810,160 +802,197 @@ Yes harness supports pull request build validation.
 Yes, The Git connector should enabled with API access to get the git statuses and also need to enable the clone code base configurution.
 
 #### Is it achieveable If user disable the option clone codebase, instead user want to use the git clone step to get the Git statuses?
+
 No, User need to enable the clone code base configurution in the CI stage.
 
+#### What is the difference between a Kubernetes cluster build infrastructure and other build infrastructures?
 
-#### How can user run the Build and Push step as root if build is configured to run as a non-root user?
-If your build is configured to run as a non-root user (runAsNonRoot: true), and you need to run the Build and Push step as root, you can set "Run as User" to 0 on the Build and Push step. This will use the root user for that specific step while preserving the non-root user configuration for the rest of the build.
+One of the primary differences is that the Kubernetes cluster build infrastructures uses kaniko for Build and Push steps, whereas other build infrastructures use drone-docker. For more information, go to:
 
-#### What should user do if security policy does not allow running as root?
-If your security policy strictly forbids running any step as root, you should opt to use the Buildah plugin as an alternative. This approach allows you to build and push images without requiring root access.
+* [Build and push artifacts and images - Kubernetes cluster build infrastructures require root access](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#kubernetes-cluster-build-infrastructures-require-root-access)
+* [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me)
 
-#### WHat's the configurution is needed for Buildah plugin?
-The Build stage must use a Kubernetes cluster build infrastructure configured to run as non-root and "anyuid SCC" (Security Context Constraints) is enabled.
+#### Does kaniko support non-root users?
 
-#### What is the difference between Kubernetes cluster build infrastructures and other build infrastructures?
-For Kubernetes cluster build infrastructures, Harness CI uses kaniko for Build and Push steps, whereas other build infrastructures use drone-docker. 
+With a Kubernetes cluster build infrastructure, **Build and Push** steps use the kaniko plugin. Kaniko requires root access to build Docker images, and it does not support non-root users. However, you can [build and push with non-root users](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
 
-#### Is kaniko support non-root users?
-It's essential to note that kaniko requires root access to build Docker images, and it does not support non-root users.
+#### Can I enable root access for a single step?
 
-#### How can user enable the root access for a single step?
-If your build runs as non-root (runAsNonRoot: true), and you want to run the Build and Push step as root, you can set Run as User to 0 on the Build and Push step to use the root user for that individual step only.
+If your build runs as non-root (meaning you have set `runAsNonRoot: true`), you can run a specific step as root by setting **Run as User** to `0` in the step's settings. This setting uses the root user for this specific step while preserving the non-root user configuration for the rest of the build. This setting is not available for all build infrastructures, as it is not applicable to those build infrastructures.
 
-#### How usser can Build docker image from locally pulled image in Build and Push step with specific registry?
-If you want to pull the docker image from a specific registry as you specified, for that you need to configure the Base Image Connector in the step.
+#### How can I run Build and Push steps as root if my build infrastructure runs as non-root?
 
+If your build is configured to run as a non-root user (meaning you have set `runAsNonRoot: true`), you can run a specific step as root by setting **Run as User** to `0` in the step's settings. This setting uses the root user for this specific step while preserving the non-root user configuration for the rest of the build. This setting is not available for all build infrastructures, as it is not applicable to those build infrastructures.
 
-#### Is docker image is required to run the script in the CI stage with local infra?
-Yes, It's mandatory to configure the Image and container registry for the run step.
+#### What if my security policy doesn't allow running as root?
 
-#### What is the default depth setting for manually-triggered builds in a pipeline?
-The default depth for manually-triggered builds in a pipeline is set to 50. The git clone operation fetches the 50 most recent commits from the repository.
+If your security policy strictly forbids running any step as root, you can use the buildah plugin to [build and push with non-root users](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
 
-#### What is the default depth setting for codebase cloning in pipelines triggered by other events/types?
-For automatic or scheduled triggers, the default depth is set to 0. In this case, the git clone operation fetches all commits from the relevant branch, providing the complete commit history.
+#### How do I configure the buildah plugin?
 
-#### Is user can configure the depth setting to fetch a specific number of commits?
-Yes, user can configure in the Advanced section of codebase configurution.
+In your build stage settings, you must use a Kubernetes cluster build infrastructure that is configured to run as non-root with `anyuid SCC` (Security Context Constraints) enabled.
 
-#### How can user improve the clone codebase timing?
-When the build is triggered by a pull request, set Pull Request Clone Strategy to Source Branch and set Depth to 1.
+For information about the buildah plugin, go to [Build and push with non-root users](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
 
-#### The steps like Git clone, Run, etc will execute through by which user?
-Harness use user 1000 by default.
+#### How do I build a Docker image in a Build and Push step from a base image from a specific registry?
 
-#### Is user can able to clone the spefic sub-directory only?
-Yes, user can able to clone the spefic sub directory by spcfiying the desired commands in the run step such as git sparse-checkout to clone a subdirectory instead of an entire repo.
+Use the [Base Image Connector setting](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings#base-image-connector) to do this.
 
-#### Is user can able to clone Git Large File Storage?
-Yes, for this you need to use the run step and install the git lfs client on your machine with your desired command.
+#### Is a Docker image is required to run scripts in CI builds with a local runner build infrastructure?
 
+Yes. Container registry and image are always required for Run steps with a local runner build infrastructure.
 
-#### If user need to docker command with K8s infra what configurution they needed?
-If you want to run Docker commands, Docker-in-Docker (DinD) with privileged mode is necessary when using a Kubernetes cluster build infrastructure.
+#### What is the default clone depth setting for CI builds?
+
+For manual builds, the default depth is 50. The git clone operation fetches the 50 most recent commits from the repository.
+
+For automatic or scheduled triggers, the default depth is 0. The git clone operation fetches all commits from the relevant branch, providing the complete commit history.
+
+#### Can I configure the codebase depth to fetch a specific number of commits?
+
+Yes. Use the [Depth](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) setting to do this.
+
+#### How can I reduce clone codebase time?
+
+For builds triggered by pull requests, set the [Pull Request Clone Strategy](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#pull-request-clone-strategy) to `Source Branch` and set [Depth](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) to `1`.
+
+#### Which user does Harness uses to run steps like Git clone, Run, and so on?
+
+Harness uses user 1000 by default.
+
+#### Can I clone a specific sub-directory, rather than an entire repo?
+
+Yes. For more information, go to [Clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory).
+
+#### Does Harness CI support cloning Git Large File Storage?
+
+Yes. For more information, go to [Git Large File Storage](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs).
+
+#### How can I run Docker commands on a Kubernetes cluster build infrastructure?
+
+If you want to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#privileged-mode-is-required-for-docker-in-docker) is necessary when using a Kubernetes cluster build infrastructure.
 
 #### What should I do if my Kubernetes cluster does not support Privileged Mode?
-You'll need to consider Harness Cloud or a VM (Virtual Machine) build infrastructure. These infra will allow you to run Docker commands directly on the host, without the need for Privileged Mode.
 
+You'll need to consider Harness Cloud or a VM (Virtual Machine) build infrastructure. These infrastructure options allow you to run Docker commands directly on the host, without the need for Privileged Mode.
 
-#### If the user is configured the build infrastructure on EKS with connector crednetial type IRSA so what configurution they need to make with the pipeline?
-You need to set the "Service Account Name" in Infrasture advanced configurution. This is particularly important if the stage includes a step using a Harness AWS connector with IRSA (IAM Roles for Service Accounts).
+#### How do I configure my pipeline to use EKS build infrastructure with an AWS connector that uses IRSA?
 
-#### Can user zips the folder and upload in the S3 bucket by using Upload Artifacts to S3 step in the stage?
-No, If you want to compress the folder and upload, you need to use the run step in the stage.
+You need to set the [Service Account Name in the Kubernetes cluster build infrastructure settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#service-account-name).
 
-#### Can user able to build an image without pushing it to the registry?
-Yes, User can only build the image by using the plugin step without pushing the image. For setup: https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push
+#### Does the Upload Artifacts to S3 step compress files before uploading them?
 
-#### Is user can able to configure AWS connector which use IRSA/AssumeRole with the Harness Cloud pipeline?
-No, With the Harness cloud only AWS access key is supported with the AWS connector.
+No. If you want to upload a compressed file, you must use a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to compress the artifact before uploading it.
 
-#### Is third party secret manager is supported with the Harness Cloud pipeline?
-No, User need to use built in Harness secret manager only.
+#### Can I build an image without pushing it to the registry?
 
-#### Is GCP and Azure can use inherit credentials from the delegate with Harness Cloud pipeline?
-No, Inherit credential from delegate is not supported with Harness Cloud pipeline.
+Yes, you can [build without pushing](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push).
 
-#### Is rootless configurution is supported with the windows infrastructure?
-No, currently it's not supported with windows infrastructure.
+#### Can I use my own secrets manager with Harness Cloud build infrastructure?
 
-#### The build pod is getting evicted, what can be the issue?
-If the build is getting evicted itt seems like a issue with CPU/Memory of the pod or else the user us using Spot instances as the worker nodes.
+No. To [use Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets), you must use the built-in Harness secrets manager.
 
-#### When should I specify a "Priority Class" for the Build stage pod in Kubernetes?
-User should specify a "Priority Class" when you want to ensure that the Build stage pod is prioritized in cases of resource shortages on the host node.
+#### With Harness Cloud build infrastructure, can GCP and Azure connectors inherit credentials from the delegate?
 
-#### What options are available for setting the "PriorityClass" in the Build stage of Kubernetes?
-You can specify a custom "PriorityClass" from your build infrastructure, which allows you to define a specific priority level.
-Alternatively, you can use the predefined priority classes "system-cluster-critical" or "system-node-critical," which ensure that the stage is always scheduled first in resource-constrained scenarios.
+No. To [use Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets), all connectors must connect through the Harness Platform.
+
+#### AWS connectors with IRSA, AssumeRole, and delegate connectivity mode don't work with Harness Cloud build infrastructure.
+
+To [use Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets), all connectors must connect through the Harness Platform, and AWS connectors can't use IRSA or AssumeRole.
+
+For AWS connectors, only access key authentication is supported with Harness Cloud build infrastructure.
+
+#### Is rootless configuration supported for Windows build infrastructures?
+
+No, currently this is not supported for Windows builds.
+
+#### Why are build pods being evicted?
+
+Build pods can be evicted due to CPU or memory issues in the pod or using spot instances as worker nodes. Harness CI pods shouldn't be evicted due to autoscaling.
+
+See also: [CI pods appear to be evicted by Kubernetes autoscaling](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#ci-pods-appear-to-be-evicted-by-kubernetes-autoscaling)
+
+#### When should I specify the Priority Class for the Build stage pod in Kubernetes?
+
+Set the priority class when you want to ensure that the Build stage pod is prioritized in cases of resource shortages on the host node.
+
+#### How do I configure the Priority Class for a Kubernetes cluster build infrastructure?
+
+For information about configuring the priority class for a Kubernetes cluster build infrastructure, go to [CI Build stage settings - Priority Class](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#priority-class).
 
 #### What's the default priority class level?
-It will be default to 0, which is the lowest priority.
 
+If you leave the **Priority Class** field blank, the `PriorityClass` is set to the `globalDefault`, if your infrastructure has one defined, or `0`, which is the lowest priority.
 
-#### What happens if the "Priority Class" field is left blank in the Build stage configuration?
-If you leave the "Priority Class" field blank, the "PriorityClass" will be set to the default value
+#### What happens if the Priority Class field is blank in the Build stage settings?
 
+If you leave the **Priority Class** field blank, the `PriorityClass` is set to the `globalDefault`, if your infrastructure has one defined, or `0`, which is the lowest priority.
 
-#### Is remote caching supported in “build and push” steps?
-No, Currently remote caching is not supported with "Build and Push" step.
+#### Is remote caching supported in Build and Push steps?
 
-#### Why AWS connector with IRSA and AssumeRole will not work with delegate type connectivity in Harness cloud pipeline?
-Because the delegate and runners reside inside harness infrastructure.
+For certain build infrastructures, you can use the **Remote Cache Image** setting in **Build and Push** steps to enable remote [Docker layer caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#docker-layer-caching) where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling them to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
 
-#### What's the Limitation of Background Step?
-If the background step is running directly on the host, no other step running in a container can talk to it.
+#### Do Background steps have limitations?
 
+Yes. Background steps have these limitations:
 
-#### How user can use the git commands in run step?
-If user need to run the authenticated git commands in a run step of CIE pipeline, we would need to manually pass the credentials in the run step. The creds used in the codebase connector will not be accessible to the run step. 
+* Background steps don't support failure strategies or output variables.
+* Steps running in containers can't communicate with Background steps running on [Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) because they don't have a common host.
+* If your build stage uses Harness Cloud build infrastructure and you are running a Docker image in a Background step, you must specify [Port Bindings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#port-bindings) if you want to reference the Background step in a later step in the pipeline (such as in a cURL command in a Run step).
 
-#### What is the purpose of creating a .netrc file in the Run Step of a CI pipeline?
-The .netrc file is created in the Run Step to provide a mechanism for storing Git credentials required for manual Git operations. It ensures that the necessary authentication information is readily available when executing Git commands in the run step.
+#### Can I run Git commands in a CI Run step?
 
-#### How does using the .netrc file simplify the execution of Git commands in a CI pipeline's run step?
-By using the .netrc file, you can execute Git commands within the run step without having to manually enter credentials each time. Git will automatically reference the .netrc file to retrieve the necessary credentials.
+If you need to run authenticated Git commands in a CI Run step, you must provide credentials in the Run step's script. You can also [use a `.netrc` file to store and recall these credentials](./articles/Using_Git_Credentials_from_Codebase_Connector_in_CI_Pipelines_Run_Step.md), instead of providing them for each command.
 
+#### How does a `.netrc` file help execute Git commands in a CI Run step?
+
+Creating a `.netrc` file in a CI Run step provides a mechanism for storing Git credentials required for manual Git operations. It ensures that the necessary authentication information is readily available when executing Git commands in the Run step.
+
+By using the `.netrc` file, you can execute Git commands within the run step without having to provide credentials each time. Git automatically references the `.netrc` file to retrieve the necessary credentials.
 
 #### How can user enable the Gradle Daemon in builds?
-To enable the Gradle Daemon in your Harness CI builds, you can include the --daemon option when running Gradle commands in your build scripts. This option instructs Gradle to use the daemon process.
 
+To enable the Gradle Daemon in your Harness CI builds, you can include the `--daemon` option when running Gradle commands in your build scripts. This option instructs Gradle to use the daemon process.
 
 #### Can user configure service dependencies in Gradle builds?
+
 Yes, you can configure service dependencies in Gradle builds.
 
 #### How can I configure and use images from multiple Azure Container Registries (ACRs)?
-To configure and use images from multiple ACRs in Harness, you need to set up individual Harness service configurations for each ACR you want to use. Within each service configuration, specify the image repository and tag from the respective ACR. 
+
+To configure and use images from multiple ACRs in Harness, you need to set up individual Harness service configurations for each ACR you want to use. Within each service configuration, specify the image repository and tag from the respective ACR.
 
 #### Can user mix and match images from different container registries within a single deployment?
+
 Yes, By configuring each service with the appropriate image repository and tag details, you can seamlessly deploy applications using images from different registries in the same deployment.
 
 #### What criteria does Test Intelligence use to select tests for execution in a pull request scenario?
+
 In a pull request, TI uses the following criteria to select tests:
+
 1) Changed code
 2) Changed tests
 3) New tests
 
 #### What is the default user set on the windows lite-engine and addon image?
 
-The default user set on the windows lite-engine and addon image is ```ContainerAdministrator```
+The default user set on the windows lite-engine and addon image is `ContainerAdministrator`
 
 #### Can the default user in Windows LE/Addon images be changed?
 
-No, the default user in Windows LE/Addon images needs to be ```ContainerAdministrator``` because specific path and tool installations require it, and Windows does not allow setting the path otherwise.
+No, the default user in Windows LE/Addon images needs to be `ContainerAdministrator` because specific path and tool installations require it, and Windows does not allow setting the path otherwise.
 
-#### How does ```ContainerAdministrator``` differ from other user identities in Windows LE/Addon images?
+#### How does `ContainerAdministrator` differ from other user identities in Windows LE/Addon images?
 
-```ContainerAdministrator``` is assigned elevated privileges similar to the root user on Linux, allowing for system-level configurations and installations within the Windows container
+`ContainerAdministrator` is assigned elevated privileges similar to the root user on Linux, allowing for system-level configurations and installations within the Windows container
 
-#### On navigating to the tests tab, why the call graph shows up as empty with a message stating that ```No call graph is created when all tests are run```?
+#### On navigating to the tests tab, why the call graph shows up as empty with a message stating that `No call graph is created when all tests are run`?
 
 The callgraph would be huge and is not shown when all tests are run (full-run or bootstrap run) because it is not useful as no test-selection was done in this case
 
 #### How can I understand the relationship between code changes and the selected tests in a PR?
 
-In the ```Tests``` tab, the visualization graph provides insights into why each test was selected. It visually represents the relationship between the selected tests and the specific code changes in the PR
+In the `Tests` tab, the visualization graph provides insights into why each test was selected. It visually represents the relationship between the selected tests and the specific code changes in the PR
 
 #### In case of multi stage pipeline, will the CI stage execution update the build status in PR even if the clone codebase option is disabled in that stage?
 
