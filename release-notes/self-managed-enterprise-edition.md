@@ -39,6 +39,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.49.8 |
 | Platform Service | 80800 |
 | Access Control Service | 80600 |
+| Delegate | 23.10.81202 |
 | Change Data Capture | 81510 |
 | Test Intelligence Service | release-221 |
 | NG UI | 0.368.21 |
