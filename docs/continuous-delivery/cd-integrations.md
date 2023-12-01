@@ -340,8 +340,4 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>CDS_NG_BARRIER_STEPS_WITHIN_LOOPING_STRATEGIES</td>
         <td>Support Barrier steps within looping strategies. <b>This feature is under development, and will be Beta soon.</b> </td>
     </tr>
-    <tr>
-        <td>CDS_TF_TG_SKIP_ERROR_LOGS_COLORING</td>
-        <td>Disable the coloring of execution logs that are coming form standart error output of process executor for Terraform and Terragrunt steps. <b>This feature is in Beta.</b> </td>
-    </tr>
 </table>
