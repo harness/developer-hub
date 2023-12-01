@@ -22,22 +22,22 @@ CF app stop fault:
   <tr>
     <td> cfDeploymentPlatform </td>
     <td> Deployment platform used for cloud foundry, with respect to where the infrastructure is hosted </td>
-    <td> Supports <code>local</code> and <code>vSphere</code> </td>
+    <td> Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#cf-deployment-platform"> deployment platform. </a></td>
   </tr>
   <tr>
     <td> organization </td>
     <td> Organization where the target app resides </td>
-    <td> For example, <code>dev-org</code> </td>
+    <td> For example, <code>dev-org</code>. For more information, go to <a href="#cf-deployment-platform"> organization.</a></td>
   </tr>
   <tr>
     <td> space </td>
     <td> Space where the target app resides </td>
-    <td> The space must reside within the given organization. For example, <code>dev-space</code> </td>
+    <td> The space must reside within the given organization. For example, <code>dev-space</code>. For more information, go to <a href="#cf-deployment-platform"> space. </a></td>
   </tr>
   <tr>
     <td> app </td>
     <td> The app to be stopped </td>
-    <td> The app must reside within the given organization and space. For example, <code>cf-app</code> </td>
+    <td> The app must reside within the given organization and space. For example, <code>cf-app</code>. For more information, go to <a href="#cf-deployment-platform"> app. </a></td>
   </tr>
 </table>
 
@@ -51,27 +51,22 @@ CF app stop fault:
   <tr>
     <td> faultInjectorPort </td>
     <td> Local server port used by the fault-injector utility </td>
-    <td> Default: <code>50320</code>. If the default port is unavailable, a random port in the range of <code>50320-51320</code> is selected. </td>
-  </tr>
-  <tr>
-    <td> duration </td>
-    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30 </td>
+    <td> Default: <code>50320</code>. If the default port is unavailable, a random port in the range of <code>50320-51320</code> is selected. For more information, go to <a href="#fault-injector-port"> fault injector port.</a></td>
   </tr>
   <tr>
     <td> skipSSLValidation </td>
     <td> Skip SSL validation while invoking CF APIs </td>
-    <td> Supports <code>true</code> and <code>false</code>. Default: <code>false</code> </td>
+    <td> Supports <code>true</code> and <code>false</code>. Default: <code>false</code>. For more information, go to <a href="#skip-ssl-validation"> skip SSL validation. </a></td>
   </tr>
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Defaults to 30. </td>
+    <td> Default: 30. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of chaos.</a></td>
   </tr>
   <tr>
     <td> rampTime </td>
     <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Defaults to 0. </td>
+    <td> Defaults to 0. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
   </tr>
 </table>
 
