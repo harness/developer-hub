@@ -1421,7 +1421,6 @@ This release includes the following Harness module and component versions.
 | Platform Service | 80502 |
 | Access Control Service | 80302 |
 | Delegate | 23.10.80810 |
-| Delegate | 80302 |
 | Change Data Capture | 80909 |
 | Test Intelligence Service | release-197 |
 | NG UI | 0.364.18 |
