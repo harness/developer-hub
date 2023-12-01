@@ -196,7 +196,7 @@ spec:
         env:
         # name of the lib image
         - name: LIB_IMAGE
-          value: 'litmuschaos/go-runner:latest'
+          value: 'chaosnative/chaos-go-runner:main-latest'
 ```
 
 ### Default health check
