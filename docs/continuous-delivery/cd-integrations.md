@@ -219,10 +219,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial">fetching and listing of WebApp names and slots</a>. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>CDS_SERVERLESS_V2</td>
-        <td>Enables *building* and packaging serverless packages in Harness CD. For Serverless deployments, this feature spins up an environment for the Serverless package, validates the Serverless CloudFormation template, and then performs a Serverless deploy, all in the ephemeral environment. <b>This feature is in Public Preview.</b> </td>
-    </tr>
-    <tr>
         <td>CDS_SUPPORT_EXPRESSION_REMOTE
         _TERRAFORM_VAR_FILES_NG</td>
         <td>Enables Harness expressions in remote Terraform var files. <b>This feature is in Beta.</b> </td>
@@ -230,10 +226,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDS_ENABLE_LOAD_FROM_CACHE_FOR_RETRY_FORM</td>
         <td>Enables a load from cache option on pipeline execution retry form. <b>This feature is in Beta.</b> </td>
-    </tr>
-    <tr>
-        <td>CDS_GITHUB_APP_AUTHENTICATION</td>
-        <td>Enables Github App authentication for users to fetch files and perform <a href="/docs/platform/connectors/code-repositories/git-hub-app-support">Harness Git Experience operations</a>. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_ENV_PROPAGATION</td>
@@ -278,10 +270,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDS_DISABLE_EVALUATE_EXPORT_VARIABLES</td>
         <td>Enables exporting variables without evaluating them in the Command step. <b>This feature is in Beta.</b></td>
-    </tr>
-    <tr>
-        <td>CDS_TERRAGRUNT_CLI_OPTIONS_NG</td>
-        <td>Enables CLI options for Terragrunt steps. <b>This feature is in Public Preview.</b> </td>
     </tr>
     <tr>
         <td>CD_CONTAINER_STEP_DELEGATE_SELECTOR</td>
@@ -339,9 +327,5 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDS_NG_BARRIER_STEPS_WITHIN_LOOPING_STRATEGIES</td>
         <td>Support Barrier steps within looping strategies. <b>This feature is under development, and will be Beta soon.</b> </td>
-    </tr>
-    <tr>
-        <td>CDS_TF_TG_SKIP_ERROR_LOGS_COLORING</td>
-        <td>Disable the coloring of execution logs that are coming form standart error output of process executor for Terraform and Terragrunt steps. <b>This feature is in Beta.</b> </td>
     </tr>
 </table>

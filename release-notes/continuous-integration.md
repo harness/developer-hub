@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-11-22T10:00
+date: 2023-12-01T10:00
 sidebar_position: 9
 ---
 
@@ -23,7 +23,23 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
+## December 2023
+
+### Version 6801
+
+<!-- Dec 01, 2023 -->
+
+This release includes backend changes only.
+
 ## November 2023
+
+### Version 6704
+
+<!-- Nov 29, 2023 -->
+
+#### Hotfix
+
+Fixed an issue related to cache saving with Cache Intelligence.
 
 ### Version 6703
 
@@ -258,7 +274,7 @@ You can now use the [Upload Artifacts to S3 step](/docs/continuous-integration/u
 
 **GitHub App authentication for GitHub connectors (CI-8577)**
 
-This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION` and it requires Harness Delegate version 23.08.80308 or later. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag. For information about features and fixes requiring a specific delegate version, go to the [delegate release notes](/release-notes/delegate).
+This feature requires Harness Delegate version 23.08.80308 or later. For information about features and fixes requiring a specific delegate version, go to the [delegate release notes](/release-notes/delegate).
 
 With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
 

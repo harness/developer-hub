@@ -9,6 +9,7 @@ You can ingest container-image scan results from [Aqua Security Entrerprise](htt
 
 ## Important notes for running Aqua Security scans in STO
 
+
 ### Docker-in-Docker requirements
 
 <!-- -->
@@ -27,6 +28,13 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
 
 ## Aqua Security step settings for STO scans
 

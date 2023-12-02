@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-11-30T10:00
+date: 2023-12-01T10:00
 sidebar_position: 15
 ---
 ```mdx-code-block
@@ -24,7 +24,7 @@ These release notes describe recent changes to Harness Harness Self-Managed Ente
 
 :::
 
-## Latest: Version 81308
+## November 30, 2023, version 81308
 
 ### New features and enhancements
 
@@ -39,6 +39,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.49.8 |
 | Platform Service | 80800 |
 | Access Control Service | 80600 |
+| Delegate | 23.10.81202 |
 | Change Data Capture | 81510 |
 | Test Intelligence Service | release-221 |
 | NG UI | 0.368.21 |
@@ -550,12 +551,54 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
 - An alignment issue with the **Change Event** card has been fixed to ensure consistent information display. (SRM-15793)
 
+### Patches
+
+#### December 1, 2023, 0.11.1
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.11.1](https://github.com/harness/helm-charts/releases/tag/harness-0.11.1) |
+| Air Gap Bundle | [0.11.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.11.1) |
+| NG Manager | 81308 |
+| CI Manager | 6602 |
+| Pipeline Service | 1.49.12 |
+| Platform Service | 80800 |
+| Access Control Service | 80600 |
+| Delegate | 23.10.81202 |
+| Change Data Capture | 81510 |
+| Test Intelligence Service | release-221 |
+| NG UI | 0.368.21 |
+| LE NG | 67903 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.11.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.1/sto_images.tgz" \
+  .
+```
+
+#### Fixed issue
+
+- Default values for external databases caused upgrade issues. Harness removed local default MongoDB values from `values.yaml` files to resolve the issue. (SMP-2339)
+
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
 
-#### Version 80917
+#### November 1, 2023, version 80917
 
 ##### New features and enhancements
 
@@ -570,6 +613,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.47.11 |
 | Platform Service | 80502 |
 | Access Control Service | 80302 |
+| Delegate | 23.10.80810 |
 | Change Data Capture | 80909 |
 | Test Intelligence Service | release-197 |
 | NG UI | 0.364.18 |
@@ -1363,7 +1407,7 @@ gsutil -m cp \
 
 #### Patches
 
-##### 0.10.1
+##### November 10, 2023, 0.10.1
 
 This release includes the following Harness module and component versions.
 
@@ -1376,6 +1420,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.47.11 |
 | Platform Service | 80502 |
 | Access Control Service | 80302 |
+| Delegate | 23.10.80810 |
 | Change Data Capture | 80909 |
 | Test Intelligence Service | release-197 |
 | NG UI | 0.364.18 |
@@ -1402,7 +1447,7 @@ gsutil -m cp \
 
 - Configured `socket-timeout` to handle a higher volume and scale of customer billing data. (CCM-15026)
 
-#### Version 80220
+#### September 30, 2023, version 80220
 
 ##### New features and enhancements
 
@@ -1417,6 +1462,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.41.3 |
 | Platform Service | 80000 |
 | Access Control Service | 79802 |
+| Delegate | 23.09.80113 |
 | Change Data Capture | 80209 |
 | Test Intelligence Service | release-197 |
 | NG UI | 0.357.17 |
@@ -2086,7 +2132,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
 #### Patches
 
-#### 0.9.1
+#### October 8, 2023, 0.9.1
 
 This release includes the following Harness module and component versions.
 
@@ -2099,6 +2145,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.41.3 |
 | Platform Service | 80000 |
 | Access Control Service | 79802 |
+| Delegate | 23.10.80114 |
 | Change Data Capture | 80209 |
 | Test Intelligence Service | release-197 |
 | NG UI | 0.357.17 |
@@ -2132,7 +2179,7 @@ gsutil -m cp \
    For more information, go to [Service hooks](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks).
 
 
-#### 0.9.2
+#### October 12, 2023, 0.9.2
 
 This release includes the following Harness module and component versions.
 
@@ -2145,6 +2192,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.41.3 |
 | Platform Service | 80000 |
 | Access Control Service | 79802 |
+| Delegate | 23.10.80115 |
 | Change Data Capture | 80209 |
 | Test Intelligence Service | release-197 |
 | NG UI | 0.357.17 |
@@ -2177,7 +2225,7 @@ gsutil -m cp \
    - Corrected the `cd.gitops` field in the `override-prod.yaml` file.
    - Added an annotation field to `nextgen-ui` to resolve `global.ingress.objects.annotation` template failures.
 
-#### 0.9.3
+#### October 24, 2023, 0.9.3
 
 This release includes the following Harness module and component versions.
 
@@ -2190,6 +2238,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.41.3 |
 | Platform Service | 80000 |
 | Access Control Service | 79802 |
+| Delegate | 23.10.80115 |
 | Change Data Capture | 80209 |
 | Test Intelligence Service | release-197 |
 | NG UI | 0.357.17 |
@@ -2247,6 +2296,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.37.12 |
 | Platform Service | 79601 |
 | Access Control Service | 79400 |
+| Delegate | 23.07.79712 |
 | Change Data Capture | 79819 |
 | Test Intelligence Service | release-177 |
 | NG UI | 0.353.10 |
@@ -2772,7 +2822,7 @@ You are missing the following permission: "View default settings" in Account sco
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor bug fixes and updates to address potential security vulnerabilities.
 
-#### 0.8.4
+#### September 28, 2023, 0.8.4
 
 This release includes the following Harness module and component versions.
 
@@ -2785,6 +2835,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.37.13 |
 | Platform Service | 79601 |
 | Access Control Service | 79400 |
+| Delegate | 23.09.79716 |
 | Change Data Capture | 79819 |
 | Test Intelligence Service | release-177 |
 | NG UI | 0.353.17 |
@@ -2833,7 +2884,7 @@ This release does not include any early access features.
 
    This issue has been resolved by removing the character limit, and you can now add multiple repo certificates.
 
-#### 0.8.3
+#### September 20, 2023, 0.8.3
 
 This release includes the following Harness module and component versions.
 
@@ -2846,6 +2897,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.37.13 |
 | Platform Service | 79601 |
 | Access Control Service | 79400 |
+| Delegate | 23.08.79713 |
 | Change Data Capture | 79819 |
 | Test Intelligence Service | release-177 |
 | NG UI | 0.353.17 |
@@ -2909,7 +2961,7 @@ This release does not include any early access features.
 
 - Fixed an issue where build pods weren't cleaned up if Harness selected an invalid delegate for the cleanup task. This could happen if you used delegate selectors based on delegate tags, and multiple delegates had the same tags, but some of those delegates didn't have access to the cluster. Now Harness checks the selected delegate's connectivity to the cluster before assigning a task to that delegate. (CI-8831, ZD-47647)
 
-#### 0.8.2
+#### August 23, 2023, 0.8.2
 
 This release includes the following Harness module and component versions.
 
@@ -2922,6 +2974,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.37.13 |
 | Platform Service | 79601 |
 | Access Control Service | 79400 |
+| Delegate |  23.07.79712 |
 | Change Data Capture | 79819 |
 | Test Intelligence Service | release-177 |
 | NG UI | 0.353.10 |
@@ -2963,6 +3016,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.33.8 |
 | Platform Service | 79202 |
 | Access Control Service | 79004 |
+| Delegate | 23.05.78924 |
 | Change Data Capture | 79422 |
 | Test Intelligence Service | release-177 |
 | NG UI | 0.349.16 |
@@ -2985,11 +3039,11 @@ gsutil -m cp \
   .
 ```
 
-#### What's new
+#### New features and enhancements
 
 This release does not include new features.
 
-#### Early access
+#### Early access features
 
 This release does not include any early access features.
 
@@ -3015,6 +3069,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.33.8 |
 | Platform Service | 79202 |
 | Access Control Service | 79004 |
+| Delegate | 23.05.78924 |
 | Change Data Capture | 79422 |
 | Test Intelligence Service | release-177 |
 | NG UI | 0.349.16 |
@@ -3037,7 +3092,7 @@ gsutil -m cp \
   .
 ```
 
-#### What's new
+#### New features and enhancements
 
 - Send emails to non-Harness users. (CDS-69561, CDS-58625, ZD-42496)
   
@@ -3049,7 +3104,7 @@ gsutil -m cp \
 
 - The [Harness Helm charts](https://github.com/harness/helm-charts) `values.yaml` file is updated to include Error Tracking images. (SMP-1615)
 
-#### Early access
+#### Early access features
 
 This release does not include any early access features.
 
@@ -3071,6 +3126,7 @@ This release includes the following Harness module and component versions.
 | Pipeline Service | 1.33.8 |
 | Platform Service | 79202 |
 | Access Control Service | 79004 |
+| Delegate | 23.05.78924 |
 | Change Data Capture | 79421 |
 | Test Intelligence Service | release-177 |
 | NG UI | 0.349.16 |
@@ -3093,7 +3149,7 @@ gsutil -m cp \
   .
 ```
 
-#### What's new
+#### New features and enhancements
 
 #### Continuous Integration
 
@@ -3212,7 +3268,7 @@ gsutil -m cp \
 
 - The Monitored Service listing page now displays a summary of changes related to the number of feature flags and chaos experiments, along with the other custom change sources. (SRM-14742)
 
-#### Early access
+#### Early access features
 
 #### Continuous Integration
 
@@ -3529,7 +3585,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.347.19 |
 | LE NG | 67808 |
 
-#### What's new
+#### New features and enhancements
 
 #### Self-Managed Enterprise Edition
 
@@ -3736,7 +3792,7 @@ This release includes the following Harness module and component versions.
 
 - An icon appears on the SLO performance trend chart timeline to indicate when the error budget was reset and the amount of budget that was added. (SRM-14550)
 
-#### Early access
+#### Early access features
 
 ##### Harness Delegate
 
@@ -4170,7 +4226,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.344.13 |
 | LE NG | 67708 |
 
-#### What's new
+#### New features and enhancements
 
 - You can now use an external database with your installation. For more information, go to [Use an external database](/tutorials/self-managed-enterprise-edition). (SMP-545)
 
@@ -4249,7 +4305,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 | LE NG | 67708 |
 
 
-#### What's new
+#### New features and enhancements
 
 #### Self-Managed Enterprise Edition
 - Beginning with v0.5.0, Harness will no longer publish `harness-prod` or `harness-demo` Helm charts. Harness will publish the `harness` base chart only. If you currently use the `harness-prod` or `harness-demo` Helm chart, you must download your `custom-override.yaml` file from [the helm-charts repository](https://github.com/harness/helm-charts/tree/main/src) and use the following commands to upgrade:
@@ -5179,7 +5235,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.339.19 |
 | LE NG | 67500 |
 
-#### What's new
+#### New features and enhancements
 
 - The kotsadmin minor version is upgraded from 1.88.0 to 1.95.0. (SMP-835)
 
@@ -5752,7 +5808,7 @@ This release includes the following Harness module and component versions.
 | LE NG | 67300 |
 
 
-##### What's new
+##### New features and enhancements
 
 This release introduces the following features and enhancements.
 
@@ -6213,7 +6269,7 @@ This release includes the following fixed issues.
 
 #### December 21, 2022, version 77622
 
-##### What's new
+##### New features and enhancements
 
 This release introduces the following features and enhancements.
 
@@ -6350,7 +6406,7 @@ This release introduces the following fixes.
 
 #### October 31, 2022, version 77117
 
-##### What's new
+##### New features and enhancements
 
 This release introduces the following features and enhancements.
 
@@ -6516,7 +6572,7 @@ This release introduces the following fixes.
 
 #### October 7, 2022, version 76918
 
-##### What's new
+##### New features and enhancements
 
 This release introduces the following features and enhancements.
 
@@ -6934,7 +6990,7 @@ Changed the handling of soft-deleted vaults; they are no longer subject to renew
 
 #### September 15, 2022, version 76620
 
-##### What's new
+##### New features and enhancements
 
 This release introduces the following features and enhancements.
 
@@ -7308,7 +7364,7 @@ PL-27395 Fixed the mongo update method call used to create lastUpdatedTemplate.
 
 #### September 6, 2022
 
-##### What's New
+##### New features and enhancements
 
 You can now install and maintain Continuous Delivery, Continuous Integration and Security Testing Orchestration using Helm package manager in a self-managed environment.
 
@@ -7318,7 +7374,7 @@ For more information, see Install Self-Managed Enterprise Edition Using Helm.
 
 Delegate version 76324
 
-##### What's new
+##### New features and enhancements
 
 This release introduces the following features and enhancements.
 

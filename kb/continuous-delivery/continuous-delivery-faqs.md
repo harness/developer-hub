@@ -3228,3 +3228,12 @@ Many users opt for a shell script approach, where a configuration file is utiliz
 
 Upon creating or updating a trigger, there's a five to ten-minute delay before the polling job initiates and the trigger becomes operational. It's advised to wait for this duration before pushing the artifact, according to general recommendations from the deployment platform.
 After 5-10 mins of the trigger status turns success, any tag collected should trigger the pipeline.
+
+#### Can we use Infra variable in service config yaml(Like to use this variable as artefact path etc)
+No the Infra variable will not be available for service config, these Infra variable can be used in deployment manifest etc but not is service config as these variable will resolve in later part of deployment 
+
+#### Can we use Env/Infra etc variable as skip condition for approval stage
+If approval is added as stage then these variables will not be available and only account/org/project or pipeline variables will be available, If you are using approval as step inside Deploy stage than you can access Env/Infra variables as well
+
+#### What is the equivalent variable for  ${artifact.label.get(“labelkey)} In NG
+You can use  `<+artifact.label.get(“labelkey”)>`

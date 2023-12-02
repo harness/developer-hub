@@ -577,7 +577,7 @@ For more information about SAML SSO configuration with Azure, see [Single sign-o
 
 This section covers common problems experienced when using a [Shell script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step.
 
-### FileNotFoundExeption inside shell script execution task
+### FileNotFoundException inside shell script execution task
 
 This error happens when you are publishing output and your Shell Script step exits early from its script.
 
@@ -609,3 +609,34 @@ This error happens when you are adding YAML that exceeds the Harness limit of 3M
 
 To fix this error, you will need to reduce the size of the pipeline or template.
 
+## Connectors
+
+This section covers common problems experienced when using the [Connectors](/docs/category/connectors).
+
+### Connection test failures
+
+When you select **Connection Test** on the Connector Details page, at times, you might encounter a connection failure.
+
+![](./static/troubleshooting-nextgen-06.png)
+
+You can troubleshoot the issues using connector validation logs available at runtime.
+
+If the `executeOnDelegate` property is set to true, a **View Delegate Tasks Logs** option is available.
+
+![](./static/troubleshooting-nextgen-07.png)
+
+Selecting this option opens the **Delegate Task Logs** dialog that displays Google StackDriver logs for the `taskId`.
+
+![](./static/troubleshooting-nextgen-05.png)
+
+:::info note
+Some steps, such as the CI init step, do not return delegate information in the format required by the API schema, and logs are not available for these steps.
+
+:::
+
+You can expand the rows to view the complete JSON object, and you can also scroll horizontally to view the complete error message. This way, you can see the full error log and troubleshoot the connector issue effectively.
+
+:::info note
+This feature is not available for Harness Self-Managed Enterprise Edition.
+
+:::

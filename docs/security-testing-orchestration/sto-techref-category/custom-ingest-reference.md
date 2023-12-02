@@ -15,15 +15,13 @@ The Custom Ingest step enables you to ingest results from any third-party scanne
 The Custom Ingest step is intended for scanners that have no supported integration in STO. Harness recommends that you always use the documented workflow for supported scanners. For a list of all STO-supported scanners, go to [Security Step Settings Reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md).
 :::
 
-<!--
+## For more information
 
-Hiding notes added when Step Palettes were first introducted, per Rajiv 
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
 
-
-
-
-
--->
+<StoMoreInfo />
 
 ## Scan settings
 

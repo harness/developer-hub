@@ -33,9 +33,17 @@ We'll focus on **Artifacts** to demonstrate custom artifact, but you can find in
 
 In **Artifacts**, select **Add Primary Artifact**.
 
-Custom artifact is also supported in **Sidecar**. In **Specify Artifact Repository Type**, select **Custom** and select **Continue**.
+Custom artifact is also supported in **Sidecar**. In **Specify Artifact Repository Type**, select **Manually enter an artifact version** or **Provide a script to dynamically pull the artifact location.** and select **Continue**.
 
-In the **Custom Artifact** source, enter a script to fetch a JSON payload and add it to the Harness variable `$HARNESS_ARTIFACT_RESULT_PATH`. Here's an example:
+### Manually enter an artifact version
+
+In **Version**, enter the version of the artifact you want to deploy.
+
+You can set **Version** as a [runtime input](/docs/platform/variables-and-expressions/runtime-inputs), and then enter the version when you run the pipeline that deploys this service. You can also use an [expression](/docs/platform/variables-and-expressions/harness-variables#expression-guidelines-and-boundaries) that is evaualted at runtime.
+
+### Provide a script to dynamically pull the artifact location
+
+In **Script**, enter a script to fetch a JSON payload and add it to the Harness variable `$HARNESS_ARTIFACT_RESULT_PATH`. Here's an example:
 
 ```
 curl -X GET "https://nexus3.dev.harness.io/service/rest/v1/components?repository=cdp-qa-automation-1" -H "accept: application/json" > $HARNESS_ARTIFACT_RESULT_PATH
