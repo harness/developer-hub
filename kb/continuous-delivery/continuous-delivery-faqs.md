@@ -71,7 +71,7 @@ Pipelines executed with custom webhook triggers can override deployment freeze. 
 
 Check the access control for the network.  It could be that the request is blocked on the network side
 
-#### Are there varaibles for account and company name?
+#### Are there variables for account and company name?
 
 `<+account.name>` and `<+account.companyName>`
 
@@ -1671,9 +1671,6 @@ You can click on 3 dots(kebab menu) from the template library. Then click on the
 #### How to use the output from one stage in the looping strategy of another stage
 You can achieve this by following the steps documented here in this article: https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables
 
-#### How can we use conditionals within variables using JEXL? 
-You can use Ternary operators to achieve this use case.
-
 #### What do the fetch files step do in rollout deployment?
 The Fetch files task in the Rollout Deployment step leverages the GitHub connector configured in the service to fetch the manifests. Harness will also render and resolve any of the Harness variables defined in the values.yaml file of the service and add them to the manifest/Helm chart using Go/Helm templating. 
 
@@ -2802,11 +2799,6 @@ No, it does not necessarily mean that deployments auto-roll back. The action tak
 
 Yes, we can filter deployments if the environments used for the same are marked as `Prod`
 
-#### Is there an API for Post Production Rollback feature ?
-
-No, we don't have any exposed APIs for Post Production Rollback feature
-Please read more on Post Rollback Deployment in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/manage-deployments/rollback-deployments/)
-
 #### Is there a plan to introduce a `cosign` step within deploy stage ?
 
 For users who wish to incorporate image signing into their Continuous Deployment (CD) process, they have the flexibility to utilize our `container` steps as a solution. This approach allows users to sign images before deploying them as needed, providing a customizable and versatile deployment workflow.
@@ -3195,3 +3187,44 @@ Check if port 5985 is opened and test the communication for winrm
 
 #### Reconcile is taking pretty long time while using remote temple stored in git
 Check in network time response for templates to troubleshot if there is any issue/slowness while communicating to git
+
+#### Does Harness allow passing of multi-environment as an expression ?
+
+No, we don’t support passing in multi environment as an expression. The feature will be available soon
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv/)
+
+#### Can one use a Repeat Looping Strategy if the infrastructure definitions are stored in a variable as CSV, and how can one access and perform actions for individual items within the Repeat Loop ?
+
+You can leverage a Repeat Looping Strategy to iterate through infrastructure definitions stored in a CSV variable. Utilize the following YAML snippet:
+```sh
+repeat:
+  items: <+VariableExpression>.split(",")
+```
+
+To access individual items within the Repeat Loop, use the `<+repeat.item>` expression
+
+#### How to create an AWS connector using `aws-iam-authenticator` on EKS Cluster with webIdentityToken ?
+
+Please read how to set AWS connector on EKS Cluster in this [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-elastic-kubernetes-service-eks)
+Also, to align with AWS changes, it's important to note that the previous method of accomplishing this task has been deprecated in `kubectl version 1.21`. To address this, when utilizing the `Iam-authenticator plugin`, it is necessary to create a `Fargate profile` as part of the updated procedure.
+
+#### Is it possible to get a `KUBECONFIG` file in a shell script within Harness for K8s connectors ?
+
+Yes, we have it documentated for the steps. Please refer to the following documentations on [Shell script include infrastructure](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#include-infrastructure-selectors) and [Shell script run K8s](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#running-kubernetes-commands-in-the-shell-script)
+
+#### For Input Sets is there any specific RBAC ?
+
+No, We dont have RBAC for Input Sets. Please read more on input sets in the following [Documentation](https://developer.harness.io/docs/platform/pipelines/input-sets/)
+
+#### What is the oldest version of kubernetes we support for the delegates for firstgen and nextgen ?
+
+Oldest Kubectl Client version being used is `1.16`. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-integrations/)
+
+#### Is there a way to simply update the ECS scaling policy without redeploying the ECS service ?
+
+Many users opt for a shell script approach, where a configuration file is utilized and set as an environment variable. Subsequently, a shell script is crafted to execute the relevant AWS CLI commands, facilitating the update of scaling policies for a deployed service. This versatile method allows for customization and automation across various scenarios and configurations
+
+#### Is it expected that, after pushing a new artifact to an initially empty Docker repository linked to a trigger, the trigger's status shifts from `pending` to `success` only triggering the pipeline upon the second push ?
+
+Upon creating or updating a trigger, there's a five to ten-minute delay before the polling job initiates and the trigger becomes operational. It's advised to wait for this duration before pushing the artifact, according to general recommendations from the deployment platform.
+After 5-10 mins of the trigger status turns success, any tag collected should trigger the pipeline.
