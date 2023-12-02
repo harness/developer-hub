@@ -272,10 +272,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables exporting variables without evaluating them in the Command step. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
-        <td>CDS_TERRAGRUNT_CLI_OPTIONS_NG</td>
-        <td>Enables CLI options for Terragrunt steps. <b>This feature is in Public Preview.</b> </td>
-    </tr>
-    <tr>
         <td>CD_CONTAINER_STEP_DELEGATE_SELECTOR</td>
         <td>Makes the Container step to respect the delegate selector configured at the pipeline. <b>This feature is in Beta.</b></td>
     </tr>
