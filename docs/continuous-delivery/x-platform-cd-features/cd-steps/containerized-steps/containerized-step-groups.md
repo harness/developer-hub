@@ -499,8 +499,7 @@ To leverage the Harness Connector for AWS SAM and Serverless.com container steps
 
 1. Ensure that following Harness feature flags are enabled:
   1. `CDS_CONTAINER_STEP_GROUP`.
-  2. For Serverless.com: `CDS_SERVERLESS_V2`.
-  3. For AWS SAM: `CDP_AWS_SAM`.
+  2. For AWS SAM: `CDP_AWS_SAM`.
 
 ### Connector configuration
 
