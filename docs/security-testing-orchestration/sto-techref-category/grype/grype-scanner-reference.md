@@ -13,6 +13,7 @@ For information about setting up Grype in an air-gapped environment, go to [Set 
 
 ## Important notes for running Grype scans in STO
 
+
 ### Docker-in-Docker requirements
 
 ```mdx-code-block
@@ -21,6 +22,7 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoDinDRequirements />
 
+
 ### Root access requirements
 
 ```mdx-code-block
@@ -28,6 +30,14 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 ```
 
 <StoRootRequirements />
+
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
 
 
 ## Grype step configuration
