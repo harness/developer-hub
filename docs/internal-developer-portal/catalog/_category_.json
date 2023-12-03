@@ -2,7 +2,7 @@
     "label": "Catalog",
     "collapsible": "true",
     "collapsed": "false",
-    "position": 10,
+    "position": 20,
     "link": {
       "type": "generated-index",
       "title": "Software Catalog"
