@@ -1861,6 +1861,10 @@ Enabling the flags (`PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE` and `PL_HIDE_ORGANIZATI
 Our priorities are configured as follows: [Step > Step Group > Stage > Pipeline > Connector]. In this scenario, the user can override at the pipeline (or any higher level), but without that override, it will result in a failure.
 
 
+#### Is the user can approve the pipeline through the API using token of service account?
+The Service Account API token is not supported with Approval API, you need to use the personel access token.
+
+
 
 
 

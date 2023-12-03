@@ -997,3 +997,36 @@ In the `Tests` tab, the visualization graph provides insights into why each test
 #### In case of multi stage pipeline, will the CI stage execution update the build status in PR even if the clone codebase option is disabled in that stage?
 
 Yes, currently the CI stage execution updates the build status on PR even if the clone codebase option is disabled for that specific stage however there are some work in progres to improve this experience
+
+
+#### How can user specify the size of the disk for the windows instance in the pool.yml file?
+
+Here's an example:
+
+```
+version: "1"
+instances:
+  - name: windows-ci-pool
+    default: true
+    type: amazon
+    pool: 1
+    limit: 4
+    platform:
+      os: windows
+    spec:
+      account:
+        region: us-east-2
+        availability_zone: us-east-2c
+        access_key_id: 
+        access_key_secret: 
+        key_pair_name: XXXXX
+      ami: ami-088d5094c0da312c0
+      size: t3.large
+      hibernate: true
+      network:
+        security_groups:
+          - sg-XXXXXXXXXXXXXX
+      disk:
+        size: 100
+        type: "pd-balanced"
+```

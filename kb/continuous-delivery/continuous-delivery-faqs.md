@@ -3204,3 +3204,14 @@ If approval is added as stage then these variables will not be available and onl
 
 #### What is the equivalent variable for  ${artifact.label.get(“labelkey)} In NG
 You can use  <+artifact.label.get(“labelkey”)>
+
+
+#### Is the user can able to to share input set between project in one organization?
+No, as per the current design user can't share the input set with other projects.
+
+#### How can user change the default branch for a pipeline?
+Harness loads the pipeline from the default branch of the repository which is set in Git.
+
+
+#### Is the NextGen Delegate can be installed on a EC2 instance without docker?
+As per the current design, NextGen Delegate cannot be installed on an EC2 instance without Docker. The NextGen Delegate is a Docker container that runs on the host machine.
