@@ -164,7 +164,7 @@ const config = {
               },
               {
                 // type: "doc",
-                label: 'Manage Developer Portal',
+                label: 'Manage Developer Portal(IDP)',
                 to: 'tutorials/internal-developer-portal',
               },
               {
@@ -234,7 +234,7 @@ const config = {
                 to: 'docs/continuous-error-tracking',
               },
               {
-                label: 'Internal Developer Portal',
+                label: 'Internal Developer Portal (IDP)',
                 to: 'docs/internal-developer-portal',
               },
               {

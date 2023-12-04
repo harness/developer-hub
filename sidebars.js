@@ -288,7 +288,7 @@ const sidebars = {
           id: "internal-developer-portal",
           */
           type: "category",
-          label: "Internal Developer Portal",
+          label: "Internal Developer Portal (IDP)",
           link: {
             type: "doc",
             id: "internal-developer-portal",

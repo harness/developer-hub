@@ -156,7 +156,7 @@ const sidebars = {
         // IDP
         {
           type: 'category',
-          label: 'Manage Developer Portal',
+          label: 'Manage Developer Portal(IDP)',
           link: {
             type: 'doc',
             id: 'internal-developer-portal',

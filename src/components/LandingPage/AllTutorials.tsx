@@ -114,7 +114,7 @@ export default function AllTutorials() {
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
           <img src={`${baseUrl}img/icon_idp.svg`} />
-          <h3>Manage Developer Portal</h3>
+          <h3>Manage Developer Portal(IDP)</h3>
         </div>
         <TutorialCard FeatureList={IDPList} />
       </div>

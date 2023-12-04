@@ -1,5 +1,5 @@
 {
-  "label": "Internal Developer Portal",
+  "label": "Internal Developer Portal (IDP)",
   "collapsible": "true",
   "collapsed": "true",
   "link": { "type": "generated-index", "title": "Internal developer Portal" },
