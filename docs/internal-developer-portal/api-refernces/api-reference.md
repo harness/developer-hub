@@ -1,7 +1,7 @@
 ---
-title: API Spec Refernces
+title: API Spec References
 description: API Specifications detials and YAML Format
-sidebar_position: 1
+sidebar_position: 2
 helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false
