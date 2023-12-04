@@ -404,7 +404,7 @@ Delegate reject tasks or fail to acquire tasks when CPU and memory reach above a
 
 #### Can we set the delegate to reject new tasks if x% of memory is being consumed?
 
-Yes you can choose to specify what threshold to reject the task using the flag `DELEGATE_RESOURCE_THRESHOLD`, otherwise, the  default value is 70%.
+Yes you can choose to specify what threshold to reject the task using the flag `DELEGATE_RESOURCE_THRESHOLD`, otherwise, the  default value is 80%.
 
 #### What is the behavior when DYNAMIC_REQUEST_HANDLING is set to false or not set at all when memory reaches 100% ?
 
