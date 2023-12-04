@@ -337,6 +337,63 @@ Select your Git provider (GitHub, Artifactory, S3, etc.) and then select or crea
 
 Click **Continue**. The **Var File Details** settings appear.
 
+#### Optional Remote Terraform Var File
+
+:::note
+
+Currently, the Optional Terraform Var File is behind the feature flag `CDS_TERRAFORM_SUPPORT_OPTIONAL_VAR_FILE_PATHS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+In the Terraform Apply Step, under the optional configuration, there is a Terraform Var Files section. When configuring the Terraform Var File itself there will be an option to configure it as optional. All the terraform var files you define in that configuration will be marked as optional. 
+
+Selecting the Optional Field when configuring a tfvars file. Under the  Users can now define tfvar files that may not exist in a repo. Harness will fetch tfvars that exist and ignore the ones that do not exist. Harness won't fail the fetch files action if the tfvars configuration marked optional doesn't exist.
+
+The Optional Terraform Var File capability is available for Terraform Apply, Terraform Plan and Terraform Destroy Steps. 
+
+
+```YAML
+                      varFiles:
+                        - varFile:
+                            type: Remote
+                            identifier: optional_var_files_123
+                            spec:
+                              optional: true
+                              store:
+                                type: Github
+                                spec:
+                                  gitFetchType: Branch
+                                  repoName: ""
+                                  branch: main
+                                  paths:
+                                    - terraform/localresource/localresourcevars/localresource.tfvar
+                                    - inexistentaasd123a.tvfars
+                                    - iasd13sadfsa6757.tfvars
+                                  connectorRef: vlicaprerequisites
+```
+
+At execution time, in the logs below, Harness will show the tfvar files that were found.
+
+```
+
+Starting Git Fetch Files
+
+Fetching GIT VAR_FILES files with identifier: optional-var-fil12313
+Git connector Url: https://github.com/vlica-harness/prerequisites.git
+Branch: main
+
+Fetching following Files :
+- terraform/localresource/localresourcevars/localresource.tfvar
+- inexistent131.tfvars
+- asfafainexistent.tfvars
+- asdsadasdsa.tfavr
+Successfully fetched following files:
+- terraform/localresource/localresourcevars/localresource.tfvar
+```
+
+
+
+
 ##### Git providers
 
 ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-07.png)
