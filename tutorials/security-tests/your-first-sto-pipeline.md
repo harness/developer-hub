@@ -1,7 +1,7 @@
 ---
 title: Your first STO pipeline
 description: Set up a simple pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.
-sidebar_position: 1
+sidebar_position: 10
 ---
 
 This tutorial shows you how to use the Harness Security Testing Orchestration (STO) module to perform code security scanning in a Harness pipeline. You'll set up a pipeline with one scanner, run scans, analyze the results, and learn about the key features of STO.
@@ -59,13 +59,13 @@ This pipeline has only one scanner but you can easily add more later. For the li
 1. Go to the project with the [base STO pipeline](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) project.
 2. Select the top-right menu, choose **Clone**, and save the new pipeline as **STO Tutorial 1**.
 
-   ![](./static/sto-standalone-workflows-10.png)
+   ![](./static/your-first-pipeline/sto-standalone-workflows-10.png)
 
 ## Scan step configuration
 
 
 ```mdx-code-block
-import set_up_harness_26 from './static/configure-bandit-step.png'
+import set_up_harness_26 from './static/your-first-pipeline/configure-bandit-step.png'
 ```
 
 Let's look at the Bandit step to see how it's configured.
@@ -126,7 +126,7 @@ Now that you've set up the pipeline, you can run a scan and view the detected is
 
 The **Security Tests** tab shows the issues that the scanner found in the test target, categorized by severity. The scanner found two issues, one critical and one medium, in the master branch.
 
-![](./static/sto-standalone-workflows-12.png)
+![](./static/your-first-pipeline/sto-standalone-workflows-12.png)
 
 ## Set the baseline
 
@@ -147,7 +147,7 @@ As a developer, you want to ensure that your merge or update doesn't introduce a
 1. Select **Security Tests** (left menu), then **Test Targets** (second-from-left menu).
 2. For the **dvpwa** target, select **Baseline for Comparison** and select **branch :** **master** in the pulldown menu.
  
-  ![](./static/sto-standalone-workflows-13.png)
+  ![](./static/your-first-pipeline/sto-standalone-workflows-13.png)
 
 
 ## Compare baseline vs. downstream issues 
@@ -161,7 +161,7 @@ First, you want to see if your branch has any security issues that aren't in the
 
 Your branch has 5 security issues: 2 critical, 2 medium, 1 low. Note that 3 of these issues are in the DEMO-001 branch only and 2 are common to both DEMO-001 and master.
 
-![](./static/sto-integrated-workflows-40-compare-results.png)
+![](./static/your-first-pipeline/sto-integrated-workflows-40-compare-results.png)
  
 
 ## Fix vulnerabilities
@@ -180,7 +180,7 @@ The Issue Details pane has useful information for troubleshooting your security 
 
 1. Expand the **Common to dvpwa:master** list (bottom left) and select the critical issue **sB602: subprocess_popen_with_shell_equals_true**. The Issue Details pane opens.
 
-  ![](./static/sto-standalone-workflows-15.png)
+  ![](./static/your-first-pipeline/sto-standalone-workflows-15.png)
 
 	+ The severity score **9.5** is based on the [NIST Common Vulnerability Scoring System](https://nvd.nist.gov/vuln-metrics/cvss) (CVSS) version 3.0:
 		- None 0.0
@@ -196,7 +196,7 @@ The Issue Details pane has useful information for troubleshooting your security 
 
 3. Examine the **Occurrences** list for this issue. (You might need to scroll down in the pane.) Here you can find additional details about each individual occurrence of the issue. Note that, to eliminate this vulnerability from the repo, you need to fix multiple occurrences:
 	
-   ![](./static/sto-standalone-workflows-16-indiv-issue-details.png)
+   ![](./static/your-first-pipeline/sto-standalone-workflows-16-indiv-issue-details.png)
 
 <details open><summary>Key Concept: Issue details are derived from the external scanner</summary>  
 
@@ -204,7 +204,7 @@ Many of the details you see for each issue are derived from the external scanner
 
 Here's an example of a container image vulnerability detected by a paid version of Snyk:
 
-![](./static/sto-integrated-workflows-10-snyk-with-remediation-steps.png)
+![](./static/your-first-pipeline/sto-integrated-workflows-10-snyk-with-remediation-steps.png)
 
 </details>
 
@@ -230,7 +230,7 @@ It is good practice to set `fail_on_severity` in every scan step in an integrate
 2. Set **Fail on Severity** to **Critical**. 
 3. Select **Apply Changes**, save the updated pipeline, and run a new build with the **DEMO-001** branch.
 
-   ![](./static/integrated-pipeline/failed-on-severity-critical.png)
+   ![](./static/your-first-pipeline/failed-on-severity-critical.png)
 
 The pipeline now fails because the Bandit step is now configured to fail on any critical vulnerability . The last log message in the Bandit step log is:
 ```
@@ -240,14 +240,14 @@ Exited with message: fail_on_severity is set to critical and that threshold was 
 ## Exemptions for specific issues
 
 ```mdx-code-block
-import account_user_settings from './static/integrated-pipeline/go-to-account-user-settings.png'
-import return_to_project from './static/integrated-pipeline/switch-from-account-to-project.png'
-import confirm_secops_role from './static/integrated-pipeline/confirm-secops-role.png'
-import request_exemption from './static/integrated-pipeline/request-exemption.png'
-import request_exemption_details from './static/integrated-pipeline/request-exemption-details.png'
-import approve_exemption_requests from './static/integrated-pipeline/approve-exemption-requests.png'
-import exempted_button_in_security_tests from './static/integrated-pipeline/exempted-button-in-security-tests.png'
-import cancel_exemption_requests from './static/integrated-pipeline/cancel-exemption-requests.png'
+import account_user_settings from './static/your-first-pipeline/go-to-account-user-settings.png'
+import return_to_project from './static/your-first-pipeline/switch-from-account-to-project.png'
+import confirm_secops_role from './static/your-first-pipeline/confirm-secops-role.png'
+import request_exemption from './static/your-first-pipeline/request-exemption.png'
+import request_exemption_details from './static/your-first-pipeline/request-exemption-details.png'
+import approve_exemption_requests from './static/your-first-pipeline/approve-exemption-requests.png'
+import exempted_button_in_security_tests from './static/your-first-pipeline/exempted-button-in-security-tests.png'
+import cancel_exemption_requests from './static/your-first-pipeline/cancel-exemption-requests.png'
 ```
 
 <details open><summary> Key concept: Exemptions, requests, and approvals</summary>  
@@ -390,7 +390,7 @@ You can implement [Failure Strategies](/docs/platform/pipelines/define-a-failure
 
 The following pipeline extends the example workflow described above. After it scans the repo, it builds a container image, scans the image, and fails the pipeline if the image scan fails. The [YAML](#integrated-workflow-yaml) of this pipeline is provided below.
 
-![](./static/integrated-pipeline/integrated-pipeline-in-ui.png)
+![](./static/your-first-pipeline/integrated-pipeline-in-ui.png)
 
 This pipeline works as follows:
 
@@ -407,7 +407,7 @@ This pipeline works as follows:
 
 After the pipeline executes, you can view all issues from all scanners in the **Security Tests** tab, and also filter the issue list by scanner.
 
-![](./static/integrated-pipeline/integrated-pipeline-security-tests.png)
+![](./static/your-first-pipeline/integrated-pipeline-security-tests.png)
 
 ## Congratulations!
 

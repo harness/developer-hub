@@ -1,7 +1,7 @@
 ---
 title: Create a standalone STO pipeline
 description: Set up a Pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.
-sidebar_position: 10
+sidebar_position: 15
 helpdocs_topic_id: yvy4pmt8bw
 helpdocs_category_id: 8nywcs2sa7
 helpdocs_is_private: false

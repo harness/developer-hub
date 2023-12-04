@@ -1,12 +1,12 @@
 ---
 title: Container image scans with Aqua Trivy
-sidebar_position: 3
+sidebar_position: 60
 description: Scan a codebase using Semgrep
-keywords: [STO, security, SAST, security, codebase, Semgrep]
+keywords: [STO, security, container, image, security, Trivy]
 # slug: /sto-pipelines/sast/semgrep
 ---
 
-This tutorial shows you how to scan your container images using [Semgrep](https://www.aquasec.com/products/trivy/), a popular open-source scanning tool. 
+This tutorial shows you how to scan your container images using [Aqua Trivy](https://www.aquasec.com/products/trivy/), a popular open-source scanning tool. 
 
 In this tutorial, you'll set up a simple [orchestration workflow](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) with two steps:
 
