@@ -13,7 +13,7 @@ Before you begin using Harness IDP, you should be familiar with the key concepts
 An Internal Developer Portal (IDP) improves the developer experience in an organization, reduces friction in the software delivery cycle and hides the infrastructure complexity for a developer.
 
 ## Golden Path
-The Golden Path is the ‘opinionated and supported’ path to ‘build something’(for example, build a backend service, put up a website, create a data pipeline, golden paths to production for new service onboarding)
+The Golden Path is the opinionated, well-supported and recommend path for build a new software within in an organization. For example, build a backend service, put up a website, create a data pipeline, golden paths to production for new service onboarding.
 
 ![](./static/Golden%20Paths%20Dark%20Theme.png)
 
