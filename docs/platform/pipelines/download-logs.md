@@ -104,9 +104,9 @@ curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT
 * `TOKEN`: [Harness API token](/docs/platform/automation/api/add-and-manage-api-keys)
 
 
-### Download logs link with vanity url
+### Download logs link with a vanity URL
 
-Currently the generated download link for logs.zip is wrapped around harness url eg- https://app.harness.io/storage/harness-download/path-to-your-log-key . However if you want to get the vanity URL link for the logs.zip you can whitelist the below ips in your account
+Currently, the generated download link for the `logs.zip` file is wrapped around a Harness URL, for example, `https://app.harness.io/storage/harness-download/<PATH_TO_YOUR_LOG_KEY>`. However, if you want the vanity URL link for the `logs.zip` file, you can add the IPs below to your account's allowlist.
 
 ```
 34.82.155.149
