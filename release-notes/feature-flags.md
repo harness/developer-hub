@@ -17,9 +17,29 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 
 
-### Latest - November 24th 2023
+### Latest - November 27th 2023
 
-### New features and enhancements
+##### New features and enhancements
+
+This release does not any new features or enhancements.
+
+##### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Ruby SDK
+
+Released Ruby SDK 1.2.0.
+ - The percentage rollout bucket by logic is now fixed to match Golang SDK.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### November 24th, 2023
+
+##### New features and enhancements
 
 Released Python SDK 1.3.0
  - The below requests now implement a retry mechanism of up to 10 retries on retryable errors:
@@ -32,11 +52,11 @@ Released Node.js SDK 1.4.0
  - Can now remediate build time CVEs.
  - Can now fall back to identifier if the `bucketBy` attribute is not found.
 
-### Early access features
+##### Early access features
 
 This release does not include early access features.
 
-### Fixed issues in the Python SDK
+##### Fixed issues in the Python SDK
 
  - Pip upgraded to 23.3.
  - Requests upgraded to 2.31.0.
@@ -47,11 +67,6 @@ This release does not include early access features.
  - Improved the logic to stop polling if streaming is enabled. Additionally, fixed an issue where the poller would stop and not make any more flag updates after encountering an exception during a request.
  - Logging to correctly indicate when a stream disconnects and the SDK falls back to polling.
  - Changed various verbose logs from info to debug.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### November 17, 2023
 

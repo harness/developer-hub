@@ -508,6 +508,18 @@ TF_VAR_alist='[1,2,3]'
 ```
 You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
+## Terraform Apply step output
+
+Terraform Apply step output is available after the Terraform Apply step has completed. The output can be exposed to other steps or resources in Harness.
+
+You can find the output in the Output area of the step. To use the output, copy the expression path to the output key as shown in the following image:
+
+![](static/terraform-apply-outputs.png)
+
+The expression is of the form `<+pipeline.stages.stage-provisioning.spec.execution.steps.TerraformApply_5.output.TEST_OUTPUT_NAME1>`
+
+When you use this expression in another step, the expression resolves to its value.
+
 ## Encrypt the Terraform Apply JSON outputs
 
 The **Encrypt json output** setting encrypts the Terraform JSON output as a Harness secret. Only Harness Secret Manager is supported.
@@ -586,6 +598,19 @@ This setting allows you to set the Terraform CLI options for Terraform commands 
 ## Skip Terraform refresh
 
 Terraform refresh command won't be running when this setting is selected.
+
+## Working directory cleanup
+Each Terraform step runs in a specific working directory on the delegate.
+
+The Terraform working directory is located at `/opt/harness-delegate/./terraform-working-dir/`.
+
+To that directory path, Harness adds additional directories that are named after the organization, account, project, and provisionerId (from the step) such that the final working directory is `/opt/harness-delegate/./terraform-working-dir/org-name/account-name/project-name/provisionerId/`.
+
+In this final working directory, Harness stores the Terraform configuration and all fetched files such as var-files and backend-config.
+
+Once the Terraform step execution is complete, Harness cleans up the main working directory `/opt/harness-delegate/./terraform-working-dir/`.
+
+If you generate any local resources on the delegate in the directory where Terraform configurations are located, those resources are also removed. If you need those resources, make sure to generate them outside the Terraform working directory.
 
 ## Advanced settings
 

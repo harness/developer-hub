@@ -52,7 +52,7 @@ It is good practice to set `fail_on_severity` in every scan step in an integrate
 2. Set **Fail on Severity** to **Critical**. 
 3. Select **Apply Changes**, save the updated pipeline, and run a new build with the **DEMO-001** branch.
 
-   ![](./static/sto-integrated-workflows-00.png)
+   ![](./static/integrated-pipeline/failed-on-severity-critical.png)
 
 The pipeline now fails because the Bandit step is now configured to fail on any critical vulnerability . The last log message in the Bandit step log is:
 ```
@@ -60,6 +60,17 @@ Exited with message: fail_on_severity is set to critical and that threshold was 
 ```
 
 ### Exemptions for specific issues
+
+```mdx-code-block
+import account_user_settings from './static/integrated-pipeline/go-to-account-user-settings.png'
+import return_to_project from './static/integrated-pipeline/switch-from-account-to-project.png'
+import confirm_secops_role from './static/integrated-pipeline/confirm-secops-role.png'
+import request_exemption from './static/integrated-pipeline/request-exemption.png'
+import request_exemption_details from './static/integrated-pipeline/request-exemption-details.png'
+import approve_exemption_requests from './static/integrated-pipeline/approve-exemption-requests.png'
+import exempted_button_in_security_tests from './static/integrated-pipeline/exempted-button-in-security-tests.png'
+import cancel_exemption_requests from './static/integrated-pipeline/cancel-exemption-requests.png'
+```
 
 <details open><summary> Key concept: Exemptions, requests, and approvals</summary>  
 
@@ -76,49 +87,80 @@ You can exempt known issues from  `fail_on_severity` so that they don't stop the
 In this section, you'll create an exemption as a developer and then approve it as a SecOps user. (In many real-world scenarios, two separate people will be performing the workflow.)
 
 1. Make sure that you have the SecOps role assigned to yourself:
-	1. Select **Account Settings** (left menu) > **Access Control**.
+	1. Select the account link (left-most breadcrumb at the top). Then go to **Account Settings** (left menu) and select **Access Control**.
+
+      ```mdx-code-block
+      <img src={account_user_settings} alt="Go to account user settings" height="40%" width="40%" />
+      ```
+
 	2. In the **Users** table, select your user profile.
-	3. Under Role Bindings, select **+Role**.
+	3. Under Role Bindings, select **+Manage Role**.
 	4. Make sure that you have the **Security Testing SecOps** role assigned to yourself.
   
-     ![](./static/sto-integrated-workflows-01.png)
-     
-2. Go to the Security Tests page for the build you ran previously: In the pipeline Studio, select **Execution History** (top right) and then select the last successful build you ran before the failed build.  
+      ```mdx-code-block
+      <img src={confirm_secops_role} alt="Return to project" height="50%" width="50%" />
+      ```
 
-  In the following step, you will create an exemption for each of the two critical issues found: `subprocess_popen_with_shell_equals_true` (only in the current scan) and `hashlib` (common to the baseline scan).
+2. Go back to your project: Select your STO account in the left menu, then select **Project**, and then select the project with your STO pipeline.
+
+      ```mdx-code-block
+      <img src={return_to_project} alt="Return to project" height="60%" width="60%" />
+      ```
+     
+3. In the left navigation, select **Executions** and then select the last successful build you ran _before_ the failed build.  
+
+  In the following step, you'll create an exemption for each of the two critical issues found: `subprocess_popen_with_shell_equals_true` (only in the current scan) and `hashlib` (common to the baseline scan).
 
 3. In the **Security Tests** tab, do the following steps for each critical issue:
 	1. Select the critical issue in the issues table (bottom left) to open **Issue Details**.
 	2. Select **Request Exemption**.
   
-     ![](./static/sto-integrated-workflows-02.png)
+      ```mdx-code-block
+      <img src={request_exemption} alt="Request exemption" height="60%" width="60%" />
+      ```
      
 	3. In **Request Exemption for Issue**, configure the exemption request as follows:
-		1. Where do you want this issue to be exempted? **This pipeline** 
-		2. For how long? **1 Day** (*if available*)
-		3. Reason this issue should be exempted: **Other**
-        4. Further describe the reason this issue should be exempted: **Tutorial example pipeline, not for use in QA or Prod environments**
-		4. Select **Create Request**.
+		 
+      1. Where do you want this issue to be exempted? **This pipeline** 
+		
+      2. For how long? **7 Days** 
+		
+      3. Reason this issue should be exempted: **Other**
     
-       ![](./static/sto-integrated-workflows-03.png)
+      4. Further describe the reason this issue should be exempted: **Tutorial example pipeline, not for use in QA or Prod environments**
+		
+      5. Select **Create Request**.
        
-4. Select **Security Tests** (left menu) and then **Exemptions** (second-from-left menu).
+        ```mdx-code-block
+         <img src={request_exemption_details} alt="Request exemption details" height="60%" width="60%" />
+        ```
+       
+       
+4. Select **Exemptions** in the left menu.
 
-5. In the Security Review page, select the "thumbs-up" buttons to approve both exemptions.
+5. In the Security Review page, select the "thumbs-up" buttons to approve both exemptions. These exemptions now move from **Pending** to **Approved**.
 
-   ![](./static/sto-integrated-workflows-04.png)
+   ```mdx-code-block
+   <img src={approve_exemption_requests} alt="Approve exemption requests" height="60%" width="60%" />
+   ```
+
    
 6. Go back to your pipeline and run another build with the **DEMO-001** branch. When the build finishes, go to the **Security Tests** page.
 
 7. Select **Exempted** (far right, under **Security Executions**). Note that this button, like the Critical, High, and other buttons, acts as a toggle to show and hide specific issues in the issues table. If you select and unselect **Exempted**, the exempted issues switch between visible and hidden. 
 
-   ![](./static/sto-integrated-workflows-05.png)
+   ```mdx-code-block
+   <img src={exempted_button_in_security_tests} alt="Exempted button in Security Tests tab" height="60%" width="60%" />
+   ```
 
 
-9. Go to **Security Tests** > **Exemptions**. Then select **Approved** to show the Ignore rules you created and approved.
-10. Select the Delete (**X**) buttons on the right to delete both rules.
+9. Select **Exemptions** in the left menu. Then select **Approved** to show the exemptions you created and approved.
+10. Select the Delete (**X**) buttons on the right to delete both exemptions.
 
-    ![](./static/sto-integrated-workflows-07.png)
+   ```mdx-code-block
+   <img src={cancel_exemption_requests} alt="Cancel exemption requests" height="60%" width="60%" />
+   ```
+
 
 ### Next steps
 
@@ -170,7 +212,7 @@ You can implement [Failure Strategies](/docs/platform/pipelines/define-a-failure
 
 The following pipeline extends the example workflow described above. After it scans the repo, it builds a container image, scans the image, and fails the pipeline if the image scan fails. The [YAML](#integrated-workflow-yaml) of this pipeline is provided below.
 
-![](./static/sto-integrated-workflows-08.png)
+![](./static/integrated-pipeline/integrated-pipeline-in-ui.png)
 
 This pipeline works as follows:
 
@@ -187,7 +229,7 @@ This pipeline works as follows:
 
 After the pipeline executes, you can view all issues from all scanners in the **Security Tests** tab, and also filter the issue list by scanner.
 
-![](./static/sto-integrated-workflows-09.png)
+![](./static/integrated-pipeline/integrated-pipeline-security-tests.png)
 
 
 ### Congratulations!

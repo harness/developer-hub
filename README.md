@@ -6,6 +6,7 @@
 ![CCM](static/img/icon_ccm.svg)
 ![SRM](static/img/icon_srm.svg)
 ![STO](static/img/icon_sto.svg)
+![IACM](static/img/icon_iacm.svg)
 ![CE](static/img/icon_ce.svg)
 ![SEI](static/img/icon_sei.svg)
 ![CET](static/img/icon_cet.svg)

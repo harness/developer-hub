@@ -459,13 +459,21 @@ Used to [enable test splitting for TI](./ti-test-splitting.md).
 
 ### Pre-Command
 
-You can enter commands for setting up the environment before running the tests.
+You can enter commands for setting up the environment before running the tests, for example:
+
+```yaml
+                    preCommand: mvn clean package dependency:copy-dependencies
+```
 
 If a script is supplied here, select the corresponding **Shell** option.
 
 ### Post-Command
 
-You can enter commands used for cleaning up the environment after running the tests. For example, `sleep 600` suspends the process for 600 seconds.
+You can enter commands used for cleaning up the environment after running the test, for example:
+
+```yaml
+                    postCommand: mvn package -DskipTests
+```
 
 If a script is supplied here, select the corresponding **Shell** option.
 

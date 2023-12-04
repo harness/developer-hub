@@ -408,6 +408,15 @@ Yes. You can add a **Terraform Destroy** step to remove any provisioned infrast
 
 See [Remove provisioned infrastructure with the Terraform Destroy step](../continuous-delivery/cd-infrastructure/terraform-infra/remove-provisioned-infra-with-terraform-destroy.md).
 
+### GitOps
+
+#### Can I use Harness GitOps images from a local registry?
+
+Yes. Pulling images from your private registry is possible and can be done by pulling the publicly available images to your private registry and then updating the GitOPS Agent YAML to use the private registry.
+
+#### Can I automate the provisioning of the GitOps Agent without creating the agent in the UI first?
+Yes. You can use the API or Terraform which will also dynamically generate the YAML that can be applied.
+
 ### Harness Configure as Code
 
 For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
@@ -889,6 +898,4 @@ See [Fixed Values, runtime inputs, and expressions](/docs/platform/variables-and
 Some customer shave raised concernes about errors while trying to evaluable expressions (example: `<+pipeline.sequenceId>`) while similiar expressions do get evaluated. In this case the concatenation in the expression `/tmp/spe/<+pipeline.sequenceId>` is not working because a part of expression `<+pipeline.sequenceId>` is integer so the concatenation with `/tmp/spec/` is throwing error because for concat, both the values should be string only. 
 
 So we can invoke the `toString()` on the integer value then our expression should work. So the final expression would be `/tmp/spe/<+pipeline.sequenceId.toString()>`. 
-
-Please also reach out to Harness Support and or your Customer Success Manager to enable the Feature Flag: `PIE_EXPRESSION_CONCATENATION`
 

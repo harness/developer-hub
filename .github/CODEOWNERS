@@ -68,6 +68,9 @@
 # FAQ Docs
 /docs/faqs/ @michaelcretzman
 
+# Cloud Operations Docs
+/docs/harness-cloud-operations/ @suryabhagvat
+
 # Release Notes
 
 #CD Release Notes

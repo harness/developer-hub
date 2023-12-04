@@ -22,8 +22,8 @@ The following issues can occur when logging in to Harness.
 
 You are logged out of your Harness Manager session automatically, forcing you to log back in.
 
-:::note
-If you log out of Harness Manager in one browser tab, Harness might log you out of all tabs.Typically, the solution is to clear local storage.
+:::info note
+If you log out of Harness Manager in one browser tab, Harness might log you out of all tabs. Typically, the solution is to clear local storage.
 :::
 
 #### Troubleshooting steps
@@ -117,7 +117,7 @@ If the delegate can't connect to Harness Manager, try the following:
 
 If you have incorrectly used the same Kubernetes delegate YAML file for multiple delegates, you will see delegate successes followed by failures in the delegate logs. This sequence is the result of one delegate succeeding in its operation and the same operation failing with the second delegate.
 
-:::note
+:::info note
 To avoid any delegate conflicts, always use a new Kubernetes delegate YAML download for each delegate you install, and a unique name.
 :::
 
@@ -143,7 +143,7 @@ Add more space or turn on autoscaling, wait for the cluster to restart, reconnec
 
 `$ kubectl apply -f harness-delegate.yaml`
 
-For more information, see [Autoscaling deployments](https://cloud.google.com/kubernetes-engine/docs/how-to/scaling-apps#autoscaling_deployments) from Google.
+For more information, go to [Autoscaling deployments](https://cloud.google.com/kubernetes-engine/docs/how-to/scaling-apps#autoscaling_deployments) from Google.
 
 ### Deleting a Kubernetes delegate
 
@@ -258,7 +258,7 @@ Ensure that one of the IAM roles assigned to the user account used for AWS conne
 
 One possible cause of this error is if you are using a personal access token (PAT) for your GitHub connector and your GitHub organization uses SAML single sign-on (SSO).
 
-To use a personal access token with a GitHub organization that uses SAML single sign-on (SSO), you must first authorize the token. See [Authorizing a personal access token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on) from GitHub.
+To use a personal access token with a GitHub organization that uses SAML single sign-on (SSO), you must first authorize the token. Go to [Authorizing a personal access token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on) from GitHub.
 
 
 ```
@@ -266,7 +266,7 @@ org.eclipse.jgit.api.errors.TransportException: https://github.com/*******/*****
 ```
 ## Naming conventions
 
-:::note
+:::info note
 Typically, names for Harness entities can only contain alphanumerics, \_ and -.
 :::
 
@@ -330,7 +330,7 @@ Error messages of the form `User does not have "Deployment: execute" permission`
 
 ![](./static/troubleshooting-nextgen-01.png)
 
-To resolve this, see [Manage roles](../platform/role-based-access-control/add-manage-roles).
+To resolve this, go to [Manage roles](../platform/role-based-access-control/add-manage-roles).
 
 ## Continuous delivery
 
@@ -394,7 +394,7 @@ The following problems can occur when developing and deploying to Kubernetes.
 
 Every Harness deployment creates a new release with an incrementally increasing number. Release history is stored in the Kubernetes cluster in a ConfigMap. This ConfigMap is essential for release tracking, versioning, and rollback.
 
-See [Kubernetes releases and versioning](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning.md).
+Go to [Kubernetes releases and versioning](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning.md).
 
 If the ConfigMap is edited using kubectl or another tool between deployments future deployments often fail.
 
@@ -406,11 +406,11 @@ The release name you enter in the infrastructure definition **Release name** is 
 
 **Do not create a ConfigMap that uses the same name as the release name.** Your ConfigMap will override the Harness internal ConfigMap and cause a NullPointerException.
 
-See [Define your kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md).
+Go to [Define your kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md).
 
 ### The server doesn't have a resource type "deployments"
 
-When you attempt to connect to the Kubernetes cluster via **GCP**, the Kubernetes cluster must have **Basic authentication enabled** or the connection will fail. For more information, see [Control plane security](https://cloud.google.com/kubernetes-engine/docs/concepts/security-overview#control_plane_security) from GCP. From GCP:
+When you attempt to connect to the Kubernetes cluster via **GCP**, the Kubernetes cluster must have **Basic authentication enabled** or the connection will fail. For more information, go to [Control plane security](https://cloud.google.com/kubernetes-engine/docs/concepts/security-overview#control_plane_security) from GCP. From GCP:
 
 You can handle cluster authentication in Google Kubernetes Engine by using Cloud IAM as the identity provider. However, legacy username-and-password-based authentication is enabled by default in Google Kubernetes Engine. For enhanced authentication security, you should ensure that you have disabled Basic Authentication by setting an empty username and password for the MasterAuth configuration. In the same configuration, you can also disable the client certificate which ensures that you have one less key to think about when locking down access to your cluster.
 
@@ -469,7 +469,7 @@ ConstructorException: Cannot create property=spec for JavaBean=class V1StatefulS
 ```
 Ensure that your YAML specification is formed correctly.
 
-For steps on how to add a security context for a pod or container, see [Configure a security context for a pod or container](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) from Kubernetes.
+For steps on how to add a security context for a pod or container, go to [Configure a security context for a pod or container](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) from Kubernetes.
 
 Here is an example:
 
@@ -505,8 +505,8 @@ Use a longer timeout for the Terraform Apply step.
 
 When the Terraform Apply times out, Terraform locks the Terraform state file. A Terraform [Force Unlock](https://www.terraform.io/docs/language/state/locking.html#force-unlock) needs to be performed.
 
-:::note
-Locking and unlocking of tfstate files is handled by Terraform automatically. You can disable state locking for most commands with the `-lock` flag but it is not recommended. See [State locking](https://www.terraform.io/docs/language/state/locking.html) from Terraform.
+:::info note
+Locking and unlocking of tfstate files is handled by Terraform automatically. You can disable state locking for most commands with the `-lock` flag but it is not recommended. Go to [State locking](https://www.terraform.io/docs/language/state/locking.html) from Terraform.
 :::
 
 After timeout, no resources may be added to the state file. A manual cleanup of any resources created must be performed as well.
@@ -571,13 +571,13 @@ If the email address used in Harness is different from the email address in the 
 
 Make sure the email address used in Harness matches the email address in the Azure app.
 
-For more information about SAML SSO configuration with Azure, see [Single sign-on (SSO) with SAML](../platform/authentication/single-sign-on-saml.md).
+For more information about SAML SSO configuration with Azure, go to [Single sign-on (SSO) with SAML](../platform/authentication/single-sign-on-saml.md).
 
 ## Shell scripts
 
 This section covers common problems experienced when using a [Shell script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step.
 
-### FileNotFoundExeption inside shell script execution task
+### FileNotFoundException inside shell script execution task
 
 This error happens when you are publishing output and your Shell Script step exits early from its script.
 
@@ -609,3 +609,34 @@ This error happens when you are adding YAML that exceeds the Harness limit of 3M
 
 To fix this error, you will need to reduce the size of the pipeline or template.
 
+## Connectors
+
+This section covers common problems experienced when using the [Connectors](/docs/category/connectors).
+
+### Connection test failures
+
+When you select **Connection Test** on the Connector Details page, at times, you might encounter a connection failure.
+
+![](./static/troubleshooting-nextgen-06.png)
+
+You can troubleshoot the issues using connector validation logs available at runtime.
+
+If the `executeOnDelegate` property is set to true, a **View Delegate Tasks Logs** option is available.
+
+![](./static/troubleshooting-nextgen-07.png)
+
+Selecting this option opens the **Delegate Task Logs** dialog that displays Google StackDriver logs for the `taskId`.
+
+![](./static/troubleshooting-nextgen-05.png)
+
+:::info note
+Some steps, such as the CI init step, do not return delegate information in the format required by the API schema, and logs are not available for these steps.
+
+:::
+
+You can expand the rows to view the complete JSON object, and you can also scroll horizontally to view the complete error message. This way, you can see the full error log and troubleshoot the connector issue effectively.
+
+:::info note
+This feature is not available for Harness Self-Managed Enterprise Edition.
+
+:::

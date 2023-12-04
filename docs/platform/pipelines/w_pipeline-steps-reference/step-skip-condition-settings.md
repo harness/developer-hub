@@ -129,6 +129,4 @@ Conditional execution settings can be defined as runtime inputs in pipelines and
 
 Here's a video that explains how to define conditional execution as a runtime input:
 
-<!-- Video:
-https://harness-24.wistia.com/medias/5w053wtla8-->
 <docvideo src="https://harness-24.wistia.com/medias/5w053wtla8" />
