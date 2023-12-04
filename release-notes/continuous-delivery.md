@@ -51,55 +51,46 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## December 2023
 
-### Version 817xx
+### Version 81709
 
 #### New features and enhancements
 
-- Ability to configure webhooks at all scopes (CDS-83878)
+- Configure bidirectional sync for Git Experience at all scopes (CDS-83878)
 
-  Earlier, you could configure webhooks only at the account scope. Now, you can also configure them at the organization and project scopes. <!-- Good PRNS from Vikrant Gupta. Reworded a little and added to Jira for his review. Waiting. -->
+  Earlier, you could configure bidirectional sync for Harness Git Experience by configuring webhooks only at the account scope. Now, you can also configure such webhooks at the organization and project scopes. 
 
-- New setting for freeze window notifications (CDS-82272, ZD-52835)
+- Send freeze window notifications when a freeze window is enabled (CDS-82272, ZD-52835)
 
-- You can now configure notifications for the period during which a freeze window is enabled. To do so, when configuring a freeze window notification, enable the setting `Freeze window is enabled`. 
+  You can now use the **Freeze window is enabled** setting (`OnEnableFreezeWindow` in YAML) to send notifications when a freeze window is enabled. This setting is in contrast to the existing **Freeze window is enabled and active** setting (`FreezeWindowEnabled` in YAML), which sends notifications at the start time of a freeze window that is enabled. 
 
-  The corresponding value for event type in the YAML configuration is `OnEnableFreezeWindow`, as shown in the following example:
-  
-  ```yaml
-    notificationRules:
-    - name: notif1
-      identifier: notif1
-      events:
-        - type: OnEnableFreezeWindow
-  ``` 
-  <!-- Comment on CDS-82272: Have scheduled a meeting with Rishabh Gupta for the morn of Dec 1. Might tweak this description a little and then also update the docs in one fell swoop. -->
+  For information about how to send freeze window notifications when a freeze window is enabled, go to [Freeze deployments](/docs/continuous-delivery/manage-deployments/deployment-freeze).
 
 #### Fixed issues
 
 
 - When creating a Kubernetes Apply step template in Template Studio, if you click **+ Add Manifest**, the page breaks and the following message is displayed: "Something went wrong". At that point, you cannot go back to the previous page; you can only close the browser tab. (CDS-85013, ZD-54137)
 
-  This issue has been fixed. <!-- Reviewed and approved by stanislav.litvinov through Slack. -->
+  This issue has been fixed.
 
 - When a pipeline is stored in Git, expressions for selecting connectors do not work. When you attempt to select a manifest version that relies on such an expression to be resolved, the following message is displayed: "Invalid format of YAML payload: HTTP Error Status (400 - Invalid Format) received. Invalid request: Error while retrieving pipeline [pipeline_name]: Invalid request: Principal cannot be null" (CDS-84568, ZD-53864)
 
-  This issue has been fixed. <!-- Reviewed and approved by Tarun Uba in Jira. -->
+  This issue has been fixed.
 
 - Harness did not evaluate expressions that begin with `<+pipeline.stage>` when they were used in ASG infrastructure. Therefore, you could not use those expressions to identify, for example, the region or the base ASG name. (CDS-84389)
 
-  This issue has been fixed, and such expressions are evaluated correctly. <!-- Good PRNS from vitalie safronovici. Reworded a little and added to Jira for his review. Waiting. -->
+  This issue has been fixed, and such expressions are evaluated correctly.
 
-- The polling interval of 15 sec for a running Verify step did not give you enough time to review event details or perform an action on an event, such as ignore an error. 
+- The polling interval of 15 sec for a running Verify step did not give you enough time to review event details or perform an action on an event, such as ignore an error. (CDS-83975, ZD-53492)
 
-  This issue has been fixed. The polling interval has been increased to 90 seconds and is expected to give you enough time to review events or act on them. (CDS-83975, ZD-53492) <!-- Reviewed and approved by Pranesh TG in Jira. -->
+  This issue has been fixed. The polling interval has been increased to 90 seconds and is expected to give you enough time to review events or act on them. 
 
 - Earlier, if a Helm chart was invalid for any reason (for example, if it had an invalid folder structure or invalid YAML file) and Harness could not render the chart with the `helm template` command, the execution failed and the reason for failure was not always clear. (CDS-83828)
 
-  Harness has improved the error handling in this scenario. If the Helm chart is invalid, Harness prints a warning about being unable to render it and continues to execute, relying on the `helm install` and `helm deploy` commands to throw an exception instead. <!-- PRNS draft provided in a comment by Aleksa Buha. Reworded and added back in Jira for his review. Waiting. -->
+  Harness has improved the error handling in this scenario. If the Helm chart is invalid, Harness prints a warning about being unable to render it and continues to execute, relying on the `helm install` and `helm deploy` commands to throw an exception instead. 
 
 - The Continuous Integration step library listed step categories in the following order: Security Tests, Artifacts, Builds, and Security. This order was inappropriate for CI stages and required you to scroll to find CI steps. (CDS-79655)
 
-  This issue has been fixed. The order of step categories is now Builds, Artifacts, Security, and then Security Tests. <!-- The PRNS field decsribed the fix. Reworded and added to Jira for review by Ayush Tiwari. Waiting. -->
+  This issue has been fixed. The order of step categories is now Builds, Artifacts, Security, and then Security Tests. 
 
 ## November 2023
 
