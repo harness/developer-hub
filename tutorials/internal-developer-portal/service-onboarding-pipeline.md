@@ -324,6 +324,12 @@ token:
   ui:field: HarnessAuthToken
 ```
 
+Also the token input is used as a paremeter under `steps` as `apikey`
+
+```yaml
+apikey: ${{ parameters.token }}
+```
+
 This is a custom component we created to authenticate the call to execute the pipeline on the basis of the logged-in user's credentials.
 
 ### Action to trigger the pipeline
