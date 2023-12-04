@@ -534,6 +534,18 @@ This fault determines the resilience of an application when ECS tasks unexpected
 
 <FaultDetailsCard category="aws">
 
+### ECS task scale
+
+ECS task scale is an AWS fault that injects chaos to scale (up or down) the ECS tasks based on the services or task replica ID and checks the task availability. This fault makes the tasks unreachable in the application.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+This fault makes the tasks unreachable when all the tasks in the service are scaled down in the application.
+</accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
 ### ECS container HTTP latency
 
 ECS container HTTP latency induces HTTP chaos on containers running in an Amazon ECS (Elastic Container Service) task. This fault introduces latency in the HTTP responses of containers of a specific service using a proxy server, simulating delays in network connectivity or slow responses from the dependent services.
