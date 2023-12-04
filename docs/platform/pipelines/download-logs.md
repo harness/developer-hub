@@ -112,3 +112,5 @@ Currently, the generated download link for the `logs.zip` file is wrapped around
 34.82.155.149
 34.168.179.66
 ```
+
+For more information, go to [Allowlist Harness domains and IPs](/docs/platform/references/allowlist-harness-domains-and-ips/).
