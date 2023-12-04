@@ -47,6 +47,13 @@ export const moduleList: CardItem[] = [
     link: "docs/security-testing-orchestration",
   },
   {
+    title: "Infrastructure as Code Management",
+    module: MODULES.iacm,
+    // icon: "img/icon_iacm.svg",
+    description: <>Manage your Infrastructure as Code End-to-End.</>,
+    link: "docs/infrastructure-as-code-management",
+  },
+  {
     title: "Chaos Engineering",
     module: MODULES.ce,
     // icon: "img/icon_ce.svg",

@@ -203,10 +203,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables users to select Azure WebApps in a drop down for slot deployments. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>CD_AI_ENHANCED_REMEDIATIONS</td>
-        <td>Enables AIDA for CD steps to provide error handling support for CD AIDA.</td>
-    </tr>
-    <tr>
         <td>CDP_AWS_SAM</td>
         <td>Enables <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments">AWS SAM deployments</a> <b>This feature is in Public Preview.</b></td>
     </tr>
@@ -223,10 +219,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial">fetching and listing of WebApp names and slots</a>. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>CDS_SERVERLESS_V2</td>
-        <td>Enables *building* and packaging serverless packages in Harness CD. For Serverless deployments, this feature spins up an environment for the Serverless package, validates the Serverless CloudFormation template, and then performs a Serverless deploy, all in the ephemeral environment. <b>This feature is in Public Preview.</b> </td>
-    </tr>
-    <tr>
         <td>CDS_SUPPORT_EXPRESSION_REMOTE
         _TERRAFORM_VAR_FILES_NG</td>
         <td>Enables Harness expressions in remote Terraform var files. <b>This feature is in Beta.</b> </td>
@@ -234,10 +226,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDS_ENABLE_LOAD_FROM_CACHE_FOR_RETRY_FORM</td>
         <td>Enables a load from cache option on pipeline execution retry form. <b>This feature is in Beta.</b> </td>
-    </tr>
-    <tr>
-        <td>CDS_GITHUB_APP_AUTHENTICATION</td>
-        <td>Enables Github App authentication for users to fetch files and perform <a href="/docs/platform/connectors/code-repositories/git-hub-app-support">Harness Git Experience operations</a>. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_ENV_PROPAGATION</td>
@@ -250,11 +238,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDS_RECONFIGURE_JIRA_APPROVAL_TIMEOUT</td>
         <td>Reduces timeout for Jira from 5 minutes to 1 minute and allows pausing of approval. <b>This feature is in Beta.</b></td>
-    </tr>
-    <tr>
-        <td>CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG</td>
-        <td>Enables users to configure <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#using-multiple-helm-charts-in-one-harness-service">multiple Helm charts in a Harness service</a>
-, treating the Helm Charts similar to artifacts. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_HELM_FETCH_CHART_METADATA_NG</td>
@@ -289,20 +272,12 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables exporting variables without evaluating them in the Command step. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
-        <td>CDS_TERRAGRUNT_CLI_OPTIONS_NG</td>
-        <td>Enables CLI options for Terragrunt steps. <b>This feature is in Public Preview.</b> </td>
-    </tr>
-    <tr>
         <td>CD_CONTAINER_STEP_DELEGATE_SELECTOR</td>
         <td>Makes the Container step to respect the delegate selector configured at the pipeline. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
         <td>CDS_REMOVE_TIME_BUCKET_GAPFILL_QUERY</td>
         <td>Removes the usage of time bucket gapfill from CD. <b>This feature is in Beta.</b> </td>
-    </tr>
-    <tr>
-        <td>GITOPS_UPDATE_APP_STEP</td>
-        <td>Enables the GitOps pipeline Update GitOps App step. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_MULTI_SERVICE_PROPAGATION</td>
@@ -352,9 +327,5 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDS_NG_BARRIER_STEPS_WITHIN_LOOPING_STRATEGIES</td>
         <td>Support Barrier steps within looping strategies. <b>This feature is under development, and will be Beta soon.</b> </td>
-    </tr>
-    <tr>
-        <td>CDS_TF_TG_SKIP_ERROR_LOGS_COLORING</td>
-        <td>Disable the coloring of execution logs that are coming form standart error output of process executor for Terraform and Terragrunt steps. <b>This feature is in Beta.</b> </td>
     </tr>
 </table>

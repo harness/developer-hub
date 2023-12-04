@@ -408,6 +408,15 @@ Yes. You can add a **Terraform Destroy** step to remove any provisioned infrast
 
 See [Remove provisioned infrastructure with the Terraform Destroy step](../continuous-delivery/cd-infrastructure/terraform-infra/remove-provisioned-infra-with-terraform-destroy.md).
 
+### GitOps
+
+#### Can I use Harness GitOps images from a local registry?
+
+Yes. Pulling images from your private registry is possible and can be done by pulling the publicly available images to your private registry and then updating the GitOPS Agent YAML to use the private registry.
+
+#### Can I automate the provisioning of the GitOps Agent without creating the agent in the UI first?
+Yes. You can use the API or Terraform which will also dynamically generate the YAML that can be applied.
+
 ### Harness Configure as Code
 
 For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).

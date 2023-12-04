@@ -14,7 +14,7 @@ You can use the Dry Run step to check your manifests before deployment. You can 
 You can reference the resolved manifest from the Dry Run step in subsequent steps using a Harness variable expression.
 
 ```
-<+pipeline.stages.[Stage_Id].spec.execution.steps.[Step_Id].k8s.ManifestDryRun>
+<+pipeline.stages.[Stage_Id].spec.execution.steps.[Step_Id].k8s.manifestDryRun>
 ```
 
 :::note
@@ -112,7 +112,7 @@ Done.
 You can reference the resolved dry run manifest from the Dry Run step using this Harness expression:
 
 ```
-<+pipeline.stages.[Stage_Id].spec.execution.steps.[Step_Id].k8s.ManifestDryRun>
+<+pipeline.stages.[Stage_Id].spec.execution.steps.[Step_Id].k8s.manifestDryRun>
 ```
 
 For example, if the stage Id is `Deploy` and the Dry Run step Id is `Dry_Run` the expression would be:
