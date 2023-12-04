@@ -32,12 +32,12 @@ Linux disk fill:
   <tr>
     <td> fillPath </td>
     <td> System path to fill. </td>
-    <td> Path to a valid directory. For more information, go to <a href= "fill-path">fill path.</a></td>
+    <td> Path to a valid directory. For more information, go to <a href= "#fill-path">fill path.</a></td>
   </tr>
   <tr>
     <td> fillStorage </td>
     <td> Amount of storage to be filled. </td>
-    <td> Can be specified in bytes (b/B), kilobytes (k/K), megabytes (m/M), gigabytes (g/G), or percentage (%) of available storage. If no unit is provided, the value is assumed to be in bytes. Example values: <code>30m</code>, <code>1G</code>, <code>35%</code>, etc. Default: 50%. For more information, go to <a href= "fill-storage">fill storage.</a></td>
+    <td> Can be specified in bytes (b/B), kilobytes (k/K), megabytes (m/M), gigabytes (g/G), or percentage (%) of available storage. If no unit is provided, the value is assumed to be in bytes. Example values: <code>30m</code>, <code>1G</code>, <code>35%</code>, etc. Default: 50%. For more information, go to <a href= "#fill-storage">fill storage.</a></td>
   </tr>
   <tr>
     <td> dataBlockSize </td>

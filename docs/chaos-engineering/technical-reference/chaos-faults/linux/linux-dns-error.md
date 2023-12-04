@@ -35,7 +35,7 @@ Linux DNS error injects chaos to disrupt the DNS resolution on a Linux machine.
   <tr>
     <td> matchScheme </td>
     <td> Determines whether the DNS query has to exactly match one of the targets or can have any of the targets as substring. It can be <code>exact</code> or <code>substring</code>. </td>
-    <td> If not provided, it is set to <code> exact </code>. For more information, go to <a href= "match-scheme">match scheme.</a> </td>
+    <td> If not provided, it is set to <code> exact </code>. For more information, go to <a href= "#match-scheme">match scheme.</a> </td>
   </tr>
   <tr>
     <td> upstreamServer </td>
