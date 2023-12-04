@@ -102,3 +102,13 @@ curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT
    * `STAGE_ID`: The identifier of the stage that has the step that you want to get logs for.
    * `STEP_ID`: The identifier of the step that you want to get logs for.
 * `TOKEN`: [Harness API token](/docs/platform/automation/api/add-and-manage-api-keys)
+
+
+### Download logs link with vanity url
+
+Currently the generated download link for logs.zip is wrapped around harness url eg- https://app.harness.io/storage/harness-download/path-to-your-log-key . However if you want to get the vanity URL link for the logs.zip you can whitelist the below ips in your account
+
+```
+34.82.155.149
+34.168.179.66
+```
