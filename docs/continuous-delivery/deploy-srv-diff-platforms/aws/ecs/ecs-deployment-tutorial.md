@@ -1261,6 +1261,39 @@ Lastly, the new ECS service is tagged with `BG_VERSION`, `BLUE`.
 
 By default, the previous service is downsized to 0. The service is downsized, but not deleted. If the older service needs to be brought back up again, it is still available.
 
+#### ECS Blue Green Service Validation
+
+:::note
+
+Currently, ECS Blue Green Service Validation is behind the feature flag `CDS_ECS_BG_VALIDATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+ This flag enables some conditions that Harness will execute before the deployment. Before deployment, Harness decides ECS Blue &Green Service on the basis of the target group and updates tags accordingly. Then start deployment.
+
+ **Blue Green Service Scenarios**
+
+Scenario 1: When the Prod target group and stage target group are different.
+
+```
+Blue Service = Service version which is attached with prod target group. Update tag as blue.
+Green Service = Service version which is attached with stage target group. Update tag as green.
+```
+
+Scenario 2: When the Prod target group and stage target group are the same
+
+```
+Blue Service = Service version that is attached to the prod target group and has running tasks. Update tag as blue.
+Green Service = Service version that is attached to the prod target group and has zero/fewer running tasks. Update tag as green.
+```
+
+ **Validation Behaviors**
+ 
+- If the validations for the Blue and Green ECS Service fail we will abort the deployment and the user will need to fix it in the AWS Console by navigating to that ECS service and resetting the service.
+
+- If a user borts the deployment, the execution will not be complete. During the next deployment, users will need to fix the configuration by navigating to the AWS Console and resetting the ECS service.
+  
+
 ### ECS Rollbacks
 
 When an ECS deployment fails, the service tasks it was deploying are scaled down to 0.
