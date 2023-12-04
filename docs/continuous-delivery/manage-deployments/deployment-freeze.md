@@ -245,6 +245,7 @@ You can notify Harness users and people outside of your Harness account using fr
 
 You can notify users of the following freeze window events:
 
+- Freeze window is enabled. The notification is sent when you enable the freeze window.
 - Freeze window is enabled and active. The notification is sent at the deployment freeze's configured start time provided that the freeze window is enabled.
 - Deployments are rejected due to freeze window. This includes any trigger invocations that are rejected due to a freeze window.
   
@@ -288,6 +289,7 @@ To enable notifications, do the following:
       identifier: example
       events:
         - type: FreezeWindowEnabled
+        - type: OnEnableFreezeWindow
         - type: DeploymentRejectedDueToFreeze
         - type: TriggerInvocationRejectedDueToFreeze
       notificationMethod:
