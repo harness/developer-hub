@@ -6,6 +6,14 @@ sidebar_position: 10
 
 This tutorial shows you how to use the Harness Security Testing Orchestration (STO) module to perform code security scanning in a Harness pipeline. You'll set up a pipeline with one scanner, run scans, analyze the results, and learn about the key features of STO.
 
+:::important prerequisites
+
+- A Harness account and STO module license.
+- You need to have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned to your user profile.
+- You also need a GitHub account and a [connector](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-a-codebase-connector) to your Git service provider. 
+  This tutorial uses an [example codebase on GitHub](https://github.com/williamwissemann/dvpwa) that contains known vulnerabilities. 
+:::
+
 
 ## Objectives
 
@@ -18,88 +26,81 @@ You'll learn how to:
 5. Request an exemption ("ignore rule") for a specific issue.
 6. Approve the excemption. Once approved, the exemption won't fail the pipeline even if it equals or exceeds the severity threshold.
 
-## Before you begin
-
-You must perform all the required steps in [Set Up Harness for STO](/docs/security-testing-orchestration/get-started/onboarding-guide). This topic describes how to do the following:
-
-1. Add the necessary user roles for your developers and security personnel.
-2. Set up your build infrastructure.
-3. Create connectors to your Git and Docker Hub repos.
-4. Create a pipeline with a Bandit step that scans a Python repository with known vulnerabilities.
-
-You will use a clone of this pipeline in these tutorials.
-
-<!-- 
-<details open><summary> Review: ingestion workflows</summary>
-
-```mdx-code-block
-import StoSupportedMethods from '/docs/security-testing-orchestration/sto-techref-category/shared/_sto-supported-methods.md';
-```
-
-<StoSupportedMethods />
-
-</details>
-
--->
-
 <details open><summary> Review: what's supported in Harness STO</summary>
 
 Go to [What's supported in Harness STO](/docs/security-testing-orchestration/whats-supported) for information about all supported STO features, infrastructures, and third-party scanners. 
 
 </details>
 
+
 ## Developer workflow
 
 You're a developer, working in various development branches and merging your code updates. You want to make sure you don't introduce any new vulnerabilities when you merge your code into a target branch. Using STO, you can scan your repo automatically and then use the results to pinpoint and fix your vulnerabilties before you do any merge.
 
-This pipeline has only one scanner but you can easily add more later. For the list of supported scanners, see [Security step settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference).
+### Set up your codebase
 
-## Clone your STO base pipeline
+1. Fork the following example repository into your GitHub account. This is a Python repo with known vulnerabilities: https://github.com/williamwissemann/dvpwa
 
-1. Go to the project with the [base STO pipeline](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) project.
-2. Select the top-right menu, choose **Clone**, and save the new pipeline as **STO Tutorial 1**.
+2. If you don't have a GitHub connector, do the following:
 
-   ![](./static/your-first-pipeline/sto-standalone-workflows-10.png)
+    1. In your Harness project, select **Project Setup** > **Connectors**.
+    2. Select **New Connector**, then select **Code Repositories** > **GitHub**.
+    3. Set the [GitHub connector settings](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) as appropriate. 
+       - Use **Account** for the [URL type](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/#url-type).
+       - Select the [connectivity](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/#connectivity-mode-settings) based on the infrastructure you plan to use.
 
-## Scan step configuration
+### Set up your pipeline
 
+```mdx-code-block
+import add_stage from './static/your-first-pipeline/add-security-tests-stage.png'
+```
+
+Do the following:
+
+1. Select **Security Testing Orchestration** (left menu, top) > **Pipelines** > **Create a Pipeline**. Enter a name and click **Start**. 
+
+2. In the new pipeline, select **Add stage** > **Security Tests**. 
+
+3. Set up your stage as follows:
+
+   1. Enter a **Stage Name**.
+   
+   2. In **Select Git Provider**, select your GitHub connector.
+   
+   3. In **Repository Name**, click the value type selector (tack button) and select **Runtime Input**.
+
+      ```mdx-code-block
+      <img src={add_stage} alt="Go to account user settings" height="50%" width="50%" />
+     ```
+
+3. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** or **ARM64** for the infrastructure, OS, and architecture.  
+   
+   You can also use a [Kubernetes](/docs/category/set-up-kubernetes-cluster-build-infrastructures) or [Docker](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) infrastructure, but these require additional work to set up. 
+
+### Add a Bandit scan step
 
 ```mdx-code-block
 import set_up_harness_26 from './static/your-first-pipeline/configure-bandit-step.png'
 ```
 
-Let's look at the Bandit step to see how it's configured.
+1. In the Pipeline Studio, go to **Execution** and add a **Bandit** step to your pipeline.
 
-1. In your new pipeline, go to **securityTestStage** and open the **banditScan** step.
+2. Configure the step as follows:
 
-	```mdx-code-block
-	<img src={set_up_harness_26} alt="Configure the background step" height="75%" width="75%" />
-	```
+   1. Scan Mode = **Orchestration**
 
-2. Let's review the user-configured settings.
+      Indicates that this is an [orchestrated scan](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) that runs the scan and ingests the results in one step.
 
-	<table>
-		<tr>
-			<th>Setting</th>
-			<th>Value</th>
-			<th>Description</th>
-		</tr>
-		<tr>
-			<td>Scan Mode</td>
-			<td>Orchestration</td>
-			<td>Indicates that this is an <a href="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods">orchestrated scan</a> as opposed to a ingestion-only or data-upload scan. </td>
-		</tr>
-		<tr>
-			<td>Target Name</td>
-			<td><code>dvpwa</code></td>
-			<td>Every STO scan has a <a href="/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines">target name</a>, which is a user-defined label for the code repository, container, application, or configuration to scan. </td>
-		</tr>
-		<tr>
-			<td>Target Variant</td>
-			<td><code>&lt;+codebase.branch&gt;</code></td>
-			<td>Every STO scan has a specified <a href="/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines">variant</a> that specifies the branch, tag, or other target variant to scan.  </td>
-		</tr>
-	</table>
+   2. Target name — Click the value-type selector (tack button to the right of the input field) and select **Runtime input**. You'll specify this and other values when you run the pipeline.
+
+      Every STO scan has a [target name](/security-testing-orchestration/get-started/key-concepts/targets-and-baselines), which is a user-defined label for the repo, image, app, or configuration to scan.
+
+   3. Variant — Select **Runtime input** as the value type.
+
+      Every STO scan has a [target variant](/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) that specifies the branch, tag, or other variant to scan. 
+
+
+<!-- 
 
 <details open><summary> Key concept: scanner templates</summary>
 
@@ -111,24 +112,44 @@ In the Bandit scanner template, for example, the **Scan Configuration** and **Ta
 
 </details>
 
-## Analyze security test results
+ -->
+
+### Analyze security test results
+
+<!-- 
 
 <details open><summary> Key concept: scan targets</summary>
 Every instance of a scanner has a specific <i>target</i>, which is the object it is set up to scan. It might be a code repository, a container, or an instance. This pipeline uses <a href="https://bandit.readthedocs.io/en/latest/">Bandit</a> to scan the target repository <a href="https://github.com/williamwissemann/dvpwa">https://github.com/williamwissemann/dvpwa</a> (specified in the <a  href="/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/">Codebase</a> for this pipeline).
 
-</details>
+</details> 
+
+-->
 
 Now that you've set up the pipeline, you can run a scan and view the detected issues.
 
 1. Select **Save**, and then select **Run**.
-2. Select **Git Branch**, enter **master** for the branch name, and then select **Run Pipeline**.
-3. When the pipeline finishes, select the **Security Tests** tab to see the dashboard.
+2. In Run Pipeline, configure the run as follows:
+
+   1. Under Codebase: 
+      - Repository name : **dvpwa**
+      - Branch name :  **master**  
+   2. Under Stage:
+       - Target name : **dvpwa** (= the repo name)
+       - Target variant :  **master** (= the branch name)  
+
+   :::tip
+
+   - [Input sets](/docs/platform/pipelines/input-sets) make it easy to re-run a pipeline with a specific set of runtime inputs. To save your runtime settings to an input set, select **Save as New Input** on the bottom right.   
+
+   ::: 
+
+2. Run the pipeline. When the execution finishes, select **Security Tests**.
 
 The **Security Tests** tab shows the issues that the scanner found in the test target, categorized by severity. The scanner found two issues, one critical and one medium, in the master branch.
 
 ![](./static/your-first-pipeline/sto-standalone-workflows-12.png)
 
-## Set the baseline
+### Set the baseline
 
 <details open><summary> Key concept: baselines</summary> 
 
@@ -141,30 +162,36 @@ Note the following:
 - You can specify target baselines using regular expressions as well as fixed strings. Regular expressions are useful when the "prod" variant updates with each new release. 
 
 </details>
+
+```mdx-code-block
+import set_baseline from './static/your-first-pipeline/set-baseline.png'
+```
   
 As a developer, you want to ensure that your merge or update doesn't introduce any new issues. To do this, you create a baseline for your test target and compare your scans against the baseline.
 
-1. Select **Security Tests** (left menu), then **Test Targets** (second-from-left menu).
-2. For the **dvpwa** target, select **Baseline for Comparison** and select **branch :** **master** in the pulldown menu.
+1. Select **Security Test Orchestration** > **Test Targets**.
+2. Select **branch :** **master**.
  
-  ![](./static/your-first-pipeline/sto-standalone-workflows-13.png)
+  ```mdx-code-block
+  <img src={set_baseline} alt="Set the target baseline" height="50%" width="50%" />
+  ```
 
 
-## Compare baseline vs. downstream issues 
+### Compare baseline vs. downstream issues 
 
 Suppose you're developing a new feature. You're working in a `DEMO-001` branch that's downstream from the `master` branch. As a developer, you want to fix any "shift-left" issues in your downstream branch BEFORE you merge into the baseline. 
 
 First, you want to see if your branch has any security issues that aren't in the `master` branch.
 
-* Run your pipeline again with **DEMO-001** as the branch name.
+* Enter **DEMO-001** for the branch name and the target variant.
 * When the pipeline finishes, go to the **Security** **Tests** tab.
 
-Your branch has 5 security issues: 2 critical, 2 medium, 1 low. Note that 3 of these issues are in the DEMO-001 branch only and 2 are common to both DEMO-001 and master.
+DEMO-001 has 5 security issues: 2 critical, 2 medium, 1 low. Note that 3 of these issues are in the DEMO-001 branch only and 2 are common to both DEMO-001 and master.
 
 ![](./static/your-first-pipeline/sto-integrated-workflows-40-compare-results.png)
  
 
-## Fix vulnerabilities
+### Fix vulnerabilities
 
 <details open><summary>Key Concept: Issues and occurrences</summary>  
 When Harness processes the security issues identified in a scan, it deduplicates the results. <i>Deduplication</i> is the aggregation of multiple occurrences with the same root cause into one issue. 
@@ -178,7 +205,7 @@ Note the following as you troubleshoot and fix your security issues:
 
 The Issue Details pane has useful information for troubleshooting your security vulnerabilities. 
 
-1. Expand the **Common to dvpwa:master** list (bottom left) and select the critical issue **sB602: subprocess_popen_with_shell_equals_true**. The Issue Details pane opens.
+1. Expand one of the issue lists (for the baseline or the downstream branch) and select an issue. The Issue Details pane opens.
 
   ![](./static/your-first-pipeline/sto-standalone-workflows-15.png)
 
@@ -208,14 +235,14 @@ Here's an example of a container image vulnerability detected by a paid version 
 
 </details>
 
-## New feature: AI-enhanced remediation 
+### New feature: AI-enhanced remediation 
 
 Harness AIDA&#174 uses state-of-the-art AI technology to streamline the process of triaging and fixing security vulnerabilities. Harness AIDA is based on large, well-trained language models. It learns continuously based on feedback and the latest public knowledge. Optionally, you can regenerate advice with additional context and thereby optimize your results. 
 
 For more information, go to [Fix issues using AI-enhanced remediation steps](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
 
 
-## Fail pipelines on severity
+### Fail pipelines on severity
 
 <details open><summary> Key concept: fail_on_severity</summary> 
 
@@ -228,7 +255,7 @@ It is good practice to set `fail_on_severity` in every scan step in an integrate
 1. In the Pipeline Studio, open the pipeline that you created in the [Standalone pipeline](/tutorials/security-tests/standalone-pipeline) tutorial.
 2. Open the **Bandit** step.
 2. Set **Fail on Severity** to **Critical**. 
-3. Select **Apply Changes**, save the updated pipeline, and run a new build with the **DEMO-001** branch.
+3. Select **Apply Changes**, save the updated pipeline, and run the pipeline again with the **DEMO-001** branch.
 
    ![](./static/your-first-pipeline/failed-on-severity-critical.png)
 
@@ -237,7 +264,7 @@ The pipeline now fails because the Bandit step is now configured to fail on any 
 Exited with message: fail_on_severity is set to critical and that threshold was reached.
 ```
 
-## Exemptions for specific issues
+## Developer/Secops workflow: exemptions for specific issues
 
 ```mdx-code-block
 import account_user_settings from './static/your-first-pipeline/go-to-account-user-settings.png'
@@ -339,18 +366,33 @@ In this section, you'll create an exemption as a developer and then approve it a
    <img src={cancel_exemption_requests} alt="Cancel exemption requests" height="60%" width="60%" />
    ```
 
+## Congratulations!
+
+In this tutorial, you've learned how to:
+
+1. Set up a scanner
+2. Create a baseline
+3. Analyze scan results
+4. Use the data collected by STO to pinpoint and fix vulnerabilities *before* you merge your code updates.
+5. Configure `fail_on_severity` to fail a pipeline execution if a scan detects a vulnerability with the specified severity or higher. 
+6. Request a exemption for a specific vulnerability (if you're a developer) and approve an exemption (if you're a SecOps person).
+
 
 ## Next steps
 
 You've now learned the core STO features and workflows. Here are the next steps you can take.
 
+### Add steps or stages for CI/CD workflows
+
+You know how to implement pipelines when scanners detect security issues, and how to create Ignore Rules for specific issues. Once you set up your Security steps, baselines, and exemptions, you can add more stages and steps to implement your CI/CD workflows.
+
+For examples of build/scan/push workflows, go to [Build/scan/push workflows for container images in STO](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-workflows) 
+
 ### Add more scanner steps
 
 STO supports an extensive set of external scanners for repos, images, and artifacts. Go to [What's supported](/docs/security-testing-orchestration/whats-supported).
 
-### Add steps or stages for CI/CD workflows
 
-You know how to implement pipelines when scanners detect security issues, and how to create Ignore Rules for specific issues. Once you set up your Security steps, baselines, and exemptions, you can add more stages and steps to implement your CI/CD workflows.
 
 ### Add governance policies
 
@@ -386,7 +428,10 @@ You can implement [Failure Strategies](/docs/platform/pipelines/define-a-failure
 4. The developer and security team evaluate the issues and then abort the pipeline execution or allow it to proceed.
 
 
-## Integrated STO/CI Workflow Example
+
+<!-- 
+
+#### Integrated STO/CI Workflow Example
 
 The following pipeline extends the example workflow described above. After it scans the repo, it builds a container image, scans the image, and fails the pipeline if the image scan fails. The [YAML](#integrated-workflow-yaml) of this pipeline is provided below.
 
@@ -409,20 +454,10 @@ After the pipeline executes, you can view all issues from all scanners in the **
 
 ![](./static/your-first-pipeline/integrated-pipeline-security-tests.png)
 
-## Congratulations!
-
-In this tutorial, you've learned how to:
-
-1. Set up a scanner
-2. Create a baseline
-3. Analyze scan results
-4. Use the data collected by STO to pinpoint and fix vulnerabilities *before* you merge your code updates.
-5. Configure `fail_on_severity` to fail a pipeline execution if a scan detects a vulnerability with the specified severity or higher. 
-6. Request a exemption for a specific vulnerability (if you're a developer) and approve an exemption (if you're a SecOps person).
 
 
 
-## Integrated Workflow YAML
+#### Integrated Workflow YAML
 
 Here's the YAML of the integrated workflow example we examined in this tutorial.
 
@@ -556,5 +591,4 @@ pipeline:
 ```
 </details>
 
-
-
+-->
