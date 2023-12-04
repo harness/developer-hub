@@ -240,8 +240,6 @@ To create dynamic triggers, Harness includes built-in Git payload expressions fo
 * Main expressions:
   * `<+trigger.type>`
     * Webhook
-  * `<+trigger.sourceRepo>`
-    * Github, Gitlab, Bitbucket, Custom
   * `<+trigger.event>`
     * PR, PUSH, etc.
 * PR and Issue Comment expressions
