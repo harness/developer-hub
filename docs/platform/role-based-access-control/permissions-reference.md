@@ -114,6 +114,12 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Applications | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Sync: Deploy applications</li></ul> |
 | Repositories | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
 
+### Infrastructure as Code
+
+| Resource | Permissions |
+| ---  | ----------- |
+| IACM Workspaces | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Create/Edit Variables</li><li>Delete Variables</li><li>Approve</li><li>Access State</li></ul> |
+
 ### Service Reliability
 
 | Resource | Permissions |
