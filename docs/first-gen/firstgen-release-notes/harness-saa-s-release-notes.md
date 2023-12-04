@@ -43,7 +43,7 @@ If the required image and AMI upgrades are not complete by **November 14, 2023**
 
 :::
 
-### Latest: December 1, 2023, Version 817xx
+### Latest: December 4, 2023, Version 81708
 
 #### Fixed issue
 
