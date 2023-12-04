@@ -22,6 +22,7 @@ In this tutorial, you'll set up a simple [orchestration workflow](/docs/security
 - This tutorial has the following prerequisites:
 
   - A Harness account and STO module license.
+  - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
   - A basic understanding of key STO concepts and good practices is highly recommended. Here are some good resources: 
     - [Create a standalone STO pipeline](/tutorials/security-tests/standalone-pipeline.md)
     - [Key Concepts in STO](/docs/category/key-concepts-in-sto)

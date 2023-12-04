@@ -386,13 +386,11 @@ You've now learned the core STO features and workflows. Here are the next steps 
 
 You know how to implement pipelines when scanners detect security issues, and how to create Ignore Rules for specific issues. Once you set up your Security steps, baselines, and exemptions, you can add more stages and steps to implement your CI/CD workflows.
 
-For examples of build/scan/push workflows, go to [Build/scan/push workflows for container images in STO](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-workflows) 
+For some examples of integrated workflows, go to [Build/scan/push workflows for container images in STO](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-workflows) 
 
 ### Add more scanner steps
 
 STO supports an extensive set of external scanners for repos, images, and artifacts. Go to [What's supported](/docs/security-testing-orchestration/whats-supported).
-
-
 
 ### Add governance policies
 
