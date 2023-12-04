@@ -45,18 +45,23 @@ These are the requirements to configure an Azure VM application, Entra ID app re
    * Port 3389 if you want to run Windows builds and be able to RDP into your build VMs.
    <!-- Port 9079 not required? -->
 
-4. Launch your Azure VM, and then install [Docker](https://docs.docker.com/desktop/vm-vdi/) and [Docker Compose](https://docs.docker.com/compose/install/) on the VM.
+4. Install Docker and Docker Compose on the VM.
 
-   To install Docker on Windows, you must enable [Hyper-V](https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) or [WSL](https://learn.microsoft.com/en-us/windows/wsl/install). Then, follow the Microsoft documentation to [Prep Windows for containers](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce) and install Docker.
+   1. To install Docker on Windows, you must enable [Hyper-V](https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) or [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) on your Azure VM.
+   2. Follow the Microsoft documentation to [prep Windows for containers](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce).
+   3. Install [Docker](https://docs.docker.com/desktop/vm-vdi/) and [Docker Compose](https://docs.docker.com/compose/install/) on the VM.
 
-5. [Create a VM application](https://learn.microsoft.com/en-us/azure/virtual-machines/vm-applications-how-to?tabs=portal#create-the-vm-application). Make sure the app is a Contributor on your Azure subscription.
+5. [Create a VM application](https://learn.microsoft.com/en-us/azure/virtual-machines/vm-applications-how-to?tabs=portal#create-the-vm-application), and assign your VM app to the **Contributor** role for your Azure subscription.
+
+   For information about role assignment, go to the Microsoft documentation on [Assigning Azure roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition).
+
 6. Go to [Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/) and [register your VM application](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app).
-7. Assign the **Owner** role for the application to your VM.
+7. Assign your Azure VM to the **Owner** role for your VM application.
 
    1. Go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines), and select your Azure VM.
    2. Select **Access control (IAM)**, and select **Add role assignment**.
    3. On the **Role** tab, select the **Owner** role, and then select **Next**.
-   4. On the **Members** tab, select **User, group, or service principal**, select **Select members**, and then select your Entra ID app.
+   4. On the **Members** tab, select **User, group, or service principal**, select **Select members**, and then select the VM app that you registered in Entra ID.
    5. Select **Next**, and then select **Review + assign**.
 
    For more information, go to the Microsoft documentation on [Assigning Azure roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition).
@@ -71,8 +76,9 @@ The `pool.yml` file defines the VM spec and pool size for the VM instances used 
    mkdir /runner
    cd /runner
    ```
+
 2. In the `/runner` folder, create a `pool.yml` file.
-3. Modify `pool.yml` as described in the following examples and the [Pool settings reference](#pool-settings-reference).
+3. Modify `pool.yml` as described in the [pool.yml examples](#poolyml-examples) and the [Pool settings reference](#pool-settings-reference).
 
 ### pool.yml examples
 
@@ -164,14 +170,14 @@ The `account` settings (`client_id`, `client_secret`, `subscription_id`, and `te
 | `pool` | Integer | `pool: 1` | Warm pool size number. Denotes the number of VMs in ready state to be used by the runner. |
 | `limit` | Integer | `limit: 3` | Maximum number of VMs the runner can create at any time. `pool` indicates the number of warm VMs, and the runner can create more VMs on demand up to the `limit`.<br/>For example, assume `pool: 3` and `limit: 10`. If the runner gets a request for 5 VMs, it immediately provisions the 3 warm VMs (from `pool`) and provisions 2 more, which are not warm and take time to initialize. |
 | `platform` | Key-value pairs, strings | `platform: os: linux arch: amd64 variant: VERSION` | Specify VM platform operating system (`os`) and architecture (`arch`). `variant` is optional. |
-| `spec` | Key-value pairs, various | Go to [pool.yml examples](#poolyml-examples). | Configure settings for the build VMs.<ul><li>`account`: Provide Azure account settings the runner needs to create new VMs:<ul><li>`client_id`: Your VM application's client ID from the Entra ID app registration. To find the client ID in Entra ID, go to **App Registrations**, select your VM app, and then locate the **Application (client) ID** on the **Overview** page.</li><li>`client_secret`: To create a client secret, go to your app in Entra ID, and then select **Certificates and Secrets**.</li><li>`subscription_id`: To find the subscription ID in Azure, go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines) and select your VM.</li><li>`tenant_id`: Your Entra directory ID. To find the tenant ID in Entra ID, go to **App Registrations**, select your VM app, and then locate the **Directory (tenant) ID** on the **Overview** page.</li></ul></li><li>`image`: The image type to use for the build VM. You can use your own custom-created image or use one from the [Azure VM image list](https://az-vm-image.info/).</li><li>`location`: The Azure region for the build VMs. To minimize latency, use the same region as the delegate VM.</li><li>`size`: The Azure VM size.</li><li>`tag`: You can add an optional tag to identify build VMs.</li><li>`disk`: You can provide the `size` (as an integer representing GB) and `type` (as a string)</li></ul> |
+| `spec` | Key-value pairs, various | Go to [pool.yml examples](#poolyml-examples). | Configure settings for the build VMs.<ul><li>`account`: Provide Azure account settings the runner needs to create new VMs:<ul><li>`client_id`: Your VM application's client ID from the Entra ID app registration. To find the client ID in Entra ID, go to **App Registrations**, select your VM app, and then locate the **Application (client) ID** on the **Overview** page.</li><li>`client_secret`: To create a client secret, go to your app in Entra ID, and then select **Certificates and Secrets**.</li><li>`subscription_id`: The Azure subscription ID where your VM application is a Contributor.</li><li>`tenant_id`: Your Entra directory ID. To find the tenant ID in Entra ID, go to **App Registrations**, select your VM app, and then locate the **Directory (tenant) ID** on the **Overview** page.</li></ul></li><li>`image`: The image type to use for the build VM. You can use your own custom-created image or use one from the [Azure VM image list](https://az-vm-image.info/).</li><li>`location`: The Azure region for the build VMs. To minimize latency, use the same region as the delegate VM.</li><li>`size`: The Azure VM size.</li><li>`tag`: You can add an optional tag to identify build VMs.</li><li>`disk`: You can provide the `size` (as an integer representing GB) and `type` (as a string)</li></ul> |
 
 ## Start the runner
 
 [SSH into your Azure VM](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-ssh?tabs=azurecli) and run the following command to start the runner:
 
 ```
-$ docker run -v /runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
+docker run -v /runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
 ```
 
 This command mounts the volume to the Docker container providing access to `pool.yml` to authenticate with Azure. It also exposes port 3000 and passes arguments to the container.
