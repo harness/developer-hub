@@ -6,7 +6,7 @@ sidebar_label: Harness Data Architecture
 
 
 
-![](./static/harness_data_architecture.png)
+![](./static/harness_saas_data_architecture.png)
 
 This diagram shows how Harness services use different data stores to manage data effectively.
 

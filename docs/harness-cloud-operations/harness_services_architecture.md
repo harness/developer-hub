@@ -6,7 +6,7 @@ sidebar_label: Harness Services Architecture
 
 
 
-![](./static/harness_services.png)
+![](./static/harness_saas_services_architecture.png)
 
 This diagram provides an overview of Harness microservices within the Prod1 logical cluster. This diagram illustrates the microservices architecture of Harness, which can be thought of divided into three distinct layers for simplicity. Higher-layer services invoke lower-layer services to fulfil their respective functions.
 

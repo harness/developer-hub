@@ -6,7 +6,7 @@ sidebar_label: Harness SaaS Architecture
 
 
 
-![](./static/harness_saas_high_level.png)
+![](./static/harness_saas_high_level_architecture.png)
 
 This diagram provides a very high level overview of the Harness SaaS infrastructure, which is deployed across two regions - **us-west1** and **us-west2** for fault tolerance. The core infrastructure consists of two Kubernetes clusters: one primary cluster and one failover cluster. The failover cluster runs all Harness services but with zero pods, ensuring that applications can be quickly recovered in case of a regional outage. In the case of a regional outage in GCP in us-west1 or one of its zones, pods running in failover cluster in us-west2 are scaled up, and the traffic can be flipped over to us-west2 in around 20–25 minutes. 
 
@@ -14,7 +14,7 @@ Both clusters connect to GCP managed data services for persistent storage and ot
 
 
 
-![](./static/harness_saas_primary_cluster.png)
+![](./static/harness_saas_primary_cluster_architecture.png)
 
 This diagram provides a detailed view of the primary cluster of the Harness SaaS platform. Clients, including automation tools, users, and Harness agents, make secure (SSL) requests to *.harness.io. Cloud DNS resolves this hostname to the GCLB IP address, which then routes the request to the appropriate backend: Cloud CDN (backed by Cloud Storage) for static content, delegate jars etc or the primary Kubernetes cluster in the **us-west1** region for dynamic content.
 	
