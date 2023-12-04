@@ -2,7 +2,9 @@
 title: IDP API
 description: Lists the public API endpoints supported in IDP.
 sidebar_label: IDP API
-sidebar_position: 3
+sidebar_position: 1
+redirect_from:
+  - /docs/internal-developer-portal/public-api
 ---
 
 The following are the list of APIs supported by IDP. 
