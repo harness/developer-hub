@@ -1261,7 +1261,7 @@ Lastly, the new ECS service is tagged with `BG_VERSION`, `BLUE`.
 
 By default, the previous service is downsized to 0. The service is downsized, but not deleted. If the older service needs to be brought back up again, it is still available.
 
-#### ECS Blue Green service validation
+#### ECS Blue Green service validation - Update Green Service
 
 :::note
 
@@ -1269,7 +1269,7 @@ Currently, ECS Blue Green service validation is behind the feature flag `CDS_ECS
 
 :::
 
- This feature flag enables some conditions that Harness executes before the deployment. Before the deployment, Harness identifies ECS Blue and Green services on the basis of the target group and updates tags accordingly. It then starts the deployment.
+ This feature flag enables some a checkbox **Update Green Service** that enables some validations to execute before the deployment. Before the deployment, Harness identifies ECS Blue and Green services based on the target group and updates tags accordingly. It then starts the deployment.
 
  **Blue Green service scenarios**
 
@@ -1284,7 +1284,18 @@ Currently, ECS Blue Green service validation is behind the feature flag `CDS_ECS
   - **Blue service**. Service version that is attached to the prod target group and has running tasks: tag as blue.
   - **Green service**. Service version that is attached to the prod target group and has zero or fewer running tasks: tag as green.
 
-**Validation Behaviors**
+**Update Green Service Behaviors**
+
+- we have given the option for the user to update the service. We have put a checkbox Update Green Service, where Harness will just update the green service with a new manifest and artifact. The benefit of doing an updating of the green service is that old containers will only go down after new containers are up.
+  
+   Without the checkbox configuration, we always delete the green service if it exists and create it again with a new manifest and artifact. so, first old containers will go down and then new containers will come up. When both the stage target group and the prod target group are the same, then this can become critical if tags are incorrect.
+
+- Few fields from the service definition will not be considered in the update service and these fields remain the same in the lifetime of an ECS service.
+
+1. launchType
+2. schedulingStrategy
+3. roleArn
+
  
 - If the validations for the Blue and Green ECS services fail, Harness aborts the deployment. You must fix the issue by resetting the service in the AWS Management Console.
 
