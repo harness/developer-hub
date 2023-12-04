@@ -327,8 +327,16 @@ token:
 Also the token input is used as a paremeter under `steps` as `apikey`
 
 ```yaml
-apikey: ${{ parameters.token }}
-```
+  steps:
+    - id: trigger
+      name: ...
+      action: trigger:harness-custom-pipeline
+      input:
+        url: ...
+        inputset:
+          key: value
+          ...
+        apikey: ${{ parameters.token }}
 
 This is a custom component we created to authenticate the call to execute the pipeline on the basis of the logged-in user's credentials.
 
