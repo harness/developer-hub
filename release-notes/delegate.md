@@ -228,6 +228,12 @@ Harness NextGen release 81205 includes the following changes for the Harness Del
 
 - The Tags field in the pipeline filter is now optional. This change allows you to filter either by tag name or a combination of tag name and value. (CDS-78992)
 
+### Version 81210
+
+#### Hotfix
+
+- GitHub status checks were not refreshing for pipeline executions. Harness added a retry to the GitHub status update API call to resolve the issue. (CI-10618)
+
 ### Harness version 81008, Harness Delegate version 23.10.81010
 
 Harness NextGen release 81008 includes the following changes for the Harness Delegate.
