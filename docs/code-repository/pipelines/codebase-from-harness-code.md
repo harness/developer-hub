@@ -21,7 +21,7 @@ When creating or editing a pipeline, you can set the default codebase to a Harne
 ```
 
 1. Edit the pipeline's **Codebase** settings.
-2. For **Select Git Provider**, select **Harness**.
+2. Under **Configure Codebase**, select **Harness**.
 3. Enter your **Repository Name**.
 
 ```mdx-code-block
@@ -45,7 +45,7 @@ pipeline:
         build: <+input>
 ```
 
-If you are editing an existing pipeline, replace `codebase.connectorRef` with `codebase.repoName`, for example:
+To edit an existing pipeline, replace `codebase.connectorRef` with `codebase.repoName`, for example:
 
 ```yaml
 pipeline:

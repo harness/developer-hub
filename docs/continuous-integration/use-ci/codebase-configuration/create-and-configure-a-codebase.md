@@ -19,7 +19,9 @@ This topic assumes you have an understanding of the [CI pipeline creation proces
 
 ## Code repo connectors
 
-Harness uses code repo connectors to connect to Git providers, such as Bitbucket, GitHub, GitLab, and others. You can create code repo connectors for entire accounts or specific repositories. You can view a list of your saved connectors in **Connectors** under **Project Setup**. The following topics provide more information about creating code repo connectors:
+Harness uses code repo connectors to connect to third-party Git providers, such as Bitbucket, GitHub, GitLab, and others. You don't need a code repo connector for repositories in the [Harness Code Repository module](/docs/code-repository).
+
+For third-party SCM providers, you can create code repo connectors for entire accounts or specific repositories. You can view a list of your saved connectors in **Connectors** under **Project Setup**. The following topics provide more information about creating code repo connectors:
 
 * Azure Repos: [Connect to Azure Repos](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
 * Bitbucket: [Bitbucket Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
@@ -40,9 +42,10 @@ When you add a **Build** stage to a CI pipeline, you can select a [code repo con
 1. In the Pipeline Studio, select **Add Stage**, and then select **Build**.
 2. Enter a **Stage Name**. **Description** and **Tags** are optional.
 3. Make sure **Clone Codebase** is enabled. This tells Harness to clone the codebase into the build environment before running the steps in the stage.
-4. For **Connector**, select or create a [code repo connector](#code-repo-connectors).
-5. If **Repository Name** is not automatically populated, you can specify a repository to use for this pipeline. You can also set this field to `<+input>` to specify a repo at runtime.
-6. Select **Set Up Stage**.
+4. To clone a repo from the [Harness Code Repository module](/docs/code-repository), select **Harness**. To clone a repo from a third-party SCM provider, select **Third party provider**.
+5. For **Connector**, select or create a [code repo connector](#code-repo-connectors). This is not required for the Harness Code Repository module.
+6. If **Repository Name** is not automatically populated, specify a repository to use for this pipeline. You can also set this field to `<+input>` to specify a repo at runtime.
+7. Select **Set Up Stage**.
 
 If you need to change the connector or other default codebase settings, go to [Edit the default codebase configuration](#edit-the-default-codebase-configuration). If you don't want every stage to clone the default codebase, go to [Disable Clone Codebase for specific stages](#disable-clone-codebase-for-specific-stages).
 
@@ -63,6 +66,27 @@ pipeline:
       codebase:
         connectorRef: YOUR_CODEBASE_CONNECTOR_ID
         repoName: YOUR_GIT_REPO
+        build: <+input>
+```
+
+</details>
+
+<details>
+<summary>YAML example: Harness Code Repository codebase configuration</summary>
+
+This configuration is for repositories in the [Harness Code Repository module](/docs/code-repository).
+
+```yaml
+pipeline:
+  name: tutorial example
+  identifier: tutorial_example
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        repoName: YOUR_HARNESS_CODE_REPO_NAME
         build: <+input>
 ```
 
