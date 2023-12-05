@@ -484,3 +484,7 @@ These settings specify the maximum resources used by the container at runtime. T
 ### Timeout
 
 You can set the step's timeout limit. Once the timeout is reached, the step fails and pipeline execution proceeds according to any [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md) or [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+
+## Troubleshooting Test Intelligence
+
+For troubleshooting guidance related to Test Intelligence, go to [Troubleshoot CI - Test Intelligence issues](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md#test-intelligence-issues).
