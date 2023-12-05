@@ -33,13 +33,16 @@ In the following examples, OpenSSL is used to create the required certificates. 
 
 - Use the following OpenSSL comment to create a test CA certificate with no password and 25+ years of validity. You must provide the public portion of the CA certificate (ca.crt) to Harness to enable mTLS.
 
-    `openssl req -x509 -sha256 -nodes -days 9999 -newkey rsa:2048 \ -subj "/O=Example ORG/CN=CA Cert" -keyout "ca.key" -out "ca.crt"`
+    ```
+     openssl req -x509 -sha256 -nodes -days 9999 -newkey rsa:2048 \
+     -subj "/O=Example ORG/CN=CA Cert" -keyout "ca.key" -out "ca.crt"
+    ```
 
 ### Create a client certificate
 
 1. Create the configuration used to create the client certificate:
 
-   ```text
+   ```
     cat << EOF > "client.cnf"
     [req]
     default_bits = 2048
@@ -59,18 +62,24 @@ In the following examples, OpenSSL is used to create the required certificates. 
 
 2. After the configuration file has been created, create a new certificate signing request together with the key pair:
 
-    `openssl req -new -config "client.cnf" -nodes -out "client.csr" -keyout "client.key"`
+    ```
+    openssl req -new -config "client.cnf" -nodes -out "client.csr" -keyout "client.key"
+    ```
 
-3. Using the previously created CA certificate with the certificate signing request, create the final signed client certificate:
+4. Using the previously created CA certificate with the certificate signing request, create the final signed client certificate:
 
-    `openssl x509 -req -sha256 -days 9999 -extfile client.cnf -extensions v3_req \ -CAcreateserial -CA "ca.crt" -CAkey "ca.key" \ -in "client.csr" -out "client.crt"`
+    ```
+     openssl x509 -req -sha256 -days 9999 -extfile client.cnf -extensions v3_req \
+     -CAcreateserial -CA "ca.crt" -CAkey "ca.key" \
+     -in "client.csr" -out "client.crt"
+    ```
     
    :::info note
    You provide the client.crt and client.key to the delegate YAML when you install the delegate.
    :::
 
-4. After you create the certificates, provide the public cert of the CA certificate to Harness support. 
-5. Provide a unique API prefix to the location where your mTLS endpoint is hosted. You can set any prefix for your directory path, but it must be unique.
+5. After you create the certificates, provide the public cert of the CA certificate to Harness support. 
+6. Provide a unique API prefix to the location where your mTLS endpoint is hosted. You can set any prefix for your directory path, but it must be unique.
 
    :::info note
    After this, Harness will perform the steps to enable the mTLS.
