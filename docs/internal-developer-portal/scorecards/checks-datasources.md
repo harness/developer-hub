@@ -36,6 +36,23 @@ The git (GitHub, GitLab, Bitbucket) datasources doesn't support monorepos.
 
 :::
 
+### Supported Operators
+
+We support the folowing `regex operators` as Operators for all the Data Points.
+
+1. Less Than
+2. Less than or equal to
+3. Greater than
+4. Greater than or equal to 
+5. Equal to
+6. Not equal to
+7. In or Match
+8. Not-In or Not-Match
+9. Starts With
+
+![](./static/regex-operators.png)
+
+
 ## GitHub
 
 The following **Data Points** are available for GitHub Data Source. 
@@ -142,6 +159,16 @@ spec:
 - *Objective:* Calculates the total number of open pull requests raised by the given account.
 - *Calculation Method:* Fetches `backstage.io/source-location` annotation from catalog YAML file to find repository details and calculates the total number of open pull requests raised by account.
 - *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository. Make sure to mention the username in the conditional input field.
+
+12. **Extract string from a file**
+- *Objective:* Gets the string matching the pattern from given file from the branch.
+- *Calculation Method:* If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the designated pattern is then searched within the file contents and it's value is extracted and returned.
+- *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository.
+
+13. **Match string in a file**
+- *Objective:* Matches the pattern in the given file from the branch.
+- *Calculation Method:* If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the contents are examined to find the pattern. Returns true/false based on whether the pattern was found or not.
+- *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository.
 
 ## GitLab
 
