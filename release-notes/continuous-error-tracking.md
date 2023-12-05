@@ -39,33 +39,19 @@ This release does not include any early access features.
 
 ### Fixed issues
 
-- The Events list would reset if an event not on the first page is resolved. (CET-1775)
+- The Events list would reset if an event that was not on the first page got resolved. Now, resolving an event that is not on the first page does not reset the list. (CET-1775)
   
-  This issue has been resolved. Now, resolving an event not on the first page would not reset the list.
-  
-- Events plotted by the Event Distribution graph did not represent newly occurred events. (CET-1825)
-  
-  This issue has been resolved. Now, recently occurred events will display properly on the Event Distribution graph.
+- Events plotted by the Event Distribution graph did not represent newly occurred events. Now, recently occurred events display properly on the Event Distribution graph. (CET-1825)
 
-- The Agents page was not showing a refresh button when no agents were connected. (CET-1829)
+- The Agents page did not show a refresh button when no agents were connected. Now, the refresh button appears even when no agents are connected. (CET-1829)
 
-  This issue has been resolved. Now, the refresh button would show even when no agents are connected.
+- Deletion of a saved search didn't delete the associated notifications. Now, when a saved search is deleted, all its notifications are deleted with it. (CET-1947)
 
-- Deletion of a saved search wouldn't delete the associated notifications. (CET-1947)
+- Logged Error events were incorrectly shown as Logged Warning events. Now, these events are displayed correctly. (CET-1971)
 
-  This issue has been resolved. Now, when a saved search is deleted, all its notifications are deleted with it.
+- Saved search notifications could fire even when the event count was 0. Now, saved search notifications do not fire if the event count is 0. (CET-1972)
 
-- Logged Error events were incorrectly shown as Logged Warning events. (CET-1971)
-
-  This issue has been resolved. Now, events would be displayed correctly.
-
-- Saved search notifications could fire even when the event count was 0. (CET-1972)
-
-  This issue has been resolved. Now, saved search notifications would not send if the event count is 0.
-
-- Tiny links would direct to 404 in case the event is missing. (CET-1991)
-
-  This issue has been resolved. Now, in case an event cannot be found, the tiny links would direct to the CET page and show an error message.
+- Tiny links would direct to 404 if the event was missing. Now, if an event cannot be found, the tiny links direct to the CET page and show an error message. (CET-1991) 
 
 
 ### Hotfixes
@@ -111,9 +97,9 @@ This release does not include any early access features.
 This release does not include hotfixes.
 
 
-### November 02, 2023, versions ET-Service 5.30.0 and ET-Collector 5.30.0
+#### November 02, 2023, versions ET-Service 5.30.0 and ET-Collector 5.30.0
 
-#### New features and enhancements
+##### New features and enhancements
 
 - The Summary page loading time has been optimized. Now, the Summary page loads faster, ensuring a better user experience. (CET-1233)
 
@@ -122,12 +108,12 @@ This release does not include hotfixes.
 - Various dependencies were upgraded to prevent security issues. (CET-1880)
 
 
-#### Early access features
+##### Early access features
 
 This release does not include any early access features.
 
 
-#### Fixed issues
+##### Fixed issues
 
 - The ARC screen displayed variables that appeared expandable but were unresponsive. (CET-1116)
   
@@ -166,7 +152,7 @@ This release does not include any early access features.
   This issue has been resolved. Now, events appear as expected when using CET in a deployment pipeline.
 
 
-#### Hotfixes
+##### Hotfixes
 
 This release does not include hotfixes.
 
