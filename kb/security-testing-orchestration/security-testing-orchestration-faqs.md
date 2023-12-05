@@ -18,5 +18,5 @@ While we do update the database every time we rebuild the Grype image, this is p
 ## Can't generate SonarQube report due to shallow clone
 
 * Error message: `Shallow clone detected, no blame information will be provided. You can convert to non-shallow with 'git fetch --unshallow`
-* Cause: If the [depth setting](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#depth) in your pipeline's codebase configuration is shallow, SonarQube can't generate a report. This is a [known SonarQube issue](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scm-integration/#known-issues).
+* Cause: If the [depth setting](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) in your pipeline's codebase configuration is shallow, SonarQube can't generate a report. This is a [known SonarQube issue](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scm-integration/#known-issues).
 * Solution: Change the `depth` to `0`.
