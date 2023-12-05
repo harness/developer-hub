@@ -290,81 +290,9 @@ When configured the optional configuration for AWS Connector these fields can be
     timeout: 10m
 ```
 
-## Terraform Var Files
+#### Terraform variable files
 
-The **Terraform Var Files** section is for entering and/or linking to Terraform script Input variables.
-
-You can use inline or remote var files.
-
-Harness supports all [Terraform input types and values](https://www.terraform.io/docs/language/expressions/types.html).
-
-### Inline Variables
-
-You can add inline variables just like you would in a tfvar file.
-
-Click **Add Terraform Var File**, and then click **Add Inline**.
-
-The **Add Inline Terraform Var File** settings appear.
-
-In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
-
-For example, if the **Identifier** is **myvars** you could refer to its content like this:
-
-`<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myvars.spec.content>`
-
-Provide the input variables and values for your Terraform script. Harness follows the same format as Terraform.
-
-For example, if your Terraform script has the following:
-
-
-```json
-variable "region" {  
-  type = string  
-}
-```
-
-In **Add Inline Terraform Var File**, you could enter:
-
-
-```bash
-region = "asia-east1-a"
-```
-
-#### Inline Variable Secrets
-
-If you are entering secrets (for credentials, etc.), use Harness secret references in the value of the variable:
-
-
-```bash
-secrets_encryption_kms_key = "<+secrets.getValue("org.kms_key")>"
-```
-See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
-
-### Remote Variables
-
-You can connect Harness to remote variable files.
-
-Click **Add Terraform Var File**, and then click **Add Remote**.
-
-Select your Git provider (GitHub, etc.) and then select or create a Connector to the repo where the files are located. Typically, this is the same repo where your Terraform script is located, so you can use the same Connector.
-
-Click **Continue**. The **Var File Details** settings appear.
-
-![](./static/run-a-terraform-plan-with-the-terraform-plan-step-14.png)
-
-In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
-
-For example, if the **Identifier** is **myremotevars** you could refer to its content like this:
-
-`<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myremotevars.spec.store.spec.paths>`
-
-In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**.
-
-In **Branch**, enter the name of the branch.
-
-In **File Paths**, add one or more file paths from the root of the repo to the variable file.
-
-Click **Submit**. The remote file(s) are added.
+You can specify Terraform variables inline and fetch remote variable files during run time. For more information, go to [Remote Terraform variable definitions files](/docs/continuous-delivery/cd-infrastructure/terraform-infra/optional-tf-var-files).
 
 #### Artifactory
 

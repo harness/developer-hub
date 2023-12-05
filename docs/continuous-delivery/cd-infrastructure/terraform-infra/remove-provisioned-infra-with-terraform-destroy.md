@@ -98,6 +98,10 @@ Once the Terraform step execution is complete, Harness cleans up the main workin
 
 If you generate any local resources on the delegate in the directory where Terraform configurations are located, those resources are also removed. If you need those resources, make sure to generate them outside the Terraform working directory.
 
+#### Terraform variable files
+
+You can specify Terraform variable definition files that you want Harness to fetch during run time. For more information, go to [Remote Terraform variable definitions files](/docs/continuous-delivery/cd-infrastructure/terraform-infra/optional-tf-var-files).
+
 ## See Also
 
 * [Rollback Provisioned Infra with the Terraform Rollback Step](rollback-provisioned-infra-with-the-terraform-rollback-step)
