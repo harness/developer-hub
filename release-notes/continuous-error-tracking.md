@@ -23,6 +23,50 @@ These release notes describe recent changes to Harness Continuous Error Tracking
 
 :::
 
+## December 2023
+
+### version 5.31.0 ET-Service and ET-Collector
+
+<!-- December 01, 2023 -->
+
+#### Fixed issues
+
+- The Events list would reset if an event that was not on the first page got resolved. Now, resolving an event that is not on the first page does not reset the list. (CET-1775)
+  
+- Events plotted by the Event Distribution graph did not represent newly occurred events. Now, recently occurred events display properly on the Event Distribution graph. (CET-1825)
+
+- The Agents page did not show a refresh button when no agents were connected. Now, the refresh button appears even when no agents are connected. (CET-1829)
+
+- Deletion of a saved search didn't delete the associated notifications. Now, when a saved search is deleted, all its notifications are deleted with it. (CET-1947)
+
+- Logged Error events were incorrectly shown as Logged Warning events. Now, these events are displayed correctly. (CET-1971)
+
+- Saved search notifications could fire even when the event count was 0. Now, saved search notifications do not fire if the event count is 0. (CET-1972)
+
+- Tiny links would direct to 404 if the event was missing. Now, if an event cannot be found, the tiny links direct to the CET page and show an error message. (CET-1991)
+
+### Version 5.7.0 ET-Agent
+
+<!-- December 01, 2023 -->
+
+#### Mac support (CET-59)
+
+Added support for Mac. Support includes Intel and Apple M1/M2 chips. 
+
+#### Fixed issues
+
+- The CET Agent might continuously try to reconnect while using incorrect credentials. (CET-1793)
+  
+  This issue has been resolved. Now, the CET Agent would stop reconnecting if the wrong credentials are being used.
+
+- The CET Agent (v5.6.0) was having some incompatibilities with some APM agents like AppDynamics and NewRelic. (CET-1863)
+  
+  This issue has been resolved. The CET Agent is again compatible with other APM agents.
+
+- The CET Agent might cause a steep increase of memory in some scenarios. (CET-1867)
+  
+  This issue has been resolved. The CET Agent memory consumption have been substantially reduced.
+
 ## November 2023
 
 ### Versions ET-Service 5.30.0 and ET-Collector 5.30.0
