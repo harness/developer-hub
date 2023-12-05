@@ -26,7 +26,14 @@ import { MODULES } from "../../constants";
           module: MODULES.cd,
           description:
             "Set up a pipeline to scan container images.",
-          link: "/tutorials/security-tests/quickstarts/container-scan-aqua-trivy.md",
+          link: "/tutorials/security-tests/quickstarts/container-scan-aqua-trivy",
+        },
+        {
+          title: "Trigger automatic scans based on GitLab merge requests",
+          module: MODULES.cd,
+          description:
+            "Launch pipeline builds and scans automatically based on GitLab merge requests.",
+          link: "/tutorials/security-tests/quickstarts/gitlab-ci-integration.md",
         },
       ],
     },

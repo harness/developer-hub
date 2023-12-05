@@ -142,7 +142,7 @@ Harness  supports two RBAC roles specifically for STO users. You can customize t
 
 * **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions. 
 
-These workflows are covered in [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline).
+These workflows are covered in [Your first STO pipeline](/tutorials/security-tests/learn-about-sto/your-first-sto-pipeline).
 
 ### How do I set up a  CheckMarx scan step in YAML?
 
