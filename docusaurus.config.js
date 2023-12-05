@@ -377,6 +377,10 @@ const config = {
                 to: 'https://harness.io/products/cloud-cost',
               },
               {
+                label: 'Code Repository',
+                to: 'https://harness.io/products/code-repository',
+              },
+              {
                 label: 'Service Reliability Management',
                 to: 'https://harness.io/products/service-reliability-management',
               },
