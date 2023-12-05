@@ -186,7 +186,7 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "ECS task scale",
     description:
-      "ECS task stop injects chaos to stop the ECS tasks based on the services or task replica ID and checks the task availability.",
+      "ECS task scale is an AWS fault that injects chaos to scale (up or down) the ECS tasks based on the services and checks the task availability.",
     tags: [],
     category: "aws",
   },

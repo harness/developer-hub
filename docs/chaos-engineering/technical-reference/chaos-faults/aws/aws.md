@@ -536,11 +536,12 @@ This fault determines the resilience of an application when ECS tasks unexpected
 
 ### ECS task scale
 
-ECS task scale is an AWS fault that injects chaos to scale (up or down) the ECS tasks based on the services or task replica ID and checks the task availability. This fault makes the tasks unreachable in the application.
+ECS task scale is an AWS fault that injects chaos to scale (up or down) the ECS tasks based on the services and checks the task availability. This fault affects the availability of a task in an ECS cluster.
 
 <accordion color="green">
     <summary>Use cases</summary>
-This fault makes the tasks unreachable when all the tasks in the service are scaled down in the application.
+ECS task scale affects the availability of a task in a cluster.  
+It determines the resilience of an application when ECS tasks are unexpectedly scaled up (or down).
 </accordion>
 </FaultDetailsCard>
 
