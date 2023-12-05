@@ -144,3 +144,9 @@ Yes, for details, go to [https://developer.harness.io/docs/continuous-integratio
 ## Does Harness CI support script execution?
 
 Yes, for details, go to [Run scripts](https://developer.harness.io/docs/category/run-scripts).
+
+##  Does gsutil work in Harness cloud environment?
+
+No, gsutil is deprecated for use in Harness Cloud. Please use gcloud equivalent commands instead. 
+
+For example use `gcloud storage cp` instead of `gsutil cp`
