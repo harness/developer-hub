@@ -5,12 +5,6 @@ sidebar_position: 2
 sidebar_label: Onboarding guide
 ---
 
-:::note
-
-Currently, the Code Repository module is in beta and behind a feature flag. Contact [Harness Support](mailto:support@harness.io) if you're interested in this module.
-
-:::
-
 This guide explains what you need to know to get started with the Harness Code Repository module.
 
 1. If you're new to Harness, review the [Harness Platform onboarding guide](/docs/platform/get-started/onboarding-guide) before onboarding to Code.
