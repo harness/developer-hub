@@ -276,7 +276,7 @@ You can now reference secret values in JSON files by using XPATH. Support is ava
 
    For more information on the latest supported delegate version API, go to [Use automatic upgrade with custom delegate images](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images).
 
-### Version 81015
+### Version 23.11.81015
 
 #### Hotfix
 
