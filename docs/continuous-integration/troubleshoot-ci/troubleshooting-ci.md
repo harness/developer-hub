@@ -199,7 +199,13 @@ pipeline:
             branch: main
 ```
 
-## Kubernetes cluster build infrastructure issues
+## Can't generate SonarQube report due to shallow clone
+
+* Error message: `Shallow clone detected, no blame information will be provided. You can convert to non-shallow with 'git fetch --unshallow`
+* Cause: If the [depth setting](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#depth) in your pipeline's codebase configuration is shallow, SonarQube can't generate a report. This is a [known SonarQube issue](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scm-integration/#known-issues).
+* Solution: Change the `depth` to `0`.
+
+## Build infrastructure issues
 
 ### CI pods appear to be evicted by Kubernetes autoscaling
 
@@ -223,15 +229,15 @@ For more information, refer to the following Microsoft Azure troubleshooting doc
 
 [A headless service is required if you are using Istio MTLS STRICT mode.](../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#create-headless-service-for-istio-mtls-strict-mode)
 
-## Harness Cloud build infrastructure issues
+### Harness Cloud build infrastructure issues
 
 For troubleshooting information for Harness Cloud build infrastructure, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md#troubleshooting-harness-cloud-build-infrastructure).
 
-## AWS VM build infrastructure issues
+### AWS VM build infrastructure issues
 
 For troubleshooting information for AWS VM build infrastructures, go to [Set up an AWS VM build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure.md#troubleshooting).
 
-## Local runner build infrastructure issues
+### Local runner build infrastructure issues
 
 For troubleshooting information for local runner build infrastructures, go to [Set up a local runner build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md#troubleshooting).
 
