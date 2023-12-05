@@ -1860,9 +1860,14 @@ Enabling the flags (`PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE` and `PL_HIDE_ORGANIZATI
 
 Our priorities are configured as follows: [Step > Step Group > Stage > Pipeline > Connector]. In this scenario, the user can override at the pipeline (or any higher level), but without that override, it will result in a failure.
 
+#### How do I setup SMTP with AWS SES?
 
+Follow this AWS documentation to create SMTP crredentials using the SES console.
+https://docs.aws.amazon.com/ses/latest/dg/smtp-credentials.html
 
+Then feed those SMTP credentials in Harness SMTP connector
 
+See [SMTP Configuration](docs/platform/notifications/add-smtp-configuration/)
 
 
 
