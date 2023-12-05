@@ -232,7 +232,7 @@ Harness NextGen release 81205 includes the following changes for the Harness Del
 
 #### Hotfix
 
-- GitHub status checks were not refreshing for pipeline executions. Harness added a retry to the GitHub status update API call to resolve the issue. (CI-10618)
+- GitHub status checks were not refreshing for pipeline executions. Harness added a retry to the GitHub status update API call to resolve the issue. (CI-10618, ZD-54673)
 
 ### Harness version 81008, Harness Delegate version 23.10.81010
 
