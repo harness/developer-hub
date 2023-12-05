@@ -309,10 +309,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Sets pipeline CRUD calls to filter creation asynchronously. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
-        <td>CDS_OCI_HELM_ECR_CONFIG_SUPPORT_NG</td>
-        <td>Support for ECR as an OCI Helm repo but with temporary credentials. <b>This feature is under development, and will be Beta soon.</b></td>
-    </tr>
-    <tr>
         <td>CDS_NG_BARRIER_STEPS_WITHIN_LOOPING_STRATEGIES</td>
         <td>Support Barrier steps within looping strategies. <b>This feature is under development, and will be Beta soon.</b> </td>
     </tr>
