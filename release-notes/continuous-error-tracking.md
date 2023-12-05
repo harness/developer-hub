@@ -25,15 +25,11 @@ These release notes describe recent changes to Harness Continuous Error Tracking
 
 :::
 
-## Latest: November 02, 2023, versions ET-Service 5.30.0 and ET-Collector 5.30.0
+## Latest: December 01, 2023, versions ET-Service 5.31.0 and ET-Collector 5.31.0
 
 ### New features and enhancements
 
-- The Summary page loading time has been optimized. Now, the Summary page loads faster, ensuring a better user experience. (CET-1233)
-
-- The event distribution chart now supports plotting a graph for new events. (CET-1610)
-
-- Various dependencies were upgraded to prevent security issues. (CET-1880)
+This release does not include new features and enhancements.
 
 
 ### Early access features
@@ -42,6 +38,96 @@ This release does not include any early access features.
 
 
 ### Fixed issues
+
+- The Events list would reset if an event not on the first page is resolved. (CET-1775)
+  
+  This issue has been resolved. Now, resolving an event not on the first page would not reset the list.
+  
+- Events plotted by the Event Distribution graph did not represent newly occurred events. (CET-1825)
+  
+  This issue has been resolved. Now, recently occurred events will display properly on the Event Distribution graph.
+
+- The Agents page was not showing a refresh button when no agents were connected. (CET-1829)
+
+  This issue has been resolved. Now, the refresh button would show even when no agents are connected.
+
+- Deletion of a saved search wouldn't delete the associated notifications. (CET-1947)
+
+  This issue has been resolved. Now, when a saved search is deleted, all its notifications are deleted with it.
+
+- Logged Error events were incorrectly shown as Logged Warning events. (CET-1971)
+
+  This issue has been resolved. Now, events would be displayed correctly.
+
+- Saved search notifications could fire even when the event count was 0. (CET-1972)
+
+  This issue has been resolved. Now, saved search notifications would not send if the event count is 0.
+
+- Tiny links would direct to 404 in case the event is missing. (CET-1991)
+
+  This issue has been resolved. Now, in case an event cannot be found, the tiny links would direct to the CET page and show an error message.
+
+
+### Hotfixes
+
+This release does not include hotfixes.
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### December 01, 2023, Version ET-Agent 5.7.0
+
+
+##### New features and enhancements
+
+- Added support for Mac. Support includes Intel and Apple M1/M2 chips. (CET-59)
+
+
+##### Early access features
+
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+- The CET Agent might continuously try to reconnect while using incorrect credentials. (CET-1793)
+  
+  This issue has been resolved. Now, the CET Agent would stop reconnecting if the wrong credentials are being used.
+
+- The CET Agent (v5.6.0) was having some incompatibilities with some APM agents like AppDynamics and NewRelic. (CET-1863)
+  
+  This issue has been resolved. The CET Agent is again compatible with other APM agents.
+
+- The CET Agent might cause a steep increase of memory in some scenarios. (CET-1867)
+  
+  This issue has been resolved. The CET Agent memory consumption have been substantially reduced.
+
+
+##### Hotfixes
+
+This release does not include hotfixes.
+
+
+### November 02, 2023, versions ET-Service 5.30.0 and ET-Collector 5.30.0
+
+#### New features and enhancements
+
+- The Summary page loading time has been optimized. Now, the Summary page loads faster, ensuring a better user experience. (CET-1233)
+
+- The event distribution chart now supports plotting a graph for new events. (CET-1610)
+
+- Various dependencies were upgraded to prevent security issues. (CET-1880)
+
+
+#### Early access features
+
+This release does not include any early access features.
+
+
+#### Fixed issues
 
 - The ARC screen displayed variables that appeared expandable but were unresponsive. (CET-1116)
   
@@ -80,15 +166,10 @@ This release does not include any early access features.
   This issue has been resolved. Now, events appear as expected when using CET in a deployment pipeline.
 
 
-### Hotfixes
+#### Hotfixes
 
 This release does not include hotfixes.
 
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### October 19, 2023, versions ET-Service 5.29.3 and ET-Collector 5.29.0
 
