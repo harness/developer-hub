@@ -243,10 +243,6 @@ The following early access (beta) features are available for the Harness Feature
 
 No early access (beta) features are available for Harness Internal Developer Portal. -->
 
-## Code early access features
-
-Currently, the entire [Code Repository module](/docs/code-repository/get-started/overview) is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) if you're interested in this module.
-
 ## STO early access features
 
 The following early access (beta) feature is available for the Harness Security Testing Orchestration module.
