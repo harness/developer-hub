@@ -37,7 +37,7 @@ When you review a PR, you can leave feedback, request changes, or approve the PR
       * Harness Code also tracks file deletions and additions. If a file was deleted in a PR, and you marked it as viewed, if that file is later restored in the PR, Harness Code marks the file appropriately so you can review it in its restored state.
    * **Commits:** [Inspect commits](../work-in-repos/commit.md#inspect-a-commit) included in this PR. This is useful if you need to trace the PR's change history across commits.
    * **Checks:** Inspect the results of status checks for the PR.
-      * Harness pipelines [triggered](../pipelines/code-triggers.md) by PR creation or updates automatically report the pipeline run status on the PR.
+      * Harness pipelines [triggered](../pipelines/code-triggers.md) by PR creation or updates automatically report the pipeline run status and other pipeline/execution details on the PR.
       * Status checks can also be reported by [custom webhooks](../config-repos/webhooks.md).
       * Depending on the repository's [branch rules](../config-repos/rules.md), passing status checks might be required to [merge the PR](./merge-pr.md).
 

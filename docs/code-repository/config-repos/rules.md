@@ -1,14 +1,8 @@
 ---
-title: Enable protection rules
-description: Set up branch protection rules in Harness Code
+title: Enable branch rules
+description: Set up branch rules in Harness Code
 sidebar_position: 30
 ---
-
-:::note
-
-Currently, branch rules are in pre-beta. These features might not function as expected while they are in development.
-
-:::
 
 In Harness Code, you can create branch rules for a single branch or multiple branches in a repository. Branch rules establish criteria for approving and merging PRs, define who can create and delete branches, and more.
 
