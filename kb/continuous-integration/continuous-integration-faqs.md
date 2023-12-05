@@ -74,10 +74,6 @@ Yes, there is a single-line limit of 25KB. If an individual line exceeds this li
 
 If you need to extract long log lines or logs larger than 5MB, include a Run step in your pipeline that writes the logs to a file and uploads the file as an artifact. For more information, go to [Troubleshoot CI: Truncated execution logs](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#truncated-execution-logs).
 
-#### Is there a way to generate a dynamic file with some information in one stage of the pipeline and consume that file content in a different pipeline stage?
-
-Yes. You can [share data across steps and stages](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages).
-
 #### When we pull artifact/images do we store them on delegate?
 
 CI step build runs on separate build pod which will be cleaned automatically after the execution and we don't store any images locally on the delegate as part of the execution.
@@ -143,11 +139,6 @@ Yes, you can enable caching in Kaniko builds by utilizing the Remote Cache Repos
 #### Can pipeline execution be aborted when the referenced branch is deleted?
 
 This is not natively supported however we could have a pipeline listening on delete webhook event and abort all the running pipelines referencing the deleted branch via API.
-
-#### How can we check build VM resource utilization for build running in Harness cloud?
-
-Currently this is not supported natively. We could use use a parallel step to check the resources utilised. More detailas about this can be found in the below doc
-[https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#use-a-parallel-step-to-monitor-failures](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#use-a-parallel-step-to-monitor-failures)
 
 #### Why can't we find the Notify Option in my Stage Template?
 
@@ -435,10 +426,6 @@ No, Harness also supports multiple versions of xcode. Please see our document on
 #### Which Drone plugins are supported in Harness CI?
 You can build your own plugins or use one of the many preexisting plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/), [GitHub Actions Marketplace](https://github.com/marketplace?type=actions), or the [Bitrise Integrations library](https://bitrise.io/integrations/steps).
 Yes, for details, go to [Use plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins).
-
-#### Using S3 to cache and restore between Steps?
-
-Yes, for details, go to [Save and Restore Cache from S3](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/).
 
 #### Using GCS to cache and restore between Steps?
 
@@ -883,10 +870,6 @@ You need to set the [Service Account Name in the Kubernetes cluster build infras
 #### Does the Upload Artifacts to S3 step compress files before uploading them?
 
 No. If you want to upload a compressed file, you must use a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to compress the artifact before uploading it.
-
-#### Can I build an image without pushing it to the registry?
-
-Yes, you can [build without pushing](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push).
 
 #### Can I use my own secrets manager with Harness Cloud build infrastructure?
 

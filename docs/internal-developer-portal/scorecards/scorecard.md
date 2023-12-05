@@ -6,6 +6,8 @@ helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/internal-developer-portal/features/scorecard
 ---
 
 ### Overview
@@ -14,7 +16,7 @@ Scorecards play a pivotal role in ensuring software components are developed and
 
 <docvideo src="https://www.youtube.com/embed/jvLDdWS3rFE?si=MBalzaKnDnr4p4QV" />
 
-<docimage path={require('../../internal-developer-portal/features/static/scorecard.png')}/>
+<docimage path={require('./static/scorecard.png')}/>
 
 <details>
 <summary>Purpose & Concept of Scorecards</summary>
@@ -24,7 +26,7 @@ Scorecards play a pivotal role in ensuring software components are developed and
 - **Gamification**: Encourage developers to adhere to standards by providing scores.
 - **Confidence Estimation**: Help teams estimate the reliability of software based on its score.
 
-<docimage path={require('../../internal-developer-portal/features/static/concept-scorecard.png')}/>
+<docimage path={require('./static/concept-scorecard.png')}/>
 
 - **Check**: A check is a query performed against a data point for a software component which results in either `Pass` or `Fail`.
 - **Data Source**: Data Sources are third-party providers which can provide a specific type of data for a software component. Example - GitHub, GitLab, Harness, Pagerduty, etc.
@@ -43,9 +45,10 @@ If you have Scorecard UI components visible on your Catalog component pages, you
 
 ### Scorecard Components in IDP
 
-Scorecard has two main UI components which are developer facing and lives in the Catalog - 1. A small **Card** for the Overview page with the scores and, 2. a **Tab** view with details of the checks and how the score got computed. This is illustrated below. The Tab view contains detailed comprehensive information as shown in the image under [overview](/docs/internal-developer-portal/features/scorecard#overview).
+Scorecard has two main UI components which are developer facing and lives in the Catalog - 1. A small **Card** for the Overview page with the scores and, 2. a **Tab** view with details of the checks and how the score got computed. This is illustrated below. The Tab view contains detailed comprehensive information as shown in the image under [overview](/docs/internal-developer-portal/scorecards/scorecard#overview)  
 
-<docimage path={require('../../internal-developer-portal/features/static/scorecard-overviewpage.png')}/>
+
+<docimage path={require('./static/scorecard-overviewpage.png')}/>
 
 
 1. #### Adding Card and Tab Content for an Entity
@@ -74,7 +77,7 @@ Scorecard has two main UI components which are developer facing and lives in the
   contents:
     - component: EntityScorecardContent
 ```
-<docimage path={require('../../internal-developer-portal/features/static/entity.png')}/>
+<docimage path={require('./static/entity.png')}/>
 
 ## Create Your Scorecard
 
@@ -82,13 +85,13 @@ Scorecard has two main UI components which are developer facing and lives in the
   - Add a "Name" to it and give the criteria to **Filter your catalog entities**.
   - Followed by adding the "Checks" and then select **Publish Scorecard**.
 
-  <docimage path={require('../../internal-developer-portal/features/static/rename-scorecard.png')}/>
+  <docimage path={require('./static/rename-scorecard.png')}/>
 
   :::info
 
   Make sure the values under "Filter catalog entities for which the scorecard is evaluated" should match with your entity "owner" and "type" as shown below -
 
-  <docimage path={require('../../internal-developer-portal/features/static/caution-idp-scorecard.png')}/>
+  <docimage path={require('./static/caution-idp-scorecard.png')}/>
 
   :::
 
@@ -96,11 +99,11 @@ Scorecard has two main UI components which are developer facing and lives in the
 
 - Once you have created your Scorecard, in the Overview page you can view the number of components for which it is applied and the overall health of the components in terms of "%"
 
-<docimage path={require('../../internal-developer-portal/features/static/scorecard-overview.png')}/>
+<docimage path={require('./static/scorecard-overview.png')}/>
 
 - On clicking the overall health button dispalyed for your scorecard you will be redirected to a page with detailed information regarding the compoenets tracked through the scorecard as well as the time detailed socre of each component. 
 
-<docimage path={require('../../internal-developer-portal/features/static/component-overview.png')}/>
+<docimage path={require('./static/component-overview.png')}/>
 
 
 ## Disabling Scorecards
@@ -109,4 +112,4 @@ Scorecard has two main UI components which are developer facing and lives in the
 
 - Additionally, you can also change the status of all the Scorecards you have to "draft". This will ensure that the computation will not run and will not be shown to the developer. 
 
-<docimage width="1750vw" path={require('../../internal-developer-portal/features/static/remove-scorecard.png')}/>
+<docimage width="1750vw" path={require('./static/remove-scorecard.png')}/>

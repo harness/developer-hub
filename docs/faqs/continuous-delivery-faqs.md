@@ -408,6 +408,15 @@ Yes. You can add a **Terraform Destroy** step to remove any provisioned infrast
 
 See [Remove provisioned infrastructure with the Terraform Destroy step](../continuous-delivery/cd-infrastructure/terraform-infra/remove-provisioned-infra-with-terraform-destroy.md).
 
+### GitOps
+
+#### Can I use Harness GitOps images from a local registry?
+
+Yes. Pulling images from your private registry is possible and can be done by pulling the publicly available images to your private registry and then updating the GitOPS Agent YAML to use the private registry.
+
+#### Can I automate the provisioning of the GitOps Agent without creating the agent in the UI first?
+Yes. You can use the API or Terraform which will also dynamically generate the YAML that can be applied.
+
 ### Harness Configure as Code
 
 For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
@@ -460,6 +469,75 @@ The use of this information is governed by our [Privacy Policy](https://harness.
 
 If you would like us to stop processing your data, or if you have any other questions or requests concerning your data, please contact the [Harness Privacy Team](mailto:privacy@harness.io). For more information on how we process your data, go to our [Privacy Policy](https://harness.io/privacy).
 
+### Azure: general questions
+
+#### Does Harness support Azure Cache?
+
+Azure Cache is not an application that a user deploys. It’s a managed Redis service by Azure. Harness can assist in spinning up Azure Cache by our infrastructure provisioning capabilities:
+
+- [Azure ARM](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning) 
+- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning) 
+- [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness) 
+
+#### Does Harness support Azure App Services?
+
+No, we do not support Azure App Services as a native swimlane like Azure Web Apps.
+
+We do support [deployment templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial) to achieve the use case.
+
+Or you can orchestrate the release via: 
+
+- [Azure ARM](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning) 
+- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning) 
+- [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
+
+#### Does Harness support Cosmos DB?
+
+Harness doesn’t do database orchestration out of the box today. To orchestrate the SQL Changes to the database, you need to customize our functionality using the following:
+
+- [Container step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step)
+- [Container step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups) 
+- [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) 
+- [Shell Script Provisioner](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning) 
+
+To create a Cosmos DB, we support the creation via:
+
+- [Azure ARM](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning) 
+- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning) 
+- [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
+
+
+#### Does the Azure connector support service principles? 
+
+Yes. We support System Assigned Managed Identity and User Assigned Managed Identity in the Azure Global and Government environments.
+
+The service principal maps to a managed identity.
+
+#### Does Harness support Azure Kubernetes Infrastructure for deployment targets?
+
+Yes, we do support Azure Kubernetes Infrastructure for deployment targets.
+
+For more information, go to [Deploy Azure ACR to Azure AKS](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart).
+
+#### Does Harness work with Azure Key Vault?
+
+Yes, we support Azure Key Vault today, which also supports service principles via Managed Identity. We can fetch secrets from your Key Vault. We will not create secrets directly in Key Vault.
+
+For more information, go to [Add an Azure Key Vault secret manager](/docs/platform/secrets/secrets-management/azure-key-vault).
+
+#### Does Harness support deploying to VMs in Azure?
+
+Yes, we do support the deployment of traditional (JAR, WAR, TAR, .ZIP) and Docker artifacts into Azure Managed VMs.
+
+We can perform SSH deployments into Linux hosts managed by Azure.
+
+For more information, go to:
+
+- [VM deployments using SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)
+- [Windows VM deployments using WinRM](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
+
+
+
 ### Azure Web Apps
 
 For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
@@ -482,6 +560,19 @@ The Rolling strategy doesn't suit Azure Web App deployments, as they use slots f
 - You can't mix Windows and Linux apps in the same App Service plan.
 - Within the same resource group, you can't mix Windows and Linux apps in the same region.
 - Harness uses the Azure SDK among other methods and Authenticated proxy is not supported for Azure SDK. Consequently, you cannot use Azure connections for artifacts, machine images, etc, that require proxy authentication. This is an Azure limitation, not a Harness limitation. This is a known Azure limitation with Java environment properties and their SDK.
+
+#### How many Azure Web Apps execution steps are there?
+
+There are 4 steps.
+
+![picture 0](static/d0309c3510df58cc78c724f41b7da883076f2bf64c507e14ab083a0d8b6b1aad.png)  
+
+We support a basic Azure slot deployment, a canary deployment, and a blue green deployment of Azure Web Apps.
+
+We also support automated rollback for Azure Web App.
+
+For more information, go to [Azure Web Apps deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial).
+
 
 ### AWS ASG
 
@@ -886,7 +977,24 @@ See [Fixed Values, runtime inputs, and expressions](/docs/platform/variables-and
 
 #### Error evaluating certain expressions in a Harness pipeline
 
-Some customer shave raised concernes about errors while trying to evaluable expressions (example: `<+pipeline.sequenceId>`) while similiar expressions do get evaluated. In this case the concatenation in the expression `/tmp/spe/<+pipeline.sequenceId>` is not working because a part of expression `<+pipeline.sequenceId>` is integer so the concatenation with `/tmp/spec/` is throwing error because for concat, both the values should be string only. 
+Some customers have raised concernes about errors while trying to evaluable expressions (example: `<+pipeline.sequenceId>`) while similiar expressions do get evaluated. In this case the concatenation in the expression `/tmp/spe/<+pipeline.sequenceId>` is not working because a part of expression `<+pipeline.sequenceId>` is integer so the concatenation with `/tmp/spec/` is throwing error because for concat, both the values should be string only. 
 
 So we can invoke the `toString()` on the integer value then our expression should work. So the final expression would be `/tmp/spe/<+pipeline.sequenceId.toString()>`. 
 
+#### How to carry forward the output variable when looping steps?
+
+If you are using looping strategies on steps or step groups in a pipeline, and need to carry forward the output variables to consequtive steps or with in the loop, you can use  `<+strategy.iteration>` to denote the iteration count.
+
+For example, assume a looping strategy is applied to a step with the identifier `my_build_step.` which has an output variable `my_variable` The expression `<+pipeline.stages.my_build_step.output.outputVariables.my_variable>` won't work. Instead, you must append the index value to the identifier in the expression, such as: `<+pipeline.stages.my_build_step_0.output.outputVariables.my_variable>`
+
+If you are using with in the loop you can denote the same as `<+pipeline.stages.my_build_step_<+strategy.iteration>.output.outputVariables.my_variable>`
+
+See [Iteration Counts](docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#iteration-counts)
+
+#### How do I get the output variables from pieeline execution using Harness NG API?
+
+We have an api to get the pipeline summary:
+ 
+https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2
+ 
+If you pass the flag `renderFullBottomGraph` as true to this api it also gives you the output variables in the execution. You can parse the response to get the output variables and use it accordingly.

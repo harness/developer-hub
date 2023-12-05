@@ -165,12 +165,6 @@ For more information about GitHub's deprecation of RSA support, go to the GitHub
 
 You can use a GitHub App to authenticate a Harness GitHub connector. To use this authentication method, you need to create and install a GitHub App, get the app's **installation ID** and **app ID**, and create a private key for the app. For instructions, go to [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support).
 
-:::note
-
-Currently, the option to use a GitHub App as the primary authentication method for a GitHub connector is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 1. For **Authentication**, select **GitHub App**.
 2. Enter the **GitHub Installation Id**. You can find the installation ID in the URL of your installed GitHub App, such as:
 
