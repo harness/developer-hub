@@ -634,7 +634,7 @@ Some steps, such as the CI init step, do not return delegate information in the 
 
 :::
 
-You can expand the rows to view the complete JSON object, and you can also scroll horizontally to view the complete error message. This way, you can see the full error log and troubleshoot the connector issue effectively.
+Harness displays the complete error message, enabling you to troubleshoot the connector issue effectively.
 
 :::info note
 This feature is not available for Harness Self-Managed Enterprise Edition.
