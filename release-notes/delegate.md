@@ -228,7 +228,7 @@ Harness NextGen release 81205 includes the following changes for the Harness Del
 
 - The Tags field in the pipeline filter is now optional. This change allows you to filter either by tag name or a combination of tag name and value. (CDS-78992)
 
-### Version 81210
+### Version 23.12.81210
 
 #### Hotfix
 
