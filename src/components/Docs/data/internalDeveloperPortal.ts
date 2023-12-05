@@ -85,7 +85,7 @@ export const docsCards: CardSections = [
         title: "Scorecards",
         module: MODULES.idp,
         description: "Learn how to use Scorecards",
-        link: "docs/internal-developer-portal/scorecards/scorecard",
+        link: "/docs/internal-developer-portal/scorecards/scorecard",
       },
     ],
   },
