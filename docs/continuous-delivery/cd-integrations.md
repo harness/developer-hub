@@ -125,10 +125,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 .</td>
     </tr>
     <tr>
-        <td>CDS_USE_OLD_SERVICE_V1</td>
-        <td>Keeps Harness accounts on Service V1. This feature flag is only for customers who have yet to migrate to V2.</td>
-    </tr>
-    <tr>
         <td>CDS_REMOVE_COMMENTS_FROM_VALUES_YAML</td>
         <td>Disables the resolving of comments in values.yaml files.</td>
     </tr>
