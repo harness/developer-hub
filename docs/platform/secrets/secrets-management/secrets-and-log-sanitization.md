@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness sanitizes deployment logs and any script outputs to mask text secret values.
+Harness sanitizes deployment logs and any script outputs to mask text secret values and JSON web tokens (JWTs).
 
 First, let's review secrets in Harness, and then look at how Harness sanitizes logs and outputs to prevent secrets from being exposed.
 
@@ -20,7 +20,7 @@ You can create secrets in Harness as described in:
 * [Add and Reference File Secrets](/docs/platform/secrets/add-file-secrets)
 * [Add SSH Secrets](/docs/platform/secrets/add-use-ssh-secrets.md)
 
-For text and file secrets, the secrets are stored in the Secrets Manager. For steps to add a Secret Manager, see [Add a Secret Manager](/docs/platform/secrets/secrets-management/add-secrets-manager.md).
+For text and file secrets, the secrets are stored in the Secrets Manager. For steps to add a Secret Manager, go to [Add a Secret Manager](/docs/platform/secrets/secrets-management/add-secrets-manager.md).
 
 Once a secret is added, you can use other Harness entities instead of settings.
 
