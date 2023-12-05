@@ -203,10 +203,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables users to select Azure WebApps in a drop down for slot deployments. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>CDP_AWS_SAM</td>
-        <td>Enables <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments">AWS SAM deployments</a> <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDS_RESOLVE_OBJECTS_VIA_JSON_SELECT</td>
         <td>Support resolution of objects via the JSON Select Command in the HTTP step. <b>This feature is in Beta.</b></td>
     </tr>

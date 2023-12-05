@@ -497,9 +497,8 @@ The following environment variables have been configured in the images:
 
 To leverage the Harness Connector for AWS SAM and Serverless.com container steps, follow these steps: 
 
-1. Ensure that following Harness feature flags are enabled:
-  1. `CDS_CONTAINER_STEP_GROUP`.
-  2. For AWS SAM: `CDP_AWS_SAM`.
+1. Ensure that following Harness feature flag is enabled:
+   - `CDS_CONTAINER_STEP_GROUP`.
 
 ### Connector configuration
 
