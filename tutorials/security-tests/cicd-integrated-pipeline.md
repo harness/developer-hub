@@ -1,7 +1,7 @@
 ---
 title: Create an integrated STO/CI pipeline
 description: Learn how to include STO scans in CI and CD pipelines and stop builds when STO finds any "show-stopper" vulnerabilities.
-sidebar_position: 20
+sidebar_position: 120
 helpdocs_topic_id: zy4h4ch6dh
 helpdocs_category_id: 8nywcs2sa7
 helpdocs_is_private: false

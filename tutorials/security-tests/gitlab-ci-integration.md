@@ -1,7 +1,7 @@
 ---
 title: Set up STO integrations with GitLab CI
 description: Launch pipeline builds and scans automatically based on GitLab merge requests.
-sidebar_position: 25
+sidebar_position: 80
 ---
 
 ```mdx-code-block
