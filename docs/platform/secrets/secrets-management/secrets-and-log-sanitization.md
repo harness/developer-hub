@@ -41,12 +41,11 @@ Any secrets manager requires a running Harness Delegate to encrypt and decrypt s
 
 ### Sanitization
 
-When a text secret is displayed in a deployment log, Harness substitutes the text secret value with asterisks (\*) so that the secret value is never displayed.​
+When a text secret or a JWT is displayed in a deployment log, Harness substitutes the value with asterisks (\*) so that the secret value is never displayed.​
 
 For example, if you have a Harness text secret with the identifier **doc-secret** containing `foo`.​
 
 You can reference it in a Shell Script step like this:​
-
 
 ```
 echo "text secret is: " <+secrets.getValue("doc-secret")>
@@ -91,8 +90,7 @@ When you deploy a [Kubernetes Secret object](https://kubernetes.io/docs/concepts
 
 Here is a Secret example from the manifest in the Harness Service (using Go templating):​
 
-
-```
+```yaml
 {{- if .Values.dockercfg}}​  
 apiVersion: v1  
 kind: Secret  
@@ -106,10 +104,9 @@ type: kubernetes.io/dockercfg
 ---  
 {{- end}}
 ```
-Here is the deployed Secret in the log:​
+Here is the deployed secret in the log:​
 
-
-```
+```yaml
 apiVersion: v1​  
 kind: Secret  
 metadata:  
@@ -117,7 +114,8 @@ metadata:
 stringData:  
     key2: '***'
 ```
-### Changing Secrets in Scripts and RBAC
+
+### Changing secrets in scripts and RBAC
 
 Harness log sanitizing only detects exact matches of a secret or any line of it if it is multi-line.
 
@@ -127,6 +125,6 @@ If the modification is minor, the secret value can be easily deciphered which is
 
 To avoid this issue, use Harness RBAC to control which users can access a secret.​
 
-### Log Sanitizer Detects Exact Matches Only
+### Log sanitizer detects exact matches only
 
 The log sanitizer detects only exact matches of the secret or any line of the secret if the secret is multiline.
