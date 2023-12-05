@@ -1,7 +1,7 @@
 ---
 title: Your first STO pipeline
 description: Set up a simple pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.
-sidebar_position: 10
+sidebar_position: 20
 ---
 
 This tutorial shows you how to use the Harness Security Testing Orchestration (STO) module to perform code security scanning in a Harness pipeline. You'll set up a pipeline with one scanner, run scans, analyze the results, and learn about the key features of STO.

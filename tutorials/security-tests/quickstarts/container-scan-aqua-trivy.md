@@ -14,7 +14,7 @@ In this tutorial, you'll set up a simple [orchestration workflow](/docs/security
 
 2. An Aqua-Trivy step that runs the scan and ingests the results into STO.
 
-![](./static/container-scan-trivy/pipeline-editor-stage.png)
+![](../static/container-scan-trivy/pipeline-editor-stage.png)
 
 
 :::important important notes
@@ -111,11 +111,11 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
    If you used the example image, you'll see that the pipeline failed for an entirely expected reason: you configured the Trivy step is [fail the pipeline](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) if the scan detected any critical vulnerabilities. The final log entry for the Semgrep step reads: `Exited with message: fail_on_severity is set to critical and that threshold was reached.`
 
-   ![pipeline failed, critical issues found](./static/container-scan-trivy/execution-snyk-labs.png)
+   ![pipeline failed, critical issues found](../static/container-scan-trivy/execution-snyk-labs.png)
 
 3. Select **Security Tests** and examine any issues detected by your scan.
 
-   ![view scan results](./static/container-scan-trivy/scan-results-snyklabs-goof.png)
+   ![view scan results](../static/container-scan-trivy/scan-results-snyklabs-goof.png)
 
 ### Specify the baseline
 
@@ -129,7 +129,7 @@ It is [good practice](/docs/security-testing-orchestration/get-started/key-conce
 
 2. Select the baseline you want for your target. 
 
-![set the baseline](./static/container-scan-trivy/snyklabs-goof-baseline-set.png)
+![set the baseline](../static/container-scan-trivy/snyklabs-goof-baseline-set.png)
 
 
 ### YAML pipeline example

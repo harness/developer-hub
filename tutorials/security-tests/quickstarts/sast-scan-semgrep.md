@@ -10,7 +10,7 @@ This tutorial shows you how to scan your codebases using [Semgrep](https://semgr
 
 In this tutorial, you'll set up a simple [ingestion-only workflow](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) with two steps. The first step runs the scan; the second step ingests the results.
 
-![ingestion-only workflow](./static/sast-semgrep-tutorial/ingestion-only-workflow.png)
+![ingestion-only workflow](../static/sast-semgrep-tutorial/ingestion-only-workflow.png)
 
 :::important important notes
 
@@ -96,7 +96,7 @@ Now you will add a step that runs a scan using the local Semgrep container image
          - Key : `SEMGREP_APP_TOKEN`
          - Value : Click the type selector (right), set the value type to **Expression**, and enter the value `<+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")>`. 
 
-           ![set the value type](./static/sast-semgrep-tutorial/set-value-type.png)
+           ![set the value type](../static/sast-semgrep-tutorial/set-value-type.png)
 
       2. Limit Memory = **4096Mi** (_Kubernetes or Docker infrastructures only_)
 
@@ -142,11 +142,11 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
 
    If you used the [example repository](https://github.com/williamwissemann/dvpwa) mentioned above, you'll see that the pipeline failed for an entirely expected reason: the Semgrep step is [configured to fail the pipeline](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) if the scan detected any critical vulnerabilities. The final log entry for the Semgrep step reads: `Exited with message: fail_on_severity is set to critical and that threshold was reached.`
 
-   ![pipeline failed, critical issues found](./static/sast-semgrep-tutorial/pipeline-failed-critical-issues-found.png)
+   ![pipeline failed, critical issues found](../static/sast-semgrep-tutorial/pipeline-failed-critical-issues-found.png)
 
 3. Select **Security Tests** and examine any issues detected by your scan.
 
-   ![view scan results](./static/sast-semgrep-tutorial/security-tests-results.png)
+   ![view scan results](../static/sast-semgrep-tutorial/security-tests-results.png)
 
 ### Specify the baseline
 
@@ -160,7 +160,7 @@ It is [good practice](/docs/security-testing-orchestration/get-started/key-conce
 
 2. Select the baseline you want for your target. 
 
-![set the baseline](./static/sast-semgrep-tutorial/baseline-set.png)
+![set the baseline](../static/sast-semgrep-tutorial/baseline-set.png)
 
 
 ### YAML pipeline example
