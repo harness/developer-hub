@@ -234,3 +234,37 @@ For troubleshooting information for AWS VM build infrastructures, go to [Set up 
 ## Local runner build infrastructure issues
 
 For troubleshooting information for local runner build infrastructures, go to [Set up a local runner build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md#troubleshooting).
+
+## Test Intelligence issues
+
+You might encounter these issues when using Test Intelligence.
+
+### TI with Maven
+
+If you encounter issues with Test Intelligence when using Maven as your build tool, check the following configurations:
+
+* If your `pom.xml` contains `<argLine>`, then you must modify your argLine setup as explained in [Enable TI for Java, Kotlin, Scala - Build tool setting](../use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala.md#build-tool).
+* If you attach Jacoco or any agent while running unit tests, then you must modify your argLine setup as explained in [Enable TI for Java, Kotlin, Scala - Build tool setting](../use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala.md#build-tool).
+* If you use Jacoco, Surefire, or Failsafe, make sure that `forkCount` is not set to `0`. For example, the following configuration in `pom.xml` removes `forkCount` and applies `useSystemClassLoader` as a workaround:
+
+   ```xml
+   <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-surefire-plugin</artifactId>
+       <version>2.22.1</version>
+       <configuration>
+           <!--  <forkCount>0</forkCount> -->
+           <useSystemClassLoader>false</useSystemClassLoader>
+       </configuration>
+   </plugin>
+   ```
+
+### TI with Bazel
+
+If you encounter issues with Test Intelligence when using Bazel as your build tool, and you use a Bazel [container image](../use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala.md#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
+
+Bazel is already installed on Harness Cloud runners, and you don't need to specify a container image. For other build infrastructures, you must manually confirm that Bazel is already installed.
+
+### TI with Gradle
+
+If you encounter issues with Test Intelligence when using Gradle as your build tool, check your configuration's Gradle compatibility, as explained in [Enable TI for Java, Kotlin, Scala - Build tool setting](../use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala.md#build-tool).

@@ -29,6 +29,10 @@ To use TI for Ruby, you must:
 
 After you've successfully enabled TI, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md). You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
 
+<!-- Video:
+https://www.youtube.com/watch?v=jwYZysdZuNI-->
+<docvideo src="https://www.youtube.com/embed/jwYZysdZuNI" />
+
 ### Add the Run Tests step
 
 You need a [CI pipeline](../../prep-ci-pipeline-components.md) with a [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) where you'll add the **Run Tests** step. If you haven't created a pipeline before, try one of the [CI pipeline tutorials](/docs/continuous-integration/get-started/tutorials.md) or go to [CI pipeline creation overview](../../prep-ci-pipeline-components.md).
