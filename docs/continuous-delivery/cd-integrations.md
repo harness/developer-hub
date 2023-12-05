@@ -280,10 +280,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Removes the usage of time bucket gapfill from CD. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
-        <td>CDS_MULTI_SERVICE_PROPAGATION</td>
-        <td>Enables multi-service propagation for CD. <b>This feature is in Beta.</b> </td>
-    </tr>
-    <tr>
         <td>CDS_TERRAGRUNT_USE_UNIQUE
         _DIRECTORY_BASE_DIR_NG</td>
         <td>Enables a unique directory to support Terragrunt run-in-parallel. <b>This feature is in Beta.</b> </td>
