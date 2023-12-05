@@ -234,3 +234,79 @@ For troubleshooting information for AWS VM build infrastructures, go to [Set up 
 ## Local runner build infrastructure issues
 
 For troubleshooting information for local runner build infrastructures, go to [Set up a local runner build infrastructure - Troubleshooting](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md#troubleshooting).
+
+## Test Intelligence issues
+
+You might encounter these issues when using Test Intelligence.
+
+### TI with Maven
+
+If you encounter issues with Test Intelligence when using Maven as your build tool, check the following configurations:
+
+* If your `pom.xml` contains `<argLine>`, then you must modify your argLine setup as explained in [Enable TI for Java, Kotlin, Scala - Build tool setting](../use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala.md#build-tool).
+* If you attach Jacoco or any agent while running unit tests, then you must modify your argLine setup as explained in [Enable TI for Java, Kotlin, Scala - Build tool setting](../use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala.md#build-tool).
+* If you use Jacoco, Surefire, or Failsafe, make sure that `forkCount` is not set to `0`. For example, the following configuration in `pom.xml` removes `forkCount` and applies `useSystemClassLoader` as a workaround:
+
+   ```xml
+   <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-surefire-plugin</artifactId>
+       <version>2.22.1</version>
+       <configuration>
+           <!--  <forkCount>0</forkCount> -->
+           <useSystemClassLoader>false</useSystemClassLoader>
+       </configuration>
+   </plugin>
+   ```
+
+### TI with Bazel
+
+If you encounter issues with Test Intelligence when using Bazel as your build tool, and you use a Bazel [container image](../use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala.md#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
+
+Bazel is already installed on Harness Cloud runners, and you don't need to specify a container image. For other build infrastructures, you must manually confirm that Bazel is already installed.
+
+### TI with Gradle
+
+If you encounter issues with Test Intelligence when using Gradle as your build tool, check your configuration's Gradle compatibility, as explained in [Enable TI for Java, Kotlin, Scala - Build tool setting](../use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala.md#build-tool).
+
+### TI for Python
+
+If you encounter errors with TI for Python, make sure you have met the following requirements:
+
+* Your project is written in Python 3, and your repo is a pure Python 3 repo.
+* You don't use resource file relationships. TI for Python doesn't support resource file relationships.
+* You don't use dynamic loading and metaclasses. TI for Python might miss tests or changes in repos that use dynamic loading or metaclasses.
+* Your build tool is pytest or unittest.
+* The Python 3 binary is preinstalled on the build machine, available in the specified [Container Registry and Image](#container-registry-and-image), or installed at runtime in [Pre-Command](../use-ci/run-tests/test-intelligence/ti-for-python.md#pre-command-post-command-and-shell).
+* If you use another command, such as `python`, to invoke Python 3, you have added an alias, such as `python3 = "python"`.
+
+If you get errors related to code coverage for Python:
+
+* If you included [Build Arguments](../use-ci/run-tests/test-intelligence/ti-for-python.md#build-arguments), these don't need coverage flags (`--cov` or `coverage`).
+* You don't need to install coverage tools in [Pre-Command](../use-ci/run-tests/test-intelligence/ti-for-python.md#pre-command-post-command-and-shell).
+
+### TI for Ruby
+
+#### Cannot find rspec helper file
+
+The following log line indicates that Test Intelligence can't locate an rspec helper file in your code repo:
+
+```
+Unable to write rspec helper file automatically cannot find rspec helper file. Please make change manually to enable TI.
+```
+
+This usually occurs if the helper file has a name other than `spec_helper.rb`.
+
+To resolve this, add the following line to your rspec helper file:
+
+```
+set -e; echo "require_relative '/tmp/engine/ruby/harness/ruby-agent/test_intelligence.rb'" >> lib/vagrant/shared_helpers.rb
+```
+
+#### Dynamically generated code
+
+Test Intelligence results can be inaccurate for Ruby repos using dynamically generated code.
+
+#### Rails apps using Spring
+
+Test Intelligence results can be inaccurate for Rails apps using [Spring](https://github.com/rails/spring).
