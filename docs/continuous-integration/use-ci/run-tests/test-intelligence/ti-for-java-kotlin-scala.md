@@ -349,7 +349,7 @@ Used to [enable test splitting (parallelism) for TI](./ti-test-splitting.md).
 ### Pre-Command, Post-Command, and Shell
 
 * **Pre-Command:** You can enter commands for setting up the environment before running the tests, such as `mvn clean package dependency:copy-dependencies`
-* **Post-Command:** You can enter commands used for cleaning up the environment after running the test, such as `mvn package -DskipTests`.
+* **Post-Command:** You can enter commands used for cleaning up the environment after running the tests, such as `mvn package -DskipTests`.
 * **Shell:** If you supplied a script in **Pre-command** or **Post-command**, select the corresponding shell script type.
 
 ### Packages
