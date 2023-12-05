@@ -3,7 +3,7 @@ title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
 date: 2023-12-01T10:00
-sidebar_position: 9
+sidebar_position: 10
 ---
 
 ```mdx-code-block

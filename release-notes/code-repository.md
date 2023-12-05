@@ -1,14 +1,19 @@
 ---
-title: Software Supply Chain Assurance release notes
-sidebar_label: Software Supply Chain Assurance
-tags: [NextGen, "software supply chain assurance"]
-date: 2023-09-18T10:00
-sidebar_position: 15
+title: Code Repository release notes
+sidebar_label: Code Repository
+tags: [NextGen, "code repository"]
+date: 2024-01-01T10:00
+sidebar_position: 7
 ---
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/software-supply-chain-assurance/rss.xml" />
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
-These release notes describe recent changes to Harness Software Supply Chain Assurance.
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/code-repository/rss.xml" />
+
+These release notes describe recent changes to Harness Code Repository.
 
 :::info About Harness Release Notes
 
@@ -18,6 +23,14 @@ These release notes describe recent changes to Harness Software Supply Chain Ass
 
 :::
 
-## September 2023
+## January 2024
 
-The [Software Supply Chain Assurance module documentation](/docs/software-supply-chain-assurance) is live on the Harness Developer Hub. Check back soon for module release notes.
+### Initial release
+
+<!-- Version xxxx -->
+
+<!-- 01 Jan 2024 -->
+
+#### New features and enhancements
+
+We are excited to announce that the [Harness Code Repository module](/docs/code-repository) is now generally available.

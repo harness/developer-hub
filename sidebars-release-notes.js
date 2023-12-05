@@ -107,6 +107,15 @@ const sidebars = {
         },
         {
           type: "link",
+          label: "Code Repository release notes",
+          href: "pathname:///release-notes/code-repository/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
           label: "Continuous Delivery & GitOps release notes",
           href: "pathname:///release-notes/continuous-delivery/rss.xml",
           className: "sidebar-item-rss",
