@@ -15,9 +15,124 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
+###### Last Updated: 27th November 2023
+
+## November 2023
+
+### Android SDK
+
+#### New features and enhancements
+
+This release does not include new features.
+
+#### Early access features
+
+This release does not include early access features.
+
+##### Fixed issues in the Android SDK
+
+Released Android SDK 1.2.5
+
+ - Only log Flag/Segment not found warning in valid scenarios
+
+Released Android SDK 1.2.0 
+
+ - Add dependency-check-gradle to build
+ - Improve logging + Adding SDK error codes
+ - Update SSE implementation
+ - Bump minSdk to 21 and targetSdk to 33
+ - Fixed jsonVariation always returns default value
+ - Update client API code to use latest ff-api definitions
+- Fixed metrics reporting 0 in payload
+- Avoid posting metrics if total evaluation count is 0
+- Add refreshEvaluations
+- Retry on Client Authentication failures
+- Add retry interceptor to authentication
+- Add waitForInit
+
+### Golang SDK
+
+#### New features and enhancements
+
+This release does not include new features.
+
+#### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues in the Golang SDK and the Node SDK
+
+Released Golang SDK 0.1.16
+
+ - Add dead SSE stream detection
+ - SSE reconnection improvements
+ - Use Harness fork of r3labs/sse
+ - Add analytics headers to requests made by the SDK
+
+### Java SDK
+
+#### New features and enhancements
+
+This release does not include new features.
+
+#### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues in the Java SDK
+
+Released Java SDK 1.3.1
+
+ - Added Java 21 Support.
+ - Marked private attributes not working. 
+ - Improved stream restart logic. 
+
+### Node SDK
+
+#### New features and enhancements
+
+Released Node.js SDK 1.4.0
+ - Can now remediate build time CVEs.
+ - Can now fall back to identifier if the `bucketBy` attribute is not found.
+
+#### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues in the Node SDK
+
+ Released Node SDK 1.3.7
+
+ - Upgrade Axios due to CVE
+
+### Python SDK 
+
+#### New features and enhancements
+
+Released Python SDK 1.3.0
+ - The below requests now implement a retry mechanism of up to 10 retries on retryable errors:
+    - target-segments, 
+    - feature-config, 
+    - target-segments/{identifier}, and 
+    - feature-config/{identifier}.
+
+#### Fixed issues in the Python SDK
+
+ - Pip upgraded to 23.3.
+ - Requests upgraded to 2.31.0.
+ - Changed Murmur3 hash calculation to be unsigned instead of signed to ensure the Python SDK produces the same hash as other SDKs for use in percentage rollout caclculation. 
+ - Deleted resources are only removed from the local cache where the SDK would try to fetch deleted resources from the server after SSE delete events, resulting in 404 errors.
+ - The SDK now throws and catches an exception instead of returning 'None', which would previously result in an uncaught `AttributeError` when flag or group requests failed after exceeding all retry attempts.
+ - When requesting a variation on the wrong flag type (e.g., requesting a boolean on a string) would attempt to evaluate. Now, an SDK error code is logged, and the default variation is returned.
+ - Improved the logic to stop polling if streaming is enabled. Additionally, fixed an issue where the poller would stop and not make any more flag updates after encountering an exception during a request.
+ - Logging to correctly indicate when a stream disconnects and the SDK falls back to polling.
+ - Changed various verbose logs from info to debug.
 
 
-### Latest - November 27th 2023
+Released Python SDK 1.2.4 
+ - Set default log level to WARNING 
+
+### Ruby SDK
 
 #### New features and enhancements
 
@@ -36,141 +151,6 @@ Released Ruby SDK 1.2.0.
 
 <details>
 <summary>2023 releases</summary>
-
-#### November 24th, 2023
-
-##### New features and enhancements
-
-Released Python SDK 1.3.0
- - The below requests now implement a retry mechanism of up to 10 retries on retryable errors:
-    - target-segments, 
-    - feature-config, 
-    - target-segments/{identifier}, and 
-    - feature-config/{identifier}.
-
-Released Node.js SDK 1.4.0
- - Can now remediate build time CVEs.
- - Can now fall back to identifier if the `bucketBy` attribute is not found.
-
-##### Early access features
-
-This release does not include early access features.
-
-##### Fixed issues in the Python SDK
-
- - Pip upgraded to 23.3.
- - Requests upgraded to 2.31.0.
- - Changed Murmur3 hash calculation to be unsigned instead of signed to ensure the Python SDK produces the same hash as other SDKs for use in percentage rollout caclculation. 
- - Deleted resources are only removed from the local cache where the SDK would try to fetch deleted resources from the server after SSE delete events, resulting in 404 errors.
- - The SDK now throws and catches an exception instead of returning 'None', which would previously result in an uncaught `AttributeError` when flag or group requests failed after exceeding all retry attempts.
- - When requesting a variation on the wrong flag type (e.g., requesting a boolean on a string) would attempt to evaluate. Now, an SDK error code is logged, and the default variation is returned.
- - Improved the logic to stop polling if streaming is enabled. Additionally, fixed an issue where the poller would stop and not make any more flag updates after encountering an exception during a request.
- - Logging to correctly indicate when a stream disconnects and the SDK falls back to polling.
- - Changed various verbose logs from info to debug.
-
-#### November 17, 2023
-
-
-##### New features and enhancements
-
-This release does not include new features.
-
-##### Early access features
-
-This release does not include early access features.
-
-##### Fixed issues in the Java SDK
-
-Released Java SDK 1.3.1
-
- - Added Java 21 Support.
- - Marked private attributes not working. 
- - Improved stream restart logic. 
-
-#### November 13, 2023
-
-
-##### New features and enhancements
-
-This release does not include new features.
-
-##### Early access features
-
-This release does not include early access features.
-
-##### Fixed issues in the Golang SDK and the Node SDK
-
-Released Golang SDK 0.1.16
-
- - Add dead SSE stream detection
- - SSE reconnection improvements
- - Use Harness fork of r3labs/sse
- - Add analytics headers to requests made by the SDK
-
- Released Node SDK 1.3.7
-
- - Upgrade Axios due to CVE
-
-
-#### November 9, 2023
-
-##### New features and enhancements
-
-This release does not include new features.
-
-##### Early access features
-
-This release does not include early access features.
-
-##### Fixed issues in the Python SDK
-
-Released Android SDK 1.2.5
-
- - Only log Flag/Segment not found warning in valid scenarios
-
-
-#### November 7, 2023
-
-##### New features and enhancements
-
-This release does not include new features.
-
-##### Early access features
-
-This release does not include early access features.
-
-##### Fixed issues in the Python SDK
-
-Released Python SDK 1.2.4
-
-- Set default log level to WARNING
-
-#### November 7, 2023
-
-##### New features and enhancements
-
-This release does not include new features.
-
-##### Early access features
-
-This release does not include early access features.
-
-##### Fixed issues in the Fixed issues in the Android SDK
-
-Released Android SDK 1.2.0
-
- - Add dependency-check-gradle to build
- - Improve logging + Adding SDK error codes
- - Update SSE implementation
- - Bump minSdk to 21 and targetSdk to 33
- - Fixed jsonVariation always returns default value
- - Update client API code to use latest ff-api definitions
-- Fixed metrics reporting 0 in payload
-- Avoid posting metrics if total evaluation count is 0
-- Add refreshEvaluations
-- Retry on Client Authentication failures
-- Add retry interceptor to authentication
-- Add waitForInit
 
 #### October 31, 2023
 
@@ -416,7 +396,7 @@ This release does not include new features.
 
 This release does not include early access features.
 
-### Fixed issues in the Apex SDK
+##### Fixed issues in the Apex SDK
 
 Released Apex SDK 0.1.2 - Avoid loading all flag/target segment config into two cache keys, instead use a key per item, so we don’t exceed SFDC account limits and get cache.ItemSizeLimitExceededException (FFM-9071)
 
