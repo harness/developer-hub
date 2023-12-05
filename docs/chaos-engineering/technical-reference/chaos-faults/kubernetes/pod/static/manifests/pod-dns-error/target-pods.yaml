@@ -1,4 +1,4 @@
-# use pumba chaoslib for the stress
+## contains comma-separated target pod names
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -12,12 +12,10 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-cpu-hog
+  - name: pod-dns-error
     spec:
       components:
         env:
-        # stress image - applicable for pumba only
-        - name: STRESS_IMAGE
-          value: 'alexeiled/stress-ng:latest-ubuntu'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+        ## comma-separated target pod names
+        - name: TARGET_PODS
+          value: 'pod1,pod2'

@@ -15,9 +15,28 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
+### Latest - November 29th 2023
 
+#### New features and enhancements
 
-### Latest - November 27th 2023
+This release does not include new features.
+
+#### Early access features
+
+This release does not include early access features.
+
+#### Fixed issues in the Android Client SDK
+
+Released Android Client SDK 1.2.1
+ - The Flag/Target Group streaming updates no longer result in a `ClassCastException`.
+ - The Target group streaming changes are now sent in the `EVALUATION_RELOADED` event instead of `EVALUATION_CHANGED`.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+  
+#### Latest - November 27th 2023
 
 ##### New features and enhancements
 
@@ -31,11 +50,6 @@ This release does not include early access features.
 
 Released Ruby SDK 1.2.0.
  - The percentage rollout bucket by logic is now fixed to match Golang SDK.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### November 24th, 2023
 

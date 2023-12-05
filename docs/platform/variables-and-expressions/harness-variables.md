@@ -1742,8 +1742,6 @@ For example:
 
 * `<+trigger.type>`
 	+ Webhook.
-* `<+trigger.sourceRepo>`
-	+ Github, Gitlab, Bitbucket, Custom
 * `<+trigger.event>`
 	+ PR, PUSH, etc.
 

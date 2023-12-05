@@ -6,6 +6,8 @@ helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/internal-developer-portal/features/service-onboarding-pipelines
 ---
 Service Onbaording in Harness IDP use Harness pipeline orchestrator and those could be trigerred through Software Templates. 
 
@@ -19,7 +21,7 @@ In Harness IDP, a service onboarding pipeline (also known as a software template
 
 ## Template registration
 
-A template is a kind of entity that exists in the software catalog. You can create a `template.yaml` file and register the URL with the catalog. For information about registering a template, go to [Add a new software component to the catalog](../get-started/register-a-new-software-component.md).
+A template is a kind of entity that exists in the software catalog. You can create a `template.yaml` file and register the URL with the catalog. For information about registering a template, go to [Add a new software component to the catalog](/docs/internal-developer-portal/get-started/register-a-new-software-component.md).
 
 ## Available template actions
 
