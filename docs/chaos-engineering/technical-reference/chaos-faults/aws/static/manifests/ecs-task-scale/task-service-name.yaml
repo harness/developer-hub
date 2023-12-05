@@ -16,4 +16,4 @@ spec:
         - name: CLUSTER_NAME
           value: 'demo'
         - name: SERVICE_NAMES
-          vale: 'svc1,svc2'
+          value: 'svc1,svc2'

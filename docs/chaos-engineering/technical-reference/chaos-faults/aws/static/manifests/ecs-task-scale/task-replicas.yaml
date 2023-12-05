@@ -13,4 +13,4 @@ spec:
       components:
         env:
         - name: REPLICAS
-          vale: '5'
+          value: '5'

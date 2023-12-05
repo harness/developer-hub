@@ -140,7 +140,7 @@ spec:
         - name: CLUSTER_NAME
           value: 'demo'
         - name: SERVICE_NAMES
-          vale: 'test-svc'
+          value: 'test-svc'
 ```
 
 ### ECS task replicas
@@ -167,5 +167,5 @@ spec:
         env:
         # provide the name of ECS cluster
         - name: REPLICAS
-          vale: '5'
+          value: '5'
 ```
