@@ -12,14 +12,14 @@ The delegate is instrumented for the collection of the following delegate agent 
   
 | **Metric name** | **Description** |
 | :-- | :-- |
-| `io_harness_custom_metric_task_execution_time` | The time it takes to complete a task (in seconds). |
-| `io_harness_custom_metric_tasks_currently_executing` | The number of tasks underway. |
-| `io_harness_custom_metric_task_timeout_total` # | The number of tasks that time out before completion. |
-| `io_harness_custom_metric_task_completed_total` # | The number of tasks completed. |
-| `io_harness_custom_metric_task_failed_total` # | The number of failed tasks. |
+| `io_harness_custom_metric_task_execution_time` | The amount of time it took to complete a task (in seconds). |
+| `io_harness_custom_metric_tasks_currently_executing` | The number of tasks currently in an executing state. |
+| `io_harness_custom_metric_task_timeout_total` # | The total number of tasks that time out before completion. |
+| `io_harness_custom_metric_task_completed_total` # | The total number of tasks completed. |
+| `io_harness_custom_metric_task_failed_total` # | The total number of failed tasks. |
 | `io_harness_custom_metric_task_rejected_total` * #| The number of tasks rejected because of a high load on the delegate. |
 | `io_harness_custom_metric_delegate_connected` | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
-| `io_harness_custom_metric_resource_consumption_above_threshold`* | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. For more information, go to [Configure delegate resource threshold](#configure-delegate-resource-threshold). |
+| `io_harness_custom_metric_resource_consumption_above_threshold`* | Delegate CPU/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. For more information, go to [Configure delegate resource threshold](#configure-delegate-resource-threshold). |
 
 :::info note
 Metrics with * above are only visible if you start your delegate with `DYNAMIC_REQUEST_HANDLING` set to `true` in your delegate YAML. Go to [Configure delegate resource threshold](#configure-delegate-resource-threshold) for more information.
