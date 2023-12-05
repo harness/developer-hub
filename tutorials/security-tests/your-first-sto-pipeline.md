@@ -13,7 +13,7 @@ This tutorial shows you how to use the Harness Security Testing Orchestration (S
 - You also need a GitHub account and a [connector](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-a-codebase-connector) to your Git service provider. 
   This tutorial uses an [example codebase on GitHub](https://github.com/williamwissemann/dvpwa) that contains known vulnerabilities. 
 :::
-
+c
 
 ## Objectives
 
@@ -93,11 +93,11 @@ import set_up_harness_26 from './static/your-first-pipeline/configure-bandit-ste
 
    2. Target name — Click the value-type selector (tack button to the right of the input field) and select **Runtime input**. You'll specify this and other values when you run the pipeline.
 
-      Every STO scan has a [target name](/security-testing-orchestration/get-started/key-concepts/targets-and-baselines), which is a user-defined label for the repo, image, app, or configuration to scan.
+      Every STO scan has a [target name](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines), which is a user-defined label for the repo, image, app, or configuration to scan.
 
    3. Variant — Select **Runtime input** as the value type.
 
-      Every STO scan has a [target variant](/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) that specifies the branch, tag, or other variant to scan. 
+      Every STO scan has a [target variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) that specifies the branch, tag, or other variant to scan. 
 
 
 <!-- 
