@@ -209,7 +209,7 @@ A Docker Hub connector is required to run a Docker-in-Docker service as describe
 
 ### Create a Codebase Connector
 
-You'll need a GitHub account to do the [STO Tutorials](/tutorials/security-tests/standalone-pipeline). 
+You'll need a GitHub account to do the [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline) tutorial. In this tutorial, you'll fork and scan the following repo: <https://github.com/williamwissemann/dvpwa>
 
 You also need a Git repo connector for any STO pipeline that scans a codebase. You can create codebase connectors for the following SCMs:
  - [Azure](/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector)
@@ -218,7 +218,6 @@ You also need a Git repo connector for any STO pipeline that scans a codebase. Y
  - [GitHub](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
  - [GitLab](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 
-To do the STO tutorials, point the connector at the following repo: <https://github.com/williamwissemann/dvpwa>
 
 <details>
   <summary>Create a Codebase Connector: Default Workflow</summary>
@@ -244,7 +243,7 @@ To do the STO tutorials, point the connector at the following repo: <https://git
 
 ## Create a base pipeline for STO
 
-The following procedure creates a pipeline with the STO functionality required to run scans on your repos, images, and instances. Once you set up this pipeline, you can clone it to a new pipeline and update the pipeline to set up your scans. This workflow is described in the [Create a standalone STO pipeline](/tutorials/security-tests/standalone-pipeline) tutorial.
+The following procedure creates a pipeline with the STO functionality required to run scans on your repos, images, and instances. Once you set up this pipeline, you can clone it to a new pipeline and update the pipeline to set up your scans. This workflow is described in [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline).
 
 ### Add a Security Test stage
 
