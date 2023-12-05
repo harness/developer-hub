@@ -25,7 +25,7 @@ These release notes describe recent changes to Harness Continuous Error Tracking
 
 ## December 2023
 
-### version 5.31.0 ET-Service and ET-Collector
+### Versions ET-Service 5.31.0 and ET-Collector 5.31.0
 
 <!-- December 01, 2023 -->
 
@@ -45,7 +45,7 @@ These release notes describe recent changes to Harness Continuous Error Tracking
 
 - Tiny links would direct to 404 if the event was missing. Now, if an event cannot be found, the tiny links direct to the CET page and show an error message. (CET-1991)
 
-### Version 5.7.0 ET-Agent
+### Version ET-Agent 5.7.0 
 
 <!-- December 01, 2023 -->
 
