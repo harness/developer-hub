@@ -247,6 +247,15 @@ No early access (beta) features are available for Harness Internal Developer Por
 
 The following early access (beta) feature is available for the Harness Security Testing Orchestration module.
 
+### Aqua Security integration
+
+* **Release date:** November 2023
+* **Issue number:** STO-6382
+* **Feature flag:** `STO_STEP_PALETTE_AQUASEC`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks.  (STO-6382)
+
 ### STO Jira integration
 
 * **Release date:** March 2023
