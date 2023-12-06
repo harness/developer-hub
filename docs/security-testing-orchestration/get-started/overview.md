@@ -81,7 +81,7 @@ Harness STO automatically aggregates, normalizes, and deduplicates data to ident
 
 You can also include STO features in CI and CD workflows. You can set up your Pipelines to scan repos, images, and artifacts, and then fail the Pipeline automatically if any "show-stopper" vulnerabilities are detected. 
 
-These workflows are covered in [Your first STO pipeline](/tutorials/security-tests/learn-sto/your-first-sto-pipeline).
+These workflows are covered in [Your first STO pipeline](/tutorials/security-tests/learn-about-sto/your-first-sto-pipeline).
 
 ![](./static/security-testing-orchestration-basics-31.png)
 
@@ -127,3 +127,4 @@ For a list of supported scanners, see [Security Step Settings Reference](../sto-
 ### Next Steps
 
 * [Set up Harness for STO](onboarding-guide.md)
+* [Your first STO pipeline](/tutorials/security-tests/learn-about-sto/your-first-sto-pipeline)

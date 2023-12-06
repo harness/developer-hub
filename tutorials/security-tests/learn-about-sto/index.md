@@ -9,6 +9,6 @@ title: Learn about STO
 
 <!-- Custom component -->
 
-import SecurityTestingQuickStarts from '@site/src/components/Tutorials/SecurityTestingQuickstarts';
+import SecurityTestingLearn from '@site/src/components/Tutorials/SecurityTestingLearn';
 
-<SecurityTestingQuickStarts />
+<SecurityTestingLearn />

@@ -5,7 +5,7 @@ import clsx from "clsx";
 import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
-import { docsCards } from "./SecurityTestingLearnData";
+import { docsCards } from "./SecurityTestingLearningData";
 
 export default function CD() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -14,8 +14,8 @@ export default function CD() {
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img src={`${baseUrl}img/icon_cd.svg`} />
-            <h1>Kubernetes Deployment Tutorials</h1>
+            <img src={`${baseUrl}img/icon_sto.svg`} />
+            <h1>Learn about STO</h1>
           </div>
         </div>
         <div className={styles.spaceBetween}>

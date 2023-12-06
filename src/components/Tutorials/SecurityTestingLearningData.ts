@@ -26,7 +26,7 @@ import { MODULES } from "../../constants";
           module: MODULES.cd,
           description:
             "Set up a simple pipeline, run a scan, analyze the results, and learn about all the key features in STO.",
-          link: "/tutorials/security-tests/learn-sto/your-first-sto-pipeline",
+          link: "tutorials/security-tests/learn-about-sto/your-first-sto-pipeline",
         },
         {
             title: "Scan a NodeJS App for security vulnerabilities",
