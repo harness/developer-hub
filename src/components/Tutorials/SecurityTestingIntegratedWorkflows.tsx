@@ -21,7 +21,7 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Get up and scanning in minutes with these simple quickstarts.
+              Learn to how set up end-to-end pipelines to build an image, scan it, and push it if no "show-stopper" vulnerabilities are detected.
             </p>
           </div>
         </div>

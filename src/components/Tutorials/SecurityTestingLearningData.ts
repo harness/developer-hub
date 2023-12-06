@@ -33,7 +33,7 @@ import { MODULES } from "../../constants";
             module: MODULES.cd,
             description:
               "Go through an end-to-end workflow for scanning your code repositories using OWASP.",
-            link: "/tutorials/security-tests/learn-sto/nodejs-owasp",
+            link: "/tutorials/security-tests/learn-about-sto/nodejs-owasp",
           },
       ],
     },

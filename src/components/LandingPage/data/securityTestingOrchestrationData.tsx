@@ -65,7 +65,7 @@ export const STOList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/security-tests/learn-sto/nodejs-owasp",
+    link: "/tutorials/security-tests/learn-about-sto/nodejs-owasp",
   },
   {
     title: "Codebase scans with Semgrep",
