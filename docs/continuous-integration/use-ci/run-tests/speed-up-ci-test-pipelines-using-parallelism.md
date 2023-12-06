@@ -56,7 +56,7 @@ When using parallelism, it's important to take into account resource limitations
 
 </details>
 
-This topic focuses on parallelism and test splitting in **Run** steps. For information about test splitting with Test Intelligence (in **Run Tests** steps), go to [Test splitting for TI](./test-intelligence/ti-test-splitting.md).
+This topic focuses on parallelism and test splitting in **Run** steps. For information about test splitting with Test Intelligence (in **Run Tests** steps), go to [Split tests (parallelism) with TI](./test-intelligence/ti-test-splitting.md).
 
 Here are examples of test splitting and parallelism applied to Run steps. For more YAML examples of test splitting, go to [YAML Examples: Test splitting](#yaml-examples-test-splitting).
 
@@ -408,7 +408,7 @@ You can include `echo $FILES` to print the list of assigned tests in each step's
 
 ### Test splitting for Test Intelligence
 
-If you [define a parallelism strategy](#define-a-parallelism-strategy) on a **Run Tests** step, Harness automatically splits tests by class timing. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Test splitting for TI](./test-intelligence/ti-test-splitting.md).
+If you [define a parallelism strategy](#define-a-parallelism-strategy) on a **Run Tests** step, Harness automatically splits tests by class timing. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Split tests (parallelism) with TI](./test-intelligence/ti-test-splitting.md).
 
 ## Produce test reports
 

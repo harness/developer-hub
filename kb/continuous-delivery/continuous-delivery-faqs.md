@@ -3322,3 +3322,43 @@ This ensures that the target state (cluster) is continually converged with the d
 
 ### How do Harness CD SSH deployments handle authentication and authorization for remote servers?
 To authenticate and authorize remote servers for SSH deployments, Harness CD uses SSH Private Key to authenticate to the remote VM/server. For steps, you can refer to Passwordless SSH using public-private key pairs.
+
+#### How to refer to the name and identifier for Infrastructure Definition using build-in variables from another stage?
+ENV details can be referred from the previous stage using output expressions of that stage.
+
+#### How to Make Two Stages Run on the Same Delegate Pod?
+For your use case to run both stages in one pod, you can refer to this doc - https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/
+With this, you can configure steps in the same pod.
+
+#### How do I pass parameters for the docker run command?
+In the build and push step, we have a section called build arguments, this can be leveraged to pass build arguments.
+To run docker commands, as part of your build process, please refer to this doc - https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage/
+
+#### Why am I not able to execute the pipeline, even if have "execute" permissions?
+We have different scopes under which resources are assigned, if the user running a pipeline that has account-level resources, the user needs view access to those resources as well to execute the pipeline.
+
+#### What events can trigger the execution of rollback strategy steps - an error, like exit code 1, during Terraform plan step execution?
+The Rollback strategy steps can be triggered by various events such as failure of a step or stage, timeout errors, or execution-time input timeout errors.
+Yes, an error during Terraform plan step execution, such as exit code 1, can trigger the Rollback strategy steps.
+
+#### If the fallback strategy steps include only a Terraform rollback step using the same provisioner identifier what will happen?
+During a rollback in Harness, the provisioned infrastructure is reverted to the previous successful version of the Terraform state using configuration files or Terraform configuration from the latest successful deployment with a matching Provisioner Identifier. The rollback is a hard rollback to the exact version of the state provided, without incrementing the state's serial number. The Provisioner Identifier determines what to rollback, and if settings are expressed, Harness uses runtime values when evaluating expressions.
+
+#### Are there any limitations to terraform rollback?
+There are limitations to rollbacks. If, for example, modules 1 and 2 were successfully deployed, and module 3 failed, the rollback will only revert to the successful state of modules 1 and 2. However, if module 3 succeeds, and the subsequent deployment fails, the rollback will only include the state with module 3 deployed, excluding modules 1 and 2. Additionally, rollback is not possible if the Terraform Apply step is run with the Skip state storage option enabled and no Terraform backend is configured in the Terraform files. In such a scenario, using the Rollback step would be incorrectly set up and could lead to unexpected results.
+
+#### How do I use a custom stage to do the Terraform Cloud Run step?
+The run step is only supported in the CI and CD stages. For the custom stage, please use the shell script step.
+
+#### Why do triggers, sometimes stay in the "pending" state for many minutes, perhaps 10-15 minutes or more?
+Whenever a trigger is created or updated, it takes about five to ten minutes for the polling job to start, and for the trigger to be in a working state. Harness recommends that you wait for five to ten minutes after a trigger is created or updated to push the artifact.
+ This seems to be the expected result, it may take 10-15 for the trigger to get active.
+
+#### How do I provide, the Jira project as an expression for the Jira approval step?
+In the Jira approval step For the the Jira project field, we only support fixed and runtime input for now, Expressions are not supported.
+
+#### Why does having a number as a variable type append ".0" to round numbers?
+Number-type variables are always treated as doubles as per design (double-precision floating-point).
+-1.79769313486231E308 to -4.94065645841247E-324 for negative values.
+4.94065645841247E-324 to 1.79769313486232E308 for positive values.
+You can explicitly cast it to an integer-like expression.intValue()

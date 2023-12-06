@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-###### Last Updated: 27th November 2023
+### Latest Updated: November 29th 2023
 
 ## November 2023
 
@@ -24,6 +24,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### Version 1.2.5
 
  - Only log Flag/Segment not found warning in valid scenarios
+
+#### Version 1.2.1
+
+ - The Flag/Target Group streaming updates no longer result in a `ClassCastException`.
+ - The Target group streaming changes are now sent in the `EVALUATION_RELOADED` event instead of `EVALUATION_CHANGED`.
 
 #### Version 1.2.0
 
