@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-12-06T10:00
+date: 2023-12-13T10:00
 sidebar_position: 9
 ---
 
@@ -24,6 +24,18 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## December 2023
+
+### Version 70xx
+
+<!-- Dec 13, 2023 -->
+
+#### New features and enhancements
+
+(CI-9556)
+
+#### Fixed issues
+
+If you configured an optional step setting (such as **Limit Memory**, **Limit CPU**, or **Timeout**) to accept runtime input (`<+input>`), and then provided no value for that setting at runtime, the pipeline could fail due to invalid `null` input. This has been fixed, and the effected settings can how handle empty (`null`) runtime input. (CI-10514, ZD-54217)
 
 ### Version 6902
 
