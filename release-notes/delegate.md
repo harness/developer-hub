@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-11-13T10:00
+date: 2023-11-29T10:00
 sidebar_position: 4
 ---
 ```mdx-code-block
@@ -34,6 +34,89 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 </details>
 
 ## November 2023
+
+### Harness version 81612, Harness Delegate version 23.11.81601
+
+#### New features and enhancements
+
+- If you use Kubernetes version 1.16 or later, you can enable the steady state check for Native Helm jobs from Default Settings at any organizational scope (account, organization, or project) in Harness. (CDS-81574)
+
+  To enable the setting, at the desired scope, go to **Default Settings** > **Continuous Delivery**, and then turn on the **Enable Native Helm steady state for jobs** toggle.
+
+  This enhancement eliminates the need for you to contact Harness Support to enable the feature flag `CDS_HELM_STEADY_STATE_CHECK_1_16` and gives you direct control of the setting. 
+
+  Accounts for which Harness had enabled this feature flag will have this setting turned on by default.
+
+#### Fixed issues
+
+- When shutdown is initiated, delegates will continue sending heartbeats until all tasks are completed, ensuring all running tasks return a response before shutting down. (PL-42171)
+
+- There was an issue with Harness not properly handling delegate reconnects, which affected delegate metrics. During a disconnect, Harness would mark `delegate_connected` as 0, but after a reconnect, it failed to increment the `delegate_connected` to 1. (PL-42431, ZD-52829, ZD-53399, ZD-53878)
+
+This issue has been resolved, and now Harness increments the `delegate_connected` to 1 during reconnection. As a result, the `io_harness_custom_metric_delegate_connected` and `io_harness_custom_metric_task_failed` metrics are now accurately reported.
+
+- Fixed the following issues:
+
+   - The delegate Stackdriver logger didn't work if the delegate token was base64-encoded format.
+   - When the `DELEGATE_TYPE` was `KUBERNETES` and the delegate wasn't deployed in Kubernetes, the delegate failed to start. (PL-42452)
+
+- Azure Key Vault's heartbeat check now creates a validation secret with a 30-minute expiration, addressing the issue of no expiration being set previously, which resulted in multiple secret versions without an expiry. (PL-42509, ZD-53700)
+
+- User groups could be created via SCIM using identifiers with invalid characters. (PL-42535, ZD-53830)
+
+   This issue is fixed. You can no longer create user groups with invalid characters.
+
+- Harness used Datadog log indexes when running the Verify step but not when fetching sample data in the health source configuration dialog. (CDS-83934, ZD-53433)
+
+  This issue has been fixed.
+
+- If the default capacity for the ASG deployment is zero or Null and you choose to create the same number of ASG instances as those that were previously deployed by the pipeline (the **Same as already running Instances** setting), Harness created zero instances. The deployment timed out after waiting for health checks. (CDS-83818)
+
+  This issue has been fixed. Now, if the default capacity is zero or Null, Harness sets the default capacity to match that in Harness FirstGen, which is as follows:
+    * For the first deployment: 
+      - minimum = 0 
+      - desired = 6 
+      - maximum =10
+    * For other deployments:
+      - minimum = 0 
+      - desired = 1 
+      - maximum = 1
+
+- Starting with Delegate version 23.08.79713, the custom script for fetching remote manifests did not support absolute paths as the folder path. (CDS-83443, ZD-52872)
+
+  This issue has been fixed.
+
+- The Helm connector's test to check connectivity to an OCI Helm repository in AWS ECR failed with an "Invalid request: Invalid oci url..." error even though the URL to the repository conformed with the formats described in [Connect to an Artifact repository](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo). The delegate was configured to use a proxy server and the Anonymous authentication type. However, manually fetching Helm charts from the delegate were successful. (CDS-82779, ZD-52343)
+
+  This issue has now been resolved. The OCI Helm connector now works with the Anonymous authentication type when a proxy server is configured on the delegate.
+
+- After fetching tags from Google Artifact Registry, Harness sorted them lexically and not on the timestamp. (CDS-82778)
+
+  This issue has been fixed. Harness now sorts the tags on the timestamp.
+
+- Pipeline executions for WinRM deployments failed intermittently when the deployment was performed by Harness Delegate with version 23.11.81015. Certain processes managed by the Windows Remote Management service (namely, `winrshost.exe` with its child process `conhost.exe`) were orphaned and continued to run on the target host. (CDS-82777, ZD-52759, ZD-53411, ZD-53460, ZD-53683)
+
+  This issue has been fixed.
+
+- Certain Docker registries fail authentication when using the `/v2` endpoint, which is used for health checks in Docker connectors. (CDS-82616, ZD-52513)
+
+  This issue has been fixed. Harness now falls back to using the `/v2/` endpoint if the `/v2` endpoint fails.
+
+- Harness did not stop Terraform tasks after you canceled pipeline execution, even if you cancelled execution before the task started to run actual Terraform commands. (CDS-82222, ZD-52603)
+
+  This issue has been resolved.
+
+- Currently, the on-premises version of Atlassian BitBucket does not fire push event webhooks when you first push to a new branch. This is inconsistent with other Git providers and also causes Harness's BitBucket triggers for on-premises repositories to behave inconsistently. (CDS-82110, ZD-52270)
+
+  As a workaround for this inconsistency, Harness has made the trigger's workflow capture branch hook events for on-premises BitBucket and convert them, on a best-effort basis, to a push hook. This change has the effect of making Harness's triggers for on-premises BitBucket to fire on the first push to a new branch. This change is behind the feature flag `CDS_NG_CONVERT_BRANCH_TO_PUSH_WEBHOOK_BITBUCKET_ON_PREM`. To enable this change in behavior, contact [Harness Support](mailto:support@harness.io).
+
+### Version 23.11.81602
+
+#### Hotfix
+
+- New connectors failed with an `Internal Server Error. Please contact Harness Support Team.` message. (CI-10414, ZD-54032)
+
+   This issue has been resolved by increasing the sleep time between retries.
 
 ### Harness version 81401, Harness Delegate version 23.11.81405
 
@@ -145,6 +228,12 @@ Harness NextGen release 81205 includes the following changes for the Harness Del
 
 - The Tags field in the pipeline filter is now optional. This change allows you to filter either by tag name or a combination of tag name and value. (CDS-78992)
 
+### Version 23.12.81210
+
+#### Hotfix
+
+- GitHub status checks were not refreshing for pipeline executions. Harness added a retry to the GitHub status update API call to resolve the issue. (CI-10618, ZD-54673)
+
 ### Harness version 81008, Harness Delegate version 23.10.81010
 
 Harness NextGen release 81008 includes the following changes for the Harness Delegate.
@@ -187,7 +276,7 @@ You can now reference secret values in JSON files by using XPATH. Support is ava
 
    For more information on the latest supported delegate version API, go to [Use automatic upgrade with custom delegate images](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images).
 
-### Version 81015
+### Version 23.11.81015
 
 #### Hotfix
 
@@ -380,8 +469,6 @@ Harness NextGen release 80307 includes the following changes for the Harness Del
 #### Early access features
 
 **GitHub App authentication for GitHub connectors (CI-8577, CI-8367)**
-
-This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 
 With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings), and you can use GitHub connectors with GitHub App authentication in the [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
 

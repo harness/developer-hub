@@ -412,7 +412,7 @@ However, the AWS CLI [create-auto-scaling-group](https://docs.aws.amazon.com/cli
 
 :::note
 
-Currently, User Data is behind the feature flags `CDS_BASIC_ASG`, `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, User Data is behind the feature flags `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -755,7 +755,7 @@ The infrastructure definition is added.
 
 :::note
 
-Currently, User Data is behind the feature flags `CDS_BASIC_ASG`, `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, User Data is behind the feature flags `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -1099,7 +1099,7 @@ The Rolling Deploy step has the following options:
 
 :::note
 
-Currently, **ASG Name**, **Same as already running Instances**, **Fixed**, and multiple load balancer support is behind the feature flags `CDS_BASIC_ASG`, `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, **ASG Name**, **Same as already running Instances**, **Fixed**, and multiple load balancer support is behind the feature flags `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -1429,7 +1429,7 @@ The ASG Blue Green Deploy step has the following settings:
 
 :::note
 
-Currently, **ASG Name**, **Same as already running Instances**, **Fixed**, and multiple load balancer support is behind the feature flags `CDS_BASIC_ASG`, `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, **ASG Name**, **Same as already running Instances**, **Fixed**, and multiple load balancer support is behind the feature flags `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 

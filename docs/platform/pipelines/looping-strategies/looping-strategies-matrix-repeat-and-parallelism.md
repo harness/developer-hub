@@ -336,8 +336,6 @@ When you configure looping strategies as runtime input, you select the strategy 
 
 The following video demonstrates how to configure and use runtime input for looping strategies.
 
-<!-- Video:
-https://harness-24.wistia.com/medias/79nqqvqybt-->
 <docvideo src="https://harness-24.wistia.com/medias/79nqqvqybt" />
 
 ## Looping strategy expressions

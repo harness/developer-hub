@@ -108,16 +108,6 @@ Harness doesn't send emails for user invites when the feature flag `PL_NO_EMAIL_
 
 The following early access (beta) features are available for the Harness Delegate.
 
-### GitHub App authentication for GitHub connectors
-
-* **Release date:** August 2023
-* **Release version:** Delegate version 80303 and CI version 5408
-* **Issue number:** CI-8577
-* **Feature flag:** `CDS_GITHUB_APP_AUTHENTICATION`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
-
 ### Delegate task capacity check
 
 * **Release date:** July 2023
@@ -186,16 +176,6 @@ Without this feature flag enabled, delegate selectors aren't applied to delegate
 
 With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector).
 
-### GitHub App authentication for GitHub connectors
-
-* **Release date:** August 2023
-* **Release version:** Delegate version 80303 and CI version 5408
-* **Issue number:** CI-8577
-* **Feature flag:** `CDS_GITHUB_APP_AUTHENTICATION`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
-
 ### Cache Intelligence in the Visual editor
 
 * **Release date:** July 2023
@@ -262,10 +242,6 @@ The following early access (beta) features are available for the Harness Feature
 <!-- ## IDP early access features
 
 No early access (beta) features are available for Harness Internal Developer Portal. -->
-
-## Code early access features
-
-Currently, the entire [Code Repository module](/docs/code-repository/get-started/overview) is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) if you're interested in this module.
 
 ## STO early access features
 
@@ -339,11 +315,33 @@ You can get optimized performance on remote pipelines if you are on delegate ver
 
 You can onboard any secret manager with Harness and reference their secrets in Harness. For more information, go to [Add a custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager).
 
+### Delegate features promoted to GA
+
+#### GitHub App authentication for GitHub connectors
+
+* **GA date:** December 2023
+* **Early access release date:** August 2023
+* **Early access release version:** Delegate version 80303 and CI version 5408
+* **Issue number:** CI-8577
+* **Feature flag:** `CDS_GITHUB_APP_AUTHENTICATION`
+
+You can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
+
 ### CD & GitOps features promoted to GA
 
 For information about early access (beta) features for Harness Continuous Delivery and GitOps, go to [Active CD feature flags](/docs/continuous-delivery/cd-integrations/#active-cd-feature-flags) and the [CD and GitOps release notes](./continuous-delivery).
 
 ### CI features promoted to GA
+
+#### GitHub App authentication for GitHub connectors
+
+* **GA date:** December 2023
+* **Early access release date:** August 2023
+* **Early access release version:** Delegate version 80303 and CI version 5408
+* **Issue number:** CI-8577
+* **Feature flag:** `CDS_GITHUB_APP_AUTHENTICATION`
+
+You can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings).
 
 #### Harness AI Development Assistant (AIDA:tm:) for CI
 
@@ -407,7 +405,6 @@ This feature includes the following UI enhancements for working with exemptions:
 * **Early access release date:** August 2023
 * **Early access Release version:** 1.64.1
 * **Feature flag:** `STO_DROPDOWN_FILTERS`
-`
 
 The **Security Tests** tab includes a set of pull-down menus so you can filter the issues lists by Target, Target Type, Step, Stage, and Scanner.
 
@@ -417,10 +414,8 @@ The **Security Tests** tab includes a set of pull-down menus so you can filter t
 
 * **GA date:** August 2023
 * **Early access release date:** July 2023
-* **Early access Release version:** 1.61.1  
+* **Early access Release version:** 1.61.1
 * **Feature flag:** `STO_BASELINE_REGEX`
-
-<!-- -->
 
 You can now define dynamic target baselines using regular expressions. Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. Dynamic baselines also make it easier to track the introduction and remediation of specific vulnerabilities.
 
@@ -498,8 +493,8 @@ import Intro from '/docs/security-testing-orchestration/use-sto/shared/sto-aida-
 
 This feature includes a set of Security steps with an improved UI for configuring scans. Each step shows only the settings that apply to the specific scan. Note the following:
 
-- This release includes new steps for the following scanners: Aqua Trivy, Bandit, Black Duck, Checkmarx, Grype, Mend, Prisma Cloud, Snyk, SonarQube, and ZAP.  
-- Docker-in-Docker is no longer required for these steps *unless* you're scanning a container image. If you're scanning a repository or running instance, you don't need to set up a Background step running DinD.    
+- This release includes new steps for the following scanners: Aqua Trivy, Bandit, Black Duck, Checkmarx, Grype, Mend, Prisma Cloud, Snyk, SonarQube, and ZAP.
+- Docker-in-Docker is no longer required for these steps *unless* you're scanning a container image. If you're scanning a repository or running instance, you don't need to set up a Background step running DinD.
 - Support is currently limited to Kubernetes and Harness Cloud AMD64 build infrastructures only.
 - For descriptions of all available UI settings, go to [Security step UI settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference).
 

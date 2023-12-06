@@ -46,7 +46,7 @@ import {
             module: MODULES.cd,
             description:
               "A self-service onboarding guide for Harness CD & GitOps.",
-            link: "/docs/continuous-delivery/get-started/onboarding-guide",
+            link: "/docs/continuous-delivery/cd-onboarding/new-user/onboarding-path",
           },
           {
             title: "Harness Platform onboarding guide",

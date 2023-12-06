@@ -755,17 +755,8 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>For Helm tasks, this enables the sending of task progress events via log streaming.</td>
     </tr>
     <tr>
-        <td>CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG</td>
-        <td>Enables users to configure <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#using-multiple-helm-charts-in-one-harness-service">multiple Helm charts in a Harness service</a>
-, treating the Helm Charts similar to artifacts.</td>
-    </tr>
-    <tr>
         <td>CDS_HELM_FETCH_CHART_METADATA_NG</td>
         <td>Exposes <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts">Helm Chart expressions</a> for reference in other steps and settings.</td>
-    </tr>
-    <tr>
-        <td>CDS_OCI_HELM_ECR_CONFIG_SUPPORT_NG</td>
-        <td>Support for ECR as an OCI Helm repo but with temporary credentials.</td>
     </tr>
 </table>
 

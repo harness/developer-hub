@@ -134,6 +134,10 @@ import TabItem from '@theme/TabItem';
   - `<+pipeline.variables.github_org>`
   - `<+pipeline.variables.github_repo>`
 
+Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name shoule match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template. 
+
+For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template. 
+
 ```mdx-code-block
 </TabItem>
 <TabItem value="GitLab">
@@ -189,6 +193,9 @@ import TabItem from '@theme/TabItem';
   - `<+pipeline.variables.gitlab_org>`
   - `<+pipeline.variables.gitlab_repo>`
 
+  Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name shoule match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template. 
+
+  For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template. 
 
 ```mdx-code-block
 </TabItem>
@@ -316,6 +323,20 @@ token:
   ui:widget: password
   ui:field: HarnessAuthToken
 ```
+
+Also the token input is used as a paremeter under `steps` as `apikey`
+
+```yaml
+  steps:
+    - id: trigger
+      name: ...
+      action: trigger:harness-custom-pipeline
+      input:
+        url: ...
+        inputset:
+          key: value
+          ...
+        apikey: ${{ parameters.token }}
 
 This is a custom component we created to authenticate the call to execute the pipeline on the basis of the logged-in user's credentials.
 
