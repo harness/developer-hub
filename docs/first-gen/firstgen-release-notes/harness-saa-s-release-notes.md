@@ -43,7 +43,18 @@ If the required image and AMI upgrades are not complete by **November 14, 2023**
 
 :::
 
-### Latest: December 4, 2023, Version 81708
+
+### Latest: Version 818xx
+
+#### Fixed issue
+
+- The Access Management page didn't display all **Users** in the list. (PL-43038)
+
+- Fixed the `java.io.InterruptedIOException` message in delegate logs by adding the source URL and removing duplicate error logs. (PL-40118)
+
+      This item requires Harness Delegate version 23.12.818xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate). 
+
+### December 4, 2023, Version 81708
 
 #### Fixed issue
 
