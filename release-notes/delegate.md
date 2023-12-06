@@ -228,6 +228,12 @@ Harness NextGen release 81205 includes the following changes for the Harness Del
 
 - The Tags field in the pipeline filter is now optional. This change allows you to filter either by tag name or a combination of tag name and value. (CDS-78992)
 
+### Version 23.12.81210
+
+#### Hotfix
+
+- GitHub status checks were not refreshing for pipeline executions. Harness added a retry to the GitHub status update API call to resolve the issue. (CI-10618, ZD-54673)
+
 ### Harness version 81008, Harness Delegate version 23.10.81010
 
 Harness NextGen release 81008 includes the following changes for the Harness Delegate.
@@ -270,7 +276,7 @@ You can now reference secret values in JSON files by using XPATH. Support is ava
 
    For more information on the latest supported delegate version API, go to [Use automatic upgrade with custom delegate images](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images).
 
-### Version 81015
+### Version 23.11.81015
 
 #### Hotfix
 
@@ -463,8 +469,6 @@ Harness NextGen release 80307 includes the following changes for the Harness Del
 #### Early access features
 
 **GitHub App authentication for GitHub connectors (CI-8577, CI-8367)**
-
-This feature is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 
 With this feature flag enabled, you can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings), and you can use GitHub connectors with GitHub App authentication in the [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
 

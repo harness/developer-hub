@@ -12,6 +12,15 @@ Gitleaks can publish results to [Static Analysis Results Interchange Format (SAR
 
 For a description of the end-to-end workflow, go to [Ingest SARIF data](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
 
+## For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
+
+
 
 ## Gitleaks step settings for STO scans
 

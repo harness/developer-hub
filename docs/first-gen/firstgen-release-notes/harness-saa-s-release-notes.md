@@ -42,7 +42,14 @@ You must make the required updates no later than **November 14, 2023**. If you n
 If the required image and AMI upgrades are not complete by **November 14, 2023**, your legacy delegate upgrades will be paused, which can lead to pipeline execution failures when Harness SaaS releases newer versions.
 
 :::
-### Latest: November 29, 2023, Version 81609
+
+### Latest: December 4, 2023, Version 81708
+
+#### Fixed issue
+
+- The Access Management page didn't display all **Users** in the list. (PL-43038)
+
+### November 29, 2023, Version 81609
 
 #### Fixed issues
 

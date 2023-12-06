@@ -18,6 +18,19 @@ Overrides can be defined at project, organization, and account levels.
 For information on overrides V1, go to [Services and environments basics](/docs/continuous-delivery/get-started/services-and-environments-overview).
 :::
 
+## Permissions
+
+Here are the override types and the permissions you require for each type:
+
+- **Service & Infrastructure Specific**:
+  - `Environment: Create/Edit`
+  - `Service: Create/Edit`
+- **Infrastructure Specific**: `Environment: Create/Edit`
+- **Service Specific**:
+  - `Environment: Create/Edit`
+  - `Service: Create/Edit`
+- **Global Environment**: `Environment: Create/Edit`
+
 ## Limitations
 
 * Runtime inputs are not supported for **Infrastructure Specific** and **Service & Infrastructure Specific** variables.
@@ -151,7 +164,7 @@ To override one or more settings for all services, environments, and infrastruct
 
 The override priority from top to bottom is:  
 
-1. **Infrastructure & Service Specific** overrides
+1. **Service & Infrastructure Specific** overrides
 2. **Infrastructure Specific** overrides
 3. **Service Specific** overrides
 4. **Global Environment** overrides

@@ -216,19 +216,6 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
             value: "8080"
         restartPolicy: Always
 
-    ---
-
-    apiVersion: v1
-    kind: Service
-    metadata:
-    name: delegate-service
-    namespace: harness-delegate-ng
-    spec:
-    type: ClusterIP
-    selector:
-        harness.io/name: terraform
-    ports:
-        - port: 8080
     ```
     </details>  
 
