@@ -125,16 +125,8 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 .</td>
     </tr>
     <tr>
-        <td>CDS_USE_OLD_SERVICE_V1</td>
-        <td>Keeps Harness accounts on Service V1. This feature flag is only for customers who have yet to migrate to V2.</td>
-    </tr>
-    <tr>
         <td>CDS_REMOVE_COMMENTS_FROM_VALUES_YAML</td>
         <td>Disables the resolving of comments in values.yaml files.</td>
-    </tr>
-    <tr>
-        <td>CDS_POST_PROD_ROLLBACK</td>
-        <td>Enables <a href="/docs/continuous-delivery/manage-deployments/rollback-deployments">post deployment rollback</a>. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>NG_EXPRESSIONS_NEW_INPUT_ELEMENT</td>
@@ -203,20 +195,12 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables users to select Azure WebApps in a drop down for slot deployments. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>CDP_AWS_SAM</td>
-        <td>Enables <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments">AWS SAM deployments</a> <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDS_RESOLVE_OBJECTS_VIA_JSON_SELECT</td>
         <td>Support resolution of objects via the JSON Select Command in the HTTP step. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
         <td>CDS_SUPPORT_SKIPPING_BG_DEPLOYMENT_NG</td>
         <td>Enables <b>Skip Unchanged Manifest</b> option in Kubernetes Blue Green Deploy step. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
-        <td>CDS_AZURE_WEBAPP_NG_LISTING_APP_NAMES_AND_SLOTS</td>
-        <td>Enables the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial">fetching and listing of WebApp names and slots</a>. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_SUPPORT_EXPRESSION_REMOTE
@@ -280,10 +264,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Removes the usage of time bucket gapfill from CD. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
-        <td>CDS_MULTI_SERVICE_PROPAGATION</td>
-        <td>Enables multi-service propagation for CD. <b>This feature is in Beta.</b> </td>
-    </tr>
-    <tr>
         <td>CDS_TERRAGRUNT_USE_UNIQUE
         _DIRECTORY_BASE_DIR_NG</td>
         <td>Enables a unique directory to support Terragrunt run-in-parallel. <b>This feature is in Beta.</b> </td>
@@ -319,10 +299,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>PIE_ASYNC_FILTER_CREATION</td>
         <td>Sets pipeline CRUD calls to filter creation asynchronously. <b>This feature is in Beta.</b> </td>
-    </tr>
-    <tr>
-        <td>CDS_OCI_HELM_ECR_CONFIG_SUPPORT_NG</td>
-        <td>Support for ECR as an OCI Helm repo but with temporary credentials. <b>This feature is under development, and will be Beta soon.</b></td>
     </tr>
     <tr>
         <td>CDS_NG_BARRIER_STEPS_WITHIN_LOOPING_STRATEGIES</td>

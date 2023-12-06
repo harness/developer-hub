@@ -758,9 +758,5 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>CDS_HELM_FETCH_CHART_METADATA_NG</td>
         <td>Exposes <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts">Helm Chart expressions</a> for reference in other steps and settings.</td>
     </tr>
-    <tr>
-        <td>CDS_OCI_HELM_ECR_CONFIG_SUPPORT_NG</td>
-        <td>Support for ECR as an OCI Helm repo but with temporary credentials.</td>
-    </tr>
 </table>
 

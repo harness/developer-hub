@@ -10,9 +10,9 @@ Currently, Bi-Directional sync is behind the feature flag `PIE_GIT_BI_DIRECTIONA
 
 :::
 
-By default, Harness Git Experience syncs unidirectionally, from Harness to your Git repos. Enable this setting to have Git Experience sync two-way (bidirectionally) between Harness and your Git repo.
+By default, Harness Git Experience syncs unidirectionally, from Harness to your Git repos. You can also have Harness Git Experience sync bidirectionally between Harness and your Git repo.
 
-Changes made on either the Git repo or Harness are synched automatically.
+With bidirectional sync for Git Experience, changes made on either the Git repo or Harness are synched automatically.
 
 This topic explains how to set up and use bidirectional sync.
 
@@ -43,17 +43,21 @@ When you create the webhook in Harness, it is automatically registered in your r
 
 You will need a webhook to your repo to use bi-directional sync:
 
-1. In Harness, go back to **Account Resources**. You will see a new option named **Webhooks**.
-2. Select **Webhooks**, and then select **New Webhook**.
-3. In **Git Connector**, select or create a [Harness Git Connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) for your repo.
-4. In **Repository**, select the repo where you are going to store the Harness entities, such as pipelines.
-5. In **Folder Path**, enter the path to the location in the repo that stores your Harness entities. Typically, the path starts with `.harness` and is followed by subfolders.
+1. In Harness, do one the following, depending on the scope at which you want to create a webhook: 
+
+  - To configure a webhook at the account scope, go to **Account Resources** > **Webhooks**, and then select **New Webhook**.
+  - To configure a webhook at the organization scope, go to **Account Resources** > **Organizations**, select your organization, and then, in the **Organization Resources** section, select **Webhooks**.
+  - To configure a webhook at the project scope, go to **Projects**, select your project, and then select **Webhooks**.
+
+2. In **Git Connector**, select or create a [Harness Git Connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) for your repo.
+3. In **Repository**, select the repo where you are going to store the Harness entities, such as pipelines.
+4. In **Folder Path**, enter the path to the location in the repo that stores your Harness entities. Typically, the path starts with `.harness` and is followed by subfolders.
    
    ![picture 1](static/794c4a80c5fb3a9d9c3e290781ce64fa99bd788ea8106f786d1d75776dae164a.png)  
 
    The **Folder Path** setting is optional. If you omit a folder path, Harness will sync everything in the repo.
 
-6. Select **Add**. The webhook is added. You can navigate to your repo webhook settings to see the new webhook.
+5. Select **Add**. The webhook is added. You can navigate to your repo webhook settings to see the new webhook.
 
 In the **Webhooks** page, you can see the **Events** tab. Once you have synched an entity with the Git repo, the Git events are displayed here. You can view Git event Ids for troubleshooting.
 

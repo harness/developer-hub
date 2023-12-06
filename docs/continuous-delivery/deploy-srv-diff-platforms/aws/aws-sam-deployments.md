@@ -6,7 +6,7 @@ sidebar_position: 4
 
 :::note
 
-Currently, AWS SAM support is behind the feature flags `CDS_CONTAINER_STEP_GROUP` and `CDP_AWS_SAM`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, AWS SAM support is behind the feature flag `CDS_CONTAINER_STEP_GROUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 

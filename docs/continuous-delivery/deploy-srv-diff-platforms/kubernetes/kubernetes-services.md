@@ -461,10 +461,6 @@ To add a Helm chart to your service, do the following:
       - **Direct Connection**. Contains the OCI Helm Registry Connector option (shortened to **OCI Helm**), which you can use with any OCI-based registry.
       - **Via Cloud Provider**. Contains the ECR connector option. This connector is specifically designed for AWS ECR to help you overcome the limitation of having to regenerate the ECR registry authentication token every 12 hours. The ECR connector option uses an AWS connector and regenerates the required authentication token if the token has expired.
 
-      :::note
-      This feature is behind the feature flag `CDS_OCI_HELM_ECR_CONFIG_SUPPORT_NG`. Contact Harness Support to enable the feature. 
-      :::
-
 For the steps and settings of each option, go to [Connectors](/docs/category/connectors) or [Connect to a Git repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
    
 Once your Helm chart is added, it appears in the **Manifests** section. For example:
