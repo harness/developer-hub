@@ -913,7 +913,7 @@ If you leave the **Priority Class** field blank, the `PriorityClass` is set to t
 
 #### Is remote caching supported in Build and Push steps?
 
-For certain build infrastructures, you can use the **Remote Cache Image** setting in **Build and Push** steps to enable remote [Docker layer caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#docker-layer-caching) where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling them to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
+Harness supports multiple Docker layer caching methods depending on what infrastructure is used. Go to [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) to learn more.
 
 #### Do Background steps have limitations?
 

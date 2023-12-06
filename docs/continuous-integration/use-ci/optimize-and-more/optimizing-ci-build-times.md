@@ -51,7 +51,7 @@ In addition to reducing build times, excluding unnecessary files and packages ma
 
 * Sort multi-line arguments in your Dockerfile alphabetically. This makes it easier to update and avoid duplicate packages.
 * Review [Docker's best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/).
-* [Enable Docker layer caching.](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#docker-layer-caching)
+* Enable [Docker layer caching](../caching-ci-data/docker-layer-caching.md) or use a [remote Docker cache](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#remote-docker-cache).
 
 </details>
 
