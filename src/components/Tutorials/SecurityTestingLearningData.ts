@@ -19,7 +19,7 @@ import { MODULES } from "../../constants";
           module: MODULES.cd,
           description:
             "Learn about the security scanning problems facing developers and how STO provides the solutions they need.",
-          link: "/tutorials/security-tests/learn-sto/sto-onboarding",
+          link: "/tutorials/security-tests/learn-about-sto/sto-onboarding",
         },
         {
           title: "Your first STO pipeline",
