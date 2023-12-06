@@ -22,19 +22,7 @@ To create, edit, and delete stages in CI pipelines, you need either Project Admi
 
    The description and [tags](../../../platform/references/tags-reference.md) are optional.
 
-4. Configure the default codebase settings.
-
-   * **Clone Codebase:** When enabled, Harness automatically clones the [codebase](../codebase-configuration/create-and-configure-a-codebase.md), specified by the **Codebase Configuration**, before executing the steps in the stage.
-      * If you disable **Clone Codebase**, Harness doesn't clone a codebase when initializing the stage.
-      * To connect to a repository in the [Harness Code Repository module](/docs/code-repository), select **Harness**.
-      * To connect to other SCM providers, select **Third party provider**.
-   * **Connector:** For third-party SCM providers, specify a Harness code repo connector that connects to the repository where the codebase is located. For information about code repo connectors and the default codebase configuration, go to [Create and configure a codebase](../codebase-configuration/create-and-configure-a-codebase.md).
-   * **Repository Name:**
-      * For the Harness Code Repository module, enter the name of the repo to clone.
-      * For third-party SCM providers, if the repo name isn't populated automatically, enter the name of the repo to clone<!-- or full URL to the code repository that you want the pipeline to use-->.
-
-   The **Codebase Configuration** settings are available when you add the *first* stage to a pipeline. After you add the first stage, you manage these in the pipeline's **Codebase** settings (not the stage's settings). For more information, go to [Edit the default codebase configuration](../codebase-configuration/create-and-configure-a-codebase.md#edit-the-default-codebase-configuration).
-
+4. Configure the [default codebase settings](../codebase-configuration/create-and-configure-a-codebase.md).
 5. Select **Set Up Stage**.
 6. Select the [Overview](#overview), [Infrastructure](#infrastructure), [Execution](#execution), and [Advanced](#advanced) tabs to configure the stage settings, [set up the build infrastructure](/docs/category/set-up-build-infrastructure), and add steps to the stage.
 

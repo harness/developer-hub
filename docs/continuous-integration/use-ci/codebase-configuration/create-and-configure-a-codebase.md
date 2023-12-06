@@ -37,17 +37,17 @@ If you prefer to use the YAML editor, you can [create connectors in YAML](../../
 
 ## Configure the default codebase
 
-When you add a **Build** stage to a CI pipeline, you can select a [code repo connector](#code-repo-connectors) that connects to the Git account or repository where your code is stored. The first codebase declared in a pipeline becomes the pipeline's *default codebase*.
+When you add a **Build** stage to a CI pipeline, you specify where your build code is stored. This becomes the pipeline's *default codebase*.
 
 1. In the Pipeline Studio, select **Add Stage**, and then select **Build**.
 2. Enter a **Stage Name**. **Description** and **Tags** are optional.
 3. Make sure **Clone Codebase** is enabled. This tells Harness to clone the codebase into the build environment before running the steps in the stage.
-4. To clone a repo from the [Harness Code Repository module](/docs/code-repository), select **Harness**. To clone a repo from a third-party SCM provider, select **Third party provider**.
-5. For **Connector**, select or create a [code repo connector](#code-repo-connectors). This is not required for the Harness Code Repository module.
-6. If **Repository Name** is not automatically populated, specify a repository to use for this pipeline. You can also set this field to `<+input>` to specify a repo at runtime.
-7. Select **Set Up Stage**.
+4. Configure your codebase connection.
+   * To clone a repo from the [Harness Code Repository module](/docs/code-repository), select **Harness Code Repository**, and then select the repo to clone.
+   * To clone a repo from a third-party Git provider, select **Third-party Git provider**, select the relevant [code repo connector](#code-repo-connectors), and enter the name of the repo to clone, if **Repository Name** is not automatically populated.
+5. Select **Set Up Stage**.
 
-If you need to change the connector or other default codebase settings, go to [Edit the default codebase configuration](#edit-the-default-codebase-configuration). If you don't want every stage to clone the default codebase, go to [Disable Clone Codebase for specific stages](#disable-clone-codebase-for-specific-stages).
+If you need to change the connector or other default codebase settings, go to [Edit the default codebase configuration](#edit-the-default-codebase-configuration). If you don't want every stage to clone the default codebase, go to [Disable Clone Codebase for specific stages](#disable-clone-codebase-for-specific-stages). You can also [clone multiple repositories in a stage](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
 
 ![Configuring the codebase when adding a Build stage.](./static/create-and-configure-a-codebase-00.png)
 

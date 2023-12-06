@@ -38,7 +38,7 @@ Merge requirements help prevent unapproved, inadequate, or erroneous code from b
 
 * **Merge conflicts:** Harness Code automatically checks for potential merge conflicts in PRs. If conflicts are found, merging is blocked until you resolve the conflicts. You need to [clone the repo](../work-in-repos/clone-repos.md) and use a local Git tool to investigate and resolve merge conflicts.
 * **Status checks:** When viewing a PR, the **Checks** tab shows the results of status checks for the PR, if any are configured.
-   * Harness pipelines [triggered](../pipelines/code-triggers.md) by PR creation or updates automatically report the pipeline run status and other pipeline/execution details on the PR.
+   * Harness pipelines [triggered](../pipelines/code-triggers.md) by PR creation or updates automatically report the pipeline run status and other execution details on the PR.
    * Status checks can also be reported by [custom webhooks](../config-repos/webhooks.md).
    * Depending on the repository's [branch rules](../config-repos/rules.md), passing status checks might be required to merge the PR.
 * [**Branch rules**](../config-repos/rules.md)

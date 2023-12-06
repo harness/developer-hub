@@ -20,15 +20,9 @@ The Harness Code supports these features:
    * Define merge requirements.
    * Specify merge strategies.
    * Assign [code owners](./config-repos/rules.md) and create [branch rules](./config-repos/rules.md).
-* Use Harness Code repositories in your [Harness pipelines](./pipelines/codebase-from-harness-code.md), and set up [triggers](./pipelines/code-triggers.md) to automatically run pipelines based on activity in your Harness Code repositories.
+* Use Harness Code repositories in your [Harness pipelines](./pipelines/codebase-from-harness-code.md), and set up [triggers](./pipelines/code-triggers.md) to automatically run pipelines based on activity in your Harness Code repositories. You can also use Harness Code Repository with the [Harness Git Experience](/docs/platform/git-experience/git-experience-overview).
 * [Configure webhooks](./config-repos/webhooks.md) to integrate your repositories with third-party applications.
 * Use keyword search to query your code.
 * Get email notifications for PRs and repositories you're affiliated with. You can manage these settings in your user profile.
-
-:::tip
-
-You can use Harness Code Repository with the [Harness Git Experience](/docs/platform/git-experience/git-experience-overview).
-
-:::
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
