@@ -59,8 +59,10 @@ The following sections describe the workflow for setting up STO. Once you comple
 
 Harness includes two RBAC roles specifically for STO users:
 
-* **Developer** role — Permissions needed for developer workflows. These workflows are described in the first tutorial, [Create a standalone STO pipeline](/tutorials/security-tests/standalone-pipeline).
-* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions ("ignore rules") for specific issues. These workflows are covered in the second tutorial, [Create an integrated STO/CI pipeline](/tutorials/security-tests/cicd-integrated-pipeline).
+* **Developer** role — Permissions needed for developer workflows. 
+* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions ("ignore rules") for specific issues. 
+
+These workflows are covered in [Your first STO pipeline](/tutorials/security-tests/learn-sto/your-first-sto-pipeline).
 
 :::note
 You need Administrative privileges at the Account level (Account Admin role) to assign these roles.

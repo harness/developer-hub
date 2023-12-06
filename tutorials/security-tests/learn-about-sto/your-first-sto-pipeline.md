@@ -13,7 +13,6 @@ This tutorial shows you how to use the Harness Security Testing Orchestration (S
 - You also need a GitHub account and a [connector](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-a-codebase-connector) to your Git service provider. 
   This tutorial uses an [example codebase on GitHub](https://github.com/williamwissemann/dvpwa) that contains known vulnerabilities. 
 :::
-c
 
 ## Objectives
 
@@ -252,8 +251,7 @@ It is good practice to set `fail_on_severity` in every scan step in an integrate
 
 </details>
 
-1. In the Pipeline Studio, open the pipeline that you created in the [Standalone pipeline](/tutorials/security-tests/standalone-pipeline) tutorial.
-2. Open the **Bandit** step.
+1. In the Pipeline Studio, open the **Bandit** step.
 2. Set **Fail on Severity** to **Critical**. 
 3. Select **Apply Changes**, save the updated pipeline, and run the pipeline again with the **DEMO-001** branch.
 
