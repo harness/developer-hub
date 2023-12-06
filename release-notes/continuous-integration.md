@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-12-01T10:00
+date: 2023-12-06T10:00
 sidebar_position: 9
 ---
 
@@ -24,6 +24,14 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## December 2023
+
+### Version 6902
+
+<!-- Dec 06, 2023 -->
+
+#### Fixed issues
+
+Improved the error message that appears if the Kubernetes cluster connector ID is `null` when running a pipeline that uses a Kubernetes cluster build infrastructure. (CI-8166)
 
 ### Version 6801
 
