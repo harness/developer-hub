@@ -38,7 +38,7 @@ In some fields in this workflow, you can specify a fixed value or expression or 
 
   - In **Identifier**, specify an identifier for the file.
 
-    You can use the identifier to refer to variables using expressions. For example, if the identifier is `myvars` you could refer to its content as follows:
+    You can reference variables by using the identifier in expressions. For example, if the identifier is `myvars` you could refer to its content as follows:
 
     `<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myvars.spec.content>`
 
