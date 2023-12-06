@@ -100,7 +100,7 @@ If you generate any local resources on the delegate in the directory where Terra
 
 #### Terraform variable files
 
-You can specify Terraform variables inline and fetch remote variable files during run time. For more information, go to [Remote Terraform variable definitions files](/docs/continuous-delivery/cd-infrastructure/terraform-infra/optional-tf-var-files).
+You can specify Terraform variables inline and fetch remote variable files during run time. For more information, go to [Specify Terraform variables](/docs/continuous-delivery/cd-infrastructure/terraform-infra/optional-tf-var-files).
 
 ## See Also
 
