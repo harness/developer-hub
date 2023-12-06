@@ -293,10 +293,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Export variables in a shell script to either the step group, stage, or pipeline scope. The variable will be accessible using the scope of the variable. For example: <pre>functor.pipeline.&lt;exported_variable&gt;</pre> Exported variables are immutable. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>GITOPS_GITHUB_RESTRAINT_FOR_STEPS</td>
-        <td>Throttles GitHub API calls to prevent breach of secondary rate limit. This is use for addressing a Github rate limit issue that users were facing when using multiple GitOps steps in parallel. It adds a default queuing for those steps so only one step executes at a time. This is only applicable for Update Release Repo, Merge PR, and Revert PR steps. <b>This feature is in Beta.</b> </td>
-    </tr>
-    <tr>
         <td>PIE_ASYNC_FILTER_CREATION</td>
         <td>Sets pipeline CRUD calls to filter creation asynchronously. <b>This feature is in Beta.</b> </td>
     </tr>
