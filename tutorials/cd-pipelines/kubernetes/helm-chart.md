@@ -20,6 +20,15 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
+<!---
+Import statements for CLI
+-->
+import MacOSCLI from '/docs/platform/shared/cli/mac.md';
+import WindowsCLI from '/docs/platform/shared/cli/windows.md';
+import ARMCLI from '/docs/platform/shared/cli/arm.md';
+import AMDCLI from '/docs/platform/shared/cli/amd.md';
+
+
 This tutorial is designed to help you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD pipeline/GitOps for deploying a Guestbook application. This Guestbook application will use Helm Chart for deployment.
 
 :::info
@@ -127,12 +136,7 @@ Once you have installed the Agent, Harness will start importing all the entities
     <TabItem value="macosfg" label="MacOS">
     ```
 
-    ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz
-    tar -xvf harness-v0.0.16-Preview-darwin-amd64.tar.gz 
-    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
-    source ~/.bash_profile
-    ```
+    <MacOSCLI />
 
     ```mdx-code-block
     </TabItem>
@@ -144,24 +148,14 @@ Once you have installed the Agent, Harness will start importing all the entities
     <TabItem value="armfg" label="ARM">
     ```
 
-    ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz 
-    tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz
-    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
-    source ~/.bash_profile
-    ```
+   <ARMCLI />
 
     ```mdx-code-block
     </TabItem>
     <TabItem value="amdfg" label="AMD">
     ```
 
-    ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
-    tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz 
-    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
-    source ~/.bash_profile
-    ```
+   <AMDCLI />
 
     ```mdx-code-block
     </TabItem>
@@ -175,9 +169,7 @@ Once you have installed the Agent, Harness will start importing all the entities
 
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
-    ```
-    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip -OutFile ./harness.zip
-    ```
+    <WindowsCLI />
         
     b. Extract the downloaded zip file and change directory to extracted file location.
 
@@ -416,12 +408,7 @@ Verify the following:
     <TabItem value="gitmacos" label="MacOS">
     ```
 
-    ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz
-    tar -xvf harness-v0.0.16-Preview-darwin-amd64.tar.gz 
-    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
-    source ~/.bash_profile
-    ```
+   <MacOSCLI />
 
     ```mdx-code-block
     </TabItem>
@@ -433,24 +420,14 @@ Verify the following:
     <TabItem value="armgitops" label="ARM">
     ```
 
-    ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz
-    tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz 
-    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
-    source ~/.bash_profile
-    ```
+   <ARMCLI />
 
     ```mdx-code-block
     </TabItem>
     <TabItem value="amdgitops" label="AMD">
     ```
 
-    ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
-    tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz 
-    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
-    source ~/.bash_profile
-    ```
+    <AMDCLI />
 
     ```mdx-code-block
     </TabItem>
@@ -464,9 +441,7 @@ Verify the following:
 
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
-    ```
-    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip  -OutFile ./harness.zip
-    ```
+    <WindowsCLI />
         
     b. Extract the downloaded zip file and change directory to extracted file location.
 
