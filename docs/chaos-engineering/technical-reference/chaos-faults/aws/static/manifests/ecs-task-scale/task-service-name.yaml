@@ -12,7 +12,7 @@ spec:
     spec:
       components:
         env:
-        # provide the name of ECS cluster
+        # provide the number of replicas
         - name: CLUSTER_NAME
           value: 'demo'
         - name: SERVICE_NAMES

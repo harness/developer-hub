@@ -116,7 +116,7 @@ Here is an example AWS permission to help execute the fault.
 
 ### ECS service name
 
-Comma-separated tasks that are a part of the particular service, that are scaled. Tune it by using the `SERVICE_NAMES` environment variable. 
+Comma-separated serice names that derives the task. Tune it by using the `SERVICE_NAMES` environment variable. 
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -165,7 +165,7 @@ spec:
     spec:
       components:
         env:
-        # provide the name of ECS cluster
+        # provide the number of replicas
         - name: REPLICAS
           value: '5'
 ```
