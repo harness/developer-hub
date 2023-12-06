@@ -9,24 +9,24 @@ import {
   // Featured Tutorials
   export const featuredTutorials: CardItem[] = [
       {
-        title: "Create a standalone STO pipeline",
+        title: "Your first STO pipeline",
         module: MODULES.sto,
         icon: "img/icon_sto.svg",
         description: "Set up a pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.",
-        newDoc: true,
+        newDoc: false,
         type: [docType.Documentation],
         time: "8min",
-        link: "/tutorials/security-tests/standalone-pipeline",
+        link: "/tutorials/security-tests/learn-about-sto/your-first-sto-pipeline",
       },
       {
-        title: "Deploy a Helm Chart using CD Community Edition",
+        title: "Image scanning quickstart",
         module: MODULES.sto,
         icon: "img/icon_sto.svg",
-        description: "Add a scan step to a CI pipeline and set up the pipeline to fail if a scan finds any show-stopper vulnerabilities.",
+        description: "Set up a pipeline to scan images using Aqua Trivy.",
         newDoc: true,
         type: [docType.Documentation],
         time: "10min",
-        link: "/tutorials/security-tests/cicd-integrated-pipeline",
+        link: "/tutorials/security-tests/quickstarts/container-scan-aqua-trivy",
       },
     ];
     

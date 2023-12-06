@@ -1,7 +1,7 @@
 ---
 title: Container image scans with Aqua Trivy
 sidebar_position: 60
-description: Scan a codebase using Semgrep
+description: Scan a container image using Aqua Trivy
 keywords: [STO, security, container, image, security, Trivy]
 # slug: /sto-pipelines/sast/semgrep
 ---

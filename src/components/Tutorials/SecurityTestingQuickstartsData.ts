@@ -33,7 +33,7 @@ import { MODULES } from "../../constants";
           module: MODULES.cd,
           description:
             "Launch pipeline builds and scans automatically based on GitLab merge requests.",
-          link: "/tutorials/security-tests/quickstarts/gitlab-ci-integration.md",
+          link: "/tutorials/security-tests/quickstarts/gitlab-ci-integration",
         },
       ],
     },

@@ -22,7 +22,7 @@ const config = {
   url: 'https://developer.harness.io',
   baseUrl: BASE_URL,
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenMarkdownLinks: 'throw',
   favicon: 'img/hdh_fav_icon_grey.ico',
 
   //Mermaid Diagram Functionality
