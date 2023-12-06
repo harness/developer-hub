@@ -9,7 +9,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 <!---
-Import statements for CLI
+Import statements for CLI downloads
+<MacOSCLI />, <WindowsCLI />, <ARMCLI />, <AMDCLI />
 -->
 import MacOSCLI from '/docs/platform/shared/cli/mac.md';
 import WindowsCLI from '/docs/platform/shared/cli/windows.md';

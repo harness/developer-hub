@@ -19,6 +19,14 @@ title: Kustomize
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
+<!---
+Import statements for CLI downloads
+<MacOSCLI />, <WindowsCLI />, <ARMCLI />, <AMDCLI />
+-->
+import MacOSCLI from '/docs/platform/shared/cli/mac.md';
+import WindowsCLI from '/docs/platform/shared/cli/windows.md';
+import ARMCLI from '/docs/platform/shared/cli/arm.md';
+import AMDCLI from '/docs/platform/shared/cli/amd.md';
 
 This tutorial helps you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD pipeline and deployment of a Guestbook application. This Guestbook application will use Kustomize for deployment.
 
@@ -237,79 +245,74 @@ Complete the following tasks:
 ----------------------------------
 
 1. Download and configure the Harness CLI.
-
-```mdx-code-block
-<Tabs queryString="cli-os">
-<TabItem value="macos" label="MacOS">
-```
-
-```bash
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz
-tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
-echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
-source ~/.bash_profile
-```
-
-```mdx-code-block
-</TabItem>
-<TabItem value="linux" label="Linux">
-```
-
-```mdx-code-block
-<Tabs queryString="linux-platform">
-<TabItem value="arm" label="ARM">
-```
-
-```bash
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz
-tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz 
-echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
-source ~/.bash_profile
-```
-
-```mdx-code-block
-</TabItem>
-<TabItem value="amd" label="AMD">
-```
-
-```bash
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
-tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz
-echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
-source ~/.bash_profile
-```
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
-
-```mdx-code-block
-</TabItem>
-<TabItem value="windows"  label="Windows">
-```
-
-a. Open Windows Powershell and run the following command to download the Harness CLI.
-
-```
-Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip  -OutFile ./harness.zip
-```
-    
-b. Extract the downloaded Zip file and change the directory to the extracted file location.
-
-c. Perform the following steps to make it accessible through a terminal.
-
-```
-$currentPath = Get-Location 
-[Environment]::SetEnvironmentVariable("PATH", "$env:PATH;$currentPath", [EnvironmentVariableTarget]::Machine)
-```
-
-d. Restart the terminal.
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
+ 
+ ```mdx-code-block
+ <Tabs queryString="cli-os">
+ <TabItem value="macos" label="MacOS">
+ ```
+ 
+ <MacOSCLI />
+ 
+ ```mdx-code-block
+ </TabItem>
+ <TabItem value="linux" label="Linux">
+ ```
+ 
+ ```mdx-code-block
+ <Tabs queryString="linux-platform">
+ <TabItem value="arm" label="ARM">
+ ```
+ 
+ ```bash
+ curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz
+ tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz 
+ echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+ source ~/.bash_profile
+ ```
+ 
+ ```mdx-code-block
+ </TabItem>
+ <TabItem value="amd" label="AMD">
+ ```
+ 
+ ```bash
+ curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
+ tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz
+ echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
+ source ~/.bash_profile
+ ```
+ 
+ ```mdx-code-block
+ </TabItem>
+ </Tabs>
+ ```
+ 
+ ```mdx-code-block
+ </TabItem>
+ <TabItem value="windows"  label="Windows">
+ ```
+ 
+ a. Open Windows Powershell and run the following command to download the Harness CLI.
+ 
+ ```
+ Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip  -OutFile ./harness.zip
+ ```
+     
+ b. Extract the downloaded Zip file and change the directory to the extracted file location.
+ 
+ c. Perform the following steps to make it accessible through a terminal.
+ 
+ ```
+ $currentPath = Get-Location 
+ [Environment]::SetEnvironmentVariable("PATH", "$env:PATH;$currentPath", [EnvironmentVariableTarget]::Machine)
+ ```
+ 
+ d. Restart the terminal.
+ 
+ ```mdx-code-block
+ </TabItem>
+ </Tabs>
+ ```
 
 2. Clone the forked **harnesscd-example-apps** repo and change the directory.
     ```bash
