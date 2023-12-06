@@ -553,6 +553,48 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
 ### Patches
 
+#### December x, 2023, 0.11.2
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.11.2](https://github.com/harness/helm-charts/releases/tag/harness-0.11.2) |
+| Air Gap Bundle | [0.11.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.11.2) |
+| NG Manager | 81308 |
+| CI Manager | 6602 |
+| Pipeline Service | 1.49.12 |
+| Platform Service | 80800 |
+| Access Control Service | 80600 |
+| Delegate | 23.10.81202 |
+| Change Data Capture | 81510 |
+| Test Intelligence Service | release-221 |
+| NG UI | 0.368.21 |
+| LE NG | 67903 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.11.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.2/sto_images.tgz" \
+  .
+```
+
+#### Fixed issue
+
+- Two-factor authentication emails that were resent via delegates weren't being delivered. (PL-42263, PL-42486, ZD-52646)
+
+   This issue has been resolved. Now, when you resend two-factor authentication emails via delegates, the emails are sent successfully.
+
 #### December 1, 2023, 0.11.1
 
 This release includes the following Harness module and component versions.
