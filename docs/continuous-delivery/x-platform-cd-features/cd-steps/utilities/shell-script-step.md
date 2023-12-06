@@ -144,6 +144,11 @@ print = functools.partial(print, flush=True)
 
 You might have to make similar changes to your script depending on its contents.
 
+:::note
+Execution logs can appear with wrong colour coding due to the shell script executor being used.
+:::
+
+
 ### Shell Script steps and failures
 
 A failed Shell Script step does not prevent a stage deployment from succeeding.
