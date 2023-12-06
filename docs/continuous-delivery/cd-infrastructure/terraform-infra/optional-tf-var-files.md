@@ -19,7 +19,7 @@ Harness supports all [Terraform input types and values](https://www.terraform.io
 To specify optional Terraform variable files, do the following:
 
 :::tip 
-In some fields in this workflow, you can specify a fixed value or expression or set up the field to accept an input at run time. For information about value types and how to identify fields that offer this functionality, go to [Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
+In some fields in this procedure, you can specify a fixed value or expression or set up the field to accept an input at run time. For information about value types and how to identify fields that offer this functionality, go to [Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 :::
 
 1. On the **Visual** tab of **Pipeline Studio**, select the step at which you want Harness to download Terraform variable files.
@@ -114,7 +114,7 @@ The following lines illustrate the YAML configuration for the Terraform variable
                                   repoName: ""
                                   branch: main
                                   paths:
-                                    - terraform/localresource/localresourcevars/localresource.tfvar
+                                    - terraform/localresource/localresourcevars/localresource.tfvars
                                     - inexistentaasd123a.tvfars
                                     - iasd13sadfsa6757.tfvars
                                   connectorRef: vlicaprerequisites
@@ -132,10 +132,10 @@ Git connector Url: https://github.com/vlica-harness/prerequisites.git
 Branch: main
 
 Fetching following Files :
-- terraform/localresource/localresourcevars/localresource.tfvar
+- terraform/localresource/localresourcevars/localresource.tfvars
 - inexistent131.tfvars
 - asfafainexistent.tfvars
 - asdsadasdsa.tfavr
 Successfully fetched following files:
-- terraform/localresource/localresourcevars/localresource.tfvar
+- terraform/localresource/localresourcevars/localresource.tfvars
 ```
