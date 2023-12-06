@@ -58,10 +58,11 @@ Remote caching isn't available for all build infrastructures. If available for y
 * [Build and Push to ECR](../build-and-upload-artifacts/build-and-push-to-ecr-step-settings.md)
 * [Build and Push to GAR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar.md)
 * [Build and Push to GCR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md)
+* [Build and Push to ACR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr.md)
 
 :::info
 
-Harness Cloud can manage the Docker layer cache backend for you, without relying on your Docker registry (which can reduce build times even further). To learn more, see our [Docker Layer Caching](./docker-layer-caching.md) documentation.
+Harness Cloud can manage the Docker layer cache backend for you, without relying on your Docker registry, which can further reduce build times. To learn more, go to [Docker Layer Caching](./docker-layer-caching.md).
 
 :::
 

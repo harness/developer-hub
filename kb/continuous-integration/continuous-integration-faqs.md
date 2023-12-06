@@ -913,7 +913,7 @@ If you leave the **Priority Class** field blank, the `PriorityClass` is set to t
 
 #### Is remote caching supported in Build and Push steps?
 
-Harness supports multiple Docker layer caching methods depending on what infrastructure is used. See our [Docker Layer Caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) documentation to learn more.
+Harness supports multiple Docker layer caching methods depending on what infrastructure is used. Go to [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) to learn more.
 
 #### Do Background steps have limitations?
 
