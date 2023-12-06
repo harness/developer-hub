@@ -26,15 +26,15 @@ In some fields in this workflow, you can specify a fixed value or expression or 
 
 2. In the step configuration pane that appears, expand **Optional Configuration**.
 
-3. In **Terraform Var Files (optional)**, click **+ Add**, and then do one of the following:
+3. In **Terraform Var Files (optional)**, select **+ Add**, and then do one of the following:
 
   - To enter inline Terraform variables, select **Add Inline**.
 
-  - To specify files available in remote files stores, select **Add Remote**.
+  - To specify files available in remote file stores, select **Add Remote**.
 
     The **Remote File** wizard is displayed.
 
-4. If you selected the **Add Inline** option, do the following:
+4. If you selected **Add Inline**, do the following:
 
   - In **Identifier**, specify an identifier for the file.
 
@@ -65,13 +65,13 @@ In some fields in this workflow, you can specify a fixed value or expression or 
     ```
     For more information, go to [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
-5. If you selected the **Add Remote** option, on the **Specify Terraform Var File Store** page of the **Remote File** wizard, do the following:
+5. If you selected **Add Remote**, on the **Specify Terraform Var File Store** page of the **Remote File** wizard, do the following:
 
   - From the list of file stores shown, select the file store that contains the Terraform variable files.
 
-  - Click **Github Connector**, select a connector from the dialog that is displayed, and then select **Apply Selected**. 
+  - Click in the connector field, select a connector in the dialog that is displayed, and then select **Apply Selected**. 
   
-    Alternately, select **+ New GitHub Connector** and create a connector to connect to your remote file store. For information about creating a connector, go to [Connectors](/docs/category/connectors).
+    Alternately, select the button for creating a connector. For information about creating a connector, go to [Connectors](/docs/category/connectors).
 
 6. Select **Continue**.
 
@@ -98,7 +98,7 @@ In some fields in this workflow, you can specify a fixed value or expression or 
 
 ## YAML
 
-The following lines illustrate the YAML configuration for the Terraform variable definitions files section:
+The following lines illustrate the YAML configuration for the Terraform variable files section:
 
 ```YAML
                       varFiles:
