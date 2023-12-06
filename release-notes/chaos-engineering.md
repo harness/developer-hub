@@ -32,38 +32,48 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * Until an experiment is saved, the "run experiment" or "enable cron" buttons are hidden. (CHAOS-3099)
 
-* Dynatrace probe schema for Kubernetes is modified to reduce the lenghth of the field token names. (CHAOS-3043)
-
-* A cron enable/disable button is added tp the dashboard table menu, so that you can enable or disable the cron experiments from the dashboard itself. (CHAOS-3027)
+* A cron enable/disable button is added to the dashboard table menu so that you can enable or disable the cron experiments from the dashboard itself. (CHAOS-3027)
 
 * A new field, "last_executed_at", is added to the chaos experiments. This new field is updated whenever an event is received during the course of an experiment run. (CHAOS-3018)
 
 * While creating an experiment, if a YAML file is uploaded that can't be parsed, a warning is displayed on the user interface. (CHAOS-3016)
 
-* You can now sort experiments based on the "recently executed" and "last modified" filters, in ascending and descending order. (CHAOS-2895)
+* You can now sort experiments based on the "recently executed" and "last modified" filters in ascending and descending order. (CHAOS-2895)
 
-* Dynatrace probes are now available on Linux chaos infrastructure. (CHAOS-2879)
+* Dynatrace probes are now available on the Linux chaos infrastructure. (CHAOS-2879)
 
-* Custom arguments/flags are added in the command for VMware stress and network faults. (CHAOS-2846)
+* Custom arguments/flags are added to the command for VMware stress and network faults. (CHAOS-2846)
 
 * The pod memory hog chaos experiment provides distinction between experiments that failed (as an expected result) versus experiments that actually failed. (CHAOS-2515)
 
 * Cron and non-cron experiment types can be identified manually or using the tooltip by hovering over individual run boxes in **resilience probes**. (CHAOS-3010)
+
+* Added a new Cloud Foundry fault, "CF app route unbind". (CHAOS-2912)
+
+* If a previous CRON experiment is not running or is in a queued state, such a CRON experiment can be executed on-demand. This is done by clicking **Run Experiment** button on the vertical three-dot menu on the experiment page. (CHAOS-2896)
+
+* The pipeline manifest will be stored in the Harness repository. (CHAOS-2040)
 
 
 #### Fixed issues
 
 * The sandbox API was being called when the corresponding flag was off. This has been fixed. (CHAOS-3126)
 
-* SLO probe properties in the fault selection and probe details in the runs view UI was not being displayed. This has been fixed. (CHAOS-3119)
+* SLO probe properties in the fault selection and probe details in the runs view UI were not being displayed. This has been fixed. (CHAOS-3119)
 
 * Added support for **SKIP_SSL_VERIFY** in readiness probes for the execution plane components. (CHAOS-3115)
 
-* Mongo queries resulted in fetching results for deleted gamedays. This has been fixed by adding a field "is_removed" to the mongo queries. (CHAOS-3091)
+* Mongo queries resulted in fetching results for deleted gamedays. This has been fixed by adding a field "is_removed" to the Mongo queries. (CHAOS-3091)
 
 * Linux chaos infrastructure did not provide JSON log output. This issue has been fixed. (CHAOS-2989)
 
-* The probe mode would be pre-selected as SOT by default. Now, it will be empty and no value will be present by default. (CHAOS-2455)
+* The probe mode would be pre-selected as SOT by default. Now, it will be empty, and no value will be present by default. (CHAOS-2455)
+
+* CRIO runtime would give an unknown service runtime.v1alpha2.RuntimeService error. This issue has been fixed. (CHAOS-3019)
+
+* When a user who does not have view access in one of the scopes (Project/Organization/Account) tried to run an experiment, they encountered a permission error. This issue has been fixed. (CHAOS-2810)
+
+* When no tunables were selected for a fault, the **Learn more** link did not redirect to a destination. This issue has been fixed. (CHAOS-2973)
 
 ### Version 1.24.5
 
