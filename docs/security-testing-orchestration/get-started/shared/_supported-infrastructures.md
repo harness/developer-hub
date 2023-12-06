@@ -20,10 +20,10 @@ STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-b
     <tr>
         <td>Linux</td>
         <td>arm64</td>
-        <td align="center">✅</td>
-        <td align="center">✅</td>
-        <td align="center">✅</td>
-        <td align="center">✅</td>
+        <td align="center">❌</td>
+        <td align="center">❌</td>
+        <td align="center">❌</td>
+        <td align="center">❌</td>
     </tr>
     <tr>
         <td>Windows</td>
