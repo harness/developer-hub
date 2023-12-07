@@ -589,7 +589,7 @@ gsutil -m cp \
   .
 ```
 
-#### Fixed issue
+#### Fixed issues
 
 - Earlier, two-factor authentication emails were only sent through CurrentGen delegates, causing email failures for NextGen. (PL-42263, PL-42486, ZD-52646)
 
