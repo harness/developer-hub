@@ -3371,3 +3371,15 @@ You can update the RBAC to disable auto-sync for the entire GitOps app, but this
 
 ### How the order or precedence of file in the k8sdeploy component is used when multiple values yaml were used.
 When using multiple values YAML files in Harness Kubernetes Services, the highest priority is given to the last file, and the lowest priority to the first file.
+
+#### How to make Pipeline  input value required?
+You need to select the checkbox "Set Variable as Required During Runtime" after editing the variable
+
+#### Which variable we can use to refer artifact repository 
+You can use variable <+artifacts.primary.repositoryName>
+
+#### Helm Pipeline is failing with helm: not found error
+Check the Helm version you are trying to use is installed on selected delegate and also you can print and check $PATH variable if helm binary path is set correctly
+
+#### Autoscaler manifest file deployment is throwing 400 and failing with  An error occurred while trying to set the rules. The autoscaler responded with: Bad Request Reason
+As we can see that it was failing while setting the rule, so need to validate the Rule section in manifest and you can try applying the manifest directly on cli.
