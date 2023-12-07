@@ -27,7 +27,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ### New enhancements
 
-- Added a new setting for Checkmarx scans, which is useful when you want STO to exclude issues detected by Checkmarx but flagged as Not Exploited. (STO-6712, ZD-53483)
+- Added a new setting for Checkmarx scans, which is useful when you want STO to exclude issues detected by Checkmarx but flagged as Not Exploitable. (STO-6712, ZD-53483)
 
   To enable this setting, go to the **Checkmarx** or **Security** step and add the following key-value pair under Settings:
 
