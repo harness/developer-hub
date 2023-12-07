@@ -5,7 +5,7 @@ description: View monitoring info from Dynatrace for services in your Software C
 
 | Plugin details |                                                                                |
 | -------------- | ------------------------------------------------------------------------------ |
-| **Created by** | [TELUS](https://github.com/telus)                                                      |
+| **Created by** | [Dynatrace](https://www.dynatrace.com/)                                                      |
 | **Category**   | Monitoring                                                                        |
 | **Source**     | [GitHub](https://github.com/backstage/backstage/tree/master/plugins/dynatrace) |
 | **Type**       | Open-source plugin                                                             |
