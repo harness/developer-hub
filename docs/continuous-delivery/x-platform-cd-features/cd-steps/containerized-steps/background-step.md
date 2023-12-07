@@ -4,11 +4,6 @@ description: Run dependent services and DinD in your CD stages.
 sidebar_position: 2
 ---
 
-:::note
-
-Currently, the Background step in Deploy stages is behind the feature flag `CDS_CONTAINER_STEP_GROUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Background steps run dependent services needed for the entire lifetime of a CD step group or stage. For example, you can set up your stage to run multiple background services that implement a local, multi-service app.
 
