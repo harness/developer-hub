@@ -591,9 +591,9 @@ gsutil -m cp \
 
 #### Fixed issue
 
-- Two-factor authentication emails sent from the UI weren't being delivered. (PL-42263, PL-42486, ZD-52646)
+- Earlier, two-factor authentication emails were only sent through CurrentGen delegates, causing email failures for NextGen. (PL-42263, PL-42486, ZD-52646)
 
-   This issue has been resolved. Now, when you send two-factor authentication emails, the emails are sent successfully.
+   This issue has been resolved. Now, when you send two-factor authentication emails via NextGen, the emails are sent successfully.
 
 - Harness disabled external Stripe HTTP requests in Harness Manager version 80219. (PLG-3000, ZD-52239)
 
