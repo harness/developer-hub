@@ -91,6 +91,8 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * This release adds a validation check to the template name and entry point in the YAML to match at least one template name with the entry point name. The check ensures that the visual builder shows the faults correctly. (CHAOS-2933)
 
+* This release adds support for chaos dashboards in SMP. (CHAOS-3100)
+
 * This release adds support for source and destination ports, isolating the ports as well as excluding them for VMware network faults. (CHAOS-2892)
 
 * This release adds support for source and destination ports, isolating the ports as well as excluding them for Linux network faults. (CHAOS-2873)
