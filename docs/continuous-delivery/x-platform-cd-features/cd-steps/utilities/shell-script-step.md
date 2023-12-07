@@ -145,7 +145,7 @@ print = functools.partial(print, flush=True)
 You might have to make similar changes to your script depending on its contents.
 
 :::note
-Execution logs can appear with wrong colour coding due to the shell script executor being used.
+In Harness Logs for shell scripts, the color-coding of logs is aligned with the IO stream from the executed command. Typically, stdout is used for logging successful commands, with its logs color-coded to represent informational data. Conversely, stderr is generally used for error logging, with logs color-coded accordingly. However, it should be noted that some commands also output successful executions to stderr. It should be recognized that Harness cannot control this variance in IO stream usage.
 :::
 
 
