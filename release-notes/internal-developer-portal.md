@@ -22,7 +22,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ### Version 0.16.0
 
-<!-- Dec 7, 2023 -->
+<!-- Dec 8, 2023 -->
 
 🌟 "Ho, ho, ho! Santa's elves aren't the only ones delivering gifts this season! 🎅 In our latest release, we're decking the IDP with some shiny new home page and jolly additions to our scorecards. 
 
