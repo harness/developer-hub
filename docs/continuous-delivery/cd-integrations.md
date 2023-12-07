@@ -195,10 +195,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Support resolution of objects via the JSON Select Command in the HTTP step. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
-        <td>CDS_SUPPORT_SKIPPING_BG_DEPLOYMENT_NG</td>
-        <td>Enables <b>Skip Unchanged Manifest</b> option in Kubernetes Blue Green Deploy step. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDS_SUPPORT_EXPRESSION_REMOTE
         _TERRAFORM_VAR_FILES_NG</td>
         <td>Enables Harness expressions in remote Terraform var files. <b>This feature is in Beta.</b> </td>
