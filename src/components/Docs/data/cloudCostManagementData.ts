@@ -63,13 +63,6 @@ import {
               "Manage your cloud environment and cloud spend using the asset governance rules and budgets.",
             link: "/docs/category/cost-governance",
           },
-          {
-            title: "Integrations",
-            module: MODULES.ccm,
-            description:
-              "Monitor your cloud costs by integrating CCM with third-party tools such as Datadog.",
-            link: "/docs/cloud-cost-management/datadog-integration",
-          },
         ],
       },
       {
