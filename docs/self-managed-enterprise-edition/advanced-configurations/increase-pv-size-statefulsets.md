@@ -29,7 +29,7 @@ To increase the PV size, do the following:
 2. Identify the PV that corresponds to the StatefulSet you are currently working with.
 
 
-3. Edit the PV configuration to update the storage size. Replace <YOUR_PVC_NAME> with the name of your PV and <YOUR_UPDATED_SIZE> with the desired storage size.
+3. Edit the PV configuration to update the storage size. Replace <YOUR_PVC_NAME> with the name of your PVC and <YOUR_UPDATED_SIZE> with the desired storage size.
 
    ```
    kubectl patch pvc <YOUR_PVC_NAME> -p '{"spec":{"resources":{"requests":{"storage":"<YOUR_UPDATED_SIZE>"}}}}' -n <namespace>
