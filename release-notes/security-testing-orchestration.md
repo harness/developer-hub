@@ -706,7 +706,7 @@ The following security steps are now generally available:
 
 This release does not include fixed issues.
 
-### January 29, 2023
+### Version 1.25.0
 
 #### What's new
 
@@ -723,7 +723,7 @@ This release does not include fixed issues.
 
 * Fixed an issue that caused a scheduled AWS ECR scan to time out or to terminate with a status of Invalid. (STO-5449)  
 
-### January 15, 2023
+### Version 1.24.1
 
 #### What's new
 
@@ -733,9 +733,8 @@ This release does not include fixed issues.
 
 * Fixed an issue where, in some situations, the severity and severity code of a detected issue were not updated when new occurrences of the same issue were detected. (STO-4809)  
 
-### Version 1.24
+### January 8, 2023
 
-<!-- 2023-01-08 -->
 
 ##### What's new
 
@@ -744,7 +743,7 @@ This release does not include fixed issues.
 * STO now supports orchestrated scans using [Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference). (STO-5161)  
 
 
-### Version 1.22
+### Version 1.21
 
 <!-- 2023-01-01 -->
 
