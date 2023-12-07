@@ -50,12 +50,6 @@ These methods are described below.
 
 For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
 
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 ## Pre-existing infrastructure
 
 For a pre-existing infrastructure, you provide Harness with the target cluster and namespace for the deployment.
@@ -550,12 +544,6 @@ To add an **Infrastructure Definition** with the Rancher connection method, do t
 
 
 ## Dynamically provisioned infrastructure
-
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
 

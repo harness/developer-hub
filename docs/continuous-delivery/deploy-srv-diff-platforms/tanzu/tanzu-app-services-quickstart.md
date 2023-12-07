@@ -381,12 +381,6 @@ The target space is your TAS space. This is where you will deploy your applicati
 
 ### Dynamically provisioned TAS infrastructure
 
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
 
 1. **Add dynamic provisioning to the CD stage**:
