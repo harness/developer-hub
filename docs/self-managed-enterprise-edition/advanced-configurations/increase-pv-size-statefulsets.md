@@ -72,6 +72,6 @@ To increase the PV size, do the following:
    ```
 
 :::info note
-The field `PersistentVolumesTemplates` is immutable in StatefulSet, which means that you must recreate for any changes to take effect.
+The field `PersistentVolumesTemplates` is immutable in StatefulSet, which means that you must recreate it for any changes to take effect.
 
 :::
