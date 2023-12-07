@@ -591,9 +591,9 @@ gsutil -m cp \
 
 #### Fixed issue
 
-- Two-factor authentication emails that were resent via delegates weren't being delivered. (PL-42263, PL-42486, ZD-52646)
+- Two-factor authentication emails that were resent weren't being delivered. (PL-42263, PL-42486, ZD-52646)
 
-   This issue has been resolved. Now, when you resend two-factor authentication emails via delegates, the emails are sent successfully.
+   This issue has been resolved. Now, when you resend two-factor authentication emails, the emails are sent successfully.
 
 #### December 1, 2023, 0.11.1
 
