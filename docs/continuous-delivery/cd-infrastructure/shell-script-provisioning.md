@@ -36,12 +36,6 @@ Harness provisioning is categorized into the following use cases:
 
 For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
 
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 ### Dynamic provisioning steps for different deployment types
 
 Each of the deployment types Harness supports (Kubernetes, AWS ECS, etc.) require that you map different script outputs to the Harness infrastructure settings in the pipeline stage.
@@ -317,12 +311,6 @@ If you want to use the outputs from your script, you need to use the Harness `$P
 For details on `$PROVISIONER_OUTPUT_PATH`, go to [$PROVISIONER_OUTPUT_PATH](#provisioner_output_path) in the current topic.
 
 ## Dynamic infrastructure provisioning
-
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 For dynamically provisioning the target deployment environment, you add the Shell Script Provision step to the **Environment** section of the CD Deploy stage.
 
