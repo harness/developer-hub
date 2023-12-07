@@ -30,7 +30,6 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 #### New features and enhancements
 
-- Scorecard overview page improvements for better stats [IDP-1712]. 
 - New Plugin support added for [Dynatrace Plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/dynatrace) [IDP-1759]
 - New intuitive Homepage with added [Home Plugin](https://backstage.spotify.com/marketplace/spotify/plugin/home/) support [IDP-1694].
 
