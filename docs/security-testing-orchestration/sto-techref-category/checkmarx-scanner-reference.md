@@ -260,7 +260,7 @@ If you want to go through an HTTPS proxy, replace `-Dhttp` with `-Dhttps`.
 
 ### Exclude issues marked as Not Exploited
 
-You can configure the Checkmarx ingestion step to exclude issues detected by Checkmarx but flagged as Not Exploited. To enable this setting, add the following key-value pair under **Settings**:
+You can configure the Checkmarx ingestion step to exclude issues detected by Checkmarx but flagged as Not Exploitable. To enable this setting, add the following key-value pair under **Settings**:
 
 `hide_not_exploitable` : `True`
 
