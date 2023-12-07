@@ -40,7 +40,9 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 - Expiration time for exemptions now start when the exemption is approved. (STO-6604)
 
 
-#### Version 1.75.1
+## November 2023 
+
+### Version 1.75.1
 
 <!-- 2023-11-26 -->
 
@@ -67,7 +69,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 - Fixed an issue that caused the **Issue Details** pane to show target names from other projects in the same account. (STO-6693)
 
 
-#### Version 1.73.1
+### Version 1.73.1
 
 <!-- 2023-11-05 -->
 
@@ -81,7 +83,9 @@ You can now scan your repositories and other components used in your code with [
 
 - Fixed a UI issue in the **Security Tests** tab where the **Stage** and **Step** pull-down filters showed the `identifier` fields. These filters now show the `name` fields, which are more human-readable. (STO-6629)
 
-#### Version 1.72.0
+## October 2023 
+
+### Version 1.72.0
 
 <!-- 2023-10-29 -->
 
@@ -143,7 +147,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
 - Fixed a UI issue in **Security Tests** when all vulnerabilities detected in a scan had exemptions. The tab showed "No Security Issues Found", all issue counts were 0, and no issues appeared in the UI even when the selected filter included exempted issues. (STO-6642)
 
-#### Version 1.71.1
+### Version 1.71.1
 
 <!-- 2023-10-15 -->
 
@@ -156,7 +160,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 - The STO dashboard used a marketplace graph which was not available in hosted environments. A new native graph has been chosen so the Security Issues (Overall) graph will be available on all environments. (STO-6613)
 - Updated the icon for a false positive exemption to match the other icons (STO-6555)
 
-#### Version 1.70.1
+### Version 1.70.1
 
 <!-- 2023-10-08 -->
 
@@ -171,7 +175,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
   This fixes an issue in a feature behind the Feature Flag `STO_DROPDOWN_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-6405)
 
 
-#### Version 1.69.3
+### Version 1.69.3
 
 <!-- 2023-10-01 -->
 
@@ -193,7 +197,9 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
 - Occurrences page size longer resets on page update. (STO-6472)
 
-#### Version 1.68.0
+## September 2023 
+
+### Version 1.68.0
 
 <!-- 2023-09-10 -->
 
@@ -207,11 +213,11 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
  
   - Added an **Exclude** field to the SonarQube step and removed the **Include** step. The **Exclude** field corresponds to the `sonar.exclusions` setting, which you can use to [narrow the focus](https://docs.sonarsource.com/sonarqube/latest/project-administration/analysis-scope/#excluding-specific-rules-from-specific-files) of a SonarQube scan. (STO-6441)
 
-#### Version 1.67.2
+### Version 1.67.2
 
 <!-- 2023-09-03 -->
 
-##### New features and enhancements
+#### New features and enhancements
 
 - In the STO Overview, **Today's Snapshot** shows new and remediated issue counts if today's issue counts include any newly detected vulnerabilities or new remddiations. (STO-4998) 
 
@@ -221,11 +227,13 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
 - Implemented fixes to improve scan times for large jobs using Checkmarx, Snyk, and other scanners. (STO-6408, STO-5676, ZD-49328, ZD-41409, ZD-42436, ZD-49383) 
 
-#### Version 1.67.1
+## August 2023 
+
+### Version 1.67.1
 
 <!-- 2023-08-27 -->
 
-##### New features and enhancements
+#### New features and enhancements
 
 - The target list table in  **Test Targets** is now paginated. You can configure the list to show 10, 20, 50, or 100 targets per page. (STO-4818) 
 
@@ -270,9 +278,10 @@ This update to the SonarQube runner includes the following fixed issues:
 
 - Fixed an issue where the SonarQube step could not override some SonarQube scan CLI parameters specified in the **Additional CLI arguments** field. (STO-6443)
 
-#### Version 1.66.1
 
-<!-- 2023-08-20 -->
+### Version 1.66.1
+
+<!-- 2023-09-20 -->
 
 
 #### Fixed issues
@@ -325,6 +334,7 @@ This update to the SonarQube runner includes the following fixed issues:
 
 * Fixed an issue that made it difficult to set up proxy details for a Veracode scan. Veracode scans can now handle `https_proxy`, `http_proxy`, and `no_proxy` environment variables as `-D` flags that get passed to Java. (STO-6081, ZD-45891)
 
+## July 2023
 
 ### Version 1.61.1 
 
@@ -332,9 +342,9 @@ This update to the SonarQube runner includes the following fixed issues:
 
 #### New features and enhancements
 
-You can now define dynamic target baselines using regular expressions. Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. Dynamic baselines also make it easier to track the introduction and remediation of specific vulnerabilities.
+You can now define dynamic target baselines using regular expressions. Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. Dynamic baselines also make it easier to track the introduction and remediation of specific vulnerabilities. (STO-5670)
 
-This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more information, go to [Set up target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines).
+This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more information, go to [Set up target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines). 
 
 #### Fixed issues
 
@@ -382,6 +392,7 @@ This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more informati
 
 * Fixed an issue where some Reference Identifiers were not listed in the AIDA **Edit Inputs** form for enhancing a Security Issue's remediation steps. (STO-6102)
 
+## June 2023
 
 ### Version 1.58.3
 
@@ -420,6 +431,7 @@ For more information, go to [Remediations with AIDA](/docs/security-testing-orch
 
 * Updated the Golang library used in STO code to remediate CVE-2022-21698. (STO-5993) 
 
+## May 2023 
 
 ### Version 1.54.1
 
@@ -501,19 +513,6 @@ For more information, go to [Remediations with AIDA](/docs/security-testing-orch
 * Added a **Privileged** checkbox to the UI for Security steps and scanner templates. This fixes an issue where `privileged` would automatically reset to `true` whenever a user updated the step, which required setting this option back to `false` in the YAML editor.  (STO-5773)
 
 * Implemented fixes to improve UI speed and performance in the Security Testing Dashboard. (STO-5612)
-  
-
-
-
-#### Version 1.43.1
-
-<!-- April 6, 2023 -->
-
-#### Fixed issues
-
-* Fixed a UI issue in **External Tickets Settings** for setting up Jira integrations:  **Default Project** and **Default Issue Type** always used the account-level Jira connector, even when a different connector was selected for the current project or organization. (STO-5756)
-* Fixed a search issue in **Security Tests**: If a search term included certain special characters, the UI would fail with a JavaScript exception. (STO-5745) 
-
 
 ### Plugin update version 1.11.1
 
@@ -526,6 +525,8 @@ This update includes the following fixed issues:
 * This release updates the Twistlock normalization algorithm. Issues with Moderate severity in Twistlock are now assigned Medium (not High) severity in STO. (STO-5861)
 
 * Fixed a Snyk ingestion issue that caused the scan to scan step to fail if the target name included a space. (STO-5855)
+
+## April 2023
 
 
 #### Plugin update version 1.10.1
@@ -543,7 +544,20 @@ This update includes the following fixed issues:
 
 * Fixed an issue where Snyk scans were processing container vulnerabilities only and ignored application vulnerabilities. STO now processes both container and application scan data from Snyk by default. (STO-5828)
 
-* Fixed an issue that prevented orchestrated Mend scans from running if the [Use version in project names](https://docs.mend.io/en-US/bundle/sca_user_guide/page/using_version_in_product_or_project_names.html) setting was turned off.
+* Fixed an issue that prevented orchestrated Mend scans from running if the [Use version in project names](https://docs.mend.io/en-US/bundle/sca_user_guide/page/using_version_in_product_or_project_names.html) setting was turned off. (STO-5774)
+
+### Version 1.43.1
+
+<!-- April 6, 2023 -->
+
+#### Fixed issues
+
+* Fixed a UI issue in **External Tickets Settings** for setting up Jira integrations:  **Default Project** and **Default Issue Type** always used the account-level Jira connector, even when a different connector was selected for the current project or organization. (STO-5756)
+* Fixed a search issue in **Security Tests**: If a search term included certain special characters, the UI would fail with a JavaScript exception. (STO-5745) 
+* The new Sonarqube step in the scanner template didn't pass `project_key` field required for data extraction mode. STO Manager v1.0.79100 now has the logic process this parameter correctly. (STO-5712)
+* 
+
+## March 2023
 
 ### Version 1.40.2
 
@@ -628,7 +642,7 @@ The following security steps are now generally available:
 * Fixed an issue in the Jira integration that allowed users to try to create tickets against targets with no baseline specified, which is not supported and resulted in a 404 response. (STO-5477)
 * Fixed an issue in the Back Duck configuration UI where the in-tool help said that the Image Region setting was required when scanning AWS ECR container images. This field is optional. (STO-5450)
 
-#### Version v1.32.1
+### Version v1.32.1
 
 <!-- March 2, 2023 -->
 
@@ -682,7 +696,9 @@ The following security steps are now generally available:
 
 - The ShiftLeft integration now uses the latest CLI, which fixes an issue where orchestrated ShiftLeft scans would fail with an error. (STO-4994)
 
-#### Version 1.31.4
+## February 2023
+
+### Version 1.31.4
 
 <!-- February 24, 2023 -->
 
@@ -690,13 +706,13 @@ The following security steps are now generally available:
 
 * Fixed a race condition allowing for duplicate targets to get created. (STO-5481)
 
-### February 16, 2023
+### February 16
 
 #### Fixed issue 
 
 * Fixed an issue with Prisma Cloud (formerly Twistlock) scans where the step would fail when a twistcli policy encountered a Compliance or Vulnerabilities threshold check that failed. (STO-5559)
 
-### February 5, 2023
+### February 5
 
 ##### What's new
 
@@ -705,6 +721,8 @@ The following security steps are now generally available:
 #### Fixed issues
 
 This release does not include fixed issues.
+
+## January 2023
 
 ### Version 1.25.0
 
@@ -725,6 +743,8 @@ This release does not include fixed issues.
 
 ### Version 1.24.1
 
+<!-- 2023-01-15 -->
+
 #### What's new
 
 * Aqua Trivy scans now support a `tool_args` field. You can use this field to run the plugin with specific command-line arguments. To run an offline scan, for example, specify `tool_args` = `---offline-scan`. (STO-5388) 
@@ -733,8 +753,7 @@ This release does not include fixed issues.
 
 * Fixed an issue where, in some situations, the severity and severity code of a detected issue were not updated when new occurrences of the same issue were detected. (STO-4809)  
 
-### January 8, 2023
-
+### Version 1.22.0
 
 ##### What's new
 
@@ -755,6 +774,7 @@ This release does not include fixed issues.
 
 This release does not include fixed issues.
 
+## Previous releases
 
 <details>
 <summary>2022 releases</summary>
