@@ -151,6 +151,31 @@ After Harness Self-Managed Enterprise Edition is installed, the load balancer is
 For information on how to create the load balancer, go to [Install Self-Managed Enterprise Edition with KOTS](kubernetes-cluster-on-prem-kubernetes-cluster-setup.md).
  |
 
+### gRPC and load balancer settings
+
+:::info note
+gRPC settings are not required for delegate version 23.12.818xx and later.
+
+:::
+
+The configuration of gRPC depends on load balancer support for HTTP2.
+
+#### Load balancer support for HTTP2 over port 443
+
+If your load balancer supports HTTP2 over port 443, you configure gRPC when you install Self-Managed Enterprise Edition NextGen. gRPC is configured in the **GRPC Target** and **GRPC Authority** fields.
+
+![](./static/kubernetes-cluster-on-prem-infrastructure-requirements-05.png)
+
+The following table describes the **GRPC Target** and **GRPC Authority** fields.
+
+
+| **Value** | **Description** |
+| :-- | :-- |
+| **GRPC Target** | The hostname of the load balancer. This is the URL of the load balancer. |
+| **GRPC Authority** | Append the hostname to the following string: `manager-grpc-<hostname>`. For example, `manager-grpc-35.202.197.230`. |
+
+
+
 #### No load balancer support for HTTP2 over port 443
 
 If your load balancer does not support HTTP2 over port 443, use one of the following configuration options:

@@ -115,6 +115,15 @@ After Harness Self-Managed Enterprise Edition is installed, the load balancer is
 
 Follow the steps on creating the load balancer as part of the process described in [Harness Self-Managed Enterprise Edition - Kubernetes Cluster Setup](kubernetes-on-prem-existing-cluster-setup.md).
 
+##### Port Mapping for gRPC Traffic
+
+You must also open port 9879 on the load balancer and map it to port 9879 on the ingress controller. This is to support gRPC traffic.
+
+:::info note
+This update is not required for delegate version 23.12.818xx and later.
+
+:::
+
 ### Trusted Certificate Requirement for Harness Self-Managed Enterprise Edition
 
 Connections to Harness Manager can be secure or unencrypted. This depends on the URL scheme you apply when you configure the load balancer URL during installation (`https://` or `http://`).

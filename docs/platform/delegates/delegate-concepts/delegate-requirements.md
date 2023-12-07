@@ -67,6 +67,19 @@ All network connections from your local network to Harness SaaS are outbound-onl
 	+ Collaboration providers
 	+ SSH access to target physical and virtual servers
 
+
+### gRPC limitations
+
+:::info note
+gRPC connections are not required for delegate version 23.12.818xx and later.
+
+:::
+
+If you do not enable gRPC connections, the following limitation applies:
+
+* [Cloud Cost Management (CCM)](/docs/category/cloud-cost-management) does not collect events. 
+
+
 ## Add certificates and other software to the delegate
 
 For steps on adding certificates or other software to the delegate, go to [Common delegate initialization scripts](/docs/platform/delegates/delegate-reference/common-delegate-profile-scripts.md).
