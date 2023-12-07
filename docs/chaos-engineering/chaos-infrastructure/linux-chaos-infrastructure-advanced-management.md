@@ -12,16 +12,19 @@ A set of mandatory input flags is required for the installation of the chaos inf
 4. **update-retries**: Specifies the maximum number of retries in case of a failure while sending a fault status or result.
 
     * If the retry count is breached while sending the status, then the active fault is aborted after logging the error during each attempts and the result is then attempted to be sent.
-    
+
     * If the retry count is breached while sending the result, then no result is sent by the infrastructure but the error during the attempts are logged.
-    
+
     The default value is **5**.
-  
+
 5. **update-retry-interval-seconds**: Specifies the interval between the subsequent attempts to send a fault status or result, in case of a failure. The default value for it is **5 seconds**.
 6. **chaos-infra-liveness-update-interval-seconds**: Specifies the interval between the chaos infrastructure liveness heartbeats. The default value is **5 seconds**.
 7. **chaos-infra-log-file-max-size-mb**: Specifies the maximum size limit for the chaos infrastructure log file rotation. Upon breaching the size limit, a new log file is created to store the logs and the old log file is retired as a backup archive. The default value is **5 MB**.
 8. **chaos-infra-log-file-max-backups**: Specifies the maximum number of backup archives to be retained at any given time. The oldest archive is deleted when a new log file is created. The default value is **2**.
 9. **experiment-log-file-max-age-days**: Specifies the number of days after which the experiment log files will be deleted. The default value is **30**.
+10. **custom-tls-certificate**: Specifies the TLS certificate to be used for communicating with the control plane.
+11. **http-proxy**: Specifies the http proxy url to be used for communicating with the control plane.
+12. **http-client-timeout**: Specifies the http client timeout for communicating with the control plane. The default value is **30s**.
 
 ## Infrastructure service
 Linux chaos infrastructure is installed as an executable binary on your Linux machine. This infrastructure is managed as a `Systemd` service.
