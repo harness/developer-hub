@@ -104,10 +104,7 @@ There are many ways you can incorporate third party tools and services in your C
 * [Bring-your-own Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager)
 * [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support)
 * [Send notifications](/docs/category/notifications)
-
-### Branch protection and checks
-
-<Ssc />
+* [Branch protection and status checks](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks.md)
 
 ## Increase step resources
 

@@ -4,11 +4,20 @@ description: Leverage APIs to get custom SCM status checks in your CI pipelines.
 sidebar_position: 50
 redirect_from:
   - /kb/continuous-integration/articles/custom_github_status_check
+  - /docs/continuous-integration/use-ci/optimize-and-more/custom_github_status_check
 ---
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+
+## Custom SCM status checks
 
 You can use [Run steps](../run-ci-scripts/run-step-settings.md) to query your SCM provider's API and include custom SCM status checks in your CI pipelines.
 
-## Add a status check
+### Add a status check
 
 These steps explain how to add a status check that uses the GitHub API. For information about leveraging another SCM provider's API, refer to that provider's API documentation.
 
@@ -65,11 +74,14 @@ curl -i -u YOUR_GITHUB_ORGANIZATION:<+secrets.getValue("account.YOUR_GITHUB_TOKE
   -d "{\"state\":\"$state\",\"target_url\":\"<+pipeline.execution.url>\",\"description\":\"$description\",\"context\":\"$name\"}"
 ```
 
-## Create reusable status check steps
+### Create reusable status check steps
 
 If you want to include status checks in multiple pipelines, you might want to create reusable templates or plugins.
 
-### Create a step template
+```mdx-code-block
+<Tabs>
+  <TabItem value="template" label="Create a step template" default>
+```
 
 [Step templates](/docs/platform/templates/run-step-template-quickstart) help you quickly reuse customized or complex steps in multiple pipelines. For example, here is a YAML example of a step template for a GitHub status check step:
 
@@ -119,6 +131,14 @@ template:
   versionLabel: 1.0.0
 ```
 
-### Write a custom plugin
+```mdx-code-block
+  </TabItem>
+  <TabItem value="plugin" label="Write a custom plugin">
+```
 
 You can package your status check script in a [custom plugin](../use-drone-plugins/custom_plugins.md) and then add it to your pipelines in a [Plugin step](../use-drone-plugins/custom_plugins.md#add-the-plugin-step).
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
