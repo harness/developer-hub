@@ -595,6 +595,8 @@ gsutil -m cp \
 
    This issue has been resolved. Now, when you send two-factor authentication emails, the emails are sent successfully.
 
+- Harness disabled external HTTP requests in Harness Manager version 80219. (PLG-3000, ZD-52239)
+
 #### December 1, 2023, 0.11.1
 
 This release includes the following Harness module and component versions.
