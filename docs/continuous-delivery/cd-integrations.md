@@ -183,10 +183,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Adds enhanced error handling for templates by schema validation errors. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>CDS_CONTAINER_STEP_GROUP</td>
-        <td>Enables the <a href="/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups">container-based steps</a> for a CD stage. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG</td>
         <td>Enables steady state check for Helm deployments on Kubernetes clusters using 1.16 or higher. <b>This feature is in Beta.</b> </td>
     </tr>
