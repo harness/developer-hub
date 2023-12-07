@@ -15,15 +15,18 @@ description: View monitoring info from Dynatrace for services in your Software C
 
 ### Application configuration YAML
 
-- This plugin requires a proxy endpoint for Dynatrace. Update the following configuration with Dynatrace Target URL and API Token
+- This plugin requires a proxy endpoint for Dynatrace. Update the following configuration with Dynatrace Target URL, API Token and base URL. 
 
 ```YAML
-/dynatrace:
+proxy:
+  /dynatrace:
     target: https://example.dynatrace.com/api/v2
     pathRewrite:
-    /api/proxy/dynatrace/?: /
+      /api/proxy/dynatrace/?: /
     headers:
-    Authorization: "Api-Token ${DYNATRACE_TOKEN}"
+      Authorization: Api-Token ${DYNATRACE_TOKEN}
+dynatrace:
+  baseUrl: https://example.apps.dynatrace.com
 ```
 
 ### Secrets
