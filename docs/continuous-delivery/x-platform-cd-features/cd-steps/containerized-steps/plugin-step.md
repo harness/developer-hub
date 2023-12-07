@@ -4,12 +4,6 @@ description: Use plugins to perform predefined tasks any programming language.
 sidebar_position: 6
 ---
 
-:::note
-
-Currently, the Plugin step in Deploy stages is behind the feature flag `CDS_CONTAINER_STEP_GROUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Plugins perform predefined tasks. They are essentially templated scripts that can be written in any programming language.
 
 You can use plugins for anything. If it can be scripted, it can be a plugin. For example, you could use plugins that:
