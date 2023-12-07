@@ -3362,3 +3362,12 @@ Number-type variables are always treated as doubles as per design (double-precis
 -1.79769313486231E308 to -4.94065645841247E-324 for negative values.
 4.94065645841247E-324 to 1.79769313486232E308 for positive values.
 You can explicitly cast it to an integer-like expression.intValue()
+
+### Are policies supported in a GitOps application?
+OPA policies are not supported in a GitOps application in Harness. Currently, it is supported for pipelines, templates and flags.
+
+### How to disable auto sync for production environments only within the GitOps app
+You can update the RBAC to disable auto-sync for the entire GitOps app, but this may not be ideal if you want to enable auto-sync for other environments within the app.
+
+### How the order or precedence of file in the k8sdeploy component is used when multiple values yaml were used.
+When using multiple values YAML files in Harness Kubernetes Services, the highest priority is given to the last file, and the lowest priority to the first file.
