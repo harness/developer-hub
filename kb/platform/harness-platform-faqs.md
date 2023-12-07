@@ -1869,6 +1869,21 @@ Then feed those SMTP credentials in Harness SMTP connector
 
 See [SMTP Configuration](docs/platform/notifications/add-smtp-configuration/)
 
+#### How to increase the concurrent pipeline execution limit
+You can increase the limit unto 1000 by navigating to Account Settings --> Account Resource --> Default Settings --> Pipeline
+
+#### Is it possible to hide Project/Org level default In-Built roles
+Yes its possible and you need to ask Harness support to enable PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE and PL_HIDE_ORGANIZATION_LEVEL_MANAGED_ROLE. FF.
+
+#### How to upgrade legacy docker delegate to use new image version 
+You can update the image tag by looking into latest tag https://hub.docker.com/r/harness/delegate/tags and can provide that while docker run command
+
+#### How to check if Delegate is setup for auto Upgrade
+You can go to delegate page and on right side check under AUTO UPGRADE Column if its showing ON
+
+#### Is it possible to hide Account level default In-Built roles
+No currently its not possible as if we try to disable the roles for account nobody will be able to see managed roles even including account admin.
+
 
 
 
