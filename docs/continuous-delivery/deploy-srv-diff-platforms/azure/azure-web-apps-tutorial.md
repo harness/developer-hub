@@ -8,12 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-
-Currently, this feature is behind the feature flag `NG_SVC_ENV_REDESIGN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Harness can deploy a Docker image or non-containerized artifact for your Azure Web App. You can deploy to slots, perform traffic shifting, and swap slots. Harness supports common deployment strategies (basic, canary, and blue green).
 
 This topic walks you through setting up and run an Azure Web App deployment in Harness.

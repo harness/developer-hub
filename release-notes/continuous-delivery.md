@@ -4851,7 +4851,7 @@ ECS Run Task support (CDS-43132)
 
 In addition to deploying tasks as part of your standard ECS deployment, you can use the ECS Run Task step to run individual tasks separately as a step in your ECS stage. The ECS Run Task step is available in all ECS strategy types. An example of when you run a task separately is a one-time or periodic batch job that does not need to keep running or restart when it finishes.
 
-Feature Flags: NG_SVC_ENV_REDESIGN and ECS_NG
+Feature Flags: ECS_NG
 
 For more information, go to the ECS tutorial ECS Run Task section.
 

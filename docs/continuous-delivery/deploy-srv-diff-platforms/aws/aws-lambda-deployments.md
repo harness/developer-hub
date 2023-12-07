@@ -4,12 +4,6 @@ description: Deploy your Lambda functions using Harness CD.
 sidebar_position: 3
 ---
 
-:::note
-
-Currently, AWS Lambda support is behind the feature flag `NG_SVC_ENV_REDESIGN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Harness supports the deployment of AWS Lambda functions. 
 
 Harness Lambda support is designed to empower developers to launch their Lambda code with ease without having to manage the infrastructure components around AWS Lambda. 

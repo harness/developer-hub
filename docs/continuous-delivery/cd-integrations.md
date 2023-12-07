@@ -50,11 +50,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Store and fetch your <a href="/docs/platform/governance/policy-as-code/configure-gitexperience-for-opa">OPA policies in Git.</a>. <b>This feature is Public Preview.</b> </td>
     </tr>
     <tr>
-        <td>NG_SVC_ENV_REDESIGN</td>
-        <td>Enables <a href="/docs/continuous-delivery/get-started/services-and-environments-overview">Service and Environment V2. </a> <b>This feature is Public Preview.</b> V1 is <a href="/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2">deprecated</a>
-.</td>
-    </tr>
-    <tr>
         <td>NG_CUSTOM_STAGE</td>
         <td>Enables the <a href="/docs/platform/pipelines/add-a-stage/#add-a-custom-stage">Custom stage</a>
  for use in a pipeline. <b>This feature is GA.</b></td>
