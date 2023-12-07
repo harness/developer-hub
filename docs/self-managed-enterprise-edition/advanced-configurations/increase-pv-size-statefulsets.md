@@ -50,15 +50,15 @@ To increase the PV size, do the following:
    When upgrading storage for TimescaleDB, the values will look similar to the example below:
 
    ```yaml
-   platform:
-     bootstrap:
-       database:
-         timescaledb:
-           persistentVolumes:
-             data:
-               size: 120Gi
-             wal:
-               size: 5Gi
+      platform:
+        bootstrap:
+          database:
+            timescaledb:
+              persistentVolumes:
+                data:
+                  size: 120Gi
+                wal:
+                  size: 5Gi
    ```
 
 6. Ensure the StatefulSet is recreated to pick up the changes. Replace <YOUR_STATEFULSET-NAME>, <YOUR_RELEASE_NAME>, and <YOUR_CHART_NAME> with your StatefulSet name, Helm release name, and Helm chart name, change the `override.yaml` file name.
