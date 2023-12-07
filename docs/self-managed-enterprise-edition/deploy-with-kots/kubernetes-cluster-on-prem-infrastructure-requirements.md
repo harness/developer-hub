@@ -174,8 +174,6 @@ The following table describes the **GRPC Target** and **GRPC Authority** fields.
 | **GRPC Target** | The hostname of the load balancer. This is the URL of the load balancer. |
 | **GRPC Authority** | Append the hostname to the following string: `manager-grpc-<hostname>`. For example, `manager-grpc-35.202.197.230`. |
 
-
-
 #### No load balancer support for HTTP2 over port 443
 
 If your load balancer does not support HTTP2 over port 443, use one of the following configuration options:
