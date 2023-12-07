@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-12-01T10:00
+date: 2023-12-07T10:00
 sidebar_position: 15
 ---
 ```mdx-code-block
@@ -553,7 +553,7 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
 ### Patches
 
-#### December x, 2023, 0.11.2
+#### December 7, 2023, 0.11.2
 
 This release includes the following Harness module and component versions.
 
