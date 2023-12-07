@@ -23,21 +23,32 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
-## Latest: Version 1.75
+## Latest: Version 1.76
 
-### New enhancement 
+### New enhancements
+
+- Added a new setting for Checkmarx scans, which is useful when you want STO to exclude issues detected by Checkmarx but flagged as Not Exploitable. (STO-6712, ZD-53483)
+
+  To enable this setting, go to the **Checkmarx** or **Security** step and add the following key-value pair under Settings:
+
+  `hide_not_exploitable` : `True`
+
+- Expiration time for exemptions now start when the exemption is approved. (STO-6604)
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Version 1.75.1
+
+##### New enhancement 
 
 - Browser windows and tabs have more descriptive titles to improve navigation across the primary STO windows. (STO-4555)
   - STO Overview
   - Test Targets
   - Exemptions
   - STO Getting Started
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### Latest: Version 1.74.1
 
@@ -64,11 +75,10 @@ This release does not include hotfixes.
 
 ##### New features and enhancements
 
-- You can now scan your repositories and other components used in your code with [Anchore Enterprise](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. (STO-6382)
 
 ##### Early access
 
-This release does not include Early Access features. 
+- You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. This integration is behind the feature flag `STO_STEP_PALETTE_AQUASEC`. (STO-6382)
 
 ##### Fixed issues
 
