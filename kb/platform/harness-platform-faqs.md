@@ -1886,7 +1886,11 @@ No currently its not possible as if we try to disable the roles for account nobo
 
 
 
+#### Is the user can approve the pipeline through the API using token of service account?
+The Service Account API token is not supported with Approval API, you need to use the personel access token.
 
+#### How user can make sure the build artifacts that go to harness will come from protected branches before production deployment?
+You can select the Artifact filter option and provide the expression as per your need in the Artifact source config of the service.
 
 
 

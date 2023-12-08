@@ -1032,3 +1032,68 @@ Currently publishing the test report via run step within the containerized step 
 #### How to list the tags available for an image which is being listed when hitting the endpoint ```https://app.harness.io/registry/_catalog```?
 
 We could hit the endpoint ```https://app.harness.io/registry/harness/<image_name>/tags/list``` to list all the available tags for an image in the registry ```app.harness.io/registry```
+
+
+#### How can user specify the size of the disk for the windows instance in the pool.yml file?
+
+Here's an example:
+
+```
+version: "1"
+instances:
+  - name: windows-ci-pool
+    default: true
+    type: amazon
+    pool: 1
+    limit: 4
+    platform:
+      os: windows
+    spec:
+      account:
+        region: us-east-2
+        availability_zone: us-east-2c
+        access_key_id: 
+        access_key_secret: 
+        key_pair_name: XXXXX
+      ami: ami-088d5094c0da312c0
+      size: t3.large
+      hibernate: true
+      network:
+        security_groups:
+          - sg-XXXXXXXXXXXXXX
+      disk:
+        size: 100
+        type: "pd-balanced"
+```
+
+
+#### What prerequisites are there for running Background steps?
+The build environment must have the necessary binaries for PostgreSQL. Depending on the build infrastructure, Background steps can use existing binaries in the environment or pull an image, such as a Docker image, containing the required binaries.
+
+#### Can Background steps use external images for PostgreSQL services?
+Yes, depending on the build infrastructure, Background steps can either use existing binaries in the build environment or pull an image from public or private Docker image, that contains the required PostgreSQL binaries.
+
+
+#### How do I add a Run step to test PostgreSQL services?
+
+In the same CI stage where you added the Background steps, include a Run step after the Background steps. Ensure that the Run step is not in the parallel group to avoid conflicts.
+
+
+#### What is the use of the Run step for psql commands?
+A4: The Run step for psql commands serves as a validation step before proceeding with subsequent actions.
+
+
+#### How user can copy a file into a pod in kubernetes cluster in build stage?
+For this, you can add the script in run step and achieve your requirement through that.
+
+
+#### What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?
+This error suggests that there is an issue accessing the entrypoint of the Docker image, commonly encountered in a Kubernetes cluster build infrastructure when working with PostgreSQL services.
+
+
+#### How can I resolve the "Failed to get image entrypoint" error in a Kubernetes cluster?
+To resolve this error, you may need to mount volumes for the PostgreSQL data in the build infrastructure settings and reference those volumes in the Background steps.
+
+
+#### How do user add volumes for PostgreSQL data in the build infrastructure settings?
+In the build infrastructure settings, configure one empty directory volume for each PostgreSQL service. This can typically be done through the Kubernetes configuration or deployment files.
