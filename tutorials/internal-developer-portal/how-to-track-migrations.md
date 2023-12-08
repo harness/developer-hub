@@ -35,7 +35,7 @@ We have added data points for git based datasources (GitHub, GitLab, etc.), to b
 
 ### Select DataSource and DataPoints
 
-3. Select the gitprovider datasource, for the example I'm trying out I chose the Github Datasource along with `extract string from a file` datapoints to extract the version number. 
+3. Select the git provider datasource, for example GitHub along with `extract string from a file` data point to extract the version number. 
 
 ### Branch Specification
 4. Specifying the Branch: If you know the branch name, specify it directly. If not, the system will use the branch where the catalog-info.yaml is stored.
