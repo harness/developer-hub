@@ -1,6 +1,6 @@
 ---
 title: How to track migrations using Scorecards
-description: Create a Scorecards to filter file contents to track versions during migrations
+description: Create a Scorecards to filter file contents to track versions of Libraries and Tools  during migrations
 sidebar_position: 5
 ---
 
@@ -49,7 +49,9 @@ We have added data points for git based datasources (GitHub, GitLab, etc.), to b
 
 :::Note
 
-Here, we need to group the string pattern which we want to match using `()` for example in the above example we have grouped the number `(\d+)` another example is if we would try to match this string `go 1.21` in a go.mod file, the corresponding regex would be `^go\s(\d+\.\d+)$`
+Here, we need to group the string pattern which we want to match using `()` for example in the above example we have grouped the number `(\d+)` another example is if we would try to match this string `go 1.21` in a go.mod file, the corresponding regex would be `^go\s(\d+\.\d+)$` another regex pattern example for package.json file content `"eslint": "^7.7.0",` is `"eslint":\s"\^(\d+\.\d+\.\d+)",`
+
+Also we suggest you to use [chatgpt](https://chat.openai.com/) for generating and [regex101](https://regex101.com/)  validating the regex. 
 
 :::
 
@@ -71,10 +73,12 @@ Once the Checks are created, now we need to add them to a new Scorecard.
 
 ![](./static/java-check.png)
 
-### Pattern Extraction
+### How does the Score gets computed?
+
+#### Pattern Extraction
 Extracting Data: The system fetches the file, searches for the specified regex pattern within its contents, and then extracts and returns the value.
 
-### Return Value
+#### Return Value
 Result: The system returns a true/false value based on whether the pattern was found in the file or whether a value is the same as desired.
 
 
