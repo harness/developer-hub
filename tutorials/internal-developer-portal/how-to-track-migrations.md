@@ -5,7 +5,7 @@ sidebar_position: 5
 ---
 
 ## Introduction
-In this tutorial we will be using [Scorecards](https://developer.harness.io/docs/internal-developer-portal/scorecards/scorecard) for tracking and driving migrations. Recently we have introduced new data points for gitproviders based datasources to extract filter and match file contents using regex patterns and in this tutorial we will be building custom checks out of these datasource using datapoints to track version numbers from the contents of a file. 
+In this tutorial we will be using [Scorecards](https://developer.harness.io/docs/internal-developer-portal/scorecards/scorecard) for tracking and driving migrations. Recently we have introduced new Data Points for git based Data Sources to extract information from files using regex patterns. In this tutorial we will be building some custom checks using these Data Points to track library and language versions from the contents of metadata files. 
 
 ## Prerequisites
 Before starting, ensure you have:
