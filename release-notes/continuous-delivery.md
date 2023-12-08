@@ -111,7 +111,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
   This issue has been fixed. Harness now cleans up the kubeconfig token it creates during deployment or instance sync executions.
 
-  To receive this fix, upgrade your delegate to the latest version.
+  To receive this fix, upgrade your delegate to the latest delegate version.
 
   This item requires Harness Delegate version 23.11.818xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Was reviewed and approved by abhinav.singh2@harness.io in Jira, during 816xx. Needed 818xx delegate, so waited until now.  -->
 
