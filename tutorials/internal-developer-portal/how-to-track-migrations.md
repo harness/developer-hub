@@ -55,7 +55,7 @@ Here, we need to group the string pattern which we want to match using `()` for 
 
 ![](./static/java-version.png)
 
-## Create ScoreCards
+## Create a Scorecard
 
 Once the Checks are Created, now we need to add them to the score cards.
 
