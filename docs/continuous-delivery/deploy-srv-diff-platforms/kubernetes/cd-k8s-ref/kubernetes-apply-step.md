@@ -103,4 +103,6 @@ You can use a values.yaml file to specify the namespace and reference it in the 
 In an Apply step, you can override this values.yaml and specify a different namespace for that particular Apply step.
 
 
+### Can the Apply Step render empty manifest files? 
 
+No, the Kubernetes apply step cannot render empty files. This results in a step failure. The manifest needs to have complete and defined resources to apply. 
