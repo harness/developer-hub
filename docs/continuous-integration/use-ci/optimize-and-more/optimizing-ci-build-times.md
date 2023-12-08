@@ -8,10 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
-import Ssc from '/docs/continuous-integration/shared/scm-status-checks.md';
-```
-
 You can optimize your CI pipelines to make them faster, more efficient, and more versatile.
 
 ## Background services, caches, and shared volumes
