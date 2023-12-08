@@ -17,6 +17,24 @@ For Harness SaaS release notes, go to [Harness SaaS Release Notes](/docs/first-g
 Release notes are displayed with the most recent release first.
 
 
+## November 30, 2023, version 81308
+
+This release includes the following module and component versions.
+
+### New features and enhancements
+
+- Added support for referencing JSON secret keys with dots at the top level. Nested keys with dots are not supported. (PL-41715, ZD-51757)
+
+### Fixed issues
+
+- The Git Connector field in the Application dialog neither showed nor listed the configured connector. (CDS-82009)
+
+  This issue has been fixed.
+
+- Custom Dashboard widgets did not load data when you selected a time value in the Group by field. (CDS-80778, ZD-51490, ZD-51678)
+
+- Fixed an issue related to the decryption of secrets with curly braces in their value. (PL-41943, ZD-52075)
+
 ## November 1, 2023, version 80909
 
 This release includes the following module and component versions.

@@ -9,12 +9,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-:::note
-
-Currently, the Containerize step groups feature is behind the feature flag `CDS_CONTAINER_STEP_GROUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 By default, the tasks performed by Harness CD steps are run on the Harness delegate host system, for example, the Kubernetes cluster where a Kubernetes delegate is running.
 
 To provide greater control over the resources used for CD steps, Harness also lets you use your own Kubernetes cluster as the runtime infrastructure for CD steps.
@@ -496,11 +490,6 @@ The following environment variables have been configured in the images:
   2. `PLUGIN_REGION` (region provided in the infrastructure configuration)
 
 To leverage the Harness Connector for AWS SAM and Serverless.com container steps, follow these steps: 
-
-1. Ensure that following Harness feature flags are enabled:
-  1. `CDS_CONTAINER_STEP_GROUP`.
-  2. For Serverless.com: `CDS_SERVERLESS_V2`.
-  3. For AWS SAM: `CDP_AWS_SAM`.
 
 ### Connector configuration
 

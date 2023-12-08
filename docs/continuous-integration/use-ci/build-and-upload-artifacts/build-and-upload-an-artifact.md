@@ -39,7 +39,6 @@ The following video demonstrates how to add a Build and Push step to a Harness C
 
 <docvideo src="https://www.youtube.com/embed/v3A4kF1Upqo?feature=oembed" />
 
-<!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/v3A4kF1Upqo/hqdefault.jpg"><iframe width="200" height="150" src="https://www.youtube.com/embed/v3A4kF1Upqo?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div -->
 
 </details>
 

@@ -7,6 +7,10 @@ ECS container volume detach provides a mechanism to detach and remove volumes as
 
 ![ECS Container Volume Detach](./static/images/ecs-container-volume-detach.png)
 
+:::tip
+This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](./ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
+:::
+
 ## Use cases
 
 - This experiment allows you to test and validate the behavior of your ECS tasks when volumes are detached. You can verify the resilience and performance of your application during volume detachment scenarios, ensuring that the containers continue to function as expected.

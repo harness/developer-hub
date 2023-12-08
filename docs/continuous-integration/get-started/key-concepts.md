@@ -78,9 +78,9 @@ If you decide to split your pipeline into multiple stages, you need to make sure
 
 Caching expedites job execution by reusing data from expensive fetch operations that ran in previous jobs. You can also use caching to share data across stages. For example, you can use **Save Cache** and **Restore Cache** steps to save a cache to a cloud storage bucket and restore it later. For more information, go to [Share and cache CI data](/docs/category/share-and-cache-ci-data).
 
-### Remote Docker layer caching
+### Docker layer caching
 
-Harness enables remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling them to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
+[Docker layer caching](../../../docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) can dramatically improve build time by sharing layers across pipelines and stages.
 
 ### Artifact repos
 

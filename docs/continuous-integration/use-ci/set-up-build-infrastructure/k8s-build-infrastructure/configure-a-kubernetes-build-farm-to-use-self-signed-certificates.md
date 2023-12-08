@@ -51,37 +51,41 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 
    For instructions, go to the Kubernetes documentation on [Configuring a Pod to Use a Volume for Storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/).
 
-   In the delegate pod, you must specify `DESTINATION_CA_PATH` or *both* `ADDITIONAL_CERTS_PATH` and `CI_MOUNT_VOLUMES`. You can use either method or specify both methods. If you specify both, `DESTINATION_CA_PATH` takes precedence. If Harness can't resolve `DESTINATION_CA_PATH`, it falls back to `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`.
-
-   ```mdx-code-block
-   <Tabs>
-     <TabItem value="destcapath" label="DESTINATION_CA_PATH" default>
-   ```
-   For `DESTINATION_CA_PATH`, provide a comma-separated list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`.
+   In the delegate pod, you must specify `DESTINATION_CA_PATH`. Provide a comma-separated list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`.
 
    ```yaml
-           env:
+          env:
            - name: DESTINATION_CA_PATH
-                     value: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
-                   volumeMounts:
-                   - name: certvol
-                     mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
-                     subPath:  ca.bundle
-                 volumes:
-                 - name: certvol
-                   secret:
-                     secretName: addcerts
-                     items:
-                     - key: ca.bundle
-                       path: ca.bundle
+             value: "/etc/ssl/certs/ca-bundle.crt,/kaniko/ssl/certs/additional-ca-cert-bundle.crt"
+             volumeMounts:
+              - name: certvol
+                mountPath: /opt/harness-delegate/ca-bundle/ca.bundle
+                subPath:  ca.bundle
+          volumes:
+           - name: certvol
+             secret:
+               secretName: addcerts
+               items:
+                - key: ca.bundle
+                  path: ca.bundle
    ```
 
    Both CI build pods and the SCM client on the delegate support this method.
 
-   ```mdx-code-block
-     </TabItem>
-     <TabItem value="cimountvol" label="CI_MOUNT_VOLUMES">
-   ```
+   :::caution
+
+   Make sure the destination path is not same as the default CA certificate path of the corresponding container image.
+
+   If you want to override the default certificate file, make sure the Kubernetes secret or config map (from step one) includes *all* certificates required by the pipelines that will use this build infrastructure.
+
+   :::
+
+   <details>
+   <summary>Legacy: CI_MOUNT_VOLUMES</summary>
+   
+   Prior to the introduction of `DESTINATION_CA_PATH`, you used `ADDITIONAL_CERTS_PATH` and `CI_MOUNT_VOLUMES` to mount certs.
+   
+   The legacy method is still supported, but Harness recommends `DESTINATION_CA_PATH`. If you include both, `DESTINATION_CA_PATH` takes precedence. If Harness can't resolve `DESTINATION_CA_PATH`, it falls back to `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`.
 
    You must specify both `ADDITIONAL_CERTS_PATH` and `CI_MOUNT_VOLUMES`.
 
@@ -96,36 +100,25 @@ CI build infrastructure pods can interact with servers using self-signed certifi
    The `CI_MOUNT_VOLUMES` list must include *all* certificates that your build containers need to interact with external services.
 
    ```yaml
-           env:  
+          env:  
            - name: ADDITIONAL_CERTS_PATH  
              value: /tmp/ca.bundle  
            - name: CI_MOUNT_VOLUMES  
              value: /tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt  
-           volumeMounts:  
-           - name: certvol  
-             mountPath: /tmp/ca.bundle  
-             subPath:  ca.bundle 
+             volumeMounts:  
+              - name: certvol  
+                mountPath: /tmp/ca.bundle  
+                subPath:  ca.bundle 
           volumes:  
            - name: certvol  
              secret:  
                secretName: addcerts  
                items:  
-               - key: ca.bundle  
-                 path: ca.bundle
+                - key: ca.bundle  
+                  path: ca.bundle
    ```
 
-   ```mdx-code-block
-     </TabItem>
-   </Tabs>
-   ```
-
-   :::caution
-
-   Make sure the destination path is not same as the default CA certificate path of the corresponding container image.
-
-   If you want to override the default certificate file, make sure the Kubernetes secret or config map (from step one) includes *all* certificates required by the pipelines that will use this build infrastructure.
-
-   :::
+   </details>
 
 3. Restart the delegate. Once it is up and running, `exec` into the container and ensure that the volume exists at the mounted path and contains your certificates.
 

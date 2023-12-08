@@ -83,7 +83,7 @@ export const certifications: CardItem[] = [
       // numberOfCerts: 1,
     },
     {
-      title: "Feature Flags - Administrator (BETA)",
+      title: "Feature Flags - Administrator",
       module: MODULES.ff,
       type: certType.administrator,
       description:
@@ -93,7 +93,7 @@ export const certifications: CardItem[] = [
       // numberOfCerts: 1,
     },
     {
-      title: "Security Testing Orchestration  - Developer (BETA Coming Soon)",
+      title: "Security Testing Orchestration  - Developer",
       module: MODULES.sto,
       type: certType.developer,
       description:

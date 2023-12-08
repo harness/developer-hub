@@ -1,50 +1,51 @@
 ---
-title: Build and Push to ECR Error
+title: Build and Push to ECR error
 ---
 
-# How Can I Troubleshoot Pipeline Execution Error With The Delegate In An EKS Cluster & The AWS Connector Configured Using IRSA
+# Harness CI pipeline execution errors with the delegate in an EKS cluster and the AWS connector using IRSA
 
-### Module
+## Conditions
 
-- Harness CI
+* Module: Harness CI
+* Environment:
+   * Infrastructure: Kubernetes
+   * OS: Linux
+* Delegate location: EKS cluster
+* AWS connector configuration: Uses IRSA
 
-### Environment
+## Problem
 
-- Infrastructure: Kubernetes
-- OS: Linux
-
-### Issue
-
-- The pipeline will pull the images from private repositories from ECR but when you try to push the application image using the **“Build and Push to ECR”** You get the following error:
+The pipeline can pull images from private ECR repositories, but when you try to push an application image with the **Build and Push to ECR** step, you get the following error:
 
 ```
-+ /kaniko/executor --dockerfile=/harness/docker/Dockerfile --context=dir:///harness/ --destination=<aws-account-id>.dkr.ecr.sa-east-1.amazonaws.com/hermod:latest --snapshotMode=redo --digest-file=/kaniko/digest-file
-error checking push permissions -- make sure you entered the correct tag name, and that you are authenticated correctly, and try again: checking push permission for "<aws-account-id>.dkr.ecr.sa-east-1.amazonaws.com/hermod:latest": Post "https://<aws-account-id>.dkr.ecr.sa-east-1.amazonaws.com/v2/hermod/blobs/uploads/": EOF
++ /kaniko/executor --dockerfile=/harness/docker/Dockerfile --context=dir:///harness/ \
+--destination=<aws-account-id>.dkr.ecr.sa-east-1.amazonaws.com/hermod:latest --snapshotMode=redo \
+--digest-file=/kaniko/digest-file
+error checking push permissions -- make sure you entered the correct tag name, \
+and that you are authenticated correctly, and try again: \
+checking push permission for "<aws-account-id>.dkr.ecr.sa-east-1.amazonaws.com/hermod:latest": \
+Post "https://<aws-account-id>.dkr.ecr.sa-east-1.amazonaws.com/v2/hermod/blobs/uploads/": EOF
 exit status 1
 ```
 
-### Resolution
+## Solution
 
-- Configure the service account in the advanced infrastructure configuration & addition of a run step before the Build & Push to ECR Step.
+1. Configure the [Service account in the Kubernetes cluster build infrastructure settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#service-account-name). For example:
 
-### Diagnostic Steps
+   ```yaml
+   infrastructure:
+     type: KubernetesDirect
+     spec:
+       connectorRef: test-connector
+       namespace: harness-delegate-ng
+       serviceAccountName: **harness-delegate-sa**
+       automountServiceAccountToken: true
+       nodeSelector: {}
+       os: Linux
+   ```
 
-- First: Configure the service account in the advanced infrastructure configuration:
+2. Before your **Build and Push to ECR** step, add a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) that runs the following command:
 
-```
-infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: test-connector
-              namespace: harness-delegate-ng
-              serviceAccountName: **harness-delegate-sa**
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
-```
-
-- Create a Run step before the “Build and Push to ECR” step to run the command:
-
-```
-aws ecr get-login-password --region <aws_region> | docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.<aws_region>.amazonaws.com
-```
+   ```
+   aws ecr get-login-password --region <aws_region> | docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.<aws_region>.amazonaws.com
+   ```

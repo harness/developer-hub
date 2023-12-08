@@ -10,15 +10,11 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
-import Smpno from '../shared/note-smp-not-compatible.md'
-
 import Closeclient from '../shared/close-sdk-client.md'
 
 
-<Smpno />
-
 :::caution 
-In Version 1.2.2 of the .NET SDK, the package name for installing the SDK changed from **ff-netF48-server-sdk** to **ff-dotnet-server-sdk**. To use this version, make sure you remove the old package name and use the new one. You can do this by using the following commands:  
+In Version 1.1.4 of the .NET SDK, the package name for installing the SDK changed from **ff-netF48-server-sdk** to **ff-dotnet-server-sdk**. To use this version, make sure you remove the old package name and use the new one. You can do this by using the following commands:
 **Remove the old package**  
 `dotnet remove package ff-netF48-server-sdk`  
 **Add the new package**`dotnet add package ff-dotnet-server-sdk`
@@ -39,7 +35,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.2.2**
+The current version of this SDK is **1.4.0**
 
 If you are using an older version of the .NET Framework, it may not default the security protocol to TLS 1.2. For compatibility with this SDK, set the protocol to TLS 1.2 by using the following:
 
@@ -65,10 +61,10 @@ Install the SDK by using the `dotnet add package` command, for example: 
 
 
 ```
-dotnet add package ff-dotnet-server-sdk --version 1.1.6
+dotnet add package ff-dotnet-server-sdk --version 1.4.0
 ```
 :::caution
-In Version 1.1.3 of the .NET SDK, the package name for installing the SDK changed from **ff-netF48-server-sdk** to **ff-dotnet-server-sdk**. To use this version, make sure you remove the old package name and use the new one. You can do this by using the following commands:  
+In Version 1.1.4 of the .NET SDK, the package name for installing the SDK changed from **ff-netF48-server-sdk** to **ff-dotnet-server-sdk**. To use this version, make sure you remove the old package name and use the new one. You can do this by using the following commands:
 **Remove the old package**  
 `dotnet remove package ff-netF48-server-sdk`  
 **Add the new package**`dotnet add package ff-dotnet-server-sdk`
@@ -87,7 +83,7 @@ To connect to the correct Environment that you set up on the Harness Platform, y
 
 
 ```
-public static String sdkKey = "YOUR_API_KEY";
+public static String apiKey = "YOUR_API_KEY";
 ```
 ### Add a Target
 
@@ -142,11 +138,11 @@ For example:
 
 
 ```
-Target target = Target.builder()  
-                            .Name("Harness_Target_1")   
-                            .Identifier("HT_1")  
-                            .Attributes(new Dictionary<string, string>(){{"email", "demo@harness.io"}})  
-                            .build();
+Target target = Target.builder()
+    .Name(".NET SDK Target 1")
+    .Identifier("DotNetTarget1")
+    .Attributes(new Dictionary<string, string>(){{"email", "demo@harness.io"}})
+    .build();
 ```
  
 
@@ -163,7 +159,7 @@ You can configure the following base features of the SDK:
 | **Name** | **Example**                                         | **Description** | **Default Value**                      |
 | configUrl | `ConfigUrl("https://config.ff.harness.io/api/1.0")` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://config.ff.harness.io/api/1.0` |
 | eventUrl | `EventUrl("https://events.ff.harness.io/api/1.0")`  | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
-| pollInterval | `SetPollingInterval(60000)`                         | The interval **in milliseconds** that we poll for changes when you are using stream mode. | `60000` (milliseconds)                      |
+| pollingInterval | `SetPollingInterval(60000)`                         | The interval **in milliseconds** that we poll for changes when you are using stream mode. | `60000` (milliseconds)                      |
 | streamEnabled | `SetStreamEnabled(true)`                            | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode. | `true`                                 |
 | analyticsEnabled | `SetAnalyticsEnabled(true)`                         | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `true`                                 |
 
@@ -181,7 +177,7 @@ CfClient.Instance.Initialize(apiKey, Config.Builder()
 ```
 ### Complete the initialization
 
-To complete the initialization, create an instance of the `cfClient` and pass in the `sdkKey` and `Config.Builder`, for example: 
+To complete the initialization, create an instance of the `cfClient` and pass in the `apiKey` and `Config.Builder`, for example: 
 
 
 ```
@@ -191,16 +187,16 @@ CfClient.Instance.Initialize(apiKey, Config.Builder().Build());
 
 
 ```
-public static String apiKey = Environment.GetEnvironmentVariable("FF_API_KEY");  
+        public static String apiKey = Environment.GetEnvironmentVariable("FF_API_KEY");
         public static String flagName = Environment.GetEnvironmentVariable("FF_FLAG_NAME") is string v && v.Length > 0 ? v : "harnessappdemodarkmode";  
   
-                static void Main(string[] args)  
+        static void Main(string[] args)
         {  
   
             // Create a feature flag client  
-            CfClient.Instance.Initialize(apiKey, Config.Builder().Build());  
+            CfClient.Instance.Initialize(apiKey, Config.Builder().Build());
+            CfClient.Instance.WaitForInitialization();
   
-              
             // Create a target (different targets can get different results based on rules)  
             Target target = Target.builder()  
                             .Name("DotNetSDK")   
@@ -232,7 +228,7 @@ public bool boolVariation(string key, dto.Target target, bool defaultValue)
 
 
 ```
-public double numberVariation(string key, dto.Target target, int defaultValue)
+public double numberVariation(string key, dto.Target target, double defaultValue)
 ```
 ### Evaluate a string Variation
 
@@ -298,7 +294,31 @@ If you don’t store your Flag configuration and your application is offline, th
 
 ### Configure your logger
 
-You can use Serilog as your logger for this SDK. To do this, add the Serilog package, for example: 
+
+## 1.2.x - Microsoft.Extensions.Logging
+
+With version 1.2.x and above you can use `Microsoft.Extensions.Logging` to provide an `ILoggerFactory` on the config builder. For example:
+
+`dotnet add package Serilog.Extensions.Logging`
+`dotnet add package Serilog.Sinks.Console`
+
+```
+var loggerFactory = new SerilogLoggerFactory(
+    new LoggerConfiguration()
+        .MinimumLevel.Verbose()
+        .WriteTo.Console()
+        .CreateLogger());
+
+var config = Config.Builder()
+    ...
+    .LoggerFactory(loggerFactory)
+    .Build();
+```
+
+
+## 1.1.x - Serilog
+
+On older SDK versions you need to use Serilog as your logger for that SDK. To do this, add the Serilog package, for example: 
 
 `dotnet add package Serilog`
 
@@ -312,6 +332,8 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()  
     .CreateLogger();
 ```
+
+
 ### Use the Relay Proxy
 
 When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/relay-proxy/) you need to change the default ConfigURL and EventURL that we use. You can pass the URLs in when initializing the SDK, for example: 
@@ -335,7 +357,7 @@ using io.harness.cfsdk.client.dto;
 using io.harness.cfsdk.client.api;  
 using System.Threading;  
   
- namespace getting_started  
+namespace getting_started
 {  
     class Program  
     {  
@@ -343,11 +365,12 @@ using System.Threading;
         public static String apiKey = Environment.GetEnvironmentVariable("FF_API_KEY");  
         public static String flagName = Environment.GetEnvironmentVariable("FF_FLAG_NAME") is string v && v.Length > 0 ? v : "harnessappdemodarkmode";  
   
-                static void Main(string[] args)  
+        static void Main(string[] args)
         {  
   
             // Create a feature flag client  
-            CfClient.Instance.Initialize(apiKey, Config.Builder().Build());  
+            CfClient.Instance.Initialize(apiKey, Config.Builder().Build());
+            CfClient.Instance.WaitForInitialization();
               
             // Create a target (different targets can get different results based on rules)  
   

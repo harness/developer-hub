@@ -16,183 +16,83 @@ Currently, TI for Python is behind the feature flag `CI_PYTHON_TI`. Contact [Har
 
 :::
 
-Using [Test Intelligence](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes, but some initial set up is required.
+Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes. You can enable TI for Python in three steps:
 
-## Set up Test Intelligence for Python
+1. Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
 
-To use TI for Python, you must:
+   :::info
 
-1. Use Python 3.
-2. [Add a Run Tests step.](#add-the-run-tests-step)
-3. [Generate the initial call graph.](#generate-the-initial-call-graph)
-4. [Trigger test selection.](#trigger-test-selection)
-5. [View test reports and test selection.](#view-test-reports-and-test-selection)
+   To use TI for Python, your codebase must be Python 3.
 
-After you've successfully enabled TI, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md). You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
+   :::
 
-### Add the Run Tests step
+   In the Run Tests step, you must select **Run only selected tests** (`runOnlySelectedTests: true`). For information about each setting, go to the [Run Tests step settings](#run-tests-step-settings).
 
-You need a [CI pipeline](../../prep-ci-pipeline-components.md) with a [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) where you'll add the **Run Tests** step. If you haven't created a pipeline before, try one of the [CI pipeline tutorials](/docs/continuous-integration/get-started/tutorials.md) or go to [CI pipeline creation overview](../../prep-ci-pipeline-components.md).
+   ```yaml
+                 - step:
+                     type: RunTests
+                     name: Run Python Tests
+                     identifier: Run_Python_Tests
+                     spec:
+                       language: Python
+                       buildTool: Pytest ## Specify pytest or unittest.
+                       runOnlySelectedTests: true ## Must be 'true' to enable TI.
+                       preCommand: |- ## Optional
+                         python3 -m venv .venv
+                         . .venv/bin/activate
 
-The build environment must have the necessary binaries for the **Run Tests** step to execute your test commands. Depending on the stage's build infrastructure, **Run Tests** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Container registry and image settings](#container-registry-and-image).
+                         python3 -m pip install -r requirements/test.txt
+                         python3 -m pip install -e .
+   ```
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="Visual" label="Visual">
-```
+   For additional YAML examples, go to [Pipeline YAML examples](#pipeline-yaml-examples)
 
-1. Go to the **Build** stage in the pipeline where you want to add the **Run** step.
-2. On the **Execution** tab, select **Add Step**, and select the **Run Tests** step from the Step Library.
-3. Configure the [Run Tests step settings](#run-tests-step-settings). To enable Test Intelligence, you must:
+2. Trigger test selection. **You need to run your pipeline twice to trigger test selection.**
 
-   * Define one or more **Test Report Paths**. JUnit XML format is required. For more information, go to [Format test reports](../test-report-ref.md).
-   * Select **Run Only Selected Tests**.
-   * Specify the **Language**, **Build Tool**, **Build Arguments**, and other settings specific to your selected language or tool.
-   * Specify a **Container Registry** and **Image**, if required by the build infrastructure.
+   The first time you run a pipeline after adding the Run Test step, Harness creates a baseline for test selection in future builds. Test selection *isn't* applied to this run because Harness has no baseline against which to compare changes and select tests. You'll start seeing test selection and time savings on the second run after adding the Run Tests step.
 
-4. Select **Apply Changes** to save the step.
-5. After adding the **Run Tests** step, make sure you [generate the initial call graph](#generate-the-initial-call-graph).
+<details>
+<summary>Trigger test selection with a webhook trigger (Recommended)</summary>
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="YAML" label="YAML" default>
-```
+1. If your pipeline doesn't already have one, [add a webhook trigger](/docs/platform/triggers/triggering-pipelines/) that listens for **Pull Request** or **Push** events in your [codebase](../../codebase-configuration/create-and-configure-a-codebase.md).
+2. Activate the trigger by opening a PR or pushing changes to your codebase, and then wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
 
-1. In Harness, go to the pipeline where you want to add the `RunTests` step. In the `CI` stage, add a `RunTests` step and configure the [Run Tests step settings](#run-tests-step-settings). To enable Test Intelligence, you must:
+   If you created a PR, merge the PR after the build runs. <!-- This is required to ensure that the baseline established by the call graph persists on the target branch. This is not required for push triggers.-->
 
-   * Specify one or more report paths in `reports`. JUnit XML format is required. For more information, go to [Format test reports](../test-report-ref.md).
-   * Include `runOnlySelectedTests: true`
-   * Specify `language`, `buildTool`, `args`, and other settings specific to your selected language or tool.
-   * Include `connectorRef` and `image` if required by the build infrastructure.
+3. To trigger test selection, activate the trigger again (by opening a PR or pushing changes to your codebase).
 
-2. After adding the `RunTests` step, make sure you [generate the initial call graph](#generate-the-initial-call-graph).
+   The first run with TI *doesn't* apply test selection, because Harness must establish a baseline for comparison in future runs. After establishing a baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
 
-Here is a YAML example of a Run Tests step configured for Python.
+4. Wait while the build runs, and then [review the test results and test selection](../viewing-tests.md). If you created a PR, merge the PR after the build runs.
 
-```yaml
-              - step:
-                  type: RunTests
-                  name: Run Python Tests
-                  identifier: Run_Python_Tests
-                  spec:
-                    language: Python
-                    buildTool: Pytest
-                    runOnlySelectedTests: true
-                    preCommand: |
-                      python3 -m venv .venv
-                      . .venv/bin/activate
+</details>
 
-                      python3 -m pip install -r requirements/test.txt
-                      python3 -m pip install -e .
-```
+<details>
+<summary>Trigger test selection with a manual build</summary>
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
+1. Open a PR or push changes to your pipeline's [codebase](../../codebase-configuration/create-and-configure-a-codebase.md), and then run your pipeline.
 
-### Generate the initial call graph
+   If you opened a PR, select **Git Pull Request** for **Build Type**, and enter the PR number.
 
-The first time you enable Test Intelligence on a repository, you must run all tests and generate an initial call graph. This sets the baseline for test selection in future builds. You can use a webhook trigger or manual build to generate the initial call graph.
-
-:::info
-
-The initial call graph sets the baseline for test selection in future builds. Test selection *isn't* applied to this run because Harness has no baseline against which to compare changes and select tests.
-
-You only need to generate an initial call graph the first time you enable Test Intelligence on a repository.
-
-:::
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="webhook" label="Webhook trigger (Recommended)" default>
-```
-
-1. [Add a webhook trigger](/docs/platform/triggers/triggering-pipelines/) to your pipeline that listens for **Pull Request** or **Push** events in the pipeline's [codebase](../../codebase-configuration/create-and-configure-a-codebase.md).
-2. Open a PR or push changes to your codebase.
-3. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md). If the build succeeds, you can [review the test results](#view-test-reports-and-test-selections).
-
-   The first run with TI *doesn't* apply test selection, because Harness must establish a baseline for comparison in future runs.
-
-4. If you created a PR, merge the PR after the tests pass and the build succeeds. This is required to ensure that the baseline established by the call graph persists on the target branch. This step is not required for push triggers.
-
-Now that you've established a testing baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="manual" label="Manual build">
-```
-
-1. Open a PR or push changes to your pipeline's [codebase](../../codebase-configuration/create-and-configure-a-codebase.md).
-2. In Harness, run your pipeline.
-
-   * If you opened a PR, select **Git Pull Request** for **Build Type**, and enter the PR number.
-   * If you pushed changes, select **Git Branch** for **Build Type**, and then enter the branch name.
+   If you pushed changes, select **Git Branch** for **Build Type**, and then enter the branch name.
 
    <!-- ![](../static/set-up-test-intelligence-04.png) -->
 
    <docimage path={require('../static/set-up-test-intelligence-04.png')} />
 
-3. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md). If the build succeeds, you can [review the test results](#view-test-reports-and-test-selection).
+2. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
 
-   The first TI run *doesn't* apply test selection, because Harness must establish a baseline for comparison in future runs.
+   If you created a PR, merge the PR after the build runs. <!-- This is required to ensure that the baseline established by the call graph persists on the target branch. This is not required if you pushed changes without a PR.-->
 
-4. If you created a PR, merge the PR after the tests pass and the build succeeds. This is required to ensure that the baseline established by the call graph persists on the target branch. This step is not required if you pushed changes without a PR.
+3. To trigger test selection, open a new PR (or push changes) to your codebase, and then run your pipeline again.
 
-Now that you've established a testing baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
+   The first run with TI *doesn't* apply test selection, because Harness must establish a baseline for comparison in future runs. After establishing a baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
+4. Wait while the build runs, and then [review the test results and test selection](../viewing-tests.md). If you created a PR, merge the PR after the build runs.
 
-### Trigger test selection
+</details>
 
-After you [generate the initial call graph](#generate-the-initial-call-graph), Harness can apply test selection to subsequent pipeline runs.
-
-To trigger test selection, create another PR (or push changes to your codebase) and run the pipeline again.
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="webhook" label="Webhook trigger" default>
-```
-
-1. Open a PR or push changes to your codebase.
-2. Wait while the trigger starts and runs your pipeline. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
-3. If the build succeeds, you can [review the test results and test selection](#view-test-reports-and-test-selections).
-4. If the tests pass and the build succeeds, you can merge your PR, if applicable.
-
-Each time the pipeline runs, Harness selects the relevant tests to run based on the content of the code changes.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="manual" label="Manual build">
-```
-
-1. Open a PR or push changes to your codebase.
-2. In Harness, run your pipeline.
-
-   * If you opened a PR, select **Git Pull Request** for **Build Type**, and enter the PR number.
-   * If you pushed changes, select **Git Branch** for **Build Type**, and then enter the branch name.
-
-   <!-- ![](../static/set-up-test-intelligence-04.png) -->
-
-   <docimage path={require('../static/set-up-test-intelligence-04.png')} />
-
-3. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
-4. If the build succeeds, you can [review the test results and test selection](#view-test-reports-and-test-selection).
-5. If the tests pass and the build succeeds, merge your PR, if applicable.
-
-Each time the pipeline runs, Harness selects the relevant tests to run based on the content of the code changes.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-### View test reports and test selection
-
-For information about test reports for Test Intelligence, go to [View tests](../viewing-tests.md).
+3. Once you start saving time with test selection, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md). You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
 
 ## Pipeline YAML examples
 
@@ -229,9 +129,9 @@ pipeline:
                   identifier: Run_Python_Tests
                   spec:
                     language: Python
-                    buildTool: Pytest ## Specify pytest or unittest
-                    runOnlySelectedTests: true  ## Set to false if you don't want to use TI.
-                    preCommand: |
+                    buildTool: Pytest ## Specify pytest or unittest.
+                    runOnlySelectedTests: true  ## Must be 'true' to enable TI.
+                    preCommand: |- ## Optional
                       python3 -m venv .venv
                       . .venv/bin/activate
 
@@ -284,8 +184,8 @@ pipeline:
                     image: python:latest ## Specify if required by your build infrastructure.
                     language: Python
                     buildTool: Pytest ## Specify pytest or unittest.
-                    runOnlySelectedTests: true  ## Set to false if you don't want to use TI.
-                    preCommand: |
+                    runOnlySelectedTests: true  ## Must be 'true' to enable TI.
+                    preCommand: |- ## Optional
                       python3 -m venv .venv
                       . .venv/bin/activate
 
@@ -311,19 +211,14 @@ pipeline:
 
 ## Run Tests step settings
 
-The **Run Tests** step has the following settings. Some settings are optional, and some settings are only available for specific languages or build tools. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
-
-### Name
-
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](/docs/platform/references/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
-
-**Name** and **Id** are required. **Description** is optional.
+The following information explains how to configure most settings for the **Run Tests** step. You might not need all settings for all scenarios; some settings are optional, and some settings are only available for specific languages, build tools, or build infrastructures.
 
 ### Container Registry and Image
 
-The build environment must have the necessary binaries for the **Run Tests** step to execute your test commands. Depending on the stage's build infrastructure, **Run Tests** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. You can also install tools at runtime in [Pre-Command](#pre-command), provided the build machine or image can execute the necessary commands, such as `curl` commands to download files.
+The build environment must have the necessary binaries for the **Run Tests** step to execute your test commands. Depending on the stage's build infrastructure, **Run Tests** steps can use binaries that exist in the build environment, or use **Container Registry** and **Image** to pull an image, such as a public or private Docker image, that contains the required binaries. You can also install tools at runtime in [Pre-Command](#pre-command-post-command-and-shell), provided the build machine or image can execute the necessary commands, such as `curl` commands to download files.
 
-:::info
+<details>
+<summary>When are Container Registry and Image required?</summary>
 
 The stage's build infrastructure determines whether these fields are required or optional:
 
@@ -332,7 +227,10 @@ The stage's build infrastructure determines whether these fields are required or
 * [Self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Run Tests** steps can use binaries that you've made available on your build VMs. The **Container Registry** and **Image** are required if the VM doesn't have the necessary binaries. These fields are located under **Additional Configuration** for stages that use self-hosted VM build infrastructure.
 * [Harness Cloud build infrastructure](../../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Run Tests** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). The **Container Registry** and **Image** are required if the machine doesn't have the binaries you need. These fields are located under **Additional Configuration** for stages that use Harness Cloud build infrastructure.
 
-:::
+</details>
+
+<details>
+<summary>What are the expected values for Container Registry and Image?</summary>
 
 For **Container Registry**, provide a Harness container registry connector, such as a Docker connector, that connects to the container registry where the **Image** is located.
 
@@ -344,6 +242,8 @@ You can use any Docker image from any Docker registry, including Docker images f
 * **ECR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
 * **GCR:** Enter the FQN of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
 
+</details>
+
 ### Language
 
 Select **Python**.
@@ -351,12 +251,6 @@ Select **Python**.
 ### Build Tool
 
 Select the build automation tool: [Pytest](https://docs.pytest.org/en/latest/) or [Unittest](https://docs.python.org/3/library/unittest.html).
-
-:::tip
-
-You can [use pytest to run unittest](https://docs.pytest.org/en/latest/how-to/unittest.html).
-
-:::
 
 ### Build Arguments
 
@@ -367,13 +261,11 @@ If you include **Build Arguments** for Python:
 * You don't need to repeat the build tool, such as `pytest` or `unittest`; this is declared in **Build Tool**.
 * You don't need to include coverage flags (`--cov` or `coverage`).
 * Python 3 is required. If you use another command, such as `python`, to invoke Python 3, you must add an alias, such as `python3 = "python"`.
-* The Python 3 binary is required. Python 3 is preinstalled on Harness Cloud runners. For other build infrastructures, the binary must be preinstalled on the build machine, available in the specified [Container Registry and Image](#container-registry-and-image), or manually installed at runtime in [Pre-Command](#pre-command).
+* The Python 3 binary is required. Python 3 is preinstalled on Harness Cloud runners. For other build infrastructures, the binary must be preinstalled on the build machine, available in the specified [Container Registry and Image](#container-registry-and-image), or manually installed at runtime in [Pre-Command](#pre-command-post-command-and-shell).
 
 ### Test Report Paths
 
-This setting is optional for Python.
-
-You can use this setting if you want your test reports to be stored somewhere other than the default location or have a different name than the default report name.
+This setting is optional for Python. You can use this setting if you want your test reports to be stored somewhere other than the default location or have a different name than the default report name.
 
 You can specify one or more paths to files that store [test results in JUnit XML format](../../run-tests/test-report-ref.md). [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
@@ -387,28 +279,34 @@ You can specify one or more paths to files that store [test results in JUnit XML
 
 You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates.
 
-### Enable Test Splitting and Test Split Strategy
+### Test Splitting (parallelism)
 
-Used to [enable test splitting for TI](./ti-test-splitting.md).
+Used to [enable test splitting (parallelism) for TI](./ti-test-splitting.md).
 
-### Pre-Command
 
-You can enter commands for setting up the environment before running the tests. If a script is supplied here, select the corresponding **Shell** option.
+### Pre-Command, Post-Command, and Shell
+
+* **Pre-Command:** You can enter commands for setting up the environment before running the tests, such as:
+
+   ```
+   python3 -m venv .venv
+   . .venv/bin/activate
+
+   python3 -m pip install -r requirements/test.txt
+   python3 -m pip install -e .
+   ```
 
 :::info
 
-* Python 3 is required to use TI for Python, and you can use **Pre-Command** to install the Python 3 binary if it is not already installed on the build machine or available in the specified [Container Registry and Image](#container-registry-and-image). Python 3 is preinstalled on Harness Cloud runners (Harness Cloud build infrastructure).
-* If you use another command, such as `python`, to invoke Python 3, you must add an alias, such as `python3 = "python"`.
-* You don't need to install coverage tools in **Pre-Command**. If you install a coverage tool, Harness uses the version you install instead of the included version.
-* You can specify `PYTHONPATH` in the [Environment Variables](#environment-variables).
+   * Python 3 is required to use TI for Python. You can use **Pre-Command** to install the Python 3 binary if it is not already installed on the build machine or available in the specified [Container Registry and Image](#container-registry-and-image). Python 3 is preinstalled on Harness Cloud build infrastructure.
+   * If you use another command, such as `python`, to invoke Python 3, you must add an alias, such as `python3 = "python"`.
+   * You don't need to install coverage tools in **Pre-Command**. If you install a coverage tool, Harness uses the version you install instead of the included version.
+   * You can specify `PYTHONPATH` in the [Environment Variables](#environment-variables).
 
 :::
 
-### Post-Command
-
-You can enter commands used for cleaning up the environment after running the tests. For example, `sleep 600` suspends the process for 600 seconds.
-
-If a script is supplied here, select the corresponding **Shell** option.
+* **Post-Command:** You can enter commands used for cleaning up the environment after running the tests.
+* **Shell:** If you supplied a script in **Pre-command** or **Post-command**, select the corresponding shell script type.
 
 ### Run Only Selected Tests
 
@@ -461,7 +359,11 @@ You can set [`PYTHONPATH`](https://docs.python.org/3/using/cmdline.html#envvar-P
                       PYTHONPATH: /harness
 ```
 
-### Image Pull Policy
+### Additional container settings
+
+Settings specific to containers are not applicable in a stages that use VM or Harness Cloud build infrastructure.
+
+#### Image Pull Policy
 
 If you specified a [Container Registry and Image](#container-registry-and-image), you can specify an image pull policy:
 
@@ -469,21 +371,17 @@ If you specified a [Container Registry and Image](#container-registry-and-image)
 * **If Not Present:** The image is pulled only if it isn't already present locally.
 * **Never:** The image is not pulled.
 
-### Run as User
+#### Run as User
 
 If you specified a [Container Registry and Image](#container-registry-and-image), you can specify the user ID to use for running processes in containerized steps.
 
 For a Kubernetes cluster build infrastructure, the step uses this user ID to run all processes in the pod. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
-### Privileged
+#### Privileged
 
 For container-based build infrastructures, you can enable this option to run the container with escalated privileges. This is equivalent to running a container with the Docker `--privileged` flag.
 
-### Shell
-
-Select the shell script type, if you provided [Pre-command](#pre-command) or [Post-command](#post-command).
-
-### Set Container Resources
+#### Set Container Resources
 
 These settings specify the maximum resources used by the container at runtime. These setting are only available for container-based build infrastructures, such as a Kubernetes cluster build infrastructure.
 
@@ -494,18 +392,6 @@ These settings specify the maximum resources used by the container at runtime. T
 
 The timeout limit for the step. Once the timeout is reached, the step fails and pipeline execution proceeds according to any [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md) or [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
-## Troubleshooting TI for Python
+## Troubleshooting Test Intelligence
 
-If you encounter errors with TI for Python, make sure you have met the following requirements:
-
-* Your project is written in Python 3, and your repo is a pure Python 3 repo.
-* You don't use resource file relationships. TI for Python doesn't support resource file relationships.
-* You don't use dynamic loading and metaclasses. TI for Python might miss tests or changes in repos that use dynamic loading or metaclasses.
-* Your [Build Tool](#build-tool) is pytest or unittest.
-* The Python 3 binary is preinstalled on the build machine, available in the specified [Container Registry and Image](#container-registry-and-image), or installed at runtime in [Pre-Command](#pre-command).
-* If you use another command, such as `python`, to invoke Python 3, you have added an alias, such as `python3 = "python"`.
-
-If you get errors related to code coverage for Python:
-
-* If you included [Build Arguments](#build-arguments), these don't need coverage flags (`--cov` or `coverage`).
-* You don't need to install coverage tools in [Pre-Command](#pre-command).
+For troubleshooting guidance related to Test Intelligence, go to [Troubleshoot CI - Test Intelligence issues](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md#test-intelligence-issues).

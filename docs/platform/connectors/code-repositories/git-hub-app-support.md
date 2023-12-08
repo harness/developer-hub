@@ -112,12 +112,6 @@ import TabItem from '@theme/TabItem';
   <TabItem value="primary" label="Primary authentication">
 ```
 
-:::note
-
-Currently, the option to use a GitHub App as the primary authentication method for a GitHub connector is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 1. In your Harness project, select **Connectors** under **Project Setup**.
 2. Create a new connector or edit an existing GitHub connector.
 3. Configure the [GitHub connector settings](./ref-source-repo-provider/git-hub-connector-settings-reference.md). The GitHub App is part of the **Credentials** settings.

@@ -133,8 +133,7 @@ If you're using expressions, there are two options, either the entire list of de
 
 Here's a video about delegate selectors defined as expression:
 
-<!-- Video:
-https://harness-24.wistia.com/medias/8ffcic0xpi-->
+
 <docvideo src="https://harness-24.wistia.com/medias/8ffcic0xpi" />
 
 ### See also

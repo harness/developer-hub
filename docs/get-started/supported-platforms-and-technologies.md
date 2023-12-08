@@ -106,12 +106,6 @@ Go to [Introduction to Chaos Module](../chaos-engineering/get-started/overview).
 
 ## Code Repository
 
-:::note
-
-Currently, the Code Repository module is in beta and behind a feature flag. Contact [Harness Support](mailto:support@harness.io) if you're interested in this module.
-
-:::
-
 Manage code within Harness and accelerate development with security at scale.
 
 The [Harness Code Repository module](/docs/code-repository/code-supported.md) is a source code management (SCM) tool that fosters developer collaboration and accelerates innovation while keeping security and compliance in mind. Git-based repositories are seamlessly integrated across your software delivery processes in Harness. Collaborative code reviews with checks and rules enforcement foster teamwork, reduce risk, and maintain code quality.

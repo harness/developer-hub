@@ -15,7 +15,8 @@ AutoStopping Rules make sure that your non-production resources run only when us
 * Stop paying for cloud waste
 
 ### Visual Summary
-<figure><iframe src="//fast.wistia.com/embed/iframe/8wo6shjqqh" width="560" height="315" frameborder="0" allowfullscreen=""></iframe></figure>
+
+<docvideo src="https://youtu.be/lNf_P5sHTcE" />
 
 ### Blog Post
 

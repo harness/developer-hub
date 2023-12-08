@@ -10,4 +10,4 @@ spec:
     fillPath: "/"
     fillStorage: 80%
     dataBlockSize: 400k
-    duration: 30
+    duration: 30s

@@ -13,20 +13,25 @@ helpdocs_is_published: true
  
  You can set up SonarQube scans using a [SonarQube step](#sonarqube-step-configuration) or a [Security step (_legacy workflow_)](#security-step-configuration-legacy).
 
-:::info important notes
+## Important notes for running SonarQube scans in STO
+
 * STO supports repository scanning only for SonarScanner.
 * STO supports all languages supported by SonarScanner.
 * Before you scan your repo, make sure that you perform any prerequisites for the language used in your repo. <!-- Need to confirm this sentece per https://harness.atlassian.net/browse/DOC-3640 If you are scanning a Java repo with more than one Java file, for example, you must compile `.class` files before you run the scan. -->
   For details about specific language requirements, go to the [SonarQube language reference](https://docs.sonarqube.org/latest/analysis/languages/overview/).
 * By default, STO allocates 500Mi memory for the Sonarqube scan container. This should be enough for Ingestion scans. For Orchestrated and Extraction scans, Harness recommends that you allocate at least 2GB for the container. You can customize resource limits in the [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources) section of the SonarQube scan step. 
-:::
-
-## Important notes for running SonarQube scans in STO
-
-You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime.
+* You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime.
+* You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
 You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
 
 ## SonarQube step settings for STO scans
 

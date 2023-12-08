@@ -70,9 +70,12 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'), // we could also use scss here
         },
-        gtag: {
-          trackingID: 'G-46758J5H8P',
-          anonymizeIP: false,
+        // gtag: { // use GTM instead
+        //   trackingID: 'G-46758J5H8P',
+        //   anonymizeIP: false,
+        // },
+        googleTagManager: {
+          containerId: 'GTM-MJB7HPB',
         },
       }),
     ],
@@ -209,6 +212,10 @@ const config = {
               {
                 label: 'Security Testing Orchestration',
                 to: 'docs/security-testing-orchestration',
+              },
+              {
+                label: 'Infrastructure as Code Management',
+                to: 'docs/infrastructure-as-code-management',
               },
               {
                 label: 'Chaos Engineering',

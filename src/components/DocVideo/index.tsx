@@ -31,7 +31,6 @@ const DocVideo = ({
   } else if (isYoutubeVideo) {
     videoSrc = (src || "").replace("/watch?v=", "/embed/");
     return (
-      // <iframe width="560" height="315" src={videoSrc} title={title} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
       <iframe
         width={width}
         height={height}
