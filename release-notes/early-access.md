@@ -22,6 +22,16 @@ Early access features are behind feature flags. You can contact [Harness Support
 
 The following early access (beta) features are available for the Harness Platform.
 
+### AIDA:tm: replaces Coveo for support case deflection
+
+* **Release date:** December 2023
+* **Release version:** 818xx
+* **Issue number:** CDS-85267
+* **Feature flag:** CDS_AIDA_SUPPORT_DEFLECTION
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+AIDA replaces Coveo in proactively assisting you with content recommendations when you are entering a subject for your ticket in the **Submit a ticket** form. 
+
 ### Harness AI Development Assistant (AIDA:tm:)
 
 * **Release date:** June 2023
@@ -161,9 +171,19 @@ The following early access (beta) features are available for the Harness Cloud C
 
 You can now propagate force cool down from primary rule to dependent rules. Without this feature flag enabled, when stopping a rule from the UI, you had to stop its dependant rules one by one. With this enhancement, you can propagate the stop operation to dependant rules as well. Propagating cool down to dependant rules is optional. You can stop the primary rule with or without propagating cool down to dependant rules.
 
-## CD & GitOps early access features
+## Continuous Delivery & GitOps early access features
 
-For information about early access (beta) features for Harness Continuous Delivery and GitOps, go to [Active CD feature flags](/docs/continuous-delivery/cd-integrations/#active-cd-feature-flags) and the [CD and GitOps release notes](./continuous-delivery).
+### Update the Green services in an ECS Blue Green deployment
+
+* **Release date:** December 2023
+* **Release version:** 818xx
+* **Issue number:** CDS-82763
+* **Feature flag:** `CDS_ECS_BG_VALIDATION`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+If green services exist in your Blue Green deployment, you can configure Harness to update those services instead of deleting them and then re-creating them with a new manifest and artifact. Updating existing green services is beneficial because new containers come up before old ones go down. For more information, go to [Update green services](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#update-green-services).
+
+Additionally, before beginning the deployment, Harness validates the blue and green services based on the target group and tags them appropriately. If the validation fails, Harness aborts the deployment. For more information, go to [ECS blue/green service validations](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#ecs-blue-green-service-validation).
 
 <!-- ## CET early access features
 

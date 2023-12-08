@@ -51,6 +51,71 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## December 2023
 
+### Version 818xx
+
+#### New features and enhancements
+
+- The Go template binary has been upgraded from version 0.4.4, which used Go version 1.20, to version 0.4.5, which uses Go version 1.21.4. (CDS-83173, ZD-50403) <!-- Reviewed and approved by Aleksa Buha in Slack -->
+
+
+#### Fixed issues
+
+- When you set **Default Store Type For Entities- Pipelines/InputSets/Templates** to **Remote**, the creation of environments and services failed. (CDS-85691, ZD-54497)
+
+  This issue has been fixed.
+
+- The header of the listing page for input sets displays a Git branch in the page header. Harness allowed you to change that branch, giving you the impression that, when you selected a branch, the list would refresh and show the input sets on the branch you selected. However, no matter which branch you selected, the list of input sets would not change. You also could not use any of the input sets after changing to a different branch. 
+
+  The reason for the input set list not changing is that the page header is designed to show the branch on which the pipeline is stored. The page lists all the input sets that have been configured regardless of the branch you select. (CDS-85365, ZD-54302)
+
+  This issue has been fixed. Harness no longer allows you to change the branch displayed in the header.  
+<!-- Good PRNS from Vikrant Gupta. Reworded and asked for review in Jira. Waiting. -->
+
+- Harness did not support expressions to identify manifest Ids provided as runtime inputs. Consequently, you could not reference Helm chart metadata in your deployments. The issue occurred when you used multiple Helm chart manifests. (CDS-84663)
+
+  This issue has been fixed. You can now access Helm chart metadata before deployment by using the expression `<+manifests.MANIFEST_ID.helm.fieldName>`. In the expression, replace `MANIFEST_ID` and `fieldName` with the appropriate values. If you use multiple Helm charts, the primary manifest is used as runtime input.
+  
+  This feature is behind the feature flag `CDS_HELM_FETCH_CHART_METADATA_NG`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
+  <!-- Reviewed and approved by Pratysuh Goel in Jira. -->
+
+- If shell script execution fails with an exception such as a step timeout, the delegate logs include the message “Exception in script execution”. This message does not help attempts to determine the root cause. (CDS-85024, ZD-54110)
+
+  This issue has been fixed. The delegate logs now include a more meaningful message. 
+<!-- Reviewed and approved by Sarthak Kasat on Slack. -->
+
+- The Jenkins step failed when attempting to resolve secrets in expressions used in its job parameters, and the following message was displayed: `Error occurred while starting Jenkins task java.lang.IllegalArgumentException: Illegal character in query at index` (CDS-84747, ZD-53836)
+
+  The issue has been resolved.
+
+  This item requires Harness Delegate version 23.11.818xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Reviewed and approved by Sarthak Kasat in Jira. -->
+
+- Harness printed logs from the Delete Stack step in the reverse order. (CDS-84744, ZD-53865)
+
+  This issue has been fixed. 
+
+  This item requires Harness Delegate version 23.11.818xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Reviewed and approved by Piyush Bhuwalka in Jira. -->
+
+- When streaming log messages from PowerShell scripts, Harness streamed only those console logs that had INFO and ERROR severity levels. (CDS-84570, ZD-53860)
+
+  This issue has been fixed. Now, Harness forwards console logs that have INFO, WARNING, DEBUG, and ERROR severity levels. 
+
+  This item requires Harness Delegate version 23.11.818xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Good PRNS from Alexandru Casian. Reworded and asked for review in Jira. Waiting. -->
+
+- If instance refresh during an ASG deployment took too much time and timed out, a rollback was triggered. If the instance refresh was still in progress when the rollback was triggered, the rollback failed. (CDS-83821)
+
+  This issue has been fixed.
+
+  This item requires Harness Delegate version 23.11.818xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Reviewed and approved by Vitalie Safronovici in Jira. -->
+
+- For Rancher-based Kubernetes or Native Helm deployments and instance sync, Harness uses Rancher's `generateKubeconfig` API action. A new kubeconfig token is created on the Rancher cluster each time this API is hit. This led to an accumulation of kubeconfig tokens over time on the Rancher cluster. (CDS-83055, ZD-52924)
+
+  This issue has been fixed. Harness now cleans up the kubeconfig token it creates during deployment or instance sync executions.
+
+  To receive this fix, upgrade your delegate to the latest version.
+
+  This item requires Harness Delegate version 23.11.818xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Was reviewed and approved by abhinav.singh2@harness.io in Jira, during 816xx. Needed 818xx delegate, so waited until now.  -->
+
+
 ### Version 81709
 
 #### New features and enhancements
@@ -91,6 +156,10 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - The Continuous Integration step library listed step categories in the following order: Security Tests, Artifacts, Builds, and Security. This order was inappropriate for CI stages and required you to scroll to find CI steps. (CDS-79655)
 
   This issue has been fixed. The order of step categories is now Builds, Artifacts, Security, and then Security Tests. 
+
+- Added support to update green service in ECS BG Deployment. (CDS-82763)
+
+  Added validation to check if tags in ECS Service are correct or not on basis of load balancer configurations before starting ECS BG Deployment 
 
 ## November 2023
 
