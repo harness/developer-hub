@@ -7,15 +7,28 @@ redirect_from:
   - /tutorials/security-tests/cicd-integrated-pipeline
 ---
 
+# Your first STO pipeline
+
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Security Testing Orchestration certification today!"
+  link="/certifications/sto"
+  closable={true}
+  target="_self"
+/>
+
 This tutorial shows you how to use the Harness Security Testing Orchestration (STO) module to perform code security scanning in a Harness pipeline. You'll set up a pipeline with one scanner, run scans, analyze the results, and learn about the key features of STO.
 
-:::important prerequisites
+## Prerequisites
+
+In addition to a Harness account, this tutorial requires the following: 
 
 - A Harness account and STO module license.
 - You need to have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned to your user profile.
 - You also need a GitHub account and a [connector](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-a-codebase-connector) to your Git service provider. 
   This tutorial uses an [example codebase on GitHub](https://github.com/williamwissemann/dvpwa) that contains known vulnerabilities. 
-:::
+
 
 ## Objectives
 
@@ -41,7 +54,9 @@ You're a developer, working in various development branches and merging your cod
 
 ### Set up your codebase
 
-1. Fork the following example repository into your GitHub account. This is a Python repo with known vulnerabilities: https://github.com/williamwissemann/dvpwa
+This tutorial uses <a href="https://bandit.readthedocs.io/en/latest/">Bandit</a> to scan the target repository <a href="https://github.com/williamwissemann/dvpwa">https://github.com/williamwissemann/dvpwa</a> (specified in the <a  href="/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/">Codebase</a> for this pipeline).
+
+1. Fork the following example repository into your GitHub account. This is a Python repo with known vulnerabilities: https://github.com/williamwissemann/dvpwa.
 
 2. If you don't have a GitHub connector, do the following:
 
@@ -49,7 +64,7 @@ You're a developer, working in various development branches and merging your cod
     2. Select **New Connector**, then select **Code Repositories** > **GitHub**.
     3. Set the [GitHub connector settings](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) as appropriate. 
        - Use **Account** for the [URL type](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/#url-type).
-       - Select the [connectivity](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/#connectivity-mode-settings) based on the infrastructure you plan to use.
+       - This tutorial uses Harness Cloud, so select **Connect through Harness Platform** when prompted for the connectivity mode.
 
 ### Set up your pipeline
 
@@ -69,7 +84,7 @@ Do the following:
    
    2. In **Select Git Provider**, select your GitHub connector.
    
-   3. In **Repository Name**, click the value type selector (tack button) and select **Runtime Input**.
+   3. In **Repository Name**, click the value type selector (tack button) and select **Runtime Input**. You'll specify the repo to scan when you run the pipeline. 
 
       ```mdx-code-block
       <img src={add_stage} alt="Go to account user settings" height="50%" width="50%" />
@@ -81,8 +96,25 @@ Do the following:
 
 ### Add a Bandit scan step
 
+
+<details open><summary> Key concept: scan targets and variants</summary>
+
+Every STO scan has a specific [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
+- The name specifies the repository, image, or instance to scan.
+- The variant specifies the branch, tag, version, or other variant.  object it is set up to scan: a code repository, a container, or an instance. 
+
+</details> 
+
 ```mdx-code-block
 import set_up_harness_26 from './static/your-first-pipeline/configure-bandit-step.png'
+```
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual" default>
 ```
 
 1. In the Pipeline Studio, go to **Execution** and add a **Bandit** step to your pipeline.
@@ -95,16 +127,58 @@ import set_up_harness_26 from './static/your-first-pipeline/configure-bandit-ste
 
    2. Target name — Click the value-type selector (tack button to the right of the input field) and select **Runtime input**. You'll specify this and other values when you run the pipeline.
 
-      Every STO scan has a [target name](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines), which is a user-defined label for the repo, image, app, or configuration to scan.
-
    3. Variant — Select **Runtime input** as the value type.
 
       Every STO scan has a [target variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) that specifies the branch, tag, or other variant to scan. 
 
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML">
+```
 
-<!-- 
 
-<details open><summary> Key concept: scanner templates</summary>
+ *  `type:` [`Bandit`](docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference)
+   *  `name:` A name for the step.
+   *  `identifier:` A unique step ID.
+   *  `spec :`
+      -  `mode :` [`orchestration`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step. 
+      -  `config: default`
+         - `target : ` 
+            - `name : <+input>` 
+            - `type : repository`
+            - `variant : <+input>` You will specify the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) when you run the pipeline. 
+                When scanning a repository, you will generally use the repository name and branch for these fields.
+         - `advanced : ` 
+            - `log :` 
+              - `level : info`
+
+
+Here's a YAML example:
+
+```yaml
+            steps:
+              - step:
+                  type: Bandit
+                  name: bandit_scan_orchestrated
+                  identifier: bandit_scan_orchestrated
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      name: <+input>
+                      type: repository
+                      variant: <+input>
+                    advanced:
+                      log:
+                        level: info
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+<!-- details><summary> Key concept: scanner templates</summary>
 
 The Step Library includes a Security step for setting up scanners: open the step and configure the scan as a set of key/value pairs under **Settings**.
 
@@ -112,20 +186,9 @@ The Step Library also includes <a href="/docs/security-testing-orchestration/sto
 
 In the Bandit scanner template, for example, the **Scan Configuration** and **Target Type** fields are read-only because each option supports one option only. If a scanner supports multiple target types, such as repositories and container images, **Target Type** is editable and the menu is pre-populated with the supported target types. 
 
-</details>
+</details -->
 
- -->
-
-### Analyze security test results
-
-<!-- 
-
-<details open><summary> Key concept: scan targets</summary>
-Every instance of a scanner has a specific <i>target</i>, which is the object it is set up to scan. It might be a code repository, a container, or an instance. This pipeline uses <a href="https://bandit.readthedocs.io/en/latest/">Bandit</a> to scan the target repository <a href="https://github.com/williamwissemann/dvpwa">https://github.com/williamwissemann/dvpwa</a> (specified in the <a  href="/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/">Codebase</a> for this pipeline).
-
-</details> 
-
--->
+### Scan the repo and analyze the results
 
 Now that you've set up the pipeline, you can run a scan and view the detected issues.
 
@@ -147,9 +210,11 @@ Now that you've set up the pipeline, you can run a scan and view the detected is
 
 2. Run the pipeline. When the execution finishes, select **Security Tests**.
 
-The **Security Tests** tab shows the issues that the scanner found in the test target, categorized by severity. The scanner found two issues, one critical and one medium, in the master branch.
+  This tab shows the issues that the scanner found in the test target, categorized by severity. You can filter issues using the severity buttons, expand/collapse the issue lists, and click on an issue to view details. 
+  
+  In this case the scanner found found two issues, one critical and one medium, in the master branch.
 
-![](./static/your-first-pipeline/sto-standalone-workflows-12.png)
+  ![](./static/your-first-pipeline/sto-standalone-workflows-12.png)
 
 ### Set the baseline
 
@@ -169,10 +234,10 @@ Note the following:
 import set_baseline from './static/your-first-pipeline/set-baseline.png'
 ```
   
-As a developer, you want to ensure that your merge or update doesn't introduce any new issues. To do this, you create a baseline for your test target and compare your scans against the baseline.
+As a developer, you want to ensure that you don't introduce any new issues when you merge into your upstream branch. To do this, you create a baseline for your test target and compare your scans against the baseline.
 
 1. Select **Security Test Orchestration** > **Test Targets**.
-2. Select **branch :** **master**.
+2. Go to the target in the table and select **branch : **master**.
  
   ```mdx-code-block
   <img src={set_baseline} alt="Set the target baseline" height="50%" width="50%" />
@@ -181,12 +246,12 @@ As a developer, you want to ensure that your merge or update doesn't introduce a
 
 ### Compare baseline vs. downstream issues 
 
-Suppose you're developing a new feature. You're working in a `DEMO-001` branch that's downstream from the `master` branch. As a developer, you want to fix any "shift-left" issues in your downstream branch BEFORE you merge into the baseline. 
+Suppose you're developing a new feature. You're working in a `DEMO-001` branch that's downstream from the `master` branch. As a developer, you want to fix any "shift-left" issues in your downstream branch _before_ you merge into the baseline. 
 
 First, you want to see if your branch has any security issues that aren't in the `master` branch.
 
-* Enter **DEMO-001** for the branch name and the target variant.
-* When the pipeline finishes, go to the **Security** **Tests** tab.
+* Run the pipeline again with **DEMO-001** as the target variant.
+* When the pipeline finishes, go to the **Security Tests** tab.
 
 DEMO-001 has 5 security issues: 2 critical, 2 medium, 1 low. Note that 3 of these issues are in the DEMO-001 branch only and 2 are common to both DEMO-001 and master.
 
@@ -426,7 +491,56 @@ You can implement [Failure Strategies](/docs/platform/pipelines/define-a-failure
 3. The Failure Strategy in the Build step initiates a 30-minute pause before proceeding.
 4. The developer and security team evaluate the issues and then abort the pipeline execution or allow it to proceed.
 
+## YAML pipeline example
 
+Here's an example of the pipeline you created in this tutorial.
+
+```yaml
+pipeline:
+  name: your-first-pipeline-v2
+  identifier: yourfirstpipelinev2
+  projectIdentifier: dbothwellstosandbox
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: bandit_repo_scan
+        identifier: bandit_repo_scan
+        description: ""
+        type: SecurityTests
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Bandit
+                  name: bandit_repo_scan
+                  identifier: bandit_repo_scan
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      name: <+input>
+                      type: repository
+                      variant: <+input>
+                    advanced:
+                      log:
+                        level: info
+                      fail_on_severity: critical
+  properties:
+    ci:
+      codebase:
+        connectorRef: mygithubconnector
+        repoName: <+input>
+        build: <+input>
+
+```
 
 <!-- 
 
