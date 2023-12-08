@@ -57,7 +57,7 @@ Here, we need to group the string pattern which we want to match using `()` for 
 
 ## Create a Scorecard
 
-Once the Checks are Created, now we need to add them to the score cards.
+Once the Checks are created, now we need to add them to a new Scorecard.
 
 7. Go to Scorecards on the left nav in Admin and select **Create New Scorecard**
 
