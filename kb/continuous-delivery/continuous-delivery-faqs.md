@@ -3383,3 +3383,73 @@ Check the Helm version you are trying to use is installed on selected delegate a
 
 #### Autoscaler manifest file deployment is throwing 400 and failing with  An error occurred while trying to set the rules. The autoscaler responded with: Bad Request Reason
 As we can see that it was failing while setting the rule, so need to validate the Rule section in manifest and you can try applying the manifest directly on cli.
+
+#### Tags are sorted differently in FirstGen and NextGen
+As of today we do not sort on timestamp. It is sorted lexically.
+Also , the artifact collection in First Gen was different.
+We did artifact collection in First Gen and we do not do artifact collection in Next Gen.
+With collection we kept a track on our side by caching which is why we could show the list in sorted manner.
+We do not do that in NG anymore and We make API calls on the fly and show it. 
+Docker does not guarantee an order and there is no timestamp information provided, so we sort lexically. 
+#### Multi-service deploy skipping services in case of a failure for any 1 stage
+Lets take an example that max concurrency is set to 15. 
+As the max concurrency is 15 and the when the first 15 executions started the failure one was running for 4m 57seconds, but other successfully one finished in around 30-40second, say first 15 started, 
+1,2,3,4,5,6,7,8,9,10 ... 14 completed in 30-40seconds so next 16,17,18,---29 will picked as it will always run 15 concurrently, but 15 job is still running. same way the new 14 also completed in 30-40seconds so it picked up next 14 and so on. so till 82 it picked up the job which ran but soon after that the failure one completed and it skipped all the next runs.
+#### Kubernetes Delegate Step Requires Service as Input
+The K8s Delete Step requires a Service because it's configured in a deploy stage. The user needs to provide a service and Harness can delete the namespace, the release name, or a manifest file associated with the Service
+#### Active Service Instances Showing in the Services
+When we do a deployed using Harness. We always will see the Active Instance in thr service based on the deployed. 
+Harness does a sync task every 10mins to the infrastructure where the instances was deployed. 
+If we remove the host , harness will show 0 active instances after the 10min sync runs. 
+#### API to get license count, expiry date
+You can use the licenses API endpoint for Subscription License Count and Subscription end date
+``` 
+curl --location 'https://app.harness.io/gateway/ng/api/licenses/<accountIdentifier>/summary?routingId=<accountIdentifier>&moduleType=CD' \
+--header 'authorization: <Bearer token>' \
+``` 
+The result should be like this:
+``` 
+{
+  "edition": "ENTERPRISE",
+  "licenseType": "PAID",
+  "moduleType": "CD",
+  "maxExpiryTime": <Subscription end date>,
+  "totalWorkload": <Subscription License Count>,
+  "totalServiceInstances": 0
+}
+```
+#### Skip preflight check option diabled for git based pipelines while executing the pipeline
+
+For the pipelines which are stored remotely in git, Skip preflight check option diabled for git based pipelines while executing the pipeline. As pipeline is under git and can go through changes without harness getting involved, Harness will not be able to pre-compute the checks. So we skip it to avoid false positives. 
+ 
+#### Unable to see real time console logs for a pipeline execution.
+
+It could be that you are nopt able to see real time console logs for a pipleine execution but once the pipeline completes it shows all the logs. 
+You can open the devleoper tools and check the network while the pipeline is executing. If you see a failed stream api , then issue most likely is on the proxy settings. You also need to make sure Server-Sent Events are not blocked:
+ 
+Reference : https://stackoverflow.com/questions/13672743/eventsource-server-sent-events-through-nginx
+
+#### How to use the a json type secret value. 
+
+Let's take an example that your secret value is json and you stored it as a secret in Harness. Yoiu should reference it with singlw quote like :
+
+```TEST_KEY='<+secrets.getValue("boa-uat-gcp-key")}>'```
+
+#### Pipelines notiiofcations on slack secret expression for slack webhook url
+
+You can also store the slack webhook url as secret in Harness and then use it for the pipeline notifcations.
+
+Use the below expression : 
+```<+secrets.getValue("slack_webhook_url")>```
+Here the slack_webhook_url is secret stored in Harness which has the real webhook url value. 
+
+#### Unable to delete a service
+
+When you are trying to delete a service and it gives you an error saying it has running insatances. But you have already remove the pipeline/environment etc
+As When you deploy using Harness , Harness runs a perpetal task to validate about the depployed instance using the infrastructure definition. 
+Yoi can either bring down the instance from the infrastucture and then delete the service or use the Force Delete option in Harness if you want to delete the servie but still keep the deployed instance up and running. 
+
+#### Freeze window slack notifictaion
+
+You can setup slack notification on Freeze window enabling. When go set a freeze window , go to notiifcation and select the option "Freeze window is enabled and active" amd under method choose the slack and set the slack webhook url. 
+
