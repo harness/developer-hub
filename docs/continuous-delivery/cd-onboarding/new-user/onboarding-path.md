@@ -126,8 +126,136 @@ Looking for specific secret managers? Go to:
 
 Services represent your microservices and other workloads. Each service contains a Service Definition that defines your deployment artifacts, manifests or specifications, configuration files, and service-specific variables. For more information, go to [Create a service](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/create-services/#create-a-service).
 
-Services are often configured using runtime inputs or expressions, so you can change service settings for different deployment scenarios at pipeline runtime. To use runtime input services with inputs and expressions, go to [Using runtime input services with inputs and expressions](/docs/continuous-delivery/x-platform-cd-features/services/create-services/#using-runtime-input-services-with-inputs-and-expressions).
+Services are often configured using runtime inputs or expressions, so you can change service settings for different deployment scenarios at pipeline runtime. To use services with runtime inputs and expressions, go to [Using services with inputs and expressions](/docs/continuous-delivery/x-platform-cd-features/services/create-services). Below are some example Kubernetes and ECS Fargate Harness services:
 
+```mdx-code-block
+<Tabs>
+<TabItem value="K8s Service">
+```
+
+```yaml
+service:
+  name: k8s-svc
+  identifier: k8ssvc
+  serviceDefinition:
+    spec:
+      release:
+        name: release-<+INFRA_KEY_SHORT_ID>
+      manifests:
+        - manifest:
+            identifier: Kubernetes
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: account.YourGitHubConnector
+                  gitFetchType: Branch
+                  paths:
+                    - content/en/examples/application/nginx-app.yaml
+                  repoName: kubernetes/website
+                  branch: main
+              skipResourceVersioning: false
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: account.YourArtifactConnector
+                imagePath: bitnami/kafka
+                tag: <+input>
+                digest: ""
+              identifier: artifact
+              type: DockerRegistry
+    type: Kubernetes
+  tags: {}
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="ECS Fargate Service">
+```
+
+```yaml
+service:
+  name: ecs-service
+  identifier: ecs_service
+  orgIdentifier: default
+  projectIdentifier: ECS Deployment
+  serviceDefinition:
+    type: ECS
+    spec:
+      manifests:
+        - manifest:
+            identifier: serviceDefinition
+            type: EcsServiceDefinition
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: org.YourGitHubConnector
+                  gitFetchType: Branch
+                  paths:
+                    - applications/ecs-fargate-manifests/CreateServiceRequest.yaml
+                  repoName: harness-community/developer-hub-apps
+                  branch: main
+        - manifest:
+            identifier: taskDefinition
+            type: EcsTaskDefinition
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: org.YourGitHubConnector
+                  gitFetchType: Branch
+                  paths:
+                    - ECS/BlueGreenNoVariables/RegisterTaskDefinitionRequest.yaml
+                  repoName: harness-community/developer-hub-apps
+                  branch: main
+        - manifest:
+            identifier: scalingPolicy
+            type: EcsScalingPolicyDefinition
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: org.GitHubConnector
+                  gitFetchType: Branch
+                  paths:
+                    - applications/ecs-fargate-manifests/PutScalingPolicyRequest.yaml
+                  repoName: harness-community/developer-hub-apps
+                  branch: main
+        - manifest:
+            identifier: scalabletarget
+            type: EcsScalableTargetDefinition
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: org.GitHubConnector
+                  gitFetchType: Branch
+                  paths:
+                    - applications/ecs-fargate-manifests/RegisterScalableTargetRequest.yaml
+                  repoName: harness-community/developer-hub-apps
+                  branch: main
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: org.YourAwsConnector
+                imagePath: your-image-path
+                tag: latest
+                region: us-east-1
+              identifier: ECRartifact
+              type: Ecr
+  gitOpsEnabled: false
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 
 #### Environments
