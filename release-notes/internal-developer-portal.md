@@ -18,6 +18,30 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 :::
 
+## December 2023
+
+### Version 0.16.0
+
+<!-- Dec 8, 2023 -->
+
+🌟 "Ho, ho, ho! Santa's elves aren't the only ones delivering gifts this season! 🎅 In our latest release, we're decking the IDP with some shiny new home page and jolly additions to our scorecards. 
+
+- **Blogs:** [Harness SRM Plugin - Release Announcement](https://www.harness.io/blog/announcing-the-harness-srm-backstage-plugin)
+
+#### New features and enhancements
+
+- New Plugin support added for [Dynatrace Plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/dynatrace) [IDP-1759]
+- New intuitive Homepage with added [Home Plugin](https://backstage.spotify.com/marketplace/spotify/plugin/home/) support [IDP-1694].
+
+![](./static/homepage-idp.png)
+
+- New Parser for file contents of git providers(GitLab and Bitbucket) to support new data points in git-providers datasource. [IDP-1691]
+- New data points added to extract, filter and match file contents in git providers data sources.[IDP-1682]
+
+#### Fixed Issues
+
+- Fixed data non-availability in Bar charts for single-component scorecards.[IDP-1698]
+
 ## November 2023
 
 ### Version 0.15.0
