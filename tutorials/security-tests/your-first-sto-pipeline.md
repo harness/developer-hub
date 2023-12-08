@@ -2,6 +2,9 @@
 title: Your first STO pipeline
 description: Set up a simple pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.
 sidebar_position: 20
+redirect_from:
+  - /tutorials/security-tests/standalone-pipeline
+  - /tutorials/security-tests/cicd-integrated-pipeline
 ---
 
 This tutorial shows you how to use the Harness Security Testing Orchestration (STO) module to perform code security scanning in a Harness pipeline. You'll set up a pipeline with one scanner, run scans, analyze the results, and learn about the key features of STO.
@@ -23,7 +26,7 @@ You'll learn how to:
 3. View issue details in the Harness UI and use these details to pinpoint and resolve issues in your code.
 4. Set up a security step to fail automatically if it detects an issue with the specified severity or higher.
 5. Request an exemption ("ignore rule") for a specific issue.
-6. Approve the excemption. Once approved, the exemption won't fail the pipeline even if it equals or exceeds the severity threshold.
+6. Approve the exemption. Once approved, the exemption won't fail the pipeline even if it equals or exceeds the severity threshold.
 
 <details open><summary> Review: what's supported in Harness STO</summary>
 
@@ -34,7 +37,7 @@ Go to [What's supported in Harness STO](/docs/security-testing-orchestration/wha
 
 ## Developer workflow
 
-You're a developer, working in various development branches and merging your code updates. You want to make sure you don't introduce any new vulnerabilities when you merge your code into a target branch. Using STO, you can scan your repo automatically and then use the results to pinpoint and fix your vulnerabilties before you do any merge.
+You're a developer, working in various development branches and merging your code updates. You want to make sure you don't introduce any new vulnerabilities when you merge your code into the upstream branch. Using STO, you can scan your repo automatically and then use the results to pinpoint and fix your vulnerabilties before you merge.
 
 ### Set up your codebase
 
@@ -152,7 +155,7 @@ The **Security Tests** tab shows the issues that the scanner found in the test t
 
 <details open><summary> Key concept: baselines</summary> 
 
-A _target baseline_ identifies the "prod" variant of the target, such as the `main` branch or the `latest`` tag. Defining a baseline makes it easy to distinguish between “shift-right” issues in production targets and “shift-left” issues in downstream variants.
+A _target baseline_ identifies the "prod" variant of the target, such as the `main` branch or the `latest` tag. Defining a baseline makes it easy to distinguish between “shift-right” issues in production targets and “shift-left” issues in downstream variants.
 
 Note the following:
 
@@ -216,7 +219,7 @@ The Issue Details pane has useful information for troubleshooting your security 
 		- Critical 9.0 - 10.0
 	+ The **Occurrences List** shows all occurrences of this specific issue in the test target.
 
-2. Select the Reference Identifier link ([CWE-78](https://cwe.mitre.org/data/definitions/78.html)).
+2. Select the Reference Identifier link (for example, [CWE-78](https://cwe.mitre.org/data/definitions/78.html)).
 
    **Issue Details** includes specific information about each vulnerability. In this case, you can view detailed information about the issue in the Common Weakness Enumeration database, a community-developed list of software and hardware weakness types. 
 
@@ -257,7 +260,7 @@ It is good practice to set `fail_on_severity` in every scan step in an integrate
 
    ![](./static/your-first-pipeline/failed-on-severity-critical.png)
 
-The pipeline now fails because the Bandit step is now configured to fail on any critical vulnerability . The last log message in the Bandit step log is:
+The pipeline now fails because the Bandit step is now configured to fail on any critical vulnerability. The last log message in the Bandit step log is:
 ```
 Exited with message: fail_on_severity is set to critical and that threshold was reached.
 ```
@@ -384,7 +387,7 @@ You've now learned the core STO features and workflows. Here are the next steps 
 
 You know how to implement pipelines when scanners detect security issues, and how to create Ignore Rules for specific issues. Once you set up your Security steps, baselines, and exemptions, you can add more stages and steps to implement your CI/CD workflows.
 
-For some examples of integrated workflows, go to [Build/scan/push workflows for container images in STO](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-workflows) 
+For some examples of integrated workflows, go to [Build/scan/push workflows for container images in STO](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-workflows). 
 
 ### Add more scanner steps
 
