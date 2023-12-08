@@ -43,18 +43,18 @@ For example, if the step Id is **Apply**, the FQN for the step settings are:
 * `<+execution.steps.Apply.spec.skipSteadyStateCheck>`
 * `<+execution.steps.Apply.timeout>`
 
-## Apply Manifests from Remote Source
+## Apply manifests from a remote source
 
 :::info note
-This feature to apply manifest from a remote source seperate from service is currently behind the feature flag `CDS_K8S_APPLY_MANIFEST_FROM_SOURCE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag `CDS_K8S_APPLY_MANIFEST_FROM_SOURCE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-User's can apply Kubernetes Manifests outside of the configured Service Definition. Harness provides two options, from Service and Remote.
+Harness provides two options for applying Kubernetes manifests:
 
-- **Service Option**: When you configure from Service, you can provide a file path within the configured service definition's defined manifest source repository.
-- **Remote Option**: When you configure the remote option, you can provide a git type connector, a repo location, and a file path to apply any kind of kubernetes manifest. Harness will also allow users to provide values.yaml as well for templating in the configuration. 
+- **Service Option**: When you configure from the service, you can provide a file path within the manifest source repository configured in the service definition.
+- **Remote Option**: When you configure the remote option, you can provide a Harness Git connector, a repo location, and a file path to apply any kind of Kubernetes manifest. Harness allows you to provide a values.yaml as well for templating in the configuration. 
 
-When **Remote Manifest** is selected user's will see this in the logs:
+When **Remote Manifest** is selected, you will see this in the logs:
 
 ```
 Trying to fetch default values yaml file for manifest with identifier: [APPLY_STEP_MANIFEST_SOURCE_ID]
