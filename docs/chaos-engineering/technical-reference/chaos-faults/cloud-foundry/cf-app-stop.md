@@ -193,7 +193,7 @@ metadata:
     name: app-stop
 spec:
   cfAppStop/inputs:
-    duration: 30
+    duration: 30s
     cfDeploymentPlatform: vSphere
     app: cf-app
     organization: dev-org
@@ -216,7 +216,7 @@ metadata:
     name: app-stop
 spec:
   cfAppStop/inputs:
-    duration: 30
+    duration: 30s
     cfDeploymentPlatform: vSphere
     app: cf-app
     organization: dev-org
@@ -240,7 +240,7 @@ metadata:
     name: app-stop
 spec:
   cfAppStop/inputs:
-    duration: 30
+    duration: 30s
     cfDeploymentPlatform: local
     app: cf-app
     organization: dev-org
