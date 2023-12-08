@@ -751,10 +751,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td> There is a behavior change in how Harrness tracks managed workloads for rollback. We are not using anymore a Config Map matching the deployed resources release name to track managed workloads for rollback. We will use `helm get manifest` to retrieve the workloads from a helm release. For steady-state checks of the kubernetes jobs, we’re planning to provide an option in account/org/project settings, by default we will not do this. For customer's who didn't have this feature flag enabled before, they may start seeing that the Wait for steady state check will not be skipped and will need to configure it.</td>
     </tr>
     <tr>
-        <td>CDS_HELM_SEND_TASK_PROGRESS_NG</td>
-        <td>For Helm tasks, this enables the sending of task progress events via log streaming.</td>
-    </tr>
-    <tr>
         <td>CDS_HELM_FETCH_CHART_METADATA_NG</td>
         <td>Exposes <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts">Helm Chart expressions</a> for reference in other steps and settings.</td>
     </tr>
