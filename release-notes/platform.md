@@ -1885,8 +1885,7 @@ The option to disable Harness Secret Manager is now a part of the core settings 
 
 **Platform**
 
-You can now get optimized performance on remote pipelines if you are on delegate version 772xx or higher,
-by enabling the feature flag USE_GET_FILE_V2_GIT_CALL . (PL-29459)
+You can now get optimized performance on remote pipelines if you are on delegate version 772xx or higher (PL-29459)
 
 If you are on an older delegate version, you can upgrade your delegate and then enable the feature flag for optimized performance.
 

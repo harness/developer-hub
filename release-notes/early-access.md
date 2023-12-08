@@ -311,7 +311,6 @@ Also, Projects is a new option in the left navigation. Click Projects to view th
 * **GA date:** Early 2023
 * **Early access release date:** November 2022
 * **Issue number:** PL-29459
-* **Feature flag:** `USE_GET_FILE_V2_GIT_CALL`
 
 You can get optimized performance on remote pipelines if you are on delegate version 772xx or higher. If you are on an older delegate version, you can upgrade your delegate for optimized performance.
 
