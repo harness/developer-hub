@@ -20,6 +20,8 @@ You must configure branch protections and checks, such as protection rules, CODE
 
 If your pipelines use [webhook triggers](/docs/platform/triggers/triggering-pipelines), you can get [Harness build statuses in your PRs](#source-code-repo-links). However, you must configure your protection rules *in your SCM provider* if you want failed/running builds to block PR merges.
 
+If you want to pull PR status check information into a Harness pipeline, you can [add custom SCM status checks to your CI pipelines](#custom-scm-status-checks).
+
 You can also use the Harness CI Jira plugin to [update deployments and builds in Jira when your Harness pipelines run](/docs/continuous-integration/use-ci/use-drone-plugins/ci-jira-int-plugin).
 
 ## SCM links in build details
@@ -36,7 +38,7 @@ When viewing a PR in your SCM provider, if a manual or webhook build ran from th
 
 ## Custom SCM status checks
 
-If you want to pull PR status check results into a Harness pipeline, you can use [Run steps](../run-ci-scripts/run-step-settings.md) to query your SCM provider's API and include custom SCM status checks in your CI pipelines.
+If you want to pull PR status check information into a Harness pipeline, you can use [Run steps](../run-ci-scripts/run-step-settings.md) to query your SCM provider's API and include custom SCM status checks in your CI pipelines.
 
 ### Add a custom status check
 
