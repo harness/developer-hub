@@ -754,9 +754,5 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>CDS_HELM_SEND_TASK_PROGRESS_NG</td>
         <td>For Helm tasks, this enables the sending of task progress events via log streaming.</td>
     </tr>
-    <tr>
-        <td>CDS_HELM_FETCH_CHART_METADATA_NG</td>
-        <td>Exposes <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts">Helm Chart expressions</a> for reference in other steps and settings.</td>
-    </tr>
 </table>
 
