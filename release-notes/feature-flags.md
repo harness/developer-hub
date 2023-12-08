@@ -15,7 +15,15 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: November 29th 2023
+### Latest Updated: December 8th 2023
+
+## December 2023
+
+### JavaScript SDK
+
+#### Version 1.21.0
+
+ - Added the `Harness-Target` header.
 
 ## November 2023
 
