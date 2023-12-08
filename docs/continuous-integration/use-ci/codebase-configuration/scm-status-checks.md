@@ -1,6 +1,6 @@
 ---
-title: Custom SCM status checks
-description: Leverage APIs to get custom SCM status checks in your CI pipelines.
+title: SCM status checks
+description: Configure branch protection and status checks for codebases associated with Harness CI.
 sidebar_position: 50
 redirect_from:
   - /kb/continuous-integration/articles/custom_github_status_check
@@ -12,12 +12,33 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
+:::caution
+
+You must configure branch protections and checks, such as protection rules, CODEOWNERS, linting, and other checks or restrictions, in your source control provider.
+
+:::
+
+If your pipelines use [webhook triggers](/docs/platform/triggers/triggering-pipelines), you can get [Harness build statuses in your PRs](#source-code-repo-links). However, you must configure your protection rules *in your SCM provider* if you want failed/running builds to block PR merges.
+
+You can also use the Harness CI Jira plugin to [update deployments and builds in Jira when your Harness pipelines run](/docs/continuous-integration/use-ci/use-drone-plugins/ci-jira-int-plugin).
+
+## SCM links in build details
+
+When [viewing builds](../viewing-builds.md) in Harness, builds triggered by webhooks can include a link to the PR or commit that started the build.
+
+![A build on the Builds list that was triggered by a commit. There is a link to the triggering commit.](../static/ci-builds-list-sc-link.png)
+
+## Pipeline links in PRs
+
+When viewing a PR in your SCM provider, if a manual or webhook build ran from that PR, then you can follow the **Details** link from the PR's Git status to the build details page in Harness. This is supported for both manual and webhook PR builds, but it is not supported for all SCM providers.
+
+![A PR's Git status with a link to a Harness CI build.](../static/ci-builds-gh-pr-link.png)
 
 ## Custom SCM status checks
 
-You can use [Run steps](../run-ci-scripts/run-step-settings.md) to query your SCM provider's API and include custom SCM status checks in your CI pipelines.
+If you want to pull PR status check results into a Harness pipeline, you can use [Run steps](../run-ci-scripts/run-step-settings.md) to query your SCM provider's API and include custom SCM status checks in your CI pipelines.
 
-### Add a status check
+### Add a custom status check
 
 These steps explain how to add a status check that uses the GitHub API. For information about leveraging another SCM provider's API, refer to that provider's API documentation.
 
@@ -43,8 +64,6 @@ These steps explain how to add a status check that uses the GitHub API. For info
    The above example calls the GitHub API and uses the GitHub token secret for authentication. It uses [expressions](/docs/platform/variables-and-expressions/harness-variables.md) to pull information from the pipeline, such as the target repository name (`<+pipeline.properties.ci.codebase.repoName`>) and the pipeline build link (`<+pipeline.execution.url>`).
 
    If you use the above script, replace `YOUR_GITHUB_ORGANIZATION` with your GitHub organization name, and replace `YOUR_GITHUB_TOKEN_SECRET_ID` with the ID of the Harness text secret that contains your GitHub personal access token.
-
-
 
 8. Configure additional settings as necessary for your script and build infrastructure. For example, you might want to set container resource limits, export output variables, or inject environment variables. For more information about **Run** step settings, go to [Use Run steps](../run-ci-scripts/run-step-settings.md).
 
@@ -142,3 +161,13 @@ You can package your status check script in a [custom plugin](../use-drone-plugi
   </TabItem>
 </Tabs>
 ```
+
+## Troubleshoot status checks
+
+### Pipeline status updates aren't sent to PRs
+
+Harness uses the pipeline's codebase connector to send status updates to PRs in your Git provider. If status updates aren't being sent, make sure that you have [configured a default codebase](./create-and-configure-a-codebase/#edit-the-default-codebase-configuration) and that it is using the correct code repo connector. Also make sure the build that ran was a PR build and not a branch or tag build.
+
+### Failed pipelines don't block PRs merges
+
+Although Harness can send pipeline statuses to your PRs, you must configure branch protection rules and other checks in your SCM provider.

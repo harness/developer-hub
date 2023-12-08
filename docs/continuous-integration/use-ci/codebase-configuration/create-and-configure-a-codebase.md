@@ -177,7 +177,7 @@ Set maximum resource limits for the containers that clone the codebase at runtim
 * **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
 * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
-## Troubleshooting codebases
+## Troubleshoot codebases
 
 ### Improve codebase clone time
 
@@ -232,8 +232,4 @@ To resolve this issue:
 
 ### Pipeline status updates aren't sent to PRs
 
-Harness uses the pipeline's codebase connector to send status updates to PRs in your Git provider. Make sure that you have [configured a default codebase](#edit-the-default-codebase-configuration) and that it is using the correct code repo connector.
-
-### Failed pipelines don't block PRs merges
-
-Although Harness can send pipeline statuses to your PRs, you must configure branch protection rules and other checks in your SCM provider. For more information, go to [SCM status checks](./scm-status-checks.md).
+For information about branch protection and status checks for codebases associated with Harness CI pipelines, go to [SCM status checks](./scm-status-checks.md).
