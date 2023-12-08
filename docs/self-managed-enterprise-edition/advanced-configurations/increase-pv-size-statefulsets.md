@@ -61,7 +61,7 @@ To increase the PV size, do the following:
                   size: 5Gi
    ```
 
-6. Ensure the StatefulSet is recreated to pick up the changes. Replace <YOUR_STATEFULSET-NAME>, <YOUR_RELEASE_NAME>, and <YOUR_CHART_NAME> with your StatefulSet name, Helm release name, and Helm chart name, change the `override.yaml` file name.
+6. Ensure the StatefulSet is recreated to pick up the changes. Replace <YOUR_STATEFULSET-NAME>, <YOUR_RELEASE_NAME>, and <YOUR_CHART_NAME> with your StatefulSet name, Helm release name, and Helm chart name, and change the `override.yaml` file name.
 
    ```
    kubectl delete statefulset <YOUR_STATEFULSET-NAME>
