@@ -252,7 +252,11 @@ The "invalid release name" error is due to the length of the release name exceed
  
 This limitation is imposed by [Helm](https://helm.sh/docs/chart_template_guide/getting_started/#adding-a-simple-template-call). 
 
-To resolve this issue, please ensure that your release name falls within the 53 character range. 
+To resolve this issue, please ensure that your release name falls within the 53-character range. 
 
 You can achieve this by using the following expression in **Release Name** to shorten the release name: `<+<+INFRA_KEY>.substring(0,7)>`.
+
+### Issues with Helm Connector Connectivity, How do I troubleshoot it?  I'm getting 401 not authorized.
+
+First, check the credentials that you have passed to the Helm HTTP or OCI Connector, and ensure the credentials are still valid. You can also exec into your Harness Delegate and run the `helm repo add` command on the delegate to manually fetch the repo to see if the delegate can pull it.
 
