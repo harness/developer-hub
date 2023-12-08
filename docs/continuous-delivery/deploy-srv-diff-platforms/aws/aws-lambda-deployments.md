@@ -4,12 +4,6 @@ description: Deploy your Lambda functions using Harness CD.
 sidebar_position: 3
 ---
 
-:::note
-
-Currently, AWS Lambda support is behind the feature flag `NG_SVC_ENV_REDESIGN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Harness supports the deployment of AWS Lambda functions. 
 
 Harness Lambda support is designed to empower developers to launch their Lambda code with ease without having to manage the infrastructure components around AWS Lambda. 
@@ -428,12 +422,6 @@ infrastructureDefinition:
 ```
 
 ### Dynamically provisioned Lambda infrastructure
-
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
 

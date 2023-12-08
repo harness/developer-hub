@@ -27,7 +27,7 @@ A CI stage is a subset of a pipeline that contains one major segment of the CI w
 <details>
 <summary>What is build infrastructure?</summary>
 
-All stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose. For more information, go to [Which build infrastructure is right for me](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+All CI stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose. For more information, go to [Which build infrastructure is right for me](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
 </details>
 
@@ -54,11 +54,11 @@ Harness CI includes an extensive Step Library for common CI tasks: building arti
 
 ## Tests
 
-In a CI pipeline, you can [run a variety of tests](../use-ci/run-tests/run-tests-in-ci.md), such as integration tests, functional tests, and unit tests. To do this, you can use a [Run Tests step](../use-ci/run-tests/set-up-test-intelligence#add-the-run-tests-step) or a [Run step](../use-ci/run-ci-scripts/run-step-settings.md). You must use the **Run Tests** step to [enable Test Intelligence](../use-ci/run-tests/set-up-test-intelligence).
+In a CI pipeline, you can use **Run** and **Run Tests** steps to [run tests with Harness CI](../use-ci/run-tests/run-tests-in-ci.md), such as integration tests, functional tests, and unit tests.
 
 ### Test Intelligence
 
-Test Intelligence speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in your unit test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. For more information, go to [Enable Test Intelligence](../use-ci/run-tests/set-up-test-intelligence).
+Test Intelligence speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in your unit test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. You must use the **Run Tests** step to [enable Test Intelligence](../use-ci/run-tests/test-intelligence/set-up-test-intelligence). For more information, go to [Test Intelligence overview](../use-ci/run-tests/test-intelligence/set-up-test-intelligence).
 
 ## Plugins
 
@@ -78,9 +78,9 @@ If you decide to split your pipeline into multiple stages, you need to make sure
 
 Caching expedites job execution by reusing data from expensive fetch operations that ran in previous jobs. You can also use caching to share data across stages. For example, you can use **Save Cache** and **Restore Cache** steps to save a cache to a cloud storage bucket and restore it later. For more information, go to [Share and cache CI data](/docs/category/share-and-cache-ci-data).
 
-### Remote Docker layer caching
+### Docker layer caching
 
-Harness enables remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling them to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
+[Docker layer caching](../../../docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) can dramatically improve build time by sharing layers across pipelines and stages.
 
 ### Artifact repos
 

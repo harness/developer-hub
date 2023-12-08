@@ -183,7 +183,9 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Run tests
 
-Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
+You can use **Run** and **Run Tests** steps to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
+
+These examples run tests in a **Run** step.
 
 ```mdx-code-block
 <Tabs>
@@ -232,7 +234,9 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 
 ### Visualize test results
 
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), make sure your test commands produce reports in JUnit XML format.
+
+If you run tests in a **Run** step, your **Run** step must include the `reports` specification. The `reports` specification is not required for [Run Tests steps (Test Intelligence)](#run-tests-with-test-intelligence).
 
 ```yaml
                     reports:
@@ -244,9 +248,9 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 
 ### Run tests with Test Intelligence
 
-[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) is available for Python; however, it is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) is available for Python; however, it is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) to run unit tests with Test Intelligence.
+With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) to run unit tests with Test Intelligence.
 
 ```mdx-code-block
 <Tabs>
@@ -261,7 +265,6 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                   spec:
                     language: Python
                     buildTool: Pytest
-                    args: "--junitxml=out_report.xml"
                     runOnlySelectedTests: true
                     preCommand: |
                       python3 -m venv .venv
@@ -269,11 +272,6 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 
                       python3 -m pip install -r requirements/test.txt
                       python3 -m pip install -e .
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - out_report.xml*
 ```
 
 ```mdx-code-block
@@ -291,7 +289,6 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                     image: python:latest
                     language: Python
                     buildTool: Pytest
-                    args: "--junitxml=out_report.xml"
                     runOnlySelectedTests: true
                     preCommand: |
                       python3 -m venv .venv
@@ -299,11 +296,6 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 
                       python3 -m pip install -r requirements/test.txt
                       python3 -m pip install -e .
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - out_report.xml*
 ```
 
 ```mdx-code-block
@@ -311,6 +303,9 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 </Tabs>
 ```
 
+### Test splitting
+
+Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
 
 ## Specify version
 

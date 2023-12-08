@@ -98,11 +98,17 @@ import Ffs from '/docs/feature-flags/shared/ff-supported-platforms-shared-server
 
 <Ffs />
 
-## Harness Chaos Engineering
+## Chaos Engineering
 
 Perform chaos experiments on applications in your infrastructure, such as a Kubernetes cluster. Use predefined or custom workflow templates.
 
 Go to [Introduction to Chaos Module](../chaos-engineering/get-started/overview).
+
+## Code Repository
+
+Manage code within Harness and accelerate development with security at scale.
+
+The [Harness Code Repository module](/docs/code-repository/code-supported.md) is a source code management (SCM) tool that fosters developer collaboration and accelerates innovation while keeping security and compliance in mind. Git-based repositories are seamlessly integrated across your software delivery processes in Harness. Collaborative code reviews with checks and rules enforcement foster teamwork, reduce risk, and maintain code quality.
 
 ## Collaboration
 

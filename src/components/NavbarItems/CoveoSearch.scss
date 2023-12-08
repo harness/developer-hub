@@ -340,13 +340,30 @@
 	color: var(--mod-iacm-300);
 }
 
+// SSCA
+.harness-search-module .CoveoFieldValue.CoveoFieldValueSSCA {
+	background: var(--mod-ssca-100);
+	border: 1px solid var(--mod-ssca-200);
+	color: var(--mod-ssca-300);
+	&::before {
+		content: url('/img/icon_ssca_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueSSCA .coveo-clickable {
+	color: var(--mod-ssca-300);
+}
+
 // Gitness
 .harness-search-module .CoveoFieldValue.CoveoFieldValueGitness {
-	background: var(--mod-gitness-100);
-	border: 1px solid var(--mod-gitness-200);
-	color: var(--mod-gitness-300);
+	background: var(--mod-code-100);
+	border: 1px solid var(--mod-code-200);
+	color: var(--mod-codes-300);
 	&::before {
-		content: url('/img/icon_gitness_s.svg');
+		content: url('/img/icon_code_s.svg');
 		display: inline-block;
 		width: 16px;
 		height: 16px;
@@ -354,7 +371,24 @@
 	}
 }
 .harness-search-module .CoveoFieldValue.CoveoFieldValueGitness .coveo-clickable {
-	color: var(--mod-gitness-300);
+	color: var(--mod-code-300);
+}
+
+// Code Repository (CR)
+.harness-search-module .CoveoFieldValue.CoveoFieldValueCR {
+	background: var(--mod-code-100);
+	border: 1px solid var(--mod-code-200);
+	color: var(--mod-codes-300);
+	&::before {
+		content: url('/img/icon_code_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueCR .coveo-clickable {
+	color: var(--mod-code-300);
 }
 
 .harness-search-module .CoveoFieldValue.CoveoFieldValuePlatform {
@@ -737,7 +771,14 @@
         margin-right: 4px;
     }
 	&[title="Gitness"]::before {
-        content: url('/img/icon_gitness_s.svg');
+        content: url('/img/icon_code_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+	&[title="Code Repository"]::before {
+        content: url('/img/icon_code_s.svg');
         display: inline-block;
         width: 16px;
         height: 16px;

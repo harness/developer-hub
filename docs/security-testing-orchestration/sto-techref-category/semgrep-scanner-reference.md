@@ -30,7 +30,13 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
+### For more information
 
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
 
 ## Semgrep step configuration
 
@@ -199,7 +205,7 @@ pipeline:
                     command: semgrep --sarif --config auto -o /harness/results.sarif /harness
                     envVariables:
                       SEMGREP_APP_TOKEN: <+secrets.getValue("semgrepkey")>
-                    connectorRef: account.harnessImage
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: returntocorp/semgrep
                     resources:
                       limits:
@@ -223,7 +229,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: mydelegate
+              connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -233,7 +239,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: mygitrepodvpwa
+        connectorRef: CODEBASE_CONNECTOR
         build: <+input>
 
 ```

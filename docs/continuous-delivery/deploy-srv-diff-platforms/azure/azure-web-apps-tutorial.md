@@ -8,12 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-
-Currently, this feature is behind the feature flag `NG_SVC_ENV_REDESIGN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Harness can deploy a Docker image or non-containerized artifact for your Azure Web App. You can deploy to slots, perform traffic shifting, and swap slots. Harness supports common deployment strategies (basic, canary, and blue green).
 
 This topic walks you through setting up and run an Azure Web App deployment in Harness.
@@ -170,12 +164,6 @@ When you're done, infrastructure will look something like this:
 <docimage path={require('./static/azure-web-apps-tutorial-162.png')} width="60%" height="60%" title="Click to view full size image" />
 
 ### Dynamically provisioned Web App infrastructure
-
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Here is a summary of the process to dynamically provision the target infrastructure for a deployment:
 
@@ -334,16 +322,10 @@ The **Slot Deployment** step has the following settings:
  * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
    * **Clean**: Select if you want to clean the target directory prior to deployment. For more information, go to the [documentation for the `az webapp deploy` command](https://learn.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-deploy()) and see the description of the `--clean` option. 
 
-    :::note
-    This feature is behind the feature flag `CDS_WEBAPP_ENABLE_CLEAN_OPTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-    :::
-
  * **Web App Name:** Enter the name of the Azure Web App for deployment.
 
   
   :::note
-
-  Currently, the following functionality is behind the feature flag `CDS_AZURE_WEBAPP_NG_LISTING_APP_NAMES_AND_SLOTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
   When you select a Web App in **Web App Name**, Harness will automatically update the **Deployment Slot** setting with the slots for that Web App.
 
@@ -389,10 +371,6 @@ The **Slot Deployment** step has the following settings:
 * **Name:** Enter a name for the step.
 * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
   * **Clean**: Select if you want to clean the target directory prior to deployment. For more information, go to the [documentation for the `az webapp deploy` command](https://learn.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-deploy()) and see the description of the `--clean` option. 
-
-    :::note
-    This feature is behind the feature flag `CDS_WEBAPP_ENABLE_CLEAN_OPTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-    :::
 
 * **Web App Name:** Enter the name of the Azure Web App for deployment.
 * **Deployment Slot:** Enter the name of the Source slot for the deployment. This slot is where Harness deploys the new Web App version.Make sure the slot you enter is running.
@@ -474,10 +452,6 @@ The **Slot Deployment** step has the following settings:
 * **Name:** Enter a name for the step.
 * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
   * **Clean**: Select if you want to clean the target directory prior to deployment. For more information, go to the [documentation for the `az webapp deploy` command](https://learn.microsoft.com/en-us/cli/azure/webapp?view=azure-cli-latest#az-webapp-deploy()) and see the description of the `--clean` option. 
-
-    :::note
-    This feature is behind the feature flag `CDS_WEBAPP_ENABLE_CLEAN_OPTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-    :::
 
 * **Web App Name:** Enter the Azure Web App for deployment.
 * **Deployment Slot:** Enter the Source slot for the deployment. This slot is where Harness deploys the new Web App version.Make sure the slot you select is running. Harness shows all slots regardless of their status.

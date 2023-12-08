@@ -35,7 +35,7 @@ When there is idleness, the spot instance, along with the root EBS volume, is te
 ## Visual summary
 
 This section provides an overview of AutoStopping Rules.
-<figure><iframe src="//fast.wistia.com/embed/iframe/8wo6shjqqh" width="560" height="315" frameborder="0" allowfullscreen=""></iframe></figure>
+<docvideo src="https://youtu.be/lNf_P5sHTcE" />
 
 ## AutoStopping architecture
 
@@ -495,4 +495,5 @@ Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](autost
 
 * [Create AutoStopping Rules for a Kubernetes Cluster](create-autostopping-rules-for-kubernetes.md)
 * [Use AutoStopping Rules Summary Page](autostopping-dashboard.md)
+* [Use AutoStopping Proxy as downstream to ALB](create-autostopping-proxy-as-downstream-alb.md)
 

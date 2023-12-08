@@ -13,9 +13,7 @@ This topic describes how to create an artifact source template and use it in a s
 
 ## Visual summary
 
-<!-- Video:
-https://harness-1.wistia.com/medias/yzbue8fg96-->
-<docvideo src="https://harness-1.wistia.com/medias/yzbue8fg96" />
+<docvideo src="https://youtu.be/R3eQfS4g5Vw" />
 
 
 ## Important notes

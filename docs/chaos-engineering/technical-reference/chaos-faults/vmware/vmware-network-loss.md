@@ -10,14 +10,14 @@ VMware network loss injects network packet loss from the VMware VM(s) into the a
 ![VMware Network Loss](./static/images/vmware-network-loss.png)
 
 ## Use cases
-
-- VMware network loss simulates issues within the VM network (or microservice) communication across services in different hosts.
-- It determines the impact of degradation while accessing a microservice. 
-- The VM may stall or get corrupted while waiting endlessly for a packet. The fault limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses. 
-- It simulates degraded network with varied percentages of dropped packets between microservices.
-- It simulates loss of access to specific third party (or dependent) services (or components).
-- It simulates blackhole against traffic to a given availability zone, that is, failure simulation of availability zones. 
-- It simulates network partitions (split-brain) between peer replicas for a stateful application. 
+VMware network loss:
+- Simulates issues within the VM network (or microservice) communication across services in different hosts.
+- Determines the impact of degradation while accessing a microservice. 
+- Limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses, if the VM stalls or gets corrupted while waiting endlessly for a packet. 
+- Simulates degraded network with varied percentages of dropped packets between microservices.
+- Simulates loss of access to specific third party (or dependent) services (or components).
+- Simulates blackhole against traffic to a given availability zone, that is, failure simulation of availability zones. 
+- Simulates network partitions (split-brain) between peer replicas for a stateful application. 
 
 :::note
 - Kubernetes > 1.16 is required to execute this fault.
@@ -78,12 +78,12 @@ stringData:
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+        <td> Default: 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
       </tr>
       <tr>
         <td> NETWORK_PACKET_LOSS_PERCENTAGE </td>
         <td> Packets lost during transmission (in percent).</td>
-        <td> Defaults to 100 %. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-network-loss#network-packet-loss"> network packet loss. </a></td>
+        <td> Default: 100%. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-network-loss#network-packet-loss"> network packet loss. </a></td>
       </tr>
       <tr>
         <td> DESTINATION_IPS </td>
@@ -94,6 +94,16 @@ stringData:
         <td> DESTINATION_HOSTS </td>
         <td> DNS names (or FQDN names) of the services whose accessibility is affected. </td>
         <td> If it has not been provided, network chaos is induced on all IPs (or destinations). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-network-loss#run-with-destination-ips-and-destination-hosts"> run with destination hosts. </a></td>
+      </tr>
+       <tr>
+        <td> SOURCE_PORTS </td>
+        <td> Comma-separated ports of the target application, the accessibility to which is impacted. If not provided, it will induce network chaos for all ports. For Example: <code>5000,8080</code> </td>
+        <td> Alternatively, the source ports that should be exempted from the chaos can also be provided by prepending a <code>!</code> before the list of ports. For Example: <code>!5000,8080</code> </td>
+      </tr>
+      <tr>
+        <td> DESTINATION_PORTS </td>
+        <td> Ports of the destination services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted. If not provided, network chaos is induced on all ports. For example, <code>5000,8080</code>. </td>
+        <td> Alternatively, the destination ports to be exempted from the chaos can be provided by prepending a <code>!</code> to the list of ports. For example, <code>!5000,8080</code>. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -137,9 +147,9 @@ stringData:
 
 ### Network packet loss
 
-It specifies the network packet loss (in percentage) that is injected to the VM. Tune it by using the `NETWORK_PACKET_LOSS_PERCENTAGE` environment variable.
+Network packet loss (in percentage) injected to the VM. Tune it by using the `NETWORK_PACKET_LOSS_PERCENTAGE` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/vmware-network-loss/network-packet-loss-percentage.yaml yaml)
 ```yaml
@@ -168,12 +178,12 @@ spec:
 
 ### Run with destination IPs and destination hosts
 
-It specifies the IPs/hosts that interrupt traffic by default. You can tune this using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
+IPs or hosts that interrupt traffic by default. Tune them by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
 
-`DESTINATION_IPS`: It contains the IP addresses of the services or the CIDR blocks (range of IPs) that impacts its accessibility.
-`DESTINATION_HOSTS`: It contains the DNS names of the services that impact its accessibility.
+`DESTINATION_IPS`: IP addresses of the services or the CIDR blocks (range of IPs) whose accessibility is impacted.
+`DESTINATION_HOSTS`: DNS names of the services whose accessibility is impacted.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/vmware-network-loss/destination-host-and-ip.yaml yaml)
 ```yaml
@@ -204,11 +214,81 @@ spec:
           value: '123,123'
 ```
 
+### Source and destination ports
+
+By default, the network experiments disrupt traffic for all the source and destination ports. Interrupt the specific port(s) using the `SOURCE_PORTS` and `DESTINATION_PORTS` environment variables, respectively.
+
+- `SOURCE_PORTS`: Ports of the target application whose accessibility is impacted.
+- `DESTINATION_PORTS`: Ports of the destination services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/vmware-network-loss/source-and-destination-ports.yaml yaml)
+```yaml
+# it inject the chaos for the egress traffic for specific ports
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vmware-network-loss
+    spec:
+      components:
+        env:
+        # supports comma separated source ports
+        - name: SOURCE_PORTS
+          value: '80'
+        # supports comma separated destination ports
+        - name: DESTINATION_PORTS
+          value: '8080,9000'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'
+```
+
+### Ignore source and destination ports
+
+By default, the network experiments disrupt traffic for all the source and destination ports. Ignore the specific ports using the `SOURCE_PORTS` and `DESTINATION_PORTS` environment variables, respectively.
+
+- `SOURCE_PORTS`: Source ports that are not subject to chaos as comma-separated values preceded by `!`.
+- `DESTINATION_PORTS`: Destination ports that are not subject to chaos as comma-separated values preceded by `!`.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/vmware-network-loss/ignore-source-and-destination-ports.yaml yaml)
+```yaml
+# ignore the source and destination ports
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vmware-network-loss
+    spec:
+      components:
+        env:
+        # it will ignore 80 and 8080 source ports
+        - name: SOURCE_PORTS
+          value: '!80,8080'
+        # it will ignore 8080 and 9000 destination ports
+        - name: DESTINATION_PORTS
+          value: '!8080,9000'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'
+```
+
 ###  Network interface
 
-It specifies the name of the ethernet interface that shapes the traffic. Tune it by using the `NETWORK_INTERFACE` environment variable. Its default value is `eth0`.
+Name of the ethernet interface that shapes the traffic. Tune it by using the `NETWORK_INTERFACE` environment variable. Its default value is `eth0`.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/vmware-network-loss/network-interface.yaml yaml)
 ```yaml

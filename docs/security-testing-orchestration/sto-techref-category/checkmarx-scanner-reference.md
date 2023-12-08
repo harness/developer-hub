@@ -27,6 +27,14 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
+
 ## Checkmarx step configuration
 
 The recommended workflow is add a Checkmarx step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Checkmarx scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
@@ -250,6 +258,12 @@ You can use this field to provide environment variables to be used during the ex
 Replace `MY_PROXY_ADDRESS` with your proxy address or proxy FQDN, and `MY_PROXY_PORT` with your proxy port.
 If you want to go through an HTTPS proxy, replace `-Dhttp` with `-Dhttps`.
 
+### Exclude issues marked as Not Exploited
+
+You can configure the Checkmarx ingestion step to exclude issues detected by Checkmarx but flagged as Not Exploitable. To enable this setting, add the following key-value pair under **Settings**:
+
+`hide_not_exploitable` : `True`
+
 
 ### Additional Configuration
 
@@ -328,7 +342,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: NodeGoat_Harness_Hosted
+        connectorRef: GITHUB_CONNECTOR
         repoName: https://github.com/OWASP/NodeGoat
         build: <+input>
   stages:

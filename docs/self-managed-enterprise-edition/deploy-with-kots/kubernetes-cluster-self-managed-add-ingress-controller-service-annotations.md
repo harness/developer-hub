@@ -19,6 +19,12 @@ Maintenance mode means the following:
 
 :::
 
+:::info important
+
+Harness will no longer support KOTS based installations and upgrades beginning December 1, 2023. Harness customer support will not take any incoming questions on KOTs after end of business PST on December 1, 2023. 
+
+:::
+
 You can customize the behavior of the Nginx Ingress controller with annotations. This topic explains how to use the KOTS admin tool to configure the Ingress controller with annotations.
 
 **To add Ingress controller annotations**

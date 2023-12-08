@@ -6,10 +6,6 @@ sidebar_position: 1
 
 This topic shows you how to deploy a publicly available application to your Tanzu Application Service (TAS, formerly PCF) space by using any [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md) in Harness.
 
-:::note
-Currently, this feature is behind feature flags `NG_SVC_ENV_REDESIGN`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
-:::
-
 ## Objectives
 
 You'll learn how to:
@@ -36,7 +32,8 @@ You'll learn how to:
    * Azure Artifacts
    * Jenkins
 * Before you create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization/). 
-* Your Harness delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate) added to it. 
+* Your Harness delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate) added to it.
+* For the test connection in the connector, Harness uses the CF SDK to get the list of organizations. If the credentials are correct, you get a list of organizations. Otherwise, the connection fails. For more information, see the [Cloud Foundry documentation](https://apidocs.cloudfoundry.org/196/organizations/list_all_organizations.html).
 
 ## Connect to a TAS provider
 
@@ -379,12 +376,6 @@ The target space is your TAS space. This is where you will deploy your applicati
 11. Select **Save**.
 
 ### Dynamically provisioned TAS infrastructure
-
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
 

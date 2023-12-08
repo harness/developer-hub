@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
-import React, { useEffect, useRef, useState } from "react";
-import { useHistory } from "react-router-dom";
-import Head from "@docusaurus/Head";
-import "./CoveoSearch.scss";
+import React, { useEffect, useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import Head from '@docusaurus/Head';
+import './CoveoSearch.scss';
 
 // Space => keyCode: 32
 const RESP_BREAK_POINT = 996;
@@ -33,7 +33,7 @@ const CoveoSearch = () => {
     const elemSearchResultConainer = searchResultsEl.current;
     const searchSesultsElemLen =
       elemSearchResultConainer.getElementsByClassName(
-        "coveo-search-results"
+        'coveo-search-results'
       ).length;
 
     if (window.Coveo && searchSesultsElemLen < 1) {
@@ -48,9 +48,9 @@ const CoveoSearch = () => {
       // document.addEventListener("DOMContentLoaded", () => {
       (async () => {
         let searchboxRoot = searchBoxEl.current; // document.getElementById("instant-search");
-        let searchRoot = document.createElement("div");
-        searchRoot.setAttribute("class", "coveo-search-results");
-        searchRoot.setAttribute("style", "display: none;");
+        let searchRoot = document.createElement('div');
+        searchRoot.setAttribute('class', 'coveo-search-results');
+        searchRoot.setAttribute('style', 'display: none;');
         // const elemSearchResultConainer = searchResultsEl.current;
 
         if (elemSearchResultConainer) {
@@ -104,62 +104,62 @@ const CoveoSearch = () => {
                     </div>
                 </div>
             </div>`;
-        let coveoRoot = searchRoot.querySelector("#coveo-search"); // document.getElementById("coveo-search");
+        let coveoRoot = searchRoot.querySelector('#coveo-search'); // document.getElementById("coveo-search");
 
         const resToken = await fetch(
-          "https://next.harness.io/api/gettoken-all/"
+          'https://next.harness.io/api/gettoken-all/'
         );
         const dataToken = await resToken.json();
         const orgId = dataToken?.orgId;
         const apiToken = dataToken?.apiKey;
         Coveo.SearchEndpoint.configureCloudV2Endpoint(orgId, apiToken);
 
-        const elemSearchMask = document.getElementById("coveo-search-mask");
-        const elemDocusaurusRoot = document.getElementById("__docusaurus");
-        const searchMask = document.createElement("div");
-        searchMask.setAttribute("id", "coveo-search-mask");
-        searchMask.setAttribute("style", "display: none;");
+        const elemSearchMask = document.getElementById('coveo-search-mask');
+        const elemDocusaurusRoot = document.getElementById('__docusaurus');
+        const searchMask = document.createElement('div');
+        searchMask.setAttribute('id', 'coveo-search-mask');
+        searchMask.setAttribute('style', 'display: none;');
         if (elemDocusaurusRoot && !elemSearchMask) {
           elemDocusaurusRoot.appendChild(searchMask);
         }
 
         const handleCloseSearchResult = () => {
           const elemClearSearchButton =
-            searchboxRoot.getElementsByClassName("magic-box-clear")[0];
+            searchboxRoot.getElementsByClassName('magic-box-clear')[0];
           if (elemClearSearchButton) {
             elemClearSearchButton.click();
           } else {
-            console.warn("elemClearSearchButton not found!");
+            console.warn('elemClearSearchButton not found!');
           }
         };
         const activeSearchMask = elemSearchMask || searchMask;
         if (activeSearchMask.addEventListener) {
-          activeSearchMask.addEventListener("click", handleCloseSearchResult);
+          activeSearchMask.addEventListener('click', handleCloseSearchResult);
         } else if (activeSearchMask.attachEvent) {
-          activeSearchMask.attachEvent("onclick", handleCloseSearchResult);
+          activeSearchMask.attachEvent('onclick', handleCloseSearchResult);
         }
-        Coveo.$$(coveoRoot).on("doneBuildingQuery", function (e, args) {
+        Coveo.$$(coveoRoot).on('doneBuildingQuery', function (e, args) {
           let q = args.queryBuilder.expression.build();
           if (q) {
-            searchRoot.style.display = "block";
+            searchRoot.style.display = 'block';
             if (window.innerWidth > RESP_BREAK_POINT) {
-              activeSearchMask.style.display = "block";
+              activeSearchMask.style.display = 'block';
             }
             // if (elmContent) {
             //   elmContent.style.display = "none";
             // }
           } else {
-            searchRoot.style.display = "none";
-            activeSearchMask.style.display = "none";
+            searchRoot.style.display = 'none';
+            activeSearchMask.style.display = 'none';
             // if (elmContent) {
             //   elmContent.style.display = "block";
             // }
           }
-          window.dispatchEvent(new Event("resize"));
-          window.dispatchEvent(new Event("orientationchange"));
+          window.dispatchEvent(new Event('resize'));
+          window.dispatchEvent(new Event('orientationchange'));
         });
-        Coveo.$$(coveoRoot).on("afterInitialization", function (e, args) {
-          Coveo.state(coveoRoot, "f:@commonsource", ["Developer Hub"]);
+        Coveo.$$(coveoRoot).on('afterInitialization', function (e, args) {
+          Coveo.state(coveoRoot, 'f:@commonsource', ['Developer Hub']);
           /* disable auto-focus @2022-12-12
           document
             .querySelector(".CoveoSearchbox .magic-box-input input")
@@ -167,28 +167,28 @@ const CoveoSearch = () => {
           */
 
           // hacked into Coveo searchbox
-          const elemSearchbox = searchboxRoot.getElementsByTagName("input")[0];
+          const elemSearchbox = searchboxRoot.getElementsByTagName('input')[0];
           if (elemSearchbox) {
             const handleKeyUp = (key) => {
               if (key.keyCode === 32) {
                 const elemSearchButton =
-                  searchboxRoot.getElementsByClassName("CoveoSearchButton")[0];
+                  searchboxRoot.getElementsByClassName('CoveoSearchButton')[0];
                 if (elemSearchButton) {
                   // elemSearchbox.blur();
                   elemSearchButton.click();
                   // elemSearchbox.focus();
                 } else {
-                  console.warn("elemSearchButton not found!");
+                  console.warn('elemSearchButton not found!');
                 }
               }
             };
             if (elemSearchbox.addEventListener) {
-              elemSearchbox.addEventListener("keyup", handleKeyUp);
+              elemSearchbox.addEventListener('keyup', handleKeyUp);
             } else if (button.attachEvent) {
-              elemSearchbox.attachEvent("onkeyup", handleKeyUp);
+              elemSearchbox.attachEvent('onkeyup', handleKeyUp);
             }
           } else {
-            console.warn("elemSearchbox not found!");
+            console.warn('elemSearchbox not found!');
           }
         });
 
@@ -218,7 +218,7 @@ const CoveoSearch = () => {
       </Head>
       {isCoveoLoaded && (
         <Head>
-          <script src="https://cdn.jsdelivr.net/gh/wei-harness/cdn@v0.2.3/js/coveo_template.js"></script>
+          <script src="https://cdn.jsdelivr.net/gh/wei-harness/cdn@v0.2.4/js/coveo_template.js"></script>
           {/* <script src="/coveo_template.js"></script> */}
         </Head>
       )}

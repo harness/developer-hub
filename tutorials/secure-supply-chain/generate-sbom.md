@@ -55,7 +55,7 @@ This tutorial explains how to configure the **SSCA Orchestration** and **SSCA En
 
 Keys are used to sign and verify attestations.
 
-1. Generate a public and private key pair. For example, you can use [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/) to generate key pairs.
+1. Use [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/) to generate a public and private key pair
 2. Create two [Harness file secrets](/docs/platform/secrets/add-file-secrets), one for the private key file and one for the public key file.
 3. Create a [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) to store the password for the private key.
 
@@ -72,6 +72,13 @@ The **SSCA Orchestration** step does the following:
 1. Add the **SSCA Orchestration** step to either the **Build** or **Deploy** stage.
    * In a **Build** stage, add the **SSCA Orchestration** step after the artifact (image) has been pushed to an artifact repository.
    * In a **Deploy** stage, add the **SSCA Orchestration** step before the deployment step.
+  
+:::info
+
+SSCA Orchestration and Enforcement steps in deploy stage can only be used in the container step group
+
+:::
+
 2. Enter a **Name** for the step.
 3. For **Step Mode**, select **Generation**.
 4. Select the **SBOM Tool** to use to generate the SBOM, such as **Syft**.
@@ -119,6 +126,12 @@ The **SSCA Enforcement** step does the following:
 
    * In a **Build** stage, add the **SSCA Enforcement** step after the artifact (image) has been pushed to an artifact repository.
    * In a **Deploy** stage, add the **SSCA Enforcement** step before the deployment step.
+  
+:::info
+
+SSCA Orchestration and Enforcement steps in deploy stage can only be used in the container step group
+
+:::
 
 2. Enter a **Name** for the step.
 3. Select **Image** as the **Artifact Type**.

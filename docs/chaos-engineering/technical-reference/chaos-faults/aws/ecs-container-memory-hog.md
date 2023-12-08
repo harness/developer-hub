@@ -11,18 +11,17 @@ ECS container memory hog disrupts the state of infrastructure resources. It indu
 
 ![ECS Container Memory Hog](./static/images/ecs-stress-chaos.png)
 
+:::tip
+This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](./ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
+:::
 
-## Usage
+## Use cases
 
-<details>
-<summary>View fault usage</summary>
-<div>
 Memory usage inside containers is subject to constraints. If the limits are specified, exceeding them can result in termination of the container (due to OOMKill of the primary process, often pid 1).
 The container is restarted, depending on the policy specified.
 When there are no limits on the memory consumption of containers, containers on the instance can be killed based on their oom_score, which extends to all the task containers running on the instance. This results in a bigger blast radius.  
 This fault launches a stress process within the target container, that causes the primary process in the container to have constraints based on resources or eat up the available system memory on the instance when limits on resources are not specified. 
-</div>
-</details>
+
 
 ## Prerequisites
 

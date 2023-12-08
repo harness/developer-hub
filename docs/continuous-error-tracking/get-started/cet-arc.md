@@ -15,6 +15,10 @@ To view the ARC screen, do the following:
 
 ![View ARC screen](./static/et-quickstart-open-arc.gif)
 
+:::info note
+You can also access the ARC screen from the Error Tacking Agent log. The Error Tracking Agent captures the source code and variable state at the moment an event is recorded. The event snapshot includes a distinct log link that, when clicked, takes you to the ARC screen within Harness CET. On the ARC screen, you'll find a detailed call stack trace including the entry point of the method where the specific event took place.
+:::
+
 The ARC screen is divided into following tabs to help you create a complete picture of the event.
 
 * Code

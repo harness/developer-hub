@@ -34,15 +34,13 @@ For more details, go to [CCM Roles and Permissions](/docs/cloud-cost-management/
 ## Visual summary
 
 How to create a Cost Category:
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/watch?v=zbmWB0yUN4s" />
 
 
 
 How to use a Cost Category:
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/watch?v=2gqvz47efuQ" />
 
 ## Create cost categories

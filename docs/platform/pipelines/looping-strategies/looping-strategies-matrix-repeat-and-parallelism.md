@@ -50,7 +50,7 @@ parallelism: 10
 
 For more information about parallelism strategies, go to:
 
-* [Use parallelism to improve test times](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism)
+* [Split tests (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
 * [Run stages in parallel](./run-stages-in-parallel.md)
 
 ## Matrix strategies
@@ -243,7 +243,7 @@ If the matrix strategy produces more instances than are allowed by the `maxConcu
 
 ### Customize matrix stage names
 
-By default, Harness uses indices for the matrix naming strategy (stages are named with indices like _2_2, _1_3, and so on). If you prefer, you can customize this naming convention for better readability. There are two ways to do this: 
+By default, Harness uses indices for the matrix naming strategy (stages are named with indices like `_2_2`, `_1_3`, and so on). If you prefer, you can customize this naming convention for better readability. There are two ways to do this: 
 
 #### Use matrix axes as stage labels
 
@@ -336,8 +336,6 @@ When you configure looping strategies as runtime input, you select the strategy 
 
 The following video demonstrates how to configure and use runtime input for looping strategies.
 
-<!-- Video:
-https://harness-24.wistia.com/medias/79nqqvqybt-->
 <docvideo src="https://harness-24.wistia.com/medias/79nqqvqybt" />
 
 ## Looping strategy expressions

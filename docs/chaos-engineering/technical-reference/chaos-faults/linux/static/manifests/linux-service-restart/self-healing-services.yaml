@@ -9,4 +9,4 @@ spec:
   serviceRestartChaos/inputs:
     services: "apache2,nginx"
     selfHealingServices: true
-    duration: 30
+    duration: 30s

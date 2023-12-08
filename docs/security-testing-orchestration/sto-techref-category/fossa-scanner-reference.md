@@ -10,6 +10,7 @@ You can scan container images and repositories using [Fossa](https://www.fossa.c
 
 ## Important notes for running Fossa scans in STO
 
+
 ### Docker-in-Docker requirements
 
 ```mdx-code-block
@@ -25,6 +26,14 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 ```
 
 <StoRootRequirements />
+
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
 
 ## Fossa step settings for STO scans
 
@@ -187,7 +196,7 @@ pipeline:
                   name: Pull File
                   identifier: Pull_File
                   spec:
-                    connectorRef: MY_DOCKER_CONNECTOR
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: alpine/curl
                     shell: Sh
                     command: |-
@@ -210,7 +219,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: MY_DELEGATE
+              connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}

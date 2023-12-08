@@ -7,6 +7,9 @@ ECS update container timeout modifies the start and stop timeouts for ECS contai
 
 ![ECS Update Container Timeout](./static/images/ecs-update-container-timeout.png)
 
+:::tip
+This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](./ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
+:::
 
 ## Use cases
 ECS update container timeout:

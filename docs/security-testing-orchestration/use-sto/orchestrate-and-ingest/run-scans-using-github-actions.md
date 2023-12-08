@@ -147,7 +147,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: MY_REPO_CONNECTOR
+        connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
         repoName: https://github.com/OWASP/NodeGoat
         build: <+input>
   stages:
@@ -291,7 +291,7 @@ Given this, you would set up the Action step in your Harness pipeline like this.
                   name: Plugin_1
                   identifier: Plugin_1
                   spec:
-                    connectorRef: dbothwelldocker
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/github-actions
                     privileged: true
                     settings:
@@ -314,7 +314,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: NodeGoat_Harness_Hosted
+        connectorRef: CODEBASE_CONNECTOR_NodeGoat_Harness_Hosted
         repoName: https://github.com/OWASP/NodeGoat
         build: <+input>
   stages:
@@ -331,7 +331,7 @@ pipeline:
                   name: Plugin_1
                   identifier: Plugin_1
                   spec:
-                    connectorRef: MY_DOCKERHUB_CONNECTOR
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: plugins/github-actions
                     privileged: true
                     settings:

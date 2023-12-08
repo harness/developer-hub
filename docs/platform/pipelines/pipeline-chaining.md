@@ -41,106 +41,162 @@ To chain pipelines in Harness, perform the following steps:
 
 1. Create your parent [pipeline](../pipelines/add-a-stage.md#step-1-create-a-pipeline) and configure it with the desired settings, such as triggers, environment variables, and deployment steps.
 
-2. Select **Add Stage** and then select **Pipeline**.
+2. To add the child pipeline, select **Add Stage** and then select **Pipeline**.
    
    ![](./static/pipeline-chain-option.png)
 
-3. Select the pipeline from the list. You can select any pipeline across different orgs and projects corresponding to your access and permissions and chain it to your parent pipeline.
+3. Select the child pipeline from the list. You can select any pipeline across different orgs and projects corresponding to your access and permissions and chain it to your parent pipeline.
    
    For more information on access, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
-
-   ![](./static/pipeline-chain-list.png)
    
    :::info note
    You must have execute permissions for the parent and child pipeline to ensure successful execution.
    :::
 
 4. Click **Apply Selected**.
-
-5. To use the output of a child pipeline in subsequent stages of the parent pipeline, select **Outputs**.
-
-   The variables you select in the output tab can be referred to at a later stage.
-
-   For example, you can use the build image in a subsequent deployment stage.
-   
-   :::info note
-   The **Outputs** tab supports auto suggestions.
-   :::
-   
-6. Repeat this process for any additional pipelines that you want to chain.
-
-7. In the final chained pipeline, you can add a **Deploy** step to deploy the application to the desired environment.
-   After you have chained the pipelines, you can run the parent pipeline.
+5. In the final chained pipeline, you can add a **Deploy** step to deploy the application to the desired environment.
+    
+    After you have chained the pipelines, you can run the parent pipeline.
    
 Harness recommends testing the pipeline before executing it in production.
 
-## Use an output expression in later stages
+## Use a parent output in child pipelines
 
-You can use an output expression in one stage as an input expression in a later stage. Here's a sample pipeline that uses an output expression in a later stage:
+You can use an output expression in from a parent pipeline as an input expression in a child pipeline stage.
+
+To use the output of a parent pipeline in the child pipeline and its stages, do the following:
+   
+1. Child pipeline:
+   1. In the child pipeline, select **Variables**. You need to create a child pipeline variable so that when you add the child pipeline to the parent pipeline as a stage, the child pipeline stage will have an input you can use to map output variables from the parent pipeline.
+   2. Under **Pipeline**, in **Custom Variables**, select **Add Variable**.
+   3. Enter a name for the variable and set its value as a *runtime input*, and copy the variable expression.
+
+    ![picture 0](static/3e467b043a7c3ea8faefbbcf184fb304ed068b13898259d91f51015551a53825.png)  
+
+   4. Select **Apply Changes**.
+   5. Use the expression in the child pipeline wherever you want to use the parent output variable.
+   6. Save the child pipeline.
+2. Parent pipeline:
+   1. In the parent pipeline, verify that you have an output variable to pass to the child pipeline. For example, a [Shell Script step output variable](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step).
+   2.  In the parent pipeline, select/add the child pipeline stage. The runtime pipeline variable you added to the child pipeline appears in the **Inputs** tab.
+
+    ![picture 2](static/19a4d2bba78d439a18512c0981346d5c47b064711cf27046c2025ae012af360b.png)   
+
+   3. In **Inputs**, you should see the runtime input from the child pipeline variable you created.
+   4. In **Value**, enter an expression that references the parent pipeline output variable you want to pass to the child pipeline.
+ 
+:::info note
+The **Inputs** tab supports auto suggestions.
+:::
+   
+Now, when the parent pipeline is run and the child pipeline is executed, the child pipeline uses its pipeline-level runtime variable. That variable is resolved to the value of the parent pipeline output variable.
+
+Here's an example of a child and parent pipeline where a parent pipeline output expression is mapped and used in a child pipeline stage.
+
+<details>
+<summary>Child pipeline</summary>
 
 ```yaml
 pipeline:
-  identifier: "parent"
-  name: "parent"
-  projectIdentifier: "YOUR_PROJECT_IDENTIFIER"
-  orgIdentifier: "default"
+  name: child
+  identifier: child
+  projectIdentifier: CD_Docs
+  orgIdentifier: default
   tags: {}
   stages:
-  - stage:
-      identifier: "chained"
-      type: "Pipeline"
-      name: "chained"
-      description: ""
-      spec:
-        org: "default"
-        pipeline: "childPipeline2"
-        project: "YOUR_PROJECT"
-        inputs:
-          identifier: "childPipeline2"
-          stages:
-          - stage:
-              identifier: "custom"
-              type: "Custom"
-              spec:
-                execution:
-                  steps:
-                  - step:
-                      identifier: "ShellScript_1"
-                      type: "ShellScript"
-                      timeout: "17m"
-        outputs:
-        - name: "timeout"
-          value: "<+pipeline.stages.custom.spec.execution.steps.ShellScript_1.timeout>"
-  - stage:
-      identifier: "stage2"
-      type: "Pipeline"
-      name: "stage2"
-      description: ""
-      spec:
-        org: "default"
-        pipeline: "childPipeline22"
-        project: "YOUR_PROJECT"
-        inputs:
-          identifier: "childPipeline22"
-          stages:
-          - stage:
-              identifier: "custom"
-              type: "Custom"
-              spec:
-                execution:
-                  steps:
-                  - step:
-                      identifier: "ShellScript_1"
-                      type: "ShellScript"
-                      timeout: "<+stages.chained.output.timeout>"
-        outputs: []
+    - stage:
+        name: child_output
+        identifier: child_output
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo <+pipeline.variables.parent_timeout>
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+          outputs: []
+        tags: {}
   variables:
-  - name: "input1"
-    type: "String"
-    description: ""
-    value: "value1"
+    - name: parent_timeout
+      type: String
+      description: ""
+      required: false
+      value: <+input>
+```
+</details>
+
+<details>
+<summary>Parent pipeline with child pipeline stage</summary>
+
+```yaml
+pipeline:
+  name: parent
+  identifier: parent
+  projectIdentifier: CD_Docs
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: chained
+        identifier: chained
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: timeout=<+pipeline.stages.chained.spec.execution.steps.ShellScript_1.timeout>
+                    environmentVariables: []
+                    outputVariables:
+                      - name: parent_timeout
+                        type: String
+                        value: timeout
+                  timeout: 10m
+          outputs: []
+        tags: {}
+    - stage:
+        name: child_pipeline
+        identifier: child_pipeline
+        description: ""
+        type: Pipeline
+        spec:
+          org: default
+          pipeline: child
+          project: CD_Docs
+          outputs: []
+          inputs:
+            identifier: child
+            variables:
+              - name: parent_timeout
+                type: String
+                value: <+pipeline.stages.chained.spec.execution.steps.ShellScript_1.output.outputVariables.parent_timeout>
 
 ```
+</details>
+
+
+
 
 :::info note
 

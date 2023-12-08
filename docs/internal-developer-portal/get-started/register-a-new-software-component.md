@@ -12,6 +12,8 @@ redirect_from:
 
 You can register any new software component with the software catalog by creating a `catalog-info.yaml` file in your Git repository and then registering its URL.
 
+<docvideo src="https://www.youtube.com/embed/YgtIMDGMzJE?si=AYnisVn-lHX-4STw" />
+
 ## Create a new `catalog-info.yaml`
 
 1. If you want to register an existing software component, navigate to its repository. If it is a mono-repo, navigate to its directory and create a `catalog-info.yaml` at the root of the directory. The file can technically live anywhere (for example, `.harness/catalog-info.yaml`). You can use the following YAML code:
@@ -46,6 +48,8 @@ Following are the key fields that you must update:
 * `spec.owner` - The user group identifier of the team that owns the component.
 
 2. Once the file is created in your Git repo, copy the full URL to the file. For example, `https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml`.
+
+## Register the Software Component 
 
 3. In the left navigation, select **Create**, and then select **Register Software Component**.
 

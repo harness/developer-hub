@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::info note
-Currently, this feature is behind the feature flags `NG_SVC_ENV_REDESIGN` and `CD_TRIGGERS_REFACTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flags CD_TRIGGERS_REFACTOR`. Contact [Harness Support](mailto:support@harness.io)to enable the feature.
 
 :::
 
@@ -23,7 +23,7 @@ You can set conditions on the Triggers, such as matching one or more chart versi
 
 This Trigger is a simple way to automate deployments for new Helm charts.
 
-import Variables from '/docs/platform/triggers/shared/variables-not-supported.md'
+import Variables from '/docs/platform/shared/variables-not-supported.md'
 
 <Variables />
 

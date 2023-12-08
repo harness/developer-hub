@@ -72,9 +72,7 @@ With Harness STO, you are scanning at any stage in the CI/CD Pipeline, and provi
 
 The following 1min video provides a quick summary of STO:
 
- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz>
-<docvideo src="https://fast.wistia.net/embed/iframe/yjlevup9v4" />
+
 -->
 
 ### STO features

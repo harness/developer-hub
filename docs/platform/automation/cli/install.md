@@ -8,6 +8,14 @@ sidebar_position: 1
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
+<!---
+Import statements for CLI downloads
+<MacOSCLI />, <WindowsCLI />, <ARMCLI />, <AMDCLI />
+-->
+import MacOSCLI from '/docs/platform/shared/cli/mac.md';
+import WindowsCLI from '/docs/platform/shared/cli/windows.md';
+import ARMCLI from '/docs/platform/shared/cli/arm.md';
+import AMDCLI from '/docs/platform/shared/cli/amd.md';
 
 **Harness CLI** serves as your gateway to frictionless interaction with the intelligent Harness Platform directly through the command-line interface, providing you with a powerful and efficient means to manage Harness and its diverse set of resources.
 
@@ -25,42 +33,32 @@ You can install `harness` CLI utility on Linux, MacOS, or Windows in order to in
 ### Install the CLI on Linux
 
 1. Download and extract the Harness CLI binary.
+ ```mdx-code-block
+ <Tabs>
+ <TabItem value="ARM">
+ ```
+ <ARMCLI />
 
-```mdx-code-block
-<Tabs>
-<TabItem value="ARM">
-```
+ ```mdx-code-block
+ </TabItem>
+ <TabItem value="AMD">
+ ```
+ <AMDCLI />
 
-```bash
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz
-tar -xvf harness-v0.0.16-Preview-linux-arm64.tar.gz
-```
-
-```mdx-code-block
-</TabItem>
-<TabItem value="AMD">
-```
-
-```bash
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
-tar -xvf harness-v0.0.16-Preview-linux-amd64.tar.gz
-```
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
+ ```mdx-code-block
+ </TabItem>
+ </Tabs>
+ ```
 
 2. Add the binary path to the system `$PATH` variable
-```bash
-echo 'export PATH="$(pwd):$PATH"' >> ~/.bash_profile
-source ~/.bash_profile
-```
-
+ ```bash
+ echo 'export PATH="$(pwd):$PATH"' >> ~/.bash_profile
+ source ~/.bash_profile
+ ```
 3. After you install the CLI, it is available using the `harness` command. To verify run:
-```bash
-harness --version
-```
+ ```bash
+ harness --version
+ ```
 
 ```mdx-code-block
 </TabItem>
@@ -70,14 +68,9 @@ harness --version
 ### Install the CLI on MacOS
 
 1. Run commands below on terminal
+<MacOSCLI />
 
-```
-curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-darwin-amd64.tar.gz 
-tar -xvf harness-v0.0.16-Preview-darwin-amd64.tar.gz 
-export PATH="$(pwd):$PATH" 
-echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile   
-```
-(If you are using different variation of terminal, replace `~/.bash_profile` with your bash profile file path)
+ (If you are using different shell variation of terminal e.g. zsh, replace `~/.bash_profile` with your shell specific profile file path e.g. `~/.zshrc`)
 
 ```mdx-code-block
 </TabItem>
@@ -86,15 +79,14 @@ echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
 
 ### Install the CLI on Windows
 1. Run the commands below in Windows Powershell:
-```
-Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-windows-amd64.zip -OutFile ./harness.zip
-```
+ <WindowsCLI />
 2. Extract the downloaded zip file and change directory to extracted file location
 3. Run following command in powershell to setup environment variables:
-```$currentPath = Get-Location 
-[Environment]::SetEnvironmentVariable("PATH", "$env:PATH;$currentPath", [EnvironmentVariableTarget]::Machine)
-```
- 4. Restart terminal
+ ```
+ $currentPath = Get-Location 
+ [Environment]::SetEnvironmentVariable("PATH", "$env:PATH;$currentPath", [EnvironmentVariableTarget]::Machine)
+ ```
+4. Restart terminal
 
 ```mdx-code-block
 </TabItem>
@@ -114,6 +106,5 @@ Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/
     > Note: Replace `HARNESS_API_TOKEN` with the Harness API Token obtained in the previous step, and `HARNESS_ACCOUNT_ID` with your specific Account Id.
 
 
-4. Upon successful login, you will be greeted with the confirmation message **Login successfully done. Yay!**.
-
+4. Upon successful login, you will be greeted with the confirmation message **Login successfully done. Yay!**
 ![Harness Login](./static/harnesscli-login-successful.png)

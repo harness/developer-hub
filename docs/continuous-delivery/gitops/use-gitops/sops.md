@@ -99,6 +99,7 @@ To prepare the BYOA agent, do the following:
                 value: "3.7.3"
             args:
                 - |
+                apk update && apk get wget
                 mkdir -p /helm-sops-tools/helm-plugins
                 wget -qO- https://github.com/jkroepke/helm-secrets/releases/download/v${HELM_SECRETS_VERSION}/helm-secrets.tar.gz | tar -C /helm-sops-tools/helm-plugins -xzf-;
                 wget -qO /helm-sops-tools/curl https://github.com/moparisthebest/static-curl/releases/latest/download/curl-amd64

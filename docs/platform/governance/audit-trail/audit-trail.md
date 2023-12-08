@@ -21,10 +21,10 @@ This topic shows you how to view Audit Trails for your Harness account.
 
 ### Step: View an Audit Trail
 
-You can view Audit Trail data at Account/Org/Project scope. This topic explains how to view Audit Trail data at the account scope.
+You can view Audit Trail data at the Account or Org scope. This topic explains how to view Audit Trail data at the account scope.
 
 :::info note
-The events in the scope of accounts will not be displayed if you are viewing the Audit Trail at the Org or Project scope. 
+The events in the scope of accounts will not be displayed if you are viewing the Audit Trail at the Org. 
 :::
 
 In Harness, go to **Account Settings**, and then select **Audit Trail**.
@@ -48,11 +48,10 @@ For each event record, this view shows the:
 
 ![](../../governance/audit-trail/static/audit-trail-01.png)
 
-From here, you have multiple options to [Modify the Audit Trail View](#modify_the_audit_trail_view).
 
 :::info IMPORTANT 
 
-By default, the pipeline execution audit events such as Pipeline Start, Pipeline End, Stage Start, and Stage End are not displayed in Audit Trail. To enable these, you must enable the `Enable Pipeline Execution Audit Events` setting available under the pipeline category in the account level settings. This setting is only available at the account level. 
+By default, the pipeline execution audit events such as Pipeline Start, Pipeline End, Stage Start, and Stage End are not captured in the Audit Trail. To enable capturing these events, you must enable the `Enable Pipeline Execution Audit Events` setting available under the pipeline category in the account level settings. This setting is only available at the account level. 
 
 :::
 
@@ -89,8 +88,13 @@ You can scope down the viewable audit events by adding Filters and selecting:
    * Organization
    * Project
    * Resource Type
+   * Resource Identifier
    * Action
 
+   :::info note
+   The Resource Identifier operates in conjunction with the Resource Type. It allows you to use the resource identifier to filter audit events related to a specific resource using that identifier.
+   :::
+   
 4. In **Filter** **Name**, enter a name for your filter.
 5. In **Who can view and edit the filter?** select **Only Me** or **Everyone** based on the visibility you want to set for this filter.
 6. Click **Save**. Your filter is now created.

@@ -38,9 +38,19 @@ Pod DNS error:
         <td> None. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
       </tr>
       <tr>
+        <td> NODE_LABEL </td>
+        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+      </tr>
+      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration for which to insert chaos (in seconds). </td>
         <td> Default: 60 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a></td>
+      </tr>
+      <tr>
+        <td> TARGET_PODS </td>
+        <td> Comma-separated list of application pod names subject to chaos. </td>
+        <td> If it is not provided, it selects target pods based on provided appLabels. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#target-pods">target pods</a></td>
       </tr>
       <tr>
         <td> TARGET_HOSTNAMES </td>
@@ -73,6 +83,11 @@ Pod DNS error:
         <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
       </tr>
       <tr>
+        <td> LIB_IMAGE </td>
+        <td> Image used to inject chaos. </td>
+        <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "../../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+      </tr>
+      <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods. </td>
         <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
@@ -80,9 +95,37 @@ Pod DNS error:
     </table>
 
 
+### Target pods
+Comma-separated names of the pods that are subject to chaos. Tune it by using the `TARGET_PODS` environment variable.
+
+[embedmd]:# (./static/manifests/pod-dns-error/target-pods.yaml yaml)
+```yaml
+## contains comma-separated target pod names
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-dns-error
+    spec:
+      components:
+        env:
+        ## comma-separated target pod names
+        - name: TARGET_PODS
+          value: 'pod1,pod2'
+````
+
 ### Target host names
 
-Comma-separated names of the target hosts. If `TARGET_HOSTNAMES` is not provided, all host names or domains will be targeted. Tune it by using the `TARGET_HOSTNAMES` environment variable.
+Comma-separated names of the target hosts. Tune it by using the `TARGET_HOSTNAMES` environment variable. If `TARGET_HOSTNAMES` is not provided, all host names or domains will be targeted. 
 
 The following YAML snippet illustrates the use of this environment variable:
 

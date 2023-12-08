@@ -30,17 +30,10 @@ Setting up a Serverless Lambda application involves the following steps:
 3. Deploy the Serverless application to Lambda.
 
 ### Visual summary
-<!-- Video:
-https://harness-1.wistia.com/medias/tnjairdt6m-->
-<docvideo src="https://harness-1.wistia.com/medias/tnjairdt6m" />
+
+<docvideo src="https://youtu.be/BiFpg13yJbQ" />
 
 ## Containerized and non-containerized
-
-:::note
-
-Currently, containerized Serverless Lambda support is behind the feature flag `CDS_SERVERLESS_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 You have two options for deploying a Serverless.com Framework Lambda application:
 
@@ -205,7 +198,11 @@ The `s3:GetBucketLocation` action is required for a custom S3 bucket only.
 </details>
     
 
+## Use AWS IRA for Harness AWS connector credentials
 
+import IrsaPartial from '/docs/shared/aws-connector-auth-options.md';
+
+<IrsaPartial name="aws-irsa" />
 
 ## Serverless framework support
 
@@ -507,12 +504,6 @@ For details on Harness provisioning, go to [Provisioning overview](/docs/continu
 4. Click **Continue**. The **Execution** steps appear.
 
 ### Dynamically provisioned infrastructure
-
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
 

@@ -115,15 +115,15 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
    </td>
   </tr>
   <tr>
-   <td>responseTimeout
+   <td>headers
    </td>
-   <td>Flag to hold the flag to response timeout for the httpProbe
+   <td>Flag to hold the http request headers for the httpProbe
    </td>
    <td>Optional
    </td>
-   <td>N/A <code>type: integer</code>
+   <td>N/A <code>type: map[string]string</code>
    </td>
-   <td>The <code>responseTimeout</code> contains flag to provide the response timeout for the http Get/Post request.
+   <td>The <code>headers</code> contains flag to hold the http request headers.
    </td>
   </tr>
 </table>
@@ -270,21 +270,21 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
    </td>
    <td>Mandatory
    </td>
-   <td>N/A <code>type: integer</code>
+   <td>N/A <code>type: string</code>
    </td>
    <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data
    </td>
   </tr>
   <tr>
-   <td>retry
+   <td>attempt
    </td>
-   <td>Flag to hold the retry count of the probe
+   <td>Flag to hold the attempt of the probe
    </td>
    <td>Mandatory
    </td>
    <td>N/A <code>type: integer</code>
    </td>
-   <td>The <code>retry</code> contains the number of times a check is re-run upon failure in the first attempt before declaring the probe status as failed.
+   <td>The <code>attempt</code> contains the number of times a check is run upon failure in the previous attempts before declaring the probe status as failed.
    </td>
   </tr>
   <tr>
@@ -294,7 +294,7 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
    </td>
    <td>Mandatory
    </td>
-   <td>N/A <code>type: integer</code>
+   <td>N/A <code>type: string</code>
    </td>
    <td>The <code>interval</code> contains the interval for which probes waits between subsequent retries
    </td>
@@ -306,9 +306,9 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
    </td>
    <td>Optional
    </td>
-   <td>N/A <code>type: integer</code>
+   <td>N/A <code>type: string</code>
    </td>
-   <td>The <code>probePollingInterval</code> contains the time interval for which continuous probe should be sleep after each iteration
+   <td>The <code>probePollingInterval</code> contains the time interval for which continuous and onchaos probe should be sleep after each iteration
    </td>
   </tr>
   <tr>
@@ -468,22 +468,302 @@ probe:
   - name: "check-frontend-access-url"
     type: "httpProbe"
     httpProbe/inputs:
-      url: "<url>"
-      insecureSkipVerify: false
-      responseTimeout: <value> # in milli seconds
-      auth:
-        type: Bearer
-        credentials: "<bearer token>"
+      url: "https://google.com"
       tlsConfig:
-        caFile: "/etc/secret/ca.crt"
+        insecureSkipVerify: true
       method:
         get:
           criteria: == # supports == & != and oneof operations
-          responseCode: "<response code>"
+          responseCode: "200"
     mode: "Continuous"
     runProperties:
-      probeTimeout: 5
-      interval: 5
-      retry: 1
-      probePollingInterval: 2
+      probeTimeout: 5s
+      interval: 2s
+      attempt: 1
+      probePollingInterval: 2s
+```
+
+
+### HTTP Get Request
+
+The HTTP Get method involves sending an HTTP GET request to the provided URL and then assessing the response code against specified criteria (==, !=, oneOf). This can be accomplished by configuring the `httpProbe/inputs.method.get` field.
+
+Use the following example to tune this:
+
+```yaml
+# contains the http probes with get method and verify the response code
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "check-frontend-access-url"
+        type: "httpProbe"
+        httpProbe/inputs:
+          url: "frontend-service.default.svc.cluster.local"
+          method:
+            # call http get method and verify the response code
+            get: 
+              # criteria which should be matched
+              criteria: == # ==, !=, oneof
+              # exepected response code for the http request, which should follow the specified criteria
+              responseCode: "200"
+        mode: "Continuous"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s 
+          attempt: 1
+          probePollingInterval: 2s
+```
+
+### HTTP Post Request(http body is a simple)
+
+This section holds the HTTP body necessary for making an HTTP POST request, particularly suited for simple requests. The HTTP body content can be supplied in the 'body' field, and this can be initiated by configuring the `httpProbe/inputs.method.post.body` field.
+
+Use the following example to tune this:
+
+```yaml
+# contains the http probes with post method and verify the response code
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "send-data-to-backend"
+        type: "httpProbe"
+        httpProbe/inputs:
+          url: "backend.default.svc.cluster.local"
+          method:
+            # call http post method and verify the response code
+            post: 
+              # value of the http body, used for the post request
+              body: "{\"name\":\"foo\",\"description\":\"bar\"}"
+              # http body content type
+              contentType: "application/json; charset=UTF-8"
+              # criteria which should be matched
+              criteria: "==" # ==, !=, oneof
+              # exepected response code for the http request, which should follow the specified criteria
+              responseCode: "200"
+        mode: "Continuous"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s 
+          attempt: 1
+          probePollingInterval: 2s
+```
+
+### HTTP Post Request(http body is a complex)
+
+For complex POST requests with multi-line bodies, the 'bodyPath' attribute comes into play. It allows you to specify the path to a file containing the required body content. This file can be accessed by the experiment pod through a ConfigMap resource, with the ConfigMap name defined in either the ChaosEngine or the ChaosExperiment CR. To set this up, configure the `httpProbe/inputs.method.post.body` field.
+
+Please note that it is mutually exclusive with the 'body' field. If 'body' is specified, it will be used for the POST request; otherwise, 'bodyPath' will be used.
+
+Use the following example to tune this:
+
+```yaml
+# contains the http probes with post method and verify the response code
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "send-data-to-backend"
+        type: "httpProbe"
+        httpProbe/inputs:
+          url: "backend.default.svc.cluster.local"
+          method:
+            # call http post method and verify the response code
+            post: 
+              # the configMap should be mounted to the experiment which contains http body
+              # use the mounted path here
+              bodyPath: "/mnt/body.yml"
+              # http body content type
+              contentType: "application/json; charset=UTF-8"
+              # criteria which should be matched
+              criteria: "==" # ==, !=, oneof
+              # exepected response code for the http request, which should follow the specified criteria
+              responseCode: "200"
+        mode: "Continuous"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+          probePollingInterval: 2s
+```
+
+### Authentication
+
+This establishes a fundamental authentication mechanism for the http endpoint. The username:password, encoded in base64 or bearer token should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
+
+It's important to note that `credentials` and `credentialsFile` are two options that cannot be used simultaneously.
+
+Use the following example to tune this:
+
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "send-data-to-backend"
+        type: "httpProbe"
+        httpProbe/inputs:
+          url: "backend.default.svc.cluster.local"
+          auth:
+            type: Basic
+            credentials: "dXNlcm5hbWU6cGFzc3dvcmQ="
+          method:
+            # call http post method and verify the response code
+            post: 
+              # the configMap should be mounted to the experiment which contains http body
+              # use the mounted path here
+              bodyPath: "/mnt/body.yml"
+              # http body content type
+              contentType: "application/json; charset=UTF-8"
+              # criteria which should be matched
+              criteria: "==" # ==, !=, oneof
+              # exepected response code for the http request, which should follow the specified criteria
+              responseCode: "200"
+        mode: "Continuous"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+          probePollingInterval: 2s
+```
+
+### TLS With Custom Certificates
+
+It offers the mechanism to validate TLS certifications for the http endpoint. You can supply the `cacert` or the client certificate and client key, to perform the validation.
+
+Use the following example to tune this:
+
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "send-data-to-backend"
+        type: "httpProbe"
+        httpProbe/inputs:
+          url: "backend.default.svc.cluster.local"
+          tlsConfig:
+            caFile: "/mnt/ca.crt"
+          method:
+            # call http post method and verify the response code
+            post: 
+              # the configMap should be mounted to the experiment which contains http body
+              # use the mounted path here
+              bodyPath: "/mnt/body.yml"
+              # http body content type
+              contentType: "application/json; charset=UTF-8"
+              # criteria which should be matched
+              criteria: "==" # ==, !=, oneof
+              # exepected response code for the http request, which should follow the specified criteria
+              responseCode: "200"
+        mode: "Continuous"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+          probePollingInterval: 2s
+```
+
+### TLS Skip Certificate Verification
+
+You can bypass the tls certificate checks by enabling the `insecureSkipVerify` option.
+
+Use the following example to tune this:
+
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "send-data-to-backend"
+        type: "httpProbe"
+        httpProbe/inputs:
+          url: "backend.default.svc.cluster.local"
+          tlsConfig:
+            insecureSkipVerify: true
+          method:
+            # call http post method and verify the response code
+            post: 
+              # the configMap should be mounted to the experiment which contains http body
+              # use the mounted path here
+              bodyPath: "/mnt/body.yml"
+              # http body content type
+              contentType: "application/json; charset=UTF-8"
+              # criteria which should be matched
+              criteria: "==" # ==, !=, oneof
+              # exepected response code for the http request, which should follow the specified criteria
+              responseCode: "200"
+        mode: "Continuous"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+          probePollingInterval: 2s
 ```

@@ -446,7 +446,7 @@ Other environment variables might existing in your pipelines depending on the st
 
 <!-- ### DRONE_OUTPUT
 
-The path to a `.env` file where a Drone plugin can write output variables. This is not supported by all plugins or build infrastructures. For more information, go to [Plugin step settings: Output variables](../use-drone-plugins/plugin-step-settings-reference.md#output-variables).-->
+As an environment variable, `DRONE_OUTPUT` is the path to a `DRONE_OUTPUT.env` file where Plugin steps can write output variables. This is not supported by all plugins or build infrastructures. For more information, go to [Plugin step settings: Output variables](../use-drone-plugins/plugin-step-settings-reference.md#output-variables).-->
 
 <!-- ## Unsupported variables
 

@@ -11,19 +11,30 @@ redirect_from:
   - /docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/ci-cluster-requirement
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-This topic describes how you can use a Kubernetes cluster build infrastructure for the **Build** stage in a Harness CI pipeline.
+You can use a Kubernetes cluster build infrastructure for **Build** stages in Harness CI pipelines. To do this, you need to:
 
-After you set up the Kubernetes cluster that you want to use as your build infrastructure, you use a Harness [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) and Harness Delegate to create a connection between Harness and your cluster.
+<!-- no toc -->
+1. [Set up the Kubernetes cluster to use as your build infrastructure.](#create-a-kubernetes-cluster)
+2. [Create a Kubernetes cluster connector and install the Harness Delegate.](#create-a-kubernetes-cluster-connector-and-install-the-delegate)
+3. [Configure the build infrastructure in Harness.](#configure-the-build-infrastructure-in-harness)
+
+<details>
+<summary>Video summary</summary>
 
 Here's a short video that walks you through adding a Harness Kubernetes Cluster connector and Harness Kubernetes delegate. The delegate is added to the target cluster, then the Kubernetes Cluster connector uses the delegate to connect to the cluster.
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/embed/wUC23lmqfnY?feature=oembed" />
 
-<!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/wUC23lmqfnY/hqdefault.jpg"><iframe width=" 200" height="150" src="https://www.youtube.com/embed/wUC23lmqfnY?feature=oembed" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
+
+</details>
 
 For a step-by-step walkthrough, try this tutorial: [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm).
 
@@ -82,16 +93,34 @@ Autopilot might be cheaper than standard Kubernetes if you only run builds occas
 
 </details>
 
+### Create headless service for Istio MTLS STRICT mode
+
+If you use [Istio MTLS STRICT mode](https://istio.io/latest/docs/tasks/security/authentication/authn-policy/#globally-enabling-istio-mutual-tls-in-strict-mode), you need to add a [headless service](https://kubernetes.io/docs/concepts/services-networking/service/#headless-services) to the Kubernetes namespace where you will install the Harness delegate. For example:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: headless
+spec:
+  clusterIP: None
+  selector:
+    accountID: YOUR_K8S_ACCOUNT_ID
+  ports:
+    - protocol: TCP
+      port: ## Specify port number
+      targetPort: ## Specify port number
+```
+
 ## Create a Kubernetes cluster connector and install the delegate
+
+A [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) creates a connection between Harness and your Kubernetes cluster. This connector works through a Harness Delegate that you will install on a pod in your cluster.
 
 1. In a Harness CI project, select **Connectors** under **Project Setup**.
 2. Select **New Connector**, and then select **Kubernetes cluster**.
 3. Enter a name for the connector and select **Continue**.
 4. Select **Use the credentials of a specific Harness Delegate**, and then select **Continue**.
 5. Select **Install new Delegate**.
-
-   ![](../static/set-up-a-kubernetes-cluster-build-infrastructure-01.png)
-
 6. Install the delegate on a pod in your Kubernetes cluster. You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For details and instructions for each of these options, go to [Delegate installation overview](/docs/platform/delegates/delegate-concepts/delegate-overview).
 7. After installing the delegate, return to the Harness UI and select **Verify** to test the connection. It might take a few minutes to verify the Delegate. Once it is verified, exit delegate creation and return to connector setup.
 8. In the connector's **Delegates Setup**, select **Only use Delegates with all of the following tags**.
@@ -112,15 +141,73 @@ This means that if delegate selectors are present at the pipeline and stage leve
 
 For example, assume you have a pipeline with three stages called `alpha`, `beta`, and `gamma`. If you specify a stage-level delegate selector on `alpha` and you don't specify a pipeline-level delegate selector, then `alpha` uses the stage-level delegate, and the other stages (`beta` and `gamma`) use the Connector delegate.
 
+<details>
+<summary>Early access feature: Use delegate selectors for codebase tasks</summary>
+
+Currently, delegate selectors for CI codebase tasks is behind the feature flag `CI_CODEBASE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+By default, delegate selectors aren't applied to delegate-related CI codebase tasks.
+
+With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector).
+
+</details>
+
 :::
 
 ## Configure the build infrastructure in Harness
 
-1. In Harness, go to a pipeline where you want to use the Kubernetes cluster build infrastructure. Select the **Build** stage, and select the **Infrastructure** tab.
-2. Select **Kubernetes**, and then select your Kubernetes cluster connector.
-3. In **Namespace**, enter the Kubernetes [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) to use when this build runs. You can use [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) (`<+input>`) or an expression for the namespace. The delegate can be in a different namespace than the one defined in the [Build stage](#configure-the-build-infrastructure-in-harness).
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual editor">
+```
 
-You may need to configure the settings described below, as well as other advanced settings described in [CI Build stage settings](../ci-stage-settings.md). Review the details of each setting to understand whether it is required for your configuration.
+1. In Harness, go to a pipeline where you want to use the Kubernetes cluster build infrastructure. Select the **Build** stage, and select the **Infrastructure** tab.
+2. Select **Kubernetes** for the infrastructure type.
+3. Select the **Operating System**, either **Linux** or **Windows**.
+   For more information about Windows builds, go to [Run Windows builds in a Kubernetes cluster build infrastructure](./run-windows-builds-in-a-kubernetes-build-infrastructure.md).
+4. In **Kubernetes Cluster**, select your Kubernetes cluster connector.
+5. In **Namespace**, enter the Kubernetes [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) to use when this build runs.
+   You can use plain text, [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) (`<+input>`), or an expression for the namespace.
+   Your Kubernetes delegate can be in a different namespace than the one defined here.
+6. If necessary, configure any advanced settings, as described below and in the [CI Build stage settings](../ci-stage-settings.md). Review the details of each setting to understand whether it is required for your configuration.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML editor" default>
+```
+
+In Harness, go to a pipeline where you want to use the Kubernetes cluster build infrastructure, switch to the YAML editor, locate the `CI` stage, and then configure `stage.spec.infrastructure`. At minimum, you must include `type`, `connectorRef`, `namespace`, and `os`, as well as the default value for `automountServiceAccountToken`. For example:
+
+```yaml
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect ## Specifies the infrastructure type as Kubernetes.
+            spec:
+              connectorRef: YOUR_K8S_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_K8S_NAMESPACE
+              automountServiceAccountToken: true ## This is the default value for this setting. Harness automatically includes this setting if you don't include it.
+              nodeSelector: {} ## This is empty by default. Harness automatically includes this setting if you don't include it.
+              os: Linux ## Set the OS as 'Linux' or 'Windows'.
+              ## Include additional advanced settings if required.
+```
+
+* `type`: `KubernetesDirect`
+* `spec.connectorRef`: Enter your Kubernetes cluster connector ID.
+* `spec.namespace`: Enter the Kubernetes [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) to use when this build runs. You can also use [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) (`<+input>`) or an expression for the namespace. Your Kubernetes delegate can be in a different namespace than the one defined here.
+* `spec.os`: Specify the OS, `Linux` or `Windows`. For more information about Windows builds, go to [Run Windows builds in a Kubernetes cluster build infrastructure](./run-windows-builds-in-a-kubernetes-build-infrastructure.md).
+* Advanced settings: If necessary, configure any advanced settings, as described below and in the [CI Build stage settings](../ci-stage-settings.md). Review the details of each setting to understand whether it is required for your configuration.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ### Service Account Name
 
@@ -189,28 +276,38 @@ Harness adds the following labels automatically:
 https://app.harness.io/ng/#/account/myaccount/ci/orgs/myusername/projects/myproject/pipelines/mypipeline/executions/__PIPELINE_EXECUTION-ID__/pipeline
 ```
 
-## Stage YAML example
+### Tolerations
 
-Here's a YAML example of a stage configured to use a Kubernetes cluster build infrastructure.
-
+You can provide a list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) that allow (but do not require) Build stage pods to be scheduled onto nodes with matching taints. For example:
 
 ```yaml
-  stages:
-    - stage:
-        name: Build Test and Push
-        identifier: Build_Test_and_Push
-        description: ""
-        type: CI
-        spec:
-          cloneCodebase: true
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: account.harnessk8s
-              namespace: harness-delegate
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
+              tolerations:
+                - effect: NoSchedule
+                  key: key1
+                  operator: Equal
+                  value: value1
+                - effect: NoSchedule
+                  key: key2
+                  operator: Equal
+                  value: value2
+```
+
+#### Multiple tolerations with the same key
+
+Keys are reserved keywords used to validate unique FQNs. If you have multiple tolerations with the same key, you must include an `identifier` to differentiate them. For example:
+
+```yaml
+              tolerations:
+                - identifier: identifier1
+                  effect: NoSchedule
+                  key: key1
+                  operator: Equal
+                  value: value1
+                - identifier: identifier2
+                  effect: NoSchedule
+                  key: key1
+                  operator: Equal
+                  value: value2
 ```
 
 ## Run Windows builds on a Kubernetes cluster build infrastructure
@@ -223,7 +320,7 @@ Go to [Configure a Kubernetes build farm to use self-signed certificates](./conf
 
 ## Troubleshooting Kubernetes cluster build infrastructures
 
-For Kubernetes cluster build infrastructure troubleshooting guidance go to:
+For troubleshooting guidance for Kubernetes cluster build infrastructures and Kubernetes delegates, go to:
 
 * [Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md)
 * [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen)

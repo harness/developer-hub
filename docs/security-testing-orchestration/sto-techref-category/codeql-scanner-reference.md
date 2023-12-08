@@ -26,6 +26,27 @@ This topic includes an [end-to-end YAML pipeline](#yaml-pipeline-example) that i
 
 ## Important notes for running CodeQL scans in STO
 
+
+
+
+### Root access requirements
+
+You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime. 
+
+:::note
+
+You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+
+:::
+
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
+
 <!-- 
 ### Docker-in-Docker requirements
 
@@ -45,15 +66,6 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 -->
 
-### Root access requirements
-
-You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime. 
-
-:::note
-
-You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
-
-:::
 
 ## CodeQL step settings for STO scans
 
@@ -209,7 +221,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: my-harness-delegate
+              connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -221,7 +233,7 @@ pipeline:
                   name: create codeql sarif
                   identifier: create_codeql_sarif
                   spec:
-                    connectorRef: DockerHub
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: alpine
                     shell: Sh
                     command: |-

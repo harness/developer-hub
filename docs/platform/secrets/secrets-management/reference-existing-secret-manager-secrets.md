@@ -228,6 +228,6 @@ Harness supports the ability to reference JSON secrets for the following secret 
 * Azure Key Vault Secret Manager
 * HashiCorp Vault Secret Manager
 
-import Refj from '/docs/platform/secrets/shared/reference-via-json.md';
+import Refj from '/docs/platform/shared/reference-via-json.md';
 
 <Refj />

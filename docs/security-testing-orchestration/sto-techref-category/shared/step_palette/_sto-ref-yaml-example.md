@@ -30,9 +30,11 @@ pipeline:
                   name: docker_dind
                   identifier: Background_1
                   spec:
-                    connectorRef: MY_DOCKER_CONNECTOR
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: docker:dind
                     shell: Sh
+                    entrypoint:
+                      - dockerd
                     privileged: true
               - step:
                   type: Bandit
