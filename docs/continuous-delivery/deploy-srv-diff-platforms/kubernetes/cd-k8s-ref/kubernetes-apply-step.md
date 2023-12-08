@@ -43,7 +43,73 @@ For example, if the step Id is **Apply**, the FQN for the step settings are:
 * `<+execution.steps.Apply.spec.skipSteadyStateCheck>`
 * `<+execution.steps.Apply.timeout>`
 
-## File path
+## Apply Manifests from Remote Source
+
+:::info note
+This feature to apply manifest from a remote source seperate from service is currently behind the feature flag `PL_GCP_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+User's can apply Kubernetes Manifests outside of the configured Service Definition. Harness provides two options, from Service and Remote.
+
+- **Service Option**: When you configure from Service, you can provide a file path within the configured service definition's defined manifest source repository.
+- **Remote Option**: When you configure the remote option, you can provide a git type connector, a repo location, and a file path to apply any kind of kubernetes manifest. Harness will also allow users to provide values.yaml as well for templating in the configuration. 
+
+When **Remote Manifest** is selected user's will see this in the logs:
+
+```
+Trying to fetch default values yaml file for manifest with identifier: [APPLY_STEP_MANIFEST_SOURCE_ID]
+
+Fetching K8sManifest files with identifier: APPLY_STEP_MANIFEST_SOURCE_ID
+Git connector Url: https://github.com/wings-software/PipelinesNgAutomation.git
+Branch: tarun-test-3
+
+Fetching following Files :
+- k8s/manifests/k8s/basicManifests/templates/values.yaml
+No values.yaml found for manifest with identifier: APPLY_STEP_MANIFEST_SOURCE_ID.
+
+Fetching K8sManifest files with identifier: APPLY_STEP_MANIFEST_SOURCE_ID
+Git connector Url: https://github.com/wings-software/PipelinesNgAutomation.git
+Branch: tarun-test-3
+
+Fetching following Files :
+- k8s/manifests/k8s/basicManifests/values.yaml
+Successfully fetched following files:
+- k8s/manifests/k8s/basicManifests/values.yaml
+
+Git Fetch Files completed successfully.
+
+Starting Kubernetes Apply
+
+Fetching K8sManifest files with identifier: APPLY_STEP_MANIFEST_SOURCE_ID
+Git connector Url: https://github.com/wings-software/PipelinesNgAutomation.git
+Branch: tarun-test-3
+
+Fetching manifest files at path: 
+- k8s/manifests/k8s/basicManifests/templates
+- k8s/manifests/k8s/basicManifests/simple-manifest-2/deployment.yaml
+Successfully fetched following files:
+- k8s/manifests/k8s/basicManifests/simple-manifest-2/deployment.yaml
+- k8s/manifests/k8s/basicManifests/templates/deployment.yaml
+- k8s/manifests/k8s/basicManifests/templates/service.yaml
+- k8s/manifests/k8s/basicManifests/templates/namespace.yaml
+
+...
+
+
+kubectl --kubeconfig=config apply --filename=manifests.yaml
+namespace/tarun-ng configured
+secret/githubsdas configured
+secret/githubsdas-dockercfg unchanged
+configmap/githubsdas unchanged
+service/githubsdas-svc unchanged
+deployment.apps/githubsdas unchanged
+deployment.apps/myapp-deployment-2 unchanged
+
+Done.
+```
+
+
+## File Path Configuration for Service Option
 
 Enter the path to a manifest file.
 
