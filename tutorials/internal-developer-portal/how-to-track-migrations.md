@@ -1,5 +1,5 @@
 ---
-title: How to track and drive migrations using Scorecards
+title: How to track migrations using Scorecards
 description: Create a Scorecards to filter file contents to track versions during migrations
 sidebar_position: 5
 ---
