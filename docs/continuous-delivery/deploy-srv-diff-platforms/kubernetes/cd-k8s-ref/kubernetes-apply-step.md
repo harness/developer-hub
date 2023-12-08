@@ -46,7 +46,7 @@ For example, if the step Id is **Apply**, the FQN for the step settings are:
 ## Apply Manifests from Remote Source
 
 :::info note
-This feature to apply manifest from a remote source seperate from service is currently behind the feature flag `PL_GCP_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+This feature to apply manifest from a remote source seperate from service is currently behind the feature flag `CDS_K8S_APPLY_MANIFEST_FROM_SOURCE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 User's can apply Kubernetes Manifests outside of the configured Service Definition. Harness provides two options, from Service and Remote.
