@@ -1,7 +1,7 @@
 ---
 title: Create a service onboarding pipeline
 description: Create a basic service onboarding pipeline in Harness IDP
-sidebar_position: 10
+sidebar_position: 1
 ---
 
 <docvideo src="https://www.youtube.com/embed/0GoK3SD1rxs?si=RCMDhlPhoC5qZh3J" />
