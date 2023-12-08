@@ -126,7 +126,7 @@ Looking for specific secret managers? Go to:
 
 Services represent your microservices and other workloads. Each service contains a Service Definition that defines your deployment artifacts, manifests or specifications, configuration files, and service-specific variables. For more information, go to [Create a service](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/create-services/#create-a-service).
 
-Services are often configured using runtime inputs or expressions, so you can change service settings for different deployment scenarios at pipeline runtime. To use runtime input services with inputs and expressions, go to [Using runtime input services with inputs and expressions](/docs/continuous-delivery/x-platform-cd-features/services/create-services/#using-runtime-input-services-with-inputs-and-expressions). Given below are example Kubernetes and ECS Fargate type Harness services:
+Services are often configured using runtime inputs or expressions, so you can change service settings for different deployment scenarios at pipeline runtime. To use services with runtime inputs and expressions, go to [Using services with inputs and expressions](/docs/continuous-delivery/x-platform-cd-features/services/create-services). Below are some example Kubernetes and ECS Fargate Harness services:
 
 ```mdx-code-block
 <Tabs>
