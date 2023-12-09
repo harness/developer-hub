@@ -74,9 +74,9 @@ const config = {
         //   trackingID: 'G-46758J5H8P',
         //   anonymizeIP: false,
         // },
-        googleTagManager: {
-          containerId: 'GTM-MJB7HPB',
-        },
+        // googleTagManager: {
+        //   containerId: 'GTM-MJB7HPB',
+        // },
       }),
     ],
   ],
