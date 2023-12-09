@@ -295,7 +295,7 @@ const sidebars = {
           },
           customProps: {
             description:
-              "Get started with Harness Internal Developer Portal (Beta)",
+              "Get started with Harness Internal Developer Portal",
           },
           collapsed: true,
           items: [
