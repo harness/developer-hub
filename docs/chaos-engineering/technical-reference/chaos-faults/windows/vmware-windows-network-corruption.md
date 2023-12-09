@@ -90,7 +90,7 @@ stringData:
       <tr>
         <td> PATH_OF_CLUMSY </td>
         <td> Path of the Clumsy tool in the VM. </td>
-        <td> For example, <code>C:\\Program Files\\Clumsy\\</code>. For more information, go to <a href="path-of-clumsy"> path of Clumsy.</a> </td>
+        <td> For example, <code>C:\\Program Files\\Clumsy\\</code>. For more information, go to <a href="#path-of-clumsy"> path of Clumsy.</a> </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>

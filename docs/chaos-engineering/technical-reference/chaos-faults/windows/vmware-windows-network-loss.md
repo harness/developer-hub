@@ -86,7 +86,7 @@ stringData:
       <tr>
         <td> NETWORK_PACKET_LOSS_PERCENTAGE </td>
         <td> Percentage of network packets to lose. </td>
-        <td> Default: 100. For more information, go to <a href="network-packet-loss-percentage"> network packet loss percentage.</a></td>
+        <td> Default: 100. For more information, go to <a href="#network-packet-loss-percentage"> network packet loss percentage.</a></td>
       </tr>
       <tr>
         <td> PATH_OF_CLUMSY </td>
