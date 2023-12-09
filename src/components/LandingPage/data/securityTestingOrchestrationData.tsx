@@ -16,6 +16,18 @@ export const FeaturedList: CardItem[] = [
     time: "15min",
     link: "/tutorials/security-tests/your-first-sto-pipeline",
   },
+  {
+    title: "SAST codebase scans with Semgrep",
+    module: MODULES.sto, 
+    icon: "img/icon_sto.svg",
+    description: (
+      <>Quickly set up a pipeline to scan codebases using Semgrep, which supports a wide variety of languages.</>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/security-tests/sast-scan-semgrep",
+  },
 
 ];
 
@@ -31,6 +43,30 @@ export const STOList: CardItem[] = [
     type: [docType.Documentation],
     time: "15min",
     link: "/tutorials/security-tests/your-first-sto-pipeline",
+  },
+  {
+    title: "SAST codebase scans with Semgrep",
+    module: MODULES.sto, 
+    icon: "img/icon_sto.svg",
+    description: (
+      <>Quickly set up a pipeline to scan codebases using Semgrep, which supports a wide variety of languages.</>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/security-tests/sast-scan-semgrep",
+  },
+  {
+    title: "Container mage scans with Aqua Trivy",
+    module: MODULES.sto, 
+    icon: "img/icon_sto.svg",
+    description: (
+      <>Quickly set up a pipeline to scan container images using the open-source Aqua Trivy scanner.</>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/security-tests/container-scan-aqua-trivy",
   },
   {
     title: "Set up STO integrations with GitLab CI",

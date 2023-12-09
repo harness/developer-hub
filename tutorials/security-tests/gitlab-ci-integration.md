@@ -1,12 +1,12 @@
 ---
 title: Set up STO integrations with GitLab CI
 description: Launch pipeline builds and scans automatically based on GitLab merge requests.
-sidebar_position: 25
+sidebar_position: 60
 ---
 
 ```mdx-code-block
-import create_pipeline from './static/trigger-tutorial-00-create-pipeline.png'
-import add_sto_stage from './static/trigger-tutorial-01-create-sto-stage.png'
+import create_pipeline from './static/trigger-tutorial/trigger-tutorial-00-create-pipeline.png'
+import add_sto_stage from './static/trigger-tutorial/trigger-tutorial-01-create-sto-stage.png'
 ```
 
 This tutorial shows how you can set up a STO pipeline that runs a build and scans a code repository automatically in response to a Git event. You'll do the following:
@@ -54,7 +54,7 @@ To do this tutorial, you need the following:
 
    2. In **Configure Codebase**, select your codebase connector and enter the repository that you want to scan.  
       
-     ![](./static/trigger-tutorial-02-set-up-sto-stage.png)
+     ![](./static/trigger-tutorial/trigger-tutorial-02-set-up-sto-stage.png)
 
    3. Click **Set up Stage**. 
 
@@ -83,7 +83,7 @@ Add a trigger to your pipeline that that listens for incoming requests on a webh
 
 2. Click **New Trigger** and select the webhook for your Git service provider. 
 
-   ![New webhook trigger](./static/trigger-tutorial-04-select-trigger.png)
+   ![New webhook trigger](./static/trigger-tutorial/trigger-tutorial-04-select-trigger.png)
    
 
 3. In **Configuration**, specify the webhook as follows. This is a typical setup, where any event related to a merge request triggers a pipeline build. 
@@ -96,22 +96,22 @@ Add a trigger to your pipeline that that listens for incoming requests on a webh
 
    4. Select **Any Actions**. 
 
-     ![](./static/trigger-tutorial-05-trigger-config.png)
+     ![](./static/trigger-tutorial/trigger-tutorial-05-trigger-config.png)
 
      
 4. In **Conditions**, set the conditions for running the pipeline. The typical setup is to trigger a build based on the main or master branch of the repo.
 
-   ![](./static/trigger-tutorial-06-trigger-condition.png)
+   ![](./static/trigger-tutorial/trigger-tutorial-06-trigger-condition.png)
 
 5. In **Pipeline Input**, select **Git Branch** for the build type and enter **<+trigger.branch>** for the branch name. Then click **Create Trigger**. 
 
-   ![](./static/trigger-tutorial-08-pipeline-input.png)
+   ![](./static/trigger-tutorial/trigger-tutorial-08-pipeline-input.png)
 
    The new trigger now appears in the Triggers table. Note that this table includes a **Webhook** column with a link.
 
 6. Click the **Webhook** link to copy the webhook URL for this trigger to the clipboard. You will now add this webhook to your Git service. 
 
-   ![](./static/trigger-tutorial-07-copy-url-webhook.png)
+   ![](./static/trigger-tutorial/trigger-tutorial-07-copy-url-webhook.png)
 
 
 
@@ -145,7 +145,7 @@ With the integration in place, the following events occur when you create a merg
 
 <figure>
 
-![](./static/trigger-tutorial-09-triggered-build.png)
+![](./static/trigger-tutorial/trigger-tutorial-09-triggered-build.png)
 
 <figcaption>Harness pipeline build launched from trigger</figcaption>
 </figure>
@@ -153,7 +153,7 @@ With the integration in place, the following events occur when you create a merg
 
 <figure>
 
-![](./static/trigger-tutorial-10-security-tests.png)
+![](./static/trigger-tutorial/trigger-tutorial-10-security-tests.png)
 
 <figcaption>Scan results</figcaption>
 </figure>
