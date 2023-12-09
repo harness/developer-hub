@@ -1,12 +1,24 @@
 ---
-title: Codebase scans with Semgrep
+title: SAST code scans using Semgrep
 sidebar_position: 30
 description: Scan a codebase using Semgrep
 keywords: [STO, security, SAST, security, codebase, Semgrep]
 # slug: /sto-pipelines/sast/semgrep
 ---
 
-This tutorial shows you how to scan your codebases using [Semgrep](https://semgrep.dev), a popular code-scanning tool. Semgrep supports a [wide variety of languages](https://semgrep.dev/docs/supported-languages/) and includes a [free version](https://semgrep.dev/pricing/) for individuals who want to scan files locally. 
+# SAST code scans using Semgrep
+
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Security Testing Orchestration certification today!"
+  link="/certifications/sto"
+  closable={true}
+  target="_self"
+/>
+
+
+This tutorial shows you how to scan your codebases using [Semgrep](https://semgrep.dev), a popular [SAST](https://www.gartner.com/en/information-technology/glossary/static-application-security-testing-sast) tool for detecting vulnerabilities in application code. Semgrep can scan a [wide variety of languages](https://semgrep.dev/docs/supported-languages/) and includes a [free version](https://semgrep.dev/pricing/) for individuals who want to scan files locally. 
 
 In this tutorial, you'll set up a simple [ingestion-only workflow](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) with two steps. The first step runs the scan; the second step ingests the results.
 
@@ -26,7 +38,7 @@ In this tutorial, you'll set up a simple [ingestion-only workflow](/docs/securit
     - [Key Concepts in STO](/docs/category/key-concepts-in-sto)
   - A [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and an access token to your Git provider account.  
   - A Semgrep account login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub. 
-  - Your Git and Semgrep access tokens must be stored as [Harness secrets](/docs/platform/secrets/add-use-text-secrets)
+  - Your Git and Semgrep access tokens must be stored as [Harness secrets](/docs/platform/secrets/add-use-text-secrets).
 
 
 :::
@@ -74,12 +86,21 @@ Do the following:
 
 Now you will add a step that runs a scan using the local Semgrep container image maintained by Harness. 
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual" default>
+```
+
 1. Go to **Execution** and add a **Run** step. 
 
 2. Configure the step as follows:
 
    1. Name = **run_semgrep_scan**
-
 
    2. Command = `semgrep /harness --sarif --config auto -o /harness/results.sarif`
 
@@ -87,7 +108,7 @@ Now you will add a step that runs a scan using the local Semgrep container image
 
    3. Open **Optional Configuration** and set the following options:
 
-      1. Container Registry — When prompted, select **Account** and then **Harness Docker Connector**. 
+      1. Container Registry — When prompted, select **Account** and then [**`Harness Docker Connector`**](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). The step uses this connector to download the scanner image. 
 
       2. Image = **returntocorp/semgrep**
       
@@ -98,12 +119,74 @@ Now you will add a step that runs a scan using the local Semgrep container image
 
            ![set the value type](./static/sast-semgrep-tutorial/set-value-type.png)
 
-      2. Limit Memory = **4096Mi** (_Kubernetes or Docker infrastructures only_)
+      2. Limit Memory = **4096Mi** 
+      
+         You might want to reserve more memory to [speed up the scan](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines). This setting applies to Kubernetes and Docker infrastructures only. 
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML">
+```
+
+Add a `Run` step to your `SecurityTests` stage and configure it as follows:
+
+ *  `type:` [`Run`](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings)
+   *  `name:` A name for the step.
+   *  `identifier:` A unique step ID.
+   *  `spec :`
+      -  `connectorRef : account.HarnessImage` 
+      
+          This is a connector to the [Harness image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). The step uses this connector to download the scanner image. 
+
+      -  `image : returntocorp/semgrep`
+      -  `shell : Sh`
+      -  `command: semgrep /harness --sarif --config auto -o /harness/results.sarif`
+         
+         This command runs a [Semgrep scan](https://semgrep.dev/docs/cli-reference/#semgrep-scan-command-options) on your code repo and outputs the results to a [SARIF](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) file in the pipeline workspace. 
+
+      -  `envVariables:`
+         -  `SEMGREP_APP_TOKEN: <+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")>`
+      -  `resources:`
+         -  `limits: `
+             -  `memory: 4096Mi`
+
+             You might want to reserve more memory to [speed up the scan](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines). This setting applies to Kubernetes and Docker infrastructures only. 
+
+
+
+Here's an example:
+
+```yaml
+              - step:
+                  type: Run
+                  name: run_semgrep_scan
+                  identifier: run_semgrep_scan
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: returntocorp/semgrep
+                    shell: Sh
+                    command: semgrep /harness --sarif --config auto -o /harness/results.sarif
+                    envVariables:
+                      SEMGREP_APP_TOKEN: <+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")>
+                    resources:
+                      limits:
+                        memory: 4096Mi
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 
 ### Add the Semgrep (ingest) step
 
 Now that you've added a step to run the scan, it's a simple matter to ingest it into your pipeline. Harness provides a set of customized steps for popular scanners such as Semgrep. 
+
+   ```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual" default>
+```
 
 1. In **Execution**, add a **Semgrep** step after your **Run** step.
 
@@ -119,9 +202,65 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
 
       2. Variant = Select **Runtime Input** as the value type.
 
-   4. Ingestion File = `/harness/results.sarif`
+   4. Ingestion File = `/harness/results.sarif` 
 
-   5. Fail on Severity = **Critical**
+   5. [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) = **Critical**
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML">
+```
+
+Add a step after the `Run` step and configure it as follows:
+
+*  `type:` [`Semgrep`](/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference)
+   *  `name:` A name for the step.
+   *  `identifier:` A unique step ID.
+   *  `spec :`
+      -  `mode :` [`ingestion`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) 
+      -  `config: default`
+         - `target : ` 
+            - `name : <+input>` 
+            - `type : repository`
+            - `variant : <+input>` You will specify the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) when you run the pipeline. 
+                When scanning a repository, you will generally use the repository name and branch for these fields.
+         - `advanced : ` 
+            - `log :` 
+              - `level : info`
+              - [`fail_on_severity'](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) ` : critical`
+         - `ingestion : ` 
+            - `file : /harness/ingest/results.sarif` 
+
+
+Here's a YAML example:
+
+```yaml
+
+              - step:
+                  type: Semgrep
+                  name: ingest_semgrep_data
+                  identifier: ingest_semgrep_data
+                  spec:
+                    mode: ingestion
+                    config: default
+                    target:
+                      name: <+input>
+                      type: repository
+                      variant: <+input>
+                    advanced:
+                      log:
+                        level: debug
+                      fail_on_severity: critical
+                    ingestion:
+                      file: /harness/results.sarif
+
+
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 
 ### Run the pipeline and check your results
@@ -132,11 +271,13 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
 
    - Under **Codebase**, enter the repository and branch to scan.
 
-   - Under **Stage: <_stage_name_>**, enter the [target name] and [variant] you want to use. In most cases, you want to use the repository for the target and the branch for the variant. 
+   - Under **Stage: <_stage_name_>**, enter the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) you want to use. 
 
-   If you're scanning the codebase for the first time, enter the root branch of your repo. This is usually the `main` or `master` branch. 
+    If you're scanning the [example repository](https://github.com/williamwissemann/dvpwa) mentioned above, enter `dvpwa` for the repository and target, and `master` for the branch and variant.
+   
+     - In most cases, you want to use the repository for the target and the branch for the variant. 
 
-   If you're scanning the [example repository](https://github.com/williamwissemann/dvpwa) mentioned above, enter `dvpwa` for the repository and target, and `master` for the branch and variant. 
+     - When you scan a codebase for the first time, the standard practice is to scan the root branch. This is usually the `main` or `master` branch. 
 
 3. Run the pipeline and then wait for the execution to finish.
 
@@ -199,7 +340,7 @@ pipeline:
                     shell: Sh
                     command: semgrep /harness --sarif --config auto -o /harness/results.sarif
                     envVariables:
-                      SEMGREP_APP_TOKEN: <+secrets.getValue("MY_SEMGREP_KEY")>
+                      SEMGREP_APP_TOKEN: <+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")>
               - step:
                   type: Semgrep
                   name: ingest_semgrep_data

@@ -75,7 +75,19 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 ### Add the Aqua-Trivy scan step
 
-1. Add an **Aqua Trivy** step to your pipeline after the DinD background step and configure it as follows:
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual" default>
+```
+
+Add an **Aqua Trivy** step to your pipeline after the DinD background step and configure it as follows:
 
    1. Scan Mode = **Orchestration**
 
@@ -83,15 +95,78 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
    3. Target variant — Select **Runtime Input**.
 
-   4. Container image Type = **Docker v2**
+   4. [Container image Type](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#type-1) = **Docker v2**
 
-   5. Container image Domain = **docker.io**
+   5. [Container image Domain](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#domain) = **docker.io**
 
    6. Container image name — Select **Runtime Input**.
 
    7. Container image tag — Select **Runtime Input**.
 
-   8. Fail on Severity = **Critical**
+   8. [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) = **Critical**
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML">
+```
+
+Add an **Aqua Trivy** step to your pipeline after the DinD background step and configure it as follows:
+
+
+ *  `type:` [`AquaTrivy`](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference)
+   *  `name:` A name for the step.
+   *  `identifier:` A unique step ID.
+   *  `spec :`
+      -  `mode :` [`orchestration`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step. 
+      -  `config: default`
+      - `target : ` 
+          - `name : <+input>` 
+          - `type : container`
+          - `variant : <+input>` You will specify the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) when you run the pipeline. 
+              When scanning a repository, you will generally use the repository name and branch for these fields.
+        - `advanced : ` 
+          - `log :` 
+            - `level : info`
+            - [`fail_on_severity`](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) `: critical`
+        - `privileged: true`
+        - `image:`
+            - [`type`](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#type-1) `: docker_v2`
+            - `name: <+input>` 
+            - [`domain`](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#domain) `: docker.io` 
+            - `tag: <+input>`
+
+
+Here's an example:
+
+```yaml
+              - step:
+                  type: AquaTrivy
+                  name: scan_container_image
+                  identifier: scan_container_image
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      name: <+input>
+                      type: container
+                      variant: <+input>
+                    advanced:
+                      log:
+                        level: info
+                    privileged: true
+                    image:
+                      type: docker_v2
+                      name: <+input>
+                      domain: docker.io
+                      tag: <+input>
+
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
 
 ### Run the pipeline and check your results
 
@@ -101,7 +176,7 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
    - Under **Target**, enter the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
 
-   - Under **Image:**, enter the [image name] and [tag] you want to use. In most cases, you want to use the repository for the target and the branch for the variant. 
+   - Under **Image**, enter the [image name] and [tag] you want to use. In most cases, you want to use the repository for the target and the branch for the variant. 
 
    If you're scanning the codebase for the first time, enter the root branch of your repo. This is usually the `main` or `master` branch. 
 

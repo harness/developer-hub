@@ -1,8 +1,21 @@
 ---
-title: Set up STO integrations with GitLab CI
+title: Trigger automated scans using GitLab merge requests
 description: Launch pipeline builds and scans automatically based on GitLab merge requests.
 sidebar_position: 60
 ---
+
+# Trigger automated scans using GitLab merge requests
+
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Security Testing Orchestration certification today!"
+  link="/certifications/sto"
+  closable={true}
+  target="_self"
+/>
+
+
 
 ```mdx-code-block
 import create_pipeline from './static/trigger-tutorial/trigger-tutorial-00-create-pipeline.png'
