@@ -1884,7 +1884,17 @@ You can go to delegate page and on right side check under AUTO UPGRADE Column if
 #### Is it possible to hide Account level default In-Built roles
 No currently its not possible as if we try to disable the roles for account nobody will be able to see managed roles even including account admin.
 
+#### What are Harness built-in and Custom Variables? 
 
+They are a way to refer to something in Harness such as an entity name or a configuration setting. 
+
+#### What is the correct syntax for the Regex Extract build-in variable?
+
+'''regex.extract("v[0-9]+.[0-9]+", artifact.fileName)''' is the correct syntax
+
+#### What are the statuses of nodes using the Harness looping Strategy?
+
+Running, Failed, and Success
 
 
 
