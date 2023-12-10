@@ -34,7 +34,7 @@ In this tutorial, you'll set up a simple [ingestion-only workflow](/docs/securit
 
   - A Harness account and STO module license.
   - A basic understanding of key STO concepts and good practices. Here are some good resources: 
-    - [Your first STO pipeline](/tutorials/security-tests/learn-about-sto/your-first-sto-pipeline)
+    - [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline)
     - [Key Concepts in STO](/docs/category/key-concepts-in-sto)
   - A [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and an access token to your Git provider account.  
   - A Semgrep account login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub. 
