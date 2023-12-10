@@ -137,7 +137,7 @@ import TabItem from '@theme/TabItem';
 ```
 
 
- *  `type:` [`Bandit`](docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference)
+ *  `type:` [`Bandit`](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference)
    *  `name:` A name for the step.
    *  `identifier:` A unique step ID.
    *  `spec :`

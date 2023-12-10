@@ -1,7 +1,7 @@
 ---
 title: Onboarding guide
 description: This topic describes the process for setting up an STO pipeline.
-sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: rlbw5luj4h
 helpdocs_category_id: 8nywcs2sa7
 helpdocs_is_private: false
