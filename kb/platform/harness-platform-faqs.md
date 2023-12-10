@@ -1884,9 +1884,55 @@ You can go to delegate page and on right side check under AUTO UPGRADE Column if
 #### Is it possible to hide Account level default In-Built roles
 No currently its not possible as if we try to disable the roles for account nobody will be able to see managed roles even including account admin.
 
+#### Not able to resume pipeline for some time post delegate release
 
+For optimizations we keep a local cache of all connected delegates to execute tasks. The cache is refreshed every 3 minutes currently and hence it takes upto 3 mins for a new delegate to be eligible to execute a task once its connected. Since the delegate rollout is not a very frequent operation the 3 mins window was chosen and is in production for few years.
 
+We can recommend having a grace period between bringing up a new delegate and terminating an old pod. We have minReadySeconds defined in the yaml which ensures that old pods die after 2 mins of new pod being in ready state. SInce this field was added later on, your delegate yaml may not have it. You could check this by downloading a new yaml for a delegate and add it so that the older pod doesn't get killed without new pod getting the traffic.
 
+#### The Account name in the authenticator APP When Setting up 2FA
+
+The account name show in the authenticator app when setting up 2FA is coming from the company name set for your account. In case you want to have a specifc name you will need to get your company name for the account updated. 
+
+#### 2FA enable / disable for inidividual and account level
+
+The 2FA is either enabled by defualt for the account or any user can also enable it particularly for his user which can be done from the user profile.
+But ocne the 2FA is enabled by the user it also needs to be disabled by that particular as account won't be able to disable the 2FA for the specifc user.
+
+#### Vanity URL issues
+
+Once you have got the vanity url enabled for your account , in case you are using the SAML login , you will need to update ACS URL with the updated vanity url.
+
+Ex: Current ACS URL is https://app.harness.io/gateway/api/users/saml-login?accountId=xxxxxxxxxxxxxxxx
+after enabling vanity it should be updated to : https://vanity-url.harness.io/gateway/api/users/saml-login?accountId=xxxxxxxxxxxxxx
+
+#### Restoring accidently deleted User Groups
+
+If you accidently delete some User groups from the Harness UI. There is no way to restore them as it also gets deleted from our backend collection. 
+But if the User Groups were provisioned via SCIM then you can always resync the user groups. 
+
+#### When a user logs into Harness using SAML he loses access to User Groups.
+
+This scenario is possible for the SAML Based linked User Groups as the SAML based user groupn sync alwas takes place on the user login action.
+Hence there were any changes made from the SAML SSO Group Claims or may be the group was removed from the app and hence harness does the sync at next login. 
+
+#### Resetting the 2FA from Harness
+
+This only the account admins can do for Users, when the admin needs to go to Account Setttings--> Access Control -- Users
+
+Right click on the 3 dots on the extreme right end of a user and then click on email new 2fa option. 
+
+#### Users unable to the first time when added using the JIT (Just in time user provioning)
+
+The issue occurs when after your user is setup via JIT and first time user irectly tries to login via the Harness URL (app.harness.io), As the when you setup the JIT (Just in time user provioning) reference : https://developer.harness.io/docs/platform/role-based-access-control/provision-use-jit/
+
+The user needs to first go to his SAML SSO app and click on Harness icon tile from there as this will provision the user in Harness UI. 
+
+#### Error while adding Users to Harness from Harness UI
+
+Sometime when you try to add a Harness User from Harness UI , you get error for adding the user. 
+You can open the developer tools and check the API call for the error and see the response. 
+It could be possible due to user creation limit. You can eitehr resolve it by removing unused Users from your account or reach out to Harness Support get the limit validated as per your licence. 
 
 
 

@@ -89,10 +89,13 @@ import TabItem from '@theme/TabItem';
 2. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free Harness account.
 3. Select the Harness CI module, and follow the **Get Started** wizard for Harness CI.
 4. When asked **Which code repository do you use**, select GitHub, and then select either **OAuth** or **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
-5. When asked to select a repository, select the Go sample repository that you forked earlier, and then select **Configure Pipeline**.
-6. Select **Generate my Pipeline configuration**, enter a branch name (such as `main`), and then select **Create Pipeline**.
-7. Switch to the **YAML** editor, and select **Edit YAML**.
-8. Replace the `echo` step with the following, and then save the pipeline.
+
+   For new accounts, the Get Started wizard creates a codebase connector for you. If your account already has a connector, the Get Started wizard automatically selects the existing connector. You can [create codebase connectors](/docs/platform/connectors/code-repositories/connect-to-code-repo) by navigating to **Projects** and then **Connectors**.
+
+6. When asked to select a repository, select the Go sample repository that you forked earlier, and then select **Configure Pipeline**.
+7. Select **Generate my Pipeline configuration**, enter a branch name (such as `main`), and then select **Create Pipeline**.
+8. Switch to the **YAML** editor, and select **Edit YAML**.
+9. Replace the `echo` step with the following, and then save the pipeline.
 
 ```yaml
               - step:
@@ -115,6 +118,9 @@ import TabItem from '@theme/TabItem';
 2. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free Harness account.
 3. Select the Harness CI module, and follow the **Get Started** wizard for Harness CI.
 4. When asked **Which code repository do you use**, select GitHub, and then select either **OAuth** or **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
+
+   For new accounts, the Get Started wizard creates a codebase connector for you. If your account already has a connector, the Get Started wizard automatically selects the existing connector. You can [create codebase connectors](/docs/platform/connectors/code-repositories/connect-to-code-repo) by navigating to **Projects** and then **Connectors**.
+
 5. When asked to select a repository, select the JHTTP sample repository that you forked earlier, and then select **Configure Pipeline**.
 6. Select **Generate my Pipeline configuration**, enter a branch name (such as `main`), and then select **Create Pipeline**.
 7. Switch to the **YAML** editor, and select **Edit YAML**.
@@ -141,6 +147,9 @@ import TabItem from '@theme/TabItem';
 2. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free Harness account.
 3. Select the Harness CI module, and follow the **Get Started** wizard for Harness CI.
 4. When asked **Which code repository do you use**, select GitHub, and then select either **OAuth** or **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
+
+   For new accounts, the Get Started wizard creates a codebase connector for you. If your account already has a connector, the Get Started wizard automatically selects the existing connector. You can [create codebase connectors](/docs/platform/connectors/code-repositories/connect-to-code-repo) by navigating to **Projects** and then **Connectors**.
+
 5. When asked to select a repository, select the sample repository that you forked earlier, and then select **Configure Pipeline**.
 6. Select **Generate my Pipeline configuration**, enter a branch name (such as `main`), and then select **Create Pipeline**.
 7. Switch to the **YAML** editor, and select **Edit YAML**.
@@ -171,6 +180,9 @@ import TabItem from '@theme/TabItem';
 2. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free Harness account.
 3. Select the Harness CI module, and follow the **Get Started** wizard for Harness CI.
 4. When asked **Which code repository do you use**, select GitHub, and then select either **OAuth** or **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
+
+   For new accounts, the Get Started wizard creates a codebase connector for you. If your account already has a connector, the Get Started wizard automatically selects the existing connector. You can [create codebase connectors](/docs/platform/connectors/code-repositories/connect-to-code-repo) by navigating to **Projects** and then **Connectors**.
+
 5. When asked to select a repository, select the sample repository that you forked earlier, and then select **Configure Pipeline**.
 6. Select **Generate my Pipeline configuration**, enter a branch name (such as `main`), and then select **Create Pipeline**.
 7. Switch to the **YAML** editor, and select **Edit YAML**.
@@ -199,6 +211,9 @@ import TabItem from '@theme/TabItem';
 2. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free Harness account.
 3. Select the Harness CI module, and follow the **Get Started** wizard for Harness CI.
 4. When asked **Which code repository do you use**, select GitHub, and then select either **OAuth** or **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
+
+   For new accounts, the Get Started wizard creates a codebase connector for you. If your account already has a connector, the Get Started wizard automatically selects the existing connector. You can [create codebase connectors](/docs/platform/connectors/code-repositories/connect-to-code-repo) by navigating to **Projects** and then **Connectors**.
+
 5. When asked to select a repository, select the Python sample repository that you forked earlier, and then select **Configure Pipeline**.
 6. Select **Generate my Pipeline configuration**, enter a branch name (such as `main`), and then select **Create Pipeline**.
 7. Switch to the **YAML** editor, and select **Edit YAML**.

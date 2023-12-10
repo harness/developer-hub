@@ -59,8 +59,17 @@ The following sections describe the workflow for setting up STO. Once you comple
 
 Harness includes two RBAC roles specifically for STO users:
 
-* **Developer** role — Permissions needed for developer workflows. These workflows are described in the first tutorial, [Create a standalone STO pipeline](/tutorials/security-tests/standalone-pipeline).
-* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions ("ignore rules") for specific issues. These workflows are covered in the second tutorial, [Create an integrated STO/CI pipeline](/tutorials/security-tests/cicd-integrated-pipeline).
+* **Developer** role — Permissions needed for developer workflows: 
+
+  - Configure and run scans
+  - Set baselines (such as the `main` branch of `latest` tag) for scan targets
+  - View scan results and troubleshoot detected issues
+  - Configure scan steps to fail the pipeline if any "show-stopper" vulnerabilities are found
+  - Request exemptions ("ignore rules") to allow a pipeline to proceed even if specific issues are detected
+   
+* **SecOps** role — Permissions needed for Security Operations staff. SecOps users have all Developer permissions, but only SecOps users can approve exemption requests. 
+
+These workflows are covered in [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline).
 
 :::note
 You need Administrative privileges at the Account level (Account Admin role) to assign these roles.
@@ -209,7 +218,7 @@ A Docker Hub connector is required to run a Docker-in-Docker service as describe
 
 ### Create a Codebase Connector
 
-You'll need a GitHub account to do the [STO Tutorials](/tutorials/security-tests/standalone-pipeline). 
+You'll need a GitHub account to do the [STO Tutorials](/tutorials/security-tests/). 
 
 You also need a Git repo connector for any STO pipeline that scans a codebase. You can create codebase connectors for the following SCMs:
  - [Azure](/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector)
@@ -244,7 +253,9 @@ To do the STO tutorials, point the connector at the following repo: <https://git
 
 ## Create a base pipeline for STO
 
-The following procedure creates a pipeline with the STO functionality required to run scans on your repos, images, and instances. Once you set up this pipeline, you can clone it to a new pipeline and update the pipeline to set up your scans. This workflow is described in the [Create a standalone STO pipeline](/tutorials/security-tests/standalone-pipeline) tutorial.
+The following procedure creates a pipeline with the STO functionality required to run scans on your repos, images, and instances. Once you set up this pipeline, you can clone it to a new pipeline and update the pipeline to set up your scans. 
+
+This workflow is covered in [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline).
 
 ### Add a Security Test stage
 

@@ -256,7 +256,7 @@ resource "harness_platform_service" "example" {
 </Tabs>
 ```
 
-## Using runtime input services with inputs and expressions
+## Using runtime inputs and expressions with services
 
 Services are often configured using runtime inputs or expressions, so you can change service settings for different deployment scenarios at pipeline runtime. 
 
