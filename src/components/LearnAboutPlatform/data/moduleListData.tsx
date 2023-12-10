@@ -4,6 +4,13 @@ import { MODULES } from "../../../constants";
 
 export const moduleList: CardItem[] = [
   {
+    title: "Code Repository",
+    module: MODULES.code,
+    // icon: "img/icon_code.svg",
+    description: <>Accelerate development with security at scale.</>,
+    link: "docs/code-repository",
+  },
+  {
     title: "Continuous Integration",
     module: MODULES.ci,
     // icon: "img/icon_ci.svg",
@@ -11,12 +18,19 @@ export const moduleList: CardItem[] = [
     link: "docs/continuous-integration",
   },
   {
-    title: "Continuous Delivery",
+    title: "Continuous Delivery & GitOps",
     module: MODULES.cd,
     // icon: "img/icon_cd.svg",
     description:
       "Automate deployment of application services to your infrastructure.",
     link: "docs/continuous-delivery",
+  },
+  {
+    title: "Infrastructure as Code Management",
+    module: MODULES.iacm,
+    // icon: "img/icon_iacm.svg",
+    description: <>Manage your Infrastructure as Code End-to-End.</>,
+    link: "docs/infrastructure-as-code-management",
   },
   {
     title: "Feature Flags",
@@ -33,13 +47,6 @@ export const moduleList: CardItem[] = [
     link: "docs/cloud-cost-management",
   },
   {
-    title: "Service Reliability Management",
-    module: MODULES.srm,
-    // icon: "img/icon_srm.svg",
-    description: <>Monitor SLOs, track error budgets, and debug code errors.</>,
-    link: "docs/service-reliability-management",
-  },
-  {
     title: "Security Testing Orchestration",
     module: MODULES.sto,
     // icon: "img/icon_sto.svg",
@@ -47,11 +54,11 @@ export const moduleList: CardItem[] = [
     link: "docs/security-testing-orchestration",
   },
   {
-    title: "Infrastructure as Code Management",
-    module: MODULES.iacm,
-    // icon: "img/icon_iacm.svg",
-    description: <>Manage your Infrastructure as Code End-to-End.</>,
-    link: "docs/infrastructure-as-code-management",
+    title: "Software Supply Chain Assurance",
+    module: MODULES.ssca,
+    // icon: "img/icon_ssca.svg",
+    description: "Secure your software supply chain.",
+    link: "docs/software-supply-chain-assurance",
   },
   {
     title: "Chaos Engineering",
@@ -61,22 +68,11 @@ export const moduleList: CardItem[] = [
     link: "docs/chaos-engineering",
   },
   {
-    title: "Software Engineering Insights",
-    module: MODULES.sei,
-    // icon: "img/icon_idp.svg",
-    description: (
-      <>
-      Assess engineering team productivity, remove roadblocks, and automate processes to increase efficiency.
-      </>
-    ),
-    link: "https://docs.propelo.ai/welcome-to-propelo/",
-  },
-  {
-    title: "Software Supply Chain Assurance",
-    module: MODULES.ssca,
-    // icon: "img/icon_ssca.svg",
-    description: "Secure your software supply chain.",
-    link: "docs/software-supply-chain-assurance",
+    title: "Service Reliability Management",
+    module: MODULES.srm,
+    // icon: "img/icon_srm.svg",
+    description: <>Monitor SLOs, track error budgets, and debug code errors.</>,
+    link: "docs/service-reliability-management",
   },
   {
     title: "Continuous Error Tracking",
@@ -100,11 +96,15 @@ export const moduleList: CardItem[] = [
     link: "docs/internal-developer-portal",
   },
   {
-    title: "Code Repository",
-    module: MODULES.code,
-    // icon: "img/icon_code.svg",
-    description: <>Accelerate development with security at scale.</>,
-    link: "docs/code-repository",
+    title: "Software Engineering Insights",
+    module: MODULES.sei,
+    // icon: "img/icon_idp.svg",
+    description: (
+      <>
+      Assess engineering team productivity, remove roadblocks, and automate processes to increase efficiency.
+      </>
+    ),
+    link: "https://docs.propelo.ai/welcome-to-propelo/",
   },
 
 ];
