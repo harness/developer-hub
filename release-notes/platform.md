@@ -72,6 +72,7 @@ Below is further explanation for each type of secret manager Harness currently s
 
 6. For **Custom Secrets Manager**, if any secret is needed in the template as a variable, then it can only be stored in the Harness Built-in Secret Manager.
 
+
 ## Deprecation notice
 
 The following deprecated API endpoints will no longer be supported:
