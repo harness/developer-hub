@@ -69,9 +69,9 @@ Listed below is the probe schema for the Prometheus probe, with properties share
    </td>
    <td>Mandatory
    </td>
-   <td><code>httpProbe, k8sProbe, cmdProbe, promProbe</code>
+   <td><code>httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe</code>
    </td>
-   <td>The <code>type</code> supports four types of probes. It can one of the httpProbe, k8sProbe, cmdProbe, promProbe
+   <td>The <code>type</code> supports five types of probes: httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe.
    </td>
   </tr>
   <tr>
@@ -83,7 +83,7 @@ Listed below is the probe schema for the Prometheus probe, with properties share
    </td>
    <td><code>SOT, EOT, Edge, Continuous, OnChaos</code>
    </td>
-   <td>The <code>mode</code> supports five modes of probes. It can one of the SOT, EOT, Edge, Continuous, OnChaos
+   <td>The <code>mode</code> supports five modes of probes: SOT, EOT, Edge, Continuous, and OnChaos. Datadog probe supports EOT mode only.
    </td>
   </tr>
   <tr>
