@@ -37,6 +37,18 @@ This is a notification for an upcoming feature change aimed at enhancing your ex
 
 :::
 
+## Important feature change notice
+
+:::info important 
+
+This is a notification for an upcoming feature change aimed at enhancing your experience with Harness. Here's what you need to know:
+
+1. Harness uses connectors to external secret managers (e.g. Google Secret Manager or Hashicorp Vault) to resolve/store secrets used by pipelines and elsewhere in the Harness platform. External secret manager connectors require configuration, including a means to authenticate to the external Secret Manager. Starting **December 11, 2023**, Harness is adding a restriction that users can **only use Harness Built-in Secret Manager to store authentication credentials** for access to the corresponding Secret Manager.
+
+2. **Continuity Assured**: There is no impact on your existing pipelines. They will remain compatible with the way secrets are referenced currently. Note that this includes using an external secret manager other than the Harness Built-in Secret Manager to store the authentication secret.
+
+:::
+
 #### Why is Harness making this change?
 
 Our current setup allows configurations where credentials from one secret manager are stored within another, resulting in complexities that can be challenging to navigate. Moreover, these configurations may introduce vulnerabilities, posing potential security risks. For example, in a recent [incident](https://status.harness.io/incidents/w2w7btby70xs), our thread pool designated for secret manager resolution was exhausted.
@@ -72,7 +84,6 @@ Below is further explanation for each type of secret manager Harness currently s
    2. With the credentials of a specific Harness Delegate option, secret storage is not required in Harness Built-in Secret Manager.
 
 6. For **Custom Secrets Manager**, if any secret is needed in the template as a variable, then it can only be stored in the Harness Built-in Secret Manager.
-
 
 ## Deprecation notice
 
