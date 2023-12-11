@@ -82,9 +82,9 @@ To build your custom delegate image, do the following:
 2. Add the lines below to your delegate Docker file before the `USER 1001` line because root access is required to run the script. Replace the directory paths with your local directory locations.
 
    ```
-   + COPY <PATH_TO_LOCAL_CERTS_DIRECTORY> <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>
+   COPY <PATH_TO_LOCAL_CERTS_DIRECTORY> <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>
    
-   + RUN bash -c "/opt/harness-delegate/load_certificates.sh <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>"
+   RUN bash -c "/opt/harness-delegate/load_certificates.sh <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>"
    
    USER 1001
    ```
