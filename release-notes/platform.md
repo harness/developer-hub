@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-12-04:T10:00:30
+date: 2023-12-11:T10:00:30
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -37,18 +37,6 @@ This is a notification for an upcoming feature change aimed at enhancing your ex
 
 :::
 
-## Important feature change notice
-
-:::info important 
-
-This is a notification for an upcoming feature change aimed at enhancing your experience with Harness. Here's what you need to know:
-
-1. Harness uses connectors to external secret managers (e.g. Google Secret Manager or Hashicorp Vault) to resolve/store secrets used by pipelines and elsewhere in the Harness platform. External secret manager connectors require configuration, including a means to authenticate to the external Secret Manager. Starting **December 11, 2023**, Harness is adding a restriction that users can **only use Harness Built-in Secret Manager to store authentication credentials** for access to the corresponding Secret Manager.
-
-2. **Continuity Assured**: There is no impact on your existing pipelines. They will remain compatible with the way secrets are referenced currently. Note that this includes using an external secret manager other than the Harness Built-in Secret Manager to store the authentication secret.
-
-:::
-
 #### Why is Harness making this change?
 
 Our current setup allows configurations where credentials from one secret manager are stored within another, resulting in complexities that can be challenging to navigate. Moreover, these configurations may introduce vulnerabilities, posing potential security risks. For example, in a recent [incident](https://status.harness.io/incidents/w2w7btby70xs), our thread pool designated for secret manager resolution was exhausted.
@@ -59,11 +47,11 @@ Below is further explanation for each type of secret manager Harness currently s
 
 1. Harness supports three authentication methods for **AWS Key Management Service (KMS)** and **AWS Secrets Manager**:
    
-   1.  AWS Access Key: Access Key Id, Secrets Access Key, and AWS ARN need to be stored in Harness Built-in Secret Manager.
+   1. AWS Access Key: Access Key Id, Secrets Access Key, and AWS ARN need to be stored in Harness Built-in Secret Manager.
    
-   2.  [Assume IAM role on delegate](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager/#option-assume-iam-role-on-delegate): AWS ARN must be stored in Harness Built-in Secret Manager.
+   2. [Assume IAM role on delegate](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager/#option-assume-iam-role-on-delegate): AWS ARN must be stored in Harness Built-in Secret Manager.
    
-   3.  [Assume Role using STS on delegate](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager/#option-assume-role-using-sts-on-delegate): AWS ARN must be stored in Harness Built-in Secret Manager.
+   3. [Assume Role using STS on delegate](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager/#option-assume-role-using-sts-on-delegate): AWS ARN must be stored in Harness Built-in Secret Manager.
 
 2. Harness supports the following five authentication methods for **Hashicorp Vault**:
 
@@ -84,6 +72,8 @@ Below is further explanation for each type of secret manager Harness currently s
    2. With the credentials of a specific Harness Delegate option, secret storage is not required in Harness Built-in Secret Manager.
 
 6. For **Custom Secrets Manager**, if any secret is needed in the template as a variable, then it can only be stored in the Harness Built-in Secret Manager.
+
+
 
 ## Deprecation notice
 
