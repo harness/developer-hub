@@ -1,7 +1,7 @@
 ---
 title: Create a service onboarding pipeline
 description: Create a basic service onboarding pipeline in Harness IDP
-sidebar_position: 10
+sidebar_position: 1
 ---
 
 <docvideo src="https://www.youtube.com/embed/0GoK3SD1rxs?si=RCMDhlPhoC5qZh3J" />
@@ -134,6 +134,10 @@ import TabItem from '@theme/TabItem';
   - `<+pipeline.variables.github_org>`
   - `<+pipeline.variables.github_repo>`
 
+Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name shoule match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template. 
+
+For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template. 
+
 ```mdx-code-block
 </TabItem>
 <TabItem value="GitLab">
@@ -189,6 +193,9 @@ import TabItem from '@theme/TabItem';
   - `<+pipeline.variables.gitlab_org>`
   - `<+pipeline.variables.gitlab_repo>`
 
+  Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name shoule match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template. 
+
+  For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template. 
 
 ```mdx-code-block
 </TabItem>
@@ -317,9 +324,29 @@ token:
   ui:field: HarnessAuthToken
 ```
 
+Also the token input is used as a paremeter under `steps` as `apikey`
+
+```yaml
+  steps:
+    - id: trigger
+      name: ...
+      action: trigger:harness-custom-pipeline
+      input:
+        url: ...
+        inputset:
+          key: value
+          ...
+        apikey: ${{ parameters.token }}
+```
 This is a custom component we created to authenticate the call to execute the pipeline on the basis of the logged-in user's credentials.
 
 ### Action to trigger the pipeline
+
+:::info
+
+The template actions currently supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#add-the-run-step), also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values). 
+
+:::
 
 The `spec.steps` field contains only one action, and that is to trigger a Harness pipeline. Update the `url` and replace it with the URL of your service onboarding pipeline. Also, ensure that the `inputset` is correct and it contains all the runtime input variables that the pipeline needs.
 
@@ -328,3 +355,20 @@ The `spec.steps` field contains only one action, and that is to trigger a Harnes
 Use the URL to the `template.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
 
 Now navigate to the **Create** page in IDP. You will see the newly created template appear. Try it out!
+
+### Unregister/Delete Template
+
+1. Navigate to the **Catalog** page, and select **Template** under Kind. 
+
+![](./static/catalog-navigation.png)
+
+2. Select the Template Name you want to Unregister.
+3. Now on the Template overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
+
+![](./static/unregister-entity.png)
+
+4. Now on the Dialog box select **Unregister Location**. 
+
+![](./static/Unregister-location.png)
+
+5. This will delete the Template. 

@@ -85,6 +85,22 @@ This setting allows you to set the Terraform CLI options for Terraform commands 
 
 Terraform refresh command won't be running when this setting is selected.
 
+## Working directory cleanup
+Each Terraform step runs in a specific working directory on the delegate.
+
+The Terraform working directory is located at `/opt/harness-delegate/./terraform-working-dir/`.
+
+To that directory path, Harness adds additional directories that are named after the organization, account, project, and provisionerId (from the step) such that the final working directory is `/opt/harness-delegate/./terraform-working-dir/org-name/account-name/project-name/provisionerId/`.
+
+In this final working directory, Harness stores the Terraform configuration and all fetched files such as var-files and backend-config.
+
+Once the Terraform step execution is complete, Harness cleans up the main working directory `/opt/harness-delegate/./terraform-working-dir/`.
+
+If you generate any local resources on the delegate in the directory where Terraform configurations are located, those resources are also removed. If you need those resources, make sure to generate them outside the Terraform working directory.
+
+#### Terraform variable files
+
+You can specify Terraform variables inline and fetch remote variable files during run time. For more information, go to [Specify Terraform variables](/docs/continuous-delivery/cd-infrastructure/terraform-infra/optional-tf-var-files).
 
 ## See Also
 

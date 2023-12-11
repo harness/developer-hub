@@ -21,9 +21,6 @@ To set up a Burp scan:
 
 ## Important notes for running Burp scans in STO
 
-
-
-
 ### Root access requirements 
 
 ```mdx-code-block
@@ -31,6 +28,15 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 ```
 
 <StoRootRequirements />
+
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
+
 
 ## Burp step configuration
 

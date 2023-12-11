@@ -2,6 +2,8 @@
 title: HTTP step
 description: Run HTTP methods and validate assertions in your pipeline.
 sidebar_position: 1
+redirect_from:
+  - /docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/http-step
 ---
 
 This topic describes the settings for the HTTP step.

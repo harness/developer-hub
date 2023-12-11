@@ -30,22 +30,22 @@ Linux time chaos injects chaos to change the time of the Linux machine.
   <tr>
     <td> offset </td>
     <td> Time offset to increment or decrement the system time. Should be provided in <code>(+/-)[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format.</td>
-    <td> For example: <code>+24h</code>, <code>-13h12m</code>, <code>-3h12m16s</code>. For more information, go to <a href= "#offset">offset.</a> </td>
+    <td> For example: <code>+24h</code>, <code>-13h12m</code>, <code>-3h12m16s</code> </td>
   </tr>
   <tr>
     <td> disableNTP </td>
     <td> Set it to disable the NTP server. </td>
-    <td> Default: <code>true</code>. For more information, go to <a href= "#disablentp">disable NTP server.</a> </td>
+    <td> Defaults to <code>true</code> </td>
   </tr>
   <tr>
     <td> duration </td>
-    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30 s. For more information, go to <a href= "../../chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a>  </td>
+    <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
+    <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
   </tr>
   <tr>
     <td> rampTime </td>
-    <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Default: 0 s. For more information, go to <a href= "../../chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a> </td>
+    <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
+    <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
   </tr>
 </table>
 

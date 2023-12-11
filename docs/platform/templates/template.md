@@ -16,7 +16,7 @@ This topic provides an overview of templates in Harness.
 
 :::note
 
-For guidance on ramping up your teams using templates, go to [Templates ramp-up guide](/docs/continuous-delivery/ramp-up/pipeline-designer-role/rampup-templates).
+For guidance on ramping up your teams using templates, go to [Templates ramp-up guide](/docs/continuous-delivery/cd-onboarding/new-user/rampup-templates).
 
 :::
 

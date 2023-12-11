@@ -10,6 +10,7 @@ You can run [Brakeman](https://brakemanscanner.org/) scans on your Ruby on Rails
 
 ## Important notes for running Brakeman scans in STO
 
+
 ### Docker-in-Docker requirements
 
 
@@ -27,6 +28,15 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 ```
 
 <StoRootRequirements />
+
+
+### For more information
+
+```mdx-code-block
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+```
+
+<StoMoreInfo />
 
 ## Brakeman step settings for STO scans
 

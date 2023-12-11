@@ -375,7 +375,7 @@ For example:
 ```yaml
  strategy:
     matrix:
-        payload: [<+trigger.payload.user.username>, <+trigger.sourceRepo>, <+trigger.prNumber>]
+        payload: [<+trigger.payload.user.username>, <+trigger.prNumber>]
 ```
 
 You can use `<+trigger.payload.PATH_IN_JSON>` to [reference any field in the trigger's JSON payload](/docs/platform/triggers/triggers-reference#referencing-payload-fields), such as `<+trigger.payload.pull_request.user.login>`.

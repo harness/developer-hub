@@ -35,12 +35,6 @@ Setting up a Serverless Lambda application involves the following steps:
 
 ## Containerized and non-containerized
 
-:::note
-
-Currently, containerized Serverless Lambda support is behind the feature flag `CDS_SERVERLESS_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 You have two options for deploying a Serverless.com Framework Lambda application:
 
 - **Containerized:** Deploy your Serverless Lambda application in Harness using containerized steps that allow you to select the Serverless image to use for each step.
@@ -510,12 +504,6 @@ For details on Harness provisioning, go to [Provisioning overview](/docs/continu
 4. Click **Continue**. The **Execution** steps appear.
 
 ### Dynamically provisioned infrastructure
-
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
 

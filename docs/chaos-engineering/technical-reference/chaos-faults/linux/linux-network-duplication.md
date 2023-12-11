@@ -6,6 +6,7 @@ title: Linux network duplication
 import Ossupport from './shared/note-supported-os.md'
 import FaultPermissions from './shared/fault-permissions.md'
 
+
 Linux network duplication injects chaos to disrupt network connectivity on a Linux machine by duplicating network packets.
 
 ![Linux network duplication](./static/images/linux-network-duplication.png)
@@ -43,27 +44,27 @@ Linux network duplication injects chaos to disrupt network connectivity on a Lin
     <tr>
     <td> destinationHosts </td>
     <td> List of the target host names or keywords. For example, <code>google.com,litmuschaos.io</code> </td>
-    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted. For more information, go to <a href= "#destination-hosts">destination hosts.</a> </td>
+    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted </td>
   </tr>
   <tr>
     <td> destinationIPs </td>
     <td> List of the target IPs. For example, <code>1.1.1.1,8.8.8.8</code> </td>
-    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted. For more information, go to <a href= "#destination-ips">destination IPs. </a></td>
+    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted</td>
   </tr>
   <tr>
     <td> packetDuplicationPercentage </td>
     <td> Percentage of packet to duplicate. For example <code>50</code>. </td>
-    <td> Default: 100 %. For more information, go to <a href= "#packet-duplication-percentage">packet duplication percentage.</a> </td>
+    <td> Default: 100% </td>
   </tr>
   <tr>
     <td> duration </td>
-    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30 s. For more information, go to <a href= "../../chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a>  </td>
+    <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
+    <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
   </tr>
   <tr>
     <td> rampTime </td>
-    <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Default: 0 s. For more information, go to <a href= "../../chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a> </td>
+    <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
+    <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
   </tr>
 </table>
 

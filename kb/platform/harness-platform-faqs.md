@@ -404,7 +404,7 @@ Delegate reject tasks or fail to acquire tasks when CPU and memory reach above a
 
 #### Can we set the delegate to reject new tasks if x% of memory is being consumed?
 
-Yes you can choose to specify what threshold to reject the task using the flag `DELEGATE_RESOURCE_THRESHOLD`, otherwise, the  default value is 70%.
+Yes you can choose to specify what threshold to reject the task using the flag `DELEGATE_RESOURCE_THRESHOLD`, otherwise, the  default value is 80%.
 
 #### What is the behavior when DYNAMIC_REQUEST_HANDLING is set to false or not set at all when memory reaches 100% ?
 
@@ -1819,14 +1819,120 @@ To resolve CORS issues:
 
 By configuring your server to allow the necessary origins and headers, you can address CORS issues when making API calls from your React app. This ensures a smooth interaction with the Harness API while securing your application.
 
+####  Can I configure an alternate location for delegate logs?
 
+It is not possible to configure the delegate logs path. However, you can create a symlink for the `delegate.log` files and store them in a different directory using the `INIT_SCRIPT` environment variable. To do this, simply replace `YOUR_PATH` with the directory where you want to store your log files in the example below.
 
+```yaml
+- name: INIT_SCRIPT
+          value: "mkdir YOUR_PATH && ln -s YOUR_PATH/newdelegate.log delegate.log"
+```
 
+After you create your delegate, you can verify your log file path.
 
+#### Can we customize the SSH configuration when using a Git connector set by SSH?
 
+For GIT API-based communications, SSH is not used at all. Instead, we rely exclusively on token-based communication. Specifically for GIT tasks, especially on GitX, tokens are utilized as they are executed through APIs. However, for other types of connections, SSH configurations are employed. It's important to note that for any connector, the standard practice involves selecting "API Access" and providing tokens exclusively.
 
+#### How can I resolve serialization errors when integrating NG Audits for ModuleLicense collection with multiple child classes in YamlDTOs?
 
+The serialization issue in NG Audits for ModuleLicense collection arises when using entity objects instead of DTOs in the YAML for Audit Service. The problem is that entity objects lack JsonSubTypes, causing the Jackson ObjectMapper to struggle with determining the appropriate subType for conversion. The resolution is to utilize DTOs, which inherently possess the JsonSubTypes property, ensuring smooth serialization and deserialization processes in the Audit Service.
 
+It's essential to note that the Audit Service doesn't directly serialize or deserialize YAML; instead, it expects the old and new YAML as strings. However, the choice of using DTOs over entity objects is crucial for resolving any potential serialization challenges. Always ensure that the service generating audits has access to all required DTOs to prevent code duplication and facilitate efficient integration with NG Audits.
+
+#### Why is the Helm binary path not added to the system's PATH by default for Immutable Delegates?
+
+There are two versions of the Helm binary installed on the delegate, but neither is set to the system's PATH by default. This behavior is currently specific to the Ubuntu image. However, users have the option to set the PATH as desired using the init script in the delegate YAML. Additionally, they can install custom binaries or create their own delegate image to address this.
+
+#### Is there a standardized default user access experience across all installation flows (K8S, Docker, Helm, Terraform)?
+
+No, there is currently a variation, with K8S delegates defaulting to root with securityContext, while Docker delegates use a non-root default user (user 1001).
+
+#### Is root user access required by default for adding custom binaries?
+
+Users can choose not to run as root. For custom binaries, root access is not required, they can curl the binary and put it in the path.
+
+#### How to hide Harness built-in roles (harness managed roles), and is it possible to hide account scope roles?
+
+Enabling the flags (`PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE` and `PL_HIDE_ORGANIZATION_LEVEL_MANAGED_ROLE`) will hide project and org scope roles. However, there is currently no way to hide account-level roles. This decision was not implemented due to the potential restriction that once we enable FF for the account, nobody will be able to see managed roles, including account admin.
+
+#### If a user has a connector with delegate selector X, and the connector uses a secret from a secret manager with delegate selector Y, but delegates with selector X lack access to this secret manager, is this use-case supported?
+
+Our priorities are configured as follows: [Step > Step Group > Stage > Pipeline > Connector]. In this scenario, the user can override at the pipeline (or any higher level), but without that override, it will result in a failure.
+
+#### How do I setup SMTP with AWS SES?
+
+Follow this AWS documentation to create SMTP crredentials using the SES console.
+https://docs.aws.amazon.com/ses/latest/dg/smtp-credentials.html
+
+Then feed those SMTP credentials in Harness SMTP connector
+
+See [SMTP Configuration](docs/platform/notifications/add-smtp-configuration/)
+
+#### How to increase the concurrent pipeline execution limit
+You can increase the limit unto 1000 by navigating to Account Settings --> Account Resource --> Default Settings --> Pipeline
+
+#### Is it possible to hide Project/Org level default In-Built roles
+Yes its possible and you need to ask Harness support to enable PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE and PL_HIDE_ORGANIZATION_LEVEL_MANAGED_ROLE. FF.
+
+#### How to upgrade legacy docker delegate to use new image version 
+You can update the image tag by looking into latest tag https://hub.docker.com/r/harness/delegate/tags and can provide that while docker run command
+
+#### How to check if Delegate is setup for auto Upgrade
+You can go to delegate page and on right side check under AUTO UPGRADE Column if its showing ON
+
+#### Is it possible to hide Account level default In-Built roles
+No currently its not possible as if we try to disable the roles for account nobody will be able to see managed roles even including account admin.
+
+#### Not able to resume pipeline for some time post delegate release
+
+For optimizations we keep a local cache of all connected delegates to execute tasks. The cache is refreshed every 3 minutes currently and hence it takes upto 3 mins for a new delegate to be eligible to execute a task once its connected. Since the delegate rollout is not a very frequent operation the 3 mins window was chosen and is in production for few years.
+
+We can recommend having a grace period between bringing up a new delegate and terminating an old pod. We have minReadySeconds defined in the yaml which ensures that old pods die after 2 mins of new pod being in ready state. SInce this field was added later on, your delegate yaml may not have it. You could check this by downloading a new yaml for a delegate and add it so that the older pod doesn't get killed without new pod getting the traffic.
+
+#### The Account name in the authenticator APP When Setting up 2FA
+
+The account name show in the authenticator app when setting up 2FA is coming from the company name set for your account. In case you want to have a specifc name you will need to get your company name for the account updated. 
+
+#### 2FA enable / disable for inidividual and account level
+
+The 2FA is either enabled by defualt for the account or any user can also enable it particularly for his user which can be done from the user profile.
+But ocne the 2FA is enabled by the user it also needs to be disabled by that particular as account won't be able to disable the 2FA for the specifc user.
+
+#### Vanity URL issues
+
+Once you have got the vanity url enabled for your account , in case you are using the SAML login , you will need to update ACS URL with the updated vanity url.
+
+Ex: Current ACS URL is https://app.harness.io/gateway/api/users/saml-login?accountId=xxxxxxxxxxxxxxxx
+after enabling vanity it should be updated to : https://vanity-url.harness.io/gateway/api/users/saml-login?accountId=xxxxxxxxxxxxxx
+
+#### Restoring accidently deleted User Groups
+
+If you accidently delete some User groups from the Harness UI. There is no way to restore them as it also gets deleted from our backend collection. 
+But if the User Groups were provisioned via SCIM then you can always resync the user groups. 
+
+#### When a user logs into Harness using SAML he loses access to User Groups.
+
+This scenario is possible for the SAML Based linked User Groups as the SAML based user groupn sync alwas takes place on the user login action.
+Hence there were any changes made from the SAML SSO Group Claims or may be the group was removed from the app and hence harness does the sync at next login. 
+
+#### Resetting the 2FA from Harness
+
+This only the account admins can do for Users, when the admin needs to go to Account Setttings--> Access Control -- Users
+
+Right click on the 3 dots on the extreme right end of a user and then click on email new 2fa option. 
+
+#### Users unable to the first time when added using the JIT (Just in time user provioning)
+
+The issue occurs when after your user is setup via JIT and first time user irectly tries to login via the Harness URL (app.harness.io), As the when you setup the JIT (Just in time user provioning) reference : https://developer.harness.io/docs/platform/role-based-access-control/provision-use-jit/
+
+The user needs to first go to his SAML SSO app and click on Harness icon tile from there as this will provision the user in Harness UI. 
+
+#### Error while adding Users to Harness from Harness UI
+
+Sometime when you try to add a Harness User from Harness UI , you get error for adding the user. 
+You can open the developer tools and check the API call for the error and see the response. 
+It could be possible due to user creation limit. You can eitehr resolve it by removing unused Users from your account or reach out to Harness Support get the limit validated as per your licence. 
 
 
 

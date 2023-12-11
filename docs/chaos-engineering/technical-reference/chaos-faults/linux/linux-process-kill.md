@@ -32,17 +32,17 @@ Linux process kill:
   <tr>
     <td> processIDs </td>
     <td> Comma-separated process IDs of the target processes. </td>
-    <td> Takes precedence over <code>processNames</code> and <code>processCommand</code> when all three parameters are defined. For example, <code>13453,32444,27436</code>. For more information, go to <a href= "#process-ids">process IDs.</a> </td>
+    <td> Takes precedence over <code>processNames</code> and <code>processCommand</code> when all three parameters are defined. For example, <code>13453,32444,27436</code> </td>
   </tr>
   <tr>
     <td> processCommand </td>
     <td> Command used to start the target processes. A substring match is performed to determine the target process. </td>
-    <td> Takes precedence over <code>processNames</code> when both are defined. For example, <code>/usr/lib64/thunderbird/thunderbird</code>. For more information, go to <a href= "#process-command">process command.</a> </td>
+    <td> Takes precedence over <code>processNames</code> when both are defined. For example, <code>/usr/lib64/thunderbird/thunderbird</code> </td>
   </tr>
   <tr>
     <td> processNames </td>
     <td> Comma-separated target process names. </td>
-    <td> For example, <code>nginx,redis</code>. For more information, go to <a href= "#process-names">process names.</a> </td>
+    <td> For example, <code>nginx,redis</code> </td>
   </tr>
 </table>
 <h3>Optional tunables</h3>
@@ -55,17 +55,17 @@ Linux process kill:
   <tr>
     <td> forceKill </td>
     <td> Whether to force kill the process using the <code>SIGKILL</code> signal or <code>SIGTERM</code> signal for graceful killing. </td>
-    <td> Default: <code>false</code>. For more information, go to <a href= "#force-kill">force kill.</a></td>
+    <td> Default: <code>false</code>. </td>
   </tr>
   <tr>
     <td> duration </td>
-    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30 s. For more information, go to <a href= "../../chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a>  </td>
+    <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
+    <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
   </tr>
   <tr>
     <td> rampTime </td>
-    <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Default: 0 s. For more information, go to <a href= "../../chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a> </td>
+    <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
+    <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
   </tr>
 </table>
 
@@ -87,10 +87,10 @@ metadata:
 spec:
   processKillChaos/inputs:
     processIDs: "13453,32444,27436"
-    duration: 30
+    duration: 30s
 ```
 
-### Process names
+### Process Names
 
 The `processNames` input variable targets process names to kill.
 
@@ -108,10 +108,10 @@ metadata:
 spec:
   processKillChaos/inputs:
     processNames: "nginx,redis"
-    duration: 30
+    duration: 30s
 ```
 
-### Process command
+### Process Command
 
 The `processCommand` input variable targets the processes, based on the command used to start processes, if available. A substring match is made on the given command to determine the target processes.
 
@@ -129,7 +129,7 @@ metadata:
 spec:
   processKillChaos/inputs:
     processCommand: "/usr/lib64/thunderbird/thunderbird"
-    duration: 30
+    duration: 30s
 ```
 
 ### Force Kill
@@ -150,6 +150,6 @@ metadata:
 spec:
   processKillChaos/inputs:
     processNames: "nginx"
-    duration: 30
+    duration: 30s
     forceKill: true
 ```

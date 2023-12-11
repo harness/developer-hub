@@ -16,7 +16,7 @@ This topic describes how to create your own Dashboard.
 
 The following video explains how to create a Dashboard:
 
-<docvideo src="https://fast.wistia.com/embed/iframe/38m8yricif"/>
+<docvideo src="https://youtu.be/ANxs9xfVZx4"/>
 
 ### Step 1: Create a Dashboard
 

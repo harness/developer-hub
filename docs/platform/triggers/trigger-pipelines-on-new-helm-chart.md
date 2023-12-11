@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::info note
-Currently, this feature is behind the feature flags `NG_SVC_ENV_REDESIGN` and `CD_TRIGGERS_REFACTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flags CD_TRIGGERS_REFACTOR`. Contact [Harness Support](mailto:support@harness.io)to enable the feature.
 
 :::
 

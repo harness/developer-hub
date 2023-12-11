@@ -557,6 +557,24 @@ If you wish to concatenate expressions as strings, make sure that each expressio
 
 :::
 
+### Passing JSON values using variables
+
+When using expressions in JSON as a string, they must be wrapped in quotation marks for valid JSON.
+
+For example, consider the following JSON:
+
+```json
+   "{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"
+```
+
+In the JSON above, the expression `<+pipeline.variables.version>` must be wrapped in quotation marks because it resolves as a string inside JSON (and Strings need to be quoted). The expression `<+<+pipeline.variables.hosts>.split(\",\")>` doesn't need to be wrapped in quotation marks because it will be resolved as a list.
+
+Let's look at an example using allowed values and JSON strings.
+
+A variable with `<+input>.allowedValues({"x":"y"})` and `"<+input>.allowedValues({x:y})"` have the same value, which is `{x:y}`. You can add space in the second example, `"<+input>.allowedValues({x: y})"` to get `{x: y}` and it doesn't cause any errors.
+
+You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"x\\\": \\\"y\\\"})"` produces `{"x": "y"}`.
+
 ### Best practices for expressions usage
 
 - When using `,` inside a method invocation with an expression, the expression must be wrapped in quotation marks.
@@ -568,16 +586,6 @@ If you wish to concatenate expressions as strings, make sure that each expressio
    ```
 
    In the above expression, `<+pipeline.variables.var1>` must be wrapped in quotation marks because the expression is a string parameter for a method.
-
-- When using expressions in JSON as a string, they must be wrapped in quotation marks for valid JSON.
-
-   For example, consider the following JSON:
-
-   ```json
-   "{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"
-   ```
-
-    In the JSON above, the expression `<+pipeline.variables.version>` must be wrapped in quotation marks because it resolves as a string inside JSON (and Strings need to be quoted). The expression `<+<+pipeline.variables.hosts>.split(\",\")>` doesn't need to be wrapped in quotation marks because it will be resolved as a list.
 
 
 ## Debugging expressions
@@ -1734,8 +1742,6 @@ For example:
 
 * `<+trigger.type>`
 	+ Webhook.
-* `<+trigger.sourceRepo>`
-	+ Github, Gitlab, Bitbucket, Custom
 * `<+trigger.event>`
 	+ PR, PUSH, etc.
 

@@ -83,9 +83,19 @@ For more information about Harness terminology, features, and pipeline component
 
 Jobs in GitLab CI are similar to steps in Harness CI. In both products, jobs/steps contain commands. Some commands are declared explicitly, whereas others run inherently based on the step type or configuration. An important difference is that GitLab CI jobs run in parallel by default, whereas in Harness CI steps run sequentially. However, you can enable [parallelism and other looping strategies](#comparison-matrix-and-parallelism) in Harness CI.
 
+:::info Root and non-root users
+
+Steps run as the root user, generally. For example, with Harness Cloud build infrastructure, steps run directly on the host and, therefore, run as the root user.
+
+For services running on containers (which are steps where you specify a **Container Registry** and **Image** to use to execute the step's commands), you can use the **Run as User** setting to specify a user to use for that container.
+
+With Kubernetes cluster build infrastructure, you can use the **Run as User** setting to specify a user to use for individual steps, or you can [set a default user for all steps](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#run-as-user-or-run-as-non-root) and then override the default user as needed for individual steps.
+
+:::
+
 ### Scripts in workflows
 
-Both Harness CI and GitLab CI support running scripts or a shell commands in jobs/steps. In GitLab CI, you use the `script` key to declare a script step.
+Both Harness CI and GitLab CI support running scripts or shell commands in jobs/steps. In GitLab CI, you use the `script` key to declare a script step.
 
 In Harness CI scripts are supplied in the `command` key, and can be supplied for any step type that supports `command`.
 

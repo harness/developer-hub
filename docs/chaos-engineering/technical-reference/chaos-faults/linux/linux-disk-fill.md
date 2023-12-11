@@ -32,27 +32,27 @@ Linux disk fill:
   <tr>
     <td> fillPath </td>
     <td> System path to fill. </td>
-    <td> Path to a valid directory. For more information, go to <a href= "#fill-path">fill path.</a></td>
+    <td> Path to a valid directory. </td>
   </tr>
   <tr>
     <td> fillStorage </td>
     <td> Amount of storage to be filled. </td>
-    <td> Can be specified in bytes (b/B), kilobytes (k/K), megabytes (m/M), gigabytes (g/G), or percentage (%) of available storage. If no unit is provided, the value is assumed to be in bytes. Example values: <code>30m</code>, <code>1G</code>, <code>35%</code>, etc. Default: 50%. For more information, go to <a href= "#fill-storage">fill storage.</a></td>
+    <td> Can be specified in bytes (b/B), kilobytes (k/K), megabytes (m/M), gigabytes (g/G), or percentage (%) of available storage. If no unit is provided, the value is assumed to be in bytes. Example values: <code>30m</code>, <code>1G</code>, <code>35%</code>, etc. Default: 50%. </td>
   </tr>
   <tr>
     <td> dataBlockSize </td>
     <td> Size of each data block used to fill up the disk. </td>
-    <td> Can be specified in bytes (b/B), kilobytes (k/K), megabytes (m/M), or gigabytes (g/G). If no unit is provided, the value is assumed to be in bytes. Example values: <code>30m</code>, <code>500k</code>, <code>1G</code>, etc. Default: 256 KB. For more information, go to <a href= "#data-block-size">data block size.</a></td>
+    <td> Can be specified in bytes (b/B), kilobytes (k/K), megabytes (m/M), or gigabytes (g/G). If no unit is provided, the value is assumed to be in bytes. Example values: <code>30m</code>, <code>500k</code>, <code>1G</code>, etc. Default: 256 KB. </td>
   </tr>
   <tr>
     <td> duration </td>
-    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30 s. For more information, go to <a href= "../../chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a> </td>
+    <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
+    <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
   </tr>
   <tr>
     <td> rampTime </td>
-    <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Default: 0 s. For more information, go to <a href= "../../chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a> </td>
+    <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
+    <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
   </tr>
 </table>
 
@@ -74,7 +74,7 @@ metadata:
 spec:
   diskFillChaos/inputs:
     fillPath: "/"
-    duration: 30
+    duration: 30s
 ```
 
 ### Fill storage
@@ -96,7 +96,7 @@ spec:
   diskFillChaos/inputs:
     fillPath: "/"
     fillStorage: 72%
-    duration: 30
+    duration: 30s
 ```
 
 ### Data block size
@@ -119,5 +119,5 @@ spec:
     fillPath: "/"
     fillStorage: 80%
     dataBlockSize: 400k
-    duration: 30
+    duration: 30s
 ```

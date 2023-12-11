@@ -71,7 +71,7 @@ Pipelines executed with custom webhook triggers can override deployment freeze. 
 
 Check the access control for the network.  It could be that the request is blocked on the network side
 
-#### Are there varaibles for account and company name?
+#### Are there variables for account and company name?
 
 `<+account.name>` and `<+account.companyName>`
 
@@ -886,8 +886,6 @@ The concatenation in the expression /tmp/spe/<+pipeline.sequenceId> is not worki
 
 So we can invoke the toString() on the integer value then our expression should work. So the final expression would be /tmp/spe/<+pipeline.sequenceId.toString()>
 
-Also please see the Feature Flag: PIE_EXPRESSION_CONCATENATION
-
 #### Can I use the Service Propogation Feature to deploy dev and prod pipelines without changing critical parameters?
 
 Yes, the Service Propogation allows you to provide fixed critical parameters. Please refer more on this in the following [Documentation 1](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services/) and [Documentation 2](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/overrides-v2/).
@@ -1032,7 +1030,7 @@ For more details please see: [Documentation](https://developer.harness.io/docs/c
 
 #### Service hooks for Kubernetes and Helm deployments to fetch Helm Chart dependencies. 
 
-This is possible, but a Feature Flag ```CDS_K8S_SERVICE_HOOKS_NG``` needs to be enabled. 
+This is possible.
 
 For more details please see: [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks)
 
@@ -1673,9 +1671,6 @@ You can click on 3 dots(kebab menu) from the template library. Then click on the
 #### How to use the output from one stage in the looping strategy of another stage
 You can achieve this by following the steps documented here in this article: https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables
 
-#### How can we use conditionals within variables using JEXL? 
-You can use Ternary operators to achieve this use case.
-
 #### What do the fetch files step do in rollout deployment?
 The Fetch files task in the Rollout Deployment step leverages the GitHub connector configured in the service to fetch the manifests. Harness will also render and resolve any of the Harness variables defined in the values.yaml file of the service and add them to the manifest/Helm chart using Go/Helm templating. 
 
@@ -2091,8 +2086,7 @@ More details here [here](https://developer.harness.io/docs/continuous-delivery/c
 
 #### Can I use AWS CDK provisioning?
 
-Yes, but be aware that AWS CDK provisioning support is behind a Feature Flag. Please reach out to Harness Support for this. 
-Feature Flag: CDS_AWS_CDK
+Yes.
 
 #### I am getting "Backend not initialised error" when running terragrunt plan with specific module?
 
@@ -2335,14 +2329,11 @@ If one feels like an issue for latency in API response receiving please consider
 
 #### How can one use HELM expressions ?
 
-One should have these FFs enabled : `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG` and `CDS_HELM_FETCH_CHART_METADATA_NG`
-They allows you to configure multiple expressions and then resolve the expressions.
 Please follow the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#helm-chart-expressions)
 
 #### How can one use `AWS CDK Infra Provisioning Support` on Harness ?
 
 Harness lets users run AWS CDK Workloads via the Container Based Steps.
-To enable this feature one can request for FF `CDS_AWS_CDK` enabling from Harness.
 Please follow more on this [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/aws-cdk/)
 
 #### Does Microsoft Teams support full Gitops ?
@@ -2806,11 +2797,6 @@ No, it does not necessarily mean that deployments auto-roll back. The action tak
 
 Yes, we can filter deployments if the environments used for the same are marked as `Prod`
 
-#### Is there an API for Post Production Rollback feature ?
-
-No, we don't have any exposed APIs for Post Production Rollback feature
-Please read more on Post Rollback Deployment in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/manage-deployments/rollback-deployments/)
-
 #### Is there a plan to introduce a `cosign` step within deploy stage ?
 
 For users who wish to incorporate image signing into their Continuous Deployment (CD) process, they have the flexibility to utilize our `container` steps as a solution. This approach allows users to sign images before deploying them as needed, providing a customizable and versatile deployment workflow.
@@ -3199,3 +3185,269 @@ Check if port 5985 is opened and test the communication for winrm
 
 #### Reconcile is taking pretty long time while using remote temple stored in git
 Check in network time response for templates to troubleshot if there is any issue/slowness while communicating to git
+
+#### Does Harness allow passing of multi-environment as an expression ?
+
+No, we don’t support passing in multi environment as an expression. The feature will be available soon
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv/)
+
+#### Can one use a Repeat Looping Strategy if the infrastructure definitions are stored in a variable as CSV, and how can one access and perform actions for individual items within the Repeat Loop ?
+
+You can leverage a Repeat Looping Strategy to iterate through infrastructure definitions stored in a CSV variable. Utilize the following YAML snippet:
+```sh
+repeat:
+  items: <+VariableExpression>.split(",")
+```
+
+To access individual items within the Repeat Loop, use the `<+repeat.item>` expression
+
+#### How to create an AWS connector using `aws-iam-authenticator` on EKS Cluster with webIdentityToken ?
+
+Please read how to set AWS connector on EKS Cluster in this [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-elastic-kubernetes-service-eks)
+Also, to align with AWS changes, it's important to note that the previous method of accomplishing this task has been deprecated in `kubectl version 1.21`. To address this, when utilizing the `Iam-authenticator plugin`, it is necessary to create a `Fargate profile` as part of the updated procedure.
+
+#### Is it possible to get a `KUBECONFIG` file in a shell script within Harness for K8s connectors ?
+
+Yes, we have it documentated for the steps. Please refer to the following documentations on [Shell script include infrastructure](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#include-infrastructure-selectors) and [Shell script run K8s](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#running-kubernetes-commands-in-the-shell-script)
+
+#### For Input Sets is there any specific RBAC ?
+
+No, We dont have RBAC for Input Sets. Please read more on input sets in the following [Documentation](https://developer.harness.io/docs/platform/pipelines/input-sets/)
+
+#### What is the oldest version of kubernetes we support for the delegates for firstgen and nextgen ?
+
+Oldest Kubectl Client version being used is `1.16`. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-integrations/)
+
+#### Is there a way to simply update the ECS scaling policy without redeploying the ECS service ?
+
+Many users opt for a shell script approach, where a configuration file is utilized and set as an environment variable. Subsequently, a shell script is crafted to execute the relevant AWS CLI commands, facilitating the update of scaling policies for a deployed service. This versatile method allows for customization and automation across various scenarios and configurations
+
+#### Is it expected that, after pushing a new artifact to an initially empty Docker repository linked to a trigger, the trigger's status shifts from `pending` to `success` only triggering the pipeline upon the second push ?
+
+Upon creating or updating a trigger, there's a five to ten-minute delay before the polling job initiates and the trigger becomes operational. It's advised to wait for this duration before pushing the artifact, according to general recommendations from the deployment platform.
+After 5-10 mins of the trigger status turns success, any tag collected should trigger the pipeline.
+
+#### Can we use Infra variable in service config yaml(Like to use this variable as artefact path etc)
+No the Infra variable will not be available for service config, these Infra variable can be used in deployment manifest etc but not is service config as these variable will resolve in later part of deployment 
+
+#### Can we use Env/Infra etc variable as skip condition for approval stage
+If approval is added as stage then these variables will not be available and only account/org/project or pipeline variables will be available, If you are using approval as step inside Deploy stage than you can access Env/Infra variables as well
+
+#### What is the equivalent variable for  ${artifact.label.get(“labelkey)} In NG
+You can use  `<+artifact.label.get(“labelkey”)>`
+
+### "Is there an expression, such as '<+pipeline.stages.Deploy.strategy.finalStatus>', to get the status of a stage outside of the looping strategy?"
+The expression "<+strategy.currentStatus>" only works within the context of the looping strategy, there is no expression like "<+pipeline.stages.Deploy.strategy.finalStatus>" to get the status of a stage outside of the looping strategy.
+
+You can try using the expression "<+pipeline.stages.STAGE_ID.status>" to get the status of a specific stage.
+
+### Unable to edit Delegate profiles in NextGen
+DelegateProfile is deprecated in Harness NextGen, and you can leverage INIT_SCRIPT to run scripts at delegate startup. There is no option to associate Delegate configurations with delegates in Harness NextGen.
+
+### I have a pipeline containing different stages DEV-QA-UAT-PROD. In UAT I'm using Canary deployment and in PROD it's Blue-Green. In these scenarios how Harness provides proper Roll Back strategies?
+Harness provides a declarative rollback feature that can perform rollbacks effectively in different deployment scenarios.
+ 
+For Canary deployment in UAT, you can define the percentage of traffic to route to the new version and set up conditions to switch traffic between the old and new versions. If an anomaly is detected during the canary deployment, Harness will automatically trigger a rollback to the previous version.
+ 
+For Blue-Green deployment in PROD, you can define the conditions to switch traffic between the blue and green environments. If an issue is detected in the green environment, you can easily switch back to the blue environment using the declarative rollback feature.
+ 
+You can define the failure strategy on stages and steps in your pipeline to set up proper rollback strategies. You can add a failure strategy in the deploy stage by either ignoring the failure for the shell script or getting a manual intervention where you can mark that step as a success. Additionally, you can use the declarative rollback feature provided by Harness to perform rollbacks effectively in different deployment scenarios.
+
+
+### We have a parent pipeline with the child pipelines and wanted to know if there is any built-in variable to check if the pipeline is triggered by another pipeline. 
+There is no built-in variable to check if a pipeline is triggered by another pipeline. Even if a pipeline is triggered by another pipeline, it will still be considered a "Manual" trigger type. You may need to use a custom variable or some other method to track this information.
+
+### After moving the pipeline source code from Inline to Repository. Is there a way to roll back this change as we cannot find it in the UI?
+No, You should not face any issues with the trigger when it comes to inline or remote pipeline. There is no way to roll back. 
+ 
+However, you can copy the yaml from your git and create a new inline pipeline in Harness or you can use the import from remote option and create a new remote pipeline let us know if you encounter any issues with the trigger we will help you with the next steps.
+
+### Is it possible to remove permissible actions from the Wait Step?
+No, it is not possible to remove the permissible actions from the Wait Step. The Wait Step provides the options to Mark as Success and Mark as Failed, which are necessary for the step to proceed with the pipeline execution. 
+
+### How to change the pipeline source code back from the repository to inline? Is there a way to roll back this change as we cannot find it in the UI?
+There is no way to roll back, You can copy the yaml from your git and create a new inline pipeline in Harness or you can use the import from remote option and create a new remote pipeline. 
+
+### Is it possible to remove permissible actions from the Wait Step?
+No, removing the permissible actions from the Wait Step is not possible. The Wait Step provides the options to Mark as Success and Mark as Failed, which are necessary for the step to proceed with the pipeline execution. 
+
+However, you can set a failure strategy for the Wait Step to ensure that the pipeline execution fails if the step is marked as failed. Additionally, you can set a longer timeout duration to ensure that the mandatory waiting time is enforced.
+
+### We want our helm deployments through Harness to wait for the objects to be in the ready state and then only exit with status. Currently, it is executing helm upgrade and exiting but we wanted to run something like this: helm upgrade --install --atomic --timeout 20m <release_name> <chart_name> How can we do this with Harness?
+
+Using --atomic and --timeout flags to the Helm command in the "Command" field of the "Helm Deployment" step. This should work to ensure that the deployment waits for the objects to be in the ready state and then exits with status.
+ 
+However, please note that the --timeout flag specifies the time to wait for any individual Kubernetes operation (like creating a pod or service) to complete, not the time to wait for all objects to be in the ready state. So if you have a large number of objects to deploy, you may need to increase the timeout value accordingly.
+ 
+Also, please make sure that your Helm chart includes the necessary readiness probes for your objects to be considered ready by Kubernetes. Harness will wait for the readiness probes to pass before considering the deployment successful.
+
+### To store my shell script when I use Harness File Store I don’t see any option like Bitbucket, or GitHub.
+As of today, we have only two options to select the shell script provision script. That is inline and Harness file store.
+
+### How can I specify to use the account connector during migration?
+This config will do that  connector-scope: accountIn case you want to do it connector to connector basis you can refer to this - https://harness.github.io/migrator/advanced/overrides-and-settings
+
+### How to download pipeline logs based on the given pipeline execution key?
+You can use the cURL command to download pipeline logs based on the given pipeline execution key. Here's an example command:
+```
+curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT_ID&prefix=PIPELINE_EXECUTION_PREFIX_KEY' \
+  -X 'POST' \
+  -H 'authorization: <Bearer TOKEN>' \
+  -H 'content-type: application/json' \
+  -H 'x-harness-token: <HARNESS-TOKEN>' \
+  --compressed
+  ```
+Replace ACCOUNT_ID, PIPELINE_EXECUTION_PREFIX_KEY, TOKEN, and HARNESS-TOKEN with your own values. You can find the PIPELINE_EXECUTION_PREFIX_KEY by going to the Builds page in Harness and selecting the pipeline execution you want to download logs for. The TOKEN and HARNESS-TOKEN can be obtained by following the steps.
+
+### Is it possible to publish some custom data like outputs from the variables or custom messages, strings (any information basically) in the Artifacts tab?
+The only way to publish data in the Artifacts tab is by providing a URL to a publicly accessible location where the artifact is stored. If you do not have any public buckets, you can consider using a private bucket and generating a pre-signed URL to access the artifact. 
+ 
+This URL can be used in the file_urls setting of the Artifact Metadata Publisher plugin to publish the artifact in the Artifacts tab. Another option is to use a different cloud storage provider that allows you to generate temporary URLs for private objects, such as Google Cloud Storage signed URLs or AWS S3 pre-signed URLs.
+
+### How to pass the dynamic tag of the image from the CI pipeline to the CD Pipeline to pull the image.
+A project or org or account level variable can be created and A shell_script/Run Step can be added in the P1 pipeline to export or output the required variable then the P2 pipeline can access this variable and perform the task based on its value.
+ 
+The shell script will use this API to update the value of the variable - https://apidocs.harness.io/tag/Variables#operation/updateVariable
+
+### "How can I dynamically reference step group IDs within a loop, such as loop_0, loop_1, loop_2, as they change dynamically?"
+You can achieve this usecase using the expression <+execution.steps.step-group-id<+strategy.identifierPostFix>.steps.step-id.output.outputVariables.var>
+
+### How does Harness GitOps ensure consistency between the desired state of infrastructure and its actual state?
+
+Harness GitOps ensures consistency between the desired state of infrastructure and its actual state by continuously monitoring the desired state in Git and syncing it with the live state in the Kubernetes cluster using an operator. 
+
+This ensures that the target state (cluster) is continually converged with the desired state (manifests), making the deployed applications and infrastructures fully-traceable and fully-versioned artifacts.
+
+### How do Harness CD SSH deployments handle authentication and authorization for remote servers?
+To authenticate and authorize remote servers for SSH deployments, Harness CD uses SSH Private Key to authenticate to the remote VM/server. For steps, you can refer to Passwordless SSH using public-private key pairs.
+
+#### How to refer to the name and identifier for Infrastructure Definition using build-in variables from another stage?
+ENV details can be referred from the previous stage using output expressions of that stage.
+
+#### How to Make Two Stages Run on the Same Delegate Pod?
+For your use case to run both stages in one pod, you can refer to this doc - https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/
+With this, you can configure steps in the same pod.
+
+#### How do I pass parameters for the docker run command?
+In the build and push step, we have a section called build arguments, this can be leveraged to pass build arguments.
+To run docker commands, as part of your build process, please refer to this doc - https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage/
+
+#### Why am I not able to execute the pipeline, even if have "execute" permissions?
+We have different scopes under which resources are assigned, if the user running a pipeline that has account-level resources, the user needs view access to those resources as well to execute the pipeline.
+
+#### What events can trigger the execution of rollback strategy steps - an error, like exit code 1, during Terraform plan step execution?
+The Rollback strategy steps can be triggered by various events such as failure of a step or stage, timeout errors, or execution-time input timeout errors.
+Yes, an error during Terraform plan step execution, such as exit code 1, can trigger the Rollback strategy steps.
+
+#### If the fallback strategy steps include only a Terraform rollback step using the same provisioner identifier what will happen?
+During a rollback in Harness, the provisioned infrastructure is reverted to the previous successful version of the Terraform state using configuration files or Terraform configuration from the latest successful deployment with a matching Provisioner Identifier. The rollback is a hard rollback to the exact version of the state provided, without incrementing the state's serial number. The Provisioner Identifier determines what to rollback, and if settings are expressed, Harness uses runtime values when evaluating expressions.
+
+#### Are there any limitations to terraform rollback?
+There are limitations to rollbacks. If, for example, modules 1 and 2 were successfully deployed, and module 3 failed, the rollback will only revert to the successful state of modules 1 and 2. However, if module 3 succeeds, and the subsequent deployment fails, the rollback will only include the state with module 3 deployed, excluding modules 1 and 2. Additionally, rollback is not possible if the Terraform Apply step is run with the Skip state storage option enabled and no Terraform backend is configured in the Terraform files. In such a scenario, using the Rollback step would be incorrectly set up and could lead to unexpected results.
+
+#### How do I use a custom stage to do the Terraform Cloud Run step?
+The run step is only supported in the CI and CD stages. For the custom stage, please use the shell script step.
+
+#### Why do triggers, sometimes stay in the "pending" state for many minutes, perhaps 10-15 minutes or more?
+Whenever a trigger is created or updated, it takes about five to ten minutes for the polling job to start, and for the trigger to be in a working state. Harness recommends that you wait for five to ten minutes after a trigger is created or updated to push the artifact.
+ This seems to be the expected result, it may take 10-15 for the trigger to get active.
+
+#### How do I provide, the Jira project as an expression for the Jira approval step?
+In the Jira approval step For the the Jira project field, we only support fixed and runtime input for now, Expressions are not supported.
+
+#### Why does having a number as a variable type append ".0" to round numbers?
+Number-type variables are always treated as doubles as per design (double-precision floating-point).
+-1.79769313486231E308 to -4.94065645841247E-324 for negative values.
+4.94065645841247E-324 to 1.79769313486232E308 for positive values.
+You can explicitly cast it to an integer-like expression.intValue()
+
+### Are policies supported in a GitOps application?
+OPA policies are not supported in a GitOps application in Harness. Currently, it is supported for pipelines, templates and flags.
+
+### How to disable auto sync for production environments only within the GitOps app
+You can update the RBAC to disable auto-sync for the entire GitOps app, but this may not be ideal if you want to enable auto-sync for other environments within the app.
+
+### How the order or precedence of file in the k8sdeploy component is used when multiple values yaml were used.
+When using multiple values YAML files in Harness Kubernetes Services, the highest priority is given to the last file, and the lowest priority to the first file.
+
+#### How to make Pipeline  input value required?
+You need to select the checkbox "Set Variable as Required During Runtime" after editing the variable
+
+#### Which variable we can use to refer artifact repository 
+You can use variable <+artifacts.primary.repositoryName>
+
+#### Helm Pipeline is failing with helm: not found error
+Check the Helm version you are trying to use is installed on selected delegate and also you can print and check $PATH variable if helm binary path is set correctly
+
+#### Autoscaler manifest file deployment is throwing 400 and failing with  An error occurred while trying to set the rules. The autoscaler responded with: Bad Request Reason
+As we can see that it was failing while setting the rule, so need to validate the Rule section in manifest and you can try applying the manifest directly on cli.
+
+#### Tags are sorted differently in FirstGen and NextGen
+As of today we do not sort on timestamp. It is sorted lexically.
+Also , the artifact collection in First Gen was different.
+We did artifact collection in First Gen and we do not do artifact collection in Next Gen.
+With collection we kept a track on our side by caching which is why we could show the list in sorted manner.
+We do not do that in NG anymore and We make API calls on the fly and show it. 
+Docker does not guarantee an order and there is no timestamp information provided, so we sort lexically. 
+#### Multi-service deploy skipping services in case of a failure for any 1 stage
+Lets take an example that max concurrency is set to 15. 
+As the max concurrency is 15 and the when the first 15 executions started the failure one was running for 4m 57seconds, but other successfully one finished in around 30-40second, say first 15 started, 
+1,2,3,4,5,6,7,8,9,10 ... 14 completed in 30-40seconds so next 16,17,18,---29 will picked as it will always run 15 concurrently, but 15 job is still running. same way the new 14 also completed in 30-40seconds so it picked up next 14 and so on. so till 82 it picked up the job which ran but soon after that the failure one completed and it skipped all the next runs.
+#### Kubernetes Delegate Step Requires Service as Input
+The K8s Delete Step requires a Service because it's configured in a deploy stage. The user needs to provide a service and Harness can delete the namespace, the release name, or a manifest file associated with the Service
+#### Active Service Instances Showing in the Services
+When we do a deployed using Harness. We always will see the Active Instance in thr service based on the deployed. 
+Harness does a sync task every 10mins to the infrastructure where the instances was deployed. 
+If we remove the host , harness will show 0 active instances after the 10min sync runs. 
+#### API to get license count, expiry date
+You can use the licenses API endpoint for Subscription License Count and Subscription end date
+``` 
+curl --location 'https://app.harness.io/gateway/ng/api/licenses/<accountIdentifier>/summary?routingId=<accountIdentifier>&moduleType=CD' \
+--header 'authorization: <Bearer token>' \
+``` 
+The result should be like this:
+``` 
+{
+  "edition": "ENTERPRISE",
+  "licenseType": "PAID",
+  "moduleType": "CD",
+  "maxExpiryTime": <Subscription end date>,
+  "totalWorkload": <Subscription License Count>,
+  "totalServiceInstances": 0
+}
+```
+#### Skip preflight check option diabled for git based pipelines while executing the pipeline
+
+For the pipelines which are stored remotely in git, Skip preflight check option diabled for git based pipelines while executing the pipeline. As pipeline is under git and can go through changes without harness getting involved, Harness will not be able to pre-compute the checks. So we skip it to avoid false positives. 
+ 
+#### Unable to see real time console logs for a pipeline execution.
+
+It could be that you are nopt able to see real time console logs for a pipleine execution but once the pipeline completes it shows all the logs. 
+You can open the devleoper tools and check the network while the pipeline is executing. If you see a failed stream api , then issue most likely is on the proxy settings. You also need to make sure Server-Sent Events are not blocked:
+ 
+Reference : https://stackoverflow.com/questions/13672743/eventsource-server-sent-events-through-nginx
+
+#### How to use the a json type secret value. 
+
+Let's take an example that your secret value is json and you stored it as a secret in Harness. Yoiu should reference it with singlw quote like :
+
+```TEST_KEY='<+secrets.getValue("boa-uat-gcp-key")}>'```
+
+#### Pipelines notiiofcations on slack secret expression for slack webhook url
+
+You can also store the slack webhook url as secret in Harness and then use it for the pipeline notifcations.
+
+Use the below expression : 
+```<+secrets.getValue("slack_webhook_url")>```
+Here the slack_webhook_url is secret stored in Harness which has the real webhook url value. 
+
+#### Unable to delete a service
+
+When you are trying to delete a service and it gives you an error saying it has running insatances. But you have already remove the pipeline/environment etc
+As When you deploy using Harness , Harness runs a perpetal task to validate about the depployed instance using the infrastructure definition. 
+Yoi can either bring down the instance from the infrastucture and then delete the service or use the Force Delete option in Harness if you want to delete the servie but still keep the deployed instance up and running. 
+
+#### Freeze window slack notifictaion
+
+You can setup slack notification on Freeze window enabling. When go set a freeze window , go to notiifcation and select the option "Freeze window is enabled and active" amd under method choose the slack and set the slack webhook url. 
+

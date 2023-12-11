@@ -18,6 +18,19 @@ Overrides can be defined at project, organization, and account levels.
 For information on overrides V1, go to [Services and environments basics](/docs/continuous-delivery/get-started/services-and-environments-overview).
 :::
 
+## Permissions
+
+Here are the override types and the permissions you require for each type:
+
+- **Service & Infrastructure Specific**:
+  - `Environment: Create/Edit`
+  - `Service: Create/Edit`
+- **Infrastructure Specific**: `Environment: Create/Edit`
+- **Service Specific**:
+  - `Environment: Create/Edit`
+  - `Service: Create/Edit`
+- **Global Environment**: `Environment: Create/Edit`
+
 ## Limitations
 
 * Runtime inputs are not supported for **Infrastructure Specific** and **Service & Infrastructure Specific** variables.
@@ -57,9 +70,19 @@ Warm regards,
 Harness CD Product and Engineering Team
 
 
-## Video demo
+## Demo Video
 
 <docvideo src="https://www.loom.com/share/a93bd67458784583b4e509c5b30e887a?sid=49124b81-4909-4079-859c-64e8950fffaa" />
+
+### Updated experience since the demo video on 11.26.2023
+
+Now, if Overrides V2 is enabled on your account, it is globally enabled on the account. Harness has removed the per-project opt-in experience because it is in the process of making Overrides V2 the default experience in Harness. If the Overrides V2 experience is enabled on your account, make sure that Harness migrates your existing overrides to the Overrides V2 experience. After the migration, the overrides user interface becomes available on the Overrides tab instead of the Environments tab.
+
+Your existing automation continues to work and the APIs are backward compatible with the V1 experience. 
+
+Harness is also making the following improvements:
+1. Search, filtering, and sorting capabilities on the overrides listing page.
+2. A YAML view for Overrides V2, to aid your understanding of its YAML structure.
 
 ## Override types
 
@@ -141,7 +164,7 @@ To override one or more settings for all services, environments, and infrastruct
 
 The override priority from top to bottom is:  
 
-1. **Infrastructure & Service Specific** overrides
+1. **Service & Infrastructure Specific** overrides
 2. **Infrastructure Specific** overrides
 3. **Service Specific** overrides
 4. **Global Environment** overrides
@@ -153,6 +176,5 @@ Overrides defined at project/organization/account levels have the following over
 1. Project
 2. Organization
 3. Account
-
 
 

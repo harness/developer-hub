@@ -1,6 +1,6 @@
 ---
-title: Map Argo projects to Harness GitOps projects
-description: This topic describes how to manage multiple Argo CD projects within one Harness Project.
+title: Bring Your Own Argo CD into Harness GitOps
+description: Learn how to manage a Bring Your Own Argo CD (BYOA) setup in Harness.
 sidebar_position: 1
 helpdocs_topic_id: gzw782fcqz
 helpdocs_category_id: 013h04sxex
@@ -10,49 +10,59 @@ redirect_from:
   - /docs/continuous-delivery/gitops/multiple-argo-to-single-harness
 ---
 
-This topic describes how to add and manage multiple Argo CD projects within one Harness Project.
+This topic describes how to import your existing Argo CD configuration into Harness GitOps as a Bring Your Own Argo CD (BYOA) setup.
 
-When you install a Harness GitOps Agent, Harness can import your existing Argo CD entities into Harness GitOps. We call this Bring Your Own Argo CD (BYOA).
+In addition, when you install the Harness GitOps Agent in your existing Argo CD cluster as part of BYOA, you can map Argo CD projects to Harness projects. Harness imports all the Argo CD project entities (applications, clusters, repos, etc.) and creates them in Harness automatically.
 
-With a non-BYOA setup, Harness installs Argo CD for you when you install a Harness GitOps Agent. For more information, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent.md).
+Also, whenever new entities are created in the mapped Argo CD projects, they are added to Harness automatically.
 
-In addition, when you install the Harness GitOps Agent in your existing Argo CD cluster, you can map Argo CD projects to Harness Projects. Harness will import all the Argo CD project entities (applications, clusters, repos, etc) and create them in Harness automatically.
+With a standard Harness GitOps Agent installation (non-BYOA), Harness can install and manage Argo CD for you. This scenario is different than a BYOA where you are importing an existing Argo CD configuration into Harness GitOps.
 
-Also, whenever new entities are created in mapped Argo CD projects, they are added to Harness automatically.
+For more information, go to [Install a Harness GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent).
 
-## Install the GitOps Agent at the account or org level
+### Mapping existing Argo CD projects across different Harness scopes
 
-To map Argo CD projects to Harness Projects, you need to install the Harness GitOps Agent at the Harness account or org level. Then you can map the Argo CD projects to any of the Harness Projects in the account or org.
+To map Argo CD projects to Harness projects, you need to install the Harness GitOps Agent from the Harness account or organization level. Then you can map the Argo CD projects to any of the Harness projects in the account or organizations.
 
-If you install the GitOps Agent at the Harness Project level, you can only map to the current Project.
+If you install the GitOps Agent at the Harness project level, you can only map to the current project.
 
-In the following example, we will install the Agent at the Harness account level.
+The following example installs the GitOps Agent at the Harness account level.
 
-## Mapping Argo CD projects to Harness Projects
+## Installing a GitOps Agent in an existing Argo CD setup (BYOA)
 
-The following sections describe how to map Argo CD projects to Harness Projects when installing a new Agent. Mapping Argo CD projects in an existing Agent is covered in [Adding new mappings to existing Agent](#adding_new_mappings_to_existing_agent).
+The following steps show you how to install a GitOps Agent into an existing Argo CD namespace and then map your existing projects to your Harness project.
 
-The following steps show you how to install a GitOps Agent into an existing Argo CD namespace and then map your existing projects to your Harness Project.
-
-1. In your Harness account, click **Account Settings**.
-2. click **GitOps**, and then click **Agents**.
+1. In your Harness account, select **Account Settings**.
+2. Select **GitOps**, and then select **Agents**.
    
    ![](./static/multiple-argo-to-single-harness-64.png)
 
-3. Click **New GitOps Agent**.
-4. In **Agent Installation**, in **Do you have any existing Argo CD instances**, click **Yes**, and then click **Start**.
+3. Select **New GitOps Agent**.
+4. In **Agent Installation**, in **Do you have any existing Argo CD instances**, select **Yes**, and then select **Start**.
    
    ![](./static/multiple-argo-to-single-harness-65.png)
 
-5. In **Name**, enter a name for your agent, such as **byoa-agent**.
-6. In **Namespace**, enter the namespace where Argo CD is hosted. The default is **argocd**.
+5. In **Name**, enter a name for your agent, such as `byoa-agent`.
+6. In **GitOps Operator**, select one of the following:
+
+   * **Argo**. Uses Argo CD as the GitOps reconciler.
+   * **Flux**. Uses Flux as the GitOps reconciler. For more information, go to [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/use-gitops/use-flux).
+
+7. In **Namespace**, enter the namespace where Argo CD is hosted. The default is `argocd`.
    
    ![](./static/multiple-argo-to-single-harness-66.png)
 
-7. Click **Continue**.
-8. In **Review YAML**, click **Download & Continue**.
-9.  Log into the cluster hosting Argo CD.
-10. Run the install command provided in the Agent installer, such as `kubectl apply -f gitops-agent.yml -n argocd`. You'll see output similar to this:
+8. Select **Continue**.
+9. In **Review YAML**, select **Download & Continue**.
+
+   :::note
+
+   Alternatively, the **Helm Chart** option lets you download a `helm-chart` file for the Harness GitOps Agent. You can download this file and install it in your Harness GitOps Agent cluster if you prefer using Helm.
+
+   :::
+
+10. Log in to the cluster hosting Argo CD.
+11. Run the install command provided in the Agent installer, such as `kubectl apply -f gitops-agent.yml -n argocd`. You'll see output similar to this:
     ```bash
     serviceaccount/byoa-agent-agent created  
     role.rbac.authorization.k8s.io/byoa-agent-agent created  
@@ -68,91 +78,41 @@ The following steps show you how to install a GitOps Agent into an existing Argo
     serviceaccount/byoa-agent-agent-upgrader created  
     cronjob.batch/byoa-agent-agent-upgrader created
     ```
-1.  Back in the Harness GitOps Agent installer, click **Continue**.
+12. In the Harness GitOps Agent installer, select **Continue**.
    
    The Agent has registered with Harness.
    
    ![](./static/multiple-argo-to-single-harness-67.png)
 
-2.  Click **Continue**. The **Map Projects** settings appear.
+13.  Select **Continue**. The **Map Projects** settings appear.
 
-<details>
-<summary>BYOA for Argo CD version v2.8.0 or higher </summary>
+:::warning
 
-### New BYOA installation
+Ensure that you deploy only one Harness GitOps Agent per Argo CD namespace. Deploying multiple Agents created in different projects or accounts can lead to unpredictable behavior.
 
-If your existing Argo CD installation is version 2.8.0 or higher, set `redis.compression` to `none` in the ConfigMap `argocd-cmd-params-cm`:
+Harness supports mapping Argo CD projects into Harness projects through the Agent that controls the Argo CD deployment. When importing Argo CD projects, Harness maps Argo CD projects into Harness projects that belong to one account.
 
-```bash
-apiVersion: v1
-kind: ConfigMap
-data:
-  redis.compression: none
-metadata:
-  labels:
-    app.kubernetes.io/name: argocd-cmd-params-cm
-    app.kubernetes.io/part-of: argocd
-  name: argocd-cmd-params-cm
-  namespace: your-argo-namespace
-```
+Enabling multiple Agents in one Argo CD namespace implies cross-account resource sharing which Harness does not support.
 
-After making this change, restart your `argocd-application-controller` and `argocd-repo-server` pods. Once this is done, you may continue to install the Harness GitOps Agent using the steps mentioned earlier.
+:::
 
-### Upgrade Argo CD version for an existing installation
+## Map existing Argo projects
 
-If you are upgrading your Argo CD version in an existing BYOA installation, set `redis.compression` to `none` in the ConfigMap `argocd-cmd-params-cm`.
-Additionally, edit the network policy `argocd-repo-server-network-policy` for your repo server component to allow communication with `argocd-applicationset-controller`:
+To map your existing Argo CD projects to Harness projects, select the Argo CD projects you want to use, and then select the Harness project where you want to map the Argo CD project.
 
-
-```bash
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: argocd-repo-server-network-policy
-  namespace: your-argo-namespace
-spec:
-  ingress:
-  - from:
-    - podSelector:
-        matchLabels:
-          app.kubernetes.io/name: argocd-application-controller
-    - podSelector:
-        matchLabels:
-          app.kubernetes.io/name: argocd-applicationset-controller
-    - podSelector:
-        matchLabels:
-          app.kubernetes.io/name: gitops-agent
-    ports:
-    - port: 8081
-      protocol: TCP
-  - from:
-    - namespaceSelector: {}
-    ports:
-    - port: 8084
-  podSelector:
-    matchLabels:
-      app.kubernetes.io/name: argocd-repo-server
-  policyTypes:
-  - Ingress
-```
-
-</details>
-
-## Map Projects
-
-To map your existing Argo CD projects to Harness Projects, you simply select the Argo CD projects you want to use, and select the corresponding Harness Project to map.
-
-1. In **Map Projects**, in **Select your Argo Projects to Import**, click the Argo CD projects you want to map.
+1. In **Map Projects**, in **Select your Argo Projects to Import**, select the Argo CD projects you want to map.
    
    ![](./static/multiple-argo-to-single-harness-68.png)
 
-2. In each row, select the Argo project and corresponding Harness Project.
+2. In each row, select the Argo project and the Harness project.
    
    ![](./static/multiple-argo-to-single-harness-69.png)
    
-   Do not map the same Argo CD project to multiple Harness Projects.
+   :::note
+   Do not map the same Argo CD project to multiple Harness projects.
+   :::
 
-3. Click **Import & Continue**.
+3. Select **Import & Continue**.
    
    The Argo CD projects are imported.
 
@@ -160,24 +120,24 @@ To map your existing Argo CD projects to Harness Projects, you simply select the
 
    ![](./static/multiple-argo-to-single-harness-70.png)
 
-1. Click **Finish**. The mapping is displayed in the Agent details.
+4. Select **Finish**. The mapping is displayed in the Agent details.
    
    ![](./static/multiple-argo-to-single-harness-71.png)
    
-2. Click **Save**.
+5. Select **Save**.
 
 ## Verify mapping
 
-Next, look in the mapped Harness Project to see the imported Argo CD entities.
+To see the imported Argo CD entities from the mapping, look in the mapped Harness project.
 
-1. In your Harness Project, click **GitOps**, and then click **Applications**.
+1. In your Harness project, Select **GitOps**, and then select **Applications**.
    You can see the imported application.
    
    ![](./static/multiple-argo-to-single-harness-72.png)
 
-2. Click **Settings**, and then click **Repositories**.
+2. Select **Settings**, and then select **Repositories**.
    You can see the imported repositories.
-3. Click **Settings**, and then click **Clusters**.
+3. Select **Settings**, and then select **Clusters**.
    You can see the imported clusters.
 
 Do the same for any other mapped project entities.
@@ -187,20 +147,20 @@ Do the same for any other mapped project entities.
 You can add new mappings to an existing Agent in the Agent's **Mapped Harness Project** settings.
 
 1. In Harness, open an existing Agent.
-2. Click **Edit**. In this example, I already have the Argo CD project **alpha** mapped to the Harness Project **GitOps**.
+2. Select **Edit**. In this example, the Argo CD project **alpha** is mapped to the Harness project **GitOps**.
    
    ![](./static/multiple-argo-to-single-harness-73.png)
    
    Let's add a new mapping.
 
-3. In **Mapped Harness Project**, click **Add**.
-4. In **Map Projects**, in **Select your Argo Projects to Import**, select the new Argo CD project to map. Do not select a project you have already mapped.
-5. Map the new Argo CD project to a Harness Project and click **Import & Continue**.
+3. In **Mapped Harness Project**, select **Add**.
+4. In **Map Projects**, in **Select your Argo Projects to Import**, select an Argo CD project. Do not select a project you have already mapped.
+5. Map the Argo CD project to a Harness project and select **Import & Continue**.
    Do not re-map an existing mapping. Harness will throw an error.
    
    ![](./static/multiple-argo-to-single-harness-74.png)
 
-6. When the import is complete, click **Finish**.  
+6. When the import is complete, select **Finish**.
 
 Both projects are now mapped.
 
@@ -208,102 +168,49 @@ Both projects are now mapped.
 
 ## Adding Argo CD entities to Harness automatically
 
-When an Agent contains Argo CD project mappings to a Harness Project, any new entities added to the Argo CD project are added to the mapped Harness Project automatically.
+When an Agent contains Argo CD project mappings to a Harness project, any new entities added to the Argo CD project are added to the mapped Harness project automatically.
 
 Try adding a new Argo CD repository to the mapped Argo CD project.
 
-Once it's saved in Argo CD, go to Harness and look at the GitOps Repositories in the mapped Harness Project. A new repo is added.
+Once it is saved in Argo CD, go to Harness and look at the GitOps repositories in the mapped Harness project. A new repository is added.
 
 ### Automatically added Argo CD repositories
 
-When adding Argo CD repositories, Harness automatically generates the name of Repository when it's added to Harness. This is necessary because Argo CD has no name setting for its repos.
+When Argo CD repositories are added to Harness, Harness automatically generates a name for each repository. Name generation is necessary because Argo CD has no name setting for its repositories. When generating a name for a repository, Harness removes any dashes from the name of the repository, and then appends an underscore followed by a unique suffix.
 
-The process for generating the name is: take the repo name, remove any dashes, and then add an underscore and a unique suffix.
-
-For example, the Argo CD repo `https://github.com/argoproj/gitops-engine.git` is named `gitopsengine_kmjzyrbs` in Harness
+For example, the Argo CD repository `https://github.com/argoproj/gitops-engine.git` is named `gitopsengine_kmjzyrbs` in Harness.
 
 ![](./static/multiple-argo-to-single-harness-76.png)
 
-### Make sure that your Argo CD entities are visibile in the Harness UI
+### Ensure your Argo CD entities are visible in Harness
 
-In some Argo CD versions, you are not required to specify a project for your entities. However, for the entities to be visible in the Harness UI, you must associate the entities with a project. 
+In some Argo CD versions, you are not required to specify a project for your entities. However, for the entities to be visible in Harness, you must associate the entities with a project.
 
-If you are unable to edit an entity from the Argo CD UI, you can edit that entity in the cluster so that they have a project and other required values. The entities are stored in different formats in the cluster. For example, clusters, repositories, and repository credential templates are stored in `Secret`, and GnuPG keys and repository certificates are stored in `ConfigMap` in the namespace in which Argo CD is installed. 
+If you are unable to edit an entity from the Argo CD UI, you can edit that entity in the cluster so that they have a project and other required values. The entities are stored in different formats in the cluster. For example, clusters, repositories, and repository credential templates are stored in `Secret`, and GnuPG keys and repository certificates are stored in `ConfigMap` in the namespace where Argo CD is installed. 
 
-Edit the respective secret of the entity and add the fields `project` and `name` in the `data` or `stringData` block. For examples, go to [Manage an Argo CD configuration by using Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/manage-argo-configs.md#git-configuration-files).
+Edit the respective secret of the entity and add the fields `project` and `name` in the `data` or `stringData` block. For examples, go to [Manage an Argo CD configuration in Git with Harness GitOps](/docs/continuous-delivery/gitops/connect-and-manage/manage-argo-configs#git-configuration-files).
 
 
-## Creating GitOps Clusters with multiple projects
+## Creating GitOps entities with multiple projects
 
-When you have multiple Argo CD projects mapped to your Harness Project, you can choose which Argo CD project to use when you create a new GitOps Cluster in your Harness Project.
+When you have multiple Argo CD projects mapped to your Harness project, you can choose which Argo CD project to use when you create a new GitOps entity (cluster, repository, or application) in your Harness project.
 
-By default, in the Argo CD console, when you create a cluster it is not associated with an Argo CD project. You can add the cluster using the `argocd cluster add` CLI and its `--project` option.
+By default, in the Argo CD console, when you create a cluster, it is not associated with an Argo CD project. You can add the cluster by using the `argocd cluster add` CLI and its `--project` option.
 
-1. Go to the Harness Project that is mapped to multiple Argo CD projects.
-2. In **Deployments**, click **GitOps**, and then click **Settings**.
-3. Click **Clusters**.
-4. Click **New Cluster**.
-5. Enter a name for the Cluster.
-6. In **GitOps Agent**, select the Agent where you set up the mappings. The **Project** setting appears.
+The following steps are common to all three entities (clusters, repositories, and applications) when you create them in Harness. We will demonstrate this with GitOps clusters:
    
-   If the Agent has only 1 Argo CD project mapped, the **Project** setting is not shown.
+1. While creating a GitOps cluster in the Harness project that is mapped to multiple Argo CD projects, under **GitOps Agent**, select the Agent where you set up the mappings. The **Project** setting appears. <!-- "Agent where"? -->
 
-7. In **Project**, select the Argo CD project with the cluster you want to import.
+   If the Agent has only one Argo CD project mapped, the **Project** setting is not shown.
+
+2. In **Project**, select the Argo CD project with the cluster you want to import.
    
    ![](./static/multiple-argo-to-single-harness-77.png)
 
-8. Click **Continue**.
-9.  Complete the regular steps for adding the resource.
-
-When you are done, the Cluster will appear in the GitOps Cluster list.
-
-## Creating GitOps Repositories with multiple projects
-
-When you have multiple Argo CD projects mapped to your Harness Project, you can choose which Argo CD project to use when you create a new GitOps Repository in your Harness Project.
-
-1. Go to the Harness Project that is mapped to multiple Argo CD projects.
-2. In **Deployments**, click **GitOps**, and then click **Settings**.
-3. Click **Repositories**.
-4. Click **New Repository**.
-5. Select a repo type.
-6. Enter a name for the Repository.
-7. In **GitOps Agent**, select the Agent where you set up the mappings. The **Project** setting appears.
-   
-   If the Agent has only 1 Argo CD project mapped, the **Project** setting is not shown.
-
-8. In **Project**, select the Argo CD project with the repo you want to import.
-   
-   ![](./static/multiple-argo-to-single-harness-78.png)
-
-9.  Enter the **Repository URL** and click **Continue**. You might have multiple repos in that Argo CD project. So the Repository URL is required.
-10. Complete the regular steps for adding the resource.
-
-When you are done, the Repository will appear in the GitOps Repositories list.
-
-## Creating GitOps Applications with multiple projects
-
-When you have multiple Argo CD projects mapped to your Harness Project, you can choose which Argo CD project to use when you create a new GitOps Application in your Harness Project.
-
-1. Go to the Harness Project that is mapped to multiple Argo CD projects.
-2. In **Deployments**, click **GitOps**, and then click **Applications**.
-3. Click **New Application**.
-4. Enter a name for the new Application.
-5. In **GitOps Agent**, select the Agent where you set up the mappings. The **Project** setting appears.
-   
-   If the Agent has only 1 Argo CD project mapped, the **Project** setting is not shown.
-
-6. In **Project**, select the Argo CD project with the application you want to import.
-   
-   ![](./static/multiple-argo-to-single-harness-79.png)
-
-7. Select/create the Harness Service and Environment, and then click **Continue**.
-8. Complete the regular steps for adding the resource.
-
-When you are done, the Application will appear in the GitOps Applications list.
+When you have completed [setting up the cluster](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart#step-3-add-a-harness-gitops-cluster), the cluster appears in the GitOps Cluster list.
 
 ## Notes
 
-* Harness honors Argo CD project permissions. If the project selected for the Harness Application does not have permission for the repository or cluster, then Harness will return a permission error. You will need to go into Argo CD and adjust the projects **scoped repositories** and **destinations**.
-* A non-BYOA setup does not support multiple Argo CD mappings to a single Harness Project. A non-BYOA setup is a setup where Harness installs Argo CD for you when you install a Harness GitOps Agent.
-* If you need to uninstall a GitOps Agent, you can use `kubectl delete` with the same manifest you used to install it. For example, `kubectl delete -f gitops-agent.yml -n argocd`.
+* Harness honors Argo CD project permissions. If the project selected for the Harness application does not have permissions for the repository or cluster, then Harness returns a permissions-related error. You must go to Argo CD and adjust the project's scoped repositories and destinations.
+* A non-BYOA setup does not support mapping multiple Argo CD projects to a single Harness project.
 

@@ -76,18 +76,16 @@ For other codebases, you can use [Run steps](../../run-ci-scripts/run-step-setti
 
 ## Enable Test Intelligence
 
-Using TI doesn't require you to change your build and test processes. To enable TI, you must [use a supported codebase](#supported-codebases-for-test-intelligence), add a Run Tests step, and generate the initial call graph. Test selection is applied on subsequent runs after you generate the initial call graph. For instructions and more information, go to:
+Using TI doesn't require you to change your build and test processes. To enable TI, you must [use a supported codebase](#supported-codebases-for-test-intelligence) and add a Run Tests step to your pipeline. For instructions and more information, go to:
 
 * [Enable TI for Java, Kotlin, or Scala](./ti-for-java-kotlin-scala.md)
 * [Enable TI for C#](./ti-for-csharp.md)
 * [Enable TI for Python](./ti-for-python.md)
 * [Enable TI for Ruby](./ti-for-ruby.md)
 
-After you've successfully enabled TI, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md). You can also configure TI to [ignore tests or files](#ignore-tests-or-files).
+You'll start seeing test selection and time savings on the second run after adding the Run Tests step. The first time you run a pipeline after adding the Run Tests step, Harness creates a baseline for test selection in future runs.
 
-## Test splitting for Test Intelligence
-
-You can use [test splitting with TI](./ti-test-splitting.md) to further reduce test times.
+Once you start saving time with test selection, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md). You can also configure TI to [ignore tests or files](#ignore-tests-or-files).
 
 ## Ignore tests or files
 
@@ -107,3 +105,7 @@ config:
 ## View test reports and test selection
 
 For information about test reports for Test Intelligence, go to [View tests](../viewing-tests.md).
+
+## Troubleshooting Test Intelligence
+
+For troubleshooting guidance related to Test Intelligence, go to [Troubleshoot CI - Test Intelligence issues](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md#test-intelligence-issues).

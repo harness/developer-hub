@@ -227,18 +227,7 @@ spec:
          value: "https://app.harness.io/gratis/log-service/"  
    
 ---  
-   
-apiVersion: v1  
-kind: Service  
-metadata:  
- name: delegate-service  
- namespace: harness-delegate-ng  
-spec:  
- type: ClusterIP  
- selector:  
-   harness.io/name: custom-del  
- ports:  
-   - port: 8080
+
 ```
 
 Run the following to apply it on the cluster.

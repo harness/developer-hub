@@ -258,7 +258,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 
 ```yaml
               - step:
-                  type: Run Ruby Tests
+                  type: Run Tests
                   name: Run_Ruby_Tests
                   identifier: Run_Ruby_Tests
                   spec:
@@ -275,7 +275,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 
 ```yaml
               - step:
-                  type: Run Ruby Tests
+                  type: Run Tests
                   name: Run_Ruby_Tests
                   identifier: Run_Ruby_Tests
                   spec:

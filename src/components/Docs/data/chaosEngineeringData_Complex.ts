@@ -83,6 +83,13 @@ export const featuredTutorials: CardItem[] = [
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/",
         },
         {
+          title: "Windows faults",
+          module: MODULES.ce,
+          description:
+            "Execute Windows chaos faults",
+          link: "/docs/chaos-engineering/technical-reference/chaos-faults/windows/",
+        },
+        {
           title: "Load faults",
           module: MODULES.ce,
           description:

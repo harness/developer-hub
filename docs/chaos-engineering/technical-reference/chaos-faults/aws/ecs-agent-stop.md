@@ -10,6 +10,9 @@ ECS agent stop disrupts the state of infrastructure resources. This fault:
 
 ![ECS Agent Stop](./static/images/ecs-agent-stop.png)
 
+:::tip
+This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](./ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
+:::
 
 ## Use cases
 ECS agent stop halts the agent that manages the task container on the ECS cluster, thereby impacting its delivery. 
