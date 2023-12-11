@@ -100,7 +100,7 @@ Here is an example AWS policy to execute the fault.
         <tr>
             <td> EC2_INSTANCE_ID </td>
             <td> ID(s) of the target EC2 instances. </td>
-            <td> For example: <code>i-044d3cb4b03b8af1f</code>. </td>
+            <td> For example: <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="#multiple-ec2-instances"> EC2 instance ID.</a></td>
         </tr>
         <tr>
             <td> REGION </td>
@@ -118,7 +118,7 @@ Here is an example AWS policy to execute the fault.
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 30 s </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
         </tr>
         <tr>
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -128,17 +128,17 @@ Here is an example AWS policy to execute the fault.
         <tr>
             <td> CPU_CORE </td>
             <td> Number of CPU cores to consume.</td>
-            <td> Default: 0. This means all available CPU cores are consumed. </td>
+            <td> Default: 0. This means all available CPU cores are consumed. For more information, go to <a href="#cpu-core"> CPU core.</a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple instances. </td>
-            <td> Default: parallel. Supports serial and parallel. </td>
+            <td> Default: parallel. Supports serial and parallel sequence. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injecting chaos (in seconds). </td>
-            <td> For example, 30 s. </td>
+            <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
         </tr>
     </table>
 
