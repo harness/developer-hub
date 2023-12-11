@@ -174,7 +174,7 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
 5. Optional: Deselect **Purge Secrets**.
 
-   This option is selected by default. When you purge a deleted secret, it will be permanently deleted and cannot be recovered.
+   This option is selected by default and purges deleted secrets instead of soft deleting them. For more information, go to [Purge deleted secret](https://learn.microsoft.com/en-us/rest/api/keyvault/secrets/purge-deleted-secret/purge-deleted-secret) in the Microsoft documentation.
 
 6. Click **Continue**.
 
