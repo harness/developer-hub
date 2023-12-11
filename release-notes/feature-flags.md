@@ -19,11 +19,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## December 2023
 
-### Ruby SDK
+### .NET SDK
 
-#### Version 1.2.1
+#### Version 1.4.0
 
- - Used pessimistic version operator for the minor versions.
+ - Added the `WaitForInitialization()` method and have deprecated the InitializeAndWait() method. 
 
 ## November 2023
 
@@ -108,6 +108,10 @@ Fixed issues
  - Set default log level to WARNING 
 
 ### Ruby SDK
+
+#### Version 1.2.1
+
+ - Used pessimistic version operator for the minor versions.
 
 #### Version 1.2.0
 
