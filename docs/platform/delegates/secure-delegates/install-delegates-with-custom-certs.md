@@ -724,7 +724,7 @@ To add self-signed certificates for delegate upgrader, do the following:
                    defaultMode: 400
       ```
 
-### Install a non-root Docker delegate with custom certificates
+## Install a non-root Docker delegate with custom certificates
 
 If the delegate cannot run the delegate container as a root user but requires a custom CA, you can add custom CA bundle files to the delegate image and run a `load_certificates.sh` script on the files.
 
