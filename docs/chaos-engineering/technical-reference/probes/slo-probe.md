@@ -65,9 +65,9 @@ Listed below is the probe schema for the SLO probe, with properties shared acros
    </td>
    <td>Mandatory
    </td>
-   <td><code>httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe</code>
+   <td><code>httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe. </code>
    </td>
-   <td>The <code>type</code> supports four types of probes. It can one of the httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe.
+   <td>The <code>type</code> supports five types of probes: httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe.
    </td>
   </tr>
   <tr>
@@ -79,7 +79,7 @@ Listed below is the probe schema for the SLO probe, with properties shared acros
    </td>
    <td><code> EOT, Edge, Continuous, OnChaos</code>
    </td>
-   <td>The <code>mode</code> supports five modes of probes. SLO Probe supports EOT mode since the SRM API is called post the chaos execution.
+   <td>The <code>mode</code> supports four modes of probes. SLO Probe supports EOT mode since the SRM API is called post the chaos execution.
    </td>
   </tr>
     <tr>
