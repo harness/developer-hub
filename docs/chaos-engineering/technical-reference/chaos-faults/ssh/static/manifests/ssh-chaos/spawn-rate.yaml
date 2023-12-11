@@ -1,0 +1,17 @@
+# provide number of spawned users (users per second)
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: load-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: locust-loadgen-chaos
+    spec:
+      components:
+        env:
+        - name: SPAWN_RATE
+          value: '100'
+        - name: HOST
+          value: 'https://www.google.com'
