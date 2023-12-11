@@ -540,6 +540,8 @@ spec:
 
 It offers the mechanism to validate TLS certifications for the Prometheus server. You can supply the `cacert` or the client certificate and client key, to perform the validation.
 
+Please take note that the CA certificate file must be incorporated into the experiment pod as either a configMap or secret. The volume name (configMap or secret) and mountPath should be specified within the chaosengine at the `spec.components.secrets` path.
+
 Use the following example to tune this:
 
 ```yaml
@@ -558,6 +560,10 @@ spec:
   experiments:
   - name: pod-delete
     spec:
+      components:
+        secrets:
+          - name: ca-cert
+            mountPath: /etc/config
       probe:
       - name: "check-probe-success"
         type: "promProbe"
