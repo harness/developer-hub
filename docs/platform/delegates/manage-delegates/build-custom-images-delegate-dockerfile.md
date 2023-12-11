@@ -88,7 +88,9 @@ To build your custom delegate image, do the following:
    
    USER 1001
    ```
-
+   
+   This copies all the certificates from the local ./my-custom-ca directory to /opt/harness-delegate/my-ca-bundle/ directory inside the container.
+   
    :::info caution
    Don't copy your certificates to the folder `/opt/harness-delegate/ca-bundle` folder. This folder is reserved for storing additional certificates to install the delegate.
 
