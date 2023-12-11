@@ -64,12 +64,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Java SDK
 
+### Version 1.4.0
+
+ - Updated the percentage rollout hash to match GoLang SDK.
+ - Dropped SSE event log down from `INFO` to `DEBUG`.
+
 #### Version 1.3.1
 
  - Added Java 21 Support.
  - Marked private attributes not working. 
  - Improved stream restart logic. 
-
+ 
 ### Node.js SDK
 
 #### Version 1.4.0
