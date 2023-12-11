@@ -47,7 +47,7 @@ We have added data points for git based datasources (GitHub, GitLab, etc.), to b
 
 6. Since I'm trying to track to Java Version of my project using the bazelrc file which mentions my java version as `build --java_language_version=17` and the corresponding Regex Pattern to be used for the same is `^build --java_language_version=(\d+)`
 
-:::Note
+:::info
 
 Here, we need to group the string pattern which we want to match using `()` for example in the above example we have grouped the number `(\d+)` another example is if we would try to match this string `go 1.21` in a go.mod file, the corresponding regex would be `^go\s(\d+\.\d+)$` another regex pattern example for package.json file content `"eslint": "^7.7.0",` is `"eslint":\s"\^(\d+\.\d+\.\d+)",`
 
