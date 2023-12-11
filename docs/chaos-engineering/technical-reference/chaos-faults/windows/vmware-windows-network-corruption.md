@@ -80,7 +80,7 @@ stringData:
       <tr>
         <td> DESTINATION_IPS </td>
         <td> Comma-separated list of destination IPs to corrupt. </td>
-        <td> For example, <code>10.0.0.1,10.0.0.2</code>. For more information, go to <a href="destination-ips"> destination IPs.</a> </td>
+        <td> For example, <code>10.0.0.1,10.0.0.2</code>. For more information, go to <a href="#destination-ips"> destination IPs.</a> </td>
       </tr>
       <tr>
         <td> NETWORK_PACKET_CORRUPTION_PERCENTAGE </td>
