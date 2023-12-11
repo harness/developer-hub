@@ -8,6 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Data retention for Harness products is different depending on the Harness product and plan you are using. For example, Harness CD and CCM have different data retentions.
+Pipeline execution data is stored for a maximum of 6 months.
+
+Data retention for other Harness products differs by product and the plan you are subscribed to. For example, Harness CD and CCM have different data retentions.
 
 To see the data retention for each product and plan, see [Harness Pricing](https://harness.io/pricing/?module=cd) and look for **Data Retention**.
