@@ -27,6 +27,8 @@ Review the notes below for details about recent changes to Harness Internal Deve
 🌟 "Ho, ho, ho! Santa's elves aren't the only ones delivering gifts this season! 🎅 In our latest release, we're decking the IDP with some shiny new home page and jolly additions to our scorecards. 
 
 - **Blogs:** [Harness SRM Plugin - Release Announcement](https://www.harness.io/blog/announcing-the-harness-srm-backstage-plugin)
+- **Docs:** [Key Concepts](https://developer.harness.io/docs/internal-developer-portal/key-concepts)
+- **Tutorial:** [How to track migrations using Scorecards](https://developer.harness.io/tutorials/internal-developer-portal/how-to-track-migrations)
 
 #### New features and enhancements
 
@@ -134,7 +136,7 @@ Post-public preview, we've taken your genius tips and mixed them into the Intern
 
 <!-- Oct 16, 2023 -->
 
-IDP has now graduated from Beta into **Public Preview**. During [Unscripted](https://www.unscriptedconf.io/) in September, we made a series of announcements. Here are some quick links for your recap.
+IDP has now graduated from Beta. During [Unscripted](https://www.unscriptedconf.io/) in September, we made a series of announcements. Here are some quick links for your recap.
 
 - [Launch Demo in Keynote](https://youtu.be/6OuK_sl3mLE?feature=shared&t=2065) by Jyoti Bansal and Eric Minick.
 - [Platform Engineering Demo](https://youtu.be/c04F98kS96U?feature=shared&t=534) by Alex Valentine.
