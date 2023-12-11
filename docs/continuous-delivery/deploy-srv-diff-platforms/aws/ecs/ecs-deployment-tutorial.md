@@ -1285,7 +1285,7 @@ Currently, ECS Blue Green service validation is behind the feature flag `CDS_ECS
 
 :::
 
- This feature flag enables some validations to execute before the deployment. Before the deployment, Harness identifies ECS Blue and Green services based on the target group and updates tags accordingly. It then starts the deployment.
+ Harness performs some validations before the deployment. Before the deployment, Harness identifies ECS Blue and Green services based on the target group and updates tags accordingly. It then starts the deployment.
 
  **Blue Green service scenarios**
 
