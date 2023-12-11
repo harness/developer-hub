@@ -45,7 +45,7 @@ In this tutorial, you'll set up a simple [ingestion-only workflow](/docs/securit
 
 ### Set up your codebase
 
-To do this tutorial, you need a codebase connector to your Git repository and an access token. A connector can specify a Git account (https://github.com/my-account) or a specific repository (https://github.com/my-account). 
+To do this tutorial, you need a [codebase connector](/docs/category/code-repositories) to your Git repository and an access token. A connector can specify a Git account (http://github.com/my-account) or a specific repository (http://github.com/my-account/my-repository). 
 
 This tutorial uses the [dvpwa repository](https://github.com/williamwissemann/dvpwa) as an example. The simplest setup is to fork this repository into your Git account and scan the fork. However, you can run your scans on any codebase that uses a language supported by Semgrep.  
 
@@ -227,7 +227,7 @@ Add a step after the `Run` step and configure it as follows:
          - `advanced : ` 
             - `log :` 
               - `level : info`
-              - [`fail_on_severity'](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) ` : critical`
+              - [`fail_on_severity`](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) ` : critical`
          - `ingestion : ` 
             - `file : /harness/ingest/results.sarif` 
 
