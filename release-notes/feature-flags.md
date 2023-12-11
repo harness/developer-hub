@@ -109,6 +109,10 @@ Fixed issues
 
 ### Ruby SDK
 
+#### Version 1.2.1
+
+ - Used pessimistic version operator for the minor versions.
+
 #### Version 1.2.0
 
  - The percentage rollout bucket by logic is now fixed to match Golang SDK.
