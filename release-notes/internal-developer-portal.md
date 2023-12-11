@@ -27,6 +27,8 @@ Review the notes below for details about recent changes to Harness Internal Deve
 🌟 "Ho, ho, ho! Santa's elves aren't the only ones delivering gifts this season! 🎅 In our latest release, we're decking the IDP with some shiny new home page and jolly additions to our scorecards. 
 
 - **Blogs:** [Harness SRM Plugin - Release Announcement](https://www.harness.io/blog/announcing-the-harness-srm-backstage-plugin)
+- **Docs:** [Key Concepts](https://developer.harness.io/docs/internal-developer-portal/key-concepts)
+- **Tutorial:** [How to track migrations using Scorecards](https://developer.harness.io/tutorials/internal-developer-portal/how-to-track-migrations)
 
 #### New features and enhancements
 
