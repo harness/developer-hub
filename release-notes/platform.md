@@ -54,9 +54,10 @@ Below is further explanation for each type of secret manager Harness currently s
    3.  [Assume Role using STS on delegate](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager/#option-assume-role-using-sts-on-delegate): AWS ARN must be stored in Harness Built-in Secret Manager.
 
 2. Harness supports the following five authentication methods for **Hashicorp Vault**:
-   1. Approle secret ID must be stored in the Harness Built-in Secret Manager.
-   2. Token secret ID must be stored in the Harness Built-in Secret Manager.
-   3. AWS Auth secret ID must be stored in the Harness Built-in Secret Manager.
+
+   1. AppRole secret IDs must be stored in the Harness Built-in Secret Manager.
+   2. Token secret IDs must be stored in the Harness Built-in Secret Manager.
+   3. AWS Auth secret IDs must be stored in the Harness Built-in Secret Manager.
    4. Vault Agent: Secret storage is not required in the Harness Built-in Secret Manager.
    5. Kubernetes Auth: Secret storage is not required in the Harness Built-in Secret Manager.
 
