@@ -256,3 +256,9 @@ To resolve this issue, please ensure that your release name falls within the 53 
 
 You can achieve this by using the following expression in **Release Name** to shorten the release name: `<+<+INFRA_KEY>.substring(0,7)>`.
 
+### Troubleshoot 401 Not Authorized issue with Helm connector
+
+First, ensure the credentials that you have passed to the Helm HTTP or OCI Connector are still valid. 
+
+You can also `exec` into your Harness delegate and run the `helm repo add` command on the delegate to manually fetch the repo to see if the delegate can pull it.
+

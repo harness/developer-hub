@@ -75,31 +75,31 @@ stringData:
       <tr>
         <td> MEMORY_CONSUMPTION </td>
         <td> Amount of Memory to consume in MB. </td>
-        <td> Default: 0. </td>
+        <td> Default: 0. For more information, go to <a href="#memory-consumption"> memory consumption.</a></td>
       </tr>
       <tr>
         <td> MEMORY_PERCENTAGE </td>
         <td> Percentage of total Memory to consume. </td>
-        <td> Default: 50. </td>
+        <td> Default: 50. For more information, go to <a href="#memory-percentage"> memory percentage.</a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 60s. </td>
+        <td> Default: 60s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Default: parallel. Supports serial sequence as well. </td>
+        <td> Default: parallel. Supports serial and parallel sequence. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
     </table>
 
-### Memory Consumption
+### Memory consumption
 The `MEMORY_CONSUMPTION` environment variable applies stress on the target Windows VM for a specific duration.
 
 Use the following example to specify Memory consumption:
@@ -126,7 +126,7 @@ spec:
           value: '1024'
 ```
 
-### Memory Percentage
+### Memory percentage
 The `MEMORY_PERCENTAGE` environment variable applies stress on the target Windows VM for a specific duration. It consumes the specified percentage of the total Memory resources.
 
 Use the following example to specify Memory percentage:

@@ -119,6 +119,70 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 
 <StoSettingTargetVariant  />
 
+### Container Image settings
+
+
+#### Type
+
+```mdx-code-block
+import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md';
+```
+
+<StoSettingImageType />
+
+#### Domain
+
+
+```mdx-code-block
+import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domain.md';
+```
+
+<StoSettingImageDomain />
+
+#### Name
+
+```mdx-code-block
+import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md';
+```
+
+<StoSettingImageName />
+
+
+#### Tag
+
+```mdx-code-block
+import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
+```
+
+<StoSettingImageTag />
+
+#### Access ID
+
+```mdx-code-block
+import StoSettingImageAccessID from './shared/step_palette/_sto-ref-ui-image-access-id.md';
+```
+
+<StoSettingImageAccessID />
+
+#### Access Token
+
+```mdx-code-block
+import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-access-token.md';
+```
+
+<StoSettingImageAccessToken />
+
+
+#### Region  
+
+```mdx-code-block
+import StoSettingImageRegion from './shared/step_palette/_sto-ref-ui-image-region.md';
+```
+
+<StoSettingImageRegion />
+
+
+
 
 ### Ingestion settings
 

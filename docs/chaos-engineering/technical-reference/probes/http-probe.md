@@ -73,9 +73,9 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
    </td>
    <td>Mandatory
    </td>
-   <td><code>httpProbe, k8sProbe, cmdProbe, promProbe</code>
+   <td><code>httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe</code>
    </td>
-   <td>The <code>type</code> supports four types of probes. It can one of the httpProbe, k8sProbe, cmdProbe, promProbe
+   <td>The <code>type</code> supports five types of probes: httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe.
    </td>
   </tr>
   <tr>
@@ -87,7 +87,7 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
    </td>
    <td><code>SOT, EOT, Edge, Continuous, OnChaos</code>
    </td>
-   <td>The <code>mode</code> supports five modes of probes. It can one of the SOT, EOT, Edge, Continuous, OnChaos
+   <td>The <code>mode</code> supports five modes of probes: SOT, EOT, Edge, Continuous, and OnChaos. Datadog probe supports EOT mode only.
    </td>
   </tr>
   <tr>
@@ -672,9 +672,9 @@ spec:
           probePollingInterval: 2s
 ```
 
-### TLS With Custom Certificates
+### Headers
 
-It offers the mechanism to validate TLS certifications for the http endpoint. You can supply the `cacert` or the client certificate and client key, to perform the validation.
+Headers for HTTP requests can be specified in a map format within the `headers` path.
 
 Use the following example to tune this:
 
@@ -693,6 +693,63 @@ spec:
   experiments:
   - name: pod-delete
     spec:
+      probe:
+      - name: "send-data-to-backend"
+        type: "httpProbe"
+        httpProbe/inputs:
+          url: "backend.default.svc.cluster.local"
+          headers:
+            Content-Type: application/json
+          auth:
+            type: Basic
+            credentials: "dXNlcm5hbWU6cGFzc3dvcmQ="
+          method:
+            # call http post method and verify the response code
+            post: 
+              # the configMap should be mounted to the experiment which contains http body
+              # use the mounted path here
+              bodyPath: "/mnt/body.yml"
+              # http body content type
+              contentType: "application/json; charset=UTF-8"
+              # criteria which should be matched
+              criteria: "==" # ==, !=, oneof
+              # exepected response code for the http request, which should follow the specified criteria
+              responseCode: "200"
+        mode: "Continuous"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+          probePollingInterval: 2s
+```
+
+### TLS With Custom Certificates
+
+It offers the mechanism to validate TLS certifications for the http endpoint. You can supply the cacert or the client certificate and client key, to perform the validation.
+
+Please take note that the CA certificate file must be incorporated into the experiment pod as either a configMap or secret. The volume name (configMap or secret) and mountPath should be specified within the chaosengine at the `spec.components.secrets` path.
+
+Use the following example to tune this:
+
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      components:
+        secrets:
+          - name: ca-cert
+            mountPath: /mnt
       probe:
       - name: "send-data-to-backend"
         type: "httpProbe"
