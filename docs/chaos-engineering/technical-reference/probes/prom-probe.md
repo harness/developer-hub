@@ -69,9 +69,9 @@ Listed below is the probe schema for the Prometheus probe, with properties share
    </td>
    <td>Mandatory
    </td>
-   <td><code>httpProbe, k8sProbe, cmdProbe, promProbe</code>
+   <td><code>httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe</code>
    </td>
-   <td>The <code>type</code> supports four types of probes. It can one of the httpProbe, k8sProbe, cmdProbe, promProbe
+   <td>The <code>type</code> supports five types of probes: httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe.
    </td>
   </tr>
   <tr>
@@ -83,7 +83,7 @@ Listed below is the probe schema for the Prometheus probe, with properties share
    </td>
    <td><code>SOT, EOT, Edge, Continuous, OnChaos</code>
    </td>
-   <td>The <code>mode</code> supports five modes of probes. It can one of the SOT, EOT, Edge, Continuous, OnChaos
+   <td>The <code>mode</code> supports five modes of probes: SOT, EOT, Edge, Continuous, and OnChaos. Datadog probe supports EOT mode only.
    </td>
   </tr>
   <tr>
@@ -540,6 +540,8 @@ spec:
 
 It offers the mechanism to validate TLS certifications for the Prometheus server. You can supply the `cacert` or the client certificate and client key, to perform the validation.
 
+Please take note that the CA certificate file must be incorporated into the experiment pod as either a configMap or secret. The volume name (configMap or secret) and mountPath should be specified within the chaosengine at the `spec.components.secrets` path.
+
 Use the following example to tune this:
 
 ```yaml
@@ -558,6 +560,10 @@ spec:
   experiments:
   - name: pod-delete
     spec:
+      components:
+        secrets:
+          - name: ca-cert
+            mountPath: /etc/config
       probe:
       - name: "check-probe-success"
         type: "promProbe"

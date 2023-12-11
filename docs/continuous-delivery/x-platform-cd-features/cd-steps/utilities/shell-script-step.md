@@ -144,6 +144,11 @@ print = functools.partial(print, flush=True)
 
 You might have to make similar changes to your script depending on its contents.
 
+:::note
+The color codes that Harness uses for shell script logs is aligned with the I/O stream from the executed command. Typically, stdout is used for logging successful commands, with its logs color-coded to represent informational data. Conversely, stderr is generally used for error logging, with logs color-coded accordingly. However, note that some commands also output successful executions to stderr, and that Harness cannot control this variance in I/O stream usage.
+:::
+
+
 ### Shell Script steps and failures
 
 A failed Shell Script step does not prevent a stage deployment from succeeding.

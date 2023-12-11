@@ -247,6 +247,15 @@ No early access (beta) features are available for Harness Internal Developer Por
 
 The following early access (beta) feature is available for the Harness Security Testing Orchestration module.
 
+### Aqua Security integration
+
+* **Release date:** November 2023
+* **Issue number:** STO-6382
+* **Feature flag:** `STO_STEP_PALETTE_AQUASEC`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks.  (STO-6382)
+
 ### STO Jira integration
 
 * **Release date:** March 2023
@@ -302,7 +311,6 @@ Also, Projects is a new option in the left navigation. Click Projects to view th
 * **GA date:** Early 2023
 * **Early access release date:** November 2022
 * **Issue number:** PL-29459
-* **Feature flag:** `USE_GET_FILE_V2_GIT_CALL`
 
 You can get optimized performance on remote pipelines if you are on delegate version 772xx or higher. If you are on an older delegate version, you can upgrade your delegate for optimized performance.
 

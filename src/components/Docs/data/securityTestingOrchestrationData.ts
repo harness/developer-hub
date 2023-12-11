@@ -9,24 +9,14 @@ import {
   // Featured Tutorials
   export const featuredTutorials: CardItem[] = [
       {
-        title: "Create a standalone STO pipeline",
+        title: "Your first STO pipeline",
         module: MODULES.sto,
         icon: "img/icon_sto.svg",
         description: "Set up a pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.",
         newDoc: true,
         type: [docType.Documentation],
-        time: "8min",
-        link: "/tutorials/security-tests/standalone-pipeline",
-      },
-      {
-        title: "Deploy a Helm Chart using CD Community Edition",
-        module: MODULES.sto,
-        icon: "img/icon_sto.svg",
-        description: "Add a scan step to a CI pipeline and set up the pipeline to fail if a scan finds any show-stopper vulnerabilities.",
-        newDoc: true,
-        type: [docType.Documentation],
-        time: "10min",
-        link: "/tutorials/security-tests/cicd-integrated-pipeline",
+        time: "15min",
+        link: "/tutorials/security-tests/your-first-sto-pipeline",
       },
     ];
     

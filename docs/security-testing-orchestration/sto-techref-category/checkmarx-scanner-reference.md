@@ -258,6 +258,12 @@ You can use this field to provide environment variables to be used during the ex
 Replace `MY_PROXY_ADDRESS` with your proxy address or proxy FQDN, and `MY_PROXY_PORT` with your proxy port.
 If you want to go through an HTTPS proxy, replace `-Dhttp` with `-Dhttps`.
 
+### Exclude issues marked as Not Exploited
+
+You can configure the Checkmarx ingestion step to exclude issues detected by Checkmarx but flagged as Not Exploitable. To enable this setting, add the following key-value pair under **Settings**:
+
+`hide_not_exploitable` : `True`
+
 
 ### Additional Configuration
 

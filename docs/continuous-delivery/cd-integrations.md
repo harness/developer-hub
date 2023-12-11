@@ -50,11 +50,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Store and fetch your <a href="/docs/platform/governance/policy-as-code/configure-gitexperience-for-opa">OPA policies in Git.</a>. <b>This feature is Public Preview.</b> </td>
     </tr>
     <tr>
-        <td>NG_SVC_ENV_REDESIGN</td>
-        <td>Enables <a href="/docs/continuous-delivery/get-started/services-and-environments-overview">Service and Environment V2. </a> <b>This feature is Public Preview.</b> V1 is <a href="/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2">deprecated</a>
-.</td>
-    </tr>
-    <tr>
         <td>NG_CUSTOM_STAGE</td>
         <td>Enables the <a href="/docs/platform/pipelines/add-a-stage/#add-a-custom-stage">Custom stage</a>
  for use in a pipeline. <b>This feature is GA.</b></td>
@@ -183,10 +178,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Adds enhanced error handling for templates by schema validation errors. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>CDS_CONTAINER_STEP_GROUP</td>
-        <td>Enables the <a href="/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups">container-based steps</a> for a CD stage. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG</td>
         <td>Enables steady state check for Helm deployments on Kubernetes clusters using 1.16 or higher. <b>This feature is in Beta.</b> </td>
     </tr>
@@ -197,10 +188,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDS_RESOLVE_OBJECTS_VIA_JSON_SELECT</td>
         <td>Support resolution of objects via the JSON Select Command in the HTTP step. <b>This feature is in Beta.</b></td>
-    </tr>
-    <tr>
-        <td>CDS_SUPPORT_SKIPPING_BG_DEPLOYMENT_NG</td>
-        <td>Enables <b>Skip Unchanged Manifest</b> option in Kubernetes Blue Green Deploy step. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_SUPPORT_EXPRESSION_REMOTE
@@ -216,16 +203,8 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables environment propagation across CD stages. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
-        <td>CDS_HELM_SEND_TASK_PROGRESS_NG</td>
-        <td>For Helm tasks, this enables the sending of task progress events via log streaming. <b>This feature is in Beta.</b></td>
-    </tr>
-    <tr>
         <td>CDS_RECONFIGURE_JIRA_APPROVAL_TIMEOUT</td>
         <td>Reduces timeout for Jira from 5 minutes to 1 minute and allows pausing of approval. <b>This feature is in Beta.</b></td>
-    </tr>
-    <tr>
-        <td>CDS_HELM_FETCH_CHART_METADATA_NG</td>
-        <td>Exposes <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts">Helm Chart expressions</a> for reference in other steps and settings. <b>This feature is in Public Preview.</b></td>
     </tr>
     <tr>
         <td>CDS_NG_SERVICE_PRINCIPAL_FOR_CUSTOM_WEBHOOK</td>
@@ -291,10 +270,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDS_SHELL_VARIABLES_EXPORT</td>
         <td>Export variables in a shell script to either the step group, stage, or pipeline scope. The variable will be accessible using the scope of the variable. For example: <pre>functor.pipeline.&lt;exported_variable&gt;</pre> Exported variables are immutable. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
-        <td>GITOPS_GITHUB_RESTRAINT_FOR_STEPS</td>
-        <td>Throttles GitHub API calls to prevent breach of secondary rate limit. This is use for addressing a Github rate limit issue that users were facing when using multiple GitOps steps in parallel. It adds a default queuing for those steps so only one step executes at a time. This is only applicable for Update Release Repo, Merge PR, and Revert PR steps. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
         <td>PIE_ASYNC_FILTER_CREATION</td>

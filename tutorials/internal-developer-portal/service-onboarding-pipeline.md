@@ -1,7 +1,7 @@
 ---
 title: Create a service onboarding pipeline
 description: Create a basic service onboarding pipeline in Harness IDP
-sidebar_position: 10
+sidebar_position: 1
 ---
 
 <docvideo src="https://www.youtube.com/embed/0GoK3SD1rxs?si=RCMDhlPhoC5qZh3J" />
@@ -337,7 +337,7 @@ Also the token input is used as a paremeter under `steps` as `apikey`
           key: value
           ...
         apikey: ${{ parameters.token }}
-
+```
 This is a custom component we created to authenticate the call to execute the pipeline on the basis of the logged-in user's credentials.
 
 ### Action to trigger the pipeline
@@ -355,3 +355,20 @@ The `spec.steps` field contains only one action, and that is to trigger a Harnes
 Use the URL to the `template.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
 
 Now navigate to the **Create** page in IDP. You will see the newly created template appear. Try it out!
+
+### Unregister/Delete Template
+
+1. Navigate to the **Catalog** page, and select **Template** under Kind. 
+
+![](./static/catalog-navigation.png)
+
+2. Select the Template Name you want to Unregister.
+3. Now on the Template overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
+
+![](./static/unregister-entity.png)
+
+4. Now on the Dialog box select **Unregister Location**. 
+
+![](./static/Unregister-location.png)
+
+5. This will delete the Template. 

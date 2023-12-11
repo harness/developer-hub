@@ -4,12 +4,6 @@ description: Learn the basics of how provisioning works in Harness CD.
 sidebar_position: 1
 ---
 
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Harness provisioning is categorized into the following use cases:
 - **Ad hoc provisioning**: temporary and on-demand provisioning of resources for specific tasks or purposes.
 - **Dynamic infrastructure provisioning**: provision the target deployment environment as part of the same deployment process. Typically, dynamic infrastructure provisioning is for temporary pre-production environments, such as dev, test, and qa. Production environments are usually pre-existing.

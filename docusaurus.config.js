@@ -139,13 +139,13 @@ const config = {
               },
               {
                 // type: "doc",
-                label: 'Manage Service Reliability',
-                to: 'tutorials/service-reliability',
+                label: 'Orchestrate Security Tests',
+                to: 'tutorials/security-tests',
               },
               {
                 // type: "doc",
-                label: 'Orchestrate Security Tests',
-                to: 'tutorials/security-tests',
+                label: 'Secure Supply Chain',
+                to: 'tutorials/secure-supply-chain',
               },
               {
                 // type: "doc",
@@ -154,8 +154,8 @@ const config = {
               },
               {
                 // type: "doc",
-                label: 'Secure Supply Chain',
-                to: 'tutorials/secure-supply-chain',
+                label: 'Manage Service Reliability',
+                to: 'tutorials/service-reliability',
               },
               {
                 // type: "doc",
@@ -190,12 +190,20 @@ const config = {
                 to: 'docs/get-started',
               },
               {
+                label: 'Code Repository',
+                to: 'docs/code-repository',
+              },
+              {
                 label: 'Continuous Integration',
                 to: 'docs/continuous-integration',
               },
               {
                 label: 'Continuous Delivery & GitOps',
                 to: 'docs/continuous-delivery',
+              },
+              {
+                label: 'Infrastructure as Code Management',
+                to: 'docs/infrastructure-as-code-management',
               },
               {
                 label: 'Feature Flags',
@@ -206,28 +214,20 @@ const config = {
                 to: 'docs/cloud-cost-management',
               },
               {
-                label: 'Service Reliability Management',
-                to: 'docs/service-reliability-management',
-              },
-              {
                 label: 'Security Testing Orchestration',
                 to: 'docs/security-testing-orchestration',
               },
               {
-                label: 'Infrastructure as Code Management',
-                to: 'docs/infrastructure-as-code-management',
+                label: 'Software Supply Chain Assurance',
+                to: 'docs/software-supply-chain-assurance',
               },
               {
                 label: 'Chaos Engineering',
                 to: 'docs/chaos-engineering',
               },
               {
-                label: 'Software Engineering Insights',
-                to: 'https://docs.propelo.ai/welcome-to-propelo/',
-              },
-              {
-                label: 'Software Supply Chain Assurance',
-                to: 'docs/software-supply-chain-assurance',
+                label: 'Service Reliability Management',
+                to: 'docs/service-reliability-management',
               },
               {
                 label: 'Continuous Error Tracking',
@@ -238,8 +238,8 @@ const config = {
                 to: 'docs/internal-developer-portal',
               },
               {
-                label: 'Code Repository',
-                to: 'docs/code-repository',
+                label: 'Software Engineering Insights',
+                to: 'https://docs.propelo.ai/welcome-to-propelo/',
               },
               {
                 label: 'Platform',
@@ -361,12 +361,20 @@ const config = {
                 to: 'https://harness.io/products/platform',
               },
               {
+                label: 'Code Repository',
+                to: 'https://gitness.com',
+              },
+              {
                 label: 'Continuous Integration',
                 to: 'https://harness.io/products/continuous-integration',
               },
               {
                 label: 'Continuous Delivery & GitOps',
                 to: 'https://harness.io/products/continuous-delivery',
+              },
+              {
+                label: 'Infrastructure as Code Management',
+                to: 'https://www.harness.io/products/infrastructure-as-code-management',
               },
               {
                 label: 'Feature Flags',
@@ -377,28 +385,32 @@ const config = {
                 to: 'https://harness.io/products/cloud-cost',
               },
               {
-                label: 'Service Reliability Management',
-                to: 'https://harness.io/products/service-reliability-management',
-              },
-              {
                 label: 'Security Testing Orchestration',
                 to: 'https://harness.io/products/security-testing-orchestration',
-              },
-              {
-                label: 'Chaos Engineering',
-                to: 'https://harness.io/products/chaos-engineering',
-              },
-              {
-                label: 'Software Engineering Insights',
-                to: 'https://www.harness.io/products/software-engineering-insights',
               },
               {
                 label: 'Software Supply Chain Assurance',
                 to: 'https://www.harness.io/products/software-supply-chain-assurance',
               },
               {
+                label: 'Chaos Engineering',
+                to: 'https://harness.io/products/chaos-engineering',
+              },
+              {
+                label: 'Service Reliability Management',
+                to: 'https://harness.io/products/service-reliability-management',
+              },
+              {
                 label: 'Continuous Error Tracking',
                 to: 'https://www.harness.io/products/continuous-error-tracking',
+              },
+              {
+                label: 'Internal Developer Portal',
+                to: 'https://www.harness.io/products/internal-developer-portal',
+              },
+              {
+                label: 'Software Engineering Insights',
+                to: 'https://www.harness.io/products/software-engineering-insights',
               },
             ],
           },
@@ -637,6 +649,7 @@ const config = {
     path.join(__dirname, '/plugins/utmcookie-plugin'),
     path.join(__dirname, '/plugins/munity-plugin'),
     path.join(__dirname, '/plugins/feedback-plugin'),
+    path.join(__dirname, '/plugins/scarf-plugin'),
   ],
   clientModules: [require.resolve('./client-modules/FocusOnAnchor')],
 };
