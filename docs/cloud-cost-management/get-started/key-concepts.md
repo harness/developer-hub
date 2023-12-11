@@ -15,7 +15,7 @@ This section explains the key Harness Cloud Cost Management (CCM) concepts that 
 
 ### Node Cost
 
-Node cost is calculated based on the public pricing API of the cloud platform.
+If no cloud connector is configured, node cost is calculated based on the public pricing API of the cloud platform.  If there is a cloud connector configured for either AWS or Azure, cost is trued up.
 
 
 > **☆ NOTE —** For ECS clusters, you can replace nodes with container instances and pods with tasks.
