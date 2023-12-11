@@ -732,7 +732,7 @@ The `load_certificates.sh` script ensures that your CA certificates are:
 
 - Added to the delegate's Java truststore located at `$JAVA_HOME/lib/security/cacerts`.
 - Added to the Red Hat OS trust store.
-- Applied to Harness CI pipelines.
+- Applied to Harness CI, STO, and delegate pipelines.
 
 To build your custom delegate image, do the following:
 

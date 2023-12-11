@@ -64,3 +64,35 @@ docker build -t {TAG} -f Dockerfile --build-arg TARGETARCH=amd64 --build-arg DEL
 ```
 docker build -t {TAG} -f Dockerfile-minimal --build-arg TARGETARCH=amd64 --build-arg DELEGATEVERSION=<version_from_previous_step>
 ```
+
+## Build a custom image with non-root access that includes custom certificates
+
+If the delegate cannot run the delegate container as a root user but requires a custom CA, you can add custom CA bundle files to the delegate image and run a `load_certificates.sh` script on the files.
+
+The `load_certificates.sh` script ensures that your CA certificates are:
+
+- Added to the delegate's Java truststore located at `$JAVA_HOME/lib/security/cacerts`.
+- Added to the Red Hat OS trust store.
+- Applied to Harness CI, STO, and delegate pipelines.
+
+To build your custom delegate image, do the following:
+
+1. Add all of your CA certificates to a local directory.
+
+2. Add the lines below to your delegate Docker file before the `USER 1001` line because root access is required to run the script. Replace the directory paths with your local directory locations.
+
+   ```
+   + COPY <PATH_TO_LOCAL_CERTS_DIRECTORY> <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>
+   
+   + RUN bash -c "/opt/harness-delegate/load_certificates.sh <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>"
+   
+   USER 1001
+   ```
+
+   :::info caution
+   Don't copy your certificates to the folder `/opt/harness-delegate/ca-bundle` folder. This folder is reserved for storing additional certificates to install the delegate.
+
+   :::
+
+3. Build your Docker image.
+
