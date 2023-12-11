@@ -28,7 +28,6 @@ These release notes describe recent changes to Harness Platform.
 ## Important feature change notice
 
 :::info important 
-
 This is a notification for an upcoming feature change aimed at enhancing your experience with Harness. Here's what you need to know:
 
 1. Harness uses connectors to external secret managers (e.g. Google Secret Manager or Hashicorp Vault) to resolve/store secrets used by pipelines and elsewhere in the Harness platform. External secret manager connectors require configuration, including a means to authenticate to the external Secret Manager. Starting **December 11, 2023**, Harness is adding a restriction that users can **only use Harness Built-in Secret Manager to store authentication credentials** for access to the corresponding Secret Manager.
