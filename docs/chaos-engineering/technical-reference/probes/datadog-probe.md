@@ -35,11 +35,11 @@ stringData:
   DD_APP_KEY: "xxxxxxxxxxxxxxxxxxxx"
 ```
 
-  The secret name i.e. <b>datadog-secret</b> needs to be provided while configuring the probe via the `datadogCredentialsSecretName` field.
+  The secret name, that is, <b>datadog-secret</b> has to be provided while configuring the probe using the `datadogCredentialsSecretName` field.
   </TabItem>
 
   <TabItem value="linux" label="Linux">
-  For a Linux chaos infrastructure, the secrets shall be provided using an env file at the following path, which is co-located in the machine where the infrastructure executes:
+  For a Linux chaos infrastructure, the secrets are provided using an environment file at the following path, which is located on the machine where the infrastructure executes:
 
 ```bash showLineNumbers title="/etc/linux-chaos-infrastructure/datadog.env"
 DD_API_KEY="xxxxxxxxxxxxxxxxxxxx"
@@ -52,7 +52,7 @@ DD_APP_KEY="xxxxxxxxxxxxxxxxxxxx"
 ## Defining the probe
 <Tabs>
   <TabItem value="kubernetes" label="Kubernetes" default>
-  For a Kubernetes chaos infrastructure, the probe can be defined at <code>.spec.experiments[].spec.probe</code> path in the chaos engine manifest:
+  For a Kubernetes chaos infrastructure, the probe is defined at <code>.spec.experiments[].spec.probe</code> path in the chaos engine manifest:
 
 ```yaml showLineNumbers
 kind: Workflow
@@ -76,7 +76,7 @@ spec:
 
   </TabItem>
   <TabItem value="linux" label="Linux" default>
-  For a Linux chaos infrastructure, the probe can be defined at <code>.spec.tasks[].definition.chaos.probes</code> path in the Linux chaos experiment manifest:
+  For a Linux chaos infrastructure, the probe is defined at <code>.spec.tasks[].definition.chaos.probes</code> path in the Linux chaos experiment manifest:
 
 ```yaml showLineNumbers
 apiVersion: litmuschaos.io/v1alpha1
@@ -96,7 +96,7 @@ spec:
 </Tabs>
 
 ## Schema
-Listed below is the probe schema for Datadog Probe with common properties shared across all probes and properties unique to Datadog probe.
+Listed below is the Datadog Probe schema with common properties shared across all probes and properties unique to Datadog probe.
 
 <table>
   <tr>
@@ -143,7 +143,7 @@ Listed below is the probe schema for Datadog Probe with common properties shared
   </tr>
 </table>
 
-### Synthetics Test
+### Synthetics test
 
 <table>
   <tr>
