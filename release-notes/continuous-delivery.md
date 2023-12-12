@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-12-04T10:00:15
+date: 2023-12-12T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 7
 ---
@@ -51,11 +51,11 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## December 2023
 
-### Version 818xx
+### Version 81820
 
 #### New features and enhancements
 
-- The Go template binary has been upgraded from version 0.4.4, which used Go version 1.20, to version 0.4.5, which uses Go version 1.21.4. (CDS-83173, ZD-50403) <!-- Reviewed and approved by Aleksa Buha in Slack -->
+- The Go template binary has been upgraded from version 0.4.4, which used Go version 1.20, to version 0.4.5, which uses Go version 1.21.4. (CDS-83173, ZD-50403)
 
 
 #### Fixed issues
@@ -69,43 +69,40 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   The reason for the input set list not changing is that the page header is designed to show the branch on which the pipeline is stored. The page lists all the input sets that have been configured regardless of the branch you select. (CDS-85365, ZD-54302)
 
   This issue has been fixed. Harness no longer allows you to change the branch displayed in the header.  
-<!-- Good PRNS from Vikrant Gupta. Reworded and asked for review in Jira. Waiting. -->
 
 - Harness did not support expressions to identify manifest Ids provided as runtime inputs. Consequently, you could not reference Helm chart metadata in your deployments. The issue occurred when you used multiple Helm chart manifests. (CDS-84663)
 
   This issue has been fixed. You can now access Helm chart metadata before deployment by using the expression `<+manifests.MANIFEST_ID.helm.fieldName>`. In the expression, replace `MANIFEST_ID` and `fieldName` with the appropriate values. If you use multiple Helm charts, the primary manifest is used as runtime input.
   
   This feature is behind the feature flag `CDS_HELM_FETCH_CHART_METADATA_NG`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
-  <!-- Reviewed and approved by Pratysuh Goel in Jira. -->
 
 - If shell script execution fails with an exception such as a step timeout, the delegate logs include the message “Exception in script execution”. This message does not help attempts to determine the root cause. (CDS-85024, ZD-54110)
 
   This issue has been fixed. The delegate logs now include a more meaningful message. 
-<!-- Reviewed and approved by Sarthak Kasat on Slack. -->
 
 - The Jenkins step failed when attempting to resolve secrets in expressions used in its job parameters, and the following message was displayed: `Error occurred while starting Jenkins task java.lang.IllegalArgumentException: Illegal character in query at index` (CDS-84747, ZD-53836)
 
   The issue has been resolved.
 
-  This item requires Harness Delegate version 23.11.818xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Reviewed and approved by Sarthak Kasat in Jira. -->
+  This item requires Harness Delegate version 23.11.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Harness printed logs from the Delete Stack step in the reverse order. (CDS-84744, ZD-53865)
 
   This issue has been fixed. 
 
-  This item requires Harness Delegate version 23.11.818xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Reviewed and approved by Piyush Bhuwalka in Jira. -->
+  This item requires Harness Delegate version 23.11.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - When streaming log messages from PowerShell scripts, Harness streamed only those console logs that had INFO and ERROR severity levels. (CDS-84570, ZD-53860)
 
   This issue has been fixed. Now, Harness forwards console logs that have INFO, WARNING, DEBUG, and ERROR severity levels. 
 
-  This item requires Harness Delegate version 23.11.818xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Good PRNS from Alexandru Casian. Reworded and asked for review in Jira. Waiting. -->
+  This item requires Harness Delegate version 23.11.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - If instance refresh during an ASG deployment took too much time and timed out, a rollback was triggered. If the instance refresh was still in progress when the rollback was triggered, the rollback failed. (CDS-83821)
 
   This issue has been fixed.
 
-  This item requires Harness Delegate version 23.11.818xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Reviewed and approved by Vitalie Safronovici in Jira. -->
+  This item requires Harness Delegate version 23.11.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - For Rancher-based Kubernetes or Native Helm deployments and instance sync, Harness uses Rancher's `generateKubeconfig` API action. A new kubeconfig token is created on the Rancher cluster each time this API is hit. This led to an accumulation of kubeconfig tokens over time on the Rancher cluster. (CDS-83055, ZD-52924)
 
@@ -113,7 +110,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
   To receive this fix, upgrade your delegate to the latest delegate version.
 
-  This item requires Harness Delegate version 23.11.818xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). <!-- Was reviewed and approved by abhinav.singh2@harness.io in Jira, during 816xx. Needed 818xx delegate, so waited until now.  -->
+  This item requires Harness Delegate version 23.11.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 
 ### Version 81709
