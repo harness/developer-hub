@@ -1,7 +1,7 @@
 ---
 title: Upload Artifacts to S3
 description: Upload artifacts to AWS or other S3 providers such as MinIo.
-sidebar_position: 80
+sidebar_position: 32
 helpdocs_topic_id: wdzojt3ep3
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
