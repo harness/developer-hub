@@ -60,7 +60,7 @@ The following network requirements are for connectivity between the Harness Dele
 All network connections from your local network to Harness SaaS are outbound-only.* HTTPS port 443 outbound from the Delegate to Harness.
 :::
 
-- HTTP/2 for gRPC (gRPC Remote Procedure Calls). This is not required for delegate version 23.12.818xx and later.
+- HTTP/2 for gRPC (gRPC Remote Procedure Calls). This is not required for delegate version 23.12.81803 and later.
 - Delegate requirements: The delegate needs API/SSH/HTTP access to the providers you add to Harness, such as:
 	+ Cloud Providers.
 	+ Verification Providers.
@@ -74,7 +74,7 @@ For more information, see [Supported Platforms and Technologies](../../../starth
 ### gRPC Limitations
 
 :::info note
-gRPC is not required for delegate version 23.12.818xx and later.
+gRPC is not required for delegate version 23.12.81803 and later.
 
 :::
 

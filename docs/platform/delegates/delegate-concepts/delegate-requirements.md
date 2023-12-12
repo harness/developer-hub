@@ -71,7 +71,7 @@ All network connections from your local network to Harness SaaS are outbound-onl
 ### gRPC limitations
 
 :::info note
-gRPC connections are not required for delegate version 23.12.818xx and later.
+gRPC connections are not required for delegate version 23.12.81803 and later.
 
 :::
 

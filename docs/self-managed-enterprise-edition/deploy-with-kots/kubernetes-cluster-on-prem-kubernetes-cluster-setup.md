@@ -395,7 +395,7 @@ You can change the settings later in the KOTS admin console **Config** tab:
 #### gRPC and load balancer settings
 
 :::info note
-gRPC settings are not required for delegate version 23.12.818xx and later.
+gRPC settings are not required for delegate version 23.12.81803 and later.
 
 :::
 

@@ -136,7 +136,7 @@ Typically, you will also set up DNS to resolve a domain to the frontend IP, and 
 You also need to open port 9879 on the Load Balancer and map it to port 9879 on the Ingress controller. This is to support gRPC traffic.
 
 :::info note
-This update is not required for delegate version 23.12.818xx and later.
+This update is not required for delegate version 23.12.81803 and later.
 
 :::
 
