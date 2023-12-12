@@ -113,7 +113,7 @@ Add an **Aqua Trivy** step to your pipeline after the DinD background step and c
 Add an **Aqua Trivy** step to your pipeline after the DinD background step and configure it as follows:
 
 
- *  `type:` [`AquaTrivy`](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference)
+ *  `type:` [`AquaTrivy`](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#security-step-settings-for-aqua-trivy-scans-in-sto-legacy)
    *  `name:` A name for the step.
    *  `identifier:` A unique step ID.
    *  `spec :`
@@ -184,7 +184,7 @@ Here's an example:
 
 3. Run the pipeline and then wait for the execution to finish.
 
-   If you used the example image, you'll see that the pipeline failed for an entirely expected reason: you configured the Trivy step is [fail the pipeline](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) if the scan detected any critical vulnerabilities. The final log entry for the Semgrep step reads: `Exited with message: fail_on_severity is set to critical and that threshold was reached.`
+   If you used the example image, you'll see that the pipeline failed for an entirely expected reason: you configured the Trivy step to [fail the pipeline](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) if the scan detected any critical vulnerabilities. The final log entry for the Semgrep step reads: `Exited with message: fail_on_severity is set to critical and that threshold was reached.`
 
    ![pipeline failed, critical issues found](./static/container-scan-trivy/execution-snyk-labs.png)
 
