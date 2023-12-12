@@ -1935,8 +1935,41 @@ You can open the developer tools and check the API call for the error and see th
 It could be possible due to user creation limit. You can eitehr resolve it by removing unused Users from your account or reach out to Harness Support get the limit validated as per your licence. 
 
 
+#### Can we add Custom Selector in the harness delegate chart for legacy delegates?
+
+For legacy delegates we do not have a way to specify delegate selector or delegate tags in the delegate helm chart. We do have an api to get the selectors as well as update it for the delegates. More details can be found here:
+
+https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-delegate-selector-api/
 
 
+#### Can a service account created at project level be assigned permissions to access account level resource ?
+
+We can not create a project level service account and provide permission for account level resources. Hence this will not have access to any account level resources.
+ 
+If you would like to use service account only you can create a account level service account and then give project level role bindings to it corresponding to the project as well as role binding for account level templates.
+
+#### How to run harness docker delegate in detatched mode ?
+
+Docker provides a -d flag option for running the containers in detatched mode. So when we are running the harness delegate docler run command we can add the option to get the console back and the contianer will continue to run in detatch mode. For example below is a sample delegate run command:
+
+```
+
+docker run  --cpus=1 --memory=2g \
+  -e DELEGATE_NAME=docker-delegate \
+  -e NEXT_GEN="true" \
+  -e DELEGATE_TYPE="DOCKER" \
+  -e ACCOUNT_ID=xxx \
+  -e DELEGATE_TOKEN=xxx= \
+  -e DELEGATE_TAGS="" \
+  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.11.81406 -d
+
+```
+
+#### Why the task_failed_total metric for delegate is not repporting data despite step failure ?
+
+
+The task failed is when something unhandled happens, like a NPE in a task or issue at framework level. A valid failure like shell script exited with error code is not a task failure. Prometheus only shows the metric which are at least once recorded.
 
 
 

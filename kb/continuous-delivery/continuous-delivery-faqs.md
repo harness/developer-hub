@@ -3451,3 +3451,66 @@ Yoi can either bring down the instance from the infrastucture and then delete th
 
 You can setup slack notification on Freeze window enabling. When go set a freeze window , go to notiifcation and select the option "Freeze window is enabled and active" amd under method choose the slack and set the slack webhook url. 
 
+#### Can we send pipeline notification for events based on variable expression evaluation?
+
+We do not currently have a way to add a condition based on variable expression evaluation in pipeline. We do have notify step which can be added in the pipeline and we can execute the step based on some condition.
+
+
+#### Can we use variable expression in ecs task service definition and service config definition?
+
+We can add variable expression in the yaml used for task service definition or service config definition. These will be expanded and correspodning evaluated values will be uesd.
+
+#### Why terraform script file is initialising with null value in the path ?
+
+Terraform script directory on delegate is based on some default values like org project however it also has the provisioner identifier in the path. If we are using provisioner identifier with an expression and for some reason the expression resolves to null, we will see a null in the path initialized as well.
+
+#### How to make a  file we create in a step accessible in next step?
+
+If there are multiple pods in a delegate then we can not gurantee the same pod will be selected if the delegate name is being used as a delegate selector. If one step is executed in one pod and the other one on a differnet pod the file will not be accessible. To avoid this scenario we can make use of pod affinfity by using delegate hostname as selector. Below documentation guides on how we can use the same as selector:
+
+https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/
+
+
+#### Why writing the secret to a file and displaying the content of the file in the same step still shows up as masked in log ?
+
+Within the same step context we will still be aware about the secret so it is treated as same in the log. If you still want to see the content in the log you can output the same file in a separate shell step. 
+
+#### Why terraform provider does not allow to change pipeline name in the input set created using terraform provider ?
+
+The input set is associated with specific pipelines. So once it is created it can not be associated with other pipelines. That is why when you are changing the pipeline identifier it is giving you the corresponding error. I can see the same error at my end also if I try to change the pipeline identifier.
+ 
+The other attributes of input set you can change in the yaml like what are the variables and their value but not the pipeline tagged.
+
+
+#### How to read files under project's helm folder during project deployment?
+
+We do not have a way to read the values file directly and access any variables from the same. It can only be read as part of the service deployment.
+ 
+If you need to access the file values you need to pull the file from your repo in a shell script step and then publish the corresponding value as output variable. 
+
+
+#### Does FirstGen support authentication using the GitHub app?
+
+Github_app authentication is only supported for next gen. First gen does not have support for this authentication.
+
+#### What is the difference between git provider and github provider in first gen?
+
+Git provider is platform agnostic and can be used for all the source repos. Github provider is specifically designed for git and to laverage the functionality provided by OPTIMIZED_GOT_FETCH_FILES feature.
+
+
+
+#### Do we have a way to optionally exclude some values file fetch in the manifest based on condition ?
+
+Currently we do not have a way to exclude or make the values file list optional. If you run a helm deployment by specifying a values.yaml and if the yaml does not exist it will fail the deployment.
+
+#### What does the below error in the lambda function deployment signifies ?
+
+`aws/lambda/testLambda-dev already exists in stack arn:aws:cloudformation:us-east-2:xxxxxxxx...`
+
+
+The error comes in scenario where there was a previous failed deployment but the logs still exist in the cloudwatch logs. We need to remove the log and try the deployment again.
+
+
+#### Which certificate harness uses to validate connectivity to terraform Cloud end point while using terraform cloud provider ?
+
+The terraform cloud connector will use the delegate to test the connectivity and for any task run by delegate itslef it will be utilising the jvm truststore for ssl validation of the connection. So if the terraform cloud endpoint is using a self-signed cert we need to update the delegate truststore with the cert detail for the same.

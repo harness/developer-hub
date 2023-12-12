@@ -241,3 +241,7 @@ So it's just the security focused least privileged principle. For example intern
 #### In the metrics available by API, would we be able to determine that a target has evaluated a FF?
 
 Currently we show the total number of evals.
+
+#### Can we call initialize more than once to update attributes?
+
+We do not have a option to do update without closing the sdk. So ee will need to close the SDK and re-init it in the mean time, to force the attributes to update.
