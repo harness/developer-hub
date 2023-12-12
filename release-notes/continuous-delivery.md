@@ -79,6 +79,8 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - If shell script execution fails with an exception such as a step timeout, the delegate logs include the message “Exception in script execution”. This message does not help attempts to determine the root cause. (CDS-85024, ZD-54110)
 
   This issue has been fixed. The delegate logs now include a more meaningful message. 
+  
+  This item requires Harness Delegate version 23.11.818xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - The Jenkins step failed when attempting to resolve secrets in expressions used in its job parameters, and the following message was displayed: `Error occurred while starting Jenkins task java.lang.IllegalArgumentException: Illegal character in query at index` (CDS-84747, ZD-53836)
 
