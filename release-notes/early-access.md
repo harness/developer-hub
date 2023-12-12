@@ -184,7 +184,7 @@ You can now propagate force cool down from primary rule to dependent rules. With
 If green services exist in your Blue Green deployment, you can configure Harness to update those services instead of deleting them and then re-creating them with a new manifest and artifact. Updating existing green services is beneficial because new containers come up before old ones go down. For more information, go to [Update green services](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#update-green-services).
 
 Additionally, before beginning the deployment, Harness validates the blue and green services based on the target group and tags them appropriately. If the validation fails, Harness aborts the deployment. For more information, go to [ECS blue/green service validations](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#ecs-blue-green-service-validation).
-
+ This item requires Harness Delegate version 23.11.818xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 <!-- ## CET early access features
 
 No early access (beta) features are available for the Harness Continuous Error Tracking module. -->
