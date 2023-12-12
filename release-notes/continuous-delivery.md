@@ -154,10 +154,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
   This issue has been fixed. The order of step categories is now Builds, Artifacts, Security, and then Security Tests. 
 
-- Added support to update green service in ECS BG Deployment. (CDS-82763)
-
-  Added validation to check if tags in ECS Service are correct or not on basis of load balancer configurations before starting ECS BG Deployment 
-
 ## November 2023
 
 ### Version 81612

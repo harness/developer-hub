@@ -25,7 +25,7 @@ The following early access (beta) features are available for the Harness Platfor
 ### AIDA:tm: replaces Coveo for support case deflection
 
 * **Release date:** December 2023
-* **Release version:** 818xx
+* **Release version:** 81820
 * **Issue number:** CDS-85267
 * **Feature flag:** CDS_AIDA_SUPPORT_DEFLECTION
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
@@ -176,7 +176,7 @@ You can now propagate force cool down from primary rule to dependent rules. With
 ### Update the Green services in an ECS Blue Green deployment
 
 * **Release date:** December 2023
-* **Release version:** 818xx
+* **Release version:** 81820
 * **Issue number:** CDS-82763
 * **Feature flag:** `CDS_ECS_BG_VALIDATION`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
