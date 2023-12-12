@@ -53,6 +53,12 @@ If the required image and AMI upgrades are not complete by **November 14, 2023**
 
 - The Go template binary has been upgraded from version 0.4.4, which used Go version 1.20, to version 0.4.5, which uses Go version 1.21.4. (CDS-83173, ZD-50403)
 
+- The Access Management page didn't display all **Users** in the list. (PL-43038)
+
+- Fixed the `java.io.InterruptedIOException` message in delegate logs by adding the source URL and removing duplicate error logs. (PL-40118)
+
+      This item requires Harness Delegate version 23.12.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate). 
+
 ### December 4, 2023, Version 81708
 
 #### Fixed issue

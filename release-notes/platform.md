@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-12-04:T10:00:30
+date: 2023-12-12:T10:00:30
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -12,6 +12,7 @@ import TabItem from '@theme/TabItem';
 ```mdx-code-block
 import delete_project from './static/delete-project.png'
 ```
+
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/platform/rss.xml" />
 
@@ -27,8 +28,7 @@ These release notes describe recent changes to Harness Platform.
 
 ## Important feature change notice
 
-:::info important 
-
+:::info important
 This is a notification for an upcoming feature change aimed at enhancing your experience with Harness. Here's what you need to know:
 
 1. Harness uses connectors to external secret managers (e.g. Google Secret Manager or Hashicorp Vault) to resolve/store secrets used by pipelines and elsewhere in the Harness platform. External secret manager connectors require configuration, including a means to authenticate to the external Secret Manager. Starting **December 11, 2023**, Harness is adding a restriction that users can **only use Harness Built-in Secret Manager to store authentication credentials** for access to the corresponding Secret Manager.
@@ -73,7 +73,6 @@ Below is further explanation for each type of secret manager Harness currently s
 
 6. For **Custom Secrets Manager**, if any secret is needed in the template as a variable, then it can only be stored in the Harness Built-in Secret Manager.
 
-
 ## Deprecation notice
 
 The following deprecated API endpoints will no longer be supported:
@@ -82,6 +81,24 @@ The following deprecated API endpoints will no longer be supported:
 - GET api/resourcegroup
 
 ## December 2023
+
+### Version 81820
+
+#### New features and enhancements
+
+- The LDAP configuration wizard now includes a Delegates Setup step, allowing you to select delegates and ensuring that all LDAP delegate tasks go to a particular delegate. (PL-28202)
+
+#### Fixed issues
+
+- There was an issue with the filtering of items that had tags on the delegate list page. This was resolved by adding an implicit tag before filtering the items in the UI. (PL-42743)
+
+   This item requires Harness Delegate version 23.12.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- When the feature flag `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` is enabled and a new user was added on the Account Access Control: Users page, the following message was displayed: "Invitation sent successfully", even though the user was added to the list. (PL-42860)
+
+   This issue has been resolved, and the UI now displays "User added successfully".
+
+   This item requires Harness Delegate version 23.12.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ### Version 81709
 
