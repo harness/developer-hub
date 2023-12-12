@@ -33,16 +33,19 @@ Learn how to connect your code repository to the monitored service. Help your de
 
 
 
-2. Add the following Agent environment variables so that your code repository can map to the service you want to track.
+2. Add source attach information for the agent
 
-  | **Required Environment Variable** | **Description** | **Example** |
-| --- | --- | --- |
-| `ET_REPOSITORY_CONNECTOR_ID` | ID for the code repository conenctor you created | `coderepoconnector`|
-| `ET_REPOSITORY_COMMIT` | CommitHashOrReleaseTag for the code you are want to track. Note that commit and branch both are not required. Only one of them is required. If both fields are provided, then commit takes a higher priority. | `12a69d4c668ce126fc104f4d58f3d7ed85403v1h`|
-| `ET_REPOSITORY_BRANCH` | Name of the branch you are tracking | `pre-prod` |
-| `ET_REPOSITORY_SOURCES_ROOT` | Requires a reference to the repository name; optionally, you can provide additional paths to prepend to the file you want to track | `event-generator/tree/harness/src/main/java` |
+The following agent environment variables can be added so that your code repository can map to the service you want to track. Alternatively, if your project generates multiple jars, you can attach source information with each jar by adding following attributes in the `META-INF/MANIFEST.MF` file in the jar.
 
-  For example:
+
+  | **Required Environment Variable** | **Manifest Attribute** |  **Description** | **Example** |
+| --- | --- | --- | --- |
+| `ET_REPOSITORY_CONNECTOR_ID` | `Harness-Repository-Connector-Id` | ID for the code repository conenctor you created | `coderepoconnector`|
+| `ET_REPOSITORY_COMMIT` | `Harness-Repository-Commit` | CommitHashOrReleaseTag for the code you are want to track. Note that commit and branch both are not required. Only one of them is required. If both fields are provided, then commit takes a higher priority. | `12a69d4c668ce126fc104f4d58f3d7ed85403v1h`|
+| `ET_REPOSITORY_BRANCH` | `Harness-Repository-Branch` | Name of the branch you are tracking | `pre-prod` |
+| `ET_REPOSITORY_SOURCES_ROOT` | `Harness-Repository-Sources-Root` | Requires a reference to the repository name; optionally, you can provide additional paths to prepend to the file you want to track | `event-generator/tree/harness/src/main/java` |
+
+  Example of adding environment variables:
 
 ```
 ENV ET_COLLECTOR_URL=https://collector.et.harness.io/prod1/
@@ -53,6 +56,63 @@ ENV ET_TOKEN=b34*****-****-****-****-***********42a
 ENV ET_REPOSITORY_CONNECTOR_ID=coderepoconnector
 ENV ET_REPOSITORY_BRANCH=pre-prod
 ENV ET_REPOSITORY_SOURCES_ROOT=event-generator/tree/harness/src/main/java
+```
+
+  Example of adding manifest attributes using maven :
+
+  Add this in the `<build>/<plugins>` section of your `pom.xml`
+
+  ```
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-jar-plugin</artifactId>
+  <configuration>
+      <archive>
+          <manifestEntries>
+              <Harness-Repository-Connector-Id>coderepoconnect</Harness-Repository-Connector-Id>
+              <Harness-Repository-Branch>pre-prod</Harness-Repository-Branch>
+              <Harness-Repository-Sources-Root>event-generator/tree/harness/src/main/java</Harness-Repository-Sources-Root>
+          </manifestEntries>
+      </archive>
+  </configuration>
+<plugin>
+  ```
+  Example of adding manifest attributes using gradle:
+
+  Add this in the `build.gradle` file:
+
+```
+jar {
+  manifest {
+    attributes(
+      'Main-Class': 'com.harness.ExceptionGenerator',
+      'Harness-Repository-Connector-Id': 'coderepoconnect',
+      'Harness-Repository-Commit' : "${gitRevision}",
+      'Harness-Repository-Sources-Root': 'event-generator/tree/harness/src/main/java'
+    ) 
+  }
+}
+```
+In the above example, the commit id for the latest commit can be fetched from git using some gradle plugins. For example, the plugin [org.ajoberstar:grgit](https://github.com/ajoberstar/grgit) can be used as follows:
+
+```
+buildscript {
+    repositories {
+    	maven {
+      		url "https://plugins.gradle.org/m2/"
+    	}
+    }
+
+    dependencies {
+        classpath "org.ajoberstar:grgit:1.1.0"
+    }
+}
+ext {
+	// Open the Git repository in the current directory.
+    git = org.ajoberstar.grgit.Grgit.open(file('.'))
+    // Get commit id of HEAD.
+    gitRevision = git.head().id
+}
 ```
 
 3. Restart your application after installing the Error Tracking Agent.
