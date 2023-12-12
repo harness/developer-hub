@@ -57,7 +57,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## December 2023
 
-### Harness version 818xx, Harness Delegate version 23.12.818xx
+### Harness version 81812, Harness Delegate version 23.12.81803
 
 #### Fixed issues
 

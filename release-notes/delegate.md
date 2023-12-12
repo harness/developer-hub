@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-11-29T10:00
+date: 2023-12-12T10:00
 sidebar_position: 4
 ---
 ```mdx-code-block
@@ -35,7 +35,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## December 2023
 
-### Harness version 818xx, Harness Delegate version 23.12.818xx
+### Harness version 81820, Harness Delegate version 23.12.81803
 
 #### Early access features
 

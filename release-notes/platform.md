@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-12-11:T10:00:30
+date: 2023-12-12:T10:00:30
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -82,7 +82,7 @@ The following deprecated API endpoints will no longer be supported:
 
 ## December 2023
 
-### Version 818xx
+### Version 81820
 
 #### New features and enhancements
 
@@ -92,13 +92,13 @@ The following deprecated API endpoints will no longer be supported:
 
 - There was an issue with the filtering of items that had tags on the delegate list page. This was resolved by adding an implicit tag before filtering the items in the UI. (PL-42743)
 
-   This item requires Harness Delegate version 23.12.818xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item requires Harness Delegate version 23.12.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - When the feature flag `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` is enabled and a new user was added on the Account Access Control: Users page, the following message was displayed: "Invitation sent successfully", even though the user was added to the list. (PL-42860)
 
    This issue has been resolved, and the UI now displays "User added successfully".
 
-   This item requires Harness Delegate version 23.12.818xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item requires Harness Delegate version 23.12.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ### Version 81709
 
