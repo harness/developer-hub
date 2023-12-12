@@ -95,7 +95,6 @@ TechDocs uses MkDocs as the static site generator. Visit https://www.mkdocs.org 
 4. In the `metadata.annotations` field, add `backstage.io/techdocs-ref: url:https://github.com/my-org/my-service/tree/master`.
 
 ```YAML
-# Example:
 metadata:
   annotations:
     backstage.io/techdocs-ref: url:https://github.com/backstage/backstage/tree/master/plugins/techdocs-backend/examples/documented-component
