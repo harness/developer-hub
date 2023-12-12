@@ -1,28 +1,18 @@
 ---
-title: Build and Push to GCR (Pending deprecation)
-description: Use a CI pipeline to build and push an image to GCR.
-sidebar_position: 50
-helpdocs_topic_id: gstwrwjwgu
-helpdocs_category_id: mi8eo3qwxm
-helpdocs_is_private: false
-helpdocs_is_published: true
+title: Build and Push to JFrog Docker registries
+description: Use a CI pipeline to build and push an image to a JFrog Docker registry.
+sidebar_position: 26
 ---
 
-:::caution
+This topic explains how to use the [Build and Push an image to Docker Registry step](./build-and-push-to-docker-hub-step-settings.md) to build and push an image to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory) Docker registries.
 
-Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr). The Build and Push to GCR step is pending deprecation. Instead, use the [Build and Push to GAR step](./build-and-push-to-gar.md).
-
-Upon deprecation, backwards compatibility is not guaranteed. You are encouraged to replace Build and Push to GCR steps with Build and Push to GAR steps as soon as possible.
-
-:::
-
-This topic explains how to configure the **Build and Push to GCR** step in a Harness CI pipeline. This step is used to build and push to [Google Container Registry (GCR)](https://cloud.google.com/container-registry).
+For JFrog non-Docker registries, you can use a script in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) to build the artifact, and then use the [Upload Artifacts to JFrog step](./upload-artifacts-to-jfrog.md) to upload the artifact.
 
 You need:
 
-* Access to GCR and a GCR repo.
-* A [Harness CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
-* A [GCP connector](#gcp-connector).
+* Access to a JFrog Artifactory instance with a Docker registry.
+* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
+* A Harness [Docker connector](#docker-connector) configured to your JFrog instance.
 
 ## Kubernetes cluster build infrastructures require root access
 
@@ -32,27 +22,25 @@ If your build runs as non-root (`runAsNonRoot: true`), and you want to run the *
 
 If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
 
-## Add a Build and Push to GCR step
+## Build and push to JFrog Docker registries
 
-In your pipeline's **Build** stage, add a **Build and Push to GCR** step and configure the [settings](#build-and-push-to-gcr-step-settings) accordingly.
+In your pipeline's **Build** stage, add a **Build and Push an image to Docker Registry** step and configure the [settings](#build-and-push-to-docker-step-settings-for-jfrog-docker-registries) for JFrog.
 
-Here is a YAML example of a minimum **Build and Push to GCR** step.
+Here is a YAML example of a **Build and Push an image to Docker Registry** step configured for JFrog:
 
 ```yaml
               - step:
-                  type: BuildAndPushGCR
-                  name: BuildAndPushGCR_1
-                  identifier: BuildAndPushGCR_1
+                  type: BuildAndPushDockerRegistry
+                  name: Build and push to JFrog Docker
+                  identifier: Build_and_push_to_JFrog_Docker
                   spec:
-                    connectorRef: YOUR_GCP_CONNECTOR_ID
-                    host: us.gcr.io
-                    projectID: my_project
-                    imageName: my_image
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
+                    repo: domain.jfrog.io/REPO/IMAGE
                     tags:
                       - <+pipeline.sequenceId>
 ```
 
-When you run a pipeline, you can observe the step logs on the [build details page](../viewing-builds.md). If the **Build and Push to GCR** step succeeds, you can find the uploaded image on GCR.
+When you run a pipeline, you can observe the step logs on the [build details page](../viewing-builds.md). If the **Build and Push** step succeeds, you can find the uploaded image in JFrog.
 
 :::tip
 
@@ -63,43 +51,51 @@ You can also:
 
 :::
 
-## Build and Push to GCR step settings
+## Build and Push to Docker step settings for JFrog Docker registries
 
-The **Build and Push to GCR** step has the following settings. Depending on the stage's build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
+These sections explain how to configure the **Build and Push an image to Docker Registry** step settings for JFrog. Depending on the build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using a VM or Harness Cloud build infrastructure.
 
 ### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** until the step is saved. Once save, the **Id** can't be changed.
 
-### GCP Connector
+### Docker Connector
 
-The Harness GCP connector to use to connect to GCR. The GCP account associated with the GCP connector needs specific roles. For more information, go to [Google Cloud Platform (GCP) connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
+Specify a [Harness Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for JFrog.
 
-This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
+To create this connector:
 
-### Host
+1. Go to **Connectors** in your Harness project, organization, or account resources, and select **New Connector**.
+2. Select **Docker Registry** under **Artifact Repositories**.
+3. Enter a **Name** for the connector. The **Description** and **Tags** are optional.
+4. For **Provider Type**, Select **Other**.
+5. In **Docker Registry URL**, enter your JFrog URL, such as `https://mycompany.jfrog.io`.
+6. In the **Authentication** settings, you must use **Username and Password** authentication.
+   * **Username:** Enter your JFrog username.
+   * **Password:** Select or create a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password corresponding with the **Username**.
+7. Complete any other settings and save the connector. For information all Docker Registry connector settings, go to the [Docker connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 
-The Google Container Registry hostname. For example, `us.gcr.io` hosts images in data centers in the United States in a separate storage bucket from images hosted by `gcr.io`. For a list of Container Registries, go to the Google documentation on [Pushing and pulling images](https://cloud.google.com/container-registry/docs/pushing-and-pulling).
+:::tip JFrog URLs
 
-:::info
+The JFrog URL format depends on your Artifactory configuration, and whether your Artifactory instance is local, virtual, remote, or behind a proxy. To get your JFrog URL, you can select your repo in your JFrog instance, select **Set Me Up**, and get the repository URL from the server name in the `docker-login` command.
 
-The target GCR registry must meet the GCR requirements for pushing images. For more information, go to the Google documentation on [Pushing and pulling images](https://cloud.google.com/container-registry/docs/pushing-and-pulling).
+![](./static/artifactory-connector-settings-reference-09.png)
+
+For more information, go to the JFrog documentation on [Repository Management](https://www.jfrog.com/confluence/display/JFROG/Repository+Management) and [Configuring Docker Repositories](https://www.jfrog.com/confluence/display/RTF/Docker+Registry#DockerRegistry-ConfiguringDockerRepositories).
 
 :::
 
-### Project ID
+### Docker Repository
 
-The [GCP resource manager project ID](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects).
-
-### Image Name
-
-The name of the image you want to build and push to the target container registry.
+The repo where you want to store the image and the image name, for example, `mycompany.jfrog.io/REPO_NAME/IMAGE_NAME`.
 
 ### Tags
 
 Add [Docker build tags](https://docs.docker.com/engine/reference/commandline/build/#tag). This is equivalent to the `-t` flag.
 
 Add each tag separately.
+
+![](./static/build-and-push-to-docker-hub-step-settings-10.png)
 
 :::tip
 
@@ -111,11 +107,11 @@ For example, if you use `<+pipeline.sequenceId>` as a tag, after the pipeline ru
 
 ![](./static/build-and-upload-an-artifact-15.png)
 
-And you can see where the Build ID is used to tag your image:
+And you can see where the `Build Id` is used to tag your image in the container registry:
 
 ![](./static/build-and-upload-an-artifact-12.png)
 
-Later in the pipeline, you can use the same expression to pull the tagged image, such as `myrepo/myimage:<+pipeline.sequenceId>`.
+You can use the same expression to pull the tagged image, such as `namespace/myimage:<+pipeline.sequenceId>`.
 
 :::
 
@@ -133,6 +129,16 @@ The name of the Dockerfile. If you don't provide a name, Harness assumes that th
 
 Enter a path to a directory containing files that make up the [build's context](https://docs.docker.com/engine/reference/commandline/build/#description). When the pipeline runs, the build process can refer to any files found in the context. For example, a Dockerfile can use a `COPY` instruction to reference a file in the context.
 
+:::info Kubernetes cluster build infrastructures
+
+Kaniko, which is used by the **Build and Push** step with Kubernetes cluster build infrastructures, requires root access to build the Docker image. If you have not already enabled root access, you will receive the following error:
+
+`failed to create docker config file: open/kaniko/ .docker/config.json: permission denied`
+
+If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
+
+:::
+
 ### Labels
 
 Specify [Docker object labels](https://docs.docker.com/config/labels-custom-metadata/) to add metadata to the Docker image.
@@ -141,7 +147,7 @@ Specify [Docker object labels](https://docs.docker.com/config/labels-custom-meta
 
 The [Docker build-time variables](https://docs.docker.com/engine/reference/commandline/build/#build-arg). This is equivalent to the `--build-arg` flag.
 
-![](./static/build-and-push-to-gcr-step-settings-23.png)
+![](./static/build-and-push-to-docker-hub-step-settings-11.png)
 
 ### Target
 
@@ -151,9 +157,9 @@ The [Docker target build stage](https://docs.docker.com/engine/reference/command
 
 Use this setting to enable remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in later builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling these steps to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
 
-For **Remote Cache Image**, enter the name of the remote cache registry and image, such as `gcr.io/project-id/<image>`.
+For **Remote Cache Image**, enter the name of the remote cache registry and image, such as `NAMESPACE/IMAGE_NAME`.
 
-The remote cache repository must be in the same account and organization as the build image. For caching to work, the specified image name must exist.
+The remote cache repository must exist in the same host and project as the build image. The repository will be automatically created if it doesn't exist. For caching to work, the entered image name must exist.
 
 ### Run as User
 
@@ -163,7 +169,7 @@ This step requires root access. You can use the **Run as User** setting if your 
 
 If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
 
-### Set container resources
+### Set Container Resources
 
 Set maximum resource limits for the resources used by the container at runtime:
 

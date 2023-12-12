@@ -1,7 +1,7 @@
 ---
 title: Upload Artifacts to GCS
 description: Add a step to upload artifacts to Google Cloud Storage.
-sidebar_position: 60
+sidebar_position: 30
 helpdocs_topic_id: 3qeqd8pls7
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
