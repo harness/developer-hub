@@ -49,6 +49,13 @@ For example, if the step Id is **Apply**, the FQN for the step settings are:
 Currently, this feature is behind the feature flag `CDS_K8S_APPLY_MANIFEST_FROM_SOURCE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
+### Demo Video
+
+<!-- Video:
+https://www.loom.com/share/492afdbb9cb8484980b6d1617830a399?sid=90c41fc9-a556-44e0-82e4-59206bbf493e-->
+<docvideo src="https://www.loom.com/share/492afdbb9cb8484980b6d1617830a399?sid=90c41fc9-a556-44e0-82e4-59206bbf493e" />
+
+
 Harness provides two options for applying Kubernetes manifests:
 
 - **Service Option**: When you configure from the service, you can provide a file path within the manifest source repository configured in the service definition.
