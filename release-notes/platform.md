@@ -13,6 +13,7 @@ import TabItem from '@theme/TabItem';
 import delete_project from './static/delete-project.png'
 ```
 
+
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/platform/rss.xml" />
 
 These release notes describe recent changes to Harness Platform.
