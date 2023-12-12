@@ -17,6 +17,11 @@ import Closeclient from '../shared/close-sdk-client.md'
 
 <Smpno />
 
+# Deprecation Notice
+This React Native SDK for Harness Feature Flags is now deprecated and will no longer be actively maintained.
+We encourage users to migrate to our React SDK. For more information on transitioning to the React SDK,
+please refer to the [React SDK Documentation](/docs/feature-flags/ff-sdks/client-sdks/react-client.md).
+
 
 This topic describes how to use the Harness Feature Flags SDK for your React Native application. 
 
