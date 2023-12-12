@@ -28,6 +28,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - The percentage rollout hash algorithm was slightly different compared to other Feature Flags SDKs, which resulted in a different bucket allocation for the same target. The overall distribution was the same, but this change ensures that the same target will get the same allocation per SDK. 
  - If a custom BucketBy field is set on the web app, but it can’t be found in a target, then the SDK will fall back to bucketing by target identifier for that target and a warning will be logged.
 
+### JavaScript SDK
+
+#### Version 1.21.0
+
+ - Added the `Harness-Target` header.
+
 ### .NET SDK
 
 #### Version 1.4.0
