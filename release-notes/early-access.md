@@ -27,7 +27,7 @@ The following early access (beta) features are available for the Harness Platfor
 * **Release date:** December 2023
 * **Release version:** 81820
 * **Issue number:** CDS-85267
-* **Feature flag:** CDS_AIDA_SUPPORT_DEFLECTION
+* **Feature flag:** `CDS_AIDA_SUPPORT_DEFLECTION`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 AIDA replaces Coveo in proactively assisting you with content recommendations when you are entering a subject for your ticket in the **Submit a ticket** form. 
