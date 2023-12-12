@@ -77,6 +77,12 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
    This issue has been resolved, and the UI now displays "User added successfully".
 
+### Version 23.12.81604
+
+#### Hotfix
+
+- You can now use a Refresh token in the Tanzu connector for all API communications. If a Refresh token isn't provided, Harness will use the username and password for the API calls. (CDS-86689)
+
 ## November 2023
 
 ### Harness version 81612, Harness Delegate version 23.11.81601
