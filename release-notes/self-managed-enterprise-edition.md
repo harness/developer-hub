@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-12-01T10:00
+date: 2023-12-07T10:00
 sidebar_position: 16
 ---
 ```mdx-code-block
@@ -552,6 +552,50 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 - An alignment issue with the **Change Event** card has been fixed to ensure consistent information display. (SRM-15793)
 
 ### Patches
+
+#### December 7, 2023, 0.11.2
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.11.2](https://github.com/harness/helm-charts/releases/tag/harness-0.11.2) |
+| Air Gap Bundle | [0.11.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.11.2) |
+| NG Manager | 81308 |
+| CI Manager | 6602 |
+| Pipeline Service | 1.49.12 |
+| Platform Service | 80800 |
+| Access Control Service | 80600 |
+| Delegate | 23.10.81202 |
+| Change Data Capture | 81510 |
+| Test Intelligence Service | release-221 |
+| NG UI | 0.368.21 |
+| LE NG | 67903 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.11.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.11.2/sto_images.tgz" \
+  .
+```
+
+#### Fixed issues
+
+- Earlier, two-factor authentication emails were only sent through CurrentGen delegates, causing email failures for NextGen. (PL-42263, PL-42486, ZD-52646)
+
+   This issue has been resolved. Now, when you send two-factor authentication emails via NextGen, the emails are sent successfully.
+
+- Harness disabled external Stripe HTTP requests in Harness Manager version 80219. (PLG-3000, ZD-52239)
 
 #### December 1, 2023, 0.11.1
 

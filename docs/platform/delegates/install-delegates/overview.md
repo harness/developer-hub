@@ -1,6 +1,6 @@
 ---
-title: Delegate installation overview
-description: How to install Harness delegates using Helm, Terraform, Kubernetes, or Docker
+title: Delegate installation options
+description: Install Harness Delegates using Helm, Terraform, Kubernetes, or Docker
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -105,3 +105,4 @@ To install the Docker delegate using Podman, do the following:
    ```
 
 7. Run the command.
+

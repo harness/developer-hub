@@ -8,4 +8,4 @@ metadata:
 spec:
   processKillChaos/inputs:
     processCommand: "/usr/lib64/thunderbird/thunderbird"
-    duration: 30
+    duration: 30s

@@ -16,7 +16,7 @@ import Closeclient from '../shared/close-sdk-client.md'
 
 <Smpno />
 
-This topic describes how to use the Harness Feature Flags Java SDK for your Java application.
+This topic describes how to use the Harness Feature Flags Python SDK for your Python application.
 
 For getting started quickly, you can use our [sample code from the Python SDK README](https://github.com/harness/ff-python-server-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [Python SDK GitHub Repository.](https://github.com/harness/ff-python-server-sdk)
 

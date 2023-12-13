@@ -55,12 +55,12 @@ stringData:
         <tr> 
             <td> AZURE_WEB_APP_NAMES </td>
             <td> Name of the Azure web application services to target.</td>
-            <td> Comma-separated names of web applications. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-web-app-stop#stop-web-app-by-name"> stop Azure web app by name.</a></td>
+            <td> Comma-separated names of web applications. For more information, go to <a href="#stop-web-app-by-name"> stop Azure web app by name.</a></td>
         </tr>
         <tr>
             <td> RESOURCE_GROUP </td>
             <td> Name of the resource group for the target web applications. </td>
-            <td> All the web applications must belong to the same resource group. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-web-app-stop#stop-web-app-by-name"> resource group field in the YAML file. </a></td>
+            <td> All the web applications must belong to the same resource group. For more information, go to <a href="#stop-web-app-by-name"> resource group field in the YAML file. </a></td>
         </tr> 
     </table>
     <h3>Optional fields</h3>
@@ -73,22 +73,22 @@ stringData:
         <tr> 
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
+            <td> Defaults to 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
         </tr>
         <tr> 
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance power offs (in seconds).</td>
-            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+            <td> Defaults to 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to <code>parallel</code>. Also supports <code>serial</code> sequence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Defaults to <code>parallel</code>. Also supports <code>serial</code> sequence. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injecting chaos (in seconds). </td>
-            <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+            <td> For example, 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
         </tr>
     </table>
 

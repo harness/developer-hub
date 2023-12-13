@@ -1,7 +1,7 @@
 ---
 title: Build images without pushing
 description: You can build images without pushing them.
-sidebar_position: 110
+sidebar_position: 41
 ---
 
 In Harness CI, you can build images without pushing them. For example, you can use your CI pipeline to test a Dockerfile from your codebase to verify that the resulting image is correct before you push it to your Docker repository.

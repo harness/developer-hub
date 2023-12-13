@@ -8,12 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-
-Currently, this feature is behind the feature flag `NG_SVC_ENV_REDESIGN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Harness can deploy a Docker image or non-containerized artifact for your Azure Web App. You can deploy to slots, perform traffic shifting, and swap slots. Harness supports common deployment strategies (basic, canary, and blue green).
 
 This topic walks you through setting up and run an Azure Web App deployment in Harness.
@@ -170,12 +164,6 @@ When you're done, infrastructure will look something like this:
 <docimage path={require('./static/azure-web-apps-tutorial-162.png')} width="60%" height="60%" title="Click to view full size image" />
 
 ### Dynamically provisioned Web App infrastructure
-
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Here is a summary of the process to dynamically provision the target infrastructure for a deployment:
 

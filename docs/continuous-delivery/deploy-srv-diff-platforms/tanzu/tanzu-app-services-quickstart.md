@@ -6,10 +6,6 @@ sidebar_position: 1
 
 This topic shows you how to deploy a publicly available application to your Tanzu Application Service (TAS, formerly PCF) space by using any [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md) in Harness.
 
-:::note
-Currently, this feature is behind feature flags `NG_SVC_ENV_REDESIGN`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
-:::
-
 ## Objectives
 
 You'll learn how to:
@@ -380,12 +376,6 @@ The target space is your TAS space. This is where you will deploy your applicati
 11. Select **Save**.
 
 ### Dynamically provisioned TAS infrastructure
-
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
 

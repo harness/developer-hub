@@ -190,6 +190,10 @@ For the password, select or create a new Harness [Encrypted Text secret](../../.
 
 This is not used, typically. Some Connectors have Basic authentication disabled by default. The cluster would need Basic authentication enabled and a specific username and password configured for authentication.For OpenShift or any other platform, this is not the username/password for the platform. It is the username/password for the cluster.
 
+:::info Kubernetes Authentication Deprecation Notice
+Basic authentication is not supported in Kubernetes client version 1.19 and later. 
+:::
+
 ## Service Account
 
 Add the service account token for the service account. The token must be pasted in decoded in the Encrypted Text secret you create/select. The service account does not have to be associated with a delegate.
@@ -353,3 +357,5 @@ connector:
             username: john.doe@example.io  
             passwordRef: account.gcpexample
 ```
+
+
