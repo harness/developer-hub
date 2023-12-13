@@ -34,6 +34,14 @@ export const certifications: CardItem[] = [
     link: "/certifications/cloud-cost-management",
     numberOfCerts: 1,
   },
+  {
+    title: "Security Testing Orchestration Certifications",
+    module: MODULES.sto,
+    description:
+      " Seamlessly integrate security scanners and orchestrate tests anywhere across your build pipelines.",
+    link: "/certifications/sto",
+    numberOfCerts: 1,
+  },
 
   // {
   //   title: "Chaos Engineering Certifications",
