@@ -59,9 +59,15 @@ The response contains a link to download the requested log file.
 
 Currently, the simplified log key to download logs is behind the feature flag `PIE_SIMPLIFY_LOG_BASE_KEY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+This feature requires delegate version 23.10.81010 or later.
+
+After enabling this feature flag, you must re-run your pipelines to apply the change.
+
 :::
 
 The simplified log key makes it easier to call the Log Service API.
+
+The log download endpoint is asynchronous; the downloadable log file is available after the endpoint returns a `success` status only.
 
 #### cURL command to download pipeline logs
 
