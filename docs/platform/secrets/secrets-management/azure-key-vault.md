@@ -69,7 +69,7 @@ In the **Select** drop-down, select the name of your Azure App registration.
 
 ![](../../secrets/static/azure-key-vault-06.png)
 
-Click **Save**.
+Select **Save**.
 
 On the **Access control (IAM)** page, select the **Role assignments** tab. Make sure your new role now appears under the **Reader** group.
 
@@ -176,7 +176,7 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
    This option is selected by default and purges deleted secrets instead of soft deleting them. For more information, go to [Purge deleted secret](https://learn.microsoft.com/en-us/rest/api/keyvault/secrets/purge-deleted-secret/purge-deleted-secret) in the Microsoft documentation.
 
-6. Click **Continue**.
+6. Select **Continue**.
 
 ### Reference JSON secrets
 
@@ -200,20 +200,19 @@ import Refjson from '/docs/platform/shared/reference-via-json.md';
 
 ## Set up delegates
 
-In **Delegates** **Setup**, enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific delegates that you want to allow to connect to this Connector. Click **Continue**.
+In **Delegates** **Setup**, enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific delegates that you want to allow to connect to this Connector. Select **Continue**.
 
 ## Set up vault
 
-Click **Fetch Vault**.
+Select **Fetch Vault**.
 
 After a slight delay, the **Vault** drop-down list populates with vaults corresponding to your client secret. Select the Vault you want to use.
 
-Click **Save and Continue**.
+Select **Save and Continue**.
 
 ## Test connection
 
-Once the Test Connection succeeds, click Finish. You can now see the Connector in Connectors.
-
+Once the Test Connection succeeds, select **Finish**. You can now see the connector in **Connectors**.
 
 :::important
 Important: Harness tests connections by generating a fake secret in the Secret Manager or Vault. For the Test Connection to function successfully, make sure you have the Create permission for secrets.  
