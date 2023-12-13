@@ -81,7 +81,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### Hotfix
 
-- You can now use a Refresh token in the Tanzu connector for all API communications. If a Refresh token isn't provided, Harness will use the username and password for the API calls. (CDS-86689)
+- You can now use a Refresh token to authenticate with the Tanzu connector. This Refresh token is used by Harness to verify your Tanzu instance. However, you still need to provide a username and password to authenticate with Tanzu. If a Refresh token isn't provided, Harness will use the username and password for the API calls. (CDS-86689)
 
 :::info note
 Currently, this feature is behind the feature flag `CDS_CF_TOKEN_AUTH`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
