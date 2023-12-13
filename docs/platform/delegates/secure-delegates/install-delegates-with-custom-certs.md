@@ -115,7 +115,7 @@ To install a Kubernetes delegate with custom certificates, do the following:
           runAsUser: 0
    ```
 
-### Kubernetes delegate with custom certificates YAML example
+#### Kubernetes delegate with custom certificates YAML example
 
 ```yaml
 apiVersion: apps/v1
@@ -222,7 +222,7 @@ spec:
                  defaultMode: 400
 ```
 
-## Add self-signed certificates to delegate upgrader
+#### Add self-signed certificates to delegate upgrader
 
 For Kubernetes delegates, Harness supports self-signed certificates for delegate upgrader. For more information on delegate upgrades, go to [Delegate automatic upgrades and expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/).
 
@@ -288,7 +288,7 @@ To add self-signed certificates for delegate upgrader, do the following:
 
    This adds your volume mount to the `/opt/harness-delegate/ca-bundle/` directory.
 
-## Add self-signed certificates to delegate upgrader
+#### Add self-signed certificates to delegate upgrader
 
 For Helm delegates, Harness supports self-signed certificates for delegate upgrader. For more information on delegate upgrades, go to [Delegate automatic upgrades and expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/).
 
