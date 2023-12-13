@@ -199,9 +199,9 @@ Currently, Refresh Token Authentication support is behind the feature flag `CDS_
 
 :::
 
-Harness offers the ability to provide a Refresh Token to the Tanzu Connector. We use this refresh token to authenticate with your Tanzu instance. You must still provide a username and password to authenticate with tanzu. We need that credential to fetch a new refresh token. Once the refresh token is provided in the connector, Harness leverages the token to authenticate to perform each task. When Harness performs each step, Harness will authenticate with the refresh token and then perform the tanzu step defined in the pipeline. 
+Harness provides the option to use a Refresh token to authenticate with the Tanzu connector. This Refresh token is used by Harness to verify your Tanzu instance. However, you still need to provide a username and password to authenticate with Tanzu. These credentials are used to obtain a new Refresh token. Once the Refresh token is provided in the connector, Harness uses it to authenticate and perform each task. Harness will authenticate with the Refresh token before executing each Tanzu step defined in the pipeline.
 
-You can retrieve the refresh token via the config.json you receive when authenticating with the cf client. You can pass the refresh token as a secret stored in the Harness Secrets Manager or your secrets manager of choice. 
+You can retrieve the Refresh token via the `config.json` file you receive when authenticating with the CF client. You can pass the Refresh token as a secret stored in the Harness Secrets Manager or your secrets manager of choice. 
 
 #### Demo Video
 
