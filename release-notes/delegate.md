@@ -77,7 +77,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
    This issue has been resolved, and the UI now displays "User added successfully".
 
-### Version 23.12.81604
+### Version 23.12.81804
 
 #### Hotfix
 
