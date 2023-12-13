@@ -16,7 +16,19 @@ Before starting, ensure you have:
 
 ![](./static/connector-sc.png)
 
-3. (Optional) If your catalog-info.yaml does not live at the root of the source code, then ensure the backstage.io/source-location annotation appropriately points to the correct source code location.
+3. (Optional) If your catalog-info.yaml does not live at the root of the source code, then ensure the `backstage.io/source-location` annotation appropriately points to the correct source code location.
+
+:::info
+
+### How to check `backstage.io/source-location`
+
+Catalog -> Software Component -> Inspect Entity -> Raw YAML
+
+![](./static/source-loc.png)
+
+![](./static/rawyaml.png)
+
+:::
 
 4. A [registered software component](https://developer.harness.io/tutorials/internal-developer-portal/register-component-in-catalog) for which you want to track migration.
 
@@ -38,7 +50,24 @@ We have added data points for git based datasources (GitHub, GitLab, etc.), to b
 3. Select the git provider datasource, for example GitHub along with `extract string from a file` data point to extract the version number. 
 
 ### Branch Specification
-4. Specifying the Branch: If you know the branch name, specify it directly. If not, the system will use the branch where the catalog-info.yaml is stored.
+4. Specifying the Branch: If you know the branch name, specify it directly. If not, the system will use the branch from `backstage.io/source-location` annotation. 
+
+:::info
+
+### How to add `backstage.io/source-location`
+
+Ideally `backstage.io/source-location` is taken from the root of the `catalog-info.yaml` in case your services don't live there, you need to add an annotation as mentioned below in your `catalog-info.yaml` 
+
+```YAML
+#Example
+metadata:
+  annotations:
+    backstage.io/source-location: url:https://github.com/my-org/my-service/
+```
+
+A `Location` reference that points to the source code of the entity (typically a `Component`). Useful when catalog files do not get ingested from the source code repository itself. If the URL points to a folder, it is important that it is suffixed with a `'/'` in order for relative path resolution to work consistently.
+
+:::
 
 ### File Specification
 5. Defining the File: Specify the filename with its extension or provide the relative path from the root folder. For example, use .bazelrc, package.json, manifest/Dockerfile
