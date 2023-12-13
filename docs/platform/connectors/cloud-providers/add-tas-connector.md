@@ -190,3 +190,22 @@ Perform the following steps to add a TAS connector.
     
     The connector now appears in the **Connectors** list.
 
+
+### Refresh Token Support
+
+:::note
+
+Currently, Refresh Token Authentication support is behind the feature flag ``. Contact [Harness Support](mailto:support@harness.io) to enable the feature. The delegate version required is `818XX` to leverage this feature.
+
+:::
+
+Harness offers the ability to provide a Refresh Token to the Tanzu Connector. We use this refresh token to authenticate with your Tanzu instance. You must still provide a username and password to authenticate with tanzu. We need that credential to fetch a new refresh token. Once the refresh token is provided in the connector, Harness leverages the token to authenticate to perform each task. When Harness performs each step, Harness will authenticate with the refresh token and then perform the tanzu step defined in the pipeline. 
+
+You can retrieve the refresh token via the config.json you receive when authenticating with the cf client. You can pass the refresh token as a secret stored in the Harness Secrets Manager or your secrets manager of choice. 
+
+#### Demo Video
+
+<!-- Video:
+https://www.loom.com/share/f0231a6142324d8e8b780d332d04bb78?sid=c2f2c774-8262-449b-bdc4-fd79a3938b34-->
+<docvideo src="https://www.loom.com/share/f0231a6142324d8e8b780d332d04bb78?sid=c2f2c774-8262-449b-bdc4-fd79a3938b34" />
+
