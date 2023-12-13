@@ -195,7 +195,7 @@ Perform the following steps to add a TAS connector.
 
 :::note
 
-Currently, Refresh Token Authentication support is behind the feature flag ``. Contact [Harness Support](mailto:support@harness.io) to enable the feature. The delegate version required is `818XX` to leverage this feature.
+Currently, Refresh Token Authentication support is behind the feature flag `CDS_CF_TOKEN_AUTH`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. The delegate version required is `818XX` to leverage this feature.
 
 :::
 
