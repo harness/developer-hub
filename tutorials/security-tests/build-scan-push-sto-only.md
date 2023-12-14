@@ -9,8 +9,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-# Create a build-scan-push pipeline (STO only)
-
 <ctabanner
   buttonText="Learn More"
   title="Continue your learning journey."
@@ -20,15 +18,25 @@ import TabItem from '@theme/TabItem';
   target="_self"
 />
 
-In this tutorial, you'll create an end-to-end pipeline that builds an image and pushes it to a container _only_ if the codebase and image contain no critical vulnerabilties. This tutorial combines the pipelines from the [SAST code scans using Semgrep](/tutorials/security-tests/sast-scan-semgrep) and [Container image scans with Aqua Trivy](/tutorials/security-tests/container-scan-aqua-trivy) tutorials into one end-to-end workflow:
+In this tutorial, you'll create an end-to-end pipeline that builds an image and pushes it to Docker Hub _only_ if the codebase and image contain no critical vulnerabilties. This pipeline uses two free tools:
 
-- First, a Run step scans the codebase and a Semgrep step ingests the results (ingestion-only workflow). 
+- [Semgrep](https://semgrep.dev), a popular [SAST](https://www.gartner.com/en/information-technology/glossary/static-application-security-testing-sast) tool for detecting vulnerabilities in application code. Semgrep can scan a [wide variety of languages](https://semgrep.dev/docs/supported-languages/) and includes a [free version](https://semgrep.dev/pricing/) for individuals who want to scan files locally. 
 
-- If the code has no critical vulnerabilities, another Run steps builds the image. 
+- [Aqua Trivy](https://www.aquasec.com/products/trivy/), a popular open-source tool for scanning container images.
 
-- An Aqua Trivy step scans the image and ingests the results (orchestrated scan). 
+Once you complete this tutorial, you'll have a complete end-to-end pipeline that you can easily adapt to a wide variety of use cases. You can also copy/paste the [YAML pipeline example below](#yaml-pipeline-example) into  Harness and update it with your own infrastructure, connectors, and access tokens.
 
-- If the image has no critical vulnerabilities, it pushes the image to Docker Hub. (Optional) 
+ The following steps describe the workflow:
+
+1. A Run step scans the codebase using Semgrep and saves the results to a [SARIF](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) file. 
+
+2. A Semgrep step ingests the scan results ([ingestion-only workflow](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline)).
+
+3. If the code has no critical vulnerabilities, another Run steps builds the image. 
+
+4. An Aqua Trivy step scans the image and ingests the results ([orchestration workflow](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto)). 
+
+5. If the image has no critical vulnerabilities, another Run step pushes the image to Docker Hub. 
 
 ![scan-build-scan-push tutorial pipeline](./static/sbsp-sto-only/00-pipeline-steps.png)
 
@@ -38,20 +46,19 @@ In this tutorial, you'll create an end-to-end pipeline that builds an image and 
 
   - A Harness account and STO module license.
   - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
-  - A basic understanding of key STO concepts and good practices is recommended. Here are some good resources: 
-    - [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline)
-    - [Key Concepts in STO](/docs/category/key-concepts-in-sto)
-  - Git requirements — This tutorial assumes you have the following:
+  - A basic understanding of key STO concepts and good practices is recommended. This tutorial builds on the [SAST code scans using Semgrep](/tutorials/security-tests/sast-scan-semgrep) and [Container image scans with Aqua Trivy](/tutorials/security-tests/sast-scan-semgrep).
+  - A Semgrep account login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub. 
+  - GitHub requirements — This tutorial assumes you have the following:
     - A GitHub account and access token. 
-    - A [GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) to your Git repository and an access token. The connector should specify your account (`http://github.com/my-account`) but not a specific repository (`http://github.com/my-account/my-repository`). 
+    - A [GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) that specifies your account (`http://github.com/my-account`) but not a specific repository (`http://github.com/my-account/my-repository`). 
     - Your GitHub account should include a repository with a Dockerfile for creating an image.
     
       This tutorial uses the [dvpwa repository](https://github.com/williamwissemann/dvpwa) as an example. The simplest setup is to fork this repository into your GitHub account. 
 
   - Docker requirements — The last step in this pipeline pushes the built image to your image registry. To do this step, you must have the following:
-      - A GitHub account and access token. 
+      - A Docker Hub account and access token. 
       - A [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/) is required to push the image. 
-  - Your GitHub and Docker Hub access tokens must be stored as [Harness secrets](/docs/platform/secrets/add-use-text-secrets).
+  - Your Semgrep, GitHub, and Docker Hub access tokens must be stored as [Harness secrets](/docs/platform/secrets/add-use-text-secrets).
 
 
 ## Set up your pipeline
@@ -66,7 +73,7 @@ Do the following:
 
    1. Enter a **Stage Name**.
    
-   2. Disable **Clone Codebase**. You will add a Run step to download the codebase later.
+   2. Disable **Clone Codebase**. You will add a Run step to clone the codebase later.
 
 4. In the Pipeline Editor, go to **Overview** and add the following shared path:
 
@@ -183,11 +190,6 @@ Add a `Run` step to your `SecurityTests` stage and configure it as follows:
 
       -  `envVariables:`
          -  `SEMGREP_APP_TOKEN: <+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")>`
-      -  `resources:`
-         -  `limits: `
-             -  `memory: 4096Mi`
-
-             You might want to reserve more memory to [speed up the scan](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines). This setting applies to Kubernetes and Docker infrastructures only. 
 
 
 
@@ -232,6 +234,12 @@ Here's an example:
 
 Now that you've added a step to run the scan, it's a simple matter to ingest it into your pipeline. Harness provides a set of customized steps for popular scanners such as Semgrep. 
 
+:::note
+
+It's generally good practices to set the [fail_on_severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) for every scan step. Leave this setting at **None** for now so you can run and test the entire-end-to-end workflow. 
+
+:::
+
    ```mdx-code-block
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
@@ -253,7 +261,11 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
 
    4. Ingestion File = `/harness/results.sarif` 
 
+   <!-- 
+   
    5. [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) = **Critical**
+
+   -->
 
 ```mdx-code-block
   </TabItem>
@@ -276,7 +288,7 @@ Add a step after the `Run` step and configure it as follows:
          - `advanced : ` 
             - `log :` 
               - `level : info`
-              - [`fail_on_severity`](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) ` : critical`
+              - [`fail_on_severity`](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) ` : none`
          - `ingestion : ` 
             - `file : /harness/ingest/results.sarif` 
 
@@ -310,6 +322,18 @@ Here's a YAML example:
   </TabItem>
 </Tabs>
 ```
+### Run the pipeline and verify your results
+
+This is a good time to run your pipeline and verify that it can scan the repo and ingest the results correctly. 
+
+1. Click **Run** and set the `GITHUB_REPO` and `GITHUB_BRANCH` variables. (You don't need to set the image variables.)
+
+   If you forked the [dvpwa repository](https://github.com/williamwissemann/dvpwa) repo into your GitHub account and want to use that, set the fields like this:
+
+   - `GITHUB_REPO` = **dvpwa**
+   - `GITHUB_BRANCH`= **master**
+
+2. Click **Run Pipeline** and wait for the execution to finish. You can then view your scan results in [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results). 
 
 
 ## Add the image build step
@@ -362,7 +386,7 @@ Assuming that the Semgrep scanner detected no critical vulnerabilities, the next
   <TabItem value="YAML" label="YAML">
 ```
 
-Add a `Run` step after the Bandit scan step and configure it as follows:
+Add a `Run` step and configure it as follows:
 
  *  `type:` [`Run`](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings)
    *  `name:` A name for the step.
@@ -397,33 +421,32 @@ Add a `Run` step after the Bandit scan step and configure it as follows:
 Here's an example:
 
 ```yaml
-              - step:
-                  type: Run
-                  name: build_local_image
-                  identifier: build_local_image
-                  spec:
-                    connectorRef: dbothwelldocker
-                    image: docker
-                    shell: Sh
-                    command: |-
-                      # wait until the dind service is available
-                      while ! docker ps ;do
-                        echo "Docker not available yet"
-                      done
-                      echo "Docker service is ready"
+
+- step:
+    type: Run
+    name: build_local_image
+    identifier: build_local_image
+    spec:
+      connectorRef: mydockerhubconnector
+      image: docker
+      shell: Sh
+      command: |-
+        # wait until the docker service is available
+        while ! docker ps ;do
+          echo "Docker not available yet"
+        done
+        echo "Docker service is ready"
 
 
-                      # build and tag the local image
-                      cd /shared/customer_artifacts/<+stage.variables.GITHUB_REPO>
-                      docker login --username="<+stage.variables.DOCKERHUB_USERNAME>" --password="<+stage.variables.DOCKERHUB_PAT>" 
-                      docker build -t <+stage.variables.DOCKER_IMAGE_LABEL> .
-                      docker tag <+stage.variables.DOCKER_IMAGE_LABEL> <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>:<+stage.variables.DOCKER_IMAGE_TAG>
+        # build and tag the local image
+        cd /shared/customer_artifacts/<+stage.variables.GITHUB_REPO>
+        docker login --username="<+stage.variables.DOCKERHUB_USERNAME>" --password="<+stage.variables.DOCKERHUB_PAT>" 
+        docker build -t <+stage.variables.DOCKER_IMAGE_LABEL> .
+        docker tag <+stage.variables.DOCKER_IMAGE_LABEL> <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>:<+stage.variables.DOCKER_IMAGE_TAG>
 
-                      docker image ls
-                    privileged: true
-                    resources:
-                      limits:
-                        memory: 4096M
+        docker image ls
+      privileged: true
+
 
 ```
 
@@ -439,7 +462,7 @@ Here's an example:
   <TabItem value="Visual" label="Visual" default>
 ```
 
-Add an **Aqua Trivy** step to your pipeline after the DinD background step and configure it as follows:
+Add an **Aqua Trivy** step to your pipeline after the build step and configure it as follows:
 
    1. Scan Mode = [**Orchestration**](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
 
@@ -453,14 +476,14 @@ Add an **Aqua Trivy** step to your pipeline after the DinD background step and c
 
    6. Container image tag — Select **Expression** for the value type, then enter the following expression: `<+stage.variables.DOCKER_IMAGE_TAG>`
 
-   7. [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) = **Critical**
+   7. [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) = **None**
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="YAML" label="YAML">
 ```
 
-Add an **Aqua Trivy** step to your pipeline after the DinD background step and configure it as follows:
+Add an **Aqua Trivy** step to your pipeline after the build step and configure it as follows:
 
 
  *  `type:` [`AquaTrivy`](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#security-step-settings-for-aqua-trivy-scans-in-sto-legacy)
@@ -515,6 +538,27 @@ Here's an example:
   </TabItem>
 </Tabs>
 ```
+
+### Run the pipeline and verify your results
+
+This is a good time to run your pipeline and verify that it can scan the repo and ingest the results correctly. 
+
+1. Click **Run** and set the GitHub and Docker variables. (You don't need to set the image variables.)
+
+   If you forked the [dvpwa repository](https://github.com/williamwissemann/dvpwa) repo into your GitHub account and want to use that, set the fields like this:
+
+   - `GITHUB_REPO` = **dvpwa**
+   - `GITHUB_BRANCH`= **master**
+   - `DOCKER_IMAGE_LABEL` = **dvpwa**
+   - `DOCKER_IMAGE_TAG`= **master-scantest-DONOTUSE**
+
+   :::tip
+
+   [Input sets](/docs/platform/pipelines/input-sets/) enable you to reuse a single pipeline for multiple scenarios. You can define each scenario in an input set and then select the relevant input setat runtime. To save these inputs, click **Save as New Input Set**.
+
+   :::
+
+2. Click **Run Pipeline** and wait for the execution to finish. You can then view your scan results, for both the repo and the image, in [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results). 
 
 ## Add the image push step
 
@@ -584,7 +628,7 @@ Here's an example:
    name: push_image
    identifier: push_image
    spec:
-      connectorRef: dbothwelldocker
+      connectorRef: mydockerhubconnector
       image: docker
       shell: Sh
       command: |-
@@ -621,17 +665,6 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Background
-                  name: dind_bg_svc
-                  identifier: dind_bg_svc
-                  spec:
-                    connectorRef: dbothwelldocker
-                    image: docker:dind
-                    shell: Sh
-                    privileged: true
-                    entrypoint:
-                      - dockerd
-              - step:
                   type: Run
                   name: run-semgrep-scan
                   identifier: Run_1
@@ -646,14 +679,9 @@ pipeline:
                       cd /shared/customer_artifacts
                       git clone https://github.com/<+stage.variables.GITHUB_USERNAME>/<+stage.variables.GITHUB_REPO>
                       cd /shared/customer_artifacts/<+stage.variables.GITHUB_REPO>
-                      echo "contents of current folder"
-                      pwd
-                      ls -l 
 
                       git checkout <+stage.variables.GITHUB_BRANCH>
-
                       semgrep --sarif --config auto -o /harness/results.sarif /shared/customer_artifacts
-
                       # cat /harness/results.sarif
                     envVariables:
                       SEMGREP_APP_TOKEN: <+secrets.getValue("semgrepkey")>
@@ -674,7 +702,7 @@ pipeline:
                     advanced:
                       log:
                         level: info
-                      fail_on_severity: none
+                      fail_on_severity: critical
                     ingestion:
                       file: /harness/results.sarif
               - step:
@@ -682,7 +710,7 @@ pipeline:
                   name: build_local_image
                   identifier: build_local_image
                   spec:
-                    connectorRef: dbothwelldocker
+                    connectorRef: mydockerhubconnector
                     image: docker
                     shell: Sh
                     command: |-
@@ -693,25 +721,15 @@ pipeline:
                       echo "Docker service is ready"
                       docker ps
 
-                      # install git, clone the code repo, and cd to the local clone
-                      # apk add git
-                      # git --version
-                      # git clone https://github.com/<+stage.variables.GITHUB_USERNAME>/<+stage.variables.GITHUB_REPO>
-
-                      cd /shared/customer_artifacts/<+stage.variables.GITHUB_REPO>
-                      pwd 
-                      ls -l
-
                       # build and tag the local image
+                      cd /shared/customer_artifacts/<+stage.variables.GITHUB_REPO>
+
                       docker login --username="<+stage.variables.DOCKERHUB_USERNAME>" --password="<+stage.variables.DOCKERHUB_PAT>" 
                       docker build -t <+stage.variables.DOCKER_IMAGE_LABEL> .
                       docker tag <+stage.variables.DOCKER_IMAGE_LABEL> <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>:<+stage.variables.DOCKER_IMAGE_TAG>
 
                       docker image ls
-                    privileged: true
-                    resources:
-                      limits:
-                        memory: 4096M
+                    privileged: false
               - step:
                   type: AquaTrivy
                   name: run_trivy_scan
@@ -739,7 +757,7 @@ pipeline:
                   name: push_image
                   identifier: push_image
                   spec:
-                    connectorRef: dbothwelldocker
+                    connectorRef: mydockerhubconnector
                     image: docker
                     shell: Sh
                     command: |-
@@ -766,11 +784,11 @@ pipeline:
           - name: GITHUB_USERNAME
             type: String
             description: ""
-            value: my-github-username
+            value: mygithubusername
           - name: GITHUB_PAT
             type: Secret
             description: ""
-            value: mygithubaccesstokensecret
+            value: mygithubpatstosecret
           - name: GITHUB_REPO
             type: String
             description: ""
@@ -783,11 +801,11 @@ pipeline:
           - name: DOCKERHUB_USERNAME
             type: String
             description: ""
-            value: dbothwell
+            value: mydockerhubusername
           - name: DOCKERHUB_PAT
             type: Secret
             description: ""
-            value: mydockerhubaccesstokensecret
+            value: mydockerhubpat
           - name: DOCKER_IMAGE_LABEL
             type: String
             description: ""
@@ -799,22 +817,9 @@ pipeline:
             value: <+input>
         description: ""
         timeout: 10m
-  notificationRules:
-    - name: pipeline-failed
-      identifier: pipelinefailed
-      pipelineEvents:
-        - type: StageFailed
-          forStages:
-            - scan_codebase
-      notificationMethod:
-        type: Email
-        spec:
-          userGroups: []
-          recipients:
-            - devsecops@myorg.org
-      enabled: true
-  identifier: v3_sbsp_tutorial
-  name: v3_sbsp_tutorial
+  notificationRules: []
+  identifier: v5_sbsp_tutorial
+  name: v5_sbsp_tutorial
 
 
 ```
