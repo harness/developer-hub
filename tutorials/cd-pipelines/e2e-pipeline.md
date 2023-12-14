@@ -253,7 +253,9 @@ After applying the manifests, navigate to the **Environments** tab. Click on **d
 
 Run the following command to update pipeline with CD stages.
 
-`harness pipeline --file prpipeline.yaml apply`
+```bash
+harness pipeline --file prpipeline.yaml apply`
+```
 
 Finally, [create a trigger](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/) to run the PR pipeline when new code is committed to the **main** branch of your GitHub forked repo.
 
