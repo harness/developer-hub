@@ -21,7 +21,7 @@ This topic provides steps on using Harness to provision a target AWS environment
 ## AWS permissions required
 
 Ensure that the AWS CDK CLI is able to authenticate with the desired AWS account and has the necessary permissions for its provisioning. You can set the access keys, secret keys, and region as environment variables or let the CDK CLI inherit the IAM role from the EKS cluster where the containerized steps run.
-If step group infra points to EKS, a ServiceAccout can be set to the step group Service Account Name input. This way all containers created in that step group would ingerit the permission of the IAM role of corresponding ServiceAccount.
+If step group infra points to EKS, a ServiceAccout can be set in the step group **Service Account Name**. This way all containers created in that step group would inherit the permission of the IAM role of the corresponding ServiceAccount.
 
 ## Harness roles permissions required
 
@@ -197,7 +197,7 @@ The CDK steps in the step group are containerized. In the **Container Registry**
 
 Harness provides the `aws-cdk-plugin` base image and custom images for different stacks (Java, .NET, Python, Go, etc.) They are located on the Docker Hub registry [aws-cdk-plugin](https://hub.docker.com/r/harness/aws-cdk-plugin/tags). For example, `harness/aws-cdk-plugin:1.0.0` is the base image that contains the CDK CLI and Node.js and `harness/aws-cdk-plugin:1.0.0-java` is the custom image for Java created by Harness. You can use a Harness custom image or create your own.
 
-You can use a Harness base image to create your own image and use that in a step. For example, if your CDK app uses a specific Java or Node.js version, you can use the base image provided by Harness and create your own image containing your dependencies but you shoul never override the entrypoint.
+You can use a Harness base image to create your own image and use that in a step. For example, if your CDK app uses a specific Java or Node.js version, you can use the base image provided by Harness and create your own image containing your dependencies. You should never override the entry point.
 
 The image you use should support the CDK operations you are running in your app.
 
@@ -566,7 +566,7 @@ In **Advanced**, you can use the following options:
 
 ### Supported Languages
 
-Harness is providing custom images for testing purposes for the following programming languages: 
+Harness provides custom images for testing purposes for the following programming languages: 
 
 - Java
 - Go
