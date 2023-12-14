@@ -25,7 +25,11 @@ SSH chaos injects chaos on the target host using SSH connections by passing cust
 
 <accordion color="green">
     <summary>Use cases</summary>
-ssh
+
+- SSH chaos can be used with custom chaos logic and transferred to a target VM (to execute network chaos experiments, power off, and so on).
+- This serves as a framework which can be customised to perform other chaos experiments, such as network stress, HTTP, DNS, restart service and so on.
+- This framework can be used to rollback to the orignal state of an abort event.
+
 </accordion>
 
 </FaultDetailsCard>

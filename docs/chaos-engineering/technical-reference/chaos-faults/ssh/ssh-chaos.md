@@ -4,12 +4,13 @@ title: SSH chaos
 ---
 SSH chaos injects chaos on the target host using SSH connections by passing custom chaos logic through a ConfigMap. These scripts are executed using SSH credentials, which are securely referenced in the ConfigMap. This enables direct fault injection on the target host. This experiment offers customisation for the chaos injection logic, providing flexibility and control over chaos experiments.
 
-FAULT DIAGRAM TO_DO
+![SSH chaos](./static/images/ssh-chaos/ssh-chaos.png)
 
 ## Use cases
 
-TO-DO
-
+SSH chaos can be used with custom chaos logic and transferred to a target VM (to execute network chaos experiments, power off, and so on).
+- This serves as a framework which can be customised to perform other chaos experiments, such as network stress, HTTP, DNS, restart service and so on.
+- This framework can be used to rollback to the orignal state of an abort event.
 
 ## Executing the SSH chaos experiment
 Before executing the SSH chaos experiment, ensure that you follow the steps in [prerequisites](./prerequisites) section. This will generate two experiment YAML files. namely `ssh-chaos-with-key.yaml` and `ssh-chaos-with-pass.yaml`. You can use one of them based on the authentication method you choose.
@@ -34,22 +35,22 @@ If you use the default names for ConfigMap and secrets, you won't need to modify
         <tr>
             <td> HOST </td>
             <td> Name of the target host under chaos. </td>
-            <td> Provide the name of target host ex: <code>https://google.com</code>. For more information, go to <a href="#target-host"> host.</a></td>
+            <td> Provide the name of target host, for example, <code>https://google.com</code>. For more information, go to <a href="#target-host"> host.</a></td>
         </tr>
         <tr>
             <td> USERNAME </td>
-            <td> Username of the target host. </td>
-            <td> </td>
+            <td> Username of the target VM. </td>
+            <td> For example, "username".</td>
         </tr>
         <tr>
             <td> PASSWORD </td>
-            <td> Password. </td>
-            <td> </td>
+            <td> Password used for authentication. Either <code>PASSWORD</code> or <code>PRIVATE KEY</code> is used. </td>
+            <td> For example: "abcd".</td>
         </tr>
         <tr>
             <td> PRIVATE KEY </td>
-            <td> Key used for authentication. </td>
-            <td> </td>
+            <td> Key used for file-based authentication. Either <code>PASSWORD</code> or <code>PRIVATE KEY</code> is used. </td>
+            <td> For example: key-file.pem </td>
         </tr>
         <tr>
             <td> CHAOS SCRIPT PATH </td>
