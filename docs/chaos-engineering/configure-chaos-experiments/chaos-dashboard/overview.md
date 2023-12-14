@@ -11,7 +11,7 @@ Chaos dashboard is an interactive user interface that manages, visualizes, and m
 
 :::note
 For SAAS, this feature is currently behind the feature flag, `CHAOS_DASHBOARD_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-Contact your [sales representative](sales@harness.io) to check if you are eligible for the on-prem platform.
+Contact your [sales representative](mailto:sales@harness.io) to check if you are eligible for the on-prem platform.
 :::
 
 ## View a chaos dashboard
