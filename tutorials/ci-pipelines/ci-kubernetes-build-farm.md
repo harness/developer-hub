@@ -211,7 +211,7 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
    * **Delegates Setup:** Select **Only use Delegates with all of the following tags**, and then select the Delegate you installed in your Kubernetes cluster.
    * Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
-5. Back in the **Run** step settings, enter `golang:1.15` in the **Image** field.
+5. Back in the **Run** step settings, enter `golang:1.17` in the **Image** field.
 6. Enter the following code in the **Command** field:
 
    ```

@@ -265,7 +265,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>PIE_SIMPLIFY_LOG_BASE_KEY</td>
-        <td>Reduces the length of the log base key. <b>This feature is in Beta.</b> </td>
+        <td>Reduces the length of the log base key. <b>This feature is in Beta.</b><br/>This feature requires delegate version 23.10.81010 or later.<br/>After enabling this feature flag, you must re-run your pipelines to apply the change.<br/>For more information, go to <a href="/docs/platform/pipelines/download-logs">Download execution logs</a>.</td>
     </tr>
     <tr>
         <td>CDS_SHELL_VARIABLES_EXPORT</td>

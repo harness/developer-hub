@@ -1,7 +1,7 @@
 ---
 title: Build and Push to ACR
 description: Use a CI pipeline to build and push an image to ACR.
-sidebar_position: 30
+sidebar_position: 21
 helpdocs_topic_id: gstwrwjwgu
 helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false

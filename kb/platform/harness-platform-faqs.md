@@ -1934,7 +1934,19 @@ Sometime when you try to add a Harness User from Harness UI , you get error for 
 You can open the developer tools and check the API call for the error and see the response. 
 It could be possible due to user creation limit. You can eitehr resolve it by removing unused Users from your account or reach out to Harness Support get the limit validated as per your licence. 
 
+#### How to get x-api-key for making api call
+You need to create a new token under api key , you can follow https://apidocs.harness.io/#section/Introduction/Authentication for more details
 
+#### How to check which delegate was assigned for task
+You can select the step under any stage and on right side under details tab you will be able to see delegate assigned as well the delegate selection task logs will provide more details which all delegates were eligible and from where selector was originated etc
+
+#### How to pass xmx and pms value for delegate to use max and min memory allocation pool
+env:
+    - name: JAVA_OPTS
+      value: "-Xms64M -Xmx2G"
+
+#### Scim Provisioned User Group has - in name which was removed from identifier but still allowed as name
+The - is not allowed character for identifier so it was removed while creating the identifier while name can have that so its allowed for name
 
 
 

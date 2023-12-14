@@ -60,7 +60,7 @@
 /docs/infra-as-code-management/ @RickCraig
 
 # FF Docs
-/docs/feature-flags/ @ethangj
+/docs/feature-flags/ @ethangj @HarnessTheChaos
 
 # FirstGen Docs
 /docs/first-gen/ @michaelcretzman
@@ -92,7 +92,7 @@ release-notes/continuous-integration.md @aimurphy
 release-notes/delegate.md @brian-f-harness @harishkammanahalli
 
 #FF Release Notes
-release-notes/feature-flags.md @ethangj
+release-notes/feature-flags.md @ethangj @HarnessTheChaos
 
 #IDP Release Notes
 release-notes/internal-developer-portal.md @Debanitrkl
@@ -130,7 +130,7 @@ release-notes/service-reliability-management.md @sunilgupta-harness
 /tutorials/error-tracking/ @sunilgupta-harness 
 
 # FF Tutorials
-/tutorials/feature-flags/ @ethangj 
+/tutorials/feature-flags/ @ethangj @HarnessTheChaos 
 
 # HDH Tutorials
 /tutorials/hdh/ @ravilach
