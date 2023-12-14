@@ -13,7 +13,7 @@ This topic provides settings and permissions for the Docker connector. You can u
 :::info
 
 * **Docker registry rate limits:** Harness is restricted by the limits of the Docker repo, such as [Docker Hub limits](https://docs.docker.com/docker-hub/download-rate-limit/) for pulling Docker images from Docker repos.
-* **Docker Registries in Cloud Platforms:** The Docker connector is platform-agnostic and can be used to connect to any Docker container registry. Harness also provides first class support for registries in AWS and GAR through [AWS connectors](../../../connectors/cloud-providers/add-aws-connector.md) and [Google Cloud Platform (GCP) connectors](../../../connectors/cloud-providers/connect-to-google-cloud-platform-gcp.md).
+* **Docker Registries in Cloud Platforms:** The Docker connector is platform-agnostic and can be used to connect to any Docker container registry. Harness also provides first class support for registries in AWS and GAR through [AWS connectors](../add-aws-connector.md) and [Google Cloud Platform (GCP) connectors](../connect-to-google-cloud-platform-gcp.md).
 
 :::
 
@@ -27,9 +27,9 @@ This topic provides settings and permissions for the Docker connector. You can u
 
 ## Connector metadata settings
 
-* **Name:** Enter a name for this connector. Harness creates an **Id** ([Entity Identifier](../../../references/entity-identifier-reference.md)) based on the name.
+* **Name:** Enter a name for this connector. Harness creates an [ID](/docs/platform//references/entity-identifier-reference.md) based on the name.
 * **Description:** Optional text string.
-* **Tags:** Optional. Go to the [Tags reference](../../../references/tags-reference.md).
+* **Tags:** Optional [tags](/docs/platform/references/tags-reference.md).
 
 ## Provider type
 
@@ -41,9 +41,11 @@ If you select **Other**, the registry must be Docker V2 compliant.
 
 The URL of the Docker registry. This is usually the URL used for your [docker login](https://docs.docker.com/engine/reference/commandline/login/) credentials.
 
-To connect to a public Docker registry like Docker Hub, use `https://index.docker.io/v2/`.
-
-To connect to a private Docker registry, use `https://registry.hub.docker.com/v2/`.
+* To connect to a public Docker Hub registry, use `https://index.docker.io/v2/`.
+* To connect to a private Docker Hub registry, use `https://registry.hub.docker.com/v2/`.
+* For other Docker registries, provide the relevant URL for your container registry provider. For example:
+   * For GitHub Container Registry, provide the GHCR hostname and namespace, such as `https://ghcr.io/NAMESPACE`. The namespace is the name of a GitHub personal account or organization.
+   * For JFrog Artifactory Docker registries, provide your JFrog instance URL, such as `https://mycompany.jfrog.io`. You can get this URL from the `docker-login` command on your repo's **Set Me Up** page.
 
 ## Authentication
 
@@ -59,7 +61,9 @@ import TabItem from '@theme/TabItem';
 ```
 
 * **Username:** Enter the username for your Docker registry account.
-* **Password:** In your Docker registry, create a personal access token with **Read, Write, Delete** permissions. Then, create a [Harness secret](/docs/platform/secrets/add-use-text-secrets) for your Docker registry personal access token.
+* **Password:** Provide a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets) containing the password or token corresponding with the **Username**.
+  * For Docker Hub and GHCR, use a personal access token with **Read, Write, Delete** permissions.
+  * For JFrog Docker registries, provide a password.
 
 :::info Docker registry permissions
 

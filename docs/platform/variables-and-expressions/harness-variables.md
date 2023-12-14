@@ -1467,7 +1467,17 @@ Harness can now track the release for comparisons and rollback.
 
 The infrastructure key is a combination of `serviceIdentifier`, `environmentIdentifer` and set of values unique to each infrastructure definition implementation (Kubernetes cluster, etc.) hashed using `SHA-1`. For example, in case of a Kubernetes Infrastructure, the infrastructure key is a hash of `serviceIdentifier-environmentIdentifier-connectorRef-namespace`. The format is `sha-1(service.id-env.id-[set of unique infra values])`.
 
-### \<+infra.namespace\>
+See also [<+INFRA_KEY_SHORT_ID>](/docs/platform/variables-and-expressions/harness-variables#infra_key_short_id).
+
+### <+INFRA_KEY_SHORT_ID>
+
+Shortened form of the infrastructure key described in [<+INFRA_KEY>](/docs/platform/variables-and-expressions/harness-variables#infra_key). 
+
+The shortened form is obtained by removing all but the first six characters of the hash of the infrastructure key described in [<+INFRA_KEY>](/docs/platform/variables-and-expressions/harness-variables#infra_key). 
+
+The shortened form replaces `<+INFRA_KEY>` in the default expression that is used to generate a release name for the resources in Kubernetes and Native Helm deployments. In other words, the **Release name** field in the **Cluster Details** > **Advanced** section of an infrastructure definition is pre-populated with the expression `release-<+INFRA_KEY_SHORT_ID>`. The shorter form resolves issues that Kubernetes and Native Helm deployments experienced with the longer `release-<+INFRA_KEY>` format.
+
+### <+infra.namespace>
 
 The namespace used in the infrastructure definition.
 

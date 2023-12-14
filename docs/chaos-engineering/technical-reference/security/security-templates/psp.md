@@ -1,19 +1,20 @@
 ---
-title: PSP
+title: Pod Security Policy
 sidebar_position: 2
 ---
+
+This section describes pod security policy, and applying pod security policies to the pods in a cluster. 
+Restrictive policies are often enforced using [pod security policies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) (PSP), with organizations opting for the default ["restricted"](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#example-policies) policy. 
+
 ## Using pod security policies with CE
 
-- While working in environments (clusters) that have restrictive security policies, you can inhibit the default CE experiment execution procedure. 
-- This is due to the experiment pods running the chaos injection tasks in privileged mode. This, in turn, is required due to the mounting of container runtime-specific socket files from the Kubernetes nodes to invoke runtime APIs. 
-- This is not required for all experiments (a considerable number of them use purely the K8s API). It is required for those experiments that inject chaos processes into the network or process namespaces of other containers (for example, netem, stress).
+While working in environments (clusters) that have restrictive security policies, you can inhibit the default CE experiment execution procedure. This is due to the experiment pods running the chaos injection tasks in privileged mode. This, in turn, is required due to the mounting of container runtime-specific socket files from the Kubernetes nodes to invoke runtime APIs.
 
-The restrictive policies are often enforced via [pod security policies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) (PSP), with organizations opting for the default ["restricted"](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#example-policies) policy. 
-
+This is not required for all experiments (a considerable number of them use purely the K8s API). It is required for experiments that inject chaos processes into the network or process namespaces of other containers (for example, netem, stress).
 
 ### Applying pod security policies to CE pods
 
-- To run the CE pods with operating characteristics described above, create a custom `PodSecurityPolicy` that allows the same: 
+To run the CE pods with operating characteristics described above, create a custom `PodSecurityPolicy` that allows the same: 
 
 [embedmd]:# (https://raw.githubusercontent.com/harness/developer-hub/ed4773f7428e593c93a0cf7aa5a31e6e9c8128f8/docs/chaos-engineering/static/overview/manifest/psp/psp-litmus.yaml yaml)
 ```yaml
@@ -80,12 +81,13 @@ fsGroup:
 readOnlyRootFilesystem: false
 ```
 
-:::note
+:::tip
 This `PodSecurityPolicy` is a sample configuration which works for a majority of the use cases. It is left to the user's discretion to modify it based on their environment. For example, if the experiment doesn't need the socket file to be mounted, `allowedHostPaths` can be excluded from the PSP specification. In case of CRI-O runtime, network-chaos tests need the chaos pods to execute in privileged mode. Different PSP configurations can be used in different namespaces based on the chaos experiments installed or executed in them.
 :::
 
-- Subscribe to the created PSP in the experiment RBAC (or in the [admin-mode](https://v1-docs.litmuschaos.io/docs/admin-mode/#prepare-rbac-manifest) RBAC, as applicable).
-For example, the pod-delete experiment RBAC instrumented with the PSP is shown below:
+### Subscribe to the created PSP
+Subscribe to the created PSP in the experiment RBAC (or in the [admin-mode](https://v1-docs.litmuschaos.io/docs/admin-mode/#prepare-rbac-manifest) RBAC), as applicable. 
+The [pod delete](../../chaos-faults/kubernetes/pod/pod-delete) experiment RBAC instrumented with the PSP is shown below:
 
 [embedmd]:# (https://raw.githubusercontent.com/harness/developer-hub/ed4773f7428e593c93a0cf7aa5a31e6e9c8128f8/docs/chaos-engineering/static/overview/manifest/psp/rbac-psp.yaml yaml) 
 ```yaml
@@ -152,4 +154,5 @@ name: pod-delete-sa
 namespace: default
 ```
 
-- Execute the ChaosEngine and verify that the CE experiment pods have been created successfully.
+### Verify the results of the chaos experiment
+Execute the ChaosEngine and verify that the CE experiment pods have been created successfully.

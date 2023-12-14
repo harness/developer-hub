@@ -128,7 +128,30 @@ Enter the following settings.
         releaseName: release-<+INFRA_KEY>
       allowSimultaneousDeployments: false
 
+<<<<<<< HEAD
     ```
+=======
+infrastructureDefinition:
+  name: Cluster 1
+  identifier: Kubernetes
+  description: ""
+  tags: {}
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  environmentRef: Kubernetes
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: docimmut
+    namespace: default
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
+
+```
+
+
+```mdx-code-block
+>>>>>>> afac94958ad0b8037d154071473c6139c714ea16
   </TabItem>
   <TabItem value="API" label="API">
 
@@ -195,6 +218,7 @@ Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infr
 
     ```yaml
 
+<<<<<<< HEAD
     infrastructureDefinition:
       name: K8s GKE
       identifier: K8s_GKE
@@ -211,6 +235,24 @@ Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infr
         namespace: test
         releaseName: release-<+INFRA_KEY>
       allowSimultaneousDeployments: false
+=======
+infrastructureDefinition:
+  name: K8s GKE
+  identifier: K8s_GKE
+  description: ""
+  tags: {}
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  environmentRef: k8s_env
+  deploymentType: Kubernetes
+  type: KubernetesGcp
+  spec:
+    connectorRef: kubernetesdelegate
+    cluster: <+input>
+    namespace: test
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
+>>>>>>> afac94958ad0b8037d154071473c6139c714ea16
 
 
     ```
@@ -278,6 +320,31 @@ Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infr
 
     ```
 
+<<<<<<< HEAD
+=======
+infrastructureDefinition:
+  name: K8s Azure
+  identifier: K8s_Azure
+  description: ""
+  tags: {}
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  environmentRef: k8s_env
+  deploymentType: Kubernetes
+  type: KubernetesAzure
+  spec:
+    connectorRef: account.foo
+    subscriptionId: <+input>
+    resourceGroup: <+input>
+    cluster: <+input>
+    namespace: mynamespace
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
+
+```
+
+```mdx-code-block
+>>>>>>> afac94958ad0b8037d154071473c6139c714ea16
   </TabItem>
   <TabItem value="API" label="API">
 
@@ -320,6 +387,7 @@ Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infr
 
     ```yaml
 
+<<<<<<< HEAD
     infrastructureDefinition:
       name: K8s EKS
       identifier: K8s_EKS
@@ -336,6 +404,24 @@ Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infr
         namespace: mynamespace
         releaseName: release-<+INFRA_KEY>
       allowSimultaneousDeployments: false
+=======
+infrastructureDefinition:
+  name: K8s EKS
+  identifier: K8s_EKS
+  description: ""
+  tags: {}
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  environmentRef: k8s_env
+  deploymentType: Kubernetes
+  type: KubernetesAws
+  spec:
+    connectorRef: eks
+    cluster: ap-south-1/Cluster-test
+    namespace: mynamespace
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
+>>>>>>> afac94958ad0b8037d154071473c6139c714ea16
 
 
     ```
@@ -422,6 +508,7 @@ To set up a Harness Rancher connector you need:
 
     Here is the YAML for a Rancher Infrastructure Definition. In this example, `cluster` and `namespace` are set as runtime inputs so you can select the cluster and namespace to use when you deploy.
 
+<<<<<<< HEAD
     ```yaml
     infrastructureDefinition:
       name: Rancher
@@ -440,6 +527,26 @@ To set up a Harness Rancher connector you need:
         releaseName: release-<+INFRA_KEY>
       allowSimultaneousDeployments: false
     ```
+=======
+```yaml
+infrastructureDefinition:
+  name: Rancher
+  identifier: Rancher
+  description: ""
+  tags: {}
+  orgIdentifier: default
+  projectIdentifier: Docs
+  environmentRef: Kubernetes
+  deploymentType: Kubernetes
+  type: KubernetesRancher
+  spec:
+    connectorRef: Rancher
+    cluster: <+input>
+    namespace: <+input>
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
+```
+>>>>>>> afac94958ad0b8037d154071473c6139c714ea16
 
 
 
@@ -941,7 +1048,11 @@ The **Release name** setting is located in **Advanced** section of the **Cluster
 
 During deployment Harness creates a ConfigMap listing the resources of the release and uses the **Release name** for tracking them.
 
+<<<<<<< HEAD
 The **Release name** is a combination of `release-` and a unique string created using the Harness expression `<+INFRA_KEY>`.
+=======
+The **Release name** is a combination of `release-` and a unique string created using the Harness expression `<+INFRA_KEY_SHORT_ID>`.
+>>>>>>> afac94958ad0b8037d154071473c6139c714ea16
 
 For example, in a Kubernetes deployment you can see `harness.io/release-name=release-2f9eadcc06e2c2225265ab3cbb1160bc5eacfd4f`.
 
@@ -949,7 +1060,11 @@ In Harness, the **Release Name** is displayed in the logs of the deployment step
 
 ![](./static/define-your-kubernetes-target-infrastructure-00.png)
 
+<<<<<<< HEAD
 The release name must be unique across the cluster. `release-<+INFRA_KEY>` ensures a unique name.
+=======
+The release name must be unique across the cluster. `release-<+INFRA_KEY_SHORT_ID>` ensures a unique name.
+>>>>>>> afac94958ad0b8037d154071473c6139c714ea16
 
 `release-` is used as a prefix because Kubernetes service and pod names must follow RFC-1035 and must consist of lowercase alphanumeric characters or '-', start with an alphabetic character, and end with an alphanumeric character.
 

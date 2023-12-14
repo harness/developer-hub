@@ -233,7 +233,7 @@ curl -i -X POST
                             spec:
                                 connectorRef: <+input>
                                 namespace: <+input>
-                                releaseName: release-<+INFRA_KEY>
+                                releaseName: release-<+INFRA_KEY_SHORT_ID>
                         allowSimultaneousDeployments: false
                     execution:
                         steps:

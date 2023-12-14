@@ -1,23 +1,22 @@
 ---
 title: Upload Artifacts to JFrog
 description: Add a step to upload artifacts to JFrog.
-sidebar_position: 70
+sidebar_position: 31
 helpdocs_topic_id: lh082yv36h
 helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use the **Upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory).
+You can use the **Upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory) non-Docker registries. To upload artifacts to a JFrog Docker registry, you can use a script in a [Run step](../run-ci-scripts/run-step-settings.md).
 
 You need:
 
-* Access to a JFrog Artifactory instance.
-* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
-* Steps in your pipeline that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload.
-* An [Artifactory connector](#artifactory-connector).
+* Access to a JFrog Artifactory instance with a non-Docker registry.
+* A [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) and steps that generate artifacts to upload, such as by running tests or building code. The steps you use depend on what artifacts you ultimately want to upload. If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
+* A Harness [Artifactory connector](#artifactory-connector).
 
-You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md). For other upload locations, you can use a script in a [Run step](../run-ci-scripts/run-step-settings.md).
+You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md). For other upload locations, including JFrog Docker registries, you can use a script in a [Run step](../run-ci-scripts/run-step-settings.md).
 
 ## Add an Upload Artifacts to JFrog step
 

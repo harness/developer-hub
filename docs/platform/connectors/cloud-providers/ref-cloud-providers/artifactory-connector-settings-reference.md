@@ -12,7 +12,7 @@ Harness supports both cloud and on-prem versions of Artifactory.
 
 This topic provides settings and permissions for the Artifactory Connector.
 
-### Artifactory Permissions
+## Artifactory Permissions
 
 Make sure the following permissions are granted to the user:
 
@@ -26,95 +26,91 @@ If used as a Docker Repo, user needs:
 
 See [Managing Permissions: JFrog Artifactory User Guide](https://www.jfrog.com/confluence/display/RTF/Managing+Permissions).
 
-### Artifact and File Type Support
+## Supported sources and registry types
 
-Legend:
+The utility of the Artifactory connector depends on the module and file types you're using it with.
 
-* **M/F** - Metadata or file. This includes Docker image and registry information. For AMI, this means AMI ID-only.
-* **Blank** - Coming soon.
+### Continuous Delivery
 
+The following Artifactory sources are supported for Continuous Delivery:
 
+* **Docker Image (Kubernetes):** Metadata
+* **Helm Chart:** File
+* **Zip:** File
 
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Sources** | **Docker Image**(Kubernetes) | **Terraform** | **Helm Chart** | **AWS** **AMI** | **AWS CodeDeploy** | **AWS Lambda** | **JAR** | **RPM** | **TAR** | **WAR** | **ZIP** | **Tanzu** (**PCF)** | **IIS** |
-| Artifactory | M |  | F |  |  |  |  |  |  |  | **F** |  |  |
+Metadata/File sources include Docker image and registry information. For AMI, this means AMI ID-only.
 
-If you are new to using Artifactory as a Docker repo, see [Getting Started with Artifactory as a Docker Registry](https://www.jfrog.com/confluence/display/RTF6X/Getting+Started+with+Artifactory+as+a+Docker+Registry) from JFrog.
+Support for the following sources is in development:
 
-### Artifactory Artifact Server
+* **Terraform**
+* **AWS AMI**
+* **AWS CodeDeploy**
+* **AWS Lambda**
+* **JAR**
+* **RPM**
+* **TAR**
+* **WAR**
+* **Tanzu (PCF)**
+* **IIS**
 
-The Harness Artifactory Artifact server connects your Harness account to your Artifactory artifact resources. It has the following settings.
+If you are new to using Artifactory as a Docker repo, go to the JFrog documentation on [Getting Started with Artifactory as a Docker Registry](https://www.jfrog.com/confluence/display/RTF6X/Getting+Started+with+Artifactory+as+a+Docker+Registry).
 
-#### Name
+### Continuous Integration
 
-The unique name for this Connector.
+If you are pulling images or building/pushing images to JFrog Artifactory in Harness CI pipelines, **you can use the Artifactory connector for JFrog non-Docker registries only**.
 
-#### ID
+For JFrog Docker registries, you must use the Docker connector. For more information, go to [Build and push to JFrog Docker registries](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-jfrog.md) and [Upload Artifacts to JFrog](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog.md). This restriction also applies when pulling images from Artifactory for use in other steps, such as [CI Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md).
 
-See [Entity Identifier Reference](../../../references/entity-identifier-reference.md).
+## Artifactory connector settings
 
-#### Description
+The Artifactory connector has the following settings.
 
-Text string.
+### Connector metadata
 
-#### Tags
+* **Name:** The unique name for this Connector.
+* **ID:** Go to [Entity Identifier reference](../../../references/entity-identifier-reference.md).
+* **Description:** Optional text string.
+* **Tags:** Go to the [Tags reference](../../../references/tags-reference.md).
 
-See [Tags Reference](../../../references/tags-reference.md).
+### Artifactory Repository URL
 
-#### Artifactory Repository URL
+The Harness Artifactory Artifact server connects your Harness account to your Artifactory artifact resources.
 
-Enter in your base URL followed by your module name.
+For **Artifactory Repository URL**, enter your registry base URL followed by your module name, such as `https://mycompany.jfrog.io/artifactory` or `https://*****server_name*****/artifactory`.
 
-For most artifacts, use **https://mycompany.jfrog.io/artifactory**.
+The URL format depends on your Artifactory configuration, and whether your Artifactory instance is local, virtual, remote, or behind a proxy.
 
-In some cases, you can use **https://*****server\_name*****/artifactory**.
+#### Get your JFrog URL
 
-The URL really depends on how you have set up Artifactory, and whether it is local, virtual, remote, or behind a proxy.
+You can get the URL from your Artifactory settings.
 
-To ensure you use the correct URL, copy it from your Artifactory settings.
+When examining a file in your registry, check the **URL to file** setting.
 
 ![](./static/artifactory-connector-settings-reference-08.png)
-See [Repository Management](https://www.jfrog.com/confluence/display/JFROG/Repository+Management) from JFrog.
 
-#### Username
-
-Username for the Artifactory account user.
-
-#### Password
-
-Select or create a new [Harness Encrypted Text secret](/docs/platform/secrets/add-use-text-secrets).
-
-### Artifact Details
-
-#### Repository URL
-
-This applies to the JFrog Artifactory default configuration. This URL may change if your infrastructure is customized.
-
-Select your repository via the JFrog site. Select **Set Me Up**. The **Set Me Up** settings appear.
-
-Copy the name of the server from the `docker login` command and enter it in **Repository URL**.
+You can also select your repo in your JFrog instance, select **Set Me Up**, and get the repository URL from the server name in the `docker-login` command.
 
 ![](./static/artifactory-connector-settings-reference-09.png)
 
-See [Configuring Docker Repositories](https://www.jfrog.com/confluence/display/RTF/Docker+Registry#DockerRegistry-ConfiguringDockerRepositories) from JFrog for more information. It describes the URLs for local, remote, and virtual repositories.
+For more information, go to the JFrog documentation on [Repository Management](https://www.jfrog.com/confluence/display/JFROG/Repository+Management) and [Configuring Docker Repositories](https://www.jfrog.com/confluence/display/RTF/Docker+Registry#DockerRegistry-ConfiguringDockerRepositories).
 
-#### Repository
+### Username and Password
 
-Enter the name of the repository where the artifact source is located.
+Enter the **Username** for the Artifactory account user, and select or create a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets) containing the corresponding **Password**.
 
-Harness supports only the Docker repository format as the artifact source.
+### Additional artifact details
 
-#### Artifact/Image Path
+These settings are for Artifactory deployments.
 
-Enter the name of the artifact you want to deploy.
+* **Repository URL:** Go to [Artifactory Repository URL](#artifactory-repository-url).
+* **Repository:** Enter the name of the repository where the artifact source is located. Harness supports only the Docker repository format as the artifact source for deployments.
+* **Artifact/Image Path:** Enter the name of the artifact you want to deploy. The repository and artifact path must not begin or end with `/`.
+* **Tag:** Select a tag from the list.
 
-The repository and artifact path must not begin or end with `/`.
+:::info
 
-#### Tag
-
-Select a Tag from the list.
-
-**Note:** The Artifactory user account you use in the Harness Artifact connector requires [Basic Authentication](https://www.jfrog.com/confluence/display/JFROG/Access+Tokens#AccessTokens-BasicAuthentication) to fetch the Artifact/Image Path and Tag.
+The [Artifactory user account](#username-and-password) you use in the Harness Artifact connector requires [basic authentication](https://www.jfrog.com/confluence/display/JFROG/Access+Tokens#AccessTokens-BasicAuthentication) to fetch the **Artifact/Image Path** and **Tag**.
 
 ![](./static/artifactory-connector-settings-reference-11.png)
+
+:::
