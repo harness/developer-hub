@@ -1,7 +1,7 @@
 ---
-title: Configure Azure Log Analytics as health source
+title: Configure Azure Log Analytics as a health source
 sidebar_label: Azure Log Analytics
-description: Add Azure Log Analytics health source to a monitored service. 
+description: Add an Azure Log Analytics health source to a monitored service. 
 sidebar_position: 13
 ---
 
@@ -10,14 +10,14 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-In Harness, a health source is a mapping that connects a Service in Harness to a service running in a deployment environment that is being monitored by an Application Performance Monitoring (APM) or logging tool. This mapping allows Harness to collect metrics and data from the APM or logging tool and use it to determine the health and status of the Service in Harness.
+In Harness, a health source is a mapping of a Harness service to a service running in a deployment environment that is being monitored by an Application Performance Monitoring (APM) or logging tool. This mapping allows Harness to collect metrics and data from the APM or logging tool and use it to determine the health and status of the service in Harness.
 
 This topic describes how to set up Azure Log Analytics as a health source in a monitored service.
 
 
 ## Prerequisites
 
-- Azure Log Analytics connector has been added to the Harness platform.
+- An Azure Log Analytics connector has been added to the Harness platform.
 - A monitored service has already been created in the Harness SRM.
 
 
@@ -25,7 +25,7 @@ This topic describes how to set up Azure Log Analytics as a health source in a m
 
 To add Azure Log Analytics as a health source:
 
-1. In the **Health Sources** section, select **+ Add**.
+1. In the **Health Sources** section, select **Add**.
    The Add New Health Source dialog appears.
 2. On the **Define Health Source** tab, do the following:
       1. In the **Define Health Source** section, select **Azure Log Analytics** as health source type.
@@ -46,22 +46,22 @@ To add Azure Log Analytics as a health source:
 #### Steps to configure Azure Cloud Metrics in Azure Log Analytics
 
    
-   1. On the **Configuration** tab, select **+ Add Metric**.  
+   1. On the **Configuration** tab, select **Add Metric**.  
    The Add Metric dialog appears.
    2. Enter the following information and then select **Submit**:  
       * **Metric name**: Enter a name for the metric. For example, Memory Metric.
-      * **Group name**: If the group to which you want to add the metric already exists, select it.   
-     If you want to create a new group, select **+ Add New**. In the Add Group Name dialog enter a group name, and then select **Submit**.
+      * **Group name**: If the group where you want to add the metric already exists, select it.   
+     If you want to create a new group, select **Add New**. In the **Add Group Name** settings, enter a group name, and then select **Submit**.
    3. In the Add Metric dialog, select **Submit**.   
 
-New group and metric are created. The query specifications and mapping settings are displayed. These settings help you get the desired metric data from the Azure Log Analytics platform and map it to Harness service. To learn about Azure Log Analytics and queries, go to [Azure Monitor Logs](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-platform-logs).
+The new group and metric are created. The query specifications and mapping settings are displayed. These settings help you get the desired metric data from the Azure Log Analytics platform and map it to a Harness service. To learn about Azure Log Analytics and queries, go to [Azure Monitor Logs](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-platform-logs).
 
 
 #### Define a query
 
-1. **Resource ID** - the Azure resource ID you wish to target for the query
-2. **Metric namespace** - the Azure metric namespace you wish to target for the query
-3. **Metric name** - The name of the metric you wish to query on
+1. **Resource ID** - the Azure resource Id you wish to target for the query,
+2. **Metric namespace** - the Azure metric namespace you want to target for the query.
+3. **Metric name** - The name of the metric you wish to query on.
 4. **Aggregation** - Aggregations allow you to summarize raw log data to create more compact, meaningful, and actionable information. You can perform calculations such as counting, summing, averaging, minimum, and maximum on numeric data, and you can also perform operations like counting unique values or grouping data by specific attributes.
    * Average 
    * Maximum 
@@ -73,20 +73,20 @@ New group and metric are created. The query specifications and mapping settings 
 
 #### Assign services
 
-In the **Assign** section, select the services to which you want to apply the Azure Logs metric. Following options are available:
-   * **Continuous Verification (Applied to the pipelines in the Continuous Deployment)**: Select this option to use the metric data in the Continuous Deployment pipeline to ensure that the deployed service is running safely and to perform automatic rollbacks. In addition, the metric will be used to apply machine learning in detecting and highlighting future deployment issues.
+In the **Assign** section, select the services where you want to apply the Azure Logs metric. Following options are available:
+   * **Continuous Verification (applied to pipelines in Continuous Deployment)**: Select this option to use the metric data in the Continuous Deployment pipeline to ensure that the deployed service is running safely and to perform automatic rollbacks. In addition, the metric will be used to apply machine learning in detecting and highlighting future deployment issues.
    * **Service Health**: Select this option to use the metric data to track the changes in the health trend of your monitored service.
    * **Service Level Indicator (SLI)**: Select this option to use the metric data to measure the SLI and obtain the performance of the service. 
 
 #### Configure risk profile
-If you select **Continuous Verification (Applied to the pipelines in the Continuous Deployment)** or **Service Health**, expand the section below and follow the instructions for configuring the risk profile.
+If you select **Continuous Verification (applied to pipelines in Continuous Deployment)** or **Service Health**, expand the section below and follow the instructions for configuring the risk profile.
 
 
 
 #### Risk Profile
   
 :::note
-The **Risk Profile** section is only visible if you have selected **Continuous Verification (Applied to the pipelines in the Continuous Deployment**) or **Service Health** in the **Assign** section.
+The **Risk Profile** section is only visible if you have selected **Continuous Verification (applied to pipelines in Continuous Deployment**) or **Service Health** in the **Assign** section.
 :::
 
 1. Under **Risk Category**, select one of the following options:
@@ -101,13 +101,17 @@ The **Risk Profile** section is only visible if you have selected **Continuous V
 - **Higher counts = higher risk**
 - **Lower counts = higher risk**
 
-  *Note that you can select multiple options.*
+:::note
+
+You can select multiple options.
+
+:::
 
 
 #### Map service instance identifier
 
 :::note
-The **Map service instance identifier** section is only visible if you have selected **Continuous Verification (Applied to the pipelines in the Continuous Deployment**) in the **Assign** section.
+The **Map service instance identifier** section is only visible if you have selected **Continuous Verification (applied to pipelines in Continuous Deployment**) in the **Assign** section.
 :::
 
 In **Service Instance Identifier (only needed for CV)**, specify the service instance identifier, which represents a dynamically created service that you deploy using Harness. The default value is `_sourceHost`.
@@ -115,18 +119,18 @@ In **Service Instance Identifier (only needed for CV)**, specify the service ins
 #### Advanced (Optional)
 
 :::note
-The **Advanced (Optional)** section is only visible if you have selected **Continuous Verification (Applied to the pipelines in the Continuous Deployment**) in the **Assign** section.
+The **Advanced (Optional)** section is only visible if you have selected **Continuous Verification (applied to pipelines in Continuous Deployment**) in the **Assign** section.
 :::
 
 ##### Ignore Thresholds
 
-You can select the types of events for which you want to set thresholds in CV. Metrics that match the selected rules will not be flagged as anomalous, regardless of the analysis. 
+You can select the types of events that you want to set thresholds for in CV. Metrics that match the selected rules will not be flagged as anomalous, regardless of the analysis. 
 
 To set the **Ignore Thresholds** for CV:
 
-1. Go to the **Ignore Thresholds** tab and select the **+ Add Threshold** button.
+1. Go to the **Ignore Thresholds** tab and select the **Add Threshold** button.
 2. From the **Metric** dropdown, select the desired metric for which you want to set the rule.
-3. In the Criteria field, choose the type of criteria you want to apply for the threshold:
+3. In **Criteria**, choose the type of criteria you want to apply for the threshold:
 - **Absolute Value**: Select this option and enter the **Greater than** and **Lesser than** values.
 - **Percentage Deviation**: Select this option and enter the **Lesser than** value.
 
@@ -158,7 +162,7 @@ To set fail-fast thresholds for CV, follow these steps:
 
 #### Define a query
 
-1. In the **Resource ID / Workspace Id** field, enter the Azure Resource ID or Workspace ID you wish to target.
+1. In **Resource Id / Workspace Id**, enter the Azure Resource Id or Workspace Id you want to target.
 2. In the **Query** field, enter the log query and select **Run Query** to execute it. This displays a sample record in the **Records** field, allowing you to confirm the accuracy of the query you've constructed.
 3. In the **Field Mapping** section, select the **Service Instance Identifier** to display the logs, and then select **Get sample log messages**. Sample logs are displayed that help you verify if the query you built is correct.
 
