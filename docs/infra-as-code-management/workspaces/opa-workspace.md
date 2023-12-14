@@ -6,7 +6,7 @@ sidebar_position: 50
 
 :::info
 
-OPA is the embedded policy engine for the Harness platform. read more about it ![here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/)
+OPA is the embedded policy engine for the Harness platform. read more about it [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/)
 :::
 
 Harness IaCM allows you to use OPA on the entities that are described in the table below:
@@ -235,7 +235,7 @@ contains(arr, elem) {
 
 ```
 
-### Terraform plan policies
+### Terraform state policies
 
 ```
 package terraform_state
