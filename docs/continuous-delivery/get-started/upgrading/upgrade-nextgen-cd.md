@@ -41,7 +41,11 @@ The FirstGen to NextGen CD upgrade will occur on the following dates:
   - Harness Support will no longer accept support requests for FirstGen CD.
   - Security fixes will still be addressed.
   - Product defects will not be addressed.
-
+ 
+- 1/31/2024. End of support for Delegate Legacy.
+  - Harness Support will no longer accept support requests for FirstGen CD.
+  - Security fixes will still be addressed.
+  - Product defects will not be addressed.
 
 - 4/1/2024. FirstGen SaaS product shutdown.
   - Harness delegates will no longer register with Harness SaaS.
