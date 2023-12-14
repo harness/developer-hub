@@ -26,14 +26,14 @@ In this section, you'll create two secrets and two connectors for GitHub and Doc
 
 From your project setup, click on **Secrets**, then **+ New Secret**, and select **Text**. Use the Harness Built-in Secrets Manager. Give this secret a name `github_pat` and paste in the Personal Access Token (PAT) for GitHub. Similarly, create an access token for Docker Hub and name it `docker_secret`.
 
-Now, let's create connectors for GitHub and Docker Hub. Navigate to **cli-manifests** directory. Open [github-connector.yaml](cli-manifests/github-connector.yaml) on your local machine and replace **YOUR_HARNESS_ACCOUNT_ID** and **YOUR_GITHUB_USERNAME** with actual values. 
+Now, let's create connectors for GitHub and Docker Hub. Navigate to **cli-manifests** directory. Open [github-connector.yaml](https://github.com/harness-community/harness-gitops-workshop/blob/main/cli-manifests/github-connector.yaml) on your local machine and replace **YOUR_HARNESS_ACCOUNT_ID** and **YOUR_GITHUB_USERNAME** with actual values. 
 
 You can find your Harness account ID in any Harness URL, for example:
 ```shell
 https://app.harness.io/ng/#/account/ACCOUNT_ID/home/get-started
 ```
 
-Similarly, replace the placeholder values in the [docker-connector.yaml](cli-manifests/docker-connector.yaml) file.
+Similarly, replace the placeholder values in the [docker-connector.yaml](https://github.com/harness-community/harness-gitops-workshop/blob/main/cli-manifests/docker-connector.yaml) file on your local machine.
 
 To create a GitHub connector, execute the following:
 
@@ -41,7 +41,9 @@ To create a GitHub connector, execute the following:
 harness connector --file github-connector.yaml apply
 ```
 
-Enter your github username and press **Enter**. Next, create a Docker Hub Connector:
+Enter your GitHub username and press **Enter**. 
+
+Next, create a Docker Hub Connector:
 
 ```shell
 harness connector --file docker-connector.yaml apply
@@ -87,10 +89,10 @@ Download the Harness GitOps Agent script using either the YAML or Helm Chart opt
 
 8. Select **Continue** and verify the Agent is successfully installed and can connect to Harness Manager.
 
-9. On your terminal, execute the following command to export the GitOps agent name:
+9. On your terminal, execute the following command to set the GitOps agent identifier you created earlier as a shell variable:
 
 ```bash
-export AGENT_NAME=GITOPS_AGENT_ID
+export AGENT_NAME=<GITOPS_AGENT_ID>
 ```
 
 > [!NOTE]  
@@ -180,11 +182,13 @@ spec:
         - CreateNamespace=true
 ```
 
-The [Git file generator](https://argocd-applicationset.readthedocs.io/en/stable/Generators-Git/#git-generator-files) is a subtype of the Git generator. The Git file generator generates parameters using the contents of JSON/YAML files found within a specified repository. `template.spec.project` refers to the Argo CD project ID that is mapped to your Harness project. Navigate to **GitOps --> Settings --> GitOps: Agents** to find the project ID. Update the project with the ID you see there.
+The [Git file generator](https://argocd-applicationset.readthedocs.io/en/stable/Generators-Git/#git-generator-files) is a subtype of the Git generator. The Git file generator generates parameters using the contents of JSON/YAML files found within a specified repository. `template.spec.project` refers to the Argo CD project ID that is mapped to your Harness project. Navigate to **GitOps --> Settings --> GitOps: Agents** to find the project ID. Update the project in your **GitHub forked repo** with the ID you see there.
 
 ![Argo Project ID](static/e2e/argo-project-id.png)
 
-Be sure to replace **YOUR_GITHUB_USERNAME** in both YAML files.
+Be sure to replace **YOUR_GITHUB_USERNAME** in: 
+- The configs/git-generator-files-discovery/git-generator-files.yaml in **your GitHub repo fork**
+- The cli-manifests/gitops-app.yaml **on your local machine**
 
 Create a Harness GitOps Repository by executing the following command:
 
@@ -248,7 +252,7 @@ Run the following command to update pipeline with CD stages.
 
 `harness pipeline --file prpipeline.yaml apply`
 
-Finally, [create a trigger](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/) to run the PR pipeline when new code is committed to the **main** branch.
+Finally, [create a trigger](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/) to run the PR pipeline when new code is committed to the **main** branch of your GitHub forked repo.
 
 ## Test the setup
 
