@@ -805,11 +805,11 @@ https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34-->
 
 ## AWS Serverless Lambda
 
-There are three authentication options for the AWS connector when used for AWS ECS images for AWS Serverless Lambda deployments:
+There are three [authentication options for the AWS connector](#harness-aws-connector-settings) when used for AWS ECS images for AWS Serverless Lambda deployments:
 
-* [AWS Access Key](#aws-access-key)
-* [Assume IAM Role on Delegate](#assume-iam-role-on-delegate)
-* [Use IRSA](#configure-irsa-credentials-for-AWS-connectors)
+* AWS Access Key
+* Assume IAM Role on Delegate
+* Use IRSA
 
 You can also use STS roles with Serverless Lambda deployments. For details about this, go to [Serverless cross-account access (STS Role)](#serverless-cross-account-access-sts-role).
 
@@ -1006,7 +1006,7 @@ The AWS connector settings include:
 * **Credentials**: Credentials that enable Harness to connect your AWS account. There are three primary options:
   * **Assume IAM Role on Delegate:** This assumes the SA of the delegate. Ensure the IAM roles attached to the nodes have the right access. This is often the simplest method for connecting Harness to your AWS account and services. Once you select this option, you can select a delegate in the next step of AWS connector creation. Typically, the delegate runs in the target infrastructure.
   * **AWS Access Key:** The [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) of the IAM Role to use for the AWS account. You can use [Harness Text Secrets](../../../secrets/add-use-text-secrets.md) for both.
-  * **Use IRSA:** Allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources. By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account; whereas, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate.
+  * **Use IRSA:** Allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources. By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account; whereas, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate. For more information, go to 
 * **AWS Backoff Strategy:** Go to [AWS Backoff Strategy](#aws-backoff-strategy) below.
 
 <details>
@@ -1014,11 +1014,7 @@ The AWS connector settings include:
 
 Setting up IRSA credentials requires a few more steps than other methods, but it is a simple process.
 
-:::tip
-
 The following steps assume this is a new delegate installation and a new AWS connector. If you are updating an existing delegate and AWS connector, you only need to edit the delegate YAML for your existing delegate, as described below, and select the **Use IRSA** option in your AWS connector's **Credentials** settings.
-
-:::
 
 1. Create the IAM role with the policies that you want the delegate to use. The policies you select depend on what AWS resources you are deploying via the delegate. For details, go to the [AWS permissions and policies](#aws-permissions-and-policies) section.
 2. In the cluster where the delegate will be installed, create a service account and attach the IAM role to it.
@@ -1077,6 +1073,7 @@ The following steps assume this is a new delegate installation and a new AWS con
 9. For **Credentials**, select **Use IRSA**.
 10. For **Select Connectivity Mode**, select **Connect through a Harness Delegate**, and then select the delegate you just installed.
 11. Select **Save and Continue** to verify the delegate credentials and test the connection.
+12. To use an AWS connector with IRSA in a CI stage, you must [configure your Kubernetes cluster build infrastructure to use the same service account name](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/#service-account-name) specified in your delegate YAML.
 
 </details>
 

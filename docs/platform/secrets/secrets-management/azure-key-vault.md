@@ -172,7 +172,11 @@ To configure the details for your Azure Key Vault connector, you can do one of t
    This is your only chance to view this key's value in Azure. Store the value somewhere secure, and keep it on your clipboard.
    :::
 
-   5. Click **Continue**.
+5. Optional: Deselect **Purge Secrets**.
+
+   This option is selected by default and purges deleted secrets instead of soft deleting them. For more information, go to [Purge deleted secret](https://learn.microsoft.com/en-us/rest/api/keyvault/secrets/purge-deleted-secret/purge-deleted-secret) in the Microsoft documentation.
+
+6. Click **Continue**.
 
 ### Reference JSON secrets
 

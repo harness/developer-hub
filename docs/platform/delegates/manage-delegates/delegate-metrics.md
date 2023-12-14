@@ -9,6 +9,11 @@ This topic explains how to configure the Prometheus monitoring tool for metrics 
 Harness captures delegate agent metrics for delegates with an immutable image type. This process requires a delegate an immutable image. For more information, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types). 
 
 The delegate is instrumented for the collection of the following delegate agent metrics.
+
+:::info note
+All metrics reset when you restart the delegate.
+
+:::
   
 | **Metric name** | **Description** |
 | :-- | :-- |

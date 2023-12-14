@@ -15,7 +15,38 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: November 29th 2023
+### Latest Updated: December 12th 2023
+
+## December 2023
+
+### Erlang SDK
+
+#### Version 3.0.0
+
+**Breaking Percentage Rollout Changes**
+
+ - The percentage rollout hash algorithm was slightly different compared to other Feature Flags SDKs, which resulted in a different bucket allocation for the same target. The overall distribution was the same, but this change ensures that the same target will get the same allocation per SDK. 
+ - If a custom BucketBy field is set on the web app, but it can’t be found in a target, then the SDK will fall back to bucketing by target identifier for that target and a warning will be logged.
+
+### JavaScript SDK
+
+#### Version 1.21.0
+
+ - Added the `Harness-Target` header.
+
+### .NET SDK
+
+#### Version 1.4.0
+
+ - Added the `WaitForInitialization()` method and have deprecated the InitializeAndWait() method. 
+
+### React Native SDK
+
+#### Version 1.0.3
+
+The React Native SDK for Harness Feature Flags is now deprecated and will no longer be actively maintained. 
+
+We encourage users to migrate to our React SDK. For more information on transitioning to the React SDK, please refer to the [React SDK Documentation](https://developer.harness.io/docs/feature-flags/ff-sdks/client-sdks/react-client/).
 
 ## November 2023
 
@@ -56,12 +87,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Java SDK
 
+### Version 1.4.0
+
+ - Updated the percentage rollout hash to match GoLang SDK.
+ - Dropped SSE event log down from `INFO` to `DEBUG`.
+
 #### Version 1.3.1
 
  - Added Java 21 Support.
  - Marked private attributes not working. 
  - Improved stream restart logic. 
-
+ 
 ### Node.js SDK
 
 #### Version 1.4.0
@@ -100,6 +136,10 @@ Fixed issues
  - Set default log level to WARNING 
 
 ### Ruby SDK
+
+#### Version 1.2.1
+
+ - Used pessimistic version operator for the minor versions.
 
 #### Version 1.2.0
 
