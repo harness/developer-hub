@@ -18,7 +18,7 @@ import delete_project from './static/delete-project.png'
 
 You can install the Harness Delegate on either Docker or Kubernetes.
 
-import Addperm from '/docs/get-started/shared/delegate-additional-permissions.md'
+import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
 
 <Addperm />
 

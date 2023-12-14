@@ -21,7 +21,7 @@ The inline tutorial below shows you how to install the default delegate for your
 
 The default delegate image, denoted by the `yy.mm.xxxxx` image tag, includes a set of pre-installed 3rd-party custom binaries for convenience. You can find the list of these binaries [here](/docs/platform/Delegates/delegate-concepts/delegate-image-types#third-party-tools-included-in-the-delegate-image-type). If you are concerned about the security vulnerabilities that potentially come with these pre-installed binaries, our recommendation is to use the minimal delegate noted below.
 
-import Addperm from '/docs/get-started/shared/delegate-additional-permissions.md'
+import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
 
 <Addperm />
 

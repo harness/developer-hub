@@ -23,7 +23,7 @@ The delegate requires access to all the connectors and Harness Secrets needed to
 * Access all the secrets used by all the connectors used in a pipeline.
 * Create and update secrets in Kubernetes. This is necessary to pull the images needed to run individual Steps.
 
-import Addperm from '/docs/get-started/shared/delegate-additional-permissions.md'
+import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
 
 <Addperm />
 

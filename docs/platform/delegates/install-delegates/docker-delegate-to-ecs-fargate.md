@@ -14,7 +14,7 @@ You can use Harness NextGen to deploy a Docker delegate to Amazon Elastic Contai
 Delegate scope for a delegate for Amazon ECS is based on the token you use.
 :::
 
-import Addperm from '/docs/get-started/shared/delegate-additional-permissions.md'
+import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
 
 <Addperm />
 

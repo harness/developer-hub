@@ -14,7 +14,7 @@ Harness provides a "minimal" delegate image that does not include third-party SD
 
 For a list of the SDK versions that are certified for different types of deployments, go to [Delegate-required SDKs](/docs/platform/delegates/delegate-reference/delegate-required-sdks.md).
 
-import Addperm from '/docs/get-started/shared/delegate-additional-permissions.md'
+import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
 
 <Addperm />
 

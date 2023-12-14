@@ -18,7 +18,7 @@ Delegate names in an account must be unique. You cannot use the same delegate na
 
 This topic describes the process used to duplicate, rename, and register a new delegate. You will likely want to script this process.
 
-import Addperm from '/docs/get-started/shared/delegate-additional-permissions.md'
+import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
 
 <Addperm />
 
