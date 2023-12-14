@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-11-06T10:00
+date: 2023-12-12T10:00
 sidebar_position: 2
 ---
 
@@ -21,6 +21,16 @@ Early access features are behind feature flags. You can contact [Harness Support
 ## Platform early access features
 
 The following early access (beta) features are available for the Harness Platform.
+
+### AIDA:tm: replaces Coveo for support case deflection
+
+* **Release date:** December 2023
+* **Release version:** 81820
+* **Issue number:** CDS-85267
+* **Feature flag:** `CDS_AIDA_SUPPORT_DEFLECTION`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+AIDA replaces Coveo in proactively assisting you with content recommendations when you are entering a subject for your ticket in the **Submit a ticket** form. 
 
 ### Harness AI Development Assistant (AIDA:tm:)
 
@@ -152,9 +162,21 @@ The following early access (beta) features are available for the Harness Cloud C
 
 You can now propagate force cool down from primary rule to dependent rules. Without this feature flag enabled, when stopping a rule from the UI, you had to stop its dependant rules one by one. With this enhancement, you can propagate the stop operation to dependant rules as well. Propagating cool down to dependant rules is optional. You can stop the primary rule with or without propagating cool down to dependant rules.
 
-## CD & GitOps early access features
+## Continuous Delivery & GitOps early access features
 
-For information about early access (beta) features for Harness Continuous Delivery and GitOps, go to [Active CD feature flags](/docs/continuous-delivery/cd-integrations/#active-cd-feature-flags) and the [CD and GitOps release notes](./continuous-delivery).
+### Update the green services in an ECS Blue Green deployment
+
+* **Release date:** December 2023
+* **Release version:** 81820
+* **Issue number:** CDS-82763
+* **Feature flag:** `CDS_ECS_BG_VALIDATION`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+If green services exist in your Blue Green deployment, you can configure Harness to update those services instead of deleting them and then re-creating them with a new manifest and artifact. Updating existing green services is beneficial because new containers come up before old ones go down. For more information, go to [Update green services](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#update-green-services).
+
+Additionally, before beginning the deployment, Harness validates the blue and green services based on the target group and tags them appropriately. If the validation fails, Harness aborts the deployment. For more information, go to [ECS blue/green service validations](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#ecs-blue-green-service-validation).
+
+This item requires Harness Delegate version 23.11.81820. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 <!-- ## CET early access features
 
@@ -247,6 +269,15 @@ No early access (beta) features are available for Harness Internal Developer Por
 
 The following early access (beta) feature is available for the Harness Security Testing Orchestration module.
 
+### Aqua Security integration
+
+* **Release date:** November 2023
+* **Issue number:** STO-6382
+* **Feature flag:** `STO_STEP_PALETTE_AQUASEC`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks.  (STO-6382)
+
 ### STO Jira integration
 
 * **Release date:** March 2023
@@ -302,7 +333,6 @@ Also, Projects is a new option in the left navigation. Click Projects to view th
 * **GA date:** Early 2023
 * **Early access release date:** November 2022
 * **Issue number:** PL-29459
-* **Feature flag:** `USE_GET_FILE_V2_GIT_CALL`
 
 You can get optimized performance on remote pipelines if you are on delegate version 772xx or higher. If you are on an older delegate version, you can upgrade your delegate for optimized performance.
 

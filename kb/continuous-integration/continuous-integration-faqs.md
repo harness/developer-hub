@@ -913,7 +913,7 @@ If you leave the **Priority Class** field blank, the `PriorityClass` is set to t
 
 #### Is remote caching supported in Build and Push steps?
 
-For certain build infrastructures, you can use the **Remote Cache Image** setting in **Build and Push** steps to enable remote [Docker layer caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#docker-layer-caching) where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling them to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
+Harness supports multiple Docker layer caching methods depending on what infrastructure is used. Go to [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) to learn more.
 
 #### Do Background steps have limitations?
 
@@ -980,3 +980,55 @@ In the `Tests` tab, the visualization graph provides insights into why each test
 #### In case of multi stage pipeline, will the CI stage execution update the build status in PR even if the clone codebase option is disabled in that stage?
 
 Yes, currently the CI stage execution updates the build status on PR even if the clone codebase option is disabled for that specific stage however there are some work in progres to improve this experience
+
+#### Why is the ```Enable Cache Intelligence``` option is greyed out in the CI pipeline?
+
+Harness cache intelligence is currently supported when you run the build in Harness cloud on Linux and Windows platforms. For all the other build infra, this option would be greyed out.
+
+#### Does Cache Intelligence have the capability to expire the cache?"
+
+Yes, The cache will be expired every 15 days
+
+#### Does harness override the cache when using the save cache to S3 step?
+
+By default ```save cache to s3``` step will not override the cache however there is an optional configuration which will overrode the cache with the same key if enabled
+
+#### Why the run step is failing with the error ```1 error occurred: * stat /tmp/engine/Zko3loXHTre2vfh-output.env: no such file or directory``` while trying to export the output variable from the run step which uses python shell?
+
+This could happen if you are exiting the python script manually by calling ```exit(0)```. If you configure output variable in the run step that uses python shell, we add few lines of code at the end of your custom script which will add the variable to be exported to a temp file. When you are calling exit(0) at the end of the script, these codes responsible for exporting variable will not be run which causes this issue. 
+
+#### Is there a way to abort a running pipeline from a step in that pipeline?
+
+We could use the ```putHandleInterrupt``` API to abort a running pipeline from a step in that pipeline. More details about this pipeline can be reffered in the [doc](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/putHandleInterrupt)
+
+#### Do we need to have a CI stage in the pipeline to get the PR updated with the build status?
+
+Yes, the build status is updated on the PR only when a CI stage is executed.
+
+#### When multiple CI stages exist in a pipeline, will the build status be updated on the pull request for each individual stage or for the entire pipeline?
+
+The build status will be updated for the individual CI stages
+
+#### Is there any character limit for the build status message updated on PR?
+
+Yes. Github has a limit of 140 characters for the message that can be updated on the PR post which the call will fail with an error ```description is too long (maximum is 140 characters)```
+
+#### What identifiers will be included in the build status message which is updated on PR during the CI stage execution?
+
+Pipeline identifier and stage identifier will be included in the build status message.
+
+#### How to configure the git connector to not update the PR with the build status?
+
+One option would be to remove the API access from the cdebase connector so that the build status will not be updated on the PR
+
+#### What is the complete format used in the build status messages which is updated on PR during the CI stage execution?
+
+The build status message format is ```<pipeline_identifier>-<stage_identifier> — Execution status of Pipeline - <pipeline_identifier> (execution_ID) Stage - <stage_identifier> was SUCCEEDED```
+
+#### Why the run step within the container step group is unable to publish the test report with the error ```Unable to collect test reports``` even after the report path is correctly configured?
+
+Currently publishing the test report via run step within the containerized step group is not supported. However the team is working on supporting this in the future release.
+
+#### How to list the tags available for an image which is being listed when hitting the endpoint ```https://app.harness.io/registry/_catalog```?
+
+We could hit the endpoint ```https://app.harness.io/registry/harness/<image_name>/tags/list``` to list all the available tags for an image in the registry ```app.harness.io/registry```

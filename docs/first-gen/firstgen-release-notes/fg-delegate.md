@@ -55,6 +55,14 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 <Kustomizedep />
 
+## December 2023
+
+### Harness version 81812, Harness Delegate version 23.12.81803
+
+#### Fixed issues
+
+- Fixed the `java.io.InterruptedIOException` message in delegate logs by adding the source URL and removing duplicate error logs. (PL-40118)
+
 ## November 2023
 
 ### Harness version 81609, Harness Delegate version 23.11.81601

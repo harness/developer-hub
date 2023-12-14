@@ -9,7 +9,7 @@ redirect_from:
 # Overview of Harness IDP
 
 :::note
-This module is currently available in BETA. To try this module, send an email to idp-interest@harness.io for a demo and we’ll get you started.
+To try this module, send an email to idp-interest@harness.io for a demo and we’ll get you started.
 :::
 
 Harness IDP enables you to create new software components quickly while adhering to your company’s best practices. It enables you to manage the software you own by presenting a developer-centric view of all relevant information such as service health, deployments, and alerts. It also enables you to explore the internal software ecosystem of the company, discover technical documentation, APIs, and services, all of which enable better collaboration.

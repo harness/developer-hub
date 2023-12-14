@@ -36,7 +36,7 @@ Kubelet density determines the resilience of the kubelet by creating pods on a s
       <tr>
         <td> TARGET_NODE </td>
         <td> Name of the target node. </td>
-        <td> If this environment variable isn't set, a random target node is selected. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-single-node"> target node. </a></td>
+        <td> If this environment variable isn't set, a random target node is selected. For more information, go to <a href = "../../chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-single-node"> target node. </a></td>
       </tr>
     </table>
     <h3>Optional fields</h3>
@@ -49,42 +49,42 @@ Kubelet density determines the resilience of the kubelet by creating pods on a s
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 90s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
+        <td> Defaults to 90s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
       </tr>
       <tr>
         <td> POD_COUNT </td>
         <td> Total number of pods that are created during chaos. </td>
-        <td> Defaults to 50. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density/#pod-count"> pod count. </a></td>
+        <td> Defaults to 50. For more information, go to <a href="#pod-count"> pod count. </a></td>
       </tr>
       <tr>
         <td> TARGET_NAMESPACE </td>
         <td> Namespace where the pods will be created. </td>
-        <td> Defaults to the namespace specified in <code>CHAOS_NAMESPACE</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density/#target-namespace"> target namespace. </a></td>
+        <td> Defaults to the namespace specified in <code>CHAOS_NAMESPACE</code>. For more information, go to <a href="#target-namespace"> target namespace. </a></td>
       </tr>
       <tr>
         <td> POD_TEMPLATE_CM </td>
         <td> Name of the config map that contains the pod template. </td>
-        <td> For example: <code>stress-app-manifest</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density/#pod-template-provided-as-configmap"> pod template provided as a configmap. </a></td>
+        <td> For example: <code>stress-app-manifest</code>. For more information, go to <a href="#pod-template-provided-as-a-configmap"> pod template provided as a configmap. </a></td>
       </tr>
       <tr>
         <td> POD_TEMPLATE_PATH </td>
         <td> Path to the pod template configMap mount. </td>
-        <td> Defaults to <code>/templates/pod.yml</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density/#pod-template-provided-as-configmap"> pod template provided as a configmap</a></td>
+        <td> Defaults to <code>/templates/pod.yml</code>. For more information, go to <a href="#pod-template-provided-as-a-configmap"> pod template provided as a configmap</a></td>
       </tr>
       <tr>
         <td> POD_SELECTOR </td>
         <td> Labels of destination pods.</td>
-        <td> Defaults to <code>&#123;name: kubelet-density-app&#125;</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density#pod-image-and-pod-selectors">pod selector.</a> </td>
+        <td> Defaults to <code>&#123;name: kubelet-density-app&#125;</code>. For more information, go to <a href="#pod-image-and-pod-selectors">pod selector.</a> </td>
       </tr>
       <tr>
         <td> POD_IMAGE </td>
         <td> Pod image used to create multiple pods. </td>
-        <td> Defaults to <code>gcr.io/google_containers/pause-amd64:3.0</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density#pod-image-and-pod-selectors">pod image.</a> </td>
+        <td> Defaults to <code>gcr.io/google_containers/pause-amd64:3.0</code>. For more information, go to <a href="#pod-image-and-pod-selectors">pod image.</a> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
+        <td> For example, 30s. For more information, go to <a href= "../../chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
       </tr>
     </table>
 
@@ -92,7 +92,7 @@ Kubelet density determines the resilience of the kubelet by creating pods on a s
 
 A chaos experiment creates pods on the target node during execution. The template for the pod is provided by mounting the pod template using the configmap and passing the name and `mountPath` of the pod using the `POD_TEMPLATE_CM` and `POD_TEMPLATE_PATH` environment variables, respectively.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]: # "./static/manifests/kubelet-density/pod-template.yaml yaml"
 
@@ -125,7 +125,7 @@ spec:
 
 It specifies the number of the pods that will be created on the target node. Tune it by using the `POD_COUNT` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]: # "./static/manifests/kubelet-density/pod-count.yaml yaml"
 
@@ -155,7 +155,7 @@ spec:
 
 It specifies the namespace where the pods are created. Tune it by using the `TARGET_NAMESPACE` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]: # "./static/manifests/kubelet-density/target-namespace.yaml yaml"
 
@@ -185,7 +185,7 @@ spec:
 
 Tune the pod image and label selectors by using the `POD_IMAGE` and `POD_SELECTOR` environment variables, respectively.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]: # "./static/manifests/kubelet-density/pod-image-and-selectors.yaml yaml"
 

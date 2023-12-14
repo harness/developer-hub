@@ -1,7 +1,7 @@
 ---
 title: Using a short-lived secret to trigger a service onboarding pipeline
 description: Create a secret input field for developers to provide their credentials, and then use the credentials as a runtime input for a service onboarding pipeline.
-sidebar_position: 20
+sidebar_position: 2
 ---
 
 Sometimes, as a platform engineer, you might want your developers to enter their credentials when using a software template in IDP. This is useful when, for example, you want to use developers' GitHub credentials in a pipeline and create a repository on their behalf. This is a good approach because it ensures that developers create repositories that they can access and that you do not have to provide a superuser token for such tasks. This tutorial explains how you can configure such a software template and the corresponding pipeline.

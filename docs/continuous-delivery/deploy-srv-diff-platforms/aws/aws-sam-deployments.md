@@ -4,12 +4,6 @@ description: Deploy SAM templates to AWS.
 sidebar_position: 4
 ---
 
-:::note
-
-Currently, AWS SAM support is behind the feature flag `CDS_CONTAINER_STEP_GROUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Harness supports AWS SAM (Serverless Application Model) deployments. SAM is an open-source framework provided by Amazon Web Services (AWS) that simplifies the deployment and management of serverless applications on AWS. It is an extension of AWS's infrastructure-as-code service, CloudFormation.
 
 For SAM deployments in Harness, add your SAM directory to Harness and select the target region. Harness will perform the SAM build and deploy.

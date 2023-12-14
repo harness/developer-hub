@@ -410,12 +410,6 @@ However, the AWS CLI [create-auto-scaling-group](https://docs.aws.amazon.com/cli
 
 ### User Data
 
-:::note
-
-Currently, User Data is behind the feature flags `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 You can add standard AWS AMI user data to enter configuration scripts and directives that your AWS instance will run upon launch.
 
 The resulting User Data container corresponds to the AWS Launch Instance wizard's **Advanced Details** > **User data** container.
@@ -752,12 +746,6 @@ The infrastructure definition is added.
 ```
 
 ### Dynamically provisioned ASG infrastructure
-
-:::note
-
-Currently, User Data is behind the feature flags `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Here's a summary of the steps to dynamically provision the target infrastructure for a deployment:
 
@@ -1097,12 +1085,6 @@ import TabItem4 from '@theme/TabItem';
 
 The Rolling Deploy step has the following options:
 
-:::note
-
-Currently, **ASG Name**, **Same as already running Instances**, **Fixed**, and multiple load balancer support is behind the feature flags `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 - **ASG Name:** Enter a name for the ASG that Harness will create.
 - **Same as already running Instances** or **Fixed**:
   - Select **Fixed** to enforce a Max, Min, and Desired number of instances.Select **Same as already running Instances** to use scaling settings on the last ASG deployed by this Harness pipeline. If this is the first deployment and you select **Same as already running Instances**, Harness uses a default of Min 0, Desired 6, and Max 10. Harness does not use the Min, Max, and Desired settings of the base ASG.
@@ -1426,12 +1408,6 @@ import TabItem6 from '@theme/TabItem';
 ```
 
 The ASG Blue Green Deploy step has the following settings:
-
-:::note
-
-Currently, **ASG Name**, **Same as already running Instances**, **Fixed**, and multiple load balancer support is behind the feature flags `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 - **ASG Name:** Enter a name for the ASG that Harness will create.
 - **Same as already running Instances** or **Fixed**:

@@ -15,7 +15,7 @@ import TabItem from '@theme/TabItem';
 
 :::note
 
-Currently, this feature is behind the feature flags `NG_SVC_ENV_REDESIGN` and `CD_TRIGGERS_REFACTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag  `CD_TRIGGERS_REFACTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 

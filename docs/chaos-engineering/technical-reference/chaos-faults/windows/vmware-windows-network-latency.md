@@ -74,42 +74,42 @@ stringData:
       </tr>
       <tr>
         <td> DESTINATION_HOSTS </td>
-        <td> Comma separated list of destination hosts to induce latency. </td>
-        <td> For example, <code>github.com,harness.io</code> </td>
+        <td> Comma-separated list of destination hosts to induce latency. </td>
+        <td> For example, <code>github.com,harness.io</code>. For more information, go to <a href="#destination-hosts"> destination hosts.</a> </td>
       </tr>
       <tr>
         <td> DESTINATION_IPS </td>
-        <td> Comma separated list of destination IPs to induce latency. </td>
-        <td> For example, <code>10.0.0.1,10.0.0.2</code> </td>
+        <td> Comma-separated list of destination IPs to induce latency. </td>
+        <td> For example, <code>10.0.0.1,10.0.0.2</code>. For more information, go to <a href="#destination-ips"> destination IPs.</a></td>
       </tr>
       <tr>
         <td> NETWORK_LATENCY </td>
         <td> The amount of latency to induce (in ms). </td>
-        <td> Default: 2000. </td>
+        <td> Default: 2000. For more information, go to <a href="#network-latency"> network latency.</a></td>
       </tr>
       <tr>
         <td> PATH_OF_CLUMSY </td>
         <td> Path of the Clumsy tool in the VM. </td>
-        <td> For example, <code>C:\\Program Files\\Clumsy\\</code> </td>
+        <td> For example, <code>C:\\Program Files\\Clumsy\\</code>. For more information, go to <a href="#path-of-clumsy"> path of Clumsy.</a> </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 60s. </td>
+        <td> Default: 60s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> Default: 0s. </td>
+        <td> Default: 0 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Default: parallel. Supports serial sequence as well. </td>
+        <td> Default: parallel. Supports serial and parallel sequence. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a> </td>
       </tr>
     </table>
 
-### Destination Hosts
+### Destination hosts
 
 The `DESTINATION_HOSTS` environment variable specifies the destination hosts to induce latency on the target Windows VM.
 
@@ -165,7 +165,7 @@ spec:
           value: '10.0.0.1,10.0.0.2'
 ```
 
-### Network Latency
+### Network latency
 
 The `NETWORK_LATENCY` environment variable specifies the amount of latency to induce (in ms).
 

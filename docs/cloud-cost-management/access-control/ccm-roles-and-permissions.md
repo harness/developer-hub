@@ -79,4 +79,5 @@ The following table describes the Permissions enabled in the default Harness Rol
 | Cloud Asset Governance Enforcements | Cloud Asset Governance Enforcements: View | Y | Y | N | Y | Y | View the cloud asset governance enforcements |
 | Cloud Asset Governance Enforcements | Cloud Asset Governance Enforcements: Edit | Y | N | N | Y | N | Create a new cloud asset governance enforcement or edit existing |
 | Cloud Asset Governance Enforcements | Cloud Asset Governance Enforcements: Delete | Y | N | N | Y | N | Delete a cloud asset governance enforcement |
-
+| Commitments | Commitments: View | Y | N | N | Y | Y | View Commitment dashboards and Summary |
+| Commitments | Commitments: Edit | Y | N | N | Y | N | Setup Commitments |

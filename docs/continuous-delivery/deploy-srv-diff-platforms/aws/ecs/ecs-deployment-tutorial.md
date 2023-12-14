@@ -600,12 +600,6 @@ In **Region**, click **Select Region**, and then AWS region where your ECS clust
 
 ### Dynamically provisioned ECS infrastructure
 
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
 
 1. **Add dynamic provisioning to the CD stage**:
@@ -926,6 +920,22 @@ To create the Scalable Target and Scalable Policy resources, see the [register-s
 If you select **Enable Auto Scaling In Swap Step** in the **ECS Blue Green Create Service** step, then Harness will attach auto scaling policies to the new service it deploys in the **Configure Swap Target Groups** step. The policies are taken from the **Scalable Target** and **Scaling Policy settings** in the Harness service.
   
 If you do not select **Enable Auto Scaling In Swap Step**, then Harness will attach auto scaling policies to the new service deployed in the **Configure Blue Green Deployment** step.
+
+### Update Green Services
+
+If Green services exist, you can update them instead of having Harness create them again. 
+
+To update existing Green services, in the **Configure Blue Green Deployment** pane, select **Update Green Service**. 
+
+When this option is selected, Harness updates the Green service with a new manifest and artifact. The benefit of updating a Green service is that old containers go down only after new containers come up. 
+
+If you do not select this option, Harness deletes the Green service if it exists and then creates it again with a new manifest and artifact. Therefore, old containers go down before new containers come up. This behavior can impact the deployment if both the stage target group and the prod target group are the same and tags are incorrect.
+
+Some fields from the service definition are not considered in the updated service, and they remain the same through the lifetime of the ECS service. These fields are:
+
+1. launchType
+2. schedulingStrategy
+3. roleArn
 
 ### Same as already running instances
 
@@ -1260,6 +1270,34 @@ Lastly, the new ECS service is tagged with `BG_VERSION`, `BLUE`.
 **Do not downsize old service:** Use this setting to choose whether to downsize the older, previous version of the service.
 
 By default, the previous service is downsized to 0. The service is downsized, but not deleted. If the older service needs to be brought back up again, it is still available.
+
+#### ECS Blue Green service validation
+
+:::note
+
+Currently, ECS Blue Green service validation is behind the feature flag `CDS_ECS_BG_VALIDATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Harness performs some validations before the deployment. Before the deployment, Harness identifies ECS Blue and Green services based on the target group and updates tags accordingly. It then starts the deployment.
+
+ **Blue Green service scenarios**
+
+- **Scenario 1:** When the prod target group and stage target group are different.
+
+  - **Blue service**. Service version that is attached to the prod target group: tag as blue.
+  - **Green service**. Service version that is attached to the stage target group: tag as green.
+
+
+- **Scenario 2:** When the prod target group and stage target group are the same.
+
+  - **Blue service**. Service version that is attached to the prod target group and has running tasks: tag as blue.
+  - **Green service**. Service version that is attached to the prod target group and has zero or fewer running tasks: tag as green.
+ 
+- If the validations for the Blue and Green ECS services fail, Harness aborts the deployment. You must fix the issue by resetting the service in the AWS Management Console.
+
+- If you abort the deployment, the execution remains incomplete. During the next deployment, you must fix the configuration by resetting the ECS service in the AWS Management Console.
+  
 
 ### ECS Rollbacks
 

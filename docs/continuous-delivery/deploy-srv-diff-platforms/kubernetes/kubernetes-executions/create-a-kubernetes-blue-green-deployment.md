@@ -175,12 +175,6 @@ By default, Harness uses the `--dry-run` flag on the `kubectl apply` command dur
 
 ### Skip Deployment if Using the Manifest Used in a Previous Deployment
 
-:::note
-
-Currently, this feature is behind the feature flag `CDS_SUPPORT_SKIPPING_BG_DEPLOYMENT_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 When running the **Stage Deployment** step, if you select this option, Harness renders the manifests and compares them with the last deployed manifests to see if there are any changes. If there are no changes in the manifests used in the step and the previous deployment, Harness skips the step and progresses to the subsequent steps in the pipeline. This ensures that no routes or labels associated with the primary or stage (Blue or Green) are manipulated when no manifest changes are present. 
 
 When you look at the **Stage Deployment** step in Harness **Deployments**, you will see the following log sections.

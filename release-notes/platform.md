@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-12-04:T10:00:30
+date: 2023-12-12:T10:00:30
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -12,6 +12,7 @@ import TabItem from '@theme/TabItem';
 ```mdx-code-block
 import delete_project from './static/delete-project.png'
 ```
+
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/platform/rss.xml" />
 
@@ -25,6 +26,53 @@ These release notes describe recent changes to Harness Platform.
 
 :::
 
+## Important feature change notice
+
+:::info important
+This is a notification for an upcoming feature change aimed at enhancing your experience with Harness. Here's what you need to know:
+
+1. Harness uses connectors to external secret managers (e.g. Google Secret Manager or Hashicorp Vault) to resolve/store secrets used by pipelines and elsewhere in the Harness platform. External secret manager connectors require configuration, including a means to authenticate to the external Secret Manager. Starting **December 11, 2023**, Harness is adding a restriction that users can **only use Harness Built-in Secret Manager to store authentication credentials** for access to the corresponding Secret Manager.
+
+2. **Continuity Assured**: There is no impact on your existing pipelines. They will remain compatible with the way secrets are referenced currently. Note that this includes using an external secret manager other than the Harness Built-in Secret Manager to store the authentication secret.
+
+:::
+
+#### Why is Harness making this change?
+
+Our current setup allows configurations where credentials from one secret manager are stored within another, resulting in complexities that can be challenging to navigate. Moreover, these configurations may introduce vulnerabilities, posing potential security risks. For example, in a recent [incident](https://status.harness.io/incidents/w2w7btby70xs), our thread pool designated for secret manager resolution was exhausted.
+
+Moving forward, we've implemented several validations, such as the disabling of self-references. Furthermore, with the introduction of the aforementioned restriction on secret managers, configurations will become simpler to comprehend and maintain. This change aims to streamline the process, enhancing clarity and reducing potential security vulnerabilities.
+
+Below is further explanation for each type of secret manager Harness currently supports and the changes associated with it.
+
+1. Harness supports three authentication methods for **AWS Key Management Service (KMS)** and **AWS Secrets Manager**:
+   
+   1.  AWS Access Key: Access Key Id, Secrets Access Key, and AWS ARN need to be stored in Harness Built-in Secret Manager.
+   
+   2.  [Assume IAM role on delegate](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager/#option-assume-iam-role-on-delegate): AWS ARN must be stored in Harness Built-in Secret Manager.
+   
+   3.  [Assume Role using STS on delegate](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager/#option-assume-role-using-sts-on-delegate): AWS ARN must be stored in Harness Built-in Secret Manager.
+
+2. Harness supports the following five authentication methods for **Hashicorp Vault**:
+
+   1. AppRole secret IDs must be stored in the Harness Built-in Secret Manager.
+   2. Token secret IDs must be stored in the Harness Built-in Secret Manager.
+   3. AWS Auth secret IDs must be stored in the Harness Built-in Secret Manager.
+   4. Vault Agent: Secret storage is not required in the Harness Built-in Secret Manager.
+   5. Kubernetes Auth: Secret storage is not required in the Harness Built-in Secret Manager.
+
+3. Harness supports two authentication methods for **Azure Key Vault**: 
+   1. With the credentials option, the Azure Authentication key must be stored in the Harness Built-in Secret Manager.
+   2. With the credentials of a specific Harness Delegate option, secret storage is not required in Harness Built-in Secret Manager.
+
+4. Harness supports only one authentication method for **GCP Key Management Service**, for which the GCP KMS Credentials file must be stored in the Harness Built-in Secret Manager.
+
+5. Harness supports two authentication methods for **GCP Secrets Manager**: 
+   1. With the credentials option, the Google Secrets Manager Credentials File must be stored in the Harness Built-in Secret Manager.
+   2. With the credentials of a specific Harness Delegate option, secret storage is not required in Harness Built-in Secret Manager.
+
+6. For **Custom Secrets Manager**, if any secret is needed in the template as a variable, then it can only be stored in the Harness Built-in Secret Manager.
+
 ## Deprecation notice
 
 The following deprecated API endpoints will no longer be supported:
@@ -33,6 +81,24 @@ The following deprecated API endpoints will no longer be supported:
 - GET api/resourcegroup
 
 ## December 2023
+
+### Version 81820
+
+#### New features and enhancements
+
+- The LDAP configuration wizard now includes a Delegates Setup step, allowing you to select delegates and ensuring that all LDAP delegate tasks go to a particular delegate. (PL-28202)
+
+#### Fixed issues
+
+- There was an issue with the filtering of items that had tags on the delegate list page. This was resolved by adding an implicit tag before filtering the items in the UI. (PL-42743)
+
+   This item requires Harness Delegate version 23.12.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- When the feature flag `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` is enabled and a new user was added on the Account Access Control: Users page, the following message was displayed: "Invitation sent successfully", even though the user was added to the list. (PL-42860)
+
+   This issue has been resolved, and the UI now displays "User added successfully".
+
+   This item requires Harness Delegate version 23.12.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ### Version 81709
 
@@ -1885,8 +1951,7 @@ The option to disable Harness Secret Manager is now a part of the core settings 
 
 **Platform**
 
-You can now get optimized performance on remote pipelines if you are on delegate version 772xx or higher,
-by enabling the feature flag USE_GET_FILE_V2_GIT_CALL . (PL-29459)
+You can now get optimized performance on remote pipelines if you are on delegate version 772xx or higher. (PL-29459)
 
 If you are on an older delegate version, you can upgrade your delegate and then enable the feature flag for optimized performance.
 

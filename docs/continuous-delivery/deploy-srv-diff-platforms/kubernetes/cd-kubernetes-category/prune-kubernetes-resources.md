@@ -6,6 +6,8 @@ helpdocs_topic_id: t7phv4eowh
 helpdocs_category_id: qfj6m1k2c4
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/continuous-delivery/cd-advanced/cd-kubernetes-category/prune-kubernetes-resources
 ---
 
 This topic describes how to perform Kubernetes pruning using Harness. 
