@@ -21,6 +21,7 @@ This topic provides steps on using Harness to provision a target AWS environment
 ## AWS permissions required
 
 Ensure that the AWS CDK CLI is able to authenticate with the desired AWS account and has the necessary permissions for its provisioning. You can set the access keys, secret keys, and region as environment variables or let the CDK CLI inherit the IAM role from the EKS cluster where the containerized steps run.
+If step group infra points to EKS, a ServiceAccout can be set to the step group Service Account Name input. This way all containers created in that step group would ingerit the permission of the IAM role of corresponding ServiceAccount.
 
 ## Harness roles permissions required
 
