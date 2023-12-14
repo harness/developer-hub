@@ -27,6 +27,10 @@ For information on delegate types, go to [Delegate image types](/docs/platform/d
 
 Use the steps below to install custom certificates for a Docker, Kubernetes, or Helm delegate with an an immutable image type version later than 23.10.81202.
 
+import Addperm from '/docs/get-started/shared/delegate-additional-permissions.md'
+
+<Addperm />
+
 ```mdx-code-block
 <Tabs>
   <TabItem value="docker" label="Docker delegate" default>

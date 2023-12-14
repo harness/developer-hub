@@ -18,6 +18,10 @@ Delegate names in an account must be unique. You cannot use the same delegate na
 
 This topic describes the process used to duplicate, rename, and register a new delegate. You will likely want to script this process.
 
+import Addperm from '/docs/get-started/shared/delegate-additional-permissions.md'
+
+<Addperm />
+
 ### Review: Automation and high availability (HA)
 
 HA does not require delegate automation. Automation can be useful, however, when multiple delegates are required to perform concurrent tasks, or depending on the compute resources you assign to delegates. A rule of thumb is one delegate for every 300 to 500 service instances.
