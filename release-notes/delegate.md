@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-12-12T10:00
+date: 2023-12-14T10:00
 sidebar_position: 4
 ---
 ```mdx-code-block
@@ -34,6 +34,14 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 </details>
 
 ## December 2023
+
+### Versions 23.12.81411, 23.12.81604
+
+#### Delegate security hotfix
+
+- Added additional log sanitization for Git connector flows.
+
+   If you are running delegate versions 23.11.814xx or 23.11.816xx, upgrade to delegate version 23.12.81604.
 
 ### Harness version 81820, Harness Delegate version 23.12.81803
 
