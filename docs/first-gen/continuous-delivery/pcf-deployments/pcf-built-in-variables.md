@@ -178,7 +178,7 @@ echo New App Name: ${pcf.newAppName}
 echo New App GUID:  ${pcf.newAppGuid}  
 echo New App Routes:  ${pcf.newAppRoutes}  
   
-echo "\n\n"  
+echo "nn"  
 echo Old App Name: ${pcf.oldAppName}  
 echo Old App GUID:  ${pcf.oldAppGuid}  
 echo Old App Routes:  ${pcf.oldAppRoutes}  
@@ -202,7 +202,7 @@ New App Name: Basic__demo__pcf__service__DEMO__0
 New App GUID: ae7269df-9521-409e-b79e-167ee03c46d0  
 New App Routes: [Basic__demo__pcf__service__DEMO__0-meditating-foo-ii.bar.net]  
   
-\n\n  
+nn  
 Old App Name: null  
 Old App GUID: null  
 Old App Routes: null  

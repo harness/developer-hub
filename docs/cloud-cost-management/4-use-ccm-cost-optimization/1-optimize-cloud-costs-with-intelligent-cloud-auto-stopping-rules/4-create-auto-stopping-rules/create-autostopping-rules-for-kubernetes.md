@@ -197,7 +197,7 @@ metadata:
     name: <*postgres*>  
     namespace: <*dev-poc*>  
     annotations:  
-        harness.io/cloud-connector-id: <*connector\_id*>  
+        harness.io/cloud-connector-id: <*connector_id*>  
 spec:  
     idleTimeMins: <40>  
     workloadName: <*postgres>*  

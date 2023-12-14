@@ -179,7 +179,7 @@ In dsquery, if the command **dsquery \* -filter "(objectClass=user)"** returns
 4. In **Name Attribute**, enter the common name attribute for the users in your LDAP directory. Typically, this is **cn**. To list all attributes for a user, enter the following dsquery:
    
    ```
-   dsquery*"CN=users,DC=mycompany,DC=com"-filter"(samaccountname=*user\_name*)"-attr*
+   dsquery*"CN=users,DC=mycompany,DC=com"-filter"(samaccountname=*user_name*)"-attr*
    ```
 5. In **Email Attribute**, enter the LDAP user attribute that contains the users' email address. Harness uses email addresses to identify users.  
 Typically, the attribute name is **userPrincipalName** (most common), **email** or **mail**.
@@ -207,7 +207,7 @@ With Group Queries, Harness lets you set the scope within which it can perform t
    ```
    To ensure that the group contains the members you want, use the dsget command:
    ```
-   dsgetgroup"CN=*Group\_Name*,CN=Users,DC=mycompnay,DC=com" -members| dsget user -samid -upn -desc
+   dsgetgroup"CN=*Group_Name*,CN=Users,DC=mycompnay,DC=com" -members| dsget user -samid -upn -desc
    ```
    Typically, you will want to pick the Users group that gives future searches for groups a wide scope. For example:
    ```

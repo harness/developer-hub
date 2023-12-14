@@ -62,9 +62,9 @@ This example uses a Snyk step in Orchestration mode  to scan a repository. This 
    1. Scan Mode = **Orchestration**
    2. Target Type = **Repository**
    3. Target Name = (_user-defined_)
-   <!-- Variant = [**`\<+codebase.branch\>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
+   <!-- Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
    4. Variant = (_user-defined_)
-   5. Access Token =  [**`\<+secrets.getValue("snyk_api_token")\>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization) (_Harness secret_)   
+   5. Access Token =  [**`<+secrets.getValue("snyk_api_token")>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization) (_Harness secret_)   
 
 6. Apply your changes, then save and run the pipeline. 
 
@@ -98,8 +98,8 @@ The scan stage in this pipeline has the following steps:
       dotnet restore SubSolution.sln
 
       # scan the code repository
-      snyk code test \
-         --file=SubSolution.sln  \
+      snyk code test 
+         --file=SubSolution.sln  
          --sarif-file-output=/shared/customer_artifacts/snyk_scan_results.sarif || true
       ``` 
 
@@ -107,7 +107,7 @@ The scan stage in this pipeline has the following steps:
  
    3. In the Run step **Environment Variables** field, under **Optional Configuration**, add a variable to access your Snyk API key:
  
-      `SNYK_TOKEN` = [**`\<+secrets.getValue("snyk_api_token")\>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization)`  
+      `SNYK_TOKEN` = [**`<+secrets.getValue("snyk_api_token")>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization)`  
       
       Your Run step should now look like this:
       
@@ -237,7 +237,7 @@ The scan stage in this pipeline has the following steps:
    1. Scan Mode = **Ingestion**
    2. Target Type = **Repository**
    3. Target Name = (_user-defined_)
-  <!-- Variant = [**`\<+codebase.branch\>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
+  <!-- Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
    4. Variant = (_user-defined_)
    5. Ingestion =  **`/shared/customer_artifacts/snyk_iac.sarif`**    
 
@@ -258,7 +258,7 @@ The following illustrates the [repository orchestration workflow example](#scan-
 pipeline:
   projectIdentifier: STO
   orgIdentifier: default
-  tags: \{\}
+  tags: {}
   properties:
     ci:
       codebase:
@@ -279,7 +279,7 @@ pipeline:
               connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
-              nodeSelector: \{\}
+              nodeSelector: {}
               os: Linux
           execution:
             steps:
@@ -321,7 +321,7 @@ The following illustrates the [repository ingestion workflow example](#scan-a-re
 pipeline:
   projectIdentifier: STO
   orgIdentifier: default
-  tags: \{\}
+  tags: {}
   properties:
     ci:
       codebase:
@@ -340,7 +340,7 @@ pipeline:
             arch: Amd64
           runtime:
             type: Cloud
-            spec: \{\}
+            spec: {}
           execution:
             steps:
               - step:
@@ -358,14 +358,14 @@ pipeline:
 
                       # Test for any known security issues using Static Code Analysis
                       # https://docs.snyk.io/snyk-cli/commands/code-test
-                      snyk code test \
-                       --file=SubSolution.sln  \
+                      snyk code test 
+                       --file=SubSolution.sln  
                        --sarif-file-output=/shared/customer_artifacts/snyk_scan_results.sarif || true
 
                       # Check project for open source vulnerabilities
                       # https://docs.snyk.io/snyk-cli/commands/test
-                      # snyk test \
-                      #   --file=SubSolution.sln  \
+                      # snyk test 
+                      #   --file=SubSolution.sln  
                       #   --sarif-file-output=/shared/customer_artifacts/snyk_scan_results.sarif || true
 
                     envVariables:
@@ -408,7 +408,7 @@ pipeline:
   allowStageExecutions: false
   projectIdentifier: STO
   orgIdentifier: default
-  tags: \{\}
+  tags: {}
   stages:
     - stage:
         name: scan
@@ -422,7 +422,7 @@ pipeline:
               connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
-              nodeSelector: \{\}
+              nodeSelector: {}
               os: Linux
           sharedPaths:
             - /shared/customer_artifacts/
@@ -452,8 +452,8 @@ pipeline:
                       # https://docs.snyk.io/snyk-cli/commands/container-test
                       # https://docs.snyk.io/scan-applications/snyk-container/snyk-cli-for-container-security/advanced-snyk-container-cli-usage
 
-                      snyk container test \
-                            snykgoof/big-goof-1g:100 -d \
+                      snyk container test 
+                            snykgoof/big-goof-1g:100 -d 
                             --sarif-file-output=/shared/customer_artifacts/snyk_container_scan.sarif  || true
                     privileged: true
                     envVariables:
@@ -514,7 +514,7 @@ pipeline:
   allowStageExecutions: false
   projectIdentifier: STO
   orgIdentifier: default
-  tags: \{\}
+  tags: {}
   properties:
     ci:
       codebase:
@@ -533,7 +533,7 @@ pipeline:
               connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
-              nodeSelector: \{\}
+              nodeSelector: {}
               os: Linux
           sharedPaths:
             - /shared/customer_artifacts/

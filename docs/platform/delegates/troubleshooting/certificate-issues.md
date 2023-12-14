@@ -221,6 +221,6 @@ keytool -noprompt -import -trustcacerts -file <path/to/cert/file> -alias <UNIQUE
 To divide a CA bundle file into individual files, run the command below.
 
 ```
-csplit -z ca-bundle.crt /#/ '{*}'.     # split to multiple files\
+csplit -z ca-bundle.crt /#/ '{*}'.     # split to multiple files
 sed -i '/^$/d' xx*                     # remove blank lines
 ```

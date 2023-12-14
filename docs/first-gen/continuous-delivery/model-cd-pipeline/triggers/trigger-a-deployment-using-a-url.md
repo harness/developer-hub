@@ -64,8 +64,8 @@ Let's look at a placeholder example:
 
 
 ```
-curl -X POST -H 'content-type: application/json' \  
- --url https://app.harness.io/api/webhooks/xxxxxx \  
+curl -X POST -H 'content-type: application/json'   
+ --url https://app.harness.io/api/webhooks/xxxxxx   
  -d '{"application":"xxxxxx","artifacts":[{"service":"micro-service","buildNumber":"micro-service_BUILD_NUMBER_PLACE_HOLDER"}]}'
 ```
 For `service`, enter the name of the Harness Service.
@@ -78,8 +78,8 @@ For example:
 
 
 ```
-curl -X POST -H 'content-type: application/json' \  
- --url https://app.harness.io/api/webhooks/xxxxxx \  
+curl -X POST -H 'content-type: application/json'   
+ --url https://app.harness.io/api/webhooks/xxxxxx   
  -d '{"application":"xxxxxx","artifacts":[{"service":"Service-Example","buildNumber":"1.17.8-perl"}]}'
 ```
 ### Step 3: Run the cURL Command

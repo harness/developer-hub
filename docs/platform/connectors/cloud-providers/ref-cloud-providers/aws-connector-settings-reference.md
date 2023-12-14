@@ -1032,12 +1032,12 @@ The following steps assume this is a new delegate installation and a new AWS con
    Here is an example of how to create a new service account in the cluster where you will install the delegate and attach the IAM policy to it:
 
    ```
-   eksctl create iamserviceaccount \
-       --name=cdp-admin \
-       --namespace=default \
-       --cluster=test-eks \
-       --attach-policy-arn=<policy-arn> \
-       --approve \
+   eksctl create iamserviceaccount 
+       --name=cdp-admin 
+       --namespace=default 
+       --cluster=test-eks 
+       --attach-policy-arn=<policy-arn> 
+       --approve 
        --override-existing-serviceaccounts —region=us-east-1
    ```
 

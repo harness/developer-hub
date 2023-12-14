@@ -186,9 +186,9 @@ The response from the cURL command will contain the status of the deployment. Fo
          "exceptionOccured":false,  
          "status":"TARGET_EXECUTION_REQUESTED",  
          "message":"Pipeline execution was requested successfully",  
-         "payload":"{\"sample_key\": \"sample_value\"}",  
+         "payload":"{"sample_key": "sample_value"}",  
          "eventCreatedAt":1663276236705,  
-         "runtimeInput":"pipeline: {}\n"  
+         "runtimeInput":"pipeline: {}n"  
       },  
       "executionDetails":{  
          "pipelineExecutionSummary":{  

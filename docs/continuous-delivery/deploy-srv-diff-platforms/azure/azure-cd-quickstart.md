@@ -83,7 +83,7 @@ In the new Harness service, you can add a Kubernetes manifest for your deploymen
 
   Harness supports Go templating with a values YAML file by default so you can template your manifests. Also, you can use [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables) in your `values.yaml` file. 
 
-  We will use a [values.yaml file](https://github.com/wings-software/harness-docs/blob/main/default-k8s-manifests/Manifests/Files/ng_values_dockercfg.yaml) that uses the `\<+artifact.image\>` expression to reference the artifact you will add later in **Artifacts**.
+  We will use a [values.yaml file](https://github.com/wings-software/harness-docs/blob/main/default-k8s-manifests/Manifests/Files/ng_values_dockercfg.yaml) that uses the `<+artifact.image>` expression to reference the artifact you will add later in **Artifacts**.
   
   <details>
   
@@ -300,7 +300,7 @@ For example, here's a snippet of an ARM template that provisions the infrastruct
 ```
 
 
-In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `\<+provisioner.OUTPUT_NAME\>`, such as `\<+provisioner.namespace_name\>`.
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.namespace_name>`.
 
 
 <figure>

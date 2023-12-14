@@ -176,10 +176,10 @@ In most cases, you select the encrypted text or file secret you created as part 
 
 You can also use Harness expressions to reference secrets:
 
-* Expression syntax to reference text secrets: `\<+secrets.getValue("your_secret")\>`
-* Expression syntax to reference file secrets at the project scope: `\<+secrets.getValue("file-secret")\>`
-* Expression syntax to reference file secrets at the org scope: `\<+secrets.getValue("org.file-secret")\>`
-* Expression syntax to reference file secrets at the account scope: `\<+secrets.getValue("account.platformSecret")\>`
+* Expression syntax to reference text secrets: `<+secrets.getValue("your_secret")>`
+* Expression syntax to reference file secrets at the project scope: `<+secrets.getValue("file-secret")>`
+* Expression syntax to reference file secrets at the org scope: `<+secrets.getValue("org.file-secret")>`
+* Expression syntax to reference file secrets at the account scope: `<+secrets.getValue("account.platformSecret")>`
 
 For more information, go to:
 

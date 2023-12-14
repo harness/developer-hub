@@ -42,12 +42,12 @@ Use **Settings** to specify the GitHub Action you want to use and to pass variab
 | Key | Description | Value format | Value example |
 | - | - | - | - |
 | `uses` | Required. Specify the Action's repo, along with a branch or tag.| `[repo]@[tag]` | `actions/setup-go@v3` |
-| `with` | Required. Provide a map of key-value pairs representing settings required by the GitHub Action itself. | `key: value` | `go-version: '>=1.17.0'` or `{path: pom.xml, destination: cie-demo-pipeline/github-action, credentials: \<+stage.variables.GCP_SECRET_KEY_BASE64\>}` |
-| `env` | Conditionally required. Specify a map of environment variables to pass to the Action. Required to use [Private Action repos](#private-action-repos), run [Duplicate Actions](#duplicate-actions), or if otherwise noted in the Action's usage specifications.  | `key: value` | `GITHUB_TOKEN: \<+secrets.getValue("github_pat")\>` |
+| `with` | Required. Provide a map of key-value pairs representing settings required by the GitHub Action itself. | `key: value` | `go-version: '>=1.17.0'` or `{path: pom.xml, destination: cie-demo-pipeline/github-action, credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>}` |
+| `env` | Conditionally required. Specify a map of environment variables to pass to the Action. Required to use [Private Action repos](#private-action-repos), run [Duplicate Actions](#duplicate-actions), or if otherwise noted in the Action's usage specifications.  | `key: value` | `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` |
 
 :::tip
 
-You can use variable expressions for these values. For example, `credentials: \<+stage.variables.[TOKEN_SECRET]\>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
+You can use variable expressions for these values. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
 
 :::
 
@@ -87,10 +87,10 @@ You can use variable expressions for these values. For example, `credentials: \<
 
 ### Private Action repos
 
-If you want to use an Action that is in a private repository, you must add a `GITHUB_TOKEN` environment variable to the **Plugin** step's `settings.env`. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. Store the token as a [Harness secret](/docs/category/secrets) and use a variable expression, such as `\<+secrets.getValue("YOUR_TOKEN_SECRET")\>`, to call it.
+If you want to use an Action that is in a private repository, you must add a `GITHUB_TOKEN` environment variable to the **Plugin** step's `settings.env`. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. Store the token as a [Harness secret](/docs/category/secrets) and use a variable expression, such as `<+secrets.getValue("YOUR_TOKEN_SECRET")>`, to call it.
 
 * Key: `GItHUB_TOKEN`
-* Value: `\<+secrets.getValue("YOUR_TOKEN_SECRET")\>`
+* Value: `<+secrets.getValue("YOUR_TOKEN_SECRET")>`
 
 Here's an example of the YAML for a `Plugin` step using an Action in a private repo:
 
@@ -115,7 +115,7 @@ Here's an example of the YAML for a `Plugin` step using an Action in a private r
 
 If you run multiple instances of the same GitHub Action, either in parallel or with a looping strategy, you must set the `XDG_CACHE_HOME` environment variable.
 
-The default value of this variable is `/home/ubuntu/.cache`; however, the `XDG_CACHE_HOME` variable must have a different value for each instance of the Action. If you have separate steps running in parallel, you can assign distinct values to each step, such as `XDG_CACHE_HOME: /home/ubuntu/.cache1`. If you apply a looping strategy to repeat one step multiple times, you can use an expression to generate distinct values, such as `XDG_CACHE_HOME: /home/ubuntu/.cache\<+step.identifier\>`.
+The default value of this variable is `/home/ubuntu/.cache`; however, the `XDG_CACHE_HOME` variable must have a different value for each instance of the Action. If you have separate steps running in parallel, you can assign distinct values to each step, such as `XDG_CACHE_HOME: /home/ubuntu/.cache1`. If you apply a looping strategy to repeat one step multiple times, you can use an expression to generate distinct values, such as `XDG_CACHE_HOME: /home/ubuntu/.cache<+step.identifier>`.
 
 In this example, two parallel `Plugin` steps run the same GitHub Action. Each step has a unique value for `XDG_CACHE_HOME`.
 

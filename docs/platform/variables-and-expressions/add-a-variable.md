@@ -90,10 +90,10 @@ Use the [createVariable](https://apidocs.harness.io/tag/Variables#operation/crea
 Here's an example:
 
 ```json
-curl -i -X POST \
-  'https://app.harness.io/ng/api/variables?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: HARNESS_API_KEY' \
+curl -i -X POST 
+  'https://app.harness.io/ng/api/variables?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg' 
+  -H 'Content-Type: application/json' 
+  -H 'x-api-key: HARNESS_API_KEY' 
   -d '{
     "variable": {
       "identifier": "myvar123",
@@ -141,20 +141,20 @@ You can also override service variables at the environment level. For more infor
 
 To reference an account and org-level variable, you must use the following expression in your Pipeline:
 
-`\<+variable.SCOPE.VARIABLE_ID\>`
+`<+variable.SCOPE.VARIABLE_ID>`
 
-* Account-level reference: `\<+variable.account.VARIABLE_ID\>`
-* Org-level reference: `\<+variable.org.VARIABLE_ID\>`
-* Project-level reference: `\<+variable.VARIABLE_ID\>`
-* Pipeline-level reference: `\<+pipeline.variables.VARIABLE_ID\>`
-* Stage-level reference: `\<+stage.variables.VARIABLE_ID\>`
-* StepGroup-level reference: `\<+stepGroup.variables.VARIABLE_ID\>`
-* Service-level reference: `\<+serviceVariables.VARIABLE_ID\>`
-* Environment-level reference: `\<+env.variables.VARIABLE_ID\>`
+* Account-level reference: `<+variable.account.VARIABLE_ID>`
+* Org-level reference: `<+variable.org.VARIABLE_ID>`
+* Project-level reference: `<+variable.VARIABLE_ID>`
+* Pipeline-level reference: `<+pipeline.variables.VARIABLE_ID>`
+* Stage-level reference: `<+stage.variables.VARIABLE_ID>`
+* StepGroup-level reference: `<+stepGroup.variables.VARIABLE_ID>`
+* Service-level reference: `<+serviceVariables.VARIABLE_ID>`
+* Environment-level reference: `<+env.variables.VARIABLE_ID>`
 
 :::note
 
-The expression to reference **Project** scope variables is `\<+variable.VARIABLE_ID\>`. You do not need to specify `scope` to reference project variables.
+The expression to reference **Project** scope variables is `<+variable.VARIABLE_ID>`. You do not need to specify `scope` to reference project variables.
 
 :::
 
@@ -189,7 +189,7 @@ When you run the Pipeline, the variable references are resolved and output:
 3. In **Variable** **Name**, enter a name for your variable.
 4. Select **String** as **Type** and select **Save**.
 5. Your variable is now listed under **Variables**.
-6. In **Value**, select **Expression** and enter `\<+variable.account.acct_var\>`.
+6. In **Value**, select **Expression** and enter `<+variable.account.acct_var>`.
    
    ![](./static/add-a-variable-10.png)
 7. Now, when you run your pipeline the referenced value is evaluated at runtime.
@@ -198,7 +198,7 @@ When you run the Pipeline, the variable references are resolved and output:
    ![](./static/add-a-variable-11.png)
 9. In your Shell Script step, reference the service variable with:
     
-    `\<+stage.spec.serviceConfig.serviceDefinition.spec.variables.serv_var\>`
+    `<+stage.spec.serviceConfig.serviceDefinition.spec.variables.serv_var>`
 10. Run the pipeline and see that the value for the account variable is passed into the service variable:
     
     ![](./static/add-a-variable-12.png)

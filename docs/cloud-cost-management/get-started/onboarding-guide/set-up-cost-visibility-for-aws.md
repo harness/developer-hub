@@ -268,9 +268,9 @@ Use the Harness API's [Create a Connector](https://apidocs.harness.io/tag/Connec
 
 
 ```
-curl -i -X POST 'https://app.harness.io/gateway/ng/api/connectors' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: <API TOKEN>' \
+curl -i -X POST 'https://app.harness.io/gateway/ng/api/connectors' 
+  -H 'Content-Type: application/json' 
+  -H 'x-api-key: <API TOKEN>' 
   -d '{
   "connector":{
     "name":"<CONNECTOR NAME>",

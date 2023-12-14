@@ -34,7 +34,7 @@ Keys are used to sign and verify attestations.
    For example, you could use the following command in a **Run** step to generate a Snyk SBOM.
    
    ```
-   snyk container sbom --format=spdx2.3+json \
+   snyk container sbom --format=spdx2.3+json 
     ubuntu:22.04 > /shared/customer_artifacts/result.spdx.json
    ```
 

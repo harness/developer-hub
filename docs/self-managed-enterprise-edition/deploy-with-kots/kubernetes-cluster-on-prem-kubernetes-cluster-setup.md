@@ -168,8 +168,8 @@ The following steps will install KOTS from your private repository and the Harne
 2. Push KOTS images to your private registry:  
 
    ```
-   kubectl kots admin-console push-images ./kotsadm.tar.gz <private.registry.host>/harness \  
-   --registry-username <rw-username> \  
+   kubectl kots admin-console push-images ./kotsadm.tar.gz <private.registry.host>/harness   
+   --registry-username <rw-username>   
    --registry-password <rw-password>
    ```
 
@@ -539,13 +539,13 @@ The following steps require a private registry, just like the initial installati
 2. Run the following command on the cluster hosting Harness, replacing the placeholders:
 
    ```
-   kubectl kots upstream upgrade harness \   
-   --airgap-bundle <path to harness-<version>.airgap> \  
-   --kotsadm-namespace harness-kots \  
-   --kotsadm-registry <private.registry.host>/harness \  
-   --registry-username <username> \  
-   --registry-password <password> \  
-   --deploy \  
+   kubectl kots upstream upgrade harness    
+   --airgap-bundle <path to harness-<version>.airgap>   
+   --kotsadm-namespace harness-kots   
+   --kotsadm-registry <private.registry.host>/harness   
+   --registry-username <username>   
+   --registry-password <password>   
+   --deploy   
    -n harness
    ```
    
@@ -556,19 +556,19 @@ To upgrade the KOTS admin tool, first you will push images to your private Docke
 1. Run the following command to push the images, replacing the placeholders:
 
    ```
-   kubectl kots admin-console push-images ./<new-kotsadm>.tar.gz \  
-   <private.registry.host>/harness \  
-   --registry-username rw-username \  
+   kubectl kots admin-console push-images ./<new-kotsadm>.tar.gz   
+   <private.registry.host>/harness   
+   --registry-username rw-username   
    --registry-password rw-password
    ```
 
 2. Next, run the following command on the cluster hosting Harness, replacing the placeholders:
 
    ```
-   kubectl kots admin-console upgrade \   
-   --kotsadm-registry <private.registry.host>/harness \  
-   --registry-username rw-username \  
-   --registry-password rw-password \  
+   kubectl kots admin-console upgrade    
+   --kotsadm-registry <private.registry.host>/harness   
+   --registry-username rw-username   
+   --registry-password rw-password   
    -n harness
    ```
 
@@ -760,13 +760,13 @@ The following steps require a private registry, just like the initial installati
 2. Run the following command on the cluster hosting Harness, replacing the placeholders:
 
    ```
-   kubectl kots upstream upgrade harnesss-ng \   
-   --airgap-bundle <path to harness-<version>.airgap> \  
-   --kotsadm-namespace harness-kots \  
-   --kotsadm-registry <private.registry.host>/harness \  
-   --registry-username <username> \  
-   --registry-password <password> \  
-   --deploy \  
+   kubectl kots upstream upgrade harnesss-ng    
+   --airgap-bundle <path to harness-<version>.airgap>   
+   --kotsadm-namespace harness-kots   
+   --kotsadm-registry <private.registry.host>/harness   
+   --registry-username <username>   
+   --registry-password <password>   
+   --deploy   
    -n harness
    ```
 
@@ -777,19 +777,19 @@ To upgrade the KOTS admin tool, first you will push images to your private Docke
 1. Run the following command to push the images, replacing the placeholders:
 
    ```
-   kubectl kots admin-console push-images ./<new-kotsadm>.tar.gz \  
-   <private.registry.host>/harness \  
-   --registry-username rw-username \  
+   kubectl kots admin-console push-images ./<new-kotsadm>.tar.gz   
+   <private.registry.host>/harness   
+   --registry-username rw-username   
    --registry-password rw-password
    ```
 
 2. Next, run the following command on the cluster hosting Harness, replacing the placeholders:
 
    ```
-   kubectl kots admin-console upgrade \   
-   --kotsadm-registry <private.registry.host>/harness \  
-   --registry-username rw-username \  
-   --registry-password rw-password \  
+   kubectl kots admin-console upgrade    
+   --kotsadm-registry <private.registry.host>/harness   
+   --registry-username rw-username   
+   --registry-password rw-password   
    -n harness
    ```
 

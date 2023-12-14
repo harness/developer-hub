@@ -134,7 +134,7 @@ For example, this tutorial uploads the combined Allure report to GCS:
 
 :::tip
 
-The `target` value uses a [Harness expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions), `\<+pipeline.sequenceId\>`, to ensure that artifacts uploaded by this pipeline are stored in unique directories and don't overwrite one another.
+The `target` value uses a [Harness expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions), `<+pipeline.sequenceId>`, to ensure that artifacts uploaded by this pipeline are stored in unique directories and don't overwrite one another.
 
 :::
 
@@ -175,7 +175,7 @@ For `file_url`, provide the URL to the artifact that uses the **Bucket**, **Targ
 
 The resolved value of `file_urls` is the URL that is published on the **Artifacts** tab. It is derived from the upload location specified in the **Upload Artifact** step.
 
-For example, this tutorial uses `https://storage.googleapis.com/YOUR_GCS_BUCKET/\<+pipeline.sequenceId\>/complete.html`, which references the value of `bucket`, `target`, and artifact object name from the Upload Artifact step. When the pipeline runs, the expression `\<+pipeline.sequenceId\>` is resolved into a valid URL.
+For example, this tutorial uses `https://storage.googleapis.com/YOUR_GCS_BUCKET/<+pipeline.sequenceId>/complete.html`, which references the value of `bucket`, `target`, and artifact object name from the Upload Artifact step. When the pipeline runs, the expression `<+pipeline.sequenceId>` is resolved into a valid URL.
 
 For private S3 buckets, use the console view URL, such as `https://s3.console.aws.amazon.com/s3/object/BUCKET?region=REGION&prefix=TARGET/ARTIFACT_NAME_WITH_EXTENSION`.
 
@@ -225,7 +225,7 @@ Add a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/plugin
 
 For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) that contain your AWS access ID and key.
 
-This tutorial also uses an expression for the `target`: The expression `\<+pipeline.sequenceId\>` creates a directory based on the incremental build ID. This ensures that artifacts uploaded by this pipeline are stored in unique directories and don't overwrite one another.
+This tutorial also uses an expression for the `target`: The expression `<+pipeline.sequenceId>` creates a directory based on the incremental build ID. This ensures that artifacts uploaded by this pipeline are stored in unique directories and don't overwrite one another.
 
 If you want to upload a compressed file, you must use a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to compress the artifact before uploading it.
 

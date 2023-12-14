@@ -146,9 +146,9 @@ Cache your Windows app dependencies with [Cache Intelligence](/docs/continuous-i
             enabled: true
             key: cache-{{ checksum "packages.lock.json" }}
             paths:
-              - C:\%LocalAppData%\NuGet\Cache
+              - C:%LocalAppData%NuGetCache
           sharedPaths:
-            - C:\%LocalAppData%\NuGet\Cache
+            - C:%LocalAppData%NuGetCache
 ```
 
 ```mdx-code-block
@@ -195,7 +195,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     bucket: YOUR_S3_BUCKET
                     key: cache-{{ checksum "packages.lock.json" }}
                     sourcePaths:
-                      - C:\%LocalAppData%\NuGet\Cache
+                      - C:%LocalAppData%NuGetCache
                     archiveFormat: Tar
 ```
 
@@ -225,7 +225,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                     command: |-
                       dotnet restore
                       dotnet build --no-restore
-                      dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
+                      dotnet test C:pathtoproject.tests.csproj --no-build --verbosity normal
 ```
 
 ```mdx-code-block
@@ -245,7 +245,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                     command: |-
                       dotnet restore
                       dotnet build --no-restore
-                      dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
+                      dotnet test C:pathtoproject.tests.csproj --no-build --verbosity normal
 ```
 
 ```mdx-code-block
@@ -283,7 +283,7 @@ If your test tool doesn't produce JUnit XML formatted reports by default, you ca
                     shell: Powershell
                     command: |-
                       dotnet tool install -g trx2junit
-                      export PATH="C:\Users\USER\.dotnet\tools"
+                      export PATH="C:UsersUSER.dotnettools"
               - step:
                   type: Run
                   identifier: build_dotnet_app
@@ -293,7 +293,7 @@ If your test tool doesn't produce JUnit XML formatted reports by default, you ca
                     command: |-
                       dotnet restore
                       dotnet build
-                      dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
+                      dotnet test C:pathtoproject.tests.csproj --no-build --verbosity normal
                       trx2junit results.trx
                     reports:
                       type: JUnit
@@ -318,7 +318,7 @@ If your test tool doesn't produce JUnit XML formatted reports by default, you ca
                     shell: Powershell
                     command: |-
                       dotnet tool install -g trx2junit
-                      export PATH="C:\Users\USER\.dotnet\tools"
+                      export PATH="C:UsersUSER.dotnettools"
               - step:
                   type: Run
                   identifier: build_dotnet_app
@@ -330,7 +330,7 @@ If your test tool doesn't produce JUnit XML formatted reports by default, you ca
                     command: |-
                       dotnet restore
                       dotnet build
-                      dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
+                      dotnet test C:pathtoproject.tests.csproj --no-build --verbosity normal
                       trx2junit results.trx
                     reports:
                       type: JUnit
@@ -483,7 +483,7 @@ pipeline:
             enabled: true
             key: cache-{{ checksum "packages.lock.json" }}
             paths:
-              - C:\%LocalAppData%\NuGet\Cache
+              - C:%LocalAppData%NuGetCache
           execution:
             steps:
               - step:
@@ -502,7 +502,7 @@ pipeline:
                     shell: Powershell
                     command: |-
                       dotnet tool install -g trx2junit
-                      export PATH="C:\Users\USER\.dotnet\tools"
+                      export PATH="C:UsersUSER.dotnettools"
               - step:
                   type: Run
                   identifier: build_dotnet_app
@@ -512,7 +512,7 @@ pipeline:
                     command: |-
                       dotnet restore
                       dotnet build
-                      dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
+                      dotnet test C:pathtoproject.tests.csproj --no-build --verbosity normal
                       trx2junit results.trx
                     reports:
                       type: JUnit
@@ -520,7 +520,7 @@ pipeline:
                         paths:
                           - results.xml
           sharedPaths:
-            - C:\%LocalAppData%\NuGet\Cache
+            - C:%LocalAppData%NuGetCache
           platform:
             os: Windows
             arch: Amd64
@@ -601,7 +601,7 @@ pipeline:
                     shell: Powershell
                     command: |-
                       dotnet tool install -g trx2junit
-                      export PATH="C:\Users\USER\.dotnet\tools"
+                      export PATH="C:UsersUSER.dotnettools"
               - step:
                   type: Run
                   identifier: build_dotnet_app
@@ -613,7 +613,7 @@ pipeline:
                     command: |-
                       dotnet restore
                       dotnet build
-                      dotnet test C:\path\to\project.tests.csproj --no-build --verbosity normal
+                      dotnet test C:pathtoproject.tests.csproj --no-build --verbosity normal
                       trx2junit results.trx
                     reports:
                       type: JUnit
@@ -630,7 +630,7 @@ pipeline:
                     bucket: YOUR_S3_BUCKET
                     key: cache-{{ checksum "packages.lock.json" }}
                     sourcePaths:
-                      - C:\%LocalAppData%\NuGet\Cache
+                      - C:%LocalAppData%NuGetCache
                     archiveFormat: Tar
           infrastructure:
             type: KubernetesDirect

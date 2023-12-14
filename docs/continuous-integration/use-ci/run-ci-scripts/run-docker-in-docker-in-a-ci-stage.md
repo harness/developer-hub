@@ -117,7 +117,7 @@ After the **Background** step, add a **Run** step to run your Docker commands. C
 
    The variables referenced in this command, such as `$DOCKERHUB_PAT`, refer to [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) that reference string values or [Harness text secrets](/docs/platform/secrets/add-use-text-secrets).
 
-   These commands also use `\<+pipeline.sequenceId\>`, which is a [Harness expression](/docs/platform/variables-and-expressions/harness-variables) that prints the incremental build identifier.
+   These commands also use `<+pipeline.sequenceId>`, which is a [Harness expression](/docs/platform/variables-and-expressions/harness-variables) that prints the incremental build identifier.
 
    :::
 

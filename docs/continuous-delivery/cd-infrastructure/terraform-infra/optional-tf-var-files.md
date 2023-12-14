@@ -40,7 +40,7 @@ In some fields in this procedure, you can specify a fixed value or expression or
 
     You can reference variables by using the identifier in expressions. For example, if the identifier is `myvars` you could refer to its content as follows:
 
-    `\<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myvars.spec.content\>`
+    `<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myvars.spec.content>`
 
   - In **Content**, provide the input variables and values for your Terraform script. Harness follows the same format as Terraform.
 
@@ -81,7 +81,7 @@ In some fields in this procedure, you can specify a fixed value or expression or
 
     You can use the identifier to refer to variables using expressions. For example, if the identifier is `myremotevars`, you could refer to its content as follows:
 
-    `\<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myremotevars.spec.store.spec.paths\>`
+    `<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myremotevars.spec.store.spec.paths>`
 
   - In **Repo Name**, specify the name of the repository.
 

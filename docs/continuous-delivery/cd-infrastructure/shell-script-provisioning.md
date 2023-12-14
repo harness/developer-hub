@@ -124,7 +124,7 @@ pipeline:
                       spec:
                         script: |-
                           echo start
-                          echo "{\"Instances\":[{\"Hostname\": \"host1\",\"value\": \"<+stage.variables.testinstance>\"},{\"Hostname\": \"<+stage.variables.secretvar>\",\"value\": \"$test\"}]}" >> "$PROVISIONER_OUTPUT_PATH"
+                          echo "{"Instances":[{"Hostname": "host1","value": "<+stage.variables.testinstance>"},{"Hostname": "<+stage.variables.secretvar>","value": "$test"}]}" >> "$PROVISIONER_OUTPUT_PATH"
                           echo finish
                     environmentVariables:
                       - name: test

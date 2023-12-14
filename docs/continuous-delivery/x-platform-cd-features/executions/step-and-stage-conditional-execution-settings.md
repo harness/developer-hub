@@ -52,8 +52,8 @@ In the JEXL expression, you could use any of the Pipeline variables, including t
 
 Examples:
 
-* `\<+pipeline.stages.cond.spec.execution.steps.echo.status\> == "SUCCEEDED"`
-* `\<+environment.name\> != “QA”`
+* `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "SUCCEEDED"`
+* `<+environment.name> != “QA”`
 
 For more information on variable expressions, go to [built-in custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/).
 
@@ -81,8 +81,8 @@ In the JEXL expression, you could use any of the Pipeline variables, including t
 
 Example:
 
-* `\<+pipeline.stages.cond.spec.execution.steps.echo.status\> == "SUCCEEDED"`
-* `\<+environment.name\> != “QA”`
+* `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "SUCCEEDED"`
+* `<+environment.name> != “QA”`
 
 For more information on variable expressions, go to [built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/).
 
@@ -100,5 +100,5 @@ Deployment status values are a Java enum. The list of values can be seen in the 
 
 ![](./static/step-skip-condition-settings-10.png)
 
-You can use any status value in a JEXL condition. For example, `\<+pipeline.stages.cond.spec.execution.steps.echo.status\> == "FAILED"`.
+You can use any status value in a JEXL condition. For example, `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "FAILED"`.
 

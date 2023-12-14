@@ -54,7 +54,7 @@ Criteria can be the following:
 * Evaluating a JEXL Expression.
 	+ Harness supports JEXL expressions and you can use these with script outputs or Harness variables to create expressions.
 	+ If the resolved JEXL expression is a Boolean true, the approval criteria is met.
-	+ For example, you could evaluate the output from a previous [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step named **test** by referencing its output in a JEXL expression and comparing it to the value `Approved`: `\<+execution.steps.test.output.outputVariables.status\>=="Approved"`.
+	+ For example, you could evaluate the output from a previous [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step named **test** by referencing its output in a JEXL expression and comparing it to the value `Approved`: `<+execution.steps.test.output.outputVariables.status>=="Approved"`.
 	+ Go to [Built-in and Custom Harness Variables Reference](../variables-and-expressions/harness-variables.md) and [Extracting Characters from Harness Variable Expressions](../variables-and-expressions/extracting-characters-from-harness-variable-expressions.md).
 
 ## Add a Custom Approval stage
@@ -125,7 +125,7 @@ In **Name**, enter a name to use in other steps that will reference this variab
 
 ![](./static/custom-approvals-03.png)
 
-The format to reference the output variable is `\<+steps.[step_id].output.outputVariables.[output_variable_name]\>`.
+The format to reference the output variable is `<+steps.[step_id].output.outputVariables.[output_variable_name]>`.
 
 Here's an example showing how the **Script Output Variables** references the exported variable **test**, and how you reference the output variable Name **var1** in a subsequent Shell Script step to get that value:
 
@@ -322,7 +322,7 @@ You can use Harness secrets in your Custom Approval steps.
 
 See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
-Basically, you use `\<+secrets.getValue("secret_Id")\>` to refer to the secret Id.
+Basically, you use `<+secrets.getValue("secret_Id")>` to refer to the secret Id.
 
 #### Shell Scripts and Security
 

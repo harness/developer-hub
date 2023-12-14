@@ -22,7 +22,7 @@ In Harness CI builds, each step runs in a separate container. If your pipeline h
                       - gradle
                     envVariables:
                       GRADLE_USER_HOME: /harness/.gradle
-                      GRADLE_OPTS: "-Dorg.gradle.jvmargs=\"-Xms1024m -Xmx2048m\""
+                      GRADLE_OPTS: "-Dorg.gradle.jvmargs="-Xms1024m -Xmx2048m""
                     resources:
                       limits:
                         memory: 1G
@@ -133,7 +133,7 @@ pipeline:
                 image: gradle
                 envVariables:
                   GRADLE_USER_HOME: /harness/.gradle
-                  GRADLE_OPTS: "-Dorg.gradle.jvmargs=\"-Xms1024m -Xmx2048m\""
+                  GRADLE_OPTS: "-Dorg.gradle.jvmargs="-Xms1024m -Xmx2048m""
                 entrypoint:
                   - gradle
                 resources:
@@ -147,7 +147,7 @@ pipeline:
           - name: GRADLE_OPTS
             type: String
             description: ""
-            value: "-Dorg.gradle.jvmargs=\"-Xms1024m -Xmx2048m\""
+            value: "-Dorg.gradle.jvmargs="-Xms1024m -Xmx2048m""
   notificationRules: []
   variables: []
 ```

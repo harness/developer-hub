@@ -58,10 +58,10 @@ MDM_PASSWORD="your-mdm-password"
 MDM_CONFIG_FILE="your-mdm-config-file.plist"
 
 # Install the MDM configuration on devices
-curl --request POST \
-     --user "$MDM_USERNAME:$MDM_PASSWORD" \
-     --header "Content-Type: application/xml" \
-     --data-binary "@$MDM_CONFIG_FILE" \
+curl --request POST 
+     --user "$MDM_USERNAME:$MDM_PASSWORD" 
+     --header "Content-Type: application/xml" 
+     --data-binary "@$MDM_CONFIG_FILE" 
      "$MDM_SERVER/devicemanagement/api/mdm/profiles"
 
 # Check for errors
@@ -89,10 +89,10 @@ UEM_PASSWORD="your-uem-password"
 UEM_CONFIG_FILE="your-uem-config-file.json"
 
 # Install the UEM configuration on endpoints
-curl --request POST \
-     --user "$UEM_USERNAME:$UEM_PASSWORD" \
-     --header "Content-Type: application/json" \
-     --data-binary "@$UEM_CONFIG_FILE" \
+curl --request POST 
+     --user "$UEM_USERNAME:$UEM_PASSWORD" 
+     --header "Content-Type: application/json" 
+     --data-binary "@$UEM_CONFIG_FILE" 
      "$UEM_SERVER/api/config"
 
 # Check for errors

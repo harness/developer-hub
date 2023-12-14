@@ -59,7 +59,7 @@ The query for Metrics Collection URL follows this syntax:
 
 
 ```
-query?query=<METRIC_NAME>{pod_name:${host}}by{pod_name}.rollup(avg,60)&from=${start\_time\_seconds}&to=${end\_time\_seconds}
+query?query=<METRIC_NAME>{pod_name:${host}}by{pod_name}.rollup(avg,60)&from=${start_time_seconds}&to=${end_time_seconds}
 ```
 The values in `${...}` braces are placeholders used for querying the data. These are substituted at runtime with real values.
 
@@ -71,7 +71,7 @@ For example, to search for the `kubernetes.memory.usage_pct metric`, your query 
 
 
 ```
-query?query=kubernetes.memory.usage_pct{pod_name:${host}}by{pod_name}.rollup(avg,60)&from=${start\_time\_seconds}&to=${end\_time\_seconds}
+query?query=kubernetes.memory.usage_pct{pod_name:${host}}by{pod_name}.rollup(avg,60)&from=${start_time_seconds}&to=${end_time_seconds}
 ```
 ### Step 6: Metrics Method
 

@@ -105,8 +105,8 @@ For example:
 5. In **Add ServiceNow Fields**, select **Configuration Item** and **Task**, and select **Add**.
 
   <docimage path={require('./static/b558dcc70b590aee872afa80deb88588b1a462c2c659345bdb13f76560b275ec.png')} width="60%" height="60%" title="Click to view full size image" />  
-1. In **Configuration Item**, select **Expression**, and then enter `\<+matrix.ci_item\>`. This expression references the step's looping strategy we will add later.
-2. In **Task**, select **Expression**, and then enter the expression that references the sys_id in the previous ServiceNow Create step, using the format `\<+pipeline.stages.stage.spec.execution.steps.STEP_ID.ticket.fields.sys_id\>`. For example, `\<+pipeline.stages.stage.spec.execution.steps.create.ticket.fields.sys_id\>`.
+1. In **Configuration Item**, select **Expression**, and then enter `<+matrix.ci_item>`. This expression references the step's looping strategy we will add later.
+2. In **Task**, select **Expression**, and then enter the expression that references the sys_id in the previous ServiceNow Create step, using the format `<+pipeline.stages.stage.spec.execution.steps.STEP_ID.ticket.fields.sys_id>`. For example, `<+pipeline.stages.stage.spec.execution.steps.create.ticket.fields.sys_id>`.
   
   This expression references the `sys_id` value returned when the step in run.
   

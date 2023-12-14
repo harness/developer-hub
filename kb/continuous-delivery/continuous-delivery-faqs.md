@@ -12,7 +12,7 @@ This article addresses some frequently asked questions about Harness Continuous 
 
 Suppose that trigger payload has multiple records and you want to search for a particular string so you can make use of jexl for loop to iterate the list and match a string as below:
 
-`for (item : \<+trigger.payload.commits\>) { if (item.message == "mymessage") {return true;} }; return false;`
+`for (item : <+trigger.payload.commits>) { if (item.message == "mymessage") {return true;} }; return false;`
 
 #### How to use the token for OCI repo in AWS ECR as the token by default expires every 12 hours?
 
@@ -73,7 +73,7 @@ Check the access control for the network.  It could be that the request is block
 
 #### Are there variables for account and company name?
 
-`\<+account.name\>` and `\<+account.companyName\>`
+`<+account.name>` and `<+account.companyName>`
 
 #### How do I set up a cron expression so it tiggers on the first Wednesday of each month at 15:00?
 
@@ -81,7 +81,7 @@ Set the cron trigger type to QUARTZ and for the expression set it to `0 0 15 ? *
 
 #### Is there a variable to check who's triggered the pipeline?
 
-Yes.  You can use `\<+pipeline.triggeredBy.email\>`
+Yes.  You can use `<+pipeline.triggeredBy.email>`
 
 #### Why can't I create resources using the harness terraform provider in my harness prod-3 cluster account?
 
@@ -222,7 +222,7 @@ At the moment there is no dependency on the instance sync and infrastructure def
 **Note:**
 If you are using the default release name format in Harness FirstGen as `release-${infra.kubernetes.infraId}`, it's important to note that when migrating to Harness NextGen, you will need to replace `${infra.kubernetes.infraId}` with the new expression.
 
-In Harness NextGen, a similar expression `\<+INFRA_KEY\>` is available for defining release names. However, it's crucial to understand that these expressions will resolve to completely different values compared to the expressions used in Harness FirstGen.
+In Harness NextGen, a similar expression `<+INFRA_KEY>` is available for defining release names. However, it's crucial to understand that these expressions will resolve to completely different values compared to the expressions used in Harness FirstGen.
 
 #### Is it possible to have drop down options for multiple input?
 
@@ -1322,7 +1322,7 @@ Harness CD pipelines help you to orchestrate and automate your Google Cloud Func
 See more on this here : [Documentation](https://developer.harness.io/tutorials/cd-pipelines/serverless/gcp-cloud-func/)
 
 #### Is it possible to add variables at the Infrastructure Definition level?
-As of now, Harness does not provide direct support for variables within infrastructure definitions. However, you can achieve a similar outcome by using tags in the form of `key:value`. For example, you can define a tag like `region:us-east` and reference it using the following expression: `\<+infra.tags.region\>`.
+As of now, Harness does not provide direct support for variables within infrastructure definitions. However, you can achieve a similar outcome by using tags in the form of `key:value`. For example, you can define a tag like `region:us-east` and reference it using the following expression: `<+infra.tags.region>`.
 
 #### What does the "Freeze Window" feature in a CD pipeline do and what does it block?
 The "Freeze Window" feature in a CD (Continuous Delivery) pipeline allows for the creation of a period during which certain actions, specifically those related to CD stages, are restricted. However, account administrators can still execute CD pipelines during this freeze window by default. Users without the "Override" permission cannot execute pipelines containing CD stages during the freeze window. The freeze window primarily affects actions associated with CD stages in the pipeline. More details about its functionality can be found in this section: [Freeze Windows Only Apply to CD Stages](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/#freeze-windows-only-apply-to-cd-stages).
@@ -1337,13 +1337,13 @@ It doesn't override the service infrastructure. Instead, it only changes which d
 Yes, you can trigger the pipeline with a git event through bitbucket. You can refer to our [doc](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/) and [video](https://www.youtube.com/watch?v=y8s351IJLXw&t=113s&ab_channel=harness) tutorial.
 
 #### Why can't I refer to an output within a CD stage using a looping strategy anymore? 
-If you're using an absolute expression (for example: `\<+pipeline.stages.stage_identifier\>`), it will break your pipeline because matrices create a new identifier per iteration (`stage_1`, `stage_2`). To avoid your pipeline breaking, you can shortcut your expression to the step name (for example: `\<+steps.step_identifier\>`), and then you don't need to specify the stage identifier.
+If you're using an absolute expression (for example: `<+pipeline.stages.stage_identifier>`), it will break your pipeline because matrices create a new identifier per iteration (`stage_1`, `stage_2`). To avoid your pipeline breaking, you can shortcut your expression to the step name (for example: `<+steps.step_identifier>`), and then you don't need to specify the stage identifier.
 
 #### When the Harness Approval times out, how do I mark the pipeline as a successful execution?
 On the Harness Approval step or the custom one, go to the advanced tab and include a failure strategy; the perform action should be "Mark as Success."
 
 ####  How do I propagate an environment's namespace to another stage?
-By using the following expression on the target stage, you will be able to propagate the namespace. Expression: `\<+pipeline.stages.STAGE_IDENTIFIER.spec.infrastructure.output.namespace\>`
+By using the following expression on the target stage, you will be able to propagate the namespace. Expression: `<+pipeline.stages.STAGE_IDENTIFIER.spec.infrastructure.output.namespace>`
 
 #### How do I redeploy all services in a new cluster?
  Currently, this isn't possible. You need to redeploy all of your CD pipelines with a new infrastructure target.
@@ -1370,10 +1370,10 @@ Yes, it is mandatory for the infrastructure definition in a First Gen workflow t
 Yes, You can setup a trigger based on the image tag changes on DockerHub repo as suggested in this[ doc.](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/)
 
 #### Why can't I refer to an output within a CD stage using a looping strategy anymore? 
-If you're using an absolute expression (for example: `\<+pipeline.stages.stage_identifier\>`), it will break your pipeline because matrices create a new identifier per iteration (`stage_1`, `stage_2`). To avoid your pipeline breaking, you can shortcut your expression to the step name (for example: `\<+steps.step_identifier\>`), and then you don't need to specify the stage identifier.
+If you're using an absolute expression (for example: `<+pipeline.stages.stage_identifier>`), it will break your pipeline because matrices create a new identifier per iteration (`stage_1`, `stage_2`). To avoid your pipeline breaking, you can shortcut your expression to the step name (for example: `<+steps.step_identifier>`), and then you don't need to specify the stage identifier.
 
 #### How do I dynamically load values.yaml per environment?
-Many of Harness's fields allow you to switch from a static field to an expression field. In your Helm chart/kubernetes manifests declaration, you can switch the values field to an expression field and use an expression like `\<+env.name\>-values.yaml`. Then, in your repository, create a value per environment.
+Many of Harness's fields allow you to switch from a static field to an expression field. In your Helm chart/kubernetes manifests declaration, you can switch the values field to an expression field and use an expression like `<+env.name>-values.yaml`. Then, in your repository, create a value per environment.
 
 ####  Why can I run the pipeline during a freeze window?
 You're probably an administrator or you have the permission to [override freeze windows](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/#access-control). Users with this role can still perform deployments.
@@ -1553,7 +1553,7 @@ Yes, we can assist with disabling the feature while it's still in beta.
 
 ####  Is there a way to get the service artifact source identifier with builtin variables?
 
-Yes, one can try expression `\<+artifacts.primary.identifier\>`. Please refer more on this in the [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#expression-examples)
+Yes, one can try expression `<+artifacts.primary.identifier>`. Please refer more on this in the [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#expression-examples)
 
 #### Is there a way to cache terraform plugins in delegates?
 
@@ -1602,7 +1602,7 @@ Please refer more on this in the following [Documentation](https://developer.har
 
 #### "Is there an equivalent option in NG for "Last Successfully Deployed" in triggers?"
 
-Yes. One can use the expression `\<+lastPublished.tag\> expression`. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#artifact-polling)
+Yes. One can use the expression `<+lastPublished.tag> expression`. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#artifact-polling)
 
 #### Is there a way to interrogate artifact details in a shell script step for SSH use cases, enabling behavior modification in deployment, without transferring it to the end server first ?
 
@@ -1780,10 +1780,10 @@ https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/a
 We do support API's for the nextgen : https://apidocs.harness.io/tag/Environments#operation/createEnvironmentV2
 
 ```
-curl -i -X POST \
-  'https://app.harness.io/ng/api/environmentsV2?accountIdentifier=string' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: YOUR_API_KEY_HERE' \
+curl -i -X POST 
+  'https://app.harness.io/ng/api/environmentsV2?accountIdentifier=string' 
+  -H 'Content-Type: application/json' 
+  -H 'x-api-key: YOUR_API_KEY_HERE' 
   -d '{
     "orgIdentifier": "string",
     "projectIdentifier": "string",
@@ -1939,7 +1939,7 @@ OAuth App access restrictions in a Git environment are security measures impleme
 
 with the command the json string should be passed in sigle quotes for example:
 
-python3 eample.py `\<+trigger.payload\>`
+python3 eample.py `<+trigger.payload>`
 
 `<trigger.payload>` resolves to JSON.
 
@@ -2018,7 +2018,7 @@ No, this feature is yet to come.
 #### How can one dynamically build the name of a secret ?
 
 Harness expressions are assessed and replaced within the script before script execution commences, allowing only the use of precomputed values and prohibiting the utilization of values calculated during script execution.
-One can use an example like `\<+secrets.getValue(<+....OutputVariables.AppCredentialsPath\>)>`
+One can use an example like `<+secrets.getValue(<+....OutputVariables.AppCredentialsPath>)>`
 
 
 #### What are the Helm version limitations on the Harness Platform?
@@ -2363,7 +2363,7 @@ No, this functionality enhancement is yet to come.
 #### Is it possible to set a pipeline variable as an array of strings ?
 
 One can set a comma separated strings and split them wherever one wants to use as array.
-Possible example expression can be : `\<+pipeline.variables.targetIds.split(",")\>`
+Possible example expression can be : `<+pipeline.variables.targetIds.split(",")>`
 
 #### Is there a way to determine whether the pipeline method was stored remotely or inline?
 
@@ -2517,7 +2517,7 @@ Unfortunately, these entities cannot be versioned at the moment. However, you ca
 
 #### How can the namespace definition be utilized in the actual Apply step of the deployment?
 
-We recommend declaring the namespace in the values.yaml using the following expression: `\<+infra.namespace\>`, especially if you have the namespace attribute declared within your manifests.
+We recommend declaring the namespace in the values.yaml using the following expression: `<+infra.namespace>`, especially if you have the namespace attribute declared within your manifests.
 
 #### What is the most likely cause of a 403 error when using a service account token for a Terraform pipeline?
 
@@ -2563,10 +2563,10 @@ Yes, you can use failure strategy as runtime input and can select/configure whil
 Domain whitelisting api takes domain as input array. So if we have multiple domains to be passed this needs to be done as coma separeted string entries in the array. Below is a sample for the same:
 
 ```
-curl -i -X PUT \
-  'https://app.harness.io/ng/api/authentication-settings/whitelisted-domains?accountIdentifier=xxxx' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: REDACTED' \
+curl -i -X PUT 
+  'https://app.harness.io/ng/api/authentication-settings/whitelisted-domains?accountIdentifier=xxxx' 
+  -H 'Content-Type: application/json' 
+  -H 'x-api-key: REDACTED' 
   -d '["gmail.com","harness.io"]'
 
 ```
@@ -2619,14 +2619,14 @@ Shell Script provoisioning step does not have script output variables similar to
 
 The shell script provisioning step expects the output to be put to a json form inside the file $PROVISIONER_OUTPUT_PATH. This is then subsequently accessed in next step with Instance variable like below
  
-`\<+pipeline.stages.shellscriptprovision.spec.execution.steps.shell1.output.Instances\>`
+`<+pipeline.stages.shellscriptprovision.spec.execution.steps.shell1.output.Instances>`
 
 
 #### Is there a short notation for accessing step output variable within the same stepgroup ?
 
 Within the same step group we can shorten the expression for accessing step variable. A sample expression is below:
 
-`\<+stepGroup.steps.step1Identifier.output.outputVariables.myvar\>`
+`<+stepGroup.steps.step1Identifier.output.outputVariables.myvar>`
 
 #### Is there a short notation for accessing step output variable within same stage and outside of step group?
 
@@ -2710,7 +2710,7 @@ Space in pipeline variable names does not confirm to the naming convention for t
 
 #### How to get helm chart version from helm based triggers ?
 
-The helm version is part of the trigger payload. The expression that conatians the helm version is `\<+trigger.manifest.version\>` .
+The helm version is part of the trigger payload. The expression that conatians the helm version is `<+trigger.manifest.version>` .
 
 #### Can we transition to any status in jira using update step?
 
@@ -2774,18 +2774,18 @@ You should use:
 https://apidocs.harness.io/tag/Organization/#operation/get-organizations for getting organizations within an account. The "org" parameter is an optional parameter
 
 ```
-curl -i -X GET \
-'https://app.harness.io/v1/orgs?&page=0&limit=30&sort=name&order=ASC' \
--H 'Harness-Account: REDACTED' \
+curl -i -X GET 
+'https://app.harness.io/v1/orgs?&page=0&limit=30&sort=name&order=ASC' 
+-H 'Harness-Account: REDACTED' 
 -H 'x-api-key: REDACTED'
 ```
 
 Please use https://apidocs.harness.io/tag/Org-Project#operation/get-org-scoped-projects for getting projects scoped to an org.
 
 ```
-curl -i -X GET \
-'https://app.harness.io/v1/orgs/default/projects?has_module=true&page=0&limit=30&sort=name&order=ASC' \
--H 'Harness-Account: REDACTED' \
+curl -i -X GET 
+'https://app.harness.io/v1/orgs/default/projects?has_module=true&page=0&limit=30&sort=name&order=ASC' 
+-H 'Harness-Account: REDACTED' 
 -H 'x-api-key: REDACTED'
 ```
 
@@ -2804,7 +2804,7 @@ Please read more on Containerize Step Grpous in the following [Documentation](ht
 
 #### How can one utilize outputs from the Terraform/Terragrunt apply steps effectively ?
 
-utilizing outputs from Terraform/Terragrunt apply steps follows a similar approach. After executing the Terraform/Terragrunt apply step, the outputs are accessible in the 'Step Output' section. These outputs can be accessed using expressions. For instance, one can access an output using `\<+pipeline.stages.stag1.spec.execution.steps.TerraformApply_4.output.get("test-output-name2")\>`
+utilizing outputs from Terraform/Terragrunt apply steps follows a similar approach. After executing the Terraform/Terragrunt apply step, the outputs are accessible in the 'Step Output' section. These outputs can be accessed using expressions. For instance, one can access an output using `<+pipeline.stages.stag1.spec.execution.steps.TerraformApply_4.output.get("test-output-name2")>`
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
 
 
@@ -2818,7 +2818,7 @@ Yes, it is behind the feature flag `SRM_LOG_FEEDBACK_ENABLE_UI`. Please read mor
 
 #### Is there a way to get the name of the person triggering the execution ?
 
-Yes, one can use the expressions `\<+pipeline.triggeredBy.email\>` and `\<+pipeline.triggeredBy.email\>` . Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipelinetriggeredbyname)
+Yes, one can use the expressions `<+pipeline.triggeredBy.email>` and `<+pipeline.triggeredBy.email>` . Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipelinetriggeredbyname)
 
 #### Does `workflow variables` in Current-Gen work same as `regular platform variables` in Next-Gen ?
 
@@ -2830,7 +2830,7 @@ Please read more on `regular platform variables` in the following [Documentation
 
 #### How can multi-service pipelines be executed in parallel as stages while ensuring that users select a single environment for all these parallel stages?
 
-One can use the following expression : `\<+pipeline.variables.var_name\>`
+One can use the following expression : `<+pipeline.variables.var_name>`
 
 #### How do we treat sidecars from an ECS licensing perspective?
 
@@ -2849,7 +2849,7 @@ No, It won’t use a license if an artifact isn’t being deployed onto a target
 
 It is only present in CI as caching dependencies needs to build an artifact is a CI only concept.
 
-#### Can we not not use `\<+input\>.executionInput()`  in the ternary operator to wait for user entry ?
+#### Can we not not use `<+input>.executionInput()`  in the ternary operator to wait for user entry ?
 
 No, this is not possible yet for the excution. We may consider this as Enhancement Request in upcoming future.
 
@@ -2908,7 +2908,7 @@ We are actively exploring and considering transitioning from lexical to time-bas
 
 Please one may follow steps mentioned below :
 
-- Use the expression `\<+ json.object(<+pipeline.variable.myJsonThing\>)>` 
+- Use the expression `<+ json.object(<+pipeline.variable.myJsonThing>)>` 
 - One can also try JQuery in a shell script or container step and capture output variables
 - Read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors/)
 
@@ -2952,8 +2952,8 @@ The feature associated with the First-Gen flag called `CDS_CG_INLINE_SSH_COMMAND
 
 One can use the curl command as - 
 ``` 
-curl --location 'https://app.harness.io/gateway/ng/api/licenses/<accountIdentifier>/summary?routingId=<accountIdentifier>&moduleType=CD' \
---header 'authorization: <Bearer token>' \ 
+curl --location 'https://app.harness.io/gateway/ng/api/licenses/<accountIdentifier>/summary?routingId=<accountIdentifier>&moduleType=CD' 
+--header 'authorization: <Bearer token>'  
 ```
 
 The response to above call should look like something below - 
@@ -2981,7 +2981,7 @@ For First-Gen reference read the following [Documentation](https://developer.har
 
 #### How can one fetch the provisioner Id in a pipeline using Terraform with an expression ?
 
-One can fetch the provisioner Id in a pipeline using expression `\<+stage.pipeline.variables.HARNESS_PROVISIONER_ID\>`.
+One can fetch the provisioner Id in a pipeline using expression `<+stage.pipeline.variables.HARNESS_PROVISIONER_ID>`.
 Please read more on how to provision target deployment infrastructure dynamically with terraform in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform/)
 
 #### When publishing an artifact, what is the specific interval for polling and can a user configure it ?
@@ -3132,9 +3132,9 @@ Disabling such is not an available option.
 
 By default the expression we use is currentStatus which does not take into account the status of children inside matrix. Inorder to acheive the same behaviour we can use `liveStatus` expression.
 
-#### Can one implement execution of the pipeline using the following expression  `\<+stage.variables.Notification_To\> != ""` ?
+#### Can one implement execution of the pipeline using the following expression  `<+stage.variables.Notification_To> != ""` ?
 
-One can also use implementation `\<+stage.variables.Notification_To\> != "" || \<+stage.variables.Notification_To\> != "null"` for more reliable results as this will always resolve as a boolean value instead of an empty string.
+One can also use implementation `<+stage.variables.Notification_To> != "" || <+stage.variables.Notification_To> != "null"` for more reliable results as this will always resolve as a boolean value instead of an empty string.
 
 #### Can we configure channels dynamically using expressions for pipelie Slack notification ?
 
@@ -3199,7 +3199,7 @@ repeat:
   items: <+VariableExpression>.split(",")
 ```
 
-To access individual items within the Repeat Loop, use the `\<+repeat.item\>` expression
+To access individual items within the Repeat Loop, use the `<+repeat.item>` expression
 
 #### How to create an AWS connector using `aws-iam-authenticator` on EKS Cluster with webIdentityToken ?
 
@@ -3234,7 +3234,7 @@ No the Infra variable will not be available for service config, these Infra vari
 If approval is added as stage then these variables will not be available and only account/org/project or pipeline variables will be available, If you are using approval as step inside Deploy stage than you can access Env/Infra variables as well
 
 #### What is the equivalent variable for  $\{artifact.label.get(“labelkey)\} In NG
-You can use  `\<+artifact.label.get(“labelkey”)\>`
+You can use  `<+artifact.label.get(“labelkey”)>`
 
 ### "Is there an expression, such as '\<+pipeline.stages.Deploy.strategy.finalStatus\>', to get the status of a stage outside of the looping strategy?"
 The expression "\<+strategy.currentStatus\>" only works within the context of the looping strategy, there is no expression like "\<+pipeline.stages.Deploy.strategy.finalStatus\>" to get the status of a stage outside of the looping strategy.
@@ -3290,11 +3290,11 @@ This config will do that  connector-scope: accountIn case you want to do it conn
 ### How to download pipeline logs based on the given pipeline execution key?
 You can use the cURL command to download pipeline logs based on the given pipeline execution key. Here's an example command:
 ```
-curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT_ID&prefix=PIPELINE_EXECUTION_PREFIX_KEY' \
-  -X 'POST' \
-  -H 'authorization: <Bearer TOKEN>' \
-  -H 'content-type: application/json' \
-  -H 'x-harness-token: <HARNESS-TOKEN>' \
+curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT_ID&prefix=PIPELINE_EXECUTION_PREFIX_KEY' 
+  -X 'POST' 
+  -H 'authorization: <Bearer TOKEN>' 
+  -H 'content-type: application/json' 
+  -H 'x-harness-token: <HARNESS-TOKEN>' 
   --compressed
   ```
 Replace ACCOUNT_ID, PIPELINE_EXECUTION_PREFIX_KEY, TOKEN, and HARNESS-TOKEN with your own values. You can find the PIPELINE_EXECUTION_PREFIX_KEY by going to the Builds page in Harness and selecting the pipeline execution you want to download logs for. The TOKEN and HARNESS-TOKEN can be obtained by following the steps.
@@ -3402,8 +3402,8 @@ If we remove the host , harness will show 0 active instances after the 10min syn
 #### API to get license count, expiry date
 You can use the licenses API endpoint for Subscription License Count and Subscription end date
 ``` 
-curl --location 'https://app.harness.io/gateway/ng/api/licenses/<accountIdentifier>/summary?routingId=<accountIdentifier>&moduleType=CD' \
---header 'authorization: <Bearer token>' \
+curl --location 'https://app.harness.io/gateway/ng/api/licenses/<accountIdentifier>/summary?routingId=<accountIdentifier>&moduleType=CD' 
+--header 'authorization: <Bearer token>' 
 ``` 
 The result should be like this:
 ``` 

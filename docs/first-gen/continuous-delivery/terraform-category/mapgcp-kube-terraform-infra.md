@@ -56,7 +56,7 @@ You map the Terraform script outputs using this syntax, where `exact_name` is th
 
 
 ```
-${terraform.*exact\_name*}
+${terraform.*exact_name*}
 ```
 When you map a Terraform script output to a Harness Infrastructure Definition setting, the variable for the output, `${terraform.exact_name​}`, can be used anywhere in the Workflow that uses that Terraform Provisioner.
 

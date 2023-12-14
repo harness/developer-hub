@@ -22,10 +22,10 @@ The result is similar to using a cURL command that sends a POST to the API to re
 
 
 ```
-curl -X POST 'https://api.newrelic.com/v2/applications/${APP_ID}/deployments.json' \  
-     -H 'X-Api-Key:${APIKEY}' -i \  
-     -H 'Content-Type: application/json' \  
-     -d \  
+curl -X POST 'https://api.newrelic.com/v2/applications/${APP_ID}/deployments.json'   
+     -H 'X-Api-Key:${APIKEY}' -i   
+     -H 'Content-Type: application/json'   
+     -d   
 '{  
   "deployment": {  
     "revision": "REVISION",  

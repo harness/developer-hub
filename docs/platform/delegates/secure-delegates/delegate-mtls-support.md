@@ -34,7 +34,7 @@ In the following examples, OpenSSL is used to create the required certificates. 
 - Use the following OpenSSL comment to create a test CA certificate with no password and 25+ years of validity. You must provide the public portion of the CA certificate (ca.crt) to Harness to enable mTLS.
 
     ```
-     openssl req -x509 -sha256 -nodes -days 9999 -newkey rsa:2048 \
+     openssl req -x509 -sha256 -nodes -days 9999 -newkey rsa:2048 
      -subj "/O=Example ORG/CN=CA Cert" -keyout "ca.key" -out "ca.crt"
     ```
 
@@ -69,8 +69,8 @@ In the following examples, OpenSSL is used to create the required certificates. 
 4. Using the previously created CA certificate with the certificate signing request, create the final signed client certificate:
 
     ```
-     openssl x509 -req -sha256 -days 9999 -extfile client.cnf -extensions v3_req \
-     -CAcreateserial -CA "ca.crt" -CAkey "ca.key" \
+     openssl x509 -req -sha256 -days 9999 -extfile client.cnf -extensions v3_req 
+     -CAcreateserial -CA "ca.crt" -CAkey "ca.key" 
      -in "client.csr" -out "client.crt"
     ```
     
@@ -106,15 +106,15 @@ To migrate a delegate for mTLS support, do the following:
 1. Copy the following example command.
 
    ```
-   docker run -d --cpus=1 --memory=2g -u root -v Path/To/client.crt:/etc/mtls/client.crt -v Path/To/client.key:/etc/mtls/client.key \
-     -e DELEGATE_NAME=docker-delegate \
-     -e NEXT_GEN="true" \
-     -e DELEGATE_TYPE="DOCKER" \
-     -e ACCOUNT_ID=[your account id] \
-     -e DELEGATE_CLIENT_CERTIFICATE_PATH=/etc/mtls/client.crt \
-     -e DELEGATE_CLIENT_CERTIFICATE_KEY_PATH=/etc/mtls/client.key \
-     -e DELEGATE_TOKEN=********** \
-     -e LOG_STREAMING_SERVICE_URL=https://<YOUR_FQDN>.agent.harness.io/log-service/ \
+   docker run -d --cpus=1 --memory=2g -u root -v Path/To/client.crt:/etc/mtls/client.crt -v Path/To/client.key:/etc/mtls/client.key 
+     -e DELEGATE_NAME=docker-delegate 
+     -e NEXT_GEN="true" 
+     -e DELEGATE_TYPE="DOCKER" 
+     -e ACCOUNT_ID=[your account id] 
+     -e DELEGATE_CLIENT_CERTIFICATE_PATH=/etc/mtls/client.crt 
+     -e DELEGATE_CLIENT_CERTIFICATE_KEY_PATH=/etc/mtls/client.key 
+     -e DELEGATE_TOKEN=********** 
+     -e LOG_STREAMING_SERVICE_URL=https://<YOUR_FQDN>.agent.harness.io/log-service/ 
      -e MANAGER_HOST_AND_PORT=https://<YOUR_FQDN>.agent.harness.io harness/delegate:yy.mm.verno
    ```
 

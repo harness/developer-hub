@@ -75,10 +75,10 @@ To create a plugin, you need to prepare a script, create a Docker image to run t
 You can test your plugin in a local environment by running it as a Docker container. For example, the following Docker command runs the `clone.sh` plugin locally by supplying the required inputs (`PLUGIN_PATH`, `PLUGIN_REPO_URL`, and `PLUGIN_BRANCH`) and specifying the plugin's Docker repo and image (`my-docker-repo/git-clone-plugin`).
 
 ```
-docker run --rm \
- -e PLUGIN_PATH=codebase \
- -e PLUGIN_REPO_URL=https://github.com/<some-account>/<some-repo>.git \
- -e PLUGIN_BRANCH=main \
+docker run --rm 
+ -e PLUGIN_PATH=codebase 
+ -e PLUGIN_REPO_URL=https://github.com/<some-account>/<some-repo>.git 
+ -e PLUGIN_BRANCH=main 
  my-docker-repo/git-clone-plugin
 ```
 

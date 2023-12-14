@@ -95,5 +95,5 @@ pipeline:
                     connectorRef: $DOCKERHUB_CONNECTOR  
                     image: winamd64/python  
                     shell: Powershell  
-                    command: "Write-Host \"hello world\" "
+                    command: "Write-Host "hello world" "
 ```

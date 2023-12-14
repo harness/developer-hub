@@ -186,7 +186,7 @@ In the `sudo docker run` section of the file, add a new environment variable (`-
 
 
 ```
-sudo docker run -d --restart unless-stopped --hostname=$(hostname -f) \  
+sudo docker run -d --restart unless-stopped --hostname=$(hostname -f)   
 ...  
 -e JAVA_OPTS="-Djavax.net.ssl.trustStore=<path/to/trustStore.jks> -Djavax.net.ssl.trustStoreType=jks -Djavax.net.ssl.trustStorePassword=<password>"  
 ...

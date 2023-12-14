@@ -229,10 +229,10 @@ service:
 Create a service using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
 ```yaml
-curl -i -X POST \
-  'https://app.harness.io/gateway/ng/api/servicesV2/batch?accountIdentifier=<Harness account Id>' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: <Harness API key>' \
+curl -i -X POST 
+  'https://app.harness.io/gateway/ng/api/servicesV2/batch?accountIdentifier=<Harness account Id>' 
+  -H 'Content-Type: application/json' 
+  -H 'x-api-key: <Harness API key>' 
   -d '[{
     "identifier": "svcasg",
     "orgIdentifier": "default",
@@ -243,7 +243,7 @@ curl -i -X POST \
       "property1": "string",
       "property2": "string"
     },
-    "yaml": "service:\n  name: svc-asg\n  identifier: svcasg\n  serviceDefinition:\n    type: Asg\n    spec:\n      manifests:\n        - manifest:\n            identifier: launchTemplate\n            type: AsgLaunchTemplate\n            spec:\n              store:\n                type: Harness\n                spec:\n                  files:\n                    - /asg/launchtemplate\n        - manifest:\n            identifier: launchConfig\n            type: AsgConfiguration\n            spec:\n              store:\n                type: Harness\n                spec:\n                  files:\n                    - /asg/launchconfig\n        - manifest:\n            identifier: scalePolicy\n            type: AsgScalingPolicy\n            spec:\n              store:\n                type: Harness\n                spec:\n                  files:\n                    - /asg/scalingPolicy.json\n        - manifest:\n            identifier: scheduledUpdateGroupAction\n            type: AsgScheduledUpdateGroupAction\n            spec:\n              store:\n                type: Harness\n                spec:\n                  files:\n                    - /asg/scheduledUpdateGroupAction.json\n      artifacts:\n        primary:\n          primaryArtifactRef: <+input>\n          sources:\n            - identifier: AMI-ARTIFACT\n              spec:\n                connectorRef: AWS_ASG_CONNECTOR\n                region: us-east-1\n                filters:\n                  - name: ami-name\n                    value: Returns local IP address at port 80\n                version: Returns local IP address at port 80\n              type: AmazonMachineImage\n  gitOpsEnabled: false"
+    "yaml": "service:n  name: svc-asgn  identifier: svcasgn  serviceDefinition:n    type: Asgn    spec:n      manifests:n        - manifest:n            identifier: launchTemplaten            type: AsgLaunchTemplaten            spec:n              store:n                type: Harnessn                spec:n                  files:n                    - /asg/launchtemplaten        - manifest:n            identifier: launchConfign            type: AsgConfigurationn            spec:n              store:n                type: Harnessn                spec:n                  files:n                    - /asg/launchconfign        - manifest:n            identifier: scalePolicyn            type: AsgScalingPolicyn            spec:n              store:n                type: Harnessn                spec:n                  files:n                    - /asg/scalingPolicy.jsonn        - manifest:n            identifier: scheduledUpdateGroupActionn            type: AsgScheduledUpdateGroupActionn            spec:n              store:n                type: Harnessn                spec:n                  files:n                    - /asg/scheduledUpdateGroupAction.jsonn      artifacts:n        primary:n          primaryArtifactRef: <+input>n          sources:n            - identifier: AMI-ARTIFACTn              spec:n                connectorRef: AWS_ASG_CONNECTORn                region: us-east-1n                filters:n                  - name: ami-namen                    value: Returns local IP address at port 80n                version: Returns local IP address at port 80n              type: AmazonMachineImagen  gitOpsEnabled: false"
   }]'
 ```
 
@@ -480,7 +480,7 @@ For example, you could create a variable named **desiredCapacity** and set its v
 
 ![service variable](./static/c590ccda5addd62225b690d85c60237b2f6e9378e8ed4b02ba3e82ba9bda29e9.png)  
 
-Next, in your ASG configuration file, you could reference the variable like this (see `\<+serviceVariables.desiredCapacity\>`):
+Next, in your ASG configuration file, you could reference the variable like this (see `<+serviceVariables.desiredCapacity>`):
 
 ```json
 {
@@ -537,10 +537,10 @@ environment:
 Create an environment using the [Create Environments](https://apidocs.harness.io/tag/Environments#operation/createEnvironmentV2) API.
 
 ```yaml
-curl -i -X POST \
-  'https://app.harness.io/gateway/ng/api/environmentsV2?accountIdentifier=<account_id>' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: <token>' \
+curl -i -X POST 
+  'https://app.harness.io/gateway/ng/api/environmentsV2?accountIdentifier=<account_id>' 
+  -H 'Content-Type: application/json' 
+  -H 'x-api-key: <token>' 
   -d '{
     "orgIdentifier": "default",
     "projectIdentifier": "CD_Docs",
@@ -553,7 +553,7 @@ curl -i -X POST \
     "description": "",
     "color": "",
     "type": "PreProduction",
-    "yaml": "environment:\n  name: ASG\n  identifier: ASG\n  tags: {}\n  type: PreProduction\n  orgIdentifier: default\n  projectIdentifier: CD_Docs\n  variables: []"
+    "yaml": "environment:n  name: ASGn  identifier: ASGn  tags: {}n  type: PreProductionn  orgIdentifier: defaultn  projectIdentifier: CD_Docsn  variables: []"
   }'
 ```
 
@@ -667,10 +667,10 @@ infrastructureDefinition:
 Create an infrastructure definition using the [Create Infrastructure](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure) API.
 
 ```yaml
-curl -i -X POST \
-  'https://app.harness.io/gateway/ng/api/infrastructures?accountIdentifier=<account_Id>' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: <token>' \
+curl -i -X POST 
+  'https://app.harness.io/gateway/ng/api/infrastructures?accountIdentifier=<account_Id>' 
+  -H 'Content-Type: application/json' 
+  -H 'x-api-key: <token>' 
   -d '{
     "identifier": "asginfra",
     "orgIdentifier": "default",
@@ -683,7 +683,7 @@ curl -i -X POST \
       "property2": "2"
     },
     "type": "Asg",
-    "yaml": "infrastructureDefinition:\n  name: asginfra\n  identifier: asginfra\n  description: \"\"\n  tags: {}\n  orgIdentifier: default\n  projectIdentifier: CD_Docs\n  environmentRef: ASG\n  deploymentType: Asg\n  type: Asg\n  spec:\n    connectorRef: AWS_ASG\n    region: us-east-2\n  allowSimultaneousDeployments: false"
+    "yaml": "infrastructureDefinition:n  name: asginfran  identifier: asginfran  description: ""n  tags: {}n  orgIdentifier: defaultn  projectIdentifier: CD_Docsn  environmentRef: ASGn  deploymentType: Asgn  type: Asgn  spec:n    connectorRef: AWS_ASGn    region: us-east-2n  allowSimultaneousDeployments: false"
   }'
 ```
 
@@ -915,10 +915,10 @@ pipeline:
 Create a pipeline using the [Create Pipeline](https://apidocs.harness.io/tag/Pipeline/#operation/postPipelineV2) API.
 
 ```json
-curl -i -X POST \
-  'https://app.harness.io/gateway/pipeline/api/pipelines/v2?accountIdentifier=<account_Id>&orgIdentifier=<org_Id>&projectIdentifier=<project_Id>' \
-  -H 'Content-Type: application/yaml' \
-  -H 'x-api-key: <token>' \
+curl -i -X POST 
+  'https://app.harness.io/gateway/pipeline/api/pipelines/v2?accountIdentifier=<account_Id>&orgIdentifier=<org_Id>&projectIdentifier=<project_Id>' 
+  -H 'Content-Type: application/yaml' 
+  -H 'x-api-key: <token>' 
   -d 'pipeline:
     name: ASG Rolling
     identifier: ASG_Rolling

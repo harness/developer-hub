@@ -286,9 +286,9 @@ Ensure the mapped settings are set to the **Expression** option.
 
 #### Host Array Path
 
-For SSH PDC deployments, you use the expression `\<+provisioner.OUTPUT_NAME\>` for the **Host Array Path** setting. 
+For SSH PDC deployments, you use the expression `<+provisioner.OUTPUT_NAME>` for the **Host Array Path** setting. 
 
-For the subsequent **Host Data Mapping** key-value pairs, you use the expression format `\<+HOST_PROPERTY\>`. For example, `\<+public_dns\>`.
+For the subsequent **Host Data Mapping** key-value pairs, you use the expression format `<+HOST_PROPERTY>`. For example, `<+public_dns>`.
 
 Here's an example:
 
@@ -348,7 +348,7 @@ output "region" {
 ```
 
 
-In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `\<+provisioner.OUTPUT_NAME\>`, such as `\<+provisioner.region\>`.
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.region>`.
 
 <figure>
 
@@ -361,14 +361,14 @@ In the Harness Infrastructure Definition, you map outputs to their corresponding
 
 Once you have mapped provisioning script outputs to the stage Infrastructure Definition, you can reference them in **Execution** of the stage.
 
-To reference a mapped output, you use an expression in the format `\<+instance.properties.*\>`.
+To reference a mapped output, you use an expression in the format `<+instance.properties.*>`.
 
 For example, here are some **Host Data Mapping** *keys* and expressions that reference them:
 
-- hostname: `\<+instance.properties.hostname\>`
-- privateIp: `\<+instance.properties.privateIp\>`
-- subnetId: `\<+instance.properties.subnetId\>`
-- region: `\<+instance.properties.region\>`
+- hostname: `<+instance.properties.hostname>`
+- privateIp: `<+instance.properties.privateIp>`
+- subnetId: `<+instance.properties.subnetId>`
+- region: `<+instance.properties.region>`
 
 
 ## SSH Executions
@@ -394,7 +394,7 @@ The **Execution Strategies** supported for Secure Shell include **Blank Canvas**
 7. Select **Save**.
 8. **Review Looping Strategy:** the looping strategy repeats deployments for multiple hosts and for different deployment strategies (Basic, Rolling, Canary).
 	1. Select **Advanced**.
-	2. Select **Looping Strategy**. You can see that the step will be repeated for all hosts using the `\<+stage.output.hosts\>` expression.  
+	2. Select **Looping Strategy**. You can see that the step will be repeated for all hosts using the `<+stage.output.hosts>` expression.  
 	For example, if you had two hosts the step would be repeated for each host.
   
   ![](static/ssh-ng-191.png)
@@ -557,7 +557,7 @@ repeat:
   items: <+repeat.partition>
 ```
 
-The `\<+repeat.partition\>` expression resolves how many instances (`items`) to iterate over per one partition (phase).
+The `<+repeat.partition>` expression resolves how many instances (`items`) to iterate over per one partition (phase).
 
 Let’s say we have 10 hosts and 4 partitions organized as 3, 3, 3, 1. The first partition includes 3 hosts, the second and third each have 3, and the last one has 1 host.
 
@@ -604,18 +604,18 @@ repeat:
 
 ### Reference hosts in steps using expressions
 
-You can use all of the `\<+instance...\>` expressions to reference your hosts.
+You can use all of the `<+instance...>` expressions to reference your hosts.
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
-* `\<+instance.hostName\>`
-* `\<+instance.host.hostName\>`
-* `\<+instance.name\>`
+* `<+instance.hostName>`
+* `<+instance.host.hostName>`
+* `<+instance.name>`
 
 For Microsoft Azure or AWS:
 
-* `\<+instance.host.privateIp\>`
-* `\<+instance.host.publicIp\>`
+* `<+instance.host.privateIp>`
+* `<+instance.host.publicIp>`
 
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.

@@ -134,13 +134,13 @@ The `spec` parameters define which Action to use, the Action settings, and envir
 
 The following cases *always* require environment variables:
 
-* **Private Action repos:** For [private Action repositories](#private-action-repositories), you must provide the `GITHUB_TOKEN` environment variable, such as `GITHUB_TOKEN: \<+secrets.getValue("[SECRET_NAME]")\>`. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be required, depending on the Action's purpose.
-* **Duplicate Actions:** If you run multiple instances of the same GitHub Action, either in parallel or with a looping strategy, you must set the `XDG_CACHE_HOME` environment variable. The default value of this variable is `/home/ubuntu/.cache`; however, the `XDG_CACHE_HOME` variable must have a different value for each iteration of the Action. If you have separate steps running in parallel, assign distinct values to each step, such as `XDG_CACHE_HOME: /home/ubuntu/.cache1`. If you apply a looping strategy to the same step, you can use an expression to generate distinct values, such as `XDG_CACHE_HOME: /home/ubuntu/.cache\<+step.identifier\>`.
+* **Private Action repos:** For [private Action repositories](#private-action-repositories), you must provide the `GITHUB_TOKEN` environment variable, such as `GITHUB_TOKEN: <+secrets.getValue("[SECRET_NAME]")>`. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be required, depending on the Action's purpose.
+* **Duplicate Actions:** If you run multiple instances of the same GitHub Action, either in parallel or with a looping strategy, you must set the `XDG_CACHE_HOME` environment variable. The default value of this variable is `/home/ubuntu/.cache`; however, the `XDG_CACHE_HOME` variable must have a different value for each iteration of the Action. If you have separate steps running in parallel, assign distinct values to each step, such as `XDG_CACHE_HOME: /home/ubuntu/.cache1`. If you apply a looping strategy to the same step, you can use an expression to generate distinct values, such as `XDG_CACHE_HOME: /home/ubuntu/.cache<+step.identifier>`.
 
 :::tip Tips
 
 * If you already configured GitHub Actions elsewhere, you can quickly [transfer GitHub Actions into Harness CI](#transfer-github-actions-into-harness-ci) by copying the `spec` details from your existing GitHub Actions YAML.
-* You can use variable expressions in the `with` and `env` settings. For example, `credentials: \<+stage.variables.[TOKEN_SECRET]\>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables) to call a token stored as a [Harness secret](/docs/category/secrets).
+* You can use variable expressions in the `with` and `env` settings. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables) to call a token stored as a [Harness secret](/docs/category/secrets).
 * For GitHub Actions steps, `with` mappings are automatically exported as [output variables](#output-variables-from-github-actions-steps).
 
 :::
@@ -163,14 +163,14 @@ The following cases *always* require environment variables:
 
    Most Actions require settings. Refer to the GitHub Action's `with` usage specifications in the Action's README for details about specific settings available for the Action that you want to use.
 
-5. If required by the Action, add key-value pairs representing environment variables that you want to pass to the GitHub Action in the **Environment Variables** field under **Optional Configuration**. For example, you would specify `GITHUB_TOKEN: \<+secrets.getValue("github_pat")\>` by entering `GITHUB_TOKEN` in the key field and `\<+secrets.getValue("github_pat")\>` in the value field.
+5. If required by the Action, add key-value pairs representing environment variables that you want to pass to the GitHub Action in the **Environment Variables** field under **Optional Configuration**. For example, you would specify `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` by entering `GITHUB_TOKEN` in the key field and `<+secrets.getValue("github_pat")>` in the value field.
 
    Refer to the GitHub Action's `env` usage specifications for details about specific settings available for the Action that you want to use. Note that `env` specifies incoming environment variables, which are separate from outgoing environment variables that may be output by the Action.
 
    The following cases *always* require environment variables:
 
    * **Private Action repos:** For [private Action repositories](#private-action-repositories), you must provide the `GITHUB_TOKEN` environment variable. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be required, depending on the Action's purpose.
-   * **Duplicate Actions:** If you run multiple instances of the same GitHub Action, either in parallel or with a looping strategy, you must set the `XDG_CACHE_HOME` environment variable. The default value of this variable is `/home/ubuntu/.cache`; however, the `XDG_CACHE_HOME` variable must have a different value for each iteration of the Action. If you have separate steps running in parallel, assign distinct values to each step, such as `XDG_CACHE_HOME: /home/ubuntu/.cache1`. If you apply a looping strategy to the same step, you can use an expression to generate distinct values, such as `XDG_CACHE_HOME: /home/ubuntu/.cache\<+step.identifier\>`.
+   * **Duplicate Actions:** If you run multiple instances of the same GitHub Action, either in parallel or with a looping strategy, you must set the `XDG_CACHE_HOME` environment variable. The default value of this variable is `/home/ubuntu/.cache`; however, the `XDG_CACHE_HOME` variable must have a different value for each iteration of the Action. If you have separate steps running in parallel, assign distinct values to each step, such as `XDG_CACHE_HOME: /home/ubuntu/.cache1`. If you apply a looping strategy to the same step, you can use an expression to generate distinct values, such as `XDG_CACHE_HOME: /home/ubuntu/.cache<+step.identifier>`.
 
 6. Optionally, you can set the **Timeout**. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
@@ -179,7 +179,7 @@ The following cases *always* require environment variables:
 
 :::tip Tips
 
-* You can use fixed values, runtime inputs, or variable expressions for **Settings** and **Environment Variables** values. For example, `\<+stage.variables.[TOKEN_SECRET]\>` is a variable expression [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables) that calls a token stored as a [Harness secret](/docs/category/secrets).
+* You can use fixed values, runtime inputs, or variable expressions for **Settings** and **Environment Variables** values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a variable expression [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables) that calls a token stored as a [Harness secret](/docs/category/secrets).
 * For GitHub Actions steps, **Settings** are automatically exported as [output variables](#output-variables-from-github-actions-steps).
 
 :::
@@ -270,7 +270,7 @@ In the YAML editor, add `GITHUB_TOKEN` to the `env` mapping, for example:
 
 :::tip
 
-You can use a variable expressions, such as `\<+secrets.getValue("[SECRET_NAME]")\>`, to call a token stored as a Harness Secret.
+You can use a variable expressions, such as `<+secrets.getValue("[SECRET_NAME]")>`, to call a token stored as a Harness Secret.
 
 :::
 
@@ -284,11 +284,11 @@ For more information about configuring the Action step's settings, go to the [Ac
 In the Visual editor, specify `GITHUB_TOKEN` in the **Environment Variables**. Enter `GITHUB_TOKEN` in the key field and the token or variable expression in the value field, for example:
 
 * Key: `GITHUB_TOKEN`
-* Value: `\<+secrets.getValue("[SECRET_NAME]")\>`
+* Value: `<+secrets.getValue("[SECRET_NAME]")>`
 
 :::tip
 
-You can use a variable expressions, such as `\<+secrets.getValue("[SECRET_NAME]")\>`, to call a token stored as a Harness Secret.
+You can use a variable expressions, such as `<+secrets.getValue("[SECRET_NAME]")>`, to call a token stored as a Harness Secret.
 
 :::
 
@@ -351,8 +351,8 @@ In the following YAML example, the `setup_go` step uses a `go-version` setting, 
                   spec:
                     shell: Sh
                     command: |-
-                      echo \<+steps.setup_go.output.outputVariables."go-version"\>
-                      echo \<+execution.steps.setup_go.output.outputVariables."go-version"\>
+                      echo <+steps.setup_go.output.outputVariables."go-version">
+                      echo <+execution.steps.setup_go.output.outputVariables."go-version">
 ```
 
 </details>

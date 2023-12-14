@@ -146,9 +146,9 @@ import TabItem from '@theme/TabItem';
       -  `mode :` [`orchestration`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step. 
       -  `config: default`
          - `target : ` 
-            - `name : \<+input\>` 
+            - `name : <+input>` 
             - `type : repository`
-            - `variant : \<+input\>` You will specify the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) when you run the pipeline. 
+            - `variant : <+input>` You will specify the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) when you run the pipeline. 
                 When scanning a repository, you will generally use the repository name and branch for these fields.
          - `advanced : ` 
             - `log :` 

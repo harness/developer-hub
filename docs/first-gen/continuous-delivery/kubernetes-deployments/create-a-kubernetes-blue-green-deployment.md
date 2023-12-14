@@ -414,7 +414,7 @@ If you would like to scale down the old version **for one service**, add a [Shel
 
 
 ```
-kubectl scale deploy -n ${infra.kubernetes.namespace} $(kubectl get deploy -n ${infra.kubernetes.namespace} -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness\.io/color=="'$(kubectl get service/${k8s.stageServiceName} -n ${infra.kubernetes.namespace} -o jsonpath='{.spec.selector.harness\.io/color}')'")].metadata.name}') --replicas=0
+kubectl scale deploy -n ${infra.kubernetes.namespace} $(kubectl get deploy -n ${infra.kubernetes.namespace} -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness.io/color=="'$(kubectl get service/${k8s.stageServiceName} -n ${infra.kubernetes.namespace} -o jsonpath='{.spec.selector.harness.io/color}')'")].metadata.name}') --replicas=0
 ```
 If you use a Delegate installed outside of the target cluster, any scripts in your Pipeline need to use the `${HARNESS_KUBE_CONFIG_PATH}` expression to reference the path to a Harness-generated kubeconfig file containing the credentials you provided (`export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`).
 
@@ -422,7 +422,7 @@ For example:
 
 
 ```
-export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl scale deploy -n ${infra.kubernetes.namespace} $(kubectl get deploy -n ${infra.kubernetes.namespace} -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness\.io/color=="'$(kubectl get service/${k8s.stageServiceName} -n ${infra.kubernetes.namespace} -o jsonpath='{.spec.selector.harness\.io/color}')'")].metadata.name}') --replicas=0
+export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl scale deploy -n ${infra.kubernetes.namespace} $(kubectl get deploy -n ${infra.kubernetes.namespace} -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness.io/color=="'$(kubectl get service/${k8s.stageServiceName} -n ${infra.kubernetes.namespace} -o jsonpath='{.spec.selector.harness.io/color}')'")].metadata.name}') --replicas=0
 ```
 This example does not apply to scaling down multiple deployments in the same namespace. If you use the example and you have multiple deployments in the same namespace it will impact multiple deployments. You should also include a label (or another matchSelector) specific to the particular deployment, so it doesn’t scale down all the blue deployments in the namespace. For example, match `blue` and `my-specific-app`.### Option: Using the Horizontal Pod Autoscaler (HPA)
 

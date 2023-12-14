@@ -223,7 +223,7 @@ In the log for the **Shell Script** step, you can see the output variables:
 ```
 INFO   2018-10-22 14:03:36    Executing command ...  
 INFO   2018-10-22 14:03:37    Script output:   
-INFO   2018-10-22 14:03:37    **BUILD\_NO=345**  
+INFO   2018-10-22 14:03:37    **BUILD_NO=345**  
 INFO   2018-10-22 14:03:37    **LANG=en-us**  
 INFO   2018-10-22 14:03:37    Command completed with ExitCode (0)
 ```

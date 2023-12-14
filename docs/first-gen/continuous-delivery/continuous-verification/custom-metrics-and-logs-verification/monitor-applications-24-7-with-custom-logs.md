@@ -79,8 +79,8 @@ You can enter any JSON search input for your query. For example, here is a log q
   "token":           "${secrets.getValue("scalyrSG")}",  
   "queryType":         "log",  
   "filter":            "exception",  
-  "startTime":         "${start\_time}",  
-  "endTime":           "${end\_time}",  
+  "startTime":         "${start_time}",  
+  "endTime":           "${end_time}",  
   "maxCount":          "10",  
   "pageMode":          "tail",  
   "priority":          "low"  

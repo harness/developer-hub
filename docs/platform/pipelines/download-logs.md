@@ -68,9 +68,9 @@ The simplified log key makes it easier to call the Log Service API.
 This cURL command downloads pipeline log files based on the given pipeline execution key.
 
 ```
-curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT_ID&prefix=PIPELINE_EXECUTION_PREFIX_KEY' \
-  -X 'POST' \
-  -H 'content-type: application/json' \
+curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT_ID&prefix=PIPELINE_EXECUTION_PREFIX_KEY' 
+  -X 'POST' 
+  -H 'content-type: application/json' 
   -H 'x-api-key: <HARNESS-PERSONAL-ACCESS-TOKEN>'
 ```
 
@@ -87,9 +87,9 @@ curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT
 This cURL command downloads pipeline log files based on the given step key.
 
 ```
-curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT_ID&prefix=STEP_PREFIX_KEY' \
-  -X 'POST' \
-  -H 'content-type: application/json' \
+curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT_ID&prefix=STEP_PREFIX_KEY' 
+  -X 'POST' 
+  -H 'content-type: application/json' 
   -H 'x-api-key: <HARNESS-PERSONAL-ACCESS-TOKEN>'
 ```
 

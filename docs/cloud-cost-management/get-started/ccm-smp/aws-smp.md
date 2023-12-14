@@ -812,7 +812,7 @@ secretKey = "" [AWS Setup - Add a new user- Use saved aws secret key]
 prometheusAddress = ""
 
 # advanced configuration: change the query used to query spot price info from Prometheus.
-prometheusQuery = "avg_over_time(aws_spot_current_price{region=\"%s\", product_description=\"Linux/UNIX\"}[1w])"
+prometheusQuery = "avg_over_time(aws_spot_current_price{region="%s", product_description="Linux/UNIX"}[1w])"
 
 # Amazon pricing API credentials (optional)
 # Falls back to the primary credentials.

@@ -403,7 +403,7 @@ Harness NextGen release 80504 includes the following changes for the Harness Del
 
 - Fixed an intermittent issue where Helm deployment pipelines would report the Helm repository as not found. (CDS-76919)
 
-- Fixed an issue that resulted in Null Pointer Exceptions when running a pipeline manually with a `\<+trigger.connectorRef\>` expression. This expression gets its data from the trigger payload. With this fix, the pipeline correctly handles the case where the trigger payload is null. (CDS-77736, ZD-49685, ZD-49720, ZD-49722)
+- Fixed an issue that resulted in Null Pointer Exceptions when running a pipeline manually with a `<+trigger.connectorRef>` expression. This expression gets its data from the trigger payload. With this fix, the pipeline correctly handles the case where the trigger payload is null. (CDS-77736, ZD-49685, ZD-49720, ZD-49722)
 
 - Fixed an issue where the `ACCOUNT_SECRET` environment variable was overriding the `DELEGATE_TOKEN` value in the delegate's Docker container for delegates with an immutable image type (image tag `yy.mm.xxxxx`). (PL-40728)
 
@@ -481,7 +481,7 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 - Fixed a UI issue where pipelines, input sets, and executions were ordered incorrectly due to case-sensitive sorting of the element list. With this release, the UI now uses case-insensitive sorting when it lists pipelines, input sets, and pipeline executions. (CDS-73216)
 
-- Fixed an issue where a `\<+configFile.getAsBase64(content)\>` expression would get parsed incorrectly if it contained multiple lines. (CDS-73424)
+- Fixed an issue where a `<+configFile.getAsBase64(content)>` expression would get parsed incorrectly if it contained multiple lines. (CDS-73424)
 
 - Fixed an issue observed in pipeline executions with service overrides. If an encrypted config file was deleted, a log message would show the path to the deleted file. (CDS-75153, ZD-47557) 
 
@@ -693,7 +693,7 @@ Harness NextGen release 79916 includes the following changes for the Harness Del
 
    Now, Harness supports case-insensitive sorting for pipelines, input sets, and pipeline executions.
 
-- The `\<+configFile.getAsBase64()\>` expression not resolving correctly when the content had new lines. (CDS-73424)
+- The `<+configFile.getAsBase64()>` expression not resolving correctly when the content had new lines. (CDS-73424)
 
   The issue occurred with newline characters while encoding config files. This is fixed and Harness now replaces newline characters with unicode.
 
@@ -777,7 +777,7 @@ Harness NextGen release 79714 includes the following changes for the Harness Del
 
 - A project-level template crashed when opened. (CDS-71980, ZD-45950)
 
-  The three hyphens, `---` used in the YAML as YAML document separator was being replaced by `---\n` with an empty string due to a logic in the code. This logic made the YAML invalid. 
+  The three hyphens, `---` used in the YAML as YAML document separator was being replaced by `---n` with an empty string due to a logic in the code. This logic made the YAML invalid. 
 
   This issue is fixed by disabling `YAMLGenerator.Feature.WRITE_DOC_START_MARKER` in the YamlUtils to stop the YAML document separator `---` from being added to the YAML. 
 
@@ -800,7 +800,7 @@ Harness NextGen release 79714 includes the following changes for the Harness Del
 
   This issue is fixed. Instead of passing data using YAML, Harness now uses JSON for data processing. This helps preserve multi-line strings and YAML structures properly to process pipeline YAML and user inputs. Enable the feature flag, `PIE_PROCESS_ON_JSON_NODE` to leverage this fix.
 
-- Fixed an issue where the expression, `\<+lastPublished.tag\>.regex()` was not resolved properly when used as runtime input for artifacts. (CDS-68810)
+- Fixed an issue where the expression, `<+lastPublished.tag>.regex()` was not resolved properly when used as runtime input for artifacts. (CDS-68810)
 
 - Quotations were added to execution YAML strings inconsistently when comparing pipeline YAMLs. (CDS-67637)
 
@@ -899,13 +899,13 @@ Harness NextGen release 79306 includes the following changes for the Harness Del
     
   The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions. 
   
-  * [AWS KMS](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager): `\<+infra.variables.AwsKms.spec.credential.type\>`
-  * [AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager): `\<+infra.variables.AwsSecretsManager.spec.region\>`
-  * [Azure Key Vault](/docs/platform/secrets/secrets-management/azure-key-vault): `\<+infra.variables.AzureKeyVault.spec.vaultName\>`
-  * [Google KMS](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager): `\<+infra.variables.GcpKms.spec.keyName\>`
-  * [Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager): `\<+infra.variables.GcpSecMan.spec.credentialsRef.identifier\>`
-  * [Custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager): `\<+infra.variables.CustomSecMan.spec.isDefault\>`
-  * [HashiCorp Vault](/docs/platform/secrets/secrets-management/add-hashicorp-vault): `\<+infra.variables.HashiCorp.spec.vaultUrl\>`
+  * [AWS KMS](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
+  * [AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
+  * [Azure Key Vault](/docs/platform/secrets/secrets-management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
+  * [Google KMS](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
+  * [Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
+  * [Custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
+  * [HashiCorp Vault](/docs/platform/secrets/secrets-management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
 
 - Git polling tasks for triggers are executed on the same delegate selector used in the Git connector. (CDS-58115)
   

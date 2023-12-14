@@ -44,9 +44,9 @@ Create the PDC connector using the [Create a Connector](https://apidocs.harness.
 
 
 ```yaml
-curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=123456' \
---header 'Content-Type: text/yaml' \
---header 'x-api-key: pat.123456.123456' \
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=123456' 
+--header 'Content-Type: text/yaml' 
+--header 'x-api-key: pat.123456.123456' 
 --data-raw 'connector:
   name: PDC-Connector
   identifier: PDCConnector

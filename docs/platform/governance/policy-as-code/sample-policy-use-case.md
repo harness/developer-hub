@@ -140,7 +140,7 @@ package connectors
 # e.g. "Lion - Data Store" is allowed but "Cool connector" is not
 # NOTE: Try setting the name to "Test" to see the policy fail
 deny[msg] {
-	not regex.match("[Cheetah|Tiger|Lion]\\s[-]\\s[a-zA-Z0-9\\s]+", input.entity.name)
+	not regex.match("[Cheetah|Tiger|Lion]s[-]s[a-zA-Z0-9s]+", input.entity.name)
 	msg := sprintf("Connector name '%s' must follow the correct naming convention 'Team - Account'", [input.entity.name])
 }
 ```
@@ -814,7 +814,7 @@ package secrets
 # e.g. "Lion - MongoDB Password" is allowed but "Cool secret" is not
 # NOTE: Try setting the name to "Test" to see the policy fail
 deny[msg] {
-	not regex.match("[Cheetah|Tiger|Lion]\\s[-]\\s[a-zA-Z0-9\\s]+", input.secret.name)
+	not regex.match("[Cheetah|Tiger|Lion]s[-]s[a-zA-Z0-9s]+", input.secret.name)
 	msg := sprintf("Secret name '%s' must follow the correct naming convention 'Team - Purpose'", [input.secret.name])
 }
 ```

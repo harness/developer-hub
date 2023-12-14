@@ -48,7 +48,7 @@ echo "json.format: " <+json.format(<+pipeline.stages.Custom>)>
 Here's the example's output from the executed step's **Input** tab:
 
 ```
-"json.format: " {"stepInputs":{"identifier":"Custom","name":"Custom","description":"","variables":{},"tags":{},"type":"Custom","specConfig":{"childNodeID":"6OI2ed5ZQG2bZsPG90Zzwg"}},"status":"RUNNING","spec":{"stepInputs":{"childNodeId":"EIXj-rTPTa2j_un35s5kRQ","logMessage":"Spec Element"},"status":"RUNNING","execution":{"stepInputs":{"childNodeId":"EIXj-rTPTa2j_un35s5kRQsteps","logMessage":"Execution Element"},"status":"RUNNING","steps":{"stepInputs":{"childNodeId":"lN38FF6sQl-tbOw9yf_vEw","logMessage":"Steps Element"},"status":"RUNNING","ShellScript_1":{"status":"SUCCEEDED","outcome":{"output":{"outputVariables":{}}}},"json_format":{"stepInputs":{"identifier":"json_format","name":"json format","timeout":"10m","type":"ShellScript","spec":{"outputVariables":{},"environmentVariables":{},"secretOutputVariables":[],"shell":"Bash","source":{"type":"Inline","spec":{"script":"echo \"json.format: \" {\"stepInputs\":{\"identifier\":\"Custom\",\"name\":\"Custom\",\"description\":\"\",\"variables\":{},\"tags\":{},\"type\":\"Custom\",\"specConfig\":{\"childNodeID\":\"6OI2ed5ZQG2bZsPG90Zzwg\"}},\"status\":\"RUNNING\",\"spec\":{\"stepInputs\":{\"childNodeId\":\"EIXj-rTPTa2j_un35s5kRQ\",\"logMessage\":\"Spec Element\"},\"status\":\"RUNNING\",\"execution\":{\"stepInputs\":{\"childNodeId\":\"EIXj-rTPTa2j_un35s5kRQsteps\",\"logMessage\":\"Execution Element\"},\"status\":\"RUNNING\",\"steps\":{\"stepInputs\":{\"childNodeId\":\"lN38FF6sQl-tbOw9yf_vEw\",\"logMessage\":\"Steps Element\"},\"status\":\"RUNNING\",\"ShellScript_1\":{\"status\":\"SUCCEEDED\",\"outcome\":{\"output\":{\"outputVariables\":{}}}}}}}}"}},"onDelegate":true},"rollbackParameters":{"strategy":"UNKNOWN","strategyToUuid":{"STAGE_ROLLBACK":"Be2PfjljSjiK3DcfWX2lTg_combinedRollback"},"applicableFailureTypes":[]}}}}}}}
+"json.format: " {"stepInputs":{"identifier":"Custom","name":"Custom","description":"","variables":{},"tags":{},"type":"Custom","specConfig":{"childNodeID":"6OI2ed5ZQG2bZsPG90Zzwg"}},"status":"RUNNING","spec":{"stepInputs":{"childNodeId":"EIXj-rTPTa2j_un35s5kRQ","logMessage":"Spec Element"},"status":"RUNNING","execution":{"stepInputs":{"childNodeId":"EIXj-rTPTa2j_un35s5kRQsteps","logMessage":"Execution Element"},"status":"RUNNING","steps":{"stepInputs":{"childNodeId":"lN38FF6sQl-tbOw9yf_vEw","logMessage":"Steps Element"},"status":"RUNNING","ShellScript_1":{"status":"SUCCEEDED","outcome":{"output":{"outputVariables":{}}}},"json_format":{"stepInputs":{"identifier":"json_format","name":"json format","timeout":"10m","type":"ShellScript","spec":{"outputVariables":{},"environmentVariables":{},"secretOutputVariables":[],"shell":"Bash","source":{"type":"Inline","spec":{"script":"echo "json.format: " {"stepInputs":{"identifier":"Custom","name":"Custom","description":"","variables":{},"tags":{},"type":"Custom","specConfig":{"childNodeID":"6OI2ed5ZQG2bZsPG90Zzwg"}},"status":"RUNNING","spec":{"stepInputs":{"childNodeId":"EIXj-rTPTa2j_un35s5kRQ","logMessage":"Spec Element"},"status":"RUNNING","execution":{"stepInputs":{"childNodeId":"EIXj-rTPTa2j_un35s5kRQsteps","logMessage":"Execution Element"},"status":"RUNNING","steps":{"stepInputs":{"childNodeId":"lN38FF6sQl-tbOw9yf_vEw","logMessage":"Steps Element"},"status":"RUNNING","ShellScript_1":{"status":"SUCCEEDED","outcome":{"output":{"outputVariables":{}}}}}}}}"}},"onDelegate":true},"rollbackParameters":{"strategy":"UNKNOWN","strategyToUuid":{"STAGE_ROLLBACK":"Be2PfjljSjiK3DcfWX2lTg_combinedRollback"},"applicableFailureTypes":[]}}}}}}}
 ```
 
 :::note
@@ -59,7 +59,7 @@ When you output the expression in the Shell Script step, the formatting is not s
 
 For example, consider a pipeline with two stages. In the second stage, add a Shell Script step to obtain the JSON format of first stage: 
 
-`echo \<+json.format(<+pipeline.stages.stage1\>)>`
+`echo <+json.format(<+pipeline.stages.stage1>)>`
 
 In the pipeline execution page, select the **Input** section of the Shell Script step in the second stage, and then copy the JSON.
 
@@ -175,7 +175,7 @@ You can retrieve specific chunks of data from the following sample execution JSO
                       "source": {
                         "type": "Inline",
                         "spec": {
-                          "script": "echo \"My number is: 0\""
+                          "script": "echo "My number is: 0""
                         }
                       },
                       "onDelegate": true
@@ -259,7 +259,7 @@ You can retrieve specific chunks of data from the following sample execution JSO
                       "source": {
                         "type": "Inline",
                         "spec": {
-                          "script": "echo \"My number is: 2\""
+                          "script": "echo "My number is: 2""
                         }
                       },
                       "onDelegate": true
@@ -343,7 +343,7 @@ You can retrieve specific chunks of data from the following sample execution JSO
                       "source": {
                         "type": "Inline",
                         "spec": {
-                          "script": "echo \"My number is: 1\""
+                          "script": "echo "My number is: 1""
                         }
                       },
                       "onDelegate": true
@@ -413,7 +413,7 @@ You can retrieve specific chunks of data from the following sample execution JSO
                     "source": {
                       "type": "Inline",
                       "spec": {
-                        "script": "t=\"[]\"\necho $t"
+                        "script": "t="[]"necho $t"
                       }
                     },
                     "onDelegate": true
@@ -686,7 +686,7 @@ This script defines a `traverse` function that takes a parameter called `key`. W
 * Status addition: Within the nested loop, the `spec.execution.status` value of each stage is extracted and added to the `statuses` array using `statuses.add(stage1.status)`.
 * Return: Finally, the function returns the `statuses` array.
 
-The script concludes by invoking the traverse function with the argument, `\<+pipeline.stages.cStage\>`. This argument represents the starting point for the traversal, where the `pipeline.stages.cStage` object is passed as the key.
+The script concludes by invoking the traverse function with the argument, `<+pipeline.stages.cStage>`. This argument represents the starting point for the traversal, where the `pipeline.stages.cStage` object is passed as the key.
 
 This script performs a traversal and extraction operation on a data structure represented by the key parameter. It extracts stages that start with `stageWithMatrix` and collects their corresponding `.status` values into the `statuses` array.
 
@@ -723,7 +723,7 @@ This script defines a `traverse` function that takes a parameter called `key`. W
 * Status addition: Within the nested loop, the `spec.execution.status` value of each stage is extracted and added to the `statuses` array using `statuses.add(stage1.status)`.
 * Return: Finally, the function returns the `statuses` array.
 
-The script concludes by invoking the traverse function with the argument, `\<+pipeline.stages.stepWithMatrix.spec.execution.steps.ShellScript_1\>`. This argument represents the starting point for the traversal, where the specific stage `(ShellScript_1)` within the given pipeline structure is passed as the key.
+The script concludes by invoking the traverse function with the argument, `<+pipeline.stages.stepWithMatrix.spec.execution.steps.ShellScript_1>`. This argument represents the starting point for the traversal, where the specific stage `(ShellScript_1)` within the given pipeline structure is passed as the key.
 
 This script performs a traversal and extraction operation on a data structure represented by the key parameter. It filters stages that start with the string `ShellScript_1` and collects their corresponding status values into the statuses array.
 

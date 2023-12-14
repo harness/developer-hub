@@ -39,9 +39,9 @@ Keys are used to sign and verify attestations.
    For example, this **Run** step uses [Aqua Trivy](https://aquasecurity.github.io/trivy/dev/docs/supply-chain/sbom/) to generate an SBOM.
 
    ```
-    trivy image \
-     --format spdx-json \
-     --output /shared/customer_artifacts/result.spdx.json \
+    trivy image 
+     --format spdx-json 
+     --output /shared/customer_artifacts/result.spdx.json 
      ubuntu:22.04
    ```
 

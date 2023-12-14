@@ -55,12 +55,12 @@ QUARTZ Expression
 ```
 0 0 4 7 ? 2014  
 | | | |   | |  
-| | | |   | \------- YEAR (2014)  
-| | | |   \--------- DAY_OF_WEEK (NOT_SPECIFIED)  
-| | | \------------- MONTH (JULY)  
-| | \--------------- DAY_OF_MONTH (4th)  
-| \----------------- HOUR (0- MIDNIGHT LOCAL TIME)  
-\------------------- MINUTE (0)
+| | | |   | ------- YEAR (2014)  
+| | | |   --------- DAY_OF_WEEK (NOT_SPECIFIED)  
+| | | ------------- MONTH (JULY)  
+| | --------------- DAY_OF_MONTH (4th)  
+| ----------------- HOUR (0- MIDNIGHT LOCAL TIME)  
+------------------- MINUTE (0)
 ```
 
 UNIX Expression
@@ -68,11 +68,11 @@ UNIX Expression
 ```
 5 0 * * 5
 | | | | |
-| | | | \-------DAY_OF_WEEK (Friday)
-| | | \---------MONTH (Any month)
-| | \-----------DAY_OF_MONTH (Any day of the month)
-| \-------------HOUR(0- MIDNIGHT LOCAL TIME)
-\---------------MINUTE(5)
+| | | | -------DAY_OF_WEEK (Friday)
+| | | ---------MONTH (Any month)
+| | -----------DAY_OF_MONTH (Any day of the month)
+| -------------HOUR(0- MIDNIGHT LOCAL TIME)
+---------------MINUTE(5)
 ```
 
 ### Set pipeline input

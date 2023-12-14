@@ -108,7 +108,7 @@ new EcsCdkStack(app, 'EcsCdkStack');
 
 ```
 
-In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `\<+provisioner.STACK_NAME.OUTPUT_NAME\>`, such as `\<+provisioner.EcsCdkStack.RegionOutput\>`.
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.STACK_NAME.OUTPUT_NAME>`, such as `<+provisioner.EcsCdkStack.RegionOutput>`.
 
 <docimage path={require('./static/0982655fcd2dfeb4043905e6f878f29c6005dd8d9e0d659898055fb2750d214f.png')} width="40%" height="40%" title="Click to view full size image" />  
 
@@ -225,7 +225,7 @@ The Git Clone step is documented in detail in [Git Clone step](/docs/continuous-
 
   :::tip
 
-  You can use [fixed values, runtime input, or variable expressions](/docs/platform/variables-and-expressions/runtime-inputs) for the branch and tag names. For example, you can enter `\<+input\>` for the branch or tag name to supply a branch or tag name at runtime.
+  You can use [fixed values, runtime input, or variable expressions](/docs/platform/variables-and-expressions/runtime-inputs) for the branch and tag names. For example, you can enter `<+input>` for the branch or tag name to supply a branch or tag name at runtime.
 
   :::
 - **Clone directory:** An optional target path in the stage workspace where you want to clone the repo.
@@ -474,7 +474,7 @@ The CDK rollback steps are located in the **Rollback** section of the **Environm
 
 :::note Tip
 
-If you are using rollback steps in a Custom stage **Execution**, there is no **Rollback** section. You can add the rollback steps as the last steps and use the step's **Conditional Execution** settings. For example, select the **Execute this step only if prior step failed** setting and add the expression `\<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_GROUP_ID.steps.STEP_ID.status\> != "SUCCEEDED"` in the step's **And execute this step only if the following JEXL Condition evaluates to true** setting.
+If you are using rollback steps in a Custom stage **Execution**, there is no **Rollback** section. You can add the rollback steps as the last steps and use the step's **Conditional Execution** settings. For example, select the **Execute this step only if prior step failed** setting and add the expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_GROUP_ID.steps.STEP_ID.status> != "SUCCEEDED"` in the step's **And execute this step only if the following JEXL Condition evaluates to true** setting.
 
 :::
 
@@ -494,14 +494,14 @@ Typically, the Git Clone step is used to roll back the app source repo in the co
 
 Ensure that CDK application on the shared disk space is at the revision you want to rollback. The Git Clone step can be added with the specific commit SHA to use for rollback.
 
-When the CDK Deploy step runs, it outputs the Git commit Id of the CDK app repo commit it used. You can see this in the **Output** of the CDK Deploy step and reference it using the expression in the format `\<+pipeline.stages.STAGE_ID.spec.provisioner.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID\>`.
+When the CDK Deploy step runs, it outputs the Git commit Id of the CDK app repo commit it used. You can see this in the **Output** of the CDK Deploy step and reference it using the expression in the format `<+pipeline.stages.STAGE_ID.spec.provisioner.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID>`.
 
 To ensure that the Git Clone step rolls back to the last successful commit, configure the step as follows:
 
 - **Connector:** Select or add a Harness Git connector for the source control provider hosting the CDK app code repository that you want to use.
 - **Repository Name:**  If the connector's **URL Type** is **Repository**, then **Repository Name** is automatically populated based on the repository defined in the connector's configuration. If the connector's **URL Type** is **Account**, then you must specify the name of the code repository that you want to clone into the stage workspace.
 - **Build Type:** Select the branch, tag, or Git commit SHA of the commit you want to use.
-- **Commit SHA:** If you use, **Git Commit SHA**, you can use the `LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID` expression from the last *successful* CDK Deploy step. For example, `\<+pipeline.stages.s2.spec.provisioner.steps.test.steps.AwsCdkDeploy_2.output.outputVariables.LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID\>`. In this example, this expression will resolve to the commit SHA from the latest successful execution of the `AwsCdkDeploy_2` step from a previous stage. The Git Clone step will checkout at that specific commit SHA.
+- **Commit SHA:** If you use, **Git Commit SHA**, you can use the `LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID` expression from the last *successful* CDK Deploy step. For example, `<+pipeline.stages.s2.spec.provisioner.steps.test.steps.AwsCdkDeploy_2.output.outputVariables.LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID>`. In this example, this expression will resolve to the commit SHA from the latest successful execution of the `AwsCdkDeploy_2` step from a previous stage. The Git Clone step will checkout at that specific commit SHA.
 
   You do not have to use the Git commit used by the last successful CDK Deploy step. You can rollback to any branch, tag, or commit you like.
 

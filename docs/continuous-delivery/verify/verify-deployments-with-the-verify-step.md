@@ -56,7 +56,7 @@ Harness uses the data points within this duration for analysis. For instance, if
 
 ### Artifact tag
 
-Use the Harness expression `\<+serviceConfig.artifacts.primary.tag\>` to reference this primary artifact. To learn about artifact expression, go to [Artifact](/docs/platform/variables-and-expressions/harness-variables/#artifact).
+Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Artifact](/docs/platform/variables-and-expressions/harness-variables/#artifact).
 
 
 ### Fail on no analysis. 

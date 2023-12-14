@@ -75,10 +75,10 @@ connector:
 Create a connector using [Connector API](https://apidocs.harness.io/tag/connectors).
 
 ```
-curl -i -X POST \
-  'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=string&branch=string&repoIdentifier=string&rootFolder=string&filePath=string&commitMsg=string&isNewBranch=false&baseBranch=string&connectorRef=string&storeType=INLINE&repoName=string' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: YOUR_API_KEY_HERE' \
+curl -i -X POST 
+  'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=string&branch=string&repoIdentifier=string&rootFolder=string&filePath=string&commitMsg=string&isNewBranch=false&baseBranch=string&connectorRef=string&storeType=INLINE&repoName=string' 
+  -H 'Content-Type: application/json' 
+  -H 'x-api-key: YOUR_API_KEY_HERE' 
   -d '{
     "connector": {
       "name": "string",

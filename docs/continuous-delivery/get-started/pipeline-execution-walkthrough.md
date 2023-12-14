@@ -182,7 +182,7 @@ Here's the process:
 
 #### Artifact configuration (optional)
 
-You can add an artifact to the service and use the artifact expression `image: \<+artifacts.primary.image\>` in your `values.yaml` file to fetch the image tag information and pass it into the manifest.
+You can add an artifact to the service and use the artifact expression `image: <+artifacts.primary.image>` in your `values.yaml` file to fetch the image tag information and pass it into the manifest.
 
 <docimage path={require('./static/adf1528b6db53170e2bef7b8e96dd55e4e3fe256f9895ce9952b81ab337c9518.png')} width="60%" height="60%" title="Click to view full size image" />  
 

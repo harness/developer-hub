@@ -65,8 +65,8 @@ Let's look at a placeholder example:
 
 
 ```
-curl -X POST -H 'content-type: application/json' \  
- --url https://app.harness.io/api/webhooks/xxxxxx \  
+curl -X POST -H 'content-type: application/json'   
+ --url https://app.harness.io/api/webhooks/xxxxxx   
  -d '{"application":"xxxxxx","artifacts":[{"service":"micro-service","buildNumber":"micro-service_BUILD_NUMBER_PLACE_HOLDER"}]}'
 ```
 For `service`, enter the name of the Harness Service.
@@ -79,8 +79,8 @@ For example:
 
 
 ```
-curl -X POST -H 'content-type: application/json' \  
- --url https://app.harness.io/api/webhooks/xxxxxx \  
+curl -X POST -H 'content-type: application/json'   
+ --url https://app.harness.io/api/webhooks/xxxxxx   
  -d '{"application":"xxxxxx","artifacts":[{"service":"Service-Example","buildNumber":"1.17.8-perl"}]}'
 ```
 ### Step 3: Run cURL Command
@@ -108,7 +108,7 @@ To get deployment status using a REST call (in this example, cURL), use the fol
 
 
 ```
-curl -X GET -H 'X-Api-Key:**API\_KEY**' --url "**API\_URL**"
+curl -X GET -H 'X-Api-Key:**API_KEY**' --url "**API_URL**"
 ```
 For example (private information has been replaced with **xxxxxx**):
 

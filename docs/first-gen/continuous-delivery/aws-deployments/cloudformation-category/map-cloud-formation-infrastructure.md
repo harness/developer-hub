@@ -70,7 +70,7 @@ You map the CloudFormation template outputs using this syntax, where `exact_nam
 
 
 ```
-${cloudformation.*exact\_name*}
+${cloudformation.*exact_name*}
 ```
 When you map a CloudFormation template output to a Harness Infrastructure Definition setting, the expression for the output, `${cloudformation.exact_name​}`, can be used anywhere in the Workflow that uses that CloudFormation Provisioner. This can be useful if you want to echo the outputs in a [Shell Script step](../../model-cd-pipeline/workflows/capture-shell-script-step-output.md) for example.
 

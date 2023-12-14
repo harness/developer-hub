@@ -119,7 +119,7 @@ In **Manifest Details**, enter the following required settings:
 You can list artifacts in two ways:
 
 * Artifacts can be hardcoded in the deployment YAML file deployed using your Kustomization files.
-* You can add artifacts to the Service **Artifacts** section and reference them in Kustomize Patch files using the Harness variable `\<+artifact.image\>`. See [Kustomize Patches](#kustomize-patches) below, and [Built-in Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables).
+* You can add artifacts to the Service **Artifacts** section and reference them in Kustomize Patch files using the Harness variable `<+artifact.image>`. See [Kustomize Patches](#kustomize-patches) below, and [Built-in Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables).
 
 ## Kustomize patches
 
@@ -306,7 +306,7 @@ For example, let's say we have two secrets, one for `image` and one for `app`:
 
 ![](./static/use-kustomize-for-kubernetes-deployments-09.png)
 
-The following patch uses these secrets for `image` and `app`, referencing them using the expression `\<+secrets.getValue("[secret name]")\>`.
+The following patch uses these secrets for `image` and `app`, referencing them using the expression `<+secrets.getValue("[secret name]")>`.
 
 
 ```yaml

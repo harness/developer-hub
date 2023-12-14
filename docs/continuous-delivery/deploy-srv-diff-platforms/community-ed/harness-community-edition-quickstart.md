@@ -254,7 +254,7 @@ We'll create a quick CD pipeline that deploys a public manifest and image to a l
   * **Execution Steps:** Execution steps perform the CD operations like applying a manifest, asking for approval, rollback, and so on. Harness automatically adds the steps you need for the deployment strategy you select. You can then add additional steps to perform many other operations.
   * **Connectors:** Connectors contain the information necessary to integrate and work with 3rd party tools such as Git providers and artifact repos. Harness uses connectors at pipeline runtime to authenticate and perform operations with a 3rd party tool.
 
-  You'll notice a runtime input expression `\<+input\>` for most of the settings. These are placeholders we'll replace when we run the pipeline.
+  You'll notice a runtime input expression `<+input>` for most of the settings. These are placeholders we'll replace when we run the pipeline.
 6. Select **Run**. The **Run Pipeline** settings appear.
 
 ![](./static/harness-community-edition-quickstart-136.png)

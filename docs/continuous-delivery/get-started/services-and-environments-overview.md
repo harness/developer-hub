@@ -616,7 +616,7 @@ Tags can be attached to infrastructure definitions representing their characteri
 
 ![](./static/services-and-environments-overview-28.png)
 
-When you select the **Infrastructure Definition** for a stage, the attached tags can be accessed using their keys with the expression, `\<+infra.tags.tag_key\>`. This expression is available for use throughout the stage.
+When you select the **Infrastructure Definition** for a stage, the attached tags can be accessed using their keys with the expression, `<+infra.tags.tag_key>`. This expression is available for use throughout the stage.
 
 For example, skipping certain steps in pipeline based on the tags attached to the infrastructure.
 

@@ -101,14 +101,14 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 Now you can install the delegate by using the command that appears on your installation wizard. The command is prefilled with the information for the environment variables in the example below. 
 
 ```bash
-docker run --cpus=1 --memory=2g \
-  -e DELEGATE_NAME=harness-serverless-delegate \
-  -e NEXT_GEN="true" \
-  -e DELEGATE_TYPE="DOCKER" \
-  -e ACCOUNT_ID= YOUR_HARNESS_ACCOUNTID \
-  -e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN \
-  -e LOG_STREAMING_SERVICE_URL=YOUR_MANAGER_HOST_AND_PORT/log-service/ \
-  -e MANAGER_HOST_AND_PORT=YOUR_MANAGER_HOST_AND_PORT \
+docker run --cpus=1 --memory=2g 
+  -e DELEGATE_NAME=harness-serverless-delegate 
+  -e NEXT_GEN="true" 
+  -e DELEGATE_TYPE="DOCKER" 
+  -e ACCOUNT_ID= YOUR_HARNESS_ACCOUNTID 
+  -e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN 
+  -e LOG_STREAMING_SERVICE_URL=YOUR_MANAGER_HOST_AND_PORT/log-service/ 
+  -e MANAGER_HOST_AND_PORT=YOUR_MANAGER_HOST_AND_PORT 
   DELEGATE_IMAGE:TAG
 ```
 
@@ -587,14 +587,14 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 Now you can install the delegate by using the command that appears on your installation wizard. The command is prefilled with the information for the environment variables as in the example below. 
 
 ```bash
-docker run --cpus=1 --memory=2g \
-  -e DELEGATE_NAME=docker-delegate \
-  -e NEXT_GEN="true" \
-  -e DELEGATE_TYPE="DOCKER" \
-  -e ACCOUNT_ID= YOUR_HARNESS_ACCOUNTID \
-  -e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN \
-  -e LOG_STREAMING_SERVICE_URL=YOUR_MANAGER_HOST_AND_PORT/log-service/ \
-  -e MANAGER_HOST_AND_PORT=YOUR_MANAGER_HOST_AND_PORT \
+docker run --cpus=1 --memory=2g 
+  -e DELEGATE_NAME=docker-delegate 
+  -e NEXT_GEN="true" 
+  -e DELEGATE_TYPE="DOCKER" 
+  -e ACCOUNT_ID= YOUR_HARNESS_ACCOUNTID 
+  -e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN 
+  -e LOG_STREAMING_SERVICE_URL=YOUR_MANAGER_HOST_AND_PORT/log-service/ 
+  -e MANAGER_HOST_AND_PORT=YOUR_MANAGER_HOST_AND_PORT 
   DELEGATE_IMAGE:TAG
 ```
 

@@ -39,7 +39,7 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 
 helm repo update
 
-helm upgrade --install prometheus prometheus-community/prometheus \
+helm upgrade --install prometheus prometheus-community/prometheus 
 --namespace prometheus --create-namespace
 ```
 
@@ -90,7 +90,7 @@ The Continuous Verification configuration is currently represented by two concer
 2. Set Continuous Verification Type to “Rolling Update”.
 3. Set [Sensitivity](/docs/continuous-delivery/verify/cv-concepts/machine-learning#sensitivity) to “High”.
 4. Set Duration to “5 min”
-5. Leave the Artifact Tag to `\<+serviceConfig.artifacts.primary.tag\>`.
+5. Leave the Artifact Tag to `<+serviceConfig.artifacts.primary.tag>`.
 
 Next you will configure the Health Source [[Monitored Service](/docs/service-reliability-management/monitored-service/create-monitored-service/)] for your application [e.g [Harness Service](/docs/get-started/key-concepts#services)]. 
 

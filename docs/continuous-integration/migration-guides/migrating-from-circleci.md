@@ -488,11 +488,11 @@ workflows:
 
 In CircleCI, you use the web app to define project-level environment variables, and then you can reference them in a pipeline. You can use _Context_ to use environment variables across multiple projects.
 
-In Harness CI, you can define variables at the project, organization, and account levels. To reference these variables, you use variable expressions formatted as: `\<+variable.[scope].[variable_id]\>`. Here are the syntax formats for variables declared at different levels:
+In Harness CI, you can define variables at the project, organization, and account levels. To reference these variables, you use variable expressions formatted as: `<+variable.[scope].[variable_id]>`. Here are the syntax formats for variables declared at different levels:
 
-- Account-level variable reference: `\<+variable.account.[var_id]\>`
-- Organization-level variable reference: `\<+variable.org.[var_id]\>`
-- Project-level variable reference: `\<+variable.[var_id]\>`
+- Account-level variable reference: `<+variable.account.[var_id]>`
+- Organization-level variable reference: `<+variable.org.[var_id]>`
+- Project-level variable reference: `<+variable.[var_id]>`
 
 ```mdx-code-block
 import Tabs4 from '@theme/Tabs';
@@ -545,7 +545,7 @@ In addition to project, organization, and account variables, you can use built-i
 
 In CircleCI, matrix jobs are achieved by using parameters and then referencing those parameters in the pipeline using the following expression syntax: `<< parameters.param >>`
 
-In Harness, matrix looping strategies are one of several looping execution strategies. With matrix looping strategies, your pipelines can execute the same set of tasks multiple times for several different configurations. This is achieved by mentioning user-defined tags and referencing them in the pipeline using the following expression syntax: `\<+matrix.usertag\>`
+In Harness, matrix looping strategies are one of several looping execution strategies. With matrix looping strategies, your pipelines can execute the same set of tasks multiple times for several different configurations. This is achieved by mentioning user-defined tags and referencing them in the pipeline using the following expression syntax: `<+matrix.usertag>`
 
 To learn about the looping strategies available in Harness, go to [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 

@@ -48,8 +48,8 @@ Data retention for Webhook event details is 3 days.
 To see the event details, in the response of a Webhook request the `data` field contains the Id of the registered WebHook event. You can use the following API and the `eventId` to get the details of the WebHook Event:
 
 ```
-curl -i -X GET \  
-  'https://app.harness.io/gateway/pipeline/api/webhook/triggerProcessingDetails?accountIdentifier=<account Id>&eventId=<data Id>' \  
+curl -i -X GET   
+  'https://app.harness.io/gateway/pipeline/api/webhook/triggerProcessingDetails?accountIdentifier=<account Id>&eventId=<data Id>'   
   -H 'x-api-key: <Harness API key>'
 ```
 If you want to access the `triggerProcessingDetails` endpoint, you should sleep your cURL command for up to 1 minute after the Trigger is fired. The result should be non-null quickly, but sleeping the cURL command ensures that you receive the data.
@@ -74,8 +74,8 @@ The curl command is displayed. It will look something like the this (private inf
 
 
 ```
-curl -X POST -H 'content-type: application/json' \  
- --url https://app.harness.io/api/webhooks/xxxxxx \  
+curl -X POST -H 'content-type: application/json'   
+ --url https://app.harness.io/api/webhooks/xxxxxx   
  -d '{"application":"xxxxxx","artifacts":[{"service":"micro-service","buildNumber":"micro-service_BUILD_NUMBER_PLACE_HOLDER"}]}'
 ```
 Copy the curl command, replace the placeholders with actual values, and run it in a terminal.
@@ -98,8 +98,8 @@ Let's look at a placeholder example:
 
 
 ```
-curl -X POST -H 'content-type: application/json' \  
- --url https://app.harness.io/api/webhooks/xxxxxx \  
+curl -X POST -H 'content-type: application/json'   
+ --url https://app.harness.io/api/webhooks/xxxxxx   
  -d '{"application":"xxxxxx","artifacts":[{"service":"micro-service","buildNumber":"micro-service_BUILD_NUMBER_PLACE_HOLDER"}]}'
 ```
 The `artifacts` setting is optional. If you have an artifact hardcoded in your manifest and do not use a Harness Artifact Source, you will not need `artifacts`. Remove the **entire** `artifacts` section: `"artifacts":[{"service":"micro-service","buildNumber":"micro-service_BUILD_NUMBER_PLACE_HOLDER"}]}'`For `service`, enter the name of the Harness Service.
@@ -112,8 +112,8 @@ For example:
 
 
 ```
-curl -X POST -H 'content-type: application/json' \  
- --url https://app.harness.io/api/webhooks/xxxxxx \  
+curl -X POST -H 'content-type: application/json'   
+ --url https://app.harness.io/api/webhooks/xxxxxx   
  -d '{"application":"xxxxxx","artifacts":[{"service":"Service-Example","buildNumber":"1.17.8-perl"}]}'
 ```
 The output will be something like this (private information has been replaced with **xxxxxx**):

@@ -104,9 +104,9 @@ To use dynamic provisioning, you map outputs from your provisioner script/templa
 
 You use these outputs in Harness expressions that you enter in the Harness infrastructure settings.
 
-The format for the expression is `\<+provisioner.OUTPUT_NAME\>`.
+The format for the expression is `<+provisioner.OUTPUT_NAME>`.
 
-For example, if a Terraform script has the following output, the expression is `\<+provisioner.default_namespace\>`:
+For example, if a Terraform script has the following output, the expression is `<+provisioner.default_namespace>`:
 
 ```
 output "default_namespace" {
@@ -159,7 +159,7 @@ At deployment runtime, Harness processes the **Environment** settings first, alo
 
 Consequently, the **Environment** settings cannot reference subsequent **Execution** settings, but the **Execution** settings can reference previous **Environment** settings.
 
-For example, if you dynamically provisioned a Kubernetes namespace in the **Environment** settings and mapped the namespace output using the expression `\<+provisioner.default_namespace\>`, you can reference the namespace in the **Execution** steps settings using the same expression, including any files that those steps use. 
+For example, if you dynamically provisioned a Kubernetes namespace in the **Environment** settings and mapped the namespace output using the expression `<+provisioner.default_namespace>`, you can reference the namespace in the **Execution** steps settings using the same expression, including any files that those steps use. 
 
 But if you performed ad hoc provisioning in the **Execution** steps, you cannot reference the outputs of those steps in the **Environment** settings.
 

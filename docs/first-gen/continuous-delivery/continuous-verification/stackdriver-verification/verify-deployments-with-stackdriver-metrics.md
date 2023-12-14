@@ -56,7 +56,7 @@ In **Group Name**, enter a name for grouping the metrics in Harness, such as **P
 
 Paste in the JSON query from Stackdriver Metrics Explorer.
 
-Make sure you provide `${host}` string for filtering in the query. For example: `resource.label.\"pod_name\"=\"${host}\""`.
+Make sure you provide `${host}` string for filtering in the query. For example: `resource.label."pod_name"="${host}""`.
 
 In Stackdriver Metrics Explorer, once you have your metric query set up, click the **View as JSON** option.
 
@@ -75,7 +75,7 @@ Here is an example using the `${host}` expression:
   "dataSets": [  
     {  
       "timeSeriesFilter": {  
-        "filter": "metric.type=\"kubernetes.io/container/memory/limit_utilization\" resource.type=\"k8s_container\" resource.label.\"cluster_name\"=\"harness_test\" resource.label.\"pod_name\"=\"${host}\"",  
+        "filter": "metric.type="kubernetes.io/container/memory/limit_utilization" resource.type="k8s_container" resource.label."cluster_name"="harness_test" resource.label."pod_name"="${host}"",  
         "minAlignmentPeriod": "60s",  
         "unitOverride": "1",  
         "aggregations": [  

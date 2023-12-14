@@ -43,7 +43,7 @@ As you can see, you map the CloudFormation template outputs using this syntax, w
 
 
 ```
-${cloudformation.*exact\_name*}
+${cloudformation.*exact_name*}
 ```
 Once these variable expressions are defined as Infrastructure Definition parameters, and used by the CloudFormation Create Stack step in a Workflow, they can be used elsewhere in the Workflow.
 

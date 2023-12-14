@@ -38,7 +38,7 @@ Select **Run**. The **Run Pipeline** screen appears.
 
 Under **Build Type**, select **Git Branch**.
 
-For the **Branch Name**, select **Expression** and enter `\<+trigger.targetBranch\>` as a runtime expression.
+For the **Branch Name**, select **Expression** and enter `<+trigger.targetBranch>` as a runtime expression.
 
 ![](./static/manage-input-sets-in-simplified-git-experience-07.png)
 
@@ -64,7 +64,7 @@ In the **Pipeline Input** tab, select the input set you just created and select 
 
 ![](./static/manage-input-sets-in-simplified-git-experience-10.png)
 
-You now have a pipeline, input set, and trigger that you can use in new branches that you create from the default branch. When a webhook payload arrives, the trigger selects the branch to use based on the **Pipeline Reference Branch** field (`\<+trigger.branch\>`) and the **Git Branch** field in the input set (`\<+trigger.branch\>`).
+You now have a pipeline, input set, and trigger that you can use in new branches that you create from the default branch. When a webhook payload arrives, the trigger selects the branch to use based on the **Pipeline Reference Branch** field (`<+trigger.branch>`) and the **Git Branch** field in the input set (`<+trigger.branch>`).
 
 ### Example workflow: Create a custom pipeline in a new branch
 
@@ -108,7 +108,7 @@ Review the following notes in case you encounter issues using Git Experience wit
 
 #### Pipeline reference branch field
 
-When Git Experience is enabled for your pipeline, the **Pipeline Input** tab includes the **Pipeline Reference Branch** field. This field is set to `\<+trigger.branch\>` by default. This means that any build started by this trigger uses the pipeline and input set definitions in the branch specified in the webhook payload.
+When Git Experience is enabled for your pipeline, the **Pipeline Input** tab includes the **Pipeline Reference Branch** field. This field is set to `<+trigger.branch>` by default. This means that any build started by this trigger uses the pipeline and input set definitions in the branch specified in the webhook payload.
 
 This default is applicable *only* if the trigger is webhook-based. For all other trigger types, you need to enter a specific branch name.
 

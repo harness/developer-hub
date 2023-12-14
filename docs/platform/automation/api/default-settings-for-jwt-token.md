@@ -51,12 +51,12 @@ The following `curl` command to send a request to the [Setting API](https://apid
 * Replace `JWT_KEYS_URL_VALUE` with the endpoint for the JWT keys JSON data.
 
 ```
-        curl --location --request PUT 'https://app.harness.io/gateway/ng/api/settings?accountIdentifier=ACCOUNT_ID' \
-            --header 'Connection: keep-alive' \
-            --header 'x-api-key: API_KEY_TOKEN' \
-            --header 'Accept: */*' \
-            --header 'Accept-Language: en-US,en;q=0.9' \
-            --header 'Content-Type: application/json' \
+        curl --location --request PUT 'https://app.harness.io/gateway/ng/api/settings?accountIdentifier=ACCOUNT_ID' 
+            --header 'Connection: keep-alive' 
+            --header 'x-api-key: API_KEY_TOKEN' 
+            --header 'Accept: */*' 
+            --header 'Accept-Language: en-US,en;q=0.9' 
+            --header 'Content-Type: application/json' 
             --data-raw '[
                 {
                     "identifier": "scim_jwt_token_jwks_keys_url",
@@ -104,10 +104,10 @@ You can access the Harness SCIM API by using JSON Web Tokens (JWT). This allows 
 For example, the following `curl` command fetches a list of all users in your Harness account, and it uses the JWT for authentication. To use this command, you must replace `JWT_TOKEN` in the `Bearer` header with your JWT, and you need to replace `ACCOUNT_ID` with your Harness account ID.
 
 ```
-  curl --location --request GET 'https://app.harness.io/gateway/ng/api/scim/account/ACCOUNT_ID/Users' \
-     --header 'Connection: keep-alive' \
-     --header 'Accept: application/scim+json' \
-     --header 'Authorization: Bearer JWT_TOKEN' \
+  curl --location --request GET 'https://app.harness.io/gateway/ng/api/scim/account/ACCOUNT_ID/Users' 
+     --header 'Connection: keep-alive' 
+     --header 'Accept: application/scim+json' 
+     --header 'Authorization: Bearer JWT_TOKEN' 
      --header 'Cookie: _cfuvid=CO...88'
 ```
 

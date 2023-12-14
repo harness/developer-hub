@@ -24,10 +24,10 @@ In this topic, we will walk you through how to use the External Secrets Operator
 
 ```bash
 helm repo add external-secrets https://charts.external-secrets.io
-helm install external-secrets \
-external-secrets/external-secrets \
--n external-secrets \
---create-namespace \
+helm install external-secrets 
+external-secrets/external-secrets 
+-n external-secrets 
+--create-namespace 
 --set installCRDs=true
 ```
 

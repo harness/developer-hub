@@ -96,7 +96,7 @@ When Harness executes the Pipeline, the Harness Delegate resolves the expression
 
 Adding artifacts to Harness is covered in [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments).
 
-Once you've added the artifact to Harness, you add the Harness expression `\<+artifact.image\>` in your values.yaml using the `image` label: `image: \<+artifact.image\>`.
+Once you've added the artifact to Harness, you add the Harness expression `<+artifact.image>` in your values.yaml using the `image` label: `image: <+artifact.image>`.
 
 For example:
 
@@ -151,11 +151,11 @@ We'll cover this option below.
 
 ## Override values in an environment
 
-You can override the values YAML file for a stage's Environment by mapping the Environment name to the values file or folder. Next, you use the `\<+env.name\>` Harness expression in the values YAML path.
+You can override the values YAML file for a stage's Environment by mapping the Environment name to the values file or folder. Next, you use the `<+env.name>` Harness expression in the values YAML path.
 
 Let's look at an example.
 
-Here is a repo with three values files, dev.yaml, qa.yaml. prod.yaml. In the **File Path** for the values file, you use the `\<+env.name\>` expression. 
+Here is a repo with three values files, dev.yaml, qa.yaml. prod.yaml. In the **File Path** for the values file, you use the `<+env.name>` expression. 
 
 Next, in the **Environment** setting, you add three Environments, one for each YAML file name.
 

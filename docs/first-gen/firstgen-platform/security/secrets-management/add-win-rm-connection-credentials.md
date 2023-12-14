@@ -19,7 +19,7 @@ You can set up a WinRM connection and then use it as a **Deployment Type** in an
 
 Secrets cannot contain special characters without escaping. For example, if the secret contains a `$` like `ab$c` it will fail.
 
-Escape any special characters in your secrets: `ab\$c`.
+Escape any special characters in your secrets: `ab$c`.
 
 ### Step 1: Set Up the WinRM Connection
 
@@ -43,7 +43,7 @@ The Active Directory domain name where the user account in the credentials is re
 
 The user account credentials for this connection. The user must belong to the same Active Directory domain as the Windows instances that this connection uses. These are the same user account credentials you would use to log into the VM using a remote connection such as Microsoft Remote Desktop.
 
-In cases when **Domain** is blank (local user), you can put **./** before the user name. The **./** prefix is equivalent to `local_host_or_ip\user`.
+In cases when **Domain** is blank (local user), you can put **./** before the user name. The **./** prefix is equivalent to `local_host_or_ipuser`.
 
 ### Step 6: Select Encrypted Password
 

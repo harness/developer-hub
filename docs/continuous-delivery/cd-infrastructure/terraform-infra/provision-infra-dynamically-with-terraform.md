@@ -97,7 +97,7 @@ Harness will create an [Entity Id](/docs/platform/References/entity-identifier-r
 
 For example, if the Id of the stage is **terraform** and the Id of the step is **plan**, and you want to echo its timeout setting, you would use:
 
-`\<+pipeline.stages.Terraform.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.timeout\>`
+`<+pipeline.stages.Terraform.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.timeout>`
 
 ### Timeout
 

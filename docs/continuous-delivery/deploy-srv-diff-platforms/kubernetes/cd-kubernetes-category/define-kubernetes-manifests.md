@@ -41,7 +41,7 @@ Alternatively, you can also add the image to Harness as an Artifact in the **Ser
 
 ![](./static/define-kubernetes-manifests-27.png)
 
-Your values YAML file refers to the Artifact using the Harness variable expression `\<+artifact.image\>`:
+Your values YAML file refers to the Artifact using the Harness variable expression `<+artifact.image>`:
 
 
 ```yaml
@@ -172,7 +172,7 @@ If you are adding the image location to Harness as an Artifact in the Service De
    
    For example, if the Pipeline is named **MyPipeline** and **Manifest Identifier** were **myapp**, you could reference the **Branch** setting using this expression:
    
-   `\<+pipeline.stages.MyPipeline.spec.serviceConfig.serviceDefinition.spec.manifests.myapp.spec.store.spec.branch\>`
+   `<+pipeline.stages.MyPipeline.spec.serviceConfig.serviceDefinition.spec.manifests.myapp.spec.store.spec.branch>`
 
 6. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**, and then enter the branch or commit ID for the repo.
 7. For **Specific Commit ID**, you can also use a [Git commit tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
@@ -202,7 +202,7 @@ You add a values file in the same way you added your manifests. You simply selec
 
 In **Manifest Details**, you enter the path to each values.yaml file.
 
-Your values YAML files can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) to reference artifacts in the **Service Definition** (`\<+artifact.image\>`), Stage and Service variables, and and other Harness variables.
+Your values YAML files can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) to reference artifacts in the **Service Definition** (`<+artifact.image>`), Stage and Service variables, and and other Harness variables.
 
 Your manifests reference your values YAML file using [Go templating](https://godoc.org/text/template), as described above.
 

@@ -211,7 +211,7 @@ The recommended **Duration** is **10 min** for logging providers and **15 m
 
 In **Artifact Tag**, use a [Harness expression](/docs/platform/variables-and-expressions/harness-variables/)
 
-The expression `\<+serviceConfig.artifacts.primary.tag\>` refers to the primary artifact.
+The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
 
 ## Option: Advanced Settings
 

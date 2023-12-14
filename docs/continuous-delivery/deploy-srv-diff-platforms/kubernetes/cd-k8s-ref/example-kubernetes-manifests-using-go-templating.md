@@ -13,7 +13,7 @@ This topic describes how to make your Kubernetes manifests reusable and dynamic 
 
 ## Basic values YAML and manifests for public image
 
-This is a simple example using the Artifact reference `\<+artifact.image\>`. It can be used whenever the public image is not hardcoded in manifests.
+This is a simple example using the Artifact reference `<+artifact.image>`. It can be used whenever the public image is not hardcoded in manifests.
 
 See [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments).
 
@@ -23,9 +23,9 @@ We use Go templates with a values.yaml file and manifests for deployment, namesp
 
 		<summary>values.yaml</summary>
 
-This file uses the `image: \<+artifact.image\>` to identify the primary artifact added in the Harness Service Definition **Artifacts** section.
+This file uses the `image: <+artifact.image>` to identify the primary artifact added in the Harness Service Definition **Artifacts** section.
 
-It also uses `name: \<+stage.name\>` to reference a Stage variable `name` and `namespace: \<+infra.namespace\>` to reference the namespace entered in the Stage's **Infrastructure Definition**. Service type and ports are hardcoded.
+It also uses `name: <+stage.name>` to reference a Stage variable `name` and `namespace: <+infra.namespace>` to reference the namespace entered in the Stage's **Infrastructure Definition**. Service type and ports are hardcoded.
 
 The name, image, and namespace values are referenced in the manifests described later.
 
@@ -182,13 +182,13 @@ spec:
 
 ## Private artifact example
 
-When the image is in a private repo, you use the expression `\<+artifact.imagePullSecret\>` in the Secret and Deployment objects in your manifest.
+When the image is in a private repo, you use the expression `<+artifact.imagePullSecret>` in the Secret and Deployment objects in your manifest.
 
 This key will import the credentials from the Docker credentials file in the artifact.
 
-It's much simpler to simple use the `\<+artifact.imagePullSecret\>` expression in the values.yaml file and then reference it in other manifests.
+It's much simpler to simple use the `<+artifact.imagePullSecret>` expression in the values.yaml file and then reference it in other manifests.
 
-Using the values.yaml file above, we simply remove the comment in front of `dockercfg: \<+artifact.imagePullSecret\>`:
+Using the values.yaml file above, we simply remove the comment in front of `dockercfg: <+artifact.imagePullSecret>`:
 
 
 ```yaml

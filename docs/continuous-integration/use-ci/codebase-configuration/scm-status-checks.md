@@ -56,14 +56,14 @@ These steps explain how to add a status check that uses the GitHub API. For info
 7. In **Command**, enter a script that calls the GitHub API, for example:
 
    ```shell
-   curl -i -X POST \
-     -H "Authorization: Bearer <+secrets.getValue('account.YOUR_GITHUB_TOKEN_SECRET_ID')>" \
-     -H "Accept: application/vnd.github.v3+json" \
-     https://api.github.com/repos/YOUR_GITHUB_ORGANIZATION/<+pipeline.properties.ci.codebase.repoName>/statuses/<+codebase.commitSha> \
+   curl -i -X POST 
+     -H "Authorization: Bearer <+secrets.getValue('account.YOUR_GITHUB_TOKEN_SECRET_ID')>" 
+     -H "Accept: application/vnd.github.v3+json" 
+     https://api.github.com/repos/YOUR_GITHUB_ORGANIZATION/<+pipeline.properties.ci.codebase.repoName>/statuses/<+codebase.commitSha> 
      -d '{"state":"pending","target_url":"<+pipeline.execution.url>","description":"Test is running","context":"harness-ci/tests"}'
    ```
 
-   The above example calls the GitHub API and uses the GitHub token secret for authentication. It uses [expressions](/docs/platform/variables-and-expressions/harness-variables.md) to pull information from the pipeline, such as the target repository name (`\<+pipeline.properties.ci.codebase.repoName`\>) and the pipeline build link (`\<+pipeline.execution.url\>`).
+   The above example calls the GitHub API and uses the GitHub token secret for authentication. It uses [expressions](/docs/platform/variables-and-expressions/harness-variables.md) to pull information from the pipeline, such as the target repository name (`<+pipeline.properties.ci.codebase.repoName`\>) and the pipeline build link (`<+pipeline.execution.url>`).
 
    If you use the above script, replace `YOUR_GITHUB_ORGANIZATION` with your GitHub organization name, and replace `YOUR_GITHUB_TOKEN_SECRET_ID` with the ID of the Harness text secret that contains your GitHub personal access token.
 
@@ -88,11 +88,11 @@ else
   description="$name scan failed for <+pipeline.properties.ci.codebase.repoName>"
 fi
 
-curl -i -u YOUR_GITHUB_ORGANIZATION:<+secrets.getValue("account.YOUR_GITHUB_TOKEN_SECRET_ID")> \
-  -X POST \
-  -H "Accept: application/vnd.github.v3+json" \
-  https://api.github.com/repos/YOUR_GITHUB_ORGANIZATION/<+pipeline.properties.ci.codebase.repoName>/statuses/<+codebase.commitSha> \
-  -d "{\"state\":\"$state\",\"target_url\":\"<+pipeline.execution.url>\",\"description\":\"$description\",\"context\":\"$name\"}"
+curl -i -u YOUR_GITHUB_ORGANIZATION:<+secrets.getValue("account.YOUR_GITHUB_TOKEN_SECRET_ID")> 
+  -X POST 
+  -H "Accept: application/vnd.github.v3+json" 
+  https://api.github.com/repos/YOUR_GITHUB_ORGANIZATION/<+pipeline.properties.ci.codebase.repoName>/statuses/<+codebase.commitSha> 
+  -d "{"state":"$state","target_url":"<+pipeline.execution.url>","description":"$description","context":"$name"}"
 ```
 
 ### Create reusable status check steps
@@ -135,11 +135,11 @@ template:
           description="$name scan failed for <+pipeline.properties.ci.codebase.repoName>"
         fi
 
-        curl -i -u YOUR_GITHUB_ORGANIZATION:<+secrets.getValue("account.YOUR_GITHUB_TOKEN_SECRET_ID")> \
-          -X POST \
-          -H "Accept: application/vnd.github.v3+json" \
-          https://api.github.com/repos/YOUR_GITHUB_ORGANIZATION/<+pipeline.properties.ci.codebase.repoName>/statuses/<+codebase.commitSha> \
-          -d "{\"state\":\"$state\",\"target_url\":\"<+pipeline.execution.url>\",\"description\":\"$description\",\"context\":\"$name\"}"
+        curl -i -u YOUR_GITHUB_ORGANIZATION:<+secrets.getValue("account.YOUR_GITHUB_TOKEN_SECRET_ID")> 
+          -X POST 
+          -H "Accept: application/vnd.github.v3+json" 
+          https://api.github.com/repos/YOUR_GITHUB_ORGANIZATION/<+pipeline.properties.ci.codebase.repoName>/statuses/<+codebase.commitSha> 
+          -d "{"state":"$state","target_url":"<+pipeline.execution.url>","description":"$description","context":"$name"}"
 
       envVariables:
         status: <+input>

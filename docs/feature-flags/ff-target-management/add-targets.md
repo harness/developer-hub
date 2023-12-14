@@ -41,7 +41,7 @@ A target is identified by a name and an identifier. The name and identifier you 
 
 **Name**
 
-Regex: `[\\p{L}\\d .@_-]`
+Regex: `[p{L}d .@_-]`
 
 Must consist of only alphabetical characters, numbers, and the following symbols: 
 

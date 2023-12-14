@@ -18,11 +18,11 @@ It's important to note that while the Update Template API allows updating the te
 Below is an example API request to update a template version : 
 
 ```
-curl -i -X PUT \
-  'https://app.harness.io/template/api/templates/update/shell2/1.0?accountIdentifier=&orgIdentifier=string&projectIdentifier=string&branch=string&repoIdentifier=string&rootFolder=string&filePath=string&commitMsg=string&lastObjectId=string&resolvedConflictCommitId=string&baseBranch=string&connectorRef=string&setDefaultTemplate=false&comments=string' \
-  -H 'Content-Type: application/yaml' \
-  -H 'If-Match: string' \
-  -H 'x-api-key: yourpattoken' \
+curl -i -X PUT 
+  'https://app.harness.io/template/api/templates/update/shell2/1.0?accountIdentifier=&orgIdentifier=string&projectIdentifier=string&branch=string&repoIdentifier=string&rootFolder=string&filePath=string&commitMsg=string&lastObjectId=string&resolvedConflictCommitId=string&baseBranch=string&connectorRef=string&setDefaultTemplate=false&comments=string' 
+  -H 'Content-Type: application/yaml' 
+  -H 'If-Match: string' 
+  -H 'x-api-key: yourpattoken' 
   -d 'template:
     name: shell2
     identifier: shell2
@@ -49,10 +49,10 @@ curl -i -X PUT \
 Now to create new API version as you cannot update versionLabel :
 
 ```
-curl -i -X POST \
-  'https://app.harness.io/template/api/templates?accountIdentifier=&orgIdentifier=string&projectIdentifier=string&branch=string&repoIdentifier=string&rootFolder=string&filePath=string&commitMsg=string&isNewBranch=false&baseBranch=string&connectorRef=string&storeType=INLINE&repoName=string&setDefaultTemplate=false&comments=string&isNewTemplate=false' \
-  -H 'Content-Type: application/yaml' \
-  -H 'x-api-key: yourpattoken' \
+curl -i -X POST 
+  'https://app.harness.io/template/api/templates?accountIdentifier=&orgIdentifier=string&projectIdentifier=string&branch=string&repoIdentifier=string&rootFolder=string&filePath=string&commitMsg=string&isNewBranch=false&baseBranch=string&connectorRef=string&storeType=INLINE&repoName=string&setDefaultTemplate=false&comments=string&isNewTemplate=false' 
+  -H 'Content-Type: application/yaml' 
+  -H 'x-api-key: yourpattoken' 
   -d 'template:
     name: shell2
     identifier: shell2

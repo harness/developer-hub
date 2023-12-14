@@ -229,7 +229,7 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
 1. Use the [latest-supported-version](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/publishedDelegateVersion) API to determine the delegate number for your account:
 
-    `curl --location 'https://app.harness.io/ng/api/delegate-setup/latest-supported-version?accountIdentifier=<YOUR_ACCOUNT_IDENTIFIER>' \
+    `curl --location 'https://app.harness.io/ng/api/delegate-setup/latest-supported-version?accountIdentifier=<YOUR_ACCOUNT_IDENTIFIER>' 
     --header 'x-api-key: <YOUR_API_KEY>'`
 
     The following example result is returned. It returns the tag of the delegate that is released to your account. 
@@ -249,7 +249,7 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
 2. Once the image is pushed, you can call the [override-delegate-tag](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag) API to enable the Harness back-end to supply the upgrader with the custom delegate tag:
 
-    `curl --location --request PUT 'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<account_identifier>&delegateTag=artifactory-abc%2Fharness%2Fdelegate%3A23.04.78910' \
+    `curl --location --request PUT 'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<account_identifier>&delegateTag=artifactory-abc%2Fharness%2Fdelegate%3A23.04.78910' 
     --header 'x-api-key: <your_api_key>'`
 
     It returns the following results:

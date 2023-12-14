@@ -110,13 +110,13 @@ The Harness delegate is a service that runs in your local network or VPC to esta
         -  In the command provided, `ACCOUNT_ID` and `MANAGER_ENDPOINT` are auto-populated values that you can obtain from the delegate installation wizard.
         -  Replace **DELEGATE_TOKEN** in the command with the token from the wizard.  
         ```bash
-        docker run -dit --cpus=1 --memory=2g \
-         -e DELEGATE_NAME=docker-delegate \
-         -e NEXT_GEN="true" \
-         -e DELEGATE_TYPE="DOCKER" \
-         -e ACCOUNT_ID=ACCOUNT_ID \
-         -e DELEGATE_TOKEN=DELEGATE_TOKEN \
-         -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
+        docker run -dit --cpus=1 --memory=2g 
+         -e DELEGATE_NAME=docker-delegate 
+         -e NEXT_GEN="true" 
+         -e DELEGATE_TYPE="DOCKER" 
+         -e ACCOUNT_ID=ACCOUNT_ID 
+         -e DELEGATE_TOKEN=DELEGATE_TOKEN 
+         -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ 
          -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.05.79310
         ```  
         - Select **Verify** to verify that the delegate is installed successfully and can connect to the Harness Manager.
@@ -587,13 +587,13 @@ The Harness delegate is a service that runs in your local network or VPC to esta
         -  Replace **DELEGATE_TOKEN** in the command with the token from the wizard.
          
         ```bash
-        docker run -dit --cpus=1 --memory=2g \
-         -e DELEGATE_NAME=docker-delegate \
-         -e NEXT_GEN="true" \
-         -e DELEGATE_TYPE="DOCKER" \
-         -e ACCOUNT_ID=ACCOUNT_ID \
-         -e DELEGATE_TOKEN=DELEGATE_TOKEN \
-         -e LOG_STREAMING_SERVICE_URL=MANAGER_ENDPOINT/log-service/ \
+        docker run -dit --cpus=1 --memory=2g 
+         -e DELEGATE_NAME=docker-delegate 
+         -e NEXT_GEN="true" 
+         -e DELEGATE_TYPE="DOCKER" 
+         -e ACCOUNT_ID=ACCOUNT_ID 
+         -e DELEGATE_TOKEN=DELEGATE_TOKEN 
+         -e LOG_STREAMING_SERVICE_URL=MANAGER_ENDPOINT/log-service/ 
          -e MANAGER_HOST_AND_PORT=MANAGER_ENDPOINT harness/delegate:23.05.79310
         ```
         - Select **Verify** to verify that the delegate is installed successfully and can connect to the Harness Manager.

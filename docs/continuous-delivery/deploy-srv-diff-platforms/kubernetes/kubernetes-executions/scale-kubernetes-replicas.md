@@ -61,7 +61,7 @@ For example, here is a deployed Canary step where you can copy the workload expr
 
 The expression will look something like this:
 
-`\<+pipeline.stages.Canary.spec.execution.steps.canaryDepoyment.steps.canaryDeployment.output.canaryWorkload\>`
+`<+pipeline.stages.Canary.spec.execution.steps.canaryDepoyment.steps.canaryDeployment.output.canaryWorkload>`
 
 Enter that expression in **Workload** and Harness will scale that workload.
 

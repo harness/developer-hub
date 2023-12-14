@@ -87,7 +87,7 @@ For a HashiCorp Vault connector at the Project scope, use the following expressi
 
 :::info note
 To dynamically reference secrets in HashiCorp Vault, make sure you use the expression in the following format:  
-`\<+secrets.getValue()\>`
+`<+secrets.getValue()>`
 :::
 
 ### Option: AWS Secrets Manager secrets
@@ -132,7 +132,7 @@ For an AWS secret manager connector at the Project scope, use the following expr
 ```
 :::info note
 To dynamically reference secrets in the AWS secret manager, make sure you use the expression in the following format:
-`\<+secrets.getValue()`\>
+`<+secrets.getValue()`\>
 :::
 
 
@@ -171,7 +171,7 @@ For an Azure Key Vault secret manager at the Project scope, use the following ex
 
 :::info note
 To dynamically reference secrets in the Azure Key Vault, make sure you use the expression in the following format:
-`\<+secrets.getValue()\>`
+`<+secrets.getValue()>`
 
 :::
 
@@ -216,7 +216,7 @@ To reference a specific version of a secret, use the following expression:
 
 :::info note
 To dynamically reference secrets in GCP secret manager, make sure you use the expression in the following format:
-`\<+secrets.getValue()\>`
+`<+secrets.getValue()>`
 :::
 
 ### Option: Reference JSON secrets

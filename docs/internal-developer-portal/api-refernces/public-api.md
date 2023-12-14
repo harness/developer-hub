@@ -56,8 +56,8 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
 ### cURL Example
 
 ```cURL
-curl --location 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/locations' \
---header 'x-api-key: {X_API_KEY}' \
+curl --location 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/locations' 
+--header 'x-api-key: {X_API_KEY}' 
 --header 'Harness-Account: {ACCOUNT_IDENTIFIER}'
  --data-raw '{"type":"url","target":"https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml"}'
 ```
@@ -126,8 +126,8 @@ Example:
 ### cURL Example
 
 ```cURL
-curl 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/entities?filter=kind=template' \
---header 'x-api-key: {X_API_KEY}' \
+curl 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/entities?filter=kind=template' 
+--header 'x-api-key: {X_API_KEY}' 
 --header 'Harness-Account: {ACCOUNT_IDENTIFIER}'
 ```
 

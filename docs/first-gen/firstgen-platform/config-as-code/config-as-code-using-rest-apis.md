@@ -47,7 +47,7 @@ You also include headers for Content-Type and authentication:
 
 
 ```
---header 'accept: application/json, text/plain, */*' \  
+--header 'accept: application/json, text/plain, */*'   
 --header 'x-api-key: [API_key]'
 ```
 That’s it. You can simply run CRUD operations via REST API to manage your Harness Config-as-Code YAML.
@@ -76,18 +76,18 @@ Click **Download** to view the contents of the ZIP file.
 
 
 ```
-curl --location --request POST 'https://app.harness.io/gateway/api/setup-as-code/yaml/upsert-entities?accountId=12345678910' \  
---header 'accept: application/json, text/plain, */*' \  
---header 'authorization: Bearer {bearer_token}' \  
+curl --location --request POST 'https://app.harness.io/gateway/api/setup-as-code/yaml/upsert-entities?accountId=12345678910'   
+--header 'accept: application/json, text/plain, */*'   
+--header 'authorization: Bearer {bearer_token}'   
 --form 'file=@/Users/johndoe/Documents/SampleApp.zip'
 ```
 **API key example:**
 
 
 ```
-curl --location --request POST 'https://app.harness.io/gateway/api/setup-as-code/yaml/upsert-entities?accountId=12345678910' \  
---header 'accept: application/json, text/plain, */*' \  
---header 'x-api-key: {api_key}' \  
+curl --location --request POST 'https://app.harness.io/gateway/api/setup-as-code/yaml/upsert-entities?accountId=12345678910'   
+--header 'accept: application/json, text/plain, */*'   
+--header 'x-api-key: {api_key}'   
 --form 'file=@"/Users/johndoe/Downloads/Setup.zip"'
 ```
 ### Delete YAML Entities
@@ -115,16 +115,16 @@ The `filePaths` should be a full path to the YAML file(s) you want to delete. Fo
 
 
 ```
-curl --location --request DELETE 'https://app.harness.io/gateway/api/setup-as-code/yaml/delete-entities?accountId=12345678910&filePaths=Setup/Applications/test%20app/Services/test3/Manifests/Files/templates/deployment.yaml' \  
---header 'accept: application/json, text/plain, */*' \  
+curl --location --request DELETE 'https://app.harness.io/gateway/api/setup-as-code/yaml/delete-entities?accountId=12345678910&filePaths=Setup/Applications/test%20app/Services/test3/Manifests/Files/templates/deployment.yaml'   
+--header 'accept: application/json, text/plain, */*'   
 --header 'authorization: Bearer {bearer_token}'
 ```
 **API key example:**
 
 
 ```
-curl --location --request DELETE 'https://app.harness.io/gateway/api/setup-as-code/yaml/delete-entities?accountId=12345678910&filePaths=Setup/Applications/test%20app/Services/test3/Manifests/Files/templates/deployment.yaml' \  
---header 'accept: application/json, text/plain, */*' \  
+curl --location --request DELETE 'https://app.harness.io/gateway/api/setup-as-code/yaml/delete-entities?accountId=12345678910&filePaths=Setup/Applications/test%20app/Services/test3/Manifests/Files/templates/deployment.yaml'   
+--header 'accept: application/json, text/plain, */*'   
 --header 'x-api-key: {api_key}'
 ```
 ### Create and Update a Single YAML Entity
@@ -145,7 +145,7 @@ The `yamlContent` must escape the quotes:
 
 
 ```
-'yamlContent={key_name}: '\''1.0'\''
+'yamlContent={key_name}: '''1.0'''
 ```
 **URL**: `/api/setup-as-code/yaml/upsert-entity?accountId={accountId}&yamlFilePath={yamlFilePath}`
 
@@ -161,24 +161,24 @@ The `yamlContent` must escape the quotes:
 
 
 ```
-curl -X POST \  
-  'https://app.harness.io/gateway/api/setup-as-code/yaml/upsert-entity?accountId=12345678910&yamlFilePath=Setup/Applications/test%20app/Index.yaml' \  
-  -H 'accept: application/json, text/plain, */*' \  
-  -H 'authorization: Bearer {bearer_token}' \  
-  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \  
-  -F 'yamlContent=harnessApiVersion: '\''1.0'\''  
+curl -X POST   
+  'https://app.harness.io/gateway/api/setup-as-code/yaml/upsert-entity?accountId=12345678910&yamlFilePath=Setup/Applications/test%20app/Index.yaml'   
+  -H 'accept: application/json, text/plain, */*'   
+  -H 'authorization: Bearer {bearer_token}'   
+  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'   
+  -F 'yamlContent=harnessApiVersion: '''1.0'''  
 type: APPLICATION'
 ```
 **API key example:**
 
 
 ```
-curl -X POST \  
-  'https://app.harness.io/gateway/api/setup-as-code/yaml/upsert-entity?accountId=12345678910&yamlFilePath=Setup/Applications/test%20app/Index.yaml' \  
-  -H 'accept: application/json, text/plain, */*' \  
-  --header 'x-api-key: {api_key}' \  
-  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \  
-  -F 'yamlContent=harnessApiVersion: '\''1.0'\''  
+curl -X POST   
+  'https://app.harness.io/gateway/api/setup-as-code/yaml/upsert-entity?accountId=12345678910&yamlFilePath=Setup/Applications/test%20app/Index.yaml'   
+  -H 'accept: application/json, text/plain, */*'   
+  --header 'x-api-key: {api_key}'   
+  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'   
+  -F 'yamlContent=harnessApiVersion: '''1.0'''  
 type: APPLICATION'
 ```
 ### Fetch Config-as-Code Directory Structure
@@ -198,18 +198,18 @@ You can fetch the directory structure for a Harness Application using the `direc
 
 
 ```
-curl --location --request GET 'https://app.harness.io/gateway/api/setup-as-code/yaml/directory?accountId=12345678910&appId=fCLnFhwsTryU-HEdKDVZ1g' \  
---header 'accept: application/json' \  
---header 'content-type: application/json; charset=utf-8' \  
+curl --location --request GET 'https://app.harness.io/gateway/api/setup-as-code/yaml/directory?accountId=12345678910&appId=fCLnFhwsTryU-HEdKDVZ1g'   
+--header 'accept: application/json'   
+--header 'content-type: application/json; charset=utf-8'   
 --header 'x-api-key: {api_key}'
 ```
 **API key example:**
 
 
 ```
-curl --location --request GET 'https://app.harness.io/gateway/api/setup-as-code/yaml/directory?accountId=12345678910&appId=fCLnFhwsTryU-HEdKDVZ1g' \  
---header 'accept: application/json' \  
---header 'content-type: application/json; charset=utf-8' \  
+curl --location --request GET 'https://app.harness.io/gateway/api/setup-as-code/yaml/directory?accountId=12345678910&appId=fCLnFhwsTryU-HEdKDVZ1g'   
+--header 'accept: application/json'   
+--header 'content-type: application/json; charset=utf-8'   
 --header 'x-api-key: {api_key}'
 ```
 ### Fetch YAML Content for a Single Entity
@@ -236,7 +236,7 @@ Every node in the tree directory structure returned using the `directory` parame
 
 
 ```
-curl --location --request GET 'https://qa.harness.io/gateway/api/setup-as-code/yaml/services/pT65F_wHTzSALR2qYknX9Q?accountId=12345678910&appId=fCLnFhwsTryU-HEdKDVZ1g' \  
+curl --location --request GET 'https://qa.harness.io/gateway/api/setup-as-code/yaml/services/pT65F_wHTzSALR2qYknX9Q?accountId=12345678910&appId=fCLnFhwsTryU-HEdKDVZ1g'   
 --header 'authorization: Bearer {bearer_token}'
 ```
 Here `node` is a node in the YAML tree.

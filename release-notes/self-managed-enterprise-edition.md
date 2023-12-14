@@ -50,15 +50,15 @@ This release includes the following Harness module and component versions.
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
-gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.11.0/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.0/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.0/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.0/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.0/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.0/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.0/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.0/sto_images.tgz" \
+gsutil -m cp 
+  "gs://smp-airgap-bundles/harness-0.11.0/ccm_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.0/cdng_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.0/ce_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.0/cet_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.0/ci_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.0/ff_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.0/platform_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.0/sto_images.tgz" 
   .
 ```
 
@@ -346,13 +346,13 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
   This item requires Harness Delegate version 23.11.81405. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- Harness did not export the `samTemplateFile` property for AWS SAM deployments. Consequently, you could not use expressions such as `\<+manifests.MANIFEST_ID.samTemplateFile\>` and `\<+manifests.MANIFEST_ID.spec\>` to dynamically insert the SAM template file name into the SAM Deploy step, even though the expression `\<+manifests.MANIFEST_ID\>` resolved for you. (CDS-80624, ZD-51597)
+- Harness did not export the `samTemplateFile` property for AWS SAM deployments. Consequently, you could not use expressions such as `<+manifests.MANIFEST_ID.samTemplateFile>` and `<+manifests.MANIFEST_ID.spec>` to dynamically insert the SAM template file name into the SAM Deploy step, even though the expression `<+manifests.MANIFEST_ID>` resolved for you. (CDS-80624, ZD-51597)
 
   This issue has been fixed. Harness has released two new images, `harnessdev/sam-build:1.82.0-1.1.0` and `harnessdev/sam-deploy:1.82.0-1.1.0`, which support the use of the `PLUGIN_SAM_TEMPLATE_FILE_PATH` environment variable to get the values passed in the `samTemplateFile` of the SAM service. 
   
   The expression you need to reference the SAM template file name can now be copied from the output section of the service step. 
   
-  Alternatively, you can use the following expression: `\<+pipeline.stages.STAGE_ID.spec.manifests.MANIFEST_ID.samTemplateFile\>.`
+  Alternatively, you can use the following expression: `<+pipeline.stages.STAGE_ID.spec.manifests.MANIFEST_ID.samTemplateFile>.`
 
   For more information about building expressions, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables).
 
@@ -426,7 +426,7 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
   This issue has been fixed.
 
-- Expressions that reference secrets (for example, `\<+secrets.getValue("secret")\>`) in the input variable sections of custom artifact sources did not resolve. (CDS-81724, ZD-52184)
+- Expressions that reference secrets (for example, `<+secrets.getValue("secret")>`) in the input variable sections of custom artifact sources did not resolve. (CDS-81724, ZD-52184)
 
   This issue has been fixed.
 
@@ -577,15 +577,15 @@ This release includes the following Harness module and component versions.
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
-gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.11.2/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.2/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.2/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.2/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.2/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.2/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.2/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.2/sto_images.tgz" \
+gsutil -m cp 
+  "gs://smp-airgap-bundles/harness-0.11.2/ccm_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.2/cdng_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.2/ce_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.2/cet_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.2/ci_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.2/ff_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.2/platform_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.2/sto_images.tgz" 
   .
 ```
 
@@ -621,15 +621,15 @@ This release includes the following Harness module and component versions.
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
-gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.11.1/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.1/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.1/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.1/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.1/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.1/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.1/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.11.1/sto_images.tgz" \
+gsutil -m cp 
+  "gs://smp-airgap-bundles/harness-0.11.1/ccm_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.1/cdng_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.1/ce_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.1/cet_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.1/ci_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.1/ff_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.1/platform_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.11.1/sto_images.tgz" 
   .
 ```
 
@@ -669,15 +669,15 @@ This release includes the following Harness module and component versions.
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
-gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.10.0/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.10.0/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.10.0/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.10.0/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.10.0/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.10.0/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.10.0/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.10.0/sto_images.tgz" \
+gsutil -m cp 
+  "gs://smp-airgap-bundles/harness-0.10.0/ccm_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.10.0/cdng_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.10.0/ce_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.10.0/cet_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.10.0/ci_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.10.0/ff_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.10.0/platform_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.10.0/sto_images.tgz" 
   .
 ```
 
@@ -890,8 +890,8 @@ gsutil -m cp \
 - The **Expression** auto-suggest dropdown did not include expressions related to the status of a node. This dropdown now includes status variables for pipelines, stages, steps, and step groups. (CDS-70304, ZD-44953, ZD-45054)
 
   Examples of new variables in this dropdown include:
-  - `\<+pipeline.status\>`
-  - `\<+pipeline.stages.stage1.status\>`
+  - `<+pipeline.status>`
+  - `<+pipeline.stages.stage1.status>`
 
 - Fixed an issue where a pipeline execution reported an invalid `artifactPath` when trying to deploy Artifactory artifacts. This was due to an issue with the regex used to populate the pull-down artifact menu. With this fix, you can specify recursive wildcards in the directory path for Artifactory. For example, you can specify `MainPath/*/*` as the directory path for the pipeline and the Service step will download the selected artifact. (CDS-72245, ZD-46236)
 
@@ -1015,7 +1015,7 @@ gsutil -m cp \
 
 - Fixed an issue found in some custom deployments, where the Fetch Instance Script could not access template variables defined in the infrastructure. (CDS-76353, ZD-48671)
 
-- Fixed an issue where characters could get arranged incorrectly when updating an expression within a string value. For example, updating the expression in `test/var/\<+expression.name\>/login` might result in `test/var/\<+expression.name`**/\>**`login`. This fix ensures that expressions within strings are updated correctly.  (CDS-76354, ZD-48515)
+- Fixed an issue where characters could get arranged incorrectly when updating an expression within a string value. For example, updating the expression in `test/var/<+expression.name>/login` might result in `test/var/<+expression.name`**/\>**`login`. This fix ensures that expressions within strings are updated correctly.  (CDS-76354, ZD-48515)
 
 - Fixed an issue when trying to run pipelines with stages that were other pipelines in different projects. (CDS-76425, ZD-48708)
 
@@ -1062,7 +1062,7 @@ gsutil -m cp \
 
 - Variables names didn't support hyphens. Harness has added support for hyphens in variable names. (CDS-77293)
 
-   You can use the following expression to evaluate expressions of variables containing hyphens: `\<+pipeline.variables.get("variable-wth-hyphen")\>`.
+   You can use the following expression to evaluate expressions of variables containing hyphens: `<+pipeline.variables.get("variable-wth-hyphen")>`.
 
 - When using the OCI Helm connector with anonymous credentials, Harness would incorrectly derive the source port from the OCI repository and the connection validation would fail. With this fix, Harness does not add default port 443 if no port is provided in the URL itself. (CDS-77298)
 
@@ -1079,13 +1079,13 @@ gsutil -m cp \
 
     ![](./static/cds-77710-set-runtime-input-as-execution-time-input.png)
 
-- Fixed an issue that resulted in Null Pointer Exceptions when running a pipeline manually with a  `\<+trigger.connectorRef\>` expression. This expression gets its data from the trigger payload. With this fix, the pipeline correctly handles the case where the trigger payload is null.  (CDS-77736, ZD-49685, ZD-49720, ZD-49722)
+- Fixed an issue that resulted in Null Pointer Exceptions when running a pipeline manually with a  `<+trigger.connectorRef>` expression. This expression gets its data from the trigger payload. With this fix, the pipeline correctly handles the case where the trigger payload is null.  (CDS-77736, ZD-49685, ZD-49720, ZD-49722)
 
   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Fixed an issue where step templates used in stage templates were being resolved into steps automatically. With this fix, the **New Variable** button in Template Studio (similar to Pipeline Studio) is disabled for any referenced child template. However, **New Variable** is not disabled for creating, updating, or deleting pipeline variables in a pipeline template or stage variables in a stage template. (CDS-77739, ZD-49520, ZD-49737)
 
-- Fixed an issue resolving secrets via `\<+secrets.getValue("my_secret")\>` used in container-based step groups in a Deploy stage. (CDS-77793, ZD-49391, ZD-49763, ZD-49838, ZD-50014)
+- Fixed an issue resolving secrets via `<+secrets.getValue("my_secret")>` used in container-based step groups in a Deploy stage. (CDS-77793, ZD-49391, ZD-49763, ZD-49838, ZD-50014)
 
 - The following Node.js v20 images are now available on Docker Hub. (CDS-77801)
   - [harnessdev/serverless-preparerollback:3.30.1-1.0.1](https://hub.docker.com/layers/harnessdev/serverless-preparerollback/3.30.1-1.0.1/images/sha256-30994cb1fef9b206babecbe61b10144591db51cddec2e5386a0ab228d542b32f?context=explore)
@@ -1229,7 +1229,7 @@ gsutil -m cp \
 
 - [Git event webhook triggers](/docs/platform/Triggers/triggering-pipelines) based on GitHub Issue comments failed if the [GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) connected through the Harness Platform and the account had no delegates. Despite the connector not requiring a delegate, the trigger still failed. This has been fixed. (CI-9150)
 
-- Fixed two issues related to [runtime input](/docs/platform/variables-and-expressions/runtime-inputs#runtime-inputs) (`\<+input\>`) with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). (CI-9177)
+- Fixed two issues related to [runtime input](/docs/platform/variables-and-expressions/runtime-inputs#runtime-inputs) (`<+input>`) with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). (CI-9177)
    - Previously, if you used runtime input for [custom cache paths](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-paths), Harness wouldn't prompt for your input and, instead, ran the pipeline with an empty path. Now, Harness correctly prompts you for this input when you run the pipeline.
    - Previously, if you used runtime input for [custom cache keys](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-keys), you couldn't save the pipeline due to an improper schema validation error. This is fixed.
 
@@ -1245,7 +1245,7 @@ gsutil -m cp \
 
 - Fixed an issue where step-level [matrix looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) failed due to a mismatch in step identifiers. (CI-9325, ZD-49594, ZD-50209)
 
-- If a step used [runtime input for conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#conditional-execution-as-a-runtime-input), but no runtime input was provided at pipeline runtime, then the pipeline passed the literal string `\<+input\>` instead of an empty object. This is fixed. <!-- not delegate dependent --> (CI-9428, ZD-50027)
+- If a step used [runtime input for conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#conditional-execution-as-a-runtime-input), but no runtime input was provided at pipeline runtime, then the pipeline passed the literal string `<+input>` instead of an empty object. This is fixed. <!-- not delegate dependent --> (CI-9428, ZD-50027)
 
 - In Kubernetes cluster build infrastructures, non-existent or unresolvable secrets are now handled in the same way as they are in VM and Harness Cloud build infrastructures. (CI-9677, ZD-50868, ZD-50901)
 
@@ -1476,15 +1476,15 @@ This release includes the following Harness module and component versions.
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
-gsutil -m cp \
-  "gs://smp-airgap-bundles/Harness-0.10.1/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/Harness-0.10.1/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/Harness-0.10.1/ce_images.tgz" \
-  "gs://smp-airgap-bundles/Harness-0.10.1/cet_images.tgz" \
-  "gs://smp-airgap-bundles/Harness-0.10.1/ci_images.tgz" \
-  "gs://smp-airgap-bundles/Harness-0.10.1/ff_images.tgz" \
-  "gs://smp-airgap-bundles/Harness-0.10.1/platform_images.tgz" \
-  "gs://smp-airgap-bundles/Harness-0.10.1/sto_images.tgz" \
+gsutil -m cp 
+  "gs://smp-airgap-bundles/Harness-0.10.1/ccm_images.tgz" 
+  "gs://smp-airgap-bundles/Harness-0.10.1/cdng_images.tgz" 
+  "gs://smp-airgap-bundles/Harness-0.10.1/ce_images.tgz" 
+  "gs://smp-airgap-bundles/Harness-0.10.1/cet_images.tgz" 
+  "gs://smp-airgap-bundles/Harness-0.10.1/ci_images.tgz" 
+  "gs://smp-airgap-bundles/Harness-0.10.1/ff_images.tgz" 
+  "gs://smp-airgap-bundles/Harness-0.10.1/platform_images.tgz" 
+  "gs://smp-airgap-bundles/Harness-0.10.1/sto_images.tgz" 
   .
 ```
 
@@ -1518,15 +1518,15 @@ This release includes the following Harness module and component versions.
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
-gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.9.0/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.0/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.0/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.0/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.0/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.0/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.0/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.0/sto_images.tgz" \
+gsutil -m cp 
+  "gs://smp-airgap-bundles/harness-0.9.0/ccm_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.0/cdng_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.0/ce_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.0/cet_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.0/ci_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.0/ff_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.0/platform_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.0/sto_images.tgz" 
   .
 ```
 
@@ -1648,15 +1648,15 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
   The following expressions are supported:
   
-  - `\<+strategy.currentstatus\>`
-  - `\<+strategy.node.strategy_node_identifier.currentstatus\>`
-  - `\<+strategy.node.get("strategy_node_identifier").currentstatus\>`
-  - `\<+strategy.identifierpostfix\>`
-  - `\<+step.identifierpostfix\>`
-  - `\<+stage.identifierpostfix\>`
-  - `\<+stepgroup.identifierpostfix\>`
-  - `\<+strategy.node.strategy_node_identifier.identifierpostfix\>`
-  - `\<+strategy.node.strategy_node_identifier.*\>`
+  - `<+strategy.currentstatus>`
+  - `<+strategy.node.strategy_node_identifier.currentstatus>`
+  - `<+strategy.node.get("strategy_node_identifier").currentstatus>`
+  - `<+strategy.identifierpostfix>`
+  - `<+step.identifierpostfix>`
+  - `<+stage.identifierpostfix>`
+  - `<+stepgroup.identifierpostfix>`
+  - `<+strategy.node.strategy_node_identifier.identifierpostfix>`
+  - `<+strategy.node.strategy_node_identifier.*>`
 
   For information on using the expressions, go to [Strategy](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#strategy).
 
@@ -1672,7 +1672,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
 ##### Continuous Integration
 
-- Improved the consistency of [built-in codebase expression](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) values across build types. You can now expect similar values for these expressions regardless of build type. For example, `\<+codebase.commitRef\>` now provides a consistent reference for the build, such as `refs/heads/BRANCH_NAME` for a branch build or `refs/tags/TAG_NAME` for a tag build. (CI-7689)
+- Improved the consistency of [built-in codebase expression](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) values across build types. You can now expect similar values for these expressions regardless of build type. For example, `<+codebase.commitRef>` now provides a consistent reference for the build, such as `refs/heads/BRANCH_NAME` for a branch build or `refs/tags/TAG_NAME` for a tag build. (CI-7689)
 
 - To support CI pipelines, Harness added the ability to set the Harness Delegate environment variable `LOG_STREAMING _URL` by default. If the delegate is outside of the cluster, the fallback log service URL is `LOG_SERVICE_ENDPOINT` from CI. This update also includes a new `TI_SERVICE_URL` delegate environment variable that takes the `ti-service` URL input from the delegate. (CI-9262, ZD-48974)
 
@@ -1845,7 +1845,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
   
   The **Referenced by** setting was not working correctly for files in the Harness File Store when they are used in pipeline steps like the  Command step. This issue has now been fixed.
 
-- Fixed an issue that would cause `\<+artifact.imagePullSecret\>` to be resolved as null when setting up an AWS connector in IRSA mode. The delegate creates sync tasks for fetching ImagePull secrets for ECR. The delegate was creating the sync task incorrectly, as it only looked at account-level delegates, causing the capability check to fail. Now, the delegate creates the relevant tasks correctly.  (CDS-72334, ZD-46266)
+- Fixed an issue that would cause `<+artifact.imagePullSecret>` to be resolved as null when setting up an AWS connector in IRSA mode. The delegate creates sync tasks for fetching ImagePull secrets for ECR. The delegate was creating the sync task incorrectly, as it only looked at account-level delegates, causing the capability check to fail. Now, the delegate creates the relevant tasks correctly.  (CDS-72334, ZD-46266)
 
 - Fixed an issue where, in some cases, removing a file reference from a service did not clear the file reference. In addition, enabling **Force Delete** did not allow users to remove the file. This fix ensures the intended behavior: when a file, secret, or template is removed from a service configuration, any references between the service and the referenced object are also removed. (CDS-72350, ZD-46133)
 
@@ -1859,7 +1859,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
   This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- Fixed an issue where using selective stage execution in the advanced settings of a pipeline would cause the pipeline build to fail. This was due to incorrect index handling when processing `\<+pipeline\>` variables in shell scripts, which would result in index-array-out-of-bounds errors. (CDS-72840)
+- Fixed an issue where using selective stage execution in the advanced settings of a pipeline would cause the pipeline build to fail. This was due to incorrect index handling when processing `<+pipeline>` variables in shell scripts, which would result in index-array-out-of-bounds errors. (CDS-72840)
 
 - The `kubectl` command now includes retry logic to handle connectivity issues. (CDS-72869)
 
@@ -1893,7 +1893,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
   This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- The `\<+configFile.getAsBase64()\>` expression not resolving correctly when the content had new lines. (CDS-73424)
+- The `<+configFile.getAsBase64()>` expression not resolving correctly when the content had new lines. (CDS-73424)
   
   The issue occurred with newline characters while encoding config files. This is fixed and Harness now replaces newline characters with unicode.
 
@@ -1987,7 +1987,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
 - Fixed an issue where manifest extraction script was being rendered in service step itself before K8s steps. We're now rendering `serviceOverrideVariables` expressions later in the step itself so that the overridden value is used. (CDS-74335, ZD-47503)
 
-- Fixed an issue where Command steps could not resolve Service Overrides for variables of type Secret (for example, `export testsvc="\<+secrets.getValue(account.examplesecret)\>"`. (CDS-74338, ZD-47280)
+- Fixed an issue where Command steps could not resolve Service Overrides for variables of type Secret (for example, `export testsvc="<+secrets.getValue(account.examplesecret)>"`. (CDS-74338, ZD-47280)
 
 - Fixed an error-handling issue with Native Helm deployment failures. Previously, the pipeline printed only the last line of the error message in the console and ignored previous error lines, which resulted in a partial explanation. The pipeline now prints all lines in the error message, which provides a better understanding. (CDS-74348)
 
@@ -2201,15 +2201,15 @@ This release includes the following Harness module and component versions.
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
-gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.9.1/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.1/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.1/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.1/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.1/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.1/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.1/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.1/sto_images.tgz" \
+gsutil -m cp 
+  "gs://smp-airgap-bundles/harness-0.9.1/ccm_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.1/cdng_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.1/ce_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.1/cet_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.1/ci_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.1/ff_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.1/platform_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.1/sto_images.tgz" 
   .
 ```
 
@@ -2248,15 +2248,15 @@ This release includes the following Harness module and component versions.
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
-gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.9.2/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.2/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.2/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.2/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.2/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.2/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.2/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.2/sto_images.tgz" \
+gsutil -m cp 
+  "gs://smp-airgap-bundles/harness-0.9.2/ccm_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.2/cdng_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.2/ce_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.2/cet_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.2/ci_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.2/ff_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.2/platform_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.2/sto_images.tgz" 
   .
 ```
 
@@ -2294,15 +2294,15 @@ This release includes the following Harness module and component versions.
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
-gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.9.3/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.3/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.3/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.3/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.3/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.3/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.3/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.9.3/sto_images.tgz" \
+gsutil -m cp 
+  "gs://smp-airgap-bundles/harness-0.9.3/ccm_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.3/cdng_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.3/ce_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.3/cet_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.3/ci_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.3/ff_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.3/platform_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.9.3/sto_images.tgz" 
   .
 ```
 
@@ -2352,15 +2352,15 @@ This release includes the following Harness module and component versions.
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
-gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.8.0/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.0/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.0/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.0/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.0/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.0/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.0/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.0/sto_images.tgz" \
+gsutil -m cp 
+  "gs://smp-airgap-bundles/harness-0.8.0/ccm_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.0/cdng_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.0/ce_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.0/cet_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.0/ci_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.0/ff_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.0/platform_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.0/sto_images.tgz" 
   .
 ```
 
@@ -2536,11 +2536,11 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 - Fixed an issue where the SSH and WinRM rollback were not skipped even if there were no successful previous deployments. (CDS-68583)
 
-- Fixed an issue where the expression, `\<+lastPublished.tag\>.regex()` was not resolved properly when used as runtime input for artifacts. (CDS-68810)
+- Fixed an issue where the expression, `<+lastPublished.tag>.regex()` was not resolved properly when used as runtime input for artifacts. (CDS-68810)
 
-- The expression, `\<+artifacts.primary.identifier\>` was not working properly for Google Cloud Storage deployments. (CDS-68993, ZD-44217)
+- The expression, `<+artifacts.primary.identifier>` was not working properly for Google Cloud Storage deployments. (CDS-68993, ZD-44217)
   
-  This issue is fixed. You can now see the identifier of the source selected as primary when using the expression `\<+artifacts.primary.identifier\>`. This functionality is behind the feature flag, `CDS_ARTIFACTS_PRIMARY_IDENTIFIER`.
+  This issue is fixed. You can now see the identifier of the source selected as primary when using the expression `<+artifacts.primary.identifier>`. This functionality is behind the feature flag, `CDS_ARTIFACTS_PRIMARY_IDENTIFIER`.
 
 - Fixed an issue where strings were interpreted as scientific notations. (CDS-69063, ZD-44206)
 
@@ -2664,7 +2664,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 - The expressions corresponding to objects like list, maps, and so on were incorrectly converted to string type using the Java `String.valueOf` method resulting in incorrect formatting. (CDS-71619)
   
-  For example, the expression `\<+pipeline.variables\>` corresponding to the following object types are incorrectly converted to:
+  For example, the expression `<+pipeline.variables>` corresponding to the following object types are incorrectly converted to:
   * Map: `{key1=val1, key2=val2}`
   * List: `["a", "b", "c"]` (with spaces)
   
@@ -2678,13 +2678,13 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 - A project-level template crashed when opened. (CDS-71980, ZD-45950)
 
-  The three hyphens, `---` used in the YAML as YAML document separator was being replaced by `---\n` with an empty string due to a logic in the code. This logic made the YAML invalid. 
+  The three hyphens, `---` used in the YAML as YAML document separator was being replaced by `---n` with an empty string due to a logic in the code. This logic made the YAML invalid. 
 
   This issue is fixed by disabling `YAMLGenerator.Feature.WRITE_DOC_START_MARKER` in the YamlUtils to stop the YAML document separator `---` from being added to the YAML.
 
 - The pipeline build failed due to reformatting of the script. (CDS-72093, ZD-45874)
 
-  The three hyphens (`---`) used as a YAML document separator were replaced by `---\n`. This formatting made the YAML invalid.
+  The three hyphens (`---`) used as a YAML document separator were replaced by `---n`. This formatting made the YAML invalid.
 
   Harness no longer adds the new line in the YAML, and honors the separator when processing the YAML.
 
@@ -2891,15 +2891,15 @@ This release includes the following Harness module and component versions.
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
-gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.8.4/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.4/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.4/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.4/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.4/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.4/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.4/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.4/sto_images.tgz" \
+gsutil -m cp 
+  "gs://smp-airgap-bundles/harness-0.8.4/ccm_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.4/cdng_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.4/ce_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.4/cet_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.4/ci_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.4/ff_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.4/platform_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.4/sto_images.tgz" 
   .
 ```
 
@@ -2953,15 +2953,15 @@ This release includes the following Harness module and component versions.
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
-gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.8.3/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.3/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.3/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.3/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.3/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.3/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.3/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.3/sto_images.tgz" \
+gsutil -m cp 
+  "gs://smp-airgap-bundles/harness-0.8.3/ccm_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.3/cdng_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.3/ce_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.3/cet_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.3/ci_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.3/ff_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.3/platform_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.3/sto_images.tgz" 
   .
 ```
 
@@ -3030,15 +3030,15 @@ This release includes the following Harness module and component versions.
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
-gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.8.2/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.2/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.2/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.2/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.2/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.2/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.2/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.8.2/sto_images.tgz" \
+gsutil -m cp 
+  "gs://smp-airgap-bundles/harness-0.8.2/ccm_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.2/cdng_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.2/ce_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.2/cet_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.2/ci_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.2/ff_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.2/platform_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.8.2/sto_images.tgz" 
   .
 ```
 
@@ -3072,15 +3072,15 @@ This release includes the following Harness module and component versions.
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
-gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.7.2/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.2/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.2/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.2/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.2/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.2/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.2/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.2/sto_images.tgz" \
+gsutil -m cp 
+  "gs://smp-airgap-bundles/harness-0.7.2/ccm_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.2/cdng_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.2/ce_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.2/cet_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.2/ci_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.2/ff_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.2/platform_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.2/sto_images.tgz" 
   .
 ```
 
@@ -3125,15 +3125,15 @@ This release includes the following Harness module and component versions.
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
-gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.7.1/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.1/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.1/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.1/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.1/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.1/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.1/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.1/sto_images.tgz" \
+gsutil -m cp 
+  "gs://smp-airgap-bundles/harness-0.7.1/ccm_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.1/cdng_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.1/ce_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.1/cet_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.1/ci_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.1/ff_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.1/platform_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.1/sto_images.tgz" 
   .
 ```
 
@@ -3182,15 +3182,15 @@ This release includes the following Harness module and component versions.
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
 
 ```
-gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.7.0/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.0/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.0/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.0/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.0/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.0/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.0/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.7.0/sto_images.tgz" \
+gsutil -m cp 
+  "gs://smp-airgap-bundles/harness-0.7.0/ccm_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.0/cdng_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.0/ce_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.0/cet_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.0/ci_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.0/ff_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.0/platform_images.tgz" 
+  "gs://smp-airgap-bundles/harness-0.7.0/sto_images.tgz" 
   .
 ```
 
@@ -3210,7 +3210,7 @@ gsutil -m cp \
   
   A warning pops up when you create a new template with already existing identifiers in the same scope. You can choose to merge the new template with the existing template by selecting the **Save as new version of existing template** button in the warning.
 
-- Trigger artifact and manifest expressions (`\<+trigger.artifact.build\>` or `\<+trigger.manifest.version\>`) are now resolved when you rerun a pipeline that was activated by a trigger. (CDS-58192, CDS-50585)
+- Trigger artifact and manifest expressions (`<+trigger.artifact.build>` or `<+trigger.manifest.version>`) are now resolved when you rerun a pipeline that was activated by a trigger. (CDS-58192, CDS-50585)
   
   Here is a sample resolved YAML: 
 
@@ -3219,9 +3219,9 @@ gsutil -m cp \
     "status": "SUCCESS",
     "data": {
         "planExecutionId": "PimcPiwlQ56A2AhWogEM7A",
-        "executionYaml": "pipeline:\n  identifier: \"asda\"\n  name: \"asda\"\n  projectIdentifier: \"test\"\n  orgIdentifier: \"default\"\n  tags: {}\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      name: \"sda\"\n      description: \"\"\n      spec:\n        serviceConfig:\n          serviceRef: \"ads\"\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              variables: []\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    connectorRef: \"Test\"\n                    imagePath: \"library/nginx\"\n                    tag: \"<+trigger.artifact.build>\"\n              manifests: []\n        infrastructure:\n          environmentRef: \"wew\"\n          infrastructureDefinition:\n            type: \"KubernetesDirect\"\n            spec:\n              connectorRef: \"ad\"\n              namespace: \"asd\"\n              releaseName: \"release-<+INFRA_KEY>\"\n          allowSimultaneousDeployments: false\n        execution:\n          steps:\n          - step:\n              identifier: \"sad\"\n              type: \"ShellScript\"\n              name: \"sad\"\n              spec:\n                shell: \"Bash\"\n                onDelegate: true\n                source:\n                  type: \"Inline\"\n                  spec:\n                    script: \"echo \\\"test\\\"\"\n                environmentVariables: []\n                outputVariables: []\n                executionTarget: {}\n              timeout: \"10m\"\n          rollbackSteps: []\n      tags: {}\n      failureStrategies:\n      - onFailure:\n          errors:\n          - \"AllErrors\"\n          action:\n            type: \"StageRollback\"\n",
-        "inputYaml": "pipeline:\n  identifier: \"asda\"\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      spec:\n        serviceConfig:\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    tag: \"<+trigger.artifact.build>\"\n",
-        "resolvedYaml" "pipeline:\n  identifier: \"asda\"\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      spec:\n        serviceConfig:\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    tag: \"1.23-perl"\n",
+        "executionYaml": "pipeline:n  identifier: "asda"n  name: "asda"n  projectIdentifier: "test"n  orgIdentifier: "default"n  tags: {}n  stages:n  - stage:n      identifier: "sda"n      type: "Deployment"n      name: "sda"n      description: ""n      spec:n        serviceConfig:n          serviceRef: "ads"n          serviceDefinition:n            type: "Kubernetes"n            spec:n              variables: []n              artifacts:n                primary:n                  type: "DockerRegistry"n                  spec:n                    connectorRef: "Test"n                    imagePath: "library/nginx"n                    tag: "<+trigger.artifact.build>"n              manifests: []n        infrastructure:n          environmentRef: "wew"n          infrastructureDefinition:n            type: "KubernetesDirect"n            spec:n              connectorRef: "ad"n              namespace: "asd"n              releaseName: "release-<+INFRA_KEY>"n          allowSimultaneousDeployments: falsen        execution:n          steps:n          - step:n              identifier: "sad"n              type: "ShellScript"n              name: "sad"n              spec:n                shell: "Bash"n                onDelegate: truen                source:n                  type: "Inline"n                  spec:n                    script: "echo "test""n                environmentVariables: []n                outputVariables: []n                executionTarget: {}n              timeout: "10m"n          rollbackSteps: []n      tags: {}n      failureStrategies:n      - onFailure:n          errors:n          - "AllErrors"n          action:n            type: "StageRollback"n",
+        "inputYaml": "pipeline:n  identifier: "asda"n  stages:n  - stage:n      identifier: "sda"n      type: "Deployment"n      spec:n        serviceConfig:n          serviceDefinition:n            type: "Kubernetes"n            spec:n              artifacts:n                primary:n                  type: "DockerRegistry"n                  spec:n                    tag: "<+trigger.artifact.build>"n",
+        "resolvedYaml" "pipeline:n  identifier: "asda"n  stages:n  - stage:n      identifier: "sda"n      type: "Deployment"n      spec:n        serviceConfig:n          serviceDefinition:n            type: "Kubernetes"n            spec:n              artifacts:n                primary:n                  type: "DockerRegistry"n                  spec:n                    tag: "1.23-perl"n",
         "triggerPayload": {
             "type": "ARTIFACT",
             "headers": {},
@@ -3245,13 +3245,13 @@ gsutil -m cp \
   
   The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions. 
   
-  * [AWS KMS](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager): `\<+infra.variables.AwsKms.spec.credential.type\>`
-  * [AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager): `\<+infra.variables.AwsSecretsManager.spec.region\>`
-  * [Azure Key Vault](/docs/platform/secrets/secrets-management/azure-key-vault): `\<+infra.variables.AzureKeyVault.spec.vaultName\>`
-  * [Google KMS](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager): `\<+infra.variables.GcpKms.spec.keyName\>`
-  * [Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager): `\<+infra.variables.GcpSecMan.spec.credentialsRef.identifier\>`
-  * [Custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager): `\<+infra.variables.CustomSecMan.spec.isDefault\>`
-  * [HashiCorp Vault](/docs/platform/secrets/secrets-management/add-hashicorp-vault): `\<+infra.variables.HashiCorp.spec.vaultUrl\>`
+  * [AWS KMS](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
+  * [AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
+  * [Azure Key Vault](/docs/platform/secrets/secrets-management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
+  * [Google KMS](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
+  * [Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
+  * [Custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
+  * [HashiCorp Vault](/docs/platform/secrets/secrets-management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
 
 - The option to **Auto-Reject previous deployments paused in this step on approval** is added to the Approval step. (CDS-58063)
   
@@ -3485,7 +3485,7 @@ gsutil -m cp \
 
 - Deployment template connector variable expressions were not resolving. (CDS-68880)
   
-  You can access information about the connectors used in a deployment template using connector variable expressions (for example, `\<+stage.spec.infrastructure.output.variable.[name]\>`). 
+  You can access information about the connectors used in a deployment template using connector variable expressions (for example, `<+stage.spec.infrastructure.output.variable.[name]>`). 
   
   <docimage path={require('./static/0e40fbf0db025ce3330a7b4e7352a8203acb51d5a06653b1b010a279e2f42cc5.png')} width="60%" height="60%" title="Click to view full size image" />
   
@@ -3660,13 +3660,13 @@ This release includes the following Harness module and component versions.
   
   Labels are visible if the artifact manifest supports `schemaVersion1`.
   
-  Labels can be referenced using the expression: `\<+pipeline.stages.[stage Id].spec.artifacts.primary.label.get("labelKey")\>`.
+  Labels can be referenced using the expression: `<+pipeline.stages.[stage Id].spec.artifacts.primary.label.get("labelKey")>`.
   
   Since manifests can support two schema versions, `schemaVersion1` and `schemaVersion2`, there could be SHA values for each schema version.
   
   Here are the expressions for referencing each version:
-  - SHA value of `schemaVersion1`: `\<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHA\>`.
-  - SHA value of `schemaVersion2`: `\<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHAV2\>`.
+  - SHA value of `schemaVersion1`: `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHA>`.
+  - SHA value of `schemaVersion2`: `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHAV2>`.
 
 - Harness recommends that you use the `kubelogin` auth plugin to authenticate the Google Kubernetes Engine cluster with Kubernetes version 1.22 or later. (CDS-52514)
   
@@ -3745,7 +3745,7 @@ This release includes the following Harness module and component versions.
 
 - New Harness expression for revision number. (CDS-57826)
   
-  You can now use the expression `\<+kubernetes.release.revision\>` in values.yaml, OpenShift Params, and Kustomize Patches. This will help you to:
+  You can now use the expression `<+kubernetes.release.revision>` in values.yaml, OpenShift Params, and Kustomize Patches. This will help you to:
     - Reference the current Harness release number as part of your manifest.
     - Reference versioned ConfigMaps and Secrets in custom resources and fields unknown by Harness.
   
@@ -3761,7 +3761,7 @@ This release includes the following Harness module and component versions.
 
   The Harness Delegate version 79307 is required for this feature.
 
-- Trigger artifact and manifest expressions (`\<+trigger.artifact.build\>` or `\<+trigger.manifest.version\>`) are now resolved when you rerun a pipeline that was activated by a trigger. (CDS-58192, CDS-50585)
+- Trigger artifact and manifest expressions (`<+trigger.artifact.build>` or `<+trigger.manifest.version>`) are now resolved when you rerun a pipeline that was activated by a trigger. (CDS-58192, CDS-50585)
   
   Here is a sample resolved YAML: 
 
@@ -3770,9 +3770,9 @@ This release includes the following Harness module and component versions.
     "status": "SUCCESS",
     "data": {
         "planExecutionId": "PimcPiwlQ56A2AhWogEM7A",
-        "executionYaml": "pipeline:\n  identifier: \"asda\"\n  name: \"asda\"\n  projectIdentifier: \"test\"\n  orgIdentifier: \"default\"\n  tags: {}\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      name: \"sda\"\n      description: \"\"\n      spec:\n        serviceConfig:\n          serviceRef: \"ads\"\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              variables: []\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    connectorRef: \"Test\"\n                    imagePath: \"library/nginx\"\n                    tag: \"<+trigger.artifact.build>\"\n              manifests: []\n        infrastructure:\n          environmentRef: \"wew\"\n          infrastructureDefinition:\n            type: \"KubernetesDirect\"\n            spec:\n              connectorRef: \"ad\"\n              namespace: \"asd\"\n              releaseName: \"release-<+INFRA_KEY>\"\n          allowSimultaneousDeployments: false\n        execution:\n          steps:\n          - step:\n              identifier: \"sad\"\n              type: \"ShellScript\"\n              name: \"sad\"\n              spec:\n                shell: \"Bash\"\n                onDelegate: true\n                source:\n                  type: \"Inline\"\n                  spec:\n                    script: \"echo \\\"test\\\"\"\n                environmentVariables: []\n                outputVariables: []\n                executionTarget: {}\n              timeout: \"10m\"\n          rollbackSteps: []\n      tags: {}\n      failureStrategies:\n      - onFailure:\n          errors:\n          - \"AllErrors\"\n          action:\n            type: \"StageRollback\"\n",
-        "inputYaml": "pipeline:\n  identifier: \"asda\"\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      spec:\n        serviceConfig:\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    tag: \"<+trigger.artifact.build>\"\n",
-        "resolvedYaml" "pipeline:\n  identifier: \"asda\"\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      spec:\n        serviceConfig:\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    tag: \"1.23-perl"\n",
+        "executionYaml": "pipeline:n  identifier: "asda"n  name: "asda"n  projectIdentifier: "test"n  orgIdentifier: "default"n  tags: {}n  stages:n  - stage:n      identifier: "sda"n      type: "Deployment"n      name: "sda"n      description: ""n      spec:n        serviceConfig:n          serviceRef: "ads"n          serviceDefinition:n            type: "Kubernetes"n            spec:n              variables: []n              artifacts:n                primary:n                  type: "DockerRegistry"n                  spec:n                    connectorRef: "Test"n                    imagePath: "library/nginx"n                    tag: "<+trigger.artifact.build>"n              manifests: []n        infrastructure:n          environmentRef: "wew"n          infrastructureDefinition:n            type: "KubernetesDirect"n            spec:n              connectorRef: "ad"n              namespace: "asd"n              releaseName: "release-<+INFRA_KEY>"n          allowSimultaneousDeployments: falsen        execution:n          steps:n          - step:n              identifier: "sad"n              type: "ShellScript"n              name: "sad"n              spec:n                shell: "Bash"n                onDelegate: truen                source:n                  type: "Inline"n                  spec:n                    script: "echo "test""n                environmentVariables: []n                outputVariables: []n                executionTarget: {}n              timeout: "10m"n          rollbackSteps: []n      tags: {}n      failureStrategies:n      - onFailure:n          errors:n          - "AllErrors"n          action:n            type: "StageRollback"n",
+        "inputYaml": "pipeline:n  identifier: "asda"n  stages:n  - stage:n      identifier: "sda"n      type: "Deployment"n      spec:n        serviceConfig:n          serviceDefinition:n            type: "Kubernetes"n            spec:n              artifacts:n                primary:n                  type: "DockerRegistry"n                  spec:n                    tag: "<+trigger.artifact.build>"n",
+        "resolvedYaml" "pipeline:n  identifier: "asda"n  stages:n  - stage:n      identifier: "sda"n      type: "Deployment"n      spec:n        serviceConfig:n          serviceDefinition:n            type: "Kubernetes"n            spec:n              artifacts:n                primary:n                  type: "DockerRegistry"n                  spec:n                    tag: "1.23-perl"n",
         "triggerPayload": {
             "type": "ARTIFACT",
             "headers": {},
@@ -4518,13 +4518,13 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
                           store:
                             type: Github
                             spec:
-                              connectorRef: \<+input\>
-                              repoName: \<+input\>
-                              branch: \<+input\>
+                              connectorRef: <+input>
+                              repoName: <+input>
+                              branch: <+input>
                   artifacts:
                     primary:
-                      primaryArtifactRef: \<+input\>
-                      sources: \<+input\>
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
 - [Azure Repo](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo) is now supported as a manifest repo for Amazon Elastic Container Service (ECS) and Serverless.com Framework Lambda deployments. (CDS-54961)
 
   When creating Amazon ECS or Serverless.com Framework Lambda deployment pipelines, you can now use Azure Repo as a manifest repo in the service definition.
@@ -4724,9 +4724,9 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
   This issue is fixed. Changes are made to check the current or upcoming window to mark them as disabled during the API call.
 - Docker triggers were not working properly when regex support for tags were enabled. (CDS-54993)
   
-  The support for filtering Docker artifact tags based on regex caused a problem for Docker triggers when the regex was set to `\*`. The Docker triggers were not firing because `\*` is a wrong regex value and will not filter any builds. 
+  The support for filtering Docker artifact tags based on regex caused a problem for Docker triggers when the regex was set to `*`. The Docker triggers were not firing because `*` is a wrong regex value and will not filter any builds. 
 
-  This issue is now fixed by ignoring the regex value, `\*` in triggers.
+  This issue is now fixed by ignoring the regex value, `*` in triggers.
 - Helm deployment failed if there was no Helm chart values.yaml file in the root `charts/` directory. (CDS-54930, ZD-39802)
 
   Harness failed to fetch files with a no file found error when deploying Helm charts without any default values.yaml file. This issue is fixed. 
@@ -4794,7 +4794,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
    This issue is fixed.
 - Service inputs were retained when the service was set as an expression. (CDS-54336)
   
-  When a setting is set as an expression, any fixed value inputs should be replaced with `\<+input\>`. This replacement was not happening. This issue is now fixed.
+  When a setting is set as an expression, any fixed value inputs should be replaced with `<+input>`. This replacement was not happening. This issue is now fixed.
 - The **File Path** setting in the AWS S3 artifact source were showing artifacts in reverse historical order (oldest to latest). (CDS-54267)
   
   The file paths were being sorted in ascending order of last modified.
@@ -5053,7 +5053,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
   The error message for the step is now improved with more comprehensive logs.
 - Trigger name and identifier validation is in UI but not YAML.	(CDS-52175)
   
-  Now the trigger YAML name value is validated with the pattern `^[a-zA-Z_][-0-9a-zA-Z_\\s]{0,127}$` and the identifier is validated the pattern `^[a-zA-Z_][0-9a-zA-Z_]{0,127}$`.
+  Now the trigger YAML name value is validated with the pattern `^[a-zA-Z_][-0-9a-zA-Z_s]{0,127}$` and the identifier is validated the pattern `^[a-zA-Z_][0-9a-zA-Z_]{0,127}$`.
 - When trying to authenticate triggers, the error message is unclear.
 
   The message has been enhanced for clarity. (CDS-51560)
@@ -5083,7 +5083,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
   **User action required:** Any existing cron triggers with a **Run every** interval less than 5 minutes must be updated with an interval that is greater than or equal to 5 mins. Cron triggers with a **Run every** interval less than 5 minutes will receive a warning message and cannot be saved.
 - Triggers are throwing errors when the pipeline YAML changes. (CDS-50144)
   
-  When a user changed a pipeline setting from a fixed value to a runtime input, the pipeline was failing with the error `Invalid request: IllegalArgumentException: Cannot create enum from \<+input\> value`.
+  When a user changed a pipeline setting from a fixed value to a runtime input, the pipeline was failing with the error `Invalid request: IllegalArgumentException: Cannot create enum from <+input> value`.
   
   This scenario was the result of a lack of YAML validation.
   
@@ -6006,7 +6006,7 @@ This release includes the following fixed issues.
 
   Currently we don't support secrets in perpetual tasks, and triggers create a perpetual task. Because of the limitation, customers were unable to use secrets in a trigger. Added support to resolve the secrets for custom triggers.
 
-- The `\<+rollbackArtifact...\>` expression is now available (CDS-46321)
+- The `<+rollbackArtifact...>` expression is now available (CDS-46321)
 
   For example, if you used a publicly available Docker Hub NGINX image as the Artifact Source for a Service, then when the Service is rolled back, the \<+rollbackArtifact.meta.image\> expression output would be something like this: registry.hub.docker.com/library/nginx:stable-perl.
 
@@ -6322,7 +6322,7 @@ This release introduces the following features and enhancements.
 
 | **Feature or enhancement** | **Description** |
 | --- | --- | 
-| CDS-38870 | Users can copy the fqns for service and environment variables now . The service variables will be by the default name of `\<+serviceVariables.variableName\>` and environment by the name of `<env.variables.variableName>` |
+| CDS-38870 | Users can copy the fqns for service and environment variables now . The service variables will be by the default name of `<+serviceVariables.variableName>` and environment by the name of `<env.variables.variableName>` |
 | CDS-39012 | **Terraform Backend Configuration file path in the Terraform Apply and Plan steps now supports remote file repos**. Terraform Backend Configuration now can be specified in the remote file repository. For more details, go to Provision with the Terraform Apply Step. This functionality is behind feature flag `TERRAFORM_REMOTE_BACKEND_CONFIG`. |
 | CDS-40390 | **Set Helm Chart Version as Runtime Input and fetch from source on Run Pipeline**. Now you can set Helm Chart Version using a Runtime Input when using HTTP Helm, AWS S3, and Google GCS stores. You can view the list of chart versions available at runtime in Run Pipeline, and select the required one. |
 | CDS-44054 | **Improve Azure Web App properties**. Previously, if Application Settings or Connection Strings were removed from Harness Service then they wouldn’t be removed from the deployed Azure Web App. Now Harness keeps track of Harness-added settings and will remove these settings from slot configuration when they are deleted from the Harness Service configuration. |
@@ -6338,7 +6338,7 @@ This release introduces the following features and enhancements.
 | DEL-4328 | The method that the log streaming task client uses to create threadpools was modified. Threadpools are now created one time in the client's lifetime instead of being created for each task the delegate receives. |
 | FFM-3176 | Added validation messages to Flag pipelines to ensure you know which fields must be completed for your pipeline to run successfully. |
 | FFM-4557 | When submitting an invalid YAML file for Feature Flag steps in a Pipeline, you now receive an error describing why the YAML is invalid. Previously the incorrect YAML was accepted and only showed a general error during pipeline execution. |
-| PIE-4613 | **Harness service variables now support dots (.).** This is helpful when you have JSON/YAML files where you want to update the keys with some values. You can define variables for those keys in harness with (.) to access the keys. The expression to access a key would be: `\<+variables.get("example.key")\>` |
+| PIE-4613 | **Harness service variables now support dots (.).** This is helpful when you have JSON/YAML files where you want to update the keys with some values. You can define variables for those keys in harness with (.) to access the keys. The expression to access a key would be: `<+variables.get("example.key")>` |
 | PL-27160 | The option to disable Harness Secret Manager is now a part of the core settings in Account Default Settings. |
 | PL-28597 | You can now import Templates from your Git repo. See Import a Template From Git. |
 | PL-28978 | You can now create secrets using the Google Cloud Secret Manager in Harness. For more information, see Add a Google Cloud Secret Manager. |
@@ -6371,7 +6371,7 @@ This release introduces the following fixes.
 | CDS-43200, ZD-34500 | **Pipeline variables are not being translated in HTTP step assertions and output variables**. Previously, only HTTP response expressions could be used in an HTTP step assertion. Now, users can use pipeline and other expressions in assertions and use them with HTTP response expressions. |
 | CDS-43673 | **A drop-down selector for the image path in an ECR artifact source is not available**. A drop-down selector is available now. |
 | CDS-43675 | **Implement dropdown for Artifact Path in Amazon S3 Artifact Source**. We have made the changes to fetch S3 filePaths in the dropdown while creating the artifact source. |
-| CDS-43863 | **The `<artifact.metadata.url\>` is null for the Nexus3 artifact Docker repository format.** The URL was added to the metadata so it can now be accessed using `<artifact.metadata.url>`. |
+| CDS-43863 | **The `<artifact.metadata.url>` is null for the Nexus3 artifact Docker repository format.** The URL was added to the metadata so it can now be accessed using `<artifact.metadata.url>`. |
 | CDS-43869 | Made minor changes in style to infra definition section. |
 | CDS-43874 | **When editing a secret, the Verify Connection screen closes prematurely**. This issue has been fixed. |
 | CDS-44196 | **The ECS Harness file store console view does not show fetch manifests**. This issue has been fixed. |
@@ -6399,7 +6399,7 @@ This release introduces the following fixes.
 | CDS-45402 | Jira Create issue call not working with user type fields for Jira server. Creating an issue on Jira server with user type fields was creating an error. |
 | CDS-45433 | Initially we were fetching all the builds without filtering. We now support filtering via versionRegex. |
 | CDS-45465 | Improved the console logs for the Harness approval step by including details of approval and rejection activity. |
-| CDS-45471 | **Template Library not taking Service Variables as input in the expression**. With new service entity, if the manifest property was made a runtime input and its value was provided when running a pipeline in the form of an expression like `\<+serviceVariables.variableName\>`, the property would resolve to "null". However, if the manifest property was set to the same expression, directly in the service configuration, it would work as expected. This issue has been resolved now, with variable resolving in both cases. |
+| CDS-45471 | **Template Library not taking Service Variables as input in the expression**. With new service entity, if the manifest property was made a runtime input and its value was provided when running a pipeline in the form of an expression like `<+serviceVariables.variableName>`, the property would resolve to "null". However, if the manifest property was set to the same expression, directly in the service configuration, it would work as expected. This issue has been resolved now, with variable resolving in both cases. |
 | CDS-45492 | **\<+infra.name\> not resolving in V2 Service and Environment**. \<+infra.name\> expression is now supported. |
 | CDS-45677, ZD-36222 | **Secret referencing failing in Custom Artifact Source**. Secrets were not resolving in case of Service V2 because ExpressionFunctorToken was not set in Delegate request. |
 | CDS-45741 | **GitOps Service is not publishing the Agent pods/instances to Harness Manager**. We were not passing the Agent Id while publishing the instances. After passing the Agent Id, the Harness Manager shows the Agent instances. |
@@ -6561,7 +6561,7 @@ This release introduces the following fixes.
 
 - Resolved an issue with a type mismatch that occurred during pipeline execution in CI Manager. The expected type was OSType; the type received was String. (CI-4634)
 
-- Fixed an issue in which tags for a Build and Push Artifact step would resolve to NULL because the tag string had a dash (-) rather than an underscore (\_). (CI-5305, ZD-33652)
+- Fixed an issue in which tags for a Build and Push Artifact step would resolve to NULL because the tag string had a dash (-) rather than an underscore (_). (CI-5305, ZD-33652)
 
 - Fixed an issue where the PR build status was not consistently updated in GitHub. (CI-5411, ZD-33910, ZD-34304, ZD-34547, ZD-35359)
 
@@ -6915,7 +6915,7 @@ CI-5305
 
 ZD-33652
 
-Fixed an issue in which tags for a Build and Push Artifact step would resolve to NULL because the tag string had a dash (-) rather than an underscore (\_).
+Fixed an issue in which tags for a Build and Push Artifact step would resolve to NULL because the tag string had a dash (-) rather than an underscore (_).
 
 CI-5315
 

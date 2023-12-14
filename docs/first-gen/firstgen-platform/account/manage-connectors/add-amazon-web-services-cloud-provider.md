@@ -124,12 +124,12 @@ Here is an example of how to create a new service account in the cluster where y
 
 
 ```
-eksctl create iamserviceaccount \  
-    --name=cdp-admin \  
-    --namespace=default \  
-    --cluster=test-eks \  
-    --attach-policy-arn=<policy-arn> \  
-    --approve \  
+eksctl create iamserviceaccount   
+    --name=cdp-admin   
+    --namespace=default   
+    --cluster=test-eks   
+    --attach-policy-arn=<policy-arn>   
+    --approve   
     --override-existing-serviceaccounts —region=us-east-1
 ```
 3. In Harness, download the Harness Kubernetes Delegate YAML file. See [Install the Harness Kubernetes Delegate](../manage-delegates/install-kubernetes-delegate.md).

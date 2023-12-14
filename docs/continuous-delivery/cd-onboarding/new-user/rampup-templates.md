@@ -25,17 +25,17 @@ For general information and a list of Harness built-in variables, please see [Bu
 
 Templates should have a well defined interface for expected inputs and should not rely on the assumption that certain variables exist in a pipeline where they will be used. 
 
-For example, when defining a step or stage template, avoid referencing any pipeline-level variables (such as `\<+pipeline.variables.VAR_NAME\>`). This practice can break encapsulation and might not clearly communicate to the template users that their pipeline requires these variables to be defined. 
+For example, when defining a step or stage template, avoid referencing any pipeline-level variables (such as `<+pipeline.variables.VAR_NAME>`). This practice can break encapsulation and might not clearly communicate to the template users that their pipeline requires these variables to be defined. 
 
-This rule also applies to using stage-level variables inside of a step template (for example, `\<+stage.variables.VAR_NAME\>`).
+This rule also applies to using stage-level variables inside of a step template (for example, `<+stage.variables.VAR_NAME>`).
 
-Instead, use [runtime inputs](/docs/platform/variables-and-expressions/runtime-inputs) (`\<+input\>`) to expose *necessary* variables in your templates. Additionally, Harness provides numerous [built-in variables](/docs/platform/variables-and-expressions/harness-variables), such as `\<+env.name\>`, that are very useful. 
+Instead, use [runtime inputs](/docs/platform/variables-and-expressions/runtime-inputs) (`<+input>`) to expose *necessary* variables in your templates. Additionally, Harness provides numerous [built-in variables](/docs/platform/variables-and-expressions/harness-variables), such as `<+env.name>`, that are very useful. 
 
 As a best practice, limit the usage of these variables inside templates as much as possible. Instead, assign the decision to the template user. This allows for greater flexibility and adaptability when applying the template to different use cases.
 
 ### Runtime inputs
 
-When marking a setting or variable as `\<+input\>`, always try and provide a default value.
+When marking a setting or variable as `<+input>`, always try and provide a default value.
 
 ### Descriptions
 
@@ -57,7 +57,7 @@ For details on step templates, go to:
 
 Step templates serve as an efficient way to encapsulate common tasks that can be reused across multiple pipelines. 
 
-Make sure to mark all configurable fields as `\<+input\>`. With shell scripts specifically, you should define input variables as `\<+input\>` and then reference them in the script using `${SOME_VAR}` for bash or `$Env:SOME_VAR` for PowerShell.
+Make sure to mark all configurable fields as `<+input>`. With shell scripts specifically, you should define input variables as `<+input>` and then reference them in the script using `${SOME_VAR}` for bash or `$Env:SOME_VAR` for PowerShell.
 
 Below are examples of proper and improper usage:
 
@@ -106,20 +106,20 @@ template:
 
 Stage templates are a great way to standardize complex workflows and deployment stages across multiple pipelines. They enable consistent application deployment practices, promoting reliability and efficiency. 
 
-As with step templates, you should mark all configurable fields as `\<+input\>`, creating a clear interface for those using the template. This approach ensures that stage templates remain flexible and adaptable to various use cases, ultimately contributing to the robustness and scalability of your DevOps processes.
+As with step templates, you should mark all configurable fields as `<+input>`, creating a clear interface for those using the template. This approach ensures that stage templates remain flexible and adaptable to various use cases, ultimately contributing to the robustness and scalability of your DevOps processes.
 
 Stage templates offer a wide range of configurable parameters. You should generally set values such as `environment`, `infrastructure`, `connectors`, `namespace`, and other stage-specific settings as runtime inputs. This practice provides maximum flexibility when integrating these templates into pipelines later.
 
-Marking certain settings within steps as `\<+input\>` for user configuration might seem intuitive, but this can break encapsulation and should be avoided when possible. 
+Marking certain settings within steps as `<+input>` for user configuration might seem intuitive, but this can break encapsulation and should be avoided when possible. 
 
-Instead, aim to create a well-defined interface by utilizing **stage variables** and marking them as `\<+input\>`. You can then incorporate these into the step by referencing them as `\<+stage.variables.VAR_NAME\>`. This principle applies whether you're using inline steps or referencing step templates.
+Instead, aim to create a well-defined interface by utilizing **stage variables** and marking them as `<+input>`. You can then incorporate these into the step by referencing them as `<+stage.variables.VAR_NAME>`. This principle applies whether you're using inline steps or referencing step templates.
 
 To further clarify these points, below are examples illustrating both improper and proper practices:
 
 
 #### Bad
 
-In this example, a setting within a step is directly marked as `\<+input\>`, which disrupts encapsulation.
+In this example, a setting within a step is directly marked as `<+input>`, which disrupts encapsulation.
 
 ```yaml
 template:
@@ -145,7 +145,7 @@ template:
 
 #### Good
 
-This example effectively utilizes a stage variable marked as `\<+input\>`, maintaining encapsulation and providing a clear interface.
+This example effectively utilizes a stage variable marked as `<+input>`, maintaining encapsulation and providing a clear interface.
 
 ```yaml
 template:
@@ -178,17 +178,17 @@ template:
 
 Pipeline templates are a fantastic tool for standardizing the entire CI/CD process across a diverse set of projects or teams. They provide a comprehensive framework for defining end-to-end workflows, including various stages, steps, environment variables, and other configurations.
 
-When a step in a pipeline requires user input, it's advisable to first create a corresponding stage-level variable and reference it in the step using `\<+stage.variables.VAR_NAME\>`. Next, create a corresponding pipeline-level variable and reference it by setting the value of the stage variable to `\<+pipeline.variables.VAR_NAME\>`.
+When a step in a pipeline requires user input, it's advisable to first create a corresponding stage-level variable and reference it in the step using `<+stage.variables.VAR_NAME>`. Next, create a corresponding pipeline-level variable and reference it by setting the value of the stage variable to `<+pipeline.variables.VAR_NAME>`.
 
-Why not just reference the pipeline variable directly in the step in this case? This might seem like an unnecessary level of indirection at first, but later on if you decide to make a template out of the stage, this will make it much easier without having to update all the references to `\<+pipeline.variables.VAR_NAME\>`.
+Why not just reference the pipeline variable directly in the step in this case? This might seem like an unnecessary level of indirection at first, but later on if you decide to make a template out of the stage, this will make it much easier without having to update all the references to `<+pipeline.variables.VAR_NAME>`.
 
 ### Secrets
 
 When defining a variable in a template as a secret, there are additional considerations to bear in mind. For instance, you cannot have multiple levels of indirection with secrets. 
 
-Let's consider an example. You're creating a pipeline containing a stage-level template, following the guidelines mentioned above. This stage template has a variable `aws_secret_key` marked as a secret and `\<+input\>`. 
+Let's consider an example. You're creating a pipeline containing a stage-level template, following the guidelines mentioned above. This stage template has a variable `aws_secret_key` marked as a secret and `<+input>`. 
 
-While using this in your pipeline, you might create a pipeline-level variable named `aws_secret_key` also marked as a secret and `\<+input\>`, and set the stage-level value to `\<+pipeline.variables.aws_secret_key\>`. 
+While using this in your pipeline, you might create a pipeline-level variable named `aws_secret_key` also marked as a secret and `<+input>`, and set the stage-level value to `<+pipeline.variables.aws_secret_key>`. 
 
 This creates a problem. Now you have a pipeline-level variable marked as a secret, being passed into the stage-level variable which is also expecting a secret. This can lead to resolution issues.
 
@@ -216,7 +216,7 @@ As a general rule, start with the **Use Template** option and only opt for **Cop
 
 ## Failure strategies and advanced settings
 
-When possible, it's best to mark all the stage and step [failure strategies](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy) and advanced settings as `\<+input\>` to ensure the greatest amount of flexibility by your team members. If these settings are not externalized as inputs to the template, then end users of the template are not able to modify them.
+When possible, it's best to mark all the stage and step [failure strategies](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy) and advanced settings as `<+input>` to ensure the greatest amount of flexibility by your team members. If these settings are not externalized as inputs to the template, then end users of the template are not able to modify them.
 
 For details on advanced settings, go to:
 

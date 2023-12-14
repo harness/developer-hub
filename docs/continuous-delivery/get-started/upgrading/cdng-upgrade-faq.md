@@ -145,7 +145,7 @@ The following FirstGen entities and configurations are not upgraded in NextGen:
   - For details on NextGen ECS integration, go to [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial.md).
 - **Variable references in manifests and steps**. The Harness variable reference format has changed in NextGen.
     
-    In FirstGen, variables use the `${...}` format. In NextGen, variables use the `\<+...\>` format. You must upgrade your references to the new format.
+    In FirstGen, variables use the `${...}` format. In NextGen, variables use the `<+...>` format. You must upgrade your references to the new format.
  
   - For details on NextGen variables, go to [Variables and expressions](/docs/category/variables-and-expressions).
 - **Tag management**. Harness CD NextGen does not use tag management in the same way as Harness FirstGen.

@@ -325,7 +325,7 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
 3. Select the **Elastigroup Setup** step to define **Step Parameters**.
     * **Name**: Enter the deployment step name.
     * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
-    * **App Name**: Enter a name for the Elastigroup app name that Harness will create. For example, you can use Harness expressions, such as `\<+project.identifier\>_\<+service.identifier\>_\<+env.identifier\>_basic2`. You can select a fixed value, runtime input, or expression for this field. 
+    * **App Name**: Enter a name for the Elastigroup app name that Harness will create. For example, you can use Harness expressions, such as `<+project.identifier>_<+service.identifier>_<+env.identifier>_basic2`. You can select a fixed value, runtime input, or expression for this field. 
     * In **Instances**, select: 
        * **Same as already running instances**: Replicate the already running instances.
        * **Fixed**: Enter **Min Instances**, **Max Instances**, and **Desired Instances**.
@@ -362,7 +362,7 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
 3. Select the **Elastigroup Setup** step to define **Step Parameters**.
     * **Name**: Enter the deployment step name.
     * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
-    * **App Name**: Enter a name for the Elastigroup app name that Harness will create. For example, `\<+project.identifier\>_\<+service.identifier\>_\<+env.identifier\>_basic2`. You can select a fixed value, runtime input, or expression for this field. 
+    * **App Name**: Enter a name for the Elastigroup app name that Harness will create. For example, `<+project.identifier>_<+service.identifier>_<+env.identifier>_basic2`. You can select a fixed value, runtime input, or expression for this field. 
     * In **Instances**, select: 
        * **Same as already running instances**: Replicate the already running instances.
        * **Fixed**: Enter **Min Instances**, **Max Instances**, and **Desired Instances**.
@@ -453,7 +453,7 @@ With this incremental traffic shift strategy, you are controlling the percentage
 3. Select the **Elastigroup Blue Green Stage Setup** step to define **Step Parameters**.
     * **Name**: Enter the deployment step name.
     * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
-    * **App Name**: Enter a name for the Elastigroup app name that Harness will create. For example, `\<+project.identifier\>_\<+service.identifier\>_\<+env.identifier\>`. You can select a fixed value, runtime input, or expression for this field. 
+    * **App Name**: Enter a name for the Elastigroup app name that Harness will create. For example, `<+project.identifier>_<+service.identifier>_<+env.identifier>`. You can select a fixed value, runtime input, or expression for this field. 
     * In **Instances**, select: 
        * **Same as already running instances**: Replicate the already running instances.
        * **Fixed**: Enter **Min Instances**, **Max Instances**, and **Desired Instances**.

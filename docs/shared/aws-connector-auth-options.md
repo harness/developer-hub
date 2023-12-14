@@ -14,12 +14,12 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
    Here is an example of how to create a new service account in the cluster where you will install the delegate and attach the IAM policy to it:
 
    ```
-   eksctl create iamserviceaccount \
-       --name=cdp-admin \
-       --namespace=default \
-       --cluster=test-eks \
-       --attach-policy-arn=<policy-arn> \
-       --approve \
+   eksctl create iamserviceaccount 
+       --name=cdp-admin 
+       --namespace=default 
+       --cluster=test-eks 
+       --attach-policy-arn=<policy-arn> 
+       --approve 
        --override-existing-serviceaccounts —region=us-east-1
    ```
 

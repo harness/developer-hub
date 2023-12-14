@@ -110,12 +110,12 @@ To create the IAM role and policy:
 1. To create the role and attach the policy you just created, use the `eksctl` command. For example:
 
   ```bash
-  eksctl create iamserviceaccount \
-  --name <experiment_service_account_name> \
-  --namespace <service_account_namespace> \
-  --cluster <cluster_name> \
-  --attach-policy-arn <IAM_policy_ARN> \
-  --approve \
+  eksctl create iamserviceaccount 
+  --name <experiment_service_account_name> 
+  --namespace <service_account_namespace> 
+  --cluster <cluster_name> 
+  --attach-policy-arn <IAM_policy_ARN> 
+  --approve 
   --override-existing-serviceaccounts
   ```
 
@@ -132,7 +132,7 @@ Associate the IAM role you created in the previous step by annotating the experi
 To associate the IAM role to the experiment service account, run this command:
 
 ```bash
-kubectl annotate serviceaccount -n <experiment_service_account_namespace> <experiment_service_account_name> \
+kubectl annotate serviceaccount -n <experiment_service_account_namespace> <experiment_service_account_name> 
 eks.amazonaws.com/role-arn=arn:aws:iam::<account_ID>:role/<IAM_role_name>
 ```
 

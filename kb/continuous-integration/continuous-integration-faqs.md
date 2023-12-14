@@ -58,7 +58,7 @@ Try increasing the CPU request and limit both. Check CPU utilization in-case.
 
 #### Does Harness encrypt the image tag for the container during rollout deployment output?
 
-No, we don't. Try checking SHA of the tag and find image ID from the output of the service step with the `\<+artifact.tag\>` expression.
+No, we don't. Try checking SHA of the tag and find image ID from the output of the service step with the `<+artifact.tag>` expression.
 
 #### Does Harness "run container" overwrites the container entrypoint?
 
@@ -172,7 +172,7 @@ You could send mail from the CI pipeline by using the drone plugin [https://plug
 
 #### How can I retrieve the Maven project version from the pom.xml file and pass it to the subsequent Docker build step as the build argument?
 
-You could assign the version value to a variable in a run step with a command something similar to `version=$(cat pom.xml | grep -oP '(?<=<version>)[^<]+')` and then this variable can be configured as the output variable in the run step. In the subsequent build step you could use this output variable from the previous run step as the build argument using an expression similar to `\<+pipeline.stages.test.spec.execution.steps.Run_2.output.outputVariables.version\>` (In this example, stage name=test, step name=Run_2 and the output variable name is version)
+You could assign the version value to a variable in a run step with a command something similar to `version=$(cat pom.xml | grep -oP '(?<=<version>)[^<]+')` and then this variable can be configured as the output variable in the run step. In the subsequent build step you could use this output variable from the previous run step as the build argument using an expression similar to `<+pipeline.stages.test.spec.execution.steps.Run_2.output.outputVariables.version>` (In this example, stage name=test, step name=Run_2 and the output variable name is version)
 
 #### Why the changes made on the container image filesystem in a CI step is not available in the subseqent step where the same container image is used?
 
@@ -600,7 +600,7 @@ No, this feature is already requested and should be onboarded soon.
 
 #### Where can I find all the listed Codebase options for CI ?
 
-Please find available `\<+codebase.*\>` listed for CI in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/)
+Please find available `<+codebase.*>` listed for CI in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/)
 
 #### Why I can't toggle cache intelligence in my CI pipeline?
 
@@ -618,7 +618,7 @@ We do not have OOTB support for Datadog Pipeline Visibility. However, I can sugg
 #### How to store mvn project settings.xml in Harness CI?
 
 You can achieve this by storing the XML as a secret and referring to it within a step. For example:
-`echo '\<+secrets.getValue("account.[settingsXMLSecretID]")\>' > settings.xml`
+`echo '<+secrets.getValue("account.[settingsXMLSecretID]")>' > settings.xml`
 
 #### Is it possible to publish custom data, such as outputs from variables or custom messages, strings, or any other information, in the Artifacts tab?
 

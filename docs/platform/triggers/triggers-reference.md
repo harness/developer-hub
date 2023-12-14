@@ -241,32 +241,32 @@ Some attributes are predefined and some require you to define a value.
 To create dynamic triggers, Harness includes built-in Git payload expressions for referencing trigger details, such as a PR number.
 
 * Main expressions:
-  * `\<+trigger.type\>`
+  * `<+trigger.type>`
     * Webhook
-  * `\<+trigger.event\>`
+  * `<+trigger.event>`
     * PR, PUSH, etc.
 * PR and Issue Comment expressions
-  * `\<+trigger.targetBranch\>`
-  * `\<+trigger.sourceBranch\>`
-  * `\<+trigger.prNumber\>`
-  * `\<+trigger.prTitle\>`
-  * `\<+trigger.gitUser\>`
-  * `\<+trigger.repoUrl\>`
-  * `\<+trigger.commitSha\>`
-  * `\<+trigger.baseCommitSha\>`
-  * `\<+trigger.event\>`
+  * `<+trigger.targetBranch>`
+  * `<+trigger.sourceBranch>`
+  * `<+trigger.prNumber>`
+  * `<+trigger.prTitle>`
+  * `<+trigger.gitUser>`
+  * `<+trigger.repoUrl>`
+  * `<+trigger.commitSha>`
+  * `<+trigger.baseCommitSha>`
+  * `<+trigger.event>`
     * PR, PUSH, etc.
 * Push expressions
-  * `\<+trigger.targetBranch\>`
-  * `\<+trigger.gitUser\>`
-  * `\<+trigger.repoUrl\>`
-  * `\<+trigger.commitSha\>`
-  * `\<+trigger.event\>`
+  * `<+trigger.targetBranch>`
+  * `<+trigger.gitUser>`
+  * `<+trigger.repoUrl>`
+  * `<+trigger.commitSha>`
+  * `<+trigger.event>`
     * PR, PUSH, etc.
 
 #### Referencing payload fields
 
-You can reference any payload fields using the expression `\<+trigger.payload.[path-in-json]\>`, where `[path-in-json]` is the path to the field in the JSON payload, such as `\<+trigger.payload.pull_request.user.login\>`.
+You can reference any payload fields using the expression `<+trigger.payload.[path-in-json]>`, where `[path-in-json]` is the path to the field in the JSON payload, such as `<+trigger.payload.pull_request.user.login>`.
 
 How you reference the path depends on:
 
@@ -292,7 +292,7 @@ Single-value operators include:
 * **Ends With:** Expects a single value. Harness matches any full path ending with the value.
 * **Contains:** Expects a single value. Harness matches any full path containing the value.
 * **In** and **Not In:** Allows a single value or multiple comma-separated values. Requires full paths, such as `source/folder1/file1.txt,source/folder2/file2.txt`. For some **Conditions**, you can also use Regex, such as `main,release/.*`. You can use Regex to specify all files in a parent folder, such as `ci/.*`.
-* **Regex:** Expects a single Regex value. Harness matches full paths based on the Regex. You can use complex Regex expressions, such as `^((?!README\.md).)*$`. You can use this operator to specify multiple paths, and you can use Regex to specify all files in a parent folder, such as `ci/.*`.
+* **Regex:** Expects a single Regex value. Harness matches full paths based on the Regex. You can use complex Regex expressions, such as `^((?!README.md).)*$`. You can use this operator to specify multiple paths, and you can use Regex to specify all files in a parent folder, such as `ci/.*`.
 
 ### Matches Value
 
@@ -319,7 +319,7 @@ With Azure Repos, **Changed Files** conditions are supported for **Push** [event
 
 ### Header Conditions
 
-In the **Attribute** field, the header expression format is `\<+trigger.header['key-name']\>`, such as `\<+trigger.header['X-GitHub-Event']\>`. The following image shows how the expression `\<+trigger.header['X-GitHub-Event']\>` was derived from the `X-GitHub-Event` key in a GitHub webhook payload.
+In the **Attribute** field, the header expression format is `<+trigger.header['key-name']>`, such as `<+trigger.header['X-GitHub-Event']>`. The following image shows how the expression `<+trigger.header['X-GitHub-Event']>` was derived from the `X-GitHub-Event` key in a GitHub webhook payload.
 
 ![Extracting trigger attributes from a GitHub webhook payload.](./static/triggers-reference-13.png)
 
@@ -338,7 +338,7 @@ X-GitHub-Hook-Installation-Target-ID: 250384642
 X-GitHub-Hook-Installation-Target-Type: repository
 ```
 
-If the header key doesn't contain a dash (`-`), then the following format also works: `\<+trigger.header['key name']\>`
+If the header key doesn't contain a dash (`-`), then the following format also works: `<+trigger.header['key name']>`
 
 When Harness evaluates the header key you provide, the comparison is case insensitive.
 
@@ -348,7 +348,7 @@ Depending on the [operator](#operators), In **Matches Value**, you can enter a s
 
 These conditions are based on the values of the webhook's JSON payload. Harness treats the JSON payload as a data model and parses the payload and listens for events on a JSON payload key.
 
-To reference payload values, you use `\<+eventPayload.[path-to-key-name]`, for example `<+eventPayload.repository.full_name\>`.
+To reference payload values, you use `<+eventPayload.[path-to-key-name]`, for example `<+eventPayload.repository.full_name>`.
 
 For example, here is some data from a webhook payload that shows the repository owner:
 
@@ -365,9 +365,9 @@ For example, here is some data from a webhook payload that shows the repository 
 ...
 ```
 
-To reference the repository owner in a trigger's payload condition attribute, use the expression `\<+eventPayload.repository.owner\>`, and enter a matching value in **Matches Value**.
+To reference the repository owner in a trigger's payload condition attribute, use the expression `<+eventPayload.repository.owner>`, and enter a matching value in **Matches Value**.
 
-The following image shows how the expression `\<+eventPayload.repository.name\>` was derived from the `repository:name` key in a GitHub webhook payload.
+The following image shows how the expression `<+eventPayload.repository.name>` was derived from the `repository:name` key in a GitHub webhook payload.
 
 ![Extracting trigger attributes from a GitHub webhook payload.](./static/triggers-reference-14.png)
 
@@ -381,16 +381,16 @@ You can refer to payload data and headers using [JEXL expressions](https://commo
 
 Be careful when you combine Harness variables and JEXL expressions:
 
-* **Invalid expression format:** `\<+pipeline.variables.MAGIC.toLowerCase()\>`
+* **Invalid expression format:** `<+pipeline.variables.MAGIC.toLowerCase()>`
   * This expression is ambiguous. It could be evaluated as a Harness variable (return the value of variable `pipeline.variables.MAGIC.toLowerCase()`) or as a JEXL operation (return the lowercase of literal string `pipeline.variables.MAGIC`).
-* **Valid expression format:** `\<+<+pipeline.variables.MAGIC\>.toLowerCase()>`
+* **Valid expression format:** `<+<+pipeline.variables.MAGIC>.toLowerCase()>`
   * First, this expression gets the value of the variable `pipeline.variables.MAGIC`, and then it returns the value converted to all lowercase.
 
 Here are some examples of valid combined JEXL and Harness expressions:
 
-* `\<+trigger.payload.pull_request.diff_url\>.contains("triggerNgDemo")`
-* `\<+trigger.payload.pull_request.diff_url\>.contains("triggerNgDemo") || \<+trigger.payload.repository.owner.name\> == "wings-software"`
-* `\<+trigger.payload.pull_request.diff_url\>.contains("triggerNgDemo") && (\<+trigger.payload.repository.owner.name\> == "wings-software" || \<+trigger.payload.repository.owner.name\> == "harness")`
+* `<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")`
+* `<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") || <+trigger.payload.repository.owner.name> == "wings-software"`
+* `<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") && (<+trigger.payload.repository.owner.name> == "wings-software" || <+trigger.payload.repository.owner.name> == "harness")`
 
 :::tip OR and NOT conditions
 
@@ -414,11 +414,11 @@ For instructions on using default values in pipeline inputs, go to [ternary oper
 
 :::
 
-When Git Experience is enabled for your Pipeline, the **Pipeline Input** tab includes the **Pipeline Reference Branch** field. This field is set to `\<+trigger.branch\>` by default. Any build started by this trigger uses the pipeline and Input Set definitions in the branch specified in the webhook payload. This default is applicable for webhook-based triggers only. For all other trigger types, you must enter a specific branch name.
+When Git Experience is enabled for your Pipeline, the **Pipeline Input** tab includes the **Pipeline Reference Branch** field. This field is set to `<+trigger.branch>` by default. Any build started by this trigger uses the pipeline and Input Set definitions in the branch specified in the webhook payload. This default is applicable for webhook-based triggers only. For all other trigger types, you must enter a specific branch name.
 
 :::note
 
-The Issue Comment event trigger for Github does not support the `\<+trigger.branch\>` expression.
+The Issue Comment event trigger for Github does not support the `<+trigger.branch>` expression.
 
 :::
 

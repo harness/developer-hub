@@ -49,7 +49,7 @@ This setting can use be a comma-separated string of addresses. For example, `joh
 
 You can set **To** as a runtime input.
   
-You can pass in the email as a Harness expression, such as `\<+pipeline.triggeredBy\>`.
+You can pass in the email as a Harness expression, such as `<+pipeline.triggeredBy>`.
 
 For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
@@ -61,7 +61,7 @@ You can add email addresses to the **CC** section to carbon copy addresses on th
 
 You can provide a subject for the email. 
 
-This subject can be a fixed string (for example, `Prod Deployment Notification`), a string with expressions (for example, `\<+env.name\> Deployment Notification`), or a runtime input.
+This subject can be a fixed string (for example, `Prod Deployment Notification`), a string with expressions (for example, `<+env.name> Deployment Notification`), or a runtime input.
 
 For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 

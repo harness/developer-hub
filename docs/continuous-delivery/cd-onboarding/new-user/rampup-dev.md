@@ -195,10 +195,10 @@ If you are the pipeline executor, you can also initiate pipeline executions via 
 
 ```curl
 
-curl -i -X POST \
-  'https://app.harness.io/pipeline/api/pipeline/execute/IDENTIFIER/inputSetList?accountIdentifier=string&orgIdentifier=string&projectIdentifier=string&moduleType=string&branch=string&repoIdentifier=string&getDefaultFromOtherRepo=true&useFQNIfError=false&notesForPipelineExecution=' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: YOUR_API_KEY_HERE' \
+curl -i -X POST 
+  'https://app.harness.io/pipeline/api/pipeline/execute/IDENTIFIER/inputSetList?accountIdentifier=string&orgIdentifier=string&projectIdentifier=string&moduleType=string&branch=string&repoIdentifier=string&getDefaultFromOtherRepo=true&useFQNIfError=false&notesForPipelineExecution=' 
+  -H 'Content-Type: application/json' 
+  -H 'x-api-key: YOUR_API_KEY_HERE' 
   -d '{
     "inputSetReferences": [
       "string"

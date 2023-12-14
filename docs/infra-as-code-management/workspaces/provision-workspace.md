@@ -127,7 +127,7 @@ You can use the Harness Visual Editor or YAML to create a pipeline that will tea
 
 8. Select **Save**, and then select **Run Pipeline**. 
 
-* The plan-destroy step generates a Terraform plan. This Terraform plan is accessible to all the steps after the IaCM Terraform plan, and can be referenced using the expression `\<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.parsedPlan\>`.
+* The plan-destroy step generates a Terraform plan. This Terraform plan is accessible to all the steps after the IaCM Terraform plan, and can be referenced using the expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.parsedPlan>`.
 
 9. After the plan is created, switch to the **Resources** tab to see all the resources and Terraform outputs that will be generated once the plan is applied. You can see which resources will be removed from the state. 
 

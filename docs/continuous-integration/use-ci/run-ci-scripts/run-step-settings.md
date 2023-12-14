@@ -115,7 +115,7 @@ To use this command, you would replace:
 
 * `ACCOUNT_NAME` with your GitHub account name.
 * `REPO_NAME` with the name of the GitHub repo to clone.
-* `PERSONAL_ACCESS_TOKEN` with a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. Store the token as a [Harness secret](/docs/category/secrets) and use a variable expression, such as `\<+secrets.getValue("YOUR_TOKEN_SECRET")\>`, to call it.
+* `PERSONAL_ACCESS_TOKEN` with a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. Store the token as a [Harness secret](/docs/category/secrets) and use a variable expression, such as `<+secrets.getValue("YOUR_TOKEN_SECRET")>`, to call it.
 
 ```mdx-code-block
   </TabItem>
@@ -277,7 +277,7 @@ For Bash, set the `shell` to `Bash` and enter your Bash script in `command`. For
                   spec:
                     shell: Bash
                     command: |-
-                      JAVA_VER=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1\./s///' | cut -d'.' -f1)
+                      JAVA_VER=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1./s///' | cut -d'.' -f1)
                       if [[ $JAVA_VER == 17 ]]; then
                         echo successfully installed $JAVA_VER
                       else
@@ -326,7 +326,7 @@ For example, the following two stage variables include one variable that has a `
             value: <+<+pipeline.executionId>+"-"+<+pipeline.sequenceId>+"-"+<+stage.variables.DATE_FORMATTED>>
 ```
 
-When a PowerShell script calls the concatenated variable, such as `echo \<+pipeline.stages.test.variables.BUILD_VAR\>`, the `ToString` portion of the output prints on a separate line from the rest of the value, despite being part of one concatenated expression.
+When a PowerShell script calls the concatenated variable, such as `echo <+pipeline.stages.test.variables.BUILD_VAR>`, the `ToString` portion of the output prints on a separate line from the rest of the value, despite being part of one concatenated expression.
 
 **To resolve this, exclude the `ToString` portion from the stage variable's concatenated value, and then, in your PowerShell script, call `ToString` separately and "manually concatenate" the values.**
 

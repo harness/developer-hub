@@ -457,7 +457,7 @@ spec:
             # call http post method and verify the response code
             post: 
               # value of the http body, used for the post request
-              body: "{\"name\":\"foo\",\"description\":\"bar\"}"
+              body: "{"name":"foo","description":"bar"}"
               # http body content type
               contentType: "application/json; charset=UTF-8"
               # criteria which should be matched

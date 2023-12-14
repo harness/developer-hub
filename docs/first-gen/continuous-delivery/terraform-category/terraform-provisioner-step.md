@@ -232,8 +232,8 @@ When the Workflow is deployed, the `map_test` and `list_test` variables and valu
 ...  
 terraform plan -out=tfplan -input=false     
 ...  
-**-var='map\_test={foo = "bar", baz = "qux"}'   
--var='list\_test=["ami-abc123", "ami-bcd234"]'**    
+**-var='map_test={foo = "bar", baz = "qux"}'   
+-var='list_test=["ami-abc123", "ami-bcd234"]'**    
 ...
 ```
 And displayed as outputs:

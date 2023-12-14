@@ -23,9 +23,9 @@ Files can be stored in the following locations.
 
 ### Expressions are not allowed in references
 
-Config files are referenced using the `\<+configFile.getAsString("CONFIG_FILE_ID")\>` format, as described in [Referencing and encoding config files](#referencing-and-encoding-config-files).
+Config files are referenced using the `<+configFile.getAsString("CONFIG_FILE_ID")>` format, as described in [Referencing and encoding config files](#referencing-and-encoding-config-files).
 
-You cannot use Harness expressions in the parameter field of the `getAsString()` and `getAsBase64()` functions. For example, this expression will fail: `\<+configFile.getAsString(“<+serviceVariable.var_name\>”)>`.
+You cannot use Harness expressions in the parameter field of the `getAsString()` and `getAsBase64()` functions. For example, this expression will fail: `<+configFile.getAsString(“<+serviceVariable.var_name>”)>`.
 
 
 ## Config file capabilities
@@ -102,7 +102,7 @@ You can attach multiple files in a config file. Simply add a new line:
 5. Select **Add** to attach multiple files as a single config file.
 6. Select **Submit**.
 
-You will use the value you entered in **Config File Identifier** to reference the config file as an expression in the format `\<+configFile.getAsString("CONFIG_FILE_ID")\>`.
+You will use the value you entered in **Config File Identifier** to reference the config file as an expression in the format `<+configFile.getAsString("CONFIG_FILE_ID")>`.
 
 ```mdx-code-block
   </TabItem>
@@ -117,28 +117,28 @@ You can attach multiple files to one config file. All the files must be either p
 
 Files added in the **Config Files** section of a service are referenced using the following Harness expressions.
 
-* Plain text file contents: `\<+configFile.getAsString("CONFIG_FILE_ID")\>`
-* Base64-encoded file contents: `\<+configFile.getAsBase64("CONFIG_FILE_ID")\>`
+* Plain text file contents: `<+configFile.getAsString("CONFIG_FILE_ID")>`
+* Base64-encoded file contents: `<+configFile.getAsBase64("CONFIG_FILE_ID")>`
 
 If the config file has multiple text or encrypted files attached, you must use fileStore or secrets variables expressions: 
 
-- `\<+fileStore.getAsString("SCOPED_FILEPATH")\>`  
-- `\<+fileStore.getAsBase64("SCOPED_FILEPATH")\>`
-- `\<+secrets.getValue("SCOPED_SECRET_ID")\>`
+- `<+fileStore.getAsString("SCOPED_FILEPATH")>`  
+- `<+fileStore.getAsBase64("SCOPED_FILEPATH")>`
+- `<+secrets.getValue("SCOPED_SECRET_ID")>`
 
 Here are some examples:
 
-- `\<+configFile.getAsString("cf_file")\>`
-- `\<+configFile.getAsBase64("cf_file")\>`
-- `\<+fileStore.getAsString("/folder1/configFile")\>`
-- `\<+fileStore.getAsBase64("account:/folder1/folder2/configFile")\>`
-- `\<+secrets.getValue("account.MySecretFileIdentifier")\>`
+- `<+configFile.getAsString("cf_file")>`
+- `<+configFile.getAsBase64("cf_file")>`
+- `<+fileStore.getAsString("/folder1/configFile")>`
+- `<+fileStore.getAsBase64("account:/folder1/folder2/configFile")>`
+- `<+secrets.getValue("account.MySecretFileIdentifier")>`
 
 ### Use Base64 to avoid new lines
 
-If you are going to use a config file in a manifest or shell script, be aware that `\<+configFile.getAsString()\>` can cause problems by adding new lines to your manifest (unless you have formatted the file very carefully).
+If you are going to use a config file in a manifest or shell script, be aware that `<+configFile.getAsString()>` can cause problems by adding new lines to your manifest (unless you have formatted the file very carefully).
 
-Instead, use `\<+configFile.getAsBase64()\>`. This ensures that the contents of the file are rendered as a single line.
+Instead, use `<+configFile.getAsBase64()>`. This ensures that the contents of the file are rendered as a single line.
 
 In a Shell Script step or service command it would look like this:
 
@@ -322,7 +322,7 @@ Here's an example of a Command step copying a config file to all target hosts.
                       items: <+stage.output.hosts>
 ```
 
-Note the use of `strategy.repeat.items: \<+stage.output.hosts\>`. This runs the command on all target hosts.
+Note the use of `strategy.repeat.items: <+stage.output.hosts>`. This runs the command on all target hosts.
 
 ```mdx-code-block
   </TabItem2>

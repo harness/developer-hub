@@ -30,7 +30,7 @@ The **[Expression](#expressions)** option is especially useful, because it enabl
 
 ![](./static/runtime-inputs-10.png)
 
-In free-text fields, such as **Command**, you can directly enter values using the appropriate syntax, such as `\<+input\>` for [runtime input](#runtime-inputs), without changing the value type.
+In free-text fields, such as **Command**, you can directly enter values using the appropriate syntax, such as `<+input>` for [runtime input](#runtime-inputs), without changing the value type.
 
 ![](./static/runtime-inputs-12.png)
 
@@ -39,14 +39,14 @@ In free-text fields, such as **Command**, you can directly enter values using th
   <TabItem value="YAML" label="YAML" default>
 ```
 
-When writing pipelines in YAML, enter the value using the appropriate syntax, such as `\<+input\>` for [runtime input](#runtime-inputs).
+When writing pipelines in YAML, enter the value using the appropriate syntax, such as `<+input>` for [runtime input](#runtime-inputs).
 
-When you type `\<+`, Harness provides suggestions for built-in [expressions](#expressions) as you type.
+When you type `<+`, Harness provides suggestions for built-in [expressions](#expressions) as you type.
 
 ![](./static/runtime-inputs-13.png)
 
 ```mdx-code-block
-  </TabItem\>
+  </TabItem>
 </Tabs>
 ```
 
@@ -58,7 +58,7 @@ Use fixed values for settings you don't need to change based on the build contex
 
 ## Runtime inputs
 
-Runtime input provides a placeholder with the expectation that you'll define this value at runtime. For example, if you set the Kubernetes cluster **Namespace** setting to runtime input (`\<+input\>`), you'll need to provide the **Namespace** value when you run the pipeline.
+Runtime input provides a placeholder with the expectation that you'll define this value at runtime. For example, if you set the Kubernetes cluster **Namespace** setting to runtime input (`<+input>`), you'll need to provide the **Namespace** value when you run the pipeline.
 
 ![](./static/runtime-inputs-04.png)
 
@@ -83,14 +83,14 @@ In the Pipeline Studio's Visual Editor, you can use the **Value type selector** 
 
 ![](./static/runtime-inputs-03.png)
 
-In free-text fields, you can directly enter `\<+input\>` to specify runtime input without changing the value type.
+In free-text fields, you can directly enter `<+input>` to specify runtime input without changing the value type.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="YAML" label="YAML" default>
 ```
 
-When writing pipelines in YAML, enter `\<+input\>` for the value to indicate runtime input.
+When writing pipelines in YAML, enter `<+input>` for the value to indicate runtime input.
 
 ```yaml
               - step:
@@ -107,7 +107,7 @@ When writing pipelines in YAML, enter `\<+input\>` for the value to indicate run
 </Tabs>
 ```
 
-When you run the pipeline, you're prompted to provide values for any `\<+input\>`. You can use specific values or [expressions](#expressions).
+When you run the pipeline, you're prompted to provide values for any `<+input>`. You can use specific values or [expressions](#expressions).
 
 If you rerun this pipeline, the pipeline uses the same inputs you provided for the initial run.
 
@@ -141,9 +141,9 @@ By default, runtime input accepts virtually any sting input. You can specify a d
   <TabItem value="YAML" label="YAML" default>
 ```
 
-When writing pipelines in YAML, specify a default value by appending the `.default()` method to `\<+input\>`. For example: `\<+input\>.default(bengaluru)`.
+When writing pipelines in YAML, specify a default value by appending the `.default()` method to `<+input>`. For example: `<+input>.default(bengaluru)`.
 
-If your default value has a comma, you must escape the value string using the format `\'VALUE\'`. For example: `\<+input\>.default(\'london,uk\')`.
+If your default value has a comma, you must escape the value string using the format `'VALUE'`. For example: `<+input>.default('london,uk')`.
 
 ```yaml
               - step:
@@ -162,7 +162,7 @@ If your default value has a comma, you must escape the value string using the fo
 You can use a JSON object, such as the JSON-formatted body of a webhook payload, as the default value for runtime input. Here's an example of a default value that uses a JSON object. Note the use of double quotes around the entire expression and slashes to escape commas and double quotes within the object.
 
 ```yaml
-"<+input>.default('{\"risk\": 100,\"availabilityVsCost\": \"balanced\",\"drainingTimeout\": 120,\"lifetimePeriod\": \"days\",\"fallbackToOd\": true}')"
+"<+input>.default('{"risk": 100,"availabilityVsCost": "balanced","drainingTimeout": 120,"lifetimePeriod": "days","fallbackToOd": true}')"
 ```
 
 :::info
@@ -187,7 +187,7 @@ Harness doesn't support *nested* JSON objects in runtime input. For example, thi
 
 #### Default values in templates
 
-You can specify default values in [templates](/docs/platform/Templates/template). If you want to be able to override these values at runtime, append the `.executionInput()` method. For example, the following YAML example uses a stage template that includes `\<+input\>.default(new york).executionInput()`. The default value is `new york`, but it can be changed at runtime.
+You can specify default values in [templates](/docs/platform/Templates/template). If you want to be able to override these values at runtime, append the `.executionInput()` method. For example, the following YAML example uses a stage template that includes `<+input>.default(new york).executionInput()`. The default value is `new york`, but it can be changed at runtime.
 
 ```yaml
 pipeline:
@@ -240,11 +240,11 @@ Use allowed values to provide a fixed range of acceptable values for a runtime i
   <TabItem value="YAML" label="YAML" default>
 ```
 
-When writing pipelines in YAML, define allowed values by appending the `.allowedValues()` method to `\<+input\>`. For example: `\<+input\>.allowedValues(bengaluru,newyork)`.
+When writing pipelines in YAML, define allowed values by appending the `.allowedValues()` method to `<+input>`. For example: `<+input>.allowedValues(bengaluru,newyork)`.
 
-If your values include commas, you must escape the value strings using the format `\'VALUE\'`. For example: `\<+input\>.allowedValues(\'bengaluru,india\',\'newyork,usa\',\'london,uk\')`.
+If your values include commas, you must escape the value strings using the format `'VALUE'`. For example: `<+input>.allowedValues('bengaluru,india','newyork,usa','london,uk')`.
 
-If you specify allowed values *and* a [default value](#default-values), the default value must be present in the list of allowed values. To specify both an allowed value and a default value, append both the `.default()` and `.allowedValues()` methods to `\<+input\>`, and make sure the list of allowed values includes the default value. For example: `\<+input\>.default(london).allowedValues(bengaluru,newyork,london)`.
+If you specify allowed values *and* a [default value](#default-values), the default value must be present in the list of allowed values. To specify both an allowed value and a default value, append both the `.default()` and `.allowedValues()` methods to `<+input>`, and make sure the list of allowed values includes the default value. For example: `<+input>.default(london).allowedValues(bengaluru,newyork,london)`.
 
 ```mdx-code-block
   </TabItem>
@@ -304,12 +304,12 @@ You must configure runtime inputs to allow specification during pipeline executi
   <TabItem value="YAML" label="YAML" default>
 ```
 
-When writing pipelines in YAML, append the `executionInput()` method to `\<+input\>`. For example, `\<+input\>.executionInput()`.
+When writing pipelines in YAML, append the `executionInput()` method to `<+input>`. For example, `<+input>.executionInput()`.
 
 You can use mid-run input along with [allowed values](#allowed-values) and [default values](#default-values). For example:
 
-* Select mid-run input from a list of allowed values: `\<+input\>.allowedValues(value1,value2).executionInput()`
-* Provide a default value and provide a list of allowed values for mid-run input: `\<+input\>.allowedValues(value1,value2).default(value1).executionInput()`
+* Select mid-run input from a list of allowed values: `<+input>.allowedValues(value1,value2).executionInput()`
+* Provide a default value and provide a list of allowed values for mid-run input: `<+input>.allowedValues(value1,value2).default(value1).executionInput()`
 
 ```mdx-code-block
   </TabItem>
@@ -334,7 +334,7 @@ To automatically use the default value during such timeouts:
 
 #### Use execution input in a script
 
-Use [expressions](#expressions) to reference runtime input from other fields in scripts (the **Command** field). To do this, use an expression that references the field that is configured for execution or runtime input. For example, `\<+execution.steps.run1.spec.shell\>` references the `shell` setting in the `run1` step. You can include this expression in a `command` to pull that value into the command during pipeline execution.
+Use [expressions](#expressions) to reference runtime input from other fields in scripts (the **Command** field). To do this, use an expression that references the field that is configured for execution or runtime input. For example, `<+execution.steps.run1.spec.shell>` references the `shell` setting in the `run1` step. You can include this expression in a `command` to pull that value into the command during pipeline execution.
 
 ![](./static/runtime-inputs-08.png)
 
@@ -372,12 +372,12 @@ In free-text fields, such as **Command**, you can directly enter values using th
 
 When writing pipelines in YAML, enter the expression using the appropriate syntax.
 
-When you type `\<+`, Harness provides suggestions for built-in expressions as you type.
+When you type `<+`, Harness provides suggestions for built-in expressions as you type.
 
 ![](./static/runtime-inputs-13.png)
 
 ```mdx-code-block
-  </TabItem\>
+  </TabItem>
 </Tabs>
 ```
 

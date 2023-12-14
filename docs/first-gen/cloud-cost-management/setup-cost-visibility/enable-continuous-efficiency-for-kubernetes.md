@@ -50,8 +50,8 @@ Bind the cluster-admin ClusterRole to a user account. Next, you will use this us
   
 
 ```
-kubectl create clusterrolebinding cluster-admin-binding \  
---clusterrole cluster-admin \  
+kubectl create clusterrolebinding cluster-admin-binding   
+--clusterrole cluster-admin   
 --user <firstname.lastname@example.com>
 ```
 2. Obtain the Service account name and namespace used by the Harness Kubernetes Delegate. By default, when you installed the Kubernetes Delegate, the following were used:  

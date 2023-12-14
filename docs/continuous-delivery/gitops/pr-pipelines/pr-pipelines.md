@@ -95,7 +95,7 @@ You can link multiple clusters to a single environment.
 
 A Harness service logically corresponds to a microservice/application template in an ApplicationSet. Together with the environment and cluster entities, Harness resolves application `config.json` files in a Git repository to update manifest values through PR pipelines.
 
-The path to the `config.json` files will be specified in the service and will use the expression `\<+env.name\>`.
+The path to the `config.json` files will be specified in the service and will use the expression `<+env.name>`.
 ```
 examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/config.json
 ```
@@ -117,7 +117,7 @@ examples/git-generator-files-discovery/cluster-config/engineering/dev/cluster1/c
 examples/git-generator-files-discovery/cluster-config/engineering/dev/cluster2/config.json
 ```
 
-Harness can then resolve which directory to traverse during runtime and update only those applications that are deployed in a particular cluster, for example  `cluster1`. This is similar to how environments are resolved using the `\<+env.name\>` expression.
+Harness can then resolve which directory to traverse during runtime and update only those applications that are deployed in a particular cluster, for example  `cluster1`. This is similar to how environments are resolved using the `<+env.name>` expression.
 
 :::
 
@@ -137,15 +137,15 @@ For information on setting up a Harness Git connector, go to [Connect to a Git r
 
 ### Specify manifest details
 
-Now we'll define the manifest to use for the PR pipeline. We'll use the path to the `config.json` files. We'll use the expression `\<+env.name\>` in the path so that we can dynamically select the path based on the Harness environment we select: **dev** or **prod**.
+Now we'll define the manifest to use for the PR pipeline. We'll use the path to the `config.json` files. We'll use the expression `<+env.name>` in the path so that we can dynamically select the path based on the Harness environment we select: **dev** or **prod**.
 
 In **Manifest Details**, enter the following settings and then click **Submit**.
 1. **Manifest Name:** enter **config.json**.
 2. **Git Fetch Type:** select **Latest from Branch**.
 3. **Branch:** enter the name of the main branch (master, main, etc).
-4. **File Path:** enter `examples/git-generator-files-discovery/cluster-config/engineering/\<+env.name\>/config.json`.
+4. **File Path:** enter `examples/git-generator-files-discovery/cluster-config/engineering/<+env.name>/config.json`.
 
-    Note the use of `\<+env.name\>`.
+    Note the use of `<+env.name>`.
 
     ![](static/harness-git-ops-application-set-tutorial-53.png)
 
@@ -249,7 +249,7 @@ You can copy the expression for any output in the **Output Name** column and use
 
 This step reverts the commit passed and creates a new PR. Use this step if you want to run any tests or automation on the pipeline and then revert the commit done by the **Update Release Repo** step.
   
-The Revert PR step uses the commitId of the Update Release Repo step as input. The commitId can be an expression, runtime input, or a static value. For example, `\<+pipeline.stages.deploy.spec.execution.steps.updateReleaseRepo.updateReleaseRepoOutcome.commitId\>`. 
+The Revert PR step uses the commitId of the Update Release Repo step as input. The commitId can be an expression, runtime input, or a static value. For example, `<+pipeline.stages.deploy.spec.execution.steps.updateReleaseRepo.updateReleaseRepoOutcome.commitId>`. 
 
 The Revert PR step creates a new branch and creates a commit to revert the changes done in the Update Release Repo step commit. 
 

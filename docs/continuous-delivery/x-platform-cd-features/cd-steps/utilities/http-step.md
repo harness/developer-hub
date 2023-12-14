@@ -14,7 +14,7 @@ You can use the HTTP step to run HTTP methods containing URLs, methods, headers,
 
 The following list covers the step settings.
 
-- Name: The name of the step. You'll use this name when you reference the step settings. For example, if the step name is HTTP and you want to reference the URL entered in its **URL** setting, use: `\<+pipeline.stages.tooltips.spec.execution.steps.HTTP.spec.url\>`.
+- Name: The name of the step. You'll use this name when you reference the step settings. For example, if the step name is HTTP and you want to reference the URL entered in its **URL** setting, use: `<+pipeline.stages.tooltips.spec.execution.steps.HTTP.spec.url>`.
 - Timeout: The timeout for the step. Timeouts can be set at the pipeline level also.
 - URL: The URL for the HTTP call.
 - Method: The [HTTP method](https://restfulapi.net/http-methods/#summary) to use in the step.
@@ -22,16 +22,16 @@ The following list covers the step settings.
 
 ## Assertions in the HTTP step
 
-**Assertion** is used to validate the incoming response. For example, if you wanted to check the health of an HTTP connection, use the assertion `\<+httpResponseCode\>==200`.
+**Assertion** is used to validate the incoming response. For example, if you wanted to check the health of an HTTP connection, use the assertion `<+httpResponseCode>==200`.
 
-The expression `\<+httpResponseCode\>==200` will evaluate to true if the HTTP call returns a 200 code. You can also use the reverse expression `200==\<+httpResponseCode\>`.
+The expression `<+httpResponseCode>==200` will evaluate to true if the HTTP call returns a 200 code. You can also use the reverse expression `200==<+httpResponseCode>`.
 
 Expressions can use the following aliases to refer to the HTTP responses, URL, and method.
 
-* `\<+httpResponseCode\>`
-* `\<+httpUrl\>`
-* `\<+httpMethod\>`
-* `\<+httpResponseBody\>`
+* `<+httpResponseCode>`
+* `<+httpUrl>`
+* `<+httpMethod>`
+* `<+httpResponseBody>`
 
 ### String assertions in the HTTP step
 
@@ -39,8 +39,8 @@ To assert using strings in expressions, use double quotes. Without double quotes
 
 Here are some examples:
 
-- Correct: `"\<+pipeline.variables.var1\>"=="http"`.
-- Incorrect: `\<+pipeline.variables.var1\>==http`.
+- Correct: `"<+pipeline.variables.var1>"=="http"`.
+- Incorrect: `<+pipeline.variables.var1>==http`.
 
 ### Integer assertions in the HTTP step
 
@@ -48,8 +48,8 @@ Assertions using integers should be done without any quotes because both sides o
 
 Here are some examples:
 
-- Correct: `\<+pipeline.variables.EXPECTED_RESPONSE\>==\<+httpResponseCode\>`.
-- Incorrect: `\<+pipeline.variables.EXPECTED_RESPONSE\>"=="\<+httpResponseCode\>`.
+- Correct: `<+pipeline.variables.EXPECTED_RESPONSE>==<+httpResponseCode>`.
+- Incorrect: `<+pipeline.variables.EXPECTED_RESPONSE>"=="<+httpResponseCode>`.
 
 ### Assertion failures and failure strategies
 
@@ -66,7 +66,7 @@ When an assertion fails
 Enter the media type for the message. For example, if you are using the GET method, the headers are used to specify the GET response body message type.
 
 1. In **Key**, enter `Token`
-2. In **Value**, enter `\<+secrets.getValue("aws-playground_AWS_secret_key")\>`
+2. In **Value**, enter `<+secrets.getValue("aws-playground_AWS_secret_key")>`
 
 Another method:
 
@@ -81,7 +81,7 @@ Create input variables that can be used by other fields within the step. The **V
 
 These variables can be used by other fields like URLs by using the following expressions: 
 
-`\<+spec.inputVariables.variable_name\>` or `\<+step.spec.inputVariables.variable_name\>`
+`<+spec.inputVariables.variable_name>` or `<+step.spec.inputVariables.variable_name>`
 
 ![](./static/http-step-06.png)
 
@@ -89,19 +89,19 @@ These variables can be used by other fields like URLs by using the following exp
 
 Create output variables to be used by other steps in the stage. The **Value** setting can contain any HTTP step input, output, or response information.
 
-You can also use ​JSON and XML functors in the values for the output variable. For example, `\<+json.select("data.attributes.version_pins.mvn-service://new-construction-api", httpResponseBody)\>`.
+You can also use ​JSON and XML functors in the values for the output variable. For example, `<+json.select("data.attributes.version_pins.mvn-service://new-construction-api", httpResponseBody)>`.
 
 You can use pipeline variables along with `httpResponseBody` and `httpResponseCode`.
 
 Here are some examples:
 
-`\<+json.object(httpResponseBody).title\>`
+`<+json.object(httpResponseBody).title>`
 
-`\<+json.select(<+pipeline.variables.title\>, httpResponseBody)>`
+`<+json.select(<+pipeline.variables.title>, httpResponseBody)>`
 
 To concatenate strings within the JSON functor:
 
-`\<+json.select(<+ <+pipeline.variables.user\> + \<+pipeline.variables.id\>>,httpResponseBody)>` or `\<+json.select("user".concat(<+pipeline.variables.id\>),httpResponseBody)>`
+`<+json.select(<+ <+pipeline.variables.user> + <+pipeline.variables.id>>,httpResponseBody)>` or `<+json.select("user".concat(<+pipeline.variables.id>),httpResponseBody)>`
 
 For more information, go to [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors).
 
@@ -131,14 +131,14 @@ In the following examples, the Id of the HTTP step is `HTTP`.
 
 | **Input Name** | **Input Reference Example** | **Input Value Example** |
 | --- | --- | --- |
-| identifier | `\<+pipeline.stages.HTTP.spec.execution.steps.check_response.identifier\>` | `check\_response` |
-| name | `\<+pipeline.stages.HTTP.spec.execution.steps.check_response.name\>` | `check response` |
-| timeout | `\<+pipeline.stages.HTTP.spec.execution.steps.check_response.timeout\>` | `10s` |
-| type | `\<+pipeline.stages.HTTP.spec.execution.steps.check_response.type\>` | `Http` |
-| url | `\<+pipeline.stages.HTTP.spec.execution.steps.check_response.spec.url\>` | `https://www.google.com/search?q=` |
-| method | `\<+pipeline.stages.HTTP.spec.execution.steps.check_response.spec.method\>` | `GET` |
-| requestBody | `\<+pipeline.stages.HTTP.spec.execution.steps.check_response.spec.requestBody\>` | `current+date` |
-| assertion | `\<+pipeline.stages.HTTP.spec.execution.steps.check_response.spec.assertion\>` | `\<+httpResponseCode\> == 200` |
+| identifier | `<+pipeline.stages.HTTP.spec.execution.steps.check_response.identifier>` | `check_response` |
+| name | `<+pipeline.stages.HTTP.spec.execution.steps.check_response.name>` | `check response` |
+| timeout | `<+pipeline.stages.HTTP.spec.execution.steps.check_response.timeout>` | `10s` |
+| type | `<+pipeline.stages.HTTP.spec.execution.steps.check_response.type>` | `Http` |
+| url | `<+pipeline.stages.HTTP.spec.execution.steps.check_response.spec.url>` | `https://www.google.com/search?q=` |
+| method | `<+pipeline.stages.HTTP.spec.execution.steps.check_response.spec.method>` | `GET` |
+| requestBody | `<+pipeline.stages.HTTP.spec.execution.steps.check_response.spec.requestBody>` | `current+date` |
+| assertion | `<+pipeline.stages.HTTP.spec.execution.steps.check_response.spec.assertion>` | `<+httpResponseCode> == 200` |
 
 ### Outputs
 
@@ -146,11 +146,11 @@ In the following examples, the Id of the HTTP step is `HTTP`.
 
 | **Output** | **Output Reference Example** | **Output Value Example** |
 | --- | --- | --- |
-| httpUrl | `\<+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpUrl\>` | `https://www.google.com/search?q=` |
-| httpMethod | `\<+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpMethod\>` | `GET` |
-| httpResponseCode | `\<+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpResponseCode\>` | `200` |
-| httpResponseBody | `\<+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpResponseBody\>` | `Hello` |
-| status | `\<+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.status\>` | `SUCCESS` |
+| httpUrl | `<+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpUrl>` | `https://www.google.com/search?q=` |
+| httpMethod | `<+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpMethod>` | `GET` |
+| httpResponseCode | `<+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpResponseCode>` | `200` |
+| httpResponseBody | `<+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpResponseBody>` | `Hello` |
+| status | `<+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.status>` | `SUCCESS` |
 
 
 ## Use a certificate and key
@@ -186,7 +186,7 @@ Add the required headers in **Headers** and run the deployment. Adding the head
 
 Harness secrets are not used during capability checks. They are used in actual steps only. If you have a step configured with URLs and multiple headers like:
 
-`x-api-key : \<+secret.getValue('apikey')\>`   
+`x-api-key : <+secret.getValue('apikey')>`   
 `content-type : application/json`
 
 During a capability check, the non-secret headers are used as is but the secret headers are masked. Harness makes the HTTP request with the URL and headers as follows:
@@ -214,13 +214,13 @@ To configure polling in the HTTP step:
 
 1. In the step, go to **Step Parameters** > **Optional Configuration**, and enter the following details: 
     * **Assertion (optional)**: Enter the expression to validate the incoming response. You can use the following aliases to refer to the HTTP responses, URL, and method:
-        * `\<+httpsResponseCode\>`
-        * `\<+httpUrl\>`
-        * `\<+httpMethod\>`
-        * `\<+httpResponseBody\>`
+        * `<+httpsResponseCode>`
+        * `<+httpUrl>`
+        * `<+httpMethod>`
+        * `<+httpResponseBody>`
     * **Headers (optional)**: Enter the key and value for the headers in the message. 
       
-      For example, in **Key**, enter the token, in **Value**, enter secret references such as `\<+secrets.getValue("aws-playground_AWS_secret_key")\>`.
+      For example, in **Key**, enter the token, in **Value**, enter secret references such as `<+secrets.getValue("aws-playground_AWS_secret_key")>`.
     * **Output (optional)**: Create the output steps to be used by other steps in the stage. 
       
       The **Value** setting can contain any HTTP step input, output, or response information. You can also use JSON and XML functors in the value.
@@ -268,7 +268,7 @@ You can add the HTTP step to any CD Pipeline stage independent of deployment str
 
    For example, if the stage name is **dev** and the step Id is **HTTP** and you want to reference the URL entered in its **URL** setting, you'd use:
 
-   `\<+pipeline.stages.dev.spec.execution.steps.HTTP.spec.url\>`
+   `<+pipeline.stages.dev.spec.execution.steps.HTTP.spec.url>`
 
 2. In **Timeout**, enter a timeout for this step.You can use:
 
@@ -287,7 +287,7 @@ In **URL**, enter a URL for the call. It must include the `http://` scheme.
 
 For more information on runtime inputs and expressions, go to [Fixed values runtime inputs and expressions](/docs/platform/variables-and-expressions/runtime-inputs/)..
 
-You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://\<+service.name\>/...`.
+You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
 
 Before handing the execution of the HTTP step to a Harness Delegate, Harness performs a capability check on the URL to ensure that a non-400 response code is returned.
 
@@ -305,7 +305,7 @@ Harness can allow URLs with invalid characters such as a blank space, `^`, `{`, 
 
 <!-- ### Using secrets in the HTTP step URL
 
-In some cases, you might want to use a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) in the **URL** setting. For example, `https://www.google.com/\<+secrets.getValue("xyz")\>`.
+In some cases, you might want to use a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) in the **URL** setting. For example, `https://www.google.com/<+secrets.getValue("xyz")>`.
 
 It's important to know how Harness uses the secret when evaluating the URL.
 
@@ -332,22 +332,22 @@ In Request **Body**, enter the body of the HTTP payload to send to the URL.
 
 You can use a **Fixed Value**, **Runtime Input**, or **Expression**.
 
-You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://\<+service.name\>/...`.
+You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
 
 Before handing the execution of the HTTP step to a Harness Delegate, Harness performs a capability check on the URL to ensure that a non-400 response code is returned.
 
 ### Assertion
 
-The assertion is used to validate the incoming response. For example, if you wanted to check the health of an HTTP connection, you could use the assertion `\<+httpResponseCode\> == 200`.
+The assertion is used to validate the incoming response. For example, if you wanted to check the health of an HTTP connection, you could use the assertion `<+httpResponseCode> == 200`.
 
-The expression `\<+httpResponseCode\> == 200` will evaluate to true if the HTTP call returns a 200 code.
+The expression `<+httpResponseCode> == 200` will evaluate to true if the HTTP call returns a 200 code.
 
 Expressions can use the following aliases to refer to the HTTP responses, URL, and method:
 
-* `\<+httpResponseCode\>`
-* `\<+httpUrl\>`
-* `\<+httpMethod\>`
-* `\<+httpResponseBody\>`
+* `<+httpResponseCode>`
+* `<+httpUrl>`
+* `<+httpMethod>`
+* `<+httpResponseBody>`
 
 ### String assertions in the HTTP step
 
@@ -355,8 +355,8 @@ To assert using strings in expressions, use double quotes. Without double quotes
 
 Here are some examples:
 
-- Correct: `"\<+pipeline.variables.var1\>"=="http"`.
-- Incorrect: `\<+pipeline.variables.var1\>==http`.
+- Correct: `"<+pipeline.variables.var1>"=="http"`.
+- Incorrect: `<+pipeline.variables.var1>==http`.
 
 ### Integer assertions in the HTTP step
 
@@ -364,8 +364,8 @@ Assertions using integers should be done without any quotes because both sides o
 
 Here are some examples:
 
-- Correct: `\<+pipeline.variables.EXPECTED_RESPONSE\>==\<+httpResponseCode\>`.
-- Incorrect: `\<+pipeline.variables.EXPECTED_RESPONSE\>"=="\<+httpResponseCode\>`.
+- Correct: `<+pipeline.variables.EXPECTED_RESPONSE>==<+httpResponseCode>`.
+- Incorrect: `<+pipeline.variables.EXPECTED_RESPONSE>"=="<+httpResponseCode>`.
 
 You can use a Fixed Value, Runtime Input, or Expression.
 
@@ -386,7 +386,7 @@ You can reference [Harness secrets](/docs/platform/secrets/add-use-text-secrets)
 
 For example, in **Key**, enter `Token`.
 
-In **Value**, enter `\<+secrets.getValue("aws-playground_AWS_secret_key")\>`.
+In **Value**, enter `<+secrets.getValue("aws-playground_AWS_secret_key")>`.
 
 ### Output variables
 
@@ -405,7 +405,7 @@ Save the step and then click **Variables**.
 
 The FQN will resolve to the variable value at execution runtime.
 
-You can also use ​JSON and XML functors in the values for the output variable. For example, `\<+json.select("data.attributes.version_pins.mvn-service://new-construction-api", httpResponseBody)\>`.
+You can also use ​JSON and XML functors in the values for the output variable. For example, `<+json.select("data.attributes.version_pins.mvn-service://new-construction-api", httpResponseBody)>`.
 
 See [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors).
 
@@ -460,7 +460,7 @@ You can add multiple steps to the group quickly using YAML. Just paste additiona
                       outputVariables: []  
                   timeout: 10s  
   failureStrategies: []  
-  spec: \{\}  
+  spec: {}  
 ...
 ```
 

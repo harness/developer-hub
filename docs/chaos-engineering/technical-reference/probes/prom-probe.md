@@ -306,7 +306,7 @@ probe:
     type: "promProbe"
     promProbe/inputs:
       endpoint: "prometheus-server.prometheus.svc.cluster.local:9090"
-      query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
+      query: "sum(rate(http_requests_total{code=~"2.."}[1m])) by (job)"
       comparator:
         criteria: ">" #supports >=,<=,>,<,==,!= comparison
         value: "0"
@@ -350,7 +350,7 @@ spec:
           # endpoint for the promethus service
           endpoint: "prometheus-server.prometheus.svc.cluster.local:9090"
           # promql query, which should be executed
-          query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
+          query: "sum(rate(http_requests_total{code=~"2.."}[1m])) by (job)"
           comparator:
             # criteria which should be followed by the actual output and the expected output
             #supports >=,<=,>,<,==,!= comparision
@@ -440,7 +440,7 @@ spec:
           # endpoint for the promethus service
           endpoint: "prometheus-server.prometheus.svc.cluster.local:9090"
           # promql query, which should be executed
-          query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
+          query: "sum(rate(http_requests_total{code=~"2.."}[1m])) by (job)"
           comparator:
             # criteria which should be followed by the actual output and the expected output
             #supports >=,<=,>,<,==,!= comparision
@@ -491,7 +491,7 @@ spec:
           # endpoint for the promethus service
           endpoint: "https://prometheus-server.harness.io"
           # promql query, which should be executed
-          query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
+          query: "sum(rate(http_requests_total{code=~"2.."}[1m])) by (job)"
           comparator:
             # criteria which should be followed by the actual output and the expected output
             #supports >=,<=,>,<,==,!= comparision
@@ -535,7 +535,7 @@ spec:
           # endpoint for the promethus service
           endpoint: "https://prometheus-server.harness.io"
           # promql query, which should be executed
-          query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
+          query: "sum(rate(http_requests_total{code=~"2.."}[1m])) by (job)"
           comparator:
             # criteria which should be followed by the actual output and the expected output
             #supports >=,<=,>,<,==,!= comparision

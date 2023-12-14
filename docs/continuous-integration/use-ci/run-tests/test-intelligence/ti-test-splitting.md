@@ -76,7 +76,7 @@ Class timing uses test times from previous runs to determine how to split the te
 
 ### Differentiate report names
 
-Modify the **Report Paths** (`reports.paths`) value to include a [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables), such as `\<+strategy.iteration\>`, to ensure there is a unique results file for each parallel run. For example:
+Modify the **Report Paths** (`reports.paths`) value to include a [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables), such as `<+strategy.iteration>`, to ensure there is a unique results file for each parallel run. For example:
 
 ```yaml
                        reports:
@@ -88,7 +88,7 @@ Modify the **Report Paths** (`reports.paths`) value to include a [Harness expres
 
 You can also use environment variables and expressions to differentiate parallel runs in build logs.
 
-1. Add two environment variables to the `step.spec`: `HARNESS_STAGE_INDEX: \<+strategy.iteration\>` and `HARNESS_STAGE_TOTAL: \<+strategy.iterations\>`.
+1. Add two environment variables to the `step.spec`: `HARNESS_STAGE_INDEX: <+strategy.iteration>` and `HARNESS_STAGE_TOTAL: <+strategy.iterations>`.
 2. Add a `preCommand` to echo the variables' values so you can easily see the values in build logs.
 
 ```yaml

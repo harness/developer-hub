@@ -191,27 +191,27 @@ If we simply rendered the `httpResponseBody`, we would get:
 ```json
 {data:{attributes:name:new-construction-api}} {data:{attributes:version_pins:{mvn-service://new-construction-api:0.0.253-feature_NC-6595.8d268cd~nc1.6312a66}}}
 ```
-If we render it using `\<+json.format(<+pipeline.stages.Functors.spec.execution.steps.jsonformat1.output.httpResponseBody\>)>` we get a JSON formatted string:
+If we render it using `<+json.format(<+pipeline.stages.Functors.spec.execution.steps.jsonformat1.output.httpResponseBody>)>` we get a JSON formatted string:
 
 
 ```json
-{\n  "data": {\n    "attributes": {\n      "name": "new-construction-api",\n      "version_pins": {\n        "mvn-service://new-construction-api": "0.0.253-feature_NC-6595.8d268cd~nc1.6312a66"\n      }\n    }\n  }\n}\n
+{n  "data": {n    "attributes": {n      "name": "new-construction-api",n      "version_pins": {n        "mvn-service://new-construction-api": "0.0.253-feature_NC-6595.8d268cd~nc1.6312a66"n      }n    }n  }n}n
 ```
 
 :::important
 
-1. JSON accepts the control sequence `\n` as strings. To format JSON, use `jq` to prettify the JSON.
+1. JSON accepts the control sequence `n` as strings. To format JSON, use `jq` to prettify the JSON.
 
 2. Conditional expressions within double quotes are considered strings.
    
-   So, `"\<+json.select("fields.status.name", httpResponseBody)\>"=="In Progress"` is treated as string comparison and will not work.
+   So, `"<+json.select("fields.status.name", httpResponseBody)>"=="In Progress"` is treated as string comparison and will not work.
    
-   Use `\<+json.select("fields.status.name", httpResponseBody)\>=="In Progress"` instead.
+   Use `<+json.select("fields.status.name", httpResponseBody)>=="In Progress"` instead.
    
    The keyword null, too, shouldn't be enclosed in quotes during comparison. 
    
    Here's an example of a null comparison:
-   `\<+json.object(httpResponseBody).fields.parent\>!=null`
+   `<+json.object(httpResponseBody).fields.parent>!=null`
 
 :::
 

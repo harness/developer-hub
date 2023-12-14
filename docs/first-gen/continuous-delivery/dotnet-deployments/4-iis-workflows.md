@@ -100,7 +100,7 @@ Now that the deployment was successful, confirm the website was added to the Win
   
 
 ```
-INFO 2018-08-27 15:34:43 IIS-website 2 Started C:\Artifacts\IIS-website\relea http :8080:*
+INFO 2018-08-27 15:34:43 IIS-website 2 Started C:ArtifactsIIS-websiterelea http :8080:*
 ```
 4. Connect to your Windows instance via Microsoft Remote Desktop or other console.
 5. On the Windows instance, navigate to the location Harness reported to confirm the website was created:![](./static/4-iis-workflows-09.png)

@@ -372,10 +372,10 @@ service:
 Create a service using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
 ```json
-curl -i -X POST \
-  'https://app.harness.io/gateway/ng/api/servicesV2/batch?accountIdentifier=<Harness account Id>' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: <Harness API key>' \
+curl -i -X POST 
+  'https://app.harness.io/gateway/ng/api/servicesV2/batch?accountIdentifier=<Harness account Id>' 
+  -H 'Content-Type: application/json' 
+  -H 'x-api-key: <Harness API key>' 
   -d '[{
     "identifier": "svcasg",
     "orgIdentifier": "default",
@@ -386,7 +386,7 @@ curl -i -X POST \
       "property1": "string",
       "property2": "string"
     },
-    "yaml": "service:\n  name: helloworld\n  identifier: Google_Function\n  serviceDefinition:\n    type: GoogleCloudFunctions\n    spec:\n      manifests:\n        - manifest:\n            identifier: GoogleFunction\n            type: GoogleCloudFunctionDefinition\n            spec:\n              store:\n                type: Harness\n                spec:\n                  files:\n                    - /GoogleFunctionDefinition.yaml\n      artifacts:\n        primary:\n          primaryArtifactRef: <+input>\n          sources:\n            - spec:\n                connectorRef: gcp_connector\n                project: cd-play\n                bucket: cloud-functions-automation-bucket\n                artifactPath: helloworld\n              identifier: helloworld\n              type: GoogleCloudStorage"
+    "yaml": "service:n  name: helloworldn  identifier: Google_Functionn  serviceDefinition:n    type: GoogleCloudFunctionsn    spec:n      manifests:n        - manifest:n            identifier: GoogleFunctionn            type: GoogleCloudFunctionDefinitionn            spec:n              store:n                type: Harnessn                spec:n                  files:n                    - /GoogleFunctionDefinition.yamln      artifacts:n        primary:n          primaryArtifactRef: <+input>n          sources:n            - spec:n                connectorRef: gcp_connectorn                project: cd-playn                bucket: cloud-functions-automation-bucketn                artifactPath: helloworldn              identifier: helloworldn              type: GoogleCloudStorage"
   }]'
 ```
 
@@ -515,10 +515,10 @@ environment:
 Create an environment using the [Create Environments](https://apidocs.harness.io/tag/Environments#operation/createEnvironmentV2) API.
 
 ```json
-curl -i -X POST \
-  'https://app.harness.io/gateway/ng/api/environmentsV2?accountIdentifier=<account_id>' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: <token>' \
+curl -i -X POST 
+  'https://app.harness.io/gateway/ng/api/environmentsV2?accountIdentifier=<account_id>' 
+  -H 'Content-Type: application/json' 
+  -H 'x-api-key: <token>' 
   -d '{
     "orgIdentifier": "default",
     "projectIdentifier": "CD_Docs",
@@ -531,7 +531,7 @@ curl -i -X POST \
     "description": "",
     "color": "",
     "type": "PreProduction",
-    "yaml": "environment:\n  name: GCF\n  identifier: GCF\n  description: \"dev google cloud environment\"\n  tags: {}\n  type: PreProduction\n  orgIdentifier: default\n  projectIdentifier: serverlesstest\n  variables: []"
+    "yaml": "environment:n  name: GCFn  identifier: GCFn  description: "dev google cloud environment"n  tags: {}n  type: PreProductionn  orgIdentifier: defaultn  projectIdentifier: serverlesstestn  variables: []"
   }'
 ```
 
@@ -648,10 +648,10 @@ infrastructureDefinition:
 Create an infrastructure definition using the [Create Infrastructure](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure) API.
 
 ```json
-curl -i -X POST \
-  'https://app.harness.io/gateway/ng/api/infrastructures?accountIdentifier=<account_Id>' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: <token>' \
+curl -i -X POST 
+  'https://app.harness.io/gateway/ng/api/infrastructures?accountIdentifier=<account_Id>' 
+  -H 'Content-Type: application/json' 
+  -H 'x-api-key: <token>' 
   -d '{
     "identifier": "dev",
     "orgIdentifier": "default",
@@ -664,7 +664,7 @@ curl -i -X POST \
       "property2": "2"
     },
     "type": "Asg",
-    "yaml": "infrastructureDefinition:\n  name: dev\n  identifier: dev\n  description: \"dev google cloud infrastructure\"\n  tags: {}\n  orgIdentifier: default\n  projectIdentifier: serverlesstest\n  environmentRef: dev\n  deploymentType: GoogleCloudFunctions\n  type: GoogleCloudFunctions\n  spec:\n    connectorRef: gcp_connector\n    project: cd-play\n    region: us-central1\n  allowSimultaneousDeployments: false"
+    "yaml": "infrastructureDefinition:n  name: devn  identifier: devn  description: "dev google cloud infrastructure"n  tags: {}n  orgIdentifier: defaultn  projectIdentifier: serverlesstestn  environmentRef: devn  deploymentType: GoogleCloudFunctionsn  type: GoogleCloudFunctionsn  spec:n    connectorRef: gcp_connectorn    project: cd-playn    region: us-central1n  allowSimultaneousDeployments: false"
   }'
 ```
 
@@ -846,7 +846,7 @@ output "region_name" {
 ```
 
 
-In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `\<+provisioner.OUTPUT_NAME\>`, such as `\<+provisioner.project_name\>`.
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.project_name>`.
 
 <figure>
 

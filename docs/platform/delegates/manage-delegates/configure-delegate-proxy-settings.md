@@ -51,18 +51,18 @@ If an in-cluster Kubernetes delegate has a proxy configured, then `NO_PROXY` mus
 The following script installs a Docker delegate with an HTTP proxy scheme.
 
 ```
-docker run --cpus=1 --memory=2g \
-  -e DELEGATE_NAME=docker-delegate \
-  -e RUNNER_URL=https://<YOUR_RUNNER_URL> \
-  -e DELEGATE_TAGS=macos-amd64 \
-  -e PROXY_HOST=YOUR_PROXY_HOST_IP \
-  -e PROXY_PORT=YOUR_PROXY_PORT \
-  -e PROXY_SCHEME=http \
-  -e NEXT_GEN="true" \
-  -e DELEGATE_TYPE="DOCKER" \
-  -e ACCOUNT_ID=YOUR_ACCOUNT_ID \
-  -e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN \
-  -e LOG_STREAMING_SERVICE_URL=https://<YOUR_LOG_STREAMING_SERVICE_URL> \
+docker run --cpus=1 --memory=2g 
+  -e DELEGATE_NAME=docker-delegate 
+  -e RUNNER_URL=https://<YOUR_RUNNER_URL> 
+  -e DELEGATE_TAGS=macos-amd64 
+  -e PROXY_HOST=YOUR_PROXY_HOST_IP 
+  -e PROXY_PORT=YOUR_PROXY_PORT 
+  -e PROXY_SCHEME=http 
+  -e NEXT_GEN="true" 
+  -e DELEGATE_TYPE="DOCKER" 
+  -e ACCOUNT_ID=YOUR_ACCOUNT_ID 
+  -e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN 
+  -e LOG_STREAMING_SERVICE_URL=https://<YOUR_LOG_STREAMING_SERVICE_URL> 
   -e MANAGER_HOST_AND_PORT=https://<YOUR_MANAGER_HOST_AND_PORT>/delegate:23.09.80505
 ```
 

@@ -84,11 +84,11 @@ You can use wildcards in the Build/Tag Filter, and you can enable **Regex** to e
 For example, if the build is `todolist-v2.0.zip` :
 
 * With **Regex** not enabled, `todolist*` or `*olist*`
-* or, with **Regex** enabled, the regex `todolist-v\d.\d.zip`
+* or, with **Regex** enabled, the regex `todolist-vd.d.zip`
 
 If the regex expression does not result in a match, Harness ignores the value.
 
-Harness supports standard Java regex. For example, if **Regex** is enabled and the intent is to match any branch, the wildcard should be `.*` instead of simply a wildcard `*`. If you wanted to match all of the files that end in `-DEV.tar` you would enter `.*-DEV\.tar`.When you are done, click **Next**.
+Harness supports standard Java regex. For example, if **Regex** is enabled and the intent is to match any branch, the wildcard should be `.*` instead of simply a wildcard `*`. If you wanted to match all of the files that end in `-DEV.tar` you would enter `.*-DEV.tar`.When you are done, click **Next**.
 
 Now you can select the Workflow or Pipeline to deploy whenever the Artifact Source you selected receives a new artifact matching your criteria.
 

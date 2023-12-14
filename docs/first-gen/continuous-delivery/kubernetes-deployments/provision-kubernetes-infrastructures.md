@@ -125,7 +125,7 @@ You map the Terraform script outputs using this syntax, where `exact_name` is th
 
 
 ```
-${terrafrom.*exact\_name*}
+${terrafrom.*exact_name*}
 ```
 :::note
 When you map a Terraform script output to a Harness field as part of a Service Mapping, the variable for the output, `${terrafrom.exact_name​}`, can be used anywhere in the Workflow that uses that Terraform Provisioner.

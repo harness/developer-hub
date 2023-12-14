@@ -170,7 +170,7 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
    For more information about Windows builds, go to [Run Windows builds in a Kubernetes cluster build infrastructure](./run-windows-builds-in-a-kubernetes-build-infrastructure.md).
 4. In **Kubernetes Cluster**, select your Kubernetes cluster connector.
 5. In **Namespace**, enter the Kubernetes [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) to use when this build runs.
-   You can use plain text, [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) (`\<+input\>`), or an expression for the namespace.
+   You can use plain text, [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) (`<+input>`), or an expression for the namespace.
    Your Kubernetes delegate can be in a different namespace than the one defined here.
 6. If necessary, configure any advanced settings, as described below and in the [CI Build stage settings](../ci-stage-settings.md). Review the details of each setting to understand whether it is required for your configuration.
 
@@ -203,7 +203,7 @@ In Harness, go to a pipeline where you want to use the Kubernetes cluster build 
 
 * `type`: `KubernetesDirect`
 * `spec.connectorRef`: Enter your Kubernetes cluster connector ID.
-* `spec.namespace`: Enter the Kubernetes [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) to use when this build runs. You can also use [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) (`\<+input\>`) or an expression for the namespace. Your Kubernetes delegate can be in a different namespace than the one defined here.
+* `spec.namespace`: Enter the Kubernetes [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) to use when this build runs. You can also use [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) (`<+input>`) or an expression for the namespace. Your Kubernetes delegate can be in a different namespace than the one defined here.
 * `spec.os`: Specify the OS, `Linux` or `Windows`. For more information about Windows builds, go to [Run Windows builds in a Kubernetes cluster build infrastructure](./run-windows-builds-in-a-kubernetes-build-infrastructure.md).
 * Advanced settings: If necessary, configure any advanced settings, as described below and in the [CI Build stage settings](../ci-stage-settings.md). Review the details of each setting to understand whether it is required for your configuration.
 
@@ -263,7 +263,7 @@ For more information, go to the Kubernetes documentation on [Labels and Selector
 Custom label values must the following regex in order to be generated:
 
 ```
-^[a-z0-9A-Z][a-z0-9A-Z\\-_.]*[a-z0-9A-Z]$
+^[a-z0-9A-Z][a-z0-9A-Z-_.]*[a-z0-9A-Z]$
 ```
 
 Harness adds the following labels automatically:

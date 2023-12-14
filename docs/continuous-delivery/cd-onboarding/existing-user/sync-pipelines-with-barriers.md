@@ -37,7 +37,7 @@ Here is the Barrier step configuration in the stage template.
 
 ![picture 1](../new-user/static/d569120c89778cb3ca5ac44c6218f38601d7d070ec77fa9b3f9b471b9037523d.png)  
 
-A runtime input with the default parameter `\<+input\>.default(release)` is used to ensure there is always an Id set to connect stages and pipelines together.
+A runtime input with the default parameter `<+input>.default(release)` is used to ensure there is always an Id set to connect stages and pipelines together.
 
 <details>
 

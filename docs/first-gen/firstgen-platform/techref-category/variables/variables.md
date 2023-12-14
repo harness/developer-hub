@@ -36,7 +36,7 @@ Harness permits variables only within their scope. You will not see a variable a
 
 
 ```
-${instance.hostName.split('\.')[0]}
+${instance.hostName.split('.')[0]}
 ```
 A split method is called with the argument **('\.')**, and the result is a Java array, returning the first item, **[0]**.
 
@@ -53,14 +53,14 @@ JEXL supports all [Java String methods](https://docs.oracle.com/javase/8/docs/ap
 For example, here is an object using the expression `${instance.hostName}`:
 
 ```
-${instance.hostName.split('\.')[0]}
+${instance.hostName.split('.')[0]}
 ```
 A split method is called with the argument **('\.')**, and the result is a Java array, returning the first item, **[0]**.
 
 You can manipulate strings just like you would in Java. Here's another example where JEXL is operating on a JSON data payload received from New Relic and the JAVA String `replaceAll()` method is applied:
 
 ```
-ip-${instanceDetails.aws.ip.replaceAll("\\.","-")}.us-east-2.compute.internal
+ip-${instanceDetails.aws.ip.replaceAll(".","-")}.us-east-2.compute.internal
 ```
 ## Limitations
 
@@ -202,7 +202,7 @@ For example, here is an object using the variable, `${artifact.source.repository
 
 
 ```
-${artifact.source.repositoryName.split('\.')[0]}
+${artifact.source.repositoryName.split('.')[0]}
 ```
 A split method is called with the argument **('\.')**, and the result is a Java array, returning the first item, **[0]**.
 

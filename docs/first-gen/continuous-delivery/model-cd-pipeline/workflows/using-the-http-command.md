@@ -74,7 +74,7 @@ Create variables using built-in Harness expressions.You can then publish these a
 * JSON Path:
 	+ `select()`. Example: `${json.select("path-in-response", httpResponseBody)}`
 	+ `object()`. Example: `${json.object(httpResponseBody).item}`
-	+ `list()`. Example: `{json.list(\"store.book\", httpResponseBody).get(2).isbn}`
+	+ `list()`. Example: `{json.list("store.book", httpResponseBody).get(2).isbn}`
 
 * XPath:
 	+ `select()`. Example: `${xml.select("/bookstore/book[1]/title", httpResponseBody)}`

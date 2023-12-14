@@ -47,17 +47,17 @@ Enable Secret Manager API
 ```
 
 ```
-$ gcloud services enable cloudfunctions.googleapis.com \
-cloudbuild.googleapis.com \
-run.googleapis.com \
-artifactregistry.googleapis.com \
-bigquerydatatransfer.googleapis.com \
-storagetransfer.googleapis.com \
-pubsub.googleapis.com \
-secretmanager.googleapis.com \
-cloudbilling.googleapis.com \
-iamcredentials.googleapis.com \
-container.googleapis.com \
+$ gcloud services enable cloudfunctions.googleapis.com 
+cloudbuild.googleapis.com 
+run.googleapis.com 
+artifactregistry.googleapis.com 
+bigquerydatatransfer.googleapis.com 
+storagetransfer.googleapis.com 
+pubsub.googleapis.com 
+secretmanager.googleapis.com 
+cloudbilling.googleapis.com 
+iamcredentials.googleapis.com 
+container.googleapis.com 
 ```
 ```mdx-code-block
 </TabItem>
@@ -160,7 +160,7 @@ This sets up the following entities:
 * Depending on how GCP auth is done, you might have to execute the following command to bind the service account with the user/sa through which you are executing the TF.
 
 ```
-gcloud iam service-accounts add-iam-policy-binding <service-sa> \
+gcloud iam service-accounts add-iam-policy-binding <service-sa> 
   --member='user:<usersa>' --role='roles/iam.serviceAccountUser'
 ```
 If you come across a missing permission error message on the spun up resources, assign the following roles to the specific cloud resources: 

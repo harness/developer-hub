@@ -142,24 +142,24 @@ For the above query, these sample variables specify the `SecretType`, and inclu
 
 
 ```
-curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://app.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
---header 'authorization: <Bearer-token>' \  
---form 'file=@"/Users/sampleusername/Downloads/examplefile"' \  
+curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://app.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>'   
+--header 'authorization: <Bearer-token>'   
+--form 'file=@"/Users/sampleusername/Downloads/examplefile"'   
 --form 'query="{  
-   \"query\":\"  mutation($secret: CreateSecretInput!){    createSecret(input: $secret){      secret{        id,        name        ... on EncryptedFile{          name          secretManagerId          id        }        usageScope{          appEnvScopes{            application{              filterType              appId            }            environment{              filterType              envId            }          }        }      }    }  }  \",  
-   \"variables\":{  
-      \"secret\":{  
-         \"secretType\":\"ENCRYPTED_FILE\",  
-         \"encryptedFile\":{  
-            \"name\":\"fileSecretName\",  
-            \"usageScope\":{  
-               \"appEnvScopes\":[  
+   "query":"  mutation($secret: CreateSecretInput!){    createSecret(input: $secret){      secret{        id,        name        ... on EncryptedFile{          name          secretManagerId          id        }        usageScope{          appEnvScopes{            application{              filterType              appId            }            environment{              filterType              envId            }          }        }      }    }  }  ",  
+   "variables":{  
+      "secret":{  
+         "secretType":"ENCRYPTED_FILE",  
+         "encryptedFile":{  
+            "name":"fileSecretName",  
+            "usageScope":{  
+               "appEnvScopes":[  
                   {  
-                     \"application\":{  
-                        \"filterType\":\"ALL\"  
+                     "application":{  
+                        "filterType":"ALL"  
                      },  
-                     \"environment\":{  
-                        \"filterType\":\"PRODUCTION_ENVIRONMENTS\"  
+                     "environment":{  
+                        "filterType":"PRODUCTION_ENVIRONMENTS"  
                      }  
                   }  
                ]  
@@ -214,19 +214,19 @@ For the above query, these sample variables specify the `SecretType`, and inclu
 
 
 ```
-curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://app.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
---header 'authorization: <Bearer-token>' \  
---form 'file=@"/Users/sampleusername/Downloads/examplefile"' \  
+curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://app.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>'   
+--header 'authorization: <Bearer-token>'   
+--form 'file=@"/Users/sampleusername/Downloads/examplefile"'   
 --form 'query="{  
-   \"query\":\"mutation($secret: CreateSecretInput!){    createSecret(input: $secret){      secret{        id,        name        ... on EncryptedFile{          name          secretManagerId          id          inheritScopesFromSM          scopedToAccount        }      }    }  }\",  
-   \"variables\":{  
-      \"secret\":{  
-         \"secretType\":\"ENCRYPTED_FILE\",  
-         \"encryptedFile\":{  
-            \"name\":\"fileSecretName\",  
-            \"scopedToAccount\":false,  
-            \"inheritScopesFromSM\":true,  
-            \"usageScope\":null  
+   "query":"mutation($secret: CreateSecretInput!){    createSecret(input: $secret){      secret{        id,        name        ... on EncryptedFile{          name          secretManagerId          id          inheritScopesFromSM          scopedToAccount        }      }    }  }",  
+   "variables":{  
+      "secret":{  
+         "secretType":"ENCRYPTED_FILE",  
+         "encryptedFile":{  
+            "name":"fileSecretName",  
+            "scopedToAccount":false,  
+            "inheritScopesFromSM":true,  
+            "usageScope":null  
          }  
       }  
    }  
@@ -299,27 +299,27 @@ For the above query, these sample variables specify the `SecretType`, and inclu
 
 
 ```
-curl --location --request POST 'https://app.harness.io/gateway/api/graphql?accountId=<account-id>' \  
---header 'x-api-key: <api-key>' \  
---form 'file=@"/path/to/secret/file"' \  
+curl --location --request POST 'https://app.harness.io/gateway/api/graphql?accountId=<account-id>'   
+--header 'x-api-key: <api-key>'   
+--form 'file=@"/path/to/secret/file"'   
 --form 'query="  
 {  
-    \"query\": \"  mutation($secret: UpdateSecretInput!){    updateSecret(input: $secret){      secret{        id        name        ... on EncryptedFile{          name          secretManagerId          id        }        usageScope{          appEnvScopes{            application{              filterType              appId            }            environment{              filterType              envId            }          }        }      }    }  }  \",  
-    \"variables\": {  
-        \"secret\": {  
-            \"secretType\": \"ENCRYPTED_FILE\",  
-            \"secretId\": \"<secretId>\",  
-            \"encryptedFile\": {  
-                \"name\": \"<secretName>\",  
+    "query": "  mutation($secret: UpdateSecretInput!){    updateSecret(input: $secret){      secret{        id        name        ... on EncryptedFile{          name          secretManagerId          id        }        usageScope{          appEnvScopes{            application{              filterType              appId            }            environment{              filterType              envId            }          }        }      }    }  }  ",  
+    "variables": {  
+        "secret": {  
+            "secretType": "ENCRYPTED_FILE",  
+            "secretId": "<secretId>",  
+            "encryptedFile": {  
+                "name": "<secretName>",  
                   
-                \"usageScope\": {  
-                    \"appEnvScopes\": [  
+                "usageScope": {  
+                    "appEnvScopes": [  
                         {  
-                            \"application\": {  
-                                \"filterType\": \"ALL\"  
+                            "application": {  
+                                "filterType": "ALL"  
                             },  
-                            \"environment\": {  
-                                \"filterType\": \"PRODUCTION_ENVIRONMENTS\"  
+                            "environment": {  
+                                "filterType": "PRODUCTION_ENVIRONMENTS"  
                             }  
                         }  
                     ]  
@@ -376,20 +376,20 @@ mutation ($secret: UpdateSecretInput!) {
 
 
 ```
-curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://app.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
---header 'authorization: <Bearer-token>' \  
---form 'file=@"/Users/shashanksingh/Downloads/hello"' \  
+curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://app.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>'   
+--header 'authorization: <Bearer-token>'   
+--form 'file=@"/Users/shashanksingh/Downloads/hello"'   
 --form 'query="{  
-   \"query\":\"mutation($secret: UpdateSecretInput!){    updateSecret(input: $secret){      secret{        id,        name        ... on EncryptedFile{          name          secretManagerId          id          inheritScopesFromSM          scopedToAccount        }      }    }  }\",  
-   \"variables\":{  
-      \"secret\":{  
-         \"secretType\":\"ENCRYPTED_FILE\",  
-         \"secretId\":\"tsOCZjLJRzembSBofpnVsA\",  
-         \"encryptedFile\":{  
-            \"name\":\"fileSecretName\",  
-            \"scopedToAccount\":false,  
-            \"inheritScopesFromSM\":true,  
-            \"usageScope\":null  
+   "query":"mutation($secret: UpdateSecretInput!){    updateSecret(input: $secret){      secret{        id,        name        ... on EncryptedFile{          name          secretManagerId          id          inheritScopesFromSM          scopedToAccount        }      }    }  }",  
+   "variables":{  
+      "secret":{  
+         "secretType":"ENCRYPTED_FILE",  
+         "secretId":"tsOCZjLJRzembSBofpnVsA",  
+         "encryptedFile":{  
+            "name":"fileSecretName",  
+            "scopedToAccount":false,  
+            "inheritScopesFromSM":true,  
+            "usageScope":null  
          }  
       }  
    }  

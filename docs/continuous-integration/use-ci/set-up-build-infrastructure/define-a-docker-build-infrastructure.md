@@ -52,14 +52,14 @@ Review the following requirements for local runner build infrastructures:
    Here's an example of an install script for Linux arm64:
 
    ```
-   docker run --cpus=1 --memory=2g --net=host \
-     -e DELEGATE_NAME=docker-delegate \
-     -e NEXT_GEN="true" \
-     -e DELEGATE_TYPE="DOCKER" \
-     -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
-     -e DELEGATE_TOKEN=YOUR_API_TOKEN \
-     -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
-     -e DELEGATE_TAGS="linux-arm64" \
+   docker run --cpus=1 --memory=2g --net=host 
+     -e DELEGATE_NAME=docker-delegate 
+     -e NEXT_GEN="true" 
+     -e DELEGATE_TYPE="DOCKER" 
+     -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg 
+     -e DELEGATE_TOKEN=YOUR_API_TOKEN 
+     -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ 
+     -e DELEGATE_TAGS="linux-arm64" 
      -e MANAGER_HOST_AND_PORT=https://app.harness.io/ harness/delegate:23.02.78306
    ```
 
@@ -148,15 +148,15 @@ Review the following requirements for local runner build infrastructures:
    Here's an example of an install script for macOS amd64:
 
    ```
-   docker run --cpus=1 --memory=2g \
-     -e DELEGATE_NAME=docker-delegate \
-     -e NEXT_GEN="true" \
-     -e DELEGATE_TYPE="DOCKER" \
-     -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
-     -e DELEGATE_TOKEN=YOUR_API_TOKEN \
-     -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
-     -e DELEGATE_TAGS="macos-amd64" \
-     -e RUNNER_URL=http://host.docker.internal:3000 \
+   docker run --cpus=1 --memory=2g 
+     -e DELEGATE_NAME=docker-delegate 
+     -e NEXT_GEN="true" 
+     -e DELEGATE_TYPE="DOCKER" 
+     -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg 
+     -e DELEGATE_TOKEN=YOUR_API_TOKEN 
+     -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ 
+     -e DELEGATE_TAGS="macos-amd64" 
+     -e RUNNER_URL=http://host.docker.internal:3000 
      -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.02.78306
    ```
 
@@ -273,15 +273,15 @@ Review the following requirements for Windows local runner build infrastructures
    Here's an example of the delegate install script for a local runner Windows build infrastructure:
 
    ```
-   docker run --cpus=1 --memory=2g \
-     -e DELEGATE_NAME=docker-delegate \
-     -e NEXT_GEN="true" \
-     -e DELEGATE_TYPE="DOCKER" \
-     -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
-     -e DELEGATE_TOKEN=YOUR_API_TOKEN \
-     -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
-     -e DELEGATE_TAGS="windows-amd64" \
-     -e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000 \
+   docker run --cpus=1 --memory=2g 
+     -e DELEGATE_NAME=docker-delegate 
+     -e NEXT_GEN="true" 
+     -e DELEGATE_TYPE="DOCKER" 
+     -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg 
+     -e DELEGATE_TOKEN=YOUR_API_TOKEN 
+     -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ 
+     -e DELEGATE_TAGS="windows-amd64" 
+     -e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000 
      -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.02.78306
    ```
 
@@ -317,7 +317,7 @@ Use PowerShell to run these commands.
 3. (Optional) To use self-signed certificates, set `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
-   $env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
+   $env:CI_MOUNT_VOLUMES="C:UsersinstallerDownloadscerts;C:/Users/ContainerAdministrator/.jfrog/security/certs"
    ```
 
    :::info
@@ -336,7 +336,7 @@ Use PowerShell to run these commands.
 Here is an example of the two commands to install the Windows amd64 Harness Docker Runner with self-signed certificates:
 
 ```
-$env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
+$env:CI_MOUNT_VOLUMES="C:UsersinstallerDownloadscerts;C:/Users/ContainerAdministrator/.jfrog/security/certs"
 harness-docker-runner-windows-amd64.exe server
 ```
 
@@ -438,7 +438,7 @@ Successful setup is indicated by a message such as `Finished downloading delegat
 
 ### Clone codebase fails due to missing plugin
 
-If [clone codebase](../codebase-configuration/create-and-configure-a-codebase.md) fails during stage setup (the **Initialize** step in build logs) and the runner's logs contain `Error response from daemon: plugin \"<plugin>\" not found`, this means a required plugin is missing from your build infrastructure container's Docker installation. The plugin is required to configure Docker networks.
+If [clone codebase](../codebase-configuration/create-and-configure-a-codebase.md) fails during stage setup (the **Initialize** step in build logs) and the runner's logs contain `Error response from daemon: plugin "<plugin>" not found`, this means a required plugin is missing from your build infrastructure container's Docker installation. The plugin is required to configure Docker networks.
 
 To resolve this issue:
 
@@ -461,7 +461,7 @@ This error means the number of Docker networks has exceeded the limit. To resolv
 The following error can occur in Windows local runner build infrastructures:
 
 ```
-Error response from daemon: the working directory 'C:\harness-DIRECTORY_ID' is invalid, it needs to be an absolute path
+Error response from daemon: the working directory 'C:harness-DIRECTORY_ID' is invalid, it needs to be an absolute path
 ```
 
 This error indicates there may be a problem with the Docker installation on the host machine.
@@ -469,7 +469,7 @@ This error indicates there may be a problem with the Docker installation on the 
 1. Run the following command (or a similar command) to check if the same error occurs:
 
    ```
-   docker run -w C:\blah -it -d mcr.microsoft.com/windows/servercore:ltsc2022
+   docker run -w C:blah -it -d mcr.microsoft.com/windows/servercore:ltsc2022
    ```
 
 2. If you get the `working directory is invalid` error again, uninstall Docker and follow the instructions in the Windows documentation to [Prepare Windows OS containers for Windows Server](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce#windows-server-1).

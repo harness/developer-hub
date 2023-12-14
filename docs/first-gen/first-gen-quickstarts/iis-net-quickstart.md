@@ -325,7 +325,7 @@ Now that your IIS website Basic Workflow is complete you can deploy it.
 6. In the log, note the location where the website was created:
 
 	```
-	INFO 2018-08-27 15:34:43 IIS-website 2 Started C:\Artifacts\IIS-website\relea http :8080:*
+	INFO 2018-08-27 15:34:43 IIS-website 2 Started C:ArtifactsIIS-websiterelea http :8080:*
 	```
 
 7. Connect to your Windows instance via Microsoft Remote Desktop or other console.

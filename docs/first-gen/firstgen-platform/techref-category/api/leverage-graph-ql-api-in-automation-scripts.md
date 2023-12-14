@@ -260,18 +260,18 @@ Here is a sample script that runs the curl command and allows you to check deplo
 
 
 ```
-curl 'https://app.harness.io/gateway/api/graphql?accountId=<YOUR_ACCOUNT_ID>' \  
--H 'authority: app.harness.io' \  
--H 'origin: https://app.harness.io' \  
--H 'content-type: application/json' \  
--H 'accept: */*' \  
--H 'sec-fetch-site: same-origin' \  
--H 'sec-fetch-mode: cors' \  
--H 'referer: https://app.harness.io/' \  
--H 'accept-encoding: gzip, deflate, br' \  
--H 'accept-language: en-US,en;q=0.9' \  
---header 'x-api-key:<API_KEY>' \  
---data-binary '{"query":"{userByName(name: \"John Doe\") {id name}}" }'
+curl 'https://app.harness.io/gateway/api/graphql?accountId=<YOUR_ACCOUNT_ID>'   
+-H 'authority: app.harness.io'   
+-H 'origin: https://app.harness.io'   
+-H 'content-type: application/json'   
+-H 'accept: */*'   
+-H 'sec-fetch-site: same-origin'   
+-H 'sec-fetch-mode: cors'   
+-H 'referer: https://app.harness.io/'   
+-H 'accept-encoding: gzip, deflate, br'   
+-H 'accept-language: en-US,en;q=0.9'   
+--header 'x-api-key:<API_KEY>'   
+--data-binary '{"query":"{userByName(name: "John Doe") {id name}}" }'
 ```
 ## Step 3: Use the Automation Script in Your CI Tool
 
@@ -327,7 +327,7 @@ You can also collect this information via a curl command:
 
 
 ```
-curl 'https://app.harness.io/gateway/api/graphql?accountId=<YOUR_ACCOUNT_ID>' -H 'authority: app.harness.io' -H 'pragma: no-cache' -H 'cache-control: no-cache' -H 'authorization: Bearer <YOUR_TOKEN>' -H 'origin: https://app.harness.io' -H 'content-type: application/json' -H 'accept: */*' -H 'sec-fetch-site: same-origin' -H 'sec-fetch-mode: cors' -H 'referer: https://app.harness.io/' -H 'accept-encoding: gzip, deflate, br' -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' --data-binary '{"query":"{\n  executions(filters: {startTime: {operator: AFTER, value: 1579669889000}, endTime: {operator: BEFORE, value: 1579756289000}}, limit: 100, offset: 0) {\n    nodes {\n      id\n      application {\n        name\n      }\n      endedAt\n      status\n      startedAt\n      status\n    }\n  }\n}\n","variables":null}' --compressed
+curl 'https://app.harness.io/gateway/api/graphql?accountId=<YOUR_ACCOUNT_ID>' -H 'authority: app.harness.io' -H 'pragma: no-cache' -H 'cache-control: no-cache' -H 'authorization: Bearer <YOUR_TOKEN>' -H 'origin: https://app.harness.io' -H 'content-type: application/json' -H 'accept: */*' -H 'sec-fetch-site: same-origin' -H 'sec-fetch-mode: cors' -H 'referer: https://app.harness.io/' -H 'accept-encoding: gzip, deflate, br' -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' --data-binary '{"query":"{n  executions(filters: {startTime: {operator: AFTER, value: 1579669889000}, endTime: {operator: BEFORE, value: 1579756289000}}, limit: 100, offset: 0) {n    nodes {n      idn      application {n        namen      }n      endedAtn      statusn      startedAtn      statusn    }n  }n}n","variables":null}' --compressed
 ```
 The time values passed for this query follows Unix Time. You can use [Epoch and Unix Timestamp Conversion Tools](https://www.epochconverter.com/) to convert.
 

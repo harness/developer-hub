@@ -27,7 +27,7 @@ Yes, you can manage policies in Git. For more information, go to [Configure Git 
 
 ### Can you reference Harness variables expressions in policies?
 
-No, you cannot reference Harness variable expressions such as `\<+service.name\>`  directly in a policy. You can map a Harness variable expression to a fixed JSON Key in the Governance Policy Step and then evaluate it against a policy. For more information, go to [Add a Policy step to a pipeline](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/add-a-governance-policy-step-to-a-pipeline/). 
+No, you cannot reference Harness variable expressions such as `<+service.name>`  directly in a policy. You can map a Harness variable expression to a fixed JSON Key in the Governance Policy Step and then evaluate it against a policy. For more information, go to [Add a Policy step to a pipeline](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/add-a-governance-policy-step-to-a-pipeline/). 
 
 
 ### What can I write policies against?

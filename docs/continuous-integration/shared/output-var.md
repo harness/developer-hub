@@ -87,7 +87,7 @@ Currently, this [early access feature](/release-notes/early-access) is behind th
 
 With this feature flag enabled, output variables from steps are automatically available as environment variables for other steps in the same Build (`CI`) stage. This means that, if you have a Build stage with three steps, an output variable produced from step one is automatically available as an environment variable for steps two and three.
 
-In other steps in the same stage, you can refer to the output variable by its key without additional identification. For example, an output variable called `MY_VAR` can be referenced later as simply `$MY_VAR`. Without this feature flag enabled, you must use an expression to [reference the output variable](#reference-an-output-variable), such as `\<+steps.stepID.output.outputVariables.MY_VAR\>`.
+In other steps in the same stage, you can refer to the output variable by its key without additional identification. For example, an output variable called `MY_VAR` can be referenced later as simply `$MY_VAR`. Without this feature flag enabled, you must use an expression to [reference the output variable](#reference-an-output-variable), such as `<+steps.stepID.output.outputVariables.MY_VAR>`.
 
 With or without this feature flag, you must use an expression when referencing output variables across stages, for example:
 

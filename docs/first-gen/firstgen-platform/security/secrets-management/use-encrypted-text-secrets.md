@@ -81,7 +81,7 @@ EOF
 ```
 ### Review: Valid Characters in Secret Names
 
-Secret names may only contain alphanumeric characters, `-`, `_` and `\`.
+Secret names may only contain alphanumeric characters, `-`, `_` and ``.
 
 ### Review: Quotes and Secrets in a Script
 

@@ -231,7 +231,7 @@ For the Docker Delegate, edit the `POLL_FOR_TASKS` setting to `true` in the **co
 
 
 ```
--e POLL_FOR_TASKS=true \
+-e POLL_FOR_TASKS=true 
 ```
 For the ECS Delegate, edit the `POLL_FOR_TASKS` setting in the **ecs-task-spec.json** file:
 
@@ -631,7 +631,7 @@ When you configure an [Infrastructure Definition](../continuous-delivery/model-c
 
 If a Workflow's [Setup AutoScaling Group](../continuous-delivery/aws-deployments/ami-deployments/ami-deployment.md#asg-setup-step) step fails with a message of the following form, this indicates that at least one Infrastructure Definition in the Workflow's Environment is configured with an ASG that is not currently available on AWS:
 
-`Couldn't find reference AutoScalingGroup: [ECS\_\_QA\_\_Application\_AMI\_QA\_\_245] in region: [us‑east-1]`
+`Couldn't find reference AutoScalingGroup: [ECS__QA__Application_AMI_QA__245] in region: [us‑east-1]`
 
 To correct this:
 

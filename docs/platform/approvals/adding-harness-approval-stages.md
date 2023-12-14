@@ -133,13 +133,13 @@ For example, if there were three approvers, and you added a Shell Script step th
 
 You can reference input variables using the `approverInputs` expression:
 
-`\<+pipeline.stages.[stage_name].spec.execution.steps.[step_name].output.approverInputs.[variable_name]\>`
+`<+pipeline.stages.[stage_name].spec.execution.steps.[step_name].output.approverInputs.[variable_name]>`
 
 These variables can serve as inputs to later stages of the same Pipeline, where they support conditional execution or user overrides. 
 
 For example, in a subsequent step's **Conditional Execution** settings, you could use an expression that only runs the step if the expression evaluates to 1.
 
-`\<+pipeline.stages.Shell_Script.spec.execution.steps.Harness_Approval_Step.output.approverInputs.foo\> == 1`
+`<+pipeline.stages.Shell_Script.spec.execution.steps.Harness_Approval_Step.output.approverInputs.foo> == 1`
 
 ### User groups as expressions
 
@@ -156,10 +156,10 @@ You can select one of the following types of expression for user groups:
 
   Following example shows a combined expression:
 
-  `\<+ <+pipeline.variables.grouplist1\> + "," + \<+pipeline.variables.grouplist2\> >.split(",")`
+  `<+ <+pipeline.variables.grouplist1> + "," + <+pipeline.variables.grouplist2> >.split(",")`
 
-  The expression `\<+pipeline.variables.grouplist1\>` resolves to `_project_all_users,testUserGroup`
-  and the expression `\<+pipeline.variables.grouplist2\>` resolves to `org._organization_all_users,account._account_all_users`. 
+  The expression `<+pipeline.variables.grouplist1>` resolves to `_project_all_users,testUserGroup`
+  and the expression `<+pipeline.variables.grouplist2>` resolves to `org._organization_all_users,account._account_all_users`. 
   The above two expressions resolve to a string of comma-separated user groups. The combined expression resolves to a list of the following user groups:
   - _project_all_users
   -  testUserGroup

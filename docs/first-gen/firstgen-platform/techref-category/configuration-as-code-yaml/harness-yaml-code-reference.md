@@ -141,7 +141,7 @@ defaults: # Application-wide variables collection.
   
 - name: WINDOWS_RUNTIME_PATH # The environment variable for the runtime path on the Windows host running the Harness Delegate.  
   
-  value: '%USERPROFILE%\${app.name}\${service.name}\${env.name}\runtime'
+  value: '%USERPROFILE%${app.name}${service.name}${env.name}runtime'
 ```
 ## Services
 
@@ -295,7 +295,7 @@ type: SFTP # The Artifact Source type.
   
 artifactPaths: # The artifact path on the SFTP server.  
   
-- Downloads\todo*.*zip # Regex path.  
+- Downloadstodo*.*zip # Regex path.  
   
 metadataOnly: true # Harness will only obtain metadata for the artifact.  
   
@@ -381,14 +381,14 @@ commandUnits:
   workingDirectory: ${app.defaults.RUNTIME_PATH}  
 - command: |-  
     set -x  
-    pgrep -f "\-Dcatalina.home=$WINGS_RUNTIME_PATH/tomcat"  
+    pgrep -f "-Dcatalina.home=$WINGS_RUNTIME_PATH/tomcat"  
   commandUnitType: PROCESS_CHECK_RUNNING  
   deploymentType: SSH  
   name: Process Running  
   scriptType: BASH  
 - command: |-  
     set -x  
-    pgrep -f "\-Dcatalina.home=$WINGS_RUNTIME_PATH/tomcat"  
+    pgrep -f "-Dcatalina.home=$WINGS_RUNTIME_PATH/tomcat"  
     rc=$?  
     if [ "$rc" -eq 0 ]  
     then  
@@ -436,7 +436,7 @@ commandUnitType: COMMAND # This is a Linux command.
   
 commandUnits: # Linux command units. The grep and subsequent commands and printed on one line.  
   
-- command: grep -Eo '.*:.*?[^\\]"' ${ArtifactFileName} | sed 's/\"//g' | awk -F':' '{print "export " $1 "=\"" $2 "\""}' > __dummy.sh && . ./__dummy.sh && rm __dummy.sh  
+- command: grep -Eo '.*:.*?[^]"' ${ArtifactFileName} | sed 's/"//g' | awk -F':' '{print "export " $1 "="" $2 """}' > __dummy.sh && . ./__dummy.sh && rm __dummy.sh  
   
   commandUnitType: EXEC # Exec command unit.   
   

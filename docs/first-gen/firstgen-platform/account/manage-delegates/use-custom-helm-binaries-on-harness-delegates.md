@@ -190,8 +190,8 @@ For more information about Helm Delegates, see [Install the Harness Helm Delegat
 
 1. Open the Docker Delegate values.yaml file that you downloaded from Harness, **launch-harness-delegate.sh**. If the Delegate is already running, this must be the same file you used to create the Delegate on your cluster.
 2. Specify the path of the binary as follows:
-	* For a Helm 3 binary, enter the path before the `\` in `-e HELM3_PATH= \`.
-	* For a Helm 2 binary, enter the path before the `\` in `-e HELM_PATH= \`.
+	* For a Helm 3 binary, enter the path before the `` in `-e HELM3_PATH= `.
+	* For a Helm 2 binary, enter the path before the `` in `-e HELM_PATH= `.
 3. Restart the Docker Delegate:
 
 

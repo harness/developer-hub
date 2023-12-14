@@ -61,7 +61,7 @@ Select **Enforce password strength** to open the dialog shown below. This offers
 ![](./static/authentication-settings-216.png)
 If you enforce **Have at least 1 special character**, each password must include one (or more) of the following characters: `~!@#$%^&amp;*_-+=`|\()\{\}[]:;&quot;'&lt;&gt;,.?/`
 
-<!-- `~!@#$%^&*_-+=`|\(){}[]:;"'<>,.?/` -->
+<!-- `~!@#$%^&*_-+=`|(){}[]:;"'<>,.?/` -->
 
 
 #### Enforcing Password Expiration

@@ -121,7 +121,7 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
 
 3. On each **Restore Cache** step *except the first*, add a [conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#step-conditions) that runs the step only if the preceding step failed.
 
-   Set the conditional execution to **Execute this step if the stage execution is successful thus far** (`stageStatus: Success`) and include the JEXL condition `\<+execution.steps.L1_Caching.status\> == "IGNORE_FAILED"`. For example:
+   Set the conditional execution to **Execute this step if the stage execution is successful thus far** (`stageStatus: Success`) and include the JEXL condition `<+execution.steps.L1_Caching.status> == "IGNORE_FAILED"`. For example:
 
    ```yaml
                  - step:

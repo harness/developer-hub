@@ -94,10 +94,10 @@ A Harness [project](../../../get-started/key-concepts.md#organizations-and-proje
 The following `curl` command creates a Harness project called `APISample` in the `default` Harness organization. To use this command replace `ACCOUNT_ID` with your [Harness account ID](#get-your-account-id), and replace `API_KEY_TOKEN` with your [token](#create-a-harness-api-key-and-token). If you want to create a project under a different organization, replace `default` in the command with the desired organization ID.
 
 ```
-curl -i -X POST \
-  'https://app.harness.io/ng/api/projects?accountIdentifier=ACCOUNT_ID&orgIdentifier=default' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: API_KEY_TOKEN' \
+curl -i -X POST 
+  'https://app.harness.io/ng/api/projects?accountIdentifier=ACCOUNT_ID&orgIdentifier=default' 
+  -H 'Content-Type: application/json' 
+  -H 'x-api-key: API_KEY_TOKEN' 
   -d '{
     "project": {
       "orgIdentifier": "default",
@@ -140,10 +140,10 @@ To use this command replace `ACCOUNT_ID` with your [Harness account ID](#get-you
 If you want to create your connector under a different organization, replace `default` in the command with the desired organization ID. If you want to create your connector under a different project, replace `apisample` with the desired project ID.
 
 ```
-curl -i -X POST \
-  'https://app.harness.io/ng/api/connectors?accountIdentifier=ACCOUNT_ID' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: API_KEY_TOKEN' \
+curl -i -X POST 
+  'https://app.harness.io/ng/api/connectors?accountIdentifier=ACCOUNT_ID' 
+  -H 'Content-Type: application/json' 
+  -H 'x-api-key: API_KEY_TOKEN' 
   -d '{
     "connector": {
       "name": "dockerhub",
@@ -195,17 +195,17 @@ If the response is successful, you can find your new connector in Harness in you
 
 A pipelines are end-to-end workflows. There are several types of pipelines across the Harness modules.
 
-The following `curl` command creates a simple CD pipeline that contains a `hello world` shell script. The pipeline uses [Runtime Inputs](../../variables-and-expressions/runtime-inputs.md) (`\<+input\>`) for most settings. The pipeline is created in the `default` Harness organization under the [APISample project](#example-create-a-project-through-api).
+The following `curl` command creates a simple CD pipeline that contains a `hello world` shell script. The pipeline uses [Runtime Inputs](../../variables-and-expressions/runtime-inputs.md) (`<+input>`) for most settings. The pipeline is created in the `default` Harness organization under the [APISample project](#example-create-a-project-through-api).
 
 To use this command replace `ACCOUNT_ID` with your [Harness account ID](#get-your-account-id), and replace `API_KEY_TOKEN` with your [token](#create-a-harness-api-key-and-token).
 
 If you want to create the pipeline under a different organization, replace `default` in the command with the desired organization ID. If you want to create the pipeline under a different project, replace `apisample` with the desired project ID.
 
 ```
-curl -i -X POST \
-  'https://app.harness.io/pipeline/api/pipelines/v2?accountIdentifier=ACCOUNT_IT&orgIdentifier=default&projectIdentifier=apisample' \
-  -H 'Content-Type: application/yaml' \
-  -H 'x-api-key: API_KEY_TOKEN' \
+curl -i -X POST 
+  'https://app.harness.io/pipeline/api/pipelines/v2?accountIdentifier=ACCOUNT_IT&orgIdentifier=default&projectIdentifier=apisample' 
+  -H 'Content-Type: application/yaml' 
+  -H 'x-api-key: API_KEY_TOKEN' 
   -d 'pipeline:
       name: api example
       identifier: api_example

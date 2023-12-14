@@ -37,7 +37,7 @@ When you add a **Build** stage to a CI pipeline, you can select a [code repo con
 2. Enter a **Stage Name**. **Description** and **Tags** are optional.
 3. Make sure **Clone Codebase** is enabled. This tells Harness to clone the codebase into the build environment before running the steps in the stage.
 4. For **Connector**, select or create a [code repo connector](#code-repo-connectors).
-5. If **Repository Name** is not automatically populated, you can specify a repository to use for this pipeline. You can also set this field to `\<+input\>` to specify a repo at runtime.
+5. If **Repository Name** is not automatically populated, you can specify a repository to use for this pipeline. You can also set this field to `<+input>` to specify a repo at runtime.
 6. Select **Set Up Stage**.
 
 If you need to change the connector or other default codebase settings, go to [Edit the default codebase configuration](#edit-the-default-codebase-configuration). If you don't want every stage to clone the default codebase, go to [Disable Clone Codebase for specific stages](#disable-clone-codebase-for-specific-stages).
@@ -207,7 +207,7 @@ properties:
       build:
         type: branch
         spec:
-          branch: \<+input\>
+          branch: <+input>
       sslVerify: false
       resources:
         limits:
@@ -219,7 +219,7 @@ properties:
 
 This error can occur in build infrastructures that use a Harness Docker Runner, such as the [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md) or the [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
 
-If Git clone fails during stage setup (the **Initialize** step in build logs) and the runner's logs contain `Error response from daemon: plugin \"<plugin>\" not found`, this means a required plugin is missing from your build infrastructure container's Docker installation. The plugin is required to configure Docker networks.
+If Git clone fails during stage setup (the **Initialize** step in build logs) and the runner's logs contain `Error response from daemon: plugin "<plugin>" not found`, this means a required plugin is missing from your build infrastructure container's Docker installation. The plugin is required to configure Docker networks.
 
 To resolve this issue:
 

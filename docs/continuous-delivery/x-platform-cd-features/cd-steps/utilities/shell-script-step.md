@@ -32,7 +32,7 @@ If you must use `var`, you can use single quotes and `get()` when referencing
 **PowerShell**
 * `|` `^` `&` `<` `>` `%` are reserved symbols in PowerShell and in case those are being used as a value of a Harness secret, please make sure it is escaped using `^` symbol.
 
-Instead of using `\<+test.var\>` use `\<+test.get('var')\>`.
+Instead of using `<+test.var>` use `<+test.get('var')>`.
 
 ### Stopping scripts after failures
 
@@ -68,7 +68,7 @@ For more information, go to [add text secrets](/docs/platform/secrets/add-use-te
 
 There are two ways to use secret variables in scripts:
 * Secret type variables can be used like any other variable with the secret variable identifier being passed to the `value` attribute or field.
-* You can use `\<+secrets.getValue("secret_Id")\>` to refer to the secret `value` attribute or field, and select the type of variable as String. This formats the variable in string format and contains the value of the secret variable.
+* You can use `<+secrets.getValue("secret_Id")>` to refer to the secret `value` attribute or field, and select the type of variable as String. This formats the variable in string format and contains the value of the secret variable.
 
 Below is an example of using secret variables in the Shell Script step where `temp_secret` is a secret variable and we try to access it.
 
@@ -121,7 +121,7 @@ You can selectively escape characters when using shell scripts by using the foll
 
 `shell.escapeChars(<input string>, <string of characters to be escaped>)`
 
-For example, the output for `shell.escapeChars("hello", "ho")` is `"\hell\o"`.
+For example, the output for `shell.escapeChars("hello", "ho")` is `"hello"`.
 
 ### Realtime logging 
 
@@ -262,12 +262,12 @@ Go to [select delegates with selectors](/docs/platform/Delegates/manage-delegate
 If you select **Target Host**, depending on the script type, enter the following:
 
 **Bash**
-* **Target Host:** enter the IP address or hostname of the remote host where you want to execute the script. The target host must be in the **Infrastructure Definition** selected when you defined the stage **Infrastructure**, and the Harness Delegate must have network access to the target host. You can also enter the variable `\<+instance.name\>` and the script will execute on whichever target host is used during deployment.
+* **Target Host:** enter the IP address or hostname of the remote host where you want to execute the script. The target host must be in the **Infrastructure Definition** selected when you defined the stage **Infrastructure**, and the Harness Delegate must have network access to the target host. You can also enter the variable `<+instance.name>` and the script will execute on whichever target host is used during deployment.
 * **SSH Connection Attribute:** select the execution credentials to use for the shell session. For information on setting up execution credentials, go to [add SSH keys](/docs/platform/secrets/add-use-ssh-secrets).
 * **Working Directory** provide the working directory for the script to be executed, keep in mind that the directory path should be present on the host.
 
 **PowerShell**
-* **Target Host:** enter the IP address or hostname of the remote host where you want to execute the script. The target host must be in the **Infrastructure Definition** selected when you defined the stage **Infrastructure**, and the Harness Delegate must have network access to the target host. You can also enter the variable `\<+instance.name\>` and the script will execute on whichever target host is used during deployment.
+* **Target Host:** enter the IP address or hostname of the remote host where you want to execute the script. The target host must be in the **Infrastructure Definition** selected when you defined the stage **Infrastructure**, and the Harness Delegate must have network access to the target host. You can also enter the variable `<+instance.name>` and the script will execute on whichever target host is used during deployment.
 * **WinRM Credential:** select the WinRM credentials to use for the PowerShell session. For information on setting up WinRM credentials, go to [add WinRM credential](/docs/platform/secrets/add-winrm-keys).
 * **Working Directory:** provide the working directory for the script to be executed. Keep in mind that the directory path should be present on the host.
   
@@ -305,7 +305,7 @@ To capture the shell script output in a variable, do the following:
 
 1. In the stage, in **Execution**, click **Add Step**.
 2. Select **Shell Script**.
-3. Enter a name for the step. An Id is generated. This Id identifies the step and is used in variable expressions. For example, if the Id is **Shell Script**, the expression might be `\<+execution.steps.Shell_Script.output.outputVariables.myvar\>`.
+3. Enter a name for the step. An Id is generated. This Id identifies the step and is used in variable expressions. For example, if the Id is **Shell Script**, the expression might be `<+execution.steps.Shell_Script.output.outputVariables.myvar>`.
 4. In **Script**, enter a bash script. For example, the variable names `BUILD_NO`and `LANG`:
   
   ```bash
@@ -319,7 +319,7 @@ You don't need to use `export` for the variables to use them with **Script Outpu
 
 If you need quotes around the [Harness variable expressions](/docs/platform/Variables-and-Expressions/harness-variables) in your script, use single quotes, like this:
 
-`export EVENT_PAYLOAD='\<+trigger.eventPayload\>'` 
+`export EVENT_PAYLOAD='<+trigger.eventPayload>'` 
 
 If you use [Harness variable expressions](/docs/platform/Variables-and-Expressions/harness-variables) in comments in your script, Harness will still try to evaluate and render the variable expressions. Don't use variable expressions that Harness cannot evaluate.
 
@@ -364,17 +364,17 @@ You do not need to use `export` for the variables to use them with **Script Out
 The format to reference the output variable can be one of the following:
 
 * Within the stage:
-	+ `\<+execution.steps.[step_id].output.outputVariables.[output_variable_name]\>`
+	+ `<+execution.steps.[step_id].output.outputVariables.[output_variable_name]>`
 * Anywhere in the pipeline:
-	+ `\<+pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].output.outputVariables.[output_variable_name]\>`
+	+ `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].output.outputVariables.[output_variable_name]>`
 * When step is inside a step group:
-	+ `\<+pipeline.stages.[stage_Id].spec.execution.steps.[step_group_Id].steps.stepId.build.[output_variable_name]`  
+	+ `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_group_Id].steps.stepId.build.[output_variable_name]`  
 
 For example, you could reference the output variable `newname` like this:
 
 ```
-echo "anywhere in the pipeline: " <+pipeline.stages.Shell_Script_stage.spec.execution.steps.ShellScript_1.output.outputVariables.newname\>
-echo "anywhere in the stage: " \<+execution.steps.ShellScript_1.output.outputVariables.newname\>
+echo "anywhere in the pipeline: " <+pipeline.stages.Shell_Script_stage.spec.execution.steps.ShellScript_1.output.outputVariables.newname>
+echo "anywhere in the stage: " <+execution.steps.ShellScript_1.output.outputVariables.newname>
 ```
 
 Here's an example showing how the **Script Output Variables** references the exported variable, and how you reference the output variable name to get that value:
@@ -384,7 +384,7 @@ Here's an example showing how the **Script Output Variables** references the exp
 <docimage path={require('./static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png')} />
 
 
-So now the result of `\<+execution.steps.ShellScript_1.output.outputVariables.newname\>` is `123`.
+So now the result of `<+execution.steps.ShellScript_1.output.outputVariables.newname>` is `123`.
 
 To find the expression to reference your output variables, find the step in the Pipeline execution, and click its **Output** tab.
 
@@ -462,7 +462,7 @@ You can scope output variables to the following entities:
     <+exportedVariables.getValue("pipeline.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>
     ```
 
-To reference a map of exported output variables you can simply reference the alias in the format `\<+exportedVariables.getValue("SCOPE.ALIAS_NAME")\>`, like `\<+exportedVariables.getValue("stepGroup.info")\>`.
+To reference a map of exported output variables you can simply reference the alias in the format `<+exportedVariables.getValue("SCOPE.ALIAS_NAME")>`, like `<+exportedVariables.getValue("stepGroup.info")>`.
 
 
 Important notes:
@@ -570,7 +570,7 @@ See [select delegates with selectors](/docs/platform/Delegates/manage-delegates/
 
 If you select **Target Host**, enter the following:
 
-* **Target Host:** enter the IP address or hostname of the remote host where you want to execute the script. The target host must be in the **Infrastructure Definition** selected when you created the workflow, and the Harness Delegate must have network access to the target host. You can also enter the variable `\<+instance.name\>` and the script will execute on whichever target host is used during deployment.
+* **Target Host:** enter the IP address or hostname of the remote host where you want to execute the script. The target host must be in the **Infrastructure Definition** selected when you created the workflow, and the Harness Delegate must have network access to the target host. You can also enter the variable `<+instance.name>` and the script will execute on whichever target host is used during deployment.
 * **SSH Connection Attribute:** select the execution credentials to use for the shell session. For information on setting up execution credentials, go to [add SSH keys](/docs/platform/secrets/add-use-ssh-secrets).
 
 ### Running scripts with a delegate on the target cluster
@@ -626,10 +626,10 @@ MDM_PASSWORD="your-mdm-password"
 MDM_CONFIG_FILE="your-mdm-config-file.plist"
 
 # Install the MDM configuration on devices
-curl --request POST \
-     --user "$MDM_USERNAME:$MDM_PASSWORD" \
-     --header "Content-Type: application/xml" \
-     --data-binary "@$MDM_CONFIG_FILE" \
+curl --request POST 
+     --user "$MDM_USERNAME:$MDM_PASSWORD" 
+     --header "Content-Type: application/xml" 
+     --data-binary "@$MDM_CONFIG_FILE" 
      "$MDM_SERVER/devicemanagement/api/mdm/profiles"
 
 # Check for errors
@@ -657,10 +657,10 @@ UEM_PASSWORD="your-uem-password"
 UEM_CONFIG_FILE="your-uem-config-file.json"
 
 # Install the UEM configuration on endpoints
-curl --request POST \
-     --user "$UEM_USERNAME:$UEM_PASSWORD" \
-     --header "Content-Type: application/json" \
-     --data-binary "@$UEM_CONFIG_FILE" \
+curl --request POST 
+     --user "$UEM_USERNAME:$UEM_PASSWORD" 
+     --header "Content-Type: application/json" 
+     --data-binary "@$UEM_CONFIG_FILE" 
      "$UEM_SERVER/api/config"
 
 # Check for errors
@@ -734,7 +734,7 @@ Example script:
 
 ```
 export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}  
-kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.namespace> -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness\.io/color=="'$(kubectl get service/<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName> -n <+infra.namespace> -o jsonpath='{.spec.selector.harness\.io/color}')'")].metadata.name}') --replicas=0
+kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.namespace> -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness.io/color=="'$(kubectl get service/<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName> -n <+infra.namespace> -o jsonpath='{.spec.selector.harness.io/color}')'")].metadata.name}') --replicas=0
 ```
 
 The step might look like this:
@@ -752,7 +752,7 @@ The step might look like this:
                       spec:
                         script: |-
                           export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}  
-                          kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.namespace> -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness\.io/color=="'$(kubectl get service/<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName> -n <+infra.namespace> -o jsonpath='{.spec.selector.harness\.io/color}')'")].metadata.name}') --replicas=0
+                          kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.namespace> -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness.io/color=="'$(kubectl get service/<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName> -n <+infra.namespace> -o jsonpath='{.spec.selector.harness.io/color}')'")].metadata.name}') --replicas=0
                     environmentVariables: []
                     outputVariables: []
                   timeout: 10m

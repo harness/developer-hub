@@ -52,7 +52,7 @@ This tutorial pushes a `fruits-api` application container image to a [Docker Hub
 2. Test your `fruits-api` repository by manually building and pushing an application image to the registry. First, log in to the Docker Hub account associated with the `fruits-api` repository:
 
   ```shell
-   echo -n "$DOCKER_HUB_PASSWORD" |\
+   echo -n "$DOCKER_HUB_PASSWORD" |
      docker login -u `$DOCKER_HUB_USERNAME` --password-stdin
    ```
 
@@ -60,7 +60,7 @@ This tutorial pushes a `fruits-api` application container image to a [Docker Hub
 
    ```shell
    #  clone rust-greeter repository
-   git clone https://github.com/harness-apps/rust-greeter.git \
+   git clone https://github.com/harness-apps/rust-greeter.git 
      && cd "$(basename "$_" .git)"
    # navigate to the clone repository folder
    export TUTORIAL_HOME="$PWD"
@@ -431,14 +431,14 @@ If your pipeline succeeded, add two more steps to build your Rust application im
    * **Command:**
 
     ```shell
-    echo "$IMAGE_REGISTRY_PASSWORD" | \
+    echo "$IMAGE_REGISTRY_PASSWORD" | 
     docker login "$IMAGE_REGISTRY" -u "$IMAGE_REGISTRY_USER" --password-stdin
-    docker buildx inspect "buildx-multi-arch" ||\
+    docker buildx inspect "buildx-multi-arch" ||
       docker buildx create --name="buildx-multi-arch" --driver=docker-container --driver-opt=network=host
-    docker buildx build --builder="buildx-multi-arch" --push \
-      --tag "$IMAGE_REGISTRY/$IMAGE_REPO:$IMAGE_TAG" \
-      --tag "$IMAGE_REGISTRY/$IMAGE_REPO:latest" \
-      --platform="linux/amd64" --platform="linux/arm64" \
+    docker buildx build --builder="buildx-multi-arch" --push 
+      --tag "$IMAGE_REGISTRY/$IMAGE_REPO:$IMAGE_TAG" 
+      --tag "$IMAGE_REGISTRY/$IMAGE_REPO:latest" 
+      --platform="linux/amd64" --platform="linux/arm64" 
       --file Dockerfile "$CONTEXT"
     ```
 
@@ -449,11 +449,11 @@ If your pipeline succeeded, add two more steps to build your Rust application im
    |  Key    | Value    |
    | ---  | ----------- |
    |`DOCKER_HUB_USERNAME`| The username for the Docker Hub account where you want to push the image|
-   |`DOCKER_HUB_PASSWORD`| `\<+secrets.getValue("docker_hub_password")\>`|
+   |`DOCKER_HUB_PASSWORD`| `<+secrets.getValue("docker_hub_password")>`|
    |`CONTEXT`| `/harness/target`|
    |`IMAGE_REGISTRY`| `docker.io`|
    |`IMAGE_REPO`| `YOUR_DOCKERHUB_USERNAME/rust-greeter`|
-   |`IMAGE_TAG`| `\<+codebase.shortCommitSha\>`|
+   |`IMAGE_TAG`| `<+codebase.shortCommitSha>`|
 
    ![Step Push Env](../ci-pipelines/static/ci-tutorial-rust-container/rust_pipeline_step_push_env_vars.png)
 

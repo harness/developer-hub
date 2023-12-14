@@ -467,7 +467,7 @@ When you [configure](#add_a_service_infrastructure) an **Infrastructure Definiti
 
 If a Workflow's [Setup AutoScaling Group](#asg_setup_step) step fails with a message of the following form, this indicates that at least one **Infrastructure Definition** in the Workflow's Environment is configured with an ASG that is not currently available on AWS:
 
-`Couldn't find reference AutoScalingGroup: [ECS\_\_QA\_\_Application\_AMI\_QA\_\_245] in region: [us‑east-1]`
+`Couldn't find reference AutoScalingGroup: [ECS__QA__Application_AMI_QA__245] in region: [us‑east-1]`
 
 To correct this:
 

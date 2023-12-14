@@ -80,7 +80,7 @@ All connections and operations are performed by Harness Delegates. So we'll also
 2. In **Manifests**, click **Add Manifest**.
    :::note
 
-   **What about Artifacts?** In this quickstart the kustomization uses a publicly-available NGINX Docker image from DockerHub, and the location of the image is hardcoded in the manifest. The **Artifacts** section is only used when the public artifact is not hardcoded in the manifest or the repo is private. In those cases, you add the image in **Artifacts** with a Connector for the repo and then reference the image in a Kustomize Patch file (`image: \<+artifact.image\>`).
+   **What about Artifacts?** In this quickstart the kustomization uses a publicly-available NGINX Docker image from DockerHub, and the location of the image is hardcoded in the manifest. The **Artifacts** section is only used when the public artifact is not hardcoded in the manifest or the repo is private. In those cases, you add the image in **Artifacts** with a Connector for the repo and then reference the image in a Kustomize Patch file (`image: <+artifact.image>`).
 
    :::
 

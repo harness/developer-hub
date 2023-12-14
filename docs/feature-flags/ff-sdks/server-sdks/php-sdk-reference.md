@@ -115,7 +115,7 @@ Must consist of only alphabetical characters, numbers, and the following symbols
 The characters can be lowercase or uppercase but cannot include accented letters, for example `Cafe_789`.  
   
 **Name**
-Regex: `^[\\p{L}\\d .@_-]*$`  
+Regex: `^[p{L}d .@_-]*$`  
   
 Must consist of only alphabetical characters, numbers, and the following symbols:  
 . (period)  
@@ -210,8 +210,8 @@ Here is a sample code for integrating with the PHP SDK: 
   
 require_once realpath("vendor/autoload.php");   
   
-use Harness\Client;  
-use OpenAPI\Client\Model\Target;  
+use HarnessClient;  
+use OpenAPIClientModelTarget;  
   
 $SDK_KEY = getenv("SDK_KEY") ?: "";  // you can put your key in env variable or you can provide in the code  
 $FLAG_NAME = "harnessappdemodarkmode";  

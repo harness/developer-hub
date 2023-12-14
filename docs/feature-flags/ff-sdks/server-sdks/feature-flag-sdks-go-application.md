@@ -178,7 +178,7 @@ Must consist of only alphabetical characters, numbers, and the following symbols
 The characters can be lowercase or uppercase but cannot include accented letters, for example `Cafe_789`.  
   
 **Name**
-Regex: `^[\\p{L}\\d .@_-]*$`  
+Regex: `^[p{L}d .@_-]*$`  
   
 Must consist of only alphabetical characters, numbers, and the following symbols:  
 . (period)  
@@ -398,7 +398,7 @@ package main
                                         fmt.Printf("Error getting value: %v", err)  
                                   }  
   
-                                  fmt.Printf("KeyFeature flag '%s' is %t for this user\n", featureFlag, showFeature)  
+                                  fmt.Printf("KeyFeature flag '%s' is %t for this usern", featureFlag, showFeature)  
                       time.Sleep(10 * time.Second)  
                  }  
              }  

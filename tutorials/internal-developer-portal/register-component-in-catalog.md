@@ -254,8 +254,8 @@ import TabItem from '@theme/TabItem';
 - Follow the following cURL command with the request body to register your component. The body takes two input at present `type` and `target`. 
 
 ```cURL
-curl --location 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/locations' \
---header 'x-api-key: {X_API_KEY}' \
+curl --location 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/locations' 
+--header 'x-api-key: {X_API_KEY}' 
 --header 'Harness-Account: {ACCOUNT_IDENTIFIER}'
  --data-raw '{"type":"url","target":"https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml"}'
 ```
@@ -304,13 +304,13 @@ do
     esac
 done
 
-echo -e "\nStarting catalog location registration for given location in Harness IDP...";
+echo -e "nStarting catalog location registration for given location in Harness IDP...";
 
 CATALOG_LOCATION_REGISTER_DATA='{"type":"url","target":"CATALOG_LOCATION_TARGET"}'
 
 for LOCATION in ${CATALOG_LOCATIONS//,/ }
 do
-    echo -e "\n--------"
+    echo -e "n--------"
     echo "Registering $LOCATION catalog location in Harness IDP account $ACCOUNT_IDENTIFIER"
 
     POST_DATA=${CATALOG_LOCATION_REGISTER_DATA/CATALOG_LOCATION_TARGET/$LOCATION}
@@ -326,5 +326,5 @@ do
     echo "--------"
 done
 
-echo -e "\nCompleted catalog location registration for given location in Harness IDP...";
+echo -e "nCompleted catalog location registration for given location in Harness IDP...";
 ```

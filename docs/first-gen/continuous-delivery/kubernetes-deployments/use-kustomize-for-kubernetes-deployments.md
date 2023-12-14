@@ -648,7 +648,7 @@ Set the Kustomize path in the launch-harness-delegate.sh:
 
 
 ```
--e KUSTOMIZE_PATH= <path> \
+-e KUSTOMIZE_PATH= <path> 
 ```
 #### ECS Delegate
 

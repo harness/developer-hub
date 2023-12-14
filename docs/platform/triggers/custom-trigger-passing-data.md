@@ -30,7 +30,7 @@ curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' 
 
 The `-d '{"sample_key": "sample_value"}'` section is where you can pass data to the target pipeline. The `-d` option specifies the data to be sent in the HTTP request body.
 
-The value you specify for `sample_key` can be referenced in the triggered pipeline using the Harness expression `\<+trigger.payload.[key_name]\>`.
+The value you specify for `sample_key` can be referenced in the triggered pipeline using the Harness expression `<+trigger.payload.[key_name]>`.
 
 For example, in the following cURL command, the key name is `my_key`:
 
@@ -38,10 +38,10 @@ For example, in the following cURL command, the key name is `my_key`:
 curl -X POST -H 'content-type: application/json' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"my_key": "hello world"}'
 ```
 
-You would reference this data using the expression `\<+trigger.payload.my_key\>`. The expression would resolve to `hello world`.
+You would reference this data using the expression `<+trigger.payload.my_key>`. The expression would resolve to `hello world`.
 
 
-You can use the `\<+trigger.payload.[key_name]\>` expression as a script, a variable value, or any setting configured as an expression.
+You can use the `<+trigger.payload.[key_name]>` expression as a script, a variable value, or any setting configured as an expression.
 
 
 ## Passing data to the pipeline
@@ -54,26 +54,26 @@ Let's look at a few examples.
 
 ### Passing a Harness expression
 
-Let's look at an example where we pass a source pipeline's artifact location expression (`\<+artifact.image\>`) into a target pipeline using its trigger.
+Let's look at an example where we pass a source pipeline's artifact location expression (`<+artifact.image>`) into a target pipeline using its trigger.
 
 In the target pipeline, copy its Custom trigger cuRL command.
 
 In the source pipeline, use a Shell Script step to run the cURL command. 
 
-In the command, use the Harness `\<+artifact.image\>` expression to reference the source pipeline's deployment artifact.
+In the command, use the Harness `<+artifact.image>` expression to reference the source pipeline's deployment artifact.
 
 ```
 curl -X POST -H 'content-type: application/json' --url 'webhook_url' -d '{"artifact_image": "<+artifact.image>"}'
 ```
 
-In the target pipeline, create a pipeline variable and set its value as `\<+trigger.payload.artifact_image\>`.
+In the target pipeline, create a pipeline variable and set its value as `<+trigger.payload.artifact_image>`.
 
 <docimage path={require('./static/6ef51e0907196757454ad8119753c2d4f4006de77e2cd9c7f48abfe0efdb8e18.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
-When the source pipeline runs, it will resolve the expression `\<+artifact.image\>` in the cURL command to its pipeline artifact location and then run the command.
+When the source pipeline runs, it will resolve the expression `<+artifact.image>` in the cURL command to its pipeline artifact location and then run the command.
 
-In the target pipeline, you can retrieve the data from the command using a variable containing `\<+trigger.payload.artifact_image\>` as its value.
+In the target pipeline, you can retrieve the data from the command using a variable containing `<+trigger.payload.artifact_image>` as its value.
 
 <docimage path={require('./static/b9aa1b375489a155c9405fc01a760bdc0a4a022f9adf3a7e197664abb568087c.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -91,7 +91,7 @@ version="1.5.3"
 curl -X POST -H 'content-type: application/json' --url 'webhook_url' -d '{"version": "'"$version"'"}'
 ```
 
-In the target pipeline, simply create a pipeline variable that references `\<+trigger.payload.version\>` and then use that variable in the scripts or settings that need the version number.
+In the target pipeline, simply create a pipeline variable that references `<+trigger.payload.version>` and then use that variable in the scripts or settings that need the version number.
 
 ### Passing matrix axes
 
@@ -106,7 +106,7 @@ Here's the cURL command:
 ```
 curl -X POST -H 'content-type: application/json' --url 'webhook_url' -d '{"emailIds": "emaild1@gmail.com,emaild2@gmail.com,emaild3@gmail.com,emaild4@gmail.com,emaild5@gmail.com"}'
 ```
-In the target pipeline, create a pipeline variable named `emailIds` that uses the `\<+trigger.payload.emailIds\>` expression.
+In the target pipeline, create a pipeline variable named `emailIds` that uses the `<+trigger.payload.emailIds>` expression.
 
 <docimage path={require('./static/661fd1dfa533e57b3683394807348789b37fc463d0af62c1637ce302bdabbe1e.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -121,7 +121,7 @@ maxConcurrency: 2
 
 You can see the split() method is used to parse the email addresses in the JSON payload.
 
-In the **To** setting of the Email step, you can reference the matrix using `\<+matrix.emaild\>`.
+In the **To** setting of the Email step, you can reference the matrix using `<+matrix.emaild>`.
 
 Now the Email step is run for each address in the matrix.
 

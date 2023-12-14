@@ -119,7 +119,7 @@ For example, let's look at a Node.js function in a file named **index.js**:
 
 ```
 exports.handler =  async function(event, context) {  
-  console.log("EVENT: \n" + JSON.stringify(event, null, 2))  
+  console.log("EVENT: n" + JSON.stringify(event, null, 2))  
   return context.logStreamName  
 }
 ```

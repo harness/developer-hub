@@ -85,9 +85,9 @@ Create the Terraform Cloud connector using the [Create a Connector](https://apid
 		<summary>Terraform Cloud connector API example</summary>
 
 ```yaml
-curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
---header 'Content-Type: text/yaml' \
---header 'x-api-key: pat.12345.6789' \
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' 
+--header 'Content-Type: text/yaml' 
+--header 'x-api-key: pat.12345.6789' 
 --data-raw 'connector:
   name: TF Cloud connector
   identifier: TF_Cloud_connector
@@ -271,7 +271,7 @@ The expressions can be copied from the Terraform Cloud Run step's **Output** tab
 
 ### Print plan expression
 
-Use the expression `\<+terraformCloudPlanJson."id"\>` after the Terraform Cloud Run step to print the plan.
+Use the expression `<+terraformCloudPlanJson."id">` after the Terraform Cloud Run step to print the plan.
 
 For example:
 
@@ -282,7 +282,7 @@ cat <+terraformCloudPlanJson."id">
 
 ### Print policy checks
 
-Use the expression `\<+policyChecksJson."id"\>` to print the Sentinel checks involved in the run.
+Use the expression `<+policyChecksJson."id">` to print the Sentinel checks involved in the run.
 
 For example:
 

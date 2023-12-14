@@ -19,7 +19,7 @@ To create the service account and secret:
 3. After the service account is created, you can generate a new JSON key file. Replace &lt;service-account-name&gt; with the name of your service account and &lt;key-file&gt; with the path where you want to save the key file:
 
   ```bash
-  gcloud iam service-accounts keys create <key-file> \
+  gcloud iam service-accounts keys create <key-file> 
   --iam-account <service-account-name>@<project-id>.iam.gserviceaccount.com
   ```
 

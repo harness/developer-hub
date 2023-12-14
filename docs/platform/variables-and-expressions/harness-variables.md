@@ -23,9 +23,9 @@ Harness variables are powerful because they let you template configuration infor
 
 When you use a variable, you add it as an expression.
 
-Harness expressions are identified using the `\<+...\>` syntax. For example, `\<+pipeline.name\>` references the name of the pipeline where the expression is evaluated.
+Harness expressions are identified using the `<+...>` syntax. For example, `<+pipeline.name>` references the name of the pipeline where the expression is evaluated.
 
-The content between the `\<+...\>` delimiters is passed on to the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) where it is evaluated. Using JEXL, you can build complex variable expressions that use JEXL methods. For example, here is an expression that uses Webhook Trigger payload information:
+The content between the `<+...>` delimiters is passed on to the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) where it is evaluated. Using JEXL, you can build complex variable expressions that use JEXL methods. For example, here is an expression that uses Webhook Trigger payload information:
 
 ```
 <+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "wings-software"
@@ -38,7 +38,7 @@ You can use all Java string methods on Harness variable expressions.
 
 The example mentioned in the previous section used `contains()`:
 
-`\<+<+trigger.payload.pull_request.diff_url\>.contains("triggerNgDemo")>`
+`<+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")>`
 
 Let's look at another example. For a variable called `abc` with value, `def:ghi`. You can use `split()` like this:
 
@@ -47,11 +47,11 @@ echo <+<+pipeline.variables.abc>.split(':')[1]>
 ```
 The output of this expression is `ghi`.
 
-The correct way to use a Java method with a variable is `\<+<+expression\>.methodName()>`.
+The correct way to use a Java method with a variable is `<+<+expression>.methodName()>`.
 
 For example, let's use a variable `myvar` using the methods `substring` and `indexOf` with value `Hello`. You can use these methods like this: 
 
-`\<+<+stage.variables.myvar\>.substring(\<+<+stage.variables.myvar\>.indexOf("e")>)>`
+`<+<+stage.variables.myvar>.substring(<+<+stage.variables.myvar>.indexOf("e")>)>`
 
 This expression evaluates to `ello`.
 
@@ -85,12 +85,12 @@ Click **Variables** in the pipeline to view all the inputs and copy their expres
 
 The pipeline and stage level variable expressions follow these formats:
 
-- **Pipeline-level** expressions use the format `\<+pipeline.variables.VAR_NAME\>`.
+- **Pipeline-level** expressions use the format `<+pipeline.variables.VAR_NAME>`.
 - **Stage-level** expressions use these formats:
-  - **Use in this stage:** Use this option to reference the input anywhere in its stage. The format is `\<+stage.variables.VAR_NAME\>`.
-  - **Use anywhere in the pipeline:** Use this option to reference the input anywhere in the pipeline. The format is `\<+pipeline.stages.STAGE_NAME.VAR_NAME\>`.
-- **Pipeline-level** variables can be accessed as a collection of key-value pairs using `\<+pipeline.variables\>`.
-- **Stage-level** variables can be accessed as a collection of key-value pairs using `\<+stage.variables\>`.
+  - **Use in this stage:** Use this option to reference the input anywhere in its stage. The format is `<+stage.variables.VAR_NAME>`.
+  - **Use anywhere in the pipeline:** Use this option to reference the input anywhere in the pipeline. The format is `<+pipeline.stages.STAGE_NAME.VAR_NAME>`.
+- **Pipeline-level** variables can be accessed as a collection of key-value pairs using `<+pipeline.variables>`.
+- **Stage-level** variables can be accessed as a collection of key-value pairs using `<+stage.variables>`.
 
 ### Expression examples
 
@@ -156,7 +156,7 @@ infrastructure releaseName: docs
 Command completed with ExitCode (0)
 ```
 
-Here is another example of how to use `\<+stage.variables\>`.
+Here is another example of how to use `<+stage.variables>`.
 
 ```
 for var in <+stage.variables>;
@@ -172,7 +172,7 @@ done
 ```
 
 The above Bash script prints all the key-value pairs for the stage variables.
-If the `\<+stage.variables\>` is `{"a":"A","b":"B","c":"C"}` then the output will be as follows:
+If the `<+stage.variables>` is `{"a":"A","b":"B","c":"C"}` then the output will be as follows:
 
 ```
 Executing command ...
@@ -200,8 +200,8 @@ You can copy and reference the input settings for steps using the pipeline **Var
 
 Input variables follow this format:
 
-- **Stage-level**: `\<+execution.steps.STEP_Id.SETTING\>`.
-- **Pipeline-level**: `\<+pipeline.stages.STAGE_Id.spec.execution.steps.STEP_Id.SETTING\>`.
+- **Stage-level**: `<+execution.steps.STEP_Id.SETTING>`.
+- **Pipeline-level**: `<+pipeline.stages.STAGE_Id.spec.execution.steps.STEP_Id.SETTING>`.
 
 :::note
 
@@ -238,7 +238,7 @@ Here are the **Name** and **Value** expressions for the `podIP` setting.
 
 You can use Harness variable expressions in most settings.
 
-When you select the **Expression** option for a setting, you can type `\<+` and the list of available variable expressions appears.
+When you select the **Expression** option for a setting, you can type `<+` and the list of available variable expressions appears.
 
 ![](./static/harness-variables-19.png)
 
@@ -269,7 +269,7 @@ Here are some guidelines to help you use expressions successfully:
 
 
 :::note Exception
-You can reference the environment name variable, `<+env.name\>`, in a service's Values YAML file, specs, and config files.
+You can reference the environment name variable, `<+env.name>`, in a service's Values YAML file, specs, and config files.
 :::
 
 ### Only use expressions after they can be resolved
@@ -331,7 +331,7 @@ This values.yaml file will not process successfully. Remove any expressions from
 
 ### Scripts within expressions
 
-You cannot write scripts within an expression `\<+...\>`. For example, the following script will not work.
+You cannot write scripts within an expression `<+...>`. For example, the following script will not work.
 
 
 ```
@@ -346,19 +346,19 @@ Variable names must be unique within the same stage. You can use the same variab
 
 Do not use hyphens (dashes) in variable names, as some Linux distributions and deployment-related software do not allow them. Also, hyphens (dashes) in variable names can cause issues with headers.
 
-For example, `\<+execution.steps.httpstep.spec.headers.x-auth\>` will not work.
+For example, `<+execution.steps.httpstep.spec.headers.x-auth>` will not work.
 
-As a workaround, you can put the variable name in `["..."]`. For example, `\<+execution.steps.httpstep.spec.headers["x-auth"]\>`
+As a workaround, you can put the variable name in `["..."]`. For example, `<+execution.steps.httpstep.spec.headers["x-auth"]>`
 
 This also works for nested expressions. For example:
 
-`\<+execution.steps.httpstep.spec.newHeaders["x-auth"]["nested-hyphen-key"]\>`
+`<+execution.steps.httpstep.spec.newHeaders["x-auth"]["nested-hyphen-key"]>`
 
-`\<+execution.steps.httpstep.spec.newHeaders["x-auth"].nonhyphenkey\>`
+`<+execution.steps.httpstep.spec.newHeaders["x-auth"].nonhyphenkey>`
 
 ### Variable expression name restrictions
 
-A variable name is a name in the variable expression, such as `foo` in `\<+stage.variables.foo\>`.
+A variable name is a name in the variable expression, such as `foo` in `<+stage.variables.foo>`.
 
 Variable names may only contain `a-z, A-Z, 0-9, _, ., -, and $`. A variable name must start with any character from `a-z, A-Z, or _`.
 
@@ -400,7 +400,7 @@ For example, here is a pipeline variable of number type.
       description: ""  
       value: 10.1
 ```
-The expression to reference that pipeline variable, `\<+pipeline.variables.double_example\>`, will be treated as a double when it is resolved to `10.1`.
+The expression to reference that pipeline variable, `<+pipeline.variables.double_example>`, will be treated as a double when it is resolved to `10.1`.
 
 #### Numbers as doubles and strings
 
@@ -410,19 +410,19 @@ If you enter `123` in a string setting, such as a **Name**, it is treated as a s
 
 ### Contains method
 
-When using `contains`, ensure the expression is wrapped within `\<+ \>` and the specific string is within `"`.
+When using `contains`, ensure the expression is wrapped within `<+ >` and the specific string is within `"`.
 
-For example, `\<+<+stage.name\>.contains("s1")>`.
+For example, `<+<+stage.name>.contains("s1")>`.
 
 ### Split method
 
-When using `split`, ensure the expression is wrapped within `\<+ \>`.
+When using `split`, ensure the expression is wrapped within `<+ >`.
 
-For example, `\<+<+pipeline.variables.abc\>.split(':')[1]>`.
+For example, `<+<+pipeline.variables.abc>.split(':')[1]>`.
 
 ### Complex expression
 
-When using a complex expression, ensure the expression is wrapped within `\<+ \>`.
+When using a complex expression, ensure the expression is wrapped within `<+ >`.
 
 For example:
 
@@ -433,19 +433,19 @@ For example:
 
 ### Ternary operator
 
-When using ternary conditional `?:` operators, do not use spaces between the operators and values. Ensure the expression is wrapped within `\<+ \>`.
+When using ternary conditional `?:` operators, do not use spaces between the operators and values. Ensure the expression is wrapped within `<+ >`.
 :::note Important
 
-When you evaluate Harness expressions using ternary operators, or any operator, ensure that the expression will be resolved at the time of the evaluation. For example, if you use an expression for the value of a pipeline stage step setting, such as `\<+pipeline.stages.mystage.spec.execution.steps.Apply.executionUrl\>`, ensure that the evaluation using that step happens after the step has executed.
+When you evaluate Harness expressions using ternary operators, or any operator, ensure that the expression will be resolved at the time of the evaluation. For example, if you use an expression for the value of a pipeline stage step setting, such as `<+pipeline.stages.mystage.spec.execution.steps.Apply.executionUrl>`, ensure that the evaluation using that step happens after the step has executed.
 
 :::
 
 Ternary operators in Harness follow the standard format, but you cannot use spaces between the operators and values. 
 
-For example, `\<+condition ? <value_if_true\> : <value_if_false>>` will not work. 
+For example, `<+condition ? <value_if_true> : <value_if_false>>` will not work. 
 
-Use `\<+condition?<value_if_true\>:<value_if_false>>` instead.
-Ensure the expression is wrapped within `\<+ \>`:
+Use `<+condition?<value_if_true>:<value_if_false>>` instead.
+Ensure the expression is wrapped within `<+ >`:
 
 ```
 <+condition?<value_if_true>:<value_if_false>>
@@ -513,9 +513,9 @@ pipeline:
 
 ```
 
-In this example, there is a stage variable named `myvar` with a value of `1.1`. In the `ShellScript` step named `ternary` the variable expression for the stage variable, `\<+stage.variables.myvar\>`, is evaluated with the ternary expression:
+In this example, there is a stage variable named `myvar` with a value of `1.1`. In the `ShellScript` step named `ternary` the variable expression for the stage variable, `<+stage.variables.myvar>`, is evaluated with the ternary expression:
 
-`\<+ <+stage.variables.myvar\> == "1.1"?"this is right":"this is wrong" >`
+`<+ <+stage.variables.myvar> == "1.1"?"this is right":"this is wrong" >`
 
 </details>
 
@@ -525,36 +525,36 @@ Ternary operators are also discussed in the [Harness Knowledge Base](https://dev
 
 ### Equals operator
 
-When using the `==` operator, ensure the expression is wrapped within `\<+ \>`.
+When using the `==` operator, ensure the expression is wrapped within `<+ >`.
 
-For example, `\<+<+pipeline.name\> == "pipeline1">` or `\<+<+stage.variables.v1\> == "dev">`.
+For example, `<+<+pipeline.name> == "pipeline1">` or `<+<+stage.variables.v1> == "dev">`.
 
 ### Variable concatenation
 
 Harness string variables can be concatenated by default. Each expression can be evaluated and substituted in the string. 
 
-Previously, Harness users were forced to use a ‘+’, or `.concat()`, the concatenation operator, to join multiple expressions together. Now, you can simply use `\<+pipeline.name\> \<+pipeline.executionId\>`. 
+Previously, Harness users were forced to use a ‘+’, or `.concat()`, the concatenation operator, to join multiple expressions together. Now, you can simply use `<+pipeline.name> <+pipeline.executionId>`. 
 
 For example, Harness supports complex usages sych as the following:
 
-- `us-west-2/nonprod/eks/eks123/\<+env.name\>/chat/`
-- `\<+stage.spec.execution.steps.s1<+strategy.identifierPostFix\>.steps.ShellScript_1.output.outputVariables.v1>`
+- `us-west-2/nonprod/eks/eks123/<+env.name>/chat/`
+- `<+stage.spec.execution.steps.s1<+strategy.identifierPostFix>.steps.ShellScript_1.output.outputVariables.v1>`
   - This example uses the index of the looped execution to pick the correct step.
-- `\<+pipeline.stages.<+pipeline.variables.stagename\>.status>`
+- `<+pipeline.stages.<+pipeline.variables.stagename>.status>`
   - This example shows an elegant way to print out the status of a stage.
 
 All existing expressions will continue to work. For example, the following syntax will still work.
 
-1. Use `+` operator to add string value variables: `\<+<+pipeline.variables.var1\> + "_suffix">`.
+1. Use `+` operator to add string value variables: `<+<+pipeline.variables.var1> + "_suffix">`.
 2. Use Java `concat` method to add string variables:
 
-- `\<+<+pipeline.variables.var1\>.concat("_suffix")>`
+- `<+<+pipeline.variables.var1>.concat("_suffix")>`
 
-Ensure the expression is wrapped within `\<+ \>` in both of theese examples.
+Ensure the expression is wrapped within `<+ >` in both of theese examples.
 
 :::note
 
-If you wish to concatenate expressions as strings, make sure that each expression evaluates to a string. If an expression does not satisfy this condition, use the `toString()` method to convert it to a string. For example, the variable `sequenceId` in the expression `/tmp/spe/\<+pipeline.sequenceId\>` evaluates to an integer. When concatenating it with other string expressions, convert it to a string with the following expression: `/tmp/spe/\<+pipeline.sequenceId.toString()\>`.
+If you wish to concatenate expressions as strings, make sure that each expression evaluates to a string. If an expression does not satisfy this condition, use the `toString()` method to convert it to a string. For example, the variable `sequenceId` in the expression `/tmp/spe/<+pipeline.sequenceId>` evaluates to an integer. When concatenating it with other string expressions, convert it to a string with the following expression: `/tmp/spe/<+pipeline.sequenceId.toString()>`.
 
 :::
 
@@ -565,16 +565,16 @@ When using expressions in JSON as a string, they must be wrapped in quotation ma
 For example, consider the following JSON:
 
 ```json
-   "{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"
+   "{"a":[ { "name": "svc1", "version": "<+pipeline.variables.version>", "hosts": <+<+pipeline.variables.hosts>.split(",")> } ]}"
 ```
 
-In the JSON above, the expression `\<+pipeline.variables.version\>` must be wrapped in quotation marks because it resolves as a string inside JSON (and Strings need to be quoted). The expression `\<+<+pipeline.variables.hosts\>.split(\",\")>` doesn't need to be wrapped in quotation marks because it will be resolved as a list.
+In the JSON above, the expression `<+pipeline.variables.version>` must be wrapped in quotation marks because it resolves as a string inside JSON (and Strings need to be quoted). The expression `<+<+pipeline.variables.hosts>.split(",")>` doesn't need to be wrapped in quotation marks because it will be resolved as a list.
 
 Let's look at an example using allowed values and JSON strings.
 
-A variable with `\<+input\>.allowedValues({"x":"y"})` and `"\<+input\>.allowedValues({x:y})"` have the same value, which is `{x:y}`. You can add space in the second example, `"\<+input\>.allowedValues({x: y})"` to get `{x: y}` and it doesn't cause any errors.
+A variable with `<+input>.allowedValues({"x":"y"})` and `"<+input>.allowedValues({x:y})"` have the same value, which is `{x:y}`. You can add space in the second example, `"<+input>.allowedValues({x: y})"` to get `{x: y}` and it doesn't cause any errors.
 
-You can do this with quotes as well. For example, `"\<+input\>.allowedValues({\\\"x\\\": \\\"y\\\"})"` produces `{"x": "y"}`.
+You can do this with quotes as well. For example, `"<+input>.allowedValues({"x": "y"})"` produces `{"x": "y"}`.
 
 ### Best practices for expressions usage
 
@@ -586,7 +586,7 @@ You can do this with quotes as well. For example, `"\<+input\>.allowedValues({\\
    <+<+pipeline.variables.var2>.replace("a", "<+pipeline.variables.var1>")>
    ```
 
-   In the above expression, `\<+pipeline.variables.var1\>` must be wrapped in quotation marks because the expression is a string parameter for a method.
+   In the above expression, `<+pipeline.variables.var1>` must be wrapped in quotation marks because the expression is a string parameter for a method.
 
 
 ## Debugging expressions
@@ -719,7 +719,7 @@ The name of the current pipeline.
 
 ### \<+pipeline.sequenceId\>
 
-The incremental sequential Id for the execution of a pipeline. A `\<+pipeline.executionId\>` is randomly generated for each execution, but a `\<+pipeline.sequenceId\>` is incremented with each run of the pipeline.
+The incremental sequential Id for the execution of a pipeline. A `<+pipeline.executionId>` is randomly generated for each execution, but a `<+pipeline.sequenceId>` is incremented with each run of the pipeline.
 
 The first run of a pipeline receives a sequence Id of 1 and each subsequent execution is incremented by 1.
 
@@ -727,7 +727,7 @@ For CD pipelines, the Id is named execution. For CI pipelines, the Id is named b
 
 ![](./static/harness-variables-26.png)
 
-You can use `\<+pipeline.sequenceId\>` to tag a CI build when you push it to a repository, and then use `\<+pipeline.sequenceId\>` to pull the same build and tag in a subsequent stage. For examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/kubernetes-build-farm/) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-cd-other-modules).
+You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/kubernetes-build-farm/) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-cd-other-modules).
 
 ### \<+pipeline.startTs\>
 
@@ -737,7 +737,7 @@ The start time of a pipeline execution in [Unix Epoch format](https://www.epoch1
 
 The type of trigger. For more information, go to [Triggers](/docs/category/triggers).
 
-Here are the possible `\<+pipeline.triggerType\>` and `\<+trigger.type\>` values.
+Here are the possible `<+pipeline.triggerType>` and `<+trigger.type>` values.
 
 | **\<+pipeline.triggerType\>** | **\<+trigger.type\>** | **Description** |
 | :--- | :--- | :--- |
@@ -751,7 +751,7 @@ Here are the possible `\<+pipeline.triggerType\>` and `\<+trigger.type\>` values
 
 The name of the user or the trigger name if the pipeline is triggered using a webhook. For more information, go to [Trigger Pipelines using Git Events](../triggers/triggering-pipelines.md).
 
-If a user name is not present in the event payload, the `\<+pipeline.triggeredBy.name\>` expression will resolve as empty. For example, in the SaaS edition of Bitbucket, a user name is not present.
+If a user name is not present in the event payload, the `<+pipeline.triggeredBy.name>` expression will resolve as empty. For example, in the SaaS edition of Bitbucket, a user name is not present.
 
 ### \<+pipeline.triggeredBy.email\>
 
@@ -783,25 +783,25 @@ Deployment status values are a Java enum. You can see the list of values in the 
 
 ![](./static/harness-variables-27.png)
 
-You can use any status value in a JEXL condition. For example, `\<+pipeline.stages.stage1.status\> == "FAILED"`.
+You can use any status value in a JEXL condition. For example, `<+pipeline.stages.stage1.status> == "FAILED"`.
 
 #### Stage status
 
-The expression `\<+pipeline.stages.STAGE_ID.status\>` resolves to the status of a stage.
+The expression `<+pipeline.stages.STAGE_ID.status>` resolves to the status of a stage.
 
 You must use the expression after the stage in execution.
 
 #### Step status
 
-The expression `\<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status\>` resolves to the status of a step. For example, `\<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status\>`.
+The expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
 
 You must use the expression after the step in execution.
 
 ## InputSet
 
-Displays the Input Set values for the execution as a JSON value. The list of values can be searched via `\<+inputSet\>`.
+Displays the Input Set values for the execution as a JSON value. The list of values can be searched via `<+inputSet>`.
 
-Here's an example where the **Timeout** settings for the two steps preceding the step using `\<+inputSet\>` are using values from an Input Set:
+Here's an example where the **Timeout** settings for the two steps preceding the step using `<+inputSet>` are using values from an Input Set:
 
 ```
 {pipeline:identifier:Custom} {pipeline:stages:[{stage:identifier:Custom}]} {pipeline:stages:[{stage:type:Custom}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:identifier:ShellScript_1}}}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:type:ShellScript}}}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:timeout:10s}}}]} {pipeline:stages:[{stage:spec:{execution:{step:identifier:json_format}]}}]} {pipeline:stages:[{stage:spec:{execution:{step:type:ShellScript}]}}]} {pipeline:stages:[{stage:spec:{execution:{step:timeout:10m}]}}]}
@@ -829,7 +829,7 @@ Stage variables are custom variables you can add and reference in your stage and
 
 You can even reference stage variables in the files fetched at runtime.
 
-For example, you could create a stage variable `name` and then reference its identifier in the Kubernetes values.yaml file used by this stage: `name: \<+stage.variables.name\>`:
+For example, you could create a stage variable `name` and then reference its identifier in the Kubernetes values.yaml file used by this stage: `name: <+stage.variables.name>`:
 
 
 ```
@@ -841,9 +841,9 @@ image: <+artifacts.primary.image>
 ```
 When you run this pipeline, the value for `name` is used for the values.yaml file. The value can be a fixed value, expression, or runtime input.
 
-You reference stage variables **within their stage** using the expression `\<+stage.variables.VARIABLE_NAME\>`.
+You reference stage variables **within their stage** using the expression `<+stage.variables.VARIABLE_NAME>`.
 
-You reference stage variables **outside their stage** using the expression `\<+pipeline.stages.STAGE_NAME.variables.VARIABLE_NAME\>`.
+You reference stage variables **outside their stage** using the expression `<+pipeline.stages.STAGE_NAME.variables.VARIABLE_NAME>`.
 
 ### \<+stage.name\>
 
@@ -909,9 +909,9 @@ For more information, go to [Services and Environments Overview](/docs/continuou
 
 ### Service-level variables for service v2
 
-To reference a service variable, use the expression `\<+serviceVariables.VARIABLE_NAME\>`.
+To reference a service variable, use the expression `<+serviceVariables.VARIABLE_NAME>`.
 
-For example, `\<+serviceVariables.myvar\>`.
+For example, `<+serviceVariables.myvar>`.
 
 ### Service-level variables for service v1
 
@@ -937,9 +937,9 @@ To reference the variables, click the copy button.
 There are two options:
 
 * **Copy variable name:** use this option if you will only be referencing this variable in the current stage. Expression:
-	+ `\<+serviceConfig.serviceDefinition.spec.variables.NAME\>`
+	+ `<+serviceConfig.serviceDefinition.spec.variables.NAME>`
 * **Copy fully qualified name:** use this option if you will be referencing this variable in another stage. Example:
-	+ `\<+pipeline.stages.STAGE_NAME.spec.serviceConfig.serviceDefinition.spec.variables.NAME\>`
+	+ `<+pipeline.stages.STAGE_NAME.spec.serviceConfig.serviceDefinition.spec.variables.NAME>`
 
 You can use these expressions in any setting in your pipeline. Select the expression option and enter the expression.
 
@@ -961,7 +961,7 @@ The description of the service where the expression is evaluated.
 
 The tags on the service where the expression is evaluated.
 
-To reference a specific tag use `\<+service.tags.TAG_KEY\>`.
+To reference a specific tag use `<+service.tags.TAG_KEY>`.
 
 ### \<+service.identifier\>
 
@@ -993,7 +993,7 @@ Manifest settings are referenced by **Id**.
 
 You can always determine the expressions you can use by looking at the service YAML.
 
-For example, the expression `\<+manifests.mymanifest.valuesPaths\>` can be created by using the manifest Id and the `valuesPaths` key in the YAML.
+For example, the expression `<+manifests.mymanifest.valuesPaths>` can be created by using the manifest Id and the `valuesPaths` key in the YAML.
 
 
 ```
@@ -1067,7 +1067,7 @@ You can copy the expressions for the Id and value of `commitId`.
 
 For example:
 
-Name: `\<+pipeline.stages.satr.spec.execution.steps.rolloutDeployment.output.manifest.values.commitId\>`
+Name: `<+pipeline.stages.satr.spec.execution.steps.rolloutDeployment.output.manifest.values.commitId>`
 
 Value: `8d30fc49e6ed13155590b7d8c16931cd1a7b5bac`
 
@@ -1138,9 +1138,9 @@ Not Harness tags. This expression evaluates to the tags on the artifact pushed, 
 
 The full location to the Docker image. For example, `docker.io/bitnami/nginx:1.22.0-debian-11-r0`.
 
-For non-containerized artifacts, use `\<+artifacts.primary.path\>`, described [below](#artifact_path).  To see just the image name, use `\<+artifacts.primary.imagePath\>`.
+For non-containerized artifacts, use `<+artifacts.primary.path>`, described [below](#artifact_path).  To see just the image name, use `<+artifacts.primary.imagePath>`.
 
-Use `\<+artifacts.primary.image\>` or `\<+artifacts.primary.imagePath\>` in your values YAML file when you want to deploy an artifact you have added to the **Artifacts** section of a CD stage service definition.
+Use `<+artifacts.primary.image>` or `<+artifacts.primary.imagePath>` in your values YAML file when you want to deploy an artifact you have added to the **Artifacts** section of a CD stage service definition.
 
 For example, here is the **Artifacts** section with an artifact:
 
@@ -1173,13 +1173,13 @@ The file name of the non-containerized artifact. This expression is used in non-
 
 ### \<+artifacts.primary.imagePath\>
 
-The image name, such as `nginx`. To see the entire image location use `\<+artifacts.primary.image\>`.
+The image name, such as `nginx`. To see the entire image location use `<+artifacts.primary.image>`.
 
 ### \<+artifacts.primary.imagePullSecret\>
 
 If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the values.yaml or manifest file in service definition **Manifests** section must use the `dockercfg` parameter.
 
-If the Docker image is added in the service definition **Artifacts** section, you can reference it as `dockercfg: \<+artifacts.primary.imagePullSecret\>`.
+If the Docker image is added in the service definition **Artifacts** section, you can reference it as `dockercfg: <+artifacts.primary.imagePullSecret>`.
 
 values.yaml:
 
@@ -1201,7 +1201,7 @@ Go to [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-de
 
 In some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For such cases, the values.yaml or manifest files in the service definition **Manifests** section must use the `dockerconfigjson` parameter.
 
-If the Docker image is added in the service definition **Artifacts** section, you can reference it as `dockerconfigjson: \<+artifact.dockerConfigJsonSecret\>`.
+If the Docker image is added in the service definition **Artifacts** section, you can reference it as `dockerconfigjson: <+artifact.dockerConfigJsonSecret>`.
 
 Here is a sample values.yaml:
 
@@ -1263,9 +1263,9 @@ Since Docker image manifest API supports two schema versions, schemaVersion1 and
 
 Here are the expressions for referencing each version:
 
-SHA value of schemaVersion1: `\<+artifacts.primary.metadata.SHA\>`
+SHA value of schemaVersion1: `<+artifacts.primary.metadata.SHA>`
 
-SHA value of schemaVersion2: `\<+artifacts.primary.metadata.SHAV2\>`
+SHA value of schemaVersion2: `<+artifacts.primary.metadata.SHAV2>`
 
 ### \<+artifact.primary.identifier\>
 
@@ -1293,11 +1293,11 @@ The sidecar identifier is set when you add the sidecar artifact. You can see it 
 
 Here are the sidecar expressions:
 
-* `\<+artifacts.sidecars.SIDECAR_IDENTIFIER.imagePath\>`
-* `\<+artifacts.sidecars.SIDECAR_IDENTIFIER.image\>`
-* `\<+artifacts.sidecars.SIDECAR_IDENTIFIER.type\>`
-* `\<+artifacts.sidecars.SIDECAR_IDENTIFIER.tag\>`
-* `\<+artifacts.sidecars.SIDECAR_IDENTIFIER.connectorRef\>`
+* `<+artifacts.sidecars.SIDECAR_IDENTIFIER.imagePath>`
+* `<+artifacts.sidecars.SIDECAR_IDENTIFIER.image>`
+* `<+artifacts.sidecars.SIDECAR_IDENTIFIER.type>`
+* `<+artifacts.sidecars.SIDECAR_IDENTIFIER.tag>`
+* `<+artifacts.sidecars.SIDECAR_IDENTIFIER.connectorRef>`
 
 ## Approval
 
@@ -1327,24 +1327,24 @@ User comments from the approval, formatted as a single string. This variable is 
 
 Files added in the **Config Files** section of a service are referenced using the following Harness expressions.
 
-* Plain text file contents: `\<+configFile.getAsString("CONFIG_FILE_ID")\>`
-* Base64-encoded file contents: `\<+configFile.getAsBase64("CONFIG_FILE_ID")\>`
+* Plain text file contents: `<+configFile.getAsString("CONFIG_FILE_ID")>`
+* Base64-encoded file contents: `<+configFile.getAsBase64("CONFIG_FILE_ID")>`
 
 For more details, go to [Use config files in your deployments](/docs/continuous-delivery/x-platform-cd-features/services/cd-services-config-files).
 
 If the config file has multiple text or encrypted files attached, you must use fileStore or secrets variables expressions: 
 
-- `\<+fileStore.getAsString("SCOPED_FILEPATH")\>`  
-- `\<+fileStore.getAsBase64("SCOPED_FILEPATH")\>`
-- `\<+secrets.getValue("SCOPED_SECRET_ID")\>`
+- `<+fileStore.getAsString("SCOPED_FILEPATH")>`  
+- `<+fileStore.getAsBase64("SCOPED_FILEPATH")>`
+- `<+secrets.getValue("SCOPED_SECRET_ID")>`
 
 Here are some examples:
 
-- `\<+configFile.getAsString("cf_file")\>`
-- `\<+configFile.getAsBase64("cf_file")\>`
-- `\<+fileStore.getAsString("/folder1/configFile")\>`
-- `\<+fileStore.getAsBase64("account:/folder1/folder2/configFile")\>`
-- `\<+secrets.getValue("account.MySecretFileIdentifier")\>`
+- `<+configFile.getAsString("cf_file")>`
+- `<+configFile.getAsBase64("cf_file")>`
+- `<+fileStore.getAsString("/folder1/configFile")>`
+- `<+fileStore.getAsBase64("account:/folder1/folder2/configFile")>`
+- `<+secrets.getValue("account.MySecretFileIdentifier")>`
 
 ## Environments
 
@@ -1356,11 +1356,11 @@ The use of variable expressions is different between v1 and v2.
 
 For more information, go to [Services and Environments Overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
-To reference an environment-level variable, use the expression `\<+env.variables.variableName\>`.
+To reference an environment-level variable, use the expression `<+env.variables.variableName>`.
 
 For example, to reference an environment variable named `envvar`, use the following expression:
 
-`\<+env.variables.envvar\>`
+`<+env.variables.envvar>`
 
 ![](./static/harness-variables-44.png)
 
@@ -1424,7 +1424,7 @@ The Id of the infrastructure definition used in the pipeline stage.
 
 The [tags on an infrastructure definition](/docs/continuous-delivery/get-started/services-and-environments-overview/#infrastructure-tags) used in the same CD stage where the expression is evaluated.
 
-To reference a specific tag use `\<+infra.tags.TAG_KEY\>`.
+To reference a specific tag use `<+infra.tags.TAG_KEY>`.
 
 ### \<+infra.connectorRef\>
 
@@ -1438,13 +1438,13 @@ The name of the connector used in the infrastructure definition.
 
 :::note
 
-This expression is `\<+INFRA_KEY\>` exactly. `INFRA_KEY` is not a placeholder.
+This expression is `<+INFRA_KEY>` exactly. `INFRA_KEY` is not a placeholder.
 
 :::
 
 The infrastructure key. The key is a unique string that identifies a deployment target infrastructure. It is typically used in the **Release Name** setting to add labels to release for tracking.
 
-For example, in the infrastructure definition of a deploy stage, the `\<+INFRA_KEY\>` is used in the **Release Name** to give the release a unique name.
+For example, in the infrastructure definition of a deploy stage, the `<+INFRA_KEY>` is used in the **Release Name** to give the release a unique name.
 
 ![](./static/harness-variables-47.png)
 
@@ -1539,34 +1539,34 @@ For examples, see [Run a script on multiple target instances](/docs/continuous-d
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
-* `​\<+instance.hostName\>​`
-* `​\<+instance.host.instanceName\>`
-* `​\<+instance.name\>`
+* `​<+instance.hostName>​`
+* `​<+instance.host.instanceName>`
+* `​<+instance.name>`
 
 For Microsoft Azure or AWS:
 
-* `​\<+instance.host.privateIp\>​`
-* `​\<+instance.host.publicIp\>`
+* `​<+instance.host.privateIp>​`
+* `​<+instance.host.publicIp>`
 
 ### Deployment templates
 
-For [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial), you can use `\<+instance...\>` expressions to reference host(s) properties.
+For [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial), you can use `<+instance...>` expressions to reference host(s) properties.
 
-The `\<+instance...\>` expressions refer to the **Instance Attributes** in the deployment template:
+The `<+instance...>` expressions refer to the **Instance Attributes** in the deployment template:
 
 ![](./static/harness-variables-49.png)
 
 The following expressions refer to instance(s) collected by the mandatory **instancename** field.
 
-* `​\<+instance.hostName\>​`
-* `​\<+instance.host.instanceName\>`
-* `​\<+instance.name\>`
+* `​<+instance.hostName>​`
+* `​<+instance.host.instanceName>`
+* `​<+instance.name>`
 
-The expression `\<+instance.host.properties.PROPERTY_NAME\>` can used to reference the other properties you added to **Instance Attributes**.
+The expression `<+instance.host.properties.PROPERTY_NAME>` can used to reference the other properties you added to **Instance Attributes**.
 
 For example, in the example above you can see the `artifact` field name mapped to the `artifactBuildNo` property.
 
-To reference `artifact` you would use `\<+instance.host.properties.artifact\>`.
+To reference `artifact` you would use `<+instance.host.properties.artifact>`.
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
 ### \<+instance.hostName\>
@@ -1577,7 +1577,7 @@ If you use this variable in a pipeline, such as in a Shell script step, Harness 
 
 ### ​\<+instance.host.instanceName\>
 
-The same as `\<+instance.hostName\>`. 
+The same as `<+instance.hostName>`. 
 
 ### \<+instance.name\>
 
@@ -1619,13 +1619,13 @@ If the step (or step group) does not have the looping strategy configured, the e
 
 The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`.
 
-For example, `echo \<+strategy.node.cs1.currentStatus\>`.
+For example, `echo <+strategy.node.cs1.currentStatus>`.
 
 ### \<+\<+strategy.node\>.get("STRATEGY_NODE_IDENTIFIER").currentStatus\>
 
 The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`.
 
-For example, `echo \<+<+strategy.node\>.get("ShellScript_1").currentStatus>`.
+For example, `echo <+<+strategy.node>.get("ShellScript_1").currentStatus>`.
 
 ### identifierPostFix overview
 
@@ -1662,7 +1662,7 @@ The above strategy will spawn 4 stages/steps and the `identifierPostfix` values 
 
 This expression retrieves the `identifierPostFix` of the current node or any parent node that is a child of the looping strategy.
 
-When used in a step, Harness resolves `\<+strategy.identifierPostFix\>` to the `identifierPostFix` of the child node belonging to the first looping strategy parent node (either stage or step).
+When used in a step, Harness resolves `<+strategy.identifierPostFix>` to the `identifierPostFix` of the child node belonging to the first looping strategy parent node (either stage or step).
 
 If both the step and stage have the looping strategy configured, the expression resolves to the `identifierPostFix` of the step.
 
@@ -1670,7 +1670,7 @@ If the step (or stepGroup) does not have the looping strategy configured, the ex
 
 Let's look at an example using the execution of a stage with the identifier `build_and_upload` and matrix looping strategy.
 
-Multiple child stages will be created from the `build_and_upload` stage. These child stages will have identifiers with the postfix appended, such as `build_and_upload_0`, `build_and_upload_docker`, etc. In this scenario, using the expression `\<+strategy.identifierPostFix\>` will result in value `_0` or `_docker`.
+Multiple child stages will be created from the `build_and_upload` stage. These child stages will have identifiers with the postfix appended, such as `build_and_upload_0`, `build_and_upload_docker`, etc. In this scenario, using the expression `<+strategy.identifierPostFix>` will result in value `_0` or `_docker`.
 
 ### \<+step.identifierPostFix\>
 
@@ -1687,12 +1687,12 @@ This expression returns the `identifierPostFix` of the step group when the curre
 ### \<+strategy.node.STRATEGY_NODE_IDENTIFIER.identifierPostFix\>
 
 This expression retrieves the `identifierPostFix` for the node that is the child of a looping strategy with the identifier `STRATEGY_NODE_IDENTIFIER`.
-For example, let's consider two nested step groups, sg1 and sg2 (child of sg1). Both sg1 and sg2 have a looping strategy configured. The expression, `\<+stepGroup.identifierPostFix\>` always retrieves the `identifierPostFix` of sg2. 
+For example, let's consider two nested step groups, sg1 and sg2 (child of sg1). Both sg1 and sg2 have a looping strategy configured. The expression, `<+stepGroup.identifierPostFix>` always retrieves the `identifierPostFix` of sg2. 
 
 Use the following expressions to obtain the `identifierPostFix` for a specific step group:
 
-* `\<+strategy.node.sg1.identifierPostFix\>`: Retrieves the `identifierPostFix` for the node with the identifier sg1 (parent step group).
-* `\<+strategy.node.sg2.identifierPostFix\>`: Retrieves the `identifierPostFix` for the node with the identifier sg2 (child step group).
+* `<+strategy.node.sg1.identifierPostFix>`: Retrieves the `identifierPostFix` for the node with the identifier sg1 (parent step group).
+* `<+strategy.node.sg2.identifierPostFix>`: Retrieves the `identifierPostFix` for the node with the identifier sg2 (child step group).
 
 ![](./static/nested-looping-strategy.png)
 
@@ -1703,15 +1703,15 @@ Similarly, you can use other strategy expressions for any specific strategy leve
 Using this format, you can retrieve the values of any strategy expressions associated with looping strategies at various levels. This is useful when looping strategies are configured within nested levels. 
 
 Here are some examples:
-* `\<+strategy.node.sg1.iteration\>`: Retrieves the current iteration of the node with the identifier sg1 (parent step group).
-* `\<+strategy.node.sg2.iteration\>`: Retrieves the current iteration of the node with the identifier sg2 (child step group).
-* `\<+strategy.node.some_node_with_looping_strategy.iteration\>`: Retrieves the current the iteration of the node with identifier `some_node_with_looping_strategy` (`some_node_with_looping_strategy` can be any type of node stage, step, or step group).
-* `\<+strategy.node.sg1.iterations\>`: Retrieves the total iterations of the node with the identifier sg1.
-* `\<+strategy.node.sg2.iterations\>`: Retrieves the total iterations of the node with the identifier sg2.
-* `\<+strategy.node.some_node_with_looping_strategy.iterations\>`: Retrieves the total iterations of the node with the identifier `some_node_with_looping_strategy`.
-* `\<+strategy.node.sg1.matrix.key1\>`: Retrieves the value for the matrix axis key1 for the node with the identifier sg1 if a matrix looping strategy is configured for sg1.
-* `\<+strategy.node.sg2.matrix.key1\>`: Retrieves the value for the matrix axis key1 for the node with the identifier sg2 if a matrix looping strategy is configured for sg2.
-* `\<+strategy.node.some_node_with_looping_strategy.matrix.key1\>`: Retrieves the value for the matrix axis key1 for the node with the identifier `some_node_with_looping_strategy` if a matrix looping strategy is configured for `some_node_with_looping_strategy`.
+* `<+strategy.node.sg1.iteration>`: Retrieves the current iteration of the node with the identifier sg1 (parent step group).
+* `<+strategy.node.sg2.iteration>`: Retrieves the current iteration of the node with the identifier sg2 (child step group).
+* `<+strategy.node.some_node_with_looping_strategy.iteration>`: Retrieves the current the iteration of the node with identifier `some_node_with_looping_strategy` (`some_node_with_looping_strategy` can be any type of node stage, step, or step group).
+* `<+strategy.node.sg1.iterations>`: Retrieves the total iterations of the node with the identifier sg1.
+* `<+strategy.node.sg2.iterations>`: Retrieves the total iterations of the node with the identifier sg2.
+* `<+strategy.node.some_node_with_looping_strategy.iterations>`: Retrieves the total iterations of the node with the identifier `some_node_with_looping_strategy`.
+* `<+strategy.node.sg1.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier sg1 if a matrix looping strategy is configured for sg1.
+* `<+strategy.node.sg2.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier sg2 if a matrix looping strategy is configured for sg2.
+* `<+strategy.node.some_node_with_looping_strategy.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier `some_node_with_looping_strategy` if a matrix looping strategy is configured for `some_node_with_looping_strategy`.
 
 
 ## Triggers
@@ -1720,13 +1720,13 @@ Here are some examples:
 
 Resolves to the artifact version (such as a Docker Tag) that initiated an [On New Artifact Trigger](../triggers/trigger-on-a-new-artifact.md).
 
-When you add a new artifact trigger, you select the artifact to listen on, and its **Tag** setting is automatically populated with `\<+trigger.artifact.build\>`.
+When you add a new artifact trigger, you select the artifact to listen on, and its **Tag** setting is automatically populated with `<+trigger.artifact.build>`.
 
 ![](./static/harness-variables-50.png)
 
-The `\<+trigger.artifact.build\>` used for **Tag** makes sure that the new artifact version that executed the trigger is used for the deployment.
+The `<+trigger.artifact.build>` used for **Tag** makes sure that the new artifact version that executed the trigger is used for the deployment.
 
-Adding a new tag to the artifact fires the trigger and executes the pipeline. Harness resolves `\<+trigger.artifact.build\>` to the tag that fired the trigger. This makes sure that the new tag is used when pulling the artifact and the new artifact version is deployed.
+Adding a new tag to the artifact fires the trigger and executes the pipeline. Harness resolves `<+trigger.artifact.build>` to the tag that fired the trigger. This makes sure that the new tag is used when pulling the artifact and the new artifact version is deployed.
 
 ### \<+trigger.artifact.source.connectorRef\>
 
@@ -1742,9 +1742,9 @@ Harness includes built-in expressions for referencing trigger details such as a 
 
 For example:
 
-* `\<+trigger.type\>`
+* `<+trigger.type>`
 	+ Webhook.
-* `\<+trigger.event\>`
+* `<+trigger.event>`
 	+ PR, PUSH, etc.
 
 For a complete list, see [Triggers Reference](../triggers/triggers-reference.md).
@@ -1792,7 +1792,7 @@ The `${HARNESS_KUBE_CONFIG_PATH}` expression can be used in scripts in Shell scr
 
 Harness expression for the deployment revision number.
 
-You can use the expression `\<+kubernetes.release.revision\>` in values.yaml, OpenShift Params, and Kustomize Patches. 
+You can use the expression `<+kubernetes.release.revision>` in values.yaml, OpenShift Params, and Kustomize Patches. 
 
 This will help you to:
   - Reference the current Harness release number as part of your manifest.
@@ -1811,14 +1811,14 @@ import HelmManifestExpressions from '/docs/continuous-delivery/shared/helm-manif
 
 You can reference tags using Harness expressions.
 
-You simply reference the tagged entity and then use `tags.TAG_NAME`, like `\<+pipeline.tags.docs\>`
+You simply reference the tagged entity and then use `tags.TAG_NAME`, like `<+pipeline.tags.docs>`
 
 For example, here are several different references:
 
-* `\<+pipeline.tags.TAG_NAME\>`
-* `\<+stage.tags.TAG_NAME\>`
-* `\<+pipeline.stages.STAGE_ID.tags.TAG_NAME\>`
-* `\<+serviceConfig.service.tags.TAG_NAME\>`
+* `<+pipeline.tags.TAG_NAME>`
+* `<+stage.tags.TAG_NAME>`
+* `<+pipeline.stages.STAGE_ID.tags.TAG_NAME>`
+* `<+serviceConfig.service.tags.TAG_NAME>`
 
 ## Migrating FirstGen expressions to NextGen
 
@@ -1826,7 +1826,7 @@ When migrating Harness FirstGen expressions to Harness NextGen, review the follo
 
 :::note
 
-All FirstGen expressions use the `${...}` format. For example, `${approvedBy.name}`. In NextGen, this has been replaced by `\<+...\>`. For example, `\<+approvedBy.name\>`.
+All FirstGen expressions use the `${...}` format. For example, `${approvedBy.name}`. In NextGen, this has been replaced by `<+...>`. For example, `<+approvedBy.name>`.
 
 :::
 
@@ -1989,7 +1989,7 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 | helmChart.metadata.url                                                | N/A                                                                                                                                                                                                                                                                                  |
 | helmChart.name                                                        | pipeline.stages.STAGE_ID.spec.execution.steps.rolloutDeployment.output.releaseName                                                                                                                                                                                                 |
 | helmChart.version                                                     | pipeline.stages.STAGE_ID.spec.serviceConfig.output.manifestResults.SERVICE_ID.helmVersion                                                                                                                                                                                             |
-| Nested Expression: `secrets.getValue("terraform-aws-env_name-id")` | `\<+secrets.getValue("test_secret_" + <+pipeline.variables.envVar\>)>` or `\<+secrets.getValue("test_secret_".concat(<+pipeline.variables.envVar\>))>`                                                                                                                                             |
+| Nested Expression: `secrets.getValue("terraform-aws-env_name-id")` | `<+secrets.getValue("test_secret_" + <+pipeline.variables.envVar>)>` or `<+secrets.getValue("test_secret_".concat(<+pipeline.variables.envVar>))>`                                                                                                                                             |
 | **Email Step**                                                            | **Email Step**                                                                                                                                                                                                                                                                           |
 | toAddress                                                             | pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.to                                                                                                                                                            |
 | ccAddress                                                             | pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.cc                                                                                                                                                                                                                            |

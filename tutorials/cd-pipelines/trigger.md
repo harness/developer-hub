@@ -56,9 +56,9 @@ Verify the following:
     - Under **Artifacts**, ensure you have selected Artifact Repository Type **Docker Registry**.
     - Click **Continue** and choose the created **Docker Connector**.
     - In the next step, enter a name for this artifact, and enter the name of the artifact image you want to deploy.
-        - For the **Tag**, change it to type **Expressions** and enter `\<+trigger.artifact.build\>`.
-        - With `\<+trigger.artifact.build\>`, the pipeline will deploy the artifact image version that initiated the trigger.
-    - To deploy this artifact image, you simply need to reference it in the stage's service definition in your manifests using the expression `\<+artifact.image\>`. For more details, go to [Add Container Images as Artifacts for Kubernetes Deployments](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/).
+        - For the **Tag**, change it to type **Expressions** and enter `<+trigger.artifact.build>`.
+        - With `<+trigger.artifact.build>`, the pipeline will deploy the artifact image version that initiated the trigger.
+    - To deploy this artifact image, you simply need to reference it in the stage's service definition in your manifests using the expression `<+artifact.image>`. For more details, go to [Add Container Images as Artifacts for Kubernetes Deployments](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/).
 
 ### Create a Docker Registry Artifact Trigger
 

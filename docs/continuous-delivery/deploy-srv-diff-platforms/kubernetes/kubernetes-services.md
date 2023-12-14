@@ -112,10 +112,10 @@ Create a service using the [Create Services](https://apidocs.harness.io/tag/Serv
 		<summary>Services API example</summary>
 
 ```json
-curl -i -X POST \
-  'https://app.harness.io/gateway/ng/api/servicesV2/batch?accountIdentifier=<Harness account Id>' \
-  -H 'Content-Type: application/json' \
-  -H 'x-api-key: <Harness API key>' \
+curl -i -X POST 
+  'https://app.harness.io/gateway/ng/api/servicesV2/batch?accountIdentifier=<Harness account Id>' 
+  -H 'Content-Type: application/json' 
+  -H 'x-api-key: <Harness API key>' 
   -d '[{
     "identifier": "KubernetesTest",
     "orgIdentifier": "default",
@@ -126,7 +126,7 @@ curl -i -X POST \
       "property1": "string",
       "property2": "string"
     },
-    "yaml": "service:\n  name: KubernetesTest\n  identifier: KubernetesTest\n  serviceDefinition:\n    type: Kubernetes\n    spec:\n      artifacts:\n        primary:\n          primaryArtifactRef: <+input>\n          sources:\n            - spec:\n                connectorRef: account.harnessImage\n                imagePath: library/nginx\n                tag: stable-perl\n              identifier: nginx\n              type: DockerRegistry\n      manifests:\n        - manifest:\n            identifier: myapp\n            type: K8sManifest\n            spec:\n              store:\n                type: Harness\n                spec:\n                  files:\n                    - /Templates\n              valuesPaths:\n                - /values.yaml\n              skipResourceVersioning: false\n              enableDeclarativeRollback: false\n  gitOpsEnabled: false"
+    "yaml": "service:n  name: KubernetesTestn  identifier: KubernetesTestn  serviceDefinition:n    type: Kubernetesn    spec:n      artifacts:n        primary:n          primaryArtifactRef: <+input>n          sources:n            - spec:n                connectorRef: account.harnessImagen                imagePath: library/nginxn                tag: stable-perln              identifier: nginxn              type: DockerRegistryn      manifests:n        - manifest:n            identifier: myappn            type: K8sManifestn            spec:n              store:n                type: Harnessn                spec:n                  files:n                    - /Templatesn              valuesPaths:n                - /values.yamln              skipResourceVersioning: falsen              enableDeclarativeRollback: falsen  gitOpsEnabled: false"
   }]'
 ```
 </details>
@@ -385,7 +385,7 @@ Create a service using the [Create Services](https://apidocs.harness.io/tag/Serv
       "property1": "string",
       "property2": "string"
     },
-    "yaml": "service:\n  name: Helm Chart\n  identifier: Helm_Chart\n  tags: {}\n  serviceDefinition:\n    spec:\n      manifests:\n        - manifest:\n            identifier: nginx\n            type: HelmChart\n            spec:\n              store:\n                type: Http\n                spec:\n                  connectorRef: Bitnami\n              chartName: nginx\n              helmVersion: V3\n              skipResourceVersioning: false\n              commandFlags:\n                - commandType: Template\n                  flag: mychart -x templates/deployment.yaml\n    type: Kubernetes"
+    "yaml": "service:n  name: Helm Chartn  identifier: Helm_Chartn  tags: {}n  serviceDefinition:n    spec:n      manifests:n        - manifest:n            identifier: nginxn            type: HelmChartn            spec:n              store:n                type: Httpn                spec:n                  connectorRef: Bitnamin              chartName: nginxn              helmVersion: V3n              skipResourceVersioning: falsen              commandFlags:n                - commandType: Templaten                  flag: mychart -x templates/deployment.yamln    type: Kubernetes"
   }
 ]
 ```
@@ -784,7 +784,7 @@ Create a service using the [Create Services](https://apidocs.harness.io/tag/Serv
       "property1": "string",
       "property2": "string"
     },
-    "yaml": "service:\n  name: OpenShift Template\n  identifier: OpenShift\n  tags: {}\n  serviceDefinition:\n    spec:\n      manifests:\n        - manifest:\n            identifier: nginx\n            type: OpenshiftTemplate\n            spec:\n              store:\n                type: Harness\n                spec:\n                  files:\n                    - /OpenShift/templates/example-template.yml\n              skipResourceVersioning: false\n    type: Kubernetes"
+    "yaml": "service:n  name: OpenShift Templaten  identifier: OpenShiftn  tags: {}n  serviceDefinition:n    spec:n      manifests:n        - manifest:n            identifier: nginxn            type: OpenshiftTemplaten            spec:n              store:n                type: Harnessn                spec:n                  files:n                    - /OpenShift/templates/example-template.ymln              skipResourceVersioning: falsen    type: Kubernetes"
   }
 ]
 ```
@@ -931,7 +931,7 @@ If you run `kubectl api-resources` you should see a list of resources, and `k
 
 You have two options when referencing the artifacts you want to deploy:
 
-- Add an artifact source to the Harness service and reference it using the Harness expression `\<+artifacts.primary.image\>` in the values YAML file.
+- Add an artifact source to the Harness service and reference it using the Harness expression `<+artifacts.primary.image>` in the values YAML file.
 - Hardcode the artifact into the manifests or values YAML file.
 
 <details>
@@ -942,7 +942,7 @@ Add the image location to Harness as an artifact in the **Artifacts** section o
 
 ![](./static/kubernetes-services-07.png)
 
-This allows you to reference the image in your values YAML files using the Harness expression `\<+artifacts.primary.image\>`.
+This allows you to reference the image in your values YAML files using the Harness expression `<+artifacts.primary.image>`.
 
 ```yaml
 ...  
@@ -1069,9 +1069,9 @@ Create the Docker connector using the [Create a Connector](https://apidocs.harne
 		<summary>Docker connector example</summary>
 
 ```yaml
-curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=123456' \
---header 'Content-Type: text/yaml' \
---header 'x-api-key: pat.123456.123456' \
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=123456' 
+--header 'Content-Type: text/yaml' 
+--header 'x-api-key: pat.123456.123456' 
 --data-raw 'connector:
   name: dockerhub
   identifier: dockerhub
@@ -1324,9 +1324,9 @@ Create the GCR connector using the [Create a Connector](https://apidocs.harness.
 		<summary>GCR connector example</summary>
 
 ```curl
-curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
---header 'Content-Type: text/yaml' \
---header 'x-api-key: pat.12345.6789' \
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' 
+--header 'Content-Type: text/yaml' 
+--header 'x-api-key: pat.12345.6789' 
 --data-raw 'connector:
   name: GCRexample
   identifier: GCRexample
@@ -1536,9 +1536,9 @@ Create the Google Artifact Registry connector using the [Create a Connector](htt
 		<summary>GCR connector example</summary>
 
 ```curl
-curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
---header 'Content-Type: text/yaml' \
---header 'x-api-key: pat.12345.6789' \
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' 
+--header 'Content-Type: text/yaml' 
+--header 'x-api-key: pat.12345.6789' 
 --data-raw 'connector:
   name: Google Artifact Registry
   identifier: Google_Artifact_Registry
@@ -1761,9 +1761,9 @@ Create the ECR connector using the [Create a Connector](https://apidocs.harness.
 		<summary>ECR connector example</summary>
 
 ```curl
-curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
---header 'Content-Type: text/yaml' \
---header 'x-api-key: pat.12345.6789' \
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' 
+--header 'Content-Type: text/yaml' 
+--header 'x-api-key: pat.12345.6789' 
 --data-raw 'connector:
   name: ECR
   identifier: ECR
@@ -2005,9 +2005,9 @@ Create the ACR connector using the [Create a Connector](https://apidocs.harness.
 		<summary>ACR connector example</summary>
 
 ```curl
-curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
---header 'Content-Type: text/yaml' \
---header 'x-api-key: pat.12345.6789' \
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' 
+--header 'Content-Type: text/yaml' 
+--header 'x-api-key: pat.12345.6789' 
 --data-raw 'connector:
   name: ACR-docs
   identifier: ACRdocs
@@ -2372,9 +2372,9 @@ Create the Nexus connector using the [Create a Connector](https://apidocs.harnes
 		<summary>Nexus connector example</summary>
 
 ```curl
-curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
---header 'Content-Type: text/yaml' \
---header 'x-api-key: pat.12345.6789' \
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' 
+--header 'Content-Type: text/yaml' 
+--header 'x-api-key: pat.12345.6789' 
 --data-raw 'connector:
   name: Harness Nexus
   identifier: Harness_Nexus
@@ -2590,9 +2590,9 @@ Create the Artifactory connector using the [Create a Connector](https://apidocs.
 		<summary>Artifactory connector example</summary>
 
 ```curl
-curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
---header 'Content-Type: text/yaml' \
---header 'x-api-key: pat.12345.6789' \
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' 
+--header 'Content-Type: text/yaml' 
+--header 'x-api-key: pat.12345.6789' 
 --data-raw 'connector:
   name: artifactory-tutorial-connector
   identifier: artifactorytutorialconnector
@@ -2822,9 +2822,9 @@ Create the Github connector using the [Create a Connector](https://apidocs.harne
 		<summary>Github connector example</summary>
 
 ```curl
-curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
---header 'Content-Type: text/yaml' \
---header 'x-api-key: pat.12345.6789' \
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' 
+--header 'Content-Type: text/yaml' 
+--header 'x-api-key: pat.12345.6789' 
 --data-raw 'connector:
   name: GitHub Packages
   identifier: GitHub_Packages
@@ -3152,13 +3152,13 @@ If some cases, your Kubernetes cluster might not have the permissions needed to 
 
 For these cases, the values YAML file in Service Definition **Manifests** section must use the `dockercfg` parameter.
 
-If the Docker image is added in the Service Definition **Artifacts** section, then you reference it like this: `dockercfg: \<+artifacts.primary.imagePullSecret\>`.
+If the Docker image is added in the Service Definition **Artifacts** section, then you reference it like this: `dockercfg: <+artifacts.primary.imagePullSecret>`.
 
 This key will import the credentials from the Docker credentials file in the artifact.
 
 Open the values.yaml file you are using for deployment.
 
-Verify that `dockercfg` key exists, and uses the `\<+artifacts.primary.imagePullSecret\>` expression to obtain the credentials:
+Verify that `dockercfg` key exists, and uses the `<+artifacts.primary.imagePullSecret>` expression to obtain the credentials:
 
 ```yaml
 name: <+stage.variables.name>  

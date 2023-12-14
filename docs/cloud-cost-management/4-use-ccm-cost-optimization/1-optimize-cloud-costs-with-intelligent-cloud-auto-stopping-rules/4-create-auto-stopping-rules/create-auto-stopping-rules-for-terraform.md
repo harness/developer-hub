@@ -30,7 +30,7 @@ To use Terraform you first need to install it. To install Terraform, download th
 
 For Windows, you need to manually extract the contents of the Zip file and place it in the following location:
 
-`C:\Users\Administrator\AppData\Roaming\terraform.d\plugins\harness.io\ccm\harness-ccm\{version}\windows_386\terraform-provider-harness-ccm.exe
+`C:UsersAdministratorAppDataRoamingterraform.dpluginsharness.ioccmharness-ccm{version}windows_386terraform-provider-harness-ccm.exe
 `
 
 

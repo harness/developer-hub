@@ -14,9 +14,9 @@ This knowledge base article walks you through how you can clone the pipeline thr
 Example cURL:
 
 ```
-curl -X POST 'https://app.harness.io/gateway/pipeline/api/pipelines/clone?routingId=<ACCOUNT_ID>&accountIdentifier=<ACCOUNT_ID>&storeType=INLINE' \
-  -H 'Content-Type: application/json' \
-  -H 'Authorization: Bearer YOUR BEARER TOKEN' \
+curl -X POST 'https://app.harness.io/gateway/pipeline/api/pipelines/clone?routingId=<ACCOUNT_ID>&accountIdentifier=<ACCOUNT_ID>&storeType=INLINE' 
+  -H 'Content-Type: application/json' 
+  -H 'Authorization: Bearer YOUR BEARER TOKEN' 
   -d '{
     "cloneConfig": {
         "connectors": false,

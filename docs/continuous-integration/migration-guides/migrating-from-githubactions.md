@@ -480,11 +480,11 @@ jobs:
   <TabItem value="harness" label="Harness">
 ```
 
-To reference project, organization, and account variables, you use variable expressions formatted as: `\<+variable.[scope].[variable_id]\>`. Here are the syntax formats for variables declared at different levels:
+To reference project, organization, and account variables, you use variable expressions formatted as: `<+variable.[scope].[variable_id]>`. Here are the syntax formats for variables declared at different levels:
 
-- Account-level variable reference: `\<+variable.account.[var_id]\>`
-- Organization-level variable reference: `\<+variable.org.[var_id]\>`
-- Project-level variable reference: `\<+variable.[var_id]\>`
+- Account-level variable reference: `<+variable.account.[var_id]>`
+- Organization-level variable reference: `<+variable.org.[var_id]>`
+- Project-level variable reference: `<+variable.[var_id]>`
 
 In this example, a step references a project-level environment variable called `ENV_VAR`.
 

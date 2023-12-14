@@ -108,14 +108,14 @@ To install the delegate, do the following:
    The command uses the default [values.yaml file](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) located in the [delegate Helm chart](https://github.com/harness/delegate-helm-chart) GitHub repo. To make persistent changes to one or more values, you can download and update the `values.yaml` file according to your requirements. Once you have updated the file, you can use it by running the upgrade command below.
 
    ```
-      helm upgrade -i firstk8sdel --namespace harness-delegate-ng --create-namespace \
-     harness-delegate/harness-delegate-ng \
-     -f values.yaml \
-     --set delegateName=firstk8sdel \
-     --set accountId=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
-     --set delegateToken=PUT_YOUR_DELEGATE_TOKEN_HERE \
-     --set managerEndpoint=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
-     --set delegateDockerImage=harness/delegate:yy.mm.verno \
+      helm upgrade -i firstk8sdel --namespace harness-delegate-ng --create-namespace 
+     harness-delegate/harness-delegate-ng 
+     -f values.yaml 
+     --set delegateName=firstk8sdel 
+     --set accountId=PUT_YOUR_HARNESS_ACCOUNTID_HERE 
+     --set delegateToken=PUT_YOUR_DELEGATE_TOKEN_HERE 
+     --set managerEndpoint=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE 
+     --set delegateDockerImage=harness/delegate:yy.mm.verno 
      --set replicas=1 --set upgrader.enabled=false
    ```
 
@@ -278,14 +278,14 @@ To install the delegate, do the following:
 5. Copy the `docker run` command.
 
    ```bash
-   docker run --cpus=1 --memory=2g \
-     -e DELEGATE_NAME=docker-delegate \
-     -e NEXT_GEN="true" \
-     -e DELEGATE_TYPE="DOCKER" \
-     -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
-     -e DELEGATE_TOKEN=PUT_YOUR_DELEGATE_TOKEN_HERE \
-     -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ \
-     -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
+   docker run --cpus=1 --memory=2g 
+     -e DELEGATE_NAME=docker-delegate 
+     -e NEXT_GEN="true" 
+     -e DELEGATE_TYPE="DOCKER" 
+     -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE 
+     -e DELEGATE_TOKEN=PUT_YOUR_DELEGATE_TOKEN_HERE 
+     -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ 
+     -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE 
      harness/delegate:yy.mm.verno
    ```
 

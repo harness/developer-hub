@@ -181,8 +181,8 @@ Run 'helm init' to configure helm.
 j_doe@cloudshell:~ (project-121212)**$ kubectl --namespace kube-system create sa tiller**  
 serviceaccount "tiller" created  
   
-j_doe@cloudshell:~ (project-121212)**$ kubectl create clusterrolebinding tiller \  
-> --clusterrole cluster-admin \  
+j_doe@cloudshell:~ (project-121212)**$ kubectl create clusterrolebinding tiller   
+> --clusterrole cluster-admin   
 > --serviceaccount=kube-system:tiller**  
 clusterrolebinding.rbac.authorization.k8s.io "tiller" created  
   
@@ -349,7 +349,7 @@ spec:
             memory: "6Gi"  
         env:  
         ...  
- **- name: HELM\_DESIRED\_VERSION  
+ **- name: HELM_DESIRED_VERSION  
  value: ""**  
       restartPolicy: Always
 ```

@@ -59,6 +59,6 @@ To reference encrypted file secrets in YAML or in fields that require expression
 
 2. Reference the secret using the appropriate expression format:
 
-   * Secret created at the project scope, use: `\<+secrets.getValue("FILE_SECRET_ID")\>`
-   * Secret created at the organization scope: `\<+secrets.getValue("org.FILE_SECRET_ID")\>`
-   * Secret created at the account scope: `\<+secrets.getValue("account.FILE_SECRET_ID")\>`
+   * Secret created at the project scope, use: `<+secrets.getValue("FILE_SECRET_ID")>`
+   * Secret created at the organization scope: `<+secrets.getValue("org.FILE_SECRET_ID")>`
+   * Secret created at the account scope: `<+secrets.getValue("account.FILE_SECRET_ID")>`

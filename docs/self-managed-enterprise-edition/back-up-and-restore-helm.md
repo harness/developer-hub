@@ -99,16 +99,16 @@ To backup with volume, do the following:
 5. Install Velero using the CLI. Use the AWS plugin to store directly to MinIO.
 
     ```
-    velero install \
-    --provider aws \
+    velero install 
+    --provider aws 
     --plugins
-    velero/velero-plugin-for-aws:v1.6.1,velero/velero-plugin-for-csi:v0.4.1 \
-    --bucket velero  \
-    --secret-file ./credentials-velero  \
-    --use-volume-snapshots=true \
+    velero/velero-plugin-for-aws:v1.6.1,velero/velero-plugin-for-csi:v0.4.1 
+    --bucket velero  
+    --secret-file ./credentials-velero  
+    --use-volume-snapshots=true 
     --backup-location-config
-    region=default,s3ForcePathStyle="true",s3Url=http://minio.velero.svc.cluster.local:9000 \
-    --snapshot-location-config region="default" \
+    region=default,s3ForcePathStyle="true",s3Url=http://minio.velero.svc.cluster.local:9000 
+    --snapshot-location-config region="default" 
     --features=EnableCSI
     ```
 

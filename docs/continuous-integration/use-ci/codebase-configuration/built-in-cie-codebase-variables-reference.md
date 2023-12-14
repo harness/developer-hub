@@ -25,7 +25,7 @@ The values of codebase variables depends on:
 * The pipeline's [code repo connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) must use **Username and Token** authentication and allow API access (**Enable API access**).
 * How the build started, whether manually or by a webhook trigger.
 
-A variable is resolved only if the build includes the necessary information for that variable. For example, `\<+codebase.prNumber\>` is only resolved if the build started from a pull request. Builds that aren't started from a PR won't have a PR number to assign to that variable.
+A variable is resolved only if the build includes the necessary information for that variable. For example, `<+codebase.prNumber>` is only resolved if the build started from a pull request. Builds that aren't started from a PR won't have a PR number to assign to that variable.
 
 :::info
 
@@ -69,7 +69,7 @@ Some codebase variables aren't resolved in these scenarios:
 
 ## Reference codebase variables
 
-You can use [Harness' expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference various codebase attributes in your **Build** (`CI`) stages. Expressions are formatted as `\<+PARENT.CHILD\>`, such as `\<+codebase.commitSha\>`, where `commitSha` is an attribute within `codebase`.
+You can use [Harness' expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference various codebase attributes in your **Build** (`CI`) stages. Expressions are formatted as `<+PARENT.CHILD>`, such as `<+codebase.commitSha>`, where `commitSha` is an attribute within `codebase`.
 
 For example, you can add a [Run step](../run-ci-scripts/run-step-settings.md) with a series of `echo` commands to your pipeline to reference codebase variables:
 
@@ -142,20 +142,20 @@ These variables describe how the build started.
    * `branch`: Manual branch build
    * `PR`: PR build (manual or webhook)
    * `Push`: Push webhook trigger (branch or tag)
-* Expression: `\<+codebase.build.type\>`
+* Expression: `<+codebase.build.type>`
 
-You can use this expression to create conditions based on build type, such as `\<+codebase.build.type\>=="TYPE"`, where `TYPE` is `tag`, `PR`, `branch`, or `Push`.
+You can use this expression to create conditions based on build type, such as `<+codebase.build.type>=="TYPE"`, where `TYPE` is `tag`, `PR`, `branch`, or `Push`.
 
 ### trigger.type
 
 * Value: Identifies the trigger type. For PR and push webhook triggers, it is `Webhook`.
-* Expression: `\<+trigger.type\>`
+* Expression: `<+trigger.type>`
 * Exclusions: Not available for manual builds.
 
 ### trigger.event
 
 * Value: The webhook trigger event category, `PR` or `PUSH`.
-* Expression: `\<+trigger.event\>`
+* Expression: `<+trigger.event>`
 * Exclusions: Not available for manual builds.
 
 ## Branch, PR, and tag variables
@@ -165,62 +165,62 @@ These variables provide information about the branch, PR, or tag associated with
 ### codebase.branch
 
 * Value: The PR's target branch or the branch specified for a branch build.
-* Expression: `\<+codebase.branch\>`
+* Expression: `<+codebase.branch>`
 * Exclusions: `null` for all tag builds.
 
 ### codebase.prNumber
 
 * Value: The Git PR number.
 * Expression:
-   * Manual PR builds: `\<+codebase.prNumber\>`
-   * PR webhook triggers: `\<+codebase.prNumber\>` or `\<+trigger.prNumber\>`
+   * Manual PR builds: `<+codebase.prNumber>`
+   * PR webhook triggers: `<+codebase.prNumber>` or `<+trigger.prNumber>`
 * Exclusions: `null` for all tag and branch builds.
 
 ### codebase.prTitle
 
 * Value: The Git PR title.
 * Expression:
-   * Manual PR builds: `\<+codebase.prTitle\>`
-   * PR webhook triggers: `\<+codebase.prTitle\>` or `\<+trigger.prTitle\>`
+   * Manual PR builds: `<+codebase.prTitle>`
+   * PR webhook triggers: `<+codebase.prTitle>` or `<+trigger.prTitle>`
 * Exclusions: `null` for all tag and branch builds.
 
 ### codebase.pullRequestBody
 
 * Value: The Git PR description.
-* Expression: `\<+codebase.pullRequestBody\>`
+* Expression: `<+codebase.pullRequestBody>`
 * Exclusions: `null` for all tag and branch builds.
 
 ### codebase.pullRequestLink
 
 * Value: Link to the PR.
-* Expression: `\<+codebase.pullRequestLink\>`
+* Expression: `<+codebase.pullRequestLink>`
 * Exclusions: `null` for all tag and branch builds.
 
 ### codebase.sourceBranch
 
 * Value: The source branch for a PR.
 * Expression:
-   * Manual builds: `\<+codebase.sourceBranch\>`
-   * Webhook triggers: `\<+codebase.sourceBranch\>` or `\<+trigger.sourceBranch\>`
+   * Manual builds: `<+codebase.sourceBranch>`
+   * Webhook triggers: `<+codebase.sourceBranch>` or `<+trigger.sourceBranch>`
 * Exclusions:
    * Tag builds: Always `null`.
-   * Branch builds: `null` or the same as [`\<+codebase.branch\>`](#codebasebranch).
+   * Branch builds: `null` or the same as [`<+codebase.branch>`](#codebasebranch).
 
 ### codebase.tag
 
 * Value: The Git tag specified for a tag build.
-* Expression: `\<+codebase.tag\>`
+* Expression: `<+codebase.tag>`
 * Exclusions: `null` for all PR and branch builds.
 
 ### codebase.targetBranch
 
 * Value:
    * PR builds: The PR's target branch.
-   * Branch builds: `null` or the same as [`\<+codebase.branch\>`](#codebasebranch).
+   * Branch builds: `null` or the same as [`<+codebase.branch>`](#codebasebranch).
    * Tag builds: `null` or the tag path, such as `refs/tags/TAG_NAME`.
 * Expression:
-   * Manual builds: `\<+codebase.targetBranch\>`
-   * Webhook triggers: `\<+codebase.targetBranch\>` or `\<+trigger.targetBranch\>`
+   * Manual builds: `<+codebase.targetBranch>`
+   * Webhook triggers: `<+codebase.targetBranch>` or `<+trigger.targetBranch>`
 
 ## Commit variables
 
@@ -230,45 +230,45 @@ These variables provide information about some commits associated with the build
 
 * Value: The Git commit SHA of a PR's base commit.
 * Expression:
-   * Manual PR builds: `\<+codebase.baseCommitSha\>`
-   * PR webhook triggers: `\<+codebase.baseCommitSha\>` or `\<+trigger.baseCommitSha\>`
+   * Manual PR builds: `<+codebase.baseCommitSha>`
+   * PR webhook triggers: `<+codebase.baseCommitSha>` or `<+trigger.baseCommitSha>`
 * Exclusions: `null` for all tag and branch builds.
 
 ### codebase.commitMessage
 
 * Value: The latest commit message in the branch, tag, or PR.
-* Expression: `\<+codebase.commitMessage\>`
+* Expression: `<+codebase.commitMessage>`
 
 ### codebase.commitRef
 
 * Value: A Git commit reference.
-* Expression: `\<+codebase.commitRef\>`
+* Expression: `<+codebase.commitRef>`
 
 ### codebase.commitSha
 
 * Value: The full Git commit SHA for the latest commit in the branch, tag, or PR.
 * Expression:
-   * Manual builds: `\<+codebase.commitSha\>`
-   * Webhook triggers: `\<+codebase.commitSha\>` or `\<+trigger.commitSha\>`
+   * Manual builds: `<+codebase.commitSha>`
+   * Webhook triggers: `<+codebase.commitSha>` or `<+trigger.commitSha>`
 
 :::info
 
 For Bitbucket PR builds (manual or webhook), this expression returns a *shortened* SHA due to the Bitbucket webhook payload only sending shortened SHAs.
 
-This *isn't* the same as the short SHA returned by [`\<+codebase.shortCommitSha\>`](#codebaseshortcommitsha).
+This *isn't* the same as the short SHA returned by [`<+codebase.shortCommitSha>`](#codebaseshortcommitsha).
 
 :::
 
 ### codebase.mergeSha
 
 * Value: The commit SHA of the merge commit that occurs when a Bitbucket PR is merged.
-* Expression: `\<+codebase.mergeSha\>`
+* Expression: `<+codebase.mergeSha>`
 * Exclusions: Only applicable to merged PRs in Bitbucket SCM.
 
 ### codebase.shortCommitSha
 
 * Value: The short SHA (seven characters) of the build's [commit SHA](#codebasecommitsha).
-* Expression: `\<+codebase.shortCommitSha\>`
+* Expression: `<+codebase.shortCommitSha>`
 
 ## Git user variables
 
@@ -278,23 +278,23 @@ These variables provide information about the Git user account associated with t
 
 * Value: User name of the Git account associated with the build. Can be `null` or masked in build logs.
 * Expression:
-   * Manual builds: `\<+codebase.gitUser\>`
-   * Webhook triggers: `\<+codebase.gitUser\>` or `\<+trigger.gitUser\>`
+   * Manual builds: `<+codebase.gitUser>`
+   * Webhook triggers: `<+codebase.gitUser>` or `<+trigger.gitUser>`
 
 ### codebase.gitUserAvatar
 
 * Value: Link to user avatar of the Git account associated with the build.
-* Expression: `\<+codebase.gitUserAvatar\>`
+* Expression: `<+codebase.gitUserAvatar>`
 
 ### codebase.gitUserEmail
 
 * Value: User email of the Git account associated with the build. Can be `null` or masked in build logs.
-* Expression: `\<+codebase.gitUserEmail\>`
+* Expression: `<+codebase.gitUserEmail>`
 
 ### codebase.gitUserId
 
 * Value: User ID of the Git account associated with the build. Can be `null` or masked in build logs.
-* Expression: `\<+codebase.gitUserId\>`
+* Expression: `<+codebase.gitUserId>`
 
 ## Repo variables
 
@@ -304,17 +304,17 @@ These variables provide information about the Git repo associated with the build
 
 * Value: Link to the Git repo associated with the build.
 * Expression:
-   * Manual builds: `\<+codebase.repoUrl\>`
-   * Webhook triggers: `\<+codebase.repoUrl\>` or `\<+trigger.repoUrl\>`
+   * Manual builds: `<+codebase.repoUrl>`
+   * Webhook triggers: `<+codebase.repoUrl>` or `<+trigger.repoUrl>`
 
 ### codebase.state
 
 * Value: State of the Git working directory associated with a PR.
-* Expression: `\<+codebase.state\>`
+* Expression: `<+codebase.state>`
 * Exclusions: `null` for all tag and branch builds.
 
 ### trigger.sourceRepo
 
 * Value: The PR, branch, or tag's source repo, if applicable. Otherwise, `null`.
-* Expression: `\<+trigger.sourceRepo\>`
+* Expression: `<+trigger.sourceRepo>`
 * Exclusions: Not available for manual builds.

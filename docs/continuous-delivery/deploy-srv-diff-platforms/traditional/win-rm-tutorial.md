@@ -264,9 +264,9 @@ Ensure the mapped settings are set to the **Expression** option.
 
 #### Host Array Path
 
-For WinRM PDC deployments, you use the expression `\<+provisioner.OUTPUT_NAME\>` for the **Host Array Path** setting. 
+For WinRM PDC deployments, you use the expression `<+provisioner.OUTPUT_NAME>` for the **Host Array Path** setting. 
 
-For the subsequent **Host Data Mapping** key-value pairs, you use the expression format `\<+HOST_PROPERTY\>`. For example, `\<+public_dns\>`.
+For the subsequent **Host Data Mapping** key-value pairs, you use the expression format `<+HOST_PROPERTY>`. For example, `<+public_dns>`.
 
 Here's an example:
 
@@ -309,9 +309,9 @@ resource "aws_instance" "example" {
   provisioner "remote-exec" {
     inline = [
       "winrm quickconfig -q",
-      "winrm set winrm/config/service/auth @{Basic=\"true\"}",
-      "winrm set winrm/config/service @{AllowUnencrypted=\"true\"}",
-      "winrm set winrm/config/winrs @{MaxMemoryPerShellMB=\"1024\"}",
+      "winrm set winrm/config/service/auth @{Basic="true"}",
+      "winrm set winrm/config/service @{AllowUnencrypted="true"}",
+      "winrm set winrm/config/winrs @{MaxMemoryPerShellMB="1024"}",
     ]
   }
 
@@ -344,7 +344,7 @@ output "region" {
 ```
 
 
-In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `\<+provisioner.OUTPUT_NAME\>`, such as `\<+provisioner.region\>`.
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.region>`.
 
 <figure>
 
@@ -357,14 +357,14 @@ In the Harness Infrastructure Definition, you map outputs to their corresponding
 
 Once you have mapped provisioning script outputs to the stage Infrastructure Definition, you can reference them in **Execution** of the stage.
 
-To reference a mapped output, you use an expression in the format `\<+instance.properties.*\>`.
+To reference a mapped output, you use an expression in the format `<+instance.properties.*>`.
 
 For example, here are some **Host Data Mapping** *keys* and expressions that reference them:
 
-- hostname: `\<+instance.properties.hostname\>`
-- privateIp: `\<+instance.properties.privateIp\>`
-- subnetId: `\<+instance.properties.subnetId\>`
-- region: `\<+instance.properties.region\>`
+- hostname: `<+instance.properties.hostname>`
+- privateIp: `<+instance.properties.privateIp>`
+- subnetId: `<+instance.properties.subnetId>`
+- region: `<+instance.properties.region>`
 
 ## Use a Basic Deployment for WinRM Execution
 
@@ -390,7 +390,7 @@ You have now successfully created and completed the steps for running a pipeline
 
 ### Reference hosts in steps using expressions
 
-You can use all of the `\<+instance...\>` expressions to reference your hosts.
+You can use all of the `<+instance...>` expressions to reference your hosts.
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 

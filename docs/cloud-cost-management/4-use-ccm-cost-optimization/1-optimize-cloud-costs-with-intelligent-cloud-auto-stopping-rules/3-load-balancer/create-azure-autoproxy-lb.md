@@ -72,7 +72,7 @@ Example:
   "tags": {
     "file-encoding": "utf-8"
   },
-  "value": "This is my\nmulti-line\nsecret\n"
+  "value": "This is mynmulti-linensecretn"
 }
 sandeepbhat@Sandeep Bhat key-vault % az keyvault secret set --vault-name "sandy-test" --name "PrivateKeytest" --file "private-key.pem"
 {
@@ -92,7 +92,7 @@ sandeepbhat@Sandeep Bhat key-vault % az keyvault secret set --vault-name "sandy-
   "tags": {
     "file-encoding": "utf-8"
   },
-  "value": "-----BEGIN PRIVATE KEY-----\\\\XXXXXXXXXXXXXXXXXXXXXXXXXXX\\\\n-----END PRIVATE KEY-----\\\n"
+  "value": "-----BEGIN PRIVATE KEY-----XXXXXXXXXXXXXXXXXXXXXXXXXXXn-----END PRIVATE KEY-----n"
 
 ```
 

@@ -413,5 +413,5 @@ Additionally, make sure there are no firewall or anti-malware restrictions inter
    * Lite engine logs: `/var/log/lite-engine.log`
    * Cloud init output logs: `/var/log/cloud-init-output.log`
 * Windows
-   * Lite engine logs: `C:\Program Files\lite-engine\log.out`
-   * Cloud init output logs: `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`
+   * Lite engine logs: `C:Program Fileslite-enginelog.out`
+   * Cloud init output logs: `C:ProgramDataAmazonEC2-WindowsLaunchLogUserdataExecution.log`

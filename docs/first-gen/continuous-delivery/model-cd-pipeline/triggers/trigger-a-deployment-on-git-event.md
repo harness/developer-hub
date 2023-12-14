@@ -32,8 +32,8 @@ For GitHub, GitLab, and Bitbucket, this option is used to execute a Build Workf
 * Data retention for Webhook event details is 3 days.   
 To see the event details, in the response of a Webhook request the `data` field contains the Id of the registered WebHook event. You can use the following API and the `eventId` to get the details of the WebHook Event:
 ```
-curl -i -X GET \  
-  'https://app.harness.io/gateway/pipeline/api/webhook/triggerProcessingDetails?accountIdentifier=<account Id>&eventId=<data Id>' \  
+curl -i -X GET   
+  'https://app.harness.io/gateway/pipeline/api/webhook/triggerProcessingDetails?accountIdentifier=<account Id>&eventId=<data Id>'   
   -H 'x-api-key: <Harness API key>'
 ```
 

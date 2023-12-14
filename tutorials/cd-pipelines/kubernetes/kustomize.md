@@ -352,13 +352,13 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
         -  Run the following command, replacing `ACCOUNT_ID`, `MANAGER_ENDPOINT`, and `DELEGATE_TOKEN` with the corresponding auto-populated values from the delegate installation wizard.  
 
             ```bash
-            helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
-            harness-delegate/harness-delegate-ng \
-             --set delegateName=helm-delegate \
-             --set accountId=ACCOUNT_ID \
-             --set managerEndpoint=MANAGER_ENDPOINT \
-             --set delegateDockerImage=harness/delegate:23.03.78904 \
-             --set replicas=1 --set upgrader.enabled=false \
+            helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace 
+            harness-delegate/harness-delegate-ng 
+             --set delegateName=helm-delegate 
+             --set accountId=ACCOUNT_ID 
+             --set managerEndpoint=MANAGER_ENDPOINT 
+             --set delegateDockerImage=harness/delegate:23.03.78904 
+             --set replicas=1 --set upgrader.enabled=false 
              --set delegateToken=DELEGATE_TOKEN
             ```
     - Verify that the delegate is installed successfully and can connect to Harness Manager.
@@ -522,13 +522,13 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
         -  In the command provided, `ACCOUNT_ID`, `MANAGER_ENDPOINT` and `DELEGATE_TOKEN` are auto-populated values that you can obtain from the delegate Installation wizard. 
 
             ```bash
-            helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
-            harness-delegate/harness-delegate-ng \
-             --set delegateName=helm-delegate \
-             --set accountId=ACCOUNT_ID \
-             --set managerEndpoint=MANAGER_ENDPOINT \
-             --set delegateDockerImage=harness/delegate:23.03.78904 \
-             --set replicas=1 --set upgrader.enabled=false \
+            helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace 
+            harness-delegate/harness-delegate-ng 
+             --set delegateName=helm-delegate 
+             --set accountId=ACCOUNT_ID 
+             --set managerEndpoint=MANAGER_ENDPOINT 
+             --set delegateDockerImage=harness/delegate:23.03.78904 
+             --set replicas=1 --set upgrader.enabled=false 
              --set delegateToken=DELEGATE_TOKEN
             ```
     - Verify that the delegate is installed successfully and can connect to the Harness Manager.

@@ -18,7 +18,7 @@ Use the following instructions to upgrade the chart to a new release. 
    $ helm get values my-release > old_values.yaml
    ```
 
-3. Change the values of the `old\_values.yaml` file as required.
+3. Change the values of the `old_values.yaml` file as required.
 
 4. Use the `helm upgrade` command to update the chart for your `override-demo.yaml` file or `override-prod.yaml` file. 
 

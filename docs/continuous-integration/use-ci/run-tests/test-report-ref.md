@@ -199,7 +199,7 @@ If your test tool doesn't automatically produce test results in JUnit XML format
                     command: |-
                       cd dotnet-agent/TestProject1
                       wget -UseBasicParsing https://dot.net/v1/dotnet-install.ps1 -o dotnet-install.ps1
-                      .\dotnet-install.ps1
+                      .dotnet-install.ps1
                       dotnet build
 
                       wget https://raw.githubusercontent.com/nunit/nunit-transforms/master/nunit3-junit/nunit3-junit.xslt -o nunit3-junit.xslt
@@ -235,7 +235,7 @@ The following example runs tests with [Test Intelligence](./test-intelligence/se
                           git status
                           cd dotnet-agent/TestProject1
                           wget -UseBasicParsing https://dot.net/v1/dotnet-install.ps1 -o dotnet-install.ps1
-                          .\dotnet-install.ps1
+                          .dotnet-install.ps1
                           dotnet build
                           cd ..
                           cd ..

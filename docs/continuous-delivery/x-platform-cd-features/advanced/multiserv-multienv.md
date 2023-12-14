@@ -157,7 +157,7 @@ Make sure that the feature flags  `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are e
      
      Select **All** to deploy the selected services to infrastructures having all these tags. 
 
-     You can select **CONDITION** as a fixed value, runtime input, or expression. The supported expressions are `\<+service.tags\>` and `\<+pipeline.tags\>`.
+     You can select **CONDITION** as a fixed value, runtime input, or expression. The supported expressions are `<+service.tags>` and `<+pipeline.tags>`.
 
    ![](./static/deploy-to-infra-filter.png)
 9. Select **Continue**, select an execution strategy, and complete the execution steps.
@@ -195,7 +195,7 @@ Make sure that the feature flags `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are en
      
      Select **All** to deploy the selected services to clusters having all these tags. 
 
-     You can select **CONDITION** as a fixed value, runtime input, or expression. The supported expressions are `\<+service.tags\>` and `\<+pipeline.tags\>`.
+     You can select **CONDITION** as a fixed value, runtime input, or expression. The supported expressions are `<+service.tags>` and `<+pipeline.tags>`.
 
    ![](./static/deploy-to-clusters-filter.png)
 10. Select **Continue**, select an execution strategy, and complete the execution steps.

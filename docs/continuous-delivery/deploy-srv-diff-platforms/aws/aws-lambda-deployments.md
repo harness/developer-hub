@@ -262,7 +262,7 @@ You do not need to use the function ARN in the `FunctionName` of the function de
 
 Here is the YAML for a sample Harness Lambda service. 
 
-You can see it uses `\<+serviceVariables.workload_name\>` for the file path of the S3 bucket containing the artifact ZIP file. This service variable allow you to select different artifacts at pipeline runtime.
+You can see it uses `<+serviceVariables.workload_name>` for the file path of the S3 bucket containing the artifact ZIP file. This service variable allow you to select different artifacts at pipeline runtime.
 
 
 ```yaml
@@ -551,7 +551,7 @@ Outputs:
 ```
 
 
-In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `\<+provisioner.OUTPUT_NAME\>`, such as `\<+provisioner.region_name\>`.
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.region_name>`.
 
 
 <figure>

@@ -339,7 +339,7 @@ pipeline:
                             log:
                               level: info
                           settings:
-                            tool_args: "--log-opts=\"-n 1000\"`"
+                            tool_args: "--log-opts="-n 1000"`"
                           resources:
                             limits:
                               memory: 2048Mi

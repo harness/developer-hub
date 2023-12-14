@@ -60,7 +60,7 @@ $ kubectl get <CRD> -n <namespace>
 ```
 
 ```
-$ kubectl patch <CRD> <stuckresourcename> -n <namespace> --type json --patch="[{ \"op\": \"remove\", \"path\": \"/metadata/finalizers\" }]"
+$ kubectl patch <CRD> <stuckresourcename> -n <namespace> --type json --patch="[{ "op": "remove", "path": "/metadata/finalizers" }]"
 ```
 
 For example if the CRD `applications.argoproj.io` is stuck in the `TERMINATING` state in the `harness` namespace, this is how you can verify and patch it's resource causing it to be stuck.
@@ -73,7 +73,7 @@ test-app    Unknown    Unknown
 ```
 
 ```
-$ kubectl patch applications.argoproj.io test-app -n harness --type json --patch="[{ \"op\": \"remove\", \"path\": \"/metadata/finalizers\" }]"
+$ kubectl patch applications.argoproj.io test-app -n harness --type json --patch="[{ "op": "remove", "path": "/metadata/finalizers" }]"
 
 applications.argoproj.io/test-app patched
 ```

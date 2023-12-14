@@ -65,7 +65,7 @@ To set up Prometheus in-cluster, do the following:
              regex: (.+)
            - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
              action: replace
-             regex: ([^:]+)(?::\d+)?;(\d+)
+             regex: ([^:]+)(?::d+)?;(d+)
              replacement: $1:$2
              target_label: __address__
            - action: labelmap

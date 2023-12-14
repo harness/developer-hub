@@ -55,13 +55,13 @@ The proxy settings are in the **launch-harness-delegate.sh** file:
 
 
 ```
--e PROXY_HOST= \  
--e PROXY_PORT= \  
--e PROXY_SCHEME= \  
--e PROXY_USER= \  
--e PROXY_PASSWORD= \  
--e PROXY_MANAGER= \  
--e NO_PROXY= \
+-e PROXY_HOST=   
+-e PROXY_PORT=   
+-e PROXY_SCHEME=   
+-e PROXY_USER=   
+-e PROXY_PASSWORD=   
+-e PROXY_MANAGER=   
+-e NO_PROXY= 
 ```
 ## Kubernetes Proxy Settings
 

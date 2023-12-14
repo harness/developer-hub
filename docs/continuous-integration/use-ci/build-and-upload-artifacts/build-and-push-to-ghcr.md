@@ -88,9 +88,9 @@ Add each tag separately.
 
 When you push an image to a repo, you tag the image so you can identify it later. For example, in one pipeline stage, you push the image, and, in a later stage, you use the image name and tag to pull it and run integration tests on it.
 
-Harness expressions are a useful way to define tags. For example, you can use the expression `\<+pipeline.sequenceId\>` as a tag. This expression represents the incremental build identifier, such as `9`. By using a variable expression, rather than a fixed value, you don't have to use the same image name every time.
+Harness expressions are a useful way to define tags. For example, you can use the expression `<+pipeline.sequenceId>` as a tag. This expression represents the incremental build identifier, such as `9`. By using a variable expression, rather than a fixed value, you don't have to use the same image name every time.
 
-For example, if you use `\<+pipeline.sequenceId\>` as a tag, after the pipeline runs, you can see the `Build Id` in the output.
+For example, if you use `<+pipeline.sequenceId>` as a tag, after the pipeline runs, you can see the `Build Id` in the output.
 
 ![](./static/build-and-upload-an-artifact-15.png)
 
@@ -98,7 +98,7 @@ And you can see where the `Build Id` is used to tag your image in the container 
 
 ![](./static/build-and-upload-an-artifact-12.png)
 
-You can use the same expression to pull the tagged image, such as `namespace/myimage:\<+pipeline.sequenceId\>`.
+You can use the same expression to pull the tagged image, such as `namespace/myimage:<+pipeline.sequenceId>`.
 
 :::
 

@@ -131,7 +131,7 @@ You could also [write a custom plugin](./custom_plugins.md) that downloads, unzi
 
 :::tip Tips
 
-You can use variable expressions for **Settings** values. For example, `credentials: \<+stage.variables.[TOKEN_SECRET]\>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
+You can use variable expressions for **Settings** values. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
 
 Create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords and tokens, required by the plugin.
 

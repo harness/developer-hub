@@ -272,7 +272,7 @@ The remaining OIDC Token settings are part of the provider app you are using to 
 
 ## Client Key Certificate
 
-All secrets must be Base64 encoded. Here is an example to create Base64 values for a client key: `cat myuser.key | base64 | tr -d "\n"`.
+All secrets must be Base64 encoded. Here is an example to create Base64 values for a client key: `cat myuser.key | base64 | tr -d "n"`.
 
 ### Client Key
 

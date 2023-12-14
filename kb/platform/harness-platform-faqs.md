@@ -88,9 +88,9 @@ The FF `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` works for UserInvite case. For cas
 To retrieve the list of users from API, you can use the following curl command.
 
 ```bash
-curl --location --request GET 'https://app.harness.io/gateway/api/users?accountId=<AccountId>&limit=3000&offset=0' \
---header 'accept: application/json, text/plain, */*' \
---header 'authorization: Bearer ${token}' \
+curl --location --request GET 'https://app.harness.io/gateway/api/users?accountId=<AccountId>&limit=3000&offset=0' 
+--header 'accept: application/json, text/plain, */*' 
+--header 'authorization: Bearer ${token}' 
 ```
 #### Can same Github Repository be used for Different Projects with GitX Enabled?
 
@@ -322,18 +322,18 @@ You will need to reach to Harness Support to enable the Feature Flag DISABLE_LOC
 #### API to fetch all the users in the Harness
 
 ```
-curl --location --request GET 'https://app.harness.io/gateway/api/users?accountId=enter_accountid_here&limit=3000&offset=0' \
---header 'authority: app.harness.io' \
---header 'accept: application/json, text/plain, */*' \
---header 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
---header 'adrum: isAjax:true' \
---header 'authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxx' \
---header 'referer: https://vanitytest.harness.io/' \
---header 'sec-ch-ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"' \
---header 'sec-ch-ua-mobile: ?0' \
---header 'sec-ch-ua-platform: "macOS"' \
---header 'sec-fetch-dest: empty' \
---header 'sec-fetch-mode: cors' \
+curl --location --request GET 'https://app.harness.io/gateway/api/users?accountId=enter_accountid_here&limit=3000&offset=0' 
+--header 'authority: app.harness.io' 
+--header 'accept: application/json, text/plain, */*' 
+--header 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' 
+--header 'adrum: isAjax:true' 
+--header 'authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxx' 
+--header 'referer: https://vanitytest.harness.io/' 
+--header 'sec-ch-ua: "Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"' 
+--header 'sec-ch-ua-mobile: ?0' 
+--header 'sec-ch-ua-platform: "macOS"' 
+--header 'sec-fetch-dest: empty' 
+--header 'sec-fetch-mode: cors' 
 --header 'sec-fetch-site: same-origin'
 ```
 
@@ -432,7 +432,7 @@ No there isn't any such support for getting secrets as base64, but you can store
 
 #### In pipeline chaining, Is it possible to reference a child's variables, in the parent pipeline without using outputs?
 
-We can refer to child execution expression in parent pipeline only via outputs using the following expression `\<+pipeline.stages.child.pipeline.stages.b_stage.spec.artifacts.primary.tag\>`.
+We can refer to child execution expression in parent pipeline only via outputs using the following expression `<+pipeline.stages.child.pipeline.stages.b_stage.spec.artifacts.primary.tag>`.
 
 #### Is create-namespace option available in Harness while deploying chart?
 
@@ -691,7 +691,7 @@ Yes, we have the docs, you can refer to this [Documentation](https://harness.atl
 When you push commits from the command line, the email address that you have configured in [Git](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address) is associated with your commits. However, for web-based operations, GitHub provides an option to maintain privacy regarding your email address. To ensure that you can fetch the correct user email through the expression `<codebase.gitUserEmail>`, you will need to disable the ["Keep my email addresses private"](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/blocking-command-line-pushes-that-expose-your-personal-email-address) option in your GitHub settings.
 
 #### Why is my commitSha resolving as null on manual runs?
-The expression `\<+trigger.commitSha\>` is available when the event comes from a Git operation. Instead, use the expression `\<+codebase.commitSha\>` for parsing manual triggers.
+The expression `<+trigger.commitSha>` is available when the event comes from a Git operation. Instead, use the expression `<+codebase.commitSha>` for parsing manual triggers.
 
 #### How can I specify my pipeline to select a delegate based on a tag?
 In the advanced tab of your pipeline, you can add specific tags in the [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#delegate-tags) field.
@@ -815,7 +815,7 @@ The Kubernetes manifest has a component called upgrader. The upgrader is a cron 
 
 #### How can we disable cron job?
 
-If you need auto upgrade to be disabled they can perform operations: First run the following command to suspend auto-upgrade on the installed image: `kubectl patch cronjobs <job-name> -p '\{"spec" : \{"suspend" : true \}\}' -n <namespace>` Secondly in the delegate manifest, locate the CronJob resource. In the resource spec, set the suspend field to true: `spec: --suspend: true` .
+If you need auto upgrade to be disabled they can perform operations: First run the following command to suspend auto-upgrade on the installed image: `kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>` Secondly in the delegate manifest, locate the CronJob resource. In the resource spec, set the suspend field to true: `spec: --suspend: true` .
 
 #### Why we do not see Dashboards in an SMP Installation?
 
@@ -924,7 +924,7 @@ https://developer.harness.io/release-notes/delegate
 
 #### Why is automatic upgrade turned off for my delegate ?
 
-It could be it was disabled through `kubectl patch cronjobs <job-name> -p '\{"spec" : \{"suspend" : true \}\}' -n <namespace>` or the cronjob was deleted or the cronjob never existed (the kubernetes audit logs can help you find out about that last part)
+It could be it was disabled through `kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>` or the cronjob was deleted or the cronjob never existed (the kubernetes audit logs can help you find out about that last part)
 
 #### Do we have documentation for correct list of harness that can whitelist for Google GCP?
 
@@ -940,7 +940,7 @@ Yes, we do have, you can refer here [Documentation](https://developer.harness.io
 
 #### What is the expression we can use if we want to use secret in script?
 
-If you want to use a secret in script then you’ll have to use expression: `\<+secrets.getValue("account.mySecret")\>`.
+If you want to use a secret in script then you’ll have to use expression: `<+secrets.getValue("account.mySecret")>`.
 
 #### The harness delegate config-watcher is causing heavy usage of disk space and causing alerts in prod nodes, how can we increase the watcher memory settings?
 
@@ -1218,9 +1218,9 @@ The process is simple when a customer account expires or leaves/churns/offboards
 #### Delegate disconnected status in the API
 
 ```
-\{delegateList(filters: [\{accountId: "xxxxx"\}], limit: 10) \{
+{delegateList(filters: [{accountId: "xxxxx"}], limit: 10) {
 
-    nodes \{
+    nodes {
       delegateName
       ip
       status 
@@ -1228,9 +1228,9 @@ The process is simple when a customer account expires or leaves/churns/offboards
       version
       hostName
       lastHeartBeat
-     \}
-   \}
- \}
+     }
+   }
+ }
 
 ```
 

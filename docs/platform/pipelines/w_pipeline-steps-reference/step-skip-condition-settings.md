@@ -55,8 +55,8 @@ In the JEXL expression, you could use any of the Pipeline variables, including t
 
 Examples:
 
-* `\<+pipeline.stages.cond.spec.execution.steps.echo.status\> == "SUCCEEDED"`
-* `\<+environment.name\> != "QA"`
+* `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "SUCCEEDED"`
+* `<+environment.name> != "QA"`
 
 For more information, go to [Built-in Harness variables reference](../../variables-and-expressions/harness-variables.md).
 
@@ -90,8 +90,8 @@ In the JEXL expression, you could use any of the Pipeline variables, including t
 
 Example:
 
-* `\<+pipeline.stages.cond.spec.execution.steps.echo.status\> == "SUCCEEDED"`
-* `\<+environment.name\> != “QA”`
+* `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "SUCCEEDED"`
+* `<+environment.name> != “QA”`
 
 For more information on variable expressions, go to [Built-in and Custom Harness Variables Reference](../../variables-and-expressions/harness-variables.md).
 
@@ -109,17 +109,17 @@ Deployment status values are a Java enum. The list of values can be seen in the 
 
 ![](./static/step-skip-condition-settings-10.png)
 
-You can use any status value in a JEXL condition. For example, `\<+pipeline.stages.cond.spec.execution.steps.echo.status\> == "FAILED"`.
+You can use any status value in a JEXL condition. For example, `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "FAILED"`.
 
 #### Stage status
 
-The expression `\<+pipeline.stages.STAGE_ID.status\>` resolves to the status of a stage.
+The expression `<+pipeline.stages.STAGE_ID.status>` resolves to the status of a stage.
 
 You must use the expression after the stage in execution.
 
 #### Step status
 
-The expression `\<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status\>` resolves to the status of a step. For example, `\<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status\>`.
+The expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
 
 You must use the expression after the step in execution.
 

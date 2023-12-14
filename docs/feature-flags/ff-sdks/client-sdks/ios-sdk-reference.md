@@ -200,7 +200,7 @@ Must consist of only alphabetical characters, numbers, and the following symbols
 The characters can be lowercase or uppercase but cannot include accented letters, for example `Cafe_789`.  
   
 **Name**
-Regex: `^[\\p{L}\\d .@_-]*$`  
+Regex: `^[p{L}d .@_-]*$`  
   
 Must consist of only alphabetical characters, numbers, and the following symbols:  
 . (period)  
@@ -424,11 +424,11 @@ class ViewController: UIViewController {
     ) { [weak self] result in  
       switch result {  
         case .failure(let error):  
-          NSLog("End: Error \(error)")  
+          NSLog("End: Error (error)")  
         case .success():  
           NSLog("Init: Ok")  
           CfClient.sharedInstance.boolVariation(evaluationId: "EVALUATION_ID", { (eval) in  
-            print("Value: \(eval!)")  
+            print("Value: (eval!)")  
           })  
           CfClient.sharedInstance.registerEventsListener() { (result) in  
             switch result {  
@@ -439,7 +439,7 @@ class ViewController: UIViewController {
                   case .onPolling:  
                     print("Event: Received all evaluation flags")  
                   case .onEventListener(let evaluation):  
-                    print("Event: Received an evaluation flag, \(evaluation!)")  
+                    print("Event: Received an evaluation flag, (evaluation!)")  
                   case .onComplete:  
                     print("Event: SSE stream has completed")  
                   case .onOpen:  

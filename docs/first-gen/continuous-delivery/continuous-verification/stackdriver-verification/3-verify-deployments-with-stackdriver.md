@@ -99,7 +99,7 @@ In **Host Name Field**, you would enter **pod\_id** because it is the log field 
    container_name:  "harness-delegate-instance"      
    instance_id:  "1733097732247470454"      
    namespace_id:  "harness-delegate"      
- **pod\_id: "harness-sample-k8s-delegate-wverks-0"**   project_id:  "exploration-161417"      
+ **pod_id: "harness-sample-k8s-delegate-wverks-0"**   project_id:  "exploration-161417"      
    zone:  "us-central1-a"      
   }  
   type:  "container"     

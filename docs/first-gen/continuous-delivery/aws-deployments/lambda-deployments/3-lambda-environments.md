@@ -65,9 +65,9 @@ The **Infrastructure Definition** dialog's lower section defines settings simila
 
 
 ```
-$ aws lambda create-function --function-name ExampleApp-aws-lambda-Lambda-my-function \  
---runtime nodejs8.10 --handler index.handler --zip-file lambda/function.zip \  
-**--role** execution-role-arn \  
+$ aws lambda create-function --function-name ExampleApp-aws-lambda-Lambda-my-function   
+--runtime nodejs8.10 --handler index.handler --zip-file lambda/function.zip   
+**--role** execution-role-arn   
 **--vpc-config** SubnetIds=comma-separated-vpc-subnet-ids,SecurityGroupIds=comma-separated-security-group-ids
 ```
 To fill out the **Infrastructure Definition** dialog's lower section:

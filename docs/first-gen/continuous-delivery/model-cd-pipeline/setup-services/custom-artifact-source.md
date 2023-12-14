@@ -89,7 +89,7 @@ The following example pulls an artifact from a repo and outputs it to the `ARTIF
 
 
 ```
-curl -X GET "http://nexus3.harness.io:8081/service/rest/v1/components?repository=maven-releases" \  
+curl -X GET "http://nexus3.harness.io:8081/service/rest/v1/components?repository=maven-releases"   
 -H "accept: application/json" > ${ARTIFACT_RESULT_PATH}
 ```
 Here is an example using a Harness encrypted text secret for credentials:
@@ -166,11 +166,11 @@ For example, here is a script for Artifactory:
 
 
 ```
-curl -X POST \  
-  https://harness.jfrog.io/harness/api/search/aql \  
-  -H 'Authorization: Basic xxxxxxx=' \  
-  -H 'Content-Type: text/plain' \  
-  -H 'cache-control: no-cache' \  
+curl -X POST   
+  https://harness.jfrog.io/harness/api/search/aql   
+  -H 'Authorization: Basic xxxxxxx='   
+  -H 'Content-Type: text/plain'   
+  -H 'cache-control: no-cache'   
   -d 'items.find({"repo":{"$eq":"example-maven"}})' | jq '.' > ${ARTIFACT_RESULT_PATH}
 ```
 For the remaining settings, you would use the following:

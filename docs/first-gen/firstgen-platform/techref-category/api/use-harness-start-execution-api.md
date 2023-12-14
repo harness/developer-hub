@@ -489,11 +489,11 @@ SERVICENAME="<YOUR SERVICE NAME>"
 ARTIFACTSOURCENAME="<YOUR ARTIFACT SOURCE>"  
 # Execute Pipeline  
 func_execute_pipeline(){  
-	curl --request POST \  
-	  --url 'https://app.harness.io/gateway/api/graphql?accountId='$HARNESS_ACCOUNT_ID'' \  
-	  --header 'content-type: application/json' \  
-	  --header 'x-api-key:'$HARNESS_KEY' \  
-	  --data '{"query":"\nmutation($startExecution: StartExecutionInput!){\n  startExecution (input:$startExecution){\n    clientMutationId\n    execution {\n      notes\n      id\n      application{\n        id\n      }\n    }\n  }\n}","variables":{"startExecution":{"applicationId":"'$APPLICATIONID'","notes":"Demo","executionType":"PIPELINE","entityId":"'$PIPELINEID'","serviceInputs":{"name":"'$SERVICENAME'","artifactValueInput":{"buildNumber":{"buildNumber":"'$BUILDNO'","artifactSourceName":"'$ARTIFACTSOURCENAME'"},"valueType":"BUILD_NUMBER"}}}}}'  
+	curl --request POST   
+	  --url 'https://app.harness.io/gateway/api/graphql?accountId='$HARNESS_ACCOUNT_ID''   
+	  --header 'content-type: application/json'   
+	  --header 'x-api-key:'$HARNESS_KEY'   
+	  --data '{"query":"nmutation($startExecution: StartExecutionInput!){n  startExecution (input:$startExecution){n    clientMutationIdn    execution {n      notesn      idn      application{n        idn      }n    }n  }n}","variables":{"startExecution":{"applicationId":"'$APPLICATIONID'","notes":"Demo","executionType":"PIPELINE","entityId":"'$PIPELINEID'","serviceInputs":{"name":"'$SERVICENAME'","artifactValueInput":{"buildNumber":{"buildNumber":"'$BUILDNO'","artifactSourceName":"'$ARTIFACTSOURCENAME'"},"valueType":"BUILD_NUMBER"}}}}}'  
 }
 ```
 Here is a sample script for `Get Application By Name`:
@@ -503,11 +503,11 @@ Here is a sample script for `Get Application By Name`:
 # Get Application By Name  
 APPNAME="<YOUR APP NAME>"  
 func_getAppByName(){  
-curl --request POST \  
-  --url 'https://app.harness.io/gateway/api/graphql?accountId='$HARNESS_ACCOUNT_ID'' \  
-  --header 'content-type: application/json' \  
-  --header 'x-api-key:'$HARNESS_KEY' \  
-  --data '{"query":"query {\n  applicationByName(name:\"'$APPNAME'\"){\n    id\n    name\n    pipelines(limit:4){\n      nodes{\n        id\n        description\n      }\n    }\n  }\n}\n\n"}'  
+curl --request POST   
+  --url 'https://app.harness.io/gateway/api/graphql?accountId='$HARNESS_ACCOUNT_ID''   
+  --header 'content-type: application/json'   
+  --header 'x-api-key:'$HARNESS_KEY'   
+  --data '{"query":"query {n  applicationByName(name:"'$APPNAME'"){n    idn    namen    pipelines(limit:4){n      nodes{n        idn        descriptionn      }n    }n  }n}nn"}'  
 }  
 
 ```
@@ -520,11 +520,11 @@ You can use tools like [Insomnia](https://insomnia.rest/download/#mac) or [Postm
 3. Paste the command.  
   
 ```
-curl --request POST \  
-  --url 'https://app.harness.io/gateway/api/graphql?accountId=<ACOUNTID> \  
-  --header 'content-type: application/json' \  
-  --header 'x-api-key: <API_KEY>' \  
-  --data '{"query":"\nmutation($startExecution: StartExecutionInput!){\n  startExecution (input:$startExecution){\n    clientMutationId\n    execution {\n      notes\n      status\n      startedAt\n      id\n      application{\n        id\n      }\n    }\n  }\n}","variables":{"startExecution":{"applicationId":"iIfYmHDqTj6Gsygtwt4VRQ","notes":"Demo","executionType":"WORKFLOW","entityId":"VzViT24gTluKWNFpdrL95A","serviceInputs":{"name":"guestbook","artifactValueInput":{"buildNumber":{"buildNumber":"v6","artifactSourceName":"guestbook"},"valueType":"BUILD_NUMBER"}},"variableInputs":[{"name":"Environment","variableValue":{"type":"NAME","value":"dev"}},{"name":"InfraDefinition_KUBERNETES","variableValue":{"type":"NAME","value":"k8s-dev"}},{"name":"Service","variableValue":{"type":"NAME","value":"guestbook"}},{"name":"skipCV","variableValue":{"type":"NAME","value":"true"}}]}}}'  
+curl --request POST   
+  --url 'https://app.harness.io/gateway/api/graphql?accountId=<ACOUNTID>   
+  --header 'content-type: application/json'   
+  --header 'x-api-key: <API_KEY>'   
+  --data '{"query":"nmutation($startExecution: StartExecutionInput!){n  startExecution (input:$startExecution){n    clientMutationIdn    execution {n      notesn      statusn      startedAtn      idn      application{n        idn      }n    }n  }n}","variables":{"startExecution":{"applicationId":"iIfYmHDqTj6Gsygtwt4VRQ","notes":"Demo","executionType":"WORKFLOW","entityId":"VzViT24gTluKWNFpdrL95A","serviceInputs":{"name":"guestbook","artifactValueInput":{"buildNumber":{"buildNumber":"v6","artifactSourceName":"guestbook"},"valueType":"BUILD_NUMBER"}},"variableInputs":[{"name":"Environment","variableValue":{"type":"NAME","value":"dev"}},{"name":"InfraDefinition_KUBERNETES","variableValue":{"type":"NAME","value":"k8s-dev"}},{"name":"Service","variableValue":{"type":"NAME","value":"guestbook"}},{"name":"skipCV","variableValue":{"type":"NAME","value":"true"}}]}}}'  
 
 ```
 

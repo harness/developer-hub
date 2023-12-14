@@ -44,14 +44,14 @@ In the Pipeline Studio's Visual Editor, you can use the **Value type selector** 
 
 ![](./static/InputsetsOverlays1.png)
 
-In free-text fields, you can directly enter `\<+input\>` to specify runtime input without changing the value type.
+In free-text fields, you can directly enter `<+input>` to specify runtime input without changing the value type.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="YAML" label="YAML editor" default>
 ```
 
-When writing pipelines in YAML, enter `\<+input\>` for a setting's value to indicate runtime input.
+When writing pipelines in YAML, enter `<+input>` for a setting's value to indicate runtime input.
 
 ```yaml
               - step:
@@ -78,7 +78,7 @@ Almost any setting in a pipeline can use runtime input, including variables, art
 3. Enter a **Name** for the input set. **Description** and **Tags** are optional.
 4. Enter values for the [settings that use runtime input](#specify-settings-that-use-runtime-input), and then select **Save**.
 
-   If a setting doesn't use runtime input (`\<+input\>`), you can't define a value for it in an input set.
+   If a setting doesn't use runtime input (`<+input>`), you can't define a value for it in an input set.
 
    You don't have to provide a value for every setting. For example, you can leave some settings as manul runtime input. Or you can create multiple input sets that populate different values, which you can then combine into [overlays](#create-overlays).
 

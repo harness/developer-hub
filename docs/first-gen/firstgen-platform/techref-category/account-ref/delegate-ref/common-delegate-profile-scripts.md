@@ -134,7 +134,7 @@ The value for the `Values` parameter is simply the Hostname of the delegate.
 The following script will list all of the EC2 instances in the region you supply:
 
 ```
-aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,State.Name,InstanceType,PrivateIpAddress,PublicIpAddress,Tags[?Key==`Name`].Value[]]' --region "us-east-1" --output json | tr -d '\n[] "' | perl -pe 's/i-/\ni-/g' | tr ',' '\t' | sed -e 's/null/None/g' | grep '^i-' | column -t
+aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,State.Name,InstanceType,PrivateIpAddress,PublicIpAddress,Tags[?Key==`Name`].Value[]]' --region "us-east-1" --output json | tr -d 'n[] "' | perl -pe 's/i-/ni-/g' | tr ',' 't' | sed -e 's/null/None/g' | grep '^i-' | column -t
 ```
 ### Git CLI
 

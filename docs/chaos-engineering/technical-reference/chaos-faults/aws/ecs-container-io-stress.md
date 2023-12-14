@@ -17,8 +17,7 @@ This experiment induces chaos within a container and depends on an EC2 instance.
 ## Usage
 
 <details>
-
-		<summary>View fault usage</summary>
+<summary>View fault usage</summary>
 <div>
 File system read and write can evict the application (task container) and impact its delivery. These issues are also known as noisy neighbour problems.
 Injecting a rogue process into a target container starves the main microservice process (typically pid 1) of the resources allocated to it (where the limits are defined). This slows down the application traffic or exhausts the resources leading to eviction of all task containers. This fault determines how a container recovers from such a memory exhaustion.
@@ -55,8 +54,7 @@ stringData:
 Here is an example AWS policy to execute the fault.
 
 <details>
-
-		<summary>View policy for the fault</summary>
+<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -129,8 +127,7 @@ The ECS container instance should be in a healthy state.
 ## Fault tunables
 
 <details>
-    
-		<summary>Fault tunables</summary>
+<summary>Fault tunables</summary>
     <h2>Mandatory fields</h2>
     <table>
         <tr>

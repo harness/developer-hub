@@ -116,16 +116,16 @@ Here's the script used:
 
 ```
 Example Scriptcat <<EOT >> vars.yml  
-APP\_NAME: my\_app  
-APP\_MEMORY: 750M  
+APP_NAME: my_app  
+APP_MEMORY: 750M  
 INSTANCES: 1  
 EOT  
   
   
 cat <<EOT >> manifest.yml  
 applications:  
-- name: ((APP\_NAME))  
- memory: ((APP\_MEMORY))  
+- name: ((APP_NAME))  
+ memory: ((APP_MEMORY))  
  instances : ((INSTANCES))  
  random-route: true  
 EOT

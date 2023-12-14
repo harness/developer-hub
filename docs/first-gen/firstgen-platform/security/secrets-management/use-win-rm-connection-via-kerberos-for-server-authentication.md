@@ -42,7 +42,7 @@ There are some corner use cases which Harness does not support because of how Ja
 * Harness has limited support for quotes in Service Config Variables and Environment Service Variable Overrides. A simple use such as `foo'bar` will work, but a complex combination of single quotes and other characters such as backslash (\) might not work.
 * Harness does support variable values ending in three or more slashes.
 * Secrets cannot contain special characters without escaping. For example, if the secret contains a `$` like `ab$c` it will fail.  
-Escape any special characters in your secrets: `ab\$c`.
+Escape any special characters in your secrets: `ab$c`.
 
 ### Step 1: Add SPN to the Active Directory Server
 

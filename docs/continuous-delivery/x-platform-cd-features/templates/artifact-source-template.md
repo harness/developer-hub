@@ -93,11 +93,11 @@ The **Value** setting in **Tags** is a runtime input. You can select the tag to 
 
 You can also use **Regex**.
 
-For example, if the build is `todolist-v2.0`, the regex `todolist-v\d.\d` will match.
+For example, if the build is `todolist-v2.0`, the regex `todolist-vd.d` will match.
 
 If the regex expression does not result in a match, Harness ignores the value.
 
-Harness supports standard Java regex. For example, if you enable **Regex** with the intent is to match a filename, the wildcard must be `.*` instead of only `*`. Similarly, if you want to match all files ending in `-DEV.tgz`, your wildcard regex phrase would be: `.*-DEV\.tgz`
+Harness supports standard Java regex. For example, if you enable **Regex** with the intent is to match a filename, the wildcard must be `.*` instead of only `*`. Similarly, if you want to match all files ending in `-DEV.tgz`, your wildcard regex phrase would be: `.*-DEV.tgz`
 
 ```mdx-code-block
   </TabItem>
@@ -154,7 +154,7 @@ For information on runtime inputs and expressions, go to [fixed values runtime i
 
 Runtime inputs can be useful in artifact source templates because they let your team members select the repository, path, and tags to use when they run pipelines using artifact source templates.
 
-Expressions can be useful in artifact source templates because you can use default Harness expressions, like `\<+stage.name\>`, and service variables, like `\<+serviceVariables.myapp\>`, in place of the connector name and/or image path. When the pipeline using the artifact source template runs, those expressions are resolved and their related connector and/or image path is selected.
+Expressions can be useful in artifact source templates because you can use default Harness expressions, like `<+stage.name>`, and service variables, like `<+serviceVariables.myapp>`, in place of the connector name and/or image path. When the pipeline using the artifact source template runs, those expressions are resolved and their related connector and/or image path is selected.
 
 
 ## Use artifact templates in stage templates

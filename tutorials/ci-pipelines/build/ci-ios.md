@@ -432,7 +432,7 @@ If your build infrastructure machines have multiple versions of Xcode installed,
 
 ## Deploy to the App Store
 
-The following examples use [Fastlane in a Continuous Integration setup](https://docs.fastlane.tools/best-practices/continuous-integration/) to deploy an app to the Apple App Store. The environment variables in these examples use [secrets](/docs/category/secrets) and [expressions](/docs/platform/Variables-and-Expressions/harness-variables) to store and recall sensitive values, such as `FASTLANE_PASSWORD=\<+secrets.getValue('fastlanepassword')\>`.
+The following examples use [Fastlane in a Continuous Integration setup](https://docs.fastlane.tools/best-practices/continuous-integration/) to deploy an app to the Apple App Store. The environment variables in these examples use [secrets](/docs/category/secrets) and [expressions](/docs/platform/Variables-and-Expressions/harness-variables) to store and recall sensitive values, such as `FASTLANE_PASSWORD=<+secrets.getValue('fastlanepassword')>`.
 
 To learn more about app distribution, go to the Apple Developer documentation on [Distribution](https://developer.apple.com/documentation/xcode/distribution).
 
@@ -464,7 +464,7 @@ To learn more about app distribution, go to the Apple Developer documentation on
                       export P12_PASSWORD=<+secrets.getValue('certpassword')>
                       export KEYCHAIN_PASSWORD=admin
                       export FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD=<+secrets.getValue('fastlaneapppassword')>
-                      export FASTLANE_SESSION='-..._at: *1\n'
+                      export FASTLANE_SESSION='-..._at: *1n'
                       export APP_STORE_CONNECT_KEY_BASE64=<+secrets.getValue('appstoreapikey')>
 
                       sudo xcode-select -switch /Applications/Xcode_14.1.0.app
@@ -491,8 +491,8 @@ To learn more about app distribution, go to the Apple Developer documentation on
 
                       security import $CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
                       security list-keychain -d user -s $KEYCHAIN_PATH
-                      mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-                      cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
+                      mkdir -p ~/Library/MobileDevice/Provisioning Profiles
+                      cp $PP_PATH ~/Library/MobileDevice/Provisioning Profiles
 
                       gem install bundler
                       bundle install
@@ -538,7 +538,7 @@ To learn more about app distribution, go to the Apple Developer documentation on
                       export P12_PASSWORD=<+secrets.getValue('certpassword')>
                       export KEYCHAIN_PASSWORD=admin
                       export FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD=<+secrets.getValue('fastlaneapppassword')>
-                      export FASTLANE_SESSION='-...*1\n'
+                      export FASTLANE_SESSION='-...*1n'
                       export APP_STORE_CONNECT_KEY_BASE64=<+secrets.getValue('appstoreapikey')>
 
                       sudo xcode-select -switch /Applications/Xcode_14.1.0.app
@@ -565,8 +565,8 @@ To learn more about app distribution, go to the Apple Developer documentation on
 
                       security import $CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
                       security list-keychain -d user -s $KEYCHAIN_PATH
-                      mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-                      cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
+                      mkdir -p ~/Library/MobileDevice/Provisioning Profiles
+                      cp $PP_PATH ~/Library/MobileDevice/Provisioning Profiles
 
                       gem install bundler
                       bundle install

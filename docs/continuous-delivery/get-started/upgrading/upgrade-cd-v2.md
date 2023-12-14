@@ -884,14 +884,14 @@ The API will migrate services and environments for all CD stages that exist in a
 The `<base_url>` is usually `app.harness.io`.
 
 ```curl
-curl --location --request POST 'https://<base_url>/gateway/ng/api/service-env-migration/pipeline?accountIdentifier=account_identifier' \
---header 'content-type: application/yaml' \
---header 'Authorization: auth_token' \
+curl --location --request POST 'https://<base_url>/gateway/ng/api/service-env-migration/pipeline?accountIdentifier=account_identifier' 
+--header 'content-type: application/yaml' 
+--header 'Authorization: auth_token' 
 --data-raw '{
- "orgIdentifier": '\''org_identifier'\'',
- "projectIdentifier": '\''project_identifier'\'',
- "infraIdentifierFormat": '\''<+stage.identifier>_<+pipeline.identifier>_infra'\'',
- "pipelineIdentifier": '\''pipeline_identifier'\'',
+ "orgIdentifier": '''org_identifier''',
+ "projectIdentifier": '''project_identifier''',
+ "infraIdentifierFormat": '''<+stage.identifier>_<+pipeline.identifier>_infra''',
+ "pipelineIdentifier": '''pipeline_identifier''',
  "isUpdatePipeline": true,
  "templateMap" : 
       {
@@ -957,13 +957,13 @@ The API will migrate services and enviroments for all existing pipelines in a pr
 The `<base_url>` is usually `app.harness.io`.
 
 ```curl
-curl --location --request POST 'https://<base_url>/gateway/ng/api/service-env-migration/project?accountIdentifier=account_id' \
---header 'content-type: application/yaml' \
---header 'Authorization: auth_token' \
+curl --location --request POST 'https://<base_url>/gateway/ng/api/service-env-migration/project?accountIdentifier=account_id' 
+--header 'content-type: application/yaml' 
+--header 'Authorization: auth_token' 
 --data-raw '{
- "orgIdentifier": '\''org_identifier'\'',
- "projectIdentifier": '\''project_identifier'\'',
- "infraIdentifierFormat": '\''<+stage.identifier>_<+pipeline.identifier>_infra'\'',
+ "orgIdentifier": '''org_identifier''',
+ "projectIdentifier": '''project_identifier''',
+ "infraIdentifierFormat": '''<+stage.identifier>_<+pipeline.identifier>_infra''',
   "isUpdatePipeline": true,
   "templateMap" : 
       {

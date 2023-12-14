@@ -93,7 +93,7 @@ For `values`, you enter in the execution ID for the deployment.
 
 You can find the execution ID after executions in the deployment URL. You can see it as **P03SSJ\_9S2auQQwlejKtcg** here:
 
-`https://app.harness.io/#/account/xxx/app/BLnYajALQ9KA4ehnZZTHfA/env/g717FtmBQreevuSCYcbixA/executions/``**P03SSJ\_9S2auQQwlejKtcg**``/details`
+`https://app.harness.io/#/account/xxx/app/BLnYajALQ9KA4ehnZZTHfA/env/g717FtmBQreevuSCYcbixA/executions/``**P03SSJ_9S2auQQwlejKtcg**``/details`
 
 To get execution IDs, you can query for a Pipeline's executions using the Pipeline ID:
 

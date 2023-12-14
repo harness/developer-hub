@@ -386,7 +386,7 @@ import set_up_harness_26 from './static/configure-bandit-step.png'
 
    1. Scan Mode = **`Orchestration`**
    2. Target Name = `**dvpwa**`
-   3. Target Variant — Select the tack button on the right, select **Expression** as the value type, and enter the expression **`\<+codebase.branch\>`**.
+   3. Target Variant — Select the tack button on the right, select **Expression** as the value type, and enter the expression **`<+codebase.branch>`**.
 
       With this setting, you will specify the variant — in this case, the branch name — when you execute the pipeline.
 

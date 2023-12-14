@@ -115,7 +115,7 @@ import TabItem from '@theme/TabItem';
       3. Add the following environment variable:
          
          - Key : `SEMGREP_APP_TOKEN`
-         - Value : Click the type selector (right), set the value type to **Expression**, and enter the value `\<+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")\>`. 
+         - Value : Click the type selector (right), set the value type to **Expression**, and enter the value `<+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")>`. 
 
            ![set the value type](./static/sast-semgrep-tutorial/set-value-type.png)
 
@@ -145,7 +145,7 @@ Add a `Run` step to your `SecurityTests` stage and configure it as follows:
          This command runs a [Semgrep scan](https://semgrep.dev/docs/cli-reference/#semgrep-scan-command-options) on your code repo and outputs the results to a [SARIF](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) file in the pipeline workspace. 
 
       -  `envVariables:`
-         -  `SEMGREP_APP_TOKEN: \<+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")\>`
+         -  `SEMGREP_APP_TOKEN: <+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")>`
       -  `resources:`
          -  `limits: `
              -  `memory: 4096Mi`
@@ -220,9 +220,9 @@ Add a step after the `Run` step and configure it as follows:
       -  `mode :` [`ingestion`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) 
       -  `config: default`
          - `target : ` 
-            - `name : \<+input\>` 
+            - `name : <+input>` 
             - `type : repository`
-            - `variant : \<+input\>` You will specify the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) when you run the pipeline. 
+            - `variant : <+input>` You will specify the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) when you run the pipeline. 
                 When scanning a repository, you will generally use the repository name and branch for these fields.
          - `advanced : ` 
             - `log :` 
@@ -313,7 +313,7 @@ pipeline:
   identifier: semgrepsimplescan
   projectIdentifier: MY_PROJECT
   orgIdentifier: MY_HARNESS_ORG
-  tags: \{\}
+  tags: {}
   stages:
     - stage:
         name: semgrep_tutorial_test_stage
@@ -327,7 +327,7 @@ pipeline:
             arch: Arm64
           runtime:
             type: Cloud
-            spec: \{\}
+            spec: {}
           execution:
             steps:
               - step:

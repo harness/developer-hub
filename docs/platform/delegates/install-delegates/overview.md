@@ -98,12 +98,12 @@ To install the Docker delegate using Podman, do the following:
 
    ```bash
    podman run --restart=always --hostname="$(hostname -f)"
-   -e DELEGATE_NAME=docker-delegate \
-   -e NEXT_GEN="true" \
-   -e DELEGATE_TYPE="DOCKER" \
-   -e ACCOUNT_ID=<ACCOUNT_ID_COPIED_FROM_THE_UI_COMMAND> \
-   -e DELEGATE_TOKEN=<DELEGATE_TOKEN_COPIED_FROM_THE_UI_COMMAND>= \
-   -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
+   -e DELEGATE_NAME=docker-delegate 
+   -e NEXT_GEN="true" 
+   -e DELEGATE_TYPE="DOCKER" 
+   -e ACCOUNT_ID=<ACCOUNT_ID_COPIED_FROM_THE_UI_COMMAND> 
+   -e DELEGATE_TOKEN=<DELEGATE_TOKEN_COPIED_FROM_THE_UI_COMMAND>= 
+   -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ 
    -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.07.79904 
    ```
 

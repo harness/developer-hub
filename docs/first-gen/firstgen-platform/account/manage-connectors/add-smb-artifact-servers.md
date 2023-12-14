@@ -52,9 +52,9 @@ Enter a name for the Samba Server. This is the name you will use to identify thi
 
 ## Step 3: SMB URL
 
-Enter a value that contains the `smb:\\` scheme followed by the hostname or IP address and folder name. For example, `smb:\\23.100.87.22\share`.
+Enter a value that contains the `smb:` scheme followed by the hostname or IP address and folder name. For example, `smb:23.100.87.22share`.
 
-If you want to specify a folder in the URL, you can enter the folder using the `\myFolder` format, such as `smb:\\23.100.87.22\myFolder`. Typically, you will specify the folder when you use the SMB Artifact Server as an Artifact Source for a Service.
+If you want to specify a folder in the URL, you can enter the folder using the `myFolder` format, such as `smb:23.100.87.22myFolder`. Typically, you will specify the folder when you use the SMB Artifact Server as an Artifact Source for a Service.
 
 ## Step 4: Domain
 

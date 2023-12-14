@@ -176,13 +176,13 @@ To set up TimescaleDB extension on Debian-based systems, do the following:
 5. Set the password for the postgres user.
 
    ```
-   \password Te$tp@ssw0rD#@
+   password Te$tp@ssw0rD#@
    ```
 
 6. Exit PostgreSQL.
 
    ```
-   \q
+   q
    ```
 
 7. Use the `psql` client to connect to PostgreSQL.
@@ -200,7 +200,7 @@ To set up TimescaleDB extension on Debian-based systems, do the following:
 9. Connect to the database you created.
 
    ```
-   \c tsdb
+   c tsdb
    ```
 
 10. Add the TimescaleDB extension.
@@ -209,10 +209,10 @@ To set up TimescaleDB extension on Debian-based systems, do the following:
    CREATE EXTENSION IF NOT EXISTS timescaledb;
    ```
 
-11. Verify that the TimescaleDB extension is installed using the `\dx` command at the `psql` prompt. The output should be similar to the following.
+11. Verify that the TimescaleDB extension is installed using the `dx` command at the `psql` prompt. The output should be similar to the following.
 
     ```
-    tsdb-# \dx
+    tsdb-# dx
                                           List of installed extensions
         Name     | Version |   Schema   |                            Description
     -------------+---------+------------+-------------------------------------------------------------------
@@ -418,7 +418,7 @@ Follow the steps below to set up a Harness Self-Managed Enterprise Edition clust
 1. Run the following command to ensure your new database has the TimescaleDB extension.
 
    ```bash
-   \c template1
+   c template1
    CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
    ```
 
@@ -427,8 +427,8 @@ Follow the steps below to set up a Harness Self-Managed Enterprise Edition clust
 3. Create a new secret for your username and password in the same namespace where Harness is installed.
 
    ```
-   kubectl create secret generic tsdb-secret -n <namespace> \
-    --from-literal=username=<username-of-postgres-database> \
+   kubectl create secret generic tsdb-secret -n <namespace> 
+    --from-literal=username=<username-of-postgres-database> 
     --from-literal=password='<password-of-postgres-database>'
    ```
 

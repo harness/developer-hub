@@ -76,9 +76,9 @@ The name is very important. You can use the name in [expressions](/docs/platform
 
 For example, if the name of the stage is **Terraform** and the name of the step is **apply**, and you want to echo its timeout setting, you would use:
 
-`\<+pipeline.stages.Terraform.spec.execution.steps.apply.timeout\>`
+`<+pipeline.stages.Terraform.spec.execution.steps.apply.timeout>`
 
-or simply `\<+execution.steps.apply.timeout\>`.
+or simply `<+execution.steps.apply.timeout>`.
 
 ### Timeout
 

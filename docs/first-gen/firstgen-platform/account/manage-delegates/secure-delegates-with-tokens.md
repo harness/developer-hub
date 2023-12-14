@@ -126,10 +126,10 @@ Paste the token as the value of the `DELEGATE_TOKEN` variable:
   
 sudo docker pull harness/delegate:latest  
   
-sudo docker run -d --restart unless-stopped --hostname=$(hostname -f) \  
--e ACCOUNT_ID=kmpySm00000006NL73w \  
--e DELEGATE_TOKEN=[enter new token here] \  
--e MANAGER_HOST_AND_PORT=https://app.harness.io/ \  
+sudo docker run -d --restart unless-stopped --hostname=$(hostname -f)   
+-e ACCOUNT_ID=kmpySm00000006NL73w   
+-e DELEGATE_TOKEN=[enter new token here]   
+-e MANAGER_HOST_AND_PORT=https://app.harness.io/   
 ...
 ```
 Create a new container: `./launch-harness-delegate.sh`
@@ -172,8 +172,8 @@ Start the Delegate task:
 
 
 ```
-aws ecs start-task \  
-    --task-definition [family and revision (family:revision ) or full ARN of the task definition] \  
+aws ecs start-task   
+    --task-definition [family and revision (family:revision ) or full ARN of the task definition]   
     --container-instances [container instance IDs or full ARN entries for the container instances]
 ```
 ### Helm Delegate

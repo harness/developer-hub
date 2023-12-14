@@ -53,9 +53,9 @@ Enter a name for the SFTP Server. This is the name you will use to identify this
 
 ## Step 3: SFTP URL
 
-Ensure that the value contains the `sftp:\\` scheme followed by the hostname or IP address. For example, `sftp:\\23.100.87.22`.
+Ensure that the value contains the `sftp:` scheme followed by the hostname or IP address. For example, `sftp:23.100.87.22`.
 
-If you want to specify a folder in the URL, you can enter the folder using the `\myFolder` format, such as `sftp:\\23.100.87.22\myFolder`. Typically, you will specify the folder when you use the SFTP Artifact Server as an Artifact Source for a Service.
+If you want to specify a folder in the URL, you can enter the folder using the `myFolder` format, such as `sftp:23.100.87.22myFolder`. Typically, you will specify the folder when you use the SFTP Artifact Server as an Artifact Source for a Service.
 
 ## Step 4: Domain
 

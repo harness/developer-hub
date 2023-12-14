@@ -103,7 +103,7 @@ Time Chaos:
 
 The `OFFSET` and `CLOCK_IDS` environment variables set the offset and clock ids, respectively.
 
-- `OFFSET`: Offset value used to modify the system time. It should match with `^(\d+)(ms|s|m|h)$` regex.
+- `OFFSET`: Offset value used to modify the system time. It should match with `^(d+)(ms|s|m|h)$` regex.
 - `CLOCK_IDS`: Comma separated clock ids of the target system clock. Refer to 'uapi/linux/time.h' for more details.
 
 The following YAML snippet illustrates the use of this environment variable:

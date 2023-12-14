@@ -195,13 +195,13 @@ Verify that you have the following:
 
          
         ```bash
-        helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
-        harness-delegate/harness-delegate-ng \
-         --set delegateName=helm-delegate \
-         --set accountId=ACCOUNT_ID \
-         --set managerEndpoint=MANAGER_ENDPOINT \
-         --set delegateDockerImage=harness/delegate:23.03.78904 \
-         --set replicas=1 --set upgrader.enabled=false \
+        helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace 
+        harness-delegate/harness-delegate-ng 
+         --set delegateName=helm-delegate 
+         --set accountId=ACCOUNT_ID 
+         --set managerEndpoint=MANAGER_ENDPOINT 
+         --set delegateDockerImage=harness/delegate:23.03.78904 
+         --set replicas=1 --set upgrader.enabled=false 
          --set delegateToken=DELEGATE_TOKEN
         ```
         - Select **Verify** to verify that the delegate is installed successfully and can connect to the Harness Manager.

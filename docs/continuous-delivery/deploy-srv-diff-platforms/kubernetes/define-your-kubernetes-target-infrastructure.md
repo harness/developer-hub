@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 When you set up a Deploy stage, you specify the Kubernetes cluster and namespace where you want to deploy your service. In Harness, this is called the **Infrastructure Definition**.
 
@@ -84,93 +84,82 @@ Enter the following settings.
 
 
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="YAML" label="YAML" default>
-```
+    Here is the YAML for the Harness Kubernetes Cluster connector used in the Infrastructure Definition.
 
-Here is the YAML for the Harness Kubernetes Cluster connector used in the Infrastructure Definition.
+    ```yaml
 
-```yaml
+    connector:
+      name: doc-immut
+      identifier: docimmut
+      description: ""
+      orgIdentifier: default
+      projectIdentifier: CD_Docs
+      type: K8sCluster
+      spec:
+        credential:
+          type: InheritFromDelegate
+        delegateSelectors:
+          - doc-immut
 
-connector:
-  name: doc-immut
-  identifier: docimmut
-  description: ""
-  orgIdentifier: default
-  projectIdentifier: CD_Docs
-  type: K8sCluster
-  spec:
-    credential:
-      type: InheritFromDelegate
-    delegateSelectors:
-      - doc-immut
+    ```
 
-```
+    The `InheritFromDelegate` credential is used in this example. This credential is used when a Harness delegate is running inside the target cluster.
 
-The `InheritFromDelegate` credential is used in this example. This credential is used when a Harness delegate is running inside the target cluster.
+    Here is the YAML for an Infrastructure Definition.
 
-Here is the YAML for an Infrastructure Definition.
+    ```yaml
 
-```yaml
+    infrastructureDefinition:
+      name: Cluster 1
+      identifier: Kubernetes
+      description: ""
+      tags: {}
+      orgIdentifier: default
+      projectIdentifier: CD_Docs
+      environmentRef: Kubernetes
+      deploymentType: Kubernetes
+      type: KubernetesDirect
+      spec:
+        connectorRef: docimmut
+        namespace: default
+        releaseName: release-<+INFRA_KEY>
+      allowSimultaneousDeployments: false
 
-infrastructureDefinition:
-  name: Cluster 1
-  identifier: Kubernetes
-  description: ""
-  tags: {}
-  orgIdentifier: default
-  projectIdentifier: CD_Docs
-  environmentRef: Kubernetes
-  deploymentType: Kubernetes
-  type: KubernetesDirect
-  spec:
-    connectorRef: docimmut
-    namespace: default
-    releaseName: release-<+INFRA_KEY>
-  allowSimultaneousDeployments: false
-
-```
-
-
-```mdx-code-block
+    ```
   </TabItem>
   <TabItem value="API" label="API">
-```
 
 Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure).
 
-
-```mdx-code-block
   </TabItem>
   <TabItem value="Terraform Provider" label="Terraform Provider">
-```
 
-Use the [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure) resource to create the infrastructure definition.
+    Use the [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure) resource to create the infrastructure definition.
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Pipeline Studio" label="Pipeline Studio">
-```
+    ```mdx-code-block
+      </TabItem>
+      <TabItem value="Pipeline Studio" label="Pipeline Studio">
+    ```
 
-To add an Infrastructure Definition with the Direct connection method, do the following: 
+    To add an Infrastructure Definition with the Direct connection method, do the following: 
 
-1. In your Harness project, select **Environments**.
-2. Select or create an environment.
-3. In the environment, select **Infrastructure Definitions**.
-4. Select **Infrastructure Definition** to create the new infrastructure definition.
-5. Enter a name for the infrastructure definition.
-6. In **Deployment Type**, select **Kubernetes**.
-7. In **Select Infrastructure Type**, select **Direct Connection**.
-8. In **Cluster Details**, select or add a Harness Kubernetes Cluster connector.
-9. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
-10. Select **Save**.
+    1. In your Harness project, select **Environments**.
+    2. Select or create an environment.
+    3. In the environment, select **Infrastructure Definitions**.
+    4. Select **Infrastructure Definition** to create the new infrastructure definition.
+    5. Enter a name for the infrastructure definition.
+    6. In **Deployment Type**, select **Kubernetes**.
+    7. In **Select Infrastructure Type**, select **Direct Connection**.
+    8. In **Cluster Details**, select or add a Harness Kubernetes Cluster connector.
+    9. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
+    10. Select **Save**.
 
-```mdx-code-block
   </TabItem>
 </Tabs>
-```
 
 ### Google Kubernetes Engine (GKE)
 
@@ -179,240 +168,208 @@ To add an Infrastructure Definition with the Direct connection method, do the fo
 * **GCP Workload Identity:** if you installed the Harness Kubernetes Delegate in a GCP Kubernetes cluster (GKE) that has GCP Workload Identity enabled, the GCP Connector will use the GCP Workload Identity if it inherits its credentials from that Delegate (using the **Use the credentials of a specific Harness Delegate** option).
 
 
-```mdx-code-block
 <Tabs>
   <TabItem value="YAML" label="YAML" default>
-```
 
-Here is the YAML for the GCP connector used in the Infrastructure Definition.
+    Here is the YAML for the GCP connector used in the Infrastructure Definition.
 
-```yaml
+    ```yaml
 
-connector:
-  name: kubernetes-delegate
-  identifier: kubernetesdelegate
-  description: ""
-  orgIdentifier: default
-  projectIdentifier: CD_Docs
-  type: Gcp
-  spec:
-    credential:
-      type: InheritFromDelegate
-    delegateSelectors:
-      - kubernetes-delegate
-    executeOnDelegate: true
+    connector:
+      name: kubernetes-delegate
+      identifier: kubernetesdelegate
+      description: ""
+      orgIdentifier: default
+      projectIdentifier: CD_Docs
+      type: Gcp
+      spec:
+        credential:
+          type: InheritFromDelegate
+        delegateSelectors:
+          - kubernetes-delegate
+        executeOnDelegate: true
 
-```
+    ```
 
-Here is the YAML for a GKE Infrastructure Definition. In this example, the `cluster` parameter is set as a runtime input so you can select the cluster to use when you deploy.
+    Here is the YAML for a GKE Infrastructure Definition. In this example, the `cluster` parameter is set as a runtime input so you can select the cluster to use when you deploy.
 
-```yaml
+    ```yaml
 
-infrastructureDefinition:
-  name: K8s GKE
-  identifier: K8s_GKE
-  description: ""
-  tags: {}
-  orgIdentifier: default
-  projectIdentifier: CD_Docs
-  environmentRef: k8s_env
-  deploymentType: Kubernetes
-  type: KubernetesGcp
-  spec:
-    connectorRef: kubernetesdelegate
-    cluster: <+input>
-    namespace: test
-    releaseName: release-<+INFRA_KEY>
-  allowSimultaneousDeployments: false
+    infrastructureDefinition:
+      name: K8s GKE
+      identifier: K8s_GKE
+      description: ""
+      tags: {}
+      orgIdentifier: default
+      projectIdentifier: CD_Docs
+      environmentRef: k8s_env
+      deploymentType: Kubernetes
+      type: KubernetesGcp
+      spec:
+        connectorRef: kubernetesdelegate
+        cluster: <+input>
+        namespace: test
+        releaseName: release-<+INFRA_KEY>
+      allowSimultaneousDeployments: false
 
 
-```
+    ```
 
-```mdx-code-block
   </TabItem>
   <TabItem value="API" label="API">
-```
 
-Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure).
+    Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure).
 
 
-```mdx-code-block
   </TabItem>
   <TabItem value="Terraform Provider" label="Terraform Provider">
-```
 
-Use the [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure) resource to create the infrastructure definition.
+    Use the [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure) resource to create the infrastructure definition.
 
 
-```mdx-code-block
   </TabItem>
   <TabItem value="Pipeline Studio" label="Pipeline Studio">
-```
-To add an Infrastructure Definition with the GKE connection method, do the following:
+    To add an Infrastructure Definition with the GKE connection method, do the following:
 
-1. In your Harness project, select **Environments**.
-2. Select or create an environment.
-3. In the environment, select **Infrastructure Definitions**.
-4. Select **Infrastructure Definition** to create the new infrastructure definition.
-5. Enter a name for the infrastructure definition.
-6. In **Deployment Type**, select **Kubernetes**.
-7. In **Select Infrastructure Type**, select **Google Kubernetes Engine**.
-8. In **Cluster Details**, select or add a Harness GCP connector.
-9. In **Cluster**, select or enter the name of the target cluster.
-10. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
-11. Select **Save**.
+    1. In your Harness project, select **Environments**.
+    2. Select or create an environment.
+    3. In the environment, select **Infrastructure Definitions**.
+    4. Select **Infrastructure Definition** to create the new infrastructure definition.
+    5. Enter a name for the infrastructure definition.
+    6. In **Deployment Type**, select **Kubernetes**.
+    7. In **Select Infrastructure Type**, select **Google Kubernetes Engine**.
+    8. In **Cluster Details**, select or add a Harness GCP connector.
+    9. In **Cluster**, select or enter the name of the target cluster.
+    10. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
+    11. Select **Save**.
 
 
-```mdx-code-block
   </TabItem>
 </Tabs>
-```
 
 ### Microsoft Azure Kubernetes Service (AKS)
 
 
-```mdx-code-block
 <Tabs>
   <TabItem value="YAML" label="YAML" default>
-```
+    Here is the YAML for a AKS Infrastructure Definition. In this example, AKS parameters are set as runtime inputs so you can select the cluster to use when you deploy.
 
 
-Here is the YAML for a AKS Infrastructure Definition. In this example, AKS parameters are set as runtime inputs so you can select the cluster to use when you deploy.
+    ```yaml
 
+    infrastructureDefinition:
+      name: K8s Azure
+      identifier: K8s_Azure
+      description: ""
+      tags: {}
+      orgIdentifier: default
+      projectIdentifier: CD_Docs
+      environmentRef: k8s_env
+      deploymentType: Kubernetes
+      type: KubernetesAzure
+      spec:
+        connectorRef: account.foo
+        subscriptionId: <+input>
+        resourceGroup: <+input>
+        cluster: <+input>
+        namespace: mynamespace
+        releaseName: release-<+INFRA_KEY>
+      allowSimultaneousDeployments: false
 
-```yaml
+    ```
 
-infrastructureDefinition:
-  name: K8s Azure
-  identifier: K8s_Azure
-  description: ""
-  tags: {}
-  orgIdentifier: default
-  projectIdentifier: CD_Docs
-  environmentRef: k8s_env
-  deploymentType: Kubernetes
-  type: KubernetesAzure
-  spec:
-    connectorRef: account.foo
-    subscriptionId: <+input>
-    resourceGroup: <+input>
-    cluster: <+input>
-    namespace: mynamespace
-    releaseName: release-<+INFRA_KEY>
-  allowSimultaneousDeployments: false
-
-```
-
-```mdx-code-block
   </TabItem>
   <TabItem value="API" label="API">
-```
 
-Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure).
+    Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure).
 
 
-```mdx-code-block
   </TabItem>
   <TabItem value="Terraform Provider" label="Terraform Provider">
-```
 
-Use the [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure) resource to create the infrastructure definition.
+    Use the [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure) resource to create the infrastructure definition.
 
-```mdx-code-block
   </TabItem>
   <TabItem value="Pipeline Studio" label="Pipeline Studio">
-```
 
-To add an Infrastructure Definition with the AKS connection method, do the following:
+    To add an Infrastructure Definition with the AKS connection method, do the following:
 
 
-1. In your Harness project, select **Environments**.
-2. Select or create an environment.
-3. In the environment, select **Infrastructure Definitions**.
-4. Select **Infrastructure Definition** to create the new infrastructure definition.
-5. Enter a name for the infrastructure definition.
-6. In **Deployment Type**, select **Kubernetes**.
-7. In **Select Infrastructure Type**, select **Microsoft Azure**.
-8. In **Subscription Id**, select or add a subscription Id for the subscription you want to use.
-9. In **Resource Group**, select or add the resource group to use.
-10. In **Cluster**, select or enter the name of the target cluster.
-11. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
-12. Select **Save**.
+    1. In your Harness project, select **Environments**.
+    2. Select or create an environment.
+    3. In the environment, select **Infrastructure Definitions**.
+    4. Select **Infrastructure Definition** to create the new infrastructure definition.
+    5. Enter a name for the infrastructure definition.
+    6. In **Deployment Type**, select **Kubernetes**.
+    7. In **Select Infrastructure Type**, select **Microsoft Azure**.
+    8. In **Subscription Id**, select or add a subscription Id for the subscription you want to use.
+    9. In **Resource Group**, select or add the resource group to use.
+    10. In **Cluster**, select or enter the name of the target cluster.
+    11. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
+    12. Select **Save**.
 
-```mdx-code-block
   </TabItem>
 </Tabs>
-```
 
 ### AWS Elastic Kubernetes Service (EKS)
 
-```mdx-code-block
 <Tabs>
   <TabItem value="YAML" label="YAML" default>
-```
 
-Here is the YAML for an EKS Infrastructure Definition.
+    Here is the YAML for an EKS Infrastructure Definition.
 
-```yaml
+    ```yaml
 
-infrastructureDefinition:
-  name: K8s EKS
-  identifier: K8s_EKS
-  description: ""
-  tags: {}
-  orgIdentifier: default
-  projectIdentifier: CD_Docs
-  environmentRef: k8s_env
-  deploymentType: Kubernetes
-  type: KubernetesAws
-  spec:
-    connectorRef: eks
-    cluster: ap-south-1/Cluster-test
-    namespace: mynamespace
-    releaseName: release-<+INFRA_KEY>
-  allowSimultaneousDeployments: false
-
-
-```
+    infrastructureDefinition:
+      name: K8s EKS
+      identifier: K8s_EKS
+      description: ""
+      tags: {}
+      orgIdentifier: default
+      projectIdentifier: CD_Docs
+      environmentRef: k8s_env
+      deploymentType: Kubernetes
+      type: KubernetesAws
+      spec:
+        connectorRef: eks
+        cluster: ap-south-1/Cluster-test
+        namespace: mynamespace
+        releaseName: release-<+INFRA_KEY>
+      allowSimultaneousDeployments: false
 
 
-```mdx-code-block
+    ```
+
+
   </TabItem>
   <TabItem value="API" label="API">
-```
 
-Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure).
+    Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure).
 
 
-```mdx-code-block
   </TabItem>
   <TabItem value="Terraform Provider" label="Terraform Provider">
-```
 
 Use the [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure) resource to create the infrastructure definition.
 
-```mdx-code-block
   </TabItem>
   <TabItem value="Pipeline Studio" label="Pipeline Studio">
-```
 
-To add an Infrastructure Definition with the EKS connection method, do the following:
+    To add an Infrastructure Definition with the EKS connection method, do the following:
 
-1. In your Harness project, select **Environments**.
-2. Select or create an environment.
-3. In the environment, select **Infrastructure Definitions**.
-4. Select **Infrastructure Definition** to create the new infrastructure definition.
-5. Enter a name for the infrastructure definition.
-6. In **Deployment Type**, select **Kubernetes**.
-7. In **Select Infrastructure Type**, select **Elastic Kubernetes Service**.
-8.  In **Cluster**, select or enter the name of the target cluster.
-9.  In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
-10. Select **Save**.
+    1. In your Harness project, select **Environments**.
+    2. Select or create an environment.
+    3. In the environment, select **Infrastructure Definitions**.
+    4. Select **Infrastructure Definition** to create the new infrastructure definition.
+    5. Enter a name for the infrastructure definition.
+    6. In **Deployment Type**, select **Kubernetes**.
+    7. In **Select Infrastructure Type**, select **Elastic Kubernetes Service**.
+    8.  In **Cluster**, select or enter the name of the target cluster.
+    9.  In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
+    10. Select **Save**.
 
-```mdx-code-block
   </TabItem>
 </Tabs>
-```
 
 ### Rancher
 
@@ -438,109 +395,99 @@ To set up a Harness Rancher connector you need:
   - When you create the token, you can scope it to specific clusters. A scope will limit the API key so that it will only work against the Kubernetes API of the specified clusters. If you scope the bearer token to specific clusters, Harness will only be able to query and target that list of clusters when deploying.
   - If you set an expiration period for the token, make sure that its expiration date will not impact your Harness deployments.
 
-```mdx-code-block
 <Tabs>
   <TabItem value="YAML" label="YAML" default>
-```
 
-Here is the YAML for the Rancher connector used in the Infrastructure Definition.
+    Here is the YAML for the Rancher connector used in the Infrastructure Definition.
 
-```yaml
-connector:
-  name: Rancher
-  identifier: Rancher
-  description: ""
-  accountIdentifier: ACCOUNT_ID
-  orgIdentifier: default
-  projectIdentifier: Docs
-  type: Rancher
-  spec:
-    credential:
-      type: ManualConfig
+    ```yaml
+    connector:
+      name: Rancher
+      identifier: Rancher
+      description: ""
+      accountIdentifier: ACCOUNT_ID
+      orgIdentifier: default
+      projectIdentifier: Docs
+      type: Rancher
       spec:
-        rancherUrl: https://rancher-internal.QA.MY_COMPANY.io/
-        auth:
-          type: BearerToken
+        credential:
+          type: ManualConfig
           spec:
-            passwordRef: TOKEN_NAME
-```
+            rancherUrl: https://rancher-internal.QA.MY_COMPANY.io/
+            auth:
+              type: BearerToken
+              spec:
+                passwordRef: TOKEN_NAME
+    ```
 
-Here is the YAML for a Rancher Infrastructure Definition. In this example, `cluster` and `namespace` are set as runtime inputs so you can select the cluster and namespace to use when you deploy.
+    Here is the YAML for a Rancher Infrastructure Definition. In this example, `cluster` and `namespace` are set as runtime inputs so you can select the cluster and namespace to use when you deploy.
 
-```yaml
-infrastructureDefinition:
-  name: Rancher
-  identifier: Rancher
-  description: ""
-  tags: {}
-  orgIdentifier: default
-  projectIdentifier: Docs
-  environmentRef: Kubernetes
-  deploymentType: Kubernetes
-  type: KubernetesRancher
-  spec:
-    connectorRef: Rancher
-    cluster: <+input>
-    namespace: <+input>
-    releaseName: release-<+INFRA_KEY>
-  allowSimultaneousDeployments: false
-```
+    ```yaml
+    infrastructureDefinition:
+      name: Rancher
+      identifier: Rancher
+      description: ""
+      tags: {}
+      orgIdentifier: default
+      projectIdentifier: Docs
+      environmentRef: Kubernetes
+      deploymentType: Kubernetes
+      type: KubernetesRancher
+      spec:
+        connectorRef: Rancher
+        cluster: <+input>
+        namespace: <+input>
+        releaseName: release-<+INFRA_KEY>
+      allowSimultaneousDeployments: false
+    ```
 
 
 
-```mdx-code-block
   </TabItem>
   <TabItem value="API" label="API">
-```
 
-Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure).
+    Use the Harness [`createInfrastructure` API](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure).
 
 
-```mdx-code-block
   </TabItem>
   <TabItem value="Terraform Provider" label="Terraform Provider">
-```
 
-Use the [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure) resource to create the **Infrastructure Definition**.
+    Use the [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure) resource to create the **Infrastructure Definition**.
 
-```mdx-code-block
   </TabItem>
   <TabItem value="Harness Manager" label="Harness Manager">
-```
 
-To create the Harness Rancher connector, do the following:
+    To create the Harness Rancher connector, do the following:
 
-1. In your Harness project, select **Connectors**.
-2. Select **New Connector**, and then select **Rancher cluster**.
-3. In **Rancher Connector Details**, enter a name for the connector, and then select **Continue**. You will select this name when you select a connector in the infrastructure definition.
-4. In **Details**, select **Specify rancher URL and credentials**.
-5. In **Rancher URL**, enter the URL to the Rancher server.
-6. In **Authentication**, select **Bearer Token**, and select or add a Harness secret containing the token.
-7. Select **Continue**.
-8. In **Delegates Setup**, select or add a Harness delegate to use when performing this connection, or let Harness select the delegate.
-9. Select **Continue**.
-
-
-To add an **Infrastructure Definition** with the Rancher connection method, do the following:
-
-1. In your Harness project, select **Environments**.
-2. Select or create an environment.
-3. In the environment, select **Infrastructure Definitions**.
-4. Select **Infrastructure Definition** to create the new infrastructure definition.
-5. Enter a name for the infrastructure definition.
-6. In **Deployment Type**, select **Kubernetes**.
-7. In **Select Infrastructure Type**, select **Rancher**.
-8. In **Cluster Details**, select or add a Harness Rancher connector.
-9. In **Cluster**, select or enter the name of the target cluster.
-10. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
-11. Select **Save**.
+    1. In your Harness project, select **Connectors**.
+    2. Select **New Connector**, and then select **Rancher cluster**.
+    3. In **Rancher Connector Details**, enter a name for the connector, and then select **Continue**. You will select this name when you select a connector in the infrastructure definition.
+    4. In **Details**, select **Specify rancher URL and credentials**.
+    5. In **Rancher URL**, enter the URL to the Rancher server.
+    6. In **Authentication**, select **Bearer Token**, and select or add a Harness secret containing the token.
+    7. Select **Continue**.
+    8. In **Delegates Setup**, select or add a Harness delegate to use when performing this connection, or let Harness select the delegate.
+    9. Select **Continue**.
 
 
+    To add an **Infrastructure Definition** with the Rancher connection method, do the following:
 
-```mdx-code-block
+    1. In your Harness project, select **Environments**.
+    2. Select or create an environment.
+    3. In the environment, select **Infrastructure Definitions**.
+    4. Select **Infrastructure Definition** to create the new infrastructure definition.
+    5. Enter a name for the infrastructure definition.
+    6. In **Deployment Type**, select **Kubernetes**.
+    7. In **Select Infrastructure Type**, select **Rancher**.
+    8. In **Cluster Details**, select or add a Harness Rancher connector.
+    9. In **Cluster**, select or enter the name of the target cluster.
+    10. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
+    11. Select **Save**.
+
+
+
   </TabItem>
 </Tabs>
-```
 
 
 ## Dynamically provisioned infrastructure
@@ -627,7 +574,7 @@ output "default_namespace" {
 
 ```
 
-In the Harness Infrastructure Definition, you map that output to the **Namespace** setting using an expression in the format `\<+provisioner.OUTPUT_NAME\>`, such as `\<+provisioner.default_namespace\>`.
+In the Harness Infrastructure Definition, you map that output to the **Namespace** setting using an expression in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.default_namespace>`.
 
 <docimage path={require('./static/77880a34dd7812c1e5567a5ef69f86754467f5a0ebefaba06268eedef8ca0aaf.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -648,324 +595,310 @@ The following table shows the **Infrastructure Definition** settings that are ma
 Here are examples for each connection method:
 
 
-```mdx-code-block
 <Tabs>
   <TabItem value="Direct" label="Direct" default>
-```
 
-Here's an example of a dynamic provisioning script using Terraform and how to map its namespace output to the required Harness Infrastructure Definition settings for the connection method. 
+    Here's an example of a dynamic provisioning script using Terraform and how to map its namespace output to the required Harness Infrastructure Definition settings for the connection method. 
+  <details>
 
-<details>
+  <summary>Terraform provisioner example</summary>
 
-		<summary>Terraform provisioner example</summary>
+    ```yaml
 
-```yaml
+    provider "kubernetes" {
+      config_context_cluster = "docs-tf"  # Name of your Kubernetes cluster
+      host                   = "<KUBE_HOST>"     # Kubernetes API server host
+      client_certificate     = "<CLIENT_CERT>"   # Path to client certificate
+      client_key             = "<CLIENT_KEY>"    # Path to client key
+      cluster_ca_certificate = "<CLUSTER_CA>"    # Path to cluster CA certificate
+    }
 
-provider "kubernetes" {
-  config_context_cluster = "docs-tf"  # Name of your Kubernetes cluster
-  host                   = "<KUBE_HOST>"     # Kubernetes API server host
-  client_certificate     = "<CLIENT_CERT>"   # Path to client certificate
-  client_key             = "<CLIENT_KEY>"    # Path to client key
-  cluster_ca_certificate = "<CLUSTER_CA>"    # Path to cluster CA certificate
-}
-
-resource "kubernetes_namespace" "example" {
-  metadata {
-    name = "example-namespace"
-  }
-}
-
-resource "kubernetes_service_account" "example" {
-  metadata {
-    name      = "example-service-account"
-    namespace = kubernetes_namespace.example.metadata[0].name
-  }
-}
-
-resource "kubernetes_cluster_role_binding" "example" {
-  metadata {
-    name      = "example-cluster-role-binding"
-    namespace = kubernetes_namespace.example.metadata[0].name
-  }
-
-  role_ref {
-    api_group = "rbac.authorization.k8s.io"
-    kind      = "ClusterRole"
-    name      = "cluster-admin"
-  }
-
-  subject {
-    kind      = "ServiceAccount"
-    name      = kubernetes_service_account.example.metadata[0].name
-    namespace = kubernetes_namespace.example.metadata[0].name
-  }
-}
-
-resource "kubernetes_deployment" "example" {
-  metadata {
-    name      = "example-deployment"
-    namespace = kubernetes_namespace.example.metadata[0].name
-  }
-
-  spec {
-    replicas = 2
-
-    selector {
-      match_labels = {
-        app = "example-app"
+    resource "kubernetes_namespace" "example" {
+      metadata {
+        name = "example-namespace"
       }
     }
 
-    template {
+    resource "kubernetes_service_account" "example" {
       metadata {
-        labels = {
-          app = "example-app"
-        }
+        name      = "example-service-account"
+        namespace = kubernetes_namespace.example.metadata[0].name
+      }
+    }
+
+    resource "kubernetes_cluster_role_binding" "example" {
+      metadata {
+        name      = "example-cluster-role-binding"
+        namespace = kubernetes_namespace.example.metadata[0].name
+      }
+
+      role_ref {
+        api_group = "rbac.authorization.k8s.io"
+        kind      = "ClusterRole"
+        name      = "cluster-admin"
+      }
+
+      subject {
+        kind      = "ServiceAccount"
+        name      = kubernetes_service_account.example.metadata[0].name
+        namespace = kubernetes_namespace.example.metadata[0].name
+      }
+    }
+
+    resource "kubernetes_deployment" "example" {
+      metadata {
+        name      = "example-deployment"
+        namespace = kubernetes_namespace.example.metadata[0].name
       }
 
       spec {
-        container {
-          image = "nginx:latest"
-          name  = "example-container"
+        replicas = 2
+
+        selector {
+          match_labels = {
+            app = "example-app"
+          }
+        }
+
+        template {
+          metadata {
+            labels = {
+              app = "example-app"
+            }
+          }
+
+          spec {
+            container {
+              image = "nginx:latest"
+              name  = "example-container"
+            }
+          }
         }
       }
     }
-  }
-}
 
-output "default_namespace" {
-  value = kubernetes_namespace.example.metadata[0].name
-}
+    output "default_namespace" {
+      value = kubernetes_namespace.example.metadata[0].name
+    }
 
-```
+    ```
 
-</details>
+  </details>
 
-Here is what the mapping looks like in the Harness Infrastructure Definition:
+    Here is what the mapping looks like in the Harness Infrastructure Definition:
 
-![picture 2](static/e28d3d0e12716a01bc44af6eb489a739acf8e4e2109558293c1014450a429b31.png)  
+    ![picture 2](static/e28d3d0e12716a01bc44af6eb489a739acf8e4e2109558293c1014450a429b31.png)  
 
 
-```mdx-code-block
   </TabItem>
   <TabItem value="GKE" label="GKE">
-```
 
-Here's an example of a dynamic provisioning script using Terraform and how to map its namespace output to the required Harness Infrastructure Definition settings for the connection method.
+    Here's an example of a dynamic provisioning script using Terraform and how to map its namespace output to the required Harness Infrastructure Definition settings for the connection method.
 
-<details>
+  <details>
 
-		<summary>Terraform provisioner example</summary>
+  <summary>Terraform provisioner example</summary>
 
-```yaml
+    ```yaml
 
-provider "google" {
-  project = "your-gcp-project-id"
-  region  = "us-central1"
-}
-
-resource "google_container_cluster" "kubernetes_cluster" {
-  name               = "my-k8s-cluster"
-  location           = "us-central1"
-  initial_node_count = 3
-
-  master_auth {
-    username = ""
-    password = ""
-
-    client_certificate_config {
-      issue_client_certificate = false
+    provider "google" {
+      project = "your-gcp-project-id"
+      region  = "us-central1"
     }
-  }
-}
 
-resource "google_container_namespace" "kubernetes_namespace" {
-  name      = "my-namespace"
-  project   = "your-gcp-project-id"
-  location  = "us-central1"
-  cluster   = google_container_cluster.kubernetes_cluster.name
-}
+    resource "google_container_cluster" "kubernetes_cluster" {
+      name               = "my-k8s-cluster"
+      location           = "us-central1"
+      initial_node_count = 3
 
-output "cluster_name" {
-  value = google_container_cluster.kubernetes_cluster.name
-}
+      master_auth {
+        username = ""
+        password = ""
 
-output "namespace_name" {
-  value = google_container_namespace.kubernetes_namespace.name
-}
+        client_certificate_config {
+          issue_client_certificate = false
+        }
+      }
+    }
 
-```
+    resource "google_container_namespace" "kubernetes_namespace" {
+      name      = "my-namespace"
+      project   = "your-gcp-project-id"
+      location  = "us-central1"
+      cluster   = google_container_cluster.kubernetes_cluster.name
+    }
 
-</details>
+    output "cluster_name" {
+      value = google_container_cluster.kubernetes_cluster.name
+    }
 
-Here is what the mapping looks like in the Harness Infrastructure Definition:
+    output "namespace_name" {
+      value = google_container_namespace.kubernetes_namespace.name
+    }
 
-![picture 3](static/26f06dc2b4dc1421395bcd41a796a21d63e88593a968868045f0da7ba8662d67.png)  
+    ```
+
+  </details>
+
+    Here is what the mapping looks like in the Harness Infrastructure Definition:
+
+    ![picture 3](static/26f06dc2b4dc1421395bcd41a796a21d63e88593a968868045f0da7ba8662d67.png)  
 
 
-```mdx-code-block
   </TabItem>
   <TabItem value="AKS" label="AKS">
-```
 
-Here's an example of a dynamic provisioning script using Terraform and how to map its namespace output to the required Harness Infrastructure Definition settings for the connection method.
+    Here's an example of a dynamic provisioning script using Terraform and how to map its namespace output to the required Harness Infrastructure Definition settings for the connection method.
 
-<details>
+  <details>
 
-		<summary>Terraform provisioner example</summary>
+  <summary>Terraform provisioner example</summary>
 
-```yaml
+    ```yaml
 
-provider "azurerm" {
-  features {}
-}
+    provider "azurerm" {
+      features {}
+    }
 
-resource "azurerm_resource_group" "aks_rg" {
-  name     = "my-aks-rg"
-  location = "East US"
-}
+    resource "azurerm_resource_group" "aks_rg" {
+      name     = "my-aks-rg"
+      location = "East US"
+    }
 
-resource "azurerm_kubernetes_cluster" "aks_cluster" {
-  name                = "my-aks-cluster"
-  location            = azurerm_resource_group.aks_rg.location
-  resource_group_name = azurerm_resource_group.aks_rg.name
-  dns_prefix          = "my-aks-cluster"
+    resource "azurerm_kubernetes_cluster" "aks_cluster" {
+      name                = "my-aks-cluster"
+      location            = azurerm_resource_group.aks_rg.location
+      resource_group_name = azurerm_resource_group.aks_rg.name
+      dns_prefix          = "my-aks-cluster"
 
-  default_node_pool {
-    name       = "default"
-    node_count = 3
-    vm_size    = "Standard_DS2_v2"
-  }
+      default_node_pool {
+        name       = "default"
+        node_count = 3
+        vm_size    = "Standard_DS2_v2"
+      }
 
-  tags = {
-    environment = "dev"
-  }
-}
+      tags = {
+        environment = "dev"
+      }
+    }
 
-resource "azurerm_kubernetes_cluster_node_pool" "aks_node_pool" {
-  name                = "my-aks-node-pool"
-  kubernetes_cluster  = azurerm_kubernetes_cluster.aks_cluster.name
-  resource_group_name = azurerm_resource_group.aks_rg.name
-  vm_size             = "Standard_DS2_v2"
-  node_count          = 3
-  os_disk_size_gb     = 30
-  tags = {
-    environment = "dev"
-  }
-}
+    resource "azurerm_kubernetes_cluster_node_pool" "aks_node_pool" {
+      name                = "my-aks-node-pool"
+      kubernetes_cluster  = azurerm_kubernetes_cluster.aks_cluster.name
+      resource_group_name = azurerm_resource_group.aks_rg.name
+      vm_size             = "Standard_DS2_v2"
+      node_count          = 3
+      os_disk_size_gb     = 30
+      tags = {
+        environment = "dev"
+      }
+    }
 
-resource "azurerm_kubernetes_namespace" "aks_namespace" {
-  name                = "my-namespace"
-  depends_on          = [azurerm_kubernetes_cluster.aks_cluster]
-  resource_group_name = azurerm_resource_group.aks_rg.name
-  kubernetes_cluster  = azurerm_kubernetes_cluster.aks_cluster.name
-}
+    resource "azurerm_kubernetes_namespace" "aks_namespace" {
+      name                = "my-namespace"
+      depends_on          = [azurerm_kubernetes_cluster.aks_cluster]
+      resource_group_name = azurerm_resource_group.aks_rg.name
+      kubernetes_cluster  = azurerm_kubernetes_cluster.aks_cluster.name
+    }
 
-output "cluster_name" {
-  value = azurerm_kubernetes_cluster.aks_cluster.name
-}
+    output "cluster_name" {
+      value = azurerm_kubernetes_cluster.aks_cluster.name
+    }
 
-output "namespace_name" {
-  value = azurerm_kubernetes_namespace.aks_namespace.name
-}
+    output "namespace_name" {
+      value = azurerm_kubernetes_namespace.aks_namespace.name
+    }
 
-```
+    ```
 
-</details>
+  </details>
 
-Here is what the mapping looks like in the Harness Infrastructure Definition:
+    Here is what the mapping looks like in the Harness Infrastructure Definition:
 
-<docimage path={require('./static/b399a58dc5fb00b5670df32610747574b0942bcf8c2aba1da3e3a2be568d6106.png')} width="60%" height="60%" title="Click to view full size image" />
+    <docimage path={require('./static/b399a58dc5fb00b5670df32610747574b0942bcf8c2aba1da3e3a2be568d6106.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
-```mdx-code-block
   </TabItem>
   <TabItem value="EKS" label="EKS">
-```
 
-Here's an example of a dynamic provisioning script using Terraform and how to map its namespace output to the required Harness Infrastructure Definition settings for the connection method.
+    Here's an example of a dynamic provisioning script using Terraform and how to map its namespace output to the required Harness Infrastructure Definition settings for the connection method.
 
-<details>
+   <details>
+   <summary>Terraform provisioner example</summary>
 
-		<summary>Terraform provisioner example</summary>
+    ```yaml
 
-```yaml
+    provider "aws" {
+      region = "us-west-2"  # Replace with your desired AWS region
+    }
 
-provider "aws" {
-  region = "us-west-2"  # Replace with your desired AWS region
-}
+    resource "aws_eks_cluster" "eks_cluster" {
+      name     = "my-eks-cluster"
+      role_arn = "arn:aws:iam::YOUR_ACCOUNT_ID:role/YOUR_EKS_CLUSTER_ROLE"  # Replace with your EKS cluster role ARN
 
-resource "aws_eks_cluster" "eks_cluster" {
-  name     = "my-eks-cluster"
-  role_arn = "arn:aws:iam::YOUR_ACCOUNT_ID:role/YOUR_EKS_CLUSTER_ROLE"  # Replace with your EKS cluster role ARN
+      vpc_config {
+        subnet_ids = ["subnet-xxxxxxxx", "subnet-yyyyyyyy"]  # Replace with your desired subnet IDs
+      }
+    }
 
-  vpc_config {
-    subnet_ids = ["subnet-xxxxxxxx", "subnet-yyyyyyyy"]  # Replace with your desired subnet IDs
-  }
-}
+    resource "aws_eks_node_group" "eks_node_group" {
+      cluster_name    = aws_eks_cluster.eks_cluster.name
+      node_group_name = "my-eks-node-group"
+      instance_type   = "t3.medium"  # Replace with your desired instance type
+      desired_size    = 3
+      min_size        = 1
+      max_size        = 5
 
-resource "aws_eks_node_group" "eks_node_group" {
-  cluster_name    = aws_eks_cluster.eks_cluster.name
-  node_group_name = "my-eks-node-group"
-  instance_type   = "t3.medium"  # Replace with your desired instance type
-  desired_size    = 3
-  min_size        = 1
-  max_size        = 5
+      remote_access {
+        ec2_ssh_key = "my-eks-key"  # Replace with the name of your EC2 key pair
+      }
+    }
 
-  remote_access {
-    ec2_ssh_key = "my-eks-key"  # Replace with the name of your EC2 key pair
-  }
-}
+    resource "kubernetes_namespace" "eks_namespace" {
+      metadata {
+        name = "my-namespace"
+      }
 
-resource "kubernetes_namespace" "eks_namespace" {
-  metadata {
-    name = "my-namespace"
-  }
+      depends_on = [
+        aws_eks_cluster.eks_cluster,
+        aws_eks_node_group.eks_node_group,
+      ]
+    }
 
-  depends_on = [
-    aws_eks_cluster.eks_cluster,
-    aws_eks_node_group.eks_node_group,
-  ]
-}
+    output "cluster_name" {
+      value = aws_eks_cluster.eks_cluster.name
+    }
 
-output "cluster_name" {
-  value = aws_eks_cluster.eks_cluster.name
-}
+    output "namespace_name" {
+      value = kubernetes_namespace.eks_namespace.metadata.0.name
+    }
 
-output "namespace_name" {
-  value = kubernetes_namespace.eks_namespace.metadata.0.name
-}
+    ```
 
-```
+   </details>
 
-</details>
+    Here is what the mapping looks like in the Harness Infrastructure Definition:
 
-Here is what the mapping looks like in the Harness Infrastructure Definition:
-
-![picture 5](static/b153b60e4c0071d77951c84c982e0c66923dc2eaa1e42fd659001efb65891993.png)  
+    ![picture 5](static/b153b60e4c0071d77951c84c982e0c66923dc2eaa1e42fd659001efb65891993.png)  
 
 
-```mdx-code-block
   </TabItem>
   <TabItem value="Rancher" label="Rancher">
-```
 
-Here is what the mapping looks like in the Harness Infrastructure Definition:
+    Here is what the mapping looks like in the Harness Infrastructure Definition:
 
-![picture 6](static/b66676514c00face40380bb00b408ccda8aa27b56f2c6e747e252cfaff882280.png)  
+    ![picture 6](static/b66676514c00face40380bb00b408ccda8aa27b56f2c6e747e252cfaff882280.png)  
 
 
-```mdx-code-block
   </TabItem>  
 </Tabs>
-```
 
 
 ## Namespaces
 
 You can use the value of the Infrastructure Definition **Namespace** setting in your manifest.
 
-You reference the **Namespace** setting value in your values YAML using the Harness expression: `\<+infra.namespace\>`.
+You reference the **Namespace** setting value in your values YAML using the Harness expression: `<+infra.namespace>`.
 
 For example, if you entered `default` in **Namespace**, in your values.yaml you can use:
 
@@ -1008,7 +941,7 @@ The **Release name** setting is located in **Advanced** section of the **Cluster
 
 During deployment Harness creates a ConfigMap listing the resources of the release and uses the **Release name** for tracking them.
 
-The **Release name** is a combination of `release-` and a unique string created using the Harness expression `\<+INFRA_KEY\>`.
+The **Release name** is a combination of `release-` and a unique string created using the Harness expression `<+INFRA_KEY>`.
 
 For example, in a Kubernetes deployment you can see `harness.io/release-name=release-2f9eadcc06e2c2225265ab3cbb1160bc5eacfd4f`.
 
@@ -1016,7 +949,7 @@ In Harness, the **Release Name** is displayed in the logs of the deployment step
 
 ![](./static/define-your-kubernetes-target-infrastructure-00.png)
 
-The release name must be unique across the cluster. `release-\<+INFRA_KEY\>` ensures a unique name.
+The release name must be unique across the cluster. `release-<+INFRA_KEY>` ensures a unique name.
 
 `release-` is used as a prefix because Kubernetes service and pod names must follow RFC-1035 and must consist of lowercase alphanumeric characters or '-', start with an alphabetic character, and end with an alphanumeric character.
 

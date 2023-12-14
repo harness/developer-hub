@@ -34,7 +34,7 @@ https://app.harness.io/#/account/{accountid}/home/get-started
 
 
 ```
-curl --location --request GET 'https://app.harness.io/gateway/api/delegate/{yourdelegateId}/delegate-tags?accountId={youraccountId}' \  
+curl --location --request GET 'https://app.harness.io/gateway/api/delegate/{yourdelegateId}/delegate-tags?accountId={youraccountId}'   
 --header 'x-api-key: {api-key}'
 ```
 ### Response
@@ -68,9 +68,9 @@ https://app.harness.io/#/account/{accountid}/home/get-started
 
 
 ```
-curl --location --request POST 'https://app.harness.io/gateway/api/delegate/{yourdelegateId}/delegate-tags?accountId={youraccountId}' \  
---header 'x-api-key: {api-key}' \  
---header 'Content-Type: application/json' \  
+curl --location --request POST 'https://app.harness.io/gateway/api/delegate/{yourdelegateId}/delegate-tags?accountId={youraccountId}'   
+--header 'x-api-key: {api-key}'   
+--header 'Content-Type: application/json'   
 --data-raw '{"tags": ["tag2"]}'
 ```
 ### Response
@@ -105,9 +105,9 @@ https://app.harness.io/#/account/{accountid}/home/get-started
 
 
 ```
-curl --location --request PUT 'https://app.harness.io/gateway/api/delegate/{yourdelegateId}/delegate-tags?accountId={youraccountId}' \  
---header 'x-api-key: {api-key}' \  
---header 'Content-Type: application/json' \  
+curl --location --request PUT 'https://app.harness.io/gateway/api/delegate/{yourdelegateId}/delegate-tags?accountId={youraccountId}'   
+--header 'x-api-key: {api-key}'   
+--header 'Content-Type: application/json'   
 --data-raw '{"tags": ["tag2"]}'
 ```
 ### Response
@@ -141,7 +141,7 @@ https://app.harness.io/#/account/{accountid}/home/get-started
 
 
 ```
-curl --location --request DELETE 'https://app.harness.io/gateway/api/delegate/{yourdelegateId}/delegate-tags?accountId={youraccountId}' \  
+curl --location --request DELETE 'https://app.harness.io/gateway/api/delegate/{yourdelegateId}/delegate-tags?accountId={youraccountId}'   
 --header 'x-api-key: {api-key}'
 ```
 ### Response

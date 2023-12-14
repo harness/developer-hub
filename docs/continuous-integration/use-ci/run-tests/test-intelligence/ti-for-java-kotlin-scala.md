@@ -314,21 +314,21 @@ Add the following to your `build.gradle` to make it compatible with Test Intelli
 // provided through the command line.
 // Local builds will still remain same as it only adds if the
 // parameter is provided.
-tasks.withType(Test) \{
-  if(System.getProperty("HARNESS_JAVA_AGENT")) \{
+tasks.withType(Test) {
+  if(System.getProperty("HARNESS_JAVA_AGENT")) {
     jvmArgs += [System.getProperty("HARNESS_JAVA_AGENT")]
-  \}
-\}
+  }
+}
 
 // This makes sure that any test tasks for subprojects don't
 // fail in case the test filter does not match.
-gradle.projectsEvaluated \{
-        tasks.withType(Test) \{
-            filter \{
+gradle.projectsEvaluated {
+        tasks.withType(Test) {
+            filter {
                 setFailOnNoMatchingTests(false)
-            \}
-        \}
-\}
+            }
+        }
+}
 ```
 
 </details>

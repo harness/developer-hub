@@ -109,7 +109,7 @@ import TabItem from '@theme/TabItem';
       cookiecutter idp-samples/idp-pipelines/cookiecutter-react-app/ app_name="<+pipeline.variables.project_name>" --no-input
 
       # Create repository
-      curl -L -i -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer <+pipeline.variables.github_token>" https://api.github.com/orgs/<+pipeline.variables.github_org>/repos -d "{\"name\":\"<+pipeline.variables.github_repo>\",\"description\":\"<+pipeline.variables.project_name> - A Next.js app\",\"private\":false}"
+      curl -L -i -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer <+pipeline.variables.github_token>" https://api.github.com/orgs/<+pipeline.variables.github_org>/repos -d "{"name":"<+pipeline.variables.github_repo>","description":"<+pipeline.variables.project_name> - A Next.js app","private":false}"
 
       # Push the code
       cd <+pipeline.variables.project_name>/
@@ -128,15 +128,15 @@ import TabItem from '@theme/TabItem';
 
     The script uses several pipeline variables. The variables are as follows:
 
-  - `\<+pipeline.variables.project_name\>`
-  - `\<+pipeline.variables.github_username\>`
-  - `\<+pipeline.variables.github_token\>`
-  - `\<+pipeline.variables.github_org\>`
-  - `\<+pipeline.variables.github_repo\>`
+  - `<+pipeline.variables.project_name>`
+  - `<+pipeline.variables.github_username>`
+  - `<+pipeline.variables.github_token>`
+  - `<+pipeline.variables.github_org>`
+  - `<+pipeline.variables.github_repo>`
 
 Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name shoule match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template. 
 
-For eg: `\<+pipeline.variables.project_name\>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template. 
+For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template. 
 
 ```mdx-code-block
 </TabItem>
@@ -187,15 +187,15 @@ For eg: `\<+pipeline.variables.project_name\>` variable is pre-populated by `pro
 
     The script uses several pipeline variables. The variables are as follows:
   
-  - `\<+pipeline.variables.project_name\>`
-  - `\<+pipeline.variables.gitlab_username\>`
-  - `\<+pipeline.variables.gitlab_token\>`
-  - `\<+pipeline.variables.gitlab_org\>`
-  - `\<+pipeline.variables.gitlab_repo\>`
+  - `<+pipeline.variables.project_name>`
+  - `<+pipeline.variables.gitlab_username>`
+  - `<+pipeline.variables.gitlab_token>`
+  - `<+pipeline.variables.gitlab_org>`
+  - `<+pipeline.variables.gitlab_repo>`
 
   Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name shoule match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template. 
 
-  For eg: `\<+pipeline.variables.project_name\>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template. 
+  For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template. 
 
 ```mdx-code-block
 </TabItem>

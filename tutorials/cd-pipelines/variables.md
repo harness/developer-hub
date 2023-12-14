@@ -79,7 +79,7 @@ You'll notice that variables created at the account, org, or project level suppo
 
 
 5. Navigate to **Deployments > Pipelines > guestbook_canary_pipeline**. Select **YAML > Edit YAML**.
-6. In the **Successful Deployment Message** step, on the **script:** line, replace `\<+pipeline.triggeredBy.name\>` with `\<+variable.account.account_alias\>`.
+6. In the **Successful Deployment Message** step, on the **script:** line, replace `<+pipeline.triggeredBy.name>` with `<+variable.account.account_alias>`.
 7. Select **Save** and then **Run > Run Pipeline**.
 8. After the pipeline completes, verify that the step log message references the value you set for your account level variable.
 
@@ -92,7 +92,7 @@ You'll notice that variables created at the account, org, or project level suppo
 4. Name the variable **region**, leave the value blank, then select **Set variable as required during runtime**. 
 5. Select **Save**, then **Apply Changes**.
 6. In the Pipeline Studio, select **YAML**.
-7. At the bottom of the YAML, in the **variables** block, replace `value: ""` with `value: \<+input\>`. 
+7. At the bottom of the YAML, in the **variables** block, replace `value: ""` with `value: <+input>`. 
 8. In the **Successful Deployment Message** step, modify the **script** line to include the new variable:
 
 ```

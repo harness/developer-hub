@@ -280,26 +280,26 @@ objects:
 - apiVersion: v1  
   kind: ConfigMap  
   metadata:  
-    name: \${WORKLOAD_NAME}  
+    name: ${WORKLOAD_NAME}  
   data:  
-    value: \${CONFIGURATION}  
+    value: ${CONFIGURATION}  
 - apiVersion: v1  
   kind: Secret  
   metadata:  
-    name: \${WORKLOAD_NAME}  
+    name: ${WORKLOAD_NAME}  
   stringData:  
-    value: \${SECRET}  
+    value: ${SECRET}  
 - apiVersion: apps/v1  
   kind: Deployment  
   metadata:  
-    name: \${WORKLOAD_NAME}-deployment  
+    name: ${WORKLOAD_NAME}-deployment  
     labels:  
       secret: ${secrets.getValue("custom-manifest-validation-test-secret")}  
   spec:  
     replicas: 1  
     selector:  
       matchLabels:  
-        app: \${WORKLOAD_NAME}  
+        app: ${WORKLOAD_NAME}  
         param: ${workflow.variables.valueOverride}  
         param1: ${workflow.variables.value1Override}  
         param2: ${workflow.variables.value2Override}  
@@ -309,21 +309,21 @@ objects:
     template:  
       metadata:  
         labels:  
-          app: \${WORKLOAD_NAME}  
-          param: \${PARAM}  
-          param1: \${PARAM1}  
-          param2: \${PARAM2}  
-          param3: \${PARAM3}  
-          param4: \${PARAM4}  
+          app: ${WORKLOAD_NAME}  
+          param: ${PARAM}  
+          param1: ${PARAM1}  
+          param2: ${PARAM2}  
+          param3: ${PARAM3}  
+          param4: ${PARAM4}  
       spec:  
         containers:  
-        - name: \${WORKLOAD_NAME}  
+        - name: ${WORKLOAD_NAME}  
           image:  harness/todolist-sample:11  
           envFrom:  
           - configMapRef:  
-              name: \${WORKLOAD_NAME}  
+              name: ${WORKLOAD_NAME}  
           - secretRef:  
-              name: \${WORKLOAD_NAME}  
+              name: ${WORKLOAD_NAME}  
 parameters:  
 - name: WORKLOAD_NAME  
   description: Workload name  

@@ -70,10 +70,10 @@ To create a plugin, you need to prepare a script, create a Docker image to run t
 You can test your plugin in a local environment by running it as a Docker container. For example, the following Docker command runs the `clone.sh` plugin locally by supplying the required inputs (`PLUGIN_PATH`, `PLUGIN_REPO_URL`, and `PLUGIN_BRANCH`) and specifying the plugin's Docker repo and image (`my-docker-repo/git-clone-plugin`).
 
 ```
-docker run --rm \
- -e PLUGIN_PATH=codebase \
- -e PLUGIN_REPO_URL=https://github.com/<some-account>/<some-repo>.git \
- -e PLUGIN_BRANCH=main \
+docker run --rm 
+ -e PLUGIN_PATH=codebase 
+ -e PLUGIN_REPO_URL=https://github.com/<some-account>/<some-repo>.git 
+ -e PLUGIN_BRANCH=main 
  my-docker-repo/git-clone-plugin
 ```
 
@@ -184,7 +184,7 @@ When defined in a **Plugin** step's **Settings**, don't include the `PLUGIN_` pr
 
 :::tip Expressions and secrets
 
-You can use [Harness expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) for **Settings** values. For example `password: \<+stage.variables.[TOKEN_SECRET]\>` supplies a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables) containing a [secret](/docs/category/secrets) to a setting called `password`.
+You can use [Harness expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) for **Settings** values. For example `password: <+stage.variables.[TOKEN_SECRET]>` supplies a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables) containing a [secret](/docs/category/secrets) to a setting called `password`.
 
 Related to this, it is a best practice to use [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords and tokens, required by plugins.
 

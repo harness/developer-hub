@@ -28,7 +28,7 @@ The following table lists the naming conventions for the different variable name
 | Application Defaults | app.defaults | `${app.defaults.MyApp}` |
 | Application | app | `${app.name}` |
 | Artifact | artifact | `${artifact.displayName}` |
-| Service | service | `${service.name}`, `${serviceVariable.``*variable\_name*``}` |
+| Service | service | `${service.name}`, `${serviceVariable.``*variable_name*``}` |
 | Environment | env | `${env.description}` |
 | Workflow | workflow | `${workflow.lastGoodDeploymentDisplayName}` |
 | Infrastructure Definition | infra | `${infra.name}`,`${infra.route}`, `${infra.kubernetes.namespace}`, `${infra.pcf.route}` |

@@ -130,7 +130,7 @@ Must consist of only alphabetical characters, numbers, and the following symbols
 The characters can be lowercase or uppercase but cannot include accented letters, for example `Cafe_789`.  
   
 **Name**
-Regex: `^[\\p{L}\\d .@_-]*$`  
+Regex: `^[p{L}d .@_-]*$`  
   
 Must consist of only alphabetical characters, numbers, and the following symbols:  
 . (period)  

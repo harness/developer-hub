@@ -61,7 +61,7 @@ The AWS authenticator packaged with Harness GitOps Agent uses the OIDC provider 
 
    `AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)`
 
-   `OIDC_PROVIDER=$(aws eks describe-cluster --name management --query "cluster.identity.oidc.issuer" --output text | sed -e "s/^https:\/\///")`
+   `OIDC_PROVIDER=$(aws eks describe-cluster --name management --query "cluster.identity.oidc.issuer" --output text | sed -e "s/^https:////")`
 2. Create a `trust.json` file with the variables you set in the previous step. 
      
    You must reference the namespace on which you will deploy your GitOps Agent so that all cluster roles can assume the IAM role you'll create in the next step.
@@ -138,11 +138,11 @@ Go to [Installing a GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/in
 1. Annotate the Kubernetes service accounts the Agent used with the ARN of the role to instruct the GitOps Agent to use the role you defined earlier.
 
    ```
-   kubectl -n iam patch serviceaccount argocd-application-controller --type=json \
-   -p="[{\"op\": \"add\", \"path\": \"/metadata/annotations/eks.amazonaws.com~1role-arn\", \"value\": \"arn:aws:iam::${AWS_ACCOUNT_ID}:role/ArgoCD\"}]"
+   kubectl -n iam patch serviceaccount argocd-application-controller --type=json 
+   -p="[{"op": "add", "path": "/metadata/annotations/eks.amazonaws.com~1role-arn", "value": "arn:aws:iam::${AWS_ACCOUNT_ID}:role/ArgoCD"}]"
 
-   kubectl -n iam patch serviceaccount gitops-agent --type=json \
-   -p="[{\"op\": \"add\", \"path\": \"/metadata/annotations/eks.amazonaws.com~1role-arn\", \"value\": \"arn:aws:iam::${AWS_ACCOUNT_ID}:role/ArgoCD\"}]"
+   kubectl -n iam patch serviceaccount gitops-agent --type=json 
+   -p="[{"op": "add", "path": "/metadata/annotations/eks.amazonaws.com~1role-arn", "value": "arn:aws:iam::${AWS_ACCOUNT_ID}:role/ArgoCD"}]"
    ```
 
    It is important that the annotations show the correct ARN of the ArgoCD role otherwise the Agent won't know which IAM role to assume. 
@@ -160,10 +160,10 @@ Go to [Installing a GitOps Agent](/docs/continuous-delivery/gitops/use-gitops/in
    The IAM authenticator tries to mount a secret on `/var/run/secrets/eks.amazonaws.com/serviceaccount/token`. If the correct `fsGroup` (999 corresponds to the ArgoCD user) isn't set, it will fail.
 
    ```
-   kubectl -n iam patch deployment gitops-agent --type=json  \
+   kubectl -n iam patch deployment gitops-agent --type=json  
    -p='[{"op": "add", "path": "/spec/template/spec/securityContext/fsGroup", "value": 999}]'
 
-   kubectl -n iam patch statefulset argocd-application-controller --type=json \
+   kubectl -n iam patch statefulset argocd-application-controller --type=json 
    -p='[{"op": "add", "path": "/spec/template/spec/securityContext/fsGroup", "value": 999}]'
    ```
 

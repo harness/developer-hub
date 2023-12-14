@@ -479,9 +479,9 @@ The following steps require a private registry, just like the initial installati
 2. Run the following command on the VM(s) hosting Harness, replacing the placeholders:
 
 ```
-kubectl kots upstream upgrade harness \   
---airgap-bundle <path to harness-<version>.airgap> \   
---kotsadm-namespace harness-kots \   
+kubectl kots upstream upgrade harness    
+--airgap-bundle <path to harness-<version>.airgap>    
+--kotsadm-namespace harness-kots    
 -n default
 ```
 #### Upgrade Embedded Kubernetes Cluster and KOTS

@@ -108,7 +108,7 @@ In **Command**, enter POSIX shell script commands to execute inside the containe
 For example, a command that checks the Java version installed on the system and verifies if it is equal to 17.
 
 ```
-JAVA_VER=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1\./s///' | cut -d'.' -f1)
+JAVA_VER=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1./s///' | cut -d'.' -f1)
 if [[ $JAVA_VER == 17 ]]; then
   echo successfully installed $JAVA_VER
 else

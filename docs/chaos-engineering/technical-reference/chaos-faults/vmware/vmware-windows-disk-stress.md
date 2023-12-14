@@ -259,7 +259,7 @@ spec:
           value: 'test-vm-01'
        # Path of disk to apply stress
         - name: DISK_PATH 
-          value: 'C:\\'
+          value: 'C:'
 ```
 
 ### Path of Diskspd
@@ -287,5 +287,5 @@ spec:
           value: 'test-vm-01'
        # Path of the Diskspd tool in the VM
         - name: PATH_OF_DISKSPD 
-          value: 'C:\\Program Files\\Diskspd\\'
+          value: 'C:Program FilesDiskspd'
 ```

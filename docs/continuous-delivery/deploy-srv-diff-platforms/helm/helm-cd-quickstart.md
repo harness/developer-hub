@@ -87,7 +87,7 @@ Here's a summary of the process:
 
 1. Harness fetches the manifests from your Helm repository onto the Harness delegate.
 2. Harness unzips the chart and runs a `helm template` over the Kubernetes resources packaged in the Helm chart. 
-3. On the same Harness delegate, or a delegate that has access to the target Kubernetes Cluster, Harness will proceed to deploy using the `kubectl apply -f \<+kubernetes.resource.yml\>`.  
+3. On the same Harness delegate, or a delegate that has access to the target Kubernetes Cluster, Harness will proceed to deploy using the `kubectl apply -f <+kubernetes.resource.yml>`.  
 4. After the deployment, Harness will manage and track the deployed Helm chart via the **Release Name**.
 
 
@@ -255,7 +255,7 @@ This limitation is imposed by [Helm](https://helm.sh/docs/chart_template_guide/g
 
 To resolve this issue, please ensure that your release name falls within the 53 character range. 
 
-You can achieve this by using the following expression in **Release Name** to shorten the release name: `\<+<+INFRA_KEY\>.substring(0,7)>`.
+You can achieve this by using the following expression in **Release Name** to shorten the release name: `<+<+INFRA_KEY>.substring(0,7)>`.
 
 ### Troubleshoot 401 Not Authorized issue with Helm connector
 

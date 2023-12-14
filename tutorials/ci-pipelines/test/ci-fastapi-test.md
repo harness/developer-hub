@@ -82,7 +82,7 @@ Optionally, you can build the project and test it locally before running tests i
 4. Activate the virtual environment.
 
    * Linux or macOS: `source test-env/bin/activate`
-   * Windows: `.\test-env\Scripts\activate`
+   * Windows: `.test-envScriptsactivate`
 
 5. Install dependencies.
 

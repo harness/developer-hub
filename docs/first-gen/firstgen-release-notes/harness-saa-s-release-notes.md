@@ -753,17 +753,17 @@ Delegate version: 23.01.78100
   
   You can retrieve the value of the collectionEnabled field for an Artifact Source using GraphQL APIs, like in the example below:
   ```
-    \{
-      services(limit: 5) \{
-        nodes \{
+    {
+      services(limit: 5) {
+        nodes {
           name
-          artifactSources \{
+          artifactSources {
             name
             collectionEnabled
-          \}
-        \}
-      \}
-    \}	
+          }
+        }
+      }
+    }	
   ```
   
 - Delegate tasks are now limited based on account. (DEL-5371)
@@ -844,7 +844,7 @@ Delegate version: 22.12.77802
 - For information about compatibility between Harness Manager and delegate versions, query the new `supportedDelegate` endpoint. Include your account ID (`accountId`) in the request URL as shown in the following example. Specify your API key in the `x-api-key` field of the request header. (DEL-5019)
 
   ```
-  curl -X GET 'https://app.harness.io/api/version/supportedDelegate?accountId=<> \
+  curl -X GET 'https://app.harness.io/api/version/supportedDelegate?accountId=<> 
   -H 'x-api-key: <api-key>'
   ```
 
@@ -865,7 +865,7 @@ Delegate version: 22.12.77802
 * Users are not added to the user groups through SCIM when the authentication mechanism is username and password. (PL-30124)  
 A notification email is sent to the users instead of an email invite and the system throws an exception.  
 Sending an email invite has fixed this issue and the users are now added to the user groups.
-* Rollback artifact number (`$\{rollbackArtifact.buildNo\}`) is coming as null (CDS-47328, ZD-37309)  
+* Rollback artifact number (`${rollbackArtifact.buildNo}`) is coming as null (CDS-47328, ZD-37309)  
 Fixed a problem where incorrect metadata was being populated into executions after updating the environment's infra definitions.  
 For more information, go to [Artifact Rollback Variables](../firstgen-platform/techref-category/variables/built-in-variables-list.md#artifact-rollback-variables).
 * **Rollback Deployment** button incorrectly showing Not Authorized (CDS-17420)  
@@ -1028,7 +1028,7 @@ Delegate: 77021
 When an Approval step is approved via API, the email address of the approver is now displayed in the deployment:![](./static/harness-saa-s-release-notes-03.png)
 * The GraphQL mutation for approve or reject approvals now has a new input field for user email address. (PL-24488, ZD-28025)  
 If this field is provided when approving or rejecting, it appears in the approval details.  
-Additionally, the feature flag SPG\_ENABLE\_EMAIL\_VALIDATION is now present. When this feature flag is enabled, the user email address in the GraphQL mutation must map to a user who belongs to the allowed user groups selected for the approval step.
+Additionally, the feature flag SPG_ENABLE_EMAIL_VALIDATION is now present. When this feature flag is enabled, the user email address in the GraphQL mutation must map to a user who belongs to the allowed user groups selected for the approval step.
 
 #### Fixed issues
 
@@ -1056,7 +1056,7 @@ Delegate: 76810
 * Deployed a separate field for the Immutable Delegate version on ring. (DEL-4911)
 * The secret dropdown component which has a separate link alongside **Create new secret** was not working at a few places (LDAP, Connector). This issue is fixed now. Clicking the button opens the create a new secret modal.​ (PL-27901)
 * Update Jira step failing (CDS-43409)  
-Fixed a bug where time tracking fields were not working when the ALLOW\_USER\_TYPE\_FIELDS feature flag was enabled.
+Fixed a bug where time tracking fields were not working when the ALLOW_USER_TYPE_FIELDS feature flag was enabled.
 * ECS Service Definition is not getting copied while cloning an ECS Service (CDS-43205, ZD-34533)  
 Now when cloning an ECS Service, we clone the Service Definition as well.
 * Artifactory Helm Failure (CDS-43084, ZD-34437)  
@@ -1085,7 +1085,7 @@ API key authentication was introduced for the following endpoints:
 
 * Looping variable expansions were not consistent in Pipelines. (PIE-4769)  
 This is fixed now by adding a new expression to get the total alterations:  
-`\<+strategy.totalIterations\>​`
+`<+strategy.totalIterations>​`
 * Sorting by Date not working in Service Dashboard (CDS-42122, ZD-33767)  
 Sorting in the Services dashboard was not working for a specific Service. This issue has been fixed. Sorting works as expected for all columns in the Services dashboard.
 * Terraform apply fails intermittently with IO Failure (CDS-40336, ZD-32237)  
@@ -1164,7 +1164,7 @@ Slack approval was not working in the workflow execution steps for Prod 1 accoun
 * Manager taking too much time to assign a task (CDS-41999) (Zendesk Ticket ID 33514)  
 API access type for GitLab connector was not being populated. This issue has been fixed.
 * Trigger on Last Deployed Artifact is Failing to Find Artifact (CDS-41896) (Zendesk Ticket ID 33547)    
-Triggered pipeline was unable to fetch artifacts from parent pipeline earlier when FF RTIFACT\_COLLECTION\_CONFIGURABLE was enabled . This issue has been fixed.
+Triggered pipeline was unable to fetch artifacts from parent pipeline earlier when FF RTIFACT_COLLECTION_CONFIGURABLE was enabled . This issue has been fixed.
 * Trigger on Last Deployed Artifact is Failing to Find Artifact - Harness doesn't account for different service if workflow is templatized (CDS-41832) (Zendesk Ticket ID 33449)  
 This issue has been fixed. You can now find the artifacts from last deployed workflow or pipeline with the same service as the triggered workflow by enabling the added feature flag.
 * Jira approval step was still waiting although Jira status was changed to Approve criteria (CDS-41567) (Zendesk Ticket ID 33416).  
@@ -1217,7 +1217,7 @@ Workflow variables that uses secret variables and are referenced in Pipelines ar
 * NPE/MalFormedUrlException when artifact URL incorrect for Tanzu (PCF) deployment (CDS-41357, ZD-32975)  
 Throw exception if the Nexus artifact URL is empty
 * Fix migration in CDS-37079 (CDS-41232)  
-New fields parent\_pipeline\_id and created\_by\_type fields in timescaledb.
+New fields parent_pipeline_id and created_by_type fields in timescaledb.
 * Terraform Destroy step is not changing after any change in UI (unchecking "Inherit from last successful Terraform Apply") (CDS-40195, ZD-32538)
 
 ### August 18, 2022, version 76303
@@ -1233,7 +1233,7 @@ New fields parent\_pipeline\_id and created\_by\_type fields in timescaledb.
 #### Enhancements
 
 * Added native support to Amazon Managed Service for Prometheus (SRM-4207)
-* Upgrade org.apache.cxf\_cxf\_core to version 3.4.7 (DEL-4575). This issue has been fixed.
+* Upgrade org.apache.cxf_cxf_core to version 3.4.7 (DEL-4575). This issue has been fixed.
 * Upgrade org.bouncycastle:bcprov-exte-jdk15on to version 1.70 (DEL-4433)
 * Users wants to be able to set the Task Count to 0 (CDS-39790).
 	+ You can fill 0 value in ECS deployments' fixed instances count. This is implemented with a feature flag `FIXED_INSTANCE_ZERO_ALLOW`.
@@ -1244,12 +1244,12 @@ New fields parent\_pipeline\_id and created\_by\_type fields in timescaledb.
 
 * Delegates are not picking up tasks because of redis connection errors (DEL-4617). This issue has been fixed.
 * Unable to deploy 401 Forbidden/ 403 for accessing Harness ConfigMap - delegate start script. Examine the environment variables and automatically add the master IP if that env var exists (DEL-3251)
-	+ Proxy configured for a delegate will not work on kubernetes master ip. The delegate cannot access KUBERNETES\_SERVICE\_HOST without proxy even if proxy has been configured for delegate.
+	+ Proxy configured for a delegate will not work on kubernetes master ip. The delegate cannot access KUBERNETES_SERVICE_HOST without proxy even if proxy has been configured for delegate.
 * UI slowness when editing a hidden variable override (PL-26345)
 	+ The VariableOverrides component was slow to load EncryptedText (secrets) due to fetching a large number of them from backend. This issue has been resolved. You should be able to edit variables without any noticeable delay and save the overriden variables. This feature has the feature flag `USE_PAGINATED_ENCRYPT_FOR_VARIABLE_OVERRIDES`.
 * Watcher Stackdriver logging not coming up in QA and Prod1 (DEL-4597)
 	+ Missing dependencies were added to the watcher.
-* Even after setting yaml as POLL\_FOR\_TASKS = true, delegate is coming up with pollForTasks=false (DEL-4571)
+* Even after setting yaml as POLL_FOR_TASKS = true, delegate is coming up with pollForTasks=false (DEL-4571)
 	+ The config-delegate.yml in delegate.sh was being overwritten due to the setting in start. sh not being preserved. This issue has has been fixed.
 * Delegate Download URl is incorrect and not working (DEL-4545)
 	+ This issue has been fixed.
@@ -1339,7 +1339,7 @@ The discovery process for immutable Delegates is limited to checking the followi
 * Javascript Error Trying to add AMI Artifact Source (CDS-40416)
 	+ The feature was facing a empty enum error that was happening in certain artifact forms. We have added the empty check for the enum and now the tag creation should work fine following the normal flow.
 * tfPlan files are saved/uploaded and not deleted from KMS (CDS-40341, ZD-31827, ZD-32632)
-	+ If new FF is enabled ANALYSE\_TF\_PLAN\_SUMMARY then there are expressions available after Terrafrom Plan step:
+	+ If new FF is enabled ANALYSE_TF_PLAN_SUMMARY then there are expressions available after Terrafrom Plan step:
 		- ${terraformApply.add}
 		- ${terraformApply.change}
 		- ${terraformApply.destroy}
@@ -1349,16 +1349,16 @@ The discovery process for immutable Delegates is limited to checking the followi
 		- ${terraformDestroy.destroy}
 	+ And if there are not changes then the Plan will not get uploaded to the configured Secret Manager (regardless of the checked export option in the Plan step).
 * AWS Cloud Provider is not being populated in InfraDef (CDS-40271, ZD-31625)
-	+ The change is released under the new FF: EXTRA\_LARGE\_PAGE\_SIZE, which will basically increase the max count from 1200 to 3000.
+	+ The change is released under the new FF: EXTRA_LARGE_PAGE_SIZE, which will basically increase the max count from 1200 to 3000.
 * User seeing UI issue when loading long deployment filter list (CDS-40182, ZD-32587)
 * Terraform Apply job is completing successfully but returning an unknown error (CDS-40083, ZD-31714)
 	+ Added warning message in case restricted output names are used for Terraform Publish variable names.
 * Chart manifest collection is failing (CDS-40054, ZD-32179)
 	+ Chart manifest collection step was failing during deployment since we were trying to update app version and it was null for the customer's helm chart. Have made a fix to skip updating the database in that case. Now manifest collection step succeeds even in that case.
 * Config-As-Code YAML will not generate upon invalid User Group ID (CDS-39770, ZD-32247, ZD-32379)
-	+ For customers facing issues with usergroup in pipeline yamls we have created feature flag REMOVE\_USERGROUP\_CHECK to help them correct yamls from yaml editor.
+	+ For customers facing issues with usergroup in pipeline yamls we have created feature flag REMOVE_USERGROUP_CHECK to help them correct yamls from yaml editor.
 * The Deployment Freeze windows are not getting filtered in the audit trails (CDS-39752)
-	+ Changed value from AccountResourceType.GOVERNANCE to AccountResourceType.DEPLOYMENT\_FREEZE as we were receiving DEPLOYMENT\_FREEZE in API call
+	+ Changed value from AccountResourceType.GOVERNANCE to AccountResourceType.DEPLOYMENT_FREEZE as we were receiving DEPLOYMENT_FREEZE in API call
 * Check Common Parameters for blank inputs and better error logging (WinRM) (CDS-39586, ZD-32289)
 	+ Added fix to throw exception "WinRM Command Parameters cannot be empty. Please remove the empty WinRM Command Parameters pairs" when the user tries to submit WinRM Command Parameters with both parameter and value as empty. Also to handle those empty parameter pairs which are already present now - we will skip them while traversing command parameters and thus the code will not throw InvalidArgument error.
 * NPE thrown in Tanzu (PCF) app resize step when app Failed to reach steady state (CDS-39556)
@@ -1416,7 +1416,7 @@ The discovery process for immutable Delegates is limited to checking the followi
 * UI changes for CDS-2992 (CDS-36735)
 	+ Displayed the service artifact version and enhanced the design on hovering over the details.
 * Workflow Step level failure strategy not being honoured when Workflow level strategy is Ignore (CDS-32524)
-	+ Implemented rollback Workflow on step failure strategy behind a Feature Flag ENABLE\_EXPERIMENTAL\_STEP\_FAILURE\_STRATEGIES.
+	+ Implemented rollback Workflow on step failure strategy behind a Feature Flag ENABLE_EXPERIMENTAL_STEP_FAILURE_STRATEGIES.
 * Create tags are not displayed in the Audit Trail for Workflow and Infra that have been created via cloning (CDS-24569)
 	+ Added create tags for Workflows that were created via cloning.
 
@@ -1439,7 +1439,7 @@ The discovery process for immutable Delegates is limited to checking the followi
 #### Fixed issues
 
 * GraphQL executions using API key fail with user not authorized error, but are working when the same user is logged in (PL-26261)
-* Invalid SSO suddenly when enabling the FF AZURE\_SAML\_150\_GROUPS\_SUPPORT + inputting client-id + secret (PL-26215, ZD-31704)
+* Invalid SSO suddenly when enabling the FF AZURE_SAML_150_GROUPS_SUPPORT + inputting client-id + secret (PL-26215, ZD-31704)
 	+ Added logs for SamlAuthBasedHandler.
 * NullPointerException while creating service using CAC API (PL-24964, ZD-29601, ZD-29900)
 * Pipeline service restart during deployment (PIE-4092)
@@ -1448,7 +1448,7 @@ The discovery process for immutable Delegates is limited to checking the followi
 * Delegate WebSocket connection does not reconnect (DEL-4269, ZD-31018, ZD-31589, ZD-31849)
 	+ Delegate makes a WebSocket connection to manager for communication regarding Delegate tasks. If the WebSocket is closed violently then there existed a race where the Delegate wasn't retrying to make the connection again. This led the Delegate restarting after a few minutes. This fixes that race so that Delegate reconnects faster in case of network glitch.
 * User is getting "Unauthorized" when trying to create a Trigger (CDS-39740, ZD-32239)
-	+ Customers who had feature flag PIPELINE\_PER\_ENV\_DEPLOYMENT\_PERMISSION enabled can now work with Trigger creation with templated Pipeline.
+	+ Customers who had feature flag PIPELINE_PER_ENV_DEPLOYMENT_PERMISSION enabled can now work with Trigger creation with templated Pipeline.
 * Hotfix for artifactory issue (CDS-39432)
 * Environments dropdown is not loading in Compare Environments modal in services and serverless dashboards (CDS-39429)
 * Update artifact details from deployment summary while saving instance in database (CDS-39369)
@@ -1504,7 +1504,7 @@ Added search and paginated responses using infinite scroll.
 Now upsert-entity api will return 400 in case of failure.
 * Need to add mailTemplates in Delegate JAR (DEL-4403, ZD-31746, ZD-31898, ZD-31917, ZD-31986, ZD-31990)  
 SMTP services sending emails using Delegates were not going due to a regression. This change fixes it.
-* K8S\_COMMAND\_TASK does not execute on the Delegate because Delegate has 2 min limit to decrypt remote secrets and there are more than 100 secrets to decrypt (DEL-4399, ZD-32084)  
+* K8S_COMMAND_TASK does not execute on the Delegate because Delegate has 2 min limit to decrypt remote secrets and there are more than 100 secrets to decrypt (DEL-4399, ZD-32084)  
 Increased timeout for network calls from Delegate as task acquire call is timing out before completion when there are more than 100 secrets to decrypt.
 * Delegate warning, Delegate received unhandled message (DEL-4393)
 * Delegate token name is not being saved in Delegate collection (DEL-4384)
@@ -1534,7 +1534,7 @@ Fixed a bug where big artifacts list was not being trimmed down at Slack message
 User Group could have been deleted even when they were part of Runtime Input in an execution stage of a Pipeline. Going forward the user cannot be deleted if they are present as runtime input in a Pipeline stage.
 * Terragrunt Destroy Version issue (CDS-38662, ZD-31506)  
 Now you can use Terragrunt Destroy Step even with underlying Terraform version > 15.0.0. Internally, -force and -auto-approve flag will be used based on underlying Terraform version as -force flag is not supported in Terraform version > 15.0.0.
-* /opt/harness-delegate has many manifest-collection-\* folders with empty directories that are created constantly (CDS-38543, ZD-30994)  
+* /opt/harness-delegate has many manifest-collection-* folders with empty directories that are created constantly (CDS-38543, ZD-30994)  
 Manifest collection directory is changed from /manifest-collection-{app-manifest-id}/ to /manifest-collection/{app-manifest-id} to reduce clutter in home folder.
 * Auto-rejection popup displayed when Workflow should reject automatically (CDS-38525)  
 While picking previous approvals to reject with auto-reject previous approvals feature, only Workflows waiting on same Approval step were considered.
@@ -1593,7 +1593,7 @@ The following new features are added to the Harness SaaS components:
 * Not using Helm version 3.8 when doing test connection for Helm connector (CDS-37554)
 * [Built-in Variables] Looks similar to CDS-24583 - rollbackArtifact variables equal to 'null' (CDS-36700, ZD-30120)
 * Issues with deployments when a Harness Manager is restarted (CDS-36559, ZD-18501, ZD-29096)
-	+ We added a monitor to detect when a workflow has an active status, is stuck in a not execution step, and for more than 45 minutes. The REPEAT, FORK, PHASE\_STEP, PHASE, and SUB\_WORKFLOW are considered not execution steps. This feature is behind FF named WORKFLOW\_EXECUTION\_ZOMBIE\_MONITOR.
+	+ We added a monitor to detect when a workflow has an active status, is stuck in a not execution step, and for more than 45 minutes. The REPEAT, FORK, PHASE_STEP, PHASE, and SUB_WORKFLOW are considered not execution steps. This feature is behind FF named WORKFLOW_EXECUTION_ZOMBIE_MONITOR.
 	+ Two info level log messages are added to help in future troubleshooting:
 		- Evaluating if workflow execution {} is a zombie execution [workflowId={}] – Printed when monitor found a stuck/zombie candidate.
 		- Trigger force abort of workflow execution {} due remains in a zombie state [currentStateType={}] – Printed when is detected the zombie conditions, running for more than 10 minutes in a not execution step.
@@ -1619,7 +1619,7 @@ The following new features are added to the Harness SaaS components:
 
 * Ensure Delegate version is valid till next Delegate release (DEL-4198)
 * Support for Custom Artifact with no artifact polling to be enabled for Custom deployment type (CDS-34235, ZD-28100)
-	+ Custom artifact source script can be made empty now. If the script is empty, the deployment proceeds with the version customer provides and the same details are available in the artifact variable which can be accessed using `$\{artifact.*\}`.
+	+ Custom artifact source script can be made empty now. If the script is empty, the deployment proceeds with the version customer provides and the same details are available in the artifact variable which can be accessed using `${artifact.*}`.
 
 #### Issues Fixed
 
@@ -1634,7 +1634,7 @@ The following new features are added to the Harness SaaS components:
 * UI rendering issue on service page (CDS-38586, ZD-31435)
 * Continue execution API fails with an error occurred (CDS-38523)
 * ECS BG DNS switch workflows, I try to open “Setup Route 53”, it fails with error related to uid (CDS-38500)
-* FETCH\_S3\_FILE\_TASK fails in Manager with UNKNOWN error (CDS-38475, ZD-31300)
+* FETCH_S3_FILE_TASK fails in Manager with UNKNOWN error (CDS-38475, ZD-31300)
 * In manual pull window, the auto collection enabled artifact sources were not listed. (CDS-38473)
 * Start New Deployment (Workflow) Returns only 1000 workflows (CDS-38466, ZD-31355)
 * Even if I increase the width of the column, the text remains stripped (CDS-38436, ZD-31320)
@@ -1683,13 +1683,13 @@ The following new features are added to the Harness SaaS components:
 * JDK8 Watcher keeps restarting with JDK11 delegate (DEL-4041)
 * UI Issue - On adding config file in service and clicking manage version window button not listing any env. Added the fetchOneApp api responsible for it (CDS-38420)
 * [S3 or GS Based Helm Repo] Multiple Customers reporting - Chartmuseum on the Delegate seems to be on stalled state, so port is always in use. Fixed retry logic to start chart museum server in case the port is already in use. (CDS-38135, ZD-31129)
-* Artifact collection with FF 'DISABLE\_ARTIFACT\_COLLECTION' on - Nexus3 artifact collection is failing with Nexus 3.x does not support getVersion for parameterized artifact stream (CDS-38030)
+* Artifact collection with FF 'DISABLE_ARTIFACT_COLLECTION' on - Nexus3 artifact collection is failing with Nexus 3.x does not support getVersion for parameterized artifact stream (CDS-38030)
 * Erorr Handling for null stateFile in TerragruntProvsionTask (CDS-38028)
 * Artifact History option is not shown for already auto collection artifact sources when we enable the FF (CDS-37958)
 * For docker artifact streams, changing collection value from yaml doesn't work. (CDS-37956)
 * Deployment Permissions for a Specific Pipeline (CDS-37918, ZD-30951)
 * K8s Delete task fails with timeout which is greater than configured timeout (CDS-37917, ZD-30898)
-* ConfigMaps quota limit marking all previous inProgress releases as Failed. Behind FF CLEANUP\_INCOMPLETE\_CANARY\_DEPLOY\_RELEASE (CDS-37877, ZD-30906)
+* ConfigMaps quota limit marking all previous inProgress releases as Failed. Behind FF CLEANUP_INCOMPLETE_CANARY_DEPLOY_RELEASE (CDS-37877, ZD-30906)
 * AWS Secret Manager not using Delegate Selector for Pulling Secret. Added the execution capability of SM to verify the eligibility of delegate to access the SM. (CDS-37797, ZD-30884)
 * Missing Git File error for CloudFormation from GIT does not surface to the Deployment Logs (CDS-37670, ZD-30781)
 * Manage gets No delegate task found made timeout as required field (CDS-37524, ZD-30412)
@@ -1733,14 +1733,14 @@ The following new features are added to the Harness SaaS components:
 * Vault SSH secret engine E2E tests (PL-25237)
 * Test Conn fails for existing Ldap connection but functionality works fine and even test conn works after password update (PL-25186)
 * GCB Triggers call is failing with KryoException: java.lang.IllegalArgumentException: Class is not registered (DEL-4050)
-* Watcher throwing null pointer exception on DELEGATE\_SHUTDOWN\_TIMEOUT. Handle null value scenario while reading delegate data. Watcher was into a loop of reading delegate data, couldn't make progress because of this NPE. Fixed the code path by making correct assumptions. (DEL-4039)
+* Watcher throwing null pointer exception on DELEGATE_SHUTDOWN_TIMEOUT. Handle null value scenario while reading delegate data. Watcher was into a loop of reading delegate data, couldn't make progress because of this NPE. Fixed the code path by making correct assumptions. (DEL-4039)
 * delegateScopeList API Call not working. Fixing the bug of listing delegate scopes when the environment is not provided (DEL-3991, ZD-30462)
 * Triggers fail when optional input of type allowed values is not passed in the payload. Issue scenario:
 	+ If customer had an optional workflow variable with some allowed values, and the value was not provided for that workflow variable in trigger payload, trigger executions starting failing with error: Trigger rejected because a passed workflow variable was not present in allowed values. What happened: Allowed values validation was added in triggers flow where we started checking if variables value is present in allowed value list or not. This check started happening for optional workflow variables as well whose values were not provided and this broke triggers flow. Fix: Changed the validation to only occur when variable value is provided in trigger.
 		- (CDS-37510, ZD-30760, ZD-30769, ZD-30773, ZD-30777, ZD-30782, ZD-30797, ZD-30798, ZD-30810, ZD-30812)
 * CDP QA Sign-off 75100 Failures (CDS-37310)
 * Bamboo step is failing and delegate is throwing Class is not registered: software.wings.delegatetasks.BambooTask$BambooExecutionResponse execption (CDS-37264, ZD-30567)
-* [SSH Step - Download Artifact] - NPE - DownloadArtifactCommandUnit.java - gives UNKNOWN\_ERROR on the UI NA (CDS-37193, ZD-30299, ZD-30498, ZD-30499)
+* [SSH Step - Download Artifact] - NPE - DownloadArtifactCommandUnit.java - gives UNKNOWN_ERROR on the UI NA (CDS-37193, ZD-30299, ZD-30498, ZD-30499)
 * BE - Cannot Select all User Groups in Freeze Window same (CDS-36681)
 * Cannot Select all User Groups in Freeze Window. We were not supporting selecting all the user group and user had to click one my one to select all user group if he wants to notify all. Going forward we can select "ALL" option to notify all at once. (CDS-36556, ZD-29926)
 * Artifactory incorrectly regenerates/reads the artifact path - AWS Lambda (CDS-36045)
@@ -1791,20 +1791,20 @@ The following new features are added to the Harness SaaS components:
 * Workflows failing due to invalid Delegate Task Mapping [SSH and WinRM]. (CDS-36733)
 * Kyro exception seen in the QA manager logs for Jenkins server while fetching builds information. (CDS-36729)
 * Workflow variable is not resolving in manifest variable reference: surface that ChartMuseum failed to start and no values.yaml fetch occurred. (CDS-36728, ZD-30077)
-* Status of a workflow in WAITING status is returned as RUNNING when using either graphql or rest api. When using REST or GraphQL the workflow execution status return a value different of the UI. To get the current status value is required to transpose the execution tree and this take sometime, this refresh status operation is behind a FF named WORKFLOW\_EXECUTION\_REFRESH\_STATUS. (CDS-36623, ZD-29921)
-* SSH connection is failing with SOCKET\_CONNECTION\_TIMEOUT. (CDS-36616, ZD-29683)
+* Status of a workflow in WAITING status is returned as RUNNING when using either graphql or rest api. When using REST or GraphQL the workflow execution status return a value different of the UI. To get the current status value is required to transpose the execution tree and this take sometime, this refresh status operation is behind a FF named WORKFLOW_EXECUTION_REFRESH_STATUS. (CDS-36623, ZD-29921)
+* SSH connection is failing with SOCKET_CONNECTION_TIMEOUT. (CDS-36616, ZD-29683)
 * Error when editing a Cron-based Trigger where the existing cron value is now in the past. Trigger editing problem with cronjob, where frontend was sending an unused field with a value that was exceeding the Long max value from java. The field was marked to be ignored by the backend. (CDS-36570, ZD-29822, ZD-30469)
 * Workflow won't abort, showing up as paused. Change TTL of WaitInstance to 90 days, and add a log when a WaitInstance is not found to help us in future troubleshooting. (CDS-36568, ZD-29994)
 * Azure WebApp deployments are failing due to Timeout in Swap Slot step. Checking the success of Slot swap step during Azure WebApp deployments has been improved. (CDS-36236)
 * Custom Approval Step - Shell Script - Secret exposed. (CDS-36154, ZD-29588)
-* JENKINS\_GET\_JOB task not listing all Jenkins job. Fixed an issue where manager could not connect to Delegates with scopes related to application. (CDS-35628, ZD-29044, ZD-29114)
-* Unclear Error message on Fetch Instance MARK\_EXPIRED. Added a proper message when aborting fetch instance step. (CDS-35519, ZD-29062)
+* JENKINS_GET_JOB task not listing all Jenkins job. Fixed an issue where manager could not connect to Delegates with scopes related to application. (CDS-35628, ZD-29044, ZD-29114)
+* Unclear Error message on Fetch Instance MARK_EXPIRED. Added a proper message when aborting fetch instance step. (CDS-35519, ZD-29062)
 * Concurrent Execution of Create AMI Stack fails upon Select Nodes. We fixed certain workflows which use AWS Infrastructure with Tags that were getting in a race condition if tags are provided as an expression. This also resolved the incorrect instance counts for such services. (CDS-35152, ZD-29973)
 * Helm Native deployment fails when delegate scope limited is configured. (CDS-34255, ZD-27722)
 * Usergroup is getting deleted even if it is used in notification strategy in workflow Restricted the deletion of any usergroup when it is used in any notification strategy in any workflow. (CDS-34159)
 * CloudFormation Rollback from DEV Canary Workflow goes to STG. (CDS-34125, ZD-26628)
 * Dashboard: Build# does not match reality. (CDS-2992, ZD-18477, ZD-18483, ZD-29101)
-* Fixed the issue with CE\_VIEWER permission not getting disabled for user groups. (CCM-7324)
+* Fixed the issue with CE_VIEWER permission not getting disabled for user groups. (CCM-7324)
 
 ### Minor Release 74300
 
@@ -2121,8 +2121,8 @@ The following new features are added to the Harness SaaS components:
 * In the **Workflow Failure Strategy**, you can now select **Rollback Provisioner after Phases** action when a Workflow is paused on manual intervention.
 	+ See [Timeout (Manual Intervention)](../continuous-delivery/model-cd-pipeline/workflows/define-workflow-failure-strategy-new-template.md#timeout-manual-intervention). (CDS-28963)
 * Tanzu Blue Green Deployments now include the following two new in-built variables:
-	+ `$\{pcf.activeAppName\}`
-	+ `$\{pcf.inActiveAppName\}`
+	+ `${pcf.activeAppName}`
+	+ `${pcf.inActiveAppName}`
 	+ See [App Name Variables and Blue Green Deployments](../continuous-delivery/pcf-deployments/pcf-built-in-variables.md#app-name-variables-and-blue-green-deployments). (CDS-17419)
 
 #### Issues Fixed
@@ -2172,8 +2172,8 @@ The following new feature is added to the Harness SaaS components:
 
 |  |  |
 | --- | --- |
-| Current step name | `$\{currentStep.name\}` |
-| Type of step | `$\{currentStep.type\}` |
+| Current step name | `${currentStep.name}` |
+| Type of step | `${currentStep.type}` |
 
 #### Issues Fixed
 

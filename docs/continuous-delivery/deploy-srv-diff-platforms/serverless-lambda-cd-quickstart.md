@@ -309,11 +309,11 @@ plugins:
   - serverless-deployment-bucket@latest
 ```
 
-You can see the [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables) `\<+artifact.path\>` in `artifact: \<+artifact.path\>`. The expression `\<+artifact.path\>` tells Harness to get the artifact from **Artifacts** section of the Service. We'll add the artifact next.
+You can see the [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables) `<+artifact.path>` in `artifact: <+artifact.path>`. The expression `<+artifact.path>` tells Harness to get the artifact from **Artifacts** section of the Service. We'll add the artifact next.
 
-The expression `\<+service.name\>` simply uses the Harness Service name for the deployed service name.
+The expression `<+service.name>` simply uses the Harness Service name for the deployed service name.
 
-For Docker images, you use the expression `\<+artifact.image\>`.
+For Docker images, you use the expression `<+artifact.image>`.
 
 ## Add the artifact
 
@@ -628,7 +628,7 @@ Outputs:
 ```
 
 
-In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `\<+provisioner.OUTPUT_NAME\>`, such as `\<+provisioner.region_name\>`.
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.region_name>`.
 
 
 <figure>
@@ -714,7 +714,7 @@ branch 'main' set up to track 'origin/main'.
 
 #### Serverless directory path
 
-After the Download Manifest step, you can access the directly where the manifest has been downloaded using the expression `\<+serverlessV2.serverlessDirectoryPath\>`.
+After the Download Manifest step, you can access the directly where the manifest has been downloaded using the expression `<+serverlessV2.serverlessDirectoryPath>`.
 
 For example, you could add a [Run](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step) or [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step with the following:
 
@@ -1073,7 +1073,7 @@ Serverless Lambda deployments are versioned using the timestamp of their deploym
 
 ### Sidecar artifacts
 
-You reference sidecar artifacts with the format `\<+artifacts.sidecars.[artifact_Id]\>`.
+You reference sidecar artifacts with the format `<+artifacts.sidecars.[artifact_Id]>`.
 
 The artifact Id comes from the Artifact Details:
 

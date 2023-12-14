@@ -176,23 +176,23 @@ You need Google Service Account (GSA) credentials (as a JSON key) to query your 
 2. Create the service account.
 
    ```shell
-   gcloud iam service-accounts create gke-user \
-     --description "GKE User" \
+   gcloud iam service-accounts create gke-user 
+     --description "GKE User" 
      --display-name "gke-user"
    ```
 
 3. Configure the IAM policy binding. The service account must be able to provision Kubernetes resources.
 
    ```shell
-   gcloud projects add-iam-policy-binding $GCP_PROJECT \
-     --member="serviceAccount:$GSA_NAME@$GCP_PROJECT.iam.gserviceaccount.com" \
+   gcloud projects add-iam-policy-binding $GCP_PROJECT 
+     --member="serviceAccount:$GSA_NAME@$GCP_PROJECT.iam.gserviceaccount.com" 
      --role="roles/container.admin"
    ```
 
 4. Download and save the GSA key. The Google Cloud user you are using must have the **Security Admin** role to generate GSA keys.
 
    ```shell
-   gcloud iam service-accounts keys create "${GSA_KEY_FILE}" \
+   gcloud iam service-accounts keys create "${GSA_KEY_FILE}" 
        --iam-account="gke-user@${GCP_PROJECT}.iam.gserviceaccount.com"
    ```
 
@@ -228,7 +228,7 @@ You need Google Service Account (GSA) credentials (as a JSON key) to query your 
 When you add the key to your Terraform variables, it must be base64 encoded. For example, the following command encodes `YOUR_GOOGLE_CREDENTIALS_KEY_FILE` in base64 format:
 
 ```shell
-cat YOUR_GOOGLE_CREDENTIALS_KEY_FILE | tr -d \\n
+cat YOUR_GOOGLE_CREDENTIALS_KEY_FILE | tr -d n
 ```
 
 :::
@@ -296,7 +296,7 @@ This pipeline pulls public images from Docker Hub. If you do not want to use the
 
 :::tip
 
-Alternately, you can extract the values for `terraform_workspace` and `terraform_cloud_organization` from the webhook payload by replacing their `\<+secret\>` expressions with the expressions `\<+trigger.payload.workspace_name\>` and `\<+trigger.payload.organization_name\>` respectively.
+Alternately, you can extract the values for `terraform_workspace` and `terraform_cloud_organization` from the webhook payload by replacing their `<+secret>` expressions with the expressions `<+trigger.payload.workspace_name>` and `<+trigger.payload.organization_name>` respectively.
 
 :::
 

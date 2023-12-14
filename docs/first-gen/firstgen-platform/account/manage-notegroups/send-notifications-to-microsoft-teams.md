@@ -123,8 +123,8 @@ Here is an example of the cURL command in the Shell Script step:
 
 
 ```
-curl --location --request POST 'https://outlook.office.com/webhook/xxxxx-xxx-xxx-xxx-xxxx@xxxx-xxx-xxx-bce0-xxx/IncomingWebhook/xxxxxxxxxxx-xxx-xxx-xxx-xxxxx' \  
---header 'Content-Type: application/json' \  
+curl --location --request POST 'https://outlook.office.com/webhook/xxxxx-xxx-xxx-xxx-xxxx@xxxx-xxx-xxx-bce0-xxx/IncomingWebhook/xxxxxxxxxxx-xxx-xxx-xxx-xxxxx'   
+--header 'Content-Type: application/json'   
 --data-raw '{  
     "@type": "MessageCard",  
     "@context": "http://schema.org/extensions",  

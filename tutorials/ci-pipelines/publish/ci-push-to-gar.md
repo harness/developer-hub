@@ -103,7 +103,7 @@ Clone the [tutorial repo](https://github.com/harness-apps/httpbin-get):
 
 ```shell
 #  clone httpbin-get repository
-git clone https://github.com/harness-apps/httpbin-get.git \
+git clone https://github.com/harness-apps/httpbin-get.git 
   && cd "$(basename "$_" .git)"
 # navigate to the clone repository folder
 export TUTORIAL_HOME="$PWD"
@@ -326,7 +326,7 @@ You can use either the visual or YAML editor to add pipeline steps. This tutoria
 
    | Variable Name                    | Value                                            | Description                                                                                                                    |
    | -------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-   | `PLUGIN_SERVICE_ACCOUNT_JSON`    | `\<+secrets.getValue("harness_tutorial_sa_key")\>` | The Google service account secret key.<br/>The [input type](/docs/platform/variables-and-expressions/runtime-inputs/) must be **Expression**. |
+   | `PLUGIN_SERVICE_ACCOUNT_JSON`    | `<+secrets.getValue("harness_tutorial_sa_key")>` | The Google service account secret key.<br/>The [input type](/docs/platform/variables-and-expressions/runtime-inputs/) must be **Expression**. |
    | `GOOGLE_APPLICATION_CREDENTIALS` | `/kaniko/sa.json`                                | The json file where the service account key content will be written.                                                           |
    | `PLUGIN_IMAGE`                   | `$PLUGIN_IMAGE`                                  | The container image name.<br/>The value for `$PLUGIN_IMAGE` comes from `$TUTORIAL_HOME/.env`.                                  |
 

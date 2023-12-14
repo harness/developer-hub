@@ -246,9 +246,9 @@ AWS Lambda uses this information to set up elastic network interfaces (ENIs) tha
    The **Infrastructure Definition** settings are similar to the `‑‑role` and `‑‑vpc-config` options in the `aws lambda create-function` command. For example:
 
 		```
-		$ aws lambda create-function --function-name example-function \       
-		--runtime nodejs12.x --handler index.handler --zip-file lambda/function.zip \      
-		--role execution-role-arn \       
+		$ aws lambda create-function --function-name example-function        
+		--runtime nodejs12.x --handler index.handler --zip-file lambda/function.zip       
+		--role execution-role-arn        
 		--vpc-config SubnetIds=<subnet-ids>,SecurityGroupIds=<security-group-ids>
 		```
 		

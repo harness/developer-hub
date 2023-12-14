@@ -49,11 +49,11 @@ Here is an example of the PowerShell set up of WinRM on an Azure Windows Server 
 
 
 ```
-C:\Users\harness>PowerShell.exe  
+C:Usersharness>PowerShell.exe  
 Windows PowerShell  
 Copyright (C) 2016 Microsoft Corporation. All rights reserved.  
   
-PS C:\Users\harness> Invoke-Expression ((New-Object System.Net.Webclient).DownloadString('https://raw.githubusercontent.  
+PS C:Usersharness> Invoke-Expression ((New-Object System.Net.Webclient).DownloadString('https://raw.githubusercontent.  
 com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1'))  
 Self-signed SSL certificate generated; thumbprint: 4B4AAFE402B3B96EAC3C26FE0DE7332E9010B1C7  
   
@@ -67,9 +67,9 @@ ReferenceParameters : ReferenceParameters
   
 Ok.  
   
-PS C:\Users\harness> exit  
+PS C:Usersharness> exit  
   
-C:\Users\harness>winrm e winrm/config/listener  
+C:Usersharness>winrm e winrm/config/listener  
 Listener  
     Address = *  
     Transport = HTTP  
@@ -141,7 +141,7 @@ The successful output will be something like this:
 
 
 ```
-C:\Windows\system32&gt;winrm e winrm/config/listener  
+C:Windowssystem32&gt;winrm e winrm/config/listener  
 Listener  
     Address = *  
     Transport = HTTP  
@@ -194,7 +194,7 @@ Add a WinRM connection in Harness to execute deployment steps on the remote Wind
 | **Name** | Name to identify the connection. You will use this name to identify this connection when setting up the **Connection Attributes** in the Environment Infrastructure Definition. |
 | **Auth Scheme** | Specifies the mechanism used to authenticate the credentials used in this connection. Currently only NTLM is supported. |
 | **Domain** | The Active Directory domain name where the user account in the credentials is registered. This can be left blank when using a local user. |
-| **User Name** / **Password** | The user account credentials for this connection. The user must belong to the same Active Directory domain as the Windows instances that this connection uses. These are the same user account credentials you would use to log into the VM using a remote connection such as Microsoft Remote Desktop.In cases when **Domain** is blank (local user), you can put **./** before the user name. The **./** prefix is equivalent to `local_host_or_ip\user`. |
+| **User Name** / **Password** | The user account credentials for this connection. The user must belong to the same Active Directory domain as the Windows instances that this connection uses. These are the same user account credentials you would use to log into the VM using a remote connection such as Microsoft Remote Desktop.In cases when **Domain** is blank (local user), you can put **./** before the user name. The **./** prefix is equivalent to `local_host_or_ipuser`. |
 | **Use SSL** | Enables an HTTPS connection instead of an HTTP connection. SSL is recommended. |
 | **Skip Cert Check** | When connected over HTTPS (**Use SSL** in enabled), the client does not validate server certificate. |
 | **WinRM Port** | Specifies the network port on the remote computer to use.To connect to a remote computer, the remote computer must be listening on the port that the connection uses. The default ports are 5985, which is the WinRM port for HTTP, and **5986**, which is the WinRM port for HTTPS.To determine what ports WinRM is listening on, use the command:**winrm e winrm/config/listener** |

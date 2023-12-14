@@ -96,7 +96,7 @@ In the following YAML example, an [Action step](../use-drone-plugins/ci-github-a
                   spec:
                     shell: Bash
                     command: |
-                      JAVA_VER=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1\./s///' | cut -d'.' -f1)
+                      JAVA_VER=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1./s///' | cut -d'.' -f1)
                       if [[ $JAVA_VER == 16 ]]; then
                         echo successfully installed $JAVA_VER
                       else

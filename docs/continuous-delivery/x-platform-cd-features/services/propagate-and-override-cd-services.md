@@ -163,7 +163,7 @@ For information on multiple service deployments, go to [use multiple services an
  
 For details on **Environment Overrides**, go to [overriding service settings in environments](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments). The following information covers overriding services in services and environments v1 only.
 
-A common method for overriding values YAML files is to use the `\<+env.name\>` Harness expression in the **File Path** of the *values.yaml* file and then name your Harness environments with the same names as your values YAML files.
+A common method for overriding values YAML files is to use the `<+env.name>` Harness expression in the **File Path** of the *values.yaml* file and then name your Harness environments with the same names as your values YAML files.
 
 <!-- ![](../../cd-services/cd-services-general/static/6cffc4e7fc1159c37eece2bb6cc2a7e76a115652155fe93c91a3f80a68328112.png) -->
 

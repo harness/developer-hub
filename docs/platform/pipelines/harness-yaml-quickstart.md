@@ -190,7 +190,7 @@ The `stage.spec` sections correspond with the tabs in the Visual editor.
 
 ![](./static/harness-yaml-quickstart-24.png)
 
-For example, the following `stage.spec` YAML defines the `serviceConfig` for a Deployment stage, which includes the `service` and `serviceDefinition` settings. This stage adds a service named `myservice` and a [service definition using Kubernetes manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests/). Service Definitions represent the real artifacts, manifests, and variables of a Service. They are the actual files and variable values. This example uses `\<+input\>`, which represents [runtime inputs](../variables-and-expressions/runtime-inputs.md).
+For example, the following `stage.spec` YAML defines the `serviceConfig` for a Deployment stage, which includes the `service` and `serviceDefinition` settings. This stage adds a service named `myservice` and a [service definition using Kubernetes manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests/). Service Definitions represent the real artifacts, manifests, and variables of a Service. They are the actual files and variable values. This example uses `<+input>`, which represents [runtime inputs](../variables-and-expressions/runtime-inputs.md).
 
 ```yaml
               spec:  
@@ -218,7 +218,7 @@ For example, the following `stage.spec` YAML defines the `serviceConfig` for a D
 
 :::tip Connectors
 
-The `connectorRef` setting identifies the [Harness connector](/docs/category/connectors) that connects to the Git repo where the manifests are located. In the Visual editor you can create and select connectors while building your pipeline. In the YAML editor, you must provide the **Id** of an existing connector. If you need to exit your pipeline to create a connector, use a runtime input (`connectorRef: \<+input\>`) as a placeholder, so that you can save the pipeline and return to it later.
+The `connectorRef` setting identifies the [Harness connector](/docs/category/connectors) that connects to the Git repo where the manifests are located. In the Visual editor you can create and select connectors while building your pipeline. In the YAML editor, you must provide the **Id** of an existing connector. If you need to exit your pipeline to create a connector, use a runtime input (`connectorRef: <+input>`) as a placeholder, so that you can save the pipeline and return to it later.
 
 :::
 
@@ -237,7 +237,7 @@ The `stage.spec.infrastructure` options depend on the stage `type`.
 
 ![](./static/harness-yaml-quickstart-26.png)
 
-For example, the following `infrastructure` YAML describes the `environment` and `infrastructureDefinition` for a Deployment stage. This example uses a [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) for a platform-agnostic direct connection to the target cluster. This example also uses `\<+input\>`, which represents [runtime inputs](../variables-and-expressions/runtime-inputs.md).
+For example, the following `infrastructure` YAML describes the `environment` and `infrastructureDefinition` for a Deployment stage. This example uses a [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) for a platform-agnostic direct connection to the target cluster. This example also uses `<+input>`, which represents [runtime inputs](../variables-and-expressions/runtime-inputs.md).
 
 ```yaml
                   infrastructure:
@@ -551,7 +551,7 @@ trigger:
 
 #### Input set YAML structure
 
-The contents of input set yaml depends on the settings in your pipeline that use runtime input (`\<+input\>`).
+The contents of input set yaml depends on the settings in your pipeline that use runtime input (`<+input>`).
 
 ```yaml
 inputSet:  
@@ -654,7 +654,7 @@ overlayInputSet:
 
 :::tip
 
-In pipeline YAML, the `connectorRef` setting identifies a Harness connector. In the Visual editor you can create and select connectors while building your pipeline. In the YAML editor, you must provide the **Id** of an existing connector. If you need to exit your pipeline to create a connector, use a runtime input (`connectorRef: \<+input\>`) as a placeholder, so that you can save the pipeline and return to it later.
+In pipeline YAML, the `connectorRef` setting identifies a Harness connector. In the Visual editor you can create and select connectors while building your pipeline. In the YAML editor, you must provide the **Id** of an existing connector. If you need to exit your pipeline to create a connector, use a runtime input (`connectorRef: <+input>`) as a placeholder, so that you can save the pipeline and return to it later.
 
 :::
 

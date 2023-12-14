@@ -218,5 +218,5 @@ spec:
           value: 'test-vm-01'
        # Path of the Clumsy tool in the VM
         - name: PATH_OF_CLUMSY 
-          value: 'C:\\Program Files\\Clumsy\\'
+          value: 'C:Program FilesClumsy'
 ```

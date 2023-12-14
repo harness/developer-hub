@@ -34,9 +34,9 @@ For example, with New Relic Insights, you are configuring the **Metrics Data Pro
 
 
 ```
-curl -H "Accept: application/json" \  
--H "X-Query-Key: YOUR_QUERY_KEY" \  
-"https://insights-api.newrelic.com/v1/accounts/**YOUR\_ACCOUNT\_ID**/query?nrql=**YOUR\_QUERY\_STRING**"
+curl -H "Accept: application/json"   
+-H "X-Query-Key: YOUR_QUERY_KEY"   
+"https://insights-api.newrelic.com/v1/accounts/**YOUR_ACCOUNT_ID**/query?nrql=**YOUR_QUERY_STRING**"
 ```
 To query event data via API in New Relic Insights, you will need to set up an API key in New Relic. For more information, see [Query Insights event data via API](https://docs.newrelic.com/docs/insights/insights-api/get-data/query-insights-event-data-api) from New Relic.The purpose of the **Metrics Data Provider** dialog is to validate the credentials and validation path you enter and return an HTTP 200 from your metrics provider.
 
