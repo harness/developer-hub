@@ -35,13 +35,13 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## December 2023
 
-### Versions 23.12.81411, 23.12.81604, 23.12.81806
+### Versions 23.12.81411, 23.12.81604
 
 #### Delegate security hotfix
 
 - Added additional log sanitization for Git connector flows.
 
-   If you are running delegate versions 23.11.814xx, 23.11.816xx, or 23.12.818xx, upgrade to delegate version 23.12.81411, 23.12.81604, or 23.12.81806.
+   If you are running delegate versions 23.11.814xx or 23.11.816xx, upgrade to delegate version 23.12.81604.
 
 ### Harness version 81820, Harness Delegate version 23.12.81803
 
