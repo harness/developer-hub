@@ -37,14 +37,11 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ### Versions 23.12.81411, 23.12.81604, 23.12.81806
 
-#### Urgent delegate security hotfix
+#### Delegate security hotfix
 
-:::warning delegate upgrade required
-Git connector credentials were exposed in plain text within delegate logs. Users with access to the delegate container/pod or delegate logs could potentially view these credentials if the logs were streamed outside the container to an external source.
+- Added additional log sanitization for Git connector flows.
 
-Harness has resolved this issue. If you are running delegate versions 23.11.814xx, 23.11.816xx, or 23.12.818xx, upgrade to delegate version 23.12.81411, 23.12.81604, or 23.12.81806.
-
-:::
+   If you are running delegate versions 23.11.814xx, 23.11.816xx, or 23.12.818xx, upgrade to delegate version 23.12.81411, 23.12.81604, or 23.12.81806.
 
 ### Harness version 81820, Harness Delegate version 23.12.81803
 
