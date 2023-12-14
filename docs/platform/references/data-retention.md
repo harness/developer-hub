@@ -12,5 +12,5 @@ Data retention for Harness products is different depending on the Harness produc
 
 To see the data retention for each product and plan, see [Harness Pricing](https://harness.io/pricing/?module=cd) and look for **Data Retention**.
 
-You can request a longer retention period by contacting Harness Support if you require audit data for extended period.
+You can request a longer retention period by contacting [Harness Support](mailto:support@harness.io) if you require audit data for an extended period.
 
