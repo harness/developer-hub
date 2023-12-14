@@ -475,6 +475,19 @@ Command finished with status SUCCESS
 ```
 Congratulations! You have now successfully created and completed the steps for running a pipeline by using Secure Shell.
 
+## Permission to perform SSH Deployments in AWS
+
+We use the SSH Credentials to connect to hosts to perform deployment.
+
+We use the AWS Connector to retrieve instances from the AWS Account. The specific calls we make:
+
+- Retrieve the instances at runtime during the infrastructure step - [DescribeInstanceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
+- Retrieve the instances during instance sync to show service instances in the service - [DescribeInstanceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
+
+To use describe instance API, the action is `ec2:DescribeInstances`
+
+Per AWS documentation: Example policies for working with the AWS CLI or an AWS SDK - [Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ExamplePolicies_EC2.html)
+
 
 ## Notes
 
