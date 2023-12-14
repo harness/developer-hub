@@ -4,9 +4,9 @@ hide_table_of_contents: true
 title: End-to-End Pipeline
 ---
 
-# harness-gitops-workshop
+# End-To-End CI/CD Pipeline
 
-In this workshop, we'll use the Harness CI, CD, and GitOps modules to demonstrate an end-to-end software delivery process - from build to deployment following GitOps principles. 
+In this tutorial, we'll use the Harness CI, CD, and GitOps to demonstrate an end-to-end software delivery process - from build to deployment following GitOps principles. 
 
 ![PR Pipeline Architecture](static/e2e/pr-pipeline-architecture.png)
 
@@ -95,8 +95,11 @@ Download the Harness GitOps Agent script using either the YAML or Helm Chart opt
 export AGENT_NAME=<GITOPS_AGENT_ID>
 ```
 
-> [!NOTE]  
-> The ID of the GitOps agent might not be the same as its name.
+:::info
+
+The ID of the GitOps agent might not be the same as its name.
+
+:::
 
 ### Create a GitOps Cluster
 
