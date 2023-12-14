@@ -43,8 +43,7 @@ To add Azure Log Analytics as a health source:
    
    Perform the following steps based on the feature you have selected in the **Select Feature** field.
 
-<Tabs>
-  <TabItem value="Steps to configure Azure Log Analytics" label="Steps to configure Azure Cloud Metrics" default>
+#### Steps to configure Azure Cloud Metrics in Azure Log Analytics
 
    
    1. On the **Configuration** tab, select **+ Add Metric**.  
@@ -82,8 +81,6 @@ In the **Assign** section, select the services to which you want to apply the Az
 #### Configure risk profile
 If you select **Continuous Verification (Applied to the pipelines in the Continuous Deployment)** or **Service Health**, expand the section below and follow the instructions for configuring the risk profile.
 
-<details>
-<summary><b>Risk Profile settings</b></summary>
 
 
 #### Risk Profile
@@ -104,7 +101,7 @@ The **Risk Profile** section is only visible if you have selected **Continuous V
 - **Higher counts = higher risk**
 - **Lower counts = higher risk**
 
-  Note that you can select multiple options.
+  *Note that you can select multiple options.*
 
 
 #### Map service instance identifier
@@ -151,11 +148,8 @@ To set fail-fast thresholds for CV, follow these steps:
    - **Absolute Value**: Select this option and enter the **Greater than** and **Lesser than** values.
    - **Percentage Deviation**: Select this option and enter the **Lesser than** value.
 
-</details>
 
-</TabItem>
-  
-<TabItem value="Steps to configure Azure Analytics Cloud Logs" label="Steps to configure Azure Analytics Cloud Logs">
+#### Steps to configure Azure Analytics Cloud Logs in Azure Log Analytics
 
 1. On the Configuration tab, select **+ Add Query**.  
    The Add Query dialog appears.
