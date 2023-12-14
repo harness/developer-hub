@@ -25,13 +25,22 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## December 2023
 
+<!-- h3 Version 1.5.x -->
+
+<!-- Dec 2x, 2023 -->
+
+<!-- h4 New features and enhancements -->
+
+<!-- This release introduces a new versioning convention for CI manager. -->
+
+<!-- h4 Fixed issues -->
+
+<!-- * Fixed an issue where builds failed in a Kubernetes cluster build infrastructure because certificates from the key chain weren't considered when fetching the entrypoint for the [S3 Upload and Publish plugin](). (CI-10258, ZD-53311) -->
+<!-- * Improved error messaging related to addon disconnects. (CI-8877) -->
+
 ### Version 70xx
 
-<!-- Dec 13, 2023 -->
-
-#### New features and enhancements
-
-(CI-9556)
+<!-- Dec 19 or later, 2023 -->
 
 #### Fixed issues
 
