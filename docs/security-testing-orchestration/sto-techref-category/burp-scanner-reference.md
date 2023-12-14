@@ -13,7 +13,8 @@ To set up a Burp scan:
 2. Add a [Burp](#burp-step-configuration) or a [Security](#security-step-settings-deprecated)
 3. Configure the step as specified in the following sections. 
 
-<details><summary>Burp scan configuration in Security step</summary>
+<details>
+		<summary>Burp scan configuration in Security step</summary>
 
 ![](./static/burp-security-scan-step.png)
 
@@ -40,7 +41,8 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Burp step configuration
 
-<details><summary>Orchestrated scan in a Burp scanner template</summary>
+<details>
+		<summary>Orchestrated scan in a Burp scanner template</summary>
 
 ![](./static/burp-scanner-template.png)
 
@@ -150,7 +152,7 @@ Domain of the application instance to scan. Example: `https://myapp.io/portal/us
 
 The access token used to log in to a specific product in the scanner. This is required for some scans. In most cases, this is a password or an API key. 
 
-You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
+You should create a Harness text secret with your encrypted token and reference the secret using the format `\<+secrets.getValue("project.container-access-id")\>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ### Scan Tool
 
@@ -210,7 +212,7 @@ Username to log in to the instance you want to scan.
 
 The access token to log in to the instance you want to scan. In most cases, this is a password or an API key. 
 
-You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
+You should create a Harness text secret with your encrypted token and reference the secret using the format `\<+secrets.getValue("project.container-access-id")\>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 
 ### Ingestion File
@@ -303,7 +305,7 @@ The following settings are required for Security steps where the `policy_type` i
 
 * `product_access_token` The access token used to log in to a specific product in the scanner. This is required for some scans. In most cases this is a password or an API key. 
 
-  You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
+  You should create a Harness text secret with your encrypted token and reference the secret using the format `\<+secrets.getValue("project.container-access-id")\>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 #### Ingestion file
 

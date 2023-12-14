@@ -38,6 +38,7 @@ Ensure that your AWS account and the ECS cluster that will host the Delegate mee
 
 		<details>
 
+		
 		<summary>Policy JSON</summary>
 
 		```
@@ -121,7 +122,8 @@ Although it can help simplify deployments, the Harness ECS Delegate service does
 Here is an example of a task definition that creates a Harness ECS Delegate as a service in your ECS cluster:
 
 <details>
-<summary>Task definition for creating a Hanress ECS Delegate</summary>
+
+		<summary>Task definition for creating a Hanress ECS Delegate</summary>
 
 ```
 {  

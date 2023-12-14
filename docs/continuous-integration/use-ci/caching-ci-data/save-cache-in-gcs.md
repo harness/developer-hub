@@ -436,7 +436,7 @@ To do skip the **Save Cache** step in all except one parallel stage, add the fol
 2. Expand the **Conditional Execution** section.
 3. Select **Execute this step if the stage execution is successful thus far**.
 4. Select **And execute this step only if the following JEXL condition evaluates to True**.
-5. For the JEXL condition, enter `<+strategy.iteration> == 0`.
+5. For the JEXL condition, enter `\<+strategy.iteration\> == 0`.
 
 ```mdx-code-block
   </TabItem>
@@ -456,14 +456,14 @@ Add the following `when` definition to the end of your **Save Cache** step.
 This `when` definition causes the step to run only if *both* of the following conditions are met:
 
 * `stageStatus: Success`: Execute this step if the stage execution is successful thus far.
-* `condition: <+strategy.iteration> == 0`: Execution this step if the JEXL expression evaluates to true.
+* `condition: \<+strategy.iteration\> == 0`: Execution this step if the JEXL expression evaluates to true.
 
 ```mdx-code-block
   </TabItem>
 </Tabs>
 ```
 
-The JEXL expression `<+strategy.iteration> == 0` references the looping strategy's iteration index value assigned to each stage. The iteration index value is a zero-indexed value appended to a step or stage's identifier when it runs in a [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md). Although the stages run concurrently, each concurrent instance has a different index value, starting from `0`. By limiting the **Save Cache** step to run on the `0` stage, it only runs in one of the concurrent instances.
+The JEXL expression `\<+strategy.iteration\> == 0` references the looping strategy's iteration index value assigned to each stage. The iteration index value is a zero-indexed value appended to a step or stage's identifier when it runs in a [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md). Although the stages run concurrently, each concurrent instance has a different index value, starting from `0`. By limiting the **Save Cache** step to run on the `0` stage, it only runs in one of the concurrent instances.
 
 ## Cache step logs
 

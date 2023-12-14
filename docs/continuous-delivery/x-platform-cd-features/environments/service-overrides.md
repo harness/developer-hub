@@ -120,9 +120,10 @@ import Tabs1 from '@theme/Tabs';
 import TabItem1 from '@theme/TabItem';
 ```
 
+```mdx-code-block
 <Tabs1>
   <TabItem1 value="Override all services" label="Override all services" default>
-
+```
 In the environment **Configuration**, you can also set the default manifests, config files, and variables to use whenever Harness deploys a service to this environment.
 
 ![](./static/services-and-environments-overview-15.png)

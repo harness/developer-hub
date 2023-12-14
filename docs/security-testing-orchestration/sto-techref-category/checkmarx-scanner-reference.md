@@ -45,7 +45,8 @@ The recommended workflow is add a Checkmarx step to a Security Tests or CI Build
 
 
 <details>
-    <summary>Scanner Template example</summary>
+    
+		<summary>Scanner Template example</summary>
 
 ![](./static/checkmarx-scanner-template.png) 
 

@@ -76,7 +76,8 @@ Harness uses AWS connectors during pipeline runs to authenticate and perform ope
 3. Select **Save and Continue** to run the connection test, and then, if the test succeeds, select **Finish**. The connection test confirms that your authentication and delegate selections are valid.
 
 <details>
-<summary>AWS connector errors</summary>
+
+		<summary>AWS connector errors</summary>
 
 If the connection test fails due to a credentials issue, use the AWS CLI or console to check the credentials. The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is useful for evaluating policies and access.
 

@@ -92,7 +92,7 @@ export GOOGLE_CLOUD_PROJECT="the google cloud project to use"
 export KUBECONFIG="$DEMO_HOME/.kube/config"
 ```
 
-You can find more information about gcloud cli configurations at <https://cloud.google.com/sdk/docs/configurations>.
+You can find more information about gcloud cli configurations at [https://cloud.google.com/sdk/docs/configurations](https://cloud.google.com/sdk/docs/configurations).
 
 As you may need to override a few Terraform variables that you don't want to check in to VCS, add them to a file called `.local.tfvars` and set the following environment variable to be picked up by Terraform runs:
 
@@ -147,11 +147,11 @@ The following section deploys a Harness Delegate onto the GKE cluster.
 
     ![account details](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/eom3g1bo25v0rc1iehjl.png)
 
-    - Use the **Harness Cluster Hosting Account** from the account details to find the matching endpoint URL. For example, for `prod-2` it is <https://app.harness.io/gratis> and set that as the value for `harness_manager_endpoint`.
+    - Use the **Harness Cluster Hosting Account** from the account details to find the matching endpoint URL. For example, for `prod-2` it is [https://app.harness.io/gratis](https://app.harness.io/gratis) and set that as the value for `harness_manager_endpoint`.
 
     :::tip
 
-    You can find the endpoint corresponding to your **Harness Cluster Hosting Account** from </tutorials/platform/install-delegate/>
+    You can find the endpoint corresponding to your **Harness Cluster Hosting Account** from \</tutorials/platform/install-delegate/\>
 
     :::
 
@@ -176,7 +176,7 @@ The following section deploys a Harness Delegate onto the GKE cluster.
 
     Wait for the delegate to be connected before proceeding to the next steps. 
 
-    You can view the status of the delegate from the **Project** --> **Project Setup** --> **Delegates** page.
+    You can view the status of the delegate from the **Project** --\> **Project Setup** --\> **Delegates** page.
 
     ![delegate status](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/yrjd9xd1k3r2pa6g35c3.png)
 
@@ -208,7 +208,7 @@ Having deployed the Harness Delegate, you can now build a CI pipeline that will 
 
 The sources already have a [build stage](https://github.com/harness-apps/workload-identity-gke-demo/blob/main/.harness/ko_gar_build_push_1.yaml) template that can be used to create the CI pipeline.
 
-1. Navigate to your Harness Account, **Account Overview** --> **Organizations**, and then select **default** organization.
+1. Navigate to your Harness Account, **Account Overview** --\> **Organizations**, and then select **default** organization.
 
     ![default org select](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/j07f38navg5c3udfjwan.png)
 
@@ -234,7 +234,7 @@ The sources already have a [build stage](https://github.com/harness-apps/workloa
 
 ### Create a pipeline
 
-1. Navigate to **Builds** --> **Pipelines**, and then select **Create Pipeline**.
+1. Navigate to **Builds** --\> **Pipelines**, and then select **Create Pipeline**.
 
     ![create pipeline](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/r5cyqbs2xb43l9uzyt2f.png)
 

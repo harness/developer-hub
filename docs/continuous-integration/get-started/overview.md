@@ -16,7 +16,8 @@ Harness is a leading provider of the Continuous Delivery-as-a-Service platform. 
 CI executes pipeline steps in containers, isolating code and dependencies from other steps. When you create a pipeline, you specify a container to use, and then Harness locates and launches the container in which the step runs. You don't need to manage a dependency chain when steps and plugins run in their own containers.
 
 <details>
-<summary>Video: Introduction to Harness CI</summary>
+
+		<summary>Video: Introduction to Harness CI</summary>
 
 The following video introduces Harness CI and walks through a basic Harness CI pipeline.
 
@@ -42,7 +43,8 @@ The Delegate manages your build infrastructure to run build jobs and tests as ne
 When a CI pipeline build finishes successfully, the build infrastructure then sends the artifacts to the registry of your choice.
 
 <details>
-<summary>Video: Create and run a CI pipeline</summary>
+
+		<summary>Video: Create and run a CI pipeline</summary>
 
 The following video demonstrates how to set up a CI pipeline and run a build.
 

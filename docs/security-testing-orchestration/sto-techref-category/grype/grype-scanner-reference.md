@@ -48,7 +48,8 @@ The recommended workflow is add a Grype step to a Security Tests or CI Build sta
 
 <!-- 
 <details>
-    <summary>Scanner Template</summary>
+    
+		<summary>Scanner Template</summary>
 
 ![](static/step-palette-00.png) 
 

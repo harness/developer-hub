@@ -283,7 +283,7 @@ In the setting, enter a Harness expression that references the output.
 
 The expressions follow the format:
 
-`<+infrastructureDefinition.provisioner.steps.[Create Stack step Id].output.[output name]>`
+`\<+infrastructureDefinition.provisioner.steps.[Create Stack step Id].output.[output name]\>`
 
 You can find the Id in the step:
 
@@ -293,7 +293,7 @@ For example, for a Kubernetes deployment, you need to map the `namespace` output
 
 So for a Create Stack step with the Id **create123** and an output named **namespace**, the expression is:
 
-`<+infrastructureDefinition.provisioner.steps.create123.output.namespace>`
+`\<+infrastructureDefinition.provisioner.steps.create123.output.namespace\>`
 
 ![](./static/provision-target-deployment-infra-dynamically-with-cloud-formation-07.png)
 

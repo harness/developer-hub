@@ -44,7 +44,8 @@ The recommended workflow is add a PrismaCloud step to a Security Tests or CI Bui
 
 
 <details>
-    <summary>Scanner Template</summary>
+    
+		<summary>Scanner Template</summary>
 
 ![](static/step-palette-00.png) 
 

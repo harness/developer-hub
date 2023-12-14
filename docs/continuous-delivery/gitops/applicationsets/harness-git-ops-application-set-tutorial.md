@@ -25,7 +25,8 @@ ApplicationSets are often used with Harness PR pipeline feature. A Harness PR pi
 For more information on PR pipelines, go to [Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines.md).
 
 <details>
-<summary>ApplicationSets and PR pipelines summary</summary>
+
+		<summary>ApplicationSets and PR pipelines summary</summary>
 
 A typical GitOps Application syncs a source manifest to a destination cluster. If you have multiple target clusters, you could create separate GitOps Applications for each one, but that makes management more challenging. Also, what if you want to sync an application with 100s of target clusters? Managing 100s of GitOps Applications is not acceptable.
 

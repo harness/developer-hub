@@ -101,11 +101,11 @@ Variable values can be [fixed values, runtime inputs, or expressions](/docs/plat
 
 Stage variables are available across the pipeline and you can override their values in later stages.
 
-To reference stage variables in the same stage where they are defined, use the expression `<+stage.variables.VAR_NAME>`.
+To reference stage variables in the same stage where they are defined, use the expression `\<+stage.variables.VAR_NAME\>`.
 
-To reference stage variables in other stages, use the expression `<+pipeline.stages.STAGE_ID.variables.VAR_NAME>`.
+To reference stage variables in other stages, use the expression `\<+pipeline.stages.STAGE_ID.variables.VAR_NAME\>`.
 
-You can also reference stage variables in files fetched at runtime. For example, you could create a stage variable called `NAME` and then reference it in the Kubernetes `values.yaml` file used by that stage by calling the [Harness expression](../variables-and-expressions/harness-variables.md): `<+stage.variables.NAME>`. For example:
+You can also reference stage variables in files fetched at runtime. For example, you could create a stage variable called `NAME` and then reference it in the Kubernetes `values.yaml` file used by that stage by calling the [Harness expression](../variables-and-expressions/harness-variables.md): `\<+stage.variables.NAME\>`. For example:
 
 ```yaml
 name: <+stage.variables.NAME>  

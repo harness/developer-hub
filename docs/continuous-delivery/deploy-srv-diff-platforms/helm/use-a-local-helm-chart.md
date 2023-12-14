@@ -71,7 +71,8 @@ You can also use the base path for `value`. For example:
 Review the following important notes.
 
 <details>
-<summary>Use the same delegate for fetching chart and deployment steps</summary>
+
+		<summary>Use the same delegate for fetching chart and deployment steps</summary>
 
 Chart fetching and deployment is performed by the same step. For example, in a Kubernetes Rolling deployment strategy it is performed by the Rolling step.
 
@@ -83,7 +84,8 @@ Ensure that the delegate(s) selected here is the same delegate(s) with the local
 
 </details>
 <details>
-<summary>Version selection</summary>
+
+		<summary>Version selection</summary>
 
 If chart version is left blank, Harness fetches the latest chart the first deployment. Subsequently, Harness checks if the chart the is present in the location specified using this format:
 
@@ -91,13 +93,15 @@ If chart version is left blank, Harness fetches the latest chart the first deplo
 
 </details>
 <details>
-<summary>Delegate local disk cleanup</summary>
+
+		<summary>Delegate local disk cleanup</summary>
 
 If you use a local Helm chart, Harness does not clean up the downloaded files post deployment. You will need to perform any delegate local disk cleanup.
 
 </details>
 <details>
-<summary>Logs</summary>
+
+		<summary>Logs</summary>
 
 There is a slight difference in the logs for local and remote Helm charts. For example, if Harness doesn't find the chart in the local delegate disk at the time of first deployment, the logs include `Did not find the chart and version in local repo`:
 
@@ -107,7 +111,8 @@ When Harness finds the charts it displays the message `Found the chart at local 
 
 </details>
 <details>
-<summary>Support in Harness FirstGen and NextGen</summary>
+
+		<summary>Support in Harness FirstGen and NextGen</summary>
 
 Local Helm charts are supported in both Harness FirstGen and NextGen. There is no difference in setup.
 

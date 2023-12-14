@@ -254,7 +254,7 @@ We'll create a quick CD pipeline that deploys a public manifest and image to a l
   * **Execution Steps:** Execution steps perform the CD operations like applying a manifest, asking for approval, rollback, and so on. Harness automatically adds the steps you need for the deployment strategy you select. You can then add additional steps to perform many other operations.
   * **Connectors:** Connectors contain the information necessary to integrate and work with 3rd party tools such as Git providers and artifact repos. Harness uses connectors at pipeline runtime to authenticate and perform operations with a 3rd party tool.
 
-  You'll notice a runtime input expression `<+input>` for most of the settings. These are placeholders we'll replace when we run the pipeline.
+  You'll notice a runtime input expression `\<+input\>` for most of the settings. These are placeholders we'll replace when we run the pipeline.
 6. Select **Run**. The **Run Pipeline** settings appear.
 
 ![](./static/harness-community-edition-quickstart-136.png)
@@ -290,7 +290,7 @@ This Delegate will perform all operations at runtime.
 9. In **Personal Access Token**, select **Create or Select a Secret**.
 10. Select **New Secret Text**.
 11. In **Secret Name**, enter the name **github-pat**.
-12. In **Secret Value**, paste in a GitHub Personal Access Token (PAT). When you're logged into GitHub, these are typically listed at <https://github.com/settings/tokens>.
+12. In **Secret Value**, paste in a GitHub Personal Access Token (PAT). When you're logged into GitHub, these are typically listed at [https://github.com/settings/tokens](https://github.com/settings/tokens).
   For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
   Ensure you PAT has the **repo** scope selected:
 
@@ -466,21 +466,24 @@ This is a temporary change. In the next release of Harness CD Community Edition,
 You have a few Kubernetes cluster options.
 
 <details> 
-<summary>Docker Compose Kubernetes</summary>
+
+		<summary>Docker Compose Kubernetes</summary>
 
 When Docker Compose Kubernetes is installed it comes with a cluster and the **default** namespace. You don't need to make any changes to Docker Compose Kubernetes. This is recommended.
 
 </details> 
 
 <details> 
-<summary>Free-tier account Kubernetes cluster on AWS, GCP, Azure</summary>
+
+		<summary>Free-tier account Kubernetes cluster on AWS, GCP, Azure</summary>
 
 The popular cloud providers offer free-tier accounts that include their Kubernetes services. You can create a cluster in these accounts.
 
 </details> 
 
 <details> 
-<summary>Use one of your company's Kubernetes clusters</summary>
+
+		<summary>Use one of your company's Kubernetes clusters</summary>
 
 If your company uses Kubernetes, they likely have dev or QA accounts on a cloud platform. If you have access to those environments, you can add a cluster there.
 
@@ -570,7 +573,8 @@ If you are using a remote Kubernetes cluster, you must log into it before you ca
 How you connect to the remote cluster depends on the provider. Typically, you will need to install the provider's CLI locally and then use the CLI to connect to the cluster and run the kubectl command to install the Harness Delegate. See the following:
 
 <details> 
-<summary>Azure AKS</summary>
+
+		<summary>Azure AKS</summary>
 
 See the Azure doc [Quickstart: Deploy an Azure Kubernetes Service cluster using the Azure CLI](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough) for a good overview.
 
@@ -608,7 +612,8 @@ kubectl apply -f harness-delegate.yaml
 </details> 
 
 <details> 
-<summary>AWS EKS</summary>
+
+		<summary>AWS EKS</summary>
 
 See the AWS doc [Connecting a cluster](https://docs.aws.amazon.com/eks/latest/userguide/connecting-cluster.html) for a good overview.
 
@@ -620,7 +625,8 @@ kubectl apply -f harness-delegate.yaml
 </details> 
 
 <details> 
-<summary>GCP GKE</summary>
+
+		<summary>GCP GKE</summary>
 
 See the GCP doc [Install kubectl and configure cluster access](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl) for a good overview.
 

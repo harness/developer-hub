@@ -143,7 +143,8 @@ The **Assignment Name** should be unique within the scope of the subscription wh
 Add the Blueprint template file to use for provisioning.
 
 <details>
-<summary>Example: Blueprint template file</summary>
+
+		<summary>Example: Blueprint template file</summary>
 
 The following example provides a blueprint description, specifies the target scope as the subscription level, includes parameters for RBAC assignment and storage account type, and defines a resource group artifact with an optional description.
 

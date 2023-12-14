@@ -124,7 +124,8 @@ Additionally, `spec.sourcePaths` must include `/go/pkg/mod` and `/root/.cache/go
 :::
 
 <details>
-<summary>YAML example: Save and restore cache steps</summary>
+
+		<summary>YAML example: Save and restore cache steps</summary>
 
 Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache from S3** steps.
 
@@ -305,7 +306,8 @@ Go is pre-installed on Hosted Cloud runners. For details about all available too
 If your application requires a specific version of Go, add a **Run** step to install it.
 
 <details>
-<summary>Install a specific version of Go</summary>
+
+		<summary>Install a specific version of Go</summary>
 
 ```yaml
               - step:
@@ -324,7 +326,8 @@ If your application requires a specific version of Go, add a **Run** step to ins
 </details>
 
 <details>
-<summary>Install multiple versions of Go</summary>
+
+		<summary>Install multiple versions of Go</summary>
 
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
@@ -362,7 +365,8 @@ If your application requires a specific version of Go, add a **Run** step to ins
 Specify the desired [Golang Docker image](https://hub.docker.com/_/golang) tag in your steps. There is no need for a separate install step when using Docker.
 
 <details>
-<summary>Build using a specific version of Go</summary>
+
+		<summary>Build using a specific version of Go</summary>
 
 ```yaml
               - step:
@@ -381,7 +385,8 @@ Specify the desired [Golang Docker image](https://hub.docker.com/_/golang) tag i
 
 
 <details>
-<summary>Build using multiple versions of Go</summary>
+
+		<summary>Build using multiple versions of Go</summary>
 
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
@@ -427,7 +432,8 @@ The following full pipeline examples are based on the partial examples above.
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 <details>
-<summary>Pipeline with one specific Go version</summary>
+
+		<summary>Pipeline with one specific Go version</summary>
 
 Here is a single-stage pipeline using cache intelligence, with steps to install Go 1.20, build and test.
 
@@ -500,7 +506,8 @@ pipeline:
 </details>
 
 <details>
-<summary>Pipeline with multiple Go versions</summary>
+
+		<summary>Pipeline with multiple Go versions</summary>
 
 Here is a single-stage pipeline using cache intelligence, with a matrix looping strategy for Go versions 1.19 and 1.20.
 
@@ -585,7 +592,8 @@ pipeline:
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector), Kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 <details>
-<summary>Pipeline with one specific Go version</summary>
+
+		<summary>Pipeline with one specific Go version</summary>
 
 Here is a single-stage pipeline, with steps to install Go 1.20, build and test.
 
@@ -648,7 +656,8 @@ pipeline:
 </details>
 
 <details>
-<summary>Pipeline with multiple Go versions</summary>
+
+		<summary>Pipeline with multiple Go versions</summary>
 
 Here is a single-stage pipeline, with a matrix looping strategy for Go versions 1.19 and 1.20.
 

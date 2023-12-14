@@ -284,7 +284,8 @@ CET's key features include:
 ### 2023 releases
 
 <details>
-<summary>2023 releases</summary>
+
+		<summary>2023 releases</summary>
 
 </details>
 

@@ -135,7 +135,7 @@ Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `D
 5. Now set the **Approval Criteria**. There are two ways to do this. You can also specify a combination of the two:  
     
     - **Conditions:** Use the **Jira Field**, **Operator**, and **Value** to define approval criteria.
-    - **JEXL Expression:** Use the [JEXL Expression](https://commons.apache.org/proper/commons-jexl/reference/syntax.html) to define the same values as under conditions, for example: `<+issue.Status> == "Done"`  
+    - **JEXL Expression:** Use the [JEXL Expression](https://commons.apache.org/proper/commons-jexl/reference/syntax.html) to define the same values as under conditions, for example: `\<+issue.Status\> == "Done"`  
 
 6. For this tutorial, select **Conditions** and specify the condition **Status = Done**.
 7. Select **Apply Changes**. Your Jira Approval step is created.
@@ -195,9 +195,9 @@ The ServiceNOw API only allows datetime and time values in the **UTC timezone**.
 5. Now set the **Approval Criteria**. There are two ways to do this. You can also specify a combination of the two:  
     
     - **Conditions:** Use the **Field**, **Operator**, and **Value** to define approval criteria.
-    - **JEXL Expression:** Use the [JEXL Expression](https://commons.apache.org/proper/commons-jexl/reference/syntax.html) to define the same values as under conditions, for example `<+ticket.state.displayValue> == "New"`.
+    - **JEXL Expression:** Use the [JEXL Expression](https://commons.apache.org/proper/commons-jexl/reference/syntax.html) to define the same values as under conditions, for example `\<+ticket.state.displayValue\> == "New"`.
 
-    For this tutorial, use the JEXL Expression `<+ticket.state.displayValue> == "New"`.
+    For this tutorial, use the JEXL Expression `\<+ticket.state.displayValue\> == "New"`.
 7. Select **Apply Changes**. Your ServiceNow approval step is created.
 8. Since you already have a deploy step present before the approval step, drag the deploy step to the right of ServiceNow approval step. 
 9. Verify and confirm the pipeline stage and execution steps.

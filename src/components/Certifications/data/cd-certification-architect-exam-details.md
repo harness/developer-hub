@@ -32,7 +32,8 @@ The Continuous Delivery & GitOps Architect exam tests your knowledge and skills 
 ## Exam Objectives
 
 <details>
-<summary>List of Objectives</summary>
+
+		<summary>List of Objectives</summary>
 
 The following is a detailed list of exam objectives:
 

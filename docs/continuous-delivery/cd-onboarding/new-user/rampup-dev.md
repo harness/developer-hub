@@ -58,7 +58,8 @@ Here's an example of a common Kubernetes pipeline.
 To copy it and paste it into the YAML builder in your Harness project, select **Deployments**, **Create a Pipeline**, name the pipeline, and then use the YAML builder to update any settings.
 
 <details>
-<summary>Sample pipeline YAML</summary>
+
+		<summary>Sample pipeline YAML</summary>
 
 ```yaml
   projectIdentifier: default

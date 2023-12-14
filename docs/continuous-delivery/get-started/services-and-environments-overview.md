@@ -68,7 +68,8 @@ Go to [add a stage template](/docs/platform/templates/add-a-stage-template.md) f
 Expand the section below to see a sample account level service YAML.
 
 <details>
-   <summary>Account level service YAML</summary>
+   
+		<summary>Account level service YAML</summary>
 
 ```
 service:
@@ -111,7 +112,8 @@ service:
 Expand the section below to see a sample organization level service YAML.
 
 <details>
-   <summary>Organization level service YAML</summary>
+   
+		<summary>Organization level service YAML</summary>
 
 ```
 service:
@@ -180,7 +182,8 @@ The `org_id` and `project_id` field definitions are optional, and depend on wher
 Expand the section below to see a sample platform service in Terraform.
 
 <details>
-   <summary>Harness platform service</summary>
+   
+		<summary>Harness platform service</summary>
 
 ```
 resource "harness_platform_service" "example" {
@@ -304,7 +307,8 @@ To create an environment at an account or organization level, go to **Organizati
 Expand the section below to see a sample account level environment YAML.
 
 <details>
-   <summary>Account level environment YAML</summary>
+   
+		<summary>Account level environment YAML</summary>
 
 ```
 environment:
@@ -330,7 +334,8 @@ environment:
 Expand the section below to see a sample account level infrastructure definition YAML.
 
 <details>
-   <summary>Account level infrastructure definition YAML</summary>
+   
+		<summary>Account level infrastructure definition YAML</summary>
 
 ```
 infrastructureDefinition:
@@ -353,7 +358,8 @@ infrastructureDefinition:
 Expand the section below to see a sample organization level environment YAML.
 
 <details>
-   <summary>Organization level environment YAML</summary>
+   
+		<summary>Organization level environment YAML</summary>
 
 ```
 environment:
@@ -380,7 +386,8 @@ environment:
 Expand the section below to see a sample organization level infrastructure definition YAML.
 
 <details>
-   <summary>Organization level infrastructure definition YAML</summary>
+   
+		<summary>Organization level infrastructure definition YAML</summary>
 
 ```
 infrastructureDefinition:
@@ -422,7 +429,8 @@ For information about creating a Harness platform environment, go to [harness_pl
 Expand the section below to see a sample platform environment in Terraform.
 
 <details>
-   <summary>Harness platform environment</summary>
+   
+		<summary>Harness platform environment</summary>
 
 ```
 resource "harness_platform_environment" "example" {
@@ -492,7 +500,8 @@ For information about creating a Harness platform infrastructure definition, go 
 Expand the section below to see a sample platform infrastructure definition in Terraform.
 
 <details>
-   <summary>Harness platform infrastructure definition</summary>
+   
+		<summary>Harness platform infrastructure definition</summary>
 
 ```
 resource "harness_platform_infrastructure" "example" {
@@ -607,7 +616,7 @@ Tags can be attached to infrastructure definitions representing their characteri
 
 ![](./static/services-and-environments-overview-28.png)
 
-When you select the **Infrastructure Definition** for a stage, the attached tags can be accessed using their keys with the expression, `<+infra.tags.tag_key>`. This expression is available for use throughout the stage.
+When you select the **Infrastructure Definition** for a stage, the attached tags can be accessed using their keys with the expression, `\<+infra.tags.tag_key\>`. This expression is available for use throughout the stage.
 
 For example, skipping certain steps in pipeline based on the tags attached to the infrastructure.
 

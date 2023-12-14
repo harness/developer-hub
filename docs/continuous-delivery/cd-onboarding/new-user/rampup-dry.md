@@ -54,7 +54,8 @@ Cons:
 - Centralized ownership also means one sub-team maintains an entire team's configuration. At scale, it can become difficult to keep up with the demand of changes being requested by the application teams to a specific pipeline or template.
 
 <details>
-<summary>Centralized deployment configuration modeled</summary>
+
+		<summary>Centralized deployment configuration modeled</summary>
 
 ```
 ├── .harness
@@ -84,7 +85,8 @@ Cons:
 - Maintenance and hygiene of changes are now managed by the dev team. This means they now own the release of changes to their pipelines, the quality of their changes, and the validation of the changes.
 
 <details>
-<summary>Manage Git and Harness CD configuration together</summary>
+
+		<summary>Manage Git and Harness CD configuration together</summary>
 
 ```
 ├── .harness

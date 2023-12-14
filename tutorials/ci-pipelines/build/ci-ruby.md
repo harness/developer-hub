@@ -312,7 +312,8 @@ Use the [setup-ruby](https://github.com/ruby/setup-ruby) action in a [GitHub Act
 You will need a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token), stored as a [secret](/docs/platform/secrets/add-use-text-secrets), with read-only access for GitHub authentication.
 
 <details>
-<summary>Install one Ruby version</summary>
+
+		<summary>Install one Ruby version</summary>
 
 ```yaml
               - step:
@@ -328,7 +329,8 @@ You will need a [personal access token](https://docs.github.com/en/authenticatio
 </details>
 
 <details>
-<summary>Use multiple Ruby versions</summary>
+
+		<summary>Use multiple Ruby versions</summary>
 
 1. Add a [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
@@ -364,7 +366,8 @@ You will need a [personal access token](https://docs.github.com/en/authenticatio
 Specify the desired [Ruby Docker image](https://hub.docker.com/_/ruby) tag in your steps. There is no need for a separate install step when using Docker.
 
 <details>
-<summary>Use a specific Ruby version</summary>
+
+		<summary>Use a specific Ruby version</summary>
 
 ```yaml
               - step:
@@ -382,7 +385,8 @@ Specify the desired [Ruby Docker image](https://hub.docker.com/_/ruby) tag in yo
 </details>
 
 <details>
-<summary>Use multiple Ruby versions</summary>
+
+		<summary>Use multiple Ruby versions</summary>
 
 1. Add a [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 

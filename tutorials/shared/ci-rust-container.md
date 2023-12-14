@@ -311,7 +311,8 @@ You must add a __connector__ that allows Harness to connect to your Docker Hub c
 Next, you'll use a **Background** step to add a dependent service called `rgreeter`.
 
 <details>
-<summary>How can Harness pipeline steps connect to dependent services?</summary>
+
+		<summary>How can Harness pipeline steps connect to dependent services?</summary>
 
 Harness pipelines support a concept called __Service Dependencies__, which are detached services that are accessible to all steps in a stage. Service dependencies support workflows such as:
 
@@ -448,11 +449,11 @@ If your pipeline succeeded, add two more steps to build your Rust application im
    |  Key    | Value    |
    | ---  | ----------- |
    |`DOCKER_HUB_USERNAME`| The username for the Docker Hub account where you want to push the image|
-   |`DOCKER_HUB_PASSWORD`| `<+secrets.getValue("docker_hub_password")>`|
+   |`DOCKER_HUB_PASSWORD`| `\<+secrets.getValue("docker_hub_password")\>`|
    |`CONTEXT`| `/harness/target`|
    |`IMAGE_REGISTRY`| `docker.io`|
    |`IMAGE_REPO`| `YOUR_DOCKERHUB_USERNAME/rust-greeter`|
-   |`IMAGE_TAG`| `<+codebase.shortCommitSha>`|
+   |`IMAGE_TAG`| `\<+codebase.shortCommitSha\>`|
 
    ![Step Push Env](../ci-pipelines/static/ci-tutorial-rust-container/rust_pipeline_step_push_env_vars.png)
 

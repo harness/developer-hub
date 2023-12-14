@@ -32,7 +32,8 @@ The Continuous Delivery & GitOps Administrator exam tests your knowledge and ski
 ## Exam Objectives
 
 <details>
-<summary>List of Objectives</summary>
+
+		<summary>List of Objectives</summary>
 
 The following is a detailed list of exam objectives:
 

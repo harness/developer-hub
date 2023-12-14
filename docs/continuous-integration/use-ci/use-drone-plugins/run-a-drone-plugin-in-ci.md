@@ -19,7 +19,8 @@ Drone plugins are Docker containers that perform predefined tasks. You can use t
 This topic assumes you're familiar with [pipeline creation](../prep-ci-pipeline-components.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
 
 <details>
-<summary>About Drone</summary>
+
+		<summary>About Drone</summary>
 
 [Drone](https://docs.drone.io/) was acquired by Harness in 2020 and is part of Harness CI.
 
@@ -86,7 +87,7 @@ This example downloads the Drone Linux amd64 tarball. It provides a username and
                     settings:
                       source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz ## Target to download
                       username: my-username ## Username for authentication to the source
-                      password: `<+secrets.getValue("mygithubpersonalaccesstoken")>` ## Password for authentication to the source
+                      password: `\<+secrets.getValue("mygithubpersonalaccesstoken")\>` ## Password for authentication to the source
 ```
 
 ```mdx-code-block
@@ -130,7 +131,7 @@ You could also [write a custom plugin](./custom_plugins.md) that downloads, unzi
 
 :::tip Tips
 
-You can use variable expressions for **Settings** values. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
+You can use variable expressions for **Settings** values. For example, `credentials: \<+stage.variables.[TOKEN_SECRET]\>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
 
 Create [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords and tokens, required by the plugin.
 
@@ -162,7 +163,8 @@ Harness CI supports `DRONE_` environment variables. For more information, go to 
 Here are some YAML examples and additional information about specific Drone plugins.
 
 <details>
-<summary>Artifact Metadata Publisher plugin</summary>
+
+		<summary>Artifact Metadata Publisher plugin</summary>
 
 Use the [artifact-metadata-publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish a URL of an artifact file to the [Artifacts tab](../viewing-builds.md).
 
@@ -186,7 +188,8 @@ For more information about uploading and publishing artifacts, go to [Build and 
 </details>
 
 <details>
-<summary>GitHub Actions plugin</summary>
+
+		<summary>GitHub Actions plugin</summary>
 
 * With Harness Cloud build infrastructure, use the [GitHub Action step](./ci-github-action-step.md).
 * With other build infrastructures, use the [GitHub Actions Drone plugin in a Plugin step](./run-a-git-hub-action-in-cie.md).
@@ -194,14 +197,16 @@ For more information about uploading and publishing artifacts, go to [Build and 
 </details>
 
 <details>
-<summary>Jira plugin</summary>
+
+		<summary>Jira plugin</summary>
 
 Go to [Integrate Jira in a CI pipeline](./ci-jira-int-plugin.md).
 
 </details>
 
 <details>
-<summary>Slack plugin</summary>
+
+		<summary>Slack plugin</summary>
 
 Harness has built-in [notifications](/docs/category/notifications) for email, Microsoft Teams, and Slack.
 

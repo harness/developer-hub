@@ -26,7 +26,8 @@ You can use a Kubernetes cluster build infrastructure for **Build** stages in Ha
 3. [Configure the build infrastructure in Harness.](#configure-the-build-infrastructure-in-harness)
 
 <details>
-<summary>Video summary</summary>
+
+		<summary>Video summary</summary>
 
 Here's a short video that walks you through adding a Harness Kubernetes Cluster connector and Harness Kubernetes delegate. The delegate is added to the target cluster, then the Kubernetes Cluster connector uses the delegate to connect to the cluster.
 
@@ -64,7 +65,8 @@ Autopilot clusters do not allow privileged pods, which means you can't use [Dock
 Additionally, GKE Autopilot sets resource limits equal to resource requests for each container. This can cause your builds to allocate more resources than they need, resulting in higher cloud costs with no added benefit.
 
 <details>
-<summary>GKE Autopilot cloud cost demonstration</summary>
+
+		<summary>GKE Autopilot cloud cost demonstration</summary>
 
 Consider the following CI stage:
 
@@ -142,7 +144,8 @@ This means that if delegate selectors are present at the pipeline and stage leve
 For example, assume you have a pipeline with three stages called `alpha`, `beta`, and `gamma`. If you specify a stage-level delegate selector on `alpha` and you don't specify a pipeline-level delegate selector, then `alpha` uses the stage-level delegate, and the other stages (`beta` and `gamma`) use the Connector delegate.
 
 <details>
-<summary>Early access feature: Use delegate selectors for codebase tasks</summary>
+
+		<summary>Early access feature: Use delegate selectors for codebase tasks</summary>
 
 Currently, delegate selectors for CI codebase tasks is behind the feature flag `CI_CODEBASE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
@@ -167,7 +170,7 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
    For more information about Windows builds, go to [Run Windows builds in a Kubernetes cluster build infrastructure](./run-windows-builds-in-a-kubernetes-build-infrastructure.md).
 4. In **Kubernetes Cluster**, select your Kubernetes cluster connector.
 5. In **Namespace**, enter the Kubernetes [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) to use when this build runs.
-   You can use plain text, [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) (`<+input>`), or an expression for the namespace.
+   You can use plain text, [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) (`\<+input\>`), or an expression for the namespace.
    Your Kubernetes delegate can be in a different namespace than the one defined here.
 6. If necessary, configure any advanced settings, as described below and in the [CI Build stage settings](../ci-stage-settings.md). Review the details of each setting to understand whether it is required for your configuration.
 
@@ -200,7 +203,7 @@ In Harness, go to a pipeline where you want to use the Kubernetes cluster build 
 
 * `type`: `KubernetesDirect`
 * `spec.connectorRef`: Enter your Kubernetes cluster connector ID.
-* `spec.namespace`: Enter the Kubernetes [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) to use when this build runs. You can also use [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) (`<+input>`) or an expression for the namespace. Your Kubernetes delegate can be in a different namespace than the one defined here.
+* `spec.namespace`: Enter the Kubernetes [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) to use when this build runs. You can also use [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) (`\<+input\>`) or an expression for the namespace. Your Kubernetes delegate can be in a different namespace than the one defined here.
 * `spec.os`: Specify the OS, `Linux` or `Windows`. For more information about Windows builds, go to [Run Windows builds in a Kubernetes cluster build infrastructure](./run-windows-builds-in-a-kubernetes-build-infrastructure.md).
 * Advanced settings: If necessary, configure any advanced settings, as described below and in the [CI Build stage settings](../ci-stage-settings.md). Review the details of each setting to understand whether it is required for your configuration.
 

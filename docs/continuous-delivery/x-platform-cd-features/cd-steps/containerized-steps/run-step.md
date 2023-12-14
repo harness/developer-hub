@@ -220,7 +220,8 @@ Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/pla
 Output variables expose values for use by other, subsequent steps or stages in the pipeline.
 
 <details>
-<summary>YAML example: Output variable</summary>
+
+		<summary>YAML example: Output variable</summary>
 
 In the following YAML example, step `alpha` exports an output variable called `myVar`, and then step `beta` references that output variable.
 

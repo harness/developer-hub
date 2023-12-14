@@ -64,7 +64,7 @@ When you add the Helm Chart to Harness as a Manifest, you have different options
 * **Runtime Input:** if you use [Runtime input](../variables-and-expressions/runtime-inputs.md) for **Chart Version**, you can enter the version to use in your trigger as part of the **Trigger Pipeline Inputs**. Go to [Select pipeline inputs](trigger-pipelines-on-new-helm-chart.md#step-4-select-pipeline-inputs) below.
 * **Expression:** if you use [Expression](../variables-and-expressions/runtime-inputs.md) for **Chart Version**, you can:
 	+ Use a [Harness variable expression](../variables-and-expressions/harness-variables.md), like a Service variable.
-	+ Use the expression `<+trigger.manifest.version>` to have the new chart version that initiated the Trigger passed in as the version to deploy.
+	+ Use the expression `\<+trigger.manifest.version\>` to have the new chart version that initiated the Trigger passed in as the version to deploy.
 
 ![](./static/trigger-pipelines-on-new-helm-chart-05.png)
 #### OCI Helm registries are not supported with Harness Triggers

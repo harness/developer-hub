@@ -28,7 +28,8 @@ This topic provides settings and permissions for the Configure Service Dependenc
 Review this important information about Configure Service Dependency steps.
 
 <details>
-<summary>Add a Health Check to Verify that the Service is Up</summary>
+
+		<summary>Add a Health Check to Verify that the Service is Up</summary>
 After a container starts, the software running inside the container takes time to initialize and begin accepting requests. Before you send the first request, add a health check to verify that the service is running. You can add a `sleep` command to a Run Step, or implement a simple `while` loop to make the Step wait until the service is up. For example, if your Stage uses a dind step, you can run the following:
 
 ```
@@ -39,7 +40,8 @@ done
 </details>
 
 <details>
-<summary>Service and Step Networking</summary>
+
+		<summary>Service and Step Networking</summary>
 
 Service and Step containers within the same Stage all share the same network. To communicate with a Service, use the local-host address and the port number defined in the Docker image. For example, you can use `127.0.0.1:6379` to communicate with a Redis server or `localhost:27017` to communicate with a Mongo database (assuming the default ports aren't overridden).
 

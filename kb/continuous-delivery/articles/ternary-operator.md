@@ -24,7 +24,7 @@ Here's how it works:
 
 Let's take an example for ternary operators:  
 
-Create a trigger for a CD pipeline and it should automatically pick the tag value <+trigger.payload.tag> when pipeline is executed via trigger and it should pick <+pipeline.variables.tag> when the pipeline is executed manually.
+Create a trigger for a CD pipeline and it should automatically pick the tag value \<+trigger.payload.tag\> when pipeline is executed via trigger and it should pick \<+pipeline.variables.tag\> when the pipeline is executed manually.
 
 
 ## Resolution
@@ -37,8 +37,8 @@ You can give a condition :
 ```
  
 
-For the true condition <+pipeline.triggerType> should be WEHOOK_CUSTOM /docs/platform/variables-and-expressions/harness-variables/#pipelinetriggertype 
-and for the false condition you can put a runtime input <+input> or a pipeline varibale
+For the true condition \<+pipeline.triggerType\> should be WEHOOK_CUSTOM /docs/platform/variables-and-expressions/harness-variables/#pipelinetriggertype 
+and for the false condition you can put a runtime input \<+input\> or a pipeline varibale
 
 Finally the ternary operator condition should look like: 
 

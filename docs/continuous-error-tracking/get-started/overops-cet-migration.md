@@ -239,7 +239,7 @@ ENV ET_APPLICATION_NAME=cetmigrationpoc
 ENV ET_DEPLOYMENT_NAME=1
 ENV ET_ENV_ID=staging
 ENV ET_TOKEN=b34*****-****-****-****-***********42a
-RUN wget -qO- <https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz> | tar -xz
+RUN wget -qO- [https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz](https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz) | tar -xz
 ENTRYPOINT java -jar yourapp.jar
 ```
 

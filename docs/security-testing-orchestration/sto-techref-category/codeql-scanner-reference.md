@@ -76,7 +76,8 @@ The recommended workflow is to add a CodeQL step to a Security Tests or CI Build
 
 
 <details>
-    <summary>CodeQL Step Palette</summary>
+    
+		<summary>CodeQL Step Palette</summary>
 
 ![](./static/codeql-security-scan-step.png) 
 

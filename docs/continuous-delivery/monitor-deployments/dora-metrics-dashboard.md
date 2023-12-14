@@ -58,7 +58,7 @@ You can mark a pipeline execution as a restored/reverted pipeline and link it to
 
 You can then use the difference between the end time of the parent execution and the end time of the reverted execution to capture mean time to restore.
 
-To have a failed pipeline execution revert automatically, when you create a new pipeline stage, add the following tag with a runtime input (`<+input>`) to the pipeline YAML.
+To have a failed pipeline execution revert automatically, when you create a new pipeline stage, add the following tag with a runtime input (`\<+input\>`) to the pipeline YAML.
 
 ```
 tags:
@@ -67,7 +67,7 @@ tags:
 
 :::note
 
-The Harness UI doesn't support runtime inputs (`<+input>`) for tags. Select the YAML view to add runtime inputs to tags. 
+The Harness UI doesn't support runtime inputs (`\<+input\>`) for tags. Select the YAML view to add runtime inputs to tags. 
 
 :::
 

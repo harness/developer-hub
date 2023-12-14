@@ -96,7 +96,8 @@ To obtain the Google Cloud's service account key file, go to the Google document
 Select this option to allow the connector to inherit its authentication credentials from the Harness Delegate that is running in GCP.
 
 <details>
-<summary>Learn more about credential inheritance</summary>
+
+		<summary>Learn more about credential inheritance</summary>
 
 * **IAM role inheritance:** The connector inherits the GCP IAM role assigned to the delegate in GCP, such a Harness Kubernetes delegate running in Google Kubernetes Engine (GKE). Make sure the delegate has the IAM roles that your connector needs.
 * **GCP workload identity:** If you installed the Harness [Kubernetes delegate](../../../../first-gen/firstgen-platform/account/manage-delegates/install-kubernetes-delegate.md) in a Kubernetes cluster in GKE that has [GCP Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=tr#enable_on_cluster) enabled and uses the same service account and node pool annotation, then the Google Cloud Platform (GCP) connector inherits these credentials if it uses that delegate.

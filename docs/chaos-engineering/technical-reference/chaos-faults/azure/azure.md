@@ -5,9 +5,12 @@ title: Chaos faults for Azure
 
 <!-- Import statement for Custom Components -->
 
+```
 import FaultDetailsCard from "@site/src/components/ChaosEngineering/FaultDetailsCard";
 import ExperimentListSection from "@site/src/components/ChaosEngineering/ExperimentListSection"
 import { experiments } from "./experiments"
+```
+
 
 <!-- Heading Description -->
 
@@ -26,7 +29,8 @@ Azure disk loss detaches the virtual disk from an Azure instance.
 - This fault checks the performance of the application (or process) running on the instance.
 
 <accordion color="green">
-    <summary>Use cases</summary>
+    
+		<summary>Use cases</summary>
 
 - Determines the resilience of an application to unexpected disk detachment. 
 - Determines how quickly the Azure instance recovers from such failures. 
@@ -46,7 +50,8 @@ Azure instance CPU hog disrupts the state of infrastructure resources.
 
 
 <accordion color="green">
-    <summary>Use cases</summary>
+    
+		<summary>Use cases</summary>
 
 - Determines the resilience of an Azure instance and the application deployed on the instance during unexpected excessive utilization of the CPU resources. 
 - Determines how Azure scales the CPU resources to maintain the application when it is under stress. 
@@ -72,7 +77,8 @@ Azure instance I/O stress disrupts the state of infra resources.
 
 
 <accordion color="green">
-    <summary>Use cases</summary>
+    
+		<summary>Use cases</summary>
 
 - Determines the resilience of an Azure instance when unexpected stress is applied on the I/O sources. 
 - Determines how Azure scales the resources to maintain the application under stress. 
@@ -98,7 +104,8 @@ Azure instance memory hog disrupts the state of infrastructure resources.
 - It utilizes memory in excess on the Azure Instance using the bash script for a specific duration.
 
 <accordion color="green">
-<summary>Fault usage</summary>
+
+		<summary>Fault usage</summary>
 
 - Determines the resilience of an Azure instance when memory resources are unexpectedly utilized in excess. 
 - Determines how Azure scales the memory to maintain the application when resources are consumed heavily. 
@@ -121,7 +128,8 @@ Azure instance stop powers off from an Azure instance during a specific duration
 
 
 <accordion color="green">
-    <summary>Use cases</summary>
+    
+		<summary>Use cases</summary>
 
 - Determines the resilience of an application to unexpected power off of the Azure instances. 
 - Determines how the application handles the requests and how quickly it recovers from such failures.
@@ -141,7 +149,8 @@ Azure web app access restrict causes a split brain condition by restricting the 
 - It checks the performance of the application (or process) running on the instance.
 
 <accordion color="green">
-    <summary>Use cases</summary>
+    
+		<summary>Use cases</summary>
 Azure web app access restrict determines the resilience of an application when access to a specific application service instance is restricted.
 </accordion>
 
@@ -155,7 +164,8 @@ Azure web app stop shuts down the application. It checks whether the requests ha
 
 
 <accordion color="green">
-    <summary>Use cases</summary>
+    
+		<summary>Use cases</summary>
 
 - Determines the resilience of a web application to unplanned halts (or stops). 
 - Determines the resilience based on how quickly and efficiently the application recovers from the failure by re-routing the traffic to a different instance on the same application service.

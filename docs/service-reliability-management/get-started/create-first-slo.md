@@ -23,7 +23,8 @@ A Service Level Objective (SLO) is a target for the level of service you aim to 
 - A project in Harness. If you have not already created one, follow these steps.
 
 <details>
-<summary><b> Steps to create a project in Harness.</b></summary>
+
+		<summary><b> Steps to create a project in Harness.</b></summary>
 
 1. In Harness, select **Service Reliability** > **Create Project**.
    
@@ -203,12 +204,12 @@ Based on the evaluation method you select, configure the following SLI settings:
 
 2. Set the availability threshold to determine whether the SLI is considered acceptable or not. You can use one of the following operators from the **SLI value is good if the availability** dropdown list to determine the threshold:
    
-   - **<**
-   - **>**
-   - **<=**
-   - **>=**
+   - **\<**
+   - **\>**
+   - **\<=**
+   - **\>=**
 
-   For example, select the **<=** operator from the dropdown list and enter 99.5 as the objective value. This means that the SLI will be considered good as long as its value is 99.5% or higher. If the SLI falls below this threshold, it indicates that the service is not meeting the required level of availability and needs to be improved.
+   For example, select the **\<=** operator from the dropdown list and enter 99.5 as the objective value. This means that the SLI will be considered good as long as its value is 99.5% or higher. If the SLI falls below this threshold, it indicates that the service is not meeting the required level of availability and needs to be improved.
 
 3. In certain situations, a metric may deviate from its expected behavior and miss out on some data points. In such cases, Harness SRM allows you to interpret these undetected metric values from your Health Source as "Good", "Bad", or "Ignore". You can set this by selecting the appropriate value next to **Consider missing metric data as**. The available options are **Good**, **Bad**, and **Ignore**.
    

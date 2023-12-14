@@ -627,7 +627,7 @@ output "default_namespace" {
 
 ```
 
-In the Harness Infrastructure Definition, you map that output to the **Namespace** setting using an expression in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.default_namespace>`.
+In the Harness Infrastructure Definition, you map that output to the **Namespace** setting using an expression in the format `\<+provisioner.OUTPUT_NAME\>`, such as `\<+provisioner.default_namespace\>`.
 
 <docimage path={require('./static/77880a34dd7812c1e5567a5ef69f86754467f5a0ebefaba06268eedef8ca0aaf.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -656,7 +656,8 @@ Here are examples for each connection method:
 Here's an example of a dynamic provisioning script using Terraform and how to map its namespace output to the required Harness Infrastructure Definition settings for the connection method. 
 
 <details>
-<summary>Terraform provisioner example</summary>
+
+		<summary>Terraform provisioner example</summary>
 
 ```yaml
 
@@ -753,7 +754,8 @@ Here is what the mapping looks like in the Harness Infrastructure Definition:
 Here's an example of a dynamic provisioning script using Terraform and how to map its namespace output to the required Harness Infrastructure Definition settings for the connection method.
 
 <details>
-<summary>Terraform provisioner example</summary>
+
+		<summary>Terraform provisioner example</summary>
 
 ```yaml
 
@@ -809,7 +811,8 @@ Here is what the mapping looks like in the Harness Infrastructure Definition:
 Here's an example of a dynamic provisioning script using Terraform and how to map its namespace output to the required Harness Infrastructure Definition settings for the connection method.
 
 <details>
-<summary>Terraform provisioner example</summary>
+
+		<summary>Terraform provisioner example</summary>
 
 ```yaml
 
@@ -883,7 +886,8 @@ Here is what the mapping looks like in the Harness Infrastructure Definition:
 Here's an example of a dynamic provisioning script using Terraform and how to map its namespace output to the required Harness Infrastructure Definition settings for the connection method.
 
 <details>
-<summary>Terraform provisioner example</summary>
+
+		<summary>Terraform provisioner example</summary>
 
 ```yaml
 
@@ -961,7 +965,7 @@ Here is what the mapping looks like in the Harness Infrastructure Definition:
 
 You can use the value of the Infrastructure Definition **Namespace** setting in your manifest.
 
-You reference the **Namespace** setting value in your values YAML using the Harness expression: `<+infra.namespace>`.
+You reference the **Namespace** setting value in your values YAML using the Harness expression: `\<+infra.namespace\>`.
 
 For example, if you entered `default` in **Namespace**, in your values.yaml you can use:
 
@@ -1004,7 +1008,7 @@ The **Release name** setting is located in **Advanced** section of the **Cluster
 
 During deployment Harness creates a ConfigMap listing the resources of the release and uses the **Release name** for tracking them.
 
-The **Release name** is a combination of `release-` and a unique string created using the Harness expression `<+INFRA_KEY>`.
+The **Release name** is a combination of `release-` and a unique string created using the Harness expression `\<+INFRA_KEY\>`.
 
 For example, in a Kubernetes deployment you can see `harness.io/release-name=release-2f9eadcc06e2c2225265ab3cbb1160bc5eacfd4f`.
 
@@ -1012,7 +1016,7 @@ In Harness, the **Release Name** is displayed in the logs of the deployment step
 
 ![](./static/define-your-kubernetes-target-infrastructure-00.png)
 
-The release name must be unique across the cluster. `release-<+INFRA_KEY>` ensures a unique name.
+The release name must be unique across the cluster. `release-\<+INFRA_KEY\>` ensures a unique name.
 
 `release-` is used as a prefix because Kubernetes service and pod names must follow RFC-1035 and must consist of lowercase alphanumeric characters or '-', start with an alphabetic character, and end with an alphanumeric character.
 

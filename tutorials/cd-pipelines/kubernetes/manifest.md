@@ -58,7 +58,7 @@ Whether you're new to GitOps or an experienced practitioner, this guide will ass
 
 :::
 
-## Before you begin {#before-you-begin-gitops}
+## Before you begin \{#before-you-begin-gitops\}
 
 Verify that you have the following:
 
@@ -94,7 +94,8 @@ Verify that you have the following:
 ### GitOps Agent
 
 <details open>
-<summary>What is a GitOps Agent?</summary>
+
+		<summary>What is a GitOps Agent?</summary>
     
 A Harness GitOps Agent is a worker process that runs in your environment, makes secure, outbound connections to Harness, and performs all the GitOps tasks you request in Harness.
 
@@ -195,7 +196,8 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 ### GitOps Agent
 
 <details open>
-<summary>What is a GitOps Agent?</summary>
+
+		<summary>What is a GitOps Agent?</summary>
     
 A Harness GitOps Agent is a worker process that runs in your environment, makes secure, outbound connections to Harness, and performs all the GitOps tasks you request in Harness.
 
@@ -260,7 +262,8 @@ Download the Harness GitOps Agent script using either the YAML or Helm Chart opt
 ### Repositories
 
 <details open>
-<summary>What is a GitOps Repository?</summary>
+
+		<summary>What is a GitOps Repository?</summary>
     
 A Harness GitOps Repository is a repo containing the declarative description of a desired state. The declarative description can be in Kubernetes manifests, Helm Chart, Kustomize manifests, etc.
 
@@ -287,7 +290,8 @@ If you're using a Flux GitOps Reconciler, Flux must be present in the destinatio
 ### Clusters
 
 <details open>
-<summary>What is a GitOps Cluster?</summary>
+
+		<summary>What is a GitOps Cluster?</summary>
     
 A Harness GitOps Cluster is the target deployment cluster that is compared to the desire state. Clusters are synced with the source manifests you add as GitOps Repositories.
 
@@ -310,7 +314,8 @@ If you're using a Flux GitOps Reconciler, Flux must be present in the destinatio
 ### Applications
 
 <details open>
-<summary>What is a GitOps Application?</summary>
+
+		<summary>What is a GitOps Application?</summary>
     
 GitOps Applications are how you manage GitOps operations for a given desired state and its live instantiation.
 A GitOps Application collects the Repository (**what you want to deploy**), Cluster (**where you want to deploy**), and Agent (**how you want to deploy**). You select these entities when you set up your Application.
@@ -391,7 +396,8 @@ cd gitops-terraform-onboarding/
 terraform init
 ```
 <details open>
-<summary>What is a Terraform Provider?</summary>
+
+		<summary>What is a Terraform Provider?</summary>
 
 A Terraform Provider is a plugin that allows Terraform to define and manage resources using a particular software API. In this tutorial these resources will be Harness entities.
 
@@ -440,7 +446,8 @@ Never store your Harness API Key in a plain text configuration file or in versio
 ### Terraform module
 
 <details open>
-<summary>What is a Terraform module?</summary>
+
+		<summary>What is a Terraform module?</summary>
 
 A Terraform module is a collection of files that define the desired state to be enforced by Terraform. These files normally have the .tf extension.
 
@@ -469,7 +476,9 @@ resource "harness_platform_gitops_agent" "gitops_agent" {
 }
 ```
 
-If you have an *existing* Argo CD instance, change the <strong>type</strong> argument to <strong>CONNECTED_ARGO_PROVIDER</strong>. Otherwise leave as is.
+If you have an *existing* Argo CD instance, change the 
+		<strong>type</strong> argument to 
+		<strong>CONNECTED_ARGO_PROVIDER</strong>. Otherwise leave as is.
 
 2. If you’ve made changes to any configuration files, verify the syntax is still valid. 
 
@@ -572,7 +581,7 @@ You can choose to proceed with the tutorial either by using the command-line int
 <TabItem value="cli" label="CLI">
 ```
 
-## Before you begin {#before-you-begin-cli}
+## Before you begin \{#before-you-begin-cli\}
 
 Verify the following:
 
@@ -584,7 +593,7 @@ Verify the following:
 5. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
     - For details on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
-## Getting Started with Harness CD {#getting-started-harness-cd-cli}
+## Getting Started with Harness CD \{#getting-started-harness-cd-cli\}
 ----------------------------------
 
 1. Download and Configure Harness CLI.
@@ -706,7 +715,8 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
 #### Secrets
 
 <details open>
-<summary>What are Harness secrets?</summary>
+
+		<summary>What are Harness secrets?</summary>
 
 Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
@@ -722,7 +732,8 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 #### Connectors
 
 <details open>
-<summary>What are connectors?</summary>
+
+		<summary>What are connectors?</summary>
 
 Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. Explore connector how-tos [here](/docs/category/connectors).
 
@@ -744,7 +755,8 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 ### Environment
 
 <details open>
-<summary>What are Harness environments?</summary>
+
+		<summary>What are Harness environments?</summary>
 
 Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
 
@@ -766,7 +778,8 @@ Environments define the deployment location, categorized as **Production** or **
 ### Services
 
 <details open>
-<summary>What are Harness services?</summary>
+
+		<summary>What are Harness services?</summary>
 
 In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
 
@@ -782,7 +795,8 @@ In Harness, services represent what you deploy to environments. You use services
 ### Pick Your Deployment Strategy
 
 <details open>
-<summary>What are Harness pipelines?</summary>
+
+		<summary>What are Harness pipelines?</summary>
 
 A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
 
@@ -795,7 +809,8 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 ```
 
 <details open>
-<summary>What are Canary deployments?</summary>
+
+		<summary>What are Canary deployments?</summary>
 
 A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
 
@@ -816,7 +831,8 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 ```
 
 <details open>
-<summary>What are Blue Green deployments?</summary>
+
+		<summary>What are Blue Green deployments?</summary>
 
 Blue Green deployments involve running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on a **new** service version in the stage environment first. Next, traffic is shifted from the prod environment to stage, and the previous service version running on prod is scaled down. Blue Green deployments are also referred to as red/black deployment by some vendors. For more information, go to [When to use Blue Green deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments).
 
@@ -835,7 +851,8 @@ Blue Green deployments involve running two identical environments (stage and pro
 <TabItem value="rolling" label="Rolling">
 ```
 <details open>
-<summary>What are Rolling deployments?</summary>
+
+		<summary>What are Rolling deployments?</summary>
 
 Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
 
@@ -861,7 +878,7 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 </TabItem>
 <TabItem value="ui" label="UI">
 ```
-## Before you begin {#before-you-begin-ui}
+## Before you begin \{#before-you-begin-ui\}
 
 Verify that you have the following:
 
@@ -872,7 +889,7 @@ Verify that you have the following:
 4. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
     - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) for more information on forking a GitHub repository.
 
-## Getting Started with Harness CD {#getting-started-harness-cd-ui}
+## Getting Started with Harness CD \{#getting-started-harness-cd-ui\}
 ----------------------------------
 
 1. Log in to [Harness](https://app.harness.io/).
@@ -887,7 +904,8 @@ For the pipeline to run successfully, please follow the remaining steps as they 
 ### Delegate
 
 <details open>
-<summary>What is the Harness delegate?</summary>
+
+		<summary>What is the Harness delegate?</summary>
 
 The Harness delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
@@ -937,7 +955,8 @@ You can also follow the [Install Harness Delegate on Kubernetes or Docker](/tuto
 ### Secrets
 
 <details open>
-<summary>What are Harness secrets?</summary>
+
+		<summary>What are Harness secrets?</summary>
 
 Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
@@ -953,7 +972,8 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 ### Connectors
 
 <details open>
-<summary>What are connectors?</summary>
+
+		<summary>What are connectors?</summary>
 
 Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. Explore connector how-tos [here](/docs/category/connectors).
 
@@ -978,7 +998,8 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 ### Environment
 
 <details open>
-<summary>What are Harness environments?</summary>
+
+		<summary>What are Harness environments?</summary>
 
 Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
 
@@ -995,7 +1016,8 @@ Environments define the deployment location, categorized as **Production** or **
 ### Services
 
 <details open>
-<summary>What are Harness services?</summary>
+
+		<summary>What are Harness services?</summary>
 
 In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
 
@@ -1011,7 +1033,8 @@ In Harness, services represent what you deploy to environments. You use services
 ### Pipeline
 
 <details open>
-<summary>What are Harness pipelines?</summary>
+
+		<summary>What are Harness pipelines?</summary>
 
 A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
 
@@ -1023,7 +1046,8 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 ```
 
 <details open>
-<summary>What are Canary deployments?</summary>
+
+		<summary>What are Canary deployments?</summary>
 
 A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
 
@@ -1050,7 +1074,8 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 ```
 
 <details open>
-<summary>What are Blue Green deployments?</summary>
+
+		<summary>What are Blue Green deployments?</summary>
 
 Blue Green deployments involve running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on a **new** service version in the stage environment first. Next, traffic is shifted from the prod environment to stage, and the previous service version running on prod is scaled down. Blue Green deployments are also referred to as red/black deployment by some vendors. For more information, go to [When to use Blue Green deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments).
 
@@ -1078,7 +1103,8 @@ Blue Green deployments involve running two identical environments (stage and pro
 ```
 
 <details open>
-<summary>What are Rolling deployments?</summary>
+
+		<summary>What are Rolling deployments?</summary>
 
 Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
 

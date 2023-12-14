@@ -223,7 +223,8 @@ You can also add values YAML values and/or files or Kustomize Patch files in the
      - If you select **Inline**, enter a name for you to identify the Kustomize Patch file and the Patch YAML values for the override.
        
        <details>
-       <summary>Sample Kuztomize Patch YAML</summary>
+       
+		<summary>Sample Kuztomize Patch YAML</summary>
 
        ```
        apiVersion: apps/v1

@@ -95,9 +95,9 @@ Enter a name to map to the metric name. For example, if the metric name is `kube
 
 Run the query using **Guide from an example** to see the JSON response and pick a key to map to **Metrics Value**.
 
-In **Guide from an example**, specify the time range and host for the query. To specify the time range, click in the **${startTime}** and **${endTime}** calendars.
+In **Guide from an example**, specify the time range and host for the query. To specify the time range, click in the **$\{startTime\}** and **$\{endTime\}** calendars.
 
-To specify the **${host}**, get the full name of a host from Datadog Metrics Explorer:
+To specify the **$\{host\}**, get the full name of a host from Datadog Metrics Explorer:
 
 [![](./static/verify-deployments-with-datadog-as-a-custom-apm-06.png)](./static/verify-deployments-with-datadog-as-a-custom-apm-06.png)
 
@@ -105,7 +105,7 @@ To copy the name, click in the graph and click **Copy tags to clipboard**.
 
 [![](./static/verify-deployments-with-datadog-as-a-custom-apm-08.png)](./static/verify-deployments-with-datadog-as-a-custom-apm-08.png)
 
-Next, paste the name in the **${host}** field.
+Next, paste the name in the **$\{host\}** field.
 
 [![](./static/verify-deployments-with-datadog-as-a-custom-apm-10.png)](./static/verify-deployments-with-datadog-as-a-custom-apm-10.png)
 

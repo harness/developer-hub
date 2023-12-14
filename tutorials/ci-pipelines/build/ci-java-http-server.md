@@ -394,7 +394,8 @@ This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integra
 If you copy this example, replace the placeholder values with appropriate values for your Harness project, connector IDs, account/user names, and repo names.
 
 <details>
-<summary>Pipeline YAML</summary>
+
+		<summary>Pipeline YAML</summary>
 
 ```yaml
 pipeline:

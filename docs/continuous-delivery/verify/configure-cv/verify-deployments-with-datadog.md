@@ -175,8 +175,8 @@ kubernetes.cpu.usage{cluster-name:chi-play};kubernetes.memory.total{cluster-name
 
 In the example above, 'a' and 'b' represent the respective queries:
 
-* a = kubernetes.memory.usage{cluster-name:chi-play}
-* b = kubernetes.memory.total{cluster-name:chi-play}
+* a = kubernetes.memory.usage\{cluster-name:chi-play\}
+* b = kubernetes.memory.total\{cluster-name:chi-play\}
 
 You can use multiple queries represented by alphabetical variables (example: a, b, c, and so on) in the final formula, but only one formula is allowed per query.
 
@@ -211,7 +211,7 @@ The recommended **Duration** is **10 min** for logging providers and **15 m
 
 In **Artifact Tag**, use a [Harness expression](/docs/platform/variables-and-expressions/harness-variables/)
 
-The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
+The expression `\<+serviceConfig.artifacts.primary.tag\>` refers to the primary artifact.
 
 ## Option: Advanced Settings
 

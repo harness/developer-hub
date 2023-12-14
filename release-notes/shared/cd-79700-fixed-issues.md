@@ -30,7 +30,7 @@
   This issue is fixed. Instead of passing data using YAML, Harness now uses JSON for data processing. This helps preserve multi-line strings and YAML structures properly to process pipeline YAML and user inputs. Enable the feature flag, `PIE_PROCESS_ON_JSON_NODE` to leverage this fix.
 
   This item requires Harness Delegate version 23.06.79707. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
-- Fixed an issue where the expression, `<+lastPublished.tag>.regex()` was not resolved properly when used as runtime input for artifacts. (CDS-68810)
+- Fixed an issue where the expression, `\<+lastPublished.tag\>.regex()` was not resolved properly when used as runtime input for artifacts. (CDS-68810)
   
   This item requires Harness Delegate version 23.06.79707. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
 - Quotations were added to execution YAML strings inconsistently when comparing pipeline YAMLs. (CDS-67637)

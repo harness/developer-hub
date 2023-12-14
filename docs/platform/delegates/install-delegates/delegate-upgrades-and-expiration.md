@@ -23,7 +23,8 @@ To prevent the installation of the automatic upgrade feature, remove the `cronJo
 You can also change the time when the upgrade cron job runs by updating the `schedule`. For configuration details, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
 
 <details>
-    <summary>Example Kubernetes manifest</summary>
+    
+		<summary>Example Kubernetes manifest</summary>
 
 ```yaml
 kind: Role

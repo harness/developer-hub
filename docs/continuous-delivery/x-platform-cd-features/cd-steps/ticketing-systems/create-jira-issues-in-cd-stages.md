@@ -55,8 +55,8 @@ Once you have selected these fields, they are available under **Optional Configu
 
 You can also use advanced dates using Harness expressions and the `current()` function. For example:
 
-* `<+currentDate().plusDays(2).plusMonths(1)>`: current date plus one month and two days.
-* `<+currentTime()>`: for current date time fields.
+* `\<+currentDate().plusDays(2).plusMonths(1)\>`: current date plus one month and two days.
+* `\<+currentTime()\>`: for current date time fields.
 
 Harness supports the following functions.
 

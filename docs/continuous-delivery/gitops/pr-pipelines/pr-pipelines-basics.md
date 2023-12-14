@@ -61,7 +61,8 @@ To create PR pipelines in Harness, please refer to [Create Harness GitOps PR pip
 :::
 
 <details>
-<summary>Wave deployments</summary>
+
+		<summary>Wave deployments</summary>
 
 You often hear the term wave deployments used when PR Pipelines are discussed.
 

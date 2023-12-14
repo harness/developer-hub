@@ -65,7 +65,7 @@ Linux DNS spoof injects chaos to mimic DNS resolution on a Linux machine.
 
 ### SpoofMap
 
-The `spoofMap` input variable maps the domain names to the target host names. For example, '{"abc.com":"spoofabc.com"}' where the key is the host name to be spoofed and the value is the host name to which the key is spoofed (or redirected).
+The `spoofMap` input variable maps the domain names to the target host names. For example, '\{"abc.com":"spoofabc.com"\}' where the key is the host name to be spoofed and the value is the host name to which the key is spoofed (or redirected).
 
 The following YAML snippet illustrates the use of this environment variable:
 

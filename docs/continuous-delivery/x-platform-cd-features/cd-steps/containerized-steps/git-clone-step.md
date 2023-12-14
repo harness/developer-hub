@@ -14,7 +14,8 @@ Add a Git Clone step to clone a repository into the CD stage's workspace.
 By cloning the repository, you gain access to the necessary code, scripts, or configurations, enabling you to perform various actions and ensure a reliable and controlled deployment.
 
 <details>
-<summary>Example uses cases for cloning a repository in a CD stage</summary>
+
+		<summary>Example uses cases for cloning a repository in a CD stage</summary>
 
 1. **Accessing deployment scripts or configuration files**:
    - Cloning a repository allows you to access deployment scripts, configuration files, or other resources needed for the deployment process. By cloning the repository, you can ensure that the latest versions of these files are used in the deployment, providing consistency and avoiding potential issues caused by outdated or mismatched files.
@@ -95,7 +96,7 @@ For **Build Type**, select **Git Branch** if you want the step to clone code fro
 
 :::tip
 
-You can use [fixed values, runtime input, or variable expressions](/docs/platform/variables-and-expressions/runtime-inputs/) for the branch and tag names. For example, you can enter `<+input>` for the branch or tag name to supply a branch or tag name at runtime.
+You can use [fixed values, runtime input, or variable expressions](/docs/platform/variables-and-expressions/runtime-inputs/) for the branch and tag names. For example, you can enter `\<+input\>` for the branch or tag name to supply a branch or tag name at runtime.
 
 :::
 

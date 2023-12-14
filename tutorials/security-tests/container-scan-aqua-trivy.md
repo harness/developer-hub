@@ -120,9 +120,9 @@ Add an **Aqua Trivy** step to your pipeline after the DinD background step and c
       -  `mode :` [`orchestration`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step. 
       -  `config: default`
       - `target : ` 
-          - `name : <+input>` 
+          - `name : \<+input\>` 
           - `type : container`
-          - `variant : <+input>` You will specify the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) when you run the pipeline. 
+          - `variant : \<+input\>` You will specify the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) when you run the pipeline. 
               When scanning a repository, you will generally use the repository name and branch for these fields.
         - `advanced : ` 
           - `log :` 
@@ -131,9 +131,9 @@ Add an **Aqua Trivy** step to your pipeline after the DinD background step and c
         - `privileged: true`
         - `image:`
             - [`type`](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#type-1) `: docker_v2`
-            - `name: <+input>` 
+            - `name: \<+input\>` 
             - [`domain`](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#domain) `: docker.io` 
-            - `tag: <+input>`
+            - `tag: \<+input\>`
 
 
 Here's an example:

@@ -35,7 +35,8 @@ The first `EcsUpgradeContainer` step upgrades the container to 50% of the `desir
 
 
 <details>
-<summary>ECS basic strategy with phased traffic shifting sample pipeline YAML</summary>
+
+		<summary>ECS basic strategy with phased traffic shifting sample pipeline YAML</summary>
 
 ```yaml
 pipeline:

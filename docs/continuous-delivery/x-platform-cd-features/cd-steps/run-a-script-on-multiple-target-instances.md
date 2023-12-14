@@ -20,7 +20,7 @@ Here's an example with a Shell Script step:
 
 ## Create your pipeline
 
-You can use the repeat looping strategy with `<+stage.output.hosts>` to target multiple hosts in the following deployment types:
+You can use the repeat looping strategy with `\<+stage.output.hosts\>` to target multiple hosts in the following deployment types:
 
 * [SSH (Traditional)](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)
 * [WinRM](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
@@ -28,9 +28,9 @@ You can use the repeat looping strategy with `<+stage.output.hosts>` to target m
 
 All three types can deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
 
-In the case of SSH and WinRM you can use the **Repeat** looping strategy with `<+stage.output.hosts>` on a step anywhere in execution because the hosts are fetched as part of the environment.
+In the case of SSH and WinRM you can use the **Repeat** looping strategy with `\<+stage.output.hosts\>` on a step anywhere in execution because the hosts are fetched as part of the environment.
 
-For **Deployment Templates**, any step using the repeat looping strategy with `<+stage.output.hosts>` must come after the **Fetch Instances** step.
+For **Deployment Templates**, any step using the repeat looping strategy with `\<+stage.output.hosts\>` must come after the **Fetch Instances** step.
 
 ## Add your step
 
@@ -42,24 +42,24 @@ For **Deployment Templates**, any step using the repeat looping strategy with `<
 
 ## Reference hosts in steps using expressions
 
-You can use all of the `<+instance...>` expressions to reference your hosts.
+You can use all of the `\<+instance...\>` expressions to reference your hosts.
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
-* [<+instance.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostname)
-* [<+instance.host.instanceName>](/docs/platform/variables-and-expressions/harness-variables/#instancehostinstancename)
-* [<+instance.name>](/docs/platform/variables-and-expressions/harness-variables/#instancename)
+* [\<+instance.hostName\>](/docs/platform/variables-and-expressions/harness-variables#instancehostname)
+* [\<+instance.host.instanceName\>](/docs/platform/variables-and-expressions/harness-variables/#instancehostinstancename)
+* [\<+instance.name\>](/docs/platform/variables-and-expressions/harness-variables/#instancename)
 
 For Microsoft Azure or AWS:
 
-* [<+instance.host.privateIp>](/docs/platform/variables-and-expressions/harness-variables/#instancehostprivateip)
-* [<+instance.host.publicIp>](/docs/platform/variables-and-expressions/harness-variables/#instancehostpublicip)
+* [\<+instance.host.privateIp\>](/docs/platform/variables-and-expressions/harness-variables/#instancehostprivateip)
+* [\<+instance.host.publicIp\>](/docs/platform/variables-and-expressions/harness-variables/#instancehostpublicip)
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
 
 ## Set looping strategy
 
-The Repeat [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) allows you to repeat the step for all target hosts. The strategy will iterate through the list of hosts. The list of hosts is identified with the expression `<+stage.output.hosts>`.
+The Repeat [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) allows you to repeat the step for all target hosts. The strategy will iterate through the list of hosts. The list of hosts is identified with the expression `\<+stage.output.hosts\>`.
 
 1. In your step, select **Advanced**.
 2. Select **Looping Strategy**.
@@ -84,7 +84,7 @@ For example, here is a custom deployment stage using a deployment template.
 
 The Fetch Instances step returned two instances and the Shell Script step was executed on both using the loop strategy.
 
-Here is an SSH deployment example with a Command step that uses `<+stage.output.hosts>`:
+Here is an SSH deployment example with a Command step that uses `\<+stage.output.hosts\>`:
 
 ![](./cd-general-steps/static/run-a-script-on-multiple-target-instances-03.png)
 
@@ -92,7 +92,7 @@ Once the pipeline is run, you can see each of the Deploy step run on each of the
 
 ![](./cd-general-steps/static/run-a-script-on-multiple-target-instances-04.png)
 
-You can also add a Shell Script step to echo `<+stage.output.hosts>` to see the target hosts. The expression will resolve to a list like this SSH example that deploys to AWS EC2 instances:
+You can also add a Shell Script step to echo `\<+stage.output.hosts\>` to see the target hosts. The expression will resolve to a list like this SSH example that deploys to AWS EC2 instances:
 
 
 ```
@@ -101,5 +101,5 @@ You can also add a Shell Script step to echo `<+stage.output.hosts>` to see the 
 
 ## Supported deployment types
 
-The ​`<+instance...>` expression is only supported in SSH, WinRM, and custom deployments using deployment templates.
+The ​`\<+instance...\>` expression is only supported in SSH, WinRM, and custom deployments using deployment templates.
 

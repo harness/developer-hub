@@ -119,7 +119,8 @@ flowchart TD
 ```
 
 <details>
-<summary>Built-in role binding configurations</summary>
+
+		<summary>Built-in role binding configurations</summary>
 
 The following table describes the role bindings (permissions and access) that result from some combinations of built-in [roles](#roles) and [resource groups](#resource-groups). This table doesn't include module-specific built-in roles, such as CET Admin or Chaos Admin.
 
@@ -219,7 +220,8 @@ You can also create users and user groups directly in Harness, but any users or 
 These examples walk through two specific RBAC configuration scenarios.
 
 <details>
-<summary>Example: Configure RBAC for account-level pipeline ownership</summary>
+
+		<summary>Example: Configure RBAC for account-level pipeline ownership</summary>
 
 This example walks through an RBAC configuration that allows full control of pipelines and related resources (connectors, templates, and so on) across the entire account. This configuration uses a custom user group called *Pipeline Owners*, a custom role called *Pipeline Admin*, and a custom resource group called *All Pipeline Resources*.
 
@@ -321,7 +323,8 @@ For more information about assigning roles and resource groups, go to [Role bind
 </details>
 
 <details>
-<summary>Example: Configure RBAC to run pipelines in a specific project</summary>
+
+		<summary>Example: Configure RBAC to run pipelines in a specific project</summary>
 
 This example walks through an RBAC configuration that provides only the ability to run pipelines in a specific project. This configuration uses a custom user group called *Project Pipeline Runners*, custom role called *Pipeline Runner*, and a custom resource group called *All Project Pipelines and Connectors*.
 

@@ -328,7 +328,7 @@ Add a [Blue Green Stage Scale Down](#add-the-execution-steps) step to scale down
 
 You can also add a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) to the post-deployment steps of your stage to scale down the last successful stage environment.
 
-Here's an example using `<+pipeline.stages.[stage_name].spec.execution.steps.stageDeployment.output.stageServiceName>` to reference the stage service name. The name of the stage is nginx so the reference is `<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName>`.
+Here's an example using `\<+pipeline.stages.[stage_name].spec.execution.steps.stageDeployment.output.stageServiceName\>` to reference the stage service name. The name of the stage is nginx so the reference is `\<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName\>`.
 
 
 ```

@@ -23,7 +23,8 @@ This topic lists the supported STO features and integrations to scan your code r
   <TabItem value="Scanners">
 ```
 
-<details><summary>Scanner categories</summary>
+<details>
+		<summary>Scanner categories</summary>
 
 ```mdx-code-block
 import StoSupportedCategories from '/docs/security-testing-orchestration/sto-techref-category/shared/_sto-supported-categories.md';
@@ -33,7 +34,8 @@ import StoSupportedCategories from '/docs/security-testing-orchestration/sto-tec
 
 </details>
 
-<details><summary>Harness STO scanner support</summary>
+<details>
+		<summary>Harness STO scanner support</summary>
 
 ```mdx-code-block
 import StoSupportedScanners from '/docs/security-testing-orchestration/sto-techref-category/shared/_sto-supported-scanners.md';
@@ -43,7 +45,8 @@ import StoSupportedScanners from '/docs/security-testing-orchestration/sto-techr
 
 </details>
 
-<details><summary>Scanner binaries used in STO container images</summary>
+<details>
+		<summary>Scanner binaries used in STO container images</summary>
 
 ```mdx-code-block
 import StoSupportedBinaries from '/docs/security-testing-orchestration/sto-techref-category/shared/_sto-supported-binaries.md';

@@ -24,7 +24,8 @@ To access the subscription details, follow these steps:
 The Subscriptions page provides the following details about your Harness SRM subscription and license utilization.
 
 <details>
-<summary><b>Subscription Details</b></summary>
+
+		<summary><b>Subscription Details</b></summary>
 
 This section offers a comprehensive overview of your SRM subscriptions and licenses, including:
 
@@ -40,7 +41,8 @@ This section offers a comprehensive overview of your SRM subscriptions and licen
 
 
 <details>
-<summary><b>Activity & Usage</b></summary>
+
+		<summary><b>Activity & Usage</b></summary>
 
 This section provides insights into how your SRM licenses and subscriptions are being used.
 
@@ -54,7 +56,8 @@ This section provides insights into how your SRM licenses and subscriptions are 
 
 
 <details>
-<summary><b>Active Services</b></summary>
+
+		<summary><b>Active Services</b></summary>
 
 This section offers a detailed breakdown of how your active SRM services are utilized, including:
 

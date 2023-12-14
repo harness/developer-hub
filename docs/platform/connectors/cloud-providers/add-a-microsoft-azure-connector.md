@@ -25,7 +25,8 @@ If you're using Harness **Cloud Cost Management (CCM)**, you can [Set Up Cloud C
 Harness provides the option of using the Auth Provider API or TokenRequest API for authentication.
 
 <details>
-<summary>Summary of Auth Provider and TokenRequest API changes</summary>
+
+		<summary>Summary of Auth Provider and TokenRequest API changes</summary>
 
 In Kubernetes 1.22, the Auth Provider API was deprecated and replaced with a new TokenRequest API. The TokenRequest API is used by client libraries and tools to request an authentication token from the Kubernetes API server.
 
@@ -65,7 +66,8 @@ The **System Assigned Managed Identity** and **User Assigned Managed Identity** 
 You can install the kubelogin plugin on the delegate by creating a delegate with an immutable image and updating the following commands in `INIT_SCRIPT`:
 
 <details>
-<summary>RHEL 7 OS</summary>
+
+		<summary>RHEL 7 OS</summary>
 
 ```
 // Install dependencies
@@ -92,7 +94,8 @@ microdnf install azure-cli
 </details>
 
 <details>
-<summary>Ubuntu</summary>
+
+		<summary>Ubuntu</summary>
 
 ```
 // Download kubelogin
@@ -593,7 +596,8 @@ There are two primary ways for the Harness connector to authenticate with Azure:
 * Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its credentials from the Harness delegate that is running in your Azure subscription or AKS cluster.
 
 <details>
-<summary>Specify credentials</summary>
+
+		<summary>Specify credentials</summary>
 
 If you select **Specify credentials here**, you must provide Microsoft Azure app registration details.
 
@@ -630,7 +634,8 @@ If you select **Specify credentials here**, you must provide Microsoft Azure app
 </details>
 
 <details>
-<summary>Inherit credentials from the delegate</summary>
+
+		<summary>Inherit credentials from the delegate</summary>
 
 If you have [installed a Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview.md) in your Azure subscription (preferably in your target AKS cluster), select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit authentication credentials from the delegate.
 
@@ -670,7 +675,7 @@ If you have [installed a Harness Delegate](/docs/platform/delegates/delegate-con
 
    If the connection test fails, make sure that your delegate is running and that your credentials are valid. For example, check that the secret has not expired in your App registration.
 
-## Using ${HARNESS\_KUBE\_CONFIG\_PATH} with Azure
+## Using $\{HARNESS\_KUBE\_CONFIG\_PATH\} with Azure
 
 The Harness `${HARNESS_KUBE_CONFIG_PATH}` expression resolves to the path to a Harness-generated kubeconfig file containing the credentials you provided to Harness.
 

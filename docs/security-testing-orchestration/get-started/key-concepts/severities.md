@@ -37,9 +37,14 @@ Each vulnerability also has a severity level based on its CVSS score. Because ea
         <th>Description</th>
     </tr>
     <tr>
-        <td>CRITICAL</td>
-        <td>9 - 10</td>
-        <td>Critical vulnerabilities often have the following characteristics:
+        <td>
+            CRITICAL
+        </td>
+        <td>
+            9 - 10
+        </td>
+        <td>
+            Critical vulnerabilities often have the following characteristics:
             <ul>
                 <li>A successful attack can grant root-level access to servers or infrastructure devices.</li>
                 <li>A successful attack requires no authentication or inside knowledge of the system.</li> 
@@ -48,9 +53,14 @@ Each vulnerability also has a severity level based on its CVSS score. Because ea
         </td>
     </tr>
     <tr>
-        <td>HIGH</td>
-        <td>7 - 8.9</td>
-        <td>High-severity vulnerabilities often have the following characteristics:
+        <td>
+            HIGH
+        </td>
+        <td>
+            7 - 8.9
+        </td>
+        <td>
+            High-severity vulnerabilities often have the following characteristics:
             <ul>
                 <li>More difficult to exploit than a critical vulnerability. Requires some form of authentication.</li>
                 <li>Authenticated users can gain unauthorized privileges.</li> 
@@ -59,9 +69,14 @@ Each vulnerability also has a severity level based on its CVSS score. Because ea
         </td>
     </tr>
     <tr>
-        <td>MEDIUM</td>
-        <td>4.0 - 6.9</td>
-        <td>Medium-severity vulnerabilities often have the following characteristics:
+        <td>
+            MEDIUM
+        </td>
+        <td>
+            4.0 - 6.9
+        </td>
+        <td>
+            Medium-severity vulnerabilities often have the following characteristics:
             <ul>
                 <li>Require dedicated effort to launch a successful attack, such as manipulating users to obtain passwords.</li>
                 <li>Even if successful, an attack provides limited access to critical resources.</li> 
@@ -70,9 +85,14 @@ Each vulnerability also has a severity level based on its CVSS score. Because ea
         </td>
     </tr>
     <tr>
-        <td>LOW</td>
-        <td>0.1 - 3.9</td>
-        <td>Low-severity vulnerabilities often have the following characteristics:
+        <td>
+            LOW
+        </td>
+        <td>
+            0.1 - 3.9
+        </td>
+        <td>
+            Low-severity vulnerabilities often have the following characteristics:
             <ul>
                 <li>Have very limited access to critical resources</li>
                 <li>Requires the attacker and the resource to be in the same physical location.</li> 
@@ -80,8 +100,14 @@ Each vulnerability also has a severity level based on its CVSS score. Because ea
         </td>
     </tr>
     <tr>
-        <td>INFO</td>
-        <td>-1.0 or 0.0</td>
-        <td>A software or other issue that has no security impact. For example: bugs, incorrect API calls, code smells, and so on. </td>
+        <td>    
+            INFO
+        </td>
+        <td>
+            -1.0 or 0.0
+        </td>
+        <td>    
+            A software or other issue that has no security impact. For example: bugs, incorrect API calls, code smells, and so on. 
+        </td>
     </tr>
 </tbody></table>

@@ -63,7 +63,8 @@ To add Sumo Logic as a health source:
    Sample data is displayed in the **Records** box. The **Chart** box displays the graph corresponding to the sample data. This helps you verify if the query that you have built is correct.
 
    <details>
-   <summary><b>Sample query for memory usage</b></summary>
+   
+		<summary><b>Sample query for memory usage</b></summary>
 
    Query: `metric=memory`
 
@@ -87,7 +88,8 @@ In the **Assign** section, select the services to which you want to apply the Su
 If you select **Continuous Verification (Applied to the pipelines in the Continuous Deployment)** or **Service Health**, expand the section below and follow the instructions for configuring the risk profile.
 
 <details>
-<summary><b>Risk Profile settings</b></summary>
+
+		<summary><b>Risk Profile settings</b></summary>
 
 
 #### Risk Profile
@@ -172,7 +174,8 @@ To set fail-fast thresholds for CV, follow these steps:
 2. In the **Field Mapping** section, select the **Service Instance Identifier** to display the logs, and then select **Get sample log messages**. Sample logs are displayed that help you verify if the query you built is correct.
 
 <details>
-   <summary><b>Sample log query</b></summary>
+   
+		<summary><b>Sample log query</b></summary>
 
    Query: `_sourcename = "Http Input"`
 

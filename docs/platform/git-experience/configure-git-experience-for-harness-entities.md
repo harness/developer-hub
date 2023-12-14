@@ -117,7 +117,8 @@ In **Git Connector**, select or create a Git Connector to the repo for your Proj
 ![](./static/configure-git-experience-for-harness-entities-40.png)
 
 <details>
-<summary> IMPORTANT </summary>
+
+		<summary> IMPORTANT </summary>
 
 Connector must use the Enable API access option and Token
 The Connector must use the Enable API access option and Username and Token authentication. Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​

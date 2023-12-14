@@ -126,7 +126,7 @@ spec:
 
 Kill command set to exhaust the resources. Tune it by using the `CHAOS_KILL_COMMAND` environment variable.
 
-- `CHAOS_KILL_COMMAND`: "kill $(find /proc -name exe -lname '\*/dd' 2>&1 | grep -v 'Permission denied' | awk -F/ '{print $(NF-1)}' | head -n 1)"
+- `CHAOS_KILL_COMMAND`: "kill $(find /proc -name exe -lname '\*/dd' 2>&1 | grep -v 'Permission denied' | awk -F/ '\{print $(NF-1)\}' | head -n 1)"
 
 The following YAML snippet illustrates the use of this environment variable:
 

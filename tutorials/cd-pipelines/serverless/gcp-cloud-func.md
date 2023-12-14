@@ -94,7 +94,8 @@ For the pipeline to run successfully, please follow the remaining steps as they 
 ### Delegate
 
 <details open>
-<summary>What is the Harness delegate?</summary>
+
+		<summary>What is the Harness delegate?</summary>
 
 The Harness delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
@@ -130,7 +131,8 @@ You can also follow the [Install Harness Delegate on Kubernetes or Docker](/tuto
 ### Secrets
 
 <details open>
-<summary>What are Harness secrets?</summary>
+
+		<summary>What are Harness secrets?</summary>
 
 Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
@@ -232,7 +234,8 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     :::
 
 <details open>
-<summary>What are connectors?</summary>
+
+		<summary>What are connectors?</summary>
 
 Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](/docs/category/connectors).
 
@@ -254,7 +257,8 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 ### Environment
 
 <details open>
-<summary>What are Harness environments?</summary>
+
+		<summary>What are Harness environments?</summary>
 
 Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for serverless functions, VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
 
@@ -275,7 +279,8 @@ Environments define the deployment location, categorized as **Production** or **
 ### Services
 
 <details open>
-<summary>What are Harness services?</summary>
+
+		<summary>What are Harness services?</summary>
 
 In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, functions, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
 
@@ -290,7 +295,8 @@ In Harness, services represent what you deploy to environments. You use services
 ### Pipeline
 
 <details open>
-<summary>What are Harness pipelines?</summary>
+
+		<summary>What are Harness pipelines?</summary>
 
 A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact/function deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
 
@@ -302,7 +308,8 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 ```
 
 <details open>
-<summary>What are Canary deployments?</summary>
+
+		<summary>What are Canary deployments?</summary>
 
 A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
 
@@ -323,7 +330,8 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 ```
 
 <details open>
-<summary>What are Blue Green deployments?</summary>
+
+		<summary>What are Blue Green deployments?</summary>
 
 Blue Green deployments involve running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on a **new** service version in the stage environment first. Next, traffic is shifted from the prod environment to stage, and the previous service/function version running on prod is scaled down. Blue Green deployments are also referred to as red/black deployment by some vendors. For more information, go to [When to use Blue Green deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments).
 
@@ -344,7 +352,8 @@ Blue Green deployments involve running two identical environments (stage and pro
 ```
 
 <details open>
-<summary>What are Basic deployments?</summary>
+
+		<summary>What are Basic deployments?</summary>
 
 For Google Cloud Functions, the basic deployment execution strategy deploys the new function version and routes 100% of traffic from the old version to the new function version.
 
@@ -372,7 +381,8 @@ For Google Cloud Functions, the basic deployment execution strategy deploys the 
 ### Connectors
 
 <details open>
-<summary>What are connectors?</summary>
+
+		<summary>What are connectors?</summary>
 
 Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](/docs/category/connectors).
 
@@ -396,7 +406,8 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 ### Environment
 
 <details open>
-<summary>What are Harness environments?</summary>
+
+		<summary>What are Harness environments?</summary>
 
 Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for serverless functions, VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
 
@@ -415,7 +426,8 @@ Environments define the deployment location, categorized as **Production** or **
 ### Services
 
 <details open>
-<summary>What are Harness services?</summary>
+
+		<summary>What are Harness services?</summary>
 
 In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, functions, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
 
@@ -434,7 +446,8 @@ In Harness, services represent what you deploy to environments. You use services
 ### Pipeline
 
 <details open>
-<summary>What are Harness pipelines?</summary>
+
+		<summary>What are Harness pipelines?</summary>
 
 A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact/function deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
 
@@ -454,7 +467,8 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 ```
 
 <details open>
-<summary>What are Canary deployments?</summary>
+
+		<summary>What are Canary deployments?</summary>
 
 A canary deployment updates nodes/functions/etc. in a single environment gradually, allowing you to use gates between increments and shift traffic as needed. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
 
@@ -474,7 +488,8 @@ A canary deployment updates nodes/functions/etc. in a single environment gradual
 ```
 
 <details open>
-<summary>What are Blue Green deployments?</summary>
+
+		<summary>What are Blue Green deployments?</summary>
 
 Blue Green deployments involve running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on a **new** service version in the stage environment first. Next, traffic is shifted from the prod environment to stage, and the previous service/function version running on prod is scaled down. Blue Green deployments are also referred to as red/black deployment by some vendors. For more information, go to [When to use Blue Green deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments).
 
@@ -496,7 +511,8 @@ Blue Green deployments involve running two identical environments (stage and pro
 ```
 
 <details open>
-<summary>What are Basic deployments?</summary>
+
+		<summary>What are Basic deployments?</summary>
 
 For Google Cloud Functions, the basic deployment execution strategy deploys the new function version and routes 100% of traffic from the old version to the new function version.
 
@@ -554,7 +570,8 @@ For the pipeline to run successfully, please follow the remaining steps as they 
 ### Delegate
 
 <details open>
-<summary>What is the Harness delegate?</summary>
+
+		<summary>What is the Harness delegate?</summary>
 
 The Harness delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
@@ -592,7 +609,8 @@ You can also follow the [Install Harness Delegate on Kubernetes or Docker](/tuto
 ### Secrets
 
 <details open>
-<summary>What are Harness secrets?</summary>
+
+		<summary>What are Harness secrets?</summary>
 
 Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
@@ -695,7 +713,8 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     :::
 
 <details open>
-<summary>What are connectors?</summary>
+
+		<summary>What are connectors?</summary>
 
 Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](/docs/category/connectors).
 
@@ -717,7 +736,8 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 ### Environment
 
 <details open>
-<summary>What are Harness environments?</summary>
+
+		<summary>What are Harness environments?</summary>
 
 Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for serverless functions, VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
 
@@ -738,7 +758,8 @@ Environments define the deployment location, categorized as **Production** or **
 ### Services
 
 <details open>
-<summary>What are Harness services?</summary>
+
+		<summary>What are Harness services?</summary>
 
 In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, functions, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
 
@@ -753,7 +774,8 @@ In Harness, services represent what you deploy to environments. You use services
 ### Pipeline
 
 <details open>
-<summary>What are Basic deployments?</summary>
+
+		<summary>What are Basic deployments?</summary>
 
 For Google Cloud Functions, the basic deployment execution strategy deploys the new function version and routes 100% of traffic from the old version to the new function version.
 
@@ -777,7 +799,8 @@ For Google Cloud Functions, the basic deployment execution strategy deploys the 
 ### Connectors
 
 <details open>
-<summary>What are connectors?</summary>
+
+		<summary>What are connectors?</summary>
 
 Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. Explore connector how-tos [here](/docs/category/connectors).
 
@@ -801,7 +824,8 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 ### Environment
 
 <details open>
-<summary>What are Harness environments?</summary>
+
+		<summary>What are Harness environments?</summary>
 
 Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for serverless functions, VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
 
@@ -820,7 +844,8 @@ Environments define the deployment location, categorized as **Production** or **
 ### Services
 
 <details open>
-<summary>What are Harness services?</summary>
+
+		<summary>What are Harness services?</summary>
 
 In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, functions, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
 
@@ -839,7 +864,8 @@ In Harness, services represent what you deploy to environments. You use services
 ### Pipeline
 
 <details open>
-<summary>What are Harness pipelines?</summary>
+
+		<summary>What are Harness pipelines?</summary>
 
 A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact/function deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
 
@@ -854,7 +880,8 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
    - Select **Edit YAML** and Paste the below Rolling deployment YAML.
 
 <details open>
-<summary>What are Basic deployments?</summary>
+
+		<summary>What are Basic deployments?</summary>
 
 For Google Cloud Functions, the basic deployment execution strategy deploys the new function version and routes 100% of traffic from the old version to the new function version.
 

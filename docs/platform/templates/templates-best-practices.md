@@ -483,9 +483,9 @@ When you reference resources in a template, you can only reference resources in 
 
 ### Use case 1: Account-level deploy stage template
 
-- You can't hard-code a service because there are no services at the account level. The field will be `<+input>`.
+- You can't hard-code a service because there are no services at the account level. The field will be `\<+input\>`.
 
-- You can't hard-code an environment because there are no environments at the account level. The field will be `<+input>`.
+- You can't hard-code an environment because there are no environments at the account level. The field will be `\<+input\>`.
 
 - You configure your execution steps as-is, with no restrictions at the account level.
 
@@ -495,9 +495,9 @@ When you reference resources in a template, you can only reference resources in 
 
 ### Use case 2: Org-level deploy stage template
 
-- You can't fix a service because there are no services at the org level. You define them as `<+input>`. When used in a pipeline, you can configure an expression in the runtime or to fix the service. 
+- You can't fix a service because there are no services at the org level. You define them as `\<+input\>`. When used in a pipeline, you can configure an expression in the runtime or to fix the service. 
 
-- You can't fix an environment because there are no environments at the org level. You configure them as `<+input>`. You can select an environment within a project when referenced in a specific project's pipeline. 
+- You can't fix an environment because there are no environments at the org level. You configure them as `\<+input\>`. You can select an environment within a project when referenced in a specific project's pipeline. 
 
 - Connector options when referenced within a template are related to the organization and account level for which the template is configured. The selection is also determined by the RBAC of the user configuring the template.
 

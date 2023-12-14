@@ -693,7 +693,7 @@ For examples, see the settings available for [AWS S3](https://www.terraform.io/d
 
   You can also use [runtime inputs or expressions](/docs/platform/variables-and-expressions/runtime-inputs/) for your targets. 
 
-  For example, you can create a stage variable named `module` and then enter the variable `<+stage.variables.module>` in **Targets**. 
+  For example, you can create a stage variable named `module` and then enter the variable `\<+stage.variables.module\>` in **Targets**. 
 
 ### Environment Variables
 
@@ -701,7 +701,7 @@ In **Environment Variables**, you can reference additional environment variables
 
 * Click **Add** and enter a name and value for the environment variable.
     
-    For example, the name `TF_LOG` and the value `TRACE`, or the name `ARM_CLIENT_ID` and the value `<+secrets.getValue("account.tg_azure_client_id")>`.
+    For example, the name `TF_LOG` and the value `TRACE`, or the name `ARM_CLIENT_ID` and the value `\<+secrets.getValue("account.tg_azure_client_id")\>`.
 
 You can use Harness variables and secrets for the name and value.
 

@@ -71,9 +71,9 @@ If you do not enable the **Browser Application** checkbox, Harness will use the 
 
 [![](./static/3-verify-deployments-with-bugsnag-18.png)](./static/3-verify-deployments-with-bugsnag-18.png)
 
-Next, look in the JSON for the host/container/pod in the deployment environment and identify the label containing the same hostname. The path to that label is what the expression should be in **Expression for Host/Container name**. The default variable is **${instance.host.hostName}**. In most cases, this expression will work.
+Next, look in the JSON for the host/container/pod in the deployment environment and identify the label containing the same hostname. The path to that label is what the expression should be in **Expression for Host/Container name**. The default variable is **$\{instance.host.hostName\}**. In most cases, this expression will work.
 
-For AWS EC2 hostnames, use the expression `${instance.hostName`}.
+For AWS EC2 hostnames, use the expression `${instance.hostName`\}.
 
 ##  Step 8: Analysis Time Duration
 

@@ -15,7 +15,8 @@ This experiment induces chaos within a container and depends on an EC2 instance.
 ## Usage
 
 <details>
-<summary>View fault usage</summary>
+
+		<summary>View fault usage</summary>
 <div>
 EC2 instance stop breaks the agent that manages the task container on ECS cluster, thereby impacting its delivery. Killing the EC2 instance disrupts the performance of the task container.
 </div>
@@ -50,7 +51,8 @@ stringData:
 Here is an example AWS policy to execute the fault.
 
 <details>
-<summary>View policy for the fault</summary>
+
+		<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -97,7 +99,8 @@ The ECS container instance should be in a healthy state.
 ## Fault tunables
 
 <details>
-    <summary>Fault tunables</summary>
+    
+		<summary>Fault tunables</summary>
     <h2>Mandatory fields</h2>
     <table>
         <tr>

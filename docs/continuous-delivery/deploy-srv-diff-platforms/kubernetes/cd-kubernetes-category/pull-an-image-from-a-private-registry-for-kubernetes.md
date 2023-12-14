@@ -14,7 +14,7 @@ Typically, if the Docker image you are deploying is in a private registry, Harne
 
 In some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For such cases, the values.yaml or manifest files in the service definition **Manifests** section must use the `dockercfg` or `dockerconfigjson` parameter.
 
-If the Docker image is added in the service definition **Artifacts** section, then you reference it like this: `dockercfg: <+artifact.imagePullSecret>` or `dockerconfigjson: <+artifact.dockerConfigJsonSecret>`.
+If the Docker image is added in the service definition **Artifacts** section, then you reference it like this: `dockercfg: \<+artifact.imagePullSecret\>` or `dockerconfigjson: \<+artifact.dockerConfigJsonSecret\>`.
 
 This key will import the credentials from the Docker credentials file in the artifact.
 
@@ -37,7 +37,7 @@ The dockercfg file is located in the Docker image artifact. You reference this f
 
 Open the values.yaml file you are using for deployment.
 
-Verify that `dockercfg` key exists, and uses the `<+artifact.imagePullSecret>` expression to obtain the credentials:
+Verify that `dockercfg` key exists, and uses the `\<+artifact.imagePullSecret\>` expression to obtain the credentials:
 
 
 ```yaml
@@ -100,14 +100,15 @@ With these requirements met, the cluster imports the credentials from the Docker
 
 ## Values YAML and manifests
 
-This is a simple example using the Artifact `<+artifact.image>` and `dockercfg` references.
+This is a simple example using the Artifact `\<+artifact.image\>` and `dockercfg` references.
 
 We use Go templating with a values.yaml file and manifests for deployment, namespace, and service. The manifests for deployment, namespace, and service are in a **templates** folder that is a peer of the values.yaml file.
 
 <details>
-<summary>values.yaml</summary>
 
-In addition to `<+artifact.image>` and `dockercfg` , this file also uses `name: <+stage.variables.name>` to reference a Stage variable `name` and `namespace: <+infra.namespace>` to reference the namespace entered in the Stage's **Infrastructure Definition**. Service type and ports are hardcoded.
+		<summary>values.yaml</summary>
+
+In addition to `\<+artifact.image\>` and `dockercfg` , this file also uses `name: \<+stage.variables.name\>` to reference a Stage variable `name` and `namespace: \<+infra.namespace\>` to reference the namespace entered in the Stage's **Infrastructure Definition**. Service type and ports are hardcoded.
 
 
 ```yaml
@@ -143,7 +144,8 @@ env:
 
 </details>
 <details>
-<summary>deployment.yaml</summary>
+
+		<summary>deployment.yaml</summary>
 
 
 ```yaml
@@ -215,7 +217,8 @@ spec:
 ```
 </details>
 <details>
-<summary>namespace.yaml and service.yaml</summary>
+
+		<summary>namespace.yaml and service.yaml</summary>
 
 These files doe not use `dockercfg` but are included here because they are needed for the deployment.
 
@@ -251,9 +254,9 @@ spec:
 
 ## Notes
 
-* When you are using a public repo, the `dockercfg: <+artifact.imagePullSecret>` in values.yaml is ignored by Harness. You do not need to remove it.
+* When you are using a public repo, the `dockercfg: \<+artifact.imagePullSecret\>` in values.yaml is ignored by Harness. You do not need to remove it.
 * If you want to use a private repo and no imagePullSecret, then set `dockercfg` to empty in values.yaml.
-* If you want to use `dockerconfigjson` instead of `dockercfg` in the values.yaml file, then use `dockerconfigjson: <+artifact.dockerConfigJsonSecret>`.
+* If you want to use `dockerconfigjson` instead of `dockercfg` in the values.yaml file, then use `dockerconfigjson: \<+artifact.dockerConfigJsonSecret\>`.
 
 ## Next steps
 

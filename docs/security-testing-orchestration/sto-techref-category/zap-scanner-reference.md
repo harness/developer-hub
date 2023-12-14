@@ -54,7 +54,8 @@ The recommended workflow is add a ZAP step to a Security Tests or CI Build stage
 
 
 <details>
-    <summary>Scanner Template example</summary>
+    
+		<summary>Scanner Template example</summary>
 
 ![](static/step-palette-00.png) 
 

@@ -77,7 +77,7 @@ Below is further explanation for each type of secret manager Harness currently s
 ## Deprecation notice
 
 The following deprecated API endpoints will no longer be supported:
-- [GET | PUT | POST | DELETE] api/resourcegroup/{identifier}
+- [GET | PUT | POST | DELETE] api/resourcegroup/\{identifier\}
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
@@ -1656,7 +1656,8 @@ For more information, see [Built-in user groups](/docs/platform/role-based-acces
 - Fixed a problem that was causing the `kryo` component to fail. The problem was caused when nested `java.lang.RuntimeException` errors occurred during manager response. (DEL-5609)
 
 <details>
-<summary>2022 releases</summary>
+
+		<summary>2022 releases</summary>
 
 ## December 2022
 
@@ -1803,7 +1804,7 @@ Delegate: 77431
 - Harness service variables now support dots (.). (PIE-4613)
 
   This is helpful when you have JSON/YAML files where you want to update the keys with some values. You can define variables for those keys in harness with (.) to access the keys. The expression to access a key would be:
-  <+variables.get("example.key")>
+  \<+variables.get("example.key")\>
 
 - You can now drag the step details section and move it to the desired location. (PIE-3890)
 

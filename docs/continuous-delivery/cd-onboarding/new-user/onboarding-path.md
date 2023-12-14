@@ -339,7 +339,8 @@ To create a simple CD pipeline, follow the steps:
 Here's a simple CD pipeline using a Kubernetes type deployment:
 
 <details>
-<summary>K8s Rolling Deployment Pipeline YAML</summary>
+
+		<summary>K8s Rolling Deployment Pipeline YAML</summary>
 <br />
 
 ```yaml
@@ -1090,7 +1091,8 @@ freeze:
 To perform Role-based access control (RBAC), a Harness account administrator assigns resource-related permissions to members of Harness user groups. The **Center of Excellence** strategy and **Distributed Center of DevOps** strategy are the two most popular RBAC access control strategies used.
 
 <details>
-<summary>Center of excellence RBAC strategy</summary>
+
+		<summary>Center of excellence RBAC strategy</summary>
 <br />
 
 | Role Type | Role Description | Harness Roles | Harness Resource Groups	|
@@ -1103,7 +1105,8 @@ To perform Role-based access control (RBAC), a Harness account administrator ass
 </details>
 
 <details>
-<summary>Distributed DevOps strategy</summary>
+
+		<summary>Distributed DevOps strategy</summary>
 <br />
 
 | Role Type        | Role Description                                                                                                        | Harness Roles                                                  | Harness Resource Groups                                  | Resource Scope                                |
@@ -1274,7 +1277,8 @@ Harness enables you to add templates to create reusable logic and Harness entiti
 Templates enhance developer productivity, reduce onboarding time, and enforce standardization across the teams that use Harness. Here's an example template that builds a JavaScript application, runs unit tests and pushes to docker registry.
 
 <details>
-<summary>Sample Golden Deployment Pipeline Template</summary>
+
+		<summary>Sample Golden Deployment Pipeline Template</summary>
 <br />
 
 ```yaml
@@ -1468,7 +1472,8 @@ The Harness Terraform Provider enables automated lifecycle management of the Har
 For more information, go to [Onboard with Terraform Provider](https://developer.harness.io/tutorials/platform/onboard-terraform-provider).
 
 <details>
-<summary>Terraform Script to create harness resources (Services, Environments, Pipelines)</summary>
+
+		<summary>Terraform Script to create harness resources (Services, Environments, Pipelines)</summary>
 <br />
 
 ```yaml
@@ -1696,7 +1701,8 @@ resource "harness_platform_pipeline" "example" {
 </details>
 
 <details>
-<summary>YAML to use the above Terraform script in Harness pipeline as custom stage</summary>
+
+		<summary>YAML to use the above Terraform script in Harness pipeline as custom stage</summary>
 <br />
 
 ```yaml

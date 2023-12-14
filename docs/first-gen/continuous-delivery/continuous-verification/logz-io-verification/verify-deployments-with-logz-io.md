@@ -73,9 +73,9 @@ In **Timestamp Format**, enter either a static value (such as `@timestamp`), or
 
 ### Step 8: Expression for Host/Container name
 
-In **Expression for Host/Container name**, add an expression that evaluates to the host name value for the field you entered in the **Host Name Field** above. The default expression is **${instance.host.hostName}**.
+In **Expression for Host/Container name**, add an expression that evaluates to the host name value for the field you entered in the **Host Name Field** above. The default expression is **$\{instance.host.hostName\}**.
 
-For AWS EC2 hostnames, use the expression `${instance.hostName`}.In order to obtain the names of the host where your service is deployed, the verification provider should be added to your workflow **after** you have run at least one successful deployment.
+For AWS EC2 hostnames, use the expression `${instance.hostName`\}.In order to obtain the names of the host where your service is deployed, the verification provider should be added to your workflow **after** you have run at least one successful deployment.
 
 ### Step 9: Analysis Time Duration
 

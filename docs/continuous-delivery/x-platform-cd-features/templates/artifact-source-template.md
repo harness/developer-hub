@@ -154,7 +154,7 @@ For information on runtime inputs and expressions, go to [fixed values runtime i
 
 Runtime inputs can be useful in artifact source templates because they let your team members select the repository, path, and tags to use when they run pipelines using artifact source templates.
 
-Expressions can be useful in artifact source templates because you can use default Harness expressions, like `<+stage.name>`, and service variables, like `<+serviceVariables.myapp>`, in place of the connector name and/or image path. When the pipeline using the artifact source template runs, those expressions are resolved and their related connector and/or image path is selected.
+Expressions can be useful in artifact source templates because you can use default Harness expressions, like `\<+stage.name\>`, and service variables, like `\<+serviceVariables.myapp\>`, in place of the connector name and/or image path. When the pipeline using the artifact source template runs, those expressions are resolved and their related connector and/or image path is selected.
 
 
 ## Use artifact templates in stage templates

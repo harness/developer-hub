@@ -17,7 +17,8 @@ To connect to Kubernetes clusters in GCP, you can use a GCP connector or the [pl
 Harness provides the option of using the Auth Provider API or TokenRequest API for authentication. Complete this setup if you want to use this option for your GCP connector.
 
 <details>
-<summary>Summary of Auth Provider and TokenRequest API changes</summary>
+
+		<summary>Summary of Auth Provider and TokenRequest API changes</summary>
 
 In Kubernetes 1.22, the Auth Provider API was deprecated and replaced with a new TokenRequest API. The TokenRequest API is used by client libraries and tools to request an authentication token from the Kubernetes API server.
 
@@ -50,7 +51,8 @@ The Harness GCP connector has 2 credential types. For each type, you must instal
 You can install the gke-gcloud-auth-plugin on the delegate by creating a delegate with an immutable image and updating the following commands in `INIT_SCRIPT`:
 
 <details>
-<summary>RHEL 7 OS</summary>
+
+		<summary>RHEL 7 OS</summary>
 
 ```
 tee -a /etc/yum.repos.d/google-cloud-sdk.repo << EOM
@@ -70,7 +72,8 @@ microdnf install google-cloud-cli-gke-gcloud-auth-plugin
 </details>
 
 <details>
-<summary>Ubuntu</summary>
+
+		<summary>Ubuntu</summary>
 
 ```
 apt-get install apt-transport-https ca-certificates gnupg

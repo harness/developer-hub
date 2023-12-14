@@ -69,7 +69,7 @@ Next, we can add a Kubernetes manifest for NGINX. We'll use the [publicly-availa
 2. In **Manifests**, select **Add Manifest**.
    :::note
 
-   **What about Artifacts?** In this quickstart we are using a publicly-available NGINX Docker image from DockerHub, and the location of the image is hardcoded in the public manifest from Kubernetes. The **Artifacts** section is only used when the public artifact is not hardcoded in the manifest or the repo is private. In those cases, you add the image in **Artifacts** with a Connector for the repo and then reference the image in your values.yaml (`image: <+artifact.image>`). For more information, go to [Add Container Images as Artifacts for Kubernetes Deployments](cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
+   **What about Artifacts?** In this quickstart we are using a publicly-available NGINX Docker image from DockerHub, and the location of the image is hardcoded in the public manifest from Kubernetes. The **Artifacts** section is only used when the public artifact is not hardcoded in the manifest or the repo is private. In those cases, you add the image in **Artifacts** with a Connector for the repo and then reference the image in your values.yaml (`image: \<+artifact.image\>`). For more information, go to [Add Container Images as Artifacts for Kubernetes Deployments](cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
 
    :::
 1. Select **K8s Manifest**, and select **Continue**.
@@ -83,7 +83,7 @@ Next, we can add a Kubernetes manifest for NGINX. We'll use the [publicly-availa
      1. In **Personal Access Token**, click **Create or Select a Secret**.
      2. Select **New Secret Text**.
      3. In **Secret Name**, enter a name for the secret like **github-pat**.
-     4. In **Secret Value**, paste in a GitHub Personal access token. When you're logged into GitHub, these are typically listed at <https://github.com/settings/tokens>. For steps on setting up a GitHub PAT, go to [creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub. Ensure you PAT has the **repo** scope selected:
+     4. In **Secret Value**, paste in a GitHub Personal access token. When you're logged into GitHub, these are typically listed at [https://github.com/settings/tokens](https://github.com/settings/tokens). For steps on setting up a GitHub PAT, go to [creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub. Ensure you PAT has the **repo** scope selected:
 
      ![](./static/repoScope.png)
 4. Select **Continue**.
@@ -93,7 +93,8 @@ Next, we can add a Kubernetes manifest for NGINX. We'll use the [publicly-availa
    Expand the section below to learn more about installing delegates.
 
 <details>
-<summary>Use the delegate installation wizard</summary>
+
+		<summary>Use the delegate installation wizard</summary>
 
 1. In your Harness project, select **Project Setup**.
 2. Select **Delegates**.
@@ -109,7 +110,8 @@ import DelegateInstall from '/tutorials/platform/install-delegate.md';
 ```
 
 <details>
-<summary>Install a delegate using the terminal</summary>
+
+		<summary>Install a delegate using the terminal</summary>
 <DelegateInstall />
 </details>
 

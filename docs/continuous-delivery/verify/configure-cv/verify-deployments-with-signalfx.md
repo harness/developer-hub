@@ -132,7 +132,7 @@ Procedure:
    
 3. In **Duration**, choose a duration. Harness will use the data points within this duration for analysis. For instance, if you select 10 minutes, Harness will analyze the first 10 minutes of your log or APM data. It is recommended to choose 10 minutes for logging providers and 15 minutes for APM and infrastructure providers. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
    
-4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the **Service** tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/variables-and-expressions/harness-variables.md).
+4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the **Service** tab. Use the Harness expression `\<+serviceConfig.artifacts.primary.tag\>` to reference this primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/variables-and-expressions/harness-variables.md).
    
 5. Select **Fail On No Analysis** if you want the pipeline to fail if there is no data from the health source. This ensures that the deployment fails when there is no data for Harness to analyze.
 
@@ -208,7 +208,8 @@ Currently, Harness supports only Splunk Observability [SignalFx] metrics. The **
 
 
    <details>
-   <summary><b>Sample query to check the number of Kubernetes pods in ready state</b></summary>
+   
+		<summary><b>Sample query to check the number of Kubernetes pods in ready state</b></summary>
 
    Query: `data("k8s.container.ready")`
 
@@ -228,7 +229,8 @@ In the **Assign** section, select the services to which you want to apply the Su
 If you select **Continuous Verification (Applied to the pipelines in the Continuous Deployment)** or **Service Health**, expand the section below and follow the instructions for configuring the risk profile.
 
 <details>
-<summary><b>Risk Profile settings</b></summary>
+
+		<summary><b>Risk Profile settings</b></summary>
 
 
 #### Risk Profile

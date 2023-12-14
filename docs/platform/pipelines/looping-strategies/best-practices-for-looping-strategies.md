@@ -94,7 +94,7 @@ pipeline:
       value: HD-29193,HD-29194,HD-29195
 ```
 
-To call this variable's default value, use the expression `<+pipeline.variables.jiraTickets>`. When called in this way, it returns the entire string value: `HD-29193,HD-29194,HD-29195`.
+To call this variable's default value, use the expression `\<+pipeline.variables.jiraTickets\>`. When called in this way, it returns the entire string value: `HD-29193,HD-29194,HD-29195`.
 
 To split this variable into an array of substrings, use a Harness expression with the `split()` method:
 
@@ -114,8 +114,8 @@ matrix:
   jira: <+stage.variables.jiraTickets.split(',')>
 ```
 
-You can use looping strategy expressions to refer to each value in the loop. For example, in the **Issue Key** field in a **Jira Update** step, you can use the expressions `<+repeat.item>` or `<+matrix.jira>` to insert the Jira issue number for each iteration of the loop.
+You can use looping strategy expressions to refer to each value in the loop. For example, in the **Issue Key** field in a **Jira Update** step, you can use the expressions `\<+repeat.item\>` or `\<+matrix.jira\>` to insert the Jira issue number for each iteration of the loop.
 
 ![Repeat with split()](./static/best-practices-for-looping-strategies-08.png)
 
-The expression `<+repeat.item>` only applies to [repeat strategies](./looping-strategies-matrix-repeat-and-parallelism.md#repeat-strategies). You need to use matrix expressions (such as `<+matrix.jira>`) with [matrix strategies](./looping-strategies-matrix-repeat-and-parallelism.md#matrix-strategies).
+The expression `\<+repeat.item\>` only applies to [repeat strategies](./looping-strategies-matrix-repeat-and-parallelism.md#repeat-strategies). You need to use matrix expressions (such as `\<+matrix.jira\>`) with [matrix strategies](./looping-strategies-matrix-repeat-and-parallelism.md#matrix-strategies).

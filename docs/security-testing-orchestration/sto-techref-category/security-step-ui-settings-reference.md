@@ -21,7 +21,8 @@ Some Security steps include a scanner template UI for setting up a scan. This to
 To set up a scan using the scanner template, add a SecurityTests stage to your pipeline. Then add a Security step for the scanner of interest and configure the step using the available options. 
 
 <details>
-    <summary>Scanner Template example</summary>
+    
+		<summary>Scanner Template example</summary>
 
 ![](static/step-palette-00.png) 
 

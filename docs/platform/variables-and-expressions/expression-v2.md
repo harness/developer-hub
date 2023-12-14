@@ -59,7 +59,7 @@ When you output the expression in the Shell Script step, the formatting is not s
 
 For example, consider a pipeline with two stages. In the second stage, add a Shell Script step to obtain the JSON format of first stage: 
 
-`echo <+json.format(<+pipeline.stages.stage1>)>`
+`echo \<+json.format(<+pipeline.stages.stage1\>)>`
 
 In the pipeline execution page, select the **Input** section of the Shell Script step in the second stage, and then copy the JSON.
 
@@ -70,7 +70,8 @@ In the pipeline execution page, select the **Input** section of the Shell Script
 You can retrieve specific chunks of data from the following sample execution JSON by locating the corresponding path. For example, to access the status of a combination within the `cStage1` matrix, you could use the expression `pipeline.stages.cStage.cStage_0.status`.
 
 <details>
-<summary>Sample execution JSON</summary>
+
+		<summary>Sample execution JSON</summary>
 
 ```json
 {
@@ -464,7 +465,8 @@ To use JQ:
 * Your Harness Delegate must support JQ if your pipeline has a Shell Script step. For more information, go to [How to install JQ on Ubuntu](https://www.golinuxcloud.com/ubuntu-install-jq/).
 
   <details>
-  <summary>Install JQ on Harness Delegate</summary>
+  
+		<summary>Install JQ on Harness Delegate</summary>
 
   1. Open the `delegate.yaml` in a text editor.
   2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
@@ -491,7 +493,8 @@ To use JQ:
 Some JQ use cases are demonstrated in the following sections. These examples use the following sample pipeline.
 
 <details>
-<summary>Sample pipeline YAML</summary>
+
+		<summary>Sample pipeline YAML</summary>
 
 ```yaml
 pipeline:
@@ -683,7 +686,7 @@ This script defines a `traverse` function that takes a parameter called `key`. W
 * Status addition: Within the nested loop, the `spec.execution.status` value of each stage is extracted and added to the `statuses` array using `statuses.add(stage1.status)`.
 * Return: Finally, the function returns the `statuses` array.
 
-The script concludes by invoking the traverse function with the argument, `<+pipeline.stages.cStage>`. This argument represents the starting point for the traversal, where the `pipeline.stages.cStage` object is passed as the key.
+The script concludes by invoking the traverse function with the argument, `\<+pipeline.stages.cStage\>`. This argument represents the starting point for the traversal, where the `pipeline.stages.cStage` object is passed as the key.
 
 This script performs a traversal and extraction operation on a data structure represented by the key parameter. It extracts stages that start with `stageWithMatrix` and collects their corresponding `.status` values into the `statuses` array.
 
@@ -720,7 +723,7 @@ This script defines a `traverse` function that takes a parameter called `key`. W
 * Status addition: Within the nested loop, the `spec.execution.status` value of each stage is extracted and added to the `statuses` array using `statuses.add(stage1.status)`.
 * Return: Finally, the function returns the `statuses` array.
 
-The script concludes by invoking the traverse function with the argument, `<+pipeline.stages.stepWithMatrix.spec.execution.steps.ShellScript_1>`. This argument represents the starting point for the traversal, where the specific stage `(ShellScript_1)` within the given pipeline structure is passed as the key.
+The script concludes by invoking the traverse function with the argument, `\<+pipeline.stages.stepWithMatrix.spec.execution.steps.ShellScript_1\>`. This argument represents the starting point for the traversal, where the specific stage `(ShellScript_1)` within the given pipeline structure is passed as the key.
 
 This script performs a traversal and extraction operation on a data structure represented by the key parameter. It filters stages that start with the string `ShellScript_1` and collects their corresponding status values into the statuses array.
 

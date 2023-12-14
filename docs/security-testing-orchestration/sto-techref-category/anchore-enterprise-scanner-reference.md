@@ -325,7 +325,7 @@ To set up your Anchore Enterprise integration with a Security step, do the follo
 	+ `product_domain` : The fully-qualified URL to the scanner API, for example https://anchore.company.io/api or http://192.0.2.1:8228
 	+ `product_access_id` : Username to log in to the scanner.
 	+ `product_access_token` : The access token to log in to the scanner. In most cases this is a password or an API key. 
-	  You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
+	  You should create a Harness text secret with your encrypted token and reference the secret using the format `\<+secrets.getValue("project.container-access-id")\>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `dataLoad`:
 	+ `product_image_name` : The name of the image that you want to extract from Anchore.
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan`:
@@ -392,7 +392,8 @@ This example uses a Security step in Orchestration mode to scan a repository. Th
    3. Launches an orchestrated scan of the `owasp/nettacker` project in Anchore Enterprise and gets the scan results from the Anchore server. 
    4. Deduplicates and normalizes the scan data and ingests it into STO. 
 
-<details><summary>Anchore Enterprise dataload ingestion pipeline example</summary>
+<details>
+		<summary>Anchore Enterprise dataload ingestion pipeline example</summary>
 
 ```yaml
 
@@ -490,7 +491,8 @@ This example uses a Security step in Orchestration mode to scan a repository. Th
 
 Note that in this example, the resource limages for the Security step are increased to ensure that the container used to run the scan has enough memory and CPU. 
 
-<details><summary>Anchore Enterprise dataload ingestion pipeline example</summary>
+<details>
+		<summary>Anchore Enterprise dataload ingestion pipeline example</summary>
 
 ```yaml
 

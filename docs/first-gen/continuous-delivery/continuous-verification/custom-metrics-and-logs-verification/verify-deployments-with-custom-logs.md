@@ -43,7 +43,7 @@ In **Search URL**, enter the API query that will return a JSON response.
 
 Make sure the following parameters are included in the query. These placeholders will be replaced with the actual values during the execution.
 
-1. `${start_time}` or `${start_time_seconds`}: This is the placeholder parameter to specify the start time of the query. It is similar to the value specified in custom metrics verification.
+1. `${start_time}` or `${start_time_seconds`\}: This is the placeholder parameter to specify the start time of the query. It is similar to the value specified in custom metrics verification.
 2. `${end_time}` or `${end_time_seconds}`: This is the placeholder parameter to specify the end time of the query. It is similar to the value specified in custom metrics verification.
 3. `${host}`: This is the placeholder for querying based on the host during deployment verification. This is NOT a required field if the setup is for a Previous Analysis.
 
@@ -97,7 +97,7 @@ Click **Add**. The Log Collection is added.
 
 ### Step 11: Expression for Host/Container
 
-The expression entered here should resolve to a host/container name in your deployment environment. By default, the expression is **${instance.host.hostName}**.
+The expression entered here should resolve to a host/container name in your deployment environment. By default, the expression is **$\{instance.host.hostName\}**.
 
 ### Step 12: Analysis Time Duration
 

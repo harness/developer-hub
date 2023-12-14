@@ -154,7 +154,8 @@ Select or create the Harness Azure connector for Harness to use when connecting 
 In **ARM Template File**, add the template file to use for provisioning.
 
 <details>
-<summary>Example: ARM template file for Azure Web App</summary>
+
+		<summary>Example: ARM template file for Azure Web App</summary>
 
 ```json
 

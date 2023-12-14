@@ -184,7 +184,7 @@ line 2
 line 3
 ```
 
-When this value is base64-encoded, it results in an output like `bGluZSAxCmxpbmUgMgpsaW5lIDM=`. You could add this value to a Harness secret named **linebreaks**, and then decode the secret with a command such as `echo <+secrets.getValue("linebreaks")> | base64 -d`.
+When this value is base64-encoded, it results in an output like `bGluZSAxCmxpbmUgMgpsaW5lIDM=`. You could add this value to a Harness secret named **linebreaks**, and then decode the secret with a command such as `echo \<+secrets.getValue("linebreaks")\> | base64 -d`.
 
 When the pipeline runs, the resulting decoded output is not sanitized because it doesn't match the stored base64-encoded value.
 

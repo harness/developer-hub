@@ -72,8 +72,10 @@ Add a description to your flag. This is optional on the Harness Platform, but we
 ![An example flag description](./static/1-feature-flag-best-practices-04.png)To help with this, you can use the [Harness Policy Engine to enforce descriptions](/docs/feature-flags/harness-policy-engine) when creating a flag.
 
 
-
+```
 import ffimage from './static/1-feature-flag-best-practices-04.png';
+
+```
 <img src={ffimage} alt="An example flag description" height = "300" width = "600"/>
 
 

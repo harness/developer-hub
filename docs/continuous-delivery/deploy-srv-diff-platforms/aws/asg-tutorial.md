@@ -17,7 +17,8 @@ This topic explains how to deploy new AWS Auto Scale Groups (ASGs) and instances
 Here's a high-level summary of the setup steps and how Harness deploys ASGs.
 
 <details>
-<summary>Harness setup summary</summary>
+
+		<summary>Harness setup summary</summary>
 
 Here's a summary of how you set up ASG deployments in Harness:
 
@@ -37,7 +38,8 @@ Here's a summary of how you set up ASG deployments in Harness:
 
 
 <details>
-<summary>Deployment summary</summary>
+
+		<summary>Deployment summary</summary>
 
 Here's a summary of how Harness deploys new ASG versions:
 
@@ -60,7 +62,8 @@ Notes:
 When you set up a Harness AWS connector to connect Harness with your AWS account, the AWS IAM role must have the following policies.
 
 <details>
-<summary>AmazonEC2FullAccess</summary>
+
+		<summary>AmazonEC2FullAccess</summary>
 
 - **Policy Name:** [AmazonEC2FullAccess](https://us-east-1.console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/AmazonEC2FullAccess).
 - **Policy ARN:** arn:aws:iam::aws:policy/AmazonEC2FullAccess.
@@ -98,7 +101,8 @@ Policy JSON:
 </details>
 
 <details>
-<summary>DescribeRegions</summary>
+
+		<summary>DescribeRegions</summary>
 
 :::note
 
@@ -380,7 +384,8 @@ AWS does not have a dedicated public resource for ASG configuration file formatt
 However, the AWS CLI [create-auto-scaling-group](https://docs.aws.amazon.com/cli/latest/reference/autoscaling/create-auto-scaling-group.html) command reference documentation provides a detailed description of the parameters that can be used when creating an ASG. 
 
 <details>
-<summary>ASG configuration file example</summary>
+
+		<summary>ASG configuration file example</summary>
 
 ```json
 {
@@ -475,7 +480,7 @@ For example, you could create a variable named **desiredCapacity** and set its v
 
 ![service variable](./static/c590ccda5addd62225b690d85c60237b2f6e9378e8ed4b02ba3e82ba9bda29e9.png)  
 
-Next, in your ASG configuration file, you could reference the variable like this (see `<+serviceVariables.desiredCapacity>`):
+Next, in your ASG configuration file, you could reference the variable like this (see `\<+serviceVariables.desiredCapacity\>`):
 
 ```json
 {
@@ -1067,7 +1072,8 @@ Subsequent deployments will deploy a new version of the same ASG with any change
 Here's a flowchart that explains how Harness performs rolling deployments:
 
 <details>
-<summary>Rolling deployments flowchart</summary>
+
+		<summary>Rolling deployments flowchart</summary>
 
 ![ASG rolling flowchart](./static/ab01a5afe7406d7dad3496fbf0544cd304c512179589a24ae47eefa418fdc989.png)  
 
@@ -1097,7 +1103,8 @@ The Rolling Deploy step has the following options:
  
 
 <details>
-<summary>YAML example</summary>
+
+		<summary>YAML example</summary>
 
 ```yaml
           execution:
@@ -1119,7 +1126,8 @@ The Rolling Deploy step has the following options:
 Here's an example of the log from a successful deployment.
 
 <details>
-<summary>ASG Rolling Deploy log example</summary>
+
+		<summary>ASG Rolling Deploy log example</summary>
 
 ```json
 Deploy
@@ -1220,7 +1228,8 @@ In the ASG Canary Deploy step, in **Instances**, you can specify how many instan
 The **Instances** replaces the `desiredCapacity` in your ASG configuration file.
 
 <details>
-<summary>ASG Canary Deploy step log example</summary>
+
+		<summary>ASG Canary Deploy step log example</summary>
 
 ```json
 Getting Asg demo-asg2__Canary
@@ -1251,7 +1260,8 @@ Deployment Finished Successfully
 The ASG Canary Delete step deletes the temporary ASG created by the ASG Canary Deploy step.
 
 <details>
-<summary>ASG Canary Delete step log example</summary>
+
+		<summary>ASG Canary Delete step log example</summary>
 
 ```json
 Getting Asg demo-asg2__Canary
@@ -1315,7 +1325,8 @@ The first ASG deployed is given a suffix using the format `[app_name]__1`, like 
 Every subsequent deployment will simply create new versions of these ASGs instead of creating new ASGs. So the third deployment will create a new *version* of ASG `[app_name]__1`, route prod traffic to it, and route stage traffic to ASG `[app_name]__2`.
 
 <details>
-<summary>Blue/Green with Traffic Shift Summary</summary>
+
+		<summary>Blue/Green with Traffic Shift Summary</summary>
 
 In this strategy, you specify production and stage listener ports and rules to use in the ASG Blue Green Deploy step. Next, the ASG Swap Services step swaps all traffic from stage to production.
 
@@ -1334,7 +1345,8 @@ Blue/Green deployments are achieved by swapping routes between the target groups
 Here's a flowchart that explains how Harness performs Blue Green deployments:
 
 <details>
-<summary>Blue Green deployments flowchart</summary>
+
+		<summary>Blue Green deployments flowchart</summary>
 
 ![blue green flowchart map](./static/65c67ea9418a480ee1fc97fce06fe551ac3afea9fb6e5297a2d70fcb7711ee0c.png)  
 
@@ -1342,7 +1354,8 @@ Here's a flowchart that explains how Harness performs Blue Green deployments:
 
 
 <details>
-<summary>AWS requirements</summary>
+
+		<summary>AWS requirements</summary>
 
 In addition to the requirements of the Harness ASG service and environment, an ASG Blue Green deployment requires you to set up the following resources up within AWS:
 
@@ -1355,7 +1368,8 @@ In addition to the requirements of the Harness ASG service and environment, an A
 Let's take a look at the first two deployments.
 
 <details>
-<summary>First Blue Green deployment</summary>
+
+		<summary>First Blue Green deployment</summary>
 
 The first Blue Green deployment follows these steps:
 
@@ -1373,7 +1387,8 @@ The first Blue Green deployment follows these steps:
 
 
 <details>
-<summary>Second Blue Green deployment</summary>
+
+		<summary>Second Blue Green deployment</summary>
 
 At the start, the second Blue Green deployment will only have one prod ASG (the one deployed in the first Blue Green deployment). 
 

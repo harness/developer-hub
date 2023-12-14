@@ -5,9 +5,13 @@ title: Chaos faults for GCP
 
 <!-- Import statement for Custom Components -->
 
+
+```
 import FaultDetailsCard from "@site/src/components/ChaosEngineering/FaultDetailsCard";
 import ExperimentListSection from "@site/src/components/ChaosEngineering/ExperimentListSection"
 import { experiments } from "./experiments"
+```
+
 
 <!-- Heading Description -->
 
@@ -33,7 +37,8 @@ It disrupts the state of GCP persistent disk volume filtered using a label by de
 <!-- <accordion color='green'/> has same usage as details but green in color -->
 
 <accordion color="green">
-    <summary>Use cases</summary>
+    
+		<summary>Use cases</summary>
     This fault can be used to determine the resilience of the GKE infrastructure. It helps determine how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
 </accordion>
 
@@ -56,7 +61,8 @@ It disrupts the state of GCP persistent disk volume by detaching the disk volume
 <!-- <accordion color='green'/> has same usage as details but green in color -->
 
 <accordion color="green">
-    <summary>Use cases</summary>
+    
+		<summary>Use cases</summary>
     This fault can be used to determine the resilience of the GKE infrastructure. It helps determine how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
 </accordion>
 
@@ -77,7 +83,8 @@ It powers off GCP VM instances (that are filtered by a label) for a specific dur
 <!-- <accordion color='green'/> has same usage as details but green in color -->
 
 <accordion color="green">
-    <summary>Use cases</summary>
+    
+		<summary>Use cases</summary>
     This fault determines the resilience of an application that runs on a VM instance when a VM instance unexpectedly stops (or fails).
 </accordion>
 
@@ -98,7 +105,8 @@ It powers off a GCP VM instance based on the instance name (or list of instance 
 <!-- <accordion color='green'/> has same usage as details but green in color -->
 
 <accordion color="green">
-    <summary>Use cases</summary>
+    
+		<summary>Use cases</summary>
 This fault determines the resilience of an application that runs on a VM instance when a VM instance unexpectedly stops (or fails).
 </accordion>
 

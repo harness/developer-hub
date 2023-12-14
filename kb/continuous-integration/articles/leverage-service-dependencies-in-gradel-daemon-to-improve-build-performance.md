@@ -29,7 +29,8 @@ In Harness CI builds, each step runs in a separate container. If your pipeline h
 ```
 
 <details>
-<summary>Deprecated: Run Grade daemon as a service dependency</summary>
+
+		<summary>Deprecated: Run Grade daemon as a service dependency</summary>
 
 The following YAML example shows a pipeline that runs a Gradle demon as a **Service Dependency**. This is now deprecated in favor of the [Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings).
 

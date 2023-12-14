@@ -153,9 +153,7 @@ Below is the table where we have outlined the contrasting behavior of cost categ
     <tr>
         <td>Behaviour </td>
         <td>If there is an update in the cost category rule, we will utilize the updated rules to display the cost accordingly, even for past data.</td>
-        <td>We keep track of cost category changes on a monthly basis and update data accordingly for that month.
-        <br></br>
-        <b>Caveat:</b> For GCP data, we update the data for last 3 days only.</td>
+        <td>We keep track of cost category changes on a monthly basis and update data accordingly for that month.   <br></br>   <b>Caveat:</b> For GCP data, we update the data for last 3 days only.</td>
     </tr>
 </table>
 

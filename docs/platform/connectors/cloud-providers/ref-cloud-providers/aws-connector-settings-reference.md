@@ -75,7 +75,8 @@ There are two required policies to read from AWS S3:
 * A [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) you create using `ec2:DescribeRegions`
 
 <details>
-<summary>AmazonS3ReadOnlyAccess managed policy</summary>
+
+		<summary>AmazonS3ReadOnlyAccess managed policy</summary>
 
 * **Policy Name:** `AmazonS3ReadOnlyAccess`
 * **Policy ARN:** `arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess`
@@ -101,7 +102,8 @@ There are two required policies to read from AWS S3:
 </details>
 
 <details>
-<summary>ec2:DescribeRegions customer managed policy</summary>
+
+		<summary>ec2:DescribeRegions customer managed policy</summary>
 
 * **Policy Name:** Any name, such as `HarnessS3`
 * **Description:** `Harness S3 policy that uses EC2 permissions.`
@@ -128,7 +130,8 @@ There are two required policies to read from AWS S3:
 There are two [Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies) required to write to AWS S3.
 
 <details>
-<summary>S3 write customer managed policy</summary>
+
+		<summary>S3 write customer managed policy</summary>
 
 * **Policy Name:** `HarnessS3Write`
 * **Description:** `Custom policy for pushing to S3.`
@@ -151,7 +154,8 @@ There are two [Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest
 </details>
 
 <details>
-<summary>ec2:DescribeRegions customer managed policy</summary>
+
+		<summary>ec2:DescribeRegions customer managed policy</summary>
 
 * **Policy Name:** Any name, such as `HarnessS3`
 * **Description:** `Harness S3 policy that uses EC2 permissions.`
@@ -178,7 +182,8 @@ There are two [Customer Managed Policies](https://docs.aws.amazon.com/IAM/latest
 You can have a single policy that reads and writes to an S3 bucket.
 
 <details>
-<summary>S3 read and write policy JSON example</summary>
+
+		<summary>S3 read and write policy JSON example</summary>
 
 Here is a JSON example of a policy that includes AWS console access:
 
@@ -226,7 +231,8 @@ For more information, go to the following AWS documentation:
 Use these policies to pull or push to ECR. For more information, go to the AWS documentation about [AWS managed policies for Amazon Elastic Container Registry](https://docs.aws.amazon.com/AmazonECR/latest/userguide/security-iam-awsmanpol.html).
 
 <details>
-<summary>Pull from ECR policy</summary>
+
+		<summary>Pull from ECR policy</summary>
 
 * **Policy Name:** `AmazonEC2ContainerRegistryReadOnly`
 * **Policy ARN:** `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly`
@@ -258,7 +264,8 @@ Use these policies to pull or push to ECR. For more information, go to the AWS d
 </details>
 
 <details>
-<summary>Push to ECR</summary>
+
+		<summary>Push to ECR</summary>
 
 * **Policy Name:** `AmazonEC2ContainerRegistryFullAccess`
 * **Policy ARN:** `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess`
@@ -301,7 +308,8 @@ Use these policies to pull or push to ECR. For more information, go to the AWS d
 The required policies depend on what you are provisioning. Here are some examples:
 
 <details>
-<summary>Example: Create and manage EKS clusters</summary>
+
+		<summary>Example: Create and manage EKS clusters</summary>
 
 This example policy gives full access to create and manage EKS clusters.
 
@@ -328,7 +336,8 @@ This example policy gives full access to create and manage EKS clusters.
 </details>
 
 <details>
-<summary>Example: Limited permissions for EKS clusters</summary>
+
+		<summary>Example: Limited permissions for EKS clusters</summary>
 
 This example policy gives limited permission to EKS clusters.
 
@@ -828,7 +837,8 @@ To create the AWS user, do the following:
 	* **Limited Access:** Select **Create policy**, select the **JSON** tab, and add the following [Serverless gist](https://gist.github.com/ServerlessBot/7618156b8671840a539f405dea2704c8) JSON code:
 
 <details>
-<summary>IAMCredentials.json</summary>
+
+		<summary>IAMCredentials.json</summary>
 
 ```
 {
@@ -1010,7 +1020,8 @@ The AWS connector settings include:
 * **AWS Backoff Strategy:** Go to [AWS Backoff Strategy](#aws-backoff-strategy) below.
 
 <details>
-<summary>Configure IRSA credentials for AWS connectors</summary>
+
+		<summary>Configure IRSA credentials for AWS connectors</summary>
 
 Setting up IRSA credentials requires a few more steps than other methods, but it is a simple process.
 

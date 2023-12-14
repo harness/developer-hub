@@ -156,7 +156,7 @@ In Blue/Green deployments, Harness will also override the `loadBalancers` elemen
 
 You also have the option to use Harness variables within your Infrastructure Definition's **Elastigroup Configuration** field.
 
-Infrastructure Definitions do not currently support auto-fill for expressions. So you must manually type Service variables into the JSON, in this format: `${serviceVariable.<var_name>`}Create the variables in your [Service](#service)’s **Config Variables** section.
+Infrastructure Definitions do not currently support auto-fill for expressions. So you must manually type Service variables into the JSON, in this format: `${serviceVariable.<var_name>`\}Create the variables in your [Service](#service)’s **Config Variables** section.
 
 Then insert them in the **Elastigroup Configuration** JSON using the format above. For further details, see [Add Service Config Variables](../../model-cd-pipeline/setup-services/add-service-level-config-variables.md).
 

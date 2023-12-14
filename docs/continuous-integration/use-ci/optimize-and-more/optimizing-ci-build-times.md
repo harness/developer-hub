@@ -27,7 +27,8 @@ For information about optimizing test times, go to [Run tests in CI pipelines](.
 The following practices can reduce your build times.
 
 <details>
-<summary>Pre-build images that include all required dependencies</summary>
+
+		<summary>Pre-build images that include all required dependencies</summary>
 
 If most of the build time is spent downloading dependencies, you should pre-build an image with all required dependencies in a separate pipeline. Then, set up a periodic pipeline that builds the image with all the latest dependencies and pushes it to your Docker registry. Use this image in all of your build pipelines.
 
@@ -36,14 +37,16 @@ Pre-building images with all required dependencies is more efficient than downlo
 </details>
 
 <details>
-<summary>Exclude unnecessary files and packages from your images</summary>
+
+		<summary>Exclude unnecessary files and packages from your images</summary>
 
 In addition to reducing build times, excluding unnecessary files and packages makes the resulting images smaller, simpler, and more portable. You can use [dockerignore](https://docs.docker.com/engine/reference/builder/#dockerignore-file) files to exclude unnecessary files and folders from your images.
 
 </details>
 
 <details>
-<summary>Optimize Dockerfiles and enable Docker layer caching</summary>
+
+		<summary>Optimize Dockerfiles and enable Docker layer caching</summary>
 
 * Sort multi-line arguments in your Dockerfile alphabetically. This makes it easier to update and avoid duplicate packages.
 * Review [Docker's best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/).

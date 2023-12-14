@@ -2,7 +2,8 @@
 Output variables expose values for use by other steps or stages in the pipeline.
 
 <details>
-<summary>YAML example: Output variable</summary>
+
+		<summary>YAML example: Output variable</summary>
 
 In the following YAML example, step `alpha` exports an output variable called `myVar`, and then step `beta` references that output variable.
 
@@ -75,7 +76,8 @@ Use either of the following expressions to reference an output variable in a dif
 </figure>
 
 <details>
-<summary>Early access feature: Output variables as environment variables</summary>
+
+		<summary>Early access feature: Output variables as environment variables</summary>
 
 :::note
 
@@ -85,7 +87,7 @@ Currently, this [early access feature](/release-notes/early-access) is behind th
 
 With this feature flag enabled, output variables from steps are automatically available as environment variables for other steps in the same Build (`CI`) stage. This means that, if you have a Build stage with three steps, an output variable produced from step one is automatically available as an environment variable for steps two and three.
 
-In other steps in the same stage, you can refer to the output variable by its key without additional identification. For example, an output variable called `MY_VAR` can be referenced later as simply `$MY_VAR`. Without this feature flag enabled, you must use an expression to [reference the output variable](#reference-an-output-variable), such as `<+steps.stepID.output.outputVariables.MY_VAR>`.
+In other steps in the same stage, you can refer to the output variable by its key without additional identification. For example, an output variable called `MY_VAR` can be referenced later as simply `$MY_VAR`. Without this feature flag enabled, you must use an expression to [reference the output variable](#reference-an-output-variable), such as `\<+steps.stepID.output.outputVariables.MY_VAR\>`.
 
 With or without this feature flag, you must use an expression when referencing output variables across stages, for example:
 
@@ -95,7 +97,8 @@ name: <+pipeline.stages.[stageID].spec.execution.steps.[stepID].output.outputVar
 ```
 
 <details>
-<summary>YAML examples: Referencing output variables</summary>
+
+		<summary>YAML examples: Referencing output variables</summary>
 
 In the following YAML example, a step called `alpha` exports an output variable called `myVar`, and then a step called `beta` references that output variable. Both steps are in the same stage.
 
@@ -184,7 +187,8 @@ name: <+execution.steps.stepGroupID.steps.stepID.output.outputVariables.MY_VAR>
 ```
 
 <details>
-<summary>YAML examples: Variables with the same name</summary>
+
+		<summary>YAML examples: Variables with the same name</summary>
 
 In the following YAML example, step `alpha` and `zeta` both export output variables called `myVar`. When the last step, `beta`, references `myVar`, it gets the value assigned in `zeta` because that was the most recent instance of `myVar`.
 

@@ -50,7 +50,8 @@ The sample repo has a simple FastAPI project and unit tests. Notable files inclu
 * `fastapi-todo-tests/app/main.py`: The sample FastAPI project builds a "To Do" list. It has three API endpoints, one that creates tasks, one that deletes tasks, and one that gets the task list.
 * `fastapi-todo-tests/test_main.py`: Defines three test cases.
 
-<details><summary>Optional exercise: Local set up</summary>
+<details>
+		<summary>Optional exercise: Local set up</summary>
 
 Optionally, you can build the project and test it locally before running tests in a Harness CI pipeline.
 

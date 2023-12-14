@@ -119,7 +119,8 @@ With self-hosted build infrastructures, you can:
  * [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
 
 <details>
-<summary>Python cache key and path requirements</summary>
+
+		<summary>Python cache key and path requirements</summary>
 
 Python pipelines typically reference `requirements.txt` in **Save Cache** and **Restore Cache** steps, for example:
 
@@ -139,7 +140,8 @@ Additionally, `spec.sourcePaths` must include the python cache (typically `/root
 </details>
 
 <details>
-<summary>YAML example: Save and restore cache steps</summary>
+
+		<summary>YAML example: Save and restore cache steps</summary>
 
 Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache from S3** steps.
 
@@ -323,7 +325,8 @@ Use the [setup-python](https://github.com/actions/setup-python) action in a [Git
 You will need a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token), stored as a [secret](/docs/platform/secrets/add-use-text-secrets), with read-only access for GitHub authentication.
 
 <details>
-<summary>Install one Python version</summary>
+
+		<summary>Install one Python version</summary>
 
 ```yaml
               - step:
@@ -340,7 +343,8 @@ You will need a [personal access token](https://docs.github.com/en/authenticatio
 </details>
 
 <details>
-<summary>Install multiple Python versions</summary>
+
+		<summary>Install multiple Python versions</summary>
 
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
@@ -378,7 +382,8 @@ You will need a [personal access token](https://docs.github.com/en/authenticatio
 Specify the desired [Python Docker image](https://hub.docker.com/_/python) tag in your steps. There is no need for a separate install step when using Docker.
 
 <details>
-<summary>Use a specific Python version</summary>
+
+		<summary>Use a specific Python version</summary>
 
 ```yaml
               - step:
@@ -396,7 +401,8 @@ Specify the desired [Python Docker image](https://hub.docker.com/_/python) tag i
 </details>
 
 <details>
-<summary>Use multiple Python versions</summary>
+
+		<summary>Use multiple Python versions</summary>
 
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
@@ -445,7 +451,8 @@ This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integra
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 <details>
-<summary>Pipeline with default Python version</summary>
+
+		<summary>Pipeline with default Python version</summary>
 
 ```yaml
 pipeline:
@@ -514,7 +521,8 @@ pipeline:
 </details>
 
 <details>
-<summary>Pipeline with multiple Python versions</summary>
+
+		<summary>Pipeline with multiple Python versions</summary>
 
 ```yaml
 pipeline:
@@ -604,7 +612,8 @@ pipeline:
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector), kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 <details>
-<summary>Pipeline with one specific Python version</summary>
+
+		<summary>Pipeline with one specific Python version</summary>
 
 Here is a single-stage pipeline, with steps that use Python 3.10.10.
 
@@ -658,7 +667,8 @@ pipeline:
 </details>
 
 <details>
-<summary>Pipeline with multiple Python versions</summary>
+
+		<summary>Pipeline with multiple Python versions</summary>
 
 Here is a single-stage pipeline, with a matrix looping strategy for Python versions 3.11.2 and 3.10.10.
 

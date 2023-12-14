@@ -136,7 +136,8 @@ https://www.youtube.com/watch?v=dVk6-8tfwJc-->
 Harness supports image artifacts with Helm charts in the following ways.
 
 <details>
-<summary>Helm chart with hardcoded artifact</summary>
+
+		<summary>Helm chart with hardcoded artifact</summary>
 
 The image artifact is identified in the Helm chart values.yaml file. For example:
 
@@ -153,11 +154,12 @@ If the image is hardcoded then you do not use the **Artifacts** section of the s
 
 </details>
 <details>
-<summary>Helm chart using artifact added to the stage</summary>
+
+		<summary>Helm chart using artifact added to the stage</summary>
 
 You add an image artifact to the **Artifacts** section of the service and then reference it in the Helm chart values.yaml file.
 
-Artifacts in the **Artifacts** section are referenced using the `<+artifact.image>` expression. For example:
+Artifacts in the **Artifacts** section are referenced using the `\<+artifact.image\>` expression. For example:
 
 
 ```yaml
@@ -224,7 +226,7 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 
   The values3.yaml key:value pair overrides the key:value pair of values2.yaml and values.yaml files.
 
-  You can also select **Expression** and use [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables) in this setting. The resolved expression must be the name of a Values YAML file in the chart. For example, you could create a stage variable for **values4.yaml** named **qa** and then reference it in **Values YAML** like this: `<+stage.variables.qa>`.
+  You can also select **Expression** and use [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables) in this setting. The resolved expression must be the name of a Values YAML file in the chart. For example, you could create a stage variable for **values4.yaml** named **qa** and then reference it in **Values YAML** like this: `\<+stage.variables.qa\>`.
 - **Skip Resource Versioning**: By default, Harness versions ConfigMaps and secrets deployed into Kubernetes clusters. In some cases, such as when using public manifests or Helm charts, you cannot add the annotation. When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and secrets for the resource. If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and secrets.
 - **Helm Command Flags**: You can use Helm command flags to extend the Helm commands that Harness runs when deploying your Helm chart. Harness will run Helm-specific Helm commands and their flags as part of preprocessing. All the commands you select are run before `helm install/upgrade`.
 - **Command Type**: Select the Helm command type you want to use. For example:
@@ -324,7 +326,7 @@ You can see the `template` command with the `--dependency-update` flag running i
 
 ## Reference the artifact
 
-If the image artifact is not hardcoded in the Helm chart, add the artifact in **Artifacts** and use the expression `<+artifact.image>` in your values.yaml. For example:
+If the image artifact is not hardcoded in the Helm chart, add the artifact in **Artifacts** and use the expression `\<+artifact.image\>` in your values.yaml. For example:
 
 
 ```yaml
@@ -355,11 +357,11 @@ See [Example Kubernetes Manifests using Go Templating](/docs/continuous-deliver
 
 ## Override chart values YAML in environment
 
-You can override the values YAML file for a stage's environment by mapping the environment name to the values file or folder. Next, you use the `<+env.name>` Harness expression in the values YAML path.
+You can override the values YAML file for a stage's environment by mapping the environment name to the values file or folder. Next, you use the `\<+env.name\>` Harness expression in the values YAML path.
 
 Let's look at an example.
 
-Let's say there is a repo with three values YAML files, dev.yaml, qa.yaml. prod.yaml. In the **Values YAML** setting for the values file, you use the `<+env.name>` expression.
+Let's say there is a repo with three values YAML files, dev.yaml, qa.yaml. prod.yaml. In the **Values YAML** setting for the values file, you use the `\<+env.name\>` expression.
 
 ![](./static/deploy-helm-charts-06.png)
 
@@ -525,7 +527,7 @@ kubectl --kubeconfig=config rollout status Deployment/release-e008...ee-nginx --
 
 
 #### Enable Setting -  Native Helm steady state for jobs
-By Default, Harness will check for the steady state of deployed Helm resources. If you want to check the steady state for Kubernetes jobs for Native Helm Deployments, we now have a setting that will enable that. Please navigate to `Account Settings > Account Resources > Default Settings` and navigate to the Continuous Deployment Section. This setting can be configured at the project, organization, and account level. You will see the option `Enable Native Helm steady state for jobs` this will check the steady state of the jobs deployed with the Helm Chart. With the checkbox configuration enabled, during a Native Helm Deployment, you will see Harness use the `helm get manifest <+release.name>` command to get the details to check the steady state. With the setting enabled, we are no longer using the ConfigMap to check for status. 
+By Default, Harness will check for the steady state of deployed Helm resources. If you want to check the steady state for Kubernetes jobs for Native Helm Deployments, we now have a setting that will enable that. Please navigate to `Account Settings > Account Resources > Default Settings` and navigate to the Continuous Deployment Section. This setting can be configured at the project, organization, and account level. You will see the option `Enable Native Helm steady state for jobs` this will check the steady state of the jobs deployed with the Helm Chart. With the checkbox configuration enabled, during a Native Helm Deployment, you will see Harness use the `helm get manifest \<+release.name\>` command to get the details to check the steady state. With the setting enabled, we are no longer using the ConfigMap to check for status. 
 
 
 **Helm Steady State with Setting Enabled**

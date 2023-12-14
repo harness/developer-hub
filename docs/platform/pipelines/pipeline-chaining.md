@@ -94,7 +94,8 @@ Now, when the parent pipeline is run and the child pipeline is executed, the chi
 Here's an example of a child and parent pipeline where a parent pipeline output expression is mapped and used in a child pipeline stage.
 
 <details>
-<summary>Child pipeline</summary>
+
+		<summary>Child pipeline</summary>
 
 ```yaml
 pipeline:
@@ -138,7 +139,8 @@ pipeline:
 </details>
 
 <details>
-<summary>Parent pipeline with child pipeline stage</summary>
+
+		<summary>Parent pipeline with child pipeline stage</summary>
 
 ```yaml
 pipeline:

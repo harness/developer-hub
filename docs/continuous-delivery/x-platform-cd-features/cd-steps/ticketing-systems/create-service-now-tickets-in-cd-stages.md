@@ -130,7 +130,8 @@ Harness recommends that you only use a table extending task, or extend tables th
 You can specify any custom table in Harness by typing the table name in the **Ticket Type** setting.
 
 <details>
-<summary>What is a table extending task?</summary>
+
+		<summary>What is a table extending task?</summary>
 
 In ServiceNow, a table extending task is a task that involves creating a new table by extending an existing table. When a table is extended, a new child table is created that inherits all the fields, relationships, and other attributes of the parent table. The child table can then be customized further to meet the specific needs of the organization.
 
@@ -149,7 +150,7 @@ For standard use cases, the custom table being used should allow access to this 
 
 This section describes how to use custom tables via the Harness ServiceNow app in the ServiceNow store.
 
-:::notes
+::: notes
 
 - Cross-scope privileges are required to be added for the ServiceNow user only when using custom tables with templates (via the Harness app on the ServiceNow store).
 - The store app is only certified to be used with Incident, Problem, Change Request, and Change Task tables by the ServiceNow certification team.

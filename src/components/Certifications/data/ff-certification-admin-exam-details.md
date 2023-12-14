@@ -30,7 +30,8 @@ The Feature Flag Administrator exam tests your knowledge and skills of the Harne
 ## Exam Objectives 
 
 <details>
-<summary>List of Objectives</summary>
+
+		<summary>List of Objectives</summary>
 
 The following is a detailed list of exam objectives:
 

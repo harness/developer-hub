@@ -101,7 +101,7 @@ For information about installing Harness Delegate on OpenShift, see [Delegates a
 
 The following steps will install KOTS from your private repository and the Harness Self-Managed Enterprise Edition license and air gap file you obtain from Harness.
 
-1. Download the latest KOTS (kotsadm.tar.gz) release from <https://github.com/replicatedhq/kots/releases>.
+1. Download the latest KOTS (kotsadm.tar.gz) release from [https://github.com/replicatedhq/kots/releases](https://github.com/replicatedhq/kots/releases).
 2. Push KOTS images to your private registry:  
 
    ```

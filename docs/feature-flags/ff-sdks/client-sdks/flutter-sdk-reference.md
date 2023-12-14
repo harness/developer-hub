@@ -108,7 +108,8 @@ To initialize the Flutter SDK, you need to:
 ### Add a Target to Evaluate
 
 <details>
-<summary>What is a Target?</summary> 
+
+		<summary>What is a Target?</summary> 
 Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
@@ -123,7 +124,8 @@ To add a Target, build it and pass in arguments for the following:
 | name | Name for this Target. This does not have to be unique. **Note**: If you don’t provide a value, the name will be the same as the identifier.Read **Regex requirements for Target names and identifiers** below for accepted characters. | Optional**Note**: If you don't want to send a name, don't send the parameter. Sending an empty argument will cause an error. | `.setName("Harness_Target_1")` |
 
 <details>
-<summary> Regex requirements for Target names and identifiers </summary>
+
+		<summary> Regex requirements for Target names and identifiers </summary>
 
 **Identifier** 
 

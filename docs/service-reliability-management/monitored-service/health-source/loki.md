@@ -53,7 +53,8 @@ In the **Define Health Source** tab of the Add New Health Source page, do the fo
 4. In the Create or Select an Existing Connector dialog, select a Grafana Loki connector, and then select **Apply Selected**.
 
 <details>
-<summary><b>Follow these steps to create a new Grafana Loki connector.</b></summary>
+
+		<summary><b>Follow these steps to create a new Grafana Loki connector.</b></summary>
 
 
 1. In the Create or Select an Existing Connector dialog, select **+ New Connector**.
@@ -118,7 +119,8 @@ In the **Define Health Source** tab of the Add New Health Source page, do the fo
    Sample logs are displayed that help you verify if the query is correct.
 
    <details>
-   <summary><b>Sample log query</b></summary>
+   
+   		<summary><b>Sample log query</b></summary>
 
    Query for showing data from all filenames except syslog: `{filename=~".+",filename!="/var/log/syslog"}`
 

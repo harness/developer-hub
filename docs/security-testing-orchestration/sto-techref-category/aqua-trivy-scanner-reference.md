@@ -53,7 +53,8 @@ The recommended workflow is add an AquaTrivy step to a Security Tests or CI Buil
 
 
 <details>
-    <summary>Scanner Template</summary>
+    
+		<summary>Scanner Template</summary>
 
 ![](static/aqua-trivy-security-scan-step.png) 
 

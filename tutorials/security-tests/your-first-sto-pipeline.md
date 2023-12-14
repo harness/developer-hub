@@ -41,7 +41,8 @@ You'll learn how to:
 5. Request an exemption ("ignore rule") for a specific issue.
 6. Approve the exemption. Once approved, the exemption won't fail the pipeline even if it equals or exceeds the severity threshold.
 
-<details open><summary> Review: what's supported in Harness STO</summary>
+<details open>
+		<summary> Review: what's supported in Harness STO</summary>
 
 Go to [What's supported in Harness STO](/docs/security-testing-orchestration/whats-supported) for information about all supported STO features, infrastructures, and third-party scanners. 
 
@@ -97,7 +98,8 @@ Do the following:
 ### Add a Bandit scan step
 
 
-<details open><summary> Key concept: scan targets and variants</summary>
+<details open>
+		<summary> Key concept: scan targets and variants</summary>
 
 Every STO scan has a specific [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
 - The name specifies the repository, image, or instance to scan.
@@ -144,9 +146,9 @@ import TabItem from '@theme/TabItem';
       -  `mode :` [`orchestration`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step. 
       -  `config: default`
          - `target : ` 
-            - `name : <+input>` 
+            - `name : \<+input\>` 
             - `type : repository`
-            - `variant : <+input>` You will specify the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) when you run the pipeline. 
+            - `variant : \<+input\>` You will specify the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) when you run the pipeline. 
                 When scanning a repository, you will generally use the repository name and branch for these fields.
          - `advanced : ` 
             - `log :` 
@@ -178,7 +180,8 @@ Here's a YAML example:
 </Tabs>
 ```
 
-<!-- details><summary> Key concept: scanner templates</summary>
+<!-- details>
+		<summary> Key concept: scanner templates</summary>
 
 The Step Library includes a Security step for setting up scanners: open the step and configure the scan as a set of key/value pairs under **Settings**.
 
@@ -218,7 +221,8 @@ Now that you've set up the pipeline, you can run a scan and view the detected is
 
 ### Set the baseline
 
-<details open><summary> Key concept: baselines</summary> 
+<details open>
+		<summary> Key concept: baselines</summary> 
 
 A _target baseline_ identifies the "prod" variant of the target, such as the `main` branch or the `latest` tag. Defining a baseline makes it easy to distinguish between “shift-right” issues in production targets and “shift-left” issues in downstream variants.
 
@@ -260,7 +264,8 @@ DEMO-001 has 5 security issues: 2 critical, 2 medium, 1 low. Note that 3 of thes
 
 ### Fix vulnerabilities
 
-<details open><summary>Key Concept: Issues and occurrences</summary>  
+<details open>
+		<summary>Key Concept: Issues and occurrences</summary>  
 When Harness processes the security issues identified in a scan, it deduplicates the results. <i>Deduplication</i> is the aggregation of multiple occurrences with the same root cause into one issue. 
 
 Note the following as you troubleshoot and fix your security issues: 
@@ -292,7 +297,8 @@ The Issue Details pane has useful information for troubleshooting your security 
 	
    ![](./static/your-first-pipeline/sto-standalone-workflows-16-indiv-issue-details.png)
 
-<details open><summary>Key Concept: Issue details are derived from the external scanner</summary>  
+<details open>
+		<summary>Key Concept: Issue details are derived from the external scanner</summary>  
 
 Many of the details you see for each issue are derived from the external scanner. These details can differ, depending on the scan tool you're using. In this tutorial we're using Bandit, which is a free, open-source scan tool. In general, paid scanners provide more extensive details (such as remediation steps) than free ones.
 
@@ -311,7 +317,8 @@ For more information, go to [Fix issues using AI-enhanced remediation steps](/do
 
 ### Fail pipelines on severity
 
-<details open><summary> Key concept: fail_on_severity</summary> 
+<details open>
+		<summary> Key concept: fail_on_severity</summary> 
 
 Every STO scan step has a `fail_on_severity` setting. If any vulnerability with the specified severity or higher is found, the pipeline fails.
 
@@ -343,7 +350,8 @@ import exempted_button_in_security_tests from './static/your-first-pipeline/exem
 import cancel_exemption_requests from './static/your-first-pipeline/cancel-exemption-requests.png'
 ```
 
-<details open><summary> Key concept: Exemptions, requests, and approvals</summary>  
+<details open>
+		<summary> Key concept: Exemptions, requests, and approvals</summary>  
 
 You can exempt known issues from  `fail_on_severity` so that they don't stop the pipeline even when a scan detects them. The following steps outline the workflow:
 
@@ -575,7 +583,8 @@ After the pipeline executes, you can view all issues from all scanners in the **
 Here's the YAML of the integrated workflow example we examined in this tutorial.
 
 <details>
-  <summary>Integrated Workflow YAML</summary>
+  
+		<summary>Integrated Workflow YAML</summary>
 
 
 ``` yaml

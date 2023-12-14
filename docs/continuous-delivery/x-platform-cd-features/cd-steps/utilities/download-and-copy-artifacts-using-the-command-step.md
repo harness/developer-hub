@@ -45,7 +45,7 @@ For deployment templates, you can add a Command step to the template itself or a
 
 Since a deployment template can be used on any host type, the Command step can only be run on the delegate. You must use the **Run on Delegate** option in the step.
 
-To run the Command step on all the fetched hosts, you must put the Command step after the **Fetch Instances** step and use the repeat looping strategy and expression `<+stage.output.hosts>`:
+To run the Command step on all the fetched hosts, you must put the Command step after the **Fetch Instances** step and use the repeat looping strategy and expression `\<+stage.output.hosts\>`:
 
 ```yaml
 repeat:  
@@ -112,7 +112,7 @@ Using the **Download** command type, you can download the deployment artifact on
 
 You can set where you want to download the artifact in **Destination Path**.
 
-For SSH or WinRM deployments, the path `$HOME/<+service.name>/<+env.name>` is added automatically when you select the execution strategy for the stage.
+For SSH or WinRM deployments, the path `$HOME/\<+service.name\>/\<+env.name\>` is added automatically when you select the execution strategy for the stage.
 
 For example, a destination path for a stage that deploys **todolist.war** using a service named **tutorial-service-ssh2** to an environment named **ssh-tutorial-env** will look like this:
 
@@ -169,7 +169,7 @@ The deployment config file(s) for the stage is set in the service definition **C
 
 You can set where you want to download the artifact in **Destination Path**.
 
-For SSH or WinRM deployments, the path `$HOME/<+service.name>/<+env.name>` is added automatically when you select the execution strategy for the stage.
+For SSH or WinRM deployments, the path `$HOME/\<+service.name\>/\<+env.name\>` is added automatically when you select the execution strategy for the stage.
 
 For example, a destination path for a stage that deploys **todolist.war** using a service named **tutorial-service-ssh2** to an environment named **ssh-tutorial-env** will look like this:
 
@@ -261,13 +261,13 @@ The format to reference the output variable can be one of the following:
 
 * Within the stage:
 	+ Referencing the step output:
-		- `<+steps.STEP_ID.output.outputVariables.OUTPUT_VARIABLE_NAME>`.
+		- `\<+steps.STEP_ID.output.outputVariables.OUTPUT_VARIABLE_NAME\>`.
 	+ Referencing the step output execution:
-		- `<+execution.steps.STEP_ID.output.outputVariables.OUTPUT_VARIABLE_NAME>`
+		- `\<+execution.steps.STEP_ID.output.outputVariables.OUTPUT_VARIABLE_NAME\>`
 * Anywhere in the pipeline:
-	+ `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.OUTPUT_VARIABLE_NAME>`
+	+ `\<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.OUTPUT_VARIABLE_NAME\>`
 
-For example, it could be `<+steps.Deploy_0.output.outputVariables.newname>`.
+For example, it could be `\<+steps.Deploy_0.output.outputVariables.newname\>`.
 
 ### Output variable notes
 
@@ -291,7 +291,7 @@ Since a deployment template can be used on any host type, the Command step can o
 
 ## Looping strategy and target hosts
 
-To run the Command step on all the target hosts, you must use the repeat [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) and expression `<+stage.output.hosts>`:
+To run the Command step on all the target hosts, you must use the repeat [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) and expression `\<+stage.output.hosts\>`:
 
 
 ```
@@ -400,7 +400,8 @@ The WinRM deployment type supports Download Artifact only. You cannot use the **
    ![](../cd-general-steps/static/command-unit-email-4.png)
 
 <details>
-<summary>Sample pipeline YAML</summary>
+
+		<summary>Sample pipeline YAML</summary>
 
 ```YAML
 pipeline:

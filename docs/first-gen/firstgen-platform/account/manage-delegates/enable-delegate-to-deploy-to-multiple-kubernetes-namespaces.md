@@ -259,7 +259,8 @@ Edit the harness-delegate.yaml file to create these new resources.
 Here is an example of the Kubernetes Delegate YAML that creates all the necessary resources:
 
 <details>
-  <summary>Kubernetes Delegate YAML Sample</summary>
+  
+		<summary>Kubernetes Delegate YAML Sample</summary>
 
 ```
   

@@ -13,18 +13,19 @@ This topic describes how to make your Kubernetes manifests reusable and dynamic 
 
 ## Basic values YAML and manifests for public image
 
-This is a simple example using the Artifact reference `<+artifact.image>`. It can be used whenever the public image is not hardcoded in manifests.
+This is a simple example using the Artifact reference `\<+artifact.image\>`. It can be used whenever the public image is not hardcoded in manifests.
 
 See [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments).
 
 We use Go templates with a values.yaml file and manifests for deployment, namespace, and service. The manifests for deployment, namespace, and service are in a **templates** folder that's a peer of the values.yaml file.
 
 <details>
-<summary>values.yaml</summary>
 
-This file uses the `image: <+artifact.image>` to identify the primary artifact added in the Harness Service Definition **Artifacts** section.
+		<summary>values.yaml</summary>
 
-It also uses `name: <+stage.name>` to reference a Stage variable `name` and `namespace: <+infra.namespace>` to reference the namespace entered in the Stage's **Infrastructure Definition**. Service type and ports are hardcoded.
+This file uses the `image: \<+artifact.image\>` to identify the primary artifact added in the Harness Service Definition **Artifacts** section.
+
+It also uses `name: \<+stage.name\>` to reference a Stage variable `name` and `namespace: \<+infra.namespace\>` to reference the namespace entered in the Stage's **Infrastructure Definition**. Service type and ports are hardcoded.
 
 The name, image, and namespace values are referenced in the manifests described later.
 
@@ -62,7 +63,8 @@ env:
 </details>
 
 <details>
-<summary>templates/deployment.yaml</summary>
+
+		<summary>templates/deployment.yaml</summary>
 
 The deployments manifest references the name and image values from values.yaml. The manifest also contains the ConfigMap and Secret objects.
 
@@ -137,7 +139,8 @@ spec:
 </details>
 
 <details>
-<summary>templates/namespace.yaml</summary>
+
+		<summary>templates/namespace.yaml</summary>
 
 The namespace manifest references the namespace value from values.yaml.
 
@@ -154,7 +157,8 @@ metadata:
 </details>
 
 <details>
-<summary>templates/service.yaml</summary>
+
+		<summary>templates/service.yaml</summary>
 
 The service manifest references the hardcoded service type and ports from values.yaml.
 
@@ -178,13 +182,13 @@ spec:
 
 ## Private artifact example
 
-When the image is in a private repo, you use the expression `<+artifact.imagePullSecret>` in the Secret and Deployment objects in your manifest.
+When the image is in a private repo, you use the expression `\<+artifact.imagePullSecret\>` in the Secret and Deployment objects in your manifest.
 
 This key will import the credentials from the Docker credentials file in the artifact.
 
-It's much simpler to simple use the `<+artifact.imagePullSecret>` expression in the values.yaml file and then reference it in other manifests.
+It's much simpler to simple use the `\<+artifact.imagePullSecret\>` expression in the values.yaml file and then reference it in other manifests.
 
-Using the values.yaml file above, we simply remove the comment in front of `dockercfg: <+artifact.imagePullSecret>`:
+Using the values.yaml file above, we simply remove the comment in front of `dockercfg: \<+artifact.imagePullSecret\>`:
 
 
 ```yaml
@@ -271,7 +275,8 @@ If we had `{{index names 2}}` it is equivalent to `names[2]`. We can add more in
 Expand below to see the YAML example.
 
 <details>
-<summary>YAML example</summary>
+
+		<summary>YAML example</summary>
 
 ```yaml
 {{- if .Values.env.config}}  

@@ -40,7 +40,8 @@ The following table describes how this setting applies to each plan.
   <tbody>
     <tr valign="top">
       <td>
-        <strong>Default</strong>
+        
+		<strong>Default</strong>
       </td>
       <td>
         <p>2</p>
@@ -54,7 +55,8 @@ The following table describes how this setting applies to each plan.
     </tr>
     <tr valign="top">
       <td>
-        <strong>Maximum</strong>
+        
+		<strong>Maximum</strong>
       </td>
       <td>
         <p>NA</p>
@@ -68,7 +70,8 @@ The following table describes how this setting applies to each plan.
     </tr>
     <tr valign="top">
       <td>
-        <strong>Editable</strong>  
+        
+		<strong>Editable</strong>  
       </td>
       <td>
         <p>No</p>
@@ -82,7 +85,8 @@ The following table describes how this setting applies to each plan.
     </tr>
     <tr valign="top">
       <td>
-        <strong>Scope</strong>
+        
+		<strong>Scope</strong>
       </td>
       <td>
         <p>Account</p>
@@ -153,7 +157,8 @@ The following table lists the limits for each plan. You can only edit all of the
   <tbody>
     <tr valign="top">
       <td>
-        <strong>Pipeline Timeout</strong>
+        
+		<strong>Pipeline Timeout</strong>
       </td>
       <td>
         <p>2 hours</p>
@@ -170,7 +175,8 @@ The following table lists the limits for each plan. You can only edit all of the
     </tr>
     <tr valign="top">
       <td>
-        <strong>Stage Timeout</strong>
+        
+		<strong>Stage Timeout</strong>
       </td>
       <td>
         <p>1 hour</p>
@@ -187,7 +193,8 @@ The following table lists the limits for each plan. You can only edit all of the
     </tr>
     <tr valign="top">
       <td>
-        <strong>Editable</strong>  
+        
+		<strong>Editable</strong>  
       </td>
       <td>
         <p>Yes</p>
@@ -204,7 +211,8 @@ The following table lists the limits for each plan. You can only edit all of the
     </tr>
     <tr valign="top">
       <td>
-        <strong>Scope</strong>
+        
+		<strong>Scope</strong>
       </td>
       <td>
         <p>Account/Organization/Project</p>

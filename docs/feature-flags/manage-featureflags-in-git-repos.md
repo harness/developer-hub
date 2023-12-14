@@ -50,41 +50,39 @@ The following example YAML file shows:
 
 <details>
   <summary>Example of a YAML file for Feature Flags</summary>
-
-Here is a sample `flags.yaml` file:
-
-```
-featureFlags:  
- flags:  
-  - flag:   
-     name: Flag_1  
-     identifier: Flag_1   
-     description: "GitExFlag"   
-     permanent: false   
-     spec:   
-         type: boolean   
-         default:  
-             onVariation: "true"   
-             offVariation: "false"  
-         variations:  
-            - identifier: "true"  
-              value: "true"   
-            - identifier: "false"   
-              value: "false"     
-      environments:   
-         - identifier: Env_1   
-           default:  
-              onVariation: "true"   
-              offVariation: "false"  
-           state: "on"  
-targetRules:  
-   - targets:   
-          - identifier: T1  
-            variation: "false"   
-projectIdentifier: FF_Docs_Demo  
-orgIdentifier: Docs
-```
-</details> 
+  Here is a sample `flags.yaml` file:
+      ```
+      featureFlags:  
+       flags:  
+        - flag:   
+           name: Flag_1  
+           identifier: Flag_1   
+           description: "GitExFlag"   
+           permanent: false   
+           spec:   
+               type: boolean   
+               default:  
+                   onVariation: "true"   
+                   offVariation: "false"  
+               variations:  
+                  - identifier: "true"  
+                    value: "true"   
+                  - identifier: "false"   
+                    value: "false"     
+            environments:   
+               - identifier: Env_1   
+                 default:  
+                    onVariation: "true"   
+                    offVariation: "false"  
+                 state: "on"  
+      targetRules:  
+         - targets:   
+                - identifier: T1  
+                  variation: "false"   
+      projectIdentifier: FF_Docs_Demo  
+      orgIdentifier: Docs
+    ```
+</details>
 
 The synchronization between the Harness Platform and the `flags.yaml` file works in both directions:
 
@@ -217,7 +215,8 @@ If you want to always commit to the same branch, and not be prompted for commit 
   ```  
 
   <details>
-  <summary>Possible Auto-commit messages</summary>
+  
+		<summary>Possible Auto-commit messages</summary>
 
   [AUTO-COMMIT] Created feature flag  
 

@@ -206,7 +206,8 @@ Enabling API access requires configuring an API authentication method, either a 
    ![](../../static/add-a-git-hub-connector-36.png)
 
 <details>
-<summary>Personal access token permissions</summary>
+
+		<summary>Personal access token permissions</summary>
 
 * The GitHub user account that you use to create the token must have admin permissions on the repo.
 * For GitHub organizations that use SAML single sign-on (SSO), you must [authorize the token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
@@ -248,7 +249,8 @@ To use this authentication method, you need to create and install a GitHub App, 
 Select whether you want Harness to connect directly to your GitHub account or repo, or if you want Harness to communicate with your GitHub account or repo through a delegate. If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), you must select **Connect through Harness Platform**.
 
 <details>
-<summary>About connectivity modes</summary>
+
+		<summary>About connectivity modes</summary>
 
 If you select **Connect through the Harness Platform**, the Harness Manager exchanges a key pair with the Secrets Manager configured in Harness using an encrypted connection. Next, the Harness Manager uses the encrypted key and the encrypted secret and then discards them. The keys never leave the Harness Manager. Secrets are always encrypted in transit, in memory, and in the Harness database.
 

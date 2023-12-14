@@ -364,7 +364,8 @@ This release introduces the standalone Harness Error Tracking (ET) experience. W
 <!-- ### 2023 releases
 
 <details>
-<summary>2023 releases</summary>
+
+		<summary>2023 releases</summary>
 
 
 </details>
@@ -374,7 +375,8 @@ This release introduces the standalone Harness Error Tracking (ET) experience. W
 ### 2022 releases
 
 <details>
-<summary>2022 releases</summary>
+
+		<summary>2022 releases</summary>
 
 #### December 2022
 

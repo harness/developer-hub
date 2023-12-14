@@ -152,7 +152,8 @@ To initialize the Erlang SDK:
 ### Add a target for Erlang and Elixir applications
 
 <details>
-<summary>What is a target?</summary> 
+
+		<summary>What is a target?</summary> 
 Targets are used to control which users see which variation of a Feature Flag. For example, if you want to do internal testing, you can enable the flag for some users but not others. When creating a target, you give it a name and a unique identifier. Targets are often users, but you can create a target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 

@@ -13,7 +13,8 @@ Harness Delegate is a service you run in your local network or VPC to connect yo
 Expand the following section to learn how to install the Harness Delegate.
 
 <details>
-<summary>Use the delegate installation wizard</summary>
+
+		<summary>Use the delegate installation wizard</summary>
 
 1. In your Harness project, select **Project Setup**.
 2. Select **Delegates**.
@@ -29,7 +30,8 @@ import DelegateInstall from '/tutorials/platform/install-delegate.md';
 ```
 
 <details>
-<summary>Use the terminal</summary>
+
+		<summary>Use the terminal</summary>
 <DelegateInstall />
 </details>
 

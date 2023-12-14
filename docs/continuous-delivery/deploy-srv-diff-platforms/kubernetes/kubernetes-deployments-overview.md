@@ -40,27 +40,29 @@ In Harness, a **managed** Kubernetes workload is a Kubernetes object deployed a
         <tr>
             <td><p></p></td>
             <td>
-                <p><strong>Apply</strong></p>
+                <p>
+                    <strong>Apply</strong>
+                </p>
             </td>
             <td>
                 <p><strong>Rolling</strong></p>
             </td>
             <td>
-                <p><strong>Rollback</strong></p>
+                <p>		<strong>Rollback</strong></p>           
             </td>
             <td>
-                <p><strong>Blue Green</strong></p>
+                <p>		<strong>Blue Green</strong></p>            
             </td>
             <td>
-                <p><strong>Canary</strong></p>
+                <p>		<strong>Canary</strong></p>            
             </td>
             <td>
-                <p><strong>Scale</strong></p>
+                <p>		<strong>Scale</strong></p>            
             </td>
         </tr>
         <tr>
             <td>
-                <p><strong>Deployment</strong></p>
+                <p>		<strong>Deployment</strong></p>
             </td>
             <td><p>Yes</p></td>
             <td><p>Yes</p></td>
@@ -71,7 +73,7 @@ In Harness, a **managed** Kubernetes workload is a Kubernetes object deployed a
         </tr>
         <tr>
             <td>
-                <p><strong>StatefulSet</strong></p>
+                <p>		<strong>StatefulSet</strong></p>
             </td>
             <td><p>Yes</p></td>
             <td><p>Yes</p></td>
@@ -82,8 +84,8 @@ In Harness, a **managed** Kubernetes workload is a Kubernetes object deployed a
         </tr>
         <tr>
             <td>
-                <p><strong>DaemonSet</strong></p>
-            </td>
+                <p>		<strong>DaemonSet</strong></p>         
+           </td>
             <td><p>Yes</p></td>
             <td><p>Yes</p></td>
             <td><p>Yes</p></td>
@@ -93,7 +95,7 @@ In Harness, a **managed** Kubernetes workload is a Kubernetes object deployed a
         </tr>
         <tr>
             <td>
-                <p><strong>CRDs</strong></p>
+                <p>		<strong>CRDs</strong></p>            
             </td>
             <td><p>Yes</p></td>
             <td><p>Yes</p></td>
@@ -104,7 +106,7 @@ In Harness, a **managed** Kubernetes workload is a Kubernetes object deployed a
         </tr>
         <tr>
             <td>
-                <p><strong>Any Object</strong></p>
+                <p>		<strong>Any Object</strong></p>            
             </td>
             <td><p>Yes</p></td>
             <td><p>No</p></td>
@@ -130,27 +132,27 @@ For example, Harness Canary and Blue/Green steps support a single **Deployment**
         <tr>
             <td><p></p></td>
             <td>
-                <p><strong>Apply</strong></p>
+                <p>		<strong>Apply</strong></p>
             </td>
             <td>
-                <p><strong>Rolling</strong></p>
+                <p>		<strong>Rolling</strong></p>
             </td>
             <td>
-                <p><strong>Rollback</strong></p>
+                <p>		<strong>Rollback</strong></p>
             </td>
             <td>
-                <p><strong>Blue Green</strong></p>
+                <p>		<strong>Blue Green</strong></p>
             </td>
             <td>
-                <p><strong>Canary</strong></p>
+                <p>		<strong>Canary</strong></p>
             </td>
             <td>
-                <p><strong>Scale</strong></p>
+                <p>		<strong>Scale</strong></p>
             </td>
         </tr>
         <tr>
             <td>
-                <p><strong>Any Object</strong></p>
+                <p>		<strong>Any Object</strong></p>
             </td>
             <td><p>Yes</p></td>
             <td><p>Yes</p></td>

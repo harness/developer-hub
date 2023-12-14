@@ -37,7 +37,8 @@ You'll learn how to create a CI pipeline that does the following:
 6. Runs an integration test against the app.
 
 <details>
-<summary>Architecture diagram</summary>
+
+		<summary>Architecture diagram</summary>
 
 The following diagram shows the architecture of a kubernetes cluster build infrastructure. You interact with the Harness Platform through your browser. The Harness Delegate, which is installed in your Kubernetes cluster, manages communication between the Harness Platform and the Kubernetes pod where the pipeline's build farm is running. While the pipeline runs, the build farm communicates with your codebase, such as GitHub, and container registry, such as Docker Hub.
 
@@ -83,7 +84,8 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 4. In Harness, switch to the **Project** you want to use for this tutorial, or create a project.
 
 <details>
-<summary>Create a project</summary>
+
+		<summary>Create a project</summary>
 
 Use these steps to create a project in your Harness account.
 
@@ -231,13 +233,13 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
    * **Name:** Enter a name, such as `Build and push to Docker`.
    * **Docker Connector:** Select the Docker Hub connector you created for the **Run** step.
    * **Docker Repository:** Enter your Docker Hub username and the destination repo name formatted as `[docker_username]/[repo_name]`. For example: `mydockerhub/ci_tutorial_repo`.
-   * **Tags:** Add a tag and enter `<+pipeline.sequenceId>`.
+   * **Tags:** Add a tag and enter `\<+pipeline.sequenceId\>`.
 
 10. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
 :::info
 
-The tag `<+pipeline.sequenceId>` is a built-in Harness variable that represents the Build ID number, for example `9`. The pipeline uses the Build ID to tag the image that it pushes in the first stage and pulls in the second stage of this tutorial pipeline. You will see the Build ID when you run the pipeline. You will also use this variable to identify the image location when you set up the dependency (as a **Background** step) in the next stage.
+The tag `\<+pipeline.sequenceId\>` is a built-in Harness variable that represents the Build ID number, for example `9`. The pipeline uses the Build ID to tag the image that it pushes in the first stage and pulls in the second stage of this tutorial pipeline. You will see the Build ID when you run the pipeline. You will also use this variable to identify the image location when you set up the dependency (as a **Background** step) in the next stage.
 
 ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-25.png)
 
@@ -260,11 +262,11 @@ The first stage in this pipeline builds, tests, containerizes, and then pushes a
 
    * **Name:** Enter a recognizable name.
    * **Container Registry:** Select the Docker Hub connector you used for the steps in the previous stage.
-   * **Image:** Enter `[docker_username]/[repo_name]:<+pipeline.sequenceId>`. Make sure the Docker Hub username and repo name are the same as you used for the **Build and Push an Image to Docker Registry** step. For example: `mydockerhub/ci_tutorial_repo:<+pipeline.sequenceId>`.
+   * **Image:** Enter `[docker_username]/[repo_name]:\<+pipeline.sequenceId\>`. Make sure the Docker Hub username and repo name are the same as you used for the **Build and Push an Image to Docker Registry** step. For example: `mydockerhub/ci_tutorial_repo:\<+pipeline.sequenceId\>`.
 
    :::info
 
-   Notice that the **Image** field uses the same variable `<+pipeline.sequenceId>` that you used in the previous stage. This tells Harness to pull the image with the same tag as the image pushed previously in the pipeline.
+   Notice that the **Image** field uses the same variable `\<+pipeline.sequenceId\>` that you used in the previous stage. This tells Harness to pull the image with the same tag as the image pushed previously in the pipeline.
 
    :::
 
@@ -326,7 +328,8 @@ With CI pipelines you can consistently execute your builds at any time. For exam
 You can also save your build pipelines as part of your source code. Everything that you do in Harness is represented by YAML; you can store it all alongside your project files. For example, here is a YAML example of the pipeline created in this tutorial.
 
 <details>
-<summary>Pipeline YAML example</summary>
+
+		<summary>Pipeline YAML example</summary>
 
 ```yaml
 pipeline:

@@ -83,7 +83,8 @@ apiKey="YOUR_API_KEY"
 ### Add a target
 
 <details>
-<summary>What is a target?</summary> 
+
+		<summary>What is a target?</summary> 
 Targets are used to control which users see which variation of a feature flag, for example, if you want to do internal testing, you can enable the flag for some users and not others. When creating a target, you give it a name and a unique identifier. Often, targets are users but you can create a target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
@@ -100,7 +101,8 @@ To add a target that you want to evaluate, build it using `cfTarget` and pass in
 | attributes | Additional data you can store for a target, such as email addresses or location. These are key/pair values. | Optional | `email: 'demo@harness.io’ location: 'EMEA'` |
 
 <details>
-<summary> Regex requirements for target names and identifiers. </summary>
+
+		<summary> Regex requirements for target names and identifiers. </summary>
 
 **Identifier** 
 

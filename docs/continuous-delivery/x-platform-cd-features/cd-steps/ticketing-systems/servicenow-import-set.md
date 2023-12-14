@@ -23,7 +23,7 @@ Import Sets are a useful tool for migrating data into ServiceNow, or for regular
 
 :::note
 
-For more information on ServiceNow import sets, go to [Import Set - POST /now/import/{stagingTableName}](https://docs.servicenow.com/bundle/quebec-application-development/page/integrate/inbound-rest/concept/c_ImportSetAPI.html#import-POST) and [import sets key concepts](https://docs.servicenow.com/en-US/bundle/tokyo-platform-administration/page/administer/import-sets/concept/c_ImportSetsKeyConcepts.html) from ServiceNow.
+For more information on ServiceNow import sets, go to [Import Set - POST /now/import/\{stagingTableName\}](https://docs.servicenow.com/bundle/quebec-application-development/page/integrate/inbound-rest/concept/c_ImportSetAPI.html#import-POST) and [import sets key concepts](https://docs.servicenow.com/en-US/bundle/tokyo-platform-administration/page/administer/import-sets/concept/c_ImportSetsKeyConcepts.html) from ServiceNow.
 
 :::
 
@@ -65,7 +65,7 @@ For example, to initiate a transformation using the `sys_import_state_comment` f
 
 You can also use Harness runtime inputs, variable expressions, and Harness secrets in the JSON of **JSON Body**. 
 
-For example, you could create a stage variable named `importset` and then reference it in **JSON Body** as {"u_example":"<+stage.variables.importset>"}.
+For example, you could create a stage variable named `importset` and then reference it in **JSON Body** as \{"u_example":"\<+stage.variables.importset\>"\}.
 
 For details on the table requirements and naming, go to [import sets](https://docs.servicenow.com/en-US/bundle/tokyo-platform-administration/page/administer/import-sets/reference/import-sets-landing-page.html) from ServiceNow.
 

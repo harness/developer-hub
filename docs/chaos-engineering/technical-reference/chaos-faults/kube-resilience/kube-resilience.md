@@ -10,10 +10,12 @@ Kubelet density determines the resilience of the kubelet by creating pods on a s
 - It helps determine how resilient an application is to the unplanned scaling of K8s pods.
 
 <!-- Import statement for Custom Components -->
-
+```
 import FaultDetailsCard from "@site/src/components/ChaosEngineering/FaultDetailsCard";
 import ExperimentListSection from "@site/src/components/ChaosEngineering/ExperimentListSection"
 import { experiments } from "./experiments"
+```
+
 
 <!-- Heading Description -->
 
@@ -37,7 +39,8 @@ import { experiments } from "./experiments"
 <!-- <accordion color='green'/> has same usage as details but green in color -->
 
 <accordion color="green">
-<summary>Use cases </summary>
+
+		<summary>Use cases </summary>
 This fault helps determine how resilient an application is to the unplanned scaling of K8s pods.
 In distributed systems like Kube resilience, application replicas may not be sufficient to manage the traffic (indicated by SLIs) during any kind of failures (system or application failure). In such cases, the application needs to meet the SLOs (service level objectives). For this purpose, it is important to ensure that the application has a minimum number of replicas available. 
 A common application failure is when the pressure on other replicas increases, how the horizontal pod autoscaler (HPA) scales based on the observed resource utilization, and the amount of time the persistent volume takes to mount on rescheduling.

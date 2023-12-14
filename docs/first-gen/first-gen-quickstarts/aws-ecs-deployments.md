@@ -58,7 +58,8 @@ The Delegate cluster does not need to be in the same VPC as the target cluster.
 #### Policy JSON Example 
 
 <details>
-	<summary>Policy JSON</summary>	
+	
+		<summary>Policy JSON</summary>	
 
  ```
  {  

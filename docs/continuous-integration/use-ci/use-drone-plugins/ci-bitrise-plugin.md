@@ -65,7 +65,7 @@ The `spec` parameters define which Bitrise Integration to use, Bitrise Integrati
 
 If you already configured Bitrise Integrations elsewhere, you can [transfer Bitrise Integrations into Harness CI](#transfer-bitrise-integrations-into-harness-ci).
 
-You can use [expressions](/docs/platform/variables-and-expressions/runtime-inputs) in the `with` and `env` settings. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses an expression referencing a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
+You can use [expressions](/docs/platform/variables-and-expressions/runtime-inputs) in the `with` and `env` settings. For example, `credentials: \<+stage.variables.[TOKEN_SECRET]\>` uses an expression referencing a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
 
 :::
 
@@ -104,12 +104,12 @@ If required by the Integration, add key-value pairs representing Integration inp
 
 ### Environment Variables
 
-If required by the Integration, add key-value pairs representing environment variables that you want to pass to the Integration, such as `GITHUB_TOKEN: <+secrets.getValue("github_pat")>`. Note that these are *incoming* environment variables that you're passing to the Bitrise Integration, which are separate from *outgoing* environment variables that are output by the Integration.Refer to the Integration's usage specifications for details about specific environment variables relevant to the Integration that you want to use.
+If required by the Integration, add key-value pairs representing environment variables that you want to pass to the Integration, such as `GITHUB_TOKEN: \<+secrets.getValue("github_pat")\>`. Note that these are *incoming* environment variables that you're passing to the Bitrise Integration, which are separate from *outgoing* environment variables that are output by the Integration.Refer to the Integration's usage specifications for details about specific environment variables relevant to the Integration that you want to use.
 
 :::tip
 
-* You can use [fixed values, runtime inputs, or expressions](/docs/platform/variables-and-expressions/runtime-inputs) for environment variable values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a variable expression [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
-* In the Visual editor, there are separate fields for keys and values. For example, to specify `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` in the Visual editor, you would enter `GITHUB_TOKEN` in the key field and `<+secrets.getValue("github_pat")>` in the value field.
+* You can use [fixed values, runtime inputs, or expressions](/docs/platform/variables-and-expressions/runtime-inputs) for environment variable values. For example, `\<+stage.variables.[TOKEN_SECRET]\>` is a variable expression [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
+* In the Visual editor, there are separate fields for keys and values. For example, to specify `GITHUB_TOKEN: \<+secrets.getValue("github_pat")\>` in the Visual editor, you would enter `GITHUB_TOKEN` in the key field and `\<+secrets.getValue("github_pat")\>` in the value field.
 
 :::
 

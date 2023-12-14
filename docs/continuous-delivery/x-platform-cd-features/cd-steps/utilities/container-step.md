@@ -17,7 +17,8 @@ Typically, the primary deployment operations are handled by the default Harness 
 The Container step can be used for secondary options. There are several secondary scripts that DevOps teams commonly run in a Kubernetes container as part of a CD pipeline. These scripts can be used to perform various tasks such as configuration, data migration, database schema updates, and more. 
 
 <details>
-<summary>Common secondary script examples</summary>
+
+		<summary>Common secondary script examples</summary>
 
 Some common secondary scripts that are run in a Kubernetes container as part of CD are:
 
@@ -42,7 +43,8 @@ You can leverage the Container step to call the MDM/UEM APIs from Harness.
 Here are some example scripts for MDM and UEM that you might use as part of a DevOps continuous delivery pipeline:
 
 <details>
-<summary>MDM script example</summary>
+
+		<summary>MDM script example</summary>
 
 This script sets some variables for the MDM server URL, the MDM username and password, and the configuration file to install. It then uses the curl command to send the configuration file to the MDM server and install it on devices. Finally, it checks for errors and reports success or failure.
 
@@ -72,7 +74,8 @@ fi
 </details>
 
 <details>
-<summary>UEM script example</summary>
+
+		<summary>UEM script example</summary>
 
 This script sets similar variables for the UEM server URL, username, password, and configuration file to install. It then uses curl to send the configuration file to the UEM server and install it on endpoints. Finally, it checks for errors and reports success or failure.
 
@@ -112,7 +115,8 @@ You can use Harness continuous delivery to automate the process of deploying new
 
 
 <details>
-<summary>Edge script example</summary>
+
+		<summary>Edge script example</summary>
 
 You can use the following script to deploy a new version of an application to an edge device. The script assumes that the device is already set up with the necessary dependencies, and that it is accessible via SSH.
 
@@ -133,7 +137,8 @@ ssh $REMOTE_USER@$REMOTE_HOST "systemctl restart $APP_NAME.service"
 
 
 <details>
-<summary>IoT script example</summary>
+
+		<summary>IoT script example</summary>
 
 You can use the following script to deploy a new version of an IoT device firmware. The script assumes that the device is connected to the network and can be accessed via SSH.
 

@@ -16,7 +16,7 @@ output "instance_ip_addr" {
 Each output generated in the latest provisioning will be stored and managed in the Workspace. You can see the Output in the "Outputs" tab, under "Resources". 
 
 These output values can be then used as input in any pipeline that is being created in the scope of the project where the Workspace is defined. This spares the user from running commands against the Terraform state to fetch the outputs.
-In order to use an output as input, you should follow this syntax: <+workspace.WorkspaceID.outputName> 
+In order to use an output as input, you should follow this syntax: \<+workspace.WorkspaceID.outputName\> 
 In the UI, you can also copy the path for each Output, by clicking on the "Copy" button next to the Output name:
 
 ![Resources](./static/output.png)

@@ -44,7 +44,8 @@ stringData:
 Here is an example AWS policy to help execute the fault.
 
 <details>
-<summary>View policy for this fault</summary>
+
+		<summary>View policy for this fault</summary>
 
 ```json
 {
@@ -76,7 +77,8 @@ The target ECS tasks should be in a healthy state.
 ## Fault tunables   
 
 <details>
-    <summary>Fault tunables</summary>
+    
+		<summary>Fault tunables</summary>
     <h2>Mandatory fields</h2>
     <table>
         <tr>

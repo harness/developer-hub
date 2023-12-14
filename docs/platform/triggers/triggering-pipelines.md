@@ -28,7 +28,8 @@ This topic demonstrates how to create a trigger for GitHub payload conditions. I
 <Variables />
 
 <details>
-<summary>Video summary</summary>
+
+		<summary>Video summary</summary>
 
 Here's a two minute video showing you how to create and run a Trigger in response to Git events.
 
@@ -111,7 +112,8 @@ If you want a trigger that uses `OR`, `NOT`, or other operators across the paylo
 Some information about **Conditions** is provided in the following sections. For much more detail on **Conditions**, including **Operators**, go to the [Triggers reference](./triggers-reference.md).
 
 <details>
-<summary>Branches and Changed Files</summary>
+
+		<summary>Branches and Changed Files</summary>
 
 You can configure triggers based on the source branches, target branches, and changed files involved in a Git event.
 
@@ -124,44 +126,47 @@ For more information about **Attributes**, **Operators**, **Matching Values**, a
 </details>
 
 <details>
-<summary>Header Conditions</summary>
+
+		<summary>Header Conditions</summary>
 
 In **Header Conditions**, define attributes for Git webhook header data and corresponding values to match.
 
-In the **Attribute** field, the header expression format is `<+trigger.header['key-name']>`, such as `<+trigger.header['X-GitHub-Event']>`.
+In the **Attribute** field, the header expression format is `\<+trigger.header['key-name']\>`, such as `\<+trigger.header['X-GitHub-Event']\>`.
 
 For more information about **Attributes**, **Operators**, **Matching Values**, and **Header Conditions**, go to the [Triggers reference](./triggers-reference.md).
 
 </details>
 
 <details>
-<summary>Payload Conditions</summary>
+
+		<summary>Payload Conditions</summary>
 
 CThese conditions are based on the values of the webhook's JSON payload. Harness treats the JSON payload as a data model and parses the payload and listens for events on a JSON payload key.
 
-To reference payload values, you use `<+eventPayload.[path-to-key-name]`, for example `<+eventPayload.repository.full_name>`.
+To reference payload values, you use `\<+eventPayload.[path-to-key-name]`, for example `<+eventPayload.repository.full_name\>`.
 
 For more information about **Attributes**, **Operators**, **Matching Values**, and **Payload Conditions**, go to the [Triggers reference](./triggers-reference.md).
 
 </details>
 
 <details>
-<summary>JEXL Condition</summary>
+
+		<summary>JEXL Condition</summary>
 
 You can refer to payload data and headers using [JEXL expressions](https://commons.apache.org/proper/commons-jexl/reference/syntax.html). That includes all constants, methods, and operators in [JexlOperator](https://commons.apache.org/proper/commons-jexl/apidocs/org/apache/commons/jexl3/JexlOperator.html).
 
 Be careful when you combine Harness variables and JEXL expressions:
 
-* **Invalid expression format:** `<+pipeline.variables.MAGIC.toLowerCase()>`
+* **Invalid expression format:** `\<+pipeline.variables.MAGIC.toLowerCase()\>`
   * This expression is ambiguous. It could be evaluated as a Harness variable (return the value of variable `pipeline.variables.MAGIC.toLowerCase()`) or as a JEXL operation (return the lowercase of literal string `pipeline.variables.MAGIC`).
-* **Valid expression format:** `<+<+pipeline.variables.MAGIC>.toLowerCase()>`
+* **Valid expression format:** `\<+<+pipeline.variables.MAGIC\>.toLowerCase()>`
   * First, this expression gets the value of the variable `pipeline.variables.MAGIC`, and then it returns the value converted to all lowercase.
 
 Here are some examples of valid combined JEXL and Harness expressions:
 
-* `<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")`
-* `<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") || <+trigger.payload.repository.owner.name> == "wings-software"`
-* `<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") && (<+trigger.payload.repository.owner.name> == "wings-software" || <+trigger.payload.repository.owner.name> == "harness")`
+* `\<+trigger.payload.pull_request.diff_url\>.contains("triggerNgDemo")`
+* `\<+trigger.payload.pull_request.diff_url\>.contains("triggerNgDemo") || \<+trigger.payload.repository.owner.name\> == "wings-software"`
+* `\<+trigger.payload.pull_request.diff_url\>.contains("triggerNgDemo") && (\<+trigger.payload.repository.owner.name\> == "wings-software" || \<+trigger.payload.repository.owner.name\> == "harness")`
 
 For more information about **Attributes**, **Operators**, **Matching Values**, and **JEXL Conditions**, go to the [Triggers reference](./triggers-reference.md).
 
@@ -238,7 +243,7 @@ On the list of triggers for a pipeline, you can see when each trigger was last a
 
 ## Trigger type expression
 
-You can use the Harness expression `<+pipeline.triggerType>` to get information about how a pipeline was executed or to create conditional execution conditions that react to specific trigger types.
+You can use the Harness expression `\<+pipeline.triggerType\>` to get information about how a pipeline was executed or to create conditional execution conditions that react to specific trigger types.
 
 ### Echo the trigger type
 
@@ -248,7 +253,7 @@ To echo the expression in step logs, use a command like:
 echo "pipeline.triggerType: " <+pipeline.triggerType>
 ```
 
-If the pipeline was run manually, the `<+pipeline.triggerType>` expression resolves to `MANUAL`. If the pipeline was run by a webhook trigger, the expression resolves to `WEBHOOK`. For example:
+If the pipeline was run manually, the `\<+pipeline.triggerType\>` expression resolves to `MANUAL`. If the pipeline was run by a webhook trigger, the expression resolves to `WEBHOOK`. For example:
 
 ```
 pipeline.triggerType:  WEBHOOK
@@ -266,10 +271,10 @@ The ternary operator is also known as the conditional operator because it evalua
 
 :::
 
-In the following example, the `<+pipeline.triggerType>` expression is used to determine how the pipeline run started. Then, if the expression evaluates to `WEBHOOK` (`true`), Harness resolves the expression `<+trigger.commitSha>` to print the commit SHA that initiated the trigger. If the `triggerType` expression isn't `WEBHOOK` (`false`), Harness resolves the expression `<+pipeline.executionId` to print the pipeline execution identifier instead.
+In the following example, the `\<+pipeline.triggerType\>` expression is used to determine how the pipeline run started. Then, if the expression evaluates to `WEBHOOK` (`true`), Harness resolves the expression `\<+trigger.commitSha\>` to print the commit SHA that initiated the trigger. If the `triggerType` expression isn't `WEBHOOK` (`false`), Harness resolves the expression `\<+pipeline.executionId` to print the pipeline execution identifier instead.
 
 ```
-echo <+<+pipeline.triggerType> == "WEBHOOK" ? <+trigger.commitSha>:<+pipeline.executionId>>
+echo <+<+pipeline.triggerType\> == "WEBHOOK" ? \<+trigger.commitSha\>:\<+pipeline.executionId\>>
 ```
 
 Similarly, you can create logic for the `MANUAL` trigger type value:
@@ -279,7 +284,8 @@ echo <+<+pipeline.triggerType> == "MANUAL" ? <+pipeline.executionId>:<+trigger.c
 ```
 
 <details>
-<summary>YAML example: Pipeline with trigger expressions comparisons</summary>
+
+		<summary>YAML example: Pipeline with trigger expressions comparisons</summary>
 
 This pipeline demonstrates usage of JEXL comparisons with trigger type expressions.
 

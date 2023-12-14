@@ -20,7 +20,8 @@ import TabItem from '@theme/TabItem';
 |Inventory management | Supported services and products: <ul><li>EC2</li><li> RDS</li><li>EBS</li></ul> | Supported services and products: <ul><li>Azure VM</li></ul>| Supported services and products: <ul><li>Instances</li><li> Disks</li></ul> | NA | Managed through Dashboards |
 
 <details>
-<summary>Perspectives</summary>
+
+		<summary>Perspectives</summary>
 
 
 ### Feature summary
@@ -65,7 +66,8 @@ Any of the following CCM cloud connectors in a healthy state:
 </details>
 
 <details>
-<summary>Cost category</summary>
+
+		<summary>Cost category</summary>
 
 ### Feature summary
 Cost categories are a rule-based engine that attaches additional metadata to categorize cloud spending. Enabling organizations to align costs with context most relevant to their showback and chargeback models.
@@ -117,7 +119,8 @@ Any of the following CCM cloud connectors in a healthy state:
 </details>
 
 <details>
-<summary>Currency Standardization</summary>
+
+		<summary>Currency Standardization</summary>
 
 
 ### Feature summary
@@ -151,7 +154,8 @@ If you have cloud provider bills in different currencies, currency standardizati
 </details>
 
 <details>
-<summary>Anomalies</summary>
+
+		<summary>Anomalies</summary>
 
 ### Feature summary
 Anomaly detection helps detect unusual spending patterns in your clusters costs and cloud accounts. Cloud cost anomaly detection can be used as a tool to keep cloud costs under control. It also provides alerting capabilities (email and Slack) so that stakeholders are notified of each anomaly that's detected.
@@ -195,7 +199,8 @@ Any of the following CCM cloud connectors in a healthy state:
 </details>
 
 <details>
-<summary>BI Dashboards</summary>
+
+		<summary>BI Dashboards</summary>
 
 ### Feature summary
 Custom dashboards enable you to leverage the full functionality of BI platform backed by the simple data models exposed by Cloud Cost Management. 
@@ -257,7 +262,8 @@ The following data can be consumed through dashboards:
 
 \* - Review the information within the AutoStopping section to access details about supported Kubernetes providers.
 <details>
-<summary>AutoStopping</summary>
+
+		<summary>AutoStopping</summary>
 
 
 ### Feature summary
@@ -385,7 +391,8 @@ Harness does not currently support proxy provisioning via Terraform.
 </details>
 
 <details>
-<summary>Recommendations</summary>
+
+		<summary>Recommendations</summary>
 
 
 ### Feature summary
@@ -470,7 +477,8 @@ The recommendations are computed by analyzing the past utilization of CPU and me
 |Budgets | ✅  | ✅  | ✅  | ✅ | ✅ |
 
 <details>
-<summary>Asset Governance</summary>
+
+		<summary>Asset Governance</summary>
 
  ### Feature summary
 
@@ -529,7 +537,8 @@ The recommendations are computed by analyzing the past utilization of CPU and me
 </details>
 
 <details>
-<summary>Budgets</summary>
+
+		<summary>Budgets</summary>
 
 
 ### Feature summary

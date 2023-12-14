@@ -31,11 +31,11 @@ Configure the **WinRM Credential** settings as follows:
    * **[Kerberos](https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview?source=recommendations)** (recommended)
      
      
-     :::info
-     You must add the Kerberos startup script to the Harness Delegate YAML for the connection to succeed.
+         :::\info
+      You must add the Kerberos startup script to the Harness Delegate YAML for the connection to succeed.
 
      <details>
-     <summary>Add the Kerberos startup script to the delegate YAML</summary>
+        <summary>Add the Kerberos startup script to the delegate YAML</summary>
 
      1. Open `delegate.yaml` in a text editor.
      2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.

@@ -135,7 +135,8 @@ Given this, you would set up the Action step in your Harness pipeline like this.
 ```
 <!-- action -->
 
-<details><summary>YAML pipeline example</summary>
+<details>
+		<summary>YAML pipeline example</summary>
 
 ```yaml
 pipeline:
@@ -303,7 +304,8 @@ Given this, you would set up the Action step in your Harness pipeline like this.
 
 <!-- plugin -->
 
-<details><summary>YAML pipeline example</summary>
+<details>
+		<summary>YAML pipeline example</summary>
 
 ```yaml
 

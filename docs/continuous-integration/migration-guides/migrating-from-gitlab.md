@@ -108,7 +108,8 @@ Both Harness CI and GitLab CI workflows are written in YAML. Whereas GitLab work
 * You can switch back and forth between editors.
 
 <details>
-<summary>Complete workflow comparison</summary>
+
+		<summary>Complete workflow comparison</summary>
 
 Here are YAML examples of complete workflows in GitLab CI and Harness CI.
 
@@ -369,7 +370,8 @@ stages:
 The following examples compare GitLab CI and Harness CI workflows with multiple stages.
 
 <details>
-<summary>YAML examples: Multi-stage pipelines</summary>
+
+		<summary>YAML examples: Multi-stage pipelines</summary>
 
 ```mdx-code-block
 <Tabs>
@@ -496,11 +498,11 @@ variables:
   <TabItem value="harness" label="Harness">
 ```
 
-To reference project, organization, and account variables, you use variable expressions formatted as: `<+variable.[scope].[variable_id]>`. Here are the syntax formats for variables declared at different levels:
+To reference project, organization, and account variables, you use variable expressions formatted as: `\<+variable.[scope].[variable_id]\>`. Here are the syntax formats for variables declared at different levels:
 
-- Account-level variable reference: `<+variable.account.[var_id]>`
-- Organization-level variable reference: `<+variable.org.[var_id]>`
-- Project-level variable reference: `<+variable.[var_id]>`
+- Account-level variable reference: `\<+variable.account.[var_id]\>`
+- Organization-level variable reference: `\<+variable.org.[var_id]\>`
+- Project-level variable reference: `\<+variable.[var_id]\>`
 
 In this example, a step references a project-level environment variable called `ENV_VAR`.
 
@@ -560,7 +562,7 @@ GitLab CI jobs run in parallel by default, whereas in Harness CI steps and stage
         ...
 ```
 
-In addition to parallelism, you can use Harness CI's [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) to make your pipelines more dynamic and versatile. These strategies allow your pipelines to execute the same set of tasks multiple times for several different configurations without requiring you to intentionally create unique steps or stages for each iteration. This is achieved by mentioning user-defined tags and referencing them in the pipeline using the following expression syntax: `<+matrix.usertag>`
+In addition to parallelism, you can use Harness CI's [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) to make your pipelines more dynamic and versatile. These strategies allow your pipelines to execute the same set of tasks multiple times for several different configurations without requiring you to intentionally create unique steps or stages for each iteration. This is achieved by mentioning user-defined tags and referencing them in the pipeline using the following expression syntax: `\<+matrix.usertag\>`
 
 As in GitLab CI, you also can combine parallelism and matrix strategies in Harness CI, as shown in the following examples.
 

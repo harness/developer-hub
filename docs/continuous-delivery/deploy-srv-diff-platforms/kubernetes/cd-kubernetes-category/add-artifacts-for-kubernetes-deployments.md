@@ -12,7 +12,7 @@ This topic covers adding container image locations as Harness artifacts and refe
 
 If a public Docker image location is hardcoded in your Kubernetes manifest (for example, `image: nginx:1.14.2`), then you can simply add the manifest to Harness and the Harness Delegate will pull the image during deployment.
 
-Alternatively, you can add the image location to Harness as an artifact in the **Service Definition**. This allows you to reference the image in your manifests and elsewhere using the Harness expression `<+artifacts.primary.image>`.
+Alternatively, you can add the image location to Harness as an artifact in the **Service Definition**. This allows you to reference the image in your manifests and elsewhere using the Harness expression `\<+artifacts.primary.image\>`.
 
 When you deploy, Harness connects to your repo and you select which image and version/tag to deploy.
 
@@ -36,12 +36,13 @@ If the image location is hardcoded in your Kubernetes manifest (for example, `im
 
 In this scenario, you'll use the **Artifacts** settings in the Harness Service Definition to identify the artifact to use and select the image and tag in Harness at runtime.
 
-+ **Primary artifact:** In your manifest, you can refer to the primary artifact you set up in Harness using the expression, `<+artifacts.primary.image>`: `image: <+artifacts.primary.image>`.
-+ **Sidecar artifacts:** In your manifest, you can refer to the sidecar artifact you set up in Harness using the expression, `<+artifacts.sidecars.[sidecar_identifier].imagePath>`.  
++ **Primary artifact:** In your manifest, you can refer to the primary artifact you set up in Harness using the expression, `\<+artifacts.primary.image\>`: `image: \<+artifacts.primary.image\>`.
++ **Sidecar artifacts:** In your manifest, you can refer to the sidecar artifact you set up in Harness using the expression, `\<+artifacts.sidecars.[sidecar_identifier].imagePath\>`.  
 In this example, `[sidecar_identifier]` is the sidecar identifier you specified when you added the sidecar artifact to Harness.
 
 <details>
-<summary>Example output for all artifact expressions</summary>
+
+		<summary>Example output for all artifact expressions</summary>
 
 Here's an example where we use a Shell Script step to echo all the artifact expressions.
 
@@ -81,7 +82,7 @@ Command completed with ExitCode (0)
 
 ### Private repo artifact
 
-In some cases, your Kubernetes cluster might not have the permissions needed to access a private repository (GCR, etc). For these cases, you use the expression, `<+artifacts.primary.imagePullSecret>` in the Values file and reference it in the Secret and Deployment objects in your manifest.  
+In some cases, your Kubernetes cluster might not have the permissions needed to access a private repository (GCR, etc). For these cases, you use the expression, `\<+artifacts.primary.imagePullSecret\>` in the Values file and reference it in the Secret and Deployment objects in your manifest.  
 This key will import the credentials from the Docker credentials file in the artifact.  
 [Example Manifests](#example-manifests)
 
@@ -97,7 +98,7 @@ Sidecar artifacts follow the same rules as primary artifacts.
 
 If you do not hardcode the sidecar image location in the manifest, you will use the **Artifacts** settings in the Harness Service Definition to identify the sidecar artifact to use and select the image and tag in Harness at runtime.  
 
-As explained above, in your Values file, refer to the sidecar artifact you set up in Harness using the expression, `<+artifacts.sidecars.[sidecar_identifier].imagePath>:<+artifacts.sidecars.[sidecar_identifier].tag>`.  
+As explained above, in your Values file, refer to the sidecar artifact you set up in Harness using the expression, `\<+artifacts.sidecars.[sidecar_identifier].imagePath\>:\<+artifacts.sidecars.[sidecar_identifier].tag\>`.  
 
 In this example, `[sidecar_identifier]` is the sidecar identifier you specified when you added the sidecar artifact.
 
@@ -276,7 +277,7 @@ You can select a Custom Artifact Source to add your custom repository.
 
 3. Click **Submit**.
 
-   You can only set an Artifact version number when using a Custom Artifact Source. The version you select determines the Artifact context for the deploy stage. You may refer to it anywhere in the stage by using the expression `<+artifact.version>`.
+   You can only set an Artifact version number when using a Custom Artifact Source. The version you select determines the Artifact context for the deploy stage. You may refer to it anywhere in the stage by using the expression `\<+artifact.version\>`.
 
 ```mdx-code-block
 </TabItem>    
@@ -285,7 +286,7 @@ You can select a Custom Artifact Source to add your custom repository.
 
 ## Reference the artifact in your values.yaml file
 
-In this example, the public artifact isn't hardcoded in the manifest and we reference the image in the Service Definition **Artifacts** section using the variable, `<+artifacts.primary.image>`.
+In this example, the public artifact isn't hardcoded in the manifest and we reference the image in the Service Definition **Artifacts** section using the variable, `\<+artifacts.primary.image\>`.
 
 For example, here's a reference in a Values file:
 
@@ -300,7 +301,7 @@ dockercfg: <+artifacts.primary.imagePullSecret>
 ...
 ```
 
-That `<+artifacts.primary.image>` will reference the **Primary** artifact.
+That `\<+artifacts.primary.image\>` will reference the **Primary** artifact.
 
 In your manifests, you simply use the Go template reference to the `image` value (`{{.Values.image}}`):
 
@@ -323,7 +324,7 @@ kind: Deployment
 
 ## Add your manifests
 
-Once your manifests and Values file are configured to use the artifact reference `<+artifacts.primary.image>`, you can add them to the Service.
+Once your manifests and Values file are configured to use the artifact reference `\<+artifacts.primary.image\>`, you can add them to the Service.
 
 See [Define Kubernetes Manifests](define-kubernetes-manifests.md).
 
@@ -335,20 +336,21 @@ We won't cover those here, but see the [Kubernetes CD Quickstart](/docs/continuo
 
 ## Example manifests
 
-Below are some examples of manifests using the Harness expression for the artifact you added in **Artifacts** (`<+artifacts.primary.image>`).
+Below are some examples of manifests using the Harness expression for the artifact you added in **Artifacts** (`\<+artifacts.primary.image\>`).
 
 ### Basic values YAML and manifests for public image
 
-This is a simple example using the Artifact reference, `<+artifacts.primary.image>`. It can be used whenever the public image isn't hardcoded in manifests.
+This is a simple example using the Artifact reference, `\<+artifacts.primary.image\>`. It can be used whenever the public image isn't hardcoded in manifests.
 
 We use Go templating with a values.yaml file and manifests for deployment, namespace, and service. The manifests for deployment, namespace, and service are in a **templates** folder that is a peer of the values.yaml file.
 
 <details>
-<summary>values.yaml</summary>
 
-This file uses the `image: <+artifacts.primary.image>` to identify the primary artifact added in **Artifacts**.
+		<summary>values.yaml</summary>
 
-It also uses `name: <+stage.variables.name>` to reference a Stage variable `name`, and `namespace: <+infra.namespace>` to reference the namespace entered in the Stage's **Infrastructure Definition**. Service type and ports are hardcoded.
+This file uses the `image: \<+artifacts.primary.image\>` to identify the primary artifact added in **Artifacts**.
+
+It also uses `name: \<+stage.variables.name\>` to reference a Stage variable `name`, and `namespace: \<+infra.namespace\>` to reference the namespace entered in the Stage's **Infrastructure Definition**. Service type and ports are hardcoded.
 
 The name, image, and namespace values are referenced in the manifests described later.
 
@@ -387,7 +389,8 @@ env:
 </details>
 
 <details>
-<summary>templates/deployment.yaml</summary>
+
+		<summary>templates/deployment.yaml</summary>
 
 The deployment manifest references the name and image values from values.yaml. The manifest also contains the ConfigMap and Secret objects.
 
@@ -463,7 +466,8 @@ spec:
 </details>
 
 <details>
-<summary>templates/namespace.yaml</summary>
+
+		<summary>templates/namespace.yaml</summary>
 
 The namespace manifest references the namespace value from values.yaml.
 
@@ -480,7 +484,8 @@ metadata:
 </details>
 
 <details>
-<summary>templates/service.yaml</summary>
+
+		<summary>templates/service.yaml</summary>
 
 The service manifest references the hardcoded service type and ports from values.yaml.
 
@@ -504,13 +509,13 @@ spec:
 
 ### Private artifact
 
-When the image is in a private repo, you use the expression `<+artifacts.primary.imagePullSecret>` in the Secret and Deployment objects in your manifest.
+When the image is in a private repo, you use the expression `\<+artifacts.primary.imagePullSecret\>` in the Secret and Deployment objects in your manifest.
 
 This key will import the credentials from the Docker credentials file in the artifact.
 
-It's much simpler to use the `<+artifacts.primary.imagePullSecret>` expression in the values.yaml file, and then reference it in other manifests.
+It's much simpler to use the `\<+artifacts.primary.imagePullSecret\>` expression in the values.yaml file, and then reference it in other manifests.
 
-Using the values.yaml file above, we simply remove the comment in front of `dockercfg: <+artifacts.primary.imagePullSecret>`:
+Using the values.yaml file above, we simply remove the comment in front of `dockercfg: \<+artifacts.primary.imagePullSecret\>`:
 
 
 ```yaml

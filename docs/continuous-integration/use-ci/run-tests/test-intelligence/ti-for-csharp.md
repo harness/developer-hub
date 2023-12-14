@@ -64,7 +64,8 @@ Using [Test Intelligence (TI) ](./set-up-test-intelligence.md) in your Harness C
    The first time you run a pipeline after adding the Run Test step, Harness creates a baseline for test selection in future builds. Test selection *isn't* applied to this run because Harness has no baseline against which to compare changes and select tests. You'll start seeing test selection and time savings on the second run after adding the Run Tests step.
 
 <details>
-<summary>Trigger test selection with a webhook trigger (Recommended)</summary>
+
+		<summary>Trigger test selection with a webhook trigger (Recommended)</summary>
 
 1. If your pipeline doesn't already have one, [add a webhook trigger](/docs/platform/triggers/triggering-pipelines/) that listens for **Pull Request** or **Push** events in your [codebase](../../codebase-configuration/create-and-configure-a-codebase.md).
 2. Activate the trigger by opening a PR or pushing changes to your codebase, and then wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
@@ -80,7 +81,8 @@ Using [Test Intelligence (TI) ](./set-up-test-intelligence.md) in your Harness C
 </details>
 
 <details>
-<summary>Trigger test selection with a manual build</summary>
+
+		<summary>Trigger test selection with a manual build</summary>
 
 1. Open a PR or push changes to your pipeline's [codebase](../../codebase-configuration/create-and-configure-a-codebase.md), and then run your pipeline.
 
@@ -242,7 +244,8 @@ The following information explains how to configure most settings for the **Run 
 The build environment must have the necessary binaries for the **Run Tests** step to execute your test commands. Depending on the stage's build infrastructure, **Run Tests** steps can use binaries that exist in the build environment, or use **Container Registry** and **Image** to pull an image, such as a public or private Docker image, that contains the required binaries. You can also install tools at runtime in [Pre-Command](#pre-command-post-command-and-shell), provided the build machine or image can execute the necessary commands, such as `curl` commands to download files.
 
 <details>
-<summary>When are Container Registry and Image required?</summary>
+
+		<summary>When are Container Registry and Image required?</summary>
 
 The stage's build infrastructure determines whether these fields are required or optional:
 
@@ -254,7 +257,8 @@ The stage's build infrastructure determines whether these fields are required or
 </details>
 
 <details>
-<summary>What are the expected values for Container Registry and Image?</summary>
+
+		<summary>What are the expected values for Container Registry and Image?</summary>
 
 For **Container Registry**, provide a Harness container registry connector, such as a Docker connector, that connects to the container registry where the **Image** is located.
 

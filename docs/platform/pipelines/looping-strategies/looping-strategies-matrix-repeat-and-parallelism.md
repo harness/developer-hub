@@ -72,7 +72,8 @@ matrix:
 ```
 
 <details>
-<summary>Pipeline YAML example with matrix strategies</summary>
+
+		<summary>Pipeline YAML example with matrix strategies</summary>
 
 ```yaml
     pipeline:  
@@ -155,7 +156,7 @@ matrix:
   tag2: [value1, value2]
 ```
 
-Then, use `<+matrix.TAG>` expressions (such as `<+matrix.jdk>`, `<+matrix.env>`, or `<+matrix.service>`) in your step or stage settings to call the list of values for each tag. For example, this **Run** step references a matrix that iterates over values for `browser` and `os`.
+Then, use `\<+matrix.TAG\>` expressions (such as `\<+matrix.jdk\>`, `\<+matrix.env\>`, or `\<+matrix.service\>`) in your step or stage settings to call the list of values for each tag. For example, this **Run** step references a matrix that iterates over values for `browser` and `os`.
 
 ```yaml
               - step:
@@ -187,18 +188,18 @@ You can also use matrix values as variable values. For example, this [Action ste
 
 If a stage and step both have matrix strategies with the same tag labels, you need to use specific expressions to reference matrix values in the step or stage.
 
-* `<+stage.matrix.TAG>`: Use this expression to reference a value in a stage level matrix strategy.
-* `<+matrix.TAG`: Use this expression to reference a value in a step level matrix strategy.
+* `\<+stage.matrix.TAG\>`: Use this expression to reference a value in a stage level matrix strategy.
+* `\<+matrix.TAG`: Use this expression to reference a value in a step level matrix strategy.
 
 For example:
 
 ```
 echo "Stage values (parent):"  
-echo "Current service for stage: <+stage.matrix.browser>"  
-echo "Current os for stage: <+stage.matrix.os>"  
+echo "Current service for stage: <+stage.matrix.browser\>"  
+echo "Current os for stage: \<+stage.matrix.os\>"  
 echo "Step values (local):"  
-echo "Current browser for step: <+matrix.browser>"  
-echo "Current os for step: <+matrix.os>"
+echo "Current browser for step: \<+matrix.browser\>"  
+echo "Current os for step: \<+matrix.os\>"
 ```
 
 ### Exclude combinations
@@ -296,12 +297,12 @@ parallelism: 6
 
 In your steps and stages, you can use the following expressions to access the index values for each iteration. For example, this is useful for tracking repeat progress in step logs or tagging images or artifacts produced by repeated steps.
 
-* `<+strategy.iteration>`: Current count within the repeat loop. Starts at zero.
-* `<+strategy.iterations>`: Total number of iterations produced by the repeat loop.
+* `\<+strategy.iteration\>`: Current count within the repeat loop. Starts at zero.
+* `\<+strategy.iterations\>`: Total number of iterations produced by the repeat loop.
 
 ### Repeat for each value in a list
 
-Use `items` to iterate over a list of values. Use the expression `<+repeat.item>` in your stage/step settings to access values in the list. This option also supports `maxConcurrency`.
+Use `items` to iterate over a list of values. Use the expression `\<+repeat.item\>` in your stage/step settings to access values in the list. This option also supports `maxConcurrency`.
 
 ```yaml
 repeat:
@@ -319,7 +320,7 @@ matrix:
 
 ### Repeat on multiple target hosts
 
-To run steps on multiple target hosts, such as in a CD stage that performs a Deployment Template or SSH/WinRM deployment, use `repeat.items` with the expression `<+stage.output.hosts>` to reference all of the hosts/pods/instances. For example:
+To run steps on multiple target hosts, such as in a CD stage that performs a Deployment Template or SSH/WinRM deployment, use `repeat.items` with the expression `\<+stage.output.hosts\>` to reference all of the hosts/pods/instances. For example:
 
 ```yaml
 repeat:
@@ -344,7 +345,7 @@ You can use [Harness expressions](/docs/platform/variables-and-expressions/harne
 
 ### strategy.currentStatus
 
-In stages/steps using matrix or repeat strategies, use `<+strategy.currentStatus>` to get the current status of the looping strategy for the stage/step with maximum depth. This expression gets the looping strategy status relative to the position of the expression.
+In stages/steps using matrix or repeat strategies, use `\<+strategy.currentStatus\>` to get the current status of the looping strategy for the stage/step with maximum depth. This expression gets the looping strategy status relative to the position of the expression.
 
 The value of the expression depends on where both the expression and looping strategy occur in the pipeline:
 * When this expression is used in a step, Harness resolves it as the looping strategy status for the first parent node (stage/step) of the step using the looping strategy.
@@ -378,11 +379,11 @@ Because stages and steps can't have the same identifier, the index value of the 
 
 Use the following expressions to access the index values for each iteration of a step/stage produced by a looping strategy. For example, this is useful for tracking looping strategy progress in step logs or tagging images or artifacts produced by looped steps.
 
-* `<+strategy.iteration>`: Current count within the loop. Starts at zero.
-* `<+strategy.iterations>`: Total number of iterations produced by the loop.
+* `\<+strategy.iteration\>`: Current count within the loop. Starts at zero.
+* `\<+strategy.iterations\>`: Total number of iterations produced by the loop.
 
 ### Indexed identifiers in looping strategies
 
 Because stages and steps can't have the same identifier, the index value of the [iteration count](#iteration-counts) is appended to the base stage/step identifier to create unique identifiers for each stage/step instance created by the looping strategy. If you need to use an expression that references the identifier of a stage/step instance in a looping strategy, you must use the identifier with the appended index value.
 
-For example, assume a looping strategy is applied to a stage with the identifier `my_build_stage`. The expression `<+pipeline.stages.my_build_stage.variables>` won't work. Instead, you must append the index value to the identifier in the expression, such as: `<+pipeline.stages.my_build_stage_0.variables>`.
+For example, assume a looping strategy is applied to a stage with the identifier `my_build_stage`. The expression `\<+pipeline.stages.my_build_stage.variables\>` won't work. Instead, you must append the index value to the identifier in the expression, such as: `\<+pipeline.stages.my_build_stage_0.variables\>`.

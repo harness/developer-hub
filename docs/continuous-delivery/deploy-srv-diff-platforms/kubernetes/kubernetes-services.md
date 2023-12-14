@@ -32,7 +32,8 @@ import TabItem from '@theme/TabItem';
 ### Kubernetes
 
 <details>
-<summary>Use Kubernetes manifests</summary>
+
+		<summary>Use Kubernetes manifests</summary>
 
 You can use:
 
@@ -41,7 +42,8 @@ You can use:
 - Values YAML files can use a mix of hardcoded values and Harness expressions.
 
 <details>
-<summary>Watch a short video</summary>
+
+		<summary>Watch a short video</summary>
 Here's a quick video showing you how to add manifests and Values YAML files in Harness. It covers Kubernetes as well as other types like Helm Charts.
 
  
@@ -58,7 +60,8 @@ https://www.youtube.com/watch?v=dVk6-8tfwJc-->
 Here's a YAML example for a service with manifests hosted in Github and the nginx image hosted in Docker Hub.
 
 <details>
-<summary>Example</summary>
+
+		<summary>Example</summary>
 
 ```yaml
 service:
@@ -105,7 +108,8 @@ service:
 Create a service using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
 <details>
-<summary>Services API example</summary>
+
+		<summary>Services API example</summary>
 
 ```json
 curl -i -X POST \
@@ -137,7 +141,8 @@ curl -i -X POST \
 For the Terraform Provider resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
 <details>
-<summary>Example</summary>
+
+		<summary>Example</summary>
 
 ```yaml
 resource "harness_platform_service" "example" {
@@ -309,7 +314,8 @@ See [Ignore a manifest file during deployment](/docs/continuous-delivery/deploy-
 ### Helm Charts
 
 <details>
-<summary>Use Helm Charts</summary>
+
+		<summary>Use Helm Charts</summary>
 
 You can use Helm charts stored in an HTTP Helm Repository, OCI Registry, a Git repo provider, a cloud storage service (Google Cloud Storage, AWS S3, Azure Repo), a custom repo, or the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 
@@ -318,14 +324,15 @@ You can use Helm charts stored in an HTTP Helm Repository, OCI Registry, a Git r
 import Tabs1 from '@theme/Tabs';
 import TabItem1 from '@theme/TabItem';
 ```
-
+```mdx-code-bloc
 <Tabs1>
   <TabItem1 value="YAML" label="YAML" default>
-
+```
 Here's a YAML example for a service with manifests hosted in Github and the nginx image hosted in Docker Hub.
 
 <details>
-<summary>Example</summary>
+
+		<summary>Example</summary>
 
 ```yaml
 service:
@@ -363,7 +370,8 @@ service:
 Create a service using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
 <details>
-<summary>Services API example</summary>
+
+		<summary>Services API example</summary>
 
 ```json
 [
@@ -391,7 +399,8 @@ Create a service using the [Create Services](https://apidocs.harness.io/tag/Serv
 For the Terraform Provider resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
 <details>
-<summary>Example</summary>
+
+  	<summary>Example</summary>
 
 ```yaml
 resource "harness_platform_service" "example" {
@@ -486,7 +495,8 @@ Once your Helm chart is added, it appears in the **Manifests** section. For ex
 ### Kustomize
 
 <details>
-<summary>Use Kustomize</summary>
+
+		<summary>Use Kustomize</summary>
 
 Harness supports Kustomize deployments. You can use overlays, multibase, plugins, sealed secrets, patches, etc, just as you would in any native kustomization.
 
@@ -494,14 +504,15 @@ Harness supports Kustomize deployments. You can use overlays, multibase, plugins
 import Tabs2 from '@theme/Tabs';
 import TabItem2 from '@theme/TabItem';
 ```
-
+```mdx-code-bloc
 <Tabs2>
   <TabItem2 value="YAML" label="YAML" default>
-
+````
 Here's a YAML example for a service using a publicly available [helloword kustomization](https://github.com/wings-software/harness-docs/tree/main/kustomize/helloWorld) cloned from Kustomize.
 
 <details>
-<summary>Example</summary>
+
+		<summary>Example</summary>
 
 ```yaml
 service:
@@ -537,7 +548,8 @@ service:
 Create a service using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
 <details>
-<summary>Services API example</summary>
+
+		<summary>Services API example</summary>
 
 ```json
 [
@@ -565,7 +577,8 @@ Create a service using the [Create Services](https://apidocs.harness.io/tag/Serv
 For the Terraform Provider resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
 <details>
-<summary>Example</summary>
+
+		<summary>Example</summary>
 
 ```yaml
 resource "harness_platform_service" "example" {
@@ -704,7 +717,8 @@ For a detailed walkthrough of deploying Kustomize in Harness, including limitati
 ### OpenShift templates
 
 <details>
-<summary>Use OpenShift templates</summary>
+
+		<summary>Use OpenShift templates</summary>
 
 Harness supports OpenShift for Kubernetes deployments.
 
@@ -715,13 +729,15 @@ import Tabs3 from '@theme/Tabs';
 import TabItem3 from '@theme/TabItem';
 ```
 
+```mdx-code-bloc
 <Tabs3>
   <TabItem3 value="YAML" label="YAML" default>
-
+```
 Here's a YAML example for a service using an OpenShift template that is stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 
 <details>
-<summary>Example</summary>
+
+		<summary>Example</summary>
 
 ```yaml
 service:
@@ -753,7 +769,8 @@ service:
 Create a service using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
 <details>
-<summary>Services API example</summary>
+
+		<summary>Services API example</summary>
 
 ```json
 [
@@ -781,7 +798,8 @@ Create a service using the [Create Services](https://apidocs.harness.io/tag/Serv
 For the Terraform Provider resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
 <details>
-<summary>Example</summary>
+
+		<summary>Example</summary>
 
 ```yaml
 resource "harness_platform_service" "example" {
@@ -903,7 +921,7 @@ If you run `kubectl api-resources` you should see a list of resources, and `k
 
 * Make sure that you update your version to `apiVersion: apps.openshift.io/v1` and not `apiVersion: v1`.
 * The token does not need to have global read permissions. The token can be scoped to the namespace.
-* The Kubernetes containers must be OpenShift-compatible containers. If you are already using OpenShift, then this is already configured. But be aware that OpenShift cannot simply deploy any Kubernetes container. You can get OpenShift images from the following public repos: <https://hub.docker.com/u/openshift> and <https://access.redhat.com/containers>.
+* The Kubernetes containers must be OpenShift-compatible containers. If you are already using OpenShift, then this is already configured. But be aware that OpenShift cannot simply deploy any Kubernetes container. You can get OpenShift images from the following public repos: [https://hub.docker.com/u/openshift](https://hub.docker.com/u/openshift) and [https://access.redhat.com/containers](https://access.redhat.com/containers).
 * Useful articles for setting up a local OpenShift cluster for testing: [How To Setup Local OpenShift Origin (OKD) Cluster on CentOS 7](https://computingforgeeks.com/setup-openshift-origin-local-cluster-on-centos/), [OpenShift Console redirects to 127.0.0.1](https://chrisphillips-cminion.github.io/kubernetes/2019/07/08/OpenShift-Redirect.html).
 
 
@@ -913,17 +931,18 @@ If you run `kubectl api-resources` you should see a list of resources, and `k
 
 You have two options when referencing the artifacts you want to deploy:
 
-- Add an artifact source to the Harness service and reference it using the Harness expression `<+artifacts.primary.image>` in the values YAML file.
+- Add an artifact source to the Harness service and reference it using the Harness expression `\<+artifacts.primary.image\>` in the values YAML file.
 - Hardcode the artifact into the manifests or values YAML file.
 
 <details>
-<summary>Use the artifact expression</summary>
+
+		<summary>Use the artifact expression</summary>
 
 Add the image location to Harness as an artifact in the **Artifacts** section of the service.
 
 ![](./static/kubernetes-services-07.png)
 
-This allows you to reference the image in your values YAML files using the Harness expression `<+artifacts.primary.image>`.
+This allows you to reference the image in your values YAML files using the Harness expression `\<+artifacts.primary.image\>`.
 
 ```yaml
 ...  
@@ -946,7 +965,8 @@ With a Harness artifact, you can template your manifests, detaching them from a 
 </details>
 
 <details>
-<summary>Hardcode the artifact</summary>
+
+		<summary>Hardcode the artifact</summary>
 
 If a Docker image location is hardcoded in your Kubernetes manifest (for example, `image: nginx:1.14.2`), then you can simply add the manifest to Harness in **Manifests** and Kubernetes will pull the image during deployment.
 
@@ -957,7 +977,8 @@ When you hardcode the artifact in your manifests, any artifacts added to your Ha
 ### Docker
 
 <details>
-<summary>Use artifacts in any Docker registry</summary>
+
+		<summary>Use artifacts in any Docker registry</summary>
 
 ```mdx-code-block
 import Tabs5 from '@theme/Tabs';
@@ -971,7 +992,8 @@ import TabItem5 from '@theme/TabItem';
 To use a Docker artifact, you create or use a Harness connector to connect to your Docker repo and then use that connector in your Harness service and reference the artifact to use.
 
 <details>
-<summary>Docker connector YAML</summary>
+
+		<summary>Docker connector YAML</summary>
 
 ```yaml
 connector:
@@ -995,7 +1017,8 @@ connector:
 </details>
 
 <details>
-<summary>Service using Docker artifact YAML</summary>
+
+		<summary>Service using Docker artifact YAML</summary>
 
 ```yaml
 service:
@@ -1042,7 +1065,8 @@ service:
 Create the Docker connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
-<summary>Docker connector example</summary>
+
+		<summary>Docker connector example</summary>
 
 ```yaml
 curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=123456' \
@@ -1075,7 +1099,8 @@ Create a service with an artifact source that uses the connector using the [Crea
 For the Terraform Provider Docker connector resource, go to [harness_platform_connector_docker](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_docker).
 
 <details>
-<summary>Docker connector example</summary>
+
+		<summary>Docker connector example</summary>
 
 ```json
 # credentials anonymous
@@ -1111,7 +1136,8 @@ resource "harness_platform_connector_docker" "test" {
 For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
 <details>
-<summary>Service example</summary>
+
+		<summary>Service example</summary>
 
 ```json
 resource "harness_platform_service" "example" {
@@ -1208,7 +1234,8 @@ To add an artifact from a Docker registry, do the following:
 ### Google Container Registry (GCR)
 
 <details>
-<summary>Use GCR artifacts</summary>
+
+		<summary>Use GCR artifacts</summary>
 
 You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
 
@@ -1224,7 +1251,8 @@ import TabItem6 from '@theme/TabItem';
 To use a GCR artifact, you create or use a Harness GCP Connector to connect to GCR repo and then use that connector in your Harness service and reference the artifact to use.
 
 <details>
-<summary>GCP connector YAML</summary>
+
+		<summary>GCP connector YAML</summary>
 
 This example uses a Harness delegate installed in GCP for credentials.
 
@@ -1247,7 +1275,8 @@ connector:
 </details>
 
 <details>
-<summary>Service using GCR artifact YAML</summary>
+
+		<summary>Service using GCR artifact YAML</summary>
 
 ```yaml
 service:
@@ -1291,7 +1320,8 @@ service:
 Create the GCR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
-<summary>GCR connector example</summary>
+
+		<summary>GCR connector example</summary>
 
 ```curl
 curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
@@ -1323,7 +1353,8 @@ Create a service with an artifact source that uses the connector using the [Crea
 For the Terraform Provider GCP connector resource, go to [harness_platform_connector_gcp](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_gcp).
 
 <details>
-<summary>GCP connector example</summary>
+
+		<summary>GCP connector example</summary>
 
 ```json
 # Credential manual
@@ -1410,7 +1441,8 @@ Ensure the Harness delegate you have installed can reach `storage.cloud.google.c
 ### Google Artifact Registry
 
 <details>
-<summary>Use Google Artifact Registry artifacts</summary>
+
+		<summary>Use Google Artifact Registry artifacts</summary>
 
 You connect to Google Artifact Registry using a Harness GCP Connector. 
 
@@ -1428,7 +1460,8 @@ import TabItem7 from '@theme/TabItem';
 This example uses a Harness delegate installed in GCP for credentials.
 
 <details>
-<summary>Google Artifact Registry connector YAML</summary>
+
+		<summary>Google Artifact Registry connector YAML</summary>
 
 ```yaml
 connector:
@@ -1448,7 +1481,8 @@ connector:
 </details>
 
 <details>
-<summary>Service using Google Artifact Registry artifact YAML</summary>
+
+		<summary>Service using Google Artifact Registry artifact YAML</summary>
 
 ```yaml
 service:
@@ -1498,7 +1532,8 @@ service:
 Create the Google Artifact Registry connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
-<summary>GCR connector example</summary>
+
+		<summary>GCR connector example</summary>
 
 ```curl
 curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
@@ -1531,7 +1566,8 @@ Create a service with an artifact source that uses the connector using the [Crea
 For the Terraform Provider GCP connector resource, go to [harness_platform_connector_gcp](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_gcp).
 
 <details>
-<summary>GCP connector example</summary>
+
+		<summary>GCP connector example</summary>
 
 ```json
 # Credential manual
@@ -1633,7 +1669,8 @@ Ensure the Harness delegate you have installed can reach your Google Artifact Re
 ### Amazon Elastic Container Registry (ECR)
 
 <details>
-<summary>Use ECR artifacts</summary>
+
+		<summary>Use ECR artifacts</summary>
 
 You connect to ECR using a Harness AWS connector. For details on all the ECR requirements for the AWS connector, see [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
@@ -1649,7 +1686,8 @@ import TabItem8 from '@theme/TabItem';
 This example uses a Harness delegate installed in AWS for credentials.
 
 <details>
-<summary>ECR connector YAML</summary>
+
+		<summary>ECR connector YAML</summary>
 
 ```yaml
 connector:
@@ -1672,7 +1710,8 @@ connector:
 </details>
 
 <details>
-<summary>Service using ECR artifact YAML</summary>
+
+		<summary>Service using ECR artifact YAML</summary>
 
 ```yaml
 service:
@@ -1718,7 +1757,8 @@ service:
 Create the ECR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
-<summary>ECR connector example</summary>
+
+		<summary>ECR connector example</summary>
 
 ```curl
 curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
@@ -1754,7 +1794,8 @@ Create a service with an artifact source that uses the connector using the [Crea
 For the Terraform Provider ECR connector resource, go to [harness_platform_connector_aws](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_aws).
 
 <details>
-<summary>ECR connector example</summary>
+
+		<summary>ECR connector example</summary>
 
 ```json
 # Credential manual
@@ -1828,7 +1869,8 @@ To add an artifact from ECR, do the following:
 Ensure that the AWS IAM user account you use in the AWS Connector has the following policy.
 
 <details>
-<summary>Pull from ECR policy</summary>
+
+		<summary>Pull from ECR policy</summary>
 
 * **Policy Name:** `AmazonEC2ContainerRegistryReadOnly`
 * **Policy ARN:** `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly`
@@ -1866,7 +1908,8 @@ Ensure that the AWS IAM user account you use in the AWS Connector has the follow
 ### Azure Container Registry (ACR)
 
 <details>
-<summary>Use ACR artifacts</summary>
+
+		<summary>Use ACR artifacts</summary>
 
 You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure cloud connector](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector).
 
@@ -1883,7 +1926,8 @@ import TabItem9 from '@theme/TabItem';
 This example uses a Harness delegate installed in Azure for credentials.
 
 <details>
-<summary>Azure connector for ACR YAML</summary>
+
+		<summary>Azure connector for ACR YAML</summary>
 
 ```yaml
 connector:
@@ -1909,7 +1953,8 @@ connector:
 </details>
 
 <details>
-<summary>Service using ACR artifact YAML</summary>
+
+		<summary>Service using ACR artifact YAML</summary>
 
 ```yaml
 service:
@@ -1956,7 +2001,8 @@ service:
 Create the ACR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
-<summary>ACR connector example</summary>
+
+		<summary>ACR connector example</summary>
 
 ```curl
 curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
@@ -1995,7 +2041,8 @@ Create a service with an artifact source that uses the connector using the [Crea
 For the Terraform Provider ACR connector resource, go to [harness_platform_connector_azure_cloud_provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_azure_cloud_provider).
 
 <details>
-<summary>ACR connector example</summary>
+
+		<summary>ACR connector example</summary>
 
 ```json
 resource "harness_platform_connector_azure_cloud_provider" "manual_config_secret" {
@@ -2132,7 +2179,8 @@ To add an artifact from ACR, do the following:
 The Harness Azure connectors that you'll use to connect Harness to ACR must have the **Reader** role, at minimum. You can also use a custom role that includes the permissions of the Reader role.
 
 <details>
-<summary>Reader role information</summary>
+
+		<summary>Reader role information</summary>
 
 
 ![ACR Reader role](./static/73cff0ac7d500c94998634b3885856b4eb37760f005ba1a413d3bd809b9e4e89.png)
@@ -2151,7 +2199,8 @@ Make sure you:
 </details>
 
 <details>
-<summary>Custom role information</summary>
+
+		<summary>Custom role information</summary>
 
 The following permissions (actions) are necessary for any Service Principal and/or Managed Identity user, regardless of whether you are using Kubernetes RBAC or Azure RBAC:
 * `Microsoft.ContainerRegistry/registries/read`
@@ -2229,7 +2278,8 @@ The following JSON sample creates a custom role with the required permissions. T
 ### Nexus
 
 <details>
-<summary>Use Nexus artifacts</summary>
+
+		<summary>Use Nexus artifacts</summary>
 
 You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](/docs/platform/connectors/artifact-repositories/nexus-connector-settings-reference).
 
@@ -2243,7 +2293,8 @@ import TabItem10 from '@theme/TabItem';
 ```
 
 <details>
-<summary>Nexus connector YAML</summary>
+
+		<summary>Nexus connector YAML</summary>
 
 ```yaml
 connector:
@@ -2266,7 +2317,8 @@ connector:
 </details>
 
 <details>
-<summary>Service using Nexus artifact YAML</summary>
+
+		<summary>Service using Nexus artifact YAML</summary>
 
 ```yaml
 service:
@@ -2316,7 +2368,8 @@ service:
 Create the Nexus connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
-<summary>Nexus connector example</summary>
+
+		<summary>Nexus connector example</summary>
 
 ```curl
 curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
@@ -2352,7 +2405,8 @@ Create a service with an artifact source that uses the connector using the [Crea
 For the Terraform Provider Nexus connector resource, go to [harness_platform_connector_nexus](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_nexus).
 
 <details>
-<summary>Nexus connector example</summary>
+
+		<summary>Nexus connector example</summary>
 
 ```json
 # Credentials username password
@@ -2447,7 +2501,8 @@ For Nexus 3, when used as a **Docker** repo, the user needs:
 ### Artifactory
 
 <details>
-<summary>Use Artifactory artifacts</summary>
+
+		<summary>Use Artifactory artifacts</summary>
 
 You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, see [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
 
@@ -2461,7 +2516,8 @@ import TabItem11 from '@theme/TabItem';
 ```
 
 <details>
-<summary>Artifactory connector YAML</summary>
+
+		<summary>Artifactory connector YAML</summary>
 
 ```yaml
 connector:
@@ -2480,7 +2536,8 @@ connector:
 
 
 <details>
-<summary>Service using Artifactory artifact YAML</summary>
+
+		<summary>Service using Artifactory artifact YAML</summary>
 
 ```yaml
 service:
@@ -2529,7 +2586,8 @@ service:
 Create the Artifactory connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
-<summary>Artifactory connector example</summary>
+
+		<summary>Artifactory connector example</summary>
 
 ```curl
 curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
@@ -2560,7 +2618,8 @@ Create a service with an artifact source that uses the connector using the [Crea
 For the Terraform Provider Artifactory connector resource, go to [harness_platform_connector_artifactory](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_artifactory).
 
 <details>
-<summary>Artifactory connector example</summary>
+
+		<summary>Artifactory connector example</summary>
 
 ```json
 # Authentication mechanism as username and password
@@ -2652,7 +2711,8 @@ See [Managing Permissions: JFrog Artifactory User Guide](https://www.jfrog.com/c
 ### Github packages
 
 <details>
-<summary>Use Github packages as artifacts</summary>
+
+		<summary>Use Github packages as artifacts</summary>
 
 You can use Github Packages as artifacts for deployments.
 
@@ -2676,7 +2736,8 @@ import TabItem12 from '@theme/TabItem';
 ```
 
 <details>
-<summary>GitHub Packages connector YAML</summary>
+
+		<summary>GitHub Packages connector YAML</summary>
 
 ```yaml
 connector:
@@ -2707,7 +2768,8 @@ connector:
 </details>
 
 <details>
-<summary>Service using Github Packages artifact YAML</summary>
+
+		<summary>Service using Github Packages artifact YAML</summary>
 
 ```yaml
 service:
@@ -2756,7 +2818,8 @@ service:
 Create the Github connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
-<summary>Github connector example</summary>
+
+		<summary>Github connector example</summary>
 
 ```curl
 curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
@@ -2799,7 +2862,8 @@ Create a service with an artifact source that uses the connector using the [Crea
 For the Terraform Provider Github connector resource, go to [harness_platform_connector_github](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_github).
 
 <details>
-<summary>Github connector example</summary>
+
+		<summary>Github connector example</summary>
 
 ```json
 resource "harness_platform_connector_github" "test" {
@@ -2911,7 +2975,8 @@ The Github Personal Access Token (PAT) must have the `write:packages` and `read:
 Ensure that you enable **API access** in the Harness Github connector. In the Github connector YAML, the setting is `apiAccess`:
 
 <details>
-<summary>GitHub Packages connector YAML</summary>
+
+		<summary>GitHub Packages connector YAML</summary>
 
 ```yaml
 connector:
@@ -2950,7 +3015,8 @@ You can use the same Harness secret that you used for user authentication.
 ### Custom artifact source
 
 <details>
-<summary>Use artifacts from a custom artifact source</summary>
+
+		<summary>Use artifacts from a custom artifact source</summary>
 
 For enterprises that use a custom repository, Harness provides the Custom Artifact Source.
 
@@ -2978,7 +3044,8 @@ For more information, see [Example Kubernetes Manifests using Go Templating](/do
 Let's look at a few Kubernetes templating examples.
 
 <details>
-<summary>Basic values YAML and manifests for a public image</summary>
+
+		<summary>Basic values YAML and manifests for a public image</summary>
 
 Here's the values YAML file:
 
@@ -3085,13 +3152,13 @@ If some cases, your Kubernetes cluster might not have the permissions needed to 
 
 For these cases, the values YAML file in Service Definition **Manifests** section must use the `dockercfg` parameter.
 
-If the Docker image is added in the Service Definition **Artifacts** section, then you reference it like this: `dockercfg: <+artifacts.primary.imagePullSecret>`.
+If the Docker image is added in the Service Definition **Artifacts** section, then you reference it like this: `dockercfg: \<+artifacts.primary.imagePullSecret\>`.
 
 This key will import the credentials from the Docker credentials file in the artifact.
 
 Open the values.yaml file you are using for deployment.
 
-Verify that `dockercfg` key exists, and uses the `<+artifacts.primary.imagePullSecret>` expression to obtain the credentials:
+Verify that `dockercfg` key exists, and uses the `\<+artifacts.primary.imagePullSecret\>` expression to obtain the credentials:
 
 ```yaml
 name: <+stage.variables.name>  
@@ -3110,7 +3177,8 @@ namespace: <+infra.namespace>
 Next, verify that the Deployment and Secret objects reference `dockercfg: {{.Values.dockercfg}}`.
 
 <details>
-<summary>Reference dockercfg in Kubernetes objects</summary>
+
+		<summary>Reference dockercfg in Kubernetes objects</summary>
 
 ```yaml
 ...  
@@ -3178,7 +3246,8 @@ In the **Variables** section of the service you can add variables are use them i
 You can use the variable in your values YAML files. For example, here's a service variable used in the `name` key in the values YAML:
 
 <details>
-<summary>Service variable in values YAML file</summary>
+
+		<summary>Service variable in values YAML file</summary>
 
 ```yaml
 name: <+serviceVariables.appname>  

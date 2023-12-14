@@ -43,7 +43,8 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
    ```
 
     <details>
-    <summary>
+    
+		<summary>
     YAML sample
     </summary> 
 

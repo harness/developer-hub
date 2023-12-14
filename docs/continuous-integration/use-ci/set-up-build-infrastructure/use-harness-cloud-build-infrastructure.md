@@ -185,7 +185,8 @@ To enable Harness Cloud build infrastructure in your pipeline YAML, specify the 
 * In `platform`, specify the `os` and `arch`. For a list of supported operating systems and architectures, go to [Platforms and image specifications](#platforms-and-image-specifications).
 
 <details>
-<summary>Pipeline YAML example</summary>
+
+		<summary>Pipeline YAML example</summary>
 
 The following YAML example describes a basic CI pipeline that uses Harness Cloud build infrastructure:
 

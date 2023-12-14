@@ -66,7 +66,7 @@ Select **Run**. The **Run Pipeline** screen appears.
 
 Under **Build Type**, select **Git Branch**.
 
-For the **Branch Name**, select **Expression** and enter `<+trigger.targetBranch>` as a runtime expression.
+For the **Branch Name**, select **Expression** and enter `\<+trigger.targetBranch\>` as a runtime expression.
 
 Select **Save as Input Set**. The **Save Input Sets to Git** screen appears.
 
@@ -90,7 +90,7 @@ In the Pipeline Studio, select **Triggers** and create a new trigger. Note the f
 
 * In the **Configuration** tab's **Repository Name** field, make sure you specify the codebase repo and not the Harness repo.
 * In the **Pipeline Input Repo** tab's **Pipeline Input**, select the input set you just created.
-* In the **Pipeline Input Repo** tab's **Pipeline Reference Branch** field, specify the default branch in the Harness repo where you initially saved the pipeline. When the trigger receives a payload, it looks in the repo where you store your Harness definitions. Then it uses the pipeline in the branch specified by this field. The default setting for the **Pipeline Reference Branch** field is `<+trigger.branch>`. This is a reasonable default if the trigger is webhook-based *and* your code and Harness configs are in the same repo. The second condition doesn't apply in this case; therefore, you must set this field manually.
+* In the **Pipeline Input Repo** tab's **Pipeline Reference Branch** field, specify the default branch in the Harness repo where you initially saved the pipeline. When the trigger receives a payload, it looks in the repo where you store your Harness definitions. Then it uses the pipeline in the branch specified by this field. The default setting for the **Pipeline Reference Branch** field is `\<+trigger.branch\>`. This is a reasonable default if the trigger is webhook-based *and* your code and Harness configs are in the same repo. The second condition doesn't apply in this case; therefore, you must set this field manually.
 * For information on other fields, go to [Trigger pipelines using Git events](/docs/platform/triggers/triggering-pipelines/).
 
 In the **Pipeline Input** tab, select the input set you just created, and then select **Create Trigger**.
@@ -122,7 +122,7 @@ Follow the previous workflow for each additional codebase you want to build in H
 ```
 #### Create branch-specific pipelines
 
-You might find that you can use the default pipeline, input set, and trigger you just created for most of your builds, regardless of which codebase branch gets updated. The codebase sends a payload; the payload includes the updated branch; the trigger builds from this branch using the runtime expression `<+trigger.targetBranch>`.
+You might find that you can use the default pipeline, input set, and trigger you just created for most of your builds, regardless of which codebase branch gets updated. The codebase sends a payload; the payload includes the updated branch; the trigger builds from this branch using the runtime expression `\<+trigger.targetBranch\>`.
 
 Git Experience enables you to create branches in your Harness repo so you can create different versions of the same pipeline for different use cases. For example, suppose you want your pipeline to push to different registries depending on the updated branch. Updates to `main` push to a public registry; updates to all other branches push to a private registry. To implement this, do the following:
 

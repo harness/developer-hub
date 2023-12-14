@@ -119,7 +119,7 @@ Config files are a black box that can contain multiple formats and content, such
 ```
 Like config files, variables are completely overridden.
 
-You can use expressions to reference service variables. For example, `<+serviceVariables.VAR_NAME>`. 
+You can use expressions to reference service variables. For example, `\<+serviceVariables.VAR_NAME\>`. 
 
 You can reference service variables in your pipeline steps, values YAML, JIRA steps, and so on. 
 

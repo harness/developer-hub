@@ -210,7 +210,7 @@ Harness CCM also provides the ability to create connectors via API using a Stack
 Perform the following steps to create a StackSet in AWS:
 
 1. Select the following link to start creating the StackSet:  
-<https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacksets/create>
+[https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacksets/create](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacksets/create)
 2. In the **Choose a template** step, enter the following values, and then select **Next**.
 
 | **Field** | **Description** |

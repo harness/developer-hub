@@ -20,7 +20,8 @@ This topic provides a comprehensive list of health sources and change sources su
 Health sources in Harness SRM are APM (Application Performance Monitoring) or log providers that allow you to monitor changes in your service's health trends. The following health sources are supported:
 
 <details>
-<summary><b>Harness supported health sources</b></summary>
+
+		<summary><b>Harness supported health sources</b></summary>
 
 - AppDynamics
 - CloudWatch
@@ -50,7 +51,8 @@ Change sources enable you to monitor change events related to deployments, infra
 
 
 <details>
-<summary><b>Harness supported change sources</b></summary>
+
+		<summary><b>Harness supported change sources</b></summary>
 
 - Custom change source
 - Harness CD

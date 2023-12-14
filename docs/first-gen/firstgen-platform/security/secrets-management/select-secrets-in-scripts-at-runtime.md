@@ -1,6 +1,6 @@
 ---
 title: Select Secrets in Scripts at Runtime
-description: You reference Harness secrets in your Workflows and other settings using the expression ${secrets.getValue("secret_name")} , where secret_name refers to the name you entered when you added the secret…
+description: You reference Harness secrets in your Workflows and other settings using the expression $\{secrets.getValue("secret_name")\} , where secret_name refers to the name you entered when you added the secret…
 # sidebar_position: 2
 helpdocs_topic_id: dgylyvpls8
 helpdocs_category_id: o9x167at52

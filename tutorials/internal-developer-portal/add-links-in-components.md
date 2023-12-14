@@ -33,7 +33,8 @@ Follow the steps below to effectively integrate such links into your software co
  2. Now add **links** to the IDP yaml as shown in the example below.
     
 <details>
-<summary>Link Attributes</summary>
+
+		<summary>Link Attributes</summary>
 
 - **url:** This is the actual web address or URL that the link points to. It's the destination users will be directed to when they click on the link.
 

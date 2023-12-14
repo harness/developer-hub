@@ -40,11 +40,11 @@ This checks that feature configs can be retrieved successfully.
 
 Where:
 
-${AUTH_TOKEN} is the token from the auth request above.
+$\{AUTH_TOKEN\} is the token from the auth request above.
 
-${ENV_ID} is the environment ID. This can be found by decoding the auth token at JWT.IO and grabbing the environment value it shows from the token claims.
+$\{ENV_ID\} is the environment ID. This can be found by decoding the auth token at JWT.IO and grabbing the environment value it shows from the token claims.
 
-${CLUSTER} is the same as ENV_ID. This can be found by checking the `clusterIdentifier` field in the decoded token claims.
+$\{CLUSTER\} is the same as ENV_ID. This can be found by checking the `clusterIdentifier` field in the decoded token claims.
 
 ### Target segments request
 
@@ -54,11 +54,11 @@ This checks that target segments can be retrieved successfully.
 
 Where:
 
-${AUTH_TOKEN} is the token from the auth request above.
+$\{AUTH_TOKEN\} is the token from the auth request above.
 
-${ENV_ID} is the environment ID. This can be found by decoding the auth token at JWT.IO and grabbing the environment value it shows from the token claims.
+$\{ENV_ID\} is the environment ID. This can be found by decoding the auth token at JWT.IO and grabbing the environment value it shows from the token claims.
 
-${CLUSTER} is the same as ENV_ID. This can be found by checking the `clusterIdentifier` field in the decoded token claims.
+$\{CLUSTER\} is the same as ENV_ID. This can be found by checking the `clusterIdentifier` field in the decoded token claims.
 
 ### Stream request
 
@@ -72,11 +72,11 @@ To demonstrate this, run the following curl commands both inside and outside you
 
 	Where:
 
-	${AUTH_TOKEN} is the token from the auth request above.
+	$\{AUTH_TOKEN\} is the token from the auth request above.
 
-	${ENV_ID} is the environment ID. This can be found by decoding the auth token at JWT.IO and grabbing the environment value it shows from the token claims.
+	$\{ENV_ID\} is the environment ID. This can be found by decoding the auth token at JWT.IO and grabbing the environment value it shows from the token claims.
 
-	${CLUSTER} is the same as ENV_ID. This can be found by checking the `clusterIdentifier` field in the decoded token claims.
+	$\{CLUSTER\} is the same as ENV_ID. This can be found by checking the `clusterIdentifier` field in the decoded token claims.
 
 1. In the Harness UI, toggle a flag.  
 

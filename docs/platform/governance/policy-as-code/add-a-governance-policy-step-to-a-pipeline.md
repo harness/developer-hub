@@ -210,8 +210,8 @@ Now when we run the Pipeline, the Policy Step will evaluate the JSON in Payload 
 
 You can use the following Harness expressions to output Policy Step status in a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step:
 
-* `<+execution.steps.[policy step Id].output.status>`
-* `<+execution.steps.[policy step Id].output.policySetDetails.Example.status>`
+* `\<+execution.steps.[policy step Id].output.status\>`
+* `\<+execution.steps.[policy step Id].output.policySetDetails.Example.status\>`
 
 ![](../../governance/policy-as-code/static/add-a-governance-policy-step-to-a-pipeline-06.png)  
 

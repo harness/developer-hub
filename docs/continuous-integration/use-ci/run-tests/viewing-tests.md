@@ -65,7 +65,8 @@ Your first TI run won't report selected tests. Subsequent runs can report select
 Expand the sections below to learn more about the information available on the **Tests** tab for Test Intelligence.
 
 <details>
-<summary>Test Execution Overview</summary>
+
+		<summary>Test Execution Overview</summary>
 
 This section provides an overview of **Total Tests**, number of **Selected Tests**, total **Duration** of all tests, and **Time Saved**.
 
@@ -74,14 +75,16 @@ This section provides an overview of **Total Tests**, number of **Selected Tests
 </details>
 
 <details>
-<summary>Test Execution Result</summary>
+
+		<summary>Test Execution Result</summary>
 
 This section provides a graphical representation of successful and failed tests.
 
 </details>
 
 <details>
-<summary>Test Selection Breakdown</summary>
+
+		<summary>Test Selection Breakdown</summary>
 
 Test Intelligence analyzes changes to source files and test files in the codebase and then runs only the tests that are relevant to the detected changes. This section reports how many tests ran based on the different the types of code changes included in this build:
 
@@ -92,7 +95,8 @@ Test Intelligence analyzes changes to source files and test files in the codebas
 </details>
 
 <details>
-<summary>Test Execution</summary>
+
+		<summary>Test Execution</summary>
 
 This section provides a detailed list of all tests, including class methods and test methods.
 
@@ -103,7 +107,8 @@ You can sort the list by failure rate, duration, and total tests. You can also e
 </details>
 
 <details>
-<summary>Call Graph</summary>
+
+		<summary>Call Graph</summary>
 
 The first time you [enable Test Intelligence](./test-intelligence/set-up-test-intelligence.md#enable-test-intelligence) on a repo, you must generate the initial call graph, which creates a baseline for test selection in future builds. In subsequent builds, the call graph section shows information about tests selected by TI for that run.
 

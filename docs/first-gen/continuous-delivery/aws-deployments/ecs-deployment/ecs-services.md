@@ -395,7 +395,7 @@ To specify the Service Discovery Service in the Harness **Service Definition**, 
   
 ],
 ```
-In this example, the Harness variable `${serviceVariable.containerPort}` is used for the `containerPort` value. You can simply enter the port number instead, such as **8080**. The `${serviceVariable.containerPort}` variable is created in the **Config Variables** section of the Service as **containerPort**, and referenced as **${serviceVariable.containerPort}** in the **Service Definition**. Using a **Config Variable** allows you to override the variable value when configuring the Harness Workflow that deploys the Service. For more information, see [Workflow Phases](../../model-cd-pipeline/workflows/workflow-configuration.md#workflow-phases).
+In this example, the Harness variable `${serviceVariable.containerPort}` is used for the `containerPort` value. You can simply enter the port number instead, such as **8080**. The `${serviceVariable.containerPort}` variable is created in the **Config Variables** section of the Service as **containerPort**, and referenced as **$\{serviceVariable.containerPort\}** in the **Service Definition**. Using a **Config Variable** allows you to override the variable value when configuring the Harness Workflow that deploys the Service. For more information, see [Workflow Phases](../../model-cd-pipeline/workflows/workflow-configuration.md#workflow-phases).
 
 The following list describes the fields and values needed for a Service Discovery Service in the Harness **Service Definition**:
 

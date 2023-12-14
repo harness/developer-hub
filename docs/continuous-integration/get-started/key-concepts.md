@@ -25,14 +25,16 @@ Pipelines are comprised of stages and steps.
 A CI stage is a subset of a pipeline that contains one major segment of the CI workflow. A **Build** stage includes [steps](#steps) for building, pushing, and testing your code. For more information, go to [CI pipeline creation overview](../use-ci/prep-ci-pipeline-components.md).
 
 <details>
-<summary>What is build infrastructure?</summary>
+
+		<summary>What is build infrastructure?</summary>
 
 All CI stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose. For more information, go to [Which build infrastructure is right for me](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
 </details>
 
 <details>
-<summary>What are shared paths?</summary>
+
+		<summary>What are shared paths?</summary>
 
 You can use **Shared Paths** in a stage to [share data across steps](../use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md) or customize cache paths for [Cache Intelligence](../use-ci/caching-ci-data/cache-intelligence.md).
 

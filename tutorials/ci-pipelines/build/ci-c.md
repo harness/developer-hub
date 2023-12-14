@@ -298,7 +298,8 @@ Here's a YAML example of a pipeline that builds a C application and pushes the i
 This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) and [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
 <details>
-<summary>Pipeline YAML</summary>
+
+		<summary>Pipeline YAML</summary>
 
 ```yaml
 pipeline:

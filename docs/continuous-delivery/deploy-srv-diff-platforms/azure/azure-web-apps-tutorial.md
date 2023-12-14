@@ -261,7 +261,7 @@ For example, here's a snippet of an ARM template that provisions the infrastruct
 ```
 
 
-In the Harness infrastructure definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.subscription_id>`.
+In the Harness infrastructure definition, you map outputs to their corresponding settings using expressions in the format `\<+provisioner.OUTPUT_NAME\>`, such as `\<+provisioner.subscription_id\>`.
 
 <figure>
 

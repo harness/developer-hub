@@ -97,7 +97,7 @@ Once you have created a trigger to listen for new artifacts, Harness will poll f
 
 Polling is immediate because Harness uses a perpetual task framework that constantly monitors for new builds/tags.
 
-## Using the <+trigger.artifact.build> and <+lastPublished.tag> expressions
+## Using the \<+trigger.artifact.build\> and \<+lastPublished.tag\> expressions
 
 When you add a Harness service to the CD stage, you can set the artifact tag to use in **Artifacts Details**.
 
@@ -105,11 +105,11 @@ When you add a Harness service to the CD stage, you can set the artifact tag to 
 
 If you use a [Fixed Value](../variables-and-expressions/runtime-inputs.md) for the artifact **Tag** (for example, **2**), when the trigger executes the pipeline, Harness will deploy the artifact with that tag (**2**).
 
-If you want the pipeline to deploy the artifact version that initiated the trigger, use the expression `<+trigger.artifact.build>`.
+If you want the pipeline to deploy the artifact version that initiated the trigger, use the expression `\<+trigger.artifact.build\>`.
 
 ![](./static/trigger-on-a-new-artifact-23.png)
 
-If you want the pipeline to deploy the last successful published artifact version, use the expression, `<+lastPublished.tag>`.
+If you want the pipeline to deploy the last successful published artifact version, use the expression, `\<+lastPublished.tag\>`.
 
 :::info note
 The `lastPublished` tag returns the lexicographically last published tag for container image based artifact sources.
@@ -117,12 +117,12 @@ The `lastPublished` tag returns the lexicographically last published tag for con
 
 ![last published artifact](./static/trigger-on-a-new-artifact-30.png)
 
-If you want the pipeline to deploy the last successful published artifact version of matching regex, use the expression, `<+lastPublished.tag>.regex(regex)`.
+If you want the pipeline to deploy the last successful published artifact version of matching regex, use the expression, `\<+lastPublished.tag\>.regex(regex)`.
 
 ![last published artifact regex](./static/trigger-on-a-new-artifact-31.png)
 
 
-You can also set tag as a runtime input and then use `<+trigger.artifact.build>` in the trigger's [Pipeline Input](#step-3-select-pipeline-inputs) settings.
+You can also set tag as a runtime input and then use `\<+trigger.artifact.build\>` in the trigger's [Pipeline Input](#step-3-select-pipeline-inputs) settings.
 
 ## Create an artifact trigger
 
@@ -130,7 +130,7 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 
    ![](./static/trigger-on-a-new-artifact-24.png)
 
-   You reference an artifact in the stage's service definition in your manifests using the expression `<+artifact.image>`. Go to [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/) for more details.
+   You reference an artifact in the stage's service definition in your manifests using the expression `\<+artifact.image\>`. Go to [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/) for more details.
 
 2. Select **Triggers**.
 3. Select **New Trigger**.

@@ -5,9 +5,13 @@ title: Chaos faults for Windows
 
 <!-- Import statement for Custom Components -->
 
+```
+
 import FaultDetailsCard from "@site/src/components/ChaosEngineering/FaultDetailsCard";
 import ExperimentListSection from "@site/src/components/ChaosEngineering/ExperimentListSection"
 import { experiments } from "./experiments"
+```
+
 
 <!-- Heading Description -->
 
@@ -25,7 +29,8 @@ Windows faults disrupt the resources running on a Windows OS based machine. This
 VMware Windows CPU hog applies stress on the CPU resources on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 This fault helps determine how resilient an application is when stress is applied on the CPU resources of a VMware virtual machine.
 </accordion>
 
@@ -40,7 +45,8 @@ This fault helps determine how resilient an application is when stress is applie
 VMware Windows Memory hog applies stress on the memory resources on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 This fault helps determine how resilient an application is when stress is applied on the memory resources of a VMware virtual machine.
 </accordion>
 
@@ -53,7 +59,8 @@ This fault helps determine how resilient an application is when stress is applie
 VMware Windows Blackhole Chaos blocks traffic to specified IP addresses on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 This fault helps determine how resilient an application is when network access to certain IP addresses is blocked on a VMware virtual machine.
 </accordion>
 
@@ -66,7 +73,8 @@ This fault helps determine how resilient an application is when network access t
 VMware Windows Network Latency injects network latency on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 This fault helps determine how resilient an application is when network latency is introduced on a VMware virtual machine.
 </accordion>
 
@@ -79,7 +87,8 @@ This fault helps determine how resilient an application is when network latency 
 VMware Windows Network Loss injects network packet loss on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 This fault helps determine how resilient an application is when network packet loss is introduced on a VMware virtual machine.
 </accordion>
 
@@ -92,7 +101,8 @@ This fault helps determine how resilient an application is when network packet l
 VMware Windows Network Corruption corrupts network packets on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 This fault helps determine how resilient an application is when network packets are corrupted on a VMware virtual machine.
 </accordion>
 
@@ -105,7 +115,8 @@ This fault helps determine how resilient an application is when network packets 
 VMware Windows Network Duplication duplicates network packets on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 This fault helps determine how resilient an application is when network packets are duplicated on a VMware virtual machine.
 </accordion>
 
@@ -118,7 +129,8 @@ This fault helps determine how resilient an application is when network packets 
 VMware Windows Service Stop stops a specified service on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 This fault helps determine how resilient an application is when a specific service is stopped on a VMware virtual machine.
 </accordion>
 
@@ -131,7 +143,8 @@ This fault helps determine how resilient an application is when a specific servi
 VMware Windows Process Kill kills a specified process on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 This fault helps determine how resilient an application is when a specific process is killed on a VMware virtual machine.
 </accordion>
 
@@ -144,7 +157,8 @@ This fault helps determine how resilient an application is when a specific proce
 VMware Windows Disk Stress fills the disk space on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 This fault helps determine how resilient an application is when the disk space is filled on a VMware virtual machine.
 </accordion>
 
@@ -157,7 +171,8 @@ This fault helps determine how resilient an application is when the disk space i
 VMware Windows Time Chaos manipulates the system time on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 This fault helps determine how resilient an application is when the system time is manipulated on a VMware virtual machine.
 </accordion>
 
@@ -170,7 +185,8 @@ This fault helps determine how resilient an application is when the system time 
 Windows EC2 blackhole chaos results in access loss to the given target hosts or IPs by injecting firewall rules.
 
 <accordion color="green">
-    <summary>Use cases</summary>
+    
+		<summary>Use cases</summary>
     
 Windows EC2 blackhole chaos:
 - Degrades the network without the EC2 instance being marked as unhealthy (or unworthy) of traffic. This can be resolved by using a middleware that switches the traffic based on certain SLOs (performance parameters). 
@@ -186,7 +202,8 @@ Windows EC2 blackhole chaos:
 EC2 windows CPU hog induces CPU stress on the AWS Windows EC2 instances using Amazon SSM Run command.
 
 <accordion color="green">
-    <summary>Use cases</summary>
+    
+		<summary>Use cases</summary>
 
 EC2 windows CPU hog:
 - Simulates the situation of a lack of CPU for processes running on the instance, which degrades their performance. 
@@ -202,7 +219,8 @@ EC2 windows CPU hog:
 Windows EC2 memory hog induces memory stress on the target AWS Windows EC2 instance using Amazon SSM Run command.
 
 <accordion color="green">
-    <summary>Use cases</summary>
+    
+		<summary>Use cases</summary>
 
 Windows EC2 memory hog:
 - Causes memory stress on the target AWS EC2 instance(s).

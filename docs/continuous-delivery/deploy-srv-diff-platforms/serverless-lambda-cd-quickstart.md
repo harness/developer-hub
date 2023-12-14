@@ -45,7 +45,8 @@ You have two options for deploying a Serverless.com Framework Lambda application
 You select whether to use a containerized or non-containerized method in the **Execution** section of the your pipeline Deploy stage. This topic covers both methods.
 
 <details>
-<summary>Why containerized?</summary>
+
+		<summary>Why containerized?</summary>
 
 Not all teams use the same version of the Serverless.com framework. Also, teams use different versions of Serverless packages. This can result in different versions being installed on different delegates, and requires that users select which delegate to use via delegate tags. 
 
@@ -77,7 +78,8 @@ Review [Harness Key Concepts](/docs/get-started/key-concepts) to establish a g
 		- **Limited Access:** click on **Create policy**. Select the **JSON** tab, and add the JSON using the following code from the [Serverless gist](https://gist.github.com/ServerlessBot/7618156b8671840a539f405dea2704c8) IAMCredentials.json:
 
 <details>
-<summary>IAMCredentials.json</summary>
+
+		<summary>IAMCredentials.json</summary>
 
 ```json
 {  
@@ -267,7 +269,7 @@ Next, we can add a serverless.yaml for our deployment. We'll use [the publicly-a
    * In **Personal Access Token**, click **Create or Select a Secret**.
      * Click **New Secret Text**.
      * In **Secret Name**, enter a name for the secret like **github-pat**.
-     * In **Secret Value**, paste in a GitHub Personal access token.When you're logged into GitHub, these tokens are listed at <https://github.com/settings/tokens>. For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
+     * In **Secret Value**, paste in a GitHub Personal access token.When you're logged into GitHub, these tokens are listed at [https://github.com/settings/tokens](https://github.com/settings/tokens). For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
      * Make sure your PAT has the **repo** scope selected:
 
 	![](./static/repoScope.png)
@@ -307,11 +309,11 @@ plugins:
   - serverless-deployment-bucket@latest
 ```
 
-You can see the [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables) `<+artifact.path>` in `artifact: <+artifact.path>`. The expression `<+artifact.path>` tells Harness to get the artifact from **Artifacts** section of the Service. We'll add the artifact next.
+You can see the [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables) `\<+artifact.path\>` in `artifact: \<+artifact.path\>`. The expression `\<+artifact.path\>` tells Harness to get the artifact from **Artifacts** section of the Service. We'll add the artifact next.
 
-The expression `<+service.name>` simply uses the Harness Service name for the deployed service name.
+The expression `\<+service.name\>` simply uses the Harness Service name for the deployed service name.
 
-For Docker images, you use the expression `<+artifact.image>`.
+For Docker images, you use the expression `\<+artifact.image\>`.
 
 ## Add the artifact
 
@@ -335,7 +337,8 @@ We'll add a new Artifactory Connector and install a Harness Kubernetes Delegate 
    Expand the section below to learn more about installing delegates.
 
    <details>
-   <summary>Install a new delegate</summary>
+   
+		<summary>Install a new delegate</summary>
 
     1. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
     2. In the **New Delegate** dialog, in **Select where you want to install your Delegate**, select **Kubernetes**.
@@ -625,7 +628,7 @@ Outputs:
 ```
 
 
-In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.region_name>`.
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `\<+provisioner.OUTPUT_NAME\>`, such as `\<+provisioner.region_name\>`.
 
 
 <figure>
@@ -678,7 +681,8 @@ For steps on adding a Docker Registry connector, go to [Docker Connector Setting
 The Download Manifests Step triggers a Git clone step for each manifest in the Harness service in the **Service** section of the stage.
 
 <details>
-<summary>Example: Log of a Download Manifest step</summary>
+
+		<summary>Example: Log of a Download Manifest step</summary>
 
 ```yaml
 [DEBUG] setting default home directory
@@ -710,7 +714,7 @@ branch 'main' set up to track 'origin/main'.
 
 #### Serverless directory path
 
-After the Download Manifest step, you can access the directly where the manifest has been downloaded using the expression `<+serverlessV2.serverlessDirectoryPath>`.
+After the Download Manifest step, you can access the directly where the manifest has been downloaded using the expression `\<+serverlessV2.serverlessDirectoryPath\>`.
 
 For example, you could add a [Run](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step) or [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step with the following:
 
@@ -751,7 +755,8 @@ To configure the Serverless Package step, do the following:
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
 <details>
-<summary>Example: Log from the Serverless Package step</summary>
+
+		<summary>Example: Log from the Serverless Package step</summary>
 
 ```yaml
 
@@ -805,7 +810,8 @@ To configure the Serverless Deploy step, do the following:
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
 <details>
-<summary>Example: Log from the Serverless Deploy step</summary>
+
+		<summary>Example: Log from the Serverless Deploy step</summary>
 
 ```yaml
 
@@ -1067,7 +1073,7 @@ Serverless Lambda deployments are versioned using the timestamp of their deploym
 
 ### Sidecar artifacts
 
-You reference sidecar artifacts with the format `<+artifacts.sidecars.[artifact_Id]>`.
+You reference sidecar artifacts with the format `\<+artifacts.sidecars.[artifact_Id]\>`.
 
 The artifact Id comes from the Artifact Details:
 

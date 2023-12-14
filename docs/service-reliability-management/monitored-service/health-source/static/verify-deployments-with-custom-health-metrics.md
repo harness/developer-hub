@@ -163,7 +163,7 @@ The recommended **Duration** is **15 min** for APM and infrastructure provide
 
 In **Artifact Tag**, use a [Harness expression](../../../platform/variables-and-expressions/harness-variables.md) to reference the artifact in the stage Service settings.
 
-The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
+The expression `\<+serviceConfig.artifacts.primary.tag\>` refers to the primary artifact.
 
 ## Option: Advanced Settings
 

@@ -753,17 +753,17 @@ Delegate version: 23.01.78100
   
   You can retrieve the value of the collectionEnabled field for an Artifact Source using GraphQL APIs, like in the example below:
   ```
-    {
-      services(limit: 5) {
-        nodes {
+    \{
+      services(limit: 5) \{
+        nodes \{
           name
-          artifactSources {
+          artifactSources \{
             name
             collectionEnabled
-          }
-        }
-      }
-    }	
+          \}
+        \}
+      \}
+    \}	
   ```
   
 - Delegate tasks are now limited based on account. (DEL-5371)
@@ -865,7 +865,7 @@ Delegate version: 22.12.77802
 * Users are not added to the user groups through SCIM when the authentication mechanism is username and password. (PL-30124)  
 A notification email is sent to the users instead of an email invite and the system throws an exception.  
 Sending an email invite has fixed this issue and the users are now added to the user groups.
-* Rollback artifact number (`${rollbackArtifact.buildNo}`) is coming as null (CDS-47328, ZD-37309)  
+* Rollback artifact number (`$\{rollbackArtifact.buildNo\}`) is coming as null (CDS-47328, ZD-37309)  
 Fixed a problem where incorrect metadata was being populated into executions after updating the environment's infra definitions.  
 For more information, go to [Artifact Rollback Variables](../firstgen-platform/techref-category/variables/built-in-variables-list.md#artifact-rollback-variables).
 * **Rollback Deployment** button incorrectly showing Not Authorized (CDS-17420)  
@@ -1085,7 +1085,7 @@ API key authentication was introduced for the following endpoints:
 
 * Looping variable expansions were not consistent in Pipelines. (PIE-4769)  
 This is fixed now by adding a new expression to get the total alterations:  
-`<+strategy.totalIterations>​`
+`\<+strategy.totalIterations\>​`
 * Sorting by Date not working in Service Dashboard (CDS-42122, ZD-33767)  
 Sorting in the Services dashboard was not working for a specific Service. This issue has been fixed. Sorting works as expected for all columns in the Services dashboard.
 * Terraform apply fails intermittently with IO Failure (CDS-40336, ZD-32237)  
@@ -1619,7 +1619,7 @@ The following new features are added to the Harness SaaS components:
 
 * Ensure Delegate version is valid till next Delegate release (DEL-4198)
 * Support for Custom Artifact with no artifact polling to be enabled for Custom deployment type (CDS-34235, ZD-28100)
-	+ Custom artifact source script can be made empty now. If the script is empty, the deployment proceeds with the version customer provides and the same details are available in the artifact variable which can be accessed using `${artifact.*}`.
+	+ Custom artifact source script can be made empty now. If the script is empty, the deployment proceeds with the version customer provides and the same details are available in the artifact variable which can be accessed using `$\{artifact.*\}`.
 
 #### Issues Fixed
 
@@ -2121,8 +2121,8 @@ The following new features are added to the Harness SaaS components:
 * In the **Workflow Failure Strategy**, you can now select **Rollback Provisioner after Phases** action when a Workflow is paused on manual intervention.
 	+ See [Timeout (Manual Intervention)](../continuous-delivery/model-cd-pipeline/workflows/define-workflow-failure-strategy-new-template.md#timeout-manual-intervention). (CDS-28963)
 * Tanzu Blue Green Deployments now include the following two new in-built variables:
-	+ `${pcf.activeAppName}`
-	+ `${pcf.inActiveAppName}`
+	+ `$\{pcf.activeAppName\}`
+	+ `$\{pcf.inActiveAppName\}`
 	+ See [App Name Variables and Blue Green Deployments](../continuous-delivery/pcf-deployments/pcf-built-in-variables.md#app-name-variables-and-blue-green-deployments). (CDS-17419)
 
 #### Issues Fixed
@@ -2172,8 +2172,8 @@ The following new feature is added to the Harness SaaS components:
 
 |  |  |
 | --- | --- |
-| Current step name | `${currentStep.name}` |
-| Type of step | `${currentStep.type}` |
+| Current step name | `$\{currentStep.name\}` |
+| Type of step | `$\{currentStep.type\}` |
 
 #### Issues Fixed
 

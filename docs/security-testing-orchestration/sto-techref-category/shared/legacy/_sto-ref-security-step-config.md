@@ -1,4 +1,5 @@
-<!-- details><summary>Security step dialog box</summary -->
+<!-- details>
+		<summary>Security step dialog box</summary -->
 
 ```mdx-code-block
 import SecurityStepSettingsExample from '../../static/security-step-settings-reference-00.png';

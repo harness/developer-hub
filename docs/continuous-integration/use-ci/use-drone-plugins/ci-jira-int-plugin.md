@@ -36,7 +36,7 @@ import TabItem3 from '@theme/TabItem';
 
 | Keys | Required or optional | Description | Value example |
 | - | - | - | - |
-| `CONNECT_KEY` | Required | [An expression referencing your Jira auth token secret](/docs/platform/secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier). | `<+secrets.getValue("jiraKey")>` |
+| `CONNECT_KEY` | Required | [An expression referencing your Jira auth token secret](/docs/platform/secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier). | `\<+secrets.getValue("jiraKey")\>` |
 | `PROJECT` | Required | Your Jira project key.<br/>For example, a project called `My Test` might have a project key of `MYT`. | `MYT` |
 | `INSTANCE` <!--CONNECT_HOSTNAME?--> | Required | Your Jira hostname prefix, such as `myorg` in `myorg.atlassian.net`. | `myorg` |
 | `ENVIRONMENT_NAME` | Optional | If included, Harness updates the Jira **Deployment** field when there is a deployment to the specified environment.<br/>If omitted, Harness updates the Jira **Build** field. | `production` |
@@ -71,7 +71,8 @@ To update the Jira **Deployment** field, instead of the **Build** field, include
 ```
 
 <details>
-<summary>Plugin step specifications</summary>
+
+		<summary>Plugin step specifications</summary>
 
 *  `type: Plugin`
 *  `name:` Specify a step name.
@@ -82,7 +83,7 @@ To update the Jira **Deployment** field, instead of the **Build** field, include
 
 | Keys | Required or optional | Description | Value example |
 | - | - | - | - |
-| `CONNECT_KEY` | Required | [An expression referencing your Jira auth token secret](/docs/platform/secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier). | `<+secrets.getValue("jiraKey")>` |
+| `CONNECT_KEY` | Required | [An expression referencing your Jira auth token secret](/docs/platform/secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier). | `\<+secrets.getValue("jiraKey")\>` |
 | `PROJECT` | Required | Your Jira project key.<br/>For example, a project called `My Test` might have a project key of `MYT`. | `MYT` |
 | `INSTANCE` <!--CONNECT_HOSTNAME?--> | Required | Your Jira hostname prefix, such as `myorg` in `myorg.atlassian.net`. | `myorg` |
 | `ENVIRONMENT_NAME` | Optional | If included, Harness updates the Jira **Deployment** field when there is a deployment to the specified environment.<br/>If omitted, Harness updates the Jira **Build** field. | `production` |

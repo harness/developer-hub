@@ -167,7 +167,7 @@ The first part of this script downloads and installs the cosign tool, the second
 | sov_image_sign_issuer  | image_sign_issuer  |
 | sov_image_env  | image_env  |
 
-When referencing any of these variables in the following step, use the format `<+execution.steps.cosign_verify.output.outputVariables.sov_image_registry>`. Note that your step name might be different than `cosign_verify`.
+When referencing any of these variables in the following step, use the format `\<+execution.steps.cosign_verify.output.outputVariables.sov_image_registry\>`. Note that your step name might be different than `cosign_verify`.
 
 The first four variables on this list are used to ensure that the correct image with the right digest is coming from an approved image registry vetted by an appropriate OIDC provider. The last variable is an annotation for the image tag indicating the environment the image is for. You can modify the script and variables based on what information is important to you for image sign validation.
 

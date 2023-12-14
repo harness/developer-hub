@@ -47,7 +47,8 @@ The recommended workflow is to add a Semgrep step to a Security Tests or CI Buil
 
 
 <details>
-    <summary>Semgrep scanner template</summary>
+    
+		<summary>Semgrep scanner template</summary>
 
 ![](static/semgrep-step-config-example.png) 
 

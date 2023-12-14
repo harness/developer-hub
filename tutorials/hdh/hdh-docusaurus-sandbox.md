@@ -41,12 +41,14 @@ H5 Heading
 Details are toggle elements. 
 
 <details>
-  <summary>Toggle Heading</summary>
+  
+		<summary>Toggle Heading</summary>
   <div>
     <div>This is the detailed content</div>
     <br/>
     <details>
-      <summary>
+      
+		<summary>
         Nested Toggle
       </summary>
       <div>

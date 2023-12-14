@@ -34,7 +34,8 @@ https://www.loom.com/share/3bce77b43a844d6bb5b274c341855149-->
 
 A target is identified by a name and an identifier. Make sure your target names and identifiers conform to the regex requirements below.
 
-<details><summary>Regex requirements for target names and identifiers</summary> 
+<details>
+		<summary>Regex requirements for target names and identifiers</summary> 
 
 A target is identified by a name and an identifier. The name and identifier you enter must conform to the following regex:
 

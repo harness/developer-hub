@@ -276,7 +276,7 @@ See [Ignore a manifest file during deployment](../continuous-delivery/deploy-sr
 
 Typically, If the Docker artifact source is in a private registry, Harness has access to that registry using the credentials set up in the Harness [Artifact connector](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo).
 
-If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the values.yaml file added in the Service **Manifests** section must contain `dockercfg: <+artifact.imagePullSecret>` . This key will import the credentials from the Docker credentials file in the artifact.
+If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the values.yaml file added in the Service **Manifests** section must contain `dockercfg: \<+artifact.imagePullSecret\>` . This key will import the credentials from the Docker credentials file in the artifact.
 
 See [Pull an image from a private registry for Kubernetes](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes.md).
 
@@ -657,7 +657,8 @@ Yes. By default, deployments aren't forced. You can use the **Force new deployme
 #### How do ECS blue green deployments work?
 
 <details>
-<summary>ECS blue green deployments summary</summary>
+
+		<summary>ECS blue green deployments summary</summary>
 
 ECS Blue/Green deployments use old and new versions of your service running behind the load balancer. Your ELB uses two listeners, Prod and Stage, each forwarding to a different target group where ECS services are run.
 
@@ -977,17 +978,17 @@ See [Fixed Values, runtime inputs, and expressions](/docs/platform/variables-and
 
 #### Error evaluating certain expressions in a Harness pipeline
 
-Some customers have raised concernes about errors while trying to evaluable expressions (example: `<+pipeline.sequenceId>`) while similiar expressions do get evaluated. In this case the concatenation in the expression `/tmp/spe/<+pipeline.sequenceId>` is not working because a part of expression `<+pipeline.sequenceId>` is integer so the concatenation with `/tmp/spec/` is throwing error because for concat, both the values should be string only. 
+Some customers have raised concernes about errors while trying to evaluable expressions (example: `\<+pipeline.sequenceId\>`) while similiar expressions do get evaluated. In this case the concatenation in the expression `/tmp/spe/\<+pipeline.sequenceId\>` is not working because a part of expression `\<+pipeline.sequenceId\>` is integer so the concatenation with `/tmp/spec/` is throwing error because for concat, both the values should be string only. 
 
-So we can invoke the `toString()` on the integer value then our expression should work. So the final expression would be `/tmp/spe/<+pipeline.sequenceId.toString()>`. 
+So we can invoke the `toString()` on the integer value then our expression should work. So the final expression would be `/tmp/spe/\<+pipeline.sequenceId.toString()\>`. 
 
 #### How to carry forward the output variable when looping steps?
 
-If you are using looping strategies on steps or step groups in a pipeline, and need to carry forward the output variables to consequtive steps or with in the loop, you can use  `<+strategy.iteration>` to denote the iteration count.
+If you are using looping strategies on steps or step groups in a pipeline, and need to carry forward the output variables to consequtive steps or with in the loop, you can use  `\<+strategy.iteration\>` to denote the iteration count.
 
-For example, assume a looping strategy is applied to a step with the identifier `my_build_step.` which has an output variable `my_variable` The expression `<+pipeline.stages.my_build_step.output.outputVariables.my_variable>` won't work. Instead, you must append the index value to the identifier in the expression, such as: `<+pipeline.stages.my_build_step_0.output.outputVariables.my_variable>`
+For example, assume a looping strategy is applied to a step with the identifier `my_build_step.` which has an output variable `my_variable` The expression `\<+pipeline.stages.my_build_step.output.outputVariables.my_variable\>` won't work. Instead, you must append the index value to the identifier in the expression, such as: `\<+pipeline.stages.my_build_step_0.output.outputVariables.my_variable\>`
 
-If you are using with in the loop you can denote the same as `<+pipeline.stages.my_build_step_<+strategy.iteration>.output.outputVariables.my_variable>`
+If you are using with in the loop you can denote the same as `\<+pipeline.stages.my_build_step_<+strategy.iteration\>.output.outputVariables.my_variable>`
 
 See [Iteration Counts](docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#iteration-counts)
 

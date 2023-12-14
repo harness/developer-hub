@@ -355,14 +355,14 @@ pipeline:
               connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
-              nodeSelector: {}
+              nodeSelector: \{\}
               os: Linux
   properties:
     ci:
       codebase:
         connectorRef: CODEBASE_CONNECTOR
         repoName: dvpwa
-        build: <+input>
+        build: \<+input\>
   identifier: gitleaks_docs_example_ORCHESTRATION
   name: gitleaks docs example - ORCHESTRATION
 ```

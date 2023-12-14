@@ -23,7 +23,8 @@ These release notes describe recent changes to Harness Continuous Delivery & Git
 :::
 
 <details>
-<summary>Upcoming RBAC enhancements for Harness customers using Policy as Code</summary>
+
+		<summary>Upcoming RBAC enhancements for Harness customers using Policy as Code</summary>
 
 import RbacForOpa from '/release-notes/shared/rbac-enhancements-for-opa-users.md'
 
@@ -33,7 +34,8 @@ import RbacForOpa from '/release-notes/shared/rbac-enhancements-for-opa-users.md
 </details>
 
 <details>
-<summary>Deprecation notices</summary>
+
+		<summary>Deprecation notices</summary>
 
 #### Helm 2
 
@@ -76,7 +78,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
   This issue has been fixed.
 
-- Harness did not evaluate expressions that begin with `<+pipeline.stage>` when they were used in ASG infrastructure. Therefore, you could not use those expressions to identify, for example, the region or the base ASG name. (CDS-84389)
+- Harness did not evaluate expressions that begin with `\<+pipeline.stage\>` when they were used in ASG infrastructure. Therefore, you could not use those expressions to identify, for example, the region or the base ASG name. (CDS-84389)
 
   This issue has been fixed, and such expressions are evaluated correctly.
 
@@ -115,7 +117,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
   This issue has been fixed.
 
-- If you selected the *Expression* value type for a stage or pipeline variable and manually entered the runtime input expression (expressions that begin with `<+input>`, which you typically specify by using the *Runtime input* value type), Harness appended white spaces to the expression when saving the value to YAML. The issue caused the Run Pipeline dialog to not show the input variable. (CDS-83279, ZD-53153)
+- If you selected the *Expression* value type for a stage or pipeline variable and manually entered the runtime input expression (expressions that begin with `\<+input\>`, which you typically specify by using the *Runtime input* value type), Harness appended white spaces to the expression when saving the value to YAML. The issue caused the Run Pipeline dialog to not show the input variable. (CDS-83279, ZD-53153)
 
   This issue has been fixed. When you manually enter a runtime input expression of the form described earlier, Harness does not append white spaces. 
 
@@ -129,7 +131,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   - You configure the stage to execute only if a JEXL condition provided at runtime evaluates to true.
   - You create an input set that does not provide the stage with a JEXL condition for evaluation.
   
-  When stage execution fails, the following error is displayed: "Error evaluating expression [<+OnPipelineSuccess> && (<+input>)]: Expression evaluation failed" (CDS-82350, ZD-52689) 
+  When stage execution fails, the following error is displayed: "Error evaluating expression [\<+OnPipelineSuccess\> && (\<+input\>)]: Expression evaluation failed" (CDS-82350, ZD-52689) 
 
   This issue has been fixed.
 
@@ -403,7 +405,7 @@ This item requires Harness Delegate version 23.11.81601. For information about f
 
   This issue has been fixed. Now, a *Freeze Active* notification is sent if you make changes to a freeze window that is enabled and active, provided that the **Freeze window is enabled and active** setting is configured.
 
-- Expressions that reference secrets (for example, `<+secrets.getValue("secret")>`) in the input variable sections of custom artifact sources did not resolve.  (CDS-81724, ZD-52184)
+- Expressions that reference secrets (for example, `\<+secrets.getValue("secret")\>`) in the input variable sections of custom artifact sources did not resolve.  (CDS-81724, ZD-52184)
 
   This issue has been fixed. 
 
@@ -471,13 +473,13 @@ This release does not include early access features.
 
   This issue has been fixed. 
 
-- Harness did not export the `samTemplateFile` property for AWS SAM deployments. Consequently, you could not use expressions such as `<+manifests.MANIFEST_ID.samTemplateFile>` and `<+manifests.MANIFEST_ID.spec>` to dynamically insert the SAM template file name into the SAM Deploy step, even though the expression `<+manifests.MANIFEST_ID>` resolved for you. (CDS-80624, ZD-51597)
+- Harness did not export the `samTemplateFile` property for AWS SAM deployments. Consequently, you could not use expressions such as `\<+manifests.MANIFEST_ID.samTemplateFile\>` and `\<+manifests.MANIFEST_ID.spec\>` to dynamically insert the SAM template file name into the SAM Deploy step, even though the expression `\<+manifests.MANIFEST_ID\>` resolved for you. (CDS-80624, ZD-51597)
 
   This issue has been fixed. Harness has released two new images, `harnessdev/sam-build:1.82.0-1.1.0` and `harnessdev/sam-deploy:1.82.0-1.1.0`, which support the use of the `PLUGIN_SAM_TEMPLATE_FILE_PATH` environment variable to get the values passed in the `samTemplateFile` of the SAM service. 
   
   The expression you need to reference the SAM template file name can now be copied from the output section of the service step. 
   
-  Alternatively, you can use the following expression: `<+pipeline.stages.STAGE_ID.spec.manifests.MANIFEST_ID.samTemplateFile>.`
+  Alternatively, you can use the following expression: `\<+pipeline.stages.STAGE_ID.spec.manifests.MANIFEST_ID.samTemplateFile\>.`
 
   For more information about building expressions, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables).
 
@@ -798,8 +800,8 @@ https://harness.atlassian.net/browse/CDS-79071?focusedCommentId=579969
 - The **Expression** auto-suggest dropdown did not include expressions related to the status of a node. This dropdown now includes status variables for pipelines, stages, steps, and step groups. (CDS-70304, ZD-44953, ZD-45054)
 
   Examples of new variables in this dropdown include:
-  - `<+pipeline.status>`
-  - `<+pipeline.stages.stage1.status>`
+  - `\<+pipeline.status\>`
+  - `\<+pipeline.stages.stage1.status\>`
 
 - Harness CD now supports auto-scaling of green services in the ECS Blue Green Swap Target step. (CDS-79414)
 
@@ -901,7 +903,7 @@ https://harness.atlassian.net/browse/CDS-77793?focusedCommentId=573257
 This ticket is showing up in the 807xx release notes list but I already documented this is in the 80504 relnotes. I’ll move this from  Fixed Issues to Hotfixes  in 80504 release notes, this will show up when I publish the  807 release notes. 
 -->
 
-- Fixed an issue resolving secrets via `<+secrets.getValue("my_secret")>` used in container-based step groups in a Deploy stage.  (CDS-77793, ZD-49391, ZD-49763, ZD-49838, ZD-50014)
+- Fixed an issue resolving secrets via `\<+secrets.getValue("my_secret")\>` used in container-based step groups in a Deploy stage.  (CDS-77793, ZD-49391, ZD-49763, ZD-49838, ZD-50014)
 
 
 - Fixed an issue where step templates used in stage templates were being resolved into steps automatically. With this fix, the **New Variable** button in Template Studio (similar to Pipeline Studio) is disabled for any referenced child template. However, **New Variable** is not disabled for creating, updating, or deleting pipeline variables in a pipeline template or stage variables in a stage template. (CDS-77739, ZD-49520, ZD-49737)
@@ -993,7 +995,7 @@ TBD commenting out until I hear back from RG https://harness.atlassian.net/brows
 
 * API call logs summary now includes details such as response, size, duration, HTTP verb, and response code. (OIP-767)
 
-* Fixed an issue that resulted in Null Pointer Exceptions when running a pipeline manually with a  `<+trigger.connectorRef>` expression. This expression gets its data from the trigger payload. With this fix, the pipeline correctly handles the case where the trigger payload is null.  (CDS-77736, ZD-49685, ZD-49720, ZD-49722)
+* Fixed an issue that resulted in Null Pointer Exceptions when running a pipeline manually with a  `\<+trigger.connectorRef\>` expression. This expression gets its data from the trigger payload. With this fix, the pipeline correctly handles the case where the trigger payload is null.  (CDS-77736, ZD-49685, ZD-49720, ZD-49722)
 
   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
@@ -1013,7 +1015,7 @@ TBD commenting out until I hear back from RG https://harness.atlassian.net/brows
 
 #### Hotfixes
 
-* Fixed an issue resolving secrets via `<+secrets.getValue("my_secret")>` used in container-based step groups in a Deploy stage.  (CDS-77793, ZD-49391, ZD-49763, ZD-49838, ZD-50014)
+* Fixed an issue resolving secrets via `\<+secrets.getValue("my_secret")\>` used in container-based step groups in a Deploy stage.  (CDS-77793, ZD-49391, ZD-49763, ZD-49838, ZD-50014)
 
 ## August 2023
 
@@ -1048,7 +1050,7 @@ This release does not include early access features.
 
 - Fixed a UI issue where fields in Add Stage did not reposition correctly when the window size was decreased (CDS-76431).
 
-- Fixed an issue where characters could get arranged incorrectly when updating an expression within a string value. For example, updating the expression in `test/var/<+expression.name>/login` might result in `test/var/<+expression.name`**/>**`login`. This fix ensures that expressions within strings are updated correctly.  (CDS-76354, ZD-48515)
+- Fixed an issue where characters could get arranged incorrectly when updating an expression within a string value. For example, updating the expression in `test/var/\<+expression.name\>/login` might result in `test/var/\<+expression.name`**/\>**`login`. This fix ensures that expressions within strings are updated correctly.  (CDS-76354, ZD-48515)
 
 - Fixed an issue where users could not save a Manual Approval step as a template when `autoApprove : action` is set to `APPROVE` or `REJECT`.  (CDS-76350)
 
@@ -1154,7 +1156,7 @@ This release does not have new features.
 
 - Fixed an issue where a pipeline execution reported an invalid `artifactPath` when trying to deploy Artifactory artifacts. This was due to an issue with the regex used to populate the pull-down artifact menu. With this fix, you can specify recursive wildcards in the directory path for Artifactory. For example, you can specify `MainPath/*/*` as the directory path for the pipeline and the Service step will download the selected artifact. (CDS-72245, ZD-46236)
 
-- Fixed a delegate issue where the Custom Remote Store did not clone a repo larger than 25Mb if provided in the execution script. With this fix, the Custom Remote Store now has a <=25Mb size validation on manifest files (not the entire repo). (CDS-75900)
+- Fixed a delegate issue where the Custom Remote Store did not clone a repo larger than 25Mb if provided in the execution script. With this fix, the Custom Remote Store now has a \<=25Mb size validation on manifest files (not the entire repo). (CDS-75900)
 
   This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
@@ -1174,7 +1176,7 @@ This release does not have new features.
 
   This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- Fixed a delegate issue where a `<+configFile.getAsBase64(content)>` expression would get parsed incorrectly if it contained multiple lines. (CDS-73424)
+- Fixed a delegate issue where a `\<+configFile.getAsBase64(content)\>` expression would get parsed incorrectly if it contained multiple lines. (CDS-73424)
 
   This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
@@ -1186,7 +1188,7 @@ This release does not have new features.
 
   This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- Fixed an issue where Azure webhook triggers did not work as expected because the delegate could not parse repository URLs in the format `https://{ORG}@dev.azure.com/{ORG}/{PROJECT}/_git/{REPO}`. With this fix, the delegate can parse these URLs and Azure webhook triggers work as expected. (CDS-59023)
+- Fixed an issue where Azure webhook triggers did not work as expected because the delegate could not parse repository URLs in the format `https://\{ORG\}@dev.azure.com/\{ORG\}/\{PROJECT\}/_git/\{REPO\}`. With this fix, the delegate can parse these URLs and Azure webhook triggers work as expected. (CDS-59023)
 
   This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
@@ -1264,7 +1266,7 @@ This release does not have Early Access features.
 
 - Fixed an issue with incorrect execution of a container step when the failure strategy was set to **Always execute** and the previous step had failed (but was ignored). (CDS-74567, ZD-47648)
 
-- Fixed an issue where Command steps could not resolve Service Overrides for variables of type Secret (for example, `export testsvc="<+secrets.getValue(account.examplesecret)>"`. (CDS-74338, ZD-47280)
+- Fixed an issue where Command steps could not resolve Service Overrides for variables of type Secret (for example, `export testsvc="\<+secrets.getValue(account.examplesecret)\>"`. (CDS-74338, ZD-47280)
 
 - When a user marked a running stage in the pipeline as failed, the build also marked the parallel queued stages as failed. This was incorrect behavior because the queued stages should continue to run if they are configured to do so.
 
@@ -1386,7 +1388,7 @@ This release does not include early access features.
   environment:
     name: coola
     identifier: coola
-    tags: {}
+    tags: \{\}
     type: Production
     orgIdentifier: default
     projectIdentifier: H
@@ -1403,11 +1405,11 @@ This release does not include early access features.
                 - account:/s	
   ```
 
-- Fixed an issue where using selective stage execution in the advanced settings of a pipeline would cause the pipeline build to fail. This was due to incorrect index handling when processing `<+pipeline>` variables in shell scripts, which would result in index-array-out-of-bounds errors. (CDS-72840)	
+- Fixed an issue where using selective stage execution in the advanced settings of a pipeline would cause the pipeline build to fail. This was due to incorrect index handling when processing `\<+pipeline\>` variables in shell scripts, which would result in index-array-out-of-bounds errors. (CDS-72840)	
 
 - Fixed an issue where, in some cases, removing a file reference from a service did not clear the file reference. In addition, enabling **Force Delete** did not allow users to remove the file. This fix ensures the intended behavior: when a file, secret, or template is removed from a service configuration, any references between the service and the referenced object are also removed. (CDS-72350, ZD-46133)
 
-- Fixed an issue that would cause `<+artifact.imagePullSecret>` to be resolved as null when setting up an AWS connector in IRSA mode. The delegate creates sync tasks for fetching ImagePull secrets for ECR. The delegate was creating the sync task incorrectly, as it only looked at account-level delegates, causing the capability check to fail. Now, the delegate creates the relevant tasks correctly.  (CDS-72334, ZD-46266)
+- Fixed an issue that would cause `\<+artifact.imagePullSecret\>` to be resolved as null when setting up an AWS connector in IRSA mode. The delegate creates sync tasks for fetching ImagePull secrets for ECR. The delegate was creating the sync task incorrectly, as it only looked at account-level delegates, causing the capability check to fail. Now, the delegate creates the relevant tasks correctly.  (CDS-72334, ZD-46266)
 
 - Fixed an API issue where a request to update the input sets of a pipeline when importing the pipeline from Git did not update the `lastUpdateAt` field. (CDS-72098)
 
@@ -1434,15 +1436,15 @@ This release does not include early access features.
 
   The list of expressions include:
   
-  - `<+strategy.currentstatus>`
-  - `<+strategy.node.strategy_node_identifier.currentstatus>`
-  - `<+strategy.node.get("strategy_node_identifier").currentstatus>`
-  - `<+strategy.identifierpostfix>`
-  - `<+step.identifierpostfix>`
-  - `<+stage.identifierpostfix>`
-  - `<+stepgroup.identifierpostfix>`
-  - `<+strategy.node.strategy_node_identifier.identifierpostfix>`
-  - `<+strategy.node.strategy_node_identifier.*>`
+  - `\<+strategy.currentstatus\>`
+  - `\<+strategy.node.strategy_node_identifier.currentstatus\>`
+  - `\<+strategy.node.get("strategy_node_identifier").currentstatus\>`
+  - `\<+strategy.identifierpostfix\>`
+  - `\<+step.identifierpostfix\>`
+  - `\<+stage.identifierpostfix\>`
+  - `\<+stepgroup.identifierpostfix\>`
+  - `\<+strategy.node.strategy_node_identifier.identifierpostfix\>`
+  - `\<+strategy.node.strategy_node_identifier.*\>`
 
   For information on using the expressions, go to [Strategy](/docs/platform/variables-and-expressions/harness-variables/#strategy).
 
@@ -1467,7 +1469,7 @@ This release does not include early access features.
 
   This is now fixed and the rollback does execute. Please make sure your Harness delegate(s) are on delegate version 23.08.80104 to use these changes.
 
-- The `<+configFile.getAsBase64()>` expression not resolving correctly when the content had new lines. (CDS-73424)
+- The `\<+configFile.getAsBase64()\>` expression not resolving correctly when the content had new lines. (CDS-73424)
   
   The issue occurred with newline characters while encoding config files. This is fixed and Harness now replaces newline characters with unicode.
 
@@ -1586,7 +1588,7 @@ This release does not include any early access features.
 
   This issue is fixed. The **Secret Manager** setting lists only supported connectors now.
 
-- Harness has added an access control check to the `/v2/{planExecutionId}` API to prevent users from anonymously accessing the plan execution Id using the API. (CDS-72155)
+- Harness has added an access control check to the `/v2/\{planExecutionId\}` API to prevent users from anonymously accessing the plan execution Id using the API. (CDS-72155)
 - Step templates within step groups created under stage templates were not executing properly. (CDS-72124, ZD-45924, ZD-46151)
 
   A code enhancement fixed this issue.
@@ -1775,9 +1777,9 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 
   Harness has introduced the following expressions to retrieve the current status of the node (stage/step) using a looping strategy:
 
-  - `<+strategy.currentStatus>`: Retrieves the current status of the node with the maximum depth.
-  - `<+strategy.node.[strategyNodeIdentifier].currentStatus>`: Retrieves the current status of the node with a specific stage/step identifier, `strategyNodeIdentifier`. For example, `echo <+strategy.node.cs1.currentStatus>`.
-  - `<+strategy.node.get("[strategyNodeIdentifier]").currentStatus>`: Retrieves the current status of the node with a specific stage/step identifier, `strategyNodeIdentifier`. For example, `echo <+strategy.node.get("ShellScript_1").currentStatus>`.
+  - `\<+strategy.currentStatus\>`: Retrieves the current status of the node with the maximum depth.
+  - `\<+strategy.node.[strategyNodeIdentifier].currentStatus\>`: Retrieves the current status of the node with a specific stage/step identifier, `strategyNodeIdentifier`. For example, `echo \<+strategy.node.cs1.currentStatus\>`.
+  - `\<+strategy.node.get("[strategyNodeIdentifier]").currentStatus\>`: Retrieves the current status of the node with a specific stage/step identifier, `strategyNodeIdentifier`. For example, `echo \<+strategy.node.get("ShellScript_1").currentStatus\>`.
 
 - If any entities referenced in a pipeline are updated, a warning now appears in Pipeline Studio saying that reconciliation is needed. Previously, this warning appeared only when you manually tried to reconcile. (CDS-69672)
 - The Harness Approval step now supports scheduled automatic approvals. (CDS-69415)
@@ -1864,9 +1866,9 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
   By default, the required field for any newly created variable in the YAML is set to `false`. Also, if the `required` field is missing in the YAML, it is considered as `false`.
 
 - Fixed an issue where deployment freeze notifications were not being sent when a freeze window was activated. (CDS-69455)
-- The expression, `<+artifacts.primary.identifier>` was not working properly for Google Cloud Storage deployments. (CDS-68993, ZD-44217)
+- The expression, `\<+artifacts.primary.identifier\>` was not working properly for Google Cloud Storage deployments. (CDS-68993, ZD-44217)
 
-  This issue is fixed. You can now see the identifier of the source selected as primary when using the expression `<+artifacts.primary.identifier>`. This functionality is behind the feature flag, `CDS_ARTIFACTS_PRIMARY_IDENTIFIER`.
+  This issue is fixed. You can now see the identifier of the source selected as primary when using the expression `\<+artifacts.primary.identifier\>`. This functionality is behind the feature flag, `CDS_ARTIFACTS_PRIMARY_IDENTIFIER`.
 
 - Fixed an issue where the SSH and WinRM rollback were not skipped even if there were no successful previous deployments. (CDS-68583)
 - Fixed an issue where optional fields in a JIRA Update step were saved as key-value pairs. (CDS-58174)
@@ -1876,12 +1878,12 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 
 - The expressions corresponding to objects like list, maps, and so on were incorrectly converted to string type using the Java `String.valueOf` method resulting in incorrect formatting. (CDS-71619)
 
-  For example, the expression `<+pipeline.variables>` corresponding to the following object types are incorrectly converted to:
+  For example, the expression `\<+pipeline.variables\>` corresponding to the following object types are incorrectly converted to:
 
-  - Map: `{key1=val1, key2=val2}`
+  - Map: `\{key1=val1, key2=val2\}`
   - List: `["a", "b", "c"]` (with spaces)
 
-  This issue is fixed and the output values for expressions are returned as JSON objects. Now, the expression in the above example for a map object returns `{"key1":"val1","key2": "val2"}`, and a list object returns `["a","b","c"]` (without spaces).
+  This issue is fixed and the output values for expressions are returned as JSON objects. Now, the expression in the above example for a map object returns `\{"key1":"val1","key2": "val2"\}`, and a list object returns `["a","b","c"]` (without spaces).
 - Pipeline execution triggered using a webhook trigger failed with the error, `Error while retrieving template with identifier [%s] and versionLabel [%s], templateIdentifier, versionLabel`. (CDS-70552, ZD-45178)
   
   This issue is fixed. The error message has been improved to display the cause of pipeline execution failure. 
@@ -1984,7 +1986,7 @@ This release does not include any early access features.
 
 - Deployment template connector variable expressions were not resolving. (CDS-68880)
 
-  You can access information about the connectors used in a deployment template using connector variable expressions (for example, `<+stage.spec.infrastructure.output.variable.[name]>`).
+  You can access information about the connectors used in a deployment template using connector variable expressions (for example, `\<+stage.spec.infrastructure.output.variable.[name]\>`).
 
   <docimage path={require('./static/0e40fbf0db025ce3330a7b4e7352a8203acb51d5a06653b1b010a279e2f42cc5.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -2039,24 +2041,24 @@ This release does not include any early access features.
   With this option, you can now reject old executions waiting on approval when a latest step is approved. For more information, go to [Manual Approval steps in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages).
 
 - You can add metadata or [JEXL conditions](/docs/platform/triggers/triggers-reference/#jexl-conditions) on artifact triggers just like custom triggers. (CDS-51928)
-- The `<+trigger.artifact.build>` expression now resolves with value when you rerun a failed pipeline. (CDS-50585, ZD-42193)
+- The `\<+trigger.artifact.build\>` expression now resolves with value when you rerun a failed pipeline. (CDS-50585, ZD-42193)
 
   A new API is now supported in the backend to fetch details from `planExecutionsMetadata` that has information about the tags that were used when a trigger fires a pipeline.
 
-- You can now use the expression, [`<+lastPublished.tag>`](/docs/platform/triggers/trigger-on-a-new-artifact/#using-the-triggerartifactbuild-and-lastpublishedtag-expressions) if you want to deploy the last successfully published artifact version. (CDS-53512)
+- You can now use the expression, [`\<+lastPublished.tag\>`](/docs/platform/triggers/trigger-on-a-new-artifact/#using-the-triggerartifactbuild-and-lastpublishedtag-expressions) if you want to deploy the last successfully published artifact version. (CDS-53512)
 - Added support for accessing connector attributes for Deployment Templates. (CDS-54247)
 
   The Harness Delegate version 23.05.79307 is required for this feature.
 
   The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions.
 
-  - [AWS KMS](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
-  - [AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
-  - [Azure Key Vault](/docs/platform/secrets/secrets-management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
-  - [Google KMS](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
-  - [Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
-  - [Custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
-  - [HashiCorp Vault](/docs/platform/secrets/secrets-management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
+  - [AWS KMS](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager): `\<+infra.variables.AwsKms.spec.credential.type\>`
+  - [AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager): `\<+infra.variables.AwsSecretsManager.spec.region\>`
+  - [Azure Key Vault](/docs/platform/secrets/secrets-management/azure-key-vault): `\<+infra.variables.AzureKeyVault.spec.vaultName\>`
+  - [Google KMS](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager): `\<+infra.variables.GcpKms.spec.keyName\>`
+  - [Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager): `\<+infra.variables.GcpSecMan.spec.credentialsRef.identifier\>`
+  - [Custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager): `\<+infra.variables.CustomSecMan.spec.isDefault\>`
+  - [HashiCorp Vault](/docs/platform/secrets/secrets-management/add-hashicorp-vault): `\<+infra.variables.HashiCorp.spec.vaultUrl\>`
 
 - A unique custom webhook token is added to the custom webhook URL when triggering a deployment using cURL. (CDS-59511, ZD-34797)
 
@@ -2064,7 +2066,7 @@ This release does not include any early access features.
 
   Here's a sample cURL command with custom webhook token:
 
-  `curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/{customWebhookToken}/v3?accountIdentifier=<your_account_Id>&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'`
+  `curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/\{customWebhookToken\}/v3?accountIdentifier=<your_account_Id>&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '\{"sample_key": "sample_value"\}'`
 
 - Git polling tasks for triggers are executed on the same delegate selector used in the Git connector. (CDS-58115)
 
@@ -2182,31 +2184,31 @@ This release does not include any early access features.
 
 #### What's new
 
-- Trigger artifact and manifest expressions (`<+trigger.artifact.build>` or `<+trigger.manifest.version>`) are now resolved when you rerun a pipeline that was activated by a trigger. (CDS-58192, CDS-50585)
+- Trigger artifact and manifest expressions (`\<+trigger.artifact.build\>` or `\<+trigger.manifest.version\>`) are now resolved when you rerun a pipeline that was activated by a trigger. (CDS-58192, CDS-50585)
 
   Here is a sample resolved YAML:
 
   ```
-  {
+  \{
     "status": "SUCCESS",
-    "data": {
+    "data": \{
         "planExecutionId": "PimcPiwlQ56A2AhWogEM7A",
-        "executionYaml": "pipeline:\n  identifier: \"asda\"\n  name: \"asda\"\n  projectIdentifier: \"test\"\n  orgIdentifier: \"default\"\n  tags: {}\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      name: \"sda\"\n      description: \"\"\n      spec:\n        serviceConfig:\n          serviceRef: \"ads\"\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              variables: []\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    connectorRef: \"Test\"\n                    imagePath: \"library/nginx\"\n                    tag: \"<+trigger.artifact.build>\"\n              manifests: []\n        infrastructure:\n          environmentRef: \"wew\"\n          infrastructureDefinition:\n            type: \"KubernetesDirect\"\n            spec:\n              connectorRef: \"ad\"\n              namespace: \"asd\"\n              releaseName: \"release-<+INFRA_KEY>\"\n          allowSimultaneousDeployments: false\n        execution:\n          steps:\n          - step:\n              identifier: \"sad\"\n              type: \"ShellScript\"\n              name: \"sad\"\n              spec:\n                shell: \"Bash\"\n                onDelegate: true\n                source:\n                  type: \"Inline\"\n                  spec:\n                    script: \"echo \\\"test\\\"\"\n                environmentVariables: []\n                outputVariables: []\n                executionTarget: {}\n              timeout: \"10m\"\n          rollbackSteps: []\n      tags: {}\n      failureStrategies:\n      - onFailure:\n          errors:\n          - \"AllErrors\"\n          action:\n            type: \"StageRollback\"\n",
+        "executionYaml": "pipeline:\n  identifier: \"asda\"\n  name: \"asda\"\n  projectIdentifier: \"test\"\n  orgIdentifier: \"default\"\n  tags: \{\}\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      name: \"sda\"\n      description: \"\"\n      spec:\n        serviceConfig:\n          serviceRef: \"ads\"\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              variables: []\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    connectorRef: \"Test\"\n                    imagePath: \"library/nginx\"\n                    tag: \"<+trigger.artifact.build>\"\n              manifests: []\n        infrastructure:\n          environmentRef: \"wew\"\n          infrastructureDefinition:\n            type: \"KubernetesDirect\"\n            spec:\n              connectorRef: \"ad\"\n              namespace: \"asd\"\n              releaseName: \"release-<+INFRA_KEY>\"\n          allowSimultaneousDeployments: false\n        execution:\n          steps:\n          - step:\n              identifier: \"sad\"\n              type: \"ShellScript\"\n              name: \"sad\"\n              spec:\n                shell: \"Bash\"\n                onDelegate: true\n                source:\n                  type: \"Inline\"\n                  spec:\n                    script: \"echo \\\"test\\\"\"\n                environmentVariables: []\n                outputVariables: []\n                executionTarget: \{\}\n              timeout: \"10m\"\n          rollbackSteps: []\n      tags: \{\}\n      failureStrategies:\n      - onFailure:\n          errors:\n          - \"AllErrors\"\n          action:\n            type: \"StageRollback\"\n",
         "inputYaml": "pipeline:\n  identifier: \"asda\"\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      spec:\n        serviceConfig:\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    tag: \"<+trigger.artifact.build>\"\n",
         "resolvedYaml" "pipeline:\n  identifier: \"asda\"\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      spec:\n        serviceConfig:\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    tag: \"1.23-perl"\n",
-        "triggerPayload": {
+        "triggerPayload": \{
             "type": "ARTIFACT",
-            "headers": {},
+            "headers": \{\},
             "sourcetype": "CUSTOM_REPO",
-            "artifactdata": {
+            "artifactdata": \{
                 "build": "1.23-perl"
-            },
+            \},
             "version": 0
-        }
-    },
+        \}
+    \},
     "metaData": null,
     "correlationId": "1ad40479-c6ff-47e4-9722-db11c0a3ab06"
-  }
+  \}
   ```
 
 - When you abort a pipeline execution, you will now see a helpful warning text that explains the impact to the state of your service. (CDS-67000)
@@ -2246,7 +2248,7 @@ This release does not include any early access features.
   identifier: stage3Trigger
   enabled: true
   description: ""
-  tags: {}
+  tags: \{\}
   stagesToExecute:
     - stage3
   orgIdentifier: NgTriggersOrg
@@ -2357,18 +2359,18 @@ This release does not include any early access features.
 
   Labels are visible if the artifact manifest supports `schemaVersion1`.
 
-  Labels can be referenced using the expression: `<+pipeline.stages.[stage Id].spec.artifacts.primary.label.get("labelKey")>`.
+  Labels can be referenced using the expression: `\<+pipeline.stages.[stage Id].spec.artifacts.primary.label.get("labelKey")\>`.
 
   Since manifests can support two schema versions, `schemaVersion1` and `schemaVersion2`, there could be SHA values for each schema version.
 
   Here are the expressions for referencing each version:
 
-  - SHA value of `schemaVersion1`: `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHA>`.
-  - SHA value of `schemaVersion2`: `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHAV2>`.
+  - SHA value of `schemaVersion1`: `\<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHA\>`.
+  - SHA value of `schemaVersion2`: `\<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHAV2\>`.
 
 - New Harness expression for revision number. (CDS-57826)
 
-  You can now use the expression `<+kubernetes.release.revision>` in values.yaml, OpenShift Params, and Kustomize Patches. This will help you to:
+  You can now use the expression `\<+kubernetes.release.revision\>` in values.yaml, OpenShift Params, and Kustomize Patches. This will help you to:
 
   - Reference the current Harness release number as part of your manifest.
   - Reference versioned ConfigMaps and Secrets in custom resources and fields unknown by Harness.
@@ -2587,7 +2589,8 @@ This release does not include any early access features.
   Harness recommends that you only use a table extending task, or extend tables that indirectly extend the task. You can specify any custom table in Harness.
 
   <details>
-  <summary>What is a table extending task?</summary>
+  
+    		<summary>What is a table extending task?</summary>
 
   In ServiceNow, a table extending task is a task that involves creating a new table by extending an existing table. When a table is extended, a new child table is created that inherits all the fields, relationships, and other attributes of the parent table. The child table can then be customized further to meet the specific needs of the organization.
 
@@ -2882,7 +2885,7 @@ This release does not include any early access features.
   type: StepGroup
   projectIdentifier: projtest
   orgIdentifier: default
-  tags: {}
+  tags: \{\}
   spec:
     stageType: Deployment
     steps:
@@ -2973,7 +2976,7 @@ This release does not include any early access features.
 
 - Service inputs were retained when the service was set as an expression. (CDS-54336)
 
-  When a setting is set as an expression, any fixed value inputs should be replaced with `<+input>`. This replacement was not happening. This issue is now fixed.
+  When a setting is set as an expression, any fixed value inputs should be replaced with `\<+input\>`. This replacement was not happening. This issue is now fixed.
 
 - Automatic suggestions did not appear for the expressions during infra provisioning in Pipeline Studio. (CDS-54266)
 
@@ -3517,7 +3520,7 @@ This release does not include early access features.
 
 - Trigger name and identifier validation is in UI but not YAML. (CDS-52175)
 
-  Now the trigger YAML name value is validated with the pattern `^[a-zA-Z_][-0-9a-zA-Z_\\s]{0,127}$` and the identifier is validated the pattern `^[a-zA-Z_][0-9a-zA-Z_]{0,127}$`.
+  Now the trigger YAML name value is validated with the pattern `^[a-zA-Z_][-0-9a-zA-Z_\\s]\{0,127\}$` and the identifier is validated the pattern `^[a-zA-Z_][0-9a-zA-Z_]\{0,127\}$`.
 
 - A NullPointerException appears when the temporary file (`tmp`) cannot be created during Shell Script step execution. (CDS-51521)
 
@@ -3545,7 +3548,7 @@ This release does not include early access features.
 
 - Triggers are throwing errors when the pipeline YAML changes. (CDS-50144)
 
-  When a user changed a pipeline setting from a fixed value to a runtime input, the pipeline was failing with the error `Invalid request: IllegalArgumentException: Cannot create enum from <+input> value`.
+  When a user changed a pipeline setting from a fixed value to a runtime input, the pipeline was failing with the error `Invalid request: IllegalArgumentException: Cannot create enum from \<+input\> value`.
 
   This scenario was the result of a lack of YAML validation.
 
@@ -4128,7 +4131,7 @@ We had to redesign our release history to store all rendered manifests in secret
 
   This was an issue with running pipelines using input sets specifically containing artifact sources with no runtime inputs. In this case, users were seeing the error message "Exception in resolving template refs". When run manually without input sets the executions went through fine. This was happening because an extra field was being set in the input set. Now we have added handling for that field and executions work as expected.
 
-- Artifactory with `tagRegex: <+input>` fails to fetch imagePath. (CDS-48438)
+- Artifactory with `tagRegex: \<+input\>` fails to fetch imagePath. (CDS-48438)
 
   Updated the FQN path to pass tagRegex if the tagRegex field is runtime.
 
@@ -4221,7 +4224,8 @@ We had to redesign our release history to store all rendered manifests in secret
 ## Previous releases
 
 <details>
-<summary>2022 releases</summary>
+
+		<summary>2022 releases</summary>
 
 #### December 22, 2022, version 77908
 
@@ -4392,9 +4396,9 @@ Removed **Skip Dry Run** from unnecessary steps.
 
   You can now use AWS S3 for your Serverless YAML and ECS configuration files (Task Definition, Service Definition, Scaling Policy, and Scalable Target JSON/YAML files).
 
-- The `<+rollbackArtifact...>` expression is now available (CDS-46321)
+- The `\<+rollbackArtifact...\>` expression is now available (CDS-46321)
 
-  For example, if you used a publicly available Docker Hub NGINX image as the Artifact Source for a Service, then when the Service is rolled back, the <+rollbackArtifact.meta.image> expression output would be something like this: registry.hub.docker.com/library/nginx:stable-perl.
+  For example, if you used a publicly available Docker Hub NGINX image as the Artifact Source for a Service, then when the Service is rolled back, the \<+rollbackArtifact.meta.image\> expression output would be something like this: registry.hub.docker.com/library/nginx:stable-perl.
 
   The variables available in rollbackArtifact depends on the artifact and infrastructure type used in the deployment. They can be seen in Output tab of Infrastructure section of a CD stage.
 
@@ -4502,7 +4506,7 @@ This functionality is behind a feature flag: AZURE_WEB_APP_NG_NEXUS_PACKAGE.
 
   Now you can set Helm Chart Version using a Runtime Input when using HTTP Helm, AWS S3, and Google GCS stores. You can view the list of chart versions available at runtime in Run Pipeline, and select the required one.
 
-- You can now copy the FQNs for Service and Environment V2 variables. The Service variables use the format <+serviceVariables.[variable name]> and Environment variables use the format `<env.variables.[variable name]>`.
+- You can now copy the FQNs for Service and Environment V2 variables. The Service variables use the format \<+serviceVariables.[variable name]\> and Environment variables use the format `<env.variables.[variable name]>`.
 
   For more information, see Built-in and Custom Harness Variables Reference.
 
@@ -4715,13 +4719,13 @@ For details on Environment and Infrastructure Definition expressions, go to Buil
 
 - Service V2 with Service V1 Stage is causing Pipeline Studio to crash (CDS-45653)
 
-- <+infra.name> not resolving in V2 Service and Environment (CDS-45492)
+- \<+infra.name\> not resolving in V2 Service and Environment (CDS-45492)
 
-  <+infra.name> expression is now supported.
+  \<+infra.name\> expression is now supported.
 
 - Template Library not taking Service Variables as input in the expression (CDS-45471)
 
-  With new service entity, if the manifest property was made a runtime input and its value was provided when running a pipeline in the form of an expression like <+serviceVariables.variableName>, the property would resolve to "null". However, if the manifest property was set to the same expression, directly in the service configuration, it would work as expected. This issue has been resolved now, with variable resolving in both cases.
+  With new service entity, if the manifest property was made a runtime input and its value was provided when running a pipeline in the form of an expression like \<+serviceVariables.variableName\>, the property would resolve to "null". However, if the manifest property was set to the same expression, directly in the service configuration, it would work as expected. This issue has been resolved now, with variable resolving in both cases.
 
 - Azure Artifacts VersionRegex filtering not honored (CDS-45433)
 
@@ -4771,7 +4775,7 @@ For details on Environment and Infrastructure Definition expressions, go to Buil
 
 - Approvals: JEXL expression doesn't support pipeline variables and expressions (CDS-25476)
 
-  With this ticket, pipeline expressions (`<+pipeline...`) as well as other common expressions are now supported for Approvals in JEXL criteria. Previously users could give expressions related to the ticket only.
+  With this ticket, pipeline expressions (`\<+pipeline...`) as well as other common expressions are now supported for Approvals in JEXL criteria. Previously users could give expressions related to the ticket only.
 
 #### October 21, 2022, version 77221
 
@@ -4785,7 +4789,7 @@ This release does not include new features.
 
   This issue has been resolved.
 
-- The items on the Template > Step Template page are overlapping. (CDS-45003)
+- The items on the Template \> Step Template page are overlapping. (CDS-45003)
 
   This issue has been resolved.
 
@@ -4875,7 +4879,7 @@ For more information, go to the ECS tutorial ECS Run Task section.
 
   Rolled back the changes related to recaster alias as it was creating hard dependency between services.
 
-- Using variable `<+service.name>` in "image path" artifact name caused a failure when trying to obtain the tag list (CDS-44246)
+- Using variable `\<+service.name\>` in "image path" artifact name caused a failure when trying to obtain the tag list (CDS-44246)
 
   Earlier `<service.name>` and similar service expressions were not resolved when fetching tags for artifact. This is now fixed.
 
@@ -4891,7 +4895,7 @@ For more information, go to the ECS tutorial ECS Run Task section.
 
   Added additional criteria to return files with undefined file usage.
 
-- S3 Artifact: NPE if bucketname is <+input> and empty value given at runtime (CDS-44072)
+- S3 Artifact: NPE if bucketname is \<+input\> and empty value given at runtime (CDS-44072)
 
   Fixed the NPE. If bucketName or filePath/Regex is null or empty, the Pipeline will throw appropriate exception.
 
@@ -4899,7 +4903,7 @@ For more information, go to the ECS tutorial ECS Run Task section.
 
   Now we don't allow the bucketName to be an empty string.
 
-- S3 Artifact: Region as <+input>, Bucket name dropdown gives error (CDS-44067)
+- S3 Artifact: Region as \<+input\>, Bucket name dropdown gives error (CDS-44067)
 
   After this change, we will stop making bucket list API call, if region or connectorRef are runtime inputs.
 
@@ -4955,11 +4959,11 @@ The ability to provision resources in a CD stage's deployment infrastructure usi
 
 - ServiceNow Change Window details not showing up on get approvals API (CDS-43787)
 
-  API GET approvals/{approvalID} was not giving change Window Spec details.
+  API GET approvals/\{approvalID\} was not giving change Window Spec details.
 
   It was missing from wrapper classes returning the persistent entity.
 
-  This issue has been resolved. API GET approvals/{approvalID} now returns change Window Spec details.
+  This issue has been resolved. API GET approvals/\{approvalID\} now returns change Window Spec details.
 
 - Remove validation for artifact Path in Nexus3 (CDS-43778)
 
@@ -4967,7 +4971,7 @@ The ability to provision resources in a CD stage's deployment infrastructure usi
 
 - No Variable to expose Connector Name. We only expose ref but the ref might not be the name (CDS-43757)
 
-  Expression to get the connector name is available now. Please use "<+infra.connector.name>" in the pipeline.
+  Expression to get the connector name is available now. Please use "\<+infra.connector.name\>" in the pipeline.
 
 - Infra Secrets are not getting resolved in Shell Script (CDS-43714)
 
@@ -4985,7 +4989,7 @@ The ability to provision resources in a CD stage's deployment infrastructure usi
 
   The template list screen did not display the account level templates created inline when Git experience is enabled. There was a criteria in the query which was filtering out inline templates. This issue has been resolved. The template list screen now displays the account level templates created inline when Git experience is enabled.
 
-- When wrong action passed to Harness Approval API error appear: '{"code":400,"message":"Unable to process JSON"}%' (CDS-42662)
+- When wrong action passed to Harness Approval API error appear: '\{"code":400,"message":"Unable to process JSON"\}%' (CDS-42662)
 
   The API (https://apidocs.harness.io/tag/Approvals#operation/addHarnessApprovalActivity) did not provide details of JSON processing errors. Also, for incorrect values in the Harness Approval Action (https://apidocs.harness.io/tag/Approvals#operation/addHarnessApprovalActivity!ct=application/json&path=action&t=request), the appropriate details were not showing.
 
@@ -5019,9 +5023,9 @@ The ability to provision resources in a CD stage's deployment infrastructure usi
 
 - Added Infrastructure host Connection Type to Azure, replacing Use Public DNS with the following options: Hostname (default), Private IP, Public IP (CDS-43301)
 
-- <+artifact> variables are not working in both SSH and WinRM pipelines (CDS-43293)
+- \<+artifact\> variables are not working in both SSH and WinRM pipelines (CDS-43293)
 
-  We were not adding the metadata to artifact outcome. The expression now works. The URL can now be fetched using <+artifact.metadata.url>.
+  We were not adding the metadata to artifact outcome. The expression now works. The URL can now be fetched using \<+artifact.metadata.url\>.
 
 - Option to select file or text is present when username/SSH Key is selected as authentication while creating an SSH credential (CDS-43266)
 
@@ -5039,7 +5043,7 @@ The ability to provision resources in a CD stage's deployment infrastructure usi
 
   For the Capability check for Docker registry connector, we now use endpoint /v2 to validate. As per Docker documentation, /v2 is the only endpoint needed to validate the accessibility for Docker registry version 2. To handle the scenario we are appending /v2 to Connector the URL if it doesn't exist.
 
-- The <+artifact.primary.identifier> expression not resolving to primary artifact identifier (CDS-42195)
+- The \<+artifact.primary.identifier\> expression not resolving to primary artifact identifier (CDS-42195)
 
 - Service Dashboard: Primary artifact details is not showing up under Active Service Instances section, only tags details displayed (CDS-42172)
 
@@ -5740,12 +5744,12 @@ n/a
 
 - CloudFormation (CDS-39288)
 
-  If CloudFormation template contain expressions like ${AWS::StackName} we were trying to handle them as Harness expressions. After the fix we are ignoring them.
+  If CloudFormation template contain expressions like $\{AWS::StackName\} we were trying to handle them as Harness expressions. After the fix we are ignoring them.
 
 - Location content in the Artifact section of Deploy stage should be wrapped (CDS-39114)
   Wrapped the Location text so it will not overflow. On hover we can see the whole text.
 
-- `<+service.name>` expression in the Artifact path was causing the fetch tags capability to error out and fail (CDS-39106)
+- `\<+service.name\>` expression in the Artifact path was causing the fetch tags capability to error out and fail (CDS-39106)
 
   You can now add Service and Environment expressions in image path setting.
 

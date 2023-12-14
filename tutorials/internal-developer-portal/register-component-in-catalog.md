@@ -80,7 +80,8 @@ tags:
 External hyperlinks related to the entity can be added for contextual information:
 
 <details>
-<summary>Important Callout: Allowing External URLs</summary>
+
+		<summary>Important Callout: Allowing External URLs</summary>
     
 If you're referencing external URLs in your `IDP.yaml` file, such as Swagger documentation links, please ensure that these URLs are allowed within the Harness Internal Developer Portal. This is a crucial step to ensure that the portal can access and display content from these external sources.
 
@@ -119,7 +120,8 @@ The current set of well-known and common values for this field is:
 In the Harness Internal Developer Portal, the owner of a component is identified by the [Harness User Group ID](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups). This User Group ID represents the collective entity that holds ultimate responsibility for the component and possesses the authority and capability to develop and maintain it. Should any issues arise or if there are requests for features, this User Group will serve as the primary point of contact. The primary purpose of this field in the Harness IDP is for display, ensuring that individuals accessing catalog items can easily identify the responsible User Group for a given component.
 
 <details>
-<summary>How to get the Harness User Group ID</summary>
+
+		<summary>How to get the Harness User Group ID</summary>
 
 #### How to get the Harness User Group ID:
     

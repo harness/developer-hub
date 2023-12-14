@@ -229,10 +229,11 @@ To integrate Coveralls in your Harness CI pipelines, follow the Coveralls docume
 * For **Step 3: Configure your project to send coverage to Coveralls**:
   * Create a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) for your `COVERALLS_REPO_TOKEN`.
   * Add the `COVERALLS_REPO_TOKEN` environment variable to steps in your CI pipelines that run tests with code coverage.
-  * For the environment variable value, use a Harness expression to [reference the encrypted text secret](/docs/platform/secrets/add-use-text-secrets/#step-3-reference-the-encrypted-text-by-identifier), such as `<+secrets.getValue("YOUR_COVERALLS_SECRET_ID")>`.
+  * For the environment variable value, use a Harness expression to [reference the encrypted text secret](/docs/platform/secrets/add-use-text-secrets/#step-3-reference-the-encrypted-text-by-identifier), such as `\<+secrets.getValue("YOUR_COVERALLS_SECRET_ID")\>`.
 
 <details>
-<summary>Add an environment variable to a step</summary>
+
+		<summary>Add an environment variable to a step</summary>
 
 ```mdx-code-block
 <Tabs>
@@ -242,7 +243,7 @@ To integrate Coveralls in your Harness CI pipelines, follow the Coveralls docume
 1. In Harness, edit the step that runs your tests with code coverage.
 2. Under **Environment Variables**, select **Add**.
 3. Set the key to `COVERALLS_REPO_TOKEN`.
-4. Set the value to `<+secrets.getValue("YOUR_COVERALLS_SECRET_ID")>`
+4. Set the value to `\<+secrets.getValue("YOUR_COVERALLS_SECRET_ID")\>`
 
 ![Adding the Coveralls Repo Token environment variable to a step in Harness.](./static/codecoverage_coveralls_env_var_visual.png)
 
@@ -361,8 +362,8 @@ The [S3 Upload and Publish plugin](https://github.com/harness-community/drone-s3
    * **Container Registry:** Select a Docker connector.
    * **Image:** Enter `harnesscommunity/drone-s3-upload-publish`.
    * **Settings:** Add the following seven settings as key-value pairs.
-      * `aws_access_key_id`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID, such as `<+pipeline.variables.AWS_ACCESS>`
-      * `aws_secret_access_key`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access key, such as `<+pipeline.variables.AWS_SECRET>`
+      * `aws_access_key_id`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID, such as `\<+pipeline.variables.AWS_ACCESS\>`
+      * `aws_secret_access_key`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access key, such as `\<+pipeline.variables.AWS_SECRET\>`
       * `aws_default_region`: Your default AWS region, such as `ap-southeast-2`
       * `aws_bucket`: The target S3 bucket.
       * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
@@ -397,7 +398,7 @@ The [S3 Upload and Publish plugin](https://github.com/harness-community/drone-s3
                        imagePullPolicy: IfNotPresent
    ```
 
-For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID and key. You could also use expressions for `target`, such as `<+pipeline.name>/<+pipeline.sequenceId>`, which would automatically organize your artifacts into directories based on the pipeline name and incremental build ID.
+For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID and key. You could also use expressions for `target`, such as `\<+pipeline.name\>/\<+pipeline.sequenceId\>`, which would automatically organize your artifacts into directories based on the pipeline name and incremental build ID.
 
 If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
 

@@ -142,7 +142,7 @@ Enter the following settings.
 
   Later, you can reference the Version using this expression format, which will resolve to the version pulled from the array at runtime:
 
-  `<+pipeline.stages.[stage_Id].spec.serviceConfig.output.artifactResults.primary.version>`
+  `\<+pipeline.stages.[stage_Id].spec.serviceConfig.output.artifactResults.primary.version\>`
 
 ## Script input variables
 
@@ -195,7 +195,7 @@ Here's an example:
 
 Later, in a **Shell Script** step, you can reference these attributes using the expression format:
 
-`<+pipeline.stages.[stage_Id].spec.serviceConfig.output.artifactResults.primary.metadata.[attribute_name]>`
+`\<+pipeline.stages.[stage_Id].spec.serviceConfig.output.artifactResults.primary.metadata.[attribute_name]\>`
 
 For example:
 
@@ -216,7 +216,7 @@ You add a *values.yaml* file along with your manifests in the **Manifests** sect
 
 The *values.yaml* file can use Harness expressions to reference artifacts in the **Artifacts** section of the service.
 
-To reference the artifact, use the expression `<+artifact.image>` in your *values.yaml* file. 
+To reference the artifact, use the expression `\<+artifact.image\>` in your *values.yaml* file. 
 
 For example:
 

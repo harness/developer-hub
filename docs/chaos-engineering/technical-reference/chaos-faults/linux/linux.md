@@ -5,9 +5,12 @@ title: Chaos Faults for Linux
 
 <!-- Import statement for Custom Components -->
 
+```
 import FaultDetailsCard from "@site/src/components/ChaosEngineering/FaultDetailsCard";
 import ExperimentListSection from "@site/src/components/ChaosEngineering/ExperimentListSection"
 import { experiments } from "./experiments"
+```
+
 
 <!-- Heading Description -->
 
@@ -50,7 +53,8 @@ Linux CPU stress applies stress on the CPU of the target Linux machines for a ce
 - Simulates a lack of CPU for processes running on the application, which degrades their performance.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 
 - Induces CPU stress on the target Linux machines.
 - Simulates a lack of CPU for processes running on the application, which degrades their performance.
@@ -67,7 +71,8 @@ Linux CPU stress applies stress on the CPU of the target Linux machines for a ce
 Linux memory stress causes memory consumption of the target Linux machines for a specific duration.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 
 - Induces memory consumption and exhaustion on the target Linux machines.
 - Simulates a lack of memory for processes running on the application, which degrades their performance.
@@ -84,7 +89,8 @@ Linux memory stress causes memory consumption of the target Linux machines for a
 Linux disk I/O stress applies stress on the disk of the target Linux machines over I/O operations for a specific duration.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 
 - Simulates slower disk operations for the applications.
 - Simulates noisy neighbour problems by exhausting the disk bandwidth.
@@ -100,7 +106,8 @@ Linux disk I/O stress applies stress on the disk of the target Linux machines ov
 Linux network loss injects chaos to disrupt network connectivity on the Linux machine by blocking the network requests.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 
 - Induces network loss on the target Linux machines.
 - Simulates loss of connectivity access by blocking the network requests on the machine.
@@ -115,7 +122,8 @@ Linux network loss injects chaos to disrupt network connectivity on the Linux ma
 Linux network latency injects chaos to disrupt network connectivity on a Linux machine by adding delay to the network requests.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 
 - Induces network latency on the target Linux machines.
 - Simulates latency in connectivity access by delaying the network requests of the machine.
@@ -130,7 +138,8 @@ Linux network latency injects chaos to disrupt network connectivity on a Linux m
 Linux network duplication injects chaos to disrupt network connectivity on a Linux machine by duplicating network packets.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 
 - Induces network duplication on the target Linux machines.
 - Simulates packet duplication in the network.
@@ -145,7 +154,8 @@ Linux network duplication injects chaos to disrupt network connectivity on a Lin
 Linux network corruption injects chaos to disrupt network connectivity on a Linux machine by corrupting the network requests.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 
 - Induces network corruption on the target Linux machines.
 - Simulates network corruption by corrupting requests of the machine.
@@ -161,7 +171,8 @@ Linux network corruption injects chaos to disrupt network connectivity on a Linu
 Linux DNS error injects chaos to disrupt the DNS resolution on a Linux machine.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 
 - Induces DNS error on the target Linux machines.
 - Simulates loss of access to host by blocking the DNS resolution of host names.
@@ -177,7 +188,8 @@ Linux DNS error injects chaos to disrupt the DNS resolution on a Linux machine.
 Linux DNS spoof injects chaos to mimic DNS resolution on a Linux machine.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 
 - Induces DNS spoof on the target Linux machines.
 - Resolves DNS target host names (or domains) to other IPs provided as user input.
@@ -194,7 +206,8 @@ Linux process kill fault kills the target processes running on the Linux machine
 - It checks the performance of the application or process running on the Linux machine.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 
 - Induces process kill on the target Linux machines.
 - Disrupts the application critical processes such as databases or message queues by killing their underlying processes or threads.
@@ -212,7 +225,8 @@ Linux service restart stops the target system services running in a Linux machin
 - It determines the performance and resilience of the application (or services) running on Linux machines.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 
 - Service restart determines the resilience of an application upon random halts.
 - Determines how efficiently an application recovers and restarts the services.
@@ -228,7 +242,8 @@ Linux service restart stops the target system services running in a Linux machin
 Linux time chaos injects chaos to change the time of the Linux machine.
 
 <accordion color="green">
-<summary>Use cases</summary>
+
+		<summary>Use cases</summary>
 
 - Induces time chaos to change the system time on the target Linux machines.
 - Determines the resiliency of the underlying application components when subjected to a change in the system time.

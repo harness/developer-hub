@@ -69,19 +69,19 @@ matrix:
 
 The `service` and `environment` are the dimensions of the matrix. Each matrix dimension consists of a user-specified tag with a comma-separated list of values.
 
-In a pipeline where you used the above matrix strategy, you could use the expression `<+matrix.service>` on the Service tab of the Deploy stage to call the `service` values.
+In a pipeline where you used the above matrix strategy, you could use the expression `\<+matrix.service\>` on the Service tab of the Deploy stage to call the `service` values.
 
 ![](./static/run-a-stage-or-step-multiple-times-using-a-matrix-40.png)
 
 ## Use runtime input for matrix values
 
-You can use [runtime input](../../variables-and-expressions/runtime-inputs.md) (`<+input>`) for values and entire matrix strategies.
+You can use [runtime input](../../variables-and-expressions/runtime-inputs.md) (`\<+input\>`) for values and entire matrix strategies.
 
 When you run the pipeline, you are prompted to provide the values (which you can provide as an array) or the entire strategy definition, depending on how you specified the runtime input.
 
 ### Use runtime input for one dimension
 
-To use runtime input for the values in a matrix dimension, enter `<+input>` in your pipeline YAML:
+To use runtime input for the values in a matrix dimension, enter `\<+input\>` in your pipeline YAML:
 
 ```yaml
 matrix:
@@ -231,7 +231,7 @@ pipeline:
 
 ### Use runtime input for the entire matrix strategy
 
-To require runtime input for an entire matrix strategy, use `matrix: <+input>`. You'll have to provide the entire matrix strategy when you run the pipeline.
+To require runtime input for an entire matrix strategy, use `matrix: \<+input\>`. You'll have to provide the entire matrix strategy when you run the pipeline.
 
 For example, you could use this if you need to input different dimensions, values, and exclusions at runtime.
 
@@ -304,7 +304,7 @@ pipeline:
 
 You can use expressions as values for matrix dimensions. You can also use expressions to extract values from elsewhere, such as from pipeline or stage variables.
 
-For example, the following pipeline uses a matrix strategy that loops over a series of Jira issues. The issue numbers are derived from the pipeline variable `jiraTickets`, which is populated at runtime (as indicated by it's value `<+input>`). The matrix strategy uses an expression with the split method to separate the individual issue numbers from the pipeline variable: `<+pipeline.variables.example>.split(',')`.
+For example, the following pipeline uses a matrix strategy that loops over a series of Jira issues. The issue numbers are derived from the pipeline variable `jiraTickets`, which is populated at runtime (as indicated by it's value `\<+input\>`). The matrix strategy uses an expression with the split method to separate the individual issue numbers from the pipeline variable: `\<+pipeline.variables.example\>.split(',')`.
 
 ```yaml
 pipeline:
@@ -378,7 +378,7 @@ For example:
         payload: [<+trigger.payload.user.username>, <+trigger.prNumber>]
 ```
 
-You can use `<+trigger.payload.PATH_IN_JSON>` to [reference any field in the trigger's JSON payload](/docs/platform/triggers/triggers-reference#referencing-payload-fields), such as `<+trigger.payload.pull_request.user.login>`.
+You can use `\<+trigger.payload.PATH_IN_JSON\>` to [reference any field in the trigger's JSON payload](/docs/platform/triggers/triggers-reference#referencing-payload-fields), such as `\<+trigger.payload.pull_request.user.login\>`.
 
 ## Use complex JSON for matrix values
 
@@ -435,4 +435,4 @@ pipeline:
 
 Escaping is required for some punctuation. Note the use of double quotes around the entire object.
 
-Also, when an expression is used in a JSON string, it must be wrapped in quotation marks, for example, `<+pipeline.variables.version>` in the above pipeline YAML.
+Also, when an expression is used in a JSON string, it must be wrapped in quotation marks, for example, `\<+pipeline.variables.version\>` in the above pipeline YAML.

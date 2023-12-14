@@ -13,7 +13,8 @@ With parallelism, you specify how you want Harness to divide the work for a step
 For general information about how parallelism and test splitting work, go to [Split tests (parallelism)](../speed-up-ci-test-pipelines-using-parallelism.md).
 
 <details>
-<summary>Example: Time saved by combining TI with test splitting</summary>
+
+		<summary>Example: Time saved by combining TI with test splitting</summary>
 
 Suppose you have a pipeline that runs 100 tests, and each test takes about one second to run. Here's how TI and parallelism can reduce your test times:
 
@@ -75,7 +76,7 @@ Class timing uses test times from previous runs to determine how to split the te
 
 ### Differentiate report names
 
-Modify the **Report Paths** (`reports.paths`) value to include a [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables), such as `<+strategy.iteration>`, to ensure there is a unique results file for each parallel run. For example:
+Modify the **Report Paths** (`reports.paths`) value to include a [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables), such as `\<+strategy.iteration\>`, to ensure there is a unique results file for each parallel run. For example:
 
 ```yaml
                        reports:
@@ -87,7 +88,7 @@ Modify the **Report Paths** (`reports.paths`) value to include a [Harness expres
 
 You can also use environment variables and expressions to differentiate parallel runs in build logs.
 
-1. Add two environment variables to the `step.spec`: `HARNESS_STAGE_INDEX: <+strategy.iteration>` and `HARNESS_STAGE_TOTAL: <+strategy.iterations>`.
+1. Add two environment variables to the `step.spec`: `HARNESS_STAGE_INDEX: \<+strategy.iteration\>` and `HARNESS_STAGE_TOTAL: \<+strategy.iterations\>`.
 2. Add a `preCommand` to echo the variables' values so you can easily see the values in build logs.
 
 ```yaml

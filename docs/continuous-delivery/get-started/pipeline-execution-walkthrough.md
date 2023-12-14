@@ -20,7 +20,8 @@ The pipeline consists of:
 <docimage path={require('./static/0c8d610885c229a7d1802482ded35c47693dcdc1f025341577999349964c8cc6.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 <details>
-<summary>Here's the YAML for the example pipeline:</summary>
+
+		<summary>Here's the YAML for the example pipeline:</summary>
 
 ```yaml
 pipeline:
@@ -181,7 +182,7 @@ Here's the process:
 
 #### Artifact configuration (optional)
 
-You can add an artifact to the service and use the artifact expression `image: <+artifacts.primary.image>` in your `values.yaml` file to fetch the image tag information and pass it into the manifest.
+You can add an artifact to the service and use the artifact expression `image: \<+artifacts.primary.image\>` in your `values.yaml` file to fetch the image tag information and pass it into the manifest.
 
 <docimage path={require('./static/adf1528b6db53170e2bef7b8e96dd55e4e3fe256f9895ce9952b81ab337c9518.png')} width="60%" height="60%" title="Click to view full size image" />  
 

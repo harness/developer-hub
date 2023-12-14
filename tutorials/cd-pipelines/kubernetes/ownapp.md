@@ -48,7 +48,7 @@ You can choose to proceed with the tutorial either by using the command-line int
 <TabItem value="GitOps Workflow">
 ```
 
-## Before you begin {#before-you-begin-gitops}
+## Before you begin \{#before-you-begin-gitops\}
 
 Verify that you have the following:
 
@@ -321,7 +321,8 @@ cd deploy-own-app/gitops/terraform
 terraform init
 ```
 <details open>
-<summary>What is a Terraform Provider?</summary>
+
+		<summary>What is a Terraform Provider?</summary>
 
 A Terraform Provider is a plugin that allows Terraform to define and manage resources using a particular software API. In this tutorial these resources will be Harness entities.
 
@@ -370,7 +371,8 @@ Never store your Harness API Key in a plain text configuration file or in versio
 ### Terraform module
 
 <details open>
-<summary>What is a Terraform module?</summary>
+
+		<summary>What is a Terraform module?</summary>
 
 A Terraform module is a collection of files that define the desired state to be enforced by Terraform. These files normally have the .tf extension.
 
@@ -393,7 +395,9 @@ resource "harness_platform_gitops_agent" "gitops_agent" {
 }
 ```
 
-If you have an *existing* Argo CD instance, change the <strong>type</strong> argument to <strong>CONNECTED_ARGO_PROVIDER</strong>. Otherwise leave as is.
+If you have an *existing* Argo CD instance, change the 
+		<strong>type</strong> argument to 
+		<strong>CONNECTED_ARGO_PROVIDER</strong>. Otherwise leave as is.
 
 2. If you’ve made changes to any configuration files, verify the syntax is still valid. 
 
@@ -484,7 +488,7 @@ You've just learned how to use **Harness GitOps** to deploy an application using
 <TabItem value="cli" label="CLI">
 ```
 
-## Before you begin {#before-you-begin-cli}
+## Before you begin \{#before-you-begin-cli\}
 
 :::info
 
@@ -714,7 +718,7 @@ If you plan to use your own Project, Organization, and custom names for Harness 
 </TabItem>
 <TabItem value="ui" label="UI">
 ```
-## Before you begin {#before-you-begin-ui}
+## Before you begin \{#before-you-begin-ui\}
 
 Verify that you have the following:
 
@@ -724,7 +728,7 @@ Verify that you have the following:
 3. **Install the [Helm CLI](https://helm.sh/docs/intro/install/)** in order to install the Harness Helm delegate.
 4. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository using the GitHub web interface to utilize the Harness resource YAMLs.
 
-## Getting Started with Harness CD {#getting-started-harness-cd-ui}
+## Getting Started with Harness CD \{#getting-started-harness-cd-ui\}
 ----------------------------------
 
 1. Log in to [Harness](https://app.harness.io/).

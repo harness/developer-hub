@@ -44,7 +44,8 @@ For details on AWS support in Harness, including tooling, limitations, and repos
 When you set up the Harness environment for your deployment, you must add a Harness AWS connector to the Harness environment Infrastructure Definition. Typically, the AWS connector uses the access and secret keys for an AWS IAM user (there are other options). The permissions added to the IAM user account must permit whatever AWS service changes you are performing in your SAM template.
 
 <details>
-<summary>Common SAM permissions</summary>
+
+		<summary>Common SAM permissions</summary>
 
 - **IAM role for SAM deployment:** You need an IAM role with the necessary permissions to deploy AWS SAM applications. This role should include permissions for interacting with AWS CloudFormation, AWS Lambda, Amazon API Gateway, and other AWS services your application relies on.
 - **CloudFormation permissions:** The IAM role should have permissions to create, update, and delete CloudFormation stacks. This includes permissions for creating and managing CloudFormation templates, stack resources, and stack policy.

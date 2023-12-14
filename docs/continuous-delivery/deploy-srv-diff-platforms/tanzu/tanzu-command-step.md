@@ -98,13 +98,13 @@ The format to reference the output variable can be one of the following:
 
 - Within the stage:
 
-  `<+execution.steps.[step_id].output.outputVariables.[output_variable_name]>`
+  `\<+execution.steps.[step_id].output.outputVariables.[output_variable_name]\>`
 - Anywhere in the pipeline:
   
-  `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].output.outputVariables.[output_variable_name]>`
+  `\<+pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].output.outputVariables.[output_variable_name]\>`
 - When step is inside a step group:
   
-  `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_group_Id].steps.stepId.build.[output_variable_name]`
+  `\<+pipeline.stages.[stage_Id].spec.execution.steps.[step_group_Id].steps.stepId.build.[output_variable_name]`
 
 To find the expression to reference your output variables, you can begin typing `<+pipeline.stages.[stage_Id].spec.execution.steps...` and Harness will autocomplete or you can find the step in the pipeline execution, and click its **Output** tab.
 
@@ -121,7 +121,7 @@ If you exit from the script (`exit 0`), Harness does not populate the output var
 If you need quotes around the Harness variable expressions in your script, use single quotes, like this:
 
 ```
-export EVENT_PAYLOAD='<+trigger.eventPayload>'
+export EVENT_PAYLOAD='<+trigger.eventPayload\>'
 ```
 
 If you use Harness variable expressions in comments in your script, Harness will still try to evaluate and render the variable expressions. Don't use variable expressions that Harness cannot evaluate. For example, expressions that will not be resolved until later in the stage.

@@ -162,7 +162,8 @@ With self-hosted build infrastructures, you can:
  * [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
 
 <details>
-<summary>YAML example: Save and restore cache steps</summary>
+
+		<summary>YAML example: Save and restore cache steps</summary>
 
 Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache from S3** steps.
 

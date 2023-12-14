@@ -81,7 +81,8 @@ CI build infrastructure pods can interact with servers using self-signed certifi
    :::
 
    <details>
-   <summary>Legacy: CI_MOUNT_VOLUMES</summary>
+   
+		<summary>Legacy: CI_MOUNT_VOLUMES</summary>
    
    Prior to the introduction of `DESTINATION_CA_PATH`, you used `ADDITIONAL_CERTS_PATH` and `CI_MOUNT_VOLUMES` to mount certs.
    

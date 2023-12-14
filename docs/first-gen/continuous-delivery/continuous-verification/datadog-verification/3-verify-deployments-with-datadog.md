@@ -68,7 +68,7 @@ For example, in Datadog, a Kubernetes deployment might use the tag **pod\_name**
 
 Find the where the same name is identified in the deployment environment, and use that path as the expression.
 
-For AWS EC2 hostnames, use the expression `${instance.hostName`}.For example, locate the pod name in the Datadog **Event Stream** page:
+For AWS EC2 hostnames, use the expression `${instance.hostName`\}.For example, locate the pod name in the Datadog **Event Stream** page:
 
 1. In **Datadog**, click **Events**.
 2. Locate an event using a search query. For more information, see [Event Stream](https://docs.datadoghq.com/dashboards/widgets/event_stream/) from Datadog.
@@ -81,7 +81,7 @@ For AWS EC2 hostnames, use the expression `${instance.hostName`}.For example, lo
    [![](./static/3-verify-deployments-with-datadog-27.png)](./static/3-verify-deployments-with-datadog-27.png)
    
    
-5. Next, look in the JSON for the host/container/pod in the deployment environment and identify the label containing the same hostname. The path to that label is what the expression should be in **Expression for Host/Container name**. The default expression is **${host.hostName}**. In most cases, this expression will work.
+5. Next, look in the JSON for the host/container/pod in the deployment environment and identify the label containing the same hostname. The path to that label is what the expression should be in **Expression for Host/Container name**. The default expression is **$\{host.hostName\}**. In most cases, this expression will work.
 
 ### Step 6: Analysis Time duration
 

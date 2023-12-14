@@ -28,9 +28,9 @@ Let's take a look at the below example:
 The output variable can be use in one of the following:
 
 * Within the stage:
-	+ `<+execution.steps.[step_id].output.outputVariables.[output_variable_name]>`
+	+ `\<+execution.steps.[step_id].output.outputVariables.[output_variable_name]\>`
 * Anywhere in the pipeline:
-	+ `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].output.outputVariables.[output_variable_name]>`
+	+ `\<+pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].output.outputVariables.[output_variable_name]\>`
 * When step is inside a step group:
 	+ `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_group_Id].steps.stepId.build.[output_variable_name]`  
 

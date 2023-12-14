@@ -133,7 +133,7 @@ Procedure:
    
 3. In **Duration**, choose a duration. Harness uses the data points within this duration for analysis. For instance, if you select 10 minutes, Harness analyzes the first 10 minutes of your log or APM data. It is recommended to choose 10 minutes for logging providers and 15 minutes for APM and infrastructure providers. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
    
-4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/variables-and-expressions/harness-variables.md).
+4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `\<+serviceConfig.artifacts.primary.tag\>` to reference this primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/variables-and-expressions/harness-variables.md).
    
 5. Select **Fail On No Analysis** if you want the pipeline to fail if there is no data from the health source. This ensures that the deployment fails when there is no data for Harness to analyze.
 
@@ -187,7 +187,8 @@ To add a health source:
          The selected connector appears in the **Select Connector** dropdown. The **Grafana Loki Logs** option is selected by default in the **Select Feature** field.
          
       <details>
-      <summary><b>Follow these steps to create a new Grafana Loki connector.</b></summary>
+      
+		<summary><b>Follow these steps to create a new Grafana Loki connector.</b></summary>
 
          1.	In the Create or Select an Existing Connector dialog, select **+ New Connector**.
          
@@ -250,7 +251,8 @@ To add a health source:
    Sample logs are displayed that help you verify if the query is correct.
 
    <details>
-   <summary><b>Sample log query</b></summary>
+   
+		<summary><b>Sample log query</b></summary>
 
    Query for showing data from all filenames, except for syslog: `{filename=~".+",filename!="/var/log/syslog"}`
 

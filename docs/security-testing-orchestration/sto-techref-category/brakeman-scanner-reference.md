@@ -47,7 +47,8 @@ The recommended workflow is to add an Brakeman step to a Security Tests or CI Bu
 
 
 <details>
-    <summary>Scanner Template</summary>
+    
+		<summary>Scanner Template</summary>
 
 ![](static/step-palette-00.png) 
 

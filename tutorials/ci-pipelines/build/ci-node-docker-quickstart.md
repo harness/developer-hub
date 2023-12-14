@@ -134,7 +134,8 @@ If your pipeline uses [yarn](https://yarnpkg.com/), the `key` value must referen
 :::
 
 <details>
-<summary>YAML example: Save and restore cache steps</summary>
+
+		<summary>YAML example: Save and restore cache steps</summary>
 
 Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache from S3** steps.
 
@@ -262,7 +263,8 @@ Node is pre-installed on Hosted Cloud runners. For details about all available t
 If your application requires a specific Node version, add a **Run** step to install it.
 
 <details>
-<summary>Install one Node version</summary>
+
+		<summary>Install one Node version</summary>
 
 ```yaml
               - step:
@@ -282,7 +284,8 @@ If your application requires a specific Node version, add a **Run** step to inst
 </details>
 
 <details>
-<summary>Install multiple Node versions</summary>
+
+		<summary>Install multiple Node versions</summary>
 
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
@@ -322,7 +325,8 @@ If your application requires a specific Node version, add a **Run** step to inst
 Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in your steps. There is no need for a separate install step when using Docker.
 
 <details>
-<summary>Use a specific Node version</summary>
+
+		<summary>Use a specific Node version</summary>
 
 ```yaml
               - step:
@@ -340,7 +344,8 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
 </details>
 
 <details>
-<summary>Use multiple node versions</summary>
+
+		<summary>Use multiple node versions</summary>
 
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
@@ -387,7 +392,8 @@ This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integra
 If you copy this example, replace the placeholder values with appropriate values for your Harness project, connector IDs, account/user names, and repo names.
 
 <details>
-<summary>Pipeline YAML</summary>
+
+		<summary>Pipeline YAML</summary>
 
 ```yaml
 pipeline:

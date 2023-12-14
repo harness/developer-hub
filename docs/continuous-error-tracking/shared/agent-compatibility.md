@@ -42,7 +42,8 @@ The CET Agent can be installed on a variety of operating systems. The Agent requ
 The CET Agent supports Java as well as other languages that run on top of the Java Virtual Machine (JVM).
 
 <details>
-<summary><b>Supported languages</b></summary>
+
+		<summary><b>Supported languages</b></summary>
 
 | **Language ** | **Minimum Version** | **Comments** |
 | --- | --- | --- |
@@ -59,7 +60,8 @@ Harness recommends using the source attach when using non-Java languages with th
 </details>
 
 <details>
-<summary><b>Oracle HotSpot VM</b></summary>
+
+		<summary><b>Oracle HotSpot VM</b></summary>
 
 
 | **Java Version** | **LTS** | **Released on** | **End of Life** | **Comments** |
@@ -84,7 +86,8 @@ Make sure to include the following VM flags when attaching an Error Tracking Age
 
 
 <details>
-<summary><b>OpenJDK</b></summary>
+
+		<summary><b>OpenJDK</b></summary>
 
 | **Java Version** | **LTS** | **Released on** | **End of Life** | **Comments** |
 | --- | --- | --- |---|---|
@@ -115,7 +118,8 @@ Make sure to include the following VM flags when attaching an Error Tracking Age
 
 
 <details>
-<summary><b>IBM</b></summary>
+
+		<summary><b>IBM</b></summary>
 
 The IBM JVM(J9) is supported only on AIX., and include the following:
 
@@ -135,7 +139,8 @@ When attaching the CET Agent to an IBM JVM, include the VM flag `-Xshareclasses:
 
 
 <details>
-<summary><b>Supported application servers</b></summary>
+
+		<summary><b>Supported application servers</b></summary>
 
 | **Name** | **Version** |
 |--|--|
@@ -157,7 +162,8 @@ When attaching the CET Agent to an IBM JVM, include the VM flag `-Xshareclasses:
 
 
 <details>
-<summary><b>Interaction of CET with other Java Agents</b></summary>
+
+		<summary><b>Interaction of CET with other Java Agents</b></summary>
 
 CET performs isolated machine code instrumentation, which ensures that the CET Agent doesn't interfere with the bytecode of other agents. From CET perspective, all code is treated as system code.
 

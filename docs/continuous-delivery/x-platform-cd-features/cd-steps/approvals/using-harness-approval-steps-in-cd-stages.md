@@ -148,13 +148,13 @@ For example, if there were three approvers and you added a Shell Script step tha
 
 You can reference input variables using the `approverInputs` expression:
 
-`<+pipeline.stages.[stage_name].spec.execution.steps.[step_name].output.approverInputs.[variable_name]>`
+`\<+pipeline.stages.[stage_name].spec.execution.steps.[step_name].output.approverInputs.[variable_name]\>`
 
 These variables can serve as inputs to later stages of the same pipeline, where they support conditional execution or user overrides. 
 
 For example, in a subsequent step's **Conditional Execution** settings, you could use an expression that only runs the step if the expression evaluates to 1.
 
-`<+pipeline.stages.Shell_Script.spec.execution.steps.Harness_Approval_Step.output.approverInputs.foo> == 1`
+`\<+pipeline.stages.Shell_Script.spec.execution.steps.Harness_Approval_Step.output.approverInputs.foo\> == 1`
 
 
 ## Advanced settings
@@ -169,7 +169,7 @@ In **Advanced**, you can use the following options:
 
 ## Approval variables
 
-After an approval is granted, [<+approval>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want the pipeline to generate notifications about the approval.
+After an approval is granted, [\<+approval\>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want the pipeline to generate notifications about the approval.
 
 ## See also
 

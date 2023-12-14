@@ -92,7 +92,8 @@ You can manipulate the deployment behavior via the new `deploymentConfiguration`
 The following samples demonstrate the ECS Task Definition parameters supported in NextGen.
 
 <details>
-<summary>Sample task definition and supported parameters</summary>
+
+		<summary>Sample task definition and supported parameters</summary>
 
 Here is a YAML example highlighting the changes. Harness supports standard AWS ECS YAML and JSON.
 
@@ -162,7 +163,8 @@ volumes: []
 </details>
 
 <details>
-<summary>Sample task definition and supported parameters</summary>
+
+		<summary>Sample task definition and supported parameters</summary>
 
 Here is a JSON example highlighting the changes. Harness supports standard AWS ECS YAML and JSON.
 
@@ -241,7 +243,8 @@ Here is a JSON example highlighting the changes. Harness supports standard AWS E
 The following samples demonstrate the ECS service definition parameters supported in NextGen.
 
 <details>
-<summary>Sample service definition and supported parameters</summary>
+
+		<summary>Sample service definition and supported parameters</summary>
 
 Here is a YAML example highlighting the changes. Harness supports standard AWS ECS YAML and JSON.
 
@@ -272,7 +275,8 @@ loadBalancers:
 </details>
 
 <details>
-<summary>Sample service definition and supported parameters</summary>
+
+		<summary>Sample service definition and supported parameters</summary>
 
 Here is a JSON example highlighting the changes. Harness supports standard AWS ECS YAML and JSON.
 
@@ -352,13 +356,13 @@ If you want to use this feature when you create a new entity like a step, click 
 
 Although you can use the Harness [File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) for local file storage in your account, for production we recommend storing ECS manifests in remote stores like Github, Bitbucket, AWS S3, etc. Remote stores support version control on files for tracking and reverting changes.
 
-Harness recommends using Harness service variables to template ECS service parameters. For example, you can refer to service variables in your manifests using variable expressions such as `<+serviceVariables.serviceName>`. For more information, go to [Built-in and Custom Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables).
+Harness recommends using Harness service variables to template ECS service parameters. For example, you can refer to service variables in your manifests using variable expressions such as `\<+serviceVariables.serviceName\>`. For more information, go to [Built-in and Custom Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables).
 
 ### ECS environment configuration
 
 If Harness service **Configuration Parameters** need to be overridden based on Infrastructure, Harness recommends using Harness service variables and overriding them at the environment level.
 
-For example, if the AWS Security Group in the ECS service definition needs to be overridden for a Harness environment, we recommend creating a service variable `securityGroup` in the Harness service and using it in the ECS service definition Manifest as `<+serviceVariables.securityGroup>`.
+For example, if the AWS Security Group in the ECS service definition needs to be overridden for a Harness environment, we recommend creating a service variable `securityGroup` in the Harness service and using it in the ECS service definition Manifest as `\<+serviceVariables.securityGroup\>`.
 
 The variable `securityGroup` value can be overridden at the environment level. For more information, go to [Services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview). 
 

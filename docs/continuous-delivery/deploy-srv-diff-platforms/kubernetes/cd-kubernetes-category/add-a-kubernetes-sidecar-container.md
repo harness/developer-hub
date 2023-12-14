@@ -16,7 +16,7 @@ For details on what workloads you can deploy, see [What Can I Deploy in Kubernet
 
 In the Harness Service, in addition to the manifest(s) for the primary artifact used by Harness, you simply add manifests for however many sidecar containers you need. Or you can add one manifest that includes the specs for both primary and sidecar workloads.
 
-The containers in the manifest can be hardcoded or you can add artifact streams to Harness as Artifacts and reference them in your manifests using the `<+artifacts.sidecars.[sidecar_identifier].imagePath>` expression.
+The containers in the manifest can be hardcoded or you can add artifact streams to Harness as Artifacts and reference them in your manifests using the `\<+artifacts.sidecars.[sidecar_identifier].imagePath\>` expression.
 
 This topic provides an example of a simple sidecar deployment.
 
@@ -31,7 +31,7 @@ This topic provides an example of a simple sidecar deployment.
 
 You can hardcode the image location in your sidecar manifests or use the the **Artifacts** settings in the Harness Service Definition to connect Harness to an artifact stream (for example, a Docker registry).
 
-When you use **Artifacts**, your sidecar manifest refers to the sidecar artifact you added in **Artifacts** using the expression `<+artifacts.sidecars.[sidecar_identifier].imagePath>`.
+When you use **Artifacts**, your sidecar manifest refers to the sidecar artifact you added in **Artifacts** using the expression `\<+artifacts.sidecars.[sidecar_identifier].imagePath\>`.
 
 The `[sidecar_identifier]` path is the **Sidecar Identifier** you specified when you added the sidecar artifact.
 
@@ -48,18 +48,18 @@ Once your artifact is added, you can see the Id in **Artifacts**. For example, t
    The **Docker Registry** settings appear.
 5. Select a [Docker Registry Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) or create a new one.
 6. Click **Continue**.
-7. In **Sidecar Identifier**, give a name to identify this artifact. As mentioned earlier, this is the name you will use to refer to this artifact in your manifest using the expression `<+artifacts.sidecars.[sidecar_identifier].imagePath>`.
-8. In **Image path**, the name of the artifact you want to deploy, such as **library/nginx**. You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) (`<+input>`) or Harness variable expression.
-9. In **Tag**, add the Docker tag of the image you want to deploy. If you leave this as `<+input>` you are prompted for the tag at runtime. Harness pulls the available tags, and you simply select one.
+7. In **Sidecar Identifier**, give a name to identify this artifact. As mentioned earlier, this is the name you will use to refer to this artifact in your manifest using the expression `\<+artifacts.sidecars.[sidecar_identifier].imagePath\>`.
+8. In **Image path**, the name of the artifact you want to deploy, such as **library/nginx**. You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) (`\<+input\>`) or Harness variable expression.
+9. In **Tag**, add the Docker tag of the image you want to deploy. If you leave this as `\<+input\>` you are prompted for the tag at runtime. Harness pulls the available tags, and you simply select one.
 10. Click **Save**.
 
     The artifact is added to **Artifacts**.
 
 ## Prepare the sidecar manifest
 
-If you are using Harness **Artifacts**, in the deployment manifest or values.yaml file for this deployment, you reference this artifact using the expression `<+artifacts.sidecars.[sidecar_identifier].imagePath>`.
+If you are using Harness **Artifacts**, in the deployment manifest or values.yaml file for this deployment, you reference this artifact using the expression `\<+artifacts.sidecars.[sidecar_identifier].imagePath\>`.
 
-Using the earlier example of the Id **sidecar**, the reference is `<+artifacts.sidecars.sidecar.imagePath>`. Here's the values.yaml:
+Using the earlier example of the Id **sidecar**, the reference is `\<+artifacts.sidecars.sidecar.imagePath\>`. Here's the values.yaml:
 
 
 ```yaml
@@ -76,11 +76,11 @@ namespace: <+infra.namespace>
 
 Other sidecar expressions are:
 
-* `<+artifacts.sidecars.sidecar.imagePullSecret>`
-* `<+artifacts.sidecars.[sidecar_identifier].imagePath>`
-* `<+artifacts.sidecars.[sidecar_identifier].type>`
-* `<+artifacts.sidecars.[sidecar_identifier].tag>`
-* `<+artifacts.sidecars.[sidecar_identifier].connectorRef>`
+* `\<+artifacts.sidecars.sidecar.imagePullSecret\>`
+* `\<+artifacts.sidecars.[sidecar_identifier].imagePath\>`
+* `\<+artifacts.sidecars.[sidecar_identifier].type\>`
+* `\<+artifacts.sidecars.[sidecar_identifier].tag\>`
+* `\<+artifacts.sidecars.[sidecar_identifier].connectorRef\>`
 
 Now that you have your sidecar manifests set up, you can add them to Harness.
 
@@ -94,8 +94,8 @@ Next, you add one or separate **Values YAML** files for the primary and sidecar 
 
 If you are using Harness **Artifacts**, you reference Primary and Sidecar **Artifacts** using different expressions:
 
-* **Primary:** `<+artifact.image>`
-* **Sidecar:** `<+artifacts.sidecars.[sidecar_identifier].imagePath>`
+* **Primary:** `\<+artifact.image\>`
+* **Sidecar:** `\<+artifacts.sidecars.[sidecar_identifier].imagePath\>`
 
 For example, here is a single values.yaml for one primary artifact and two sidecars:
 

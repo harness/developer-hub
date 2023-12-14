@@ -41,7 +41,8 @@ Harness supports the following:
 Here's a high-level summary of the setup steps.
 
 <details>
-<summary>Harness setup summary</summary>
+
+		<summary>Harness setup summary</summary>
 
 1. Create a Harness CD pipeline.
 2. Add a Deploy stage.
@@ -75,7 +76,8 @@ The permissions listed below work for both 1st and 2nd gen.
 When you set up a Harness GCP connector to connect Harness with your GCP account, the GCP IAM user or service account must have the appropriate permissions assigned to their account. 
 
 <details>
-<summary>Cloud Functions minimum permissions</summary>
+
+		<summary>Cloud Functions minimum permissions</summary>
 
 Cloud Functions supports the basic roles of **Editor**, **Admin**, **Developer**, and **Viewer**. For details, go to [Cloud Functions IAM Roles](https://cloud.google.com/functions/docs/reference/iam/roles).
 
@@ -134,7 +136,8 @@ The Harness Cloud Functions service the following:
   - You add a connection to the function ZIP file in Google Cloud Storage (1st and 2nd gen) or Google Cloud Source (1st gen).
 
 <details>
-<summary>How the Function Definition and Artifact work together</summary>
+
+		<summary>How the Function Definition and Artifact work together</summary>
 
 The function manifest YAML in **Function Definition** and the function zip file in **Artifacts** work together to define and deploy a Google Cloud Function.
 
@@ -186,7 +189,8 @@ In `httpsTrigger`, you do not need to specify `url`.
 Here are some Function Definition examples.
 
 <details>
-<summary>Sample Google Function definition included in Harness</summary>
+
+		<summary>Sample Google Function definition included in Harness</summary>
 
 ```yaml
 # The following are the minimum set of parameters required to create a Google Cloud Function.
@@ -204,7 +208,8 @@ function_id: <functionName>
 </details>
 
 <details>
-<summary>Example 1: A basic Cloud Function that triggers on an HTTP request</summary>
+
+		<summary>Example 1: A basic Cloud Function that triggers on an HTTP request</summary>
 
 ```yaml
 function:
@@ -220,7 +225,8 @@ function_id: my-http-function
 </details>
 
 <details>
-<summary>Example 2: A Cloud Function that uses environment variables</summary>
+
+		<summary>Example 2: A Cloud Function that uses environment variables</summary>
 
 ```yaml
 function:
@@ -238,7 +244,8 @@ function_id: my-env-function
 </details>
 
 <details>
-<summary>Example 3: A Cloud Function that uses Cloud Storage as a trigger</summary>
+
+		<summary>Example 3: A Cloud Function that uses Cloud Storage as a trigger</summary>
 
 ```yaml
 function:
@@ -259,7 +266,8 @@ function_id: my-storage-function
  
  
 <details>
-<summary>Example 4: A Cloud Function that uses service config and environment variables</summary>
+
+		<summary>Example 4: A Cloud Function that uses service config and environment variables</summary>
 
 ```yaml
 function:
@@ -277,7 +285,8 @@ function_id: canaryDemo-<+env.name>
 </details>  
 
 <details>
-<summary>Example 5: A Cloud Function that uses secret environment variables</summary>
+
+		<summary>Example 5: A Cloud Function that uses secret environment variables</summary>
 
 This example uses the `secret_environment_variables` parameter. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. For more information, go to [SecretEnvVar](https://cloud.google.com/functions/docs/reference/rest/v2/projects.locations.functions#secretenvvar) in Google docs.
 
@@ -464,7 +473,7 @@ In the **Variables** section of the service, you can add service variables and t
 
 For example, you could create a variable named **entryPoint** for the manifest `entryPoint` setting and set its value as a fixed value, runtime input, or expression.
 
-Next, in your manifest YAML file, you could reference the variable like this (see <+serviceVariables.entryPoint>):
+Next, in your manifest YAML file, you could reference the variable like this (see \<+serviceVariables.entryPoint\>):
 
 Now, when you add that service to a pipeline, you will be prompted to enter a value for this variable in the pipeline **Services** tab. The value you provide is then used as the `entryPoint` in your manifest YAML.
 
@@ -837,7 +846,7 @@ output "region_name" {
 ```
 
 
-In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.project_name>`.
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `\<+provisioner.OUTPUT_NAME\>`, such as `\<+provisioner.project_name\>`.
 
 <figure>
 
@@ -859,7 +868,8 @@ Harness ASG deployments support the following [deployment strategies](/docs/cont
 The basic deployment execution strategy uses the **Deploy Cloud Function** step. The Deploy Cloud Function step deploys the new function version and routes 100% of traffic over to the new function version.
 
 <details>
-<summary>YAML example of Deploy Cloud Function step</summary>
+
+		<summary>YAML example of Deploy Cloud Function step</summary>
 
 ```yaml
           execution:
@@ -887,7 +897,8 @@ The step group consists of:
 
 
 <details>
-<summary>YAML example of canary deployment step group</summary>
+
+		<summary>YAML example of canary deployment step group</summary>
 
 ```yaml
           execution:
@@ -933,7 +944,8 @@ You can also route traffic incrementally using multiple Cloud Function Traffic S
 
 
 <details>
-<summary>YAML example of blue green deployment step group</summary>
+
+		<summary>YAML example of blue green deployment step group</summary>
 
 ```yaml
           execution:

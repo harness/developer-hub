@@ -29,7 +29,8 @@ You need to perform the following tasks to set up CCM for AWS:
    
 <details>
 
-<summary> Policy to set up programmatic user access </summary>
+
+		<summary> Policy to set up programmatic user access </summary>
 
 ```
 {
@@ -254,7 +255,8 @@ PrincipalBilling:
 
 
 <details>
-<summary>YAML template</summary>
+
+		<summary>YAML template</summary>
 
 
 ```
@@ -603,7 +605,8 @@ cd main/src/harness
 
 
 <details>
-<summary>Override file changes for a connected environment</summary>
+
+		<summary>Override file changes for a connected environment</summary>
 
 ```
 global:
@@ -626,7 +629,8 @@ ccm:
 </details>
 
 <details>
-<summary>Override file changes for an air-gapped environment</summary>
+
+		<summary>Override file changes for an air-gapped environment</summary>
 
 CCM leverages AWS APIs that require connectivity from the isolated (air-gapped) instance. To grant access to these AWS APIs, establish VPC endpoints for the respective AWS services. For services lacking VPC endpoints, use a proxy to facilitate access.
 
@@ -747,7 +751,8 @@ AWS_TEMPLATE_LINK: <AWS_TEMPLATE_LINK> [AWS Setup - Create S3 buckets step - Use
 CE_AWS_TEMPLATE_URL: <CE_AWS_TEMPLATE_URL> [AWS Setup - Create S3 buckets step - Use c
 ```
 <details>
-<summary>Config file</summary>
+
+		<summary>Config file</summary>
 
 
 ```

@@ -54,7 +54,7 @@ To add an Instana verification step to your Workflow:
     * **Expression for Host/Container name** -- The expression entered here should resolve to a host/container name in your deployment environment. By default, the expression is `${instance.host.hostName}`.
       For most use cases, you can leave this field empty, to apply the default. 
       
-      However, if you want to add a prefix or suffix, enter an expression as outlined here.For AWS EC2 hostnames, use the expression `${instance.hostName`}.If you begin typing an expression into the field, the field provides expression assistance. For PCF, you might enter an expression like:
+      However, if you want to add a prefix or suffix, enter an expression as outlined here.For AWS EC2 hostnames, use the expression `${instance.hostName`\}.If you begin typing an expression into the field, the field provides expression assistance. For PCF, you might enter an expression like:
       ```
       ${host.pcfElement.displayName}-${host.pcfElement.instanceIndex}
       ```

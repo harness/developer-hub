@@ -77,9 +77,9 @@ Step group variables are custom variables that you can add and refer in your pip
 
 Variables of type string, secret, or number can be added in step group. Their values can be fixed value, runtime input, or expression.
 
-You can refer step group variables within the step group using the expression, `<+execution.steps.[step group id].variables.[variable name]>`.
+You can refer step group variables within the step group using the expression, `\<+execution.steps.[step group id].variables.[variable name]\>`.
 
-You can refer step group variables outside the step group using the expression, `<+pipeline.stages.[stage Id].spec.execution.steps.[step group id].variables.[variable name]>`.
+You can refer step group variables outside the step group using the expression, `\<+pipeline.stages.[stage Id].spec.execution.steps.[step group id].variables.[variable name]\>`.
 
 :::info
 
@@ -126,15 +126,15 @@ You reference steps in step groups using the step group Id.
 
 The FQN format is:
 
-`<+pipeline.stages.[stage Id].spec.execution.steps.[step group Id].steps.[step Id].[step setting name]>`
+`\<+pipeline.stages.[stage Id].spec.execution.steps.[step group Id].steps.[step Id].[step setting name]\>`
 
 For example, to reference the URL setting in an HTTP step in a step group with the Id `Group1`, the FQN would be:
 
-`<+pipeline.stages.HTTP.spec.execution.steps.Group1.steps.OPTIONS.spec.url>`
+`\<+pipeline.stages.HTTP.spec.execution.steps.Group1.steps.OPTIONS.spec.url\>`
 
 ## Override service variables in step groups
 
-You can customize and override service variables during the execution of a step group. This provides significant flexibility and control over your pipelines. The expression `<+serviceVariableOverrides.VARIABLE_NAME>`overrides the original value of `VARIABLE_NAME`. You can use this expression in values YAML files and other parts of the pipeline where variables are used.  
+You can customize and override service variables during the execution of a step group. This provides significant flexibility and control over your pipelines. The expression `\<+serviceVariableOverrides.VARIABLE_NAME\>`overrides the original value of `VARIABLE_NAME`. You can use this expression in values YAML files and other parts of the pipeline where variables are used.  
 
 :::note Important notes
 - An overridden value is available only within the scope of the step group execution. In cases where a child group is included in a parent group, the child group override takes precedence. 
@@ -148,7 +148,8 @@ You can customize and override service variables during the execution of a step 
 
 - Step group overrides are not recommended for artifacts and other objects fetched in the **Service** section of a pipeline stage. The one exception is scripts in [custom remote manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/), because they can also be used during the **Execution** section of a pipeline stage.
 
-<details><summary>Pipeline example: overriding variables in step groups</summary>
+<details>
+		<summary>Pipeline example: overriding variables in step groups</summary>
 
 The following pipeline illustrates how to override service variables. The service definition has two defined variables, `svar1` and `svar2`. The pipeline overrides these variables as follows:
 

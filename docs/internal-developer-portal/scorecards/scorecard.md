@@ -19,7 +19,8 @@ Scorecards play a pivotal role in ensuring software components are developed and
 <docimage path={require('./static/scorecard.png')}/>
 
 <details>
-<summary>Purpose & Concept of Scorecards</summary>
+
+		<summary>Purpose & Concept of Scorecards</summary>
 
 - **Measure Software Maturity**: Evaluate the robustness and reliability of software components.
 - **Assess Best Practices**: Ensure software adheres to organizational and industry standards.

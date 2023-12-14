@@ -30,7 +30,8 @@ The Continuous Integration Administrator exam tests your knowledge and skills of
 ## Exam Objectives 
 
 <details>
-<summary>List of Objectives</summary>
+
+		<summary>List of Objectives</summary>
 
 The following is a detailed list of exam objectives:
 

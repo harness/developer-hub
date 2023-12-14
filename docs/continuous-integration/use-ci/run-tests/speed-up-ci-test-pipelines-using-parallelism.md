@@ -27,7 +27,8 @@ When you [run tests in Harness CI](./run-tests-in-ci.md), you use **Run** and **
 4. [Run the pipeline and inspect the test results.](#logs-and-results)
 
 <details>
-<summary>Learn more about test splitting and parallelism</summary>
+
+		<summary>Learn more about test splitting and parallelism</summary>
 
 Most CI pipelines are set up to run tests for every new commit. By default, tests run sequentially. If there are a lot of tests to run, developers might have to wait longer than necessary for test results. Similarly, if there are frequent commits, your builds might start to queue due to [concurrency limits](/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence).
 
@@ -92,8 +93,8 @@ This example uses [Harness Cloud build infrastructure](../set-up-build-infrastru
                     maxConcurrency: 2 ## Optional. This setting limits the number of workloads that can run at once.
                   spec:
                     envVariables: ## These environment variables are used in the 'command' to get the index value for each parallel instance and the total number of parallel instances.
-                      HARNESS_NODE_INDEX: <+strategy.iteration>
-                      HARNESS_NODE_TOTAL: <+strategy.iterations>
+                      HARNESS_NODE_INDEX: \<+strategy.iteration\>
+                      HARNESS_NODE_TOTAL: \<+strategy.iterations\>
                     shell: Sh
                     command: |- ## Split tests commands are included alongside the regular test commands.
                       # Install dependencies.
@@ -101,18 +102,18 @@ This example uses [Harness Cloud build infrastructure](../set-up-build-infrastru
 
                       # Call split_tests, define splitting strategy, and generate the list of test files.
                       FILES=`./split_tests --glob "**/test_*.py" --split-by file_timing \
-                         --split-index ${HARNESS_NODE_INDEX} \
-                         --split-total ${HARNESS_NODE_TOTAL}`
+                         --split-index $\{HARNESS_NODE_INDEX\} \
+                         --split-total $\{HARNESS_NODE_TOTAL\}`
                       echo $FILES
 
                       # Use the test files list as input for pytest and produce results in JUnit XML format.
-                      pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES
+                      pytest -v --junitxml="result_\<+strategy.iteration\>.xml" $FILES
 
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - "**/result_<+strategy.iteration>.xml" ## Using the expression '<+strategy.iteration>' in the file name ensures that the results of parallel runs don't overwrite each other.
+                          - "**/result_\<+strategy.iteration\>.xml" ## Using the expression '\<+strategy.iteration\>' in the file name ensures that the results of parallel runs don't overwrite each other.
 ```
 
 ```mdx-code-block
@@ -141,8 +142,8 @@ This example uses a [Kubernetes cluster build infrastructure](/docs/category/set
                     maxConcurrency: 2 ## Optional. This setting limits the number of workloads that can run at once.
                   spec:
                     envVariables: ## These environment variables are used in the 'command' to get the index value for each parallel instance and the total number of parallel instances.
-                      HARNESS_NODE_INDEX: <+strategy.iteration>
-                      HARNESS_NODE_TOTAL: <+strategy.iterations>
+                      HARNESS_NODE_INDEX: \<+strategy.iteration\>
+                      HARNESS_NODE_TOTAL: \<+strategy.iterations\>
                     connectorRef: YOUR_DOCKER_CONNECTOR_ID ## Specify your Harness Docker connector ID.
                     image: python:latest ## Specify an image with your test runner's binary.
                     shell: Sh
@@ -152,18 +153,18 @@ This example uses a [Kubernetes cluster build infrastructure](/docs/category/set
 
                       # Call split_tests, define splitting strategy, and generate the list of test files.
                       FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing \
-                         --split-index ${HARNESS_NODE_INDEX} \
-                         --split-total ${HARNESS_NODE_TOTAL}`
+                         --split-index $\{HARNESS_NODE_INDEX\} \
+                         --split-total $\{HARNESS_NODE_TOTAL\}`
                       echo $FILES
 
                       # Use the test files list as input for pytest and produce results in JUnit XML format.
-                      pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES
+                      pytest -v --junitxml="result_\<+strategy.iteration\>.xml" $FILES
 
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - "**/result_<+strategy.iteration>.xml" ## Using the expression '<+strategy.iteration>' in the file name ensures that the results of parallel runs don't overwrite each other.
+                          - "**/result_\<+strategy.iteration\>.xml" ## Using the expression '\<+strategy.iteration\>' in the file name ensures that the results of parallel runs don't overwrite each other.
           infrastructure:
             type: KubernetesDirect
             spec:
@@ -184,7 +185,8 @@ This example uses a [Kubernetes cluster build infrastructure](/docs/category/set
 In the context of test splitting, the `parallelism` strategy defines the number of workloads into which tests can be divided. Each parallel instance (or workload) is a duplicate of the step or stage where you've defined a parallelism strategy, but each instance runs different tests according to the [test splitting strategy](#define-a-test-splitting-strategy).
 
 <details>
-<summary>Learn more about parallel workloads</summary>
+
+		<summary>Learn more about parallel workloads</summary>
 
 To demonstrate how tests are split into concurrent (parallel) workloads, assume that you use the `test_count` splitting strategy to divide 20 tests into four workloads. To tell Harness to create four workloads, you would set your parallelism strategy to `parallelism: 4`. Then use the `test_count` splitting strategy in your **Run** step's commands. When the pipeline runs, `test_count` uses simple division to split the 20 tests into four workloads; therefore, each parallel instance runs five different tests.
 
@@ -225,8 +227,8 @@ Define the parallelism strategy on either the step or stage where your tests run
 
 5. Add the following environment variables to the same step or stage where you defined the parallelism strategy:
 
-   * `HARNESS_NODE_TOTAL: <+strategy.iterations>` - This variable specifies the total number of parallel instances.
-   * `HARNESS_NODE_INDEX: <+strategy.iteration>` - This variable specifies the index value of the currently-running parallel instance. Parallel instances are zero-indexed, so this value ranges from `0` to `parallelism-1`.
+   * `HARNESS_NODE_TOTAL: \<+strategy.iterations\>` - This variable specifies the total number of parallel instances.
+   * `HARNESS_NODE_INDEX: \<+strategy.iteration\>` - This variable specifies the index value of the currently-running parallel instance. Parallel instances are zero-indexed, so this value ranges from `0` to `parallelism-1`.
 
    Stage variables are declared on the **Overview** tab under **Advanced**. Step environment variables are declared in the step settings under **Optional Configuration**.
 
@@ -234,8 +236,8 @@ Define the parallelism strategy on either the step or stage where your tests run
 
    ```yaml
    FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing \
-      --split-index ${HARNESS_NODE_INDEX} \
-      --split-total ${HARNESS_NODE_TOTAL}`
+      --split-index $\{HARNESS_NODE_INDEX\} \
+      --split-total $\{HARNESS_NODE_TOTAL\}`
    echo $FILES
    ```
 
@@ -268,8 +270,8 @@ Define the parallelism strategy on either the step or stage where your tests run
 
 2. Add the following environment variables to the same step or stage where you defined the parallelism strategy:
 
-   * `HARNESS_NODE_TOTAL: <+strategy.iterations>` - This variable specifies the total number of parallel instances.
-   * `HARNESS_NODE_INDEX: <+strategy.iteration>` - This variable specifies the index value of the currently-running parallel instance. Parallel instances are zero-indexed, so this value ranges from `0` to `parallelism-1`.
+   * `HARNESS_NODE_TOTAL: \<+strategy.iterations\>` - This variable specifies the total number of parallel instances.
+   * `HARNESS_NODE_INDEX: \<+strategy.iteration\>` - This variable specifies the index value of the currently-running parallel instance. Parallel instances are zero-indexed, so this value ranges from `0` to `parallelism-1`.
 
    This example shows these environment variables declared on a step. To declare them on a stage, add them to the [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables).
 
@@ -290,8 +292,8 @@ Define the parallelism strategy on either the step or stage where your tests run
 
    ```yaml
    FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing \
-      --split-index ${HARNESS_NODE_INDEX} \
-      --split-total ${HARNESS_NODE_TOTAL}`
+      --split-index $\{HARNESS_NODE_INDEX\} \
+      --split-total $\{HARNESS_NODE_TOTAL\}`
    echo $FILES
    ```
 
@@ -334,12 +336,12 @@ pip install -r requirements.txt
 
 # Call split_tests, define splitting strategy, and generate the list of test files.
 FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing \
-   --split-index ${HARNESS_NODE_INDEX} \
-   --split-total ${HARNESS_NODE_TOTAL}`
+   --split-index $\{HARNESS_NODE_INDEX\} \
+   --split-total $\{HARNESS_NODE_TOTAL\}`
 echo $FILES
 
 # Use the test files list as input for pytest and produce results in JUnit XML format.
-pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES
+pytest -v --junitxml="result_\<+strategy.iteration\>.xml" $FILES
 ```
 
 ### Binary path
@@ -389,8 +391,8 @@ Include `--split-index ${HARNESS_NODE_INDEX}` and `--split-total ${HARNESS_NODE_
 ```shell
 # Call split_tests, define splitting strategy, and generate the list of test files.
 FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing \
-   --split-index ${HARNESS_NODE_INDEX} \
-   --split-total ${HARNESS_NODE_TOTAL}`
+   --split-index $\{HARNESS_NODE_INDEX\} \
+   --split-total $\{HARNESS_NODE_TOTAL\}`
 echo $FILES
 ```
 
@@ -419,11 +421,11 @@ If you [define a parallelism strategy](#define-a-parallelism-strategy) on a **Ru
 
 1. Edit the step where your tests run.
 2. Make sure your test tool's commands produce test results. The specific commands required to produce test results files depends on the specific language, test runner, and formatter you use.
-3. Use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) or variable in the results file name, such as `result_<+strategy.iteration>.xml` or `result_${HARNESS_NODE_INDEX}.xml`, to ensure each parallel instance produces a uniquely-named results file.
+3. Use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) or variable in the results file name, such as `result_\<+strategy.iteration\>.xml` or `result_${HARNESS_NODE_INDEX}.xml`, to ensure each parallel instance produces a uniquely-named results file.
 
    :::caution
 
-   If you [defined the parallelism strategy](#define-a-parallelism-strategy) on a step (instead of a stage), you *must* use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) or variable in the results file name, such as `result_<+strategy.iteration>.xml` or `result_${HARNESS_NODE_INDEX}.xml`, to ensure each parallel instance produces a uniquely-named results file. If you don't use an expression or variable in the results file name, the files overwrite each other or fail due to same-name conflicts.
+   If you [defined the parallelism strategy](#define-a-parallelism-strategy) on a step (instead of a stage), you *must* use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) or variable in the results file name, such as `result_\<+strategy.iteration\>.xml` or `result_${HARNESS_NODE_INDEX}.xml`, to ensure each parallel instance produces a uniquely-named results file. If you don't use an expression or variable in the results file name, the files overwrite each other or fail due to same-name conflicts.
 
    :::
 
@@ -432,7 +434,7 @@ If you [define a parallelism strategy](#define-a-parallelism-strategy) on a **Ru
    * Configure your test runner and formatter to publish your test reports in the [JUnit](https://junit.org/junit5/) XML format and include file names in the XML output.
    * For example, if you use `pytest`, you can set `junit_family=xunit1` in your code repo's `pytest.ini` file, or you can include `-o junit_family="xunit1"` in the step's **Command**.
 
-5. Under **Optional Configuration**, add a **Report Path**, such as `**/result_<+strategy.iteration>.xml`.
+5. Under **Optional Configuration**, add a **Report Path**, such as `**/result_\<+strategy.iteration\>.xml`.
 
 ![Define Report Paths in a Run step](./static/speed-up-ci-test-pipelines-using-parallelism-54.png)
 
@@ -443,11 +445,11 @@ If you [define a parallelism strategy](#define-a-parallelism-strategy) on a **Ru
 
 1. Edit the step where your tests run.
 2. Make sure your test tool's commands produce test results. The specific commands required to produce test results files depends on the specific language, test runner, and formatter you use.
-3. Use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) or variable in the results file name, such as `result_<+strategy.iteration>.xml` or `result_${HARNESS_NODE_INDEX}.xml`, to ensure each parallel instance produces a uniquely-named results file.
+3. Use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) or variable in the results file name, such as `result_\<+strategy.iteration\>.xml` or `result_${HARNESS_NODE_INDEX}.xml`, to ensure each parallel instance produces a uniquely-named results file.
 
    :::caution
 
-   If you [defined the parallelism strategy](#define-a-parallelism-strategy) on a step (instead of a stage), you *must* use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) or variable in the results file name, such as `result_<+strategy.iteration>.xml` or `result_${HARNESS_NODE_INDEX}.xml`, to ensure each parallel instance produces a uniquely-named results file. If you don't use an expression or variable in the results file name, the files overwrite each other or fail due to same-name conflicts.
+   If you [defined the parallelism strategy](#define-a-parallelism-strategy) on a step (instead of a stage), you *must* use an [expression](/docs/platform/Variables-and-Expressions/harness-variables) or variable in the results file name, such as `result_\<+strategy.iteration\>.xml` or `result_${HARNESS_NODE_INDEX}.xml`, to ensure each parallel instance produces a uniquely-named results file. If you don't use an expression or variable in the results file name, the files overwrite each other or fail due to same-name conflicts.
 
    :::
 
@@ -509,8 +511,8 @@ With Harness CI, you can split tests for any language or tool. Here are some exa
                     maxConcurrency: 2 ## Optional. This setting limits the number of workloads that can run at once.
                   spec:
                     envVariables: ## These environment variables are used in 'command'.
-                      HARNESS_NODE_INDEX: <+strategy.iteration>
-                      HARNESS_NODE_TOTAL: <+strategy.iterations>
+                      HARNESS_NODE_INDEX: \<+strategy.iteration\>
+                      HARNESS_NODE_TOTAL: \<+strategy.iterations\>
                     shell: Sh
                     command: |- ## Split tests commands are included alongside the regular test commands.
                       # Install dependencies.
@@ -518,19 +520,19 @@ With Harness CI, you can split tests for any language or tool. Here are some exa
 
                       # Call split_tests, define splitting strategy, and generate the list of test files.
                       FILES=`/addon/bin/split_tests --glob "**/*_test.go" --split-by file_timing \
-                         --split-index ${HARNESS_NODE_INDEX} \
-                         --split-total ${HARNESS_NODE_TOTAL}`
+                         --split-index $\{HARNESS_NODE_INDEX\} \
+                         --split-total $\{HARNESS_NODE_TOTAL\}`
                       echo $FILES
 
                       # Use the test files list as input and produce results in JUnit XML format.
-                      go test -v $FILES | tee report_<+strategy.iteration>.out
-                      cat report_<+strategy.iteration>.out | $HOME/go/bin/go-junit-report -set-exit-code > report_<+strategy.iteration>.xml
+                      go test -v $FILES | tee report_\<+strategy.iteration\>.out
+                      cat report_\<+strategy.iteration\>.out | $HOME/go/bin/go-junit-report -set-exit-code > report_\<+strategy.iteration\>.xml
 
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - "report_<+strategy.iteration>.xml" ## Using the expression '<+strategy.iteration>' in the file name ensures that the results of parallel runs don't overwrite each other.
+                          - "report_\<+strategy.iteration\>.xml" ## Using the expression '\<+strategy.iteration\>' in the file name ensures that the results of parallel runs don't overwrite each other.
 ```
 
 ### Java
@@ -547,8 +549,8 @@ This example use Maven.
                     maxConcurrency: 2 ## Optional. This setting limits the number of workloads that can run at once.
                   spec:
                     envVariables: ## These environment variables are used in 'command'.
-                      HARNESS_NODE_INDEX: <+strategy.iteration>
-                      HARNESS_NODE_TOTAL: <+strategy.iterations>
+                      HARNESS_NODE_INDEX: \<+strategy.iteration\>
+                      HARNESS_NODE_TOTAL: \<+strategy.iterations\>
                     shell: Sh
                     command: |- ## Split tests commands are included alongside the regular test commands.
                       # Install dependencies.
@@ -556,8 +558,8 @@ This example use Maven.
 
                       # Call split_tests, define splitting strategy, and generate the list of test files.
                       FILES=`/addon/bin/split_tests --glob "PATH_TO_TEST_FILES" --split-by file_timing \
-                         --split-index ${HARNESS_NODE_INDEX} \
-                         --split-total ${HARNESS_NODE_TOTAL}`
+                         --split-index $\{HARNESS_NODE_INDEX\} \
+                         --split-total $\{HARNESS_NODE_TOTAL\}`
                       echo $FILES
 
                       # Use the test files list as input. Make sure results are in JUnit XML format.
@@ -567,7 +569,7 @@ This example use Maven.
                       type: JUnit
                       spec:
                         paths:
-                          - target/surefire-reports/*_<+strategy.iteration>.xml" ## Using the expression '<+strategy.iteration>' in the file name ensures that the results of parallel runs don't overwrite each other. Depending on your test tool, you might need to specify the report name in your test suite config file.
+                          - target/surefire-reports/*_\<+strategy.iteration\>.xml" ## Using the expression '\<+strategy.iteration\>' in the file name ensures that the results of parallel runs don't overwrite each other. Depending on your test tool, you might need to specify the report name in your test suite config file.
 ```
 
 ### JavaScript
@@ -584,8 +586,8 @@ This example uses Mocha.
                     maxConcurrency: 2 ## Optional. This setting limits the number of workloads that can run at once.
                   spec:
                     envVariables: ## These environment variables are used in 'command'.
-                      HARNESS_NODE_INDEX: <+strategy.iteration>
-                      HARNESS_NODE_TOTAL: <+strategy.iterations>
+                      HARNESS_NODE_INDEX: \<+strategy.iteration\>
+                      HARNESS_NODE_TOTAL: \<+strategy.iterations\>
                     shell: Sh
                     command: |- ## Split tests commands are included alongside the regular test commands.
                       # Install dependencies.
@@ -595,18 +597,18 @@ This example uses Mocha.
 
                       # Call split_tests, define splitting strategy, and generate the list of test files.
                       FILES=`/addon/bin/split_tests --glob "PATH_TO_TEST_FILES" --split-by file_timing \
-                         --split-index ${HARNESS_NODE_INDEX} \
-                         --split-total ${HARNESS_NODE_TOTAL}`
+                         --split-index $\{HARNESS_NODE_INDEX\} \
+                         --split-total $\{HARNESS_NODE_TOTAL\}`
                       echo $FILES
 
                       # Use the test files list as input and produce results in JUnit XML format.
-                      mocha test $FILES --reporter mocha-junit-reporter --reporter-options mochaFile=/harness/junit/test-results-<+strategy.iteration>.xml
+                      mocha test $FILES --reporter mocha-junit-reporter --reporter-options mochaFile=/harness/junit/test-results-\<+strategy.iteration\>.xml
 
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - "/harness/junit/test-results-<+strategy.iteration>.xml" ## Using the expression '<+strategy.iteration>' in the file name ensures that the results of parallel runs don't overwrite each other.
+                          - "/harness/junit/test-results-\<+strategy.iteration\>.xml" ## Using the expression '\<+strategy.iteration\>' in the file name ensures that the results of parallel runs don't overwrite each other.
 ```
 
 ### PHP
@@ -621,8 +623,8 @@ This example uses Mocha.
                     maxConcurrency: 2 ## Optional. This setting limits the number of workloads that can run at once.
                   spec:
                     envVariables: ## These environment variables are used in 'command'.
-                      HARNESS_NODE_INDEX: <+strategy.iteration>
-                      HARNESS_NODE_TOTAL: <+strategy.iterations>
+                      HARNESS_NODE_INDEX: \<+strategy.iteration\>
+                      HARNESS_NODE_TOTAL: \<+strategy.iterations\>
                     shell: Sh
                     command: |- ## Split tests commands are included alongside the regular test commands.
                       # Install dependencies.
@@ -630,18 +632,18 @@ This example uses Mocha.
 
                       # Call split_tests, define splitting strategy, and generate the list of test files.
                       FILES=`/addon/bin/split_tests --glob "**/test_*.php" --split-by file_timing \
-                         --split-index ${HARNESS_NODE_INDEX} \
-                         --split-total ${HARNESS_NODE_TOTAL}`
+                         --split-index $\{HARNESS_NODE_INDEX\} \
+                         --split-total $\{HARNESS_NODE_TOTAL\}`
                       echo $FILES
 
                       # Use the test files list as input and produce results in JUnit XML format.
-                      phpunit --filter $FILES --log-junit /harness/phpunit/junit_<+strategy.iteration>.xml
+                      phpunit --filter $FILES --log-junit /harness/phpunit/junit_\<+strategy.iteration\>.xml
 
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - "/harness/phpunit/junit_<+strategy.iteration>.xml" ## Using the expression '<+strategy.iteration>' in the file name ensures that the results of parallel runs don't overwrite each other.
+                          - "/harness/phpunit/junit_\<+strategy.iteration\>.xml" ## Using the expression '\<+strategy.iteration\>' in the file name ensures that the results of parallel runs don't overwrite each other.
 ```
 
 
@@ -659,8 +661,8 @@ This example uses pytest.
                     maxConcurrency: 2 ## Optional. This setting limits the number of workloads that can run at once.
                   spec:
                     envVariables: ## These environment variables are used in 'command'.
-                      HARNESS_NODE_INDEX: <+strategy.iteration>
-                      HARNESS_NODE_TOTAL: <+strategy.iterations>
+                      HARNESS_NODE_INDEX: \<+strategy.iteration\>
+                      HARNESS_NODE_TOTAL: \<+strategy.iterations\>
                     shell: Sh
                     command: |- ## Split tests commands are included alongside the regular test commands.
                       # Install dependencies.
@@ -668,18 +670,18 @@ This example uses pytest.
 
                       # Call split_tests, define splitting strategy, and generate the list of test files.
                       FILES=`/addon/bin/split_tests --glob "**/test_*.py" --split-by file_timing \
-                         --split-index ${HARNESS_NODE_INDEX} \
-                         --split-total ${HARNESS_NODE_TOTAL}`
+                         --split-index $\{HARNESS_NODE_INDEX\} \
+                         --split-total $\{HARNESS_NODE_TOTAL\}`
                       echo $FILES
 
                       # Use the test files list as input for pytest and produce results in JUnit XML format.
-                      pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES
+                      pytest -v --junitxml="result_\<+strategy.iteration\>.xml" $FILES
 
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - "**/result_<+strategy.iteration>.xml" ## Using the expression '<+strategy.iteration>' in the file name ensures that the results of parallel runs don't overwrite each other.
+                          - "**/result_\<+strategy.iteration\>.xml" ## Using the expression '\<+strategy.iteration\>' in the file name ensures that the results of parallel runs don't overwrite each other.
 ```
 
 ### Ruby
@@ -696,8 +698,8 @@ This example uses Minitest.
                     maxConcurrency: 2 ## Optional. This setting limits the number of workloads that can run at once.
                   spec:
                     envVariables: ## These environment variables are used in 'command'.
-                      HARNESS_NODE_INDEX: <+strategy.iteration>
-                      HARNESS_NODE_TOTAL: <+strategy.iterations>
+                      HARNESS_NODE_INDEX: \<+strategy.iteration\>
+                      HARNESS_NODE_TOTAL: \<+strategy.iterations\>
                     shell: Sh
                     command: |- ## Split tests commands are included alongside the regular test commands.
                       # Install dependencies.
@@ -705,18 +707,18 @@ This example uses Minitest.
 
                       # Call split_tests, define splitting strategy, and generate the list of test files.
                       FILES=`/addon/bin/split_tests --glob "**/test_*.rb" --split-by file_timing \
-                         --split-index ${HARNESS_NODE_INDEX} \
-                         --split-total ${HARNESS_NODE_TOTAL}`
+                         --split-index $\{HARNESS_NODE_INDEX\} \
+                         --split-total $\{HARNESS_NODE_TOTAL\}`
                       echo $FILES
 
                       # Use the test files list as input for rake test and produce results in JUnit XML format.
-                      bundle exec rake test -n $FILES --junit --junit-filename="result_<+strategy.iteration>.xml"
+                      bundle exec rake test -n $FILES --junit --junit-filename="result_\<+strategy.iteration\>.xml"
 
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - "**/result_<+strategy.iteration>.xml" ## Using the expression '<+strategy.iteration>' in the file name ensures that the results of parallel runs don't overwrite each other.
+                          - "**/result_\<+strategy.iteration\>.xml" ## Using the expression '\<+strategy.iteration\>' in the file name ensures that the results of parallel runs don't overwrite each other.
 ```
 
 ### C/C++
@@ -733,8 +735,8 @@ This example uses CTest. Note that CTest has parallelize functions built-in as w
                     maxConcurrency: 2 ## Optional. This setting limits the number of workloads that can run at once.
                   spec:
                     envVariables: ## These environment variables are used in 'command'.
-                      HARNESS_NODE_INDEX: <+strategy.iteration>
-                      HARNESS_NODE_TOTAL: <+strategy.iterations>
+                      HARNESS_NODE_INDEX: \<+strategy.iteration\>
+                      HARNESS_NODE_TOTAL: \<+strategy.iterations\>
                     shell: Sh
                     command: |- ## Split tests commands are included alongside the regular test commands.
                       # Install dependencies.
@@ -743,18 +745,18 @@ This example uses CTest. Note that CTest has parallelize functions built-in as w
 
                       # Call split_tests, define splitting strategy, and generate the list of test files.
                       FILES=`/addon/bin/split_tests --glob "/build" --split-by file_timing \
-                         --split-index ${HARNESS_NODE_INDEX} \
-                         --split-total ${HARNESS_NODE_TOTAL}`
+                         --split-index $\{HARNESS_NODE_INDEX\} \
+                         --split-total $\{HARNESS_NODE_TOTAL\}`
                       echo $FILES
 
                       # Use the test files list as input for ctest and produce results in JUnit XML format.
-                      ctest --test-dir $FILES --output-junit out_<+strategy.iteration>.xml
+                      ctest --test-dir $FILES --output-junit out_\<+strategy.iteration\>.xml
 
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - "/harness/build/out_<+strategy.iteration>.xml" ## Using the expression '<+strategy.iteration>' in the file name ensures that the results of parallel runs don't overwrite each other.
+                          - "/harness/build/out_\<+strategy.iteration\>.xml" ## Using the expression '\<+strategy.iteration\>' in the file name ensures that the results of parallel runs don't overwrite each other.
 ```
 
 ### C#
@@ -769,8 +771,8 @@ This example uses CTest. Note that CTest has parallelize functions built-in as w
                     maxConcurrency: 2 ## Optional. This setting limits the number of workloads that can run at once.
                   spec:
                     envVariables: ## These environment variables are used in 'command'.
-                      HARNESS_NODE_INDEX: <+strategy.iteration>
-                      HARNESS_NODE_TOTAL: <+strategy.iterations>
+                      HARNESS_NODE_INDEX: \<+strategy.iteration\>
+                      HARNESS_NODE_TOTAL: \<+strategy.iterations\>
                     shell: Sh
                     command: |- ## Split tests commands are included alongside the regular test commands.
                       # Install dependencies
@@ -782,17 +784,17 @@ This example uses CTest. Note that CTest has parallelize functions built-in as w
 
                       # Call split_tests, define splitting strategy, and generate the list of test files.
                       FILES=`/addon/bin/split_tests --glob "PATH_TO_TEST_PROJECT" --split-by file_timing \
-                         --split-index ${HARNESS_NODE_INDEX} \
-                         --split-total ${HARNESS_NODE_TOTAL}`
+                         --split-index $\{HARNESS_NODE_INDEX\} \
+                         --split-total $\{HARNESS_NODE_TOTAL\}`
                       echo $FILES
 
                       # Use the test files list as input and produce results in JUnit XML format.
                       dotnet test --filter $FILES --no-build --verbosity normal
-                      trx2junit results_<+strategy.iteration>.trx
+                      trx2junit results_\<+strategy.iteration\>.trx
 
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - "./results_<+strategy.iteration>.trx" ## Using the expression '<+strategy.iteration>' in the file name ensures that the results of parallel runs don't overwrite each other.
+                          - "./results_\<+strategy.iteration\>.trx" ## Using the expression '\<+strategy.iteration\>' in the file name ensures that the results of parallel runs don't overwrite each other.
 ```

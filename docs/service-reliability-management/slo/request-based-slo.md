@@ -24,7 +24,8 @@ For example, if you had 100 search requests and 95 of them returned the expected
 - A project in Harness. If you haven't already created one, follow these steps.
 
 <details>
-<summary><b> Steps to create a project in Harness.</b></summary>
+
+		<summary><b> Steps to create a project in Harness.</b></summary>
 
 To create a project in Harness, do the following:
 
@@ -72,7 +73,8 @@ To configure request-based SLIs, do the following:
 1. Select a **Health Source to manage the service level**. If you haven't already added a health source, follow these instructions.
 
 <details>
-<summary><b> Steps to add a health source.</b></summary>
+
+		<summary><b> Steps to add a health source.</b></summary>
 
 To add a health source, do the following:
 

@@ -86,7 +86,8 @@ Going forward, follow all the steps as they are, including the naming convention
 ## Delegate
 
 <details open>
-<summary>What is the Harness delegate?</summary>
+
+		<summary>What is the Harness delegate?</summary>
 
 The Harness delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
@@ -126,7 +127,8 @@ Replace `DELEGATE_IMAGE:TAG` with the custom delegate image `harnesscommunity/se
 ## Secrets
 
 <details open>
-<summary>What are Harness secrets?</summary>
+
+		<summary>What are Harness secrets?</summary>
 
 Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
@@ -233,7 +235,8 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 ## Connectors
 
 <details open>
-<summary>What are connectors?</summary>
+
+		<summary>What are connectors?</summary>
 
 Connectors in Harness enable integration with 3rd party tools, providing authentication for operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](/docs/category/connectors).
 
@@ -256,7 +259,8 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 ## Environment
 
 <details open>
-<summary>What are Harness environments?</summary>
+
+		<summary>What are Harness environments?</summary>
 
 Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for serverless functions, VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
 
@@ -277,7 +281,8 @@ Environments define the deployment location, categorized as **Production** or **
 ## Services
 
 <details open>
-<summary>What are Harness services?</summary>
+
+		<summary>What are Harness services?</summary>
 
 In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, functions, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
 
@@ -292,7 +297,8 @@ In Harness, services represent what you deploy to environments. You use services
 ## Deploy AWS Lambda using Serverless.com Framework
 
 <details open>
-<summary>What are Harness pipelines?</summary>
+
+		<summary>What are Harness pipelines?</summary>
 
 A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact/function deployment in production. A CD pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
 
@@ -319,7 +325,8 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 ## Connectors
 
 <details open>
-<summary>What are connectors?</summary>
+
+		<summary>What are connectors?</summary>
 
 Connectors in Harness enable integration with 3rd party tools, providing authentication for operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](/docs/category/connectors).
 
@@ -349,7 +356,8 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 ## Environment
 
 <details open>
-<summary>What are Harness environments?</summary>
+
+		<summary>What are Harness environments?</summary>
 
 Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for serverless functions, VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
 
@@ -366,7 +374,8 @@ Environments define the deployment location, categorized as **Production** or **
 ## Services
 
 <details open>
-<summary>What are Harness services?</summary>
+
+		<summary>What are Harness services?</summary>
 
 In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, functions, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
 
@@ -382,7 +391,8 @@ In Harness, services represent what you deploy to environments. You use services
 ## Pipeline
 
 <details open>
-<summary>What are Harness pipelines?</summary>
+
+		<summary>What are Harness pipelines?</summary>
 
 A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact/function deployment in production. A CD pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
 
@@ -452,7 +462,8 @@ Verify the following:
     - **AWS Lambda Execution Role**: As a Lambda user, you probably already have the AWS Lambda Execution Role set up. If you do not, follow the steps in [AWS Lambda Execution Role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html) from AWS.  
   
 <details>
-<summary>Example IAM policy:</summary>
+
+		<summary>Example IAM policy:</summary>
 
 ```json
 {
@@ -562,7 +573,8 @@ For the pipeline to run successfully, please follow the remaining steps as they 
 ### Delegate
 
 <details open>
-<summary>What is the Harness delegate?</summary>
+
+		<summary>What is the Harness delegate?</summary>
 
 The Harness delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
@@ -601,7 +613,8 @@ You can also follow the [Install Harness Delegate on Kubernetes](/tutorials/plat
 ### Secrets
 
 <details open>
-<summary>What are Harness secrets?</summary>
+
+		<summary>What are Harness secrets?</summary>
 
 Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
 
@@ -705,7 +718,8 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 ## Connectors
 
 <details open>
-<summary>What are connectors?</summary>
+
+		<summary>What are connectors?</summary>
 
 Connectors in Harness enable integration with 3rd party tools, providing authentication for operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. For more details, go to [Connectors](/docs/category/connectors).
 
@@ -728,7 +742,8 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 ## Environment
 
 <details open>
-<summary>What are Harness environments?</summary>
+
+		<summary>What are Harness environments?</summary>
 
 Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for serverless functions, VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
 
@@ -749,7 +764,8 @@ Environments define the deployment location, categorized as **Production** or **
 ## Services
 
 <details open>
-<summary>What are Harness services?</summary>
+
+		<summary>What are Harness services?</summary>
 
 In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, functions, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
 
@@ -758,7 +774,8 @@ In Harness, services represent what you deploy to environments. You use services
 ### Function definition and function artifacts
 
 <details open>
-<summary>What is AWS Lambda Function Definition?</summary>
+
+		<summary>What is AWS Lambda Function Definition?</summary>
 
 Harness uses the AWS Lambda [Create Function API](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html) to create a new Lambda function in the specified AWS account and region. In Harness, you use a [JSON configuration file](https://github.com/harness-community/harnesscd-example-apps/blob/master/aws-lambda/function-definition.json) to define the AWS Lambda you wish to deploy. This configuration lets you define all the function settings supported by the Create Function API.
 </details>
@@ -776,7 +793,8 @@ Harness uses the AWS Lambda [Create Function API](https://docs.aws.amazon.com/la
 ## Deploy the serverless application on AWS Lambda
 
 <details open>
-<summary>What are Harness pipelines?</summary>
+
+		<summary>What are Harness pipelines?</summary>
 
 A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
 
@@ -807,7 +825,8 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 ### Connectors
 
 <details open>
-<summary>What are connectors?</summary>
+
+		<summary>What are connectors?</summary>
 
 Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. Explore connector how-tos [here](/docs/category/connectors).
 
@@ -835,7 +854,8 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 ## Environment
 
 <details open>
-<summary>What are Harness environments?</summary>
+
+		<summary>What are Harness environments?</summary>
 
 Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for serverless functions, VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
 
@@ -854,7 +874,8 @@ Environments define the deployment location, categorized as **Production** or **
 ## Services
 
 <details open>
-<summary>What are Harness services?</summary>
+
+		<summary>What are Harness services?</summary>
 
 In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, functions, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
 
@@ -863,7 +884,8 @@ In Harness, services represent what you deploy to environments. You use services
 ### Function definition and function artifacts
 
 <details open>
-<summary>What is AWS Lambda Function Definition?</summary>
+
+		<summary>What is AWS Lambda Function Definition?</summary>
 
 Harness uses the AWS Lambda [Create Function API](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html) to create a new Lambda function in the specified AWS account and region. In Harness, you use a [JSON configuration file](https://github.com/harness-community/harnesscd-example-apps/blob/master/aws-lambda/function-definition.json) to define the AWS Lambda you wish to deploy. This configuration lets you define all the function settings supported by the Create Function API.
 </details>
@@ -882,7 +904,8 @@ Harness uses the AWS Lambda [Create Function API](https://docs.aws.amazon.com/la
 ## Pipeline
 
 <details open>
-<summary>What are Harness pipelines?</summary>
+
+		<summary>What are Harness pipelines?</summary>
 
 A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact/function deployment in production. A CD pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
 

@@ -14,7 +14,7 @@ helpdocs_is_published: true
 
 #### What is endpoint to check licence details from Drone UI
 
-You can check licence details from ui by navigating to <-dronehost:port/varz> ex: https://dronehost/varz
+You can check licence details from ui by navigating to \<-dronehost:port/varz\> ex: https://dronehost/varz
 
 
 #### Can we Install Drone using Helm
@@ -28,7 +28,7 @@ No, A user with create webook permission can only activate a repo as that requir
 
 #### Drone CI supports importing libraries when using jsonnet. But builds keeps failing with an error similar to:
 
-RUNTIME ERROR: couldn't open import "frontend.libsonnet": no match locally or in the Jsonnet library paths .drone.jsonnet:1:19-46 thunk <front_end> from <$> .drone.jsonnet:131:2-11 During manifestation
+RUNTIME ERROR: couldn't open import "frontend.libsonnet": no match locally or in the Jsonnet library paths .drone.jsonnet:1:19-46 thunk \<front_end\> from \<$\> .drone.jsonnet:131:2-11 During manifestation
 
 Solution: You need to set this env variable as well, otherwise it doesn't figure out the import paths correctly:
 DRONE_JSONNET_IMPORT_LIMIT
@@ -88,7 +88,7 @@ DRONE_LOGS_TRACE=true
 ```
 
 #### How to configure Timezone on the Drone?
-When running the Drone server image, the timezone can be set with an environment variable TZ={Area/Location} using a valid TZ database name EG:
+When running the Drone server image, the timezone can be set with an environment variable TZ=\{Area/Location\} using a valid TZ database name EG:
 ```sh
 --env=TZ=Europe/London
 ```

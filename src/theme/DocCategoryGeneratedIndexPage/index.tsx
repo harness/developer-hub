@@ -11,7 +11,7 @@ import {
   useCurrentSidebarCategory,
 } from '@docusaurus/theme-common';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import DocCardList from '@theme/DocCardList';
+// import DocCardList from '@theme/DocCardList';
 import DocPaginator from '@theme/DocPaginator';
 import DocVersionBanner from '@theme/DocVersionBanner';
 import DocVersionBadge from '@theme/DocVersionBadge';
@@ -53,7 +53,7 @@ function DocCategoryGeneratedIndexPageContent({
         )}
       </header>
       <article className="margin-top--lg">
-        <DocCardList items={category.items} className={styles.list} />
+        {/* <DocCardList items={category.items} className={styles.list} /> */}
       </article>
       <footer className="margin-top--lg">
         <DocPaginator

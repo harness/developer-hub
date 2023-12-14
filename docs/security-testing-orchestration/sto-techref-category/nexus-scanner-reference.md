@@ -37,7 +37,8 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
-<details><summary>Nexus configuration in a Security step</summary>
+<details>
+		<summary>Nexus configuration in a Security step</summary>
 
 ```mdx-code-block
 import security_step_nexus from './static/security-step-nexus.png'

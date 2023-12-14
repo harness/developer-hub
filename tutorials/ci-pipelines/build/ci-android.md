@@ -408,7 +408,8 @@ Android packages, including Android SDK tools and and [fastlane](https://docs.fa
 If you need to install additional versions, use a **Run** step. These examples use [faberNovel/docker-android](https://github.com/faberNovel/docker-android) and fastlane.
 
 <details>
-<summary>Use one version</summary>
+
+		<summary>Use one version</summary>
 
 ```yaml
               - step:
@@ -427,7 +428,8 @@ If you need to install additional versions, use a **Run** step. These examples u
 </details>
 
 <details>
-<summary>Use multiple versions</summary>
+
+		<summary>Use multiple versions</summary>
 
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
@@ -469,7 +471,8 @@ Specify the desired Android Docker image tag in your steps. There is no need for
 These examples use [faberNovel/docker-android](https://github.com/faberNovel/docker-android) and [fastlane](https://docs.fastlane.tools/).
 
 <details>
-<summary>Use one version</summary>
+
+		<summary>Use one version</summary>
 
 ```yaml
               - step:
@@ -488,7 +491,8 @@ These examples use [faberNovel/docker-android](https://github.com/faberNovel/doc
 </details>
 
 <details>
-<summary>Use multiple versions</summary>
+
+		<summary>Use multiple versions</summary>
 
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 

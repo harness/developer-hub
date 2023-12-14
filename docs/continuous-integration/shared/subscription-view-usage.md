@@ -7,7 +7,8 @@ Your Harness CI subscription includes a number of developer licenses. You can ch
 CI subscription usage details are divided into several sections providing progressively more detail about your license and Harness Cloud build credit usage.
 
 <details>
-<summary>Subscription Details</summary>
+
+		<summary>Subscription Details</summary>
 
 This section includes the following details:
 
@@ -23,7 +24,8 @@ This section includes the following details:
 </details>
 
 <details>
-<summary>Activity & Usage</summary>
+
+		<summary>Activity & Usage</summary>
 
 This section shows the number of current active developers against the total number of licenses, as well as your Harness Cloud build credit usage.
 
@@ -42,7 +44,8 @@ The **Available Credits** tile shows your Harness Cloud build credit balance, ex
 </details>
 
 <details>
-<summary>Active Developers</summary>
+
+		<summary>Active Developers</summary>
 
 In this section, you can drill down into license usage data for active developers. An active developer is an active codebase committer observed in the builds managed by Harness CI each month.
 
@@ -71,7 +74,8 @@ Over use indicates when the number of active developers exceeded the number of l
 </details>
 
 <details>
-<summary>Build Credits</summary>
+
+		<summary>Build Credits</summary>
 
 In this section, you can drill down into Harness Cloud build credit usage data, including:
 

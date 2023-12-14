@@ -41,7 +41,11 @@ Below are tables with links to individual fault documentation for easy navigatio
 
 <!-- Custom component -->
 
+```
 import ChaosFaults from '@site/src/components/ChaosEngineering/ChaosFaults';
 import { categories } from './categories'
+
+```
+
 
 <ChaosFaults categories={categories} />

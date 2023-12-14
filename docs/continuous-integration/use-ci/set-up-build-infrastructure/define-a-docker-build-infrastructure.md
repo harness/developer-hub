@@ -209,7 +209,8 @@ The Harness Docker Runner service performs the build work. The delegate needs th
    ![macOS Gatekeeper error message.](./static/define-a-macos-build-infrastructure-10.png)
 
 <details>
-<summary>Allow the runner binary app to run</summary>
+
+		<summary>Allow the runner binary app to run</summary>
 
 1. Go to **System Preferences** and select **Security & Privacy**.
 2. On the **General** tab, select the lock to make changes.
@@ -407,7 +408,8 @@ This means that if delegate selectors are present at the pipeline and stage leve
 For example, assume you have a pipeline with three stages called `alpha`, `beta`, and `gamma`. If you specify a stage-level delegate selector on `alpha` and you don't specify a pipeline-level delegate selector, then `alpha` uses the stage-level delegate, and the other stages (`beta` and `gamma`) use the platform delegate.
 
 <details>
-<summary>Early access feature: Use delegate selectors for codebase tasks</summary>
+
+		<summary>Early access feature: Use delegate selectors for codebase tasks</summary>
 
 Currently, delegate selectors for CI codebase tasks is behind the feature flag `CI_CODEBASE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 

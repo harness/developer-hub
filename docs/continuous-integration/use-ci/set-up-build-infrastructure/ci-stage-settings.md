@@ -113,7 +113,7 @@ The following **Platform** settings are available:
 
 * **Select the Operating System:** Select the relevant OS.
 * **Kubernetes Cluster:** Select a [Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
-* **Namespace:** Enter the Kubernetes namespace to use in the target cluster. You can also use a Runtime Input (`<+input>`) or expression for the namespace. For more information, go to [Runtime Inputs](../../../platform/variables-and-expressions/runtime-inputs).
+* **Namespace:** Enter the Kubernetes namespace to use in the target cluster. You can also use a Runtime Input (`\<+input\>`) or expression for the namespace. For more information, go to [Runtime Inputs](../../../platform/variables-and-expressions/runtime-inputs).
 
 The following **Advanced** settings are available for the **Kubernetes** infrastructure:
 

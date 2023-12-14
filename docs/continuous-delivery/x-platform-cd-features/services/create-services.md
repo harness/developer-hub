@@ -80,7 +80,8 @@ Go to [add a stage template](/docs/platform/templates/add-a-stage-template.md) f
 Expand the section below to see a sample account level service YAML.
 
 <details>
-   <summary>Account level service YAML</summary>
+   
+		<summary>Account level service YAML</summary>
 
 ```
 service:
@@ -122,7 +123,8 @@ service:
 Expand the section below to see a sample organization level service YAML.
 
 <details>
-   <summary>Organization level service YAML</summary>
+   
+		<summary>Organization level service YAML</summary>
 
 ```
 service:
@@ -188,7 +190,8 @@ The `org_id` and `project_id` field definitions are optional, and depend on wher
 Expand the section below to see a sample platform service in Terraform. 
 
 <details>
-   <summary>Harness platform service</summary>
+   
+		<summary>Harness platform service</summary>
 
 ```
 resource "harness_platform_service" "example" {

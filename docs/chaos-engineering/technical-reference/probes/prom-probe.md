@@ -39,88 +39,63 @@ Listed below is the probe schema for the Prometheus probe, with properties share
 
 <table>
   <tr>
-   <td><strong>Field</strong>
+   <td>
+		<strong>Field</strong>
    </td>
-   <td><strong>Description</strong>
+   <td>
+		<strong>Description</strong>
    </td>
-   <td><strong>Type</strong>
+   <td>
+		<strong>Type</strong>
    </td>
-   <td><strong>Range</strong>
+   <td>
+		<strong>Range</strong>
    </td>
-   <td><strong>Notes</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>name
-   </td>
-   <td>Flag to hold the name of the probe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>name</code> holds the name of the probe. It can be set based on the usecase
+   <td>
+		<strong>Notes</strong>
    </td>
   </tr>
   <tr>
-   <td>type
-   </td>
-   <td>Flag to hold the type of the probe
-   </td>
-   <td>Mandatory
-   </td>
-   <td><code>httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe</code>
-   </td>
-   <td>The <code>type</code> supports five types of probes: httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe.
-   </td>
+   <td>name   </td>
+   <td>Flag to hold the name of the probe   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>name</code> holds the name of the probe. It can be set based on the usecase   </td>
   </tr>
   <tr>
-   <td>mode
-   </td>
-   <td>Flag to hold the mode of the probe
-   </td>
-   <td>Mandatory
-   </td>
-   <td><code>SOT, EOT, Edge, Continuous, OnChaos</code>
-   </td>
-   <td>The <code>mode</code> supports five modes of probes: SOT, EOT, Edge, Continuous, and OnChaos. Datadog probe supports EOT mode only.
-   </td>
+   <td>type   </td>
+   <td>Flag to hold the type of the probe   </td>
+   <td>Mandatory   </td>
+   <td><code>httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe</code>   </td>
+   <td>The <code>type</code> supports five types of probes: httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe.   </td>
   </tr>
   <tr>
-   <td>endpoint
-   </td>
-   <td>Flag to hold the prometheus endpoints for the promProbe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>endpoint</code> contains the prometheus endpoints
-   </td>
+   <td>mode   </td>
+   <td>Flag to hold the mode of the probe   </td>
+   <td>Mandatory   </td>
+   <td><code>SOT, EOT, Edge, Continuous, OnChaos</code>   </td>
+   <td>The <code>mode</code> supports five modes of probes: SOT, EOT, Edge, Continuous, and OnChaos. Datadog probe supports EOT mode only.   </td>
   </tr>
   <tr>
-   <td>query
-   </td>
-   <td>Flag to hold the promql query for the promProbe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>query</code> contains the promql query to extract out the desired prometheus metrics via running it on the given prometheus endpoint
-   </td>
+   <td>endpoint   </td>
+   <td>Flag to hold the prometheus endpoints for the promProbe   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>endpoint</code> contains the prometheus endpoints   </td>
   </tr>
   <tr>
-   <td>queryPath
-   </td>
-   <td>Flag to hold the path of the promql query for the promProbe
-   </td>
-   <td>Optional
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>queryPath</code> field is used in case of complex queries that spans multiple lines, the queryPath attribute can be used to provide the path to a file consisting of the same. This file can be made available to the experiment pod via a ConfigMap resource, with the ConfigMap name being defined in the ChaosEngine OR the ChaosExperiment CR.
-   </td>
+   <td>query   </td>
+   <td>Flag to hold the promql query for the promProbe   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>query</code> contains the promql query to extract out the desired prometheus metrics via running it on the given prometheus endpoint   </td>
+  </tr>
+  <tr>
+   <td>queryPath   </td>
+   <td>Flag to hold the path of the promql query for the promProbe   </td>
+   <td>Optional   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>queryPath</code> field is used in case of complex queries that spans multiple lines, the queryPath attribute can be used to provide the path to a file consisting of the same. This file can be made available to the experiment pod via a ConfigMap resource, with the ConfigMap name being defined in the ChaosEngine OR the ChaosExperiment CR.   </td>
   </tr>
 </table>
 
@@ -128,52 +103,42 @@ Listed below is the probe schema for the Prometheus probe, with properties share
 
 <table>
   <tr>
-   <td><strong>Field</strong>
+   <td>
+		<strong>Field</strong>
    </td>
-   <td><strong>Description</strong>
+   <td>
+		<strong>Description</strong>
    </td>
-   <td><strong>Type</strong>
+   <td>
+		<strong>Type</strong>
    </td>
-   <td><strong>Range</strong>
+   <td>
+		<strong>Range</strong>
    </td>
-   <td><strong>Notes</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>type
-   </td>
-   <td>Flag to hold type of the data used for comparison
-   </td>
-   <td>Optional
-   </td>
-   <td><code>float</code>
-   </td>
-   <td>The <code>type</code> contains type of data, which should be compared as part of comparison operation. Prometheus probe only compares with float data.
+   <td>
+		<strong>Notes</strong>
    </td>
   </tr>
   <tr>
-   <td>criteria
-   </td>
-   <td>Flag to hold criteria for the comparison
-   </td>
-   <td>Mandatory
-   </td>
-   <td>It supports <code>{`>=, <=, ==, >, <, !=, oneOf, between`}</code> for int & float type. And <code>{`equal, notEqual, contains, matches, notMatches, oneOf`}</code> for string type.
-   </td>
-   <td>The <code>criteria</code> contains criteria of the comparison, which should be fulfill as part of comparison operation.
-   </td>
+   <td>type   </td>
+   <td>Flag to hold type of the data used for comparison   </td>
+   <td>Optional   </td>
+   <td><code>float</code>   </td>
+   <td>The <code>type</code> contains type of data, which should be compared as part of comparison operation. Prometheus probe only compares with float data.   </td>
   </tr>
   <tr>
-   <td>value
-   </td>
-   <td>Flag to hold value for the comparison
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>value</code> contains value of the comparison, which should follow the given criteria as part of comparison operation.
-   </td>
+   <td>criteria   </td>
+   <td>Flag to hold criteria for the comparison   </td>
+   <td>Mandatory   </td>
+   <td>It supports <code>\{`>=, <=, ==, >, <, !=, oneOf, between`\}</code> for int & float type. And <code>\{`equal, notEqual, contains, matches, notMatches, oneOf`\}</code> for string type.   </td>
+   <td>The <code>criteria</code> contains criteria of the comparison, which should be fulfill as part of comparison operation.   </td>
+  </tr>
+  <tr>
+   <td>value   </td>
+   <td>Flag to hold value for the comparison   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>value</code> contains value of the comparison, which should follow the given criteria as part of comparison operation.   </td>
   </tr>
 </table>
 
@@ -184,40 +149,35 @@ It's important to note that `credentials` and `credentialsFile` are two options 
 
 <table>
   <tr>
-   <td><strong>Field</strong>
+   <td>
+		<strong>Field</strong>
    </td>
-   <td><strong>Description</strong>
+   <td>
+		<strong>Description</strong>
    </td>
-   <td><strong>Type</strong>
+   <td>
+		<strong>Type</strong>
    </td>
-   <td><strong>Range</strong>
+   <td>
+		<strong>Range</strong>
    </td>
-   <td><strong>Notes</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>credentials
-   </td>
-   <td>Flag to hold the basic auth credentials in base64 format
-   </td>
-   <td>Optional
-   </td>
-   <td><code>string</code>
-   </td>
-   <td>The <code>credentials</code> comprises the Prometheus server's basic authentication credentials in the form of username:password, encoded using base64 format
+   <td>
+		<strong>Notes</strong>
    </td>
   </tr>
   <tr>
-   <td> credentialsFile
-   </td>
-   <td>Flag to hold the basic auth credentials file path
-   </td>
-   <td>Optional
-   </td>
-   <td><code>string</code>
-   </td>
-   <td>The <code>credentials</code> encompasses the filepath for basic authentication credentials, which are mounted to the experiment pod as volume secrets. These secrets consist of username:password encoded in base64 format for the Prometheus server
-   </td>
+   <td>credentials   </td>
+   <td>Flag to hold the basic auth credentials in base64 format   </td>
+   <td>Optional   </td>
+   <td><code>string</code>   </td>
+   <td>The <code>credentials</code> comprises the Prometheus server's basic authentication credentials in the form of username:password, encoded using base64 format   </td>
+  </tr>
+  <tr>
+   <td> credentialsFile   </td>
+   <td>Flag to hold the basic auth credentials file path   </td>
+   <td>Optional   </td>
+   <td><code>string</code>   </td>
+   <td>The <code>credentials</code> encompasses the filepath for basic authentication credentials, which are mounted to the experiment pod as volume secrets. These secrets consist of username:password encoded in base64 format for the Prometheus server   </td>
   </tr>
 </table>
 
@@ -228,64 +188,49 @@ Alternatively, you have the option to enable the `insecureSkipVerify` check to b
 
 <table>
   <tr>
-   <td><strong>Field</strong>
+   <td>
+		<strong>Field</strong>
    </td>
-   <td><strong>Description</strong>
+   <td>
+		<strong>Description</strong>
    </td>
-   <td><strong>Type</strong>
+   <td>
+		<strong>Type</strong>
    </td>
-   <td><strong>Range</strong>
+   <td>
+		<strong>Range</strong>
    </td>
-   <td><strong>Notes</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>caFile
-   </td>
-   <td>Flag to hold the ca file path
-   </td>
-   <td>Optional
-   </td>
-   <td><code>string</code>
-   </td>
-   <td>The <code>caFile</code> holds the file path of the CA certificates utilized for server TLS verification
+   <td>
+		<strong>Notes</strong>
    </td>
   </tr>
   <tr>
-   <td>certFile
-   </td>
-   <td>Flag to hold the client cert file path
-   </td>
-   <td>Optional
-   </td>
-   <td><code>string</code>
-   </td>
-   <td>The <code>certFile</code> holds the file path of the client certificates utilized for TLS verification
-   </td>
+   <td>caFile   </td>
+   <td>Flag to hold the ca file path   </td>
+   <td>Optional   </td>
+   <td><code>string</code>   </td>
+   <td>The <code>caFile</code> holds the file path of the CA certificates utilized for server TLS verification   </td>
   </tr>
   <tr>
-   <td>keyFile
-   </td>
-   <td>Flag to hold the client key file path
-   </td>
-   <td>Optional
-   </td>
-   <td><code>string</code>
-   </td>
-   <td>The <code>keyFile</code> holds the file path of the client key utilized for TLS verification
-   </td>
+   <td>certFile   </td>
+   <td>Flag to hold the client cert file path   </td>
+   <td>Optional   </td>
+   <td><code>string</code>   </td>
+   <td>The <code>certFile</code> holds the file path of the client certificates utilized for TLS verification   </td>
+  </tr>
+  <tr>
+   <td>keyFile   </td>
+   <td>Flag to hold the client key file path   </td>
+   <td>Optional   </td>
+   <td><code>string</code>   </td>
+   <td>The <code>keyFile</code> holds the file path of the client key utilized for TLS verification   </td>
    </tr>
   <tr>
-   <td>insecureSkipVerify
-   </td>
-   <td>Flag to skip the tls certificates checks
-   </td>
-   <td>Optional
-   </td>
-   <td><code>boolean</code>
-   </td>
-   <td>The <code>insecureSkipVerify</code> skip the tls certificates checks
-   </td>
+   <td>insecureSkipVerify   </td>
+   <td>Flag to skip the tls certificates checks   </td>
+   <td>Optional   </td>
+   <td><code>boolean</code>   </td>
+   <td>The <code>insecureSkipVerify</code> skip the tls certificates checks   </td>
   </tr>
 </table>
 
@@ -293,88 +238,63 @@ Alternatively, you have the option to enable the `insecureSkipVerify` check to b
 
 <table>
   <tr>
-   <td><strong>Field</strong>
+   <td>
+		<strong>Field</strong>
    </td>
-   <td><strong>Description</strong>
+   <td>
+		<strong>Description</strong>
    </td>
-   <td><strong>Type</strong>
+   <td>
+		<strong>Type</strong>
    </td>
-   <td><strong>Range</strong>
+   <td>
+		<strong>Range</strong>
    </td>
-   <td><strong>Notes</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>probeTimeout
-   </td>
-   <td>Flag to hold the timeout of the probe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data
+   <td>
+		<strong>Notes</strong>
    </td>
   </tr>
   <tr>
-   <td>attempt
-   </td>
-   <td>Flag to hold the attempt of the probe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: integer</code>
-   </td>
-   <td>The <code>attempt</code> contains the number of times a check is run upon failure in the previous attempts before declaring the probe status as failed.
-   </td>
+   <td>probeTimeout   </td>
+   <td>Flag to hold the timeout of the probe   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data   </td>
   </tr>
   <tr>
-   <td>interval
-   </td>
-   <td>Flag to hold the interval of the probe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>interval</code> contains the interval for which probes waits between subsequent retries
-   </td>
+   <td>attempt   </td>
+   <td>Flag to hold the attempt of the probe   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: integer</code>   </td>
+   <td>The <code>attempt</code> contains the number of times a check is run upon failure in the previous attempts before declaring the probe status as failed.   </td>
   </tr>
   <tr>
-   <td>probePollingInterval
-   </td>
-   <td>Flag to hold the polling interval for the probes (applicable for all modes)
-   </td>
-   <td>Optional
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>probePollingInterval</code> contains the time interval for which continuous and onchaos probe should be sleep after each iteration
-   </td>
+   <td>interval   </td>
+   <td>Flag to hold the interval of the probe   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>interval</code> contains the interval for which probes waits between subsequent retries   </td>
   </tr>
   <tr>
-   <td>initialDelaySeconds
-   </td>
-   <td>Flag to hold the initial delay interval for the probes
-   </td>
-   <td>Optional
-   </td>
-   <td>N/A <code>type: integer</code>
-   </td>
-   <td>The <code>initialDelaySeconds</code> represents the initial waiting time interval for the probes.
-   </td>
+   <td>probePollingInterval   </td>
+   <td>Flag to hold the polling interval for the probes (applicable for all modes)   </td>
+   <td>Optional   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>probePollingInterval</code> contains the time interval for which continuous and onchaos probe should be sleep after each iteration   </td>
   </tr>
   <tr>
-   <td>stopOnFailure
-   </td>
-   <td>Flags to hold the stop or continue the experiment on probe failure
-   </td>
-   <td>Optional
-   </td>
-   <td>N/A <code>type: boolean</code>
-   </td>
-   <td>The <code>stopOnFailure</code> can be set to true/false to stop or continue the experiment execution after probe fails
-   </td>
+   <td>initialDelaySeconds   </td>
+   <td>Flag to hold the initial delay interval for the probes   </td>
+   <td>Optional   </td>
+   <td>N/A <code>type: integer</code>   </td>
+   <td>The <code>initialDelaySeconds</code> represents the initial waiting time interval for the probes.   </td>
+  </tr>
+  <tr>
+   <td>stopOnFailure   </td>
+   <td>Flags to hold the stop or continue the experiment on probe failure   </td>
+   <td>Optional   </td>
+   <td>N/A <code>type: boolean</code>   </td>
+   <td>The <code>stopOnFailure</code> can be set to true/false to stop or continue the experiment execution after probe fails   </td>
   </tr>
 </table>
 

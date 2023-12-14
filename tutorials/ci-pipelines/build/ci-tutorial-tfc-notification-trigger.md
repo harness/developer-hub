@@ -55,7 +55,8 @@ This tutorial uses the following Git repositories:
 Fork these repos, and then clone them to your local machine.
 
 <details>
-<summary>Fork and clone the tutorial repos</summary>
+
+		<summary>Fork and clone the tutorial repos</summary>
 
 1. If you don't already have a Git command line tool on your machine, download the [GitHub CLI tool](https://cli.github.com/), and then add `gh` to your `$PATH`.
 2. Create a directory for your tutorial repos, for example:
@@ -108,7 +109,8 @@ Code samples in this tutorial will refer to these repos as follows:
 In Harness, create a project named `terraform_integration_demos`, and then go to the **Continuous Integration** module.
 
 <details>
-<summary>Create a project</summary>
+
+		<summary>Create a project</summary>
 
 1. Select **Projects**, select **All Projects**, and then select **New Project**.
 2. For **Name**, enter `terraform_integration_demos`.
@@ -294,7 +296,7 @@ This pipeline pulls public images from Docker Hub. If you do not want to use the
 
 :::tip
 
-Alternately, you can extract the values for `terraform_workspace` and `terraform_cloud_organization` from the webhook payload by replacing their `<+secret>` expressions with the expressions `<+trigger.payload.workspace_name>` and `<+trigger.payload.organization_name>` respectively.
+Alternately, you can extract the values for `terraform_workspace` and `terraform_cloud_organization` from the webhook payload by replacing their `\<+secret\>` expressions with the expressions `\<+trigger.payload.workspace_name\>` and `\<+trigger.payload.organization_name\>` respectively.
 
 :::
 

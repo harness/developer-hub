@@ -69,7 +69,8 @@ The custom managed policy should have the following permissions:
 ```
 
 <details>
-<summary>Permissions review</summary>
+
+		<summary>Permissions review</summary>
 
 |                   Permission                    |                                                                                                               How does Harness use it?                                                                                                               |
 | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -435,7 +436,7 @@ proxyConfiguration:
 volumes: []
 ```
 
-The `image: <+primary.artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+primary.artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/Variables-and-Expressions/harness-variables) for the value that resolves to an image name at runtime. For this example, we will use `image: <+primary.artifact.image>` and an artifact.
+The `image: \<+primary.artifact.image\>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `\<+primary.artifact.image\>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/Variables-and-Expressions/harness-variables) for the value that resolves to an image name at runtime. For this example, we will use `image: \<+primary.artifact.image\>` and an artifact.
 
 The Task Definition is added to the Service.
 
@@ -702,7 +703,7 @@ Outputs:
 ```
 
 
-In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.cluster_name>`.
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `\<+provisioner.OUTPUT_NAME\>`, such as `\<+provisioner.cluster_name\>`.
 
 
 <figure>
@@ -1133,7 +1134,7 @@ proxyConfiguration:
 volumes: []
 ```
 
-The `image: <+primary.artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+primary.artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/Variables-and-Expressions/harness-variables) for the value that resolves to an image name at runtime.ECS Service Definition:
+The `image: \<+primary.artifact.image\>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `\<+primary.artifact.image\>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/Variables-and-Expressions/harness-variables) for the value that resolves to an image name at runtime.ECS Service Definition:
 
 Replace `<Security Group Id>` and `<Subnet Id>` with the Ids from the ECS instances for your target ECS cluster.
 
@@ -1160,9 +1161,9 @@ loadBalancers:
 
 #### targetGroupArn is mandatory
 
-You can see `targetGroupArn: <+targetGroupArn>` in the example above. For Harness Blue Green deployments, this is mandatory.
+You can see `targetGroupArn: \<+targetGroupArn\>` in the example above. For Harness Blue Green deployments, this is mandatory.
 
-Harness will resolve the `<+targetGroupArn>` expression to the ARN of the first target group associated with the **Stage Listener Rule ARN** in the **ECS Blue Green Create Service** step.
+Harness will resolve the `\<+targetGroupArn\>` expression to the ARN of the first target group associated with the **Stage Listener Rule ARN** in the **ECS Blue Green Create Service** step.
 
 #### ECS Blue Green Create Service step
 
@@ -1420,7 +1421,8 @@ AWS ECS circuit breaker logic determines whether the deployment will fail if the
 Circuit breaker configuration is implemented in the Harness ECS service **Service Definition**. 
 
 <details>
-<summary>Circuit breaker configuration example</summary>
+
+		<summary>Circuit breaker configuration example</summary>
 
 See the `deployment-configuration` setting in the following example:
 

@@ -889,7 +889,7 @@ Likely, there is an incompatible Helm client or Tiller. The Helm client needs to
 
 In some cases, the first Helm deployment goes to the upgrade path even though the Helm version is working fine.
 
-This is the result of a Helm issue: <https://github.com/helm/helm/issues/4169>.
+This is the result of a Helm issue: [https://github.com/helm/helm/issues/4169](https://github.com/helm/helm/issues/4169).
 
 The issue happens between Helm client versions 2.8.2 to 2.9.1. To fix this, upgrade the Helm client to the version after 2.9.1.
 
@@ -937,7 +937,7 @@ For more information, search the Web for `use same port and use host header name
 
 The following problems can occur when developing and deploying to Kubernetes.
 
-#### Invalid Kubernetes resource name ${k8s.canaryWorkload}. Should be in format Kind/Name
+#### Invalid Kubernetes resource name $\{k8s.canaryWorkload\}. Should be in format Kind/Name
 
 The deployed Kubernetes object must reach steady state for Harness to be able to resolve the `${k8s.canaryWorkload}` expression.
 

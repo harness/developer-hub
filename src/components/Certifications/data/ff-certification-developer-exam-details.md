@@ -24,7 +24,8 @@ The Feature Flag Developer exam tests your knowledge and skills of the Harness F
 ## Exam Objectives
 
 <details>
-<summary>List of Objectives</summary>
+
+		<summary>List of Objectives</summary>
 
 The following is a detailed list of exam objectives:
 

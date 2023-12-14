@@ -59,7 +59,8 @@ Similarly, Harness compares the objects you are deploying with the objects it fi
 Harness also allows you to identify resources you do not want pruned using the annotation `harness.io/skipPruning`. This is described later in this topic.
 
 <details>
-<summary>Rolling deployments</summary>
+
+		<summary>Rolling deployments</summary>
 
 When the **Enable Kubernetes Pruning** setting is enabled, Kubernetes Rolling deployments manage pruning as follows:
 
@@ -71,7 +72,8 @@ When the **Enable Kubernetes Pruning** setting is enabled, Kubernetes Rolling de
 </details>
 
 <details>
-<summary>Blue Green deployments</summary>
+
+		<summary>Blue Green deployments</summary>
 
 When the **Enable Kubernetes Pruning** setting is enabled, Kubernetes Blue Green deployments manage pruning as follows:
 

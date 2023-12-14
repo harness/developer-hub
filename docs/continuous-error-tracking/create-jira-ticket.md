@@ -24,7 +24,8 @@ To create a Jira ticket for an event:
 The Jira ticket is created, and the ticket number is displayed along with the details of that event on the Events page.
 
 <details>
-<summary><b>Watch video</b></summary>
+
+		<summary><b>Watch video</b></summary>
 
 <docvideo src="https://youtu.be/z7b6kpFwsvo"/>
 

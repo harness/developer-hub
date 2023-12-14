@@ -183,14 +183,14 @@ To set up a MongoDB VM, do the following:
 
     ```
     rs.initiate(
-      {
+      \{
         _id: "rs0",
         members: [
-          { _id: 0, host: 'abc-vm1.c.internal:27017' },
-          { _id: 1, host: 'abc-vm2.c.internal:27017' },
-          { _id: 2, host: 'abc-vm3.c.internal:27017' }
+          \{ _id: 0, host: 'abc-vm1.c.internal:27017' \},
+          \{ _id: 1, host: 'abc-vm2.c.internal:27017' \},
+          \{ _id: 2, host: 'abc-vm3.c.internal:27017' \}
         ]
-      }
+      \}
     )
     ```
 
@@ -198,10 +198,10 @@ To set up a MongoDB VM, do the following:
 
     ```
     db.createUser(
-    {
+    \{
      user: "admin",
      pwd: "testp@ssw0rd123",
-     roles:[{role: "root" , db:"admin"}]})
+     roles:[\{role: "root" , db:"admin"\}]\})
     ```
 
 19. Run the following to verify your replicaset configuration.

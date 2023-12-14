@@ -16,7 +16,8 @@ This topic covers the Harness deployment freeze feature, including how to set up
 If you are new to deployment freezes, review the following summary.
 
 <details>
-<summary>Deployment freeze summary</summary>
+
+		<summary>Deployment freeze summary</summary>
 
 A deployment freeze is a period of time during which no new changes are made to a system or application. This ensures that a system or application remains stable and free of errors, particularly in the lead-up to a major event or release.
 

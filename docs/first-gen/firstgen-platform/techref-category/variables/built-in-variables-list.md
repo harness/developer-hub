@@ -40,7 +40,7 @@ For deployment information, see [Deployments](#deployments).`${service.name}`
 
 * The ID of the artifact source set up in the Harness Service. For example, `[J9xRo2udQ0KktSzghvhQ5w]`.
 * You can remove the brackets from the value like this  
-`export serviceId=`echo ${artifact.serviceIds} | awk ‘{ gsub(/\[/,“”); gsub(/]/, “”); print $1 }’``
+`export serviceId=`echo $\{artifact.serviceIds\} | awk ‘\{ gsub(/\[/,“”); gsub(/]/, “”); print $1 \}’``
 
 ### Service Config Variables
 
@@ -803,10 +803,10 @@ The following constants define the paths used at runtime, backup, and staging of
 |  |  |  |
 | --- | --- | --- |
 | **Constant** | **Expression** | **Description** |
-| RUNTIME\_PATH | ${app.defaults.RUNTIME\_PATH} | The runtime path for a Harness application:`$HOME/${app.name}/${service.name}/${env.name}/runtime` |
-| BACKUP\_PATH | ${app.defaults.BACKUP\_PATH} | The backup path for a Harness application:`$HOME/${app.name}/${service.name}/${env.name}/backup/${timestampId}` |
-| STAGING\_PATH | ${app.defaults.STAGING\_PATH} | The staging path for a Harness application:`$HOME/${app.name}/${service.name}/${env.name}/staging/${timestampId}` |
-| WINDOWS\_RUNTIME\_PATH | ${app.defaults.WINDOWS\_RUNTIME\_PATH} | The runtime path for a Harness application on Windows. |
+| RUNTIME\_PATH | $\{app.defaults.RUNTIME\_PATH\} | The runtime path for a Harness application:`$HOME/${app.name}/${service.name}/${env.name}/runtime` |
+| BACKUP\_PATH | $\{app.defaults.BACKUP\_PATH\} | The backup path for a Harness application:`$HOME/${app.name}/${service.name}/${env.name}/backup/${timestampId}` |
+| STAGING\_PATH | $\{app.defaults.STAGING\_PATH\} | The staging path for a Harness application:`$HOME/${app.name}/${service.name}/${env.name}/staging/${timestampId}` |
+| WINDOWS\_RUNTIME\_PATH | $\{app.defaults.WINDOWS\_RUNTIME\_PATH\} | The runtime path for a Harness application on Windows. |
 
 Here is example output of the constants on a Linux server:
 

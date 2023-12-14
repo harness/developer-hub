@@ -139,7 +139,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
   The **Security Test** UI now uses the following labels to describe issues found in the current scan that are common to previous scans:
 
-  - **Common to <_target_>:<_variant_>** Issues also found in the last scan of the specified variant.
+  - **Common to \<_target_\>:\<_variant_\>** Issues also found in the last scan of the specified variant.
   - **Common to previous scan** 
     - Issues also found in the last scan (if the scanned target has no baseline), OR
     - Issues also found in the last scan of the baseline (if the scanned variant is the baseline).
@@ -683,7 +683,8 @@ The following security steps are now generally available:
   - For descriptions of all available UI settings, go to [Security step UI settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference).
  
 
-<details><summary>Security step configuration UI </summary>
+<details>
+		<summary>Security step configuration UI </summary>
 
 ![STO step palette](static/sto-step-palette.png)
 
@@ -777,7 +778,8 @@ This release does not include fixed issues.
 ## Previous releases
 
 <details>
-<summary>2022 releases</summary>
+
+		<summary>2022 releases</summary>
 
 #### December 18, 2022      
 

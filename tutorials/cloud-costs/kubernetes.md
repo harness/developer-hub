@@ -43,7 +43,8 @@ If you have not already, make sure to sign up for a [Harness CCM Account](https:
 You will also need to wire in a [Kubernetes Delegate](../platform/install-delegate) if you have not done so already.
 
 <details>
-<summary>Install Delegate</summary>
+
+		<summary>Install Delegate</summary>
 <DelegateInstall />
 </details>
 

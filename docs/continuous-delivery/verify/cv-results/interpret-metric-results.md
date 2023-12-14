@@ -94,7 +94,8 @@ The metric summary provides an overview of the verification results, indicating 
 
 
 <details>
-<summary><b>Consideration of error scenarios in risk calculation</b></summary>
+
+		<summary><b>Consideration of error scenarios in risk calculation</b></summary>
 
 
 The following error scenarios are considered in the risk calculation:

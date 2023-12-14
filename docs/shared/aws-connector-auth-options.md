@@ -4,7 +4,8 @@ The **Use IRSA** option allows the Harness Kubernetes delegate in AWS EKS to use
 2. Modify your delegate YAML, as described below.
 
 <details>
-<summary>Configure delegate YAML for IRSA</summary>
+
+		<summary>Configure delegate YAML for IRSA</summary>
 
 Setting up IRSA credentials requires a few more steps than other methods, but it is a simple process.
 

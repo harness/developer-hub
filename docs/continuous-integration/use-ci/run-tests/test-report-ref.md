@@ -301,7 +301,8 @@ This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/
 ### JavaScript
 
 <details>
-<summary>ESLint</summary>
+
+		<summary>ESLint</summary>
 
 [ESLint JUnit Formatter](https://eslint.org/docs/latest/use/formatters/#junit)
 
@@ -325,7 +326,8 @@ This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/
 </details>
 
 <details>
-<summary>Jest</summary>
+
+		<summary>Jest</summary>
 
 [Jest JUnit Reporter](https://www.npmjs.com/package/jest-junit)
 
@@ -351,7 +353,8 @@ This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/
 </details>
 
 <details>
-<summary>Karma</summary>
+
+		<summary>Karma</summary>
 
 [Karma JUnit Reporter](https://www.npmjs.com/package/karma-junit-reporter)
 
@@ -379,7 +382,8 @@ This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/
 </details>
 
 <details>
-<summary>Mocha</summary>
+
+		<summary>Mocha</summary>
 
 [Mocha JUnit Reporter](https://www.npmjs.com/package/mocha-junit-reporter)
 
@@ -406,7 +410,8 @@ This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/
 ### Ruby
 
 <details>
-<summary>Minitest</summary>
+
+		<summary>Minitest</summary>
 
 Add the [Minitest Junit Formatter](https://github.com/aespinosa/minitest-junit) to your Gemfile.
 
@@ -430,7 +435,8 @@ Add the [Minitest Junit Formatter](https://github.com/aespinosa/minitest-junit) 
 </details>
 
 <details>
-<summary>RSpec</summary>
+
+		<summary>RSpec</summary>
 
 Add the [RSpec JUnit formatter](https://rubygems.org/gems/rspec_junit_formatter) to your Gemfile.
 

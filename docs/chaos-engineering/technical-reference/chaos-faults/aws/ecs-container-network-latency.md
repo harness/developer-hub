@@ -17,7 +17,8 @@ This experiment induces chaos within a container and depends on an EC2 instance.
 ## Usage
 
 <details>
-<summary>View fault usage</summary>
+
+		<summary>View fault usage</summary>
 <div>
 This fault degrades the network of the task container without the container being marked as unhealthy/ (or unworthy) of traffic. It simulates issues within the ECS task network or communication across services in different availability zones (or regions).
 This can be resolved using middleware that switches traffic based on certain SLOs (or performance parameters).
@@ -55,7 +56,8 @@ stringData:
 Here is an example AWS policy to execute the fault.
 
 <details>
-<summary>View policy for the fault</summary>
+
+		<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -128,7 +130,8 @@ The ECS container instance should be in a healthy state.
 ## Fault tunables
 
 <details>
-    <summary>Fault tunables</summary>
+    
+		<summary>Fault tunables</summary>
     <h2>Mandatory fields</h2>
     <table>
         <tr>

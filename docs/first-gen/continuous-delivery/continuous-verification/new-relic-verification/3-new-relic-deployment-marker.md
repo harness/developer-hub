@@ -126,7 +126,7 @@ Here's an example YAML schema that you can use for New Relic Deployment Marker.
 ```
 
 
-For **applicationId**, you can use a Harness built-in variable expression such as **${service.name}** or a Workflow or Service variable.
+For **applicationId**, you can use a Harness built-in variable expression such as **$\{service.name\}** or a Workflow or Service variable.
 
 
 For more information about variables and expressions, see the following topics:

@@ -43,7 +43,8 @@ If you have a pipeline that has its service and environments templated, you can 
 ![picture 3](static/9110d373850aff0b1a463c62f6f8b1ebc95cc32fb54bbaadb1a80dda538f10e3.png)  
 
 <details>
-<summary>Sample pipeline YAML</summary>
+
+		<summary>Sample pipeline YAML</summary>
 
 ```yaml
 pipeline:

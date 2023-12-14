@@ -88,7 +88,8 @@ Here is the YAML for a pipeline that simulates Shell Script provisioning so you 
 
 
 <details>
-<summary>Shell Script provisioning simulation</summary>
+
+		<summary>Shell Script provisioning simulation</summary>
 
 In the stage's **Shell Script Provision** step, you will see a JSON array echoed and stored in `$PROVISIONER_OUTPUT_PATH`. 
 

@@ -47,7 +47,8 @@ https://www.loom.com/share/6f65a77dfdac42639eab745a0b391ce3?sid=9e25316e-b0cf-40
 <docvideo src="https://www.loom.com/share/6f65a77dfdac42639eab745a0b391ce3?sid=9e25316e-b0cf-40b8-9917-39d299f58121" />
 
 <details>
-<summary>Test Intelligence architecture</summary>
+
+		<summary>Test Intelligence architecture</summary>
 
 Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **Run Tests** step.
 

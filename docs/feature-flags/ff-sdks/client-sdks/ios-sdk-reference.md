@@ -168,7 +168,8 @@ To connect to the correct Environment that you set up on the Harness Platform, y
 ### Add a Target
 
 <details>
-<summary>What is a Target?</summary> 
+
+		<summary>What is a Target?</summary> 
 Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
@@ -184,7 +185,8 @@ To add a Target, build it using `CfTarget.builder` and pass in arguments for the
 | identifier | ID of the Target.Read **Regex requirements for Target names and identifiers** below for accepted characters. | Required | `.identifier("HT_1")` |
 
 <details>
-<summary> Regex requirements for Target names and identifiers </summary>
+
+		<summary> Regex requirements for Target names and identifiers </summary>
 
 **Identifier** 
 

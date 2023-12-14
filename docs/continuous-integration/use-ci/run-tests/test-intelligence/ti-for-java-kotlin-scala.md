@@ -44,7 +44,8 @@ Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI
    The first time you run a pipeline after adding the Run Test step, Harness creates a baseline for test selection in future builds. Test selection *isn't* applied to this run because Harness has no baseline against which to compare changes and select tests. You'll start seeing test selection and time savings on the second run after adding the Run Tests step.
 
 <details>
-<summary>Trigger test selection with a webhook trigger (Recommended)</summary>
+
+		<summary>Trigger test selection with a webhook trigger (Recommended)</summary>
 
 1. If your pipeline doesn't already have one, [add a webhook trigger](/docs/platform/triggers/triggering-pipelines/) that listens for **Pull Request** or **Push** events in your [codebase](../../codebase-configuration/create-and-configure-a-codebase.md).
 2. Activate the trigger by opening a PR or pushing changes to your codebase, and then wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
@@ -60,7 +61,8 @@ Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI
 </details>
 
 <details>
-<summary>Trigger test selection with a manual build</summary>
+
+		<summary>Trigger test selection with a manual build</summary>
 
 1. Open a PR or push changes to your pipeline's [codebase](../../codebase-configuration/create-and-configure-a-codebase.md), and then run your pipeline.
 
@@ -208,7 +210,8 @@ The following information explains how to configure most settings for the **Run 
 The build environment must have the necessary binaries for the **Run Tests** step to execute your test commands. Depending on the stage's build infrastructure, **Run Tests** steps can use binaries that exist in the build environment, or use **Container Registry** and **Image** to pull an image, such as a public or private Docker image, that contains the required binaries. You can also install tools at runtime in [Pre-Command](#pre-command-post-command-and-shell), provided the build machine or image can execute the necessary commands, such as `curl` commands to download files.
 
 <details>
-<summary>When are Container Registry and Image required?</summary>
+
+		<summary>When are Container Registry and Image required?</summary>
 
 The stage's build infrastructure determines whether these fields are required or optional:
 
@@ -220,7 +223,8 @@ The stage's build infrastructure determines whether these fields are required or
 </details>
 
 <details>
-<summary>What are the expected values for Container Registry and Image?</summary>
+
+		<summary>What are the expected values for Container Registry and Image?</summary>
 
 For **Container Registry**, provide a Harness container registry connector, such as a Docker connector, that connects to the container registry where the **Image** is located.
 
@@ -243,7 +247,8 @@ Select the source code language to build: **Java**, **Kotlin**, or **Scala**.
 Select the build automation tool: [Bazel](https://bazel.build/), [Maven](https://maven.apache.org/), [Gradle](https://gradle.org/), or [Sbt](https://www.scala-sbt.org/) (Scala only).
 
 <details>
-<summary>Bazel container images</summary>
+
+		<summary>Bazel container images</summary>
 
 If you use a Bazel [container image](#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](../../run-ci-scripts/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
 
@@ -252,7 +257,8 @@ Bazel is already installed on Harness Cloud runners, and you don't need to speci
 </details>
 
 <details>
-<summary>Java Maven argLine setup</summary>
+
+		<summary>Java Maven argLine setup</summary>
 
 If you use Maven with Java and your `pom.xml` contains `<argLine>` *or* you attach Jacoco or any agent while running unit tests, then you must modify your `pom.xml` to include `<harnessArgLine>` in the `<properties>` and the Maven plugin `<configuration>`. For example:
 
@@ -296,7 +302,8 @@ If your `pom.xml` contains `argLine`, you must update the Java Agent as follows:
 </details>
 
 <details>
-<summary>Java Gradle compatibility</summary>
+
+		<summary>Java Gradle compatibility</summary>
 
 If you use Java with Gradle, Test Intelligence assumes `./gradlew` is present in the root of your project. If not, TI falls back to the Gradle tool to run the tests. As long as your Gradle version has test filtering support, it is compatible with Test Intelligence.
 
@@ -307,21 +314,21 @@ Add the following to your `build.gradle` to make it compatible with Test Intelli
 // provided through the command line.
 // Local builds will still remain same as it only adds if the
 // parameter is provided.
-tasks.withType(Test) {
-  if(System.getProperty("HARNESS_JAVA_AGENT")) {
+tasks.withType(Test) \{
+  if(System.getProperty("HARNESS_JAVA_AGENT")) \{
     jvmArgs += [System.getProperty("HARNESS_JAVA_AGENT")]
-  }
-}
+  \}
+\}
 
 // This makes sure that any test tasks for subprojects don't
 // fail in case the test filter does not match.
-gradle.projectsEvaluated {
-        tasks.withType(Test) {
-            filter {
+gradle.projectsEvaluated \{
+        tasks.withType(Test) \{
+            filter \{
                 setFailOnNoMatchingTests(false)
-            }
-        }
-}
+            \}
+        \}
+\}
 ```
 
 </details>
@@ -387,7 +394,8 @@ Error tracking helps you be more proactive at discovering and remediating errors
 Select **Yes** to enable error tracking. When enabled, a set of commands are auto-populated in the [Pre-Command](#pre-command-post-command-and-shell). Review these commands to ensure that they are compatible with your build. The auto-populated commands are enclosed in `#ET-SETUP-BEGIN` and `#ET-SETUP-END`.
 
 <details>
-<summary>CET Java Error Tracking Pre-command example</summary>
+
+		<summary>CET Java Error Tracking Pre-command example</summary>
 
 ```shell
 #ET-SETUP-BEGIN

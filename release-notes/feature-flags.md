@@ -102,8 +102,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - The below requests now implement a retry mechanism of up to 10 retries on retryable errors:
     - target-segments, 
     - feature-config, 
-    - target-segments/{identifier}, and 
-    - feature-config/{identifier}.
+    - target-segments/\{identifier\}, and 
+    - feature-config/\{identifier\}.
 
 Fixed issues
 
@@ -254,7 +254,7 @@ Fixed Issues
  - To resolve this, we:
   - Fixed the gitSync function for newly created environment.
   - Added gitSync for deleted environments. 
-- Sending a GET request to the /targets/${IDENTIFIER} endpoint returned a 200 error code, even if the target didn't exist. This error code has been changed to 404.
+- Sending a GET request to the /targets/$\{IDENTIFIER\} endpoint returned a 200 error code, even if the target didn't exist. This error code has been changed to 404.
 - Previously, a multivareate flag's variation values had an erroneous maximum limit of 2704 bytes, with a poor error message if this was exceeded. 
 This limit has been raised to 25000 bytes, with a clear error message if this is exceeded.
 - Targets sent by the server-side SDKs were not being updated in the database. This meant if a sever-side target changed, while evaluations worked as expected, the updated attributes were not shown in the UI. This fix ensures targets are correctly upserted.
@@ -952,7 +952,8 @@ This includes the following:
 ## Previous releases
 
 <details>
-<summary>2022 releases</summary>
+
+		<summary>2022 releases</summary>
 
 #### December 22, 2022
 

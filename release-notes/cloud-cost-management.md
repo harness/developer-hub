@@ -50,7 +50,8 @@ This release does not include any early access features.
 ## Previous releases
 
 <details>
-<summary>2023 releases</summary>
+
+		<summary>2023 releases</summary>
 
 #### October 26, 2023, version 81300
 
@@ -856,7 +857,8 @@ This release does not include any fixed issues.
 
 
 <details>
-<summary>2022 releases</summary>
+
+		<summary>2022 releases</summary>
 
 
 #### December 16, 2022
@@ -1109,30 +1111,30 @@ N/A
    -H 'x-api-key: pat.H5xxxA2MXg.6xxxmD'
 
 Example response:
-{
+\{
 "status": "SUCCESS",
 "data": [
-{
+\{
 "dashboardName": "AWS Cost Dashboard",
 "dashboardId": "226",
 "cloudProvider": "AWS",
 "description": "Discover and track analytical insights into your AWS cloud costs",
 "serviceType": "",
 "redirectionURL": "#/account/H5W8ioxxxA2MXg/dashboards/folder/shared/view/226"
-},
+\},
 ...
-{
+\{
 "dashboardName": "AWS RDS Inventory Cost Dashboard",
 "dashboardId": "3309",
 "cloudProvider": "AWS",
 "description": "Overview of cloud spend across RDS instances, breakdown by accounts, regions, instance types etc.",
 "serviceType": "AWS RDS",
 "redirectionURL": "#/account/H5W8ioxxxA2MXg/dashboards/folder/shared/view/0000"
-}
+\}
 ],
 "metaData": null,
 "correlationId": "bc71c537-048f-4d53-80cd-8462158e1471"
-}
+\}
 
 ##### Fixed issues
 

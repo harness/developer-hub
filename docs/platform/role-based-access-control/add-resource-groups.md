@@ -111,7 +111,8 @@ This level of control is not available at all scopes for all resource types. For
 Harness includes several built-in resource groups.
 
 <details>
-<summary>Built-in resource groups at the Account scope</summary>
+
+		<summary>Built-in resource groups at the Account scope</summary>
 
 * **All Resources Including Child Scopes:** Includes all resources within the account's scope, as well as those within the scope of orgs and projects under the account. This is the most inclusive resource group possible.
 
@@ -154,7 +155,8 @@ flowchart TD
 </details>
 
 <details>
-<summary>Built-in resource groups at the Org scope</summary>
+
+		<summary>Built-in resource groups at the Org scope</summary>
 
 * **All Resources Including Child Scopes:** Includes all resources within a specific org's scope, as well as those within the scope of projects under that org. This is set for each org. If you have multiple orgs, you have an **All Resources Including Child Scopes** for each org.
 
@@ -201,7 +203,8 @@ flowchart TD
 </details>
 
 <details>
-<summary>Built-in resource groups at the Project scope</summary>
+
+		<summary>Built-in resource groups at the Project scope</summary>
 
 **All Project Level Resources** includes all resources in the project's scope. This is set for each project. If you have multiple projects, you have an **All Project Level Resources** for each project.
 

@@ -61,7 +61,7 @@ This tutorial focuses on how to notify users of different pipeline events using 
 
 5. In **Notification Method**, select `Slack`.
 6. Paste the webhook in **Slack Webhook URL**. Harness recommends that you add the webhook as an **[encrypted text](/docs/platform/secrets/add-use-text-secrets)** secret and reference it in **Slack Webhook URL** as an **expression**.
-    - For example, `<+secrets.getValue("slackwebhookURL")>​`.
+    - For example, `\<+secrets.getValue("slackwebhookURL")\>​`.
 7. Now additionally you can use the **user-group** created above, if it is associated with the slack channels to send notifications, for more information on the same follow the instructions mentioned [here](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#notify-slack-channels-in-user-groups)
 
 8. Select **Finish** and your notification is created. 
@@ -98,7 +98,7 @@ For steps on creating Microsoft Teams notifications, follow the detailed instruc
 In Harness you can use webhook notifications to inform an external application of a pipeline/stage event. 
 
 5. In **Notification Method**, select `Webhook`.
-6. In **Enter the URL to be called**, use expressions to compose the URL to be called when the event occurs. For example, `https://companyurl.notify.com/execution=-<+pipeline.executionId>`.
+6. In **Enter the URL to be called**, use expressions to compose the URL to be called when the event occurs. For example, `https://companyurl.notify.com/execution=-\<+pipeline.executionId\>`.
    
    The webhook call is made as a POST request, and includes a JSON object containing the properties of the triggered event.
 

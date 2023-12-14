@@ -54,7 +54,8 @@ This topic shows you how to import a Template to the CD module.
 7. In **Git Connector**, select or create a Git Connector to connect to your Git repo. For steps, see [Code Repo Connectors](https://harness.helpdocs.io/category/xyexvcc206-ref-source-repo-provider).
    
    <details>
-   <summary>
+   
+		<summary>
    IMPORTANT: Connector must use the Enable API access option and Token
 
    </summary>

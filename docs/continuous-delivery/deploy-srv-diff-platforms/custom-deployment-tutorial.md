@@ -287,13 +287,13 @@ Now let's add the Docker image for deployment.
 
 Later, in the stage Execution, we will add a deployment step that will download and apply a Kubernetes manifest. The manifest is located in a [public GitHub repo](https://github.com/wings-software/harness-docs/blob/main/default-k8s-manifests/Manifests/deployment.yaml). 
 
-In order for the manifest's Deployment object to use the artifact added to Harness, the expression `<+artifact.image>` is added to the image label (`image: <+artifact.image>`).
+In order for the manifest's Deployment object to use the artifact added to Harness, the expression `\<+artifact.image\>` is added to the image label (`image: \<+artifact.image\>`).
 
-You must use `<+artifact.image>` somewhere in your stage Execution to reference the artifact you added to Harness. You can reference it in a Shell Script step, a spec or manifest, or any other relevant step or setting.
+You must use `\<+artifact.image\>` somewhere in your stage Execution to reference the artifact you added to Harness. You can reference it in a Shell Script step, a spec or manifest, or any other relevant step or setting.
 
-If you do not use `<+artifact.image>`, Harness will not attempt to download and deploy the artifact.
+If you do not use `\<+artifact.image\>`, Harness will not attempt to download and deploy the artifact.
 
-For non-containerized artifacts, use `<+artifact.path>`.
+For non-containerized artifacts, use `\<+artifact.path\>`.
 
 To learn more, go to [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables#artifact).
 
@@ -358,7 +358,7 @@ Next, we need this script to loop through all the fetched instances. We do that 
 
   ![](./static/custom-deployment-tutorial-28.png)
 
-  The `<+stage.output.hosts>` expression references all of the hosts/pods/instances returned by your script.
+  The `\<+stage.output.hosts\>` expression references all of the hosts/pods/instances returned by your script.
 4. Click **Apply Changes**.
 
 Execution is complete. Now we'll select the Delegate you set up as the Delegate to use for the entire stage.
@@ -428,7 +428,7 @@ These are variables that you can use in the following places:
 
 #### Referencing variables
 
-You reference variables using a Harness expression with the syntax `<+infra.variables.[variable Id]>`. You can reference any setting in the variable entity, such as a Connector's URL.
+You reference variables using a Harness expression with the syntax `\<+infra.variables.[variable Id]\>`. You can reference any setting in the variable entity, such as a Connector's URL.
 
 Here are some examples.
 
@@ -462,13 +462,13 @@ Here's the expressions referencing these variables:
 
 Reference [Secret Manager](/docs/platform/secrets/secrets-management/add-secrets-manager) connector variables using the following expressions.
 
-* [AWS KMS](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
-* [AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
-* [Azure Key Vault](/docs/platform/secrets/secrets-management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
-* [Google KMS](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
-* [Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
-* [Custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
-* [HashiCorp Vault](/docs/platform/secrets/secrets-management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
+* [AWS KMS](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager): `\<+infra.variables.AwsKms.spec.credential.type\>`
+* [AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager): `\<+infra.variables.AwsSecretsManager.spec.region\>`
+* [Azure Key Vault](/docs/platform/secrets/secrets-management/azure-key-vault): `\<+infra.variables.AzureKeyVault.spec.vaultName\>`
+* [Google KMS](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager): `\<+infra.variables.GcpKms.spec.keyName\>`
+* [Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager): `\<+infra.variables.GcpSecMan.spec.credentialsRef.identifier\>`
+* [Custom secret manager](/docs/platform/secrets/secrets-management/custom-secret-manager): `\<+infra.variables.CustomSecMan.spec.isDefault\>`
+* [HashiCorp Vault](/docs/platform/secrets/secrets-management/add-hashicorp-vault): `\<+infra.variables.HashiCorp.spec.vaultUrl\>`
 
 #### Overwriting variables
 
@@ -480,27 +480,27 @@ When you define the Infrastructure Definition in your stage **Environment**, you
 
 #### Target host instance variable expressions
 
-You can use `<+instance...>` expressions to reference host(s) properties.
+You can use `\<+instance...\>` expressions to reference host(s) properties.
 
-The `<+instance...>` expressions refer to the **Instance Attributes** in the Deployment Template:
+The `\<+instance...\>` expressions refer to the **Instance Attributes** in the Deployment Template:
 
 ![](./static/custom-deployment-tutorial-33.png)
 
 The following expressions refer to instance(s) collected by the mandatory **instancename** field:
 
-* [<+instance.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostname)
-* [<+instance.host.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostinstancename)
-* [<+instance.name>](/docs/platform/variables-and-expressions/harness-variables#instancename)
+* [\<+instance.hostName\>](/docs/platform/variables-and-expressions/harness-variables#instancehostname)
+* [\<+instance.host.hostName\>](/docs/platform/variables-and-expressions/harness-variables#instancehostinstancename)
+* [\<+instance.name\>](/docs/platform/variables-and-expressions/harness-variables#instancename)
 
-The expression `<+instance.host.properties.[property name]>` can used to reference the other properties you added to **Instance Attributes**.
+The expression `\<+instance.host.properties.[property name]\>` can used to reference the other properties you added to **Instance Attributes**.
 
 For example, in the example above you can see the `artifact` field name mapped to the `artifactBuildNo` property.
 
-To reference `artifact` you would use `<+instance.host.properties.artifact>`.
+To reference `artifact` you would use `\<+instance.host.properties.artifact\>`.
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
 
-To use these expressions, you need to enable the Repeat Looping Strategy and use the expression `<+stage.output.hosts>` on the step that follows **Fetch Instances**.
+To use these expressions, you need to enable the Repeat Looping Strategy and use the expression `\<+stage.output.hosts\>` on the step that follows **Fetch Instances**.
 
 For example, here is a Shell Script step that outputs these expressions:
 

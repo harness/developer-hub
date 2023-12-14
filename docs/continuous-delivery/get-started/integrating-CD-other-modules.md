@@ -15,7 +15,8 @@ You can use Harness CI as the first stage in the pipeline to build, test, and pu
 Here's the YAML for a simple example that builds and pushes an app in the CI stage and then pulls and deploys the app in the CD stage.
 
 <details>
-<summary>YAML</summary>
+
+		<summary>YAML</summary>
 
 ```yaml
 pipeline:
@@ -118,9 +119,9 @@ Here's the push step from the CI stage:
 
 <docimage path={require('./static/f2f3a47b93bed917ba2df30fc996ee9a859119c2ce7288eebbf0c8e9d81d8f0d.png')} width="60%" height="60%" title="Click to view full size image" />
 
-Note the `<+pipeline.sequenceId>` expression. This is used to tag the artifact pushed to Docker Hub. You can tag your artifact versions in a number of ways. The expression `<+pipeline.sequenceId>` is incremented each time the pipeline is run.
+Note the `\<+pipeline.sequenceId\>` expression. This is used to tag the artifact pushed to Docker Hub. You can tag your artifact versions in a number of ways. The expression `\<+pipeline.sequenceId\>` is incremented each time the pipeline is run.
 
-The expression `<+pipeline.sequenceId>` will be used in the subsequent CD stage to fetch the app version.
+The expression `\<+pipeline.sequenceId\>` will be used in the subsequent CD stage to fetch the app version.
 
 ```mdx-code-block
   </TabItem>
@@ -131,7 +132,7 @@ Here's the Kubernetes Rollout Deployment step from the CD stage.
 
 <docimage path={require('./static/d3f2a764bed2a191ddb13ae8c4f2a607da97c7aa22e94f433eeac946da54cb15.png')} width="60%" height="60%" title="Click to view full size image" />
 
-In the stage's service, the expression `<+pipeline.sequenceId>` is used pull the the app version.
+In the stage's service, the expression `\<+pipeline.sequenceId\>` is used pull the the app version.
 
 ![picture 2](static/3c2e1bbbaf91a9d3da0487bbeb2919ae045b1718fe2c20bba220efcc4a86a439.png)
 

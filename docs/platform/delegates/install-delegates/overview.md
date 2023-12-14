@@ -14,7 +14,8 @@ import CustomImage from './build-custom-delegate-images-with-third-party-tools.m
 The inline tutorial below shows you how to install the default delegate for your Harness account. It can be either a Kubernetes delegate installed using a Helm chart, Terraform Helm Provider, and Kubernetes manifest or a Docker delegate using the `docker run` command. You can also review the tutorial directly [here](/tutorials/platform/install-delegate).
 
 <details>
-<summary>Install the default delegate on Kubernetes or Docker</summary>
+
+		<summary>Install the default delegate on Kubernetes or Docker</summary>
 <DelegateInstall />
 </details>
 
@@ -34,7 +35,8 @@ The minimal delegate image, denoted by the `yy.mm.xxxxx.minimal` image tag, does
 This option installs the 3rd party custom binaries on a delegate container instance without changing the delegate image itself. Below is an inline tutorial that shows you how to use this option. You can also review the tutorial directly [here](/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
 
 <details>
-<summary>Use INIT_SCRIPT</summary>
+
+		<summary>Use INIT_SCRIPT</summary>
 <InitScript />
 </details>
 
@@ -43,7 +45,8 @@ This option installs the 3rd party custom binaries on a delegate container insta
 This option installs the 3rd party custom binaries on a new custom delegate image that uses the Harness minimal delegate image as its base image. Below is an inline tutorial that shows you how to use this option. You can also review the tutorial directly [here](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 <details>
-<summary>Build a custom image</summary>
+
+		<summary>Build a custom image</summary>
 <CustomImage />
 </details>
 

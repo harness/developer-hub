@@ -32,7 +32,7 @@ You can reference this config file as an expression in a pipeline from the **Exe
 
 For example, in a Tanzu Command step, you can reference the config file by entering the following script in the step's **Step Parameters>** **Script>** **Inline**. 
 
-`echo "<+configFile.getAsString("shell")>"` 
+`echo "\<+configFile.getAsString("shell")\>"` 
 
 ```mdx-code-block
 </TabItem>
@@ -56,7 +56,7 @@ You can reference this config file as an expression in a pipeline from the **Exe
 
 For example, in a Tanzu Command step, you can reference the config file by entering the following script in the step's **Step Parameters>** **Script>** **Inline**. 
 
-`echo "<+configFile.getAsString("shellsec")>"` 
+`echo "\<+configFile.getAsString("shellsec")\>"` 
 
 ```mdx-code-block
 </TabItem>  

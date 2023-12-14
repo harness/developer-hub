@@ -54,7 +54,8 @@ You can connect Harness to a TAS space by adding a TAS connector. Perform the fo
    Expand the sections below to learn more about installing delegates.
 
 <details>
-<summary>Use the delegate installation wizard</summary>
+
+		<summary>Use the delegate installation wizard</summary>
 
 1. In your Harness project, select **Project Setup**.
 2. Select **Delegates**.
@@ -70,7 +71,8 @@ import DelegateInstall from '/tutorials/platform/install-delegate.md';
 ```
 
 <details>
-<summary>Install a delegate using the terminal</summary>
+
+		<summary>Install a delegate using the terminal</summary>
 <DelegateInstall />
 </details>
 
@@ -481,7 +483,7 @@ output "space_name" {
 ```
 
 
-In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.organization_name>`.
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `\<+provisioner.OUTPUT_NAME\>`, such as `\<+provisioner.organization_name\>`.
 
 <figure>
 
@@ -546,7 +548,8 @@ The TAS workflow for performing a basic deployment takes your Harness TAS servic
      Expand the following section to view the error types and failure strategies supported for the steps in a Basic TAS deployment.
 
      <details>
-     <summary>Error types and failure strategy</summary>
+     
+		<summary>Error types and failure strategy</summary>
 
      | Step name | Error types and failure strategy |
      | :--- | :--- |
@@ -612,7 +615,8 @@ The canary deployment contains **Canary App Setup** and **App Resize** steps. Yo
      
      Expand the following section to view the error types and failure strategies supported for the steps in a Canary TAS deployment.
      <details>
-     <summary>Error types and failure strategy</summary>
+     
+		<summary>Error types and failure strategy</summary>
 
      | Step name | Error types and failure strategy |
      | :--- | :--- |
@@ -697,7 +701,8 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
      
      Expand the following section to view the error types and failure strategies supported for the steps in a Blue Green TAS deployment.
      <details>
-     <summary>Error types and failure strategy</summary>
+     
+		<summary>Error types and failure strategy</summary>
 
      | Step name | Error types and failure strategy |
      | :--- | :--- |
@@ -760,7 +765,8 @@ Before performing a rolling deployment, the TAS Rolling Deploy step first verifi
      
      Expand the following section to view the error types and failure strategies supported for the steps in a Rolling TAS deployment.
      <details>
-     <summary>Error types and failure strategy</summary>
+     
+		<summary>Error types and failure strategy</summary>
 
      | Step name | Error types and failure strategy |
      | :--- | :--- |

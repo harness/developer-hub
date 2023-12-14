@@ -8,7 +8,8 @@ import TabItem from '@theme/TabItem';
 ```
 
 <details>
-<summary>Platform features for all deployment types</summary>
+
+		<summary>Platform features for all deployment types</summary>
 
 import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
 
@@ -18,7 +19,8 @@ import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
 
 
 <details>
-<summary>Kubernetes</summary>
+
+		<summary>Kubernetes</summary>
 
 - **Overview:**
   - [Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview)
@@ -155,7 +157,8 @@ To use an AKS cluster for deployment, the AKS cluster parameter `disableLocalAcc
 </details>
 
 <details>
-<summary>Native Helm</summary>
+
+		<summary>Native Helm</summary>
 
 - **Overview:**
   - [Native Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart)
@@ -228,7 +231,8 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 </details>
 
 <details>
-<summary>Amazon ECS</summary>
+
+		<summary>Amazon ECS</summary>
 
 - **Overview:**
   - [AWS ECS](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial)
@@ -263,7 +267,8 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 
 
 <details>
-<summary>Amazon AMI/ASG</summary>
+
+		<summary>Amazon AMI/ASG</summary>
 
 - **Overview:**
   - [AWS AMI/ASG](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial)
@@ -282,7 +287,8 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 
 
 <details>
-<summary>AWS Lambda</summary>
+
+		<summary>AWS Lambda</summary>
 
 - **Overview:**
   - [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
@@ -304,7 +310,8 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 </details>
 
 <details>
-<summary>AWS SAM</summary>
+
+		<summary>AWS SAM</summary>
 
 - **Overview:**
   - [AWS SAM](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments)
@@ -324,7 +331,8 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 
 
 <details>
-<summary>Traditional: WinRM</summary>
+
+		<summary>Traditional: WinRM</summary>
 
 - **Overview:**
   - [WinRM](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
@@ -347,7 +355,8 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 
 
 <details>
-<summary>Traditional: SSH</summary>
+
+		<summary>Traditional: SSH</summary>
 
 - **Overview:**
   - [SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)
@@ -381,7 +390,8 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 
 
 <details>
-<summary>Tanzu Application Service (formerly Pivotal Cloud Foundry)</summary>
+
+		<summary>Tanzu Application Service (formerly Pivotal Cloud Foundry)</summary>
 
 - **Overview:**
   - [Tanzu Application Services](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart)
@@ -399,7 +409,8 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 
 
 <details>
-<summary>Google Functions</summary>
+
+		<summary>Google Functions</summary>
 
 - **Overview:**
   - [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions)
@@ -424,7 +435,8 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 
 
 <details>
-<summary>Spot Instances</summary>
+
+		<summary>Spot Instances</summary>
 
 - **Overview:**
   - [Spot Elastigroup deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment)
@@ -442,7 +454,8 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 
 
 <details>
-<summary>Serverless.com Framework</summary>
+
+		<summary>Serverless.com Framework</summary>
 
 - **Overview:**
   - [Serverless.com Framework](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart) (AWS Lambda)
@@ -480,7 +493,8 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 
 
 <details>
-<summary>Azure WebApps</summary>
+
+		<summary>Azure WebApps</summary>
 
 - **Overview:**
   - [Azure Web Apps](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial)
@@ -497,7 +511,8 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 </details>
 
 <details>
-<summary>Builds in CD</summary>
+
+		<summary>Builds in CD</summary>
 
 Continuous Integration (CI) can be performed in Harness using the module and [CI pipelines](/docs/continuous-integration/get-started/key-concepts).
 
@@ -521,7 +536,8 @@ Harness has been tested with the following versions of Jenkins:
 </details>
 
 <details>
-<summary>GitOps</summary>
+
+		<summary>GitOps</summary>
 
 - **Overview:**
   - [GitOps](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics)
@@ -556,7 +572,8 @@ GitOps supports the following:
 </details>
 
 <details>
-<summary>Local (Harness Community Edition)</summary>
+
+		<summary>Local (Harness Community Edition)</summary>
 
 Harness CD Community Edition is a lightweight version of Harness that you can download and run on your laptop or any VM.
 
@@ -569,7 +586,8 @@ Harness CD Community Edition is intended to get devs started with Harness quickl
 </details>
 
 <details>
-<summary>Custom</summary>
+
+		<summary>Custom</summary>
 
 For non-native deployments, Harness provides a custom deployment option using Deployment Templates.
 

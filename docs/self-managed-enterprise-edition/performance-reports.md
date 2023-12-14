@@ -7,7 +7,8 @@ sidebar_position: 27
 Harness publishes performance test reports with each release. Select a report below to view test report details.
 
 <details>
-<summary>October 27, 2023</summary>
+
+		<summary>October 27, 2023</summary>
 
 This document details information about following:
 1. Test environment and resource configuration
@@ -106,7 +107,8 @@ Total Execution Time: **4.5min**
 </details>
 
 <details>
-<summary>October 6, 2023</summary>
+
+		<summary>October 6, 2023</summary>
 
 This document details information about following:
 1. Test environment and resource configuration

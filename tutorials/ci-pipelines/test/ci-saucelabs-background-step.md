@@ -35,7 +35,8 @@ You need a [Docker Hub](https://hub.docker.com/) connector. In this example, the
 
 If you have not created a Docker Hub connector yet, follow these steps.
 
-<details><summary>Create connector</summary>
+<details>
+		<summary>Create connector</summary>
 <p>
 
 ```mdx-code-block

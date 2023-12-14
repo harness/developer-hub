@@ -33,7 +33,8 @@ You can also:
 :::
 
 <details>
-<summary>Video: Add a Build and Push step</summary>
+
+		<summary>Video: Add a Build and Push step</summary>
 
 The following video demonstrates how to add a Build and Push step to a Harness CI pipeline.
 

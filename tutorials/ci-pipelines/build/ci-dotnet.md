@@ -166,7 +166,8 @@ With self-hosted build infrastructures, you can:
  * [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
 
 <details>
-<summary>YAML example: Save and restore cache steps</summary>
+
+		<summary>YAML example: Save and restore cache steps</summary>
 
 Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache from S3** steps.
 
@@ -430,7 +431,8 @@ The .NET SDK is pre-installed on Hosted Cloud runners. For details about all ava
 If you need a specific .NET Core SDK version that isn't already installed, you can use a **Run** step to install it, or you can use the [setup-dotnet](https://github.com/actions/setup-dotnet) action in a [GitHub Action step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/).
 
 <details>
-<summary>Install one .NET SDK version</summary>
+
+		<summary>Install one .NET SDK version</summary>
 
 ```yaml
               - step:
@@ -459,7 +461,8 @@ On Windows platforms, you might also need to run the [setup-msbuild](https://git
 </details>
 
 <details>
-<summary>Install multiple .NET SDK versions</summary>
+
+		<summary>Install multiple .NET SDK versions</summary>
 
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
@@ -507,7 +510,8 @@ On Windows platforms, you might also need to run the [setup-msbuild](https://git
 Specify the desired [.NET SDK image](https://mcr.microsoft.com/en-us/product/dotnet/framework/sdk/tags) tag in your steps. There is no need for a separate install step when using Docker.
 
 <details>
-<summary>Use one .NET SDK version</summary>
+
+		<summary>Use one .NET SDK version</summary>
 
 ```yaml
               - step:
@@ -527,7 +531,8 @@ On Windows platforms, you might also need to [install Microsoft Build Tools into
 </details>
 
 <details>
-<summary>Use multiple .NET SDK versions</summary>
+
+		<summary>Use multiple .NET SDK versions</summary>
 
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
@@ -576,7 +581,8 @@ The following full pipeline examples are based on the partial examples above.
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 <details>
-<summary>YAML example</summary>
+
+		<summary>YAML example</summary>
 
 ```yaml
 pipeline:
@@ -659,7 +665,8 @@ pipeline:
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector), Kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 <details>
-<summary>YAML example</summary>
+
+		<summary>YAML example</summary>
 
 ```yaml
 pipeline:

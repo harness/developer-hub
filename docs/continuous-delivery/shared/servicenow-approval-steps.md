@@ -103,9 +103,9 @@ When the ServiceNow Approval step is reached, you can see its approval and rejec
 
 ### Review: Issue expressions
 
-You can use `<+ticket>` to refer to the value in the **JEXL Expression** setting.
+You can use `\<+ticket\>` to refer to the value in the **JEXL Expression** setting.
 
-For example, `<+ticket.state.displayValue> == "New"` in the Approval Criteria, **JEXL Expression** checks to see if the status of the ticket is **New.**
+For example, `\<+ticket.state.displayValue\> == "New"` in the Approval Criteria, **JEXL Expression** checks to see if the status of the ticket is **New.**
 
 ![](./static/service-now-approvals-07.png)
 
@@ -117,7 +117,7 @@ For details, go to **Custom table support** in [Create ServiceNow tickets in CD 
 
 ## Approval variables
 
-After an approval is granted, [<+approval>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want the pipeline to generate notifications about the approval.
+After an approval is granted, [\<+approval\>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want the pipeline to generate notifications about the approval.
 
 ## See also
 

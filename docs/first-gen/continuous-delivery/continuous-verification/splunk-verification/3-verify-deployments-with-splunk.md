@@ -107,7 +107,7 @@ This section uses a **host** field for the **Expression for Host/Container name*
 
 You select the host, pod, or container in **Guide From Example**, and an expression is added to the **Expression for Host/Container name** field. The default expression is `${instance.host.hostName}`. Typically, you can simply use `${instance.host.hostName}`.
 
-For AWS EC2 hostnames, use the expression `${instance.hostName`}.In order to obtain the names of the host(s) pod(s), or container(s) where your service is deployed, the verification provider should be added to your workflow **after** you have run at least one successful deployment. Then the **Guide From Example** feature can display the host or container name(s) for you to select.To ensure that you pick the right name when using **Guide From Example**, you can use a host name in Splunk as a guide.
+For AWS EC2 hostnames, use the expression `${instance.hostName`\}.In order to obtain the names of the host(s) pod(s), or container(s) where your service is deployed, the verification provider should be added to your workflow **after** you have run at least one successful deployment. Then the **Guide From Example** feature can display the host or container name(s) for you to select.To ensure that you pick the right name when using **Guide From Example**, you can use a host name in Splunk as a guide.
 
 To use **Guide From Example** for a host or container name expression, do the following:
 

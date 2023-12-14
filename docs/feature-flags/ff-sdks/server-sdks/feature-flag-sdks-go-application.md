@@ -143,7 +143,8 @@ log.Fatalf("client did not initialize in time: %s", err)
 ### Add a target
 
 <details>
-<summary>What is a Target?</summary> 
+
+		<summary>What is a Target?</summary> 
 Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
@@ -162,7 +163,8 @@ To add a Target, build it and pass in arguments for the following:
 | `Attributes` | Additional data you can store for a Target, such as email addresses or location. | Optional | `Attributes: &map[string]interface{}{"email":"demo@harness.io"},` |
 
 <details>
-<summary> Regex requirements for Target names and identifiers </summary>
+
+		<summary> Regex requirements for Target names and identifiers </summary>
 
 **Identifier** 
 

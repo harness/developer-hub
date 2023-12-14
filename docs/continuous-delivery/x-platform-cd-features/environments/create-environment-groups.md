@@ -48,9 +48,9 @@ Environment groups can only be used in multi environment and infrastructure base
 
 You can reference which environment group was selected using as an expression. It can be captured as an output from the infrastructure step in the pipeline.
 
-- Environment group name: `<+pipeline.stages.[STAGE_ID].spec.infrastructure.output.environment.envGroupName>`.
+- Environment group name: `\<+pipeline.stages.[STAGE_ID].spec.infrastructure.output.environment.envGroupName\>`.
 
-- Environment group Id: `<+pipeline.stages.[STAGE_ID].spec.infrastructure.output.environment.envGroupRef>`.
+- Environment group Id: `\<+pipeline.stages.[STAGE_ID].spec.infrastructure.output.environment.envGroupRef\>`.
 
 ## Limitations
 

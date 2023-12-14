@@ -73,13 +73,14 @@ In **Retry Interval**, set how long the step should wait to fetch details again 
 In **Issue Key**, you can use an expression to reference the issue key from another Jira Create or Jira Update step.
 
 <details>
-<summary>Example pipeline</summary>
+
+		<summary>Example pipeline</summary>
 
 Here's an example pipeline showing a Jira Create step (with the Id `Jira_Create`) and two subsequent Jira Update steps, JiraUpdate_1 and JiraUpdate_2. 
 
-JiraUpdate_1 references the issue key from the Jira Create step using the expression `<+pipeline.stages.Jira_Stage.spec.execution.steps.Jira_Create.issue.key>`. 
+JiraUpdate_1 references the issue key from the Jira Create step using the expression `\<+pipeline.stages.Jira_Stage.spec.execution.steps.Jira_Create.issue.key\>`. 
 
-JiraUpdate_2 references the issue key from JiraUpdate_1 using the expression `<+execution.steps.JiraUpdate_1.spec.issueKey>`, but it could also use the expression `<+pipeline.stages.Jira_Stage.spec.execution.steps.Jira_Create.issue.key>`.
+JiraUpdate_2 references the issue key from JiraUpdate_1 using the expression `\<+execution.steps.JiraUpdate_1.spec.issueKey\>`, but it could also use the expression `\<+pipeline.stages.Jira_Stage.spec.execution.steps.Jira_Create.issue.key\>`.
 
 ```yaml
 pipeline:
@@ -146,7 +147,7 @@ https://www.loom.com/share/c3e9e58ee8044b70994af2c103408223?sid=b6c9de26-f737-48
 <docvideo src="https://www.loom.com/share/c3e9e58ee8044b70994af2c103408223?sid=b6c9de26-f737-4860-889d-2cc9611043d7" />
 
 
-The expression follows the format `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.issue.key>`.
+The expression follows the format `\<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.issue.key\>`.
 
 :::important
 
@@ -156,7 +157,7 @@ The Jira Create or Jira Update step you want to reference must be **before** the
 
 There are two ways to get the information for the expression:
 
-- **Use the standard expression:** In the Jira Update step **Issue Key**, select **Expression**, and then paste the expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.issue.key>` with the correct `STAGE_ID` and `STEP_ID` values for the Jira Create step that creates the issue key.
+- **Use the standard expression:** In the Jira Update step **Issue Key**, select **Expression**, and then paste the expression `\<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.issue.key\>` with the correct `STAGE_ID` and `STEP_ID` values for the Jira Create step that creates the issue key.
   
   ![picture 0](static/f1e2ce091ba77fae22dbafbd06e9e2a994a13850118aa1700043c126f53eda7c.png)  
 
@@ -227,9 +228,9 @@ The step can take a few minutes to receive information from Jira.
 
 ### Review: Issue expressions
 
-You can use `<+issue>` to refer to the value in the **Issue Key** setting.
+You can use `\<+issue\>` to refer to the value in the **Issue Key** setting.
 
-For example, `<+issue.Status> == "Done"` in the Approval Criteria **JEXL Expression** checks to see in the status of the issue in Issue Key is **Done**:
+For example, `\<+issue.Status\> == "Done"` in the Approval Criteria **JEXL Expression** checks to see in the status of the issue in Issue Key is **Done**:
 
 ![](./static/adding-jira-approval-stages-13.png)
 
@@ -237,11 +238,11 @@ For example, `<+issue.Status> == "Done"` in the Approval Criteria **JEXL Express
   
  If a field in the JEXL criteria includes spaces, enclose the field in quotation marks, as shown in the following example:
 
-`<+issue.Priority> == "P1" && <+issue."1-line Update"> == "test" && <+issue."Remaining Estimate"> == "2h" && <+issue.Description> == "new description"`
+`\<+issue.Priority\> == "P1" && \<+issue."1-line Update"\> == "test" && \<+issue."Remaining Estimate"\> == "2h" && \<+issue.Description\> == "new description"`
 
 ### Approval variables
 
-After an approval is granted, [<+approval>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want to the pipeline to generate notifications about the approval.     
+After an approval is granted, [\<+approval\>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want to the pipeline to generate notifications about the approval.     
 
 ### Notes
 

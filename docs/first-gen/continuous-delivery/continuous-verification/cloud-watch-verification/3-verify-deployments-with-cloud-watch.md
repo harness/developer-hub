@@ -94,7 +94,7 @@ This drop-down menu contains the available ELB metrics. Select the metrics you w
 
 The expression entered here should resolve to a host/container name in your deployment environment. By default, the expression is `${instance.host.hostName}`. If you begin typing the expression into the field, the field provides expression assistance.
 
-For AWS EC2 hostnames, use the expression `${instance.hostName`}.![](./static/3-verify-deployments-with-cloud-watch-04.png)
+For AWS EC2 hostnames, use the expression `${instance.hostName`\}.![](./static/3-verify-deployments-with-cloud-watch-04.png)
 
 You can also click **Guide from Example** to select available hosts from a drop-down list and test them.
 

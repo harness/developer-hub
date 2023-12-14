@@ -45,7 +45,8 @@ The total computed resource requirements are set as the limit and request values
 #### Resource calculation examples
 
 <details>
-<summary>Calculation example #1: Sequential steps</summary>
+
+		<summary>Calculation example #1: Sequential steps</summary>
 
 This calculation is for a pipeline with two sequential steps with no [resource limit overrides](#override-resource-limits).
 
@@ -62,7 +63,8 @@ This calculation is for a pipeline with two sequential steps with no [resource l
 </details>
 
 <details>
-<summary>Calculation example #2: Parallel steps</summary>
+
+		<summary>Calculation example #2: Parallel steps</summary>
 
 This calculation is for a pipeline with two steps that run in parallel and have no [resource limit overrides](#override-resource-limits).
 
@@ -84,7 +86,8 @@ This calculation is for a pipeline with two steps that run in parallel and have 
 </details>
 
 <details>
-<summary>Calculation example #3: Sequential and parallel steps</summary>
+
+		<summary>Calculation example #3: Sequential and parallel steps</summary>
 
 This calculation is for a pipeline with three steps that have no [resource limit overrides](#override-resource-limits). Two steps run in parallel and one step runs sequentially after the two parallel steps.
 
@@ -111,7 +114,8 @@ This calculation is for a pipeline with three steps that have no [resource limit
 </details>
 
 <details>
-<summary>Calculation example #4: Sequential and parallel steps with overrides</summary>
+
+		<summary>Calculation example #4: Sequential and parallel steps with overrides</summary>
 
 This calculation is for a pipeline that has three steps with [resource limit overrides](#override-resource-limits). Two steps run in parallel and one step runs sequentially after the two parallel steps.
 
@@ -139,7 +143,8 @@ This calculation is for a pipeline that has three steps with [resource limit ove
 </details>
 
 <details>
-<summary>Calculation example #5: Step groups</summary>
+
+		<summary>Calculation example #5: Step groups</summary>
 
 Using step groups doesn't inherently change a pipeline's resource needs. The logic is the same for pipelines with step groups as it is without step groups.
 
@@ -167,7 +172,8 @@ Likewise, if the step group included two parallel steps and a sequential step, t
 </details>
 
 <details>
-<summary>Calculation example #6: Background steps</summary>
+
+		<summary>Calculation example #6: Background steps</summary>
 
 If your pipeline has [Background steps](../manage-dependencies/background-step-settings.md), the resource requirements for each Background step are added on to the total base stage resources. The expanded calculation is as follows:
 

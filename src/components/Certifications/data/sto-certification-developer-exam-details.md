@@ -29,7 +29,8 @@ The Security Testing Orchestration(STO) Developer exam tests your knowledge and 
 ## Exam Objectives
 
 <details>
-<summary>List of Objectives</summary>
+
+		<summary>List of Objectives</summary>
 
 The following is a detailed list of exam objectives:
 

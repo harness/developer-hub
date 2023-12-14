@@ -51,9 +51,9 @@ To create a HTTP template, do the following:
 | **Method** | Select the [HTTP method](https://restfulapi.net/http-methods/#summary). |
 | **Header** | Enter the media type for the message. For example, if you are using the GET method, the header is used to specify the GET response body message type Harness will check, such as **content-type: application/json**. |
 | **Body** | Enter the message body (if any) of the HTTP message. |
-| **Assertion** | The assertion is used to validate the incoming response or request. For example, if you wanted to check the health of an HTTP connection, you could use the assertion **${httpResponseCode}==200**. |
+| **Assertion** | The assertion is used to validate the incoming response or request. For example, if you wanted to check the health of an HTTP connection, you could use the assertion **$\{httpResponseCode\}==200**. |
 | **Timeout** | Enter a value, in seconds, for how long Harness should wait for a response from the server you specified in **URL**. |
-| **Variables** | Enter the variable names and default values you want to use in the template. When a user adds or links this template to a Workflow, the user will provide the values for the variables. Using our assertion example above, you could create a variable named **ResponseCode** and give it a value of **200**. Next, in the Assertion field, you could use the variable like this: **${httpResponseCode}==${ResponseCode}**. The variable name shouldn't include dots(.). |
+| **Variables** | Enter the variable names and default values you want to use in the template. When a user adds or links this template to a Workflow, the user will provide the values for the variables. Using our assertion example above, you could create a variable named **ResponseCode** and give it a value of **200**. Next, in the Assertion field, you could use the variable like this: **$\{httpResponseCode\}==$\{ResponseCode\}**. The variable name shouldn't include dots(.). |
 
   
 The following table displays the HTTP template in the Template Library and the applied template in a Workflow. Notice how the variable names defined in the template are greyed out in the applied template, and only the variable values are editable.

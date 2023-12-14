@@ -71,7 +71,7 @@ For most use cases, you can leave this field empty, to apply the default. Howev
 
 ![](./static/3-verify-deployments-with-app-dynamics-18.png)
 
-For AWS EC2 hostnames, use the expression `${instance.hostName`}.
+For AWS EC2 hostnames, use the expression `${instance.hostName`\}.
 
 #### Do Not Use Reuse Node Name
 

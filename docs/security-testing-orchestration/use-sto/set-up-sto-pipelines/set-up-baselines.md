@@ -37,7 +37,8 @@ In some cases, you might want to specify the name of the latest release for your
 
 With this cadence, the default baseline updates whenever you create a new release branch and scan it. In this case, you can use a regular expression (regex) to capture the latest release name and use it for the baseline. 
 
-<details><summary>Advantages of using regular expressions to define baselines</summary>
+<details>
+		<summary>Advantages of using regular expressions to define baselines</summary>
 
 Defining your baselines using regular expressions provides significant benefits over using hard-coded strings such as `main` or `latest`. 
 
@@ -95,8 +96,15 @@ The following table shows a few simple examples of expressions for specific use 
         <td valign="top"><code>release\-\d+</code></td>
         <td valign="top">
             <ul>
-                <li><code><b>release\-</b></code> start with <code>release</code>, dash </li>
-                <li><code><b>\d+\.\d+\</b></code> follow with one or more digits </li>
+                <li>                    <code><b>release\-</b></code> start with <code>release</code>, dash                 </li>
+                <li>                    
+                    <code>
+                        <b>
+                            \d+\.\d+\
+                        </b>
+                    </code>
+                     follow with one or more digits                
+                 </li>
             </ul>
         </td>
     </tr>
@@ -105,8 +113,17 @@ The following table shows a few simple examples of expressions for specific use 
         <td valign="top"><code>code\-v\d+\.\d*</code></td>
         <td valign="top">
             <ul>
-                <li><code><b>code\-v</b></code> start with <code>code</code>, dash, <code>v</code> </li>
-                <li><code><b>\d+\.\d+\</b></code> follow with one or more digits, dot, one or more digits </li>
+                <li>
+                    <code><b>code\-v</b></code> start with <code>code</code>, dash, <code>v</code> 
+                </li>
+                <li>
+                        <code>  
+                            <b>
+                                \d+\.\d+\
+                            </b>
+                        </code>
+                        follow with one or more digits, dot, one or more digits
+                </li>
             </ul>
         </td>
     </tr>
@@ -134,7 +151,9 @@ The following table shows a few simple examples of expressions for specific use 
         <td valign="top"><code>\d\d\d\d-\d\d\-\d\d</code></td>
         <td valign="top">
             <ul>
-                <li><code><b>\d\d\d\d-\d\d\-\d\d</b></code> four digits, dash, two digits, dash, two digits </li>
+                <li>
+                    <code><b>\d\d\d\d-\d\d\-\d\d</b></code> four digits, dash, two digits, dash, two digits 
+                </li>
             </ul>
         </td>
     </tr>

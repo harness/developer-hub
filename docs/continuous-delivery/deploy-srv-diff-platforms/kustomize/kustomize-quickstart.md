@@ -80,7 +80,7 @@ All connections and operations are performed by Harness Delegates. So we'll also
 2. In **Manifests**, click **Add Manifest**.
    :::note
 
-   **What about Artifacts?** In this quickstart the kustomization uses a publicly-available NGINX Docker image from DockerHub, and the location of the image is hardcoded in the manifest. The **Artifacts** section is only used when the public artifact is not hardcoded in the manifest or the repo is private. In those cases, you add the image in **Artifacts** with a Connector for the repo and then reference the image in a Kustomize Patch file (`image: <+artifact.image>`).
+   **What about Artifacts?** In this quickstart the kustomization uses a publicly-available NGINX Docker image from DockerHub, and the location of the image is hardcoded in the manifest. The **Artifacts** section is only used when the public artifact is not hardcoded in the manifest or the repo is private. In those cases, you add the image in **Artifacts** with a Connector for the repo and then reference the image in a Kustomize Patch file (`image: \<+artifact.image\>`).
 
    :::
 
@@ -101,7 +101,7 @@ All connections and operations are performed by Harness Delegates. So we'll also
      - In **Personal Access Token**, click **Create or Select a Secret**.
      - Click **New Secret Text**.
      - In **Secret Name**, enter a name for the secret like **github-pat**.
-     - In **Secret Value**, paste in a GitHub Personal access token. When you're logged into GitHub, these are typically listed at <https://github.com/settings/tokens>. For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
+     - In **Secret Value**, paste in a GitHub Personal access token. When you're logged into GitHub, these are typically listed at [https://github.com/settings/tokens](https://github.com/settings/tokens). For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
      - Ensure you PAT has the **repo** scope selected:
 
        ![](static/repoScope.png)
@@ -113,7 +113,8 @@ All connections and operations are performed by Harness Delegates. So we'll also
    Expand the section below to learn more about installing delegates.
 
    <details>
-   <summary>Install a new delegate</summary>
+   
+		<summary>Install a new delegate</summary>
 
    1. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
    2. In the **New Delegate** dialog, in **Select where you want to install your Delegate**, select **Kubernetes**.

@@ -24,9 +24,9 @@ For text and file secrets, the secrets are stored in the Secrets Manager. For st
 
 Once a secret is added, you can use other Harness entities instead of settings.
 
-You can reference an Encrypted Text secret created in the Org [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) using the secret identifier in the expression: `<+secrets.getValue("org.your_secret_Id")>`.
+You can reference an Encrypted Text secret created in the Org [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) using the secret identifier in the expression: `\<+secrets.getValue("org.your_secret_Id")\>`.
 
-You can reference a file secret created in the Org [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) using the expression `<+secrets.getValue(“org.file-secret-Id”)>`.
+You can reference a file secret created in the Org [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) using the expression `\<+secrets.getValue(“org.file-secret-Id”)\>`.
 
 At deployment runtime, the Harness Delegate uses the Secrets Manager to decrypt and read the secret only when it is needed.
 
@@ -63,7 +63,7 @@ File secrets are not masked in Harness logs. As noted above they can be encoded 
 
 #### Quotes and secrets in a script
 
-By default, secret expressions use quotes for the secret identifier:​ `<+secrets.getValue("secret_identifier")>`.
+By default, secret expressions use quotes for the secret identifier:​ `\<+secrets.getValue("secret_identifier")\>`.
 
 If the secret value itself includes quotes, either single or double, and anywhere in the secret value, you must use the opposite quote when you use the expression in a script (echo, etc).​
 
@@ -71,19 +71,19 @@ If you do not use the opposite quote you will expose the secret value.​Single 
 
 Here, the secret value is `'mysecret'` and the identifier is `secret_identifier`.​ To echo, use double quotes:
 
-`echo "<+secrets.getValue('secret_identifier')>"`​
+`echo "\<+secrets.getValue('secret_identifier')\>"`​
 
-`echo "<+secrets.getValue("secret_identifier")>"​​`
+`echo "\<+secrets.getValue("secret_identifier")\>"​​`
 
 Double quote example:​
 
 Here, the secret value is `"mysecret"` and the identifier is `secret_identifier` .​
 
-`echo '<+secrets.getValue('secret_identifier')>'`
+`echo '\<+secrets.getValue('secret_identifier')\>'`
 
 Avoid using `$` in your secret value. ​If your secret value includes `$`, you must use single quotes when you use the expression in a script.  
 For example, if your secret value is `'my$secret'`, and the identifier is `secret_identifier`, to echo, use single quotes:  
-`echo '<+secrets.getValue("secret_identifier")>'`
+`echo '\<+secrets.getValue("secret_identifier")\>'`
 
 #### Kubernetes secret objects
 

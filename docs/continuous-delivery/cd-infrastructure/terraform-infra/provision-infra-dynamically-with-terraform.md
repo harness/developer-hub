@@ -97,7 +97,7 @@ Harness will create an [Entity Id](/docs/platform/References/entity-identifier-r
 
 For example, if the Id of the stage is **terraform** and the Id of the step is **plan**, and you want to echo its timeout setting, you would use:
 
-`<+pipeline.stages.Terraform.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.timeout>`
+`\<+pipeline.stages.Terraform.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.timeout\>`
 
 ### Timeout
 
@@ -229,21 +229,21 @@ Here's an example script where a local value names two workspaces, **default** a
 
 
 ```json
-locals {  
-  counts = {  
+locals \{  
+  counts = \{  
       "default"=1  
       "production"=3  
-  }  
-}  
+  \}  
+\}  
   
-resource "aws_instance" "my_service" {  
+resource "aws_instance" "my_service" \{  
   ami="ami-7b4d7900"  
   instance_type="t2.micro"  
-  count="${lookup(local.counts, terraform.workspace, 2)}"  
-  tags {  
-         Name = "${terraform.workspace}"  
-    }  
-}
+  count="$\{lookup(local.counts, terraform.workspace, 2)\}"  
+  tags \{  
+         Name = "$\{terraform.workspace\}"  
+    \}  
+\}
 ```
 
 In the workspace interpolation sequence, you can see the count is assigned by applying it to the Terraform workspace variable (`terraform.workspace`) and that the tag is applied using the variable also.
@@ -278,7 +278,7 @@ You can add inline variables just like you would in a tfvar file.
 
 This Identifier is a [Harness Identifier](/docs/platform/References/entity-identifier-reference), not a Terraform identifier.For example, if the **Identifier** is **myvars** you could refer to its content like this:
 
-`<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myvars.spec.content>`
+`\<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myvars.spec.content\>`
 
 Provide the input variables and values for your Terraform script. Harness follows the same format as Terraform.
 
@@ -286,9 +286,9 @@ For example, if your Terraform script has the following:
 
 
 ```json
-variable "region" {  
+variable "region" \{  
   type = string  
-}
+\}
 ```
 
 In **Add Inline Terraform Var File**, you could enter:
@@ -325,7 +325,7 @@ You can connect Harness to remote variable files.
    
    For example, if the **Identifier** is **myremotevars** you could refer to its content like this:
    
-   `<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myremotevars.spec.store.spec.paths>`
+   `\<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myremotevars.spec.store.spec.paths\>`
 2. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**.
 3. In **Branch**, enter the name of the branch.
 4. In **File Paths**, add one or more file paths from the root of the repo to the variable file.
@@ -355,12 +355,12 @@ Enter values for each backend config (remote state variable).
 For example, if your config.tf file has the following backend:
 
 ```json
-terraform {  
-  backend "gcs" {  
+terraform \{  
+  backend "gcs" \{  
     bucket  = "tf-state-prod"  
     prefix  = "terraform/state"  
-  }  
-}
+  \}  
+\}
 ```
 
 In **Backend Configuration**, you provide the required configuration variables for the backend type. 
@@ -377,9 +377,9 @@ prefix  = "terraform/state"
 In your Terraform .tf config file, only the definition of the Terraform backend is required:
 
 ```json
-terraform {  
-  backend "gcs" {}
-}
+terraform \{  
+  backend "gcs" \{\}
+\}
 ```
 
 See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
@@ -446,9 +446,9 @@ Terraform steps also output the commit Id of config files stored on Git. The out
 
 For example, for a Terraform Apply step with the identifier `TerraformApply` and with config files, backend config files, and var files stored in git, the expressions would look like this:
 
-- **Config files**: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.TF_CONFIG_FILES>`
-- **Backend config files**: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.TF_BACKEND_CONFIG_FILE>`
-- **Var file** with identifier `varfile1`: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.varfile1>`
+- **Config files**: `\<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.TF_CONFIG_FILES\>`
+- **Backend config files**: `\<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.TF_BACKEND_CONFIG_FILE\>`
+- **Var file** with identifier `varfile1`: `\<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.varfile1\>`
 
 The **Terraform Rollback** step is automatically added to the **Rollback** section.
 

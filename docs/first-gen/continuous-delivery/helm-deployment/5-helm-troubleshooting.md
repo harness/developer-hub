@@ -37,7 +37,7 @@ To fix this, upgrade Tiller:
 
 In some cases, the first Helm deployment goes to the upgrade path even though the Helm version is working fine.
 
-This is the result of a Helm issue: <https://github.com/helm/helm/issues/4169>.
+This is the result of a Helm issue: [https://github.com/helm/helm/issues/4169](https://github.com/helm/helm/issues/4169).
 
 The issue happens between Helm client versions 2.8.2 to 2.9.1. To fix this, upgrade the Helm client to the version after 2.9.1.
 

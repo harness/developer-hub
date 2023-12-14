@@ -8,7 +8,8 @@ You need to include a Docker-in-Docker background service in your stage if eithe
 * You configured your scanner using a generic Security step rather than a scanner-specific template such as Aqua Trivy, Bandit, Mend, Snyk, etc. 
 * You’re scanning a container image using an Orchestration or Extraction workflow. 
 
-<details><summary>Set up a Docker-in-Docker background step</summary>
+<details>
+		<summary>Set up a Docker-in-Docker background step</summary>
 
 1. Go to the stage where you want to run the scan.
 

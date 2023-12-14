@@ -66,7 +66,7 @@ Example Delegate Profile script:
 ```
 curl -O https://get.helm.sh/helm-v3.2.3-linux-amd64.tar.gz  
 tar -xvf helm-v3.2.3-linux-amd64.tar.gz  
-path=`echo $PATH | awk -F':' '{ print $1}'`  
+path=`echo $PATH | awk -F':' '\{ print $1\}'`  
 echo $path  
 mv linux-amd64/helm $path
 ```

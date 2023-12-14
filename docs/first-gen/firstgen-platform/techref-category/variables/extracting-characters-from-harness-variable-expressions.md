@@ -1,6 +1,6 @@
 ---
 title: Extracting Characters from Harness Variable Expressions
-description: You can return the character at a specified index in a Harness variable expression string. This can be helpful with built-in variable expressions such as ${artifact.buildNo} , ${artifact.revision} ,…
+description: You can return the character at a specified index in a Harness variable expression string. This can be helpful with built-in variable expressions such as $\{artifact.buildNo\} , $\{artifact.revision\} ,…
 sidebar_position: 70
 helpdocs_topic_id: myk24wycif
 helpdocs_category_id: 9lw749jubn

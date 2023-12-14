@@ -28,7 +28,7 @@ For example, the tag **docs** has been added to two projects. A search for **doc
 
 ### Limitations
 
-* [Runtime inputs](/docs/platform/variables-and-expressions/runtime-inputs) (`<+input>`) are not supported in Tags.
+* [Runtime inputs](/docs/platform/variables-and-expressions/runtime-inputs) (`\<+input\>`) are not supported in Tags.
 * Harness variable expressions cannot be used in Tags. For more information, go to [Built-in Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables).
 
 ### Delegate tags and general tags

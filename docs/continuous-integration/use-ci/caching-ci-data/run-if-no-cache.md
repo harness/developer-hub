@@ -61,7 +61,7 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
 
 2. In your **Run** step that installs dependencies, add a [conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#step-conditions) that causes the step to run only if the **Restore Cache** step failed.
 
-   Set the conditional execution to **Execute this step if the stage execution is successful thus far** (`stageStatus: Success`) and include the JEXL condition `<+execution.steps.RESTORE_CACHE_STEP_ID.status> == "IGNORE_FAILED"`. For example:
+   Set the conditional execution to **Execute this step if the stage execution is successful thus far** (`stageStatus: Success`) and include the JEXL condition `\<+execution.steps.RESTORE_CACHE_STEP_ID.status\> == "IGNORE_FAILED"`. For example:
 
    ```yaml
                  - step: ## This step will install the dependencies if the cache wasn't restored. Otherwise, this step doesn't run.

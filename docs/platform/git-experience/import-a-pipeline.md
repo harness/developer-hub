@@ -53,19 +53,17 @@ This topic shows you how to import a Pipeline to the CD module.
 4. Enter a **Name** for your Pipeline.
 5. In **Git Connector**, select or create a Git Connector to connect to your Git repo. For steps, see [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
    
-   <details>
-   <summary>
-   IMPORTANT: Connector must use the Enable API access option and Token
-   </summary>
+<details>
+		<summary>IMPORTANT: Connector must use the Enable API access option and Token</summary>
   
-   The Connector must use the Enable API access option and Username and Token authentication. Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​  
+      The Connector must use the Enable API access option and Username and Token authentication. Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​  
 
-   ![](./static/import-a-pipeline-31.png)  
+      ![](./static/import-a-pipeline-31.png)  
 
-   For GitHub, the token must have the following scopes:  
+      For GitHub, the token must have the following scopes:  
 
-   ![](./static/import-a-pipeline-32.png)
-  </details>
+      ![](./static/import-a-pipeline-32.png)
+</details>
 
    Here's an example of a GitHub Connector that has the correct settings:
 

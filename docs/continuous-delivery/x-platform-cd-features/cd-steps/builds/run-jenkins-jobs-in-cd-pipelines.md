@@ -101,11 +101,11 @@ For Harness to capture Jenkins environment variables, your Jenkins configuration
 
 The following list shows examples of the environment variables and the expressions you can use to reference them.
 
-* **Job Status:** `<+execution.steps.[step_Id].build.executionStatus>`
-* **Job URL:** `<+execution.steps.[step_Id].build.jobUrl>`
-* **Build number:** `<+execution.steps.[step_Id].build.buildNumber>`
-* **Build display name:** `<+execution.steps.[step_Id].build.buildDisplayName>`
-* **Full build display name:** `<+execution.steps.[step_Id].build.buildFullDisplayName>`
+* **Job Status:** `\<+execution.steps.[step_Id].build.executionStatus\>`
+* **Job URL:** `\<+execution.steps.[step_Id].build.jobUrl\>`
+* **Build number:** `\<+execution.steps.[step_Id].build.buildNumber\>`
+* **Build display name:** `\<+execution.steps.[step_Id].build.buildDisplayName\>`
+* **Full build display name:** `\<+execution.steps.[step_Id].build.buildFullDisplayName\>`
 
 Here's a sample script.
 
@@ -121,13 +121,13 @@ echo "Full build display name:" <+execution.steps.[step_Id].build.buildFullDispl
 
 If you are using [step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups.md) the expressions must include the step group Ids also.
 
-For example, `<+execution.steps.[step group Id].steps.[step Id].build.jobUrl>`.
+For example, `\<+execution.steps.[step group Id].steps.[step Id].build.jobUrl\>`.
 
 :::
 
 You can reference this job information in subsequent steps in your pipeline or in another pipeline.
 
-To reference the job information in another stage in this pipeline, use the full pipeline path to the build information. For example, `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].build.executionStatus>`.
+To reference the job information in another stage in this pipeline, use the full pipeline path to the build information. For example, `\<+pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].build.executionStatus\>`.
 
 ## Multibranch pipeline support
 
@@ -153,8 +153,8 @@ You can copy expressions for the job outputs from the **Output** tab of the Jenk
 
 To access Jenkins job's environment variables from the step output, use:
 
-`<+pipeline.stages.[STAGE_IDENTIFIER].spec.execution.steps.[STEP_IDENTIFIER].build.envVars.[ENV_VAR_FIELD]>`
+`\<+pipeline.stages.[STAGE_IDENTIFIER].spec.execution.steps.[STEP_IDENTIFIER].build.envVars.[ENV_VAR_FIELD]\>`
 
 When the step is inside a step group, use:
 
-`<+pipeline.stages.[STAGE_IDENTIFIER].spec.execution.steps.[STEP_GROUP_IDENTIFIER].steps.[STEP_IDENTIFIER].build.envVars.[ENV_VAR_FIELD]>`
+`\<+pipeline.stages.[STAGE_IDENTIFIER].spec.execution.steps.[STEP_GROUP_IDENTIFIER].steps.[STEP_IDENTIFIER].build.envVars.[ENV_VAR_FIELD]\>`

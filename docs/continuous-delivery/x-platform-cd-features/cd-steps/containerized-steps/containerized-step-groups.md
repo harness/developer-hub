@@ -176,7 +176,8 @@ When you run a pipeline that uses a containerized step group, you can see the co
 Select **Initialize** to see its log and how the container is set up.
 
 <details>
-<summary>Step group setup log</summary>
+
+		<summary>Step group setup log</summary>
 
 In the following log, the containerized step group is created and a Background step using Docker in Docker (DinD) is also set up. The Background step is only required for certain subsequent step types that need DinD. It is provided here as an example only.
 
@@ -224,7 +225,8 @@ You select the image to use in each step separately.
 Here's how to create the connector separately using the Harness Docker registry connector:
 
 <details>
-<summary>Add Docker registry connector</summary>
+
+		<summary>Add Docker registry connector</summary>
 
 
 ```mdx-code-block
@@ -233,7 +235,8 @@ Here's how to create the connector separately using the Harness Docker registry 
 ```
 
 <details>
-<summary>Docker connector YAML</summary>
+
+		<summary>Docker connector YAML</summary>
 
 ```yaml
 connector:
@@ -263,7 +266,8 @@ connector:
 Create the Docker connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
-<summary>Docker connector example</summary>
+
+		<summary>Docker connector example</summary>
 
 ```yaml
 curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=123456' \
@@ -293,7 +297,8 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
 For the Terraform Provider Docker connector resource, go to [harness_platform_connector_docker](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_docker).
 
 <details>
-<summary>Docker connector example</summary>
+
+		<summary>Docker connector example</summary>
 
 ```json
 # credentials anonymous

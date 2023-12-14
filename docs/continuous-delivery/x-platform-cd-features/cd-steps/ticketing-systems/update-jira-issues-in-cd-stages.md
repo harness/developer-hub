@@ -62,7 +62,7 @@ To use an expression in **Issue Key**, do the following:
 
    The expression will look something like this:
 
-   `<+pipeline.stages.Jira_Stage.spec.execution.steps.jiraCreate.issue.key>`
+   `\<+pipeline.stages.Jira_Stage.spec.execution.steps.jiraCreate.issue.key\>`
 
    Now you have the expression that references the key ID from this step.
 
@@ -108,8 +108,8 @@ Once you have selected these fields their settings appear.
 
 You can also use advanced dates using stage variables and the `current()` function. For example:
 
-* `<+currentDate().plusDays(2).plusMonths(1)>`: current date plus one month and two days.
-* `<+currentTime()>`: for current date time fields.
+* `\<+currentDate().plusDays(2).plusMonths(1)\>`: current date plus one month and two days.
+* `\<+currentTime()\>`: for current date time fields.
 
 Harness supports the following functions.
 

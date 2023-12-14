@@ -82,7 +82,7 @@ To do this tutorial, you need the following:
 
    2. Target name  = ***your-name*-dvpwa**
 
-   3. Target variaent = **<+codebase.branch>**
+   3. Target variaent = **\<+codebase.branch\>**
 
 7. Click **Apply Changes** to return to the pipeline, 
 
@@ -116,7 +116,7 @@ Add a trigger to your pipeline that that listens for incoming requests on a webh
 
    ![](./static/trigger-tutorial/trigger-tutorial-06-trigger-condition.png)
 
-5. In **Pipeline Input**, select **Git Branch** for the build type and enter **<+trigger.branch>** for the branch name. Then click **Create Trigger**. 
+5. In **Pipeline Input**, select **Git Branch** for the build type and enter **\<+trigger.branch\>** for the branch name. Then click **Create Trigger**. 
 
    ![](./static/trigger-tutorial/trigger-tutorial-08-pipeline-input.png)
 
