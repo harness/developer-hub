@@ -6,7 +6,7 @@ title: End-to-End Pipeline
 
 # End-To-End CI/CD Pipeline
 
-In this tutorial, we'll use the Harness CI, CD, and GitOps to demonstrate an end-to-end software delivery process - from build to deployment following GitOps principles. 
+In this tutorial, we'll use Harness CI, CD, and GitOps to demonstrate an end-to-end software delivery process - from build to deployment following GitOps principles. 
 
 ![PR Pipeline Architecture](static/e2e/pr-pipeline-architecture.png)
 
