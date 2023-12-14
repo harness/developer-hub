@@ -2,9 +2,7 @@
 title: Overview
 sidebar_position: 1
 ---
-This section walks you through the concepts of Chaos dashboard and how you can create custom visualizations for different aspects of a chaos experiment.
-
-## Introduction
+This section walks you through the concepts of Chaos dashboard and how you can visualize different aspects of a chaos experiment.
 
 Dashboards help visualize important metrics and data associated with your experiment runs. They help create an at-a-glance summary to understand the behavior of data. They are also used for business analysis to gain actionable insights into data.
 
@@ -12,7 +10,8 @@ Dashboards help visualize important metrics and data associated with your experi
 Chaos dashboard is an interactive user interface that manages, visualizes, and monitors chaos experiments. It helps visualize various features associated with a chaos experiment. It provides a visual of entities in the form of a bar graph, along with a tabular representation of the visualized data.
 
 :::note
-This feature is currently behind thw feature flag, `CHAOS_DASHBOARD_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+For SAAS, this feature is currently behind the feature flag, `CHAOS_DASHBOARD_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+Contact your [sales representative](sales@harness.io) to check if you are eligible for the on-prem platform.
 :::
 
 ## View a chaos dashboard
@@ -21,10 +20,12 @@ To view a chaos dashboard, follow the steps below.
 
 ### Step 1. Navigate to Chaos Dashboards
 Navigate to **Chaos Dashboards**.
+
 ![chaos-dashboard](./static/overview/chaos-dashboard-intro.png)
 
 ### Step 2. Go to Dashboards
 Click **Go to Dashboards**.
+
 ![go-to-dashboard](./static/overview/go-to-dashboard.png)
 
 ### Step 3. Select Chaos from list of modules
@@ -50,4 +51,4 @@ You can view the data, and download the data in different formats (such as JSON,
 
 ## Next steps
 
-You can [create a dashboard](./create-a-new-dashboard) and display graphs of different fields. 
+[Create a new dashboard](./create-a-new-dashboard) 
