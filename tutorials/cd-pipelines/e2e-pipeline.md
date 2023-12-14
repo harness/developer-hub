@@ -8,6 +8,8 @@ title: End-to-End Pipeline
 
 In this tutorial, we'll use Harness CI, CD, and GitOps to demonstrate an end-to-end software delivery process - from build to deployment following GitOps principles. 
 
+The driagram below shows a GitOps-driven CI/CD pipeline. The process involves building the application, pushing it to a Docker registry, and deploying it to a Kubernetes cluster. The pipeline features distinct stages for development and production environments, with an approval step to promote artifacts from dev to prod, ensuring thorough review and validation of changes.
+
 ![PR Pipeline Architecture](static/e2e/pr-pipeline-architecture.png)
 
 ## Pre-requisites
