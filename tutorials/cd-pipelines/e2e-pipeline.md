@@ -8,7 +8,7 @@ title: End-to-End Pipeline
 
 In this workshop, we'll use the Harness CI, CD, and GitOps modules to demonstrate an end-to-end software delivery process - from build to deployment following GitOps principles. 
 
-![PR Pipeline Architecture](static/pr-pipeline-architecture.png)
+![PR Pipeline Architecture](static/e2e/pr-pipeline-architecture.png)
 
 ## Pre-requisites
 
@@ -182,7 +182,7 @@ spec:
 
 The [Git file generator](https://argocd-applicationset.readthedocs.io/en/stable/Generators-Git/#git-generator-files) is a subtype of the Git generator. The Git file generator generates parameters using the contents of JSON/YAML files found within a specified repository. `template.spec.project` refers to the Argo CD project ID that is mapped to your Harness project. Navigate to **GitOps --> Settings --> GitOps: Agents** to find the project ID. Update the project with the ID you see there.
 
-![Argo Project ID](static/argo-project-id.png)
+![Argo Project ID](static/e2e/argo-project-id.png)
 
 Be sure to replace **YOUR_GITHUB_USERNAME** in both YAML files.
 
@@ -196,7 +196,7 @@ The ApplicationSet CRD should create two Argo CD applications - one in the `dev`
 
 Under **GitOps: Applications**, click on **gitops-application** and click **Sync**. You should see all three GitOps application in sync and healthy:
 
-![Three GitOps Applications Created](static/3%20apps%20created.png)
+![Three GitOps Applications Created](static/e2e/3%20apps%20created.png)
 
 ## Create the PR Pipeline
 
