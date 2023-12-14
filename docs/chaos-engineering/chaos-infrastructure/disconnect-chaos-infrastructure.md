@@ -7,15 +7,16 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Disconnecting and deleting a chaos infrastructure removes it from the environment in which it resides. It also removes the infrastructure services from the Kubernetes cluster.
+Disconnecting and deleting a chaos infrastructure removes it from the environment where it resides. It also removes the infrastructure services from the Kubernetes cluster.
 
-To remove the chaos infrastructure, first go to the **Environments** sidebar option under the **Chaos** tab, where all the environments created under the current project are listed. Select the environment in which the chaos infrastructure to be deleted resides.
+### Remove infrastructure
+Go to the **Environments** sidebar option under the **Chaos** tab, where all the environments created under the current project are listed. Select the environment in which the chaos infrastructure to be deleted resides.
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="Kubernetes">
 ```
-To disconnect a Kubernetes infra, select the `⋮` icon against the chaos infrastructure name and select **Disable**.
+To disconnect a Kubernetes infrastructure, select the `⋮` icon against the chaos infrastructure name and select **Disable**.
 
 ![Delete Chaos Infra](./static/disconnect-chaos-infrastructure/delete-chaos-infra-short.png)
 
@@ -27,7 +28,7 @@ Next, execute the commands displayed in the modal from your terminal to remove t
   </TabItem>
   <TabItem value="Linux">
 ```
-To disconnect a Linux infra, select the `⋮` icon against the chaos infrastructure name and select **Disable**.
+To disconnect a Linux infrastructure, select the `⋮` icon against the chaos infrastructure name and select **Disable**.
 
 ![Delete Chaos Infra](./static/disconnect-chaos-infrastructure/12.delete-infra.png)
 

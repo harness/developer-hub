@@ -3451,3 +3451,141 @@ Yoi can either bring down the instance from the infrastucture and then delete th
 
 You can setup slack notification on Freeze window enabling. When go set a freeze window , go to notiifcation and select the option "Freeze window is enabled and active" amd under method choose the slack and set the slack webhook url. 
 
+#### Where can one find the metadata of the step/stage executed in a pipeline ?
+
+One can now find the metadata of any step/stage in a pop-over of the same on hovering the entity. This is a recent change from showing the data from stage name to a pop-over.
+
+#### Where can one find the API request and response demo for execution of Pipeline with Input Set ?
+
+One can use the below curl example to do so :
+
+```sh
+curl -i -X POST \
+  'https://app.harness.io/pipeline/api/pipeline/execute/{identifier}/inputSetList?accountIdentifier=string&orgIdentifier=string&projectIdentifier=string&moduleType=string&branch=string&repoIdentifier=string&getDefaultFromOtherRepo=true&useFQNIfError=false&notesForPipelineExecution=' \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: YOUR_API_KEY_HERE' \
+  -d '{
+    "inputSetReferences": [
+      "string"
+    ],
+    "withMergedPipelineYaml": true,
+    "stageIdentifiers": [
+      "string"
+    ],
+    "lastYamlToMerge": "string"
+  }'
+```
+
+Please read more on this in the following documentation on [Execute a Pipeline with Input Set References](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/postPipelineExecuteWithInputSetList)
+
+#### How would I deploy to a pipeline via api call but not have to specify all stages ?
+
+One can pass the api call to deploy a pipeline , but it should contain all the stages mentioned in the pipeline.
+To allow selective stage(s) executions? option. You can set webhook triggers to run specific pipeline stages using this option.
+example yaml : 
+```sh
+trigger:
+  name: stage3Trigger
+  identifier: stage3Trigger
+  enabled: true
+  description: ""
+  tags: {}
+  stagesToExecute:
+    - stage3
+  orgIdentifier: NgTriggersOrg
+  projectIdentifier: viniciusTest
+pipelineIdentifier: ThreeStagesPipeline
+source:
+  type: Webhook
+  spec:
+    type: Custom
+    spec:
+      payloadConditions: []
+      headerConditions: []
+inputYaml: |
+  pipeline:
+    identifier: ThreeStagesPipeline
+    stages:
+      - stage:
+          identifier: stage3
+          type: Custom
+          variables:
+            - name: stage3var
+              type: String
+              value: stage3Var
+```
+
+Please read more on this in the following documentation on [Run specific stage on pipeline](https://developer.harness.io/docs/platform/pipelines/run-specific-stage-in-pipeline/)
+
+#### Is there a platform page where we can view the deployed image tags for each environment associated with a service ?
+
+One can click on a service and  see all the environments and the artifacts that have been deployed. Higher level views can be accomplished through dashboard like DORA metrics. Please read  more insights on this in the documentation on [Monitor deployments and services in CD dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/)
+
+#### Are there any plans to extend support for additional step types, such as Policy (OPA), Approvals, etc., within container-based step groups?
+
+Yes, this feature is under build and soon will be available to customers.
+
+#### Do we have any Harness disaster recovery documentation for our internal process ?
+
+Yes, Harness ensures disaster recovery with SaaS infrastructure spanning us-west1 and us-west2, featuring two Kubernetes clusters for seamless failover in case of GCP outage, connected to managed and external data services.
+Please read more on the following in documentation on [Harness SaaS Architechture](https://developer.harness.io/docs/harness-cloud-operations/harness_saas_architecture/)
+
+#### What does Harness suggest to backup and restore Self-Managed Enterprise Edition Helm installations ? 
+
+Harness recommends using Velero to back up and restore Helm-based installations of Harness Self-Managed Enterprise Edition.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-restore-helm/)
+
+#### How can we do secret migration using Go-Code file ?
+
+One can always use the secrets.go mentioned in the [Github Public Repo](https://github.com/harness/migrator/blob/master/secrets.go)
+
+```sh
+package main
+
+import (
+    log "github.com/sirupsen/logrus"
+    "github.com/urfave/cli/v2"
+)
+
+func migrateSecrets(*cli.Context) (err error) {
+    promptConfirm := PromptSecretDetails()
+    err = MigrateEntities(promptConfirm, []string{migrationReq.SecretScope}, "secrets", Secret)
+    if err != nil {
+        log.Fatal("Failed to migrate secrets")
+    }
+    return
+    }
+```
+
+Please read more on Migrating secrets in the following [Documentation](https://github.com/harness/migrator/blob/master/secrets.go)
+
+#### When working with SAM Templates, how can one specify the branch instead of the default master when providing a commit ID as a tag during the download manifests step, as it currently attempts to pull from the non-existent master branch ?
+
+In the Download Manifests step, you can specify the branch name by using the expression `<+pipeline.stages.STAGE_NAME.spec.serviceConfig.serviceDefinition.spec.manifests.MANIFEST_IDENTIFIER.spec.store.spec.branch>`. Replace `STAGE_NAME` with the name of your stage and `MANIFEST_IDENTIFIER` with the identifier of your manifest. You can then use this expression in the Branch/Commit Id field to specify the branch you want to pull from.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments)
+
+#### Can one manage Flux applications with Harness GitOps ?
+
+Yes  one can manage Flux applications with Harness GitOps. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/use-flux/)
+
+#### Can we apply any Kubernetes Manifest without a Harness Kubernetes Service ?
+
+Yes, One can apply any Kubernetes Manifest without a Harness Kubernetes Service . Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step/#apply-manifests-from-a-remote-source). Also consider watching this video based on use case [here](https://www.loom.com/share/492afdbb9cb8484980b6d1617830a399?sid=8fc34aec-009c-491a-85f5-ffd5e062e4d0)
+
+#### Can one define an optional tfvar files in terraform support ?
+
+Yes, with minimal delegate version requested `816xx` one can do so. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/optional-tf-var-files)
+
+#### Can one delete the default Org in with admin access ?
+
+No, This was never supported, it is as per design. One cannot delete the already present default org.
+
+#### Can we use json functor in http step with functions like length, concat ?
+
+Yes, you can use JSON functors with functions like length and concat in an HTTP step. Here is an example of using the concat function in an HTTP step:
+
+Value: `<+json.concat("Hello ", "World!")>`
+And here is an example of using the length function in an HTTP step:
+
+Value: `<+json.length(<+pipeline.variables.array>)>`
+In both cases, the JSON functor is used to manipulate the input values and return a new value that can be used in the HTTP step.

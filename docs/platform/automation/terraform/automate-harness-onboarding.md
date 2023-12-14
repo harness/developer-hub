@@ -619,7 +619,7 @@ resource "harness_platform_infrastructure" "infrastructure" {
          spec:
           connectorRef: devkubernetes ### Replace with your connector
           namespace: dev
-          releaseName: release-<+INFRA_KEY>
+          releaseName: release-<+INFRA_KEY_SHORT_ID>
           allowSimultaneousDeployments: false
       EOT
 }

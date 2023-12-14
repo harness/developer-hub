@@ -33,6 +33,18 @@ export const FeaturedList: CardItem[] = [
 
 export const STOList: CardItem[] = [
   {
+    title: "STO Overview",
+    module: MODULES.sto,
+    icon: "img/icon_sto.svg",
+    description: (
+      <>Learn how Harness STO can help you solve your security scanning problems.</>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "5min",
+    link: "/tutorials/security-tests/sto-overview",
+  },
+  {
     title: "Your first STO pipeline",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
@@ -57,7 +69,7 @@ export const STOList: CardItem[] = [
     link: "/tutorials/security-tests/sast-scan-semgrep",
   },
   {
-    title: "Container mage scans with Aqua Trivy",
+    title: "Container image scans with Aqua Trivy",
     module: MODULES.sto, 
     icon: "img/icon_sto.svg",
     description: (

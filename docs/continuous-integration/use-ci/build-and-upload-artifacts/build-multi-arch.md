@@ -1,7 +1,7 @@
 ---
 title: Build multi-architecture images
 description: You can build multi-architecture images in a CI pipeline.
-sidebar_position: 120
+sidebar_position: 42
 ---
 
 ```mdx-code-block

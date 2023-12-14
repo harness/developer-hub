@@ -1,7 +1,7 @@
 ---
 title: Build and Push to GCR (Pending deprecation)
 description: Use a CI pipeline to build and push an image to GCR.
-sidebar_position: 200
+sidebar_position: 50
 helpdocs_topic_id: gstwrwjwgu
 helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false
