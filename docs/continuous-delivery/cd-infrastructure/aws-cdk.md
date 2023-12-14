@@ -194,7 +194,8 @@ These steps are described in detail below.
 
 The CDK steps in the step group are containerized. In the **Container Registry** and **Image** settings in each step, you must provide a Harness connector to a container registry and an image for the pod the step uses.
 
-Harness provides the `aws-cdk-plugin` base image and custom images for different stacks (Java, .NET, Python, Go, etc.) They are located on the Docker Hub registry [aws-cdk-plugin](https://hub.docker.com/r/harness/aws-cdk-plugin/tags). For example, `harness/aws-cdk-plugin:1.0.0` is the base image that contains the CDK CLI and Node.js and `harness/aws-cdk-plugin:1.0.0-java` is the custom image for Java created by Harness. You can use a Harness custom image or create your own.
+Harness provides the `aws-cdk-plugin` base image and custom images for different stacks (Java, .NET, Python, Go, etc.) They are located on the Docker Hub registry [aws-cdk-plugin](https://hub.docker.com/r/harness/aws-cdk-plugin/tags). For example, `harness/aws-cdk-plugin:1.0.0` is the base image that contains the CDK CLI and Node.js and `harness/aws-cdk-plugin:1.0.0-java` is the custom image for Java created by Harness.
+CDK steps shoul used a imagge created from `aws-cdk-plugin` base image. You can create your own images form base image, by adding new layers, installing required tools based on your requirements but you should never override the entry point.
 
 You can use a Harness base image to create your own image and use that in a step. For example, if your CDK app uses a specific Java or Node.js version, you can use the base image provided by Harness and create your own image containing your dependencies.
 
@@ -565,11 +566,12 @@ In **Advanced**, you can use the following options:
 
 ### Supported Languages
 
-Harness Supports: 
+Harness is providing custom images for testing purposes for the following programming languages: 
 
 - Java
 - Go
 - Python 3
 - .NET
+Base image allready contains Node.js and JavaScript installed.
 
 Please navigate to our [DockerHub Repository](https://hub.docker.com/r/harness/aws-cdk-plugin/tags) for the latest image tags for this feature.
