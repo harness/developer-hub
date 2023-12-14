@@ -137,3 +137,14 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Test Targets | <ul><li>View</li><li>Create/Edit</li></ul> |
 | Exemptions | <ul><li>View</li><li>Create/Edit</li><li>Approve/Reject</li></ul> |
 | External Tickets | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
+
+### Internal Developer Portal
+
+| Resource                | Permissions                                                              |
+|-------------------------|--------------------------------------------------------------------------|
+| Plugins                 | <ul><li>View</li><li>Create/Edit</li><li>Toggle</li><li>Delete</li></ul> |
+| Scorecards              | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul>                |
+| Layouts                 | <ul><li>View</li><li>Create/Edit</li></ul>                               |
+| Catalog Access Policies | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul>                |
+| Integrations            | <ul><li>View</li><li>Create</li><li>Edit</li><li>Delete</li></ul>        |
+| Advanced Configurations | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul>                |
