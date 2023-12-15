@@ -1,10 +1,21 @@
 ---
 sidebar_position: 1
 hide_table_of_contents: true
-title: End-to-End Pipeline
+title: End-to-End CI/CD Pipeline
+redirect_from:
+  - /tutorials/cd-pipelines/unified-cicd
 ---
 
 # End-To-End CI/CD Pipeline
+
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Delivery & GitOps Certification today!"
+  link="/certifications/continuous-delivery"
+  closable={true}
+  target="_self"
+/>
 
 In this tutorial, we'll use Harness CI, CD, and GitOps to demonstrate an end-to-end software delivery process - from build to deployment following GitOps principles. 
 
