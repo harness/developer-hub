@@ -3589,3 +3589,55 @@ And here is an example of using the length function in an HTTP step:
 
 Value: `<+json.length(<+pipeline.variables.array>)>`
 In both cases, the JSON functor is used to manipulate the input values and return a new value that can be used in the HTTP step.
+
+### How does Harness handle Helm chart dependencies in a Command Template?
+
+Harness automatically resolves and manages Helm chart dependencies when executing Helm commands based on your Helm Command Template configuration.
+
+### How are Input Sets used during deployments?
+
+During deployments, variables and secrets defined in Input Sets are injected into your application code or environment configurations.
+
+### Can I use variables in a Helm Command Template?
+
+Yes, Helm Command Templates support the use of variables, allowing you to customize Helm commands based on dynamic values during deployment.
+
+### What types of data can be stored in Input Sets?
+
+Input Sets can store Variables: String values used in deployments.
+
+### How is a Helm Command Template different from a Helm Chart?
+
+While a Helm Chart is a package of pre-configured Kubernetes resources, a Helm Command Template in Harness is designed specifically for executing Helm commands within a deployment.
+
+### What are Harness Overlays?
+
+Harness Overlays are specialized Input Sets that enable you to customize deployments for specific environments or stages. They allow you to override or augment existing Input Set configurations without modifying the original set.
+
+### What are the benefits of using Conditional Executions?
+
+Increased automation: Automate manual decisions and dynamically adjust your pipeline based on various conditions.
+
+Improved efficiency: Skip unnecessary steps to save time and resources.
+
+Enhanced reliability: Ensure only relevant steps are executed, reducing potential errors and inconsistencies.
+
+Greater flexibility: Adapt your pipeline to specific scenarios and requirements.
+
+### How do Overlays work?
+
+Overlays take precedence over the base Input Set when applied. Values defined in the Overlay will override or augment the corresponding values in the base set.
+
+### Can I combine multiple conditions in Conditional Executions?
+
+Yes, you can combine multiple conditions using logical operators (AND, OR) to create more complex execution logic.
+
+### How can I achieve version control for Templates?
+
+Harness provides built-in version control for Templates, enabling you to:
+
+* Track changes and revert to previous versions.
+
+* Compare different versions and identify changes.
+
+* Create branches and collaborate on Template development.
