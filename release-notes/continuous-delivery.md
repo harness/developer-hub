@@ -51,6 +51,27 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## December 2023
 
+### Version 81904
+
+
+#### Fixed issues
+
+- A null pointer exception was thrown during ASG rolling deployment. (CDS-86426)
+  - An NPE was thrown when the ASG deployments was missing the launch template part of the base ASG (the ASG used as a template when creating new ASGs).
+  - Harness provides a better error message targeting the problem. The issue has been resolved.
+- During pipeline execution, the console view wasn't showing steps inside of the step group. (CDS-86129, ZD-54757)
+  - Logs for steps which were inside a step group are now be visible in console view also.
+- Templates not deleted even after removing references.	(CDS-85828, ZD-54300, ZD-54616)
+  - The error was related to the reference calculation during the movement of pipelines from inline to remote.
+  - This issue has been fixed now, and the template references are updated accurately.
+- Helm binary path is not added to system path by default on immutable delegate image. (CDS-85763)
+  - Harness has added Helm v3.12.0 into the `env` path for delegates. Customers will no longer need to use the full path to access this version it Shell Script steps.
+- Harness bidirectional sync webhook feature displaying push events as errors. (CDS-85694, ZD-54338)	Unrelated PUSH webhook events from Github produced on create/delete branch operation were being displayed as errors. These are irrelevant events for bidirectional Git Experience processing. Harness will ignore these events instead of showing them as failed.
+- Deployment failing with Terraform error on	infra provisioners.	(CDS-85684) Terraform tasks working directory was created based on account, org, project, and provisioner identifier.
+  - This combination might cause issues if two steps with same account, org, project, and provisioner identifier are running simultaneously on same delegate.
+  - With this change every Terraform step execution will run in a unique working directory.
+- Console logs missing from CloudFormation steps. (CDS-84962, ZD-53810, ZD-53865)	There was an issue where CloudFormation steps were not updating the console longs when there are multiple steps with a similar prefix. This issue is now fixed.
+
 ### Version 81820
 
 #### Early access features
