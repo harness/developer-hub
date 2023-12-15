@@ -5,7 +5,7 @@ sidebar_position: 3
 
 HTTP probe allows you to specify a URL that the experiment uses to determine the health or service availability (or other custom conditions) that is a part of the entry or exit criteria. The status code received is mapped against an expected status. It supports HTTP [GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) and [POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) methods.
 
-The HTTP GET method sends a GET request to the specified URL. The response code received is matched with the response code based on the given criteria (`==`, `!=`, `oneOf`).
+The HTTP GET method sends a GET request to the specified URL. The response received is matched for the response code or response body based on the provided criteria.
 
 HTTP POST method sends a `POST` request to the provided URL.
 
@@ -154,7 +154,7 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
    </td>
    <td><code>==, !=, oneOf</code>
    </td>
-   <td>The <code>criteria</code> contains criteria to match the http get request's response code with the expected responseCode, which need to be fulfill as part of httpProbe run
+   <td>The <code>criteria</code> contains criteria to match the http get request's response code or body with the expected responseCode or responseBody, which need to be fulfill as part of httpProbe run
    </td>
   </tr>
   <tr>
@@ -166,7 +166,19 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
    </td>
    <td>HTTP_RESPONSE_CODE
    </td>
-   <td>The <code>responseCode</code> contains the expected response code for the http get request as part of httpProbe run
+   <td>The <code>responseCode</code> contains the expected response code for the http get request as part of httpProbe run. It is mutually exclusive with the responseBody field.
+   </td>
+  </tr>
+  <tr>
+   <td>responseBody
+   </td>
+   <td>Flag to hold the expected response body for the get request
+   </td>
+   <td>Mandatory
+   </td>
+   <td>string
+   </td>
+   <td>The <code>responseBody</code> contains the expected response body for the http get request as part of httpProbe run. It is mutually exclusive with the responseCode field.
    </td>
   </tr>
 </table>
@@ -207,7 +219,19 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
    </td>
    <td>HTTP_RESPONSE_CODE
    </td>
-   <td>The <code>responseCode</code> contains the expected response code for the http post request as part of httpProbe run
+   <td>The <code>responseCode</code> contains the expected response code for the http post request as part of httpProbe run. It is mutually exclusive with the responseBody field.
+   </td>
+  </tr>
+  <tr>
+   <td>responseBody
+   </td>
+   <td>Flag to hold the expected response body for the post request
+   </td>
+   <td>Mandatory
+   </td>
+   <td>string
+   </td>
+   <td>The <code>responseBody</code> contains the expected response body for the http post request as part of httpProbe run. It is mutually exclusive with the responseCode field.
    </td>
   </tr>
   <tr>
@@ -484,7 +508,7 @@ probe:
 ```
 
 
-### HTTP Get Request
+### HTTP Get Request(validate response code)
 
 The HTTP Get method involves sending an HTTP GET request to the provided URL and then assessing the response code against specified criteria (==, !=, oneOf). This can be accomplished by configuring the `httpProbe/inputs.method.get` field.
 
@@ -526,9 +550,51 @@ spec:
           probePollingInterval: 2s
 ```
 
-### HTTP Post Request(http body is a simple)
+### HTTP Get Request(validate response body)
 
-This section holds the HTTP body necessary for making an HTTP POST request, particularly suited for simple requests. The HTTP body content can be supplied in the 'body' field, and this can be initiated by configuring the `httpProbe/inputs.method.post.body` field.
+The HTTP Get method involves sending an HTTP GET request to the provided URL and then assessing the response body against specified criteria (equals, notEquals, oneOf, contains). This can be accomplished by configuring the `httpProbe/inputs.method.get` field.
+
+Use the following example to tune this:
+
+```yaml
+# contains the http probes with get method and verify the response body
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "check-frontend-access-url"
+        type: "httpProbe"
+        httpProbe/inputs:
+          url: "http://frontend-service.default.svc.cluster.local"
+          method:
+            # call http get method and verify the response code
+            get: 
+              # criteria which should be matched
+              criteria: contains
+              # exepected response body for the http request, which should follow the specified criteria
+              responseBody: "hello world"
+        mode: "Continuous"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s 
+          attempt: 1
+          probePollingInterval: 2s
+```
+
+### HTTP Post Request(validate response code)
+
+This section holds the HTTP body necessary for making an HTTP POST request then assessing the response code against specified criteria, particularly suited for simple requests. The HTTP body content can be supplied in the 'body' field, and this can be initiated by configuring the `httpProbe/inputs.method.post.body` field.
 
 Use the following example to tune this:
 
@@ -564,6 +630,52 @@ spec:
               criteria: "==" # ==, !=, oneof
               # exepected response code for the http request, which should follow the specified criteria
               responseCode: "200"
+        mode: "Continuous"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s 
+          attempt: 1
+          probePollingInterval: 2s
+```
+
+### HTTP Post Request(validate response body)
+
+This section holds the HTTP body necessary for making an HTTP POST request then assessing the response body against specified criteria, particularly suited for simple requests. The HTTP body content can be supplied in the 'body' field, and this can be initiated by configuring the `httpProbe/inputs.method.post.body` field.
+
+Use the following example to tune this:
+
+```yaml
+# contains the http probes with post method and verify the response code
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "send-data-to-backend"
+        type: "httpProbe"
+        httpProbe/inputs:
+          url: "backend.default.svc.cluster.local"
+          method:
+            # call http post method and verify the response code
+            post: 
+              # value of the http body, used for the post request
+              body: "{\"name\":\"foo\",\"description\":\"bar\"}"
+              # http body content type
+              contentType: "application/json; charset=UTF-8"
+              # criteria which should be matched
+              criteria: contains
+              # exepected response body for the http request, which should follow the specified criteria
+              responseBody: "ok"
         mode: "Continuous"
         runProperties:
           probeTimeout: 5s
