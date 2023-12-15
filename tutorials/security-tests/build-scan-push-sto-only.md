@@ -46,12 +46,12 @@ Once you complete this tutorial, you'll have a complete end-to-end pipeline that
 
   - A Harness account and STO module license.
   - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
-  - A basic understanding of key STO concepts and good practices is recommended. This tutorial builds on the [SAST code scans using Semgrep](/tutorials/security-tests/sast-scan-semgrep) and [Container image scans with Aqua Trivy](/tutorials/security-tests/sast-scan-semgrep).
+  - A basic understanding of key STO concepts and good practices is recommended. This tutorial builds on the [SAST code scans using Semgrep](/tutorials/security-tests/sast-scan-semgrep) and [Container image scans with Aqua Trivy](/tutorials/security-tests/sast-scan-semgrep) tutorials.
   - A Semgrep account login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub. 
   - GitHub requirements — This tutorial assumes you have the following:
     - A GitHub account and access token. 
     - A [GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) that specifies your account (`http://github.com/my-account`) but not a specific repository (`http://github.com/my-account/my-repository`). 
-    - Your GitHub account should include a repository with a Dockerfile for creating an image.
+    - Your GitHub account should include a repository with code in a [language supported by Semgrep](https://semgrep.dev/docs/supported-languages/) such as Python or NodeJS. The repo should also include a Dockerfile for creating an image. 
     
       This tutorial uses the [dvpwa repository](https://github.com/williamwissemann/dvpwa) as an example. The simplest setup is to fork this repository into your GitHub account. 
 
@@ -236,7 +236,7 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
 
 :::note
 
-It's generally good practices to set the [fail_on_severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) for every scan step. Leave this setting at **None** for now so you can run and test the entire-end-to-end workflow. 
+It's generally good practice to set the [fail_on_severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) for every scan step. Leave this setting at **None** for now so you can run and test the entire-end-to-end workflow. 
 
 :::
 
