@@ -73,7 +73,7 @@ The Terraform Destroy step is added.
 
 :::note
 
-Currently, the Terraform Command Line Option is behind the feature flag `CDS_TERRAFORM_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, the Terraform command line option is behind the feature flag `CDS_TERRAFORM_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
