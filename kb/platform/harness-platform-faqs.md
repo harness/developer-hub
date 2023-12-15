@@ -1948,7 +1948,17 @@ env:
 #### Scim Provisioned User Group has - in name which was removed from identifier but still allowed as name
 The - is not allowed character for identifier so it was removed while creating the identifier while name can have that so its allowed for name
 
+#### What does the promql query ```io_harness_custom_metric_task_failed{task_type="NG_VAULT_RENEW_TOKEN"} > 0``` specifically check, and why is it still non-zero even after a successful token renewal?
 
+The query checks for failed tasks related to token renewal. The non-zero value may persist as it represents the count of failed tasks, which doesn't reset after successful renewals
+
+#### What is the purpose of the ```liveStatus``` expression in Harness, and how does it differ from stageStatus?
+
+ The ```liveStatus``` expression is designed for use within step groups under a matrix. Unlike stageStatus, which doesn't consider running or completed steps under a matrix, liveStatus calculates the status of steps, including those in the running or completed state
+
+#### Can we manually reset the delegate metrics which is being scraped by prmoetheus?
+
+Manual reset isn't supported. However all the metrics get reset when the delegate restarts
 
 
 
