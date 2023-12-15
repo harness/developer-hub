@@ -186,7 +186,7 @@ export const AdvList: CardItem[] = [
     title: "End-To-End CI/CD Pipeline",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: <>Setup CI and CD as with a GitOps pipeline</>,
+    description: <>Set up CI/CD with a GitOps pipeline</>,
     type: [docType.Documentation],
     time: "20min",
     link: "/tutorials/cd-pipelines/e2e-pipeline",
