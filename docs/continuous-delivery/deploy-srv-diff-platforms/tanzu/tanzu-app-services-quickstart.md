@@ -346,6 +346,53 @@ Harness services represent your microservices or applications. You can add the s
     5.  Select **Value** to enter a specific artifact name. You can also select **Regex** and enter a tag regex to filter the artifact.
 11. Select **Submit**.
 
+### Add the manifest and artifact as an artifact bundle
+
+:::note
+
+Currently, TAS artifact bundle is behind the feature flag `CDS_ENABLE_TAS_ARTIFACT_AS_MANIFEST_SOURCE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You can add both the manifest and artifact at the same time as an artifact bundle.
+
+In the Harness service, when you add a manifest, select **Artifact Bundle** in **Specify TAS Manifest Store**.
+
+When you use an artifact bundle, you do not need to add an individual artifact in the service's **Artifacts** section. Instead, you add a compressed file (ZIP, TAR, Tar.gz, Tgz) in **Manifests** that contains both the manifest and artifact.
+
+Here's an example of a file structure that you would compress for the artifact bundle.
+
+```
+artifactBundle/
+ - manifest/
+    - manifest.yaml
+    - vars.yaml
+    - autoscaler.yaml
+ - artifact-1.0.war 
+```
+
+When you add the artifact bundle to your Harness service, you provide the paths to the manifest, artifact, and any vars.yaml and AutoScaler.yaml files:
+
+![picture 1](static/e04acfade42006589812f6f1f42c8db90c3303bdbd705bfb88b9911e479e1398.png)  
+
+
+Configure the following artifact bundle settings:
+
+- **Artifact Bundle Type:** Select the type of compressed file. Currently,  Zip, Tar, and Tar.gz are supported.
+- **Deployable Artifact Path:** The relative path to the artifact from the artifact bundle root after extraction.
+- **Manifest Path:** The relative path to the manifest from the artifact bundle root after extraction.
+- **Vars.yaml path:** The relative path to the vars.yaml file from the artifact bundle root after extraction. You can add multiple files.
+- **AutoScaler.yaml:** The relative path to the autoscaler.yaml file from the artifact bundle root after extraction. You can add multiple files.
+
+:::note Overrides
+
+The standard override rules apply to an artifact bundle with these exceptions:
+
+1. If an artifact bundle store type is selected in in the service then it can be only overridden by the artifact bundle store type in **Overrides**. The **Other** store type cannot be used in **Overrides** to override an artifact bundle type.
+2.  If the **Other** store type is selected in the service, then it cannot be overridden by the artifact bundle store type in **Overrides**. The artifact bundle store type cannot be used in **Overrides** to override an **Other** type.
+
+:::
+
 ## Define the TAS target infrastructure
 
 
