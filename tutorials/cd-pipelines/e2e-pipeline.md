@@ -270,6 +270,10 @@ Run the following command to update pipeline with CD stages.
 harness pipeline --file prpipeline.yaml apply
 ```
 
+The full pipeline should look as follows in the Harness Pipeline Studio:
+
+![Full pipeline in Harness Pipeline Studio](static/e2e/complete-pipeline.png)
+
 Finally, [create a trigger](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/) to run the PR pipeline when new code is committed to the **main** branch of your GitHub forked repo.
 
 ## Test the setup
@@ -278,3 +282,7 @@ You can run the pipeline in one of two ways.
 
 1. Commit a change any non-`configs` file in the **main** branch of https://github.com/YOUR_GITHUB_USERNAME/harness-gitops-workshop and this will trigger the PR pipeline. Observe that your commit SHA is tracked throughout the pipeline - from the image SHA to the config.json of the deployed applications.
 2. Click **Run Pipeline** from the Harness UI and optionally provide any updates to environment config variables.
+
+A successful pipeline execution should look as follows:
+
+![A successful pipeline execution](static/e2e/successful-execution.png)
