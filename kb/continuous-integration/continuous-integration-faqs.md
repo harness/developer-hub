@@ -1032,3 +1032,11 @@ Currently publishing the test report via run step within the containerized step 
 #### How to list the tags available for an image which is being listed when hitting the endpoint ```https://app.harness.io/registry/_catalog```?
 
 We could hit the endpoint ```https://app.harness.io/registry/harness/<image_name>/tags/list``` to list all the available tags for an image in the registry ```app.harness.io/registry```
+
+#### What expression can I use to refer to the repository name configured for a trigger from the incoming payload?
+
+The expression ```<+eventPayload.repository.name>``` can be used to reference the repository name from the incoming trigger payload
+
+#### The expression ```<+eventPayload.repository.name>``` is giving only the repo name but not the project name and the clone step fails when we use this expression for the codebase repo if we are using account type bitbucket connector. What expression can be used to get the repository name including the project name?
+
+You could try the expression ```<+trigger.payload.repository.project.key>/<+trigger.payload.repository.name>``` to get the repo name including the project name from the payload
