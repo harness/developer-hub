@@ -587,7 +587,7 @@ You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"
 
    In the above expression, `<+pipeline.variables.var1>` must be wrapped in quotation marks because the expression is a string parameter for a method.
 
-- While using method invocation with an expression, the expression before method invocation should also be wrapped within <+...>
+- While using method invocation with an expression, the expression before method invocation should also be wrapped within `<+...>`.
   
   For example, consider the following expression:
 
@@ -595,7 +595,7 @@ You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"
   <+<+pipeline.variables.var1>.concat("concatenating a string")>
   ```
   
-  Here we want to invoke the method `concat` on the expression `<+pipeline.variables.var1>`, so, it is essential to wrap `<+pipeline.variables.var1>` within <+...> and then invoke method using `.concat()`
+  To invoke the method `concat` on the expression `<+pipeline.variables.var1>`, you must wrap `<+pipeline.variables.var1>` within `<+...>` and then invoke the method using `.concat()`.
 
 
 ## Debugging expressions
