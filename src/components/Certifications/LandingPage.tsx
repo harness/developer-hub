@@ -262,6 +262,10 @@ export default function Certifications() {
                     src={`${baseUrl}img/cert_adm_sto_badge.svg`}
                     alt="Administrator STO Badge"
                   />
+                  <img
+                    src={`${baseUrl}img/cert_adm_ccm_badge.svg`}
+                    alt="Administrator CCM Badge"
+                  />
                 </div>
               </div>
             </div>
