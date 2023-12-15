@@ -183,13 +183,13 @@ export const AdvList: CardItem[] = [
     link: "/tutorials/cd-pipelines/continuous-verification/prometheus",
   },
   {
-    title: "Unified CI/CD in a Single Pipeline",
+    title: "End-To-End CI/CD Pipeline",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: <>Setup CI and CD as two stages of the same pipeline</>,
+    description: <>Setup CI and CD as with a GitOps pipeline</>,
     type: [docType.Documentation],
     time: "20min",
-    link: "/tutorials/cd-pipelines/unified-cicd",
+    link: "/tutorials/cd-pipelines/e2e-pipeline",
   },
 ];
 
