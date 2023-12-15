@@ -10,6 +10,10 @@ helpdocs_is_published: true
 
 This topic describes how to install the legacy Kubernetes delegate, which always auto upgrades to the default delegate version associated with a Harness Manager version.
 
+import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
+
+<Deleos />
+
 :::info note
 If you are migrating from Harness FirstGen to Harness NextGen, you must install new delegates in Harness NextGen. Harness FirstGen Delegates won't work with Harness NextGen.
 :::
