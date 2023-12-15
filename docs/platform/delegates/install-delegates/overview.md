@@ -73,6 +73,10 @@ You can install the Docker delegate into Amazon ECS Fargate. For more informatio
 
 ### Install a legacy Kubernetes delegate
 
+import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-table.md'
+
+<Delimagetypes />
+
 The legacy Kubernetes delegate, denoted `latest` container image tag, is used primarily in Harness FirstGen had the auto-upgrade setting ON by default and did not have the flexibility to turn OFF this setting if needed. This type of delegate is now deprecated for new Harness accounts. For more information, go to [Install a legacy Kubernetes delegate](/docs/platform/delegates/install-delegates/install-a-kubernetes-delegate.md).
 
 ### Install Docker delegate using Podman

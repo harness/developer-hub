@@ -14,17 +14,10 @@ import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-tabl
 
 ## Image type comparison
 
-:::info note
+import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
-This is an End of Support (EOS) notice for the Delegate-Legacy image type. This image type will reach End of Support (EOS) as of Jan 31, 2024.
+<Deleos />
 
-End of Support means the following:
-
-- Harness Support will no longer accept support requests for the Delegate-Legacy image type in both Harness FirstGen and Harness NextGen (including Harness Self-Managed Enterprise Edition (SMP)).
-- Security fixes will still be addressed.
-- Product defects will not be addressed.
-
-:::
 
 Harness gives you the option to select delegate images with or without third-party client tools. The use of a delegate packaged with third-party binaries speeds the construction of a CD pipeline; Harness CI and STO do not make use of these libraries. The inclusion of third-party binaries, however, increases attack vectors. Consider security as well as ease of use, in your choice of delegate images. 
 
