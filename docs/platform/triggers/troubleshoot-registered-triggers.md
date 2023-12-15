@@ -8,10 +8,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-:::info note
-Currently, this feature is behind the feature flag `CDS_TRIGGER_ACTIVITY_PAGE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 You can troubleshoot failures of your cURL or webhook initiated triggers in the Harness platform.
 
 After a trigger runs, you can use the **Trigger Explorer** to troubleshoot cURL or webhook initiated failures. For cURL, you enter the `eventCorrelationId` from the response. For webhooks, you enter the `data` value from the webhook response payload.
