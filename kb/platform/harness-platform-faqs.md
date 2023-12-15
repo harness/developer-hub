@@ -1961,4 +1961,8 @@ The query checks for failed tasks related to token renewal. The non-zero value m
 Manual reset isn't supported. However all the metrics get reset when the delegate restarts
 
 
+#### Is the user can approve the pipeline through the API using token of service account?
+The Service Account API token is not supported with Approval API, you need to use the personel access token.
 
+#### How user can make sure the build artifacts that go to harness will come from protected branches before production deployment?
+You can select the Artifact filter option and provide the expression as per your need in the Artifact source config of the service.
