@@ -151,6 +151,8 @@ The following settings are available for pipelines.
 
 - **Enable Pipeline Execution Audit Events:** By default, the pipeline execution audit events such as Pipeline Start, Pipeline End, Stage Start, and Stage End are not displayed in Audit Trail. Enable this setting to display these events. For more information, go to [View an Audit Trail](/docs/platform/governance/audit-trail/#step-view-an-audit-trail).
 
+- **Run RBAC Validation before executing Inline Pipelines:** By default, before running any Pipeline, Harness checks whether the running User has access to all of the Environments and other resources that the Pipeline accesses. This check is run only for Inline Pipelines, and not for Pipelines which are stored in Git or other repositories. Turn off this setting if the check is not required. Turning it off may cause Pipelines to fail partway through execution (since later stages could have permission issues which haven't been checked beforehand).
+
 - **Do Not Delete Pipeline Execution Details:** When this is set to true, older pipeline executions remain in the system even when the corresponding pipelines are deleted. You can view these executions in the Pipeline Executions list and open them to view details, but you cannot re-run them. When this is set to false, Harness deletes all executions of a pipeline when that pipeline is deleted.
 
 - **Allow users to mark a running Step as failure:** Enable this setting to allow users to fail a running step.
