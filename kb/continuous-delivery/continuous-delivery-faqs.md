@@ -3687,3 +3687,40 @@ We get the output as :
 ```
 
 We can use use the status from the above output , in case of failure it will be "ERROR", we can also use the http output codes such as 200 for success and 400 for failure.
+
+
+
+
+#### Is the user can able to to share input set between project in one organization?
+No, as per the current design user can't share the input set with other projects.
+
+#### How can user change the default branch for a pipeline?
+Harness loads the pipeline from the default branch of the repository which is set in Git.
+
+
+#### Is the NextGen Delegate can be installed on a EC2 instance without docker?
+As per the current design, NextGen Delegate cannot be installed on an EC2 instance without Docker. The NextGen Delegate is a Docker container that runs on the host machine.
+
+
+#### Can user change the pipeline name through the git?
+Name is metadata and will be changed if the user changes the Pipeline name from the harness itself. So, if a user wants to see the updated name in the Pipeline and deployments listing, the user needs to update via Harness.
+
+#### Is it possible to copy orgs, projects, pipelines from one account to another?
+As per the current design, it's not possible to copy orgs and projects. But you can copy the pipeline from one account to another manually by copying the yaml file.
+
+
+#### How to get <+artifacts.primary.tag> tag in custom stage?
+As per the current design there's no service(Artifact config) in custom stage, without this expression will get null in return. So in the custom stage these expression will not work. But you can use the output variable to pass the details from CD stage to the Custom stage as suggested in this doc: https://developer.harness.io/kb/continuous-delivery/articles/output-variable-for-powershell-script/
+
+
+
+#### What is Ad hoc provisioning in AWS CDK?
+Ad hoc provisioning in AWS CDK refers to the temporary and on-demand provisioning of resources for specific tasks or purposes. It allows users to create resources as needed, serving immediate requirements.
+
+
+#### Can you provide an example of dynamic provisioning using AWS CDK TypeScript for an ECS deployment?
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format <+provisioner.STACK_NAME.OUTPUT_NAME>. For example, <+provisioner.EcsCdkStack.RegionOutput> maps the required AWS region output for an ECS deployment.
+
+
+#### Is it necessary to deploy artifacts via Harness services when using AWS CDK provisioning?
+No, deploying artifacts via Harness services is not required for AWS CDK provisioning in a stage. You can set up an AWS CDK provisioner and use it in a stage to provision infrastructure without deploying any artifacts.
