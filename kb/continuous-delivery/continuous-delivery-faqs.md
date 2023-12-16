@@ -3710,7 +3710,7 @@ As per the current design, it's not possible to copy orgs and projects. But you 
 
 
 #### How to get <+artifacts.primary.tag> tag in custom stage?
-As per the current design there's no service(Artifact config) in custom stage, without this expression will get null in return. So in the custom stage these expression will not work. But you can use the output variable to pass the details from CD stage to the Custom stage as suggested in this doc: https://developer.harness.io/kb/continuous-delivery/articles/output-variable-for-powershell-script/
+As per the current design there's no service(Artifact config) in custom stage, without this expression will get null in return. So in the custom stage these expression will not work. But you can use the output variable to pass the details from CD stage to the Custom stage as suggested in this [doc](https://developer.harness.io/kb/continuous-delivery/articles/output-variable-for-powershell-script/)
 
 
 
@@ -3724,3 +3724,128 @@ In the Harness Infrastructure Definition, you map outputs to their corresponding
 
 #### Is it necessary to deploy artifacts via Harness services when using AWS CDK provisioning?
 No, deploying artifacts via Harness services is not required for AWS CDK provisioning in a stage. You can set up an AWS CDK provisioner and use it in a stage to provision infrastructure without deploying any artifacts.
+
+#### How do resolve terragrunt plan returning the error "fork/exec /usr/bin/terraform: argument list too long"
+
+the "argument list too long" error is typically related to how you are passing variables and configurations to Terraform and Terragrunt. By using configuration files, and reducing the number of arguments you can resolve this issue. 
+ 
+The same can be referred [here] (https://github.com/gruntwork-io/terragrunt/issues/2132)
+
+#### How do we add comment with Jira step.
+
+To add comment you need to use "Comment" as a key and "\\" to add line breaks
+
+#### Can we use FQN for inputs in Dashboards
+
+Yes we can use, example : ${runtime_inputs_info.fqn}
+
+#### How can we upload some mandatory test evidence file before allowing some deployment and fetch them later in pipeline
+
+You can use [API] (https://apidocs.harness.io/tag/File-Store#operation/create) to first create the file and then fetch them later in execution.
+
+#### We're working on a Harness Pipeline (To Create a JIRA Issue) and want to trigger it via a python script (on AWS Lambda). While triggering the pipeline We also need to send JIRA Issue Description data into it.  
+
+You can use API to execute the pipeline [api](https://apidocs.harness.io/tag/Pipeline-Execute#operation/postPipelineExecuteWithInputSetList)
+
+In the created pipeline you can add a Jira update step with the required details to update the issue [Doc](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages/)
+
+#### I need something that value I can change in the middle of pipline (automatically using bash script for example).
+So define variable with default value and then in the middle of the pipeline change it's value
+
+You can assign a stage variable value via shell script in Harness pipeline by using the Script Output Variables option in the Shell Script step.
+First, declare the variable in your script and export it. For example, if you want to set the value of a stage variable named myvar to 123, you can add the following line to your script:
+
+export myvar=123
+
+Then, in the Shell Script step, go to Script Output Variables and add a new output variable. Set the Name to the name of the stage variable (myvar in this example) and set the Value to the name of the exported variable in your script (myvar in this example).
+Now, the value of the stage variable myvar will be set to 123 after the Shell Script step is executed. You can reference this value in subsequent steps using the Harness expression 
+
+<+execution.stages.[stage_id].output.outputVariables.myvar>
+
+#### Every time when I run kubernetes deployment, harness create new version of configmap even of there were no changes which force pods redeployment. Is there a way to specify for harness to create new configmap only when changes detected?
+
+You can skip the versioning, it can be skipped by using these two ways:
+ 
+Annotate the manifest provided in the Harness service's Manifests section with harness.io/skip-versioning: "true".
+ 
+In the Harness service's Manifest Configuration page, select Manifests > Advanced, and then select the Skip Versioning checkbox.
+ 
+#### Does dashboards loads based on the volume of the data
+
+For the first time dashboards might take time in loading the data, once the data is loaded we cache all queries from there on.
+
+#### we have a config file which is required for a CLI tool ran using a custom shell script. Is it possible to somehow store this file within harness rather than directly on the delegate and reference it in the custom shell script execution?
+
+You can use API [API]https://apidocs.harness.io/tag/File-Store#operation/listFilesAndFolders to create or fetch files from Harness file store in the shell script.
+
+#### Can I execute specific pipelines simultaneously and queue the rest using these controls?
+
+Yes, by using Pipeline Chaining, you can specify the order of execution for your pipelines. If you want two pipelines to execute simultaneously, you can set up the chaining accordingly. The system's automatic execution limits and plan-based limits will handle queuing for you, ensuring that additional pipeline executions wait until the limits allow them to proceed.
+
+#### In case of CD pipeline, the use case is like, we need to deploy multiple services via single pipeline, for which we can use multiservice select, and we can refer the artifact of previous stage to the next stage. However, is there any possible way by which I can refer to the single service of previous stage and its artifact.Use case if for approval stage where we need to run the stage once as only one approval should be required to deploy multiple services.
+
+For using a single service of the previous stage and its artifact you can use the expressions from the previous stage service output variables, and you can use the expression in your next service artifact.
+
+#### I want to set up a chained pipeline in orgA/ProjectA with a pipeline in orgB/ProjectB. I want to restrict triggering the pipeline in orgB/ProjectB to only be possible through the pipeline in orgA/ProjectA. How can I implement this?
+
+We would suggest using RBAC to only allow a certain user with access to those pipelines with execute permission, because we need execute permissions for the parent and child pipelines to ensure successful execution.
+
+#### While creating an MSK connector role, we encountered the error "User: arn:aws:sts::44ddsnfjdnfs-deploy-cicd-role/AWSCloudFormation is not authorized to perform: iam:CreateRole..." with a Status Code 403. How can we resolve this issue?
+
+The error indicates a permission issue related to IAM (Identity and Access Management) policies. Follow these steps to resolve the issue:
+
+1. IAM Policy Review
+2.IAM Permissions Boundary
+3.Service Control Policies (SCP)
+4.Policy Trust Relationships
+
+#### How do we know if a deployment is failing due to Service Control Policy implemented in our AWS account.
+
+If there is any restriction from SCP you will get error with an explicit deny in a service control policy.
+
+ User: arn:aws:iam::7799:user/JohnDoe is not authorized to perform: codecommit:ListRepositories because no service control policy allows the codecommit:ListRespositories action
+
+#### Is there a way we can use Harness manager to encryt Terraform Plan instead of using delegate.
+
+We have a FF CDS_TERRAFORM_TERRAGRUNT_PLAN_ENCRYPTION_ON_MANAGER_NG we would suggest enabling it, with this FF we will use Harness manager to encryt plan instead of using delegate. Please note that he FF does not work for custom or other secret managers.
+
+#### The current condition is <+stage.variables.Notification_To> != " ". Can it be changed to <+stage.variables.Notification_To> != ""?
+
+Yes, you can change the condition to <+stage.variables.Notification_To> != "". However, it's important to note that when the condition is specified as an empty string (""):
+
+If the variable <+stage.variables.Notification_To> is not an empty string, the condition evaluates to true, and the associated stage/step will be executed.
+
+If the variable <+stage.variables.Notification_To> is an empty string, the condition will be false, and the associated stage/step may not be executed.
+
+#### Is there a way to use one yaml file stored in git repo and use it in two different projects?
+
+We cannot as the pipeline YAML has details like project identifier, Org Identifier which is unique.But you can create a pipeline-level template at the account level and use it in all projects.
+
+#### My WinRM pipeline stage script completes on the server but not in Harness. What could be the issue?
+
+If your WinRM script is not completing in Harness, it may be due to the script not returning an exit code. Ensure that your script includes a proper exit statement (e.g., exit 0 for success or exit 1 for failure) to indicate the end of script execution.
+
+#### I notice that log lines from my file are not appearing during WinRM script execution in Harness. Why is this happening?
+
+The absence of log lines may indicate that your script never returned an exit code. Make sure your WinRM script includes proper logging statements and returns an exit code to provide visibility into the script's execution status.
+
+#### I have a terraform code which I will need to use it deploy resources for Fastly service. And, I would like to know should I create a pipeline in CI or CD module and what's the reasoning behind it?
+
+The decision on whether to create your pipeline in the Continuous Deployment (CD) module or Continuous Integration (CI) module depends on your specific use case and deployment strategy.
+ 
+If your goal is to automate the deployment of infrastructure whenever there are changes in your code, and you are using Terraform for provisioning, it is advisable to create a pipeline in the CD module. This ensures that your application's infrastructure stays current with any code modifications, providing seamless and automated deployment.
+ 
+Alternatively, if your use of Terraform is focused on provisioning infrastructure for your CI/CD pipeline itself, it is recommended to establish a pipeline in the CI module. This allows you to automate the provisioning of your pipeline infrastructure, ensuring its availability and keeping it up-to-date.
+ 
+In broad terms, the CI module is typically dedicated to building and testing code, while the CD module is designed for deploying code to production. However, the specific use case and deployment strategy will guide your decision on where to create your pipeline.
+ 
+It's worth noting that you also have the option to incorporate both types of processes within a single pipeline, depending on your requirements and preferences.
+
+#### We'd like a step in a Pipeline where it checks the Docker tag name of the artifact and if it doesn't contain `master` or `main`, it fails the pipeline.
+
+You can use conditional execution and use expression <+artifact.tag> to check if it equals the required value and run the pipeline
+
+#### We would like to run terraform step in a pipeline with specific version of terraform and another pipelines terraform step with different version of terraform.
+
+To achieve this use case you will need to use two different delegates with the required Terraform version installed.
+

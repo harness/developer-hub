@@ -1124,8 +1124,20 @@ cURL command references "localstack:4566" because both the LocalStack service an
 In the configuration of the Restore Cache step:
 
 1. Set it to fail if the target cache key isn't found.
-1. Enable a failure strategy that allows the pipeline to continue despite the step failure.
+2. Enable a failure strategy that allows the pipeline to continue despite the step failure.
 
 #### How user use own plugins in Harness CI pipelines?
 1. Create your plugin to perform a specific task, written in any programming language.
-1. Integrate the plugin into your CI pipeline using a Plugin step.
+2. Integrate the plugin into your CI pipeline using a Plugin step.
+
+#### My pod is evicted during an Aqua scan, and I receive the signal "terminated." Could this be due to the image size (around 4GB)?
+
+Yes, pod eviction during an Aqua scan, especially with a large image size (around 4GB), could be attributed to resource constraints
+
+#### How can I address pod eviction during an Aqua scan?
+
+To address pod eviction during an Aqua scan, it's recommended to increase the container resources limit. This can be achieved by adjusting the resource requests and limits for the container.
+
+#### Can the size of the container image impact pod eviction during a scan?
+
+Yes, the size of the container image, especially if it's large (e.g., 4GB), can contribute to resource utilization. Ensuring that the container has sufficient resources allocated is crucial to prevent eviction during resource-intensive tasks like an Aqua scan.
