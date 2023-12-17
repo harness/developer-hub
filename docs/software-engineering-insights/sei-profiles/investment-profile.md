@@ -4,7 +4,7 @@ description: Use Investment profiles to examine effort investment metrics.
 sidebar_position: 10
 ---
 
-Investment profiles help you understand where engineers are allocating their time through [effort investment metrics](../sei-metrics-and-reports/effort-investment-metrics.md).
+Investment profiles help you understand where engineers are allocating their time through [effort investment metrics](/docs/software-engineering-insights/sei-metrics-and-reports/alignment-metrics-reports/effort-investment-metrics).
 
 To create or edit Investment profiles:
 
@@ -56,5 +56,45 @@ This example could result in the following ranges:
 * 20 to 30 percent: Ideal
 * 30 to 40 percent: Acceptable
 * 40 to 100 percent: Poor
+
+</details>
+
+
+<details>
+
+<summary>Relationship between ranking categories and effort investment calculations</summary>
+
+The ranking of categories plays a significant role in determining how tickets are allocated to different categories, and subsequently, how effort investment calculations are made.
+
+1.  **Ticket Metadata for Categories:** Categories in the Investment profile are defined based on certain attributes or metadata of tickets. These attributes can include labels, components, priorities, issue types, or any other relevant information associated with the tickets in your issue management system (e.g., Jira or Azure). 
+    
+    Example Ticket Metadata:
+
+
+    `Ticket 1:` Labels: ("abc", "def") Priority: (P1)
+
+    `Ticket 2:` Labels: ("abc", "def", "ghi") with Components: ("text", "value")
+
+
+2. **Defining Categories:** Categories are defined based on specific criteria related to ticket metadata. In the provided example, let's say you define two categories:
+   * `Category 1:` Based on the label being "abc"
+   * `Category 2:` Based on the component being "text" 
+
+3. **Ticket Allocation to Categories:** Now, when you have tickets in your system, they are allocated to categories based on whether they meet the criteria defined for each category. For example:
+   * `Ticket 1` belongs to `"Category 1"` because it has the label `"abc"`
+   * `Ticket 2` can potentially belong to both `"Category 1"` and `"Category 2"` because it meets the criteria for both categories.
+
+4.  **Ranking Categories:** This is where the ranking of categories comes into play. When a ticket is eligible for multiple categories, the ranking helps determine which category takes precedence or priority.
+
+    
+    In the provided example:
+
+
+    1. If `"Category 1"` is ranked higher (e.g., ranked 1), then Ticket 2 will also be allocated to `"Category 1"`
+    2. If `"Category 2"` is ranked higher, then Ticket 2 will be allocated to `"Category 2"` and it won't be included in `"Category 1"`
+
+5. **Allocation Goals and Calculations:** After tickets are allocated to categories, you can set allocation goals for each category. To learn more, Go to [Allocation Goals](#allocation-goals).
+
+6. **Effort Investment Calculations:** Once allocation goals are set, SEI calculates the effort investment based on the actual allocation of tickets to categories and the progress made in each category.
 
 </details>

@@ -1,7 +1,7 @@
 ---
-title: SEI basics
+title: Overview
 description: Get introduced to SEI.
-sidebar_position: 10
+sidebar_position: 1
 ---
 
 Harness Software Engineering Insights (SEI) analyzes data from over 40 DevOps tools to compute [DORA metrics and over 100 other insightful metrics](/docs/category/metrics-and-reports) that provide the missing insights to help you deliver software faster with better quality.
@@ -20,10 +20,10 @@ SEI also helps your teams drive continuous improvement by leveraging best practi
 
 To start using SEI, configure the following:
 
-* [Collections](/docs/category/collections)
-* [Integrations](/docs/category/integrations)
+* [Collections](../sei-projects-and-collections/project-and-collection-overview.md)
+* [Integrations](../sei-integrations/sei-integrations-overview.md)
 * [Profiles](/docs/category/profiles)
-* [Insights](/docs/software-engineering-insights/sei-insights.md)
+* [Insights](../sei-insights.md)
 * [Metrics and reports](/docs/category/metrics-and-reports)
 
 :::tip

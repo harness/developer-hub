@@ -1,7 +1,7 @@
 ---
 title: Propelo and Harness
 description: Propelo is now Harness SEI.
-sidebar_position: 20
+sidebar_position: 4
 ---
 
 In January 2023, Harness acquired Propelo, now called Harness Software Engineering Insights (SEI). This page provides information for former Propelo customers who are now using Software Engineering Insights in the Harness Platform.
@@ -38,12 +38,14 @@ Some Propelo terminology changed to align with the Harness Platform.
 | Propelo term | Harness term | Comments |
 | ------------ | ------------ | -------- |
 | Tenant | Account | |
-| Dashboards | Insights | |
+| Dashboards | Insights | Create new insights or manage existing insights under the specific collection category. |
 | Workspaces | Projects | Each Harness project is a workspace. Harness organizations are umbrellas over projects. SEI can't track an organization as a conglomerate of the projects within it. |
 | Global Settings | Customize | Located under **SEI Settings** in the module navigation. Only includes the **Dashboard Color Scheme** setting. |
 | Audit Logs | Activity Logs | Located under **SEI Settings** in the module navigation. |
+| Org Units | Collections | View collections or create new ones. Manage and edit existing collections based on the associated RBAC role the user has. |
+| Org Unit Categories | Collection categories | Create and manage collection categories. |
 | Org Users | Contributors | This refers to user records that contribute to metrics and insights. This doesn't refer to [user roles](#user-roles). |
-| Org Managers/Admins | Collection Admins | |
+| Org Managers/Admins | Collection Admins | Collection Admins cam manage and view their own collection. |
 
 The following terms are the same:
 
@@ -53,3 +55,9 @@ The following terms are the same:
 * Propels
 * Tables
 * Trellis Score
+
+The The following features are currently not supported in the SEI module of Harness: 
+
+* Licence Usafe
+* Delegates (Alternative: Ingestion Satellites)
+* Connectors (Alternative: Integrations)

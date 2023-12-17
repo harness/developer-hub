@@ -94,9 +94,9 @@ Weights are relative. For example, if all factors are weighted 5, then all facto
 Add these widgets to your Insights to analyze Trellis Scores.
 
 * **Trellis Score Report:** Trellis Scores by developer.
-* **Trellis Scores by Collection:** Trellis Scores organized by [Collection](../sei-collections/manage-collections.md).
+* **Trellis Scores by Collection:** Trellis Scores organized by [Collection](../sei-projects-and-collections/manage-collections.md).
 * **Individual Raw Stats:** A table of base values that contribute to Trellis Scores.
-* **Raw Stats by Collection:** Base values organized by [Collection](../sei-collections/manage-collections.md).
+* **Raw Stats by Collection:** Base values organized by [Collection](../sei-projects-and-collections/manage-collections.md).
 
 ### Raw stats
 
@@ -133,4 +133,24 @@ You can use the **Download** icon to download the raw stats report.
 
 ## Trellis Score visibility
 
-You can [limit access to Trellis Scores](../sei-collections/collection-admin.md#limit-trellis-score-visibility).
+You can [limit access to Trellis Scores](../sei-projects-and-collections/collection-admin.md#limit-trellis-score-visibility).
+
+## Associations & Advanced Options
+
+This allows users to associate profiles with specific Projects and Collections within an organization. This helps in managing and applying profiles effectively.
+
+* Projects: Contributors can select a project to view available Collections and assign Trellis profiles to specific projects. This feature helps in organizing and categorizing teams under different projects, allowing for a more granular management of Trellis profiles.
+* Collections: Contributors can select Collections that may apply a Trellis profile. By associating Collection with Trellis profiles, contributors can ensure that the right profiles are applied to the appropriate teams or units within the organization. This facilitates customized score calculations.
+
+#### Exclusions
+
+Exclusions allow users to exclude specific Pull Requests (PRs) and commit from the current Trellis profile, potentially impacting score calculations.
+
+* Excluding Pull Requests: Users can specify PRs to be excluded from the current Trellis profile. Exclusions are helpful when certain PRs or commits should not be considered in score calculations, such as those related to experimental or non-standard work.
+* Excluding Commits: Users can list commits to be excluded from the current Trellis profile. Excluded commits are not factored into score calculations.
+
+#### Development Stages Mapping
+
+Development Stages Mapping allows users to map a Trellis profile with development stages from an issue management tool. Mapping development stages is valuable when organizations want to attribute scores to developers based on their contributions at different stages of a project's life cycle.
+
+These features enhance the customization and precision of performance assessments within an organization using Trellis Scores.

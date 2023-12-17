@@ -15,7 +15,7 @@ To create or edit a Trellis profile:
 
 :::info Predefined Trellis profiles
 
-Some Trellis profiles are automatically created when you create a Harness project or add certain types of [SEI integrations](/docs/category/integrations). You can associate predefined profiles with [Collections](../sei-collections/manage-collections.md).
+Some Trellis profiles are automatically created when you create a Harness project or add certain types of [SEI integrations](/docs/category/integrations). You can associate predefined profiles with [Collections](../sei-projects-and-collections/manage-collections.md).
 
 You can't delete predefined profiles. If you don't want to use a predefined profile, make sure it isn't associated with any Collections.
 
@@ -30,7 +30,7 @@ Configure basic information for the Trellis profile, such as a **Name** and an o
 
 ## Associations and exclusions
 
-In the **Association** section of your Trellis profile, you can map [Collections](../sei-collections/manage-collections.md) to the Trellis profile, map development stages, and configure exclusions.
+In the **Association** section of your Trellis profile, you can map [Collections](../sei-projects-and-collections/manage-collections.md) to the Trellis profile, map development stages, and configure exclusions.
 
 * **Associations:** Select Collections to associate with this Trellis Profile.
 * **Development stage mapping:** Select relevant development stages as defined in your issue management tool. This is useful if you want to attribute scores to developers based on their contributions at different stages of a project's life cycle.

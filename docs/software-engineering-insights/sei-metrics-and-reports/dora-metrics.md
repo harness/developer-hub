@@ -81,6 +81,93 @@ Lead Time for Changes represents the amount of time it takes a commit to get int
 
 The overall lead time is the sum of the average time spent in each stage configured in the workflow. This metric can help identify where the team is spending time and if the amount of time spent in each stage falls in an acceptable range.
 
+Note that for lead time metrics you can define stages based on either of the following events:
+
+* Ticket Created: This event ensures that lead time tracking starts in issue management.
+* Commit Created: This event ensures that lead time tracking starts when the first commit is committed.
+* API Event: This This event triggers the lead time calculation based on a custom API event.
+
+The default configuration for a Ticket-based workflow profile has five stages where as PR-based Workflow profile has four stages. To find more information, go to [Workflow profiles for lead time](../sei-profiles/workflow-profile.md#workflow-profiles-for-lead-time).
+
+### Lead Time for Changes calculation
+
+Overall lead time is the sum of the time spent in each stage in a workflow, such as commit-to-deployment time for a change, open-to-merge time for PRs, or the issue workflow for issues in your issue management system. Lead time can help identify where a team is spending time and if the amount of time spent in each stage falls in an acceptable range.
+
+The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](../sei-profiles/workflow-profile.md#workflow-profiles-for-lead-time). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the a, then the *time to comment* is zero.
+
+### Development Stages in Lead Time For Changes
+
+#### Lead Time to First commit
+
+This metric refers to the amount of time that passes from the beginning of a development cycle (like the start of a sprint or when a feature is first planned) to the first commit in the SCM. Essentially, it measures how long it takes to start actual coding work after a task is defined.
+
+#### PR Creation Time
+
+This metric can be defined as either:
+
+* Time from Commit to First PR Creation: This is the duration between the first commit in a repository and the creation of the first pull request that includes this commit. It reflects how promptly changes are proposed for review after initial development.
+* Time from Commit to Last PR Creation: This measures the time from the first commit to the creation of the last pull request that includes this commit. This could be longer, especially in cases where commits are made early but the PR is created much later after further development.
+
+#### Time to Comment
+
+Users can choose to calculate this as either:
+  
+* Time from PR Creation to First Comment: This metric measures the duration from the moment a pull request is created to the time the first comment is made on it. It's an indicator of the engagement and response time of the team or reviewers.
+* Time from PR Creation to Last Comment: This is the time taken from the creation of the PR to the last comment made. It could indicate the overall duration of discussion or review on the PR.
+
+#### Approval Time
+
+This metric can be defined as either:
+  
+* Time from the PR Creation to the First Approval: This measures the time taken from the creation of a pull request to its first approval. It's a gauge of how quickly a PR is reviewed and approved by the team.
+* Time from the PR Creation to the Last Approval: This is the duration from the PR creation to the last approval it receives. In workflows requiring multiple approvals, this metric indicates the total time taken for all necessary reviews.
+
+#### Merge Time
+
+This metric can be defined as either:
+
+* Time to Merge the First PR: This is the time taken to merge the first pull request after it has been created. It indicates the speed at which changes are integrated into the main branch.
+* Time to Merge for the Last PR Merge: This measures the time taken to merge the last pull request. In scenarios with multiple PRs, this metric can show how long it takes to integrate all changes from various PRs into the main branch.
+
+:::info
+Note that for Lead Time For Changes Report you can choose to enable or disable the Development Stages based on your requirements.
+:::
+
+The following examples demonstrate how PR lead time would be calculated in different scenarios. These examples are based on the default configuration for a PR-based Workflow profile, which has four stages: PR creation time, time to first comment, approval time, and merge time.
+
+When reviewing these examples, consider the following:
+
+* *Time to Comment* helps you understand the lead time between PR creation time and the associated review.
+* There are two ways to track the time taken for a PR approval:
+  * Default *Approval Time* configuration: The overall approval time, starting from PR creation.
+  * *Approval Time* minus *Time to Comment*: Time spent in the review cycle when an active reviewer is involved.
+* The *overall lead time* is the sum of the average time spent in each stage. This is where you can determine where teams are spending their time and whether this is an acceptable range.
+
+<details>
+<summary>PR Lead Time calculation example #1</summary>
+
+For this example, assume the following series of events occurs:
+
+1. Contributor makes a commit (`Commit created event`).
+2. Contributor creates a Pull Request (`Pull Request created event`).
+3. The Pull Request is approved by an approver (`Pull Request approval event`).
+4. The Pull Request is merged to the repository (`Pull Request Merged event`).
+
+As a result the following calculations are made:
+
+```
+PR creation time = Time to First PR creation - Time to Commit (Default)
+Time to Comment = Time to first comment - Time to PR creation (Default)
+Approval Time = 0
+Merge Time = Time for the first approval - Time to the PR creationb(Default)
+```
+
+Approval Time is calculated as `0` because there were no review comments made on the PR.
+
+</details>
+
+### Add the report
+
 The **Lead Time for Changes** widget aggregates lead time across your issue management system, SCM, and CI/CD tools.
 
 To add the **Lead Time for Changes** widget to Insights:
@@ -116,7 +203,7 @@ To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](../s
 
    Here you can also select **Show absolute value** if you would rather get the absolute value than the rate (percentage).
 
-5. If you want to view or change the projects and Collections associated with the profile, select **Associations**. Projects and Collections are automatically derived from the SEI integration you chose for **Change Failure Rate**. For more information, go to [Collections](/docs/category/collections).
+5. If you want to view or change the projects and Collections associated with the profile, select **Associations**. Projects and Collections are automatically derived from the SEI integration you chose for **Change Failure Rate**. For more information, go to [Collections](/docs/category/projects-and-collections).
 6. Select **Save** to save the profile.
 7. Go to the Insight where you want to add the Change Failure Rate widget. Make sure you are in the correct project.
 8. Select **Settings**, and then select **Add Widget**.

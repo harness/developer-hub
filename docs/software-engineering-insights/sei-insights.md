@@ -1,7 +1,7 @@
 ---
 title: Insights
 description: Insights are dashboards.
-sidebar_position: 50
+sidebar_position: 21
 ---
 
 Insights are dashboards that make it easy to visualize and interpret metrics that are captured by SEI. With a variety of out-of-the-box widgets, you can create Insights that show the data you care about most and help you understand your engineering team's effectiveness and efficiency.
@@ -22,7 +22,7 @@ The primary way to access Insights is through the **Project** tab.
 
    Select **All Dashboards** to view other Insights. The Insights available for each Collection depend on the [Insight associations](#manage-insights-associations). The **Default** label indicates the Collection's default Insight.
 
-   To switch projects or Collections, use the **Project** and **Collection** options on the navigation menu. You can also use the breadcrumbs in the Insights header to navigate up through the [Collection hierarchy](./sei-collections/collections-overview.md).
+   To switch projects or Collections, use the **Project** and **Collection** options on the navigation menu. You can also use the breadcrumbs in the Insights header to navigate up through the [Collection hierarchy](./sei-projects-and-collections/manage-collections.md).
 
    If integration monitoring is enabled, you can view the integration status in the Insights header.
 
@@ -34,7 +34,7 @@ Once you're viewing an Insight, you can explore the widgets and interact with th
 
 :::info Where does the data come from?
 
-Widgets get data from [integrations](/docs/category/integrations), which are inherited from the [Collections associated with Insights](#manage-insights-associations). In turn, Collections inherit integrations from their associated Harness project, because integrations are configured at the project level. For more information about this hierarchy and configuring Collections, go to [Collections](/docs/category/collections).
+Widgets get data from [integrations](/docs/category/integrations), which are inherited from the [Collections associated with Insights](#manage-insights-associations). In turn, Collections inherit integrations from their associated Harness project, because integrations are configured at the project level. For more information about this hierarchy and configuring Collections, go to [Collections](/docs/category/projects-and-collections).
 
 You can also configure individual metrics and widgets to specify what data is used in calculations, how data is presented, and other criteria. For more information, go to [Metrics and reports](/docs/category/metrics-and-reports).
 
@@ -70,7 +70,7 @@ Some widgets allow you to drill down into data. For example, you can select a se
 
 6. Select at least one Collection category to associate with this Insight.
 
-   All [Collections](./sei-collections/manage-collections.md) and child Collections under the selected category are automatically associated with the Insight. You can refine the [Insight associations](#manage-insights-associations) after initial Insight creation.
+   All [Collections](./sei-projects-and-collections/manage-collections.md) and child Collections under the selected category are automatically associated with the Insight. You can refine the [Insight associations](#manage-insights-associations) after initial Insight creation.
 
    If you want to examine Collections under a certain Collection category, select **View Collections** on the **Collections Categories** dropdown menu.
 
@@ -102,7 +102,7 @@ You can also configure individual metrics and widgets to specify what data is us
 There are two ways to manage the Collections associated with Insights:
 
 * When viewing Insights, select the **Settings** icon, and then select **Collections**.
-* From the **Edit Collection** page, edit the **Insights** settings. For more information about this option, go to **Managing Insights associations** in [Manage Collections](./sei-collections/manage-collections.md#manage-insights-associations).
+* From the **Edit Collection** page, edit the **Insights** settings. For more information about this option, go to **Managing Insights associations** in [Manage Collections](./sei-projects-and-collections/manage-collections.md#manage-insights-associations).
 
 ### Change the color scheme
 
@@ -161,7 +161,7 @@ The Business Alignment Insight can help visualize where your teams expend the mo
 * **Effort Investment Trend Report**
 * **Effort Investment By Engineer**
 
-For more information about these reports and metrics, go to [effort investment metrics](./sei-metrics-and-reports/effort-investment-metrics.md).
+For more information about these reports and metrics, go to [effort investment metrics](/docs/software-engineering-insights/sei-metrics-and-reports/alignment-metrics-reports/effort-investment-metrics).
 
 If you want to create additional Business Alignment Insights, select the **Effort Investment Profile** option under **Parameters** when [creating Insights](#create-insights).
 

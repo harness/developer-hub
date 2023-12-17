@@ -40,7 +40,7 @@ Some code velocity metrics contribute to [Trellis Scores](../trellis-score.md):
 
 ### SCM Committers Report
 
-With the **SCM Committers Report**, you can analyze the following data for each committer in the [Collection](../../sei-collections/collections-overview.md):
+With the **SCM Committers Report**, you can analyze the following data for each committer in the [Collection](../../sei-projects-and-collections/manage-collections.md):
 
 * The number of PRs they have worked on.
 * The number of commits they've made.
@@ -88,7 +88,7 @@ Use the **SCM Issues Resolution Time Report** to analyze the overall time taken 
 
 The **SCM Issues Time Across Stages Report** analyzes cycle time for SCM issues. You can configure this widget by project, repository, or other parameters to help you identify the Kanban state where issues spend the most time.
 
-Only GitHub is supported, and your [GitHub SEI integration](../../sei-integrations/sei-integration-github.md) must have the appropriate configuration to ingest issue cycle time data.
+Only GitHub is supported, and your [GitHub SEI integration](../../sei-integrations/automated-integrations/sei-integration-github.md) must have the appropriate configuration to ingest issue cycle time data.
 
 ## SCM PR reports
 
@@ -140,6 +140,20 @@ On the **Settings** tab, you can:
 * Select how you want to sort X-axis data, such as ascending or descending.
 * Select the maximum number of unique values to show on the X-axis.
 * Select the visualization (bar chart, pie chart, line chart, and so on).
+
+### SCM Coding Days Report
+
+The SCM Coding Days Report displays the number of days in a given time period that a user or team has committed code to their SCM repository. This report can be used to track how active a user or team is in terms of code development and to identify trends in coding activity over time.
+
+The SCM Coding Days Report can be configured to track the following metrics:
+
+* **Average Coding Days Per Week:** The average number of days per week where code commits were made. A minimum of 7 days is required to calculate this metric.
+* **Median Coding Days Per Week:** The median number of days per week where code commits were made. A minimum of 7 days is required to calculate this metric.
+* **Average Coding Days Per Two Weeks:** The average number of days over a two-week period where code commits were made. A minimum of 14 days is required to calculate this metric.
+* **Median Coding Days Per Two Weeks:** The median number of days over a two-week period where code commits were made. A minimum of 14 days is required to calculate this metric.
+* **Average Coding Days Per Month:** The average number of days per month where code commits were made. A minimum of 28 days is required to calculate this metric.
+* **Median Coding Days Per Month:** The median number of days per month where code commits were made. A minimum of 28 days is required to calculate this metric.
+
 
 ### SCM PR Lead Time by Stage Report
 

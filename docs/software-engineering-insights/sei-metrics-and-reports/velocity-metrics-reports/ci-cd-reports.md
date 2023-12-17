@@ -17,9 +17,9 @@ These widgets can be configured based on various CI/CD attributes, such as pipel
 
 Use the CI/CD job count reports to understand how often your CI/CD jobs run and whether they succeed or fail. You can analyze CI/CD job counts over a specific period, and shed light on the trends and patterns observed during that time.
 
-* **CI/CD Job Count Report:** A bar chart visualizing the number of CI/CD jobs run in a given time frame.
+* **CI/CD Job Count Report:** A bar chart visualizing the number of CI/CD jobs run in a given time frame. The job count information is represented in the Bar chart format. The widgets supports drill-down for in-depth analysis.
 * **CI/CD Job Count Single Stat:** This report provides a single stat, such as the total number of jobs that ran in a given period of time, a summary of the job count at a given moment, or the number of jobs or stages within the CI/CD pipeline.
-* **CI/CD Job Count Trend Report:** Daily, weekly, and monthly trends for CI/CD job runs.
+* **CI/CD Job Count Trend Report:** Daily, weekly, and monthly trends for CI/CD job runs. The data representation is in the Line chart format and does not support drill-down.
 
 When you add a CI/CD Job Count report to an Insight, the **Job End Date** filter is set to a relative time frame by default. The widget is ready to use with the default configuration or you can modify it. For some useful configuration options, go to [Configuration techniques](#configure-cicd-job-reports).
 
@@ -27,16 +27,16 @@ When you add a CI/CD Job Count report to an Insight, the **Job End Date** filter
 
 Job duration reports can help you optimize build times by analyzing the total time it takes for jobs to run.
 
-* **CI/CD Job Duration Report:** Overview of elapsed time for job runs.
-* **CI/CD Job Duration Single Stat:** Report a single job duration stat.
-* **CI/CD Job Duration Trend Report:** Daily, weekly, and monthly trends in job duration.
+* **CI/CD Job Duration Report:** Overview of elapsed time for job runs. The data is represented as Bar charts and supports drill-down for detailed analysis.
+* **CI/CD Job Duration Single Stat:** Report a single job duration stat. It displays the median or average job execution duration as a numeric value but does not support drill-down.
+* **CI/CD Job Duration Trend Report:** Daily, weekly, and monthly trends in job duration. The data is represented as a Line graph.
 
 ## Pipeline job reports
 
 Use the CI/CD pipeline job reports to analyze CI/CD job counts over a specific period, and shed light on the trends and patterns observed during that time.
 
-* **CI/CD Pipeline Jobs Count Report:** A heatmap visualizing the number of CI/CD jobs run in a given time frame.
-* **CI/CD Pipeline Jobs Count Trend Report:** Daily, weekly, and monthly trends for CI/CD job runs.
+* **CI/CD Pipeline Jobs Count Report:** A heatmap visualizing the number of CI/CD jobs run in a given time frame. The data representation format is in the Tile format. The support for drill down functionality is not available for this report. 
+* **CI/CD Pipeline Jobs Count Trend Report:** Daily, weekly, and monthly trends for CI/CD job runs. 
 * **CI/CD Pipeline Jobs Duration Report:** Total time taken by a job and its children. Use this report to optimize build times.
 * **CI/CD Pipeline Jobs Duration Trend Report:** Daily, weekly, and monthly trends in job duration.
 
@@ -54,9 +54,10 @@ Pipeline job reports are functionally identical to [job count reports](#job-coun
 
 Use the CI/CD job configuration change reports to understand how often job configuration updates happen, and which users maintain or make the most job configuration changes.
 
-* **CI/CD Job Config Change Count Report:** Overview of job config changes.
-* **CI/CD Job Config Change Count Single Stat:** Report a single stat related to job config changes.
-* **CI/CD Job Config Change Count Trend Report:** Daily, weekly, and monthly trends for job config changes.
+* **CI/CD Job Config Change Count Report:** Overview of job config changes. The data is represented as a Bar chart and is only supported for Jenkins instances. This report supports drilldown view for detailed analysis.
+* **CI/CD Job Config Change Count Single Stat:** Report a single stat related to job config changes. The report does not support drilldown and it is only supported for jenkins instances.
+* **CI/CD Job Config Change Count Trend Report:** Daily, weekly, and monthly trends for job config changes. The data is represented as a Line chart and is only supported for Jenkins instances.
+
 
 ## SCM to CI/CD jobs reports
 

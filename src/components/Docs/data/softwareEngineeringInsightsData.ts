@@ -31,11 +31,18 @@ import {
           "",
         list: [
           {
-            title: "SEI basics",
+            title: "Get started with SEI",
             module: MODULES.sei,
             description:
               "Learn about the benefits and features of Harness Software Engineering Insights, as well as how to get started with SEI.",
-            link: "/docs/software-engineering-insights/get-started/overview",
+            link: "/docs/category/get-started-with-sei/",
+          },
+          {
+            title: "What's supported",
+            module: MODULES.sei,
+            description:
+              "SEI integrates with a number of third-party providers to provide a centralized visibility on engineering work.",
+            link: "/docs/software-engineering-insights/sei-supported-platforms",
           },
         ],
       },
@@ -46,11 +53,11 @@ import {
           "",
         list: [
           {
-            title: "Collections",
+            title: "Projects and Collections",
             module: MODULES.sei,
             description:
               "Collections keep your data organized.",
-            link: "/docs/category/collections",
+            link: "/docs/category/projects-and-collections",
           },
           {
             title: "Integrations",

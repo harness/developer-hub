@@ -23,13 +23,59 @@ For example, the default configuration for a [PR-based Workflow profile](../../s
 * Approval time.
 * Merge time.
 
-When [calculating lead time](#lead-time-calculation), the time spent in each stage depends on the stages that a PR or issue actually goes through. For example, if your Workflow profile includes a *time to first comment* stage, but there are no comments on the PR or ticket, then the *time to first comment* is zero.
+Similarly, the default configuration for a [Ticket-based Workflow profile](../../sei-profiles/workflow-profile.md#configuration-examples) has five stages:
+
+* Lead time to First Commit.
+* PR Creation time.
+* Time to first comment.
+* Approval time.
+* Merge time.
+
+When [calculating lead time](#lead-time-calculation), the time spent in each stage depends on the stages that a PR or issue actually goes through. For example, if your Workflow profile includes a *time to comment* stage, but there are no comments on the PR or ticket, then the *time to comment* is zero.
 
 You can configure grading thresholds (good, acceptable, and slow) for each stage. These thresholds determine grades that appear on your lead time widgets. Grades are reported for each stage as well as a cumulative grade for all stages combined.
 
 You can modify Workflow profile stages and grades according to your team's SDLC process. If your Workflow profile includes stages across issue management, SCM, and CI/CD, make sure the same event is not tracked in multiple tools, such as *Deploy to Production* in Jira and a *CI/CD Deploy* stage.
 
-For more information about modifying Workflow profiles and configuring stages for lead time calculation, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
+For more information about modifying Workflow profiles and configuring stages for lead time calculation, go to [Workflow profile](../../sei-profiles/workflow-profile.md#configure-the-velocity-lead-time-type-workflow-profile).
+
+### Development Stages in Velocity Lead Time
+
+#### Lead Time to First commit
+
+This metric refers to the amount of time that passes from the beginning of a development cycle (like the start of a sprint or when a feature is first planned) to the first commit in the SCM. Essentially, it measures how long it takes to start actual coding work after a task is defined.
+
+#### PR Creation Time
+
+This metric can be defined as either:
+
+* Time from Commit to First PR Creation: This is the duration between the first commit in a repository and the creation of the first pull request that includes this commit. It reflects how promptly changes are proposed for review after initial development.
+* Time from Commit to Last PR Creation: This measures the time from the first commit to the creation of the last pull request that includes this commit. This could be longer, especially in cases where commits are made early but the PR is created much later after further development.
+
+#### Time to Comment
+
+Users can choose to calculate this as either:
+  
+* Time from PR Creation to First Comment: This metric measures the duration from the moment a pull request is created to the time the first comment is made on it. It's an indicator of the engagement and response time of the team or reviewers.
+* Time from PR Creation to Last Comment: This is the time taken from the creation of the PR to the last comment made. It could indicate the overall duration of discussion or review on the PR.
+
+#### Approval Time
+
+This metric can be defined as either:
+  
+* Time from the PR Creation to the First Approval: This measures the time taken from the creation of a pull request to its first approval. It's a gauge of how quickly a PR is reviewed and approved by the team.
+* Time from the PR Creation to the Last Approval: This is the duration from the PR creation to the last approval it receives. In workflows requiring multiple approvals, this metric indicates the total time taken for all necessary reviews.
+
+#### Merge Time
+
+This metric can be defined as either:
+
+* Time to Merge the First PR: This is the time taken to merge the first pull request after it has been created. It indicates the speed at which changes are integrated into the main branch.
+* Time to Merge for the Last PR Merge: This measures the time taken to merge the last pull request. In scenarios with multiple PRs, this metric can show how long it takes to integrate all changes from various PRs into the main branch.
+
+:::info
+Note that for Lead Time For Changes Report you can choose to enable or disable the Development Stages based on your requirements.
+:::
 
 ### Lead time calculation
 
@@ -41,10 +87,10 @@ The following examples demonstrate how PR lead time would be calculated in diffe
 
 When reviewing these examples, consider the following:
 
-* *Time to first comment* helps you understand the lead time between PR creation time and the first review.
+* *Time to Comment* helps you understand the lead time between PR creation time and the associated review.
 * There are two ways to track the time taken for a PR approval:
   * Default *Approval Time* configuration: The overall approval time, starting from PR creation.
-  * *Approval Time* minus *Time to first comment*: Time spent in the review cycle when an active reviewer is involved.
+  * *Approval Time* minus *Time to Comment*: Time spent in the review cycle when an active reviewer is involved.
 * The *overall lead time* is the sum of the average time spent in each stage. This is where you can determine where teams are spending their time and whether this is an acceptable range.
 
 <details>
@@ -60,10 +106,10 @@ For this example, assume the following series of events occurs:
 As a result the following calculations are made:
 
 ```
-PR creation time = Pull Request created event - Commit created event
-Time to first comment = Pull Request approval event - Pull Request created event
+PR creation time = Time to First PR creation - Time to Commit (Default)
+Time to Comment = Time to First comment - Time to PR creation (Default)
 Approval Time = 0
-Merge Time = Pull Request Merged event - Pull Request approval event
+Merge Time = Time for the First approval - Time to the PR creation(Default)
 ```
 
 Approval Time is calculated as `0` because there were no review comments made on the PR.
@@ -85,8 +131,8 @@ As a result, the following calculations are made:
 
 ```
 PR creation time = Pull Request created event - Commit created event
-Time to first comment = Review1 event - Pull Request created event
-Approval Time = Pull Request approval event - Review1 event
+Time to Comment = Review1 event - Pull Request created event
+Approval Time = Pull Request approval event - Pull Request created event
 Merge Time = Pull Request Merged event - Pull Request approval event
 ```
 
@@ -105,12 +151,14 @@ For this example, assume the following series of events occurs:
 6. The Pull Request is approved by an approver (`Pull Request approval event`).
 7. The Pull Request is merged to the repository (`Pull Request Merged event`).
 
+Considering the Approval Time settings defined as Time from the PR Creation to the Last Approval.
+
 As a result, the following calculations are made:
 
 ```
 PR creation time = Pull Request created event - Commit created event
-Time to first comment = Review1 event - Pull Request created event
-Approval Time = Review3 event - Review1 event
+Time to Comment = Review1 event - Pull Request created event
+Approval Time = Review3 event - Pull Request created event
 Merge Time = Pull Request Merged event - Pull Request approval event
 ```
 
@@ -155,7 +203,7 @@ When configuring the [Workflow profile](../../sei-profiles/workflow-profile.md) 
 
 This report requires that you set the **Issues Resolved In** filter, because only issues that have completed the entire issue management workflow are considered in the lead time calculation.
 
-You can add additional filters to the widget to define what type of issues or PRs should be considered in the lead time calculation. Filters are associated with the widget/Insight, and they persist even if you change [collections associated with Insights](../../sei-collections/manage-collections.md#manage-insights-associations). When configuring widgets or modifying Insight associations. widgets may break or gain/lose data when associations change.
+You can add additional filters to the widget to define what type of issues or PRs should be considered in the lead time calculation. Filters are associated with the widget/Insight, and they persist even if you change [collections associated with Insights](../../sei-projects-and-collections/manage-collections.md#manage-insights-associations). When configuring widgets or modifying Insight associations. widgets may break or gain/lose data when associations change.
 
 You can also add filters at the collection level. Collection-level filters take precedence over widget-level filters when defined for the same attribute. For non-conflicting filters, both filters are considered.
 
