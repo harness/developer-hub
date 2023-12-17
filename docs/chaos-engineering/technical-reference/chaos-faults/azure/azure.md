@@ -29,7 +29,6 @@ Azure disk loss detaches the virtual disk from an Azure instance.
 - This fault checks the performance of the application (or process) running on the instance.
 
 <accordion color="green">
-    
 		<summary>Use cases</summary>
 
 - Determines the resilience of an application to unexpected disk detachment. 
@@ -49,8 +48,7 @@ Azure instance CPU hog disrupts the state of infrastructure resources.
 - It utilizes excess amounts of CPU on the Azure instance using the bash script for a specific duration.
 
 
-<accordion color="green">
-    
+<accordion color="green">    
 		<summary>Use cases</summary>
 
 - Determines the resilience of an Azure instance and the application deployed on the instance during unexpected excessive utilization of the CPU resources. 
@@ -76,8 +74,7 @@ Azure instance I/O stress disrupts the state of infra resources.
 - It causes I/O stress on the Azure Instance using the bash script for a specific duration.
 
 
-<accordion color="green">
-    
+<accordion color="green">    
 		<summary>Use cases</summary>
 
 - Determines the resilience of an Azure instance when unexpected stress is applied on the I/O sources. 
@@ -104,7 +101,6 @@ Azure instance memory hog disrupts the state of infrastructure resources.
 - It utilizes memory in excess on the Azure Instance using the bash script for a specific duration.
 
 <accordion color="green">
-
 		<summary>Fault usage</summary>
 
 - Determines the resilience of an Azure instance when memory resources are unexpectedly utilized in excess. 
@@ -127,8 +123,7 @@ Azure instance memory hog disrupts the state of infrastructure resources.
 Azure instance stop powers off from an Azure instance during a specific duration. It checks the performance of the application or process running on the instance.
 
 
-<accordion color="green">
-    
+<accordion color="green">    
 		<summary>Use cases</summary>
 
 - Determines the resilience of an application to unexpected power off of the Azure instances. 
@@ -148,8 +143,7 @@ Azure web app access restrict causes a split brain condition by restricting the 
 - This fault checks if the requests have been serviced and recovery is automated after the restrictions have been lifted.
 - It checks the performance of the application (or process) running on the instance.
 
-<accordion color="green">
-    
+<accordion color="green">    
 		<summary>Use cases</summary>
 Azure web app access restrict determines the resilience of an application when access to a specific application service instance is restricted.
 </accordion>
@@ -163,8 +157,7 @@ Azure web app access restrict determines the resilience of an application when a
 Azure web app stop shuts down the application. It checks whether the requests have been re-routed to another instance on the application service.
 
 
-<accordion color="green">
-    
+<accordion color="green">    
 		<summary>Use cases</summary>
 
 - Determines the resilience of a web application to unplanned halts (or stops). 

@@ -5,11 +5,9 @@ title: Chaos Faults for Cloud Foundry
 
 <!-- Import statement for Custom Components -->
 
-```
 import FaultDetailsCard from "@site/src/components/ChaosEngineering/FaultDetailsCard";
 import ExperimentListSection from "@site/src/components/ChaosEngineering/ExperimentListSection"
 import { experiments } from "./experiments"
-```
 
 
 
@@ -32,7 +30,6 @@ CF app stop injects app stop chaos for a Cloud Foundry app.
 - Validates the effectiveness of disaster recovery and high availability of the app.
 
 <accordion color="green">
-
 		<summary>Use cases</summary>
 
 - Checks app resilience against abrupt stopping.
@@ -52,7 +49,6 @@ CF app route unmap temporarily unmaps a Cloud Foundry app route and later maps i
 - Validates the effectiveness of disaster recovery and high availability of the app.
 
 <accordion color="green">
-
 		<summary>Use cases</summary>
 
 - Checks resilience against abrupt un-mapping of an app route.
