@@ -133,7 +133,7 @@ You can use the **Download** icon to download the raw stats report.
 
 ## Trellis Score visibility
 
-You can [limit access to Trellis Scores](../sei-projects-and-collections/collection-admin.md#limit-trellis-score-visibility).
+You can also limit access to Trellis Scores. The support for Trellis Scores is currently unavailable on Harness SEI BETA.
 
 ## Associations & Advanced Options
 
