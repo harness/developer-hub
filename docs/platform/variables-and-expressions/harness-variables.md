@@ -582,7 +582,7 @@ You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"
   For example, consider following expression:
 
   ```
-  <+pipeline.variables.changeType> =~ ["<+stage.name>","All"]
+  <+<+pipeline.variables.changeType> =~ ["<+stage.name>","All"]>
   ```
   
   In the above expression, the expression `<+stage.name>` is wrapped within quotation marks because it is an element in a list of strings.
