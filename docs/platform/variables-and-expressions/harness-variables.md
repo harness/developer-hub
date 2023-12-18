@@ -528,7 +528,10 @@ When using the `==` operator, ensure the expression is wrapped within `<+ >`.
 
 For example, `<+<+pipeline.name> == "pipeline1">` or `<+<+stage.variables.v1> == "dev">`.
 
-> Note: For expressions of type string, greater than or less than operators are not supported. Only equals and not equals are supported.
+:::info note
+Greater than and Less than operators are not supported for string expression types. Only Equal to and Not equal to are supported.
+
+:::
 
 ### Variable concatenation
 
@@ -579,7 +582,7 @@ You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"
 
 ### Best practices for expressions usage
 
-- While using an expression, if we want it to be treated as a string, it should be wrapped within quotation marks.
+- When using an expression, if you want to treat it as a string, you just wrap it within quotation marks.
   
   For example, consider following expression:
 
@@ -587,7 +590,7 @@ You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"
   <+<+pipeline.variables.changeType> =~ ["<+stage.name>","All"]>
   ```
   
-  In the above expression, the expression `<+stage.name>` is wrapped within quotation marks because it is an element in a list of strings.
+  In the above expression, the `<+stage.name>` is wrapped within quotation marks because it is an element in a list of strings.
 
 - While using `,` inside a method invocation with an expression, the expression must be wrapped in quotation marks.
 
