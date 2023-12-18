@@ -130,9 +130,9 @@ For more information about authentication, access, and user management, go to th
 * [Harness Platform authentication (including 2FA and SSO)](/docs/category/authentication)
 * [Harness RBAC overview](/docs/platform/role-based-access-control/rbac-in-harness)
 
-## Built-in Insights
+## Popular Insights
 
-The following five Insights are included OOTB with SEI:
+The following five Insights are the most frequently used on SEI:
 
 * DORA Metrics
 * Dev Insights
@@ -144,7 +144,7 @@ The following five Insights are included OOTB with SEI:
 
 Use the DORA Metrics Insight to examine your organization's [DORA (DevOps Research Assessment) metrics](./sei-metrics-and-reports/dora-metrics.md).
 
-If you want to create additional DORA Metrics Insights:
+If you want to create a DORA Metrics Insights:
 
 1. Follow the steps to [create Insights](#create-insights), and select both **Effort Investment Profile** and **Effort Investment Units**.
 2. Add widgets for [DORA metrics](./sei-metrics-and-reports/dora-metrics.md).
