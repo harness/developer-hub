@@ -19,7 +19,10 @@ You can set notifications preferences on user groups also. Go to [Manage user gr
 
 Currently, Harness supports several communication and incident management platforms. If you don't see yours, contact Harness.
 
-Note that most details of the Notification configuration (such as the Webhook URL to which a Slack notification is to be sent), cannot be specified using a runtime Input entered in the Pipeline Run Form. This information is required before the Pipeline execution begins. You can however use Expressions to provide it. Please refer to the Input options available in the respective Notification Configuration screens.
+:::info note
+It's important to note most of the **Notification Rule** settings, including the **Slack Webhook URL**, cannot be specified using runtime inputs. This information must be provided before the pipeline execution begins. However, you can use expressions to provide this information. Refer to the Input options available in the respective **Notification Rule** settings for more information.
+
+:::
 
 ## Requirements
 
