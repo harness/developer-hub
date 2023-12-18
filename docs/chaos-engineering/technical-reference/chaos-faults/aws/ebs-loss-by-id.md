@@ -77,7 +77,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> EBS_VOLUME_ID </td>
         <td> Comma-separated list of volume IDs subject to EBS detach. </td>
-        <td> For example, <code>ebs-vol-1,ebs-vol-2</code>. </td>
+        <td> For example, <code>ebs-vol-1,ebs-vol-2</code>. For more information, go to <a href="#detach-volumes-by-id"> detach volumes by ID.</a></td>
       </tr>
       <tr>
         <td> REGION </td>
@@ -95,22 +95,22 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Default: 30 s. </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between the attachment and detachment of the volumes (in seconds). </td>
-        <td> Default: 30 s. </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple volumes.</td>
-        <td> Default: parallel. Supports serial sequence as well. </td>
+        <td> Default: parallel. Supports serial sequence as well. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 

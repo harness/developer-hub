@@ -141,7 +141,8 @@ Here is an example AWS policy to execute the fault.
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple instances. </td>
-            <td> Default: parallel. Supports serial and parallel. </td>
+            <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a>
+</td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>

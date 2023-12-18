@@ -99,7 +99,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> EC2_INSTANCE_ID </td>
         <td> ID of the target EC2 instance. </td>
-        <td> For example, <code>i-044d3cb4b03b8af1f</code>. </td>
+        <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="./ec2-cpu-hog/#multiple-ec2-instances"> EC2 instance ID.</a></td>
       </tr>
       <tr>
         <td> REGION </td>
@@ -109,7 +109,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> PORT </td>
         <td> DNS port where chaos is injected. </td>
-        <td> Default: port 54. </td>
+        <td> Default: port 54. For more information, go to <a href="#run-dns-chaos-with-port"> port.</a></td>
       </tr>
     </table>
     <h2>Optional tunables</h2>
@@ -122,22 +122,22 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 30 s. </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Default: 30 s. </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instance </td>
-        <td> Default: parallel. Supports serial sequence. </td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> For example, 30 s </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
       <tr>
         <td> INSTALL_DEPENDENCY </td>
@@ -147,17 +147,17 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> TARGET_HOSTNAMES </td>
         <td> List of the target host names. If this is not provided, all the host names (or domains) will be targeted. </td>
-        <td> For example, <code>'["litmuschaos","chaosnative.com"]'</code>.</td>
+        <td> For example, <code>'["litmuschaos","chaosnative.com"]'</code>. For more information, go to <a href="#run-dns-chaos-with-target-hostnames"> target host names.</a></td>
       </tr>
       <tr>
         <td> MATCH_SCHEME </td>
         <td> Determines whether the DNS query should exactly match the targets or can be a substring. </td>
-        <td> Default: exact.</td>
+        <td> Default: exact. For more information, go to <a href="#run-dns-chaos-with-match-scheme"> match scheme.</a></td>
       </tr>
       <tr>
         <td> UPSTREAM_SERVER </td>
         <td> Custom upstream server to which the intercepted DNS requests are forwarded. </td>
-        <td> Default: Server mentioned in the resolv.conf file. </td>
+        <td> Default: Server mentioned in the resolv.conf file. For more information, go to <a href="#run-dns-chaos-with-upstream-server"> upstream server.</a></td>
       </tr>
     </table>
 
