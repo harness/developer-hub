@@ -114,7 +114,7 @@ export const STOList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/security-tests/build-scan-push-sto-only",
+    link: "/tutorials/security-tests/build-scan-push-sto-ci",
   },
 
 ];
