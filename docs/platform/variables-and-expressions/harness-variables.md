@@ -582,7 +582,7 @@ You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"
 
 ### Best practices for expressions usage
 
-- When using an expression, if you want to treat it as a string, you just wrap it within quotation marks.
+- When using an expression, if you want to treat it as a string, you must wrap it within quotation marks.
   
   For example, consider following expression:
 
