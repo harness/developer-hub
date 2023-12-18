@@ -577,6 +577,16 @@ You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"
 
 ### Best practices for expressions usage
 
+- While using an expression, if we want it to be treated as a string, it should be wrapped within quotation marks.
+  
+  For example, consider following expression:
+
+  ```
+  <+pipeline.variables.changeType> =~ ["<+stage.name>","All"]
+  ```
+  
+  In the above expression, the expression `<+stage.name>` is wrapped within quotation marks because it is an element in a list of strings.
+
 - While using `,` inside a method invocation with an expression, the expression must be wrapped in quotation marks.
 
    For example, consider the following expression:
