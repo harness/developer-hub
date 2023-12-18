@@ -128,7 +128,7 @@ import set_up_harness_26 from './static/your-first-pipeline/configure-bandit-ste
 
    2. Target name — Click the value-type selector (tack button to the right of the input field) and select **Expression**. Then enter the following expression: `<+stage.variables.GITHUB_REPO>`
 
-   3. Target variant — Select **Expressiont** as the value type and enter the following: `<+stage.variables.GITHUB_BRANCH>`
+   3. Target variant — Select **Expression** as the value type and enter the following: `<+stage.variables.GITHUB_BRANCH>`
 
       When scanning a code repo, you generally want to specify the repo name and branch for the target. 
 
@@ -260,7 +260,7 @@ Here's an example:
 - step:
     type: BuildAndPushDockerRegistry
     name: build_push_test_image
-    identifier: BuildAndPushDockerRegistry_1
+    identifier: build_push_test_image
     spec:
     connectorRef: mydockerhubconnector
     repo: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
@@ -290,6 +290,8 @@ Add an **Aqua Trivy** step to your pipeline after the build step and configure i
    3. Target variant — Select **Expression** for the value type, then enter the following expression: `<+stage.variables.DOCKER_IMAGE_TAG>-scantest-DONOTUSE`
 
    4. [Container image Type](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#type-1) = **V2**
+
+   5. [Domain](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#domain) = `docker.io`
 
    5. Container image name — Select **Expression** for the value type, then enter the following expression: `<+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
 
