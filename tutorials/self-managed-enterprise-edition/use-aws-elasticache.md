@@ -29,7 +29,7 @@ External database setup requires the following software:
 
 ## Supported Redis Configuration
 
-- Master nodes: 1
+- Primary nodes: 1
 
 - Replica nodes: 2 (Optional)
 
