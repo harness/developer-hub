@@ -528,6 +528,8 @@ When using the `==` operator, ensure the expression is wrapped within `<+ >`.
 
 For example, `<+<+pipeline.name> == "pipeline1">` or `<+<+stage.variables.v1> == "dev">`.
 
+> Note: For expressions of type string, greater than or less than operators are not supported. Only equals and not equals are supported.
+
 ### Variable concatenation
 
 Harness string variables can be concatenated by default. Each expression can be evaluated and substituted in the string. 
