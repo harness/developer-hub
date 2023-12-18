@@ -196,12 +196,6 @@ Next, you'll select the deployment strategy for this stage, the package type, an
 
 ### Dynamically provisioned infrastructure
 
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
 
 1. **Add dynamic provisioning to the CD stage**:
@@ -480,6 +474,19 @@ Executing command rm -rf /tmp/aCy-RxnYQDSRmL8xqX4MZw ...
 Command finished with status SUCCESS
 ```
 Congratulations! You have now successfully created and completed the steps for running a pipeline by using Secure Shell.
+
+## Permission to perform SSH Deployments in AWS
+
+We use the SSH Credentials to connect to hosts to perform deployment.
+
+We use the AWS Connector to retrieve instances from the AWS Account. The specific calls we make:
+
+- Retrieve the instances at runtime during the infrastructure step - [DescribeInstanceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
+- Retrieve the instances during instance sync to show service instances in the service - [DescribeInstanceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
+
+To use describe instance API, the action is `ec2:DescribeInstances`
+
+Per AWS documentation: Example policies for working with the AWS CLI or an AWS SDK - [Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ExamplePolicies_EC2.html)
 
 
 ## Notes

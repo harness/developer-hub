@@ -1,6 +1,6 @@
 ---
-title: Delegate installation overview
-description: How to install Harness delegates using Helm, Terraform, Kubernetes, or Docker
+title: Delegate installation options
+description: Install Harness Delegates using Helm, Terraform, Kubernetes, or Docker
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -20,6 +20,10 @@ The inline tutorial below shows you how to install the default delegate for your
 
 
 The default delegate image, denoted by the `yy.mm.xxxxx` image tag, includes a set of pre-installed 3rd-party custom binaries for convenience. You can find the list of these binaries [here](/docs/platform/Delegates/delegate-concepts/delegate-image-types#third-party-tools-included-in-the-delegate-image-type). If you are concerned about the security vulnerabilities that potentially come with these pre-installed binaries, our recommendation is to use the minimal delegate noted below.
+
+import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
+
+<Addperm />
 
 The video below shows how to install a delegate.
 
@@ -73,6 +77,10 @@ You can install the Docker delegate into Amazon ECS Fargate. For more informatio
 
 ### Install a legacy Kubernetes delegate
 
+import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
+
+<Deleos />
+
 The legacy Kubernetes delegate, denoted `latest` container image tag, is used primarily in Harness FirstGen had the auto-upgrade setting ON by default and did not have the flexibility to turn OFF this setting if needed. This type of delegate is now deprecated for new Harness accounts. For more information, go to [Install a legacy Kubernetes delegate](/docs/platform/delegates/install-delegates/install-a-kubernetes-delegate.md).
 
 ### Install Docker delegate using Podman
@@ -105,3 +113,4 @@ To install the Docker delegate using Podman, do the following:
    ```
 
 7. Run the command.
+

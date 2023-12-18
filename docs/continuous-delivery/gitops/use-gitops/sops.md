@@ -52,13 +52,13 @@ To prepare the BYOA agent, do the following:
     apiVersion: apps/v1
     kind: Deployment
     metadata:
-    name: argocd-repo-server
+      name: argocd-repo-server
     spec:
-    template:
+      template:
         spec:
-        containers:
+          containers:
             - name: argocd-repo-server
-            env:
+              env:
                 - name: HELM_PLUGINS
                 value: /helm-sops-tools/helm-plugins/
                 - name: HELM_SECRETS_CURL_PATH
@@ -79,41 +79,29 @@ To prepare the BYOA agent, do the following:
                 value: "true"
                 - name: HELM_SECRETS_HELM_PATH
                 value: /usr/local/bin/helm
-            volumeMounts:
+              volumeMounts:
                 - mountPath: /helm-sops-tools
                 name: helm-sops-tools
                 - mountPath: /usr/local/sbin/helm
                 subPath: helm
                 name: helm-sops-tools
-        initContainers:
+          initContainers:
             - name: sops-helm-secrets-tool
-            image: alpine:latest
-            imagePullPolicy: IfNotPresent
-            command: [sh, -ec]
-            env:
-                - name: HELM_SECRETS_VERSION
-                value: "4.4.2"
-                - name: KUBECTL_VERSION
-                value: "1.26.7"
-                - name: SOPS_VERSION
-                value: "3.7.3"
-            args:
+              image: docker.io/harness/gitops-agent-installer-helper:v0.0.1
+              imagePullPolicy: IfNotPresent
+              command: [ sh, -ec ]
+              args:
                 - |
-                apk update && apk get wget
-                mkdir -p /helm-sops-tools/helm-plugins
-                wget -qO- https://github.com/jkroepke/helm-secrets/releases/download/v${HELM_SECRETS_VERSION}/helm-secrets.tar.gz | tar -C /helm-sops-tools/helm-plugins -xzf-;
-                wget -qO /helm-sops-tools/curl https://github.com/moparisthebest/static-curl/releases/latest/download/curl-amd64
-                wget -qO /helm-sops-tools/sops https://github.com/mozilla/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux
-                wget -qO /helm-sops-tools/kubectl https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl
-                cp /helm-sops-tools/helm-plugins/helm-secrets/scripts/wrapper/helm.sh /helm-sops-tools/helm
-                chmod +x /helm-sops-tools/*
-            volumeMounts:
+                  cp -r /custom-tools/. /helm-sops-tools
+                  cp /helm-sops-tools/helm-plugins/helm-secrets/scripts/wrapper/helm.sh /helm-sops-tools/helm
+                  chmod +x /helm-sops-tools/*
+              volumeMounts:
                 - mountPath: /helm-sops-tools
-                name: helm-sops-tools
-        serviceAccountName: argocd-repo-server
-        volumes:
-            - name: helm-sops-tools
-            emptyDir: {}
+                  name: helm-sops-tools
+          serviceAccountName: argocd-repo-server
+          volumes:
+              - name: helm-sops-tools
+              emptyDir: {}
     ```
 
 2. Patch the `argocd-cm` ConfigMap.
@@ -128,13 +116,13 @@ To prepare the BYOA agent, do the following:
     apiVersion: v1
     kind: ConfigMap
     metadata:
-    name: argocd-cm
+      name: argocd-cm
     data:
-    helm.valuesFileSchemes: >-
-        secrets+gpg-import, secrets+gpg-import-kubernetes,
-        secrets+age-import, secrets+age-import-kubernetes,
-        secrets,secrets+literal,
-        https
+      helm.valuesFileSchemes: >-
+          secrets+gpg-import, secrets+gpg-import-kubernetes,
+          secrets+age-import, secrets+age-import-kubernetes,
+          secrets,secrets+literal,
+          https
     ```
 
 ### Use age or PGP
@@ -151,23 +139,23 @@ To encrypt a secret with age or PGP, do the following:
 
 2. (If using PGP) To create a key pair and store the keys in a file named `key.asc`, do the following: 
 
-  1. Generate a key pair.
+    1. Generate a key pair.
 
-      ```
-      gpg --full-generate-key
-      ```
-    
-  2. List the generated keys.
+        ```
+        gpg --full-generate-key
+        ```
       
-      ```
-      gpg --list-secret-keys --keyid-format=long
-      ```
-  
-  3. From the output of the previous command, copy the ID (it is displayed after the forward slash (`/`) in the `sec` field), and then use it in the place of `ID` parameter in the following command:
+    2. List the generated keys.
+        
+        ```
+        gpg --list-secret-keys --keyid-format=long
+        ```
+    
+    3. From the output of the previous command, copy the ID (it is displayed after the forward slash (`/`) in the `sec` field), and then use it in the place of `ID` parameter in the following command:
 
-      ```
-      gpg --armor --export ID > key.asc
-      ```
+        ```
+        gpg --armor --export ID > key.asc
+        ```
 
 2. Mount the key as a volume on the Argo CD repo server so that the agent can access the private key and decrypt the secret.
 
@@ -206,14 +194,14 @@ To encrypt a secret with age or PGP, do the following:
 
     ```yaml
     repoServer:
-    volumes:
-        - name: dev-private-key
-        secret:
-            secretName: dev-private-key
+      volumes:
+          - name: dev-private-key
+          secret:
+              secretName: dev-private-key
 
-    volumeMounts:
-        - mountPath: /dev-private-key/
-        name: dev-private-key
+      volumeMounts:
+          - mountPath: /dev-private-key/
+          name: dev-private-key
     ```
 
 4. Encrypt the data by using one of the following methods:
@@ -224,8 +212,8 @@ To encrypt a secret with age or PGP, do the following:
 
                 ```yaml
                 creation_rules:
-                - path_regex: 'environment/secrets/dev/(.*).yaml'
-                    age: 'my-public-key'
+                  - path_regex: 'environment/secrets/dev/(.*).yaml'
+                      age: 'my-public-key'
                 ```
         2. Run the following command: 
             

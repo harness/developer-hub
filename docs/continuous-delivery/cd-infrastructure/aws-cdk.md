@@ -5,12 +5,6 @@ sidebar_position: 7
 sidebar_label: AWS CDK
 ---
 
-:::note
-
-Currently, AWS CDK support is behind the feature flag `CDS_AWS_CDK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 AWS Cloud Development Kit (AWS CDK), is an open-source software development framework that allows developers to provision AWS infrastructure resources using familiar programming languages, such as Go, Python, Java, C#, etc. CDK simplifies infrastructure as code (IaC) by abstracting away many of the low-level details and providing a higher-level, programmatic approach.
 
 This topic provides steps on using Harness to provision a target AWS environment or resources using AWS CDK.
@@ -27,6 +21,7 @@ This topic provides steps on using Harness to provision a target AWS environment
 ## AWS permissions required
 
 Ensure that the AWS CDK CLI is able to authenticate with the desired AWS account and has the necessary permissions for its provisioning. You can set the access keys, secret keys, and region as environment variables or let the CDK CLI inherit the IAM role from the EKS cluster where the containerized steps run.
+If step group infra points to EKS, a ServiceAccout can be set in the step group **Service Account Name**. This way all containers created in that step group would inherit the permission of the IAM role of the corresponding ServiceAccount.
 
 ## Harness roles permissions required
 
@@ -40,24 +35,12 @@ Harness provisioning is categorized into the following use cases:
 1. **Ad hoc provisioning:** temporary and on-demand provisioning of resources for specific tasks or purposes.
 2. **Dynamic infrastructure provisioning:** provision the target deployment environment as part of the same deployment process. Typically, dynamic infrastructure provisioning is for temporary pre-production environments, such as dev, test, and qa. Production environments are usually pre-existing.
 
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 The provisioning pipeline steps are configured the same way for both use cases. These steps are covered later in this topic.
 
 For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
 
 
 ### Dynamic provisioning steps for different deployment types
-
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Each of the deployment types Harness supports (Kubernetes, AWS ECS, etc.) require that you map different script outputs to the Harness infrastructure settings in the pipeline stage.
 
@@ -214,7 +197,7 @@ The CDK steps in the step group are containerized. In the **Container Registry**
 
 Harness provides the `aws-cdk-plugin` base image and custom images for different stacks (Java, .NET, Python, Go, etc.) They are located on the Docker Hub registry [aws-cdk-plugin](https://hub.docker.com/r/harness/aws-cdk-plugin/tags). For example, `harness/aws-cdk-plugin:1.0.0` is the base image that contains the CDK CLI and Node.js and `harness/aws-cdk-plugin:1.0.0-java` is the custom image for Java created by Harness. You can use a Harness custom image or create your own.
 
-You can use a Harness base image to create your own image and use that in a step. For example, if your CDK app uses a specific Java or Node.js version, you can use the base image provided by Harness and create your own image containing your dependencies.
+You can use a Harness base image to create your own image and use that in a step. For example, if your CDK app uses a specific Java or Node.js version, you can use the base image provided by Harness and create your own image containing your dependencies. You should never override the entry point.
 
 The image you use should support the CDK operations you are running in your app.
 
@@ -580,3 +563,15 @@ In **Advanced**, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+
+### Supported Languages
+
+Harness provides custom images for testing purposes for the following programming languages: 
+
+- Java
+- Go
+- Python 3
+- .NET
+Base image allready contains Node.js and JavaScript installed.
+
+Please navigate to our [DockerHub Repository](https://hub.docker.com/r/harness/aws-cdk-plugin/tags) for the latest image tags for this feature.

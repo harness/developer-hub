@@ -1,10 +1,10 @@
 ---
-title: Abort a pipeline or stage
-description: End pipeline execution in an aborted state.
+title: Abort a pipeline, stage, or step
+description: Abort pipeline, stage, or step execution
 sidebar_position: 13
 ---
 
-This topic explains how to abort a pipeline or pipeline stage during its execution, and includes important considerations.
+This topic explains how to abort a pipeline, pipeline stage, or step during its execution, and includes important considerations.
 
 ## Aborting a pipeline
 
@@ -43,4 +43,6 @@ When you abort a stage during pipeline execution, the stage will finish executin
 
     To use this option, you must enable the **Allow users to mark a running Step as failure** setting in **Account Settings** > **Default Settings** > **Pipeline**.
 
+## Aborting a step
 
+You can initiate an abort on the Verify step. For more information, go to [Abort verification](/docs/continuous-delivery/verify/configure-cv/abort-verification).

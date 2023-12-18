@@ -57,21 +57,6 @@ export const FeaturedList: CardItem[] = [
     link: "/tutorials/platform/onboard-terraform-provider",
   },
   {
-    title: "Terraform Cloud notification triggers",
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        Terraform Cloud notifications can trigger CI pipelines through custom CI
-        webhooks.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/ci-pipelines/build/tfc-notification",
-  },
-  {
     title: "Code coverage with CodeCov",
     module: MODULES.ci,
     description:

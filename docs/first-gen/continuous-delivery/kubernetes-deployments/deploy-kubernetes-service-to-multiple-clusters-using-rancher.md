@@ -24,8 +24,7 @@ You can also deploy to multiple infrastructures without using Rancher. See [Depl
 
 The following brief video demonstrates how to deploy Services to multiple Kubernetes clusters simultaneously using Rancher:
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/embed/dWgeMnVCmK4?feature=oembed" />
 
 ### Limitations

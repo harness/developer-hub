@@ -557,9 +557,27 @@ If you wish to concatenate expressions as strings, make sure that each expressio
 
 :::
 
+### Passing JSON values using variables
+
+When using expressions in JSON as a string, they must be wrapped in quotation marks for valid JSON.
+
+For example, consider the following JSON:
+
+```json
+   "{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"
+```
+
+In the JSON above, the expression `<+pipeline.variables.version>` must be wrapped in quotation marks because it resolves as a string inside JSON (and Strings need to be quoted). The expression `<+<+pipeline.variables.hosts>.split(\",\")>` doesn't need to be wrapped in quotation marks because it will be resolved as a list.
+
+Let's look at an example using allowed values and JSON strings.
+
+A variable with `<+input>.allowedValues({"x":"y"})` and `"<+input>.allowedValues({x:y})"` have the same value, which is `{x:y}`. You can add space in the second example, `"<+input>.allowedValues({x: y})"` to get `{x: y}` and it doesn't cause any errors.
+
+You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"x\\\": \\\"y\\\"})"` produces `{"x": "y"}`.
+
 ### Best practices for expressions usage
 
-- When using `,` inside a method invocation with an expression, the expression must be wrapped in quotation marks.
+- While using `,` inside a method invocation with an expression, the expression must be wrapped in quotation marks.
 
    For example, consider the following expression:
 
@@ -569,24 +587,19 @@ If you wish to concatenate expressions as strings, make sure that each expressio
 
    In the above expression, `<+pipeline.variables.var1>` must be wrapped in quotation marks because the expression is a string parameter for a method.
 
-- When using expressions in JSON as a string, they must be wrapped in quotation marks for valid JSON.
+- While using method invocation with an expression, the expression before method invocation should also be wrapped within `<+...>`.
+  
+  For example, consider the following expression:
 
-   For example, consider the following JSON:
-
-   ```json
-   "{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"
-   ```
-
-    In the JSON above, the expression `<+pipeline.variables.version>` must be wrapped in quotation marks because it resolves as a string inside JSON (and Strings need to be quoted). The expression `<+<+pipeline.variables.hosts>.split(\",\")>` doesn't need to be wrapped in quotation marks because it will be resolved as a list.
+  ```
+  <+<+pipeline.variables.var1>.concat("concatenating a string")>
+  ```
+  
+  To invoke the method `concat` on the expression `<+pipeline.variables.var1>`, you must wrap `<+pipeline.variables.var1>` within `<+...>` and then invoke the method using `.concat()`.
 
 
 ## Debugging expressions
 
-:::info note
-
-This feature is currently behind the feature flag `PIE_EXPRESSION_PLAYGROUND`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 An easy way to debug expressions in your pipeline is to use Compiled Mode in your **Variables** panel. You can enable this mode using a radio button at the top of the **Variables** Panel. When Compile Mode is turned on, all of the expressions in the panel are compiled and their values are displayed. By default, the compilation happens against the pipeline's latest execution. You can change this by selecting from a displayed list of previous executions. 
 
@@ -715,7 +728,7 @@ The name of the current pipeline.
 
 ### <+pipeline.sequenceId>
 
-The incremental sequential Id for the execution of a pipeline. A `<+pipeline.executionId>` does not change, but a `<+pipeline.sequenceId>` is incremented with each run of the pipeline.
+The incremental sequential Id for the execution of a pipeline. A `<+pipeline.executionId>` is randomly generated for each execution, but a `<+pipeline.sequenceId>` is incremented with each run of the pipeline.
 
 The first run of a pipeline receives a sequence Id of 1 and each subsequent execution is incremented by 1.
 
@@ -1462,6 +1475,16 @@ Harness can now track the release for comparisons and rollback.
 
 The infrastructure key is a combination of `serviceIdentifier`, `environmentIdentifer` and set of values unique to each infrastructure definition implementation (Kubernetes cluster, etc.) hashed using `SHA-1`. For example, in case of a Kubernetes Infrastructure, the infrastructure key is a hash of `serviceIdentifier-environmentIdentifier-connectorRef-namespace`. The format is `sha-1(service.id-env.id-[set of unique infra values])`.
 
+See also [<+INFRA_KEY_SHORT_ID>](/docs/platform/variables-and-expressions/harness-variables#infra_key_short_id).
+
+### <+INFRA_KEY_SHORT_ID>
+
+Shortened form of the infrastructure key described in [<+INFRA_KEY>](/docs/platform/variables-and-expressions/harness-variables#infra_key). 
+
+The shortened form is obtained by removing all but the first six characters of the hash of the infrastructure key described in [<+INFRA_KEY>](/docs/platform/variables-and-expressions/harness-variables#infra_key). 
+
+The shortened form replaces `<+INFRA_KEY>` in the default expression that is used to generate a release name for the resources in Kubernetes and Native Helm deployments. In other words, the **Release name** field in the **Cluster Details** > **Advanced** section of an infrastructure definition is pre-populated with the expression `release-<+INFRA_KEY_SHORT_ID>`. The shorter form resolves issues that Kubernetes and Native Helm deployments experienced with the longer `release-<+INFRA_KEY>` format.
+
 ### <+infra.namespace>
 
 The namespace used in the infrastructure definition.
@@ -1739,8 +1762,6 @@ For example:
 
 * `<+trigger.type>`
 	+ Webhook.
-* `<+trigger.sourceRepo>`
-	+ Github, Gitlab, Bitbucket, Custom
 * `<+trigger.event>`
 	+ PR, PUSH, etc.
 
@@ -1894,23 +1915,23 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 | workflow.releaseNo                                                    | stage.identifier                                                                                                                                                                       |
 | workflow.lastGoodReleaseNo                                            | N/A                                                                                                                                                                                                                                                                                  |
 | workflow.lastGoodDeploymentDisplayName                                | N/A                                                                                                                                                                                                                                                                                  |
-| workflow.displayName                                                  | stage.namepipeline.name                                                                                                                                                                                                                                                          |
-| workflow.description                                                  | stage.descriptionpipeline.description                                                                                                                                                                                                                                            |
+| workflow.displayName                                                  | stage.name, pipeline.name                                                                                                                                                                                                                                                          |
+| workflow.description                                                  | stage.description, pipeline.description                                                                                                                                                                                                                                            |
 | workflow.pipelineResumeUuid                                           | NA                                                                                                                                                                                                                                                                                   |
-| workflow.pipelineDeploymentUuid                                       | pipeline.executionIdpipeline.sequenceId                                                                                                                                                                                                                                          |
+| workflow.pipelineDeploymentUuid                                       | pipeline.executionId, pipeline.sequenceId                                                                                                                                                                                                                                          |
 | workflow.startTs                                                      | pipeline.startTs                                                                                                                                                                                                                                                                     |
 | workflow.variables.VAR_NAME                                           | pipeline.variables.VAR_NAME or stage.variables.VAR_NAME                                                                                                                                                                                                                              |
 | timestampId                                                           | In FirstGen, The `${timestampId}` is the time when the constant is set on the target host. In NextGen, we are not using any setup variables anymore, since it is Harness’s internal step where we create a temp dir for the execution. We are creating a working directory in the Command Init unit on this `%USERPROFILE%` location.                                                                                                                                                                                                                                                                                     |
 | deploymentUrl                                                         | pipeline.executionUrl​                                                                                                                                                                                                                                                              |
 | context.published_name.var_name                                       |                                                                                                                                                                                                                                                                                      |
-| deploymentTriggeredBy                                                 | pipeline.triggeredBy.name​pipeline.triggeredBy.email​                                                                                                                                                                                                                            |
+| deploymentTriggeredBy                                                 | pipeline.triggeredBy.name, ​pipeline.triggeredBy.email​                                                                                                                                                                                                                            |
 | currentStep.name                                                      | step.name                                                                                                                                                                                                                                                                            |
 | regex.extract("v[0-9]+.[0-9]+", artifact.fileName)                    | N/A                                                                                                                                                                                                                                                                                  |
 | currentStep.type                                                      | N/A                                                                                                                                                                                                                                                                                  |
 | **Pipeline Variables**                                                    | **Pipeline Variables**                                                                                                                                                                                                                                                                   |
 | pipeline.name                                                         | pipeline.name                                                                                                                                                                                                                                                                        |
 | deploymentUrl                                                         | pipeline.executionUrl​                                                                                                                                                                                                                                                              |
-| deploymentTriggeredBy                                                 | pipeline.triggeredBy.name​pipeline.triggeredBy.email​                                                                                                                                                                                                                            |
+| deploymentTriggeredBy                                                 | pipeline.triggeredBy.name​, pipeline.triggeredBy.email​                                                                                                                                                                                                                            |
 | **Rollback Artifact Variables**                                           | **Rollback Artifact Variables**                                                                                                                                                                                                                                                          |
 | rollbackArtifact.url                                                  | NA                                                                                                                                                                                                                                                                                   |
 | rollbackArtifact.buildNo                                              | artifact.tagrollback, artifact.imagerollback, artifact.imagePathrollback, artifact.typerollback, artifact.connectorRef, for sidecar artifact: rollbackArtifact.sidecars.sidecar_Id.[property]                                                                            |

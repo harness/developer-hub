@@ -14,6 +14,11 @@ import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-tabl
 
 ## Image type comparison
 
+import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
+
+<Deleos />
+
+
 Harness gives you the option to select delegate images with or without third-party client tools. The use of a delegate packaged with third-party binaries speeds the construction of a CD pipeline; Harness CI and STO do not make use of these libraries. The inclusion of third-party binaries, however, increases attack vectors. Consider security as well as ease of use, in your choice of delegate images. 
 
 Harness rigorously scans delegate images for vulnerabilities. Harness cannot, however, guarantee the elimination of CVEs from delegate images that include third-party client tools. The vulnerabilities that third-party client tools introduce in delegate images cannot be eliminated until the vulnerabilities are repaired in the third-party tools.
@@ -33,7 +38,7 @@ The following table differentiates between delegate images based on key features
   | kubectl | 1.13.2, 1.19.2 | 1.24.3 |
   | go-template | 0.4, 0.4.1 | 0.4.1 |
   | harness-pywinrm | 0.4-dev | 0.4-dev |
-  | helm | 2.13.1, 3.1.2, 3.8.0 | 2.13.1, 3.1.2, 3.8.0 |
+  | helm | 3.1.2, 3.8.0 | 3.1.2, 3.8.0 |
   | chartmuseum | 0.8.2, 0.12.0 | 0.15.0 |
   | tf-config-inspect | 1.0, 1.1 | 1.1 |
   | oc | 4.2.16 | 4.2.16 |

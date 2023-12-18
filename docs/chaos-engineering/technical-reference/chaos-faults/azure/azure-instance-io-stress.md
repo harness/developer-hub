@@ -64,12 +64,12 @@ stringData:
      <tr>
         <td> AZURE_INSTANCE_NAMES </td>
         <td> Names of the target Azure instances. </td>
-        <td> Multiple values can be provided as a comma-separated string. For example, <code>instance-1,instance-2</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-instances-by-name"> stop instance by name. </a></td>
+        <td> Multiple values can be provided as a comma-separated string. For example, <code>instance-1,instance-2</code>. For more information, go to <a href="#stop-instances-by-name"> stop instance by name. </a></td>
     </tr>
     <tr>
         <td> RESOURCE_GROUP </td>
         <td> The Azure Resource Group name where the instances will be created. </td>
-        <td> All the instances must be from the same resource group. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-io-stress#multiple-workers"> resource group field in the YAML file. </a></td>
+        <td> All the instances must be from the same resource group. For more information, go to <a href="#multiple-workers"> resource group field in the YAML file. </a></td>
     </tr>
 </table>
 
@@ -83,12 +83,12 @@ stringData:
     <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
+        <td> Defaults to 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
     </tr>
     <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive container kills (in seconds).</td>
-        <td> Defaults to 60s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+        <td> Defaults to 60s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
     </tr>
     <tr>
         <td> AZURE_AUTH_LOCATION </td>
@@ -98,7 +98,7 @@ stringData:
     <tr>
         <td> SCALE_SET </td>
         <td> Check if the instance is a part of Scale Set.</td>
-        <td> Defaults to <code>disable</code>. Also supports <code>enable</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-scale-set-instances"> scale set instances. </a></td>
+        <td> Defaults to <code>disable</code>. Also supports <code>enable</code>. For more information, go to <a href="./azure-instance-stop#stop-scale-set-instances"> scale set instances. </a></td>
     </tr>
     <tr>
         <td> INSTALL_DEPENDENCIES </td>
@@ -108,32 +108,32 @@ stringData:
     <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
         <td> Specify the size as a percentage of free space on the file system.</td>
-        <td> Defaults to 0 %, which results in 1 GB utilization. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-io-stress#file-system-utilization-in-percentage"> file system utilization in percentage. </a></td>
+        <td> Defaults to 0 %, which results in 1 GB utilization. For more information, go to <a href="#file-system-utilization-in-percentage"> file system utilization in percentage. </a></td>
     </tr>
     <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
         <td> Specify the size of the files used per worker (in GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> and <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are specified, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> takes precedence. </td>
-        <td> Defaults to 0 GB, which results in 1 GB utilization. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-io-stress#file-system-utilization-in-gigabytes"> file system utilization in gigabytes. </a></td>
+        <td> Defaults to 0 GB, which results in 1 GB utilization. For more information, go to <a href="#file-system-utilization-in-gigabytes"> file system utilization in gigabytes. </a></td>
     </tr>
     <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> Number of I/O workers involved in I/O disk stress. </td>
-        <td> Default to 4. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-io-stress#multiple-workers"> multiple workers. </a></td>
+        <td> Default to 4. For more information, go to <a href="#multiple-workers"> multiple workers. </a></td>
     </tr>
     <tr>
         <td> VOLUME_MOUNT_PATH </td>
         <td> Location that points to the volume mount path used in I/O stress.</td>
-        <td> Defaults to the user HOME directory. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-io-stress#volume-mount-path"> volume mount path. </a></td>
+        <td> Defaults to the user HOME directory. For more information, go to <a href="#volume-mount-path"> volume mount path. </a></td>
     </tr>
     <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods.</td>
-        <td> Defaults to <code>parallel</code>. Also supports <code>serial</code> sequence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Defaults to <code>parallel</code>. Also supports <code>serial</code> sequence. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
     </tr>
     <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+        <td> For example, 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
     </tr>
 </table>
 

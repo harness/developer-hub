@@ -7,6 +7,10 @@ ECS update container resource limits allows you to modify the CPU and memory res
 
 ![ECS Update Container Resource Limit](./static/images/ecs-update-container-resource-limit.png)
 
+:::tip
+This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](./ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
+:::
+
 ## Use cases
 ECS update container resource limit:
 - Determines the behavior of your ECS tasks when their resource limits are changed.

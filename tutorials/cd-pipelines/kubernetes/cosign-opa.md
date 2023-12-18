@@ -24,6 +24,10 @@ slug: /cd-pipelines/kubernetes/cosign-opa
 
 Imagine that you're deploying a container image to a Kubernetes cluster. But how can you verify that the container image is safe to deploy? [Cosign](https://github.com/sigstore/cosign) is a tool for container image signing and verification. Open Policy Agent (OPA) is an open-source, general-purpose policy engine that enables policy-based control across various software stacks, including Kubernetes deployments. Harness Continuous Delivery & GitOps includes OPA to ensure compliance in your deployment pipelines. In the [Kubernetes Manifest tutorial](../kubernetes/manifest.md), you deployed a container image for the guestbook application to a Kubernetes cluster. In this tutorial, we'll leverage the combined power of Cosign and OPA to ensure the secure deployment of container images to your Kubernetes cluster.
 
+This tutorial is also available as a video.
+
+<docvideo src="https://www.youtube.com/watch?v=PLvjcCCStzs" />
+
 ## Before you begin
 
 Ensure that you have the following:

@@ -4,12 +4,6 @@ description: Learn the basics of how provisioning works in Harness CD.
 sidebar_position: 1
 ---
 
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Harness provisioning is categorized into the following use cases:
 - **Ad hoc provisioning**: temporary and on-demand provisioning of resources for specific tasks or purposes.
 - **Dynamic infrastructure provisioning**: provision the target deployment environment as part of the same deployment process. Typically, dynamic infrastructure provisioning is for temporary pre-production environments, such as dev, test, and qa. Production environments are usually pre-existing.
@@ -91,18 +85,18 @@ See the following topics for steps on how to perform dynamic provisioning:
 The following table shows the provisioners you can use with each deployment type for *dynamic provisioning*.
 
 
-|                            | Terraform and Terraform Cloud | CloudFormation | Terragrunt | Azure Resource Manager (ARM) | Azure Blueprint | Shell Script |
-| -------------------------- | ----------------------------- | -------------- | ---------- | ---------------------------- | --------------- | ------------ |
-| Kubernetes                 | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |
-| Azure Web Apps             | ✔️                            |                | ✔️           | ✔️                           | ✔️              | ✔️           |
-| AWS ECS                    | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |
-| AWS Lambda                 | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |
-| Spot Elastigroup           | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |
-| Google Cloud Functions     | ✔️                            |                | ✔️         |                              |                 | ✔️           |
-| Serverless.com framework   | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |
-| Tanzu Application Services | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |
-| SSH deployments            | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |
-| WinRM deployments          | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |
+|                            | Terraform and Terraform Cloud | CloudFormation | Terragrunt | Azure Resource Manager (ARM) | Azure Blueprint | Shell Script | AWS CDK |
+| -------------------------- | ----------------------------- | -------------- | ---------- | ---------------------------- | --------------- | ------------ | ------------ |
+| Kubernetes                 | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |   ✔️           |
+| Azure Web Apps             | ✔️                            |                | ✔️           | ✔️                           | ✔️              | ✔️           | ✔️           |
+| AWS ECS                    | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |✔️           |
+| AWS Lambda                 | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |✔️           |
+| Spot Elastigroup           | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |✔️           |
+| Google Cloud Functions     | ✔️                            |                | ✔️         |                              |                 | ✔️           |✔️           |
+| Serverless.com framework   | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |✔️           |
+| Tanzu Application Services | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |✔️           |
+| SSH deployments            | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |✔️           |
+| WinRM deployments          | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |✔️           |
 
 ### Dynamic provisioning outputs for mapping
 

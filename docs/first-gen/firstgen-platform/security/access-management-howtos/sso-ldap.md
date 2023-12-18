@@ -22,7 +22,7 @@ Once you integrate your Harness account with LDAP, you can create a Harness User
 
 For a quick run through the Harness LDAP SSO functionality, watch the following video.
 
-<docvideo src="https://fast.wistia.net/embed/iframe/3uhtxudd4q" />
+<docvideo src="https://youtu.be/qz5JAB6xBHE" />
 
 ### Limitations
 

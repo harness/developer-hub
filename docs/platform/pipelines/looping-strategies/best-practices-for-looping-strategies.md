@@ -94,8 +94,7 @@ pipeline:
       value: HD-29193,HD-29194,HD-29195
 ```
 
-# Variable: <+pipeline.variables.jiraTickets>
-HD-29193,HD-29194,HD-29195
+To call this variable's default value, use the expression `<+pipeline.variables.jiraTickets>`. When called in this way, it returns the entire string value: `HD-29193,HD-29194,HD-29195`.
 
 To split this variable into an array of substrings, use a Harness expression with the `split()` method:
 

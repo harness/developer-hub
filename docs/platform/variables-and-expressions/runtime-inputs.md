@@ -113,6 +113,12 @@ If you rerun this pipeline, the pipeline uses the same inputs you provided for t
 
 ### Default values
 
+:::note
+
+If a runtime input is an expression that resolves to `null`, it will not be replaced by the default value. In this case, please consider using a [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
+
+:::
+
 By default, runtime input accepts virtually any sting input. You can specify a default value to avoid empty values.
 
 ```mdx-code-block
@@ -258,12 +264,6 @@ Use multiple selection if you want to choose one or more values from the list of
 ![](./static/runtime-inputs-11.png)
 
 ## Supply runtime input during execution
-
-:::note
-
-Currently, this feature is behind the feature flag `NG_EXECUTION_INPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Sometimes you might not know the value for a runtime input at the beginning of the pipeline run. For example:
 

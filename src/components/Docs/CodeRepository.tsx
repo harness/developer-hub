@@ -37,7 +37,7 @@ export default function Code() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Learn how you can accelerate development with security at scale. This module is currently in BETA.
+              Learn how you can accelerate development with security at scale.
             </p>
           </div>
         </div>

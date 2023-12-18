@@ -31,7 +31,7 @@ You need permissions to create, edit, and view secrets at the account scope to b
 
 ## Transcribe the text secret into settings.xml
 
-Create a new `settings.xml` file in the Harness working directory (`/harness`) and include a command in your pipeline to assign the value of your settings XML text secret to that file. To do this, modify the [Run step](../run-ci-scripts/run-step-settings.md) or [Run Tests step](./set-up-test-intelligence.md) where your Maven tests run.
+Create a new `settings.xml` file in the Harness working directory (`/harness`) and include a command in your pipeline to assign the value of your settings XML text secret to that file. To do this, modify the [Run step](../run-ci-scripts/run-step-settings.md) or [Run Tests step](./test-intelligence/set-up-test-intelligence.md) where your Maven tests run.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';

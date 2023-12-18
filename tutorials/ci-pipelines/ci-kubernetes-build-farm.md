@@ -47,22 +47,6 @@ You must install the Harness Delegate in the same cluster you use for the build 
 
 </details>
 
-<details>
-<summary>Video summary</summary>
-
-This video describes a pipeline similar to the one built in this tutorial. Note that this video uses the **Service Dependency** step, which is deprecated in favor of the **Background** step.
-
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
-<docvideo src="https://harness-1.wistia.com/medias/fsc2b05uxz" />
-
-
-<!-- div class="hd--embed" data-provider="Wistia" data-thumbnail="">
-   <iframe src="//fast.wistia.net/embed/iframe/fsc2b05uxz" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" oallowfullscreen="" msallowfullscreen="" width="620" height="349"></iframe><script src="//fast.wistia.net/assets/external/E-v1.js" async=""></script>
-</div -->
-
-</details>
-
 ## Prerequisites
 
 This tutorial assumes you have experience with Kubernetes, such as setting up service accounts and clusters.
@@ -211,7 +195,7 @@ Next, you need to define the build infrastructure. Harness offers several [build
 
 Now that the pipeline has a stage with a defined codebase and build infrastructure, you are ready to add steps to build the codebase, run unit tests, and push an artifact to Docker Hub. The first step will run unit tests and compile the codebase. The second step builds a container image and pushes it to a Docker Hub repo.
 
-To run unit tests in a CI pipeline, you can use either a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) or a [Run Tests step](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#add-the-run-tests-step). This tutorial uses a **Run** step. In addition to unit tests, the **Run** step can run any number of commands on a container image. **Run** steps are highly versatile and you'll use them often in your CI pipelines. While not used in this tutorial, with the **Run Tests** step, you can leverage [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence).
+To run unit tests in a CI pipeline, you can use either a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) or a [Run Tests step](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence). This tutorial uses a **Run** step. In addition to unit tests, the **Run** step can run any number of commands on a container image. **Run** steps are highly versatile and you'll use them often in your CI pipelines. While not used in this tutorial, with the **Run Tests** step, you can leverage [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
 
 1. On the **Execution** tab for your Build stage, select **Add Step**, select **Add Step** again, and then select the **Run** step from the Step Library.
 2. For **Name**, enter `Run Unit Tests`.
@@ -227,7 +211,7 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
    * **Delegates Setup:** Select **Only use Delegates with all of the following tags**, and then select the Delegate you installed in your Kubernetes cluster.
    * Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
-5. Back in the **Run** step settings, enter `golang:1.15` in the **Image** field.
+5. Back in the **Run** step settings, enter `golang:1.17` in the **Image** field.
 6. Enter the following code in the **Command** field:
 
    ```

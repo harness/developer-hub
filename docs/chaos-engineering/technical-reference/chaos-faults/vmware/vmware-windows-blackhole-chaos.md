@@ -64,8 +64,6 @@ stringData:
           <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
       </tr>
     </table>
-
-
     <h3>Optional fields</h3>
     <table>
       <tr>
@@ -76,31 +74,31 @@ stringData:
       <tr>
         <td> DESTINATION_HOSTS </td>
         <td> Comma separated list of destination hosts to block. </td>
-        <td> For example, <code>github.com,harness.io</code> </td>
+        <td> For example, <code>github.com,harness.io</code>. For more information, go to <a href="#destination-hosts"> destination hosts. </a> </td>
       </tr>
       <tr>
         <td> IP_ADDRESSES </td>
         <td> Comma separated list of IP addresses to block. </td>
-        <td> For example, <code>10.0.0.1,10.0.0.2</code> </td>
+        <td> For example, <code>10.0.0.1,10.0.0.2</code>. For more information, go to <a href="#ip-addresses"> IP addresses. </a> </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 60s. </td>
+        <td> Default: 60 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> Default: 0s. </td>
+        <td> Default: 0 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a> </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Default: parallel. Supports serial sequence as well. </td>
+        <td> Default: parallel. Supports parallel and serial sequence. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
     </table>
 
-### Destination Hosts
+### Destination hosts
 The `DESTINATION_HOSTS` environment variable specifies the destination hosts to block on the target Windows VM.
 
 Use the following example to specify destination hosts:
@@ -127,7 +125,7 @@ spec:
           value: 'github.com'
 ```
 
-### IP Addresses
+### IP addresses
 The `IP_ADDRESSES` environment variable specifies the IP addresses to block on the target Windows VM.
 
 Use the following example to specify IP addresses:

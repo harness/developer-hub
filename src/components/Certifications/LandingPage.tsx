@@ -205,14 +205,14 @@ export default function Certifications() {
                     src={`${baseUrl}img/cert_dev_ccm_badge.svg`}
                     alt="Developer CCM Badge"
                   />
-                </div>
-                <h5>Coming Soon</h5>
-                <div className={styles.unAvailableCerts}>
                   <img
                     src={`${baseUrl}img/cert_dev_sto_badge.svg`}
                     alt="Develop STO Badge"
                   />
                 </div>
+                {/* <h5>Coming Soon</h5> */}
+                {/* <div className={styles.unAvailableCerts}>
+                </div> */}
               </div>
             </div>
             <div className={styles.verticalLine}></div>
@@ -248,14 +248,23 @@ export default function Certifications() {
                   <img
                     src={`${baseUrl}img/cert_adm_ci_badge.svg`}
                     alt="Administrator Continuous Integration Badge"
+                   />
+                  <img
+                    src={`${baseUrl}img/cert_adm_ff_badge.svg`}
+                    alt="Administrator FF Badge"
                   />
                 </div>
                 {/* <h5>Coming Soon</h5> */}
                 <h5>Coming Soon</h5>
                 <div className={styles.unAvailableCerts}>
+
                   <img
-                    src={`${baseUrl}img/cert_adm_ff_badge.svg`}
-                    alt="Administrator FF Badge"
+                    src={`${baseUrl}img/cert_adm_sto_badge.svg`}
+                    alt="Administrator STO Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_adm_ccm_badge.svg`}
+                    alt="Administrator CCM Badge"
                   />
                 </div>
               </div>
