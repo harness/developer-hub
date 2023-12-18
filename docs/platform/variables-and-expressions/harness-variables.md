@@ -528,6 +528,11 @@ When using the `==` operator, ensure the expression is wrapped within `<+ >`.
 
 For example, `<+<+pipeline.name> == "pipeline1">` or `<+<+stage.variables.v1> == "dev">`.
 
+:::info note
+Greater than and Less than operators are not supported for string expression types. Only Equal to and Not equal to are supported.
+
+:::
+
 ### Variable concatenation
 
 Harness string variables can be concatenated by default. Each expression can be evaluated and substituted in the string. 
@@ -577,7 +582,17 @@ You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"
 
 ### Best practices for expressions usage
 
-- When using `,` inside a method invocation with an expression, the expression must be wrapped in quotation marks.
+- When using an expression, if you want to treat it as a string, you must wrap it within quotation marks.
+  
+  For example, consider following expression:
+
+  ```
+  <+<+pipeline.variables.changeType> =~ ["<+stage.name>","All"]>
+  ```
+  
+  In the above expression, the `<+stage.name>` is wrapped within quotation marks because it is an element in a list of strings.
+
+- While using `,` inside a method invocation with an expression, the expression must be wrapped in quotation marks.
 
    For example, consider the following expression:
 
@@ -586,6 +601,16 @@ You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"
    ```
 
    In the above expression, `<+pipeline.variables.var1>` must be wrapped in quotation marks because the expression is a string parameter for a method.
+
+- While using method invocation with an expression, the expression before method invocation should also be wrapped within `<+...>`.
+  
+  For example, consider the following expression:
+
+  ```
+  <+<+pipeline.variables.var1>.concat("concatenating a string")>
+  ```
+  
+  To invoke the method `concat` on the expression `<+pipeline.variables.var1>`, you must wrap `<+pipeline.variables.var1>` within `<+...>` and then invoke the method using `.concat()`.
 
 
 ## Debugging expressions

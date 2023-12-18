@@ -103,13 +103,23 @@ export const certifications: CardItem[] = [
       // numberOfCerts: 1,
     },
     {
-      title: "Security Testing Orchestration  - Administrator (BETA Coming Soon)",
+      title: "Security Testing Orchestration  - Administrator (BETA)",
       module: MODULES.sto,
       type: certType.administrator,
       description:
-        "STO Administrator focuses on configuring and managing security testing processes within the Harness platform",
+        "STO Administrator focuses on configuring and managing security testing processes within the Harness platform.",
       version: "Harness STO Free/Team Plans",
       link: "/certifications/sto?lvl=administrator",
+      // numberOfCerts: 1,
+    },
+    {
+      title: "Cloud Cost Management  - Administrator (BETA Coming Soon)",
+      module: MODULES.ccm,
+      type: certType.administrator,
+      description:
+        "CCM Administrator focuses on the advanced skills in design, implementation, and management of cloud cost savings.",
+      version: "Harness CCM Enterprise Plan",
+      link: "/certifications/cloud-cost-management?lvl=administrator",
       // numberOfCerts: 1,
     },
   ];

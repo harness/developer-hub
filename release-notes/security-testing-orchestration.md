@@ -39,6 +39,12 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 - Expiration time for exemptions now start when the exemption is approved. (STO-6604)
 
+#### Fixed issue
+
+<!-- 2023-12-14 -->
+
+Fixed an issue where only the first run in a SARIF file was being ingested. This occurred when Snyk was configured with the `--all-projects` flag. (STO-6832, ZD-55065)
+
 
 ## November 2023 
 

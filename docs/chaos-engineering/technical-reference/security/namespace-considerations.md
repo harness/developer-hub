@@ -2,14 +2,14 @@
 title: Namespace considerations
 sidebar_position: 2
 ---
-To run chaos experiments on specific namespaces, follow the below mentioned steps.
+This section discusses the steps required to run chaos experiments on specific namespaces.
 
-1. Install CE in cluster mode
+### Step 1. Install CE in cluster mode
 
 - Install CE in cluster mode with the given installation manifest. 
 - Restrict `litmus-admin` service account to certain target namespaces.
 
-2. Delete `litmus-admin` ClusterRole and ClusterRoleBinding
+### Step 2. Delete `litmus-admin` ClusterRole and ClusterRoleBinding
 - Once CE is up and running in cluster mode, delete the `litmus-admin` ClusterRole and ClusterRoleBinding to restrict the chaos scope in all namespaces.
 
 ```bash
@@ -28,7 +28,7 @@ $> kubectl delete clusterrolebinding litmus-admin
 clusterrolebinding.rbac.authorization.k8s.io "litmus-admin" deleted
 ```
 
-3. Create Role and RoleBinding in all target namespaces
+### Step 3. Create Role and RoleBinding in all target namespaces
 
 This allows specific namespaces for chaos operations. Create Role and RoleBinding in these specific namespaces (say `namespaceA` and `namespaceB`). 
 
@@ -202,11 +202,11 @@ $> kubectl apply -f role-2.yaml
 ```role.rbac.authorization.k8s.io/namespaceB-chaos created```
 ```rolebinding.rbac.authorization.k8s.io/namespaceB-chaos created```
 
-4. Create Role and RoleBinding in all target namespaces
+### Step 4. Create Role and RoleBinding in all target namespaces
 
 Create a Role and RoleBinding in the chaos namespace as well. This will be used by chaos runner pod to launch experiment. 
 
-5. Verify the chaos execution on different namespaces
+### Step 5. Verify the chaos execution on different namespaces
 
 Run an experiment, say pod-delete in both the namespaces to verify if these namespaces have the permission to run experiments.
 
@@ -233,6 +233,5 @@ time="2022-11-14T06:47:51Z" level=info msg="[Status]: Verify that the AUT (Appli
 time="2022-11-14T06:47:51Z" level=info msg="[Status]: Checking whether application containers are in ready state"
 time="2022-11-14T06:50:53Z" level=error msg="Application status check failed, err: Unable to find the pods with matching labels, err: pods is forbidden: User \"system:serviceaccount:litmus:litmus-admin\" cannot list resource \"pods\" in API group \"\" in the namespace \"test\""
 ```
-
 
 You have successfully restricted CE to run chaos on certain namespaces instead of all namespaces.

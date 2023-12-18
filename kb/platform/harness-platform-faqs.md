@@ -1934,9 +1934,35 @@ Sometime when you try to add a Harness User from Harness UI , you get error for 
 You can open the developer tools and check the API call for the error and see the response. 
 It could be possible due to user creation limit. You can eitehr resolve it by removing unused Users from your account or reach out to Harness Support get the limit validated as per your licence. 
 
+#### How to get x-api-key for making api call
+You need to create a new token under api key , you can follow https://apidocs.harness.io/#section/Introduction/Authentication for more details
+
+#### How to check which delegate was assigned for task
+You can select the step under any stage and on right side under details tab you will be able to see delegate assigned as well the delegate selection task logs will provide more details which all delegates were eligible and from where selector was originated etc
+
+#### How to pass xmx and pms value for delegate to use max and min memory allocation pool
+env:
+    - name: JAVA_OPTS
+      value: "-Xms64M -Xmx2G"
+
+#### Scim Provisioned User Group has - in name which was removed from identifier but still allowed as name
+The - is not allowed character for identifier so it was removed while creating the identifier while name can have that so its allowed for name
+
+#### What does the promql query ```io_harness_custom_metric_task_failed{task_type="NG_VAULT_RENEW_TOKEN"} > 0``` specifically check, and why is it still non-zero even after a successful token renewal?
+
+The query checks for failed tasks related to token renewal. The non-zero value may persist as it represents the count of failed tasks, which doesn't reset after successful renewals
+
+#### What is the purpose of the ```liveStatus``` expression in Harness, and how does it differ from stageStatus?
+
+ The ```liveStatus``` expression is designed for use within step groups under a matrix. Unlike stageStatus, which doesn't consider running or completed steps under a matrix, liveStatus calculates the status of steps, including those in the running or completed state
+
+#### Can we manually reset the delegate metrics which is being scraped by prmoetheus?
+
+Manual reset isn't supported. However all the metrics get reset when the delegate restarts
 
 
+#### Is the user can approve the pipeline through the API using token of service account?
+The Service Account API token is not supported with Approval API, you need to use the personel access token.
 
-
-
-
+#### How user can make sure the build artifacts that go to harness will come from protected branches before production deployment?
+You can select the Artifact filter option and provide the expression as per your need in the Artifact source config of the service.

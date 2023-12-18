@@ -149,10 +149,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Allows you to change the expression value for the primary artifact identifier. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
-        <td>CDS_TRIGGER_ACTIVITY_PAGE</td>
-        <td>Enables the <a href="/docs/platform/triggers/troubleshoot-registered-triggers">Trigger Activity page</a> <b>This feature is in Beta.</b></td>
-    </tr>
-    <tr>
         <td>CDS_SUPPORT_HPA_AND_PDB_NG</td>
         <td>Enables <p><a href="/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes/#managed-workloads-table">PDB and HPA tracking</a></p> as managed resources by Harness.<b>This feature is in Public Preview.</b></td>
     </tr>
