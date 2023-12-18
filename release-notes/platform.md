@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-12-18:T10:00:30
+date: 2023-12-19:T10:00:30
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -82,7 +82,7 @@ The following deprecated API endpoints will no longer be supported:
 
 ## December 2023
 
-### Version 1.16.5
+### Version 1.16.6
 
 #### New features and enhancements
 
