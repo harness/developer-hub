@@ -82,7 +82,7 @@ The following deprecated API endpoints will no longer be supported:
 
 ## December 2023
 
-### Version 1.16.x
+### Version 1.16.5
 
 #### New features and enhancements
 
