@@ -198,13 +198,7 @@ The delegate logs are available in the Harness UI. When a pipeline runs and an e
 Delegate logs are also sent to Harness by default. These Stackdriver logs are stored in Harness's GCP account. 
 
 :::caution
-**Not Recommended:** You can stop delegates from sending delegate logs to Harness by blocking outgoing traffic from your VPC, but you will receive errors similar to the below messages. 
-
-```
-2023-03-11 16:44:19,020 [1.0.12345] 893 [remote-stackdriver-log-submitter] INFO  io.harness.network.Http - Testing connectivity [URL=https://logging.googleapis.com:123] 
-
-2023-03-11 16:44:19,117 [1.0.12345] 893 [remote-stackdriver-log-submitter] INFO  io.harness.network.Http - Could not connect: java.net.ConnectException: Connection refused (Connection refused) [URL=https://logging.googleapis.com:123]
-```
+**Not Recommended:** You can stop delegates from sending delegate logs to Harness by setting the `STACK_DRIVER_LOGGING_ENABLED` environment variable to `false` for the delegate. This will disable all remote logging. 
 
 :::
 
