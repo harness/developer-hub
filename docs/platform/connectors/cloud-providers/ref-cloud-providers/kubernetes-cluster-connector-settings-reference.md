@@ -196,12 +196,12 @@ Basic authentication is not supported in Kubernetes client version 1.19 and late
 
 ## Service Account
 
-Add the service account token for the service account. The token must be pasted in decoded in the Encrypted Text secret you create/select. The service account does not have to be associated with a delegate.
+Select or create a Harness encrypted text secret containing the decoded service account token for the service account. The secret must contain the decoded token for the connector to function correctly. The service account doesn't have to be associated with a delegate.
 
-In Kubernetes 1.24 and later versions, the automatic generation of ServiceAccount token secrets has been deprecated. Instead, you can use the TokenRequest subresource to obtain a token that can be used to access the Kubernetes API. Here's how you can use the TokenRequest subresource:
+In Kubernetes version 1.24 and later, service account token secrets are no longer automatically generated. Instead, you can use the `TokenRequest` subresource to obtain a token that can be used to access the Kubernetes API. Here's how you can use the `TokenRequest` subresource:
 
-1. Create a TokenRequest manifest. Write a YAML or JSON manifest that describes the TokenRequest object. The manifest should specify the namespace and name of the ServiceAccount for which you want to obtain a token. Here's an example TokenRequest manifest:
-   
+1. Create a `TokenRequest` manifest. Write a YAML or JSON manifest that describes the `TokenRequest` object. The manifest should specify the namespace and name of the `ServiceAccount` for which you want to obtain a token. Here's an example `TokenRequest` manifest:
+
    ```yaml
    apiVersion: authentication.k8s.io/v1
    kind: TokenRequest
@@ -213,18 +213,21 @@ In Kubernetes 1.24 and later versions, the automatic generation of ServiceAccoun
      expirationSeconds: 3600
    ```
 
-   In this example, the `audiences` field specifies the intended audience of the token, which is set to api. The `expirationSeconds` field determines the token's validity period (in this case, 3600 seconds or 1 hour).
-2. Apply the TokenRequest. Use the kubectl command-line tool to apply the TokenRequest manifest to the Kubernetes cluster:
-   
+   In this example, the `audiences` field specifies the intended audience of the token, which is set to `api`. The `expirationSeconds` field determines the token's validity period (in this case, `3600` seconds or one hour).
+
+2. Apply the `TokenRequest`. Use the kubectl command-line tool to apply the `TokenRequest` manifest to the Kubernetes cluster:
+
    ```
    kubectl apply -f token-request.yaml
    ```
-3. Retrieve the token: After applying the TokenRequest, a TokenRequest object is created in the cluster. You can retrieve the token using the following command:
-   
+
+3. Retrieve the token. After applying the `TokenRequest`, a `TokenRequest` object is created in the cluster. You can retrieve the token using the following command:
+
    ```
    kubectl get tokenrequest my-token-request -o jsonpath='{.status.token}' | base64
    ```
-4. Paste the token into **Service Account Token**.
+
+4. Paste the token into a Harness encrypted text secret and then use that secret for the connector's **Service Account Token**.
 
 ## OpenID Connect
 
