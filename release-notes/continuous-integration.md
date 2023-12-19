@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-12-18T10:00
+date: 2023-12-26T10:00
 sidebar_position: 9
 ---
 
@@ -25,18 +25,19 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## December 2023
 
-<!-- h3 Version 1.5.x -->
+### Version 1.5.x
 
 <!-- Dec 2x, 2023 -->
 
-<!-- h4 New features and enhancements -->
+#### New features and enhancements
 
-<!-- This release introduces a new versioning convention for CI manager. -->
+* This release introduces a new versioning convention for CI manager.
+* [Test Intelligence for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby) is now generally available.
 
-<!-- h4 Fixed issues -->
+#### Fixed issues
 
-<!-- * Fixed an issue where builds failed in a Kubernetes cluster build infrastructure because certificates from the key chain weren't considered when fetching the entrypoint for the [S3 Upload and Publish plugin](). (CI-10258, ZD-53311) -->
-<!-- * Improved error messaging related to addon disconnects. (CI-8877) -->
+* Fixed an issue where builds failed in a Kubernetes cluster build infrastructure because certificates from the key chain weren't considered when fetching the entrypoint for the [S3 Upload and Publish plugin](). (CI-10258, ZD-53311)
+* Improved error messaging related to addon disconnects. (CI-8877)
 
 ### Version 7006
 
