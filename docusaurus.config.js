@@ -537,19 +537,9 @@ const config = {
           '^/docs/category/harness-git-based-how-tos.*',
         ],
       },
-      hotjar: {
-        siteId: 3194971,
-      },
-      oneTrust: {
-        dataDomainScript: '59633b83-e34c-443c-a807-63232ce145e5',
-      },
       utmCookie: {
         prefix: 'utm_',
       },
-      munity: {
-        clientId: 'b866f690584d8345',
-      },
-
       rss: {
         rssPath: 'release-notes/rss.xml',
         rssTitle: 'Harness Release Notes',
