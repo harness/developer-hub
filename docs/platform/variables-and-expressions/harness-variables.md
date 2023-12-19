@@ -539,7 +539,7 @@ Harness string variables can be concatenated by default. Each expression can be 
 
 Previously, Harness users were forced to use a ‘+’, or `.concat()`, the concatenation operator, to join multiple expressions together. Now, you can simply use `<+pipeline.name> <+pipeline.executionId>`. 
 
-For example, Harness supports complex usages sych as the following:
+For example, Harness supports complex usages such as the following:
 
 - `us-west-2/nonprod/eks/eks123/<+env.name>/chat/`
 - `<+stage.spec.execution.steps.s1<+strategy.identifierPostFix>.steps.ShellScript_1.output.outputVariables.v1>`
@@ -554,7 +554,7 @@ All existing expressions will continue to work. For example, the following synta
 
 - `<+<+pipeline.variables.var1>.concat("_suffix")>`
 
-Ensure the expression is wrapped within `<+ >` in both of theese examples.
+Ensure the expression is wrapped within `<+ >` in both of these examples.
 
 :::note
 
