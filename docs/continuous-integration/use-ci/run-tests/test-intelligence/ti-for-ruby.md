@@ -10,12 +10,6 @@ import TabItem from '@theme/TabItem';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
 ```
 
-:::note
-
-Currently, TI for Ruby is behind the feature flag `CI_RUBY_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes. You can enable TI for Ruby in three steps:
 
 1. Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
