@@ -26,6 +26,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - We resolved a `ClassCastException` that would cause the SDK to crash when returning the default variation. 
  - We have now resolved the `jsonVariation` issue and it is now returning the default variation.
  - We did some refactoring to improve the code quality. 
+ - We no longer post metrics for default variations being used.
 
 ### Erlang SDK
 
