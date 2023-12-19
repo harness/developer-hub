@@ -1,6 +1,6 @@
 ---
 title: Delegate overview
-description: Harness Delegate is a service you run in your local network or VPC to connect your artifact, infrastructure, collaboration, verification and other providers with Harness Manager.
+description: Harness Delegate is a service you run in your local network or VPC to connect your artifact, infrastructure, collaboration, verification, and other providers with Harness Manager.
 sidebar_position: 1
 helpdocs_topic_id: 2k7lnc7lvl
 helpdocs_category_id: sy6sod35zi
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification, and other providers, with Harness Manager. The first time you connect Harness to a third-party resource, Harness Delegate is installed in your target infrastructure, for example, a Kubernetes cluster. After the delegate is installed, you connect to third-party resources. The delegate performs all operations, including deployment and integration.
+Harness Delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification, and other providers with Harness Manager. The first time you connect Harness to a third-party resource, Harness Delegate is installed in your target infrastructure, for example, a Kubernetes cluster. After the delegate is installed, you connect to third-party resources. The delegate performs all operations, including deployment and integration.
 
 ### System requirements
 
@@ -69,6 +69,28 @@ One delegate size does not fit all use cases, so Harness lets you pick from seve
 
 Remember that the memory and CPU requirements are for the delegate only. Your delegate host/pod/container will need more computing resources for its operations systems and other services, such as Docker or Kubernetes.
 
+### Delegates list page
+
+You can view a list of your delegates at the project and account scopes.
+
+To view the delegates list, do the following:
+
+- In Harness, select **Project Settings > Delegates** in a project or **Account Settings > Account Resources > Delegates** for the account. The Delegates list page opens.
+
+   Here's an Account Resources example:
+
+   ![](./static/delegates-list-page.png)
+
+The Delegates list page displays the following information:
+
+- **Delegate:** The delegate name.
+- **Connectivity Status:** The current connectivity status of the delegate. When Harness Manager receives the heartbeat, the **Connectivity Status** is `Connected`. If Harness Manager is not receiving a heartbeat from the installed delegate, the **Connectivity Status** is `Not Connected`.
+- **Tags:** A delegate tag with the same name as your delegate is automatically added to your delegate during the configuration process. You can add additional tags. For more information, go to [Delegate tags](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags).
+- **Version:** The delegate version. For delegates with an immutable image type, the version number format is *`yy.mm.verno`*, the release year, month, and version in dot-separated format. For more information, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types/).
+- **Instance Status:** Displays when your delegate expires. For more information, go to [Determine when your delegate expires](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#determine-when-your-delegate-expires).
+- **Last Heartbeat:** Displays the time (in seconds) since Harness Manager received the last delegate heartbeat.
+- **Auto Upgrade:** The auto upgrade status of the delegate. When the delegate is first installed, the Delegates list page displays an **Auto Upgrade** status of `SYNCHRONIZING`. For more information, go to [Determine if automatic upgrade is enabled](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#determine-if-automatic-upgrade-is-enabled).
+
 ### How Harness Manager picks delegates
 
 Harness uses delegates for all operations. For example:
@@ -85,9 +107,9 @@ In cases where you select specific delegates to perform the task, Harness uses t
 
 In cases where you do not select specific delegates, Harness selects an available delegate to perform the task based on the following:
 
-* **Heartbeats:** Running delegates send heartbeats to the Harness Manager in one minute intervals. If the Manager does not have a heartbeat for a delegate when a task is ready to be assigned, it does not assign the task to that delegate.
-* **Tags:** For more information, go to [Select delegates with tags](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
-* **Capability:** The delegate checks connectivity to your external systems to determine whether it can carry out the task. This process allows other delegates to assist in case access issues are found.
+- **Heartbeats:** Running delegates send heartbeats to the Harness Manager in one minute intervals. If the Manager does not have a heartbeat for a delegate when a task is ready to be assigned, it does not assign the task to that delegate.
+- **Tags:** For more information, go to [Delegate tags](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags).
+- **Capability:** The delegate checks connectivity to your external systems to determine whether it can carry out the task. This process allows other delegates to assist in case access issues are found.
 
 #### Delegate selection in pipelines
 
