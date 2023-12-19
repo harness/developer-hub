@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-12-13T10:00
+date: 2023-12-18T10:00
 sidebar_position: 9
 ---
 
@@ -38,9 +38,9 @@ These release notes describe recent changes to Harness Continuous Integration.
 <!-- * Fixed an issue where builds failed in a Kubernetes cluster build infrastructure because certificates from the key chain weren't considered when fetching the entrypoint for the [S3 Upload and Publish plugin](). (CI-10258, ZD-53311) -->
 <!-- * Improved error messaging related to addon disconnects. (CI-8877) -->
 
-### Version 70xx
+### Version 7006
 
-<!-- Dec 19 or later, 2023 -->
+<!-- Dec 18, 2023 -->
 
 #### Fixed issues
 
