@@ -239,7 +239,7 @@ const config = {
               },
               {
                 label: 'Software Engineering Insights',
-                to: 'https://docs.propelo.ai/welcome-to-propelo/',
+                to: 'docs/software-engineering-insights',
               },
               {
                 label: 'Platform',
