@@ -12,7 +12,7 @@ Configure the webhook API call according to the following webhook specifications
 ## Webhook specification
 
 * Method: POST
-* Base URL: https://testapi1.propelo.ai/v1/custom-cicd
+* Base URL: `https://testapi1.propelo.ai/v1/custom-cicd`
 * Header: Requires Bearer token key authorization. The content type is ```application/json```
 * Body: Contains a data object with ```request_type``` and ```payload```.
 
