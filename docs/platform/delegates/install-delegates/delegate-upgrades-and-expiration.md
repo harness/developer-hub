@@ -134,15 +134,15 @@ spec:
 
 When a delegate is installed, it may take up to an hour by default to determine if the `upgrader` was removed during installation. During that time, the delegate shows a status of **DETECTING**.
 
-Harness updates the status when `upgrader` makes it’s first API call to the Harness platform. The default schedule is one hour, but the schedule is configurable. If Harness doesn't detect the upgrader API call within 90 minutes, the upgrade status is updated from `DETECTING` to `OFF`.
+Harness updates the status when `upgrader` makes it’s first API call to the Harness platform. The default schedule is one hour, but the schedule is configurable. If Harness doesn't detect the upgrader API call within 90 minutes, the upgrade status is updated from **DETECTING** to **AUTO UPGRADE: OFF**.
 
-Let’s say the `upgrader` schedule is configured to two hours. The upgrade status would change from `OFF` to `ON` and back to `OFF`. Every 90 minutes that Harness doesn't detect the API call, the status is set to `OFF`. As soon as Harness detects it again, the status is set to `ON`. Harness recommends a default schedule of 60 minutes. For more information, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
+Let’s say the `upgrader` schedule is configured to two hours. The upgrade status would change from **AUTO UPGRADE: OFF** to **AUTO UPGRADE: ON** and back to **AUTO UPGRADE: OFF**. Every 90 minutes that Harness doesn't detect the API call, the status is set to **AUTO UPGRADE: OFF**. As soon as Harness detects it again, the status is set to **AUTO UPGRADE: ON**. Harness recommends a default schedule of 60 minutes. For more information, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
 
 To find the delegate status, select an account, a project, or an organization, then select **Settings**. Under resources, select **Delegates**. For more information, go to [Delegates list page](/docs/platform/delegates/delegate-concepts/delegate-overview#delegates-list-page).
 
 ![Detecting delegate](static/detect-delegate.png)
 
-When the delegate is first installed, the Delegates list page displays an **Auto Upgrade** status of `DETECTING` and then `SYNCHRONIZING`. After the first hour (for the default `upgrader` configuration) or your custom configured time, the delegate shows a status of **AUTO UPGRADE: ON** or **AUTO UPGRADE: OFF**. 
+When the delegate is first installed, the Delegates list page displays an **Auto Upgrade** status of **DETECTING** and then **SYNCHRONIZING**. After the first hour (for the default `upgrader` configuration) or your custom configured time, the delegate shows a status of **AUTO UPGRADE: OFF** or **AUTO UPGRADE: OFF**. 
 
 ![Auto-upgrade on](static/auto-upgrade-on.png)
 
