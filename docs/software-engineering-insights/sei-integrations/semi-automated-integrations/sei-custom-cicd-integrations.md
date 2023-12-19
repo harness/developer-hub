@@ -78,7 +78,7 @@ Payload is an object with required and optional fields.
 * **job\_full\_name (string):** A human-readable identifier for the job, often the same as the pipeline name.
 * **qualified\_name (string):** A qualified name for the job, typically the same as the pipeline name.
 * **instance\_name (string):** The identifier for the CI/CD instance (not the UUID).
-* **instance\_guid (string):** UUID (Universally Unique Identifier) for the CI/CD instance. To generate a UUID for the integration you can use the API [https://testapi1.propelo.ai/v1/custom-cicd](https://testapi1.propelo.ai/v1/custom-cicd)
+* **instance\_guid (string):** UUID (Universally Unique Identifier) for the CI/CD instance. To generate a UUID for the integration you can use the API `https://testapi1.propelo.ai/v1/custom-cicd`.
 * **start\_time (integer):** Job start time in epoch milliseconds.
 * **duration (integer):** Job duration in milliseconds.
 * **result (string):** The result of the job, either "success" or "failure."
