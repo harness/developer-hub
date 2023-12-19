@@ -152,11 +152,6 @@ export default function CertificationsChaos() {
                       </button>
                     </Link> */}
                   </div>
-                  {/* <h3>Coming Soon...</h3>
-                  <div className={styles.desc}>
-                    Assesses the fundamental skills to implement chaos in your
-                    applications.
-                  </div> */}
                 </div>
               </div>
             </div>
