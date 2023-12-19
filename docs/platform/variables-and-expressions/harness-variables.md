@@ -612,6 +612,16 @@ You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"
   
   To invoke the method `concat` on the expression `<+pipeline.variables.var1>`, you must wrap `<+pipeline.variables.var1>` within `<+...>` and then invoke the method using `.concat()`.
 
+- While using an expression for secret functor provided by Harness `<+secrets.getValue("sec")>`, this expression should never be wrapped within quotation marks.
+  
+  Because this expression gets resolved to another internal functor of Harness `${ngSecretManager.obtain("sec")}`, which is resolved on delegate. Since, it's value is not a primitive like string, it should not be wrapped within quotation marks.
+
+  For example, consider the following expression for the value of a pipeline or stage variable:
+  ```
+  <+<+<+pipeline.variables.var1>=="secret1">?<+secrets.getValue("secret1")>:<+secrets.getValue("defaultSecret")>>
+  ```
+  Here, the secret expression should not be wrapped within quotation marks.
+
 
 ## Debugging expressions
 
