@@ -13,7 +13,6 @@ The AWS Resource Access Restrict chaos experiment allows you to create network a
 - By imposing these access restrictions, you can evaluate how your application and resources handle limited network access and ensure that they continue to operate effectively and securely.
 
 ## Prerequisites
-
 - Kubernetes >= 1.17
 - ECS cluster running with the desired tasks and containers and familiarity with ECS service update and deployment concepts.
 - Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
@@ -33,12 +32,10 @@ stringData:
 ```
 
 :::tip
-It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -97,12 +94,12 @@ Here is an example AWS policy to execute the fault.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds) </td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Interval between successive instance terminations (in seconds)</td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr> 
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -121,7 +118,7 @@ Here is an example AWS policy to execute the fault.
       </tr>
     </table>
 
-### Resouce Access Restrict
+### Resouce access restrict
 
 Security group for access restriction. Tune it by using the `SECURITY_GROUP_IDS` environment variable.
 
@@ -151,7 +148,7 @@ spec:
           VALUE: '60'
 ```
 
-### Rule Type
+### Rule type
 
 Rule type for access restriction. Tune it by using the `RULE_TYPE` environment variable.
 

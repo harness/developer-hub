@@ -14,8 +14,8 @@ EC2 windows CPU hog:
 - Simulates the situation of a lack of CPU for processes running on the instance, which degrades their performance. 
 - Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the instance.
 
-:::info note
-- Kubernetes version 1.17 or later is required to execute this fault.
+## Prerequisites
+- Kubernetes >= 1.17
 - The EC2 instance must be in a healthy state.
 - SSM agent must be installed and running on the target EC2 instance.
 - SSM IAM role must be attached to the target EC2 instance(s).
@@ -33,12 +33,12 @@ EC2 windows CPU hog:
         aws_access_key_id = XXXXXXXXXXXXXXXXXXX
         aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     ```
-- Harness recommends using the same secret name, that is, `cloud-secret`. Otherwise, you must update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes.
-- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
-- Go to [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
-Here is an example AWS policy to execute the fault.
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -87,8 +87,10 @@ Here is an example AWS policy to execute the fault.
 }
 ```
 
-
-## Fault tunables
+:::info note
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+- Go to [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+:::
 
 <h3>Mandatory tunables</h3>
     <table>
@@ -118,7 +120,7 @@ Here is an example AWS policy to execute the fault.
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 30 s </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
         </tr>
         <tr>
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -133,7 +135,7 @@ Here is an example AWS policy to execute the fault.
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple instances. </td>
-            <td> Default: parallel. Supports serial and parallel. </td>
+            <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>

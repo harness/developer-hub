@@ -13,8 +13,8 @@ ALB AZ down:
 - Detaches the AZ from the application load balancer thereby disrupting the application's performance. 
 - Tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 
-:::info note
-- Kubernetes version 1.17 or later is required to execute this fault.
+## Prerequisites
+- Kubernetes >= 1.17
 - Appropriate AWS access to attach or detach subnet from the target ALB.
 - There needs to be a minimum of two AZs attached to the target ALB after injecting chaos; otherwise, the fault will fail to detach the given AZ.
 - The ALB should be attached to the given availability zones.
@@ -32,8 +32,9 @@ ALB AZ down:
       aws_access_key_id = XXXXXXXXXXXXXXXXXXX
       aws_secret_access_key = XXXXXXXXXXXXXXX
   ```
-- We recommend that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name but you won't be able to use the default health check probes. 
-- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -58,7 +59,9 @@ Below is an example AWS policy to execute the fault.
 }
 ```
 
-## Fault tunables
+:::info note
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+:::
 
    <h3>Mandatory tunables</h3>
     <table>

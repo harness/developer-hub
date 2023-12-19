@@ -4,12 +4,10 @@ title: ECS update container timeout
 ---
 
 ECS update container timeout modifies the start and stop timeouts for ECS containers in Amazon ECS clusters. The fault allows you to specify the duration for which the containers should be allowed to start or stop before they are considered failed.
+This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](./ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
 
 ![ECS Update Container Timeout](./static/images/ecs-update-container-timeout.png)
 
-:::tip
-This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](./ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
-:::
 
 ## Use cases
 ECS update container timeout:
@@ -21,7 +19,6 @@ ECS update container timeout:
 
 
 ## Prerequisites
-
 - Kubernetes >= 1.17
 - ECS cluster running with the desired tasks and containers and familiarity with ECS service update and deployment concepts.
 - Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
@@ -40,11 +37,11 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes.
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+:::
 
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -114,12 +111,12 @@ Here is an example AWS policy to execute the fault.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Interval between successive instance terminations (in seconds).</td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr> 
         <td> AWS_SHARED_CREDENTIALS_FILE </td>

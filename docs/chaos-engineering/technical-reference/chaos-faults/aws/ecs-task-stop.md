@@ -4,21 +4,18 @@ title: ECS task stop
 ---
 ECS task stop is an AWS fault that injects chaos to stop the ECS tasks based on the services or task replica ID and checks the task availability.
 - This fault results in the unavailability of the application running on the tasks.
+- This experiment is applicable to both serverless ECS tasks and those backed by EC2 instances. [These experiments](./ec2-and-serverless-faults#ec2-backed-and-serverless-faults) generally involve task-level chaos or access restrictions without causing direct in-container or in-VM disruptions.
 
 ![ECS Task Stop](./static/images/ecs-task-stop.png)
-
-:::tip
-This experiment is applicable to both serverless ECS tasks and those backed by EC2 instances. [These experiments](./ec2-and-serverless-faults#ec2-backed-and-serverless-faults) generally involve task-level chaos or access restrictions without causing direct in-container or in-VM disruptions.
-:::
 
 ## Use cases
 
 This fault determines the resilience of an application when ECS tasks unexpectedly stop due to task being unavailable.
 
 ## Prerequisites
-
 - Kubernetes >= 1.17
 - Sufficient AWS access to stop the ECS tasks.
+- The target ECS tasks should be in a healthy state.
 - Kubernetes secret that has the AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
@@ -35,16 +32,12 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+:::
 
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 
-## Permissions required
-
-Here is an example AWS policy to help execute the fault.
-
-<details>
-<summary>View policy for this fault</summary>
+Below is an example AWS policy to help execute the fault.
 
 ```json
 {
@@ -65,19 +58,14 @@ Here is an example AWS policy to help execute the fault.
     ]
 }
 ```
-</details>
 
-Refer to the [superset permission (or policy)](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+:::info note
+- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
+- Refer to the [superset permission (or policy)](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+:::
 
-## Default validations
-
-The target ECS tasks should be in a healthy state.
-
-## Fault tunables   
-
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+    <h3>Mandatory tunables</h3>
     <table>
         <tr>
         <th> Variables </th>
@@ -105,7 +93,7 @@ The target ECS tasks should be in a healthy state.
         <td> `SERVICE_NAME` and `TASK_REPLICA_ID` are mutually exclusive. If both the values are provided, `SERVICE_NAME` takes precedence. </td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h3>Optional tunables</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -115,12 +103,12 @@ The target ECS tasks should be in a healthy state.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration to insert chaos (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Defaults: 30s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr>
         <td> TASK_REPLICA_AFFECTED_PERC </td>
@@ -143,13 +131,7 @@ The target ECS tasks should be in a healthy state.
         <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
       </tr>
     </table>
-</details>
 
-## Fault examples
-
-### Common and AWS-specific tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### ECS service name
 

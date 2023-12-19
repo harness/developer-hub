@@ -15,8 +15,8 @@ EC2 DNS chaos:
 - Determines the impact of DNS chaos on the infrastructure and standalone tasks. 
 - Simulates unavailability of the DNS server (loss of access to any external domain from a given microservice, access to cloud provider dependencies, and access to specific third party services).
 
-:::info note
-- Kubernetes version 1.17 or later is required to execute this fault.
+## Prerequisites
+- Kubernetes >= 1.17
 - SSM agent is installed and running on the target EC2 instance.
 - The EC2 instance should be in a healthy state.
 - You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
@@ -34,9 +34,9 @@ EC2 DNS chaos:
       aws_access_key_id = XXXXXXXXXXXXXXXXXXX
       aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   ```
-- We recommend that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
-- Go to the [common tunables](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
-- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -87,6 +87,11 @@ Below is an example AWS policy to execute the fault.
     ]
 }
 ```
+
+:::info note
+- Go to the [common tunables](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+:::
 
 ## Fault tunables
    <h3>Mandatory tunables</h3>

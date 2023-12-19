@@ -4,12 +4,9 @@ title: ECS network restrict
 ---
 
 ECS network restrict allows you to restrict the network connectivity of containers in an Amazon ECS (Elastic Container Service) task by modifying the container security rules. 
+This experiment is applicable to both serverless ECS tasks and those backed by EC2 instances. [These experiments](./ec2-and-serverless-faults#ec2-backed-and-serverless-faults) generally involve task-level chaos or access restrictions without causing direct in-container or in-VM disruptions.
 
 ![ECS Network restrict](./static/images/ecs-network-restrict.png)
-
-:::tip
-This experiment is applicable to both serverless ECS tasks and those backed by EC2 instances. [These experiments](./ec2-and-serverless-faults#ec2-backed-and-serverless-faults) generally involve task-level chaos or access restrictions without causing direct in-container or in-VM disruptions.
-:::
 
 ## Use cases
 ECS network restrict:
@@ -23,7 +20,6 @@ ECS network restrict:
 
 
 ## Prerequisites
-
 - Kubernetes >= 1.17
 - ECS cluster running with the desired tasks and containers and familiarity with ECS service update and deployment concepts.
 - Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
@@ -43,12 +39,10 @@ stringData:
 ```
 
 :::tip
-It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -115,12 +109,12 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-spe
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Interval between successive instance terminations (in seconds).</td>
-        <td> Defaults to 30s. </td>
+        <td> Default. 30s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr> 
         <td> IP_ADDRESS </td>

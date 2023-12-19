@@ -18,9 +18,8 @@ EC2 IO stress:
 - Verifies the disk performance on increasing IO threads and varying IO block sizes.
 - Checks how the application functions under high disk latency conditions, when IO traffic is high and includes large I/O blocks, and when other services monopolize the IO disks. 
 
-
-:::info note
-- Kubernetes version 1.17 or later is required to execute the fault.
+## Prerequisites
+- Kubernetes >= 1.17
 - The EC2 instance should be in a healthy state.
 - SSM agent should be installed and running on the target EC2 instance.
 - The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
@@ -37,8 +36,9 @@ EC2 IO stress:
       aws_access_key_id = XXXXXXXXXXXXXXXXXXX
       aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   ```
-- We recommend you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template, and you won't be able to use the default health check probes. 
-- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults, and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -90,7 +90,10 @@ Below is an example AWS policy to execute the fault.
 }
 ```
 
-## Fault tunables
+:::info note
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults, and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+:::
+
 
 <h3>Mandatory tunables</h3>
 <table>
@@ -102,7 +105,7 @@ Below is an example AWS policy to execute the fault.
     <tr>
         <td> EC2_INSTANCE_ID </td>
         <td> ID of the target EC2 instance. </td>
-        <td> For example, <code>i-044d3cb4b03b8af1f</code>. </td>
+        <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="#multiple-ec2-instances"> EC2 instance ID.</a></td>
     </tr>
     <tr>
         <td> REGION </td>
@@ -121,12 +124,12 @@ Below is an example AWS policy to execute the fault.
     <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration to insert chaos (in seconds). </td>
-        <td> Default: 30 s. </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
     </tr>
     <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds).</td>
-        <td> Default: 60 s. </td>
+        <td> Default: 60 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
     </tr>
     <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -141,32 +144,32 @@ Below is an example AWS policy to execute the fault.
     <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
         <td> Specify the size as percentage of free space on the file system. </td>
-        <td> Default: 0 %. Results in 1 GB utilization. </td>
+        <td> Default: 0 %. Results in 1 GB utilization. For more information, go to <a href="#file-system-utilization-in-percentage"> filesystem utilization in percentage.</a></td>
     </tr>
     <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
         <td> Specify the size in gigabytes(GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> and <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
-        <td> Default: 0 GB. Results in 1 GB Utilization. </td>
+        <td> Default: 0 GB. Results in 1 GB Utilization. For more information, go to <a href="#file-system-utilization-in-megabytes"> filesystem utilization in MB.</a></td>
     </tr>
     <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> Number of IO workers involved in IO stress. </td>
-        <td> Default: 4. </td>
+        <td> Default: 4. For more information, go to <a href="#multiple-workers"> workers.</a></td>
     </tr>
     <tr>
         <td> VOLUME_MOUNT_PATH </td>
         <td> Fill the given volume mount path.</td>
-        <td> Default: User HOME directory. </td>
+        <td> Default: User HOME directory. For more information, go to <a href="#volume-mount-path"> volume mount path.</a></td>
     </tr>
     <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances.</td>
-        <td> Default: parallel. Supports serial and parallel. </td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
     </tr>
     <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
     </tr>
 </table>
 

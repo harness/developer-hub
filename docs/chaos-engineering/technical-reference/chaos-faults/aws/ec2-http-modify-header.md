@@ -12,8 +12,8 @@ EC2 HTTP modify header injects HTTP chaos which affects the request (or response
 
 EC2 HTTP modify header tests the resilience of the application to incorrect or incomplete headers.
 
-:::info note
-- Kubernetes version 1.17 or later is required to execute this fault.
+## Prerequisites
+- Kubernetes >= 1.17
 - You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 - The EC2 instance should be in a healthy state.
 - SSM agent is installed and running in the target EC2 instance.
@@ -31,11 +31,10 @@ EC2 HTTP modify header tests the resilience of the application to incorrect or i
       aws_access_key_id = XXXXXXXXXXXXXXXXXXX
       aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   ```
-- We recommend that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
-- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
-- Go to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
-:::
 
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+:::
 
 Below is an example AWS policy to execute the fault.
 
@@ -86,7 +85,10 @@ Below is an example AWS policy to execute the fault.
 }
 ```
 
-## Fault tunables
+:::info note
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+- Go to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+:::
 
    <h3>Mandatory tunables</h3>
     <table>

@@ -16,8 +16,8 @@ Lambda update function timeout:
 - Checks the performance of the application (or service) running with a new timeout.
 - Determines a safe overall timeout value for the function.
 
-:::info note
-- Kubernetes version 1.17 or later is required to execute this fault.
+## Prerequisites
+- Kubernetes >= 1.17
 - Access to operate AWS Lambda service.
 - Lambda function must be up and running.
 - Kubernetes secret must have the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
@@ -34,10 +34,9 @@ Lambda update function timeout:
       aws_access_key_id = XXXXXXXXXXXXXXXXXXX
       aws_secret_access_key = XXXXXXXXXXXXXXX
   ```
-- Harness recommends using the same secret name, that is, `cloud-secret`. Otherwise, you must update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes.
-- Go to [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-- Go to [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
-- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -61,8 +60,11 @@ Below is an example AWS policy to execute the fault.
 }
 ```
 
-
-## Fault tunables
+:::info note
+- Go to [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Go to [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+:::
 
    <h3>Mandatory tunables</h3>
     <table>
@@ -97,17 +99,17 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Default: 30 s </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in seconds) between successive instance termination.</td>
-        <td> Default: 30 s </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>

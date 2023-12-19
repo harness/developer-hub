@@ -13,7 +13,6 @@ The NLB (Network Load Balancer) AZ (Availability Zone) down fault triggers the u
 - It conducts an application test by deliberately blocking traffic originating from a specific AZ on the network load balancer. This experiment involves intentionally preventing incoming and outgoing traffic from the designated AZ from reaching the application through the load balancer.
 
 ## Prerequisites
-
 - Kubernetes >= 1.17
 - ECS cluster running with the desired tasks and containers and familiarity with ECS service update and deployment concepts.
 - Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
@@ -33,12 +32,10 @@ stringData:
 ```
 
 :::tip
-It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -60,8 +57,6 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-
-## Fault tunables
 
    <h3>Mandatory tunables</h3>
     <table>
@@ -101,7 +96,7 @@ Here is an example AWS policy to execute the fault.
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Duration between the attachment and detachment of the volumes (in seconds) </td>
-        <td> Default: 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
