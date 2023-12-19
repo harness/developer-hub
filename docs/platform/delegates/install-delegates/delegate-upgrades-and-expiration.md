@@ -134,7 +134,7 @@ spec:
 
 When a delegate is installed, it may take up to an hour by default to determine if the `upgrader` was removed during installation. During that time, the delegate shows a status of **DETECTING**.
 
-Harness updates the status when `upgrader` is makes it’s first API call to the Harness platform. The default schedule is one hour, but the schedule is configurable. If Harness doesn't detect the upgrader API call within 90 minutes, the upgrade status is updated from `DETECTING` to `OFF`.
+Harness updates the status when `upgrader` makes it’s first API call to the Harness platform. The default schedule is one hour, but the schedule is configurable. If Harness doesn't detect the upgrader API call within 90 minutes, the upgrade status is updated from `DETECTING` to `OFF`.
 
 Let’s say the `upgrader` schedule is configured to two hours. The upgrade status would change from `OFF` to `ON` and back to `OFF`. Every 90 minutes that Harness doesn't detect the API call, the status is set to `OFF`. As soon as Harness detects it again, the status is set to `ON`. Harness recommends a default schedule of 60 minutes. For more information, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
 
