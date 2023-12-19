@@ -51,7 +51,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## December 2023
 
-### Version 1.16
+### Version 1.16.6
 
 
 #### Fixed issues
