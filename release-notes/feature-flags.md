@@ -15,9 +15,18 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: December 12th 2023
+### Latest Updated: December 19th 2023
 
 ## December 2023
+
+### Android SDK
+
+#### Version 1.2.2 
+
+ - We resolved a `ClassCastException` that would cause the SDK to crash when returning the default variation. 
+ - We have now resolved the `jsonVariation` issue and it is now returning the default variation.
+ - We did some refactoring to improve the code quality. 
+ - We no longer post metrics for default variations being used.
 
 ### Erlang SDK
 
