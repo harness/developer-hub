@@ -5,8 +5,8 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { certType } from "./CertCard";
 import { getCertLevel } from "./LandingPage";
-// import DeveloperCertificationReviewGuide from "./data/cd-certification-developer-review-guide.md";
-// import DeveloperCertificationExamDetails from "./data/cd-certification-developer-exam-details.md";
+import DeveloperCertificationReviewGuide from "./data/ce-certification-developer-review-guide.md";
+import DeveloperCertificationExamDetails from "./data/ce-certification-developer-exam-details.md";
 // import AdminCertificationReviewDetails from "./data/cd-certification-admin-review-guide.md";
 // import AdminCertificationExamDetails from "./data/cd-certification-admin-exam-details.md";
 // import ArchitectCertificationReviewDetails from "./data/cd-certification-architect-review-guide.md";
@@ -132,14 +132,14 @@ export default function CertificationsChaos() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  {/* <h3>Review Study Guide</h3>
+                   <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                    Assesses the fundamental skills to deploy your applications
-                    with Chaos Engineering projects.
-                  </div> */}
-                  {/* <DeveloperCertificationReviewGuide />
+                    Assesses the fundamental skills to implement chaos
+                    in your applications.
+                  </div> 
+                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/certified-continuous-delivery-developer">
+                    <Link href="https://university.harness.io/certified-chaos-engineering-developer">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -150,12 +150,12 @@ export default function CertificationsChaos() {
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
                     </Link>*/}
-                  {/* </div> */}
-                  <h3>Coming Soon...</h3>
+                  </div> 
+                 {/* <h3>Coming Soon...</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
-                    design, implementation and management of ce.
-                  </div>
+                    design, implementation and management of CE.
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -213,8 +213,8 @@ export default function CertificationsChaos() {
                 <div className={styles.right}>
                   {/* <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                    Assesses the fundamental skills to deploy and maintain Chaos
-                    Engineering projects and the overall Harness Platform. This
+                    Assesses the fundamental skills to implement chaos
+                    in your projects and the overall Harness Platform. This
                     exam builds upon the{" "}
                     <a href="/certifications/continuous-delivery?lvl=developer">
                       Chaos Engineering Developer Certification
