@@ -123,11 +123,11 @@ export const certifications: CardItem[] = [
     // numberOfCerts: 1,
   },
   {
-    title: "Chaos Engineering  - Developer",
+    title: "Chaos Engineering  - Developer (BETA Coming Soon)",
     module: MODULES.ce,
     type: certType.developer,
     description:
-      "Chaos Developer focuses on the fundamental skills to implement chaos in your applications.",
+      "Chaos Developer focuses on the fundamental skills to inject failure into your applications to build resilience.",
     version: "Harness Chaos Free/Team Plans",
     link: "/certifications/chaos-engineering?lvl=developer",
     // numberOfCerts: 1,

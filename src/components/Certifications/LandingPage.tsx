@@ -201,14 +201,15 @@ export default function Certifications() {
                     src={`${baseUrl}img/cert_dev_sto_badge.svg`}
                     alt="Develop STO Badge"
                   />
-                  <img
+                </div>
+                {/* <h5>Coming Soon</h5> */}
+                <h5>Coming Soon</h5>
+                <div className={styles.unAvailableCerts}>
+                <img
                     src={`${baseUrl}img/cert_dev_ce_badge.svg`}
                     alt="Develop Chaos Badge"
                   />
                 </div>
-                {/* <h5>Coming Soon</h5> */}
-                {/* <div className={styles.unAvailableCerts}>
-                </div> */}
               </div>
             </div>
             <div className={styles.verticalLine}></div>
