@@ -1,4 +1,4 @@
-The Chaos Engineering Developer exam tests your knowledge and skills of the Harness Chaos Engineering module.  
+The Chaos Engineering Developer exam tests your knowledge and skills of the Harness Chaos Engineering module.
 
 ## Prerequisites
 
@@ -6,16 +6,15 @@ The Chaos Engineering Developer exam tests your knowledge and skills of the Harn
 
 ## Exam Details
 
-Exam Duration: 90 minutes <br/>
-Question Type: Multiple choice
+Exam Duration: 60 minutes (knowledge exam) + 60 mins (hands on learning) <br/>
+Question Type: Multiple choice + Hands on Learning
 
-| Covered Domain                                           | Percentage |
-|----------------------------------------------------------|------------|
-| Run chaos experiments				               		   | 35%        |
-| Understand Harness CE Architecture.                      | 30%        |
-| Key features of Harness CE                    		   | 25%        |
-| Basics of Harness chaos engineering                      | 10%        |
-
+| Covered Domain                      | Percentage |
+| ----------------------------------- | ---------- |
+| Run chaos experiments               | 35%        |
+| Understand Harness CE Architecture. | 30%        |
+| Key features of Harness CE          | 25%        |
+| Basics of Harness chaos engineering | 10%        |
 
 <br />
 
@@ -27,7 +26,7 @@ Question Type: Multiple choice
 The following is a detailed list of exam objectives:
 
 | #   | Objectives                                             |
-|-----|--------------------------------------------------------|
+| --- | ------------------------------------------------------ |
 | 1   | **Understanding Harness Chaos Engineering (CE)**       |
 | 1.1 | Introduction to Chaos Engineering and generic concepts |
 | 2   | Architecture                                           |
@@ -44,7 +43,6 @@ The following is a detailed list of exam objectives:
 | 4.3 | Azure chaos faults in Harness CE                       |
 | 4.4 | GCP chaos faults in Harness CE                         |
 
-
 </details>
 
 <br />
@@ -54,5 +52,5 @@ The following is a detailed list of exam objectives:
 The Chaos Engineering Developer exam can start immediately after registering. Please allow up to 90 mins for the exam.
 
 1. Create an account in Harness University
-2. Register for the exam 
+2. Register for the exam
 3. Take the exam

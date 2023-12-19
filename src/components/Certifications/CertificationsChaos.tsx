@@ -7,10 +7,10 @@ import { certType } from "./CertCard";
 import { getCertLevel } from "./LandingPage";
 import DeveloperCertificationReviewGuide from "./data/ce-certification-developer-review-guide.md";
 import DeveloperCertificationExamDetails from "./data/ce-certification-developer-exam-details.md";
-// import AdminCertificationReviewDetails from "./data/cd-certification-admin-review-guide.md";
-// import AdminCertificationExamDetails from "./data/cd-certification-admin-exam-details.md";
-// import ArchitectCertificationReviewDetails from "./data/cd-certification-architect-review-guide.md";
-// import ArchitectCertificationExamDetails from "./data/cd-certification-architect-exam-details.md";
+// import AdminCertificationReviewDetails from "./data/ce-certification-admin-review-guide.md";
+// import AdminCertificationExamDetails from "./data/ce-certification-admin-exam-details.md";
+// import ArchitectCertificationReviewDetails from "./data/ce-certification-architect-review-guide.md";
+// import ArchitectCertificationExamDetails from "./data/ce-certification-architect-exam-details.md";
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
@@ -66,8 +66,9 @@ export default function CertificationsChaos() {
           </div>
           <h1>Chaos Engineering Certifications</h1>
           <div>
-            Discover how your applications stand up to real-world failure scenarios. 
-            Gain insights to construct a resilient system that minimizes downtime and saves on costs.
+            Discover how your applications stand up to real-world failure
+            scenarios. Gain insights to construct a resilient system that
+            minimizes downtime and saves on costs.
           </div>
         </div>
         <div className={styles.right}>
@@ -120,7 +121,7 @@ export default function CertificationsChaos() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Chaos Engineering - Developer (BETA COMING SOON) </h2>
+                  <h2>Chaos Engineering - Developer (BETA) </h2>
                   <img
                     src={`${baseUrl}img/cert_dev_ce_badge.svg`}
                     alt="Harness Certified Expert - Chaos Engineering Developer"
@@ -132,29 +133,29 @@ export default function CertificationsChaos() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                   <h3>Review Study Guide</h3>
+                  <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                    Assesses the fundamental skills to implement chaos
-                    in your applications.
-                  </div> 
-                   <DeveloperCertificationReviewGuide />
+                    Assesses the fundamental skills to implement chaos in your
+                    applications.
+                  </div>
+                  <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/certified-chaos-engineering-developer">
+                    <Link href="https://university.harness.io/chaos-engineering-developer">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
                     </Link>
-                    {/* <Link href="/tutorials/cd-pipelines">
+                    {/* <Link href="/tutorials/chaos-experiments">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
-                    </Link>*/}
-                  </div> 
-                 {/* <h3>Coming Soon...</h3>
+                    </Link> */}
+                  </div>
+                  {/* <h3>Coming Soon...</h3>
                   <div className={styles.desc}>
-                    Assess key technical job functions and advanced skills in
-                    design, implementation and management of CE.
+                    Assesses the fundamental skills to implement chaos in your
+                    applications.
                   </div> */}
                 </div>
               </div>
@@ -162,20 +163,19 @@ export default function CertificationsChaos() {
           </div>
 
           {/* Developer Exam Details */}
-          {/* <div className={styles.examDetails}>
+          <div className={styles.examDetails}>
             <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/certified-continuous-delivery-developer">
+                <Link href="https://university.harness.io/chaos-engineering-developer">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
                 </Link>
-              
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
 
         {/* Administrator Tab Content */}
@@ -237,7 +237,8 @@ export default function CertificationsChaos() {
                   {/* </div> */}
                   <h3>Coming Soon...</h3>
                   <div className={styles.desc}>
-                  Assesses the fundamental skills to deploy and maintain CE projects and the overall Harness Platform.
+                    Assesses the fundamental skills to deploy and maintain CE
+                    projects and the overall Harness Platform.
                   </div>
                 </div>
               </div>
