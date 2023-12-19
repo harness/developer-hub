@@ -6,7 +6,7 @@ The Chaos Engineering Developer exam tests your knowledge and skills of the Harn
 
 ## Exam Details
 
-Exam Duration: 60 minutes (knowledge exam) + 60 mins (hands on learning) <br/>
+Exam Duration: 60 mins (knowledge exam) + 60 mins (hands on learning) <br/>
 Question Type: Multiple choice + Hands on Learning
 
 | Covered Domain                      | Percentage |
