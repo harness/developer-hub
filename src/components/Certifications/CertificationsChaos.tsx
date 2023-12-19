@@ -121,7 +121,7 @@ export default function CertificationsChaos() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Chaos Engineering - Developer (BETA) </h2>
+                  <h2>Chaos Engineering - Developer (BETA Coming Soon) </h2>
                   <img
                     src={`${baseUrl}img/cert_dev_ce_badge.svg`}
                     alt="Harness Certified Expert - Chaos Engineering Developer"
@@ -140,7 +140,7 @@ export default function CertificationsChaos() {
                   </div>
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/chaos-engineering-developer">
+                    <Link href="#">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -159,11 +159,11 @@ export default function CertificationsChaos() {
 
           {/* Developer Exam Details */}
           <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details</h2>
+            <h2 id="exam-details">Exam Details (BETA Coming Soon)</h2>
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/chaos-engineering-developer">
+                <Link href="#">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
