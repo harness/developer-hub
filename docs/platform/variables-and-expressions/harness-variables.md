@@ -554,7 +554,7 @@ All existing expressions will continue to work. For example, the following synta
 
 - `<+<+pipeline.variables.var1>.concat("_suffix")>`
 
-Ensure the expression is wrapped within `<+ >` in both of theese examples.
+Ensure the expression is wrapped within `<+ >` in both of these examples.
 
 :::note
 
