@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-12-12:T10:00:30
+date: 2023-12-19:T10:00:30
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -81,6 +81,26 @@ The following deprecated API endpoints will no longer be supported:
 - GET api/resourcegroup
 
 ## December 2023
+
+### Version 1.16.6
+
+#### New features and enhancements
+
+- Upgraded Janino to version 3.1.11. (PL-43320, ZD-54505)
+
+- Upgraded `ch.qos.logback` from version 1.2.11 to 1.2.13. (PL-43260)
+
+- Upgraded YamlBeans to version 1.17. (PL-42905, ZD-51149, ZD-53760, ZD-53919)
+
+#### Fixed issues
+
+- Execution links were not available in pipeline failure Slack notifications. (PL-42974, ZD-53195)
+
+   This issue has been resolved. Now, in Slack notifications, the "Node status" keyword, such as "failed," is a hyperlink that provides direct access to the associated node execution URL.
+
+- Added RBAC checks to the delegate list API. Now, only delegates for which users have permission are shown in the list on the Delegates page. (PL-42268, ZD-52174)
+
+  This item is available with Harness Platform version 1.16.6 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ### Version 81820
 
