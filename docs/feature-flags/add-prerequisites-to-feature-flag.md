@@ -18,7 +18,7 @@ import pre_req_2 from './static/3-add-prerequisites-to-feature-flag-03.png'
 A Prerequisite is a Feature Flag that you add as a dependency to another Feature Flag. That dependency must be met before that second Feature Flag can be toggled `ON` or `OFF`. For example, if you have a flag that allows users to write Java, the user must be able to read the Java first. Therefore, you add a Prerequisite to the `Write_Java` flag that says the `Read_Java` flag must be enabled before the `Write_Java` flag can be toggled on. 
 
 :::info
-Harness recommends that you **do not** add nested Prerequities, as this functionality will be removed soon. That means don't add Prerequisites to your flag's Prerequisites.
+At present, Harness currently *does not* support nested prerequities as this functionality is not currently supported.
 ::: 
 
 ### Add a Prerequisite
