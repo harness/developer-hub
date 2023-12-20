@@ -40,7 +40,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
  - The thread safety metrics issue have been resolved.
  - We no longer store duplicate targets used by metrics in memory. 
- - Can send global target identifier in the evaluation metrics.
+ - Uses the global target identifier for evaluation metrics.
  - `Config.ConnectionTimeout` is being treated as seconds internally rather than milliseconds. 
 
 #### Version 1.4.0
