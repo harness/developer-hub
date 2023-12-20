@@ -20,6 +20,31 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ## December 2023
 
+### Version 0.17.0
+
+<!-- Dec 21, 2023 -->
+
+Jingle bells, jingle bells, jingle all the way to Harness IDP's End-of-Year Release! 🛷 As we close the chapter on a year of incredible milestones, we want to express our heartfelt thanks to our amazing customers and prospects. Your support, feedback, and enthusiasm have been the North Star 🌟 guiding us in enhancing and evolving Harness IDP. The debut of our new module and the strides we've made together are testaments to your invaluable collaboration and spirit.
+
+In this release, we're excited to unveil features like the HTTP actions support in the scaffolder-backend 🌐, the innovative Developer Portal stage for seamless self-service flows 🚀, and the integration of OPA/Governance policies to ensure streamlined and secure management 🛡️. Plus, we've squashed some pesky bugs 🐛 to make your experience smoother than ever!
+
+- **Docs:** [Supported Custom Actions](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions), [OPA](Link to be added), [IDP Stage](https://6582ce9b1eb6070097c8b473--harness-developer.netlify.app/docs/internal-developer-portal/flows/idp-stage)
+
+#### New features and enhancements
+
+- Added support for http actions in the scaffolder-backend.  [IDP-1853]. 
+- Added a new stage, specifically for IDP, knows as Developer Portal to help with the self service flows (presently this feature is behind a Feature Flag) [IDP-1425]
+- Added OPA/Governance policies for Backstage entities. [IDP-1514]
+- Added a Cookiecutter step to enable use of cookiecutter based templates in the IDP stage.[IDP-1437]
+- Added a step to register software components in IDP catalog.[IDP-1438]
+- Added a step to create a repository in your git provider and push contents along with catalog-info.yaml. [IDP-1436]
+
+#### Bug Fixes
+
+- Fixed support for special character “-”(hyphen) in the URLs.[IDP-1804]
+- Fixed URL replace in JIRA Plugin to fetch host details.[IDP-1863]
+- Fixed display of Secret deleted error message added on OAuth Page. [IDP-1811]
+
 ### Version 0.16.0
 
 <!-- Dec 8, 2023 -->
