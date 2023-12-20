@@ -1,7 +1,7 @@
 ---
 title: Supported Custom Actions
 description: These Custom Actions are supported in Harness IDP
-sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false
