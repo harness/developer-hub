@@ -107,10 +107,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Performs RBAC check on secrets when used in pipeline execution. <b>This feature is in Beta.</b></td>
     </tr>
     <tr>
-        <td>CDS_SERVICENOW_TICKET_TYPE_V2</td>
-        <td>Enables ServiceNow custom table support.</td>
-    </tr>
-    <tr>
         <td>CDS_GIT_CONFIG_FILES</td>
         <td>Enables config files to be <a href="/docs/continuous-delivery/x-platform-cd-features/services/cd-services-config-files">managed in Git</a>
 .</td>
