@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-12-14T10:00
+date: 2023-12-20T10:00
 sidebar_position: 4
 ---
 ```mdx-code-block
@@ -292,6 +292,12 @@ Harness NextGen release 81205 includes the following changes for the Harness Del
 
 - GitHub status checks were not refreshing for pipeline executions. Harness added a retry to the GitHub status update API call to resolve the issue. (CI-10618, ZD-54673)
 
+### Version 23.10.81203
+
+#### Hotfix
+
+- Added IRSA support for downloading S3 artifacts using WinRm/SSH. (CDS-81276, ZD-51938)
+
 ### Harness version 81008, Harness Delegate version 23.10.81010
 
 Harness NextGen release 81008 includes the following changes for the Harness Delegate.
@@ -473,6 +479,7 @@ Harness NextGen release 80504 includes the following changes for the Harness Del
 - Fixed an issue that resulted in Null Pointer Exceptions when running a pipeline manually with a `<+trigger.connectorRef>` expression. This expression gets its data from the trigger payload. With this fix, the pipeline correctly handles the case where the trigger payload is null. (CDS-77736, ZD-49685, ZD-49720, ZD-49722)
 
 - Fixed an issue where the `ACCOUNT_SECRET` environment variable was overriding the `DELEGATE_TOKEN` value in the delegate's Docker container for delegates with an immutable image type (image tag `yy.mm.xxxxx`). (PL-40728)
+
 
 ### Version 23.09.80512
 
