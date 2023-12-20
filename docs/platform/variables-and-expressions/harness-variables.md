@@ -612,15 +612,15 @@ You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"
   
   To invoke the method `concat` on the expression `<+pipeline.variables.var1>`, you must wrap `<+pipeline.variables.var1>` within `<+...>` and then invoke the method using `.concat()`.
 
-- While using an expression for secret functor provided by Harness `<+secrets.getValue("sec")>`, this expression should never be wrapped within quotation marks.
+-When using an expression for a Harness secret functor, '<+secrets.getValue("sec")>', it should not be wrapped within quotation marks.
   
-  Because this expression gets resolved to another internal functor of Harness `${ngSecretManager.obtain("sec")}`, which is resolved on delegate. Since, it's value is not a primitive like string, it should not be wrapped within quotation marks.
+  This expression gets resolved to another Harness internal functor,`${ngSecretManager.obtain("sec")}`, which is resolved on the delegate. Since its value is not a primitive type string, it should not be wrapped within quotation marks.
 
   For example, consider the following expression for the value of a pipeline or stage variable:
   ```
   <+<+<+pipeline.variables.var1>=="secret1">?<+secrets.getValue("secret1")>:<+secrets.getValue("defaultSecret")>>
   ```
-  Here, the secret expression should not be wrapped within quotation marks.
+  This secret expression should not be wrapped within quotation marks.
 
 - If some expressions are not needed to be evaluated in pipeline yaml but are added as comments in the script in shell script step or run step etc., they will still be processed and evaluated, and it could lead to failure and unnecessary processing.
   So, you should remove those commented code of having expressions if you don't want them to be evaluated.
