@@ -103,6 +103,13 @@ export const docsCards: CardSections = [
         module: MODULES.iacm,
         description: "Learn how to detect and get notified on drift.",
         link: "/docs/infra-as-code-management/workspaces/drift-detection",
+      },
+      {
+        title: "Workspace Permissions and Access Control",
+        module: MODULES.iacm,
+        description:
+          "Learn how to apply permissions and access controls on Workspaces",
+        link: "/docs/infra-as-code-management/workspaces/workspace-rbac",
       }
     ]
   },
