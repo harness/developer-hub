@@ -70,6 +70,7 @@ The Harness modules below can be enabled or disabled conditionally:
 * Harness Service Reliability Management (SRM)
 * Harness Feature Flags (FF)
 * Harness Continuous Error Tracking (CET)
+* (**Beta**) Harness Software Supply Chain Assurance (SSCA)
 
 <!-- PR-1002 -->
 
@@ -132,6 +133,15 @@ cet:
 # -- Enable to deploy CET to your cluster
 enabled: true
 ```
+
+#### Deploy the SSCA module
+
+```
+ssca:
+# -- Enable to deploy SSCA to your cluster
+enabled: true
+```
+
 
 ### Add a Harness license
 

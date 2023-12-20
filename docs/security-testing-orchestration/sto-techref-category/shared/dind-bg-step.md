@@ -1,12 +1,13 @@
-:::note 
+The following use cases require a Docker-in-Docker background step in your pipeline:
+- Container image scans on Kubernetes and Docker build infrastructures
+  - Required for [Orchestration](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto) and Dataload scan modes
+- [Security steps (not step palettes)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates-in-sto) on Kubernetes and Docker build infrastructures
+  - Required for all target types and Orchestration/DataLoad modes
 
-Docker-in-Docker is not required for ingestion workflows where the scan data has already been generated.
-
-:::
-
-You need to include a Docker-in-Docker background service in your stage if either of these conditions apply:
-* You configured your scanner using a generic Security step rather than a scanner-specific template such as Aqua Trivy, Bandit, Mend, Snyk, etc. 
-* You’re scanning a container image using an Orchestration or Extraction workflow. 
+The following use cases do not require Docker-in-Docker:
+- Harness Cloud AMD64 build infrastructures
+- SAST/DAST/configuration scans that use [scanner templates (not Security steps)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates-in-sto)
+- [Ingestion-only workflows](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) where the scan data has already been generated
 
 <details><summary>Set up a Docker-in-Docker background step</summary>
 

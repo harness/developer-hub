@@ -198,7 +198,7 @@ The `s3:GetBucketLocation` action is required for a custom S3 bucket only.
 </details>
     
 
-## Use AWS IRA for Harness AWS connector credentials
+## Use AWS IRSA for Harness AWS connector credentials
 
 import IrsaPartial from '/docs/shared/aws-connector-auth-options.md';
 

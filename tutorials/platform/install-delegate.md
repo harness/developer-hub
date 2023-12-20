@@ -16,7 +16,11 @@ import delete_project from './static/delete-project.png'
 
 [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview/) is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate to execute the CI/CD and other tasks on your behalf, without any of your secrets leaving your network.
 
-You can install the Harness Delegate on either Docker or Kubernetes. 
+You can install the Harness Delegate on either Docker or Kubernetes.
+
+import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
+
+<Addperm />
 
 ## Install Harness Delegate
 

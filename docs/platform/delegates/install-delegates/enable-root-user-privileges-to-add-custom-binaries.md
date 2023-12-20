@@ -14,6 +14,10 @@ The delegate installer provides the option to install the delegate with non-root
 
 This topic explains how to use the delegate installer to install with or without root user privileges. This topic also explains how to modify an installed delegate to enable root user privileges and the installation of custom binaries.
 
+import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
+
+<Addperm />
+
 ### Delegate images
 
 Harness provides the following delegate images. Each image includes a set of tools that target a particular scenario.

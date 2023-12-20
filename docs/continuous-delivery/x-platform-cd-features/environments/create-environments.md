@@ -96,7 +96,7 @@ infrastructureDefinition:
   spec:
     connectorRef: account.Harness_Kubernetes_Cluster
     namespace: <+service.name>-dev
-    releaseName: release-<+INFRA_KEY>
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
   allowSimultaneousDeployments: false
 ```
 </details>
@@ -145,7 +145,7 @@ infrastructureDefinition:
   spec:
     connectorRef: account.Harness_Kubernetes_Cluster
     namespace: production
-    releaseName: release-<+INFRA_KEY>
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
   allowSimultaneousDeployments: false
 ```
 </details>
@@ -264,7 +264,7 @@ resource "harness_platform_infrastructure" "example" {
          spec:
           connectorRef: account.gfgf
           namespace: asdasdsa
-          releaseName: release-<+INFRA_KEY>
+          releaseName: release-<+INFRA_KEY_SHORT_ID>
           allowSimultaneousDeployments: false
       EOT
 }

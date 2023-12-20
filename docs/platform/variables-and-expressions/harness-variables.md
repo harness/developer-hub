@@ -528,13 +528,18 @@ When using the `==` operator, ensure the expression is wrapped within `<+ >`.
 
 For example, `<+<+pipeline.name> == "pipeline1">` or `<+<+stage.variables.v1> == "dev">`.
 
+:::info note
+Greater than and Less than operators are not supported for string expression types. Only Equal to and Not equal to are supported.
+
+:::
+
 ### Variable concatenation
 
 Harness string variables can be concatenated by default. Each expression can be evaluated and substituted in the string. 
 
 Previously, Harness users were forced to use a ‘+’, or `.concat()`, the concatenation operator, to join multiple expressions together. Now, you can simply use `<+pipeline.name> <+pipeline.executionId>`. 
 
-For example, Harness supports complex usages sych as the following:
+For example, Harness supports complex usages such as the following:
 
 - `us-west-2/nonprod/eks/eks123/<+env.name>/chat/`
 - `<+stage.spec.execution.steps.s1<+strategy.identifierPostFix>.steps.ShellScript_1.output.outputVariables.v1>`
@@ -549,7 +554,7 @@ All existing expressions will continue to work. For example, the following synta
 
 - `<+<+pipeline.variables.var1>.concat("_suffix")>`
 
-Ensure the expression is wrapped within `<+ >` in both of theese examples.
+Ensure the expression is wrapped within `<+ >` in both of these examples.
 
 :::note
 
@@ -577,7 +582,17 @@ You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"
 
 ### Best practices for expressions usage
 
-- When using `,` inside a method invocation with an expression, the expression must be wrapped in quotation marks.
+- When using an expression, if you want to treat it as a string, you must wrap it within quotation marks.
+  
+  For example, consider following expression:
+
+  ```
+  <+<+pipeline.variables.changeType> =~ ["<+stage.name>","All"]>
+  ```
+  
+  In the above expression, the `<+stage.name>` is wrapped within quotation marks because it is an element in a list of strings.
+
+- While using `,` inside a method invocation with an expression, the expression must be wrapped in quotation marks.
 
    For example, consider the following expression:
 
@@ -586,6 +601,28 @@ You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"
    ```
 
    In the above expression, `<+pipeline.variables.var1>` must be wrapped in quotation marks because the expression is a string parameter for a method.
+
+- While using method invocation with an expression, the expression before method invocation should also be wrapped within `<+...>`.
+  
+  For example, consider the following expression:
+
+  ```
+  <+<+pipeline.variables.var1>.concat("concatenating a string")>
+  ```
+  
+  To invoke the method `concat` on the expression `<+pipeline.variables.var1>`, you must wrap `<+pipeline.variables.var1>` within `<+...>` and then invoke the method using `.concat()`.
+
+- When using an expression for the Harness secret functor, `<+secrets.getValue("sec")>`, it should not be wrapped within quotation marks.
+  
+  This expression gets resolved to another Harness internal functor,`${ngSecretManager.obtain("sec")}`, which is resolved on the delegate. Since its value is not a primitive type string, it should not be wrapped within quotation marks.
+
+  For example, consider the following expression for the value of a pipeline or stage variable:
+  ```
+  <+<+<+pipeline.variables.var1>=="secret1">?<+secrets.getValue("secret1")>:<+secrets.getValue("defaultSecret")>>
+  ```
+  This secret expression should not be wrapped within quotation marks.
+
+- If expressions don't need to be evaluated in the pipeline YAML but are added as script comments in the Shell Script step, the Run step, or another step, they will still be processed and evaluated. This might cause failures and unnecessary processing. Review and remove any unnecessary script comments from the pipeline YAML to streamline the evaluation process.
 
 
 ## Debugging expressions
@@ -1464,6 +1501,16 @@ Pod Template:
 Harness can now track the release for comparisons and rollback.
 
 The infrastructure key is a combination of `serviceIdentifier`, `environmentIdentifer` and set of values unique to each infrastructure definition implementation (Kubernetes cluster, etc.) hashed using `SHA-1`. For example, in case of a Kubernetes Infrastructure, the infrastructure key is a hash of `serviceIdentifier-environmentIdentifier-connectorRef-namespace`. The format is `sha-1(service.id-env.id-[set of unique infra values])`.
+
+See also [<+INFRA_KEY_SHORT_ID>](/docs/platform/variables-and-expressions/harness-variables#infra_key_short_id).
+
+### <+INFRA_KEY_SHORT_ID>
+
+Shortened form of the infrastructure key described in [<+INFRA_KEY>](/docs/platform/variables-and-expressions/harness-variables#infra_key). 
+
+The shortened form is obtained by removing all but the first six characters of the hash of the infrastructure key described in [<+INFRA_KEY>](/docs/platform/variables-and-expressions/harness-variables#infra_key). 
+
+The shortened form replaces `<+INFRA_KEY>` in the default expression that is used to generate a release name for the resources in Kubernetes and Native Helm deployments. In other words, the **Release name** field in the **Cluster Details** > **Advanced** section of an infrastructure definition is pre-populated with the expression `release-<+INFRA_KEY_SHORT_ID>`. The shorter form resolves issues that Kubernetes and Native Helm deployments experienced with the longer `release-<+INFRA_KEY>` format.
 
 ### <+infra.namespace>
 

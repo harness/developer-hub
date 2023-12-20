@@ -203,4 +203,3 @@ If you need to install a delegate, see [Delegate installation overview](/docs/pl
 Click **Save and Continue**.
 
 Harness tests the credentials you provided using the delegates you selected.
-

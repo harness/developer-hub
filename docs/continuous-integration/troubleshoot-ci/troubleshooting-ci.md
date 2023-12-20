@@ -26,7 +26,15 @@ If you cannot find a resolution, please contact [Harness Support](mailto:support
 
 ## Secrets with line breaks and shell-interpreted special characters
 
-For information about handling secrets with new line characters or other shell-interpreted special characters, go to [Add and reference text secrets - Line breaks and shell-interpreted characters](/docs/platform/secrets/add-use-text-secrets#line-breaks-and-shell-interpreted-characters).
+For information about handling secrets with new line characters or other shell-interpreted special characters, go to [Add and reference text secrets - Line breaks and shell-interpreted characters](/docs/platform/secrets/add-use-text-secrets#line-breaks-and-shell-interpreted-characters) and [Use GCP secrets in scripts](/docs/continuous-integration/use-ci/run-ci-scripts/authenticate-gcp-key-in-run-step).
+
+## Output variable length limit
+
+If an output variable's length is greater than 64KB, steps can fail or truncate the output. If you need to export large amounts of data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin.md).
+
+## Multi-line output variables truncated
+
+Output variables don't support multi-line output. Content after the first line is truncated. If you need to export multi-line data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin.md).
 
 ## Git connector fails to connect to the SCM service
 
@@ -74,15 +82,11 @@ For more information about self-signed certificates, delegates, and delegate env
 
 For troubleshooting information related to cloning codebases, go to [Create and configure a codebase - Troubleshooting](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#troubleshooting).
 
-## Output variable length limit
+## Logging issues
 
-If an output variable's length is greater than 64KB, steps can fail or truncate the output. If you need to export large amounts of data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin.md).
+These are common issues encountered with build logs.
 
-## Multi-line output variables truncated
-
-Output variables don't support multi-line output. Content after the first line is truncated. If you need to export multi-line data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin.md).
-
-## Truncated execution logs
+### Truncated execution logs
 
 Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB. If necessary, you can [export full logs](#export-full-logs).
 
@@ -90,7 +94,7 @@ Furthermore, there is a single-line limit of 25KB. If an individual line exceeds
 
 Note that the CI log limit is different from the [Harness CD log limit](/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations.md).
 
-### Export full logs
+#### Export full logs
 
 If your log files are larger than 5MB, you can export execution logs to an external cache and examine the full logs there.
 
@@ -106,7 +110,7 @@ You can also use a service, such as [env0](https://docs.env0.com/docs/logs-forwa
 
 :::
 
-## Step logs disappear
+### Step logs disappear
 
 If step logs disappear from pipelines that are using a Kubernetes cluster build infrastructure, you must either allow outbound communication with `storage.googleapis.com` or contact [Harness Support](mailto:support@harness.io) to enable the `CI_INDIRECT_LOG_UPLOAD` feature flag.
 
@@ -114,6 +118,10 @@ For more information about configuring connectivity, go to:
 
 * [Delegate system requirements - Network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements/#network-requirements)
 * [Allowlist Harness Domains an IPs](/docs/platform/References/allowlist-harness-domains-and-ips)
+
+### Logs don't load in real time
+
+[Network restrictions can prevent build logs from loading in real time.](/kb/continuous-integration/articles/CI-step-logs-dont-load-in-real-time)
 
 ## Docker Hub rate limiting
 

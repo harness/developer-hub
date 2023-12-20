@@ -8,6 +8,10 @@ sidebar_position: 360
 
 You can scan repositories using [Semgrep](https://www.semgrep.com), an open-source static analysis engine for detecting dependency vulnerabilities and other issues in your code repositories. 
 
+The following tutorials include detailed examples of how to run a [Semgrep scan](https://semgrep.dev/docs/cli-reference) in a Run step and ingest the results:
+- [SAST code scans using Semgrep](/tutorials/security-tests/sast-scan-semgrep)
+- [Create a build-scan-push pipeline (STO only)](/tutorials/security-tests/build-scan-push-sto-only)
+
 
 ## Important notes for running Semgrep scans in STO
 
@@ -37,6 +41,9 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 ```
 
 <StoMoreInfo />
+
+
+
 
 ## Semgrep step configuration
 

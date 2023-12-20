@@ -241,3 +241,19 @@ So it's just the security focused least privileged principle. For example intern
 #### In the metrics available by API, would we be able to determine that a target has evaluated a FF?
 
 Currently we show the total number of evals.
+
+#### With FF integration does this app record any data?
+
+The data we store is:
+
+The install details sent to us by Jira, which includes a shared secret so we can authenticate and a Client ID, which is just a UUID.
+ 
+The ticket IDs you have linked to a flag. so
+
+```Flag_1 links to ticket ABC-1234```
+
+So we only store the essentials needed to link flags to tickets.If the user searches for a ticket we request from jira a list of tickets matching the search term. we get back a list of ticket IDs and their summaries to display in the UI. However, we only ever store the ticket ID of the ticket selected
+
+#### Is the Jira Integarion 100% free at enterprise-level usage or there is any license term?
+
+We do not have any added cost for Jira.

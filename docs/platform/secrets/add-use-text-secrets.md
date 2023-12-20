@@ -192,15 +192,21 @@ When the pipeline runs, the resulting decoded output is not sanitized because it
 
 ## Line breaks and shell-interpreted characters
 
-You can reference text secrets in scripts, but secrets with line breaks or other special characters might interfere with script execution.
+You can reference secrets in scripts, but text secrets with line breaks or other special characters might interfere with script execution.
 
-To address this, you can decode and write the secret to a file. For example, the following command decodes a secret from [base64](https://linux.die.net/man/1/base64) and write it to a file:
+To address this, you can decode and write the secret to a file. For example, the following command decodes a secret from [base64](https://linux.die.net/man/1/base64) and writes it to a file:
 
 ```shell
 echo <+secrets.getValue("my_secret")> | base64 -d > /path/to/file.txt
 ```
 
-For secrets that are not in base64, such as PEM files, you can convert them to base64 and then store them as [Harness file secrets](./add-file-secrets.md) before decoding them in your pipelines. You can also write secrets to files without base64, for example:
+For secrets that are not in base64, such as PEM files, you can convert and encode them in base64, and then store them as [Harness file secrets](./add-file-secrets.md) before decoding them in your pipelines. For example, this command decodes a secret called `my_secret` and stores the decoded secret at `/harness/secrets.json`:
+
+```shell
+echo <+secrets.getValue("my_secret")> | base64 -d > /harness/secrets.json
+```
+
+You can also write secrets to files without base64, for example:
 
 ```shell
 echo '<+secrets.getValue("long_secret")>' > /tmp/secretvalue.txt
