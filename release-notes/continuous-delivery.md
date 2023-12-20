@@ -112,8 +112,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Harness did not support expressions to identify manifest Ids provided as runtime inputs. Consequently, you could not reference Helm chart metadata in your deployments. The issue occurred when you used multiple Helm chart manifests. (CDS-84663)
 
   This issue has been fixed. You can now access Helm chart metadata before deployment by using the expression `<+manifests.MANIFEST_ID.helm.fieldName>`. In the expression, replace `MANIFEST_ID` and `fieldName` with the appropriate values. If you use multiple Helm charts, the primary manifest is used as runtime input.
-  
-  This feature is behind the feature flag `CDS_HELM_FETCH_CHART_METADATA_NG`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
 
 - If shell script execution fails with an exception such as a step timeout, the delegate logs include the message “Exception in script execution”. This message does not help attempts to determine the root cause. (CDS-85024, ZD-54110)
 
