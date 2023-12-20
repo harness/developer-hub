@@ -59,9 +59,15 @@ The response contains a link to download the requested log file.
 
 Currently, the simplified log key to download logs is behind the feature flag `PIE_SIMPLIFY_LOG_BASE_KEY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+This feature requires delegate version 23.10.81010 or later.
+
+After enabling this feature flag, you must re-run your pipelines to apply the change.
+
 :::
 
 The simplified log key makes it easier to call the Log Service API.
+
+The log download endpoint is asynchronous; the downloadable log file is available after the endpoint returns a `success` status only.
 
 #### cURL command to download pipeline logs
 
@@ -70,17 +76,16 @@ This cURL command downloads pipeline log files based on the given pipeline execu
 ```
 curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT_ID&prefix=PIPELINE_EXECUTION_PREFIX_KEY' \
   -X 'POST' \
-  -H 'authorization: <Bearer TOKEN>' \
   -H 'content-type: application/json' \
-  -H 'x-harness-token: <HARNESS-TOKEN>' \
-  --compressed
+  -H 'x-api-key: <HARNESS-PERSONAL-ACCESS-TOKEN>'
 ```
 
 * `ACCOUNT_ID`: Your Harness account identifier.
-* `PIPELINE_EXECUTION_PREFIX_KEY`: A multi-part value consisting of `ACCOUNT_ID/pipeline/PIPELINE_ID/RUN_SEQUENCE/`. For example, `12345abcd/pipeline/My_Cool_Pipeline/12/`.
+* `PIPELINE_EXECUTION_PREFIX_KEY`: A multi-part value consisting of `ACCOUNT_ID/pipeline/PIPELINE_ID/RUN_SEQUENCE/-PLAN_EXECUTION_ID`. For example, `12345abcd/pipeline/My_Cool_Pipeline/12/-dfstsh`.
    * `ACCOUNT_ID`: Your Harness account identifier.
    * `PIPELINE_ID`: The identifier of the pipeline that you want to get logs for.
    * `RUN_SEQUENCE`: The incremental execution/build identifier of the specific pipeline run that you want logs for.
+   * `-PLAN_EXECUTION_ID`: A hyphen (`-`) followed by the identifier of the pipeline execution that you want to get logs for.
 * `TOKEN`: [Harness API token](/docs/platform/automation/api/add-and-manage-api-keys)
 
 #### cURL command to download step logs
@@ -90,17 +95,28 @@ This cURL command downloads pipeline log files based on the given step key.
 ```
 curl 'https://app.harness.io/gateway/log-service/blob/download?accountID=ACCOUNT_ID&prefix=STEP_PREFIX_KEY' \
   -X 'POST' \
-  -H 'authorization: <Bearer Token>' \
   -H 'content-type: application/json' \
-  -H 'x-harness-token: <HARNESS-TOKEN>' \
-  --compressed
+  -H 'x-api-key: <HARNESS-PERSONAL-ACCESS-TOKEN>'
 ```
 
 * `ACCOUNT_ID`: Your Harness account identifier.
-* `STEP_PREFIX_KEY`: A multi-part value consisting of `ACCOUNT_ID/pipeline/PIPELINE_ID/RUN_SEQUENCE/pipeline/stages/STAGE_ID/steps/STEP_ID/`. For example, `12345abcd/pipeline/My_Cool_Pipeline/12/pipeline/stages/My_Cool_Stage/steps/My_Cool_Step/`.
+* `STEP_PREFIX_KEY`: A multi-part value consisting of `ACCOUNT_ID/pipeline/PIPELINE_ID/RUN_SEQUENCE/-PLAN_EXECUTION_ID/STAGE_ID/STEP_ID`. For example, `12345abcd/pipeline/My_Cool_Pipeline/12/-dfstsh/My_Cool_Stage/My_Cool_Step`.
    * `ACCOUNT_ID`: Your Harness account identifier.
    * `PIPELINE_ID`: The identifier of the pipeline that has the step that you want to get logs for.
    * `RUN_SEQUENCE`: The incremental execution/build identifier of a specific pipeline run.
+   * `-PLAN_EXECUTION_ID`: A hyphen (`-`) followed by the identifier of the pipeline execution that you want to get logs for.
    * `STAGE_ID`: The identifier of the stage that has the step that you want to get logs for.
-   * `STEP_ID`: The identifier of the step that has the logs you want.
+   * `STEP_ID`: The identifier of the step that you want to get logs for.
 * `TOKEN`: [Harness API token](/docs/platform/automation/api/add-and-manage-api-keys)
+
+
+### Download logs link with a vanity URL
+
+Currently, the generated download link for the `logs.zip` file is wrapped around a Harness URL, for example, `https://app.harness.io/storage/harness-download/<PATH_TO_YOUR_LOG_KEY>`. However, if you want the vanity URL link for the `logs.zip` file, you can add the IPs below to your account's allowlist.
+
+```
+34.82.155.149
+34.168.179.66
+```
+
+For more information, go to [Allowlist Harness domains and IPs](/docs/platform/references/allowlist-harness-domains-and-ips/).

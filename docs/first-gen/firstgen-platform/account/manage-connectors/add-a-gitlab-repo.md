@@ -75,7 +75,7 @@ The `rsa` and `-m PEM` ensure that the key is RSA.
 Next, follow the prompts to create the PEM key. For more information, see the  [ssh-keygen man page](https://linux.die.net/man/1/ssh-keygen) and [Connecting to GitHub with SSH](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh).
 :::
 
-To sync with GitLab, you will need to generate a SSH key pair and add the SSH key to your GitLab account. For more information, see [Generating a new SSH key pair](https://gitlab.com/help/ssh/README#generating-a-new-ssh-key-pair) from GitLab.
+To sync with GitLab, you will need to generate a SSH key pair and add the SSH key to your GitLab account. For more information, go to [Use SSH keys to communicate with GitLab](https://docs.gitlab.com/ee/user/ssh.html).
 
 ## Step: URL
 

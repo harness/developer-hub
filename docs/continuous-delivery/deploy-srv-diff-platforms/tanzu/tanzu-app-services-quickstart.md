@@ -6,10 +6,6 @@ sidebar_position: 1
 
 This topic shows you how to deploy a publicly available application to your Tanzu Application Service (TAS, formerly PCF) space by using any [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md) in Harness.
 
-:::note
-Currently, this feature is behind feature flags `NG_SVC_ENV_REDESIGN`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
-:::
-
 ## Objectives
 
 You'll learn how to:
@@ -36,7 +32,8 @@ You'll learn how to:
    * Azure Artifacts
    * Jenkins
 * Before you create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization/). 
-* Your Harness delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate) added to it. 
+* Your Harness delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate) added to it.
+* For the test connection in the connector, Harness uses the CF SDK to get the list of organizations. If the credentials are correct, you get a list of organizations. Otherwise, the connection fails. For more information, see the [Cloud Foundry documentation](https://apidocs.cloudfoundry.org/196/organizations/list_all_organizations.html).
 
 ## Connect to a TAS provider
 
@@ -349,6 +346,53 @@ Harness services represent your microservices or applications. You can add the s
     5.  Select **Value** to enter a specific artifact name. You can also select **Regex** and enter a tag regex to filter the artifact.
 11. Select **Submit**.
 
+### Add the manifest and artifact as an artifact bundle
+
+:::note
+
+Currently, TAS artifact bundle is behind the feature flag `CDS_ENABLE_TAS_ARTIFACT_AS_MANIFEST_SOURCE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You can add both the manifest and artifact at the same time as an artifact bundle.
+
+In the Harness service, when you add a manifest, select **Artifact Bundle** in **Specify TAS Manifest Store**.
+
+When you use an artifact bundle, you do not need to add an individual artifact in the service's **Artifacts** section. Instead, you add a compressed file (ZIP, TAR, Tar.gz, Tgz) in **Manifests** that contains both the manifest and artifact.
+
+Here's an example of a file structure that you would compress for the artifact bundle.
+
+```
+artifactBundle/
+ - manifest/
+    - manifest.yaml
+    - vars.yaml
+    - autoscaler.yaml
+ - artifact-1.0.war 
+```
+
+When you add the artifact bundle to your Harness service, you provide the paths to the manifest, artifact, and any vars.yaml and AutoScaler.yaml files:
+
+![picture 1](static/e04acfade42006589812f6f1f42c8db90c3303bdbd705bfb88b9911e479e1398.png)  
+
+
+Configure the following artifact bundle settings:
+
+- **Artifact Bundle Type:** Select the type of compressed file. Currently,  Zip, Tar, and Tar.gz are supported.
+- **Deployable Artifact Path:** The relative path to the artifact from the artifact bundle root after extraction.
+- **Manifest Path:** The relative path to the manifest from the artifact bundle root after extraction.
+- **Vars.yaml path:** The relative path to the vars.yaml file from the artifact bundle root after extraction. You can add multiple files.
+- **AutoScaler.yaml:** The relative path to the autoscaler.yaml file from the artifact bundle root after extraction. You can add multiple files.
+
+:::note Overrides
+
+The standard override rules apply to an artifact bundle with these exceptions:
+
+1. If an artifact bundle store type is selected in in the service then it can be only overridden by the artifact bundle store type in **Overrides**. A different store type cannot be used in **Overrides** to override an artifact bundle type.
+2.  If the **Other** store type is selected in the service, then it cannot be overridden by the artifact bundle store type in **Overrides**. The artifact bundle store type cannot be used in **Overrides** to override a different store type.
+
+:::
+
 ## Define the TAS target infrastructure
 
 
@@ -379,12 +423,6 @@ The target space is your TAS space. This is where you will deploy your applicati
 11. Select **Save**.
 
 ### Dynamically provisioned TAS infrastructure
-
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
 

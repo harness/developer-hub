@@ -2,7 +2,7 @@
 title: Harness Security Testing Orchestration (STO) Overview
 sidebar_label: Overview
 description: How STO enables DevOps teams to left-shift security testing.
-sidebar_position: 1
+sidebar_position: 10
 helpdocs_topic_id: ap7y94ap7h
 helpdocs_category_id: 8nywcs2sa7
 helpdocs_is_private: false
@@ -72,16 +72,16 @@ With Harness STO, you are scanning at any stage in the CI/CD Pipeline, and provi
 
 The following 1min video provides a quick summary of STO:
 
- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz>
-<docvideo src="https://fast.wistia.net/embed/iframe/yjlevup9v4" />
+
 -->
 
 ### STO features
 
-Harness STO automatically aggregates, normalizes, and deduplicates data to identify vulnerabilities across all your scanners. You can use STO with no other Harness modules. See [STO Tutorial 1: Standalone STO Workflows](/tutorials/security-tests/standalone-pipeline).
+Harness STO automatically aggregates, normalizes, and deduplicates data to identify vulnerabilities across all your scanners. You can use STO with no other Harness modules.
 
-You can also include STO features in CI and CD workflows. You can set up your Pipelines to scan repos, images, and artifacts, and then fail the Pipeline automatically if any "show-stopper" vulnerabilities are detected. See [STO Quickstart 2: Integrated STO/CI/CD Workflows](/tutorials/security-tests/cicd-integrated-pipeline).
+You can also include STO features in CI and CD workflows. You can set up your Pipelines to scan repos, images, and artifacts, and then fail the Pipeline automatically if any "show-stopper" vulnerabilities are detected.
+
+These workflows are covered in [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline).
 
 ![](./static/security-testing-orchestration-basics-31.png)
 

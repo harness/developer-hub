@@ -12,7 +12,7 @@ This topic describes Harness' Continuous Verification features.
 
 ### Visual Overview
 
-In a hurry? Here's a [one-minute video summary](https://fast.wistia.com/embed/medias/5sglzgol3u) of how Harness helps you monitor the health of your deployments through a streamlined, comprehensive interface.
+In a hurry? Here's a [one-minute video summary](https://youtu.be/ts2H52XWYg4) of how Harness helps you monitor the health of your deployments through a streamlined, comprehensive interface.
 
 
 ### Verifying Services

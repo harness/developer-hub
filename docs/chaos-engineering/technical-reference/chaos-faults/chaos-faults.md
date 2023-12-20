@@ -9,25 +9,27 @@ title: Chaos faults
 
 ## Chaos faults
 
-### Kubernetes
-
-### VMware
-
 ### AWS
-
-### GCP
 
 ### Azure
 
+### Cloud-Foundry
+
+### GCP
+
 ### Kube-Resilience
+
+### Kubernetes
+
+### Linux
 
 ### Load
 
 ### Security-chaos
 
-### Linux
+### VMware
 
-### Cloud-Foundry
+### Windows
 
 ```mdx-code-block
 </div>
@@ -35,7 +37,7 @@ title: Chaos faults
 
 The fault execution is triggered when the chaos engine resource is created. Typically, the chaos engine is embedded within the **steps** of a chaos fault. However, you can also create the chaos engine manually, and the chaos operator reconciles this resource and triggers the fault execution.
 
-Provided below are tables with links to the individual fault docs for easy navigation.
+Below are tables with links to individual fault documentation for easy navigation.
 
 <!-- Custom component -->
 

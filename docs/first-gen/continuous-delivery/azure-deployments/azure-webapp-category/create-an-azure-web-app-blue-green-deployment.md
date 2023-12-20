@@ -29,8 +29,7 @@ Make sure you have read the following:
 
 The following short video walks you through a Harness Azure Web App Blue/Green Workflow setup.
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/embed/7B5BhaDkjUo?feature=oembed" />
 
 

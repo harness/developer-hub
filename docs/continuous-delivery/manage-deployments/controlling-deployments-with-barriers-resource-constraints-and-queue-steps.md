@@ -28,13 +28,33 @@ You can only use the same Barrier within the same Pipeline. If you add a **Barri
 
 ### Resource Constraints
 
-Resource Constraints protect resource capacity limits by preventing simultaneous deployments to the same Service + Infrastructure combination. The Service + Infrastructure combination acts as a fixed key.
+Resource Constraints protect resource capacity limits by preventing simultaneous deployments to the same Service + Infrastructure combination. The Harness service + infrastructure combination acts as a fixed key called the Infrastructure Key. The Infrastructure Key (the unique key used to restrict concurrent deployments) is formed using a combination of Harness service Id + environment Id + connector Id + infrastructure Id. 
+
+By default, this key is scoped at the Harness account level. This means if the infrastructure is reused in different Harness projects with the same combination of service Id + environment Id + connector Id + infrastructure Id, it can result in queuing of the infrastructure. Consequently, your pipelines will build up in a waiting state.
 
 Resource Constraints are added to every Stage by default, but it can be disabled in a Stage's **Infrastructure** settings by enabling the **Allow simultaneous deployments on the same infrastructure** option.
 
 See [Pipeline Resource Constraints](./deployment-resource-constraints.md).
 
 The automatic **Resource Constraints** setting does not apply to [Custom stages](/docs/platform/pipelines/add-a-stage.md#add-a-custom-stage). **Resource Constraints** apply to a combination of Service + Infrastructure, and Custom Stages have no Services or Infrastructures. You can use Barriers and Queue steps in any stage types.
+
+### Resource constraint scoping at the project level
+
+:::note
+
+Currently, the dynamic provisioning documented in this topic is behind the feature flag `CDS_PROJECT_SCOPED_RESOURCE_CONSTRAINT_QUEUE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+By default resource constraints are scoped at a account level. This means if the infrastructure is reused in different Harness projects with the same combination of service Id + environment Id + connector Id + infrastructure Id, it can result in queuing of the infrastructure. Consequently, your pipelines will build up in a waiting state. 
+
+With Resource constraint scoping at the project level, users can now scope the resource constraint down to the individual project. 
+
+This scoping ensures that the resource constraint is scoped to a particular project and doesn't impact other projects using the exact same combination of service Id + environment Id + connector Id + infrastructure Id. 
+
+With project-level scoping, the Infrastructure key (the unique key used to restrict concurrent deployments) is now formed with the Harness account Id + org Id + project Id + service Id + environment Id + connector Id + infrastructure Id. 
+
+This scoping ensures that there are unique resources across the various projects and prevents a queue because of other project teams deploying into the same infrastructure.
 
 ### Queue Steps
 

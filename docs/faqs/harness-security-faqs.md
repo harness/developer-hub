@@ -77,7 +77,7 @@ For more information, go to:
 * [Single sign-on (SSO) with OAuth](../platform/authentication/single-sign-on-sso-with-oauth.md)
 * [Provision users with Okta (SCIM)](/docs/platform/role-based-access-control/provision-users-with-okta-scim)
 * [Provision users with OneLogin (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim)
-* [Provision users with Azure AD (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim)
+* [Provision users with Microsoft Entra ID (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim)
 
 ### Are there best practices for setting up Harness users?
 

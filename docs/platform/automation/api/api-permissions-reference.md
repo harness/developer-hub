@@ -77,6 +77,16 @@ The following permissions allow an API key to interact with Chaos Engineering. T
 | `chaos_chaosgameday_edit` | Edit Chaos GameDay |
 | `chaos_chaosgameday_delete` | Delete Chaos GameDay |
 
+## Code Repository
+
+| Permission ID | Description |
+| --------- | ----------- |
+| `code_repository_view` | View repositories |
+| `code_repository_edit` | Update repository settings, such as descriptions, webhooks, and rules. |
+| `code_repository_create` | Create repositories |
+| `code_repository_delete` | Delete repositories |
+| `code_repository_push` | Repository contributor permissions, such as committing, pushing, creating/deleting branches, creating/deleting tags. |
+
 ## Connectors
 
 The following permissions allow an API key to manage connectors. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
@@ -198,6 +208,20 @@ The following permissions allow an API key to manage governance policies. They a
 | `core_governancePolicySets_view` | View Policy Sets |
 | `core_governancePolicySets_delete` | Delete Policy Sets |
 | `core_governancePolicySets_evaluate` | Evaluate Policy Sets |
+
+## Infrastructure as Code Management
+
+The following permissions allow an API key to manage IACM workspaces. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+
+| Permission ID | Description |
+| --------- | ----------- |
+| `iac_workspace_view` | View Infrastructure Workspace |
+| `iac_workspace_edit` | Create/Edit Infrastructure Workspace |
+| `iac_workspace_delete` | Delete Infrastructure Workspace |
+| `iac_workspace_editvariable` | Create/Edit Infrastructure Workspace Variable |
+| `iac_workspace_deletevariable` | Delete Infrastructure Workspace Variable |
+| `iac_workspace_approve` | Approve Infrastructure Workspace |
+| `iac_workspace_accessstate` | Access Infrastructure Workspace State |
 
 ## Organizations
 

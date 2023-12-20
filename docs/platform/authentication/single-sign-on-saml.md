@@ -310,21 +310,21 @@ Delinking groups is required to remove a SAML SSO provider configuration from Ha
 
 :::
 
-## SAML SSO with Azure
+## SAML SSO with Microsoft Entra ID
 
-The section describes the Azure-specific steps you must perform to use an Azure app for Harness SAML SSO:
+The section describes the Microsoft Entra ID-specific steps you must perform to use an Microsoft Entra ID app for Harness SAML SSO:
 
 :::info note
-Make sure the email address used in Harness matches the email address in the Azure app for every user.
+Make sure the email address used in Harness matches the email address in the Microsoft Entra ID app for every user.
 :::
 
-The following image shows the basic exchange of information between Harness and your Azure app's Single sign-on settings:
+The following image shows the basic exchange of information between Harness and your Microsoft Entra ID app's Single sign-on settings:
 
 ![](./static/single-sign-on-saml-79.png)
 
 ### Users in over 150 groups
 
-When a user has many group memberships, the number of groups listed in the token can grow the token size. Azure Active Directory limits the number of groups it will emit in a token to 150 for SAML assertions.
+When a user has many group memberships, the number of groups listed in the token can grow the token size. Microsoft Entra ID limits the number of groups it will emit in a token to 150 for SAML assertions.
 
 If a user is a member of a larger number of groups, the groups are omitted and a link to the Graph endpoint to obtain group information is included instead.
 
@@ -332,15 +332,15 @@ To invoke the API, Harness requires **Client ID** and **Client Secret** for 
 
 To get this information, do the following:
 
-1. In your Azure account, go to **App registrations**.
+1. In your Azure, go to **App registrations**.
 2. Click on your app. Copy the Application (client) ID and paste it in **Client ID** in your Harness account.
-3. In your Azure account, go to **App registrations**. Click **Certificates and Secrets**.
+3. In your  account, go to **App registrations**. Click **Certificates and Secrets**.
 4. Click New Client Secret.
 5. Add a description and click **Add**.
 6. Make sure to copy this secret and save it as an encrypted text secret. For detailed steps to create an encrypted text in Harness, go to [Use Encrypted text Secrets](../secrets/add-use-text-secrets).
 7. Select the above secret reference in the Client Secret field in your Harness account.
 
-When the user authenticating SAML is part of more than 150 groups in Azure active directory, you must set `User.Read.All` access for the application if you want to configure the optional **Client ID** and **Client Secret**. For more information on Azure application permissions, go to [Application permissions](https://learn.microsoft.com/en-us/graph/permissions-reference#application-permissions-93) in the Azure documentation.
+When the user authenticating SAML is part of more than 150 groups in Microsoft Entra ID, you must set `User.Read.All` access for the application if you want to configure the optional **Client ID** and **Client Secret**. For more information on Azure application permissions, go to [Application permissions](https://learn.microsoft.com/en-us/graph/permissions-reference#application-permissions-93) in the Azure documentation.
 
 To set `User.Read.All` access for the application, do the following:
 
@@ -461,7 +461,7 @@ To test Azure SSO using Azure, do the following:
    
    ![](./static/single-sign-on-saml-90.png)
 
-2. In the **Test** panel, click **Sign in as current user**. If the settings are correct, you are logged into Harness. If you cannot log into Harness, the **Test** panel will provide debugging information. For more information, go to [Debug SAML-based single sign-on to applications in Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-v1-debug-saml-sso-issues?WT.mc_id=UI_AAD_Enterprise_Apps_Testing_Experience) from Azure.
+2. In the **Test** panel, click **Sign in as current user**. If the settings are correct, you are logged into Harness. If you cannot log into Harness, the **Test** panel will provide debugging information. For more information, go to [Debug SAML-based single sign-on to applications](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-v1-debug-saml-sso-issues?WT.mc_id=UI_AAD_Enterprise_Apps_Testing_Experience) from Microsoft Entra ID.
 
 To test Azure SSO using Harness, do the following:
 
@@ -539,11 +539,11 @@ To set up Azure Authorization in Harness, do the following:
 
 The Harness User is now added and the RBAC settings for the Harness User Group are applied to its account. For more information, go to [Manage User Groups](/docs/platform/role-based-access-control/add-user-groups).
 
-## SAML SSO with Azure active directory
+## SAML SSO with Microsoft Entra ID
 
-You can use Azure Active Directory (AD) for SAML SSO with Harness, enabling AD users to log into Harness using their AD credentials.
+You can use Microsoft Entra ID for SAML SSO with Harness, enabling Microsoft Entra ID users to log into Harness using their Microsoft Entra ID credentials.
 
-For detailed steps on adding SAML SSO with Active Directory, follow the steps in the tutorial [Azure Active Directory single sign-on (SSO) integration with Harness](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/harness-tutorial) from Microsoft.
+For detailed steps on adding SAML SSO with Microsoft Entra ID, follow the steps in the tutorial [Microsoft Entra single sign-on (SSO) integration with Harness](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/harness-tutorial) from Microsoft.
 
 :::info note
 Users are not created as part of the SAML SSO integration. Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, go to [SAML SSO with Harness Overview](#saml-sso-with-harness-overview).
@@ -552,7 +552,7 @@ Users are not created as part of the SAML SSO integration. Users are invited to 
 
 ### Users in over 150 groups
 
-When users have large numbers of group memberships, the number of groups listed in the token can grow the token size. Azure Active Directory limits the number of groups it will emit in a token to 150 for SAML assertions.
+When users have large numbers of group memberships, the number of groups listed in the token can grow the token size. Microsoft Entra ID limits the number of groups it will emit in a token to 150 for SAML assertions.
 
 If a user is a member of a larger number of groups, the groups are omitted and a link to the Graph endpoint to obtain group information is included instead.
 
@@ -560,9 +560,9 @@ To invoke the API, Harness will need **Client ID** and **Client Secret** for
 
 To get this information, do the following:
 
-1. In your Azure account, go to **App registrations**.
+1. In your Microsoft Entra ID account, go to **App registrations**.
 2. Click on your app. Copy the Application (client) ID and paste it in **Client ID** in your Harness account.
-3. In your Azure account, go to **App registrations**. Click **Certificates and Secrets**.
+3. In your Microsoft Entra ID account, go to **App registrations**. Click **Certificates and Secrets**.
 4. Click New Client Secret.
 5. Add a description and click Add.
 6. Make sure to copy this secret and save it as an encrypted text secret. For detailed steps to create an encrypted text in Harness, go to [Use Encrypted text Secrets](/docs/platform/secrets/add-use-text-secrets).

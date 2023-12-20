@@ -15,7 +15,7 @@ import TabItem from '@theme/TabItem';
 
 :::note
 
-Currently, this feature is behind the feature flags `NG_SVC_ENV_REDESIGN` and `CD_TRIGGERS_REFACTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag  `CD_TRIGGERS_REFACTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -408,13 +408,6 @@ You can use the following expressions:
 ```
 
 ## Define multi-region artifact source
-
-:::note
-
-Currently, multi-region artifact sources are behind the feature flag `CDS_NG_TRIGGER_MULTI_ARTIFACTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 
 Once you've selected an artifact in the trigger, you will see the **Define Multi Region Artifact Source** option.
 

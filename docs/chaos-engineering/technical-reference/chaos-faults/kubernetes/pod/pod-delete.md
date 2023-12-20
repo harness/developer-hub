@@ -40,6 +40,16 @@ Pod delete:
         <th> Notes </th>
       </tr>
       <tr>
+        <td> TARGET_CONTAINER </td>
+        <td> Name of the container subject to pod deletion. </td>
+        <td> None. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
+      </tr>
+      <tr>
+        <td> NODE_LABEL </td>
+        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="../node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+      </tr>
+      <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration for which to insert chaos (in seconds).</td>
         <td> Default: 15 s. Overall run duration of the fault may exceed the <code>TOTAL_CHAOS_DURATION</code> by a few minutes. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a></td>
@@ -57,7 +67,7 @@ Pod delete:
       <tr>
         <td> FORCE </td>
         <td> Application pod deletion mode. <code>false</code> indicates graceful deletion with the default termination period of 30s, and <code>true</code> indicates an immediate forceful deletion with 0s grace period.</td>
-        <td> Default: <code>true</code>, with <code>terminationGracePeriodSeconds=0</code>. For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete#force-delete">force delete</a> </td>
+        <td> Default: <code>true</code>, with <code>terminationGracePeriodSeconds=0</code>. For more information, go to <a href= "#force-delete">force delete</a> </td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>

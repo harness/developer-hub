@@ -50,12 +50,6 @@ These methods are described below.
 
 For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
 
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 ## Pre-existing infrastructure
 
 For a pre-existing infrastructure, you provide Harness with the target cluster and namespace for the deployment.
@@ -133,7 +127,7 @@ infrastructureDefinition:
   spec:
     connectorRef: docimmut
     namespace: default
-    releaseName: release-<+INFRA_KEY>
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
   allowSimultaneousDeployments: false
 
 ```
@@ -228,7 +222,7 @@ infrastructureDefinition:
     connectorRef: kubernetesdelegate
     cluster: <+input>
     namespace: test
-    releaseName: release-<+INFRA_KEY>
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
   allowSimultaneousDeployments: false
 
 
@@ -304,7 +298,7 @@ infrastructureDefinition:
     resourceGroup: <+input>
     cluster: <+input>
     namespace: mynamespace
-    releaseName: release-<+INFRA_KEY>
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
   allowSimultaneousDeployments: false
 
 ```
@@ -375,7 +369,7 @@ infrastructureDefinition:
     connectorRef: eks
     cluster: ap-south-1/Cluster-test
     namespace: mynamespace
-    releaseName: release-<+INFRA_KEY>
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
   allowSimultaneousDeployments: false
 
 
@@ -488,7 +482,7 @@ infrastructureDefinition:
     connectorRef: Rancher
     cluster: <+input>
     namespace: <+input>
-    releaseName: release-<+INFRA_KEY>
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
   allowSimultaneousDeployments: false
 ```
 
@@ -550,12 +544,6 @@ To add an **Infrastructure Definition** with the Rancher connection method, do t
 
 
 ## Dynamically provisioned infrastructure
-
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
 
@@ -1016,7 +1004,7 @@ The **Release name** setting is located in **Advanced** section of the **Cluster
 
 During deployment Harness creates a ConfigMap listing the resources of the release and uses the **Release name** for tracking them.
 
-The **Release name** is a combination of `release-` and a unique string created using the Harness expression `<+INFRA_KEY>`.
+The **Release name** is a combination of `release-` and a unique string created using the Harness expression `<+INFRA_KEY_SHORT_ID>`.
 
 For example, in a Kubernetes deployment you can see `harness.io/release-name=release-2f9eadcc06e2c2225265ab3cbb1160bc5eacfd4f`.
 
@@ -1024,7 +1012,7 @@ In Harness, the **Release Name** is displayed in the logs of the deployment step
 
 ![](./static/define-your-kubernetes-target-infrastructure-00.png)
 
-The release name must be unique across the cluster. `release-<+INFRA_KEY>` ensures a unique name.
+The release name must be unique across the cluster. `release-<+INFRA_KEY_SHORT_ID>` ensures a unique name.
 
 `release-` is used as a prefix because Kubernetes service and pod names must follow RFC-1035 and must consist of lowercase alphanumeric characters or '-', start with an alphabetic character, and end with an alphanumeric character.
 

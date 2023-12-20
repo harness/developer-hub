@@ -10,6 +10,6 @@ description: Feature Flags Certifications
 
 <!-- Custom component -->
 
-import FeatureFlags from '@site/src/components/Certifications/FeatureFlags';
+import FeatureFlags from '@site/src/components/Certifications/CertificationsFeatureFlags';
 
 <FeatureFlags />

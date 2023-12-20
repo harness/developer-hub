@@ -54,7 +54,7 @@ If you are using a KMS, rotation of keys is not supported by Harness and you mig
 
 #### Using Third-Party Secret Managers
 
-You can also use third-party Secret Managers, for example, HashiCorp Vault, Azure Key Vault, and AWS Secrets Manager.
+You can also use third-party Secret Managers, for example, HashiCorp Vault, Azure Key Vault, GCP Secrets Manager, and AWS Secrets Manager.
 
 These Secret Managers store the key, perform encryption and decryption, and also store the secrets (encrypted key pair). Neither the keys nor the secrets are stored in the Harness database. A reference to the secret is stored in the Harness database.
 
@@ -95,7 +95,7 @@ Decrypting a secret sometimes requires its metadata. When you edit a secret, its
 
 - The secret manager is Google Cloud KMS or AWS KMS.
 
-- The secret manager is Google Cloud Secret Manager: The secret manager contains version information in its metadata. Every time you edit the inline secret, its version is incremented and updated in the database. However, on subsequent access, the older value is retrieved because cached metadata contains information about older versions.
+- The secret manager is Google Cloud Secret Manager: The secret contains version information in its metadata. Every time you edit the inline secret, its version is incremented and updated in the database. However, on subsequent access, the older value is retrieved because cached metadata contains information about older versions.
 
 - The secret is of the reference type: If a secret's reference path is edited, the path is updated in the database. However, the cached value continues to store the older path and fetches the stale secret.
 

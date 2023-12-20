@@ -8,6 +8,10 @@ ECS container HTTP modify body injects HTTP chaos which affects the request or r
 
 ![ECS Container HTTP Modify Response](./static/images/ecs-container-http-modify-body.png)
 
+:::tip
+This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](./ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
+:::
+
 ## Use cases
 ECS container HTTP modify body:
 - Tests the application's resilience to erroneous (or incorrect) HTTP response body.

@@ -76,7 +76,7 @@ Provenance attestations are stored as `.att` files in the artifact repository al
 
 ## Harness Platform components
 
-The Harness SSCA module leverages integrates with other Harness modules and uses components that are common to the Harness Platform. For more information about Harness Platform terminology and concepts, go to [Harness key concepts](../../get-started/key-concepts.md).
+The Harness SSCA module integrates with other Harness modules and uses components that are common to the Harness Platform. For more information about Harness Platform terminology and concepts, go to [Harness key concepts](../../get-started/key-concepts.md).
 
 ### Pipelines
 

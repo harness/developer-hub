@@ -45,7 +45,7 @@ The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/
 5. Select one of the following three primary options:
   * **Assume IAM Role on Delegate:** The connector inherits its authentication credentials from the Harness delegate that is running in AWS. For example, you can select a Harness delegate running in Amazon Elastic Kubernetes Service (EKS).
   * **AWS Access Key:** Provide an [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) for the IAM role you want the connector to use.
-  * **Use IRSA**. See below.
+  * **Use IRSA:** To configure this option, go to [Use IRSA](#use-irsa).
 6. To use cross-account ARN, select **Enable cross-account access (STS Role)**. This option is available for all authentication methods, but it may not be supported by all pipeline steps. For more information about cross-account access in AWS connectors, go to the [AWS connector settings reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 7. By default, Harness uses the `us-east-1` region to test the credentials for AWS connectors. If you want to use a different region or an AWS GovCloud account, select it in the **Test Region** field. For more information about AWS GovCloud support, go to the [AWS connector settings reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 8. Select **Continue** to proceed to **Select Connectivity Mode**.
@@ -55,6 +55,12 @@ The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/
 import IrsaPartial from '/docs/shared/aws-connector-auth-options.md';
 
 <IrsaPartial name="aws-irsa" />
+
+:::info
+
+To use an AWS connector with IRSA in a CI stage, you must [configure your Kubernetes cluster build infrastructure to use the same service account name](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/#service-account-name) specified in your delegate YAML.
+
+:::
 
 ## Select connectivity mode
 

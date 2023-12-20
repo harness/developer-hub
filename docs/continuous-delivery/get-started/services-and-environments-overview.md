@@ -16,27 +16,22 @@ If you are new to Harness, please review [Harness key concepts](../../get-starte
 
 ## Video: Services
 
-<!-- Video:
-https://harness-1.wistia.com/medias/xtmi0c0z95-->
-<docvideo src="https://harness-1.wistia.com/medias/xtmi0c0z95" />
-
+<docvideo src="https://youtu.be/MVuzJjAzsQs" />
 
 ### Video: Services and environments at the account and org level
 
-<!-- Video:
-https://harness-1.wistia.com/medias/s89yka6hal-->
-<docvideo src="https://harness-1.wistia.com/medias/s89yka6hal" />
-
+<docvideo src="https://youtu.be/qU00SaLH78Q" />
 
 ## Services
 
 Services represent your microservices and other workloads. Each service contains a **Service Definition** that defines your deployment artifacts, manifests or specifications, configuration files, and service-specific variables.
 
-You can create services from: 
-* An account
-* An Organization
-* Within a pipeline
-* Outside a pipeline 
+You can create services from:
+
+- An account
+- An Organization
+- Within a pipeline
+- Outside a pipeline
 
 ### Creating services at an account or organization level
 
@@ -46,13 +41,15 @@ You can create a service at an account or organization level from the Harness UI
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
+
 ```mdx-code-block
 <Tabs>
   <TabItem value="Pipeline Studio" label="Pipeline Studio">
 ```
+
 To create a service at an account or organization level, go to **Organization Resources** **>Services**.
 
-Creating an account level service enables you to manage the service globally across the organizations and projects within the account. 
+Creating an account level service enables you to manage the service globally across the organizations and projects within the account.
 
 An account level service can only reference connectors for the manifests and artifacts within the account. These services are global and cannot have dependencies at a lower hierarchy level.
 
@@ -61,9 +58,9 @@ Shared services can also be created and managed at account or organization level
 ![](./static/create-services-from-account-level.png)
 
 :::note
-When using an account level deployment stage template, you can referencing an account level service only. Similarly, for organization level stage templates, you can reference organization level services only. 
+When using an account level deployment stage template, you can referencing an account level service only. Similarly, for organization level stage templates, you can reference organization level services only.
 
-However, when using a deployment stage in a pipeline that has service configured as a runtime input, you can pick services from project, organization, or account levels to pass them as runtime inputs based on your RBAC. 
+However, when using a deployment stage in a pipeline that has service configured as a runtime input, you can pick services from project, organization, or account levels to pass them as runtime inputs based on your RBAC.
 
 Go to [add a stage template](/docs/platform/templates/add-a-stage-template.md) for more information.
 :::
@@ -108,6 +105,7 @@ service:
               type: DockerRegistry
     type: Kubernetes
 ```
+
 </details>
 
 Expand the section below to see a sample organization level service YAML.
@@ -158,12 +156,14 @@ service:
     type: Kubernetes
   description: sample redis service
 ```
+
 </details>
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="API" label="API">
 ```
+
 For information about creating a service API, go to [create a service](https://apidocs.harness.io/tag/Services#operation/createServiceV2).
 
 The `orgIdentifier` and `projectIdentifier` field definitions are optional, and depend on where you want to create the service. For example, if you create a service at an account level, you will not need org or project identifiers in the post API call payload.
@@ -172,11 +172,12 @@ The `orgIdentifier` and `projectIdentifier` field definitions are optional, and 
   </TabItem>
   <TabItem value="Terraform" label="Terraform">
 ```
+
 For information about creating a Harness platform service, go to [harness_platform_service (Resource)](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
 The `org_id` and `project_id` field definitions are optional, and depend on where you want to create the service. For example, if you create a service at an account level, you will not need org or project identifiers.
 
-Expand the section below to see a sample platform service in Terraform. 
+Expand the section below to see a sample platform service in Terraform.
 
 <details>
    <summary>Harness platform service</summary>
@@ -191,7 +192,7 @@ resource "harness_platform_service" "example" {
 
   ## SERVICE V2 UPDATE
   ## We now take in a YAML that can define the service definition for a given Service
-  ## It isn't mandatory for Service creation 
+  ## It isn't mandatory for Service creation
   ## It is mandatory for Service use in a pipeline
 
   yaml = <<-EOT
@@ -236,10 +237,11 @@ resource "harness_platform_service" "example" {
               EOT
 }
 ```
+
 </details>
 
 ```mdx-code-block
-  </TabItem>    
+  </TabItem>
 </Tabs>
 ```
 
@@ -265,21 +267,21 @@ When you create the new service you define its **Service Definition**. For examp
 
 Environments represent your deployment targets (QA, Prod, etc). Each environment contains one or more **Infrastructure Definitions** that list your target clusters, hosts, namespaces, etc.
 
-You can create environments from: 
-* An Account
-* An Organization
-* Within a pipeline
-* Outside a pipeline 
+You can create environments from:
+
+- An Account
+- An Organization
+- Within a pipeline
+- Outside a pipeline
 
 Next you can define all of its settings:
 
-* **Configuration:** the default environment configuration, including variables, manifests, specifications, and config files that will be used every time the environment is used in a stage.
-* **Service Overrides:** override specific services. You select a service and define what will be overridden whenever that Service is deployed to this environment.
-* **Infrastructure Definitions:** represent one or more environment infrastructures.
-  * Infrastructure definitions are the actual clusters, hosts, etc., where Harness deploys a service. For example, you might have a QA environment with separate Kubernetes clusters (infrastructure definitions) for each service you want to test.
-  * You can add multiple infrastructure definitions to a single environment and select an infrastructure definition when you add the environment to a stage.
-* **GitOps Clusters:** adding Harness GitOps clusters to an environment lets you select them as the deployment target in stages. For more information on Harness GitOps, go to [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md).
-
+- **Configuration:** the default environment configuration, including variables, manifests, specifications, and config files that will be used every time the environment is used in a stage.
+- **Service Overrides:** override specific services. You select a service and define what will be overridden whenever that Service is deployed to this environment.
+- **Infrastructure Definitions:** represent one or more environment infrastructures.
+  - Infrastructure definitions are the actual clusters, hosts, etc., where Harness deploys a service. For example, you might have a QA environment with separate Kubernetes clusters (infrastructure definitions) for each service you want to test.
+  - You can add multiple infrastructure definitions to a single environment and select an infrastructure definition when you add the environment to a stage.
+- **GitOps Clusters:** adding Harness GitOps clusters to an environment lets you select them as the deployment target in stages. For more information on Harness GitOps, go to [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md).
 
 ### Creating environments at an account or organization level
 
@@ -289,12 +291,13 @@ You can create an environment and provide infrastructure definitions at an accou
 import Tabs2 from '@theme/Tabs';
 import TabItem2 from '@theme/TabItem';
 ```
+
 ```mdx-code-block
 <Tabs2>
   <TabItem2 value="Pipeline Studio" label="Pipeline Studio">
 ```
 
-To create an environment at an account or organization level, go to **Organization Resources** **>Environments**. 
+To create an environment at an account or organization level, go to **Organization Resources** **>Environments**.
 
 ![](./static/create-environments-from-account-level.png)
 
@@ -321,6 +324,7 @@ environment:
       value: <+service.name>-dev
       description: "namespace environment variable"
 ```
+
 </details>
 
 Expand the section below to see a sample account level infrastructure definition YAML.
@@ -340,9 +344,10 @@ infrastructureDefinition:
   spec:
     connectorRef: account.Harness_Kubernetes_Cluster
     namespace: <+service.name>-dev
-    releaseName: release-<+INFRA_KEY>
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
   allowSimultaneousDeployments: false
 ```
+
 </details>
 
 Expand the section below to see a sample organization level environment YAML.
@@ -369,6 +374,7 @@ environment:
       value: "8080"
       description: "port for prod environment"
 ```
+
 </details>
 
 Expand the section below to see a sample organization level infrastructure definition YAML.
@@ -389,15 +395,17 @@ infrastructureDefinition:
   spec:
     connectorRef: account.Harness_Kubernetes_Cluster
     namespace: production
-    releaseName: release-<+INFRA_KEY>
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
   allowSimultaneousDeployments: false
 ```
+
 </details>
 
 ```mdx-code-block
   </TabItem2>
   <TabItem2 value="API" label="API">
 ```
+
 For information about creating an environment API, go to [create an environment](https://apidocs.harness.io/tag/Environments#operation/createEnvironmentV2).
 
 For information about creating infrastructure definition API, go to [create an infrastructure in an environment](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure).
@@ -408,9 +416,10 @@ The `orgIdentifier` and `projectIdentifier` field definitions are optional, and 
   </TabItem2>
   <TabItem2 value="Terraform" label="Terraform">
 ```
+
 For information about creating a Harness platform environment, go to [harness_platform_environment (Resource)](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment).
 
-Expand the section below to see a sample platform environment in Terraform. 
+Expand the section below to see a sample platform environment in Terraform.
 
 <details>
    <summary>Harness platform environment</summary>
@@ -475,6 +484,7 @@ resource "harness_platform_environment" "example" {
       EOT
 }
 ```
+
 </details>
 
 For information about creating a Harness platform infrastructure definition, go to [harness_platform_infrastructure (Resource)](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure).
@@ -508,19 +518,21 @@ resource "harness_platform_infrastructure" "example" {
          spec:
           connectorRef: account.gfgf
           namespace: asdasdsa
-          releaseName: release-<+INFRA_KEY>
+          releaseName: release-<+INFRA_KEY_SHORT_ID>
           allowSimultaneousDeployments: false
       EOT
 }
 ```
+
 </details>
 
 The `org_id` and `project_id` field definitions are optional, and depend on where you want to create the environment. For example, if you create an environment at an account level, you will not need org or project identifiers.
 
 ```mdx-code-block
-  </TabItem2>    
+  </TabItem2>
 </Tabs2>
 ```
+
 ### Creating environments inside a pipeline
 
 To create an environment from inside of a pipeline, select **New Environment** in the **Infrastructure** tab of a new CD stage.
@@ -547,8 +559,8 @@ For example, a stage has a Kubernetes service with a manifest but whenever that 
 
 Service overrides are different from **Environment Configuration** in the following ways:
 
-* Environment **Configuration**: applies to every service that is used with the environment.
-* Environment **Service Overrides**: applies to specific services you select. Whenever that service is used with that environment, the **Service Override** is applied.
+- Environment **Configuration**: applies to every service that is used with the environment.
+- Environment **Service Overrides**: applies to specific services you select. Whenever that service is used with that environment, the **Service Override** is applied.
 
 :::note
 Runtime inputs are not supported if you are trying to override services in multi-service and multi-environment set ups.
@@ -570,18 +582,18 @@ The priority from top to bottom is:
 
 Suppose you have a pipeline that runs as follows:
 
-* Deploys a service named `myService`, which has a variable `cpu` set to 1. 
-* Deploys `myService` to `myEnvironmentAlpha`, and then overrides the `myService` variable `cpu` value to 2. 
+- Deploys a service named `myService`, which has a variable `cpu` set to 1.
+- Deploys `myService` to `myEnvironmentAlpha`, and then overrides the `myService` variable `cpu` value to 2.
 
-In this case, the environment variable takes precedence, and overrides the service variable. When the pipeline runs, it uses the `cpu` value of 2. 
+In this case, the environment variable takes precedence, and overrides the service variable. When the pipeline runs, it uses the `cpu` value of 2.
 
-Now, suppose you have a another pipeline that deploys `myService` to `myEnvironmentKappa`, which has a service override that sets `cpu` to 4. In this case, the environment service override takes precedence over the environment configuration and the service setting. When the pipeline runs, it uses  the `cpu` value of 4. 
+Now, suppose you have a another pipeline that deploys `myService` to `myEnvironmentKappa`, which has a service override that sets `cpu` to 4. In this case, the environment service override takes precedence over the environment configuration and the service setting. When the pipeline runs, it uses the `cpu` value of 4.
 
 ### Infrastructure definitions
 
 Infrastructure definitions represent an environment's infrastructures physically. They are the actual clusters, hosts, namespaces, etc, where you are deploying a service.
 
-An environment can have multiple **Infrastructure Definitions**. 
+An environment can have multiple **Infrastructure Definitions**.
 
 ![](./static/services-and-environments-overview-13.png)
 
@@ -591,13 +603,13 @@ When you select an environment in a stage, you can select the **Infrastructure D
 
 #### Infrastructure Tags
 
-Tags can be attached to infrastructure definitions representing their characteristics. These tags can be key value pairs. 
+Tags can be attached to infrastructure definitions representing their characteristics. These tags can be key value pairs.
 
 ![](./static/services-and-environments-overview-28.png)
 
-When you select the **Infrastructure Definition** for a stage, the attached tags can be accessed using their keys with the expression, ```<+infra.tags.tag_key>```. This expression is available for use throughout the stage. 
+When you select the **Infrastructure Definition** for a stage, the attached tags can be accessed using their keys with the expression, `<+infra.tags.tag_key>`. This expression is available for use throughout the stage.
 
-For example, skipping certain steps in pipeline based on the tags attached to the infrastructure. 
+For example, skipping certain steps in pipeline based on the tags attached to the infrastructure.
 
 ![](./static/services-and-environments-overview-29.png)
 
@@ -629,9 +641,9 @@ The `servicePort: 80` from the environment **Service Overrides** values YAML is 
 
 ### Fully overriding values YAML name:value pairs
 
-An environment's **Service Overrides** values YAML has the name:value pairs `replicas: 2` and `servicePort: 80`. 
+An environment's **Service Overrides** values YAML has the name:value pairs `replicas: 2` and `servicePort: 80`.
 
-A service's **Service Definition** has a values YAML with `replicas: 4` and `servicePort: 8080`. 
+A service's **Service Definition** has a values YAML with `replicas: 4` and `servicePort: 8080`.
 
 At runtime, the name:value pairs from the environment **Service Overrides** values YAML fully override the service values YAML. The `replicas: 2` and `servicePort: 80` from the environment **Service Overrides** are used.
 
@@ -649,9 +661,9 @@ When you have **Variables** with the same name at two or more of the environment
 
 ## GitOps Clusters
 
-When you use Harness GitOps you can add GitOps clusters to an environment. 
+When you use Harness GitOps you can add GitOps clusters to an environment.
 
-To learn more about Harness GitOps, go to [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md). 
+To learn more about Harness GitOps, go to [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md).
 
 Next, when you create a pipeline, you can select the environment and the GitOps cluster(s) to use.
 
@@ -699,7 +711,7 @@ If a role does not have the **Access** permission for **Services**, a user or us
 
 ### Restrict access to specific services or environments for a user or user group
 
-You can restrict a user or user group to using specific services and environments only. The process is the same for services and environments. 
+You can restrict a user or user group to using specific services and environments only. The process is the same for services and environments.
 
 Let's look at an example using environments.
 
@@ -716,4 +728,3 @@ If you want to restrict a user or user group to deploy to a specific environment
 Environment groups are simple a way to group environments so you can assign permissions to multiple environments in a role.
 
 ![](./static/services-and-environments-overview-23.png)
-

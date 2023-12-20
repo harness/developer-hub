@@ -16,6 +16,7 @@ Looking for specific secret managers? Go to:
 * [Add a HashiCorp Vault Secret Manager](/docs/platform/secrets/secrets-management/add-hashicorp-vault.md)
 * [Add an Azure Key Vault Secret Manager](/docs/platform/secrets/secrets-management/azure-key-vault.md)
 * [Add Google KMS as a Harness Secret Manager](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager.md)
+* [Add a Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager.md)
 * [Add an AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md)
 
 ### Before you begin
@@ -35,6 +36,7 @@ Looking for specific secret managers? Go to:
    * [Add a HashiCorp Vault Secret Manager](/docs/platform/secrets/secrets-management/add-hashicorp-vault.md)
    * [Add an Azure Key Vault Secret Manager](/docs/platform/secrets/secrets-management/azure-key-vault.md)
    * [Add Google KMS as a Harness Secret Manager](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager.md)
+   * [Add a Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager.md)
    * [Add an AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md)
 5. Provide the account access information for the new secret manager.
 6. If you choose to set this secret manager as the default, select **Use as Default Secret Manager**.
@@ -47,6 +49,10 @@ When a new Default Secret Manager is set up, only new Cloud Provider and/or Conn
 You can add secrets to the Org or Project scopes using a Secret Manager with an Account or Org scope. For example, you can create secrets inside a project using the Secret Manager created at the Org or Account level.
 
 When you create a secret, Harness shows the list of secret managers at the parent scope and up the hierarchy. If you create a secret at the project level, Harness lists all secret managers scoped at the Account, Org, and Project levels.
+
+:::info
+If a default secret manager is updated or deleted, Harness Default Secret Manager automatically becomes the new default.
+:::
 
 ![](../../secrets/static/select-secrets-manager-scope2.png)
 
@@ -65,6 +71,7 @@ The secret you use to connect Harness to your Secret Manager (password, etc) is 
 	+ [Add a HashiCorp Vault Secret Manager](/docs/platform/secrets/secrets-management/add-hashicorp-vault.md)
 	+ [Add an Azure Key Vault Secret Manager](/docs/platform/secrets/secrets-management/azure-key-vault.md)
 	+ [Add Google KMS as a Harness Secret Manager](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager.md)
+ 	+ [Add a Google Cloud secret manager](/docs/platform/secrets/secrets-management/add-a-google-cloud-secret-manager.md)
 	+ [Add an AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager.md)
 * Managing Secrets
 	+ [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets)

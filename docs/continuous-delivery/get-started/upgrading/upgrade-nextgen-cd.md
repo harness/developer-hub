@@ -36,12 +36,15 @@ The FirstGen to NextGen CD upgrade will occur on the following dates:
   - Harness will no longer publish new versions of the Self Hosted Harness Platform (SMP) for Harness FirstGen.
   - Only Harness NextGen versions will be released in our SMP releases. 
 
-
 - 1/1/2024. End of support for FirstGen CD.
   - Harness Support will no longer accept support requests for FirstGen CD.
   - Security fixes will still be addressed.
   - Product defects will not be addressed.
-
+ 
+- 1/31/2024. End of support for Delegate-Legacy.
+  - Harness Support will no longer accept support requests for Delegate-Legacy in both Harness FirstGen and Harness NextGen (including Self Hosted Harness Platform (SMP))
+  - Security fixes will still be addressed.
+  - Product defects will not be addressed. 
 
 - 4/1/2024. FirstGen SaaS product shutdown.
   - Harness delegates will no longer register with Harness SaaS.

@@ -1,7 +1,7 @@
 ---
 title: Upload artifacts to Sonatype Nexus
 description: You can use Harness CI to upload artifacts to Sonatype Nexus Repository Manager.
-sidebar_position: 90
+sidebar_position: 33
 ---
 
 ```mdx-code-block

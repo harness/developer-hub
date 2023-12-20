@@ -145,7 +145,9 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Build and run tests
 
-Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
+You can use **Run** and **Run Tests** step to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
+
+The following examples run tests in a **Run** step.
 
 ```mdx-code-block
 <Tabs>
@@ -188,7 +190,11 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 
 ### Visualize test results
 
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), your test reports must be in JUnit XML format and your steps must include the `reports` specification. The following examples use the [Minitest JUnit Formatter](https://github.com/aespinosa/minitest-junit). For more information and an RSpec example, go to [Format test reports - Ruby](/docs/continuous-integration/use-ci/run-tests/test-report-ref#ruby).
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), your test reports must be in JUnit XML format.
+
+If you use a **Run** step to run tests, your **Run** step must include the `reports` specification. The `reports` specification is not required for [Run Tests steps (Test Intelligence)](#run-tests-with-test-intelligence).
+
+The following examples use the [Minitest JUnit Formatter](https://github.com/aespinosa/minitest-junit). For more information and an RSpec example, go to [Format test reports - Ruby](/docs/continuous-integration/use-ci/run-tests/test-report-ref#ruby).
 
 ```mdx-code-block
 <Tabs>
@@ -241,9 +247,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 
 ### Run tests with Test Intelligence
 
-[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) is available for Ruby; however, it is behind the feature flag `CI_RUBY_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) to run unit tests with Test Intelligence.
+You can use Run Tests steps to [run Ruby unit tests with Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby).
 
 ```mdx-code-block
 <Tabs>
@@ -252,20 +256,14 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 
 ```yaml
               - step:
-                  type: Run Ruby Tests
+                  type: Run Tests
                   name: Run_Ruby_Tests
                   identifier: Run_Ruby_Tests
                   spec:
                     language: Ruby
                     buildTool: Rspec
-                    args: "--format RspecJunitFormatter --out tmp/junit.xml"
                     runOnlySelectedTests: true
                     preCommand: bundle install
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - tmp/junit.xml
 ```
 
 ```mdx-code-block
@@ -275,7 +273,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 
 ```yaml
               - step:
-                  type: Run Ruby Tests
+                  type: Run Tests
                   name: Run_Ruby_Tests
                   identifier: Run_Ruby_Tests
                   spec:
@@ -283,20 +281,18 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                     image: ruby:latest
                     language: Ruby
                     buildTool: Rspec
-                    args: "--format RspecJunitFormatter --out tmp/junit.xml"
                     runOnlySelectedTests: true
                     preCommand: bundle install
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - tmp/junit.xml
 ```
 
 ```mdx-code-block
   </TabItem>
 </Tabs>
 ```
+
+### Test splitting
+
+Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
 
 ## Specify version
 

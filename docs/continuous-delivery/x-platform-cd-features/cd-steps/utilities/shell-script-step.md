@@ -144,6 +144,11 @@ print = functools.partial(print, flush=True)
 
 You might have to make similar changes to your script depending on its contents.
 
+:::note
+The color codes that Harness uses for shell script logs is aligned with the I/O stream from the executed command. Typically, stdout is used for logging successful commands, with its logs color-coded to represent informational data. Conversely, stderr is generally used for error logging, with logs color-coded accordingly. However, note that some commands also output successful executions to stderr, and that Harness cannot control this variance in I/O stream usage.
+:::
+
+
 ### Shell Script steps and failures
 
 A failed Shell Script step does not prevent a stage deployment from succeeding.
@@ -714,3 +719,38 @@ sshpass -p $DEVICE_PASS ssh $DEVICE_USER@$DEVICE_IP "sudo flashrom -w /home/$DEV
 ```
 
 </details>
+
+### Running Kubernetes Commands in the Shell Script
+
+You can run Kubernetes commands (kubectl) in a Shell script step. The step doesn't require you to provide an infrastructure. All that is required is a Harness Kubernetes delegate installed on a target cluster with the correct permissions.
+
+Example script:
+
+```
+export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}  
+kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.namespace> -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness\.io/color=="'$(kubectl get service/<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName> -n <+infra.namespace> -o jsonpath='{.spec.selector.harness\.io/color}')'")].metadata.name}') --replicas=0
+```
+
+The step might look like this:
+
+```
+              - step:
+                  type: ShellScript
+                  name: Kubectl scale blue green
+                  identifier: Kubectl_scale_blue_green
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}  
+                          kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.namespace> -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness\.io/color=="'$(kubectl get service/<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName> -n <+infra.namespace> -o jsonpath='{.spec.selector.harness\.io/color}')'")].metadata.name}') --replicas=0
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+```
+
+The `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}` line will get the `kubeconfig` from the Harness Delegate that is installed on the Kubernetes cluster.
+

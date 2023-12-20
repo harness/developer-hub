@@ -66,6 +66,10 @@ Yes, it does. However, if there are multiple source datasets which are located i
 
 In this scenario, we can raise an AWS support request to backfill the same source bucket. Once the data is available, CCM will automatically retrieve and make it accessible.
 
+#### We have added a AWS connector and the permissions are in place but we are facing error saying it can't read the objects in the CUR bucket.
+
+If the permissions are correct, please verify the s3 bucket name and make sure that the bucket name in the connector YAML does not have any white space.
+
 
 ### Perspectives
 
@@ -139,6 +143,18 @@ Currently, it's not supported. However, you can leverage dashboard for the same.
 When we ingest cloud data, we make certain modifications to the tags/labels. However, with cluster data, we ingest the labels without any alterations.
 
 More information can be found [here](../../docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws#analyze-aws-cost).
+
+#### Why does the dropdown in the GPU cost tracking perspective only show instance types that have already been used, and not all available GPU instance types across clouds?
+
+The dropdown in the GPU cost tracking perspective fetches instance values from the billing report dynamically. It is not a static list of all available instance types. Only the instance types that have been used in the account will appear in the perspective rule builder/filter dropdown.
+
+#### We need a solution for including future usable GPU instance types without manually updating the rules regularly. What can we do?
+
+To address this issue, we suggest using the LIKE operator in your rules. By employing the LIKE operator, you can ensure that any new instance type that comes into use will automatically be included in the perspective. This eliminates the need for manual updates, providing a more sustainable and long-term solution for tracking GPU costs across all three clouds.
+
+#### Are there any limitations or considerations when using the LIKE operator for future instance types?
+
+While the LIKE operator provides flexibility in capturing future instance types, it's important to choose a pattern that uniquely identifies the instances you want to include. Additionally, regular monitoring and adjustments may be necessary if naming conventions change or new patterns emerge for GPU instance types.
 
 
 ### Cost Category
@@ -343,6 +359,28 @@ Currently, we don't compute or show savings corresponding to custom asset govern
 
 No. Currently, Asset governance data is not yet available in dashboards.
 
+#### How is the recommendations and potential cost savings shown on the Asset Governance Overview page?
+
+#### The recommendations and potential cost savings are derived from the following AWS policies selected for asset governance: 
+
+Following policies are used for recommendations for AWS:
+
+elb-low-request-count-list
+delete-unattached-volumes
+release-unattached-eips
+migrate-gp2-to-gp3-ebs-volumes
+delete-snapshot-with-no-volume
+delete-snapshot-unused
+elasticache-delete-stale-clusters
+rds-delete-unused
+rds-resize-down
+elb-delete-unused
+
+#### For Asset Governances, What are the minimum permissions required for Azure connectors?
+
+Reader role on the subscription is minimum to be able to list resources, For actions, corresponding permissions needs to be added.
+
+
 ### Autostopping
 
 #### If we configure an autostopping rule with multiple instances, but a single routing rule. does the proxy load balance between the instances?
@@ -392,6 +430,19 @@ If your fixed schedule is not operating within the expected time windows or freq
 * Ensure the correct timezone for the schedule.
 * Check the specified start and end times of the schedule. This configuration is optional and restricts the schedule to run only within this specified window.
 
+#### when we create an Autostopping rule, does it create target group in AWS account?
+
+No while creating the rule we do not automatically create a target group, here is how you can create [Doc](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-proxy-as-downstream-alb/#create-a-target-group-for-the-autostopping-proxy-vm-with-a-health-check-configuration)
+
+#### Can we do a k8s autostopping (CP AWS) using the Free Plan?
+
+Yes we can do.
+
+####  Is there any way to work with K8s Autostopping and bypass the need to use a Cloud Provider Connector?
+
+You can provide a dummy connector. It need not have permissions at the provider. However, only the AutoStopping functionality will work, and CCM won't be able to show the cost savings.
+
+
 
 ### Dashboards
 
@@ -440,6 +491,17 @@ The memory measurements for AWS EC2 will be displayed in dashboards as part of t
 As part of the inventory feature for Azure, we have memory measurements for virtual machines.
 We don't have memory measurements for virtual machines on GCP.
 
+#### Is "total cost" in dashboards the same as "unblended cost" in perspectives?
+
+Yes.
+
+#### Can we bring in recommendations in BI or is it only at the perspective level ?
+
+We have a recommendations explore in dashboards, this is limited to savings and potential. We do not intend to extend support to granular recommendation details in dashboards
+
+####  when we are filtering on date in an AWS dashboard, is the date we are using on the line items the usage start/end date or the billing date?
+
+It is usage start/end date and If there is both start and end, Usage dates is used.
 
 
 ### Anomalies

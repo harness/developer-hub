@@ -503,7 +503,7 @@ infrastructureDefinition:
   spec:
     connectorRef: pmk8scluster
     namespace: <+input>.allowedValues(dev,qa,prod)
-    releaseName: release-<+INFRA_KEY>
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
   allowSimultaneousDeployments: false
 ```
 
@@ -537,7 +537,7 @@ resource "harness_platform_infrastructure" "example" {
          spec:
           connectorRef: account.gfgf
           namespace: asdasdsa
-          releaseName: release-<+INFRA_KEY>
+          releaseName: release-<+INFRA_KEY_SHORT_ID>
           allowSimultaneousDeployments: false
       EOT
 }

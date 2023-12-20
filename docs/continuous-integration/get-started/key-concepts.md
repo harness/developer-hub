@@ -27,7 +27,7 @@ A CI stage is a subset of a pipeline that contains one major segment of the CI w
 <details>
 <summary>What is build infrastructure?</summary>
 
-All stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose. For more information, go to [Which build infrastructure is right for me](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+All CI stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose. For more information, go to [Which build infrastructure is right for me](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
 </details>
 
@@ -46,19 +46,29 @@ For example, the maven `m2` repo is stored in `/root/.m2` by default. If your Bu
 
 ### Steps
 
-A stage contains one or more steps. Each step is a series of commands that perform a task. For example, A **Build and Push** step builds an image and pushes it to a cloud repo, a **Run** step runs a series of shell commands, and so on.
+A stage contains one or more steps. Each step is a series of commands that perform a task. For example, A **Build and Push** step builds an image and pushes it to an artifact repo, a **Run** step runs a series of shell commands, and so on.
 
-Harness CI includes an extensive Step Library for common CI tasks: building artifacts, uploading to cloud repos, running tests, and so on. For more information, go to [CI pipeline creation overview](../use-ci/prep-ci-pipeline-components.md).
+Harness CI includes an extensive **Step Library** for common CI tasks: building artifacts, uploading to cloud repos, running tests, and so on. For more information, go to [CI pipeline creation overview](../use-ci/prep-ci-pipeline-components.md).
 
 ![](./static/ci-pipeline-basics-510.png)
 
+:::info Root and non-root users
+
+Steps run as the root user, generally. For example, with Harness Cloud build infrastructure, steps run directly on the host and, therefore, run as the root user.
+
+For services running on containers (which are steps where you specify a **Container Registry** and **Image** to use to execute the step's commands), you can use the **Run as User** setting to specify a user to use for that container.
+
+With Kubernetes cluster build infrastructure, you can use the **Run as User** setting to specify a user to use for individual steps, or you can [set a default user for all steps](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#run-as-user-or-run-as-non-root) and then override the default user as needed for individual steps.
+
+:::
+
 ## Tests
 
-In a CI pipeline, you can [run a variety of tests](../use-ci/run-tests/run-tests-in-ci.md), such as integration tests, functional tests, and unit tests. To do this, you can use a [Run Tests step](../use-ci/run-tests/set-up-test-intelligence#add-the-run-tests-step) or a [Run step](../use-ci/run-ci-scripts/run-step-settings.md). You must use the **Run Tests** step to [enable Test Intelligence](../use-ci/run-tests/set-up-test-intelligence).
+In a CI pipeline, you can use **Run** and **Run Tests** steps to [run tests with Harness CI](../use-ci/run-tests/run-tests-in-ci.md), such as integration tests, functional tests, and unit tests.
 
 ### Test Intelligence
 
-Test Intelligence speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in your unit test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. For more information, go to [Enable Test Intelligence](../use-ci/run-tests/set-up-test-intelligence).
+Test Intelligence speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in your unit test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. You must use the **Run Tests** step to [enable Test Intelligence](../use-ci/run-tests/test-intelligence/set-up-test-intelligence). For more information, go to [Test Intelligence overview](../use-ci/run-tests/test-intelligence/set-up-test-intelligence).
 
 ## Plugins
 
@@ -78,9 +88,9 @@ If you decide to split your pipeline into multiple stages, you need to make sure
 
 Caching expedites job execution by reusing data from expensive fetch operations that ran in previous jobs. You can also use caching to share data across stages. For example, you can use **Save Cache** and **Restore Cache** steps to save a cache to a cloud storage bucket and restore it later. For more information, go to [Share and cache CI data](/docs/category/share-and-cache-ci-data).
 
-### Remote Docker layer caching
+### Docker layer caching
 
-Harness enables remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling them to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
+[Docker layer caching](../../../docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) can dramatically improve build time by sharing layers across pipelines and stages.
 
 ### Artifact repos
 

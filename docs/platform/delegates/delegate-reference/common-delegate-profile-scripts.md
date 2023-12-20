@@ -48,11 +48,18 @@ microdnf install unzip
 Here is an example of a script for installing Terraform:
 
 ```
-# Install TF  
-curl -O -L  https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_amd64.zip  
-unzip terraform_0.12.25_linux_amd64.zip  
-mv ./terraform /usr/bin/  
-# Check TF install  
+# Install jq and unzip for JSON parsing and unzipping files
+microdnf install jq unzip
+# Fetch the latest Terraform version
+latest_version=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r .current_version)
+# Download the latest Terraform version
+curl -O -L "https://releases.hashicorp.com/terraform/${latest_version}/terraform_${latest_version}_linux_amd64.zip"
+# Unzip and move Terraform to your bin directory
+unzip "terraform_${latest_version}_linux_amd64.zip"
+mv terraform /usr/bin/
+# Cleanup downloaded zip file
+rm "terraform_${latest_version}_linux_amd64.zip"
+# Check Terraform installation
 terraform --version
 ```
 

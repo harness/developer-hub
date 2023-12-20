@@ -41,7 +41,7 @@ For detailed steps on how to generate a PAT, see [Create personal API keys and t
 	+ Secrets
 	+ Pipelines
 * You cannot provision users using Harness Terraform Provider.  
-You can provision users through SCIM using [Okta](/docs/platform/role-based-access-control/provision-users-with-okta-scim), [OneLogin](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim) or [Azure AD](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim).
+You can provision users through SCIM using [Okta](/docs/platform/role-based-access-control/provision-users-with-okta-scim), [OneLogin](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim) or [Microsoft Entra ID](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim).
 * You cannot run or monitor your Pipelines using Harness Terraform Provider.
 
 ### Why use Harness Terraform Provider?
