@@ -23,7 +23,7 @@ This functionality is limited to the modules and settings that you have access t
 
 ## How to Add the Developer Portal Stage
 
-1. Change the module to Continious Integration, and select the **Pipeline** from side nav and **Create a Pipeline**. 
+1. Change the module to **Continious Integration**, and select the **Pipeline** from side nav and **Create a Pipeline**. 
 
 ![](./static/ci-module.png)
 
