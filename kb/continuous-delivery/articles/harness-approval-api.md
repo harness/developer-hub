@@ -82,7 +82,7 @@ Imagine this: your deployment pipeline has multiple approvals eagerly waiting in
 To overcome the limitation and provide users with more control, the Approval Callback Identifier introduces a user-configurable parameter—`callback_id`. This parameter is optional, allowing users to provide a unique identifier to distinguish and approve specific instances within the deployment pipeline. 
 This parameter can be configured while adding an Harness Approval step to the pipeline, like shown in the below image
 
-<docimage path={require('./static/harness-approval-api.png')} width="60%" height="60%" title="Click to view full size image" />
+<docimage path={require('../static/harness-approval-api.png')} width="60%" height="60%" title="Click to view full size image" />
 
 Now, seamlessly integrate this power into your orchestration with a refined Curl request:
 
