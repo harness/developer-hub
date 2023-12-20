@@ -54,7 +54,7 @@ To use a personal access token, paste the token in Enter the Access Token.
    * To use a personal access token, paste the token in **Enter the Access Token**.
 5. In **Integration Name**, enter a name for the integration.
 6. Select repositories to associate with the integration or select **Ingest All Repos** to associate all current and future repos in your **GitHub organization**.
-7. Select **Finish** and **save** the integration.
+7. Select **Finish** and **Save** the integration.
 
 ```mdx-code-block
   </TabItem>
@@ -65,24 +65,24 @@ The steps for configuring the integration using satellite is similar to configur
 
 Make sure to select the **satellite integration checkbox** while configuring the integration.
 
-1. In **Integration Name**, enter a **name** for the integration.
-2. Add a **description** for the integration. (Optional)
+1. In **Integration Name**, enter a **Name** for the integration.
+2. Add a **Description** for the integration. (Optional)
 3. In the **URL** field, add the URL where your GitHub repository is deployed. 
-   For example, if your GitHub is deployed on a virtual machine (VM), add the URL in the format: `https://<IP_ADDRESS>`
+   For example, if your GitHub is deployed on a virtual machine (VM), add the URL in the format: `<GITHUB_INSTANCE_URL>`
 
 4. Select **Next** and click on **Download the Config file** and save the **satellite.yml** file. Update it following the instructions here.
 
 Here’s a sample satellite.yml file:
 
-```bash
+```yaml
 satellite:
-  tenant: foo
-  api_key: <sei-api-key>
-  url: 'https://testapi1.propelo.ai'
+  tenant: <ACCOUNT_ID>
+  api_key: <ACCOUNT_API_KEY>
+  url: 'https://app.harness.io/gratis/sei/api'
 integrations:
-  - id: '4685'
+  - id: '<ACCOUNT_ID>'
     application: github_actions
-    url: 'https://<IP_ADDRESS>/'
+    url: '<GITHUB_INSTANCE_URL>'
     authentication: apikey
 ```
 

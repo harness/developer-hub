@@ -93,7 +93,7 @@ The steps for configuring the integration using satellite is similar to configur
 Make sure to select the **satellite integration checkbox** while configuring the integration.
 
 1. In Integration **Name**, enter a name for the integration.
-2. Add a **description** for the integration. (Optional)
+2. Add a **Description** for the integration. (Optional)
 3. In the **URL** field, add the URL where your GitHub repository is deployed. 
    
    For example, if your GitHub is deployed on a **virtual machine (VM)**, add the **URL** in the format: `https://<IP_ADDRESS`>.
@@ -108,15 +108,15 @@ Make sure to select the **satellite integration checkbox** while configuring the
 
 Here’s a sample `satellite.yml` file:
 
-```
+```yaml
 satellite:
-  tenant: foo
-  api_key: <api-key>
-  url: 'https://testapi1.propelo.ai'
+  tenant: <ACCOUNT_ID>
+  api_key: <ACCOUNT_API_KEY>
+  url: 'https://app.harness.io/gratis/sei/api'
 integrations:
-  - id: '4688'
+  - id: '<INTEGRATION_ID>'
     application: github
-    url: 'https://IP_ADDRESS/'
+    url: '<GITHUB_INSTANCE_URL>'
     metadata:
       fetch_prs: true
       fetch_issues: true
@@ -126,7 +126,7 @@ integrations:
       fetch_projects: true
     authentication: multiple_api_keys
     keys:
-      - apikey: <github-pat>
+      - apikey: <GITHUB_PAT>
 
 ```
 

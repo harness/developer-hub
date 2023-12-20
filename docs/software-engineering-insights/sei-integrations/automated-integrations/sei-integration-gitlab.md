@@ -57,7 +57,7 @@ import TabItem from '@theme/TabItem';
   <TabItem value="satellite" label="Satellite">
 ```
 
-The steps for configuring the integration using satellite is similar to configuring the integration on cloud using the **PAT**, with the exception of using **satellite to communicate** with the **Gitlab server**.
+The steps for configuring the integration using satellite is similar to configuring the integration on cloud using the **PAT**, with the exception of using satellite to communicate** with the **Gitlab server**.
 
 Make sure to select the **satellite integration checkbox** while configuring the integration.
 
@@ -84,7 +84,7 @@ satellite:
   api_key: <ACCOUNT_API_KEY>
   url: 'https://app.harness.io/gratis/sei/api'
 integrations:
-  - id: '<ID>' # For ex: 4691
+  - id: '<INTEGRATION_ID>' # For ex: 4691
     application: gitlab
     url: '<https://<GITLAB_INSTANCE_URL>'
     metadata:

@@ -51,15 +51,15 @@ Here’s a sample `satellite.yml` file
 
 ```yaml
 satellite:
-  tenant: foo
-  api_key: <sei-api-key>
-  url: 'https://testapi1.propelo.ai'
+  tenant: <ACCOUNT_ID>
+  api_key: <ACCOUNT_API_KEY>
+  url: 'https://app.harness.io/gratis/sei/api'
 integrations:
-  - id: '4712'
+  - id: '<INTEGRATION_ID>'
     application: splunk
-    url: 'https://www.splunk.com/'
-    username: codewdhruv
-    api_key: <splunk-api-key>
+    url: '<SPLUNK_URL>' # https://www.splunk.com/
+    username: <SNYK_USERNAME>
+    api_key: <SNYK_API_KEY>
     metadata:
       ignore_server_cert: true
       is_splunk_cloud: true

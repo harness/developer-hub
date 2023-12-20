@@ -11,7 +11,7 @@ Use the SEI Jira integration to integrate SEI with Jira in the Cloud.
 
 ## Configure Jira
 
-Before you configure the SEI Jira integration, you must install the Harness SEI Jira app and generate an Atlassian API token.
+Before you configure the SEI Jira integration, you must generate an Atlassian API token.
 
 :::tip Use a service account
 

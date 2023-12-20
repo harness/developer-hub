@@ -48,13 +48,13 @@ Here’s a sample `satellite.yml` file
 
 ```YAML
 satellite:
-  tenant: foo
-  api_key: <SEI_API_KEY>
-  url: 'https://testapi1.propelo.ai'
+  tenant: <ACCOUNT_ID>
+  api_key: <ACCOUNT_API_KEY>
+  url: 'https://app.harness.io/gratis/sei/api'
 integrations:
-  - id: '4678'
+  - id: '<INTEGRATION_ID>'
     application: cxsast
-    url: <CHECKMARX_USERNAME> # 'https://sca.checkmarx.net'
+    url: <CHECKMARX_URL> # 'https://sca.checkmarx.net'
     username: <CHECKMARX_USERNAME>
 ```
 

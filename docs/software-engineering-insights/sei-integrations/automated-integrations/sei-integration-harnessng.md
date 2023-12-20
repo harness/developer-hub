@@ -72,7 +72,7 @@ satellite:
   api_key: <ACCOUNT_API_KEY>
   url: 'https://app.harness.io/gratis/sei/api'
 integrations:
-  - id: '<ID>'
+  - id: '<INTEGRATION_ID>'
     application: harnessng
     url: '<HARNESS_URL>'
     api_key: <HARNESS_API_KEY>

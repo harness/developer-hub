@@ -60,7 +60,7 @@ satellite:
   api_key: <ACCOUNT_API_KEY>
   url: 'https://app.harness.io/gratis/sei/api'
 integrations:
-  - id: '<ID>' # For ex: 4692
+  - id: '<INTEGRATION_ID>' # For ex: 4692
     application: gitlab
     url: '<GITLAB_INSTANCE_URL>'
     api_key: <GITLAB_PAT>

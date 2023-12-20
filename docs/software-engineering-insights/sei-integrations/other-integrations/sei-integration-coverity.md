@@ -33,7 +33,7 @@ import TabItem from '@theme/TabItem';
 4. Configure and save the integration.
    * Add the **Coverity instance URL**
    * Enter your **Username**
-   * Enter the **Coverity API Key** and click **next**. To generate an **API key** for your Coverity instance, Go to [Generating API key](https://community.synopsys.com/s/article/Authentication-with-REST-API-using-auth-key).&#x20;
+   * Enter the **Coverity API Key** and click **Next**. To generate an **API key** for your Coverity instance, Go to [Generating API key](https://community.synopsys.com/s/article/Authentication-with-REST-API-using-auth-key).
    * Provide a **Name** for the integration.
    * The **Description** and **Tags** are optional.
 
@@ -42,23 +42,23 @@ import TabItem from '@theme/TabItem';
   <TabItem value="satellite" label="Satellite">
 ```
 
-The steps for configuring the integration using **satellite** is similar to configuring the integration on cloud, with the exception of using **satellite to communicate** with the Coverity server.
+The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Coverity server.
 
-Make sure to select the **satellite integration checkbox** while configuring the integration. Once you save the integration a satellite.yml file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
+Make sure to select the satellite integration checkbox while configuring the integration. Once you save the integration a satellite.yml file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
 Here’s a sample `satellite.yml` file
 
 ```yaml
 satellite:
-  tenant: foo
-  api_key: <sei-api-key>
-  url: 'https://testapi1.propelo.ai'
+  tenant: <ACCOUNT_ID>
+  api_key: <ACCOUNT_API_KEY>
+  url: 'https://app.harness.io/gratis/sei/api'
 integrations:
-  - id: '4680'
+  - id: '<INTEGRATION_ID>'
     application: coverity
-    url: 'https://scan.coverity.com/'
-    username: testing-coverity
-    api_key: <coverity-api-key>
+    url: '<COVERITY_URL>' # https://scan.coverity.com/
+    username: <COVERITY_USERNAME>
+    api_key: <COVERITY_API_KEY>
 ```
 
 If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).

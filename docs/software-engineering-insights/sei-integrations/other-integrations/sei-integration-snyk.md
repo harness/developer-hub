@@ -52,15 +52,15 @@ Here’s a sample `satellite.yml` file
 
 ```yaml
 satellite:
-  tenant: foo
-  api_key: <sei-api-key>
-  url: 'https://testapi1.propelo.ai'
+  tenant: <ACCOUNT_ID>
+  api_key: <ACCOUNT_API_KEY>
+  url: 'https://app.harness.io/gratis/sei/api'
 integrations:
-  - id: '4710'
+  - id: '<INTEGRATION_ID>'
     application: snyk
-    url: 'https://app.snyk.io'
-    username: codewdhruv
-    api_key: <snyk-api-key>
+    url: '<SNYK_URL>' # https://app.snyk.io
+    username: <SNYK_USERNAME>
+    api_key: <SNYK_API_KEY>
 ```
 
 If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
