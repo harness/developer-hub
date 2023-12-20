@@ -38,12 +38,12 @@ The private on-premise integrations are configured using a SEI Satellite. Follow
 2. Select **Available Integrations**, locate the **GitLab Enterprise** integration, and select **Install**.
 3. Select **Private on-premise** GitLab Integration
 4. In Integration **Name**, enter a name for the integration.
-5. Add a **description** for the integration. (Optional)
+5. Add a **Description** for the integration. (Optional)
 6. In the **URL** field, add the URL where your Gitlab repository is deployed.
    
-   For example, if your **Gitlab** is deployed on a **virtual machine (VM)**, add the URL in the format: `https://<IP_ADDRESS>`.
+   For example, if your **Gitlab** is deployed on a **virtual machine (VM)**, add the URL in the format: `https://<GITLAB_INSTANCE_URL>`.
 7. Enter the **Personal Access Token** in the API key section.
-8. Add the **tags** for the integration
+8. Add the **Tags** for the integration
 9. If applicable, configure Additional Options:
    1. **Fetch PRs**: Allow SEI to ingest PR data from Gitlab.
    2. **Fetch Issues**: Allow SEI to ingest data from Gitlab Issues.
@@ -54,16 +54,16 @@ The private on-premise integrations are configured using a SEI Satellite. Follow
 
 Here’s a sample `satellite.yml` file:
 
-```
+```yaml
 satellite:
-  tenant: foo
-  api_key: <sei-api-key>
-  url: 'https://testapi1.propelo.ai'
+  tenant: <ACCOUNT_ID>
+  api_key: <ACCOUNT_API_KEY>
+  url: 'https://app.harness.io/gratis/sei/api'
 integrations:
-  - id: '4692'
+  - id: '<ID>' # For ex: 4692
     application: gitlab
-    url: 'https://<IP_ADDRESS>'
-    api_key: <gitlab-pat>
+    url: '<GITLAB_INSTANCE_URL>'
+    api_key: <GITLAB_PAT>
     metadata:
       fetch_prs: true
       fetch_issues: true
@@ -106,9 +106,9 @@ If you encounter any issues during the integration process, go to the Satellite 
 3. Select **Public on-premise** GitLab Integration
 4. In Integration **Name**, enter a name for the integration.
 5. Add a **description** for the integration. (Optional)
-6. In the **URL** field, add the URL where your Gitlab repository is deployed.\
+6. In the **URL** field, add the URL where your Gitlab repository is deployed.
    \
-   For example, if your Gitlab is deployed on a **virtual machine (VM**), add the URL in the format: `https://<IP_ADDRESS>`.
+   For example, if your Gitlab is deployed on a **virtual machine (VM**), add the URL in the format: `https://<GITLAB_INSTANCE_URL>`.
 7. Enter the **Personal Access Token** in the API key section.
 8. Add the **Tags** for the integration
 9. If applicable, configure **Additional Option**s:

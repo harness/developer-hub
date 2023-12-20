@@ -48,21 +48,21 @@ Here’s a sample satellite.yaml file generated for the Bitbucket enterprise int
 
 ```yaml
 satellite:
-  tenant: foo
-  api_key: <sei-api-key>
-  url: 'https://testapi1.propelo.ai'
+  tenant: <ACCOUNT_ID>
+  api_key: <ACCOUNT_API_KEY>
+  url: 'https://app.harness.io/gratis/sei/api'
 integrations:
-  - id: '4675'
+  - id: '<ID>'
     application: bitbucket_server
-    url: 'https://bitbucket.org/<teamName_or_username>/<repo-name>/src'
-    username: dhruba-docs
-    api_key: <bitbucket-api-key>
+    url: 'https://bitbucket.org/<TEAM_NAME_or_USERNAME>/<REPO_NAME>/src'
+    username: <BITBUCKET_USERNAME>
+    api_key: <BITBUCKET_API_KEY>
     metadata:
       fetch_prs: true
       fetch_pr_reviews: true
       fetch_commits: true
       fetch_commit_files: true
-      repos: docs-repo
+      repos: <REPOSITORIES>
     satellite: true
 
 ```

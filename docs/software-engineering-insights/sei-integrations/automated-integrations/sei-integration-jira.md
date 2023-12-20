@@ -40,12 +40,12 @@ import TabItem from '@theme/TabItem';
 2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **Jira integration**, and select **Install**.
 4. Configure the integration:
-   * Add the **URL** of your **Jira** integration instance, for example, `"https://company.atlassian.net"`. Make sure it's a valid URL.
-   * Enter your Jira **username**.
-   * rovide the **API key** that you previously generated within your **Atlassian account**.
+   * Add the **URL** of your **Jira** integration instance, for example, `"https://organization.atlassian.net"`. Make sure it's a valid URL.
+   * Enter your Jira **Username**.
+   * Provide the **API key** that you previously generated within your **Atlassian account**.
    * If necessary, add a custom **JQL (Jira Query Language) query**. This query will determine which issues are ingested by SEI. Leave this field blank if you want to ingest all issues.
-   * Select your **preferred time zone** from the available options.
-   * Choose the **fields** you wish to exclude from ingestion. 
+   * Select your **Preferred Time Zone** from the available options.
+   * Choose the **Fields** you wish to exclude from ingestion. 
       
       You might exclude fields containing sensitive information such as **Summary**, **Description**, and **Comments**. Excluded fields will not be evaluated for **hygiene** or adherence to best practices.
    * Finish configuration and **Save** the integration.
@@ -57,25 +57,25 @@ To integrate with the on-premises Jira instances, you must username and password
   <TabItem value="satellite" label="Satellite">
 ```
 
-The steps for configuring the integration using **satellite** is similar to configuring the integration on cloud, with the exception of using **satellite to communicate** with the Atlassian server.
+The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Atlassian server.
 
-To integrate with **on-premises Jira** instances, you can use the **username** and **password** for **authentication** or use the **user-generated API key** with the relevant permission. Make sure to select the **satellite integration checkbox** while configuring the integration.
+To integrate with **On-Premises Jira** instances, you can use the **Username** and the **User-Generated API key** with the relevant permission. Make sure to select the **Satellite Integration Checkbox** while configuring the integration.
 
 Once you save the integration a **satellite.yml** file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
 Here’s a sample `satellite.yml` file
 
-```
+```yaml
 satellite:
-  tenant: foo
-  api_key: <sei-api-key>
-  url: 'https://testapi1.propelo.ai'
+  tenant: <ACCOUNT_ID>
+  api_key: <ACCOUNT_API_KEY>
+  url: 'https://app.harness.io/gratis/sei/api'
 integrations:
-  - id: '4696'
+  - id: '<ID>'
     application: jira
-    url: '<atlassian-url>'
-    username: codewdhruv
-    api_key: <atllassian-password>
+    url: '<ATLASSIAN_JIRA_URL>'
+    username: <ATLASSIAN_USERNAME>
+    api_key: <ATLASSIAN_API_KEY>
     metadata:
       timezone: 'America/Los_Angeles'
       sensitive_fields:
@@ -90,8 +90,9 @@ jira:
 :::info
 The timezone field within the metadata should be in the Atlassian standard version.
 
-To find the correct timezone, go to ```https://organization.atlassian.net/rest/api/2/myself```
+To find the correct timezone, go to ```https://<ORGANIZATION_JIRA_URL>/rest/api/2/myself```
 :::
+
 
 If you encounter any authentication issues, consider the following options:
 
@@ -100,7 +101,7 @@ If you encounter any authentication issues, consider the following options:
    Test with the following curl command:
 
 ```bash
-curl -u "USERNAME:PASSWORD" -X GET "https://host:port/context/rest/api/search?jql=key-DE-3121"
+curl -u "<USERNAME:PASSWORD>" -X GET "https://host:port/context/rest/api/search?jql=<CUSTOM_JQL_QUERY>
 ```
 
 2. While using the generated managed token for authentication leave the `user_name` blank and use the managed token that you are generating for `api_key`.
@@ -108,17 +109,11 @@ curl -u "USERNAME:PASSWORD" -X GET "https://host:port/context/rest/api/search?jq
    Test with the following curl command:
 
 ```bash
-curl -H "Authorization: Bearer MANAGED_TOKEN" -X GET "https://host:port/context/rest/api/search?jql=key=DE-3121
+curl -H "Authorization: Bearer <MANAGED_TOKEN>" -X GET "https://host:port/context/rest/api/search?jql=key=<CUSTOM_JQL_QUERY>
 ```
 
-If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-### ADFS-based Auth for JIRA connectivity via Satellite
+<details>
+<summary> ADFS-based authentication for JIRA using Satellite</summary>
 
 ADFS (Active Directory Federation Services) is a Microsoft service that provides single sign-on authentication to users across multiple applications or systems. When integrating with Jira using ADFS-based authentication via Satellite, specific fields need to be configured in the `satellite.yml` file.
 
@@ -135,14 +130,14 @@ Replace with:
 
 ```yaml
 authentication: adfs
-adfs_url: <ADFS-SERVER-ENDPOINT>
-adfs_client_id: <CLIENT-IDENTIFIER> / <APPLICATION-ID>
-adfs_resource: <RESOURCE-IDENTIFIER>
-adfs_username: <ADFS-USERNAME>
-adfs_password: <pwd>
+adfs_url: <ADFS_SERVER_ENDPOINT>
+adfs_client_id: <CLIENT_IDENTIFIER> / <APPLICATION_ID>
+adfs_resource: <RESOURCE_IDENTIFIER>
+adfs_username: <ADFS_USERNAME>
+adfs_password: <ADFS_PASSWORD>
 ```
 
-Replace `<pwd>` with the actual password for the specified ADFS username. Ensure the rest of the file remains unchanged.
+Replace `<ADFS_PASSWORD>` with the actual password for the specified ADFS username. Ensure the rest of the file remains unchanged.
 
 * `authentication:` This field specifies the authentication method to be used, in this case, ADFS.
 
@@ -152,9 +147,18 @@ Replace `<pwd>` with the actual password for the specified ADFS username. Ensure
 
 * `adfs_resource:` The identifier of the resource for which the access token is being requested. In the context of Jira integration, it specifies the URI of the Jira OAuth API on the ADFS server.
 
-* `adfs_username:` The username used for authentication. This could be a service account or a specific user account authorized to access Jira via ADFS.\
+* `adfs_username:` The username used for authentication. This could be a service account or a specific user account authorized to access Jira via ADFS.
 
 * `adfs_password:` The password associated with the specified ADFS username. It is important to keep this information secure.
+
+</details>
+
+If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ## Add the Salesforce mapping
 
