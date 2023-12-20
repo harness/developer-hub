@@ -135,6 +135,24 @@ When attaching the CET Agent to an IBM JVM, include the VM flag `-Xshareclasses:
 
 
 <details>
+<summary><b>Supported logging frameworks</b></summary>
+
+| **Framework** | **Minimum Version** | **Maximum Supported Version** |
+| --- | --- | --- |
+| Akka | 2.4.0 | 2.8.5 |
+| ACL Simplelog | 1.0 | 1.2 |
+| JBoss | 3.0.0.GA | 3.5.3.Final |
+| Log4j2 | 2.0.0 | 2.20.0 |
+| Log4j2 async | 2.0.0 | 2.20.0 |
+| Logback | 0.9.26 | 1.4.11 |
+| SLF4J | 1.6.6 | 1.7.36 |
+| Tinylog | Not applicable | Not applicable |
+| JUL | Not applicable | Not applicable |
+
+</details>
+
+
+<details>
 <summary><b>Supported application servers</b></summary>
 
 | **Name** | **Version** |
