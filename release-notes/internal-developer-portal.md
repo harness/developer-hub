@@ -30,14 +30,22 @@ In this release, we're excited to unveil features like the HTTP actions support 
 
 - **Docs:** [Supported Custom Actions](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions), [OPA](Link to be added), [IDP Stage](https://6582ce9b1eb6070097c8b473--harness-developer.netlify.app/docs/internal-developer-portal/flows/idp-stage)
 
-#### New features and enhancements
+#### Early access features
 
-- Added support for http actions in the scaffolder-backend.  [IDP-1853]. 
 - Added a new stage, specifically for IDP, knows as Developer Portal to help with the self service flows (presently this feature is behind a Feature Flag) [IDP-1425]
-- Added OPA/Governance policies for Backstage entities. [IDP-1514]
+
+![](./static/idp-stage.png)
+
 - Added a Cookiecutter step to enable use of cookiecutter based templates in the IDP stage.[IDP-1437]
 - Added a step to register software components in IDP catalog.[IDP-1438]
 - Added a step to create a repository in your git provider and push contents along with catalog-info.yaml. [IDP-1436]
+
+This feature is behind the feature flag `To be Added`, also has dependency on other services which might delay it's releases untill those services are on their latest release. To enable the feature, contact [Harness Support](support@harness.io).
+
+#### New features and enhancements
+
+- Added support for http actions in the scaffolder-backend.  [IDP-1853]. 
+- Added OPA/Governance policies for Backstage entities. [IDP-1514]
 
 #### Bug Fixes
 
