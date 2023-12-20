@@ -25,6 +25,20 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## December 2023 
 
+### Version 1.77.1
+
+<!-- 2023-12-21 -->
+
+#### New enhancement
+
+This release introduces a change in behavior when ingesting SARIF data. Previously, issues with a level of **Error** in SARIF got assigned a severity of **Critical** in STO. These issues now get assigned a severity of **High**. (STO-6845, ZD-55359)
+
+#### Fixed issue
+
+Fixed an issue where the SonarQube step was assigning incorrect values to the Java Binaries setting.  (STO-6808)
+
+
+
 ### Version 1.76
 
 <!-- 2023-12-03 -->
