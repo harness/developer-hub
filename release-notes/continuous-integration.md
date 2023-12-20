@@ -36,7 +36,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### Fixed issues
 
-* Fixed an issue where builds failed in a Kubernetes cluster build infrastructure because certificates from the key chain weren't considered when fetching the entrypoint for the [S3 Upload and Publish plugin](). (CI-10258, ZD-53311)
+* Fixed an issue where builds failed in a Kubernetes cluster build infrastructure because certificates from the key chain weren't considered when fetching the entrypoint for the [S3 Upload and Publish plugin](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings#use-the-s3-upload-and-publish-plugin). (CI-10258, ZD-53311)
 * Improved error messaging related to addon disconnects. (CI-8877)
 * Fixed an issue with SCM service logging. (CI-8872)
 
