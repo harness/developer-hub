@@ -3760,7 +3760,7 @@ export myvar=123
 Then, in the Shell Script step, go to Script Output Variables and add a new output variable. Set the Name to the name of the stage variable (myvar in this example) and set the Value to the name of the exported variable in your script (myvar in this example).
 Now, the value of the stage variable myvar will be set to 123 after the Shell Script step is executed. You can reference this value in subsequent steps using the Harness expression 
 
-<+execution.stages.[stage_id].output.outputVariables.myvar>
+`<+execution.stages.[stage_id].output.outputVariables.myvar>`
 
 #### Every time when I run kubernetes deployment, harness create new version of configmap even of there were no changes which force pods redeployment. Is there a way to specify for harness to create new configmap only when changes detected?
 
