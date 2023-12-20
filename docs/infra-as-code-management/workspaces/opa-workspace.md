@@ -5,7 +5,6 @@ sidebar_position: 50
 ---
 
 :::info
-
 OPA is the embedded policy engine for the Harness platform. read more about it [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/)
 :::
 

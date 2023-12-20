@@ -108,7 +108,7 @@ export const docsCards: CardSections = [
         title: "Workspace Permissions and Access Control",
         module: MODULES.iacm,
         description:
-          "Learn how to apply permissions and access control on Workspace to detect and get notified on drift.",
+          "Learn how to apply permissions and access controls on Workspaces",
         link: "/docs/infra-as-code-management/workspaces/workspace-rbac",
       }
     ]
