@@ -622,7 +622,7 @@ You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"
   ```
   This secret expression should not be wrapped within quotation marks.
 
-- If expressions don't need to be evaluated in the pipeline YAML but are added as script comments in the Shell Script step, the Run step, or another step, they will still be processed and evaluated. This might cause failures and unnecessary processing.
+- If expressions don't need to be evaluated in the pipeline YAML but are added as script comments in the Shell Script step, the Run step, or another step, they will still be processed and evaluated. This might cause failures and unnecessary processing.  Review and remove any unnecessary script comments from the pipeline YAML to streamline the evaluation process.
   So, you should remove those commented code of having expressions if you don't want them to be evaluated.
 
 
