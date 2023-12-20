@@ -124,10 +124,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Disables the resolving of comments in values.yaml files.</td>
     </tr>
     <tr>
-        <td>NG_EXPRESSIONS_NEW_INPUT_ELEMENT</td>
-        <td>Suggests probable expressions when selecting <b>Expression</b> for a setting using autocomplete.</td>
-    </tr>
-    <tr>
         <td>PIE_GITX_OAUTH</td>
         <td>Uses users' OAuth credentials to fetch and commit in Git. <b>This feature is in Public Preview.</b></td>
     </tr>
