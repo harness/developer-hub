@@ -3755,7 +3755,7 @@ So define variable with default value and then in the middle of the pipeline cha
 You can assign a stage variable value via shell script in Harness pipeline by using the Script Output Variables option in the Shell Script step.
 First, declare the variable in your script and export it. For example, if you want to set the value of a stage variable named myvar to 123, you can add the following line to your script:
 
-export myvar=123
+`export myvar=123`
 
 Then, in the Shell Script step, go to Script Output Variables and add a new output variable. Set the Name to the name of the stage variable (myvar in this example) and set the Value to the name of the exported variable in your script (myvar in this example).
 Now, the value of the stage variable myvar will be set to 123 after the Shell Script step is executed. You can reference this value in subsequent steps using the Harness expression 
