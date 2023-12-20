@@ -93,14 +93,8 @@ The timezone field within the metadata should be in the Atlassian standard versi
 To find the correct timezone, go to ```https://<ORGANIZATION>.atlassian.net/rest/api/2/myself```
 :::
 
-If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-### ADFS-based Auth for JIRA connectivity via Satellite
+<details>
+<summary> ADFS-based authentication for JIRA using Satellite</summary>
 
 ADFS (Active Directory Federation Services) is a Microsoft service that provides single sign-on authentication to users across multiple applications or systems. When integrating with Jira using ADFS-based authentication via Satellite, specific fields need to be configured in the `satellite.yml` file.
 
@@ -134,9 +128,18 @@ Replace `<ADFS_PASSWORD>` with the actual password for the specified ADFS userna
 
 * `adfs_resource:` The identifier of the resource for which the access token is being requested. In the context of Jira integration, it specifies the URI of the Jira OAuth API on the ADFS server.
 
-* `adfs_username:` The username used for authentication. This could be a service account or a specific user account authorized to access Jira via ADFS.\
+* `adfs_username:` The username used for authentication. This could be a service account or a specific user account authorized to access Jira via ADFS.
 
 * `adfs_password:` The password associated with the specified ADFS username. It is important to keep this information secure.
+
+</details>
+
+If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ## Add the Salesforce mapping
 
