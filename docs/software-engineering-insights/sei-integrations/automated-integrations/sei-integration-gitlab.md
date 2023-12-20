@@ -7,7 +7,7 @@ sidebar_label: GitLab Cloud
 
 GitLab is a DevOps platform that provides Git repos, CI/CD pipelines, issue management, and more.
 
-SEI supports two integrations to integrate SEI with GIthub.&#x20;
+SEI supports two integrations to integrate SEI with GIthub.
 
 * Gitlab Cloud
 * Gitlab Enterprise
@@ -78,15 +78,15 @@ Make sure to select the **satellite integration checkbox** while configuring the
 
 Here’s a sample `satellite.yml` file:
 
-```
+```yaml
 satellite:
-  tenant: foo
-  api_key: <api-key>
-  url: 'https://testapi1.propelo.ai'
+  tenant: <ACCOUNT_ID>
+  api_key: <ACCOUNT_API_KEY>
+  url: 'https://app.harness.io/gratis/sei/api'
 integrations:
   - id: '4691'
     application: gitlab
-    url: ' https://<IP_ADDRESS>/'
+    url: '<https://<IP_ADDRESS>/>'
     metadata:
       fetch_prs: true
       fetch_issues: true

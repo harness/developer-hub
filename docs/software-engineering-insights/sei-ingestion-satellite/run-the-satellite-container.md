@@ -15,6 +15,8 @@ Use Ingestion Satellites to integrate with on-premise tools and set up **Custom*
 
 In addition to Ingestion Satellites and other [integrations](../sei-integrations/sei-integrations-overview.md), you can [import CSV files](../sei-propels-scripts/tables.md) and display the data in [Table reports](../sei-propels-scripts/table-reports.md).
 
+The recommended memory for one container is 4GB to 6GB. 
+
 :::
 
 ```mdx-code-block
@@ -74,7 +76,7 @@ Do avoid storing data at rest in the clear, you can encrypt `satellite.yml`. The
 3. Run the `docker run` command with an encryption password environment variable.
 
    ```bash
-   export ENCRYPTION_PASSWORD="<YOUR PASSWORD>"; docker run -d --restart unless-stopped \
+   export ENCRYPTION_PASSWORD="<YOUR_PASSWORD>"; docker run -d --restart unless-stopped \
      -v /absolute/path/to/satellite.yml.enc:/levelops/config.yml \
      --env ENCRYPTION_PASSWORD \
      levelops/ingestion-satellite

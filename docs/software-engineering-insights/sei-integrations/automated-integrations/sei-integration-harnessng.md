@@ -51,7 +51,7 @@ import TabItem from '@theme/TabItem';
    * **Project**: Enter your project name. Similarly, you can use a comma-separated list if you have multiple projects.
      
      For example, "org/project, org2/project2." Like organization names, project names are case-sensitive. Leaving this field blank will ingest all the projects from organizations accessible to the token user.
-4. Finish configuration and **save** the integration.
+4. Finish configuration and **Save** the integration.
 
 
 ```mdx-code-block
@@ -68,16 +68,16 @@ Here’s a sample `satellite.yml` file:
 
 ```
 satellite:
-  tenant: foo
-  api_key: <sei-api-key>
-  url: 'https://testapi1.propelo.ai'
+  tenant: <ACCOUNT_ID>
+  api_key: <ACCOUNT_API_KEY>
+  url: 'https://app.harness.io/gratis/sei/api'
 integrations:
   - id: '4693'
     application: harnessng
-    url: 'https://app.harness.io'
-    api_key: <harness-ng-api-key>
+    url: '<HARNESS_URL>'
+    api_key: <HARNESS_PAT>
     metadata:
-      accountId: <harness-ng-account-id>
+      accountId: <HARNESS_NG_ACCOUNTID>
       organization: default
       project: default
 

@@ -54,16 +54,16 @@ The private on-premise integrations are configured using a SEI Satellite. Follow
 
 Here’s a sample `satellite.yml` file:
 
-```
+```yaml
 satellite:
-  tenant: foo
-  api_key: <sei-api-key>
-  url: 'https://testapi1.propelo.ai'
+  tenant: <ACCOUNT_ID>
+  api_key: <ACCOUNT_API_KEY>
+  url: 'https://app.harness.io/gratis/sei/api'
 integrations:
   - id: '4692'
     application: gitlab
     url: 'https://<IP_ADDRESS>'
-    api_key: <gitlab-pat>
+    api_key: <GITLAB_PAT>
     metadata:
       fetch_prs: true
       fetch_issues: true
