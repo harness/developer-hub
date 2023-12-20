@@ -93,6 +93,25 @@ The timezone field within the metadata should be in the Atlassian standard versi
 To find the correct timezone, go to ```https://<ORGANIZATION>.atlassian.net/rest/api/2/myself```
 :::
 
+
+If you encounter any authentication issues, consider the following options:
+
+1. While using a username and password for authentication, edit the generated `satellite.yml` file and use your Jira password as a value for `api_key` in the YAML and keep the `user_name` as is.
+
+   Test with the following curl command:
+
+```bash
+curl -u "<USERNAME:PASSWORD>" -X GET "https://host:port/context/rest/api/search?jql=<CUSTOM_JQL_QUERY>
+```
+
+2. While using the generated managed token for authentication leave the `user_name` blank and use the managed token that you are generating for `api_key`.
+
+   Test with the following curl command:
+
+```bash
+curl -H "Authorization: Bearer <MANAGED_TOKEN>" -X GET "https://host:port/context/rest/api/search?jql=key=<CUSTOM_JQL_QUERY>
+```
+
 <details>
 <summary> ADFS-based authentication for JIRA using Satellite</summary>
 
