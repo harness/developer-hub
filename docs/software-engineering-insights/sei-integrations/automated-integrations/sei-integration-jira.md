@@ -40,12 +40,12 @@ import TabItem from '@theme/TabItem';
 2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **Jira integration**, and select **Install**.
 4. Configure the integration:
-   * Add the **URL** of your **Jira** integration instance, for example, `"https://company.atlassian.net"`. Make sure it's a valid URL.
-   * Enter your Jira **username**.
-   * rovide the **API key** that you previously generated within your **Atlassian account**.
+   * Add the **URL** of your **Jira** integration instance, for example, `"https://organization.atlassian.net"`. Make sure it's a valid URL.
+   * Enter your Jira **Username**.
+   * Provide the **API key** that you previously generated within your **Atlassian account**.
    * If necessary, add a custom **JQL (Jira Query Language) query**. This query will determine which issues are ingested by SEI. Leave this field blank if you want to ingest all issues.
-   * Select your **preferred time zone** from the available options.
-   * Choose the **fields** you wish to exclude from ingestion. 
+   * Select your **Preferred Time Zone** from the available options.
+   * Choose the **Fields** you wish to exclude from ingestion. 
       
       You might exclude fields containing sensitive information such as **Summary**, **Description**, and **Comments**. Excluded fields will not be evaluated for **hygiene** or adherence to best practices.
    * Finish configuration and **Save** the integration.
@@ -59,7 +59,7 @@ To integrate with the on-premises Jira instances, you must username and password
 
 The steps for configuring the integration using **satellite** is similar to configuring the integration on cloud, with the exception of using **satellite to communicate** with the Atlassian server.
 
-To integrate with **On-Premises Jira** instances, you can use the **Username** and **Password** for **Authentication** or use the **User-Generated API key** with the relevant permission. Make sure to select the **Satellite integration checkbox** while configuring the integration.
+To integrate with **On-Premises Jira** instances, you can use the **Username** and the **User-Generated API key** with the relevant permission. Make sure to select the **Satellite Integration Checkbox** while configuring the integration.
 
 Once you save the integration a **satellite.yml** file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
@@ -71,11 +71,11 @@ satellite:
   api_key: <ACCOUNT_API_KEY>
   url: 'https://app.harness.io/gratis/sei/api'
 integrations:
-  - id: '4696'
+  - id: '<ID>'
     application: jira
     url: '<ATLASSIAN_JIRA_URL>'
-    username: <USERNAME>
-    api_key: <ATLASSIAN_PASSWORD>
+    username: <ATLASSIAN_USERNAME>
+    api_key: <ATLASSIAN_API_KEY>
     metadata:
       timezone: 'America/Los_Angeles'
       sensitive_fields:
@@ -92,24 +92,6 @@ The timezone field within the metadata should be in the Atlassian standard versi
 
 To find the correct timezone, go to ```https://<ORGANIZATION>.atlassian.net/rest/api/2/myself```
 :::
-
-If you encounter any authentication issues, consider the following options:
-
-1. While using a username and password for authentication, edit the generated `satellite.yml` file and use your Jira password as a value for `api_key` in the YAML and keep the `user_name` as is.
-
-   Test with the following curl command:
-
-```bash
-curl -u "<USERNAME:PASSWORD>" -X GET "https://host:port/context/rest/api/search?jql=key-DE-3121"
-```
-
-2. While using the generated managed token for authentication leave the `user_name` blank and use the managed token that you are generating for `api_key`.
-
-   Test with the following curl command:
-
-```bash
-curl -H "Authorization: Bearer <MANAGED_TOKEN>" -X GET "https://host:port/context/rest/api/search?jql=key=DE-3121
-```
 
 If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 

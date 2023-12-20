@@ -66,16 +66,16 @@ Make sure to select the **satellite integration checkbox** while configuring the
 
 Here’s a sample `satellite.yml` file:
 
-```
+```yaml
 satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
   url: 'https://app.harness.io/gratis/sei/api'
 integrations:
-  - id: '4693'
+  - id: '<ID>'
     application: harnessng
     url: '<HARNESS_URL>'
-    api_key: <HARNESS_PAT>
+    api_key: <HARNESS_API_KEY>
     metadata:
       accountId: <HARNESS_NG_ACCOUNTID>
       organization: default

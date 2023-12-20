@@ -66,7 +66,7 @@ Make sure to select the **satellite integration checkbox** while configuring the
 3. Add a **description** for the integration. (Optional)
 4. In the **URL** field, add the URL where your Gitlab repository is deployed. 
    
-   For example, if your Gitlab is deployed on a **virtual machine (VM)**, add the URL in the format: `https://<IP_ADDRESS>`.
+   For example, if your Gitlab is deployed on a **virtual machine (VM)**, add the URL in the format: `https://<GITLAB_INSTANCE_URL>`.
 
 5. If applicable, configure **Additional Options**:
    1. **Fetch PRs**: Allow SEI to ingest PR data from Gitlab.
@@ -84,9 +84,9 @@ satellite:
   api_key: <ACCOUNT_API_KEY>
   url: 'https://app.harness.io/gratis/sei/api'
 integrations:
-  - id: '4691'
+  - id: '<ID>' # For ex: 4691
     application: gitlab
-    url: '<https://<IP_ADDRESS>/>'
+    url: '<https://<GITLAB_INSTANCE_URL>'
     metadata:
       fetch_prs: true
       fetch_issues: true

@@ -11,11 +11,9 @@ import TabItem from '@theme/TabItem';
 
 Use Ingestion Satellites to integrate with on-premise tools and set up **Custom** integrations.
 
-:::tip
+:::info
 
-In addition to Ingestion Satellites and other [integrations](../sei-integrations/sei-integrations-overview.md), you can [import CSV files](../sei-propels-scripts/tables.md) and display the data in [Table reports](../sei-propels-scripts/table-reports.md).
-
-The recommended memory for one container is 4GB to 6GB. 
+The recommended memory for one container is 4GB to 6GB.
 
 :::
 
@@ -268,3 +266,8 @@ data: ## This section comes from satellite.yml. If you copy and paste this secti
 </Tabs>
 ```
 
+:::tip
+
+In addition to Ingestion Satellites and other [integrations](../sei-integrations/sei-integrations-overview.md), you can [import CSV files](../sei-propels-scripts/tables.md) and display the data in [Table reports](../sei-propels-scripts/table-reports.md).
+
+:::

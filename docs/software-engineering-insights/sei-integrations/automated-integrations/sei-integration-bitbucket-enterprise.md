@@ -52,10 +52,10 @@ satellite:
   api_key: <ACCOUNT_API_KEY>
   url: 'https://app.harness.io/gratis/sei/api'
 integrations:
-  - id: '4675'
+  - id: '<ID>'
     application: bitbucket_server
     url: 'https://bitbucket.org/<TEAM_NAME_or_USERNAME>/<REPO_NAME>/src'
-    username: dhruba-docs
+    username: <BITBUCKET_USERNAME>
     api_key: <BITBUCKET_API_KEY>
     metadata:
       fetch_prs: true
