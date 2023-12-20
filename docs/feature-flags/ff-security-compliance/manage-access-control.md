@@ -10,6 +10,7 @@ helpdocs_category_id: u0gbfyk4p4
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
+  - /docs/feature-flags/ff-onboarding/ff-security-compliance/manage-access-control
   - /docs/article/3zj5zq5z5m-feature-flags
 ---
 
