@@ -200,7 +200,6 @@ Setup Harness CD & GitOps in a few commands
       --org-id value            provide an Organization Identifier
       --project-id value        provide a Project Identifier
       --help, -h                show help
-   
    ```
 
 7. `harness gitops-repository apply help`
@@ -236,6 +235,7 @@ Setup Harness CD & GitOps in a few commands
       --help, -h                show help
    
    ```
+
 <!-- 
 ## Environment
 
