@@ -90,7 +90,7 @@ jira:
 :::info
 The timezone field within the metadata should be in the Atlassian standard version.
 
-To find the correct timezone, go to ```https://<ORGANIZATION>.atlassian.net/rest/api/2/myself```
+To find the correct timezone, go to ```https://<ORGANIZATION_JIRA_URL>/rest/api/2/myself```
 :::
 
 
