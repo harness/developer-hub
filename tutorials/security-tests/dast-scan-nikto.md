@@ -1,8 +1,8 @@
 ---
-title: SAST code scans using Semgrep
-sidebar_position: 30
-description: Scan a codebase using Semgrep
-keywords: [STO, security, SAST, security, codebase, Semgrep]
+title: DAST app scans using Nikto
+sidebar_position: 35
+description: Scan a web app using Semgrep
+keywords: [STO, security, DAST, security, codebase, Nikto]
 # slug: /sto-pipelines/sast/semgrep
 ---
 
@@ -18,36 +18,24 @@ keywords: [STO, security, SAST, security, codebase, Semgrep]
 />
 
 
-This tutorial shows you how to scan your codebases using [Semgrep](https://semgrep.dev), a popular [SAST](https://www.gartner.com/en/information-technology/glossary/static-application-security-testing-sast) tool for detecting vulnerabilities in application code. Semgrep can scan a [wide variety of languages](https://semgrep.dev/docs/supported-languages/) and includes a [free version](https://semgrep.dev/pricing/) for individuals who want to scan files locally. 
+This tutorial shows you how to scan a web app using [Nikto](https://cirt.net/Nikto2), an open-source scanner that runs tests against web servers to detect dangerous files/programs, outdated server versions, and problems with specific server releases. 
 
-In this tutorial, you'll set up a simple [ingestion-only workflow](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) with two steps. The first step runs the scan; the second step ingests the results.
-
-![ingestion-only workflow](./static/sast-semgrep-tutorial/ingestion-only-workflow.png)
+In this tutorial, you'll set up a simple pipeline with a [Nikto step](/docs/security-testing-orchestration/sto-techref-category/nikto-scanner-reference) that scans the app and ingests the results into STO. 
 
 :::important important notes
-
-- This tutorial uses the free version of Semgrep to run simple SAST scans. More advanced workflows are possible but are outside the scope of this tutorial.
-
-- Semgrep scans use an agent that [uploads data to the Semgrep cloud](https://semgrep.dev/docs/metrics/) by default. Semgrep uses this data to improve the user experience. Therefore this tutorial is not suitable for air-gapped environments. 
 
 - This tutorial has the following prerequisites:
 
   - A Harness account and STO module license.
-  - A basic understanding of key STO concepts and good practices. Here are some good resources: 
-    - [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline)
-    - [Key Concepts in STO](/docs/category/key-concepts-in-sto)
-  - A [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and an access token to your Git provider account.  
-  - A Semgrep account login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub. 
-  - Your Git and Semgrep access tokens must be stored as [Harness secrets](/docs/platform/secrets/add-use-text-secrets).
-
+  - A basic understanding of key STO concepts and good practices. 
+  - A working instance of the web app you want to scan. Your app must be accessible from your Harness pipeline.
+  - Docker requirements:
+      - A Docker Hub account and access token. 
+      - A [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/) is required to push the image. 
+      - Your Docker Hub access token must be stored as a [Harness secrets](/docs/platform/secrets/add-use-text-secrets).
 
 :::
 
-### Set up your codebase
-
-To do this tutorial, you need a [codebase connector](/docs/category/code-repositories) to your Git repository and an access token. A connector can specify a Git account (`http://github.com/my-account`) or a specific repository (`http://github.com/my-account/my-repository`). 
-
-This tutorial uses the [dvpwa repository](https://github.com/williamwissemann/dvpwa) as an example. The simplest setup is to fork this repository into your Git account and scan the fork. However, you can run your scans on any codebase that uses a language supported by Semgrep.  
 
 ### Set up your pipeline
 
@@ -61,31 +49,16 @@ Do the following:
 
    1. Enter a **Stage Name**.
    
-   2. In **Select Git Provider**, select the connector to your Git provider account.
-   
-   3. In **Repository Name**, click the value type select (tack button) and select **Runtime Input**.
+   2. Unselect **Clone Codebase**.
 
 3. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** or **ARM64** for the infrastructure, OS, and architecture.  
    
    You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
-  
-
+ 
 <!-- 
-4. Set up your codebase:
+### Set up your web app
 
-   1. Select **Codebase** (right menu).
-
-   2. Select your codebase connector.
-
-   3. Select **Runtime Input** as the value type for the repository name. You will specify the repo when you run the pipeline. 
-
-      ![](./static/sast-semgrep-tutorial/codebase-repo-type-input.png)  
-
--->
-
-### Add the scan step
-
-Now you will add a step that runs a scan using the local Semgrep container image maintained by Harness. 
+If you already have a running instance of the app you want to scan, you can skip this step and proceed to [Add the Nikto scan/ingest step](#add-the-nikto-scaningest-step). 
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -97,28 +70,38 @@ import TabItem from '@theme/TabItem';
   <TabItem value="Visual" label="Visual" default>
 ```
 
-1. Go to **Execution** and add a **Run** step. 
+In this step, you'll pull and run a local instance of a [Webgoat 8.0](https://hub.docker.com/r/webgoat/webgoat-8.0) a deliberately insecure application that's useful for testing vulnerabilities. 
+
+1. Go to **Execution** and add a **Background** step. 
 
 2. Configure the step as follows:
 
-   1. Name = **run_semgrep_scan**
+   1. Name = **webgoat_bg_service**
 
-   2. Command = `semgrep /harness --sarif --config auto -o /harness/results.sarif`
+   2. Command = 
 
-      This command runs a [Semgrep scan](https://semgrep.dev/docs/cli-reference/#semgrep-scan-command-options) on your code repo and outputs the results to a [SARIF](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) file.  
+      ```bash
+      
+        # wait until the dind service is available
+        while ! docker ps ;do
+            echo "Docker not available yet"
+        done
+        echo "Docker service is ready"
+        docker ps
+
+        # https://hub.docker.com/r/webgoat/webgoat-8.0
+        docker pull webgoat/webgoat-8.0
+        docker run -p 8080:8080 -t webgoat/webgoat-8.0
+      
+      ```  
 
    3. Open **Optional Configuration** and set the following options:
 
-      1. Container Registry — When prompted, select **Account** and then [**`Harness Docker Connector`**](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). The step uses this connector to download the scanner image. 
+      1. Container Registry — Select your Docker Hub connector. The step uses this connector to download the scanner image. 
 
-      2. Image = **returntocorp/semgrep**
+      2. Image = **docker**
       
       3. Add the following environment variable:
-         
-         - Key : `SEMGREP_APP_TOKEN`
-         - Value : Click the type selector (right), set the value type to **Expression**, and enter the value `<+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")>`. 
-
-           ![set the value type](./static/sast-semgrep-tutorial/set-value-type.png)
 
       2. Limit Memory = **4096Mi** 
       
@@ -178,9 +161,9 @@ Here's an example:
   </TabItem>
 </Tabs>
 ```
+-->
 
-
-### Add the Semgrep (ingest) step
+### Add the Nikto scan/ingest step
 
 Now that you've added a step to run the scan, it's a simple matter to ingest it into your pipeline. Harness provides a set of customized steps for popular scanners such as Semgrep. 
 
@@ -189,30 +172,34 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
   <TabItem value="Visual" label="Visual" default>
 ```
 
-1. In **Execution**, add a **Semgrep** step after your **Run** step.
+1. In **Execution**, add a **Nikto** step.
 
 2. Configure the step as follows:
 
-   1. Name = `ingest_semgrep_data`
+   1. Name = `scan_my_web_app`
 
-   2. Type = **Repository**
+   3. Set the following fields based on the web app you want to scan. For example, suppose you're scanning version 8.1.2 of `https://myorg.org:9090/welcome`. You could then set the fields like this:
 
-   3. Under Target:
+      1. Target Name = `myorg.org/welcome`
 
-      1. Name = Select **Runtime Input** as the value type.
+      2. Target Variant = `8.1.2`
 
-      2. Variant = Select **Runtime Input** as the value type.
+      3. Instance Domain = `myorg.org`
 
-   4. Ingestion File = `/harness/results.sarif` 
+      3. Instance Protocol = `https`
+      
+      4. Instance Port = `9090`
 
-   5. [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) = **Critical**
+      5. Instance Path = `/welcome`
+
+   4. For Instance Protocol, select **http** or **https**. 
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="YAML" label="YAML">
 ```
 
-Add a step after the `Run` step and configure it as follows:
+Add a **Nikto** step and set the following fields based on the web app you want to scan. For example, suppose you're scanning version 8.1.2 of `https://myorg.org:9090/welcome`. You could then set the fields like this:
 
 *  `type:` [`Semgrep`](/docs/security-testing-orchestration/sto-techref-category/semgrep-scanner-reference)
    *  `name:` A name for the step.
@@ -238,23 +225,24 @@ Here's a YAML example:
 ```yaml
 
               - step:
-                  type: Semgrep
-                  name: ingest_semgrep_data
-                  identifier: ingest_semgrep_data
+                  type: Nikto
+                  name: scan_webgoat_app
+                  identifier: scan_webgoat_app
                   spec:
-                    mode: ingestion
+                    mode: orchestration
                     config: default
                     target:
-                      name: <+input>
-                      type: repository
-                      variant: <+input>
+                      name: myorg.org/welcom
+                      type: instance
+                      variant: 8.1.2
                     advanced:
                       log:
-                        level: debug
-                      fail_on_severity: critical
-                    ingestion:
-                      file: /harness/results.sarif
-
+                        level: info
+                    instance:
+                      domain: myorg.org
+                      protocol: http
+                      port: 9090
+                      path: /welcome
 
 ```
 
