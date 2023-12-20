@@ -45,6 +45,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### .NET SDK
 
+#### Version 1.4.1 
+
+ - The thread safety metrics issue have been resolved.
+ - We no longer store duplicate targets used by metrics in memory. 
+ - Uses the global target identifier for evaluation metrics.
+ - `Config.ConnectionTimeout` is being treated as seconds internally rather than milliseconds. 
+
 #### Version 1.4.0
 
  - Added the `WaitForInitialization()` method and have deprecated the InitializeAndWait() method. 
