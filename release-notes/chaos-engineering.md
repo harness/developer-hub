@@ -22,6 +22,18 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## December 2023
+
+### Version 1.27.1
+
+#### New features and enhancements
+
+* Adds a filter to the **listWorkflow** API so that data can be filtered based on whether it is CRON-enabled or not. (CHAOS-3424)
+
+* While selecting a chaos infrastructure to create an experiment, you can list the active infrastructures by clicking the checkbox **Show active only**. (CHAOS-3350)
+
+#### Fixed issues
+
 ## November 2023
 
 ### Version 1.26.0
