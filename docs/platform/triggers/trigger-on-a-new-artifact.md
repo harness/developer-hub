@@ -409,13 +409,6 @@ You can use the following expressions:
 
 ## Define multi-region artifact source
 
-:::note
-
-Currently, multi-region artifact sources are behind the feature flag `CDS_NG_TRIGGER_MULTI_ARTIFACTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-
 Once you've selected an artifact in the trigger, you will see the **Define Multi Region Artifact Source** option.
 
 When artifact repositories such as Google Artifact Registry (GAR) are enabled with multiregion support, artifacts of the same version are available across different regions for easy consumption. 
