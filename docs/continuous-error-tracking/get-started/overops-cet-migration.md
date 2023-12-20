@@ -142,6 +142,7 @@ To learn about supported operating systems such as Java Virtual Machine (JVM) an
 | Graviton |  [Download](https://get.et.harness.io/releases/latest/arm/harness-et-agent.tar.gz) |
 | Windows | [Download](https://get.et.harness.io/releases/latest/win/harness-et-agent.zip) |
 | AIX | [Download](https://get.et.harness.io/releases/latest/aix/harness-et-agent.tar.gz) |
+| Mac | [Download](https://get.et.harness.io/releases/latest/osx/harness-et-agent.tar.gz) |
 
 
 ### Install an Error Tracking Agent

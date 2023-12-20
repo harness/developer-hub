@@ -32,6 +32,7 @@ The CET Agent can be installed on a variety of operating systems. The Agent requ
 | Amazon Linux (Arm) | 2 (Graviton 2) |
 | Amazon Linux | 2+ |
 | AIX | 6.1+, 7.1, 7.2, 8+ |
+| Mac | 10.15+ (Catalina) |
 
 </TabItem>
 
@@ -44,7 +45,7 @@ The CET Agent supports Java as well as other languages that run on top of the Ja
 <details>
 <summary><b>Supported languages</b></summary>
 
-| **Language ** | **Minimum Version** | **Comments** |
+| **Language** | **Minimum Version** | **Comments** |
 | --- | --- | --- |
 | Java | 6 | - |
 | Kotlin | 1.5 | Requires source attach |
