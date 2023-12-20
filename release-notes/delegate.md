@@ -355,7 +355,7 @@ Harness NextGen release 80811 includes the following changes for the Harness Del
 
 :::danger Breaking change
 
-When using terragrunt "All Modules" module configuration, the terragrunt plan and apply commands won't have this CLI options flag: --terragrunt-include-external-dependencies.
+When using the Terragrunt **All Modules** **Module Configuration**, the Terragrunt Plan and Apply commands don't have the  `--terragrunt-include-external-dependencies` CLI options flag. (CDS-87234)
 In case your terragrunt configuration has module dependencies, and you want to target all dependencies please use CLI Options from the corresponding Plan/Apply step where you will be able to add this CLI option flag.
 
 :::
