@@ -17,16 +17,16 @@ export const FeaturedList: CardItem[] = [
     link: "/tutorials/security-tests/your-first-sto-pipeline",
   },
   {
-    title: "SAST codebase scans with Semgrep",
-    module: MODULES.sto, 
+    title: "Create a build-scan-push pipeline (STO only)",
+    module: MODULES.sto,
     icon: "img/icon_sto.svg",
     description: (
-      <>Quickly set up a pipeline to scan codebases using Semgrep, which supports a wide variety of languages.</>
+      <>Set up an end-to-end STO pipeline that scans your codebase. Then it builds an image and scans it. If the image scan detects no critical issues, the pipeline pushes the image to your registry. </>
     ),
     newDoc: true,
     type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/security-tests/sast-scan-semgrep",
+    time: "15min",
+    link: "/tutorials/security-tests/build-scan-push-sto-only",
   },
 
 ];
@@ -91,6 +91,30 @@ export const STOList: CardItem[] = [
     type: [docType.Documentation],
     time: "10min",
     link: "/tutorials/security-tests/gitlab-ci-integration",
+  },
+  {
+    title: "Create a build-scan-push pipeline (STO only)",
+    module: MODULES.sto,
+    icon: "img/icon_sto.svg",
+    description: (
+      <>Set up an end-to-end STO pipeline that scans code, builds an image, and scans it. If the image scan detects no critical issues, the pipeline pushes the image to your image registry. </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15min",
+    link: "/tutorials/security-tests/build-scan-push-sto-only",
+  },
+  {
+    title: "Create a build-scan-push pipeline (STO and CI)",
+    module: MODULES.sto,
+    icon: "img/icon_sto.svg",
+    description: (
+      <>Set up an end-to-end STO/CI pipeline that scans your codebase, builds/pushes a test image, and then scans it. If there are no critical issues, the pipeline builds a prod image and pushes it to your registry. </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15min",
+    link: "/tutorials/security-tests/build-scan-push-sto-ci",
   },
 
 ];

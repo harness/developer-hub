@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-12-14T10:00
+date: 2023-12-20T10:00
 sidebar_position: 4
 ---
 ```mdx-code-block
@@ -33,15 +33,19 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
+
+<Deleos />
+
 ## December 2023
 
-### Versions 23.12.81411, 23.12.81604
+### Versions 23.12.81411, 23.12.81604, 23.12.81806
 
 #### Delegate security hotfix
 
 - Added additional log sanitization for Git connector flows.
 
-   If you are running delegate versions 23.11.814xx or 23.11.816xx, upgrade to delegate version 23.12.81604.
+   If you are running delegate versions 23.11.814xx or 23.11.816xx, upgrade to delegate version 23.12.81604. If you are running version 23.12.818xx, upgrade to delegate version 23.12.81806 or later.
 
 ### Harness version 81820, Harness Delegate version 23.12.81803
 
@@ -264,6 +268,8 @@ Harness NextGen release 81205 includes the following changes for the Harness Del
 
 #### New features and enhancements
 
+- You can now configure the delegate logging level by setting the `LOGGING_LEVEL` environment variable. Valid values are `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, and `OFF`. If an invalid value is specified, the logging level defaults to `DEBUG`. If no value is specified, the logging level defaults to `INFO`. (PL-41644, ZD-51430)
+
 - When you [configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/), you can now use `DESTINATION_CA_PATH` instead of `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`. (CI-9707)
    * For `DESTINATION_CA_PATH`, provide a comma-separated list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`.
    * Both CI build pods and the SCM client on the delegate support this method.
@@ -296,6 +302,12 @@ Harness NextGen release 81205 includes the following changes for the Harness Del
 #### Hotfix
 
 - GitHub status checks were not refreshing for pipeline executions. Harness added a retry to the GitHub status update API call to resolve the issue. (CI-10618, ZD-54673)
+
+### Version 23.10.81203
+
+#### Hotfix
+
+- Added IRSA support for downloading S3 artifacts using WinRm/SSH. (CDS-81276, ZD-51938)
 
 ### Harness version 81008, Harness Delegate version 23.10.81010
 
@@ -358,6 +370,14 @@ You can now reference secret values in JSON files by using XPATH. Support is ava
 
 Harness NextGen release 80811 includes the following changes for the Harness Delegate.
 
+:::danger Breaking change
+
+When using the Terragrunt **All Modules** **Module Configuration**, the Terragrunt Plan and Apply commands don't include the  `--terragrunt-include-external-dependencies` CLI options flag. (CDS-87234)
+
+If your Terragrunt configuration has module dependencies and you want to target all dependencies, use CLI options from the corresponding Plan or Apply step to add the `--terragrunt-include-dependencies` flag.
+
+:::
+
 #### New features and enhancements
 
 - Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
@@ -372,6 +392,8 @@ Harness NextGen release 80811 includes the following changes for the Harness Del
 -->
 
 - Harness CD now supports auto-scaling of green services in the ECS Blue Green Swap Target step. (CDS-79414)
+
+- Terragrunt steps now support CLI options flags.
 
 #### Fixed issues
 
@@ -468,6 +490,7 @@ Harness NextGen release 80504 includes the following changes for the Harness Del
 - Fixed an issue that resulted in Null Pointer Exceptions when running a pipeline manually with a `<+trigger.connectorRef>` expression. This expression gets its data from the trigger payload. With this fix, the pipeline correctly handles the case where the trigger payload is null. (CDS-77736, ZD-49685, ZD-49720, ZD-49722)
 
 - Fixed an issue where the `ACCOUNT_SECRET` environment variable was overriding the `DELEGATE_TOKEN` value in the delegate's Docker container for delegates with an immutable image type (image tag `yy.mm.xxxxx`). (PL-40728)
+
 
 ### Version 23.09.80512
 

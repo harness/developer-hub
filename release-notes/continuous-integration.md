@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-12-06T10:00
+date: 2023-12-18T10:00
 sidebar_position: 9
 ---
 
@@ -24,6 +24,27 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## December 2023
+
+<!-- h3 Version 1.5.x -->
+
+<!-- Dec 2x, 2023 -->
+
+<!-- h4 New features and enhancements -->
+
+<!-- This release introduces a new versioning convention for CI manager. -->
+
+<!-- h4 Fixed issues -->
+
+<!-- * Fixed an issue where builds failed in a Kubernetes cluster build infrastructure because certificates from the key chain weren't considered when fetching the entrypoint for the [S3 Upload and Publish plugin](). (CI-10258, ZD-53311) -->
+<!-- * Improved error messaging related to addon disconnects. (CI-8877) -->
+
+### Version 7006
+
+<!-- Dec 18, 2023 -->
+
+#### Fixed issues
+
+If you configured an optional step setting (such as **Limit Memory**, **Limit CPU**, or **Timeout**) to accept runtime input (`<+input>`), and then provided no value for that setting at runtime, the pipeline could fail due to invalid `null` input. This has been fixed, and the effected settings can how handle empty (`null`) runtime input. (CI-10514, ZD-54217)
 
 ### Version 6902
 

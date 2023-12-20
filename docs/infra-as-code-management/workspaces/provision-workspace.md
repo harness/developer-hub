@@ -191,3 +191,7 @@ pipeline:
   </TabItem>
 </Tabs>
 ```
+
+:::tip
+Currently, IaCM doesn't support multiple Workspaces in the same pipeline. If you'd like to provision several Workspaces altogether, consider using [Pipeline Chaining](https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/)
+:::

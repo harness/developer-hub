@@ -3,7 +3,17 @@ title: Add a custom chaos hub
 sidebar_position: 5
 ---
 
-A chaos hub is a collection of experiment templates and faults you can use to launch chaos experiments. CE provides a default **Enterprise Chaos Hub** that includes a wide array of templates and faults out of the box. You can also add your own custom chaos hubs to maintain and share private experiments and faults within your organization.
+## Chaos hub
+
+This section introduces you to chaos hub, and how you can add a chaos hub to your project.
+
+A chaos hub is a collection of experiment templates and faults that you can use to create and launch chaos experiments. 
+Experiments are templates to create new chaos experiments, which contain a collection of chaos faults and certain custom actions ordered in a specific sequence. Faults refer to the failures injected as part of an experiment. Both experiments and faults are stored as manifests in an appropriate directory structure. Hence, you can add new experiment templates and faults directly to the repository as files. In addition, you can derive the experiment templates from the existing experiments and save them to the Chaos Hub from the UI.
+
+Chaos hub is a collection of manifests and charts that represents the experiments and faults which exist as a part of the hub.
+You can add Chaos Hub using a Git service provider such as GitHub, where Chaos Hub exists as a repository. This allows native version control and management of the faults and experiment artifacts.
+
+HCE provides a default **Enterprise Chaos Hub** that includes a wide array of templates and faults out of the box. You can also add your own custom chaos hubs to maintain and share private experiments and faults within your organization.
 
 There are several reasons for adding a custom chaos hub. A custom hub lets you:
 
@@ -17,7 +27,7 @@ There are several reasons for adding a custom chaos hub. A custom hub lets you:
 
 This topic shows how to add and connect a custom chaos hub. 
 
-## Prerequisites
+## Prerequisites to adding a custom chaos hub
 
 1. Be sure you have a Git repository for your custom chaos hub, where you will store experiments and faults. The repository must include two folders: `experiments` and `faults`. Here's an example repo:
 

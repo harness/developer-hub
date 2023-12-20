@@ -62,3 +62,85 @@ To reference encrypted file secrets in YAML or in fields that require expression
    * Secret created at the project scope, use: `<+secrets.getValue("FILE_SECRET_ID")>`
    * Secret created at the organization scope: `<+secrets.getValue("org.FILE_SECRET_ID")>`
    * Secret created at the account scope: `<+secrets.getValue("account.FILE_SECRET_ID")>`
+
+## Secrets in outputs
+
+When a secret is displayed in an output, Harness substitutes the secret value with asterisks so that the secret value is masked. Harness replaces each character in the name with an asterisk (`*`).
+
+<figure>
+
+![](../secrets/static/add-use-text-secrets-51.png)
+
+<figcaption>Secret values referenced in a Shell Script step are replaced with asterisks.</figcaption>
+</figure>
+
+If you accidentally use a very common value in your secret, like whitespace, the `*` substitution might appear in multiple places in the output. If you see an output like this, review your secret and fix the error.
+
+Masking only applies if Harness knows the value is a secret. For example, if you use `cat` to handle [line breaks and shell-interpreted characters in decoded secrets](#line-breaks-and-shell-interpreted-characters), Harness doesn't know that the content of the `cat` was a secret, and, therefore, it isn't masked.
+
+Additionally, if an output variable from a step in a build (CI) stage contains a secret, be aware that the secret will be visible in the [build details](/docs/continuous-integration/use-ci/viewing-builds). Such secrets are visible on the **Output** tab of the step where the output variable originates and in the build logs for any later steps that reference that variable.
+
+### Sanitization
+
+Log and output sanitization only look for an exact match of what is stored. For example, if you stored a base64-encoded value, then only the base64-encoded value is sanitized.
+
+For example, assume you have the following multi-line secret:
+
+```
+line 1
+line 2
+line 3
+```
+
+When this value is base64-encoded, it results in an output like `bGluZSAxCmxpbmUgMgpsaW5lIDM=`. You could add this value to a Harness secret named **linebreaks**, and then decode the secret with a command such as `echo <+secrets.getValue("linebreaks")> | base64 -d`.
+
+When the pipeline runs, the resulting decoded output is not sanitized because it doesn't match the stored base64-encoded value.
+
+![](../secrets/static/add-use-text-secrets-52.png)
+
+## Line breaks and shell-interpreted characters
+
+You can reference secrets in scripts, but [text secrets](./add-use-text-secrets.md) with line breaks or other special characters might interfere with script execution.
+
+To address this, you can decode and write the secret to a file. For example, the following command decodes a secret from [base64](https://linux.die.net/man/1/base64) and writes it to a file:
+
+```shell
+echo <+secrets.getValue("my_secret")> | base64 -d > /path/to/file.txt
+```
+
+For secrets that are not in base64, such as PEM files, you can convert and encode them in base64, and then store them as [Harness file secrets](./add-file-secrets.md) before decoding them in your pipelines. For example, this command decodes a secret called `my_secret` and stores the decoded secret at `/harness/secrets.json`:
+
+```shell
+echo <+secrets.getValue("my_secret")> | base64 -d > /harness/secrets.json
+```
+
+You can also write secrets to files without base64, for example:
+
+```shell
+echo '<+secrets.getValue("long_secret")>' > /tmp/secretvalue.txt
+```
+
+However, if your secret contains line breaks or you don't use base64 and the secret's value contains any shell-interpreted characters, the script might not execute as expected. In this case, you can `cat` the secret in a special-purpose code block, for example:
+
+```shell
+cat > /harness/secret_exporter/values.txt << 'EOF'
+MySecret:<+secrets.getValue("test")>
+EOF
+```
+
+Decoded secrets in `cat` aren't [masked in outputs](#secrets-in-outputs), because Harness no longer recognizes the contents as a secret.
+
+Here's an example of a secret decoded in a [CI Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md):
+
+```yaml
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: |
+                      echo $SECRET | base64 --decode > decoded.txt
+                    envVariables:
+                      SECRET: <+secrets.getValue("secretfile")>
+```
