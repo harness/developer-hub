@@ -23,11 +23,9 @@ For information on overrides V1, go to [Services and environments basics](/docs/
 Here are the override types and the permissions you require for each type:
 
 - **Service & Infrastructure Specific**:
-  - `Environment: Create/Edit`
   - `Service: Create/Edit`
 - **Infrastructure Specific**: `Environment: Create/Edit`
 - **Service Specific**:
-  - `Environment: Create/Edit`
   - `Service: Create/Edit`
 - **Global Environment**: `Environment: Create/Edit`
 
