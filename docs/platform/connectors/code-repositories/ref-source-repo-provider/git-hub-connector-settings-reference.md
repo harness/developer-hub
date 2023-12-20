@@ -97,12 +97,11 @@ Authentication is required for all accounts and repos, including read-only repos
 
 :::info Personal access token permissions
 
-To use a personal access token with a GitHub organization that uses SAML single sign-on (SSO), you must first authorize the token, as described in the GitHub documentation on [authorizing a personal access token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
-
 * The GitHub user account that you use to create the token must have admin permissions on the repo.
-* GitHub doesn't provide a way to scope tokens for read-only access to repos. You must select all `repo`, `admin:repo_hook`, and `user` scopes.
+* For GitHub organizations that use SAML single sign-on (SSO), you must [authorize the token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
+* The token must have all `repo`, `user`, and `admin:repo_hook` scopes. GitHub doesn't provide a way to scope tokens for read-only access to repos.
 
-![Selecting PAT permission scopes.](./static/git-hub-connector-settings-reference-01.png)
+![GitHub token permission scopes.](./static/git-hub-connector-settings-reference-01a.png)
 
 :::
 
@@ -166,12 +165,6 @@ For more information about GitHub's deprecation of RSA support, go to the GitHub
 
 You can use a GitHub App to authenticate a Harness GitHub connector. To use this authentication method, you need to create and install a GitHub App, get the app's **installation ID** and **app ID**, and create a private key for the app. For instructions, go to [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support).
 
-:::note
-
-Currently, the option to use a GitHub App as the primary authentication method for a GitHub connector is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 1. For **Authentication**, select **GitHub App**.
 2. Enter the **GitHub Installation Id**. You can find the installation ID in the URL of your installed GitHub App, such as:
 
@@ -215,12 +208,11 @@ Enabling API access requires configuring an API authentication method, either a 
 <details>
 <summary>Personal access token permissions</summary>
 
-To use a personal access token with a GitHub organization that uses SAML single sign-on (SSO), you must first authorize the token, as described in the GitHub documentation on [authorizing a personal access token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
-
 * The GitHub user account that you use to create the token must have admin permissions on the repo.
-* GitHub doesn't provide a way to scope tokens for read-only access to repos. You must select all `repo`, `admin:repo_hook`, and `user` scopes.
+* For GitHub organizations that use SAML single sign-on (SSO), you must [authorize the token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
+* The token must have all `repo`, `user`, and `admin:repo_hook` scopes. GitHub doesn't provide a way to scope tokens for read-only access to repos.
 
-![Selecting PAT permission scopes.](./static/git-hub-connector-settings-reference-01.png)
+![GitHub token permission scopes.](./static/git-hub-connector-settings-reference-01a.png)
 
 </details>
 

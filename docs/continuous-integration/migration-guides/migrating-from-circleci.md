@@ -14,7 +14,7 @@ Harness CI and CircleCI are both cloud-native CI products that help developers b
 
 Harness CI provides proprietary technologies, like Cache Intelligence and Test Intelligence, which make Harness CI [four times faster](https://harness.io/blog/fastest-ci-tool) than other leading CI tools.
 
-* Harness [Test Intelligence (TI)](../use-ci/run-tests/set-up-test-intelligence) is a proprietary technology that accelerates test cycles by running only the tests necessary to confirm the quality of the code changes that triggered a build. Visualizations show which code changes caused which tests to be selected, and TI can help you identify gaps in your test plan. TI also detects negative trends and provides actionable insights to improve quality. With TI, it's possible to reduce build cycle times by up to 90% without compromising application quality.
+* Harness [Test Intelligence (TI)](../use-ci/run-tests/test-intelligence/set-up-test-intelligence) is a proprietary technology that accelerates test cycles by running only the tests necessary to confirm the quality of the code changes that triggered a build. Visualizations show which code changes caused which tests to be selected, and TI can help you identify gaps in your test plan. TI also detects negative trends and provides actionable insights to improve quality. With TI, it's possible to reduce build cycle times by up to 90% without compromising application quality.
 * Harness [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md) is a proprietary technology that reduces pipeline execution time by automatically caching well-known directories for languages like Java and Node.js.
 
 Harness CI is part of The [Harness Platform](/docs/get-started/harness-platform-architecture), which is a self-service CI/CD platform that enables end-to-end software delivery. The Harness Platform includes features, functionality, and additional modules to help you build, test, deploy, and verify software. For example:
@@ -129,7 +129,7 @@ jobs:
       - checkout
       - run:
           shell: bash
-          command: echo "matrix vaule << parameters.matrix-var >> "
+          command: echo "matrix value << parameters.matrix-var >> "
           name: step1
 
 workflows:
@@ -137,7 +137,7 @@ workflows:
     jobs:
       - job1
       - job2 :
-          context: smaple-contex
+          context: sample-context
           requires:
             - job1
       - job3:
@@ -155,9 +155,9 @@ workflows:
 
 ```yaml
 pipeline:
-  name: testpipeline
-  identifier: testpipeline
-  projectIdentifier: NgLabs
+  name: default
+  identifier: default
+  projectIdentifier: default
   orgIdentifier: default
   tags: {}
   stages:
@@ -171,8 +171,8 @@ pipeline:
             steps:
               - step:
                   type: Background
-                  name: Postgress-Dependecy-Service
-                  identifier: PostgressDependecyService
+                  name: Postgres-Dependency-Service
+                  identifier: PostgresDependencyService
                   spec:
                     connectorRef: account.harnessImage
                     image: postgres:10.8
@@ -186,7 +186,7 @@ pipeline:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: ronakpatildocker
+                    connectorRef: account.harnessImage
                     image: openjdk:17.0-jdk
                     shell: Bash
                     command: echo "this runs on openjdk"
@@ -209,7 +209,7 @@ pipeline:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: ronakpatildocker
+                    connectorRef: account.harnessImage
                     image: node:13.0.0
                     shell: Bash
                     command: |-
@@ -254,8 +254,8 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: gitforronak
-        repoName: test
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_CODE_REPO_NAME
         build: <+input>
   variables:
     - name: pipelinevar1
@@ -270,6 +270,16 @@ pipeline:
 ```
 
 </details>
+
+:::info Root and non-root users
+
+Steps run as the root user, generally. For example, with Harness Cloud build infrastructure, steps run directly on the host and, therefore, run as the root user.
+
+For services running on containers (which are steps where you specify a **Container Registry** and **Image** to use to execute the step's commands), you can use the **Run as User** setting to specify a user to use for that container.
+
+With Kubernetes cluster build infrastructure, you can use the **Run as User** setting to specify a user to use for individual steps, or you can [set a default user for all steps](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#run-as-user-or-run-as-non-root) and then override the default user as needed for individual steps.
+
+:::
 
 ## Comparison: CircleCI orbs and Harness plugins
 
@@ -408,10 +418,10 @@ workflows:
                       name: step1
                       identifier: step1
                       spec:
-                        connectorRef: ronakpatildocker
+                        connectorRef: account.harnessImage
                         image: node:13.0.0
                         shell: Bash
-                        command: echo "Downlaod file in parallel with stage 2 "
+                        command: echo "Download file in parallel with stage 2 "
         - stage:
             name: Stage2
             identifier: stage2
@@ -425,7 +435,7 @@ workflows:
                       name: step1
                       identifier: step1
                       spec:
-                        connectorRef: ronakpatildocker
+                        connectorRef: account.harnessImage
                         image: node:13.0.0
                         shell: Bash
                         command: echo "step1"
@@ -442,7 +452,7 @@ workflows:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: ronakpatildocker
+                    connectorRef: account.harnessImage
                     image: node:13.0.0
                     shell: Bash
                     command: echo "step 1 in stage3 . stage 3 requires stage 1 and 2 "
@@ -459,7 +469,7 @@ workflows:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: ronakpatildocker
+                    connectorRef: account.harnessImage
                     image: node:13.0.0
                     shell: Bash
                     command: echo "step 1 in stage4 . stage 4 requires stage 3"
@@ -625,5 +635,5 @@ Harness provides inline pipeline storage or storing [Pipeline YAML (Pipeline-as-
 Review the following information before proceeding with migration:
 
 * [Caching in Harness CI](/docs/category/share-and-cache-ci-data)
-* [Speed up Harness CI pipelines using parallelism](/docs/continuous-integration/use-ci/optimize-and-more/speed-up-ci-test-pipelines-using-parallelism)
+* [Speed up Harness CI pipelines using parallelism](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
 * [Harness Platform documentation](/docs/platform)

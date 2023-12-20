@@ -11,7 +11,7 @@ Chaos infrastructure is a service that runs in your target environment and aids 
 
 All the chaos infrastructure services adhere to the principle of least privilege, where the services execute with the minimum number of required permissions.
 
-## Create an environment
+## Step 1. Create an environment
 
 You must create a new environment in Harness to specify where you want the chaos infrastructure to exist.
 
@@ -28,9 +28,13 @@ To create an environment:
 
   ![New Environment](./static/connect-chaos-infrastructures/new-environment.png)
 
-## Add a Kubernetes chaos infrastructure
+## Step 2. Add a chaos infrastructure
 
-This section outlines the steps to add a chaos infrastructure to either a [Kubernetes](#add-a-kubernetes-chaos-infrastructure) or [Linux](#add-a-linux-chaos-infrastructure) environment.
+```mdx-code-block
+<Tabs>
+  <TabItem value="Kubernetes">
+```
+This section outlines the steps to add a chaos infrastructure to a Kubernetes environment.
 
 You can either setup a chaos infrastructure on existing infrastructures that uses a Harness cluster connector, that is, Harness Kubernetes connector or install the chaos infrastructure on a new infrastructure.
 
@@ -106,10 +110,15 @@ To add a chaos infrastructure on an existing Harness Kubernetes connector:
 
 1. Select **Done**.
 
-## Add a Linux chaos infrastructure
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Linux">
+```
+This section outlines the steps to add a chaos infrastructure to a Kubernetes environment.
 
 :::info note
 If you're installing the chaos infrastructure alongside SElinux, you must add a policy module to enable `timedatectl`. SElinux is enabled by default in distributions such as **CentOS**, **SUSE Linux**, **RHEL**, and **Fedora** among others.
+
 
 <details>
 
@@ -187,7 +196,12 @@ To add a Linux chaos infrastructure:
 
 1. On the next screen, copy the command to set up Linux chaos access, select **Done**, and then execute the copied command on your Linux machine.
 
-## Validate the chaos infrastructure installation
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Step 3. Validate the chaos infrastructure installation
 
 After the final step of adding chaos infrastructure, Harness takes some time to set up all the chaos infrastructure resources. Once everything is set up, the chaos infrastructure's connection status is `CONNECTED`.
 

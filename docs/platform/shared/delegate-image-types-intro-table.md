@@ -1,4 +1,10 @@
-Harness packages and distributes delegates on different types of images. Delegate images are identified by the delegate name. Image types are distinguished by tag.  
+Harness packages and distributes delegates on different types of images. Delegate images are identified by the delegate name. Image types are distinguished by tag.
+
+import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
+
+<Deleos />
+
+<Delimagetypes />
 
 | Image type | Image tag | Image description |
 | --- | --- | --- |

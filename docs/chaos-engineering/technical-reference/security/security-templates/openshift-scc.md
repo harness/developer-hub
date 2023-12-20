@@ -2,11 +2,20 @@
 title: Openshift
 sidebar_position: 1
 ---
+This section discusses Openshift Security Context Constraint that allows administrators to control permissions for pods in a cluster.
+
 ## OpenShift Security Context Constraint (SCC)
 
 Security context constraints allow administrators to control permissions for pods in a cluster. A service account provides an identity for processes that run in a pod.
-The <code>default</code> service account is used to run applications within a project. You can run other applications in the same project, but if you don't necessarily want to override the privileges used for all applications, create a new service account that can be granted the special rights in the project where the application is to be run. 
-For example run `install litmus-admin service account`.
+The <code>default</code> service account is used to run applications within a project. You can run other applications in the same project, but if you don't want to override the privileges used for all applications, create a new service account and grant special rights in the project where the application is run.
+
+### Create new service account
+
+Execute the below commands:
+
+```
+install litmus-admin service account
+```
 
 ```bash
 $ oc apply -f https://litmuschaos.github.io/litmus/litmus-admin-rbac.yaml
@@ -17,9 +26,10 @@ clusterrolebinding.rbac.authorization.k8s.io/litmus-admin created
 
 ```
 
-The next step is to run the service account as a cluster administrator. It is the granting of the appropriate rights to the service account. This is done by specifying that the service account should run with a specific security context constraint (SCC).
+### Run service account as a cluster admin
+Run the service account as a cluster administrator. It grants appropriate rights to the service account. This is achieved by specifying that the service account should run with a specific security context constraint (SCC).
 
-As an administrator, you can see the list of SCCs defined in the cluster by running the oc get scc command.
+As an administrator, you can see the list of SCCs defined in the cluster by running the `oc get scc` command.
 
 ```bash
 $ oc get scc --as system:admin
@@ -88,20 +98,22 @@ volumes:
 - secret
 ```
 
-Install the SCC:
+### Install the SCC
 
 ```bash
 $ oc create -f litmus-scc.yaml
 securitycontextconstraints.security.openshift.io/litmus-scc created
 ```
 
-Now to associate the new service account with the SCC, run the given command:
+### Associate new service account with the SCC
+To associate the new service account with the SCC, execute the below command:
 
 ```bash
 $ oc adm policy add-scc-to-user litmus-scc -z litmus-admin --as system:admin -n litmus
 clusterrole.rbac.authorization.k8s.io/system:openshift:scc:litmus-scc added: "litmus-admin"
 ```
 
-The <code>-z</code> option indicates to apply the command to the service account in the current project.
-To <code>add-scc-to-user</code> add the name of SCC.
-Provide the namespace of the target service account after <code>-n</code>.
+where
+	- `-z` refers to applying the command to the service account in the current project;
+	- `add-scc-to-user` ads the name of the SCC; and
+	- `-n` specifies the namespace of the target service account.

@@ -7,6 +7,10 @@ ECS update task role allows you to modify the IAM task role associated with an A
 
 ![ECS Update Task Role](./static/images/ecs-update-task-role.png)
 
+:::tip
+This experiment primarily involves ECS Fargate and doesn’t depend on EC2 instances. [They](./ec2-and-serverless-faults#serverless-faults) focus on altering the state or resources of ECS containers without direct container interaction.
+:::
+
 ## Use cases
 ECS update task role:
 - Determines the behavior of your ECS tasks when their IAM role is changed.

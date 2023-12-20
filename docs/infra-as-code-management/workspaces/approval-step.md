@@ -11,8 +11,8 @@ The approval step provides the following information:
 *  The resources that were added (including Terraform outputs).
 *  The resources that were deleted.
 *  The resources that were changed.
-*  Cost estimation **[coming soon]**.
-*  OPA rules that were evaluated so far in the flow **[coming soon]**.
+*  Cost estimation.
+*  OPA rules that were evaluated so far in the flow.
 
 Once you've reviewed the plan and are confident in the proposed changes, you can approve it. Approving the plan acknowledges that you understand the modifications that will be made to your infrastructure.
 

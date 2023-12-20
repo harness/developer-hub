@@ -84,23 +84,26 @@ For the **Custom** payload type, you must create a secure token and add it to yo
 
 ### Connector
 
-Select the [code repo connector](/docs/category/code-repo-connectors) that connects to your Git provider account. The generic Git connector is not supported; you must use a provider-specific connector.
+Select the [code repo connector](/docs/category/code-repo-connectors) that connects to your Git provider account. Harness uses this connector to register a webhook in your Git provider and to receive data from PRs (for PR triggers). The generic Git connector is not supported; you must use a provider-specific connector.
 
-:::info Personal Access Token Permissions
+If the connector is for an entire account, rather than a specific repository, you must also enter the **Repository Name** for this trigger.
 
-The personal access token used for connector authentication must have the appropriate scopes/permissions.
+#### Code repo connector permissions for webhook triggers
 
-For example, a GitHub personal access token for a GitHub connector must include all `repo`, `user`, and `admin:repo_hook` options for **Scopes**.
+Git event webhook triggers require specific permissions:
+
+* The user account you use to create the token must have the permission to configure repo webhooks in your Git provider.
+* The personal access token used for [code repo connector authentication](/docs/platform/connectors/code-repositories/connect-to-code-repo/#code-repo-connector-permissions-and-access) must have the appropriate permissions scopes depending on the Git provider.
+
+For example, for GitHub, you must be a repo admin and the GitHub personal access token used in the [GitHub connector's credentials](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/#credentials-settings) must have all `repo`, `user`, and `admin:repo_hook` scopes.
+
+![GitHub personal access token scopes.](./static/trigger-pipelines-using-custom-payload-conditions-32.png)
 
 For information about other provider's token scopes, go to:
 
 * [GitLab - Personal access token scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes)
 * [Bitbucket Cloud - Repository access token permissions](https://support.atlassian.com/bitbucket-cloud/docs/repository-access-token-permissions/)
 * [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
-
-:::
-
-If the connector is for an entire account, rather than a specific repository, you must also enter the **Repository Name** for this trigger.
 
 ### Event and Actions
 
@@ -239,8 +242,6 @@ To create dynamic triggers, Harness includes built-in Git payload expressions fo
 * Main expressions:
   * `<+trigger.type>`
     * Webhook
-  * `<+trigger.sourceRepo>`
-    * Github, Gitlab, Bitbucket, Custom
   * `<+trigger.event>`
     * PR, PUSH, etc.
 * PR and Issue Comment expressions
@@ -272,6 +273,12 @@ How you reference the path depends on:
 * The Git provider. Different Git providers send JSON payloads in different formats, even for the same event. For example, a GitHub push payload might be formatted differently than a Bitbucket push payload.
 
 Always make sure the path you use works with the provider's payload format and the event type.
+
+:::note
+
+For instructions on using default values for pipeline inputs based on a trigger's payload, go to [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
+
+:::
 
 ### Operators
 
@@ -400,6 +407,12 @@ You can specify [runtime inputs](../pipelines/input-sets) for the trigger to use
 
 You can use [built-in Git payload expressions](#built-in-git-payload-expressions) and [JEXL expressions](#jexl-conditions) in this setting.
 
+:::note
+
+For instructions on using default values in pipeline inputs, go to [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
+
+:::
+
 When Git Experience is enabled for your Pipeline, the **Pipeline Input** tab includes the **Pipeline Reference Branch** field. This field is set to `<+trigger.branch>` by default. Any build started by this trigger uses the pipeline and Input Set definitions in the branch specified in the webhook payload. This default is applicable for webhook-based triggers only. For all other trigger types, you must enter a specific branch name.
 
 :::note
@@ -463,24 +476,12 @@ import TabItem from '@theme/TabItem';
 
 ### Manual and custom webhook registration
 
-Use the manual webhook registration process if automatic webhook registration fails or is impossible (as with custom webhooks).
+Use the manual webhook registration process if [automatic webhook registration fails](./triggering-pipelines/#common-causes-of-webhook-registration-failure) or is impossible (as with custom webhooks).
 
-:::info Webhook registration permissions
+:::info
 
-You must have the appropriate level of access to configure repo webhooks in your Git provider, and the personal access token used for [code repo connector](/docs/category/code-repo-connectors) authentication must have the appropriate scopes/permissions.
-
-For example, for GitHub, you must be a repo admin and the GitHub personal access token used in the pipeline's GitHub connector must include all `repo`, `user`, and `admin:repo_hook` options for **Scopes**.
-
-For information about other provider's token scopes, go to:
-
-* [GitLab - Personal access token scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes)
-* [Bitbucket Cloud - Repository access token permissions](https://support.atlassian.com/bitbucket-cloud/docs/repository-access-token-permissions/)
-* [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
-
-:::
-
-:::info note
 Harness Self-Managed Enterprise Edition does not support webhook triggers for Helm-based installations using self-signed certificates.
+
 :::
 
 1. In Harness, obtain the trigger webhook by selecting the **Webhook/Link** icon in the list of triggers.

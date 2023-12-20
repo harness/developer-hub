@@ -9,4 +9,4 @@ spec:
   diskFillChaos/inputs:
     fillPath: "/"
     fillStorage: 72%
-    duration: 30
+    duration: 30s

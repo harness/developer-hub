@@ -1,6 +1,6 @@
 ---
 title: Add cost estimates to an infrastructure pipeline
-description: Learn how to get cost estimates for infrastructure changes.
+description: Learn how to get cost estimation for infrastructure changes.
 sidebar_position: 50
 ---
 

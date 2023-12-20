@@ -31,8 +31,7 @@ Make sure you have read the following:
 
 The following short video walks you through a Harness Azure Web App Canary Workflow setup.
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+
 <docvideo src="https://www.youtube.com/embed/JrPdBERdrl8?feature=oembed" />
 
 ### Supported Platforms and Technologies

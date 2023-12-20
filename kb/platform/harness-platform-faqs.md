@@ -404,7 +404,7 @@ Delegate reject tasks or fail to acquire tasks when CPU and memory reach above a
 
 #### Can we set the delegate to reject new tasks if x% of memory is being consumed?
 
-Yes you can choose to specify what threshold to reject the task using the flag `DELEGATE_RESOURCE_THRESHOLD`, otherwise, the  default value is 70%.
+Yes you can choose to specify what threshold to reject the task using the flag `DELEGATE_RESOURCE_THRESHOLD`, otherwise, the  default value is 80%.
 
 #### What is the behavior when DYNAMIC_REQUEST_HANDLING is set to false or not set at all when memory reaches 100% ?
 
@@ -1715,5 +1715,270 @@ You can modify the storage class setting by the [link](https://kubernetes.io/doc
 
 Yes, it will be integrated soon.
 
+#### Is it possible to attach delegate to a custom IAM role during installation in the EKS cluster?
+
+Yes, you can refer to [this](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#harness-aws-connector-settings) documentation for details.
+
+#### Can I send a single invitation email to a user for both Account-level limited permissions and Organization-level admin privileges?
+
+You can efficiently manage user invitations by combining Account-level limited permissions and Organization-level admin privileges in a single email. During the invitation process, grant the necessary permissions at the Account level, ensuring they encompass all child permissions, providing access to all organizations and projects. Simultaneously, grant admin permissions to the specific Organization at the Account level without the need for a separate invitation. This allows users to receive a unified invitation email when added to the Organization as Org Admins, streamlining the acceptance process. 
+
+#### Can administrators bulk approve and activate users who are in a "Pending Invitation" status, transitioning them to "Active Users" collectively rather than individually?
+
+Certainly. If the account authentication mechanism is configured as SSO, and the FF `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` is enabled, users will be automatically enabled upon invitation. However, if the account authentication mechanism is USER_PASSWORD, each individual user needs to accept the invite to set their login password, as automatic enabling is not applicable in this case. The method of account authentication determines the user activation process, with SSO streamlining the activation for users, while USER_PASSWORD requires individual acceptance for password setup.
+
+#### Can we get information about the types of tasks of delegates, what each of them is responsible for?
+
+The task types are internal tasks for various tasks a pipeline generate. We keep introducing new tasks type and remove old ones as documenting each task type is not productive.
+
+#### Do these build_source tasks use the delegate task quota?
+
+Build source tasks do use the quota. these are tasks for artifact collections. they are only present in cg and next gen these tasks are never fired.
+
+#### Can we able to see who invited a user?
+
+Yes, you can find user invite actions in the audit trail.
+
+#### Is there any other way to remove a test user group created with `externallyManaged=true` other than remove it by a mongodb query set `externallyManaged=false`?
+
+Yes, a more preferable approach is to update the user group in the database by changing the externallyManaged flag from true to false. Following this, you can delete the user group from the UI. Deleting directly from the database might not be the optimal solution, especially if the user group is part of the hierarchy, such as an account user group inside an Org/Project. Updating the flag and then deleting through the UI ensures a more controlled and comprehensive handling of the user group removal, taking into account any dependencies in the hierarchy. This is not updatable using API, but soon deletion will be allowed from UI.
+
+#### How does Harness handle sensitive information, such as secrets, to prevent exposure in logs?
+
+When using secrets for sensitive information, the platform automatically obfuscates or masks the values in logs and other outputs. This measure ensures that sensitive information remains protected and is not exposed in plaintext within logs.
+
+#### When making service-to-service calls, is it recommended to reuse the Bearer token received from the calling service's API in the Authorization Header for the destination service's platform API?
+
+In service-to-service scenarios, a best practice is to transmit only the principal information without including the Authorization Header. This allows the destination service to handle authorization based on the provided principal details. Additionally, users have the flexibility to designate whether the call is Privileged or non-Privileged. For non-Privileged access, maintaining the principal as the end user is often suitable. Users are encouraged to refer to the platform's official documentation for comprehensive guidance on token creation and authentication for platform API calls. If further assistance is needed, contacting the platform's support team is recommended.
+
+#### Do we have documentation to implement ACL checks in log-service?
+
+Yes, you can refer to these [docs](https://apidocs.harness.io/tag/Access-Control-List#operation/getAccessControlList).
+
+#### How to perform load test on k8s delegate?
+
+You can implement Autoscale using replicas with the steps in this [docs](https://developer.harness.io/docs/platform/delegates/manage-delegates/auto-scale-using-replicas/). The autoscaling will be based on load not on number of tasks Or can do any kind of deployment or simply run shell scripts which uses cpu and memory.
+
+- based on which metric you use for HPA (we recommend cpu/memory) kubernetes will scale up/down the pod.
+- when pod is scaled down, the delegate pod will stop taking new task and finish what its executing before terminating.
+
+#### Can I centrally identify and remove resources created by a user who had admin access but now has non-admin permissions?
+
+Currcetly this centralised feature is not available and will be available soon. However, you can leverage the Audit Trail feature to track all actions performed by the user over a specified time. This way, you can identify the resources they created during their admin access.
+Audit trails are available at the Account and Organization levels, allowing you to determine the resources created by the user. To restrict the user's admin access, you need to remove their admin permissions at every scope (account, org, project). Once admin permissions are revoked, the user won't have the authority to perform admin operations.
+
+#### What rate limits are enforced for NG?
+
+Rate limits for requests/day :
+
+- Any call: Harness allows 5000 requests every 10 seconds (30,000 requests per minute) per IP address.
+- API calls: Harness allows 1000 requests per API key per minute.
+- Large requests (character size > 500,000): 1 payload every 10 seconds.
+
+For more details you can refer to [documentation](https://developer.harness.io/docs/platform/rate-limits/).
+
+#### Can I set up audit log streaming without using a Delegate agent? Are there options to stream logs directly from the cloud platform using IAM roles or other methods?
+
+For the current streaming workflow, the primary option is to use the AWS connector, which requires the use of a Delegate. Unfortunately, audit log streaming is currently only supported via Delegate, and there is no direct option to stream logs from the cloud platform using IAM roles or other methods.
+You can refer to this [documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/) for further information.
+
+#### What is the workflow for secrets, especially concerning the potential exposure of production secrets? Do secrets pulled by a delegate ever flow back to the Harness platform?
+
+Yes, the secrets pulled by a delegate during pipeline execution do not make their way back to the Harness platform. Delegates connect to various secret managers as the pipeline progresses, but the secret information itself is not sent to Harness. This ensures that production secrets remain secure and are not exposed within the Harness platform. You can refer to these [docs](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/).
+
+#### Will we push up the Ubuntu immutable delegate to Dockerhub?
+
+No, our Dockerfiles are made public on GitHub so that you have the option to modify and build them according to your needs. We do not push the Ubuntu immutable delegate images to Dockerhub; instead, you can access and customize the Dockerfiles from our GitHub repository.
+
+#### Are we planning to add support for multiple account Id for SMP?
+
+Currently SMP is single account only, multiple account support is yet to come.
+
+#### How can we configure OIDC with GCP WIF for Harness CI Cloud builds?
+
+Using the FF `PL_GCP_OIDC_AUTHENTICATION` you can configure the same, you can refer [here](https://developer.harness.io/tutorials/platform/configure-oidc-gcp-wif-ci-hosted), later on enable this functionality for Harness Delegate and AWS STS.
+
+#### Do we have docs for permissions references?
+
+Yes, you can refer these docs: 
+- [document1](https://developer.harness.io/docs/platform/automation/api/api-permissions-reference/)
+- [document2](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference/)
+
+#### How can we disable version override from specific delegate?
+
+Version override is not controlled from UI. If we need to disable version override it will be for entire account. You can refer [here](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/) to know about delegates upgrades.
+
+#### Can I access the Harness API from a React app, and how can I handle CORS issues when making API calls with the x-api-key header?
+
+Yes, the Harness API is accessible from React (or any JavaScript library) apps. However, when encountering CORS (Cross-Origin Resource Sharing) issues, it's crucial to understand that browsers make pre-flight CORS requests, especially when the host origin and the server origin are different.
+
+To resolve CORS issues:
+- Same Origin: If your UI and API share the same origin (e.g., UI and API both on app.harness.io), there won't be CORS calls.
+- Different Origin: If your app is on a different origin (e.g., example.com/harness) and makes non-GET requests to app.harness.io/api/, the browser initiates a pre-flight request.
+- Server Configuration: Ensure your API server includes the necessary CORS headers, such as access-control-allow-origin and access-control-allow-headers, to explicitly allow the requesting origin and any custom headers like x-api-key.
+
+By configuring your server to allow the necessary origins and headers, you can address CORS issues when making API calls from your React app. This ensures a smooth interaction with the Harness API while securing your application.
+
+####  Can I configure an alternate location for delegate logs?
+
+It is not possible to configure the delegate logs path. However, you can create a symlink for the `delegate.log` files and store them in a different directory using the `INIT_SCRIPT` environment variable. To do this, simply replace `YOUR_PATH` with the directory where you want to store your log files in the example below.
+
+```yaml
+- name: INIT_SCRIPT
+          value: "mkdir YOUR_PATH && ln -s YOUR_PATH/newdelegate.log delegate.log"
+```
+
+After you create your delegate, you can verify your log file path.
+
+#### Can we customize the SSH configuration when using a Git connector set by SSH?
+
+For GIT API-based communications, SSH is not used at all. Instead, we rely exclusively on token-based communication. Specifically for GIT tasks, especially on GitX, tokens are utilized as they are executed through APIs. However, for other types of connections, SSH configurations are employed. It's important to note that for any connector, the standard practice involves selecting "API Access" and providing tokens exclusively.
+
+#### How can I resolve serialization errors when integrating NG Audits for ModuleLicense collection with multiple child classes in YamlDTOs?
+
+The serialization issue in NG Audits for ModuleLicense collection arises when using entity objects instead of DTOs in the YAML for Audit Service. The problem is that entity objects lack JsonSubTypes, causing the Jackson ObjectMapper to struggle with determining the appropriate subType for conversion. The resolution is to utilize DTOs, which inherently possess the JsonSubTypes property, ensuring smooth serialization and deserialization processes in the Audit Service.
+
+It's essential to note that the Audit Service doesn't directly serialize or deserialize YAML; instead, it expects the old and new YAML as strings. However, the choice of using DTOs over entity objects is crucial for resolving any potential serialization challenges. Always ensure that the service generating audits has access to all required DTOs to prevent code duplication and facilitate efficient integration with NG Audits.
+
+#### Why is the Helm binary path not added to the system's PATH by default for Immutable Delegates?
+
+There are two versions of the Helm binary installed on the delegate, but neither is set to the system's PATH by default. This behavior is currently specific to the Ubuntu image. However, users have the option to set the PATH as desired using the init script in the delegate YAML. Additionally, they can install custom binaries or create their own delegate image to address this.
+
+#### Is there a standardized default user access experience across all installation flows (K8S, Docker, Helm, Terraform)?
+
+No, there is currently a variation, with K8S delegates defaulting to root with securityContext, while Docker delegates use a non-root default user (user 1001).
+
+#### Is root user access required by default for adding custom binaries?
+
+Users can choose not to run as root. For custom binaries, root access is not required, they can curl the binary and put it in the path.
+
+#### How to hide Harness built-in roles (harness managed roles), and is it possible to hide account scope roles?
+
+Enabling the flags (`PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE` and `PL_HIDE_ORGANIZATION_LEVEL_MANAGED_ROLE`) will hide project and org scope roles. However, there is currently no way to hide account-level roles. This decision was not implemented due to the potential restriction that once we enable FF for the account, nobody will be able to see managed roles, including account admin.
+
+#### If a user has a connector with delegate selector X, and the connector uses a secret from a secret manager with delegate selector Y, but delegates with selector X lack access to this secret manager, is this use-case supported?
+
+Our priorities are configured as follows: [Step > Step Group > Stage > Pipeline > Connector]. In this scenario, the user can override at the pipeline (or any higher level), but without that override, it will result in a failure.
+
+#### How do I setup SMTP with AWS SES?
+
+Follow this AWS documentation to create SMTP crredentials using the SES console.
+https://docs.aws.amazon.com/ses/latest/dg/smtp-credentials.html
+
+Then feed those SMTP credentials in Harness SMTP connector
+
+See [SMTP Configuration](docs/platform/notifications/add-smtp-configuration/)
+
+#### How to increase the concurrent pipeline execution limit
+You can increase the limit unto 1000 by navigating to Account Settings --> Account Resource --> Default Settings --> Pipeline
+
+#### Is it possible to hide Project/Org level default In-Built roles
+Yes its possible and you need to ask Harness support to enable PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE and PL_HIDE_ORGANIZATION_LEVEL_MANAGED_ROLE. FF.
+
+#### How to upgrade legacy docker delegate to use new image version 
+You can update the image tag by looking into latest tag https://hub.docker.com/r/harness/delegate/tags and can provide that while docker run command
+
+#### How to check if Delegate is setup for auto Upgrade
+You can go to delegate page and on right side check under AUTO UPGRADE Column if its showing ON
+
+#### Is it possible to hide Account level default In-Built roles
+No currently its not possible as if we try to disable the roles for account nobody will be able to see managed roles even including account admin.
+
+#### Not able to resume pipeline for some time post delegate release
+
+For optimizations we keep a local cache of all connected delegates to execute tasks. The cache is refreshed every 3 minutes currently and hence it takes upto 3 mins for a new delegate to be eligible to execute a task once its connected. Since the delegate rollout is not a very frequent operation the 3 mins window was chosen and is in production for few years.
+
+We can recommend having a grace period between bringing up a new delegate and terminating an old pod. We have minReadySeconds defined in the yaml which ensures that old pods die after 2 mins of new pod being in ready state. SInce this field was added later on, your delegate yaml may not have it. You could check this by downloading a new yaml for a delegate and add it so that the older pod doesn't get killed without new pod getting the traffic.
+
+#### The Account name in the authenticator APP When Setting up 2FA
+
+The account name show in the authenticator app when setting up 2FA is coming from the company name set for your account. In case you want to have a specifc name you will need to get your company name for the account updated. 
+
+#### 2FA enable / disable for inidividual and account level
+
+The 2FA is either enabled by defualt for the account or any user can also enable it particularly for his user which can be done from the user profile.
+But ocne the 2FA is enabled by the user it also needs to be disabled by that particular as account won't be able to disable the 2FA for the specifc user.
+
+#### Vanity URL issues
+
+Once you have got the vanity url enabled for your account , in case you are using the SAML login , you will need to update ACS URL with the updated vanity url.
+
+Ex: Current ACS URL is https://app.harness.io/gateway/api/users/saml-login?accountId=xxxxxxxxxxxxxxxx
+after enabling vanity it should be updated to : https://vanity-url.harness.io/gateway/api/users/saml-login?accountId=xxxxxxxxxxxxxx
+
+#### Restoring accidently deleted User Groups
+
+If you accidently delete some User groups from the Harness UI. There is no way to restore them as it also gets deleted from our backend collection. 
+But if the User Groups were provisioned via SCIM then you can always resync the user groups. 
+
+#### When a user logs into Harness using SAML he loses access to User Groups.
+
+This scenario is possible for the SAML Based linked User Groups as the SAML based user groupn sync alwas takes place on the user login action.
+Hence there were any changes made from the SAML SSO Group Claims or may be the group was removed from the app and hence harness does the sync at next login. 
+
+#### Resetting the 2FA from Harness
+
+This only the account admins can do for Users, when the admin needs to go to Account Setttings--> Access Control -- Users
+
+Right click on the 3 dots on the extreme right end of a user and then click on email new 2fa option. 
+
+#### Users unable to the first time when added using the JIT (Just in time user provioning)
+
+The issue occurs when after your user is setup via JIT and first time user irectly tries to login via the Harness URL (app.harness.io), As the when you setup the JIT (Just in time user provioning) reference : https://developer.harness.io/docs/platform/role-based-access-control/provision-use-jit/
+
+The user needs to first go to his SAML SSO app and click on Harness icon tile from there as this will provision the user in Harness UI. 
+
+#### Error while adding Users to Harness from Harness UI
+
+Sometime when you try to add a Harness User from Harness UI , you get error for adding the user. 
+You can open the developer tools and check the API call for the error and see the response. 
+It could be possible due to user creation limit. You can eitehr resolve it by removing unused Users from your account or reach out to Harness Support get the limit validated as per your licence. 
+
+#### How to get x-api-key for making api call
+You need to create a new token under api key , you can follow https://apidocs.harness.io/#section/Introduction/Authentication for more details
+
+#### How to check which delegate was assigned for task
+You can select the step under any stage and on right side under details tab you will be able to see delegate assigned as well the delegate selection task logs will provide more details which all delegates were eligible and from where selector was originated etc
+
+#### How to pass xmx and pms value for delegate to use max and min memory allocation pool
+env:
+    - name: JAVA_OPTS
+      value: "-Xms64M -Xmx2G"
+
+#### Scim Provisioned User Group has - in name which was removed from identifier but still allowed as name
+The - is not allowed character for identifier so it was removed while creating the identifier while name can have that so its allowed for name
+
+#### What does the promql query ```io_harness_custom_metric_task_failed{task_type="NG_VAULT_RENEW_TOKEN"} > 0``` specifically check, and why is it still non-zero even after a successful token renewal?
+
+The query checks for failed tasks related to token renewal. The non-zero value may persist as it represents the count of failed tasks, which doesn't reset after successful renewals
+
+#### What is the purpose of the ```liveStatus``` expression in Harness, and how does it differ from stageStatus?
+
+ The ```liveStatus``` expression is designed for use within step groups under a matrix. Unlike stageStatus, which doesn't consider running or completed steps under a matrix, liveStatus calculates the status of steps, including those in the running or completed state
+
+#### Can we manually reset the delegate metrics which is being scraped by prmoetheus?
+
+Manual reset isn't supported. However all the metrics get reset when the delegate restarts
 
 
+#### Is the user can approve the pipeline through the API using token of service account?
+The Service Account API token is not supported with Approval API, you need to use the personel access token.
+
+#### How user can make sure the build artifacts that go to harness will come from protected branches before production deployment?
+You can select the Artifact filter option and provide the expression as per your need in the Artifact source config of the service.
+
+#### We have delegate monitoring setup and we're not clear on what types of tasks delegates are reporting on in the metrics.
+
+The task types are internal tasks for various tasks a pipeline generates. for example, a pipeline can generate tasks for secret decryption during the shell script execution and they are internal to harness. We keep introducing new task types and removing old ones.
+
+#### Do these build_source tasks use the delegate task quota? Sometimes their number is really huge.
+
+Build source tasks do use the quota. these are tasks for artifact collections. they are only present in FG and next gen these tasks are never fired.
+
+####  How does the system differentiate between delegate name and tag ?
+
+A delegate name is a unique identifier for a registered delegate in Harness Manager, while delegate tags are descriptors that are added to the delegate before the registration process. All delegates with the tag are selected when a tag is common for two or more delegates.
+
+#### We have about 500 users who were somehow granted the Admin role on the Account Level as individuals. We need to remove this role from them - is there an efficient way to do this?
+
+You can use this [API] (https://apidocs.harness.io/tag/Account-Roles#operation/update-role-acc) and create a script to update the user roles.

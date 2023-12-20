@@ -1,59 +1,66 @@
 ---
-description: KB - How can you leverage service dependencies in Gradle daemon to improve build performance? 
+title: Leverage service dependencies in Gradle daemon to improve performance
+description: You can leverage service dependencies in Gradle daemon to improve build performance.
 ---
-# How can you leverage service dependencies in Gradle daemon to improve build performance?
 
-## Introduction
+A *Harness CI build* is a workflow that uses the Harness Continuous Integration (CI) module to automate building and testing of software applications. Harness integrates with version control systems like Git, and Harness can automatically trigger CI builds when you push new code changes to your repository. The build process compiles your code to create executable artifacts. Harness CI also supports running tests on your code and artifacts, such as unit tests, integration test, and user acceptance tests. To learn more about Harness CI features, go to the [Harness CI overview](https://developer.harness.io/docs/continuous-integration/get-started/overview).
 
-"Harness CI build" refers to the process of leveraging a continuous integration (CI) system provided by the Harness platform to automate the build and testing of software applications. 
+## Manage dependencies to optimize performance
 
-Version Control Integration: Harness integrates with version control systems like Git, automatically triggering CI builds when new code changes are pushed to the repository.
+In Harness CI builds, each step runs in a separate container. If your pipeline has multiple steps that utilize Gradle through CLI, each step initiates a separate Gradle daemon (unless you explicitly set `--no-daemon`). To optimize the build process and improve performance, use a [Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to create a single Gradle daemon that can be used by all subsequent steps in the stage. This reduces the overhead of daemon startup and enhances the efficiency of the entire pipeline.
 
-Build Automation: The CI system in Harness automatically initiates the build process, where the source code is compiled and built into executable artifacts.
-
-Testing Automation: After the build is complete, the CI system can run various automated tests, such as unit tests, integration tests, and even user acceptance tests, to ensure the quality and functionality of the application.
-
-By automating the build and testing process through Harness CI, teams can achieve faster and more reliable software delivery, reducing the manual overhead and risk of human errors.
-
-More information on this is here: /docs/continuous-integration
-
-## Problem statement
-
-In the Harness build pipeline each step runs in different containers. When multiple steps utilize Gradle via CLI run, each step initiates a separate Gradle daemon (unless explicitly set with --no-daemon).
-
-If you are interested in optimizing the build process to improve its overall speed. What is the possibility of using a service dependency or any alternative method to create the Gradle daemon only once and then reuse it across all subsequent Gradle steps? 
-
-By doing so, you can reduce the overhead of daemon startup and enhance the efficiency of the entire build pipeline.
-
-## Steps to achieve this usecase :
-Below is an example of a running Gradle daemon in a Service Dependency. In the Gradle check and the Gradle build step, it does not start the daemon again.
-
+```yaml
+              - step:
+                  type: Background
+                  name: Gradle_Daemon
+                  identifier: Gradle_Daemon
+                  spec:
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
+                    image: gradle
+                    shell: Sh
+                    entrypoint:
+                      - gradle
+                    envVariables:
+                      GRADLE_USER_HOME: /harness/.gradle
+                      GRADLE_OPTS: "-Dorg.gradle.jvmargs=\"-Xms1024m -Xmx2048m\""
+                    resources:
+                      limits:
+                        memory: 1G
 ```
+
+<details>
+<summary>Deprecated: Run Grade daemon as a service dependency</summary>
+
+The following YAML example shows a pipeline that runs a Gradle demon as a **Service Dependency**. This is now deprecated in favor of the [Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings).
+
+When this pipeline runs, the two **Run** steps that run `gradle check` and `gradle build` don't start additional daemon processes.
+
+```yaml
 pipeline:
-  name: GradleCacheExample
-  identifier: GradleCacheExample
+  name: Gradle Example
+  identifier: Gradle_Example
   allowStageExecutions: false
-  projectIdentifier: xxxxxxxxxx
+  projectIdentifier: default
   orgIdentifier: default
   tags: {}
   properties:
     ci:
       codebase:
-        connectorRef: account.General_Github
-        repoName: xxxxxxxxxxxx
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_CODE_REPO_NAME
         build: <+input>
   stages:
     - stage:
         name: Build Gradle
-        identifier: Build_Micro_Integrator
+        identifier: Build_Gradle
         type: CI
         spec:
           cloneCodebase: true
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: xxxxxxxxxx
-              namespace: harness-delegate-ng-immutable-75326
+              connectorRef: YOUR_K8S_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_K8S_NAMESPACE
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
@@ -64,7 +71,7 @@ pipeline:
                   name: Check Gradle
                   identifier: Check_Gradle
                   spec:
-                    connectorRef: DockerHubfjunior87
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
                     image: gradle
                     shell: Sh
                     command: |-
@@ -79,8 +86,8 @@ pipeline:
                   name: Get Maven Deps from GCS
                   identifier: Get_Maven_Deps_from_GCS
                   spec:
-                    connectorRef: GCR
-                    bucket: mybucket
+                    connectorRef: YOUR_GCR_CONNECTOR_ID
+                    bucket: YOUR_GCS_BUCKET_NAME
                     key: gradle-v2
                     archiveFormat: Tar
               - step:
@@ -88,7 +95,7 @@ pipeline:
                   name: Build Car File
                   identifier: Build_Docker_Image
                   spec:
-                    connectorRef: DockerHubfjunior87
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
                     image: gradle
                     shell: Sh
                     command: |-
@@ -107,8 +114,8 @@ pipeline:
                   name: Save Maven Dependencies
                   identifier: Save_Maven_Dependencies
                   spec:
-                    connectorRef: GCR
-                    bucket: mybucket
+                    connectorRef: YOUR_GCR_CONNECTOR_ID
+                    bucket: YOUR_GCS_BUCKET_NAME
                     key: gradle-v2
                     sourcePaths:
                       - /harness/.gradle
@@ -121,7 +128,7 @@ pipeline:
               name: Gradle Daemon
               type: Service
               spec:
-                connectorRef: DockerHubfjunior87
+                connectorRef: YOUR_DOCKER_CONNECTOR_ID
                 image: gradle
                 envVariables:
                   GRADLE_USER_HOME: /harness/.gradle
@@ -144,5 +151,4 @@ pipeline:
   variables: []
 ```
 
-This is how you can use leverage service dependencies in Gradle daemon to improve build performance.
- 
+</details>

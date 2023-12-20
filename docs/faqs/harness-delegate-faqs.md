@@ -90,6 +90,24 @@ Harness connectors only use delegates that can connect to their resources and pe
 
 You could even have a delegate in one cloud platform use a resource in a separate cloud platform so long as there is connectivity.
 
+#### Can I change the delegate log file path?
+
+It is not possible to configure the delegate logs path. However, you can create a symlink for the `delegate.log` files and store them in a different directory using the `INIT_SCRIPT` environment variable. To do this, simply replace `YOUR_PATH` with the directory where you want to store your log files in the example below.
+
+```yaml
+- name: INIT_SCRIPT
+          value: "mkdir YOUR_PATH && ln -s YOUR_PATH/newdelegate.log delegate.log"
+```
+
+After you create your delegate, you can verify your log file path.
+
+```
+root@d1delegate-pxxdbf-0:/opt/harness-delegate# ls delegate.log
+delegate.log
+root@d1delegate-pxxdbf-0:/opt/harness-delegate# ls YOUR_PATH/*
+YOUR_PATH/newdelegate.log
+```
+
 ### Delegate installation
 
 For delegate installation instructions, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).

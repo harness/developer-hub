@@ -1,7 +1,7 @@
 ---
 title: What's supported in Harness IDP
 description: Lists the plugins, git providers, and third-party integrations supported in IDP.
-sidebar_label: What's supported
+sidebar_label: What's Supported
 sidebar_position: 1
 ---
 
@@ -37,3 +37,9 @@ For information about what's supported for other Harness modules and the Harness
 Harness IDP requires some secrets to be set for plugins and external integrations to work. We only support secrets stored in the [Harness secret manager](https://developer.harness.io/tutorials/platform/secrets-management/#manage-secrets-with-built-in-harness-secret-manager).
 
 :::
+
+## Template Actions to Trigger Harness Pipeline 
+
+- Currently only single stage Harness Pipeline is supported. 
+
+- The template actions currently supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#add-the-run-step), also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values). 

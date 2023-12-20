@@ -47,22 +47,6 @@ You must install the Harness Delegate in the same cluster you use for the build 
 
 </details>
 
-<details>
-<summary>Video summary</summary>
-
-This video describes a pipeline similar to the one built in this tutorial. Note that this video uses the **Service Dependency** step, which is deprecated in favor of the **Background** step.
-
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
-<docvideo src="https://harness-1.wistia.com/medias/fsc2b05uxz" />
-
-
-<!-- div class="hd--embed" data-provider="Wistia" data-thumbnail="">
-   <iframe src="//fast.wistia.net/embed/iframe/fsc2b05uxz" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" oallowfullscreen="" msallowfullscreen="" width="620" height="349"></iframe><script src="//fast.wistia.net/assets/external/E-v1.js" async=""></script>
-</div -->
-
-</details>
-
 ## Prerequisites
 
 This tutorial assumes you have experience with Kubernetes, such as setting up service accounts and clusters.
@@ -93,7 +77,7 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
 ## Prepare the codebase
 
-1. Fork the tutorial repo [keen-software/goHelloWorldServer](https://github.com/keen-software/goHelloWorldServer) to your GitHub account. Alternately, you can use your own code repo. This tutorial works for any Git repo that you can access.
+1. Fork the tutorial repo [harness-community/goHelloWorldServer](https://github.com/harness-community/goHelloWorldServer) to your GitHub account. Alternately, you can use your own code repo. This tutorial works for any Git repo that you can access.
 2. Create a GitHub personal access token with the `repo`, `admin:repo_hook`, and `user` scopes. For instructions, go to the GitHub documentation on [creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). For information about the token's purpose in Harness, go to the **Authentication** section of the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication).
 3. Make note of the token; you'll need it later in the tutorial.
 4. In Harness, switch to the **Project** you want to use for this tutorial, or create a project.
@@ -126,7 +110,7 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
 
    * **URL Type:** Select **Repository**.
    * **Connection Type:** Select **HTTP**.
-   * **GitHub Repository URL:** Enter the URL to your fork of the tutorial repo, such as `https://github.com/keen-software/goHelloWorldServer.git`.
+   * **GitHub Repository URL:** Enter the URL to your fork of the tutorial repo, such as `https://github.com/YOUR_ACCOUNT/goHelloWorldServer.git`.
 
    ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-15.png)
 
@@ -211,7 +195,7 @@ Next, you need to define the build infrastructure. Harness offers several [build
 
 Now that the pipeline has a stage with a defined codebase and build infrastructure, you are ready to add steps to build the codebase, run unit tests, and push an artifact to Docker Hub. The first step will run unit tests and compile the codebase. The second step builds a container image and pushes it to a Docker Hub repo.
 
-To run unit tests in a CI pipeline, you can use either a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) or a [Run Tests step](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence#add-the-run-tests-step). This tutorial uses a **Run** step. In addition to unit tests, the **Run** step can run any number of commands on a container image. **Run** steps are highly versatile and you'll use them often in your CI pipelines. While not used in this tutorial, with the **Run Tests** step, you can leverage [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence).
+To run unit tests in a CI pipeline, you can use either a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) or a [Run Tests step](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence). This tutorial uses a **Run** step. In addition to unit tests, the **Run** step can run any number of commands on a container image. **Run** steps are highly versatile and you'll use them often in your CI pipelines. While not used in this tutorial, with the **Run Tests** step, you can leverage [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
 
 1. On the **Execution** tab for your Build stage, select **Add Step**, select **Add Step** again, and then select the **Run** step from the Step Library.
 2. For **Name**, enter `Run Unit Tests`.
@@ -227,7 +211,7 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
    * **Delegates Setup:** Select **Only use Delegates with all of the following tags**, and then select the Delegate you installed in your Kubernetes cluster.
    * Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
-5. Back in the **Run** step settings, enter `golang:1.15` in the **Image** field.
+5. Back in the **Run** step settings, enter `golang:1.17` in the **Image** field.
 6. Enter the following code in the **Command** field:
 
    ```
@@ -380,7 +364,7 @@ pipeline:
                   identifier: Run_Unit_Tests
                   spec:
                     connectorRef: dockerhubconnector
-                    image: golang:1.15
+                    image: golang:1.17
                     shell: Sh
                     command: |2-
                          go get gotest.tools/gotestsum

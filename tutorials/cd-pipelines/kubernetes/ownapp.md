@@ -20,6 +20,15 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
+<!---
+Import statements for CLI downloads
+<MacOSCLI />, <WindowsCLI />, <ARMCLI />, <AMDCLI />
+-->
+import MacOSCLI from '/docs/platform/shared/cli/mac.md';
+import WindowsCLI from '/docs/platform/shared/cli/windows.md';
+import ARMCLI from '/docs/platform/shared/cli/arm.md';
+import AMDCLI from '/docs/platform/shared/cli/amd.md';
+
 _**This tutorial is a continuation of the Kubernetes Manifest tutorial. In the previous tutorial, we guided you through creating a sample pipeline using the Guestbook sample app. In this tutorial, we'll walk you through deploying your own microservice app with the Harness CD pipeline or GitOps workflow.**_
 
 **Sock Shop**, developed by Weaveworks, serves as a polyglot architectural pattern to showcase microservices-based deployments. This application suite integrates a range of technologies, such as SpringBoot, Go, REDIS, MYSQL, MongoDB, among others. We've chosen the Sock Shop as our demonstration app for the deployment process in Harness.
@@ -502,12 +511,7 @@ Verify the following:
     <TabItem value="macos" label="MacOS">
     ```
 
-    ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-darwin-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
-    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
-    source ~/.bash_profile
-    ```
+    <MacOSCLI />
 
     ```mdx-code-block
     </TabItem>
@@ -519,24 +523,14 @@ Verify the following:
     <TabItem value="arm" label="ARM">
     ```
 
-    ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-arm64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-arm64.tar.gz 
-    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
-    source ~/.bash_profile
-    ```
+    <ARMCLI />
 
     ```mdx-code-block
     </TabItem>
     <TabItem value="amd" label="AMD">
     ```
 
-    ```bash
-    curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-linux-amd64.tar.gz 
-    tar -xvf harness-v0.0.13-alpha-darwin-amd64.tar.gz  
-    echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
-    source ~/.bash_profile
-    ```
+    <AMDCLI />
 
     ```mdx-code-block
     </TabItem>
@@ -550,9 +544,7 @@ Verify the following:
 
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
-    ```
-    Invoke-WebRequest -Uri https://github.com/harness/harness-cli/releases/download/v0.0.13-alpha/harness-v0.0.13-alpha-windows-amd64.zip -OutFile ./harness.zip
-    ```
+    <WindowsCLI />
         
     b. Extract the downloaded zip file and change directory to extracted file location.
 

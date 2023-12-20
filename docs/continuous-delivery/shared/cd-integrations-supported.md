@@ -77,6 +77,15 @@ import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
       - StatefulSet
       - HorizontalPodAutoScalar
       - PodDisruptionBudget
+- **Deployment Performance**
+    - Helm deployments might start failing at the delegate due to a large index.yaml files. This causes a CPU spike on the delegate. If you do not provide enough resources to the delegate, you might see failures in pipeline executions. 
+     - Certified Limits:
+       - Index.yaml file size limit 15Mb
+       - 5000 Helm charts have been deployed
+       - Kubernetes delegate size: 8GB, 2 CPU
+       - 10 parallel deployments
+         
+
 - **Supported integrations:**
   - Traffic Shifting for Advanced Deployment Strategies:
     - Istio
@@ -496,6 +505,16 @@ If you are using Harness Continuous Delivery (CD) but not Harness Continuous Int
 
 Harness integrates with [Jenkins](https://jenkins.io/), enabling you to run Jenkins jobs and dynamically capture inputs and outputs from the jobs. 
 
+Harness has been tested with the following versions of Jenkins:
+- 2.432
+- 2.424
+- 2.425
+- 2.401.2
+- 2.414.2
+- 2.398
+- 2.397
+
+
 - **Overview:**
   - [Run Jenkins jobs in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/cd-steps/builds/run-jenkins-jobs-in-cd-pipelines)
 
@@ -637,7 +656,6 @@ Harness also supports Terraform Cloud and Enterprise.
 - **Build:**
   - [Background step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/background-step)
   - [Git Clone step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step)
-  - [GitHub Action Plugin step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/github-action-plugin)
   - [Run step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step)
   - [Plugin step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/plugin-step)
 

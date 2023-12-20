@@ -24,9 +24,8 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
 
 ## Product Demo
 
-<!-- Video:
-https://harness-1.wistia.com/medias/a7nilatjff-->
-<docvideo src="https://harness-1.wistia.com/medias/a7nilatjff" />
+
+<docvideo src="https://youtu.be/KSRzy9CnSkA" />
 
 ## Install a delegate
 
@@ -217,19 +216,6 @@ https://harness-1.wistia.com/medias/a7nilatjff-->
             value: "8080"
         restartPolicy: Always
 
-    ---
-
-    apiVersion: v1
-    kind: Service
-    metadata:
-    name: delegate-service
-    namespace: harness-delegate-ng
-    spec:
-    type: ClusterIP
-    selector:
-        harness.io/name: terraform
-    ports:
-        - port: 8080
     ```
     </details>  
 
@@ -518,7 +504,7 @@ resource "harness_platform_environment" "environment" {
            - name: db_url
              type: String
              value: "https://postrges:8080"
-             description: "postgress url"
+             description: "postgres url"
          overrides: ## You can configure global environment overrides here
            manifests:
              - manifest:
@@ -632,7 +618,7 @@ resource "harness_platform_infrastructure" "infrastructure" {
          spec:
           connectorRef: devkubernetes ### Replace with your connector
           namespace: dev
-          releaseName: release-<+INFRA_KEY>
+          releaseName: release-<+INFRA_KEY_SHORT_ID>
           allowSimultaneousDeployments: false
       EOT
 }
