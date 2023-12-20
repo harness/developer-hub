@@ -353,6 +353,13 @@ You can now reference secret values in JSON files by using XPATH. Support is ava
 
 Harness NextGen release 80811 includes the following changes for the Harness Delegate.
 
+:::danger Breaking change
+
+When using terragrunt "All Modules" module configuration, the terragrunt plan and apply commands won't have this CLI options flag: --terragrunt-include-external-dependencies.
+In case your terragrunt configuration has module dependencies, and you want to target all dependencies please use CLI Options from the corresponding Plan/Apply step where you will be able to add this CLI option flag.
+
+:::
+
 #### New features and enhancements
 
 - Upgraded the Bouncy Castle library to address potential vulnerabilities. (PL-40729, ZD-48823)
@@ -367,6 +374,8 @@ Harness NextGen release 80811 includes the following changes for the Harness Del
 -->
 
 - Harness CD now supports auto-scaling of green services in the ECS Blue Green Swap Target step. (CDS-79414)
+
+- Terragrunt steps now support CLI options flags.
 
 #### Fixed issues
 
