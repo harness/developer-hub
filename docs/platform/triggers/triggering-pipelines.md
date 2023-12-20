@@ -20,8 +20,13 @@ This topic demonstrates how to create a trigger for GitHub payload conditions. I
 
 :::info
 
-* Currently, Harness supports Git-based triggers for the most common Git providers. You can use a [Custom Trigger](./trigger-deployments-using-custom-triggers.md) for other repo providers.
-* With [Harness RBAC](../role-based-access-control/rbac-in-harness.md), you can control who can create and use triggers *within Harness*, but you must use your Git provider's RBAC to control who can initiate the Git events that start your Harness Git event triggers.
+Currently, Harness supports Git-based triggers for the most common Git providers. You can use a [Custom Trigger](./trigger-deployments-using-custom-triggers.md) for other repo providers.
+
+:::
+
+:::info
+
+With [Harness RBAC](../role-based-access-control/rbac-in-harness.md), you can control who can create and use triggers *within Harness*, but you must use your Git provider's RBAC to control who can initiate the Git events that start your Harness Git event triggers.
 
 :::
 
@@ -349,7 +354,7 @@ pipeline:
 
 </details>
 
-## Troubleshooting Git event triggers
+## Troubleshoot Git event triggers
 
 ### Pipelines don't start after trigger events
 
@@ -372,3 +377,9 @@ If you see **Webhook registration failed**, here are the common causes:
 After addressing one or more of the above issues, edit the trigger in Harness, select **Continue** to navigate through the settings, and then select **Update Trigger** to reattempt webhook registration. Then, refresh the **Triggers** page again to verify that the webhook was registered.
 
 If registration fails and none of the above conditions apply, try [manually registering the webhook](#register-the-webhook-in-the-git-provider).
+
+### Pipeline fails with "couldn't find remote ref" when triggered from a Bitbucket forked repo PR
+
+<!-- this section is referenced on triggers-reference.md -->
+
+Currently, CI pipeline webhook triggers don't support PRs that are attempting to merge changes from a Bitbucket forked repo into the original, base repo. This applies only to Bitbucket repos when attempting to merge a fork back into the base repo and the base repo is set as the pipeline's codebase. Although the trigger initiates, the pipeline fails with `couldn't find remote ref`. This issue occurs due to the Bitbucket PR reference URL format.
