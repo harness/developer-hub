@@ -173,3 +173,7 @@ Harness uses the pipeline's codebase connector to send status updates to PRs in 
 ### Failed pipelines don't block PRs merges
 
 Although Harness can send pipeline statuses to your PRs, you must configure branch protection rules and other checks in your SCM provider.
+
+### Troubleshoot Git event triggers
+
+For troubleshooting information for Git event (webhook) triggers, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers).
