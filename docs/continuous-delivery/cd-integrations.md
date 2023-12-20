@@ -83,10 +83,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables AWS S3 for Terraform plan storage. <b>This feature flag is Public Preview.</b> </td>
     </tr>
     <tr>
-        <td>PIE_PIPELINE_SETTINGS_ENFORCEMENT_LIMIT</td>
-        <td>Enables pipeline settings and limits in project <b>Default Settings</b>. This feature lets you set certain pipeline settings and limits for all pipelines in a project. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDP_USE_K8S_DECLARATIVE_ROLLBACK</td>
         <td>Enables the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#declarative-rollback">declarative rollback</a> behavior for services. <b>This feature is in Beta.</b> </td>
     </tr>
