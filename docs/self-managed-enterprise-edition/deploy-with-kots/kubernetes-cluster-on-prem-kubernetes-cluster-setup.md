@@ -8,6 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+<DocsTag  backgroundColor= "#ff8ac1" text="Paid product"  textColor="#ca136c"  />
+
 :::info note
 
 This is an End of Life (EOL) notice for the KOTS installation method. This method is in maintenance mode as of May 31, 2023. 
