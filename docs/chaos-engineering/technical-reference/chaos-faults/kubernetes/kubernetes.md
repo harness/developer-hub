@@ -114,7 +114,7 @@ It simulates the situation of memory leaks in the deployment of microservices, a
 
 ### Node network latency
 
-Node network latency causes network latency on the Kubernetes node. It is injected using a helper pod running the target node. The chaos affects the application running on the target node for a duration specified by the `TOTAL_CHAOS_DURATION` environment variable.
+Node network latency causes network latency on the Kubernetes node. It is injected using a helper pod running in the target node. The chaos affects the application running on the target node for a duration specified by the `TOTAL_CHAOS_DURATION` environment variable.
 
 <accordion color="green">
     <summary>Use cases</summary>
@@ -135,7 +135,8 @@ Node network loss causes network loss on the Kubernetes node. It is injected usi
     <summary>Use cases</summary>
 Node network loss simulates packet loss in the network communication of a Kubernetes node. The fault aims to verify the resilience of applications when faced with disrupted network communication, reflecting real-world scenarios such as unstable connections, network partitions, or infrastructure outages.
 
-It mimics situations where the network becomes unreliable, leading to potential data transmission failures, retries, and extended communication delays. The fault challenges applications by hindering their ability to communicate with other services, data stores, or external APIs effectively. It verifies the robustness of applications in handling network interruptions, ensuring data integrity in the face of packet loss, and the effectiveness of error-handling mechanisms under network failures. Additionally, it can be used to test failover strategies, data synchronization policies, and the efficiency of retry logic in applications.</accordion>
+It mimics situations where the network becomes unreliable, leading to potential data transmission failures, retries, and extended communication delays. The fault challenges applications by hindering their ability to communicate with other services, data stores, or external APIs effectively. It verifies the robustness of applications in handling network interruptions, ensuring data integrity in the face of packet loss, and the effectiveness of error-handling mechanisms under network failures. Additionally, it can be used to test failover strategies, data synchronization policies, and the efficiency of retry logic in applications.
+</accordion>
 
 </FaultDetailsCard>
 
