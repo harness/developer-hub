@@ -67,10 +67,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Disables Helm repository caching on the Harness delegate. This should only be enabled if users are experiencing failures with Harness Delegate failing to fetch Helm Charts. Caching could be the source of the issue. This Feature is in Beta. </td>
     </tr>
     <tr>
-        <td>PIPELINE_ROLLBACK</td>
-        <td>Enables <a href="/docs/continuous-delivery/manage-deployments/rollback-deployments">Post deployment rollback.</a> <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CD_GIT_WEBHOOK_POLLING</td>
         <td>Enables configurable polling for <a href="/docs/platform/triggers/triggering-pipelines/">GitHub Webhooks</a> This allows users to set polling interval for Harness Delegate to poll your GitHub instance. <b>This feature is in Public Preview.</b></td>
     </tr>
