@@ -90,6 +90,136 @@ Setup Harness CD & GitOps in a few commands
 
 `--help`       - Shows a list of commands or help for one command.
 
+## Local Options for APPLY commands
+1. `harness secret apply help`
+```
+NAME:
+harness secret apply - Create a new secret or Update  an existing one.
+
+USAGE:
+harness secret apply [command options] [arguments...]
+
+OPTIONS:
+--secret-type value  provide the secret type.
+--port value         port number for the ssh secret
+--username value     username for the ssh secret
+--passphrase value   passphrase for the ssh secret
+--domain value       domain for cloud data center
+--org-id value       provide an Organization Identifier
+--project-id value   provide a Project Identifier
+--help, -h           show help
+```
+2. `harness connector apply help`
+```
+NAME:
+   harness connector apply - Create a new connector or Update  an existing one.
+
+USAGE:
+   harness connector apply [command options] [arguments...]
+
+OPTIONS:
+   --delegate-name value               delegate name for the k8s connector
+   --git-user value                    git username for the github connector
+   --aws-cross-account-role-arn value  cross account role arn for the aws connector
+   --aws-access-key value              access key for the aws connector
+   --aws-secret-Key value              access secret for the aws connector
+   --cloud-region value                region for the cloud connector
+   --host-ip value                     host ip or fqdn for the physical data center connector
+   --port value                        port for the physical data center connector
+   --org-id value                      provide an Organization Identifier
+   --project-id value                  provide a Project Identifier
+   --help, -h                          show help
+```
+3. `harness environment apply help`
+```
+NAME:
+   harness environment apply - Create a new environment or Update  an existing one.
+
+USAGE:
+   harness environment apply [command options] [arguments...]
+
+OPTIONS:
+   --org-id value      provide an Organization Identifier
+   --project-id value  provide a Project Identifier
+   --help, -h          show help
+```
+4. `harness infrastructure apply help`
+```
+NAME:
+   harness infrastructure apply - Create a new infrastructure or Update  an existing one.
+
+USAGE:
+   harness infrastructure apply [command options] [arguments...]
+
+OPTIONS:
+   --cloud-project value  provide the Google Cloud Platform project name.
+   --cloud-region value   provide the Cloud Platform region name. For eg; 1.Creating GCP pipeline then provide gcp-region name, 2.Creating AWS based pipeline then provide aws-region name
+   --instance-name value  instance name for the cloud provider for PDC Infrastructure
+   --org-id value         provide an Organization Identifier
+   --project-id value     provide a Project Identifier
+   --help, -h             show help
+```
+5. `harness service apply help`
+```
+NAME:
+   harness service apply - Create a new service or Update  an existing one.
+
+USAGE:
+   harness service apply [command options] [arguments...]
+
+OPTIONS:
+   --cloud-project value  provide the Google Cloud Platform project name.
+   --cloud-bucket value   provide the Google Cloud Platform bucket name.
+   --cloud-region value   provide the Google Cloud Platform bucket name.
+   --org-id value         provide an Organization Identifier
+   --project-id value     provide a Project Identifier
+   --help, -h             show help
+```
+6. `harness gitops-cluster apply help`
+```
+NAME:
+   harness gitops-cluster apply - Create a new gitops-cluster or Update  an existing one.
+
+USAGE:
+   harness gitops-cluster apply [command options] [arguments...]
+
+OPTIONS:
+   --agent-identifier value  provide GitOps Agent Identifier.
+   --org-id value            provide an Organization Identifier
+   --project-id value        provide a Project Identifier
+   --help, -h                show help
+
+```
+7. `harness gitops-repository apply help`
+```
+NAME:
+   harness gitops-repository apply - Create a new gitops-repository or Update  an existing one.
+
+USAGE:
+   harness gitops-repository apply [command options] [arguments...]
+
+OPTIONS:
+   --agent-identifier value  provide GitOps Agent Identifier.
+   --org-id value            provide an Organization Identifier
+   --project-id value        provide a Project Identifier
+   --help, -h                show help
+
+```
+8. `harness gitops-application apply help`
+```
+NAME:
+   harness gitops-application apply - Create a new gitops-application or Update  an existing one.
+
+USAGE:
+   harness gitops-application apply [command options] [arguments...]
+
+OPTIONS:
+   --agent-identifier value  provide GitOps Agent Identifier.
+   --org-id value            provide an Organization Identifier
+   --project-id value        provide a Project Identifier
+   --help, -h                show help
+
+```
 <!-- 
 ## Environment
 
