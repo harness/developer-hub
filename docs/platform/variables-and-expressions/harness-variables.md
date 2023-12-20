@@ -539,7 +539,7 @@ Harness string variables can be concatenated by default. Each expression can be 
 
 Previously, Harness users were forced to use a ‘+’, or `.concat()`, the concatenation operator, to join multiple expressions together. Now, you can simply use `<+pipeline.name> <+pipeline.executionId>`. 
 
-For example, Harness supports complex usages sych as the following:
+For example, Harness supports complex usages such as the following:
 
 - `us-west-2/nonprod/eks/eks123/<+env.name>/chat/`
 - `<+stage.spec.execution.steps.s1<+strategy.identifierPostFix>.steps.ShellScript_1.output.outputVariables.v1>`
@@ -554,7 +554,7 @@ All existing expressions will continue to work. For example, the following synta
 
 - `<+<+pipeline.variables.var1>.concat("_suffix")>`
 
-Ensure the expression is wrapped within `<+ >` in both of theese examples.
+Ensure the expression is wrapped within `<+ >` in both of these examples.
 
 :::note
 
@@ -611,6 +611,18 @@ You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"
   ```
   
   To invoke the method `concat` on the expression `<+pipeline.variables.var1>`, you must wrap `<+pipeline.variables.var1>` within `<+...>` and then invoke the method using `.concat()`.
+
+- When using an expression for the Harness secret functor, `<+secrets.getValue("sec")>`, it should not be wrapped within quotation marks.
+  
+  This expression gets resolved to another Harness internal functor,`${ngSecretManager.obtain("sec")}`, which is resolved on the delegate. Since its value is not a primitive type string, it should not be wrapped within quotation marks.
+
+  For example, consider the following expression for the value of a pipeline or stage variable:
+  ```
+  <+<+<+pipeline.variables.var1>=="secret1">?<+secrets.getValue("secret1")>:<+secrets.getValue("defaultSecret")>>
+  ```
+  This secret expression should not be wrapped within quotation marks.
+
+- If expressions don't need to be evaluated in the pipeline YAML but are added as script comments in the Shell Script step, the Run step, or another step, they will still be processed and evaluated. This might cause failures and unnecessary processing. Review and remove any unnecessary script comments from the pipeline YAML to streamline the evaluation process.
 
 
 ## Debugging expressions

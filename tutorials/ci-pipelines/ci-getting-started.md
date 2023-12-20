@@ -85,7 +85,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="Go" label="Go" default>
 ```
 
-1. Fork the [Go sample repository](https://github.com/rustd/gosample) into your GitHub account.
+1. Fork the [Go sample repository](https://github.com/harness-community/gosample) into your GitHub account.
 2. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free Harness account.
 3. Select the Harness CI module, and follow the **Get Started** wizard for Harness CI.
 4. When asked **Which code repository do you use**, select GitHub, and then select either **OAuth** or **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
@@ -114,7 +114,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="Java" label="Java">
 ```
 
-1. Fork the [JHTTP sample repository](https://github.com/rustd/jhttp) into your GitHub account.
+1. Fork the [JHTTP sample repository](https://github.com/harness-community/jhttp) into your GitHub account.
 2. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free Harness account.
 3. Select the Harness CI module, and follow the **Get Started** wizard for Harness CI.
 4. When asked **Which code repository do you use**, select GitHub, and then select either **OAuth** or **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
@@ -143,7 +143,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="JavaScript" label="JavaScript">
 ```
 
-1. Fork the [React calculator sample repository](https://github.com/rustd/reactcalculator) into your GitHub account.
+1. Fork the [React calculator sample repository](https://github.com/harness-community/reactcalculator) into your GitHub account.
 2. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free Harness account.
 3. Select the Harness CI module, and follow the **Get Started** wizard for Harness CI.
 4. When asked **Which code repository do you use**, select GitHub, and then select either **OAuth** or **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
@@ -176,7 +176,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value=".NET" label="C# (.NET Core)">
 ```
 
-1. Fork the [C# (.NET Core) sample repository](https://github.com/rustd/hello-dotnet-core) into your GitHub account.
+1. Fork the [C# (.NET Core) sample repository](https://github.com/harness-community/hello-dotnet-core) into your GitHub account.
 2. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free Harness account.
 3. Select the Harness CI module, and follow the **Get Started** wizard for Harness CI.
 4. When asked **Which code repository do you use**, select GitHub, and then select either **OAuth** or **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
@@ -207,7 +207,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="Python" label="Python">
 ```
 
-1. Fork the [Python sample repository](https://github.com/rustd/python) into your GitHub account.
+1. Fork the [Python sample repository](https://github.com/harness-community/python) into your GitHub account.
 2. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free Harness account.
 3. Select the Harness CI module, and follow the **Get Started** wizard for Harness CI.
 4. When asked **Which code repository do you use**, select GitHub, and then select either **OAuth** or **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.

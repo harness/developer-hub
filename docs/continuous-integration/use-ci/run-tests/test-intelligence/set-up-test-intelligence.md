@@ -35,6 +35,7 @@ Test Intelligence uses *test selection* to run only those tests that are relevan
 When you perform a pull request, TI uses the following metrics to select tests:
 
 * **Changed code:** TI queries Git to learn exactly which code changed in a specific build. TI uses this data to select tests that are associated directly or indirectly with the source code changes. TI selects these tests as part of the subset of the tests run in the pipeline. TI skips tests that aren't needed because there were no relevant code change.
+   * Changes to certain files, such as `build.gradle`, `pom.xml`, and so on, can cause TI to select all tests due to the potential broad impact of these files. If a certain file is not relevant to the code you want to test, you can configure TI to [ignore tests or files](#ignore-tests-or-files).
 * **Changed tests:** When a test is changed, TI selects and runs that test, even if the code the test covers hasn't changed.
 * **New tests:** When you add a new test, TI selects and runs that test. This ensures that the test is running successfully and also finds correlations between the new test and new/existing code.
 

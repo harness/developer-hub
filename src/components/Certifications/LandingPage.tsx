@@ -7,15 +7,9 @@ import CertCard, { certType } from "./CertCard";
 import { certifications } from "./data/certificationsData";
 import styles from "./styles.module.scss";
 
-const devFeatures = [
-  "Free Plan",
-];
-const administratorFeatures = [
-  "Enterprise Plan",
-];
-const adminFeatures = [
-  "Enterprise Plan",
-];
+const devFeatures = ["Free Plan"];
+const administratorFeatures = ["Enterprise Plan"];
+const adminFeatures = ["Enterprise Plan"];
 
 export const getCertBadges = (url: string) => [
   {
@@ -185,9 +179,7 @@ export default function Certifications() {
                 </ul>
               </div>
               <div className={styles.certBadges}>
-                <h5>
-                  Available Certifications
-                </h5>
+                <h5>Available Certifications</h5>
                 <div className={styles.availableCerts}>
                   <img
                     src={`${baseUrl}img/cert_dev_cd_badge.svg`}
@@ -211,8 +203,13 @@ export default function Certifications() {
                   />
                 </div>
                 {/* <h5>Coming Soon</h5> */}
-                {/* <div className={styles.unAvailableCerts}>
-                </div> */}
+                <h5>Coming Soon</h5>
+                <div className={styles.unAvailableCerts}>
+                <img
+                    src={`${baseUrl}img/cert_dev_ce_badge.svg`}
+                    alt="Develop Chaos Badge"
+                  />
+                </div>
               </div>
             </div>
             <div className={styles.verticalLine}></div>
@@ -237,9 +234,7 @@ export default function Certifications() {
                 </ul>
               </div>
               <div className={styles.certBadges}>
-                <h5>
-                  Available Certifications
-                </h5>
+                <h5>Available Certifications</h5>
                 <div className={styles.availableCerts}>
                   <img
                     src={`${baseUrl}img/cert_adm_cd_badge.svg`}
@@ -248,7 +243,7 @@ export default function Certifications() {
                   <img
                     src={`${baseUrl}img/cert_adm_ci_badge.svg`}
                     alt="Administrator Continuous Integration Badge"
-                   />
+                  />
                   <img
                     src={`${baseUrl}img/cert_adm_ff_badge.svg`}
                     alt="Administrator FF Badge"
@@ -257,7 +252,6 @@ export default function Certifications() {
                 {/* <h5>Coming Soon</h5> */}
                 <h5>Coming Soon</h5>
                 <div className={styles.unAvailableCerts}>
-
                   <img
                     src={`${baseUrl}img/cert_adm_sto_badge.svg`}
                     alt="Administrator STO Badge"

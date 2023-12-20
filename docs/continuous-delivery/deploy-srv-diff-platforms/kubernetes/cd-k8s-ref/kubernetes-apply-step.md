@@ -46,7 +46,7 @@ For example, if the step Id is **Apply**, the FQN for the step settings are:
 ## Apply manifests from a remote source
 
 :::info note
-Currently, this feature is behind the feature flag `CDS_K8S_APPLY_MANIFEST_FROM_SOURCE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag `CDS_K8S_APPLY_MANIFEST_WITHOUT_SERVICE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 ### Demo Video

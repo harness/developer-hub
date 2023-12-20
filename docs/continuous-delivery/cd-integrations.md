@@ -83,10 +83,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables AWS S3 for Terraform plan storage. <b>This feature flag is Public Preview.</b> </td>
     </tr>
     <tr>
-        <td>PIE_PIPELINE_SETTINGS_ENFORCEMENT_LIMIT</td>
-        <td>Enables pipeline settings and limits in project <b>Default Settings</b>. This feature lets you set certain pipeline settings and limits for all pipelines in a project. <b>This feature is in Public Preview.</b></td>
-    </tr>
-    <tr>
         <td>CDP_USE_K8S_DECLARATIVE_ROLLBACK</td>
         <td>Enables the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#declarative-rollback">declarative rollback</a> behavior for services. <b>This feature is in Beta.</b> </td>
     </tr>
@@ -124,10 +120,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Disables the resolving of comments in values.yaml files.</td>
     </tr>
     <tr>
-        <td>NG_EXPRESSIONS_NEW_INPUT_ELEMENT</td>
-        <td>Suggests probable expressions when selecting <b>Expression</b> for a setting using autocomplete.</td>
-    </tr>
-    <tr>
         <td>PIE_GITX_OAUTH</td>
         <td>Uses users' OAuth credentials to fetch and commit in Git. <b>This feature is in Public Preview.</b></td>
     </tr>
@@ -135,10 +127,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES</td>
         <td>Enables the ability to <a href="/docs/platform/variables-and-expressions/runtime-inputs/#multiple-selection">choose multiple values from a list of allowed values</a>
 .</td>
-    </tr>
-    <tr>
-        <td>CDS_NG_TRIGGER_MULTI_ARTIFACTS</td>
-        <td>Allows creation of multi-region artifact triggers.</td>
     </tr>
     <tr>
         <td>CDS_AUTO_APPROVAL</td>
@@ -270,9 +258,5 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>PIE_ASYNC_FILTER_CREATION</td>
         <td>Sets pipeline CRUD calls to filter creation asynchronously. <b>This feature is in Beta.</b> </td>
-    </tr>
-    <tr>
-        <td>CDS_NG_BARRIER_STEPS_WITHIN_LOOPING_STRATEGIES</td>
-        <td>Support Barrier steps within looping strategies. <b>This feature is under development, and will be Beta soon.</b> </td>
     </tr>
 </table>

@@ -1966,3 +1966,19 @@ The Service Account API token is not supported with Approval API, you need to us
 
 #### How user can make sure the build artifacts that go to harness will come from protected branches before production deployment?
 You can select the Artifact filter option and provide the expression as per your need in the Artifact source config of the service.
+
+#### We have delegate monitoring setup and we're not clear on what types of tasks delegates are reporting on in the metrics.
+
+The task types are internal tasks for various tasks a pipeline generates. for example, a pipeline can generate tasks for secret decryption during the shell script execution and they are internal to harness. We keep introducing new task types and removing old ones.
+
+#### Do these build_source tasks use the delegate task quota? Sometimes their number is really huge.
+
+Build source tasks do use the quota. these are tasks for artifact collections. they are only present in FG and next gen these tasks are never fired.
+
+####  How does the system differentiate between delegate name and tag ?
+
+A delegate name is a unique identifier for a registered delegate in Harness Manager, while delegate tags are descriptors that are added to the delegate before the registration process. All delegates with the tag are selected when a tag is common for two or more delegates.
+
+#### We have about 500 users who were somehow granted the Admin role on the Account Level as individuals. We need to remove this role from them - is there an efficient way to do this?
+
+You can use this [API] (https://apidocs.harness.io/tag/Account-Roles#operation/update-role-acc) and create a script to update the user roles.

@@ -109,7 +109,7 @@ export const STOList: CardItem[] = [
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
     description: (
-      <>Set up an end-to-end STO/CI pipeline that scans your codebase, builds/pushes a test image, and then scans it. If there are no critical issues, the pipeline builds a prod image and pushes it to your registry. </>
+      <>Set up an end-to-end STO/CI pipeline that scans your codebase, builds/pushes a test image, and then scans it. If there are no critical issues, the pipeline builds/pushes a prod image. </>
     ),
     newDoc: true,
     type: [docType.Documentation],
