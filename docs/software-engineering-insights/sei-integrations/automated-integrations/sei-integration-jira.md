@@ -57,7 +57,7 @@ To integrate with the on-premises Jira instances, you must username and password
   <TabItem value="satellite" label="Satellite">
 ```
 
-The steps for configuring the integration using **satellite** is similar to configuring the integration on cloud, with the exception of using **satellite to communicate** with the Atlassian server.
+The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Atlassian server.
 
 To integrate with **On-Premises Jira** instances, you can use the **Username** and the **User-Generated API key** with the relevant permission. Make sure to select the **Satellite Integration Checkbox** while configuring the integration.
 
