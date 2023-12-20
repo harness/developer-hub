@@ -47,30 +47,24 @@ Do the following:
 
 3. In the Pipeline Editor, go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.  
    
-   You can also use a [Kubernetes](/docs/category/set-up-kubernetes-cluster-build-infrastructures) or [Docker](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) infrastructure, but these require additional work to set up.   
+   You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
 
-<!-- 
-4. Set up your codebase:
+:::note
 
-   1. Select **Codebase** (right menu).
+The following step is required only for Kubernetes or Docker infrastructures. If you're using Harness Cloud, go to [Add the Aqua-Trivy scan step](#add-the-aqua-trivy-scan-step).
 
-   2. Select your codebase connector.
-
-   3. Select **Runtime Input** as the value type for the repository name. You will specify the repo when you run the pipeline. 
-
-      ![](./static/sast-semgrep-tutorial/codebase-repo-type-input.png)  
-
--->
+:::
 
 
-### Add the Docker-in-Docker background step
-
+### Add a Docker-in-Docker background step
 
 ```mdx-code-block
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 ```
 
 <StoDinDRequirements />
+
+
 
 
 ### Add the Aqua-Trivy scan step
