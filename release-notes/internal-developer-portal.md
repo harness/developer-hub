@@ -40,7 +40,7 @@ In this release, we're excited to unveil features like the HTTP actions support 
 - Added a step to register software components in IDP catalog.[IDP-1438]
 - Added a step to create a repository in your git provider and push contents along with catalog-info.yaml. [IDP-1436]
 
-This feature is behind the feature flag `To be Added`, also has dependency on other services which might delay it's releases untill those services are on their latest release. To enable the feature, contact [Harness Support](support@harness.io).
+This feature is behind the feature flag `To be Added`, also has dependency on other services which might delay it's releases untill those services are on their latest release. To enable the feature, contact [Harness Support](mailto:support@harness.io).
 
 #### New features and enhancements
 
