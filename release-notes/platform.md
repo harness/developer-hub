@@ -82,6 +82,18 @@ The following deprecated API endpoints will no longer be supported:
 
 ## December 2023
 
+### Version 1.17.x
+
+### Fixed issue
+
+- When Harness user groups were created during SCIM sync, dots were not converted to underscores in Harness for user group IDs. (PL-43576, ZD-55266)
+
+   This issue has been resolved. Now, SCIM group names that contain dots are converted to underscores in Harness for group identifiers. For example, a SCIM group named "abc.xyz" is created as follows:
+   
+   `UserGroupIdentifier: "abc_xyz"`
+   
+   `UserGroupName: "abc.xyz"` 
+
 ### Version 1.16.6
 
 #### New features and enhancements

@@ -39,6 +39,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## December 2023
 
+### Harness version 1.17.x, Harness Delegate version 23.12.820xx
+
+#### Fixed issue
+
+- (CDS-83821)
+
 ### Versions 23.12.81411, 23.12.81604, 23.12.81806
 
 #### Delegate security hotfix
