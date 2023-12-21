@@ -16,10 +16,45 @@ For Harness SaaS release notes, go to [Harness SaaS Release Notes](/docs/first-g
 
 Release notes are displayed with the most recent release first.
 
+## December xx, 2023, version 817xx
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 8xxxx |
+| Watcher | 8xxxx |
+| Verification Service | 8xxxx |
+| UI | 8xxxx |
+| Learning Engine | xxxxx | 
+| Gateway | xxxxx |
+
+### New features and enhancements
+
+- 
+
+
+### Fixed issues
+
+- Audit trails were missing for deleted SCIM user groups. Added audits for Delete user group from SCIM to resolve the issue. (PL-38401)
+
+- Fixed the `java.io.InterruptedIOException` message in delegate logs by adding the source URL and removing duplicate error logs. (PL-40118)
+
+      This item requires Harness Delegate version 23.12.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate). 
+
 
 ## November 30, 2023, version 81308
 
 This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | xxxxx |
+| Watcher | xxxxx |
+| Verification Service | xxxxx |
+| UI | xxxxx |
+| Learning Engine | xxxxx | 
+| Gateway | xxxxx |
 
 ### New features and enhancements
 

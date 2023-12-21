@@ -111,6 +111,19 @@ gsutil -m cp \
 
   This item requires Harness Delegate version 23.11.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
+#### Continuous Integration
+
+##### Delegate selectors for codebase tasks (CI-9980)
+
+:::note
+
+Currently, delegate selectors for CI codebase tasks is behind the feature flag `CI_CODEBASE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Without this feature flag enabled, delegate selectors aren't applied to delegate-related CI codebase tasks.
+
+With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector).
 
 ### Fixed issues
 
@@ -128,9 +141,15 @@ gsutil -m cp \
 
   This issue has been fixed. You can now scroll through large logs and also use the Scroll to Bottom button.
 
+- Required filters were missing in Prometheus queries, causing the Verify step to fail. The queries now include the required filter validations. (CDS-80823)
+
 - Harness generated multiple requests for each remote child pipeline. (CDS-80831, ZD-51082, ZD-51764)
 
   This issue has been fixed. Now, Harness generates only unique requests for child pipelines.
+
+- Updated the UI of environment variable fields in the Run step to allow configuring default, allowed values when they are set as runtime inputs. (CDS-80915)
+
+- When adding a Google Artifact Registry (GAR) in the **Artifact Details** dialog, you had to manually enter the **Repository Name**. Now, you can select the repository from a dropdown. (CDS-81187)
 
 - Custom health sources are not displayed for stages that deploy multiple services or multiple environments. (CDS-81214, ZD-51901)
 
@@ -236,6 +255,8 @@ gsutil -m cp \
   By default, the image uses manually provided credentials, but it requires `PLUGIN_ARTIFACT_AWS_ACCESS_KEY` and `PLUGIN_ARTIFACT_AWS_SECRET_KEY` to be present. If these environment variables are not present, Harness uses an IAM role associated with the service account in the step group configuration for the EKS cluster.
     
   The image uses `PLUGIN_ARTIFACT_AWS_ROLE_ARN` and `PLUGIN_ARTIFACT_AWS_STS_EXTERNAL_ID` to assume the other role. The base role for assuming this role is determined based on whether the image uses manually provided credentials or an IAM role.
+
+- The Artifact tag (`<+artifact.tag>`) wasn't resolving for AMI. Added support to fix this issue. (CDS-82824)
 
 - For Rancher-based Kubernetes or Native Helm deployments and instance sync, Harness uses Rancher's `generateKubeconfig` API action. A new kubeconfig token is created on the Rancher cluster each time this API is hit. This led to an accumulation of kubeconfig tokens over time on the Rancher cluster. (CDS-83055, ZD-52924)
 
@@ -351,18 +372,71 @@ gsutil -m cp \
   
   This item requires Harness Delegate version 23.11.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
+#### Continuous Integration
 
+- Improved the error message that appears if the Kubernetes cluster connector ID is `null` when running a pipeline that uses a Kubernetes cluster build infrastructure. (CI-8166)
 
+- To address potential performance issues, resource consumption logs are now disabled for the `ci-addon` service, and the communication retry internal between the Lite Engine and the `ci-addon` service is now nine seconds. <!-- additional hotfix change behind FF CI_EXTRA_ADDON_RESOURCE --> (CI-10042, ZD-52559)
 
+- Fixed a thread safety issue that caused errors like `IncorrectResultsSizeDataAccessException` and `returned non unique result`. (CI-10061, ZD-52625)
 
+- A previous release simplified the format of the log base key used to [download logs](/docs/platform/pipelines/download-logs) for pipelines, and this release includes additional simplifications to support a new regex pattern. The simplified format is behind the feature flag `PIE_SIMPLIFY_LOG_BASE_KEY`. (CI-10085)
 
+- The Get Started workflow can generate pipeline identifiers from repository names. To avoid failures due to invalid characters in pipeline identifiers, periods (`.`) in repository names are now replaced by underscores (`_`) in pipeline identifiers. (CI-10156, ZD-52954)
 
+- Fixed an issue where time savings wasn't reported if Test Intelligence selected no tests. (CI-10196)
 
+#### Feature Flags
 
+- Fixed an issue where the Feature Flags onboarding wasn't able fetch metrics to complete the verification step. (FFM-9743)
 
+- Fixed an issue where the Specific Targeting section of the Flag detail page would not display a variation if the name was not set. If the name is not set, the page will now fall back to the identifier. (FFM-9858)
 
+- Fixed an issue where a new Feature Flag targeting rule could be saved without adding a target or target group. (FFM-9871)
 
+#### Harness Platform
 
+- When a permission was removed from the `permissions.yml` file or marked as inactive, the permission was deleted from managed roles, but not from custom roles. (PL-30826)
+
+   This issue has been resolved. The role matching filter criteria used to remove permissions from both custom and managed roles has been updated.
+  
+- The **Name (Z->A, 9->0)** sort option on the Projects page didn't display projects in the correct order. (PL-32066)
+
+  The UI now uses case-insensitive sorting when it lists projects on the Projects page.
+
+- Harness removed the `delegate-service` from the default delegate YAML init container. (PL-37616)
+
+     This item is available with Harness Platform version 81709 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- The UI didn't display the latest version for GSM secrets. (PL-38526)
+
+- The delegate list API returned a 403 error response for users that didn't have view permission for the delegate. (PL-39630)
+
+     The message now specifies that the user is not authorized because view permission is not granted for the delegate.
+
+     This item is available with Harness Platform version 81709 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- The UI didn't allow you to set **Projects** or **Organizations** role permissions for custom resource groups. (PL-39825, ZD-46075, ZD-49912)
+
+   You can now select **Projects** and **Organizations** as resources in custom resource groups.
+
+- When creating projects through APIs, Harness didn't treat the organization identifier as case-insensitive, which resulted in duplicate entries. (PL-40897, ZD-49840)
+
+   This issue is fixed by making the organization identifier in project creation APIs case-insensitive.
+
+- When you deleted a default secret manager, the Harness built-in secret manager would not automatically become the new default manager. (PL-41077)
+
+   This issue has been resolved. Now, when you delete a default secret manager, the Harness built-in secret manager is automatically set as the default.
+
+- Deleted accounts sent delegate API calls to Harness Manager for authentication. (PL-41113)
+
+  Calls from delegates of deleted accounts are no longer authenticated by Harness Manager.   
+
+   This item is available with Harness Platform version 81401 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Delegate logs formatting is updated to allow you to view stack-traces in their native format. (PL-41467)
+
+- Previously, if you had an SSH secret key with a **Text** reference pre-selected, you could only update it using YAML but not via the UI. The UI displayed only the **File** secret types. Harness has now added a dropdown menu in the **Create or Select an Existing Secret** dialog that allows you to select the **Secret type** as either **File** or **Text**. This simplifies the process of updating SSH secrets, making it easier for you to manage your secrets. (PL-41507, ZD-47600, ZD-51334)
 
 
 
