@@ -1,6 +1,6 @@
 ---
-title: Using Custom Dashboards to monitor CD deployments
-description: Using Custom Dashboards to monitor CD deployments.
+title: Using custom dashboards to monitor CD deployments
+description: Monitor CD deployments using the explores that work best for you.
 sidebar_position: 1
 helpdocs_topic_id: phiv0zaoex
 helpdocs_category_id: 0gyfk4938x
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes the various Explores available for monitoring CD deployments, and also the data available in each explore. The below image shows the list of explores available for visualizing CD data.
+An Explore is a starting point for a query that is designed to explore a particular subject area. This topic describes the various explores available for monitoring CD deployments, and the data the provide. The following image shows the list of explores available for visualizing CD data.
 
 <docimage path={require('./static/using-cd-custom-dashboards-1.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -20,11 +20,12 @@ This explore can be used to visualize CD data related to pipeline executions. Ea
 
 <docimage path={require('./static/using-cd-custom-dashboards-20.png')} width="60%" height="60%" title="Click to view full size image" />
 
-Let us go through each of the view listed in the above image, and describe the fields and it's usages.
+Let's go through each of the views listed above and describe its fields and usages.
 
 
 ### Approval Stage
-This view contains the data related to the Helm manifest info which is used in CD Stage executions. The data is recorded per CD Stage Execution, meaning if there are 10 executions of a single service which has a helm manifest linked to it this view will also have 10 records.
+
+This view contains the data related to the Helm manifest info that is used in CD stage executions. The data is recorded per CD stage execution. For example, if there are 10 executions of a single service with a Helm manifest linked to it, this view will have 10 records.
 
 <docimage path={require('./static/using-cd-custom-dashboards-21.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -43,7 +44,7 @@ List of measures:
 1. Stage Execution Duration: Average stage execution duration
 
 ### Deployments
-This view contains the data related to the pipeline executions. The data is recorded per pipeline execution, meaning if there are 10 pipeline executions, then this view will also have 10 records.
+This view contains the data related to pipeline executions. The data is recorded per pipeline execution, meaning if there are 10 pipeline executions, then this view will also have 10 records.
 
 <docimage path={require('./static/using-cd-custom-dashboards-6.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -75,7 +76,7 @@ List of measures:
 11. Total Deployments Trend: This compares the deployment count from the previous period to the current period
 
 ### Execution Tags
-This view contains the data related to the pipeline execution tags. It will contain the tags that were present in the pipeline at the start of the execution.
+This view contains the data related to pipeline execution tags. It will contain the tags that were present in the pipeline at the start of the execution.
 
 <docimage path={require('./static/using-cd-custom-dashboards-7.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -90,7 +91,7 @@ This view contains the data related to the organization tags. It will contain th
 
 
 List of dimensions:
-1. Organization tag: The organization tag, it will be displayed as `key:value`. If there are let's say 5 tags in an organization, there will be 5 rows having 1 tag(`key:value` pair) in each row
+1. Organization tag: The organization tag. It will be displayed as `key:value`. For example, if there are 5 tags in an organization, there will be 5 rows having 1 tag (`key:value` pair) in each row.
 
 
 ### Organizations
@@ -98,7 +99,7 @@ This view contains the data related to organizations.
 
 :::note
 
-This will only show the organizations, which had atleast 1 pipeline execution(in any project). It won't display the organizations which didn't contain any pipeline execution.
+This will only show the organizations that had at least 1 pipeline execution (in any project). It won't display the organizations that didn't contain any pipeline executions.
 
 :::
 
@@ -106,15 +107,15 @@ This will only show the organizations, which had atleast 1 pipeline execution(in
 
 
 List of dimensions:
-1. Organization tag: The organization tag, it will be displayed as `key:value`. If there are let's say 5 tags in an organization, there will be 5 rows having 1 tag(`key:value` pair) in each row
+1. Organization tag: The organization tag, displayed as `key:value`. For example, if there 5 tags in an organization, there will be 5 rows having 1 tag (`key:value` pair) in each row.
 
 
 ### Pipeline Tags
-This view contains the data related to the pipeline tags. It will contain the real-time tags of the pipeline.
+This view contains the data related to pipeline tags. It will contain the real-time tags of the pipeline.
 
 :::note
 
-This will only show the pipelines, which had atleast 1 pipeline execution. It won't display the tags for the pipelines which didn't get executed even once.
+This will only show the pipelines that had at least 1 pipeline execution. It won't display the tags for the pipelines that didn't get executed even once.
 
 :::
 
@@ -122,7 +123,7 @@ This will only show the pipelines, which had atleast 1 pipeline execution. It wo
 
 
 List of dimensions:
-1. Pipeline tag: The pipeline tag, it will be displayed as `key:value`. If there are let's say 5 tags in a pipeline, there will be 5 rows having 1 tag(`key:value` pair) in each row
+1. Pipeline tag: The pipeline tag, displayed as `key:value`. For example, if there are 5 tags in a pipeline, there will be 5 rows having 1 tag (`key:value` pair) in each row.
 
 
 ### Pipelines
@@ -130,7 +131,7 @@ This view contains the data related to the pipelines.
 
 :::note
 
-This will only show the pipelines, which had atleast 1 execution. It won't display the pipelines which didn't had any execution.
+This will only show pipelines that had at least 1 execution. It won't display the pipelines that didn't had any executions.
 
 :::
 
@@ -148,7 +149,7 @@ This view contains the data related to the projects.
 
 :::note
 
-This will only show the projects, which had atleast 1 pipeline execution. It won't display the projects which didn't had any pipeline execution.
+This will only show projects with at least 1 pipeline execution. It won't display the projects that didn't have any pipeline executions.
 
 :::
 
@@ -162,7 +163,7 @@ List of dimensions:
 
 
 ### Reverted Deployments
-This view contains the data related to the pipeline executions which have been reverted.
+This view contains the data related to reverted pipeline executions.
 
 <docimage path={require('./static/using-cd-custom-dashboards-15.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -179,8 +180,8 @@ List of dimensions:
 6. Pipeline Name: Name of the pipeline
 7. Project ID: Project identifier where the pipeline got executed
 8. Start Time: Start time of the pipeline execution
-9. Status: Pipeline status(`RUNNING`/`ABORTED`/`SUCCESS` etc.)
-10. Trigger Type: Type of trigger used to execute the pipeline(`MANUAL`/`WEBHOOK` etc.)
+9. Status: Pipeline status (`RUNNING`/`ABORTED`/`SUCCESS` etc.)
+10. Trigger Type: Type of trigger used to execute the pipeline (`MANUAL`/`WEBHOOK` etc.)
 
 List of measures:
 1. Failed Deployments: No. of deployments that failed with `FAILED`/`ABORTED` statuses
@@ -191,7 +192,7 @@ List of measures:
 6. Mean duration trend: This compares the mean duration trend from the previous period to the current period
 7. Mean Time to Restore: Measures the mean time to restore
 8. Median Duration: Median duration of the deployment
-9. Success Rate: Success rate of deployments(deployments completed with `SUCCESS` status)
+9. Success Rate: Success rate of deployments (deployments completed with `SUCCESS` status)
 10. Total Deployments: Total no. of deployments
 11. Total Deployments Trend: This compares the deployment count from the previous period to the current period
 
@@ -201,7 +202,7 @@ This view contains the data related to the runtime inputs provided at the time o
 
 :::note
 
-1. This doesn't show nested runtime inputs. For e.g. let's say a service has a variable as runtime input, and a pipeline has service also as runtime. Then we won't show the service variable in the list
+1. This doesn't show nested runtime inputs. For example, let's say a service has a variable as runtime input, and a pipeline has its service as a runtime also. Then Harness won't show the service variable in the list.
 2. This doesn't store execution inputs. 
 
 :::
@@ -245,11 +246,11 @@ List of measures:
 6. Total Service Deployments: Total no. of deployments
 
 ### Users
-This view contains the data related to the users. 
+This view contains the data related to users. 
 
 :::note
 
-This will only show the users, which have triggered atleast 1 pipeline execution. It won't display the users which didn't trigger any pipeline execution.
+This will only show the users that have triggered at least 1 pipeline execution. It won't display the users that didn't trigger any pipeline execution.
 
 :::
 
@@ -266,7 +267,7 @@ List of dimensions:
 
 ## Deployments and Services V2 (Behind FF)
 
-This explore can be used to visualize CD data related to pipeline, stage and step executions. Each explore has a set of views. The views present in this explore are:
+This explore can be used to visualize CD data related to pipeline, stage, and step executions. Each explore has a set of views. The views present in this explore are:
 
 <docimage path={require('./static/using-cd-custom-dashboards-2.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -274,7 +275,7 @@ Let us go through each of the view listed in the above image, and describe the f
 
 
 ### CD Stage Execution Helm Manifest Info
-This view contains the data related to the Helm manifest info which is used in CD Stage executions. The data is recorded per CD Stage Execution, meaning if there are 10 executions of a single service which has a helm manifest linked to it this view will also have 10 records.
+This view contains the data related to the Helm manifest info that is used in CD Stage executions. The data is recorded per CD stage execution, meaning if there are 10 executions of a single service that has a Helm manifest linked to it this view will also have 10 records.
 
 <docimage path={require('./static/using-cd-custom-dashboards-3.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -287,7 +288,7 @@ List of dimensions:
 
 
 ### CD Stage Executions
-This view contains the data related to the CD Stage executions. The data is recorded per CD Stage Execution, meaning if there are 10 pipeline executions, which contain a single CD stage, then this view will also have 10 records.
+This view contains data related to the CD stage executions. The data is recorded per CD stage execution, meaning if there are 10 pipeline executions that contain a single CD stage, then this view will also have 10 records.
 
 <docimage path={require('./static/using-cd-custom-dashboards-4.png')} width="60%" height="60%" title="Click to view full size image" />
 
