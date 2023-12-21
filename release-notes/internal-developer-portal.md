@@ -38,16 +38,16 @@ In this release, we're excited to unveil features like the HTTP actions support 
 
 ![](./static/idp-stage.png)
 
-- Added a Cookiecutter step to enable use of cookiecutter based templates in the IDP stage.[IDP-1437]
-- Added a step to register software components in IDP catalog.[IDP-1438]
-- Added a step to create a repository in your git provider and push contents along with catalog-info.yaml. [IDP-1436]
+- Added a [Cookiecutter step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#2-cookiecutter) to enable use of cookiecutter based templates in the IDP stage.[IDP-1437]
+- Added a [step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#6-register-catalog) to register software components in IDP catalog.[IDP-1438]
+- Added a [step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#3-create-repo) to create a repository in your git provider and push contents along with catalog-info.yaml. [IDP-1436]
 
-This feature is behind the feature flag `To be Added`, also has dependency on other services which might delay it's releases untill those services are on their latest release. To enable the feature, contact [Harness Support](mailto:support@harness.io).
+This feature is behind the feature flag `IDP_ENABLE_STAGE`, also has dependency on other services which might delay it's releases untill those services are on their latest release. To enable the feature, contact [Harness Support](mailto:support@harness.io).
 
 #### New features and enhancements
 
-- Added support for http actions in the scaffolder-backend.  [IDP-1853]. 
-- Added OPA/Governance policies for Backstage entities. [IDP-1514]
+- Added support for [http actions](https://roadie.io/backstage/plugins/scaffolder-http-requests/) in the scaffolder-backend.  [IDP-1853]. 
+- Added [OPA/Governance policies](/docs/internal-developer-portal/scorecards/opa-implementation) for Backstage entities. [IDP-1514]
 
 #### Bug Fixes
 
