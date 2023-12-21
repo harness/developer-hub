@@ -33,7 +33,7 @@ This cumbersome journey not only consumes valuable time but also introduces the 
 
 Before we explore additional options, let's acknowledge the existing API that have been serving users effectively:
 
-1. **[Approve or Reject a Pipeline Execution by Approval Instance Id](https://apidocs.harness.io/tag/Approvals#operation/addHarnessApprovalActivity):**
+**[Approve or Reject a Pipeline Execution by Approval Instance Id](https://apidocs.harness.io/tag/Approvals#operation/addHarnessApprovalActivity):**
    - This API is your tool for approving or rejecting pipeline deployments. You can give the green light using a unique ID called `approvalInstanceId`, which is created when an approval step starts.
    - **How to Get `approvalInstanceId`:**
       1. **Check Harness UI:** Navigating through the Harness UI is a direct path to discovering the approval instance ID. This visual approach allows users to quickly spot and access the necessary information.
@@ -41,7 +41,7 @@ Before we explore additional options, let's acknowledge the existing API that ha
       2. **Using another API:** Alternatively, the [Get Approval Instances by Execution Id API](https://apidocs.harness.io/tag/Approvals#operation/getApprovalInstancesByExecutionId) can fetch a list of all approvals tied to a specific execution. However, if there are multiple approvals in a single execution, it may require a bit of manual filtering to pinpoint the relevant `approvalInstanceId` needed for the approval journey.
 
 
-## Introducing the Enhanced Approval API: Expanding Your Toolkit
+## Introducing the Enhanced Approval API: Approve or Reject an Execution by Pipeline Execution ID
 
 This Approval API introduces a seamless method to approve or reject a pipeline by directly using the pipeline's execution ID, eliminating the need for an `approvalInstanceId`. This reduces the complexity of calling 2 APIs to approve a single Harness Approval Step,and combines it into 1.
 
@@ -111,7 +111,7 @@ curl -i -X POST \
 
 ## Illustrating with a Sample Scenario
 
-Let's dive into a real-world example to showcase the Callback Approval API in action. Consider the following sample pipeline which has 2 Stages:
+Let's dive into a real-world example to showcase approval using execution id in action. Consider the following sample pipeline which has 2 Stages:
 
 - **Stage 1: Approval Stage**
   
@@ -194,12 +194,12 @@ Let's dive into a real-world example to showcase the Callback Approval API in ac
   This stage has the deployment steps, to do the actual deployment to the production system
 
 
-Now once this pipeline is run, it will generate a random UUID, then trigger the 3rd party system job using the HTTP step.
-It will then wait for approval, now the 3rd party system can trigger the approval API to approve or reject the pipeline based on the job's status. Thus making the whole process automated.
+Once this orchestrated pipeline is set in motion, it initiates a randomized UUID, triggers a job in the 3rd party system, and gracefully awaits approval. Now, the 3rd party system holds the reins to either approve or reject the pipeline based on the completion status of the job. The entire process becomes a harmonious symphony of automated decision-making, ensuring precision and efficiency in every deployment instance.
+
 
 ## Ensuring Single Approval Instance
 
-To avoid confusion, this API supports approving only one instance at a time. If multiple approvals are waiting at the same time, the API call will fail, indicating it's not supported. If there's only one approval waiting, it will be automatically approved.
+To ensure clarity and precision, this API is designed to handle only one approval instance at a time. If multiple approvals are pending simultaneously, the API call will encounter an error, signaling that approving multiple instances in a single call is not supported. However, in the scenario where only one approval is awaiting consideration, it will seamlessly proceed to be automatically approved.
 
 ## The Power of Choice Unleashed
 
