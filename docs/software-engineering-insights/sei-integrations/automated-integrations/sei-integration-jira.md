@@ -59,7 +59,7 @@ To integrate with the on-premises Jira instances, you must username and password
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Atlassian server.
 
-To integrate with **On-Premises Jira** instances, you can use the **Username** and the **User-Generated API key** with the relevant permission. Make sure to select the satellite integration checkbox while configuring the integration.
+To integrate with **On-Premises Jira** instances, you can use your Jira account email as the value for the **Username** and use the **API key** that you previously generated within your **Atlassian account** as the value for the **API key** field with the relevant permission. Make sure to select the satellite integration checkbox while configuring the integration.
 
 Once you save the integration a ```satellite.yml``` file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
@@ -97,20 +97,12 @@ To find the correct timezone, go to ```https://<ORGANIZATION_JIRA_URL>/rest/api/
 
 If you encounter any authentication issues, consider the following options:
 
-1. While using a username and password for authentication, edit the generated `satellite.yml` file and use your Jira password as a value for `api_key` in the YAML and keep the `user_name` as is.
+If you want to use your username and password for authentication, edit the generated `satellite.yml` file and use your Jira password as a value for `api_key` in the YAML and keep the `user_name` field as is.
 
    Test with the following curl command:
 
 ```bash
 curl -u "<USERNAME:PASSWORD>" -X GET "https://host:port/context/rest/api/search?jql=<CUSTOM_JQL_QUERY>
-```
-
-2. While using the generated managed token (Bearer Token) for authentication leave the `user_name` blank and use the managed token that you are generating for `api_key`.
-
-   Test with the following curl command:
-
-```bash
-curl -H "Authorization: Bearer <MANAGED_TOKEN>" -X GET "https://host:port/context/rest/api/search?jql=key=<CUSTOM_JQL_QUERY>
 ```
 
 <details>
