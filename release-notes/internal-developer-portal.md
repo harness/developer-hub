@@ -28,7 +28,7 @@ Jingle bells, jingle bells, jingle all the way to Harness IDP's End-of-Year Rele
 
 In this release, we're excited to unveil features like the HTTP actions support in the scaffolder-backend 🌐, the innovative Developer Portal stage for seamless self-service flows 🚀, and the integration of OPA/Governance policies to ensure streamlined and secure management 🛡️. Plus, we've squashed some pesky bugs 🐛 to make your experience smoother than ever!
 
-- **Docs:** [Supported Custom Actions](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions), [OPA](/docs/internal-developer-portal/scorecards/opa-implementation), [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)
+- **Docs:** [Supported Custom Actions](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions), [Supported OPA Policies in IDP](/docs/internal-developer-portal/scorecards/opa-implementation), [New IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)
 
 - **Tutorial:** [Harness Policy As Code for Services using Scorecards](/tutorials/internal-developer-portal/opa-scorecards)
 
