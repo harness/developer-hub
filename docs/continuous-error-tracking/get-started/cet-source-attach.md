@@ -43,8 +43,14 @@ The following agent environment variables can be added so that your code reposit
 | `ET_REPOSITORY_CONNECTOR_ID` | `Harness-Repository-Connector-Id` | ID for the code repository conenctor you created | `coderepoconnector`|
 | `ET_REPOSITORY_COMMIT` | `Harness-Repository-Commit` | CommitHashOrReleaseTag for the code you are want to track. Note that commit and branch both are not required. Only one of them is required. If both fields are provided, then commit takes a higher priority. | `12a69d4c668ce126fc104f4d58f3d7ed85403v1h`|
 | `ET_REPOSITORY_BRANCH` | `Harness-Repository-Branch` | Name of the branch you are tracking | `pre-prod` |
-| `ET_REPOSITORY_SOURCES_ROOT` | `Harness-Repository-Sources-Root` | Requires a reference to the repository name; optionally, you can provide additional paths to prepend to the file you want to track | `event-generator/tree/harness/src/main/java` |
+| `ET_REPOSITORY_SOURCES_ROOT` | `Harness-Repository-Sources-Root` | Requires a reference to the repository name; optionally, you can provide additional paths to prepend to the file you want to track | `event-generator/backend/src/main/java` |
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Examples:
+<Tabs>
+  <TabItem value="Environment Variables" label="Environment Variables" default>
   Example of adding environment variables:
 
 ```
@@ -57,12 +63,31 @@ ENV ET_REPOSITORY_CONNECTOR_ID=coderepoconnector
 ENV ET_REPOSITORY_BRANCH=pre-prod
 ENV ET_REPOSITORY_SOURCES_ROOT=event-generator/tree/harness/src/main/java
 ```
-
+</TabItem>
+<TabItem value="Maven" label="Maven">
   Example of adding manifest attributes using maven :
 
   Add this in the `<build>/<plugins>` section of your `pom.xml`
 
   ```
+<plugin>
+  <groupId>pl.project13.maven</groupId>
+  <artifactId>git-commit-id-plugin</artifactId>
+  <version>${git-commit-id-plugin.version}</version>
+  <executions>
+      <execution>
+          <id>get-the-git-infos</id>
+          <goals>
+              <goal>revision</goal>
+          </goals>
+          <phase>validate</phase>
+      </execution>
+  </executions>
+  <configuration>
+      <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+  </configuration>
+</plugin>
+
 <plugin>
   <groupId>org.apache.maven.plugins</groupId>
   <artifactId>maven-jar-plugin</artifactId>
@@ -70,13 +95,15 @@ ENV ET_REPOSITORY_SOURCES_ROOT=event-generator/tree/harness/src/main/java
       <archive>
           <manifestEntries>
               <Harness-Repository-Connector-Id>coderepoconnect</Harness-Repository-Connector-Id>
-              <Harness-Repository-Branch>pre-prod</Harness-Repository-Branch>
-              <Harness-Repository-Sources-Root>event-generator/tree/harness/src/main/java</Harness-Repository-Sources-Root>
+              <Harness-Repository-Commit>${git.commit.id}</Harness-Repository-Commit>
+              <Harness-Repository-Sources-Root>event-generator/backend/src/main/java</Harness-Repository-Sources-Root>
           </manifestEntries>
       </archive>
   </configuration>
 <plugin>
   ```
+</TabItem>
+<TabItem value="Gradle" label="Gradle">
   Example of adding manifest attributes using gradle:
 
   Add this in the `build.gradle` file:
@@ -88,7 +115,7 @@ jar {
       'Main-Class': 'com.harness.ExceptionGenerator',
       'Harness-Repository-Connector-Id': 'coderepoconnect',
       'Harness-Repository-Commit' : "${gitRevision}",
-      'Harness-Repository-Sources-Root': 'event-generator/tree/harness/src/main/java'
+      'Harness-Repository-Sources-Root': 'event-generator/backend/src/main/java'
     ) 
   }
 }
@@ -114,7 +141,8 @@ ext {
     gitRevision = git.head().id
 }
 ```
-
+  </TabItem>
+</Tabs>
 3. Restart your application after installing the Error Tracking Agent.
 
 4. Navigate to the ARC Screen by selecting an event on the Event Summary page. Clicking on the repository URL takes you to the code repository.
