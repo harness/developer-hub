@@ -22,6 +22,16 @@ Early access features are behind feature flags. You can contact [Harness Support
 
 The following early access (beta) features are available for the Harness Platform.
 
+### AIDA support automatically available
+
+* **Release date:** December 2023
+* **Release version:** 8108
+* **Issue number:** PL-41700
+* **Feature flag:** `PL_AI_SUPPORT_CHATBOT`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+AIDA is now always available without requiring you to enable the feature in **Settings**.
+
 ### AIDA:tm: replaces Coveo for support case deflection
 
 * **Release date:** December 2023
