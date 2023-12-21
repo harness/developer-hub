@@ -15,6 +15,12 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
+:::info
+
+Presently this Feature is behind the Feature Flag `IDP_ENABLE_STAGE`, please contach with [Harness Support](mailto:support@harness.io) to enable it in your Account. 
+
+:::
+
 The self-service flow in IDP is powered by the Harness Pipelines. A stage is a part of a pipeline that contains the logic to perform a major segment of a larger workflow defined in a pipeline. Stages are often based on the different workflow milestones, such as building, approving, and delivering.
 
 The process of adding a stage to a pipeline is the same for all Harness modules. When you add a stage to a pipeline, you select the stage type, such as **Developer Portal** for IDP or **Build** for CI or **Deploy** for CD. The available stage settings are determined by the stage type, and, if applicable, the module associated with the selected stage type.
@@ -23,11 +29,26 @@ This functionality is limited to the modules and settings that you have access t
 
 ## How to Add the Developer Portal Stage
 
-1. Change the module to **Continious Integration**, and select the **Pipeline** from side nav and **Create a Pipeline**. 
+```mdx-code-block
+<Tabs>
+<TabItem value="Present Nav" label="Present Nav" default>
+```
+1. Go to **Projects** and Select your project and create a new pipeline. 
 
-![](./static/ci-module.png)
+![](./static/old-nav.png)
 
-![](./static/create-pipeline.png)
+```mdx-code-block
+  </TabItem>
+  <TabItem value="New Nav" label="New Nav">
+```
+1. Go to **Pipelines** under **Admin** from side nav and **Create a Pipeline**. 
+
+![](./static/n-p-snav.png)
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 2. Add a Name for your Pipeline and select **Inline** as pipeline storage options.
 
@@ -48,6 +69,8 @@ This functionality is limited to the modules and settings that you have access t
 ## Execution Steps
 
 5. Now add the steps under the **Execution Tab**. The following is the list of suggested steps to be used in the execution.
+
+![](./static/idp-stage.png)
 
 ### 1. Add the Git Clone step (Ignore this step if your repository containing cookiecutter template is public)
 
@@ -190,7 +213,7 @@ Provide the input required the temlate in terms of key value pairs in this step.
 
 ### 3. Create Repo
 
-This step is to create the repository in your git provider which will be later used to add the service/app created using cookiecutter step along with the catalog whihc will be created in the **Create Catalog** step. 
+This step is to create the repository in your git provider which will be later used to add the service/app created using cookiecutter step along with the catalog which will be created in the **Create Catalog** step. 
 
 ![](./static/create-repo.png)
 
