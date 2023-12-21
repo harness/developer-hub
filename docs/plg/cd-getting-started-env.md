@@ -92,6 +92,3 @@ After running this command, you can verify that the cluster is running by runnin
 
 `kubectl get nodes`
 
-## Notes
-
-Harness also has a Community Edition that you can run locally and perform deployments. See the Harness Community Edition deployment tutorial.

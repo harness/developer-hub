@@ -26,14 +26,14 @@ The diagram below shows a GitOps-driven CI/CD pipeline. The process involves bui
 ## Pre-requisites
 
 - A Harness free plan. If you don't have one, [sign up for free](https://app.harness.io/auth/#/signup/?&utm_campaign=cd-devrel).
-- A GitHub account. [Fork the Harness GitOps repo](https://github.com/harness-community/harness-gitops-workshop/fork)
+- A GitHub account. For [the Harness GitOps Workshop repo](https://github.com/harness-community/harness-gitops-workshop/fork) to your own GitHub account.
 - A Docker Hub account.
 - A Kubernetes cluster. A setup like [k3d](https://k3d.io/) will be suitable.
-- [Install the Harness CLI](https://developer.harness.io/docs/platform/automation/cli/install/) and [log in](https://developer.harness.io/docs/platform/automation/cli/install/#configure-harness-cli).
+- [Install the Harness CLI](/docs/platform/automation/cli/install/) and [log in](/docs/platform/automation/cli/install/#configure-harness-cli).
 
 ## Required setup and configurations
 
-In order to interact with your code repository (GitHub) and image registry (Docker Hub), the Harness platform needs to authenticate to these providers on your behalf. [Connectors](https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-connectors/harness-connectors/) in Harness help you pull in artifacts, sync with repos, integrate verification and analytics tools, and leverage collaboration channels.
+In order to interact with your code repository (GitHub) and image registry (Docker Hub), the Harness platform needs to authenticate to these providers on your behalf. [Connectors](/docs/category/connectors/) in Harness help you pull in artifacts, sync with repos, integrate verification and analytics tools, and leverage collaboration channels.
 
 In this section, you'll create two secrets and two connectors for GitHub and Docker Hub. But before that, you'll need to create two personal access tokens (PAT) for GitHub and Docker Hub. Check out [the GitHub docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) and [the Docker Hub Docs](https://docs.docker.com/security/for-developers/access-tokens/) on how to create personal access tokens. For GitHub, you need to ensure that the token has read/write access to the content, pull requests (PRs), and webhooks for your forked repository.
 
