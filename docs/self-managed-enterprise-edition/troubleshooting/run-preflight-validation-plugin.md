@@ -112,11 +112,12 @@ You must have access to the Kubernetes cluster set up to run this plugin.
 
 ## Upgrade the plugin
 
- You can upgrade the plugin using the following command:
+You can upgrade the plugin using the following command:
 
 ```
 helm validator update
 ```
+
 ## Uninstall
 
 You can uninstall the plugin using the following command: 
