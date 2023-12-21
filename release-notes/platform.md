@@ -163,9 +163,9 @@ The following deprecated API endpoints will no longer be supported:
 :::danger Breaking change
 A `GET` API request for a projects that weren't available in Harness returned a 400 `RESOURCE_NOT_FOUND_EXCEPTION` response instead of a 404 `ENTITY_NOT_FOUND`. (PL-42417)
 
-:::
+Requests for projects that aren't found now return a 404 `ENTITY_NOT_FOUND` response.
 
-  Requests for projects that aren't found now return a 404 `ENTITY_NOT_FOUND` response.
+:::
 
 - When you deleted a default secret manager, the Harness built-in secret manager would not automatically become the new default manager. (PL-42458, PL-42824, ZD-53500, ZD-53662, ZD-54099, ZD-54126)
 
