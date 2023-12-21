@@ -38,7 +38,7 @@ You can copy/paste the [YAML pipeline example below](#yaml-pipeline-example) int
 
 ![scan-build-scan-push tutorial pipeline](./static/sbsp-sto-ci/sbsp-pipeline-ui.png)
 
-## Important notes
+:::important important notes
 
 - This tutorial has the following prerequisites:
 
@@ -56,6 +56,8 @@ You can copy/paste the [YAML pipeline example below](#yaml-pipeline-example) int
       - A Docker Hub account and access token. 
       - A [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/) is required to push the image. 
   - Your GitHub and Docker Hub access tokens must be stored as [Harness secrets](/docs/platform/secrets/add-use-text-secrets).
+
+:::
 
 ## Set up your codebase
 

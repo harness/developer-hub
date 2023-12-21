@@ -354,6 +354,63 @@ pipeline:
 
 </details>
 
+## GitHub merge queue triggers
+
+[GitHub's merge queue feature](https://github.blog/2023-07-12-github-merge-queue-is-generally-available/) is compatible with Harness webhook triggers. Use the following settings to configure a merge queue trigger:
+
+* Trigger type: GitHub webhook
+* [Payload Type](/docs/platform/triggers/triggers-reference/#payload-type): GitHub.
+* [Connector](/docs/platform/triggers/triggers-reference/#connector): Your Harness GitHub connector.
+* [Event](/docs/platform/triggers/triggers-reference#event-and-actions): Push.
+* [Conditions](/docs/platform/triggers/triggers-reference/#conditions-settings): Configure conditions that detect branches with the GitHub temporary merge queue branch name prefix (`gh-readonly-queue`) and a non-empty commit SHA for that branch. The [Harness expression](/docs/platform/triggers/triggers-reference/#reference-payload-fields) `<+trigger.payload.head_commit>` gets the commit SHA from the webhook payload for the temporary merge queue branch push event.
+   * [Branch Condition](/docs/platform/triggers/triggers-reference/#branch-and-changed-files-conditions): **Branch Name** **Starts With** `gh-readonly-queue`.
+   * [Payload Condition](/docs/platform/triggers/triggers-reference/#payload-conditions): `<+trigger.payload.head_commit>` **Not Equals** `null`.
+
+Here is a YAML example of a webhook trigger configured for the GitHub merge queue:
+
+```yaml
+trigger:
+  name: merge queue trigger
+  identifier: merge_queue_trigger
+  enabled: true
+  stagesToExecute: []
+  description: ""
+  tags: {}
+  encryptedWebhookSecretIdentifier: ""
+  orgIdentifier: default
+  projectIdentifier: YOUR_HARNESS_PROJECT
+  pipelineIdentifier: YOUR_PIPELINE_TO_TRIGGER
+  source:
+    type: Webhook
+    spec:
+      type: Github
+      spec:
+        type: Push
+        spec:
+          connectorRef: YOUR_GITHUB_CONNECTOR
+          autoAbortPreviousExecutions: false
+          payloadConditions:
+            - key: targetBranch
+              operator: StartsWith
+              value: gh-readonly-queue
+            - key: <+trigger.payload.head_commit>
+              operator: NotEquals
+              value: "null"
+          headerConditions: []
+          repoName: YOUR_GITHUB_REPO
+          actions: []
+  inputYaml: |
+    pipeline:
+      identifier: YOUR_PIPELINE_TO_TRIGGER
+      properties:
+        ci:
+          codebase:
+            build:
+              type: branch
+              spec:
+                branch: <+trigger.branch>
+```
+
 ## Troubleshoot Git event triggers
 
 ### Pipelines don't start after trigger events

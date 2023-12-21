@@ -81,6 +81,18 @@ export const STOList: CardItem[] = [
     link: "/tutorials/security-tests/container-scan-aqua-trivy",
   },
   {
+    title: "DAST web app scans with Zed Attack Proxy",
+    module: MODULES.sto, 
+    icon: "img/icon_sto.svg",
+    description: (
+      <>Quickly set up a pipeline to scan a web app using Zed Attack Proxy.</>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/security-tests/dast-scan-zap",
+  },
+  {
     title: "Trigger automated scans using GitLab merge requests",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
