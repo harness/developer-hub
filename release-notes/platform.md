@@ -124,19 +124,31 @@ The following deprecated API endpoints will no longer be supported:
 
 #### Fixed issues
 
+- When a permission was removed from the `permissions.yml` file or marked as inactive, the permission was deleted from managed roles, but not from custom roles. (PL-30826)
+
+   This issue has been resolved. The role matching filter criteria used to remove permissions from both custom and managed roles has been updated.
+
 - The **Name (Z->A, 9->)** sort option on the Projects page didn't display projects in the correct order. (PL-32066)
 
   The UI now uses case-insensitive sorting when it lists projects on the Projects page.
+
+- In UAT, with SAML set up but not enabled, when users logged out, Harness redirected to Okta, not `uat.harness.io`. (PL-32445)
+
+   This issue is fixed. The SAML logout URL is now only used when SAML is enabled for an account. 
 
 - Harness removed the `delegate-service` from the default delegate YAML init container. (PL-37616)
 
      This item is available with Harness Platform version 81709 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-<!--  
+- The delegate list API returned a 403 error response for users that didn't have view permission for the delegate. (PL-39630)
+
+     The message now specifies that the user is not authorized because view permission is not granted for the delegate.
+
+     This item is available with Harness Platform version 81709 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 - The UI didn't allow you to set **Projects** or **Organizations** role permissions for custom resource groups. (PL-39825, ZD-46075, ZD-49912)
 
    You can now select **Projects** and **Organizations** as resources in custom resource groups.
--->
 
 - When creating projects through APIs, Harness didn't treat the organization identifier as case-insensitive, which resulted in duplicate entries. (PL-40897, ZD-49840)
 
@@ -148,11 +160,19 @@ The following deprecated API endpoints will no longer be supported:
 
 - Previously, if you had a Reference Text type of secret pre-selected for a SSH secret key, you could only update the key through YAML and not in the UI. The UI only displayed the **File** **Secret type**. Now, the UI has a **Secret type** dropdown in the **Create or Select an Existing Secret** dialog that allows you to choose the **Secret type** (**File** or **Text**). (PL-41507, ZD-47600, ZD-51334)
 
+- A `GET` API request for a project wasn't available returned a 400 `RESOURCE_NOT_FOUND_EXCEPTION` response instead of a 404 `ENTITY_NOT_FOUND`. (PL-42417)
+
+  Requests for projects that aren't found now return a 404 `ENTITY_NOT_FOUND` response.
+
 - When you deleted a default secret manager, the Harness built-in secret manager would not automatically become the new default manager. (PL-42458, PL-42824, ZD-53500, ZD-53662, ZD-54099, ZD-54126)
 
    This issue has been resolved. Now, when you delete a default secret manager, the Harness built-in secret manager is automatically set as the default for all scopes.
 
-- The **Name (Z->A, 9->)** sort option on the Account Variables page didn't display variables in the correct order. (PL-42842)
+- The **Email (Z->A, 9->0)** sort option on the Access Control: Users page didn't display variables in the correct order. (PL-42825)
+
+     The UI now uses case-insensitive sorting when it lists emails on the Access Control: Users page.
+
+- The **Name (Z->A, 9->0)** sort option on the Account Variables page didn't display variables in the correct order. (PL-42842)
 
   The UI now uses case-insensitive sorting when it lists variables on the Account Variables page.
 
@@ -160,13 +180,21 @@ The following deprecated API endpoints will no longer be supported:
 
 - Harness updated the command under **Create your own YAML from a Kubernetes manifest template** for the **Kubernetes Manifest** option on the New Delegate page. The curl command has been removed and replaced with the `git clone https://github.com/harness/delegate-kubernetes-manifest.git` command. (PL-42850)
 
-     This item is available with Harness Platform version 817xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+     This item is available with Harness Platform version 81709 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- The Kubernetes Manifest YAML on the New Delegate page didn't include the `DELEGATE_TOKEN`. (PL-42858)
+
+    Fixed the generate Kubernetes YAML API for default delegates with a revoked token. The delegate YAML now includes the next active token.
 
 - The AIDA option wasn't visible in the UI on the Account Resources: Delegates page when you selected **Delegate Configurations**. (PL-42896)
 
    This issue has been resolved by updating the page styling. Harness removed width to prevent page overflow.
 
 - The IP Allowlist page had a default value of 30 IPs per page. The IP Allowlist page list now has a value of 20 IPs per page. (PL-42934)
+
+- The error message displayed when a user attempted to delete a Harness managed role was unclear. (PL-43032)
+
+    The error message now displays **Cannot delete the role <roleIdentifier> as it is managed by Harness**.
 
 ## November 2023
 
