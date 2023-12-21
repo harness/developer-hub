@@ -21,7 +21,7 @@ The following roles are required for dashboards:
 | Dashboard Viewer | Folder | View Dashboards|
 
 :::info note
-The Account Admin and Account Viewer roles include these roles by default.
+The Account Admin and Account Viewer roles include these permissions by default.
 
 :::
 
