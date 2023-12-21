@@ -27,7 +27,7 @@
 # Documentation
 
 # Continuous Delivery Docs
-/docs/continuous-delivery/ @michaelcretzman @deepakbolangady @roshnisarangadharan 
+/docs/continuous-delivery/ @michaelcretzman @roshnisarangadharan 
 
 # Continuous Integration Docs
 /docs/continuous-integration/ @aimurphy
@@ -74,7 +74,7 @@
 # Release Notes
 
 #CD Release Notes
-release-notes/continuous-delivery.md @michaelcretzman @deepakbolangady @roshnisarangadharan 
+release-notes/continuous-delivery.md @michaelcretzman @roshnisarangadharan 
 
 #CCM Release Notes
 release-notes/cloud-cost-management.md @rdsoze
