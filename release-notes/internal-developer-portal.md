@@ -28,11 +28,11 @@ Jingle bells, jingle bells, jingle all the way to Harness IDP's End-of-Year Rele
 
 In this release, we're excited to unveil features like the HTTP actions support in the scaffolder-backend 🌐, the innovative Developer Portal stage for seamless self-service flows 🚀, and the integration of OPA/Governance policies to ensure streamlined and secure management 🛡️. Plus, we've squashed some pesky bugs 🐛 to make your experience smoother than ever!
 
-- **Docs:** [Supported Custom Actions](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions), [OPA](Link to be added), [IDP Stage](https://6582ce9b1eb6070097c8b473--harness-developer.netlify.app/docs/internal-developer-portal/flows/idp-stage)
+- **Docs:** [Supported Custom Actions](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions), [OPA](Link to be added), [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)
 
 #### Early access features
 
-- Added a new stage, specifically for IDP, knows as Developer Portal to help with the self service flows (presently this feature is behind a Feature Flag) [IDP-1425]
+- Added a [new stage](/docs/internal-developer-portal/flows/idp-stage), specifically for IDP, knows as Developer Portal to help with the self service flows (presently this feature is behind a Feature Flag) [IDP-1425]
 
 ![](./static/idp-stage.png)
 
