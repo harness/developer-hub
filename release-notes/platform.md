@@ -127,7 +127,7 @@ The following deprecated API endpoints will no longer be supported:
 :::danger Breaking change
 A `GET` request to the List projects API for projects that weren't available in Harness returned a 400 `RESOURCE_NOT_FOUND_EXCEPTION` response instead of a 404 `ENTITY_NOT_FOUND`. (PL-42417)
 
-The List projects API now returns a a 404 `ENTITY_NOT_FOUND` response for projects that aren't found in Harness.
+The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects that aren't found in Harness.
 
 :::
 
