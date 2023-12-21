@@ -281,7 +281,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - The project admin role wasn't being assigned to a project created via an account or org scope service account. Now, when a project is created, the project admin role is automatically assigned to the service account. This is also reflected in the audit trails. (PL-41845, ZD-51918)
 
-- The Docker run command on the New Delegate page included an invalid token when there wan't a default token in the scope. (PL-42324)
+- The Docker run command on the New Delegate page included an invalid token when there wasn't a default token in the scope. (PL-42324)
 
    This issue has been resolved. Now, when the `default_token` is not present for a given scope, Harness fetches the oldest active token for the Docker run command.
 
