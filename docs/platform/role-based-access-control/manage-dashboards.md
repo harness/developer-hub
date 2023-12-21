@@ -20,6 +20,11 @@ The following roles are required for dashboards:
 | Dashboard Editor | Folder | <ul><li>Add Dashboard</li><li> Add Tile</li><li> Edit Dashboard</li><li>Delete Dashboard</li></ul>|
 | Dashboard Viewer | Folder | View Dashboards|
 
+:::info note
+The Account Admin and Account Viewer roles include these roles by default.
+
+:::
+
 ## Add and manage the Dashboard Editor role for users or user groups
 
 To add and manage permissions for the **Dashboard Editor** role for users, do the following:
