@@ -91,7 +91,7 @@ While an annual contract can not be lowered mid-year through the contract, pleas
 
 #### What if I am building an open source project?
 
-We love Open Source and are committed to supporting our Community. We recommend the open-source [Gitness](gitness.com) for hosting your source code repository as well as CI/CD pipelines.
+We love Open Source and are committed to supporting our Community. We recommend the open-source [Gitness](https://gitness.com) for hosting your source code repository as well as CI/CD pipelines.
 
 Contact us and we will be happy to provide you with a no restriction SaaS Plan!
 
