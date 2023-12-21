@@ -41,7 +41,7 @@ In certain scenarios, it may be necessary to route Satellite traffic through a p
 3. If authentication is required for your proxy, include the following parameters:
    * `username`: Enter your proxy username.
    * `password`: Enter your proxy password.
-4. By default, only traffic to SEI is sent to the proxy. This means that connections to your internal integrations don't use the proxy. If you want to proxy all traffic, include `all\_traffic: true`
+4. By default, only traffic to SEI is sent to the proxy. This means that connections to your internal integrations don't use the proxy. If you want to proxy all traffic, include `all_traffic: true`
 
 Here is an example of the proxy configuration in the `satellite.yml` file:
 

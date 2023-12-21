@@ -59,7 +59,7 @@ You need to log out and log back in for the change to take effect.
 <details>
 <summary>Option: Encrypt satellite.yml</summary>
 
-Do avoid storing data at rest in the clear, you can encrypt `satellite.yml`. The Satellite can read AES-256 encrypted config files. You must provide an environment variable with the encryption password.
+To avoid storing data at rest in the clear, you can encrypt `satellite.yml`. The Satellite can read AES-256 encrypted config files. You must provide an environment variable with the encryption password.
 
 1. Use the following command to encrypt the configuration file. Edit the input path (`/absolute/path/to/input/satellite.yml`) and output path (`/path/to/output/satellite.yml.enc`) according to your environment.
 

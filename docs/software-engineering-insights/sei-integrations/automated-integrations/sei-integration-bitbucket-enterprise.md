@@ -37,7 +37,7 @@ import TabItem from '@theme/TabItem';
    * The **Description** and **Tags** are optional.
    * Enter the **URL** for the **Bitbucket Private Instance** in the format `https://bitbucket.org/<teamName_or_username>/<repo-name>/src`
    * Enter your **Username**
-   * Enter the **Bitbucket API Key**. To generate an API key for your Bitbucket instance, go to [Managing API tokens for Bitbucket](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).&#x20;
+   * Enter the **Bitbucket API Key**. To generate an API key for your Bitbucket instance, go to [Managing API tokens for Bitbucket](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).
    * Enter **Tags** and the **List of repositories** you want to ingest. You can leave this option blank if you want to ingest all the repositories from organizations accessible to the token user.
    * You can select the **Filters** to define the type of data you want to ingest. The available options are **Fetch Commits**, **Fetch PRs**, **Fetch PRs Reviews**, **Fetch Commits Fields**.
    * Download the `satellite.yml` file and update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
@@ -50,7 +50,7 @@ Here’s a sample satellite.yaml file generated for the Bitbucket enterprise int
 satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
-  url: 'https://app.harness.io/gratis/sei/api'
+  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the environment you are using.
 integrations:
   - id: '<INTEGRATION_ID>'
     application: bitbucket_server

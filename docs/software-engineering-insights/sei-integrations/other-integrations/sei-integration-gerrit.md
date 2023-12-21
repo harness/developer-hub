@@ -54,11 +54,11 @@ Here’s a sample `satellite.yml` file
 satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
-  url: 'https://app.harness.io/gratis/sei/api'
+  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the environment you are using.
 integrations:
   - id: '<INTEGRATION_ID>'
     application: gerrit
-    url: '<GERRIT_URL>' # https://www.gerritcodereview.com/
+    url: '<GERRIT_URL>' 
     username: <GERRIT_USERNAME>
     api_key: <GERRIT_API_KEY>
 ```

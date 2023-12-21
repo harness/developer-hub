@@ -58,7 +58,7 @@ Here’s a sample `satellite.yml` file:
 satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
-  url: 'https://app.harness.io/gratis/sei/api'
+  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the environment you are using.
 integrations:
   - id: '<INTEGRATION_ID>' # For ex: 4692
     application: gitlab
@@ -105,10 +105,11 @@ If you encounter any issues during the integration process, go to the Satellite 
 2. Select **Available Integrations**, locate the **GitLab Enterprise integration**, and select **Install**.
 3. Select **Public on-premise** GitLab Integration
 4. In Integration **Name**, enter a name for the integration.
-5. Add a **description** for the integration. (Optional)
+5. Add a **Description** for the integration. (Optional)
 6. In the **URL** field, add the URL where your Gitlab repository is deployed.
-   \
+   
    For example, if your Gitlab is deployed on a **virtual machine (VM**), add the URL in the format: `https://<GITLAB_INSTANCE_URL>`.
+   
 7. Enter the **Personal Access Token** in the API key section.
 8. Add the **Tags** for the integration
 9. If applicable, configure **Additional Option**s:
@@ -117,7 +118,7 @@ If you encounter any issues during the integration process, go to the Satellite 
    3. **Fetch Projects**: Allow SEI to ingest data from Gitlab Projects.
    4. **Fetch Commits**: Allow SEI to ingest commit metadata from Gitlab.
    5. **Fetch Commit Files**: Allow SEI to ingest data within commits from Gitlab.
-10. Finish **configuration** and click on **Submit**.
+10. Finish the configuration** and click on **Submit**.
 
 ```mdx-code-block
   </TabItem>

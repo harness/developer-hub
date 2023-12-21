@@ -61,9 +61,9 @@ To use a personal access token, paste the token in Enter the Access Token.
   <TabItem value="satellite" label="Satellite">
 ```
 
-The steps for configuring the integration using satellite is similar to configuring the integration on cloud, with the exception of using **satellite** to communicate with the **Github server.**
+The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Github server.
 
-Make sure to select the **satellite integration checkbox** while configuring the integration.
+Make sure to select the satellite integration checkbox while configuring the integration.
 
 1. In **Integration Name**, enter a **Name** for the integration.
 2. Add a **Description** for the integration. (Optional)
@@ -72,13 +72,13 @@ Make sure to select the **satellite integration checkbox** while configuring the
 
 4. Select **Next** and click on **Download the Config file** and save the **satellite.yml** file. Update it following the instructions here.
 
-Here’s a sample satellite.yml file:
+Here’s a sample `satellite.yml` file:
 
 ```yaml
 satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
-  url: 'https://app.harness.io/gratis/sei/api'
+  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the environment you are using.
 integrations:
   - id: '<ACCOUNT_ID>'
     application: github_actions
