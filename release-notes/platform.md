@@ -393,12 +393,6 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
    This item is available with Harness Platform version 81008 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-#### Early access features
-
-- AIDA support is now always available without the need to enable it in **Settings**. (PL-41700)
-
-   This feature is behind the feature flag `PL_AI_SUPPORT_CHATBOT`. To enable the feature, contact [Harness Support](mailto:support@harness.io).
-
 #### Fixed issues
 
 - Previously, there was an issue where users who were initially invited through email and later through SCIM were not being added. This issue has now been resolved. Harness has implemented a fix to automatically delete the initial email invite and ensure that SCIM invites are valid even if an email invite was already sent. (PL-41114)
