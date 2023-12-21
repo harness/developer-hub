@@ -41,30 +41,30 @@ import TabItem from '@theme/TabItem';
    5. **Fetch Commit Files**: Allow SEI to ingest data within commits from GitHub.
    6. **Connect via GitHub webhook**: Select this option if you want GitHub to push data to SEI through a webhook, rather than SEI pulling data from GitHub. This is an advanced configuration and only recommended if you are confident about using this configuration.
 8. In Integration **Name**, enter a name for the integration.
-9. Finish configuration and **save** the integration.
+9. Finish configuration and **Save** the integration.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="satellite" label="Satellite">
 ```
 
-The steps for configuring the integration using **satellite** is similar to configuring the integration on cloud, with the exception of using **satellite to communicate** with the Github enterprise server.
+The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Github enterprise server.
 
-Make sure to select the **satellite integration checkbox** while configuring the integration.
+Make sure to select the satellite integration checkbox while configuring the integration.
 
 Here’s a sample `satellite.yml` file:
 
-```
+```yaml
 satellite:
-  tenant: foo
-  api_key: <api-key>
-  url: 'https://testapi1.propelo.ai'
+  tenant: <ACCOUNT_ID>
+  api_key: <ACCOUNT_API_KEY>
+  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the environment you are using.
 integrations:
-  - id: '4689'
+  - id: '<INTEGRATION_ID>'
     application: github_enterprise
     url: 'https://api.github.com'
     metadata:
-      repos: docs
+      repos: <REPOSITORIES>
       is_push_based: true
       fetch_commits: true
       fetch_prs: true
@@ -74,10 +74,10 @@ integrations:
       auto_register_webhook: true
     authentication: multiple_api_keys
     keys:
-      - api_key: <pat-1>
-        user_name: <github-username>
-      - api_key: <pat-2>
-        user_name: <github-username>
+      - api_key: <GITHUB_PAT_1>
+        user_name: <GITHUB_USERNAME>
+      - api_key: <GITHUB_PAT_2>
+        user_name: <GITHUB_USERNAME>
 
 ```
 

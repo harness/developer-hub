@@ -88,15 +88,15 @@ If you used OAuth, SEI creates an organization webhook instead.
   <TabItem value="satellite" label="Satellite">
 ```
 
-The steps for configuring the integration using satellite is similar to configuring the integration on cloud, with the exception of using **satellite to communicate** with the Github server.
+The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Github server.
 
-Make sure to select the **satellite integration checkbox** while configuring the integration.
+Make sure to select the satellite integration checkbox while configuring the integration.
 
 1. In Integration **Name**, enter a name for the integration.
-2. Add a **description** for the integration. (Optional)
+2. Add a **Description** for the integration. (Optional)
 3. In the **URL** field, add the URL where your GitHub repository is deployed. 
    
-   For example, if your GitHub is deployed on a **virtual machine (VM)**, add the **URL** in the format: `https://<IP_ADDRESS`>.
+   For example, if your GitHub is deployed on a **virtual machine (VM)**, add the **URL** in the format: `https://<IP_ADDRESS>`>.
 4. If applicable, configure **Additional Options**:
    1. **Fetch PRs**: Allow SEI to ingest PR data from GitHub.
    2. **Fetch Issues**: Allow SEI to ingest data from GitHub Issues.
@@ -108,15 +108,15 @@ Make sure to select the **satellite integration checkbox** while configuring the
 
 Here’s a sample `satellite.yml` file:
 
-```
+```yaml
 satellite:
-  tenant: foo
-  api_key: <api-key>
-  url: 'https://testapi1.propelo.ai'
+  tenant: <ACCOUNT_ID>
+  api_key: <ACCOUNT_API_KEY>
+  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the environment you are using.
 integrations:
-  - id: '4688'
+  - id: '<INTEGRATION_ID>'
     application: github
-    url: 'https://IP_ADDRESS/'
+    url: '<GITHUB_INSTANCE_URL>'
     metadata:
       fetch_prs: true
       fetch_issues: true
@@ -126,7 +126,7 @@ integrations:
       fetch_projects: true
     authentication: multiple_api_keys
     keys:
-      - apikey: <github-pat>
+      - apikey: <GITHUB_PAT>
 
 ```
 

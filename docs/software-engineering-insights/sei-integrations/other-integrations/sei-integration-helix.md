@@ -54,27 +54,27 @@ import TabItem from '@theme/TabItem';
   <TabItem value="satellite" label="Satellite">
 ```
 
-The steps for configuring the integration using **satellite** is similar to configuring the integration on cloud, with the exception of using **satellite to communicate** with the Helix server.
+The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Helix server.
 
-Make sure to select the **satellite integration checkbox** while configuring the integration. Once you save the integration a satellite.yml file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
+Make sure to select the satellite integration checkbox while configuring the integration. Once you save the integration a satellite.yml file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
 Here’s a sample `satellite.yml` file
 
 ```yaml
 satellite:
-  tenant: foo
-  api_key: <sei-api-key>
-  url: 'https://testapi1.propelo.ai'
+  tenant: <ACCOUNT_ID>
+  api_key: <ACCOUNT_API_KEY>
+  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the environment you are using.
 integrations:
-  - id: '4694'
+  - id: '<INTEGRATION_ID>'
     application: helix
-    url: 'p4javassl://https://<IP_ADDRESS>/:1666'
-    username: codewdhruv
-    api_key: <helix-api-key>
+    url: '<HELIX_URL>' # p4javassl://https://<IP_ADDRESS>/:1666
+    username: <HELIX_USERNAME>
+    api_key: <HELIX_API_KEY>
     metadata:
-      helix_swarm_url: '<helix-swarm-url>'
+      helix_swarm_url: '<HELIX_SWARM_URL>'
       ssl_enabled: true
-      ssl_fingerprint: 5f4dcc3b5aa765d61d8327deb882cf99
+      ssl_fingerprint: <SSL_FINGERPRINT>
       ssl_auto_accept: false
 ```
 
