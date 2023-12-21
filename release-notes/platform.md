@@ -124,6 +124,13 @@ The following deprecated API endpoints will no longer be supported:
 
 #### Fixed issues
 
+:::danger Breaking change
+A `GET` API request for a projects that weren't available in Harness returned a 400 `RESOURCE_NOT_FOUND_EXCEPTION` response instead of a 404 `ENTITY_NOT_FOUND`. (PL-42417)
+
+Requests for projects that aren't found now return a 404 `ENTITY_NOT_FOUND` response.
+
+:::
+
 - When a permission was removed from the `permissions.yml` file or marked as inactive, the permission was deleted from managed roles, but not from custom roles. (PL-30826)
 
    This issue has been resolved. The role matching filter criteria used to remove permissions from both custom and managed roles has been updated.
@@ -159,13 +166,6 @@ The following deprecated API endpoints will no longer be supported:
    This issue has been resolved. Now, when you delete a default secret manager, the Harness built-in secret manager is automatically set as the default.
 
 - Previously, if you had a Reference Text type of secret pre-selected for a SSH secret key, you could only update the key through YAML and not in the UI. The UI only displayed the **File** **Secret type**. Now, the UI has a **Secret type** dropdown in the **Create or Select an Existing Secret** dialog that allows you to choose the **Secret type** (**File** or **Text**). (PL-41507, ZD-47600, ZD-51334)
-
-:::danger Breaking change
-A `GET` API request for a projects that weren't available in Harness returned a 400 `RESOURCE_NOT_FOUND_EXCEPTION` response instead of a 404 `ENTITY_NOT_FOUND`. (PL-42417)
-
-Requests for projects that aren't found now return a 404 `ENTITY_NOT_FOUND` response.
-
-:::
 
 - When you deleted a default secret manager, the Harness built-in secret manager would not automatically become the new default manager. (PL-42458, PL-42824, ZD-53500, ZD-53662, ZD-54099, ZD-54126)
 
