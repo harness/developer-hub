@@ -207,6 +207,8 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - Upgraded the `org.eclipse.jetty_jetty-http`, `jetty-io`, `jetty-util`, and `jetty-continuation` libraries to 9.4.53.v20231009 to resolve CVE CVE-2023-36478. (PL-42288, PL-42560)
 
+- Added a **Purge Secrets** option to the Azure Key Vault **Details** dialog. This option is selected by default and purges deleted secrets instead of soft deleting them. (PL-41738)
+
 #### Fixed issues
 
 - The UI didn't display the latest version for GSM secrets. (PL-38526)
@@ -237,6 +239,8 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 - Upgraded `io.netty:netty*` to version 4.1.100.final to address vulnerabilities. (PL-41905, ZD-50403, ZD-52222, ZD-53107)
 
 - Upgraded Redis to 6.2.14-alpine to address potential vulnerabilities. (PL-42228)
+
+- Delegate logs formatting is updated to allow you to view stack traces in their native format. (PL-41467)
 
 #### Fixed issues
 
