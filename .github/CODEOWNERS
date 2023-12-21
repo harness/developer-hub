@@ -39,7 +39,7 @@
 /docs/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki 
 
 # CET Docs
-/docs/continuous-error-tracking/ @sunilgupta-harness
+/docs/continuous-error-tracking/ @M-Tsur
 
 # SRM Docs
 /docs/service-reliability-management/ @sunilgupta-harness
@@ -83,7 +83,7 @@ release-notes/cloud-cost-management.md @rdsoze
 release-notes/chaos-engineering.md @neelanjan00 @SmritiSatya
 
 #CET Release Notes
-release-notes/continuous-error-tracking.md @sunilgupta-harness
+release-notes/continuous-error-tracking.md @M-Tsur
 
 #CI Release Notes
 release-notes/continuous-integration.md @aimurphy
@@ -127,7 +127,7 @@ release-notes/service-reliability-management.md @sunilgupta-harness
 /tutorials/cloud-costs/ @rdsoze 
 
 # CET Tutorials
-/tutorials/error-tracking/ @sunilgupta-harness 
+/tutorials/error-tracking/ @M-Tsur
 
 # FF Tutorials
 /tutorials/feature-flags/ @ethangj @HarnessTheChaos 
