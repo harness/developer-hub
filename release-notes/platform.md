@@ -160,7 +160,10 @@ The following deprecated API endpoints will no longer be supported:
 
 - Previously, if you had a Reference Text type of secret pre-selected for a SSH secret key, you could only update the key through YAML and not in the UI. The UI only displayed the **File** **Secret type**. Now, the UI has a **Secret type** dropdown in the **Create or Select an Existing Secret** dialog that allows you to choose the **Secret type** (**File** or **Text**). (PL-41507, ZD-47600, ZD-51334)
 
-- A `GET` API request for a project wasn't available returned a 400 `RESOURCE_NOT_FOUND_EXCEPTION` response instead of a 404 `ENTITY_NOT_FOUND`. (PL-42417)
+:::danger Breaking change
+A `GET` API request for a projects that weren't available in Harness returned a 400 `RESOURCE_NOT_FOUND_EXCEPTION` response instead of a 404 `ENTITY_NOT_FOUND`. (PL-42417)
+
+:::
 
   Requests for projects that aren't found now return a 404 `ENTITY_NOT_FOUND` response.
 
