@@ -128,7 +128,7 @@ The following deprecated API endpoints will no longer be supported:
 
    This issue has been resolved. The role matching filter criteria used to remove permissions from both custom and managed roles has been updated.
 
-- The **Name (Z->A, 9->)** sort option on the Projects page didn't display projects in the correct order. (PL-32066)
+- The **Name (Z->A, 9->0)** sort option on the Projects page didn't display projects in the correct order. (PL-32066)
 
   The UI now uses case-insensitive sorting when it lists projects on the Projects page.
 
@@ -206,6 +206,10 @@ The following deprecated API endpoints will no longer be supported:
 
 #### Fixed issues
 
+- The UI didn't display the latest version for GSM secrets. (PL-38526)
+
+- Slack Webhook URLs didn't save successfully for user group notifications. (PL-42284, ZD-52494)
+
 - When shutdown is initiated, delegates will continue sending heartbeats until all tasks are completed, ensuring all running tasks return a response before shutting down. (PL-42171)
 
    This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
@@ -220,16 +224,6 @@ The following deprecated API endpoints will no longer be supported:
 
    - The delegate Stackdriver logger didn't work if the delegate token was base64-encoded format.
    - When the `DELEGATE_TYPE` was `KUBERNETES` and the delegate wasn't deployed in Kubernetes, the delegate failed to start. (PL-42452)
-
-   This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
-- Azure Key Vault's heartbeat check now creates a validation secret with a 30-minute expiration, addressing the issue of no expiration being set previously, which resulted in which resulted in multiple secret versions without an expiry. (PL-42509, ZD-53700)
-
-   This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
-- User groups could be created via SCIM using identifiers with invalid characters. (PL-42535, ZD-53830)
-
-   This issue is fixed. You can no longer create user groups with invalid characters.
 
    This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
@@ -272,9 +266,19 @@ The following deprecated API endpoints will no longer be supported:
 
 #### Fixed issues
 
-- Previously, if you had an SSH secret key with a **Text** reference pre-selected, you could only update it using YAML but not via the UI. The UI displayed only the **File** secret types. Harness has now added a dropdown menu in the **Create or Select an Existing Secret** dialog that allows you to select the **Secret type** as either **File** or **Text**. This simplifies the process of updating SSH secrets, making it easier for you to manage your secrets. (PL-41507, ZD-47600, ZD-51334)
+- Deleted accounts sent delegate API calls to Harness Manager for authentication. (PL-41113)
+
+  Calls from delegates of deleted accounts are no longer authenticated by Harness Manager.   
+
+   This item is available with Harness Platform version 81401 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - The project admin role wasn't being assigned to a project created via an account or org scope service account. Now, when a project is created, the project admin role is automatically assigned to the service account. This is also reflected in the audit trails. (PL-41845, ZD-51918)
+
+- The Docker run command on the New Delegate page included an invalid token when there wan't a default token in the scope. (PL-42324)
+
+   This issue has been resolved. Now, when the `default_token` is not present for a given scope, Harness fetches the oldest active token for the Docker run command.
+
+   This item is available with Harness Platform version 81401 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ### Version 81308
 
