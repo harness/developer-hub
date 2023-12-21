@@ -194,7 +194,7 @@ The following deprecated API endpoints will no longer be supported:
 
 - The error message displayed when a user attempted to delete a Harness managed role was unclear. (PL-43032)
 
-    The error message now displays **Cannot delete the role <roleIdentifier> as it is managed by Harness**.
+    The error message now displays **Cannot delete the role `<roleIdentifier>` as it is managed by Harness**.
 
 ## November 2023
 
