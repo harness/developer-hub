@@ -24,8 +24,8 @@ The following early access (beta) features are available for the Harness Platfor
 
 ### AIDA support automatically available
 
-* **Release date:** December 2023
-* **Release version:** 8108
+* **Release date:** October 2023
+* **Release version:** 81008
 * **Issue number:** PL-41700
 * **Feature flag:** `PL_AI_SUPPORT_CHATBOT`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
