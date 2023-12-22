@@ -193,6 +193,10 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
    This issue has been resolved by updating the page styling. Harness removed width to prevent page overflow.
 
+- Fixed the replica count on the New Delegate modal. (PL-42912)
+
+- Fixed the Helm default values.yaml link on the New Delegate modal. (PL-42917)
+
 - The IP Allowlist page had a default value of 30 IPs per page. The IP Allowlist page list now has a value of 20 IPs per page. (PL-42934)
 
 - The error message displayed when a user attempted to delete a Harness managed role was unclear. (PL-43032)
