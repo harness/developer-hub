@@ -32,7 +32,21 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * While selecting a chaos infrastructure to create an experiment, you can list the active infrastructures by clicking the checkbox **Show active only**. (CHAOS-3350)
 
+* Metrics for Dynatrace Probe (Metrics Selector and Entity Selector) were both optional previously and now have been termed as required, this change ensures that these properties are always passed while creating a dynatrace probe. (CHAOS-3330)
+
+* Experiment creation is now supported against inactive chaos infrastructure(s). This has been done to aid preparatory actions in environments which require agents to be scaled down (K8s) / stopped (Linux) except during the chaos execution window. (CHAOS-3241)
+
+* With this release, ACCESS_KEY invalidation after a chaos infrastructure is successfully connected is now deprecated. Now onwards users can use same manifest to connect same chaos infrastructures. (CHAOS-3164)
+
+* Added UI support for searching conditions for selection while creating a Chaos Guard Rule. (CHAOS-2982)
+
 #### Fixed issues
+
+* For timedout experiment runs, The execution nodes used to still remain in running state. This has been fixed & shows timeout status for nodes also. (CHAOS-3094)
+
+* While adding a probe without the `description` key, it was breaking the `addProbe` API. The API is now fixed to take a blank string if no value is provided in the description or the key in missing in the API request. (CHAOS-3224)
+
+* Incase of Probe failures, Probe success Iteration ratio used to come 2 times in logs. This has been fixed now. (CHAOS-3421)
 
 ## November 2023
 
