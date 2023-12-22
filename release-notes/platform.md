@@ -219,6 +219,8 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - Upgraded the `org.eclipse.jetty_jetty-http`, `jetty-io`, `jetty-util`, and `jetty-continuation` libraries to 9.4.53.v20231009 to resolve CVE CVE-2023-36478. (PL-42288, PL-42560)
 
+- Added a **Purge Secrets** option to the Azure Key Vault **Details** dialog. This option is selected by default and purges deleted secrets instead of soft deleting them. (PL-41738)
+
 #### Fixed issues
 
 - The UI didn't display the latest version for GSM secrets. (PL-38526)
@@ -249,6 +251,8 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 - Upgraded `io.netty:netty*` to version 4.1.100.final to address vulnerabilities. (PL-41905, ZD-50403, ZD-52222, ZD-53107)
 
 - Upgraded Redis to 6.2.14-alpine to address potential vulnerabilities. (PL-42228)
+
+- Delegate logs formatting is updated to allow you to view stack traces in their native format. (PL-41467)
 
 #### Fixed issues
 
@@ -289,7 +293,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - The project admin role wasn't being assigned to a project created via an account or org scope service account. Now, when a project is created, the project admin role is automatically assigned to the service account. This is also reflected in the audit trails. (PL-41845, ZD-51918)
 
-- The Docker run command on the New Delegate page included an invalid token when there wan't a default token in the scope. (PL-42324)
+- The Docker run command on the New Delegate page included an invalid token when there wasn't a default token in the scope. (PL-42324)
 
    This issue has been resolved. Now, when the `default_token` is not present for a given scope, Harness fetches the oldest active token for the Docker run command.
 
