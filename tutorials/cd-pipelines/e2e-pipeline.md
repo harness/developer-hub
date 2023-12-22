@@ -46,8 +46,6 @@ You can find your Harness account ID in any Harness URL, for example:
 https://app.harness.io/ng/#/account/ACCOUNT_ID/home/get-started
 ```
 
-Similarly, replace the placeholder values in the [docker-connector.yaml](https://github.com/harness-community/harness-gitops-workshop/blob/main/cli-manifests/docker-connector.yaml) file on your local machine.
-
 To create a GitHub connector, execute the following:
 
 ```shell
@@ -56,7 +54,9 @@ harness connector --file github-connector.yaml apply
 
 Enter your GitHub username and press **Enter**. 
 
-Next, create a Docker Hub Connector:
+Similarly, in the [docker-connector.yaml](https://github.com/harness-community/harness-gitops-workshop/blob/main/cli-manifests/docker-connector.yaml) file on your local machine, replace the placeholder values for **YOUR_HARNESS_ACCOUNT_ID** and **YOUR_DOCKER_USERNAME**.
+
+Run the following to reate a Docker Hub Connector:
 
 ```shell
 harness connector --file docker-connector.yaml apply
