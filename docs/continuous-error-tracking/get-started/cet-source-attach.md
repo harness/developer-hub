@@ -35,7 +35,7 @@ Learn how to connect your code repository to the monitored service. Help your de
 
 2. Add source attach information for the agent
 
-The following agent environment variables can be added so that your code repository can map to the service you want to track. Alternatively, if your project generates multiple jars, you can attach source information with each jar by adding following attributes in the `META-INF/MANIFEST.MF` file in the jar.
+The following agent environment variables can be added so that your code repository can map to the service you want to track. Alternatively, if your project generates multiple jars, you can attach source information with each jar by adding the following attributes in the `META-INF/MANIFEST.MF` file in the jar.
 
 
   | **Required Environment Variable** | **Manifest Attribute** |  **Description** | **Example** |
@@ -61,7 +61,7 @@ ENV ET_ENV_ID=env1
 ENV ET_TOKEN=b34*****-****-****-****-***********42a
 ENV ET_REPOSITORY_CONNECTOR_ID=coderepoconnector
 ENV ET_REPOSITORY_BRANCH=pre-prod
-ENV ET_REPOSITORY_SOURCES_ROOT=event-generator/tree/harness/src/main/java
+ENV ET_REPOSITORY_SOURCES_ROOT=event-generator/backend/src/main/java
 ```
 </TabItem>
 <TabItem value="Maven" label="Maven">
