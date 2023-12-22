@@ -15,6 +15,11 @@ Linux memory stress causes memory consumption of the target Linux machines for a
 - Induces memory consumption and exhaustion on the target Linux machines.
 - Simulates a lack of memory for processes running on the application, which degrades their performance.
 - Simulates application slowness due to memory starvation, and noisy neighbour problems due to excessive consumption of memory.
+- The fault allocates and maps the given amount of virtual address space, and then keeps on re-writing to that same memory space for the chaos duration before un-mapping it.
+
+:::note
+It should be noted that the the mapped memory space isn't un-mapped until the chaos injection is over, the same memory space is used for iteratively writing data in memory. This ensures a constant amount of memory being consumed by the fault through chaos duration.
+:::
 
 <Ossupport />
 
