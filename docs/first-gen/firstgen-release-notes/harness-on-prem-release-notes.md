@@ -16,23 +16,19 @@ For Harness SaaS release notes, go to [Harness SaaS Release Notes](/docs/first-g
 
 Release notes are displayed with the most recent release first.
 
-## December xx, 2023, version 817xx
+## December xx, 2023, version 81720
 
 This release includes the following module and component versions.
 
 | **Name** | **Version** |
 | :-- | :-- |
-| Manager | 8xxxx |
+| Manager | 81720 |
+| Delegate | 81604 |
 | Watcher | 8xxxx |
-| Verification Service | 8xxxx |
-| UI | 8xxxx |
-| Learning Engine | xxxxx | 
+| Verification Service | 81708 |
+| UI | 81701 |
+| Learning Engine | 67903 | 
 | Gateway | xxxxx |
-
-### New features and enhancements
-
-- 
-
 
 ### Fixed issues
 
@@ -49,21 +45,12 @@ This release includes the following module and component versions.
 
 | **Name** | **Version** |
 | :-- | :-- |
-<<<<<<< HEAD
-| Manager | xxxxx |
-| Watcher | xxxxx |
-| Verification Service | xxxxx |
-| UI | xxxxx |
-| Learning Engine | xxxxx | 
-| Gateway | xxxxx |
-=======
 | Manager | 81310 |
-| Delegate | 80810 |
+| Delegate | 81010 |
 | Watcher | 80505 |
 | Verification Service | 81308 |
 | UI | 81300 |
 | Learning Engine | 67903 |
->>>>>>> main
 
 ### New features and enhancements
 

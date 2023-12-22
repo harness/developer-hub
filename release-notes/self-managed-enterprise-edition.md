@@ -24,7 +24,7 @@ These release notes describe recent changes to Harness Harness Self-Managed Ente
 
 :::
 
-## December xx, 2023, version 817xx
+## December xx, 2023, version 81720
 
 ### New features and enhancements
 
@@ -34,16 +34,16 @@ This release includes the following Harness module and component versions.
 | :-- | :--: |
 | Helm Chart | [0.12.0](https://github.com/harness/helm-charts/releases/tag/harness-0.12.0) |
 | Air Gap Bundle | [0.12.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.12.0) |
-| NG Manager | 81xxx |
-| CI Manager | xxxx |
-| Pipeline Service | 1.xx.x |
-| Platform Service | 80xxx |
-| Access Control Service | 80xxx |
-| Delegate | 23.1x.8xxxx |
-| Change Data Capture | 81xxx |
-| Test Intelligence Service | release-xxx |
-| NG UI | 0.xxx.xx |
-| LE NG | xxxxx |
+| NG Manager | 81720 |
+| CI Manager | 6904 |
+| Pipeline Service | 1.51.3 |
+| Platform Service | 1.4.4 |
+| Access Control Service | 1.25.3 |
+| Delegate | 23.12.81604 |
+| Change Data Capture | 81510 |
+| Test Intelligence Service | release-223 |
+| NG UI | 0.372.15 |
+| LE NG | 68402 |
 
 **Alternative air gap bundle download method**
 
