@@ -24,7 +24,7 @@ This release includes the following module and component versions.
 | **Name** | **Version** |
 | :-- | :-- |
 | Manager | 81310 |
-| Delegate | 80810 |
+| Delegate | 81010 |
 | Watcher | 80505 |
 | Verification Service | 81308 |
 | UI | 81300 |
