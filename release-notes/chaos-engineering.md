@@ -40,6 +40,10 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * Added UI support for searching conditions for selection while creating a Chaos Guard Rule. (CHAOS-2982)
 
+* Adds support for using secretRef & configMapRef for VMWare Chaos Faults. (CHAOS-2750)
+
+* Adds support for encoding metrics queries which are constructed and executed via the metrics/data explorer before the API call [POST] incase of Dynatrace Probes. (CHAOS-2852)
+
 #### Fixed issues
 
 * For timedout experiment runs, The execution nodes used to still remain in running state. This has been fixed & shows timeout status for nodes also. (CHAOS-3094)
