@@ -1314,22 +1314,7 @@ The first ASG deployed is given a suffix using the format `[app_name]__1`, like 
 
 Every subsequent deployment will simply create new versions of these ASGs instead of creating new ASGs. So the third deployment will create a new *version* of ASG `[app_name]__1`, route prod traffic to it, and route stage traffic to ASG `[app_name]__2`.
 
-<details>
-<summary>Blue/Green with Traffic Shift Summary</summary>
 
-In this strategy, you specify production and stage listener ports and rules to use in the ASG Blue Green Deploy step. Next, the ASG Swap Services step swaps all traffic from stage to production.
-
-A Blue/Green deployment reliably deploys your ASGs by maintaining new and old versions of ASGs. The ASGs run behind an Application Load Balancer (ALB) using two listeners, stage and prod. These listeners forward respectively to two target groups, stage and prod, where the new and old ASGs are run.
-
-In the first stage of deployment, the new ASG is attached to the stage target group:
-
-![first stage](./static/ea87f58fb9e638f26d1c0a7cefde20158f4ad3c88496b3de827121992dd0ba0a.png)  
-
-Blue/Green deployments are achieved by swapping routes between the target groups—always attaching the new ASG first to the stage target group, and then to the prod target group:
-
-![second stage](./static/88aa5c64d8375bea18c47e77b218c94fae1d06e6652c984c912d795132e84e63.png)  
-
-</details>
 
 Here's a flowchart that explains how Harness performs Blue Green deployments:
 
@@ -1447,6 +1432,55 @@ Harness stores configurations of the ASG you are deploying twice:
   </TabItem6>
 </Tabs6>
 ```
+
+### Blue Green traffic shift options
+
+There are two options for traffic-shifting with blue green deployments: instant and incremental.
+
+<details>
+<summary>Blue/Green with Instant Traffic Shift Summary</summary>
+
+In this strategy, you specify production and stage listener ports and rules to use in the ASG Blue Green Deploy step. Next, the ASG Swap Services step swaps all traffic from stage to production.
+
+A Blue/Green deployment reliably deploys your ASGs by maintaining new and old versions of ASGs. The ASGs run behind an Application Load Balancer (ALB) using two listeners, stage and prod. These listeners forward respectively to two target groups, stage and prod, where the new and old ASGs are run.
+
+In the first stage of deployment, the new ASG is attached to the stage target group:
+
+![first stage](./static/ea87f58fb9e638f26d1c0a7cefde20158f4ad3c88496b3de827121992dd0ba0a.png)  
+
+Blue/Green deployments are achieved by swapping routes between the target groups—always attaching the new ASG first to the stage target group, and then to the prod target group:
+
+![second stage](./static/88aa5c64d8375bea18c47e77b218c94fae1d06e6652c984c912d795132e84e63.png)  
+
+</details>
+
+<details>
+<summary>Blue/Green with Incremental Traffic Shift Summary
+</summary>
+
+This deployment method lets you add **ASG Shift Traffic** steps to incrementally shift traffic from the Target Group used by the previous ASG to the Target Group used by the new ASG you are deploying.
+
+With this strategy, you are not shifting traffic from stage and production environments. You are shifting traffic incrementally for a production environment. In this way, it is similar to a Canary strategy.
+
+However, in a Canary deployment, the percentage of traffic that goes to the new ASG is determined by the number of instances (for example, 25% of 4 instances) or the forwarding policy of the load balancer.
+
+With this Incremental Traffic Shift strategy, you are controlling the  percentage of traffic sent to the new ASG. For example, 25% of all traffic.
+
+To use incremental traffic shift, do the following:
+
+1. In the **ASG Blue Green Deploy** step, in **ASG Load Balancer**, select **Use Shift Traffic**.
+2. Next, add multiple **ASG Traffic Shift** steps. Typically, users can add Approval step between the ASG Traffic Shift step as checks.
+3. In the first ASG Traffic Shift step, in **New Autoscaling Group Weight**, enter the percentage of traffic you want shifted from the previous ASG to the new ASG you are deploying.
+4. Continue setting any subsequent ASG Traffic Shift steps.
+
+The **Downsize Old ASG at 0% weight** setting should only be selected for the ASG Traffic Weight step that shifts traffic to `100%` in its New Autoscaling Group Weight setting.
+
+When this setting is enabled, the old ASG is downsized.
+
+</details>
+
+
+
 
 ## Advanced settings for all steps
 
