@@ -62,7 +62,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
  name: idp-clusterrole
- namespace: idp
+ namespace: <namespace_name>
 rules:
   - apiGroups: [""]
     resources: ["pods", "services", "configmaps", "namespaces", "limitranges"]
