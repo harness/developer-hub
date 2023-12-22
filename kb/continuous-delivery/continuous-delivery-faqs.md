@@ -3849,3 +3849,41 @@ You can use conditional execution and use expression <+artifact.tag> to check if
 
 To achieve this use case you will need to use two different delegates with the required Terraform version installed.
 
+### Are policies supported in a GitOps application?
+Policies are not supported in a GitOps application in Harness. Currently, it is supported for pipelines, templates and flags.
+
+### How can I check if the CloudFormation Stack is created successfully?
+
+After running the pipeline, you can check your AWS Management console for CloudFormation to verify the creation of the new CloudFormation Stack.
+
+### How do I create a Google Cloud Storage bucket in the Google Cloud console?
+
+You can create a Google Cloud Storage bucket by logging into the Google Cloud console and following the steps outlined in the Create new Bucket documentation: https://cloud.google.com/storage/docs/creating-buckets
+
+### Which storage options does Harness support for Google Cloud Functions 1st gen?
+
+For Google Cloud Functions 1st gen, Harness supports both Google Cloud Storage and Google Cloud Source.
+
+### What are the limitations when using Google Cloud Functions 2nd gen with Harness?
+
+Harness does not currently support Google Cloud Source Repository for Google Cloud Functions 2nd gen. Only Google Cloud Storage is supported for this version.
+
+### Can access to specific environments be restricted for users or user groups?
+
+Yes, access to specific environments can be restricted to users or user groups. By creating resource groups, and roles, and assigning permissions, users or groups can be limited to deploying to specific environments only.
+
+### What role do environment variables play, and where can they be utilized?
+
+Environment variables serve as global variables for a specific environment. These variables can be leveraged in pipelines, manifests, and other configurations associated with that environment.
+
+### How are service configurations overridden in specific environments?
+
+Service configuration overrides allow you to override service properties when deploying into a particular environment. This flexibility enables you to customize settings based on the target environment.
+
+### Can an environment have multiple infrastructure definitions?
+
+Yes, an environment can contain multiple infrastructure definitions, each representing a specific VM, Kubernetes cluster, or target infrastructure. When selecting an environment in a pipeline, you can choose from these definitions.
+
+### What is the role of Environment Service Overrides in override priority?
+
+Environment Service Overrides take precedence at the highest level in the priority order. Understanding how these overrides impact service settings is crucial for effective configuration.
