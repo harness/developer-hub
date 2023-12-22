@@ -1458,6 +1458,12 @@ Blue/Green deployments are achieved by swapping routes between the target groups
 <summary>Blue/Green with Incremental Traffic Shift Summary
 </summary>
 
+:::note
+
+Currently, this feature is behind the feature flag `CDS_ASG_SHIFT_TRAFFIC_STEP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 This deployment method lets you add **ASG Shift Traffic** steps to incrementally shift traffic from the Target Group used by the previous ASG to the Target Group used by the new ASG you are deploying.
 
 With this strategy, you are not shifting traffic from stage and production environments. You are shifting traffic incrementally for a production environment. In this way, it is similar to a Canary strategy.
