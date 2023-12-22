@@ -43,18 +43,27 @@ This release includes the following module and component versions.
       This item requires Harness Delegate version 23.12.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate). 
 
 
-## November 30, 2023, version 81308
+## November 30, 2023, version 81310
 
 This release includes the following module and component versions.
 
 | **Name** | **Version** |
 | :-- | :-- |
+<<<<<<< HEAD
 | Manager | xxxxx |
 | Watcher | xxxxx |
 | Verification Service | xxxxx |
 | UI | xxxxx |
 | Learning Engine | xxxxx | 
 | Gateway | xxxxx |
+=======
+| Manager | 81310 |
+| Delegate | 80810 |
+| Watcher | 80505 |
+| Verification Service | 81308 |
+| UI | 81300 |
+| Learning Engine | 67903 |
+>>>>>>> main
 
 ### New features and enhancements
 
@@ -77,6 +86,7 @@ This release includes the following module and component versions.
 | **Name** | **Version** |
 | :-- | :-- |
 | Manager | 80909 |
+| Delegate | 80810 |
 | Watcher | 80505 |
 | Verification Service | 80909 |
 | UI | 80900 |

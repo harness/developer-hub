@@ -3849,3 +3849,137 @@ You can use conditional execution and use expression <+artifact.tag> to check if
 
 To achieve this use case you will need to use two different delegates with the required Terraform version installed.
 
+### Are policies supported in a GitOps application?
+Policies are not supported in a GitOps application in Harness. Currently, it is supported for pipelines, templates and flags.
+
+### How can I check if the CloudFormation Stack is created successfully?
+
+After running the pipeline, you can check your AWS Management console for CloudFormation to verify the creation of the new CloudFormation Stack.
+
+### How do I create a Google Cloud Storage bucket in the Google Cloud console?
+
+You can create a Google Cloud Storage bucket by logging into the Google Cloud console and following the steps outlined in the Create new Bucket documentation: https://cloud.google.com/storage/docs/creating-buckets
+
+### Which storage options does Harness support for Google Cloud Functions 1st gen?
+
+For Google Cloud Functions 1st gen, Harness supports both Google Cloud Storage and Google Cloud Source.
+
+### What are the limitations when using Google Cloud Functions 2nd gen with Harness?
+
+Harness does not currently support Google Cloud Source Repository for Google Cloud Functions 2nd gen. Only Google Cloud Storage is supported for this version.
+
+### Can access to specific environments be restricted for users or user groups?
+
+Yes, access to specific environments can be restricted to users or user groups. By creating resource groups, and roles, and assigning permissions, users or groups can be limited to deploying to specific environments only.
+
+### What role do environment variables play, and where can they be utilized?
+
+Environment variables serve as global variables for a specific environment. These variables can be leveraged in pipelines, manifests, and other configurations associated with that environment.
+
+### How are service configurations overridden in specific environments?
+
+Service configuration overrides allow you to override service properties when deploying into a particular environment. This flexibility enables you to customize settings based on the target environment.
+
+### Can an environment have multiple infrastructure definitions?
+
+Yes, an environment can contain multiple infrastructure definitions, each representing a specific VM, Kubernetes cluster, or target infrastructure. When selecting an environment in a pipeline, you can choose from these definitions.
+
+### What is the role of Environment Service Overrides in override priority?
+
+Environment Service Overrides take precedence at the highest level in the priority order. Understanding how these overrides impact service settings is crucial for effective configuration.
+
+#### How long we retain data post migration for CG SaaS ?
+
+Harness keeps data retention for CD NG - 6 months (execution data) and audit trail for 2 years.
+Please read more on this on our Pricing webpage - [here](https://www.harness.io/pricing?module=cd#)
+Also follow more on this in the following [Documentation](https://developer.harness.io/docs/platform/references/data-retention/)
+
+#### What are the features supported for these resources in Git Experience ?
+
+Key features of Git Experience are supported by these resources similar to pipeline and templates.
+Please read more on this in the [Documentation](https://developer.harness.io/docs/platform/git-experience/git-experience-overview/#key-features)
+
+#### How can remote Services, Environment and Infrastructure be created and consumed in Git Experience ?
+
+In Git Experience one can have following options: 
+- Remote resources can be persisted in different repositories and branches
+- Support for linking these entities in Remote and Inline pipelines
+- Moving inline resources to Remote resources
+- Support for in-built features such as Service Dashboard and  Post Production Rollback for remote Services
+
+#### What are the Feature Flags required for Git Experience ?
+
+Feature Flags for Git Experience usage are - `CDS_ENV_GITX`, ` CDS_INFRA_GITX` and  `CDS_SERVICE_GITX`
+
+#### How does Harness provide enhanced control to users in the deployment sequence for applying autoscaling policies in ECS Blue-Green deplotment ?
+
+ Harness exposes further control to users when in the deployment sequence they want to apply the autoscaling policies. This ensures that the existing containers are not impacted during release and after release it scales down based on traffic demand.
+ Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#enable-auto-scaling-in-swap-step)
+
+#### How does Harness conduct pre-deployment validations and manage ECS Blue and Green services by updating tags based on target groups before initiating the deployment?
+
+Harness performs some validations before the deployment. Before the deployment, Harness identifies ECS Blue and Green services based on the target group and updates tags accordingly. It then starts the deployment. One may enable the Feature Flag - `CDS_ECS_BG_VALIDATION` to use the feature on account. Please read more on this in the [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#ecs-blue-green-service-validation)
+
+#### What can cause this error : There are no eligible delegates available in the account to execute the task. Non active delegates , `TERRAGRUNT_PLAN_TASK_NG_V2` Task type not supported by delegate(s) ?
+
+Please check if the delegate versions are mismatched via init_scripts and are based on latest version or not.
+Also one can go through [Delegate FAQs](https://developer.harness.io/docs/faqs/harness-delegate-faqs/) for more insights.
+
+#### What is the proper method for constructing a Harness pipeline to execute a rolling restart of a service, analogous to the "kubectl rollout restart deployment `<deploymentName>` " command ?
+
+Hanress uses `patchManifest` stage type with `LAST_ROLLOUT = now()` in Spinnaker to achieve it today. Please read more on this in the Spinnaker [Documentation](https://spinnaker.io/docs/guides/user/kubernetes-v2/patch-manifest/)
+
+#### How does the newly introduced support for Azure Logs as a Health Source in Harness contribute to service monitoring, particularly through the utilization of Cloud Metrics and Cloud Logs ? 
+
+Harness has now launched support for Azure Logs Support as a Health Source for CV and has enabaled for all accounts . Users can use Cloud Metrics and Cloud Logs to monitor their deployed service. This was a feature parity item with Harness First Gen. One may also follow the same in our [Documenatation](https://developer.harness.io/docs/service-reliability-management/monitored-service/health-source/azurelogs/)
+
+#### Are there any Feature Flags required for GitOps ?
+
+No, all GitOps features should seamlessly function without the need to enable any Feature Flags.
+
+#### Is there a way to control the label when running a multi-service deployment ?
+
+This is the default behaviour. One can enable account level setting to display names. It's under pipeline section - enable Matrix by names.
+
+#### Is there a limitation on the output size from steps in Harness, specifically when attempting to use a container to process and generate values in YAML configs, base64 encode them, and pass to the next step, where the output variable appears to be truncated?
+
+Yes, there is a limit of 256 KB for the output size from steps in Harness. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#variable-value-size)
+
+#### What do we mean by the term delegate expiration ?
+
+Delegates expire after six months. Delegate expiration does not mean the delegate stops working. You may experience issues because the backend has moved too far ahead, and the delegate is no longer backward compatible.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#delegate-expiration-policy). Also find release notes based on delegates - [here](https://developer.harness.io/release-notes/delegate/)
+
+#### Is it possible to get through an expression the uninstall flags from a helm service ?
+
+One can try below example to find and uninstall the same :
+```sh
+commandFlagsJson='<+json.format(<+pipeline.stages.deploy.spec.manifests.helm_hello_world.commandFlags>)>'
+commandType=$(echo $commandFlagsJson | jq '.[] | select(.commandType=="Uninstall") | .flag')
+
+echo $commandType
+```
+
+#### Is it necessary to associate the IAM (Identity and Access Management) with the Service Account (SA) for Kubernetes ?
+
+Yes, it is required. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-elastic-kubernetes-service-eks)
+
+#### Is it now possible to deploy any kind of artifact bundle, including those with bundled artifacts and manifests, using Tanzu Application Service Deployment Swimlanes in Harness ?
+
+Yes, the feature `Artifact Bundle Support with Tanzu Application Deployments` associated behind the FF - `CDS_ENABLE_TAS_ARTIFACT_AS_MANIFEST_SOURCE_NG` now enables the acceptance of any artifact bundle, including those with bundled artifacts and manifests, from any artifact source in zip format. This allows deployment with Tanzu Application Service Deployment Swimlanes. Please read more on this in the [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart#add-the-manifest-and-artifact-as-an-artifact-bundle)
+
+#### Does Harness provide Refresh Token Support with Tanzu App Service Deployment ?
+
+Yes, Harness now takes in a refresh token into the Tanzu connector associated behind the FF - `CDS_CF_TOKEN_AUTH`. You can get the refresh token from the cf config.json on the delegate. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-tas-connector#refresh-token-support)
+
+#### Is there an official method in Harness to expose the connector, allowing GitHub requests to be made without storing a machine token within Harness ?
+
+No, this is not yet possible as the shell script is connector agnostic. If the shell script runs on a delegate with access or credentials it can inherit those creds for the shell command. Please feel free to file a canny request.
+
+#### Is there a way to schedule a cron trigger to run at specific time every other week ?
+
+Yes, In Schedule, use the settings to schedule the trigger. When you edit a Cron trigger later, you can type or paste in a Cron expression.The Cron expression will be evaluated against UTC time. Please read more on this in the [Dcumetation](https://developer.harness.io/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#schedule-the-trigger)
+
+#### Is OPA only available in Enterprise tier ?
+
+Yes. Please follow this on Pipeline Governance pricing page [here](https://www.harness.io/pricing?module=cd#)

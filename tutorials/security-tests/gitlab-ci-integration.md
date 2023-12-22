@@ -27,23 +27,20 @@ This tutorial shows how you can set up a STO pipeline that runs a build and scan
 * Add a webhook to the code repo that sends Git-event notifications to the Harness pipeline.
 * Add a [Git trigger](/docs/platform/triggers/triggering-pipelines/) to the pipeline that responds to these notifications. 
 
-:::info
-
-This tutorial uses a [Python repository in Gitlab](https://gitlab.com/gitsequence090/TestPythonSAST) and [Bandit](https://github.com/PyCQA/bandit), an open-source tool designed to find common security issues in Python code.
-
-You can use this workflow for other types of GitLab repositories. However, the specific scanner and setup for your scan step might be different. 
-
-:::
-
-## Before you begin
+:::important important notes
 
 To do this tutorial, you need the following:
 
-* A [GitLab](https://gitlab.com/) account. 
+* [GitLab](https://gitlab.com/) requirements: 
   * An SSH key to enable pushing updates to your repositories. For more information, go to [Use SSH keys to communicate with GitLab](https://docs.gitlab.com/ee/user/ssh.html) in the Gitlab documentation.
   * A Personal Access Token to enable pushing API requests. For information about the scopes to enable for your token, go to [GitLab connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference/#passwordpersonal-access-token).
-* A Harness [code repository connector](/docs/category/code-repositories) to your Git service.
-* A Harness [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
+* A Harness [code repository connector](/docs/category/code-repositories) to your GitLab account.
+* A Harness [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+* This tutorial uses a [Python repository in Gitlab](https://gitlab.com/gitsequence090/TestPythonSAST) and [Bandit](https://github.com/PyCQA/bandit), an open-source tool designed to find common security issues in Python code.
+
+  You can use this workflow for other types of GitLab repositories. However, the specific scanner and setup for your scan step might be different. 
+
+:::
 
 ## Set up the STO pipeline
 

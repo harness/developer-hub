@@ -118,12 +118,12 @@ Select Git events and, if applicable, one or more actions that will initiate the
 | **GitLab** | Merge Request | Select one or more of the following:<ul><li>Open</li><li>Close</li><li>Reopen</li><li>Merge</li><li>Update</li><li>Sync</li></ul> |
 | | Merge Request Comment | Create |
 | | Push | GitLab push triggers respond to commit and tag creation actions by default. |
-| **Bitbucket** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li><li>Decline</li></ul><br/>This event type doesn't support PRs attempting to merge Bitbucket forked repos into the original, base repo if the base repo is configured as the pipeline's codebase. For more information, go to [Troubleshoot Git event triggers](./triggering-pipelines/#troubleshoot-git-event-triggers). |
+| **Bitbucket** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li><li>Decline</li></ul><br/>This event type doesn't support PRs attempting to merge Bitbucket forked repos into the original, base repo if the base repo is configured as the pipeline's codebase. For more information, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers). |
 | | Pull Request Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> Note that this event type is currently supported only for Bitbucket cloud, and not for Bitbucket on-premises triggers. |
 | | Push | Bitbucket Cloud push triggers respond to commit and tag creation actions by default. |
-| **Azure** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li></ul><br/>This event type doesn't support the **Changed Files** [condition](#source-branch-target-branch-and-changed-files-conditions), because the Azure DevOps API doesn't provide a mechanism to fetch files in a PR. |
+| **Azure** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li></ul><br/>This event type doesn't support the **Changed Files** [condition](#branch-and-changed-files-conditions), because the Azure DevOps API doesn't provide a mechanism to fetch files in a PR. |
 | | Issue Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> |
-| | Push | Azure SCM push triggers respond to commit actions by default. This event type supports the **Changed Files** [condition](#source-branch-target-branch-and-changed-files-conditions). |
+| | Push | Azure SCM push triggers respond to commit actions by default. This event type supports the **Changed Files** [condition](#branch-and-changed-files-conditions). |
 
 Harness uses your Harness account ID to map incoming events. Harness takes the incoming event and compares it to ALL triggers in the account. You can see the event ID that Harness mapped to a trigger in the webhook's event response body `data`, for example:
 
@@ -207,9 +207,9 @@ In case the API call using the GitHub retrofit REST client to fetch the webhook 
 
 ## Conditions settings
 
-Conditions are optional settings you can use to refine the trigger beyond [events and actions](#event-and-actions). These form the overall set of criteria to trigger a pipeline based on changes in a given source.
+Conditions are optional settings you can use to refine the trigger beyond [events and actions](#event-and-actions). With the exception of [JEXL conditions](#jexl-conditions), each trigger condition is comprised of an [attribute](#attributes), [operator](#operators), and [matching value](#matches-value). Together, the cumulative result of all conditions, along with the other trigger setting, form the overall set of criteria to trigger a pipeline based on changes in a given source.
 
-For example:
+For example, you can create conditions that:
 
 * Trigger a pipeline when a specific value is passed in the source payload.
 * Trigger a pipeline when there's a change in a specific file or a pull request.
@@ -229,13 +229,32 @@ The JEXL `in` operator is not supported in the **JEXL Condition** field.
 
 :::
 
-With the exception of [JEXL conditions](#jexl-conditions), trigger conditions include an **Attribute**, **Operator**, and **Matches Value**.
-
 ### Attributes
 
 Some attributes are predefined and some require you to define a value.
 
-#### Built-in Git payload expressions
+The default attribute conditions depend on the selected provider and [event type](#event-and-actions). For example, GitHub push event triggers provide attribute conditions for **Branch Name** and **Changed Files**.
+
+### Operators
+
+Some operators require single values and some operators allow single or multiple values.
+
+Single-value operators include:
+
+* **Equals** and **Not Equals:** Expects a single, full path value.
+* **Starts With:** Expects a single value. Harness matches any full path starting with the value.
+* **Ends With:** Expects a single value. Harness matches any full path ending with the value.
+* **Contains:** Expects a single value. Harness matches any full path containing the value.
+* **In** and **Not In:** Allows a single value or multiple comma-separated values. Requires full paths, such as `source/folder1/file1.txt,source/folder2/file2.txt`. For some **Conditions**, you can also use Regex, such as `main,release/.*`. You can use Regex to specify all files in a parent folder, such as `ci/.*`.
+* **Regex:** Expects a single Regex value. Harness matches full paths based on the Regex. You can use complex Regex expressions, such as `^((?!README\.md).)*$`. You can use this operator to specify multiple paths, and you can use Regex to specify all files in a parent folder, such as `ci/.*`.
+
+### Matches Value
+
+Matches values are the values for the trigger to match. Acceptable values and value formatting depend on the condition type, attribute, and operator.
+
+Depending on the attribute and operator, you can supply a single value, comma-separated values, and Regex or JEXL.
+
+### Built-in Git payload expressions
 
 To create dynamic triggers, Harness includes built-in Git payload expressions for referencing trigger details, such as a PR number.
 
@@ -263,7 +282,7 @@ To create dynamic triggers, Harness includes built-in Git payload expressions fo
   * `<+trigger.event>`
     * PR, PUSH, etc.
 
-#### Referencing payload fields
+### Reference payload fields
 
 You can reference any payload fields using the expression `<+trigger.payload.[path-in-json]>`, where `[path-in-json]` is the path to the field in the JSON payload, such as `<+trigger.payload.pull_request.user.login>`.
 
@@ -274,34 +293,15 @@ How you reference the path depends on:
 
 Always make sure the path you use works with the provider's payload format and the event type.
 
-:::note
+:::info
 
 For instructions on using default values for pipeline inputs based on a trigger's payload, go to [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
 
 :::
 
-### Operators
+### Branch and Changed Files Conditions
 
-Some operators require single values and some operators allow single or multiple values.
-
-Single-value operators include:
-
-* **Equals** and **Not Equals:** Expects a single, full path value.
-* **Starts With:** Expects a single value. Harness matches any full path starting with the value.
-* **Ends With:** Expects a single value. Harness matches any full path ending with the value.
-* **Contains:** Expects a single value. Harness matches any full path containing the value.
-* **In** and **Not In:** Allows a single value or multiple comma-separated values. Requires full paths, such as `source/folder1/file1.txt,source/folder2/file2.txt`. For some **Conditions**, you can also use Regex, such as `main,release/.*`. You can use Regex to specify all files in a parent folder, such as `ci/.*`.
-* **Regex:** Expects a single Regex value. Harness matches full paths based on the Regex. You can use complex Regex expressions, such as `^((?!README\.md).)*$`. You can use this operator to specify multiple paths, and you can use Regex to specify all files in a parent folder, such as `ci/.*`.
-
-### Matches Value
-
-Matches values are the values for the trigger to match. Acceptable values and value formatting depend on the condition type, attribute, and operator.
-
-Depending on the attribute and operator, you can supply a single value, comma-separated values, and Regex or JEXL.
-
-### Source Branch, Target Branch, and Changed Files Conditions
-
-You can configure triggers to match the source branch, target branch, and/or changed files in a Git merge. Available conditions depend on the [event type](#event-and-actions) selected. For example, any event that belongs to a merge will have **Source Branch** and **Target Branch** conditions.
+You can configure triggers to match a branch name, specific source branch, specific target branch, and/or changed files in a Git merge. Available conditions depend on the [event type](#event-and-actions) selected. For example, any event that belongs to a merge can have **Source Branch** and **Target Branch** conditions, and push event triggers can have a **Branch Name** condition (which is the same as **Target Branch**).
 
 For example, the following image shows a trigger that would start a pipeline if both of the following conditions were true:
 

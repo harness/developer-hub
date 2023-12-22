@@ -1982,3 +1982,84 @@ A delegate name is a unique identifier for a registered delegate in Harness Mana
 #### We have about 500 users who were somehow granted the Admin role on the Account Level as individuals. We need to remove this role from them - is there an efficient way to do this?
 
 You can use this [API] (https://apidocs.harness.io/tag/Account-Roles#operation/update-role-acc) and create a script to update the user roles.
+
+#### Why are `-`removed from UserGroup identifiers?
+
+The removal of hyphens from UserGroup identifiers is in line with the harness UI convention, where identifiers cannot contain hyphens. This practice ensures consistency and prevents the use of invalid characters in identifiers. While hyphens are allowed in UserGroup names, they are automatically removed from identifiers during creation through SCIM to adhere to the specified naming conventions.
+
+#### Currently, our SCIM integration is connected to the First Gen instance/URL, and we lack user groups in the NextGen console. Do we need a separate application for NextGen SCIM integration?
+
+Yes, for NextGen SCIM integration and to have user groups, it's advisable to set up a distinct SCIM application for the NextGen instance. This ensures that SCIM integration is properly configured for the NextGen environment, allowing for seamless user group management while maintaining compatibility with the First Gen setup.
+
+#### Is there a way to reset the delegate custom metric?
+
+No, all metrics reset when you restart the delegate.
+
+#### Why aren't new delegates considered during task execution, leading to potential inefficiencies in scaling for matrix/parallel deployments?
+
+Tasks currently poll for delegates at the start, and if initial delegates are unavailable, they won't be redirected to new ones created by scaling policies. The system broadcasts to eligible delegates determined during task processing. However, not repolling for available delegates during task execution may limit true "task-based scaling for Kubernetes delegates." Consideration for dynamically scaling with new delegates during ongoing tasks could enhance efficiency.
+
+#### What is the difference between staged and active permissions?
+
+- Staging
+  - Permission is added in permissions.yml with the status - STAGING. It cannot be added to roles nor it is shown in the UI.
+Access control check will always return true if asked whether this permission is available to the user (not enforced).
+
+- Active
+   - The status of the permission is changed to ACTIVE in the YAML file. The experimental flag is removed from the permission. Access control checks are now enforced on the new permission.
+
+#### Is there any documentation we have around the APIs which we can use to fetch user details given userId?
+
+Yes you can refer here, [documentation](https://apidocs.harness.io/tag/User#operation/getUsers).
+
+#### If we abort the pipeline and a step is being executed, will it be immediately stopped or it will finish the step task execution and after that abort the execution?
+
+When you abort a pipeline, the pipeline will finish executing its current task and then stop execution. for furtther details you can refer [here](https://developer.harness.io/docs/platform/pipelines/abort-pipeline/#key-considerations).
+
+#### Do we support referencing a ldap secret?
+
+No, we don’t support ldap secret engine.
+
+#### Does a Vault connector accepts configuration for only one Vault secret engine?
+
+Yes the support is only for one secret engine per connector.
+
+#### Do we have grafana dashboard in SMP for monitoring delegate tasks ?
+
+No, we do not have these dashboards in SMP yet.
+
+#### How long is an invitation for workshop accounts valid?
+
+It should be valid for 30 days.
+
+#### Can I set an auto cleanup TTL for disconnected delegates to disappear from the user UI?
+
+The TTL (Time To Live) for legacy delegates is set to 7 days. In the case of immutable delegates, deletion occurs automatically upon delegate shutdown. 
+
+#### Is it now possible to have Secrets and Secret Connectors in different scopes, or do they still need to be in the same scope?
+
+It's possible to have in different scope like we can have a SM at account level and the secret using that SM at the project scope.
+
+#### Do we to support authorization with API tokens?
+
+APIs token are used for both authentication and authorization. Refer to these docs, [here](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-service-account#manage-api-keys).
+
+#### Can you link the docs to the API endpoint used to authorize a user with API token?
+
+We have only one API for access check either if you perform Authorization using Bearer Token or Api key token.
+
+- [documentation 1](https://apidocs.harness.io/tag/Access-Control-List#operation/getAccessControlList)
+- For API tokens categories: Service Account v/s Personal access tokens, please refer to understand it. [documentation 2](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/).
+
+#### In CG custom secrets decrypt,  Do we have retry logic? Do we cache the secret value?
+
+- We execute three retries to fetch a secret.
+- We don’t cache the secret value for security reasons.
+
+#### How is the version of the Immutable Delegate Docker Image managed and released to SMP?
+
+The release of the Immutable Delegate version to SMP involves setting the `IMMUTABLE_DELEGATE_DOCKER_IMAGE` version as an environment variable in the manager. When users download the YAML, this version is read from the environment variable, and SaaS utilizes pipelines to update MongoDB entries. During pod startup in SMP, the environment values are populated in the database, facilitating the direct retrieval of the Immutable Delegate version.
+
+#### If DELEGATE_RESOURCE_THRESHOLD is set to zero, does the delegate reject all tasks?
+
+No, if `DELEGATE_RESOURCE_THRESHOLD` is set to zero, it behaves as if the feature is off, and the delegate acquires tasks as normal without rejection. Also, we have the default `DELEGATE_RESOURCE_THRESHOLD` value as 80.

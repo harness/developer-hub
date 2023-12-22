@@ -40,7 +40,7 @@ Once you complete this tutorial, you'll have a complete end-to-end pipeline that
 
 ![scan-build-scan-push tutorial pipeline](./static/sbsp-sto-only/00-pipeline-steps.png)
 
-## Important notes
+:::important important notes
 
 - This tutorial has the following prerequisites:
 
@@ -59,6 +59,7 @@ Once you complete this tutorial, you'll have a complete end-to-end pipeline that
       - A Docker Hub account and access token. 
       - A [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/) is required to push the image. 
   - Your Semgrep, GitHub, and Docker Hub access tokens must be stored as [Harness secrets](/docs/platform/secrets/add-use-text-secrets).
+:::
 
 
 ## Set up your pipeline
