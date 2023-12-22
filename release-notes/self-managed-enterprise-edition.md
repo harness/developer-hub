@@ -97,6 +97,16 @@ gsutil -m cp \
 - Pagination for perspectives has been added for faster loading time. By default, only the first 20 perspectives are displayed, ordered by the most recent. (CCM-15124)
 --->
 
+#### Harness Platform
+
+- Added a **Purge Secrets** option to the Azure Key Vault **Details** dialog. This option is selected by default and purges deleted secrets instead of soft deleting them. (PL-41738)
+
+- Upgraded `io.netty:netty*` to version 4.1.100.final to address vulnerabilities. (PL-41905, ZD-50403, ZD-52222, ZD-53107)
+
+- Upgraded Redis to 6.2.14-alpine to address potential vulnerabilities. (PL-42228)
+
+- Upgraded the `org.eclipse.jetty_jetty-http`, `jetty-io`, `jetty-util`, and `jetty-continuation` libraries to 9.4.53.v20231009 to resolve CVE CVE-2023-36478. (PL-42288, PL-42560)
+
 ### Early access features
 
 #### Continuous Delivery & GitOps
@@ -256,7 +266,7 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
     
   The image uses `PLUGIN_ARTIFACT_AWS_ROLE_ARN` and `PLUGIN_ARTIFACT_AWS_STS_EXTERNAL_ID` to assume the other role. The base role for assuming this role is determined based on whether the image uses manually provided credentials or an IAM role.
 
-- The Artifact tag (`<+artifact.tag>`) wasn't resolving for AMI. Added support to fix this issue. (CDS-82824)
+- The Artifact tag expression `<+artifact.tag>` wasn’t resolving for ASG deployments. Added support to fix this issue. (CDS-82824)
 
 - For Rancher-based Kubernetes or Native Helm deployments and instance sync, Harness uses Rancher's `generateKubeconfig` API action. A new kubeconfig token is created on the Rancher cluster each time this API is hit. This led to an accumulation of kubeconfig tokens over time on the Rancher cluster. (CDS-83055, ZD-52924)
 
@@ -396,6 +406,13 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
 #### Harness Platform
 
+:::danger Breaking change
+A `GET` request to the List projects API for projects that weren't available in Harness returned a 400 `RESOURCE_NOT_FOUND_EXCEPTION` response instead of a 404 `ENTITY_NOT_FOUND`. (PL-42417)
+
+The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects that aren't found in Harness.
+
+:::
+
 - When a permission was removed from the `permissions.yml` file or marked as inactive, the permission was deleted from managed roles, but not from custom roles. (PL-30826)
 
    This issue has been resolved. The role matching filter criteria used to remove permissions from both custom and managed roles has been updated.
@@ -434,15 +451,108 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
    This item is available with Harness Platform version 81401 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- Delegate logs formatting is updated to allow you to view stack-traces in their native format. (PL-41467)
+- Delegate logs formatting is updated to allow you to view stack traces in their native format. (PL-41467)
 
 - Previously, if you had an SSH secret key with a **Text** reference pre-selected, you could only update it using YAML but not via the UI. The UI displayed only the **File** secret types. Harness has now added a dropdown menu in the **Create or Select an Existing Secret** dialog that allows you to select the **Secret type** as either **File** or **Text**. This simplifies the process of updating SSH secrets, making it easier for you to manage your secrets. (PL-41507, ZD-47600, ZD-51334)
 
+- The project admin role wasn't being assigned to a project created via an account or org scope service account. Now, when a project is created, the project admin role is automatically assigned to the service account. This is also reflected in the audit trails. (PL-41845, ZD-51918)
 
+- The YAML builder didn't allow you to create secrets when there wasn't an existing secret. 
 
+   This issue is fixed. You can now create secrets using YAML even if no previous secret exists. (PL-42148, ZD-52583)
 
+- When shutdown is initiated, delegates will continue sending heartbeats until all tasks are completed, ensuring all running tasks return a response before shutting down. (PL-42171)
 
+   This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
+- The Docker run command on the New Delegate page included an invalid token when there wan't a default token in the scope. (PL-42324)
+
+- On the User Group Details page, there was an issue where removing a user (let's say User A) from the user group and immediately adding another user (let's say User B) would result in User A being added back automatically. This was happening because cached data was not being cleaned up properly from the UI. (PL-42341)
+
+    This issue has been fixed. If you first remove User A and then add User B, only User B will show up as the final addition in this two-step process.
+
+- While managing roles, it was not possible to search for resource groups beyond the first 100 initially fetched. Now, the UI allows searching for resource groups that are present beyond the initial page size limit. (PL-42343, ZD-53209)
+
+- It is now mandatory to add a suffix to count type metrics in the latest version of Prometheus, otherwise delegate metrics will not be recorded. Harness updated the delegate metrics count names to include the suffix `_total`. (PL-42354, ZD-52167)
+
+   The following delegate metrics names are updated.
+
+   - `io_harness_custom_metric_task_timeout` is now `io_harness_custom_metric_task_timeout_total`
+   - `io_harness_custom_metric_task_completed` is now `io_harness_custom_metric_task_completed_total`
+   - `io_harness_custom_metric_task_failed` is now `io_harness_custom_metric_task_failed_total`
+   - `io_harness_custom_metric_task_rejected` is now `io_harness_custom_metric_task_rejected_total`
+
+   This item requires Harness Delegate version 23.11.81405. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- There was an issue with Harness not properly handling delegate reconnects, which affected delegate metrics. During a disconnect, Harness would mark `delegate_connected` as 0, but after a reconnect, it failed to increment the `delegate_connected` to 1. (PL-42431, ZD-52829, ZD-53399, ZD-53878)
+
+   This issue has been resolved, and now Harness increments the `delegate_connected` to 1 during reconnection. As a result, the `io_harness_custom_metric_delegate_connected` and `io_harness_custom_metric_task_failed` metrics are now accurately reported.
+
+   This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Fixed the following issues:
+
+   - The delegate Stackdriver logger didn't work if the delegate token was base64-encoded format.
+   - When the `DELEGATE_TYPE` was `KUBERNETES` and the delegate wasn't deployed in Kubernetes, the delegate failed to start. (PL-42452)
+
+   This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Azure Key Vault's heartbeat check now creates a validation secret with a 30-minute expiration, addressing the issue of no expiration being set previously, which resulted in which resulted in multiple secret versions without an expiry. (PL-42509, ZD-53700)
+
+   This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- There was an issue with the filtering of items that had tags on the delegate list page. This was resolved by adding an implicit tag before filtering the items in the UI. (PL-42743)
+
+   This item requires Harness Delegate version 23.12.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- When you deleted a default secret manager, the Harness built-in secret manager would not automatically become the new default manager. (PL-42458, PL-42824, ZD-53500, ZD-53662, ZD-54099, ZD-54126)
+
+   This issue has been resolved. Now, when you delete a default secret manager, the Harness built-in secret manager is automatically set as the default for all scopes.
+
+   - The **Email (Z->A, 9->0)** sort option on the Access Control: Users page didn't display variables in the correct order. (PL-42825)
+
+     The UI now uses case-insensitive sorting when it lists emails on the Access Control: Users page.
+
+- The **Name (Z->A, 9->)** sort option on the Account Variables page didn't display variables in the correct order. (PL-42842)
+
+  The UI now uses case-insensitive sorting when it lists variables on the Account Variables page.
+
+- API key descriptions for service accounts didn't display in the UI on the user Profile page or on the Account Access Control Service Accounts page. (PL-42846)
+
+- Harness updated the command under **Create your own YAML from a Kubernetes manifest template** for the **Kubernetes Manifest** option on the New Delegate page. The curl command has been removed and replaced with the `git clone https://github.com/harness/delegate-kubernetes-manifest.git` command. (PL-42850)
+
+     This item is available with Harness Platform version 817xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- The Kubernetes Manifest YAML on the New Delegate page didn't include the `DELEGATE_TOKEN`. (PL-42858)
+
+    Fixed the generate Kubernetes YAML API for default delegates with a revoked token. The delegate YAML now includes the next active token.
+
+- When the feature flag `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` is enabled and a new user was added on the Account Access Control: Users page, the following message was displayed: "Invitation sent successfully", even though the user was added to the list. (PL-42860)
+
+   This issue has been resolved, and the UI now displays "User added successfully".
+
+   This item requires Harness Delegate version 23.12.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Fixed the replica count on the New Delegate modal. (PL-42912)
+
+- Fixed the Helm default values.yaml link on the New Delegate modal. (PL-42917)
+
+- The IP Allowlist page had a default value of 30 IPs per page. The IP Allowlist page list now has a value of 20 IPs per page. (PL-42934)
+
+- The error message displayed when a user attempted to delete a Harness managed role was unclear. (PL-43032)
+    The error message now displays **Cannot delete the role `<roleIdentifier>` as it is managed by Harness**.
+
+#### Service Reliability Management
+
+- When configuring Dependencies for a Monitored Service, the dependency graph failed to load. (SRM-16026)
+
+- Fixed the alignment of the **New Monitored Service** and **Switch to Map View** buttons. (SRM-16064)
+
+- Removed duplicate account-level SLO details. (SRM-16084)
+
+#### Security Testing Orchestration
+
+- The **Exemptions** table now shows the pipeline name in the **Scope** column and not the ID. This keeps the user experience consistent with other areas of the application. (STO-6631)
 
 ## November 30, 2023, version 81308
 

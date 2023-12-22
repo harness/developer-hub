@@ -152,6 +152,10 @@ The following deprecated API endpoints will no longer be supported:
 
    This issue has been resolved. Now, when you delete a default secret manager, the Harness built-in secret manager is automatically set as the default for all scopes.
 
+- The **Email (Z->A, 9->0)** sort option on the Access Control: Users page didn't display variables in the correct order. (PL-42825)
+
+     The UI now uses case-insensitive sorting when it lists emails on the Access Control: Users page.
+
 - The **Name (Z->A, 9->)** sort option on the Account Variables page didn't display variables in the correct order. (PL-42842)
 
   The UI now uses case-insensitive sorting when it lists variables on the Account Variables page.
