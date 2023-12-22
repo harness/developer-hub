@@ -56,7 +56,7 @@ Enter your GitHub username and press **Enter**.
 
 Similarly, in the [docker-connector.yaml](https://github.com/harness-community/harness-gitops-workshop/blob/main/cli-manifests/docker-connector.yaml) file on your local machine, replace the placeholder values for **YOUR_HARNESS_ACCOUNT_ID** and **YOUR_DOCKER_USERNAME**.
 
-Run the following to reate a Docker Hub Connector:
+Run the following to create a Docker Hub Connector:
 
 ```shell
 harness connector --file docker-connector.yaml apply
