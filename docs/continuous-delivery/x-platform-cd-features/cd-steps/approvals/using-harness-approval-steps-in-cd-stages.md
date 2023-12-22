@@ -134,6 +134,123 @@ You can set the Approval step to automatically approve at a specific date and ti
 
 :::
 
+### Auto approval using expressions
+
+The **Time** setting supports Harness expressions. You can use an expression to set a flexible data and time for when the automatic approval should occur.
+
+For example, let's say you wanted to automatically approve exactly one week from when the pipeline runs.
+
+You could precede the Approval step with a Shell Script step. In the Shell Scrip step, you can add a script that calculates what the time will be exactly one week from now, at the current hour and minute, in a specific time zone, and display it in a human-readable format.
+
+Here's an example script:
+
+```
+# Define the desired time zone (e.g., "America/New_York")
+desired_timezone="Asia/Calcutta"
+current_time=$(date "+%H:%M")  # Get the current time 
+formatted_time=$(TZ=$desired_timezone date --date="next week $current_time" "+%Y-%m-%d %I:%M %p")
+
+echo "Formatted time in $desired_timezone: $formatted_time"
+```
+
+Next, you can output that from the Shell Script step as an Output Variable. Lastly, you can reference that Output Variable in the Approval **Time** setting using a Harness expression. 
+
+In **Time**, you select **Expression**, and then use the Harness expression that references the Output Variable. For example:
+
+```
+<+pipeline.stages.AutoApproval.spec.execution.steps.ShellScript_1.output.outputVariables.time>
+```
+
+Now, the Approval step will automatically approve exactly one week from the current time of pipeline execution.
+
+Here's a sample pipeline that demonstrates how to use expressions for both the **Timezone** and **Time** settings.
+
+<details>
+<summary>Pipeline demonstrating time expression</summary>
+
+```yaml
+pipeline:
+  name: HarnessAutoApprovalRuntime
+  identifier: HarnessAutoApprovalRuntime
+  projectIdentifier: ServiceV2_Ramya
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  tags: {}
+  stages:
+    - stage:
+        name: AutoApproval
+        identifier: AutoApproval
+        description: ""
+        type: Approval
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+
+                          # Define the desired time zone (e.g., "America/New_York")
+                          desired_timezone="Asia/Calcutta"
+                          current_time=$(date "+%H:%M")  # Get the current time 
+                          formatted_time=$(TZ=$desired_timezone date --date="next week $current_time" "+%Y-%m-%d %I:%M %p")
+
+                          echo "Formatted time in $desired_timezone: $formatted_time"
+                    environmentVariables: []
+                    outputVariables:
+                      - name: time
+                        type: String
+                        value: formatted_time
+                      - name: timeZone
+                        type: String
+                        value: desired_timezone
+                  timeout: 10m
+              - step:
+                  name: autoapproval
+                  identifier: autoapproval
+                  type: HarnessApproval
+                  timeout: 1d
+                  spec:
+                    approvalMessage: |-
+                      Please review the following information
+                      and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    approvers:
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                      userGroups:
+                        - account._account_all_users
+                    isAutoRejectEnabled: false
+                    approverInputs: []
+                    autoApproval:
+                      action: APPROVE
+                      scheduledDeadline:
+                        timeZone: <+pipeline.stages.AutoApproval.spec.execution.steps.ShellScript_1.output.outputVariables.timeZone>
+                        time: <+pipeline.stages.AutoApproval.spec.execution.steps.ShellScript_1.output.outputVariables.time>
+                      comments: Auto approved by Harness via Harness Approval step
+        tags: {}
+        variables:
+          - name: zone
+            type: String
+            description: ""
+            required: false
+            value: Asia/Kolkata
+          - name: time
+            type: String
+            description: ""
+            required: false
+            value: 2023-12-20 09:24 AM
+```
+
+</details>
+
+
 ## Approver inputs
 
 In **Inputs to be provided by approver**, you can enter variables and when the approver views the step, they can provide new values for the variables.
