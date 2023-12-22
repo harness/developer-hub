@@ -12,6 +12,12 @@ sidebar_position: 30
 
 ## Introduction
 
+:::info
+
+This Feature is currently behind the Feature Flag `IDP_ENABLED FF`, please contach with [Harness Support](mailto:support@harness.io) to enable it in your Account.
+
+:::
+
 Harness Policy As Code uses [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) as the central service to store and enforce policies for the different entities and processes across the Harness platform.
 
 You can centrally define and store policies and then select where (which entities) and when (which events) they will be applied.
