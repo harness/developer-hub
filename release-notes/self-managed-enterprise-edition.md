@@ -84,8 +84,6 @@ gsutil -m cp \
                      NG_LICENSE: ""
       ```
 
-- Harness updated the Nginx ingress controller to version 1.3.0. With this upgrade, the watch ingress is now scoped to the Kubernetes namespace. The upgrade version 1.3.0 uses `--watch-ingress-without-class=true`, which is incompatible with version 1.0.0-alpha. If you reuse any existing files, you must remove any image override fields in your `values.yaml` and `override.yaml` files. (SMP-1811, SMP-2326)
-
 #### Continuous Delivery & GitOps
 
 - If you use Kubernetes version 1.16 or later, you can enable the steady state check for Native Helm jobs from Default Settings at any organizational scope (account, organization, or project) in Harness. (CDS-81574)
