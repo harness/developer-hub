@@ -575,6 +575,14 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - The **Exemptions** table now shows the pipeline name in the **Scope** column and not the ID. This keeps the user experience consistent with other areas of the application. (STO-6631)
 
+<!--
+
+- Fixed a UI issue in the Mend configuration UI, where changing the [Lookup Type](/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference#lookup-type)didn't update the YAML value correctly. (STO-6553)
+
+- Fixed a back-end API linking issue that could cause rendering/linking issues in the **Security Tests** tab. (STO-6586)
+
+-->
+
 ## November 30, 2023, version 81308
 
 ### New features and enhancements
