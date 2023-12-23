@@ -440,3 +440,17 @@ If registration fails and none of the above conditions apply, try [manually regi
 <!-- this section is referenced on triggers-reference.md -->
 
 Currently, CI pipeline webhook triggers don't support PRs that are attempting to merge changes from a Bitbucket forked repo into the original, base repo. This applies only to Bitbucket repos when attempting to merge a fork back into the base repo and the base repo is set as the pipeline's codebase. Although the trigger initiates, the pipeline fails with `couldn't find remote ref`. This issue occurs due to the Bitbucket PR reference URL format.
+
+### Pipeline with two triggers has a PR Event Trigger and On Push Trigger and it's firing the Pipeline execution twice.
+
+You can configure multiple triggers for the same pipeline. By scoping the action events, you can ensure that the Pipeline only runs for a particular trigger scenario. The Push trigger and PR Trigger can overlap because they listen on similar events. Below are the required events for PR to ensure there is no overlap with the Push Trigger.
+
+**Pull Request Actions**
+- Edit
+- Open
+- ReOpen
+- Label
+- Unlabel
+- Ready for Review
+
+Please leave out `synchronize` and `close` from the event selection. These two events are what causes both triggers to execute the pipeline. 
