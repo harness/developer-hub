@@ -1016,5 +1016,7 @@ The release name must be unique across the cluster. `release-<+INFRA_KEY_SHORT_I
 
 `release-` is used as a prefix because Kubernetes service and pod names must follow RFC-1035 and must consist of lowercase alphanumeric characters or '-', start with an alphabetic character, and end with an alphanumeric character.
 
+For more information on `INFRA_KEY` and `INFRA_KEY_SHORT_ID` please navigate to our [variables page](/docs/platform/variables-and-expressions/harness-variables.md)
+
 See [Kubernetes Releases and Versioning](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning.md).
 
