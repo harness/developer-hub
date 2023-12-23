@@ -453,4 +453,4 @@ You can configure multiple triggers for the same pipeline. By scoping the action
 - Unlabel
 - Ready for Review
 
-Please leave out `synchronize` and `close` from the event selection. These two events are what causes both triggers to execute the pipeline. 
+Leave out by the `synchronize` and `close` events from the event selection. These events cause both triggers to execute the pipeline. 
