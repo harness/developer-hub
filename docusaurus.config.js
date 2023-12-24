@@ -649,7 +649,7 @@ const config = {
     path.join(__dirname, '/plugins/utmcookie-plugin'),
     path.join(__dirname, '/plugins/munity-plugin'),
     path.join(__dirname, '/plugins/feedback-plugin'),
-    path.join(__dirname, '/plugins/scarf-plugin'),
+    //path.join(__dirname, '/plugins/scarf-plugin'),
   ],
   clientModules: [require.resolve('./client-modules/FocusOnAnchor')],
 };
