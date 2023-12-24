@@ -805,18 +805,18 @@ https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34-->
 
 ### FAQ
 
-#### What are the components that are needed to set up the EKS Authentication Feature in AWS and Harness?
+#### What are the required components to set up the EKS Authentication feature in AWS and Harness?
 
 **In Harness**
 
-1. AWS Connector
-2. Instal AWS IAM Authenticator on the Delegate via INIT_SCRIPT
+1. AWS Connector.
+2. Install AWS IAM Authenticator on the delegate via `INIT_SCRIPT`.
 
 
 **In AWS**
 
-1. IAM Role in AWS Account with the correct permissions
-2. Configure a Kubernetes Service Account in the EKS cluster 
+1. An IAM Role in the AWS account with the correct permissions.
+2. Configure a Kubernetes Service Account in the EKS cluster.
 
 
 ## AWS Serverless Lambda
