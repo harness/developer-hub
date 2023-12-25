@@ -3,7 +3,7 @@ id: VMware-memory-hog
 title: VMware memory hog
 ---
 
-VMware memory hog fault consumes excessive memory resources on Linux OS based VMware VMs. It determines the performance of the application running on the VMware VMs.
+VMware memory hog fault consumes excessive memory resources on Linux OS based VMware VMs. It determines the performance of the application running on the VMware VMs. This fault allocates and maps a specific amount of virtual address space and keeps rewriting to that same memory space for the chaos duration before unmapping it.
 
 ![VMware Memory Hog](./static/images/vmware-memory-hog.png)
 
@@ -15,10 +15,9 @@ VMware memory hog fault consumes excessive memory resources on Linux OS based VM
 - It also simulates noisy neighbour problems due to hogging. 
 - It verifies pod priority and QoS setting for eviction purposes. 
 - It also verifies application restarts on OOM (out of memory) kills. 
-- The fault allocates and maps the given amount of virtual address space, and then keeps on re-writing to that same memory space for the chaos duration before un-mapping it.
 
 :::note
-It should be noted that the the mapped memory space isn't un-mapped until the chaos injection is over, the same memory space is used for iteratively writing data in memory. This ensures a constant amount of memory being consumed by the fault through chaos duration.
+The mapped memory space is unmapped only after the chaos duration; the same memory space is used to write data into memory in an iterative manner. This way, constant memory is consumed throughout the fault duration.
 :::
 
 :::note
