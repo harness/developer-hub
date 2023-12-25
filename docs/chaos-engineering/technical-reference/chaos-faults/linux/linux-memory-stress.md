@@ -17,7 +17,7 @@ Linux memory stress causes memory consumption on the target Linux machines for a
 - Simulates application slowness due to memory starvation, and noisy neighbour problems due to excessive consumption of memory.
 
 :::info note
-The mapped memory space is unmapped after the chaos duration; the same memory space is used to write data into memory in an iterative manner. This way, constant memory is consumed throughout the fault duration.
+The mapped memory space is unmapped only after the chaos duration; the same memory space is used to write data into memory in an iterative manner. This way, constant memory is consumed throughout the fault duration.
 :::
 
 <Ossupport />
