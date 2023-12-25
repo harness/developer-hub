@@ -634,10 +634,7 @@ const config = {
     ],
 
     'docusaurus-plugin-sass',
-    path.join(__dirname, '/plugins/hotjar-plugin'),
-    path.join(__dirname, '/plugins/onetrust-plugin'),
     path.join(__dirname, '/plugins/utmcookie-plugin'),
-    path.join(__dirname, '/plugins/munity-plugin'),
     path.join(__dirname, '/plugins/feedback-plugin'),
     path.join(__dirname, '/plugins/scarf-plugin'),
   ],
