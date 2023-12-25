@@ -17,7 +17,7 @@ VMware memory hog fault consumes excessive memory resources on Linux OS based VM
 - It also verifies application restarts on OOM (out of memory) kills. 
 
 :::note
-The mapped memory space is unmapped after the chaos duration; the same memory space is used to write data into memory in an iterative manner. This way, constant memory is consumed throughout the fault duration.
+The mapped memory space is unmapped only after the chaos duration; the same memory space is used to write data into memory in an iterative manner. This way, constant memory is consumed throughout the fault duration.
 :::
 
 :::note
