@@ -37,6 +37,12 @@ SEI measures the total lines of code that are included in pull requests (PRs).
 
 * **PRs in `OPEN`, `CLOSED`, or `DRAFT` States:** Lines of Code metrics for PRs are determined via the respective SCM tool's API. This includes the total count of lines added, deleted, changed, and the number of files modifed in all the commits that make up the PR.
 
+:::info
+
+When using the `Rebase and Merge` strategy, the latest commit in the PR is recognized as the merge commit. This leads to incorrect calculations for the Lines of Code metric, as rebasing rewrites the commit history, which does not accurately reflect the actual changes made in the original commits and thus changes the count of lines added, deleted, or modified.
+
+:::
+
 ### Azure DevOps
 
 For all types of PRs, the Lines of Code metrics are determined by summing the lines of code added, modified, and changed across all associated commits for a particular Pull Request. This method provides a comprehensive view of the changes made in each individual commit and their overall impact on the codebase.
