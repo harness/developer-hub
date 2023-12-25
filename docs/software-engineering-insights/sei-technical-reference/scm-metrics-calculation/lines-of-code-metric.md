@@ -30,7 +30,7 @@ Commits encompassing more than 256 files are automatically excluded from the cal
 
 Let's consider a scenario with multiple PRs and commits to understand how LoC is calculated:
 
-### Developer A worked on 3 PRs last month:
+### Developer A worked on 3 PRs last month
 
 - **PR #1 (Merged):** Had 2 commits, with a total of 50 lines added and 20 lines deleted. The final merge added 30 net new lines.
 - **PR #2 (Open):** Consists of 4 commits, adding 120 lines and deleting 35. Total contribution is +85 lines.
@@ -49,7 +49,7 @@ Let's consider a scenario with multiple PRs and commits to understand how LoC is
 | - | - |
 | 30 + 20 + 25 + 10 + 30 + 10 | +125 lines of code |
 
-### Developer B is working on an Open PR:
+### Developer B is working on an Open PR with an existing PR that is merged
 
 Consider a developer working on an open PR with several commits and a merged PR:
 
@@ -67,7 +67,7 @@ Consider a developer working on an open PR with several commits and a merged PR:
 
 This example demonstrates how each commit within an open PR contributes to the total LoC.
 
-### Developer C has completed work on a Closed PR:
+### Developer C has completed work on a Closed PR with an existing PR that is merged
 
 Consider a developer working on an closed PR with several commits and a merged PR:
 
