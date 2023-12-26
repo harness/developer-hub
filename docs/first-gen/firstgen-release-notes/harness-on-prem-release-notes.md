@@ -24,11 +24,11 @@ This release includes the following module and component versions.
 | :-- | :-- |
 | Manager | 81720 |
 | Delegate | 81604 |
-| Watcher | 8xxxx |
+| Watcher | 80505 |
 | Verification Service | 81708 |
 | UI | 81701 |
 | Learning Engine | 67903 | 
-| Gateway | xxxxx |
+| Gateway | 1.15.0 |
 
 ### Fixed issues
 
