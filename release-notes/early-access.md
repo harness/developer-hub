@@ -22,6 +22,16 @@ Early access features are behind feature flags. You can contact [Harness Support
 
 The following early access (beta) features are available for the Harness Platform.
 
+### AIDA support automatically available
+
+* **Release date:** October 2023
+* **Release version:** 81008
+* **Issue number:** PL-41700
+* **Feature flag:** `PL_AI_SUPPORT_CHATBOT`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+AIDA is now always available without requiring you to enable the feature in **Settings**.
+
 ### AIDA:tm: replaces Coveo for support case deflection
 
 * **Release date:** December 2023
@@ -499,9 +509,9 @@ You can scan container images and repositories using [Semgrep](/docs/security-te
 * **Issue numbers:** STO-5882, STO-6593, STO-6181, PL-39723
 * **Feature flag:** `STO_AI_ENHANCED_REMEDIATIONS`
 
-```mdx-code-block
+
 import Intro from '/docs/security-testing-orchestration/use-sto/shared/sto-aida-overview-partial.md';
-```
+
 
 <Intro />
 

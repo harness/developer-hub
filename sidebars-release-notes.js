@@ -161,6 +161,15 @@ const sidebars = {
         },
         {
           type: "link",
+          label: "Software Engineering Insights release notes",
+          href: "pathname:///release-notes/software-engineering-insights/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
           label: "Security Testing Orchestration release notes",
           href: "pathname:///release-notes/security-testing-orchestration/rss.xml",
           className: "sidebar-item-rss",

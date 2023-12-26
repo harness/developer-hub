@@ -105,14 +105,14 @@ pipeline:
 
 Here's what the pipeline looks like in pipeline studio:
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="CI stage" label="CI stage" default>
-```
+
 
 Here's the push step from the CI stage:
 
@@ -122,10 +122,10 @@ Note the `<+pipeline.sequenceId>` expression. This is used to tag the artifact p
 
 The expression `<+pipeline.sequenceId>` will be used in the subsequent CD stage to fetch the app version.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="CD stage" label="CD stage">
-```
+
 
 Here's the Kubernetes Rollout Deployment step from the CD stage.
 
@@ -137,16 +137,16 @@ In the stage's service, the expression `<+pipeline.sequenceId>` is used pull the
 
 It's that simple to integrate Harness CI and CD.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Learn more
 
 This was just a simple introduction to the integration.
 
-For a longer tutorial of Harness CI and CD integration, go to [Build and Deploy a NodeJS App to Kubernetes](/tutorials/cd-pipelines/unified-cicd).
+For a longer tutorial of Harness CI and CD integration, go to [End-To-End CI/CD Pipeline](/tutorials/cd-pipelines/e2e-pipeline).
 
 ## Harness Chaos Engineering
 

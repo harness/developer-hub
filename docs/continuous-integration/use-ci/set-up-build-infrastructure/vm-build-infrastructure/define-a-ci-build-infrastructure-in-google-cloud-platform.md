@@ -173,15 +173,15 @@ The delegate and runner are now installed, registered, and connected.
 
 Configure your pipeline's **Build** (`CI`) stage to use your GCP VMs as build infrastructure.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. In Harness, go to the CI pipeline that you want to use the GCP VM build infrastructure.
 2. Select the **Build** stage, and then select the **Infrastructure** tab.
@@ -193,10 +193,10 @@ import TabItem from '@theme/TabItem';
 
 <docimage path={require('../static/ci-stage-settings-vm-infra.png')} />
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```yaml
     - stage:
@@ -218,7 +218,7 @@ import TabItem from '@theme/TabItem';
             ...
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+

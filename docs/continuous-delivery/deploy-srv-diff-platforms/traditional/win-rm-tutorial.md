@@ -97,7 +97,7 @@ For this tutorial, we'll use a **ToDo List** app artifact, **todolist.zip**, ava
 2. For **Repository**, enter: **todolist-tutorial**. Note that if you select the down-drop menu for Repository, Harness loads any available repositories and displays them for selection.
 3. for **Artifact Directory**, enter a forward slash **/**.
 4. For **Artifact Details**, keep the default **Value**.
-5. For **Artifact Path**, leave the default Runtime Input value **<+input>** for that field. Click **Submit.** The **Artifactory Connector** is added to **Artifacts.** Click **Continue**.
+5. For **Artifact Path**, leave the default Runtime Input value **\<+input>** for that field. Click **Submit.** The **Artifactory Connector** is added to **Artifacts.** Click **Continue**.
 
 ## Define the target infrastructure
 
@@ -386,6 +386,19 @@ After selecting the Execution Strategy, we are now ready to run the pipeline.
 
 You have now successfully created and completed the steps for running a pipeline by using WinRM.
 
+## Permission to perform WinRM Deployments in AWS
+
+We use the WinRM Credentials to connect to hosts to perform deployment.
+
+We use the AWS Connector to retrieve instances from the AWS Account. The specific calls we make:
+
+- Retrieve the instances at runtime during the infrastructure step - [DescribeInstanceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
+- Retrieve the instances during instance sync to show service instances in the service - [DescribeInstanceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
+
+To use describe instance API, the action is `ec2:DescribeInstances`
+
+Per AWS documentation: Example policies for working with the AWS CLI or an AWS SDK - [Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ExamplePolicies_EC2.html)
+
 ## Notes
 
 ### Reference hosts in steps using expressions
@@ -394,13 +407,13 @@ You can use all of the `<+instance...>` expressions to reference your hosts.
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
-* [<+instance.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostname)
-* [<+instance.host.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostinstancename)
-* [<+instance.name>](/docs/platform/variables-and-expressions/harness-variables#instancename)
+* [\<+instance.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostname)
+* [\<+instance.host.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostinstancename)
+* [\<+instance.name>](/docs/platform/variables-and-expressions/harness-variables#instancename)
 
 For Microsoft Azure or AWS:
 
-* [<+instance.host.privateIp>](/docs/platform/variables-and-expressions/harness-variables#instancehostprivateip)
-* [<+instance.host.publicIp>](/docs/platform/variables-and-expressions/harness-variables#instancehostpublicip)
+* [\<+instance.host.privateIp>](/docs/platform/variables-and-expressions/harness-variables#instancehostprivateip)
+* [\<+instance.host.publicIp>](/docs/platform/variables-and-expressions/harness-variables#instancehostpublicip)
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.

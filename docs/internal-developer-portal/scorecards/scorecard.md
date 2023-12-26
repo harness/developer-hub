@@ -30,7 +30,7 @@ Scorecards play a pivotal role in ensuring software components are developed and
 
 - **Check**: A check is a query performed against a data point for a software component which results in either `Pass` or `Fail`.
 - **Data Source**: Data Sources are third-party providers which can provide a specific type of data for a software component. Example - GitHub, GitLab, Harness, Pagerduty, etc.
-- **Data Points**: For each software component, every data source provides some data points. The data points could be a number, a string or a boolean. 
+- **Data Points**: For each software component, every data source provides some data points. The data points could be a number, a string or a boolean.
 
 </details>
 

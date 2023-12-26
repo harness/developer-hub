@@ -69,15 +69,15 @@ Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-e
 
 :::
 
-```mdx-code-block
+
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
+
 
 <CISignupTip />
 
 ## Prepare the codebase
 
-1. Fork the tutorial repo [keen-software/goHelloWorldServer](https://github.com/keen-software/goHelloWorldServer) to your GitHub account. Alternately, you can use your own code repo. This tutorial works for any Git repo that you can access.
+1. Fork the tutorial repo [harness-community/goHelloWorldServer](https://github.com/harness-community/goHelloWorldServer) to your GitHub account. Alternately, you can use your own code repo. This tutorial works for any Git repo that you can access.
 2. Create a GitHub personal access token with the `repo`, `admin:repo_hook`, and `user` scopes. For instructions, go to the GitHub documentation on [creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). For information about the token's purpose in Harness, go to the **Authentication** section of the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication).
 3. Make note of the token; you'll need it later in the tutorial.
 4. In Harness, switch to the **Project** you want to use for this tutorial, or create a project.
@@ -110,7 +110,7 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
 
    * **URL Type:** Select **Repository**.
    * **Connection Type:** Select **HTTP**.
-   * **GitHub Repository URL:** Enter the URL to your fork of the tutorial repo, such as `https://github.com/keen-software/goHelloWorldServer.git`.
+   * **GitHub Repository URL:** Enter the URL to your fork of the tutorial repo, such as `https://github.com/YOUR_ACCOUNT/goHelloWorldServer.git`.
 
    ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-15.png)
 
@@ -211,7 +211,7 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
    * **Delegates Setup:** Select **Only use Delegates with all of the following tags**, and then select the Delegate you installed in your Kubernetes cluster.
    * Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
-5. Back in the **Run** step settings, enter `golang:1.15` in the **Image** field.
+5. Back in the **Run** step settings, enter `golang:1.17` in the **Image** field.
 6. Enter the following code in the **Command** field:
 
    ```

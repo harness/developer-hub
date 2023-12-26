@@ -114,14 +114,14 @@ For more information about Build stage settings, go to [CI Build stage settings]
 
 ## Edit the default codebase configuration
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 To edit a pipeline's default codebase configuration, select **Codebase** on the right side panel of the Pipeline Studio's Visual editor.
 
@@ -129,10 +129,10 @@ To edit a pipeline's default codebase configuration, select **Codebase** on the 
 
 <docimage path={require('./static/create-and-configure-a-codebase-03.png')} />
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 To edit a pipeline's default codebase configuration in the YAML editor, edit the `codebase` section. For example:
 
@@ -157,10 +157,10 @@ pipeline:
             cpu: 400m
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 In addition to changing the **Connector** (`connectorRef`) or **Repository Name** (`repoName`), you can edit the following advanced settings.
 
@@ -253,3 +253,7 @@ To resolve this issue:
 ### Pipeline status updates aren't sent to PRs
 
 For information about branch protection and status checks for codebases associated with Harness CI pipelines, go to [SCM status checks](./scm-status-checks.md).
+
+### Troubleshoot Git event triggers
+
+For troubleshooting information for Git event (webhook) triggers, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers).

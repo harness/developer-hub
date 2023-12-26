@@ -10,6 +10,6 @@ description: Cloud Cost Management Certifications
 
 <!-- Custom component -->
 
-import CloudCostManagement from '@site/src/components/Certifications/CloudCostManagement';
+import CloudCostManagement from '@site/src/components/Certifications/CertificationsCloudCostManagement';
 
 <CloudCostManagement />

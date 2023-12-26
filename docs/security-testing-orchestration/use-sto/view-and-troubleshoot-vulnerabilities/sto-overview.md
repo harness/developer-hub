@@ -9,13 +9,14 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The STO Overview enables you to see all detected issues in your `main` branches, `latest` images, and other target baselines. 
+The STO Overview enables you to see all detected issues in your `main` branches, `latest` images, and other target baselines.
 
-<details><summary>Why you should define a baseline for every target</summary>
+<details>
+<summary>Why you should define a baseline for every target</summary>
 
-```mdx-code-block
+
 import StoWhyDefineBaselines from '/docs/security-testing-orchestration/get-started/shared/_why-define-baselines.md';
-```
+
 
 <StoWhyDefineBaselines />
 

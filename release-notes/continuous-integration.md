@@ -2,14 +2,14 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-12-06T10:00
+date: 2023-12-20T10:00
 sidebar_position: 10
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/continuous-integration/rss.xml" />
 
@@ -24,6 +24,29 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## December 2023
+
+### Version 1.5.1
+
+<!-- Dec 20, 2023 -->
+
+#### New features and enhancements
+
+* This release introduces a new versioning convention for CI manager.
+* [Test Intelligence for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby) is now generally available.
+
+#### Fixed issues
+
+* Fixed an issue where builds failed in a Kubernetes cluster build infrastructure because certificates from the key chain weren't considered when fetching the entrypoint for the [S3 Upload and Publish plugin](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings#use-the-s3-upload-and-publish-plugin). (CI-10258, ZD-53311)
+* Improved error messaging related to addon disconnects. (CI-8877)
+* Fixed an issue with SCM service logging. (CI-8872)
+
+### Version 7006
+
+<!-- Dec 18, 2023 -->
+
+#### Fixed issues
+
+If you configured an optional step setting (such as **Limit Memory**, **Limit CPU**, or **Timeout**) to accept runtime input (`<+input>`), and then provided no value for that setting at runtime, the pipeline could fail due to invalid `null` input. This has been fixed, and the effected settings can how handle empty (`null`) runtime input. (CI-10514, ZD-54217)
 
 ### Version 6902
 
@@ -973,7 +996,7 @@ This release introduces validations for Custom Webhook events. The event handler
 - Fixed issue: Git provider url placeholders were incorrect. (CI-3991)
 - Fixed Issue: Active Committers should not count cron and manual execution. (CI-4881)
 - You will now see the "CI Codebase" input form only if the selected stage has "cloneCodebase" set as true (in case of a selective stage execution) or at least one stage in the pipeline has "cloneCodebase" set as true (in case of complete pipeline execution). (CI-4894)
-- Steps inside Step Groups are now being renamed to <step*group_id>*<step_id>. (CI-5002)
+- Steps inside Step Groups are now being renamed to \<step*group_id>*\<step_id>. (CI-5002)
 - Fixed JFrog Artifactory Artifact publishing so that build/ and libs/ folders are not included in the artifactory path target. (CI-5023, ZD-32723)
 - Parallelism fix: For classnames, testsuites, and testcases, you need to provide a file that includes these values. The test splitter will use these values rather than the glob result. (CI-5049)
 - Fixed an intermittent issue where an OAuth error message would appear when new users tried to set up a hosted build. (CI-5060)

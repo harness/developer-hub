@@ -8,22 +8,22 @@ The Harness Delegate for Kubernetes supports automatic upgrades. With automatic 
 
 Harness recommends that you enable automatic upgrades. 
 
-Delegate upgrades do not affect pipelines. Before an upgrade is performed, the delegate finishes the tasks that are underway. The delegate then shuts down. 
+Delegate upgrades do not affect pipelines unless the shutdown timeout is reached. Before an upgrade is performed, the delegate finishes the tasks that are underway. The delegate then shuts down. As part of the shutdown process, there is a 10 minute timeout by default. You can configure this setting. For more information, go to [Graceful delegate shutdown](/docs/platform/delegates/delegate-concepts/graceful-delegate-shutdown-process/).
 
 :::info note
-The automatic upgrade feature is enabled by default for the Kubernetes manifest installation option. However, it is disabled by default for the Helm, Terraform, and Docker installation options. 
+The automatic upgrade feature is enabled by default for the Kubernetes manifest and Helm installation options. However, it is disabled by default for the Terraform and Docker installation options. 
 :::
 
 ## How automatic upgrade works in the Kubernetes manifest
 
-The Kubernetes manifest has a component called `upgrader`. The `upgrader` is a cron job that runs every hour. Every time it runs, it makes a call to Harness Manager to determine which delegate version is published for the account. The API returns a payload, such as `harness/delegate:23.03.78314`. If the delegate that was involved in this upgrade cron job does not have the same image as what the API returns, the `kubectl set image` command runs to perform a rolling deployment of the delegate replicas with the newer image. 
+The Kubernetes manifest has a component called `upgrader`. The `upgrader` is a cron job that runs every hour by default. Every time it runs, it makes a call to Harness Manager to determine which delegate version is published for the account. The API returns a payload, such as `harness/delegate:23.03.78314`. If the delegate that was involved in this upgrade cron job does not have the same image as what the API returns, the `kubectl set image` command runs to perform a default rolling deployment of the delegate replicas with the newer image.
 
 To prevent the installation of the automatic upgrade feature, remove the `cronJob` section before you apply the manifest.
 
 You can also change the time when the upgrade cron job runs by updating the `schedule`. For configuration details, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
 
 <details>
-    <summary>Example Kubernetes manifest</summary>
+<summary>Example Kubernetes manifest</summary>
 
 ```yaml
 kind: Role
@@ -132,13 +132,17 @@ spec:
 
 ### Determine if automatic upgrade is enabled
 
-When a delegate is installed, it may take up to an hour to determine if the `upgrader` was removed during installation. During that time, the delegate shows a status of **DETECTING**. 
+When a delegate is installed, it may take up to an hour by default to determine if the `upgrader` was removed during installation. During that time, the delegate shows a status of **DETECTING**.
 
-To find the delegate status, select an account, a project, or an organization, and then select **Delegates**. 
+Harness updates the status when `upgrader` makes it’s first API call to the Harness platform. The default schedule is one hour, but the schedule is configurable. If Harness doesn't detect the upgrader API call within 90 minutes, the upgrade status is updated from **DETECTING** to **AUTO UPGRADE: OFF**.
+
+Let’s say the `upgrader` schedule is configured to two hours. The upgrade status would change from **AUTO UPGRADE: OFF** to **AUTO UPGRADE: ON** and back to **AUTO UPGRADE: OFF**. Every 90 minutes that Harness doesn't detect the API call, the status is set to **AUTO UPGRADE: OFF**. As soon as Harness detects it again, the status is set to **AUTO UPGRADE: ON**. Harness recommends a default schedule of 60 minutes. For more information, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
+
+To find the delegate status, select an account, a project, or an organization, then select **Settings**. Under resources, select **Delegates**. For more information, go to [Delegates list page](/docs/platform/delegates/delegate-concepts/delegate-overview#delegates-list-page).
 
 ![Detecting delegate](static/detect-delegate.png)
 
-After the first hour, the delegate shows a status of **AUTO UPGRADE: ON** or **AUTO UPGRADE: OFF**. 
+When the delegate is first installed, the Delegates list page displays an **Auto Upgrade** status of **DETECTING** and then **SYNCHRONIZING**. After the first hour (for the default `upgrader` configuration) or your custom configured time, the delegate shows a status of **AUTO UPGRADE: OFF** or **AUTO UPGRADE: OFF**. 
 
 ![Auto-upgrade on](static/auto-upgrade-on.png)
 
@@ -228,8 +232,8 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
 1. Use the [latest-supported-version](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/publishedDelegateVersion) API to determine the delegate number for your account:
 
-    `curl --location 'https://app.harness.io/ng/api/delegate-setup/latest-supported-version?accountIdentifier=<YOUR_ACCOUNT_IDENTIFIER>' \
-    --header 'x-api-key: <YOUR_API_KEY>'`
+    `curl --location 'https://app.harness.io/ng/api/delegate-setup/latest-supported-version?accountIdentifier=\<YOUR_ACCOUNT_IDENTIFIER>' \
+    --header 'x-api-key: \<YOUR_API_KEY>'`
 
     The following example result is returned. It returns the tag of the delegate that is released to your account. 
 

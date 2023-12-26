@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Variables from '/docs/platform/shared/variables-not-supported.md'
-```
+
 
 You can trigger pipelines in response to Git events that match specific payload conditions you set up in a Harness trigger. For example, when a pull request or push event occurs on a Git repo and your trigger settings match the payload conditions, a CI or CD pipeline can run.
 
@@ -20,8 +20,13 @@ This topic demonstrates how to create a trigger for GitHub payload conditions. I
 
 :::info
 
-* Currently, Harness supports Git-based triggers for the most common Git providers. You can use a [Custom Trigger](./trigger-deployments-using-custom-triggers.md) for other repo providers.
-* With [Harness RBAC](../role-based-access-control/rbac-in-harness.md), you can control who can create and use triggers *within Harness*, but you must use your Git provider's RBAC to control who can initiate the Git events that start your Harness Git event triggers.
+Currently, Harness supports Git-based triggers for the most common Git providers. You can use a [Custom Trigger](./trigger-deployments-using-custom-triggers.md) for other repo providers.
+
+:::
+
+:::info
+
+With [Harness RBAC](../role-based-access-control/rbac-in-harness.md), you can control who can create and use triggers *within Harness*, but you must use your Git provider's RBAC to control who can initiate the Git events that start your Harness Git event triggers.
 
 :::
 
@@ -349,7 +354,64 @@ pipeline:
 
 </details>
 
-## Troubleshooting Git event triggers
+## GitHub merge queue triggers
+
+[GitHub's merge queue feature](https://github.blog/2023-07-12-github-merge-queue-is-generally-available/) is compatible with Harness webhook triggers. Use the following settings to configure a merge queue trigger:
+
+* Trigger type: GitHub webhook
+* [Payload Type](/docs/platform/triggers/triggers-reference/#payload-type): GitHub.
+* [Connector](/docs/platform/triggers/triggers-reference/#connector): Your Harness GitHub connector.
+* [Event](/docs/platform/triggers/triggers-reference#event-and-actions): Push.
+* [Conditions](/docs/platform/triggers/triggers-reference/#conditions-settings): Configure conditions that detect branches with the GitHub temporary merge queue branch name prefix (`gh-readonly-queue`) and a non-empty commit SHA for that branch. The [Harness expression](/docs/platform/triggers/triggers-reference/#reference-payload-fields) `<+trigger.payload.head_commit>` gets the commit SHA from the webhook payload for the temporary merge queue branch push event.
+   * [Branch Condition](/docs/platform/triggers/triggers-reference/#branch-and-changed-files-conditions): **Branch Name** **Starts With** `gh-readonly-queue`.
+   * [Payload Condition](/docs/platform/triggers/triggers-reference/#payload-conditions): `<+trigger.payload.head_commit>` **Not Equals** `null`.
+
+Here is a YAML example of a webhook trigger configured for the GitHub merge queue:
+
+```yaml
+trigger:
+  name: merge queue trigger
+  identifier: merge_queue_trigger
+  enabled: true
+  stagesToExecute: []
+  description: ""
+  tags: {}
+  encryptedWebhookSecretIdentifier: ""
+  orgIdentifier: default
+  projectIdentifier: YOUR_HARNESS_PROJECT
+  pipelineIdentifier: YOUR_PIPELINE_TO_TRIGGER
+  source:
+    type: Webhook
+    spec:
+      type: Github
+      spec:
+        type: Push
+        spec:
+          connectorRef: YOUR_GITHUB_CONNECTOR
+          autoAbortPreviousExecutions: false
+          payloadConditions:
+            - key: targetBranch
+              operator: StartsWith
+              value: gh-readonly-queue
+            - key: <+trigger.payload.head_commit>
+              operator: NotEquals
+              value: "null"
+          headerConditions: []
+          repoName: YOUR_GITHUB_REPO
+          actions: []
+  inputYaml: |
+    pipeline:
+      identifier: YOUR_PIPELINE_TO_TRIGGER
+      properties:
+        ci:
+          codebase:
+            build:
+              type: branch
+              spec:
+                branch: <+trigger.branch>
+```
+
+## Troubleshoot Git event triggers
 
 ### Pipelines don't start after trigger events
 
@@ -372,3 +434,23 @@ If you see **Webhook registration failed**, here are the common causes:
 After addressing one or more of the above issues, edit the trigger in Harness, select **Continue** to navigate through the settings, and then select **Update Trigger** to reattempt webhook registration. Then, refresh the **Triggers** page again to verify that the webhook was registered.
 
 If registration fails and none of the above conditions apply, try [manually registering the webhook](#register-the-webhook-in-the-git-provider).
+
+### Pipeline fails with "couldn't find remote ref" when triggered from a Bitbucket forked repo PR
+
+<!-- this section is referenced on triggers-reference.md -->
+
+Currently, CI pipeline webhook triggers don't support PRs that are attempting to merge changes from a Bitbucket forked repo into the original, base repo. This applies only to Bitbucket repos when attempting to merge a fork back into the base repo and the base repo is set as the pipeline's codebase. Although the trigger initiates, the pipeline fails with `couldn't find remote ref`. This issue occurs due to the Bitbucket PR reference URL format.
+
+### Pipeline with a PR Event Trigger and an On Push Trigger fires the pipeline execution twice
+
+You can configure multiple triggers for the same pipeline. By scoping the action events, you can ensure that the pipeline only runs for a particular trigger scenario. The Push trigger and PR trigger can overlap because they listen on similar events. Below are the required events for the PR to ensure there is no overlap with the Push trigger.
+
+**Pull Request Actions**
+- Edit
+- Open
+- ReOpen
+- Label
+- Unlabel
+- Ready for Review
+
+Leave out by the `synchronize` and `close` events from the event selection. These events cause both triggers to execute the pipeline. 

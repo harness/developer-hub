@@ -14,9 +14,9 @@ description: This guide will walk through how start to optimize your Kubernetes 
   target="_self"
 />
 
-```mdx-code-block
+
 import DelegateInstall from '/tutorials/platform/install-delegate.md';
-```
+
 
 ## Background on Cloud Costs
 

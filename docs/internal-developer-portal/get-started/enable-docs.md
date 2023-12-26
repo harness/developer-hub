@@ -14,15 +14,15 @@ By default, the **Docs** tab in your catalog does not include documentation for 
 
 ![](static/docs-empty.png)
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
 <TabItem value="Docs Available in the Root of Source Folder ">
-```
+
 
 To add documentation:
 
@@ -86,10 +86,10 @@ TechDocs uses MkDocs as the static site generator. Visit https://www.mkdocs.org 
 ![](static/techdocs-ref.png)
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Docs Available in Some Other Location">
-```
+
 3. Edit the `catalog-info.yaml` and add the TechDocs annotation.
 
 4. In the `metadata.annotations` field, add `backstage.io/techdocs-ref: url:https://github.com/my-org/my-service/tree/master`.
@@ -100,10 +100,10 @@ metadata:
     backstage.io/techdocs-ref: url:https://github.com/backstage/backstage/tree/master/plugins/techdocs-backend/examples/documented-component
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 5. Select the refresh button on the catalog component page.
 

@@ -84,7 +84,7 @@ Pod DNS spoof:
 
 ### Spoof map
 
-Map of the target host names. For example, <code>'{"abc.com":"spoofabc.com"}'</code> where the key is the host name to be spoofed and the value is the host name to which the key is spoofed or redirected. Tune it by using the `SPOOF_MAP` environment variable.
+Map of the target host names. For example, <code>'\{"abc.com":"spoofabc.com"}'</code> where the key is the host name to be spoofed and the value is the host name to which the key is spoofed or redirected. Tune it by using the `SPOOF_MAP` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 

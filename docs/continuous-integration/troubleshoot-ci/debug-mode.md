@@ -30,15 +30,15 @@ If debug mode isn't available for your pipeline, you might consider using [AIDA]
 
 ## Enable debug mode
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="remote" label="Remote builds" default>
-```
+
 
 Use these steps to use debug mode for builds on Harness Cloud, self-hosted VM, or Kubernetes cluster build infrastructures.
 
@@ -65,10 +65,10 @@ Use these steps to use debug mode for builds on Harness Cloud, self-hosted VM, o
 5. While in the debug session, use the CLI to reproduce and troubleshoot the issue on the remote host.
 6. To terminate the debug session, abort the build, and then run a new build to determine if the issue is resolved. Sessions automatically terminate after one hour or at the step timeout limit, whichever occurs first.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="local" label="Local builds">
-```
+
 
 Use these steps to use debug mode for builds on [local runner build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
 
@@ -98,10 +98,10 @@ Use these steps to use debug mode for builds on [local runner build infrastructu
 8. While in the debug session, use the CLI to reproduce and troubleshoot the issue.
 9. To terminate the debug session, abort the build, and then run a new build to determine if the issue is resolved. Sessions automatically terminate after one hour or at the step timeout limit, whichever occurs first.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::tip
 

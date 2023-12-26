@@ -15,10 +15,10 @@ title: Deploy Your Own Microservice Application
   target="_self"
 />
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <!---
 Import statements for CLI downloads
@@ -43,12 +43,12 @@ You can use the same steps to integrate and deploy your own microservice app.
 
 You can choose to proceed with the tutorial either by using the command-line interface (Harness CLI) or the user interface (Harness UI).
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="GitOps Workflow">
-```
 
-## Before you begin {#before-you-begin-gitops}
+
+## Before you begin \{#before-you-begin-gitops}
 
 Verify that you have the following:
 
@@ -59,10 +59,10 @@ Verify that you have the following:
 ## Getting Started with Harness GitOps
 --------------------------------------
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="cli" label="CLI">
-```
+
 
 1. Refer [Install and Configure Harness CLI](https://developer.harness.io/docs/platform/automation/cli/install) doc to setup and configure Harness CLI.
 
@@ -82,10 +82,10 @@ Verify that you have the following:
    - Select **New GitOps Agent**.
    - When you are prompted with **Do you have any existing Argo CD instances?**, select **Yes** if you already have a Argo CD Instance, or else choose **No** to install the **Harness GitOps Agent**.
 
-```mdx-code-block
+
 <Tabs  queryString="gitopsagent">
 <TabItem value="agent-fresh-install" label="Harness GitOps Agent Fresh Install">
-```
+
 
 - Select **No**, and then select **Start**.
 - In **Name**, enter the name for the new Agent `ownappagent`
@@ -101,10 +101,10 @@ Verify that you have the following:
  - Select **Continue** and verify the Agent is successfully installed and can connect to Harness Manager.
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="existingargo" label="Harness GitOps Agent with existing Argo CD instance">
-```
+
 
 - Select **Yes**, and then select **Start**.
 - In **Name**, enter the name for the existing Argo CD project.
@@ -117,10 +117,10 @@ Verify that you have the following:
     ```
 - Once you have installed the Agent, Harness will start importing all the entities from the existing Argo CD Project.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 4. Before proceeding, store the Agent Identifier value as an environment variable for use in the subsequent commands:
     ```bash
@@ -159,10 +159,10 @@ Verify that you have the following:
 
      - Sock Shop is accessible via the master and any of the node urls on port `30001`.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="ui" label="UI">
-```
+
 
 1. Login to [Harness](https://app.harness.io/).
 2. Select **Projects**, and then select **Default Project**.
@@ -175,10 +175,10 @@ Verify that you have the following:
    - Select **New GitOps Agent**.
    - When are prompted with **Do you have any existing Argo CD instances?**, select **Yes** if you already have a Argo CD Instance, or else choose **No** to install the **Harness GitOps Agent**.
 
-```mdx-code-block
+
 <Tabs  queryString="gitopsagent">
 <TabItem value="agent-fresh-install" label="Harness GitOps Agent Fresh Install">
-```
+
 
 - Select **No**, and then select **Start**.
 - In **Name**, enter the name for the new Agent `ownappagent`
@@ -194,10 +194,10 @@ Verify that you have the following:
  - Select **Continue** and verify the Agent is successfully installed and can connect to Harness Manager.
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="existingargo" label="Harness GitOps Agent with existing Argo CD instance">
-```
+
 
 - Select **Yes**, and then select **Start**.
 - In **Name**, enter the name for the existing Argo CD project.
@@ -210,10 +210,10 @@ Verify that you have the following:
     ```
 - Once you have installed the Agent, Harness will start importing all the entities from the existing Argo CD Project.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Repositories
 
@@ -289,10 +289,10 @@ Verify that you have the following:
 
 A successful Application sync will display the following status tree under **Resource View**.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="terraform" label="Terraform Provider">
-```
+
 Harness offers a [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to help you declaratively manage Harness GitOps entities alongside your application and cluster resources. These steps walk through using Terraform to create and install the GitOps agent, define related Harness entities, and deploy a sample application to your cluster.
 
 <docvideo src="https://www.youtube.com/watch?v=U_XkKcfg8ts" width="75%" />
@@ -460,10 +460,10 @@ terraform destroy
 
 **Note:** Since deleting the Sockshop application in Harness does not delete the deployed cluster resources themselves, you’ll need to manually remove the Kubernetes deployment.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 <br/>
 
@@ -474,17 +474,17 @@ You've just learned how to use **Harness GitOps** to deploy an application using
 - Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="CD pipeline">
-```
 
-```mdx-code-block
+
+
 <Tabs queryString="interface">
 <TabItem value="cli" label="CLI">
-```
 
-## Before you begin {#before-you-begin-cli}
+
+## Before you begin \{#before-you-begin-cli}
 
 :::info
 
@@ -506,41 +506,37 @@ Verify the following:
 
 1. Download and Configure Harness CLI.
 
-    ```mdx-code-block
-    <Tabs queryString="cli-os">
-    <TabItem value="macos" label="MacOS">
-    ```
+    
+<Tabs queryString="cli-os">
+<TabItem value="macos" label="MacOS">
+    
+<MacOSCLI />
 
-    <MacOSCLI />
+</TabItem>
+<TabItem value="linux" label="Linux">
+    
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="linux" label="Linux">
-    ```
+<Tabs queryString="linux-platform">
+<TabItem value="arm" label="ARM">
+    
+<ARMCLI />
 
-    ```mdx-code-block
-    <Tabs queryString="linux-platform">
-    <TabItem value="arm" label="ARM">
-    ```
 
-    <ARMCLI />
+</TabItem>
+<TabItem value="amd" label="AMD">
+    
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="amd" label="AMD">
-    ```
+<AMDCLI />
 
-    <AMDCLI />
 
-    ```mdx-code-block
-    </TabItem>
-    </Tabs>
-    ```
+</TabItem>
+</Tabs>
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="windows"  label="Windows">
-    ```
+
+
+</TabItem>
+<TabItem value="windows"  label="Windows">
+    
 
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
@@ -557,10 +553,10 @@ Verify the following:
 
     d. Restart terminal.
 
-    ```mdx-code-block
-    </TabItem>
-    </Tabs>
-    ```
+
+</TabItem>
+</Tabs>
+    
 
 2. Clone the forked **harnesscd-example-apps** repo and change directory.
     ```bash
@@ -671,10 +667,10 @@ If you plan to use your own Project, Organization, and custom names for Harness 
 ### Pick Your Deployment Strategy
 
 
-```mdx-code-block
+
 <Tabs queryString="deployment">
 <TabItem value="canary" label="Canary">
-```
+
 
 13. CLI Command for canary deployment:
     ```
@@ -682,10 +678,10 @@ If you plan to use your own Project, Organization, and custom names for Harness 
     ```
    You can switch to the **Visual** editor and confirm the pipeline stage and execution steps.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="bg" label="Blue Green">
-```
+
 
 13. CLI Command for blue-green deployment:
     ```
@@ -693,10 +689,10 @@ If you plan to use your own Project, Organization, and custom names for Harness 
     ```
    You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="rolling" label="Rolling">
-```
+
 
 13. CLI Command for Rolling deployment:
     
@@ -705,16 +701,16 @@ If you plan to use your own Project, Organization, and custom names for Harness 
     ```
    You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
 
-```mdx-code-block
+
+
 </TabItem>
 <TabItem value="ui" label="UI">
-```
-## Before you begin {#before-you-begin-ui}
+
+## Before you begin \{#before-you-begin-ui}
 
 Verify that you have the following:
 
@@ -724,7 +720,7 @@ Verify that you have the following:
 3. **Install the [Helm CLI](https://helm.sh/docs/intro/install/)** in order to install the Harness Helm delegate.
 4. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository using the GitHub web interface to utilize the Harness resource YAMLs.
 
-## Getting Started with Harness CD {#getting-started-harness-cd-ui}
+## Getting Started with Harness CD \{#getting-started-harness-cd-ui}
 ----------------------------------
 
 1. Log in to [Harness](https://app.harness.io/).
@@ -814,10 +810,10 @@ If you plan to use your own Project, Organization, and custom names for Harness 
 
 ### Pipeline
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Canary">
-```
+
 
 9. In **Default Project**, select **Pipelines**.
     - Select **New Pipeline**.
@@ -829,10 +825,10 @@ If you plan to use your own Project, Organization, and custom names for Harness 
         - In your Harness pipeline YAML editor, paste the YAML.
         - Select **Save**.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Blue Green">
-```
+
 
 9. In **Default Project**, select **Pipelines**.
     - Select **New Pipeline**.
@@ -844,10 +840,10 @@ If you plan to use your own Project, Organization, and custom names for Harness 
         - In your Harness pipeline YAML editor, paste the YAML.
         - Select **Save**.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Rolling">
-```
+
 
 9. In **Default Project**, select **Pipelines**.
     - Select **New Pipeline**.
@@ -859,14 +855,14 @@ If you plan to use your own Project, Organization, and custom names for Harness 
         - In your Harness pipeline YAML editor, paste the YAML.
         - Select **Save**.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
-```mdx-code-block
+
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Manually execute deployment pipelines
 
@@ -904,7 +900,6 @@ You've just learned how to use Harness CD to deploy your own application.
 
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```

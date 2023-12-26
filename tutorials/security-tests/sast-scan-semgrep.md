@@ -45,7 +45,7 @@ In this tutorial, you'll set up a simple [ingestion-only workflow](/docs/securit
 
 ### Set up your codebase
 
-To do this tutorial, you need a [codebase connector](/docs/category/code-repositories) to your Git repository and an access token. A connector can specify a Git account (http://github.com/my-account) or a specific repository (http://github.com/my-account/my-repository). 
+To do this tutorial, you need a [codebase connector](/docs/category/code-repositories) to your Git repository and an access token. A connector can specify a Git account (`http://github.com/my-account`) or a specific repository (`http://github.com/my-account/my-repository`). 
 
 This tutorial uses the [dvpwa repository](https://github.com/williamwissemann/dvpwa) as an example. The simplest setup is to fork this repository into your Git account and scan the fork. However, you can run your scans on any codebase that uses a language supported by Semgrep.  
 
@@ -67,7 +67,8 @@ Do the following:
 
 3. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** or **ARM64** for the infrastructure, OS, and architecture.  
    
-   You can also use a [Kubernetes](/docs/category/set-up-kubernetes-cluster-build-infrastructures) or [Docker](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) infrastructure, but these require additional work to set up.   
+   You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
+  
 
 <!-- 
 4. Set up your codebase:
@@ -86,15 +87,15 @@ Do the following:
 
 Now you will add a step that runs a scan using the local Semgrep container image maintained by Harness. 
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. Go to **Execution** and add a **Run** step. 
 
@@ -121,12 +122,12 @@ import TabItem from '@theme/TabItem';
 
       2. Limit Memory = **4096Mi** 
       
-         You might want to reserve more memory to [speed up the scan](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines). This setting applies to Kubernetes and Docker infrastructures only. 
+         You might want to reserve more memory to [speed up the scan](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines). This setting applies to Kubernetes and Docker infrastructures only.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 Add a `Run` step to your `SecurityTests` stage and configure it as follows:
 
@@ -173,20 +174,20 @@ Here's an example:
                         memory: 4096Mi
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 
 ### Add the Semgrep (ingest) step
 
 Now that you've added a step to run the scan, it's a simple matter to ingest it into your pipeline. Harness provides a set of customized steps for popular scanners such as Semgrep. 
 
-   ```mdx-code-block
+   
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. In **Execution**, add a **Semgrep** step after your **Run** step.
 
@@ -206,10 +207,10 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
 
    5. [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) = **Critical**
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 Add a step after the `Run` step and configure it as follows:
 
@@ -257,10 +258,10 @@ Here's a YAML example:
 
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 
 ### Run the pipeline and check your results
@@ -271,7 +272,7 @@ Here's a YAML example:
 
    - Under **Codebase**, enter the repository and branch to scan.
 
-   - Under **Stage: <_stage_name_>**, enter the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) you want to use. 
+   - Under **Stage: \<_stage_name_>**, enter the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) you want to use. 
 
     If you're scanning the [example repository](https://github.com/williamwissemann/dvpwa) mentioned above, enter `dvpwa` for the repository and target, and `master` for the branch and variant.
    

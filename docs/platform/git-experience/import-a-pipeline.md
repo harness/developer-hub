@@ -7,10 +7,10 @@ helpdocs_category_id: rv2jo2hoiy
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-```mdx-code-block
+
 import import_from_git from './static/import-a-pipeline-29.png'
 import import_pipeline_from_git from './static/importPipelineFromGit.png'
-```
+
 
 Harness lets you create a Pipeline in the following ways:
 
@@ -40,21 +40,21 @@ This topic shows you how to import a Pipeline to the CD module.
 2. Select your Project and click on **Pipelines**.
 3. Select **Import From Git**.
    
-   ```mdx-code-block
+   
    <img src={import_from_git} alt="import_from_git" height="200" width="300"/>
-   ```
+   
    
    The **Import Pipeline From Git** settings appear.
 
-   ```mdx-code-block
+   
    <img src={import_pipeline_from_git} alt="import_pipeline_from_git" height="400" width="700"/>
-   ```
+   
 
 4. Enter a **Name** for your Pipeline.
 5. In **Git Connector**, select or create a Git Connector to connect to your Git repo. For steps, see [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
-   
-   <details>
-   <summary>
+
+<details>
+<summary>
    IMPORTANT: Connector must use the Enable API access option and Token
    </summary>
   
@@ -65,7 +65,7 @@ This topic shows you how to import a Pipeline to the CD module.
    For GitHub, the token must have the following scopes:  
 
    ![](./static/import-a-pipeline-32.png)
-  </details>
+</details>
 
    Here's an example of a GitHub Connector that has the correct settings:
 

@@ -1461,7 +1461,7 @@ Harness ECS rolling and canary deployments support AWS [ECS circuit breaker conf
 
 AWS ECS circuit breaker logic determines whether the deployment will fail if the service can't reach steady state. During deployment, the failure state is identified based on a threshold. Circuit breaker creates the threshold configuration with the desired instance count configuration internally.
 
-Circuit breaker configuration is implemented in the Harness ECS service **Service Definition**. 
+Circuit breaker configuration is implemented in the Harness ECS service **Service Definition**.
 
 <details>
 <summary>Circuit breaker configuration example</summary>

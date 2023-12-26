@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 Harness Default Settings lets you configure parameters in your Account, Org, or Project scope for specific Harness modules.
 
@@ -32,10 +32,10 @@ Make sure you have the **view** and **edit** permissions for Default Settings.
 Default Settings include configurable module-specific parameters that you can customize based on your needs, such as enabling or disabling features at specific scopes.
 
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="accountscope" label="Account scope" default>
-```
+
 
 To access the Default Settings at the Account scope, do the following:
 
@@ -45,10 +45,10 @@ To access the Default Settings at the Account scope, do the following:
 
 2. Select **Default Settings**. The **Account Default Settings** appear.
 
-```mdx-code-block
+
 </TabItem>
   <TabItem value="orgscope" label="Org scope" default>
-```
+
 
 To access the Default Settings at the Org scope, do the following:
 
@@ -56,10 +56,10 @@ To access the Default Settings at the Org scope, do the following:
 
 2. Select **Default Settings**. The **Account Default Settings** appear.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="projscope" label="Project scope" default>
-```
+
 
 To access the Default Settings at the Project scope, do the following:
 
@@ -67,10 +67,10 @@ To access the Default Settings at the Project scope, do the following:
 
 2. Under **PROJECT SETUP**, select **Default Settings**. The **Account Default Settings** appear.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### View and Edit Default Settings
 

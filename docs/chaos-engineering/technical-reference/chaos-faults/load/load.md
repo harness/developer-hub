@@ -27,7 +27,7 @@ Locust loadgen fault simulates load generation on the target hosts for a specifi
 - Checks the performance of the application or process running on the instance.
 
 <accordion color="green">
-    <summary>Use cases</summary>
+<summary>Use cases</summary>
 This fault determines the resilience of the application under a generated load. It determines how quickly the application scales or recovers to avoid such failure. 
 </accordion>
 

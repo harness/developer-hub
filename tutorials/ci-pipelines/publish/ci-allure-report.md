@@ -6,10 +6,10 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial, maven, All
 slug: /ci-pipelines/publish/artifacts-tab
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <ctabanner
   buttonText="Learn More"
@@ -142,10 +142,10 @@ The `target` value uses a [Harness expression](/docs/platform/variables-and-expr
 
 At this point, you can run the pipeline and then manually find the uploaded artifact in your cloud storage bucket or repo. Alternately, you can use a [Drone plugin](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference) to publish the artifact URL to the **Artifacts** tab in Harness. This makes it easier to find the artifact directly associated with a particular build.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="artifactmetadata" label="Artifact Metadata Publisher plugin" default>
-```
+
 
 The [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) pulls content from cloud storage and publishes it to the **Artifacts** tab. You can use this plugin with any cloud storage provider.
 
@@ -189,10 +189,10 @@ If you uploaded multiple artifacts, you can provide a list of URLs, such as:
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="s3publisher" label="S3 Upload and Publish plugin">
-```
+
 
 If you use S3 as your cloud storage provider, you can use the [S3 Upload and Publish plugin](https://github.com/harness-community/drone-s3-upload-publish) to both upload your artifact and publish the URL to the **Artifacts** tab.
 
@@ -231,17 +231,17 @@ If you want to upload a compressed file, you must use a [Run step](/docs/continu
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## YAML examples
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 This example uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) and uploads the artifact to GCS.
 
@@ -326,10 +326,10 @@ pipeline:
                       artifact_file: artifact.txt
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="k8s" label="Self-hosted">
-```
+
 
 This example uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures) and uploads the artifact to GCS.
 
@@ -416,7 +416,7 @@ pipeline:
                       artifact_file: artifact.txt
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+

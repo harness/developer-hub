@@ -1,7 +1,7 @@
 ---
 title: Supported Custom Actions
 description: These Custom Actions are supported in Harness IDP
-sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false
@@ -19,7 +19,9 @@ There are several repository providers supported out of the box such as **GitHub
 
 A list of all registered custom actions can be found under 
 
-`WorkFlows` -> `Installed Actions`
+`Workflows/Create/Self Service` -> `Installed Actions`
+
+![](./static/create_neww.png)
 
 ![](./static/fetch-actions.png)
 

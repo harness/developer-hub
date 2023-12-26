@@ -4,10 +4,10 @@ description: Configure your Harness pipelines to build, test, and deploy code fr
 sidebar_position: 10
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 You can configure your Harness pipelines to build, test, and deploy code from your Harness Code repositories.
 

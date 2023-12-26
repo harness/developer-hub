@@ -29,16 +29,3 @@ The below diagram shows the flow of control when a user creates a new chaos expe
 
    The chaos experiment execution is now concluded.
 
-## Chaos hub
-
-Chaos hub is a collection of experiment templates and faults that helps create new chaos experiments.
-
-- In essence, Chaos Hub is a collection of manifests and charts, which represent the experiments and faults that exist as part of the hub.
-- You can add Chaos Hub using a Git service provider such as GitHub, where Chaos Hub exists as a repository. This allows native version control and management of the faults and experiment artifacts.
-- Apart from an Enterprise Chaos Hub (out of the box), you can also add custom Chaos Hubs to maintain and distribute private faults and experiments within your organization.
-
-Experiments are templates to create new chaos experiments, which contain a collect of chaos faults and certain custom actions ordered in a specific sequence. Faults refer to the failures injected as part of an experiment.
-
-Both experiments and faults are stored as manifests in an appropriate directory structure. Hence, you can add new experiment templates and faults directly to the repository as files. In addition, you can derive the experiment templates from the existing experiments and save them to the Chaos Hub from the UI.
-
-You can also create your own custom chaos hub, where you can maintain and share your custom experiments and faults. For more information, go to [Add a custom chaos hub](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub).

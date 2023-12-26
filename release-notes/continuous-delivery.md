@@ -6,10 +6,10 @@ tags: [NextGen, "continuous delivery"]
 sidebar_position: 8
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/continuous-delivery/rss.xml" />
 
@@ -51,6 +51,27 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## December 2023
 
+### Version 1.16.6
+
+
+#### Fixed issues
+
+- A null pointer exception was thrown during ASG rolling deployment. (CDS-86426)
+  - An NPE was thrown when the ASG deployments was missing the launch template part of the base ASG (the ASG used as a template when creating new ASGs).
+  - Harness provides a better error message targeting the problem. The issue has been resolved.
+- During pipeline execution, the console view wasn't showing steps inside of the step group. (CDS-86129, ZD-54757)
+  - Logs for steps which were inside a step group are now be visible in console view also.
+- Templates not deleted even after removing references.	(CDS-85828, ZD-54300, ZD-54616)
+  - The error was related to the reference calculation during the movement of pipelines from inline to remote.
+  - This issue has been fixed now, and the template references are updated accurately.
+- Helm binary path is not added to system path by default on immutable delegate image. (CDS-85763)
+  - Harness has added Helm v3.12.0 into the `env` path for delegates. Customers will no longer need to use the full path to access this version it Shell Script steps.
+- Harness bidirectional sync webhook feature displaying push events as errors. (CDS-85694, ZD-54338)	Unrelated PUSH webhook events from Github produced on create/delete branch operation were being displayed as errors. These are irrelevant events for bidirectional Git Experience processing. Harness will ignore these events instead of showing them as failed.
+- Deployment failing with Terraform error on	infra provisioners.	(CDS-85684) Terraform tasks working directory was created based on account, org, project, and provisioner identifier.
+  - This combination might cause issues if two steps with same account, org, project, and provisioner identifier are running simultaneously on same delegate.
+  - With this change every Terraform step execution will run in a unique working directory.
+- Console logs missing from CloudFormation steps. (CDS-84962, ZD-53810, ZD-53865)	There was an issue where CloudFormation steps were not updating the console longs when there are multiple steps with a similar prefix. This issue is now fixed.
+
 ### Version 81820
 
 #### Early access features
@@ -91,8 +112,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Harness did not support expressions to identify manifest Ids provided as runtime inputs. Consequently, you could not reference Helm chart metadata in your deployments. The issue occurred when you used multiple Helm chart manifests. (CDS-84663)
 
   This issue has been fixed. You can now access Helm chart metadata before deployment by using the expression `<+manifests.MANIFEST_ID.helm.fieldName>`. In the expression, replace `MANIFEST_ID` and `fieldName` with the appropriate values. If you use multiple Helm charts, the primary manifest is used as runtime input.
-  
-  This feature is behind the feature flag `CDS_HELM_FETCH_CHART_METADATA_NG`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
 
 - If shell script execution fails with an exception such as a step timeout, the delegate logs include the message “Exception in script execution”. This message does not help attempts to determine the root cause. (CDS-85024, ZD-54110)
 
@@ -211,7 +230,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   - You configure the stage to execute only if a JEXL condition provided at runtime evaluates to true.
   - You create an input set that does not provide the stage with a JEXL condition for evaluation.
   
-  When stage execution fails, the following error is displayed: "Error evaluating expression [<+OnPipelineSuccess> && (<+input>)]: Expression evaluation failed" (CDS-82350, ZD-52689) 
+  When stage execution fails, the following error is displayed: "Error evaluating expression [\<+OnPipelineSuccess> && (\<+input>)]: Expression evaluation failed" (CDS-82350, ZD-52689) 
 
   This issue has been fixed.
 
@@ -1172,7 +1191,7 @@ This release does not include early access features.
 
 - Fixed an issue on the Pipeline Executions page where the Services filter didn't list all services. (CDS-73277)
 
-- Improved the error message shown in the UI if the entity type of a new version of a template is different: `Failed to save the template <NAME> because an existing template of different type has the same identifier` (CDS-73243)
+- Improved the error message shown in the UI if the entity type of a new version of a template is different: `Failed to save the template \<NAME> because an existing template of different type has the same identifier` (CDS-73243)
 
 
 ### Version 80307
@@ -1236,7 +1255,7 @@ This release does not have new features.
 
 - Fixed an issue where a pipeline execution reported an invalid `artifactPath` when trying to deploy Artifactory artifacts. This was due to an issue with the regex used to populate the pull-down artifact menu. With this fix, you can specify recursive wildcards in the directory path for Artifactory. For example, you can specify `MainPath/*/*` as the directory path for the pipeline and the Service step will download the selected artifact. (CDS-72245, ZD-46236)
 
-- Fixed a delegate issue where the Custom Remote Store did not clone a repo larger than 25Mb if provided in the execution script. With this fix, the Custom Remote Store now has a <=25Mb size validation on manifest files (not the entire repo). (CDS-75900)
+- Fixed a delegate issue where the Custom Remote Store did not clone a repo larger than 25Mb if provided in the execution script. With this fix, the Custom Remote Store now has a \<=25Mb size validation on manifest files (not the entire repo). (CDS-75900)
 
   This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
@@ -2668,12 +2687,12 @@ This release does not include any early access features.
 
   Harness recommends that you only use a table extending task, or extend tables that indirectly extend the task. You can specify any custom table in Harness.
 
-  <details>
-  <summary>What is a table extending task?</summary>
+<details>
+<summary>What is a table extending task?</summary>
 
   In ServiceNow, a table extending task is a task that involves creating a new table by extending an existing table. When a table is extended, a new child table is created that inherits all the fields, relationships, and other attributes of the parent table. The child table can then be customized further to meet the specific needs of the organization.
 
-  </details>
+</details>
 
   Itil roles are not mandatory for using these steps. When using the normal flow for custom tables, you should have sufficient permissions on the custom table, such as basic CRUD permissions, permissions to update desired fields, etc.
 
@@ -3138,10 +3157,10 @@ This release does not include any early access features.
 
   To update an issue type, add a new field named `Issue Type` and mention the new type in its **Value**.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```yaml
 - step:
@@ -3161,17 +3180,17 @@ This release does not include any early access features.
         value: Task
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Pipeline Studio" label="Pipeline Studio">
-```
+
 
 ![update issue type](static/e7593d80236125833f145babe470114b8fa5edb75633c507c20e176dd3c40ed2.png)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 - You can now use a Personal Access Token (PAT) in a Jira connector. (CDS-52847)
 
@@ -3181,10 +3200,10 @@ This release does not include any early access features.
 
   The PAT is added to Harness as a Harness secret, and selected in the Jira connector.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```yaml
 connector:
@@ -3204,17 +3223,17 @@ connector:
         patRef: pat
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Pipeline Studio" label="Pipeline Studio">
-```
+
 
 ![Jira connector PAT](static/5a617c9bac51ba7712f2cd2342446969c6bb8a5497a83ea7fba543cc75f50cd1.png)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 - The **Resize Strategy** field in the **Canary App Setup** step of a [Tanzu Application Services (TAS, formerly PCF) deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart) can be added as runtime input when using the canary deployment strategy. (CDS-53201)
 
@@ -3986,7 +4005,7 @@ This release does not include new features.
 
   This functionality is behind a feature flag: `CDP_USE_K8S_DECLARATIVE_ROLLBACK_NG`.
 
-  Harness applies Kubernetes manifest using `kubectl apply`, which is a declarative way of creating Kubernetes objects. But when rolling back, we perform `kubectl rollout undo workloadType/workloadName --to-revision=<REVISION_NUMBER>`, which is an imperative way of rolling back. Using imperative and declarative commands together is not recommended and can cause issues.
+  Harness applies Kubernetes manifest using `kubectl apply`, which is a declarative way of creating Kubernetes objects. But when rolling back, we perform `kubectl rollout undo workloadType/workloadName --to-revision=\<REVISION_NUMBER>`, which is an imperative way of rolling back. Using imperative and declarative commands together is not recommended and can cause issues.
 
 In some instances, the workload spec was not updated properly when `rollout undo` was performed. Subsequent deployments then refered to an invalid spec of the workload and caused Kubernetes issues like [kubectl rollout undo should warn about undefined behaviour with kubectl apply](https://github.com/kubernetes/kubernetes/issues/94698).
 
@@ -4476,7 +4495,7 @@ Removed **Skip Dry Run** from unnecessary steps.
 
 - The `<+rollbackArtifact...>` expression is now available (CDS-46321)
 
-  For example, if you used a publicly available Docker Hub NGINX image as the Artifact Source for a Service, then when the Service is rolled back, the <+rollbackArtifact.meta.image> expression output would be something like this: registry.hub.docker.com/library/nginx:stable-perl.
+  For example, if you used a publicly available Docker Hub NGINX image as the Artifact Source for a Service, then when the Service is rolled back, the \<+rollbackArtifact.meta.image> expression output would be something like this: registry.hub.docker.com/library/nginx:stable-perl.
 
   The variables available in rollbackArtifact depends on the artifact and infrastructure type used in the deployment. They can be seen in Output tab of Infrastructure section of a CD stage.
 
@@ -4584,7 +4603,7 @@ This functionality is behind a feature flag: AZURE_WEB_APP_NG_NEXUS_PACKAGE.
 
   Now you can set Helm Chart Version using a Runtime Input when using HTTP Helm, AWS S3, and Google GCS stores. You can view the list of chart versions available at runtime in Run Pipeline, and select the required one.
 
-- You can now copy the FQNs for Service and Environment V2 variables. The Service variables use the format <+serviceVariables.[variable name]> and Environment variables use the format `<env.variables.[variable name]>`.
+- You can now copy the FQNs for Service and Environment V2 variables. The Service variables use the format \<+serviceVariables.[variable name]> and Environment variables use the format `<env.variables.[variable name]>`.
 
   For more information, see Built-in and Custom Harness Variables Reference.
 
@@ -4797,13 +4816,13 @@ For details on Environment and Infrastructure Definition expressions, go to Buil
 
 - Service V2 with Service V1 Stage is causing Pipeline Studio to crash (CDS-45653)
 
-- <+infra.name> not resolving in V2 Service and Environment (CDS-45492)
+- \<+infra.name> not resolving in V2 Service and Environment (CDS-45492)
 
-  <+infra.name> expression is now supported.
+  \<+infra.name> expression is now supported.
 
 - Template Library not taking Service Variables as input in the expression (CDS-45471)
 
-  With new service entity, if the manifest property was made a runtime input and its value was provided when running a pipeline in the form of an expression like <+serviceVariables.variableName>, the property would resolve to "null". However, if the manifest property was set to the same expression, directly in the service configuration, it would work as expected. This issue has been resolved now, with variable resolving in both cases.
+  With new service entity, if the manifest property was made a runtime input and its value was provided when running a pipeline in the form of an expression like \<+serviceVariables.variableName>, the property would resolve to "null". However, if the manifest property was set to the same expression, directly in the service configuration, it would work as expected. This issue has been resolved now, with variable resolving in both cases.
 
 - Azure Artifacts VersionRegex filtering not honored (CDS-45433)
 
@@ -4973,7 +4992,7 @@ For more information, go to the ECS tutorial ECS Run Task section.
 
   Added additional criteria to return files with undefined file usage.
 
-- S3 Artifact: NPE if bucketname is <+input> and empty value given at runtime (CDS-44072)
+- S3 Artifact: NPE if bucketname is \<+input> and empty value given at runtime (CDS-44072)
 
   Fixed the NPE. If bucketName or filePath/Regex is null or empty, the Pipeline will throw appropriate exception.
 
@@ -4981,7 +5000,7 @@ For more information, go to the ECS tutorial ECS Run Task section.
 
   Now we don't allow the bucketName to be an empty string.
 
-- S3 Artifact: Region as <+input>, Bucket name dropdown gives error (CDS-44067)
+- S3 Artifact: Region as \<+input>, Bucket name dropdown gives error (CDS-44067)
 
   After this change, we will stop making bucket list API call, if region or connectorRef are runtime inputs.
 
@@ -5037,11 +5056,11 @@ The ability to provision resources in a CD stage's deployment infrastructure usi
 
 - ServiceNow Change Window details not showing up on get approvals API (CDS-43787)
 
-  API GET approvals/{approvalID} was not giving change Window Spec details.
+  API GET `approvals/{approvalID}` was not giving change Window Spec details.
 
   It was missing from wrapper classes returning the persistent entity.
 
-  This issue has been resolved. API GET approvals/{approvalID} now returns change Window Spec details.
+  This issue has been resolved. API GET `approvals/{approvalID}` now returns change Window Spec details.
 
 - Remove validation for artifact Path in Nexus3 (CDS-43778)
 
@@ -5049,7 +5068,7 @@ The ability to provision resources in a CD stage's deployment infrastructure usi
 
 - No Variable to expose Connector Name. We only expose ref but the ref might not be the name (CDS-43757)
 
-  Expression to get the connector name is available now. Please use "<+infra.connector.name>" in the pipeline.
+  Expression to get the connector name is available now. Please use "\<+infra.connector.name>" in the pipeline.
 
 - Infra Secrets are not getting resolved in Shell Script (CDS-43714)
 
@@ -5067,7 +5086,7 @@ The ability to provision resources in a CD stage's deployment infrastructure usi
 
   The template list screen did not display the account level templates created inline when Git experience is enabled. There was a criteria in the query which was filtering out inline templates. This issue has been resolved. The template list screen now displays the account level templates created inline when Git experience is enabled.
 
-- When wrong action passed to Harness Approval API error appear: '{"code":400,"message":"Unable to process JSON"}%' (CDS-42662)
+- When wrong action passed to Harness Approval API error appear: '\{"code":400,"message":"Unable to process JSON"}%' (CDS-42662)
 
   The API (https://apidocs.harness.io/tag/Approvals#operation/addHarnessApprovalActivity) did not provide details of JSON processing errors. Also, for incorrect values in the Harness Approval Action (https://apidocs.harness.io/tag/Approvals#operation/addHarnessApprovalActivity!ct=application/json&path=action&t=request), the appropriate details were not showing.
 
@@ -5101,9 +5120,9 @@ The ability to provision resources in a CD stage's deployment infrastructure usi
 
 - Added Infrastructure host Connection Type to Azure, replacing Use Public DNS with the following options: Hostname (default), Private IP, Public IP (CDS-43301)
 
-- <+artifact> variables are not working in both SSH and WinRM pipelines (CDS-43293)
+- \<+artifact> variables are not working in both SSH and WinRM pipelines (CDS-43293)
 
-  We were not adding the metadata to artifact outcome. The expression now works. The URL can now be fetched using <+artifact.metadata.url>.
+  We were not adding the metadata to artifact outcome. The expression now works. The URL can now be fetched using \<+artifact.metadata.url>.
 
 - Option to select file or text is present when username/SSH Key is selected as authentication while creating an SSH credential (CDS-43266)
 
@@ -5121,7 +5140,7 @@ The ability to provision resources in a CD stage's deployment infrastructure usi
 
   For the Capability check for Docker registry connector, we now use endpoint /v2 to validate. As per Docker documentation, /v2 is the only endpoint needed to validate the accessibility for Docker registry version 2. To handle the scenario we are appending /v2 to Connector the URL if it doesn't exist.
 
-- The <+artifact.primary.identifier> expression not resolving to primary artifact identifier (CDS-42195)
+- The \<+artifact.primary.identifier> expression not resolving to primary artifact identifier (CDS-42195)
 
 - Service Dashboard: Primary artifact details is not showing up under Active Service Instances section, only tags details displayed (CDS-42172)
 
@@ -5822,7 +5841,7 @@ n/a
 
 - CloudFormation (CDS-39288)
 
-  If CloudFormation template contain expressions like ${AWS::StackName} we were trying to handle them as Harness expressions. After the fix we are ignoring them.
+  If CloudFormation template contain expressions like $\{AWS::StackName} we were trying to handle them as Harness expressions. After the fix we are ignoring them.
 
 - Location content in the Artifact section of Deploy stage should be wrapped (CDS-39114)
   Wrapped the Location text so it will not overflow. On hover we can see the whole text.

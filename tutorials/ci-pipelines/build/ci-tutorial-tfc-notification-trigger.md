@@ -38,9 +38,9 @@ In addition to a Harness account, you need the following accounts for this tutor
 * A [Terraform Cloud account](https://app.terraform.io/public/signup/account).
 * A [Google Cloud account](https://cloud.google.com) where you can create a Google Kubernetes Engine (GKE) cluster.
 
-```mdx-code-block
+
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
+
 
 <CISignupTip />
 

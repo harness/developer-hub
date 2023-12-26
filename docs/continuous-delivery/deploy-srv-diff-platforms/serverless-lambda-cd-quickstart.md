@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 # Serverless.com framework for AWS Lambda deployments
 
@@ -198,7 +198,7 @@ The `s3:GetBucketLocation` action is required for a custom S3 bucket only.
 </details>
     
 
-## Use AWS IRA for Harness AWS connector credentials
+## Use AWS IRSA for Harness AWS connector credentials
 
 import IrsaPartial from '/docs/shared/aws-connector-auth-options.md';
 
@@ -267,7 +267,7 @@ Next, we can add a serverless.yaml for our deployment. We'll use [the publicly-a
    * In **Personal Access Token**, click **Create or Select a Secret**.
      * Click **New Secret Text**.
      * In **Secret Name**, enter a name for the secret like **github-pat**.
-     * In **Secret Value**, paste in a GitHub Personal access token.When you're logged into GitHub, these tokens are listed at <https://github.com/settings/tokens>. For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
+     * In **Secret Value**, paste in a GitHub Personal access token.When you're logged into GitHub, these tokens are listed at [https://github.com/settings/tokens](https://github.com/settings/tokens). For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
      * Make sure your PAT has the **repo** scope selected:
 
 	![](./static/repoScope.png)
@@ -334,8 +334,8 @@ We'll add a new Artifactory Connector and install a Harness Kubernetes Delegate 
 
    Expand the section below to learn more about installing delegates.
 
-   <details>
-   <summary>Install a new delegate</summary>
+<details>
+<summary>Install a new delegate</summary>
 
     1. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
     2. In the **New Delegate** dialog, in **Select where you want to install your Delegate**, select **Kubernetes**.
@@ -386,8 +386,8 @@ We'll add a new Artifactory Connector and install a Harness Kubernetes Delegate 
     ```
 
    8. Select **Verify** to make sure that the delegate is installed properly.
-   
-   </details>
+
+</details>
 
 9. Back in **Set Up Delegates**, in the list of Delegates, you can see your new Delegate and its tags.
 10. Select the **Connect using Delegates with the following Tags** option.

@@ -24,9 +24,9 @@ Use this [delegate installation wizard video](https://www.youtube.com/watch?v=yL
 
 </details>
 
-```mdx-code-block
+
 import DelegateInstall from '/tutorials/platform/install-delegate.md';
-```
+
 
 <details>
 <summary>Use the terminal</summary>
@@ -60,14 +60,14 @@ After the delegate pods are created, you must edit your Harness Delegate YAML to
    
    :::
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';   
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
     <TabItem value="microdnf" label="microdnf" default>
-```
+
 
    ```
    - name: INIT_SCRIPT  
@@ -100,10 +100,10 @@ import TabItem from '@theme/TabItem';
     cf plugins
    ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="apt-get" label="apt-get">
-```
+
    
    ```
    - name: INIT_SCRIPT  
@@ -133,11 +133,11 @@ import TabItem from '@theme/TabItem';
     # verify plugins
     cf plugins
    ```
-  
-```mdx-code-block
+
+
 </TabItem>    
 </Tabs>
-```
+
    
 4. Apply the profile to the delegate profile and check the logs.
 
@@ -189,4 +189,23 @@ Perform the following steps to add a TAS connector.
 11. Once the test connection succeeds, select **Finish**. 
     
     The connector now appears in the **Connectors** list.
+
+
+### Refresh Token Support
+
+:::note
+
+Currently, Refresh token authentication support is behind the feature flag `CDS_CF_TOKEN_AUTH`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Harness Delegate version 23.12.81804 or later is required to use this feature.
+
+:::
+
+Harness provides the option to use a Refresh token to authenticate with the Tanzu connector. This Refresh token is used by Harness to verify your Tanzu instance. However, you still need to provide a username and password to authenticate with Tanzu. These credentials are used to obtain a new Refresh token. Once the Refresh token is provided in the connector, Harness uses it to authenticate and perform each task. Harness will authenticate with the Refresh token before executing each Tanzu step defined in the pipeline.
+
+You can retrieve the Refresh token via the `config.json` file you receive when authenticating with the CF client. You can pass the Refresh token as a secret stored in the Harness Secrets Manager or your secrets manager of choice. 
+
+#### Demo Video
+
+<!-- Video:
+https://www.loom.com/share/f0231a6142324d8e8b780d332d04bb78?sid=c2f2c774-8262-449b-bdc4-fd79a3938b34-->
+<docvideo src="https://www.loom.com/share/f0231a6142324d8e8b780d332d04bb78?sid=c2f2c774-8262-449b-bdc4-fd79a3938b34" />
 

@@ -51,6 +51,13 @@ export const experiments: ExperimentDetails[] = [
     category: "linux",
   },
   {
+    name: "Linux network rate limit",
+    description:
+      "Linux network rate limit injects chaos to slow down the network connectivity on the Linux machine by limiting the network bandwidth to process fixed number of network packets per unit time.",
+    tags: ["linux","network","rate-limit"],
+    category: "linux",
+  },
+  {
     name: "Linux process kill",
     description:
       "Linux process kill fault kills the target processes running on Linux machines.",

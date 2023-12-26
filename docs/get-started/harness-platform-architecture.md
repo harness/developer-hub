@@ -20,6 +20,8 @@ The Harness Platform is a self-service CI/CD platform that enables end-to-end so
 * Security Testing Orchestration
 * Software Supply Chain Assurance
 * Chaos Engineering
+* Continuous Error Tracking
+* Software Engineering Insights
 * Code Repository
 
 The following video introduces some of the Harness modules.

@@ -146,6 +146,13 @@ import {
               "",
             link: "/release-notes/software-supply-chain-assurance",
           },
+          {
+            title: "Software Engineering Insights release notes",
+            module: MODULES.sei,
+            description:
+              "",
+            link: "/release-notes/software-engineering-insights",
+          },
         ],
       },
       {
