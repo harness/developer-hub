@@ -362,7 +362,7 @@ pipeline:
       codebase:
         connectorRef: CODEBASE_CONNECTOR
         repoName: dvpwa
-        build: \<+input>
+        build: <+input>
   identifier: gitleaks_docs_example_ORCHESTRATION
   name: gitleaks docs example - ORCHESTRATION
 ```

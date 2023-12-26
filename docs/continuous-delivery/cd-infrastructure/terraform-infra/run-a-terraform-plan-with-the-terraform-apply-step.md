@@ -216,19 +216,19 @@ Here's an example script where a local value names two workspaces, **default** a
 
 
 ```json
-locals \{  
-  counts = \{  
+locals {  
+  counts = {  
       "default"=1  
       "production"=3  
   }  
 }  
   
-resource "aws_instance" "my_service" \{  
+resource "aws_instance" "my_service" {  
   ami="ami-7b4d7900"  
   instance_type="t2.micro"  
-  count="$\{lookup(local.counts, terraform.workspace, 2)}"  
-  tags \{  
-         Name = "$\{terraform.workspace}"  
+  count="${lookup(local.counts, terraform.workspace, 2)}"  
+  tags {  
+         Name = "${terraform.workspace}"  
     }  
 }
 ```
@@ -267,14 +267,14 @@ When configured the optional configuration for AWS Connector these fields can be
       configuration:
         type: Inline
         spec:
-          workspace: \<+input>
-          configFiles: \{}
+          workspace: <+input>
+          configFiles: {}
           providerCredential:
             type: Aws
             spec:
-              connectorRef: \<+input>
-              region: \<+input>
-              roleArn: \<+input>
+              connectorRef: <+input>
+              region: <+input>
+              roleArn: <+input>
     timeout: 10m
 ```
 
@@ -360,25 +360,25 @@ main.tf (note the empty backend S3 block):
 
 
 ```json
-variable "global_access_key" \{type="string"}  
-variable "global_secret_key" \{type="string"}  
+variable "global_access_key" {type="string"}  
+variable "global_secret_key" {type="string"}  
   
-variable "env" \{  
+variable "env" {  
     default= "test"  
 }  
-provider "aws" \{  
-  access_key = "$\{var.global_access_key}"  
-  secret_key = "$\{var.global_secret_key}"  
+provider "aws" {  
+  access_key = "${var.global_access_key}"  
+  secret_key = "${var.global_secret_key}"  
   region = "us-east-1"  
       
 }  
   
-resource "aws_s3_bucket" "bucket" \{  
+resource "aws_s3_bucket" "bucket" {  
   bucket = "prannoy-test-bucket"  
 }  
   
-terraform \{  
-backend "s3" \{  
+terraform {  
+backend "s3" {  
       
   }  
 }
@@ -402,8 +402,8 @@ For example, if your config.tf file has the following backend:
 
 
 ```json
-terraform \{
-   backend "gcs" \{
+terraform {
+   backend "gcs" {
      bucket  = "tf-state-prod"
      prefix  = "terraform/state"
    }
@@ -423,8 +423,8 @@ prefix  = "terraform/state"
 In your Terraform .tf config file, only the definition of the Terraform backend is required:
 
 ```json
-terraform \{  
-  backend "gcs" \{}
+terraform {  
+  backend "gcs" {}
 }
 ```
 
@@ -461,7 +461,7 @@ You can find the output in the Output area of the step. To use the output, copy 
 
 ![](static/terraform-apply-outputs.png)
 
-The expression is of the form `\<+pipeline.stages.stage-provisioning.spec.execution.steps.TerraformApply_5.output.TEST_OUTPUT_NAME1>`
+The expression is of the form `<+pipeline.stages.stage-provisioning.spec.execution.steps.TerraformApply_5.output.TEST_OUTPUT_NAME1>`
 
 When you use this expression in another step, the expression resolves to its value.
 
@@ -484,26 +484,26 @@ To obtain the expression, do the following:
 1. In a pipeline execution that uses this feature, select the **Terraform Apply** step.
 2. In the step details, select **Output**.
 3. In **Output Name**, locate `TF_JSON_OUTPUT_ENCRYPTED`.
-4. Copy the expression. When you paste it, it will look something like `\<+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>`.
+4. Copy the expression. When you paste it, it will look something like `<+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>`.
 
-Do not use the **Output Value**, for example `\<+secrets.getValue("terraform_output_df1ds123331123122123_LYF5b3")>`.
+Do not use the **Output Value**, for example `<+secrets.getValue("terraform_output_df1ds123331123122123_LYF5b3")>`.
 
 A secret is masked in Harness logs, but you can write it to a file like this:
 
 ```
-echo "\<+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>" > /path/to/file.txt
+echo "<+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>" > /path/to/file.txt
 ```
 
 Here's an example of decrypted Terraform JSON output:
 
 ```json
-\{
-  test-output-name1: \{
+{
+  test-output-name1: {
     sensitive: false,
     type: string,
     value: test-output-value1
   },
-  test-output-name2: \{
+  test-output-name2: {
     sensitive: false,
     type: string,
     value: test-output-value2

@@ -47,7 +47,7 @@ stringData:
     aws_secret_access_key = kemSdGbClwBF/westrwk/h3yCo8nvbEXAMPLEKEY
 ```
 
-- Replace the `\<CHAOS-NAMESPACE>` with the namespace where you have installed the chaos infrastructure, also provide your named profiles (here it is `default`, `dev`, and `qa`) with the appropriate credentials.
+- Replace the `<CHAOS-NAMESPACE>` with the namespace where you have installed the chaos infrastructure, also provide your named profiles (here it is `default`, `dev`, and `qa`) with the appropriate credentials.
 
 - Create the secret using `kubectl apply -f secret.yaml`
 

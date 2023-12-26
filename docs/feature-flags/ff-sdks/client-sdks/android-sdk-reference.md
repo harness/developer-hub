@@ -313,7 +313,7 @@ Using the following code you can configure it to write to `logcat`:
     }
 ```
 
-Change `\<PKGNAME>` above to one of the following
+Change `<PKGNAME>` above to one of the following
 
 -* `io.harness.cfsdk.CfClient` - Main client logs
 -* `io.harness.cfsdk.cloud.analytics` - Analytics logs

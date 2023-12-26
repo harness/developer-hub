@@ -146,7 +146,7 @@ spec:
     creationPolicy: Merge
     template:
       data:
-        password: "\{\{ .password  }}"
+        password: "{{ .password  }}"
   dataFrom:
   - sourceRef:
       generatorRef:
@@ -163,7 +163,7 @@ In the above YAML:
   ```
   template:
     data:
-      password: "\{\{ .password  }}"
+      password: "{{ .password  }}"
   ```     
 * `template` enables a way to change, parse output of generator, and then inject it into the secret. Here, we use it just to inject the unchanged password.
 

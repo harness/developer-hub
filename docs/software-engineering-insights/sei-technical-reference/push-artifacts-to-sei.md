@@ -5,7 +5,7 @@ sidebar_label: Ingest artifacts data
 sidebar_position: 20
 ---
 
-This topic provides a guide for ingesting CI/CD artifacts data into Harness SEI. 
+This topic provides a guide for ingesting CI/CD artifacts data into Harness SEI.
 
 Harness SEI provides robust support for users to push CI/CD artifacts data into the module using a specific API endpoint. This is useful for aggregating and analyzing artifacts data from any CI/CD workflow, with the help of SEI CI/CD reports.
 
@@ -17,7 +17,7 @@ The endpoint for pushing artifacts data in SEI is in the below format:
 <BASE_URL>/v1/cicd/push_artifacts
 ```
 
-Users must replace `\<BASE_URL>` with the base API URL of SEI, which varies based on the regions. For example: https://eu1.api.propelo.ai or https://api.propelo.ai
+Users must replace `<BASE_URL>` with the base API URL of SEI, which varies based on the regions. For example: https://eu1.api.propelo.ai or https://api.propelo.ai
 
 ### Usage Instructions
 
@@ -32,9 +32,9 @@ curl '<BASE_URL>/v1/cicd/push_artifacts' \
 
 Customize the command with the following parameters:
 
-   - **`\<BASE_URL>`:** The SEI platform's URL.
-   - **`\<API_KEY>`:** The API key obtained from the SEI platform.
-   - **`\<PAYLOAD>`:** A JSON payload containing the details of the artifacts, such as integration ID, repository name, job name, job run number, and artifact specifics (name, location, tag, digest, etc.).
+- **`<BASE_URL>`:** The SEI platform's URL.
+- **`<API_KEY>`:** The API key obtained from the SEI platform.
+- **`<PAYLOAD>`:** A JSON payload containing the details of the artifacts, such as integration ID, repository name, job name, job run number, and artifact specifics (name, location, tag, digest, etc.).
 
 3. Execute the cURL command in a command-line environment. Successful execution results in the artifacts being pushed to the SEI platform.
 

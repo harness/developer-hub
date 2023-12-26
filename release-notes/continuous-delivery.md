@@ -1287,7 +1287,7 @@ This release does not have new features.
 
   This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- Fixed an issue where Azure webhook triggers did not work as expected because the delegate could not parse repository URLs in the format `https://\{ORG}@dev.azure.com/\{ORG}/\{PROJECT}/_git/\{REPO}`. With this fix, the delegate can parse these URLs and Azure webhook triggers work as expected. (CDS-59023)
+- Fixed an issue where Azure webhook triggers did not work as expected because the delegate could not parse repository URLs in the format `https://{ORG}@dev.azure.com/{ORG}/{PROJECT}/_git/{REPO}`. With this fix, the delegate can parse these URLs and Azure webhook triggers work as expected. (CDS-59023)
 
   This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
@@ -1487,7 +1487,7 @@ This release does not include early access features.
   environment:
     name: coola
     identifier: coola
-    tags: \{}
+    tags: {}
     type: Production
     orgIdentifier: default
     projectIdentifier: H
@@ -1687,7 +1687,7 @@ This release does not include any early access features.
 
   This issue is fixed. The **Secret Manager** setting lists only supported connectors now.
 
-- Harness has added an access control check to the `/v2/\{planExecutionId}` API to prevent users from anonymously accessing the plan execution Id using the API. (CDS-72155)
+- Harness has added an access control check to the `/v2/{planExecutionId}` API to prevent users from anonymously accessing the plan execution Id using the API. (CDS-72155)
 - Step templates within step groups created under stage templates were not executing properly. (CDS-72124, ZD-45924, ZD-46151)
 
   A code enhancement fixed this issue.
@@ -1979,10 +1979,10 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 
   For example, the expression `<+pipeline.variables>` corresponding to the following object types are incorrectly converted to:
 
-  - Map: `\{key1=val1, key2=val2}`
+  - Map: `{key1=val1, key2=val2}`
   - List: `["a", "b", "c"]` (with spaces)
 
-  This issue is fixed and the output values for expressions are returned as JSON objects. Now, the expression in the above example for a map object returns `\{"key1":"val1","key2": "val2"}`, and a list object returns `["a","b","c"]` (without spaces).
+  This issue is fixed and the output values for expressions are returned as JSON objects. Now, the expression in the above example for a map object returns `{"key1":"val1","key2": "val2"}`, and a list object returns `["a","b","c"]` (without spaces).
 - Pipeline execution triggered using a webhook trigger failed with the error, `Error while retrieving template with identifier [%s] and versionLabel [%s], templateIdentifier, versionLabel`. (CDS-70552, ZD-45178)
   
   This issue is fixed. The error message has been improved to display the cause of pipeline execution failure. 
@@ -2165,7 +2165,7 @@ This release does not include any early access features.
 
   Here's a sample cURL command with custom webhook token:
 
-  `curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/\{customWebhookToken}/v3?accountIdentifier=<your_account_Id>&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '\{"sample_key": "sample_value"}'`
+  `curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/{customWebhookToken}/v3?accountIdentifier=<your_account_Id>&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'`
 
 - Git polling tasks for triggers are executed on the same delegate selector used in the Git connector. (CDS-58115)
 
@@ -2288,18 +2288,18 @@ This release does not include any early access features.
   Here is a sample resolved YAML:
 
   ```
-  \{
+  {
     "status": "SUCCESS",
-    "data": \{
+    "data": {
         "planExecutionId": "PimcPiwlQ56A2AhWogEM7A",
-        "executionYaml": "pipeline:\n  identifier: \"asda\"\n  name: \"asda\"\n  projectIdentifier: \"test\"\n  orgIdentifier: \"default\"\n  tags: \{}\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      name: \"sda\"\n      description: \"\"\n      spec:\n        serviceConfig:\n          serviceRef: \"ads\"\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              variables: []\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    connectorRef: \"Test\"\n                    imagePath: \"library/nginx\"\n                    tag: \"<+trigger.artifact.build>\"\n              manifests: []\n        infrastructure:\n          environmentRef: \"wew\"\n          infrastructureDefinition:\n            type: \"KubernetesDirect\"\n            spec:\n              connectorRef: \"ad\"\n              namespace: \"asd\"\n              releaseName: \"release-<+INFRA_KEY>\"\n          allowSimultaneousDeployments: false\n        execution:\n          steps:\n          - step:\n              identifier: \"sad\"\n              type: \"ShellScript\"\n              name: \"sad\"\n              spec:\n                shell: \"Bash\"\n                onDelegate: true\n                source:\n                  type: \"Inline\"\n                  spec:\n                    script: \"echo \\\"test\\\"\"\n                environmentVariables: []\n                outputVariables: []\n                executionTarget: \{}\n              timeout: \"10m\"\n          rollbackSteps: []\n      tags: \{}\n      failureStrategies:\n      - onFailure:\n          errors:\n          - \"AllErrors\"\n          action:\n            type: \"StageRollback\"\n",
+        "executionYaml": "pipeline:\n  identifier: \"asda\"\n  name: \"asda\"\n  projectIdentifier: \"test\"\n  orgIdentifier: \"default\"\n  tags: {}\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      name: \"sda\"\n      description: \"\"\n      spec:\n        serviceConfig:\n          serviceRef: \"ads\"\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              variables: []\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    connectorRef: \"Test\"\n                    imagePath: \"library/nginx\"\n                    tag: \"<+trigger.artifact.build>\"\n              manifests: []\n        infrastructure:\n          environmentRef: \"wew\"\n          infrastructureDefinition:\n            type: \"KubernetesDirect\"\n            spec:\n              connectorRef: \"ad\"\n              namespace: \"asd\"\n              releaseName: \"release-<+INFRA_KEY>\"\n          allowSimultaneousDeployments: false\n        execution:\n          steps:\n          - step:\n              identifier: \"sad\"\n              type: \"ShellScript\"\n              name: \"sad\"\n              spec:\n                shell: \"Bash\"\n                onDelegate: true\n                source:\n                  type: \"Inline\"\n                  spec:\n                    script: \"echo \\\"test\\\"\"\n                environmentVariables: []\n                outputVariables: []\n                executionTarget: {}\n              timeout: \"10m\"\n          rollbackSteps: []\n      tags: {}\n      failureStrategies:\n      - onFailure:\n          errors:\n          - \"AllErrors\"\n          action:\n            type: \"StageRollback\"\n",
         "inputYaml": "pipeline:\n  identifier: \"asda\"\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      spec:\n        serviceConfig:\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    tag: \"<+trigger.artifact.build>\"\n",
         "resolvedYaml" "pipeline:\n  identifier: \"asda\"\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      spec:\n        serviceConfig:\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    tag: \"1.23-perl"\n",
-        "triggerPayload": \{
+        "triggerPayload": {
             "type": "ARTIFACT",
-            "headers": \{},
+            "headers": {},
             "sourcetype": "CUSTOM_REPO",
-            "artifactdata": \{
+            "artifactdata": {
                 "build": "1.23-perl"
             },
             "version": 0
@@ -2347,7 +2347,7 @@ This release does not include any early access features.
   identifier: stage3Trigger
   enabled: true
   description: ""
-  tags: \{}
+  tags: {}
   stagesToExecute:
     - stage3
   orgIdentifier: NgTriggersOrg
@@ -2983,7 +2983,7 @@ This release does not include any early access features.
   type: StepGroup
   projectIdentifier: projtest
   orgIdentifier: default
-  tags: \{}
+  tags: {}
   spec:
     stageType: Deployment
     steps:
@@ -3618,7 +3618,7 @@ This release does not include early access features.
 
 - Trigger name and identifier validation is in UI but not YAML. (CDS-52175)
 
-  Now the trigger YAML name value is validated with the pattern `^[a-zA-Z_][-0-9a-zA-Z_\\s]\{0,127}$` and the identifier is validated the pattern `^[a-zA-Z_][0-9a-zA-Z_]\{0,127}$`.
+  Now the trigger YAML name value is validated with the pattern `^[a-zA-Z_][-0-9a-zA-Z_\\s]{0,127}$` and the identifier is validated the pattern `^[a-zA-Z_][0-9a-zA-Z_]{0,127}$`.
 
 - A NullPointerException appears when the temporary file (`tmp`) cannot be created during Shell Script step execution. (CDS-51521)
 
@@ -5056,11 +5056,11 @@ The ability to provision resources in a CD stage's deployment infrastructure usi
 
 - ServiceNow Change Window details not showing up on get approvals API (CDS-43787)
 
-  API GET approvals/\{approvalID} was not giving change Window Spec details.
+  API GET approvals/{approvalID} was not giving change Window Spec details.
 
   It was missing from wrapper classes returning the persistent entity.
 
-  This issue has been resolved. API GET approvals/\{approvalID} now returns change Window Spec details.
+  This issue has been resolved. API GET approvals/{approvalID} now returns change Window Spec details.
 
 - Remove validation for artifact Path in Nexus3 (CDS-43778)
 

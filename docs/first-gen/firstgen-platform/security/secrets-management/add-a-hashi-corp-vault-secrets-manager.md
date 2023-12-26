@@ -12,9 +12,9 @@ This content is for Harness [FirstGen](../../../../get-started/harness-first-ge
 
 ### Before You Begin
 
-* See [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
-* See [Secrets Management Overview](secret-management.md).
-* Make sure that the Harness Delegate is able to connect to the Vault URL.
+- See [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
+- See [Secrets Management Overview](secret-management.md).
+- Make sure that the Harness Delegate is able to connect to the Vault URL.
 
 ### Step 1: Configure Secrets Manager
 
@@ -22,10 +22,10 @@ This content is for Harness [FirstGen](../../../../get-started/harness-first-ge
 2. Click **Configure Secrets Managers**. In the resulting **Secrets Managers** page, the **Status** column indicates the **Default** provider.
 3. Click **Add Secrets Manager**. The **Configure Secrets Manager** dialog appears.
 4. Select **HashiCorp Vault** or **HashiCorp Vault Secrets Engine - SSH** from the drop down list.
-	1. For HashiCorp Vault, enter the following information — **Display Name,** **Vault URL,** and **Base Secret Path.**  
-	For more information, see [Vault documentation](https://www.vaultproject.io/docs/index.html).
-	2. For **HashiCorp Vault Secrets Engine - SSH**, in **Vault URL**, enter the Vault URL for the Vault server running the Secrets Engine.  
-	See [Add HashiCorp Vault Signed SSH Certificate Keys](add-hashi-corp-vault-signed-ssh-certificate-keys.md).
+   1. For HashiCorp Vault, enter the following information — **Display Name,** **Vault URL,** and **Base Secret Path.**  
+      For more information, see [Vault documentation](https://www.vaultproject.io/docs/index.html).
+   2. For **HashiCorp Vault Secrets Engine - SSH**, in **Vault URL**, enter the Vault URL for the Vault server running the Secrets Engine.  
+      See [Add HashiCorp Vault Signed SSH Certificate Keys](add-hashi-corp-vault-signed-ssh-certificate-keys.md).
 5. Select the **Delegate Selector** under Authentication.
 6. Select the Authentication Type — **Token,** **App Role,** **Vault Agent, or** **Kubernetes Auth**.
 
@@ -47,18 +47,18 @@ For Harness, the **Token** option requires [periodic tokens](https://www.vaultpr
 
 To create a periodic token, make sure to specify a period in the token creation command:
 
-
 ```
 vault token create -policy=harness -period=768h
 ```
+
 Next, use the new token with Harness.
 
 If you want to verify the renewal manually, use the command:
 
-
 ```
 vault token lookup <token_id>
 ```
+
 You will see an additional period field specifying the period of the token. To verify renewal, wait until the period expires and run the lookup command again.
 
 ### Option: App Role Method
@@ -71,7 +71,7 @@ The SecretId should not expire and it should be valid until it is manually revok
 
 For more information, see [RoleID](https://www.vaultproject.io/docs/auth/approle.html#roleid) and [Authenticating Applications with HashiCorp Vault AppRole](https://www.hashicorp.com/blog/authenticating-applications-with-vault-approle) from HashiCorp.
 
-If you encounter errors, setting [token\_num\_uses](https://www.vaultproject.io/api-docs/auth/approle#token_num_uses) to `0` can often resolve problems.
+If you encounter errors, setting [token_num_uses](https://www.vaultproject.io/api-docs/auth/approle#token_num_uses) to `0` can often resolve problems.
 
 #### Permissions
 
@@ -79,32 +79,32 @@ The Vault AppRole ID or the Periodic Token used in either of the authentication 
 
 In the policy examples below: If you've created a [Read-only Vault Secrets Manager](#read_only_vault), this secrets manager needs only read and list permissions on Vault. It does not need—and cannot assume—create, update, or delete permissions.If the secrets are in the Secret Engine named “secret”, the following permissions are required in the policy.
 
-
 ```
-path "secret/*" {  
-    capabilities = ["create", "update", "list", "read", "delete"]  
+path "secret/*" {
+    capabilities = ["create", "update", "list", "read", "delete"]
 }
 ```
+
 If the secrets are in a subfolder, such as secrets/harness, the policy will look like this:
 
-
 ```
-path "secret/harness/*" {  
-capabilities = ["create", "list", "read", "update", "delete"]  
-}  
-path "secret/harness" {  
-   capabilities = ["list", "read"]  
+path "secret/harness/*" {
+capabilities = ["create", "list", "read", "update", "delete"]
+}
+path "secret/harness" {
+   capabilities = ["list", "read"]
 }
 ```
+
 These examples apply only for a **v1** secret engine. If you are planning to use a secret engine with version 2 (versioned secret engine), then the policies are different as explained [here](https://www.vaultproject.io/docs/secrets/kv/kv-v2). Go through this link to understand the correct permissions required for your use case.If the Vault Secrets Manager needs to renew tokens, the following permissions are needed:
 
-
 ```
-path "auth/token/renew-self"  
-{  
- capabilities = ["read", "update"]  
+path "auth/token/renew-self"
+{
+ capabilities = ["read", "update"]
 }
 ```
+
 ### Option: Vault Agent
 
 For a detailed walkthrough, see [How to integrate Harness with Vault using Vault Agent (Delegate)](https://community.harness.io/t/hashicorp-vault-2022-review-how-to-integrate-harness-with-vault-using-vault-agent-delegate/11710) from Harness Community.This option enables the Harness Vault Secrets Manager to authenticate with the Auto-Auth functionality of the [Vault Agent](https://www.vaultproject.io/docs/agent/autoauth).
@@ -114,7 +114,6 @@ To authenticate with Vault Agent, make sure you have configured it on the requir
 In the **Sink Path** field, enter any sink path you have in your Vault Agent Configuration. This is the path of the encrypted file with tokens. The specified Delegate reads this file through file protocol (file://).
 
 ![](./static/add-a-hashi-corp-vault-secrets-manager-62.png)
-
 
 ### Option: Kubernetes Auth
 
@@ -141,12 +140,12 @@ Once you have entered the required fields, you can choose to **Fetch the Secret 
 
 If you want Harness to automatically fetch secret engines, include this read permission for **sys/mounts** In the ACL policy.
 
-
 ```
-path "sys/mounts"{  
- capabilities = ["read"]  
+path "sys/mounts"{
+ capabilities = ["read"]
 }
 ```
+
 Click **Fetch Secret Engine**.
 
 Harness will populate the Secret Engine drop-down with the list of engines and their versions.
@@ -174,21 +173,20 @@ The event for creating the dummy secret this will show up on [Audit Trail](/docs
 
 v2 Secret Engine:
 
-`\<SECRET_ENGINE_NAME>/data/\<BASE_PATH>/harness_vault_validation#value`
+`<SECRET_ENGINE_NAME>/data/\<BASE_PATH>/harness_vault_validation#value`
 
 v1 Secret Engine:
 
-`\<SECRET_ENGINE_NAME>/\<BASE_PATH>/harness_vault_validation#value`
+`<SECRET_ENGINE_NAME>/\<BASE_PATH>/harness_vault_validation#value`
 
 The secret can fail because of various reasons.
 
 1. Using the Token/App Role, the Vault authentication is not successful.
 2. The following **permission** is not available in any of the policies attached to the Token/App Role. If this permission is not available, the user will not be able to fetch the list of secret engines from the customer vault and Harness will show a single option of Secret Engine named **“secret”** with version 2 which might be incorrect for the customer.Make sure to add the permission to a policy attached to the Token/App Role as follows:
 
-
 ```
-         path “sys/mounts”{  
-            capabilities = ["read"]  
+         path “sys/mounts”{
+            capabilities = ["read"]
             }    
 ```
 
@@ -207,12 +205,11 @@ If you select **Read-only Vault**, there are several limitations on the resultin
 
 Also, a read-only Harness Vault Secrets Manager:
 
-* Cannot be used in the **Add Encrypted File** dialog.
-* Cannot create inline secrets in the **Add Encrypted Text** modal.
-* Cannot migrate (deprecate) its secrets to another secrets manager.
-* Cannot have secrets migrated to it from another secrets manager.
+- Cannot be used in the **Add Encrypted File** dialog.
+- Cannot create inline secrets in the **Add Encrypted Text** modal.
+- Cannot migrate (deprecate) its secrets to another secrets manager.
+- Cannot have secrets migrated to it from another secrets manager.
 
 ### Step 5: Usage Scope
 
 See [Scope Secret Managers to Applications and Environments](scope-secret-managers-to-applications-and-environments.md).
-
