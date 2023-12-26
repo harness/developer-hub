@@ -33,7 +33,7 @@ x
 
 #### Deprecations
 
-Documentation for the previously-deprecated Service Dependency step has been removed. The Service Dependency step was deprecated in February 2023 in favor of the [Background step](./background-step-settings.md).
+Documentation for the previously-deprecated Service Dependency step has been removed. The Service Dependency step was deprecated in February 2023 in favor of the [Background step](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings).
 
 #### Fixed issues
 
