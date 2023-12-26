@@ -57,7 +57,8 @@ import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
     - 1.16
     - 1.27
     - We support what each of the Cloud Providers support. We recommend users to keep their binary versions up to date.
-    - By default Harness ships with kubectl client - 1.25
+    - By default, Harness ships with kubectl client - 1.24.3
+    - Harness has certified - 1.25, 1.26, 1.27 versions of kubectl, users will need to install the respective client version the delegate for Harness to leverage it.
   - Tooling:
     - OpenShift - oc client binary
     - Kustomize - kustomize binary
@@ -133,6 +134,8 @@ The following versions are tested and supported for Kubernetes Canary, Rolling, 
 - 1.24.3
 - 1.24.9
 - 1.25.6
+- 1.26.0
+- 1.27.0
 
 For details on other tools and versions included in Harness, see [Delegate-required SDKs](/docs/platform/delegates/delegate-reference/delegate-required-sdks).
 
