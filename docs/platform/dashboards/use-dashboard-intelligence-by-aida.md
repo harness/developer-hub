@@ -48,11 +48,14 @@ Dashboard Intelligence by AIDA infers the most relevant data visualization for t
 
 Harness currently supports the following visualization types:
 
-- Bar Chart
-- Column Chart
-- Line Chart
-- Pie Chart
+**Charts**
+- Bar
+- Column
+- Line
+- Pie
 - Scatterplot
+
+**Tables**
 - Single Value
 - Table
 
