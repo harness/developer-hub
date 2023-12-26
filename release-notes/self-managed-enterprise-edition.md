@@ -228,7 +228,7 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
   - You configure the stage to execute only if a JEXL condition provided at runtime evaluates to true.
   - You create an input set that does not provide the stage with a JEXL condition for evaluation.
   
-  When stage execution fails, the following error is displayed: "Error evaluating expression [<+OnPipelineSuccess> && (<+input>)]: Expression evaluation failed" (CDS-82350, ZD-52689) 
+  When stage execution fails, the following error is displayed: `Error evaluating expression [<+OnPipelineSuccess> && (<+input>)]: Expression evaluation failed`. (CDS-82350, ZD-52689) 
 
   This issue has been fixed.
 
