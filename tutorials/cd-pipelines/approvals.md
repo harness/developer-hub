@@ -15,10 +15,10 @@ description: Set-up approvals in CD Pipeline.
   target="_self"
 />
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 This tutorial demonstrates how to use approvals in Harness CD pipelines. 
 
@@ -35,19 +35,19 @@ Before you start this tutorial, you need to have a **Harness CD pipeline** with 
 **Harness User Group:** This tutorial uses [Harness User Groups](/docs/platform/role-based-access-control/add-user-groups/) to manage user access. Create a user group named `approval-demo` at the account level, and add yourself as a user. 
 
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Manual Approval">
-```
+
 
 
 You can specify Harness User Group(s) to approve or reject a Pipeline at any point in its execution. During deployment, the User Group members use Harness Manager to approve or reject the Pipeline deployment manually.
 
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Approval Stage">
-```
+
 Approvals can be added in between Stages to prevent the Pipeline execution from proceeding without an approval.
 
 ## Add an Approval stage
@@ -63,12 +63,12 @@ Approvals can be added in between Stages to prevent the Pipeline execution from 
    <docimage path={require('./static/harness-cicd-tutorial/manualapprovalstage.png')} />
 
 3. Select **Save**, and then select **Run** to run the pipeline. 
-4. As an approver, you'll receive notification on the **Console Log** pane under the **Logs** once the pipeline is running to approve or reject the pipeline. Click on **Approve** to run the pipeline. 
+4. As an approver, you'll receive notification on the **Console Log** pane under the **Logs** once the pipeline is running to approve or reject the pipeline. Click on **Approve** to run the pipeline.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Approval Steps">
-```
+
 An Approval stage enables an approver to approve or reject the step, stopping the pipeline. The approver can also add comments and define variables for use by subsequent approvers and steps.
 
 For this tutorial, we will use the visual view of the pipeline. 
@@ -93,15 +93,15 @@ Approval steps should not be added to run in parallel with other steps, includin
 
 :::
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
 
-```mdx-code-block
+
+
 </TabItem>
 <TabItem value="JIRA Approval">
-```
+
 :::note
 This feature is behind a Feature Flag and is available only to paid customers. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
@@ -157,13 +157,13 @@ Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `D
 4. Similarly, follow the steps [here](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages#add-a-jira-update-step), and update the **Jira Update** step. 
 5. For the **Jira Approval** step, follow the instructions above in [Add the JIRA Approval step](#add-the-jira-approval-step). 
 6. Drag the deploy-guestbook demo stage to the right of the jira-approval stage. 
-7. **Save** and **Run** the pipeline. 
+7. **Save** and **Run** the pipeline.
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="ServiceNow Approval">
-```
+
 :::info
 
 This feature is behind a Feature Flag and is available only to our paid customers. 
@@ -215,10 +215,10 @@ The ServiceNOw API only allows datetime and time values in the **UTC timezone**.
 
 4. Drag the **deploy-guestbook** stage to the right of the **jira-approval** stage. 
 
-5. Select **Save**, and then select **Run** to run the pipeline. 
+5. Select **Save**, and then select **Run** to run the pipeline.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 

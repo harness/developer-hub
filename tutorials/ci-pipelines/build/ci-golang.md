@@ -6,11 +6,11 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/go
 ---
 
-```mdx-code-block
+
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <ctabanner
   buttonText="Learn More"
@@ -35,10 +35,10 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 If necessary, add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install any dependencies.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 ```yaml
               - step:
@@ -51,11 +51,11 @@ If necessary, add a [Run step](/docs/continuous-integration/use-ci/run-ci-script
                       go get example.com/my-go-module
 ```
 
-```mdx-code-block
+
 </TabItem>
 
 <TabItem value="Self-hosted">
-```
+
 
 ```yaml
               - step:
@@ -69,19 +69,19 @@ If necessary, add a [Run step](/docs/continuous-integration/use-ci/run-ci-script
                       go get example.com/my-go-module
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Cache dependencies
 
 Add caching to your stage.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 Cache your Go module dependencies with [**Cache Intelligence**](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec`.
 
@@ -92,10 +92,10 @@ Cache your Go module dependencies with [**Cache Intelligence**](/docs/continuous
             enabled: true
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 With self-hosted build infrastructures, you can:
 
@@ -164,19 +164,19 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 </details>
 
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Build and run tests
 
 Add [**Run**](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) steps to build and run your tests.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 ```yaml
               - step:
@@ -197,10 +197,10 @@ Add [**Run**](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settin
                       go test -v ./...
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 ```yaml
               - step:
@@ -223,10 +223,10 @@ Add [**Run**](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settin
                       go test -v ./...
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Visualize test results
 
@@ -236,10 +236,10 @@ You can use [go-junit-report](https://github.com/jstemmer/go-junit-report) to ou
 
 For your pipeline to produce test reports, you need to modify the **Run** step that runs your tests. Make sure the `command` generates JUnit XML reports and add the `reports` specification.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 ```yaml
               - step:
@@ -260,10 +260,10 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
                           - report.xml
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 ```yaml
               - step:
@@ -284,10 +284,10 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
                           - report.xml
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Test splitting
 
@@ -295,10 +295,10 @@ You can use [test splitting (parallelism)](/docs/continuous-integration/use-ci/r
 
 ## Specify version
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 Go is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
@@ -354,10 +354,10 @@ If your application requires a specific version of Go, add a **Run** step to ins
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 Specify the desired [Golang Docker image](https://hub.docker.com/_/golang) tag in your steps. There is no need for a separate install step when using Docker.
 
@@ -410,19 +410,19 @@ Specify the desired [Golang Docker image](https://hub.docker.com/_/golang) tag i
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Full pipeline examples
 
 The following full pipeline examples are based on the partial examples above.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
@@ -577,10 +577,10 @@ pipeline:
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector), Kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
@@ -715,10 +715,10 @@ pipeline:
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Next steps
 

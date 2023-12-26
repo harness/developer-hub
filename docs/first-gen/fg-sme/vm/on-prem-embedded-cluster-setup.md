@@ -388,9 +388,9 @@ When you are finished pre-flight checks, click **Deploy and** **Continue**.
 
 Harness is deployed in a few minutes.
 
-It can take up to 30 minutes when installing the demo version on a system with the minimum recommended specs.In a new browser tab, go to the following URL, replacing `<LB_URL>` with the URL you entered in the **Application URL** setting in the KOTS admin console:
+It can take up to 30 minutes when installing the demo version on a system with the minimum recommended specs.In a new browser tab, go to the following URL, replacing `\<LB_URL>` with the URL you entered in the **Application URL** setting in the KOTS admin console:
 
-`<LB_URL>/auth/#/signup`
+`\<LB_URL>/auth/#/signup`
 
 For example:
 

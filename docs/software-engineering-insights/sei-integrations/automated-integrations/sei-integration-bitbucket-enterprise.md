@@ -18,15 +18,15 @@ The following permissions and settings are required to use the SEI Bitbucket int
 
 ## Configure the integration
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="private-onprem" label="Private On-Prem" default>
-```
+
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **Integrations** under **Settings**.
@@ -67,14 +67,13 @@ integrations:
 
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="public-onprem" label="Public On-Prem">
-```
+
 The steps for configuring the public on-premises integration for Bitbucket is similar to the private on-premises integration, with the exception of using satellite to communicate with the Bitbucket server. Instead, the public on-premises integration directly uses the credentials provided by the user to authenticate with the Bitbucket server.
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```

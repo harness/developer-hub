@@ -14,7 +14,7 @@ Harness orchestrates the container in your cluster as part of your Harness deplo
 
 Typically, the primary deployment operations are handled by the default Harness deployment steps, such as the [Kubernetes Rollout step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollout-step).
 
-The Container step can be used for secondary options. There are several secondary scripts that DevOps teams commonly run in a Kubernetes container as part of a CD pipeline. These scripts can be used to perform various tasks such as configuration, data migration, database schema updates, and more. 
+The Container step can be used for secondary options. There are several secondary scripts that DevOps teams commonly run in a Kubernetes container as part of a CD pipeline. These scripts can be used to perform various tasks such as configuration, data migration, database schema updates, and more.
 
 <details>
 <summary>Common secondary script examples</summary>
@@ -177,14 +177,14 @@ Currently, Harness can fetch containers from the following registries:
 
 You add the Container step in the CD stage **Execution** section. The Container step is supported in all the deployment strategies (rolling, blue green canary, custom). This step requires delegate version > 1.0.780xx.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. In the CD stage **Execution** section, select **Add Step**, and then select **Container**.
 2. Enter the following settings and select **Apply Changes**.
@@ -326,10 +326,10 @@ password=$DB_PASSWORD
 
 For example, you can set **Value** as an expression and reference the value of some other setting in the stage or pipeline.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 1. In **Pipeline Studio**, select **YAML**
 2. Paste the following YAML example and select **Save**:
@@ -358,10 +358,10 @@ For example, you can set **Value** as an expression and reference the value of s
                   timeout: 1d
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Select the Operating System
 

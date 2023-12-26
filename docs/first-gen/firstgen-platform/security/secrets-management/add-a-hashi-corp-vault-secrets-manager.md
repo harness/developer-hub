@@ -174,11 +174,11 @@ The event for creating the dummy secret this will show up on [Audit Trail](/docs
 
 v2 Secret Engine:
 
-`<SECRET_ENGINE_NAME>/data/<BASE_PATH>/harness_vault_validation#value`
+`\<SECRET_ENGINE_NAME>/data/\<BASE_PATH>/harness_vault_validation#value`
 
 v1 Secret Engine:
 
-`<SECRET_ENGINE_NAME>/<BASE_PATH>/harness_vault_validation#value`
+`\<SECRET_ENGINE_NAME>/\<BASE_PATH>/harness_vault_validation#value`
 
 The secret can fail because of various reasons.
 

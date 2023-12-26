@@ -8,11 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import image_1 from './static/delegate-installation-overview-17.png'
 import image_2 from './static/delegate-installation-overview-18.png'
 import image_3 from './static/delegate-installation-overview-19.png'
-```
+
 
 This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/delegates/delegate-concepts/delegate-overview.md).This topic discusses general Delegate installation information. For Delegate requirements and limitations, see [Delegate Requirements and Limitations](delegate-requirements-and-limitations.md).
 
@@ -74,24 +74,24 @@ All Delegates are identified by your Harness account ID. But, depending on the t
 
 For Delegates running on virtual machines, such as the Shell Script and Docker Delegates running on an AWS EC2 instance, the Delegate is identified by the combination of **Hostname** and **IP**:
 
-```mdx-code-block
+
 <img src={image_1} alt="A screenshot of the hostname and IP." height="300" width="400" />
-```
+
 
 
 Therefore, if the hostname or IP changes on the VM, the Delegate cannot be identified by the Harness Manager. The IP used is the private IP. The Delegate connects to the Harness Manager, but the Harness Manager does not initiate a connection to the Delegate, and so the public IP address of the Delegate is not needed, typically.
 
 For Kubernetes and ECS Delegates, the IP can change if a pod is rescheduled, for example. Consequently, Kubernetes Delegates are identified by a suffix using a unique six letter code in their **Hostname** (the first six letters that occur in your account ID):
 
-```mdx-code-block
+
 <img src={image_2} alt="" height="100" width="400" />
-```
+
 
 ECS Delegates are identified by the **Hostname** entered when the ECS Delegate Task Spec is downloaded:
 
-```mdx-code-block
+
 <img src={image_3} alt="" height="300" width="400" />
-```
+
 
 
 ## Harness Delegate Link TTL

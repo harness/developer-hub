@@ -69,9 +69,9 @@ This section explains steps to move an [inline pipeline](../pipelines/add-a-stag
    ![](../git-experience/static/move-pipeline-togit.png)
 
 5. In **Git Connector**, select or create a Git Connector to the repo for your Project. For more information, see [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
-   
-   <details>
-   <summary> IMPORTANT </summary>
+
+<details>
+<summary> IMPORTANT </summary>
 
    Connector must use the Enable API access option and Token
    The Connector must use the Enable API access option and Username and Token authentication. Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​
@@ -82,7 +82,7 @@ This section explains steps to move an [inline pipeline](../pipelines/add-a-stag
 
    ![](./static/configure-git-experience-for-harness-entities-42.png)
 
-   </details>
+</details>
    
 6. In **Repository**, select your repository. There are only a few repositories listed here, so if yours isn't listed, enter its name.
    

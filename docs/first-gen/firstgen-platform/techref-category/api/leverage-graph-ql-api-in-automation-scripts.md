@@ -256,7 +256,7 @@ The last Pipeline execution deployment is displayed in epoch time.
 
 ## Step 2: Build a Script
 
-Here is a sample script that runs the curl command and allows you to check deployment status in the CI tool using an account ID (`<YOUR_ACCOUNT_ID>`) and Harness [API key](../../security/access-management-howtos/api-keys.md) (`<API_KEY>`).
+Here is a sample script that runs the curl command and allows you to check deployment status in the CI tool using an account ID (`\<YOUR_ACCOUNT_ID>`) and Harness [API key](../../security/access-management-howtos/api-keys.md) (`\<API_KEY>`).
 
 
 ```

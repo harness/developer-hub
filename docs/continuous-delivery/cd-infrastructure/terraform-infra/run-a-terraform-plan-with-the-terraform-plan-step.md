@@ -228,19 +228,19 @@ Here's an example script where a local value names two workspaces, **default** a
 
 
 ```json
-locals {  
-  counts = {  
+locals \{  
+  counts = \{  
       "default"=1  
       "production"=3  
   }  
 }  
   
-resource "aws_instance" "my_service" {  
+resource "aws_instance" "my_service" \{  
   ami="ami-7b4d7900"  
   instance_type="t2.micro"  
-  count="${lookup(local.counts, terraform.workspace, 2)}"  
-  tags {  
-         Name = "${terraform.workspace}"  
+  count="$\{lookup(local.counts, terraform.workspace, 2)}"  
+  tags \{  
+         Name = "$\{terraform.workspace}"  
     }  
 }
 ```
@@ -279,14 +279,14 @@ When configured the optional configuration for AWS Connector these fields can be
       configuration:
         type: Inline
         spec:
-          workspace: <+input>
-          configFiles: {}
+          workspace: \<+input>
+          configFiles: \{}
           providerCredential:
             type: Aws
             spec:
-              connectorRef: <+input>
-              region: <+input>
-              roleArn: <+input>
+              connectorRef: \<+input>
+              region: \<+input>
+              roleArn: \<+input>
     timeout: 10m
 ```
 
@@ -355,25 +355,25 @@ main.tf (note the empty backend S3 block):
 
 
 ```json
-variable "global_access_key" {type="string"}  
-variable "global_secret_key" {type="string"}  
+variable "global_access_key" \{type="string"}  
+variable "global_secret_key" \{type="string"}  
   
-variable "env" {  
+variable "env" \{  
     default= "test"  
 }  
-provider "aws" {  
-  access_key = "${var.global_access_key}"  
-  secret_key = "${var.global_secret_key}"  
+provider "aws" \{  
+  access_key = "$\{var.global_access_key}"  
+  secret_key = "$\{var.global_secret_key}"  
   region = "us-east-1"  
       
 }  
   
-resource "aws_s3_bucket" "bucket" {  
+resource "aws_s3_bucket" "bucket" \{  
   bucket = "prannoy-test-bucket"  
 }  
   
-terraform {  
-backend "s3" {  
+terraform \{  
+backend "s3" \{  
       
   }  
 }
@@ -398,8 +398,8 @@ For example, if your config.tf file has the following backend:
 
 
 ```json
-terraform {
-  backend "gcs" {
+terraform \{
+  backend "gcs" \{
     bucket  = "tf-state-prod"
     prefix  = "terraform/state"
     }
@@ -419,8 +419,8 @@ prefix  = "terraform/state"
 In your Terraform .tf config file, only the definition of the Terraform backend is required:
 
 ```json
-terraform {  
-  backend "gcs" {}
+terraform \{  
+  backend "gcs" \{}
 }
 ```
 
@@ -453,24 +453,24 @@ Enable this setting to use a JSON representation of the Terraform plan that is i
 
 In subsequent **Execution** steps, such as a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step, you can reference the Terraform plan using this expression format:
 
-`<+execution.steps.[Terraform Plan step Id].plan.jsonFilePath>`
+`\<+execution.steps.[Terraform Plan step Id].plan.jsonFilePath>`
 
 For example, if you had a Terraform Plan step with the [Id](/docs/platform/References/entity-identifier-reference) `Plan_Step`, you could use the expression in a Shell Script step like this:
 
 
 ```bash
-cat "<+execution.steps.Plan_Step.plan.jsonFilePath>"
+cat "\<+execution.steps.Plan_Step.plan.jsonFilePath>"
 ```
 
 If the Terraform Plan step is located in **Dynamic Provisioning** steps in **Infrastructure**, and the Terraform Plan step Id is `TfPlan`, then expression is:
 
-`<+infrastructure.infrastructureDefinition.provisioner.steps.TfPlan.plan.jsonFilePath>`
+`\<+infrastructure.infrastructureDefinition.provisioner.steps.TfPlan.plan.jsonFilePath>`
 
 For information on Terraform Plan in the **Dynamic Provisioning** steps in **Infrastructure**, see [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform).JSON representation of Terraform plan can be accessed across different stages as well. In this case, the FQN for the step is required in the expression.
 
 For example, if the Terraform Plan step with the Id `TfPlan` is in the **Execution** steps of a stage with the Id `TfStage`, then the expression is like this:
 
-`<+pipeline.stages.TfStage.spec.execution.steps.TfPlan.plan.jsonFilePath>`
+`\<+pipeline.stages.TfStage.spec.execution.steps.TfPlan.plan.jsonFilePath>`
 
 ### Scope of Expression
 
@@ -490,21 +490,21 @@ Once you enable this option and run a CD stage with the Terraform Plan step, you
 
 The format for the expression is:
 - **humanReadableFilePath**:
-  - `<+terraformPlanHumanReadable."pipeline.stages.[stage Id].spec.execution.steps.[step Id].tf_planHumanReadable">`
+  - `\<+terraformPlanHumanReadable."pipeline.stages.[stage Id].spec.execution.steps.[step Id].tf_planHumanReadable">`
 
 For example, if the Terraform Plan stage and step Ids are `tf` then you would get the following expressions:
 
 - **humanReadableFilePath**:
-  - `<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">`
+  - `\<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">`
 
 Next, you can enter those expressions in a subsequent [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step and Harness will resolve them to the human-readable paths and JSON.
 
 For example, here is a script using the variables:
 
 ```bash
-echo "<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">"
+echo "\<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">"
 echo "Plan is"
-cat "<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">"
+cat "\<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">"
 ```
 Note that if there are no changes in the plan, the standard Terraform message is shown in the Shell Step's logs:
 
@@ -558,13 +558,13 @@ If you use the `-detailed-exitcode` option in a step that follows the Harness Te
 Exit codes are available as Terraform Plan step outputs that can be accessed using expressions with the following format:
 
 ```
-<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.plan.detailedExitCode>
+\<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.plan.detailedExitCode>
 ```
 
 For example:
 
 ```
-<+pipeline.stages.TfStage.spec.execution.steps.TfPlan.plan.detailedExitCode>
+\<+pipeline.stages.TfStage.spec.execution.steps.TfPlan.plan.detailedExitCode>
 ```
 
 ## Working directory cleanup

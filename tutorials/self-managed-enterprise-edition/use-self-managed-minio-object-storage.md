@@ -278,7 +278,7 @@ To configure your MinIO servers, do the following:
 
 To test your MinIO connectivity, do the following:
 
-1. Go to `http://<NGINX_VM_EXTERNAL_IP>`, and sign in using the username and password in your `/etc/default/minio` file.
+1. Go to `http://\<NGINX_VM_EXTERNAL_IP>`, and sign in using the username and password in your `/etc/default/minio` file.
 
 2. Create a bucket and upload a test file.
 

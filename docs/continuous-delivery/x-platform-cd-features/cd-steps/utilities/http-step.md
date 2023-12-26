@@ -460,7 +460,7 @@ You can add multiple steps to the group quickly using YAML. Just paste additiona
                       outputVariables: []  
                   timeout: 10s  
   failureStrategies: []  
-  spec: {}  
+  spec: \{}  
 ...
 ```
 

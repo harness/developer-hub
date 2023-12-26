@@ -19,17 +19,17 @@ To use the SEI SonarQube integration you need a SonarQube API token.
 * For instructions on creating API tokens, go to the SonarQube documentation on [Generating and using tokens](https://docs.sonarsource.com/sonarqube/9.7/user-guide/user-account/generating-and-using-tokens/).
 * Copy the key somewhere that you can retrieve it when you configure the integration.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 ## Configure the integration
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
-```
+
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Integrations** under **Data Settings**.
@@ -46,10 +46,10 @@ import TabItem from '@theme/TabItem';
 
 To integrate with the on-premises SonarQube instances, you must use an [Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="satellite" label="Satellite">
-```
+
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the SonarQube server.
 
@@ -76,7 +76,6 @@ integrations:
 
 If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```

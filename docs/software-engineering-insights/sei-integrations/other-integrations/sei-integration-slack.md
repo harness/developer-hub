@@ -13,24 +13,24 @@ SEI uses OAuth to connect to Slack.
 
 You can either use the built-in Slack integration, or create your own Slack app.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="integration" label="Slack integration" default>
-```
+
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **Slack** integration, and select **Install**.
 4. Configure the integration. You must use OAuth authentication.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="app" label="Slack app">
-```
+
 
 1. Create a [Slack app](https://api.slack.com/start/overview).
 2. Under **Interactivity & Shortcuts**:
@@ -67,7 +67,7 @@ import TabItem from '@theme/TabItem';
    * `users:read`: View people in a workspace.
    * `users:read.email`: View email addresses of people in a workspace.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+

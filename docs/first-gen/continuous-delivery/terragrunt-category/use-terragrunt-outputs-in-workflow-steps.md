@@ -1,6 +1,6 @@
 ---
 title: Use Terragrunt Outputs in Workflow Steps
-description: Terragrunt outputs can be used in Workflow steps by using the expression ${terragrunt.output_name}.
+description: Terragrunt outputs can be used in Workflow steps by using the expression $\{terragrunt.output_name}.
 sidebar_position: 80
 helpdocs_topic_id: sd6hbtqcbv
 helpdocs_category_id: noj782z9is

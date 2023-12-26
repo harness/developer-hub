@@ -17,7 +17,7 @@ The endpoint for pushing artifacts data in SEI is in the below format:
 <BASE_URL>/v1/cicd/push_artifacts
 ```
 
-Users must replace `<BASE_URL>` with the base API URL of SEI, which varies based on the regions. For example: https://eu1.api.propelo.ai or https://api.propelo.ai
+Users must replace `\<BASE_URL>` with the base API URL of SEI, which varies based on the regions. For example: https://eu1.api.propelo.ai or https://api.propelo.ai
 
 ### Usage Instructions
 
@@ -32,9 +32,9 @@ curl '<BASE_URL>/v1/cicd/push_artifacts' \
 
 Customize the command with the following parameters:
 
-   - **`<BASE_URL>`:** The SEI platform's URL.
-   - **`<API_KEY>`:** The API key obtained from the SEI platform.
-   - **`<PAYLOAD>`:** A JSON payload containing the details of the artifacts, such as integration ID, repository name, job name, job run number, and artifact specifics (name, location, tag, digest, etc.).
+   - **`\<BASE_URL>`:** The SEI platform's URL.
+   - **`\<API_KEY>`:** The API key obtained from the SEI platform.
+   - **`\<PAYLOAD>`:** A JSON payload containing the details of the artifacts, such as integration ID, repository name, job name, job run number, and artifact specifics (name, location, tag, digest, etc.).
 
 3. Execute the cURL command in a command-line environment. Successful execution results in the artifacts being pushed to the SEI platform.
 

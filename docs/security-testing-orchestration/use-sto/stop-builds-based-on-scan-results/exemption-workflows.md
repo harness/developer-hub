@@ -20,11 +20,11 @@ Here are some situations where you might want to request an exemption for a spec
 - You can specify a time limit for an exemption (for example, expires in 7 days). In some cases, you might want to exempt an issue so you can deploy an important release. You could request an exemption if it expires within your organization's SLA for fixing security issues.
 - There are currently no known fixes or remediation steps available for the detected vulnerability. You might want to enable [Harness AI Development Assistant (AIDA™)](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations), which can help you remediate your issues using AI.
 
-```mdx-code-block
+
 import request_exemption from '../static/request-exemption.png'
 import open_exemption_details from '../static/open-exemption-details.png'
 import approve_exemption_01 from '../static/approve-exemption-01.png'
-```
+
 
 ## What happens when an STO exemption gets approved
 
@@ -54,9 +54,9 @@ This topic assumes that you have the following:
    1. Select the issue you want to exempt.  The **Issue Details** pane opens on the right. 
    2. Select **Request Exemption**.
 
-      ```mdx-code-block
+      
       <img src={request_exemption} alt="Request Exemption button" height="50%" width="50%" />
-      ```
+      
    
    3. In **Request Exemption for Issue**, specify:
       1. **Where do you want this issue to be Exempted?** 
@@ -136,9 +136,9 @@ This workflow requires SecOps user permissions.
     - **Cancel** The request is cancelled and removed from the exemption list. If a user wants an exemption for the issue, they must file a new request. 
 
 
-```mdx-code-block
+
 <img src={approve_exemption_01} alt="Approve, Reject, and Cancel buttons for an STO exemption" height="50%" width="50%" />
-``` 
+ 
           
 ## Good practice: Review and update STO exemptions periodically
 

@@ -15,10 +15,10 @@ title: Google Cloud Functions
   target="_self"
 />
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <!---
 Import statements for CLI downloads
@@ -74,10 +74,10 @@ We suggest opting for Cloud Functions **2nd gen** whenever feasible for new func
 - Log into the Google Cloud console and create a Google Cloud Storage bucket. For details, go to [Create a new bucket](https://cloud.google.com/storage/docs/creating-buckets).
 - Once the bucket is created, select **UPLOAD FILES** and upload the file **hello_world.zip** for 1st gen or **helloHttp.zip** for 2nd gen.
 
-```mdx-code-block
+
 <Tabs queryString="generation">
 <TabItem value="2g" label="2nd Gen">
-```
+
 
 ## Getting Started with Harness CD
 ----------------------------------
@@ -147,51 +147,49 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     - For the secret value, upload the Google Cloud's account service key file for your service account, which you can download from your [GCP project](https://developers.google.com/workspace/guides/create-credentials#create_credentials_for_a_service_account).
     - Select **Save**.
 
-```mdx-code-block
+
 <Tabs queryString="interface2g">
 <TabItem value="cli2g" label="CLI">
-```
+
 1. Download and configure the Harness CLI.
 
-    ```mdx-code-block
-    <Tabs queryString="cli-os-2g">
-    <TabItem value="macos2g" label="MacOS">
-    ```
+    
+<Tabs queryString="cli-os-2g">
+<TabItem value="macos2g" label="MacOS">
+    
 
-    <MacOSCLI />
+<MacOSCLI />
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="linux2g" label="Linux">
-    ```
 
-    ```mdx-code-block
-    <Tabs queryString="linux-platform-2g">
-    <TabItem value="arm2g" label="ARM">
-    ```
+</TabItem>
+<TabItem value="linux2g" label="Linux">
+    
 
-    <ARMCLI />
+    
+<Tabs queryString="linux-platform-2g">
+<TabItem value="arm2g" label="ARM">
+    
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="amd2g" label="AMD">
-    ```
+<ARMCLI />
 
-    <AMDCLI />
 
-    ```mdx-code-block
-    </TabItem>
-    </Tabs>
-    ```
+</TabItem>
+<TabItem value="amd2g" label="AMD">
+    
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="windows2g" label="Windows">
-    ```
+<AMDCLI />
 
+
+</TabItem>
+</Tabs>
+
+
+
+</TabItem>
+<TabItem value="windows2g" label="Windows">
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
-    <WindowsCLI />
+<WindowsCLI />
         
     b. Extract the downloaded zip file and change the directory to extracted file location.
 
@@ -204,10 +202,10 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 
     d. Restart terminal.
 
-    ```mdx-code-block
-    </TabItem>
-    </Tabs>
-    ```
+
+</TabItem>
+</Tabs>
+    
 
 2. Clone the Forked **harnesscd-example-apps** repo and change directory.
     
@@ -296,10 +294,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 </details>
 
-```mdx-code-block
+
 <Tabs queryString="deployment2g">
 <TabItem value="canary2g" label="Canary">
-```
+
 
 <details open>
 <summary>What are Canary deployments?</summary>
@@ -317,10 +315,10 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 <docimage path={require('../static/harness-cicd-tutorial/canary-gen2.png')} width="60%" height="60%" title="Click to view full size image" />
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="bg2g" label="Blue Green">
-```
+
 
 <details open>
 <summary>What are Blue Green deployments?</summary>
@@ -338,10 +336,10 @@ Blue Green deployments involve running two identical environments (stage and pro
 <docimage path={require('../static/harness-cicd-tutorial/bluegreen-gen2.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="basic2g" label="Basic">
-```
+
 
 <details open>
 <summary>What are Basic deployments?</summary>
@@ -357,18 +355,18 @@ For Google Cloud Functions, the basic deployment execution strategy deploys the 
 
 2. You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below. 
     
-   <docimage path={require('../static/harness-cicd-tutorial/rolling-gen2.png')} width="60%" height="60%" title="Click to view full size image" />  
+   <docimage path={require('../static/harness-cicd-tutorial/rolling-gen2.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
 
-```mdx-code-block
+
+
 </TabItem>
 <TabItem value="ui2g" label="UI">
-```
+
 ### Connectors
 
 <details open>
@@ -448,10 +446,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
    - In **Pipeline Studio**, select **YAML**.
    - Select **Edit YAML** and choose any of the following execution strategies. Paste the respective YAML based on your selection.
 
-```mdx-code-block
+
 <Tabs queryString="deployment1g">
 <TabItem value="canary1g" label="Canary">
-```
+
 
 <details open>
 <summary>What are Canary deployments?</summary>
@@ -468,10 +466,10 @@ A canary deployment updates nodes/functions/etc. in a single environment gradual
 <docimage path={require('../static/harness-cicd-tutorial/canary-gen2.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="bg1g" label="Blue Green">
-```
+
 
 <details open>
 <summary>What are Blue Green deployments?</summary>
@@ -490,10 +488,10 @@ Blue Green deployments involve running two identical environments (stage and pro
 <docimage path={require('../static/harness-cicd-tutorial/bluegreen-gen2.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="basic1g" label="Basic">
-```
+
 
 <details open>
 <summary>What are Basic deployments?</summary>
@@ -509,16 +507,16 @@ For Google Cloud Functions, the basic deployment execution strategy deploys the 
    
    You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below. 
     
-   <docimage path={require('../static/harness-cicd-tutorial/rolling-gen2.png')} width="60%" height="60%" title="Click to view full size image" />  
+   <docimage path={require('../static/harness-cicd-tutorial/rolling-gen2.png')} width="60%" height="60%" title="Click to view full size image" />
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
-```mdx-code-block
+
+
 </TabItem>
 </Tabs>
-```
+
 
 Finally, it's time to execute your pipeline. 
 
@@ -535,10 +533,10 @@ You've just learned how to use Harness CD to deploy a Google Cloud Function to G
 - Keep learning about Harness CD. For example, add [Triggers](/docs/platform/Triggers/triggering-pipelines) to your pipeline that initiate pipeline deployments in response to Git events.
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="1g" label="1st Gen">
-```
+
 ## Getting Started with Harness CD
 ----------------------------------
 
@@ -610,55 +608,53 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     - Select **Save**.
 
 
-```mdx-code-block
+
 <Tabs queryString="interface1g">
 <TabItem value="cli1g" label="CLI">
-```
+
 1. Download and Configure Harness CLI.
 
-    ```mdx-code-block
-    <Tabs queryString="cli-os-1g">
-    <TabItem value="macos1g" label="MacOS">
-    ```
+    
+<Tabs queryString="cli-os-1g">
+<TabItem value="macos1g" label="MacOS">
+    
+<MacOSCLI />
 
-    <MacOSCLI />
+</TabItem>
+<TabItem value="linux1g" label="Linux">
+    
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="linux1g" label="Linux">
-    ```
+    
+<Tabs queryString="linux-platform-1g">
+<TabItem value="arm1g" label="ARM">
+    
 
-    ```mdx-code-block
-    <Tabs queryString="linux-platform-1g">
-    <TabItem value="arm1g" label="ARM">
-    ```
+ <ARMCLI />
 
-    <ARMCLI />
 
-    ```mdx-code-block
-    </TabItem>
+</TabItem>
     <TabItem value="amd1g" label="AMD">
-    ```
+    
 
-    <AMDCLI />
+<AMDCLI />
 
-    ```mdx-code-block
-    </TabItem>
+
+</TabItem>
     </Tabs>
-    ```
 
-    ```mdx-code-block
-    </TabItem>
+
+
+</TabItem>
     <TabItem value="windows1g" label="Windows">
-    ```
+    
 
-    a. Open Windows Powershell and run the command below to download the Harness CLI.
+a. Open Windows Powershell and run the command below to download the Harness CLI.
 
-    <WindowsCLI />
+<WindowsCLI />
         
-    b. Extract the downloaded zip file and change directory to extracted file location.
+b. Extract the downloaded zip file and change directory to extracted file location.
 
-    c. Follow the steps below to make it accessible via terminal.
+ c. Follow the steps below to make it accessible via terminal.
 
     ```
     $currentPath = Get-Location 
@@ -667,10 +663,10 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 
     d. Restart terminal.
 
-    ```mdx-code-block
-    </TabItem>
+
+</TabItem>
     </Tabs>
-    ```
+    
 
 2. Clone the Forked **harnesscd-example-apps** repo and change directory.
     
@@ -766,13 +762,13 @@ For Google Cloud Functions, the basic deployment execution strategy deploys the 
 
 2. You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below. 
     
-   <docimage path={require('../static/harness-cicd-tutorial/rolling-gen2.png')} width="60%" height="60%" title="Click to view full size image" />  
+   <docimage path={require('../static/harness-cicd-tutorial/rolling-gen2.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="ui1g" label="UI">
-```
+
 
 ### Connectors
 
@@ -868,10 +864,10 @@ For Google Cloud Functions, the basic deployment execution strategy deploys the 
 
 <docimage path={require('../static/harness-cicd-tutorial/rolling_gen1.png')} width="60%" height="60%" title="Click to view full size image" />
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 Finally, it's time to execute your pipeline. 
 
@@ -885,9 +881,9 @@ You've just learned how to use Harness CD to deploy an application using a Googl
 
 #### What's Next?
 - Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
-- Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.  
+- Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+

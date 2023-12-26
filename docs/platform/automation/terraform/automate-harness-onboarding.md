@@ -42,8 +42,8 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
                 terraform --version 
    ```
 
-    <details>
-    <summary>
+<details>
+<summary>
     YAML sample
     </summary> 
 
@@ -217,7 +217,7 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
         restartPolicy: Always
 
     ```
-    </details>  
+</details>  
 
 3. After you modify the delegate YAML, connect to the Kubernetes cluster to install.
    To do this, run the following command: 

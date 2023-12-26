@@ -122,7 +122,7 @@ The scan stage in this pipeline has the following steps:
    1. Scan Mode = **Ingestion**
    2. Target Type = **Repository**
    3. Target Name = (_user-defined_)
-  <!-- Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
+  <!-- Variant = [**`\<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
    4. Variant = (_user-defined_)
    5. Ingestion =  **`/shared/customer_artifacts/snyk_scan_results.sarif`**    
 
@@ -168,7 +168,7 @@ This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands
 
    6. Under **Environment Variables**, add a variable for your Snyk API token. Make sure that you save your token to a [Harness secret](/docs/platform/secrets/add-use-text-secrets/):
       
-      SNYK_TOKEN = [**`<+secrets.getValue("snyk_api_token")>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization) 
+      SNYK_TOKEN = [**`\<+secrets.getValue("snyk_api_token")>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization) 
 
    7. In the Run step > **Advanced** tab > **Failure Strategies**, set the Failure Strategy to **Mark as Success**. 
  
@@ -179,7 +179,7 @@ This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands
    1. Scan Mode = **Ingestion**
    2. Target Type = **Container Image**
    3. Target Name = (_user-defined_)
-  <!-- Variant = [**`<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
+  <!-- Variant = [**`\<+codebase.branch>`**](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasebranch) (_runtime expression_) -->
    4. Variant = (_user-defined_)
    5. Ingestion =  **`/shared/customer_artifacts/snyk_container_scan.sarif`**    
 
@@ -222,7 +222,7 @@ The scan stage in this pipeline has the following steps:
  
    3. In the Run step **Environment Variables** field, under **Optional Configuration**, add a variable to access your Snyk API key:
  
-      `SNYK_TOKEN` = [**`<+secrets.getValue("snyk_api_token")>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization)`  
+      `SNYK_TOKEN` = [**`\<+secrets.getValue("snyk_api_token")>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization)`  
       
       Your Run step should now look like this:
       
@@ -250,14 +250,15 @@ The scan stage in this pipeline has the following steps:
 
 The following illustrates the [repository orchestration workflow example](#scan-a-repository-orchestration-example) above for scanning a Java project.
 
-<details><summary>YAML pipeline, repository scan, Orchestration mode</summary>
+<details>
+<summary>YAML pipeline, repository scan, Orchestration mode</summary>
 
 ```yaml 
 
 pipeline:
   projectIdentifier: STO
   orgIdentifier: default
-  tags: {}
+  tags: \{}
   properties:
     ci:
       codebase:
@@ -278,7 +279,7 @@ pipeline:
               connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
-              nodeSelector: {}
+              nodeSelector: \{}
               os: Linux
           execution:
             steps:
@@ -312,14 +313,15 @@ pipeline:
 
 The following illustrates the [repository ingestion workflow example](#scan-a-repository-ingestion-example) above for building and scanning a .NET image.
 
-<details><summary>YAML pipeline, repository scan, Ingestion mode</summary>
+<details>
+<summary>YAML pipeline, repository scan, Ingestion mode</summary>
 
 ```yaml 
 
 pipeline:
   projectIdentifier: STO
   orgIdentifier: default
-  tags: {}
+  tags: \{}
   properties:
     ci:
       codebase:
@@ -338,7 +340,7 @@ pipeline:
             arch: Amd64
           runtime:
             type: Cloud
-            spec: {}
+            spec: \{}
           execution:
             steps:
               - step:
@@ -397,7 +399,8 @@ pipeline:
 
 The following illustrates the [container image ingestion workflow example](#scan-a-container-image-workflow-example) above for building and scanning a .NET image.
 
-<details><summary>YAML pipeline, container image scan, Ingestion mode</summary>
+<details>
+<summary>YAML pipeline, container image scan, Ingestion mode</summary>
 
 ```yaml
 
@@ -405,7 +408,7 @@ pipeline:
   allowStageExecutions: false
   projectIdentifier: STO
   orgIdentifier: default
-  tags: {}
+  tags: \{}
   stages:
     - stage:
         name: scan
@@ -419,7 +422,7 @@ pipeline:
               connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
-              nodeSelector: {}
+              nodeSelector: \{}
               os: Linux
           sharedPaths:
             - /shared/customer_artifacts/
@@ -502,7 +505,8 @@ pipeline:
 
 The following illustrates the [container image ingestion workflow example](#scan-a-container-image-workflow-example) for building and scanning an IaC repository.
 
-<details><summary>YAML pipeline, IaC repository scan, Ingestion mode</summary>
+<details>
+<summary>YAML pipeline, IaC repository scan, Ingestion mode</summary>
 
 ```yaml
 
@@ -510,7 +514,7 @@ pipeline:
   allowStageExecutions: false
   projectIdentifier: STO
   orgIdentifier: default
-  tags: {}
+  tags: \{}
   properties:
     ci:
       codebase:
@@ -529,7 +533,7 @@ pipeline:
               connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
-              nodeSelector: {}
+              nodeSelector: \{}
               os: Linux
           sharedPaths:
             - /shared/customer_artifacts/

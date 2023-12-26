@@ -87,7 +87,7 @@ Select **Enforce password strength** to open the dialog shown below.![](./static
 	+ Include at least one digit.
 	+ Include at least one special character.
 
-If you enforce **Have at least one special character**, each password must include one (or more) of the following characters: `~!@#$%^&*_-+=`|\(){}[]:;"'&lt;this-tag&gt;,.?/`
+If you enforce **Have at least one special character**, each password must include one (or more) of the following characters: `~!@#$%^&*_-+=`|\()\{}[]:;"'&lt;this-tag&gt;,.?/`
 
 #### Enforce Password Expiration
 
@@ -112,9 +112,9 @@ Select **Enforce Two Factor Authentication** to enforce 2FA for all users in Har
 
 You can access `app.harness.io` using your own unique subdomain URL.
 
-The subdomain URL will be in the following format, with `{company}` being the name of your account:
+The subdomain URL will be in the following format, with `\{company}` being the name of your account:
 
- `https://{company}.harness.io`
+ `https://\{company}.harness.io`
 
 Contact [Harness Support](mailto:support@harness.io) to set up your Account's subdomain URL. The subdomain URL cannot be changed later.Harness automatically detects your Account ID from the subdomain URL and redirects you to the Account's login mechanism.
 

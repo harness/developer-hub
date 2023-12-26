@@ -12,11 +12,11 @@ redirect_from:
   - /docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
-```
+
 
 :::info
 

@@ -24,9 +24,9 @@ Use this [delegate installation wizard video](https://www.youtube.com/watch?v=yL
 
 </details>
 
-```mdx-code-block
+
 import DelegateInstall from '/tutorials/platform/install-delegate.md';
-```
+
 
 <details>
 <summary>Use the terminal</summary>
@@ -60,14 +60,14 @@ After the delegate pods are created, you must edit your Harness Delegate YAML to
    
    :::
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';   
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
     <TabItem value="microdnf" label="microdnf" default>
-```
+
 
    ```
    - name: INIT_SCRIPT  
@@ -100,10 +100,10 @@ import TabItem from '@theme/TabItem';
     cf plugins
    ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="apt-get" label="apt-get">
-```
+
    
    ```
    - name: INIT_SCRIPT  
@@ -133,11 +133,11 @@ import TabItem from '@theme/TabItem';
     # verify plugins
     cf plugins
    ```
-  
-```mdx-code-block
+
+
 </TabItem>    
 </Tabs>
-```
+
    
 4. Apply the profile to the delegate profile and check the logs.
 

@@ -72,7 +72,7 @@ The permissions listed below work for both 1st and 2nd gen.
 
 :::
 
-When you set up a Harness GCP connector to connect Harness with your GCP account, the GCP IAM user or service account must have the appropriate permissions assigned to their account. 
+When you set up a Harness GCP connector to connect Harness with your GCP account, the GCP IAM user or service account must have the appropriate permissions assigned to their account.
 
 <details>
 <summary>Cloud Functions minimum permissions</summary>
@@ -256,8 +256,8 @@ function_id: my-storage-function
 
 ```
 </details>
- 
- 
+
+
 <details>
 <summary>Example 4: A Cloud Function that uses service config and environment variables</summary>
 
@@ -274,7 +274,7 @@ function:
   environment: GEN_2
 function_id: canaryDemo-<+env.name>
 ```
-</details>  
+</details>
 
 <details>
 <summary>Example 5: A Cloud Function that uses secret environment variables</summary>
@@ -314,14 +314,14 @@ You use a Harness GCP connector to connect to your Cloud Storage bucket. The GCP
 
 Here's how you add a Harness Cloud Function service.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 Here's a Cloud Functions service YAML example.
 
@@ -355,10 +355,10 @@ service:
               type: GoogleCloudStorage
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="API" label="API">
-```
+
 
 Create a service using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
@@ -381,10 +381,10 @@ curl -i -X POST \
   }]'
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Terraform Provider" label="Terraform Provider">
-```
+
 
 For the Terraform Provider resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
@@ -433,10 +433,10 @@ resource "harness_platform_service" "example" {
 }
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Harness Manager" label="Harness Manager">
-```
+
 
 To configure a Harness Cloud Function service in the Harness Manager, do the following:
 
@@ -451,10 +451,10 @@ To configure a Harness Cloud Function service in the Harness Manager, do the fol
 7. In **Artifacts**, add the Google Cloud Storage location of the ZIP file that corresponds to the manifest YAML.
 8. Select **Save**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Using service variables in manifest YAML
 
@@ -464,7 +464,7 @@ In the **Variables** section of the service, you can add service variables and t
 
 For example, you could create a variable named **entryPoint** for the manifest `entryPoint` setting and set its value as a fixed value, runtime input, or expression.
 
-Next, in your manifest YAML file, you could reference the variable like this (see <+serviceVariables.entryPoint>):
+Next, in your manifest YAML file, you could reference the variable like this (see \<+serviceVariables.entryPoint>):
 
 Now, when you add that service to a pipeline, you will be prompted to enter a value for this variable in the pipeline **Services** tab. The value you provide is then used as the `entryPoint` in your manifest YAML.
 
@@ -476,14 +476,14 @@ The Cloud Function environment contains an Infrastructure Definition that identi
 
 Here's an example of a Cloud Functions environment.
 
-```mdx-code-block
+
 import Tabs1 from '@theme/Tabs';
 import TabItem1 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs1>
   <TabItem1 value="YAML" label="YAML" default>
-```
+
 
 ```YAML
 environment:
@@ -498,10 +498,10 @@ environment:
 
 ```
 
-```mdx-code-block
+
   </TabItem1>
   <TabItem1 value="API" label="API">
-```
+
 
 Create an environment using the [Create Environments](https://apidocs.harness.io/tag/Environments#operation/createEnvironmentV2) API.
 
@@ -527,10 +527,10 @@ curl -i -X POST \
 ```
 
 
-```mdx-code-block
+
   </TabItem1>
   <TabItem1 value="Terraform Provider" label="Terraform Provider">
-```
+
 
 For the Terraform Provider resource, go to [harness_platform_environment](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment) and [harness_platform_environment_service_overrides](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment_service_overrides).
 
@@ -563,10 +563,10 @@ resource "harness_platform_environment" "example" {
 }
 ```
 
-```mdx-code-block
+
   </TabItem1>
   <TabItem1 value="Harness Manager" label="Harness Manager">
-```
+
 
 To create an environment, do the following:
 
@@ -578,10 +578,10 @@ To create an environment, do the following:
 
 Pipelines require that an environment have an infrastructure definition. We'll cover that next.
 
-```mdx-code-block
+
   </TabItem1>
 </Tabs1>
-```
+
 
 ## Define the infrastructure
 
@@ -602,14 +602,14 @@ You can pick the same GCP connector you used in the Harness service to connect t
 
 ### Pre-existing Functions infrastructure
 
-```mdx-code-block
+
 import Tabs2 from '@theme/Tabs';
 import TabItem2 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs2>
   <TabItem2 value="YAML" label="YAML" default>
-```
+
 
 Here's a YAML example of a Cloud Function infrastructure definition.
 
@@ -631,10 +631,10 @@ infrastructureDefinition:
   allowSimultaneousDeployments: false
 ```
 
-```mdx-code-block
+
   </TabItem2>
   <TabItem2 value="API" label="API">
-```
+
 
 Create an infrastructure definition using the [Create Infrastructure](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure) API.
 
@@ -659,10 +659,10 @@ curl -i -X POST \
   }'
 ```
 
-```mdx-code-block
+
   </TabItem2>
   <TabItem2 value="Terraform Provider" label="Terraform Provider">
-```
+
 
 For the Terraform Provider resource, go to [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure).
 
@@ -698,10 +698,10 @@ resource "harness_platform_infrastructure" "example" {
 ```
 
 
-```mdx-code-block
+
   </TabItem2>
   <TabItem2 value="Harness Manager" label="Harness Manager">
-```
+
 
 To create the ASG infrastructure definition in an environment, do the following:
 
@@ -721,10 +721,10 @@ To create the ASG infrastructure definition in an environment, do the following:
 The infrastructure definition is added.
 
 
-```mdx-code-block
+
   </TabItem2>
 </Tabs2>
-```
+
 
 ### Dynamically provisioned Functions infrastructure
 

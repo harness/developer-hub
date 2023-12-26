@@ -11,10 +11,10 @@ redirect_from:
   - /docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/ci-cluster-requirement
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -156,10 +156,10 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
 ## Configure the build infrastructure in Harness
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual editor">
-```
+
 
 1. In Harness, go to a pipeline where you want to use the Kubernetes cluster build infrastructure. Select the **Build** stage, and select the **Infrastructure** tab.
 2. Select **Kubernetes** for the infrastructure type.
@@ -171,10 +171,10 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
    Your Kubernetes delegate can be in a different namespace than the one defined here.
 6. If necessary, configure any advanced settings, as described below and in the [CI Build stage settings](../ci-stage-settings.md). Review the details of each setting to understand whether it is required for your configuration.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML editor" default>
-```
+
 
 In Harness, go to a pipeline where you want to use the Kubernetes cluster build infrastructure, switch to the YAML editor, locate the `CI` stage, and then configure `stage.spec.infrastructure`. At minimum, you must include `type`, `connectorRef`, `namespace`, and `os`, as well as the default value for `automountServiceAccountToken`. For example:
 
@@ -204,10 +204,10 @@ In Harness, go to a pipeline where you want to use the Kubernetes cluster build 
 * `spec.os`: Specify the OS, `Linux` or `Windows`. For more information about Windows builds, go to [Run Windows builds in a Kubernetes cluster build infrastructure](./run-windows-builds-in-a-kubernetes-build-infrastructure.md).
 * Advanced settings: If necessary, configure any advanced settings, as described below and in the [CI Build stage settings](../ci-stage-settings.md). Review the details of each setting to understand whether it is required for your configuration.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Service Account Name
 

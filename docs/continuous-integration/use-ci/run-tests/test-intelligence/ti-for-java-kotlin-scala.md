@@ -4,13 +4,15 @@ description: Set up TI for Java, Kotlin, or Scala codebases.
 sidebar_position: 20
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
-```
 
 Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes. You can enable TI for Java, Kotlin, or Scala in three steps:
+
+1. Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
+
 
 1. Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
 
@@ -55,7 +57,7 @@ Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI
 
    The first run with TI *doesn't* apply test selection, because Harness must establish a baseline for comparison in future runs. After establishing a baseline, each time this pipeline runs, Harness can select relevant tests to run based on the content of the code changes.
 
-4. Wait while the build runs, and then [review the test results and test selection](../viewing-tests.md). If you created a PR, merge the PR after the build runs.
+4. Wait while the build runs, and then [review the test results and test selection](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests). If you created a PR, merge the PR after the build runs.
 
 </details>
 
@@ -84,14 +86,14 @@ Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI
 
 </details>
 
-3. Once you start saving time with test selection, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md). You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
+3. Once you start saving time with test selection, you can further optimize test times by [enabling parallelism (test splitting) for TI](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting/). You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
 
 ## Pipeline YAML examples
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="cloud" label="Harness Cloud" default>
-```
+
 
 This example shows a pipeline that uses Harness Cloud build infrastructure and runs tests on Java with Maven and Test Intelligence. By changing the `language` value, you can use this pipeline for Kotlin or Scala.
 
@@ -139,10 +141,10 @@ pipeline:
             type: Cloud
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="sh" label="Self-hosted">
-```
+
 
 This example shows a pipeline that uses a Kubernetes cluster build infrastructure and runs tests on Java with Maven and Test Intelligence. By changing the `language` value, you can use this pipeline for Kotlin or Scala.
 
@@ -194,10 +196,10 @@ pipeline:
               os: Linux
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Run Tests step settings
 
@@ -307,17 +309,17 @@ Add the following to your `build.gradle` to make it compatible with Test Intelli
 // provided through the command line.
 // Local builds will still remain same as it only adds if the
 // parameter is provided.
-tasks.withType(Test) {
-  if(System.getProperty("HARNESS_JAVA_AGENT")) {
+tasks.withType(Test) \{
+  if(System.getProperty("HARNESS_JAVA_AGENT")) \{
     jvmArgs += [System.getProperty("HARNESS_JAVA_AGENT")]
   }
 }
 
 // This makes sure that any test tasks for subprojects don't
 // fail in case the test filter does not match.
-gradle.projectsEvaluated {
-        tasks.withType(Test) {
-            filter {
+gradle.projectsEvaluated \{
+        tasks.withType(Test) \{
+            filter \{
                 setFailOnNoMatchingTests(false)
             }
         }
@@ -338,7 +340,7 @@ This can be as simple as `test` or you can include additional flags, such as: `t
 
 This setting is required for the Run Tests step to [publish test results](../viewing-tests.md).
 
-Specify one or more paths to files that store [test results in JUnit XML format](../../run-tests/test-report-ref.md). [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+Specify one or more paths to files that store [test results in JUnit XML format](/docs/continuous-integration/use-ci/set-up-test-intelligence/test-report-ref). [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
 You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates.
 

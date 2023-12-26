@@ -116,7 +116,7 @@ You can also paste your own JSON object by clicking **Paste Custom JSON Response
 
 ##   Step 8: Expression for Host/Container name
 
-Add an expression that evaluates to the host name value for the field you entered in the **Host Name Field** above. The default expression is **${instance.host.hostName}**.
+Add an expression that evaluates to the host name value for the field you entered in the **Host Name Field** above. The default expression is **$\{instance.host.hostName}**.
 
 In order to obtain the names of the host where your service is deployed, the verification provider should be added to your workflow **after** you have run at least one successful deployment.To ensure that you pick the right field when using **Guide From Example**, you can use a host name from the ELK log messages as a guide.
 
@@ -133,7 +133,7 @@ The dialog shows the service, environment, and service infrastructure used for t
 You want to use a **name** label in the **host** section. Do not use a host name label outside of that section.
 7. To identify which label to use to build the expression, compare the host/pod/container name in the JSON with the hostname you use when configuring **Host Name Field**.
 8. In the **Expression for Host Name** popover, click the **name** label to select the expression. Click back in the main dialog to close the **Guide From Example**. The expression is added to the **Expression for Host/Container name** field.  
-For example, if you clicked the **name** label, the expression **${host.name}** is added to the **Expression for Host/Container name** field.
+For example, if you clicked the **name** label, the expression **$\{host.name}** is added to the **Expression for Host/Container name** field.
 
 You can also paste your own JSON object by clicking **Paste Custom JSON Response**.
 

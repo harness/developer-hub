@@ -2,10 +2,10 @@
 title: Connect chaos infrastructures
 sidebar_position: 10
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 Chaos infrastructure is a service that runs in your target environment and aids Harness Chaos Engineering (CE) in accessing and injecting chaos at cloud-native scale. There are different types of chaos infrastructure based on the target environments, such as Kubernetes, Linux VMs, etc. These chaos infrastructures can be installed as a Kubernetes service, as a Linux daemon, and so on, based on their type.
 
@@ -30,10 +30,10 @@ To create an environment:
 
 ## Step 2. Add a chaos infrastructure
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Kubernetes">
-```
+
 This section outlines the steps to add a chaos infrastructure to a Kubernetes environment.
 
 You can either setup a chaos infrastructure on existing infrastructures that uses a Harness cluster connector, that is, Harness Kubernetes connector or install the chaos infrastructure on a new infrastructure.
@@ -110,10 +110,10 @@ To add a chaos infrastructure on an existing Harness Kubernetes connector:
 
 1. Select **Done**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Linux">
-```
+
 This section outlines the steps to add a chaos infrastructure to a Kubernetes environment.
 
 :::info note
@@ -196,10 +196,10 @@ To add a Linux chaos infrastructure:
 
 1. On the next screen, copy the command to set up Linux chaos access, select **Done**, and then execute the copied command on your Linux machine.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Step 3. Validate the chaos infrastructure installation
 

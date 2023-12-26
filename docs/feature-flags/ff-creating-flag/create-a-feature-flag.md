@@ -7,10 +7,10 @@ helpdocs_category_id: gjyyhm9f9h
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-```mdx-code-block
+
 import var_settings from './static/4-create-a-feature-flag-07.png'
 import multivar_settings from './static/4-create-a-feature-flag-09.png'
-```
+
 
 Feature Flags allow you to toggle features in your code on or off, which allows you to progressively roll out features to particular users or groups. By using Feature Flags, you can manage continuous delivery and control who sees which features and when.
 
@@ -57,9 +57,9 @@ There are two different types of Feature Flags you can create:
 7. In the **Name** fields, enter the name for the true and false variations, for example, **True** and **False**.
 8. In **Default rules for the flag**, select which variation of the flag to serve when the flag is ON or OFF, for example, True when the flag is ON and False when the flag is OFF.
 
-    ```mdx-code-block
+    
     <img src={var_settings} alt="A screenshot of the Variation Settings form when creating a Feature Flag." height="500" width="700" />
-    ```
+    
 
 9. Click **Save and Close**. The Feature Flag is created and is set to **OFF** by default.
 
@@ -97,9 +97,9 @@ To create a multivariate flag:
 
 7. In **Default rules for the flag**, define which variation you will see by default when the flag is ON or OFF.
 
-    ```mdx-code-block
+    
     <img src={multivar_settings} alt="A screenshot of the Variation Settings form when creating a Feature Flag." height="500" width="700" />
-    ```
+    
 
 After you have created your multivariate flag, you can then:
 

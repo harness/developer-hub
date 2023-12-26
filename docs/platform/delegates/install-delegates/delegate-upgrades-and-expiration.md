@@ -23,7 +23,7 @@ To prevent the installation of the automatic upgrade feature, remove the `cronJo
 You can also change the time when the upgrade cron job runs by updating the `schedule`. For configuration details, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
 
 <details>
-    <summary>Example Kubernetes manifest</summary>
+<summary>Example Kubernetes manifest</summary>
 
 ```yaml
 kind: Role
@@ -232,8 +232,8 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
 1. Use the [latest-supported-version](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/publishedDelegateVersion) API to determine the delegate number for your account:
 
-    `curl --location 'https://app.harness.io/ng/api/delegate-setup/latest-supported-version?accountIdentifier=<YOUR_ACCOUNT_IDENTIFIER>' \
-    --header 'x-api-key: <YOUR_API_KEY>'`
+    `curl --location 'https://app.harness.io/ng/api/delegate-setup/latest-supported-version?accountIdentifier=\<YOUR_ACCOUNT_IDENTIFIER>' \
+    --header 'x-api-key: \<YOUR_API_KEY>'`
 
     The following example result is returned. It returns the tag of the delegate that is released to your account. 
 

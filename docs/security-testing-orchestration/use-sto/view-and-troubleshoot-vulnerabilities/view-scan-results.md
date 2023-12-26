@@ -23,7 +23,7 @@ The following steps describe the general workflow:
 
     - **Only in current scan** New issues not found in any previous scan of that target.
 
-    - **Common to <_target_>:<_variant_>** Issues also found in the last scan of the specified variant.
+    - **Common to \<_target_>:\<_variant_>** Issues also found in the last scan of the specified variant.
 
     - **Common to previous scan** 
       - Issues also found in the last scan (if the scanned target has no baseline), OR

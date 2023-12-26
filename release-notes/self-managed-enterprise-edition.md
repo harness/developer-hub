@@ -5,13 +5,13 @@ tags: [NextGen, "self-managed-ee"]
 date: 2023-12-07T10:00
 sidebar_position: 15
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 import delete_project from './static/delete-project.png'
-```
+
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/self-managed-enterprise-edition/rss.xml" />
 
@@ -763,7 +763,7 @@ gsutil -m cp \
 
 - The project and account overview pages are now accessible in Self-Managed Enterprise Edition. (PL-39183)
 
--  The delegate Helm chart is now included in the delegate proxy configuration. You can pull the Helm chart from `https://<YOUR_LOADBALANCER_URL>/storage/harness-download/delegate-helm-chart/`. (PL-39190)
+-  The delegate Helm chart is now included in the delegate proxy configuration. You can pull the Helm chart from `https://\<YOUR_LOADBALANCER_URL>/storage/harness-download/delegate-helm-chart/`. (PL-39190)
 
 - The heartbeat interval that perpetual tasks use to test connectors has been increased from 10 minutes to 30 minutes. This change aims to reduce the number of errors logged due to failed heartbeats. The new heartbeat interval is used with any connectors that you create after this deployment. Tasks associated with existing connectors require migration to the new interval. Harness will migrate such perpetual tasks in all accounts in a phased manner. This activity does not require any action from you or other users of the platform. (PL-39399)
 
@@ -898,7 +898,7 @@ gsutil -m cp \
 
   This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- Improved the error message shown in the UI if the entity type of a new version of a template is different: `Failed to save the template <NAME> because an existing template of different type has the same identifier` (CDS-73243)
+- Improved the error message shown in the UI if the entity type of a new version of a template is different: `Failed to save the template \<NAME> because an existing template of different type has the same identifier` (CDS-73243)
 
 - Fixed an issue on the Pipeline Executions page where the Services filter didn't list all services. (CDS-73277)
 
@@ -952,9 +952,9 @@ gsutil -m cp \
 
   This fix includes the following new expressions:
   
-  - <+trigger.artifact.source.connectorRef> to access connectorRef in triggers 
+  - \<+trigger.artifact.source.connectorRef> to access connectorRef in triggers 
 
-  -  <+trigger.artifact.source.imagePath> to access imagePath in triggers 
+  -  \<+trigger.artifact.source.imagePath> to access imagePath in triggers 
 
 - You can now view policy-related updates in the Pipeline Execution console view. (CDS-75213, ZD-46498) 
 
@@ -988,7 +988,7 @@ gsutil -m cp \
 
 - Removed the **Reconcile** option for individual input sets on the **Input Sets** page. (CDS-75845)
 
-- Fixed a delegate issue where the Custom Remote Store did not clone a repo larger than 25Mb if provided in the execution script. With this fix, the Custom Remote Store now has a <=25Mb size validation on manifest files (not the entire repo). (CDS-75900)
+- Fixed a delegate issue where the Custom Remote Store did not clone a repo larger than 25Mb if provided in the execution script. With this fix, the Custom Remote Store now has a \<=25Mb size validation on manifest files (not the entire repo). (CDS-75900)
 
   This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
@@ -1556,7 +1556,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
    ./migrate-values-0.9.x -f <PATH_TO_OLD_OVERRIDE_FILE>
    ```
 
-   The output is a new file that includes your old file name with `-migrated` appended for example, `<YOUR_OLD_FILE_NAME>-migrated.yaml`. 
+   The output is a new file that includes your old file name with `-migrated` appended for example, `\<YOUR_OLD_FILE_NAME>-migrated.yaml`. 
 
    You can now upgrade your instance with the latest charts and your new override file. For example:
 
@@ -3854,12 +3854,12 @@ This release includes the following Harness module and component versions.
   
   Harness recommends that you only use a table extending task, or extend tables that indirectly extend the task. You can specify any custom table in Harness.
 
-  <details>
-  <summary>What is a table extending task?</summary>
+<details>
+<summary>What is a table extending task?</summary>
   
   In ServiceNow, a table extending task is a task that involves creating a new table by extending an existing table. When a table is extended, a new child table is created that inherits all the fields, relationships, and other attributes of the parent table. The child table can then be customized further to meet the specific needs of the organization.
-  
-  </details>
+
+</details>
   
   Itil roles are not mandatory for using these steps. When using the normal flow for custom tables, you should have sufficient permissions on the custom table, such as basic CRUD permissions, permissions to update desired fields, etc.
   
@@ -4544,7 +4544,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
   type: StepGroup
   projectIdentifier: projtest
   orgIdentifier: default
-  tags: {}
+  tags: \{}
   spec:
     stageType: Deployment
     steps:
@@ -4554,7 +4554,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
           template:
             templateRef: account.same_name
             versionLabel: v1
-    delegateSelectors: <+input>
+    delegateSelectors: \<+input>
 #### Cloud Cost Management
 - Introducing support for adding more than one CCM GCP connector when you have two or more billing export tables with different billing account IDs in the same dataset. (CCM-11244)
 - Enabled audit trail for budget groups. (CCM-11387)
@@ -4599,9 +4599,9 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
   These enhancements provide comprehensive information about each reference.
 - A warning message now appears in the UI when you delete a project or organization. Deletions require confirmation from the user. (PL-31292)
   
-  ```mdx-code-block
+  
   <img src={delete_project} alt="delete-project" height="150" width="400"></img>
-  ```
+  
 
   This enhancement prevents the accidental deletion of important projects or organizations and provides an extra layer of caution for users.
 - The new delegate installation wizard is now generally available. (PL-31305)
@@ -5307,11 +5307,11 @@ This release includes the following Harness module and component versions.
 
   1. Get the current featureCompatibiltyVersion. It should be 4.2 if it is using mongo 4.2:
 
-          db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )
+          db.adminCommand( \{ getParameter: 1, featureCompatibilityVersion: 1 } )
 
   2. If the current version isn't 4.2, execute into Primary and run:
 
-          db.adminCommand( { setFeatureCompatibilityVersion: "4.2" } )
+          db.adminCommand( \{ setFeatureCompatibilityVersion: "4.2" } )
 
   3. Determine if the pods are in sync. Make sure they're in sync before you upgrade (the maximum time lag is ~2sec). 
 
@@ -5323,7 +5323,7 @@ This release includes the following Harness module and component versions.
 
    5. Once you're upgraded, update the Feature Compatibility version so that it's used for future upgrades.
 
-           db.adminCommand( { setFeatureCompatibilityVersion: "4.4" } )
+           db.adminCommand( \{ setFeatureCompatibilityVersion: "4.4" } )
 
   For more information, go to [Upgrade a Replica Set to 4.4](https://www.mongodb.com/docs/manual/release-notes/4.4-upgrade-replica-set/) in the MongoDB docs.
 
@@ -6006,7 +6006,7 @@ This release includes the following fixed issues.
 
 - The `<+rollbackArtifact...>` expression is now available (CDS-46321)
 
-  For example, if you used a publicly available Docker Hub NGINX image as the Artifact Source for a Service, then when the Service is rolled back, the <+rollbackArtifact.meta.image> expression output would be something like this: registry.hub.docker.com/library/nginx:stable-perl.
+  For example, if you used a publicly available Docker Hub NGINX image as the Artifact Source for a Service, then when the Service is rolled back, the \<+rollbackArtifact.meta.image> expression output would be something like this: registry.hub.docker.com/library/nginx:stable-perl.
 
   The variables available in `rollbackArtifact` depends on the artifact and infrastructure type used in the deployment. They can be seen in Output tab of Infrastructure section of a CD stage.
 
@@ -6359,7 +6359,7 @@ This release introduces the following fixes.
 | --- | --- | 
 | CDB-415 | Users previously were only able to clone Dashboards either from the "Out Of The Box" Dashboards or from folders where they had an EDIT permission assigned. Now, if the user has any folder in which they have the EDIT permission assigned, they can clone any (available) Dashboard into that folder. |
 | CDB-434, ZD-35773 | Dashboard alerts and schedules will now run at the specified time in the user local time zone. |
-| CDS-25476 | **Approvals: JEXL expression doesn't support pipeline variables and expressions**. With this ticket, pipeline expressions (<+pipeline...) as well as other common expressions are now supported for Approvals in JEXL criteria. Previously users could give expressions related to the ticket only. |
+| CDS-25476 | **Approvals: JEXL expression doesn't support pipeline variables and expressions**. With this ticket, pipeline expressions (\<+pipeline...) as well as other common expressions are now supported for Approvals in JEXL criteria. Previously users could give expressions related to the ticket only. |
 | CDS-41699 | **When number of Approvers in Harness Approval are given an expression it fails with Not able to detect Int**. Bug resolved by converting the values (in the format 1.0, 2.0, etc.) received from parameter framework in case of expressions to integer. If we get double values like 23.4, they are still rejected. Now, we can give expressions evaluating to integers as input to minCount field in Harness Approval. |
 | CDS-41700 | Harness approval step will fail if no valid user group is provided in the input. Additionally, console logs are enhanced with a warning related to invalid user groups given as input. Finally, valid user groups found in the input is added to Harness approval details. |
 | CDS-42609 | **Cleanup step is not getting executed for Kerberos**. Status logging is added to Cleanup step for WinRM deployments. Now the output in UI marks the step as completed properly. |
@@ -6397,7 +6397,7 @@ This release introduces the following fixes.
 | CDS-45433 | Initially we were fetching all the builds without filtering. We now support filtering via versionRegex. |
 | CDS-45465 | Improved the console logs for the Harness approval step by including details of approval and rejection activity. |
 | CDS-45471 | **Template Library not taking Service Variables as input in the expression**. With new service entity, if the manifest property was made a runtime input and its value was provided when running a pipeline in the form of an expression like `<+serviceVariables.variableName>`, the property would resolve to "null". However, if the manifest property was set to the same expression, directly in the service configuration, it would work as expected. This issue has been resolved now, with variable resolving in both cases. |
-| CDS-45492 | **<+infra.name> not resolving in V2 Service and Environment**. <+infra.name> expression is now supported. |
+| CDS-45492 | **\<+infra.name> not resolving in V2 Service and Environment**. \<+infra.name> expression is now supported. |
 | CDS-45677, ZD-36222 | **Secret referencing failing in Custom Artifact Source**. Secrets were not resolving in case of Service V2 because ExpressionFunctorToken was not set in Delegate request. |
 | CDS-45741 | **GitOps Service is not publishing the Agent pods/instances to Harness Manager**. We were not passing the Agent Id while publishing the instances. After passing the Agent Id, the Harness Manager shows the Agent instances. |
 | CDS-45764 | **References for Account/Org templates are not deleting when the Org/Proj are deleted**. This happened when an Org level template was referring to an Account level template; for example, an Org level stage template using an Account level step template. The deletion of the org results in deletion of the template but did not properly cleanup references, so the account level template would still contain the org level template as a reference. This has been fixed now. |
@@ -6506,7 +6506,7 @@ This release introduces the following fixes.
 
 - Corrected an issue that interfered with the update of the secrets variable in the shell script. it was not added in the map of variables so i added it in the map to generate autosuggestion. (CDS-43714)
 
-- Expression to get the connector name is available now. Please use "<+infra.connector.name>" in the pipeline. (CDS-43757)
+- Expression to get the connector name is available now. Please use "\<+infra.connector.name>" in the pipeline. (CDS-43757)
 
 - To support backward compatibility for Nexus docker yaml, we didn't remove the older field "artifactPath" but didn't marked the field as not mandatory which was root cause of the issue.Removing the annotation `NotNull` from field resolved the issue. (CDS-43778)
 
@@ -6854,7 +6854,7 @@ Delete Resource step is getting failed even the resource is present, fixed that 
 
 CDS-43293
 
-We were not adding the metadata to artifact outcome and few customer use <+artifact.url> for deployment.To address the issue, we have added the URL to outcome and can be fetch using <+artifact.metadata.url> .
+We were not adding the metadata to artifact outcome and few customer use \<+artifact.url> for deployment.To address the issue, we have added the URL to outcome and can be fetch using \<+artifact.metadata.url> .
 
 CDS-43301
 
@@ -7460,7 +7460,7 @@ PL-21667 Accounts list with greater speed during transitions from one to another
 
 - The Perspective Preview section was changed to ensure that the correct table is queried. A check was added, on whether it's a cluster perspective, before the query is issued. (CCM-8484)
 
-- Code was changed to add a check for a null value when converting conditions values to filter values. This resolves an issue in which 'label.key IN {""]' -> Empty Array is set to null. (CCM-8558)
+- Code was changed to add a check for a null value when converting conditions values to filter values. This resolves an issue in which 'label.key IN \{""]' -> Empty Array is set to null. (CCM-8558)
 
 - The Select Manifest modal now has the same width when moving from Select a Manifest Reference to Configure Manifest Runtime Inputs. (CDS-37913)
 

@@ -30,9 +30,9 @@ This topic explains how to add a verification provider Connector at the Project 
 4. In **Name**, enter a name for this connector. You will use this name when selecting the Verification Provider in Harness Environments and Workflows. If you plan to use multiple providers of the same type, ensure that you give each provider a different name.
 5. Click **Continue**.
 6. In the **Controller URL** field, enter the URL of the AppDynamic controller in the format:  
-   **http://<Controller\_Host>:<port>/controller </port>**  
+ `  **http://<Controller\_Host>:<port>/controller </port>**  `
    For example:  
-   **https://xxxx.saas.appdynamics.com/controller**
+ `  **https://xxxx.saas.appdynamics.com/controller**`
 
    ![](../static/connect-to-monitoring-and-logging-systems-12.png)
 

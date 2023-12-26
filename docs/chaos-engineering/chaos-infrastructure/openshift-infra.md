@@ -60,8 +60,8 @@ oc adm policy add-scc-to-user litmus-scc -z <SERVICE-ACCOUNT-NAME> --as system:a
 ```
 
 :::note
-- Replace `<CHAOS-NAMESPACE>` with the namespace where litmus is installed. (Here litmus)
-- Replace `<SERVICE-ACCOUNT-NAME>` with the name of hce service accounts.
+- Replace `\<CHAOS-NAMESPACE>` with the namespace where litmus is installed. (Here litmus)
+- Replace `\<SERVICE-ACCOUNT-NAME>` with the name of hce service accounts.
 :::
 
 

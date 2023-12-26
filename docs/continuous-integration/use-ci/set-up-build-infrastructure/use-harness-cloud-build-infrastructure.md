@@ -150,25 +150,25 @@ Steps running in containers can't communicate with [Background steps](../manage-
 
 You can start using Harness Cloud in minutes.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual editor" default>
-```
+
 
 1. Go to the pipeline where you want to use Harness Cloud build infrastructure.
 2. Select the **Build** stage, and then select the **Infrastructure** tab.
 3. Select **Harness Cloud** and the desired **Platform**.
 4. Save and run your pipeline.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML editor">
-```
+
 
 To enable Harness Cloud build infrastructure in your pipeline YAML, specify the `platform` and `runtime` in the `stage.spec`. For example:
 
@@ -227,10 +227,10 @@ pipeline:
 
 </details>
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::info
 

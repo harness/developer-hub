@@ -100,7 +100,7 @@ In **Artifact Details**, enter the following:
 3. For **Repository**, enter: **todolist-tutorial**. Note that if you select **Repository**, Harness loads any available repositories and displays them for selection.
 4. In **Artifact Directory**, enter a forward slash **/**.
 5. In **Artifact Details**, keep the default **Value**.
-6. In **Artifact Path**, leave the default Runtime Input value **<+input>** for that field. 
+6. In **Artifact Path**, leave the default Runtime Input value **\<+input>** for that field. 
 7. Select **Submit.**
 
    ![](static/ssh-ng-172.png)

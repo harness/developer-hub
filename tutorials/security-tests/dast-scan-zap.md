@@ -69,19 +69,19 @@ Do the following:
 
 Now that you've added a step to run the scan, it's a simple matter to ingest it into your pipeline. Harness provides a set of customized steps for popular scanners such as Semgrep. 
 
-```mdx-code-block
-import config_zap from './static/dast-scans-zap/config-zap-step-palette.png'
-```
 
-```mdx-code-block
+import config_zap from './static/dast-scans-zap/config-zap-step-palette.png'
+
+
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. In **Execution**, add a [**Zap**](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#scan-configuration) step.
 
@@ -119,14 +119,14 @@ import TabItem from '@theme/TabItem';
 
    5. [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) = **Critical**
 
-      ```mdx-code-block
+      
       <img src={config_zap} alt="Zap step palette example" height="50%" width="50%" />
-     ```
 
-```mdx-code-block
-  </TabItem>
+
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 Add a [**Zap**](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#scan-configuration) step and set the following fields based on the web app you want to scan. For example, suppose you're scanning version 8.1.2 of `https://myorg.org/welcome:9090`. You could then set the fields like this:
 
@@ -172,10 +172,10 @@ Here's a YAML example for scanning a [Google Gruyere instance](#set-up-your-app-
 
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 
 ### Run the pipeline and check your results

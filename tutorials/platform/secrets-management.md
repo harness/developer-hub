@@ -3,10 +3,10 @@ sidebar_position: 6
 hide_table_of_contents: true
 title: Use secrets managers
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 In this tutorial, we'll walk you through the process of safely storing and accessing sensitive information like API keys and credentials. You'll learn best practices while gaining hands-on experience to ensure your secrets remain protected. Let's dive into the world of Harness secrets management.
 
@@ -43,10 +43,10 @@ Your browser sends information securely to Harness Manager using HTTPS. Harness 
 This feature is behind a Feature Flag and is available only to our paid customers. 
 :::
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="AWS KMS">
-```
+
 ## Before you begin
 
 Verify that you have the following:
@@ -124,10 +124,10 @@ If you are NOT using the default organization and project, make sure to change t
 
 You can now use this secret manager in your pipeline.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="GCP KMS">
-```
+
 
 ## Before you begin
 
@@ -193,10 +193,10 @@ If you are NOT using the default organization and project, make sure to change t
 
 You can now use this secret manager in your pipeline.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Hashicorp">
-```
+
 ## Before you begin
 
 Verify that you have the following:
@@ -252,10 +252,10 @@ If you are NOT using the default organization and project, make sure to change t
 
 You can now use this secret manager in your pipeline.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="AWS Secret Manager">
-```
+
 ## Before you begin
 
 Verify that you have the following:
@@ -319,10 +319,10 @@ If you are NOT using the default organization and project, make sure to change t
 
 You can now use this secret manager in your pipeline.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="GCP Secret Manager">
-```
+
 ## Before you begin
 
 Verify that you have the following:
@@ -379,10 +379,10 @@ If you are NOT using the default organization and project, make sure to change t
 
 You can now use this secret manager in your pipeline.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Secrets and log sanitization
 

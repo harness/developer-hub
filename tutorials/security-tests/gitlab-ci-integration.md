@@ -17,10 +17,10 @@ sidebar_position: 60
 
 
 
-```mdx-code-block
+
 import create_pipeline from './static/trigger-tutorial/trigger-tutorial-00-create-pipeline.png'
 import add_sto_stage from './static/trigger-tutorial/trigger-tutorial-01-create-sto-stage.png'
-```
+
 
 This tutorial shows how you can set up a STO pipeline that runs a build and scans a code repository automatically in response to a Git event. You'll do the following:
 
@@ -46,17 +46,17 @@ To do this tutorial, you need the following:
 
 1. In the Harness UI, click **Security Tests**, then **Pipelines**, then **Create a Pipeline**. 
 
-   ```mdx-code-block
+   
     <img src={create_pipeline} alt="Create a new STO pipeline." height="40%" width="40%" />
-    ```
+    
 
 2. Enter a pipeline name and click **Start**. 
 
 3. In the visual editor, add a **Security Tests** stage. 
 
-    ```mdx-code-block
+    
     <img src={add_sto_stage} alt="Create a new STO pipeline." height="40%" width="40%" />
-    ```
+    
 
 4. In **About your Stage**, do the following:
 
@@ -79,7 +79,7 @@ To do this tutorial, you need the following:
 
    2. Target name  = ***your-name*-dvpwa**
 
-   3. Target variaent = **<+codebase.branch>**
+   3. Target variaent = **\<+codebase.branch>**
 
 7. Click **Apply Changes** to return to the pipeline, 
 
@@ -113,7 +113,7 @@ Add a trigger to your pipeline that that listens for incoming requests on a webh
 
    ![](./static/trigger-tutorial/trigger-tutorial-06-trigger-condition.png)
 
-5. In **Pipeline Input**, select **Git Branch** for the build type and enter **<+trigger.branch>** for the branch name. Then click **Create Trigger**. 
+5. In **Pipeline Input**, select **Git Branch** for the build type and enter **\<+trigger.branch>** for the branch name. Then click **Create Trigger**. 
 
    ![](./static/trigger-tutorial/trigger-tutorial-08-pipeline-input.png)
 

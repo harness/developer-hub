@@ -29,9 +29,9 @@ In addition to a Harness account, this tutorial requires the following:
   * [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci)
   * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 
-```mdx-code-block
+
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
+
 
 <CISignupTip />
 
@@ -47,14 +47,14 @@ To include CodeCov code coverage in a Harness CI pipeline, add a **Run** step th
 * Exports a `CODECOV_TOKEN` environment variable, which represents your [CodeCov Upload Token](https://docs.codecov.com/docs/codecov-uploader#upload-token).
 * Downloads and runs the [CodeCov Uploader](https://docs.codecov.com/docs/codecov-uploader) tool.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. In Harness, go to the **Build** stage in the pipeline where you want to include CodeCov.
 2. Select **Add Step**, select **Add Step** again, and then select **Run** in the Step Library.
@@ -91,10 +91,10 @@ import TabItem from '@theme/TabItem';
 
 For more information about **Run** step settings, go to [Use Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 In Harness, go to the pipeline where you want to include CodeCov, and add a `Run` step configured as follows:
 
@@ -148,10 +148,10 @@ The following YAML example describes a `Run` step that uses `pytest` and the Cod
 
 For more information about **Run** step settings, go to [Use Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Run the pipeline
 

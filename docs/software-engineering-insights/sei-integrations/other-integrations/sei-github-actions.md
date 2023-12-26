@@ -32,17 +32,17 @@ If you can't use OAuth, you must create a GitHub personal access token to config
 The 'Triage Rule' and 'Trend' fields are not supported on the Stacks and Aggregation option for the Github Actions integration.
 :::
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 ## Configure the integration
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
-```
+
 
 To use a personal access token, paste the token in Enter the Access Token.
 
@@ -56,10 +56,10 @@ To use a personal access token, paste the token in Enter the Access Token.
 6. Select repositories to associate with the integration or select **Ingest All Repos** to associate all current and future repos in your **GitHub organization**.
 7. Select **Finish** and **Save** the integration.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="satellite" label="Satellite">
-```
+
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Github server.
 
@@ -68,7 +68,7 @@ Make sure to select the satellite integration checkbox while configuring the int
 1. In **Integration Name**, enter a **Name** for the integration.
 2. Add a **Description** for the integration. (Optional)
 3. In the **URL** field, add the URL where your GitHub repository is deployed. 
-   For example, if your GitHub is deployed on a virtual machine (VM), add the URL in the format: `<GITHUB_INSTANCE_URL>`
+   For example, if your GitHub is deployed on a virtual machine (VM), add the URL in the format: `\<GITHUB_INSTANCE_URL>`
 
 4. Select **Next** and click on **Download the Config file** and save the **satellite.yml** file. Update it following the instructions here.
 
@@ -88,13 +88,12 @@ integrations:
 
 If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-troubleshooting-faqs).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 <details>
-
 <summary>List of supported widgets:</summary>
 
 Following widgets are supported for Github Action integration:
@@ -163,7 +162,7 @@ Follow these steps to set up the workflow:
 
 6. If there is an issue with the SEI endpoint (e.g., if the endpoint is down, 500 internal server error), and you want the workflow run to fail if artifacts are not sent to SEI, use the -f flag in the curl command. For example:
 
-   For example: `curl -f <REQUEST>`
+   For example: `curl -f \<REQUEST>`
 
 7. Refer to the metadata below to request and ingest the artifact data from GitHub Actions into SEI.
 

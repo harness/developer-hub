@@ -52,9 +52,9 @@ This topic shows you how to import a Template to the CD module.
 5. Enter a **Name** for your Template.
 6. In **Version Label**, enter a version for the Template.
 7. In **Git Connector**, select or create a Git Connector to connect to your Git repo. For steps, see [Code Repo Connectors](https://harness.helpdocs.io/category/xyexvcc206-ref-source-repo-provider).
-   
-   <details>
-   <summary>
+
+<details>
+<summary>
    IMPORTANT: Connector must use the Enable API access option and Token
 
    </summary>
@@ -67,7 +67,7 @@ This topic shows you how to import a Template to the CD module.
 
    ![](./static/import-a-template-from-git-26.png)
 
-   </details>
+</details>
 
 
 

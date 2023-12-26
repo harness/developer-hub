@@ -4,10 +4,10 @@ description: Use Background steps to run multiple PostgreSQL instances.
 sidebar_position: 30
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 This topic explains how to use **Background** steps to run multiple PostgreSQL instances in a Harness CI pipeline.
 
@@ -22,19 +22,19 @@ Add one **Background** step for each PostgreSQL service you need to run.
 
 For the **Background** steps to run the PostgreSQL services, the build environment must have the necessary binaries. Depending on the stage's build infrastructure, **Background** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Background step Container Registry and Image settings](./background-step-settings.md#container-registry-and-image).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. Go to the **Build** stage in the pipeline where you want to add the **Background** steps.
 2. On the **Execution** tab, select **Add Step**, and select the **Background** step from the Step Library.
 3. Configure the [Background step settings](./background-step-settings.md). Required settings depend on your build infrastructure.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 * Enter a **Name** and note the **Id**. You need the **Id** to call the service later in your pipeline.
 * Add the following **Environment Variables**:
@@ -44,10 +44,10 @@ For the **Background** steps to run the PostgreSQL services, the build environme
 * Add a **Port Binding**, and then set the **Host Post** to `5432` and the **Container Port** to the desired port for this database instance, such as `5433`.
 * Configure [other settings](./background-step-settings.md), such as **Command**, **Entry Point**, **Container Registry**, and **Image**, if needed.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="k8s" label="Self-hosted Kubernetes cluster">
-```
+
 
 * Enter a **Name** and note the **Id**. You need the **Id** to call the service in later steps in this stage.
 * For **Container Registry** and **Image**, select a Docker connector and specify a [PostgreSQL Docker image](https://hub.docker.com/_/postgres).
@@ -60,10 +60,10 @@ For the **Background** steps to run the PostgreSQL services, the build environme
    * `POSTGRES_PASSWORD`: Password for the specified user/database. You can use an expression to [reference a Harness text secret](/docs/platform/secrets/add-use-text-secrets).
 * Configure [other settings](./background-step-settings.md), if needed.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 4. Select **Apply Changes** to save the step.
 5. Add additional **Background** steps for each PostgreSQL instance you want to run. Make sure each instance has a different port binding. For example, if the first **Background** step was `5433`, the second one could be `5434`.
@@ -73,17 +73,17 @@ For the **Background** steps to run the PostgreSQL services, the build environme
 
 <docimage path={require('./static/background_in_parallel.png')} />
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 In Harness, go to the pipeline where you want to run the PostgreSQL services. In the `CI` stage, add one `Background` step for each PostgreSQL database, and group the steps to run in parallel. Required [Background step settings](./background-step-settings.md) depend on your build infrastructure.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 ```yaml
             steps:
@@ -114,10 +114,10 @@ In Harness, go to the pipeline where you want to run the PostgreSQL services. In
                           "5432": "5434"
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="k8s" label="Self-hosted Kubernetes cluster">
-```
+
 
 ```yaml
             steps:
@@ -154,10 +154,10 @@ In Harness, go to the pipeline where you want to run the PostgreSQL services. In
                           POSTGRES_PASSWORD: password
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::tip
 
@@ -165,10 +165,10 @@ For the `POSTGRES_PASSWORD`, you can use an expression to [reference a Harness t
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Test the PostgreSQL services
 
@@ -176,18 +176,18 @@ You can add a [Run step](../run-ci-scripts/run-step-settings.md) to confirm your
 
 For the **Run** step to run `psql` commands, the build environment must have the necessary binaries. Depending on the stage's build infrastructure, **Run** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Run step Container Registry and Image settings](../run-ci-scripts/run-step-settings.md#container-registry-and-image).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. In the same **Build** stage as your **Background** steps, add a **Run** step after (*not* in parallel with) your **Background** steps.
 2. Configure the [Run step settings](../run-ci-scripts/run-step-settings.md#run-step-settings). Required settings depend on your build infrastructure.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 * Enter a **Name**.
 * For **Shell**, select **Sh**.
@@ -209,10 +209,10 @@ For the **Run** step to run `psql` commands, the build environment must have the
 
 * Configure [other settings](../run-ci-scripts/run-step-settings.md#run-step-settings), if needed.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="k8s" label="Self-hosted Kubernetes cluster">
-```
+
 
 * Enter a **Name**.
 * For **Container Registry** and **Image**, select a Docker connector and specify a [PostgreSQL Docker image](https://hub.docker.com/_/postgres).
@@ -235,25 +235,25 @@ For the **Run** step to run `psql` commands, the build environment must have the
 
 * Configure [other settings](../run-ci-scripts/run-step-settings.md#run-step-settings), if needed.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 3. Select **Apply Changes** to save the step.
 4. Run your pipeline to test your PostgreSQL services. You can monitor and review build logs on the [Build details page](../viewing-builds.md). Once you've confirmed that the services run as expected, you can configure the rest of your pipeline. Note that **Background** steps don't persist across stages.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 In the same `CI` stage where you added the `Background` steps, add a `Run` step after the `Background` steps. Make sure the `Run` step *isn't* in the `-parallel` group. Required [Run step settings](../run-ci-scripts/run-step-settings.md) depend on your build infrastructure.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 ```yaml
               - step:
@@ -276,10 +276,10 @@ psql -U POSTGRES_USER -d FIRST_DATABASE_NAME -h FIRST_BACKGROUND_STEP_ID -p FIRS
 psql -U POSTGRES_USER -d SECOND_DATABASE_NAME -h SECOND_BACKGROUND_STEP_ID -p SECOND_BACKGROUND_STEP_CONTAINER_PORT
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="k8s" label="Self-hosted Kubernetes cluster">
-```
+
 
 ```yaml
               - step:
@@ -304,10 +304,10 @@ psql -U POSTGRES_USER -d FIRST_DATABASE_NAME -h localhost -p FIRST_BACKGROUND_ST
 psql -U POSTGRES_USER -d SECOND_DATABASE_NAME -h localhost -p SECOND_BACKGROUND_STEP_CONTAINER_PORT
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::tip
 
@@ -317,17 +317,17 @@ For the `POSTGRES_PASSWORD`, you can use an expression to [reference a Harness t
 
 After adding the `Run`step, run your pipeline to test your PostgreSQL services. You can monitor and review build logs on the [Build details page](../viewing-builds.md). Once you've confirmed that the services run as expected, you can configure the rest of your pipeline. Note that `Background` steps don't persist across stages.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Pipeline YAML examples
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 ```yaml
 pipeline:
@@ -389,10 +389,10 @@ pipeline:
             spec: {}
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="k8s" label="self-hosted Kubernetes cluster">
-```
+
 
 ```yaml
 pipeline:
@@ -464,10 +464,10 @@ pipeline:
                       psql -U postgres -d test1 -h localhost -p 5434
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Troubleshooting: Failed to get image entrypoint
 

@@ -6,11 +6,11 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/android
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
+
 
 <ctabanner
   buttonText="Learn More"
@@ -32,17 +32,17 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 ## Specify architecture
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 You can build and test Android apps on a Linux or Mac platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) build infrastructure.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="h1" label="Linux" default>
-```
+
 
 ```yaml
   stages:
@@ -60,10 +60,10 @@ You can build and test Android apps on a Linux or Mac platform on [Harness Cloud
             spec: {}
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="h2" label="macOS">
-```
+
 
 To use M1 machines with Harness Cloud, use the `Arm64` architecture.
 
@@ -85,22 +85,22 @@ To use M1 machines with Harness Cloud, use the `Arm64` architecture.
 
 If you need to use Intel-based architecture, [Rosetta](https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment) is pre-installed on Harness Cloud's M1 machines. If you need to use it, add the prefix `arch -x86_64` to commands in your scripts. Keep in mind that running apps through Rosetta can impact performance. Use native Apple Silicon apps whenever possible to ensure optimal performance.
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
+</Tabs>
+
+
+
+</TabItem>
   <TabItem value="selfhosted" label="Self-hosted">
-```
+
 
 You can build Android apps on a Linux or Mac platform on self-hosted [build infrastructures](/docs/category/set-up-build-infrastructure), including Kubernetes clusters, VMs, and local runners.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="sh1" label="Linux" default>
-```
+
 
 This example sets up a Linux platform on a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures/).
 
@@ -123,10 +123,10 @@ This example sets up a Linux platform on a [Kubernetes cluster build infrastruct
               os: Linux
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="sh2" label="macOS">
-```
+
 
 To configure a self-hosted macOS build infrastructure, go to [Set up a macOS VM build infrastructure with Anka Registry](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry) or [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
 
@@ -152,22 +152,22 @@ This example uses a VM build infrastructure:
 
 If you need to use Intel-based architecture and [Rosetta](https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment) is not already installed on your build infrastructure machines, you can use a **Run** step to [install this dependency](#install-dependencies). Keep in mind that running apps through Rosetta can impact performance. Use native Apple Silicon apps whenever possible to ensure optimal performance.
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
 </Tabs>
-```
+
+
+
+</TabItem>
+</Tabs>
+
 
 ## Install dependencies
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 Many Android packages, such as command-line tools and an emulator, are already installed on Harness Cloud Linux machines. For more information about preinstalled tools and libraries, go to the [Harness Cloud image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
@@ -184,10 +184,10 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                       bundle update
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="selfhosted" label="Self-hosted">
-```
+
 
 Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
 
@@ -209,19 +209,19 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                       bundle exec fastlane add_plugin firebase_app_distribution
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Cache dependencies
 
 Add caching to your stage.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 Use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) by adding `caching` to your `stage.spec`.
 
@@ -249,10 +249,10 @@ Cache Intelligence supports Gradle. If you're using Gradle and your dependencies
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="selfhosted" label="Self-hosted">
-```
+
 
 With self-hosted build infrastructures, you can:
 
@@ -290,10 +290,10 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     archiveFormat: Tar
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Build and run tests
 
@@ -303,10 +303,10 @@ If you're using Kotlin, you can improve your unit test times with  Harness' [Tes
 
 Harness CI also supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 ```yaml
               - step:
@@ -339,10 +339,10 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                           - "*/build/test-results/.*xml"
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="selfhosted" label="Self-hosted">
-```
+
 
 ```yaml
               - step:
@@ -379,17 +379,17 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                           - "*/build/test-results/.*xml"
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Specify version
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 Android packages, including Android SDK tools and and [fastlane](https://docs.fastlane.tools/), are pre-installed on Harness Cloud machines. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
@@ -459,10 +459,10 @@ If you need to install additional versions, use a **Run** step. These examples u
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 Specify the desired Android Docker image tag in your steps. There is no need for a separate install step when using Docker.
 
@@ -520,19 +520,19 @@ These examples use [faberNovel/docker-android](https://github.com/faberNovel/doc
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Deploy to the Google Play Store
 
 The following examples use [fastlane](https://docs.fastlane.tools/) to deploy an app to the Google Play Store. These are intended as examples only. They do not provide complete firebase configuration or app distribution requirements. To learn more about app distribution, go to the Google documentation on [Firebase App Distribution](https://firebase.google.com/docs/app-distribution) and the fastlane documentation on [Deploying to Google Play using fastlane](https://docs.fastlane.tools/getting-started/android/release-deployment/).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 ```yaml
               - step:
@@ -547,10 +547,10 @@ The following examples use [fastlane](https://docs.fastlane.tools/) to deploy an
                       fastlane action upload_to_play_store
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="selfhosted" label="Self-hosted">
-```
+
 
 ```yaml
               - step:
@@ -567,19 +567,19 @@ The following examples use [fastlane](https://docs.fastlane.tools/) to deploy an
                       fastlane action upload_to_play_store
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Full pipeline examples
 
 The following pipeline examples install dependencies, cache dependencies, and build and test an Android app.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) and [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
@@ -654,10 +654,10 @@ pipeline:
             - YOUR_CACHE_PATH
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="selfhosted" label="Self-hosted">
-```
+
 
 This pipeline uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures) and [Save and Restore Cache from S3 steps](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache).
 
@@ -762,10 +762,10 @@ pipeline:
                     archiveFormat: Tar
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Next steps
 

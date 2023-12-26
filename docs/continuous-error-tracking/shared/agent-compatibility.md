@@ -1,9 +1,9 @@
 # Continuous Error Tracking Agent compatibility
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 
 This article provides a list of technologies that can be used with the Continuous Error Tracking (CET) Agent. These technologies include operating systems (OS), programming languages, third-party software, and tools, along with their respective versions.

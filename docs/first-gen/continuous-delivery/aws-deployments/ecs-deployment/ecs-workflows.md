@@ -71,7 +71,7 @@ If you are using Infrastructure Definitions, the dialog will look like this:![](
    ![](./static/ecs-workflows-18.png)
 	 
 8. Complete the following fields.
-	1. **ECS Service Name** - By default, the ECS service will be named using a concatenation of the Harness Application, Service, and Environment names. You can change the name here using text or a variable. Enter **${** in the field to see a list of all of the variables available.![](./static/ecs-workflows-19.png)
+	1. **ECS Service Name** - By default, the ECS service will be named using a concatenation of the Harness Application, Service, and Environment names. You can change the name here using text or a variable. Enter **$\{** in the field to see a list of all of the variables available.![](./static/ecs-workflows-19.png)
 	2. **Same as already running instances** - This field displays the number of desired *ECS service instances* for this stage. By default, the ECS service will be set up using 2 ECS service instances even if the field contains **0**.During deployment, only one old version of the application will be kept. If there are more than one, Harness will reduce their instances to 0.
 	3. **Fixed** - Click this option to fix the specific number of ECS service instances to use for this stage. The **Fixed Instances Count** field will appear, where you can enter the value.
 	:::note

@@ -5,9 +5,9 @@ description: Introducing SLOs and how to measure and manage your SLOs leveraging
 
 # Manage SLOs using Prometheus metrics
 
-```mdx-code-block
+
 import DelegateInstall from '/tutorials/platform/install-delegate.md';
-```
+
 
 ## Background on Service Level Objectives
 
@@ -143,7 +143,7 @@ Click Save. Can also name this journey that a user or system will be taking on b
 
 ![My SLO](static/first-slo-tutorial/my_slo.png)
 
-Click Continue. Now you are ready to wire in the Service Level Indicator [SLI] that feed into this SLO. Since the test_summary0_sum{} metric has a consistent upward trend, this can be used to simulate a latency metric. Now you are ready to configure wiring in Prometheus to Harness.
+Click Continue. Now you are ready to wire in the Service Level Indicator [SLI] that feed into this SLO. Since the test_summary0_sum\{} metric has a consistent upward trend, this can be used to simulate a latency metric. Now you are ready to configure wiring in Prometheus to Harness.
 
 Configure SLI queries -> + New Health Source
 
@@ -188,14 +188,14 @@ When configuring the SLI, can set this to a Threshold based metric. The Objectiv
 Metric for valid requests: Prometheus Metric [was connected during the connecting step].
 
 - Objective Value: 0.60
-- SLI value is good if: <=
+- SLI value is good if: \<=
 - Consider missing data: Bad
 
 ![SLI Config](static/first-slo-tutorial/sli_config.png)
 
 ### Set SLO Target
 
-Click Continue to set up the SLO Target [based on the SLI] and [Error Budget](https://www.atlassian.com/incident-management/kpis/error-budget) [amount of time system can fail] Policy. A goal we can set is that 50% of requests need to be <= to our Objective Value e.g this is our SLI. Since we are setting 50% of the target, we are also stating that 50% of the week if we set a rolling 7 day period can be included in our Error Budget which is indicated by Harness.
+Click Continue to set up the SLO Target [based on the SLI] and [Error Budget](https://www.atlassian.com/incident-management/kpis/error-budget) [amount of time system can fail] Policy. A goal we can set is that 50% of requests need to be \<= to our Objective Value e.g this is our SLI. Since we are setting 50% of the target, we are also stating that 50% of the week if we set a rolling 7 day period can be included in our Error Budget which is indicated by Harness.
 
 ![SLO Target](static/first-slo-tutorial/slo_target.png)
 

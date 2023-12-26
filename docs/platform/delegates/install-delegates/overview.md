@@ -3,11 +3,11 @@ title: Delegate installation options
 description: Install Harness Delegates using Helm, Terraform, Kubernetes, or Docker
 sidebar_position: 1
 ---
-```mdx-code-block
+
 import DelegateInstall from '/tutorials/platform/install-delegate.md';
 import InitScript from './install-a-delegate-with-3-rd-party-tool-custom-binaries.md';
 import CustomImage from './build-custom-delegate-images-with-third-party-tools.md';
-```
+
 
 ## Install the default delegate
 

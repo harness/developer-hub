@@ -52,7 +52,7 @@ deny[msg] {
 }
 ```
 
-In the REGO scrpit we use `stage.spec.idpScorecard.orderService[_]` to fetch the [Harness service](https://developer.harness.io/docs/get-started/key-concepts#services) ID mentioned in the annotation `harness.io/cd-serviceId: <SERVICE_IDENTIFIER>`. If you have followed the onboarding guide then this annotation is auto ingested in your `catalog-info.yaml` or-else you have to manually add it. 
+In the REGO scrpit we use `stage.spec.idpScorecard.orderService[_]` to fetch the [Harness service](https://developer.harness.io/docs/get-started/key-concepts#services) ID mentioned in the annotation `harness.io/cd-serviceId: \<SERVICE_IDENTIFIER>`. If you have followed the onboarding guide then this annotation is auto ingested in your `catalog-info.yaml` or-else you have to manually add it. 
 
 #### Success: 
 

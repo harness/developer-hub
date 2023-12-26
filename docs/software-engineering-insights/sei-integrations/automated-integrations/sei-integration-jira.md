@@ -24,17 +24,17 @@ Due to the scope of visibility required, consider using a managed service accoun
 1. Create an Atlassian API token. For instructions, go to the Atlassian documentation on [Managing API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).
 2. Make sure to copy the token somewhere that you can retrieve it when you configure the integration.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 ## Configure the integration
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
-```
+
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **Integrations** under **Data Settings**.
@@ -52,10 +52,10 @@ import TabItem from '@theme/TabItem';
 
 To integrate with the on-premises Jira instances, you must username and password authentication and an [Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="satellite" label="Satellite">
-```
+
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Atlassian server.
 
@@ -130,7 +130,7 @@ adfs_username: <ADFS_USERNAME>
 adfs_password: <ADFS_PASSWORD>
 ```
 
-Replace `<ADFS_PASSWORD>` with the actual password for the specified ADFS username. Ensure the rest of the file remains unchanged.
+Replace `\<ADFS_PASSWORD>` with the actual password for the specified ADFS username. Ensure the rest of the file remains unchanged.
 
 * `authentication:` This field specifies the authentication method to be used, in this case, ADFS.
 
@@ -148,10 +148,10 @@ Replace `<ADFS_PASSWORD>` with the actual password for the specified ADFS userna
 
 If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Add the Salesforce mapping
 
