@@ -334,14 +334,14 @@ const config = {
           //  to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-25816ab7a-FdXSKTyIZaxyKQvaysTN0g",
           //  label: "Join Slack",
           //},
-          // {
-          //   // type: "search",
-          //   // position: "right",
-          //   // className: "searchBar",
-          //   // use customized coveo search on sidebar
-          //   type: 'custom-coveo-search',
-          //   position: 'right',
-          // },
+          {
+            // type: "search",
+            // position: "right",
+            // className: "searchBar",
+            // use customized coveo search on sidebar
+            type: 'custom-coveo-search',
+            position: 'right',
+          },
           {
             position: "right",
             // label: "Sign up",
