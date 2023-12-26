@@ -24,7 +24,7 @@ After your account has been created, you can sign in to your Harness account at 
 
 - After you install, follow these [instructions](/docs/self-managed-enterprise-edition/get-started/onboarding-guide#create-your-harness-account) to create your Harness Account on SMP.
 
-You can sign in to your Harness Account on SMP anytime at `http://<YOUR_DOMAIN_NAME>/auth/#/signin`.
+You can sign in to your Harness Account on SMP anytime at `http://\<YOUR_DOMAIN_NAME>/auth/#/signin`.
 
 ## Step 1. Review key concepts
 

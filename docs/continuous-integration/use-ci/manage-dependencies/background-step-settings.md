@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 Use Background steps to [manage dependent services](./dependency-mgmt-strategies.md) that need to run for the entire lifetime of a Build stage. For example, you can set up your pipeline to run multiple background services that implement a local, multi-service app.
 
@@ -38,7 +38,7 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 :::tip
 
-You can use the Background step **Id** to call services started by Background steps in later steps, such as commands in Run steps. For example, a cURL command could call `BackgroundStepId:5000` where it might otherwise call `localhost:5000`.
+If you are using a VM or a local runner build infrastructure where the background step is running a container, you can use the Background step **Id** to call services started by Background steps in later steps, such as commands in Run steps. For example, a cURL command could call `BackgroundStepId:5000` where it might otherwise call `localhost:5000`.
 
 <figure>
 
@@ -48,6 +48,8 @@ You can use the Background step **Id** to call services started by Background st
 </figure>
 
 If the Background step is inside a step group, you must include step group ID, such as `curl StepGroupId_BackgroundStepId:5000`, even if both steps are in the same step group.
+
+If the Background step runs directly on the host (such as with Harness Cloud build infrastructure) or in a Kubernetes cluster build infrastructure, do not use the step ID to reference Background steps. Instead, use `localhost:host_port`. For more information, go to [Port Bindings](#port-bindings).
 
 :::
 
@@ -93,10 +95,10 @@ Supply a list of arguments in `exec` format. **Entry Point** arguments override 
 
 If you want to add your **Entry Point** arguments to the image `ENTRYPOINT`, include both the image `ENTRYPOINT`, such as `docker-entrypoint.sh`, and your additional arguments in **Entry Point**.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 <figure>
 
 ![](./static/dind-background-step-entry-point.png)
@@ -104,10 +106,10 @@ If you want to add your **Entry Point** arguments to the image `ENTRYPOINT`, inc
 <figcaption><b>Entry Point</b> arguments in the Pipeline Studio Visual editor.</figcaption>
 </figure>
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```yaml
                     entrypoint:
@@ -115,10 +117,10 @@ If you want to add your **Entry Point** arguments to the image `ENTRYPOINT`, inc
                       - "--mtu=1450"
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::tip
 
@@ -130,10 +132,10 @@ In a Kubernetes cluster build infrastructure, you can use **Entry Point** to ove
 
 Enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script commands (beyond the image `ENTRYPOINT`) for this step. If the step runs in a container, the commands are executed inside the container.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="bash" label="Bash" default>
-```
+
 
 This Bash script example checks the Java version.
 
@@ -151,10 +153,10 @@ This Bash script example checks the Java version.
                       fi
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="powershell" label="PowerShell">
-```
+
 This is a simple PowerShell `Wait-Event` example.
 
 ```yaml
@@ -172,10 +174,10 @@ You can run PowerShell commands on Windows VMs running in AWS build farms.
 :::
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="pwsh" label="Pwsh">
-```
+
 
 This PowerShell Core example runs `ForEach-Object` over a list of events.
 
@@ -195,10 +197,10 @@ You can run PowerShell Core commands in pods or containers that have `pwsh` inst
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="sh" label="Sh">
-```
+
 
 In this example, the pulls a `python` image and executes a shell script (`Sh`) that runs `pytest` with code coverage.
 
@@ -219,10 +221,10 @@ In this example, the pulls a `python` image and executes a shell script (`Sh`) t
                       pytest -v --cov --junitxml="result.xml" test_api.py test_api_2.py test_api_3.py
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="python" label="Python">
-```
+
 
 If the `shell` is `Python`, supply Python commands directly in `command`.
 
@@ -237,10 +239,10 @@ This example uses a basic `print` command.
                     command: print('Hello, world!')
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::tip
 
@@ -291,12 +293,10 @@ If the service is running in a container, you can select an option to set the pu
 
 The host port and container port binding are similar to [port mapping in Docker](https://docs.docker.com/config/containers/container-networking/). Usually the ports are the same unless the default host port for the Background step is already in use by another local service or you are [running multiple instances of the same service](./multiple-postgres.md).
 
-Depending on the Build stage's **Infrastructure**, some steps might run directly on VMs while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running.
+Depending on the Build stage's **Infrastructure**, some steps might run directly on VMs while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running. For example, assume you create a Background step with the [Name and ID](#name-and-id) `myloginservice`. To call this service in later steps in the same stage, you use:
 
-For example, assume you create a Background step with the **Name** and **Id** `myloginservice`. To call this service in later steps in the same stage, you use:
-
-* `myloginservice:container_port` for containerized steps.
-* `localhost:host_post` for steps running directly on the build machine or in a Kubernetes cluster build infrastructure.
+* `myloginservice:container_port` for containerized steps, such as those running in self-hosted VM build infrastructures or running Docker images.
+* `localhost:host_post` for steps running in a Kubernetes cluster build infrastructure or directly on the build machine (such as a service running from a binary already installed on the host machine).
 
 :::info
 

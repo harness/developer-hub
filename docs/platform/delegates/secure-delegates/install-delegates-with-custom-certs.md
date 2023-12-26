@@ -4,10 +4,10 @@ description: How to install delegates with custom certificates.
 # sidebar_position: 10
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 This topic explains how to install Kubernetes, Docker, and Helm delegates with custom certificates.
 
@@ -31,10 +31,10 @@ import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
 
 <Addperm />
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="docker" label="Docker delegate" default>
-```
+
 
 To install a Docker delegate with custom certificates, do the following:
 
@@ -77,10 +77,10 @@ To install a Docker delegate with custom certificates, do the following:
      -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  harness/delegate:yy.mm.verno
    ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="k8s" label="Kubernetes delegate">
-```
+
 
 To install a Kubernetes delegate with custom certificates, do the following:
 
@@ -273,10 +273,10 @@ To add self-signed certificates for delegate upgrader, do the following:
                    defaultMode: 400
       ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="helm" label="Helm delegate">
-```
+
 
 1. Create a Kubernetes secret with the custom cert file.
 
@@ -312,10 +312,10 @@ To add self-signed certificates for delegate upgrader, do the following:
 
    This adds your volume mount to the `/ca-bundle` directory.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Install with custom truststore
 
@@ -387,10 +387,10 @@ For information on best practices for truststore creation, go to [Java Keystore 
 
 After the truststore file and custom certificates are configured, you're ready to install them in a Kubernetes or Docker delegate.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="docker" label="Docker delegate" default>
-```
+
 
 1. Mount the truststore file to the delegate container.
 2. Mount the custom certificates to the `/etc/pki/ca-trust/source/anchors/` directory.
@@ -415,10 +415,10 @@ After the truststore file and custom certificates are configured, you're ready t
      -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  harness/delegate:yy.mm.verno
    ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="k8s" label="Kubernetes delegate">
-```
+
 
 1. Use your custom truststore to create a secret.
 
@@ -762,7 +762,7 @@ spec:
                 name: my-secret-upgrader-config
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+

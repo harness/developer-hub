@@ -51,14 +51,14 @@ The URL of the Docker registry. This is usually the URL used for your [docker lo
 
 You can authenticate anonymously or by username and password.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="unpw" label="Username and password" default>
-```
+
 
 * **Username:** Enter the username for your Docker registry account.
 * **Password:** Provide a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets) containing the password or token corresponding with the **Username**.
@@ -73,17 +73,17 @@ For more information, go to the Docker documentation on [Docker Permissions](htt
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="anonymous" label="Anonymous">
-```
+
 
 If you use anonymous access for a Kubernetes deployment, make sure `imagePullSecrets` is removed from the container specification. This is standard Kubernetes behavior and not related to Harness specifically.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Select connectivity mode
 

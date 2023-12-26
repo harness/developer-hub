@@ -78,7 +78,7 @@ The following is a detailed list of exam objectives:
 | 11.1 | Develop proficiency in troubleshooting common issues within Harness                 |
 | 11.2 | Implement problem-solving strategies for diverse deployment and operational challenges |
 
-  
+
 </details>
 
 <br />

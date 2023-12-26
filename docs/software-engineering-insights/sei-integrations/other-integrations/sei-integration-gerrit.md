@@ -15,17 +15,17 @@ You must create HTTP credentials in Gerrit that you will use as an API key when 
 
 For more information, Go to [Generating HTTP credentials in Gerrit](https://gerrit-review.googlesource.com/Documentation/config-gerrit.html).
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 ## Configure the integration
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
-```
+
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Integrations** under **Data Settings**.
@@ -39,10 +39,10 @@ import TabItem from '@theme/TabItem';
    * **Description** and **Tags** are optional.
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="satellite" label="Satellite">
-```
+
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Gerrit server.
 
@@ -65,7 +65,7 @@ integrations:
 
 If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+

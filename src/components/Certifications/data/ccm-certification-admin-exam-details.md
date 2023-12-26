@@ -74,7 +74,7 @@ The following is a detailed list of exam objectives:
 | 9.2 | Collaborate with stakeholders to align cost management efforts with business goals. |
 | 9.3 | Stay updated with the latest cloud cost management trends, tools, and industry benchmarks. |
 
-  
+
 </details>
 
 <br />

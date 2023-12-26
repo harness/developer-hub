@@ -14,10 +14,10 @@ description: Tutorial to send notifiactions based on pipeline events.
   target="_self"
 />
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 This tutorial focuses on how to notify users of different pipeline events using popular notification methods.
 
@@ -41,20 +41,20 @@ This tutorial focuses on how to notify users of different pipeline events using 
 3. In **Pipeline Events**, select the events (pipeline or stages) that will trigger the notification.
 4. For stage-based events, select the stage name that you want to trigger the notification and click **Next**.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Email">
-```
+
 5. In **Notification Method**, select `Email`.
 6. For email notifications, simply type in the email addresses that you want to notify.
     - Enter multiple addresses as a comma-separated list. For example, `john.doe@example.io,qateam@example.io`.
 7. Additionally, use the user group that you created above to receive notifications. 
-8. Select **Finish** and your notification is created. 
+8. Select **Finish** and your notification is created.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Slack">
-```
+
 ### Prerequisite
 - Create a Slack webhook. For more information, go to the [sending messages using incoming webhooks](https://api.slack.com/messaging/webhooks) tutorial provided by Slack. 
 - Copy and store the webhook URL for further use. 
@@ -64,12 +64,12 @@ This tutorial focuses on how to notify users of different pipeline events using 
     - For example, `<+secrets.getValue("slackwebhookURL")>​`.
 7. Now additionally you can use the **user-group** created above, if it is associated with the slack channels to send notifications, for more information on the same follow the instructions mentioned [here](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#notify-slack-channels-in-user-groups)
 
-8. Select **Finish** and your notification is created. 
+8. Select **Finish** and your notification is created.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="PagerDuty">
-```
+
 ### Prerequisite
 - Create a PagerDuty [service key](https://support.pagerduty.com/docs/services-and-integrations) to integrate with Harness.  
 - Copy or store this key from PagerDuty's **Configuration** > **Services** > **Service Details dialog** > **Integrations** tab.
@@ -83,17 +83,17 @@ This tutorial focuses on how to notify users of different pipeline events using 
     ```
 7. Select **Finish** and your PagerDuty notification is created.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Microsoft Teams">
-```
+
 
 For steps on creating Microsoft Teams notifications, follow the detailed instructions [here](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#microsoft-teams-notifications) in Harness Docs.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Webhook">
-```
+
 
 In Harness you can use webhook notifications to inform an external application of a pipeline/stage event. 
 
@@ -111,10 +111,10 @@ The expression must be evaluated in the context of the event. For example, stage
 7. Select **Finish** and your Webhook notification is created.
 
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 Now, in the pipeline, select **Run**. The pipeline executes and you'll receive notifications on the platform you set up. 
 

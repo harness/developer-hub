@@ -10,7 +10,7 @@ redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto
 ---
 
-```mdx-code-block
+
 import set_up_harness_20 from './static/set-up-harness-for-sto-20.png'
 import set_up_harness_20_NEW from './static/set_up_harness_20_NEW.png'
 import set_up_harness_21 from './static/set-up-harness-for-sto-21.png'
@@ -18,7 +18,7 @@ import set_up_harness_22 from './static/set-up-harness-for-sto-22.png'
 import set_up_harness_23 from './static/set-up-harness-for-sto-23.png'
 import set_up_harness_24 from './static/set-up-harness-for-sto-23_NEW.png'
 import set_up_harness_25 from './static/set-up-harness-for-sto-25.png'
-```
+
 
 This topic describes the steps you need to do to set up STO in your pipeline.
 
@@ -75,7 +75,7 @@ You need Administrative privileges at the Account level (Account Admin role) to 
 :::
 
 <details>
-  <summary>Assign Security Testing Roles: Default Workflow</summary>
+<summary>Assign Security Testing Roles: Default Workflow</summary>
 
 
 1. Select **Account Settings** (left menu) > **Access Control**.
@@ -116,7 +116,7 @@ Kubernetes and Docker infrastructures might also require a Docker-in-Docker back
 Executing builds in a Kubernetes cluster is useful when you want to run ephemeral builds-at-scale in your own infrastructure. When running builds in a Kubernetes cluster, each stage executes in a pod, and the stage's steps share the pod's resources.
 
 <details>
-  <summary>Kubernetes Delegate Requirements</summary>
+<summary>Kubernetes Delegate Requirements</summary>
 
 * Number of pods: 3 (two pods for the Harness Delegate, the remaining pod for scanning infrastructure).
 * Machine type: 4vCPU.
@@ -134,7 +134,7 @@ Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-e
 To set up the build infrastructure, you add a connector to your Kubernetes cluster and then install a Harness delegate.
 
 <details>
-  <summary>Install a Kubernetes Delegate: Default Workflow</summary>
+<summary>Install a Kubernetes Delegate: Default Workflow</summary>
 
 <ol>
 	<li>Select <strong>Account Settings</strong> &gt; <strong>Account Resources</strong> &gt; <strong>Connector</strong>, then <strong>New Connector</strong>.</li>
@@ -164,7 +164,7 @@ To set up the build infrastructure, you add a connector to your Kubernetes clust
 	<li>In <strong>Connection Test</strong>, wait for &#34;Verification successful&#34; and then select <strong>Finish</strong>.</li>
 </ol>
 
-  
+
 </details>
 
 #### Install a local Docker delegate for STO
@@ -183,7 +183,7 @@ Harness includes a built-in Secrets Manager that enables you to store encrypted 
 In this step, you'll create a secret for your GitHub and DockerHub access tokens. Then you'll use the secret when you set up the connector to your GitHub repo.
 
 <details>
-  <summary>Create a Secret for your GitHub access token: Default Workflow</summary>
+<summary>Create a Secret for your GitHub access token: Default Workflow</summary>
 
 1. In your Github account, a [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has the following scopes:
 	* repo
@@ -208,11 +208,11 @@ In this step, you'll create a secret for your GitHub and DockerHub access tokens
 A Docker Hub connector is required to run a Docker-in-Docker service as described in [Set up the Security Tests stage](#set-up-security-tests-stage) below. It is also required for any pipeline that scans or uploads a built image.
 
 <details>
-  <summary>Create a Docker Hub Connector: Default Workflow</summary>
+<summary>Create a Docker Hub Connector: Default Workflow</summary>
 
 
 1. If you want to upload images to your Docker Hub repo, you'll need an access token. To do this:
-	1. Create a token: log in to your Docker Hub account and go to <https://hub.docker.com/settings/security>.
+	1. Create a token: log in to your Docker Hub account and go to [https://hub.docker.com/settings/security](https://hub.docker.com/settings/security).
 	2. [Create a secret](#create-a-secret) for your token.
 2. Go to the **Account Settings** > **Account Resources** page and select **Connectors**.
 3. Select **New Connector**. Under Artifact Repositories, select **Docker Registry**.
@@ -237,10 +237,10 @@ You also need a Git repo connector for any STO pipeline that scans a codebase. Y
  - [GitHub](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
  - [GitLab](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 
-To do the STO tutorials, point the connector at the following repo: <https://github.com/williamwissemann/dvpwa>
+To do the STO tutorials, point the connector at the following repo: [https://github.com/williamwissemann/dvpwa](https://github.com/williamwissemann/dvpwa)
 
 <details>
-  <summary>Create a Codebase Connector: Default Workflow</summary>
+<summary>Create a Codebase Connector: Default Workflow</summary>
 
 1. Go to the **Account Settings** > **Account Resources** page and select **Connectors**.
 2. Under Code Repositories, choose **GitHub**.
@@ -285,18 +285,18 @@ This workflow is covered in [Your first STO pipeline](/tutorials/security-tests/
 	 
 2. Select **Security Testing Orchestration** (top left) > **Pipelines** > **Create a Pipeline**.
 
-  ```mdx-code-block
+  
    <img src={set_up_harness_20_NEW} alt="Choose the STO module" height="50%" width="50%" />
-  ```
+  
 
 	 
 3. In Create New Pipeline:
 	1. For Name, enter **sto-pipeline-base**.
 	3. Select **Start**.
 	
-  ```mdx-code-block
+  
    <img src={set_up_harness_21} alt="Create the pipeline" height="75%" width="75%" />
-  ```
+  
 		 
 4. In About your Stage:
 	1. Select **Add Stage** and then **Security Tests**.
@@ -306,24 +306,24 @@ This workflow is covered in [Your first STO pipeline](/tutorials/security-tests/
 	   2. Connector = The connector you created in [Create a Codebase Connector](#create-a-codebase-connector) 
 	   3. Repository Name = **dvpwa**
 	
-  ```mdx-code-block
+  
    <img src={set_up_harness_22} alt="Set up the stage" height="50%" width="50%" />
-  ```
+  
 
 
 ### Set up the Security Tests stage
 
 1. In the **Overview** tab, under **Shared Paths**, select **Add** and enter the path `/var/run`.
 
-  ```mdx-code-block
+  
    <img src={set_up_harness_23} alt="Enter the shared path" height="75%" width="75%" />
-  ```
+  
 	 
 2. In the **Infrastructure** tab, select the infrastructure and specify the options based on the infrastructure type. 
 	
-  ```mdx-code-block
+  
    <img src={set_up_harness_24} alt="Define the build infrastructure" height="50%" width="50%" />
-  ```
+  
 
 <!-- 		 
 #### Add a Docker-in-Docker background service		 
@@ -337,17 +337,17 @@ In the **Execution** tab, do the following:
 4. Image = `docker:dind`
 5. Under Optional Configuration, select the **Privileged** checkbox.
    
-    ```mdx-code-block
+    
      <img src={set_up_harness_25} alt="Configure the background step" height="75%" width="75%" />
-    ```
+    
 
 
 ### Add a Bandit scanner step
 
-```mdx-code-block
+
 import set_up_harness_tut_select_variant_field_type from './static/sto-basics-tut-select-variant-field-type.png'
 import set_up_harness_26 from './static/configure-bandit-step.png'
-```
+
 
 
 1. In the Execution tab, select **Add Step** > **Security Tests** > **Bandit**.
@@ -358,15 +358,15 @@ import set_up_harness_26 from './static/configure-bandit-step.png'
 	
 	   With this setting, you will specify the variant — in this case, the branch name — when you execute the pipeline. 
 
-	   ```mdx-code-block
+	   
 	   <img src={set_up_harness_tut_select_variant_field_type} alt="Configure the background step" height="75%" width="75%" />
-	   ```
+	   
 	
 3. Apply your changes, return to the Stage, and **Save** the pipeline.
     
-	  ```mdx-code-block
+	  
 	   <img src={set_up_harness_26} alt="Configure the background step" height="50%" width="50%" />
-	   ```
+	   
 
 
 ## Run the pipeline (optional)

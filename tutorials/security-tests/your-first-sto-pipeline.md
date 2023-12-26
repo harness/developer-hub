@@ -43,9 +43,10 @@ You'll learn how to:
 5. Request an exemption ("ignore rule") for a specific issue.
 6. Approve the exemption. Once approved, the exemption won't fail the pipeline even if it equals or exceeds the severity threshold.
 
-<details open><summary> Review: what's supported in Harness STO</summary>
+<details open>
+<summary> Review: what's supported in Harness STO</summary>
 
-Go to [What's supported in Harness STO](/docs/security-testing-orchestration/whats-supported) for information about all supported STO features, infrastructures, and third-party scanners. 
+Go to [What's supported in Harness STO](/docs/security-testing-orchestration/whats-supported) for information about all supported STO features, infrastructures, and third-party scanners.
 
 </details>
 
@@ -70,9 +71,9 @@ This tutorial uses <a href="https://bandit.readthedocs.io/en/latest/">Bandit</a>
 
 ### Set up your pipeline
 
-```mdx-code-block
+
 import add_stage from './static/your-first-pipeline/add-security-tests-stage.png'
-```
+
 
 Do the following:
 
@@ -88,9 +89,9 @@ Do the following:
    
    3. In **Repository Name**, click the value type selector (tack button) and select **Runtime Input**. You'll specify the repo to scan when you run the pipeline. 
 
-      ```mdx-code-block
+      
       <img src={add_stage} alt="Go to account user settings" height="50%" width="50%" />
-     ```
+     
 
 3. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** for the infrastructure, OS, and architecture.  
    
@@ -100,25 +101,26 @@ Do the following:
 ### Add a Bandit scan step
 
 
-<details open><summary> Key concept: scan targets and variants</summary>
+<details open>
+<summary> Key concept: scan targets and variants</summary>
 
 Every STO scan has a specific [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
 - The name specifies the repository, image, or instance to scan.
-- The variant specifies the branch, tag, version, or other variant.  object it is set up to scan: a code repository, a container, or an instance. 
+- The variant specifies the branch, tag, version, or other variant.  object it is set up to scan: a code repository, a container, or an instance.
 
 </details> 
 
-```mdx-code-block
+
 import set_up_harness_26 from './static/your-first-pipeline/configure-bandit-step.png'
-```
-```mdx-code-block
+
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. In the Pipeline Studio, go to **Execution** and add a **Bandit** step to your pipeline.
 
@@ -132,12 +134,12 @@ import TabItem from '@theme/TabItem';
 
    3. Variant — Select **Runtime input** as the value type.
 
-      Every STO scan has a [target variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) that specifies the branch, tag, or other variant to scan. 
+      Every STO scan has a [target variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) that specifies the branch, tag, or other variant to scan.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 
  *  `type:` [`Bandit`](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference)
@@ -176,12 +178,13 @@ Here's a YAML example:
                         level: info
 ```
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
-<!-- details><summary> Key concept: scanner templates</summary>
+</TabItem>
+</Tabs>
+
+
+<!-- details>
+<summary> Key concept: scanner templates</summary>
 
 The Step Library includes a Security step for setting up scanners: open the step and configure the scan as a set of key/value pairs under **Settings**.
 
@@ -221,7 +224,8 @@ Now that you've set up the pipeline, you can run a scan and view the detected is
 
 ### Set the baseline
 
-<details open><summary> Key concept: baselines</summary> 
+<details open>
+<summary> Key concept: baselines</summary> 
 
 A _target baseline_ identifies the "prod" variant of the target, such as the `main` branch or the `latest` tag. Defining a baseline makes it easy to distinguish between “shift-right” issues in production targets and “shift-left” issues in downstream variants.
 
@@ -229,22 +233,22 @@ Note the following:
 
 - Harness strongly recommends that you <a href="/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines">specify a baseline for every target</a>. 
 
-- You can specify target baselines using regular expressions as well as fixed strings. Regular expressions are useful when the "prod" variant updates with each new release. 
+- You can specify target baselines using regular expressions as well as fixed strings. Regular expressions are useful when the "prod" variant updates with each new release.
 
 </details>
 
-```mdx-code-block
+
 import set_baseline from './static/your-first-pipeline/set-baseline.png'
-```
+
   
 As a developer, you want to ensure that you don't introduce any new issues when you merge into your upstream branch. To do this, you create a baseline for your test target and compare your scans against the baseline.
 
 1. Select **Security Test Orchestration** > **Test Targets**.
 2. Go to the target in the table and select **branch : **master**.
  
-  ```mdx-code-block
+  
   <img src={set_baseline} alt="Set the target baseline" height="50%" width="50%" />
-  ```
+  
 
 
 ### Compare baseline vs. downstream issues 
@@ -263,7 +267,8 @@ DEMO-001 has 5 security issues: 2 critical, 2 medium, 1 low. Note that 3 of thes
 
 ### Fix vulnerabilities
 
-<details open><summary>Key Concept: Issues and occurrences</summary>  
+<details open>
+<summary>Key Concept: Issues and occurrences</summary>  
 When Harness processes the security issues identified in a scan, it deduplicates the results. <i>Deduplication</i> is the aggregation of multiple occurrences with the same root cause into one issue. 
 
 Note the following as you troubleshoot and fix your security issues: 
@@ -295,7 +300,8 @@ The Issue Details pane has useful information for troubleshooting your security 
 	
    ![](./static/your-first-pipeline/sto-standalone-workflows-16-indiv-issue-details.png)
 
-<details open><summary>Key Concept: Issue details are derived from the external scanner</summary>  
+<details open>
+<summary>Key Concept: Issue details are derived from the external scanner</summary>  
 
 Many of the details you see for each issue are derived from the external scanner. These details can differ, depending on the scan tool you're using. In this tutorial we're using Bandit, which is a free, open-source scan tool. In general, paid scanners provide more extensive details (such as remediation steps) than free ones.
 
@@ -314,7 +320,8 @@ For more information, go to [Fix issues using AI-enhanced remediation steps](/do
 
 ### Fail pipelines on severity
 
-<details open><summary> Key concept: fail_on_severity</summary> 
+<details open>
+<summary> Key concept: fail_on_severity</summary> 
 
 Every STO scan step has a `fail_on_severity` setting. If any vulnerability with the specified severity or higher is found, the pipeline fails.
 
@@ -335,7 +342,7 @@ Exited with message: fail_on_severity is set to critical and that threshold was 
 
 ## Developer/Secops workflow: exemptions for specific issues
 
-```mdx-code-block
+
 import account_user_settings from './static/your-first-pipeline/go-to-account-user-settings.png'
 import return_to_project from './static/your-first-pipeline/switch-from-account-to-project.png'
 import confirm_secops_role from './static/your-first-pipeline/confirm-secops-role.png'
@@ -344,9 +351,10 @@ import request_exemption_details from './static/your-first-pipeline/request-exem
 import approve_exemption_requests from './static/your-first-pipeline/approve-exemption-requests.png'
 import exempted_button_in_security_tests from './static/your-first-pipeline/exempted-button-in-security-tests.png'
 import cancel_exemption_requests from './static/your-first-pipeline/cancel-exemption-requests.png'
-```
 
-<details open><summary> Key concept: Exemptions, requests, and approvals</summary>  
+
+<details open>
+<summary> Key concept: Exemptions, requests, and approvals</summary>  
 
 You can exempt known issues from  `fail_on_severity` so that they don't stop the pipeline even when a scan detects them. The following steps outline the workflow:
 
@@ -354,7 +362,7 @@ You can exempt known issues from  `fail_on_severity` so that they don't stop the
 
 2. The SecOps user approves the request or rejects it. Developer users can request exemptions, but only SecOps users can approve them.
 
-3. If the exemption is approved, and a future scan detects the exempted issue, the pipeline execution will not fail even if the issue meets the `fail_on_severity` threshold. 
+3. If the exemption is approved, and a future scan detects the exempted issue, the pipeline execution will not fail even if the issue meets the `fail_on_severity` threshold.
 
 </details>
 
@@ -363,23 +371,23 @@ In this section, you'll create an exemption as a developer and then approve it a
 1. Make sure that you have the SecOps role assigned to yourself:
 	1. Select the account link (left-most breadcrumb at the top). Then go to **Account Settings** (left menu) and select **Access Control**.
 
-      ```mdx-code-block
+      
       <img src={account_user_settings} alt="Go to account user settings" height="40%" width="40%" />
-      ```
+      
 
 	2. In the **Users** table, select your user profile.
 	3. Under Role Bindings, select **+Manage Role**.
 	4. Make sure that you have the **Security Testing SecOps** role assigned to yourself.
   
-      ```mdx-code-block
+      
       <img src={confirm_secops_role} alt="Return to project" height="50%" width="50%" />
-      ```
+      
 
 2. Go back to your project: Select your STO account in the left menu, then select **Project**, and then select the project with your STO pipeline.
 
-      ```mdx-code-block
+      
       <img src={return_to_project} alt="Return to project" height="60%" width="60%" />
-      ```
+      
      
 3. In the left navigation, select **Executions** and then select the last successful build you ran _before_ the failed build.  
 
@@ -389,9 +397,9 @@ In this section, you'll create an exemption as a developer and then approve it a
 	1. Select the critical issue in the issues table (bottom left) to open **Issue Details**.
 	2. Select **Request Exemption**.
   
-      ```mdx-code-block
+      
       <img src={request_exemption} alt="Request exemption" height="60%" width="60%" />
-      ```
+      
      
 	3. In **Request Exemption for Issue**, configure the exemption request as follows:
 		 
@@ -405,35 +413,35 @@ In this section, you'll create an exemption as a developer and then approve it a
 		
       5. Select **Create Request**.
        
-        ```mdx-code-block
+        
          <img src={request_exemption_details} alt="Request exemption details" height="60%" width="60%" />
-        ```
+        
        
        
 4. Select **Exemptions** in the left menu.
 
 5. In the Security Review page, select the "thumbs-up" buttons to approve both exemptions. These exemptions now move from **Pending** to **Approved**.
 
-   ```mdx-code-block
+   
    <img src={approve_exemption_requests} alt="Approve exemption requests" height="60%" width="60%" />
-   ```
+   
 
    
 6. Go back to your pipeline and run another build with the **DEMO-001** branch. When the build finishes, go to the **Security Tests** page.
 
 7. Select **Exempted** (far right, under **Security Executions**). Note that this button, like the Critical, High, and other buttons, acts as a toggle to show and hide specific issues in the issues table. If you select and unselect **Exempted**, the exempted issues switch between visible and hidden. 
 
-   ```mdx-code-block
+   
    <img src={exempted_button_in_security_tests} alt="Exempted button in Security Tests tab" height="60%" width="60%" />
-   ```
+   
 
 
 9. Select **Exemptions** in the left menu. Then select **Approved** to show the exemptions you created and approved.
 10. Select the Delete (**X**) buttons on the right to delete both exemptions.
 
-   ```mdx-code-block
+   
    <img src={cancel_exemption_requests} alt="Cancel exemption requests" height="60%" width="60%" />
-   ```
+   
 
 ## Congratulations!
 
@@ -578,7 +586,7 @@ After the pipeline executes, you can view all issues from all scanners in the **
 Here's the YAML of the integrated workflow example we examined in this tutorial.
 
 <details>
-  <summary>Integrated Workflow YAML</summary>
+<summary>Integrated Workflow YAML</summary>
 
 
 ``` yaml

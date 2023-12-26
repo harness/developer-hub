@@ -101,7 +101,7 @@ All connections and operations are performed by Harness Delegates. So we'll also
      - In **Personal Access Token**, click **Create or Select a Secret**.
      - Click **New Secret Text**.
      - In **Secret Name**, enter a name for the secret like **github-pat**.
-     - In **Secret Value**, paste in a GitHub Personal access token. When you're logged into GitHub, these are typically listed at <https://github.com/settings/tokens>. For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
+     - In **Secret Value**, paste in a GitHub Personal access token. When you're logged into GitHub, these are typically listed at [https://github.com/settings/tokens](https://github.com/settings/tokens). For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
      - Ensure you PAT has the **repo** scope selected:
 
        ![](static/repoScope.png)
@@ -112,8 +112,8 @@ All connections and operations are performed by Harness Delegates. So we'll also
 
    Expand the section below to learn more about installing delegates.
 
-   <details>
-   <summary>Install a new delegate</summary>
+<details>
+<summary>Install a new delegate</summary>
 
    1. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
    2. In the **New Delegate** dialog, in **Select where you want to install your Delegate**, select **Kubernetes**.
@@ -165,7 +165,7 @@ All connections and operations are performed by Harness Delegates. So we'll also
 
    1. Select **Verify** to make sure that the delegate is installed properly.
 
-   </details>
+</details>
 
 9. Back in **Set Up Delegates**, you can select the new Delegate.
    In the list of Delegates, you can see your new Delegate and its tags.

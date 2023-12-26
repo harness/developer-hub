@@ -23,21 +23,23 @@ Configure the **WinRM Credential** settings as follows:
      5. **Skip Cert Check**: Select to skip the certificate check. When connected over HTTPS, the client doesn't validate the server certificate. 
      6. **WinRM Port**: Leave the default port or enter a new port if needed.
 
-        :::info
+:::info
 
         The default port for SSL is **5986**. If you haven't selected the **Use SSL** option, the default port is **5985**. Harness switches ports depending on whether or not SSL is enabled.
 
-        :::
-   * **[Kerberos](https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview?source=recommendations)** (recommended)
+:::
+   ***[Kerberos](https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview?source=recommendations)** (recommended)
      
      
-     :::info
+:::info
+
      You must add the Kerberos startup script to the Harness Delegate YAML for the connection to succeed.
 
-     <details>
-     <summary>Add the Kerberos startup script to the delegate YAML</summary>
+   <details>
 
-     1. Open `delegate.yaml` in a text editor.
+   <summary>Add the Kerberos startup script to the delegate YAML</summary>
+
+  1. Open `delegate.yaml` in a text editor.
      2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
         ```
         - name: INIT_SCRIPT  
@@ -51,7 +53,7 @@ Configure the **WinRM Credential** settings as follows:
     
         :::
   
-        ```
+        ```yaml
         - name: INIT_SCRIPT
           value: |-
            # Set up kerberos
@@ -87,14 +89,14 @@ Configure the **WinRM Credential** settings as follows:
            echo 'password' | kinit USERNAME@KERBEROS.DOMAIN
            klist
         ```
-     
-     
-     </details>
 
-     :::
-     
-     Enter the following authentication details:  
-     1. **Principal**: Enter the account name associated with the Kerberos account. 
+
+   </details>
+
+:::
+
+ Enter the following authentication details:  
+    1. **Principal**: Enter the account name associated with the Kerberos account. 
      2. **Realm**: Enter a realm. A realm is a logical network served by a single Kerberos database and a set of Key Distribution Centers (KDCs).
      3. **Use SSL**: (Recommended) Select to enable an HTTPS connection instead of an HTTP connection. 
      4. **Skip Cert Check**: Select to skip certificate check. When connected over an HTTPS connection, the client doesn't validate the server certificate. 

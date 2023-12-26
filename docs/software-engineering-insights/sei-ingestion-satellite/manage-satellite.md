@@ -4,10 +4,10 @@ description: Guide on how to download, install, and run the Ingestion Satellite 
 sidebar_position: 4
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 This topic outlines the steps to update and manage the versions of the Ingestion Satellite using Docker and Kubernetes.
 
@@ -15,10 +15,10 @@ This topic outlines the steps to update and manage the versions of the Ingestion
 
 Use these commands if you need to update the Ingestion Satellite version.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Docker" label="Docker" default>
-```
+
 
 ```bash
 # Pull latest version
@@ -37,10 +37,10 @@ docker run -v   /local/path/to/satellite.yml:/levelops/config.yml   -d levelops/
 
 If you aren't able to execute the `docker pull` command, you can manually [download the Ingestion Satellite image](https://hub.docker.com/r/levelops/ingestion-satellite) from Docker Hub and install it.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="k8s" label="Kubernetes">
-```
+
 
 ```bash
 # Find the name of the satellite deployment.
@@ -56,9 +56,9 @@ If you didn't change the default values in the template, the `deployment-name` i
 kubectl rollout restart deployment levelops-satellite
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 Keeping the Ingestion Satellite up-to-date ensures that you benefit from the latest features, improvements, and security patches.

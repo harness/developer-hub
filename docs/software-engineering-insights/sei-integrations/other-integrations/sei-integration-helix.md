@@ -19,17 +19,17 @@ To transmit data from Helix to SEI, you must create an SEI user in your Helix Co
 
 For more information, go to the Helix Core documentation on the [p4 user command](https://www.perforce.com/manuals/cmdref/Content/CmdRef/p4_user.html) and [p4 protect command](https://www.perforce.com/manuals/cmdref/Content/CmdRef/p4_protect.html#p4_protect).
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 ## Configure the integration
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
-```
+
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Integrations** under **Data Settings**.
@@ -49,10 +49,10 @@ import TabItem from '@theme/TabItem';
 5. Enter a **Name** for the integration. **Description** and **Tags** are optional.
 6. Finish configuration and save the integration.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="satellite" label="Satellite">
-```
+
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Helix server.
 
@@ -80,10 +80,10 @@ integrations:
 
 If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Add depot mappings
 

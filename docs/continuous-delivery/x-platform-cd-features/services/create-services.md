@@ -16,14 +16,14 @@ You can create services from:
 
 If you are new to Harness, review [Harness key concepts](/docs/get-started/key-concepts.md) and [create your first CD pipeline](/tutorials/cd-pipelines/kubernetes/manifest).
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Within a pipeline" label="Within a pipeline">
-```
+
 
 To create a service from inside of a pipeline, select the **Services** tab of a new CD stage, then select **New Service**.
 
@@ -35,30 +35,30 @@ When you select the service in a pipeline, you can select **Edit Service** to ed
 
 When you create the new service you define its **Service Definition**. For example, a Kubernetes **Service Definition** with a Kubernetes manifest and Docker artifact.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Outside a pipeline" label="Outside a pipeline">
-```
+
 
 To create a service from outside of a pipeline, you use **Services** in the navigation pane.
 
 ![](./static/services-and-environments-overview-09.png)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="From organization or account" label="From organization or account">
-```
+
 
 You can create a service at an account or organization level from the Pipeline Studio, APIs, or Terraform.
 
-```mdx-code-block
+
 import Tabs2 from '@theme/Tabs';
 import TabItem2 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs2>
   <TabItem2 value="Pipeline Studio" label="Pipeline Studio">
-```
+
 To create a service at an account or organization level, go to **Organization Resources** **>Services**.
 
 Creating an account level service enables you to manage the service globally across the organizations and projects within the account. 
@@ -80,7 +80,7 @@ Go to [add a stage template](/docs/platform/templates/add-a-stage-template.md) f
 Expand the section below to see a sample account level service YAML.
 
 <details>
-   <summary>Account level service YAML</summary>
+<summary>Account level service YAML</summary>
 
 ```
 service:
@@ -122,7 +122,7 @@ service:
 Expand the section below to see a sample organization level service YAML.
 
 <details>
-   <summary>Organization level service YAML</summary>
+<summary>Organization level service YAML</summary>
 
 ```
 service:
@@ -169,26 +169,26 @@ service:
 ```
 </details>
 
-```mdx-code-block
+
   </TabItem2>
   <TabItem2 value="API" label="API">
-```
+
 For information about creating a service API, go to [create a service](https://apidocs.harness.io/tag/Services#operation/createServiceV2).
 
 The `orgIdentifier` and `projectIdentifier` field definitions are optional, and depend on where you want to create the service. For example, if you create a service at an account level, you will not need org or project identifiers in the post API call payload.
 
-```mdx-code-block
+
   </TabItem2>
   <TabItem2 value="Terraform" label="Terraform">
-```
+
 For information about creating a Harness platform service, go to [harness_platform_service (Resource)](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
 The `org_id` and `project_id` field definitions are optional, and depend on where you want to create the service. For example, if you create a service at an account level, you will not need org or project identifiers.
 
-Expand the section below to see a sample platform service in Terraform. 
+Expand the section below to see a sample platform service in Terraform.
 
 <details>
-   <summary>Harness platform service</summary>
+<summary>Harness platform service</summary>
 
 ```
 resource "harness_platform_service" "example" {
@@ -247,14 +247,14 @@ resource "harness_platform_service" "example" {
 ```
 </details>
 
-```mdx-code-block
+
   </TabItem2>    
 </Tabs2>
-```
-```mdx-code-block
-  </TabItem>    
+
+
+</TabItem>    
 </Tabs>
-```
+
 
 ## Using runtime inputs and expressions with services
 

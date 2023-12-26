@@ -17,7 +17,7 @@ The pipeline consists of:
 - A rolling deployment strategy that uses execution steps to deploy to an existing Kubernetes cluster.
 - A final cleanup step to delete the Kubernetes deployment at the end of the pipeline.
 
-<docimage path={require('./static/0c8d610885c229a7d1802482ded35c47693dcdc1f025341577999349964c8cc6.png')} width="60%" height="60%" title="Click to view full size image" />  
+<docimage path={require('./static/0c8d610885c229a7d1802482ded35c47693dcdc1f025341577999349964c8cc6.png')} width="60%" height="60%" title="Click to view full size image" />
 
 <details>
 <summary>Here's the YAML for the example pipeline:</summary>

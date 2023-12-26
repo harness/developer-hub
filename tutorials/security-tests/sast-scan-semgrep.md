@@ -87,15 +87,15 @@ Do the following:
 
 Now you will add a step that runs a scan using the local Semgrep container image maintained by Harness. 
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. Go to **Execution** and add a **Run** step. 
 
@@ -122,12 +122,12 @@ import TabItem from '@theme/TabItem';
 
       2. Limit Memory = **4096Mi** 
       
-         You might want to reserve more memory to [speed up the scan](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines). This setting applies to Kubernetes and Docker infrastructures only. 
+         You might want to reserve more memory to [speed up the scan](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines). This setting applies to Kubernetes and Docker infrastructures only.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 Add a `Run` step to your `SecurityTests` stage and configure it as follows:
 
@@ -174,20 +174,20 @@ Here's an example:
                         memory: 4096Mi
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 
 ### Add the Semgrep (ingest) step
 
 Now that you've added a step to run the scan, it's a simple matter to ingest it into your pipeline. Harness provides a set of customized steps for popular scanners such as Semgrep. 
 
-   ```mdx-code-block
+   
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. In **Execution**, add a **Semgrep** step after your **Run** step.
 
@@ -207,10 +207,10 @@ Now that you've added a step to run the scan, it's a simple matter to ingest it 
 
    5. [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) = **Critical**
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 Add a step after the `Run` step and configure it as follows:
 
@@ -258,10 +258,10 @@ Here's a YAML example:
 
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 
 ### Run the pipeline and check your results
@@ -272,7 +272,7 @@ Here's a YAML example:
 
    - Under **Codebase**, enter the repository and branch to scan.
 
-   - Under **Stage: <_stage_name_>**, enter the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) you want to use. 
+   - Under **Stage: \<_stage_name_>**, enter the [target name and variant](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) you want to use. 
 
     If you're scanning the [example repository](https://github.com/williamwissemann/dvpwa) mentioned above, enter `dvpwa` for the repository and target, and `master` for the branch and variant.
    

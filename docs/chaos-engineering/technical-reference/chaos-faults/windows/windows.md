@@ -170,7 +170,7 @@ This fault helps determine how resilient an application is when the system time 
 Windows EC2 blackhole chaos results in access loss to the given target hosts or IPs by injecting firewall rules.
 
 <accordion color="green">
-    <summary>Use cases</summary>
+<summary>Use cases</summary>
     
 Windows EC2 blackhole chaos:
 - Degrades the network without the EC2 instance being marked as unhealthy (or unworthy) of traffic. This can be resolved by using a middleware that switches the traffic based on certain SLOs (performance parameters). 
@@ -186,7 +186,7 @@ Windows EC2 blackhole chaos:
 EC2 windows CPU hog induces CPU stress on the AWS Windows EC2 instances using Amazon SSM Run command.
 
 <accordion color="green">
-    <summary>Use cases</summary>
+<summary>Use cases</summary>
 
 EC2 windows CPU hog:
 - Simulates the situation of a lack of CPU for processes running on the instance, which degrades their performance. 
@@ -202,7 +202,7 @@ EC2 windows CPU hog:
 Windows EC2 memory hog induces memory stress on the target AWS Windows EC2 instance using Amazon SSM Run command.
 
 <accordion color="green">
-    <summary>Use cases</summary>
+<summary>Use cases</summary>
 
 Windows EC2 memory hog:
 - Causes memory stress on the target AWS EC2 instance(s).

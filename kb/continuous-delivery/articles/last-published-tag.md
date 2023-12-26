@@ -3,7 +3,7 @@ description: KB - Gain a deep understanding of <+lastPublished.tag> and its beha
 title: "Mastering <+lastPublished.tag>: Unleashing its Power with Confidence"
 ---
 
-# Mastering <+lastPublished.tag>: Unleashing its Power with Confidence
+# Mastering \<+lastPublished.tag>: Unleashing its Power with Confidence
 Harness' `<+lastPublished.tag>` expression offers incredible convenience, allowing for effortless deployment of the latest version published to your artifact servers. But like any powerful tool, it requires a deep understanding to avoid potential pitfalls and unlock its true potential. This blog post delves into the intricacies of `<+lastPublished.tag>`, exploring its inner workings, potential quirks, and best practices for deploying with confidence.
 
 ## Unveiling the Power
@@ -12,7 +12,7 @@ Imagine a scenario where you manage multiple versions of your application image 
 * `v{TIMESTAMP}-dev` for development builds
 * `v{GIT_TAG}-stable` for production
 
-Now, you want to deploy the latest dev version to a test environment. This is where <+lastPublished.tag> shines!
+Now, you want to deploy the latest dev version to a test environment. This is where \<+lastPublished.tag> shines!
 
 Within your run form, you simply specify `<+lastPublished.tag>.regex(*-dev)`. This clever expression performs three key actions:
 

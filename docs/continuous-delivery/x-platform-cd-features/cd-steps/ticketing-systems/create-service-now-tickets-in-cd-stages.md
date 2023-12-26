@@ -157,7 +157,7 @@ For standard use cases, the custom table being used should allow access to this 
 
 This section describes how to use custom tables via the Harness ServiceNow app in the ServiceNow store.
 
-:::notes
+:::\notes
 
 - Cross-scope privileges are required to be added for the ServiceNow user only when using custom tables with templates (via the Harness app on the ServiceNow store).
 - The store app is only certified to be used with Incident, Problem, Change Request, and Change Task tables by the ServiceNow certification team.

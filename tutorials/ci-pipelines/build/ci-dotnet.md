@@ -6,11 +6,11 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/dotnet
 ---
 
-```mdx-code-block
+
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <ctabanner
   buttonText="Learn More"
@@ -35,10 +35,10 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 You can use a Linux or Windows platform to build and test C# (.NET Core) apps. These examples use Linux build infrastructure.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 ```yaml
  stages:
@@ -56,10 +56,10 @@ You can use a Linux or Windows platform to build and test C# (.NET Core) apps. T
             spec: {}
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="selfhosted" label="Self-hosted">
-```
+
 
 There are several self-hosted build infrastructure options. This example uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures).
 
@@ -82,17 +82,17 @@ There are several self-hosted build infrastructure options. This example uses a 
               os: Linux
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Install dependencies
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 The .NET Core SDK and other .NET libraries are pre-installed on Harness Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). You can use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install additional dependencies or run `dotnet restore`.
 
@@ -107,11 +107,11 @@ The .NET Core SDK and other .NET libraries are pre-installed on Harness Cloud ru
                       dotnet add package Newtonsoft.json --version 12.0.1
 ```
 
-```mdx-code-block
+
 </TabItem>
 
 <TabItem value="Self-hosted">
-```
+
 
 You can use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies or run commands such as `dotnet restore`.
 
@@ -127,19 +127,19 @@ You can use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-s
                       dotnet add package Newtonsoft.json --version 12.0.1
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Cache dependencies
 
 Add caching to your Build (`CI`) stage.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 Cache your .NET dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add caching to your `stage.spec`:
 
@@ -155,10 +155,10 @@ Cache your .NET dependencies with [Cache Intelligence](/docs/continuous-integrat
             - ~/.local/share/NuGet/cache
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 With self-hosted build infrastructures, you can:
 
@@ -204,19 +204,19 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Build and run tests
 
 Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build and run your tests.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 ```yaml
               - step:
@@ -231,10 +231,10 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                       dotnet test --no-build --verbosity normal
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 ```yaml
               - step:
@@ -251,10 +251,10 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                       dotnet test --no-build --verbosity normal
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Visualize test results
 
@@ -264,10 +264,10 @@ You can use a converter to output compatible JUnit XML reports, such as [NUnit t
 
 For your pipeline to produce test reports, you need to modify the **Run** step that runs your tests. Make sure the `command` generates JUnit XML reports and add the `reports` specification.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 ```yaml
               - step:
@@ -297,10 +297,10 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
                           - results.xml
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 ```yaml
               - step:
@@ -334,10 +334,10 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
                           - results.xml
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Run tests with Test Intelligence
 
@@ -345,10 +345,10 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
 
 With this feature flag enabled, you can use Run Tests steps to [run unit tests with Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Harness Cloud" default>
-```
+
 
 ```yaml
               - step:
@@ -376,10 +376,10 @@ With this feature flag enabled, you can use Run Tests steps to [run unit tests w
                             - results.xml
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Self-Hosted">
-```
+
 
 ```yaml
               - step:
@@ -409,10 +409,10 @@ With this feature flag enabled, you can use Run Tests steps to [run unit tests w
                             - results.xml
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Test splitting
 
@@ -420,10 +420,10 @@ Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/
 
 ## Specify version
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 The .NET SDK is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
@@ -499,10 +499,10 @@ On Windows platforms, you might also need to run the [setup-msbuild](https://git
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 Specify the desired [.NET SDK image](https://mcr.microsoft.com/en-us/product/dotnet/framework/sdk/tags) tag in your steps. There is no need for a separate install step when using Docker.
 
@@ -559,19 +559,19 @@ On Windows platforms, you might also need to [install Microsoft Build Tools into
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Full pipeline examples
 
 The following full pipeline examples are based on the partial examples above.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
@@ -651,10 +651,10 @@ pipeline:
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector), Kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
@@ -766,10 +766,10 @@ pipeline:
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Next steps
 

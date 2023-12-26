@@ -38,10 +38,8 @@ The Terraform Cloud connector uses a [Terraform Cloud API token](https://develop
 
 To add the Terraform Cloud connector, do the following:
 
-```mdx-code-block
 import Tabs1 from '@theme/Tabs';
 import TabItem1 from '@theme/TabItem';
-```
 
 <Tabs1>
   <TabItem1 value="YAML" label="YAML" default>
@@ -71,10 +69,8 @@ connector:
 </details>
 
 
-```mdx-code-block
   </TabItem1>
   <TabItem1 value="API" label="API">
-```
 
 Create the Terraform Cloud connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
@@ -103,10 +99,8 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
 </details>
 
 
-```mdx-code-block
   </TabItem1>
   <TabItem1 value="Pipeline Studio" label="Pipeline Studio">
-```
 
 <details>
 <summary>To add a Terraform Cloud connector, do the following:</summary>
@@ -121,12 +115,11 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
 7. Select **Finish**. Harness verifies the connection.
 
 <docimage path={require('./static/af1a2b13d480a67fa332fcbb06883622c35bfef4f1e0a00ab6a7ce98f05b5a2b.png')} width="60%" height="60%" title="Click to view full size image" />
+
 </details>
 
-```mdx-code-block
   </TabItem1>
 </Tabs1>
-```
 
 ## Terraform Cloud Run step
 

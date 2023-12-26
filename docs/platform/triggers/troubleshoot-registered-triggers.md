@@ -3,10 +3,10 @@ title: Troubleshoot failed triggers
 description: Troubleshoot failures of your registered triggers in the Harness platform.
 sidebar_position: 9
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 You can troubleshoot failures of your cURL or webhook initiated triggers in the Harness platform.
 
@@ -16,10 +16,10 @@ After a trigger runs, you can use the **Trigger Explorer** to troubleshoot cURL 
 
 To troubleshoot webhook failures, do the following:
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="cURL trigger" label="cURL trigger">
-```
+
 
 1. Open your Harness pipeline in Pipeline Studio.
 2. Select **Triggers**.
@@ -56,10 +56,10 @@ To troubleshoot webhook failures, do the following:
 In this example, you enter the `eventCorrelationId` value in the **Search** field.
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Webhook trigger" label="Webhook trigger">
-```
+
 
 1. Open your Harness pipeline in Pipeline Studio.
 2. Select **Triggers**.
@@ -87,7 +87,7 @@ This example uses the [tweety repo](https://github.com/michaelcretzman/linux_twe
 
 **Sample pipeline URL**
 
-`https://app.harness.io/ng/account/<YOUR_ACCOUNT_ID>/cd/orgs/default/projects/CD_Docs/pipelines/tweety/executions?storeType=INLINE`
+`https://app.harness.io/ng/account/\<YOUR_ACCOUNT_ID>/cd/orgs/default/projects/CD_Docs/pipelines/tweety/executions?storeType=INLINE`
 
 **Sample response**
 
@@ -97,10 +97,10 @@ This example uses the [tweety repo](https://github.com/michaelcretzman/linux_twe
 
 In this example, you enter the `data` value in the **Search** field.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Troubleshoot Git event triggers
 

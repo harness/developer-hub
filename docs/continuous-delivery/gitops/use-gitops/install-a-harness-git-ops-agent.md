@@ -236,7 +236,7 @@ The Harness GitOps Agent can work on environments where traffic is routed throug
 To enable proxy support for the Harness GitOps Agent in environments where traffic is routed through a proxy, configuration is required for two key components: the `agent itself and the argocd-repo-server. Follow these steps to set up proxy support for both components.
 
 1. **Agent:** Make sure that the agent is running in HTTP mode.  
-   To verify, check if the property/config `GITOPS_SERVICE_PROTOCOL` value is set to `HTTP1` in the `configmap({agentname}-agent)` present in the YAML after you create the agent.  
+   To verify, check if the property/config `GITOPS_SERVICE_PROTOCOL` value is set to `HTTP1` in the `configmap(\{agentname}-agent)` present in the YAML after you create the agent.  
    `GITOPS_SERVICE_PROTOCOL: HTTP1`
 2. **Agent:** Add a property/config `HTTPS_PROXY`, and add proxy details, such as URL, port, and auth details as its value in the configmap mentioned in Step 1. For example, `HTTPS_PROXY: "http://squid.proxy-test:3128"`.
 3. **Agent:** Add an environment variable `NO_PROXY` in the Harness GitOps Agent deployment with the following value.  
@@ -274,7 +274,7 @@ spec:
      - name: HTTP_PROXY
        value: "http://squid.proxy-test:3128"
      - name: NO_PROXY
-       value: localhost,argocd-repo-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST),({agentname}-agent)
+       value: localhost,argocd-repo-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST),(\{agentname}-agent)
  initContainers:
    ... other init containers spec ...
    - name: sops-helm-secrets-tool

@@ -40,14 +40,11 @@ With an encrypted text config file, you need to base64 decode it before you can 
 
 You can add config files to any Harness service deployment type (Kubernetes, ECS, etc.).
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
 <Tabs>
   <TabItem value="YAML" label="YAML" default>
-```
 
 Here's an example of a service with both a plain text and encoded config file added from the Harness file store. 
 
@@ -90,10 +87,8 @@ You can attach multiple files in a config file. Simply add a new line:
                     - /dev/file2.json
 ```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="Pipeline Studio" label="Pipeline Studio">
-```
 
 1. In the Harness service, in **Config Files**, select **Add Config File**.
 2. In **Config File Source**, select **Harness**, and select **Continue**.
@@ -104,10 +99,8 @@ You can attach multiple files in a config file. Simply add a new line:
 
 You will use the value you entered in **Config File Identifier** to reference the config file as an expression in the format `<+configFile.getAsString("CONFIG_FILE_ID")>`.
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
 </Tabs>
-```
 
 ## Multiple files can be added to one config file
 
@@ -153,7 +146,7 @@ In a Kubernetes manifest (in our example, a ConfigMap), you decode the base64 co
 Here's the values.yaml:
 
 ```yaml
-my_file:`my_file:<+configFile.getAsBase64("myFile")>`
+my_file:`my_file:\<+configFile.getAsBase64("myFile")>`
 ```
 
 Here's the ConfigMap:
@@ -197,10 +190,8 @@ You can override service config files at the environment level. When the service
 
 To override the config files for all services used with an environment, do the following.
 
-```mdx-code-block
 import Tabs1 from '@theme/Tabs';
 import TabItem1 from '@theme/TabItem';
-```
 
 <Tabs1>
   <TabItem1 value="YAML" label="YAML" default>
@@ -236,19 +227,15 @@ environment:
                   - account.Dpk
 ```
 
-```mdx-code-block
   </TabItem1>
   <TabItem1 value="Pipeline Studio" label="Pipeline Studio">
-```
 
 1. In **Environments**, select an environment.
 2. In the environment's **Configuration**, in **Config Files**, select **New Config File Override**.
 3. Follow the same steps as you would when adding a config file in a service and then select **Submit**.
 
-```mdx-code-block
   </TabItem1>
 </Tabs1>
-```
 
 ### Override config files for specific services
 
@@ -288,10 +275,8 @@ When you have Variables with the same name at two or more of the environment Ser
 
 In most cases, you can use the Copy command to copy the config files to your target hosts. 
 
-```mdx-code-block
 import Tabs2 from '@theme/Tabs';
 import TabItem2 from '@theme/TabItem';
-```
 
 <Tabs2>
   <TabItem2 value="YAML" label="YAML" default>
@@ -323,10 +308,8 @@ Here's an example of a Command step copying a config file to all target hosts.
 
 Note the use of `strategy.repeat.items: <+stage.output.hosts>`. This runs the command on all target hosts.
 
-```mdx-code-block
   </TabItem2>
   <TabItem2 value="Pipeline Studio" label="Pipeline Studio">
-```
 
 1. In your CD stage, add a **Command** step.
 2. In the Command step, in **Run the following commands**, select **Add Command**.
@@ -344,10 +327,8 @@ repeat:
 
 This runs the command on all target hosts.
 
-```mdx-code-block
   </TabItem2>
 </Tabs2>
-```
 
 
 

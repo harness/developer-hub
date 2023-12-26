@@ -4,10 +4,10 @@ description: Learn about container resource allocation logic and troubleshooting
 sidebar_position: 90
 ---
 
-```mdx-code-block
+
 import Kubevict from '/docs/continuous-integration/shared/k8s-pod-eviction-trbs.md';
 import Dhrl from '/docs/continuous-integration/shared/docker-hub-rate-limiting-trbs.md';
-```
+
 
 This topic describes container resource allocation logic, how you can configure resource limits, and troubleshooting for issues related to resource allocation.
 

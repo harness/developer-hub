@@ -22,9 +22,9 @@ To create a GCP workload identity provider, do the following:
 
 1. Set up an identity provider in the workload identity federation with the following configuration. For more information, go to [Manage workload identity pool providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#manage-providers) in the GCP documentation.
    
-   a. Name: <User_defined>
+   a. Name: \<User_defined>
 
-   b. Issuer: https://app.harness.io/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>
+   b. Issuer: `https://app.harness.io/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>`
 
    c. Attribute mapping:
 
@@ -38,7 +38,7 @@ To create a GCP workload identity provider, do the following:
    b. Select principles (identities that can access the service account).
 
    - Only identities matching the filter
-   - Select account_id = <YOUR_HARNESS_ACCOUNT_ID>
+   - Select account_id = \<YOUR_HARNESS_ACCOUNT_ID>
 
 3. Configure your GCP connector in Harness.
 

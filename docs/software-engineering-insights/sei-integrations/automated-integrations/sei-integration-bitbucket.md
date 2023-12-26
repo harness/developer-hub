@@ -18,15 +18,15 @@ The following permissions and settings are required to use the SEI Bitbucket int
 
 ## Configure the integration
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
-```
+
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Integrations** under **Data Settings**.
@@ -41,14 +41,13 @@ import TabItem from '@theme/TabItem';
    * Enter a **Name** for the integration.
    * The **Description** and **Tags** are optional.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="satellite" label="Satellite">
-```
+
 The Bitbucket Cloud integration does not support configuration using the Ingestion Satellite.
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```

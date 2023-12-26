@@ -7,9 +7,9 @@ redirect_from:
   - /docs/software-supply-chain-assurance/generate-sbom
 ---
 
-```mdx-code-block
+
 import SbomAbout from '/docs/software-supply-chain-assurance/shared/sbom-about.md';
-```
+
 
 <SbomAbout />
 

@@ -9,11 +9,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DindTrbs from '/docs/continuous-integration/shared/dind-bg-gha-trbs.md';
-```
+
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) are a GitHub feature that enable you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts.
 
@@ -51,17 +51,17 @@ You can use variable expressions for these values. For example, `credentials: <+
 
 :::
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual editor example">
-```
+
 
 ![A configured Plugin step with Settings variables.](./static/run-a-git-hub-action-in-cie-03.png)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML example" default>
-```
+
 
 ```yaml
               - step:
@@ -80,10 +80,10 @@ You can use variable expressions for these values. For example, `credentials: <+
                        credentials: <+stage.variables.GCP_SECRET_KEY_BASE64> ## This example uses a stage variable to store a secret.
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Private Action repos
 

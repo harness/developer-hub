@@ -82,7 +82,7 @@ Harness expects a JSON response, not simply text.In **Path**, you will define a 
 
  Enter the query string from your metric provider. 
 
-The resulting URL (**{base\_URL}/{validation\_path}**) is used to validate the connection to the metric provider. 
+The resulting URL (**\{base\_URL}/\{validation\_path}**) is used to validate the connection to the metric provider. 
 
 This query is invoked with the headers and parameters defined here.For example, in New Relic Insights, you can take the query from the **NRQL>** field and add it to the string **query?nrql=**, for example:
 

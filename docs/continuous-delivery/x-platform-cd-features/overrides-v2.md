@@ -84,14 +84,14 @@ Harness is also making the following improvements:
 
 ## Override types
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Manifests" label="Manifests" default>
-```
+
 You can override the following manifest types:
 
 - Values YAML
@@ -102,19 +102,19 @@ You can override the following manifest types:
 - TAS vars
 - TAS AutoScalar
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Config Files" label="Config Files">
-```
+
 
 Config files are completely overridden.
 
 Config files are a black box that can contain multiple formats and content, such as YAML, JSON, plain text, etc. Consequently, they cannot be overridden like values YAML files.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Variables" label="Variables">
-```
+
 Like config files, variables are completely overridden.
 
 You can use expressions to reference service variables. For example, `<+serviceVariables.VAR_NAME>`. 
@@ -123,18 +123,18 @@ You can reference service variables in your pipeline steps, values YAML, JIRA st
 
 For more information on variables, go to [Built-in and custom Harness variables reference](/docs/platform/Variables-and-Expressions/harness-variables).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Application Settings and Connection Strings" label="Application Settings and Connection Strings">
-```
+
 In [Azure App Service configuration](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial/#app-services-configuration), Web App settings **Application Settings** and **Connection Strings** can be passed as environment variables to the application code. 
 
-You can override **Application Settings** and **Connection Strings** from **Global Environment** overrides. 
+You can override **Application Settings** and **Connection Strings** from **Global Environment** overrides.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Override service, environment, and infrastructure settings
 

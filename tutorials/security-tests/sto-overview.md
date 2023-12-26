@@ -17,9 +17,9 @@ keywords: [STO]
   target="_self"
 />
 
-```mdx-code-block
+
 import WhatSTO from '/docs/security-testing-orchestration/get-started/overview.md';
-```
+
 
 <WhatSTO />
 

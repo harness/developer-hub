@@ -186,8 +186,8 @@ To add FireHydrant as a change source to a monitored service:
 
    For enhanced security, consider storing the authorization token in a Harness Secret, and then enter the Harness Security information in the **Authorization Token** field using the following formats:
 
-   - If you've created a Harness Secret at the project level: <+secrets.getValue(‘YourSecretId’)>
-   - If you've created a Harness Secret at the account level: <+secrets.getValue(‘account.YourSecretId’)>
+   - If you've created a Harness Secret at the project level: \<+secrets.getValue(‘YourSecretId’)>
+   - If you've created a Harness Secret at the account level: \<+secrets.getValue(‘account.YourSecretId’)>
 
   
    :::info important

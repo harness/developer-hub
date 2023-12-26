@@ -169,7 +169,7 @@ INFO   2018-10-09 16:59:51    Installing
 INFO   2018-10-09 16:59:51    List all existing deployed releases for release name: nginx-gcp-k8s-helm-rjogwmu  
 INFO   2018-10-09 16:59:51    Release: "nginx-gcp-k8s-helm-rjogwmu" not found
 ```
-This is the release name generated from our Helm Deploy step name of **${service.name}-${env.name}-${infra.helm.shortId}**.
+This is the release name generated from our Helm Deploy step name of **$\{service.name}-$\{env.name}-$\{infra.helm.shortId}**.
 
 Since this is the first deployment, an existing release with that name is not found, and a new release occurs.
 

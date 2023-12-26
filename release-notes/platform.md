@@ -5,13 +5,13 @@ tags: [NextGen, "platform"]
 date: 2023-12-19:T10:00:30
 sidebar_position: 3
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 import delete_project from './static/delete-project.png'
-```
+
 
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/platform/rss.xml" />
@@ -76,7 +76,7 @@ Below is further explanation for each type of secret manager Harness currently s
 ## Deprecation notice
 
 The following deprecated API endpoints will no longer be supported:
-- [GET | PUT | POST | DELETE] api/resourcegroup/{identifier}
+- [GET | PUT | POST | DELETE] api/resourcegroup/\{identifier}
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
@@ -208,6 +208,10 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 - The AIDA option wasn't visible in the UI on the Account Resources: Delegates page when you selected **Delegate Configurations**. (PL-42896)
 
    This issue has been resolved by updating the page styling. Harness removed width to prevent page overflow.
+
+- Fixed the replica count on the New Delegate modal. (PL-42912)
+
+- Fixed the Helm default values.yaml link on the New Delegate modal. (PL-42917)
 
 - The IP Allowlist page had a default value of 30 IPs per page. The IP Allowlist page list now has a value of 20 IPs per page. (PL-42934)
 
@@ -533,7 +537,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 #### New features and enhancements
 
--  The delegate Helm chart is now included in the delegate proxy configuration. You can pull the Helm chart from `https://<YOUR_LOADBALANCER_URL>/storage/harness-download/delegate-helm-chart/`. (PL-39190)
+-  The delegate Helm chart is now included in the delegate proxy configuration. You can pull the Helm chart from `https://\<YOUR_LOADBALANCER_URL>/storage/harness-download/delegate-helm-chart/`. (PL-39190)
 
 - The heartbeat interval that perpetual tasks use to test connectors has been increased from 10 minutes to 30 minutes. This change aims to reduce the number of errors logged due to failed heartbeats. The new heartbeat interval is used with any connectors that you create after this deployment. Tasks associated with existing connectors require migration to the new interval. Harness will migrate such perpetual tasks in all accounts in a phased manner. This activity does not require any action from you or other users of the platform. (PL-39399)
 
@@ -1484,9 +1488,9 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 - A warning message now appears in the UI when you delete a project or organization. Deletions require confirmation from the user. (PL-31292)
   
-  ```mdx-code-block
+  
   <img src={delete_project} alt="delete-project" height="150" width="400"></img>
-  ```
+  
 
   This enhancement prevents the accidental deletion of important projects or organizations and provides an extra layer of caution for users.
 
@@ -1899,7 +1903,7 @@ Delegate: 77431
 - Harness service variables now support dots (.). (PIE-4613)
 
   This is helpful when you have JSON/YAML files where you want to update the keys with some values. You can define variables for those keys in harness with (.) to access the keys. The expression to access a key would be:
-  <+variables.get("example.key")>
+  \<+variables.get("example.key")>
 
 - You can now drag the step details section and move it to the desired location. (PIE-3890)
 

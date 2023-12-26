@@ -82,11 +82,11 @@ To use Workflow variables, do the following:
   | **Fixed** | Select this option if the value of the variable specified here must not be changed. |
   | **Description** | Provide a description of the variable that lets others know its purpose and requirements. |
 
-2. In a Workflow step, use your variable by typing a dollar sign ($) and the first letter of your variable. The syntax for variable names is **${workflow.variables.*****name*****}**.
+2. In a Workflow step, use your variable by typing a dollar sign ($) and the first letter of your variable. The syntax for variable names is **$\{workflow.variables.*****name*****}**.
 
 Harness will load matching variable names.
 
-For example, if you created a variable named **Url**, the variable name is **${workflow.variables.Url}**.
+For example, if you created a variable named **Url**, the variable name is **$\{workflow.variables.Url}**.
 
 When you deploy the Workflow, by itself or as part of a Pipeline, the variables are displayed in the Workflow execution step.
 
@@ -94,7 +94,7 @@ If the variables require values, you will enter the values when you add the Work
 
 ### Notes
 
-**Workflow variable expressions in Services** — You can use Workflow variable expressions in a Harness Service, but Harness does not autocomplete Workflow variables in a Service like it does in a Workflow. You will need to manually enter the Workflow variable expression in the Service: **${workflow.variables.*****name*****}**.
+**Workflow variable expressions in Services** — You can use Workflow variable expressions in a Harness Service, but Harness does not autocomplete Workflow variables in a Service like it does in a Workflow. You will need to manually enter the Workflow variable expression in the Service: **$\{workflow.variables.*****name*****}**.
 
 ### Next Steps
 

@@ -15,10 +15,10 @@ title: Kustomize
   target="_self"
 />
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 <!---
 Import statements for CLI downloads
 <MacOSCLI />, <WindowsCLI />, <ARMCLI />, <AMDCLI />
@@ -46,10 +46,10 @@ bash <(curl -fsSL https://raw.githubusercontent.com/harness-community/scripts/ma
 
 :::
 
-```mdx-code-block
+
 <Tabs queryString="pipeline">
 <TabItem value="gitops" label="GitOps Workflow">
-```
+
 
 :::info
 
@@ -85,10 +85,10 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 - Select **New GitOps Agent**.
 - When are prompted with **Do you have any existing Argo CD instances?**, select **Yes** if you already have a Argo CD Instance, or else choose **No** to install the Harness GitOps Agent.
 
-```mdx-code-block
+
 <Tabs queryString="gitopsagent">
 <TabItem value="agent-fresh-install" label="Harness GitOps Agent Fresh Install">
-```
+
 
 - Select **No**, and then select **Start**.
 - In **Name**, enter the name for the new Agent.
@@ -103,10 +103,10 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 - Select **Continue** and verify the Agent is successfully installed and can connect to Harness.
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="existingargo" label="Harness GitOps Agent with existing Argo CD instance">
-```
+
 
 - Select **Yes**, and then select **Start**.
 - In **Name**, enter the name for the existing Agent CD Project.
@@ -119,10 +119,10 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
     ```
 - Once you have installed the Agent, Harness will start importing all the entities from the existing Argo CD Project.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Repositories
 
@@ -217,17 +217,17 @@ You've just learned how to use **Harness GitOps** to deploy an application using
 - Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="cd-pipeline" label="CD pipeline" queryString="pipeline">
-```
+
 
 You can choose to proceed with the tutorial either by using the command-line interface (Harness CLI) or the user interface (Harness UI).
 
-```mdx-code-block
+
 <Tabs queryString="interface">
 <TabItem value="cli" label="CLI">
-```
+
 
 ## Before you begin
 
@@ -246,22 +246,22 @@ Complete the following tasks:
 
 1. Download and configure the Harness CLI.
  
- ```mdx-code-block
+ 
  <Tabs queryString="cli-os">
  <TabItem value="macos" label="MacOS">
- ```
+ 
  
  <MacOSCLI />
- 
- ```mdx-code-block
- </TabItem>
+
+
+</TabItem>
  <TabItem value="linux" label="Linux">
- ```
  
- ```mdx-code-block
+ 
+ 
  <Tabs queryString="linux-platform">
  <TabItem value="arm" label="ARM">
- ```
+ 
  
  ```bash
  curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-arm64.tar.gz
@@ -269,11 +269,11 @@ Complete the following tasks:
  echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
  source ~/.bash_profile
  ```
- 
- ```mdx-code-block
- </TabItem>
+
+
+</TabItem>
  <TabItem value="amd" label="AMD">
- ```
+ 
  
  ```bash
  curl -LO https://github.com/harness/harness-cli/releases/download/v0.0.16-Preview/harness-v0.0.16-Preview-linux-amd64.tar.gz
@@ -281,16 +281,16 @@ Complete the following tasks:
  echo 'export PATH="'$(pwd)':$PATH"' >> ~/.bash_profile
  source ~/.bash_profile
  ```
- 
- ```mdx-code-block
- </TabItem>
+
+
+</TabItem>
  </Tabs>
- ```
- 
- ```mdx-code-block
- </TabItem>
+
+
+
+</TabItem>
  <TabItem value="windows"  label="Windows">
- ```
+ 
  
  a. Open Windows Powershell and run the following command to download the Harness CLI.
  
@@ -308,11 +308,11 @@ Complete the following tasks:
  ```
  
  d. Restart the terminal.
- 
- ```mdx-code-block
- </TabItem>
+
+
+</TabItem>
  </Tabs>
- ```
+ 
 
 2. Clone the forked **harnesscd-example-apps** repo and change the directory.
     ```bash
@@ -418,10 +418,10 @@ In Harness, services represent what you deploy to environments. You use services
 A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing and follow that up with CD for artifact deployment in production. A CD pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](https://developer.harness.io/docs/continuous-delivery/get-started/key-concepts/).
 
 
-```mdx-code-block
+
 <Tabs queryString="deployment">
 <TabItem value="canary" label="Canary">
-```
+
 
 A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
 
@@ -433,10 +433,10 @@ harness pipeline --file kustomize-guestbook/harnesscd-pipeline/canary-pipeline.y
 
 ![Canary](../static/kustomize-tutorial/canary.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="bg" label="Blue Green">
-```
+
 
 Blue Green deployments involve running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on a new service version in the stage environment first. Next, traffic is shifted from the prod environment to stage, and the previous service version running on prod is scaled down. Blue Green deployments are also referred to as red/black deployment by some vendors. For more information, go to [When to use Blue Green deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments).
 
@@ -448,10 +448,10 @@ harness pipeline --file kustomize-guestbook/harnesscd-pipeline/bluegreen-pipelin
 
 ![Blue Green](../static/kustomize-tutorial/bluegreen.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="rolling" label="Rolling">
-```
+
 
 Rolling deployments incrementally add nodes in a single environment with a new service version, either one node at a time or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
 
@@ -463,15 +463,15 @@ harness pipeline --file kustomize-guestbook/harnesscd-pipeline/rolling-pipeline.
 
 ![Rolling](../static/kustomize-tutorial/rolling.png)
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
 
-```mdx-code-block
+
+
 </TabItem>
 <TabItem value="ui" label="UI">
-```
+
 
 ## Before you begin
 
@@ -592,10 +592,10 @@ In Harness, services represent what you deploy to environments. You use services
 A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts/).
 
 
-```mdx-code-block
+
 <Tabs queryString="deploymentcdpipeline">
 <TabItem value="canary" label="Canary">
-```
+
 
 A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
 
@@ -612,10 +612,10 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 ![Canary](../static/kustomize-tutorial/canary.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="bg" label="Blue Green">
-```
+
 
 Blue Green deployments involve running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on a new service version in the stage environment first. Next, traffic is shifted from the prod environment to stage, and the previous service version running on prod is scaled down. Blue Green deployments are also referred to as red/black deployment by some vendors. For more information, go to [When to use Blue Green deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments).
 
@@ -632,10 +632,10 @@ Blue Green deployments involve running two identical environments (stage and pro
 
 ![Blue Green](../static/kustomize-tutorial/bluegreen.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="rolling" label="Rolling">
-```
+
 
 Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
 
@@ -652,15 +652,15 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 
 ![Rolling](../static/kustomize-tutorial/rolling.png)
 
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
+
+
+
+</TabItem>
+</Tabs>
+
 
 -  Finally, it's time to execute the pipeline. Select **Run**, and then select **Run Pipeline** to initiate the deployment.
 
@@ -699,7 +699,7 @@ You can integrate your own microservice application into this tutorial by follow
 
 - Voila! You're now ready to deploy your own application using Harness.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+

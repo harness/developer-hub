@@ -8,13 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import target_group_1 from './static/2-add-target-groups-06.png' 
 import target_group_2 from './static/2-add-target-groups-07.png' 
 import target_group_3 from './static/2-add-target-groups-08.png' 
 import target_group_4 from './static/2-add-target-groups-09.png' 
 import target_group_5 from './static/2-add-target-groups-10.png' 
-```
+
 
 :::info note
  While targets are often users, a target can be anything that can be uniquely identified. For example, a target can be a user, an application, a system, a machine, or any resource uniquely identified by an IP address, email ID, user ID, etc.
@@ -57,9 +57,9 @@ You can add individual targets from the Targets page or the Target Groups page.Â
 
 1. In **Criteria**, click **Edit**.
 
-    ```mdx-code-block
+    
     <img src={target_group_1} alt="The edit button next to Criteria." height="500" width="400" />
-    ```
+    
 
 1. From here, you can [**include or exclude specific targets**](#add-or-exclude-specific-targets), or you can set rules to [**add targets based on conditions**](#add-targets-based-on-conditions) you set.Â 
 
@@ -68,9 +68,9 @@ You can add individual targets from the Targets page or the Target Groups page.Â
 * To add specific targets, in **Include the following**, select the targets.
 * To exclude targets, in **Exclude the following**, select the targets.
 
-    ```mdx-code-block
+    
     <img src={target_group_2} alt="A screenshot of targets added to the Target Group Criteria." height="500" width="400" />
-    ```
+    
 
 ### Add targets based on conditions
 
@@ -107,15 +107,15 @@ To add targets based on conditions:
 3. In the second drop-down menu, select the operator to apply to the Target Name or Identifier.
 4. In the search bar, enter the value you want the Target Name or Identifier to match and click the **+** button to add it. The following shows an example of a rule that adds all targets with a Target Identifier ending in harness.io to the target group.
 
-    ```mdx-code-block
+    
     <img src={target_group_3} alt="An example of the target group Criteria page with a condition added." height="500" width="400" />
-    ```
+    
 
 5. Click **Save**. Targets that meet the criteria are now included in the target group.
 
-    ```mdx-code-block
+    
     <img src={target_group_4} alt="The Target Groups page with the new condition displayed." height="500" width="400" />
-    ```
+    
 
 When you add targets based on conditions, on the **Target Management:Targets** page, the target group is **not**displayed in the **Target Groups** column.
 
@@ -129,9 +129,9 @@ You can use Target Settings to include or exclude targets from a target group. C
     * **Add to Target Groups** to add a this target to groups 
     * **Exclude from Target Groups** to exclude a specific target 
 
-        ```mdx-code-block
+        
         <img src={target_group_5} alt="A screenshot of a target with the Target Groups tab opened." height="500" width="400" />    
-        ```
+        
 
     You can add or exclude the target to multiple groups at once.
 

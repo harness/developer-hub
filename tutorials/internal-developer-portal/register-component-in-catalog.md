@@ -214,15 +214,15 @@ spec:
 ### 10. Register with Harness IDP:
 To register this component with Harness IDP, you'll need to submit this YAML file to the appropriate **API** endpoint or Register the existing component using **UI**. 
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
 <TabItem value="UI">
-```
+
 #### Follow the steps below to use the Harness UI 
 
 1. Once the file is created in your git repo, copy the full URL to the file. For example, `https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml`.
@@ -242,10 +242,10 @@ import TabItem from '@theme/TabItem';
  ![](./static/finished-state.png)
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="API">
-```
+
 #### Using Harness Catalog API endpoint
 
 - Generate a Harness API Key as described in [Manage API keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys)
@@ -258,10 +258,10 @@ curl --location 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/loc
  --data-raw '{"type":"url","target":"https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml"}'
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### 11. The new component will be available in your catalog.
 

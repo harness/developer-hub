@@ -5,10 +5,10 @@ tags: [NextGen, "Delegate"]
 date: 2023-12-20T10:00
 sidebar_position: 4
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/delegate/rss.xml" />
 
@@ -96,6 +96,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 - When the feature flag `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` is enabled and a new user was added on the Account Access Control: Users page, the following message was displayed: "Invitation sent successfully", even though the user was added to the list. (PL-42860)
 
    This issue has been resolved, and the UI now displays "User added successfully".
+
+### Version 23.12.81808
+
+#### Hotfix
+
+- Fixed an issue where Shell Script steps with SSH were failing with `Error while reading variables to process Script Output. Avoid exiting from script early: 2: No such file` for newer delegate versions. (CDS-87415, ZD-55629, ZD-55690)
 
 ### Version 23.12.81804
 
@@ -584,7 +590,7 @@ With this feature flag enabled, you can use a GitHub App as the [primary authent
 
 - Introduced a validation to ensure that only repos that are allowed on the basis of `repoAllowList` can be set for pipelines, InputSets, and templates while using the [Edit Git details](/docs/platform/git-experience/configure-git-experience-for-harness-entities/#edit-git-details-for-a-pipeline) feature. (CDS-75828)
 
-- Fixed an issue where the Custom Remote Store did not clone a repo larger than 25Mb if provided in the execution script. With this fix, the Custom Remote Store now has a <=25Mb size validation on manifest files (not the entire repo). (CDS-75900)
+- Fixed an issue where the Custom Remote Store did not clone a repo larger than 25Mb if provided in the execution script. With this fix, the Custom Remote Store now has a \<=25Mb size validation on manifest files (not the entire repo). (CDS-75900)
 
 - Removed unnecessary wait time at the end of the initialize step, saving approximately 30 seconds. (CI-9122)
 
