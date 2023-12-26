@@ -86,6 +86,10 @@ The following deprecated API endpoints will no longer be supported:
 
 ### Fixed issue
 
+- Previously, user group names could only contain alphanumeric characters, `.`, `_`, and `-`. User groups created via Okta SCIM integration didn't include validations for this restriction. This issue was resolved by removing special character restrictions for user group names.  (PL-42535, ZD-53830, ZD-55294)
+
+   This item requires Harness Delegate version 23.08.820xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 - When Harness user groups were created during SCIM sync, dots were not converted to underscores in Harness for user group IDs. (PL-43576, ZD-55266)
 
    This issue has been resolved. Now, SCIM group names that contain dots are converted to underscores in Harness for group identifiers. For example, a SCIM group named "abc.xyz" is created as follows:

@@ -41,9 +41,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ### Harness version 1.17.x, Harness Delegate version 23.12.820xx
 
-#### Fixed issue
+#### Fixed issues
 
 - (CDS-83821)
+
+- Previously, user group names could only contain alphanumeric characters, `.`, `_`, and `-`. User groups created via Okta SCIM integration didn't include validations for this restriction. This issue was resolved by removing special character restrictions for user group names.  (PL-42535, ZD-53830, ZD-55294)
 
 ### Versions 23.12.81411, 23.12.81604, 23.12.81806
 
