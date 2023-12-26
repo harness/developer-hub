@@ -30,14 +30,14 @@ Both Harness CI and GitLab CI use workflows to organize builds. In Harness CI, t
 
 The following truncated examples provide a simple comparison of stage and step structure in GitLab CI and Harness CI.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="gitlab" label="GitLab CI">
-```
+
 
 ```yaml
 step1:
@@ -51,10 +51,10 @@ step1:
   - echo "this runs on openjdk"
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="harness" label="Harness" default>
-```
+
 
 ```yaml
     - stage:
@@ -72,10 +72,10 @@ step1:
                     command: echo "this runs on openjdk"
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 For more information about Harness terminology, features, and pipeline components, go to the [CI key concepts](../get-started/key-concepts.md).
 
@@ -112,10 +112,10 @@ Both Harness CI and GitLab CI workflows are written in YAML. Whereas GitLab work
 
 Here are YAML examples of complete workflows in GitLab CI and Harness CI.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="gitlab" label="GitLab CI">
-```
+
 
 ```yaml
 image: docker:latest
@@ -172,10 +172,10 @@ echo "Testing matrix"
       - PLATFORM: [windows, mac, linux]
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="harness" label="Harness" default>
-```
+
 
 ```yaml
 pipeline:
@@ -288,10 +288,10 @@ pipeline:
       value: someval
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 </details>
 
@@ -331,10 +331,10 @@ Harness integrates with many different types of repositories and providers. A co
 
 Both GitLab CI and Harness CI execute workflow stages in a specific order based on the YAML configuration.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="gitlab" label="GitLab CI">
-```
+
 
 ```
 stages:
@@ -343,10 +343,10 @@ stages:
   - deploy
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="harness" label="Harness" default>
-```
+
 
 ```yaml
   stages:
@@ -361,20 +361,20 @@ stages:
         ...
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 The following examples compare GitLab CI and Harness CI workflows with multiple stages.
 
 <details>
 <summary>YAML examples: Multi-stage pipelines</summary>
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="gitlab" label="GitLab CI">
-```
+
 
 ```yaml
 image: golang:latest
@@ -400,10 +400,10 @@ compile:
       - mybinaries
 
 ```
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="harness" label="Harness" default>
-```
+
 
 ```yaml
  stages:
@@ -459,10 +459,10 @@ compile:
            - mybinaries
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 </details>
 
@@ -472,10 +472,10 @@ In GitLab CI, you can use environment variables to control the behavior of jobs 
 
 This range of variable definition is also possible in Harness CI. In addition to built-in variables, you can define variables within individual pipelines, stages, and steps as well as at the project, organization, and account levels.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="gitlab" label="GitLab CI">
-```
+
 
 This GitLab example demonstrates use of a pre-defined variable as well as a custom variable definition.
 
@@ -491,10 +491,10 @@ variables:
   SA_PASSWORD: $SA_PASSWORD
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="harness" label="Harness">
-```
+
 
 To reference project, organization, and account variables, you use variable expressions formatted as: `<+variable.[scope].[variable_id]>`. Here are the syntax formats for variables declared at different levels:
 
@@ -534,10 +534,10 @@ To learn more about defining and fetching variables go to:
 * [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
 * [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Comparison: Matrix and parallelism
 
@@ -564,10 +564,10 @@ In addition to parallelism, you can use Harness CI's [looping strategies](/docs/
 
 As in GitLab CI, you also can combine parallelism and matrix strategies in Harness CI, as shown in the following examples.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="gitlab" label="GitLab CI">
-```
+
 
 ```yaml
 test:
@@ -578,10 +578,10 @@ test:
       - PLATFORM: [windows, mac, linux]
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="harness" label="Harness" default>
-```
+
 
 The following example describes a stage in a Harness CI pipeline that includes one step with matrix and parallelism strategies. The looping strategies are defined in `strategy` at the stage level. One matrix strategy, called `testparam`, is defined in `matrix` and parallelism is defined by `maxConcurrency: 3`. The script in the `Run` step calls the inputs from the matrix strategy by using the expression `+matrix.testparam>`.
 
@@ -613,10 +613,10 @@ The following example describes a stage in a Harness CI pipeline that includes o
           maxConcurrency: 3
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Comparison: Triggers
 
@@ -626,10 +626,10 @@ In GitLab CI, pipelines can be triggered only through API.
 
 Harness CI supports webhook, artifact, manifest and schedule triggers. The two most commonly used triggers are webhook triggers based on Git events and scheduled triggers based on `cron` expressions. To learn more about creating a trigger, go to [Triggers](/docs/category/triggers).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="gitlab" label="GitLab CI">
-```
+
 
 ```yaml
 trigger_pipeline:
@@ -641,10 +641,10 @@ trigger_pipeline:
   environment: production
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="harness" label="Harness" default>
-```
+
 
 
 ```yaml
@@ -673,10 +673,10 @@ trigger:
                 branch: main
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## See also
 

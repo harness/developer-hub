@@ -194,7 +194,7 @@ ENV ET_APPLICATION_NAME=yourapp
 ENV ET_DEPLOYMENT_NAME=1
 ENV ET_ENV_ID=env1
 ENV ET_TOKEN=b34*****-****-****-****-***********42a
-RUN wget -qO- <https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz> | tar -xz
+RUN wget -qO- [https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz](https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz) | tar -xz
 ENTRYPOINT java -jar yourapp.jar
 ```
 
@@ -255,7 +255,7 @@ By using a shared volume, the init-container executes and installs the harness-e
 
 If the agent is already installed as part of your docker image, simply set the corresponding environment variables without the need of an init container.
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 :::info note

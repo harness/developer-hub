@@ -55,10 +55,10 @@ The Delegate cluster does not need to be in the same VPC as the target cluster.
 **Need a Cluster?** If you do not have an AWS account, you can use an  [AWS Free Tier account](https://aws.amazon.com/free/) and create an ECS cluster by following the steps in  [ECS Getting Started](https://console.aws.amazon.com/ecs/home?region=us-east-1#/getStarted) from Amazon. If you do have an AWS account and you want to evaluate Harness with ECS, you can simply create a new ECS cluster in your AWS account.
 :::
 
-#### Policy JSON Example 
+#### Policy JSON Example
 
 <details>
-	<summary>Policy JSON</summary>	
+<summary>Policy JSON</summary>	
 
  ```
  {  

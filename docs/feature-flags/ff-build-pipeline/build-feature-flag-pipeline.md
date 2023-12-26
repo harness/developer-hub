@@ -11,9 +11,9 @@ helpdocs_category_id: fsgwbaegql
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-```mdx-code-block
+
 import ff_pipeline from './static/1-build-feature-flag-pipeline-07.png'
-```
+
 
 A Feature Flag (FF) pipeline enables you to combine a flag with other actions such as adding Jira issues, creating notifications, adding approvals, etc. You can:
 
@@ -133,9 +133,9 @@ To add details to a Flag Configuration step:
 
 Click each stage's steps to see the logs in real-time. Click **Console View** to see more details.
 
-```mdx-code-block
+
 <img src={ff_pipeline} alt="A screenshot of the details console. " height="500" width="500" />
-``` 
+ 
 
 ## Pipeline notification strategy
 

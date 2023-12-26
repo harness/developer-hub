@@ -6,11 +6,11 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/ruby
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
+
 
 <ctabanner
   buttonText="Learn More"
@@ -35,10 +35,10 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 Run [Bundler](https://bundler.io/guides/getting_started.html) commands in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 ```yaml
               - step:
@@ -51,10 +51,10 @@ Run [Bundler](https://bundler.io/guides/getting_started.html) commands in a [Run
                       bundle check || bundle install
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 ```yaml
               - step:
@@ -68,17 +68,17 @@ Run [Bundler](https://bundler.io/guides/getting_started.html) commands in a [Run
                       bundle check || bundle install
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Cache dependencies
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="cloud" label="Harness Cloud" default>
-```
+
 
 You can cache your Ruby dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec` and specify the cache paths (in `paths` and `sharedPaths`).
 
@@ -94,10 +94,10 @@ You can cache your Ruby dependencies with [Cache Intelligence](/docs/continuous-
             - vendor/bundle
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="selfhosted" label="Self-hosted">
-```
+
 
 With self-hosted build infrastructures, you can:
 
@@ -138,10 +138,10 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     archiveFormat: Tar
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Build and run tests
 
@@ -149,10 +149,10 @@ You can use **Run** and **Run Tests** step to [run tests in Harness CI](/docs/co
 
 The following examples run tests in a **Run** step.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 ```yaml
               - step:
@@ -165,10 +165,10 @@ The following examples run tests in a **Run** step.
                       bundle exec rake test
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 ```yaml
               - step:
@@ -183,10 +183,10 @@ The following examples run tests in a **Run** step.
                       bundle exec rake test
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Visualize test results
 
@@ -196,10 +196,10 @@ If you use a **Run** step to run tests, your **Run** step must include the `repo
 
 The following examples use the [Minitest JUnit Formatter](https://github.com/aespinosa/minitest-junit). For more information and an RSpec example, go to [Format test reports - Ruby](/docs/continuous-integration/use-ci/run-tests/test-report-ref#ruby).
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 ```yaml
               - step:
@@ -217,10 +217,10 @@ The following examples use the [Minitest JUnit Formatter](https://github.com/aes
                         - report.xml
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 ```yaml
               - step:
@@ -240,19 +240,19 @@ The following examples use the [Minitest JUnit Formatter](https://github.com/aes
                           - report.xml
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Run tests with Test Intelligence
 
 You can use Run Tests steps to [run Ruby unit tests with Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Harness Cloud" default>
-```
+
 
 ```yaml
               - step:
@@ -266,10 +266,10 @@ You can use Run Tests steps to [run Ruby unit tests with Test Intelligence](/doc
                     preCommand: bundle install
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Self-Hosted">
-```
+
 
 ```yaml
               - step:
@@ -285,10 +285,10 @@ You can use Run Tests steps to [run Ruby unit tests with Test Intelligence](/doc
                     preCommand: bundle install
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Test splitting
 
@@ -296,10 +296,10 @@ Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/
 
 ## Specify version
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 Ruby is pre-installed on Harness Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
@@ -354,10 +354,10 @@ You will need a [personal access token](https://docs.github.com/en/authenticatio
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 Specify the desired [Ruby Docker image](https://hub.docker.com/_/ruby) tag in your steps. There is no need for a separate install step when using Docker.
 
@@ -410,19 +410,19 @@ Specify the desired [Ruby Docker image](https://hub.docker.com/_/ruby) tag in yo
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Full pipeline examples
 
 The following YAML examples describe pipelines that install dependencies, run tests, use caching, and build and push images to Docker Hub.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) and [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
@@ -494,10 +494,10 @@ pipeline:
                       - <+pipeline.sequenceId>
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="self" label="Self-hosted">
-```
+
 
 This pipeline uses [self-hosted Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) and [Save and Restore Cache from S3 steps](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/).
 
@@ -590,10 +590,10 @@ pipeline:
               os: Linux
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Next steps
 

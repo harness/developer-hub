@@ -7,9 +7,9 @@ helpdocs_category_id: ll7h8ktlwe
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-```mdx-code-block
+
 import image_1 from './static/add-sftp-artifact-servers-11.png'
-```
+
 
 You can share files and folders on your network and use them for an SFTP Artifact Server connection.
 
@@ -75,9 +75,9 @@ Click **Submit**.
 
 When you use the SFTP Artifact Server as an Artifact Source for a Service, you can specify a file or a folder for the artifact. This allows a folder to be copied to the deployment target host by the Harness Delegate. Here is the SFTP Artifact Source dialog:
 
-```mdx-code-block
+
 <img src={image_1} height="300" width="500" />
-```
+
 
 
 In **Artifact Path**, you can specify a file or folder by name or using wildcards. The following are example for different files and folders:

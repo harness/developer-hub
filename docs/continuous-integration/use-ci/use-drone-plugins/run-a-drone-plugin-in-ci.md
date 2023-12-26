@@ -9,10 +9,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 Drone plugins are Docker containers that perform predefined tasks. You can use the **Plugin** step to run plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/) in your Harness CI pipelines. You can also [write your own custom plugins](./custom_plugins.md). For more information about plugins, go to [Explore plugins](./explore-ci-plugins.md).
 
@@ -34,10 +34,10 @@ For more information on the acquisition of Drone, go to the following blog posts
 
 To demonstrate how to add a Drone plugin to a Harness CI pipeline, these steps use the [Download plugin](https://plugins.drone.io/plugins/download) as an example. This plugin downloads an archive to the [stage workspace](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 Add the **Plugin** step to the **Build** stage of your CI pipeline, and configure the settings as follows:
 
@@ -52,10 +52,10 @@ The following screenshot shows a **Plugin** step configured for the [Download pl
 
 ![](./static/run-a-drone-plugin-in-ci-00.png)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 Add the `Plugin` step to your `CI` stage with the following settings:
 
@@ -68,10 +68,10 @@ Add the `Plugin` step to your `CI` stage with the following settings:
 
 The following examples show the YAML definition for a `Plugin` step configured for the [Download plugin](https://plugins.drone.io/plugins/download).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="download1" label="Download Drone tarball" default>
-```
+
 
 This example downloads the Drone Linux amd64 tarball. It provides a username and password for authentication to GitHub.
 
@@ -89,10 +89,10 @@ This example downloads the Drone Linux amd64 tarball. It provides a username and
                       password: `<+secrets.getValue("mygithubpersonalaccesstoken")>` ## Password for authentication to the source
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="download2" label="Download AWS CLI">
-```
+
 
 This example downloads the AWS CLI for Linux and saves it to the default stage workspace directory under the name `awscli.zip`. Because the target is publicly accessible, authentication settings aren't required.
 
@@ -118,15 +118,15 @@ sudo ./aws/install
 
 You could also [write a custom plugin](./custom_plugins.md) that downloads, unzips, and installs the AWS CLI in one step.
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
 </Tabs>
-```
+
+
+
+</TabItem>
+</Tabs>
+
 
 :::tip Tips
 
@@ -224,10 +224,10 @@ Because Drone plugins can be used outside Harness CI, there are some differences
 
 The following examples compare the YAML structure for a step when a Drone plugin is used in a Drone pipeline and a Harness CI pipeline.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="drone" label="Drone YAML" default>
-```
+
 
 ```yaml
 steps:
@@ -237,10 +237,10 @@ steps:
     source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="harness" label="Harness YAML">
-```
+
 
 ```yaml
             steps:
@@ -255,19 +255,19 @@ steps:
                       source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Listed and nested settings
 
 To convert list-formatted settings from Drone Plugin YAML to Harness CI YAML, merge them with comma separation.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="drone" label="Drone YAML" default>
-```
+
 
 ```yaml
 Settings:
@@ -277,20 +277,20 @@ Settings:
 	- '1.0'
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="ci" label="Harness YAML">
-```
+
 
 ```yaml
 settings:
   tags: latest,1.0.1,1.0
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 For nested settings, maintain key-value pair definitions, as shown in the following Harness CI YAML example:
 
@@ -317,10 +317,10 @@ It's often easier to define complex settings in the Harness Pipeline Studio's YA
 
 The following snippets illustrate the different ways that Drone and Harness CI handle [text secrets](/docs/platform/secrets/add-use-text-secrets).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="drone" label="Drone YAML" default>
-```
+
 
 ```yaml
 steps:
@@ -334,10 +334,10 @@ steps:
 		source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="ci" label="Harness YAML">
-```
+
 
 ```yaml
   - step:
@@ -354,7 +354,7 @@ steps:
 			source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+

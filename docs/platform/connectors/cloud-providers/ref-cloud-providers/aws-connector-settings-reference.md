@@ -803,6 +803,22 @@ Here's a quick video demonstrating Native EKS authentication support for Kuberne
 https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34-->
 <docvideo src="https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34" />
 
+### FAQ
+
+#### What are the required components to set up the EKS Authentication feature in AWS and Harness?
+
+**In Harness**
+
+1. AWS Connector.
+2. Install AWS IAM Authenticator on the delegate via `INIT_SCRIPT`.
+
+
+**In AWS**
+
+1. An IAM Role in the AWS account with the correct permissions.
+2. Configure a Kubernetes Service Account in the EKS cluster.
+
+
 ## AWS Serverless Lambda
 
 There are three [authentication options for the AWS connector](#harness-aws-connector-settings) when used for AWS ECS images for AWS Serverless Lambda deployments:

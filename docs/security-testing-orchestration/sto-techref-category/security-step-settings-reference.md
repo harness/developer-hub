@@ -13,18 +13,18 @@ This topic includes the Security step settings for each of the scanner providers
 
 ### Scanner categories
 
-```mdx-code-block
+
 import StoSupportedCategories from './shared/_sto-supported-categories.md';
-```
+
 
 <StoSupportedCategories />
 
 
 ### Data ingestion methods
 
-```mdx-code-block
+
 import StoSupportedMethods from './shared/_sto-supported-methods.md';
-```
+
 
 <StoSupportedMethods />
 
@@ -35,33 +35,33 @@ The scanner, targets, and scan approach combinations are covered in the next sec
 
 ### Harness STO scanner support
 
-```mdx-code-block
+
 import StoSupportedScanners from './shared/_sto-supported-scanners.md';
-```
+
 
 <StoSupportedScanners />
 
 ### Scanner binaries used in STO container images
 
-```mdx-code-block
+
 import StoSupportedBinaries from './shared/_sto-supported-binaries.md';
-```
+
 
 <StoSupportedBinaries />
 
 ### Docker-in-Docker requirements for STO
 
-```mdx-code-block
+
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
+
 
 <StoDinDRequirements />
 
 ### Root access requirements for STO
 
-```mdx-code-block
+
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-```
+
 
 <StoRootRequirements />
 
@@ -69,21 +69,24 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 The Step library includes a **Security** step for setting up scanners: open the step and configure the scan as a set of key/value pairs under **Settings**. 
 
-Some scanners also have *scanner templates* with UIs that simplify the process of setting up a scanner. 
+Some scanners also have *scanner templates* with UIs that simplify the process of setting up a scanner.
 
-<details><summary>Step Library with <b>Security</b> step and scanner templates</summary>
+<details>
+<summary>Step Library with <b>Security</b> step and scanner templates</summary>
 
 ![tep Library with Security step and scanner templates](./static/security-steps-tab.png)
 
 </details>
 
-<details><summary><b>Security</b> step configuration</summary>
+<details>
+<summary><b>Security</b> step configuration</summary>
 
 ![Security step configuration](./static/security-step-settings-reference-00.png)
 
 </details>
 
-<details><summary>Scanner template configuration</summary>
+<details>
+<summary>Scanner template configuration</summary>
 
 ![Scanner template configuration](./static/sto-step-palette-example.png)
 

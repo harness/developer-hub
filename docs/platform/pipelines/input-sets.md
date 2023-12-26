@@ -10,10 +10,10 @@ redirect_from:
   - /docs/platform/pipelines/run-pipelines-using-input-sets-and-overlays
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 With input sets and overlays, you can reuse a single pipeline for multiple scenarios. You can define each scenario in an input set or overlay, and then select the relevant input set or overlay at runtime.
 
@@ -35,10 +35,10 @@ Overlays are groups of input sets, which enable you to pull runtime inputs from 
 
 To be included in an input set, settings must be configured to [use runtime input](/docs/platform/variables-and-expressions/runtime-inputs.md#use-runtime-inputs). Settings that don't use runtime input can't be included in input sets. You can configure runtime input in either the Visual or YAML editors in the Pipeline Studio.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual editor">
-```
+
 
 In the Pipeline Studio's Visual Editor, you can use the **Value type selector** to select **Runtime Input**.
 
@@ -46,10 +46,10 @@ In the Pipeline Studio's Visual Editor, you can use the **Value type selector** 
 
 In free-text fields, you can directly enter `<+input>` to specify runtime input without changing the value type.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML editor" default>
-```
+
 
 When writing pipelines in YAML, enter `<+input>` for a setting's value to indicate runtime input.
 
@@ -63,10 +63,10 @@ When writing pipelines in YAML, enter `<+input>` for a setting's value to indica
                     command: <+input>
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 Almost any setting in a pipeline can use runtime input, including variables, artifacts, connectors, environments, infrastructures, services, secrets, step settings, looping strategies, and more.
 

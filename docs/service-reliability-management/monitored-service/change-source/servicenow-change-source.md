@@ -101,7 +101,7 @@ A business rule is essential to define trigger conditions and configure the Harn
    - **Conditions**: Define the conditions that must be met for the rule to execute.
   
 3. In the **Advanced** tab, write a script to configure the webhook URL that you [copied in Harness SRM](#copy-webhook-url). Below is a sample script that you can modify according to your specific requirements:
-      
+
 <details>
 <summary><b>Expand to view the sample script for the ServiceNow business rule.</b></summary>
 

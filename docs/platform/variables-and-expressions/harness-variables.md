@@ -645,17 +645,17 @@ You can use Harness expressions to reference various environment variables and [
 
 ## Account
 
-### <+account.identifier>
+### \<+account.identifier>
 
 The entity [identifier](../references/entity-identifier-reference.md) of the Harness account.
 
 ![](./static/harness-variables-22.png)
 
-### <+account.name>
+### \<+account.name>
 
 Harness account name.
 
-### <+account.companyName>
+### \<+account.companyName>
 
 The name of the company for the account.
 
@@ -665,17 +665,17 @@ For more information, go to [Add Account, Org, and Project-level Variables](add-
 
 ## Org
 
-### <+org.identifier>
+### \<+org.identifier>
 
 The entity [identifier](../references/entity-identifier-reference.md) of an organization.
 
 ![](./static/harness-variables-23.png)
 
-### <+org.name>
+### \<+org.name>
 
 The name of the org.
 
-### <+org.description>
+### \<+org.description>
 
 The description of the org.
 
@@ -685,19 +685,19 @@ For more information, go to [Add Account, Org, and Project-level Variables](add-
 
 ## Project
 
-### <+project.name>
+### \<+project.name>
 
 The name of the Harness project.
 
-### <+project.description>
+### \<+project.description>
 
 The description of the Harness project.
 
-### <+project.tags>
+### \<+project.tags>
 
 All Harness Tags attached to the project.
 
-### <+project.identifier>
+### \<+project.identifier>
 
 The entity [identifier](../references/entity-identifier-reference.md) of the Harness project.
 
@@ -715,13 +715,13 @@ Here is a quick video that explains how to create and reference pipeline, stage,
 https://www.youtube.com/watch?v=lqbmO6EVGuU-->
 <docvideo src="https://www.youtube.com/watch?v=lqbmO6EVGuU" />
 
-### <+pipeline.identifier>
+### \<+pipeline.identifier>
 
 The [identifier](../references/entity-identifier-reference.md) (Id) for the pipeline.
 
 ![](./static/harness-variables-24.png)
 
-### <+pipeline.executionId>
+### \<+pipeline.executionId>
 
 Every execution of a pipeline is given a universally unique identifier (UUId). The UUId can be referenced anywhere.
 
@@ -732,7 +732,7 @@ For example, in the following execution URL, the UUId follows `executions` and i
 https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Quickstart/pipelines/Helm_Quickstart/executions/kNHtmOaLTu66f_QNU-wdDw/pipeline
 ```
 
-### <+pipeline.executionUrl>
+### \<+pipeline.executionUrl>
 
 The execution URL of the pipeline. This is the same URL you see in your browser when you are viewing the pipeline execution.
 
@@ -743,17 +743,17 @@ https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Docs
 ```
 
 :::important
-The expression <+pipeline.execution.Url> has been deprecated.
+The expression \<+pipeline.execution.Url> has been deprecated.
 :::
 
 
-### <+pipeline.name>
+### \<+pipeline.name>
 
 The name of the current pipeline.
 
 ![](./static/harness-variables-25.png)
 
-### <+pipeline.sequenceId>
+### \<+pipeline.sequenceId>
 
 The incremental sequential Id for the execution of a pipeline. A `<+pipeline.executionId>` is randomly generated for each execution, but a `<+pipeline.sequenceId>` is incremented with each run of the pipeline.
 
@@ -765,17 +765,17 @@ For CD pipelines, the Id is named execution. For CI pipelines, the Id is named b
 
 You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/kubernetes-build-farm/) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-cd-other-modules).
 
-### <+pipeline.startTs>
+### \<+pipeline.startTs>
 
 The start time of a pipeline execution in [Unix Epoch format](https://www.epoch101.com/). For more information, go to [Triggers](/docs/category/triggers).
 
-### <+pipeline.triggerType>
+### \<+pipeline.triggerType>
 
 The type of trigger. For more information, go to [Triggers](/docs/category/triggers).
 
 Here are the possible `<+pipeline.triggerType>` and `<+trigger.type>` values.
 
-| **<+pipeline.triggerType>** | **<+trigger.type>** | **Description** |
+| **\<+pipeline.triggerType>** | **\<+trigger.type>** | **Description** |
 | :--- | :--- | :--- |
 | ARTIFACT | Artifact | New artifact trigger. For example, new Docker Hub image tag |
 | SCHEDULER_CRON | Scheduled | Scheduled Cron trigger |
@@ -783,33 +783,33 @@ Here are the possible `<+pipeline.triggerType>` and `<+trigger.type>` values.
 | WEBHOOK_CUSTOM | Custom | Custom webhook trigger |
 | WEBHOOK | Webhook | SCM webhook trigger. For example, GitHub pull request |
 
-### <+pipeline.triggeredBy.name>
+### \<+pipeline.triggeredBy.name>
 
 The name of the user or the trigger name if the pipeline is triggered using a webhook. For more information, go to [Trigger Pipelines using Git Events](../triggers/triggering-pipelines.md).
 
 If a user name is not present in the event payload, the `<+pipeline.triggeredBy.name>` expression will resolve as empty. For example, in the SaaS edition of Bitbucket, a user name is not present.
 
-### <+pipeline.triggeredBy.email>
+### \<+pipeline.triggeredBy.email>
 
 The email of the user who triggered the pipeline. This returns NULL if the pipeline is triggered using a webhook. For more information, go to [Trigger How-tos](/docs/category/triggers).
 
-### <+pipeline.selectedStages>
+### \<+pipeline.selectedStages>
 
 The list of stages selected for execution. 
 
-### <+pipeline.delegateSelectors>
+### \<+pipeline.delegateSelectors>
 
 The pipeline level delegate selectors selected via runtime input.  
 
-### <+pipeline.storeType>
+### \<+pipeline.storeType>
 
 If the pipeline is stored in Harness, the expression resolves to `inline`. If the pipeline is stored in a Git repository, the expression resolves to `remote`.
 
-### <+pipeline.repo>
+### \<+pipeline.repo>
 
 For remote pipelines, the expression resolves to the Git repository name. For inline pipelines, the expression resolves to `null`.
 
-### <+pipeline.branch>
+### \<+pipeline.branch>
 
 For remote pipelines, the expression resolves to the Git branch where the pipeline exists. For inline pipelines, the expression resolves to `null`.
 
@@ -881,27 +881,27 @@ You reference stage variables **within their stage** using the expression `<+
 
 You reference stage variables **outside their stage** using the expression `<+pipeline.stages.STAGE_NAME.variables.VARIABLE_NAME>`.
 
-### <+stage.name>
+### \<+stage.name>
 
 The name of the stage where the expression is evaluated.
 
 ![](./static/harness-variables-30.png)
 
-### <+stage.description>
+### \<+stage.description>
 
 The description of the stage where the expression is evaluated.
 
-### <+stage.tags>
+### \<+stage.tags>
 
 The tags on the stage where the expression is evaluated. For more information, go to [Tags Reference](../references/tags-reference.md).
 
 These tags are different from Docker image tags.
 
-### <+stage.identifier>
+### \<+stage.identifier>
 
 The [entity identifier](../references/entity-identifier-reference.md) of the stage where the expression is evaluated.
 
-### <+stage.output.hosts>
+### \<+stage.output.hosts>
 
 Lists all of the target hosts when deploying to multiple hosts.
 
@@ -920,7 +920,7 @@ Here is an example with a Shell script step.
 
 For examples, see the looping strategies used in the [Secure Shell (SSH) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng).
 
-### <+stage.executionUrl>
+### \<+stage.executionUrl>
 
 The execution URL of the stage. This is the same URL you see in your browser when you are viewing the pipeline execution.
 
@@ -931,7 +931,7 @@ Use the following fully qualified expression to get the execution URL for a spec
 
 ```
 
-### <+stage.delegateSelectors>
+### \<+stage.delegateSelectors>
 
 The stage level delegate selectors selected via runtime input
 
@@ -958,7 +958,7 @@ Here is a quick video that explains how to create and reference pipeline, stage,
 https://www.youtube.com/watch?v=lqbmO6EVGuU-->
 <docvideo src="https://www.youtube.com/watch?v=lqbmO6EVGuU" />
 
-### <+serviceConfig.serviceDefinition.spec.variables.VAR\_NAME>
+### \<+serviceConfig.serviceDefinition.spec.variables.VAR\_NAME>
 
 The value of the service-level variable in `VAR_NAME`.
 
@@ -983,33 +983,33 @@ You can use these expressions in any setting in your pipeline. Select the expres
 
 To override the service variable in a script, reference its name and use a new value.
 
-### <+service.name>
+### \<+service.name>
 
 The name of the service where the expression is evaluated.
 
 ![](./static/harness-variables-35.png)
 
-### <+service.description>
+### \<+service.description>
 
 The description of the service where the expression is evaluated.
 
-### <+service.tags>
+### \<+service.tags>
 
 The tags on the service where the expression is evaluated.
 
 To reference a specific tag use `<+service.tags.TAG_KEY>`.
 
-### <+service.identifier>
+### \<+service.identifier>
 
 The [entity identifier](../references/entity-identifier-reference.md) of the service where the expression is evaluated.
 
-### <+service.type>
+### \<+service.type>
 
 Resolves to stage service type, such as Kubernetes.
 
 ![](./static/harness-variables-36.png)
 
-### <+service.gitOpsEnabled>
+### \<+service.gitOpsEnabled>
 
 Resolves to a boolean value to indicate whether the GitOps option is enabled (true) or not (false).
 
@@ -1017,7 +1017,7 @@ Resolves to a boolean value to indicate whether the GitOps option is enabled (tr
 
 For details on using the GitOps option, go to [Harness GitOps ApplicationSet and PR Pipeline Tutorial](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart).
 
-### <+serviceVariableOverrides.VARIABLE_NAME>
+### \<+serviceVariableOverrides.VARIABLE_NAME>
 
 Override a service variable during the execution of a step group. This provides significant flexibility and control over your pipelines. For more information, go to [Override service variables in step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/#override-service-variables-in-step-groups)
 
@@ -1051,7 +1051,7 @@ For example, the expression `<+manifests.mymanifest.valuesPaths>` can be created
 ```
 Let's look at a few generic manifest expressions.
 
-### <+manifests.MANIFEST_ID.identifier>
+### \<+manifests.MANIFEST_ID.identifier>
 
 Resolves to the manifest Id in Harness.
 
@@ -1063,7 +1063,7 @@ Resolves to the manifest Id in Harness.
             identifier: mymanifest  
 ...
 ```
-### <+manifests.MANIFEST_ID.type>
+### \<+manifests.MANIFEST_ID.type>
 
 Resolves to the manifest type. For example, `K8sManifest`.
 
@@ -1076,7 +1076,7 @@ Resolves to the manifest type. For example, `K8sManifest`.
             type: K8sManifest  
 ...
 ```
-### <+manifests.MANIFEST_ID.store>
+### \<+manifests.MANIFEST_ID.store>
 
 Resolves to where the manifest is stored. For example, this manifest is stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 
@@ -1095,7 +1095,7 @@ Resolves to where the manifest is stored. For example, this manifest is stored i
                     - account:/Templates  
 ...
 ```
-### <+manifest.MANIFEST_ID.commitId>
+### \<+manifest.MANIFEST_ID.commitId>
 
 The commit Id of the manifests used in a service. This is captured in the [output section](#input-and-output-variable-expressions-in-executions) of a deployment step.
 
@@ -1117,13 +1117,13 @@ This is true even if the stage does not deploy an artifact, such as a custom sta
 
 For example, here is how the common artifact expressions resolve for a Kubernetes deployment with a Docker image on Docker Hub:
 
-* **<+artifacts.primary.tag>:** `stable`
-* **<+artifacts.primary.image>:** `index.docker.io/library/nginx:stable`
-* **<+artifacts.primary.imagePath>:** `library/nginx`
-* **<+artifacts.primary.imagePullSecret>:** `****`
-* **<+artifacts.primary.dockerConfigJsonSecret>:** `****`
-* **<+artifacts.primary.type>:** `DockerRegistry`
-* **<+artifacts.primary.connectorRef>:** `DockerHub`
+* **\<+artifacts.primary.tag>:** `stable`
+* **\<+artifacts.primary.image>:** `index.docker.io/library/nginx:stable`
+* **\<+artifacts.primary.imagePath>:** `library/nginx`
+* **\<+artifacts.primary.imagePullSecret>:** `****`
+* **\<+artifacts.primary.dockerConfigJsonSecret>:** `****`
+* **\<+artifacts.primary.type>:** `DockerRegistry`
+* **\<+artifacts.primary.connectorRef>:** `DockerHub`
 
 
 <details>
@@ -1165,11 +1165,11 @@ Command completed with ExitCode (0)
 </details>
 
 
-### <+artifacts.primary.tag>
+### \<+artifacts.primary.tag>
 
 Not Harness tags. This expression evaluates to the tags on the artifact pushed, pulled, or deployed. For example, AMI tags. If you are deploying the Docker image `nginx:stable-perl`, the tag would be `stable-perl`.
 
-### <+artifacts.primary.image>
+### \<+artifacts.primary.image>
 
 The full location to the Docker image. For example, `docker.io/bitnami/nginx:1.22.0-debian-11-r0`.
 
@@ -1198,19 +1198,19 @@ namespace: <+infra.namespace>
 ```
 For more information, go to [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating).
 
-### <+artifacts.primary.path>
+### \<+artifacts.primary.path>
 
 The full path to the non-containerized artifact. This expression is used in non-containerized deployments.
 
-### <+artifacts.primary.filePath>
+### \<+artifacts.primary.filePath>
 
 The file name of the non-containerized artifact. This expression is used in non-containerized deployments. For example, a ZIP file in AWS S3.
 
-### <+artifacts.primary.imagePath>
+### \<+artifacts.primary.imagePath>
 
 The image name, such as `nginx`. To see the entire image location use `<+artifacts.primary.image>`.
 
-### <+artifacts.primary.imagePullSecret>
+### \<+artifacts.primary.imagePullSecret>
 
 If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the values.yaml or manifest file in service definition **Manifests** section must use the `dockercfg` parameter.
 
@@ -1232,7 +1232,7 @@ namespace: <+infra.namespace>
 ```
 Go to [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes) for more information.
 
-### <+artifacts.primary.dockerConfigJsonSecret>
+### \<+artifacts.primary.dockerConfigJsonSecret>
 
 In some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For such cases, the values.yaml or manifest files in the service definition **Manifests** section must use the `dockerconfigjson` parameter.
 
@@ -1254,17 +1254,17 @@ namespace: <+infra.namespace>
 
 For more information, go to [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes).
 
-### <+artifacts.primary.type>
+### \<+artifacts.primary.type>
 
 The type of repository used to add this artifact in the service **Artifacts**. For example, Docker Hub, ECR, or GCR.
 
-### <+artifacts.primary.connectorRef>
+### \<+artifacts.primary.connectorRef>
 
 The [entity identifier](../references/entity-identifier-reference.md) for the connector used to connect to the artifact repository.
 
 ![](./static/harness-variables-39.png)
 
-### <+<+artifacts.primary.label>.get("")>
+### \<+\<+artifacts.primary.label>.get("")>
 
 This expression resolves to the Docker labels of a Docker image.
 
@@ -1290,7 +1290,7 @@ When you run the pipeline, the expressions will resolve to their respective labe
 
 ![](./static/harness-variables-40.png)
 
-### <+artifacts.primary.metadata.SHA> or <+artifacts.primary.metadata.SHAV2>
+### \<+artifacts.primary.metadata.SHA> or \<+artifacts.primary.metadata.SHAV2>
 
 Digest/SHA256 hash of the Docker image.
 	
@@ -1302,13 +1302,13 @@ SHA value of schemaVersion1: `<+artifacts.primary.metadata.SHA>`
 
 SHA value of schemaVersion2: `<+artifacts.primary.metadata.SHAV2>`
 
-### <+artifact.primary.identifier>
+### \<+artifact.primary.identifier>
 
 The Id of the Primary artifact added in a Service **Artifacts** section.
 
 ![](./static/harness-variables-41.png)
 
-### <+artifact.metadata.fileName>
+### \<+artifact.metadata.fileName>
 
 The file name of the Artifactory artifact. 
 
@@ -1344,15 +1344,15 @@ In the following example, a Deploy stage has two Approval steps. For each approv
 
 ![](./static/approved-user-pipeline-example.png)
 
-### <+approval.approvalActivities[0].user.name>
+### \<+approval.approvalActivities[0].user.name>
 
 The Harness username of the approver.
 
-### <+approval.approvalActivities[0].user.email>
+### \<+approval.approvalActivities[0].user.email>
 
 The email address of the approver.
 
-### <+approval.approvalActivities[0].comments>
+### \<+approval.approvalActivities[0].comments>
 
 User comments from the approval, formatted as a single string. This variable is populated from the Comment output variable generated by the approval step.  
 
@@ -1399,21 +1399,21 @@ For example, to reference an environment variable named `envvar`, use the follow
 
 ![](./static/harness-variables-44.png)
 
-### <+env.name>
+### \<+env.name>
 
 The name of the stage environment.
 
 ![](./static/harness-variables-45.png)
 
-### <+env.identifier>
+### \<+env.identifier>
 
 The [entity identifier](../references/entity-identifier-reference.md) of the stage's environment.
 
-### <+env.description>
+### \<+env.description>
 
 The description of the environment.
 
-### <+env.type>
+### \<+env.type>
 
 The environment type, such as `Production` or `PreProduction`.
 
@@ -1421,11 +1421,11 @@ The available values are:
 - `PreProduction`
 - `Production`
 
-### <+env.envGroupName>
+### \<+env.envGroupName>
 
 The name of the environment group to which the environment belongs (if defined). This expression resolves only if the deployment is done to an environment group.
 
-### <+env.envGroupRef>
+### \<+env.envGroupRef>
 
 The environment group reference. This expression resolves only if the deployment is done to an environment group.
 
@@ -1445,31 +1445,31 @@ Environment expressions can be used in service steps as well.
 
 The following expressions provide information about the pipeline infrastructure settings. The infrastructure in a pipeline is the **Infrastructure Definition** in the Harness environment used in the CD stage's **Environment** section.
 
-### <+infra.name>
+### \<+infra.name>
 
 The name of the infrastructure definition used in the pipeline stage.
 
 ![](./static/harness-variables-46.png)
 
-### <+infra.infraIdentifier>
+### \<+infra.infraIdentifier>
 
 The Id of the infrastructure definition used in the pipeline stage.
 
-### <+infra.tags>
+### \<+infra.tags>
 
 The [tags on an infrastructure definition](/docs/continuous-delivery/get-started/services-and-environments-overview/#infrastructure-tags) used in the same CD stage where the expression is evaluated.
 
 To reference a specific tag use `<+infra.tags.TAG_KEY>`.
 
-### <+infra.connectorRef>
+### \<+infra.connectorRef>
 
 The Id of the connector used in the infrastructure definition.
 
-### <+infra.connector.name>
+### \<+infra.connector.name>
 
 The name of the connector used in the infrastructure definition.
 
-### <+INFRA\_KEY>
+### \<+INFRA\_KEY>
 
 :::note
 
@@ -1502,21 +1502,21 @@ Harness can now track the release for comparisons and rollback.
 
 The infrastructure key is a combination of `serviceIdentifier`, `environmentIdentifer` and set of values unique to each infrastructure definition implementation (Kubernetes cluster, etc.) hashed using `SHA-1`. For example, in case of a Kubernetes Infrastructure, the infrastructure key is a hash of `serviceIdentifier-environmentIdentifier-connectorRef-namespace`. The format is `sha-1(service.id-env.id-[set of unique infra values])`.
 
-See also [<+INFRA_KEY_SHORT_ID>](/docs/platform/variables-and-expressions/harness-variables#infra_key_short_id).
+See also [\<+INFRA_KEY_SHORT_ID>](/docs/platform/variables-and-expressions/harness-variables#infra_key_short_id).
 
-### <+INFRA_KEY_SHORT_ID>
+### \<+INFRA_KEY_SHORT_ID>
 
-Shortened form of the infrastructure key described in [<+INFRA_KEY>](/docs/platform/variables-and-expressions/harness-variables#infra_key). 
+Shortened form of the infrastructure key described in [\<+INFRA_KEY>](/docs/platform/variables-and-expressions/harness-variables#infra_key). 
 
-The shortened form is obtained by removing all but the first six characters of the hash of the infrastructure key described in [<+INFRA_KEY>](/docs/platform/variables-and-expressions/harness-variables#infra_key). 
+The shortened form is obtained by removing all but the first six characters of the hash of the infrastructure key described in [\<+INFRA_KEY>](/docs/platform/variables-and-expressions/harness-variables#infra_key). 
 
 The shortened form replaces `<+INFRA_KEY>` in the default expression that is used to generate a release name for the resources in Kubernetes and Native Helm deployments. In other words, the **Release name** field in the **Cluster Details** > **Advanced** section of an infrastructure definition is pre-populated with the expression `release-<+INFRA_KEY_SHORT_ID>`. The shorter form resolves issues that Kubernetes and Native Helm deployments experienced with the longer `release-<+INFRA_KEY>` format.
 
-### <+infra.namespace>
+### \<+infra.namespace>
 
 The namespace used in the infrastructure definition.
 
-### <+infra.releaseName>
+### \<+infra.releaseName>
 
 The release name used in the infrastructure definition.
 
@@ -1524,15 +1524,15 @@ The release name used in the infrastructure definition.
 
 The following instance expressions are for stage steps.
 
-### <+step.name>
+### \<+step.name>
 
 The step name.
 
-### <+step.identifier>
+### \<+step.identifier>
 
 The step [identifier](/docs/platform/references/entity-identifier-reference/).
 
-### <+step.executionUrl>
+### \<+step.executionUrl>
 
 The execution URL of the step. This is the same URL you see in your browser when you are viewing the pipeline execution.
 
@@ -1542,7 +1542,7 @@ Use the following fully qualified expression to get the execution URL for a spec
 <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.executionUrl>
 ```
 
-### <+steps.STEP_ID.retryCount>
+### \<+steps.STEP_ID.retryCount>
 
 When you set the failure strategy to **Retry Step**, you can specify the retry count for a step or all steps in the stage.
 
@@ -1614,29 +1614,29 @@ For example, in the example above you can see the `artifact` field name mapped t
 To reference `artifact` you would use `<+instance.host.properties.artifact>`.
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
-### <+instance.hostName>
+### \<+instance.hostName>
 
 The host/container/pod name where the microservice/application is deployed.
 
 If you use this variable in a pipeline, such as in a Shell script step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
 
-### ​<+instance.host.instanceName>
+### ​\<+instance.host.instanceName>
 
 The same as `<+instance.hostName>`. 
 
-### <+instance.name>
+### \<+instance.name>
 
 The name of the instance on which the service is deployed.
 
 If you use this variable in a pipeline, such as in a Shell script step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
 
-### <+instance.host.privateIp>
+### \<+instance.host.privateIp>
 
 The private IP of the host where the service is deployed.
 
 If you use this variable in a pipeline, such as in a Shell script step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
 
-### <+instance.host.publicIp>
+### \<+instance.host.publicIp>
 
 The public IP of the host where the service is deployed.
 
@@ -1650,7 +1650,7 @@ The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`,
 
 Harness provides the following expressions to retrieve the current status of the node (stage/step) using a looping strategy. The expressions are available in pipelines during execution and rollback.
 
-### <+strategy.currentStatus>
+### \<+strategy.currentStatus>
 
 The current status of the looping strategy for the node with maximum depth.
 
@@ -1660,13 +1660,13 @@ In cases where both the step and the stage have the looping strategy configured,
 
 If the step (or step group) does not have the looping strategy configured, the expression will instead resolve to the looping strategy status of the  current stage.
 
-### <+strategy.node.STRATEGY_NODE_IDENTIFIER.currentStatus>
+### \<+strategy.node.STRATEGY_NODE_IDENTIFIER.currentStatus>
 
 The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`.
 
 For example, `echo <+strategy.node.cs1.currentStatus>`.
 
-### <+<+strategy.node>.get("STRATEGY_NODE_IDENTIFIER").currentStatus>
+### \<+\<+strategy.node>.get("STRATEGY_NODE_IDENTIFIER").currentStatus>
 
 The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`.
 
@@ -1703,7 +1703,7 @@ strategy:
 The above strategy will spawn 4 stages/steps and the `identifierPostfix` values will be `_0`, `_1`, `_2`, and `_3`.
 
 
-### <+strategy.identifierPostFix>
+### \<+strategy.identifierPostFix>
 
 This expression retrieves the `identifierPostFix` of the current node or any parent node that is a child of the looping strategy.
 
@@ -1717,19 +1717,19 @@ Let's look at an example using the execution of a stage with the identifier `bui
 
 Multiple child stages will be created from the `build_and_upload` stage. These child stages will have identifiers with the postfix appended, such as `build_and_upload_0`, `build_and_upload_docker`, etc. In this scenario, using the expression `<+strategy.identifierPostFix>` will result in value `_0` or `_docker`.
 
-### <+step.identifierPostFix>
+### \<+step.identifierPostFix>
 
 This expression returns the `identifierPostFix` of the current step when the step is a child of a looping strategy.
 
-### <+stage.identifierPostFix>
+### \<+stage.identifierPostFix>
 
 This expression retrieves the `identifierPostFix` of the stage when the current node's stage is a child of a looping strategy.
 
-### <+stepGroup.identifierPostFix>
+### \<+stepGroup.identifierPostFix>
 
 This expression returns the `identifierPostFix` of the step group when the current node is under the step group, or when the current node is the step group itself, and that step group is a child of a looping strategy.
 
-### <+strategy.node.STRATEGY_NODE_IDENTIFIER.identifierPostFix>
+### \<+strategy.node.STRATEGY_NODE_IDENTIFIER.identifierPostFix>
 
 This expression retrieves the `identifierPostFix` for the node that is the child of a looping strategy with the identifier `STRATEGY_NODE_IDENTIFIER`.
 For example, let's consider two nested step groups, sg1 and sg2 (child of sg1). Both sg1 and sg2 have a looping strategy configured. The expression, `<+stepGroup.identifierPostFix>` always retrieves the `identifierPostFix` of sg2. 
@@ -1743,7 +1743,7 @@ Use the following expressions to obtain the `identifierPostFix` for a specific s
 
 Similarly, you can use other strategy expressions for any specific strategy level if a looping strategy is configured for both the parent and child nodes.
 
-### <+strategy.node.STRATEGY_NODE_IDENTIFIER.*>
+### \<+strategy.node.STRATEGY_NODE_IDENTIFIER.*>
 
 Using this format, you can retrieve the values of any strategy expressions associated with looping strategies at various levels. This is useful when looping strategies are configured within nested levels. 
 
@@ -1761,7 +1761,7 @@ Here are some examples:
 
 ## Triggers
 
-### <+trigger.artifact.build>
+### \<+trigger.artifact.build>
 
 Resolves to the artifact version (such as a Docker Tag) that initiated an [On New Artifact Trigger](../triggers/trigger-on-a-new-artifact.md).
 
@@ -1773,11 +1773,11 @@ The `<+trigger.artifact.build>` used for **Tag** makes sure that the new art
 
 Adding a new tag to the artifact fires the trigger and executes the pipeline. Harness resolves `<+trigger.artifact.build>` to the tag that fired the trigger. This makes sure that the new tag is used when pulling the artifact and the new artifact version is deployed.
 
-### <+trigger.artifact.source.connectorRef>
+### \<+trigger.artifact.source.connectorRef>
 
 Resolves to the Harness connector Id for the connector used to monitor the artifact registry that fired the trigger.
 
-### <+trigger.artifact.source.imagePath>
+### \<+trigger.artifact.source.imagePath>
 
 Resolves to the image path for the artifact that fired the trigger.
 
@@ -1804,7 +1804,7 @@ You can select who can create and use these triggers within Harness. However, yo
 
 ## Kubernetes
 
-### ${HARNESS\_KUBE\_CONFIG\_PATH}
+### $\{HARNESS\_KUBE\_CONFIG\_PATH}
 
 The path to a Harness-generated kubeconfig file containing the credentials you provided to Harness. The credentials can be used by kubectl commands by exporting its value to the KUBECONFIG environment variable.
 

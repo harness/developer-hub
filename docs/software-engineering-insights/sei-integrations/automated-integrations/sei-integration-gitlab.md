@@ -26,17 +26,17 @@ If you can't use OAuth, you must create a GitLab personal access token to config
 2. Select the `api` scope with complete read/write API access.
 3. Copy the token somewhere that you can retrieve it when you configure the integration.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 ## Configure the integration
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
-```
+
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Integrations** under **Data Settings**.
@@ -52,10 +52,10 @@ import TabItem from '@theme/TabItem';
 5. In **Integration Name**, enter a name for the integration.
 6. Finish configuration and save the integration.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="satellite" label="Satellite">
-```
+
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud using the **PAT**, with the exception of using satellite to communicate** with the Gitlab server.
 
@@ -66,7 +66,7 @@ Make sure to select the satellite integration checkbox while configuring the int
 3. Add a **description** for the integration. (Optional)
 4. In the **URL** field, add the URL where your Gitlab repository is deployed. 
    
-   For example, if your Gitlab is deployed on a **virtual machine (VM)**, add the URL in the format: `https://<GITLAB_INSTANCE_URL>`.
+   For example, if your Gitlab is deployed on a **virtual machine (VM)**, add the URL in the format: `https://\<GITLAB_INSTANCE_URL>`.
 
 5. If applicable, configure **Additional Options**:
    1. **Fetch PRs**: Allow SEI to ingest PR data from Gitlab.
@@ -86,7 +86,7 @@ satellite:
 integrations:
   - id: '<INTEGRATION_ID>' # For ex: 4691
     application: gitlab
-    url: '<https://<GITLAB_INSTANCE_URL>'
+    url: '[https://<GITLAB_INSTANCE_URL](https://<GITLAB_INSTANCE_URL)'
     metadata:
       fetch_prs: true
       fetch_issues: true
@@ -119,7 +119,6 @@ While configuring the integration using satellite, the following are optional me
 
 If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```

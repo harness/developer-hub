@@ -427,14 +427,14 @@ For all Git providers supported by Harness, a webhook is automatically created i
 
 For each repo, Harness creates one webhook with a superset of all permissions, rather than separate webhooks for each Git event type. The following Git events are included in the webhooks that Harness registers.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="github" label="GitHub" default>
-```
+
 
 [GitHub events](https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads):
 
@@ -445,10 +445,10 @@ import TabItem from '@theme/TabItem';
 * `pull_request`
 * `pull_request_review`
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="gitlab" label="GitLab">
-```
+
+</TabItem>
+<TabItem value="gitlab" label="GitLab">
+
 
 [GitLab events](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html):
 
@@ -457,10 +457,10 @@ import TabItem from '@theme/TabItem';
 * Merge request events
 * Push events
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Bitbucket" label="Bitbucket">
-```
+
 
 * [Bitbucket Cloud events](https://support.atlassian.com/bitbucket-cloud/docs/event-payloads/):
   * `issue`
@@ -469,10 +469,10 @@ import TabItem from '@theme/TabItem';
   * Pull requests
   * Branch push tag
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Manual and custom webhook registration
 

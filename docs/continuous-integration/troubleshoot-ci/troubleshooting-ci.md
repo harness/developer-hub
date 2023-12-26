@@ -8,11 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Kubevict from '/docs/continuous-integration/shared/k8s-pod-eviction-trbs.md';
 import Dhrl from '/docs/continuous-integration/shared/docker-hub-rate-limiting-trbs.md';
 import DindTrbs from '/docs/continuous-integration/shared/dind-bg-gha-trbs.md';
-```
+
 
 This topic contains troubleshooting information for error messages and other issues that can arise with Harness CI. For more Harness troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
 

@@ -48,7 +48,6 @@ The SonarQube Issues Trend Report provides a trend line that displays the number
 The SonarQube Metrics Report provides an overview of the overall code coverage for projects. It is designed to help users assess the quality of code coverage in their software projects. Initially, the report displays metrics for all projects. Users can apply project-specific filters at the widget and collection level to narrow down the data.
 
 <details>
-
 <summary>How data is ingested from SonarQube into SEI</summary>
 
 1. By default SonarQube shows open issues, while SEI fetches all issues irrespective of status. To align counts, users can manually adjust filters in SonarQube specifically removing the default `'resolve=false'` filter.

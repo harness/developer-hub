@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Variables from '/docs/platform/shared/variables-not-supported.md'
-```
+
 
 You can trigger pipelines in response to Git events that match specific payload conditions you set up in a Harness trigger. For example, when a pull request or push event occurs on a Git repo and your trigger settings match the payload conditions, a CI or CD pipeline can run.
 
@@ -440,3 +440,17 @@ If registration fails and none of the above conditions apply, try [manually regi
 <!-- this section is referenced on triggers-reference.md -->
 
 Currently, CI pipeline webhook triggers don't support PRs that are attempting to merge changes from a Bitbucket forked repo into the original, base repo. This applies only to Bitbucket repos when attempting to merge a fork back into the base repo and the base repo is set as the pipeline's codebase. Although the trigger initiates, the pipeline fails with `couldn't find remote ref`. This issue occurs due to the Bitbucket PR reference URL format.
+
+### Pipeline with a PR Event Trigger and an On Push Trigger fires the pipeline execution twice
+
+You can configure multiple triggers for the same pipeline. By scoping the action events, you can ensure that the pipeline only runs for a particular trigger scenario. The Push trigger and PR trigger can overlap because they listen on similar events. Below are the required events for the PR to ensure there is no overlap with the Push trigger.
+
+**Pull Request Actions**
+- Edit
+- Open
+- ReOpen
+- Label
+- Unlabel
+- Ready for Review
+
+Leave out by the `synchronize` and `close` events from the event selection. These events cause both triggers to execute the pipeline. 

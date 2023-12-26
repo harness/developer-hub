@@ -31,8 +31,8 @@ To configure the Relay Proxy:
 
 2. View all the configuration variables.  
   
-    `docker run harness/ff-proxy`  
-  
+    `docker run harness/ff-proxy`
+
 <details>
 <summary>Details of /app/ff-proxy Configuration variables:</summary>
 

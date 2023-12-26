@@ -291,7 +291,7 @@ This Delegate will perform all operations at runtime.
 9. In **Personal Access Token**, select **Create or Select a Secret**.
 10. Select **New Secret Text**.
 11. In **Secret Name**, enter the name **github-pat**.
-12. In **Secret Value**, paste in a GitHub Personal Access Token (PAT). When you're logged into GitHub, these are typically listed at <https://github.com/settings/tokens>.
+12. In **Secret Value**, paste in a GitHub Personal Access Token (PAT). When you're logged into GitHub, these are typically listed at [https://github.com/settings/tokens](https://github.com/settings/tokens).
   For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
   Ensure you PAT has the **repo** scope selected:
 
@@ -466,21 +466,21 @@ This is a temporary change. In the next release of Harness CD Community Edition,
 
 You have a few Kubernetes cluster options.
 
-<details> 
+<details>
 <summary>Docker Compose Kubernetes</summary>
 
 When Docker Compose Kubernetes is installed it comes with a cluster and the **default** namespace. You don't need to make any changes to Docker Compose Kubernetes. This is recommended.
 
-</details> 
+</details>
 
-<details> 
+<details>
 <summary>Free-tier account Kubernetes cluster on AWS, GCP, Azure</summary>
 
 The popular cloud providers offer free-tier accounts that include their Kubernetes services. You can create a cluster in these accounts.
 
-</details> 
+</details>
 
-<details> 
+<details>
 <summary>Use one of your company's Kubernetes clusters</summary>
 
 If your company uses Kubernetes, they likely have dev or QA accounts on a cloud platform. If you have access to those environments, you can add a cluster there.
@@ -570,7 +570,7 @@ If you are using a remote Kubernetes cluster, you must log into it before you ca
 
 How you connect to the remote cluster depends on the provider. Typically, you will need to install the provider's CLI locally and then use the CLI to connect to the cluster and run the kubectl command to install the Harness Delegate. See the following:
 
-<details> 
+<details>
 <summary>Azure AKS</summary>
 
 See the Azure doc [Quickstart: Deploy an Azure Kubernetes Service cluster using the Azure CLI](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough) for a good overview.
@@ -606,9 +606,9 @@ Next, you simply run the command to install the Delegate:
 ```
 kubectl apply -f harness-delegate.yaml
 ```
-</details> 
+</details>
 
-<details> 
+<details>
 <summary>AWS EKS</summary>
 
 See the AWS doc [Connecting a cluster](https://docs.aws.amazon.com/eks/latest/userguide/connecting-cluster.html) for a good overview.
@@ -618,9 +618,9 @@ Once you're connected, you simply run the command to install the Delegate:
 ```
 kubectl apply -f harness-delegate.yaml
 ```
-</details> 
+</details>
 
-<details> 
+<details>
 <summary>GCP GKE</summary>
 
 See the GCP doc [Install kubectl and configure cluster access](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl) for a good overview.

@@ -7,9 +7,9 @@ redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/key-concepts/output-variables
 ---
 
-```mdx-code-block
+
 import StoConceptOutputVariables from '../shared/_output-variables.md';
-```
+
 
 <StoConceptOutputVariables />
 

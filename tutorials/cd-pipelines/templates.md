@@ -15,10 +15,10 @@ description: Get started with templates in Harness CD pipelines.
 
 This tutorial focuses on how to use templates with Harness pipelines. We will guide you through saving a sample deployment pipeline as a template, and then using it to get started with a new pipeline at project level. 
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 Harness templates allow you to design reusable content, logic, and parameters, ensuring that the application is the major focus of your pipelines. Instead of creating pipelines from scratch each time, Harness lets you select from pre-built templates and link them to your pipelines. The process of developing pipelines thus becomes easier by reducing duplication and increasing reusability.
 
@@ -50,18 +50,18 @@ Make sure you have followed the [get started](/tutorials/cd-pipelines/kubernetes
 
 ### Set up Template
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Inline">
-```
+
 
 1. Select **Inline** and **Save** the Template.
-2. Go to **Templates** under **Project Setup** in the left navigation. 
+2. Go to **Templates** under **Project Setup** in the left navigation.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Remote">
-```
+
 
 1. In **Git Connector**, select the `harness_gitconnector` you created during the get-started tutorial It will pre-fill the other settings.
 2. Select **Save**. 
@@ -69,13 +69,13 @@ Make sure you have followed the [get started](/tutorials/cd-pipelines/kubernetes
 4. Select **Save**.
 5. Harness will create the template and push it to Github. 
 6. When prompted to use use the template, select **No**. 
-7. Check your forked `harenesscd-example` apps repo and under **master-patch** branch you'll find the deployment-template under `.harness` directory. 
+7. Check your forked `harenesscd-example` apps repo and under **master-patch** branch you'll find the deployment-template under `.harness` directory.
 
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Use the pipeline template
 

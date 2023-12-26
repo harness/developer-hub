@@ -102,15 +102,15 @@ You need a private key for your GitHub app to configure your Harness GitHub conn
 
 You can use your GitHub App as either the [primary authentication method](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication) or the [API access authentication method](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#enable-api-access) for your GitHub connector.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="primary" label="Primary authentication">
-```
+
 
 1. In your Harness project, select **Connectors** under **Project Setup**.
 2. Create a new connector or edit an existing GitHub connector.
@@ -121,10 +121,10 @@ import TabItem from '@theme/TabItem';
 7. Select **Continue**.
 8. If the connection test succeeds, select **Finish** to save the connector.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="api" label="API access authentication" default>
-```
+
 
 1. In your Harness project, select **Connectors** under **Project Setup**.
 2. Create a new connector or edit an existing GitHub connector.
@@ -136,10 +136,10 @@ import TabItem from '@theme/TabItem';
 8. Select **Continue**.
 9. If the connection test succeeds, select **Finish** to save the connector.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Option: Set up a PR trigger
 

@@ -28,7 +28,6 @@ The **Tests** metric provides more options for **Columns**, **Filters**, **Stack
 ## Troubleshooting
 
 <details>
-
 <summary>Changes made to the Dropdown Custom Case Field in TestRail is not reflected</summary>
 
 In some cases, changes made to a Dropdown Custom Case Field in TestRail may not be properly reflected if the "Save Field" button is disabled.
