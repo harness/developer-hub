@@ -2063,3 +2063,19 @@ The release of the Immutable Delegate version to SMP involves setting the `IMMUT
 #### If DELEGATE_RESOURCE_THRESHOLD is set to zero, does the delegate reject all tasks?
 
 No, if `DELEGATE_RESOURCE_THRESHOLD` is set to zero, it behaves as if the feature is off, and the delegate acquires tasks as normal without rejection. Also, we have the default `DELEGATE_RESOURCE_THRESHOLD` value as 80.
+
+#### Currently a Vault connector accepts configuration for only one Vault secret engine. Is there any plan to explore how one Vault connector can be used for multiple Vault secret engines at the same time
+
+As of now only one Vault secret engine can be configured for Vault connector and in Future we might support multiple Vault secret engine but currently its not possible
+
+#### Diffrent ways to add users to Harness platform
+
+You can create user in below ways:
+1. UI: Account Admin can add user directly via UI
+2. SCIM: You can setup scim to provision user
+3. Terraform Provider: You can use Harness terraform provider https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_user
+
+
+#### We would like to enforce the life time of api token ( My profile -> My API keys -> Token) is 24 hours. 
+
+An Api key is created with Minimum of 30 days and you can not set any duration less than that, you can rotate the token if you want at any time
