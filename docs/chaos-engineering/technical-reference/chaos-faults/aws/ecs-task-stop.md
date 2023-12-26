@@ -73,10 +73,10 @@ Refer to the [superset permission (or policy)](./security-configurations/policy-
 
 The target ECS tasks should be in a healthy state.
 
-## Fault tunables   
+## Fault tunables
 
 <details>
-    <summary>Fault tunables</summary>
+<summary>Fault tunables</summary>
     <h2>Mandatory fields</h2>
     <table>
         <tr>

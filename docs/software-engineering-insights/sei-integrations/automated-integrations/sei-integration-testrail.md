@@ -17,17 +17,17 @@ Before setting up the SEI TestRail integration, ensure that you have generated t
 Note that the TestRail's API settings are correctly configured by enabling the API and session authentication in Site Settings.
 :::
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 ## Configure the integration
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
-```
+
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Integrations** under **Data Settings**.
@@ -42,10 +42,10 @@ import TabItem from '@theme/TabItem';
 
 By completing these steps, you ensure that TestRail is configured to allow API access and authentication, which is crucial for the SEI TestRail integration to fetch data from the TestRail platform.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="satellite" label="Satellite">
-```
+
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the TestRail server.
 
@@ -70,7 +70,6 @@ integrations:
 
 If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```

@@ -6,10 +6,10 @@ title: Test a FastAPI project
 slug: /ci-pipelines/test/fastapi
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <ctabanner
   buttonText="Learn More"
@@ -30,9 +30,9 @@ You need the following for this tutorial:
 * [A GitHub account](https://github.com/join).
 * [A Harness account](https://app.harness.io/).
 
-```mdx-code-block
+
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
+
 
 <CISignupTip />
 
@@ -50,7 +50,8 @@ The sample repo has a simple FastAPI project and unit tests. Notable files inclu
 * `fastapi-todo-tests/app/main.py`: The sample FastAPI project builds a "To Do" list. It has three API endpoints, one that creates tasks, one that deletes tasks, and one that gets the task list.
 * `fastapi-todo-tests/test_main.py`: Defines three test cases.
 
-<details><summary>Optional exercise: Local set up</summary>
+<details>
+<summary>Optional exercise: Local set up</summary>
 
 Optionally, you can build the project and test it locally before running tests in a Harness CI pipeline.
 
@@ -117,10 +118,10 @@ These steps summarize pipeline creation. For more information, go to [CI pipelin
 
 ### Add the Build stage and infrastructure
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. Select **Add Stage**, and select the **Build** stage.
 2. Enter a **Stage Name**, such as `Test FastAPI`.
@@ -128,10 +129,10 @@ These steps summarize pipeline creation. For more information, go to [CI pipelin
 4. Select **Set Up Stage**.
 5. In the **Build** stage, select the **Infrastructure** tab, and [set up your build infrastructure](/docs/category/set-up-build-infrastructure).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 In the Pipeline Studio's YAML editor, add a `CI` stage and [set up your build infrastructure](/docs/category/set-up-build-infrastructure).
 
@@ -177,19 +178,19 @@ And this CI stage uses a Kubernetes cluster build infrastructure:
             ...
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Install dependencies
 
 Add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies for the FastAPI project.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 ```yaml
               - step:
@@ -205,10 +206,10 @@ Add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-set
                       PIP_CACHE_DIR: /root/.cache
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="sh" label="Self-hosted">
-```
+
 
 ```yaml
               - step:
@@ -224,10 +225,10 @@ Add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-set
                       pip install --cache-dir .pip_cache -r requirements.txt
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Run tests
 
@@ -235,10 +236,10 @@ Add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-set
 
 This tutorial runs basic unit tests, but you can run all types of tests (integration tests, mutation tests, and so on) in Harness CI. For more information, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 ```yaml
               - step:
@@ -256,10 +257,10 @@ This tutorial runs basic unit tests, but you can run all types of tests (integra
                           - output-test.xml
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="sh" label="Self-hosted">
-```
+
 
 ```yaml
               - step:
@@ -279,10 +280,10 @@ This tutorial runs basic unit tests, but you can run all types of tests (integra
                           - output-test.xml
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 To [view test reports in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests), test results must be in JUnit XML format, and the `reports` specification must be included.
 
@@ -319,10 +320,10 @@ Here are complete YAML examples for this tutorial. If you copy these examples, m
 
 These pipelines include a **Build** (`CI`) stage with two **Run** steps. One step installs dependencies defined in `requirements.txt` and the other runs unit tests.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Cloud" label="Harness Cloud" default>
-```
+
 
 This example uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
 
@@ -380,10 +381,10 @@ pipeline:
                           - output-test.xml
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="selfhosted" label="Self-hosted">
-```
+
 
 This example uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures).
 
@@ -445,10 +446,10 @@ pipeline:
                           - output-test.xml
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Trigger YAML
 

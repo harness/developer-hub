@@ -15,17 +15,17 @@ To use the SEI Tenable integration you need a Tenable API Key. Copy the key some
 
 The user creating the token must have one of the following roles: **Basic**, **Scan Operator**, **Standard**, **Scan Manager**, or **Administrator**.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 ## Configure the integration
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
-```
+
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Integrations** under **Data Settings**.
@@ -38,13 +38,12 @@ import TabItem from '@theme/TabItem';
    * **Name:** Enter a name for the integration.
    * **Description** and **Tags** are optional.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="satellite" label="Satellite">
-```
+
 The Tenable integration does not support installation using the Ingestion Satellite.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```

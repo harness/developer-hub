@@ -57,7 +57,7 @@ See [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continu
 
 ## Use Harness variables in values YAML
 
-You cannot use Harness variables in Kubernetes manifests. You can only use Harness variables in Values YAML files. Let's look at an example. 
+You cannot use Harness variables in Kubernetes manifests. You can only use Harness variables in Values YAML files. Let's look at an example.
 
 <details>
 <summary>Values YAML using Harness variables for name, image, dockercfg, and namespace</summary>

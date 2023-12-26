@@ -16,10 +16,10 @@ description: Deploy artifacts to VMs or bare-metal hosts in a physical data cent
   target="_self"
 />
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 This tutorial helps you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD pipeline  with deployment type **Secure Shell (SSH)** that manages remote linux servers.
 
@@ -29,10 +29,10 @@ This tutorial helps you get started with Harness Continuous Delivery (CD). We wi
 
 :::
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Secure Shell (SSH)">
-```
+
 
 ## Before you begin
 
@@ -182,10 +182,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 5. Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
 6. Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Canary">
-```
+
 <details open>
 <summary>What are Canary deployments?</summary>
 
@@ -199,10 +199,10 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 ![Canary](../static/vm-tutorials/ssh-canary.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Rolling">
-```
+
 
 <details open>
 <summary>What are Rolling deployments?</summary>
@@ -217,10 +217,10 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 
 ![Rolling](../static/vm-tutorials/ssh-rolling.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Basic">
-```
+
 
 <details open>
 <summary>What are Basic deployments?</summary>
@@ -235,10 +235,10 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 
 ![Basic](../static/vm-tutorials/ssh-basic.png)
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 Finally, it's time to execute the pipeline. 
 
@@ -253,10 +253,10 @@ ls -l ~/harness_ssh/harnessdevenv/todolist.war
 ### Congratulations!🎉
 You've just learned how to use Harness CD to copy an artifact to your remote servers via SSH.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="WinRM">
-```
+
 ## Before you begin
 
 Verify that you have the following:
@@ -400,10 +400,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
     - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
     - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Canary">
-```
+
 <details open>
 <summary>What are Canary deployments?</summary>
 
@@ -417,10 +417,10 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 ![Canary](../static/vm-tutorials/winrm-canary.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Rolling">
-```
+
 
 <details open>
 <summary>What are Rolling deployments?</summary>
@@ -435,10 +435,10 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 
 ![Rolling](../static/vm-tutorials/winrm-rolling.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Basic">
-```
+
 
 <details open>
 <summary>What are Basic deployments?</summary>
@@ -453,10 +453,10 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 
 ![Basic](../static/vm-tutorials/winrm-basic.png)
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 10. Finally, it's time to execute the pipeline. Select **Run**, and then select **Run Pipeline** to initiate the deployment.
     - Observe the execution logs as Harness copy the artifact from source to the remote server.
@@ -468,10 +468,10 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 ### Congratulations!🎉
 You've just learned how to use Harness CD to copy an artifact to your remote servers via WinRM.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 #### What's Next?
 - Keep learning about Harness CD. Add triggers to your pipeline that'll respond to Git events by following this [guide](/docs/platform/Triggers/triggering-pipelines).

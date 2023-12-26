@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -82,10 +82,10 @@ The `pool.yml` file defines the VM spec and pool size for the VM instances used 
 
 ### pool.yml examples
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="ubuntu" label="Ubuntu 18.04 pool.yml" default>
-```
+
 
 ```yaml
 version: "1"
@@ -117,10 +117,10 @@ instances:
         version: latest
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="windows" label="Windows Server 2019 pool.yml">
-```
+
 
 ```yaml
 version: "1"
@@ -149,10 +149,10 @@ instances:
       version: latest
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Pool settings reference
 
@@ -252,10 +252,10 @@ The delegate and runner are now installed, registered, and connected.
 
 Configure your pipeline's **Build** (`CI`) stage to use your Azure VMs as build infrastructure.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. In Harness, go to the CI pipeline that you want to use the Azure VM build infrastructure.
 2. Select the **Build** stage, and then select the **Infrastructure** tab.
@@ -267,10 +267,10 @@ Configure your pipeline's **Build** (`CI`) stage to use your Azure VMs as build 
 
 <docimage path={require('../static/ci-stage-settings-vm-infra.png')} />
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```yaml
     - stage:
@@ -292,7 +292,7 @@ Configure your pipeline's **Build** (`CI`) stage to use your Azure VMs as build 
             ...
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+

@@ -5,10 +5,10 @@ description: Add an Azure Log Analytics health source to a monitored service.
 sidebar_position: 13
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 In Harness, a health source is a mapping of a Harness service to a service running in a deployment environment that is being monitored by an Application Performance Monitoring (APM) or logging tool. This mapping allows Harness to collect metrics and data from the APM or logging tool and use it to determine the health and status of the service in Harness.
 

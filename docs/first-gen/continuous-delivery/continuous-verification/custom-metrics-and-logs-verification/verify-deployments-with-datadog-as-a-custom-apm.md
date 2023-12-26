@@ -10,27 +10,26 @@ helpdocs_is_published: true
 
 To solve [problem], [solution] [benefit of feature].
 
-
 ### Before You Begin
 
-* See [Custom Verification Overview](custom-verification-overview.md).
-* See [Connect to Datadog as a Custom APM](connect-to-datadog-as-a-custom-apm.md).
+- See [Custom Verification Overview](custom-verification-overview.md).
+- See [Connect to Datadog as a Custom APM](connect-to-datadog-as-a-custom-apm.md).
 
 ### Step 1: Set Up the Deployment Verification
 
 1. In Harness, open the **Workflow** that deploys the service you are monitoring with Datadog. You add verification steps after you have performed at least one successful deployment.
 2. In the Workflow, in **Verify Service**, click **Add Step**.
 3. In the resulting **Add Step** settings, select **Performance Monitoring** > **Custom Metrics**.
-4. Click **Next**. The **Configure****Custom Metrics** settings appear.
+4. Click **Next**. The **Configure\*\***Custom Metrics\*\* settings appear.
 5. In the **Metrics Data Server** drop-down, select the Custom Verification Provider you set up already.
-6. Set the **Metric Type** to either **Infrastructure** or **Transaction**.  
-  
+6. Set the **Metric Type** to either **Infrastructure** or **Transaction**.
+
 Your settings will now look something like this:![](./static/verify-deployments-with-datadog-as-a-custom-apm-00.png)
 
 ### Step 2: Metric Collections
 
 1. Beside **Metric Collections**, click **Add** to display the **New Metrics Collection** settings.  
-All of the settings in **New Metrics Collection** are Harness settings for collecting and grouping metrics, except for the settings where you will map JSON response keys to Harness fields.![](./static/verify-deployments-with-datadog-as-a-custom-apm-01.png)
+   All of the settings in **New Metrics Collection** are Harness settings for collecting and grouping metrics, except for the settings where you will map JSON response keys to Harness fields.![](./static/verify-deployments-with-datadog-as-a-custom-apm-01.png)
 2. Fill out the **New Metrics Collection** settings using the following information. You will set up an API query for Harness to execute that returns a JSON response. Next, you will map the keys in the JSON response to the fields Harness needs to locate your metric values and host.
 
 ### Step 3: Metrics Name
@@ -43,13 +42,13 @@ Enter the type of metric, such as **Infra**. These are Harness types, not Datado
 
 #### Always Use Throughput with Error and Response Time Metrics
 
-Whenever you use the Error metric type, you should also add another metric for Throughput with the same Transaction Name. 
+Whenever you use the Error metric type, you should also add another metric for Throughput with the same Transaction Name.
 
 ![](./static/verify-deployments-with-datadog-as-a-custom-apm-02.png)Harness analyze errors as error percentage and without the throughput the error number does not provide much information.
 
 The same setup should used with the Response Time metric also. Whenever you set up a Response Time metric, setup a Throughput metric with the same Transaction Name.
 
-![](./static/verify-deployments-with-datadog-as-a-custom-apm-03.png) 
+![](./static/verify-deployments-with-datadog-as-a-custom-apm-03.png)
 
 ### Step 5: Metrics Collection URL
 
@@ -57,10 +56,10 @@ This is the API query that will return a JSON response.
 
 The query for Metrics Collection URL follows this syntax:
 
-
 ```
 query?query=<METRIC_NAME>{pod_name:${host}}by{pod_name}.rollup(avg,60)&from=${start\_time\_seconds}&to=${end\_time\_seconds}
 ```
+
 The values in `${...}` braces are placeholders used for querying the data. These are substituted at runtime with real values.
 
 Replace `<METRIC_NAME>` in the query with the correct metric name. The metric names are available in Datadog Metric Explorer:
@@ -69,10 +68,10 @@ Replace `<METRIC_NAME>` in the query with the correct metric name. The metric na
 
 For example, to search for the `kubernetes.memory.usage_pct metric`, your query would look like this:
 
-
 ```
 query?query=kubernetes.memory.usage_pct{pod_name:${host}}by{pod_name}.rollup(avg,60)&from=${start\_time\_seconds}&to=${end\_time\_seconds}
 ```
+
 ### Step 6: Metrics Method
 
 Select **GET** or **POST**.
@@ -95,9 +94,9 @@ Enter a name to map to the metric name. For example, if the metric name is `kube
 
 Run the query using **Guide from an example** to see the JSON response and pick a key to map to **Metrics Value**.
 
-In **Guide from an example**, specify the time range and host for the query. To specify the time range, click in the **${startTime}** and **${endTime}** calendars.
+In **Guide from an example**, specify the time range and host for the query. To specify the time range, click in the **$\{startTime}** and **$\{endTime}** calendars.
 
-To specify the **${host}**, get the full name of a host from Datadog Metrics Explorer:
+To specify the **$\{host}**, get the full name of a host from Datadog Metrics Explorer:
 
 [![](./static/verify-deployments-with-datadog-as-a-custom-apm-06.png)](./static/verify-deployments-with-datadog-as-a-custom-apm-06.png)
 
@@ -105,7 +104,7 @@ To copy the name, click in the graph and click **Copy tags to clipboard**.
 
 [![](./static/verify-deployments-with-datadog-as-a-custom-apm-08.png)](./static/verify-deployments-with-datadog-as-a-custom-apm-08.png)
 
-Next, paste the name in the **${host}** field.
+Next, paste the name in the **$\{host}** field.
 
 [![](./static/verify-deployments-with-datadog-as-a-custom-apm-10.png)](./static/verify-deployments-with-datadog-as-a-custom-apm-10.png)
 
@@ -161,7 +160,7 @@ To learn about the verification analysis features, see the following sections.
 
 **Risk level analysis:** Get an overall risk level and view the cluster chart to see events.
 
-**Transaction-level summary:** See a summary of each transaction with the query string, error values comparison, and a risk analysis summary. 
+**Transaction-level summary:** See a summary of each transaction with the query string, error values comparison, and a risk analysis summary.
 
 ![](./static/_verify-ddog-00-trx-anal.png)
 
@@ -175,9 +174,6 @@ To learn about the verification analysis features, see the following sections.
 
 #### Event Management
 
-
-
-|  |
-| --- |
+|                                                                                                                                                                                                                                                                                                                             |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Event-level analysis:** See the threat level for each event captured.**Tune event capture:** Remove events from analysis at the Service, Workflow, Execution, or overall level.**Event distribution:** Click the chart icon to see an event distribution including the measured data, baseline data, and event frequency. |
-

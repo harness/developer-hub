@@ -5,10 +5,10 @@ sidebar_label: What's supported
 sidebar_position: 10
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 This topic provides a comprehensive list of health sources and change sources supported by Harness Service Reliability Management (SRM). It covers both Harness SaaS and Harness Self-Managed Enterprise Edition (SMP).
 
@@ -35,7 +35,7 @@ Health sources in Harness SRM are APM (Application Performance Monitoring) or lo
 - Splunk Log
 - Splunk Observability (formerly SignalFX)
 - Sumologic
-  
+
 </details>
 
 To learn how to add a health source, go to [Health sources](/docs/category/health-sources-catalog).
@@ -58,7 +58,7 @@ Change sources enable you to monitor change events related to deployments, infra
 - Harness Chaos Engineering
 - Harness Feature Flag
 - PagerDuty
-  
+
 </details>
 
 To learn how to add a change source, go to [Change sources](/docs/category/change-sources-catalog).

@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 ## Introduction
 
@@ -29,26 +29,26 @@ This functionality is limited to the modules and settings that you have access t
 
 ## How to Add the Developer Portal Stage
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Present Nav" label="Present Nav" default>
-```
+
 1. Go to **Projects** and Select your project and create a new pipeline. 
 
 ![](./static/old-nav.png)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="New Nav" label="New Nav">
-```
+
 1. Go to **Pipelines** under **Admin** from side nav and **Create a Pipeline**. 
 
 ![](./static/n-p-snav.png)
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 2. Add a Name for your Pipeline and select **Inline** as pipeline storage options.
 
@@ -82,10 +82,10 @@ The Git Clone step uses a containerized step group. For more information, go to 
 
 ![](./static/git-clone.png)
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```
 - step:
@@ -101,18 +101,18 @@ The Git Clone step uses a containerized step group. For more information, go to 
          branch: main
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Pipeline Studio" label="Pipeline Studio">
-```
+
 1. In your Developer Portal stage, in **Execution**, select **Add Step**.
 2. Select **Git Clone**.
 3. Configure the steps using the settings described below.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 #### Connector
 
@@ -162,10 +162,10 @@ Cookiecutter step is used to take inputs for the cookiecutter template.
 
 ![](./static/cookicutter.png)
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```YAML
 - step:
@@ -179,10 +179,10 @@ Cookiecutter step is used to take inputs for the cookiecutter template.
         app_name: <+pipeline.variables.project_name>
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Pipeline Studio" label="Pipeline Studio">
-```
+
 
 #### Repository Type
 
@@ -206,10 +206,10 @@ Provide the input required the temlate in terms of key value pairs in this step.
 
 // TODO: Advanced Config
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### 3. Create Repo
 
@@ -217,10 +217,10 @@ This step is to create the repository in your git provider which will be later u
 
 ![](./static/create-repo.png)
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
-```
+
 ```YAML
 - step:
     type: CreateRepo
@@ -234,10 +234,10 @@ This step is to create the repository in your git provider which will be later u
     description: <+pipeline.variables.repositoty_description>
     defaultBranch: <+pipeline.variables.repository_default_branch>
 ```
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Pipeline Studio" label="Pipeline Studio">
-```
+
 #### Repository Type
 
 Select the repository type you want to create, which could be public or private.
@@ -257,12 +257,12 @@ The following topics provide more information about creating code repo connector
 
 #### Org, Repo, Description, Default Branch
 
-Add the org, repo name, Repo Description and Default branch for the repo you want to create. 
+Add the org, repo name, Repo Description and Default branch for the repo you want to create.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### 4. Create Catalog
 
@@ -270,10 +270,10 @@ This step is used to create the `catalog-info.yaml/idp.yaml` to be ued to regist
 
 ![](./static/create-catalog.png)
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
-```
+
 ```YAML
 - step:
     type: CreateCatalog
@@ -295,10 +295,10 @@ This step is used to create the `catalog-info.yaml/idp.yaml` to be ued to regist
         owner: test
         lifecycle: experimental
 ```
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Pipeline Studio" label="Pipeline Studio">
-```
+
 #### File Name, Path
 Name the `catalog-info.yaml` followed by providing a path if you don't want to regster in the root of the repo created in the `Create Repo` step. 
 
@@ -320,10 +320,10 @@ spec:
   lifecycle: experimental
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### 5. Direct Push
 
@@ -331,10 +331,10 @@ This step is used to push the `service/application` created using Cookiecutter s
 
 ![](./static/direct-push.png)
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
-```
+
 ```YAML
 - step:
     type: DirectPush
@@ -347,10 +347,10 @@ This step is used to push the `service/application` created using Cookiecutter s
     codeDirectory: <+pipeline.variables.project_name>
     branch: <+pipeline.variables.direct_push_branch>
 ```
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Pipeline Studio" label="Pipeline Studio">
-```
+
 #### Connector
 Select a connector for the git provider where you want to push the code. 
 
@@ -366,22 +366,22 @@ The following topics provide more information about creating code repo connector
 
 #### Org, Repo, Code Directory, Branch
 
-Add the Org, Repo Name, Repo Description and Branch Name where you want to push the code. 
+Add the Org, Repo Name, Repo Description and Branch Name where you want to push the code.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 ### 6. Register Catalog
 
 This step is used to register the software component created in the Catalog of Harness IDP using `catalog-info.yaml`. 
 
 ![](./static/register-catalog.png)
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```YAML
 - step:
@@ -396,10 +396,10 @@ This step is used to register the software component created in the Catalog of H
     branch: <+pipeline.variables.direct_push_branch>
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Pipeline Studio" label="Pipeline Studio">
-```
+
 #### Connector
 Select a connector for the git provider where your `catalog-info.yaml` is stored. 
 
@@ -415,21 +415,21 @@ The following topics provide more information about creating code repo connector
 
 #### Org, Repo, Branch, File Path
 
-Add the Org, Repo Name, Branch and the File path relative to the root of the repository, where your `catalog-info.yaml` is present. 
+Add the Org, Repo Name, Branch and the File path relative to the root of the repository, where your `catalog-info.yaml` is present.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### 7. Slack Notify
 
 This step is used to notify in your team's clack channel or individual developers once the pipeline is executed successfully and your Software component is registered succesfully in your Software Catalog. 
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
-```
+
  
 ```YAML
 - step:
@@ -442,39 +442,39 @@ This step is used to notify in your team's clack channel or individual developer
     token: slacksecrettestws
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Pipeline Studio" label="Pipeline Studio">
-```
+
 ![](./static/slack-notify-step.png)
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 #### Slack Channel ID
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Slack Web App" label="Slack Web App" default>
-```
+
 1. Open any web browser and log in to your Slack account.
 2. Now, go to your workspace main page and view the URL in the search bar at the top.
 3. The URL looks ends with a C and letters.  This part of the path represents your Slack Channel ID.
 
 ![](./static/slack-channel-id.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="MacOS/Windows App" label="MacOS/Windows App">
-```
+
 1. Go to your team channel or individual slack space, click n the profile picture and got to details and copy the member ID
 
 ![](./static/slack-member-id.png)
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Final Pipeline using Developer Portal Stage
 
@@ -512,10 +512,10 @@ spec:
 
 :::
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```YAML
 
@@ -672,13 +672,12 @@ pipeline:
 
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Pipeline Studio" label="Pipeline Studio">
-```
+
 ![](./static/idp-stage.png)
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```

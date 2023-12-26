@@ -24,18 +24,18 @@ To configure the SEI Harness integration, you need:
 
 Copy the account ID and token somewhere that you can retrieve them when you configure the integration.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 ## Configure the integration
 
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
-```
+
 
 1. Select **Integrations** under **Settings**.
 2. Select **Available Integrations**, locate the **Harness NG integration**, and select **Install**.
@@ -54,10 +54,10 @@ import TabItem from '@theme/TabItem';
 4. Finish configuration and **Save** the integration.
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="satellite" label="Satellite">
-```
+
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud using the API key, with the exception of using satellite to communicate with the Harness NG server.
 
@@ -85,7 +85,6 @@ integrations:
 
 If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```

@@ -222,7 +222,6 @@ To add custom stages, follow these steps:
 The following examples describe Workflow profile configurations to track Lead Time.
 
 <details>
-
 <summary>Track Lead Time in SCM​</summary>
 
 Use this profile configuration to track Lead Time across the PR lifecycle and gain insight into your SCM tools, such as GitHub, Bitbucket, GitLab, and so on.
@@ -238,7 +237,6 @@ If you want to include CI/CD builds and deployments in your lead time calculatio
 </details>
 
 <details>
-
 <summary>Track Lead Time in Issue Management and SCM​</summary>
 
 1. Select Workflow under Profiles.
@@ -251,7 +249,6 @@ If you want to include CI/CD builds and deployments in your lead time calculatio
 </details>
 
 <details>
-
 <summary>Include CI/CD in Lead Time​</summary>
 
 If you want to include CI/CD builds and deployments in your lead time calculation, follow the steps to Track Lead Time in SCM or Track Lead Time in issue management and SCM, and then add stages to track your CI/CD build and deploy jobs.
@@ -259,7 +256,6 @@ If you want to include CI/CD builds and deployments in your lead time calculatio
 </details>
 
 <details>
-
 <summary>Use a webhook to trigger Lead Time tracking​</summary>
 
 Use this profile configuration to use an API event to initiate Lead Time tracking.

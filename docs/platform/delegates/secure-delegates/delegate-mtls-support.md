@@ -121,8 +121,8 @@ To migrate a delegate for mTLS support, do the following:
    `-v`: Mounts your `client.crt` and `client.key` files to the delegate Docker container.
 2. Update the `DELEGATE_CLIENT_CERTIFICATE_PATH` to the location of `client.crt` inside the container. In this example, it's `/etc/mtls/client.crt`.
 3. Update the `DELEGATE_CLIENT_CERTIFICATE_KEY_PATH` to the location of `client.key` inside the container. In this example, it's `/etc/mtls/client.key`.
-4. Update the `MANAGER_HOST_AND_PORT` value to `https://<YOUR_FQDN>.agent.harness.io`.
-5. Update the `LOG_STREAMING_SERVICE_URL` value to `https://<YOUR_FQDN>.agent.harness.io/log-service/`.
+4. Update the `MANAGER_HOST_AND_PORT` value to `https://\<YOUR_FQDN>.agent.harness.io`.
+5. Update the `LOG_STREAMING_SERVICE_URL` value to `https://\<YOUR_FQDN>.agent.harness.io/log-service/`.
 6. Run the command.
 
 ### Migrate a delegate to an mTLS-enabled Kubernetes delegate
@@ -151,9 +151,9 @@ To migrate a delegate for mTLS support, do the following:
     ---
    ```
 
-2. In the `Deployment` section, update the `name:` value from `MANAGER_HOST_AND_PORT` to `https://<YOUR_FQDN>.agent.harness.io`.
+2. In the `Deployment` section, update the `name:` value from `MANAGER_HOST_AND_PORT` to `https://\<YOUR_FQDN>.agent.harness.io`.
 
-3. Update the `LOG_STREAMING_SERVICE_URL` value to `https://<YOUR_FQDN>.agent.harness.io/log-service/`
+3. Update the `LOG_STREAMING_SERVICE_URL` value to `https://\<YOUR_FQDN>.agent.harness.io/log-service/`
 
 4. Add the two environment variables below.
 

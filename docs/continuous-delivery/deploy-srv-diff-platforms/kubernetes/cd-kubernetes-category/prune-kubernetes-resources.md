@@ -82,7 +82,7 @@ When the **Enable Kubernetes Pruning** setting is enabled, Kubernetes Blue Green
 1. release r1 → a, b, c
 2. release r2 → a, b, d
 3. release r3 → a, b, e (only c is pruned)
-4. release r4 → a, b, e (d is now pruned) 
+4. release r4 → a, b, e (d is now pruned)
 
 
 </details>

@@ -18,14 +18,14 @@ You need to perform the following tasks to set up CCM for GCP:
 You must have a `Editor` role to enable APIs in a project.
 :::
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 </TabItem>
 <TabItem value="1" label="API">
-```
+
 You must enable the following APIs to set up Harness CCM. To learn how to enable these APIs, go to [Enabling an API in your Google Cloud project](https://cloud.google.com/endpoints/docs/openapi/enable-api).
 
 
@@ -41,10 +41,10 @@ Enable Secret Manager API
 ```
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="2" label="CLI">
-```
+
 
 ```
 $ gcloud services enable cloudfunctions.googleapis.com \
@@ -59,10 +59,10 @@ cloudbilling.googleapis.com \
 iamcredentials.googleapis.com \
 container.googleapis.com \
 ```
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 ### Set up CCM-specific service account user
 
 Create a Service Account in GCP. For example, harness-ccm-service-user@project-name.iam.gserviceaccount.com

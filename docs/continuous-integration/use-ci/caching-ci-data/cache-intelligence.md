@@ -4,10 +4,10 @@ description: Caching dependencies can improve build times.
 sidebar_position: 20
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, caching these dependencies for quick retrieval at runtime can save a significant amount of time.
 
@@ -37,10 +37,10 @@ The cache retention window is 15 days, which resets whenever the cache is update
 
 ## Enable Cache Intelligence
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 :::note
 
@@ -54,10 +54,10 @@ Currently, the Cache Intelligence Visual Editor fields are behind the feature fl
 4. If you're using an unsupported build tool, a non-default cache location, or a Windows platform, then you must add [custom cache paths](#customize-cache-paths). For a list of supported tools, go to [Supported tools and paths](#supported-tools-and-paths).
 5. Optionally, you can add a [custom cache key](#customize-cache-keys).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 To enable Cache Intelligence in the YAML editor, add the following lines to the `stage.spec`:
 
@@ -83,10 +83,10 @@ If you're using an unsupported build tool, a non-default cache location, or a Wi
 
 Optionally, you can add a [custom cache key](#customize-cache-keys).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Customize cache paths
 
@@ -96,10 +96,10 @@ Cache Intelligence stores the data to be cached in the `/harness` directory by d
 * You have customized cache locations, such as with `yarn config set cache-folder`.
 * You're using a Windows platform.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 :::note
 
@@ -124,10 +124,10 @@ Currently, the Cache Intelligence Visual Editor fields are behind the feature fl
 
    <docimage path={require('./static/cache_int_shared_paths.png')} />
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 In the YAML editor, add a list of `paths` to cache under `stage.spec.caching`, for example:
 
@@ -170,19 +170,19 @@ If a cache path is outside the `/harness` directory, you must *also* specify thi
             - /my_cache_directory/module_cache1
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Customize cache keys
 
 Harness generates a cache key from a hash of the build lock file (such as `pom.xml`, `build.gradle`, or `package.json`) that Harness detects. If Harness detects multiple tools or multiple lock files, Harness combines the hashes to create the cache key.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 :::note
 
@@ -199,10 +199,10 @@ Currently, the Cache Intelligence Visual Editor fields are behind the feature fl
 
    <docimage path={require('./static/cache_int_custom_key.png')} />
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 To customize the cache key in the YAML editor, add `key: CUSTOM_KEY_VALUE` under `stage.spec.caching`. You can use [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs) for the key value.
 
@@ -221,10 +221,10 @@ The following YAML example uses `<+input>`, which prompts the user to supply a c
 ...
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Cache Intelligence in parallel stages
 

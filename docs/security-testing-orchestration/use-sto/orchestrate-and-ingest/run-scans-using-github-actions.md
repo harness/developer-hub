@@ -5,10 +5,10 @@ sidebar_label: Scan and ingest from GitHub Actions and Drone Plugins
 sidebar_position: 70
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a GitHub feature that enables you to automate various event-driven activities, such as security scanning, in GitHub. This topic describes how to run GitHub Action scans and ingest the results into your Harness pipelines.  
 
@@ -38,10 +38,10 @@ import TabItem from '@theme/TabItem';
 ### Example setups for using GitHub Action and Drone Plugin steps in STO 
 
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="GitHub Action setup">
-```
+
 
 <!-- action -->
 
@@ -135,7 +135,8 @@ Given this, you would set up the Action step in your Harness pipeline like this.
 ```
 <!-- action -->
 
-<details><summary>YAML pipeline example</summary>
+<details>
+<summary>YAML pipeline example</summary>
 
 ```yaml
 pipeline:
@@ -197,10 +198,10 @@ pipeline:
 
 </details>
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Drone Plugin setup">
-```
+
 
 <!-- plugin -->
 
@@ -303,7 +304,8 @@ Given this, you would set up the Action step in your Harness pipeline like this.
 
 <!-- plugin -->
 
-<details><summary>YAML pipeline example</summary>
+<details>
+<summary>YAML pipeline example</summary>
 
 ```yaml
 
@@ -375,7 +377,7 @@ pipeline:
 
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+

@@ -8,9 +8,9 @@ redirect_from:
 ---
 
 
-```mdx-code-block
+
 import StoConceptExemptions from '../shared/_exemptions.md';
-```
+
 
 <StoConceptExemptions />
 

@@ -4,7 +4,6 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
 
-<Delimagetypes />
 
 | Image type | Image tag | Image description |
 | --- | --- | --- |
