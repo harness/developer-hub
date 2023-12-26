@@ -36,11 +36,10 @@ Ensure that your AWS account and the ECS cluster that will host the Delegate mee
 * **ECS Role for Delegate:** The Harness ECS Delegate requires an IAM role and policies to execute its deployment tasks (API calls, etc). Create a new IAM role named **ECSDelegate** that contains: **AmazonEC2ContainerServiceforEC2Role** and **AmazonEC2ContainerServiceRole** from AWS.
 	+ **Customer Managed Policy** named **HarnessECS** you create for using Application Auto Scaling.
 
-		<details>
+<details>
+<summary>Policy JSON</summary>
 
-		<summary>Policy JSON</summary>
-
-		```
+		```yaml
 		{  
 
 		            "Version": "2012-10-17",  
@@ -97,7 +96,7 @@ Ensure that your AWS account and the ECS cluster that will host the Delegate mee
 
 		          
 		```
-		</details>
+</details>
 
 		Attach all of these policies to one IAM role, or attach them all to ecsInstanceRole, and apply that to your ECS cluster as the **Container instance IAM role** when you create it.  
 		

@@ -15,20 +15,20 @@ title: AWS CloudFormation
 
 This tutorial focuses on the usage of [AWS CloudFormation](https://aws.amazon.com/cloudformation/) as an Infrastructure-as-a-code tool to provision Harness infrastructure within a Harness pipeline. 
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 :::info
 
 [Sign up today to unleash the potential of intelligent Harness CD](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=tutorials-cd-provision-cloudformation).
 
 :::
 
-<!-- ```mdx-code-block
+<!-- 
 <Tabs>
 <TabItem value="Provision deployment infrastructure dynamically ">
-```
+
 :::info
 
 Dynamic provisioning is only supported in [Service and Environments v1](/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2), and will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
@@ -37,31 +37,31 @@ Dynamic provisioning is only supported in [Service and Environments v1](/docs/co
 
 This tutorial will provision a CD stage's deployment infrastructure resources using the CloudFormation **Create Stack**, **Delete Stack**, and **Rollback Stack** steps, in the **Infrastructure section** before deployment.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Provision deployment infrastructure">
-```
+
 This tutorial will focus on the use of CloudFormation to provision the target infrastructure for a deployment, and then deploy to that provisioned infrastructure.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Provision other resources">
-```
-This totrial will focsus on the use of CloudFormation to provision any resources other than the target infrastructure for the deployment in the pipeline. 
 
-```mdx-code-block
+This totrial will focsus on the use of CloudFormation to provision any resources other than the target infrastructure for the deployment in the pipeline.
+
+
 </TabItem>
 </Tabs>
-``` -->
+ -->
 
 ## Provision and delete infrastructure
 
 
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Provision with CloudFormation Create Stack">
-```
+
 This tutorial will provision resources in a **Custom stage** using the CloudFormation **Create Stack** step.
 
 ### Before you begin
@@ -137,13 +137,13 @@ If you already have a Git connector that gives access to your forked [harnesscd-
 5. Now provide the **Stack Name** as `harness-provisoned-stack` and select **Apply Changes**.
 6. Now **Save** and **Run** the pipeline. 
 
-Check your AWS Management console for CloudFormation and you'll find the new CloudFormation Stack created. 
+Check your AWS Management console for CloudFormation and you'll find the new CloudFormation Stack created.
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Rollback provisioned infrastructure with the CloudFormation Rollback step">
-```
+
 This tutorial will rollback infrastructure using the **CloudFormation Rollback Stack step** in the **Rollback**  section of your Deploy stage.
 
 :::info
@@ -277,10 +277,9 @@ Here we are using the same EKS cluster we provisioned in the **Provision with Cl
 5. For the execution type, select the **Canary** strategy. 
 6. Select **Add Step**, and add the **CLoudFormation Rollback** step. 
 7. In **Provisioner Identifier**, enter `demoprovision` and apply changes.
-8. Select **Save** and **Run** the pipeline. 
+8. Select **Save** and **Run** the pipeline.
 
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```

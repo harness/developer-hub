@@ -4,10 +4,10 @@ description: Use Run steps to install Git LFS and run git lfs commands.
 sidebar_position: 50
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 The [Git Large File Storage (LFS)](https://git-lfs.com/) client is an extension for versioning large files, such as audio, video, datasets, and graphics.
 
@@ -26,10 +26,10 @@ With self-hosted build infrastructures, if the client is already installed on yo
 
 With Harness Cloud build infrastructure, a version of Git LFS is already installed on Harness Cloud runners. For Harness Cloud image specs, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). You can use a **Run** step to install a different version of the Git LFS client if you do not want to use the pre-installed version. Otherwise, skip to [Run git lfs commands](#run-git-lfs-commands).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. In your pipeline's **Build** stage, add a **Run** step.
 2. Enter a **Name** and optional **Description**.
@@ -46,10 +46,10 @@ With Harness Cloud build infrastructure, a version of Git LFS is already install
 
 6. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 In your `CI` stage, add a `Run` step with the following settings:
 
@@ -76,10 +76,10 @@ For example, this step installs Git LFS 3.3.0 on Debian:
                       sudo apt-get install git-lfs=3.3.0
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Run git lfs commands
 
@@ -89,10 +89,10 @@ These examples show how to use a **Run** step to run `git lfs clone`.
 
 For more information about `git lfs` commands, including `git lfs clone`, go to the [Git LFS documentation](https://github.com/git-lfs/git-lfs/tree/main/docs).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. In your pipeline's **Build** stage, add a **Run** step.
 2. Enter a **Name** and optional **Description**.
@@ -109,10 +109,10 @@ For more information about `git lfs` commands, including `git lfs clone`, go to 
 
 6. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 In your `CI` stage, add a `Run` step with the following settings:
 
@@ -136,10 +136,10 @@ For example, this step runs `git lfs clone`. The `connectorRef` and `image` are 
                       git lfs clone harness/developer-hub
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Git LFS logs
 

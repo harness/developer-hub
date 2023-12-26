@@ -4,10 +4,10 @@ description: Ramp up on Harness CD
 sidebar_position: 1
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 This topic describes the different phases and steps involved in onboarding with Harness CD. Follow these steps to ensure that you have all the settings and resources required for moving forward with your own deployments.
 
@@ -128,10 +128,10 @@ Services represent your microservices and other workloads. Each service contains
 
 Services are often configured using runtime inputs or expressions, so you can change service settings for different deployment scenarios at pipeline runtime. To use services with runtime inputs and expressions, go to [Using services with inputs and expressions](/docs/continuous-delivery/x-platform-cd-features/services/create-services). Below are some example Kubernetes and ECS Fargate Harness services:
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="K8s Service">
-```
+
 
 ```yaml
 service:
@@ -171,10 +171,10 @@ service:
   tags: {}
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="ECS Fargate Service">
-```
+
 
 ```yaml
 service:
@@ -252,20 +252,20 @@ service:
   gitOpsEnabled: false
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 
 #### Environments
 
 Environments represent your deployment targets (QA, Prod, etc). Each environment contains one or more Infrastructure Definitions that list your target clusters, hosts, namespaces, etc. To create your own environments, go to [Create environments](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments).
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Environment Definition">
-```
+
 
 ```yaml
 environment:
@@ -278,10 +278,10 @@ environment:
   variables: []
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Infrastructure Definition">
-```
+
 
 ```yaml
 infrastructureDefinition:
@@ -299,10 +299,10 @@ infrastructureDefinition:
   allowSimultaneousDeployments: true
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 #### Service Overrides 
 
@@ -416,10 +416,10 @@ The deployment strategies provided by Harness are:
 - Basic Deployments
 - Multi-service
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Rolling">
-```
+
 
 ```yaml
 pipeline:
@@ -478,10 +478,10 @@ pipeline:
                 type: StageRollback
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Blue Green">
-```
+
 
 ```yaml
 pipeline:
@@ -554,10 +554,10 @@ pipeline:
             value: cdpsanitysuites-trybg
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Canary">
-```
+
 ```yaml
 pipeline:
   name: K8s Canary Deployment
@@ -651,10 +651,10 @@ pipeline:
         timeout: 10m
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="K8s with Apply">
-```
+
 ```yaml
 pipeline:
   name: K8s Deployment with Apply Step
@@ -717,10 +717,10 @@ pipeline:
             value: cdpsanitysuites-qwerandom
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="K8s with Scale">
-```
+
 
 ```yaml
 pipeline:
@@ -798,10 +798,10 @@ pipeline:
         timeout: 10m
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 For more information, go to [Deployment concepts and strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts).
 
@@ -812,10 +812,10 @@ Triggers automatically initiate pipeline execution based on specific events or c
 
 Here are examples of a new artifact trigger and GitHub Webhook trigger:
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Trigger On New Artifact">
-```
+
 
 ```yaml
 trigger:
@@ -858,10 +858,10 @@ trigger:
                                 tag: <+lastPublished.tag>
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="GitHub Webhook Trigger">
-```
+
 
 ```yaml
 trigger:
@@ -907,10 +907,10 @@ trigger:
                 branch: <+trigger.branch>
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Phase 4: Deploy to production
 
@@ -931,10 +931,10 @@ Harness Policy As Code uses Open Policy Agent (OPA) as the central service to st
 
 Here are some Harness governance examples with OPA.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Delegate Tag Governance">
-```
+
 
 ```
 package pipeline
@@ -962,10 +962,10 @@ deny[msg] {
 This policy denies pipeline execution if a step in any stage does not have the specific delegate tag selected in its delegate selector. If the tag is not selected, the policy will show a human-friendly error message.
 ::::
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Connectors Governance">
-```
+
 
 ```
 package pipeline
@@ -995,10 +995,10 @@ contains(arr, elem) {
 You can customize the `allowed_connectors` list to include the connectors that are allowed for pipeline execution. If a pipeline uses a connector that is not in the `allowed_connectors` list, the policy will deny pipeline execution and display an error message.
 ::::
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Environment Governance">
-```
+
 
 ```
 package pipeline
@@ -1038,10 +1038,10 @@ contains(arr, elem) {
 You can modify the `allowed_environments` list to include the environments where you want the pipeline to be executed. If the pipeline is executed in an environment that is not in the `allowed_environments` list, the policy will fail and display an error message.
 ::::
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 #### Freeze deployments
 
@@ -1114,15 +1114,15 @@ To perform Role-based access control (RBAC), a Harness account administrator ass
 
 </details>
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Center of Excellence">
-```
 
-```mdx-code-block
+
+
 <Tabs>
 <TabItem value="Program Manager">
-```
+
 
 **Roles**
 ![Access Control Roles for Program Manager](static/coe-rbac/account-manager-roles.png)
@@ -1130,10 +1130,10 @@ To perform Role-based access control (RBAC), a Harness account administrator ass
 **Resource Groups**
 ![Resource Groups for Program Manager](static/coe-rbac/account-manager-resource-groups.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Platform Admin">
-```
+
 
 **Roles**
 ![Access Control Roles for Platform Admin](static/coe-rbac/platform-admin-roles1.png)
@@ -1144,10 +1144,10 @@ To perform Role-based access control (RBAC), a Harness account administrator ass
 ![Resource Groups for Platform Admin](static/coe-rbac/platform-admin-resource-groups.png)
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="DevOps Admin">
-```
+
 
 **Roles**
 ![Access Control Roles for DevOps Admin](static/coe-rbac/devops-admin-roles1.png)
@@ -1159,10 +1159,10 @@ To perform Role-based access control (RBAC), a Harness account administrator ass
 ![Resource Groups for DevOps Admin](static/coe-rbac/devops-admin-resource-groups1.png)
 ![Resource Groups for DevOps Admin](static/coe-rbac/devops-admin-resource-groups2.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="DevOps Engineer">
-```
+
 
 **Roles**
 ![Access Control Roles for DevOps Engineer](static/coe-rbac/devops-engineer-roles1.png)
@@ -1173,20 +1173,20 @@ To perform Role-based access control (RBAC), a Harness account administrator ass
 ![Resource Groups for DevOps Admin](static/coe-rbac/devops-engineer-resource-groups1.png)
 ![Resource Groups for DevOps Admin](static/coe-rbac/devops-engineer-resource-groups2.png)
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
 
-```mdx-code-block
+
+
 </TabItem>
 <TabItem value="Distruibuted DevOps">
-```
 
-```mdx-code-block
+
+
 <Tabs>
 <TabItem value="Harness Admin">
-```
+
 
 **Roles**
 ![Access Control Roles for Harness Admin](static/dd-rbac/harness-admin-roles.png)
@@ -1194,10 +1194,10 @@ To perform Role-based access control (RBAC), a Harness account administrator ass
 **Resource Groups**
 ![Resource Groups for Program Manager](static/dd-rbac/harness-admin-resource-groups.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Project DevOps Admin">
-```
+
 
 **Roles**
 ![Access Control Roles for Project DevOps Admin](static/dd-rbac/project-devops-admin-roles1.png)
@@ -1207,10 +1207,10 @@ To perform Role-based access control (RBAC), a Harness account administrator ass
 ![Resource Groups for Project DevOps Admin](static/dd-rbac/project-devops-admin-resource-groups1.png)
 ![Resource Groups for Project DevOps Admin](static/dd-rbac/project-devops-admin-resource-groups2.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Project DevOps Engineer">
-```
+
 
 **Roles**
 ![Access Control Roles for Project DevOps Engineer](static/dd-rbac/project-devops-engineer-roles1.png)
@@ -1221,15 +1221,15 @@ To perform Role-based access control (RBAC), a Harness account administrator ass
 ![Resource Groups for Project DevOps Engineer](static/dd-rbac/project-devops-engineer-resource-groups1.png)
 ![Resource Groups for Project DevOps Engineer](static/dd-rbac/project-devops-engineer-resource-groups2.png)
 
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
+
+
+
+</TabItem>
+</Tabs>
+
 
 For more information, go to 
 

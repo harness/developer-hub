@@ -7,9 +7,9 @@ redirect_from:
   - /sandbox
 ---
 
-```mdx-code-block
+
 import harness_atl from './static/atlanta_light.png'
-```
+
 
 # Markdown Capabilities
 
@@ -38,21 +38,21 @@ H5 Heading
 
 	
 ## Details
-Details are toggle elements. 
+Details are toggle elements.
 
 <details>
-  <summary>Toggle Heading</summary>
+<summary>Toggle Heading</summary>
   <div>
     <div>This is the detailed content</div>
     <br/>
-    <details>
-      <summary>
+<details>
+<summary>
         Nested Toggle
       </summary>
       <div>
        This is the nested detailed content
       </div>
-    </details>
+</details>
   </div>
 </details>
 
@@ -101,29 +101,29 @@ e.g deeper linking:
 Can see what the tab value ='s then the anchor tab there in combination and for nested tabs can continue. 
 `?pipeline=cd-pipeline&cli-os=windows#getting-started-with-harness-cd`
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs queryString="tab-number">
 <TabItem value="1" label="Tab One">
-```
+
 
 This is an `TabItem` 1.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="2" label="Tab Two">
-```
+
 
 This is an `TabItem` 2.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Code Formatting
 Can enable syntax highlighting with these [common languages](https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/vendor/prism/includeLangs.js). 
@@ -158,9 +158,9 @@ import harness_atl from './static/atlanta_light.png'
 
 ```
 
-```mdx-code-block
+
 <img src={harness_atl} alt="Harness Atlanta" height = "300" width = "600" />
-```
+
 
 ### Lightbox / Image Expand
 Can use the `docimage` plugin for this. 
@@ -197,9 +197,9 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 ```
 
 
-```mdx-code-block
+
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
+
 
 <CISignupTip />
 

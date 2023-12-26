@@ -31,15 +31,15 @@ This tutorial demonstrates how to deploy on AWS Lambda using Harness Continuous 
 
 :::
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs queryString="serverlessprovider">
 <TabItem value="serverlessdotcom" label="Serverless.com Infrastructure">
-```
+
 
 ## Before you begin
 
@@ -147,51 +147,49 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 3. For the secret value, paste the access token for your AWS user account. The Harness delegate uses this credential to authenticate Harness with AWS at deployment runtime.
 4. Select **Save**.
 
-```mdx-code-block
+
 <Tabs queryString="interface">
 <TabItem value="cli" label="CLI">
-```
+
 1. Download and configure the Harness CLI.
 
-    ```mdx-code-block
-    <Tabs queryString="cli-os">
-    <TabItem value="macos" label="MacOS">
-    ```
+    
+<Tabs queryString="cli-os">
+<TabItem value="macos" label="MacOS">
+    
+<MacOSCLI />
 
-    <MacOSCLI />
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="linux" label="Linux">
-    ```
+</TabItem>
+<TabItem value="linux" label="Linux">
+    
 
-    ```mdx-code-block
-    <Tabs queryString="linux-platform">
-    <TabItem  value="arm" label="ARM">
-    ```
+    
+<Tabs queryString="linux-platform">
+<TabItem  value="arm" label="ARM">
+    
+<ARMCLI />
 
-    <ARMCLI />
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="amd" label="AMD">
-    ```
+</TabItem>
+<TabItem value="amd" label="AMD">
+    
 
-    <AMDCLI />
+<AMDCLI />
 
-    ```mdx-code-block
-    </TabItem>
-    </Tabs>
-    ```
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="Windows">
-    ```
+</TabItem>
+</Tabs>
+
+
+
+</TabItem>
+<TabItem value="Windows">
+    
 
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
-    <WindowsCLI />
+<WindowsCLI />
         
     b. Extract the downloaded zip file and change the directory to extracted file location.
 
@@ -204,10 +202,10 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 
     d. Restart terminal.
 
-    ```mdx-code-block
-    </TabItem>
-    </Tabs>
-    ```
+
+</TabItem>
+</Tabs>
+    
 
 2. Clone the forked **harnesscd-example-apps** repo and change directory.
     ```bash
@@ -312,10 +310,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
     
     Observe the execution logs as Harness deploys the function.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="ui" label="UI">
-```
+
 ## Connectors
 
 <details open>
@@ -410,19 +408,19 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
     
     Observe the execution logs as Harness deploys the function.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Congratulations!🎉
 
 You've just learned how to use Harness CD to deploy an AWS Lambda function on AWS Lambda using the Serverless.com Framework.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="awslambda" label="Native AWS Lambda">
-```
+
 ## Before you begin
 
 Verify the following:
@@ -449,8 +447,8 @@ Verify the following:
         - **AWSLambda_FullAccess** (previously AWSLambdaFullAccess): Needed to write to Lambda.
         - **AmazonS3ReadOnlyAccess**: Needed to pull the function file from S3.
         - **AmazonEC2ContainerRegistryReadOnly**: Needed to pull function container image from ECR. This policy provides read-only access to the ECR repository.
-    - **AWS Lambda Execution Role**: As a Lambda user, you probably already have the AWS Lambda Execution Role set up. If you do not, follow the steps in [AWS Lambda Execution Role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html) from AWS.  
-  
+    - **AWS Lambda Execution Role**: As a Lambda user, you probably already have the AWS Lambda Execution Role set up. If you do not, follow the steps in [AWS Lambda Execution Role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html) from AWS.
+
 <details>
 <summary>Example IAM policy:</summary>
 
@@ -618,52 +616,50 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
     3. For the secret value, add the AWS [Secret access key](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html).
     4. Select **Save**.
 
-```mdx-code-block
+
 <Tabs queryString="interface">
 <TabItem value="cli" label="CLI">
-```
+
 
 1. Download and configure the Harness CLI.
 
-    ```mdx-code-block
-    <Tabs queryString="cli-os">
-    <TabItem value="MacOS">
-    ```
+    
+<Tabs queryString="cli-os">
+<TabItem value="MacOS">
+    
 
-    <MacOSCLI />
+<MacOSCLI />
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="linux" label="Linux">
-    ```
 
-    ```mdx-code-block
-    <Tabs queryString="linux-platform">
-    <TabItem value="arm" label="ARM">
-    ```
+</TabItem>
+<TabItem value="linux" label="Linux">
+    
 
-    <ARMCLI />
+    
+<Tabs queryString="linux-platform">
+<TabItem value="arm" label="ARM">
+    
+<ARMCLI />
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="amd" label="AMD">
-    ```
 
-    <AMDCLI />
+</TabItem>
+<TabItem value="amd" label="AMD">
+    
+<AMDCLI />
 
-    ```mdx-code-block
-    </TabItem>
-    </Tabs>
-    ```
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="windows" label="Windows">
-    ```
+</TabItem>
+</Tabs>
+
+
+
+</TabItem>
+<TabItem value="windows" label="Windows">
+    
 
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
-    <WindowsCLI />
+ <WindowsCLI />
         
     b. Extract the downloaded zip file and change directory to extracted file location.
 
@@ -676,10 +672,10 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 
     d. Restart terminal.
 
-    ```mdx-code-block
-    </TabItem>
-    </Tabs>
-    ```
+
+</TabItem>
+</Tabs>
+    
 
 2. Clone the forked **harnesscd-example-apps** repo and change directory.
     ```bash
@@ -800,10 +796,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
     Observe the execution logs as Harness deploys the function.
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="UI">
-```
+
 ### Connectors
 
 <details open>
@@ -914,16 +910,16 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
     
     Observe the execution logs as Harness deploys the function.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Congratulations!🎉
 
 You've just learned how to use Harness CD to deploy an AWS Lambda function on AWS Lambda.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+

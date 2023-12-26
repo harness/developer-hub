@@ -83,7 +83,7 @@ Next, we can add a Kubernetes manifest for NGINX. We'll use the [publicly-availa
      1. In **Personal Access Token**, click **Create or Select a Secret**.
      2. Select **New Secret Text**.
      3. In **Secret Name**, enter a name for the secret like **github-pat**.
-     4. In **Secret Value**, paste in a GitHub Personal access token. When you're logged into GitHub, these are typically listed at <https://github.com/settings/tokens>. For steps on setting up a GitHub PAT, go to [creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub. Ensure you PAT has the **repo** scope selected:
+     4. In **Secret Value**, paste in a GitHub Personal access token. When you're logged into GitHub, these are typically listed at [https://github.com/settings/tokens](https://github.com/settings/tokens). For steps on setting up a GitHub PAT, go to [creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub. Ensure you PAT has the **repo** scope selected:
 
      ![](./static/repoScope.png)
 4. Select **Continue**.
@@ -104,9 +104,9 @@ Use this [delegate installation wizard video](https://www.youtube.com/watch?v=yL
 
 </details>
 
-```mdx-code-block
+
 import DelegateInstall from '/tutorials/platform/install-delegate.md';
-```
+
 
 <details>
 <summary>Install a delegate using the terminal</summary>

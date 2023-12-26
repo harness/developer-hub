@@ -103,7 +103,6 @@ Remaining Allocation is a metric used to determine the available work capacity f
 * **Engineer Contribution:** The engineer’s contribution to each category is based on the total effort spent on tasks within that category. The contribution is expressed as a percentage of their total effort.
 
 <details>
-
 <summary>Calculation Example</summary>
 
 Let's consider a scenario where a user, User X, is assigned tasks in two categories, "Category A" and "Category B."&#x20;

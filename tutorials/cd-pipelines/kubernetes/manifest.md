@@ -15,10 +15,10 @@ title: Manifest
   target="_self"
 />
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <!---
 Import statements for CLI downloads
@@ -47,10 +47,10 @@ bash <(curl -fsSL https://raw.githubusercontent.com/harness-community/scripts/ma
 
 :::
 
-```mdx-code-block
+
 <Tabs queryString="pipeline">
 <TabItem value="gitops" label="GitOps Workflow">
-```
+
 Harness GitOps (built on top of Argo CD) watches the state of your application as defined in a Git repo, and can pull (either automatically, or when instructed to do so) these changes into your Kubernetes cluster, leading to an application sync. Harness GitOps supports both Argo CD and Flux CD as the GitOps reconciler.
 :::info
 
@@ -58,7 +58,7 @@ Whether you're new to GitOps or an experienced practitioner, this guide will ass
 
 :::
 
-## Before you begin {#before-you-begin-gitops}
+## Before you begin \{#before-you-begin-gitops}
 
 Verify that you have the following:
 
@@ -71,10 +71,10 @@ Verify that you have the following:
 ## Getting Started with Harness GitOps
 --------------------------------------
 
-```mdx-code-block
+
 <Tabs queryString="iac">
 <TabItem value="cli" label="CLI">
-```
+
 
 1. Refer [Install and Configure Harness CLI](https://developer.harness.io/docs/platform/automation/cli/install) doc to setup and configure Harness CLI.
 
@@ -104,10 +104,10 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
    - Select **New GitOps Agent**.
    - When are prompted with **Do you have any existing Argo CD instances?**, select **Yes** if you already have a Argo CD Instance, or else choose **No** to install the **Harness GitOps Agent**.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness GitOps Agent Fresh Install">
-```
+
 
 - Select **No**, and then select **Start**.
 - In **Name**, enter the name for the new Agent.
@@ -123,10 +123,10 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
  - Select **Continue** and verify the Agent is successfully installed and can connect to Harness Manager.
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Harness GitOps Agent with existing Argo CD instance">
-```
+
 
 - Select **Yes**, and then select **Start**.
 - In **Name**, enter the name for the existing Argo CD project.
@@ -139,10 +139,10 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
     ```
 - Once you have installed the Agent, Harness will start importing all the entities from the existing Argo CD Project.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 4. Before proceeding, store the Agent Identifier value as an environment variable for use in the subsequent commands:
     ```bash
@@ -183,10 +183,10 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
     kubectl port-forward svc/kustomize-guestbook-ui 8080:80
     ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="ui" label="UI">
-```
+
 
 1. Login to [Harness](https://app.harness.io/).
 2. Select **Projects**, and then select **Default Project**.
@@ -205,10 +205,10 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
    - Select **New GitOps Agent**.
    - When are prompted with **Do you have any existing Argo CD instances?**, select **Yes** if you already have a Argo CD Instance, or else choose **No** to install the **Harness GitOps Agent**.
 
-```mdx-code-block
+
 <Tabs  queryString="gitopsagent">
 <TabItem value="agent-fresh-install" label="Harness GitOps Agent Fresh Install">
-```
+
 
 - Select **No**, and then select **Start**.
 - In **Name**, enter the name for the new Agent.
@@ -230,10 +230,10 @@ Download the Harness GitOps Agent script using either the YAML or Helm Chart opt
 - Select **Continue** and verify the Agent is successfully installed and can connect to Harness Manager.
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="existingargo" label="Harness GitOps Agent with existing Argo CD instance">
-```
+
 
 - Select **Yes**, and then select **Start**.
 - In **Name**, enter the name for the existing Argo CD project.
@@ -252,10 +252,10 @@ Download the Harness GitOps Agent script using either the YAML or Helm Chart opt
 - Select **Continue** and verify the Agent is successfully installed and can connect to Harness Manager.
 - Once you have installed the Agent, Harness will start importing all the entities from the existing Argo CD Project.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Repositories
 
@@ -359,10 +359,10 @@ A successful Application sync will display the following status tree under **Res
 
 ![GitOps](../static/k8s-manifest-tutorial/gitops.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="terraform" label="Terraform Provider">
-```
+
 Harness offers a [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to help you declaratively manage Harness GitOps entities alongside your application and cluster resources. These steps walk through using Terraform to create and install the GitOps agent, define related Harness entities, and deploy a sample application to your cluster.
 
 <docvideo src="https://www.youtube.com/watch?v=U_XkKcfg8ts" width="75%" />
@@ -544,10 +544,10 @@ kubectl delete service guestbook-ui -n default
 ```
 
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 <br/>
 
@@ -559,20 +559,20 @@ You've just learned how to use **Harness GitOps** to deploy an application using
 - Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial).
 - Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="cd-pipeline" label="CD pipeline" queryString="pipeline">
-```
+
 Harness CD pipelines allow you to orchestrate and automate your deployment workflows, and push updated application images to your target Kubernetes cluster. Pipelines allow extensive control over how you want to progress artifacts through various dev / test / stage / prod clusters, while running a variety of scans & tests to ensure quality and stability standards you and team may have defined.
 
 You can choose to proceed with the tutorial either by using the command-line interface (Harness CLI) or the user interface (Harness UI).
 
-```mdx-code-block
+
 <Tabs queryString="interface">
 <TabItem value="cli" label="CLI">
-```
 
-## Before you begin {#before-you-begin-cli}
+
+## Before you begin \{#before-you-begin-cli}
 
 Verify the following:
 
@@ -584,46 +584,42 @@ Verify the following:
 5. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
     - For details on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
 
-## Getting Started with Harness CD {#getting-started-harness-cd-cli}
+## Getting Started with Harness CD \{#getting-started-harness-cd-cli}
 ----------------------------------
 
 1. Download and Configure Harness CLI.
 
-    ```mdx-code-block
-    <Tabs queryString="cli-os">
-    <TabItem value="macos" label="MacOS">
-    ```
+    
+<Tabs queryString="cli-os">
+<TabItem value="macos" label="MacOS">
+    
 
    <MacOSCLI />
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="linux" label="Linux">
-    ```
 
-    ```mdx-code-block
-    <Tabs queryString="linux-platform">
-    <TabItem value="arm" label="ARM">
-    ```
+</TabItem>
+<TabItem value="linux" label="Linux">
+    
+<Tabs queryString="linux-platform">
+<TabItem value="arm" label="ARM">
+    
+<ARMCLI />
 
-    <ARMCLI />
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="amd" label="AMD">
-    ```
+</TabItem>
+<TabItem value="amd" label="AMD">
+    
+<AMDCLI />
 
-    <AMDCLI />
 
-    ```mdx-code-block
-    </TabItem>
-    </Tabs>
-    ```
+</TabItem>
+</Tabs>
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="windows" label="Windows">
-    ```
+
+
+</TabItem>
+<TabItem value="windows" label="Windows">
+    
 
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
@@ -640,10 +636,10 @@ Verify the following:
 
     d. Restart terminal.
 
-    ```mdx-code-block
-    </TabItem>
-    </Tabs>
-    ```
+
+</TabItem>
+</Tabs>
+    
 
 2. Clone the Forked **harnesscd-example-apps** repo and change directory.
     ```bash
@@ -789,10 +785,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 </details>
 
 
-```mdx-code-block
+
 <Tabs queryString="deployment">
 <TabItem value="canary" label="Canary">
-```
+
 
 <details open>
 <summary>What are Canary deployments?</summary>
@@ -810,10 +806,10 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
    <docimage path={require('../static/k8s-manifest-tutorial/canary.png')} width="60%" height="60%" title="Click to view full size image" />
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="bg" label="Blue Green">
-```
+
 
 <details open>
 <summary>What are Blue Green deployments?</summary>
@@ -830,10 +826,10 @@ Blue Green deployments involve running two identical environments (stage and pro
 
    <docimage path={require('../static/k8s-manifest-tutorial/bluegreen.png')} width="60%" height="60%" title="Click to view full size image" />
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="rolling" label="Rolling">
-```
+
 <details open>
 <summary>What are Rolling deployments?</summary>
 
@@ -852,16 +848,16 @@ Rolling deployments incrementally add nodes in a single environment with a new s
    <docimage path={require('../static/k8s-manifest-tutorial/rolling.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
 
-```mdx-code-block
+
+
 </TabItem>
 <TabItem value="ui" label="UI">
-```
-## Before you begin {#before-you-begin-ui}
+
+## Before you begin \{#before-you-begin-ui}
 
 Verify that you have the following:
 
@@ -872,7 +868,7 @@ Verify that you have the following:
 4. **Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
     - For details on Forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) for more information on forking a GitHub repository.
 
-## Getting Started with Harness CD {#getting-started-harness-cd-ui}
+## Getting Started with Harness CD \{#getting-started-harness-cd-ui}
 ----------------------------------
 
 1. Log in to [Harness](https://app.harness.io/).
@@ -1017,10 +1013,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 </details>
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="canary" label="Canary">
-```
+
 
 <details open>
 <summary>What are Canary deployments?</summary>
@@ -1044,10 +1040,10 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
    <docimage path={require('../static/k8s-manifest-tutorial/canary.png')} width="60%" height="60%" title="Click to view full size image" />
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="bg" label="Blue Green">
-```
+
 
 <details open>
 <summary>What are Blue Green deployments?</summary>
@@ -1072,10 +1068,10 @@ Blue Green deployments involve running two identical environments (stage and pro
    <docimage path={require('../static/k8s-manifest-tutorial/bluegreen.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="rolling" label="Rolling">
-```
+
 
 <details open>
 <summary>What are Rolling deployments?</summary>
@@ -1099,14 +1095,14 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 
    <docimage path={require('../static/k8s-manifest-tutorial/rolling.png')} width="60%" height="60%" title="Click to view full size image" />
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
-```mdx-code-block
+
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Manually execute deployment pipelines
 
@@ -1163,10 +1159,10 @@ You can integrate your own microservice application into this tutorial by follow
 
 - Lastly, establish a new deployment pipeline and select the newly created infrastructure definition and service. Choose a deployment strategy that aligns with your microservice application's deployment needs.
 
-- Voila! You're now ready to deploy your own application by using Harness.  
+- Voila! You're now ready to deploy your own application by using Harness.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 

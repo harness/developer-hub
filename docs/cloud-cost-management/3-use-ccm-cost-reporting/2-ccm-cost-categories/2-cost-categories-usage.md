@@ -151,11 +151,16 @@ Below is the table where we have outlined the contrasting behavior of cost categ
         <td><font color="red">Not Supported.</font> Currently, we are updating the cost category exclusively for the cloud provider data only.</td>
     </tr>
     <tr>
-        <td>Behaviour </td>
-        <td>If there is an update in the cost category rule, we will utilize the updated rules to display the cost accordingly, even for past data.</td>
-        <td>We keep track of cost category changes on a monthly basis and update data accordingly for that month.
-        <br></br>
-        <b>Caveat:</b> For GCP data, we update the data for last 3 days only.</td>
+        <td>
+            Behaviour 
+        </td>
+        <td>
+            If there is an update in the cost category rule, we will utilize the updated rules to display the cost accordingly, even for past data.
+        </td>
+        <td>
+        cWe keep track of cost category changes on a monthly basis and update data accordingly for that month.
+        <br></br><b>Caveat:</b> For GCP data, we update the data for last 3 days only.
+        </td>
     </tr>
 </table>
 

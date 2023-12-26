@@ -17,10 +17,10 @@ slug: /ci-pipelines/publish/google-gar
   target="_self"
 />
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 :::info
 
@@ -70,9 +70,9 @@ In addition to a Harness account, you need the following accounts and tools:
 - A [GitHub](https://github.com) account where you can fork the tutorial repo
 - A [Google Cloud account](https://cloud.google.com)
 
-```mdx-code-block
+
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
+
 
 <CISignupTip />
 
@@ -212,19 +212,19 @@ While the Harness platform has several modules, this tutorial focuses on the Con
 Pipelines require build infrastructure to run. When you create your own pipelines, you can use either Harness-hosted infrastructure or bring your own build infrastructure. This tutorial uses Harness-hosted infrastructure, also called Harness Cloud.
 
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="cloud" label="Harness Cloud" default>
-```
+
 
 [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) uses Harness-hosted machines to run builds. Harness maintains and upgrades these machines, which gives you more time to focus on development.
 
 ![Harness CI Hosted Overview](../static/ci-tutorial-node-docker/harness_ci_hosted_infra_overview.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="self" label="Self-hosted infrastructure">
-```
+
 
 With self-hosted build hardware, your pipelines run on your local machines or your Kubernetes clusters. To learn about self-hosted options, go to [Set up build infrastructure](/docs/category/set-up-build-infrastructure).
 
@@ -232,10 +232,10 @@ With self-hosted build hardware, your pipelines run on your local machines or yo
 
 
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### GitHub personal access token
 

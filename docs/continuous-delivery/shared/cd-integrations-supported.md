@@ -1,11 +1,11 @@
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Deployments" label="Deployments">
-```
+
 
 <details>
 <summary>Platform features for all deployment types</summary>
@@ -552,7 +552,7 @@ GitOps supports the following:
 - **Limitations:**
   - Self-hosted environments
     - Agents installed in custom namespaces are not yet supported.
-  
+
 </details>
 
 <details>
@@ -580,10 +580,10 @@ For non-native deployments, Harness provides a custom deployment option using De
 </details>
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Provisioners" label="Provisioners">
-```
+
 
 Harness supports the following infrastructure provisioning tools:
 
@@ -625,10 +625,10 @@ Some Harness features might require specific Terraform versions.
 Harness also supports Terraform Cloud and Enterprise.
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Controls/Utilities" label="Controls/Utilities">
-```
+
 
 - **Containerized steps:**
   - [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups)
@@ -659,10 +659,10 @@ Harness also supports Terraform Cloud and Enterprise.
   - [Run step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step)
   - [Plugin step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/plugin-step)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="File Store" label="File Store">
-```
+
 
 Manifests, specifications, config files, and other deployment files can be pulled from the following providers:
 
@@ -697,10 +697,10 @@ The following table lists where you can store your manifests or config files for
 
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="CD Artifacts" label="Artifacts">
-```
+
 
 All artifact sources are covered in [CD artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 
@@ -746,20 +746,20 @@ The following table lists Harness integrations and their artifact source support
 
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Ticketing/Approvals" label="Ticketing/Approvals">
-```
+
 
 You can use the following ticketing systems for creating and updating tickets, and as approval gates:
 - Jira ([ticketing](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages), [approvals](/docs/platform/Approvals/adding-jira-approval-stages))
 - ServiceNow ([ticketing](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages), [approvals](/docs/platform/Approvals/service-now-approvals))
 - [Harness manual approvals](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Governance" label="Governance">
-```
+
 
 Harness Policy As Code uses [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) as the central service to store and enforce policies for the different entities and processes across the Harness platform.
 
@@ -787,10 +787,10 @@ Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible reg
 
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Notes
 

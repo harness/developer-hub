@@ -4,10 +4,10 @@ description: Run CD steps in an ephemeral container.
 sidebar_position: 1
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 By default, the tasks performed by Harness CD steps are run on the Harness delegate host system, for example, the Kubernetes cluster where a Kubernetes delegate is running.
 
@@ -227,10 +227,10 @@ Here's how to create the connector separately using the Harness Docker registry 
 <summary>Add Docker registry connector</summary>
 
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 <details>
 <summary>Docker connector YAML</summary>
@@ -255,10 +255,10 @@ connector:
 
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="API" label="API">
-```
+
 
 Create the Docker connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
@@ -285,10 +285,10 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
 ```
 </details>
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Terraform Provider" label="Terraform Provider">
-```
+
 
 For the Terraform Provider Docker connector resource, go to [harness_platform_connector_docker](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_docker).
 
@@ -310,10 +310,10 @@ resource "harness_platform_connector_docker" "test" {
 ```
 </details>
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Harness Manager" label="Harness Manager">
-```
+
 
 1. At the Harness project, org, or account level, go to **Connectors**.
 2. Select **New Connector**, and then select **Docker Registry**.
@@ -328,10 +328,10 @@ resource "harness_platform_connector_docker" "test" {
 6. Select any delegate or select/create a specific delegate, and then select **Save and Continue**.
 7. When the connection test is complete, select **Finish**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 #### Important notes
 
@@ -378,10 +378,10 @@ Simply enter `docker:dind`.
 Supply a list of arguments in `exec` format. Enter each argument separately.
 
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 <figure>
 
 ![Entry Point commands](../static/0c005ac860103a5b7fb3355c95dc13ff5eab09baae3d7636ec7bf40c7ccc166e.png)  
@@ -389,10 +389,10 @@ Supply a list of arguments in `exec` format. Enter each argument separately.
 <figcaption><b>Entry Point</b> arguments in the Pipeline Studio Visual editor.</figcaption>
 </figure>
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```yaml
 entrypoint:
@@ -400,10 +400,10 @@ entrypoint:
   - "--mtu=1450"
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 **Entry Point** arguments override the image `ENTRYPOINT` and any commands in the **Command** field. 
 
 ### Shell and Command

@@ -35,7 +35,7 @@ The following commands show an example daily cron backup with TTL to specify how
 
 `velero backup create harness-backup --selector <labelsForThePods>`
 
-`velero schedule create <SCHEDULE NAME> --schedule "0 7 * * *" --ttl<DURATION>`
+`velero schedule create <SCHEDULE NAME> --schedule "0 7 * * *" --ttl\<DURATION>`
 
 The following command shows an example restore:
 

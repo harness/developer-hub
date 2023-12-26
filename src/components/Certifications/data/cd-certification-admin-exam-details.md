@@ -85,7 +85,7 @@ The following is a detailed list of exam objectives:
 | 14.1 | Implementing advanced troubleshooting steps in CD stages and pipelines |
 | 14.2 | Optimizing delegate usage and managing workload distribution |
 
-  
+
 </details>
 
 <br />

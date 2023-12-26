@@ -4,11 +4,11 @@ description: Set up TI for Python codebases.
 sidebar_position: 30
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
-```
+
 
 :::note
 
@@ -96,10 +96,10 @@ Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI
 
 ## Pipeline YAML examples
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="cloud" label="Harness Cloud" default>
-```
+
 
 This example shows a pipeline that uses Harness Cloud build infrastructure and runs tests on Python with pytest and Test Intelligence.
 
@@ -148,10 +148,10 @@ pipeline:
             type: Cloud
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="sh" label="Self-hosted">
-```
+
 
 This example shows a pipeline that uses a Kubernetes cluster build infrastructure and runs tests on Python with pytest and Test Intelligence.
 
@@ -204,10 +204,10 @@ pipeline:
               os: Linux
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Run Tests step settings
 

@@ -10,10 +10,10 @@ redirect_from:
   - /docs/continuous-integration/use-ci/manage-dependencies/configure-service-dependency-step-settings
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 Use Background steps to [manage dependent services](./dependency-mgmt-strategies.md) that need to run for the entire lifetime of a Build stage. For example, you can set up your pipeline to run multiple background services that implement a local, multi-service app.
 
@@ -95,10 +95,10 @@ Supply a list of arguments in `exec` format. **Entry Point** arguments override 
 
 If you want to add your **Entry Point** arguments to the image `ENTRYPOINT`, include both the image `ENTRYPOINT`, such as `docker-entrypoint.sh`, and your additional arguments in **Entry Point**.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 <figure>
 
 ![](./static/dind-background-step-entry-point.png)
@@ -106,10 +106,10 @@ If you want to add your **Entry Point** arguments to the image `ENTRYPOINT`, inc
 <figcaption><b>Entry Point</b> arguments in the Pipeline Studio Visual editor.</figcaption>
 </figure>
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```yaml
                     entrypoint:
@@ -117,10 +117,10 @@ If you want to add your **Entry Point** arguments to the image `ENTRYPOINT`, inc
                       - "--mtu=1450"
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::tip
 
@@ -132,10 +132,10 @@ In a Kubernetes cluster build infrastructure, you can use **Entry Point** to ove
 
 Enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script commands (beyond the image `ENTRYPOINT`) for this step. If the step runs in a container, the commands are executed inside the container.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="bash" label="Bash" default>
-```
+
 
 This Bash script example checks the Java version.
 
@@ -153,10 +153,10 @@ This Bash script example checks the Java version.
                       fi
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="powershell" label="PowerShell">
-```
+
 This is a simple PowerShell `Wait-Event` example.
 
 ```yaml
@@ -174,10 +174,10 @@ You can run PowerShell commands on Windows VMs running in AWS build farms.
 :::
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="pwsh" label="Pwsh">
-```
+
 
 This PowerShell Core example runs `ForEach-Object` over a list of events.
 
@@ -197,10 +197,10 @@ You can run PowerShell Core commands in pods or containers that have `pwsh` inst
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="sh" label="Sh">
-```
+
 
 In this example, the pulls a `python` image and executes a shell script (`Sh`) that runs `pytest` with code coverage.
 
@@ -221,10 +221,10 @@ In this example, the pulls a `python` image and executes a shell script (`Sh`) t
                       pytest -v --cov --junitxml="result.xml" test_api.py test_api_2.py test_api_3.py
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="python" label="Python">
-```
+
 
 If the `shell` is `Python`, supply Python commands directly in `command`.
 
@@ -239,10 +239,10 @@ This example uses a basic `print` command.
                     command: print('Hello, world!')
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::tip
 

@@ -11,12 +11,12 @@ redirect_from:
 ---
 # Set up CCM for GCP
 
-```mdx-code-block
+
 import select_gcp from './static/set-up-cost-visibility-for-gcp-01.png'
 import create_dataset from './static/set-up-cost-visibility-for-gcp-02.png'
 import dataset_name from './static/set-up-cost-visibility-for-gcp-03.png'
 import dataset_permissions from './static/data-permissions-gcp.png'
-```
+
 
 Harness Cloud Cost Management (CCM) monitors the cloud costs of your GCP products, projects, SKUs, and location. As a first step, you need to connect Harness to your GCP account to get insights into your cloud infrastructure, and GCP services, Compute Engine, Cloud Storage, BigQuery, etc. CCM offers a wide range of features to track and control costs associated with your cloud resources.
 
@@ -37,29 +37,29 @@ Connect Harness to your GCP account to gain access your GCP services, Compute En
 > **☆ NOTE —** Time periods in the GCP Cloud Billing report use the Pacific Time Zone (PST) and observe daylight saving time shifts. However, Harness CCM explorer uses the UTC time zone. You may notice some cloud cost differences between Harness CCM explorer and the GCP Cloud Billing report due to the time zone difference.
 
 1. Create a new Kubernetes connector using one of the two options below:
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs queryString="tab-number">
 <TabItem value="4" label="From Account Settings">
-```
+
 1. Go to **Account Resources** > **Connectors**.
 2. Select **+ New Connector**.
 3. Under **Cloud Costs**, select **GCP**.
-```mdx-code-block
+
 </TabItem>
 <TabItem value="5" label="From Cloud Costs">
-```
+
 1. Go to **Setup** > **Cloud Integration**.  
 2. Select **New Cluster/Cloud account**.
 3. Select **GCP**.
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
  
 2. Perform the following tasks in the **GCP Connector** wizard.
 ### Overview
@@ -81,7 +81,7 @@ Make sure that you have enabled **Detailed Usage Cost** on the **Billing Export*
 3. Select **Create dataset**. For more information, go to [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
   
   
-  ```mdx-code-block
+  
 <img src={create_dataset} alt="A screenshot that illstrates how and where to create a dataset in your GCP console." height="500" width="600" />
 
 4. Enter a **Dataset Name**.  
@@ -92,10 +92,10 @@ You need to enter Dataset Name in Harness.
 8. To save, select **CREATE DATASET**.
 9. Enter the **Dataset Name** in Harness.
 
-  ```mdx-code-block
+  mdx-code-block
 <img src={dataset_name} alt="A screenshot that illstrates how and where to enter the dataset name." height="500" width="600" />
 
-10. Next, you need to enter the table name in Harness. From the GCP console, copy the table name where the billing export is available. In your BigQuery dataset, the table is named `gcp_billing_export_v1_<BILLING_ACCOUNT_ID>`.
+10. Next, you need to enter the table name in Harness. From the GCP console, copy the table name where the billing export is available. In your BigQuery dataset, the table is named `gcp_billing_export_v1_\<BILLING_ACCOUNT_ID>`.
   
     ![](./static/set-up-cost-visibility-for-gcp-04.png)
 11. Enter the **Table Name** in Harness.

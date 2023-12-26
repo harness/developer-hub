@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 :::note
 
@@ -97,7 +97,7 @@ Once you have created a trigger to listen for new artifacts, Harness will poll f
 
 Polling is immediate because Harness uses a perpetual task framework that constantly monitors for new builds/tags.
 
-## Using the <+trigger.artifact.build> and <+lastPublished.tag> expressions
+## Using the \<+trigger.artifact.build> and \<+lastPublished.tag> expressions
 
 When you add a Harness service to the CD stage, you can set the artifact tag to use in **Artifacts Details**.
 
@@ -138,10 +138,10 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 5. Select the artifact registry where your artifact is hosted. If you artifact is hosted on Docker Hub and you select GCR, you won't be able to set up your trigger.
 
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Docker Registry Artifacts" label="Docker Registry Artifacts">
-```
+
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**. This is where you tell Harness what artifact repository to poll for changes.
@@ -153,11 +153,11 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 5. Select **Continue**.
 
    In your Docker Registry connector, to connect to a public Docker registry like Docker Hub, use `https://registry.hub.docker.com/v2/`. To connect to a private Docker registry, use `https://index.docker.io/v2/`.
-   
-```mdx-code-block
+
+
 </TabItem>
 <TabItem value="GCR Artifacts" label="GCR Artifacts">
-```
+
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**.
@@ -170,12 +170,12 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
    
    ![](./static/trigger-on-a-new-artifact-27.png)
    
-6.  Select **Submit**, and then select **Continue**. 
+6.  Select **Submit**, and then select **Continue**.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="ECR Artifacts" label="ECR Artifacts">
-```
+
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**.
@@ -185,10 +185,10 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 6. In **Image Path**, enter the path to the repo and image. You can copy the URI value from the repo in ECR. For example, `public.ecr.aws/l7w9l6a8/todolist` (public repo) or `085111111113.dkr.ecr.us-west-2.amazonaws.com/todolist` (private repo).
 7. Select **Continue**.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="AWS S3" label="AWS S3">
-```
+
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**.
@@ -198,10 +198,10 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 6. In **File Path Regex**, enter a regex like `todolist*.zip`. The expression must either contain a `*` or end with `/`.
 7. Select **Continue**.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Artifactory" label="Artifactory">
-```
+
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, click **Define Artifact Source**.
@@ -216,10 +216,10 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 		3. **Repository URL (optional):** enter the **URL to file**.
 5. Select **Continue**.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="ACR" label="ACR">
-```
+
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**.
@@ -229,10 +229,10 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 6. In **Repository**, select the repository to use.
 7. Select **Continue**.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Bamboo" label="Bamboo">
-```
+
 
 1. In **Configuration**, in **Name**, enter a name for the trigger.
 2. In **Listen on New Artifact**, select **Define Artifact Source**.
@@ -240,10 +240,10 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 4. In **Artifact Details**, specify the plan name, artifact paths, and builds to monitor.
 5. Select **Continue**.
 
-```mdx-code-block
+
 </TabItem>    
 </Tabs>
-```
+
 
 ## Set conditions
 
@@ -280,10 +280,10 @@ When the trigger is executed, the metadata condition is evaluated and, if the co
 Here are the artifact metadata expressions you can use:
 
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Docker registry" label="Docker registry" default>
-```
+
 
 You can use the following expressions:
 
@@ -297,10 +297,10 @@ You can use the following expressions:
 ```
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="ECR" label="ECR">
-```
+
 
 You can use the following expressions:
 
@@ -313,10 +313,10 @@ You can use the following expressions:
 ```
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="ACR" label="ACR">
-```
+
 
 You can use the following expressions:
 
@@ -330,10 +330,10 @@ You can use the following expressions:
 ```
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="GAR" label="GAR">
-```
+
 
 Here are the expressions for Google Artifact Registry (GAR).
 
@@ -345,10 +345,10 @@ Here are the expressions for Google Artifact Registry (GAR).
 ```
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Artifactory" label="Artifactory">
-```
+
 
 You can use the following expressions:
 
@@ -358,10 +358,10 @@ You can use the following expressions:
 ```
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Jenkins" label="Jenkins">
-```
+
 
 You can use the following expressions:
 
@@ -369,10 +369,10 @@ You can use the following expressions:
 <+pipeline.stages.SSH_Jenkins_ArtifactSource.spec.artifacts.primary.metadata.url>
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Nexus 2" label="Nexus 2">
-```
+
 
 You can use the following expressions:
 
@@ -384,10 +384,10 @@ You can use the following expressions:
 <+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.url>
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Nexus 3" label="Nexus 3">
-```
+
 
 You can use the following expressions:
 
@@ -402,10 +402,10 @@ You can use the following expressions:
 <+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.groupId>
 ```
 
-```mdx-code-block
-  </TabItem>  
+
+</TabItem>  
 </Tabs>
-```
+
 
 ## Define multi-region artifact source
 

@@ -24,7 +24,7 @@ Configure the webhook API call according to the following webhook specifications
 
 **Header**
 
-* Authorization: Bearer <BEARER_TOKEN>
+* Authorization: Bearer \<BEARER_TOKEN>
 * Content-Type: application/json
 
 **Body**

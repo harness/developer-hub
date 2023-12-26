@@ -241,7 +241,7 @@ For example, `<+issue.Status> == "Done"` in the Approval Criteria **JEXL Express
 
 ### Approval variables
 
-After an approval is granted, [<+approval>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want to the pipeline to generate notifications about the approval.     
+After an approval is granted, [\<+approval>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want to the pipeline to generate notifications about the approval.     
 
 ### Notes
 

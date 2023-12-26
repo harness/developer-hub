@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 Harness code repository connectors connect your Harness account with your Git SCM provider. Connectors are used to pull code and other important files, such as Helm charts, Kubernetes manifests, and Terraform scripts, from your Git repos.
 
@@ -55,10 +55,10 @@ For instructions on setting up the IAM user for CodeCommit connections, go to th
 * [Setup for HTTPS users using Git credentials from AWS](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html)
 * [AWS managed policies for CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/security-iam-awsmanpol.html)
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="codecommit" label="AWS CodeCommit connector" default>
-```
+
 <!-- I think this needs to be revised because the instructions here don't match the "Settings reference" topic, and I don't see an AWS CodeCommit option under Code Repos in the connector drawer -->
 
 1. In your Harness project, select **Connectors** under **Project Setup**.
@@ -73,10 +73,10 @@ For instructions on setting up the IAM user for CodeCommit connections, go to th
 
 4. After the connection test runs, select **Finish** to save the connector.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="git" label="Platform-agnostic Git connector">
-```
+
 
 You can connect to CodeCommit [using the Harness platform-agnostic Git connector](#use-the-platform-agnostic-git-connector), instead of the AWS CodeCommit connector.
 
@@ -100,10 +100,10 @@ With the generic Git connector, you must use a username and password for the IAM
 
 5. After the connection test runs, select **Finish** to save the connector.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Connect to Azure Repos
 

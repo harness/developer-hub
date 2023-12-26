@@ -7,9 +7,9 @@ helpdocs_category_id: eyzngtupao
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-```mdx-code-block
+
 import sdk_arch from './static/1-client-side-and-server-side-sdks-00.png'
-```
+
 
 Harness Feature Flags provides several SDKs in different languages to help you access feature flags from your applications. The SDKs are divided into two main categories, regardless of the programming language:
 
@@ -28,9 +28,9 @@ For more information, go to the [Feature Flags overview page](https://developer.
 
 ## SDK architecture
 
-```mdx-code-block
+
 <img src={sdk_arch} alt="A screenshot of the Harness Platform that highlights the Create Project button in the Feature Flags module." height="500" width="500" />
-```
+
 The above diagram defines the behavior of an SDK. It covers various aspects like what happens at the beginning (initialization and authentication) followed by behavior of an SDK during normal operation.
 
 * **SDK Initialization:** SDK initialization requires only one argument, SDK key, and the optional configuration argument. There is a default configuration in the SDK and based on that configuration, an API client, a repository and an evaluator are set up.

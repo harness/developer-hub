@@ -141,7 +141,7 @@ ext {
     gitRevision = git.head().id
 }
 ```
-  </TabItem>
+</TabItem>
 </Tabs>
 3. Restart your application after installing the Error Tracking Agent.
 

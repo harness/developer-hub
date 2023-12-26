@@ -32,14 +32,14 @@ Create the artifact source template at the level you want to share it. For examp
 
 To create an artifact source template, do the following:
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 1. In a Harness project, org, or account settings, select **Templates**.
    1. Project:
       1. Select a module, such as **Deployments**.
@@ -99,10 +99,10 @@ If the regex expression does not result in a match, Harness ignores the value.
 
 Harness supports standard Java regex. For example, if you enable **Regex** with the intent is to match a filename, the wildcard must be `.*` instead of only `*`. Similarly, if you want to match all files ending in `-DEV.tgz`, your wildcard regex phrase would be: `.*-DEV\.tgz`
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 1. In your template, select **YAML**
 2. Paste the following YAML example and select **Save**:
@@ -127,10 +127,10 @@ template:
 
 Note that `connectorRef` refers to the Id of a Harness connector.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Saving templates to project, org, or account level
 
@@ -195,14 +195,14 @@ After creating an artifact source template, you can add it as the artifact sourc
 
 To add an artifact source template to a service, do the following:
 
-```mdx-code-block
+
 import Tabs2 from '@theme/Tabs';
 import TabItem2 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs2>
   <TabItem2 value="Visual" label="Visual" default>
-```
+
 
 1. Select the **Deployments** module.
 2. Select **Services**.
@@ -222,10 +222,10 @@ import TabItem2 from '@theme/TabItem';
 10. Select **Apply Changes**. The template is added to the service.
 
 
-```mdx-code-block
+
   </TabItem2>
   <TabItem2 value="YAML" label="YAML">
-```
+
 
 1. Select the **Deployments** module.
 2. Select **Services**.
@@ -286,10 +286,10 @@ You can see the artifact source template in the `artifacts` section:
 ...
 ```
 
-```mdx-code-block
+
   </TabItem2>
 </Tabs2>
-```
+
 
 ## Reconcile artifact source template changes in a service
 

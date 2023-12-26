@@ -326,11 +326,7 @@ You can assign the value to a variable like this:
 <details>
 <summary>Using cat with the JSON template expression</summary>
 
-
-stackOnetemplate=$(cat <<-END
-"<+pipeline.stages.test.spec.execution.steps.test.steps.AwsCdkSynth.output.outputVariables.cdkTest1stack1>"
-END
-)
+`stackOnetemplate=$(cat <<-END"<+pipeline.stages.test.spec.execution.steps.test.steps.AwsCdkSynth.output.outputVariables.cdkTest1stack1>"END)`
 
 
 

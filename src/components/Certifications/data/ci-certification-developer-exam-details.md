@@ -25,7 +25,7 @@ Question Type: Multiple choice
 
 <br />
 
-## Exam Objectives 
+## Exam Objectives
 
 <details>
 <summary>List of Objectives</summary>

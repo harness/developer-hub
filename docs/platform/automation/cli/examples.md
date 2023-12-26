@@ -4,19 +4,19 @@ description: Examples of various use cases of Harness CLI.
 sidebar_position: 2
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 In this segment, we'll guide you through a example demonstrating how to utilize the Harness CLI tool. You have the option to either establish a Harness GitOps workflow or configure a pipeline along with all necessary components to deploy a test guestbook application to your Kubernetes setup.
 
 ## Let's Begin
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="GitOps Example">
-```
+
 
 1. Refer [Install and Configure Harness CLI](./install.md) doc to setup and configure Harness CLI.
 
@@ -76,10 +76,10 @@ In this segment, we'll guide you through a example demonstrating how to utilize 
 
 10. Congratulations! You successfully used `harness` CLI utility tool to create and execute a GitOps workflow.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="CD Pipeline Example">
-```
+
 
 1. Refer [Install and Configure Harness CLI](./install.md) doc to setup and configure Harness CLI.
 
@@ -154,7 +154,6 @@ In this segment, we'll guide you through a example demonstrating how to utilize 
 
 13. Congratulations! You successfully used `harness` CLI utility tool to create and execute a pipeline.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```

@@ -3,10 +3,10 @@ title: Request-based SLO
 description: Create an SLO based on successful requests ratio to measure service performance.
 sidebar_position: 2
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 A request-based Service Level Objective (SLO) uses a Service Level Indicator (SLI), which calculates the ratio of successful requests to the total number of requests. It tells you how well a service is performing based on the ratio of successful requests to the total number of requests.
 

@@ -15,17 +15,17 @@ Use the SEI Github Enterprise integration to integrate SEI with Github Enterpris
 
 SEI communicates with Github Enterprise by setting up authentication using a **Personal Access Token (PAT)**. you must create a GitHub personal access token to configure the SEI GitHub integration. To learn more on this, Go to [Configuring the authentication](./sei-integration-github#configure-authentication).
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 ## Configure the integration
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
-```
+
 
 1. Select **Integrations** under **Settings**.
 2. Select **Available Integrations**, locate the **GitHub Enterprise** integration.
@@ -43,10 +43,10 @@ import TabItem from '@theme/TabItem';
 8. In Integration **Name**, enter a name for the integration.
 9. Finish configuration and **Save** the integration.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="satellite" label="Satellite">
-```
+
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Github enterprise server.
 
@@ -83,7 +83,6 @@ integrations:
 
 If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```

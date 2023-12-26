@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 To upload artifacts to AWS or other S3 providers, such as [MinIO](https://min.io/product/s3-compatibility), you can either:
 
@@ -140,10 +140,10 @@ You can use the [Artifact Metadata Publisher plugin](https://github.com/drone-pl
 
 Add the [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to S3** step.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 Configure the **Plugin** step settings as follows:
 
@@ -154,10 +154,10 @@ Configure the **Plugin** step settings as follows:
   * `file_urls`: Provide the URL to the artifact that was uploaded in the **Upload Artifacts to S3** step, such as `https://BUCKET.s3.REGION.amazonaws.com/TARGET/ARTIFACT_NAME_WITH_EXTENSION`. If you uploaded multiple artifacts, you can provide a list of URLs. If your S3 bucket is private, use the console view URL, such as `https://s3.console.aws.amazon.com/s3/object/BUCKET?region=REGION&prefix=TARGET/ARTIFACT_NAME_WITH_EXTENSION`.
   * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
 
@@ -179,10 +179,10 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
 * `file_urls`: Provide the URL to the target artifact that was uploaded in the **Upload Artifacts to S3** step, such as `https://BUCKET.s3.REGION.amazonaws.com/TARGET/ARTIFACT_NAME_WITH_EXTENSION`. If you uploaded multiple artifacts, you can provide a list of URLs. If your S3 bucket is private, use the console view URL, such as `https://s3.console.aws.amazon.com/s3/object/BUCKET?region=REGION&prefix=TARGET/ARTIFACT_NAME_WITH_EXTENSION`.
 * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Use the S3 Upload and Publish plugin
 
@@ -190,10 +190,10 @@ You can use the [S3 Upload and Publish plugin](https://github.com/harness-commun
 
 If you use this plugin, you **do not** need an **Upload Artifacts to S3** step in your pipeline. This plugin provides the same functionality as the **Upload Artifacts to S3** step combined with the **Artifact Metadata Publisher** plugin; however it may not be appropriate for use cases that require advanced configuration.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 In your pipeline's **Build** stage, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin, and configure the settings as follows:
 
@@ -210,10 +210,10 @@ In your pipeline's **Build** stage, add a [Plugin step](../use-drone-plugins/plu
    * `target`: Optional. Provide a path, relative to the `aws_bucket`, where you want to store the artifact. Do not include the bucket name; you specified this in `aws_bucket`. If the specified path doesn't exist in the bucket, Harness creates the folder or folders when uploading the artifact. If you don't specify a `target`, Harness uploads the artifact to the bucket's main directory. You might want to use expressions, such as `<+pipeline.name>/<+pipeline.sequenceId>`, which would automatically organize your artifacts into directories based on the pipeline name and incremental build ID.
 * **Image Pull Policy:** Select **If Not Present**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 In your pipeline's `CI` stage, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin, for example:
 
@@ -244,10 +244,10 @@ If you want to upload a compressed file, you must use a [Run step](../run-ci-scr
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Build logs and artifact files
 
@@ -271,17 +271,17 @@ If your pipeline has multiple steps that upload artifacts, use the dropdown menu
 
 ## Pipeline YAML examples
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="builtinstep" label="Upload Artifacts to S3 step" default>
-```
+
 
 The following pipeline examples [use the Upload Artifacts to S3 step](#use-the-upload-artifacts-to-s3-step) and the [Artifact Metadata Publisher plugin](#view-artifacts-on-the-artifacts-tab).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 This example pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). It produces a text file, uploads the file to S3, and uses the Artifact Metadata Publisher to publish the artifact URL on the **Artifacts** tab.
 
@@ -345,10 +345,10 @@ pipeline:
                       artifact_file: artifact.txt
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="k8s" label="Self-hosted">
-```
+
 
 This example pipeline uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures). It produces a text file, uploads the file to S3, and uses the Artifact Metadata Publisher to publish the artifact URL on the **Artifacts** tab.
 
@@ -416,22 +416,22 @@ pipeline:
                       artifact_file: artifact.txt
 ```
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
+</Tabs>
+
+
+
+</TabItem>
   <TabItem value="plugin" label="S3 Upload and Publish plugin">
-```
+
 
 The following pipeline examples [use the S3 Upload and Publish plugin](#use-the-s3-upload-and-publish-plugin).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 This example pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). It produces a text file and uses the S3 Upload and Publish plugin to uploads the file to S3 and publish the artifact URL on the **Artifacts** tab.
 
@@ -491,10 +491,10 @@ pipeline:
                     imagePullPolicy: IfNotPresent
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="k8s" label="Self-hosted">
-```
+
 
 This example pipeline uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures). It produces a text file and uses the S3 Upload and Publish plugin to uploads the file to S3 and publish the artifact URL on the **Artifacts** tab.
 
@@ -558,12 +558,12 @@ pipeline:
                     imagePullPolicy: IfNotPresent
 ```
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
 </Tabs>
-```
+
+
+
+</TabItem>
+</Tabs>
+

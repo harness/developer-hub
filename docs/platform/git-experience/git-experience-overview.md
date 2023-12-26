@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import create_pipeline from './static/git-experience-overview-02.png'
 import branch_selection from './static/git-experience-overview-03.png'
-```
+
 
 Harness Git Experience allows you to store your resource configurations, such as pipelines and input sets, in Git. You can use Git as the single source of truth and modify your configurations using your Git credentials.
 
@@ -74,9 +74,9 @@ You can save the modifications in the existing branch or a new branch through a 
 * When you create a Remote resource in Harness, the configurations are stored in Git.
 * You can select the branch from which you want to run the pipeline.
 
-  ```mdx-code-block
+  
   <img src={branch_selection} alt="branch-selection" height="300" width="700"/>
-  ```
+  
 
   You can also select the branch in the **Run Pipeline** settings.
 

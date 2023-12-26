@@ -104,7 +104,7 @@ No, the Post-Command script will only run if the "Run test" step pass.
 
 Yes, you can update the kaniko image as suggested in this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/).
 
-#### Using <+codebase.gitUser> results in "None" when using Python as Shell for a Run step
+#### Using \<+codebase.gitUser> results in "None" when using Python as Shell for a Run step
 
 <!-- This is not a solution. -->
 
@@ -770,11 +770,11 @@ No. You could add the test report path in runstep, background step etc and the t
 
 This is the expected behavior. When you run a CI (Build) stage, the steps create build farm pods that are connected to the delegate.
 
-#### Can we use <+codebase.commitSha> variable in CD Stage to get commit id?
-Yes you can able to get the commit id by using <+codebase.commitSha> variable, you can use the same variable in the CD stage to get the commit id in same pipeline after CI stage.
+#### Can we use \<+codebase.commitSha> variable in CD Stage to get commit id?
+Yes you can able to get the commit id by using \<+codebase.commitSha> variable, you can use the same variable in the CD stage to get the commit id in same pipeline after CI stage.
 
-#### Will <+codebase.commitSha> variable will work in CD stage if CI stage is not present in the pipeline?
-The <+codebase.commitSha> variable will not work in the CD Stage without the CI stage in the pipeline.
+#### Will \<+codebase.commitSha> variable will work in CD stage if CI stage is not present in the pipeline?
+The \<+codebase.commitSha> variable will not work in the CD Stage without the CI stage in the pipeline.
 
 #### If user can again define clone step in the CD and will they can able to get the commidID there again without CI stage in the pipeline?
 No, user can't able to get commit id in that case.

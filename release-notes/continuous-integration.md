@@ -6,10 +6,10 @@ date: 2024-01-02T10:00
 sidebar_position: 9
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/continuous-integration/rss.xml" />
 
@@ -1010,7 +1010,7 @@ This release introduces validations for Custom Webhook events. The event handler
 - Fixed issue: Git provider url placeholders were incorrect. (CI-3991)
 - Fixed Issue: Active Committers should not count cron and manual execution. (CI-4881)
 - You will now see the "CI Codebase" input form only if the selected stage has "cloneCodebase" set as true (in case of a selective stage execution) or at least one stage in the pipeline has "cloneCodebase" set as true (in case of complete pipeline execution). (CI-4894)
-- Steps inside Step Groups are now being renamed to <step*group_id>*<step_id>. (CI-5002)
+- Steps inside Step Groups are now being renamed to \<step*group_id>*\<step_id>. (CI-5002)
 - Fixed JFrog Artifactory Artifact publishing so that build/ and libs/ folders are not included in the artifactory path target. (CI-5023, ZD-32723)
 - Parallelism fix: For classnames, testsuites, and testcases, you need to provide a file that includes these values. The test splitter will use these values rather than the glob result. (CI-5049)
 - Fixed an intermittent issue where an OAuth error message would appear when new users tried to set up a hosted build. (CI-5060)

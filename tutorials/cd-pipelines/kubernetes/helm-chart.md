@@ -15,10 +15,10 @@ title: Helm Chart
   target="_self"
 />
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <!---
 Import statements for CLI downloads
@@ -46,10 +46,10 @@ bash <(curl -fsSL https://raw.githubusercontent.com/harness-community/scripts/ma
 
 :::
 
-```mdx-code-block
+
 <Tabs queryString="pipeline">
 <TabItem value="gitops" label="GitOps Workflow">
-```
+
 
 :::info
 
@@ -87,10 +87,10 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 2. Select **GitOps Agents**, and then select **New GitOps Agent**.
 3. In **Do you have any existing Argo CD instances?**, select **Yes** if you already have an Argo CD instance, else select **No** to install the Harness GitOps Agent.
 
-```mdx-code-block
+
 <Tabs queryString="gitopsagent">
 <TabItem value="agent-fresh-install" label="Harness GitOps Agent Fresh Install">
-```
+
 
 1. In **Do you have any existing Argo CD instances?**, select **No**, and then select **Start**.
 2. In **Name**, enter the name for the new Agent.
@@ -103,10 +103,10 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
     ```
 5. Select **Continue** and verify that the Agent is successfully installed and can connect to Harness Manager.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="existingargo" label="Harness GitOps Agent with existing Argo CD instance">
-```
+
 
 1. In **Do you have any existing Argo CD instances?**, select **Yes**, and then select **Start**.
 2. In **Name**, enter the name of the existing Argo CD project.
@@ -121,56 +121,56 @@ A Harness GitOps Agent is a worker process that runs in your environment, makes 
 
 Once you have installed the Agent, Harness will start importing all the entities from the existing Argo CD Project.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
 
-```mdx-code-block
+
+
 <Tabs  queryString="interfacegitopsfresh">
 <TabItem value="cli-fresh-gitops" label="CLI">
-```
+
 1. Download and Configure Harness CLI.
 
-    ```mdx-code-block
-    <Tabs queryString="cli-os-fg">
-    <TabItem value="macosfg" label="MacOS">
-    ```
+    
+<Tabs queryString="cli-os-fg">
+<TabItem value="macosfg" label="MacOS">
+    
 
-    <MacOSCLI />
+<MacOSCLI />
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="linuxfg" label="Linux">
-    ```
 
-    ```mdx-code-block
-    <Tabs queryString="linux-platform-fg">
-    <TabItem value="armfg" label="ARM">
-    ```
+</TabItem>
+<TabItem value="linuxfg" label="Linux">
+    
+
+    
+<Tabs queryString="linux-platform-fg">
+<TabItem value="armfg" label="ARM">
+    
 
    <ARMCLI />
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="amdfg" label="AMD">
-    ```
+
+</TabItem>
+<TabItem value="amdfg" label="AMD">
+    
 
    <AMDCLI />
 
-    ```mdx-code-block
-    </TabItem>
-    </Tabs>
-    ```
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="windowsfg" label="Windows">
-    ```
+</TabItem>
+</Tabs>
+
+
+
+</TabItem>
+<TabItem value="windowsfg" label="Windows">
+    
 
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
-    <WindowsCLI />
+<WindowsCLI />
         
     b. Extract the downloaded zip file and change directory to extracted file location.
 
@@ -183,10 +183,10 @@ Once you have installed the Agent, Harness will start importing all the entities
 
     d. Restart terminal.
 
-    ```mdx-code-block
-    </TabItem>
-    </Tabs>
-    ```
+
+</TabItem>
+</Tabs>
+    
 
 2. Clone the Forked **harnesscd-example-apps** repo and change directory.
     ```bash
@@ -262,10 +262,10 @@ Use the following command to create a Gitops application
 harness gitops-application --file helm-guestbook/harness-gitops/application.yml apply --agent-identifier $AGENT_NAME
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="uicli" label="UI">
-```
+
 
 ### Add a Harness GitOps repository
 
@@ -352,10 +352,10 @@ A GitOps Application collects the Repository (**what you want to deploy**), Clus
 12. Select **Continue** to select the **Cluster** created in the above steps.
 13. Enter the target **Namespace** for Harness GitOps to sync the application. Enter `default` and select **Finish**
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Sync the application 
 
@@ -377,16 +377,16 @@ On successful application sync, you'll see the status tree under **Resource View
 
 ![GitOps](../static/k8s-helm-tutorial/gitops-helm.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="uicdpipe" label="CD Pipeline">
-```
+
 You can choose to proceed with the tutorial either by using the command-line interface (Harness CLI) or the user interface (Harness UI).
 
-```mdx-code-block
+
 <Tabs queryString="interface-existing-argo">
 <TabItem value="cli-existing" label="CLI">
-```
+
 ## Before you begin
 
 Verify the following:
@@ -404,45 +404,45 @@ Verify the following:
 
 1. Download and Configure Harness CLI.
 
-    ```mdx-code-block
-    <Tabs queryString="gitops-cli-os">
-    <TabItem value="gitmacos" label="MacOS">
-    ```
+    
+<Tabs queryString="gitops-cli-os">
+<TabItem value="gitmacos" label="MacOS">
+    
 
    <MacOSCLI />
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="linuxgitops" label="Linux">
-    ```
 
-    ```mdx-code-block
-    <Tabs queryString="linux-platform-gitops">
-    <TabItem value="armgitops" label="ARM">
-    ```
+</TabItem>
+<TabItem value="linuxgitops" label="Linux">
+    
+
+    
+<Tabs queryString="linux-platform-gitops">
+<TabItem value="armgitops" label="ARM">
+    
 
    <ARMCLI />
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="amdgitops" label="AMD">
-    ```
 
-    <AMDCLI />
+</TabItem>
+<TabItem value="amdgitops" label="AMD">
+    
 
-    ```mdx-code-block
-    </TabItem>
+<AMDCLI />
+
+
+</TabItem>
     </Tabs>
-    ```
 
-    ```mdx-code-block
-    </TabItem>
-    <TabItem value="windowsgitops" label="Windows">
-    ```
+
+
+</TabItem>
+<TabItem value="windowsgitops" label="Windows">
+    
 
     a. Open Windows Powershell and run the command below to download the Harness CLI.
 
-    <WindowsCLI />
+<WindowsCLI />
         
     b. Extract the downloaded zip file and change directory to extracted file location.
 
@@ -455,10 +455,10 @@ Verify the following:
 
     d. Restart terminal.
 
-    ```mdx-code-block
-    </TabItem>
-    </Tabs>
-    ```
+
+</TabItem>
+</Tabs>
+    
 
 2. Clone the Forked **harnesscd-example-apps** repo and change directory.
     ```bash
@@ -572,10 +572,10 @@ Helm is primarily focused on managing the release and versioning of application 
 
 Harness adds an additional layer of functionality on top of Helm, providing a streamlined and automated approach to canary and blue-green deployments. By leveraging Helm's package management capabilities and integrating with its release management features, Harness extends Helm's capabilities to support canary and blue-green deployment strategies.
 
-```mdx-code-block
+
 <Tabs queryString="deploymentcli">
 <TabItem value="canarycli" label="Canary">
-```
+
 
 <details open>
 <summary>What are Canary deployments?</summary>
@@ -639,10 +639,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ![Canary](../static/k8s-helm-tutorial/canary.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="bgcli" label="Blue Green">
-```
+
 
 <details open>
 <summary>What are Blue Green deployments?</summary>
@@ -708,10 +708,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ![Blue Green](../static/k8s-helm-tutorial/bluegreen.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="k8srollingcli" label="K8s Rolling">
-```
+
 
 <details open>
 <summary>What are Rolling deployments?</summary>
@@ -774,10 +774,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ![k8s-Rolling](../static/k8s-helm-tutorial/rolling.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="helmrollingcli" label="Native Helm Rolling">
-```
+
 
 <details open>
 <summary>What are Rolling deployments?</summary>
@@ -842,17 +842,17 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ![Rolling](../static/k8s-helm-tutorial/rolling.png)
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
 
 
 
-```mdx-code-block
+
+
 </TabItem>
 <TabItem value="uigitops" label="UI">
-```
+
 ## Before you begin
 
 Make sure that you have met the following requirements:
@@ -972,10 +972,10 @@ Helm is primarily focused on managing the release and versioning of application 
 
 Harness adds an additional layer of functionality on top of Helm, providing a streamlined and automated approach to canary and blue-green deployments. By leveraging Helm's package management capabilities and integrating with its release management features, Harness extends Helm's capabilities to support canary and blue-green deployment strategies.
 
-```mdx-code-block
+
 <Tabs queryString="deploymentui">
 <TabItem value="canaryui" label="Canary">
-```
+
 
 <details open>
 <summary>What are Canary deployments?</summary>
@@ -1036,10 +1036,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ![Canary](../static/k8s-helm-tutorial/canary.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="bgui" label="Blue Green">
-```
+
 
 <details open>
 <summary>What are Blue Green deployments?</summary>
@@ -1101,10 +1101,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ![Blue Green](../static/k8s-helm-tutorial/bluegreen.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="k8srollingui" label="K8s Rolling">
-```
+
 
 <details open>
 <summary>What are Rolling deployments?</summary>
@@ -1166,10 +1166,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ![k8s-Rolling](../static/k8s-helm-tutorial/rolling.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="helmrolling" label="Native Helm Rolling">
-```
+
 
 <details open>
 <summary>What are Rolling deployments?</summary>
@@ -1230,15 +1230,15 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ![Rolling](../static/k8s-helm-tutorial/rolling.png)
 
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
+
+
+
+</TabItem>
+</Tabs>
+
 
 ### Run the pipeline 
 
@@ -1274,10 +1274,10 @@ You can integrate your own microservice application into this tutorial by follow
 
 - Voila! You're now ready to deploy your own application by using Harness.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Congratulations!🎉
 

@@ -33,14 +33,14 @@ You can create a service and environment either when you are building the pipeli
 
 The pipeline models the release process using execution steps, triggers, and other settings. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
 
-```mdx-code-block
+
 import Tabs3 from '@theme/Tabs';
 import TabItem3 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs3>
 <TabItem3 value="Pipeline Studio" label="Pipeline Studio">
-```
+
 
 1. In your Harness Project, select **Deployments**.
 2. Select **Pipelines**, and then select **Create a Pipeline**.
@@ -56,14 +56,14 @@ The new stage is created. Next, we'll add a Harness service to represent the app
 
 Harness services represent your microservices or applications. You can add the same service to as many stages as you need. For more information, go to [services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
-```mdx-code-block
+
 import Tabs1 from '@theme/Tabs';
 import TabItem1 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs1>
 <TabItem1 value="YAML" label="YAML">
-```
+
 
 Here's a sample Spot service YAML: 
 
@@ -87,10 +87,10 @@ service:
   gitOpsEnabled: false
 ```
 
-```mdx-code-block
+
 </TabItem1>
 <TabItem1 value="Harness Manager" label="Harness Manager">
-```
+
 
 1. Select the **Service** tab, then select **Add Service**.  
 2. Enter a service name. For example, spot-svc.
@@ -129,23 +129,23 @@ service:
 16. Select **Submit**.
 17. Select **Save** to save the service configuration.
 
-```mdx-code-block
+
 </TabItem1>    
 </Tabs1>
-```
+
 
 ### Add a Spot environment
 
 Define the environment where you will deploy your application.
 
-```mdx-code-block
+
 import Tabs2 from '@theme/Tabs';
 import TabItem2 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs2>
 <TabItem2 value="YAML" label="YAML">
-```
+
 
 Here's a sample infrastructure definition YAML: 
 
@@ -171,10 +171,10 @@ infrastructureDefinition:
   allowSimultaneousDeployments: false
 ```
 
-```mdx-code-block
+
 </TabItem2>
 <TabItem2 value="Harness Manager" label="Harness Manager">
-```
+
 
 1. In **Environment**, select **New Environment**.  
 2. Enter the name **Spot**, and the select **Production** or **Pre-Production**.
@@ -183,9 +183,9 @@ infrastructureDefinition:
 6. Enter a name, and then verify that the selected deployment type is **Spot Elastigroup**.
 7. Select the [Spot connector](#connect-to-a-spot-cloud-provider) you created earlier.
 8. In **Elastigroup Configuration**, select an Elastigroup configuration source file from the [Harness file store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/) or create a new file.
-   
-   <details>
-   <summary>Sample Elastigroup configuration source file</summary>
+
+<details>
+<summary>Sample Elastigroup configuration source file</summary>
 
    ```
    {
@@ -287,13 +287,13 @@ infrastructureDefinition:
    }
    ```
 
-   </details>
+</details>
 9. Select **Save**.
 
-```mdx-code-block
+
 </TabItem2>    
 </Tabs2>
-```
+
 
 ### Spot Elastigroup pipeline execution strategies
 
@@ -303,14 +303,14 @@ Now you can select a [deployment strategy](/docs/continuous-delivery/manage-depl
 Spot Elastigroup deployments support only Basic, Canary, and Blue Green execution types.
 :::
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
 <TabItem value="Basic" label="Basic">
-```
+
 Spot Elastigroups perform the functions that Auto Scaling Groups perform in standard AMI deployments. By default, a Harness Spot Elastigroup Basic deployment pre-configures the following steps:
 
 * Elastigroup Setup: Specify how many instances to launch, and their steady state timeout.
@@ -341,13 +341,13 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
     * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
     * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 5. Select **Apply Changes**. 
-6. Select **Save**. 
+6. Select **Save**.
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Canary" label="Canary">
-```
+
 Spot Elastigroups perform the functions that Auto Scaling Groups perform in standard AMI deployments. By default, Harness Spot Elastigroup Canary deployment pre-configures the following steps:
 
 * Elastigroup Setup: Specify how many instances to launch, and their steady state timeout.
@@ -384,14 +384,14 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
     * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
     * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 7. Select **Apply Changes**. 
-8. Select **Save**. 
+8. Select **Save**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Blue Green" label="Blue Green">
-```
 
-Spot Elastigroups perform the functions that Auto Scaling Groups perform in standard AMI deployments. 
+
+Spot Elastigroups perform the functions that Auto Scaling Groups perform in standard AMI deployments.
 
 <details>
 <summary>AWS requirements</summary>
@@ -432,7 +432,7 @@ In the first stage of deployment, the new Elastigroup is attached to the stage T
 
 Blue Green deployments are achieved by swapping routes between the TGs always attaching the new Elastigroup first to the stage TG, and then to the prod TG:
 
-![second stage](./static/88aa5c64d8375bea18c47e77b218c94fae1d06e6652c984c912d795132e84e63.png)  
+![second stage](./static/88aa5c64d8375bea18c47e77b218c94fae1d06e6652c984c912d795132e84e63.png)
 
 </details>
 
@@ -473,17 +473,17 @@ With this incremental traffic shift strategy, you are controlling the percentage
     * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
     * [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
 5. Select **Apply Changes**. 
-6. Select **Save**.   
+6. Select **Save**.
 
-```mdx-code-block
+
 </TabItem>    
 </Tabs>
-```
 
-```mdx-code-block
+
+
 </TabItem3>
 <TabItem3 value="YAML" label="YAML">
-```
+
 
 Here's a YAML sample of a Spot Elastigroup pipeline using the Canary deployment strategy.
 
@@ -569,8 +569,8 @@ pipeline:
                 type: StageRollback
 
 ```
-```mdx-code-block
+
 </TabItem3>    
 </Tabs3>
-```
+
 Now the pipeline stage is complete and can be deployed. Select **Run** to run the pipeline. 

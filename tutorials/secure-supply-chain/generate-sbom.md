@@ -6,19 +6,19 @@ title: Generate SBOM and enforce policies
 slug: /secure-supply-chain/generate-sbom
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 You can use the Harness SSCA steps in Harness CI/CD pipelines to generate SBOM and enforce software supply chain security policies.
 
 To generate SBOM in Harness, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components), a [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage), or both. For example, the pipeline created in this tutorial has a **Build** stage with three steps and a **Deploy** stage with two steps.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="build" label="Build stage" default>
-```
+
 
 The **Build** stage in this tutorial pipeline has the following three steps:
 
@@ -30,10 +30,10 @@ The **Build** stage in this tutorial pipeline has the following three steps:
 
 <docimage path={require('./static/sbom-build-stage.png')} />
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="deploy" label="Deploy stage">
-```
+
 
 The **Deploy** stage in this tutorial pipeline has the following two steps:
 
@@ -44,10 +44,10 @@ The **Deploy** stage in this tutorial pipeline has the following two steps:
 
 <docimage path={require('./static/sbom-deploy-stage.png')} />
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 This tutorial explains how to configure the **SSCA Orchestration** and **SSCA Enforcement** steps, which generate an SBOM and enforce SSCA policies, respectively.
 
