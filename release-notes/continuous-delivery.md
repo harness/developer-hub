@@ -5056,11 +5056,11 @@ The ability to provision resources in a CD stage's deployment infrastructure usi
 
 - ServiceNow Change Window details not showing up on get approvals API (CDS-43787)
 
-  API GET approvals/{approvalID} was not giving change Window Spec details.
+  API GET `approvals/{approvalID}` was not giving change Window Spec details.
 
   It was missing from wrapper classes returning the persistent entity.
 
-  This issue has been resolved. API GET approvals/{approvalID} now returns change Window Spec details.
+  This issue has been resolved. API GET `approvals/{approvalID}` now returns change Window Spec details.
 
 - Remove validation for artifact Path in Nexus3 (CDS-43778)
 
