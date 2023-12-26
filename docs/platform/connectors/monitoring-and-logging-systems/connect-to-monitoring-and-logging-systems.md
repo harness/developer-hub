@@ -116,17 +116,17 @@ Usage scope is inherited from the secrets used in the settings. Pro or higher su
 ### Add Splunk
 
 1. Open a Harness Project.
-2. In **Project Setup**, click **Connectors**.
-3. Click **+** **Connector**, and click **Splunk**in **Monitoring and Logging Systems**. The Splunk connector settings appear.
-   
+2. In **Project Setup**, click **Connectors**.
+3. Click **+ Connector**, and click **Splunk**in **Monitoring and Logging Systems**. The Splunk connector settings appear.
+
    ![](../static/connect-to-monitoring-and-logging-systems-18.png)
-   
-4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
-5. Click **Continue**.
-6. In the **URL** field, enter the URL for accessing the REST API on the Splunk server. Include the port number in the format **https://<deployment-name>.cloud.splunk.com:8089.</deployment-name> ** The default port number is 8089, which is required for hosted Splunk, also. For example: **https://mycompany.splunkcloud.com:8089**.
-   
+
+4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
+5. Click **Continue**.
+6. In the **URL** field, enter the URL for accessing the REST API on the Splunk server. Include the port number in the format `https://<deployment-name>.cloud.splunk.com:8089.</deployment-name>`. The default port number is 8089, which is required for hosted Splunk, for example: `https://mycompany.splunkcloud.com:8089`.
+
    ![](../static/connect-to-monitoring-and-logging-systems-20.png)
-   
+
 
 Splunk APIs require that you authenticate with a non-SAML account. To access your Splunk Cloud deployment using the Splunk REST API and SDKs, submit a support case requesting access on the Support Portal. For managed deployments, Splunk Support opens port 8089 for REST access. You can specify a range of IP addresses to control who can access the REST API. For self-service deployments, Splunk Support defines a dedicated user and sends you credentials that enable that user to access the REST API. For information see [Using the REST API with Splunk Cloud](http://docs.splunk.com/Documentation/Splunk/7.2.0/RESTTUT/RESTandCloud).
 
