@@ -89,6 +89,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
    This issue has been resolved, and the UI now displays "User added successfully".
 
+### Version 23.12.81808
+
+#### Hotfix
+
+- Fixed an issue where Shell Script steps with SSH were failing with `Error while reading variables to process Script Output. Avoid exiting from script early: 2: No such file` for newer delegate versions. (CDS-87415, ZD-55629, ZD-55690)
+
 ### Version 23.12.81804
 
 #### Hotfix
