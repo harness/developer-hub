@@ -84,7 +84,7 @@ The following deprecated API endpoints will no longer be supported:
 
 ### Version 1.17.x
 
-### Fixed issue
+### Fixed issues
 
 - Previously, user group names could only contain alphanumeric characters, `.`, `_`, and `-`. User groups created via Okta SCIM integration didn't include validations for this restriction. This issue was resolved by removing special character restrictions for user group names.  (PL-42535, ZD-53830, ZD-55294)
 
