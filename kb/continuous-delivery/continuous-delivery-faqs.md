@@ -3983,3 +3983,15 @@ Yes, In Schedule, use the settings to schedule the trigger. When you edit a Cron
 #### Is OPA only available in Enterprise tier ?
 
 Yes. Please follow this on Pipeline Governance pricing page [here](https://www.harness.io/pricing?module=cd#)
+
+#### How to filter pipeline execution for particular branch/repo etc
+
+You can add pipeline tag and assign the value while runtime and can apply filter on those
+
+#### My pipeline is queued due to resource constraint although no other pipeline in the project is using same infrastructure
+
+Resource constraints has account level scoping by default, so if same infrastructure is used with combination of service/env/Infra ID in different Harness projects also it can still result into queuing of the infrastructure
+
+#### Harness is not waiting for workload to reach steady state
+
+Check if Skip Steady state check is enabled for that step as by default Harness perform steady state check
