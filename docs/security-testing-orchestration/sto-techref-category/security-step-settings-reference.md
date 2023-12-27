@@ -1,7 +1,8 @@
 ---
-title: Security step settings reference
-description: All the Scanner Provider settings for the Security step.
+title: STO external scanner reference
+description: STO external scanner support and requirements.
 sidebar_position: 10
+sidebar_label: External scanner support and requirements
 helpdocs_topic_id: 0k0iubnzql
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
