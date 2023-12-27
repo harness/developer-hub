@@ -90,7 +90,7 @@ To create a Dashboard you first need to first create a Folder. The Dashboards ar
    ![](./static/create-a-widget-AIDA-02.png)
 
 
-8. Select your module. In this example, under **Continuous Integration**, select **Builds and Repositories**.
+8. Select the category within the module for which you want to generate a visualization. In this example, under **Continuous Integration**, select **Builds and Repositories**.
 
 9. Enter your query. For example, you could enter "Total builds over time for the last 30 days."
 
@@ -105,7 +105,7 @@ To create a Dashboard you first need to first create a Folder. The Dashboards ar
 
     ![](./static/create-a-widget-AIDA-05.png)
 
-10. Continue selecting modules and entering queries to add additional tiles and further refine your results.
+11. Continue selecting categories under modules and entering queries to add additional tiles and further refine your results.
 
 ## Best practices and guidelines for Dashboard Intelligence by AIDA
 
