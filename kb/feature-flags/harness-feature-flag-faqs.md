@@ -257,3 +257,8 @@ So we only store the essentials needed to link flags to tickets.If the user sear
 #### Is the Jira Integarion 100% free at enterprise-level usage or there is any license term?
 
 We do not have any added cost for Jira.
+
+
+#### Can we call initialize more than once to update attributes?
+
+We do not have a option to do update without closing the sdk. So ee will need to close the SDK and re-init it in the mean time, to force the attributes to update.

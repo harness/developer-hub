@@ -2136,3 +2136,59 @@ You can create user in below ways:
 #### We would like to enforce the life time of api token ( My profile -> My API keys -> Token) is 24 hours.
 
 An Api key is created with Minimum of 30 days and you can not set any duration less than that, you can rotate the token if you want at any time
+
+#### Can we add Custom Selector in the harness delegate chart for legacy delegates?
+
+For legacy delegates we do not have a way to specify delegate selector or delegate tags in the delegate helm chart. We do have an api to get the selectors as well as update it for the delegates. More details can be found here:
+
+https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-delegate-selector-api/
+
+
+#### Can a service account created at project level be assigned permissions to access account level resource ?
+
+We can not create a project level service account and provide permission for account level resources. Hence this will not have access to any account level resources.
+
+If you would like to use service account only you can create a account level service account and then give project level role bindings to it corresponding to the project as well as role binding for account level templates.
+
+#### How to run harness docker delegate in detatched mode ?
+
+Docker provides a -d flag option for running the containers in detatched mode. So when we are running the harness delegate docler run command we can add the option to get the console back and the contianer will continue to run in detatch mode. For example below is a sample delegate run command:
+
+```
+docker run  --cpus=1 --memory=2g \
+  -e DELEGATE_NAME=docker-delegate \
+  -e NEXT_GEN="true" \
+  -e DELEGATE_TYPE="DOCKER" \
+  -e ACCOUNT_ID=xxx \
+  -e DELEGATE_TOKEN=xxx= \
+  -e DELEGATE_TAGS="" \
+  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.11.81406 -d
+```
+
+#### Why the task_failed_total metric for delegate is not repporting data despite step failure ?
+
+
+The task failed is when something unhandled happens, like a NPE in a task or issue at framework level. A valid failure like shell script exited with error code is not a task failure. Prometheus only shows the metric which are at least once recorded.
+
+
+#### Why do we need core_delegate_delete permission for revoking delegate token?
+
+The api call that we make for  revoking the delegate token makes the delegate which are using it not register anymore and hence delete delegate permission is required for revoking the token as well.
+
+#### Do we provide customized docker images for delegate?
+
+We do not provide any customized docker images for delegates however we do have our delegate docker file in the public repo below. This can be used as a sample reference to add any utility to the image:
+```
+https://github.com/harness/delegate-dockerfile/tree/main
+```
+
+
+#### Can we use immuatable delegate image in the statefulset deployment yaml for delegates ? 
+
+We can not use immutable delegate image in the statefulset deployment yaml that we had for legacy delegates. Both the delegates are architecturally different. The immutable delegates must be used with their own deployment yaml.
+
+
+#### Is there a way to enable more granular level for delegate logs?
+
+We do not have additional log level settings for delegate than what it logs by default. 
