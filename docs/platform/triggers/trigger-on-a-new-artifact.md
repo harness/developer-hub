@@ -209,10 +209,10 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 4. In **Artifact Details**, in **Repository Format**, select **Generic** or **Docker**.
 	1. Generic:
 		1. **Repository:** enter the **Name** of the repo.
-		2. **Artifact Directory:** enter the **Repository Path**.
+		2. **Artifact Directory:** enter the path to the **Directory** that is inside the repo.
 	2. Docker:
 		1. **Repository:** enter the **Name** of the repo.
-		2. **Artifact/Image Path:** enter the **Repository Path**.
+		2. **Artifact/Image Path:** enter the path to the **Artifact/Image** that is inside the repo.
 		3. **Repository URL (optional):** enter the **URL to file**.
 5. Select **Continue**.
 
