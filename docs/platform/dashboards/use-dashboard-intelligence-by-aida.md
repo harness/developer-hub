@@ -40,14 +40,14 @@ Quick queries provide quick answers to high-level data questions. These queries 
 #### Constrained queries
 
 Constrained queries add filter constraints for deliberate answers. Constrained queries typically involve a time filter, for example:
-   - What are my total AWS costs for project qa-stage? Filter for the last 45 days.
+   - What are my total AWS costs for project "qa-stage"? Filter for the last 45 days.
    - What is my daily deployment success rate? Filter for the last 60 days.
    - What is my monthly build count by project? Filter for the last 90 days.
 
 #### Custom queries
 
 Custom queries involve custom fields. Currently, Dashboard Intelligence by AIDA only supports table calculations, for example: 
-   - What are my total costs by region? Filter for the last 30 days. Include a table calculation returning yes if region is `us-west1`, else no.
+   - What are my total costs by region? Filter for the last 30 days. Include a table calculation returning yes if region is "us-west1", else no.
 
 ### Supported visualization types
 
@@ -140,4 +140,4 @@ Break your query into smaller, bite-sized sentences. Explicitly tell the agent y
 
 - For table calculations or string filters, wrap the expression in double quotes, for example: Include a table calculation returning yes if region is "us-west1" else no.
 
-- For number filters, use operators instead of words (for example, use “>” instead of “greater than”).
+- For number filters, use operators instead of words (for example, use ">" instead of "greater than").
