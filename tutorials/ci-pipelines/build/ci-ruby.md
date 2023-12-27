@@ -77,7 +77,7 @@ You can cache your Ruby dependencies with [Cache Intelligence](/docs/continuous-
     spec:
       caching:
         enabled: true
-        key: cache-{{ checksum "gemfile.lock" }}
+        key: cache-{{ checksum "Gemfile.lock" }}
         paths:
           - "vendor/bundle"
       sharedPaths:
