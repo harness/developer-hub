@@ -40,14 +40,14 @@ Quick queries provide quick answers to high-level data questions. These queries 
 #### Constrained queries
 
 Constrained queries add filter constraints for deliberate answers. Constrained queries typically involve a time filter, for example:
-   - What are my total AWS costs for project "qa-stage"? Filter for the last 45 days.
+   - What are my total AWS costs? Filter for the last 45 days.
    - What is my daily deployment success rate? Filter for the last 60 days.
-   - What is my monthly build count by project? Filter for the last 90 days.
+   - What is my monthly build count? Filter for the last 90 days.
 
 #### Custom queries
 
 Custom queries involve custom fields. Currently, Dashboard Intelligence by AIDA only supports table calculations, for example: 
-   - What are my total costs by region? Filter for the last 30 days. Include a table calculation returning yes if region is "us-west1", else no.
+   - What are my AWS total costs? Pivot by region. Filter for the last 30 days. Include a table calculation returning yes if region is "us-west1", else no. Make this a table.
 
 ### Supported visualization types
 
@@ -133,7 +133,7 @@ Dashboards are created inside a folder. If you don't specify a folder, the dashb
    "Show me total costs by region within the last 30 days with a table calculation returning yes if region is "us-west1" else no."
 
 - If you have trouble with a particular data point, pass both the table name and the field name in the prompt. For example, if you want to view your feature flags by environment, you could enter the following prompt: 
-"What are my total feature flags? Pivot by segments environment."
+What are my total feature flags? Pivot by segments environment.
 
    ![](./static/ff-table-example.png)
 
@@ -144,3 +144,9 @@ Dashboards are created inside a folder. If you don't specify a folder, the dashb
 - For table calculations or string filters, wrap the expression in double quotes, for example: Include a table calculation returning yes if region is "us-west1" else no.
 
 - For number filters, use operators instead of words (for example, use ">" instead of "greater than").
+
+- You can change the order of each statement. For example, switching the table calculation instruction with filter instruction helps with generation:
+
+   - Example before: Show me total costs. Pivot by region. Include a table calculation returning yes if region is "us-west1" else no. Filter for the last 30 days.
+
+   - Example after: Show me total costs. Pivot by region. Filter for the last 30 days. Include a table calculation returning yes if region is "us-west1" else no.
