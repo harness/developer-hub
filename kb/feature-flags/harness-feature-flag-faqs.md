@@ -89,7 +89,7 @@ The SDK is initialized for a specific target, enabling personalized flag evaluat
 
 ### I am looking for an explanation of the behavior after an SDK's feature flag changes.
 
-You can find a detailed overview of how Harness Feature Flags' SDKs behave after a flag change in the following table: [Communication loop between Harness and the SDKs](/docs/feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags/#polling).
+You can find a detailed overview of how Harness Feature Flags' SDKs behave after a flag change in the following table: [Communication loop between Harness and the SDKs](https://developer.harness.io/docs/feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags/#polling).
 
 ## FF auth-secret
 
