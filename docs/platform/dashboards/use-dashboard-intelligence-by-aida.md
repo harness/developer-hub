@@ -112,27 +112,30 @@ Dashboards are created inside a folder. If you don't specify a folder, the dashb
 
 ## Best practices and guidelines for Dashboard Intelligence by AIDA
 
-If you have trouble with a particular data point, pass both the view name and the field name in the prompt. 
+- When constructing a query, it's important to avoid unnecessary information. The more concise and direct the query is, the better it will be. Avoid using irrelevant details and focus on the essential information that is required.
 
-When constructing a query, it's important to avoid unnecessary information. The more concise and direct the query is, the better it will be. Avoid using irrelevant details and focus on the essential information that is required.
+   **Recommended**
 
-**Recommended**
+   "Project id, git repository, git event type, error message and failure rate. Filter for the last 72 days. Filter repository failure rate > 0. Make this a table."
 
-"Project id, git repository, git event type, error message and failure rate. Filter for the last 72 days. Filter repository failure rate > 0. Make this a table."
+   **Not recommended**
 
-**Not recommended**
+   "Construct a detailed table for me that presents project id, git repository, git event type, error message and failure rate. This should be filtered for the last 72 days, and I would like to have the failure rate greater than 0."
 
-"Construct a detailed table for me that presents project id, git repository, git event type, error message and failure rate. This should be filtered for the last 72 days, and I would like to have the failure rate greater than 0."
+- Break your query into smaller, bite-sized sentences. Explicitly tell the agent your intentions (for example, filtering, pivots, table calculations, and so on) instead of chaining instructions into a single sentence.
 
-Break your query into smaller, bite-sized sentences. Explicitly tell the agent your intentions (for example, filtering, pivots, table calculations, and so on) instead of chaining instructions into a single sentence.
+   **Recommended**
 
-**Recommended**
+   "Show me total costs. Pivot by region. Filter for the last 30 days. Include a table calculation returning yes if region is "us-west1" else no."
 
-"Show me total costs. Pivot by region. Filter for the last 30 days. Include a table calculation returning yes if region is "us-west1" else no."
+   **Not recommended**
 
-**Not recommended**
+   "Show me total costs by region within the last 30 days with a table calculation returning yes if region is "us-west1" else no."
 
-"Show me total costs by region within the last 30 days with a table calculation returning yes if region is "us-west1" else no."
+- If you have trouble with a particular data point, pass both the table name and the field name in the prompt. For example, if you want to view your feature flags by environment, you could enter the following prompt: 
+"What are my total feature flags? Pivot by segments environment."
+
+   ![](./static/ff-table-example.png)
 
 ## Dashboard Intelligence by AIDA tips
 
