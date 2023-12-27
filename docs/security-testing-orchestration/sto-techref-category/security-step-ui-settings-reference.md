@@ -1,7 +1,7 @@
 ---
 title: Scanner template settings reference for STO
 description: All available UI settings for scanner templates.
-sidebar_label: Security step settings reference
+sidebar_label: Scanner template settings reference
 sidebar_position: 600
 ---
 
