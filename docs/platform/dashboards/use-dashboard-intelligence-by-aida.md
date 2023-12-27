@@ -104,7 +104,11 @@ To create a Dashboard you first need to first create a Folder. The Dashboards ar
 
    ![](./static/create-a-widget-AIDA-04.png)
 
-10. Continue adding queries to further refine your results.
+10. To add additional tiles, select your module and enter another query. In this example, we've selected **AWS** and entered "Total cost by Region."
+
+   ![](./static/create-a-widget-AIDA-05.png)
+
+10. Continue selecting modules and entering queries to add additional tiles and further refine your results.
 
 ## Best practices and guidelines for Dashboard Intelligence by AIDA
 
