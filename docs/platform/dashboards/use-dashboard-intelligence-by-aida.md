@@ -106,7 +106,7 @@ To create a Dashboard you first need to first create a Folder. The Dashboards ar
 
 10. To add additional tiles, select your module and enter another query. In this example, we've selected **AWS** and entered "Total cost by Region."
 
-   ![](./static/create-a-widget-AIDA-05.png)
+    ![](./static/create-a-widget-AIDA-05.png)
 
 10. Continue selecting modules and entering queries to add additional tiles and further refine your results.
 
@@ -118,29 +118,21 @@ When constructing a query, it's important to avoid unnecessary information. The 
 
 **Recommended**
 
-```
-Project id, git repository, git event type, error message and failure rate. Filter for the last 72 days. Filter repository failure rate > 0. Make this a table.
-```
+"Project id, git repository, git event type, error message and failure rate. Filter for the last 72 days. Filter repository failure rate > 0. Make this a table."
 
 **Not recommended**
 
-```
-Construct a detailed table for me that presents project id, git repository, git event type, error message and failure rate. This should be filtered for the last 72 days, and I would like to have the failure rate greater than 0.
-```
+"Construct a detailed table for me that presents project id, git repository, git event type, error message and failure rate. This should be filtered for the last 72 days, and I would like to have the failure rate greater than 0."
 
 Break your query into smaller, bite-sized sentences. Explicitly tell the agent your intentions (for example, filtering, pivots, table calculations, and so on) instead of chaining instructions into a single sentence.
 
 **Recommended**
 
-```
-Show me total costs. Pivot by region. Filter for the last 30 days. Include a table calculation returning yes if region is "us-west1" else no.
-```
+"Show me total costs. Pivot by region. Filter for the last 30 days. Include a table calculation returning yes if region is "us-west1" else no."
 
 **Not recommended**
 
-```
-Show me total costs by region within the last 30 days with a table calculation returning yes if region is "us-west1" else no.
-```
+"Show me total costs by region within the last 30 days with a table calculation returning yes if region is "us-west1" else no."
 
 ## Dashboard Intelligence by AIDA tips
 
