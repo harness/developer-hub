@@ -11,7 +11,7 @@ The Lines of Code metric is a crucial indicator of developer productivity and co
 
 This metric is pivotal in measuring a developer's contribution, quantified by the total lines of code added, deleted, or changed in the selected time period. This serves as an indicator of developer productivity. 
 
-According to industry standards, an ideal range for the LOC metric is between 125 and 185 lines of code per month. However, note that this range may vary depending on factors such as project complexity and coding conventions.
+According to industry standards, an ideal range for the LOC metric for an software engineer is between 125 and 185 lines of code per month. However, note that this range may vary depending on factors such as project complexity and coding conventions.
 
 
 
@@ -21,9 +21,11 @@ The Lines of Code metric is measured across two types of reports on SEI: Trellis
 
 ### Trellis Reports
 
-In Trellis Reports, the Lines of Code metric calculates the total number of lines of code contributed by an engineer within the selected time frame. The metric value in the widget is normalized to show the average number of lines of code contributed per month.
+In Trellis Reports, the Lines of Code metric calculates the total number of lines of code contributed by an engineer within the selected time frame. The calculation includes the cumulative sum of lines of code added and lines of code changed by the respective engineer across commits. 
 
-The calculation includes the cumulative sum of lines of code added and lines of code changed by the respective engineer across commits. This gives a comprehensive view of the volume of work a developer contributes to a project each month.
+The metric value in the trellis report is normalized to show the average number of lines of code contributed per month. This gives a comprehensive view of the volume of work a developer contributes to a project each month.
+
+In the Raw Stats report, the metric displays the total number of lines of code contributed by the engineer within the selected time frame.
 
 To learn more, go to [Trellis Scores](../../sei-metrics-and-reports/trellis-score.md).
 
