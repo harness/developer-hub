@@ -35,7 +35,7 @@ Dashboard Intelligence by AIDA currently supports three levels of Business Intel
 Quick queries provide quick answers to high-level data questions. These queries include rollups and non-filtered interests, for example:
    - What are my total AWS costs?
    - What is my deployment failure rate?
-   - How many of my feature flags are active?
+   - What count of my feature flags are active?
 
 #### Constrained queries
 
