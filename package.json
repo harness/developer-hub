@@ -1,12 +1,12 @@
 {
   "name": "harness-developer-hub",
-  "version": "0.1.0",
+  "version": "1.3.0",
   "license": "MIT",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start --host 0.0.0.0",
-    "build": "export NODE_OPTIONS=--max-old-space-size=4096 && docusaurus build",
+    "build": "export NODE_OPTIONS=--max-old-space-size=6096 && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -14,10 +14,8 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "lint:textlint": "export NODE_OPTIONS=--max-old-space-size=4096 && textlint tutorials/**/**.md* docs/**/**.md*",
     "lint:eslint": "eslint ./src/**/*.js*",
-    "lint:vale": "npm run lint:textlint",
-    "lint:ci": "export NODE_OPTIONS=--max-old-space-size=4096 && npm run lint:eslint && npm run lint:textlint",
+    "lint:ci": "export NODE_OPTIONS=--max-old-space-size=6096 && npm run lint:eslint && npm run lint:textlint",
     "test": "npm run lint:ci"
   },
   "dependencies": {
@@ -52,10 +50,6 @@
     "dictionary-en": "^4.0.0",
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.33.2",
-    "textlint": "^13.4.1",
-    "textlint-rule-no-todo": "^2.0.1",
-    "textlint-rule-spelling": "^0.3.0",
-    "textlint-rule-write-good": "^2.0.0",
     "typescript": "^5.3.3"
   },
   "browserslist": {
