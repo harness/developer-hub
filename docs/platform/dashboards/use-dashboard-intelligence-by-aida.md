@@ -108,7 +108,7 @@ Dashboards are created inside a folder. If you don't specify a folder, the dashb
 
     ![](./static/create-a-widget-AIDA-05.png)
 
-11. Continue selecting explores under modules and entering queries to add additional tiles and further refine your results.
+11. Continue selecting explores under modules and entering queries to add additional tiles.
 
 ## Best practices and guidelines for Dashboard Intelligence by AIDA
 
