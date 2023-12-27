@@ -40,9 +40,9 @@ Quick queries provide quick answers to high-level data questions. These queries 
 #### Constrained queries
 
 Constrained queries add filter constraints for deliberate answers. Constrained queries typically involve a time filter, for example:
-   - What are my total AWS costs for project `qa-stage`? Filter for the past 45 days.
-   - Show me my daily deployment success rate. Filter for the last 60 days.
-   - What is my monthly build count by project. Filter for the last 90 days.
+   - What are my total AWS costs for project qa-stage? Filter for the last 45 days.
+   - What is my daily deployment success rate? Filter for the last 60 days.
+   - What is my monthly build count by project? Filter for the last 90 days.
 
 #### Custom queries
 
@@ -55,14 +55,11 @@ Dashboard Intelligence by AIDA infers the most relevant data visualization for t
 
 Harness currently supports the following visualization types:
 
-**Charts**
 - Bar
 - Column
 - Line
 - Pie
 - Scatterplot
-
-**Tables**
 - Single Value
 - Table
 
