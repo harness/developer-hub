@@ -1,5 +1,5 @@
 ---
-description: KB Sample Troubleshooting
+description: Troubleshoot Harness CET
 title: Troubleshooting Guide
 ---
 
