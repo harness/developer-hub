@@ -6,11 +6,11 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/python
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
+
 
 <ctabanner
   buttonText="Learn More"
@@ -35,10 +35,10 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 ```yaml
               - step:
@@ -54,10 +54,10 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                       PIP_CACHE_DIR: "/root/.cache"
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 ```yaml
               - step:
@@ -72,10 +72,10 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                       pip install -r requirements.txt
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 :::tip
 
@@ -87,10 +87,10 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 
 Add caching to your stage.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 Cache your Python module dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
@@ -108,10 +108,10 @@ Add caching to your `stage.spec`.
             - /root/.cache
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 With self-hosted build infrastructures, you can:
 
@@ -176,10 +176,10 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Run tests
 
@@ -187,10 +187,10 @@ You can use **Run** and **Run Tests** steps to [run tests in Harness CI](/docs/c
 
 These examples run tests in a **Run** step.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 ```yaml
               - step:
@@ -206,10 +206,10 @@ These examples run tests in a **Run** step.
                       PIP_CACHE_DIR: /root/.cache
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 ```yaml
               - step:
@@ -227,10 +227,10 @@ These examples run tests in a **Run** step.
                       pytest tests.py --junit-xml=report.xml
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Visualize test results
 
@@ -252,10 +252,10 @@ If you run tests in a **Run** step, your **Run** step must include the `reports`
 
 With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) to run unit tests with Test Intelligence.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Harness Cloud" default>
-```
+
 
 ```yaml
               - step:
@@ -274,10 +274,10 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                       python3 -m pip install -e .
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Self-Hosted">
-```
+
 
 ```yaml
               - step:
@@ -298,10 +298,10 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                       python3 -m pip install -e .
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Test splitting
 
@@ -309,10 +309,10 @@ Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/
 
 ## Specify version
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 Python is pre-installed on Harness Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
@@ -369,11 +369,11 @@ You will need a [personal access token](https://docs.github.com/en/authenticatio
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 
 <TabItem value="Self-hosted">
-```
+
 
 Specify the desired [Python Docker image](https://hub.docker.com/_/python) tag in your steps. There is no need for a separate install step when using Docker.
 
@@ -426,19 +426,19 @@ Specify the desired [Python Docker image](https://hub.docker.com/_/python) tag i
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Full pipeline examples
 
 The following full pipeline examples are based on the partial examples above.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) and [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
@@ -596,10 +596,10 @@ pipeline:
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector), kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
@@ -718,10 +718,10 @@ pipeline:
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Next steps
 

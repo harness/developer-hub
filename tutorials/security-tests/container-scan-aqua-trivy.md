@@ -58,9 +58,9 @@ The following step is required only for Kubernetes or Docker infrastructures. If
 
 ### Add a Docker-in-Docker background step
 
-```mdx-code-block
+
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
+
 
 <StoDinDRequirements />
 
@@ -69,17 +69,17 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 ### Add the Aqua-Trivy scan step
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
 
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 Add an **Aqua Trivy** step to your pipeline after the DinD background step and configure it as follows:
 
@@ -99,10 +99,10 @@ Add an **Aqua Trivy** step to your pipeline after the DinD background step and c
 
    8. [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) = **Critical**
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 Add an **Aqua Trivy** step to your pipeline after the DinD background step and configure it as follows:
 
@@ -156,10 +156,10 @@ Here's an example:
 
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 
 ### Run the pipeline and check your results

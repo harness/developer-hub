@@ -13,10 +13,10 @@ title: AWS
   target="_self"
 />
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 This tutorial helps you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD pipeline with deployment types **Secure Shell (SSH)** and **WinRM** to deploy applications to remote Linux and Windows servers.
 
@@ -26,10 +26,10 @@ This tutorial helps you get started with Harness Continuous Delivery (CD). We wi
 
 :::
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Secure Shell (SSH)">
-```
+
 
 ## Before you begin
 
@@ -180,10 +180,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
     - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
     - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Canary">
-```
+
 
 <details open>
 <summary>What are Canary deployments?</summary>
@@ -198,10 +198,10 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 ![Canary](../static/vm-tutorials/ssh-canary.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Rolling">
-```
+
 
 <details open>
 <summary>What are Rolling deployments?</summary>
@@ -216,10 +216,10 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 
 ![Rolling](../static/vm-tutorials/ssh-rolling.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Basic">
-```
+
 
 <details open>
 <summary>What are Basic deployments?</summary>
@@ -234,10 +234,10 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 
 ![Basic](../static/vm-tutorials/ssh-basic.png)
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 1. Finally, it's time to execute the pipeline. Select **Run**, and then select **Run Pipeline** to initiate the deployment.
     - Observe the execution logs as Harness copies the artifact from its source to the remote server.
@@ -247,10 +247,10 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
       ls -l ~/harness_ssh/harnessdevenv/todolist.war
       ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="WinRM">
-```
+
 ## Before you begin
 
 Verify the following:
@@ -400,10 +400,10 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
     - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
     - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Canary">
-```
+
 
 <details open>
 <summary>What are Canary deployments?</summary>
@@ -418,10 +418,10 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 ![Canary](../static/vm-tutorials/winrm-canary.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Rolling">
-```
+
 
 <details open>
 <summary>What are Rolling deployments?</summary>
@@ -436,10 +436,10 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 
 ![Rolling](../static/vm-tutorials/winrm-rolling.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Basic">
-```
+
 
 <details open>
 <summary>What are Basic deployments?</summary>
@@ -454,10 +454,10 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 
 ![Basic](../static/vm-tutorials/winrm-basic.png)
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 1. Finally, it's time to execute the pipeline. Select **Run**, and then select **Run Pipeline** to initiate the deployment.
     - Observe the execution logs as Harness copy the artifact from source to the remote server.
@@ -467,10 +467,10 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
       Get-ChildItem harness_winrm/harnessdevenv
       ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Congratulations!🎉
 You've just learned how to use Harness CD to copy an artifact to AWS instances.

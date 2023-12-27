@@ -20,17 +20,17 @@ To integrate SEI with GitLab Enterprise, you have two options based on the acces
 
 SEI communicates with GitLab Enterprise by setting up authentication using a **Personal Access Token (PAT)**. you must create a GitLab personal access token to configure the **SEI GitHub integration**. To learn more on this, Go to [Configuring the authentication](./sei-integration-gitlab#configure-authentication).
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 ## Configue the integration
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="private-onprem" label="Private On-Prem" default>
-```
+
 
 The private on-premise integrations are configured using a SEI Satellite. Follow the instructions to download the Satellite configuration file.
 
@@ -41,7 +41,7 @@ The private on-premise integrations are configured using a SEI Satellite. Follow
 5. Add a **Description** for the integration. (Optional)
 6. In the **URL** field, add the URL where your Gitlab repository is deployed.
    
-   For example, if your **Gitlab** is deployed on a **virtual machine (VM)**, add the URL in the format: `https://<GITLAB_INSTANCE_URL>`.
+   For example, if your **Gitlab** is deployed on a **virtual machine (VM)**, add the URL in the format: `https://\<GITLAB_INSTANCE_URL>`.
 7. Enter the **Personal Access Token** in the API key section.
 8. Add the **Tags** for the integration
 9. If applicable, configure Additional Options:
@@ -96,10 +96,10 @@ While configuring the integration using satellite, the following are optional me
 
 If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="public-onprem" label="Public On-Prem">
-```
+
 
 1. Select **Integrations** under **Settings**.
 2. Select **Available Integrations**, locate the **GitLab Enterprise integration**, and select **Install**.
@@ -108,7 +108,7 @@ If you encounter any issues during the integration process, go to the Satellite 
 5. Add a **Description** for the integration. (Optional)
 6. In the **URL** field, add the URL where your Gitlab repository is deployed.
    
-   For example, if your Gitlab is deployed on a **virtual machine (VM**), add the URL in the format: `https://<GITLAB_INSTANCE_URL>`.
+   For example, if your Gitlab is deployed on a **virtual machine (VM**), add the URL in the format: `https://\<GITLAB_INSTANCE_URL>`.
    
 7. Enter the **Personal Access Token** in the API key section.
 8. Add the **Tags** for the integration
@@ -120,7 +120,6 @@ If you encounter any issues during the integration process, go to the Satellite 
    5. **Fetch Commit Files**: Allow SEI to ingest data within commits from Gitlab.
 10. Finish the configuration** and click on **Submit**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```

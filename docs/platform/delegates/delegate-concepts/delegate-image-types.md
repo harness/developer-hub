@@ -14,11 +14,6 @@ import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-tabl
 
 ## Image type comparison
 
-import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
-
-<Deleos />
-
-
 Harness gives you the option to select delegate images with or without third-party client tools. The use of a delegate packaged with third-party binaries speeds the construction of a CD pipeline; Harness CI and STO do not make use of these libraries. The inclusion of third-party binaries, however, increases attack vectors. Consider security as well as ease of use, in your choice of delegate images. 
 
 Harness rigorously scans delegate images for vulnerabilities. Harness cannot, however, guarantee the elimination of CVEs from delegate images that include third-party client tools. The vulnerabilities that third-party client tools introduce in delegate images cannot be eliminated until the vulnerabilities are repaired in the third-party tools.

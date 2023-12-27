@@ -74,15 +74,15 @@ In the CI or Build stage type, container step is named Run, and it has the same 
 
 ### Cookiecutter Scripts Based on your SCM
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
 <TabItem value="GitHub">
-```
+
 
   5. Paste the following cookiecutter-based script into **Command**.
 
@@ -136,12 +136,12 @@ import TabItem from '@theme/TabItem';
 
 Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name shoule match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template. 
 
-For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template. 
+For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="GitLab">
-```
+
 
   5. Paste the following cookiecutter-based script into **Command**.
 
@@ -195,12 +195,12 @@ For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `proje
 
   Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name shoule match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template. 
 
-  For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template. 
+  For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 You can use the **Variables** button on the floating sidebar on the right-hand side to open the Variables page for the pipeline.
 

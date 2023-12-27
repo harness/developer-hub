@@ -761,7 +761,7 @@ pipeline:
 - user can provide yaml or json in the function definition
 
 '''
-"vpcConfig": {
+"vpcConfig": \{
 
   "securityGroupIds": ["string"],
   

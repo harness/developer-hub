@@ -6,11 +6,11 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/c
 ---
 
-```mdx-code-block
+
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <ctabanner
   buttonText="Learn More"
@@ -39,10 +39,10 @@ You can run any commands in Run steps as long as the necessary binaries are avai
 
 In the following YAML example, the Run step runs a Python script to get dependencies for a C++ project. It uses a [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) to cycle through each dependency.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hc" label="Harness Cloud" default>
-```
+
 
 ```yaml
              - step:
@@ -70,10 +70,10 @@ In the following YAML example, the Run step runs a Python script to get dependen
                       maxConcurrency: 1
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="sh" label="Self-hosted">
-```
+
 
 ```yaml
              - step:
@@ -103,10 +103,10 @@ In the following YAML example, the Run step runs a Python script to get dependen
                       maxConcurrency: 1
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::tip
 
@@ -118,10 +118,10 @@ You can use [Background steps](/docs/continuous-integration/use-ci/manage-depend
 
 ## Cache dependencies
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud" default>
-```
+
 
 Cache your C and C++ dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec`.
 
@@ -132,10 +132,10 @@ Cache your C and C++ dependencies with [Cache Intelligence](/docs/continuous-int
             enabled: true
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 With self-hosted build infrastructures, you can:
 
@@ -176,19 +176,19 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     archiveFormat: Tar
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Build and run tests
 
 You can use **Run** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="hosted" label="Harness cloud" default>
-```
+
 
 ```yaml
               - step:
@@ -202,10 +202,10 @@ You can use **Run** steps to [run tests in CI pipelines](/docs/continuous-integr
                       ctest --test-dir $FILES --output-junit /target/reports/test_output.xml
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="selfhosted" label="Self-hosted">
-```
+
 
 ```yaml
               - step:
@@ -221,10 +221,10 @@ You can use **Run** steps to [run tests in CI pipelines](/docs/continuous-integr
                       ctest --test-dir $FILES --output-junit /target/reports/test_output.xml
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Visualize test results
 
@@ -244,10 +244,10 @@ Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/
 
 ## Specify version
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 CLang and GNU C++ are pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
@@ -265,10 +265,10 @@ If you want to use a different compiler or a specific version of a compiler, you
                        sudo apt install g++-12
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 You can use a **Run** step to install compilers, such as CLang or GNU C++, if they are not already installed on your host machine, for example:
 
@@ -286,10 +286,10 @@ You can use a **Run** step to install compilers, such as CLang or GNU C++, if th
                        sudo apt install g++
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Full pipeline examples
 

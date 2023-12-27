@@ -69,9 +69,9 @@ Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-e
 
 :::
 
-```mdx-code-block
+
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
+
 
 <CISignupTip />
 

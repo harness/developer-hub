@@ -68,35 +68,35 @@ Perform the following steps to raise a ticket to apply recommendations:
 
 2. Enter the following ticket details:
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Cost Reporting" label="Jira">
-```
+
 
 * **Jira project** — Select the Jira project where you want to create a ticket. Go to [Create Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md).
 * **Issue type** — Select a Jira issue type from the list of types in the Jira project you selected. Go to [Create Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md).
 * **Ticket summary** — Add a summary of the issue.
 * **Description** — Add a description for the issue.
-  
 
-```mdx-code-block
-  </TabItem>
+
+
+</TabItem>
   <TabItem value="Cost Optimization" label="ServiceNow">
-```
+
 
 
    * **Ticket Type** - Select the ticket type from the dropdown list. For example, change request, Data Management task, and so on. Based on the selected ticket type, you might need to enter more required inputs.
    * **Short Description** - Enter a brief description of the task. This is the title of the ticket.
    * **Description** - Enter a more detailed description about the recommendation.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
   
 The ticket is created. The status of the ticket changes to **To do**. You need to assign the ticket to apply the recommendations. After applying the recommendations, when the ticket status changes to **Done**, the recommendation is displayed in the **Applied Recommendations** tab. 
 If you have not changed the ticket status to **Done** after applying the recommendation, you could use the **More actions** icon (three vertical dots), and then select **Mark as applied** to move the recommendation to the **Applied Recommendations** tab.

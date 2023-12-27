@@ -3,10 +3,10 @@ title: Image registry
 sidebar_position: 10
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 This section describes an image registry, and how it can be used within a chaos experiment. 
 
@@ -14,10 +14,10 @@ Image registry is a repository that hosts container images which are used by cha
 
 Follow the steps mentioned below to use default or custom values of image registry in your chaos experiment. 
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Default values">
-```
+
 ## Default image registry 
 
 ### Step 1: Navigate to Image Registry
@@ -42,10 +42,10 @@ container:
     - kubectl apply -f /tmp/ -n {{workflow.parameters.adminModeNamespace}} && sleep 30
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Custom values">
-```
+
 ## Custom image registry
 ### Step 1: Navigate to Image Registry
 
@@ -78,7 +78,6 @@ container:
     - kubectl apply -f /tmp/ -n {{workflow.parameters.adminModeNamespace}} && sleep 30
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```

@@ -76,14 +76,14 @@ You can add a variable to the account, organization, or project [scope](/docs/pl
 
 ### Project
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="API" label="API">
-```
+
 
 Use the [createVariable](https://apidocs.harness.io/tag/Variables#operation/createVariable) API to create a new variable.
 
@@ -110,10 +110,10 @@ curl -i -X POST \
   }'
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Harness Manager" label="Harness Manager">
-```
+
 
 1. In a Harness Project, select **Project Setup**, and then select **Variables**.
 2. Select **New Variable**.
@@ -124,10 +124,10 @@ curl -i -X POST \
 5. Note the Id. That Id is used to reference the variable.
 6. Select **Save**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Pipeline, stage, service, and environment
 

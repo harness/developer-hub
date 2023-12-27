@@ -7,7 +7,6 @@ sidebar_position: 5
 This topic provides solutions for common ingestion satellite issues.
 
 <details>
-
 <summary>Do I need to set up a ClusterRole and ClusterRoleBinding for the Satellite in Kubernetes?</summary>
 
 No. These are not required unless you plan to utilize Kubernetes capabilities within your runbooks. If you don't need Kubernetes integration, you can omit them.
@@ -15,7 +14,6 @@ No. These are not required unless you plan to utilize Kubernetes capabilities wi
 </details>
 
 <details>
-
 <summary>Why is the Satellite configuration stored as a ConfigMap instead of a Secret?</summary>
 
 While the documentation provides an example with a ConfigMap for ease of use and visualization, it's not a strict recommendation. Storing sensitive information, like credentials, in a Secret is a valid and more secure option. You can choose the storage method that best suits your security requirements.
@@ -23,7 +21,6 @@ While the documentation provides an example with a ConfigMap for ease of use and
 </details>
 
 <details>
-
 <summary>Can I specify a specific tag when running the Satellite image instead of using the latest tag?</summary>
 
 Yes, you can run the Satellite image with a specific tag to lock down the version. New versions of the Satellite can be found [here](https://hub.docker.com/r/levelops/ingestion-satellite).
@@ -31,7 +28,6 @@ Yes, you can run the Satellite image with a specific tag to lock down the versio
 </details>
 
 <details>
-
 <summary>How can I add certificate authorities to the Satellite image? Can I use an internal image as a base?</summary>
 
 To add certificate authorities to a Satellite image and enable it to use an internal image as a base, you can follow the steps below:
@@ -117,7 +113,6 @@ Now you can ensure that your Satellite image includes the necessary root certifi
 </details>
 
 <details>
-
 <summary>Why do I need to provide a valid SSL certificate when using HTTPS with a proxy and Satellite?</summary>
 
 HTTPS ensures secure communication between your proxy server and Satellite. To build this secure connection, a valid SSL certificate is required. This certificate helps verify the identity of the proxy and encrypts the data exchanged.
@@ -125,7 +120,6 @@ HTTPS ensures secure communication between your proxy server and Satellite. To b
 </details>
 
 <details>
-
 <summary>How can I configure SSL certificates when building my own image for the proxy?</summary>
 
 You can configure SSL certificates for your proxy image using the following Dockerfile instructions:
@@ -140,7 +134,6 @@ RUN chmod -w /opt/cacerts
 </details>
 
 <details>
-
 <summary>Can I manually copy my SSL certificate to the proxy container if I prefer not to build my own image?</summary>
 
 Yes. Follow these steps to manually copy your SSL certificate to the proxy container:
@@ -190,7 +183,6 @@ Make sure to replace the following placeholders:
 </details>
 
 <details>
-
 <summary>Can a single satellite support multiple Gitlab instances, e.g. a prod and non-prod Gitlab instance? (Scenario #1)</summary>
 
 Yes. A single satellite can support multiple Gitlab instances including both production (prod) and non-production (non-prod) instances. However it's important to carefully manage the CPU and memory resources allocated to the satellite's Docker container as multiple integrations can result in more jobs. Keep in mind that there's a fixed number of threads per satellite, so increasing the number of integrations won't necessarily require an increase in resources.
@@ -198,7 +190,6 @@ Yes. A single satellite can support multiple Gitlab instances including both pro
 </details>
 
 <details>
-
 <summary>Can a single VM run multiple satellites, with each satellite connecting to a different Gitlab instance? (Scenario #2)</summary>
 
 Yes. It is possible to run multiple satellites on a single VM, and each satellite can connect to a different Gitlab instance. The satellite is distributed as a Docker container, and multiple containers can coexist on the same VM. This allows you to manage multiple integrations with different Gitlab instances from a single virtual machine.
@@ -206,7 +197,6 @@ Yes. It is possible to run multiple satellites on a single VM, and each satellit
 </details>
 
 <details>
-
 <summary>Would the VM sizing recommendations change in Scenario #1 or Scenario #2?</summary>
 
 Between **Scenario #1** (a single satellite supporting multiple Gitlab instances) and **Scenario #2** (multiple satellites on a single VM, each connecting to different Gitlab instances), the sizing recommendations would be similar. However, Scenario #1 would theoretically require fewer resources due to lower overhead, as it involves running a single satellite process compared to Scenario #2, which involves running multiple satellite containers. Also it's essential to monitor resource usage and adjust VM sizing based on the specific workload and requirements of your integrations.
@@ -214,7 +204,6 @@ Between **Scenario #1** (a single satellite supporting multiple Gitlab instances
 </details>
 
 <details>
-
 <summary>Debugging Satellite: Best Practices</summary>
 
 When troubleshooting issues with Satellite, following best practices can help streamline the process and ensure effective resolution of problems. This topic outlines the steps to approach debugging Satellite, including tips for identifying and resolving common issues.

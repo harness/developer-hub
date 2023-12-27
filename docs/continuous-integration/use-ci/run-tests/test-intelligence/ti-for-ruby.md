@@ -4,11 +4,11 @@ description: Set up TI for Ruby codebases.
 sidebar_position: 40
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
-```
+
 
 Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes. You can enable TI for Ruby in three steps:
 
@@ -87,10 +87,10 @@ https://www.youtube.com/watch?v=jwYZysdZuNI-->
 
 ### YAML examples
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="cloud" label="Harness Cloud" default>
-```
+
 
 This example shows a pipeline that:
 
@@ -138,10 +138,10 @@ This example shows a pipeline that:
                     preCommand: bundle install
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="sh" label="Self-hosted">
-```
+
 
 This example shows a pipeline that uses a Kubernetes cluster build infrastructure and runs tests on Ruby with RSpec and Test Intelligence.
 
@@ -188,10 +188,10 @@ pipeline:
               os: Linux
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Run Tests step settings
 

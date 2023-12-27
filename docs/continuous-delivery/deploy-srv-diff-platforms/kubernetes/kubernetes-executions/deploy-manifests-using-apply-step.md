@@ -221,9 +221,9 @@ You can also add values YAML values and/or files or Kustomize Patch files in the
      - If you select a remote store, select or add a connector to that repo, and then enter a path to the folder or file.
      - If you select Harness file store, select a Kustomize Patch file from project, organization, or account in the file store.
      - If you select **Inline**, enter a name for you to identify the Kustomize Patch file and the Patch YAML values for the override.
-       
-       <details>
-       <summary>Sample Kuztomize Patch YAML</summary>
+
+<details>
+<summary>Sample Kuztomize Patch YAML</summary>
 
        ```
        apiVersion: apps/v1
@@ -247,7 +247,7 @@ You can also add values YAML values and/or files or Kustomize Patch files in the
          replicas: <+stages.s1.variables.replica>
        ```
 
-       </details> 
+</details> 
 
 3. Select **Submit**. 
 

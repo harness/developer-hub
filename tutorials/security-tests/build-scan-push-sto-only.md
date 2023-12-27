@@ -4,10 +4,10 @@ description: Launch pipeline builds and scans automatically based on GitLab merg
 sidebar_position: 70
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <ctabanner
   buttonText="Learn More"
@@ -113,9 +113,9 @@ The following step is required for Kubernetes or Docker infrastructures only. If
 
 ### Add a Docker-in-Docker background step
 
-```mdx-code-block
+
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
+
 
 <StoDinDRequirements />
  
@@ -125,10 +125,10 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 Now you will add a step that runs a scan using the local Semgrep container image maintained by Harness. 
 
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. Go to **Execution** and add a **Run** step. 
 
@@ -169,10 +169,10 @@ Now you will add a step that runs a scan using the local Semgrep container image
            ![set the value type](./static/sast-semgrep-tutorial/set-value-type.png)
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 Add a `Run` step to your `SecurityTests` stage and configure it as follows:
 
@@ -241,10 +241,10 @@ Here's an example:
 
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Add the Semgrep ingest step
 
@@ -256,10 +256,10 @@ It's generally good practice to set the [fail_on_severity](/docs/security-testin
 
 :::
 
-   ```mdx-code-block
+   
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. In **Execution**, add a **Semgrep** step after your **Run** step.
 
@@ -283,10 +283,10 @@ It's generally good practice to set the [fail_on_severity](/docs/security-testin
 
    -->
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 Add a step after the `Run` step and configure it as follows:
 
@@ -334,10 +334,10 @@ Here's a YAML example:
 
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 ### Run the pipeline and verify your results
 
 This is a good time to run your pipeline and verify that it can scan the repo and ingest the results correctly. 
@@ -356,10 +356,10 @@ This is a good time to run your pipeline and verify that it can scan the repo an
 
 Assuming that the Semgrep scanner detected no critical vulnerabilities, the next step is to build a local image using the `Dockerfile` in your codebase.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. Add a **Run** step after the Semgrep ingest step. 
 
@@ -395,12 +395,12 @@ Assuming that the Semgrep scanner detected no critical vulnerabilities, the next
       1. Container Registry — When prompted, select **Account** and then your Docker Hub connector. 
 
       2. Image = **docker**
-      
 
-```mdx-code-block
-  </TabItem>
+
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 Add a `Run` step and configure it as follows:
 
@@ -466,17 +466,17 @@ Here's an example:
 
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Add the Aqua-Trivy scan/ingest step
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 Add an **Aqua Trivy** step to your pipeline after the build step and configure it as follows:
 
@@ -494,10 +494,10 @@ Add an **Aqua Trivy** step to your pipeline after the build step and configure i
 
    7. [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) = **None**
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 Add an **Aqua Trivy** step to your pipeline after the build step and configure it as follows:
 
@@ -550,10 +550,10 @@ Here's an example:
 
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Run the pipeline and verify your results
 
@@ -580,10 +580,10 @@ This is a good time to run your pipeline and verify that it can scan the repo an
 
 Assuming that the Aqua Trivy scanner detected no critical vulnerabilities, you can now push your new image to Docker Hub.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. Add a **Run** step after the Aqua Trivy scan/ingest step. 
 
@@ -607,12 +607,12 @@ Assuming that the Aqua Trivy scanner detected no critical vulnerabilities, you c
       1. Container Registry — Select your Docker Hub connector. 
 
       2. Image = **docker**
-      
 
-```mdx-code-block
-  </TabItem>
+
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 Add a `Run` step after the Bandit scan step and configure it as follows:
 
@@ -655,10 +655,10 @@ Here's an example:
 
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 
 

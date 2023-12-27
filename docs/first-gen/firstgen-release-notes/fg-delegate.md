@@ -3,10 +3,10 @@ title: Delegate Release Notes (FirstGen)
 description: These release notes document changes to Harness Delegate in Harness FirstGen.
 sidebar_position: 30
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 These release notes document changes to Harness Delegate in Harness FirstGen.
 

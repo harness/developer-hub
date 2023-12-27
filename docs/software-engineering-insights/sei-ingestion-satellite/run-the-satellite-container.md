@@ -4,10 +4,10 @@ description: Guide on how to download, install, and run the Ingestion Satellite 
 sidebar_position: 2
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 Use Ingestion Satellites to integrate with on-premise tools and set up **Custom** integrations.
 
@@ -17,10 +17,10 @@ The recommended memory for one container is 4GB to 6GB.
 
 :::
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="docker" label="Docker" default>
-```
+
 
 1. Download and install Docker Desktop.
 
@@ -147,10 +147,10 @@ docker rm <ID>
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="k8s" label="Kubernetes">
-```
+
 
 1. Requirements:
 
@@ -261,10 +261,10 @@ data: ## This section comes from satellite.yml. If you copy and paste this secti
    
    This ensures that your Satellite container stays up to date with the latest changes. Make sure to monitor the logs regularly to ensure the proper functioning of the container.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::tip
 

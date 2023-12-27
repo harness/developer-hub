@@ -38,7 +38,7 @@ For a quick summary of Harness GitOps concepts, see [Harness GitOps Basics](/doc
 ## Before you begin
 
 * (Optional) **GitHub and DockerHub account:** this example uses a publicly available manifest in GitHub and a public Docker image. You will be using anonymous credentials for connection, but you can use your own credentials if you like.  
-We'll be using public manifests from <https://github.com/argoproj/argocd-example-apps>.
+We'll be using public manifests from [https://github.com/argoproj/argocd-example-apps](https://github.com/argoproj/argocd-example-apps).
 * **Target Kubernetes cluster:** you can use a cluster in any cloud platform. Harness makes a platform-agnostic connection to the cluster.
 
 * **Set up your Kubernetes Cluster:** you'll need a target Kubernetes cluster for the Harness GitOps Agent and deployment. Ensure your cluster meets the following requirements:

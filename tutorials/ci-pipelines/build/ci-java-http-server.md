@@ -6,11 +6,11 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/java
 ---
 
-```mdx-code-block
+
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <ctabanner
   buttonText="Learn More"
@@ -72,10 +72,10 @@ You can use [Background steps](/docs/continuous-integration/use-ci/manage-depend
 
 ## Cache dependencies
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud" default>
-```
+
 
 Cache your Java dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec`.
 
@@ -86,10 +86,10 @@ Cache your Java dependencies with [Cache Intelligence](/docs/continuous-integrat
             enabled: true
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 With self-hosted build infrastructures, you can:
 
@@ -149,24 +149,24 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     archiveFormat: Tar
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Build and run tests
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="hosted" label="Harness cloud" default>
-```
+
 
 You can use **Run** or **Run Tests** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="run" label="Run step" default>
-```
+
 
 This example uses two [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build and test with Maven.
 
@@ -194,10 +194,10 @@ This example uses two [Run steps](/docs/continuous-integration/use-ci/run-ci-scr
                           - target/surefire-reports/*.xml
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="runtests" label="Run Tests step (Test Intelligence)">
-```
+
 
 You must use the **Run Tests** step for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) feature.
 
@@ -224,22 +224,22 @@ The following example runs `mvn test` (declared in `args`), and then runs `mvn p
                           - "target/surefire-reports/*.xml"
 ```
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
-```mdx-code-block
+</TabItem>
+</Tabs>
+
+
+
 </TabItem>
 <TabItem value="selfhosted" label="Self-hosted">
-```
+
 
 You can use **Run** or **Run Tests** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="run" label="Run step" default>
-```
+
 
 This example uses two [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build and test with Maven.
 
@@ -269,10 +269,10 @@ This example uses two [Run steps](/docs/continuous-integration/use-ci/run-ci-scr
                           - target/surefire-reports/*.xml
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="runtests" label="Run Tests step (Test Intelligence)">
-```
+
 
 You must use the **Run Tests** step for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) feature.
 
@@ -301,15 +301,15 @@ The following example runs `mvn test` (declared in `args`), and then runs `mvn p
                           - "target/surefire-reports/*.xml"
 ```
 
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
+
+
+
+</TabItem>
+</Tabs>
+
 
 ### Visualize test results
 
@@ -329,10 +329,10 @@ Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/
 
 ## Specify version
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 Java is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
@@ -352,10 +352,10 @@ This example uses the [GitHub Action step](/docs/continuous-integration/use-ci/u
                       java-version: '16'
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 You can use a **Run** or **Plugin** step to install Java versions that are not already installed on your host machine.
 
@@ -377,10 +377,10 @@ This example uses the [Plugin step](/docs/continuous-integration/use-ci/use-dron
                         java-version: '17'
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Full pipeline examples
 

@@ -25,15 +25,15 @@ Harness Cloud Cost Management (CCM) offers comprehensive solutions to manage and
 
 ## Cost and Usage Reports (CUR)
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs queryString="tab-number">
 <TabItem value="1" label="Multiple Accounts with Consolidated Billing">
-```
+
 * If you have [consolidated billing process](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-procedure.html) enabled, then you need to create only a single CUR for the management account. This provides cost data for all member accounts in the organization.
 
 * For the Cost Visibility feature alone, you will only need a single AWS connector configured with the management account CUR.
@@ -42,27 +42,27 @@ import TabItem from '@theme/TabItem';
   * If you are using the UI to create the additional connectors, configure all connectors with the same management account CUR.
   * If you are using the API to create the additional connectors, you can omit billing information altogether.
 
-```mdx-code-block
+
 </TabItem>
 
 <TabItem value="2" label="Multiple Accounts">
-```
+
 * If you do not have [consolidated billing process](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-procedure.html) enabled, then you need to create a CUR for each linked account.
 
 * Create an AWS connector for each AWS account, configured with the CUR for that account.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="3" label="Single Account">
-```
+
 * Create a single CUR for your AWS account.
 
 * Create a single AWS connector configured with the CUR for your account.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Connect CCM to your AWS account
 
@@ -72,24 +72,24 @@ Perform the following steps to connect CCM to the AWS account.
 
 1. Create a new AWS connector using one of the two options below:
 
-```mdx-code-block
+
 <Tabs queryString="tab-number">
 <TabItem value="4" label="From Account Settings">
-```
+
 2. Go to **Account Resources** > **Connectors**.
 3. Select **+ New Connector**.
 4. Under **Cloud Costs**, select **AWS**.
-```mdx-code-block
+
 </TabItem>
 <TabItem value="5" label="From Cloud Costs">
-```
+
 2. Go to **Setup** > **Cloud Integration**.  
 3. Select **New Cluster/Cloud account**.
 4. Select **AWS**.
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 5. Perform the following tasks in the **AWS Connector** wizard.
 
 ### Overview
@@ -210,7 +210,7 @@ Harness CCM also provides the ability to create connectors via API using a Stack
 Perform the following steps to create a StackSet in AWS:
 
 1. Select the following link to start creating the StackSet:  
-<https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacksets/create>
+[https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacksets/create](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacksets/create)
 2. In the **Choose a template** step, enter the following values, and then select **Next**.
 
 | **Field** | **Description** |

@@ -6,11 +6,11 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/nodejs
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
+
 
 <ctabanner
   buttonText="Learn More"
@@ -35,10 +35,10 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 Use [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 ```yaml
               - step:
@@ -51,10 +51,10 @@ Use [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-setti
                       npm install express@4.18.2 --no-save
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 ```yaml
               - step:
@@ -68,10 +68,10 @@ Use [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-setti
                       npm install express@14.18.2 --no-save
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 :::tip
 
@@ -83,10 +83,10 @@ You can use [Background steps](/docs/continuous-integration/use-ci/manage-depend
 
 ## Cache dependencies
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="cloud" label="Harness Cloud" default>
-```
+
 
 Cache Node dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec`.
 
@@ -97,10 +97,10 @@ Cache Node dependencies with [Cache Intelligence](/docs/continuous-integration/u
             enabled: true
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="selfhosted" label="Self-hosted">
-```
+
 
 With self-hosted build infrastructures, you can:
 
@@ -172,19 +172,19 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 </details>
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Build and run tests
 
 Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build and [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 ```yaml
               - step:
@@ -204,10 +204,10 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                           - report.xml
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 ```yaml
               - step:
@@ -229,10 +229,10 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                           - report.xml
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Visualize test results
 
@@ -252,10 +252,10 @@ You can use [test splitting (parallelism)](/docs/continuous-integration/use-ci/r
 
 ## Specify version
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
+
 
 Node is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
@@ -314,10 +314,10 @@ If your application requires a specific Node version, add a **Run** step to inst
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Self-hosted">
-```
+
 
 Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in your steps. There is no need for a separate install step when using Docker.
 
@@ -370,10 +370,10 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
 
 </details>
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Full pipeline examples
 

@@ -21,9 +21,9 @@ slug: /ci-pipelines/test/saucelabs-proxy
 
 [Sauce Labs](https://saucelabs.com/) is a web and mobile application automated testing platform. Sauce Connect Proxy can run as a Background step in your Harness CI pipeline, and act as a proxy server between a Sauce Labs infrastructure and your CI pipeline.
 
-```mdx-code-block
+
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
+
 
 <CISignupTip />
 
@@ -35,12 +35,13 @@ You need a [Docker Hub](https://hub.docker.com/) connector. In this example, the
 
 If you have not created a Docker Hub connector yet, follow these steps.
 
-<details><summary>Create connector</summary>
+<details>
+<summary>Create connector</summary>
 <p>
 
-```mdx-code-block
+
 import DockerHubConnector from '/tutorials/shared/dockerhub-connector-includes.md';
-```
+
 
 <DockerHubConnector />
 
@@ -68,7 +69,7 @@ This connector needs an access token with **Read-only** permissions.
 
 Append the following configuration:
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -79,7 +80,7 @@ import TabItem from '@theme/TabItem';
         {label: 'Kubernetes', value: 'kubernetes'},
     ]}>
 <TabItem value="cloud">
-```
+
 
 **Cloud** pipelines run in managed infrastructure provided by Harness.
 
@@ -132,11 +133,11 @@ import TabItem from '@theme/TabItem';
                       echo "SC ready"
 ```
 
-```mdx-code-block
+
 </TabItem>
 
 <TabItem value="kubernetes">
-```
+
 
 **Kubernetes** pipelines run in a Kubernetes cluster that you manage. Kubernetes pipelines are an enterprise feature.
 
@@ -201,10 +202,10 @@ Replace `Kubernetes_Connector` with your Kubernetes cluster connector ID.
 
 :::
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 :::info
 

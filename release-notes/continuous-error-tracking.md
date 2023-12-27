@@ -5,11 +5,11 @@ tags: [NextGen, "cet"]
 date: 2023-11-02T17:20
 sidebar_position: 8
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import delete_project from './static/delete-project.png'
-```
+
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/continuous-error-tracking/rss.xml" />
 

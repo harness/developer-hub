@@ -1,4 +1,5 @@
-<!-- details><summary>Instance scan settings</summary -->
+<!-- details>
+<summary>Instance scan settings</summary -->
 
 The following settings apply to Security steps where the `scan_type` is `instance`.
 

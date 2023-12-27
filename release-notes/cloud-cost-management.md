@@ -5,10 +5,10 @@ tags: [NextGen, "cloud cost management"]
 date: 2023-09-20T10:00
 sidebar_position: 6
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/cloud-cost-management/rss.xml" />
 
@@ -1109,10 +1109,10 @@ N/A
    -H 'x-api-key: pat.H5xxxA2MXg.6xxxmD'
 
 Example response:
-{
+\{
 "status": "SUCCESS",
 "data": [
-{
+\{
 "dashboardName": "AWS Cost Dashboard",
 "dashboardId": "226",
 "cloudProvider": "AWS",
@@ -1121,7 +1121,7 @@ Example response:
 "redirectionURL": "#/account/H5W8ioxxxA2MXg/dashboards/folder/shared/view/226"
 },
 ...
-{
+\{
 "dashboardName": "AWS RDS Inventory Cost Dashboard",
 "dashboardId": "3309",
 "cloudProvider": "AWS",

@@ -61,7 +61,6 @@ This example could result in the following ranges:
 
 
 <details>
-
 <summary>Relationship between ranking categories and effort investment calculations</summary>
 
 The ranking of categories plays a significant role in determining how tickets are allocated to different categories, and subsequently, how effort investment calculations are made.

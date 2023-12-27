@@ -505,9 +505,9 @@ You can scan container images and repositories using [Semgrep](/docs/security-te
 * **Issue numbers:** STO-5882, STO-6593, STO-6181, PL-39723
 * **Feature flag:** `STO_AI_ENHANCED_REMEDIATIONS`
 
-```mdx-code-block
+
 import Intro from '/docs/security-testing-orchestration/use-sto/shared/sto-aida-overview-partial.md';
-```
+
 
 <Intro />
 

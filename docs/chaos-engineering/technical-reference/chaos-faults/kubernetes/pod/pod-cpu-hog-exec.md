@@ -127,7 +127,7 @@ spec:
 ### Chaos inject and kill commands
 
 The `CHAOS_INJECT_COMMAND` and `CHAOS_KILL_COMMAND` environment variables to set the chaos inject and chaos kill commands, respectively.
-Default values `CHAOS_INJECT_COMMAND` is "md5sum /dev/zero" and `CHAOS_KILL_COMMAND` is "kill $(find /proc -name exe -lname '\*/md5sum' 2>&1 | grep -v 'Permission denied' | awk -F/ '{print $(NF-1)}')"
+Default values `CHAOS_INJECT_COMMAND` is "md5sum /dev/zero" and `CHAOS_KILL_COMMAND` is "kill $(find /proc -name exe -lname '\*/md5sum' 2>&1 | grep -v 'Permission denied' | awk -F/ '\{print $(NF-1)}')"
 
 The following YAML snippet illustrates the use of these environment variables:
 

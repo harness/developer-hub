@@ -4,10 +4,10 @@ description: Launch pipeline builds and scans automatically based on GitLab merg
 sidebar_position: 80
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <ctabanner
   buttonText="Learn More"
@@ -119,9 +119,9 @@ The following step is required for Kubernetes or Docker infrastructures only. If
 
 ### Add a Docker-in-Docker background step
 
-```mdx-code-block
+
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
+
 
 <StoDinDRequirements />
 
@@ -129,14 +129,14 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 ## Scan the code
 
 
-```mdx-code-block
-import set_up_harness_26 from './static/your-first-pipeline/configure-bandit-step.png'
-```
 
-```mdx-code-block
+import set_up_harness_26 from './static/your-first-pipeline/configure-bandit-step.png'
+
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. In the Pipeline Studio, go to **Execution** and add a **Bandit** step to your pipeline.
 
@@ -156,10 +156,10 @@ In most cases, you want to set the [Fail on Severity](/docs/security-testing-orc
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 
  *  `type:` [`Bandit`](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference)
@@ -203,10 +203,10 @@ Here's a YAML example:
                         level: info
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 #### Analyze the results
 
@@ -231,10 +231,10 @@ At this point, you might want to run a scan and view the detected issues.
 
 You'll now add one of these steps to build and push to your Docker Hub account.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. Add a **Build and Push to Docker Registry** step after the Bandit step. 
 
@@ -254,10 +254,10 @@ You'll now add one of these steps to build and push to your Docker Hub account.
 
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 Add a **Build and Push to Docker Registry** step after the Bandit step and configure it as follows: 
 
@@ -287,17 +287,17 @@ Here's an example:
 
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Scan the test image
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 Add an **Aqua Trivy** step to your pipeline after the build step and configure it as follows:
 
@@ -317,10 +317,10 @@ Add an **Aqua Trivy** step to your pipeline after the build step and configure i
 
    7. [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) = **Critical**
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 Add an **Aqua Trivy** step to your pipeline after the build step and configure it as follows:
 
@@ -379,10 +379,10 @@ Here's an example:
 
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 #### Run the pipeline and verify your results
 
@@ -411,10 +411,10 @@ This is a good time to run your pipeline and verify that it can scan the image.
 
 Assuming that the Trivy scan detected no critical vulnerabilities, you can now build and push a prod version of your image to Docker Hub. This step is identical to the previous [test image step](#build-and-push-a-test-image), except for the image tag: the test image tag is `1.x-scantest-DONOTUSE` and the prod image tag is `1.x`.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. Add a **Build and Push to Docker Registry** step after the Semgrep ingest step. 
 
@@ -428,10 +428,10 @@ Assuming that the Trivy scan detected no critical vulnerabilities, you can now b
 
    4. Container image tag — Select **Expression** for the value type, then enter the following expression: `<+stage.variables.DOCKER_IMAGE_TAG><+pipeline.sequenceID>`
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 Add a **Build and Push to Docker Registry** step after the Bandit step and configure it as follows: 
 
@@ -462,10 +462,10 @@ Here's an example:
 
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## YAML pipeline example
 

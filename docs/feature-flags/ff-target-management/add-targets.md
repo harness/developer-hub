@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import add_target_1 from './static/1-add-targets-00.png'
 import add_target_2 from './static/1-add-targets-01.png'
-```
+
 
 Targets are used to control which users see which variation of a Feature Flag, for example, if you want to do internal testing or a beta program before a broader roll out, you can enable the flag for some users and not others. 
 
@@ -34,7 +34,8 @@ https://www.loom.com/share/3bce77b43a844d6bb5b274c341855149-->
 
 A target is identified by a name and an identifier. Make sure your target names and identifiers conform to the regex requirements below.
 
-<details><summary>Regex requirements for target names and identifiers</summary> 
+<details>
+<summary>Regex requirements for target names and identifiers</summary> 
 
 A target is identified by a name and an identifier. The name and identifier you enter must conform to the following regex:
 
@@ -76,9 +77,9 @@ To add a target:
 5. In **Identifier**, enter a unique identifier for your target. When [Targeting Users with Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags) or [Managing Target Groups](add-target-groups.md), the targets are identified by the identifier you give them.
 6. You can add multiple targets. Click **+** to add more targets.
 
-    ```mdx-code-block
+    
     <img src={add_target_1} alt="Adding Targets" height="500" width="500" />    
-    ```
+    
 
 7. When you’ve added all the targets, Click **Add**.
 
@@ -102,9 +103,9 @@ This option allows you to import a list of targets in CSV format. To do this:
 
 5. Click **Add**.
 
-    ```mdx-code-block
+    
     <img src={add_target_1} alt="A screenshot of the Add Target screen that highlights the radio button for uploading a list of Targets." height="500" width="500" />
-    ``` 
+     
 
 6. The list of targets is added.
 

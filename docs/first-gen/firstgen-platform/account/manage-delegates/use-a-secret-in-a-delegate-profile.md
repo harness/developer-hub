@@ -8,11 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import image_1 from './static/use-a-secret-in-a-delegate-profile-24.png'
 import image_2 from './static/use-a-secret-in-a-delegate-profile-29.png'
 import image_3 from './static/use-a-secret-in-a-delegate-profile-30.png'
-```
+
 :::caution
 Using Profiles is Deprecated. Please use [Run Initialization Scripts on Delegates](run-initialization-scripts-on-delegates.md).
 :::
@@ -45,9 +45,9 @@ The **Secrets Management** page appears.
 2. Under **Execution Credentials**, click **Encrypted Text**. The **Encrypted Text** page appears.
 3. Click **Add Encrypted Text**. The **Add Encrypted Text** dialog appears.
 
-```mdx-code-block
+
 <img src={image_1} height="400" width="500" />
-```
+
 
 
 4. In **Name**, enter **repoUsername**. This name will be used later in the **Delegate Profile** script to reference this secret.
@@ -97,9 +97,9 @@ The secrets are referenced as variables using `${secrets.getValue()}` and the na
   
 The **Manage Delegate Profile** dialog will look like this:
 
-```mdx-code-block
+
 <img src={image_2} height="400" width="500" />
-```
+
 
 2. Click **Submit**.
 
@@ -107,9 +107,9 @@ Now when you add this profile to a Kubernetes Delegate, it will add the Helm rep
 
 A quick way to get the name of a secret is to hover over the secrets in **Secrets Management** and click the Copy icon:
 
-```mdx-code-block
+
 <img src={image_3} height="100" width="200" />
-```
+
 
 ## Review: Use Config Files in Delegate Profiles
 

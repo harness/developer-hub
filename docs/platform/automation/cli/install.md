@@ -4,10 +4,10 @@ description: This topic shows how to get started with the Harness CLI.
 sidebar_position: 1
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 <!---
 Import statements for CLI downloads
 <MacOSCLI />, <WindowsCLI />, <ARMCLI />, <AMDCLI />
@@ -25,30 +25,30 @@ This documentation section will serve as your compass, guiding you through the i
 
 You can install `harness` CLI utility on Linux, MacOS, or Windows in order to interact with Harness Platform from a command-line interface.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Linux">
-```
+
 
 ### Install the CLI on Linux
 
 1. Download and extract the Harness CLI binary.
- ```mdx-code-block
+ 
  <Tabs>
  <TabItem value="ARM">
- ```
+ 
  <ARMCLI />
 
- ```mdx-code-block
- </TabItem>
+
+</TabItem>
  <TabItem value="AMD">
- ```
+ 
  <AMDCLI />
 
- ```mdx-code-block
- </TabItem>
+
+</TabItem>
  </Tabs>
- ```
+ 
 
 2. Add the binary path to the system `$PATH` variable
  ```bash
@@ -60,10 +60,10 @@ You can install `harness` CLI utility on Linux, MacOS, or Windows in order to in
  harness --version
  ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="MacOS">
-```
+
 
 ### Install the CLI on MacOS
 
@@ -72,10 +72,10 @@ You can install `harness` CLI utility on Linux, MacOS, or Windows in order to in
 
  (If you are using different shell variation of terminal e.g. zsh, replace `~/.bash_profile` with your shell specific profile file path e.g. `~/.zshrc`)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Windows">
-```
+
 
 ### Install the CLI on Windows
 1. Run the commands below in Windows Powershell:
@@ -88,10 +88,10 @@ You can install `harness` CLI utility on Linux, MacOS, or Windows in order to in
  ```
 4. Restart terminal
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Configure Harness CLI
 
