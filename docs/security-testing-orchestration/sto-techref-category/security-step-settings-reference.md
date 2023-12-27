@@ -1,6 +1,6 @@
 ---
-title: STO external scanner reference
-description: STO external scanner support and requirements.
+title: STO external scanner support and requirements
+description: This topic lists supported scanners, ingestion methods, and requirements.
 sidebar_position: 10
 sidebar_label: External scanner support and requirements
 helpdocs_topic_id: 0k0iubnzql
@@ -9,7 +9,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic includes the Security step settings for each of the scanner providers supported by Harness.
+This section describes how to set up each of the external scanners supported by Harness STO.
+
+For more information about STO support, go to [What's supported in STO](/docs/security-testing-orchestration/whats-supported).
 
 
 ### Scanner categories
