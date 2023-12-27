@@ -33,19 +33,19 @@ To configure this, go to [Configure the Impact Factor in a Trellis profile](../s
 
 Impact is defined by two metrics: High impact bugs worked on per month and high impact stories worked on per month. *Impact* refers to the ticket's perceived significance or priority.
 
-* **High Impact bugs worked on per month:** This measure represents the number of resolved, high impact bug tickets that the developer was assigned to in the past 30 days. If more than one developer worked on the same ticket, developers are credited proportionately. The average number of bugs worked on per month is between 2 and 3.
-* **High Impact stories worked on per month:** This measure represents the number of resolved, high impact story tickets that the developer was assigned to in the past 30 days. If more than one developer worked on the same ticket, developers are credited proportionately. The average number of stories worked on per month is between 3 and 7.5.
+* **High Impact bugs worked on per month:** This measure represents the number of resolved, high impact bug tickets that the developer was assigned to within the selected time frame. The metric value in the report is normalized to show the average number of resolved, high impact bug tickets per month. If more than one developer worked on the same ticket, developers are credited proportionately. The average number of bugs worked on per month is between 2 and 3.
+* **High Impact stories worked on per month:** This measure represents the number of resolved, high impact story tickets that the developer was assigned to within the selected time frame. The metric value in the report is normalized to show the average number of resolved, high impact story tickets per month. If more than one developer worked on the same ticket, developers are credited proportionately. The average number of stories worked on per month is between 3 and 7.5.
 
 ## Volume
 
 Volume measures the quantity of code that the developer is working on. The default volume score is calculated using the following six metrics:
 
-* **Number of PRs per month:** This is the number of Pull Requests a developer submitted in the last 30 days. It is recommended that developers submit between 5 and 7.5 PRs each month.
-* **Number of Commits per month:** This is the average number of commits a developer has submitted in the last 30 days. The industry standard for the number of commits per month is between 10 and 15.
-* **Lines of Code per month:** This is the average number of lines of code a developer has submitted in the last 30 days. The industry standard recommends between 125 and 185 lines of code each month.
-* **Number of bugs worked on per month:** This is the number of resolved bug tickets assigned to a developer in the past 30 days. If more than one developer worked on the same ticket, developers are credited proportionately. The average number of bugs worked on per month is between 2 and 3.
-* **Number of Stories worked on per month:** This is the number of resolved story tickets assigned to a developer in the past 30 days. If more than one developer worked on the same ticket, developers are credited proportionately. The average number of stories worked on per month is between 5 and 7.
-* **Number of Story Points worked on per month:** This is the number of resolved story points assigned to a developer in the past 30 days. If more than one developer worked on the same ticket, developers are credited proportionately.
+* **Number of PRs per month:** This is the number of Pull Requests a developer submitted within the selected time frame. The metric value in the report is normalized to show the average number of pull requests a developer submitted per month. It is recommended that developers submit between 5 and 7.5 PRs each month.
+* **Number of Commits per month:** This is the average number of commits a developer has submitted within the selected time frame. The metric value in the report is normalized to show the average number of commits a developer contributes per month. The industry standard for the number of commits per month is between 10 and 15.
+* **Lines of Code per month:** The Lines of Code metric calculates the total number of lines of code contributed by an engineer within the selected time frame. The metric value in the trellis report is normalized to show the average number of lines of code contributed per month. The industry standard recommends between 125 and 185 lines of code each month.
+* **Number of bugs worked on per month:** This is the number of resolved bug tickets assigned to a developer within the selected time frame. The metric value in the report is normalized to show the average number of resolved bug tickets assigned to a developer per month. If more than one developer worked on the same ticket, developers are credited proportionately. The average number of bugs worked on per month is between 2 and 3.
+* **Number of Stories worked on per month:** This is the number of resolved story tickets assigned to a developer within the selected time frame. The metric value in the report is normalized to show the average number of resolved story tickets assigned to a developer per month. If more than one developer worked on the same ticket, developers are credited proportionately. The average number of stories worked on per month is between 5 and 7.
+* **Number of Story Points worked on per month:** This is the number of resolved story points assigned to a developer within the selected time frame. The metric value in the report is normalized to show the average number of resolved story points assigned to a developer per month. If more than one developer worked on the same ticket, developers are credited proportionately.
 
 ## Speed
 
@@ -72,8 +72,8 @@ Proficiency measures how many projects are currently being worked on. It is base
 
 Leadership and collaboration measures developer teamwork and contribution to peer reviews. This is calculated from the following four metrics:
 
-* **Number of PRs approved per month:** This number represents how many PRs a developer approved within the last 30 days. The recommended number of approved PRs is between 2 and 7.
-* **Number of PRs commented on per month:** This number represents how many PRs a developer commented on in the last 30 days. The typical range for this value is between 2 and 7 PRs per month.
+* **Number of PRs approved per month:** This number represents how many PRs a developer approved within the selected time frame. The metric value in the report is normalized to show the average number of PRs a developer approved per month. The recommended number of approved PRs is between 2 and 7.
+* **Number of PRs commented on per month:** This number represents how many PRs a developer commented within the selected time frame. The metric value in the report is normalized to show the average number of PRs a developer commented per month. The typical range for this value is between 2 and 7 PRs per month.
 * **Average Response Time for PR approvals:** This is the average time taken to approve another developer's PR. The industry standard for an PR approval time is between 0.75 and 2 days.
 * **Average Response Time for PR comments:** This is the average time taken for a developer to add review comments on a PR. The industry standard for a responding to a PR comment is between 0.75 and 1.5 days.
 
