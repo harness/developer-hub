@@ -74,11 +74,14 @@ You first create your dashboard, and then you ask AIDA to set up your widget.
 
 To create a widget using AIDA, do the following:
 
-To create a Dashboard you first need to first create a Folder. The Dashboards are created inside a folder.
+:::info note
+Dashboards are created inside a folder. If you don't specify a folder, the dashboard saves in the Custom Dashboards root folder.
+
+:::
 
 1. In Harness, select **Dashboards**.
 2. In **Dashboards**, select **+ Dashboard**.
-3. (Optional) In **About the Dashboard**, in **Folder**, select **Organization Shared Folder**. If you don't specify a folder, the dashboard saves in the Custom Dashboards root folder.
+3. In **About the Dashboard**, in **Folder**, select **Organization Shared Folder**. 
 4. In **Name**, enter a name for your dashboard.
 5. (Optional) In **Tags**, type a name for your tag and press enter to create a tag, and click **Continue**.
 6. Select **Edit Dashboard**.
