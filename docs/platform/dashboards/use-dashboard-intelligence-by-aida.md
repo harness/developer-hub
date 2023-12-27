@@ -4,7 +4,14 @@ description: Learn how to use Dashboard Intelligence by AIDA to create dashboard
 sidebar_position: 30
 ---
 
-Dashboard Intelligence by AIDA™ is your copilot for dashboard creation in Harness. This feature is available directly in the **Dashboard Editor** when you create or edit a dashboard.
+:::important
+Currently, this feature is behind the feature flag `CDB_AIDA_WIDGET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Dashboard Intelligence by Harness AI Development Assistant (AIDA™) is your copilot for dashboard creation in Harness. This feature is available directly in the **Dashboard Editor** when you create or edit a dashboard. For more information on AIDA, go to [Overview of AIDA](/docs/platform/Harness-AIDA/aida-overview).
+
+This feature is currently in Beta. For more information, go to [Beta, public preview, and GA definitions](/docs/get-started/beta-preview-ga/).
 
 This topic provides details on the current features, limitations, and best practices for dashboard engineering.
 
@@ -64,19 +71,54 @@ Dashboard Intelligence by AIDA does not currently support customizing visualizat
 
 :::
 
+## Create a widget using AIDA
+
+You first create your dashboard, and then you ask AIDA to set up your widget.
+
+To create a widget using AIDA, do the following:
+
+To create a Dashboard you first need to first create a Folder. The Dashboards are created inside a folder.
+
+1. In Harness, select **Dashboards**.
+2. In **Dashboards**, select **+ Dashboard**.
+3. In **About the Dashboard**, in **Folder**, select **Organization Shared Folder**.
+4. In **Name**, enter a name for your dashboard.
+5. (Optional) In **Tags**, type a name for your tag and press enter to create a tag, and click **Continue**.
+6. Select **Edit Dashboard**.
+   
+   ![](./static/create-a-widget-AIDA-01.png)
+
+7. Select **Create a widget using AIDA**. The Harness AIDA dialog opens.
+
+   ![](./static/create-a-widget-AIDA-02.png)
+
+
+8. Select your module. In this example, under **Continuous Integration**, select **Builds and Repositories**.
+
+9. Enter your query. For example, you could enter "Total builds over time for the last 30 days."
+
+
+   ![](./static/create-a-widget-AIDA-03.png)
+
+   AIDA generates the tile.
+
+   ![](./static/create-a-widget-AIDA-04.png)
+
+10. Continue adding queries to further refine your results.
+
 ## Best practices and guidelines for Dashboard Intelligence by AIDA
 
-If you have trouble with a particular data point, pass both the view name and the field name in the prompt. For example, if you were trying to grab the “Count” field within the 
+If you have trouble with a particular data point, pass both the view name and the field name in the prompt. 
 
-When constructing a query, it is important to avoid unnecessary information. The more concise and direct the query is, the better it will be. Avoid using irrelevant details and focus on the essential information that is required.
+When constructing a query, it's important to avoid unnecessary information. The more concise and direct the query is, the better it will be. Avoid using irrelevant details and focus on the essential information that is required.
 
-Do:
+**Recommended**
 
 ```
 Project id, git repository, git event type, error message and failure rate. Filter for the last 72 days. Filter repository failure rate > 0. Make this a table.
 ```
 
-Don’t:
+**Not recommended**
 
 ```
 Construct a detailed table for me that presents project id, git repository, git event type, error message and failure rate. This should be filtered for the last 72 days, and I would like to have the failure rate greater than 0.
@@ -84,13 +126,13 @@ Construct a detailed table for me that presents project id, git repository, git 
 
 Break your query into smaller, bite-sized sentences. Explicitly tell the agent your intentions (for example, filtering, pivots, table calculations, and so on) instead of chaining instructions into a single sentence.
 
-Do:
+**Recommended**
 
 ```
 Show me total costs. Pivot by region. Filter for the last 30 days. Include a table calculation returning yes if region is "us-west1" else no.
 ```
 
-Don’t:
+**Not recommended**
 
 ```
 Show me total costs by region within the last 30 days with a table calculation returning yes if region is "us-west1" else no.
@@ -98,7 +140,7 @@ Show me total costs by region within the last 30 days with a table calculation r
 
 ## Dashboard Intelligence by AIDA tips
 
-- When you tell AIDA to plot something "by" another dimension, it enforces a pivot in the visualization. For example, you can say: "Show me total deployments by project."
+- When you ask AIDA to plot something "by" another dimension, it enforces a pivot in the visualization. For example, you can say: "Show me total deployments by project."
 
 - For table calculations or string filters, wrap the expression in double quotes, for example: Include a table calculation returning yes if region is "us-west1" else no.
 
