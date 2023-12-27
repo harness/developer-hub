@@ -1,7 +1,7 @@
 ---
 title: Set up disaster recovery
 description: Learn how to set up disaster recovery for Harness Self-Managed Enterprise Edition installations.
-sidebar_position: 30
+sidebar_position: 10
 ---
 
 import Tabs from '@theme/Tabs';
