@@ -242,6 +242,10 @@ Harness Cloud machine images can change. If your pipeline relies on a specific v
 
 ## Troubleshooting Harness Cloud build infrastructure
 
+### Can't use STO steps with Harness Cloud macOS runners
+
+Currently, [STO scan steps](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference) aren't compatible with Harness Cloud macOS runners, because Apple's M1 CPU doesn't support nested virtualization. You can use STO scan steps with Harness Cloud Linux and Windows runners.
+
 ### Don't use tools that only run on a specific cloud environment (such as gsutil)
 
 With Harness Cloud build infrastructure, builds run on Ubuntu VMs that are hosted on variety of cloud providers. It is not possible to predict where the VM is running; therefore, avoid using tools (such as gsutil or gcloud) that require a specific cloud provider's environment.
