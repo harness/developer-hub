@@ -100,8 +100,12 @@ To add details to a Flag Configuration step:
 
 	Choose one of these options:
 
-	* **Fixed value** - A value you enter manually and do not change at runtime.
-	* **Runtime Input** - This is a placeholder for values that will be provided when you start a pipeline execution.
+	* **Fixed value** - A value you enter manually as part of the pipeline cofniguration and does not change at runtime.
+	* **Runtime Input** - A runtime variable that lets you select the input at runtime (for example if _environment_ is set to a runtime input, you can choose a different environment for the flag change every time you run the pipeline)
+	* **Expression** - Expressions allow you to reference runtime inputs from other steps in the pipeline from any step or script.
+
+	[More information on fixed values, runtime inputs nd expressions](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/).
+
 
 1. In **Flag Changes**, select an action to take when this flag changes, and then configure the variation to serve based on that action.
 
@@ -111,12 +115,11 @@ To add details to a Flag Configuration step:
 
 	| Flag change actions | Configuration |
 	|---------------------|---------------|
-	| **Set Flag Switch** | Select ON and OFF. |
-	| **Default Rules**   | Select the default rule for when the flag is ON and OFF. For example, if the flag is ON, serve the variation `True`. |
-	| **Serve Variation to Individual Target** | Select the target and the flag variation to serve to that target. |
-	| **Serve Variation to Target Group** | Select the target group and the flag variation to serve to that group. |
-	| **Serve Percentage Rollout** | Select a target group, and then select a percentage of users in that group to serve a selected variation, and a percentage to serve another variation. For more information, go to [Target users with flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags#target-specific-users-or-target-groups-when-a-flag-is-enabled). |
-
+	| **Set default ON rule** | Update the flag variation served when the flag is enabled. |
+	| **Set default ON rule**   | Update the flag variation served when the flag is disabled. |
+	| **Serve variation to targets** | Serve a flag variation to a single or multiple targets. |
+	| **Serve variation to target groups** | Serve a flag variation to a single or multiple target groups. |
+	| **Serve percentage rollout to target group** | Serve a flag variation in a %-rollout distribution across a single target group. For more information, go to [Target users with flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags#target-specific-users-or-target-groups-when-a-flag-is-enabled). |
   
 	For information on managing variations, go to [**Change the variations of your flags**](/docs/feature-flags/ff-creating-flag/manage-variations).
 
