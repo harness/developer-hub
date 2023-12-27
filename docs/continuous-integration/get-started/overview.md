@@ -20,7 +20,7 @@ CI executes pipeline steps in containers, isolating code and dependencies from o
 
 The following video introduces Harness CI and walks through a basic Harness CI pipeline.
 
-<docvideo src="https://youtu.be/yQRwVjPTQ5E" />
+<DocVideo src="https://youtu.be/yQRwVjPTQ5E" />
 
 </details>
 
@@ -46,7 +46,7 @@ When a CI pipeline build finishes successfully, the build infrastructure then se
 
 The following video demonstrates how to set up a CI pipeline and run a build.
 
-<docvideo src="https://www.youtube.com/embed/r1GLYtOmJmM?feature=oembed" />
+<DocVideo src="https://www.youtube.com/embed/r1GLYtOmJmM?feature=oembed" />
 
 </details>
 

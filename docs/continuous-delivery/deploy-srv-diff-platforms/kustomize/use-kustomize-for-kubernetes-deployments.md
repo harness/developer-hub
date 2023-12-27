@@ -12,24 +12,23 @@ Harness supports [Kustomize](https://kustomize.io/) kustomizations in your Kuber
 
 ## New to Kustomize?
 
-In a nutshell, kustomizations let you create specific Kubernetes deployments while leaving the original manifests untouched. You drop a kustomization.yaml file next to your Kubernetes YAML files and it defines new behavior to be performed during deployment.  
+In a nutshell, kustomizations let you create specific Kubernetes deployments while leaving the original manifests untouched. You drop a kustomization.yaml file next to your Kubernetes YAML files and it defines new behavior to be performed during deployment.
 
 Review the video [Kustomize: Deploy Your App with Template Free YAML](https://youtu.be/ahMIBxufNR0) (30min) for more information.
 
 ### Before you begin
 
-* [Kustomize Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart)
-
+- [Kustomize Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart)
 
 ## Limitations
 
-* Harness supports Kustomize and Kustomize Patches for [Rolling](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment), [Canary](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment), [Blue Green](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment) strategies, and the Kubernetes [Apply](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step) and [Delete](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources) steps.
-* Kustomize manifests and patches do **not** support the [custom remote manifest](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests) feature.
-* Harness does not use Kustomize for rollback. Harness renders the templates using Kustomize and then passes them onto kubectl. A rollback works exactly as it does for native Kubernetes.
-* You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches Manifest Details**.
-* **Kustomize binary versions:**  
-Harness includes Kustomize binary versions 3.5.4 and 4.0.0. By default, Harness uses 3.5.4. To use 4.0.0, you must enable the feature flag `NEW_KUSTOMIZE_BINARY` in your account. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-* Harness will not follow symlinks in the Kustomize and Kustomize Patches files it pulls.
+- Harness supports Kustomize and Kustomize Patches for [Rolling](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment), [Canary](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment), [Blue Green](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment) strategies, and the Kubernetes [Apply](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step) and [Delete](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources) steps.
+- Kustomize manifests and patches do **not** support the [custom remote manifest](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests) feature.
+- Harness does not use Kustomize for rollback. Harness renders the templates using Kustomize and then passes them onto kubectl. A rollback works exactly as it does for native Kubernetes.
+- You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches Manifest Details**.
+- **Kustomize binary versions:**  
+  Harness includes Kustomize binary versions 3.5.4 and 4.0.0. By default, Harness uses 3.5.4. To use 4.0.0, you must enable the feature flag `NEW_KUSTOMIZE_BINARY` in your account. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+- Harness will not follow symlinks in the Kustomize and Kustomize Patches files it pulls.
 
 ## Visual summary
 
@@ -41,8 +40,7 @@ Here's a quick video showing you how to add Kustomize templates and Patches file
 
 <!-- Video:
 https://www.youtube.com/watch?v=dVk6-8tfwJc-->
-<docvideo src="https://www.youtube.com/watch?v=dVk6-8tfwJc" />
-
+<DocVideo src="https://www.youtube.com/watch?v=dVk6-8tfwJc" />
 
 ## Kustomize and Harness Delegates
 
@@ -66,23 +64,25 @@ All connections and operations are performed by Harness Delegates. You can add t
 4. In **Specify Manifest Type**, click **Kustomize**, and click **Continue**.
 
    ![](./static/use-kustomize-for-kubernetes-deployments-01.png)
+
 5. In **Specify Kustomize Store**, select your Git provider, such as **GitHub**.
 
    If you already have a Git Connector that points to your Kustomization files, then select that. If not, click **New GitHub Connector**.
+
 6. The **Git Connector** settings appear. Enter the settings described in [Connect to a Git Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
 7. Click **Continue**.
 8. In **Manifest Details**, enter the following settings, test the connection, and click **Submit**. We are going to provide connection and path information for a kustomization located at `https://github.com/wings-software/harness-docs/blob/main/kustomize/helloWorld/kustomization.yaml`.
-  * **Manifest Identifier:** enter **kustomize**.
-  * **Git Fetch Type****:** select **Latest from Branch**.
-  * **Branch:** enter **main**.
-  * **Kustomize Folder Path:**`kustomize/helloWorld`. This is the path from the repo root.
 
-  The **Kustomize Plugin Path** is described below in [Use Plugins in Deployments](#use-plugins-in-deployments). The kustomization is now listed.
+- **Manifest Identifier:** enter **kustomize**.
+- **Git Fetch Type\*\***:** select **Latest from Branch\*\*.
+- **Branch:** enter **main**.
+- **Kustomize Folder Path:**`kustomize/helloWorld`. This is the path from the repo root.
 
-  ![](./static/use-kustomize-for-kubernetes-deployments-02.png)
-9. Click **Next** at the bottom of the **Service** tab.
+The **Kustomize Plugin Path** is described below in [Use Plugins in Deployments](#use-plugins-in-deployments). The kustomization is now listed.
 
-   Now that the kustomization is defined, you can define the target cluster for your deployment.
+![](./static/use-kustomize-for-kubernetes-deployments-02.png) 9. Click **Next** at the bottom of the **Service** tab.
+
+Now that the kustomization is defined, you can define the target cluster for your deployment.
 
 ### Skip versioning for service
 
@@ -103,23 +103,24 @@ When you specify a folder path for your Git repo in **Kustomize Folder Path** wi
 Instead of fetching the entire Git repo, you can fetch a subset of the Kustomize manifests and configuration files. You can do this by specifying your Git repo folder path for **Kustomize Base Path** and the relative folder path for **Kustomize YAML Folder Path** in **Manifest Details**.
 
 In **Manifest Details**, enter the following required settings:
-  * **Manifest Name:** enter the name for this manifest.
-  * **Git Fetch Type:** select **Latest from Branch**.
-  * **Branch:** enter **main** or **master**.
-  * **Kustomize Base Path:** When you select **Optimized Kustomize Manifest Collection**, this field changes from **Kustomize Folder Path** to **Kustomize Base Path**. Enter the folder path for your Git repo inside which all of the Kustomize dependencies and base manifests are present. Harness fetches and downloads this folder instead of the entire Git repo. The folder path shown in the dialog is an example.
-  * **Kustomize YAML Folder Path:** enter the relative folder path for your Git repo where the kustomize.yaml file is located. The folder path shown in the dialog is an example.
-    
-    As an example, if kustomization.yaml is present in this path: **kustomize/multipleEnv/environments/production** and the **kustomize/multipleEnv** folder contains all of the kustomize dependencies, then the folder paths would be as follows:
 
-    * **Kustomize Base Path:** kustomize/multipleEnv/
-    * **Kustomize YAML Folder Path:** environments/production/
+- **Manifest Name:** enter the name for this manifest.
+- **Git Fetch Type:** select **Latest from Branch**.
+- **Branch:** enter **main** or **master**.
+- **Kustomize Base Path:** When you select **Optimized Kustomize Manifest Collection**, this field changes from **Kustomize Folder Path** to **Kustomize Base Path**. Enter the folder path for your Git repo inside which all of the Kustomize dependencies and base manifests are present. Harness fetches and downloads this folder instead of the entire Git repo. The folder path shown in the dialog is an example.
+- **Kustomize YAML Folder Path:** enter the relative folder path for your Git repo where the kustomize.yaml file is located. The folder path shown in the dialog is an example.
+
+  As an example, if kustomization.yaml is present in this path: **kustomize/multipleEnv/environments/production** and the **kustomize/multipleEnv** folder contains all of the kustomize dependencies, then the folder paths would be as follows:
+
+  - **Kustomize Base Path:** kustomize/multipleEnv/
+  - **Kustomize YAML Folder Path:** environments/production/
 
 ## Artifact sources and kustomization
 
 You can list artifacts in two ways:
 
-* Artifacts can be hardcoded in the deployment YAML file deployed using your Kustomization files.
-* You can add artifacts to the Service **Artifacts** section and reference them in Kustomize Patch files using the Harness variable `<+artifact.image>`. See [Kustomize Patches](#kustomize-patches) below, and [Built-in Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables).
+- Artifacts can be hardcoded in the deployment YAML file deployed using your Kustomization files.
+- You can add artifacts to the Service **Artifacts** section and reference them in Kustomize Patch files using the Harness variable `<+artifact.image>`. See [Kustomize Patches](#kustomize-patches) below, and [Built-in Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables).
 
 ## Kustomize patches
 
@@ -127,47 +128,47 @@ You cannot use Harness variables in the base manifest or kustomization.yaml. You
 
 For example, let's say you have a simple kustomization.yaml for your **application** folder like this:
 
-
 ```yaml
-resources:  
-  - namespace.yaml  
-  - deployment.yaml  
-  - service.yaml  
+resources:
+  - namespace.yaml
+  - deployment.yaml
+  - service.yaml
   - configmap.yaml
 ```
+
 And you have an overlay for a production environment that points to the **application** folder like this:
 
-
 ```yaml
-resources:  
-  - ../../application  
-namePrefix: nonpro-  
-configMapGenerator:  
-- name: example-config  
-  namespace: default  
-  #behavior: replace  
-  files:  
-    - configs/config.json  
-patchesStrategicMerge:  
+resources:
+  - ../../application
+namePrefix: nonpro-
+configMapGenerator:
+  - name: example-config
+    namespace: default
+    #behavior: replace
+    files:
+      - configs/config.json
+patchesStrategicMerge:
   - env.yaml
 ```
+
 The `patchesStrategicMerge` label identifies the location of the patch **env.yaml**, which looks like this:
 
-
 ```yaml
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
-  name: example-deploy  
-spec:  
-  template:  
-    spec:  
-      containers:  
-      - name: example-app  
-        env:  
-        - name: ENVIRONMENT  
-          value: Production
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-deploy
+spec:
+  template:
+    spec:
+      containers:
+        - name: example-app
+          env:
+            - name: ENVIRONMENT
+              value: Production
 ```
+
 As you can see, it patches a new environment variable `name: ENVIRONMENT`.
 
 Here's what the patching looks like side-by-side:
@@ -191,12 +192,14 @@ You cannot use Harness variables in the base manifest or kustomization.yaml. You
 3. Click **Continue**.
 
 4. In **Manifest Details**, enter the path to your patch file(s):
-   * **Manifest Identifier:** enter a name that identifies the patch file(s). You don't have to add the actual filename.
-   * **Git Fetch Type:** select whether to use the latest branch or a specific commit Id.
-   * **Branch**/**Commit Id**: enter the branch or commit Id.
-   * **File/Folder Path:** enter the path to the patch file(s) from the root of the repo. Click **Add File** to add each patch file. The files you add should be the same files listed in `patchesStrategicMerge` of the main kustomize file in your Service.
+
+   - **Manifest Identifier:** enter a name that identifies the patch file(s). You don't have to add the actual filename.
+   - **Git Fetch Type:** select whether to use the latest branch or a specific commit Id.
+   - **Branch**/**Commit Id**: enter the branch or commit Id.
+   - **File/Folder Path:** enter the path to the patch file(s) from the root of the repo. Click **Add File** to add each patch file. The files you add should be the same files listed in `patchesStrategicMerge` of the main kustomize file in your Service.
 
    The order in which you add file paths for patches in **File/Folder Path** is the same order that Harness applies the patches during the kustomization build.Small patches that do one thing are recommended. For example, create one patch for increasing the deployment replica number and another patch for setting the memory limit.
+
 5. Click **Submit**. The patch file(s) is added to **Manifests**.
 
    When the main kustomization.yaml is deployed, the patch is rendered and its overrides are added to the deployment.yaml that is deployed.
@@ -217,38 +220,38 @@ Let's look at an example.
 
 Here is the deployment.yaml used by our kustomization:
 
-
 ```yaml
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
-  name: example-deploy  
-  namespace: default  
-  labels:  
-    app: example-app  
-  annotations:  
-spec:  
-  selector:  
-    matchLabels:  
-      app: example-app  
-  replicas: 1  
-  strategy:  
-    type: RollingUpdate  
-    rollingUpdate:  
-      maxSurge: 1  
-      maxUnavailable: 0  
-  template:  
-    metadata:  
-      labels:  
-        app: example-app  
-    spec:  
-      containers:  
-      - name: example-app  
-        image: harness/todolist-sample:latest  
-        imagePullPolicy: Always  
-        ports:  
-        - containerPort: 5000
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-deploy
+  namespace: default
+  labels:
+    app: example-app
+  annotations:
+spec:
+  selector:
+    matchLabels:
+      app: example-app
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: example-app
+    spec:
+      containers:
+        - name: example-app
+          image: harness/todolist-sample:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
 ```
+
 You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches Manifest Details**.You add the patch files that will patch deployment.yaml to **Kustomize Patches** **Manifest Details**. Only these patch files can use Harness variables.
 
 We're going to use variables for `replicas` and `image`.
@@ -261,29 +264,29 @@ One variable is for the `image` and another for the `replicas` count.
 
 A patch using these variables will look like this:
 
-
 ```yaml
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
- name: example-deploy  
- namespace: default  
-spec:  
- template :  
-   spec:  
-     containers:  
-       - name: example-app  
-         image: <+serviceConfig.serviceDefinition.spec.variables.image>  
-   
----  
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
- name: example-deploy  
- namespace: default  
-spec:  
- replicas: <+serviceConfig.serviceDefinition.spec.variables.replica>
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-deploy
+  namespace: default
+spec:
+  template:
+    spec:
+      containers:
+        - name: example-app
+          image: <+serviceConfig.serviceDefinition.spec.variables.image>
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-deploy
+  namespace: default
+spec:
+  replicas: <+serviceConfig.serviceDefinition.spec.variables.replica>
 ```
+
 To get those variable references, you simply copy them:
 
 ![](./static/use-kustomize-for-kubernetes-deployments-06.png)
@@ -308,30 +311,30 @@ For example, let's say we have two secrets, one for `image` and one for `app`:
 
 The following patch uses these secrets for `image` and `app`, referencing them using the expression `<+secrets.getValue("[secret name]")>`.
 
-
 ```yaml
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
-  name: example-deploy  
-  namespace: default  
-spec:  
-  template :  
-    spec:  
-      containers:  
-        - name: example-app  
-          image: <+secrets.getValue("image")>  
-  
----  
-apiVersion: v1  
-kind: Service  
-metadata:  
-  name: example-service  
-  namespace: default  
-spec:  
-  selector:  
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-deploy
+  namespace: default
+spec:
+  template:
+    spec:
+      containers:
+        - name: example-app
+          image: <+secrets.getValue("image")>
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: example-service
+  namespace: default
+spec:
+  selector:
     app: <+secrets.getValue("appName")>
 ```
+
 The secret output in the manifest will be asterisks (\*). The secret value is not displayed.
 
 See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
@@ -348,11 +351,11 @@ You can add overlay YAML files to the Service Manifests section just as you woul
 
 Harness will look for the `resources` section of the overlay file to find the kustomization.yaml for the overlay and apply them both.
 
-
 ```yaml
-resources:  
+resources:
   - ../../application
 ```
+
 In some cases you might want to deploy the standard kustomization.yaml in one stage and then the overlay in another. In this case, when you create the new stage, select **Propagate from**, select the standard kustomization.yaml stage, and then select **Stage Overrides**.
 
 In **Manifests**, add the overlay kustomization.yaml and any patch files.
@@ -386,50 +389,49 @@ When Harness deploys, it will apply the plugin you reference just like you would
 
 To add a plugin to the Delegate, you can install it manually or use the `INIT_SCRIPT` environment variable in the Delegate config file to install it.
 
-
 [Path to Plugin in Service Manifest](#path-to-plugin-in-service-manifest)
 
 For example, here is a ConfigMap generator plugin script:
 
-
 ```bash
-MY_PLUGIN_DIR=$HOME/K_PLUGINS/kustomize/plugin/myDevOpsTeam/sillyconfigmapgenerator  
-mkdir -p $MY_PLUGIN_DIR  
-cat <<'EOF' >$MY_PLUGIN_DIR/SillyConfigMapGenerator  
-#!/bin/bash  
-# Skip the config file name argument.  
-shift  
-today=`date +%F`  
-echo "  
-kind: ConfigMap  
-apiVersion: v1  
-metadata:  
-  name: the-map  
-data:  
-  today: $today  
-  altGreeting: "$1"  
-  enableRisky: "$2"  
-"  
-EOF  
-cat $MY_PLUGIN_DIR/SillyConfigMapGenerator  
-chmod +x $MY_PLUGIN_DIR/SillyConfigMapGenerator  
+MY_PLUGIN_DIR=$HOME/K_PLUGINS/kustomize/plugin/myDevOpsTeam/sillyconfigmapgenerator
+mkdir -p $MY_PLUGIN_DIR
+cat <<'EOF' >$MY_PLUGIN_DIR/SillyConfigMapGenerator
+#!/bin/bash
+# Skip the config file name argument.
+shift
+today=`date +%F`
+echo "
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: the-map
+data:
+  today: $today
+  altGreeting: "$1"
+  enableRisky: "$2"
+"
+EOF
+cat $MY_PLUGIN_DIR/SillyConfigMapGenerator
+chmod +x $MY_PLUGIN_DIR/SillyConfigMapGenerator
 readlink -f $MY_PLUGIN_DIR/SillyConfigMapGenerator
 ```
 
 Each plugin is added to its own directory, following this convention:
 
 ```bash
-$XDG_CONFIG_HOME/kustomize/plugin  
+$XDG_CONFIG_HOME/kustomize/plugin
     /${apiVersion}/LOWERCASE(${kind})
 ```
+
 The default value of `XDG_CONFIG_HOME` is `$HOME/.config`. See [Extending Kustomize](https://kubectl.docs.kubernetes.io/guides/extending_kustomize/) from Kustomize.
 
 In the script example above, you can see that the plugin is added to its own folder following the plugin convention:
 
-
 ```bash
 $HOME/K_PLUGINS/kustomize/plugin/myDevOpsTeam/sillyconfigmapgenerator
 ```
+
 Note the location of the plugin because you will use that location in the Harness Service to indicate where the plugin is located (described below).
 
 Plugins can only be applied to Harness Kubernetes Delegates.
@@ -466,9 +468,9 @@ You can use the Apply step in your Kustomize deployments.
 
 When you use Kustomize, the **File Path** in the Apply Step should be set according to the following conditions.
 
-* **Default:** Apply step **File Path** is the path from the root of the repo to the folder with the kustomization YAML file is located. This is the same as the Kustomize Folder Path setting in the **Manifest Details**.
+- **Default:** Apply step **File Path** is the path from the root of the repo to the folder with the kustomization YAML file is located. This is the same as the Kustomize Folder Path setting in the **Manifest Details**.
 
-![](./static/use-kustomize-for-kubernetes-deployments-13.png)* **Optimized Kustomize Manifest Collection:** When the **Optimized Kustomize Manifest Collection** option is enabled in **Manifest Details**, the Apply step **File Path** must be the same path as **Kustomize YAML Folder Path**.
+![](./static/use-kustomize-for-kubernetes-deployments-13.png)\* **Optimized Kustomize Manifest Collection:** When the **Optimized Kustomize Manifest Collection** option is enabled in **Manifest Details**, the Apply step **File Path** must be the same path as **Kustomize YAML Folder Path**.
 
 ![](./static/use-kustomize-for-kubernetes-deployments-14.png)
 
@@ -482,56 +484,52 @@ If you want to use a different release of Kustomize, add it to a location on the
 
 Update the `value` environment variable in harness-delegate.yaml:
 
-
 ```yaml
-...  
-name: KUSTOMIZE_PATH  
-value: "<path>"  
-...
+
+---
+name: KUSTOMIZE_PATH
+value: "<path>"
 ```
 
 ### Docker delegate
 
 Add the Kustomize path environment variable in the Delegate Docker compose file:
 
-
 ```yaml
 - KUSTOMIZE_PATH=<path>
 ```
 
-## Configuring a Kustomize service with command flags 
+## Configuring a Kustomize service with command flags
 
-Command flags let users change the behavior of how Harness performs a Kustomize deployment. 
+Command flags let users change the behavior of how Harness performs a Kustomize deployment.
 
-Using the **Build** command type, you can pass subcommands to change the behavior of the `kustomize build` command used by Harness at runtime. 
+Using the **Build** command type, you can pass subcommands to change the behavior of the `kustomize build` command used by Harness at runtime.
 
 You can configure the command flag in the Kustomize **Manifest Details** page.
 
 Here's a sample stack trace command:
 
 ```TEXT
-## To print the stack trace of the Kustomize build command 
-kustomize build --stack-trace 
+## To print the stack trace of the Kustomize build command
+kustomize build --stack-trace
 ```
 
 Here is how it's implemented in Harness:
 
-<docimage path={require('./static/35ec7e7239ffd1e3318ccc1cab146317c35abba1ace73a1684108e69a54fa632.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/35ec7e7239ffd1e3318ccc1cab146317c35abba1ace73a1684108e69a54fa632.png')} width="60%" height="60%" title="Click to view full size image" />
 
-
-Harness also supports [Helm charts with Kustomize](https://github.com/kubernetes-sigs/kustomize/blob/master/examples/chart.md#helm-related-flags) deployments. 
+Harness also supports [Helm charts with Kustomize](https://github.com/kubernetes-sigs/kustomize/blob/master/examples/chart.md#helm-related-flags) deployments.
 
 Here's how to render your kustomization with Helm:
 
 ```Text
-## Enable the Helm template and pull capabilities and render your kustomization with Helm. 
+## Enable the Helm template and pull capabilities and render your kustomization with Helm.
 kustomize build --enable-helm --helm-command `<YOUR_HELM_COMMAND>`
 ```
 
 Here's how it's implemented in Harness:
 
-<docimage path={require('./static/440c8cc0277021997de5c09937e550f1558e48edb350e5e143f09ff3b8b67718.png')} width="60%" height="60%" title="Click to view full size image" />
-
+<DocImage path={require('./static/440c8cc0277021997de5c09937e550f1558e48edb350e5e143f09ff3b8b67718.png')} width="60%" height="60%" title="Click to view full size image" />
 
 When Harness executes the Kustomize `build` command as part of your deployment, you will see these commands being applied in the execution log.
 
@@ -541,7 +539,6 @@ Harness supports the Kustomize `build` command only. The Kustomize `build` comma
 
 ## Next steps
 
-* [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment)
-* [Create a Kubernetes Canary Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment)
-* [Create a Kubernetes Blue Green Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment)
-
+- [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment)
+- [Create a Kubernetes Canary Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment)
+- [Create a Kubernetes Blue Green Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment)

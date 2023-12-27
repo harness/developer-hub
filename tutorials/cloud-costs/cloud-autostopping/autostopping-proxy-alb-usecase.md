@@ -6,7 +6,7 @@ redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/quick-start-guides/autostopping-proxy-alb-usecase
 ---
 
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Cloud Cost Management Certification today!"
@@ -15,17 +15,16 @@ redirect_from:
   target="_self"
 />
 
-
 This use case provides the steps to configure an AutoStopping proxy as a downstream system of an Application Load Balancer in AWS.
 The following image illustrates the network architecture:
-
 
 ![](./static/autostopping-alb-workflow-diagram.png)
 
 Perform the following steps to configure AutoStopping proxy as a downstream system of ALB:
-  
+
 **On the AWS console**:
-1. Create a target group for the proxy VM with a health check configuration. 
+
+1. Create a target group for the proxy VM with a health check configuration.
 
 2. Edit ALB rules and add forwarding action to the proxy target group.
 
@@ -35,7 +34,6 @@ Perform the following steps to configure AutoStopping proxy as a downstream syst
 
 ### Create a target group for the proxy VM with a health check configuration
 
-
 1. On the AWS console, navigate to **Target Groups** and create a new target group. Go to [Create a target group](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-target-group.html) for more information.
 
 2. Choose the proxy VM and register it as a target.
@@ -44,23 +42,22 @@ Perform the following steps to configure AutoStopping proxy as a downstream syst
 
 4. Configure the health check settings as per the port information. Go to [Health checks for your target groups](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html) for more information.
 
-
 ![](./static/configure-health-check-settings.png)
-
 
 5. If the proxy needs to handle multiple ports (80, 443), create one target group for each of the ports.
 
 ![](./static/create-target-group.png)
 
 ### Edit ALB rules and add forwarding action to the proxy target group
+
 All the URLs configured in the AutoStopping rules should point to the AutoStopping proxy target group.
 
 ![](./static/edit-alb-rules.png)
-
 
 ### Create an AutoStopping rule with custom domains
 
 ![](./static/create-autostopping-rule-with-custom-domain.png)
 
 ### See also
+
 [Create AutoStopping rules for AWS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws)

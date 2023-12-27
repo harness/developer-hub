@@ -23,7 +23,7 @@ To view the Change Impact dashboard:
 3. Select the **Change Impact** tab.  
    The Change Impact dashboard appears.
 
-   <docimage path={require('./static/change-impact-view-service-health-dashboard.png')} />
+   <DocImage path={require('./static/change-impact-view-service-health-dashboard.png')} />
 
 
 The **Change Impact** tab is divided into the following sections:
@@ -34,7 +34,7 @@ The **Change Impact** tab is divided into the following sections:
 - Reports list
 - Metrics and logs
 
-<docimage path={require('./static/change-impact-view-service-health-dashboard-sections.png')} />
+<DocImage path={require('./static/change-impact-view-service-health-dashboard-sections.png')} />
 
 
 ### Change summary 
@@ -60,7 +60,7 @@ Health scores range from 0 to 100. The total health score calculation is based o
 
 The Overall Health Score timeline has a time window that displays granular details such as health score, incident count, metrics, and logs for a specific time period on the graph. You can move the time window along the graph to choose a specific time period. You can change the time period by using the handles.
 
-<docimage path={require('./static/change-impact-timewindow.png')} />
+<DocImage path={require('./static/change-impact-timewindow.png')} />
 
 
 ### Changes list
@@ -76,11 +76,11 @@ The **Changes** list provides a detailed breakdown of all the changes that occur
 
 The **Service Dependency** section graphically displays the dependencies between applications, infrastructure, and data.
 
-<docimage path={require('./static/change-impact-service-dependency.png')} />
+<DocImage path={require('./static/change-impact-service-dependency.png')} />
 
 You can get a quick overview of the service health by selecting a service.
 
-<docimage path={require('./static/change-impact-service-dependency-details.png')} />
+<DocImage path={require('./static/change-impact-service-dependency-details.png')} />
 
 
 ### Metrics and logs

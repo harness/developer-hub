@@ -71,7 +71,7 @@ For the **Background** steps to run the PostgreSQL services, the build environme
 
 <!-- ![](./static/background_in_parallel.png) -->
 
-<docimage path={require('./static/background_in_parallel.png')} />
+<DocImage path={require('./static/background_in_parallel.png')} />
 
 
 </TabItem>

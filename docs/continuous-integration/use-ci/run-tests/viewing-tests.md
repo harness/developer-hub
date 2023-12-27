@@ -60,7 +60,7 @@ Your first TI run won't report selected tests. Subsequent runs can report select
 
 <!-- ![](./static/set-up-test-intelligence-03.png) -->
 
-<docimage path={require('./static/set-up-test-intelligence-03.png')} />
+<DocImage path={require('./static/set-up-test-intelligence-03.png')} />
 
 Expand the sections below to learn more about the information available on the **Tests** tab for Test Intelligence.
 

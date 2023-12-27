@@ -21,7 +21,7 @@ To transmit data from Microsoft Teams to SEI, you must create a service account 
 
    <!-- ![](./static/ms-teams-allow-app-access.png) -->
 
-   <docimage path={require('../static/ms-teams-allow-app-access.png')} />
+   <DocImage path={require('../static/ms-teams-allow-app-access.png')} />
 
 6. Enter a **Name** for the integration. **Description** and **Tags** are optional.
 7. Finish configuration and save the integration.

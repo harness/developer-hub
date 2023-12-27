@@ -182,7 +182,7 @@ Here's an example of how the **Provisioner Identifier** is used across steps:
 
 <!-- ![](./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
-<docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
+<DocImage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
 ##### Provisioner Identifier scope
 
@@ -291,7 +291,7 @@ Here's an example of how the **Provisioner Identifier** is used across steps:
 
 <!-- ![](../static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
-<docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
+<DocImage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
 ##### Provisioner Identifier Scope
 
@@ -387,7 +387,7 @@ Here's an example of how the **Provisioner Identifier** is used across steps:
 
 <!-- ![](./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
-<docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
+<DocImage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
 ##### Provisioner Identifier scope
 
@@ -438,7 +438,7 @@ Here's an example of how the **Provisioner Identifier** is used across steps:
 
 <!-- ![](./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
-<docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
+<DocImage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
 ##### Provisioner Identifier scope
 
@@ -728,7 +728,7 @@ Here's how to use all the steps together:
 
 <!-- ![](../static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
-<docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
+<DocImage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
 Each of these steps is described in [Terragrunt steps](#terragrunt-steps).
 

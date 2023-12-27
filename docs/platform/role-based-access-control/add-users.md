@@ -147,7 +147,7 @@ To edit group membership through a user's profile:
 
    <!-- ![](./static/add-users-14.png) -->
 
-   <docimage path={require('./static/add-users-14.png')} />
+   <DocImage path={require('./static/add-users-14.png')} />
 
 3. Select a **[Scope](./rbac-in-harness.md#permissions-hierarchy-scopes)**.
 

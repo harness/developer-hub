@@ -46,7 +46,7 @@ Pipeline job reports are functionally identical to [job count reports](#job-coun
 
 <!-- ![](../static/velocity-cicd-job-count-comparison.png) -->
 
-<docimage path={require('../static/velocity-cicd-job-count-comparison.png')} />
+<DocImage path={require('../static/velocity-cicd-job-count-comparison.png')} />
 
 :::
 

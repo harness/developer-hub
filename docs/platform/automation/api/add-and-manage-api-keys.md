@@ -53,7 +53,7 @@ Use these steps to create an API key and personal access token (PAT) for your pe
 
    <!-- ![](./static/api-quickstart-04.png) -->
 
-   <docimage path={require('./static/api-quickstart-04.png')} />
+   <DocImage path={require('./static/api-quickstart-04.png')} />
 
 ## Create service account API keys and tokens
 

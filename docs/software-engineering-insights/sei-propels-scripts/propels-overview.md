@@ -46,7 +46,7 @@ You can use the [Table report](./table-reports.md#table-report) to provide execu
 
 <!-- ![](../static/table_report1.png) -->
 
-<docimage path={require('../static/table_report1.png')} />
+<DocImage path={require('../static/table_report1.png')} />
 
 Rather than manually populating a table, you can write Propels that invoke SEI's internal APIs to obtain the necessary values and add them to a [Table](./tables.md). Then, add [Table reports and Custom Table reports](./table-reports.md) to your Insights to render data contained in the Tables.
 

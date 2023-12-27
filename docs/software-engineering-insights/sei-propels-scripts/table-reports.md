@@ -20,7 +20,7 @@ You can use Propels to populate and modify Tables for presentation on Table repo
 
 <!-- ![](../static/table_report1.png) -->
 
-<docimage path={require('../static/table_report1.png')} />
+<DocImage path={require('../static/table_report1.png')} />
 
 To add the **Table report** widget to Insights:
 
@@ -50,7 +50,7 @@ Use this report to inspect specific rows and columns in a [Table](./tables.md), 
 
 <!-- ![](../static/custom_table_report1.png) -->
 
-<docimage path={require('../static/custom_table_report1.png')} />
+<DocImage path={require('../static/custom_table_report1.png')} />
 
 To add the **Custom Table report** widget to Insights:
 
@@ -101,7 +101,7 @@ Currently, grouping is only supported at one level. You can group by any column.
 
 <!-- ![](../static/custom_table_report1.png) -->
 
-<docimage path={require('../static/custom_table_report1.png')} />
+<DocImage path={require('../static/custom_table_report1.png')} />
 
 If you use grouping, you can also also apply stacking based on any column. Stacks control how data is arranged in each X-axis increment.
 
