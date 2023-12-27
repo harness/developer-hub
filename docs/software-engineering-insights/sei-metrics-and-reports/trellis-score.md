@@ -41,8 +41,8 @@ Impact is defined by two metrics: High impact bugs worked on per month and high 
 Volume measures the quantity of code that the developer is working on. The default volume score is calculated using the following six metrics:
 
 * **Number of PRs per month:** This is the number of Pull Requests a developer submitted in the last 30 days. It is recommended that developers submit between 5 and 7.5 PRs each month.
-* **Number of Commits per month:** This is the number of commits a developer has submitted in the last 30 days. The industry standard for the number of commits per month is between 10 and 15.
-* **Lines of Code per month:** This is the number of lines of code a developer has submitted in the last 30 days. The industry standard recommends between 125 and 185 lines of code each month.
+* **Number of Commits per month:** This is the average number of commits a developer has submitted in the last 30 days. The industry standard for the number of commits per month is between 10 and 15.
+* **Lines of Code per month:** This is the average number of lines of code a developer has submitted in the last 30 days. The industry standard recommends between 125 and 185 lines of code each month.
 * **Number of bugs worked on per month:** This is the number of resolved bug tickets assigned to a developer in the past 30 days. If more than one developer worked on the same ticket, developers are credited proportionately. The average number of bugs worked on per month is between 2 and 3.
 * **Number of Stories worked on per month:** This is the number of resolved story tickets assigned to a developer in the past 30 days. If more than one developer worked on the same ticket, developers are credited proportionately. The average number of stories worked on per month is between 5 and 7.
 * **Number of Story Points worked on per month:** This is the number of resolved story points assigned to a developer in the past 30 days. If more than one developer worked on the same ticket, developers are credited proportionately.
