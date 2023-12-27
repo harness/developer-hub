@@ -1,1 +1,1 @@
-Username to log in to the scanner.
+The username to log in to the scanner.

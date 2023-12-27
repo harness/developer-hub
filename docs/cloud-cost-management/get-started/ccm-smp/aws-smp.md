@@ -11,7 +11,7 @@ This topic walks you through the steps required to set up CCM for AWS in a self-
 
 **Figure: AWS CCM Self-Managed Enterprise Edition architecture diagram**
 
-<docimage path={require('./static/aws-smp-arch.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('./static/aws-smp-arch.png')} width="50%" height="50%" title="Click to view full size image" />
 
 You need to perform the following tasks to set up CCM for AWS: 
 
@@ -26,9 +26,8 @@ You need to perform the following tasks to set up CCM for AWS:
 1. Sign in to your [AWS console](https://console.aws.amazon.com/).
 2. Create a new user. For example, `harness-ccm-service-user`. For more information, go to [Adding a user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html).
 3. Set up programmatic user access keys by using the policy given below.
-   
-<details>
 
+<details>
 <summary> Policy to set up programmatic user access </summary>
 
 ```
@@ -574,7 +573,7 @@ Upload the YAML template to S3 bucket `harness-ccm-service-template-bucket-<acco
 1. Create a folder ‘v1’.
 2. Upload the file.
 
-  <docimage path={require('./static/aws-upload-cf-tempalte.png')} width="50%" height="50%" title="Click to view full size image" />
+  <DocImage path={require('./static/aws-upload-cf-tempalte.png')} width="50%" height="50%" title="Click to view full size image" />
 
 
 :::important note
@@ -613,19 +612,15 @@ global:
     enabled: true
   license:
     ng: <SMP NG License with CCM>
+  database:
+    clickhouse:
+      enabled: true
 
 ccm:
-  clickhouse:
-      enabled: true
   batch-processing:
     cloudProviderConfig:
       S3_SYNC_CONFIG_BUCKET_NAME: <S3_SYNC_CONFIG_BUCKET_NAME> [AWS Setup - bucket name from here 'harness-ccm-service-data-bucket-<accountid>']
       S3_SYNC_CONFIG_REGION: <S3_SYNC_CONFIG_REGION> [AWS Setup - Create S3 buckets step - Use region from here]
-    clickhouse:
-      enabled: true
-  nextgen-ce:
-    clickhouse:
-      enabled: true
 ```
 </details>
 
@@ -647,14 +642,14 @@ global:
   # -- Set the `global.proxy.host` parameter by specifying the proxy host or IP address (for example, localhost, 127.0.0.1)
   # -- Set the `global.proxy.port` parameter by specifying the proxy port. It takes an integer value.
   # -- Set the `global.proxy.username` parameter and `global.proxy.password` parameter by specifying the proxy username and password. If not required, remove it or leave it blank.
-  # -- Set the `global.proxy.protocol` parameter by specifying http or https depending on the proxy configuration.
+  # -- Set the `global.proxy.protocol` parameter as https.
   proxy:
-    enabled: false
+    enabled: true
     host: localhost
     port: 80
     username: ""
     password: ""
-    protocol: http
+    protocol: https
   # -- CCM uses `us-east-1` as the default region where the respective endpoint URLs are used for STS (Security Token Service), ECS (Elastic Container Service), and CloudWatch services. However, if there is a need to specify a different region, you have the option to customize the endpoint URLs using the following configuration:
   # -- Set the `global.awsServiceEndpointUrls.enabled` parameter to true to enable endpoint URLs.
   # -- Set a valid AWS region in the `global.awsServiceEndpointUrls.endPointRegion.host` parameter to specify the region where this endpoint is accessible.
@@ -662,28 +657,27 @@ global:
   # -- Set the ECS (Elastic Container Service) endpoint URL in the `global.awsServiceEndpointUrls.ecsEndPointUrl` parameter.
   # -- Set the CloudWatch endpoint URL in the `global.awsServiceEndpointUrls.cloudwatchEndPointUrl` parameter.
   awsServiceEndpointUrls:
-    enabled: false
+    enabled: true
     endPointRegion: us-east-2
     stsEndPointUrl: https://sts.us-east-2.amazonaws.com
     ecsEndPointUrl: https://ecs.us-east-2.amazonaws.com
     cloudwatchEndPointUrl: https://monitoring.us-east-2.amazonaws.com
+  database:
+    clickhouse:
+      enabled: true
 
 ccm:
-  clickhouse:
-      enabled: true
   batch-processing:
     cloudProviderConfig:
       S3_SYNC_CONFIG_BUCKET_NAME: <S3_SYNC_CONFIG_BUCKET_NAME> [AWS Setup - bucket name from here 'harness-ccm-service-data-bucket-<accountid>']
       S3_SYNC_CONFIG_REGION: <S3_SYNC_CONFIG_REGION> [AWS Setup - Create S3 buckets step - Use region from here]
-    clickhouse:
-      enabled: true
     # -- To enable the use of a proxy for AWS S3 sync, set the `ccm.batch-processing.cliProxy.enabled` parameter to true.
     # -- Set the `ccm.batch-processing.cliProxy.host` parameter by specifying the proxy host or IP address (for example, localhost, 127.0.0.1)
     # -- Set the `ccm.batch-processing.cliProxy.port` parameter by specifying the proxy port. It takes an integer value.
     # -- Set the `ccm.batch-processing.cliProxy.username` parameter and `ccm.batch-processing.cliProxy.password` parameter by specifying the proxy username and password. If not required, remove it or leave it blank.
-    # -- Set the `ccm.batch-processing.cliProxy.protocol` parameter by specifying HTTP or HTTPS depending on the proxy configuration.
+    # -- Set the `ccm.batch-processing.cliProxy.protocol` parameter as http.
     cliProxy:
-      enabled: false
+      enabled: true
       host: localhost 
       port: 80
       username: ""
@@ -693,11 +687,8 @@ ccm:
   # -- Configure the `ccm.cloud-info.proxy.httpsProxyUrl` parameter with the appropriate proxy URL. For example, if your HTTP proxy is running on localhost port 1234 and requires authentication, you can use a format like http://username:password@proxy.example.com:1234. If no username and password are required, a value like http://proxy.example.com:1234 can be provided.
   cloud-info:
     proxy:
-      httpsProxyEnabled: false
+      httpsProxyEnabled: true
       httpsProxyUrl: http://proxy.example.com:1234
-  nextgen-ce:
-    clickhouse:
-      enabled: true
 ```
 </details>
 
@@ -760,221 +751,149 @@ CE_AWS_TEMPLATE_URL: <CE_AWS_TEMPLATE_URL> [AWS Setup - Create S3 buckets step -
 
 ```
 environment = "production"
-
 debug = false
-
 shutdownTimeout = "5s"
 
 [config.vault]
-
 enabled = false
-
 address = ""
-
 token = ""
-
 secretPath = ""
 
 [log]
-
 format = "json"
-
 level = "info"
 
 [metrics]
-
-enabled = true
-
+enabled = false
 address = ":9090"
 
 [jaeger]
-
 enabled = false
 
 # Configure either collectorEndpoint or agentEndpoint.
-
 # When both are configured collectorEndpoint will take precedence and the exporter will report directly to the collector.
-
 collectorEndpoint = "http://localhost:14268/api/traces?format=jaeger.thrift"
-
 agentEndpoint = "localhost:6831"
-
 # username = ""
-
 # password = ""
 
 [app]
-
 address = ":8000"
-
 basePath = "/"
 
 [scrape]
-
 enabled = true
-
 interval = "24h"
 
 [provider.amazon]
-
 enabled = true
 
 # See available regions in the documentation:
-
 # https://aws.amazon.com/about-aws/global-infrastructure/regions_az
-
 region = "us-east-1" [AWS Setup - Region where user is set up]
 
 # Static credentials
-
 accessKey = "" [AWS Setup - Add a new user - Use saved aws access key]
-
 secretKey = "" [AWS Setup - Add a new user- Use saved aws secret key]
 
 # Shared credentials
-
 # sharedCredentialsFile = ""
-
 # profile = ""
 
 # http address of a Prometheus instance that has AWS spot price metrics via banzaicloud/spot-price-exporter.
-
 # If empty, the cloudinfo app will use current spot prices queried directly from the AWS API.
-
 prometheusAddress = ""
 
 # advanced configuration: change the query used to query spot price info from Prometheus.
-
 prometheusQuery = "avg_over_time(aws_spot_current_price{region=\"%s\", product_description=\"Linux/UNIX\"}[1w])"
 
 # Amazon pricing API credentials (optional)
-
 # Falls back to the primary credentials.
-
 [provider.amazon.pricing]
-
 # See available regions in the documentation:
-
 #  
-
-# region = "us-east-1" [AWS Setup - Region where user is set up]
+region = "us-east-1" [AWS Setup - Region where user is set up]
 
 # Static credentials
-
-# accessKey = "" [AWS Setup - Add a new user - Use saved aws access key]
-
-# secretKey = "" [AWS Setup - Add a new user- Use saved aws secret key]
+accessKey = "" [AWS Setup - Add a new user - Use saved aws access key]
+secretKey = "" [AWS Setup - Add a new user- Use saved aws secret key]
 
 # Shared credentials
-
 # sharedCredentialsFile = ""
-
 # profile = ""
 
 [provider.google]
-
-enabled = true
+enabled = false
 
 # base64 encoded credentials in json format (base64 encoded content of the credential file)
-
 # credentials = ""
 
-credentialsFile = "/config/gcp-creds.json"
+# credentialsFile = ""
 
-project = ""
+# project = ""
 
 [provider.alibaba]
-
 enabled = false
 
 # region = ""
-
 # accessKey = ""
-
 # secretKey = ""
 
 [provider.oracle]
-
 enabled = false
 
 # tenancy = ""
-
 # user = ""
-
 # region = ""
-
 # fingerprint = ""
-
 # privateKey = ""
-
 # privateKeyPassphrase = ""
 
 # configFilePath = ""
-
 # profile = ""
 
 [provider.azure]
+enabled = false
 
-enabled = true
-
-subscriptionId = ""
+# subscriptionId = ""
 
 # Client credentials
-
-clientId = ""
-
-clientSecret = ""
-
-tenantId = ""
+# clientId = ""
+# clientSecret = ""
+# tenantId = ""
 
 [provider.digitalocean]
-
 enabled = false
 
 [provider.vsphere]
-
 enabled = false
 
 # accessToken = ""
 
 [management]
-
 enabled = true
-
 address = ":8001"
 
 [serviceloader]
-
 serviceConfigLocation = "./configs"
-
 serviceConfigName = "services"
-
 format = "yaml"
 
 [store.redis]
-
 enabled = false
-
 host = "localhost"
-
 port = 6379
 
 [store.cassandra]
-
 enabled = false
-
 hosts = "localhost"
-
 port = 9042
-
 keyspace = "cloudinfo"
-
 table = "products"
 
 [store.gocache]
-
 expiration = 0
-
 cleanupInterval = 0
 ```
 </details>

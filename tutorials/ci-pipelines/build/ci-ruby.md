@@ -6,13 +6,11 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/ruby
 ---
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
 
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
@@ -25,9 +23,9 @@ You can build and test a [Ruby](https://www.ruby-lang.org/en/) application using
 
 This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
 
-* [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
-* [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
-* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
+- [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
+- [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
+- [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 <CISignupTip />
 
@@ -35,74 +33,64 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 Run [Bundler](https://bundler.io/guides/getting_started.html) commands in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
 
-```mdx-code-block
 <Tabs>
 <TabItem value="Harness Cloud">
-```
 
 ```yaml
-              - step:
-                  type: Run
-                  identifier: dependencies
-                  name: Dependencies
-                  spec:
-                    shell: Sh
-                    command: |-
-                      bundle check || bundle install
+- step:
+    type: Run
+    identifier: dependencies
+    name: Dependencies
+    spec:
+      shell: Sh
+      command: |-
+        bundle check || bundle install
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="Self-hosted">
-```
 
 ```yaml
-              - step:
-                  type: Run
-                  identifier: dependencies
-                  name: Dependencies
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: ruby:latest
-                    command: |-
-                      bundle check || bundle install
+- step:
+    type: Run
+    identifier: dependencies
+    name: Dependencies
+    spec:
+      connectorRef: account.harnessImage
+      image: ruby:latest
+      command: |-
+        bundle check || bundle install
 ```
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
 
 ## Cache dependencies
 
-```mdx-code-block
 <Tabs>
 <TabItem value="cloud" label="Harness Cloud" default>
-```
 
 You can cache your Ruby dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec` and specify the cache paths (in `paths` and `sharedPaths`).
 
 ```yaml
-    - stage:
-        spec:
-          caching:
-            enabled: true
-            key: cache-{{ checksum "gemfile.lock" }}
-            paths:
-              - "vendor/bundle"
-          sharedPaths:
-            - vendor/bundle
+- stage:
+    spec:
+      caching:
+        enabled: true
+        key: cache-{{ checksum "gemfile.lock" }}
+        paths:
+          - "vendor/bundle"
+      sharedPaths:
+        - vendor/bundle
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="selfhosted" label="Self-hosted">
-```
 
 With self-hosted build infrastructures, you can:
 
-* [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
-* [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
+- [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
+- [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
 
 Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache from S3** steps.
 
@@ -138,172 +126,146 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     archiveFormat: Tar
 ```
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
 
 ## Build and run tests
 
-Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
+You can use **Run** and **Run Tests** step to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
-```mdx-code-block
+The following examples run tests in a **Run** step.
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
 
 ```yaml
-              - step:
-                  type: Run
-                  name: Run Ruby Tests
-                  identifier: run_ruby_tests
-                  spec:
-                    shell: Sh
-                    command: |-
-                      bundle exec rake test
+- step:
+    type: Run
+    name: Run Ruby Tests
+    identifier: run_ruby_tests
+    spec:
+      shell: Sh
+      command: |-
+        bundle exec rake test
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="Self-hosted">
-```
 
 ```yaml
-              - step:
-                  type: Run
-                  name: Run Ruby Tests
-                  identifier: run_ruby_tests
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: ruby:latest
-                    shell: Sh
-                    command: |-
-                      bundle exec rake test
+- step:
+    type: Run
+    name: Run Ruby Tests
+    identifier: run_ruby_tests
+    spec:
+      connectorRef: account.harnessImage
+      image: ruby:latest
+      shell: Sh
+      command: |-
+        bundle exec rake test
 ```
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
 
 ### Visualize test results
 
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), your test reports must be in JUnit XML format and your steps must include the `reports` specification. The following examples use the [Minitest JUnit Formatter](https://github.com/aespinosa/minitest-junit). For more information and an RSpec example, go to [Format test reports - Ruby](/docs/continuous-integration/use-ci/run-tests/test-report-ref#ruby).
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), your test reports must be in JUnit XML format.
 
-```mdx-code-block
+If you use a **Run** step to run tests, your **Run** step must include the `reports` specification. The `reports` specification is not required for [Run Tests steps (Test Intelligence)](#run-tests-with-test-intelligence).
+
+The following examples use the [Minitest JUnit Formatter](https://github.com/aespinosa/minitest-junit). For more information and an RSpec example, go to [Format test reports - Ruby](/docs/continuous-integration/use-ci/run-tests/test-report-ref#ruby).
+
 <Tabs>
 <TabItem value="Harness Cloud">
-```
 
 ```yaml
-              - step:
-                  type: Run
-                  name: Run Ruby Tests
-                  identifier: run_ruby_tests
-                  spec:
-                    shell: Sh
-                    command: |-
-                      bundle exec rake test --junit
-                  reports:
-                    type: JUnit
-                    spec:
-                      paths:
-                        - report.xml
+- step:
+    type: Run
+    name: Run Ruby Tests
+    identifier: run_ruby_tests
+    spec:
+      shell: Sh
+      command: |-
+        bundle exec rake test --junit
+    reports:
+      type: JUnit
+      spec:
+        paths:
+          - report.xml
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="Self-hosted">
-```
 
 ```yaml
-              - step:
-                  type: Run
-                  name: Run Ruby Tests
-                  identifier: run_ruby_tests
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: ruby:latest
-                    shell: Sh
-                    command: |-
-                      bundle exec rake test --junit
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - report.xml
+- step:
+    type: Run
+    name: Run Ruby Tests
+    identifier: run_ruby_tests
+    spec:
+      connectorRef: account.harnessImage
+      image: ruby:latest
+      shell: Sh
+      command: |-
+        bundle exec rake test --junit
+      reports:
+        type: JUnit
+        spec:
+          paths:
+            - report.xml
 ```
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
 
 ### Run tests with Test Intelligence
 
-[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) is available for Ruby; however, it is behind the feature flag `CI_RUBY_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+You can use Run Tests steps to [run Ruby unit tests with Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby).
 
-With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence) to run unit tests with Test Intelligence.
-
-```mdx-code-block
 <Tabs>
   <TabItem value="Harness Cloud" default>
-```
 
 ```yaml
-              - step:
-                  type: Run Ruby Tests
-                  name: Run_Ruby_Tests
-                  identifier: Run_Ruby_Tests
-                  spec:
-                    language: Ruby
-                    buildTool: Rspec
-                    args: "--format RspecJunitFormatter --out tmp/junit.xml"
-                    runOnlySelectedTests: true
-                    preCommand: bundle install
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - tmp/junit.xml
+- step:
+    type: Run Tests
+    name: Run_Ruby_Tests
+    identifier: Run_Ruby_Tests
+    spec:
+      language: Ruby
+      buildTool: Rspec
+      runOnlySelectedTests: true
+      preCommand: bundle install
 ```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="Self-Hosted">
-```
 
 ```yaml
-              - step:
-                  type: Run Ruby Tests
-                  name: Run_Ruby_Tests
-                  identifier: Run_Ruby_Tests
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: ruby:latest
-                    language: Ruby
-                    buildTool: Rspec
-                    args: "--format RspecJunitFormatter --out tmp/junit.xml"
-                    runOnlySelectedTests: true
-                    preCommand: bundle install
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - tmp/junit.xml
+- step:
+    type: Run Tests
+    name: Run_Ruby_Tests
+    identifier: Run_Ruby_Tests
+    spec:
+      connectorRef: account.harnessImage
+      image: ruby:latest
+      language: Ruby
+      buildTool: Rspec
+      runOnlySelectedTests: true
+      preCommand: bundle install
 ```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
 </Tabs>
-```
+
+### Test splitting
+
+Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
 
 ## Specify version
 
-```mdx-code-block
 <Tabs>
 <TabItem value="Harness Cloud">
-```
 
 Ruby is pre-installed on Harness Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
@@ -317,14 +279,14 @@ You will need a [personal access token](https://docs.github.com/en/authenticatio
 <summary>Install one Ruby version</summary>
 
 ```yaml
-              - step:
-                  type: Action
-                  name: Install ruby
-                  identifier: installruby
-                  spec:
-                    uses: ruby/setup-ruby@v1
-                    with:
-                      ruby-version: 3.0
+- step:
+    type: Action
+    name: Install ruby
+    identifier: installruby
+    spec:
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0
 ```
 
 </details>
@@ -335,33 +297,31 @@ You will need a [personal access token](https://docs.github.com/en/authenticatio
 1. Add a [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
-    - stage:
-        strategy:
-          matrix:
-            rubyVersion:
-              - 3.2.2
-              - 2.7.8
+- stage:
+    strategy:
+      matrix:
+        rubyVersion:
+          - 3.2.2
+          - 2.7.8
 ```
 
 2. Reference the matrix variable in your steps.
 
 ```yaml
-              - step:
-                  type: Action
-                  name: Install ruby
-                  identifier: installruby
-                  spec:
-                    uses: ruby/setup-ruby@v1
-                    with:
-                      ruby-version: <+ stage.matrix.rubyVersion >
+- step:
+    type: Action
+    name: Install ruby
+    identifier: installruby
+    spec:
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: <+ stage.matrix.rubyVersion >
 ```
 
 </details>
 
-```mdx-code-block
 </TabItem>
 <TabItem value="Self-hosted">
-```
 
 Specify the desired [Ruby Docker image](https://hub.docker.com/_/ruby) tag in your steps. There is no need for a separate install step when using Docker.
 
@@ -369,16 +329,16 @@ Specify the desired [Ruby Docker image](https://hub.docker.com/_/ruby) tag in yo
 <summary>Use a specific Ruby version</summary>
 
 ```yaml
-              - step:
-                  type: Run
-                  name: Ruby Version
-                  identifier: rubyversion
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: ruby:latest
-                    shell: Sh
-                    command: |-
-                      ruby --version
+- step:
+    type: Run
+    name: Ruby Version
+    identifier: rubyversion
+    spec:
+      connectorRef: account.harnessImage
+      image: ruby:latest
+      shell: Sh
+      command: |-
+        ruby --version
 ```
 
 </details>
@@ -389,44 +349,40 @@ Specify the desired [Ruby Docker image](https://hub.docker.com/_/ruby) tag in yo
 1. Add a [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
-    - stage:
-        strategy:
-          matrix:
-            rubyVersion:
-              - 3.2.2
-              - 2.7.8
+- stage:
+    strategy:
+      matrix:
+        rubyVersion:
+          - 3.2.2
+          - 2.7.8
 ```
 
 2. Reference the matrix variable in the `image` field of your steps.
 
 ```yaml
-              - step:
-                  type: Run
-                  name: Ruby Version
-                  identifier: rubyversion
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: ruby:<+ stage.matrix.rubyVersion >
-                    shell: Sh
-                    command: |-
-                      ruby --version
+- step:
+    type: Run
+    name: Ruby Version
+    identifier: rubyversion
+    spec:
+      connectorRef: account.harnessImage
+      image: ruby:<+ stage.matrix.rubyVersion >
+      shell: Sh
+      command: |-
+        ruby --version
 ```
 
 </details>
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
 
 ## Full pipeline examples
 
 The following YAML examples describe pipelines that install dependencies, run tests, use caching, and build and push images to Docker Hub.
 
-```mdx-code-block
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
 
 This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) and [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
@@ -498,10 +454,8 @@ pipeline:
                       - <+pipeline.sequenceId>
 ```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="self" label="Self-hosted">
-```
 
 This pipeline uses [self-hosted Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) and [Save and Restore Cache from S3 steps](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/).
 
@@ -594,16 +548,14 @@ pipeline:
               os: Linux
 ```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
 </Tabs>
-```
 
 ## Next steps
 
 Now that you have created a pipeline that builds and tests a Ruby app, you could:
 
-* Create [triggers](/docs/category/triggers) to automatically run your pipeline.
-* Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
-* Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
-* Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).
+- Create [triggers](/docs/category/triggers) to automatically run your pipeline.
+- Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
+- Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
+- Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).

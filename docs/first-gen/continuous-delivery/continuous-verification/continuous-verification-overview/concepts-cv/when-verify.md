@@ -10,7 +10,6 @@ helpdocs_is_published: true
 
 This topic covers Harness' two complementary verification components, Deployment Verification and 24/7 Service Guard.
 
-
 ### Short- and Long-Term Verification
 
 Harness' Continuous Verification enables you to verify your services' health over two timeframes. At deployment time, Harness' **Deployment Verification** feature validates your artifacts, and then validates the individual service instances to which you've deployed.
@@ -22,7 +21,6 @@ Over the long term, Harness' **24/7 Service Guard** feature continuously validat
 ![](./static/when-verify-01.png)
 
 You can use both or either of these verification types. Both types use the [Verification Providers](cv-providers.md) you set up in Harness.
-
 
 ### Deployment Verification
 
@@ -36,10 +34,7 @@ For an excellent example of Deployment Verification, see the Harness Blog post, 
 
 This video Webinar covers how Harness Continuous Delivery leverages unsupervised machine learning to verify production deployments, based on users' APM and log data.
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
-<docvideo src="https://www.youtube.com/embed/ZO5otWQ4PIc" />
-
+<DocVideo src="https://www.youtube.com/embed/ZO5otWQ4PIc" />
 
 ### 24/7 Service Guard
 
@@ -49,10 +44,7 @@ Harness' 24/7 Service Guard feature verifies your live, production application c
 
 Here's a 2-minute video summary of how 24/7 Service Guard works:
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
-<docvideo src="https://www.youtube.com/embed/yi8J4nZAXxw" />
-
+<DocVideo src="https://www.youtube.com/embed/yi8J4nZAXxw" />
 
 #### 24/7 Service Guard in Depth
 
@@ -60,10 +52,8 @@ For an introduction to 24/7 Service Guard's uses cases and design, see the Harne
 
 For further details about how to use 24/7 Service Guard in combination with other Harness capabilities, see the [24/7 Service Guard Overview](24-7-service-guard-overview.md) topic.
 
-
 ### Next Up
 
 Next, read details about:
 
-* [How Does Harness Perform Continuous Verification?](how-cv.md)
-
+- [How Does Harness Perform Continuous Verification?](how-cv.md)

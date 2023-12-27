@@ -1,7 +1,7 @@
 ---
 title: Configure STO to Download Images from a Private Registry
 description: You can set up STO to download your scanner images from a private registry instead of GCR.
-sidebar_position: 90
+sidebar_position: 40
 ---
 
 Harness maintains its own set of scan images for [STO-supported scanners](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach). By default, a Harness pipeline pulls scan images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
@@ -36,7 +36,8 @@ Running container image scans as a non-root user is not currently supported.
    1. Update the **Image** setting to point to the new image in your registry.
    2. If you specified a `USER` in your Dockerfile, set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
 
-<details><summary>Dockerfile template for adding certificates to an STO scanner image</summary>
+<details>
+<summary>Dockerfile template for adding certificates to an STO scanner image</summary>
 
 ``` bash
 # STEP 1 
@@ -161,7 +162,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: $GITHUB_CONNECTOR
+        connectorRef: CODEBASE_CONNECTOR
         repoName: dvpwa
         build: <+input>
   stages:
@@ -176,7 +177,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: $K8S_CONNECTOR
+              connectorRef: K8S_DELEGATE_CONNECTOR 
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -189,9 +190,11 @@ pipeline:
                   name: docker-dind
                   identifier: dockerdind
                   spec:
-                    connectorRef: $DOCKERHUB_CONNECTOR
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: docker:dind
                     shell: Sh
+                    entrypoint:
+                      - dockerd
                     privileged: true
               - step:
                   type: Security

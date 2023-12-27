@@ -1,5 +1,5 @@
 ---
-title: CET Analytics
+title: Analytics dashboard
 description: Understand the CET Analytics dashboard.
 sidebar_position: 2
 ---
@@ -21,7 +21,7 @@ To access the CET Analytics dashboard, do the following:
    
    The CET Analytics dashboard is displayed.
 
-   <docimage path={require('./static/cet-analytics-dashboard.png')} />
+   <DocImage path={require('./static/cet-analytics-dashboard.png')} />
    
 
 ## Explore CET Analytics dashboard

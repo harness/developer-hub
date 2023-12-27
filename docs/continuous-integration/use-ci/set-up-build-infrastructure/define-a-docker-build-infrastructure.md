@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -242,7 +242,7 @@ After configuring the host machine, you need to [set the pipeline's build infras
 Review the following requirements for Windows local runner build infrastructures:
 
 * You need two machines *for each build host*:
-   * A Windows machine where the Harness Docker Runner will run. **This machine must have Docker for Windows installed.** The Harness Docker Runner runs as a container.
+   * A Windows machine where the Harness Docker Runner will run. **This machine must have Docker for Windows installed.** The Harness Docker Runner runs as an executable.
    * A Linux or macOS machine where the Harness Delegate will run. **This machine must have Docker installed.** The delegate runs as a container.
 * There is a one-to-one relationship between Harness Docker Runners and Harness Delegates. If you need to run three local hosts, each host needs a runner machine and a delegate machine.
 * The Harness Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds. The Harness Docker Delegate has the following system requirements:
@@ -347,20 +347,20 @@ After configuring the host machines, you need to [set the pipeline's build infra
 
 Edit the CI pipeline where you want to use the local runner build infrastructure.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. In the pipeline's **Build** stage, select the **Infrastructure** tab.
 2. Select **Local** for the **Infrastructure**.
 3. Select the relevant **Operating System** and **Architecture**.
 4. Save your pipeline.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 In the pipeline's build stage (`type: CI`), insert `platform` and `runtime` specifications, for example:
 
@@ -387,10 +387,10 @@ In the pipeline's build stage (`type: CI`), insert `platform` and `runtime` spec
   * `type`: `Docker`
   * `spec`: `{}`
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::tip
 
@@ -405,6 +405,17 @@ Delegate selections take precedence in the following order:
 This means that if delegate selectors are present at the pipeline and stage levels, then these selections override the platform delegate, which is the delegate that you installed on the build machine. If a stage has a stage-level delegate selector, then it uses that delegate. Stages that don't have stage-level delegate selectors use the pipeline-level selector, if present, or the platform delegate.
 
 For example, assume you have a pipeline with three stages called `alpha`, `beta`, and `gamma`. If you specify a stage-level delegate selector on `alpha` and you don't specify a pipeline-level delegate selector, then `alpha` uses the stage-level delegate, and the other stages (`beta` and `gamma`) use the platform delegate.
+
+<details>
+<summary>Early access feature: Use delegate selectors for codebase tasks</summary>
+
+Currently, delegate selectors for CI codebase tasks is behind the feature flag `CI_CODEBASE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+By default, delegate selectors aren't applied to delegate-related CI codebase tasks.
+
+With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector).
+
+</details>
 
 :::
 
@@ -465,3 +476,20 @@ This error indicates there may be a problem with the Docker installation on the 
 ### Check if the Docker daemon is running
 
 To check if the Docker daemon is running, use the `docker info` command. An error response indicates the daemon is not running. For more information, go to the Docker documentation on [Troubleshooting the Docker daemon](https://docs.docker.com/config/daemon/troubleshoot/)
+
+### Runner process quits after terminating SSH connection
+
+If you launch the Harness Docker Runner binary within an SSH session, the runner process can quit when you terminate the SSH session.
+
+To avoid this with macOS runners, use this command when you [start the runner binary](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#install-the-harness-docker-runner-1):
+
+```
+./harness-docker-runner-darwin-amd64 server >log.txt 2>&1 &
+disown
+```
+
+For Linux runners, you can use a tool such as `nohup` when you start the runner, for example:
+
+```
+nohup ./harness-docker-runner-darwin-amd64 server >log.txt 2>&1 &
+```

@@ -8,28 +8,28 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-Harness code repository connectors connect your Harness account with your Git platform. Connectors are used to pull code as well as other important files, such as Helm charts, Kubernetes manifests, and Terraform scripts, from your Git repos.
 
-You can add code repo connectors at the account, organization, or project scopes. This topic assumes you're adding connectors at the project scope, but the process is the same for the other scopes.
+Harness code repository connectors connect your Harness account with your Git SCM provider. Connectors are used to pull code and other important files, such as Helm charts, Kubernetes manifests, and Terraform scripts, from your Git repos.
+
+You can add code repo connectors at the account, organization, or project [scopes](../../role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes). This topic assumes you're adding connectors at the project scope, but the connector configuration is the same for any scope.
 
 ## Code repo connector permissions and access
 
 Review the following important information about code repo connectors.
 
-### Connector permissions
+### Git provider account permissions
 
-In general, the Git provider user account you use to set up a connector needs the same permissions it would need if you were working from Git.
+When you create a code repo connector, you provide credentials for authentication and authorization, such as a username and password, token, or another authentication method. The credentials allow the connector to take actions in your Git provider, such as cloning repositories or reading information in pull requests. Therefore, the credentials provided to the connector must have the necessary permissions to perform the actions required by the connector's functionality.
 
-This means that, if you are using a Harness code repo connector to pull manifests from a repo, then the user account you use in the connector must have `read repo` (or equivalent) permissions in your Git provider.
+In general, the account/token specified in the connector configuration must have the same permissions that an equivalent user account would need to perform the same actions that the connector will take. **When creating a personal access token, the user account you use to create the token must have the required permissions or higher, such as a repo admin.**
 
-For permissions in the Harness Git Experience, go to [Source Code Manager Settings](./ref-source-repo-provider/source-code-manager-settings.md).
+For example, if the connector needs to clone repositories, the credentials provided in the connector must allow reading and cloning repositories. To create a token with sufficient permissions, you must use a user account that has sufficient (or higher) permissions. Similarly, if the connector needs to pull manifests from a repo, then the credentials provided in the connector must have `read repo` (or equivalent) permissions in your Git provider.
 
-<!-- I don't believe these two sentences are true; all connectors require auth, even for read-only and public repos:  Public Git repos don't require a username and password/token. Harness does not validate public Git repo credentials. -->
+Some connectors require that you use an account with higher permissions, such as an admin account. For more details, refer to the configuration details for the specific connector that you're configuring. For permissions in the Harness Git Experience, go to [Source Code Manager Settings](./ref-source-repo-provider/source-code-manager-settings.md).
 
 ### Using SSH key authentication
 
@@ -55,10 +55,10 @@ For instructions on setting up the IAM user for CodeCommit connections, go to th
 * [Setup for HTTPS users using Git credentials from AWS](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html)
 * [AWS managed policies for CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/security-iam-awsmanpol.html)
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="codecommit" label="AWS CodeCommit connector" default>
-```
+
 <!-- I think this needs to be revised because the instructions here don't match the "Settings reference" topic, and I don't see an AWS CodeCommit option under Code Repos in the connector drawer -->
 
 1. In your Harness project, select **Connectors** under **Project Setup**.
@@ -73,10 +73,10 @@ For instructions on setting up the IAM user for CodeCommit connections, go to th
 
 4. After the connection test runs, select **Finish** to save the connector.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="git" label="Platform-agnostic Git connector">
-```
+
 
 You can connect to CodeCommit [using the Harness platform-agnostic Git connector](#use-the-platform-agnostic-git-connector), instead of the AWS CodeCommit connector.
 
@@ -100,10 +100,10 @@ With the generic Git connector, you must use a username and password for the IAM
 
 5. After the connection test runs, select **Finish** to save the connector.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Connect to Azure Repos
 
@@ -146,7 +146,11 @@ If Harness doesn't have a dedicated code repo connector for your Git provider, o
 3. Configure the [Git connector settings](./ref-source-repo-provider/git-connector-settings-reference.md).
 4. After the connection test runs, select **Finish** to save the connector.
 
-## Network connection times out when fetching large repos
+## Troubleshooting code repo connectors
+
+You might encounter these issues with code repo connectors. Additional connector-specific issues are described on the dedicated pages for each connector.
+
+### Network connection times out when fetching large repos
 
 :::note
 
@@ -161,3 +165,7 @@ Harness performs a `git clone` to fetch files. When fetching very large reposito
 If the `OPTIMIZED_GIT_FETCH_FILES` feature flag is enabled, and your GitHub organization has SAML enabled, the token must be SAML-authorized to access the organization, even if the repository is public. For more information, go to the GitHub documentation on [GitHub authentication with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/about-authentication-with-saml-single-sign-on).
 
 :::
+
+### Pipeline status updates aren't sent to PRs
+
+Harness uses the pipeline's codebase connector to send status updates to PRs in your Git provider. Check the pipeline's [codebase configuration](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) to confirm that it has a default codebase configuration and that it is using the correct code repo connector.

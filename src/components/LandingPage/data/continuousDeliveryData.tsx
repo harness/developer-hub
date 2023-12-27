@@ -43,6 +43,15 @@ export const K8SList: CardItem[] = [
     time: "8min",
     link: "/tutorials/cd-pipelines/kubernetes/ownapp",
   },
+  {
+    title: "Secure Container Image Signing with Cosign and OPA",
+    module: MODULES.cd,
+    icon: "img/icon_cd.svg",
+    description: <>Secure container image signing with Cosign and OPA before Kubernetes deployment.</>,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/cd-pipelines/kubernetes/cosign-opa",
+  },
 ];
 
 export const ServerlessList: CardItem[] = [
@@ -174,13 +183,13 @@ export const AdvList: CardItem[] = [
     link: "/tutorials/cd-pipelines/continuous-verification/prometheus",
   },
   {
-    title: "Unified CI/CD in a Single Pipeline",
+    title: "End-To-End CI/CD Pipeline",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: <>Setup CI and CD as two stages of the same pipeline</>,
+    description: <>Set up CI/CD with a GitOps pipeline</>,
     type: [docType.Documentation],
     time: "20min",
-    link: "/tutorials/cd-pipelines/unified-cicd",
+    link: "/tutorials/cd-pipelines/e2e-pipeline",
   },
 ];
 

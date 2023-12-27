@@ -93,7 +93,7 @@ When viewing user groups at higher scopes, you can find a list of **Organization
 
 <!-- ![](./static/add-user-groups-55.png) -->
 
-<docimage path={require('./static/add-user-groups-55.png')} />
+<DocImage path={require('./static/add-user-groups-55.png')} />
 
 ## Assign roles and resource groups
 
@@ -175,7 +175,7 @@ You can configure notification channels for Harness to send messages to group me
 5. Configure the notification settings for the preferred channel:
    * **Email/Alias:** Enter any group email addresses where Harness can send notifications. For more information, go to [Send Notifications Using Email](../notifications/add-smtp-configuration.md#option-send-notifications-for-a-user-group-using-email).
    * **Slack Webhook URL:** Enter the Slack channel Incoming Webhook URL. For more information, go to [Send Notifications Using Slack](../notifications/send-notifications-using-slack.md).
-   * **Microsoft Teams Webhook URL:** Enter the Microsoft Teams incoming webhook URL.
+   * **Microsoft Teams Webhook URL:** Enter the Microsoft Teams incoming webhook URL. For more information, go to [Send notifications to Microsoft Teams](/docs/platform/notifications/send-notifications-to-microsoft-teams/).
    * **PagerDuty Integration Key:** Enter the key for a PagerDuty Account/Service to which Harness can send notifications. You can get this key from the integration details in PagerDuty (navigate to **Services** and then **Service Directory**).
 
       ![](./static/add-user-groups-56.png)

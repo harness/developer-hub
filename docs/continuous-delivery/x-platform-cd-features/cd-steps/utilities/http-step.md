@@ -2,6 +2,8 @@
 title: HTTP step
 description: Run HTTP methods and validate assertions in your pipeline.
 sidebar_position: 1
+redirect_from:
+  - /docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/http-step
 ---
 
 This topic describes the settings for the HTTP step.
@@ -150,6 +152,21 @@ In the following examples, the Id of the HTTP step is `HTTP`.
 | httpResponseBody | `<+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpResponseBody>` | `Hello` |
 | status | `<+pipeline.stages.HTTP.spec.execution.steps.HTTP.output.status>` | `SUCCESS` |
 
+
+## Use a certificate and key
+
+:::note 
+
+This feature is behind the feature flag `CDS_HTTP_STEP_NG_CERTIFICATE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You can specify a TSL certificate and key for the HTTP step. This enables TLS encryption for your HTTP services. 
+
+1. In **Optional Configuration**, in **Certificate**, enter the certificate, including the `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
+2. In **Certificate Key**, enter the public key.
+
+You can use fixed values, expressions, or runtime inputs for these settings. It is good practice to use Harness [file secrets](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) and [text secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/) for these values.
 
 ## Delegate proxy
 

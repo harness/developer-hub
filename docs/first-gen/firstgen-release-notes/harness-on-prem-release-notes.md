@@ -16,6 +16,90 @@ For Harness SaaS release notes, go to [Harness SaaS Release Notes](/docs/first-g
 
 Release notes are displayed with the most recent release first.
 
+
+## November 30, 2023, version 81310
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 81310 |
+| Delegate | 81010 |
+| Watcher | 80505 |
+| Verification Service | 81308 |
+| UI | 81300 |
+| Learning Engine | 67903 |
+
+### New features and enhancements
+
+- Added support for referencing JSON secret keys with dots at the top level. Nested keys with dots are not supported. (PL-41715, ZD-51757)
+
+### Fixed issues
+
+- The Git Connector field in the Application dialog neither showed nor listed the configured connector. (CDS-82009)
+
+  This issue has been fixed.
+
+- Custom Dashboard widgets did not load data when you selected a time value in the Group by field. (CDS-80778, ZD-51490, ZD-51678)
+
+- Fixed an issue related to the decryption of secrets with curly braces in their value. (PL-41943, ZD-52075)
+
+## November 1, 2023, version 80909
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 80909 |
+| Delegate | 80810 |
+| Watcher | 80505 |
+| Verification Service | 80909 |
+| UI | 80900 |
+| Learning Engine | 67903 | 
+| Gateway | 11402 |
+
+### New features and enhancements
+
+This release does not include new features and enhancements.
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+- You can no longer update `DelegateIP` or `DelegateName` using the delegate update API. (PL-40795, ZD-44419)
+
+- Fixed the delegate task *acquire call* retry flow in Harness Manager. Harness Manager returned NPEs when retrying acquire calls because `taskDataV2` was not copied to `taskData` in the *acquire call* retry flow. Tasks timed out because the delegate couldn't acquire the data. To fix this issue, the 'taskData' field in Harness Manager is now populated. (PL-40646)
+
+- Earlier, you could upload Excel and .csv files in the **File Configuration** dialog. (PL-40796, ZD-44419)
+
+   This issue is fixed. Excel and .csv files in the **File Configuration** dialog are now blocked.
+
+- When you attempted to view the change log of an encrypted text secret, if the resultant API request returned an HTTP 400 response code, the Harness FirstGen user interface failed to show an appropriate message. Instead, it showed the following message and prompted you to refresh your browser page to continue: “Something went wrong... This error has been reported and we are looking into it with high priority.” (PL-40957, ZD-49757)
+
+  This issue has been fixed. The Harness UI now shows you a more appropriate message in the Change Log dialog.
+
+- The **Secrets** dropdown list on the Services page didn't include all available secrets. The list now includes all secrets, up to the maximum of 1000. (PL-41308, ZD-50687)
+
+- A few pages about environment and service were missing access checks, allowing users to read data without the right permissions. (PL-41378, ZD-44419)
+
+  This issue has been resolved, and the desired access check has been applied.
+
+- Fixed an issue when using multiple HTTP Helm Chart repositories that could lead to an increase in CPU utilization on the delegate due to background connector validation tasks. This was caused by running the Helm repository update during the validation tasks. (CDS-76433, ZD-48363)
+
+- Fixed an issue where using the Export Manifest with Inherit Manifest in a Kubernetes deployment could lead to skipping resource versioning. With this fix, resource versioning is happening correctly in this deployment scenario. (CDS-75781, ZD-47209)
+
+- Fixed an issue observed in Canary deployments where the rollback stage could not identify and delete the canary workload in some clusters. (CDS-76240)
+
+- Fixed a dashboard issue where a custom widget did not display monthly data that was more than 8 months old. With this fix, the custom widget will now display monthly data correctly. (CDS-79523, ZD-50750)
+
+- Perpetual tasks in Delegate version 80505 threw Kryo issues because of the addition of a new field in instances. This can be seen if instances are not getting updated for older releases. (CDS-79911)
+
+  This issue is now fixed.
+
+  This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 ## July 31, 2023, patch release for version 79819
 
 This release includes the following module and component versions.
@@ -440,11 +524,11 @@ This release includes the following module and component versions.
 
   1. Get the current featureCompatibiltyVersion. It should be 4.2 if it is using mongo 4.2:
 
-          db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )
+          db.adminCommand( \{ getParameter: 1, featureCompatibilityVersion: 1 } )
 
   2. If the current version isn't 4.2, execute into Primary and run:
 
-          db.adminCommand( { setFeatureCompatibilityVersion: "4.2" } )
+          db.adminCommand( \{ setFeatureCompatibilityVersion: "4.2" } )
 
   3. Determine if the pods are in sync. Make sure they're in sync before you upgrade (the maximum time lag is ~2sec). 
 
@@ -456,7 +540,7 @@ This release includes the following module and component versions.
 
    5. Once you're upgraded, update the Feature Compatibility version so that it's used for future upgrades.
 
-           db.adminCommand( { setFeatureCompatibilityVersion: "4.4" } )
+           db.adminCommand( \{ setFeatureCompatibilityVersion: "4.4" } )
 
   For more information, go to [Upgrade a Replica Set to 4.4](https://www.mongodb.com/docs/manual/release-notes/4.4-upgrade-replica-set/) in the MongoDB docs.
 
@@ -582,7 +666,7 @@ This release includes the following fixes.
   When the customer uses fields for Deployments Tags, the queries became extremely slow.  
   Removed a few unused indexes and added a few indexes to improve the speed of queries.
 
-- Rollback artifact number (`${rollbackArtifact.buildNo}`) is coming as null (CDS-47328, ZD-37309)  
+- Rollback artifact number (`$\{rollbackArtifact.buildNo}`) is coming as null (CDS-47328, ZD-37309)  
   Fixed a problem where incorrect metadata was being populated into executions after updating the environment's infra definitions.  
   For more information, go to [Artifact Rollback Variables](../firstgen-platform/techref-category/variables/built-in-variables-list.md#artifact-rollback-variables).
 
@@ -736,7 +820,7 @@ This release includes the following fixes.
 
 | **Issue** | **Description** |
 | --- | --- |
-| CDS-41129ZD-32913 | For this FF `OPTIMIZED_TF_PLAN` shell script step will not fail if for `${terraformPlan.jsonFilePath()}` expression instead the value of this expression will be null. |
+| CDS-41129ZD-32913 | For this FF `OPTIMIZED_TF_PLAN` shell script step will not fail if for `$\{terraformPlan.jsonFilePath()}` expression instead the value of this expression will be null. |
 | CDS-41232 | Introduced new fields `parent_pipeline_id` and `created_by_type` in timescaledb. |
 | CDS-41357ZD-32975 | Throw exception if the nexus artifact URL is empty. |
 | CDS-41544ZD-33364 | Workflow variables that uses secret variables and are referenced in pipelines are encrypted |
@@ -780,7 +864,7 @@ This release introduces the following features and enhancements:
 
 | **Issue** | **Description** |
 | :-- | :-- |
-| CDS-41149ZD-32913 | Changed the behavior associated with the `OPTIMIZED_TF_PLAN` feature flag. An expression of `${terraformPlan.jsonFilePath()}` will no longer cause the shell script step to fail; instead, the value of the expression will be set to `null`. |
+| CDS-41149ZD-32913 | Changed the behavior associated with the `OPTIMIZED_TF_PLAN` feature flag. An expression of `$\{terraformPlan.jsonFilePath()}` will no longer cause the shell script step to fail; instead, the value of the expression will be set to `null`. |
 | CDS-41232 | The `parent_pipeline_id` and `created_by_type` fields were introduced in `timescaledb`. |
 | CDS-41357ZD-32975 | A change was made to cause an exception to be generated if the field for the nexus artifact URL is empty. |
 | CDS-41544ZD-33364 | Changed the handling of workflow variables that use secret variables and are referenced in pipelines. These variables are now encrypted. |
@@ -847,7 +931,7 @@ N/A
 * Added the `REMOVE_USERGROUP_CHECK` Feature Flag to allow the correction of YAML-based configuration files in the YAML editor. This resolved an issue some customers experienced when a User Group ID was found to be invalid in YAML files belonging to a pipeline. (CDS-39770, ZD 32247, CD-32379)
 * The process used to collect Helm chart manifests was changed to omit database updates during deployment. Eliminating the database update allows the collection step to succeed. (CDS-40054, ZD-32179)
 * The Feature Flag `EXTRA_LARGE_PAGE_SIZE` was introduced to increase the maximum page count from 1200 to 3000. The size restriction caused problems with the population of values in an infrastructure definition. (CDS-40271, ZD-31625)
-* The handling of Terraform Plan (TP) files has been changed. Enabling the `ANALYZE_TF_PLAN_SUMMARY` Feature Flag makes the following expressions available after the Terraform Plan step: `${terraformApply.add}`, `${terraformApply.change}`, and `${terraformApply.destroy}`. The following expressions are available after the Terraform Destroy Plan step: `${terraformDestroy.add}`, `${terraformDestroy.change}`, and `${terraformDestroy.destroy}`. If there are no changes, the plan is not uploaded to the configured Secret Manager, regardless of the checked export option in the Terraform Plan step. (CDS-40341, ZD-31827, ZD-32632)
+* The handling of Terraform Plan (TP) files has been changed. Enabling the `ANALYZE_TF_PLAN_SUMMARY` Feature Flag makes the following expressions available after the Terraform Plan step: `$\{terraformApply.add}`, `$\{terraformApply.change}`, and `$\{terraformApply.destroy}`. The following expressions are available after the Terraform Destroy Plan step: `$\{terraformDestroy.add}`, `$\{terraformDestroy.change}`, and `$\{terraformDestroy.destroy}`. If there are no changes, the plan is not uploaded to the configured Secret Manager, regardless of the checked export option in the Terraform Plan step. (CDS-40341, ZD-31827, ZD-32632)
 * Modified JavaScript to eliminate an empty enumeration error that occurred during attempts to add AMI artifact sources. The error interfered with tag creation. The proper workflow has been restored. (CDS-40416)
 * Changed how environment and service variables are resolved to ensure that expressions that resolve to null before the pipeline workflow stage are not discarded. Retaining the expression allows for the correct resolution of environment and service variables in the environment and service. (CDS-40493)
 * Changed the handling of custom webhook triggers to allow users to see the disabled artifacts in a push event. (CDS-40884)
@@ -887,7 +971,7 @@ schema_ver=`kubectl exec -it mongodb-replicaset-chart-0 -n $ns -- mongo "$MONGO_
   
 ###  
   
-function checkret() {  
+function checkret() \{  
         if [ $? -ne 0 ]; then  
           echo "[FAIL]" ; exit 1  
         else  
@@ -918,7 +1002,7 @@ function checkret() {
 echo "Schema version = $schema_ver"  
 echo -n "Updating schema version $schema_ver to 0 for tsdb..."  
   
-kubectl exec -it mongodb-replicaset-chart-0 -n $ns -- mongo "$MONGO_URI" --quiet --eval "db.schema.update({"version": $schema_ver}, { \$set : {"timescaleDbVersion" : 0, "timescaleDBDataVersion" :0}})" &>>$log  
+kubectl exec -it mongodb-replicaset-chart-0 -n $ns -- mongo "$MONGO_URI" --quiet --eval "db.schema.update(\{"version": $schema_ver}, \{ \$set : \{"timescaleDbVersion" : 0, "timescaleDBDataVersion" :0}})" &>>$log  
         checkret  
   
 echo -n "Taking dump of postgres..."  
@@ -994,7 +1078,7 @@ Any issues, please contact support@harness.io" ; exit 0
 #### Continuous Deployment
 
 * Separated the endpoints used for monitoring from those used by agents for instance sync. This improves monitoring and problem identification (CDS-38387)
-* Changed custom deployments to eliminate polling and permit an empty artifact source script. If no script is specified, the deployment uses the provided artifact version and version information is available in the artifact variable`${artifact.*}` (CDS-34235)
+* Changed custom deployments to eliminate polling and permit an empty artifact source script. If no script is specified, the deployment uses the provided artifact version and version information is available in the artifact variable`$\{artifact.*}` (CDS-34235)
 * You can now update/create Jira issues with fields of type `user`. (CDS-28853, ZD-237529)
 
 #### Fixed issues
@@ -1052,7 +1136,7 @@ Fix: We now first apply the pattern filter to all artifacts and then limit it to
 * Added more details when Helm deploy task fails because of connectivity issues with K8s cluster (CDS-38663)
 * Customer will be able to use Terragrunt Destroy Step even with underlying terraform version > 15.0.0 (CDS-38662, ZD-31506)
 * Fixed an issue when application defaults are configured using code (CDS-38624 ZD-31467)
-* Manifest collection directory is changed from /manifest-collection-{app-manifest-id}/ to /manifest-collection/{app-manifest-id} to reduce clutter in home folder (CDS-38543, ZD-30994)
+* Manifest collection directory is changed from `/manifest-collection-{app-manifest-id}/` to `/manifest-collection/{app-manifest-id}` to reduce clutter in home folder (CDS-38543, ZD-30994)
 * While picking previous approvals to reject with auto reject previous approvals feature, only workflows waiting on same approval step is considered (CDS-38525)
 * With this FF on, a static timeout of 3min is added in git fetch operation in K8s and Native helm swimlanes in CG (CDS-38492, ZD-31294)
 * User group could have been deleted if they were part of deployment freeze which led to dangling references in freeze windows. Going forward user group can't be deleted if they are part of deployment freeze (CDS-038177)

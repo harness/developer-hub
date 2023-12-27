@@ -128,22 +128,22 @@ To have your delegate start to collect usage metrics we need to create a CCM Kub
 Perform the following steps to connect your Kubernetes cluster to CCM.
 
 1. Create a new Kubernetes connector using one of the two options below:
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs queryString="tab-number">
 <TabItem value="4" label="From Account Settings">
-```
+
 1. Go to **Account Resources** > **Connectors**.
 2. Select **+ New Connector**.
 3. Under **Cloud Costs**, select **Kubernetes**.
-```mdx-code-block
+
 </TabItem>
 <TabItem value="5" label="From Cloud Costs">
-```
+
 1. Go to **Setup** > **Cloud Integration**.  
 2. Select **New Cluster/Cloud account**.
 3. Select **Kubernetes**.
@@ -152,10 +152,10 @@ import TabItem from '@theme/TabItem';
 :::note
    For the Quick Create option, go to [Kubernetes Quick Create](/docs/cloud-cost-management/get-started/onboarding-guide/use-quick-create-k8s).
 :::
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 #### Delegate role requirements for CCM visibility features and recommendations:
   

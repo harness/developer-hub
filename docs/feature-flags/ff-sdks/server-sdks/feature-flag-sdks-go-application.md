@@ -33,7 +33,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **0.1.14.**
+The current version of this SDK is **0.1.16.**
 
 ## Requirements
 
@@ -110,10 +110,11 @@ client, err := harness.NewCfClient(myApiKey, 
 ```
 ### Block initialization 
 
-By default, when initializing the Harness Feature Flags client, the initialization process is non-blocking. This means that the client creation call returns immediately, 
-allowing your application to continue its startup process without waiting for the client to be fully initialized. 
+By default, when initializing the Harness Feature Flags client, the initialization process is non-blocking. This means that the client creation call returns immediately,
+allowing your application to continue its startup process without waiting for the client to be fully initialized. If you evaluate a flag before the client has finished initializing,
+the default variation you provided can be returned as the evaluation result, because the SDK has not finished caching your remote Flag configuration stored in Harness.
 
-In some cases, you may want your application to wait for the client to finish initializing before continuing. To achieve this, you can use the `WithWaitForInitialized` option, which blocks until the client is fully initialized. Example usage:
+You can choose to wait for the client to finish initializing before continuing. To achieve this, you can use the `WithWaitForInitialized` option, which blocks until the client is fully initialized. Example usage:
 
 ```go
 client, err := harness.NewCfClient(sdkKey, harness.WithWaitForInitialized(true))
@@ -121,18 +122,14 @@ client, err := harness.NewCfClient(sdkKey, harness.WithWaitForInitialized(true))
 if err != nil {
 log.ErrorF("could not connect to FF servers %s", err)
 }
+
+result, err := client.BoolVariation("identifier_of_your_boolean_flag", &target, false)
 ```
 
 
 In this example, WaitForInitialized blocks for up to 5 authentication attempts. If the client is not initialized within 5 authentication attempts, it returns an error.
 
-This can be useful if you need to unblock after a certain time. 
-
-:::note
-
-If you evaluate a feature flag in this state, the default variation is returned.
-
-:::
+This can be useful if you need to unblock after a certain time.
 
 ```go
 // Try to authenticate only 5 times before returning a result
@@ -147,8 +144,8 @@ log.Fatalf("client did not initialize in time: %s", err)
 
 <details>
 <summary>What is a Target?</summary> 
-Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
-  </details>
+Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.
+</details>
 
 For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
@@ -256,6 +253,13 @@ client.NumberVariation(flagName, &target, -1)
 ```
 client.JSONVariation(flagName, &target, types.JSON{"darkmode": false})
 ```
+
+:::note
+
+If you evaluate a feature flag when initialization fails, the default variation you provided is returned as the evaluation result.
+
+:::
+
 ## Test Your App is Connected to Harness
 
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.

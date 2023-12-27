@@ -247,64 +247,40 @@ This allows you to specify a different workspace name each time the Pipeline is 
 
 You can even set a Harness Trigger where you can set the workspace name used in **Workspace**.
 
-## Terraform var files
+## AWS Connector Provider Credential Authentication for Terraform Plan and Apply Steps
 
-The **Terraform Var Files** section is for entering and/or linking to Terraform script Input variables.
+:::note
+This feature requires Harness Delegate version 81202. This feature is available only to paid customers. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
-You can use inline or remote var files.
+You can use an AWS Connector to have the terraform plan and apply step assume a role to perform the provisioning of infrastructure. It's an optional configuration that takes in AWS Connector, a Region and a Role ARN. The Terraform step will use these parameters to authenticate with the aws account targetted for infrastructure provisioning.
 
-Harness supports all [Terraform input types and values](https://www.terraform.io/docs/language/expressions/types.html).
+When configured the optional configuration for AWS Connector these fields can be passed as a fixed value, runtime input, or an expression
 
-### Inline variables
-
-You can add inline variables just like you would in a tfvar file.
-
-Click **Add Terraform Var File**, and then click **Add Inline**.
-
-The **Add Inline Terraform Var File** settings appear.
-
-In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
-
-For example, if the **Identifier** is **myvars** you could refer to its content like this:
-
-`<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myvars.spec.content>`
-
-Provide the input variables and values for your Terraform script. Harness follows the same format as Terraform.
-
-For example, if your Terraform script has the following:
-
-
-```json
-variable "region" {  
-  type = string  
-}
-```
-In **Add Inline Terraform Var File**, you could enter:
-
-
-```json
-region = "asia-east1-a"
+```YAML
+- step:
+    type: TerraformApply
+    name: Apply
+    identifier: Apply
+    spec:
+      provisionerIdentifier: provision
+      configuration:
+        type: Inline
+        spec:
+          workspace: <+input>
+          configFiles: {}
+          providerCredential:
+            type: Aws
+            spec:
+              connectorRef: <+input>
+              region: <+input>
+              roleArn: <+input>
+    timeout: 10m
 ```
 
-#### Inline variable secrets
+#### Terraform variable files
 
-If you are entering secrets (for credentials, etc.), use Harness secret references in the value of the variable:
-
-
-```bash
-secrets_encryption_kms_key = "<+secrets.getValue("org.kms_key")>"
-```
-See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
-
-### Remote variables
-
-You can connect Harness to remote variable files.
-
-Click **Add Terraform Var File**, and then click **Add Remote**.
-
-Select your Git provider (GitHub, Artifactory, S3, etc.) and then select or create a Connector to the repo where the files are located. Typically, this is the same repo where your Terraform script is located, so you can use the same Connector.
-
-Click **Continue**. The **Var File Details** settings appear.
+You can specify Terraform variables inline and fetch remote variable files during run time. For more information, go to [Specify Terraform variables](/docs/continuous-delivery/cd-infrastructure/terraform-infra/optional-tf-var-files).
 
 ##### Git providers
 
@@ -477,17 +453,25 @@ TF_VAR_alist='[1,2,3]'
 ```
 You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
+## Terraform Apply step output
+
+Terraform Apply step output is available after the Terraform Apply step has completed. The output can be exposed to other steps or resources in Harness.
+
+You can find the output in the Output area of the step. To use the output, copy the expression path to the output key as shown in the following image:
+
+![](static/terraform-apply-outputs.png)
+
+The expression is of the form `<+pipeline.stages.stage-provisioning.spec.execution.steps.TerraformApply_5.output.TEST_OUTPUT_NAME1>`
+
+When you use this expression in another step, the expression resolves to its value.
+
 ## Encrypt the Terraform Apply JSON outputs
 
-:::note
+The **Encrypt json output** setting encrypts the Terraform JSON output as a Harness secret. Only Harness Secret Manager is supported.
 
-Currently, this feature is behind the flag, `CDS_ENCRYPT_TERRAFORM_APPLY_JSON_OUTPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+The secret is ephemeral and is created and deleted during the execution of the pipeline. After execution completes, the secret is deleted.
 
-:::
-
-The **Encrypt json output** setting encrypts the Terraform JSON output as a Harness secret using the secret manager you select. 
-
-The secret is ephemeral and is created and deleted during the pipeline execution. The secret is not added to the **Secrets** list in Harness.
+The secret is stored in the **Secrets** list in Harness, at the project level.
 
 You can use an expression to retrieve the secret and its Terraform JSON output during pipeline execution.
 
@@ -527,6 +511,26 @@ Here's an example of decrypted Terraform JSON output:
 }
 ```
 
+## Skip state storage
+
+The following feature requires a minimum Harness delegate version of 812xx.
+
+While running Terraform commands on the delegate, Harness by default will try to detect if there is a local state file in the Terraform working directory.
+
+If local state file is identified, at the end of the execution it is saved on Harness storage with a key based on the provisioner identifier.
+
+That state file is downloaded in the Terraform working directory for subsequent executions, and the updated state is uploaded after execution ends.
+
+This method allows the maintaining of the state of the infrastructure even if there is no Terraform backend configured.
+
+This is more for testing purposes. For production environments, Harness advises you configure a backend in your Terraform config files. For information, go to [Backend Configuration](https://developer.hashicorp.com/terraform/language/settings/backends/configuration).
+
+With the **Skip state storage** option enabled, Harness allows you to skip the local state upload and download operations mentioned above.
+
+This option makes is useful only if you do not have a Terraform backed configured in your Terraform config files. If you have a Terraform backed configured, then the Terraform CLI will not create any local state files.
+
+If the Terraform Apply step is configured to skip state storage, and there is no backend configured in your Terraform files, you should not add a rollback step, as this is an invalid setup. Rollback is impossible if there is no state file.
+
 
 ## Command line options
 
@@ -539,6 +543,19 @@ This setting allows you to set the Terraform CLI options for Terraform commands 
 ## Skip Terraform refresh
 
 Terraform refresh command won't be running when this setting is selected.
+
+## Working directory cleanup
+Each Terraform step runs in a specific working directory on the delegate.
+
+The Terraform working directory is located at `/opt/harness-delegate/./terraform-working-dir/`.
+
+To that directory path, Harness adds additional directories that are named after the organization, account, project, and provisionerId (from the step) such that the final working directory is `/opt/harness-delegate/./terraform-working-dir/org-name/account-name/project-name/provisionerId/`.
+
+In this final working directory, Harness stores the Terraform configuration and all fetched files such as var-files and backend-config.
+
+Once the Terraform step execution is complete, Harness cleans up the main working directory `/opt/harness-delegate/./terraform-working-dir/`.
+
+If you generate any local resources on the delegate in the directory where Terraform configurations are located, those resources are also removed. If you need those resources, make sure to generate them outside the Terraform working directory.
 
 ## Advanced settings
 

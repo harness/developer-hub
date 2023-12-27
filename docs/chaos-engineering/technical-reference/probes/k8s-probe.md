@@ -40,112 +40,77 @@ Listed below is the probe schema for the Kubernetes probe, with properties share
 
 <table>
   <tr>
-   <td><strong>Field</strong>
+   <td>
+		<strong>Field</strong>
    </td>
-   <td><strong>Description</strong>
+   <td>
+		<strong>Description</strong>
    </td>
-   <td><strong>Type</strong>
+   <td>
+		<strong>Type</strong>
    </td>
-   <td><strong>Range</strong>
+   <td>
+		<strong>Range</strong>
    </td>
-   <td><strong>Notes</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>group
-   </td>
-   <td>Flag to hold the group of the kubernetes resource for the k8sProbe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>group</code> contains group of the kubernetes resource on which k8sProbe performs the specified operation.
+   <td>
+		<strong>Notes</strong>
    </td>
   </tr>
   <tr>
-   <td>version
-   </td>
-   <td>Flag to hold the apiVersion of the kubernetes resource for the k8sProbe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>version</code> contains apiVersion of the kubernetes resource on which k8sProbe performs the specified operation
-   </td>
+   <td>group   </td>
+   <td>Flag to hold the group of the kubernetes resource for the k8sProbe   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>group</code> contains group of the kubernetes resource on which k8sProbe performs the specified operation.   </td>
   </tr>
   <tr>
-   <td>resource
-   </td>
-   <td>Flag to hold the kubernetes resource name for the k8sProbe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>resource</code> contains the kubernetes resource name on which k8sProbe performs the specified operation.
-   </td>
+   <td>version   </td>
+   <td>Flag to hold the apiVersion of the kubernetes resource for the k8sProbe   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>version</code> contains apiVersion of the kubernetes resource on which k8sProbe performs the specified operation   </td>
   </tr>
   <tr>
-   <td>namespace
-   </td>
-   <td>Flag to hold the namespace of the kubernetes resource for the k8sProbe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>namespace</code> contains namespace of the kubernetes resource on which k8sProbe performs the specified operation.
-   </td>
+   <td>resource   </td>
+   <td>Flag to hold the kubernetes resource name for the k8sProbe   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>resource</code> contains the kubernetes resource name on which k8sProbe performs the specified operation.   </td>
   </tr>
   <tr>
-   <td>fieldSelector
-   </td>
-   <td>Flag to hold the fieldSelectors of the kubernetes resource for the k8sProbe
-   </td>
-   <td>Optional
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>fieldSelector</code> contains fieldSelector to derived the kubernetes resource on which k8sProbe performs the specified operation.
-   </td>
+   <td>namespace   </td>
+   <td>Flag to hold the namespace of the kubernetes resource for the k8sProbe   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>namespace</code> contains namespace of the kubernetes resource on which k8sProbe performs the specified operation.   </td>
   </tr>
   <tr>
-   <td>labelSelector
-   </td>
-   <td>Flag to hold the labelSelectors of the kubernetes resource for the k8sProbe
-   </td>
-   <td>Optional
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>labelSelector</code> contains labelSelector to derived the kubernetes resource on which k8sProbe performs the specified operation.
-   </td>
+   <td>fieldSelector   </td>
+   <td>Flag to hold the fieldSelectors of the kubernetes resource for the k8sProbe   </td>
+   <td>Optional   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>fieldSelector</code> contains fieldSelector to derived the kubernetes resource on which k8sProbe performs the specified operation.   </td>
   </tr>
   <tr>
-   <td>operation
-   </td>
-   <td>Flag to hold the operation type for the k8sProbe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>operation</code> contains operation which should be applied on the kubernetes resource as part of k8sProbe. It supports four type of operation. It can be one of <code>create, delete, present, absent</code>.
-   </td>
+   <td>labelSelector   </td>
+   <td>Flag to hold the labelSelectors of the kubernetes resource for the k8sProbe   </td>
+   <td>Optional   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>labelSelector</code> contains labelSelector to derived the kubernetes resource on which k8sProbe performs the specified operation.   </td>
   </tr>
   <tr>
-   <td>data
-   </td>
-   <td>Flag to hold the Kubernetes resource manifest
-   </td>
-   <td>Optional
-   </td>
-   <td>N/A <code>type: string</code>
-   </td>
-   <td>The <code>data</code> contains Kubernetes resource manifest that is relevant solely for the purpose of the creation operation.
-   </td>
+   <td>operation   </td>
+   <td>Flag to hold the operation type for the k8sProbe   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>operation</code> contains operation which should be applied on the kubernetes resource as part of k8sProbe. It supports four type of operation. It can be one of <code>create, delete, present, absent</code>.   </td>
+  </tr>
+  <tr>
+   <td>data   </td>
+   <td>Flag to hold the Kubernetes resource manifest   </td>
+   <td>Optional   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>data</code> contains Kubernetes resource manifest that is relevant solely for the purpose of the creation operation.   </td>
   </tr>
 </table>
 
@@ -153,88 +118,63 @@ Listed below is the probe schema for the Kubernetes probe, with properties share
 
 <table>
   <tr>
-   <td><strong>Field</strong>
+   <td>
+		<strong>Field</strong>
    </td>
-   <td><strong>Description</strong>
+   <td>
+		<strong>Description</strong>
    </td>
-   <td><strong>Type</strong>
+   <td>
+		<strong>Type</strong>
    </td>
-   <td><strong>Range</strong>
+   <td>
+		<strong>Range</strong>
    </td>
-   <td><strong>Notes</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>probeTimeout
-   </td>
-   <td>Flag to hold the timeout of the probe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: integer</code>
-   </td>
-   <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data
+   <td>
+		<strong>Notes</strong>
    </td>
   </tr>
   <tr>
-   <td>retry
-   </td>
-   <td>Flag to hold the retry count of the probe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: integer</code>
-   </td>
-   <td>The <code>retry</code> contains the number of times a check is re-run upon failure in the first attempt before declaring the probe status as failed.
-   </td>
+   <td>probeTimeout   </td>
+   <td>Flag to hold the timeout of the probe   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data   </td>
   </tr>
   <tr>
-   <td>interval
-   </td>
-   <td>Flag to hold the interval of the probe
-   </td>
-   <td>Mandatory
-   </td>
-   <td>N/A <code>type: integer</code>
-   </td>
-   <td>The <code>interval</code> contains the interval for which probes waits between subsequent retries
-   </td>
+   <td>attempt   </td>
+   <td>Flag to hold the attempt of the probe   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: integer</code>   </td>
+   <td>The <code>attempt</code> contains the number of times a check is run upon failure in the previous attempts before declaring the probe status as failed.   </td>
   </tr>
   <tr>
-   <td>probePollingInterval
-   </td>
-   <td>Flag to hold the polling interval for the probes (applicable for all modes)
-   </td>
-   <td>Optional
-   </td>
-   <td>N/A <code>type: integer</code>
-   </td>
-   <td>The <code>probePollingInterval</code> contains the time interval for which continuous probe should be sleep after each iteration
-   </td>
+   <td>interval   </td>
+   <td>Flag to hold the interval of the probe   </td>
+   <td>Mandatory   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>interval</code> contains the interval for which probes waits between subsequent retries   </td>
   </tr>
   <tr>
-   <td>initialDelaySeconds
-   </td>
-   <td>Flag to hold the initial delay interval for the probes
-   </td>
-   <td>Optional
-   </td>
-   <td>N/A <code>type: integer</code>
-   </td>
-   <td>The <code>initialDelaySeconds</code> represents the initial waiting time interval for the probes.
-   </td>
+   <td>probePollingInterval   </td>
+   <td>Flag to hold the polling interval for the probes (applicable for all modes)   </td>
+   <td>Optional   </td>
+   <td>N/A <code>type: string</code>   </td>
+   <td>The <code>probePollingInterval</code> contains the time interval for which continuous and onchaos probe should be sleep after each iteration   </td>
   </tr>
   <tr>
-   <td>stopOnFailure
-   </td>
-   <td>Flags to hold the stop or continue the experiment on probe failure
-   </td>
-   <td>Optional
-   </td>
-   <td>N/A <code>type: boolean</code>
-   </td>
-   <td>The <code>stopOnFailure</code> can be set to true/false to stop or continue the experiment execution after probe fails
-   </td>
+   <td>initialDelaySeconds   </td>
+   <td>Flag to hold the initial delay interval for the probes   </td>
+   <td>Optional   </td>
+   <td>N/A <code>type: integer</code>   </td>
+   <td>The <code>initialDelaySeconds</code> represents the initial waiting time interval for the probes.   </td>
+  </tr>
+  <tr>
+   <td>stopOnFailure   </td>
+   <td>Flags to hold the stop or continue the experiment on probe failure   </td>
+   <td>Optional   </td>
+   <td>N/A <code>type: boolean</code>   </td>
+   <td>The <code>stopOnFailure</code> can be set to true/false to stop or continue the experiment execution after probe fails   </td>
   </tr>
 </table>
 
@@ -242,21 +182,223 @@ Listed below is the probe schema for the Kubernetes probe, with properties share
 
 ```yaml
 probe:
-  - name: "check-app-cluster-cr-status"
+  - name: "check-app-status"
     type: "k8sProbe"
     k8sProbe/inputs:
-      group: "<appGroup>"
-      version: "<appVersion>"
-      resource: "<appResource>"
+      group: ""
+      version: "v1"
+      resource: "pods"
       namespace: "default"
-      fieldSelector: "metadata.name=<appResourceName>,status.phase=Running"
-      labelSelector: "<app-labels>"
+      fieldSelector: "status.phase=Running"
+      labelSelector: "app=nginx"
       operation: "present" # it can be present, absent, create, delete
-      data: |
-        # Resource manifest that is relevant solely for the purpose of the creation operation
     mode: "EOT"
     runProperties:
-      probeTimeout: 5
-      interval: 5
-      retry: 1
+      probeTimeout: 5s
+      interval: 2s
+      attempt: 1
+```
+
+### Create Operation
+
+It creates the kubernetes resource based on the data specified inside in the `probe.k8sProbe/inputs.data` field.
+
+Use the following example to tune this:
+
+```yaml
+# create the given resource provided inside data field
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "create-percona-pvc"
+        type: "k8sProbe"
+        k8sProbe/inputs:
+          # group of the resource
+          group: ""
+          # version of the resource
+          version: "v1"
+          # name of the resource
+          resource: "persistentvolumeclaims"
+          # namespace where the instance of resource should be created
+          namespace: "default"
+          # type of operation
+          # supports: create, delete, present, absent
+          operation: "create"
+          # contains manifest, which can be used to create the resource
+          data: |
+            kind: PersistentVolumeClaim
+            apiVersion: v1
+            metadata:
+              name: percona-mysql-claim
+              labels:
+                target: percona
+            spec:
+              storageClassName: standard
+              accessModes:
+              - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 100Mi
+        mode: "SOT"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+```
+
+
+### Delete Operation
+
+It deletes matching kubernetes resources via GVR and filters (field selectors/label selectors) provided at `probe.k8sProbe/inputs`.
+
+Use the following example to tune this:
+
+```yaml
+# delete the resource matched with the given inputs
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "delete-percona-pvc"
+        type: "k8sProbe"
+        k8sProbe/inputs:
+          # group of the resource
+          group: ""
+          # version of the resource
+          version: "v1"
+          # name of the resource
+          resource: "persistentvolumeclaims"
+          # namespace of the instance, which needs to be deleted
+          namespace: "default"
+          # labels selectors for the k8s resource, which needs to be deleted
+          labelSelector: "openebs.io/target-affinity=percona"
+          # fieldselector for the k8s resource, which needs to be deleted
+          fieldSelector: ""
+          # type of operation
+          # supports: create, delete, present, absent
+          operation: "delete"
+        mode: "EOT"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+```
+
+### Present Operation
+
+It checks for the presence of kubernetes resource based on GVR and filters (field selectors/labelselectors) provided at `probe.k8sProbe/inputs`.
+
+Use the following example to tune this:
+
+```yaml
+# verify the existance of the resource matched with the given inputs inside cluster
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "check-percona-pvc-presence"
+        type: "k8sProbe"
+        k8sProbe/inputs:
+          # group of the resource
+          group: ""
+          # version of the resource
+          version: "v1"
+          # name of the resource
+          resource: "persistentvolumeclaims"
+          # namespace where the instance of resource
+          namespace: "default"
+          # labels selectors for the k8s resource
+          labelSelector: "openebs.io/target-affinity=percona"
+          # fieldselector for the k8s resource
+          fieldSelector: ""
+          # type of operation
+          # supports: create, delete, present, absent
+          operation: "present"
+        mode: "SOT"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+```
+
+### Absent Operation
+
+It checks for the absence of kubernetes resource based on GVR and filters (field selectors/labelselectors) provided at `probe.k8sProbe/inputs`.
+
+Use the following example to tune this:
+
+```yaml
+# verify that the no resource should be present in cluster with the given inputs
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "check-percona-pvc-absence"
+        type: "k8sProbe"
+        k8sProbe/inputs:
+          # group of the resource
+          group: ""
+          # version of the resource
+          version: "v1"
+          # name of the resource
+          resource: "persistentvolumeclaims"
+          # namespace where the instance of resource
+          namespace: "default"
+          # labels selectors for the k8s resource
+          labelSelector: "openebs.io/target-affinity=percona"
+          # fieldselector for the k8s resource
+          fieldSelector: ""
+          # type of operation
+          # supports: create, delete, present, absent
+          operation: "absent"
+        mode: "EOT"
+        runProperties:
+          probeTimeout: 5s 
+          interval: 2s 
+          attempt: 1
 ```

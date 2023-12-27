@@ -18,9 +18,11 @@ VMware Windows Disk Stress applies stress on the disk resources on Windows OS ba
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443. 
 - VMware tool should be installed on the target VM with remote execution enabled.
-- Adequate vCenter permissions should be provided to access the hosts and the VMs.
+- Use built-in Administrator user for the experiment. [Learn how to enable the built-in Administrator user in Windows](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/enable-and-disable-the-built-in-administrator-account?view=windows-11).
 - The VM should be in a healthy state before and after injecting chaos.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. 
+- Ensure the installation of [Diskspd](https://learn.microsoft.com/en-us/azure-stack/hci/manage/diskspd-overview#quick-start-install-and-run-diskspd), a critical dependency for this experiment. Refer to the linked documentation for installation guidance.
+
 - VM credentials can be passed as secrets or as a chaos enginer environment variable.
 
 ```yaml
@@ -52,6 +54,16 @@ stringData:
         <td> Name of the target VM. </td>
         <td> For example, <code>win-vm-1</code> </td>
       </tr>
+      <tr>
+          <td> VM_USER_NAME </td>
+          <td> Username of the target VM.</td>
+          <td> For example, <code>vm-user</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_PASSWORD </td>
+          <td> User password for the target VM. </td>
+          <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
+      </tr>
     </table>
     <h3>Optional fields</h3>
     <table>
@@ -63,51 +75,51 @@ stringData:
       <tr>
         <td> MEMORY_CONSUMPTION </td>
         <td> Amount of Memory to consume in MB. </td>
-        <td> Default: 1024. </td>
+        <td> Default: 1024. For more information, go to <a href="#memory-consumption"> memory consumption. </a></td>
       </tr>
       <tr>
         <td> BLOCK_SIZE_IN_KILOBYTES </td>
         <td> Block size for disk write in KB. </td>
-        <td> Default: 128. </td>
+        <td> Default: 128. For more information, go to <a href="#block-size"> block size. </a></td>
       </tr>
       <tr>
         <td> WRITE_PERCENTAGE </td>
         <td> Percentage of total disk write. </td>
-        <td> Default: 100. </td>
+        <td> Default: 100. For more information, go to <a href="#write-percentage"> write percentage. </a></td>
       </tr>
       <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> Number of workers involved in disk write. </td>
-        <td> Default: 2. </td>
+        <td> Default: 2. For more information, go to <a href="#number-of-workers"> number of workers. </a></td>
       </tr>
       <tr>
         <td> DISK_PATH </td>
         <td> Path of disk to apply stress. </td>
-        <td> For example, <code>C:\\</code> </td>
+        <td> For example, <code>C:\\</code>. For more information, go to <a href="#disk-path"> disk path. </a></td>
       </tr>
       <tr>
         <td> PATH_OF_DISKSPD </td>
         <td> Path of the Diskspd binary in the VM. </td>
-        <td> For example, <code>C:\\Program Files\\Diskspd\\</code> </td>
+        <td> For example, <code>C:\\Program Files\\Diskspd\\</code>. For more information, go to <a href="#path-of-diskpd"> path of Diskpd. </a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 60s. </td>
+        <td> Default: 60 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> Default: 0s. </td>
+        <td> Default: 0 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Default: parallel. Supports serial sequence as well. </td>
+        <td> Default: parallel. Supports serial and parallel sequence. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
     </table>
 
-### Memory Consumption
+### Memory consumption
 
 The `MEMORY_CONSUMPTION` environment variable applies stress on the target Windows VM for a specific duration.
 
@@ -136,7 +148,7 @@ spec:
           value: '1024'
 ```
 
-### Block Size
+### Block size
 
 The `BLOCK_SIZE_IN_KILOBYTES` environment variable specifies the block size for disk write in KB.
 
@@ -165,7 +177,7 @@ spec:
           value: '128'
 ```
 
-### Write Percentage
+### Write percentage
 
 The `WRITE_PERCENTAGE` environment variable specifies the percentage of total disk write.
 
@@ -194,7 +206,7 @@ spec:
           value: '100'
 ```
 
-### Number of Workers
+### Number of workers
 
 The `NUMBER_OF_WORKERS` environment variable specifies the number of workers involved in disk write.
 
@@ -222,7 +234,7 @@ spec:
           value: '2'
 ```
 
-### Disk Path
+### Disk path
 
 The `DISK_PATH` environment variable specifies the path of disk to apply stress.
 

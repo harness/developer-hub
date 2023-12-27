@@ -19,6 +19,11 @@ You can set notifications preferences on user groups also. Go to [Manage user gr
 
 Currently, Harness supports several communication and incident management platforms. If you don't see yours, contact Harness.
 
+:::info note
+It's important to note most of the **Notification Rule** settings, including the **Slack Webhook URL**, cannot be specified using runtime inputs. This information must be provided before the pipeline execution begins. However, you can use expressions to provide this information. Refer to the Input options available in the respective **Notification Rule** settings for more information.
+
+:::
+
 ## Requirements
 
 To create or enable a notification rule, a user must belong to a user group with a role that has the pipeline **Create/Edit** permission.
@@ -189,11 +194,6 @@ You can reference a secret within the Account scope using an expression with `ac
 
 ## Webhook Notifications
 
-:::info 
-
-Currently, this feature is behind the feature flag, `PIE_WEBHOOK_NOTIFICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Use Webhook notifications to inform an external application of an event. 
 

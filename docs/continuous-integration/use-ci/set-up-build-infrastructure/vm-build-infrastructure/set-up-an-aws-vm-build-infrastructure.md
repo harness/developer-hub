@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -36,15 +36,11 @@ This is an advanced configuration. Before beginning, you should be familiar with
 * Using the AWS EC2 console and interacting with AWS VMs.
 * [Harness key concepts](../../../../get-started/key-concepts.md)
 * [CI pipeline creation](../../prep-ci-pipeline-components.md)
-* [Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
-* [CI Build stage settings](../ci-stage-settings.md)
-* Running pipelines on other build infrastructures:
-   * [Building on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
-   * [Set up a local runner build infrastructure](../define-a-docker-build-infrastructure.md)
+* [Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
 * Drone VM Runners and pools:
   * [Drone documentation - VM runner overview](https://docs.drone.io/runner/vm/overview/)
   * [Drone documentation - Drone Pool](https://docs.drone.io/runner/vm/configuration/pool/)
-  * [Drone documentation - Amazon Runners](https://docs.drone.io/runner/vm/drivers/amazon/)
+  * [Drone documentation - Amazon drivers](https://docs.drone.io/runner/vm/drivers/amazon/)
   * [GitHub repository - Drone runner AWS](https://github.com/drone-runners/drone-runner-aws)
 
 :::
@@ -82,7 +78,7 @@ The recommended authentication method is an [IAM role](https://console.aws.amazo
 
 1. [SSH into your EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html).
 2. [Install Docker](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html#install_docker).
-3. [Install Docker Compose](https://docs.docker.com/compose/install/). You must install [Docker Compose version 3.7](https://docs.docker.com/compose/compose-file/compose-versioning/#version-37) or higher.
+3. [Install Docker Compose](https://docs.docker.com/compose/install/).
 4. Attach the IAM role to the EC2 VM. For instructions, go to the AWS documentation on [attaching an IAM role to an instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role).
 
 ## Configure the Drone pool on the AWS VM
@@ -137,12 +133,13 @@ The `pool.yml` file defines the VM spec and pool size for the VM instances used 
    mkdir /runner
    cd /runner
    ```
+
 2. In the `/runner` folder, create a `pool.yml` file.
 3. Modify `pool.yml` as described in the following example and the [Pool settings reference](#pool-settings-reference).
 
 ### Example pool.yml
 
-The following `pool.yml` example defines an Ubuntu pool and a Windows pool. You don't need both unless.
+The following `pool.yml` example defines both an Ubuntu pool and a Windows pool.
 
 ```yaml
 version: "1"
@@ -196,7 +193,7 @@ You can configure the following settings in your `pool.yml` file. You can also l
 
 | Setting | Type | Example | Description |
 | ------- | ---- | ------- | ----------- |
-| `name` | String | `name: windows_pool` | Unique identifier of the pool. You will need to specify this pool name in the Harness Manager when you set up the CI stage build infrastructure. |
+| `name` | String | `name: windows_pool` | Unique identifier of the pool. You will need to specify this pool name in Harness when you [set up the CI stage build infrastructure](#specify-build-infrastructure). |
 | `pool` | Integer | `pool: 1` | Warm pool size number. Denotes the number of VMs in ready state to be used by the runner. |
 | `limit` | Integer | `limit: 3` | Maximum number of VMs the runner can create at any time. `pool` indicates the number of warm VMs, and the runner can create more VMs on demand up to the `limit`.<br/>For example, assume `pool: 3` and `limit: 10`. If the runner gets a request for 5 VMs, it immediately provisions the 3 warm VMs (from `pool`) and provisions 2 more, which are not warm and take time to initialize. |
 | `platform` | Key-value pairs, strings | Go to [platform example](#platform-example). | Specify VM platform operating system (`os: linux` or `os: windows`). `arch` and `variant` are optional. `os_name: amazon-linux` is required for AL2 AMIs. The default configuration is `os: linux` and `arch: amd64`. |
@@ -316,9 +313,9 @@ For more information about delegates and delegate installation, go to [Delegate 
 1. Verify that the delegate and runner containers are running correctly. You might need to wait a few minutes for both processes to start. You can run the following commands to check the process status:
 
 	 ```
-	 $ docker ps
-	 $ docker logs DELEGATE_CONTAINER_ID
-	 $ docker logs RUNNER_CONTAINER_ID
+	 docker ps
+	 docker logs DELEGATE_CONTAINER_ID
+	 docker logs RUNNER_CONTAINER_ID
 	 ```
 
 2. In the Harness UI, verify that the delegate appears in the delegates list. It might take two or three minutes for the Delegates list to update. Make sure the **Connectivity Status** is **Connected**. If the **Connectivity Status** is **Not Connected**, make sure the Docker host can connect to `https://app.harness.io`.
@@ -331,10 +328,10 @@ The delegate and runner are now installed, registered, and connected.
 
 Configure your pipeline's **Build** (`CI`) stage to use your AWS VMs as build infrastructure.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. In Harness, go to the CI pipeline that you want to use the AWS VM build infrastructure.
 2. Select the **Build** stage, and then select the **Infrastructure** tab.
@@ -344,12 +341,12 @@ Configure your pipeline's **Build** (`CI`) stage to use your AWS VMs as build in
 
 <!-- ![](../static/ci-stage-settings-vm-infra.png) -->
 
-<docimage path={require('../static/ci-stage-settings-vm-infra.png')} />
+<DocImage path={require('../static/ci-stage-settings-vm-infra.png')} />
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```yaml
     - stage:
@@ -371,10 +368,10 @@ Configure your pipeline's **Build** (`CI`) stage to use your AWS VMs as build in
             ...
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Troubleshooting
 

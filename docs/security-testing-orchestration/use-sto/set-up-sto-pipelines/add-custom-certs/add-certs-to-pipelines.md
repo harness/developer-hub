@@ -76,7 +76,8 @@ This example shows how to include a PEM file in a pipeline that runs a scan usin
 
 The following illustrates an end-to-end pipeline that copies a PEM certificate to the default location, builds an image, and then scans the image using SonarQube (authorized using the certificate).
 
-<details><summary>YAML pipeline example</summary>
+<details>
+<summary>YAML pipeline example</summary>
 
 ```yaml 
 pipeline:
@@ -88,7 +89,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: dvja
+        connectorRef: CODEBASE_CONNECTOR
         build: <+input>
   stages:
     - stage:
@@ -105,11 +106,11 @@ pipeline:
               name: dind
               type: Service
               spec:
-                connectorRef: account.harnessImage
+                connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                 image: docker:dind
                 privileged: true
                 entrypoint:
-                  - dockerd-entrypoint.sh
+                  - dockerd
                 resources:
                   limits:
                     memory: 4Gi
@@ -121,7 +122,7 @@ pipeline:
                   name: export path
                   identifier: export_path
                   spec:
-                    connectorRef: DockerNoAuth
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: alpine
                     shell: Sh
                     command: |-
@@ -135,7 +136,7 @@ pipeline:
                   name: addcerts
                   identifier: addcert
                   spec:
-                    connectorRef: mydocker
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: alpine
                     shell: Sh
                     command: |-
@@ -158,7 +159,7 @@ pipeline:
                   name: build
                   identifier: build
                   spec:
-                    connectorRef: DockerNoAuth
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: maven:3.3-alpine
                     shell: Sh
                     command: |

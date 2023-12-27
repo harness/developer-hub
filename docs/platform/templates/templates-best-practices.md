@@ -14,7 +14,7 @@ This topic explains the best practices for template management.
 
 :::note
 
-For guidance on ramping up your teams using templates, go to [Templates ramp-up guide](/docs/continuous-delivery/ramp-up/pipeline-designer-role/rampup-templates).
+For guidance on ramping up your teams using templates, go to [Templates ramp-up guide](/docs/continuous-delivery/cd-onboarding/new-user/rampup-templates).
 
 :::
 
@@ -24,12 +24,12 @@ You can create templates at the account, org, or project scope and can configure
 
 The following table explains the permissions associated with templates:
 
-|**Permission**       |  **Description**     |
-|  ---  |  ---  |
-|  Create     | Can create a template.      |
-|  Edit or Delete     |  Can edit or delete an existing template.     |
-|  Access     |  Can add the template to a pipeline for deployment or build.     |
-|  Copy     |   Can copy the template configuration to a pipeline.    |
+| **Permission** | **Description**                                             |
+| -------------- | ----------------------------------------------------------- |
+| Create         | Can create a template.                                      |
+| Edit or Delete | Can edit or delete an existing template.                    |
+| Access         | Can add the template to a pipeline for deployment or build. |
+| Copy           | Can copy the template configuration to a pipeline.          |
 
 You can select the scope of the templates based on the following
 
@@ -106,8 +106,8 @@ pipeline:
                     skipDryRun: false
                     pruningEnabled: false
 
-## Step template reference in a pipeline
-## You will provide the templateRef and version to configure for the step
+              ## Step template reference in a pipeline
+              ## You will provide the templateRef and version to configure for the step
 
               - step:
                   name: Cleanup Demo
@@ -318,7 +318,7 @@ When you design a pipeline template, Harness recommends that provide all of your
 
 ```yaml
 template:
-## The name is the name of the pipeline when it's linked with a pipeline template
+  ## The name is the name of the pipeline when it's linked with a pipeline template
   name: "Golden Pipeline"
   type: Pipeline
   projectIdentifier: sandbox
@@ -402,11 +402,10 @@ template:
                   serviceOverrideInputs: <+input>
                   infrastructureDefinitions: <+input>
 
-## Below is the identifier for the pipeline template and the version label
+  ## Below is the identifier for the pipeline template and the version label
   identifier: End_2_End_Pipeline
   versionLabel: "1.0"
 ```
-
 
 ## Template versioning guidelines
 
@@ -422,7 +421,7 @@ You can create versions of your templates in Harness and Git.
 
 ### Remote template versioning
 
-- Harness creates a new file each time you create a version of a template. 
+- Harness creates a new file each time you create a version of a template.
 
   The file name is in the following format:
 
@@ -441,20 +440,17 @@ When tracking template changes, Harness versioning should not be combined with G
 
 ### Product Demo - Templates at the Org and Account level with Git Experience
 
-<!-- Video:
-https://harness-1.wistia.com/medias/bv9c2a8exg-->
-<docvideo src="https://harness-1.wistia.com/medias/bv9c2a8exg" />
-
+<DocVideo src="https://youtu.be/vCrQzQs0X3U" />
 
 ## Template referencing guidelines
 
-To reference a template at the account scope, use the following expression: 
+To reference a template at the account scope, use the following expression:
 
 ```
 account.<templateIdentifier>
 ```
 
-To reference a template at the organization scope, use the following expression: 
+To reference a template at the organization scope, use the following expression:
 
 ```
 org.<templateIdentifier>
@@ -496,9 +492,9 @@ When you reference resources in a template, you can only reference resources in 
 
 ### Use case 2: Org-level deploy stage template
 
-- You can't fix a service because there are no services at the org level. You define them as `<+input>`. When used in a pipeline, you can configure an expression in the runtime or to fix the service. 
+- You can't fix a service because there are no services at the org level. You define them as `<+input>`. When used in a pipeline, you can configure an expression in the runtime or to fix the service.
 
-- You can't fix an environment because there are no environments at the org level. You configure them as `<+input>`. You can select an environment within a project when referenced in a specific project's pipeline. 
+- You can't fix an environment because there are no environments at the org level. You configure them as `<+input>`. You can select an environment within a project when referenced in a specific project's pipeline.
 
 - Connector options when referenced within a template are related to the organization and account level for which the template is configured. The selection is also determined by the RBAC of the user configuring the template.
 
@@ -613,7 +609,7 @@ If you want to track changes to your template, Harness recommends that you updat
 
 :::info note
 
- Harness does not recommend combining inline and GitHub versioning if you want to track changes to your templates.
+Harness does not recommend combining inline and GitHub versioning if you want to track changes to your templates.
 
 :::
 
@@ -623,30 +619,30 @@ If you use a template to reference a pipeline, you must ensure that the pipeline
 
 ```yaml
 template:
-    name: Sample Template
-    identifier: Sample_Template
-    versionLabel: 0.0.1
-    type: Step
-    projectIdentifier: CD_Product_Team
-    orgIdentifier: default
-    description: "Shell Script Template"
-    tags: {}
+  name: Sample Template
+  identifier: Sample_Template
+  versionLabel: 0.0.1
+  type: Step
+  projectIdentifier: CD_Product_Team
+  orgIdentifier: default
+  description: "Shell Script Template"
+  tags: {}
+  spec:
+    type: ShellScript
+    timeout: 10m
     spec:
-        type: ShellScript
-        timeout: 10m
+      shell: Bash
+      onDelegate: true
+      source:
+        type: Inline
         spec:
-            shell: Bash
-            onDelegate: true
-            source:
-                type: Inline
-                spec:
-                    script: |-
-                        echo "Hello World"
-                        
-                        echo "This is Git to Harness, Hello!"
-            environmentVariables: []
-            outputVariables: []
-            executionTarget: {}
+          script: |-
+            echo "Hello World"
+
+            echo "This is Git to Harness, Hello!"
+      environmentVariables: []
+      outputVariables: []
+      executionTarget: {}
 ```
 
 You can manage the creation and state of your templates via our Terraform Provider. For more information, go to the [Harness platform template Terraform Provider resource](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_template).
@@ -740,6 +736,10 @@ template:
 
 - Harness warns you when a pipeline references a template that needs to be reconciled when you change it.
 
-- You can view the Git YAML differences for the pipeline and see which lines have been modified.
+  ![](./static/entities-require-reconcile.png)
+
+- You can view the Git YAML differences for the pipeline and see which lines have been modified. The differences are calculated based on the data, not exact string matches. Therefore, a different quote symbol, for example, `"` versus `'` for the same date value might not be recognized as a difference. This is not an issue or error.
 
 - To update the template, select **Save**. Harness reconciles the change making it the default state.
+
+For more information, go to [Reconcile pipeline template changes](/docs/platform/templates/reconcile-pipeline-templates).

@@ -24,7 +24,7 @@ Here's how JIT provisioning works:
 
 Before you can enable JIT provisioning, you must configure SAML SSO authentication.
 
-* Azure: [SAML SSO with Azure](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-azure)
+* Microsoft Entra: [SAML SSO with Microsoft Entra ID](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-azure)
 * Okta: [SAML SSO with Okta](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-okta)
 * OneLogin: [SAML SSO with OneLogin](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-onelogin)
 * Other: [SAML SSO with Keycloak](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-keycloak)
@@ -42,7 +42,7 @@ Before you can enable JIT provisioning, you must configure SAML SSO authenticati
 
    <!-- ![](./static/jit-user-provisioning.png) -->
 
-   <docimage path={require('./static/jit-user-provisioning.png')} />
+   <DocImage path={require('./static/jit-user-provisioning.png')} />
 
    When users log in to your Harness instance for the first time, and they use SAML SSO authentication, Harness automatically provisions any users that have the matching **JIT Validation Key** and **JIT Validation Value** in the SAML assertion.
 

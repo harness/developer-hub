@@ -18,7 +18,7 @@ If you are new to deployment freezes, review the following summary.
 <details>
 <summary>Deployment freeze summary</summary>
 
-A deployment freeze is a period of time during in which no new changes are made to a system or application. This ensures that a system or application remains stable and free of errors, particularly in the lead-up to a major event or release.
+A deployment freeze is a period of time during which no new changes are made to a system or application. This ensures that a system or application remains stable and free of errors, particularly in the lead-up to a major event or release.
 
 During a deployment freeze, only critical bug fixes and security patches might be deployed, and all other changes are put on hold until the freeze is lifted.
 
@@ -113,43 +113,57 @@ Now you can define the rules for the freeze window.
 
 Let's look at an account-level example that applies a freeze to all orgs and projects from July 3rd to 5th and notifies users by email (`john.doe@harness.io`) and Harness user group (All Account Users).
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 1. In **Overview**, click **Continue**.
-3. In **Coverage**, click **Add rule**.
-4. In **Name**, enter a name for the rule. 
+2. In **Coverage**, click **Add rule**.
+3. In **Name**, enter a name for the rule. 
    
    Rules are combined. You can add multiple rules and the freeze window is applied according to the sum of all rules.
 
    The remaining settings will depend on whether this freeze window is being created at the account, org, or project level. In this example, we're using the account-level.
-1. Click in **Organization** and select the org you want to freeze.
+
+4. To freeze services, in the **Services** box, select **Services**, and then select the services that you want to freeze.
+
+      If you want to freeze all services, select **All Services**. 
+      
+      If you want to include all services except a few, select **All Services**, select **Exclude specific Services**, select **Services** in the box that appears, and then select the services that you want to exclude.
+
+5.  To freeze environments, in the **Environments** box, select **Environments**, and then select the environments that you want to freeze.
+
+      If you want to freeze all environments, select **All Environments**. 
+      
+      If you want to include all environments except a few, select **All Environments**, select **Exclude specific Environments**, select **Environments** in the box that appears, and then select the environments that you want to exclude.
+
+6. Click in **Organization** and select the org you want to freeze.
    
       You can also click **Exclude specific Organizations** and select the orgs you want to exclude. This can be helpful if you selected **All Organizations** in **Organization**.
 
-2. In **Projects**, select the projects to freeze in the orgs you selected.
+7. In **Projects**, select the projects to freeze in the orgs you selected.
 
       You can also click **Exclude specific Projects** and select the projects you want to exclude. This can be helpful if you selected **All Projects** in **Projects**.
 
-3. In **Environment Type**, select **All Environments**, **Production**, or **Pre-Production**. For example, this setting allows you to keep deploying pre-production app versions without worrying that production versions will be impacted.
-4. Click the checkmark to add the rule.
+8. In **Environment Type**, select **All Environments**, **Production**, or **Pre-Production**. For example, this setting allows you to keep deploying pre-production app versions without worrying that production versions will be impacted.
+
+9. Click the checkmark to add the rule.
 
    The coverage will look something like this:
 
    ![coverage](../cd-deployments-category/static/deployment-freeze-coverage.png)
 
-5. Click **Continue**.
+10. Click **Continue**.
 
    In **Schedule**, you define when the freeze windows starts and stops.
 
-6. In **Timezone**, select a timezone.
-7. In **Start Time**, select a calendar date and time for the freeze window to start.
-8. In **End Time**, select a duration (for example `1d`) or an end date and time. A minimum of `30m` is required.
+11. In **Timezone**, select a timezone.
+12. In **Start Time**, select a calendar date and time for the freeze window to start.
+13. In **End Time**, select a duration (for example `1d`) or an end date and time. A minimum of `30m` is required.
    
    For a duration, you can use:
    - `w` for weeks
@@ -157,7 +171,7 @@ import TabItem from '@theme/TabItem';
    - `h` for hours
    - `m` for minutes
 
-9.  In **Recurrence**, select how often to repeat the freeze window and a recurrence end date.
+14.  In **Recurrence**, select how often to repeat the freeze window and a recurrence end date.
     
     For recurrence, you can select: 
     - **Does not repeat**: to not repeat the recurrence of a freeze window. 
@@ -170,12 +184,12 @@ import TabItem from '@theme/TabItem';
 
    ![schedule](./static/deployment-freeze-schedule.png)
 
-10. Click **Save**.
+15. Click **Save**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 1. Click **YAML**.
 2. Paste the following YAML example:
@@ -220,10 +234,10 @@ freeze:
             - john.doe@harness.io
       enabled: true
 ```
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Notify users of freeze window events
 
@@ -231,7 +245,8 @@ You can notify Harness users and people outside of your Harness account using fr
 
 You can notify users of the following freeze window events:
 
-- Freeze window is enabled.
+- Freeze window is enabled. The notification is sent when you enable the freeze window.
+- Freeze window is enabled and active. The notification is sent at the deployment freeze's configured start time provided that the freeze window is enabled.
 - Deployments are rejected due to freeze window. This includes any trigger invocations that are rejected due to a freeze window.
   
 In **Freeze Notification Message**, you can add a custom notification message.
@@ -246,10 +261,10 @@ You can use the following notification methods:
 
 To enable notifications, do the following:
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. In a freeze window, click **Notify**.
 2. Click **Notifications**.
@@ -260,10 +275,10 @@ To enable notifications, do the following:
 7. Click **Finish**.
 8. Click **Apply Changes**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 1. In the freeze window, click **YAML**.
 2. Enter the freeze window YAML notification events and method. For example, this YAML uses all events and the Email and User Group methods:
@@ -274,6 +289,7 @@ To enable notifications, do the following:
       identifier: example
       events:
         - type: FreezeWindowEnabled
+        - type: OnEnableFreezeWindow
         - type: DeploymentRejectedDueToFreeze
         - type: TriggerInvocationRejectedDueToFreeze
       notificationMethod:
@@ -287,10 +303,10 @@ To enable notifications, do the following:
 ```
 For examples of all methods, see [Add a Pipeline Notification Strategy](../x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 
 ## Enabling and disabling freeze windows

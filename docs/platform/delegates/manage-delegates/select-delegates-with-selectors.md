@@ -21,7 +21,7 @@ If no delegates are selected for a CD step's **Delegate Selector** setting, Harn
 A delegate tag with the same name as your delegate is automatically added to your delegate during the configuration process. You can add one or more comma-separated tags on the `helm` command line or in the Kubernetes YAML file, as shown in the following example.
 
 ```
-...  
+...
     env:
     ....
     - name: DELEGATE_TAGS
@@ -107,7 +107,7 @@ Delegates can be selected for the connector used in a stage's **Infrastructure**
 
 ![](./static/select-delegates-with-selectors-25.png)
 
-import Selector from '/docs/platform/delegates/shared/selector-infrastructure.md'
+import Selector from '/docs/platform/shared/selector-infrastructure.md'
 
 <Selector />
 
@@ -127,16 +127,14 @@ Go to [Delegate Group Tags Resource](https://harness.io/docs/api/tag/Delegate-Gr
 
 ### Defining delegate selectors as a fixed value, runtime input, or expression
 
-Delegate selectors in pipeline, stage, step, and step group can be defined as a fixed value, runtime input, or expression. 
+Delegate selectors in pipeline, stage, step, and step group can be defined as a fixed value, runtime input, or expression.
 
 If you're using expressions, there are two options, either the entire list of delegate selectors can be an expression or elements of delegate selectors can be expressions.
 
 Here's a video about delegate selectors defined as expression:
 
-<!-- Video:
-https://harness-24.wistia.com/medias/8ffcic0xpi-->
-<docvideo src="https://harness-24.wistia.com/medias/8ffcic0xpi" />
+<DocVideo src="https://harness-24.wistia.com/medias/8ffcic0xpi" />
 
 ### See also
 
-* [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md)
+- [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md)

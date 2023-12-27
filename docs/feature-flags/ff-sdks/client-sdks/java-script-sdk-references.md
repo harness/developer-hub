@@ -32,7 +32,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.18.0.**
+The current version of this SDK is **1.21.0.**
 
 ## Requirements
 
@@ -113,8 +113,8 @@ To connect to the correct Environment that you set up on the Harness Platform, y
 
 <details>
 <summary>What is a target?</summary> 
-Targets are used to control which users see which variation of a Feature Flag, for example, if you want to do internal testing, you can enable the flag for some users and not others. When creating a target, you give it a name and a unique identifier. Often targets are users but you can create a target from anything that can be uniquely identified, such as an app or a machine.  
-  </details>
+Targets are used to control which users see which variation of a Feature Flag, for example, if you want to do internal testing, you can enable the flag for some users and not others. When creating a target, you give it a name and a unique identifier. Often targets are users but you can create a target from anything that can be uniquely identified, such as an app or a machine.
+</details>
 
 For more information about targets, go to [Targeting users with flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
@@ -171,8 +171,6 @@ interface Options {
   pollingEnabled?: boolean
   streamEnabled?: boolean
   debug?: boolean
-  allAttributesPrivate?: boolean // **Depreacated**
-  privateAttributeNames?: string[] // **Depreacated**
 }
 ```
 
@@ -186,8 +184,6 @@ interface Options {
 | streamEnabled         | Set to `true` to enable streaming mode. Set to `false` to disable streaming mode.                                                 | `true`                                                 |
 | pollingEnabled        | Set to `true` to enable polling mode. Set to `false` to disable polling mode.                                                     | `true`                                                 |
 | debug                 | Set to `true` to enable SDK debug level logging. Set to `false` to disable debug level logging                                    | `false`                                                |
-| allAttributesPrivate  | **Deprecated** no longer has any effect                                                                                           | No default - deprecated                                |
-| privateAttributeNames | **Deprecated** no longer has any effect                                                                                           | No default - deprecated                                |
 
 
 ### Complete the initialization
@@ -416,7 +412,7 @@ var initialize = HarnessFFSDK.initialize
       var Event = HarnessFFSDK.Event  
   
       var log = msg => {  
-        document.querySelector('#log').innerHTML += `${msg}\n`  
+        document.querySelector('#log').innerHTML += `$\{msg}\n`  
       }  
   
       var cf = initialize(  

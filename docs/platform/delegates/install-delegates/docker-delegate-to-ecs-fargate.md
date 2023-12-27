@@ -14,6 +14,10 @@ You can use Harness NextGen to deploy a Docker delegate to Amazon Elastic Contai
 Delegate scope for a delegate for Amazon ECS is based on the token you use.
 :::
 
+import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
+
+<Addperm />
+
 ## Deploy a delegate to Amazon ECS 
 
 Use the following steps to deploy a delegate to an Amazon ECS cluster. This process requires a delegate an immutable image. For more information, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types).
@@ -32,17 +36,10 @@ For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/inst
 
 1. Copy the following task `spec` into a file. Save the file as `task-spec.json`.
 
-   ```
+   ```json
      {
        "containerDefinitions": [
          {
-           "portMappings": [
-             {
-               "hostPort": 8080,
-               "protocol": "tcp",
-               "containerPort": 8080
-             }
-           ],
            "cpu": 1,
            "environment": [
              {
@@ -112,7 +109,7 @@ For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/inst
    | `DELEGATE_TOKEN` | The delegate token stored in your Harness account. |
    | `MANAGER_HOST_AND_PORT` | Information about your manager host. This depends on the Harness production cluster you use: Prod1: https://app.harness.io, Prod2: https://app.harness.io/gratis, or Prod3: https://app3.harness.io. |
    | `DELEGATE_NAME` | The name you gave your delegate. This is usually the name you specified during delegate installation. |
-   | `IMAGE` | Use the most recent delegate image from https://hub.docker.com/r/harness/delegate/{tags}. The correct image uses an image tag in the following format: `harness/delegate:yy.mm.xxxxx`. |
+   | `IMAGE` | Use the most recent delegate image from https://hub.docker.com/r/harness/delegate/\{tags}. The correct image uses an image tag in the following format: `harness/delegate:yy.mm.xxxxx`. |
    | `LOG_STREAMING_SERVICE_URL` | The URL of your log streaming service. This depends on the Harness production cluster you use: MANAGER_HOST_AND_PORT/log-service/ |
 
 ### Create your services
@@ -151,17 +148,10 @@ Use the following steps to create a task definition. For information about task 
 
 1. Copy the following task `spec` into a file. Save the file as `task-spec.json`.
 
-   ```
+   ```json
     {
       "containerDefinitions": [
         {
-          "portMappings": [
-            {
-              "hostPort": 8080,
-              "protocol": "tcp",
-              "containerPort": 8080
-            }
-          ],
           "cpu": 1,
           "environment": [
            {
@@ -230,14 +220,14 @@ Use the following steps to create a task definition. For information about task 
    | `DELEGATE_TOKEN` | The delegate token stored in your Harness account. |
    | `MANAGER_HOST_AND_PORT` | Information about your manager host. This depends on the Harness production cluster you use: Prod1: https://app.harness.io, Prod2: https://app.harness.io/gratis, or Prod3: https://app3.harness.io. |
    | `DELEGATE_NAME` | The name you gave your delegate. This is usually the name you specified during delegate installation. |
-   | `IMAGE` | Use the most recent delegate image from https://hub.docker.com/r/harness/delegate/{tags}. The correct image uses an image tag in the following format: `harness/delegate:yy.mm.xxxxx`. |
+   | `IMAGE` | Use the most recent delegate image from https://hub.docker.com/r/harness/delegate/\{tags}. The correct image uses an image tag in the following format: `harness/delegate:yy.mm.xxxxx`. |
    | `LOG_STREAMING_SERVICE_URL` | The URL of your log streaming service. This depends on the Harness production cluster you use: MANAGER_HOST_AND_PORT/log-service/ |
 
 ### Create the service
 
 1. Edit the `service.json` file as follows:
 
-   ```
+   ```json
    {
       "launchType": "FARGATE",
       "cluster": "<CLUSTER_NAME>",

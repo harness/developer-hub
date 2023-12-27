@@ -16,7 +16,7 @@ This topic provides an overview of templates in Harness.
 
 :::note
 
-For guidance on ramping up your teams using templates, go to [Templates ramp-up guide](/docs/continuous-delivery/ramp-up/pipeline-designer-role/rampup-templates).
+For guidance on ramping up your teams using templates, go to [Templates ramp-up guide](/docs/continuous-delivery/cd-onboarding/new-user/rampup-templates).
 
 :::
 
@@ -231,7 +231,7 @@ template:
                     spec:  
                         connectorRef: docbuilds  
                         namespace: default  
-                        releaseName: release-<+INFRA_KEY>  
+                        releaseName: release-<+INFRA_KEY_SHORT_ID>  
                 allowSimultaneousDeployments: false  
                 environmentRef: helmchart  
             execution:  

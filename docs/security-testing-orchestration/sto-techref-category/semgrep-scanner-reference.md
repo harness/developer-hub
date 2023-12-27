@@ -8,15 +8,19 @@ sidebar_position: 360
 
 You can scan repositories using [Semgrep](https://www.semgrep.com), an open-source static analysis engine for detecting dependency vulnerabilities and other issues in your code repositories. 
 
+The following tutorials include detailed examples of how to run a [Semgrep scan](https://semgrep.dev/docs/cli-reference) in a Run step and ingest the results:
+- [SAST code scans using Semgrep](/tutorials/security-tests/sast-scan-semgrep)
+- [Create a build-scan-push pipeline (STO only)](/tutorials/security-tests/build-scan-push-sto-only)
+
 
 ## Important notes for running Semgrep scans in STO
 
 <!-- 
 ### Docker-in-Docker requirements
 
-```mdx-code-block
+
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
+
 
 <StoDinDRequirements />
 
@@ -24,26 +28,35 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 ### Root access requirements
 
-```mdx-code-block
+
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-```
+
 
 <StoRootRequirements />
+
+### For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
+
 
 
 
 ## Semgrep step configuration
 
-The recommended workflow is to add a Semgrep step to a Security Tests or CI Build stage and then configure it as described below. 
+The recommended workflow is to add a Semgrep step to a Security Tests or CI Build stage and then configure it as described below.
 
 
 
 
 
 <details>
-    <summary>Semgrep scanner template</summary>
+<summary>Semgrep scanner template</summary>
 
-![](static/semgrep-step-config-example.png) 
+![](static/semgrep-step-config-example.png)
 
 </details>
 
@@ -54,19 +67,19 @@ The recommended workflow is to add a Semgrep step to a Security Tests or CI Buil
 
 #### Scan Mode
 
-```mdx-code-block
+
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-```
+
 
 <StoSettingScanMode />
 <StoSettingScanModeIngest />
 
 #### Scan Configuration
 
-```mdx-code-block
+
 import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-```
+
 
 <StoSettingProductConfigName />
 
@@ -77,11 +90,11 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 #### Type
 
-```mdx-code-block
+
 import StoSettingScanType from './shared/step_palette/_sto-ref-ui-scan-type.md';
 import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
 
-```
+
 <a name="scan-type"></a>
 <StoSettingScanType />
 <StoSettingScanTypeRepo />
@@ -89,9 +102,9 @@ import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-t
 
 #### Name 
 
-```mdx-code-block
+
 import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-```
+
 
 <StoSettingProductID />
 
@@ -99,18 +112,18 @@ import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 
 #### Variant
 
-```mdx-code-block
+
 import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-```
+
 
 <StoSettingTargetVariant  />
 
 <!-- 
 #### Workspace (_repository_)
 
-```mdx-code-block
+
 import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
-```
+
 
 <StoSettingTargetWorkspace  />
 
@@ -118,9 +131,9 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 
 ### Ingestion File
 
-```mdx-code-block
+
 import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-```
+
 
 <StoSettingIngestionFile  /> 
 
@@ -131,9 +144,9 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 ### Log Level
 
-```mdx-code-block
+
 import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-```
+
 
 <StoSettingLogLevel />
 
@@ -141,9 +154,9 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 ### Fail on Severity
 
-```mdx-code-block
+
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
 <StoSettingFailOnSeverity />
 
 
@@ -199,7 +212,7 @@ pipeline:
                     command: semgrep --sarif --config auto -o /harness/results.sarif /harness
                     envVariables:
                       SEMGREP_APP_TOKEN: <+secrets.getValue("semgrepkey")>
-                    connectorRef: account.harnessImage
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: returntocorp/semgrep
                     resources:
                       limits:
@@ -223,7 +236,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: mydelegate
+              connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -233,7 +246,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: mygitrepodvpwa
+        connectorRef: CODEBASE_CONNECTOR
         build: <+input>
 
 ```

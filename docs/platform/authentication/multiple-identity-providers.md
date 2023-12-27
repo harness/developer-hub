@@ -2,10 +2,10 @@
 title: Multiple identity providers
 description: Configure and use multiple IdPs for authentication.
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 :::important
 Currently, this feature is behind the feature flag `PL_ENABLE_MULTIPLE_IDP_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -37,38 +37,38 @@ To select a SAML provider, do the following:
 
 1. Select a SAML provider.
    
-   ```mdx-code-block
-   <Tabs>
-      <TabItem value="Azure">
-   ```
+   
+<Tabs>
+<TabItem value="Microsoft Entra ID">
+   
 
-   For steps to configure, go to [SAML SSO with Azure](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-azure).
+   For steps to configure, go to [SAML SSO with Microsoft Entra ID](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-azure).
 
-   ```mdx-code-block
-      </TabItem>
-      <TabItem value="Okta">
-   ```   
+
+</TabItem>
+<TabItem value="Okta">
+      
 
    For steps to configure, go to [SAML SSO with Okta](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-okta).
 
-   ```mdx-code-block
-      </TabItem>
+
+</TabItem>
       <TabItem value="OneLogin">
-   ```
+   
 
    For steps to configure, go to [SAML SSO with OneLogin](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-onelogin).
 
-   ```mdx-code-block
-      </TabItem>
-      <TabItem value="Others">
-   ``` 
+
+</TabItem>
+<TabItem value="Others">
+    
 
    For steps to configure, go to [SAML SSO with Keycloak](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-keycloak).
 
-   ```mdx-code-block
-      </TabItem>
-   </Tabs>
-   ```
+
+</TabItem>
+</Tabs>
+   
 
 2. Select **Continue**.
 3. Select **Submit**.

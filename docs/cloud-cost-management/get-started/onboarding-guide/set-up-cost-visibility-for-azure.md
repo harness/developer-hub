@@ -11,11 +11,11 @@ redirect_from:
 ---
 # Set up CCM for Azure
 
-```mdx-code-block
+
 import select_azure from './static/set-up-cost-visibility-for-azure-02.png'
 import tenant_info from './static/set-up-cost-visibility-for-azure-03.png'
 import run_now from './static/set-up-cost-visibility-for-azure-09.png'
-```
+
 
 Harness Cloud Cost Management (CCM) monitors the cloud costs of your Azure services. Connect your Azure account and set up Billing Export to get insights into your cloud infrastructure and Azure services such as Storage accounts, Virtual machines, Containers, and so on. CCM also allows you to optimize your instances and AKS clusters using intelligent cloud [AutoStopping rules](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-azure) 
 
@@ -43,29 +43,29 @@ To enable CCM for your Azure services (such as storage accounts, virtual machine
 
 Perform the following steps to connect to your Azure account:
 1. Create a new Kubernetes connector using one of the two options below:
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs queryString="tab-number">
 <TabItem value="4" label="From Account Settings">
-```
+
 1. Go to **Account Resources** > **Connectors**.
 2. Select **+ New Connector**.
 3. Under **Cloud Costs**, select **Azure**.
-```mdx-code-block
+
 </TabItem>
 <TabItem value="5" label="From Cloud Costs">
-```
+
 1. Go to **Setup** > **Cloud Integration**.  
 2. Select on **New Cluster/Cloud account**.
 3. Select **Azure**.
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 2. Perform the following tasks in the **Azure Connector** wizard.
 
 ### Overview
@@ -147,7 +147,7 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
 	1. In the **Storage account name**, enter the account name.
 	2. In **Storage Container**, enter the container name.
 	3. In **Storage Directory**, enter the directory name.
-	4. In **Report Name**, enter the report name.
+	4. In **Report Name**, enter the export name.
    
      ![](static/set-up-cost-visibility-for-azure-11.png)
 8. Select **Continue**.

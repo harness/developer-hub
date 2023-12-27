@@ -7,6 +7,10 @@ ECS network restrict allows you to restrict the network connectivity of containe
 
 ![ECS Network restrict](./static/images/ecs-network-restrict.png)
 
+:::tip
+This experiment is applicable to both serverless ECS tasks and those backed by EC2 instances. [These experiments](./ec2-and-serverless-faults#ec2-backed-and-serverless-faults) generally involve task-level chaos or access restrictions without causing direct in-container or in-VM disruptions.
+:::
+
 ## Use cases
 ECS network restrict:
 - Tests the resilience and performance of your ECS tasks when network access is restricted.

@@ -27,7 +27,7 @@ The Continuous Integration Administrator exam tests your knowledge and skills of
 
 <br />
 
-## Exam Objectives 
+## Exam Objectives
 
 <details>
 <summary>List of Objectives</summary>

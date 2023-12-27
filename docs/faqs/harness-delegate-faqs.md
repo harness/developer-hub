@@ -90,6 +90,24 @@ Harness connectors only use delegates that can connect to their resources and pe
 
 You could even have a delegate in one cloud platform use a resource in a separate cloud platform so long as there is connectivity.
 
+#### Can I change the delegate log file path?
+
+It is not possible to configure the delegate logs path. However, you can create a symlink for the `delegate.log` files and store them in a different directory using the `INIT_SCRIPT` environment variable. To do this, simply replace `YOUR_PATH` with the directory where you want to store your log files in the example below.
+
+```yaml
+- name: INIT_SCRIPT
+          value: "mkdir YOUR_PATH && ln -s YOUR_PATH/newdelegate.log delegate.log"
+```
+
+After you create your delegate, you can verify your log file path.
+
+```
+root@d1delegate-pxxdbf-0:/opt/harness-delegate# ls delegate.log
+delegate.log
+root@d1delegate-pxxdbf-0:/opt/harness-delegate# ls YOUR_PATH/*
+YOUR_PATH/newdelegate.log
+```
+
 ### Delegate installation
 
 For delegate installation instructions, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
@@ -183,7 +201,7 @@ Delegate selectors use the tags you add to delegates. For more information, go t
 * **Allowlist:** After a delegate is validated for a task, it is added to an allowlist for that task and will likely be used again for that task. The criteria is the URL associated with the task, such as a connection to a cloud platform, repository, or API. A delegate is allowed to perform all tasks using that URL. The time-to-live (TTL) for the allow list is six hours; the TTL is reset with each successful task validation.
 * **Deny list:** If a delegate fails to perform a task, that delegate is added to a deny list for that task and will not be tried again. The TTL for denial is 5 minutes. This is true if there is only one delegate and even if the delegate is selected for that task with a selector, such as with a shell script command in a workflow.
 
-import Selector from '/docs/platform/delegates/shared/selector-infrastructure.md'
+import Selector from '/docs/platform/shared/selector-infrastructure.md'
 
 <Selector />
 

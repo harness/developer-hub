@@ -21,6 +21,8 @@ VMware Windows Time Chaos simulates a time skew scenario on Windows OS based VMw
 - Adequate vCenter permissions should be provided to access the hosts and the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. 
+- Run the fault with a user possessing admin rights, preferably the built-in Administrator, to guarantee permissions for memory stress testing. [See how to enable the built-in Administrator in Windows](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/enable-and-disable-the-built-in-administrator-account?view=windows-11).
+
 - VM credentials can be passed as secrets or as a chaos enginer environment variable.
 
 ```yaml
@@ -51,6 +53,16 @@ stringData:
         <td> Name of the target VM. </td>
         <td> For example, <code>win-vm-1</code> </td>
       </tr>
+      <tr>
+          <td> VM_USER_NAME </td>
+          <td> Username of the target VM.</td>
+          <td> For example, <code>vm-user</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_PASSWORD </td>
+          <td> User password for the target VM. </td>
+          <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
+      </tr>
     </table>
     <h3>Optional fields</h3>
     <table>
@@ -62,22 +74,22 @@ stringData:
       <tr>
         <td> OFFSET </td>
         <td> Time offset to induce in the VM. </td>
-        <td> For example, <code>+24h</code> </td>
+        <td> For example, <code>+24h</code>. For more information, go to <a href="#offset"> offset.</a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 60s. </td>
+        <td> Default: 60 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> Default: 0s. </td>
+        <td> Default: 0 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Default: parallel. Supports serial sequence as well. </td>
+        <td> Default: parallel. Supports serial and parallel sequence. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
     </table>
 

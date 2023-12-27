@@ -6,13 +6,7 @@ sidebar_position: 7
 
 You can set webhook triggers to run specific pipeline stages using the [Allow selective stage(s) executions?](/docs/platform/pipelines/run-specific-stage-in-pipeline/) option. 
 
-:::note
-
-Currently, this feature is behind the feature flag, `CDS_NG_TRIGGER_SELECTIVE_STAGE_EXECUTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-import Variables from '/docs/platform/triggers/shared/variables-not-supported.md'
+import Variables from '/docs/platform/shared/variables-not-supported.md'
 
 <Variables />
 

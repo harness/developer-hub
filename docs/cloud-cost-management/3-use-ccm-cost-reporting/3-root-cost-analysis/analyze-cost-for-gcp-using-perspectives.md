@@ -54,7 +54,7 @@ Perform the following steps to add filters.
 1. In **Cloud Costs**, select **Perspectives**, and then select the GCP perspective.
 2. Select **add filter**.
 
- <docimage path={require('./static/analyze-cost-for-gcp-using-perspectives-15.png')} width="40%" height="40%" title="Click to view full size image" />
+ <DocImage path={require('./static/analyze-cost-for-gcp-using-perspectives-15.png')} width="40%" height="40%" title="Click to view full size image" />
    
 
 3. Select **GCP**.
@@ -70,7 +70,7 @@ Perform the following steps to add filters.
    - If you Group By on **GCP: Invoice Month**, then the data in the grid and chart will be presented in `yyyymm` format.
 :::
 
-  <docimage path={require('./static/disabled-time-filter.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/disabled-time-filter.png')} width="60%" height="60%" title="Click to view full size image" />
 
 5. Select the operator. These operators are displayed depending on the selected filter. For example, for the Invoice Month filter, the only operator is IN. 
 
@@ -82,7 +82,7 @@ Perform the following steps to add filters.
 	* **LIKE**: Includes the cost of all items that matches the specified condition.
 6. Select value for your filter. You can select multiple values. You can also filter and customize your result using the search option.
    
-     <docimage path={require('./static/analyze-cost-for-gcp-using-perspectives-16.png')} width="60%" height="60%" title="Click to view full size image" />
+     <DocImage path={require('./static/analyze-cost-for-gcp-using-perspectives-16.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 ### Next Steps

@@ -21,8 +21,9 @@ VMware Windows Service Stop simulates a service stop scenario on Windows OS base
 - Adequate vCenter permissions should be provided to access the hosts and the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. 
-- VM credentials can be passed as secrets or as a chaos enginer environment variable.
+- Run the fault with a user possessing admin rights, preferably the built-in Administrator, to guarantee permissions for memory stress testing. [See how to enable the built-in Administrator in Windows](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/enable-and-disable-the-built-in-administrator-account?view=windows-11).
 
+- VM credentials can be passed as secrets or as a chaos enginer environment variable.
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -51,6 +52,21 @@ stringData:
         <td> Name of the target VM. </td>
         <td> For example, <code>win-vm-1</code> </td>
       </tr>
+      <tr>
+          <td> VM_USER_NAME </td>
+          <td> Username of the target VM.</td>
+          <td> For example, <code>vm-user</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_PASSWORD </td>
+          <td> User password for the target VM. </td>
+          <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
+      </tr>
+      <tr>
+        <td> SERVICE_NAMES </td>
+        <td> Comma separated list of service names to stop. </td>
+        <td> For example, <code>service1,service2</code>. For more information, go to <a href="#service-names"> service names. </a> </td>
+      </tr>
     </table>
     <h3>Optional fields</h3>
     <table>
@@ -60,38 +76,33 @@ stringData:
         <th> Notes </th>
       </tr>
       <tr>
-        <td> SERVICE_NAMES </td>
-        <td> Comma separated list of service names to stop. </td>
-        <td> For example, <code>service1,service2</code> </td>
-      </tr>
-      <tr>
         <td> FORCE </td>
         <td> If set to "enable", the service will be forcefully stopped. </td>
-        <td> Default: enable. </td>
+        <td> Default: enable. For more information, go to <a href="#force"> force. </a></td>
       </tr>
       <tr>
         <td> SELF_HEALING_SERVICE </td>
         <td> If set to "enable", the service will be restarted after chaos injection. </td>
-        <td> Default: disable. </td>
+        <td> Default: disable. For more information, go to <a href="#self-healing-service"> self-healing service. </a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 60s. </td>
+        <td> Default: 60 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> Default: 0s. </td>
+        <td> Default: 0 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Default: parallel. Supports serial sequence as well. </td>
+        <td> Default: parallel. Supports serial and parallel sequence. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
     </table>
 
-### Service Names
+### Service names
 
 The `SERVICE_NAMES` environment variable specifies the service names to stop on the target Windows VM.
 
@@ -147,7 +158,7 @@ spec:
           value: 'enable'
 ```
 
-### Self Healing Service
+### Self-healing service
 
 The `SELF_HEALING_SERVICE` environment variable specifies whether the service should be restarted after chaos injection.
 

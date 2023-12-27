@@ -12,7 +12,11 @@ Use a Harness Google Cloud Platform (GCP) connector to integrate GCP with Harnes
 
 You can use the GCP connector to connect to Kubernetes clusters in GCP. You can also use the [platform-agnostic Kubernetes Cluster connector](kubernetes-cluster-connector-settings-reference.md).
 
-## Kubernetes role requirements
+## Role requirements
+
+Certain roles are required in your GCP account, depending on how you are using the GCP connector.
+
+### GKE/Kubernetes role requirements
 
 If you use the GCP connector to connect to GKE, the GCP service account used for any credentials requires the **Kubernetes Engine Developer** and **Storage Object Viewer** permissions.
 
@@ -26,7 +30,7 @@ Harness supports GKE 1.19 and later. If you use a version prior to GKE 1.19, ple
 
 :::
 
-## GCS and GCR role requirements
+### GCS and GCR role requirements
 
 For Google Cloud Storage (GCS) and Google Container Registry (GCR), the following roles are required:
 
@@ -35,16 +39,16 @@ For Google Cloud Storage (GCS) and Google Container Registry (GCR), the followin
 
 For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
 
-Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`. Registry host name is declared in, for example, the **Host** field in the [Build and Push to GCR step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md).
+Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host, for example `gcr.io`. Registry host name is declared in your step settings. For example, you can declare it in the **Host** field in the [Build and Push to GCR step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md).
 
-## Google Artifact Registry role requirements
+### GAR role requirements
 
 For Google Artifact Registry, the following roles are required:
 
 * Artifact Registry Reader
 * Artifact Registry Writer
 
-## Google Cloud Operations Suite (Stackdriver) requirements
+### Google Cloud Operations Suite (Stackdriver) requirements
 
 Most APM and logging tools are added to Harness as Verification Providers. For Google Cloud's operations suite (formerly Stackdriver), use the GCP connector.
 
@@ -57,39 +61,39 @@ For more information, go to the Google documentation on [Access control](https:/
 
 ## Proxies and GCP with Harness
 
-If you are using a proxy server in your GCP account, and you want to use GCP services with Harness, you must set the following to **not** use your proxy:
+If you are using a proxy server in your GCP account, and you want to use GCP services with Harness, make sure the following items **don't** use your proxy:
 
 * `googleapis.com`: For details, go to the Google documentation on [Proxy servers](https://cloud.google.com/storage/docs/troubleshooting#proxy-server).
 * The `token_uri` value from your Google Service Account: For details, go to the Google documentation on [Creating service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys).
 
 ## GCP connector settings
 
-GCP connector settings include:
-* **Name:** The unique name for the connector
-* **Id:** Go to [Entity Identifier Reference](../../../references/entity-identifier-reference.md)
-* **Description:** Text string
-* **Tags:** Go to [Tags Reference](../../../references/tags-reference.md)
-* **Details:** Provide credentials that enable Harness to connect to your GCP account. There are two options:
-  * Select **Specify credentials here** to use a GCP service account key.
-  * Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its authentication credentials from the Harness Delegate that is running in GCP.
-* **Select connectivity mode**: Select whether Harness should communicate with GCP directly through the Harness Platform, directly through OIDC, or indirectly through a Harness Delegate in GCP. If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), you must select **Connect through Harness Platform**.
+The GCP connector has the following settings.
 
-:::info OIDC
+### Overview settings
 
-OpenID Connect (OIDC) is a new connectivity mode you can use to communicate directly with GCP using a GCP connector. Currently, this connectivity mode is compatible with Harness Cloud build infrastructure only. This feature is currently behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+* **Name:** The unique name for the connector.
+* **Id:** Harness automatically creates an **Id** ([Entity Identifier](../../../references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** during initial connector creation. Once saved, the **Id** can't be changed.
+* **Description:** Optional.
+* **Tags:** For information about tags, go to the [Tags reference](../../../references/tags-reference.md).
 
-:::
+### Details settings
 
-<details>
-<summary>Store service account keys as Harness secrets</summary>
+Provide credentials that enable Harness to connect to your GCP account.
 
-You can store a GCP service account key in a [Harness Encrypted Text secret](/docs/platform/secrets/add-use-text-secrets).
+#### Specify credentials here
+
+Select this option to use a GCP service account key.
+
+You can store a GCP service account keys as [Harness Encrypted File Secrets](/docs/platform/secrets/add-file-secrets).
 
 To obtain the Google Cloud's service account key file, go to the Google documentation on [Creating and managing service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). JSON format is required.
 
 ![](./static/gcs-connector-settings-reference-00.png)
 
-</details>
+#### Use the credentials of a specific Harness Delegate
+
+Select this option to allow the connector to inherit its authentication credentials from the Harness Delegate that is running in GCP.
 
 <details>
 <summary>Learn more about credential inheritance</summary>
@@ -103,25 +107,38 @@ To obtain the Google Cloud's service account key file, go to the Google document
 
 </details>
 
-<details>
-<summary>Learn more about connectivity modes</summary>
+### Select Connectivity Mode
 
-There are three connectivity modes for GCP connectors:
+Select how you want Harness to communicate with GCP. The available options depend on what you chose for **Details**.
 
-* **Connect through Harness Platform:** Use a direct, secure communication between Harness and GCP. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
-* **Connect through a Harness Delegate:** Harness communicates with GCP through a Harness Delegate in GCP. You must choose this option if you chose to inherit delegate credentials. If connecting through a Harness Delegate, select either:
-   * **Use any available Delegate**: Harness selects an available delegate at runtime. To learn how Harness selects delegates, go to [Delegate overview](../../../delegates/delegate-concepts/delegate-overview.md).
-   * **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Use delegate selectors](../../../delegates/manage-delegates/select-delegates-with-selectors.md). You can select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate installation overview](../../../delegates/install-delegates/overview).
-* **Use OpenID Connect (OIDC)**: Use OIDC authentication to access public cloud resources without secrets or credentials.
-   * In the case of accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to Harness GCP connector. You must provide the following information:
-      * Workload Pool ID - This identifies the workload pool created on the GCP side and it is the Pool ID value.
-      * Provider ID - This identifies the OIDC provider configured on the GCP side and it is the Provider ID value.
-      * BILLING_PROJECT_NUMBER - The project number or ID used for quota and billing. The principal needs to have `serviceusage.services.use` permission on this project. This has to be the GCP Project number that you use to configure the workload identify federation.
+#### Connect through Harness Platform
 
-</details>
+Harness communicates with GCP through a direct, secure communication between Harness and GCP. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
 
-## See also
+#### Connect through a Harness Delegate
 
-* [AWS Connector Settings Reference](aws-connector-settings-reference.md)
-* [Kubernetes Cluster Connector Settings Reference](kubernetes-cluster-connector-settings-reference.md)
+Harness communicates with GCP indirectly through a Harness Delegate that is running in GCP. You must choose this option if you chose to [inherit delegate credentials](#use-the-credentials-of-a-specific-harness-delegate). If connecting through a Harness Delegate, select either:
 
+* **Use any available Delegate**: Harness selects an available delegate at runtime. To learn how Harness selects delegates, go to [Delegate overview](../../../delegates/delegate-concepts/delegate-overview.md).
+* **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Use delegate selectors](../../../delegates/manage-delegates/select-delegates-with-selectors.md). You can select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate installation overview](../../../delegates/install-delegates/overview).
+
+#### Use OpenID Connect (OIDC)
+
+Harness communicates with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials.
+
+:::note
+
+OpenID Connect (OIDC) is a new connectivity mode you can use to communicate directly with GCP using a GCP connector.
+
+Currently, this connectivity mode is compatible with Harness Cloud build infrastructure only.
+
+This feature is currently behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+In the case of accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to Harness GCP connector. You must provide the following information:
+
+* Workload Pool ID: This identifies the workload pool created on the GCP side and it is the Pool ID value.
+* Provider ID: This identifies the OIDC provider configured on the GCP side and it is the Provider ID value.
+* Project ID: The project number of the Google Cloud Project that is used to create a workload identity pool.
+* Service Account Email: This is the service account that was linked to the workload identity pool in the last step.

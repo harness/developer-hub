@@ -72,7 +72,7 @@ These settings are for the [Harness SSCA module](/docs/software-supply-chain-ass
 [Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are available to all steps in the stage. There are many uses for these variables. For some examples, go to:
 
 * [Build images without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push.md)
-* [Set kaniko runtime flags](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md#set-kaniko-runtime-flags)
+* [Set plugin runtime flags](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md#set-plugin-runtime-flags)
 
 ## Infrastructure
 
@@ -82,14 +82,14 @@ Infrastructure is where the build runs the steps in this stage. It is a build fa
 
 The first stage requires you to configure a build infrastructure. In stages after the first, you can either **Propagate from an existing stage** or **Use a New Infrastructure**.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="cloud" label="Cloud">
-```
+
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -100,10 +100,10 @@ The following **Platform** settings are available:
 * **Select the Operating System:** Select the relevant OS.
 * **Select the Architecture:** Select the relevant architecture.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="kubernetes" label="Kubernetes" default>
-```
+
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -232,7 +232,37 @@ A list of [`nodeSelectors`](https://kubernetes.io/docs/concepts/scheduling-evict
 
 ### Tolerations
 
-A list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) that allow (but do not require) Build stage pods to be scheduled onto nodes with matching taints.
+A list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) that allow (but do not require) Build stage pods to be scheduled onto nodes with matching taints. For example:
+
+```yaml
+              tolerations:
+                - effect: NoSchedule
+                  key: key1
+                  operator: Equal
+                  value: value1
+                - effect: NoSchedule
+                  key: key2
+                  operator: Equal
+                  value: value2
+```
+
+#### Multiple tolerations with the same key
+
+Keys are reserved keywords used to validate unique FQNs. If you have multiple tolerations with the same key, you must include an `identifier` to differentiate them. For example:
+
+```yaml
+              tolerations:
+                - identifier: identifier1
+                  effect: NoSchedule
+                  key: key1
+                  operator: Equal
+                  value: value1
+                - identifier: identifier2
+                  effect: NoSchedule
+                  key: key1
+                  operator: Equal
+                  value: value2
+```
 
 ### Host Names
 
@@ -248,10 +278,10 @@ If you use large images in your Build stage's steps, you might find that the ini
 
 By default, [Harness pulls certain images from public Docker Hub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="local" label="Local">
-```
+
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -262,10 +292,10 @@ The following **Platform** settings are available:
 * **Select the Operating System:** Select the relevant OS.
 * **Select the Architecture:** Select the relevant architecture.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="vm" label="VMs">
-```
+
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -277,10 +307,10 @@ The following **Platform** settings are available:
 * **Pool Name:** Enter the pool name as specified in the `pool.yml` setup file in your build infrastructure.
 * **Override Image Connector:** By default, [Harness pulls certain images from public Docker Hub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Execution
 

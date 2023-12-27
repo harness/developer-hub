@@ -1,14 +1,14 @@
 This topic provides the Harness Cloud Cost Management supported platforms and feature support matrix: 
 
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Cost Reporting" label="Cost Reporting">
-```
+
 
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **RBAC Support** |
 | --- | --- | --- | --- | --- | --- |
@@ -245,10 +245,10 @@ The following data can be consumed through dashboards:
 </details>
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Cost Optimization" label="Cost Optimization">
-```
+
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **RBAC Support** |
 | --- | --- | --- | --- | --- | --- |
 |AutoStopping | ✅  | ✅  | ✅  | ✅ \*  | ✅ |
@@ -459,10 +459,10 @@ The recommendations are computed by analyzing the past utilization of CPU and me
 </details>
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Cost Governance" label="Cost Governance">
-```
+
 
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **RBAC Support** |
 | --- | --- | --- | --- | --- | --- |
@@ -580,10 +580,10 @@ Harness CCM Budgets allow you to set custom budgets and receive alerts when your
 
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 :::important note
 Harness does not currently support AWS China regions.
 :::
@@ -617,6 +617,7 @@ The following table provides the feature support matrix for CCM on Harness Self-
 :::note
 - Perspective preferences are not supported on Harness SMP.
 - The cost data for Kubernetes workloads will be derived from the public pricing provided by the respective cloud provider.
+- Tracking recommendation lifescyle through Jira and ServiceNow is not supported in Air-gapped environments.
 :::
 
 ### CCM on air-gapped environment

@@ -37,7 +37,6 @@ export default function IDP() {
           <div className={styles.content}>
             <p>
               A home for developers to create, manage, and explore software.
-              This module is currently in BETA.
             </p>
           </div>
         </div>

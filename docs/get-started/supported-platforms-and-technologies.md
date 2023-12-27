@@ -84,25 +84,31 @@ Harness Feature Flags supports [client-side and server-side SDKs](../feature-fla
 
 ### Supported client-side SDKs
 
-```mdx-code-block
+
 import Ff from '/docs/feature-flags/shared/ff-supported-platforms-shared.md';
-```
+
 
 <Ff />
 
 ### Supported server-side SDKs
 
-```mdx-code-block
+
 import Ffs from '/docs/feature-flags/shared/ff-supported-platforms-shared-server.md';
-```
+
 
 <Ffs />
 
-## Harness Chaos Engineering
+## Chaos Engineering
 
 Perform chaos experiments on applications in your infrastructure, such as a Kubernetes cluster. Use predefined or custom workflow templates.
 
 Go to [Introduction to Chaos Module](../chaos-engineering/get-started/overview).
+
+## Code Repository
+
+Manage code within Harness and accelerate development with security at scale.
+
+The [Harness Code Repository module](/docs/code-repository/code-supported.md) is a source code management (SCM) tool that fosters developer collaboration and accelerates innovation while keeping security and compliance in mind. Git-based repositories are seamlessly integrated across your software delivery processes in Harness. Collaborative code reviews with checks and rules enforcement foster teamwork, reduce risk, and maintain code quality.
 
 ## Collaboration
 
@@ -185,16 +191,16 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 |                                     |                       |                       |
 | ----------------------------------- | --------------------- | --------------------- |
 | **Manifest Type**                   | **Required Tool/SDK** | **Certified Version** |
-| Kubernetes                          | kubectl               | v1.25.6               |
+| Kubernetes                          | kubectl               | v1.27.0               |
 |                                     | go-template           | v0.4.1                  |
-| Helm                                | kubectl               | v1.25.6               |
-|                                     | helm                  | v3.9.2                |
-| Helm (chart is stored in GCS or S3) | kubectl               | v1.25.6               |
-|                                     | helm                  | v3.9.2                |
+| Helm                                | kubectl               | v1.27.0               |
+|                                     | helm                  | v3.11.0                |
+| Helm (chart is stored in GCS or S3) | kubectl               | v1.27.0               |
+|                                     | helm                  | v3.11               |
 |                                     | chartmuseum           | v0.8.2 and v0.12.0    |
-| Kustomize                           | kubectl               | v1.25.6               |
+| Kustomize                           | kubectl               | v1.27.0               |
 |                                     | kustomize             | v4.5.4                |
-| OpenShift                           | kubectl               | v1.25.6               |
+| OpenShift                           | kubectl               | v1.27.0                |
 |                                     | oc                    | v4                    |
 
 ### Native Helm deployments
@@ -204,8 +210,8 @@ For [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platform
 |                   |                                                 |                       |
 | ----------------- | ----------------------------------------------- | --------------------- |
 | **Manifest Type** | **Required Tool/SDK**                           | **Certified Version** |
-| Helm Chart        | helm                                            | v3.9.2                |
-|                   | kubectlRequired if Kubernetes version is 1.16+. | v1.25.6               |
+| Helm Chart        | helm                                            | v3.11                |
+|                   | kubectlRequired if Kubernetes version is 1.16+. | v1.27.0               |
 
 ### Install a Delegate with custom SDK and 3rd-party tool binaries
 

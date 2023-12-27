@@ -20,7 +20,7 @@ module.exports = function (context) {
                 return;
 
               }
-               console.log("Here")
+             
               let button = document.createElement("button");
               let span = document.createElement("span");
               let img = document.createElement("img");
@@ -53,7 +53,10 @@ module.exports = function (context) {
                     var b = document.getElementsByTagName("script")[0];
                     b.parentNode.insertBefore(a, b);
                   })();
-                  _refiner("showForm", "9afbf970-3859-11ed-91de-cb8481e90a69", true);
+                  _refiner("showForm", "9afbf970-3859-11ed-91de-cb8481e90a69", true)
+                  _refiner("addToResponse", {
+                    currentUrl: window.location.href,
+                  });
                 } catch (error) {
                   console.error(error);
                 }

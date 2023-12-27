@@ -11,6 +11,11 @@ Event preference or log feedback allows you to customize the event type, enhanci
 After running log verification as part of the verify step, you can review the detected logs and provide feedback. This feedback is taken into account during subsequent verifications. The feedback is provided in the form of a risk value assigned to each log. By providing log feedback and assigning appropriate risk values, you can fine-tune the verification outcome to better suit your specific requirements and context.
 
 ### Set event preference
+:::note
+
+Currently, this feature is behind the feature flag `SRM_LOG_FEEDBACK_ENABLE_UI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 To the event preference or log feedback:
 
@@ -24,7 +29,7 @@ To the event preference or log feedback:
     - **High risk**: If a log is marked as high risk, any occurrence of that log will cause the verification to fail, regardless of whether it appeared in the previous version or the current version.
     - **Default Harness ML**: Harness ML marks the log based on the analysis of previous verification runs.
 
-   <docimage path={require('./static/add-event-preference.png')} />
+   <DocImage path={require('./static/add-event-preference.png')} />
   
 3. Enter a reason for updating the event preference and then select **Submit**.  
    The updated event preference appears on the Event Details page.
@@ -36,11 +41,11 @@ To view the event feedback history:
 
 1. On the Update event preference page, select **Update event preference**, and expand **Feedback history**. Event feedback details such as event priority, reason, who updated the event priority and the date and timestamp are displayed.
 
-   <docimage path={require('./static/event-preference-history.png')} />
+   <DocImage path={require('./static/event-preference-history.png')} />
 
 The last applied event preference is displayed on the Update event preference page.
 
-<docimage path={require('./static/last-event-preference-history.png')} />
+<DocImage path={require('./static/last-event-preference-history.png')} />
 
 
 

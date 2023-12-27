@@ -4,25 +4,25 @@ description: Examples of various use cases of Harness CLI.
 sidebar_position: 2
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 In this segment, we'll guide you through a example demonstrating how to utilize the Harness CLI tool. You have the option to either establish a Harness GitOps workflow or configure a pipeline along with all necessary components to deploy a test guestbook application to your Kubernetes setup.
 
 ## Let's Begin
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="GitOps Example">
-```
+
 
 1. Refer [Install and Configure Harness CLI](./install.md) doc to setup and configure Harness CLI.
 
-2. Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub web interface.
+2. Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub web interface.
 
-3. Clone the Forked **harnessed-example-apps** repo and change directory.
+3. Clone the Forked **harnesscd-example-apps** repo and change directory.
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
     cd harnesscd-example-apps 
@@ -76,16 +76,16 @@ In this segment, we'll guide you through a example demonstrating how to utilize 
 
 10. Congratulations! You successfully used `harness` CLI utility tool to create and execute a GitOps workflow.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="CD Pipeline Example">
-```
+
 
 1. Refer [Install and Configure Harness CLI](./install.md) doc to setup and configure Harness CLI.
 
-2. Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub web interface.
+2. Fork the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub web interface.
 
-3. Clone the Forked **harnessed-example-apps** repo and change directory.
+3. Clone the Forked **harnesscd-example-apps** repo and change directory.
     ```bash
     git clone https://github.com/GITHUB_ACCOUNTNAME/harnesscd-example-apps.git
     cd harnesscd-example-apps 
@@ -154,7 +154,6 @@ In this segment, we'll guide you through a example demonstrating how to utilize 
 
 13. Congratulations! You successfully used `harness` CLI utility tool to create and execute a pipeline.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```

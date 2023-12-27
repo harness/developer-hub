@@ -1,13 +1,13 @@
 ---
 title: Chaos Engineering (CE) FAQs
 description: This article addresses some frequently asked questions about Harness Chaos Engineering.
-# sidebar_position: 2
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 2
 ---
 
-# FAQ
+## How do I get the Instance ID or license ID with Harness SMP?
 
-### Coming Soon
+Login using Admin privilege, and then navigate to **License** to find the **License ID**.
+
+#### Can I run both serial and parallel faults wile using Linux infrastructure?
+
+Currently, parallel fault experiments aren't supported for Linux.

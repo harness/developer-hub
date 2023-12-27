@@ -123,6 +123,16 @@ Click on **Execution Summary**, and then click on **Custom Manifest Values Fetch
 
 ![](./static/add-a-custom-remote-script-and-manifests-41.png)
 
+:::note How Harness uses selectors when deploying custom remote manifests
+
+If you use separate connectors for downloading manifests and deploying the manifests to your environment, how Harness uses the selectors specified in the connectors varies between custom remote manifests and manifests downloaded from other store types, such as HTTP Helm. 
+
+For other store types, the delegate used for deployment must have all the selectors used with both connectors. For example, if a GitHub connector has selectors A and B, and the Kubernetes connector is configured with selectors C and D, the delegate used for deployment must have all of these selectors, that is, A, B, C, and D.
+
+With custom remote manifests, Harness does not merge the delegate selectors used in the connectors when carrying out the deployment task. This is because the manifests have already been downloaded to Harness and are made available for deployment. Therefore, the delegate that’s deploying a customer remote manifest needs to have only selectors C and D. 
+
+:::
+
 ## Kubernetes YAML
 
 You can enter the path to a manifests folder.
@@ -154,6 +164,35 @@ That's all the setup required. You can now deploy the Service and the script is 
 When configuring a Helm chart with Custom Remote manifests, in the **Manifest Details** > **Advanced** section, you can select a **Helm Version**, and then add the command flags that you wish to pass based on the version. 
 
 For more information on Helm command flags, go to [Add Helm chart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts#add-the-helm-chart).
+
+## Task Breakdown of custom remote manifest with Kubernetes deployment
+
+Harness performs deployment with two Harness delegate tasks. These are jobs that are assigned to the delegate by the Harness Manager.  
+
+1. **Fetch Files**: This task goes to the source repository or manifest source to fetch the manifests and download them onto the delegate running in your environment.
+2. **Kubernetes Rolling Deploy**: This task takes the manifests collected from the Fetch Files task and deploys them into the target Kubernetes cluster.
+
+### Scenario 1: Fetching on-premise manifest source with cloud target cluster
+
+In this scenario, Harness fetches an on-premise manifest source and the deployment cluster is in the cloud. You have 2 delegates: 1 on-premise and 1 in the cloud.
+
+- The Harness Manager will use the delegate installed in your environment to collect the manifest from the on-premise source and then store it with the deploy task.
+- The Harness Manager will assign the task with the archived manifests to the cloud delegate associated with the cloud Kubernetes cluster for deployment.
+
+### Scenario 2: Fetching on-premise manifest source with on-premise target cluster 
+
+In this scenario, Harness fetches a manifest source that is on-premise, and the deployment cluster is also on-premise. You have 2 delegates: 1 for on-premise tasks and 1 for the on-premise Kubernetes cluster.
+
+#### One delegate with access to on-premise remote manifest source and on-premise target cluster
+
+- The Harness Manager will assign the Fetch Files task to the delegate with access to the custom remote manifest source.
+- If that same delegate has access to the on-premise Kubernetes cluster, it will perform a second fetch for any values.yaml files needed for deployment and then perform the deployment.
+
+#### One delegate with access to on-premise remote manifest source and one delegate with access to on-premise  target cluster
+
+- The Harness Manager will assign the Fetch Files task to the delegate with access to the custom remote manifest source.
+- The manifests collected are archived for the Deploy task that is done by the delegate with access to the on-premise Kubernetes cluster.
+
 
 
 ## Notes

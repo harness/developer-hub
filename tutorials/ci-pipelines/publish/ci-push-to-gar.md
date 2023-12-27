@@ -8,7 +8,7 @@ slug: /ci-pipelines/publish/google-gar
 
 # Push application containers to Google Artifact Registry
 
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
@@ -17,12 +17,18 @@ slug: /ci-pipelines/publish/google-gar
   target="_self"
 />
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-This tutorial shows how to use a Harness Continuous Integration (CI) pipeline to build and push application container images to Google Artifact Registry (GAR).
+:::info
+
+Harness now offers first-class support for Google Artifact Registry through the [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar).
+
+While you can still use the techniques in this tutorial to build and push to GAR, the [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar) streamlines this process into one step.
+
+:::
+
+This tutorial shows how to use Run steps in a Harness Continuous Integration (CI) pipeline to build and push application container images to Google Artifact Registry (GAR). You can also use the [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar) for a more streamlined experience.
 
 You'll learn how to:
 
@@ -62,9 +68,7 @@ In addition to a Harness account, you need the following accounts and tools:
 - A [GitHub](https://github.com) account where you can fork the tutorial repo
 - A [Google Cloud account](https://cloud.google.com)
 
-```mdx-code-block
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
 
 <CISignupTip />
 
@@ -203,31 +207,22 @@ While the Harness platform has several modules, this tutorial focuses on the Con
 
 Pipelines require build infrastructure to run. When you create your own pipelines, you can use either Harness-hosted infrastructure or bring your own build infrastructure. This tutorial uses Harness-hosted infrastructure, also called Harness Cloud.
 
-
-```mdx-code-block
 <Tabs>
 <TabItem value="cloud" label="Harness Cloud" default>
-```
 
 [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) uses Harness-hosted machines to run builds. Harness maintains and upgrades these machines, which gives you more time to focus on development.
 
 ![Harness CI Hosted Overview](../static/ci-tutorial-node-docker/harness_ci_hosted_infra_overview.png)
 
-```mdx-code-block
 </TabItem>
 <TabItem value="self" label="Self-hosted infrastructure">
-```
 
 With self-hosted build hardware, your pipelines run on your local machines or your Kubernetes clusters. To learn about self-hosted options, go to [Set up build infrastructure](/docs/category/set-up-build-infrastructure).
 
 ![Harness CI Bring Your Own Overview](../static/ci-tutorial-node-docker/harness_ci_your_infra_overview.png)
 
-
-
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
 
 ### GitHub personal access token
 
@@ -310,17 +305,17 @@ You can use either the visual or YAML editor to add pipeline steps. This tutoria
    ```
 
 7. Under **Optional Configuration**, select your [GCP connector](#create-a-google-cloud-platform-gcp-connector) for **Container Registry**.
-8. In **Image**, enter `cr.io/kaniko-project/executor:v1.9.0-debug`
+8. In **Image**, enter `gcr.io/kaniko-project/executor:v1.9.0-debug`
 
    ![Build and Push Step](../static/ci-tutorial-push-to-gar/go_pipeline_step_build_and_push_1.png)
 
 9. Add the following **Environment Variables**. The are used to push the container image to Google Artifact Registry.
 
-   | Variable Name                    | Value                                            | Description                                                                                                                    |
-   | -------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+   | Variable Name                    | Value                                            | Description                                                                                                                                   |
+   | -------------------------------- | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
    | `PLUGIN_SERVICE_ACCOUNT_JSON`    | `<+secrets.getValue("harness_tutorial_sa_key")>` | The Google service account secret key.<br/>The [input type](/docs/platform/variables-and-expressions/runtime-inputs/) must be **Expression**. |
-   | `GOOGLE_APPLICATION_CREDENTIALS` | `/kaniko/sa.json`                                | The json file where the service account key content will be written.                                                           |
-   | `PLUGIN_IMAGE`                   | `$PLUGIN_IMAGE`                                  | The container image name.<br/>The value for `$PLUGIN_IMAGE` comes from `$TUTORIAL_HOME/.env`.                                  |
+   | `GOOGLE_APPLICATION_CREDENTIALS` | `/kaniko/sa.json`                                | The json file where the service account key content will be written.                                                                          |
+   | `PLUGIN_IMAGE`                   | `$PLUGIN_IMAGE`                                  | The container image name.<br/>The value for `$PLUGIN_IMAGE` comes from `$TUTORIAL_HOME/.env`.                                                 |
 
    ![Build environment Variables](../static/ci-tutorial-push-to-gar/go_pipeline_step_build_and_push_env_vars.png)
 

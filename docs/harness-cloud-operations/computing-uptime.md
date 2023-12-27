@@ -15,6 +15,33 @@ Degraded performance = None  (our stance is that a degraded performance does imp
 
 A production incident, commonly known as an "incident," is an unexpected event or problem that arises within our live production environments, resulting in either complete or partial service disruptions. In the case of a partial incident, it renders one or more functions of a module nonfunctional or inaccessible. All production incidents are posted in our status page (https://status.harness.io) and our users can subscribe to the feeds from this site to get notified. 
 
+## Recent Incidents and How We Calculate Our Availability
+**Oct 4th - Impacted Continuous Integration Enterprise(CIE) - Self Hosted Runners**
+
+Incident: Issue with sending Git Status for PR 
+URL: https://status.harness.io/incidents/p24h63dhy18d
+
+- Component: Platform/Delegate
+- SLI: API Error Rate
+- Availability - Partial Outage of 28 Minutes
+- Threshold: More than 1% over 5 min rolling window
+- SLA Impact - Partial Outage of 28 Minutes/1680 seconds, taking 30% of the downtime hit comes to 504 seconds.
+
+During the incident, the error rate for the Platform/Delegate component exceeded 1% over a 5-minute rolling window due to a missing dependency and we had a partial outage for CIE - Self Hosted Runners in Prod-2.
+
+**Oct 16th - Impacted all the components in Prod-2**
+
+Incident: Failed to retrieve license information seen for some customers 
+URL: https://status.harness.io/incidents/bwpdhdyyyjfw
+
+- Component: Platform/login
+- SLI: API Error Rate
+- Availability - Partial Outage of 8 Minutes
+- Threshold: More than 1% over 5 min rolling window
+- SLA Impact - Partial Outage of 8 Minutes/480 seconds, taking 30% of the downtime hit comes to 144 seconds.
+
+During the incident, the error rate for the Platform/Login component exceeded 1% over a 5-minute rolling window and we had a partial outage across all of our components in Prod-2.
+
 ## Service Level Indicators specific to Harness Modules
 
 ## Pipelines
@@ -60,12 +87,16 @@ All the Platform SLIs are applicable here. Pipeline relevant if the FF use case 
 
 | **SLI**         | **Threshold**                           | **Availability**|
 |-------------------------------------------|-----------------|-----------------------------------------|
-| Evaluation SDK Response time | 95th percentile: > 30s over a 10 minute rolling window |Degraded performance|
-| Evaluation SDK API Success rate | Less than .1% over 10 min rolling window (fails to respond or returns a 5xx)|Major Outage|
-| SDK metrics publish Error rate | Metrics API fails to respond or returns 5xx (95th percentile)|Partial Outage|
-| SDK Events Channel Error rate | Pushpin API fails to respond or returns 5xx (95th percentile)|Degraded performance|
-| Admin CRUD Response Time | 95th percentile : < 30s over a rolling 10 min window|Degraded performance|
-| Admin CRUD Error Rate | Less than .1% over a rolling 10 min window|Partial Outage|
+| Admin UI response time | 95th percentile: > 30s over a 5 minute rolling window | Degraded Performance |
+| Admin UI error rate | 5% of requests over 5 min rolling window fails to respond or returns a 5xx error | Partial Outage |
+| Authentication response time | 95th percentile: > 30s over a 5 minute rolling window | Degraded Performance |
+| Authentication error rate | 5% of requests over 5 min rolling window fails to respond or returns a 5xx error | Major Outage |
+| SDK evaluation response time | 95th percentile: > 30s over a 5 minute rolling window | Degraded Performance |
+| SDK evaluation error rate | 5% of requests over 5 min rolling window fails to respond or returns a 5xx error | Major Outage |
+| SDK metrics response time | 95th percentile: > 30s over a 5 minute rolling window | Degraded Performance |
+| SDK metrics error rate | 5% of requests over 5 min rolling window fails to respond or returns a 5xx error | Partial Outage |
+| SDK events request response time | 95th percentile: > 30s over a 5 minute rolling window | Degraded Performance |
+| SDK events request error rate | 5% of requests over 5 min rolling window fails to respond or returns a 5xx error | Major Outage |
 
 ## Dashboards 
 

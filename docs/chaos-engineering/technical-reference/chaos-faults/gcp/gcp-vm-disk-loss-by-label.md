@@ -47,7 +47,7 @@ stringData:
       <tr>
         <td> GCP_PROJECT_ID </td>
         <td> Id of the GCP project containing the disk volumes. </td>
-        <td> All the target disk volumes should belong to a single GCP project. For more information, go to <a href="#gcp-project-id"> GCP project ID.</a></td>
+        <td> All the target disk volumes should belong to a single GCP project. For more information, go to <a href="#detach-volumes-by-label"> GCP project ID.</a></td>
       </tr>
       <tr>
         <td> DISK_VOLUME_LABEL </td>
@@ -57,7 +57,7 @@ stringData:
       <tr>
         <td> ZONES </td>
         <td> The zone of the target disk volumes. </td>
-        <td> Only one zone is provided, which indicates that all target disks reside in the same zone. For more information, go to <a href="#zones">zones.</a></td>
+        <td> Only one zone is provided, which indicates that all target disks reside in the same zone. For more information, go to <a href="#detach-volumes-by-label">zones.</a></td>
       </tr>
     </table>
     <h3>Optional fields</h3>
@@ -70,12 +70,12 @@ stringData:
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
+        <td> Defaults to 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
       </tr>
        <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive chaos iterations (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults/#chaos-interval">chaos interval.</a></td>
+        <td> Defaults to 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#chaos-interval">chaos interval.</a></td>
       </tr>
       <tr>
         <td> DISK_AFFECTED_PERC </td>
@@ -85,28 +85,27 @@ stringData:
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target disks. </td>
-        <td> Defaults to parallel. It supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults/#sequence-of-chaos-execution">sequence of chaos execution. </a></td>
+        <td> Defaults to parallel. It supports serial sequence as well. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution. </a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).</td>
-        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time. </a></td>
+        <td> For example, 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time. </a></td>
       </tr>
     </table>
 
-### GCP project ID
-It specifies the project ID which is a unique identifier for a GCP project. Tune it by using the `GCP_PROJECT_ID` environment variable.
-
-### Zones
-It specifies the zone of the disk volumes subject to the fault. Tune it by using the `ZONES` environment variable.
 
 ### Detach volumes by label
 
-It specifies the label of disk volumes that are subject to disk loss. It detaches all the disks with the `DISK_VOLUME_LABEL` label in the `ZONES` zone within the `GCP_PROJECT_ID` project. It re-attaches the disk volume after waiting for the duration specified by `TOTAL_CHAOS_DURATION` environment variable.
+The label of disk volumes subject to disk loss. It detaches all the disks with the `DISK_VOLUME_LABEL` label in the `ZONES` zone within the `GCP_PROJECT_ID` project. It re-attaches the disk volume after waiting for the duration specified by `TOTAL_CHAOS_DURATION` environment variable.
+
+**GCP project ID**: The project ID which is a unique identifier for a GCP project. Tune it by using the `GCP_PROJECT_ID` environment variable.
+
+**Zones**: The zone of the disk volumes subject to the fault. Tune it by using the `ZONES` environment variable.
 
 **Note:** The `DISK_VOLUME_LABEL` accepts only one label and `ZONES` accepts only one zone name. Therefore, all the disks must reside in the same zone.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/gcp-vm-disk-loss-by-label/gcp-disk-loss.yaml yaml)
 ```yaml

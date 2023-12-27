@@ -8,7 +8,7 @@ Various stages of a pipeline might require input data or parameters to function 
 
 Passing variables and parameters to a pipeline when triggering it can help streamline the pipeline execution based on the specific needs of each run.
 
-import Variables from '/docs/platform/triggers/shared/variables-not-supported.md'
+import Variables from '/docs/platform/shared/variables-not-supported.md'
 
 <Variables />
 
@@ -16,7 +16,7 @@ import Variables from '/docs/platform/triggers/shared/variables-not-supported.md
 
 Once you create a custom trigger, Harness provides the Webhook URL and cURL command to initiate the trigger.
 
-<docimage path={require('./static/trigger-deployments-using-custom-triggers-00.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/trigger-deployments-using-custom-triggers-00.png')} width="60%" height="60%" title="Click to view full size image" />
 
 For information on creating Custom triggers, go to [Trigger deployments using custom triggers](trigger-deployments-using-custom-triggers).
 
@@ -68,14 +68,14 @@ curl -X POST -H 'content-type: application/json' --url 'webhook_url' -d '{"artif
 
 In the target pipeline, create a pipeline variable and set its value as `<+trigger.payload.artifact_image>`.
 
-<docimage path={require('./static/6ef51e0907196757454ad8119753c2d4f4006de77e2cd9c7f48abfe0efdb8e18.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/6ef51e0907196757454ad8119753c2d4f4006de77e2cd9c7f48abfe0efdb8e18.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 When the source pipeline runs, it will resolve the expression `<+artifact.image>` in the cURL command to its pipeline artifact location and then run the command.
 
 In the target pipeline, you can retrieve the data from the command using a variable containing `<+trigger.payload.artifact_image>` as its value.
 
-<docimage path={require('./static/b9aa1b375489a155c9405fc01a760bdc0a4a022f9adf3a7e197664abb568087c.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/b9aa1b375489a155c9405fc01a760bdc0a4a022f9adf3a7e197664abb568087c.png')} width="60%" height="60%" title="Click to view full size image" />
 
 Now you can use the variable anywhere you want to view the source pipeline's artifact location.
 
@@ -108,7 +108,7 @@ curl -X POST -H 'content-type: application/json' --url 'webhook_url' -d '{"email
 ```
 In the target pipeline, create a pipeline variable named `emailIds` that uses the `<+trigger.payload.emailIds>` expression.
 
-<docimage path={require('./static/661fd1dfa533e57b3683394807348789b37fc463d0af62c1637ce302bdabbe1e.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/661fd1dfa533e57b3683394807348789b37fc463d0af62c1637ce302bdabbe1e.png')} width="60%" height="60%" title="Click to view full size image" />
 
 In the Email step, in **Advanced**, in **Looping Strategy**, select **Matrix** and enter the 
 following.

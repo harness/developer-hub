@@ -55,6 +55,16 @@ stringData:
         <td> Name of the target VM. </td>
         <td> For example, <code>ubuntu-vm-1</code>. </td>
       </tr>
+      <tr>
+          <td> VM_USER_NAME </td>
+          <td> Username of the target VM.</td>
+          <td> For example, <code>vm-user</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_PASSWORD </td>
+          <td> User password for the target VM. </td>
+          <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
+      </tr>
     </table>
     <h3>Optional fields</h3>
     <table>
@@ -66,47 +76,47 @@ stringData:
        <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
         <td> Specify the size as a percentage of free space on the file system. </td>
-        <td> For example, <code>40</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-io-stress#filesystem-utilization-percentage"> file system utilization percentage.</a></td>
+        <td> For example, <code>40</code>. For more information, go to <a href="#filesystem-utilization-percentage"> file system utilization percentage.</a></td>
       </tr>   
        <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
         <td> Specify the size in gigabytes(GB). FILESYSTEM_UTILIZATION_PERCENTAGE and FILESYSTEM_UTILIZATION_BYTES environment variables are mutually exclusive. If both are provided, FILESYSTEM_UTILIZATION_PERCENTAGE takes precedence. </td>
-        <td> For example, <code>100</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-io-stress#filesystem-utilization-bytes"> file system utilization bytes. </a></td>
+        <td> For example, <code>100</code>. For more information, go to <a href="#filesystem-utilization-bytes"> file system utilization bytes. </a></td>
       </tr>  
        <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> Number of I/O workers involved in I/O disk stress. </td>
-        <td> Defaults to 4. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-io-stress#workers-for-stress"> workers for stress. </a> </td>
+        <td> Defaults to 4. For more information, go to <a href="#workers-for-stress"> workers for stress. </a> </td>
       </tr>
        <tr>
         <td> VOLUME_MOUNT_PATH </td>
         <td> Location that points to the volume mount path used in I/O stress. </td>
-        <td> For example, <code>/Users/admin/disk-02</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-io-stress#mount-path"> mount path.</a></td>
+        <td> For example, <code>/Users/admin/disk-02</code>. For more information, go to <a href="#mount-path"> mount path.</a></td>
       </tr>   
       <tr>
         <td> CPU_CORES </td>
         <td> Number of CPU cores that are subject to CPU stress.</td>
-        <td> Defaults to 1. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-cpu-hog#cpu-cores"> CPU cores. </a></td>
+        <td> Defaults to 1. For more information, go to <a href="./vmware-cpu-hog#cpu-cores"> CPU cores. </a></td>
         </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+        <td> Defaults to 30s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+        <td> Defaults to 30s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
        <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+        <td> For example, 30s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 

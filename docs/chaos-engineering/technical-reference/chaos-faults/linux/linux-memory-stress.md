@@ -7,7 +7,7 @@ import Ossupport from './shared/note-supported-os.md'
 import FaultPermissions from './shared/fault-permissions.md'
 
 
-Linux memory stress causes memory consumption of the target Linux machines for a specific duration.
+Linux memory stress causes memory consumption on the target Linux machines for a specific duration. This fault allocates and maps a specific amount of virtual address space and keeps rewriting to that same memory space for the chaos duration before unmapping it.
 
 ![Linux memory stress](./static/images/linux-memory-stress.png)
 
@@ -15,6 +15,10 @@ Linux memory stress causes memory consumption of the target Linux machines for a
 - Induces memory consumption and exhaustion on the target Linux machines.
 - Simulates a lack of memory for processes running on the application, which degrades their performance.
 - Simulates application slowness due to memory starvation, and noisy neighbour problems due to excessive consumption of memory.
+
+:::info note
+The mapped memory space is unmapped only after the chaos duration; the same memory space is used to write data into memory in an iterative manner. This way, constant memory is consumed throughout the fault duration.
+:::
 
 <Ossupport />
 
@@ -43,13 +47,13 @@ This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which 
   </tr>
   <tr>
     <td> duration </td>
-    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30 s </td>
+    <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
+    <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
   </tr>
   <tr>
     <td> rampTime </td>
-    <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Default: 0 s </td>
+    <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
+    <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
   </tr>
 </table>
 

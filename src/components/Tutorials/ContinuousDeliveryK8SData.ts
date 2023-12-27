@@ -42,6 +42,13 @@ import { MODULES } from "../../constants";
             "Deploy your microservice application onto a Kubernetes cluster.",
           link: "/tutorials/cd-pipelines/kubernetes/ownapp",
         },
+        {
+          title: "Secure Container Image Signing with Cosign and OPA",
+          module: MODULES.cd,
+          description:
+            "Secure container image signing with Cosign and OPA before Kubernetes deployment.",
+          link: "/tutorials/cd-pipelines/kubernetes/cosign-opa",
+        },
       ],
     },
   ];

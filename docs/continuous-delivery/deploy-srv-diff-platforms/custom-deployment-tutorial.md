@@ -8,12 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-
-Currently, this feature is behind the feature flag `NG_SVC_ENV_REDESIGN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Harness CD supports all of the major platforms and we're adding more all the time.
-
-:::
-
 In some cases, you might be using a platform that does not have first class support in Harness, such as OpenStack, WebLogic, WebSphere, etc. We call these non-native deployments.
 
 For non-native deployments, Harness provides a custom deployment option using Deployment Templates.
@@ -182,6 +176,11 @@ For the main Kubernetes support, go to [Kubernetes deployment tutorial](/docs/co
 
 Next, you need to provide the JSON path to the JSON array object for the target hosts.
 
+### Important notes on the Fetch Instances script
+
+- The script must return an array of target instances (virtual machine, pod. etc.). If the template is to be used for executing a trigger to an external orchestrator (for example, Ansible, Puppet, etc.), the script should query the orchestrator to return the total instances running inside. If the script simply returns the application name, Harness cannot track the actual SI count.
+- If a service is scaling up/down post-deployemnt, the Fetch Instances script should be written in that way that it should always return the current state of the system. This script is run periodically post-deployment as part of a perpetual task.
+
 ## Define the Instance Object Array Path
 
 1. In **Instance Object Array Path**, you enter the JSON path to the JSON array object. In our example above, you can see that the array is under `items`.
@@ -342,9 +341,9 @@ Let's add one more step to describe the deployment and see how it worked on each
 3. In **Script**, enter the following:
    
 ```bash
-kubectl describe deployment nginx-deployment
+kubectl describe pod <+repeat.item> --namespace=harness-delegate-ng
 ```
-![](./static/custom-deployment-tutorial-27.png)
+
 
 Next, we need this script to loop through all the fetched instances. We do that by using a [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) in the step's **Advanced** section.
 
@@ -489,9 +488,9 @@ The `<+instance...>` expressions refer to the **Instance Attributes** in the Dep
 
 The following expressions refer to instance(s) collected by the mandatory **instancename** field:
 
-* [<+instance.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostname)
-* [<+instance.host.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostinstancename)
-* [<+instance.name>](/docs/platform/variables-and-expressions/harness-variables#instancename)
+* [\<+instance.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostname)
+* [\<+instance.host.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostinstancename)
+* [\<+instance.name>](/docs/platform/variables-and-expressions/harness-variables#instancename)
 
 The expression `<+instance.host.properties.[property name]>` can used to reference the other properties you added to **Instance Attributes**.
 
@@ -519,9 +518,14 @@ Now when this step runs, it will run on every host returned by **Fetch Instances
 
 ### Where to put Fetch Instances and deployment steps
 
-The stage Execution must include the **Fetch Instances** step and a step to deploy the artifact to the instances fetched.
+The stage **Execution** must include the **Fetch Instances** step and a step to deploy the artifact to the instances fetched.
 
-Typically, the deployment steps come after the **Fetch Instances** step because you are fetching existing instances.
+There are two questions to consider when deciding where to put the **Fetch Instances** and deployment steps:
+
+1. Will you only know the instancs **before** deployment? Do you need to query some external source to be able to know which instances exist and then iterate over them to deploy to each instance?
+2. Will you only know the instancs **after** deployment? For example, if an external source like an orchestrator actually creates the instances, you won't know which instances exist until after you deploy.
+
+Typically, the deployment steps come after the **Fetch Instances** step because you are fetching existing instances. But in some cases, such as Kubernetes, you might want to place the **Fetch Instances** step after the deployment so that you are getting the pods that Kubernetes created. If you put **Fetch Instances** step before deployment, you will be using the pods that already exist.
 
 ### Command step in Deployment Template deployments
 

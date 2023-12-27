@@ -233,13 +233,19 @@ The following table lists Harness support for deployment platforms, artifacts, s
       <td valign="top">
         <p> Deployment Types Fargate, EC2:</p>
         <ul>
-          <li>Canary</li>
-          <li>Blue/Green:<ul>
+          <li>
+          Canary
+          </li>
+          <li>
+          Blue/Green:
+            <ul>
               <li>Using ALB/NLB and Target Group</li>
               <li>Using Route 53 DNS</li>
             </ul>
           </li>
-          <li>Multi-Service:<ul>
+          <li>
+          Multi-Service:
+            <ul>
               <li> >Caveat: It is created as a Basic Workflow</li>
             </ul>
           </li>
@@ -661,7 +667,7 @@ The following table lists Harness support for SSO protocols and tools.
 |  SSO Type |  SSO Providers |  Authentication Supported |  Authorization (Group Linking) Supported |  SCIM Provisioning |
 | --- | --- | --- | --- | --- |
 | [SAML](../firstgen-platform/security/access-management-howtos/single-sign-on-sso-with-saml.md) |  Okta |  Yes |  Yes |  Yes |
-|  |  Azure Active Directory |  Yes |  Yes |  Yes |
+|  |  Microsoft Entra ID |  Yes |  Yes |  Yes |
 |  |  Google |  Yes |  No | No |
 |  |  Others |  Yes |  Yes | No |
 |  |  OneLogin |  Yes |  Yes |  Yes |

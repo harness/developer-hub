@@ -18,18 +18,6 @@ export const FeaturedList: CardItem[] = [
 
 export const PlatformList: CardItem[] = [
   {
-    title: "Install CD Community Edition",
-    module: MODULES.platform,
-    icon: "img/logo.svg",
-    description: (
-      <>Install the free CD Community Edition.</>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "5 min",
-    link: "/tutorials/platform/install-cd-community-edition",
-  },
-  {
     title: "Install Delegate",
     module: MODULES.platform,
     icon: "img/logo.svg",
@@ -112,5 +100,19 @@ export const PlatformList: CardItem[] = [
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/platform/secrets-management",
+  },
+  {
+    title: "Configure OIDC with GCP WIF for CI hosted builds",
+    module: MODULES.platform,
+    icon: "img/logo.svg",
+    description: (
+      <>
+        Configure OpenID Connect (OIDC) with GCP Workload Identity Federation (WIF) for the Continuous Integration hosted builds workflow (beta feature).
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/platform/configure-oidc-gcp-wif-ci-hosted",
   },
 ];

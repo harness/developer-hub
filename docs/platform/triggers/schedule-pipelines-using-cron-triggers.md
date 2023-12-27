@@ -14,9 +14,9 @@ For example, you can have a Pipeline run every Monday at 1AM. Harness will gener
 
 For general triggers reference, go to the [Triggers reference](./triggers-reference).
 
-```mdx-code-block
-import Variables from '/docs/platform/triggers/shared/variables-not-supported.md'
-```
+
+import Variables from '/docs/platform/shared/variables-not-supported.md'
+
 
 <Variables />
 

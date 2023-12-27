@@ -15,7 +15,9 @@ The key enhancements are as follows:
 
 ## Limitations
 
-If your step inputs or parameters size is greater than 4 KB, then it cannot be part of your expanded JSON. This is to safeguard your system.
+* If your step inputs or parameters size is greater than 4 KB, then it cannot be part of your expanded JSON. This is to safeguard your system.
+* Harness uses the greater than sign (`>`) to terminate expressions. To avoid ambiguous results, make sure that your scripts do not include a greater than sign. 
+
 
 ## Obtaining the execution JSON
 
@@ -61,7 +63,7 @@ For example, consider a pipeline with two stages. In the second stage, add a She
 
 In the pipeline execution page, select the **Input** section of the Shell Script step in the second stage, and then copy the JSON.
 
-<docimage path={require('./static/execution-json.png')} width="60%" height="60%" title="Click to view full size image" /> 
+<DocImage path={require('./static/execution-json.png')} width="60%" height="60%" title="Click to view full size image" /> 
 
 ## Write expressions using JSON
 
@@ -461,8 +463,8 @@ To use JQ:
 * With container steps, your images must support JQ.
 * Your Harness Delegate must support JQ if your pipeline has a Shell Script step. For more information, go to [How to install JQ on Ubuntu](https://www.golinuxcloud.com/ubuntu-install-jq/).
 
-  <details>
-  <summary>Install JQ on Harness Delegate</summary>
+<details>
+<summary>Install JQ on Harness Delegate</summary>
 
   1. Open the `delegate.yaml` in a text editor.
   2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
@@ -484,7 +486,7 @@ To use JQ:
       apt-get install jq -y
      ```
 
-  </details>
+</details>
 
 Some JQ use cases are demonstrated in the following sections. These examples use the following sample pipeline.
 
@@ -635,15 +637,15 @@ sum;
 
 ### Use if conditions
 
-The following example demonstrates how you can use an `if` condition in JEXL to perform different actions or display different results based on certain conditions or criteria. This example uses a variable called `age` with the value `18`. The `if` condition checks if the age is greater than or equal to 18. If the condition evaluates to `true`, then the script outputs the string `You are an adult`. Otherwise, it outputs the string `You are not yet an adult`.
+The following example demonstrates how you can use an `if` condition in JEXL to perform different actions or display different results based on certain conditions or criteria. This example uses a variable called `age` with the value `18`. The `if` condition checks whether the age is less than 18. If the condition evaluates to `true`, then the script outputs the string `You are not yet an adult`. Otherwise, it outputs the string `You are an adult`.
 
 ```js
 <+var age = 18;
 
-if (age == 18) {
-  "You are an adult";
-} else {
+if (age < 18) {
   "You are not yet an adult";
+} else {
+  "You are an adult";
 }
 >
 ```

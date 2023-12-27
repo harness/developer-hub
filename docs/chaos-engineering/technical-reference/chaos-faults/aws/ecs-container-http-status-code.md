@@ -6,6 +6,10 @@ ECS container HTTP status code injects HTTP chaos that affects the request (or r
 
 ![ECS Container HTTP Modify Response](./static/images/ecs-container-http-status-code.png)
 
+:::tip
+This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](./ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
+:::
+
 ## Use cases
 ECS container HTTP status code:
 - Tests the ECS task container resilience to erroneous code HTTP responses from the application server.

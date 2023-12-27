@@ -9,10 +9,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
-import Ssc from '/docs/continuous-integration/shared/scm-status-checks.md';
-```
-
 CI pipelines build and test code that is pulled from a Git code repository. When you add a Build stage to a CI pipeline, you can select a [code repo connector](#code-repo-connectors) that connects to the Git account or repository where your code is stored. This can be referred to as the *default codebase* for the build. This topic explains how to configure codebase settings for CI pipelines and Build stages.
 
 This topic assumes you have an understanding of the [CI pipeline creation process](../prep-ci-pipeline-components.md).
@@ -76,7 +72,7 @@ In the Visual editor, you can disable **Clone Codebase** in the stage's **Overvi
 
 <!-- ![](./static/disable-clone-codebase-visual.png) -->
 
-<docimage path={require('./static/disable-clone-codebase-visual.png')} />
+<DocImage path={require('./static/disable-clone-codebase-visual.png')} />
 
 In the YAML editor, set `cloneCodebase` to `false` in the `stage.spec`.
 
@@ -94,25 +90,25 @@ For more information about Build stage settings, go to [CI Build stage settings]
 
 ## Edit the default codebase configuration
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 To edit a pipeline's default codebase configuration, select **Codebase** on the right side panel of the Pipeline Studio's Visual editor.
 
 <!-- ![A pipeline's codebase settings as shown in the Pipeline Studio's Visual editor.](./static/create-and-configure-a-codebase-03.png) -->
 
-<docimage path={require('./static/create-and-configure-a-codebase-03.png')} />
+<DocImage path={require('./static/create-and-configure-a-codebase-03.png')} />
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 To edit a pipeline's default codebase configuration in the YAML editor, edit the `codebase` section. For example:
 
@@ -137,10 +133,10 @@ pipeline:
             cpu: 400m
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 In addition to changing the **Connector** (`connectorRef`) or **Repository Name** (`repoName`), you can edit the following advanced settings.
 
@@ -177,11 +173,7 @@ Set maximum resource limits for the containers that clone the codebase at runtim
 * **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
 * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
-## Branch protection and checks
-
-<Ssc />
-
-## Troubleshooting
+## Troubleshoot codebases
 
 ### Improve codebase clone time
 
@@ -233,3 +225,11 @@ To resolve this issue:
 1. On the machine where the runner is running, stop the runner.
 2. Set the `NETWORK_DRIVER` environment variable to your preferred network driver plugin, such as `export NETWORK_DRIVER="nat"` or `export NETWORK_DRIVER="bridge"`.
 3. Restart the runner.
+
+### Pipeline status updates aren't sent to PRs
+
+For information about branch protection and status checks for codebases associated with Harness CI pipelines, go to [SCM status checks](./scm-status-checks.md).
+
+### Troubleshoot Git event triggers
+
+For troubleshooting information for Git event (webhook) triggers, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers).

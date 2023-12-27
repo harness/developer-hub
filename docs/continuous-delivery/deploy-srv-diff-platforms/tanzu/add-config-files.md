@@ -6,14 +6,14 @@ sidebar_position: 2
 
 Service configuration files enable you to specify information in the Harness service that can be referenced in other parts of the Harness application. In this topic, we'll cover using these configuration files for Tanzu Application Service (TAS, formerly PCF).
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';   
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
     <TabItem value="Harness" label="Harness" default>
-```
+
 1. In the Harness service, in Config Files, select **Add Config File**.
 2. In **Config File Source**, select **Harness**, and then select **Continue**.
 3. In **Config File Identifier**, enter a name for the file.
@@ -32,12 +32,12 @@ You can reference this config file as an expression in a pipeline from the **Exe
 
 For example, in a Tanzu Command step, you can reference the config file by entering the following script in the step's **Step Parameters>** **Script>** **Inline**. 
 
-`echo "<+configFile.getAsString("shell")>"` 
+`echo "<+configFile.getAsString("shell")>"`
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="GitHub" label="GitHub">
-```
+
 
 
 1. Select a GitHub connector, and select **Continue**. You can also add a [new GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) here and reference it.
@@ -56,12 +56,12 @@ You can reference this config file as an expression in a pipeline from the **Exe
 
 For example, in a Tanzu Command step, you can reference the config file by entering the following script in the step's **Step Parameters>** **Script>** **Inline**. 
 
-`echo "<+configFile.getAsString("shellsec")>"` 
+`echo "<+configFile.getAsString("shellsec")>"`
 
-```mdx-code-block
+
 </TabItem>  
 </Tabs>
-```
+
 
 
 

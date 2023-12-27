@@ -119,21 +119,21 @@ This graphic from Azure is a useful reminder of how Azure manages RBAC:
 
 ![Azure RBAC hierarchy showing that Resources are managed by Resource groups, which are in turn managed by Subscriptions, and all of these are under a Management group.](../static/add-a-microsoft-azure-connector-64.png)
 
-For security reasons, Harness uses an application object and service principal rather than a user identity. The process is described in that Azure documentation: [How to use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal).
+For security reasons, Harness uses an application object and service principal rather than a user identity. The process is described in the Microsoft Entra documentation: [Create a Microsoft Entra application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal).
 
 ### Azure Container Repository (ACR) role requirements
 
 The Harness Azure connectors that you'll use to connect Harness to ACR must have the **Reader** role, at minimum. You can also use a custom role that includes the permissions of the **Reader** role.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="reader" label="Reader" default>
-```
+
 The **Reader** role must be assigned at the **Subscription** or **Resource Group** level that is used by the Application (Client) Id that you'll use in the Azure connector's settings. The application must have permission to list **all** container registries.
 
 ![](../static/add-a-microsoft-azure-connector-65.png)
@@ -147,10 +147,10 @@ Make sure you:
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="custom" label="Custom role">
-```
+
 
 The following permissions (actions) are necessary for any Service Principal and/or Managed Identity user, regardless of whether you are using Kubernetes RBAC or Azure RBAC:
 * `Microsoft.ContainerRegistry/registries/read`
@@ -215,10 +215,10 @@ The following JSON sample creates a custom role with the required permissions. T
 }
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::info
 
@@ -232,14 +232,14 @@ If you connect to an ACR repo via the platform-agnostic [Docker Connector](../..
 
 Harness Azure connectors that you'll use to connect to Azure Web Apps with Service Principal or Managed Identity credentials, must have the **Contributor** role, at minimum. You can also use a custom role that includes the permissions of the **Contributor** role.
 
-```mdx-code-block
+
 import Tabs2 from '@theme/Tabs';
 import TabItem2 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs2>
   <TabItem2 value="contrib" label="Contributor permissions" default>
-```
+
 
 The follow are the Azure RBAC permissions used for System Assigned Managed Identity permissions to perform Azure Web App deployments for container and non-container artifacts:
 
@@ -269,10 +269,10 @@ The follow are the Azure RBAC permissions used for System Assigned Managed Ident
 ]
 ```
 
-```mdx-code-block
+
   </TabItem2>
   <TabItem2 value="custom" label="Custom role">
-```
+
 
 The following permissions (actions) are necessary for any Service Principal and/or Managed Identity user, regardless of whether you are using Kubernetes RBAC or Azure RBAC:
 * `Microsoft.ContainerRegistry/registries/read`
@@ -337,10 +337,10 @@ The following JSON sample creates a custom role with the required permissions. T
 }
 ```
 
-```mdx-code-block
+
   </TabItem2>
 </Tabs2>
-```
+
 
 ### Connect Harness to Azure Kubernetes Services (AKS)
 
@@ -369,14 +369,14 @@ For more information, go to the **Deployments (CD)** section of the [Kubernetes 
 
 If you use the Microsoft Azure connector to connect to AKS with Service Principal or Managed Identity credentials, you must assign the **Owner** role or a custom role that includes the permissions of the **Owner** role.
 
-```mdx-code-block
+
 import Tabs3 from '@theme/Tabs';
 import TabItem3 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs3>
   <TabItem3 value="custom" label="Custom role" default>
-```
+
 
 The following permissions (actions) are necessary for any Service Principal and/or Managed Identity user, regardless of whether you are using Kubernetes RBAC or Azure RBAC:
 * `Microsoft.ContainerRegistry/registries/read`
@@ -441,10 +441,10 @@ The following JSON sample creates a custom role with the required permissions. T
 }
 ```
 
-```mdx-code-block
+
   </TabItem3>
   <TabItem3 value="k8sRbac" label="Kubernetes RBAC example">
-```
+
 
 Here's an example of Kubernetes RBAC permissions used for System Assigned Managed Identity.
 
@@ -474,10 +474,10 @@ subjects:
     name: <AD group id to which the SP and MSI users are assigned>
 ```
 
-```mdx-code-block
+
   </TabItem3>
   <TabItem3 value="azureRbac" label="Azure RBAC example">
-```
+
 
 Here's an example of Azure RBAC permissions used for System Assigned Managed Identity. To use this sample, replace `xxxx` with the subscription Id and resource group Id.
 
@@ -529,10 +529,10 @@ Here's an example of Azure RBAC permissions used for System Assigned Managed Ide
 }
 ```
 
-```mdx-code-block
+
   </TabItem3>
 </Tabs3>
-```
+
 
 ### Azure Resource Management (ARM)
 
@@ -603,14 +603,14 @@ If you select **Specify credentials here**, you must provide Microsoft Azure app
 
    The **Application (client) ID** is the application Id for the app registration you want to use the Harness connector. To access resources in your Azure subscription, you must assign the Azure App registration using this Application Id to a role in that subscription. For more information, go to the following Microsoft documentation:
 
-   * [Quickstart: Register an app with the Azure Active Directory v1.0 endpoint](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
+   * [Quickstart: Register an application with the Microsoft identity platform](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
    * [Assign the application to a role](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)
-   * [Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+   * [Use the portal to create a Microsoft Entra application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
 
-   The **Directory (tenant) ID** is the Id for the Azure Active Directory (AAD) that exists in your app. For more information, go to the following Azure documentation:
+   The **Directory (tenant) ID** is the Id for the Microsoft Entra ID that exists in your app. For more information, go to the following Microsoft Entra documentation:
 
    * [Get tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)
-   * [Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+   * [Use the portal to create a Microsoft Entra application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
 
    ![Microsoft Azure app registration Overview page.](../static/add-a-microsoft-azure-connector-68.png)
 
@@ -621,7 +621,7 @@ If you select **Specify credentials here**, you must provide Microsoft Azure app
 
    Harness supports only PEM files. Harness doesn't support PFX files.
 
-   If you need to create a secret key for your app, go to **App Registrations** in Azure Active Directory, select the app you're connecting to Harness, select **Certificates & secrets**, and then select **New client secret**. For more information, go to the Azure documentation about [Creating a new application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret).
+   If you need to create a secret key for your app, go to **App Registrations** in Microsoft Entra ID, select the app you're connecting to Harness, select **Certificates & secrets**, and then select **New client secret**. For more information, go to the Azure documentation about [Creating a new application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret).
 
    ![](../static/add-a-microsoft-azure-connector-69.png)
 
@@ -670,7 +670,7 @@ If you have [installed a Harness Delegate](/docs/platform/delegates/delegate-con
 
    If the connection test fails, make sure that your delegate is running and that your credentials are valid. For example, check that the secret has not expired in your App registration.
 
-## Using ${HARNESS\_KUBE\_CONFIG\_PATH} with Azure
+## Using $\{HARNESS\_KUBE\_CONFIG\_PATH} with Azure
 
 The Harness `${HARNESS_KUBE_CONFIG_PATH}` expression resolves to the path to a Harness-generated kubeconfig file containing the credentials you provided to Harness.
 

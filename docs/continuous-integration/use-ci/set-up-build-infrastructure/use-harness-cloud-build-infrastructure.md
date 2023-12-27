@@ -47,7 +47,7 @@ Review the following image specifications for information about image components
 * [Linux amd64 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md)
 * [Linux arm64 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md)
 * [macOS arm64 (M1) image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-13-Readme.md)
-* [Windows Server 2019 (Windows amd64) image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2019-Readme.md)
+* [Windows Server 2022 (Windows amd64) image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md)
 
 In your pipelines, you can [select specific versions of pre-installed tools](#specify-versions), ensure that a step [uses a specific version every time](#lock-versions-or-install-additional-tools), or [install additional tools and versions](#lock-versions-or-install-additional-tools) that aren't preinstalled on the Harness Cloud images. You can run these steps on the host machine or as separate Docker images.
 
@@ -150,25 +150,25 @@ Steps running in containers can't communicate with [Background steps](../manage-
 
 You can start using Harness Cloud in minutes.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual editor" default>
-```
+
 
 1. Go to the pipeline where you want to use Harness Cloud build infrastructure.
 2. Select the **Build** stage, and then select the **Infrastructure** tab.
 3. Select **Harness Cloud** and the desired **Platform**.
 4. Save and run your pipeline.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML editor">
-```
+
 
 To enable Harness Cloud build infrastructure in your pipeline YAML, specify the `platform` and `runtime` in the `stage.spec`. For example:
 
@@ -227,10 +227,10 @@ pipeline:
 
 </details>
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::info
 
@@ -239,5 +239,46 @@ You can add steps to your pipeline to specify versions of tools, set up environm
 Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions in [Lock versions or install additional tools](#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
 
 :::
+
+## Troubleshooting Harness Cloud build infrastructure
+
+### Can't use STO steps with Harness Cloud macOS runners
+
+Currently, [STO scan steps](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference) aren't compatible with Harness Cloud macOS runners, because Apple's M1 CPU doesn't support nested virtualization. You can use STO scan steps with Harness Cloud Linux and Windows runners.
+
+### Don't use tools that only run on a specific cloud environment (such as gsutil)
+
+With Harness Cloud build infrastructure, builds run on Ubuntu VMs that are hosted on variety of cloud providers. It is not possible to predict where the VM is running; therefore, avoid using tools (such as gsutil or gcloud) that require a specific cloud provider's environment.
+
+### Connector delegate error with Harness Cloud build infrastructure
+
+Connectors that you use with the Harness Cloud build infrastructure must connect through the Harness Platform. To change the connector's connectivity mode:
+
+1. Go to the **Connectors** page at the account, organization, or project scope. For example, to edit account-level connectors, go to **Account Settings**, select **Account Resources**, and then select **Connectors**.
+2. Select the connector that you want to edit.
+3. Select **Edit Details**.
+4. Select **Continue** until you reach **Select Connectivity Mode**.
+5. Select **Change** and select **Connect through Harness Platform**.
+6. Select **Save and Continue** and select **Finish**.
+
+### Can't use the built-in Harness Docker Connector with Harness Cloud build infrastructure
+
+Depending on when your account was created, the built-in **Harness Docker Connector** (`account.harnessImage`) might be configured to connect through a Harness Delegate instead of the Harness Platform. In this case, attempting to use this connector with Harness Cloud build infrastructure generates the following error:
+
+```
+While using hosted infrastructure, all connectors should be configured to go via the Harness platform instead of via the delegate. Please update the connectors: [harnessImage] to connect via the Harness platform instead. This can be done by editing the connector and updating the connectivity to go via the Harness platform.
+```
+
+To resolve this error, you can either modify the **Harness Docker Connector** or use another Docker connector that you have already configured to connect through the Harness Platform.
+
+To change the connector's connectivity settings:
+
+1. Go to **Account Settings** and select **Account Resources**.
+2. Select **Connectors** and select the **Harness Docker Connector** (ID: `harnessImage`).
+3. Select **Edit Details**.
+4. Select **Continue** until you reach **Select Connectivity Mode**.
+5. Select **Change** and select **Connect through Harness Platform**.
+6. Select **Save and Continue** and select **Finish**.
+
 
 <!-- whitelist removed - DOC-2875 -->

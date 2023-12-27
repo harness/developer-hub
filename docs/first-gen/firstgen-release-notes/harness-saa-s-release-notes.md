@@ -16,13 +16,104 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### Latest: Version 81009
+## Important notice - action required
+
+Harness upgraded to the Java Runtime Environment (JRE) version 17 with the Harness Delegate FirstGen release 81202 to address potential security vulnerabilities. Harness includes the Watcher JAR file and startup scripts in the legacy delegate image *`latest`*. The `start.sh` file used to include the hardcoded Watcher version, but later, Harness started fetching the Watcher version at runtime. The new Watcher version, 80505, includes a feature to determine the correct JRE version and download it at runtime.
+
+Harness has learned that some customers are starting their delegates in ways that cause them to start with an earlier version of Watcher. The following scenarios lead to delegates starting with an earlier Watcher version:
+
+- Copying the *`latest`* image of the FirstGen legacy delegate to your repository, which may utilize older, less secure Secure Hash Algorithms (SHAs) for your delegates.
+- Creating a custom image when using the legacy delegate image with the *`latest`* tag.
+- Creating your Amazon Machine Images (AMI) with old startup scripts, which might include a `start.sh` with an earlier Watcher version.
+
+If any of these scenarios occur and you start new delegates or bounce the existing delegate with a Watcher version < 80505, then your delegates will not start.
+
+**Solution**
+
+To resolve this issue, do the following:
+
+- If you copied the image to your repo, Harness recommends that you use `harness/delegate:latest` directly in your delegate or pull the image monthly from `harness/delegate:latest`.
+- If you created a custom image, rebuild the custom image. Harness recommends that you rebuild the custom image monthly.
+- If you created your AMI for your shell delegate with startup scripts, Harness recommends that you rebuild the AMI monthly and apply it to your delegate.
+
+:::info caution
+You must make the required updates no later than **November 14, 2023**. If you need assistance, contact [Harness Support](mailto:support@harness.io), and a member of the engineering team will assist you.
+
+If the required image and AMI upgrades are not complete by **November 14, 2023**, your legacy delegate upgrades will be paused, which can lead to pipeline execution failures when Harness SaaS releases newer versions.
+
+:::
+
+### Latest: December 12, 2023, Version 81812
+
+#### Fixed issues
+
+- The dates in the banner that announces the end-of-support and end-of-life dates for Harness FirstGen were incorrect. (CDS-85223)
+
+  This issue has been fixed. The banner now has the correct dates. 
+
+- The Go template binary has been upgraded from version 0.4.4, which used Go version 1.20, to version 0.4.5, which uses Go version 1.21.4. (CDS-83173, ZD-50403)
+
+- The Access Management page didn't display all **Users** in the list. (PL-43038)
+
+- Fixed the `java.io.InterruptedIOException` message in delegate logs by adding the source URL and removing duplicate error logs. (PL-40118)
+
+      This item requires Harness Delegate version 23.12.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate). 
+
+### December 4, 2023, Version 81708
+
+#### Fixed issue
+
+- The Access Management page didn't display all **Users** in the list. (PL-43038)
+
+### November 29, 2023, Version 81609
+
+#### Fixed issues
+
+- Fixed the following issues:
+
+   - The delegate Stackdriver logger didn't work if the delegate token was base64-encoded format.
+   - When the `DELEGATE_TYPE` was `KUBERNETES` and the delegate wasn't deployed in Kubernetes, the delegate failed to start. (PL-42452)
+
+     This item requires Harness Delegate version 23.11.81601. For information about features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
+
+### November 15, 2023, Version 81405
+
+#### Fixed issues
+
+- Instance Sync V1 in Harness FirstGen did not update the count of Helm pod instances after the instances were removed from your environment. (CDS-82385, ZD-52612)
+
+  This issue occurred when the following feature flags were configured as shown:
+  - `INSTANCE_SYNC_V2_CG`. Disabled
+  - `MOVE_CONTAINER_INSTANCE_SYNC_TO_PERPETUAL_TASK`. Enabled
+  - `STOP_INSTANCE_SYNC_VIA_ITERATOR_FOR_CONTAINER_DEPLOYMENTS`. Enabled
+
+  For synchronizing the instances of Native Helm deployments, the assigned container validation tasks returned a null because the delegate could not pick up the task. Consequently, Harness did not update the instance count.
+
+  This issue has been resolved. Instance Sync V1 will now show the actual instance count after you have redeployed the service. However, Harness might require about 10 min to show the updated instance count. 
+
+  This item requires Harness Delegate version 81405. For information about features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
+
+### November 3, 2023, Version 81307
+
+- The Git Connector field in the Application dialog neither showed nor listed the configured connector. (CDS-82009) <!-- needs cursory review -->
+
+  This issue has been fixed. 
+
+### October 27, 2023, Version 81200
+
+- Custom Dashboard widgets did not load data when you selected a time value in the Group by field. (CDS-80778, ZD-51490, ZD-51678)
+
+- We have enabled the link to the delegate selection log for all Continuous Integration (CI) execute and clean-up steps. This log displays important information such as the assigned delegate, the number of times the task was broadcast to the delegate, and when the task was assigned to the delegate. (PL-41786)
+
+   This item is available with Harness Platform version 81200 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
+
+### Version 81009
 
 #### New features and enhancements
 
 Added support for referencing JSON secret keys with dots at the top level. Nested keys with dots are not supported. (PL-41715, ZD-51757)
 
-This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
 
 #### Early access features
 
@@ -32,7 +123,7 @@ This release does not include early access features.
 
 - OAuth sign-up emails were stored without being converted to lowercase. This caused duplicate emails in Harness with different cases. The issue was fixed by storing OAuth sign-up emails with lowercase. (PL-39331, ZD-47425)
 
-   This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
    
 - Fixed endless retries to establish a valid SSH connection in case of InterruptedException. (CDS-80639)
 
@@ -40,7 +131,7 @@ This release does not include early access features.
 
   This issue is now fixed.
 
-  This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
 
 ### Version 80908
 
@@ -110,11 +201,11 @@ This release does not include early access features.
 
 * Fixed an issue where using multiple HTTP Helm chart repositories could lead to an increase in CPU utilization on the delegate due to background validation tasks for the Harness HTTP Helm Repo connector. This was caused by running Helm repository updates during the validation tasks. (CDS-76433, ZD-48363)
 
-  This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
 
 * Fixed a Nexus artifact issue where a fetch timed out when a single group contained more than 50 artifacts. (CDS-73884, ZD-45052, ZD-47206)
 
-   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
   
 <!-- NOTE RE FIXED ISSUE CDS-73884
 https://harness.atlassian.net/browse/CDS-73884?focusedCommentId=566535 we fixed this issue for first gen with the same ticket, hence it is showing up in 805 release notes. 
@@ -138,7 +229,7 @@ This release does not include early access features.
 
    This issue is fixed. Harness catches the exception and continues with delegate startup.
    
-   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate). 
 
 ### Version 80407
 
@@ -172,7 +263,7 @@ This release does not include early access features.
 
 - Fixed a delegate issue observed in Canary deployments where the rollback stage could not identify and delete the canary workload in some clusters. (CDS-76240, ZD-48548)
 
-  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate). 
 
 - Fixed an issue where using the Export Manifest with Inherit Manifest in a Kubernetes deployment could lead to skipping resource versioning. With this fix, resource versioning is happening correctly in this deployment scenario. (CDS-75781, ZD-47209)
 
@@ -643,9 +734,9 @@ Delegate version: 23.01.78101
 
   This functionality is behind a feature flag: `CDP_USE_K8S_DECLARATIVE_ROLLBACK_NG`.
 
-  Harness applies Kubernetes manifest  using `kubectl apply`, which is a declarative way of creating Kubernetes objects. But when rolling back, we perform `kubectl rollout undo workloadType/workloadName --to-revision=<REVISION_NUMBER>`, which is an imperative way of rolling back. Using imperative and declarative commands together is not recommended and can cause issues.
+  Harness applies Kubernetes manifest  using `kubectl apply`, which is a declarative way of creating Kubernetes objects. But when rolling back, we perform `kubectl rollout undo workloadType/workloadName --to-revision=\<REVISION_NUMBER>`, which is an imperative way of rolling back. Using imperative and declarative commands together is not recommended and can cause issues.
 
- In some instances, the workload spec was not updated properly when `rollout undo` was performed. Subsequent deployments then refered to an invalid spec of the workload and caused Kubernetes issues like [kubectl rollout undo should warn about undefined behaviour with kubectl apply](https://github.com/kubernetes/kubernetes/issues/94698).
+ In some instances, the workload spec was not updated properly when `rollout undo` was performed. Subsequent deployments then referred to an invalid spec of the workload and caused Kubernetes issues like [kubectl rollout undo should warn about undefined behavior with kubectl apply](https://github.com/kubernetes/kubernetes/issues/94698).
 
   **What is the fix?**
   We had to redesign our release history to store all rendered manifests in secrets, just like Helm does. While rolling back, we are now reapplying the last successful release's manifests. This solves this issue.
@@ -678,11 +769,11 @@ Delegate version: 23.01.78100
   
   You can retrieve the value of the collectionEnabled field for an Artifact Source using GraphQL APIs, like in the example below:
   ```
-    {
-      services(limit: 5) {
-        nodes {
+    \{
+      services(limit: 5) \{
+        nodes \{
           name
-          artifactSources {
+          artifactSources \{
             name
             collectionEnabled
           }
@@ -790,7 +881,7 @@ Delegate version: 22.12.77802
 * Users are not added to the user groups through SCIM when the authentication mechanism is username and password. (PL-30124)  
 A notification email is sent to the users instead of an email invite and the system throws an exception.  
 Sending an email invite has fixed this issue and the users are now added to the user groups.
-* Rollback artifact number (`${rollbackArtifact.buildNo}`) is coming as null (CDS-47328, ZD-37309)  
+* Rollback artifact number (`$\{rollbackArtifact.buildNo}`) is coming as null (CDS-47328, ZD-37309)  
 Fixed a problem where incorrect metadata was being populated into executions after updating the environment's infra definitions.  
 For more information, go to [Artifact Rollback Variables](../firstgen-platform/techref-category/variables/built-in-variables-list.md#artifact-rollback-variables).
 * **Rollback Deployment** button incorrectly showing Not Authorized (CDS-17420)  
@@ -1265,13 +1356,13 @@ The discovery process for immutable Delegates is limited to checking the followi
 	+ The feature was facing a empty enum error that was happening in certain artifact forms. We have added the empty check for the enum and now the tag creation should work fine following the normal flow.
 * tfPlan files are saved/uploaded and not deleted from KMS (CDS-40341, ZD-31827, ZD-32632)
 	+ If new FF is enabled ANALYSE\_TF\_PLAN\_SUMMARY then there are expressions available after Terrafrom Plan step:
-		- ${terraformApply.add}
-		- ${terraformApply.change}
-		- ${terraformApply.destroy}
+		- `${terraformApply.add}`
+		-`${terraformApply.change}`
+		- `${terraformApply.destroy}`
 	+ or there are expressions available after Terrafrom Destroy Plan step:
-		- ${terraformDestroy.add}
-		- ${terraformDestroy.change}
-		- ${terraformDestroy.destroy}
+		- `${terraformDestroy.add}`
+		- `${terraformDestroy.change}`
+		- `${terraformDestroy.destroy}`
 	+ And if there are not changes then the Plan will not get uploaded to the configured Secret Manager (regardless of the checked export option in the Plan step).
 * AWS Cloud Provider is not being populated in InfraDef (CDS-40271, ZD-31625)
 	+ The change is released under the new FF: EXTRA\_LARGE\_PAGE\_SIZE, which will basically increase the max count from 1200 to 3000.
@@ -1460,7 +1551,7 @@ User Group could have been deleted even when they were part of Runtime Input in 
 * Terragrunt Destroy Version issue (CDS-38662, ZD-31506)  
 Now you can use Terragrunt Destroy Step even with underlying Terraform version > 15.0.0. Internally, -force and -auto-approve flag will be used based on underlying Terraform version as -force flag is not supported in Terraform version > 15.0.0.
 * /opt/harness-delegate has many manifest-collection-\* folders with empty directories that are created constantly (CDS-38543, ZD-30994)  
-Manifest collection directory is changed from /manifest-collection-{app-manifest-id}/ to /manifest-collection/{app-manifest-id} to reduce clutter in home folder.
+Manifest collection directory is changed from `/manifest-collection-{app-manifest-id}/` to `/manifest-collection/{app-manifest-id}` to reduce clutter in home folder.
 * Auto-rejection popup displayed when Workflow should reject automatically (CDS-38525)  
 While picking previous approvals to reject with auto-reject previous approvals feature, only Workflows waiting on same Approval step were considered.
 * Unable to Select "Fixed" Workflow variables when rerunning a Workflow directly (CDS-38270, ZD-31200)  
@@ -1544,7 +1635,7 @@ The following new features are added to the Harness SaaS components:
 
 * Ensure Delegate version is valid till next Delegate release (DEL-4198)
 * Support for Custom Artifact with no artifact polling to be enabled for Custom deployment type (CDS-34235, ZD-28100)
-	+ Custom artifact source script can be made empty now. If the script is empty, the deployment proceeds with the version customer provides and the same details are available in the artifact variable which can be accessed using `${artifact.*}`.
+	+ Custom artifact source script can be made empty now. If the script is empty, the deployment proceeds with the version customer provides and the same details are available in the artifact variable which can be accessed using `$\{artifact.*}`.
 
 #### Issues Fixed
 
@@ -2046,8 +2137,8 @@ The following new features are added to the Harness SaaS components:
 * In the **Workflow Failure Strategy**, you can now select **Rollback Provisioner after Phases** action when a Workflow is paused on manual intervention.
 	+ See [Timeout (Manual Intervention)](../continuous-delivery/model-cd-pipeline/workflows/define-workflow-failure-strategy-new-template.md#timeout-manual-intervention). (CDS-28963)
 * Tanzu Blue Green Deployments now include the following two new in-built variables:
-	+ `${pcf.activeAppName}`
-	+ `${pcf.inActiveAppName}`
+	+ `$\{pcf.activeAppName}`
+	+ `$\{pcf.inActiveAppName}`
 	+ See [App Name Variables and Blue Green Deployments](../continuous-delivery/pcf-deployments/pcf-built-in-variables.md#app-name-variables-and-blue-green-deployments). (CDS-17419)
 
 #### Issues Fixed
@@ -2097,8 +2188,8 @@ The following new feature is added to the Harness SaaS components:
 
 |  |  |
 | --- | --- |
-| Current step name | `${currentStep.name}` |
-| Type of step | `${currentStep.type}` |
+| Current step name | `$\{currentStep.name}` |
+| Type of step | `$\{currentStep.type}` |
 
 #### Issues Fixed
 

@@ -26,24 +26,8 @@ This topic includes an [end-to-end YAML pipeline](#yaml-pipeline-example) that i
 
 ## Important notes for running CodeQL scans in STO
 
-<!-- 
-### Docker-in-Docker requirements
 
-```mdx-code-block
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
 
-<StoDinDRequirements />
-
-### Root access requirements
-
-```mdx-code-block
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-```
-
-<StoRootRequirements />
-
--->
 
 ### Root access requirements
 
@@ -55,36 +39,64 @@ You can set up your STO scan images and pipelines to run scans as non-root and e
 
 :::
 
+### For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
+
+<!-- 
+### Docker-in-Docker requirements
+
+
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+
+
+<StoDinDRequirements />
+
+### Root access requirements
+
+
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+
+
+<StoRootRequirements />
+
+-->
+
+
 ## CodeQL step settings for STO scans
 
-The recommended workflow is to add a CodeQL step to a Security Tests or CI Build stage and then configure it as described below. You can also configure CodeQL scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is to add a CodeQL step to a Security Tests or CI Build stage and then configure it as described below. You can also configure CodeQL scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration).
 
 
 
 
 
 <details>
-    <summary>CodeQL Step Palette</summary>
+<summary>CodeQL Step Palette</summary>
 
-![](./static/codeql-security-scan-step.png) 
+![](./static/codeql-security-scan-step.png)
 
 </details>
 
 
 ### Scan Mode
 
-```mdx-code-block
+
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-```
+
 
 <StoSettingScanModeIngest />
 
 
 ### Scan Configuration
 
-```mdx-code-block
+
 import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-```
+
 
 <StoSettingProductConfigName />
 
@@ -94,35 +106,35 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 #### Type
 
-```mdx-code-block
+
 import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
-```
+
 
 
 <StoSettingScanTypeRepo />
 
 #### Name 
 
-```mdx-code-block
+
 import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-```
+
 
 <StoSettingProductID />
 
 #### Variant
 
-```mdx-code-block
+
 import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-```
+
 
 <StoSettingTargetVariant  />
 
 
 ### Ingestion file
 
-```mdx-code-block
+
 import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-```
+
 
 <StoSettingIngestionFile  />
 
@@ -133,9 +145,9 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 #### Log Level
 
-```mdx-code-block
+
 import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-```
+
 
 <StoSettingLogLevel />
 
@@ -143,9 +155,9 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-```mdx-code-block
+
 import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
-```
+
 
 <StoSettingCliFlags />
 
@@ -154,9 +166,9 @@ import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
 
 #### Fail on Severity
 
-```mdx-code-block
+
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
 <StoSettingFailOnSeverity />
 
 ### Settings
@@ -209,7 +221,7 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: my-harness-delegate
+              connectorRef: K8S_DELEGATE_CONNECTOR
               namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
@@ -221,7 +233,7 @@ pipeline:
                   name: create codeql sarif
                   identifier: create_codeql_sarif
                   spec:
-                    connectorRef: DockerHub
+                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
                     image: alpine
                     shell: Sh
                     command: |-
@@ -303,9 +315,9 @@ pipeline:
 
 ```
 
-```mdx-code-block
+
 import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
-```
+
 
 <StoSettingYAMLexample />
 

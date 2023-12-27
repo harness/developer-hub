@@ -28,13 +28,13 @@ If you're not familiar with RBAC, check out this blog post on [User and Role Man
 
 Before configuring RBAC in Harness, you should have an understanding of:
 
-* [Harness' key concepts](../../get-started/key-concepts.md)
-* [Creating organizations and projects](../organizations-and-projects/create-an-organization.md)
-* The functionality of the modules in your Harness account.
+- [Harness' key concepts](../../get-started/key-concepts.md)
+- [Creating organizations and projects](../organizations-and-projects/create-an-organization.md)
+- The functionality of the modules in your Harness account.
 
 The video below gives an overview of RBAC in Harness.
 
- <docvideo src="https://www.loom.com/embed/b71549af4874451e9885dfe67ddfb0c2" width="100%" height="600" />
+ <DocVideo src="https://www.loom.com/embed/b71549af4874451e9885dfe67ddfb0c2" width="100%" height="600" />
 
 ## Permissions hierarchy (scopes)
 
@@ -66,9 +66,9 @@ To learn about organizations and projects, go to [Create Organizations and Proje
 
 Harness RBAC uses **Principals**, **Resource Groups**, and **Roles** to control access.
 
-* [Principals](#principals) are entities taking action in the system. These include users, user groups, and service accounts.
-* [Resource groups](#resource-groups) define what objects can be acted on. Objects include organizations, projects, pipelines, connectors, users, and more.
-* [Roles](#roles) define what actions can be taken on objects. Actions include view, create, edit, delete, and so on.
+- [Principals](#principals) are entities taking action in the system. These include users, user groups, and service accounts.
+- [Resource groups](#resource-groups) define what objects can be acted on. Objects include organizations, projects, pipelines, connectors, users, and more.
+- [Roles](#roles) define what actions can be taken on objects. Actions include view, create, edit, delete, and so on.
 
 You [assign roles and resource groups to principals](#role-binding). Roles and resource groups assigned to user groups are inherited by the users in those user groups.
 
@@ -86,9 +86,9 @@ Principals are entities taking action in the system. You assign permissions and 
 
 Principals include:
 
-* [Users](/docs/platform/role-based-access-control/add-users): Individual users in Harness. Each user can belong to many user groups. You can assign roles and resource groups directly to users, or they can inherit these from user groups that they belong to.
-* [User Groups](/docs/platform/role-based-access-control/add-user-groups): User groups contain multiple Harness users. Roles and resource groups are assigned to groups. The permissions and access granted by the assigned roles and resource groups are applied to all group members. You can create user groups at all [scopes](#permissions-hierarchy-scopes).
-* [Service Accounts](/docs/platform/role-based-access-control/add-and-manage-service-account): Service accounts are like API users. You assign roles and resource groups to service accounts. Service accounts also have one or more [API keys](/docs/platform/automation/api/add-and-manage-api-keys), which authenticate and authorize remote services attempting to perform operations in Harness through Harness APIs.
+- [Users](/docs/platform/role-based-access-control/add-users): Individual users in Harness. Each user can belong to many user groups. You can assign roles and resource groups directly to users, or they can inherit these from user groups that they belong to.
+- [User Groups](/docs/platform/role-based-access-control/add-user-groups): User groups contain multiple Harness users. Roles and resource groups are assigned to groups. The permissions and access granted by the assigned roles and resource groups are applied to all group members. You can create user groups at all [scopes](#permissions-hierarchy-scopes).
+- [Service Accounts](/docs/platform/role-based-access-control/add-and-manage-service-account): Service accounts are like API users. You assign roles and resource groups to service accounts. Service accounts also have one or more [API keys](/docs/platform/automation/api/add-and-manage-api-keys), which authenticate and authorize remote services attempting to perform operations in Harness through Harness APIs.
 
 ### Resource groups
 
@@ -123,19 +123,19 @@ flowchart TD
 
 The following table describes the role bindings (permissions and access) that result from some combinations of built-in [roles](#roles) and [resource groups](#resource-groups). This table doesn't include module-specific built-in roles, such as CET Admin or Chaos Admin.
 
-| Role | Resource Group | Resulting role binding |
-| - | - | - |
-| Account Admin | Account - All Resources Including Child Scopes | All permissions on all resources in the account and resources in organizations and projects under the account. |
-| Account Admin | All Account Level Resources | All permissions on all resources at the account level only. |
-| Account Viewer | Account - All Resources Including Child Scopes | View resources in the account and resources in organizations and projects under the account. |
-| Account Viewer | All Account Level Resources | View resources at the account level only. |
-| Organization Admin | Org - All Resources Including Child Scopes | All permissions on all resources in a specific organization and all projects under that organization. |
-| Organization Admin | All Organization Level Resources | All permissions on all resources in a specific organization only. |
-| Organization Viewer | Org - All Resources Including Child Scopes | View resources in a specific organization and resources in projects under that organization. |
-| Organization Viewer | All Organization Level Resources | View resources in a specific organization only. |
-| Project Admin | All Project Level Resources | All permissions on all resources within a specific project. |
-| Project Viewer | All Project Level Resources | View resources in a specific project. |
-| Pipeline Executor | All Project Level Resources | <ul><li>View resource groups, projects, users, user groups, and roles.</li><li>View and access secrets, connectors, environments, and services.</li><li>View and execute pipelines.</li></ul> |
+| Role                | Resource Group                                 | Resulting role binding                                                                                                                                                                        |
+| ------------------- | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Account Admin       | Account - All Resources Including Child Scopes | All permissions on all resources in the account and resources in organizations and projects under the account.                                                                                |
+| Account Admin       | All Account Level Resources                    | All permissions on all resources at the account level only.                                                                                                                                   |
+| Account Viewer      | Account - All Resources Including Child Scopes | View resources in the account and resources in organizations and projects under the account.                                                                                                  |
+| Account Viewer      | All Account Level Resources                    | View resources at the account level only.                                                                                                                                                     |
+| Organization Admin  | Org - All Resources Including Child Scopes     | All permissions on all resources in a specific organization and all projects under that organization.                                                                                         |
+| Organization Admin  | All Organization Level Resources               | All permissions on all resources in a specific organization only.                                                                                                                             |
+| Organization Viewer | Org - All Resources Including Child Scopes     | View resources in a specific organization and resources in projects under that organization.                                                                                                  |
+| Organization Viewer | All Organization Level Resources               | View resources in a specific organization only.                                                                                                                                               |
+| Project Admin       | All Project Level Resources                    | All permissions on all resources within a specific project.                                                                                                                                   |
+| Project Viewer      | All Project Level Resources                    | View resources in a specific project.                                                                                                                                                         |
+| Pipeline Executor   | All Project Level Resources                    | <ul><li>View resource groups, projects, users, user groups, and roles.</li><li>View and access secrets, connectors, environments, and services.</li><li>View and execute pipelines.</li></ul> |
 
 <!-- | Feature Flag Manage Role | Account - All Resources Including Child Scopes | Create and edit Feature Flags and Target Management resources in the account and in organizations and projects under the account. | -->
 <!-- | Feature Flag Manage Role | All Account Level Resources | Create and edit Feature Flags and Target Management resources at the account level only. | -->
@@ -159,8 +159,8 @@ While Harness includes some built-in roles and resource groups, it is a good ide
 
 For example, assume a user has these role and resource group assignments:
 
-* **Account Admin** role with **All Resources Including Child Scopes**. This is the most permissive combination of role and resource group. It grants all permissions on all resources throughout the entire account.
-* **Organization Viewer** role with **All Resources Including Child Scopes**. This combination, by itself, grants the ability to view resources in a specific organization and resources in the projects under that organization.
+- **Account Admin** role with **All Resources Including Child Scopes**. This is the most permissive combination of role and resource group. It grants all permissions on all resources throughout the entire account.
+- **Organization Viewer** role with **All Resources Including Child Scopes**. This combination, by itself, grants the ability to view resources in a specific organization and resources in the projects under that organization.
 
 Because the **Account Admin** combination includes the **Org Viewer** combination (and more), the user is effectively an account admin throughout the entire account. Assigning the **Org Viewer** role makes no difference to this user's access.
 
@@ -184,10 +184,10 @@ If your Harness account is new, you might need to contact Harness Support to get
 
 If you are not an admin, you can configure some aspects of RBAC if you have the required granular permissions:
 
-* Users: Requires **View**, **Manage**, and **Invite** permissions for **Users**.
-* User groups: Requires **View** and **Manage** permissions for **User Groups**.
-* Resource groups: Requires **View**, **Create/Edit**, and **Delete** permissions for **Resource Groups**.
-* Roles: Requires **View**, **Create/Edit**, and **Delete** permissions for **Roles**.
+- Users: Requires **View**, **Manage**, and **Invite** permissions for **Users**.
+- User groups: Requires **View** and **Manage** permissions for **User Groups**.
+- Resource groups: Requires **View**, **Create/Edit**, and **Delete** permissions for **Resource Groups**.
+- Roles: Requires **View**, **Create/Edit**, and **Delete** permissions for **Roles**.
 
 ### RBAC workflow summary
 
@@ -203,10 +203,10 @@ To configure RBAC in Harness, you must:
 
 You can create users and user groups directly in Harness, and you can use automated provisioning, including:
 
-* [Okta SCIM](./provision-users-with-okta-scim.md)
-* [Azure AD SCIM](./provision-users-and-groups-using-azure-ad-scim.md)
-* [OneLogin SCIM](./provision-users-and-groups-with-one-login-scim.md)
-* [Just-in-time provisioning](./provision-use-jit.md)
+- [Okta SCIM](./provision-users-with-okta-scim.md)
+- [Microsoft Entra ID SCIM](./provision-users-and-groups-using-azure-ad-scim.md)
+- [OneLogin SCIM](./provision-users-and-groups-with-one-login-scim.md)
+- [Just-in-time provisioning](./provision-use-jit.md)
 
 With automated provisioning, users and user groups are imported from your IdP, and then you [assign roles and resource groups](#role-binding) to the imported [principals](#principals) in Harness. You manage group metadata, group membership, and user profiles in your IdP, and you manage role and resource group assignments in Harness.
 
@@ -221,19 +221,19 @@ These examples walk through two specific RBAC configuration scenarios.
 <details>
 <summary>Example: Configure RBAC for account-level pipeline ownership</summary>
 
-This example walks through an RBAC configuration that allows full control of pipelines and related resources (connectors, templates, and so on) across the entire account. This configuration uses a custom user group called *Pipeline Owners*, a custom role called *Pipeline Admin*, and a custom resource group called *All Pipeline Resources*.
+This example walks through an RBAC configuration that allows full control of pipelines and related resources (connectors, templates, and so on) across the entire account. This configuration uses a custom user group called _Pipeline Owners_, a custom role called _Pipeline Admin_, and a custom resource group called _All Pipeline Resources_.
 
-The *All Pipeline Resources* resource group exists at the account scope and allows access to pipelines, secrets, connectors, delegates, environments, templates, and variables at the account level and in all organizations and projects under the account.
+The _All Pipeline Resources_ resource group exists at the account scope and allows access to pipelines, secrets, connectors, delegates, environments, templates, and variables at the account level and in all organizations and projects under the account.
 
-The *Pipeline Admin* role has the following permissions:
+The _Pipeline Admin_ role has the following permissions:
 
-* Pipelines: View, create/edit, delete, and execute
-* Secrets: View, create/edit, and access
-* Connectors: View, create/edit, delete, and access
-* Delegates: View and create/edit
-* Environments: View, create/edit, and access
-* Templates: View, create/edit, and access
-* Variables: View and create/edit
+- Pipelines: View, create/edit, delete, and execute
+- Secrets: View, create/edit, and access
+- Connectors: View, create/edit, delete, and access
+- Delegates: View and create/edit
+- Environments: View, create/edit, and access
+- Templates: View, create/edit, and access
+- Variables: View and create/edit
 
 #### Create the Pipeline Admin role
 
@@ -243,14 +243,14 @@ The *Pipeline Admin* role has the following permissions:
 4. Select **Save**.
 5. Select the following permissions:
 
-   * For **Pipelines**, select **View**, **Create/Edit**, **Delete**, and **Execute**.
-   * For **Environments**, and then select **View**, **Create/Edit**, and **Access**.
-   * Under **Shared Resources**, select the following:
-      * For **Templates**, select **View**, **Create/Edit**, and **Access**.
-      * For **Secrets**, select **View**, **Create/Edit**, and **Access**.
-      * For **Connectors**, select **View**, **Create/Edit**, **Delete**, and **Access**.
-      * For **Variables**, select **View** and **Create/Edit**.
-      * For **Delegates**, select **View** and **Create/Edit**.
+   - For **Pipelines**, select **View**, **Create/Edit**, **Delete**, and **Execute**.
+   - For **Environments**, and then select **View**, **Create/Edit**, and **Access**.
+   - Under **Shared Resources**, select the following:
+     - For **Templates**, select **View**, **Create/Edit**, and **Access**.
+     - For **Secrets**, select **View**, **Create/Edit**, and **Access**.
+     - For **Connectors**, select **View**, **Create/Edit**, **Delete**, and **Access**.
+     - For **Variables**, select **View** and **Create/Edit**.
+     - For **Delegates**, select **View** and **Create/Edit**.
 
 6. Select **Apply Changes**.
 
@@ -268,13 +268,13 @@ For more information about roles and permissions, go to [Manage roles](./add-man
 
 6. For **Resources**, select **Specified**, and then select the following resources:
 
-   * Environments
-   * Variables
-   * Templates
-   * Secrets
-   * Delegates
-   * Connectors
-   * Pipelines
+   - Environments
+   - Variables
+   - Templates
+   - Secrets
+   - Delegates
+   - Connectors
+   - Pipelines
 
    ![](./static/set-up-rbac-pipelines-42.png)
 
@@ -285,7 +285,7 @@ For more information about creating resource groups, go to [Manage resource grou
 #### Create the Pipeline Owners user group
 
 1. In Harness, select **Account Settings**, and then select **Access Control**.
-2. Select **User Groups** in the header, and then select ***New User Group**.
+2. Select **User Groups** in the header, and then select **\*New User Group**.
 3. For **Name**, enter `Pipeline Owners`. **Description** and **Tags** are optional.
 4. In **Add Users**, select users to add to the group.
 5. Select **Save**.
@@ -296,10 +296,10 @@ For more information about user groups and users, go to [Manage user groups](./a
 
 You can create user groups and users directly in Harness, and you can use automated provisioning, including:
 
-* [Okta SCIM](./provision-users-with-okta-scim.md)
-* [Azure AD SCIM](./provision-users-and-groups-using-azure-ad-scim.md)
-* [OneLogin SCIM](./provision-users-and-groups-with-one-login-scim.md)
-* [Just-in-time provisioning](./provision-use-jit.md)
+- [Okta SCIM](./provision-users-with-okta-scim.md)
+- [Microsoft Entra ID SCIM](./provision-users-and-groups-using-azure-ad-scim.md)
+- [OneLogin SCIM](./provision-users-and-groups-with-one-login-scim.md)
+- [Just-in-time provisioning](./provision-use-jit.md)
 
 When you use automated provisioning, users and user groups are imported from your IdP, and then you assign roles and resource groups to the imported [principals](#principals) in Harness. For imported users and groups, you manage group metadata, group membership, and user profiles in your IdP, and you manage their role and resource group assignments in Harness. You can also create users and user groups directly in Harness, but any users or groups imported from your IdP must be managed in your IdP.
 
@@ -310,11 +310,11 @@ For example, if you use Okta as your IdP, you could create a Pipeline Owners gro
 #### Assign the role and resource group to the user group
 
 1. Harness, select **Account Settings**, and then select **Access Control**.
-3. Select **User Groups** in the header, locate the **Pipeline Owners** group, and select **Manage Roles**.
-4. Under **Role Bindings**, select **Add**.
-5. For **Role**, select the **Pipeline Admin** role.
-6. For **Resource Groups**, select the **All Pipeline Resources** group.
-7. Select **Apply**.
+2. Select **User Groups** in the header, locate the **Pipeline Owners** group, and select **Manage Roles**.
+3. Under **Role Bindings**, select **Add**.
+4. For **Role**, select the **Pipeline Admin** role.
+5. For **Resource Groups**, select the **All Pipeline Resources** group.
+6. Select **Apply**.
 
 For more information about assigning roles and resource groups, go to [Role binding](#role-binding).
 
@@ -323,14 +323,14 @@ For more information about assigning roles and resource groups, go to [Role bind
 <details>
 <summary>Example: Configure RBAC to run pipelines in a specific project</summary>
 
-This example walks through an RBAC configuration that provides only the ability to run pipelines in a specific project. This configuration uses a custom user group called *Project Pipeline Runners*, custom role called *Pipeline Runner*, and a custom resource group called *All Project Pipelines and Connectors*.
+This example walks through an RBAC configuration that provides only the ability to run pipelines in a specific project. This configuration uses a custom user group called _Project Pipeline Runners_, custom role called _Pipeline Runner_, and a custom resource group called _All Project Pipelines and Connectors_.
 
-Because pipelines involve multiple resources, such as connectors, secrets, and variables, the *Pipeline Runner* role requires the following permissions:
+Because pipelines involve multiple resources, such as connectors, secrets, and variables, the _Pipeline Runner_ role requires the following permissions:
 
-* **Execute** permission for pipelines.
-* **Access** permission for any resource types used in pipelines.
+- **Execute** permission for pipelines.
+- **Access** permission for any resource types used in pipelines.
 
-The *All Project Pipelines and Connectors* resource group exists at the project scope, and it only includes pipelines and resources related to pipelines (such as connectors). This restricts access to these specific resources within a specific project only.
+The _All Project Pipelines and Connectors_ resource group exists at the project scope, and it only includes pipelines and resources related to pipelines (such as connectors). This restricts access to these specific resources within a specific project only.
 
 #### Create the Pipeline Runner role
 
@@ -344,8 +344,8 @@ The *All Project Pipelines and Connectors* resource group exists at the project 
 5. Select **Save**.
 6. Select the following permissions:
 
-   * For **Pipelines**, select **Execute**.
-   * Under **Shared Resources**, select **Access** for **Connectors** and any other shared resources relevant to your pipelines, such as **Templates**, **Secrets**, **Variables**, or **Delegates**.
+   - For **Pipelines**, select **Execute**.
+   - Under **Shared Resources**, select **Access** for **Connectors** and any other shared resources relevant to your pipelines, such as **Templates**, **Secrets**, **Variables**, or **Delegates**.
 
 7. Select **Apply Changes**.
 
@@ -370,7 +370,7 @@ For more information about creating resource groups, go to [Manage resource grou
 #### Configure the user group
 
 1. In the same Harness project where you [created the Pipeline Runner role](#create-the-pipeline-runner-role), select **Project Setup**, and then select **Access Control**.
-2. Select **User Groups** in the header, and then select ***New User Group**.
+2. Select **User Groups** in the header, and then select **\*New User Group**.
 3. For **Name**, enter `Project Pipeline Runners`. **Description** and **Tags** are optional.
 4. In **Add Users**, select users to add to the group.
 5. Select **Save**.

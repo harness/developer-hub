@@ -3,10 +3,9 @@ sidebar_position: 6
 hide_table_of_contents: true
 title: Use secrets managers
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
 In this tutorial, we'll walk you through the process of safely storing and accessing sensitive information like API keys and credentials. You'll learn best practices while gaining hands-on experience to ensure your secrets remain protected. Let's dive into the world of Harness secrets management.
 
@@ -23,8 +22,8 @@ To create a secret, do the following:
 1. Sign in to Harness.
 2. Select **Projects**, and then select **Secrets**.
 3. Select **New Secret**, and then select **Text**.
-4. Enter  **Name** for the secret.
-5. For the **Secret Value**, enter a GitHub personal access token (PAT) with the repo scope. For more information, go to [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) in the GitHub documentation. 
+4. Enter **Name** for the secret.
+5. For the **Secret Value**, enter a GitHub personal access token (PAT) with the repo scope. For more information, go to [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) in the GitHub documentation.
 6. Select **Save**.
 
 ## Harness secrets management overview
@@ -35,34 +34,33 @@ Harness Secret Manager is a platform designed to securely and centrally manage s
 
 Google Cloud Key Management Service is the default secret manager in Harness and is named Harness Secret Manager Google KMS. To learn how to configure Harness Secret Manager Google KMS, go to [how to add a Google KMS Secret Manager in Harness.](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager/)
 
-Your browser sends information securely to Harness Manager using HTTPS. Harness Manager transfers encrypted information to the Harness Delegate using HTTPS. The delegate securely exchanges a pair of keys with the secret manager through an encrypted connection. The Harness Delegate uses the encrypted key and secret, and then removes them. The keys never leave the delegate. The delegate uses the required value to deploy on the instances. 
+Your browser sends information securely to Harness Manager using HTTPS. Harness Manager transfers encrypted information to the Harness Delegate using HTTPS. The delegate securely exchanges a pair of keys with the secret manager through an encrypted connection. The Harness Delegate uses the encrypted key and secret, and then removes them. The keys never leave the delegate. The delegate uses the required value to deploy on the instances.
 
-### Integrate third-party secret managers 
+### Integrate third-party secret managers
 
 :::info note
-This feature is behind a Feature Flag and is available only to our paid customers. 
+This feature is behind a Feature Flag and is available only to our paid customers.
 :::
 
-```mdx-code-block
 <Tabs>
 <TabItem value="AWS KMS">
-```
+
 ## Before you begin
 
 Verify that you have the following:
 
 - The **AWS - Access Key ID** from AWS
 - The **AWS - Secret Key ID** from AWS
-- The **AWS ARN** 
-- A fork of the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
-    - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
+- The **AWS ARN**
+- A fork of the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
+  - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
 - **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
-    - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
-    - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
-    - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
-    - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
-    - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
-    - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+  - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
+  - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
+  - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+  - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
+  - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
+  - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 
 ## Use AWS KMS to manage secrets
 
@@ -124,27 +122,25 @@ If you are NOT using the default organization and project, make sure to change t
 
 You can now use this secret manager in your pipeline.
 
-```mdx-code-block
 </TabItem>
 <TabItem value="GCP KMS">
-```
 
 ## Before you begin
 
 Verify that you have the following:
 
 - The [Google Cloud Symmetric Key](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager#obtain-google-cloud-symmetric-key) to get values like **Project ID, Region, Key Ring, Key Name** for the Details page, from Google Cloud Console.
-- A fork of [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
-    - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
+- A fork of [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
+  - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
 - **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
-    - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
-    - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
-    - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
-    - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
-    - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
-    - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+  - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
+  - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
+  - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+  - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
+  - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
+  - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 
-## Use GCP KMS to manage secrets 
+## Use GCP KMS to manage secrets
 
 1. Sign in to Harness.
 2. Select **Projects**, and then select **Default Project**.
@@ -155,17 +151,17 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
 
 Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.
 
-### Create a GCP secret key 
+### Create a GCP secret key
 
 To create a GCP secret key, do the following:
 
 1. Select **New Secret**, and then select **File**.
 2. Enter the secret name `gcp_kms_secret_key`.
 3. For the Select File,
-    1. Open your GCP service account's Actions ⋮ menu, then select **Manage keys**. 
-    2. Select ADD KEY > Create new key.
-    3. In the resulting Create private key dialog, select JSON, create the key, and download it to your computer.
-    4. Upload the JSON file. 
+   1. Open your GCP service account's Actions ⋮ menu, then select **Manage keys**.
+   2. Select ADD KEY > Create new key.
+   3. In the resulting Create private key dialog, select JSON, create the key, and download it to your computer.
+   4. Upload the JSON file.
 4. Select **Save**.
 
 ### Connectors
@@ -193,25 +189,24 @@ If you are NOT using the default organization and project, make sure to change t
 
 You can now use this secret manager in your pipeline.
 
-```mdx-code-block
 </TabItem>
 <TabItem value="Hashicorp">
-```
+
 ## Before you begin
 
 Verify that you have the following:
 
 - The **Public Vault Url** from Hashicorp Vault.
 - The **Admin Token** from the Hashicorp Public vault URL.
-- A fork of the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
-    - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
+- A fork of the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
+  - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
 - **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
-    - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
-    - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
-    - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
-    - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
-    - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
-    - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+  - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
+  - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
+  - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+  - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
+  - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
+  - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 
 ### Use Hashicorp to manage secrets
 
@@ -252,27 +247,26 @@ If you are NOT using the default organization and project, make sure to change t
 
 You can now use this secret manager in your pipeline.
 
-```mdx-code-block
 </TabItem>
 <TabItem value="AWS Secret Manager">
-```
+
 ## Before you begin
 
 Verify that you have the following:
 
 - The **AWS - Access Key ID** from AWS
 - The **AWS - Secret Key ID** from AWS
-- A fork of the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
-    - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
+- A fork of the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
+  - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
 - **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
-    - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
-    - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
-    - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
-    - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
-    - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
-    - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+  - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
+  - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
+  - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+  - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
+  - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
+  - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 
-## Use AWS KMS to manage secrets 
+## Use AWS KMS to manage secrets
 
 1. Sign in to Harness.
 2. Select **Projects**, and then select **Default Project**.
@@ -319,23 +313,22 @@ If you are NOT using the default organization and project, make sure to change t
 
 You can now use this secret manager in your pipeline.
 
-```mdx-code-block
 </TabItem>
 <TabItem value="GCP Secret Manager">
-```
+
 ## Before you begin
 
 Verify that you have the following:
 
-- A fork of the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
-    - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
+- A fork of the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository through the GitHub website.
+  - For more information on forking a GitHub repository, go to [forking a repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) in the GitHub documentation.
 - **Docker**. For this tutorial, ensure that you have the Docker runtime installed on your Harness Delegate host. If you do not have the Docker runtime, use one of the following installation options:
-    - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
-    - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
-    - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
-    - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
-    - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
-    - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+  - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
+  - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
+  - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+  - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
+  - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
+  - Check [Delegate system requirements](/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 
 ## Use GCP KMS to manage secrets
 
@@ -348,17 +341,17 @@ The Harness Delegate is a service that runs in your local network or VPC to esta
 
 Make sure the delegate is installed and it is connected. For more details, go to the [Google Cloud Functions](/tutorials/cd-pipelines/serverless/gcp-cloud-func#delegate) tutorial.
 
-### Create a GCP secret key 
+### Create a GCP secret key
 
 To create a GCP secret key, do the following:
 
 1. Select **New Secret**, and then select **File**.
 2. Enter the secret name `gcp_secret_secret_key`.
 3. For the Select File,
-    1. Open your GCP service account's Actions ⋮ menu, and then select Manage keys. 
-    2. Select ADD KEY > Create new key.
-    3. In the resulting Create private key dialog, select JSON, create the key, and download it to your computer.
-    4. Upload the JSON file. 
+   1. Open your GCP service account's Actions ⋮ menu, and then select Manage keys.
+   2. Select ADD KEY > Create new key.
+   3. In the resulting Create private key dialog, select JSON, create the key, and download it to your computer.
+   4. Upload the JSON file.
 4. Select **Save**.
 
 ### Connectors
@@ -379,10 +372,8 @@ If you are NOT using the default organization and project, make sure to change t
 
 You can now use this secret manager in your pipeline.
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
 
 ## Secrets and log sanitization
 
@@ -392,7 +383,7 @@ Let's create a pipeline that will print logs on the console to see how Harness s
 
 ### Create a new secret
 
-To create a new secret, do the following: 
+To create a new secret, do the following:
 
 1. Select **New Secret**, and then select **Text**.
 2. Enter the secret name `docsecret`.
@@ -421,6 +412,6 @@ To run the pipeline, do the following:
 2. Observe the execution logs as Harness runs the pipeline.
 3. In console logs, the secret is masked with asterisks (`*`), as shown in the following image.
 
-<docimage path={require('./static/secret/secret-log.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/secret/secret-log.png')} width="60%" height="60%" title="Click to view full size image" />
 
 When a text secret is displayed in a deployment log, Harness substitutes the text secret value with asterisks (`*`) so that the secret value is never displayed.​ For more information, go to [secrets and log-sanitization](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization). The only exception is output variables. If an output variable value contains a secret, be aware that the secret will be visible in the build details. For more information, go to [output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#output-variables).

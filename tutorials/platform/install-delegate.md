@@ -1,22 +1,26 @@
 ---
-sidebar_position: 1
+sidebar_position: 7
 description: Install Harness Delegate on Kubernetes or Docker
 title: Install Harness Delegate on Kubernetes or Docker
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 import delete_project from './static/delete-project.png'
-```
+
 
 ## What is Harness Delegate?
 
 [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview/) is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate to execute the CI/CD and other tasks on your behalf, without any of your secrets leaving your network.
 
-You can install the Harness Delegate on either Docker or Kubernetes. 
+You can install the Harness Delegate on either Docker or Kubernetes.
+
+import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
+
+<Addperm />
 
 ## Install Harness Delegate
 
@@ -36,10 +40,10 @@ https://app.harness.io/ng/#/account/6_vVHzo9Qeu9fXvj-AcQCb/settings/overview
 
 Now you are ready to install the delegate on either Docker or Kubernetes. 
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Kubernetes">
-```
+
 ### Prerequisite
 
 Ensure that you have access to a Kubernetes cluster. For the purposes of this tutorial, we will use `minikube`.
@@ -66,10 +70,10 @@ kubectl get pods -A
 
 Now that you have access to a Kubernetes cluster, you can install the delegate using any of the options below.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Helm Chart">
-```
+
 
 ### Install the Helm chart
 
@@ -132,10 +136,10 @@ For more information on requirements for air-gapped environments, go to [Install
 
 7. Run the command.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Terraform Helm Provider">
-```
+
 
 ### Create main.tf file
 
@@ -168,15 +172,14 @@ provider "helm" {
 }
 ```
 
-Now replace the variables in the file with your Harness account ID and delegate token values. Replace `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+Now replace the variables in the file with your Harness account ID and delegate token values. Replace `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. 
 
 | Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
 | ------------------------| -------------------------------------------	|
 | SaaS prod-1  	 		| `https://app.harness.io`       				|
 | SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
 | SaaS prod-3  	 		| `https://app3.harness.io`        				|
-| [CDCE Docker](/tutorials/platform/install-cd-community-edition)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
-| [CDCE Helm](/tutorials/platform/install-cd-community-edition)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
+
 
 ### Run Terraform init, plan, and apply
 
@@ -211,10 +214,10 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Kubernetes Manifest">
-```
+
 
 ### Download a Kubernetes manifest template
 
@@ -226,15 +229,14 @@ curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/
 
 Open the `harness-delegate.yaml` file in a text editor and replace `PUT_YOUR_DELEGATE_NAME_HERE`, `PUT_YOUR_HARNESS_ACCOUNTID_HERE`, and `PUT_YOUR_DELEGATE_TOKEN_HERE` with your delegate name (for example, `firstk8sdel`), Harness `accountId`, and delegate token values, respectively.
 
-Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. 
 
 | Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
 | ------------------------| -------------------------------------------	|
 | SaaS prod-1  	 		| `https://app.harness.io`       				|
 | SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
 | SaaS prod-3  	 		| `https://app3.harness.io`        				|
-| [CDCE Docker](/tutorials/platform/install-cd-community-edition)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
-| [CDCE Helm](/tutorials/platform/install-cd-community-edition)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
+
 
 ### Apply the Kubernetes manifest
 
@@ -242,15 +244,15 @@ Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Mana
 kubectl apply -f harness-delegate.yaml
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
 
-```mdx-code-block
+
+
 </TabItem>
 <TabItem value="Docker">
-```
+
 <h3> Prerequisite </h3>
 
 Ensure that you have the Docker runtime installed on your host. If not, use one of the following options to install Docker:
@@ -304,15 +306,14 @@ For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation 
 | SaaS prod-1  	 		| `https://app.harness.io`       				|
 | SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
 | SaaS prod-3  	 		| `https://app3.harness.io`        				|
-| [CDCE Docker](/tutorials/platform/install-cd-community-edition)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
-| [CDCE Helm](/tutorials/platform/install-cd-community-edition)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
+
 
 If you are using a local runner CI build infrastructure, modify the delegate install command as explained in [Use local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure/#install-the-delegate)
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Deploy using a custom role
 
@@ -367,7 +368,7 @@ Select **Continue**. After the health checks pass, your delegate is available fo
 
 You can now route communication to external systems in Harness connectors and pipelines by selecting this delegate via a delegate selector.
 
-import Selector from '/docs/platform/delegates/shared/selector-infrastructure.md'
+import Selector from '/docs/platform/shared/selector-infrastructure.md'
 
 <Selector />
 
@@ -379,10 +380,10 @@ Harness asks for feedback after the troubleshooting steps. You are asked, **Did 
 
 If the steps did not resolve the problem, select **No**, and use the form to describe the issue. You'll also find links to Harness Support and to [Delegate docs](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Helm Chart">
-```
+
 
 Use the following steps to troubleshoot your installation of the delegate using Helm.
 
@@ -425,10 +426,10 @@ Use the following steps to troubleshoot your installation of the delegate using 
    ```
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Terraform Helm Provider">
-```
+
 
 Use the following steps to troubleshoot your installation of the delegate using Terraform.
 
@@ -461,10 +462,10 @@ Use the following steps to troubleshoot your installation of the delegate using 
    kubectl describe <pod_name> -n <namespace>
    ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Kubernetes Manifest">
-```
+
 
 Use the following steps to troubleshoot your installation of the delegate using Kubernetes.
 
@@ -489,10 +490,10 @@ Use the following steps to troubleshoot your installation of the delegate using 
    ```
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Docker">
-```
+
 
 Use the following steps to troubleshoot your installation of the delegate using Docker:
 
@@ -525,7 +526,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
    ```
    docker container rm [container id]
    ```
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+

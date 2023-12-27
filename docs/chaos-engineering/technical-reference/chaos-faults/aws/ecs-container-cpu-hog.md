@@ -10,6 +10,9 @@ ECS container CPU hog disrupts the state of infrastructure resources. It induces
 
 ![ECS Container CPU Hog](./static/images/ecs-stress-chaos.png)
 
+:::tip
+This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](./ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
+:::
 
 ## Use cases
 ECS Container CPU hog:

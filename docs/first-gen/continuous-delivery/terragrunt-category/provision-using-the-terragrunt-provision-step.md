@@ -20,30 +20,27 @@ The Harness Terragrunt Infrastructure Provisioner is supported in Canary and Mul
 
 ### Before You Begin
 
-* Get an overview how how Harness supports Terragrunt: [Terragrunt Provisioning with Harness](../concepts-cd/deployment-types/terragrunt-provisioning-with-harness.md).
-* Ensure you have your Harness account settings prepared for Terragrunt: [Set Up Your Harness Account for Terragrunt](set-up-your-harness-account-for-terragrunt.md).
-* Create a Harness Terragrunt Infrastructure Provisioner: [Add Terragrunt Configuration Files](add-terragrunt-configuration-files.md).
-* If you are provisioning the target infrastructure for a deployment you need to map Terraform outputs to the Infrastructure Definition used by the Workflow. See [Map Dynamically Provisioned Infrastructure using Terragrunt](map-terragrunt-infrastructure.md).
+- Get an overview how how Harness supports Terragrunt: [Terragrunt Provisioning with Harness](../concepts-cd/deployment-types/terragrunt-provisioning-with-harness.md).
+- Ensure you have your Harness account settings prepared for Terragrunt: [Set Up Your Harness Account for Terragrunt](set-up-your-harness-account-for-terragrunt.md).
+- Create a Harness Terragrunt Infrastructure Provisioner: [Add Terragrunt Configuration Files](add-terragrunt-configuration-files.md).
+- If you are provisioning the target infrastructure for a deployment you need to map Terraform outputs to the Infrastructure Definition used by the Workflow. See [Map Dynamically Provisioned Infrastructure using Terragrunt](map-terragrunt-infrastructure.md).
 
 In addition, the following related features are documented in other topics:
 
-* **Terragrunt** **Dry Run**: the Terragrunt Provisioner step in the Workflow can be executed as a dry run, just like running the `terragrunt plan` command. The dry run will refresh the state file and generate a plan. See [Perform a Terragrunt Dry Run](perform-a-terragrunt-dry-run.md).
-* **Terragrunt** **Destroy**: see [Remove Provisioned Infra with Terragrunt Destroy](remove-provisioned-infra-with-terragrunt-destroy.md).
+- **Terragrunt** **Dry Run**: the Terragrunt Provisioner step in the Workflow can be executed as a dry run, just like running the `terragrunt plan` command. The dry run will refresh the state file and generate a plan. See [Perform a Terragrunt Dry Run](perform-a-terragrunt-dry-run.md).
+- **Terragrunt** **Destroy**: see [Remove Provisioned Infra with Terragrunt Destroy](remove-provisioned-infra-with-terragrunt-destroy.md).
 
 ### Visual Summary
 
 Here is a visual summary of how you use your and Terragrunt and Terraform files with Harness to provision target infra and then deploy to it:
 
-![](./static/provision-using-the-terragrunt-provision-step-08\.png)
+![](./static/provision-using-the-terragrunt-provision-step-08.png)
 
 For step 1, see [Add Terragrunt Configuration Files](add-terragrunt-configuration-files.md). For step 2, see [Map Dynamically Provisioned Infrastructure using Terragrunt](map-terragrunt-infrastructure.md).
 
 Here's a 6 minute video walkthrough of Harness-Terragrunt integration:
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
-<docvideo src="https://www.youtube.com/embed/HYSi2LAaYdc?feature=oembed" />
-
+<DocVideo src="https://www.youtube.com/embed/HYSi2LAaYdc?feature=oembed" />
 
 ### Step 1: Add Environment to Workflow
 
@@ -65,7 +62,7 @@ Click **SUBMIT**. The new Workflow is created.
 
 By default, the Workflow includes a **Pre-deployment Steps** section. This is where you will add a step that uses your Terragrunt Provisioner.
 
-Infrastructure Definitions are added in Canary Workflow *Phases*, in the **Deployment Phases** section. You will add the Infrastructure Definition that uses your Terragrunt Infrastructure Provisioner when you add the Canary Phases, later in this topic.
+Infrastructure Definitions are added in Canary Workflow _Phases_, in the **Deployment Phases** section. You will add the Infrastructure Definition that uses your Terragrunt Infrastructure Provisioner when you add the Canary Phases, later in this topic.
 
 ### Step 2: Add Terragrunt Step to Pre-deployment Steps
 
@@ -89,34 +86,34 @@ Specify the Terraform modules you want Terragrunt to use.
 
 You are telling Harness where to locate your terragrunt.hcl file. The terragrunt.hcl itself will point to a Terraform module using the `source` parameter like this:
 
-
 ```
-locals {  
-}  
-  
-terraform {  
-//  source = "git::git@github.com:Tathagat-289/terraformResources.git//module3"  
-  source = "github.com/Tathagat-289/terraformResources//module3"  
-}  
-  
-# Include all settings from the root terragrunt.hcl file  
-include {  
-  path = find_in_parent_folders()  
-}  
-  
-inputs = {  
-  tfmodule3 = "tfmodule4"  
-  slmodule3 = "sleepmodule4"  
-  tfv = "tfversion1"  
-  sl = "sl1"  
+locals {
+}
+
+terraform {
+//  source = "git::git@github.com:Tathagat-289/terraformResources.git//module3"
+  source = "github.com/Tathagat-289/terraformResources//module3"
+}
+
+# Include all settings from the root terragrunt.hcl file
+include {
+  path = find_in_parent_folders()
+}
+
+inputs = {
+  tfmodule3 = "tfmodule4"
+  slmodule3 = "sleepmodule4"
+  tfv = "tfversion1"
+  sl = "sl1"
 }
 ```
+
 You have two options:
 
-* **Apply All Modules:** Harness will use all of the terragrunt.hcl files starting from the folder you specify in **Path to Module**.  
-When you select **Apply All Modules**, the [Export Terragrunt Plan to next Terragrunt Provision step](#export_terragrunt_plan_to_next_terragrunt_provision_step) option is disabled.  
-When you select **Apply All Modules**, you might want to use [Backend Configuration (Remote state)](#option_backend_configuration_remote_state) to store your state file. Harness will not sync with the current state when Apply All Modules is selected. Instead, Harness simply applies the terragrunt.hcl files.
-* **Specify Specific Module:** Harness will use the terragrunt.hcl file in the folder you specify in **Path to Module**.
+- **Apply All Modules:** Harness will use all of the terragrunt.hcl files starting from the folder you specify in **Path to Module**.  
+  When you select **Apply All Modules**, the [Export Terragrunt Plan to next Terragrunt Provision step](#export_terragrunt_plan_to_next_terragrunt_provision_step) option is disabled.  
+  When you select **Apply All Modules**, you might want to use [Backend Configuration (Remote state)](#option_backend_configuration_remote_state) to store your state file. Harness will not sync with the current state when Apply All Modules is selected. Instead, Harness simply applies the terragrunt.hcl files.
+- **Specify Specific Module:** Harness will use the terragrunt.hcl file in the folder you specify in **Path to Module**.
 
 You can use [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md) in **Path to Module**.
 
@@ -152,19 +149,19 @@ Input values are where you provide values for the Terraform input variables in t
 
 For example, here's a Terraform config.tf file with variables for access and secret key:
 
-
 ```
-variable "access_key" {}  
-  
-variable "secret_key" {}  
-  
-provider "aws" {  
-  access_key = var.access_key  
-  secret_key = var.secret_key  
-  region = "us-east-1"  
-}  
+variable "access_key" {}
+
+variable "secret_key" {}
+
+provider "aws" {
+  access_key = var.access_key
+  secret_key = var.secret_key
+  region = "us-east-1"
+}
 ...
 ```
+
 You provide values for these input variables in the **Use tfvar Files** and or **Inline Values** section. You can use either or a mix of both.
 
 #### Use tfvar Files
@@ -185,8 +182,8 @@ In **Source Repository**, select the Harness [Source Repo Provider](../../firstg
 
 Select **Commit ID** or **Branch.**
 
-* For **Commit ID**, enter the git commit ID containing the tfvar version you want to use.
-* For **Branch**, enter the name of the branch where the tfvar file is located.
+- For **Commit ID**, enter the git commit ID containing the tfvar version you want to use.
+- For **Branch**, enter the name of the branch where the tfvar file is located.
 
 In **File Folder Path**, enter the full path from the root of the repo to the tfvar file. You can enter multiple file paths separated by commas.
 
@@ -196,22 +193,22 @@ You can enter inline values for the inputs in the Terraform config.tf file.
 
 For example, here's a Terraform config.tf file with variables for access and secret key:
 
-
 ```
-variable "access_key" {}  
-  
-variable "secret_key" {}  
-  
-provider "aws" {  
-  access_key = var.access_key  
-  secret_key = var.secret_key  
-  region = "us-east-1"  
-}  
+variable "access_key" {}
+
+variable "secret_key" {}
+
+provider "aws" {
+  access_key = var.access_key
+  secret_key = var.secret_key
+  region = "us-east-1"
+}
 ...
 ```
+
 In **Inline Values**, you can enter values for those inputs or select Harness secrets for the values:
 
-![](./static/provision-using-the-terragrunt-provision-step-09\.png)
+![](./static/provision-using-the-terragrunt-provision-step-09.png)
 
 See [Use Encrypted Text Secrets](../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
@@ -221,7 +218,7 @@ In Backend Configuration (Remote state), enter values for each backend config (r
 
 For example, here's a config.tf with a backend the values for it in Harness:
 
-![](./static/provision-using-the-terragrunt-provision-step-10\.png)
+![](./static/provision-using-the-terragrunt-provision-step-10.png)
 
 Depending on which platform you store your remote state data, Terragrunt and Terraform allow you to pass many different credentials and configuration settings, such as access and secret keys. For example, see the settings available for [AWS S3](https://www.terraform.io/docs/backends/types/s3.html#configuration) from Terraform and review [Keep your remote state configuration DRY](https://terragrunt.gruntwork.io/docs/features/keep-your-remote-state-configuration-dry/) from Terragrunt.
 
@@ -231,11 +228,11 @@ In **Additional Settings**, you can use the **Target** setting to target one or 
 
 For example, in the following image you can see the Terraform script has one resource and two modules and the **Targets** setting displays them as potential targets.
 
-![](./static/provision-using-the-terragrunt-provision-step-11\.png)
+![](./static/provision-using-the-terragrunt-provision-step-11.png)
 
 If you have multiple modules in your script and you do not select one in **Targets**, all modules are used.You can also use Workflow variables as your targets. For example, you can create a Workflow variable named **module** and then enter the variable `${workflow.variables.module}` in the **Targets** field. When you deploy the Workflow, you are prompted to provide a value for the variable:
 
-![](./static/provision-using-the-terragrunt-provision-step-12\.png)
+![](./static/provision-using-the-terragrunt-provision-step-12.png)
 
 See [Set Workflow Variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 
@@ -249,37 +246,37 @@ A workspace is really a different state file. Each workspace isolates its state 
 
 Here is an example script where a local value names two workspaces, **default** and **production**, and associates different instance counts with each:
 
-
 ```
-locals {  
-  counts = {  
-      "default"=1  
-      "production"=3  
-  }  
-}  
-  
-resource "aws_instance" "my_service" {  
-  ami="ami-7b4d7900"  
-  instance_type="t2.micro"  
-  count="${lookup(local.counts, terraform.workspace, 2)}"  
-  tags {  
-         Name = "${terraform.workspace}"  
-    }  
+locals {
+  counts = {
+      "default"=1
+      "production"=3
+  }
+}
+
+resource "aws_instance" "my_service" {
+  ami="ami-7b4d7900"
+  instance_type="t2.micro"
+  count="${lookup(local.counts, terraform.workspace, 2)}"
+  tags {
+         Name = "${terraform.workspace}"
+    }
 }
 ```
+
 In the workspace interpolation sequence you can see the count is assigned by applying it to the workspace variable (`terraform.workspace`) and that the tag is applied using the variable also.
 
 Harness will pass the workspace name you provide to the `terraform.workspace` variable, thus determining the count. If you provide the name **production**, the count will be **3**.
 
 In the **Workspace** setting, you can simply select the name of the workspace to use.
 
-![](./static/provision-using-the-terragrunt-provision-step-13\.png)
+![](./static/provision-using-the-terragrunt-provision-step-13.png)
 
 So can also use a Workflow variable to enter the name in **Workspace**.
 
 Later, when the Workflow is deployed, you can specify the name for the Workflow variable:
 
-![](./static/provision-using-the-terragrunt-provision-step-14\.png)
+![](./static/provision-using-the-terragrunt-provision-step-14.png)
 
 This allows you to specify a different workspace name each time the Workflow is run.
 
@@ -307,7 +304,7 @@ Enable **Skip rollback of provisioned infrastructure on failure** to prevent Har
 
 In **Terragrunt** **Environment Variables**, you can reference additional environment variables in the Terraform script ultimately used by the Terragrunt Infrastructure Provisioner. These are in addition to any variables already in the script.
 
-Click **Add** and enter a name, type, and value for the environment variable. For example: **TF\_LOG**, **Text**, and `TRACE`.
+Click **Add** and enter a name, type, and value for the environment variable. For example: **TF_LOG**, **Text**, and `TRACE`.
 
 If you select Encrypted Text, you must select an existing Harness [Encrypted Text secret](../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
@@ -331,7 +328,7 @@ In **Infrastructure Definition**, select the target Infrastructure Definition wh
 
 Here is an example:
 
-![](./static/provision-using-the-terragrunt-provision-step-15\.png)
+![](./static/provision-using-the-terragrunt-provision-step-15.png)
 
 Click **Submit**. Use the same Infrastructure Definition for the remaining phases in your Canary Workflow.
 
@@ -341,72 +338,72 @@ Once you are done, your Workflow is ready to deploy. Let's look at an example be
 
 This section shows the deployment steps for a Workflow using the Terragrunt Provisioner step and deploying to a Kubernetes cluster.
 
-![](./static/provision-using-the-terragrunt-provision-step-16\.png)
+![](./static/provision-using-the-terragrunt-provision-step-16.png)
 
 In the **Pre-Deployment** section, two **Terragrunt** **Provision** steps are executed. When you click each step you can see the Terragrunt commands executed in **Details**.
 
 The first Terragrunt Provision step create a plan using the Terragrunt config files and the source Terraform module. The plan is encrypted and stored in a Secrets Manager.
 
-
 ```
-Generating ************** plan   
-  
-terragrunt plan -out=tfplan -input=false   -var-file="/opt/harness-delegate/./terragrunt-working-dir/kmpySmUISimoRrJL6NL73w/235638175/terragrunt-script-repository/variables/local_variables/**************.tfvars"    
-Refreshing Terraform state in-memory prior to plan...  
-The refreshed state will be used to calculate this plan, but will not be  
+Generating ************** plan
+
+terragrunt plan -out=tfplan -input=false   -var-file="/opt/harness-delegate/./terragrunt-working-dir/kmpySmUISimoRrJL6NL73w/235638175/terragrunt-script-repository/variables/local_variables/**************.tfvars"
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but will not be
 persisted to local or remote state storage.
 ```
+
 The second Terragrunt Provision step inherits the plan, decrypts it, and applies the plan:
 
-
 ```
-Decrypting ************** plan before applying  
-  
-  
-Using approved ************** plan   
-  
-Finished terragrunt plan task  
-...  
-terragrunt apply -input=false tfplan  
-null_resource.delaymodule3: Creating...  
-null_resource.delaymodule3: Provisioning with 'local-exec'...  
-null_resource.delaymodule3 (local-exec): Executing: ["/bin/sleep" "5"]  
-null_resource.delaymodule3: Creation complete after 5s [id=932665668643318315]  
-  
-Apply complete! Resources: 1 added, 0 changed, 0 destroyed.  
-  
-The state of your infrastructure has been saved to the path  
-below. This state is required to modify and destroy your  
-infrastructure, so keep it safe. To inspect the complete state  
-use the `************** show` command.  
-  
-State path: **************.tfstate  
-  
-Outputs:  
-  
-clusterName = us-central1-a/harness-test  
-sleepoutputModule3 = 10  
+Decrypting ************** plan before applying
+
+
+Using approved ************** plan
+
+Finished terragrunt plan task
+...
+terragrunt apply -input=false tfplan
+null_resource.delaymodule3: Creating...
+null_resource.delaymodule3: Provisioning with 'local-exec'...
+null_resource.delaymodule3 (local-exec): Executing: ["/bin/sleep" "5"]
+null_resource.delaymodule3: Creation complete after 5s [id=932665668643318315]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
+The state of your infrastructure has been saved to the path
+below. This state is required to modify and destroy your
+infrastructure, so keep it safe. To inspect the complete state
+use the `************** show` command.
+
+State path: **************.tfstate
+
+Outputs:
+
+clusterName = us-central1-a/harness-test
+sleepoutputModule3 = 10
 versionModule3 = 5
 ```
+
 Finally, in the **Canary Deployment** step, the workload steady state is reached and the deployment is considered a success:
 
-
 ```
-kubectl --kubeconfig=config get events --namespace=default --output=custom-columns=KIND:involvedObject.kind,NAME:.involvedObject.name,MESSAGE:.message,REASON:.reason --watch-only  
-  
-kubectl --kubeconfig=config rollout status Deployment/harness-example-deployment-canary --namespace=default --watch=true  
-  
-  
-Status : Waiting for deployment "harness-example-deployment-canary" rollout to finish: 0 of 1 updated replicas are available...  
-Event  : Pod    harness-example-deployment-canary-5b4cb547b-dmv5k   Pulling image "registry.hub.docker.com/library/nginx:stable-perl"   Pulling  
-Event  : Pod   harness-example-deployment-canary-5b4cb547b-dmv5k   Successfully pulled image "registry.hub.docker.com/library/nginx:stable-perl"   Pulled  
-Event  : Pod   harness-example-deployment-canary-5b4cb547b-dmv5k   Created container harness-example   Created  
-Event  : Pod   harness-example-deployment-canary-5b4cb547b-dmv5k   Started container harness-example   Started  
-  
-Status : deployment "harness-example-deployment-canary" successfully rolled out  
-  
+kubectl --kubeconfig=config get events --namespace=default --output=custom-columns=KIND:involvedObject.kind,NAME:.involvedObject.name,MESSAGE:.message,REASON:.reason --watch-only
+
+kubectl --kubeconfig=config rollout status Deployment/harness-example-deployment-canary --namespace=default --watch=true
+
+
+Status : Waiting for deployment "harness-example-deployment-canary" rollout to finish: 0 of 1 updated replicas are available...
+Event  : Pod    harness-example-deployment-canary-5b4cb547b-dmv5k   Pulling image "registry.hub.docker.com/library/nginx:stable-perl"   Pulling
+Event  : Pod   harness-example-deployment-canary-5b4cb547b-dmv5k   Successfully pulled image "registry.hub.docker.com/library/nginx:stable-perl"   Pulled
+Event  : Pod   harness-example-deployment-canary-5b4cb547b-dmv5k   Created container harness-example   Created
+Event  : Pod   harness-example-deployment-canary-5b4cb547b-dmv5k   Started container harness-example   Started
+
+Status : deployment "harness-example-deployment-canary" successfully rolled out
+
 Done.
 ```
+
 ### Notes
 
 The following notes discuss rollback of deployments that use Terragrunt Infrastructure Provisioners.
@@ -427,6 +424,5 @@ However, let's look at the situation where module3 succeeds and now you have mod
 
 Now that you're familiar with provision using the Terragrunt Provisioner step, the following topics cover features to help you extend your Harness Terragrunt deployments:
 
-* [Perform a Terragrunt Dry Run](perform-a-terragrunt-dry-run.md)
-* [Remove Provisioned Infra with Terragrunt Destroy](remove-provisioned-infra-with-terragrunt-destroy.md)
-
+- [Perform a Terragrunt Dry Run](perform-a-terragrunt-dry-run.md)
+- [Remove Provisioned Infra with Terragrunt Destroy](remove-provisioned-infra-with-terragrunt-destroy.md)

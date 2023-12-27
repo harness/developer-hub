@@ -5,14 +5,9 @@ description: Add Sumo Logic health source to a monitored service.
 sidebar_position: 12
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-
-:::info note
-Currently, this feature is behind the feature flag `SRM_SUMO`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
 
 
 In Harness, a health source is a mapping that connects a Service in Harness to a service running in a deployment environment that is being monitored by an Application Performance Monitoring (APM) or logging tool. This mapping allows Harness to collect metrics and data from the APM or logging tool and use it to determine the health and status of the Service in Harness.
@@ -67,8 +62,8 @@ To add Sumo Logic as a health source:
    In the **Query** box, enter your metric query and then select **Run Query**.  
    Sample data is displayed in the **Records** box. The **Chart** box displays the graph corresponding to the sample data. This helps you verify if the query that you have built is correct.
 
-   <details>
-   <summary><b>Sample query for memory usage</b></summary>
+<details>
+<summary><b>Sample query for memory usage</b></summary>
 
    Query: `metric=memory`
 
@@ -79,7 +74,7 @@ To add Sumo Logic as a health source:
    ![Memory usage records and charts](./static/cv-sumologic-select-metric-query-memory-chart-records.png)
 
 
-   </details>
+</details>
 
 #### Assign services
 
@@ -177,14 +172,14 @@ To set fail-fast thresholds for CV, follow these steps:
 2. In the **Field Mapping** section, select the **Service Instance Identifier** to display the logs, and then select **Get sample log messages**. Sample logs are displayed that help you verify if the query you built is correct.
 
 <details>
-   <summary><b>Sample log query</b></summary>
+<summary><b>Sample log query</b></summary>
 
    Query: `_sourcename = "Http Input"`
 
    ![Query - Logs](./static/cv-sumologic-select-log-query-chart-records.png)
 
 
-   </details>
+</details>
 
 
 </TabItem>

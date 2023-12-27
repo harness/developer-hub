@@ -269,12 +269,12 @@
   /* Module Colors/IaCM */
   --mod-iacm-300: #30841f;
   --mod-iacm-200: #5fb34e;
-  --mod-iacm-300: #f6fff2;
+  --mod-iacm-100: #f6fff2;
 
-  /* Module Colors/Gitness */
-  --mod-gitness-300: #9a0041;
-  --mod-gitness-200: #ff006a;
-  --mod-gitness-100: #fff1f7;
+  /* Module Colors/Code (Gitness) */
+  --mod-code-300: #9a0041;
+  --mod-code-200: #ff006a;
+  --mod-code-100: #fff1f7;
 
   /* ----- */
   --ifm-link-decoration: none;

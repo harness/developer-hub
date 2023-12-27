@@ -1,7 +1,7 @@
 ---
 title: Use Kustomize for Kubernetes Deployments (FirstGen)
 description: Use kustomizations in your Kubernetes deployments.
-sidebar_position: 330 
+sidebar_position: 330
 helpdocs_topic_id: zrz7nstjha
 helpdocs_category_id: n03qfofd5w
 helpdocs_is_private: false
@@ -15,8 +15,8 @@ Please review the video [Kustomize: Deploy Your App with Template Free YAML](htt
 
 ### Before You Begin
 
-* [Connect to Your Target Kubernetes Platform](connect-to-your-target-kubernetes-platform.md)
-* [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md)
+- [Connect to Your Target Kubernetes Platform](connect-to-your-target-kubernetes-platform.md)
+- [Kubernetes Quickstart](../../first-gen-quickstarts/kubernetes-quickstart.md)
 
 Kustomize is supported in Harness Kubernetes v2 Services only. This is the default type, but some Harness users might be using a legacy Kubernetes v1 Service.
 
@@ -32,19 +32,17 @@ In this diagram we use Google GCP, but Harness deploys to any Kubernetes cluster
 
 ### Video Summary
 
-<!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
-<docvideo src="https://www.youtube.com/embed/BlxPanrpaX0" />
+<DocVideo src="https://www.youtube.com/embed/BlxPanrpaX0" />
 
 ### Limitations
 
 Currently, Harness support for Kustomize has the following limitations:
 
-* Harness variables and secrets are not supported.
-	+ Harness variables are not supported because Kustomize follows a template-free methodology.
-	+ Use [sealed secrets](https://github.com/bitnami-labs/sealed-secrets) instead. See **Sealed Secrets** in [How to keep your Kubernetes secrets secure in Git](https://learnk8s.io/kubernetes-secrets-in-git) by Omer Levi Hevroni.
-* Harness artifacts are not supported, as described in [Review: Artifact Sources and Kustomization](#review_artifact_sources_and_kustomization).
-* Harness does not use Kustomize for rollback. Harness renders the templates using Kustomize and then passes them onto kubectl. A rollback works exactly as it does for native Kubernetes.
+- Harness variables and secrets are not supported.
+  - Harness variables are not supported because Kustomize follows a template-free methodology.
+  - Use [sealed secrets](https://github.com/bitnami-labs/sealed-secrets) instead. See **Sealed Secrets** in [How to keep your Kubernetes secrets secure in Git](https://learnk8s.io/kubernetes-secrets-in-git) by Omer Levi Hevroni.
+- Harness artifacts are not supported, as described in [Review: Artifact Sources and Kustomization](#review_artifact_sources_and_kustomization).
+- Harness does not use Kustomize for rollback. Harness renders the templates using Kustomize and then passes them onto kubectl. A rollback works exactly as it does for native Kubernetes.
 
 ### Review: Kustomize and Harness Delegates
 
@@ -66,15 +64,14 @@ Here is a quick summary:
 2. Click **Source Repo Providers**, and then click **Add Source Repo Provider**.
 3. Provide the following settings and click **Submit**:
 
+|     |                                                                                         |
+| --- | --------------------------------------------------------------------------------------- |
+|     | \* **Display Name:** You will use this name to select the repo in your Harness Service. |
 
-
-|  |  |
-| --- | --- |
-|  | * **Display Name:** You will use this name to select the repo in your Harness Service.
-* **URL:** Provide the Git repo URL.
-* **Username/password:** Enter your Git credentials.
-* **Branch:** Enter the name of the branch you want to use, such as **master**.
- |
+- **URL:** Provide the Git repo URL.
+- **Username/password:** Enter your Git credentials.
+- **Branch:** Enter the name of the branch you want to use, such as **master**.
+  |
 
 The Delegate you use for Kustomize deployments must have access to the Git repo containing your kustomize and resource files.Now you have a connection to your kustomize and resource files. Next, you can identify these files as Remote Manifests in a Harness Service.
 
@@ -86,28 +83,28 @@ Typically, Harness Services are configured with an Artifact Source. This is the 
 
 The artifact you want to deploy must be specified in a spec (for example, deployment.yaml). If the image is in the public Docker hub repo, you can just list its name:
 
-
 ```
-...  
-spec:  
-  containers:  
-  - name: app  
-    image: pseudo/your-image:latest  
+...
+spec:
+  containers:
+  - name: app
+    image: pseudo/your-image:latest
 ...
 ```
+
 If your image is hosted in a private Docker hub repo, you need to specify an [imagePullSecrets](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/) in the spec field:
 
-
 ```
-...  
-spec:  
-  containers:  
-  - name: app  
-    image: pseudo/your-image:latest  
-  imagePullSecrets:  
-  - name: dockerhub-credential  
+...
+spec:
+  containers:
+  - name: app
+    image: pseudo/your-image:latest
+  imagePullSecrets:
+  - name: dockerhub-credential
  ...
 ```
+
 ### Step 2: Add Manifests and Kustomization
 
 1. In your Harness Service, in **Manifests**, click **Link Remote Manifests**.
@@ -117,17 +114,16 @@ spec:
 1. In **Remote Manifests**, in **Manifest Format**, click **Kustomization Configuration**.
 2. Enter the following settings and click **Submit**.
 
+|     |                                                                                    |
+| --- | ---------------------------------------------------------------------------------- |
+|     | \* **Source Repository:** Select the Source Repo Provider connection to your repo. |
 
-
-|  |  |
-| --- | --- |
-|  | * **Source Repository:** Select the Source Repo Provider connection to your repo.
-* **Commit ID:** Select **Latest from Branch** or **Specific Commit ID**. Do one of the following:
-	+ **Branch:** Enter the branch name, such as **master**.
-	+ **Commit ID:** Enter the Git commit ID.
-* **Path to kustomization directory:** This setting is discussed below.
-* **Path to Kustomize plugin on Delegate:** Enter the path to the plugin installed on the Delegate. This setting and using plugins are discussed later in this topic.
- |
+- **Commit ID:** Select **Latest from Branch** or **Specific Commit ID**. Do one of the following:
+  - **Branch:** Enter the branch name, such as **master**.
+  - **Commit ID:** Enter the Git commit ID.
+- **Path to kustomization directory:** This setting is discussed below.
+- **Path to Kustomize plugin on Delegate:** Enter the path to the plugin installed on the Delegate. This setting and using plugins are discussed later in this topic.
+  |
 
 Once you have set up **Kustomization Configuration**, you can use the Service in a Harness Workflow. There are no other Kustomize-specific settings to configure in Harness.
 
@@ -159,8 +155,8 @@ If you have enabled **Skip Versioning for Service** for a few deployments and th
 
 You can list artifacts in two ways:
 
-* Artifacts can be hardcoded in the deployment YAML file deployed using your Kustomization files.
-* You can add artifacts to the Service **Artifact Source** section and reference them in Kustomize Patch files using the Harness variable `${artifact.metadata.image}`. See [Option: Kustomize Patches](#option_kustomize_patches) below, and [Built-in Variables List](../../firstgen-platform/techref-category/variables/built-in-variables-list.md).
+- Artifacts can be hardcoded in the deployment YAML file deployed using your Kustomization files.
+- You can add artifacts to the Service **Artifact Source** section and reference them in Kustomize Patch files using the Harness variable `${artifact.metadata.image}`. See [Option: Kustomize Patches](#option_kustomize_patches) below, and [Built-in Variables List](../../firstgen-platform/techref-category/variables/built-in-variables-list.md).
 
 ### Option: Kustomize Patches
 
@@ -168,47 +164,47 @@ Currently, this feature is behind the Feature Flag `KUSTOMIZE_PATCHES_CG`. Cont
 
 For example, let's say you have a simple kustomization.yaml for your **application** folder like this:
 
-
 ```
-resources:  
-  - namespace.yaml  
-  - deployment.yaml  
-  - service.yaml  
+resources:
+  - namespace.yaml
+  - deployment.yaml
+  - service.yaml
   - configmap.yaml
 ```
+
 And you have an overlay for a production environment that points to the **application** folder like this:
 
-
 ```
-resources:  
-  - ../../application  
-namePrefix: nonpro-  
-configMapGenerator:  
-- name: example-config  
-  namespace: default  
-  #behavior: replace  
-  files:  
-    - configs/config.json  
-patchesStrategicMerge:  
+resources:
+  - ../../application
+namePrefix: nonpro-
+configMapGenerator:
+- name: example-config
+  namespace: default
+  #behavior: replace
+  files:
+    - configs/config.json
+patchesStrategicMerge:
   - env.yaml
 ```
+
 The `patchesStrategicMerge` label identifies the location of the patch **env.yaml**, which looks like this:
 
-
 ```
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
-  name: example-deploy  
-spec:  
-  template:  
-    spec:  
-      containers:  
-      - name: example-app  
-        env:  
-        - name: ENVIRONMENT  
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-deploy
+spec:
+  template:
+    spec:
+      containers:
+      - name: example-app
+        env:
+        - name: ENVIRONMENT
           value: Production
 ```
+
 As you can see, it patches a new environment variable `name: ENVIRONMENT`.
 
 Here's what the patching looks like side-by-side:
@@ -255,38 +251,38 @@ Let's look at an example.
 
 Here is the deployment.yaml used by our kustomization:
 
-
 ```
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
-  name: example-deploy  
-  namespace: default  
-  labels:  
-    app: example-app  
-  annotations:  
-spec:  
-  selector:  
-    matchLabels:  
-      app: example-app  
-  replicas: 1  
-  strategy:  
-    type: RollingUpdate  
-    rollingUpdate:  
-      maxSurge: 1  
-      maxUnavailable: 0  
-  template:  
-    metadata:  
-      labels:  
-        app: example-app  
-    spec:  
-      containers:  
-      - name: example-app  
-        image: harness/todolist-sample:latest  
-        imagePullPolicy: Always  
-        ports:  
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-deploy
+  namespace: default
+  labels:
+    app: example-app
+  annotations:
+spec:
+  selector:
+    matchLabels:
+      app: example-app
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: example-app
+    spec:
+      containers:
+      - name: example-app
+        image: harness/todolist-sample:latest
+        imagePullPolicy: Always
+        ports:
         - containerPort: 5000
 ```
+
 You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches**.You add the patch files that will patch deployment.yaml to **Kustomize Patches**. Only these patch files can use Harness variables.
 
 We're going to use variables for `replicas` and `image`.
@@ -299,29 +295,29 @@ One variable is for the `image` and another for the `replicas` count.
 
 A patch using these variables will look like this:
 
-
 ```
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
- name: example-deploy  
- namespace: default  
-spec:  
- template :  
-   spec:  
-     containers:  
-       - name: example-app  
-         image: ${serviceVariable.image}  
-   
----  
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
- name: example-deploy  
- namespace: default  
-spec:  
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: example-deploy
+ namespace: default
+spec:
+ template :
+   spec:
+     containers:
+       - name: example-app
+         image: ${serviceVariable.image}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: example-deploy
+ namespace: default
+spec:
  replicas: ${serviceVariable.replica}
 ```
+
 Add this patch in the Service **Kustomize Patches**.
 
 Now, when the Pipeline is run, the values for the two variables are rendered in the patch YAML and then the patch is applied to the deployment.yaml.
@@ -338,30 +334,30 @@ For example, let's say we have two secrets, one for `image` and one for `app`
 
 The following patch uses these secrets for `image` and `app`, referencing them using the expression `${secrets.getValue("[secret name]")}`.
 
-
 ```
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
-  name: example-deploy  
-  namespace: default  
-spec:  
-  template :  
-    spec:  
-      containers:  
-        - name: example-app  
-          image: ${secrets.getValue("image-example")}  
-  
----  
-apiVersion: v1  
-kind: Service  
-metadata:  
-  name: example-service  
-  namespace: default  
-spec:  
-  selector:  
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-deploy
+  namespace: default
+spec:
+  template :
+    spec:
+      containers:
+        - name: example-app
+          image: ${secrets.getValue("image-example")}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: example-service
+  namespace: default
+spec:
+  selector:
     app: ${secrets.getValue("app")}
 ```
+
 The secret output in the manifest will be asterisks (\*). The secret value is not displayed.
 
 #### Override Patches in Environments
@@ -400,10 +396,10 @@ In both overlays and multibases, the most common example is staging and producti
 
 To execute a staging overlay you would run the following command selecting the overlay's root:
 
-
 ```
 kubectl apply -f $DEMO_HOME/overlays/staging
 ```
+
 To deploy each overlay in Harness, you could create a Service for each overlay and configure the **Path to kustomization directory** setting in **Remote Manifests** to point to the overlay root:
 
 ![](./static/use-kustomize-for-kubernetes-deployments-83.png)
@@ -424,13 +420,13 @@ First, in your repo, create separate folders for each environment's kustomizatio
 
 The kustomization.yaml file in the root will reference these folders of course:
 
-
 ```
-resources:  
-- dev  
-- staging  
+resources:
+- dev
+- staging
 - production
 ```
+
 We are only concerned with staging and production in this example.
 
 Next, mirror the repo folder names in Harness Environment names. Here we have two Environments named **production** and **staging** for the corresponding repo folders named **production** and **staging**.
@@ -509,45 +505,45 @@ To add a plugin to a Delegate, you create a Delegate Profile and apply it to the
 
 For example, here is a ConfigMap generator plugin script:
 
-
 ```
-MY_PLUGIN_DIR=$HOME/K_PLUGINS/kustomize/plugin/myDevOpsTeam/sillyconfigmapgenerator  
-mkdir -p $MY_PLUGIN_DIR  
-cat <<'EOF' >$MY_PLUGIN_DIR/SillyConfigMapGenerator  
-#!/bin/bash  
-# Skip the config file name argument.  
-shift  
-today=`date +%F`  
-echo "  
-kind: ConfigMap  
-apiVersion: v1  
-metadata:  
-  name: the-map  
-data:  
-  today: $today  
-  altGreeting: "$1"  
-  enableRisky: "$2"  
-"  
-EOF  
-cat $MY_PLUGIN_DIR/SillyConfigMapGenerator  
-chmod +x $MY_PLUGIN_DIR/SillyConfigMapGenerator  
+MY_PLUGIN_DIR=$HOME/K_PLUGINS/kustomize/plugin/myDevOpsTeam/sillyconfigmapgenerator
+mkdir -p $MY_PLUGIN_DIR
+cat <<'EOF' >$MY_PLUGIN_DIR/SillyConfigMapGenerator
+#!/bin/bash
+# Skip the config file name argument.
+shift
+today=`date +%F`
+echo "
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: the-map
+data:
+  today: $today
+  altGreeting: "$1"
+  enableRisky: "$2"
+"
+EOF
+cat $MY_PLUGIN_DIR/SillyConfigMapGenerator
+chmod +x $MY_PLUGIN_DIR/SillyConfigMapGenerator
 readlink -f $MY_PLUGIN_DIR/SillyConfigMapGenerator
 ```
+
 Each plugin is added to its own directory, following this convention:
 
-
 ```
-$XDG_CONFIG_HOME/kustomize/plugin  
+$XDG_CONFIG_HOME/kustomize/plugin
     /${apiVersion}/LOWERCASE(${kind})
 ```
+
 The default value of `XDG_CONFIG_HOME` is `$HOME/.config`. See [Placement](https://kubectl.docs.kubernetes.io/guides/extending_kustomize/go_plugins/#placement) from Kustomize.
 
 In the script example above, you can see that the plugin is added to its own folder following the plugin convention:
 
-
 ```
 $HOME/K_PLUGINS/kustomize/plugin/myDevOpsTeam/sillyconfigmapgenerator
 ```
+
 Note the location of the plugin because you will use that location in the Harness Service to indicate where the plugin is located (described below).
 
 Plugins can only be applied to Harness Kubernetes Delegates.Next, apply the Profile to Kubernetes Delegate(s):
@@ -628,45 +624,44 @@ Add `kustomizePath: <path>` to config-delegate.yml.
 
 Update the `value` environment variable in harness-delegate.yaml:
 
-
 ```
-...  
-name: KUSTOMIZE_PATH  
-value: "<path>"  
+...
+name: KUSTOMIZE_PATH
+value: "<path>"
 ...
 ```
+
 #### Helm Delegate
 
 Add `kustomizePath: "<path>"` to harness-delegate-values.yaml.
 
-
 ```
 kustomizePath: "<path>"
 ```
+
 #### Docker Delegate
 
 Set the Kustomize path in the launch-harness-delegate.sh:
 
-
 ```
 -e KUSTOMIZE_PATH= <path> \
 ```
+
 #### ECS Delegate
 
 Update the following in ecs-task-spec.json:
 
-
 ```
-...  
-{  
-  "name": "KUSTOMIZE_PATH",  
-  "value": "<path>"  
-}  
+...
+{
+  "name": "KUSTOMIZE_PATH",
+  "value": "<path>"
+}
 ...
 ```
+
 ### Next Steps
 
-* [Create a Kubernetes Rolling Deployment](create-a-kubernetes-rolling-deployment.md)
-* [Create a Kubernetes Canary Deployment](create-a-kubernetes-canary-deployment.md)
-* [Create a Kubernetes Blue/Green Deployment](create-a-kubernetes-blue-green-deployment.md)
-
+- [Create a Kubernetes Rolling Deployment](create-a-kubernetes-rolling-deployment.md)
+- [Create a Kubernetes Canary Deployment](create-a-kubernetes-canary-deployment.md)
+- [Create a Kubernetes Blue/Green Deployment](create-a-kubernetes-blue-green-deployment.md)

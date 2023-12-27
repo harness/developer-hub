@@ -16,7 +16,7 @@ Everything you can do in the Visual editor, you can also represent in YAML.
 
 ## Use the YAML editor
 
-1. Edit or create a pipeline. For guidance on creating pipelines, go to [CD onboarding guide](/docs/continuous-delivery/get-started/onboarding-guide) or [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
+1. Edit or create a pipeline. For guidance on creating pipelines, go to [CD onboarding guide](/docs/continuous-delivery/cd-onboarding/certification/onboarding-guide) or [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 2. In the Pipeline Studio, select **YAML** to switch to the YAML editor.
 
    ![](./static/harness-yaml-quickstart-21.png)
@@ -86,7 +86,7 @@ In addition to the YAML schema available at [github.com/harness/harness-schema](
 
 <!-- ![](./static/yaml-reference-cd-pipeline-00.png) -->
 
-<docimage path={require('./static/yaml-reference-cd-pipeline-00.png')} />
+<DocImage path={require('./static/yaml-reference-cd-pipeline-00.png')} />
 
 ### Schema conventions
 
