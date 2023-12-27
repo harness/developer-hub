@@ -7,4 +7,4 @@ Harness AIDA offers valuable insights by providing a description of the rule alo
 
 From the current page, you have the option to create a new rule. Select **Create another rule** to initiate the process. Upon selecting this option, a new rule editor is presented, and it displays an AI-generated name for the rule. To customize the rule name, select the edit icon, and then modify the generated name according to your preference.
 
-  <docimage path={require('./static/create-another-rule.gif')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/create-another-rule.gif')} width="60%" height="60%" title="Click to view full size image" />

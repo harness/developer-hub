@@ -4,10 +4,8 @@ description: Caching dependencies can improve build times.
 sidebar_position: 20
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
 
 Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, caching these dependencies for quick retrieval at runtime can save a significant amount of time.
 
@@ -15,7 +13,7 @@ There are several ways to configure caching in Harness CI, such as Cache Intelli
 
 <!-- Video: Cache Intelligence demo
 https://www.loom.com/share/20703014b50042b5972e14cefea87f49?sid=d87d4bad-6482-44f2-a379-0b843c399a26-->
-<docvideo src="https://www.loom.com/share/20703014b50042b5972e14cefea87f49?sid=d87d4bad-6482-44f2-a379-0b843c399a26" />
+<DocVideo src="https://www.loom.com/share/20703014b50042b5972e14cefea87f49?sid=d87d4bad-6482-44f2-a379-0b843c399a26" />
 
 ## Supported build infrastructures
 
@@ -25,7 +23,7 @@ For other build infrastructures, you can use Save and Restore Cache steps, such 
 
 ## Supported tools and paths
 
-Cache Intelligence fully supports **Bazel**, **Maven**, **Gradle**, **Yarn**, **Go**, and **Node** build tools, *if the dependencies are stored in the default location for that tool*.
+Cache Intelligence fully supports **Bazel**, **Maven**, **Gradle**, **Yarn**, **Go**, and **Node** build tools, _if the dependencies are stored in the default location for that tool_.
 
 For other build tools or non-default cache locations, you can leverage Harness Cloud's cache storage by [enabling Cache Intelligence](#enable-cache-intelligence) and providing [custom cache paths](#customize-cache-paths).
 
@@ -37,10 +35,8 @@ The cache retention window is 15 days, which resets whenever the cache is update
 
 ## Enable Cache Intelligence
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual">
-
 
 :::note
 
@@ -54,52 +50,46 @@ Currently, the Cache Intelligence Visual Editor fields are behind the feature fl
 4. If you're using an unsupported build tool, a non-default cache location, or a Windows platform, then you must add [custom cache paths](#customize-cache-paths). For a list of supported tools, go to [Supported tools and paths](#supported-tools-and-paths).
 5. Optionally, you can add a [custom cache key](#customize-cache-keys).
 
-
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
-
 
 To enable Cache Intelligence in the YAML editor, add the following lines to the `stage.spec`:
 
 ```yaml
-          caching:
-            enabled: true
+caching:
+  enabled: true
 ```
 
 For example:
 
 ```yaml
-    - stage:
-        name: Build
-        identifier: Build
-        type: CI
-        spec:
-          caching:
-            enabled: true
-          cloneCodebase: true
+- stage:
+    name: Build
+    identifier: Build
+    type: CI
+    spec:
+      caching:
+        enabled: true
+      cloneCodebase: true
 ```
 
 If you're using an unsupported build tool, a non-default cache location, or a Windows platform, you must add [custom cache paths](#customize-cache-paths). For a list of supported tools, go to [Supported tools and paths](#supported-tools-and-paths).
 
 Optionally, you can add a [custom cache key](#customize-cache-keys).
 
-
 </TabItem>
 </Tabs>
-
 
 ### Customize cache paths
 
 Cache Intelligence stores the data to be cached in the `/harness` directory by default. You can use `paths` to specify a list of locations to be cached. This is useful if:
 
-* Cache Intelligence is not supported for your build tool.
-* You have customized cache locations, such as with `yarn config set cache-folder`.
-* You're using a Windows platform.
-
+- Cache Intelligence is not supported for your build tool.
+- You have customized cache locations, such as with `yarn config set cache-folder`.
+- You're using a Windows platform.
 
 <Tabs>
   <TabItem value="Visual" label="Visual">
-
 
 :::note
 
@@ -116,73 +106,66 @@ Currently, the Cache Intelligence Visual Editor fields are behind the feature fl
 
    <!-- ![](./static/cache_int_paths.png) -->
 
-   <docimage path={require('./static/cache_int_paths.png')} />
+   <DocImage path={require('./static/cache_int_paths.png')} />
 
-5. If a cache path is outside the `/harness` directory, you must *also* specify this in **[Shared Paths](../set-up-build-infrastructure/ci-stage-settings.md#shared-paths)**.
+5. If a cache path is outside the `/harness` directory, you must _also_ specify this in **[Shared Paths](../set-up-build-infrastructure/ci-stage-settings.md#shared-paths)**.
 
    <!-- ![](./static/cache_int_shared_paths.png) -->
 
-   <docimage path={require('./static/cache_int_shared_paths.png')} />
-
+   <DocImage path={require('./static/cache_int_shared_paths.png')} />
 
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
 
-
 In the YAML editor, add a list of `paths` to cache under `stage.spec.caching`, for example:
 
 ```yaml
-    - stage:
-        name: Build
-        identifier: Build
-        type: CI
-        spec:
-          caching:
-            enabled: true
-            paths:
-              - /harness/node_modules ## On a Windows platform, the path would be 'C:\harness\node_modules'.
-          cloneCodebase: true
-...
+- stage:
+    name: Build
+    identifier: Build
+    type: CI
+    spec:
+      caching:
+        enabled: true
+        paths:
+          - /harness/node_modules ## On a Windows platform, the path would be 'C:\harness\node_modules'.
+      cloneCodebase: true
 ```
 
-If a cache path is outside the `/harness` directory, you must *also* specify this as a [shared path](../set-up-build-infrastructure/ci-stage-settings.md#shared-paths). In the YAML editor, add a list of `sharedPaths` under `stage.spec`, for example:
+If a cache path is outside the `/harness` directory, you must _also_ specify this as a [shared path](../set-up-build-infrastructure/ci-stage-settings.md#shared-paths). In the YAML editor, add a list of `sharedPaths` under `stage.spec`, for example:
 
 ```yaml
-    - stage:
-        name: Build
-        identifier: Build
-        type: CI
-        spec:
-          caching:
-            enabled: true
-            paths:
-              - /harness/node_modules
-              - /my_cache_directory/module_cache1
-          cloneCodebase: true
-...
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          sharedPaths:
-            - /my_cache_directory/module_cache1
+- stage:
+    name: Build
+    identifier: Build
+    type: CI
+    spec:
+      caching:
+        enabled: true
+        paths:
+          - /harness/node_modules
+          - /my_cache_directory/module_cache1
+      cloneCodebase: true
+---
+platform:
+  os: Linux
+  arch: Amd64
+runtime:
+  type: Cloud
+  spec: {}
+sharedPaths:
+  - /my_cache_directory/module_cache1
 ```
-
 
 </TabItem>
 </Tabs>
-
 
 ### Customize cache keys
 
 Harness generates a cache key from a hash of the build lock file (such as `pom.xml`, `build.gradle`, or `package.json`) that Harness detects. If Harness detects multiple tools or multiple lock files, Harness combines the hashes to create the cache key.
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual">
-
 
 :::note
 
@@ -197,34 +180,29 @@ Currently, the Cache Intelligence Visual Editor fields are behind the feature fl
 
    <!-- ![](./static/cache_int_custom_key.png) -->
 
-   <docimage path={require('./static/cache_int_custom_key.png')} />
-
+   <DocImage path={require('./static/cache_int_custom_key.png')} />
 
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
-
 
 To customize the cache key in the YAML editor, add `key: CUSTOM_KEY_VALUE` under `stage.spec.caching`. You can use [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs) for the key value.
 
 The following YAML example uses `<+input>`, which prompts the user to supply a cache key value at runtime.
 
 ```yaml
-    - stage:
-        name: Build
-        identifier: Build
-        type: CI
-        spec:
-          caching:
-            enabled: true
-            key: <+input>
-          cloneCodebase: true
-...
+- stage:
+    name: Build
+    identifier: Build
+    type: CI
+    spec:
+      caching:
+        enabled: true
+        key: <+input>
+      cloneCodebase: true
 ```
-
 
 </TabItem>
 </Tabs>
-
 
 ### Cache Intelligence in parallel stages
 

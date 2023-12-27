@@ -25,7 +25,7 @@ import TabItem from '@theme/TabItem';
 
 You can override the following manifest types.
 
-<docimage path={require('./static/f3298b583d8308e026c05f7dd544195756bb080b43438c0a83ab389c97af794a.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/f3298b583d8308e026c05f7dd544195756bb080b43438c0a83ab389c97af794a.png')} width="60%" height="60%" title="Click to view full size image" />
 
 - Values YAML
 - OpenShift Param

@@ -1,10 +1,10 @@
 ---
 title: Build a Feature Flag pipeline
 description: This topic explains how to build a Feature Flag pipeline.
-tags: 
-   - helpDocs
-   - Pipelines
-   - feature flag
+tags:
+  - helpDocs
+  - Pipelines
+  - feature flag
 sidebar_position: 10
 helpdocs_topic_id: 4r53zx73pv
 helpdocs_category_id: fsgwbaegql
@@ -14,18 +14,17 @@ helpdocs_is_published: true
 
 import ff_pipeline from './static/1-build-feature-flag-pipeline-07.png'
 
-
 A Feature Flag (FF) pipeline enables you to combine a flag with other actions such as adding Jira issues, creating notifications, adding approvals, etc. You can:
 
-* Use Jira issues to approve or reject a pipeline or stage at any point in its execution
-* Create notification rules to send notifications about the events on your FF pipeline
-* Schedule pipeline executions using Cron-based Triggers, etc.
+- Use Jira issues to approve or reject a pipeline or stage at any point in its execution
+- Create notification rules to send notifications about the events on your FF pipeline
+- Schedule pipeline executions using Cron-based Triggers, etc.
 
 This topic explains how to build an FF pipeline. Watch this video for an introduction:
 
 <!-- Video:
 https://www.loom.com/share/f9bfceb163454af89c7baf50c66ae916-->
-<docvideo src="https://www.loom.com/share/f9bfceb163454af89c7baf50c66ae916" /> 
+<DocVideo src="https://www.loom.com/share/f9bfceb163454af89c7baf50c66ae916" />
 
 ## Before you begin
 
@@ -41,7 +40,7 @@ To create an FF pipeline:
 2. Navigate to **Pipelines > Create a Pipeline**.
 3. In **Name**, enter a name for your pipeline. An ID is generated automatically.
 4. Enter **Description** and **Tags** for your pipeline.
-5. Click **Start**. 
+5. Click **Start**.
 
 Now you're ready to add a stage.
 
@@ -49,17 +48,17 @@ Now you're ready to add a stage.
 
 An FF pipeline is organized into stages. Each stage contains the logic to perform one major segment of the pipeline process. You must have a minimum of one stage to run the pipeline.
 
-1. Click **Add Stage**, and then select one of the available stage types. 
+1. Click **Add Stage**, and then select one of the available stage types.
 
-	Two common options are: **Feature Flags** and **Approval**.
+   Two common options are: **Feature Flags** and **Approval**.
 
-	An approval stage approves or rejects a pipeline at any point in its execution. Approvals are added between stages to prevent pipeline execution from proceeding without an approval. You can use Harness UI, Jira, Custom Shell Script, or ServiceNow Approval mechanisms. For more information, go to [Using manual approval stages](/docs/platform/approvals/adding-harness-approval-stages/).
+   An approval stage approves or rejects a pipeline at any point in its execution. Approvals are added between stages to prevent pipeline execution from proceeding without an approval. You can use Harness UI, Jira, Custom Shell Script, or ServiceNow Approval mechanisms. For more information, go to [Using manual approval stages](/docs/platform/approvals/adding-harness-approval-stages/).
 
 1. In **About your Stage**, in **Name**, enter a name for your stage. Click **Set up Stage**.
 
-	You can edit the name in the **Overview** tab of the stage anytime.
+   You can edit the name in the **Overview** tab of the stage anytime.
 
-	Changing the stage name doesn't change the stage identifier (ID). The stage identifier is created when you first name the stage and it cannot be changed. For more information, go to [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference.md).
+   Changing the stage name doesn't change the stage identifier (ID). The stage identifier is created when you first name the stage and it cannot be changed. For more information, go to [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference.md).
 
 Once you've created a stage, you can see the name and ID in the **Overview** tab.
 
@@ -74,16 +73,15 @@ To add a step:
 1. In Harness, select **Feature Flags > Pipelines**, and then select a pipeline, or create a new one.
 1. Go to your pipeline, select the stage you want to add a step to.
 
-	The Rollout Strategy view for this stage appears below the stages. 
+   The Rollout Strategy view for this stage appears below the stages.
 
 1. Select **Add Step**.
 
-	![Pipeline visual configuration, with Add Step circled](./static/pipeline-add-step.png)
+   ![Pipeline visual configuration, with Add Step circled](./static/pipeline-add-step.png)
 
-	The **Step Library** panel appears, where you can choose what type of step to add.
+   The **Step Library** panel appears, where you can choose what type of step to add.
 
-	![A screenshot of the Step library](./static/1-build-feature-flag-pipeline-05.png)
-
+   ![A screenshot of the Step library](./static/1-build-feature-flag-pipeline-05.png)
 
 ## Add flag configurations
 
@@ -91,34 +89,33 @@ To add details to a Flag Configuration step:
 
 1. In your pipeline, select a stage, and then select a Flag Configuration step.
 
-	The Step Parameters form appears
+   The Step Parameters form appears
 
-	![Flag Configuration > Step Parameters screen](./static/pipeline-flag-config.png)
+   ![Flag Configuration > Step Parameters screen](./static/pipeline-flag-config.png)
 
 1. Add a **Step Name**.
 1. In **Select Environment** and **Select Flag**, select an environment and a flag.
 
-	Choose one of these options:
+   Choose one of these options:
 
-	* **Fixed value** - A value you enter manually and do not change at runtime.
-	* **Runtime Input** - This is a placeholder for values that will be provided when you start a pipeline execution.
+   - **Fixed value** - A value you enter manually and do not change at runtime.
+   - **Runtime Input** - This is a placeholder for values that will be provided when you start a pipeline execution.
 
 1. In **Flag Changes**, select an action to take when this flag changes, and then configure the variation to serve based on that action.
 
-	![Flag change actions dropdown circled](./static/pipeline-flagchange-actions.png) 
+   ![Flag change actions dropdown circled](./static/pipeline-flagchange-actions.png)
 
-	Here are the available options:
+   Here are the available options:
 
-	| Flag change actions | Configuration |
-	|---------------------|---------------|
-	| **Set Flag Switch** | Select ON and OFF. |
-	| **Default Rules**   | Select the default rule for when the flag is ON and OFF. For example, if the flag is ON, serve the variation `True`. |
-	| **Serve Variation to Individual Target** | Select the target and the flag variation to serve to that target. |
-	| **Serve Variation to Target Group** | Select the target group and the flag variation to serve to that group. |
-	| **Serve Percentage Rollout** | Select a target group, and then select a percentage of users in that group to serve a selected variation, and a percentage to serve another variation. For more information, go to [Target users with flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags#target-specific-users-or-target-groups-when-a-flag-is-enabled). |
+   | Flag change actions                      | Configuration                                                                                                                                                                                                                                                                                                                                    |
+   | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Set Flag Switch**                      | Select ON and OFF.                                                                                                                                                                                                                                                                                                                               |
+   | **Default Rules**                        | Select the default rule for when the flag is ON and OFF. For example, if the flag is ON, serve the variation `True`.                                                                                                                                                                                                                             |
+   | **Serve Variation to Individual Target** | Select the target and the flag variation to serve to that target.                                                                                                                                                                                                                                                                                |
+   | **Serve Variation to Target Group**      | Select the target group and the flag variation to serve to that group.                                                                                                                                                                                                                                                                           |
+   | **Serve Percentage Rollout**             | Select a target group, and then select a percentage of users in that group to serve a selected variation, and a percentage to serve another variation. For more information, go to [Target users with flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags#target-specific-users-or-target-groups-when-a-flag-is-enabled). |
 
-  
-	For information on managing variations, go to [**Change the variations of your flags**](/docs/feature-flags/ff-creating-flag/manage-variations).
+   For information on managing variations, go to [**Change the variations of your flags**](/docs/feature-flags/ff-creating-flag/manage-variations).
 
 1. Select **Apply Changes**, and then select **Save**.
 
@@ -133,9 +130,8 @@ To add details to a Flag Configuration step:
 
 Click each stage's steps to see the logs in real-time. Click **Console View** to see more details.
 
-
 <img src={ff_pipeline} alt="A screenshot of the details console. " height="500" width="500" />
- 
+
 
 ## Pipeline notification strategy
 
@@ -184,7 +180,6 @@ All the cron jobs are executed in Universal Time Coordinated (UTC). Cron trigger
 
 For more information, go to [Schedule pipeline using triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers).
 
-
 ## Add chaos experiments to your FF pipeline
 
 You can use Harness Chaos Engineering (CE) to run chaos experiments, which are intentionally designed to disrupt systems to test their resilience and vulnerability to faults. Adding chaos steps that run CE experiments as part of your FF pipeline is a useful way to test the resilience of new software behind a feature flag before releasing that software to users.
@@ -194,4 +189,3 @@ For more information, go to [Use CE with Feature Flags](/docs/chaos-engineering/
 ## More information
 
 For more information on Harness pipelines, go to [Pipelines](/docs/category/pipelines).
-

@@ -265,7 +265,7 @@ Configure your pipeline's **Build** (`CI`) stage to use your Azure VMs as build 
 
 <!-- ![](../static/ci-stage-settings-vm-infra.png) -->
 
-<docimage path={require('../static/ci-stage-settings-vm-infra.png')} />
+<DocImage path={require('../static/ci-stage-settings-vm-infra.png')} />
 
 
 </TabItem>

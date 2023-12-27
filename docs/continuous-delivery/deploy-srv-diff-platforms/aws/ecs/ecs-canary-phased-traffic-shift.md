@@ -6,7 +6,7 @@ sidebar_position: 4
 
 You can deploy ECS services using a basic strategy with phased traffic shifting and scaling, incrementally increasing the new service instances while decreasing the old service instances.
 
-This topic explains the differences between a standard basic strategy and one with phased traffic shifting  and scaling, and explains how to set up a basic strategy with phased traffic shifting and scaling.
+This topic explains the differences between a standard basic strategy and one with phased traffic shifting and scaling, and explains how to set up a basic strategy with phased traffic shifting and scaling.
 
 ## Standard basic vs phased
 
@@ -16,8 +16,7 @@ You have two strategy options when performing an ECS basic deployment in Harness
 
 In a standard ECS basic deployment, Harness deploys the ECS service using your ECS service definition in an ECS Service Setup step, and then upgrades the container using a ECS Upgrade Container step to a percentage of the ECS service definition `desiredCount` or to a specific number of instances.
 
-![picture 1](static/8c9c2a38d604ba1c878cfe7f4f0073769dbbae4b927443979f8fe71eabcf6522.png)  
-
+![picture 1](static/8c9c2a38d604ba1c878cfe7f4f0073769dbbae4b927443979f8fe71eabcf6522.png)
 
 ### Basic with phased traffic shifting and scaling
 
@@ -27,12 +26,11 @@ Here's a video overview:
 
 <!-- Video:
 https://www.loom.com/share/9ba108c0fc84403795895261c5671a02?sid=004122a0-66a2-4f67-9f7e-f7039da7c22e-->
-<docvideo src="https://www.loom.com/share/9ba108c0fc84403795895261c5671a02?sid=004122a0-66a2-4f67-9f7e-f7039da7c22e" />
+<DocVideo src="https://www.loom.com/share/9ba108c0fc84403795895261c5671a02?sid=004122a0-66a2-4f67-9f7e-f7039da7c22e" />
 
-Here's a pipeline that demonstrates a ECS deployment with phased traffic shifting. There are two `EcsUpgradeContainer` steps. 
+Here's a pipeline that demonstrates a ECS deployment with phased traffic shifting. There are two `EcsUpgradeContainer` steps.
 
 The first `EcsUpgradeContainer` step upgrades the container to 50% of the `desiredCount` in the ECS service definition, and the next `EcsUpgradeContainer` step upgrades the container to 100%.
-
 
 <details>
 <summary>ECS basic strategy with phased traffic shifting sample pipeline YAML</summary>
@@ -113,9 +111,7 @@ pipeline:
             value: ecs-auto-iG
 ```
 
-
 </details>
-
 
 The ECS basic strategy with phased traffic shifting and scaling performs the following steps:
 
@@ -124,7 +120,7 @@ The ECS basic strategy with phased traffic shifting and scaling performs the fol
    1. (Optional) Perform Harness [Continuous Verification (CV)](/docs/continuous-delivery/verify/cv-getstarted/verify-deployments-with-the-verify-step). Once CV is performed, step 2 is run again.
 3. **Additional ECS Upgrade Container step(s):** ECS Upgrade Container: Upgrade new service to 100% (or count) and old service to 0% (or count).
 
-![picture 0](static/86df8a74474e01a5a6469a9fbc0b8ff60b1dc4366c22be3184a3afacadf5eee6.png)  
+![picture 0](static/86df8a74474e01a5a6469a9fbc0b8ff60b1dc4366c22be3184a3afacadf5eee6.png)
 
 ## Set up basic with phased traffic shifting
 
@@ -158,7 +154,7 @@ The ECS Upgrade Container step upgrades the number instances of the new service 
 
 ### Instance Count and Instance Unit
 
-**Instance Count** specifies desired count for new service. The default is 100 percent. 
+**Instance Count** specifies desired count for new service. The default is 100 percent.
 
 For phased traffic shifting, enter an incremental percentage (or count), such as 50 percent. Subsequent ECS Upgrade Container steps can increase the percentage until it reaches 100 percent or the full count you desire.
 
@@ -168,8 +164,7 @@ For phased traffic shifting, enter an incremental percentage (or count), such as
 
 ### Downsize Instance Count and Downsize Instance Count Unit
 
-**Downsize Instance Count** specifies the instance count/percentage for the old service. 
-
+**Downsize Instance Count** specifies the instance count/percentage for the old service.
 
 ## Adding ECS Upgrade Container steps for traffic shifting and scaling
 
@@ -183,13 +178,8 @@ If you use count, you are overriding the `desiredCount` in the ECS service defin
 
 All steps include the following **Advanced** settings:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview/)
-
-
-
-
-
+- [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+- [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+- [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+- [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+- [Policy Enforcement](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview/)

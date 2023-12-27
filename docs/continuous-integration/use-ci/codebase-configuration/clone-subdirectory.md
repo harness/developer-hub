@@ -16,7 +16,7 @@ In the Visual editor, you can disable **Clone Codebase** in the Build stage's **
 
 <!-- ![](./static/disable-clone-codebase-visual.png) -->
 
-<docimage path={require('./static/disable-clone-codebase-visual.png')} />
+<DocImage path={require('./static/disable-clone-codebase-visual.png')} />
 
 In the YAML editor, set `cloneCodebase` to `false` in the `stage.spec`.
 

@@ -60,7 +60,7 @@ For 24/7 Service Guard, the queries you define to collect logs are specific to t
 
 Here's a 2-minute video that explains Harness 24/7 Service Guard:
 
-<docvideo src="https://youtu.be/JjgqceHSYBw" />
+<DocVideo src="https://youtu.be/JjgqceHSYBw" />
 
 ### Using the Dashboard
 

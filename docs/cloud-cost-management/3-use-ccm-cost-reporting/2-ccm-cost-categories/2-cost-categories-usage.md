@@ -96,7 +96,7 @@ You can visualize cost categories in your custom dashboard. To learn how to crea
 
 **Cost Categories** is available in the **Unified** explore on the **Dashboards** page. 
 
-  <docimage path={require('./static/cost-categories-dashboards.png')} width="40%" height="40%" title="Click to view full size image" />
+  <DocImage path={require('./static/cost-categories-dashboards.png')} width="40%" height="40%" title="Click to view full size image" />
 
 
 * When you create a new cost category or make changes to an existing one, it may take up to 24 hours for the changes to be reflected in the dashboard data.

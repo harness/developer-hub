@@ -63,7 +63,7 @@ For example, consider a pipeline with two stages. In the second stage, add a She
 
 In the pipeline execution page, select the **Input** section of the Shell Script step in the second stage, and then copy the JSON.
 
-<docimage path={require('./static/execution-json.png')} width="60%" height="60%" title="Click to view full size image" /> 
+<DocImage path={require('./static/execution-json.png')} width="60%" height="60%" title="Click to view full size image" /> 
 
 ## Write expressions using JSON
 

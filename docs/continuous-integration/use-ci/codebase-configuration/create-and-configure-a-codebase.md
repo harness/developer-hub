@@ -72,7 +72,7 @@ In the Visual editor, you can disable **Clone Codebase** in the stage's **Overvi
 
 <!-- ![](./static/disable-clone-codebase-visual.png) -->
 
-<docimage path={require('./static/disable-clone-codebase-visual.png')} />
+<DocImage path={require('./static/disable-clone-codebase-visual.png')} />
 
 In the YAML editor, set `cloneCodebase` to `false` in the `stage.spec`.
 
@@ -103,7 +103,7 @@ To edit a pipeline's default codebase configuration, select **Codebase** on the 
 
 <!-- ![A pipeline's codebase settings as shown in the Pipeline Studio's Visual editor.](./static/create-and-configure-a-codebase-03.png) -->
 
-<docimage path={require('./static/create-and-configure-a-codebase-03.png')} />
+<DocImage path={require('./static/create-and-configure-a-codebase-03.png')} />
 
 
 </TabItem>

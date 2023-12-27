@@ -5,14 +5,14 @@ import styles from "./styles.module.scss";
 
 /* ***** Usage *****
 // with src
-<docimage
+<DocImage
   src="https://developer.harness.io/assets/images/ci-concepts-10-5e41d86395abeba7e167a476d1932f7c.png"
   width="300"
   height="200"
   border
 />
 // with path
-<docimage
+<DocImage
   path={require('./static/ci-concepts-10.png')}
   alt="Harness CI Features"
   title="Click to view full size image"
@@ -50,7 +50,7 @@ const DocImage = (props) => {
   return (
     <>
       <img
-        className={border ? styles.docImageWithBorder : styles.docImage}
+        className={border ? styles.DocImageWithBorder : styles.DocImage}
         src={imgSrc}
         width={width}
         height={height}
@@ -66,7 +66,7 @@ const DocImage = (props) => {
         className={styles.docModalDialog}
       >
         <img
-          className={styles.docImageFullsize}
+          className={styles.DocImageFullsize}
           src={imgSrc}
           alt={alt}
           title={title}

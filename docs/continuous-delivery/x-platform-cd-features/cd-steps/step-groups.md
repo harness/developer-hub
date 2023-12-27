@@ -14,19 +14,18 @@ You can also run pipeline **stages** in parallel. Deploy multiple services simul
 
 Review the following topics before you add step groups.
 
-* [Kubernetes CD quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+- [Kubernetes CD quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 
 ## Important notes
 
-* Currently, Harness supports step groups in Deploy and Custom stages only. For information about using step groups in CI, go to [Use step groups to organize CI steps](/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups).
-* When you run steps in parallel you cannot reference the outputs of one step in another step. The output for one step might not be available when another step requests it.
-* Delegate selectors can be configured for each step in the step group. You cannot configure a delegate selector at the group level.
-* Step groups cannot have nested step groups, but you can put groups of steps next to each other in a step group:
+- Currently, Harness supports step groups in Deploy and Custom stages only. For information about using step groups in CI, go to [Use step groups to organize CI steps](/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups).
+- When you run steps in parallel you cannot reference the outputs of one step in another step. The output for one step might not be available when another step requests it.
+- Delegate selectors can be configured for each step in the step group. You cannot configure a delegate selector at the group level.
+- Step groups cannot have nested step groups, but you can put groups of steps next to each other in a step group:
 
 ![](./utilities/static/step-groups-04.png)
 
 The steps **in** each group run in parallel but each group runs serially.
-
 
 ## Containerized step groups
 
@@ -38,28 +37,26 @@ You can use a CD step group that points to your cluster as the runtime infrastru
 
 For more information, go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md).
 
-
 ## Visual summary
 
 This short video walks through step groups:
 
 <!-- Video:
 https://www.youtube.com/watch?v=J5eHYSbE8cg-->
-<docvideo src="https://www.youtube.com/watch?v=J5eHYSbE8cg" />
-
+<DocVideo src="https://www.youtube.com/watch?v=J5eHYSbE8cg" />
 
 ## Common parallel steps
 
 Running steps in parallel can be beneficial in many ways, such as:
 
-* Simulating load using multiple [HTTP steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step).
-* Running multiple [Verify steps](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step) for different providers (AppDynamics, Splunk, Prometheus, etc).
-* Running independent steps that don't need to be run serially.
-* Running multiple Kubernetes [Apply steps](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step) to deploy multiple Kubernetes resources at once.
-* [Deleting](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources) multiple resources at once.
-* Creating or updating multiple Jira issues using [Jira Create](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages) and [Jira Update](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages) steps.
-* Provisioning multiple resources using Terraform. Go to [provision with the Terraform Apply step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step) for more details.
-* Save time. You might have 5 steps but you can run steps 2 and 3 in parallel because they are independent. Step 4 is run once they have completed.
+- Simulating load using multiple [HTTP steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step).
+- Running multiple [Verify steps](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step) for different providers (AppDynamics, Splunk, Prometheus, etc).
+- Running independent steps that don't need to be run serially.
+- Running multiple Kubernetes [Apply steps](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step) to deploy multiple Kubernetes resources at once.
+- [Deleting](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources) multiple resources at once.
+- Creating or updating multiple Jira issues using [Jira Create](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages) and [Jira Update](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages) steps.
+- Provisioning multiple resources using Terraform. Go to [provision with the Terraform Apply step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step) for more details.
+- Save time. You might have 5 steps but you can run steps 2 and 3 in parallel because they are independent. Step 4 is run once they have completed.
 
 ## Add and name the step group
 
@@ -117,7 +114,6 @@ Add any step and configure its **Advanced** settings.
 
 A step's **Advanced** settings override the **Advanced** settings of the step group.
 
-
 ## Reference step group steps
 
 You reference steps in step groups using the step group Id.
@@ -134,17 +130,19 @@ For example, to reference the URL setting in an HTTP step in a step group with t
 
 ## Override service variables in step groups
 
-You can customize and override service variables during the execution of a step group. This provides significant flexibility and control over your pipelines. The expression `<+serviceVariableOverrides.VARIABLE_NAME>`overrides the original value of `VARIABLE_NAME`. You can use this expression in values YAML files and other parts of the pipeline where variables are used.  
+You can customize and override service variables during the execution of a step group. This provides significant flexibility and control over your pipelines. The expression `<+serviceVariableOverrides.VARIABLE_NAME>`overrides the original value of `VARIABLE_NAME`. You can use this expression in values YAML files and other parts of the pipeline where variables are used.
 
 :::note Important notes
-- An overridden value is available only within the scope of the step group execution. In cases where a child group is included in a parent group, the child group override takes precedence. 
 
-    The pipeline overrides variables based on the following priority:
-    1. Step group override (child group, during execution)
-    2. Step group override (parent group, during execution)
-    3. Service environment overrides
-    4. Environment configuration
-    5. Service variable value (default)
+- An overridden value is available only within the scope of the step group execution. In cases where a child group is included in a parent group, the child group override takes precedence.
+
+  The pipeline overrides variables based on the following priority:
+
+  1. Step group override (child group, during execution)
+  2. Step group override (parent group, during execution)
+  3. Service environment overrides
+  4. Environment configuration
+  5. Service variable value (default)
 
 - Step group overrides are not recommended for artifacts and other objects fetched in the **Service** section of a pipeline stage. The one exception is scripts in [custom remote manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/), because they can also be used during the **Execution** section of a pipeline stage.
 
@@ -153,10 +151,9 @@ You can customize and override service variables during the execution of a step 
 
 The following pipeline illustrates how to override service variables. The service definition has two defined variables, `svar1` and `svar2`. The pipeline overrides these variables as follows:
 
-* The `parent` step group overrides `svar1` with the value `fromStepGroup_OverriddenAtParentStepGroup`.
-* The `parent` step group also has a variable `svarParent` with the value `DefinedAtParentLevel`. The `child` step group overrides this with the value `OverridenByChildStepGroup`.
-* The `child` step group overrides `svar2` with the value `fromStepGroup_OverriddenAtChildLevel`. 
-
+- The `parent` step group overrides `svar1` with the value `fromStepGroup_OverriddenAtParentStepGroup`.
+- The `parent` step group also has a variable `svarParent` with the value `DefinedAtParentLevel`. The `child` step group overrides this with the value `OverridenByChildStepGroup`.
+- The `child` step group overrides `svar2` with the value `fromStepGroup_OverriddenAtChildLevel`.
 
 <figure>
 
@@ -164,7 +161,6 @@ The following pipeline illustrates how to override service variables. The servic
 
 <figcaption>Overriding service variables in a pipeline - example</figcaption>
 </figure>
-
 
 ```yaml
 pipeline:
@@ -268,10 +264,7 @@ pipeline:
               action:
                 type: StageRollback
   identifier: StepGroupLevelOverrides
-  name: StepGroupLevelOverrides 
-
+  name: StepGroupLevelOverrides
 ```
 
 </details>
-
-

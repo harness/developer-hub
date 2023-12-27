@@ -8,7 +8,7 @@ slug: /ci-pipelines/fastest-ci
 
 # Get started for free with the fastest CI on the planet
 
-<ctabanner
+<CTABanner
   buttonText="Sign Up"
   title="THE WORLD'S FASTEST CI."
   tagline="Sign up today to get started for free!"
@@ -59,7 +59,7 @@ Cache Intelligence dramatically reduces pipeline execution time by automatically
 
 In the following demo video, Harness goes head-to-head with GitHub Actions. You can follow [these instructions](https://github.com/harness-community/kafka/blob/trunk/.harness/README.md) to reproduce the results and try it for yourself.
 
-<docvideo src="https://www.youtube.com/watch?v=ECF1BDlzb-I" />
+<DocVideo src="https://www.youtube.com/watch?v=ECF1BDlzb-I" />
 
 ### Get started fast
 
@@ -75,15 +75,11 @@ Harness uses containers to drop pre‑configured steps into your pipeline. Choos
 
 With Harness CI, you can build, test, and deploy applications in Node.js, Python, Java, Ruby, PHP, Go, Rust, C# (.NET Core), and more. You can use VMs or containers for Linux, Windows, and Mac operating systems.
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-
 <Tabs>
 <TabItem value="Go" label="Go" default>
-
 
 1. Fork the [Go sample repository](https://github.com/harness-community/gosample) into your GitHub account.
 2. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free Harness account.
@@ -92,27 +88,25 @@ import TabItem from '@theme/TabItem';
 
    For new accounts, the Get Started wizard creates a codebase connector for you. If your account already has a connector, the Get Started wizard automatically selects the existing connector. You can [create codebase connectors](/docs/platform/connectors/code-repositories/connect-to-code-repo) by navigating to **Projects** and then **Connectors**.
 
-6. When asked to select a repository, select the Go sample repository that you forked earlier, and then select **Configure Pipeline**.
-7. Select **Generate my Pipeline configuration**, enter a branch name (such as `main`), and then select **Create Pipeline**.
-8. Switch to the **YAML** editor, and select **Edit YAML**.
-9. Replace the `echo` step with the following, and then save the pipeline.
+5. When asked to select a repository, select the Go sample repository that you forked earlier, and then select **Configure Pipeline**.
+6. Select **Generate my Pipeline configuration**, enter a branch name (such as `main`), and then select **Create Pipeline**.
+7. Switch to the **YAML** editor, and select **Edit YAML**.
+8. Replace the `echo` step with the following, and then save the pipeline.
 
 ```yaml
-              - step:
-                  type: Run
-                  identifier: build_go_app
-                  name: Build Go App
-                  spec:
-                    command: |-
-                      echo "Welcome to Harness CI"
-                      go build
-                      go test
+- step:
+    type: Run
+    identifier: build_go_app
+    name: Build Go App
+    spec:
+      command: |-
+        echo "Welcome to Harness CI"
+        go build
+        go test
 ```
-
 
 </TabItem>
 <TabItem value="Java" label="Java">
-
 
 1. Fork the [JHTTP sample repository](https://github.com/harness-community/jhttp) into your GitHub account.
 2. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free Harness account.
@@ -127,21 +121,19 @@ import TabItem from '@theme/TabItem';
 8. Replace the `build` step with the following, and then save the pipeline.
 
 ```yaml
-              - step:
-                  type: Run
-                  identifier: build_java_app
-                  name: Build Java App
-                  spec:
-                    shell: Sh
-                    command: |-
-                      echo "Welcome to Harness CI"
-                      mvn -B package --file pom.xml
+- step:
+    type: Run
+    identifier: build_java_app
+    name: Build Java App
+    spec:
+      shell: Sh
+      command: |-
+        echo "Welcome to Harness CI"
+        mvn -B package --file pom.xml
 ```
-
 
 </TabItem>
 <TabItem value="JavaScript" label="JavaScript">
-
 
 1. Fork the [React calculator sample repository](https://github.com/harness-community/reactcalculator) into your GitHub account.
 2. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free Harness account.
@@ -156,25 +148,23 @@ import TabItem from '@theme/TabItem';
 8. Replace the `steps` section (both `Run` steps) with the following, and then save the pipeline.
 
 ```yaml
-            steps:
-              - step:
-                  type: Run
-                  identifier: build_javascript_app
-                  name: Build JavaScript App
-                  spec:
-                    shell: Sh
-                    command: |-
-                      echo "Welcome to Harness CI"
-                      node --version
-                      npm install
-                      npm run build --if-present
-                      npm test
+steps:
+  - step:
+      type: Run
+      identifier: build_javascript_app
+      name: Build JavaScript App
+      spec:
+        shell: Sh
+        command: |-
+          echo "Welcome to Harness CI"
+          node --version
+          npm install
+          npm run build --if-present
+          npm test
 ```
-
 
 </TabItem>
 <TabItem value=".NET" label="C# (.NET Core)">
-
 
 1. Fork the [C# (.NET Core) sample repository](https://github.com/harness-community/hello-dotnet-core) into your GitHub account.
 2. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free Harness account.
@@ -189,23 +179,21 @@ import TabItem from '@theme/TabItem';
 8. Replace the `echo` step with the following, and then save the pipeline.
 
 ```yaml
-              - step:
-                  type: Run
-                  identifier: build_dotnet_app
-                  name: Build DotNet App
-                  spec:
-                    shell: Sh
-                    command: |-
-                      echo "Welcome to Harness CI"
-                      dotnet restore
-                      dotnet build --no-restore
-                      dotnet test --no-build --verbosity normal
+- step:
+    type: Run
+    identifier: build_dotnet_app
+    name: Build DotNet App
+    spec:
+      shell: Sh
+      command: |-
+        echo "Welcome to Harness CI"
+        dotnet restore
+        dotnet build --no-restore
+        dotnet test --no-build --verbosity normal
 ```
-
 
 </TabItem>
 <TabItem value="Python" label="Python">
-
 
 1. Fork the [Python sample repository](https://github.com/harness-community/python) into your GitHub account.
 2. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free Harness account.
@@ -220,23 +208,21 @@ import TabItem from '@theme/TabItem';
 8. Replace the `build` step with the following, and then save the pipeline.
 
 ```yaml
-              - step:
-                  type: Run
-                  identifier: build_python_app
-                  name: Build Python App
-                  spec:
-                    shell: Sh
-                    command: |-
-                      echo "Welcome to Harness CI"
-                      python -m pip install --upgrade pip
-                      pip install  pytest
-                      if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+- step:
+    type: Run
+    identifier: build_python_app
+    name: Build Python App
+    spec:
+      shell: Sh
+      command: |-
+        echo "Welcome to Harness CI"
+        python -m pip install --upgrade pip
+        pip install  pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 ```
-
 
 </TabItem>
 </Tabs>
-
 
 ## Run your pipeline
 
@@ -253,8 +239,8 @@ Congratulations on building your first pipeline!
 
 You can build even faster with Harness CI - Learn how you can build and test Apache Kafka four times faster on Harness CI:
 
-* Read the performance data here: [https://harness.io/blog/fastest-ci-tool](https://harness.io/blog/fastest-ci-tool)
-* Follow the instructions for [this sample](https://github.com/harness-community/kafka/blob/trunk/.harness/README.md) to reproduce the results and see for yourself.
+- Read the performance data here: [https://harness.io/blog/fastest-ci-tool](https://harness.io/blog/fastest-ci-tool)
+- Follow the instructions for [this sample](https://github.com/harness-community/kafka/blob/trunk/.harness/README.md) to reproduce the results and see for yourself.
 
 <figure>
 
@@ -265,9 +251,9 @@ You can build even faster with Harness CI - Learn how you can build and test Apa
 
 Harness CI gives you speed benefits at a much lower cost. We compared the cost of running a single build for Apache Kafka, RocketMQ, and Zookeeper.
 
-* GitHub Actions costs $0.008 per build minute.
-* CI Vendor 2 costs $0.0120 per build minute.
-* Harness CI is competitively priced, at $0.008 per build minute, relative to GitHub Actions, and priced lower than CI Vendor 2.
+- GitHub Actions costs $0.008 per build minute.
+- CI Vendor 2 costs $0.0120 per build minute.
+- Harness CI is competitively priced, at $0.008 per build minute, relative to GitHub Actions, and priced lower than CI Vendor 2.
 
 With the advantage of being four times faster, your builds will take less time. Combined with the competitive pricing of $0.008 per build minute, your total cost could be 1/4th the cost of the other CI competitors. Learn more about our test methodology [here](https://harness.io/blog/fastest-ci-tool).
 

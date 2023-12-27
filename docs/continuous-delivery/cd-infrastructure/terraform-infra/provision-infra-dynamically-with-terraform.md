@@ -178,7 +178,7 @@ If you're simply experimenting, you can use [HashiCorp's Kubernetes repo](https:
    
    <!-- ![](./static/provision-infra-dynamically-with-terraform-03.png) -->
    
-   <docimage path={require('./static/provision-infra-dynamically-with-terraform-03.png')} />
+   <DocImage path={require('./static/provision-infra-dynamically-with-terraform-03.png')} />
 5. Click **Submit**.
 
 Your Terraform Plan step is now ready. You can now configure the Terraform Apply step that will inherit the Terraform script and settings from this Terraform Plan step.
@@ -429,7 +429,7 @@ When you enable dynamic provisioning in a CD Deploy stage's **Environment** sett
 
 You must use the same **Provisioner Identifier** in the Terraform Plan and Terraform Apply steps:  
 
-<docimage path={require('./static/provision-infra-dynamically-with-terraform-05.png')} width="80%" height="80%" title="Click to view full size image" /> 
+<DocImage path={require('./static/provision-infra-dynamically-with-terraform-05.png')} width="80%" height="80%" title="Click to view full size image" /> 
 
 :::
 

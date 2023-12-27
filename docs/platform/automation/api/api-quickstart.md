@@ -63,7 +63,7 @@ You need to use API keys to authenticate requests. Create an API key in your Har
 
    <!-- ![](./static/api-quickstart-04.png) -->
 
-   <docimage path={require('./static/api-quickstart-04.png')} />
+   <DocImage path={require('./static/api-quickstart-04.png')} />
 
 ## Get your account ID
 

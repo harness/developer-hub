@@ -24,7 +24,6 @@ Harness supports the following manifest types and orchestration methods.
 
 For more information about using Kubernetes manifests in Harness, go to [Add Kubernetes manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests).
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -43,13 +42,10 @@ You can use:
 <summary>Watch a short video</summary>
 Here's a quick video showing you how to add manifests and Values YAML files in Harness. It covers Kubernetes as well as other types like Helm Charts.
 
- 
 <!-- Video:
 https://www.youtube.com/watch?v=dVk6-8tfwJc-->
-<docvideo src="https://www.youtube.com/watch?v=dVk6-8tfwJc" />
+<DocVideo src="https://www.youtube.com/watch?v=dVk6-8tfwJc" />
 </details>
-
-
 
 <Tabs>
   <TabItem value="YAML" label="YAML">
@@ -93,8 +89,8 @@ service:
               skipResourceVersioning: false
   gitOpsEnabled: false
 ```
-</details>
 
+</details>
 
 </TabItem>
   <TabItem value="API" label="API">
@@ -122,10 +118,8 @@ curl -i -X POST \
     "yaml": "service:\n  name: KubernetesTest\n  identifier: KubernetesTest\n  serviceDefinition:\n    type: Kubernetes\n    spec:\n      artifacts:\n        primary:\n          primaryArtifactRef: <+input>\n          sources:\n            - spec:\n                connectorRef: account.harnessImage\n                imagePath: library/nginx\n                tag: stable-perl\n              identifier: nginx\n              type: DockerRegistry\n      manifests:\n        - manifest:\n            identifier: myapp\n            type: K8sManifest\n            spec:\n              store:\n                type: Harness\n                spec:\n                  files:\n                    - /Templates\n              valuesPaths:\n                - /values.yaml\n              skipResourceVersioning: false\n              enableDeclarativeRollback: false\n  gitOpsEnabled: false"
   }]'
 ```
+
 </details>
-
-
-
 
 </TabItem>  
   <TabItem value="Terraform Provider" label="Terraform Provider">
@@ -145,7 +139,7 @@ resource "harness_platform_service" "example" {
 
   ## SERVICE V2 UPDATE
   ## We now take in a YAML that can define the service definition for a given Service
-  ## It isn't mandatory for Service creation 
+  ## It isn't mandatory for Service creation
   ## It is mandatory for Service use in a pipeline
 
   yaml = <<-EOT
@@ -190,9 +184,8 @@ resource "harness_platform_service" "example" {
               EOT
 }
 ```
+
 </details>
-
-
 
 </TabItem>  
   <TabItem value="Pipeline Studio" label="Pipeline Studio">
@@ -207,28 +200,29 @@ To add Kubernetes manifests to your service, do the following:
 6. In **Manifests**, click **Add Manifest**.
 7. In **Specify Manifest Type**, select **K8s Manifest**, and then click **Continue**.
 8. In **Specify K8s Manifest Store**, select the Git provider.
-   
+
    The settings for each Git provider are slightly different, but you simply want to point to the Git account For example, click GitHub, and then select or create a new GitHub Connector. See [Connect to Code Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
-9.  Click **Continue**. **Manifest Details** appears.
+
+9. Click **Continue**. **Manifest Details** appears.
 10. In **Manifest Identifier**, enter an Id for the manifest.
 11. If you selected a Connector that uses a Git account instead of a Git repo, enter the name of the repo where your manifests are located in **Repository Name**.
 12. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**, and then enter the branch or commit Id for the repo.
 13. For **Specific Commit ID**, you can also use a [Git commit tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
 14. In **File/Folder Path**, enter the path to the manifest file or folder in the repo. The Connector you selected already has the repo name, so you simply need to add the path from the root of the repo.
-    
+
     If you are using a values.yaml file and it's in the same repo as your manifests, in **Values YAML**, click **Add File**.
+
 15. Enter the path to the values.yaml file from the root of the repo.
-    
+
     Here's an example with the manifest and values.yaml file added.
-    
+
     ![](./static/kubernetes-services-01.png)
-    
+
     If you use multiple files, the highest priority is given from the last file, and the lowest priority to the first file. For example, if you have 3 files and the second and third files contain the same key:value as the first file, the third file's key:value overrides the second and first files.
-    
+
     ![](./static/kubernetes-services-02.png)
+
 16. Click **Submit**. The manifest is added to **Manifests**.
-
-
 
 </TabItem>  
   <TabItem value="Values YAML" label="Values YAML">
@@ -241,8 +235,8 @@ If you are using a Values YAML file and it's in a separate repo from your manife
 
 You cannot use Harness variables expressions in your Kubernetes object manifest files. You can only use Harness variables expressions in Values YAML files.Add a Values YAML fileWhere is your Values YAML file located?
 
-* **Same folder as manifests:** If you are using a values.yaml file and it's in the same repo as your manifests, you can add it when you add your manifests, as described above (**Values YAML** --> **Add File**).
-* **Separate from manifests:** If your values file is located in a different folder, you can add it separately as a **Values YAML** manifest type, described below.
+- **Same folder as manifests:** If you are using a values.yaml file and it's in the same repo as your manifests, you can add it when you add your manifests, as described above (**Values YAML** --> **Add File**).
+- **Separate from manifests:** If your values file is located in a different folder, you can add it separately as a **Values YAML** manifest type, described below.
 
 To add a Values YAML file, do the following:
 
@@ -254,22 +248,22 @@ To add a Values YAML file, do the following:
 6. In **Manifests**, click **Add Manifest**.
 7. In **Specify Manifest Type**, select **Values YAML**, and click **Continue.**
 8. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
-   
+
    If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart), [Helm CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes delegate](/docs/platform/Delegates/install-delegates/overview).
-9.  Once you've selected a Connector, click **Continue**.
+
+9. Once you've selected a Connector, click **Continue**.
 10. In **Manifest Details**, you tell Harness where the values.yaml is located.
 11. In **Manifest Identifier**, enter a name that identifies the file, like **values**.
 12. If you selected a Connector that uses a Git account instead of a Git repo, enter the name of the repo where your manifests are located in **Repository Name**.
 13. In **Git Fetch Type**, select a branch or commit Id for the manifest, and then enter the Id or branch.
-    * For **Specific Commit ID**, you can also use a [Git commit tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
-    * In **File Path**, enter the path to the values.yaml file in the repo.
-   
-   You can enter multiple values file paths by clicking **Add File**. At runtime, Harness will compile the files into one values file.
-   
-   If you use multiple files, the highest priority is given from the last file, and the lowest priority to the first file. For example, if you have 3 files and the second and third files contain the same key:value as the first file, the third file's key:value overrides the second and first files.
-   
-   ![](./static/kubernetes-services-03.png)
-14. Click **Submit**.
+    - For **Specific Commit ID**, you can also use a [Git commit tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
+    - In **File Path**, enter the path to the values.yaml file in the repo.
+
+You can enter multiple values file paths by clicking **Add File**. At runtime, Harness will compile the files into one values file.
+
+If you use multiple files, the highest priority is given from the last file, and the lowest priority to the first file. For example, if you have 3 files and the second and third files contain the same key:value as the first file, the third file's key:value overrides the second and first files.
+
+![](./static/kubernetes-services-03.png) 14. Click **Submit**.
 
 The values file(s) are added to the Service.
 
@@ -278,7 +272,6 @@ The values file(s) are added to the Service.
 If you have Values files in both the K8s Manifest **File/Folder Path** and the Values YAML, the Values YAML will overwrite any matching values in the Values YAML in the Manifest **File/Folder Path**.
 
 ![](./static/kubernetes-services-04.png)
-
 
 </TabItem>
 </Tabs>
@@ -299,15 +292,12 @@ See [Ignore a manifest file during deployment](/docs/continuous-delivery/deploy-
 
 </details>
 
-
 ### Helm Charts
 
 <details>
 <summary>Use Helm Charts</summary>
 
 You can use Helm charts stored in an HTTP Helm Repository, OCI Registry, a Git repo provider, a cloud storage service (Google Cloud Storage, AWS S3, Azure Repo), a custom repo, or the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
-
-
 
 import Tabs1 from '@theme/Tabs';
 import TabItem1 from '@theme/TabItem';
@@ -347,8 +337,6 @@ service:
 
 </details>
 
-
-
   </TabItem1>
   <TabItem1 value="API" label="API">
 
@@ -373,8 +361,8 @@ Create a service using the [Create Services](https://apidocs.harness.io/tag/Serv
   }
 ]
 ```
-</details>
 
+</details>
 
   </TabItem1>
   <TabItem1 value="Terraform Provider" label="Terraform Provider">
@@ -394,7 +382,7 @@ resource "harness_platform_service" "example" {
 
   ## SERVICE V2 UPDATE
   ## We now take in a YAML that can define the service definition for a given Service
-  ## It isn't mandatory for Service creation 
+  ## It isn't mandatory for Service creation
   ## It is mandatory for Service use in a pipeline
 
   yaml = <<-EOT
@@ -423,6 +411,7 @@ resource "harness_platform_service" "example" {
               EOT
 }
 ```
+
 </details>
 
   </TabItem1>
@@ -438,12 +427,12 @@ To add a Helm chart to your service, do the following:
 6. In **Manifests**, click **Add Manifest**.
 7. In **Specify Manifest Type**, select **Helm Chart**, and click **Continue**.
 8. In **Specify Helm Chart Store**, select the storage service you're using.
-   
-   ![helm storage](./static/a49287968d8e99d3368420384bab12d62206d48fa714cd0c61eed12ca14c641f.png)  
 
-  #### Options for connecting to a Helm chart store
+   ![helm storage](./static/a49287968d8e99d3368420384bab12d62206d48fa714cd0c61eed12ca14c641f.png)
 
-  The options avialable to you to specify a Helm chart store depend on whether or not specific feature flags are enabled on your account. Options available without any feature flags or with specific feature flags enabled are described here: 
+#### Options for connecting to a Helm chart store
+
+The options avialable to you to specify a Helm chart store depend on whether or not specific feature flags are enabled on your account. Options available without any feature flags or with specific feature flags enabled are described here:
 
     * **Feature flag disabled**. Only one option is available: **OCI Helm Registry Connector**. This option enables you to connect to any OCI-based registry.
     * **Feature flag enabled**. You can choose between connectors in the following categories:
@@ -451,9 +440,9 @@ To add a Helm chart to your service, do the following:
       - **Via Cloud Provider**. Contains the ECR connector option. This connector is specifically designed for AWS ECR to help you overcome the limitation of having to regenerate the ECR registry authentication token every 12 hours. The ECR connector option uses an AWS connector and regenerates the required authentication token if the token has expired.
 
 For the steps and settings of each option, go to [Connectors](/docs/category/connectors) or [Connect to a Git repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
-   
+
 Once your Helm chart is added, it appears in the **Manifests** section. For example:
-   
+
 ![](./static/kubernetes-services-05.png)
 
   </TabItem1>
@@ -466,7 +455,6 @@ Once your Helm chart is added, it appears in the **Manifests** section. For ex
 - Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness connector that uses this delegate in A cannot assume the role for the B account.
 - Harness cannot fetch Helm chart versions with Helm OCI because Helm OCI no longer supports `helm chart list`. See [OCI Feature Deprecation and Behavior Changes with Helm v3.7.0](https://helm.sh/docs/topics/registries/#oci-feature-deprecation-and-behavior-changes-with-v370).
 - Currently, you cannot list the OCI image tags in Harness. This is a Helm limitation. For more information, go to [Helm Search Repo Chart issue](https://github.com/helm/helm/issues/11000).
-
 
 </details>
 
@@ -511,9 +499,8 @@ service:
               skipResourceVersioning: false
   gitOpsEnabled: false
 ```
+
 </details>
-
-
 
   </TabItem2>
   <TabItem2 value="API" label="API">
@@ -539,6 +526,7 @@ Create a service using the [Create Services](https://apidocs.harness.io/tag/Serv
   }
 ]
 ```
+
 </details>
 
   </TabItem2>
@@ -559,7 +547,7 @@ resource "harness_platform_service" "example" {
 
   ## SERVICE V2 UPDATE
   ## We now take in a YAML that can define the service definition for a given Service
-  ## It isn't mandatory for Service creation 
+  ## It isn't mandatory for Service creation
   ## It is mandatory for Service use in a pipeline
 
   yaml = <<-EOT
@@ -587,6 +575,7 @@ resource "harness_platform_service" "example" {
             EOT
 }
 ```
+
 </details>
 
   </TabItem2>
@@ -607,13 +596,13 @@ To add a kustomization, do the following:
 11. In **Specify Manifest Type**, select a Git provider, [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store), or Azure Repo.
 12. In **Manifest Details**, enter the following settings, test the connection, and click **Submit**.
 
-    + **Manifest Identifier:** enter **kustomize**.
-    + **Git Fetch Type:** select **Latest from Branch**.
-    + **Branch:** enter **main**.
-    + **Kustomize Folder Path:** kustomize/helloWorld. This is the path from the repo root.
-    
+    - **Manifest Identifier:** enter **kustomize**.
+    - **Git Fetch Type:** select **Latest from Branch**.
+    - **Branch:** enter **main**.
+    - **Kustomize Folder Path:** kustomize/helloWorld. This is the path from the repo root.
+
     The kustomization is now listed.
-    
+
     ![](./static/kubernetes-services-06.png)
 
   </TabItem2>
@@ -621,7 +610,7 @@ To add a kustomization, do the following:
 
 You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches Manifest Details**.
 
-**How Harness uses patchesStrategicMerge:** 
+**How Harness uses patchesStrategicMerge:**
 
 - Kustomize patches override values in the base manifest. Harness supports the `patchesStrategicMerge` patches type.
 - If the `patchesStrategicMerge` label is missing from the kustomization YAML file, but you have added Kustomize Patches to your Harness Service, Harness will add the Kustomize Patches you added in Harness to the `patchesStrategicMerge` in the kustomization file. If you have hardcoded patches in `patchesStrategicMerge`, but not add these patches to Harness as Kustomize Patches, Harness will ignore them.
@@ -638,24 +627,24 @@ To use Kustomize Patches, do the following:
 6. In **Manifests**, select **Add Manifest**.
 7. In **Specify Manifest Type**, select **Kustomize Patches**, and select**Continue**.
 8. In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
-   
+
    The Git Connector should point to the Git account or repo where you Kustomize files are located. In **Kustomize Patches** you will specify the path to the actual patch files.
-9.  Select **Continue**.
+
+9. Select **Continue**.
 10. In **Manifest Details**, enter the path to your patch file(s):
-    + **Manifest Identifier:** enter a name that identifies the patch file(s). You don't have to add the actual filename.
-    + **Git Fetch Type:** select whether to use the latest branch or a specific commit Id.
-    + **Branch**/**Commit Id**: enter the branch or commit Id.
-    + **File/Folder Path:** enter the path to the patch file(s) from the root of the repo.
+    - **Manifest Identifier:** enter a name that identifies the patch file(s). You don't have to add the actual filename.
+    - **Git Fetch Type:** select whether to use the latest branch or a specific commit Id.
+    - **Branch**/**Commit Id**: enter the branch or commit Id.
+    - **File/Folder Path:** enter the path to the patch file(s) from the root of the repo.
 11. Click **Add File** to add each patch file. The files you add should be the same files listed in `patchesStrategicMerge` of the main kustomize file in your Service.
-    
+
     The order in which you add file paths for patches in **File/Folder Path** is the same order that Harness applies the patches during the kustomization build.
-    
+
     Small patches that do one thing are recommended. For example, create one patch for increasing the deployment replica number and another patch for setting the memory limit.
+
 12. Select **Submit**. The patch file(s) is added to **Manifests**.
-    
+
     When the main kustomization.yaml is deployed, the patch is rendered and its overrides are added to the deployment.yaml that is deployed.
-
-
 
   </TabItem2>  
 </Tabs2>
@@ -666,16 +655,15 @@ For a detailed walkthrough of deploying Kustomize in Harness, including limitati
 
 #### Important notes
 
-* Harness supports Kustomize and Kustomize Patches for Rolling, Blue Green and Delete steps.
-* Harness does not use Kustomize for rollback. Harness renders the templates using Kustomize and then passes them onto kubectl. A rollback works exactly as it does for native Kubernetes.
-* You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches Manifest Details**.
-* **Kustomize binary versions:**
-  * Harness includes Kustomize binary versions 3.5.4 and 4.0.0. By default, Harness uses 3.5.4. 
-  * To use 4.0.0, you must enable the feature flag `NEW_KUSTOMIZE_BINARY` in your account. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-* Harness will not follow symlinks in the Kustomize and Kustomize Patches files it pulls.
+- Harness supports Kustomize and Kustomize Patches for Rolling, Blue Green and Delete steps.
+- Harness does not use Kustomize for rollback. Harness renders the templates using Kustomize and then passes them onto kubectl. A rollback works exactly as it does for native Kubernetes.
+- You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches Manifest Details**.
+- **Kustomize binary versions:**
+  - Harness includes Kustomize binary versions 3.5.4 and 4.0.0. By default, Harness uses 3.5.4.
+  - To use 4.0.0, you must enable the feature flag `NEW_KUSTOMIZE_BINARY` in your account. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+- Harness will not follow symlinks in the Kustomize and Kustomize Patches files it pulls.
 
 </details>
-
 
 ### OpenShift templates
 
@@ -685,7 +673,6 @@ For a detailed walkthrough of deploying Kustomize in Harness, including limitati
 Harness supports OpenShift for Kubernetes deployments.
 
 For an overview of OpenShift support, see [Using OpenShift with Harness Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/using-open-shift-with-harness-kubernetes).
-
 
 import Tabs3 from '@theme/Tabs';
 import TabItem3 from '@theme/TabItem';
@@ -718,8 +705,8 @@ service:
               skipResourceVersioning: false
     type: Kubernetes
 ```
-</details>
 
+</details>
 
   </TabItem3>
   <TabItem3 value="API" label="API">
@@ -745,8 +732,8 @@ Create a service using the [Create Services](https://apidocs.harness.io/tag/Serv
   }
 ]
 ```
-</details>
 
+</details>
 
   </TabItem3>
   <TabItem3 value="Terraform Provider" label="Terraform Provider">
@@ -766,7 +753,7 @@ resource "harness_platform_service" "example" {
 
   ## SERVICE V2 UPDATE
   ## We now take in a YAML that can define the service definition for a given Service
-  ## It isn't mandatory for Service creation 
+  ## It isn't mandatory for Service creation
   ## It is mandatory for Service use in a pipeline
 
   yaml = <<-EOT
@@ -791,8 +778,8 @@ resource "harness_platform_service" "example" {
               EOT
 }
 ```
-</details>
 
+</details>
 
   </TabItem3>
   <TabItem3 value="Pipeline Studio" label="Pipeline Studio">
@@ -805,17 +792,17 @@ To add an OpenShift Template to a service, do the following:
 4. Select **Configuration**.
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Manifests**, click **Add Manifest**.
-7.  In **Specify Manifest Type**, select **OpenShift Template**, and then select **Continue.**
-8.  In **Specify OpenShift Template Store**, select where your template is located. 
-  
-  You can use a Git provider, the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store), a custom repo, or Azure Repos.
+7. In **Specify Manifest Type**, select **OpenShift Template**, and then select **Continue.**
+8. In **Specify OpenShift Template Store**, select where your template is located.
+
+You can use a Git provider, the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store), a custom repo, or Azure Repos.
+
 1.  For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
 2.  Select **Continue**. **Manifest Details** appears.
 3.  In **Manifest Identifier**, enter an Id for the manifest. It must be unique. It can be used in Harness expressions to reference this template's settings.
 4.  In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id/Git Tag**, and then enter the branch or commit Id/[tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) for the repo.
 5.  In **Template** **File Path**, enter the path to the template file. The Connector you selected already has the repo name, so you simply need to add the path from the root of the repo to the file.
 6.  Select **Submit**. The template is added to **Manifests**.
-
 
   </TabItem3>
   <TabItem3 value="OpenShift Param" label="OpenShift Param" default>
@@ -842,8 +829,6 @@ You can now see the params file in the OpenShift Template **Manifest Details**.
 
 ![Manifest Details](./static/bbeb75857343eb531ec2025d898bceb40393fa5068529e4ae69970ca3eaa8f4d.png)
 
-
-
   </TabItem3>
 </Tabs3>
 
@@ -861,21 +846,20 @@ When you deploy, Harness will render the lists and show all the templated and re
 
 Harness supports:
 
-* List
-* NamespaceList
-* ServiceList
-* For Kubernetes deployments, these objects are supported for all deployment strategies (Canary, Rolling, Blue/Green).
-* For Native Helm, these objects are supported for Rolling deployments.
+- List
+- NamespaceList
+- ServiceList
+- For Kubernetes deployments, these objects are supported for all deployment strategies (Canary, Rolling, Blue/Green).
+- For Native Helm, these objects are supported for Rolling deployments.
 
 If you run `kubectl api-resources` you should see a list of resources, and `kubectl explain` will work with any of these.
 
 #### Important notes
 
-* Make sure that you update your version to `apiVersion: apps.openshift.io/v1` and not `apiVersion: v1`.
-* The token does not need to have global read permissions. The token can be scoped to the namespace.
-* The Kubernetes containers must be OpenShift-compatible containers. If you are already using OpenShift, then this is already configured. But be aware that OpenShift cannot simply deploy any Kubernetes container. You can get OpenShift images from the following public repos: [https://hub.docker.com/u/openshift](https://hub.docker.com/u/openshift) and [https://access.redhat.com/containers](https://access.redhat.com/containers).
-* Useful articles for setting up a local OpenShift cluster for testing: [How To Setup Local OpenShift Origin (OKD) Cluster on CentOS 7](https://computingforgeeks.com/setup-openshift-origin-local-cluster-on-centos/), [OpenShift Console redirects to 127.0.0.1](https://chrisphillips-cminion.github.io/kubernetes/2019/07/08/OpenShift-Redirect.html).
-
+- Make sure that you update your version to `apiVersion: apps.openshift.io/v1` and not `apiVersion: v1`.
+- The token does not need to have global read permissions. The token can be scoped to the namespace.
+- The Kubernetes containers must be OpenShift-compatible containers. If you are already using OpenShift, then this is already configured. But be aware that OpenShift cannot simply deploy any Kubernetes container. You can get OpenShift images from the following public repos: [https://hub.docker.com/u/openshift](https://hub.docker.com/u/openshift) and [https://access.redhat.com/containers](https://access.redhat.com/containers).
+- Useful articles for setting up a local OpenShift cluster for testing: [How To Setup Local OpenShift Origin (OKD) Cluster on CentOS 7](https://computingforgeeks.com/setup-openshift-origin-local-cluster-on-centos/), [OpenShift Console redirects to 127.0.0.1](https://chrisphillips-cminion.github.io/kubernetes/2019/07/08/OpenShift-Redirect.html).
 
 </details>
 
@@ -896,14 +880,14 @@ Add the image location to Harness as an artifact in the **Artifacts** section o
 This allows you to reference the image in your values YAML files using the Harness expression `<+artifacts.primary.image>`.
 
 ```yaml
-...  
-image: <+artifacts.primary.image>  
-...
+
+---
+image: <+artifacts.primary.image>
 ```
 
 You cannot use Harness variables expressions in your Kubernetes object manifest files. You can only use Harness variables expressions in values YAML files, or Kustomize Patch file.
 
-When you select the artifact repo for the artifact, like a Docker Hub repo, you specify the artifact and tag/version to use. 
+When you select the artifact repo for the artifact, like a Docker Hub repo, you specify the artifact and tag/version to use.
 
 You can select a specific tag/version, use a [runtime input](/docs/platform/variables-and-expressions/runtime-inputs/) so that you are prompted for the tag/version when you run the pipeline, or you can use an Harness variable expression to pass in the tag/version at execution.
 
@@ -921,14 +905,13 @@ With a Harness artifact, you can template your manifests, detaching them from a 
 If a Docker image location is hardcoded in your Kubernetes manifest (for example, `image: nginx:1.14.2`), then you can simply add the manifest to Harness in **Manifests** and Kubernetes will pull the image during deployment.
 
 When you hardcode the artifact in your manifests, any artifacts added to your Harness service are ignored.
-</details>
 
+</details>
 
 ### Docker
 
 <details>
 <summary>Use artifacts in any Docker registry</summary>
-
 
 import Tabs5 from '@theme/Tabs';
 import TabItem5 from '@theme/TabItem';
@@ -996,12 +979,9 @@ service:
               identifier: myimage
               type: DockerRegistry
   gitOpsEnabled: false
-
 ```
+
 </details>
-
-
-
 
   </TabItem5>
   <TabItem5 value="API" label="API">
@@ -1029,11 +1009,10 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
     auth:
       type: Anonymous'
 ```
+
 </details>
 
 Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
-
-
 
   </TabItem5>
   <TabItem5 value="Terraform Provider" label="Terraform Provider">
@@ -1072,6 +1051,7 @@ resource "harness_platform_connector_docker" "test" {
   }
 }
 ```
+
 </details>
 
 For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
@@ -1089,7 +1069,7 @@ resource "harness_platform_service" "example" {
 
   ## SERVICE V2 UPDATE
   ## We now take in a YAML that can define the service definition for a given Service
-  ## It isn't mandatory for Service creation 
+  ## It isn't mandatory for Service creation
   ## It is mandatory for Service use in a pipeline
 
  yaml = <<-EOT
@@ -1126,8 +1106,8 @@ resource "harness_platform_service" "example" {
               EOT
 }
 ```
-</details>
 
+</details>
 
   </TabItem5>
   <TabItem5 value="Pipeline Studio" label="Pipeline Studio">
@@ -1142,19 +1122,20 @@ To add an artifact from a Docker registry, do the following:
 6. In **Artifacts**, select **Add Artifact Source**.
 7. In **Select Artifact Repository Type**, select the registry where your Docker artifact is hosted. For this example, we'll select **Docker Registry**, and then click **Continue**.
 8. Select or create a [Docker Registry Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
-9.  Select **Continue**.
+9. Select **Continue**.
 10. In **Artifact Source Name**, enter a name that identifies your artifact.
 11. In **Image path**, enter the name of the artifact you want to deploy, such as `library/nginx` or `jsmtih/privateimage`.
 
     Official images in public repos often need the label `library`, e.g. `library/tomcat`.
 
     Wildcards are not supported.
-11. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
-    
-    ![](./static/kubernetes-services-09.png)
-12. Click **Submit**.
-13. The Artifact is added to the Service Definition.
 
+12. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
+
+    ![](./static/kubernetes-services-09.png)
+
+13. Click **Submit**.
+14. The Artifact is added to the Service Definition.
 
   </TabItem5>
 </Tabs5>
@@ -1166,16 +1147,12 @@ To add an artifact from a Docker registry, do the following:
 
 </details>
 
-
-
-
 ### Google Container Registry (GCR)
 
 <details>
 <summary>Use GCR artifacts</summary>
 
 You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
-
 
 import Tabs6 from '@theme/Tabs';
 import TabItem6 from '@theme/TabItem';
@@ -1244,8 +1221,8 @@ service:
               type: Gcr
   gitOpsEnabled: false
 ```
-</details>
 
+</details>
 
   </TabItem6>
   <TabItem6 value="API" label="API">
@@ -1272,10 +1249,10 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
       - gcpdocplay
     executeOnDelegate: true'
 ```
+
 </details>
 
 Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
-
 
   </TabItem6>
   <TabItem6 value="Terraform Provider" label="Terraform Provider">
@@ -1311,10 +1288,10 @@ resource "harness_platform_connector_gcp" "test" {
   }
 }
 ```
+
 </details>
 
 For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
-
 
   </TabItem6>
   <TabItem6 value="Pipeline Studio" label="Pipeline Studio">
@@ -1337,15 +1314,16 @@ To add an artifact from GCR, do the following:
 12. In **Image Path**, enter the name of the artifact you want to deploy.
 
     Images in repos need to reference a path starting with the project Id that the artifact is in, for example: `myproject-id/image-name`.
-13. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select a [runtime input or expression](/docs/platform/variables-and-expressions/runtime-inputs/).
-    
-    ![](./static/kubernetes-services-10.png)
-    
-    If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
-14. Click **Submit**.
-    
-    The Artifact is added to the **Service Definition**.
 
+13. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select a [runtime input or expression](/docs/platform/variables-and-expressions/runtime-inputs/).
+
+    ![](./static/kubernetes-services-10.png)
+
+    If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
+
+14. Click **Submit**.
+
+    The Artifact is added to the **Service Definition**.
 
   </TabItem6>
 </Tabs6>
@@ -1363,17 +1341,14 @@ Ensure the Harness delegate you have installed can reach `storage.cloud.google.c
 
 </details>
 
-
-
 ### Google Artifact Registry
 
 <details>
 <summary>Use Google Artifact Registry artifacts</summary>
 
-You connect to Google Artifact Registry using a Harness GCP Connector. 
+You connect to Google Artifact Registry using a Harness GCP Connector.
 
 For details on all the Google Artifact Registry requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
-
 
 import Tabs7 from '@theme/Tabs';
 import TabItem7 from '@theme/TabItem';
@@ -1401,6 +1376,7 @@ connector:
       - gcpdocplay
     executeOnDelegate: true
 ```
+
 </details>
 
 <details>
@@ -1442,10 +1418,9 @@ service:
                 version: <+input>
               type: GoogleArtifactRegistry
     type: Kubernetes
-
 ```
-</details>
 
+</details>
 
   </TabItem7>
   <TabItem7 value="API" label="API">
@@ -1473,11 +1448,10 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
       - gcpdocplay
     executeOnDelegate: true'
 ```
+
 </details>
 
 Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
-
-
 
   </TabItem7>
   <TabItem7 value="Terraform Provider" label="Terraform Provider">
@@ -1513,20 +1487,19 @@ resource "harness_platform_connector_gcp" "test" {
   }
 }
 ```
+
 </details>
 
 For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
-
   </TabItem7>
   <TabItem7 value="Pipeline Studio" label="Pipeline Studio">
 
-You connect to Google Artifact Registry using a Harness GCP Connector. 
+You connect to Google Artifact Registry using a Harness GCP Connector.
 
 For details on all the Google Artifact Registry requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
 
 To add an artifact from Google Artifact Registry, do the following:
-
 
 1. In your project, in CD (Deployments), select **Services**.
 2. Select **Manage Services**, and then select **New Service**.
@@ -1535,34 +1508,34 @@ To add an artifact from Google Artifact Registry, do the following:
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Artifacts**, select **Add Artifact Source**.
 7. In **Artifact Repository Type**, select **Google Artifact Registry**, and then select **Continue**.
-8. In **GCP Connector**, select or create a [Google Cloud Platform (GCP) Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference) that connects to the GCP account where the Google Artifact Registry is located. 
+8. In **GCP Connector**, select or create a [Google Cloud Platform (GCP) Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference) that connects to the GCP account where the Google Artifact Registry is located.
 9. Select **Continue**.
 10. In **Artifact Details**, you are basically creating the pull command. For example:
-    
+
     ```
     docker pull us-central1-docker.pkg.dev/docs-play/quickstart-docker-repo/quickstart-image:v1.0
     ```
-12. In **Artifact Source Name**, enter a name for the artifact.
-13. In **Repository Type**, select the format of the artifact.
-14. In **Project**, enter the Id of the GCP project.
-15. In **Region**, select the region where the repo is located.
-16. In **Repository Name**, enter the name of the repo.
-17. In **Package**, enter the artifact name.
-18. In **Version Details**, select **Value** or **Regex**.
-19. In **Version**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select [runtime input or expression](/docs/platform/variables-and-expressions/runtime-inputs/).
-    
+
+11. In **Artifact Source Name**, enter a name for the artifact.
+12. In **Repository Type**, select the format of the artifact.
+13. In **Project**, enter the Id of the GCP project.
+14. In **Region**, select the region where the repo is located.
+15. In **Repository Name**, enter the name of the repo.
+16. In **Package**, enter the artifact name.
+17. In **Version Details**, select **Value** or **Regex**.
+18. In **Version**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select [runtime input or expression](/docs/platform/variables-and-expressions/runtime-inputs/).
+
     ![](./static/kubernetes-services-11.png)
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 
     :::note
-    
-    If you used Fixed Value in **Version** and Harness is not able to fetch the image tags, ensure that the GCP service account key used in the GCP connector credentials, or in the service account used to install the Harness delegate, has the required permissions. See the **Permissions** tab in this documentation. 
-    
+
+    If you used Fixed Value in **Version** and Harness is not able to fetch the image tags, ensure that the GCP service account key used in the GCP connector credentials, or in the service account used to install the Harness delegate, has the required permissions. See the **Permissions** tab in this documentation.
+
     :::
-20. Click **Submit**.
+
+19. Click **Submit**.
     The Artifact is added to the **Service Definition**.
-
-
 
   </TabItem7>
 </Tabs7>
@@ -1580,15 +1553,12 @@ Ensure the Harness delegate you have installed can reach your Google Artifact Re
 
 </details>
 
-
-
 ### Amazon Elastic Container Registry (ECR)
 
 <details>
 <summary>Use ECR artifacts</summary>
 
 You connect to ECR using a Harness AWS connector. For details on all the ECR requirements for the AWS connector, see [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
-
 
 import Tabs8 from '@theme/Tabs';
 import TabItem8 from '@theme/TabItem';
@@ -1619,6 +1589,7 @@ connector:
       - doc-immut
     executeOnDelegate: true
 ```
+
 </details>
 
 <details>
@@ -1658,8 +1629,8 @@ service:
               type: Ecr
     type: Kubernetes
 ```
-</details>
 
+</details>
 
   </TabItem8>
   <TabItem8 value="API" label="API">
@@ -1690,11 +1661,10 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
       - doc-immut
     executeOnDelegate: true'
 ```
+
 </details>
 
 Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
-
-
 
   </TabItem8>
   <TabItem8 value="Terraform Provider" label="Terraform Provider">
@@ -1730,10 +1700,10 @@ resource "harness_platform_connector_aws" "test" {
   }
 }
 ```
+
 </details>
 
 For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
-
 
   </TabItem8>
   <TabItem8 value="Pipeline Studio" label="Pipeline Studio">
@@ -1754,17 +1724,16 @@ To add an artifact from ECR, do the following:
 10. In **Artifact Details**, in **Region**, select the region where the artifact source is located.
 11. In **Image Path**, enter the name of the artifact you want to deploy.
 12. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
-    
+
     ![ECR artifact details](./static/74fe6d9189f8f18b2e854598026ab1db27944dab47c3056f4ffaaab93582242a.png)
-    
+
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
+
 13. Select **Submit**.
-    
+
     The Artifact is added to the Service Definition.
 
     ![ECR artifact source in a service](./static/769c54fe91e7497b4aef3733f128361457b933f1d0eccd0d9b3491f1da4ed0c7.png)
-
-
 
   </TabItem8>
 </Tabs8>
@@ -1776,10 +1745,10 @@ Ensure that the AWS IAM user account you use in the AWS Connector has the follow
 <details>
 <summary>Pull from ECR policy</summary>
 
-* **Policy Name:** `AmazonEC2ContainerRegistryReadOnly`
-* **Policy ARN:** `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly`
-* **Description:** `Provides read-only access to Amazon EC2 Container Registry repositories.`
-* **Policy JSON:**
+- **Policy Name:** `AmazonEC2ContainerRegistryReadOnly`
+- **Policy ARN:** `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly`
+- **Description:** `Provides read-only access to Amazon EC2 Container Registry repositories.`
+- **Policy JSON:**
 
 ```
 {
@@ -1807,16 +1776,12 @@ Ensure that the AWS IAM user account you use in the AWS Connector has the follow
 
 </details>
 
-
-
 ### Azure Container Registry (ACR)
 
 <details>
 <summary>Use ACR artifacts</summary>
 
 You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure cloud connector](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector).
-
-
 
 import Tabs9 from '@theme/Tabs';
 import TabItem9 from '@theme/TabItem';
@@ -1850,6 +1815,7 @@ connector:
     azureEnvironmentType: AZURE
     executeOnDelegate: false
 ```
+
 </details>
 
 <details>
@@ -1890,8 +1856,8 @@ service:
               type: Acr
     type: Kubernetes
 ```
-</details>
 
+</details>
 
   </TabItem9>
   <TabItem9 value="API" label="API">
@@ -1925,11 +1891,10 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
     azureEnvironmentType: AZURE
     executeOnDelegate: false'
 ```
+
 </details>
 
 Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
-
-
 
   </TabItem9>
   <TabItem9 value="Terraform Provider" label="Terraform Provider">
@@ -2029,10 +1994,10 @@ resource "harness_platform_connector_azure_cloud_provider" "inherit_from_delegat
   delegate_selectors     = ["harness-delegate"]
 }
 ```
+
 </details>
 
 For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
-
 
   </TabItem9>
   <TabItem9 value="Pipeline Studio" label="Pipeline Studio">
@@ -2040,7 +2005,6 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure Cloud Connector](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector).
 
 To add an artifact from ACR, do the following:
-
 
 1. In your project, in CD (Deployments), select **Services**.
 2. Select **Manage Services**, and then select **New Service**.
@@ -2055,14 +2019,13 @@ To add an artifact from ACR, do the following:
 11. In **Registry**, select the ACR registry to use.
 12. In **Repository**, select the repo to use.
 13. In **Tag**, enter or select the tag for the image.
-    
+
     ![](./static/kubernetes-services-13.png)
-    
+
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
+
 14. Click **Submit**.
     The artifact is added to the Service Definition.
-
-
 
   </TabItem9>
 </Tabs9>
@@ -2073,7 +2036,6 @@ The Harness Azure connectors that you'll use to connect Harness to ACR must have
 
 <details>
 <summary>Reader role information</summary>
-
 
 ![ACR Reader role](./static/73cff0ac7d500c94998634b3885856b4eb37760f005ba1a413d3bd809b9e4e89.png)
 
@@ -2094,13 +2056,14 @@ Make sure you:
 <summary>Custom role information</summary>
 
 The following permissions (actions) are necessary for any Service Principal and/or Managed Identity user, regardless of whether you are using Kubernetes RBAC or Azure RBAC:
-* `Microsoft.ContainerRegistry/registries/read`
-* `Microsoft.ContainerRegistry/registries/builds/read`
-* `Microsoft.ContainerRegistry/registries/metadata/read`
-* `Microsoft.ContainerRegistry/registries/pull/read`
-* `Microsoft.ContainerService/managedClusters/read`
-* `Microsoft.ContainerService/managedClusters/listClusterUserCredential/action`
-* `Microsoft.Resource/subscriptions/resourceGroup/read`
+
+- `Microsoft.ContainerRegistry/registries/read`
+- `Microsoft.ContainerRegistry/registries/builds/read`
+- `Microsoft.ContainerRegistry/registries/metadata/read`
+- `Microsoft.ContainerRegistry/registries/pull/read`
+- `Microsoft.ContainerService/managedClusters/read`
+- `Microsoft.ContainerService/managedClusters/listClusterUserCredential/action`
+- `Microsoft.Resource/subscriptions/resourceGroup/read`
 
 For Helm deployments, the version of Helm must be >= 3.2.0. The Harness `HELM_VERSION_3_8_0` feature flag must be activated.
 
@@ -2110,51 +2073,50 @@ The following JSON sample creates a custom role with the required permissions. T
 
 ```json
 {
-    "id": "/subscriptions/xxxx/providers/Microsoft.Authorization/roleDefinitions/xxxx",
-    "properties": {
-        "roleName": "xxxx",
-        "description": "",
-        "assignableScopes": [
-            "/subscriptions/xxxx/resourceGroups/xxxx"
+  "id": "/subscriptions/xxxx/providers/Microsoft.Authorization/roleDefinitions/xxxx",
+  "properties": {
+    "roleName": "xxxx",
+    "description": "",
+    "assignableScopes": ["/subscriptions/xxxx/resourceGroups/xxxx"],
+    "permissions": [
+      {
+        "actions": [],
+        "notActions": [],
+        "dataActions": [
+          "Microsoft.ContainerService/managedClusters/configmaps/read",
+          "Microsoft.ContainerService/managedClusters/configmaps/write",
+          "Microsoft.ContainerService/managedClusters/configmaps/delete",
+          "Microsoft.ContainerService/managedClusters/secrets/read",
+          "Microsoft.ContainerService/managedClusters/secrets/write",
+          "Microsoft.ContainerService/managedClusters/secrets/delete",
+          "Microsoft.ContainerService/managedClusters/apps/deployments/read",
+          "Microsoft.ContainerService/managedClusters/apps/deployments/write",
+          "Microsoft.ContainerService/managedClusters/apps/deployments/delete",
+          "Microsoft.ContainerService/managedClusters/events/read",
+          "Microsoft.ContainerService/managedClusters/events/write",
+          "Microsoft.ContainerService/managedClusters/events/delete",
+          "Microsoft.ContainerService/managedClusters/namespaces/read",
+          "Microsoft.ContainerService/managedClusters/nodes/read",
+          "Microsoft.ContainerService/managedClusters/pods/read",
+          "Microsoft.ContainerService/managedClusters/pods/write",
+          "Microsoft.ContainerService/managedClusters/pods/delete",
+          "Microsoft.ContainerService/managedClusters/services/read",
+          "Microsoft.ContainerService/managedClusters/services/write",
+          "Microsoft.ContainerService/managedClusters/services/delete",
+          "Microsoft.ContainerService/managedClusters/apps/statefulsets/read",
+          "Microsoft.ContainerService/managedClusters/apps/statefulsets/write",
+          "Microsoft.ContainerService/managedClusters/apps/statefulsets/delete",
+          "Microsoft.ContainerService/managedClusters/apps/replicasets/read",
+          "Microsoft.ContainerService/managedClusters/apps/replicasets/write",
+          "Microsoft.ContainerService/managedClusters/apps/replicasets/delete"
         ],
-        "permissions": [
-            {
-                "actions": [],
-                "notActions": [],
-                "dataActions": [
-                    "Microsoft.ContainerService/managedClusters/configmaps/read",
-                    "Microsoft.ContainerService/managedClusters/configmaps/write",
-                    "Microsoft.ContainerService/managedClusters/configmaps/delete",
-                    "Microsoft.ContainerService/managedClusters/secrets/read",
-                    "Microsoft.ContainerService/managedClusters/secrets/write",
-                    "Microsoft.ContainerService/managedClusters/secrets/delete",
-                    "Microsoft.ContainerService/managedClusters/apps/deployments/read",
-                    "Microsoft.ContainerService/managedClusters/apps/deployments/write",
-                    "Microsoft.ContainerService/managedClusters/apps/deployments/delete",
-                    "Microsoft.ContainerService/managedClusters/events/read",
-                    "Microsoft.ContainerService/managedClusters/events/write",
-                    "Microsoft.ContainerService/managedClusters/events/delete",
-                    "Microsoft.ContainerService/managedClusters/namespaces/read",
-                    "Microsoft.ContainerService/managedClusters/nodes/read",
-                    "Microsoft.ContainerService/managedClusters/pods/read",
-                    "Microsoft.ContainerService/managedClusters/pods/write",
-                    "Microsoft.ContainerService/managedClusters/pods/delete",
-                    "Microsoft.ContainerService/managedClusters/services/read",
-                    "Microsoft.ContainerService/managedClusters/services/write",
-                    "Microsoft.ContainerService/managedClusters/services/delete",
-                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/read",
-                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/write",
-                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/delete",
-                    "Microsoft.ContainerService/managedClusters/apps/replicasets/read",
-                    "Microsoft.ContainerService/managedClusters/apps/replicasets/write",
-                    "Microsoft.ContainerService/managedClusters/apps/replicasets/delete"
-                ],
-                "notDataActions": []
-            }
-        ]
-    }
+        "notDataActions": []
+      }
+    ]
+  }
 }
 ```
+
 </details>
 
 #### Important notes
@@ -2164,15 +2126,12 @@ The following JSON sample creates a custom role with the required permissions. T
 
 </details>
 
-
-
 ### Nexus
 
 <details>
 <summary>Use Nexus artifacts</summary>
 
 You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](/docs/platform/connectors/artifact-repositories/nexus-connector-settings-reference).
-
 
 import Tabs10 from '@theme/Tabs';
 import TabItem10 from '@theme/TabItem';
@@ -2201,6 +2160,7 @@ connector:
     delegateSelectors:
       - gcpdocplay
 ```
+
 </details>
 
 <details>
@@ -2243,9 +2203,8 @@ service:
               type: Nexus3Registry
     type: Kubernetes
 ```
+
 </details>
-
-
 
   </TabItem10>
   <TabItem10 value="API" label="API">
@@ -2276,11 +2235,10 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
     delegateSelectors:
       - gcpdocplay'
 ```
+
 </details>
 
 Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
-
-
 
   </TabItem10>
   <TabItem10 value="Terraform Provider" label="Terraform Provider">
@@ -2319,11 +2277,10 @@ resource "harness_platform_connector_nexus" "test" {
   delegate_selectors = ["harness-delegate"]
 }
 ```
+
 </details>
 
 For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
-
-
 
   </TabItem10>
   <TabItem10 value="Pipeline Studio" label="Pipeline Studio">
@@ -2339,24 +2296,24 @@ To add an artifact from Nexus, do the following:
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Artifacts**, click **Add Artifact Source**.
 7. In **Artifact Repository Type**, click **Nexus**, and then select **Continue**.
-8. In **Nexus Repository**, select of create a Nexus Connector that connects to the Nexus account where the repo is located. 
+8. In **Nexus Repository**, select of create a Nexus Connector that connects to the Nexus account where the repo is located.
 9. Select **Continue**.
 10. Select **Repository URL** or **Repository Port**.
-    
-    + **Repository Port** is more commonly used and can be taken from the repo settings. Each repo uses its own port.
-    + **Repository URL** is typically used for a custom infrastructure (for example, when Nexus is hosted behind a reverse proxy).
+
+    - **Repository Port** is more commonly used and can be taken from the repo settings. Each repo uses its own port.
+    - **Repository URL** is typically used for a custom infrastructure (for example, when Nexus is hosted behind a reverse proxy).
+
 11. In **Repository**, enter the name of the repo.
 12. In **Artifact Path**, enter the path to the artifact you want.
 13. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
-    
+
     ![](./static/kubernetes-services-14.png)
-    
+
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
+
 14. Click **Submit**.
-    
+
     The Artifact is added to the Service Definition.
-
-
 
   </TabItem10>
 </Tabs10>
@@ -2365,8 +2322,8 @@ To add an artifact from Nexus, do the following:
 
 Ensure the connected user account has the following permissions in the Nexus Server.
 
-* Repo: All repositories (Read)
-* Nexus UI: Repository Browser
+- Repo: All repositories (Read)
+- Nexus UI: Repository Browser
 
 ![Nexus repo perms for Harness](./static/c98a49842e9d8bc5f3d2bef35aeff23c39932602a28d311eec5288cbf0fb22a9.png)
 
@@ -2384,7 +2341,6 @@ For Nexus 3, when used as a **Docker** repo, the user needs:
 <summary>Use Artifactory artifacts</summary>
 
 You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, see [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
-
 
 import Tabs11 from '@theme/Tabs';
 import TabItem11 from '@theme/TabItem';
@@ -2408,8 +2364,8 @@ connector:
       type: Anonymous
     executeOnDelegate: false
 ```
-</details>
 
+</details>
 
 <details>
 <summary>Service using Artifactory artifact YAML</summary>
@@ -2450,9 +2406,8 @@ service:
               type: ArtifactoryRegistry
     type: Kubernetes
 ```
+
 </details>
-
-
 
   </TabItem11>
   <TabItem11 value="API" label="API">
@@ -2478,11 +2433,10 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
       type: Anonymous
     executeOnDelegate: false'
 ```
+
 </details>
 
 Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
-
-
 
   </TabItem11>
   <TabItem11 value="Terraform Provider" label="Terraform Provider">
@@ -2523,10 +2477,10 @@ resource "harness_platform_connector_artifactory" "test" {
   delegate_selectors = ["harness-delegate"]
 }
 ```
+
 </details>
 
 For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
-
 
   </TabItem11>
   <TabItem11 value="Pipeline Studio" label="Pipeline Studio">
@@ -2545,17 +2499,17 @@ To add an artifact from Artifactory, do the following:
 8. In **Artifactory Repository**, select of create an Artifactory Connector that connects to the Artifactory account where the repo is located. Click **Continue**.
 9. The **Artifact Details** settings appear.
 10. In **Repository URL**, enter the URL from the `docker login` command in Artifactory's **Set Me Up** settings.
-    
+
     ![](./static/kubernetes-services-15.png)
+
 11. In **Repository**, enter the repo name. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `docker-remote`.
 12. In **Artifact Path**, enter the path to the artifact. If the full path is `docker-remote/library/mongo/3.6.2`, you would enter `library/mongo`.
 13. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
-    
+
     ![](./static/kubernetes-services-16.png)
+
 14. If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 15. Select **Submit**. The Artifact is added to the Service Definition.
-
-
 
   </TabItem11>
 </Tabs11>
@@ -2564,18 +2518,17 @@ To add an artifact from Artifactory, do the following:
 
 Make sure the following permissions are granted to the user:
 
-* Privileged User is required to access API, whether Anonymous or a specific username (username and passwords are not mandatory).
-* Read permission to all Repositories.
+- Privileged User is required to access API, whether Anonymous or a specific username (username and passwords are not mandatory).
+- Read permission to all Repositories.
 
 If used as a Docker Repo, user needs:
 
-* List images and tags
-* Pull images
+- List images and tags
+- Pull images
 
 See [Managing Permissions: JFrog Artifactory User Guide](https://www.jfrog.com/confluence/display/RTF/Managing+Permissions).
 
 </details>
-
 
 ### Github packages
 
@@ -2584,7 +2537,7 @@ See [Managing Permissions: JFrog Artifactory User Guide](https://www.jfrog.com/c
 
 You can use Github Packages as artifacts for deployments.
 
-Currently, Harness supports only the packageType as `docker(container)`. Support for npm, maven, rubygems, and nuget is coming soon. 
+Currently, Harness supports only the packageType as `docker(container)`. Support for npm, maven, rubygems, and nuget is coming soon.
 
 You connect to Github using a Harness [Github Connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference), username, and Personal Access Token (PAT).
 
@@ -2593,7 +2546,6 @@ You connect to Github using a Harness [Github Connector](/docs/platform/connecto
 **New to Github Packages?** This [quick video](https://www.youtube.com/watch?v=gqseP_wTZsk) will get you up to speed in minutes.
 
 :::
-
 
 import Tabs12 from '@theme/Tabs';
 import TabItem12 from '@theme/TabItem';
@@ -2630,6 +2582,7 @@ connector:
     executeOnDelegate: true
     type: Repo
 ```
+
 </details>
 
 <details>
@@ -2670,10 +2623,8 @@ service:
               type: GithubPackageRegistry
     type: Kubernetes
 ```
+
 </details>
-
-
-
 
   </TabItem12>
   <TabItem12 value="API" label="API">
@@ -2712,10 +2663,10 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
     executeOnDelegate: true
     type: Repo'
 ```
+
 </details>
 
 Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
-
 
   </TabItem12>
   <TabItem12 value="Terraform Provider" label="Terraform Provider">
@@ -2790,10 +2741,10 @@ resource "harness_platform_connector_github" "test" {
   }
 }
 ```
+
 </details>
 
 For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
-
 
   </TabItem12>
   <TabItem12 value="Pipeline Studio" label="Pipeline Studio">
@@ -2809,19 +2760,18 @@ To add an artifact from Github Packages, do the following:
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Artifacts**, select **Add Artifact Source**.
 7. In **Artifact Repository Type**, select **Github Package Registry**, and then select **Continue**.
-8. In **Github Package Registry Repository**, select or create a Github Connector that connects to the Github account where the package repo is located. 
+8. In **Github Package Registry Repository**, select or create a Github Connector that connects to the Github account where the package repo is located.
 
-    Ensure that you enable **API Access** in the Github connector, and use a Personal Access Token (PAT) that meets the requirements listed in **Permissions**.
+   Ensure that you enable **API Access** in the Github connector, and use a Personal Access Token (PAT) that meets the requirements listed in **Permissions**.
+
 9. Select **Continue**.
 10. The **Artifact Details** settings appear.
 11. In **Artifact Source Name**, enter a name for this artifact source.
 12. In **Package Type**, select the type of package you are using.
 13. In **Package Name**, select the name of the package.
-14. In **Version**, select the version to use. 
-  
-  If you use [runtime input](/docs/platform/variables-and-expressions/runtime-inputs/), when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
-15. Select **Submit**. The Artifact is added to the Service Definition.
+14. In **Version**, select the version to use.
 
+If you use [runtime input](/docs/platform/variables-and-expressions/runtime-inputs/), when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one. 15. Select **Submit**. The Artifact is added to the Service Definition.
 
   </TabItem12>
 </Tabs12>
@@ -2861,13 +2811,12 @@ connector:
     executeOnDelegate: true
     type: Repo
 ```
+
 </details>
 
 You can use the same Harness secret that you used for user authentication.
 
 </details>
-
-
 
 ### Custom artifact source
 
@@ -2884,12 +2833,9 @@ For steps on adding a Custom Artifact source, go to [Add a custom artifact sourc
 
 </details>
 
-
-
-
 ## Go templating
 
-Harness supports [Go templating](https://godoc.org/text/template) for Kubernetes manifests and values YAML files. 
+Harness supports [Go templating](https://godoc.org/text/template) for Kubernetes manifests and values YAML files.
 
 You can add one or more values YAML files containing values for different scenarios, and then use Go templating in the manifest files to reference the values in the values YAML files.
 
@@ -2905,105 +2851,104 @@ Let's look at a few Kubernetes templating examples.
 Here's the values YAML file:
 
 ```yaml
-name: <+stage.name>  
-replicas: 2  
-  
-image: <+artifacts.primary.image>  
-# dockercfg: <+artifacts.primary.imagePullSecret>  
-  
-createNamespace: true  
-namespace: <+infra.namespace>  
-  
-serviceType: LoadBalancer  
-  
-servicePort: 80  
-serviceTargetPort: 80  
-  
-env:  
-  config:  
-    key1: value10  
-  secrets:  
+name: <+stage.name>
+replicas: 2
+
+image: <+artifacts.primary.image>
+# dockercfg: <+artifacts.primary.imagePullSecret>
+
+createNamespace: true
+namespace: <+infra.namespace>
+
+serviceType: LoadBalancer
+
+servicePort: 80
+serviceTargetPort: 80
+
+env:
+  config:
+    key1: value10
+  secrets:
     key2: value2
 ```
 
 Here's the manifest containing multiple objects referring to the values in the values YAML file:
 
 ```go
-{{- if .Values.env.config}}  
-apiVersion: v1  
-kind: ConfigMap  
-metadata:  
- name: {{.Values.name}}  
-data:  
-{{.Values.env.config | toYaml | indent 2}}  
----  
-{{- end}}  
-  
-{{- if .Values.env.secrets}}  
-apiVersion: v1  
-kind: Secret  
-metadata:  
- name: {{.Values.name}}  
-stringData:  
-{{.Values.env.secrets | toYaml | indent 2}}  
----  
-{{- end}}  
-  
-{{- if .Values.dockercfg}}  
-apiVersion: v1  
-kind: Secret  
-metadata:  
- name: {{.Values.name}}-dockercfg  
- annotations:  
- harness.io/skip-versioning: true  
-data:  
- .dockercfg: {{.Values.dockercfg}}  
-type: kubernetes.io/dockercfg  
----  
-{{- end}}  
-  
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
- name: {{.Values.name}}-deployment  
-spec:  
- replicas: {{int .Values.replicas}}  
- selector:  
- matchLabels:  
- app: {{.Values.name}}  
- template:  
- metadata:  
- labels:  
- app: {{.Values.name}}  
- spec:  
- {{- if .Values.dockercfg}}  
- imagePullSecrets:  
- - name: {{.Values.name}}-dockercfg  
- {{- end}}  
- containers:  
- - name: {{.Values.name}}  
- image: {{.Values.image}}  
- {{- if or .Values.env.config .Values.env.secrets}}  
- envFrom:  
- {{- if .Values.env.config}}  
- - configMapRef:  
- name: {{.Values.name}}  
- {{- end}}  
- {{- if .Values.env.secrets}}  
- - secretRef:  
- name: {{.Values.name}}  
- {{- end}}  
+{{- if .Values.env.config}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: {{.Values.name}}
+data:
+{{.Values.env.config | toYaml | indent 2}}
+---
+{{- end}}
+
+{{- if .Values.env.secrets}}
+apiVersion: v1
+kind: Secret
+metadata:
+ name: {{.Values.name}}
+stringData:
+{{.Values.env.secrets | toYaml | indent 2}}
+---
+{{- end}}
+
+{{- if .Values.dockercfg}}
+apiVersion: v1
+kind: Secret
+metadata:
+ name: {{.Values.name}}-dockercfg
+ annotations:
+ harness.io/skip-versioning: true
+data:
+ .dockercfg: {{.Values.dockercfg}}
+type: kubernetes.io/dockercfg
+---
+{{- end}}
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: {{.Values.name}}-deployment
+spec:
+ replicas: {{int .Values.replicas}}
+ selector:
+ matchLabels:
+ app: {{.Values.name}}
+ template:
+ metadata:
+ labels:
+ app: {{.Values.name}}
+ spec:
+ {{- if .Values.dockercfg}}
+ imagePullSecrets:
+ - name: {{.Values.name}}-dockercfg
+ {{- end}}
+ containers:
+ - name: {{.Values.name}}
+ image: {{.Values.image}}
+ {{- if or .Values.env.config .Values.env.secrets}}
+ envFrom:
+ {{- if .Values.env.config}}
+ - configMapRef:
+ name: {{.Values.name}}
+ {{- end}}
+ {{- if .Values.env.secrets}}
+ - secretRef:
+ name: {{.Values.name}}
+ {{- end}}
  {{- end}}
 ```
 
 </details>
 
-
 ## Pull an image from a private registry
 
 Typically, if the Docker image you are deploying is in a private registry, Harness has access to that registry using the credentials set up in the Harness connector you use with your service **Artifacts**.
 
-If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. 
+If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry.
 
 For these cases, the values YAML file in Service Definition **Manifests** section must use the `dockercfg` parameter.
 
@@ -3016,15 +2961,14 @@ Open the values.yaml file you are using for deployment.
 Verify that `dockercfg` key exists, and uses the `<+artifacts.primary.imagePullSecret>` expression to obtain the credentials:
 
 ```yaml
-name: <+stage.variables.name>  
-replicas: 2  
-  
-image: <+artifacts.primary.image>  
-dockercfg: <+artifacts.primary.imagePullSecret>  
-  
-createNamespace: true  
-namespace: <+infra.namespace>  
-...
+name: <+stage.variables.name>
+replicas: 2
+
+image: <+artifacts.primary.image>
+dockercfg: <+artifacts.primary.imagePullSecret>
+
+createNamespace: true
+namespace: <+infra.namespace>
 ```
 
 ### Reference dockercfg in Kubernetes objects
@@ -3035,46 +2979,47 @@ Next, verify that the Deployment and Secret objects reference `dockercfg: {{.Va
 <summary>Reference dockercfg in Kubernetes objects</summary>
 
 ```yaml
-...  
-{{- if .Values.dockercfg}}  
-apiVersion: v1  
-kind: Secret  
-metadata:  
-  name: {{.Values.name}}-dockercfg  
-  annotations:  
-    harness.io/skip-versioning: true  
-data:  
-  .dockercfg: {{.Values.dockercfg}}  
-type: kubernetes.io/dockercfg  
----  
-{{- end}}  
-  
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
-  name: {{.Values.name}}-deployment  
-spec:  
-  replicas: {{int .Values.replicas}}  
-  selector:  
-    matchLabels:  
-      app: {{.Values.name}}  
-  template:  
-    metadata:  
-      labels:  
-        app: {{.Values.name}}  
-    spec:  
-      {{- if .Values.dockercfg}}  
-      imagePullSecrets:  
-      - name: {{.Values.name}}-dockercfg  
-      {{- end}}  
-      containers:  
-      - name: {{.Values.name}}  
-        image: {{.Values.image}}  
+...
+{{- if .Values.dockercfg}}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{.Values.name}}-dockercfg
+  annotations:
+    harness.io/skip-versioning: true
+data:
+  .dockercfg: {{.Values.dockercfg}}
+type: kubernetes.io/dockercfg
+---
+{{- end}}
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.name}}-deployment
+spec:
+  replicas: {{int .Values.replicas}}
+  selector:
+    matchLabels:
+      app: {{.Values.name}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.name}}
+    spec:
+      {{- if .Values.dockercfg}}
+      imagePullSecrets:
+      - name: {{.Values.name}}-dockercfg
+      {{- end}}
+      containers:
+      - name: {{.Values.name}}
+        image: {{.Values.image}}
 ...
 ```
-With these requirements met, the cluster imports the credentials from the Docker credentials file in the artifact.
-</details>
 
+With these requirements met, the cluster imports the credentials from the Docker credentials file in the artifact.
+
+</details>
 
 ## Sidecar workloads
 
@@ -3090,7 +3035,6 @@ Sidecars can also be used to implement advanced features like load balancing, se
 
 For more information, go to [Add a Kubernetes sidecar container](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container).
 
-
 ## Variables
 
 In the **Variables** section of the service you can add variables are use them in values YAML and params files, or in other settings in your stage that support expressions.
@@ -3103,28 +3047,28 @@ You can use the variable in your values YAML files. For example, here's a servic
 <summary>Service variable in values YAML file</summary>
 
 ```yaml
-name: <+serviceVariables.appname>  
-replicas: 2  
-  
-image: <+artifacts.primary.image>  
-# dockercfg: <+artifacts.primary.imagePullSecret>  
-  
-createNamespace: true  
-namespace: <+infra.namespace>  
-  
-serviceType: LoadBalancer  
-  
-servicePort: 80  
-serviceTargetPort: 80  
-  
-env:  
-  config:  
-    key1: value10  
-  secrets:  
+name: <+serviceVariables.appname>
+replicas: 2
+
+image: <+artifacts.primary.image>
+# dockercfg: <+artifacts.primary.imagePullSecret>
+
+createNamespace: true
+namespace: <+infra.namespace>
+
+serviceType: LoadBalancer
+
+servicePort: 80
+serviceTargetPort: 80
+
+env:
+  config:
+    key1: value10
+  secrets:
     key2: value2
 ```
-</details>
 
+</details>
 
 You can set variable values as runtime inputs and then provide their values when the pipeline is run.
 
@@ -3138,7 +3082,7 @@ See [Built-in Harness variables reference](/docs/platform/Variables-and-Expressi
 
 ### Propagate and override artifacts, manifests, and service variables
 
-You can propagate services between stages and override service settings by using multiple values YAML files and/or **Environment Overrides**. 
+You can propagate services between stages and override service settings by using multiple values YAML files and/or **Environment Overrides**.
 
 For more information, go to:
 
@@ -3150,4 +3094,3 @@ For more information, go to:
 Once you've configured your service, you can move onto the stage's **Environment** settings and define the target Kubernetes cluster and namespace for your deployment.
 
 See [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure).
-

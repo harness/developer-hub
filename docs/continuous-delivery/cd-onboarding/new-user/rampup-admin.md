@@ -19,7 +19,7 @@ After the delegate is installed and registers with Harness, you connect Harness 
 
 The delegate performs all operations on your behalf, including deployment and integration.
 
-<docimage path={require('./static/f4548d9674e6e466144e588570cf43766f9c78f5d39aea7ecfa48724b47f2428.png')} width="60%" height="60%" title="Click to view full size image" />  
+<DocImage path={require('./static/f4548d9674e6e466144e588570cf43766f9c78f5d39aea7ecfa48724b47f2428.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 For more information, go to [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#install-a-delegate) and [Delegate installation overview](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/).
 
