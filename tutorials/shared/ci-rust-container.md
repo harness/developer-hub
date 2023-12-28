@@ -29,9 +29,9 @@ In addition to a Harness account, you need the following accounts and tools:
 - [Drone CLI](https://docs.drone.io/cli/install/) to build the application locally
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
-```mdx-code-block
+
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
+
 
 <CISignupTip />
 
@@ -145,33 +145,33 @@ While the Harness platform has several modules, this tutorial focuses on the Con
 ### Compare build infrastructure options
 
 Pipelines require build infrastructure to run. When you create CI pipelines, you can use either Harness-hosted infrastructure or bring your own build infrastructure. This tutorial uses Harness-hosted infrastructure, also called Harness Cloud.
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
 <TabItem value="cloud" label="Harness Cloud" default>
-```
+
 
 [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) uses Harness-hosted machines to run builds. Harness maintains and upgrades these machines, which gives you more time to focus on development.
 
 ![Harness CI Hosted Overview](../ci-pipelines/static/ci-tutorial-node-docker/harness_ci_hosted_infra_overview.png)
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="self" label="Self-hosted infrastructure">
-```
+
 
 With self-hosted build infrastructure, your pipelines run on your local machines or your Kubernetes clusters. To learn about self-hosted options, go to [Set up build infrastructure](/docs/category/set-up-build-infrastructure).
 
 ![Harness CI Bring Your Own Overview](../ci-pipelines/static/ci-tutorial-node-docker/harness_ci_your_infra_overview.png)
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Create a GitHub personal access token
 

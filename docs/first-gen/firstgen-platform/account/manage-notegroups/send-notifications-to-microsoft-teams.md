@@ -18,9 +18,9 @@ Setup is a simple process of generating a Webhook in Microsoft Teams and adding 
 
 Review the following topics to understand Harness notification and alert options:
 
-* [Manage User Notifications](notification-groups.md)
-* [Add a Workflow Notification Strategy](../../../continuous-delivery/model-cd-pipeline/workflows/add-notification-strategy-new-template.md)
-* [Manage Alert Notifications](manage-alert-notifications.md)
+- [Manage User Notifications](notification-groups.md)
+- [Add a Workflow Notification Strategy](../../../continuous-delivery/model-cd-pipeline/workflows/add-notification-strategy-new-template.md)
+- [Manage Alert Notifications](manage-alert-notifications.md)
 
 We assume that you have a Microsoft Teams administrator account.
 
@@ -34,7 +34,7 @@ The following steps walk you through this process.
 
 Here's a video summary:
 
-<docvideo src="https://www.youtube.com/embed/fz8suWNHk1g" />
+<DocVideo src="https://www.youtube.com/embed/fz8suWNHk1g" />
 
 ## Step 1: Create Connector for Microsoft Teams Channel
 
@@ -50,9 +50,9 @@ You create a channel connector in Microsoft Teams to generate the Webhook Harnes
 
 3. In **Incoming Webhook**, enter a name, such as **Harness**.
 4. Right-click [here](https://github.com/wings-software/harness-docs/blob/main/harness_logo.png)
- and click **Save Link As** to download the Harness icon, or right-click and save the image from here:
- 
- ![](./static/send-notifications-to-microsoft-teams-29.png)
+   and click **Save Link As** to download the Harness icon, or right-click and save the image from here:
+
+![](./static/send-notifications-to-microsoft-teams-29.png)
 
 5. Click **Upload Image** and add the Harness icon you downloaded.
 
@@ -91,7 +91,6 @@ Click back in User Groups to see that the User Group now indicates that it is in
 
 ![](./static/send-notifications-to-microsoft-teams-34.png)
 
-
 ## Example: Workflow Notification Strategy
 
 The most common example of notifications is a [Workflow Notification Strategy](../../../continuous-delivery/model-cd-pipeline/workflows/add-notification-strategy-new-template.md).
@@ -108,7 +107,6 @@ For Workflow notifications to Microsoft Teams, ensure that the **Send notificati
 
 ![](./static/send-notifications-to-microsoft-teams-37.png)
 
-
 ## Option: Send a Message to Microsoft Teams using cURL
 
 You can send a message to any Microsoft Teams channel that has a Webhook enabled using cURL.
@@ -121,40 +119,39 @@ You will notice that Harness built-in and custom Workflow variable expressions c
 
 Here is an example of the cURL command in the Shell Script step:
 
-
 ```
-curl --location --request POST 'https://outlook.office.com/webhook/xxxxx-xxx-xxx-xxx-xxxx@xxxx-xxx-xxx-bce0-xxx/IncomingWebhook/xxxxxxxxxxx-xxx-xxx-xxx-xxxxx' \  
---header 'Content-Type: application/json' \  
---data-raw '{  
-    "@type": "MessageCard",  
-    "@context": "http://schema.org/extensions",  
-    "themeColor": "0076D7",  
-    "summary": "Rolling Workflow started",  
-    "sections": [{  
-        "activityTitle": "Rolling Workflow started",  
-        "activitySubtitle": "Workflow Notification",  
-        "activityImage": "",  
-        "facts": [{  
-            "name": "URL",  
-            "value": "[Rolling Workflow](${deploymentUrl}"  
-        },  
-        {  
-            "name": "Application",  
-            "value": "${app.name}"  
-        },  
-        {  
-            "name": "Services",  
-            "value": "${service.name}"  
-        },  
-        {  
-            "name": "Artifacts",  
-            "value": "${artifact.buildFullDisplayName}"  
-        },  
-        {  
-        	"name": "Triggered By",  
-            "value": "${deploymentTriggeredBy}"  
-        }],  
-        "markdown": true  
-    }]  
+curl --location --request POST 'https://outlook.office.com/webhook/xxxxx-xxx-xxx-xxx-xxxx@xxxx-xxx-xxx-bce0-xxx/IncomingWebhook/xxxxxxxxxxx-xxx-xxx-xxx-xxxxx' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "@type": "MessageCard",
+    "@context": "http://schema.org/extensions",
+    "themeColor": "0076D7",
+    "summary": "Rolling Workflow started",
+    "sections": [{
+        "activityTitle": "Rolling Workflow started",
+        "activitySubtitle": "Workflow Notification",
+        "activityImage": "",
+        "facts": [{
+            "name": "URL",
+            "value": "[Rolling Workflow](${deploymentUrl}"
+        },
+        {
+            "name": "Application",
+            "value": "${app.name}"
+        },
+        {
+            "name": "Services",
+            "value": "${service.name}"
+        },
+        {
+            "name": "Artifacts",
+            "value": "${artifact.buildFullDisplayName}"
+        },
+        {
+        	"name": "Triggered By",
+            "value": "${deploymentTriggeredBy}"
+        }],
+        "markdown": true
+    }]
 }'
 ```

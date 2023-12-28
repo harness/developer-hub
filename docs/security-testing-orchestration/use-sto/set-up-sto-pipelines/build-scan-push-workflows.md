@@ -29,7 +29,8 @@ This workflow is useful if you can use Docker-in-Docker and don't have a CI lice
 <figcaption>Example build/scan/push pipeline using Run steps and Docker-in-Docker</figcaption>
 </figure>
 
-<details><summary>Example build/scan/push pipeline using Docker-in-Docker</summary>
+<details>
+<summary>Example build/scan/push pipeline using Docker-in-Docker</summary>
 
 ```yaml
 
@@ -187,7 +188,8 @@ This workflow is useful if you can use Docker-in-Docker and have a CI license.
 <figcaption>Example build/scan/push pipeline using CI and Docker-in-Docker</figcaption>
 </figure>
 
-<details><summary>Example build/scan/push pipeline using CI and Docker-in-Docker</summary>
+<details>
+<summary>Example build/scan/push pipeline using CI and Docker-in-Docker</summary>
 
 ```yaml
 

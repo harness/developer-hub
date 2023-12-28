@@ -18,15 +18,15 @@ The **CI Enterprise by Harness** app uses the [Jira Drone plugin](https://plugin
 
 ## Add a Plugin step
 
-```mdx-code-block
+
 import Tabs3 from '@theme/Tabs';
 import TabItem3 from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs3>
   <TabItem3 value="Visual" label="Visual">
-```
+
 
 1. In your CI pipeline's **Build** stage, add a [Plugin step](./plugin-step-settings-reference.md).
 2. Enter a **Name** and optional **Description**.
@@ -43,10 +43,10 @@ import TabItem3 from '@theme/TabItem';
 | `STATE` | Optional | If included, Harness updates Jira only if builds/deployments achieve the specified status.<br/>Accepted values include: `pending`, `in_progress`, `cancelled`, `failed`, `rolled_back`, or `successful`.<br/>If omitted, Harness updates Jira for all build/deployments, regardless of status. | `successful` |
 | `LOG_LEVEL` | Optional | Either `debug` or `info`.<br/>Set to `debug` to print the response from Jira in the build logs. | `debug` |
 
-```mdx-code-block
+
   </TabItem3>
   <TabItem3 value="YAML" label="YAML" default>
-```
+
 The following YAML example describes a [Plugin step](./plugin-step-settings-reference.md) in a `CI` stage that updates the Jira **Build** field when there is a successful build.
 
 ```yaml
@@ -91,10 +91,10 @@ To update the Jira **Deployment** field, instead of the **Build** field, include
 
 </details>
 
-```mdx-code-block
+
   </TabItem3>
 </Tabs3>
-```
+
 
 ## Run your pipeline
 
@@ -104,7 +104,7 @@ After the build runs, you can see updates to **Build** and **Deployment** fields
 
 <!-- ![](./static/ci-jira-int-ticket-details.png) -->
 
-<docimage path={require('./static/ci-jira-int-ticket-details.png')} />
+<DocImage path={require('./static/ci-jira-int-ticket-details.png')} />
 
 :::info How does Harness determine which Jira issue and field to update?
 

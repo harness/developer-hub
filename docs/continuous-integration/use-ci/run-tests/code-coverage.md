@@ -6,10 +6,10 @@ redirect_from:
   - /docs/continuous-integration/use-ci/set-up-test-intelligence/code-coverage
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 You can add code coverage to a Harness CI pipeline by configuring code coverage tools in your codebase and adding code coverage commands to steps that run tests.
 
@@ -234,10 +234,10 @@ To integrate Coveralls in your Harness CI pipelines, follow the Coveralls docume
 <details>
 <summary>Add an environment variable to a step</summary>
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. In Harness, edit the step that runs your tests with code coverage.
 2. Under **Environment Variables**, select **Add**.
@@ -246,10 +246,10 @@ To integrate Coveralls in your Harness CI pipelines, follow the Coveralls docume
 
 ![Adding the Coveralls Repo Token environment variable to a step in Harness.](./static/codecoverage_coveralls_env_var_visual.png)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 Add `envVariables` to the `step.spec` for the relevant `Run` or `RunTests` step.
 
@@ -273,10 +273,10 @@ Add `envVariables` to the `step.spec` for the relevant `Run` or `RunTests` step.
                       COVERALLS_REPO_TOKEN: <+secrets.getValue("YOUR_COVERALLS_SECRET_ID")>
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 </details>
 
@@ -284,17 +284,17 @@ Add `envVariables` to the `step.spec` for the relevant `Run` or `RunTests` step.
 
 You can use [Drone plugins](../use-drone-plugins/explore-ci-plugins.md) to view code coverage reports on the **Artifacts** tab on the [Build details page](../viewing-builds.md).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="artifactmetadata" label="Artifact Metadata Publisher plugin" default>
-```
+
 
 The [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) pulls content from cloud storage and publishes it to the **Artifacts** tab.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. Add steps to your pipeline that run tests with code coverage and produce code coverage reports.
 2. Add a step to upload the report artifact to cloud storage.
@@ -311,10 +311,10 @@ The [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifa
       * `file_urls`: Provide the URL to the code coverage artifact that was uploaded in the **Upload Artifacts** step. If you uploaded multiple artifacts, you can provide a list of URLs.
       * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 1. Add steps to your pipeline that run tests with code coverage and produce code coverage reports.
 2. Add a step to upload the report artifact to cloud storage.
@@ -337,22 +337,22 @@ The [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifa
                          artifact_file: artifact.txt ## Provide any '.txt' file name. Harness uses this to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
    ```
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
+</Tabs>
+
+
+
+</TabItem>
   <TabItem value="s3publisher" label="S3 Upload and Publish plugin">
-```
+
 
 The [S3 Upload and Publish plugin](https://github.com/harness-community/drone-s3-upload-publish) uploads a specified file or directory to AWS S3 and publishes it to the **Artifacts** tab.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. Add steps to your pipeline that run tests with code coverage and produce code coverage reports.
 2. Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin. Configure the **Plugin** step settings as follows:
@@ -370,10 +370,10 @@ The [S3 Upload and Publish plugin](https://github.com/harness-community/drone-s3
       * `target`: Optional.
    * **Image Pull Policy:** Select **If Not Present**
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 1. Add steps to your pipeline that run tests with code coverage and produce code coverage reports.
 2. Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin, for example:
@@ -401,15 +401,15 @@ For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/pla
 
 If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
 </Tabs>
-```
+
+
+
+</TabItem>
+</Tabs>
+
 
 :::tip
 

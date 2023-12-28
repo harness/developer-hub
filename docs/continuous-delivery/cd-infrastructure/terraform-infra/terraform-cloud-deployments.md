@@ -38,10 +38,8 @@ The Terraform Cloud connector uses a [Terraform Cloud API token](https://develop
 
 To add the Terraform Cloud connector, do the following:
 
-```mdx-code-block
 import Tabs1 from '@theme/Tabs';
 import TabItem1 from '@theme/TabItem';
-```
 
 <Tabs1>
   <TabItem1 value="YAML" label="YAML" default>
@@ -71,10 +69,8 @@ connector:
 </details>
 
 
-```mdx-code-block
   </TabItem1>
   <TabItem1 value="API" label="API">
-```
 
 Create the Terraform Cloud connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
@@ -103,10 +99,8 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
 </details>
 
 
-```mdx-code-block
   </TabItem1>
   <TabItem1 value="Pipeline Studio" label="Pipeline Studio">
-```
 
 <details>
 <summary>To add a Terraform Cloud connector, do the following:</summary>
@@ -120,13 +114,12 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
    1. If you selected to connect using a delegate, select one or more delegates.
 7. Select **Finish**. Harness verifies the connection.
 
-<docimage path={require('./static/af1a2b13d480a67fa332fcbb06883622c35bfef4f1e0a00ab6a7ce98f05b5a2b.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/af1a2b13d480a67fa332fcbb06883622c35bfef4f1e0a00ab6a7ce98f05b5a2b.png')} width="60%" height="60%" title="Click to view full size image" />
+
 </details>
 
-```mdx-code-block
   </TabItem1>
 </Tabs1>
-```
 
 ## Terraform Cloud Run step
 
@@ -160,7 +153,7 @@ The most common use of **Provisioner Identifier** is between Terraform Cloud Run
 
 For the Terraform Cloud Run **Apply** run type to apply the provisioning from the Terraform Cloud Run **Plan** run type, you use the same **Provisioner Identifier** in both steps.
 
-<docimage path={require('./static/0c1b468853ed90c4ddb0b2e6960dd3a53b669989fef863ff87b22e67815e01dc.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/0c1b468853ed90c4ddb0b2e6960dd3a53b669989fef863ff87b22e67815e01dc.png')} width="60%" height="60%" title="Click to view full size image" />
 
 To rollback the provisioning done by that Terraform Cloud Run **Apply** run type, you would use the same **Provisioner Identifier** in the Terraform Cloud Rollback step.
 
@@ -260,7 +253,7 @@ You can use Harness expressions to display the plan JSON and policy checks.
 
 The expressions can be copied from the Terraform Cloud Run step's **Output** tab when the Run Type is **Plan** or **Plan Only**.
 
-<docimage path={require('./static/8eeaa5d08460c36408d12085e63dde0858a99927e88314d40ea3e51516cafb16.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/8eeaa5d08460c36408d12085e63dde0858a99927e88314d40ea3e51516cafb16.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 ### Print plan expression

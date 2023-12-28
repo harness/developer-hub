@@ -16,11 +16,11 @@ If you are new to Harness, please review [Harness key concepts](../../get-starte
 
 ## Video: Services
 
-<docvideo src="https://youtu.be/MVuzJjAzsQs" />
+<DocVideo src="https://youtu.be/MVuzJjAzsQs" />
 
 ### Video: Services and environments at the account and org level
 
-<docvideo src="https://youtu.be/qU00SaLH78Q" />
+<DocVideo src="https://youtu.be/qU00SaLH78Q" />
 
 ## Services
 
@@ -37,15 +37,11 @@ You can create services from:
 
 You can create a service at an account or organization level from the Harness UI using APIs or Terraform.
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
 <Tabs>
   <TabItem value="Pipeline Studio" label="Pipeline Studio">
-```
 
 To create a service at an account or organization level, go to **Organization Resources** **>Services**.
 
@@ -68,7 +64,7 @@ Go to [add a stage template](/docs/platform/templates/add-a-stage-template.md) f
 Expand the section below to see a sample account level service YAML.
 
 <details>
-   <summary>Account level service YAML</summary>
+<summary>Account level service YAML</summary>
 
 ```
 service:
@@ -111,7 +107,7 @@ service:
 Expand the section below to see a sample organization level service YAML.
 
 <details>
-   <summary>Organization level service YAML</summary>
+<summary>Organization level service YAML</summary>
 
 ```
 service:
@@ -159,19 +155,15 @@ service:
 
 </details>
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="API" label="API">
-```
 
 For information about creating a service API, go to [create a service](https://apidocs.harness.io/tag/Services#operation/createServiceV2).
 
 The `orgIdentifier` and `projectIdentifier` field definitions are optional, and depend on where you want to create the service. For example, if you create a service at an account level, you will not need org or project identifiers in the post API call payload.
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="Terraform" label="Terraform">
-```
 
 For information about creating a Harness platform service, go to [harness_platform_service (Resource)](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
@@ -180,7 +172,7 @@ The `org_id` and `project_id` field definitions are optional, and depend on wher
 Expand the section below to see a sample platform service in Terraform.
 
 <details>
-   <summary>Harness platform service</summary>
+<summary>Harness platform service</summary>
 
 ```
 resource "harness_platform_service" "example" {
@@ -240,10 +232,8 @@ resource "harness_platform_service" "example" {
 
 </details>
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
 </Tabs>
-```
 
 ### Creating services outside a pipeline
 
@@ -287,15 +277,11 @@ Next you can define all of its settings:
 
 You can create an environment and provide infrastructure definitions at an account or organization level from the Harness UI, using APIs or Terraform.
 
-```mdx-code-block
 import Tabs2 from '@theme/Tabs';
 import TabItem2 from '@theme/TabItem';
-```
 
-```mdx-code-block
 <Tabs2>
   <TabItem2 value="Pipeline Studio" label="Pipeline Studio">
-```
 
 To create an environment at an account or organization level, go to **Organization Resources** **>Environments**.
 
@@ -304,7 +290,7 @@ To create an environment at an account or organization level, go to **Organizati
 Expand the section below to see a sample account level environment YAML.
 
 <details>
-   <summary>Account level environment YAML</summary>
+<summary>Account level environment YAML</summary>
 
 ```
 environment:
@@ -330,7 +316,7 @@ environment:
 Expand the section below to see a sample account level infrastructure definition YAML.
 
 <details>
-   <summary>Account level infrastructure definition YAML</summary>
+<summary>Account level infrastructure definition YAML</summary>
 
 ```
 infrastructureDefinition:
@@ -353,7 +339,7 @@ infrastructureDefinition:
 Expand the section below to see a sample organization level environment YAML.
 
 <details>
-   <summary>Organization level environment YAML</summary>
+<summary>Organization level environment YAML</summary>
 
 ```
 environment:
@@ -380,7 +366,7 @@ environment:
 Expand the section below to see a sample organization level infrastructure definition YAML.
 
 <details>
-   <summary>Organization level infrastructure definition YAML</summary>
+<summary>Organization level infrastructure definition YAML</summary>
 
 ```
 infrastructureDefinition:
@@ -401,10 +387,8 @@ infrastructureDefinition:
 
 </details>
 
-```mdx-code-block
   </TabItem2>
   <TabItem2 value="API" label="API">
-```
 
 For information about creating an environment API, go to [create an environment](https://apidocs.harness.io/tag/Environments#operation/createEnvironmentV2).
 
@@ -412,17 +396,15 @@ For information about creating infrastructure definition API, go to [create an i
 
 The `orgIdentifier` and `projectIdentifier` field definitions are optional, and depend on where you want to create the environment. For example, if you create an environment at an account level, you will not need org or project identifiers in the post API call payload.
 
-```mdx-code-block
   </TabItem2>
   <TabItem2 value="Terraform" label="Terraform">
-```
 
 For information about creating a Harness platform environment, go to [harness_platform_environment (Resource)](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment).
 
 Expand the section below to see a sample platform environment in Terraform.
 
 <details>
-   <summary>Harness platform environment</summary>
+<summary>Harness platform environment</summary>
 
 ```
 resource "harness_platform_environment" "example" {
@@ -492,7 +474,7 @@ For information about creating a Harness platform infrastructure definition, go 
 Expand the section below to see a sample platform infrastructure definition in Terraform.
 
 <details>
-   <summary>Harness platform infrastructure definition</summary>
+<summary>Harness platform infrastructure definition</summary>
 
 ```
 resource "harness_platform_infrastructure" "example" {
@@ -528,10 +510,8 @@ resource "harness_platform_infrastructure" "example" {
 
 The `org_id` and `project_id` field definitions are optional, and depend on where you want to create the environment. For example, if you create an environment at an account level, you will not need org or project identifiers.
 
-```mdx-code-block
   </TabItem2>
 </Tabs2>
-```
 
 ### Creating environments inside a pipeline
 

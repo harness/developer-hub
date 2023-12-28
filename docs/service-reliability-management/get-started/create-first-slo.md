@@ -6,10 +6,10 @@ redirect_from:
   - /docs/service-reliability-management/getting-started/create-first-slo
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 A Service Level Objective (SLO) is a target for the level of service you aim to provide to your users or customers. It is typically defined as a measurable performance metric, such as availability or response time, and is used to set target expectations for how your service should perform. SLOs help in figuring out the acceptable level of downtime for a service. Each SLO is based on a performance metric called a Service Level Indicator (SLI).
 
@@ -203,12 +203,12 @@ Based on the evaluation method you select, configure the following SLI settings:
 
 2. Set the availability threshold to determine whether the SLI is considered acceptable or not. You can use one of the following operators from the **SLI value is good if the availability** dropdown list to determine the threshold:
    
-   - **<**
+   - **\<**
    - **>**
-   - **<=**
+   - **\<=**
    - **>=**
 
-   For example, select the **<=** operator from the dropdown list and enter 99.5 as the objective value. This means that the SLI will be considered good as long as its value is 99.5% or higher. If the SLI falls below this threshold, it indicates that the service is not meeting the required level of availability and needs to be improved.
+   For example, select the **\<=** operator from the dropdown list and enter 99.5 as the objective value. This means that the SLI will be considered good as long as its value is 99.5% or higher. If the SLI falls below this threshold, it indicates that the service is not meeting the required level of availability and needs to be improved.
 
 3. In certain situations, a metric may deviate from its expected behavior and miss out on some data points. In such cases, Harness SRM allows you to interpret these undetected metric values from your Health Source as "Good", "Bad", or "Ignore". You can set this by selecting the appropriate value next to **Consider missing metric data as**. The available options are **Good**, **Bad**, and **Ignore**.
    
@@ -234,9 +234,9 @@ Based on the evaluation method you select, configure the following SLI settings:
 
  4. From the **Good requests must be** dropdown list, select the appropriate operator and enter a corresponding value in the **% of valid requests** field for determining the SLI.
    Let's say you are measuring the SLI for a web service that handles user authentication requests. You want to ensure that at least 99% of authentication requests are successful. In this case, you would use the ratio-based SLI evaluation method and set the "Good requests must be" dropdown to ">=" (greater than or equal to) and enter 99 in the "% of valid requests" field. This means that the SLI will measure the ratio of successful authentication requests to total authentication requests, and the SLI will be considered good if the ratio is greater than or equal to 99%.
-   
 
- </TabItem>
+
+</TabItem>
 </Tabs>
 
 ### Set your SLO

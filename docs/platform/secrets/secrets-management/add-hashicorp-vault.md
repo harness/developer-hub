@@ -12,14 +12,14 @@ To store and use encrypted secrets (such as access keys), you can add a HashiCor
 
 The video below provides an overview of how to use HashiCorp Vault as an external secret manager.
 
- <docvideo src="https://www.loom.com/embed/92335a30823a4662a1d7212395c66e63" width="100%" height="600" />
+ <DocVideo src="https://www.loom.com/embed/92335a30823a4662a1d7212395c66e63" width="100%" height="600" />
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
-* [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
-* Make sure that the Harness Delegate can connect to the Vault URL.
-* Make sure you have View and Create/Edit permissions for secrets.​
+- [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
+- [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
+- Make sure that the Harness Delegate can connect to the Vault URL.
+- Make sure you have View and Create/Edit permissions for secrets.​
 
 ### Step 1: Add a Secret Manager
 
@@ -67,7 +67,7 @@ The SecretId should not expire and it should be valid until it is manually revok
 
 For more information, go to [RoleID](https://www.vaultproject.io/docs/auth/approle.html#roleid) and [Authenticating Applications with HashiCorp Vault AppRole](https://www.hashicorp.com/blog/authenticating-applications-with-vault-approle) in the HashiCorp documentation.
 
-If you encounter errors, setting [token\_num\_uses](https://www.vaultproject.io/api-docs/auth/approle#token_num_uses) to `0` can often resolve problems.
+If you encounter errors, setting [token_num_uses](https://www.vaultproject.io/api-docs/auth/approle#token_num_uses) to `0` can often resolve problems.
 
 #### Permissions
 
@@ -76,27 +76,27 @@ The Vault AppRole ID or the Periodic Token used in either of the authentication 
 In the policy examples below: if you've created a Read-only Vault Secret Manager, this secret manager needs only read, and list permissions on Vault. It does not need — and cannot assume — create, update, or delete permissions. If the secrets are in the Secret Engine named “secret”, the policy must have the following permissions.
 
 ```
-path "secret/*" {  
-  capabilities = ["create", "update", "list", "read", "delete"]  
+path "secret/*" {
+  capabilities = ["create", "update", "list", "read", "delete"]
 }
 ```
+
 If the secrets are in a subfolder, such as secrets/harness, the policy will look like this:
 
-
 ```
-path "secret/harness/*" {  
-  capabilities = ["create", "list", "read", "update", "delete"]  
-}  
-path "secret/harness" {  
-  capabilities = ["list", "read"]  
+path "secret/harness/*" {
+  capabilities = ["create", "list", "read", "update", "delete"]
+}
+path "secret/harness" {
+  capabilities = ["list", "read"]
 }
 ```
 
 These examples apply only to a **v1** secret engine. If you are planning to use a secret engine with version 2 (versioned secret engine), then the policies are different as explained [here](https://www.vaultproject.io/docs/secrets/kv/kv-v2). Go through this link to understand the correct permissions required for your use case. If the Vault Secret Manager needs to renew tokens, the following permissions are needed:
 
 ```
-path "auth/token/renew-self" {  
- capabilities = ["read", "update"]  
+path "auth/token/renew-self" {
+ capabilities = ["read", "update"]
 }
 ```
 
@@ -189,8 +189,8 @@ Once you have entered the required fields, you can choose to **Fetch Engines**�
 If you want Harness to automatically fetch secret engines, include this read permission for **sys/mounts** In the ACL policy.
 
 ```
-path "sys/mounts"{  
- capabilities = ["read"]  
+path "sys/mounts"{
+ capabilities = ["read"]
 }
 ```
 
@@ -209,6 +209,7 @@ If you don’t want to or cannot add the ACL policy (with read permission for sy
 3. In **Secret Engine Version**, enter the engine version.
 
    You cannot change the Secret Engine later. Harness blocks editing this setting later since there might be secrets that are created/referenced under this secret engine. Changing the secret engine might break references to those secrets.
+
 4. In **Kubernetes Auth Endpoint**, enter the authentication endpoint, if configured. The default value is `Kubernetes`.
 
 ### Step 3: Renewal Interval (minutes)
@@ -226,11 +227,11 @@ The path of the secret is as follows:
 
 v2 Secret Engine:
 
-`<SECRET_ENGINE_NAME>/data/<BASE_PATH>/harness_vault_validation#value`
+`<SECRET_ENGINE_NAME>/data/\<BASE_PATH>/harness_vault_validation#value`
 
 v1 Secret Engine:
 
-`<SECRET_ENGINE_NAME>/<BASE_PATH>/harness_vault_validation#value`
+`<SECRET_ENGINE_NAME>/\<BASE_PATH>/harness_vault_validation#value`
 
 The secret can fail because of various reasons.
 
@@ -238,8 +239,8 @@ The secret can fail because of various reasons.
 2. The following **permission** is not available in any of the policies attached to the Token/App Role. If this permission is not available, the user will not be able to fetch the list of secret engines from the customer vault and Harness will show a single option of Secret Engine named **“secret”** with version 2, which might be incorrect for the customer. Make sure to add the permission to a policy attached to the Token/App Role as follows:
 
    ```
-            path “sys/mounts”{  
-               capabilities = ["read"]  
+            path “sys/mounts”{
+               capabilities = ["read"]
                }    
    ```
 
@@ -259,8 +260,8 @@ If you select **Read-only Vault**, there are several limitations on the resulti
 
 Also a read-only Harness Vault Secret Manager:
 
-* Cannot be used in the **Add Encrypted File** dialog.
-* Cannot create inline secrets in the **Add Encrypted Text** modal.
+- Cannot be used in the **Add Encrypted File** dialog.
+- Cannot create inline secrets in the **Add Encrypted Text** modal.
 
 ### Step 5: Test Connection
 

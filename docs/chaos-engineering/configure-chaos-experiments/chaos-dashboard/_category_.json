@@ -1,0 +1,13 @@
+{
+  "position": 3,
+  "label": "Chaos dashboard",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Chaos dashboard"
+   },
+  "customProps": {
+    "description": "Chaos dashboard"
+  }
+}

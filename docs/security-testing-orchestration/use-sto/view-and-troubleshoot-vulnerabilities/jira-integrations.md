@@ -6,12 +6,12 @@ sidebar_position: 30
 ---
 
 
-```mdx-code-block
+
 import create_ticket from '../static/jira-integration-02-create-ticket.png'
 import ticket_num from '../static/jira-integration-03-ticket-num-in-issue-details.png'
 import issue_link from '../static/jira-integration-04-link-in-jira-ticket.png'
 import ticket_summary from '../static/jira-integration-05-ticket-summary.png'
-```
+
 
 
 
@@ -67,9 +67,9 @@ You can only create Jira tickets for targets that have baselines specified. For 
 
     5. **Notes** Any notes you want to add to the ticket.
 
-       ```mdx-code-block
+       
        <img src={create_ticket} alt="Create Jira Ticket options" />
-      ```
+      
 4. Click **Create**. The Jira connector sends the request to the Jira API and Jira creates the ticket. 
 
 
@@ -77,21 +77,21 @@ The following happens when you create a Jira ticket:
 
    * The Issue Details pane replaces the **Create Ticket** button with the Jira issue number and status.
        
-      ```mdx-code-block
+      
       <img src={ticket_num} alt="Jira ticket number in STO UI" height="75%" width="75%" />
-      ```
+      
 
    * The Jira issue includes a link back to the detected issue in the STO UI.
      
-      ```mdx-code-block
+      
       <img src={issue_link} alt="STO issue link in Jira ticket" height="75%" width="75%" />
-      ```
+      
 
    * The Jira link points back to a **Ticket Summary** that shows all detected issues tracked by the ticket.
         
-      ```mdx-code-block
+      
       <img src={ticket_summary} alt="STO issue link in Jira ticket" />
-      ```
+      
 
 
 

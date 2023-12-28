@@ -16,6 +16,10 @@ Harness Delegate is designed to shut down gracefully. The process of graceful de
 
 ## Grace period
 
+import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
+
+<Deleos />
+
 The length of the grace period is configurable. 
 
 | **Delegate type** | **Grace period** | **Default interval** |

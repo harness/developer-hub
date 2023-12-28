@@ -335,6 +335,28 @@ The options avialable to you to specify a Helm chart store depend on whether or 
 
     For the steps and settings of each option, go to [Connectors](/docs/category/connectors).
 
+### Helm commands performance analysis
+Harness interacts with helm charts and repositories by using various helm commands. When these commands are run in parallel along with a large helm repository, they can leave a  significant CPU footprint on the Harness delegate.
+Below is the summary of a few vulnerable helm commands which Harness uses:
+1. `helm repo add`: Avoids redundant additions by checking if the repository already exists and employs locking to prevent conflicts during parallel deployments.
+2. `helm repo update`: Asynchronously fetches index.yaml for all repos, unmarshals and sorts them. Parallel commands do not perform locking, but still manage to run without any failures.
+3. `helm pull`: Involves pulling and locally dumping a chart, where it unmarshalls repository config, iterates through repositories, loads index.yaml file, and matches the requested chart entry for downloading.
+
+#### Harness improvements
+To improve performance of concurrent helm commands, 'N' parallel helm commands on the same helm repository will not always spawn an equivalent number of processes. This is achieved by trying to re-use the output from one command by other concurrent commands. 
+This reduces both CPU and memory usage of the Harness delegate, since concurrently running processes are reduced. These improvements are available from `81803` version of Harness delegate.
+
+#### Harness Certified Limits
+Delegate used for benchmarking: 2 vCPUs, 8 GB memory K8s delegate (1 replica, version 81803)
+
+| Index.yaml size | Concurrent deployments |
+| --------------- | ---------------------- |
+| 20 MB           | 15                     |
+| 75 MB           | 5                      |
+| 150 MB          | 3                      |
+
+
+
 ## Next Steps
 
 See [Kubernetes How-tos](/docs/category/kubernetes) for other deployment features.

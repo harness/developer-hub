@@ -74,7 +74,7 @@ The **SLSA Verification** step has the following settings:
 
 <!-- ![](./static/slsa-verify-step-basic.png) -->
 
-<docimage path={require('./static/slsa-verify-step-basic.png')} />
+<DocImage path={require('./static/slsa-verify-step-basic.png')} />
 
 :::info ECR and GCR repos
 
@@ -93,7 +93,7 @@ On the **Advanced** tab for the **SLSA Verification** step, expand the **Policy 
 
 <!-- ![](./static/slsa-verify-step-adv.png) -->
 
-<docimage path={require('./static/slsa-verify-step-adv.png')} />
+<DocImage path={require('./static/slsa-verify-step-adv.png')} />
 
 ## Run the pipeline
 

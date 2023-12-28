@@ -91,11 +91,9 @@ While an annual contract can not be lowered mid-year through the contract, pleas
 
 #### What if I am building an open source project?
 
-We love Open Source and are committed to supporting our Community! 
+We love Open Source and are committed to supporting our Community. We recommend the open-source [Gitness](https://gitness.com) for hosting your source code repository as well as CI/CD pipelines.
 
-Contact us and we will be happy to provide you with a no restriction Plan!
-
-Harness CD includes a [Community Edition](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-overview) so you can run CD locally on your computer.
+Contact us and we will be happy to provide you with a no restriction SaaS Plan!
 
 #### What if I add more service instance infrastructure outside of Harness?
 
@@ -443,9 +441,12 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 #### Do you have a free version of Harness CD?
 
-Yes. Harness CD Community Edition is a lightweight version of Harness that you can download and run on your laptop or any VM.
+Harness CD has two free options to get started. 
 
-Harness CD Community Edition is intended to get devs started with Harness quickly without having to sign up for a Harness SaaS account.
+- The [Harness CD & GitOps SaaS Free Plan](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg) is the recommended option for new users since there is no server side installation to manage.
+- If a self-managed yet lightweight option is needed, then the recommended otion is to use [Gitness](https://gitness.com/).
+
+As of Dec 2023, the Harness CD Community Edition (CE) is retired in favor of [Gitness](https://gitness.com/). More details are available on this [blog post](https://www.harness.io/blog/retiring-harness-cd-community-edition-in-favor-of-gitness). 
 
 #### What can I do with Harness CD Community Edition?
 

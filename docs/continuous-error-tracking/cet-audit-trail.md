@@ -4,14 +4,13 @@ description: View audit events for CET.
 sidebar_position: 7
 ---
 
-
 # CET Audit trail
 
 Your Harness account [Audit Trail](/docs/platform/governance/audit-trail/audit-trail.md) includes events for CET changes.
 
 ## CET events in the Audit Trail
 
-To access the Audit Trail, in your Harness project, navigate to **Account Settings** > **Audit Trail**.  
+To access the Audit Trail, in your Harness project, navigate to **Account Settings** > **Audit Trail**.
 
 The Account Audit Trail page is displayed.
 
@@ -29,11 +28,9 @@ Each event in the Account Audit Trail list provides the following details:
 
 When you click on a resource name, you will be directed to the corresponding event page. For instance, clicking on an **Agent Token** resource will take you to the Agent Token listing page, while clicking on a **Monitored Service** resource will redirect you to the monitored services listing page.
 
+<DocImage path={require('./static/cet-audit-trail-list.png')} />
 
-<docimage path={require('./static/cet-audit-trail-list.png')} />
-
-
-## Event summary page
+#DocImagesummary page
 
 To see more information about a particular event, select the messaging icon next to it. The Event Summary page appears, displaying the following information:
 
@@ -44,5 +41,5 @@ To see more information about a particular event, select the messaging icon next
 
 You can also see a snapshot of changes in YAML format by expanding YAML Difference.
 
-
-<docimage path={require('./static/cet-audit-trail-event-summary.png')} />
+<DocImage path={require('./static/cet-audit-trail-event-summary.png')} />
+DocImage

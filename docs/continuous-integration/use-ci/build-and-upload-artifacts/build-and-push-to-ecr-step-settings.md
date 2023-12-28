@@ -1,7 +1,7 @@
 ---
 title: Build and Push to ECR
 description: Learn how to use the Build and Push to ECR step.
-sidebar_position: 40
+sidebar_position: 22
 helpdocs_topic_id: aiqbxaef15
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -240,3 +240,9 @@ To set `custom_dns` for drone-docker, add a stage variable named `PLUGIN_CUSTOM_
 ```
 
 Plugin runtime flags are also used to [build without pushing](./build-without-push.md).
+
+## Troubleshoot: Error building image, failed to execute command, exec format error
+
+* Error message: `Error building image: error building stage: failed to execute command: starting command: ...: exec format error`
+* Possible cause: This error can occur if you're running an ARM node pool instead of AMD.
+* Solution: Change your node pool to AMD and retry the build.

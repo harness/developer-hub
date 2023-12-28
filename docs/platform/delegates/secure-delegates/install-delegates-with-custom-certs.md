@@ -4,12 +4,12 @@ description: How to install delegates with custom certificates.
 # sidebar_position: 10
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-This topic explains how to install Kubernetes and Docker delegates with custom certificates.
+
+This topic explains how to install Kubernetes, Docker, and Helm delegates with custom certificates.
 
 :::info caution
 
@@ -25,12 +25,16 @@ For information on delegate types, go to [Delegate image types](/docs/platform/d
 
 ## Install with custom certificates
 
-Use the steps below to install custom certificates for a Docker or Kubernetes delegate with an an immutable image type version later than 23.10.81202.
+Use the steps below to install custom certificates for a Docker, Kubernetes, or Helm delegate with an an immutable image type version later than 23.10.81202.
 
-```mdx-code-block
+import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
+
+<Addperm />
+
+
 <Tabs>
   <TabItem value="docker" label="Docker delegate" default>
-```
+
 
 To install a Docker delegate with custom certificates, do the following:
 
@@ -73,10 +77,10 @@ To install a Docker delegate with custom certificates, do the following:
      -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  harness/delegate:yy.mm.verno
    ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="k8s" label="Kubernetes delegate">
-```
+
 
 To install a Kubernetes delegate with custom certificates, do the following:
 
@@ -115,7 +119,7 @@ To install a Kubernetes delegate with custom certificates, do the following:
           runAsUser: 0
    ```
 
-### Kubernetes delegate with custom certificates YAML example
+#### Kubernetes delegate with custom certificates YAML example
 
 ```yaml
 apiVersion: apps/v1
@@ -222,10 +226,96 @@ spec:
                  defaultMode: 400
 ```
 
-```mdx-code-block
-  </TabItem>
+#### Add self-signed certificates to delegate upgrader
+
+For Kubernetes delegates, Harness supports self-signed certificates for delegate upgrader. For more information on delegate upgrades, go to [Delegate automatic upgrades and expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/).
+
+To add self-signed certificates for delegate upgrader, do the following:
+
+1. In the delegate YAML file, mount the certificates in `/ca-bundle`.
+2. Add the `securityContext` to the upgrader cron job.
+
+   ```yaml
+   apiVersion: batch/v1
+   kind: CronJob
+   metadata:
+     labels:
+       harness.io/name: kubernetes-delegate-upgrader-job
+     name: kubernetes-delegate-upgrader-job
+     namespace: harness-delegate-ng
+   spec:
+     schedule: "0 */1 * * *"
+     concurrencyPolicy: Forbid
+     startingDeadlineSeconds: 20
+     jobTemplate:
+       spec:
+         template:
+           spec:
+             serviceAccountName: upgrader-cronjob-sa
+             restartPolicy: Never
+             securityContext:
+                fsGroup: 1001
+             containers:
+             - image: harness/upgrader:latest
+               name: upgrader
+               imagePullPolicy: Always
+               envFrom:
+               - secretRef:
+                   name: kubernetes-delegate-upgrader-token
+               volumeMounts:
+                 - mountPath: /ca-bundle
+                   name: custom-certs
+                   readOnly: true
+             volumes:
+               - name: custom-certs
+                 secret:
+                   secretName: new-secret
+                   defaultMode: 400
+      ```
+
+
+</TabItem>
+  <TabItem value="helm" label="Helm delegate">
+
+
+1. Create a Kubernetes secret with the custom cert file.
+
+   ```
+   kubectl create secret -n harness-delegate-ng generic mycerts --from-file custom_certs.pem=custom_certs.pem
+   ```
+
+2. Run the following to set the `delegateCustomCa.secretName` variable when you install the Helm chart.
+
+   ```
+   --set delegateCustomCa.secretName=<SECRET_NAME>
+   ```
+
+   This adds your volume mount to the `/opt/harness-delegate/ca-bundle/` directory.
+
+#### Add self-signed certificates to delegate upgrader
+
+For Helm delegates, Harness supports self-signed certificates for delegate upgrader. For more information on delegate upgrades, go to [Delegate automatic upgrades and expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/).
+
+To add self-signed certificates for delegate upgrader, do the following:
+
+1. Create a Kubernetes secret with the custom cert file.
+
+   ```
+   kubectl create secret -n harness-delegate-ng generic mycerts --from-file custom_certs.pem=custom_certs.pem
+   ```
+
+2. Run the following to set the `upgraderCustomCa.secretName` variable when you install the Helm chart.
+
+   ```
+   --set upgraderCustomCa.secretName=<SECRET_NAME> 
+   ```
+
+   This adds your volume mount to the `/ca-bundle` directory.
+
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Install with custom truststore
 
@@ -297,10 +387,10 @@ For information on best practices for truststore creation, go to [Java Keystore 
 
 After the truststore file and custom certificates are configured, you're ready to install them in a Kubernetes or Docker delegate.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="docker" label="Docker delegate" default>
-```
+
 
 1. Mount the truststore file to the delegate container.
 2. Mount the custom certificates to the `/etc/pki/ca-trust/source/anchors/` directory.
@@ -325,10 +415,10 @@ After the truststore file and custom certificates are configured, you're ready t
      -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  harness/delegate:yy.mm.verno
    ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="k8s" label="Kubernetes delegate">
-```
+
 
 1. Use your custom truststore to create a secret.
 
@@ -672,55 +762,7 @@ spec:
                 name: my-secret-upgrader-config
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
-
-## Add self-signed certificates to delegate upgrader
-
-For Kubernetes delegates, Harness supports self-signed certificates for delegate upgrader. For more information on delegate upgrades, go to [Delegate automatic upgrades and expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/).
-
-To add self-signed certificates for delegate upgrader, do the following:
-
-1. In the delegate YAML file, mount the certificates in `/ca-bundle`.
-2. Add the `securityContext` to the upgrader cron job.
-
-   ```yaml
-   apiVersion: batch/v1
-   kind: CronJob
-   metadata:
-     labels:
-       harness.io/name: kubernetes-delegate-upgrader-job
-     name: kubernetes-delegate-upgrader-job
-     namespace: harness-delegate-ng
-   spec:
-     schedule: "0 */1 * * *"
-     concurrencyPolicy: Forbid
-     startingDeadlineSeconds: 20
-     jobTemplate:
-       spec:
-         template:
-           spec:
-             serviceAccountName: upgrader-cronjob-sa
-             restartPolicy: Never
-             securityContext:
-                fsGroup: 1001
-             containers:
-             - image: harness/upgrader:latest
-               name: upgrader
-               imagePullPolicy: Always
-               envFrom:
-               - secretRef:
-                   name: kubernetes-delegate-upgrader-token
-               volumeMounts:
-                 - mountPath: /ca-bundle
-                   name: custom-certs
-                   readOnly: true
-             volumes:
-               - name: custom-certs
-                 secret:
-                   secretName: new-secret
-                   defaultMode: 400
-      ```
 
