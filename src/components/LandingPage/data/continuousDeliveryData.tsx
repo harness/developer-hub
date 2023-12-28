@@ -221,6 +221,13 @@ export const CDList: CardSections = [
     // icon: "path/to/img/optional",
   },
   {
+    name: "Unified CI/CD Pipelines",
+    list: UnifiedCICDList,
+    // description: "optional",
+    // module: MODULES.cd, // optional
+    // icon: "path/to/img/optional",
+  },
+  {
     name: "Automate Linux or Windows VM deployments with a CD Pipeline",
     list: VMList,
     // description: "optional",
