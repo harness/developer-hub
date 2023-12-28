@@ -32,7 +32,7 @@ There’s a bonus section in this tutorial where you’ll run security tests dur
 
 ### Demo application
 
-You can either [fork Captain Canary Adventure (CCA) App](https://github.com/dewandemo/captain-canary-adventure-app/fork) or bring your own application (as long as it has a Dockerfile).
+You can either [fork Captain Canary Adventure (CCA) App](https://github.com/harness-community/captain-canary-adventure-app/fork) or bring your own application (as long as it has a Dockerfile).
 
 :::note
 
