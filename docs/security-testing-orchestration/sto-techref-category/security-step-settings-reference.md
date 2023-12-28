@@ -52,6 +52,14 @@ import StoSupportedBinaries from './shared/_sto-supported-binaries.md';
 
 <StoSupportedBinaries />
 
+### Supported ingestion formats
+
+
+import StoSupportedFormats from './shared/_sto-supported-ingestion-formats.md';
+
+
+<StoSupportedFormats />
+
 ### Docker-in-Docker requirements for STO
 
 
