@@ -6,14 +6,14 @@ import { MODULES } from "../../../constants";
 /* Module Card lists are defined in the data file for each module */
 export const FeaturedList: CardItem[] = [
   {
-    title: "Demystifying Trunk-Based Development",
-    module: MODULES.ff,
-    icon: "img/icon_ff.svg",
-    description: <>Getting started with trunk-based development.</>,
+    title: "GAR GKE CI/CD Pipeline.",
+    module: MODULES.cd,
+    icon: "img/icon_cd.svg",
+    description: <>Build and push to GAR and deploy to GKE.</>,
     newDoc: true,
     type: [docType.Documentation],
-    time: "10 min",
-    link: "/tutorials/feature-flags/getting-started/trunk-based-development",
+    time: "30 min",
+    link: "/tutorials/cd-pipelines/unified-cicd/gar-gke-pipeline",
   },
   {
     title: "Deploy a Kubernetes Helm Chart",
