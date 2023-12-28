@@ -132,7 +132,7 @@ Dashboards are created inside a folder. If you don't specify a folder, the dashb
 
    "Show me total costs by region within the last 30 days with a table calculation returning yes if region is "us-west1" else no."
 
-- If you have trouble with a particular data point, pass both the table name and the field name in the prompt. For example, if you want to view your feature flags by environment, you could enter the following prompt: 
+- If you have trouble with a particular data point, pass both the table name and the field name in the prompt. For example, if you want to view your feature flags by segment environment, you could enter the following prompt: 
 What are my total feature flags? Pivot by segments environment.
 
    ![](./static/ff-table-example.png)
