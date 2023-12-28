@@ -93,7 +93,7 @@ When viewing user groups at higher scopes, you can find a list of **Organization
 
 <!-- ![](./static/add-user-groups-55.png) -->
 
-<docimage path={require('./static/add-user-groups-55.png')} />
+<DocImage path={require('./static/add-user-groups-55.png')} />
 
 ## Assign roles and resource groups
 

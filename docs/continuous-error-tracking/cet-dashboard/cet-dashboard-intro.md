@@ -29,7 +29,7 @@ To view the CET dashboards, do the following:
    
    The dashboard list is displayed, which includes the pre-configured CET Analytics dashboard
 
-   <docimage path={require('./static/cet-dashboards.png')} />
+   <DocImage path={require('./static/cet-dashboards.png')} />
 
 
 ## View a specific CET dashboard

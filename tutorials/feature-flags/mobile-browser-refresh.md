@@ -6,7 +6,7 @@ keywords: [Mobile application testing, Feature Flags, FF Tutorial]
 
 # Making flags resilient during a mobile web browser refresh
 
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Feature Flags Certification today!"
@@ -14,7 +14,6 @@ keywords: [Mobile application testing, Feature Flags, FF Tutorial]
   closable={true}
   target="_self"
 />
-
 
 ![FF Workflow](static/ff-mobile-browser-refresh/ffworkflow.png)
 
@@ -31,6 +30,7 @@ The SDK can be used inside WebView on native mobile apps for iOS and Android. Yo
 The SDK provides a function on the client instance called `refreshEvaluations()`. Calling this allows you to soft poll the servers for the latest evaluations. To avoid overloading the backend servers, this function will only call out to the network after enough time has elapsed.
 
 ### toForeground() JS function
+
 Once you have a client instance add a function that can be easily invoked from the device's native language
 
 ```
@@ -40,6 +40,7 @@ Once you have a client instance add a function that can be easily invoked from t
 ```
 
 ### iOS
+
 On iOS, add an observer to wait for [willEnterForegroundNotification](https://developer.apple.com/documentation/uikit/uiapplication/1622944-willenterforegroundnotification) on the [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview) to call [evaluateJavaScript()](https://developer.apple.com/documentation/webkit/wkwebview/1415017-evaluatejavascript).
 
 ```
@@ -60,7 +61,8 @@ On iOS, add an observer to wait for [willEnterForegroundNotification](https://de
 ```
 
 ### Android
-On Android, register an [ActivityLifecycleCallbacks](https://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks) listener and override [onActivityStarted](https://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks#onActivityStarted(android.app.Activity)) (API level 29). Then once a foreground event arrives, you can call [evaluateJavascript()](https://developer.android.com/reference/android/webkit/WebView#evaluateJavascript(java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.String%3E)) on the [WebView](https://developer.android.com/reference/android/webkit/WebView).
+
+On Android, register an [ActivityLifecycleCallbacks](https://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks) listener and override [onActivityStarted](<https://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks#onActivityStarted(android.app.Activity)>) (API level 29). Then once a foreground event arrives, you can call [evaluateJavascript()](<https://developer.android.com/reference/android/webkit/WebView#evaluateJavascript(java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.String%3E)>) on the [WebView](https://developer.android.com/reference/android/webkit/WebView).
 
 ```
   @Override
@@ -82,6 +84,7 @@ On Android, register an [ActivityLifecycleCallbacks](https://developer.android.c
 ```
 
 ### Mobile web browsers
+
 When not embedded inside a WebView and using a mobile browser, you can detect when the browser app comes to the foreground by listening for the 'visibilitychange' event as described here [Page Lifecycle API](https://developer.chrome.com/blog/page-lifecycle-api/).
 
 ```
@@ -93,4 +96,5 @@ document.addEventListener('visibilitychange', () => {
 ```
 
 ## Summary
+
 Ensure your mobile apps are resilient by leveraging the `refreshEvaluations()` method. Create a [Feature Flag Free Forever Account](https://app.harness.io/auth/#/signup/?module=cf) today and use these code snippets to get started.

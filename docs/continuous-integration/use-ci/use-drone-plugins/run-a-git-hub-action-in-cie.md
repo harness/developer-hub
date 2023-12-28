@@ -223,7 +223,7 @@ When you run the pipeline, you can observe the GitHub Action plugin logs in the 
 
 <!-- ![](./static/run-a-github-action-in-cie-532.png) -->
 
-<docimage path={require('./static/run-a-github-action-in-cie-532.png')} />
+<DocImage path={require('./static/run-a-github-action-in-cie-532.png')} />
 
 ## Troubleshooting the GitHub Actions plugin
 

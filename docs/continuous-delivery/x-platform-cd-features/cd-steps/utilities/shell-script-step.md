@@ -381,7 +381,7 @@ Here's an example showing how the **Script Output Variables** references the exp
 
 <!-- ![](./static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png) -->
 
-<docimage path={require('./static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png')} />
+<DocImage path={require('./static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png')} />
 
 
 So now the result of `<+execution.steps.ShellScript_1.output.outputVariables.newname>` is `123`.

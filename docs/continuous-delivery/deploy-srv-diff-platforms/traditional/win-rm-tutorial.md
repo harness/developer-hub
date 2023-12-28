@@ -348,7 +348,7 @@ In the Harness Infrastructure Definition, you map outputs to their corresponding
 
 <figure>
 
-<docimage path={require('./static/8722541e819fd752abc35693bd00e38cca2bce5df264afa89cbf61288fbc0604.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/8722541e819fd752abc35693bd00e38cca2bce5df264afa89cbf61288fbc0604.png')} width="60%" height="60%" title="Click to view full size image" />
 
 <figcaption>Figure: Mapped outputs</figcaption>
 </figure>

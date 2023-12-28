@@ -6,13 +6,11 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/python
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
-
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
@@ -25,9 +23,9 @@ You can build and test a [Python](https://www.python.org/) application using a L
 
 This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
 
-* [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
-* [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
-* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
+- [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
+- [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
+- [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 <CISignupTip />
 
@@ -35,47 +33,41 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
 
-
 <Tabs>
 <TabItem value="Harness Cloud">
 
-
 ```yaml
-              - step:
-                  type: Run
-                  identifier: dependencies
-                  name: Dependencies
-                  spec:
-                    shell: Sh
-                    command: |-
-                      python -m pip install --upgrade pip
-                      pip install -r requirements.txt
-                    envVariables:
-                      PIP_CACHE_DIR: "/root/.cache"
+- step:
+    type: Run
+    identifier: dependencies
+    name: Dependencies
+    spec:
+      shell: Sh
+      command: |-
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+      envVariables:
+        PIP_CACHE_DIR: "/root/.cache"
 ```
-
 
 </TabItem>
 <TabItem value="Self-hosted">
 
-
 ```yaml
-              - step:
-                  type: Run
-                  identifier: dependencies
-                  name: Dependencies
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: python:latest
-                    command: |-
-                      python -m pip install --upgrade pip
-                      pip install -r requirements.txt
+- step:
+    type: Run
+    identifier: dependencies
+    name: Dependencies
+    spec:
+      connectorRef: account.harnessImage
+      image: python:latest
+      command: |-
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 ```
-
 
 </TabItem>
 </Tabs>
-
 
 :::tip
 
@@ -87,36 +79,32 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 
 Add caching to your stage.
 
-
 <Tabs>
 <TabItem value="Harness Cloud">
-
 
 Cache your Python module dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
 Add caching to your `stage.spec`.
 
 ```yaml
-    - stage:
-        spec:
-          caching:
-            enabled: true
-            key: cache-{{ checksum "requirements.txt" }}
-            paths:
-              - "/root/.cache"
-          sharedPaths:
-            - /root/.cache
+- stage:
+    spec:
+      caching:
+        enabled: true
+        key: cache-{{ checksum "requirements.txt" }}
+        paths:
+          - "/root/.cache"
+      sharedPaths:
+        - /root/.cache
 ```
-
 
 </TabItem>
 <TabItem value="Self-hosted">
 
-
 With self-hosted build infrastructures, you can:
 
- * [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
- * [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
+- [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
+- [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
 
 <details>
 <summary>Python cache key and path requirements</summary>
@@ -124,16 +112,16 @@ With self-hosted build infrastructures, you can:
 Python pipelines typically reference `requirements.txt` in **Save Cache** and **Restore Cache** steps, for example:
 
 ```yaml
-                  spec:
-                    key: cache-{{ checksum "requirements.txt" }}
+spec:
+  key: cache-{{ checksum "requirements.txt" }}
 ```
 
 Additionally, `spec.sourcePaths` must include the python cache (typically `/root/.cache`) in the **Save Cache** step, for example:
 
 ```yaml
-                  spec:
-                    sourcePaths:
-                      - "/root/.cache"
+spec:
+  sourcePaths:
+    - "/root/.cache"
 ```
 
 </details>
@@ -176,10 +164,8 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 </details>
 
-
 </TabItem>
 </Tabs>
-
 
 ## Run tests
 
@@ -187,50 +173,44 @@ You can use **Run** and **Run Tests** steps to [run tests in Harness CI](/docs/c
 
 These examples run tests in a **Run** step.
 
-
 <Tabs>
 <TabItem value="Harness Cloud">
 
-
 ```yaml
-              - step:
-                  type: Run
-                  name: Test
-                  identifier: test
-                  spec:
-                    shell: Sh
-                    command: |-
-                      pip install pytest
-                      pytest tests.py --junit-xml=report.xml
-                    envVariables:
-                      PIP_CACHE_DIR: /root/.cache
+- step:
+    type: Run
+    name: Test
+    identifier: test
+    spec:
+      shell: Sh
+      command: |-
+        pip install pytest
+        pytest tests.py --junit-xml=report.xml
+      envVariables:
+        PIP_CACHE_DIR: /root/.cache
 ```
-
 
 </TabItem>
 <TabItem value="Self-hosted">
 
-
 ```yaml
-              - step:
-                  type: Run
-                  name: Test
-                  identifier: test
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: python:latest
-                    shell: Sh
-                    command: |-
-                      python -m pip install --upgrade pip
-                      pip install -r requirements.txt
-                      pip install pytest
-                      pytest tests.py --junit-xml=report.xml
+- step:
+    type: Run
+    name: Test
+    identifier: test
+    spec:
+      connectorRef: account.harnessImage
+      image: python:latest
+      shell: Sh
+      command: |-
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest
+        pytest tests.py --junit-xml=report.xml
 ```
-
 
 </TabItem>
 </Tabs>
-
 
 ### Visualize test results
 
@@ -239,11 +219,11 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 If you run tests in a **Run** step, your **Run** step must include the `reports` specification. The `reports` specification is not required for [Run Tests steps (Test Intelligence)](#run-tests-with-test-intelligence).
 
 ```yaml
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - report.xml
+reports:
+  type: JUnit
+  spec:
+    paths:
+      - report.xml
 ```
 
 ### Run tests with Test Intelligence
@@ -252,56 +232,50 @@ If you run tests in a **Run** step, your **Run** step must include the `reports`
 
 With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) to run unit tests with Test Intelligence.
 
-
 <Tabs>
   <TabItem value="Harness Cloud" default>
 
-
 ```yaml
-              - step:
-                  type: RunTests
-                  name: Run Python Tests
-                  identifier: Run_Python_Tests
-                  spec:
-                    language: Python
-                    buildTool: Pytest
-                    runOnlySelectedTests: true
-                    preCommand: |
-                      python3 -m venv .venv
-                      . .venv/bin/activate
+- step:
+    type: RunTests
+    name: Run Python Tests
+    identifier: Run_Python_Tests
+    spec:
+      language: Python
+      buildTool: Pytest
+      runOnlySelectedTests: true
+      preCommand: |
+        python3 -m venv .venv
+        . .venv/bin/activate
 
-                      python3 -m pip install -r requirements/test.txt
-                      python3 -m pip install -e .
+        python3 -m pip install -r requirements/test.txt
+        python3 -m pip install -e .
 ```
-
 
 </TabItem>
   <TabItem value="Self-Hosted">
 
-
 ```yaml
-              - step:
-                  type: RunTests
-                  name: Run Python Tests
-                  identifier: Run_Python_Tests
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: python:latest
-                    language: Python
-                    buildTool: Pytest
-                    runOnlySelectedTests: true
-                    preCommand: |
-                      python3 -m venv .venv
-                      . .venv/bin/activate
+- step:
+    type: RunTests
+    name: Run Python Tests
+    identifier: Run_Python_Tests
+    spec:
+      connectorRef: account.harnessImage
+      image: python:latest
+      language: Python
+      buildTool: Pytest
+      runOnlySelectedTests: true
+      preCommand: |
+        python3 -m venv .venv
+        . .venv/bin/activate
 
-                      python3 -m pip install -r requirements/test.txt
-                      python3 -m pip install -e .
+        python3 -m pip install -r requirements/test.txt
+        python3 -m pip install -e .
 ```
-
 
 </TabItem>
 </Tabs>
-
 
 ### Test splitting
 
@@ -309,10 +283,8 @@ Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/
 
 ## Specify version
 
-
 <Tabs>
 <TabItem value="Harness Cloud">
-
 
 Python is pre-installed on Harness Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
@@ -326,15 +298,15 @@ You will need a [personal access token](https://docs.github.com/en/authenticatio
 <summary>Install one Python version</summary>
 
 ```yaml
-              - step:
-                  type: Action
-                  name: Install python
-                  identifier: installpython
-                  spec:
-                    uses: actions/setup-python@v4
-                    with:
-                      python-version: 3.10.10
-                      token: <+ secrets.getValue("github_token") >
+- step:
+    type: Action
+    name: Install python
+    identifier: installpython
+    spec:
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.10.10
+        token: <+ secrets.getValue("github_token") >
 ```
 
 </details>
@@ -345,35 +317,33 @@ You will need a [personal access token](https://docs.github.com/en/authenticatio
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
-    - stage:
-        strategy:
-          matrix:
-            pythonVersion:
-              - 3.11.2
-              - 3.10.10
+- stage:
+    strategy:
+      matrix:
+        pythonVersion:
+          - 3.11.2
+          - 3.10.10
 ```
 
 2. Reference the matrix variable in your steps.
 
 ```yaml
-              - step:
-                  type: Action
-                  name: Install python
-                  identifier: installpython
-                  spec:
-                    uses: actions/setup-python@v4
-                    with:
-                      python-version: <+ stage.matrix.pythonVersion >
-                      token: <+ secrets.getValue("github_token") >
+- step:
+    type: Action
+    name: Install python
+    identifier: installpython
+    spec:
+      uses: actions/setup-python@v4
+      with:
+        python-version: <+ stage.matrix.pythonVersion >
+        token: <+ secrets.getValue("github_token") >
 ```
 
 </details>
 
-
 </TabItem>
 
 <TabItem value="Self-hosted">
-
 
 Specify the desired [Python Docker image](https://hub.docker.com/_/python) tag in your steps. There is no need for a separate install step when using Docker.
 
@@ -381,16 +351,16 @@ Specify the desired [Python Docker image](https://hub.docker.com/_/python) tag i
 <summary>Use a specific Python version</summary>
 
 ```yaml
-              - step:
-                  type: Run
-                  name: Python Version
-                  identifier: pythonversion
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: python:3.10.10
-                    shell: Sh
-                    command: |-
-                      python --version
+- step:
+    type: Run
+    name: Python Version
+    identifier: pythonversion
+    spec:
+      connectorRef: account.harnessImage
+      image: python:3.10.10
+      shell: Sh
+      command: |-
+        python --version
 ```
 
 </details>
@@ -401,44 +371,40 @@ Specify the desired [Python Docker image](https://hub.docker.com/_/python) tag i
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
-    - stage:
-        strategy:
-          matrix:
-            pythonVersion:
-              - 3.11.2
-              - 3.10.10
+- stage:
+    strategy:
+      matrix:
+        pythonVersion:
+          - 3.11.2
+          - 3.10.10
 ```
 
 2. Reference the matrix variable in the `image` field of your steps.
 
 ```yaml
-              - step:
-                  type: Run
-                  name: Python Version
-                  identifier: pythonversion
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: python:<+ stage.matrix.pythonVersion >
-                    shell: Sh
-                    command: |-
-                      python --version
+- step:
+    type: Run
+    name: Python Version
+    identifier: pythonversion
+    spec:
+      connectorRef: account.harnessImage
+      image: python:<+ stage.matrix.pythonVersion >
+      shell: Sh
+      command: |-
+        python --version
 ```
 
 </details>
 
-
 </TabItem>
 </Tabs>
-
 
 ## Full pipeline examples
 
 The following full pipeline examples are based on the partial examples above.
 
-
 <Tabs>
 <TabItem value="Harness Cloud">
-
 
 This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) and [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
@@ -596,10 +562,8 @@ pipeline:
 
 </details>
 
-
 </TabItem>
 <TabItem value="Self-hosted">
-
 
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector), kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
@@ -718,16 +682,14 @@ pipeline:
 
 </details>
 
-
 </TabItem>
 </Tabs>
-
 
 ## Next steps
 
 Now that you have created a pipeline that builds and tests a Python app, you could:
 
-* Create [triggers](/docs/category/triggers) to automatically run your pipeline.
-* Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
-* Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
-* Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).
+- Create [triggers](/docs/category/triggers) to automatically run your pipeline.
+- Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
+- Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
+- Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).

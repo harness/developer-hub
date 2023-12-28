@@ -16,9 +16,9 @@ Harness Canary and Blue Green strategies only support Kubernetes Deployment work
 
 ## Before you begin
 
-* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
-* [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests)
-* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure)
+- [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+- [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests)
+- [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure)
 
 ## What workloads can I deploy?
 
@@ -37,17 +37,17 @@ Only one Kubernetes service is mandatory and it doesn’t need any annotations t
 Here is a very generic service example that uses a values.yaml file for its values:
 
 ```yaml
-apiVersion: v1  
-kind: Service  
-metadata:  
-  name: {{.Values.name}}-svc  
-spec:  
-  type: {{.Values.serviceType}}  
-  ports:  
-  - port: {{.Values.servicePort}}  
-    targetPort: {{.Values.serviceTargetPort}}  
-    protocol: TCP  
-  selector:  
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.Values.name}}-svc
+spec:
+  type: {{.Values.serviceType}}
+  ports:
+  - port: {{.Values.servicePort}}
+    targetPort: {{.Values.serviceTargetPort}}
+    protocol: TCP
+  selector:
     app: {{.Values.name}}
 ```
 
@@ -59,64 +59,64 @@ If you are using only one service in your manifest, Harness will create a duplic
 
 ### Two Kubernetes services
 
-If you have more than one service, Harness does not automatically know which is the primary service unless you add the annotations like this: 
+If you have more than one service, Harness does not automatically know which is the primary service unless you add the annotations like this:
 
-* The **primary** service uses this annotation: `annotations: harness.io/primary-service: "true"`. You must have this annotation added in your manifest.
-* The **stage** service uses this annotation: `annotations: harness.io/stage-service: "true"`. You must have this annotation added in your manifest.
+- The **primary** service uses this annotation: `annotations: harness.io/primary-service: "true"`. You must have this annotation added in your manifest.
+- The **stage** service uses this annotation: `annotations: harness.io/stage-service: "true"`. You must have this annotation added in your manifest.
 
 Here's an example:
 
 ```yaml
-apiVersion: v1  
-kind: Service  
-metadata:  
-  name: test-deploy-svc-1  
-  annotations:  
-    harness.io/primary-service: "true"  
-spec:  
-  type: ClusterIP  
-  ports:  
-  - port: 80  
-    targetPort: 80  
-    protocol: TCP  
-  selector:  
-    app: nginx  
----  
-apiVersion: v1  
-kind: Service  
-metadata:  
-  name: test-deploy-svc-2  
-  annotations:  
-    harness.io/stage-service: "true"  
-spec:  
-  type: ClusterIP  
-  ports:  
-  - port: 80  
-    targetPort: 80  
-    protocol: TCP  
-  selector:  
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-deploy-svc-1
+  annotations:
+    harness.io/primary-service: "true"
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    app: nginx
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-deploy-svc-2
+  annotations:
+    harness.io/stage-service: "true"
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
     app: nginx
 ```
+
 If you use two services, please annotate them as described.
 
-Let's look at the deployment process using two Kubernetes services:  
-
+Let's look at the deployment process using two Kubernetes services:
 
 1. **First deployment:**
-	1. Harness creates two services (primary and stage) and one pod set for the app.
-	2. The primary service uses this annotation: `annotations: harness.io/primary-service: "true"`. You must have this annotation added in your manifest.
-	3. The stage service uses this annotation: `annotations: harness.io/stage-service: "true"`. You must have this annotation added in your manifest.
-	4. The pod set is given an annotation of `harness.io/color: blue`.
-	5. Harness points the stage service at the pod set and verifies that the set reached steady state.
-	6. Harness swaps the primary service to pod set. Production traffic now flows to the app.
+   1. Harness creates two services (primary and stage) and one pod set for the app.
+   2. The primary service uses this annotation: `annotations: harness.io/primary-service: "true"`. You must have this annotation added in your manifest.
+   3. The stage service uses this annotation: `annotations: harness.io/stage-service: "true"`. You must have this annotation added in your manifest.
+   4. The pod set is given an annotation of `harness.io/color: blue`.
+   5. Harness points the stage service at the pod set and verifies that the set reached steady state.
+   6. Harness swaps the primary service to pod set. Production traffic now flows to the app.
 2. **Second deployment (new version of the same app):**
-	1. Harness creates a new pod set for new app version. The pod set is given the annotation `harness.io/color: green`.
-	2. Harness points the stage service at new pod set (with new app version) and verifies that the set reached steady state.
-	3. Harness swaps the primary service to new pod set, stage service to old pod set.
+   1. Harness creates a new pod set for new app version. The pod set is given the annotation `harness.io/color: green`.
+   2. Harness points the stage service at new pod set (with new app version) and verifies that the set reached steady state.
+   3. Harness swaps the primary service to new pod set, stage service to old pod set.
 3. **Third deployment:**
-	1. Harness deploy new app version to the pod set not using the primary service.
-	2. Harness points the stage service at new pod set (with new app version) and verifies that the set reached steady state.
-	3. Harness swaps the primary service to new pod set, stage service to old pod set.
+   1. Harness deploy new app version to the pod set not using the primary service.
+   2. Harness points the stage service at new pod set (with new app version) and verifies that the set reached steady state.
+   3. Harness swaps the primary service to new pod set, stage service to old pod set.
 
 ## Visual summary
 
@@ -124,7 +124,7 @@ Here's a video walking through a simple Canary deployment. It's 10 minutes long 
 
 <!-- Video:
 https://www.youtube.com/watch?v=0x2eHfpNv_o-->
-<docvideo src="https://www.youtube.com/watch?v=0x2eHfpNv_o" />
+<DocVideo src="https://www.youtube.com/watch?v=0x2eHfpNv_o" />
 
 ## Define the service and infrastructure
 
@@ -132,8 +132,8 @@ Create your CD Pipeline stage.
 
 To set up your Service and Infrastructure in the stage, follow the steps in these topics:
 
-* [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests)
-* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure)
+- [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests)
+- [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure)
 
 Once the Service and Infrastructure are set up, you can add the execution steps.
 
@@ -151,11 +151,11 @@ Additionally, you can add a Blue Green Stage Scale Down step to scale down the l
 
 This functionality helps you efficiently manage your resources. You can configure the scale down step within the same stage or a different stage, based on your requirement.
 
-Here's a quick video walking through a simple Blue Green Stage Scale Down step:  
+Here's a quick video walking through a simple Blue Green Stage Scale Down step:
 
 <!-- Video:
 https://www.loom.com/share/c6fdc714f4234cd093a26d68dbdafdd8?sid=f1980faf-2646-4ea0-852f-a92a9fb1c7c6-->
-<docvideo src="https://www.loom.com/share/c6fdc714f4234cd093a26d68dbdafdd8?sid=f1980faf-2646-4ea0-852f-a92a9fb1c7c6" />
+<DocVideo src="https://www.loom.com/share/c6fdc714f4234cd093a26d68dbdafdd8?sid=f1980faf-2646-4ea0-852f-a92a9fb1c7c6" />
 
 During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets, and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
@@ -175,7 +175,7 @@ By default, Harness uses the `--dry-run` flag on the `kubectl apply` command dur
 
 ### Skip Deployment if Using the Manifest Used in a Previous Deployment
 
-When running the **Stage Deployment** step, if you select this option, Harness renders the manifests and compares them with the last deployed manifests to see if there are any changes. If there are no changes in the manifests used in the step and the previous deployment, Harness skips the step and progresses to the subsequent steps in the pipeline. This ensures that no routes or labels associated with the primary or stage (Blue or Green) are manipulated when no manifest changes are present. 
+When running the **Stage Deployment** step, if you select this option, Harness renders the manifests and compares them with the last deployed manifests to see if there are any changes. If there are no changes in the manifests used in the step and the previous deployment, Harness skips the step and progresses to the subsequent steps in the pipeline. This ensures that no routes or labels associated with the primary or stage (Blue or Green) are manipulated when no manifest changes are present.
 
 When you look at the **Stage Deployment** step in Harness **Deployments**, you will see the following log sections.
 
@@ -200,32 +200,32 @@ The **Prepare** section shows that Harness has prepared two services, identified
 This example uses one Kubernetes service, hence the use of the `-stage` suffix.
 
 ```
-Manifests processed. Found following resources:   
-  
-Kind                Name                                    Versioned   
-Service             bgdemo-svc                              false       
-Deployment          bgdemo                                  false       
-  
-Primary Service is bgdemo-svc  
-  
-Created Stage service [bgdemo-svc-stage] using Spec from Primary Service [bgdemo-svc]  
-  
-Primary Service [bgdemo-svc] not found in cluster.  
-  
-Stage Service [bgdemo-svc-stage] not found in cluster.  
-  
-Primary Service is at color: green  
-  
-Stage Service is at color: blue  
-  
-Cleaning up non primary releases  
-  
-Current release number is: 1  
-  
-Versioning resources.  
-  
-Workload to deploy is: Deployment/bgdemo-blue  
-  
+Manifests processed. Found following resources:
+
+Kind                Name                                    Versioned
+Service             bgdemo-svc                              false
+Deployment          bgdemo                                  false
+
+Primary Service is bgdemo-svc
+
+Created Stage service [bgdemo-svc-stage] using Spec from Primary Service [bgdemo-svc]
+
+Primary Service [bgdemo-svc] not found in cluster.
+
+Stage Service [bgdemo-svc-stage] not found in cluster.
+
+Primary Service is at color: green
+
+Stage Service is at color: blue
+
+Cleaning up non primary releases
+
+Current release number is: 1
+
+Versioning resources.
+
+Workload to deploy is: Deployment/bgdemo-blue
+
 Done.
 ```
 
@@ -233,16 +233,15 @@ Done.
 
 The Apply section applies a services and deployment from the Prepare section. It uses a combination of all of the manifests in the Service **Manifests** section as one file using `kubectl apply`.
 
-
 ```
-kubectl --kubeconfig=config apply --filename=manifests.yaml --record  
-  
-service/bgdemo-svc created  
-  
-deployment.apps/bgdemo-blue created  
-  
-service/bgdemo-svc-stage created  
-  
+kubectl --kubeconfig=config apply --filename=manifests.yaml --record
+
+service/bgdemo-svc created
+
+deployment.apps/bgdemo-blue created
+
+service/bgdemo-svc-stage created
+
 Done.
 ```
 
@@ -267,54 +266,53 @@ Production traffic now flows to the app.
 This example uses one Kubernetes service, hence the use of the `-stage` suffix.
 
 ```
-Selectors for Service One : [name:bgdemo-svc]  
-  
-app: bgdemo  
-  
-harness.io/color: green  
-  
-Selectors for Service Two : [name:bgdemo-svc-stage]  
-  
-app: bgdemo  
-  
-harness.io/color: blue  
-  
-Swapping Service Selectors..  
-  
-Updated Selectors for Service One : [name:bgdemo-svc]  
-  
-app: bgdemo  
-  
-harness.io/color: blue  
-  
-Updated Selectors for Service Two : [name:bgdemo-svc-stage]  
-  
-app: bgdemo  
-  
-harness.io/color: green  
-  
+Selectors for Service One : [name:bgdemo-svc]
+
+app: bgdemo
+
+harness.io/color: green
+
+Selectors for Service Two : [name:bgdemo-svc-stage]
+
+app: bgdemo
+
+harness.io/color: blue
+
+Swapping Service Selectors..
+
+Updated Selectors for Service One : [name:bgdemo-svc]
+
+app: bgdemo
+
+harness.io/color: blue
+
+Updated Selectors for Service Two : [name:bgdemo-svc-stage]
+
+app: bgdemo
+
+harness.io/color: green
+
 Done
 ```
 
 The next time you deploy, the swap will point the primary service at the green pod set and the stage service at the blue pod set:
 
-
 ```
-...  
-Swapping Service Selectors..  
-  
-Updated Selectors for Service One : [name:bgdemo-svc]  
-  
-app: bgdemo  
-  
-harness.io/color: green  
-  
-Updated Selectors for Service Two : [name:bgdemo-svc-stage]  
-  
-app: bgdemo  
-  
-harness.io/color: blue  
-  
+...
+Swapping Service Selectors..
+
+Updated Selectors for Service One : [name:bgdemo-svc]
+
+app: bgdemo
+
+harness.io/color: green
+
+Updated Selectors for Service Two : [name:bgdemo-svc-stage]
+
+app: bgdemo
+
+harness.io/color: blue
+
 Done
 ```
 
@@ -330,9 +328,8 @@ You can also add a [Shell Script step](/docs/continuous-delivery/x-platform-cd-f
 
 Here's an example using `<+pipeline.stages.[stage_name].spec.execution.steps.stageDeployment.output.stageServiceName>` to reference the stage service name. The name of the stage is nginx so the reference is `<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName>`.
 
-
 ```
-export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}  
+export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}
 kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.namespace> -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness\.io/color=="'$(kubectl get service/<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName> -n <+infra.namespace> -o jsonpath='{.spec.selector.harness\.io/color}')'")].metadata.name}') --replicas=0
 ```
 
@@ -340,9 +337,8 @@ If you use a Delegate installed outside of the target cluster, any scripts in yo
 
 For example:
 
-
 ```
-export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}  
+export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}
 kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.namespace> -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness\.io/color=="'$(kubectl get service/${k8s.stageServiceName} -n <+infra.namespace> -o jsonpath='{.spec.selector.harness\.io/color}')'")].metadata.name}') --replicas=0
 ```
 
@@ -358,22 +354,23 @@ Currently, this functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB
 
 The Horizontal Pod Autoscaler (HPA) automatically scales ReplicationControllers, Deployments, ReplicaSets, or StatefulSets based on CPU utilization. Scaling is horizontal, as it affects the number of instances rather than the resources allocated to one container. Upon initial configuration, HPA can make scaling decisions based on custom or external metrics. All you need to do is define the minimum and maximum number of replicas and a trigger limit.
 
-Here's a sample HPA resource: 
+Here's a sample HPA resource:
 
 ```yaml
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
- name: hpa
+  name: hpa
 spec:
- scaleTargetRef:
-   apiVersion: apps/v1
-   kind: Deployment
-   name: nginx-deployment
- minReplicas: 1
- maxReplicas: 10
- targetCPUUtilizationPercentage: 50
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: nginx-deployment
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 50
 ```
+
 Once configured, the HPA controller checks the metrics and scales your replicas accordingly. HPA checks metrics every 15 seconds by default.
 
 Here is a sample Kubernetes resource with stage color `blue`:
@@ -394,10 +391,10 @@ spec:
         app: test-deployment
     spec:
       containers:
-      - name: nginx
-        image: nginx:latest
-        ports:
-        - containerPort: 80
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
 ```
 
 Here, the deployment name is `test-deployment`. Harness creates a `blue` or `green` HPA configuration (depending on the primary and stage colors), marking the deployment name `test-deployment-blue` or `test-deployment-green`.
@@ -408,81 +405,80 @@ In this example, Harness creates a `test-deployment-blue` deployment and a `test
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
- name: test-hpa-blue
+  name: test-hpa-blue
 spec:
- scaleTargetRef:
-   apiVersion: apps/v1
-   kind: Deployment
-   name: test-deployment-blue
- minReplicas: 1
- maxReplicas: 10
- targetCPUUtilizationPercentage: 50
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: test-deployment-blue
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 50
 ```
 
 If you are using HPA with your deployment without enabling the feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`, create a `blue` and `green` HPA configuration that will point at your deployments.
 
 templates/hpa-blue.yaml:
 
-
 ```yaml
-apiVersion: autoscaling/v2 
-kind: HorizontalPodAutoscaler  
-metadata:  
-  name: {{.Values.name}}-blue  
-  labels:  
-    harness.io/color: blue  
-spec:  
-  scaleTargetRef:  
-    apiVersion: apps/v1  
-    kind: Deployment  
-    name: {{.Values.name}}-blue  
-  minReplicas: {{ .Values.autoscaling.minReplicas }}  
-  maxReplicas: {{ .Values.autoscaling.maxReplicas }}  
-  metrics:  
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{.Values.name}}-blue
+  labels:
+    harness.io/color: blue
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{.Values.name}}-blue
+  minReplicas: {{ .Values.autoscaling.minReplicas }}
+  maxReplicas: {{ .Values.autoscaling.maxReplicas }}
+  metrics:
     {{- toYaml .Values.autoscaling.metrics | indent 4 }}
 ```
 
 templates/hpa-green.yaml:
 
 ```yaml
-apiVersion: autoscaling/v2  
-kind: HorizontalPodAutoscaler  
-metadata:  
-  name: {{.Values.name}}-green  
-  labels:  
-    harness.io/color: green  
-spec:  
-  scaleTargetRef:  
-    apiVersion: apps/v1  
-    kind: Deployment  
-    name: {{.Values.name}}-green  
-  minReplicas: {{ .Values.autoscaling.minReplicas }}  
-  maxReplicas: {{ .Values.autoscaling.maxReplicas }}  
-  metrics:  
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{.Values.name}}-green
+  labels:
+    harness.io/color: green
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{.Values.name}}-green
+  minReplicas: {{ .Values.autoscaling.minReplicas }}
+  maxReplicas: {{ .Values.autoscaling.maxReplicas }}
+  metrics:
     {{- toYaml .Values.autoscaling.metrics | indent 4 }}
 ```
 
 You can add your scaling configuration to your manifest (or share it if you are using a Helm chart):
 
-
 ```yaml
-autoscaling:  
-  minReplicas: 1  
-  maxReplicas: 5  
-  metrics:  
-  - type: Resource  
-    resource:  
-      name: cpu  
-      target:  
-        type: Utilization  
-        averageUtilization: 20  
-  - type: Resource  
-    resource:  
-      name: memory  
-      target:  
-        type: Utilization  
-        averageUtilization: 20
+autoscaling:
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 20
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 20
 ```
+
 When using this with a traffic splitting strategy, your pods will scale automatically as your new pods begin receiving heavier loads.
 
 ## Using Pod Disruption Budget (PDB)
@@ -497,12 +493,12 @@ A Pod Disruption Budget (PDB) defines the budget for voluntary disruptions. To e
 
 PDB can be applied for the following types of controllers:
 
-* Deployment
-* ReplicationController
-* ReplicaSet
-* StatefulSet
+- Deployment
+- ReplicationController
+- ReplicaSet
+- StatefulSet
 
-Here's a sample PBD resource: 
+Here's a sample PBD resource:
 
 ```yaml
 apiVersion: policy/v1
@@ -515,6 +511,7 @@ spec:
     matchLabels:
       app: nginx
 ```
+
 PDB can have a `minAvailable` or `maxUnavailable` field with absolute or percentage values.
 
 Here is a sample Kubernetes resource with stage color `blue`:
@@ -535,10 +532,10 @@ spec:
         app: test-deployment-blue
     spec:
       containers:
-      - name: nginx
-        image: nginx:latest
-        ports:
-        - containerPort: 80
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
 ```
 
 Here, the deployment name is `test-deployment`. Harness creates a `blue` configuration, marking the name of the deployment `test-deployment-blue`.
@@ -563,16 +560,16 @@ Additionally, `harness.io/color=blue` value is added to the selectors list:
 app: test-deployment
 harness.io/color=blue
 ```
+
 Note that the selectors for PDB, `.spec.selector` must match the controller's `.spec.selector`.
 
 The release history contains the name of the stage PDB resource (for example, `test-pdb-blue`) as part of the list of resources.
 
 ## Notes
 
-* **Blue Green Rollback** — A great benefit of a Blue Green deployment is rapid rollback: rolling back to the old version of a service/artifact is simple and reliable because network traffic is simply routed back to the original instances. You do not need to redeploy previous versions of the service/artifact and the instances that comprised their environment.
+- **Blue Green Rollback** — A great benefit of a Blue Green deployment is rapid rollback: rolling back to the old version of a service/artifact is simple and reliable because network traffic is simply routed back to the original instances. You do not need to redeploy previous versions of the service/artifact and the instances that comprised their environment.
 
 ## Next Steps
 
-* [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment)
-* [Create a Kubernetes Canary Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment)
-
+- [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment)
+- [Create a Kubernetes Canary Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment)

@@ -1,127 +1,160 @@
 ---
 title: Drone FAQs
 description: This article addresses some frequently asked questions about Drone.
-# sidebar_position: 2
-helpdocs_topic_id: 
-helpdocs_category_id: 
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 3
 ---
 
-# FAQ
+## Licenses, installation, and initial setup
 
+### Which endpoint can I use to check license details from the Drone UI?
 
+You can check Drone license details by navigating to `dronehost:port/varz`, such as `https://dronehost/varz`.
 
-#### What is endpoint to check licence details from Drone UI
+### Can I install Drone using Helm?
 
-You can check licence details from ui by navigating to \<-dronehost:port/varz> ex: https://dronehost/varz
+Yes, charts in the following GitHub repository are used to deploy Drone to Kubernetes: [https://github.com/drone/charts](https://github.com/drone/charts).
 
+### What are the two new components for Drone HA?
 
-#### Can we Install Drone using Helm
+Drone HA is available with HAProxy and Redis.
 
-Yes, Below charts are used to deploy Drone to Kubernetes.
-https://github.com/drone/charts
+* HAProxy load balances Drone server UI requests and requests from the Drone Runner to the server.
+* Redis is for queues and pub/sub related to runner events, log streaming, build cancellation events, and the build queue itself.
 
-#### Can a user with Base Permissions on scm(github etc) can activate a repo
+### Can I use Drone Enterprise for free?
 
-No, A user with create webook permission can only activate a repo as that requires some privilege access.  
+Organizations with annual gross revenue under US$1 million can [use the Drone Enterprise Edition for free](https://docs.drone.io/enterprise/#how-do-i-use-the-enterprise-edition-for-free).
 
-#### Drone CI supports importing libraries when using jsonnet. But builds keeps failing with an error similar to:
+For more information, go to [Drone Enterprise FAQ](https://docs.drone.io/enterprise/).
 
-RUNTIME ERROR: couldn't open import "frontend.libsonnet": no match locally or in the Jsonnet library paths .drone.jsonnet:1:19-46 thunk \<front_end> from \<$> .drone.jsonnet:131:2-11 During manifestation
+### How do I set the timezone for Drone?
 
-Solution: You need to set this env variable as well, otherwise it doesn't figure out the import paths correctly:
-DRONE_JSONNET_IMPORT_LIMIT
+When running the Drone Server image, you can use the `TZ={Area/Location}` environment variable to set the timezone. You must specify a valid timezone database name, for example:
 
-See: [https://github.com/harness/drone/commit/d50e89d4114a3fed49a1317f147078269a4bdfb5#diff-e1045c16b3ce29369b845d8421af54321c52394275810fc6caf92ca75e8be974R143]
-
-#### Drone HA is available with 2 new components
-
-1. HAProxy is used to load balance the drone server UI requests, and balance requests from the drone runner to the server. 
-2. Redis for queues and pub/sub. Used for runner events, logs streaming, build cancellation events, and finally the build queue itself. 
-
-#### GitHub will deprecate OAuth via query params, and it seems like the format of the token is changing as well, so will Drone setup work or w need to change anything
-Drone uses github client id and client secret for authentication and uses http header to pass that while making api calls and do not include in query parameter, so these changes from github end should not impact.
-
-#### Can we use DRONE_DOCKER_CONFIG while running docker build manually
-The credentials provided by DRONE_DOCKER_CONFIG are only used by Drone to pull images defined in the image section of the yaml. These credentials are not injected into pipeline steps (for security reasons) which is why the credentials are not available to you when manually running docker build.
-
-#### How to use Drone Enterprise for free as organizations with under $1 million US dollars in annual gross revenue as mentioned here: https://docs.drone.io/enterprise/
- You can "build the Enterprise Edition from source without build limits":
-https://docs.drone.io/enterprise/#how-do-i-use-the-enterprise-edition-for-free
-
-#### How to share configuration files across the pipeline to reuse same configuration
-Drone has build templates that can be shared across projects. A project can use a template and provide project-specific information to alter the build.
-
-
-#### Getting ERROR Database error 42704: type "number" does not exist while migrating from sqlite to Postgres
-It seems like as the build_deploy_id is type of number and this type is not present in PostgreSQL, So You have to create a new table with type bigint and than copy the data after renaming the table to get this working
-https://github.com/dimitri/pgloader/issues/1284 
-
-#### Failed to build npm: npm verb stack fatal: unable to look up the current user in the passwd file: no such user
-This error is linked to the Git user. Please add the variables in the steps GIT_COMMITTER_NAME and GIT_COMMITTER_EMAIL, like the example below:
-```sh
-export GIT_COMMITTER_NAME=’user_name’
-export GIT_COMMITTER_EMAIL=’user_email’
-```
-
-#### Does Drone Support External Databases?
-Yes, Drone CI has Postgres and MySQL databases support
-See: [https://docs.drone.io/server/storage/database/]
-
-#### Can I use Drone exec on Drone cloud?
-No, exec pipelines are disabled on Drone Cloud. This feature is only available when self-hosting.
-
-#### Which SCM ( Source Control Management ) is supported by the Drone?
-The Drone supports a wide variety of SCM, in this [Link](https://docs.drone.io/server/overview/) you can find the supported SCM.
-
-#### How to enable Flag Debug on Drone-Server and Drone-Runner?
-You can enable more detailed debug logging with the following configuration parameter:
-```sh
-DRONE_LOGS_DEBUG=true
-```
-
-#### How to enable Flag trace on Drone-Server and Drone-Runner?
-You can enable more detailed trace logging with the following configuration parameter:
-```sh
-DRONE_LOGS_TRACE=true
-```
-
-#### How to configure Timezone on the Drone?
-When running the Drone server image, the timezone can be set with an environment variable TZ=\{Area/Location} using a valid TZ database name EG:
 ```sh
 --env=TZ=Europe/London
 ```
 
-#### How to manage users on Drone-Server?
-You can manage users using the command line utility. Please see the command line tools [documentation](https://docs.drone.io/cli/install/) for installation instructions.
-Command examples can be found at this [link](https://docs.drone.io/server/user/management/).
+## SCM and Drone
 
-#### Does the Drone have Encryption support?
-Yes, Drone supports aesgcm encryption of secrets stored in the database. You must enable encryption before any secrets are stored in the database.
-See: [https://docs.drone.io/server/storage/encryption/]
+### Which SCM providers does Drone support?
 
-#### Does the Drone have Starlark extension support?
-Yes, Drone provides an official extension that enables support for Starlark.
-See: [https://docs.drone.io/server/extensions/starlark/]
+[Drone supports a variety of SCM providers.](https://docs.drone.io/server/overview/)
 
-#### Is it possible to integrate our Drone  builds with the Datadog Pipeline Visibility feature?
-You can use Datadog plugin  to send events and metrics to Datadog from a drone pipeline. https://plugins.drone.io/plugins/datadog
+### GitHub is deprecating OAuth via query params and might change the token format. Do I need to change my Drone setup?
 
-#### While using git clone step how to  fetch submodules 
-You can use --recursive flag while using clone so that it fetch submodules
+These GitHub changes aren't expected to impact Drone.
 
-#### Can we create custom drone plugins using Python? Plugin boilerplates/starters would be highly appreciated
-Yes, you can write drone plugin more details can be found here https://github.com/drone-plugins/drone-pypi
+The token format doesn't impact Drone because Drone uses the GitHub client ID and secret for authentication. While making API calls, Drone passes the credentials in the HTTP header, rather than through query parameters.
 
-#### If I define a cron in my drone.yml file in my repository? Would it automatically show up in the Drone UI as well? I would like to keep the definition in my code and not build it directly from the UI.
-Cron jobs are created in the Drone user interface only. When you reference the cron job in the yaml, it is solely for filtering purposes. 
+### How can I fetch submodules when using the Git clone step?
 
-#### Drone build was stuck for 5 hours but didn’t get timeout failed, My repository setting got 1 hour for the timeout period but seemed like it was not working.
-Most likely the reason for this issue is runner which was executing the steps/pipeline was terminated before the build was finished
+Use the `--recursive` flag with the Git clone step to fetch submodules.
 
-#### How to skip a particular commit without updating drone yaml
-You can add [CI SKIP] skip directive in individual commit message
+### Can I skip a particular commit without updating my drone.yml?
 
+You can add the `[CI SKIP]` directive in individual commit messages.
 
+## Databases and Drone
 
+### Does Drone support external databases?
+
+Yes, [Drone CI supports PostgreSQL and MySQL databases](https://docs.drone.io/server/storage/database/).
+
+### Does Drone have encryption support?
+
+Yes, Drone supports AES-GCM encryption of secrets stored in the database. You must [enable encryption](https://docs.drone.io/server/storage/encryption/) before any secrets are stored in the database.
+
+### When migrating from sqlite to PostgreSQL, I am getting database error 42704: type "number" does not exist.
+
+The `build_deploy_id` type is `number`, and this type is not present in PostgreSQL. To resolve this, you must create a new table with type `bigint`, and then copy the data after renaming the table. For more information, refer to the [discussion of database error 42704 on the PGloader GitHub repository](https://github.com/dimitri/pgloader/issues/1284).
+
+## Drone user management
+
+### Can users with base permissions in our SCM provider activate a repo?
+
+No. Activating repos requires certain privileges. Users with create webook permissions can activate repos.
+
+### How do I manage users on Drone-Server?
+
+You can use the Drone CLI to manage users. [Install the Drone CLI](https://docs.drone.io/cli/install/), and then use the [user commands](https://docs.drone.io/server/user/management/).
+
+### Build fails with unable to look up current user in passwd file, no such user.
+
+The following error is related to Git user configuration:
+
+```
+Failed to build npm: npm verb stack fatal: unable to look up the current user in the passwd file: no such user
+```
+
+To resolve this issue, you need to set `GIT_COMMITTER_NAME` and `GIT_COMMITTER_EMAIL` in your [Git environment variables](https://git-scm.com/book/en/v2/Git-Internals-Environment-Variables), for example:
+
+```sh
+export GIT_COMMITTER_NAME='user_name'
+export GIT_COMMITTER_EMAIL='user_email'
+```
+
+## Plugins, imports, integrations, and extensions
+
+### Builds fail with runtime error: couldn't open imported jsonnet library.
+
+Drone CI supports importing libraries when using jsonnet, but builds keeps fail with the following error:
+
+```
+RUNTIME ERROR: couldn't open import "frontend.libsonnet": no match locally or \
+in the Jsonnet library paths .drone.jsonnet:1:19-46 thunk <front_end> from <$> .drone.jsonnet:131:2-11 During manifestation
+```
+
+To resolve this issue, you must set the `DRONE_JSONNET_IMPORT_LIMIT` environment variable, which helps Drone resolve the import paths. The default value for this environment variable is `0`.
+
+### Does Drone have Starlark extension support?
+
+Yes, you can use the [official Drone extension to enable Starlark support](https://docs.drone.io/server/extensions/starlark/).
+
+### Is it possible to integrate my Drone builds with Datadog's Pipeline Visibility feature?
+
+You can use the [Datadog Drone plugin](https://plugins.drone.io/plugins/datadog) to send events and metrics to Datadog from a Drone pipeline.
+
+### Can I create custom Drone plugins using Python?
+
+Yes, you can write your own Drone plugins. For more information, go to [Write your own custom plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins). For an example Python plugin, refer to the [Drone PyPi plugin GitHub repo](https://github.com/drone-plugins/drone-pypi).
+
+## Drone pipelines and builds
+
+### How do I share configuration files across a Drone pipeline to reuse the same configuration?
+
+You can create Drone build templates and share them across projects. A project can use a template and provide project-specific information to alter the build.
+
+### Can I use Drone exec on Drone cloud?
+
+No, exec pipelines are disabled on Drone Cloud. This feature is only available when self-hosting.
+
+### Can I use DRONE_DOCKER_CONFIG while manually running docker build?
+
+The credentials provided by `DRONE_DOCKER_CONFIG` are only used by Drone to pull images defined in the `image` section of the YAML. For security reasons, these credentials aren't injected into pipeline steps; therefore, these credentials aren't available when manually running `docker build`.
+
+### Drone build running for many hours past the timeout limit without automatically failing.
+
+This is usually caused by a step starting a subprocess that never exits, or the Drone runner was terminated before the build finished or timed out.
+
+### If I define a cron in my drone.yml file in my repo, does it appear in the Drone UI as well?
+
+You can create cron jobs in the Drone UI only. References to cron jobs in your drone.yml are for filtering purposes only.
+
+## Drone logging
+
+### How do I enable the debug logs flag on Drone-Server and Drone-Runner?
+
+You can enable more detailed debug logging with the following configuration parameter:
+
+```yaml
+DRONE_LOGS_DEBUG=true
+```
+
+### How do I enable the trace logs flag on Drone-Server and Drone-Runner?
+
+You can enable more detailed trace logging with the following configuration parameter:
+
+```yaml
+DRONE_LOGS_TRACE=true
+```

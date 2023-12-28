@@ -33,7 +33,7 @@ To configure ABAC in Harness, you must be an **Admin** for the relevant account,
 
    <!-- ![](./static/set-up-rbac-pipelines-42.png) -->
 
-   <docimage path={require('./static/set-up-rbac-pipelines-42.png')} />
+   <DocImage path={require('./static/set-up-rbac-pipelines-42.png')} />
 
 3. Select **Environments** and/or **Connectors**.
 
@@ -41,7 +41,7 @@ To configure ABAC in Harness, you must be an **Admin** for the relevant account,
 
    <!-- ![](./static/attribute-based-access-control-05.png) -->
 
-   <docimage path={require('./static/attribute-based-access-control-05.png')} />
+   <DocImage path={require('./static/attribute-based-access-control-05.png')} />
 
 4. To apply ABAC to **Connectors** or **Environments**, select **By Type**, and then select **Add**.
 
@@ -55,13 +55,13 @@ To configure ABAC in Harness, you must be an **Admin** for the relevant account,
 
    <!-- ![](./static/attribute-based-access-control-06.png) -->
 
-   <docimage path={require('./static/attribute-based-access-control-06.png')} />
+   <DocImage path={require('./static/attribute-based-access-control-06.png')} />
 
    For **Connectors**, you can choose one or more of the following Harness connector types: **Artifact Repositories**, **Cloud Costs**, **Cloud Providers**, **Code Repositories**, **Monitoring and Logging Systems**, **Secret Managers**, and **Ticketing Systems**.
 
    <!-- ![](./static/attribute-based-access-control-07.png) -->
 
-   <docimage path={require('./static/attribute-based-access-control-07.png')} />
+   <DocImage path={require('./static/attribute-based-access-control-07.png')} />
 
 6. Select **Save**.
 
@@ -73,6 +73,6 @@ Creating resource groups with ABAC is one part of [configuring RBAC in Harness](
 
 <!-- ![](./static/attribute-based-access-control-08.png) -->
 
-<docimage path={require('./static/attribute-based-access-control-08.png')} />
+<DocImage path={require('./static/attribute-based-access-control-08.png')} />
 
 After configuring roles and resource group, you assign them to [users](./add-users.md), [user groups](./add-user-groups.md), and [service accounts](./add-and-manage-service-account.md).

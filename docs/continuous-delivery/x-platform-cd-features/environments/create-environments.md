@@ -412,7 +412,7 @@ You can also propagate services between stages. For more information, go to [Pro
    
    The environment and infrastructure definition from the previous stage is now configured in this stage.
 
-   <docimage path={require('./static/cf661bc9c2f43bd4e33babeedb3ed9002bfdf3722c5bb3bd2417fe92c6b1122b.png')} width="60%" height="60%" title="Click to view full size image" />  
+   <DocImage path={require('./static/cf661bc9c2f43bd4e33babeedb3ed9002bfdf3722c5bb3bd2417fe92c6b1122b.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 
 ## Define GitOps clusters
