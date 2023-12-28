@@ -16,16 +16,15 @@ You can [write your own plugins](./custom_plugins.md) and use **Plugin** steps t
 
 ## Drone plugins
 
-You can use [Plugin steps](./run-a-drone-plugin-in-ci.md) to run [Drone plugins](https://plugins.drone.io/) in Harness CI pipelines.
+You can use [Plugin steps](./run-a-drone-plugin-in-ci.md) to run any [Drone plugins](https://plugins.drone.io/) in Harness CI pipelines.
 
-For example, you can use the Artifact Metadata Publisher plugin to publish any artifact URL to the [Artifacts tab](../viewing-builds.md). For instructions, go to:
+You can run plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/), the [Drone Plugins GitHub org](https://github.com/drone-plugins), the [Harness Community GitHub org](https://github.com/harness-community), or [your own plugins](#custom-plugins).
 
-* [View test reports on the Artifacts tab.](/docs/continuous-integration/use-ci/run-tests/viewing-tests#view-reports-on-the-artifacts-tab)
-* [View code coverage reports on the Artifacts tab.](/docs/continuous-integration/use-ci/run-tests/code-coverage#view-code-coverage-reports-on-the-artifacts-tab)
-* [View GCS artifacts on the Artifacts tab.](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings#view-artifacts-on-the-artifacts-tab)
-* [View JFrog artifacts on the Artifacts tab.](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog#view-artifacts-on-the-artifacts-tab)
-* [View Sonatype Nexus artifacts on the Artifacts tab.](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus#view-artifacts-on-the-artifacts-tab)
-* [View S3 artifacts on the Artifacts tab.](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings#view-artifacts-on-the-artifacts-tab)
+Useful and popular plugins include:
+
+* **Artifact Metadata Publisher:** The [Artifact Metadata Publisher plugin](/tutorials/ci-pipelines/publish/artifacts-tab) can publish any artifact URL to the [Artifacts tab](../viewing-builds.md). For example, you can publish links to [test reports](/docs/continuous-integration/use-ci/run-tests/viewing-tests#view-reports-on-the-artifacts-tab), [code coverage reports](/docs/continuous-integration/use-ci/run-tests/code-coverage#view-code-coverage-reports-on-the-artifacts-tab), and [artifacts uploaded to cloud storage](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts) to the Artifacts tab.
+* **S3 Upload and Publish:** Similar to the Artifacts Metadata Publisher plugin, the [S3 Upload and Publish plugin](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings/#use-the-s3-upload-and-publish-plugin) handles both uploading your artifact to S3 and publishing the URL to the Artifacts tab.
+* **Push Helm chart to Docker registry:** Use this plugin to [upload Helm charts to Docker registries](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-helm-chart-to-docker).
 
 <!-- :::tip
 
