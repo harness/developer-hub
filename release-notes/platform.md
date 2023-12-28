@@ -82,6 +82,7 @@ The following deprecated API endpoints will no longer be supported:
 
 ## December 2023
 
+<!--  
 ### Version 1.17.x
 
 ### Fixed issues
@@ -97,6 +98,7 @@ The following deprecated API endpoints will no longer be supported:
    `UserGroupIdentifier: "abc_xyz"`
    
    `UserGroupName: "abc.xyz"` 
+-->
 
 ### Version 1.16.6
 
