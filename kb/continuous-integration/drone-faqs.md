@@ -158,3 +158,15 @@ You can enable more detailed trace logging with the following configuration para
 ```yaml
 DRONE_LOGS_TRACE=true
 ```
+
+#### Is it possible to integrate our Drone  builds with the Datadog Pipeline Visibility feature?
+
+You can use Datadog plugin  to send events and metrics to Datadog from a drone pipeline. https://plugins.drone.io/plugins/datadog
+
+#### While using git clone step how to  fetch submodules 
+
+You can use --recursive flag while using clone so that it fetch submodules
+
+#### Can we create custom drone plugins using Python? Plugin boilerplates/starters would be highly appreciated
+
+Yes, you can write drone plugin more details can be found here https://github.com/drone-plugins/drone-pypi
