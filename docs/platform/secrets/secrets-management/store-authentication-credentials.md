@@ -6,14 +6,10 @@ description: This topic explains how Harness stores authentication credentials f
 
 Harness uses connectors to external secret managers (for example Google Secret Manager or Hashicorp Vault) to resolve/store secrets used by pipelines and elsewhere in the Harness platform. External secret manager connectors require configuration, including a means to authenticate to the external secret manager.
 
-:::info important
-You can **only use Harness Built-in Secret Manager to store authentication credentials** for access to the corresponding secret manager.
+import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
 
-Storing credentials from one secret manager within another can result in complex and challenging situations. Moreover, these configurations might introduce vulnerabilities, posing potential security risks.
+<Storeauth />
 
-The Harness platform has several validations, including the disabling of self-references.
-
-:::
 
 Below is further explanation for each type of secret manager Harness currently supports.
 

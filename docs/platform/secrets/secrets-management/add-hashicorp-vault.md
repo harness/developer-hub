@@ -14,10 +14,15 @@ The video below provides an overview of how to use HashiCorp Vault as an externa
 
  <DocVideo src="https://www.loom.com/embed/92335a30823a4662a1d7212395c66e63" width="100%" height="600" />
 
+import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
+
+<Storeauth />
+
 ### Before you begin
 
 - [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
 - [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
+- [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
 - Make sure that the Harness Delegate can connect to the Vault URL.
 - Make sure you have View and Create/Edit permissions for secrets.​
 

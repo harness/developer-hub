@@ -14,6 +14,10 @@ Unlike AWS KMS, AWS Secrets Manager stores both secrets and encrypted keys. With
 
 This topic describes how to add an AWS Secret Manager in Harness.
 
+import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
+
+<Storeauth />
+
 ### Before you begin
 
 * If you are adding an AWS Secrets Manager running on ROSA, you must also add an environment variable `AWS_REGION` with the appropriate region as its value, for example, `AWS_REGION=us-east-1`.

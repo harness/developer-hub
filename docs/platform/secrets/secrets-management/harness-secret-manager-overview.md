@@ -13,9 +13,14 @@ Harness includes a built-in Secret Management feature that enables you to store 
 * Secrets are always stored in encrypted form and decrypted when they are needed.
 * Harness Manager does not have access to your key management system, and only the Harness Delegate, which sits in your private network, has access to it. Harness never makes secret management accessible publicly. This adds an important layer of security.
 
+import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
+
+<Storeauth />
+
 ### Before you begin
 
 * Go to [Harness Key Concepts](../../../get-started/key-concepts.md)
+* Go to [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
 
 ### Visual Summary
 

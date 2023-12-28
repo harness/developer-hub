@@ -10,6 +10,10 @@ helpdocs_is_published: true
 
 Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Connectors and Pipelines.
 
+import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
+
+<Storeauth />
+
 Looking for specific secret managers? Go to:
 
 * [Add an AWS KMS Secret Manager](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager)
@@ -23,6 +27,7 @@ Looking for specific secret managers? Go to:
 
 * [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
 * [Harness Secret Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
+* [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
 
 ### Step 1: Configure Secret Manager
 

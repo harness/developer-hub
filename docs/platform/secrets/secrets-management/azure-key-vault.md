@@ -15,6 +15,7 @@ To store and use encrypted secrets (such as access keys) and files, you can add 
 * Go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
 * Go to [About Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/general/overview) by Microsoft.
 * Go to [Azure Key Vault Basic Concepts](https://docs.microsoft.com/en-us/azure/key-vault/general/basic-concepts).
+* Go to [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
 * Make sure you have set up an Azure account.
 * Make sure you have **View** and **Create/Edit** permissions for secrets.
 
@@ -29,6 +30,10 @@ Here's a visual summary:
 ## Limitations
 
 * Key Vault stores and manages secrets as sequences of octets (8-bit bytes), with a maximum size of 25k bytes each. For more information, go to [Azure Key Vault secrets](https://docs.microsoft.com/en-us/azure/key-vault/secrets/about-secrets).
+
+import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
+
+<Storeauth />
 
 ## Create an Azure Reader role
 

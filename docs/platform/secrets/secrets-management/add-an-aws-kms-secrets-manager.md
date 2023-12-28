@@ -10,12 +10,18 @@ helpdocs_is_published: true
 
 To store and use encrypted secrets (such as access keys) and files, you can add an AWS KMS Secret Manager.
 
+import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
+
+<Storeauth />
+
 This topic describes how to add an AWS KMS Secret Manager in Harness.
 
 ### Before you begin
 
 * [Learn Harness' Key Concepts](../../../get-started/key-concepts.md).
 * [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
+* [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
+
 
 ### Step 1: Add a Secret Manager
 

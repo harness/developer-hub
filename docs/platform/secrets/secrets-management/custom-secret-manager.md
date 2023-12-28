@@ -12,11 +12,16 @@ Harness includes a built-in Secrets Management feature that enables you to store
 
 You can also access your encrypted secrets stored in third-party Secret Managers using the Harness Custom Secret Manager.
 
+import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
+
+<Storeauth />
+
 This topic explains how to add and use a Custom Secret Manager in Harness.
 
 ### Before you begin
 
 * [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
+* [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
 
 ### Permissions
 
