@@ -29,5 +29,5 @@
 | Implement and utilize advanced features like caching and conditional executions in CI      | [Stage and step conditional execution settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) |
 | Diagnose, troubleshoot, and resolve common issues and errors in CI stages| [Troubleshoot CI](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci) |
 | **9. Implementation of Plugins and Extensions in Harness CI**  | |
-| Understand, install, and manage plugins in the Harness CI environment | [Plugin step settings](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference/)                                                                          |
-| Implement use-cases using various Harness CI and third-party plugins | [Explore plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins/)|
+| Understand, install, and manage plugins in the Harness CI environment | [Use Drone plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci)                                                                          |
+| Implement use-cases using various Harness CI and third-party plugins | [Explore plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins/) |

@@ -21,6 +21,12 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
+<!-- new plugins for release notes -->
+<!-- Push Helm chart to Docker registry -->
+<!-- Maven Docker Image Builder (Get pom version and output as MAVEN_PROJECT_VERSION so you can pass the Maven version as a build arg when building a Docker image. It then build & push a Docker image. I find this scope too narrow.) -->
+<!-- Azure cache - Why a separate plugin when we have one that is already compatible? -->
+<!-- Docker image repeater - Limited to users namespace -->
+
 ## December 2023
 
 ### Version 1.5.1

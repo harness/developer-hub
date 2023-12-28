@@ -2245,8 +2245,7 @@ We have autoAbortPreviousExecutions setting in trigger, which when set as true w
 
 #### Can a single custom plugin be created that could be used in steps for both the CI and CD modules? 
 
-Yes, it is possible to create a single custom plugin that can be used in both the CI and CD modules. The documentation for creating custom plugins is similar for both modules, and the same plugin can be used in both. The only difference is in how the plugin is used in the pipeline. In the CI module, the plugin is used in a Plugin step, while in the CD module, it is used in a Containerized step. As long as the plugin is designed to work in both types of steps, it can be used in both modules.
-Sources: https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/plugin-step
+Yes, it is possible to create a single custom plugin that can be used in both the CI and CD modules. The documentation for creating custom plugins is similar for both modules, and the same plugin can be used in both. The only difference is in how the plugin is used in the pipeline. In the CI module, the plugin is used in a [Plugin step](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins), while in the CD module, it is used in a [Containerized step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/plugin-step). As long as the plugin is designed to work in both types of steps, it can be used in both modules.
 
 #### The current documentation advises us to use the drone plugin model. How similar will this be with the move to gitness?
 

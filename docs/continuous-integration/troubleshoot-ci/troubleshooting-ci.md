@@ -30,11 +30,11 @@ For information about handling secrets with new line characters or other shell-i
 
 ## Output variable length limit
 
-If an output variable's length is greater than 64KB, steps can fail or truncate the output. If you need to export large amounts of data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin.md).
+If an output variable's length is greater than 64KB, steps can fail or truncate the output. If you need to export large amounts of data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin.md).
 
 ## Multi-line output variables truncated
 
-Output variables don't support multi-line output. Content after the first line is truncated. If you need to export multi-line data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin.md).
+Output variables don't support multi-line output. Content after the first line is truncated. If you need to export multi-line data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin.md).
 
 ## Git connector fails to connect to the SCM service
 

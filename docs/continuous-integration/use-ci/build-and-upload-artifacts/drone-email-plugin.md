@@ -2,6 +2,8 @@
 title: Export artifacts by email
 description: Use the Drone Email plugin to export reports and other artifacts by email.
 sidebar_position: 90
+redirect_from:
+  - /docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin
 ---
 
 You can use the [Drone Email plugin](https://plugins.drone.io/plugins/email) to export reports, data, and other artifacts by email.
@@ -28,7 +30,7 @@ You can use the [Drone Email plugin](https://plugins.drone.io/plugins/email) to 
                          cat test.html
    ```
 
-3. Use the Email plugin in a [Plugin step](./plugin-step-settings-reference.md), for example:
+3. Use the Email plugin in a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference.md), for example:
 
    ```yaml
                  - step:
@@ -50,7 +52,7 @@ You can use the [Drone Email plugin](https://plugins.drone.io/plugins/email) to 
 
 For information about Email plugin settings, go to the [Drone Email plugin documentation](https://plugins.drone.io/plugins/email).
 
-For information about the Plugin step settings, go to the [Plugin step settings documentation](./plugin-step-settings-reference.md).
+For information about the Plugin step settings, go to the [Plugin step settings documentation](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference.md).
 
 ## Send with username and password authentication
 
