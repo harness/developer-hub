@@ -47,12 +47,10 @@ For example, if you have a Harness text secret with the identifier **doc-secret*
 
 You can reference it in a Shell Script step like this:​
 
-
 ```
 echo "text secret is: " <+secrets.getValue("doc-secret")>
 ```
 When you deploy the Pipeline, the log is sanitized and the output is:​
-
 
 ```
 Executing command ...  
