@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-12-07T10:00
+date: 2024-01-03T10:00
 sidebar_position: 15
 ---
 
@@ -22,7 +22,7 @@ These release notes describe recent changes to Harness Harness Self-Managed Ente
 
 :::
 
-## December xx, 2023, version 81720
+## January 3, 2024, version 81720
 
 ### New features and enhancements
 
@@ -108,11 +108,9 @@ gsutil -m cp \
 
   With this release, if another user updates a pipeline and you do not have unsaved changes for that pipeline, Harness applies that user's changes and updates your view of the pipeline without showing you a prompt.
 
-<!---
 #### Cloud Cost Management
 
 - Pagination for perspectives has been added for faster loading time. By default, only the first 20 perspectives are displayed, ordered by the most recent. (CCM-15124)
---->
 
 #### Harness Platform
 
@@ -571,13 +569,15 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - The **Exemptions** table now shows the pipeline name in the **Scope** column and not the ID. This keeps the user experience consistent with other areas of the application. (STO-6631)
 
-<!--
-
 - Fixed a UI issue in the Mend configuration UI, where changing the [Lookup Type](/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference#lookup-type)didn't update the YAML value correctly. (STO-6553)
 
 - Fixed a back-end API linking issue that could cause rendering/linking issues in the **Security Tests** tab. (STO-6586)
 
--->
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
 
 ## November 30, 2023, version 81308
 
@@ -1196,11 +1196,6 @@ gsutil -m cp \
 #### Fixed issue
 
 - Default values for external databases caused upgrade issues. Harness removed local default MongoDB values from `values.yaml` files to resolve the issue. (SMP-2339)
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### November 1, 2023, version 80917
 
