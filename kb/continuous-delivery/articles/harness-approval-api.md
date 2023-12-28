@@ -7,31 +7,33 @@ title: "Orchestrating Deployments with Choice: Exploring Harness Approval APIs"
 
 Approvals play a crucial role in getting your deployments done timely and with precision. Although too many approvals or too many dependencies on external systems can create bottlenecks and increase the complexity of managing the approvals.
 
-Harness understands the importance of this coordination, and that's why we bring you the Approval API which can approve any pipeline by the pipeline execution id. These APIs are designed to simplify and streamline the approval process in your projects, offering flexibility and choice to suit your unique needs.
+Harness understands the importance of this coordination, and that's why we bring you the Approval API which can approve any pipeline by the pipeline execution id. 
 
-## The Canvas of Approval
+## Why use Harness Approval?
 
-Traditionally, the Harness UI has been the go-to for approving or rejecting pipeline deployments. However, in the era of automation, we present Approval APIs that open up new dimensions for orchestrating your deployments.
+Harness Approval Step can be used to prevent a stage execution from proceeding without an approval from the required users. For e.g. You might want to add an approval step just before a production deployment happens to have a controlled release.
 
-### A Symphony of Approvals
+Familiarize yourself with the Harness Approval Step. [The Harness documentation provides](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/) detailed information on it.
 
-Consider this sample scenario: Your organization has multiple pipelines, each representing a crucial step in your software deployment process. These pipelines await approvals before progressing further, ensuring a robust and controlled release.
+### A Sample Scenario using Harness Approval
 
-Now, imagine one of these pipelines is waiting for an approval. But, this approval can only be approved after the completion of a process running in an external 3rd party system. The approver, responsible for approving pipelines, would typically:
+Your organization has multiple pipelines, each representing a crucial step in your software deployment process. These pipelines await approvals before progressing further, ensuring a robust and controlled release.
 
-1. **Navigate the Pipeline Executions:** First, they have to go through the list of pipeline executions to identify the executions waiting for an approval. 
+Now, imagine one of these pipelines is waiting for an approval. But, this approval depends on the status of a process running in an external system. The approver, responsible for approving pipelines, would typically:
 
-2. **Connect with External Systems:** Upon identifying the pending approval, the approver is then required to switch to the external 3rd party system. Here, they manually interact with the system to grant approval, possibly after validating external conditions or processes.
+1. Identify the pipeline execution that needs to be manually approved.
 
-3. **Repeat the Process:** Generally the approver wouldn't have just one pipeline to approve, but several such pending approvals. Each approval necessitates the same tedious navigation, manual intervention, and decision-making process.
+2. The approver then verifies whether the external system's job is complete and successful, and based on the job's status approves or rejects the execution.
 
-This cumbersome journey not only consumes valuable time but also introduces the potential for errors and delays. As the number of pending approvals increases, so does the complexity of managing and ensuring timely approvals.
+3. Generally the approver wouldn't have just one pipeline to approve, but several such pending approvals.
 
-## Introducing the Approval API: Approve or Reject an Execution by Pipeline Execution ID
 
-This Approval API introduces a seamless method to approve or reject a pipeline by directly using the pipeline's execution ID. It only needs an execution id to approve any pipeline waiting for an approval. So any process can call this API to approve or reject the execution based on the process's status, eliminating the need for manual intervention and making approvals a seamless process.
+## Using Approval API: Approve or Reject an Execution by Pipeline Execution ID
 
-Below is an example API request to approve a pipeline by it's execution id:
+Their can be multiple such scenarios like the one listed above, which can be automated using the Harness Approval API. The API can approve or reject a pipeline by directly using the pipeline's execution ID. 
+So any process can call this API to approve or reject the execution based on the process's status, eliminating the need for manual intervention and making approvals a seamless process.
+
+Below is an example API curl request to approve a pipeline by it's execution id:
 
 ```
 curl -i -X POST \
@@ -56,20 +58,15 @@ curl -i -X POST \
   '
 ```
 
-### But wait, there's a catch:
+To ensure clarity and precision, this API is designed to handle only one approval instance at a time. If multiple approvals are pending simultaneously, the API call will encounter an error, signaling that approving multiple instances in a single call is not supported. However, in the scenario where only one approval is awaiting consideration, it will seamlessly proceed to be automatically approved.
 
-This API can only handle one approval instance at a time. If you have multiple approvals waiting for attention, it will throw an error. This is a restriction we have put in place to keep things simple.
-
-### Navigating the Approval Symphony: A Real Scenario:
-Imagine this: your deployment pipeline has multiple parallel approvals eagerly waiting in line. But our API, while powerful, can only handle one at a time. What if you need to pinpoint and approve a specific one? 
-
-### Enter the Approval Callback Identifier—Your Orchestration Superpower:
-To overcome the limitation and provide users with more control, the Approval Callback Identifier introduces a user-configurable parameter—`callback_id`. This parameter is optional, allowing users to provide a unique identifier to distinguish and approve specific instances within the deployment pipeline. 
+### Using Approval API: Pipeline having multiple approvals:
+There can be some usecases where multiple approvals are waiting in a pipeline, and we want to approve a specific one out of them using the API. To overcome this limitation, the configuration of Harness Approval Step contains a parameter—`callback_id`. This parameter is optional, allowing users to provide a unique identifier to each approval step, so that it can be identified easily.
 This parameter can be configured while adding an Harness Approval step to the pipeline, like shown in the below image
 
 <docimage path={require('../static/harness-approval-api.png')} width="60%" height="60%" title="Click to view full size image" />
 
-Now, seamlessly integrate this power into your orchestration with a refined curl request:
+This `callback_id` can now be passed to the same API, to further filter the approval instances waiting in a particular pipeline execution. Here's a sample curl request:
 
 ```
 curl -i -X POST \
@@ -94,9 +91,15 @@ curl -i -X POST \
   '
 ```
 
+:::note
+
+If there are multiple approvals waiting in the same pipeline execution with the same callback identifier, this API call will fail again. This API at any-time supports approving only one Harness Approval step at a time.
+
+:::
+
 ## Illustrating with a Sample Scenario
 
-Let's dive into a real-world example to showcase approval using execution id in action. Consider the following sample pipeline which has 2 Stages:
+Let's dive into a real-world example to showcase approval using execution id and callback id in action. Consider the following sample pipeline which has 2 Stages:
 
 - **Stage 1: Approval Stage**
   
@@ -106,9 +109,9 @@ Let's dive into a real-world example to showcase approval using execution id in 
 
     This step will basically generate a random uuid using `uuidgen` and export it as a harness expression using Shell Script Output Variables.
 
-    ***Step 2: HTTP Step - To trigger the 3rd party system job:***
+    ***Step 2: HTTP Step - To trigger the external system job:***
 
-    This step will trigger the 3rd party system job, while passing the pipeline execution id along with the uniquely generated callback identifier.
+    This step will trigger the external system job, while passing the pipeline execution id along with the uniquely generated callback identifier.
 
     ***Step 3: Prod Approval Step - Approval Step just before the prod deployment:***
 
@@ -118,7 +121,7 @@ Let's dive into a real-world example to showcase approval using execution id in 
 
   This stage has the deployment steps, to do the actual deployment to the production system
 
-Once this orchestrated pipeline is set in motion, it initiates a randomized UUID, triggers a job in the 3rd party system, and gracefully awaits approval. Now, the 3rd party system holds the control to either approve or reject the pipeline based on the completion status of the job. This entire approval process now becomes automated, hence ensuring precision and efficiency in every deployment instance.
+Once this orchestrated pipeline is set in motion, it initiates a randomized UUID, triggers a job in the external system, and gracefully awaits approval. Now, the external system holds the control to either approve or reject the pipeline based on the completion status of the job. This entire approval process now becomes automated, hence ensuring precision and efficiency in every deployment instance.
 
 Here's a sample account level step group template, to get you started. Simply save this step group template and use it in the pipelines that need an automated approval step.
 
@@ -187,21 +190,17 @@ Replace the <step_group_id> by the identifier of the stepgroup when it gets used
 
 :::
 
+## Fixing common issues while using API
 
-## Ensuring Single Approval Instance
+1. Getting error `User not authorized to approve/reject` while running the API:
+  
+  Each Approval Step can only be approved by a limited set of users, which is defined by the user groups configuration in the Harness Approval Step. To verify if the approval is only done by authorized users, this API uses the permissions of the user who's api key is passed in the header `x-api-key` only. So the key and the user's permission needs to be verified in case the API call is failing.
 
-To ensure clarity and precision, this API is designed to handle only one approval instance at a time. If multiple approvals are pending simultaneously, the API call will encounter an error, signaling that approving multiple instances in a single call is not supported. However, in the scenario where only one approval is awaiting consideration, it will seamlessly proceed to be automatically approved.
+2. Getting error `Invalid request: execution_id param value provided doesn't belong to Account: <account_id>, Org: <org_id>, Project: <project_id> or the pipeline has been deleted`:
 
-## The Power of Choice Unleashed
+  The execution id parameter of the API, or the account/org and project identifiers being passed to the API might not be pointing to a correct pipeline execution.
 
-- **Streamlined Workflow:** Automate the approval process directly from your systems.
-- **Real-time Integration:** Sync external processes seamlessly with your deployment pipelines.
-- **Efficiency Redefined:** No need for manual interventions—let the Approval API do the heavy lifting.
+3. Getting error `Found no Harness Approval Instance waiting for pipeline execution id: <execution_id> and callback id: <callback_id>`:
 
-## Navigating the Future
-
-Bid farewell to manual time-taking approvals, which could be time consuming and delay your release cycles. With this Approval API, you can automate the approvals, which could have been automated in the first place for e.g. approvals which just require a go ahead from other processes/pipelines.
-
-### Harness Documentation
-
-Familiarize yourself with the Harness Approval Step. [The Harness documentation provides](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/) detailed information on it.
+  The pipeline execution id passed wouldn't be having any Harness Approval Step with the provided callback id waiting for approval at the time of the API call. This API can be used to approve only Harness Approval Steps and doesn't support other approval steps that Harness provides.
+  Also, if no callback id is passed to the API, it will fetch all the approval steps in an execution irrespective of callback id being configured in the Harness Approval Step.
