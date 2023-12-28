@@ -60,7 +60,7 @@ curl -i -X POST \
 
 To ensure clarity and precision, this API is designed to handle only one approval instance at a time. If multiple approvals are pending simultaneously, the API call will encounter an error, signaling that approving multiple instances in a single call is not supported. However, in the scenario where only one approval is awaiting consideration, it will seamlessly proceed to be automatically approved.
 
-### Using Approval API: Pipeline having multiple approvals:
+### Using Approval API for a pipeline having multiple approvals:
 There can be some usecases where multiple approvals are waiting in a pipeline, and we want to approve a specific one out of them using the API. To overcome this limitation, the configuration of Harness Approval Step contains a parameter—`callback_id`. This parameter is optional, allowing users to provide a unique identifier to each approval step, so that it can be identified easily.
 This parameter can be configured while adding an Harness Approval step to the pipeline, like shown in the below image
 
