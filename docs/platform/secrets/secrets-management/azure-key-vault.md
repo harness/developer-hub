@@ -15,7 +15,7 @@ To store and use encrypted secrets (such as access keys) and files, you can add 
 * Go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
 * Go to [About Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/general/overview) by Microsoft.
 * Go to [Azure Key Vault Basic Concepts](https://docs.microsoft.com/en-us/azure/key-vault/general/basic-concepts).
-* Go to [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
+* Go to [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials).
 * Make sure you have set up an Azure account.
 * Make sure you have **View** and **Create/Edit** permissions for secrets.
 

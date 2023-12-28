@@ -20,7 +20,7 @@ This topic describes how to add an AWS KMS Secret Manager in Harness.
 
 * [Learn Harness' Key Concepts](../../../get-started/key-concepts.md).
 * [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
-* [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
+* [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials).
 
 
 ### Step 1: Add a Secret Manager
