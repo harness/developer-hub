@@ -62,7 +62,6 @@ module.exports = function (context) {
   }
 }
 let previousUrl = "";
-console.log("previousUrl", previousUrl);
 const observer = new MutationObserver(function () {
   if (previousUrl == "") {
     setTimeout(Feedback, 2000);
