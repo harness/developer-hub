@@ -4,6 +4,7 @@ hide_table_of_contents: true
 title: End-to-End CI/CD Pipeline
 redirect_from:
   - /tutorials/cd-pipelines/unified-cicd
+  - /tutorials/cd-pipelines/e2e-pipeline
 ---
 
 # End-To-End CI/CD Pipeline
