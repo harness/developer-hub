@@ -124,3 +124,17 @@ This error indicates that the GitOps entity you are trying to create exists. It 
 - A different scope (account, organization, or project) in Harness.
 
 - A different Argo CD project that is not mapped to a Harness project.
+  
+
+### Issue: "rpc error: code = Unknown desc = error testing repository connectivity: authorization failed"
+
+This error occured when attempted to connect a repo with installed agent and it's unable to connect repository in Github:
+
+- Make sure to monitor rate limitations on github account before attempting to connect repo.
+
+- Manage 'Rate Limiting' in Git by 'Enable Git Rate Limiting' to True.
+
+
+ 
+
+
