@@ -45,10 +45,6 @@ The Push Helm chart to Docker registry plugin uses `helm package`, `helm registr
 | `docker_username` | String | A username for accessing the target Docker registry. This is appended to the `docker_registry` as the target namespace where the chart will be uploaded. | `my_docker_user` |
 | `docker_password` | String | An [expression referencing a secret](/docs/platform/secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier) containing the password for the specified username. | `<+secrets.getValue("docker_chart_registry_password")>` |
 
-<!-- ![A Plugin step configured for the Nexus Publisher plugin.](./static/sonatype-nexus-plugin-visual-settings.png) -->
-
-<DocImage path={require('./static/sonatype-nexus-plugin-visual-settings.png')} />
-
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
 
