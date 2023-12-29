@@ -53,7 +53,7 @@ Custom queries involve custom fields. Currently, Dashboard Intelligence by AIDA 
 
 Dashboard Intelligence by AIDA infers the most relevant data visualization for the natural language query by default. If you want to bypass the inference and enforce an explicit visualization type, explicitly state the desired visualization type in your query. For example, “What is my monthly deployment count? Filter for the past 12 months. Make this a line chart.”
 
-Harness currently supports the following visualization types:
+Dashboard Intelligence by AIDA currently supports the following visualization types:
 
 - Bar
 - Column
@@ -112,7 +112,7 @@ Dashboards are created inside a folder. If you don't specify a folder, the dashb
 
 ## Best practices and guidelines for Dashboard Intelligence by AIDA
 
-- When constructing a query, it's important to avoid unnecessary information. The more concise and direct the query is, the better it will be. Avoid using irrelevant details and focus on the essential information that is required.
+- When constructing a query, it's important to avoid unnecessary information. The more concise and direct the query is, the better it will be. Avoid using irrelevant details, and focus on the essential information that is required.
 
    **Recommended**
 
