@@ -88,6 +88,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 - When the feature flag `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` is enabled and a new user was added on the Account Access Control: Users page, the following message was displayed: "Invitation sent successfully", even though the user was added to the list. (PL-42860)
 
    This issue has been resolved, and the UI now displays "User added successfully".
+  
+### Version 23.12.81809
+
+#### Hotfix
+
+- Fixed an issue where Github Issue Comment Triggers are failing when used with Github Enterprise Server. (CDS-85419)
 
 ### Version 23.12.81808
 
