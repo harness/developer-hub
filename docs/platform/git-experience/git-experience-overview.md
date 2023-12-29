@@ -47,6 +47,10 @@ You can save the following Harness resources in Git using Harness Git Experience
 * Pipelines
 * Input sets
 * Templates
+* Services
+* Environment 
+* Infrastructure Definitions 
+
 
 :::info note
 
