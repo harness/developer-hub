@@ -93,7 +93,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Hotfix
 
-- Fixed an issue where Github Issue Comment Triggers are failing when used with Github Enterprise Server. (CDS-85419)
+- Fixed an issue where GitHub Issue Comment event triggers were failing when used with GitHub Enterprise Server. (CDS-85419)
 
 ### Version 23.12.81808
 
