@@ -10,14 +10,19 @@ helpdocs_is_published: true
 
 To store and use encrypted secrets (such as access keys), you can add a HashiCorp Vault Secret Manager.
 
-The video below provides an overview of how to use HashiCorp Vault as an external Secret Manager.
+The video below provides an overview of how to use HashiCorp Vault as an external secret manager.
 
  <DocVideo src="https://www.loom.com/embed/92335a30823a4662a1d7212395c66e63" width="100%" height="600" />
+
+import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
+
+<Storeauth />
 
 ### Before you begin
 
 - [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
 - [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
+- [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
 - Make sure that the Harness Delegate can connect to the Vault URL.
 - Make sure you have View and Create/Edit permissions for secrets.​
 
@@ -27,9 +32,9 @@ This topic assumes you have a Harness Project set up. If not, go to [Create Org
 
 You can add a Connector at Project/Organization/Account scope. To do this, go to Project setup, Organization, or Account Resources.
 
-In **Connectors**, click **Connector**.
+In **Connectors**, select **Connector**.
 
-In **Secret Managers**, click **HashiCorp Vault**. The HashiCorp Vault Secret Manager settings appear.
+In **Secret Managers**, select **HashiCorp Vault**. The HashiCorp Vault Secret Manager settings appear.
 
 ![](../../secrets/static/add-hashicorp-vault-19.png)
 
@@ -43,7 +48,7 @@ Enter **Description** for your secret manager.
 
 Enter **Tags** for your secret manager.
 
-Click **Save and Continue.**
+Select **Save and Continue.**
 
 Enter **Vault URL**.
 
@@ -73,7 +78,7 @@ If you encounter errors, setting [token_num_uses](https://www.vaultproject.io/a
 
 The Vault AppRole ID or the Periodic Token used in either of the authentication options must have an ACL policy attached so that Harness can use it. Typically, you create the policy first, then create the AppRole or Periodic Token and attach the policy.
 
-In the policy examples below: if you've created a Read-only Vault Secret Manager, this secret manager needs only read, and list permissions on Vault. It does not need — and cannot assume — create, update, or delete permissions.If the secrets are in the Secret Engine named “secret”, the policy must have the following permissions.
+In the policy examples below: if you've created a Read-only Vault Secret Manager, this secret manager needs only read, and list permissions on Vault. It does not need — and cannot assume — create, update, or delete permissions. If the secrets are in the Secret Engine named “secret”, the policy must have the following permissions.
 
 ```
 path "secret/*" {
@@ -92,7 +97,7 @@ path "secret/harness" {
 }
 ```
 
-These examples apply only to a **v1** secret engine. If you are planning to use a secret engine with version 2 (versioned secret engine), then the policies are different as explained [here](https://www.vaultproject.io/docs/secrets/kv/kv-v2). Go through this link to understand the correct permissions required for your use case.If the Vault Secret Manager needs to renew tokens, the following permissions are needed:
+These examples apply only to a **v1** secret engine. If you are planning to use a secret engine with version 2 (versioned secret engine), then the policies are different as explained [here](https://www.vaultproject.io/docs/secrets/kv/kv-v2). Go through this link to understand the correct permissions required for your use case. If the Vault Secret Manager needs to renew tokens, the following permissions are needed:
 
 ```
 path "auth/token/renew-self" {
@@ -112,8 +117,8 @@ vault token create -policy=harness -period=768h
 
 Next, use the new token with Harness. To do this, perform the below steps:
 
-- Click **Create or Select a Secret**.![](../../secrets/static/add-hashicorp-vault-21.png)
-- The secret settings page appears. Here you can either **Create a new** [**Secret**](/docs/platform/secrets/add-use-text-secrets) or **Select an existing secret**. If creating a new Secret, enter the token which you created in the **Secret Value** field.
+* Select **Create or Select a Secret**.![](../../secrets/static/add-hashicorp-vault-21.png)
+* The secret settings page appears. Here you can either **Create a new** [**Secret**](/docs/platform/secrets/add-use-text-secrets) or **Select an existing secret**. If creating a new Secret, enter the token which you created in the **Secret Value** field.
   ![](../../secrets/static/add-hashicorp-vault-22.png)
 
 For detailed steps on creating a secret, go to [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets).
@@ -122,7 +127,7 @@ If you have already added a Secret with your token, you can choose the same as s
 
 ![](../../secrets/static/add-hashicorp-vault-23.png)
 
-- Click **Apply**.
+* Select **Apply**.
 
 If you want to verify the renewal manually, use the command:
 
@@ -146,24 +151,26 @@ This option provides an automated mechanism to retrieve a Vault token for IAM pr
 
 In the AWS Auth method, there are two authentication types:
 
-- IAM
-- EC2.
+* IAM
+* EC2
 
-Harness recommends using the IAM technique for authentication since it is more versatile and complies with standard practises.
+Harness recommends using the IAM technique for authentication since it is more versatile and complies with standard practices.
 
 To authenticate with AWS Auth, make sure you have configured the vault with entries for **Header**, **Role**, and **Region**. For more information, go to [AWS Auth Method](https://www.vaultproject.io/docs/auth/aws#iam-auth-method) in the Vault documentation.
 
 You must add the **Server ID Header** from Vault as a [Harness Encrypted Text Secret](/docs/platform/secrets/add-use-text-secrets) and select it for **Server Id Header** in Harness.
 
 ![](../../secrets/static/add-hashicorp-vault-25.png)
+
 In **Role**, enter the role you have configured in the Vault.
 
 ![](../../secrets/static/add-hashicorp-vault-26.png)
+
 In **Region**, enter the AWS Region for the Secret Manager.
 
 ### Option: Kubernetes Auth
 
-This option uses a Kubernetes Service Account Token to authenticate with Vault. With this method of authentication, you can easily add a Vault token into a Kubernetes Pod.
+This option uses a Kubernetes Service Account Token to authenticate with Vault. With this method of authentication, you can easily add a Vault token into a Kubernetes pod.
 
 To authenticate with Kubernetes Auth, make sure you have created a role in the vault inside `auth/kubernetes/role`. This role authorizes the "vault-auth" service account in the default namespace and it gives it the default policy. This is also where you'll find the **service account name** and **namespace** that will be used to access the vault endpoint.
 
@@ -192,7 +199,7 @@ path "sys/mounts"{
 }
 ```
 
-Click **Fetch Engines**.
+Select **Fetch Engines**.
 
 Harness will populate the Secret Engine drop-down with the list of engines and their versions.
 
@@ -250,7 +257,7 @@ If required by your organization's security practices, select the **Read-only V
 
 ![](../../secrets/static/add-hashicorp-vault-30.png)
 
-Once you have filled out the required fields, click **Finish**.
+Once you have filled out the required fields, select **Finish**.
 
 ##### Read-only Limitations
 
@@ -263,12 +270,12 @@ Also a read-only Harness Vault Secret Manager:
 
 ### Step 5: Test Connection
 
-Once the Test Connection succeeds, click **Finish**. You can now see the Connector in **Connectors**.
+Once the Test Connection succeeds, select **Finish**. You can now see the connector in **Connectors**.
 
-:::info
-Important: ​Harness tests connections by creating a dummy secret in the Secret Manager or Vault. For the Test Connection to function successfully, make sure you have Create permission for secrets.
+:::info important
+​Harness tests connections by creating a dummy secret in the Secret Manager or Vault. For the Test Connection to function successfully, make sure you have Create permission for secrets.
 
-The Test Connection fails if you do not have Create permission. However, Harness still creates the Connector for you. You may use this Connector to read secrets, if you have View permissions.
+The Test Connection fails if you do not have Create permission. However, Harness still creates the connector for you. You may use this connector to read secrets, if you have View permissions.
 
 :::
 
