@@ -60,6 +60,8 @@ curl -i -X POST \
 
 To ensure clarity and precision, this API is designed to handle only one approval instance at a time. If multiple approvals are pending simultaneously, the API call will encounter an error, signaling that approving multiple instances in a single call is not supported. However, in the scenario where only one approval is awaiting consideration, it will seamlessly proceed to be automatically approved.
 
+Refer [API Documentation](https://apidocs.harness.io/tag/Approvals#operation/addHarnessApprovalActivityByPipelineExecutionId) for more detailed information on it.
+
 ### Using Approval API for a pipeline having multiple approvals:
 There can be some usecases where multiple approvals are waiting in a pipeline, and we want to approve a specific one out of them using the API. To overcome this limitation, the configuration of Harness Approval Step contains a parameter—`callback_id`. This parameter is optional, allowing users to provide a unique identifier to each approval step, so that it can be identified easily.
 This parameter can be configured while adding an Harness Approval step to the pipeline, like shown in the below image
@@ -204,3 +206,9 @@ Replace the <step_group_id> by the identifier of the stepgroup when it gets used
 
   The pipeline execution id passed wouldn't be having any Harness Approval Step with the provided callback id waiting for approval at the time of the API call. This API can be used to approve only Harness Approval Steps and doesn't support other approval steps that Harness provides.
   Also, if no callback id is passed to the API, it will fetch all the approval steps in an execution irrespective of callback id being configured in the Harness Approval Step.
+
+### Harness Documentation
+
+1. Familiarize yourself with the Harness Approval Step. [The Harness documentation provides](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/) detailed information on it.
+
+2. Refer [API Documentation](https://apidocs.harness.io/tag/Approvals#operation/addHarnessApprovalActivityByPipelineExecutionId) for more detailed information on the the API.
