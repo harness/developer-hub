@@ -1,4 +1,13 @@
-const FocusOnAnchor = () => {
+module.exports = function () {
+  return {
+    name: "focusOnAnchor-plugin",
+    injectHtmlTags() {
+      return {
+        postBodyTags: [
+          `
+          <script>           
+
+          const FocusOnAnchor = () => {
   const currentURL = window.location.href;
   const url = new URL(currentURL);
   const target = url.hash.slice(1);
@@ -55,5 +64,12 @@ const FocusOnAnchor = () => {
 };
 
 window.addEventListener("load", () => {
-  setTimeout(FocusOnAnchor, 1000); // Adjust the delay as needed
-});
+    setTimeout(FocusOnAnchor, 1000);
+    })
+          </script>
+          `,
+        ],
+      };
+    },
+  };
+};

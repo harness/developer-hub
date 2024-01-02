@@ -339,8 +339,8 @@ const config = {
             // position: "right",
             // className: "searchBar",
             // use customized coveo search on sidebar
-            type: 'custom-coveo-search',
-            position: 'right',
+            type: "custom-coveo-search",
+            position: "right",
           },
           {
             position: "right",
@@ -636,9 +636,9 @@ const config = {
     "docusaurus-plugin-sass",
     path.join(__dirname, "/plugins/utmcookie-plugin"),
     path.join(__dirname, "/plugins/feedback-plugin"),
-    //path.join(__dirname, '/plugins/scarf-plugin'),
+    path.join(__dirname, "/plugins/focusOnAnchor-plugin"),
   ],
-  clientModules: [require.resolve("./client-modules/FocusOnAnchor")],
+  // clientModules: [require.resolve("./client-modules/FocusOnAnchor")],
 };
 
 module.exports = config;
