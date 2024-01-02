@@ -1,13 +1,13 @@
 ---
 sidebar_position: 1
 hide_table_of_contents: true
-title: End-to-End CI/CD Pipeline
+title: Docker Hub Kubernetes CI/CD Pipeline
 redirect_from:
   - /tutorials/cd-pipelines/unified-cicd
   - /tutorials/cd-pipelines/e2e-pipeline
 ---
 
-# End-To-End CI/CD Pipeline
+# Docker Hub Kubernetes End-to-End CI/CD Pipeline
 
 <CTABanner
   buttonText="Learn More"
