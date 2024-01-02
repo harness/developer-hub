@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-12-20T10:00
+date: 2024-01-02T10:00
 sidebar_position: 4
 ---
 
@@ -36,6 +36,24 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
+
+## January 2024
+
+### Harness version 1.17.8, Harness Delegate version 23.12.82000
+
+#### Fixed issues
+
+- For user groups provisioned from SCIM to Harness, for the corresponding user groups created in Harness, the user group `identifier` is derived from the display name of the user group in the SCIM provider. Harness replaces `.` (dots) and `-` (dashes) with an `_` (underscore). All other special characters (`#`, `?`, `%`, and so on) and spaces are removed. Leading digits`0` through `9` and `$` are also removed. (PL-42535, ZD-53830, ZD-55294)
+
+   All special characters except `.`, `-`, and non-leading `$` and digits `0` through `9` are removed. 
+
+   **Example 1:** For a user group in SCIM with the name `Harness.Group?Next#Gen-First`, the user group created in Harness will have the `identifier`: `Harness_GroupNextGen_First`.
+
+   **Example 2:** For a user group in SCIM with the name `123#One.$Two.$Three.123`, the user group created in Harness will have the `identifier`: `One_$Two_$Three_123`.
+
+   The existing behavior of `.` and `-` changed to `_` has been retained.
+
+   The name of the corresponding user group created in Harness will retain the special symbols as present in the user group of the SCIM provider. Example: For a user group in SCIM with the name `Harness.Group?Next#Gen-First`, the user group created in Harness will have the same `name`: `Harness.Group?Next#Gen-First`.
 
 ## December 2023
 
