@@ -47,7 +47,7 @@ If you are using the Visual editor, **Parallelism** is found under **Looping Str
 
 For more information about parallelism strategies and optimizing parallelism, go to [Split tests - Define a parallelism strategy](../speed-up-ci-test-pipelines-using-parallelism.md#define-a-parallelism-strategy) and [Split tests - Optimize parallelism](../speed-up-ci-test-pipelines-using-parallelism.md#optimize-parallelism).
 
-:::caution
+:::warning
 
 If you use step-level parallelism, you must ensure that your test runners won't interfere with each other because all parallel steps work in the same directory.
 

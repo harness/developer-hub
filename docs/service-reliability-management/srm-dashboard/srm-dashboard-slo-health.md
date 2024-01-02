@@ -21,7 +21,7 @@ To access the SLO Health dashboard, do the following:
    
    The SLO Health dashboard is displayed.
 
-   <docimage path={require('./static/srm-slo-health-dashboard.png')} />
+   <DocImage path={require('./static/srm-slo-health-dashboard.png')} />
    
 
 ## Explore SLO Health dashboard

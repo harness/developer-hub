@@ -16,8 +16,8 @@ Once connected, you can use Kubernetes and Harness for provisioning infrastructu
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
-* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+- [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
+- [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 
 ### Visual summary
 
@@ -25,7 +25,7 @@ Here's a quick video that shows you how to add a Kubernetes Cluster Connector an
 
 <!-- Video:
 https://www.youtube.com/embed/wUC23lmqfnY-->
-<docvideo src="https://www.youtube.com/embed/wUC23lmqfnY" />
+<DocVideo src="https://www.youtube.com/embed/wUC23lmqfnY" />
 
 ### Roles and policies for the connector
 
@@ -39,8 +39,8 @@ For a detailed list of roles and policies, see [Kubernetes Cluster Connector Set
 
 In general, the following permissions are require:
 
-* **Deployments:** A Kubernetes service account with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, `watch` (to fetch the pod events), and `delete` permissions for each of the entity types Harness uses. In general, cluster admin permission or namespace admin permission is sufficient.
-* **Builds:** A Kubernetes service account with CRUD permissions on Secret, Service, Pod, and PersistentVolumeClaim (PVC).
+- **Deployments:** A Kubernetes service account with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, `watch` (to fetch the pod events), and `delete` permissions for each of the entity types Harness uses. In general, cluster admin permission or namespace admin permission is sufficient.
+- **Builds:** A Kubernetes service account with CRUD permissions on Secret, Service, Pod, and PersistentVolumeClaim (PVC).
 
 If you don’t want to use `resources: [“*”]` for the Role, you can list out the resources you want to grant. Harness needs `configMap`, `secret`, `event`, `deployment`, and `pod` at a minimum for deployments, as stated above. Beyond that, it depends on the resources you are deploying via Harness.
 
@@ -89,10 +89,10 @@ Choose the method for Harness to use when connecting to the cluster.
 
 Select one of the following:
 
-* **Specify master URL and credentials**:
-	+ You provide the Kubernetes master node URL. The easiest method to obtain the master URL is using kubectl: `kubectl cluster-info`.
-	+ Next, enter the **Service Account Key** or other credentials. You can use any service account; the service account doesn't have to be attached to a delegate.
-* **Use the credentials of a specific Harness Delegate**: Select this option to have the Connector inherit the credentials used by the Harness Delegate running in the cluster. You can install a Delegate as part of adding this Connector.
+- **Specify master URL and credentials**:
+  - You provide the Kubernetes master node URL. The easiest method to obtain the master URL is using kubectl: `kubectl cluster-info`.
+  - Next, enter the **Service Account Key** or other credentials. You can use any service account; the service account doesn't have to be attached to a delegate.
+- **Use the credentials of a specific Harness Delegate**: Select this option to have the Connector inherit the credentials used by the Harness Delegate running in the cluster. You can install a Delegate as part of adding this Connector.
 
 For details on all of the credential settings, see [Kubernetes Cluster Connector Settings Reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
@@ -103,55 +103,58 @@ To use a Kubernetes Service Account (SA) and token, you will need to either use 
 For example, here's a manifest that creates a new SA named `harness-service-account` in the `default` namespace.
 
 ```
-# harness-service-account.yml  
-apiVersion: v1  
-kind: ServiceAccount  
-metadata:  
-  name: harness-service-account  
+# harness-service-account.yml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: harness-service-account
   namespace: default
 ```
+
 Next, you apply the SA.
 
 ```
 kubectl apply -f harness-service-account.yml
 ```
+
 Next, grant the SA the `cluster-admin` permission.
 
 ```
-# harness-clusterrolebinding.yml  
-apiVersion: rbac.authorization.k8s.io/v1beta1  
-kind: ClusterRoleBinding  
-metadata:  
-  name: harness-admin  
-roleRef:  
-  apiGroup: rbac.authorization.k8s.io  
-  kind: ClusterRole  
-  name: cluster-admin  
-subjects:  
-- kind: ServiceAccount  
-  name: harness-service-account  
+# harness-clusterrolebinding.yml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: harness-admin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: harness-service-account
   namespace: default
 ```
-Next, apply the ClusterRoleBinding.
 
+Next, apply the ClusterRoleBinding.
 
 ```
 kubectl apply -f harness-clusterrolebinding.yml
 ```
+
 Once you have the SA added, you can gets its token using the following commands.
 
-
 ```
-SERVICE_ACCOUNT_NAME={SA name}  
-  
-NAMESPACE={target namespace}  
-  
-SECRET_NAME=$(kubectl get sa "${SERVICE_ACCOUNT_NAME}" --namespace "${NAMESPACE}" -o=jsonpath='{.secrets[].name}')  
-  
-TOKEN=$(kubectl get secret "${SECRET_NAME}" --namespace "${NAMESPACE}" -o=jsonpath='{.data.token}' | base64 -d)  
-  
+SERVICE_ACCOUNT_NAME={SA name}
+
+NAMESPACE={target namespace}
+
+SECRET_NAME=$(kubectl get sa "${SERVICE_ACCOUNT_NAME}" --namespace "${NAMESPACE}" -o=jsonpath='{.secrets[].name}')
+
+TOKEN=$(kubectl get secret "${SECRET_NAME}" --namespace "${NAMESPACE}" -o=jsonpath='{.data.token}' | base64 -d)
+
 echo $TOKEN
 ```
+
 The `| base64 -d` piping decodes the token. You can now enter it into the Connector.
 
 **Creating Service Account tokens for Kubernetes versions 1.24 and later**
@@ -184,7 +187,6 @@ metadata:
 ```
 
 For more details, go to [Managing Service Accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/).
-
 
 ### Set up delegates
 

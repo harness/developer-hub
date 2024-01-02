@@ -44,7 +44,7 @@ You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md
 
 <!-- ![A Plugin step configured for the Nexus Publisher plugin.](./static/sonatype-nexus-plugin-visual-settings.png) -->
 
-<docimage path={require('./static/sonatype-nexus-plugin-visual-settings.png')} />
+<DocImage path={require('./static/sonatype-nexus-plugin-visual-settings.png')} />
 
 
 </TabItem>
@@ -164,7 +164,7 @@ If your pipeline has multiple steps that upload artifacts, use the dropdown menu
 
 <!-- ![](./static/artifacts-tab-with-link.png) -->
 
-<docimage path={require('./static/artifacts-tab-with-link.png')} />
+<DocImage path={require('./static/artifacts-tab-with-link.png')} />
 
 :::
 

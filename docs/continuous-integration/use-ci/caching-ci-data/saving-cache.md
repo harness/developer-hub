@@ -68,7 +68,7 @@ Here is an example of an S3 cache bucket policy:
 }
 ```
 
-:::caution
+:::warning
 
 You must use a dedicated bucket for your Harness CI cache operations. Do not save files to the bucket manually. The Restore Cache operation will fail if the bucket includes any files that do not have a Harness cache key.
 
@@ -247,7 +247,7 @@ Here is a YAML example of a **Restore Cache From S3** step.
 ...
 ```
 
-:::caution
+:::warning
 
 The `key` value in this step must match the `key` value in your **Save Cache to S3** step.
 

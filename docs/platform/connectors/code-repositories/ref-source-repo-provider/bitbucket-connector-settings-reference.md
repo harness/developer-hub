@@ -189,7 +189,7 @@ In the **Personal Access Token** field, provide a Bitbucket account-level [App p
 
 You must provide an account-level app password or token. Repo-level tokens are not supported.
 
-:::caution
+:::warning
 
 For **HTTP** Connection Types, use the same password you used earlier, and make sure the **Username** fields are both plain-text or both encrypted. Don't use a plain-text username for one field and a secret for the other.
 

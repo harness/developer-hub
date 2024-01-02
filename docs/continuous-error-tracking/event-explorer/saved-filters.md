@@ -19,7 +19,7 @@ To save your current filter settings for future use, follow these steps:
    
    The Save Filter dialog appears, displaying the current filter settings.
 
-   <docimage path={require('./static/cet-save-filter-dialog.png')} />
+   <DocImage path={require('./static/cet-save-filter-dialog.png')} />
 
 2. Give your filter a name and an optional description.
    
@@ -27,7 +27,7 @@ To save your current filter settings for future use, follow these steps:
    
    Your filter settings are added to the Saved Filters list. You can view the list by selecting the **Saved Filters** dropdown.
 
-   <docimage path={require('./static/cet-save-filter-setting-saved.png')} />
+   <DocImage path={require('./static/cet-save-filter-setting-saved.png')} />
 
 
 ## Apply a saved filter to the events list
@@ -66,7 +66,7 @@ To change the name of a saved filter setting, follow these steps:
 1. From the **Saved Filters** dropdown, select **Manage Saved Filters**.  
    The Manage Saved Filters dialog appears, displaying a list of all your saved filters.
 
-  <docimage path={require('./static/manage-filters-dialog.png')} />
+  <DocImage path={require('./static/manage-filters-dialog.png')} />
    
 2. Select the settings icon next to the filter you want to modify and choose **Edit Filter**.  
    The Edit Filter dialog appears.

@@ -5,7 +5,7 @@ description: This guide describes how to autostop idle VMs behind a reverse prox
 
 # AutoStopping idle VMs behind a reverse proxy
 
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Cloud Cost Management Certification today!"
@@ -24,13 +24,13 @@ Let’s assume that you have a setup in AWS, where a domain `todolist.example.co
 
 _Routing based on Hostname to an EC2 under AWS ALB_
 
-<docimage path={require('../static/reverse-proxy-vm-autostop/ec2-under-alb.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('../static/reverse-proxy-vm-autostop/ec2-under-alb.png')} width="60%" height="60%" title="Click to view full size image" />
 
 Incorporating this rule into AutoStopping is a simple process. By importing the ALB (Application Load Balancer) as a Harness load balancer and configuring an AutoStopping rule for the EC2 instance with the custom domain as `todolist.example.com` in the Harness platform, the AutoStopping feature seamlessly manages the EC2 instance based on the defined rule.
 
 ## Adding a reverse proxy to the mix
 
-:::important 
+:::important
 The content assumes HAProxy as a reverse proxy between ALB and the EC2 instance. But this setup can be replicated for others (Nginx) as well.
 :::
 
@@ -38,7 +38,7 @@ Consider a scenario where an HAProxy serves as a reverse proxy, bridging the gap
 
 _HAProxy as a reverse proxy between ALB and EC2 instance_
 
-<docimage path={require('../static/reverse-proxy-vm-autostop/ha-proxy-setup.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('../static/reverse-proxy-vm-autostop/ha-proxy-setup.png')} width="60%" height="60%" title="Click to view full size image" />
 
 In this scenario, it is not feasible to directly onboard the EC2 instance to AutoStopping as previously done because the ALB does not directly send data to the resource. While it is possible to onboard the HAProxy machine, this is not the desired outcome since the goal is to AutoStop the EC2 machine itself. Additionally, since the HAProxy can be associated with multiple domains and applications, access to any of them would keep the proxy up, which would not result in the expected cost savings.
 
@@ -49,6 +49,7 @@ In this scenario, it is not feasible to directly onboard the EC2 instance to Aut
 After setting up an AutoStopping proxy, select the newly created proxy as the load balancer, and then configure the custom domain as `todolist.example.com` for the proxy. To route the traffic to the underlying EC2 instance, hit the proxy IP with a host header `Host: todolist.example.com`.
 
 ### Forwarding HAproxy to Harness AutoStopping Proxy
+
 Now that the Harness AutoStopping proxy can route to the EC2 instance with the domain `todolist.example.com`, configure the HAProxy to route the traffic to the AutoStopping proxy instead of the Ec2 instance. The configuration looks like this:
 
 ```
@@ -61,13 +62,15 @@ backend uiserver
    mode http
    server dashbaord (replace ec2 IP with the Harness AutoStopping proxy IP)
 ```
+
 After you reload the HAProxy configuration after this, the setup looks like the diagram below.
 
 _Setup with HAProxy forwarding requests to Harness AutoStopping Proxy_
 
-<docimage path={require('../static/reverse-proxy-vm-autostop/setup-with-autostopping-proxy.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('../static/reverse-proxy-vm-autostop/setup-with-autostopping-proxy.png')} width="60%" height="60%" title="Click to view full size image" />
 
 ### Warmup the instance
+
 Once you have this setup in place, the flow for incoming HTTP traffic to the domain `todolist.example.com` is as follows:
 
 1. When an HTTP request is initiated, it first reaches the Application Load Balancer (ALB).
@@ -80,8 +83,8 @@ Once you have this setup in place, the flow for incoming HTTP traffic to the dom
 8. As part of the warmup process, the EC2 machine associated with the rule is started.
 9. Once the EC2 instance is found to be healthy, the request is forwarded to it.
 
-
 ### Cooldown the instance
+
 The AutoStopping Proxy actively monitors incoming activity. When the pre-configured idle threshold (idle time) for the rule is reached without any activity, the following actions take place:
 
 1. The AutoStopping rule recognizes the idle state based on the specified threshold.

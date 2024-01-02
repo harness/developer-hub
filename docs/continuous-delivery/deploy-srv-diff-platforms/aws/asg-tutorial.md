@@ -814,7 +814,7 @@ For ASG, Harness needs the following settings mapped to outputs:
 
 In the Harness Infrastructure Definition, in **Base ASG**, select the ASG to use as the base ASG.
 
-<docimage path={require('./static/8705496ace1f6b040eccc5b1fe4d6dae3b21cedb37ab383680b39ad41510c417.png')} width="60%" height="60%" title="Click to view full size image" />  
+<DocImage path={require('./static/8705496ace1f6b040eccc5b1fe4d6dae3b21cedb37ab383680b39ad41510c417.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 
 ## Harness ASG pipelines
@@ -1462,6 +1462,15 @@ Blue/Green deployments are achieved by swapping routes between the target groups
 Currently, this feature is behind the feature flag `CDS_ASG_SHIFT_TRAFFIC_STEP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
+
+#### Demo Video
+
+<!-- Video:
+https://www.loom.com/share/5193b65dafa34d63921efc6f0c7fa798?sid=0ea60fd7-376d-4c92-a2ee-dfe47af6075b-->
+<DocVideo src="https://www.loom.com/share/5193b65dafa34d63921efc6f0c7fa798?sid=0ea60fd7-376d-4c92-a2ee-dfe47af6075b" />
+
+
+
 
 This deployment method lets you add **ASG Shift Traffic** steps to incrementally shift traffic from the Target Group used by the previous ASG to the Target Group used by the new ASG you are deploying.
 

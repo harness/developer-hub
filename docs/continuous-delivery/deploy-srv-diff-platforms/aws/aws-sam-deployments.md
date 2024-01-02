@@ -23,8 +23,6 @@ SAM deployments involve the following:
    3. Define deployment strategy. Harness automatically generates the steps required to deploy your SAM template.
 4. Deploy pipeline.
 
-
-
 ## Supported integrations
 
 For details on AWS support in Harness, including tooling, limitations, and repositories, go to [Supported CD features and integrations](/docs/continuous-delivery/cd-integrations).
@@ -36,8 +34,8 @@ For details on AWS support in Harness, including tooling, limitations, and repos
 - You can manage whether Harness performs the SAM build within an ephemeral Docker container in a Kubernetes cluster using the `--use-container` option in the Harness SAM Build step. You can manage the Kubernetes settings for these steps as needed.
 
 ## Demo Video
-<docvideo src="https://www.loom.com/share/477c342c400a49dfa88d7b818eb3b605?sid=a21d7c2c-f3e5-4a54-bcd9-2837c278105e" />
 
+<DocVideo src="https://www.loom.com/share/477c342c400a49dfa88d7b818eb3b605?sid=a21d7c2c-f3e5-4a54-bcd9-2837c278105e" />
 
 ## AWS permissions
 
@@ -65,7 +63,6 @@ For more details, go to [Managing resource access and permissions](https://docs.
 
 </details>
 
-
 ## Use AWS IRA for Harness AWS connector credentials
 
 import IrsaPartial from '/docs/shared/aws-connector-auth-options.md';
@@ -74,7 +71,7 @@ import IrsaPartial from '/docs/shared/aws-connector-auth-options.md';
 
 ## AWS SAM service
 
-Harness supports standard SAM templates. You can add your SAM directory in the Harness SAM service. 
+Harness supports standard SAM templates. You can add your SAM directory in the Harness SAM service.
 
 :::note
 
@@ -93,10 +90,10 @@ To add your template, do the following:
 7. In **Specify AWS SAM Directory Store**, select your Git provider. You can also use the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 8. Select or create a new Harness Git connector to your Git provider, and then select **Continue**.
 9. In **Manifest Details**, enter the following:
-   1.  **Manifest Identifier:** Enter a name for the template.
-   2.  **Git Fetch Type:** Select how you want to fetch the template.
-   3.  **Branch**/**Commit Id:** Enter the branch name or commit Id.
-   4.  **File/Folder Path:** Enter the path to the template from the root of the repository.
+   1. **Manifest Identifier:** Enter a name for the template.
+   2. **Git Fetch Type:** Select how you want to fetch the template.
+   3. **Branch**/**Commit Id:** Enter the branch name or commit Id.
+   4. **File/Folder Path:** Enter the path to the template from the root of the repository.
 10. Select **Submit**.
 
 ### Values YAML
@@ -112,16 +109,16 @@ runtime: nodejs18.x
 Your template references the values.yaml file using the format `{{.Values.KEY}}`. Here's an example using `{{.Values.runtime}}`:
 
 ```yaml
-...
-  StockCheckerFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html
-    Properties:
-      CodeUri: functions/stock-checker/
-      Handler: app.lambdaHandler
-      Runtime: {{.Values.runtime}}
-      Architectures:
-        - x86_64
-...
+
+---
+StockCheckerFunction:
+  Type: AWS::Serverless::Function # More info about Function Resource: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html
+  Properties:
+    CodeUri: functions/stock-checker/
+    Handler: app.lambdaHandler
+    Runtime: { { .Values.runtime } }
+    Architectures:
+      - x86_64
 ```
 
 ### Variables
@@ -153,7 +150,6 @@ To create an environment, do the following:
 
 Next you will add the SAM infrastructure definition.
 
-
 ## Define the infrastructure
 
 The SAM infrastructure definition is the target AWS account and region for the SAM deployment.
@@ -167,13 +163,11 @@ The SAM infrastructure definition is the target AWS account and region for the S
 
 When a pipeline stage uses this infrastructure definition, it will deploy your SAM template changes in the target region.
 
-
-
 ## AWS SAM stage
 
 Now that you have your SAM service and environment, you can create your SAM pipeline.
 
-When you add a Deploy stage to a pipeline, you can select the AWS SAM deployment type. 
+When you add a Deploy stage to a pipeline, you can select the AWS SAM deployment type.
 
 1. In your Harness project, in **Deployments**, create or open a pipeline.
 2. Select **Add Stage**, and then select **Deploy**.
@@ -193,7 +187,7 @@ The basic strategy consists of the following execution setup:
   - **SAM Build step:** Runs a [SAM build](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html).
   - **SAM Deploy step:** Runs a [SAM deploy](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-deploy.html).
 
-![AWS SAM basic strategy](static/16e15bb95e3f58e3a28b3a4c0b1c7791ad1f07453fddc859da8400cfd37d7535.png)  
+![AWS SAM basic strategy](static/16e15bb95e3f58e3a28b3a4c0b1c7791ad1f07453fddc859da8400cfd37d7535.png)
 
 These steps are described in detail below.
 
@@ -223,12 +217,12 @@ Let's review the SAM deployment's use of the DinD Background step:
 1. Open the **dind** Background step. The automatically generated step is named `dind`.
 2. In **Container Registry**, the Harness container registry connector is already set up. You can add/select your own container registry connector if you like.
 3. In **Image**, you can see the `docker:dind` Docker in Docker image is set up.
-   
+
    The remaining settings on optional.
 
 ### Download manifests step
 
-The Download Manifests step fetches the SAM template in the Harness service you selected for this stage. This step does not require configuration. 
+The Download Manifests step fetches the SAM template in the Harness service you selected for this stage. This step does not require configuration.
 
 Here's an example of the step tasks:
 
@@ -236,7 +230,6 @@ Here's an example of the step tasks:
 2. **Setting remote origin:** The command `git remote add origin <repository-url>` is executed to set the remote origin for the Git repository.
 3. **Fetching remote branches:** The command `git fetch --depth=50 origin +refs/heads/main:` is executed to fetch the remote branches from the origin.
 4. **Checking out main branch:** The command `git checkout -b main origin/main` is executed to create and switch to a new branch named `main` based on the remote branch `origin/main`.
-
 
 ### SAM Build step
 
@@ -252,7 +245,7 @@ To configure the SAM Build step, do the following:
 
 The [--use-container](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html) option is set up by Harness automatically. This command ensures that AWS SAM packages and builds the application code inside a Docker container that is configured with the necessary dependencies and runtime environment specified in the AWS SAM template.
 
-:::caution
+:::warning
 
 Do not remove this command. It is required for the current beta of this feature. It will be optional in future releases.
 
@@ -262,7 +255,7 @@ Do not remove this command. It is required for the current beta of this feature.
 
 In **SAM Build Docker Container Registry**, you can use the same Harness Docker Registry connector automatically set up in the **Container Registry** setting or add/select your own connector.
 
-:::caution
+:::warning
 
 Do not remove this connector. It is required for the current beta of this feature. It will be optional in future releases.
 
@@ -272,23 +265,22 @@ Do not remove this connector. It is required for the current beta of this featur
 
 Here's a summary of the step's tasks that you will see in the step log once its run:
 
-1. **Setting up environment:** 
+1. **Setting up environment:**
    1. Changes the current directory, such as `m1/SAM/sam-nodejs-multi-step`.
    2. The command `docker ps` is executed to check if Docker is running, but no containers are listed.
-2. **Exporting variables:** 
+2. **Exporting variables:**
    1. Several environment variables are set using the `export` command, including `PLUGIN_SAM_TEMPLATE_FILE_PATH`, `PLUGIN_VALUES_YAML_FILE_PATH`, and `PLUGIN_VALUES_YAML_CONTENT`. These variables are exported to be used in subsequent commands.
 3. **Resolving expressions in SAM template:**
    1. The command `/opt/harness/client-tools/go-template/v0.4.1/go-template -t template.yaml -f values.yaml -o .` is executed to resolve expressions in the SAM template file based on the values provided in values.yaml.
    2. The resolved SAM template content is displayed in the log before and after expression resolution.
 4. **Building SAM application code:**
    1. The command `java -jar /opt/harness/sam-build.jar` is executed to build the SAM application.
-   2. The SAM CLI collects telemetry data, and it provides a link to learn more about telemetry. 
-   3. The Docker container `image public.ecr.aws/sam/build-nodejs18.x:latest-x86_64` is fetched to build the SAM application. 
+   2. The SAM CLI collects telemetry data, and it provides a link to learn more about telemetry.
+   3. The Docker container `image public.ecr.aws/sam/build-nodejs18.x:latest-x86_64` is fetched to build the SAM application.
    4. A builder is used to pack, install dependencies, and clean up the environment for each template function.
 5. **Build result:**
    1. The build is marked successful, and the built artifacts are located in the `.aws-sam/build` directory.
    2. The built SAM template is located at `.aws-sam/build/template.yaml`.
-
 
 ### SAM Deploy step
 
@@ -340,7 +332,6 @@ SAM Deploy Successful
 
 In your Harness Steps, you can update the Container Configuration's Image section with a newer version of the image.
 
-
 **Question:** How do we debug the SAM Build or SAM Deploy Steps?
 
 Under the AWS SAM Build Command Options, we recommend passing the `--debug` flag. This will help print more verbose errors when troubleshooting failures
@@ -352,14 +343,14 @@ Under the AWS SAM Build Command Options, we recommend passing the `--debug` flag
                         identifier: SAM_Build
                         spec:
                           connectorRef: account.harnessImage
-                          image: harnessdev/sam-build:1.82.0-latest 
+                          image: harnessdev/sam-build:1.82.0-latest
                           imagePullPolicy: Always
                           buildCommandOptions:
                             - "--use-container"
                             - "--debug" ## This field needs to be added.
                             - "--build-image harnessdev/testing:5.6.4" ## This field will need to be added
                           envVariables:
-                            PLUGIN_SAM_TEMPLATE_FILE_PATH: <+env.name>_template.yaml  
+                            PLUGIN_SAM_TEMPLATE_FILE_PATH: <+env.name>_template.yaml
                           runAsUser: root
                           samBuildDockerRegistryConnectorRef: account.harnessImage
                         when:
@@ -372,7 +363,6 @@ Under the AWS SAM Build Command Options, we recommend passing the `--debug` flag
 - We support SAM CLI Version 1.84.0
 - We are working to stay up to date with the latest versions of SAM CLI and making sure it's compatible with newer versions of our steps.
 
-
 **Question:** Can we fetch Build Images from a Public Repo?
 
 - Yes, Harness can fetch build images from a public repo. Please see https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-image-repositories.html for all the Sam Build Image options from the public ECR Repo.
@@ -380,7 +370,7 @@ Under the AWS SAM Build Command Options, we recommend passing the `--debug` flag
 - In the AWS SAM Build Command Options you can pass in an argument like so:
 
 ```SH
---build-image public.ecr.aws/sam/build-nodejs18.x:1.100.0-20231031004056 
+--build-image public.ecr.aws/sam/build-nodejs18.x:1.100.0-20231031004056
 ```
 
 In the Step YAML
@@ -399,7 +389,7 @@ In the Step YAML
                             - "--debug"
                             - "--build-image harnessdev/testing:5.6.4" ## This field will need to be added
                           envVariables:
-                            PLUGIN_SAM_TEMPLATE_FILE_PATH: <+env.name>_template.yaml  
+                            PLUGIN_SAM_TEMPLATE_FILE_PATH: <+env.name>_template.yaml
                           runAsUser: root
                           samBuildDockerRegistryConnectorRef: account.harnessImage
                         when:
@@ -407,25 +397,22 @@ In the Step YAML
                         timeout: 10m
 ```
 
-
 **Question:** Can we fetch Build Images from a Private Repo?
 
 - Yes Harness can fetch your Build Images from a private repo. This will require the user to have the proper permissions configured and the correct user access to the container repo.
 - In the SAM Build Step, under the SAM Build Docker Container Registry Section, you can specify the specific image repository you want to fetch your SAM Build Image.
 
-
 **Question:** How to access the SAM Build Step Outputs?
 
-- SAM build creates a “.aws-sam" directory in the same directory where your template.yml exists. 
+- SAM build creates a “.aws-sam" directory in the same directory where your template.yml exists.
 
 - By default, Download Manifests Step downloads your repo in `/harness/MANIFEST_IDENTIFIER/` path which should be `/harness/dev/` in this case.
-- If you have customized the step and the SAM template.yaml exits in the root level directly, AWS SAM outputs won't be available in the root path. You need to make sure  `.aws-sam` should be present  `/harness/dev/` path.
+- If you have customized the step and the SAM template.yaml exits in the root level directly, AWS SAM outputs won't be available in the root path. You need to make sure `.aws-sam` should be present `/harness/dev/` path.
 
-  
 **Question:** How do I pass in the SAM Template path as an environment variable?
 
 - Under the Environment Variables section of the step, you can specify a key and value
-- For the Key, you can provide `PLUGIN_SAM_TEMPLATE_FILE_PATH` and the value can be a `fixed`, `expression` input. 
+- For the Key, you can provide `PLUGIN_SAM_TEMPLATE_FILE_PATH` and the value can be a `fixed`, `expression` input.
 
 ```YAML
                     - step:
@@ -448,5 +435,3 @@ In the Step YAML
                           stageStatus: Success
                         timeout: 10m
 ```
-
-
