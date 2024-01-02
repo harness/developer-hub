@@ -442,6 +442,7 @@ To resolve this issue:
 
 1. On the machine where the runner is running, stop the runner.
 2. Set the `NETWORK_DRIVER` environment variable to your preferred network driver plugin, such as `export NETWORK_DRIVER="nat"` or `export NETWORK_DRIVER="bridge"`.
+   For Windows, use [PowerShell variable syntax](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-5.1#using-the-variable-syntax), such as `$Env:NETWORK_DRIVER="nat"` or `$Env:NETWORK_DRIVER="bridge"`.
 3. Restart the runner.
 
 ### Runner can't find an available, non-overlapping IPv4 address pool.
