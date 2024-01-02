@@ -322,7 +322,7 @@ For each expression:
 * Replace `[varName]` with the relevant variable name, wrapped in quotes.
 * In cross-stage references, replace `[stageID]` with the ID of the stage where the GitHub Actions step exists.
 
-:::caution
+:::warning
 
 GitHub Actions settings keys can include `-`, which is not supported by JEXL. Therefore, you must wrap these variable names in quotes when using them in Harness expressions.
 

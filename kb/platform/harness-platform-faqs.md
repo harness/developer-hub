@@ -2192,3 +2192,10 @@ We can not use immutable delegate image in the statefulset deployment yaml that 
 #### Is there a way to enable more granular level for delegate logs?
 
 We do not have additional log level settings for delegate than what it logs by default. 
+#### How to sync ldap groups manually if linked User group is not getting synced
+
+You can Navigate to Authentication tab and go to ldap setting and try Synchronize User group option.
+
+#### While trying to link sso group, not getting the option for user group
+
+Check and confirm if group authorization is enabled for saml setup configured, than only you will see the sso provide details under drop down

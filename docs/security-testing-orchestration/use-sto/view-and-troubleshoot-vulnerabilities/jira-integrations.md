@@ -23,7 +23,7 @@ You can set up STO to create Jira tickets for issues detected by STO scans. This
 * This feature is supported for both [STO SecOps and Developer](/docs/platform/role-based-access-control/add-manage-roles/#module-specific-roles) roles.  
 :::
 
-:::caution
+:::warning
 This integration has a separate setup path that is unrelated to other Jira-related integrations in Harness pipelines. To open Jira tickets for security findings in STO, you must set up the integration as documented below. You cannot use other Jira workflows to create Jira tickets in STO. For example, you cannot integrate Jira with STO using Custom steps with Jira Create or other related steps.
 :::
 

@@ -59,7 +59,7 @@ If a Harness Cloud image has multiple versions of a tool pre-installed, you can 
 sudo xcode-select -switch /Applications/Xcode_14.1.0.app
 ```
 
-:::caution
+:::warning
 
 Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions in [Lock versions or install additional tools](#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
 

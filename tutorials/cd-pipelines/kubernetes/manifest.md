@@ -422,7 +422,7 @@ export TV_VAR_account_id="123abcXXXXXXXX"
 export TV_VAR_harness_api_token="pat.abc123xxxxxxxxxx…"
 ```
 
-:::caution
+:::warning
 
 Never store your Harness API Key in a plain text configuration file or in version control. Use an environment variable or dedicated secrets manager.
 
@@ -648,7 +648,7 @@ Verify the following:
 
    :::
 
-:::caution
+:::warning
 
 For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
 
@@ -855,7 +855,7 @@ Verify that you have the following:
 1. Log in to [Harness](https://app.harness.io/).
 2. Select **Projects**, and then select **Default Project**.
 
-:::caution
+:::warning
 
 For the pipeline to run successfully, please follow the remaining steps as they are, including the naming conventions.
 

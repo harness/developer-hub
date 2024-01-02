@@ -82,7 +82,7 @@ We suggest opting for Cloud Functions **2nd gen** whenever feasible for new func
 1. Log into [Harness](https://app.harness.io/).
 2. Select **Projects**, and then select **Default Project**.
 
-:::caution
+:::warning
 
 For the pipeline to run successfully, please follow the remaining steps as they are, including the naming conventions.
 
@@ -507,7 +507,7 @@ You've just learned how to use Harness CD to deploy a Google Cloud Function to G
 1. Log into [Harness](https://app.harness.io/).
 2. Select **Projects**, and then select **Default Project**
 
-:::caution
+:::warning
 
 For the pipeline to run successfully, please follow the remaining steps as they are, including the naming conventions.
 
