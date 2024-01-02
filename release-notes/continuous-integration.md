@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-01-02T10:00
+date: 2024-01-09T10:00
 sidebar_position: 9
 ---
 
@@ -23,21 +23,18 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## January 2024
 
-### Version
+### Version 1.7.0
 
-<!-- Jan xx, 2024 -->
+<!-- Jan 09, 2024 -->
 
 #### New features and enhancements
 
-x
+* The Get Started workflow can now auto-generate starter pipelines from [Harness Code repositories](docs/code-repository). (CI-10780)
+* Enhanced log retention for custom approval steps. (CI-10273, ZD-53345, ZD-53410)
 
 #### Deprecations
 
 Documentation for the previously-deprecated Service Dependency step has been removed. The Service Dependency step was deprecated in February 2023 in favor of the [Background step](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings).
-
-#### Fixed issues
-
-x
 
 ## December 2023
 
