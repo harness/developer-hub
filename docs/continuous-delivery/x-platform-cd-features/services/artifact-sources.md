@@ -3504,7 +3504,7 @@ The following table lists how many artifact versions Harness displays in its UI 
 | Google Artifact Registry(Docker) | 2,147,483,647 | Lexical (descending)                                                                                   |
 | Artifactory(Docker)              | No Limit      | Lexical (descending)                                                                                   |
 | Artifactory(Generic)             | 10000         | Descending order of created at.                                                                        |
-| Github Packages                  | No Limit      |                                                                                                        |
+| Github Packages                  | No Limit      | Descending order of created at.                                                                                                       |
 | Nexus3(Docker)                   | No Limit      | Descending order of last modified at (3.46.0 and newer). Alphabetically descending for older versions. |
 | Nexus3(non-Docker)               | 2,147,483,647 | Descending order of last modified at (3.46.0 and newer). Alphabetically descending for older versions. |
 | Nexus2                           | No Limit      | Lexical (descending)                                                                                   |
