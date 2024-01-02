@@ -79,7 +79,7 @@ For this tutorial, we will use the visual view of the pipeline.
 
 7. Select **Save**, and then select **Run** to run the pipeline.
 
-:::caution
+:::warning
 
 Approval steps should not be added to run in parallel with other steps, including other Approval steps. The Harness Pipeline Studio will not allow you to add Approval steps in parallel with other steps, but the pipeline YAML editor does not prevent this setup. During execution, a successful parallel Approval step will not fail the deployment, but it is not a valid configuration because Approvals are checks on the release process and should always be used between steps.
 

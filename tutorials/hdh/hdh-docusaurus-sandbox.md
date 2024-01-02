@@ -73,7 +73,7 @@ Tip text.
 
 :::
 
-:::caution
+:::warning
 
 Caution text.
 

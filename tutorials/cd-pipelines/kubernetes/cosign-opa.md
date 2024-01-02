@@ -178,7 +178,7 @@ The first four variables on this list are used to ensure that the correct image 
 
 Let's add a [policy step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/add-a-governance-policy-step-to-a-pipeline/) after the **cosign_verify** step (you can call this **policy_enforcement** step). You can define and store policies directly in the OPA service in Harness.
 
-:::caution
+:::warning
 
 Policy Based Governance is a paid feature on the Harness platform.
 

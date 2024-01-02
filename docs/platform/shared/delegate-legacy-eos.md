@@ -1,4 +1,4 @@
-:::caution Delegate-Legacy End of Support (EOS) notice
+:::warning Delegate-Legacy End of Support (EOS) notice
 
 This is an End of Support (EOS) notice for the Delegate-Legacy image type. This image type will reach End of Support (EOS) as of **January 31, 2024**.
 

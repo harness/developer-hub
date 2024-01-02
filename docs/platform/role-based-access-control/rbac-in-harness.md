@@ -149,7 +149,7 @@ The following table describes the role bindings (permissions and access) that re
 
 RBAC is an additive model; therefore, role and resource group assignments in Harness are additive. The total expanse of a principal's permissions and access is the sum of all the roles and resource groups from all user groups they belong to, as well as any roles and resource groups assigned directly to them as an individual user or service account.
 
-:::caution Least privilege
+:::warning Least privilege
 
 It is important to follow the principle of least privilege (PoLP). This is a security principle that means users are granted the absolute minimum access/permissions necessary to complete their tasks and nothing more.
 

@@ -17,7 +17,7 @@ sidebar_position: 60
 
 When configuring this widget, on the **Metrics** tab, you can select either **Test Cases** (number of test cases) or **Tests** (number of test executions).
 
-:::caution
+:::warning
 
 Each metric has different options for **Columns**, **Filters**, **Stacks**, and **Aggregations**. Switching from **Test Cases** to **Tests** and vice versa resets the linked settings.
 

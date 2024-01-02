@@ -355,7 +355,7 @@ export TV_VAR_account_id="123abcXXXXXXXX"
 export TV_VAR_harness_api_token="pat.abc123xxxxxxxxxx…"
 ```
 
-:::caution
+:::warning
 
 Never store your Harness API Key in a plain text configuration file or in version control. Use an environment variable or dedicated secrets manager.
 
@@ -604,7 +604,7 @@ Verify the following:
   - Verify that the delegate is installed successfully and can connect to the Harness Manager.
   - You can also follow the [Install Harness delegate on Kubernetes or Docker](/tutorials/platform/install-delegate/) tutorial to install the delegate using the Terraform Helm Provider or Kubernetes manifest.
 
-:::caution
+:::warning
 
 If you plan to use your own Project, Organization, and custom names for Harness resources, please update the resource YAMLs accordingly with these details.
 
@@ -744,7 +744,7 @@ Verify that you have the following:
   - Verify that the delegate is installed successfully and can connect to the Harness Manager.
   - You can also follow the [Install Harness delegate on Kubernetes or Docker](/tutorials/platform/install-delegate/) tutorial to install the delegate using the Terraform Helm Provider or Kubernetes manifest.
 
-:::caution
+:::warning
 
 If you plan to use your own Project, Organization, and custom names for Harness resources, please update the resource YAMLs accordingly with these details.
 

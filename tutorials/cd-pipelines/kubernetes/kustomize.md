@@ -324,7 +324,7 @@ Complete the following tasks:
    ```
    > Note: Replace `HARNESS_API_TOKEN` with the Harness API token that you obtained during the prerequisite section of this tutorial.
 
-:::caution
+:::warning
 
 For the pipeline to run successfully, perform all of the following steps as they are, including the naming conventions.
 
@@ -484,7 +484,7 @@ Verify the following:
 
 2. Select **Projects**, and then select **Default Project**.
 
-:::caution
+:::warning
 
 For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
 

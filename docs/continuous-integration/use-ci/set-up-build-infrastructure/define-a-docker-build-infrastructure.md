@@ -263,7 +263,7 @@ Review the following requirements for Windows local runner build infrastructures
    * Add `-e DELEGATE_TAGS="windows-amd64"`.
    * Add `-e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000`.
 
-   :::caution
+   :::warning
 
    The `RUNNER_URL` must point to the Windows machine where the Harness Docker Runner will run.
 
@@ -303,7 +303,7 @@ For more information about delegates and delegate installation, go to [Delegate 
 
 The Harness Docker Runner service performs the build work. The delegate needs the runner to run CI builds.
 
-:::caution
+:::warning
 
 Run the Harness Docker Runner executable on the Windows machine that you specified in the delegate's `RUNNER_URL`.
 

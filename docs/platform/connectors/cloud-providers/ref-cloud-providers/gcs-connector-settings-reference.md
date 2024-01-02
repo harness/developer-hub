@@ -24,7 +24,7 @@ For instructions on adding roles to your service account, go to the Google docum
 
 Alternately, you can use a service account that has only the **Storage Object Viewer** permission needed to query GCR, and then use either an in-cluster Kubernetes delegate or a direct [Kubernetes Cluster Connector](kubernetes-cluster-connector-settings-reference.md) with the Kubernetes service account token for performing deployment.
 
-:::caution
+:::warning
 
 Harness supports GKE 1.19 and later. If you use a version prior to GKE 1.19, please enable Basic Authentication. If Basic authentication is inadequate for your security requirements, use the [Kubernetes Cluster Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
 

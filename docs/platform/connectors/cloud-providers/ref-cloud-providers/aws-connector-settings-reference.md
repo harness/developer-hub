@@ -25,7 +25,7 @@ Consider the following user and access type requirements:
 :::important
 Amazon requires the Amazon EKS Pod execution role to run pods on the AWS Fargate infrastructure. For more information, go to [Amazon EKS Pod execution IAM role](https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html) in the AWS documentation.
 
-:::caution
+:::warning
 
 The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS connectors regardless of what AWS service you are using for your target or build infrastructure.
 
@@ -1096,7 +1096,7 @@ The following steps assume this is a new delegate installation and a new AWS con
 
 </details>
 
-:::caution
+:::warning
 
 Ensure that the AWS IAM roles applied to the credentials you use (the Harness delegate or the access key) includes the policies needed by Harness to deploy to the target AWS service.
 

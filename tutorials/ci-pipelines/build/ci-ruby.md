@@ -77,7 +77,7 @@ You can cache your Ruby dependencies with [Cache Intelligence](/docs/continuous-
     spec:
       caching:
         enabled: true
-        key: cache-{{ checksum "gemfile.lock" }}
+        key: cache-{{ checksum "Gemfile.lock" }}
         paths:
           - "vendor/bundle"
       sharedPaths:
@@ -104,7 +104,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     connectorRef: AWS_connector
                     region: us-east-1
                     bucket: some_s3_bucket
-                    key: cache-{{ checksum "gemfile.lock" }}
+                    key: cache-{{ checksum "Gemfile.lock" }}
                     archiveFormat: Tar
               - step:
                   type: Run
@@ -120,7 +120,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     connectorRef: AWS_connector
                     region: us-east-1
                     bucket: some_s3_bucket
-                    key: cache-{{ checksum "gemfile.lock" }}
+                    key: cache-{{ checksum "Gemfile.lock" }}
                     sourcePaths:
                       - vendor/bundle
                     archiveFormat: Tar
@@ -411,7 +411,7 @@ pipeline:
           cloneCodebase: true
           caching:
             enabled: true
-            key: cache-{{ checksum "gemfile.lock" }}
+            key: cache-{{ checksum "Gemfile.lock" }}
             paths:
               - vendor/bundle
           sharedPaths:
@@ -492,7 +492,7 @@ pipeline:
                     connectorRef: YOUR_AWS_CONNECTOR_ID
                     region: us-east-1 ## Set to your bucket's AWS region
                     bucket: YOUR_AWS_BUCKET_NAME
-                    key: cache-{{ checksum "gemfile.lock" }}
+                    key: cache-{{ checksum "Gemfile.lock" }}
                     archiveFormat: Tar
               - step:
                   type: Run
@@ -534,7 +534,7 @@ pipeline:
                     connectorRef: YOUR_AWS_CONNECTOR_ID
                     region: us-east-1 ## Set to your bucket's AWS region
                     bucket: YOUR_AWS_BUCKET_NAME
-                    key: cache-{{ checksum "gemfile.lock" }}
+                    key: cache-{{ checksum "Gemfile.lock" }}
                     sourcePaths:
                       - vendor/bundle
                     archiveFormat: Tar
