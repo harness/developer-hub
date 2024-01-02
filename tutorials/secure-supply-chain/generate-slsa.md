@@ -10,16 +10,16 @@ You can use the Harness SSCA steps in Harness CI/CD pipelines to generate and ve
 
 To complete this tutorial, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) and [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage). For example, the pipeline created in this tutorial has a **Build** stage with one step and a **Deploy** stage with two steps.
 
-* **Build** stage:
-  * **Build and Push an image to Docker Registry** step: Build and push an image to a Docker registry.
-  * SLSA generation is enabled in the stage settings.
-* **Deploy** stage:
-  * **SLSA Verification** step: Verify the SLSA Provenance.
-  * **Rolling deployment** step: Deploy the image.
+- **Build** stage:
+  - **Build and Push an image to Docker Registry** step: Build and push an image to a Docker registry.
+  - SLSA generation is enabled in the stage settings.
+- **Deploy** stage:
+  - **SLSA Verification** step: Verify the SLSA Provenance.
+  - **Rolling deployment** step: Deploy the image.
 
 <!-- ![](./static/slsa-pipeline-example.png) -->
 
-<docimage path={require('./static/slsa-pipeline-example.png')} />
+<DocImage path={require('./static/slsa-pipeline-example.png')} />
 
 This tutorial explains how to enable SLSA Provenance generation and configure an **SLSA Verification** step.
 
@@ -37,9 +37,9 @@ When your pipeline runs, the private key is used to sign the SLSA Provenance, an
 
 When you run a pipeline with SLSA generation enabled, Harness SSCA:
 
-* Generates an SLSA Provenance for the image created by the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) in the **Build** stage.
-* Generates and signs an attestation using the provided key and password.
-* Stores the SLSA Provenance in Harness and uploads the `.att` file to your container registry alongside the image.
+- Generates an SLSA Provenance for the image created by the [Build and Push to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) in the **Build** stage.
+- Generates and signs an attestation using the provided key and password.
+- Stores the SLSA Provenance in Harness and uploads the `.att` file to your container registry alongside the image.
 
 Enable SLSA Provenance generation in the **Build** stage settings.
 
@@ -50,7 +50,7 @@ Enable SLSA Provenance generation in the **Build** stage settings.
 
 <!-- ![](./static/slsa-build-stage-settings.png) -->
 
-<docimage path={require('./static/slsa-build-stage-settings.png')} />
+<DocImage path={require('./static/slsa-build-stage-settings.png')} />
 
 :::info
 
@@ -79,13 +79,13 @@ OPA polices used for SLSA Provenance verification are different from [SSCA polic
    # Build repo must be 'https://github.com/abc/abc-sample'. SLSA verification fails if a different repo is detected.
    deny[msg]{
      input[0].outcome.stepArtifacts.provenanceArtifacts[0].predicate.buildDefinition.externalParameters.codeMetadata.repositoryURL != "https://github.com/abc/abc-sample"
-     msg := "Repository verification failed in Provenance"  
+     msg := "Repository verification failed in Provenance"
    }
 
    # Build branch must be 'main'. SLSA verification fails if a different branch is detected.
    deny[msg]{
      input[0].outcome.stepArtifacts.provenanceArtifacts[0].predicate.buildDefinition.externalParameters.codeMetadata.branch != "main"
-     msg := "Branch verification failed in provenance"  
+     msg := "Branch verification failed in provenance"
    }
    ```
 
@@ -97,10 +97,10 @@ OPA polices used for SLSA Provenance verification are different from [SSCA polic
 
 The **SLSA Verification** step does the following:
 
-* Verifies the authenticity of the attestation.
-* Verifies the provenance data by applying the specified policy set.
-* Records the policy evaluation results in the step's logs.
-* Reports the overall pass/fail for SLSA verification on the **Artifacts** tab.
+- Verifies the authenticity of the attestation.
+- Verifies the provenance data by applying the specified policy set.
+- Records the policy evaluation results in the step's logs.
+- Reports the overall pass/fail for SLSA verification on the **Artifacts** tab.
 
 1. Add the **SLSA Verification** step to your **Deploy** stage. This is a container step that must be inside a [container group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups).
 2. Enter a **Name** for the step.
@@ -108,8 +108,8 @@ The **SLSA Verification** step does the following:
 
    If you're using Docker-compliant ECR or GCR repositories, you must configure your Docker Registry connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 
-   * For ECR, go to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
-   * For GCR, go to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr).
+   - For ECR, go to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
+   - For GCR, go to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr).
 
 4. For **Image**, enter the repo path (in your container registry) for the image that you want to verify, such as `my-docker-repo/my-artifact`.
 
@@ -121,13 +121,13 @@ The **SLSA Verification** step does the following:
 
    <!-- ![](./static/slsa-verify-step-basic.png) -->
 
-   <docimage path={require('./static/slsa-verify-step-basic.png')} />
+   <DocImage path={require('./static/slsa-verify-step-basic.png')} />
 
 7. On the **Advanced** tab for the **SLSA Verification** step, expand the **Policy Enforcement** section, and then add your SLSA Provenance verification OPA policies.
 
    <!-- ![](./static/slsa-verify-step-adv.png) -->
 
-   <docimage path={require('./static/slsa-verify-step-adv.png')} />
+   <DocImage path={require('./static/slsa-verify-step-adv.png')} />
 
 ## View attestations and violations
 
@@ -135,13 +135,13 @@ When the pipeline runs, the SLSA Provenance is generated and the attestation is 
 
 <!-- ![](./static/view-result-att-in-docker-hub.png) -->
 
-<docimage path={require('./static/view-result-att-in-docker-hub.png')} />
+<DocImage path={require('./static/view-result-att-in-docker-hub.png')} />
 
 When viewing the **Execution details** page in Harness, you can view and download the SLSA Provenance from **Artifact Type** column on the **Artifacts** tab.
 
 <!-- ![](./static/view-result-slsa-artifact.png) -->
 
-<docimage path={require('./static/view-result-slsa-artifact.png')} />
+<DocImage path={require('./static/view-result-slsa-artifact.png')} />
 
 :::tip
 
@@ -153,10 +153,10 @@ In the **SLSA Verification** column on the **Artifacts** tab, you can see if the
 
 <!-- ![](./static/view-result-slsa-verify-pass-fail.png) -->
 
-<docimage path={require('./static/view-result-slsa-verify-pass-fail.png')} />
+<DocImage path={require('./static/view-result-slsa-verify-pass-fail.png')} />
 
 To inspect which policies failed, select the **Pipeline** tab, select the **SLSA Verification** step, and then select the **Policy Enforcement** tab.
 
 <!-- ![](./static/view-result-slsa-policy-violations.png) -->
 
-<docimage path={require('./static/view-result-slsa-policy-violations.png')} />
+<DocImage path={require('./static/view-result-slsa-policy-violations.png')} />

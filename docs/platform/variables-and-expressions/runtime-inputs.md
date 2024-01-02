@@ -10,17 +10,17 @@ redirect_from:
   - /docs/platform/References/runtime-inputs
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 For most settings in Harness pipelines, you can use fixed values, runtime inputs, or expressions.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 In the Pipeline Studio's Visual Editor, you can use the **Value type selector** to select **Fixed Values**, **Runtime Input**, or **Expression**.
 
@@ -34,10 +34,10 @@ In free-text fields, such as **Command**, you can directly enter values using th
 
 ![](./static/runtime-inputs-12.png)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 When writing pipelines in YAML, enter the value using the appropriate syntax, such as `<+input>` for [runtime input](#runtime-inputs).
 
@@ -45,10 +45,10 @@ When you type `<+`, Harness provides suggestions for built-in [expressions](#exp
 
 ![](./static/runtime-inputs-13.png)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Fixed values
 
@@ -74,10 +74,10 @@ You can also create [input sets and overlays](/docs/platform/Pipelines/input-set
 
 ### Use runtime inputs
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 In the Pipeline Studio's Visual Editor, you can use the **Value type selector** to select **Runtime Input**.
 
@@ -85,10 +85,10 @@ In the Pipeline Studio's Visual Editor, you can use the **Value type selector** 
 
 In free-text fields, you can directly enter `<+input>` to specify runtime input without changing the value type.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 When writing pipelines in YAML, enter `<+input>` for the value to indicate runtime input.
 
@@ -102,10 +102,10 @@ When writing pipelines in YAML, enter `<+input>` for the value to indicate runti
                     command: <+input>
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 When you run the pipeline, you're prompted to provide values for any `<+input>`. You can use specific values or [expressions](#expressions).
 
@@ -121,10 +121,10 @@ If a runtime input is an expression that resolves to `null`, it will not be repl
 
 By default, runtime input accepts virtually any sting input. You can specify a default value to avoid empty values.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. In the Pipeline Studio's Visual Editor, use the **Value type selector** to select **Runtime Input**.
 
@@ -136,10 +136,10 @@ By default, runtime input accepts virtually any sting input. You can specify a d
 
 3. Enter the **Default value**, and select **Submit**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 When writing pipelines in YAML, specify a default value by appending the `.default()` method to `<+input>`. For example: `<+input>.default(bengaluru)`.
 
@@ -153,10 +153,10 @@ If your default value has a comma, you must escape the value string using the fo
                   ...
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 #### Use a JSON object as the default value
 
 You can use a JSON object, such as the JSON-formatted body of a webhook payload, as the default value for runtime input. Here's an example of a default value that uses a JSON object. Note the use of double quotes around the entire expression and slashes to escape commas and double quotes within the object.
@@ -216,10 +216,10 @@ pipeline:
 
 Use allowed values to provide a fixed range of acceptable values for a runtime input.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. In the Pipeline Studio's Visual Editor, use the **Value type selector** to select **Runtime Input**.
 
@@ -235,10 +235,10 @@ Use allowed values to provide a fixed range of acceptable values for a runtime i
 6. If you also specify a [default value](#default-values), you must include the default value in your allowed values.
 7. Select **Submit**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 When writing pipelines in YAML, define allowed values by appending the `.allowedValues()` method to `<+input>`. For example: `<+input>.allowedValues(bengaluru,newyork)`.
 
@@ -246,10 +246,10 @@ If your values include commas, you must escape the value strings using the forma
 
 If you specify allowed values *and* a [default value](#default-values), the default value must be present in the list of allowed values. To specify both an allowed value and a default value, append both the `.default()` and `.allowedValues()` methods to `<+input>`, and make sure the list of allowed values includes the default value. For example: `<+input>.default(london).allowedValues(bengaluru,newyork,london)`.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Multiple selection
 
@@ -279,10 +279,10 @@ You must have a role with **Pipeline Execute** [permission](/docs/platform/role-
 
 You must configure runtime inputs to allow specification during pipeline execution.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. In the Pipeline Studio's Visual Editor, use the **Value type selector** to select **Runtime Input**.
 
@@ -299,10 +299,10 @@ You must configure runtime inputs to allow specification during pipeline executi
 4. Specify allowed values or a default value, if necessary.
 5. Select **Submit**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 When writing pipelines in YAML, append the `executionInput()` method to `<+input>`. For example, `<+input>.executionInput()`.
 
@@ -311,10 +311,10 @@ You can use mid-run input along with [allowed values](#allowed-values) and [defa
 * Select mid-run input from a list of allowed values: `<+input>.allowedValues(value1,value2).executionInput()`
 * Provide a default value and provide a list of allowed values for mid-run input: `<+input>.allowedValues(value1,value2).default(value1).executionInput()`
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 #### Use the default value instead of failing
 
@@ -330,7 +330,7 @@ To automatically use the default value during such timeouts:
 
 <!-- ![](./static/execution-time-error-configuration.png) -->
 
-<docimage path={require('./static/execution-time-error-configuration.png')} />
+<DocImage path={require('./static/execution-time-error-configuration.png')} />
 
 #### Use execution input in a script
 
@@ -348,10 +348,10 @@ Use expressions to reference Harness input, output, and execution variables. The
 
 For more information, go to the [built-in and custom Harness variables reference](../variables-and-expressions/harness-variables.md).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 In the Pipeline Studio's Visual Editor, you can use the **Value type selector** to select **Expression**.
 
@@ -365,10 +365,10 @@ In free-text fields, such as **Command**, you can directly enter values using th
 
 ![](./static/runtime-inputs-12.png)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 When writing pipelines in YAML, enter the expression using the appropriate syntax.
 
@@ -376,10 +376,10 @@ When you type `<+`, Harness provides suggestions for built-in expressions as you
 
 ![](./static/runtime-inputs-13.png)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 You can continue typing or select the expression from the list of suggestions.
 

@@ -12,13 +12,13 @@ When an SBOM or SLSA Provenance is generated, along with a signed attestation, i
 
 <!-- ![](./static/view-result-att-in-docker-hub.png) -->
 
-<docimage path={require('./static/view-result-att-in-docker-hub.png')} />
+<DocImage path={require('./static/view-result-att-in-docker-hub.png')} />
 
 On the **Execution details** page in Harness, you can view and download SBOM and SLSA Provenance from the **Artifacts** tab.
 
 <!-- ![](./static/view-result-slsa-artifact.png) -->
 
-<docimage path={require('./static/view-result-slsa-artifact.png')} />
+<DocImage path={require('./static/view-result-slsa-artifact.png')} />
 
 :::tip
 
@@ -32,13 +32,13 @@ If your pipeline included an **SSCA Enforcement** step, you can see the number o
 
 <!-- ![](./static/view-result-policy-violations.png) -->
 
-<docimage path={require('./static/view-result-policy-violations.png')} />
+<DocImage path={require('./static/view-result-policy-violations.png')} />
 
 Select the number to inspect the details of the violations.
 
 <!-- ![](./static/view-result-policy-violations-detail.png) -->
 
-<docimage path={require('./static/view-result-policy-violations-detail.png')} />
+<DocImage path={require('./static/view-result-policy-violations-detail.png')} />
 
 :::tip
 
@@ -52,7 +52,7 @@ In the **SLSA Verification** column on the **Artifacts** tab, you can see if the
 
 <!-- ![](./static/view-result-slsa-verify-pass-fail.png) -->
 
-<docimage path={require('./static/view-result-slsa-verify-pass-fail.png')} />
+<DocImage path={require('./static/view-result-slsa-verify-pass-fail.png')} />
 
 :::tip
 
@@ -64,4 +64,4 @@ To inspect which policies failed, select the **Pipeline** tab, select the **SLSA
 
 <!-- ![](./static/view-result-slsa-policy-violations.png) -->
 
-<docimage path={require('./static/view-result-slsa-policy-violations.png')} />
+<DocImage path={require('./static/view-result-slsa-policy-violations.png')} />

@@ -24,9 +24,9 @@ Use this [delegate installation wizard video](https://www.youtube.com/watch?v=yL
 
 </details>
 
-```mdx-code-block
+
 import DelegateInstall from '/tutorials/platform/install-delegate.md';
-```
+
 
 <details>
 <summary>Use the terminal</summary>
@@ -39,14 +39,14 @@ To learn more, watch the [Delegate overview](/docs/platform/delegates/delegate-c
 
 You can connect Harness to a Spot Elastigroup cloud provider by adding a Harness Spot connector. 
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
 <TabItem value="YAML" label="YAML">
-```
+
 Here's a Spot Elastigroup connector YAML sample: 
 
 ```
@@ -66,10 +66,10 @@ connector:
     executeOnDelegate: true
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="API" label="API">
-```
+
 Create a connector using [Connector API](https://apidocs.harness.io/tag/connectors).
 
 ```
@@ -98,10 +98,10 @@ curl -i -X POST \
 
 To connect to a Spot Elastigroup cloud provider using Spot's API, go to [Spot API authentication](https://docs.spot.io/api/#section/Authentication).
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Terraform" label="Terraform">
-```
+
 
 For the Terraform Provider resource, go to [harness_platform_connector_spot](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_spot).
 
@@ -150,10 +150,10 @@ resource "harness_platform_connector_spot" "spot" {
   }
 }
 ```
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Harness Manager" label="Harness Manager">
-```
+
 
 Perform the following steps to add a Spot connector in Harness Manager.
 
@@ -173,11 +173,11 @@ Perform the following steps to add a Spot connector in Harness Manager.
 
 8.  In **Set Up Delegates**, select the **Connect using Delegates with the following Tags** option and enter the name of the [delegate](#install-the-harness-delegate) you created earlier.
 9.  Select **Save and Continue**.
-10. Once the test connection succeeds, select **Finish**. 
+10. Once the test connection succeeds, select **Finish**.
 
-```mdx-code-block
+
 </TabItem>    
 </Tabs>
-```
+
     
 The connector now appears in the **Connectors** list.

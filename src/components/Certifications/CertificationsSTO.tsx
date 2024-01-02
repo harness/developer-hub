@@ -188,7 +188,7 @@ export default function CertificationsSTO() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Security Testing Orchestration - Administrator (BETA COMING SOON)</h2>
+                  <h2>Security Testing Orchestration - Administrator (BETA)</h2>
                   <img
                     src={`${baseUrl}img/cert_adm_sto_badge.svg`}
                     alt="Harness Certified Expert - STO Administrator"
@@ -200,7 +200,7 @@ export default function CertificationsSTO() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                   <h3>Review Study Guide (BETA COMING SOON)</h3>
+                  <h3>Review Study Guide (BETA)</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy and maintain STO
                     Engineering projects and the overall Harness Platform. This
@@ -212,13 +212,12 @@ export default function CertificationsSTO() {
                   </div>
                   <AdminCertificationReviewDetails />
                   <div className={styles.btnContainer}>
-                    <Link href="#">
+                    <Link href="https://university.harness.io/security-testing-orchestration-administrator">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
-                    </Link> 
-                </div> 
-   
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -230,15 +229,14 @@ export default function CertificationsSTO() {
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="#">
+                <Link href="https://university.harness.io/security-testing-orchestration-administrator">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
                 </Link>
-            
               </div>
             </div>
-          </div> 
+          </div>
         </div>
 
         {/* Architect Tab Content */}

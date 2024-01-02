@@ -14,14 +14,14 @@ You can run stages in parallel when you want to perform parallel operations. For
 
 To run stages in parallel, [add stages](../add-a-stage.md) to your pipeline, and then arrange the stages to run in parallel.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual editor" default>
-```
+
 
 In the Visual editor, you can drag-and-drop stages to arrange them in parallel.
 
@@ -31,10 +31,10 @@ Once grouped in parallel, you can hover over the parallel group and select the s
 
 ![](./static/run-stages-in-parallel.png)
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML editor">
-```
+
 
 In the YAML editor, indent the stages under a `parallel` flag.
 
@@ -48,10 +48,10 @@ stages:
     - stage: ## This stage is not in the parallel group.
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::info Deployment stages
 

@@ -86,7 +86,7 @@ To manage roles in Harness, you need a role, such as **Account Admin**, that has
 
 <!-- ![](./static/add-manage-roles-17.png) -->
 
-<docimage path={require('./static/add-manage-roles-17.png')} />
+<DocImage path={require('./static/add-manage-roles-17.png')} />
 
 ### Create a role
 
@@ -103,7 +103,7 @@ To manage roles in Harness, you need a role, such as **Account Admin**, that has
 
    <!-- ![](./static/add-manage-roles-19.png) -->
 
-   <docimage path={require('./static/add-manage-roles-19.png')} />
+   <DocImage path={require('./static/add-manage-roles-19.png')} />
 
 6. Select **Apply Changes**.
 

@@ -4,11 +4,11 @@ description: Set up TI for C# codebases with .NET Core or NUnit.
 sidebar_position: 50
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
-```
+
 
 :::note
 
@@ -90,7 +90,7 @@ Using [Test Intelligence (TI) ](./set-up-test-intelligence.md) in your Harness C
 
    <!-- ![](../static/set-up-test-intelligence-04.png) -->
 
-   <docimage path={require('../static/set-up-test-intelligence-04.png')} />
+   <DocImage path={require('../static/set-up-test-intelligence-04.png')} />
 
 2. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
 
@@ -108,10 +108,10 @@ Using [Test Intelligence (TI) ](./set-up-test-intelligence.md) in your Harness C
 
 ## Pipeline YAML examples
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="cloud" label="Harness Cloud" default>
-```
+
 
 This example shows a pipeline that uses Harness Cloud build infrastructure and runs tests on C# with .NET Core and Test Intelligence.
 
@@ -166,10 +166,10 @@ pipeline:
             type: Cloud
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="sh" label="Self-hosted">
-```
+
 
 This example shows a pipeline that uses a Kubernetes cluster build infrastructure and runs tests on C# with .NET Core and Test Intelligence.
 
@@ -228,10 +228,10 @@ pipeline:
               os: Linux
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Run Tests step settings
 

@@ -1,6 +1,6 @@
 ---
 title: Add Google KMS as a Harness secret manager
-description: This topic explains steps to add Google KMS as a Secret Manager.
+description: This topic explains steps to add Google KMS as a secret manager.
 # sidebar_position: 2
 helpdocs_topic_id: cyyym9tbqt
 helpdocs_category_id: 48wnu4u0tj
@@ -8,9 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use Google [Cloud Key Management Service](https://cloud.google.com/security-key-management) (Cloud KMS) as a Harness Secret Manager. Once Google KMS is added as a Secrets Manager, you can create encrypted secrets in Google KMS and use them in your Harness account.
+You can use Google [Cloud Key Management Service](https://cloud.google.com/security-key-management) (Cloud KMS) as a Harness Secret Manager. Once Google KMS is added as a secret manager, you can create encrypted secrets in Google KMS and use them in your Harness account.
 
-For details on Harness Secret Managers, go to [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
+import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
+
+<Storeauth />
 
 This topic describes how to add a Google KMS Secret Manager in Harness.
 
@@ -18,16 +20,17 @@ This topic describes how to add a Google KMS Secret Manager in Harness.
 
 * [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
 * [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
+* [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
 
 ### Add a Secret Manager
 
 This topic assumes you have a Harness Project set up. If not, go to [Create Organizations and Projects](../../organizations-and-projects/create-an-organization.md).
 
-You can add a Connector from any module in your Project in Project setup, or in your Organization or Account Resources.
+You can add a connector from any module in your Project in Project setup, or in your Organization or Account Resources.
 
-In **Connectors**, click **Connector**.
+In **Connectors**, select **Connector**.
 
-In **Secret Managers**, click **GCP KMS** under **Secret Managers**.
+In **Secret Managers**, select **GCP KMS**.
 
 ![](../../secrets/static/add-google-kms-secrets-manager-63.png)
 
@@ -35,13 +38,13 @@ The **GCP Key Management Service** settings appear.
 
 ![](../../secrets/static/add-google-kms-secrets-manager-64.png)
 
-In **Name,** enter a name for your Secret Manager.  You will use this name to select this Secret Manager when adding or selecting a secret.
+In **Name,** enter a name for your secret manager. You will use this name to select this secret manager when adding or selecting a secret.
 
-Enter a description for your Secret Manager.
+Enter a description for your secret manager.
 
-Enter tags for your Secret Manager.
+Enter tags for your secret manager.
 
-Click **Continue**.
+Select **Continue**.
 
 ### Obtain Google Cloud Symmetric Key
 
@@ -71,7 +74,7 @@ First, you need to grant a Principal the Cloud KMS CryptoKey Encrypter/Decrypter
 
 In Google Cloud Console, go to the IAM page.
 
-Locate the Principal you want to use, and click Edit.
+Locate the Principal you want to use, and then select Edit.
 
 In Edit permissions, add the Cloud KMS CryptoKey Encrypter/Decrypter role, and then select **Save**.
 
@@ -93,20 +96,20 @@ Select **ADD KEY** > **Create new key**.
 
 In the resulting Create private key dialog, select JSON, create the key, and download it to your computer.
 
-Return to the Secret Manager's Details page in Harness.
+Return to the secret manager's Details page in Harness.
 
-Under GCP KMS Credentials File, click **Create or Select a Secret**. You can create a new [File Secret](/docs/platform/secrets/add-file-secrets) and upload the key file you just exported from Google Cloud.
+Under GCP KMS Credentials File, select **Create or Select a Secret**. You can create a new [File Secret](/docs/platform/secrets/add-file-secrets) and upload the key file you just exported from Google Cloud.
 
 ![](../../secrets/static/add-google-kms-secrets-manager-69.png)
 
-Click **Save** and then **Continue**.
+Select **Save**, and then select **Continue**.
 
 ### Set up delegates
 
-In **Delegates** **Setup**, use [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) to select any specific delegates that you want this Connector to use. Click **Save and Continue.**
+In **Delegates** **Setup**, use [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) to select any specific delegates that you want this Connector to use. Select **Save and Continue**.
 
 ### Test Connection
 
-In **Connection Test**, click **Finish** after your connection is successful**.**
+In **Connection Test**, select **Finish** after your connection is successful.
 
 ![](../../secrets/static/add-google-kms-secrets-manager-70.png)

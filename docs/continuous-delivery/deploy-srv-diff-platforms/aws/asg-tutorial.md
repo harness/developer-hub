@@ -51,8 +51,8 @@ Here's a summary of how Harness deploys new ASG versions:
 Notes:
 - ASG creation differs for rolling and blue green deployments:
   - For rolling, Harness updates the *existing* ASG with the new configuration.
-  - For blue green, Harness creates a *new* ASG with a new revision suffix, like `asg-demo__2`. Once there are two ASGs (`asg-demo__1` and `asg-demo__2`) Harness alternately updates these *existing* ASGs with the new configuration on each successive deployment. 
-  
+  - For blue green, Harness creates a *new* ASG with a new revision suffix, like `asg-demo__2`. Once there are two ASGs (`asg-demo__1` and `asg-demo__2`) Harness alternately updates these *existing* ASGs with the new configuration on each successive deployment.
+
 </details>
 
 ## AWS policy requirements
@@ -147,14 +147,14 @@ You can create a service when you are building the pipeline or separately in **S
 
 :::
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 Here's an example where the configuration files are stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 
@@ -218,10 +218,10 @@ service:
   gitOpsEnabled: false
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="API" label="API">
-```
+
 Create a service using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
 ```yaml
@@ -243,10 +243,10 @@ curl -i -X POST \
   }]'
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Terraform Provider" label="Terraform Provider">
-```
+
 
 For the Terraform Provider resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
@@ -326,10 +326,10 @@ resource "harness_platform_service" "example" {
 }
 ```
 
-```mdx-code-block
-  </TabItem>  
+
+</TabItem>  
   <TabItem value="Harness Manager" label="Harness Manager">
-```
+
 
 To configure a Harness ASG service in the Harness Manager, do the following:
 
@@ -368,16 +368,16 @@ To configure a Harness ASG service in the Harness Manager, do the following:
     
     The Harness ASG service is complete. You can now use it in your Harness ASG pipelines.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### ASG configuration files
 
 AWS does not have a dedicated public resource for ASG configuration file formatting because ASG creation is typically done using the AWS CLI, SDKs, or Management Console, which have their own syntax and methods for specifying the parameters.
 
-However, the AWS CLI [create-auto-scaling-group](https://docs.aws.amazon.com/cli/latest/reference/autoscaling/create-auto-scaling-group.html) command reference documentation provides a detailed description of the parameters that can be used when creating an ASG. 
+However, the AWS CLI [create-auto-scaling-group](https://docs.aws.amazon.com/cli/latest/reference/autoscaling/create-auto-scaling-group.html) command reference documentation provides a detailed description of the parameters that can be used when creating an ASG.
 
 <details>
 <summary>ASG configuration file example</summary>
@@ -502,14 +502,14 @@ You can create an environment when you are building the pipeline or separately i
 
 :::
 
-```mdx-code-block
+
 import Tabs3 from '@theme/Tabs';
 import TabItem3 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs3>
   <TabItem3 value="YAML" label="YAML" default>
-```
+
 Here's a YAML example of an ASG environment.
 
 ```yaml
@@ -524,10 +524,10 @@ environment:
   variables: []
 ```
 
-```mdx-code-block
+
   </TabItem3>
   <TabItem3 value="API" label="API">
-```
+
 
 Create an environment using the [Create Environments](https://apidocs.harness.io/tag/Environments#operation/createEnvironmentV2) API.
 
@@ -552,10 +552,10 @@ curl -i -X POST \
   }'
 ```
 
-```mdx-code-block
+
   </TabItem3>
   <TabItem3 value="Terraform Provider" label="Terraform Provider">
-```
+
 
 For the Terraform Provider resource, go to [harness_platform_environment](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment) and [harness_platform_environment_service_overrides](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment_service_overrides).
 
@@ -588,10 +588,10 @@ resource "harness_platform_environment" "example" {
 }
 ```
 
-```mdx-code-block
+
   </TabItem3>
   <TabItem3 value="Harness Manager" label="Harness Manager">
-```
+
 
 To create an environment, do the following:
 
@@ -604,10 +604,10 @@ To create an environment, do the following:
 
 Pipelines require that an environment have an infrastructure definition. We'll cover that next.
 
-```mdx-code-block
+
   </TabItem3>
 </Tabs3>
-```
+
 
 ## Define the infrastructure
 
@@ -626,14 +626,14 @@ To define the target ASG region, you add an infrastructure definition to a Harne
 
 You can use the same AWS connector you used when adding the AMI artifact in the Harness service. Ensure the AWS IAM user in the AWS connector credentials meets the [AWS policy requirements](#aws-policy-requirements).
 
-```mdx-code-block
+
 import Tabs1 from '@theme/Tabs';
 import TabItem1 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs1>
   <TabItem1 value="YAML" label="YAML" default>
-```
+
 
 Here's a YAML example of an ASG infrastructure definition.
 
@@ -654,10 +654,10 @@ infrastructureDefinition:
   allowSimultaneousDeployments: false
 ```
 
-```mdx-code-block
+
   </TabItem1>
   <TabItem1 value="API" label="API">
-```
+
 
 Create an infrastructure definition using the [Create Infrastructure](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure) API.
 
@@ -682,10 +682,10 @@ curl -i -X POST \
   }'
 ```
 
-```mdx-code-block
+
   </TabItem1>
   <TabItem1 value="Terraform Provider" label="Terraform Provider">
-```
+
 
 For the Terraform Provider resource, go to [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure).
 
@@ -719,10 +719,10 @@ resource "harness_platform_infrastructure" "example" {
 }
 ```
 
-```mdx-code-block
+
   </TabItem1>
   <TabItem1 value="Harness Manager" label="Harness Manager">
-```
+
 
 To create the ASG infrastructure definition in an environment, do the following:
 
@@ -740,10 +740,10 @@ To create the ASG infrastructure definition in an environment, do the following:
 
 The infrastructure definition is added.
 
-```mdx-code-block
+
   </TabItem1>
 </Tabs1>
-```
+
 
 ### Dynamically provisioned ASG infrastructure
 
@@ -814,7 +814,7 @@ For ASG, Harness needs the following settings mapped to outputs:
 
 In the Harness Infrastructure Definition, in **Base ASG**, select the ASG to use as the base ASG.
 
-<docimage path={require('./static/8705496ace1f6b040eccc5b1fe4d6dae3b21cedb37ab383680b39ad41510c417.png')} width="60%" height="60%" title="Click to view full size image" />  
+<DocImage path={require('./static/8705496ace1f6b040eccc5b1fe4d6dae3b21cedb37ab383680b39ad41510c417.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 
 ## Harness ASG pipelines
@@ -830,14 +830,14 @@ You can create a service and environment when you are building the pipeline or s
 The pipeline models the release process using execution steps, triggers, and other settings. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
 
 
-```mdx-code-block
+
 import Tabs2 from '@theme/Tabs';
 import TabItem2 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs2>
   <TabItem2 value="YAML" label="YAML" default>
-```
+
 
 Here's a pipeline with a service, environment, and ASG Rolling Deploy and ASG Rolling Rollback steps:
 
@@ -902,10 +902,10 @@ pipeline:
 ```
 
 
-```mdx-code-block
+
   </TabItem2>
   <TabItem2 value="API" label="API">
-```
+
 
 Create a pipeline using the [Create Pipeline](https://apidocs.harness.io/tag/Pipeline/#operation/postPipelineV2) API.
 
@@ -960,10 +960,10 @@ curl -i -X POST \
                   type: StageRollback'
 ```
 
-```mdx-code-block
+
   </TabItem2>
   <TabItem2 value="Terraform Provider" label="Terraform Provider">
-```
+
 
 For the Terraform Provider resource, go to [harness_platform_pipeline](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_pipeline).
 
@@ -1022,10 +1022,10 @@ resource "harness_platform_pipeline" "example" {
 }
 ```
 
-```mdx-code-block
+
   </TabItem2>
   <TabItem2 value="Harness Manager" label="Harness Manager">
-```
+
 
 To create an ASG pipeline, do the following:
 
@@ -1045,10 +1045,10 @@ To create an ASG pipeline, do the following:
     In **Rollback**, you can see the rollback steps.
 11. Select **Save**. The pipeline is saved.
 
-```mdx-code-block
+
   </TabItem2>
 </Tabs2>
-```
+
 
 ## ASG pipeline execution strategies
 
@@ -1069,19 +1069,19 @@ Here's a flowchart that explains how Harness performs rolling deployments:
 <details>
 <summary>Rolling deployments flowchart</summary>
 
-![ASG rolling flowchart](./static/ab01a5afe7406d7dad3496fbf0544cd304c512179589a24ae47eefa418fdc989.png)  
+![ASG rolling flowchart](./static/ab01a5afe7406d7dad3496fbf0544cd304c512179589a24ae47eefa418fdc989.png)
 
 
 </details>
 
-```mdx-code-block
+
 import Tabs4 from '@theme/Tabs';
 import TabItem4 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs4>
   <TabItem4 value="Rolling Deploy step" label="Rolling Deploy step">
-```
+
 
 The Rolling Deploy step has the following options:
 
@@ -1094,7 +1094,7 @@ The Rolling Deploy step has the following options:
   - Go to [Set the default instance warmup for an Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-default-instance-warmup.html?icmpid=docs_ec2as_help_panel) from AWS.
 - **Skip Matching**
   - Choose whether AWS Auto Scaling skips replacing instances that match the desired configuration. If no desired configuration is specified, then it skips replacing instances that have the same launch template and instance types that the ASG was using before the instance refresh started. For more information, go to [Use an instance refresh with skip matching](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh-skip-matching.html) from AWS.
- 
+
 
 <details>
 <summary>YAML example</summary>
@@ -1167,10 +1167,10 @@ Rolling Deployment Finished Successfully
 </details>
 
 
-```mdx-code-block
+
   </TabItem4>
   <TabItem4 value="Rolling Rollback step" label="Rolling Rollback step">
-```
+
 
 If deployment failure occurs, the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the Rolling Rollback step in the **Rollback** section of **Execution**.
 
@@ -1182,10 +1182,10 @@ Harness stores configurations of the ASG you are deploying twice:
 - First storage: Harness stores the ASG configuration at the start of deployment for rollback *during deployment*.
 - Second storage: Harness stores the ASG configuration at the end of deployment for rollbacks *post deployment*.
 
-```mdx-code-block
-  </TabItem4>
+
+</TabItem4>
 </Tabs4>
-```
+
 
 ### Canary
 
@@ -1204,14 +1204,14 @@ Here's what the two step groups look like:
 ![ASG canary step groups](./static/22f0a4be013dcf977b67e4f645941ce03ea5f63e6d9225a28f5efa383b5b5bdc.png)  
 
 
-```mdx-code-block
+
 import Tabs5 from '@theme/Tabs';
 import TabItem5 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs5>
   <TabItem5 value="ASG Canary Deploy step" label="ASG Canary Deploy step" default>
-```
+
 
 The ASG Canary Deploy step deploys a new ASG with the name of your ASG and the extension `__Canary`. 
 
@@ -1243,10 +1243,10 @@ Deployment Finished Successfully
 </details>
 
 
-```mdx-code-block
+
   </TabItem5>
   <TabItem5 value="ASG Canary Delete step" label="ASG Canary Delete step">
-```
+
 
 The ASG Canary Delete step deletes the temporary ASG created by the ASG Canary Deploy step.
 
@@ -1272,18 +1272,18 @@ Deletion Finished Successfully
 </details>
 
 
-```mdx-code-block
+
   </TabItem5>
   <TabItem5 value="ASG Rolling Deploy step" label="ASG Rolling Deploy step">
-```
+
 
 This is the standard Harness ASG Rolling Deploy step. For details, go to [Rolling](#rolling).
 
 
-```mdx-code-block
+
   </TabItem5>
   <TabItem5 value="Rollback steps" label="Rollback steps">
-```
+
 
 If deployment failure occurs, the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the rollback steps in the **Rollback** section of **Execution**.
 
@@ -1292,10 +1292,10 @@ For ASG canary deployments there are two rollback steps:
 - **ASG Canary Delete:** deletes the canary ASG (`[app_name]__canary`). 
 - **ASG Rolling Rollback:** deletes the new state and returns state to the previous ASG version.
 
-```mdx-code-block
-  </TabItem5>
+
+</TabItem5>
 </Tabs5>
-```
+
 
 
 ### Blue Green
@@ -1314,29 +1314,14 @@ The first ASG deployed is given a suffix using the format `[app_name]__1`, like 
 
 Every subsequent deployment will simply create new versions of these ASGs instead of creating new ASGs. So the third deployment will create a new *version* of ASG `[app_name]__1`, route prod traffic to it, and route stage traffic to ASG `[app_name]__2`.
 
-<details>
-<summary>Blue/Green with Traffic Shift Summary</summary>
 
-In this strategy, you specify production and stage listener ports and rules to use in the ASG Blue Green Deploy step. Next, the ASG Swap Services step swaps all traffic from stage to production.
-
-A Blue/Green deployment reliably deploys your ASGs by maintaining new and old versions of ASGs. The ASGs run behind an Application Load Balancer (ALB) using two listeners, stage and prod. These listeners forward respectively to two target groups, stage and prod, where the new and old ASGs are run.
-
-In the first stage of deployment, the new ASG is attached to the stage target group:
-
-![first stage](./static/ea87f58fb9e638f26d1c0a7cefde20158f4ad3c88496b3de827121992dd0ba0a.png)  
-
-Blue/Green deployments are achieved by swapping routes between the target groups—always attaching the new ASG first to the stage target group, and then to the prod target group:
-
-![second stage](./static/88aa5c64d8375bea18c47e77b218c94fae1d06e6652c984c912d795132e84e63.png)  
-
-</details>
 
 Here's a flowchart that explains how Harness performs Blue Green deployments:
 
 <details>
 <summary>Blue Green deployments flowchart</summary>
 
-![blue green flowchart map](./static/65c67ea9418a480ee1fc97fce06fe551ac3afea9fb6e5297a2d70fcb7711ee0c.png)  
+![blue green flowchart map](./static/65c67ea9418a480ee1fc97fce06fe551ac3afea9fb6e5297a2d70fcb7711ee0c.png)
 
 </details>
 
@@ -1398,14 +1383,14 @@ Now there are two ASGs being used: a prod and a stage ASG. Subsequent deployment
 
 Blue Green deployment steps:
 
-```mdx-code-block
+
 import Tabs6 from '@theme/Tabs';
 import TabItem6 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs6>
   <TabItem6 value="ASG Blue Green Deploy step" label="ASG Blue Green Deploy step" default>
-```
+
 
 The ASG Blue Green Deploy step has the following settings:
 
@@ -1420,10 +1405,10 @@ The ASG Blue Green Deploy step has the following settings:
 
 Harness fetches these AWS settings using the Harness AWS connector you have set up in the **Infrastructure Definition** in the **Environment** section of the stage.
 
-```mdx-code-block
-  </TabItem6>
-  <TabItem6 value="ASG Blue Green Swap Services step" label="ASG Blue Green Swap Services step">
-```
+
+</TabItem6>
+<TabItem6 value="ASG Blue Green Swap Services step" label="ASG Blue Green Swap Services step">
+
 
 The ASG Blue Green Swap Services step has the following settings:
 
@@ -1431,10 +1416,10 @@ The ASG Blue Green Swap Services step has the following settings:
   
   For example, if there was an existing ASG named `asgdemo__1` and you deployed a new version of the ASG named `asgdemo__2` and swapped traffic to it, selecting **Downsize old ASG** will downsize `asgdemo__1`.
 
-```mdx-code-block
-  </TabItem6>
-  <TabItem6 value="ASG Blue Green Rollback step" label="ASG Blue Green Rollback step">
-```
+
+</TabItem6>
+<TabItem6 value="ASG Blue Green Rollback step" label="ASG Blue Green Rollback step">
+
 
 The ASG Blue Green Rollback rolls back the routes and ASG created/updated in the Blue Green deployment.
 
@@ -1443,10 +1428,64 @@ Harness stores configurations of the ASG you are deploying twice:
 - Second storage: Harness stores the ASG configuration at the end of deployment for rollbacks *post deployment*.
 
 
-```mdx-code-block
-  </TabItem6>
+
+</TabItem6>
 </Tabs6>
-```
+
+
+### Blue Green traffic shift options
+
+There are two options for traffic-shifting with blue green deployments: instant and incremental.
+
+<details>
+<summary>Blue/Green with Instant Traffic Shift Summary</summary>
+
+In this strategy, you specify production and stage listener ports and rules to use in the ASG Blue Green Deploy step. Next, the ASG Swap Services step swaps all traffic from stage to production.
+
+A Blue/Green deployment reliably deploys your ASGs by maintaining new and old versions of ASGs. The ASGs run behind an Application Load Balancer (ALB) using two listeners, stage and prod. These listeners forward respectively to two target groups, stage and prod, where the new and old ASGs are run.
+
+In the first stage of deployment, the new ASG is attached to the stage target group:
+
+![first stage](./static/ea87f58fb9e638f26d1c0a7cefde20158f4ad3c88496b3de827121992dd0ba0a.png)  
+
+Blue/Green deployments are achieved by swapping routes between the target groups—always attaching the new ASG first to the stage target group, and then to the prod target group:
+
+![second stage](./static/88aa5c64d8375bea18c47e77b218c94fae1d06e6652c984c912d795132e84e63.png)
+
+</details>
+
+<details>
+<summary>Blue/Green with Incremental Traffic Shift Summary</summary>
+
+:::note
+
+Currently, this feature is behind the feature flag `CDS_ASG_SHIFT_TRAFFIC_STEP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+This deployment method lets you add **ASG Shift Traffic** steps to incrementally shift traffic from the Target Group used by the previous ASG to the Target Group used by the new ASG you are deploying.
+
+With this strategy, you are not shifting traffic from stage and production environments. You are shifting traffic incrementally for a production environment. In this way, it is similar to a Canary strategy.
+
+However, in a Canary deployment, the percentage of traffic that goes to the new ASG is determined by the number of instances (for example, 25% of 4 instances) or the forwarding policy of the load balancer.
+
+With this Incremental Traffic Shift strategy, you are controlling the  percentage of traffic sent to the new ASG. For example, 25% of all traffic.
+
+To use incremental traffic shift, do the following:
+
+1. In the **ASG Blue Green Deploy** step, in **ASG Load Balancer**, select **Use Shift Traffic**.
+2. Next, add multiple **ASG Traffic Shift** steps. Typically, users can add Approval step between the ASG Traffic Shift step as checks.
+3. In the first ASG Traffic Shift step, in **New Autoscaling Group Weight**, enter the percentage of traffic you want shifted from the previous ASG to the new ASG you are deploying.
+4. Continue setting any subsequent ASG Traffic Shift steps.
+
+The **Downsize Old ASG at 0% weight** setting should only be selected for the ASG Traffic Weight step that shifts traffic to `100%` in its New Autoscaling Group Weight setting.
+
+When this setting is enabled, the old ASG is downsized.
+
+</details>
+
+
+
 
 ## Advanced settings for all steps
 

@@ -21,7 +21,7 @@ To access the Event Distribution Graph, follow these steps:
 
 The graph appears, displaying historical performance metrics and the total count of errors across your chosen time interval.
 
-<docimage path={require('./static/cet-event-distribution-default.png')} />
+<DocImage path={require('./static/cet-event-distribution-default.png')} />
 
 
 ## Add events to the graph
@@ -34,7 +34,7 @@ To include a new event in the graph, follow these steps:
    
    The newly added event is displayed on the chart.
 
-<docimage path={require('./static/cet-event-distribution-add-exception.png')} />
+<DocImage path={require('./static/cet-event-distribution-add-exception.png')} />
 
 
 ## Display top events
@@ -45,7 +45,7 @@ To quickly identify high-impact errors, follow these steps:
   
   This adds the top error events as a series on the graph, providing an immediate overview of critical issues requiring attention.
 
-<docimage path={require('./static/cet-event-distribution-plot-top-events.png')} />
+<DocImage path={require('./static/cet-event-distribution-plot-top-events.png')} />
 
 
 ## Remove events from the graph
@@ -54,11 +54,11 @@ To remove events from the Event Distribution Graph, use one of the following met
 
 - Remove an Event: Select the remove icon next to the event you wish to remove.
  
-  <docimage path={require('./static/cet-even-distribution-remove-event.png')} />
+  <DocImage path={require('./static/cet-even-distribution-remove-event.png')} />
 
 - Remove All Events: Choose the Clear option to remove all events from the graph.
   
-  <docimage path={require('./static/cet-event-distribution-clear-events.png')} />
+  <DocImage path={require('./static/cet-event-distribution-clear-events.png')} />
 
 ## Customize timeframes
 
@@ -68,7 +68,7 @@ You can tailor the graph to your preferences by adjusting the timeframes using o
 
 - Time Slice: Click on the graph to open a concise time slice pane. You can expand or shrink the time slice according to your preferred timeframe.
 
-<docimage path={require('./static/cet-event-distribution-select-time-slice.png')} />
+<DocImage path={require('./static/cet-event-distribution-select-time-slice.png')} />
 
 
 ## Collapse the Event Graph

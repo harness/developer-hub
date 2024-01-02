@@ -15,7 +15,7 @@ You must create a policy file containing the rules ([policy definitions](./defin
 
 <!-- ![](./static/ssca-policy-file-store.png) -->
 
-<docimage path={require('./static/ssca-policy-file-store.png')} />
+<DocImage path={require('./static/ssca-policy-file-store.png')} />
 
 When you [enforce SSCA policies](./enforce-ssca-policies.md) in a Harness pipeline, the [policy definitions](./define-ssca-policies.md) are evaluated against each component in the artifact's [SBOM](../sbom/generate-sbom.md).
 

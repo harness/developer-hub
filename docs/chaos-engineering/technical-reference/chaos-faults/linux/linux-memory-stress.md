@@ -7,7 +7,7 @@ import Ossupport from './shared/note-supported-os.md'
 import FaultPermissions from './shared/fault-permissions.md'
 
 
-Linux memory stress causes memory consumption of the target Linux machines for a specific duration.
+Linux memory stress causes memory consumption on the target Linux machines for a specific duration. This fault allocates and maps a specific amount of virtual address space and keeps rewriting to that same memory space for the chaos duration before unmapping it.
 
 ![Linux memory stress](./static/images/linux-memory-stress.png)
 
@@ -15,6 +15,10 @@ Linux memory stress causes memory consumption of the target Linux machines for a
 - Induces memory consumption and exhaustion on the target Linux machines.
 - Simulates a lack of memory for processes running on the application, which degrades their performance.
 - Simulates application slowness due to memory starvation, and noisy neighbour problems due to excessive consumption of memory.
+
+:::info note
+The mapped memory space is unmapped only after the chaos duration; the same memory space is used to write data into memory in an iterative manner. This way, constant memory is consumed throughout the fault duration.
+:::
 
 <Ossupport />
 

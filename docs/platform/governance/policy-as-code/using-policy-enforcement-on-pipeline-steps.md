@@ -8,7 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
 :::important
 Currently, this feature is behind the feature flags `OPA_PIPELINE_GOVERNANCE`, `CUSTOM_POLICY_STEP`, and `OPA_FF_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
@@ -18,9 +17,9 @@ This topic explains steps to create policies using the Harness Policy As Code an
 
 ## Before you begin
 
-* See [Harness Policy As Code Overview](/docs/feature-flags/harness-policy-engine).
-* Make sure you have set up a project and a working pipeline in the Harness platform.
-* Policies use OPA authoring language Rego. For more information, go to:
+- See [Harness Policy As Code Overview](/docs/feature-flags/harness-policy-engine).
+- Make sure you have set up a project and a working pipeline in the Harness platform.
+- Policies use OPA authoring language Rego. For more information, go to:
   - [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).
   - [Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language/) from OPA.
   - [Rego Cheat Sheet](https://dboles-opa-docs.netlify.app/docs/v0.10.7/rego-cheatsheet/).
@@ -29,7 +28,7 @@ This topic explains steps to create policies using the Harness Policy As Code an
 
 <!-- Video:
 https://www.loom.com/share/5ca3d3a110694ab6b272ec604998395e-->
-<docvideo src="https://www.loom.com/share/5ca3d3a110694ab6b272ec604998395e" />
+<DocVideo src="https://www.loom.com/share/5ca3d3a110694ab6b272ec604998395e" />
 
 ## Sample pipeline
 
@@ -85,6 +84,7 @@ pipeline:
 ## Set up your policy and policy set for the pipeline step
 
 To apply a policy to a pipeline step, you must:
+
 1. Create a policy
 2. Create a policy set
 3. Add a policy set to a step in the pipeline
@@ -126,9 +126,6 @@ YAML snippet:
                      value: serviceMsg
 ```
 
-
-
-
 Create a policy with the following:
 
 ```TEXT
@@ -147,19 +144,17 @@ The policy above is checking to make sure that the message isn't empty. We want 
 
 ![](../../governance/policy-as-code/static/policy-sample.png)
 
-
 ### Create a policy set
 
 Navigate to your Policy Set and click "+ New Policy Set".
 
-* Please provide a name for your policy - (i.e. `Variable Sanitization`)
-* Entity Type that this policy set applies to: `Custom` 
-* On what event should the policy set be evaluated: `On Step` 
+- Please provide a name for your policy - (i.e. `Variable Sanitization`)
+- Entity Type that this policy set applies to: `Custom`
+- On what event should the policy set be evaluated: `On Step`
 
-*Note: Entity type is custom because the step we are enforcing is a custom object type.*
+_Note: Entity type is custom because the step we are enforcing is a custom object type._
 
 By setting the policy on step users' can now access the outputs and inputs of a step and enforce the policy on them.
-
 
 ![](../../governance/policy-as-code/static/policyset-sample.png)
 
@@ -167,17 +162,15 @@ By setting the policy on step users' can now access the outputs and inputs of a 
 
 You will need to add your policy set to your step in order for the policy engine to evaluate the outputs of the step and provide a judgment.
 
-Navigate to the *advanced section* of the step and select the *policy enforcement* accordion.
+Navigate to the _advanced section_ of the step and select the _policy enforcement_ Accordion.
 
 You will be prompted to pick a policy set to associate with the step.
 
 ![](../../governance/policy-as-code/static/add-policyset-to-step.png)
 
-
 After the selection, you will see the policy set associated with the step:
 
 ![](../../governance/policy-as-code/static/configured-policyset-on-step.png)
-
 
 ### Run the pipeline
 
@@ -191,10 +184,6 @@ In the example below, we provided deploy and the variable was assigned "deploy" 
 
 ![](../../governance/policy-as-code/static/policy-step-success.png)
 
-
 ## See also
 
-* [Add Policy Step in Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline)
-
-
-
+- [Add Policy Step in Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline)

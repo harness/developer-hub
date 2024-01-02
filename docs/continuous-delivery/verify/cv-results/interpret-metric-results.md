@@ -46,7 +46,7 @@ The Metrics tab has the following sections:
 
 The following screenshot shows the metric verification results for an Appdynamics health source.
 
-<docimage path={require('./static/verification-result-appd.png')} />
+<DocImage path={require('./static/verification-result-appd.png')} />
 
 
 ## Nodes section
@@ -57,13 +57,13 @@ This section provides a graphical representation of nodes detected during CV bas
 
 Both the Primary and Canary nodes are displayed. Canary nodes are only visible after the deployment, while primary nodes are seen "Before" and "After" the deployment.
 
-   <docimage path={require('./static/canary-node.png')} />
+   <DocImage path={require('./static/canary-node.png')} />
 
 
   **Rolling or Blue Green deployments**
   Both the "Before" and "After" nodes are displayed as the analysis involves comparing metric data before and after the deployment. The "Before" nodes are those observed before the deployment, and the "After nodes are those seen after the deployment.
 
-  <docimage path={require('./static/rolling-bg-node.png')} />
+  <DocImage path={require('./static/rolling-bg-node.png')} />
 
 
 ### Verification status indicator
@@ -90,7 +90,7 @@ The metric summary provides an overview of the verification results, indicating 
 
 - Nodes: This is a summary of the metric's risk across all available nodes, including "Canary" or "After" nodes. It displays the risk level using color-coded indicators that represent the three risk categories: Healthy (indicated in green color), Observe (indicated in orange color), and Unhealthy (indicated in red color). The node summary helps in understanding the overall risk associated with the metric across different nodes in the system.
 
-<docimage path={require('./static/metrics.png')} />
+<DocImage path={require('./static/metrics.png')} />
 
 
 <details>
@@ -118,7 +118,7 @@ You can customize the metrics summary view using the following filters:
 - **Raw** and **Normalized**: Use the **Normalized** filter option to view the metric data in a standardized form used by ML analysis. The system performs a normalization process for ML analysis by converting three adjacent minutes of metric data into a single data point.  
   Use the **Raw** filter option to see the metric data exactly as provided by the source, without any modifications.
 
-<docimage path={require('./static/filters.png')} />
+<DocImage path={require('./static/filters.png')} />
 
 
 ## Metric details graph
@@ -131,7 +131,7 @@ In metric graphs, the "Canary" or "After" nodes are referred to as "Test Hosts",
 
 In the example below, if there are two Canary nodes named "test-host-1" and "test-host-2," the metric graph will display the comparison of each Canary node with the corresponding Primary node that has the minimum deviation. In the provided example, the graph shows the metric data for "test-host-1" compared to "control-host-1" and for "test-host-2" compared to "control-host-2."
 
-<docimage path={require('./static/metric-detailed-view.png')} />
+<DocImage path={require('./static/metric-detailed-view.png')} />
 
 Below each graph, the results are displayed, indicating whether the metric comparison failed due to ML analysis or the metric threshold. In the given example, both nodes failed due to ML analysis. The failure occurred because of a deviation in the metric values, although the fail-fast threshold was not breached.
 
@@ -139,7 +139,7 @@ The Details section also shows all the thresholds defined for that metric. If th
 
 For instance, in the example below, the reason for the failure is mentioned as "failed because a fail-fast threshold was breached." Observe the threshold configuration under the details section, marked as "applied." It's important to note that if a fail-fast threshold is applied, no normalized data will be displayed. This is because, in such cases, ML analysis is not involved, and therefore, normalization of the metric data is unnecessary.
 
-<docimage path={require('./static/metric-failure.png')} />
+<DocImage path={require('./static/metric-failure.png')} />
 
 
 ## View specific metric values

@@ -36,7 +36,8 @@ Running container image scans as a non-root user is not currently supported.
    1. Update the **Image** setting to point to the new image in your registry.
    2. If you specified a `USER` in your Dockerfile, set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
 
-<details><summary>Dockerfile template for adding certificates to an STO scanner image</summary>
+<details>
+<summary>Dockerfile template for adding certificates to an STO scanner image</summary>
 
 ``` bash
 # STEP 1 

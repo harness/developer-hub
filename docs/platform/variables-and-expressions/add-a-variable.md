@@ -52,11 +52,11 @@ You can add a variable to the account, organization, or project [scope](/docs/pl
 2. Select **Account Resources**, and then select **Variables**.
 3. Select **New Variable**. The **Add Variable** settings appear.
   
-   <docimage path={require('./static/add-a-variable-03.png')} width="30%" height="30%" title="Click to view full size image" />  
+   <DocImage path={require('./static/add-a-variable-03.png')} width="30%" height="30%" title="Click to view full size image" />  
 4. Enter a **Name** for your variable.
 5. In **Fixed Value**, enter a value for your variable.
 6. Select **Save**.
-   <docimage path={require('./static/add-a-variable-04.png')} width="30%" height="30%" title="Click to view full size image" />  
+   <DocImage path={require('./static/add-a-variable-04.png')} width="30%" height="30%" title="Click to view full size image" />  
 
 ### Org
 
@@ -65,7 +65,7 @@ You can add a variable to the account, organization, or project [scope](/docs/pl
 3. Select an org.
 4. In **Organization Resources**, select **Variables**.
    
-   <docimage path={require('./static/add-a-variable-05.png')} width="60%" height="60%" title="Click to view full size image" />  
+   <DocImage path={require('./static/add-a-variable-05.png')} width="60%" height="60%" title="Click to view full size image" />  
 5. Select **New Variable**.
 6. Enter a name, select the variable type, and then enter a value.
 7. For example, here's a variable named **organiz\_var**.
@@ -76,14 +76,14 @@ You can add a variable to the account, organization, or project [scope](/docs/pl
 
 ### Project
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="API" label="API">
-```
+
 
 Use the [createVariable](https://apidocs.harness.io/tag/Variables#operation/createVariable) API to create a new variable.
 
@@ -110,10 +110,10 @@ curl -i -X POST \
   }'
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Harness Manager" label="Harness Manager">
-```
+
 
 1. In a Harness Project, select **Project Setup**, and then select **Variables**.
 2. Select **New Variable**.
@@ -124,10 +124,10 @@ curl -i -X POST \
 5. Note the Id. That Id is used to reference the variable.
 6. Select **Save**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Pipeline, stage, service, and environment
 
@@ -183,7 +183,7 @@ When you run the Pipeline, the variable references are resolved and output:
 
 1. In **Service**, in **Advanced**, select **Add Variable**.
    
-   <docimage path={require('./static/807ab89c31339b661d773c5622579ee361c66fdd2fdc05bf49bb1898532af047.png')} width="60%" height="60%" title="Click to view full size image" />  
+   <DocImage path={require('./static/807ab89c31339b661d773c5622579ee361c66fdd2fdc05bf49bb1898532af047.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 2. The **Add Variable** settings appear.
 3. In **Variable** **Name**, enter a name for your variable.
@@ -242,7 +242,7 @@ Shell scripts executing on remote hosts cannot export the correct value if you'r
 
 When you run the pipeline, you can see the value of the service variables passed as environment variables.
 
-<docimage path={require('./static/export-srv-var-as-env-var.png')} width="100%" height="100%" title="Click to view full size image" />  
+<DocImage path={require('./static/export-srv-var-as-env-var.png')} width="100%" height="100%" title="Click to view full size image" />  
 
 
 

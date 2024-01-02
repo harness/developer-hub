@@ -8,15 +8,19 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
 You can link your Google Cloud Secret Manager to Harness and use it to store any sensitive data you use in Harness, including secrets.
 
-Harness also supports [Google KMS as a secrets manager](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager.md).This topic explains how to add a GCP Secrets Manager in Harness.
+Harness also supports [Google KMS as a secrets manager](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager.md). This topic explains how to add a GCP Secrets Manager in Harness.
+
+import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
+
+<Storeauth />
 
 ## Before you begin
 
 * Go to [Harness Key Concepts](/docs/get-started/key-concepts)
 * Go to [Secrets Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
+* Go to [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
 
 ## Google Cloud secret manager important notes
 
@@ -49,10 +53,10 @@ You can add a connector from any module in your project, in the Project setup, o
 
 This topic explains the steps to add a Google Cloud Secrets Manager to the account [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-1. In your Harness Account, click **Account Settings**.
-2. Click **Account Resources**.
-3. Click **Connectors** and then click **New Connector**.
-4. In Secret Managers, click **GCP Secrets Manager**.  
+1. In your Harness Account, select **Account Settings**.
+2. Select **Account Resources**.
+3. Select **Connectors** and then select **New Connector**.
+4. In **Secret Managers**, select **GCP Secrets Manager**.  
    The GCP Secrets Manager settings appear.
 
    ![](../../secrets/static/add-a-google-cloud-secret-manager-39.png)
@@ -67,9 +71,10 @@ This topic explains the steps to add a Google Cloud Secrets Manager to the accou
 
 ## Configure details
 
-Select one of the following options to configure details for the Google cloud secret manager: 
-- **Specify credentials here**
-- **Use the credentials of a specific Harness Delegate (IAM role, service account, etc)**
+Select one of the following options to configure details for the Google cloud secret manager:
+
+   - **Specify credentials here**
+   - **Use the credentials of a specific Harness Delegate (IAM role, service account, etc)**
 
 ![](../../secrets/static/GCP-details.png)
 
@@ -82,7 +87,7 @@ You must export your Google Cloud service account key and add it as an [Encrypte
 1. In the Google Cloud console, select **IAM & admin** > **Service account**.
 2. Scroll to the service account you want to use. If no service account is present, create one.
 3. Grant this service account the Google Cloud Secret Manager permissions needed.  
-To do this, edit the service account and click **Permissions**. Click **Roles**, and then add the roles needed.  
+To do this, edit the service account and select **Permissions**. Click **Roles**, and then add the roles needed.  
 Go to [Managing secrets](https://cloud.google.com/secret-manager/docs/access-control) in the Google Cloud documentation.
 4. Open your service account's Actions ⋮ menu, then select **Create key.**
 5. In the resulting **Create private key** dialog, select the **JSON** option, create the key, and download it to your computer.
@@ -91,9 +96,9 @@ Go to [Managing secrets](https://cloud.google.com/secret-manager/docs/access-co
 
    ![](../../secrets/static/GCP-specifyCredentials.png)
    
-You can also create a new [File Secret](/docs/platform/secrets/add-file-secrets) here and add the Google Cloud service account key that you downloaded.
+   You can also create a new [File Secret](/docs/platform/secrets/add-file-secrets) here and add the Google Cloud service account key that you downloaded.
 
-Click **Continue**.
+8. Click **Continue**.
 
 ### Use the credentials of a specific Harness Delegate (IAM role, service account, etc)
 
@@ -112,16 +117,16 @@ Click **Continue**.
 
 ## Step 5: Test connection
 
-Once the Test Connection succeeds, click **Finish**. You can now see the connector in **Connectors**.
+Once the Test Connection succeeds, select **Finish**. You can now see the connector in **Connectors**.
 
 ## Add an inline secret to the GCP Secrets Manager
 
 Let us add an inline text secret to the GCP Secrets Manager we just created.
 
-1. In your Harness account, click **Account Settings**.
-2. Click **Account Resources** and then click **Secrets**.
-3. Click **New Secret** and then click **Text**.  
-The **Add new Encrypted Text** settings appear.
+1. In your Harness account, select **Account Settings**.
+2. Select **Account Resources** and then select **Secrets**.
+3. Select **New Secret**, and then select **Text**.  
+   The **Add new Encrypted Text** settings appear.
 4. Select the GCP Secrets Manager you just created.
 5. Enter a **Name** for your secret.
 6. The default selection is **Inline Secret Value**.
@@ -130,15 +135,15 @@ The **Add new Encrypted Text** settings appear.
 
    ![](../static/add-a-google-cloud-secret-manager-41.png)
 
-9. Click **Save**.
+9. Select **Save**.
 
 ## Add a secret reference to the GCP Secrets Manager
 
 Let us add a secret reference to the GCP Secrets Manager we just created.
 
-1. In your Harness account, click **Account Settings**.
-2. Click **Account Resources** and then click **Secrets**.
-3. Click **New Secret** and then click **Text**.  
+1. In your Harness account, select **Account Settings**.
+2. Select **Account Resources** and then select **Secrets**.
+3. Select **New Secret** and then select **Text**.  
 The **Add new Encrypted Text** settings appear.
 4. Select the GCP Secrets Manager you just created.
 5. Enter a **Name** for your secret.
@@ -155,9 +160,9 @@ You can either enter a version number like `1`, `2`, or enter `latest` to refere
 
 Let us add an encrypted file secret to the GCP Secrets Manager we just created.
 
-1. In your Harness account, click **Account Settings**.
-2. Click **Account Resources** and then click **Secrets**.
-3. Click **New Secret** and then click **File**.  
+1. In your Harness account, select **Account Settings**.
+2. Select **Account Resources** and then select **Secrets**.
+3. Select **New Secret** and then select **File**.  
 The **Add new Encrypted File** settings appear.
 4. Select the GCP Secrets Manager you just created.
 5. Enter a **Name** for your secret.

@@ -6,10 +6,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 Harness Continuous Verification (CV) integrates with Sumo Logic to:
 
@@ -150,8 +150,8 @@ To add a health source:
    In the **Query** box, enter your metric query and then select **Run Query**.  
    Sample data is displayed in the **Records** box. The **Chart** box displays the graph corresponding to the sample data. This helps you verify if the query that you have built is correct.
 
-   <details>
-   <summary><b>Sample query for memory usage</b></summary>
+<details>
+<summary><b>Sample query for memory usage</b></summary>
 
    Query: `metric=memory`
 
@@ -162,7 +162,7 @@ To add a health source:
    ![Memory usage records and charts](./static/cv-sumologic-select-metric-query-memory-chart-records.png)
 
 
-   </details>
+</details>
 
 #### Assign services
 
@@ -259,14 +259,14 @@ To set fail-fast thresholds for CV, follow these steps:
 2. In the **Field Mapping** section, select the **Service Instance Identifier** to display the logs, and then select **Get sample log messages**. Sample logs are displayed that help you verify if the query you built is correct.
 
 <details>
-   <summary><b>Sample log query</b></summary>
+<summary><b>Sample log query</b></summary>
 
    Query: `_sourcename = "Http Input"`
 
    ![Query - Logs](./static/cv-sumologic-select-log-query-chart-records.png)
 
 
-   </details>
+</details>
 
 
 </TabItem>

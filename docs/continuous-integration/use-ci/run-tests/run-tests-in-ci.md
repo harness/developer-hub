@@ -10,14 +10,14 @@ You can run all types of tests in CI pipeline, including integration tests, func
 
 To run tests in CI pipelines, you can use **Run** or **Run Tests** steps.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="run" label="Run step" default>
-```
+
 
 You can run any type of test for any codebase in a [Run step](../run-ci-scripts/run-step-settings.md).
 
@@ -41,10 +41,10 @@ For example, this step runs `pytest` and produces a test report in JUnit XML for
 
 For more information about configuring **Run** steps, go to [Use Run steps](../run-ci-scripts/run-step-settings.md).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="runtests" label="Run Tests step">
-```
+
 
 The **Run Tests** step is required to [enable Test Intelligence](./test-intelligence/set-up-test-intelligence.md). You can use **Run Tests** steps with or without Test Intelligence; however, the **Run Tests** step is limited to [supported codebases](./test-intelligence/set-up-test-intelligence.md#supported-codebases-for-test-intelligence).
 
@@ -72,10 +72,10 @@ This example runs tests with Maven and Test Intelligence, and it produces a test
 
 For more information about configuring **Run Tests** steps and Test Intelligence, go to [Test Intelligence overview](./test-intelligence/set-up-test-intelligence.md).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::tip
 

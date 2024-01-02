@@ -30,13 +30,13 @@ You can add SSH credentials while creating connectors and other account or proje
 
 <!-- ![](./static/add-use-ssh-secrets-17.png) -->
 
-<docimage path={require('./static/add-use-ssh-secrets-17.png')} />
+<DocImage path={require('./static/add-use-ssh-secrets-17.png')} />
 
 Configure the **SSH Credential** settings as follows.
 
 <!-- ![](./static/add-use-ssh-secrets-18.png) -->
 
-<docimage path={require('./static/add-use-ssh-secrets-18.png')} />
+<DocImage path={require('./static/add-use-ssh-secrets-18.png')} />
 
 1. Enter a **Name** for the SSH credential and select **Continue**.
 2. Under **Select an Auth Scheme**, select one of the following:

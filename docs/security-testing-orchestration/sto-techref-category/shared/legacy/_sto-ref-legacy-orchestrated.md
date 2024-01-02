@@ -1,4 +1,5 @@
-<!-- details><summary>Orchestrated scan settings</summary -->
+<!-- details>
+<summary>Orchestrated scan settings</summary -->
 
 The following settings are required for Security steps where the `policy_type` is `orchestratedScan`.
 

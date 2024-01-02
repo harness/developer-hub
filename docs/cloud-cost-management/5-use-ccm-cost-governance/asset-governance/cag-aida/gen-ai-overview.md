@@ -5,9 +5,9 @@ description: This topic explains the advantages of using Harness AIDA for cloud 
 # sidebar_position: 1
 ---
 
-```mdx-code-block
+
 import Intro from '/docs/cloud-cost-management/shared/ccm-aida-overview-partial.md';
-```
+
 
 <Intro />
 
