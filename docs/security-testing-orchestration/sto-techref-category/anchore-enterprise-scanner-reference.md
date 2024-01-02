@@ -258,7 +258,7 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/current/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` : `--force`.  
+You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` : `--force`.  
 
 
 <a name="fail-on-severity"></a>
@@ -333,7 +333,7 @@ To set up your Anchore Enterprise integration with a Security step, do the follo
 
 * [`fail_on_severity`](#fail-on-severity)
 + `tool_args`
-	You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/current/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` : `--force`. 
+	You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` : `--force`. 
 
 
 ### Container image settings (required)

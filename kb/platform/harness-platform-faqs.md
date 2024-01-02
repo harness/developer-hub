@@ -915,12 +915,13 @@ This is not supported. The immutable delegate image should be run with delegate 
 Here is an example manifest file for NextGen:
 https://developer.harness.io/docs/platform/delegates/install-delegates/overview/#example-manifest-file
 
-#### When creating a connector via the API (https://apidocs.harness.io/tag/Connectors#operation/createConnector)
+#### 400 error when creating a connector via the Create Connector API.
 
-We receive the following error
-`requests.exceptions.HTTPError: 400 Client Error: Bad Request for url https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=\<ACCOUNT_IDENTIFIER>?`
+When using the [Create Connector API](https://apidocs.harness.io/tag/Connectors/#operation/createConnector), invalid characters (such as parenthesis) in the name can cause Bad Request (400) errors, such as:
 
-This could be due to using invalid characters in the name such as `()`
+```
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=\<ACCOUNT_IDENTIFIER>?
+```
 
 #### Is TLS 1.3 supported ?
 
