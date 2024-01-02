@@ -345,6 +345,14 @@ Currently, TAS artifact bundle is behind the feature flag `CDS_ENABLE_TAS_ARTIFA
 
 :::
 
+#### Demo Video
+
+<!-- Video:
+https://www.loom.com/share/5d3f8f987a014a83b8ee8f8061d03381?sid=1ceb3259-c66f-4c5b-be99-76ce8268e928-->
+<DocVideo src="https://www.loom.com/share/5d3f8f987a014a83b8ee8f8061d03381?sid=1ceb3259-c66f-4c5b-be99-76ce8268e928" />
+
+
+
 You can add both the manifest and artifact at the same time as an artifact bundle.
 
 In the Harness service, when you add a manifest, select **Artifact Bundle** in **Specify TAS Manifest Store**.
