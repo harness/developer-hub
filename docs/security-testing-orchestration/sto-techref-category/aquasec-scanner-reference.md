@@ -5,7 +5,7 @@ sidebar_label: Aqua Security scanner reference
 sidebar_position: 35
 ---
 
-You can ingest container-image scan results from [Aqua Security Entrerprise](https://www.aquasecurity.com/products/container-vulnerability-scanning/). 
+You can ingest container-image scan results from [Aqua Security Entrerprise](https://www.aquasec.com/products/container-vulnerability-scanning/). 
 
 ## Important notes for running Aqua Security scans in STO
 
