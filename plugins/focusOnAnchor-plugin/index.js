@@ -64,7 +64,7 @@ module.exports = function () {
 };
 
 window.addEventListener("load", () => {
-    setTimeout(FocusOnAnchor, 1000);
+    setTimeout(FocusOnAnchor, 500);
     })
           </script>
           `,
