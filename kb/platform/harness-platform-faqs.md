@@ -1908,12 +1908,7 @@ Our priorities are configured as follows: [Step > Step Group > Stage > Pipeline 
 
 #### How do I setup SMTP with AWS SES?
 
-Follow this AWS documentation to create SMTP crredentials using the SES console.
-https://docs.aws.amazon.com/ses/latest/dg/smtp-credentials.html
-
-Then feed those SMTP credentials in Harness SMTP connector
-
-See [SMTP Configuration](docs/platform/notifications/add-smtp-configuration/)
+Go to the [AWS documentation on SMTP credentials](https://docs.aws.amazon.com/ses/latest/dg/smtp-credentials.html) to create SMTP credentials using the SES console. Then, supply those SMTP credentials in your [Harness SMTP connector configuration](/docs/platform/notifications/add-smtp-configuration).
 
 #### How to increase the concurrent pipeline execution limit
 

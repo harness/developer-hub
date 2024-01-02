@@ -1465,7 +1465,7 @@ We have it added in our API docs which you can refer [here](https://apidocs.harn
 
 #### Does Harness have documentation for specific user roles?
 
-You can follow the [CD ramp-up guides](https://developer.harness.io/docs/category/ramp-up-guides), which include guides for developer, admin, pipeline designer, and platform engineer.
+You can follow the [CD new user onboarding guides](/docs/category/new-users), which include guides for developers, admins, pipeline designers, and platform engineers.
 
 #### Is it anticipated that the harness pipeline will initiate the verification of 'access' permissions to an environment at the outset of an execution, as opposed to conducting such verification progressively as the pipeline advances?
 
@@ -1585,7 +1585,7 @@ Harness uses a Service-based license model to charge Harness customers using its
 
 The CD License calculation uses the Active Services count and the number of Service Instances each active Service deployment creates.
 
-Please see the link for more details [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing)
+For more information, go to [Service-based licensing and usage for CD](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd).
 
 #### Is there a way to tag the pipeline executions with specific values like release name in NG?
 
