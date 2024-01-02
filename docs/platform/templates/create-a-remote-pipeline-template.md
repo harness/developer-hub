@@ -60,23 +60,23 @@ To use the template in your pipeline if your remote pipeline template and pipeli
 
 ## Create a remote pipeline template
 
-You can create a stage template from your account, org or project. This topic explains the steps to create a stage template from the project scope.
+You can create a pipeline template from your account, org, or project. This topic explains the steps to create a stage template from the project scope.
 
 To create a remote pipeline template, do the following:
 
-1. In your Harness Account, go to your project.
-2. In **Project SETUP**, select **Templates**.
-3. Select **New Template**, and then select **Pipeline**. The **Create New Pipeline Template** settings appear.
+1. In your Harness, go to your project.
+2. Select **Project Settings**, then, under **Project-level resources**, select **Templates**.
+3. Select **+ New Template**, and then select **Pipeline**. The **Create New Pipeline Template** settings appear.
 4. In **Name**, enter a name for the template.
-5. In **Version Label**, enter a version for the template.
-6. Select **Remote**.
-7. In **Git Connector**, select or create a Git connector to the repo for your project.​ For steps, go to [Code Repo Connectors](/docs/category/code-repo-connectors).
-8. In **Repository**, select your repository. If your repository isn't listed, enter its name. Create the repository in Git before entering it in **Select Repository**. Harness does not create the repository for you.
-9. In **Git Branch**, select your branch. If your branch isn't listed, enter its name. Create the branch in your repository before entering it in **Git Branch**. Harness does not create the branch for you.
-10. Harness auto-populates the **YAML Path**. You can change this path and the file name.
-11. Select **Start**.
+5. (Optional) Select the pencil icon to enter a **Description**.
+6. (Optional) Select the pencil icon to add **Tags**.
+7. In **Version Label**, enter a version for the template.
+8. (Optional) Select the **Logo** icon to upload a logo image file.
+9. From the **Save To** list, select the scope where you want to save the template: Project, Organization, or Account. For this example, select Project.
+10. Under **How do you want to set up your template?**, select **Remote**.
+11. In **Git Connector**, select or create a Git connector to the repo for your project.​ For steps, go to [Code Repo Connectors](/docs/category/code-repo-connectors).
 
-   :::info note
+:::info note
    
    The Git connector must use the **Enable API access** option and **Username and Token** authentication. 
    
@@ -91,6 +91,11 @@ To create a remote pipeline template, do the following:
    ![](./static/create-a-remote-pipeline-template-25.png)
    
    :::
+
+12. In **Repository**, select your repository. If your repository isn't listed, enter its name. Create the repository in Git before entering it in **Select Repository**. Harness does not create the repository for you.
+13. In **Git Branch**, select your branch. If your branch isn't listed, enter its name. Create the branch in your repository before entering it in **Git Branch**. Harness does not create the branch for you.
+14. Harness auto-populates the **YAML Path**. You can change this path and the file name.
+15. Select **Start**.
 
 ## Add a stage
 
