@@ -29,7 +29,7 @@ In the following YAML example, step `alpha` exports an output variable called `m
 
 </details>
 
-:::caution
+:::warning
 
 * **Secrets in output variables exposed in logs:** If an output variable value contains a secret, be aware that the secret will be visible in the [build details](/docs/continuous-integration/use-ci/viewing-builds.md). Such secrets are visible on the **Output** tab of the step where the output variable originates and in the build logs for any later steps that reference that variable. For information about best practices for using secrets in pipelines, go to the [Secrets documentation](/docs/category/secrets).
 * **64KB length limit:** If an output variable's length is greater than 64KB, steps can fail or truncate the output. If you need to export large amounts of data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin.md).
@@ -170,7 +170,7 @@ This means that Harness looks for the referenced variable within the current ste
 
 If multiple output variables from previous steps have the same name, the last-produced variable takes priority. For example, assume a stage has three steps, and steps one and two both produce output variables called `NAME`. If step three calls `NAME`, the value of `NAME` from step two is pulled into step three because that is last-produced instance of the `NAME` variable.
 
-:::caution Unpredictability with parallelism
+:::warning Unpredictability with parallelism
 
 For stages that use [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism), particularly parallelism, the last-produced instance of a variable can differ between runs. Depending on how quickly the parallel steps execute during each run, the last step to finish might not always be the same.
 

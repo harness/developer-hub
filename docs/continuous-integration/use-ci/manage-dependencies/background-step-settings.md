@@ -38,7 +38,7 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 :::tip
 
-If you are using a VM or a local runner build infrastructure where the background step is running a container, you can use the Background step **Id** to call services started by Background steps in later steps, such as commands in Run steps. For example, a cURL command could call `BackgroundStepId:5000` where it might otherwise call `localhost:5000`.
+If you are using a VM, local runner, or the Harness Cloud build infrastructure where the background step is running a container, you can use the Background step **Id** to call services started by Background steps in later steps, such as commands in Run steps. For example, a cURL command could call `BackgroundStepId:5000` where it might otherwise call `localhost:5000`.
 
 <figure>
 
@@ -49,7 +49,7 @@ If you are using a VM or a local runner build infrastructure where the backgroun
 
 If the Background step is inside a step group, you must include step group ID, such as `curl StepGroupId_BackgroundStepId:5000`, even if both steps are in the same step group.
 
-If the Background step runs directly on the host (such as with Harness Cloud build infrastructure) or in a Kubernetes cluster build infrastructure, do not use the step ID to reference Background steps. Instead, use `localhost:host_port`. For more information, go to [Port Bindings](#port-bindings).
+If the Background step runs directly on the host or in a Kubernetes cluster build infrastructure, do not use the step ID to reference Background steps. Instead, use `localhost:host_port`. For more information, go to [Port Bindings](#port-bindings).
 
 :::
 

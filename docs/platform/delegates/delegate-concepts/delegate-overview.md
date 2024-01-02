@@ -216,7 +216,7 @@ The delegate logs are available in the Harness UI. When a pipeline runs and an e
 
 Delegate logs are also sent to Harness by default. These Stackdriver logs are stored in Harness's GCP account.
 
-:::caution
+:::warning
 **Not Recommended:** You can stop delegates from sending delegate logs to Harness by setting the `STACK_DRIVER_LOGGING_ENABLED` environment variable to `false` for the delegate. This will disable all remote logging.
 
 :::

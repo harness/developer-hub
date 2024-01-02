@@ -242,7 +242,7 @@ To delete a user provisioned through a group, remove them from the group in Okta
 
 To delete a user from Harness and all other provisioned apps, deactivate the user's Okta profile.
 
-:::caution
+:::warning
 
 Deactivating a user removes them from *all provisioned apps*, including Harness. While a user account is deactivated, you can't change it.
 

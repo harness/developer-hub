@@ -204,7 +204,7 @@ Configure the [Security Context](https://kubernetes.io/docs/tasks/configure-pod-
 
 You can use the **Run as Non-Root** and **Run as User** settings to run builds as a non-root user or a specific user ID.
 
-:::caution
+:::warning
 
 Using a non-root user can require other changes to your pipeline.
 

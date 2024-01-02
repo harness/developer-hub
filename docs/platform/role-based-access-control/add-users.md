@@ -81,7 +81,7 @@ When you add a user, Harness checks your [authentication method](/docs/platform/
 
 You assign [roles](./add-manage-roles.md) and [resource groups](./add-resource-groups.md) to users to grant them permissions and access in Harness. Users can inherit roles and resource groups from [group membership](./add-user-groups.md), or you can assign roles and resource groups directly to individual users. For more information about assigning roles and resource groups, go to [RBAC in Harness: Role binding](./rbac-in-harness.md#role-binding).
 
-:::caution Least privilege
+:::warning Least privilege
 
 RBAC is additive. The total expanse of a user/service account's permissions and access is the sum of all the roles and resource groups from all user groups they belong to, as well as any roles and resource groups assigned directly to them as an individual user/service account.
 

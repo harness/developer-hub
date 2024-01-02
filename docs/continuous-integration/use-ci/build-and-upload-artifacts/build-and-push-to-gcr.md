@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::caution
+:::warning
 
 Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr). The Build and Push to GCR step is pending deprecation. Instead, use the [Build and Push to GAR step](./build-and-push-to-gar.md).
 

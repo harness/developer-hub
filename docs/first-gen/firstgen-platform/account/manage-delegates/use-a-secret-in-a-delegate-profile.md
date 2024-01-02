@@ -13,7 +13,7 @@ import image_1 from './static/use-a-secret-in-a-delegate-profile-24.png'
 import image_2 from './static/use-a-secret-in-a-delegate-profile-29.png'
 import image_3 from './static/use-a-secret-in-a-delegate-profile-30.png'
 
-:::caution
+:::warning
 Using Profiles is Deprecated. Please use [Run Initialization Scripts on Delegates](run-initialization-scripts-on-delegates.md).
 :::
 

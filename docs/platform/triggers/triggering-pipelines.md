@@ -52,7 +52,7 @@ These steps assume you're familiar with [creating CD pipelines](/docs/continuous
 
 ### Configure the trigger
 
-:::caution
+:::warning
 
 All triggers in a Harness account have the same URL: `https://app.harness.io/gateway/ng/api/webhook?accountIdentifier=ACCOUNT_ID`. This means that you must set up your trigger conditions carefully to ensure that triggers start pipelines for relevant events only.
 

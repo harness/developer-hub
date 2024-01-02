@@ -103,7 +103,7 @@ export const certifications: CardItem[] = [
     // numberOfCerts: 1,
   },
   {
-    title: "Security Testing Orchestration  - Administrator (BETA)",
+    title: "Security Testing Orchestration  - Administrator",
     module: MODULES.sto,
     type: certType.administrator,
     description:
@@ -123,7 +123,7 @@ export const certifications: CardItem[] = [
     // numberOfCerts: 1,
   },
   {
-    title: "Chaos Engineering  - Developer (BETA Coming Soon)",
+    title: "Chaos Engineering  - Developer (BETA)",
     module: MODULES.ce,
     type: certType.developer,
     description:

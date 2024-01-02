@@ -303,7 +303,7 @@ Harness passes the terraform plan that was generated based on the Harness Terraf
 
 ![](./static/terraformapply.png)
 
-:::caution
+:::warning
 Ensure the **Terraform Plan** step is configured before the apply step.
 :::
 

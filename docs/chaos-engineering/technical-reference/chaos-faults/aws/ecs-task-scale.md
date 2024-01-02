@@ -12,7 +12,6 @@ ECS task scale:
 - Determines the resilience of an application when ECS tasks are unexpectedly scaled up (or down).
 
 ## Prerequisites
-
 - Kubernetes >= 1.17
 - [Sufficient AWS permissions to scale the ECS tasks](#permissions-required).
 - The target ECS tasks should be in a healthy state.
@@ -32,14 +31,11 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-- Refer to the [superset permission (or policy)](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-- Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+:::
 
-## Permissions required
-
-Here is an example AWS permission to help execute the fault.
+Below is an example AWS permission to help execute the fault.
 
 ```json
 {
@@ -59,7 +55,11 @@ Here is an example AWS permission to help execute the fault.
 }
 ```
 
-## Fault tunables   
+:::info note
+- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
+- Refer to the [superset permission (or policy)](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+:::
 
   <h3>Mandatory tunables</h3>
     <table>

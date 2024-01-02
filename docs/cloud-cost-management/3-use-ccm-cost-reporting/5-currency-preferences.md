@@ -50,7 +50,7 @@ To standardize the currency in which your cloud cost data is displayed, perform 
 
 
 
-:::caution
+:::warning
 Once configured, you cannot change the currency settings. It takes up to 24 hours for data to be shown in your preferred currency. Historical data is also converted and displayed in the preferred currency.
 :::
 

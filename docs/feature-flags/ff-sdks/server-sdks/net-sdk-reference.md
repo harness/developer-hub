@@ -13,7 +13,7 @@ import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 import Closeclient from '../shared/close-sdk-client.md'
 
 
-:::caution 
+:::warning 
 In Version 1.1.4 of the .NET SDK, the package name for installing the SDK changed from **ff-netF48-server-sdk** to **ff-dotnet-server-sdk**. To use this version, make sure you remove the old package name and use the new one. You can do this by using the following commands:
 **Remove the old package**  
 `dotnet remove package ff-netF48-server-sdk`  
@@ -63,7 +63,7 @@ Install the SDK by using the `dotnet add package` command, for example: 
 ```
 dotnet add package ff-dotnet-server-sdk --version 1.4.0
 ```
-:::caution
+:::warning
 In Version 1.1.4 of the .NET SDK, the package name for installing the SDK changed from **ff-netF48-server-sdk** to **ff-dotnet-server-sdk**. To use this version, make sure you remove the old package name and use the new one. You can do this by using the following commands:
 **Remove the old package**  
 `dotnet remove package ff-netF48-server-sdk`  
