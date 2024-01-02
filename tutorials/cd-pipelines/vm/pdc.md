@@ -47,7 +47,7 @@ Verify that you have the following:
 
 2. Select **Projects**, and then select **Default Project**.
 
-:::caution
+:::warning
 
 For the pipeline to run successfully, follow all of the steps below as they are, including the naming conventions.
 
@@ -267,7 +267,7 @@ Verify that you have the following:
 
 2. Select **Projects**, and then select **Default Project**.
 
-:::caution
+:::warning
 
 For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
 

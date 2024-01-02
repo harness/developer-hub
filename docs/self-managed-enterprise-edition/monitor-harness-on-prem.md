@@ -261,7 +261,7 @@ Follow the below steps on your Kubernetes cluster to deploy Grafana:
 
   `http://my-release-kube-prometheus-prometheus.default.svc.cluster.local:9090/`
 
-  :::caution
+  :::warning
   The final URL should be similar to the above URL, according to your system specifications. Any extra space or character in the URL field causes the data source testing to fail. 
   :::
 

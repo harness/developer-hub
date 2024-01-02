@@ -72,7 +72,7 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 
    Both CI build pods and the SCM client on the delegate support this method.
 
-   :::caution
+   :::warning
 
    Make sure the destination path is not same as the default CA certificate path of the corresponding container image.
 

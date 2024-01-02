@@ -75,7 +75,7 @@ Verify the following:
 1. Log into [Harness](https://app.harness.io/).
 2. Select **Projects** and choose **Default Project**.
 
-:::caution
+:::warning
 
 Going forward, follow all the steps as they are, including the naming conventions, for the pipeline to run successfully.
 
@@ -535,7 +535,7 @@ Verify the following:
 1. Log into [Harness](https://app.harness.io/).
 2. Select **Projects**, and then select **Default Project**.
 
-:::caution
+:::warning
 
 For the pipeline to run successfully, please follow the remaining steps as they are, including the naming conventions.
 

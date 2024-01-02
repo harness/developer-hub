@@ -245,7 +245,7 @@ To configure the SAM Build step, do the following:
 
 The [--use-container](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html) option is set up by Harness automatically. This command ensures that AWS SAM packages and builds the application code inside a Docker container that is configured with the necessary dependencies and runtime environment specified in the AWS SAM template.
 
-:::caution
+:::warning
 
 Do not remove this command. It is required for the current beta of this feature. It will be optional in future releases.
 
@@ -255,7 +255,7 @@ Do not remove this command. It is required for the current beta of this feature.
 
 In **SAM Build Docker Container Registry**, you can use the same Harness Docker Registry connector automatically set up in the **Container Registry** setting or add/select your own connector.
 
-:::caution
+:::warning
 
 Do not remove this connector. It is required for the current beta of this feature. It will be optional in future releases.
 

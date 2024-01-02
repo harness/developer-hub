@@ -30,7 +30,7 @@ There's a tab called `Data Sources` available in `Scorecards` page to check for 
 
 :::
 
-:::caution
+:::warning
 
 The git (GitHub, GitLab, Bitbucket) datasources doesn't support monorepos.
 

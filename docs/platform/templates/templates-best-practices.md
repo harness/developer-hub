@@ -434,7 +434,7 @@ You can create versions of your templates in Harness and Git.
 
 - When you reference a pipeline with a template, ensure the pipeline branch matches the template branch.
 
-:::caution
+:::warning
 When tracking template changes, Harness versioning should not be combined with GitHub versioning.
 :::
 

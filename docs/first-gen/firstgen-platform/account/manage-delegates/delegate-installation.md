@@ -134,7 +134,7 @@ spec:
       harness.io/app: harness-delegate  
 ...
 ```
-:::caution
+:::warning
 For the Kubernetes Delegate, you only need one Delegate in the cluster. Simply increase the number of replicas, and nothing else. Do not add another Delegate to the cluster in an attempt to achieve HA.
 :::
 

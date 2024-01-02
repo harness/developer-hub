@@ -12,7 +12,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-:::caution
+:::warning
 
 You must configure branch protections and checks, such as protection rules, CODEOWNERS, linting, and other checks or restrictions, in your source control provider.
 

@@ -55,7 +55,7 @@ Speed measures the pace at which developers are writing and submitting code. Spe
 * **Average PR Cycle Time:** This represents the time elapsed from PR creation to closing. The average PR cycle time should be less than 7 days. This metric is calculated as the elapsed time between PR creation and closure.
 * **Average Time Spent Working On Issues:** This is the average time spent on each issue resolved in the last 30 days or any specified time period. This typically doesn't include time spent in the **Done** status. Time is counted only when the developer is assigned to an issue. The average time spent working on issues should be between 3 and 5 days. This metric is calculated by dividing the total time by the total number of issues recorded in the period.
 
-:::caution
+:::warning
 
 It is not recommended to change these metrics from their default values, because they are based on industry standards.
 

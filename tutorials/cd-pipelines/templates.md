@@ -77,7 +77,7 @@ Make sure you have followed the [get started](/tutorials/cd-pipelines/kubernetes
 6. Select the `harness-deployment-template` you just created and select **Use Template**.
 7. Select **Save** and then select **Run** to run the pipeline.
 
-:::caution
+:::warning
 
 The `harness-deployment-template` will only work under the `default_project` which already has all the pipeline resources created during get started pipleine.
 

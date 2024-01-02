@@ -212,7 +212,7 @@ Specify a Kubernetes service account that you want step containers to use when c
 
 Use the **Run as Non-Root** and **Run as User** settings to override the default Linux user ID for containers running in the build infrastructure. This is useful if your organization requires containers to run as a specific user with a specific set of permissions.
 
-:::caution
+:::warning
 
 Using a non-root user can require other changes to your pipeline.
 

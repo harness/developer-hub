@@ -194,7 +194,7 @@ Once you have installed the Agent, Harness will start importing all the entities
 
    :::
 
-:::caution
+:::warning
 
 For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
 
@@ -459,7 +459,7 @@ Verify the following:
 
    :::
 
-:::caution
+:::warning
 
 For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
 
@@ -833,7 +833,7 @@ Make sure that you have met the following requirements:
 
 2. Select **Projects** on the top left corner of the UI, and then select **Default Project**.
 
-:::caution
+:::warning
 
 Follow the below mentioned steps as they are, including the naming conventions, for the pipeline to run successfully.
 
