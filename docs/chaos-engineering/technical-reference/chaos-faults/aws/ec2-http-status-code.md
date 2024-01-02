@@ -14,9 +14,8 @@ EC2 HTTP status code:
 - Simulates unavailability of specific APIs for (or from) a given microservice (TBD or Path Filter) (404).
 - Simulates unauthorized requests for 3rd party services (401 or 403), and API malfunction (internal server error) (50x).
 
-
-:::info note
-- Kubernetes version 1.17 or later is required to execute the fault.
+## Prerequisites
+- Kubernetes >= 1.17
 - SSM agent is installed and running in the target EC2 instance.
 - The EC2 instance should be in a healthy state.
 - You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
@@ -34,9 +33,9 @@ EC2 HTTP status code:
       aws_access_key_id = XXXXXXXXXXXXXXXXXXX
       aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   ```
-- We recommend you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template, and you won't be able to use the default health check probes.
-- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
-- Go to the [common tunables](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -88,7 +87,11 @@ Below is an example AWS policy to execute the fault.
 }
 ```
 
-## Fault tunables
+:::info note
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+- Go to the [common tunables](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+:::
+
 
    <h3>Mandatory tunables</h3>
     <table>
@@ -100,7 +103,7 @@ Below is an example AWS policy to execute the fault.
         <tr>
           <td> EC2_INSTANCE_ID </td>
           <td> ID of the target EC2 instance. </td>
-          <td> For example, <code>i-044d3cb4b03b8af1f</code>. </td>
+          <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="./ec2-cpu-hog/#multiple-ec2-instances"> EC2 instance ID.</a></td>
         </tr>
         <tr>
           <td> REGION </td>
@@ -110,7 +113,7 @@ Below is an example AWS policy to execute the fault.
         <tr>
             <td> TARGET_SERVICE_PORT </td>
             <td> Port of the service to target. </td>
-            <td> Default: port 80. </td>
+            <td> Default: port 80. For more information, go to <a href="#target-service-port"> target service port.</a></td>
         </tr>
         <tr>
             <td> STATUS_CODE </td>
@@ -118,12 +121,12 @@ Below is an example AWS policy to execute the fault.
             <td> If no value is provided, then a random value is selected from the list of supported values.
             Multiple values can be provided as comma-separated, a random value from the provided list will be selected
             Supported values: [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504].
-            Defaults to random status code. </td>
+            Defaults to random status code. For more information, go to <a href="#modifying-the-response-status-code"> modifying the response status code.</a></td>
         </tr>
         <tr>
             <td> MODIFY_RESPONSE_BODY </td>
             <td> Whether to modify the body as per the status code provided.</td>
-            <td> If true, then the body is replaced by a default template for the status code. Defaults to true. </td>
+            <td> If true, then the body is replaced by a default template for the status code. Default: True.</td>
         </tr>
     </table>
     <h3>Optional tunables</h3>
@@ -136,12 +139,12 @@ Below is an example AWS policy to execute the fault.
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-            <td> Default: 30 s. </td>
+            <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Default: 30 s. </td>
+            <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -151,12 +154,12 @@ Below is an example AWS policy to execute the fault.
         <tr>
             <td> SEQUENCE </td>
             <td> It defines the sequence of chaos execution for multiple instances. </td>
-            <td> Default: parallel. Supports serial sequence. </td>
+            <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injection of chaos (in seconds). </td>
-            <td> For example, 30 s. </td>
+            <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
@@ -166,17 +169,17 @@ Below is an example AWS policy to execute the fault.
         <tr>
             <td> PROXY_PORT </td>
             <td> Port where the proxy will be listening for requests.</td>
-            <td> Default: 20000. </td>
+            <td> Default: 20000. For more information, go to <a href="#proxy-port"> proxy port.</a></td>
         </tr>
         <tr>
             <td> TOXICITY </td>
             <td> Percentage of HTTP requests to be affected. </td>
-            <td> Default: 100. </td>
+            <td> Default: 100. For more information, go to <a href="#toxicity"> toxicity.</a></td>
         </tr>
         <tr>
           <td> NETWORK_INTERFACE </td>
           <td> Network interface to be used for the proxy.</td>
-          <td> Default: `eth0`. </td>
+          <td> Default: `eth0`. For more information, go to <a href="#network-interface"> network interface.</a></td>
         </tr>
     </table>
 

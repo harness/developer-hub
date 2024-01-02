@@ -4,11 +4,11 @@ Harness AIDA offers comprehensive support with the following functionalities:
 
 * **Assist with writing rules:** Harness AIDA helps you formulate rules tailored to your specific requirements. It understands your requirements and generates customized rules to align with your governance objectives.
 
-   <docimage path={require('./static/gen-ai-demo.gif')} width="60%" height="60%" title="Click to view full size image" />
+   <DocImage path={require('./static/gen-ai-demo.gif')} width="60%" height="60%" title="Click to view full size image" />
 
 * **Describe existing rules:** Harness AIDA offers detailed descriptions of built-in rules. This feature enables you to understand the purpose, scope, and implications of each rule, thereby facilitating informed decision-making during the policy creation process.
 
-   <docimage path={require('./static/view-desc-ai.gif')} width="60%" height="60%" title="Click to view full size image" />
+   <DocImage path={require('./static/view-desc-ai.gif')} width="60%" height="60%" title="Click to view full size image" />
 
 :::info
 Harness recommends using the rules generated with AIDA as references to build your policies.

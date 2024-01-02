@@ -26,7 +26,7 @@ The Jira ticket is created, and the ticket number is displayed along with the de
 <details>
 <summary><b>Watch video</b></summary>
 
-<docvideo src="https://youtu.be/z7b6kpFwsvo"/>
+<DocVideo src="https://youtu.be/z7b6kpFwsvo"/>
 
 </details>
 

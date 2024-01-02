@@ -66,12 +66,6 @@ You cannot use a Harness variable expression in **Barrier Reference**.Now you ca
 
 ## Using Barriers with Looping strategies
 
-:::note
-
-Barrier support in looping strategies is behind the feature flag `CDS_NG_BARRIER_STEPS_WITHIN_LOOPING_STRATEGIES`. If this flag is turned off, synchronization might not work correctly in looping strategies. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-::: 
-
 There are a few behaviors to note when using Barriers within a looping strategy (for example, when setting up a matrix that creates multiple stages that run in parallel, and the stages contain a Barrier step):
 
 * In general, Barriers are supported in all the looping strategies. You can use them when [repeating stages, looping, or in matrices](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism), or when using multi-service or multi-environment stages in pipelines.

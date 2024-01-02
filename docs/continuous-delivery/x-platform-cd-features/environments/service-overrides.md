@@ -16,18 +16,16 @@ This topic explains what service settings can be overridden by environments.
 
 ## Override types
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
-  <TabItem value="Manifests" label="Manifests" default>
-```
+<TabItem value="Manifests" label="Manifests" default>
 
 You can override the following manifest types.
 
-<docimage path={require('./static/f3298b583d8308e026c05f7dd544195756bb080b43438c0a83ab389c97af794a.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/f3298b583d8308e026c05f7dd544195756bb080b43438c0a83ab389c97af794a.png')} width="60%" height="60%" title="Click to view full size image" />
 
 - Values YAML
 - OpenShift Param
@@ -43,11 +41,9 @@ You can override the following manifest types.
   - You can only override Helm Repo for HTTP Helm, GCS, S3, and OCI store types. 
   - Unlike other overrides, you can only override the Harness connector used for Helm Repo. Consequently, when you override the Helm Repo for a service, you must select the same store type used in the service. So, if the service uses HTTP Helm as the store type, the environment override must also use HTTP Helm as the store type. If you select a different store type, Harness will throw an exception during execution.
 
+</TabItem>
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Values YAML" label="Values YAML">
-```
+<TabItem value="Values YAML" label="Values YAML">
 
 You can specify values YAML files at the environment's **Service Overrides** and **Configuration**, and the service itself.
 
@@ -91,10 +87,8 @@ At runtime, the name:value pairs from the environment **Service Overrides** valu
 
 ![](./static/service-override2.png)
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Config files and Variables" label="Config files and Variables">
-```
+</TabItem>
+<TabItem value="Config files and Variables" label="Config files and Variables">
 
 Config files and variables are completely overridden.
 
@@ -106,19 +100,15 @@ When you have **Config files** at two or more of the environment **Service Overr
 
 When you have **Variables** with the same name at two or more of the environment **Service Overrides**, **Configuration**, and the service itself, the standard override priority is applied.
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
 </Tabs>
-```
 
 ## Override methods
 
 In an environment, you can override one or more settings for **all services** that use the environment and you can override settings for **specific services** that use the environment.
 
-```mdx-code-block
 import Tabs1 from '@theme/Tabs';
 import TabItem1 from '@theme/TabItem';
-```
 
 <Tabs1>
   <TabItem1 value="Override all services" label="Override all services" default>
@@ -130,10 +120,8 @@ In the environment **Configuration**, you can also set the default manifests, co
 
 For example, a stage has a Kubernetes service with a manifest but whenever that service is deployed to the **QA** environment, the manifest in that environment's **Configuration** overwrites the namespace of with the manifest in the service with `QA`.
 
-```mdx-code-block
   </TabItem1>
   <TabItem1 value="Override specific services" label="Override specific services">
-```
 
 **Service Overrides** is different from **Configuration** in the following ways:
 
@@ -149,10 +137,8 @@ To override a specific service's setting, do the following:
 5. Select **New Variable/Manifest/Config File Override**.
 6. Override the setting.
 
-```mdx-code-block
   </TabItem1>
 </Tabs1>
-```
 
 ## Override priority
 

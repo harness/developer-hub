@@ -48,14 +48,14 @@ If you use a [GitOps repository credentials template](add-harness-git-ops-reposi
    * **Git** to add Git repositories.
    * **Helm** to add HTTP Helm and OCI Helm repositories.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';   
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
 <TabItem value="Git providers" label="Git providers" default>
-```
+
 
 1. In **Specify Repository Type**, select **Git**.
 2. In **Repository Name**, enter a name.
@@ -114,11 +114,11 @@ import TabItem from '@theme/TabItem';
          username: my-username
    ```
 7. Select **Save & Continue**. Harness validates the connection.
-   
-```mdx-code-block
+
+
 </TabItem>
 <TabItem value="HTTP Helm repository" label="HTTP Helm repository">
-```
+
 
 1. In **Specify Repository Type**, select **Helm**.
 2. In **Repository Name**, enter a name.
@@ -144,11 +144,11 @@ import TabItem from '@theme/TabItem';
 
         Harness will auto-detect the repository credentials template (if any) based on the GitOps repository **URL** and auto-populate it. If Harness auto-populated the GitOps repository, then you cannot edit the repository credentials template setting.
 7. Select **Save & Continue**. Harness validates the connection.
-   
-```mdx-code-block
+
+
 </TabItem>
 <TabItem value="OCI Helm repository" label="OCI Helm repository">
-```
+
 
 1. In **Specify Repository Type**, select **Helm**.
 2. In **Repository Name**, enter a name.
@@ -169,10 +169,10 @@ Credentials Template is not supported for OCI Helm repository.
 
 :::
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Using a self-signed certificate" label="Using a self-signed certificate">
-```
+
 If you intend to establish an HTTPS connection to a repository and plan to use either a self-signed certificate or one signed by a private Certificate Authority (CA), it is essential to generate the repository certificate prior to setting up the repository itself.
 
 1. To create repository certificate:
@@ -181,10 +181,10 @@ If you intend to establish an HTTPS connection to a repository and plan to use e
    - In **Repository Server Name**, enter the name of the repository server issuing the certificate. For example, `github.mycompany.internal`.
    - Paste the certificate in **TLS Certificate (PEM Format)**. Enclose each certificate in `BEGIN CERTIFICATE` and `END CERTIFICATE` comments.
 
-```mdx-code-block
+
 </TabItem>    
 <TabItem value="OCI Helm repository with ESO" label="OCI Helm repository with ESO">
-```
+
 
 1. In **Specify Repository Type**, select **Helm**.
 2. In **Repository Name**, enter a name.
@@ -218,10 +218,10 @@ Credentials Template is not supported for OCI Helm repository.
 
 :::
 
-```mdx-code-block
+
 </TabItem>    
 </Tabs>
-```
+
 
 
 ## Skip server verification

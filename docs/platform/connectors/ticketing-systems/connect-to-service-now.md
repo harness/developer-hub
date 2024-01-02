@@ -7,10 +7,10 @@ helpdocs_category_id: o1zhrfo8n5
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-```mdx-code-block
+
 import adfs_settings from '../static/adfs-settings.png'
 import adfs_clientid from '../static/adfs-clientid.png'
-```
+
 
 You can connect Harness to ServiceNow using a Harness ServiceNow connector. This connector allows you to approve and reject pipeline steps.
 
@@ -51,24 +51,24 @@ This topic shows you how to add a ServiceNow connector to your project.
    - **ADFS Client Credentials with Certificate**
    - **OIDC Refresh token**
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="usernamepwd" label="Username and Password" default border-bottom-color="red">
-```
+
 To use a username and password for authentication, do the following:
 
 1. Enter **Username**.
 2. In **Password/API Key**, create a new password or API key or enter an existing one. For **API Key**, use a [Harness Text Secret](/docs/platform/secrets/add-use-text-secrets).
 3. Select **Continue**.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="adfs" label="ADFS Client Credentials with Certificate">
-```
+
 
 :::info note
 * For information on client credentials with certificates, go to the [AD FS OpenID Connect/OAuth flows and Application Scenarios](https://learn.microsoft.com/en-us/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios#second-case-access-token-request-with-a-certificate-1).
@@ -82,22 +82,22 @@ To use ADFS credentials for authentication:
 1. Select an existing secret or create one that has the resource identifier of ServiceNow configured in ADFS as its value for the **Resource ID** field.
 2. Select an existing secret or create one that has the application (client) id assigned to your application by AD FS for the **Client ID** field.
    
-   ```mdx-code-block
+   
    <img src={adfs_clientid} alt="adfs-clientid" height="150" width="400"/>
-   ```
+   
 
 3. Select an existing encrypted file or create one that has the certificate for the **Certificate** field. This is a `X509` format certificate used for signing JWT tokens by your application.
 4. In **Private Key**, create a new secret or choose an existing one that has the AD FS private key as the value. This key is the private RSA key corresponding to certificate uploaded in the **Certificate** field.
 5. In **ADFS URL**, enter the base AD FS URL.
   
-   ```mdx-code-block
+   
    <img src={adfs_settings} alt="adfs-settings" height="350" width="600"/>
-   ```
 
-```mdx-code-block
+
+
 </TabItem>
 <TabItem value="oidc" label="OIDC Refresh token">
-```
+
 
 :::info note
 This feature requires Harness Delegate 799xx or higher.
@@ -117,19 +117,19 @@ To use an OIDC refresh token for authentication, do the following:
 
 4. Enter the explicit **Token URL**. For example:
 
-   - ServiceNow authentication server: `https://<YOUR_DOMAIN>.service-now.com/oauth_token.do`
-   - Okta authentication server: `https://<YOUR_DOMAIN>.okta.com/oauth2/v1/token`
+   - ServiceNow authentication server: `https://\<YOUR_DOMAIN>.service-now.com/oauth_token.do`
+   - Okta authentication server: `https://\<YOUR_DOMAIN>.okta.com/oauth2/v1/token`
 
 5. (Optional) Enter the **Scope**. If you use ServiceNow for your authentication server, the **Scope** is not required. Harness fetches it from the ServiceNow URL.
 
    To learn more about how to configure scope for a client in ServiceNow, go to [REST API Auth Scope](https://docs.servicenow.com/bundle/utah-platform-security/page/administer/security/concept/rest-api-auth-scope.html) in the ServiceNow documentation.
 
 6. Select **Continue**.
-  
-```mdx-code-block
+
+
 </TabItem>
 </Tabs>
-```
+
 
 ### Set up delegates
 

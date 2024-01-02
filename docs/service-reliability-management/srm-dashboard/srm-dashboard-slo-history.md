@@ -21,7 +21,7 @@ To access the SLO History dashboard, do the following:
    
    The SLO History dashboard is displayed.
 
-   <docimage path={require('./static/srm-slo-history-dashboard.png')} />
+   <DocImage path={require('./static/srm-slo-history-dashboard.png')} />
 
 
 ## Explore SLO History dashboard

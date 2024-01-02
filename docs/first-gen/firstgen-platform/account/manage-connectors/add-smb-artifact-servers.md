@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import image_1 from './static/add-smb-artifact-servers-05.png'
-```
+
 You can share files and folders on your network and use them for an SMB Artifact Server connection.
 
 In this topic:
@@ -74,9 +74,9 @@ Click **Submit**.
 
 When you use the SMB Artifact Server as an Artifact Source for a Service, you can specify a file or a folder for the artifact. This allows a folder to be copied to the deployment target host by the Harness Delegate. Here is the SMB Artifact Source dialog:
 
-```mdx-code-block
+
 <img src={image_1} height="300" width="500" />
-```
+
 
 In **Artifact Path**, you can specify a file or folder by name or using wildcards. The following are examples for matching different files and folders:
 

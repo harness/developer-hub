@@ -4,11 +4,9 @@ description: Set up TI for Java, Kotlin, or Scala codebases.
 sidebar_position: 20
 ---
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
-```
 
 Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes. You can enable TI for Java, Kotlin, or Scala in three steps:
 
@@ -70,7 +68,7 @@ Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI
 
    <!-- ![](../static/set-up-test-intelligence-04.png) -->
 
-   <docimage path={require('../static/set-up-test-intelligence-04.png')} />
+   <DocImage path={require('../static/set-up-test-intelligence-04.png')} />
 
 2. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
 
@@ -88,10 +86,8 @@ Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI
 
 ## Pipeline YAML examples
 
-```mdx-code-block
 <Tabs>
   <TabItem value="cloud" label="Harness Cloud" default>
-```
 
 This example shows a pipeline that uses Harness Cloud build infrastructure and runs tests on Java with Maven and Test Intelligence. By changing the `language` value, you can use this pipeline for Kotlin or Scala.
 
@@ -139,10 +135,8 @@ pipeline:
             type: Cloud
 ```
 
-```mdx-code-block
   </TabItem>
   <TabItem value="sh" label="Self-hosted">
-```
 
 This example shows a pipeline that uses a Kubernetes cluster build infrastructure and runs tests on Java with Maven and Test Intelligence. By changing the `language` value, you can use this pipeline for Kotlin or Scala.
 
@@ -194,10 +188,8 @@ pipeline:
               os: Linux
 ```
 
-```mdx-code-block
   </TabItem>
 </Tabs>
-```
 
 ## Run Tests step settings
 
@@ -336,15 +328,15 @@ This can be as simple as `test` or you can include additional flags, such as: `t
 
 ### Test Report Paths
 
-This setting is required for the Run Tests step to [publish test results](../viewing-tests.md).
+This setting is required for the Run Tests step to [publish test results](/docs/continuous-integration/use-ci/run-tests/viewing-tests).
 
-Specify one or more paths to files that store [test results in JUnit XML format](../../run-tests/test-report-ref.md). [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+Specify one or more paths to files that store [test results in JUnit XML format](/docs/continuous-integration/use-ci/run-tests/test-report-ref). [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
 You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates.
 
 ### Test Splitting (parallelism)
 
-Used to [enable test splitting (parallelism) for TI](./ti-test-splitting.md).
+Used to [enable test splitting (parallelism) for TI](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting).
 
 ### Pre-Command, Post-Command, and Shell
 

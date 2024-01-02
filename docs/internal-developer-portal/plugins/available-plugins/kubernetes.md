@@ -55,6 +55,38 @@ In both cases, replace `<your-base-url>` with the base URL of the target cluster
 
 If you are using a service account to authenticate, ensure that a secret variable `K8S_SA_TOKEN` is set with the Kubernetes service account key.
 
+Please make sure, the `Service Account` token generated above must have a `ClusterRole` with permissions as mentioned below in the example refernce YAML.
+
+```YAML
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+ name: idp-clusterrole
+ namespace: <namespace_name>
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "services", "configmaps", "namespaces", "limitranges"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["apps"]
+    resources: ["deployments", "replicasets", "statefulsets","daemonsets"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["batch"]
+    resources: ["jobs", "cronjobs"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["metrics.k8s.io"]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["ingresses", "networkpolicies"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["autoscaling"]
+    resources: ["horizontalpodautoscalers"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list"]
+```
+
 If you are using GCP credentials to authenticate, you do not have to add a variable. Instead, configure the [Google OAuth provider](../oauth-support-for-plugins.md) on the **OAuth Configurations** page to enable the plugin to use the logged-in user's credentials when making requests.
 
 ### Delegate proxy

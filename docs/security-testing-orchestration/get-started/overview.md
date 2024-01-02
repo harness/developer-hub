@@ -2,7 +2,7 @@
 title: Harness Security Testing Orchestration (STO) Overview
 sidebar_label: Overview
 description: How STO enables DevOps teams to left-shift security testing.
-sidebar_position: 1
+sidebar_position: 10
 helpdocs_topic_id: ap7y94ap7h
 helpdocs_category_id: 8nywcs2sa7
 helpdocs_is_private: false

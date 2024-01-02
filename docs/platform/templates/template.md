@@ -231,7 +231,7 @@ template:
                     spec:  
                         connectorRef: docbuilds  
                         namespace: default  
-                        releaseName: release-<+INFRA_KEY>  
+                        releaseName: release-<+INFRA_KEY_SHORT_ID>  
                 allowSimultaneousDeployments: false  
                 environmentRef: helmchart  
             execution:  

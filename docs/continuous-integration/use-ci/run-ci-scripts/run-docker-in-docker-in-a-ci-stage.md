@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 CI pipelines that use a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures) need Docker-in-Docker (DinD) if you need to run Docker commands as part of the build process. For example, if you want to build images from [two separate codebases in the same pipeline](../codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md): One with a [Build and Push to Docker step](../build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md) and another with Docker commands in a [Run step](./run-step-settings.md).
 
@@ -63,19 +63,19 @@ In your **Build** stage, select the **Execution** tab, and add a [Background ste
 4. Under **Additional Configuration**, select **Privileged**. [Privileged mode is required](#privileged-mode-required) Docker-in-Docker to run correctly.
 5. In **Entry Point**, you can provide a list of arguments, if needed. For example, the entry point for the `docker:dind` image is `docker-entrypoint.sh`. If you want to add a `--mtu` argument, you would include both the image entry point and the additional argument in the **Entry Point** specification.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 <!-- ![](./static/dind-background-step-entry-point.png) -->
 
-<docimage path={require('./static/dind-background-step-entry-point.png')} />
+<DocImage path={require('./static/dind-background-step-entry-point.png')} />
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 ```yaml
 entrypoint:
@@ -83,10 +83,10 @@ entrypoint:
   - "--mtu=1450"
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Add a Docker Run step
 

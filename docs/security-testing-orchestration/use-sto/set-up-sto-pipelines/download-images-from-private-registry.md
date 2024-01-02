@@ -36,7 +36,8 @@ Running container image scans as a non-root user is not currently supported.
    1. Update the **Image** setting to point to the new image in your registry.
    2. If you specified a `USER` in your Dockerfile, set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
 
-<details><summary>Dockerfile template for adding certificates to an STO scanner image</summary>
+<details>
+<summary>Dockerfile template for adding certificates to an STO scanner image</summary>
 
 ``` bash
 # STEP 1 
@@ -82,7 +83,7 @@ You need a Docker connector that points to your private container registry. For 
 
 1. Download the scan images you need from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), test and validate the images, and store them in your private registry.
 
-   :::caution
+   :::warning
 
    Do not change the image names in your private registry. The image names must match the names specified by Harness.
 

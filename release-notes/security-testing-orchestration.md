@@ -6,10 +6,10 @@ date: 2023-12-03T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 12
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/security-testing-orchestration/rss.xml" />
 
@@ -25,6 +25,20 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## December 2023 
 
+### Version 1.77.1
+
+<!-- 2023-12-21 -->
+
+#### New enhancement
+
+This release introduces a change in behavior when ingesting SARIF data. Previously, issues with a level of **Error** in SARIF got assigned a severity of **Critical** in STO. These issues now get assigned a severity of **High**. (STO-6845, ZD-55359)
+
+#### Fixed issue
+
+Fixed an issue where the SonarQube step was assigning incorrect values to the Java Binaries setting.  (STO-6808)
+
+
+
 ### Version 1.76
 
 <!-- 2023-12-03 -->
@@ -38,6 +52,12 @@ These release notes describe recent changes to Harness Security Testing Orchestr
   `hide_not_exploitable` : `True`
 
 - Expiration time for exemptions now start when the exemption is approved. (STO-6604)
+
+#### Fixed issue
+
+<!-- 2023-12-14 -->
+
+Fixed an issue where only the first run in a SARIF file was being ingested. This occurred when Snyk was configured with the `--all-projects` flag. (STO-6832, ZD-55065)
 
 
 ## November 2023 
@@ -91,10 +111,10 @@ You can now scan your repositories and other components used in your code with [
 
 ##### New features and enhancements
 
-```mdx-code-block
+
 import sto_exemptions_timebound from './static/sto-timebound-exemption.png'
 import sto_exemptions_table from './static/sto-exemptions-table.png'
-```
+
 
 - You can now provide feedback about the [AIDA-generated remediation step](https://developer.harness.io/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations) for a selected issue. (STO-6593)
 
@@ -105,9 +125,9 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
   - You can specify a time limit when you request an exemption. (STO-6367, formerly behind feature flag `STO_TIMEBOUND_EXEMPTIONS`)
 
    
-    ```mdx-code-block
+    
     <img src={sto_exemptions_timebound} alt="Select the time limit for an exemption" height="75%" width="75%" />
-    ```
+    
 
     The **Exemptions** table includes a **Time Remaining** column that shows when each exemption is scheduled to expire. The table is sorted by this column by default so that soonest-to-expire exemptions are listed first.
 
@@ -139,7 +159,7 @@ import sto_exemptions_table from './static/sto-exemptions-table.png'
 
   The **Security Test** UI now uses the following labels to describe issues found in the current scan that are common to previous scans:
 
-  - **Common to <_target_>:<_variant_>** Issues also found in the last scan of the specified variant.
+  - **Common to \<_target_>:\<_variant_>** Issues also found in the last scan of the specified variant.
   - **Common to previous scan** 
     - Issues also found in the last scan (if the scanned target has no baseline), OR
     - Issues also found in the last scan of the baseline (if the scanned variant is the baseline).
@@ -681,9 +701,10 @@ The following security steps are now generally available:
   - These steps are currently available in Security stages only. 
   - Support is currently limited to Kubernetes and Harness Cloud AMD64 build infrastructures only.
   - For descriptions of all available UI settings, go to [Security step UI settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference).
- 
 
-<details><summary>Security step configuration UI </summary>
+
+<details>
+<summary>Security step configuration UI </summary>
 
 ![STO step palette](static/sto-step-palette.png)
 

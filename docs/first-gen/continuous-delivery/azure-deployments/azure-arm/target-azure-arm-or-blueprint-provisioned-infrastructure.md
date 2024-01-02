@@ -12,24 +12,21 @@ You can use Azure ARM templates to provision the target infrastructure for some 
 
 Currently, on [Azure Web App deployments](../azure-webapp-category/azure-web-app-deployments-overview.md) are supported for target infrastructure provisioning.For steps on using ARM templates to provision non-target infrastructure and resources, see [Provision Resources using a Harness ARM Infrastructure Provisioner](provision-using-the-arm-blueprint-create-resource-step.md).
 
-
 ### Before You Begin
 
-* [Set Up Your Harness Account for Azure ARM](set-up-your-harness-account-for-azure-arm.md)
-* [Add Azure ARM Templates to Harness](add-azure-arm-templates.md)
-* For a conceptual overview of provisioning with ARM and Blueprints, see [Azure ARM and Blueprint Provisioning with Harness](../../concepts-cd/deployment-types/azure-arm-and-blueprint-provision-with-harness.md).
+- [Set Up Your Harness Account for Azure ARM](set-up-your-harness-account-for-azure-arm.md)
+- [Add Azure ARM Templates to Harness](add-azure-arm-templates.md)
+- For a conceptual overview of provisioning with ARM and Blueprints, see [Azure ARM and Blueprint Provisioning with Harness](../../concepts-cd/deployment-types/azure-arm-and-blueprint-provision-with-harness.md).
 
 ### Limitations
 
-* See [Azure Resource Management (ARM) How-tos](azure-arm-and-blueprint-how-tos.md).
+- See [Azure Resource Management (ARM) How-tos](azure-arm-and-blueprint-how-tos.md).
 
 ### Visual Summary
 
 Here's a short video showing how to provision and deploy to the same Azure infrastructure using ARM and Harness:
 
-
-<docvideo src="https://www.youtube.com/embed/WfPE9wk4tM0?feature=oembed" />
-
+<DocVideo src="https://www.youtube.com/embed/WfPE9wk4tM0?feature=oembed" />
 
 Here's a diagram of how you use your Azure ARM templates in Harness to provision infra and then deploy to it:
 
@@ -92,25 +89,25 @@ Ensure that the ARM template you added in the Infrastructure Provisioner you sel
 
 For example, here are the outputs from an ARM template to provision Azure Web Apps:
 
-
 ```
-...  
-"outputs": {  
-    "webApp": {  
-      "type": "string",  
-      "value": "[parameters('siteName')]"  
-    },  
-    "slot": {  
-      "type": "string",  
-      "value": "[parameters('deploymentSlot')]"  
-    },  
-    "resourceGroup": {  
-      "type": "string",  
-      "value": "harness-arm-test"  
-    }  
-  }  
+...
+"outputs": {
+    "webApp": {
+      "type": "string",
+      "value": "[parameters('siteName')]"
+    },
+    "slot": {
+      "type": "string",
+      "value": "[parameters('deploymentSlot')]"
+    },
+    "resourceGroup": {
+      "type": "string",
+      "value": "harness-arm-test"
+    }
+  }
 ...
 ```
+
 You can see the `resourceGroup` output. You can reference that output, or any output, using the expression `${arm.<output_name>}`.
 
 For example, to reference `resourceGroup` you can use `${arm.resourceGroup}`.
@@ -179,44 +176,44 @@ Harness accept ARM template parameters is a specific JSON format.
 
 Typically, a parameters JSON file includes the `$schema` key to specify the location of the JSON schema file, and the `contentVersion` to specify the version of the template:
 
-
 ```
-{  
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",  
-  "contentVersion": "1.0.0.0",  
-  "parameters": {  
-    "adminUsername": {  
-      "value": "johnsmith"  
-    },  
-    "adminPassword": {  
-      "value": "m2y&oD7k5$eE"  
-    },  
-    "dnsLabelPrefix": {  
-      "value": "genunique"  
-    }  
-  }  
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "value": "johnsmith"
+    },
+    "adminPassword": {
+      "value": "m2y&oD7k5$eE"
+    },
+    "dnsLabelPrefix": {
+      "value": "genunique"
+    }
+  }
 }
 ```
+
 When you use parameters text or files with Harness, you must remove the `$schema` and `contentVersion` keys.
 
 Harness provisioning requires you remove these keys due to limitations in the Azure Java SDK and REST APIs. Only the parameter object key:value pairs are allowed.
 
 Using the example above, the parameters would be provided like this in Harness:
 
-
 ```
-{  
-    "adminUsername": {  
-      "value": "johnsmith"  
-    },  
-    "adminPassword": {  
-      "value": "m2y&oD7k5$eE"  
-    },  
-    "dnsLabelPrefix": {  
-      "value": "genunique"  
-    }  
+{
+    "adminUsername": {
+      "value": "johnsmith"
+    },
+    "adminPassword": {
+      "value": "m2y&oD7k5$eE"
+    },
+    "dnsLabelPrefix": {
+      "value": "genunique"
+    }
 }
 ```
+
 This format must be used whether the parameters are added using a remote file or inline.
 
 Click **Submit**.
@@ -253,32 +250,32 @@ Here is an example of a Blue/Green Azure Web App Workflow deployment that uses t
 
 ![](./static/target-azure-arm-or-blueprint-provisioned-infrastructure-12.png)In the **ARM/Blueprint Create Resource** step's **Execute ARM Deployment** section, you can see the ARM deployment:
 
-
 ```
-Starting template validation  
-Saving existing template for resource group - [anil-harness-arm-test]   
-Starting ARM Deployment at Resource Group scope ...   
-Resource Group - [anil-harness-arm-test]  
-Mode - [INCREMENTAL]  
-Deployment Name - [harness_533_1615316689992]  
+Starting template validation
+Saving existing template for resource group - [anil-harness-arm-test]
+Starting ARM Deployment at Resource Group scope ...
+Resource Group - [anil-harness-arm-test]
+Mode - [INCREMENTAL]
+Deployment Name - [harness_533_1615316689992]
 ARM Deployment request send successfully
 ```
+
 In the **ARM Deployment Steady state** section you can see the deployment reach steady state:
 
-
 ```
-Deployment Status for - [harness_533_1615316689992] is [Running]  
-Deployment Status for - [harness_533_1615316689992] is [Running]  
-Deployment Status for - [harness_533_1615316689992] is [Running]  
-Deployment Status for - [harness_533_1615316689992] is [Running]  
-Deployment Status for - [harness_533_1615316689992] is [Succeeded]  
-  
-Microsoft.Web/sites/slots - anil-dynamic-provisioner-webApp/staging :: [Succeeded]  
-Microsoft.Web/sites - anil-dynamic-provisioner-webApp :: [Succeeded]  
-Microsoft.Web/serverfarms - anil-dynamic-provisioner-webApp-ServicePlan :: [Succeeded]  
-  
+Deployment Status for - [harness_533_1615316689992] is [Running]
+Deployment Status for - [harness_533_1615316689992] is [Running]
+Deployment Status for - [harness_533_1615316689992] is [Running]
+Deployment Status for - [harness_533_1615316689992] is [Running]
+Deployment Status for - [harness_533_1615316689992] is [Succeeded]
+
+Microsoft.Web/sites/slots - anil-dynamic-provisioner-webApp/staging :: [Succeeded]
+Microsoft.Web/sites - anil-dynamic-provisioner-webApp :: [Succeeded]
+Microsoft.Web/serverfarms - anil-dynamic-provisioner-webApp-ServicePlan :: [Succeeded]
+
 ARM Deployment - [harness_533_1615316689992] completed successfully
 ```
+
 In the **Slot Setup** step, you will see that the values provided for the template outputs mapped to that step are used.
 
 Now you have provisioned the Web App target infrastructure and deployed to it using a single Workflow.
@@ -289,126 +286,125 @@ For information on rollback, see [Azure ARM Rollbacks](azure-arm-rollbacks.md).
 
 Here is a sample ARM template for creating Azure Web App deployments. You will need to update the outputs for your environment.
 
-
 ```
-{  
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",  
-  "contentVersion": "1.0.0.0",  
-  "parameters": {  
-    "siteName": {  
-      "type": "string",  
-      "metadata": {  
-        "description": "The name of the web app that you wish to create."  
-      }  
-    },  
-    "deploymentSlot": {  
-      "type": "string",  
-      "metadata": {  
-        "description": "The name of the deployment slot that you wish to create."  
-      }  
-    }  
-  },  
-  "variables": {  
-    "servicePlanName": "[concat(parameters('siteName'), '-ServicePlan')]"  
-  },  
-  "resources": [  
-    {  
-      "apiVersion": "2016-09-01",  
-      "type": "Microsoft.Web/serverfarms",  
-      "kind": "linux",  
-      "name": "[variables('servicePlanName')]",  
-      "location": "[resourceGroup().location]",  
-      "properties": {  
-        "name": "[variables('servicePlanName')]",  
-        "reserved": true,  
-        "numberOfWorkers": "1"  
-      },  
-      "dependsOn": [],  
-      "sku": {  
-        "Tier": "Standard",  
-        "Name": "S1"  
-      }  
-    },  
-    {  
-      "apiVersion": "2016-08-01",  
-      "type": "Microsoft.Web/sites",  
-      "name": "[parameters('siteName')]",  
-      "location": "[resourceGroup().location]",  
-      "properties": {  
-        "siteConfig": {  
-          "name": "[parameters('siteName')]",  
-          "appSettings": [  
-            {  
-              "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",  
-              "value": "false"  
-            }  
-          ],  
-          "linuxFxVersion": "DOCKER|nginx:alpine"  
-        },  
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('servicePlanName'))]"  
-      },  
-      "dependsOn": [  
-        "[resourceId('Microsoft.Web/serverfarms', variables('servicePlanName'))]"  
-      ]  
-    },  
-    {  
-      "apiVersion": "2020-06-01",  
-      "type": "Microsoft.Web/sites/slots",  
-      "name": "[concat(parameters('siteName'), '/', parameters('deploymentSlot'))]",  
-      "kind": "app",  
-      "location": "[resourceGroup().location]",  
-      "comments": "This specifies the web app slots.",  
-      "tags": {  
-        "displayName": "WebAppSlots"  
-      },  
-      "properties": {  
-        "siteConfig": {  
-          "name": "[parameters('siteName')]",  
-          "appSettings": [  
-            {  
-              "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",  
-              "value": "false"  
-            }  
-          ],  
-          "linuxFxVersion": "DOCKER|nginx:alpine"  
-        },  
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('servicePlanName'))]"  
-      },  
-      "dependsOn": [  
-        "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"  
-      ]  
-    }  
-  ],  
-  "outputs": {  
-    "webApp": {  
-      "type": "string",  
-      "value": "[parameters('siteName')]"  
-    },  
-    "slot": {  
-      "type": "string",  
-      "value": "[parameters('deploymentSlot')]"  
-    },  
-    "resourceGroup": {  
-      "type": "string",  
-      "value": "MyResourceGroup"  
-    }  
-  }  
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "siteName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the web app that you wish to create."
+      }
+    },
+    "deploymentSlot": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the deployment slot that you wish to create."
+      }
+    }
+  },
+  "variables": {
+    "servicePlanName": "[concat(parameters('siteName'), '-ServicePlan')]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2016-09-01",
+      "type": "Microsoft.Web/serverfarms",
+      "kind": "linux",
+      "name": "[variables('servicePlanName')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "name": "[variables('servicePlanName')]",
+        "reserved": true,
+        "numberOfWorkers": "1"
+      },
+      "dependsOn": [],
+      "sku": {
+        "Tier": "Standard",
+        "Name": "S1"
+      }
+    },
+    {
+      "apiVersion": "2016-08-01",
+      "type": "Microsoft.Web/sites",
+      "name": "[parameters('siteName')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "siteConfig": {
+          "name": "[parameters('siteName')]",
+          "appSettings": [
+            {
+              "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
+              "value": "false"
+            }
+          ],
+          "linuxFxVersion": "DOCKER|nginx:alpine"
+        },
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('servicePlanName'))]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('servicePlanName'))]"
+      ]
+    },
+    {
+      "apiVersion": "2020-06-01",
+      "type": "Microsoft.Web/sites/slots",
+      "name": "[concat(parameters('siteName'), '/', parameters('deploymentSlot'))]",
+      "kind": "app",
+      "location": "[resourceGroup().location]",
+      "comments": "This specifies the web app slots.",
+      "tags": {
+        "displayName": "WebAppSlots"
+      },
+      "properties": {
+        "siteConfig": {
+          "name": "[parameters('siteName')]",
+          "appSettings": [
+            {
+              "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
+              "value": "false"
+            }
+          ],
+          "linuxFxVersion": "DOCKER|nginx:alpine"
+        },
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('servicePlanName'))]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
+      ]
+    }
+  ],
+  "outputs": {
+    "webApp": {
+      "type": "string",
+      "value": "[parameters('siteName')]"
+    },
+    "slot": {
+      "type": "string",
+      "value": "[parameters('deploymentSlot')]"
+    },
+    "resourceGroup": {
+      "type": "string",
+      "value": "MyResourceGroup"
+    }
+  }
 }
 ```
+
 Here is the parameters file for the template. You will need to update the values for your environment.
 
-
 ```
-{  
-  "siteName": {  
-    "value": "myWebApp"  
-  },  
-  "deploymentSlot": {  
-    "value": "staging"  
-  }  
+{
+  "siteName": {
+    "value": "myWebApp"
+  },
+  "deploymentSlot": {
+    "value": "staging"
+  }
 }
 ```
+
 ### Configure As Code
 
 To see how to configure the settings in this topic using YAML, configure the settings in the UI first, and then click the **YAML** editor button.
-

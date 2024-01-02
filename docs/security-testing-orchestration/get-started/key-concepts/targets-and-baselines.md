@@ -17,9 +17,9 @@ This topic discusses the following STO topics:
 
 ### Targets
 
-```mdx-code-block
+
 import StoConceptTargets from '../shared/_targets.md';
-```
+
 
 <StoConceptTargets />
 
@@ -32,17 +32,17 @@ import StoConceptTargets from '../shared/_targets.md';
 
 ### Variants
 
-```mdx-code-block
+
 import StoConceptVariants from '/docs/security-testing-orchestration/get-started/shared/_variants.md';
-```
+
 
 <StoConceptVariants />
 
 ### Baselines
 
-```mdx-code-block
+
 import StoConceptBaselines from '/docs/security-testing-orchestration/get-started/shared/_baselines.md';
-```
+
 
 <StoConceptBaselines />
 
@@ -62,9 +62,9 @@ Every STO pipeline execution has a [Security Tests tab](/docs/security-testing-o
 <figcaption>New and common issues in Security Tests tab</figcaption>
 </figure>
 
-```mdx-code-block
+
 import StoWhyDefineBaselines from '/docs/security-testing-orchestration/get-started/shared/_why-define-baselines.md';
-```
+
 
 ### Why you should define a baseline for every STO target
 

@@ -11,14 +11,14 @@ After you create a workspace, you can perform operations against the configurati
 You can use the Harness Visual Editor or YAML to provision a workspace.
 
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. In the Harness project pane, select **Pipelines**.
 2. Select **+ Create a Pipeline** and set up a pipeline. 
@@ -46,10 +46,10 @@ import TabItem from '@theme/TabItem';
 
     You can also define a trigger for the pipeline to be executed when there is a change in the Terraform configuration.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 Use the following sample and update the areas in brackets. 
 
 ```yaml
@@ -99,10 +99,10 @@ pipeline:
         tags: {}
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Destory a workspace
 
@@ -110,10 +110,10 @@ You can use the Harness Visual Editor or YAML to create a pipeline that will tea
 
 
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. In the Harness project pane, select **Pipelines**.
 2. Select **+ Create a Pipeline** and set up a pipeline. 
@@ -131,12 +131,12 @@ You can use the Harness Visual Editor or YAML to create a pipeline that will tea
 
 9. After the plan is created, switch to the **Resources** tab to see all the resources and Terraform outputs that will be generated once the plan is applied. You can see which resources will be removed from the state. 
 
-10. Select **Resources** to see the attribute details. 
+10. Select **Resources** to see the attribute details.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 Use the following sample and update the areas in brackets. 
 
 ```yaml
@@ -187,7 +187,11 @@ pipeline:
         tags: {}
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
+
+:::tip
+Currently, IaCM doesn't support multiple Workspaces in the same pipeline. If you'd like to provision several Workspaces altogether, consider using [Pipeline Chaining](https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/)
+:::

@@ -117,7 +117,7 @@ Typically, you can validate your token from the command line before using it in 
 `curl -i https://api.github.com -u <username>:<token>`
 
 :::note
-If you have set up Two-Factor Authentication in your Git repo, then you need to generate a personal access token in your repo and enter that token in the **Password/Token** field. In GitHub, you can set up the personal access token at <https://github.com/settings/tokens/new>.
+If you have set up Two-Factor Authentication in your Git repo, then you need to generate a personal access token in your repo and enter that token in the **Password/Token** field. In GitHub, you can set up the personal access token at [https://github.com/settings/tokens/new](https://github.com/settings/tokens/new).
 :::
 :::note
 If you enable `OPTIMIZED_GIT_FETCH_FILES`, you must use a **token** for authentication. Passwords are not supported.

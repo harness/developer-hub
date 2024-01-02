@@ -18,16 +18,6 @@ export const featuredTutorials: CardItem[] = [
       time: "8min",
       link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
     },
-    {
-      title: "Deploy a Helm Chart using CD Community Edition",
-      module: MODULES.cd,
-      icon: "img/icon_cd.svg",
-      description: "Use the 100% free, source-available, self-managed Harness CD Community Edition to automate Helm Chart deployments.",
-      newDoc: true,
-      type: [docType.Documentation],
-      time: "10min",
-      link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
-    },
   ];
   
   // Docs

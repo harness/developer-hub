@@ -317,7 +317,7 @@ module "dev_k8s" {
 spec:
   connectorRef: ${module.dev_k8s_delegate.connector_details.id}
   namespace: appx
-  releaseName: release-<+INFRA_KEY>
+  releaseName: release-<+INFRA_KEY_SHORT_ID>
   EOT
 }
 ```

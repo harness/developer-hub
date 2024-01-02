@@ -12,7 +12,7 @@ redirect_from:
 
 You can register any new software component with the software catalog by creating a `catalog-info.yaml` file in your Git repository and then registering its URL.
 
-<docvideo src="https://www.youtube.com/embed/YgtIMDGMzJE?si=AYnisVn-lHX-4STw" />
+<DocVideo src="https://www.youtube.com/embed/YgtIMDGMzJE?si=AYnisVn-lHX-4STw" />
 
 ## Create a new `catalog-info.yaml`
 
@@ -42,28 +42,28 @@ spec:
 
 Following are the key fields that you must update:
 
-* `metadata.name`. This should be a unique name for your component. Usually, it is the name of the service.
-* `metadata.description` - A description for your new component.
-* `spec.type` - The new software component could be a `service`, `library`, `website`, or any other type.
-* `spec.owner` - The user group identifier of the team that owns the component.
+- `metadata.name`. This should be a unique name for your component. Usually, it is the name of the service.
+- `metadata.description` - A description for your new component.
+- `spec.type` - The new software component could be a `service`, `library`, `website`, or any other type.
+- `spec.owner` - The user group identifier of the team that owns the component.
 
 2. Once the file is created in your Git repo, copy the full URL to the file. For example, `https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml`.
 
-## Register the Software Component 
+## Register the Software Component
 
 3. In the left navigation, select **Create**, and then select **Register Software Component**.
 
-  ![](static/create-page-sidebar.png)
-  ![](static/create-page.png)
+![](static/create-page-sidebar.png)
+![](static/create-page.png)
 
 4. Enter the URL to your new `catalog-info.yaml`.
 
-  ![](static/url-on-register-page.png)
+![](static/url-on-register-page.png)
 
 5. Select **Import**.
 
-  ![](static/finished-state.png)
+![](static/finished-state.png)
 
 The new component will be available in your catalog.
 
-  ![](static/imported-entity.png)
+![](static/imported-entity.png)

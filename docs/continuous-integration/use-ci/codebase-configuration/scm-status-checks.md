@@ -7,12 +7,12 @@ redirect_from:
   - /docs/continuous-integration/use-ci/optimize-and-more/custom_github_status_check
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-:::caution
+
+:::warning
 
 You must configure branch protections and checks, such as protection rules, CODEOWNERS, linting, and other checks or restrictions, in your source control provider.
 
@@ -99,10 +99,10 @@ curl -i -u YOUR_GITHUB_ORGANIZATION:<+secrets.getValue("account.YOUR_GITHUB_TOKE
 
 If you want to include status checks in multiple pipelines, you might want to create reusable templates or plugins.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="template" label="Create a step template" default>
-```
+
 
 [Step templates](/docs/platform/templates/run-step-template-quickstart) help you quickly reuse customized or complex steps in multiple pipelines. For example, here is a YAML example of a step template for a GitHub status check step:
 
@@ -152,17 +152,17 @@ template:
   versionLabel: 1.0.0
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="plugin" label="Write a custom plugin">
-```
+
 
 You can package your status check script in a [custom plugin](../use-drone-plugins/custom_plugins.md) and then add it to your pipelines in a [Plugin step](../use-drone-plugins/custom_plugins.md#add-the-plugin-step).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Troubleshoot status checks
 
@@ -173,3 +173,7 @@ Harness uses the pipeline's codebase connector to send status updates to PRs in 
 ### Failed pipelines don't block PRs merges
 
 Although Harness can send pipeline statuses to your PRs, you must configure branch protection rules and other checks in your SCM provider.
+
+### Troubleshoot Git event triggers
+
+For troubleshooting information for Git event (webhook) triggers, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers).

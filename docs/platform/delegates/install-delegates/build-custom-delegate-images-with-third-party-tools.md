@@ -25,11 +25,12 @@ You can build on either of the following Harness-provided images.
 | **Image** | **Description** |
 | --- | --- |
 | Harness Delegate Docker image | A publicly available Docker image providing Harness Delegate. |
-| Harness Minimal Delegate Docker image | A minimal delegate image is available in Docker Hub at <https://hub.docker.com/r/harness/delegate/tags>. |
+| Harness Minimal Delegate Docker image | A minimal delegate image is available in Docker Hub at [https://hub.docker.com/r/harness/delegate/tags](https://hub.docker.com/r/harness/delegate/tags). |
 
 Use the last published `yy.mm.xxxxx` version of the minimal image from the Docker repository.
 
 ![](./static/build-custom-delegate-images-with-third-party-tools-07.png)
+
 ### Build the delegate image
 
 When you build a custom delegate image, you modify the image you select with user privileges and binaries. This section explains the build script used for the process. In this example, the script builds a custom image for deployment by Kubernetes and by Terraform.

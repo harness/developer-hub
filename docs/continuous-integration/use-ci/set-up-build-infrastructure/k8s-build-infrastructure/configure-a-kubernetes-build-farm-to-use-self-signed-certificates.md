@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -72,7 +72,7 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 
    Both CI build pods and the SCM client on the delegate support this method.
 
-   :::caution
+   :::warning
 
    Make sure the destination path is not same as the default CA certificate path of the corresponding container image.
 
@@ -80,8 +80,8 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 
    :::
 
-   <details>
-   <summary>Legacy: CI_MOUNT_VOLUMES</summary>
+<details>
+<summary>Legacy: CI_MOUNT_VOLUMES</summary>
    
    Prior to the introduction of `DESTINATION_CA_PATH`, you used `ADDITIONAL_CERTS_PATH` and `CI_MOUNT_VOLUMES` to mount certs.
    
@@ -118,7 +118,7 @@ CI build infrastructure pods can interact with servers using self-signed certifi
                   path: ca.bundle
    ```
 
-   </details>
+</details>
 
 3. Restart the delegate. Once it is up and running, `exec` into the container and ensure that the volume exists at the mounted path and contains your certificates.
 

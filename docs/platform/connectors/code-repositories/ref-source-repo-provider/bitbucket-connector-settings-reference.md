@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 This topic describes the settings and permissions for the Bitbucket connector. Harness supports both Cloud and Data Center (On-Prem) versions of Bitbucket. The following settings are applicable to both versions.
 
@@ -39,10 +39,10 @@ Select the protocol, **HTTP** or **SSH**, to use for cloning and authentication.
 
 Enter the URL for the Bitbucket account or repository that you want to connect to. The required value is determined by the **URL Type**, **Connection Type**, and your Bitbucket account type (Cloud or Data Center).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="account" label="URL Type: Account" default>
-```
+
 
 In the **Bitbucket Account URL** field, provide only the account-identifying portion of the Bitbucket URL, such as `https://bitbucket.org/my-bitbucket/`. Do not include any repo name or project name.
 
@@ -67,10 +67,10 @@ The URL format depends on the **Connection Type** and your Bitbucket account typ
 <figcaption>HTTP and SSH examples of Bitbucket Data Center account URLs.</figcaption>
 </figure>
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="repo" label="URL Type: Repository">
-```
+
 
 In the **Bitbucket Repository URL** field, provide the complete URL to the Bitbucket repository that you want this connector to point to.
 
@@ -95,10 +95,10 @@ The URL format depends on the **Connection Type** and your Bitbucket account typ
 <figcaption>HTTP example of a Bitbucket Data Center repository URL.</figcaption>
 </figure>
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::info On-Prem Accounts
 
@@ -132,10 +132,10 @@ Provide authentication credentials for the connector.
 
 The **Connection Type** you chose in the [Details settings](#details-settings) determines the **Authentication** method.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="http" label="Username and Password" default>
-```
+
 
 The **HTTP** Connection Type requires **Username** and **Password** authentication for all accounts and repos, including read-only repos.
 
@@ -151,10 +151,10 @@ If you use a Google account to log in to Bitbucket, you must use an App password
 
 Bitbucket accounts with two-factor authentication must use access tokens.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="ssh" label="SSH Key">
-```
+
 
 The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
 
@@ -172,10 +172,10 @@ Make sure to follow the prompts to finish creating the key. For more information
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Enable API access
 
@@ -189,7 +189,7 @@ In the **Personal Access Token** field, provide a Bitbucket account-level [App p
 
 You must provide an account-level app password or token. Repo-level tokens are not supported.
 
-:::caution
+:::warning
 
 For **HTTP** Connection Types, use the same password you used earlier, and make sure the **Username** fields are both plain-text or both encrypted. Don't use a plain-text username for one field and a secret for the other.
 

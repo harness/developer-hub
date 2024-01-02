@@ -84,8 +84,8 @@ apiKey="YOUR_API_KEY"
 
 <details>
 <summary>What is a target?</summary> 
-Targets are used to control which users see which variation of a feature flag, for example, if you want to do internal testing, you can enable the flag for some users and not others. When creating a target, you give it a name and a unique identifier. Often, targets are users but you can create a target from anything that can be uniquely identified, such as an app or a machine.  
-  </details>
+Targets are used to control which users see which variation of a feature flag, for example, if you want to do internal testing, you can enable the flag for some users and not others. When creating a target, you give it a name and a unique identifier. Often, targets are users but you can create a target from anything that can be uniquely identified, such as an app or a machine.
+</details>
 
 For more information about targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
@@ -305,7 +305,7 @@ function MyComponent({ flags, loading }) {
 }
 const MyComponentWithFlags = withFeatureFlags(MyComponent)
 ```
-:::caution
+:::warning
 When using async mode, the default value is returned until the flags are retrieved. If you use the `useFeatureFlag` or `useFeatureFlags` hooks, the default value is undefined unless you change it when evaluating the flag. If you are using `withFeatureFlags`, you will receive an empty object. 
 :::
 
