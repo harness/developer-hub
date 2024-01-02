@@ -8,9 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
 import Variables from '/docs/platform/shared/variables-not-supported.md'
-```
 
 You can trigger pipelines in response to Git events that match specific payload conditions you set up in a Harness trigger. For example, when a pull request or push event occurs on a Git repo and your trigger settings match the payload conditions, a CI or CD pipeline can run.
 
@@ -20,8 +18,13 @@ This topic demonstrates how to create a trigger for GitHub payload conditions. I
 
 :::info
 
-* Currently, Harness supports Git-based triggers for the most common Git providers. You can use a [Custom Trigger](./trigger-deployments-using-custom-triggers.md) for other repo providers.
-* With [Harness RBAC](../role-based-access-control/rbac-in-harness.md), you can control who can create and use triggers *within Harness*, but you must use your Git provider's RBAC to control who can initiate the Git events that start your Harness Git event triggers.
+Currently, Harness supports Git-based triggers for the most common Git providers. You can use a [Custom Trigger](./trigger-deployments-using-custom-triggers.md) for other repo providers.
+
+:::
+
+:::info
+
+With [Harness RBAC](../role-based-access-control/rbac-in-harness.md), you can control who can create and use triggers _within Harness_, but you must use your Git provider's RBAC to control who can initiate the Git events that start your Harness Git event triggers.
 
 :::
 
@@ -34,7 +37,7 @@ Here's a two minute video showing you how to create and run a Trigger in respons
 
 <!-- Video:
 https://www.youtube.com/watch?v=y8s351IJLXw-->
-<docvideo src="https://www.youtube.com/watch?v=y8s351IJLXw" />
+<DocVideo src="https://www.youtube.com/watch?v=y8s351IJLXw" />
 
 </details>
 
@@ -59,8 +62,8 @@ All triggers in a Harness account have the same URL: `https://app.harness.io/gat
 2. **Payload Type** is automatically populated based on the selected SCM provider.
 3. For **Connector**, select a [code repo connector](/docs/category/code-repo-connectors) for your SCM provider.
 
-   * A connector is required for all Git trigger types except **Custom**. In the connector's **Credentials** settings, make sure API access is enabled and that the token has the [required permissions](#code-repo-connector-permissions-for-webhook-triggers).
-   * For **Custom** triggers, you must set up the external tool to send payloads to to the trigger URL. Refer to your tool's documentation for instructions on sending payloads.
+   - A connector is required for all Git trigger types except **Custom**. In the connector's **Credentials** settings, make sure API access is enabled and that the token has the [required permissions](#code-repo-connector-permissions-for-webhook-triggers).
+   - For **Custom** triggers, you must set up the external tool to send payloads to to the trigger URL. Refer to your tool's documentation for instructions on sending payloads.
 
 4. For **Event**, select a [Git event type](./triggers-reference.md#event-and-actions), and, if required, select one or more **Actions**.
 5. Configure additional settings, such as **Auto-abort Previous Execution**, **Configure Secret**, and **Polling Frequency**, according to your desired trigger configuration.
@@ -71,8 +74,8 @@ For details on trigger settings, go to the [Triggers reference](./triggers-refer
 
 Git event webhook triggers require specific permissions:
 
-* The user account you use to create the token must have the permission to configure repo webhooks in your Git provider.
-* The personal access token used for [code repo connector authentication](/docs/platform/connectors/code-repositories/connect-to-code-repo/#code-repo-connector-permissions-and-access) must have the appropriate permissions scopes depending on the Git provider.
+- The user account you use to create the token must have the permission to configure repo webhooks in your Git provider.
+- The personal access token used for [code repo connector authentication](/docs/platform/connectors/code-repositories/connect-to-code-repo/#code-repo-connector-permissions-and-access) must have the appropriate permissions scopes depending on the Git provider.
 
 For example, for GitHub, you must be a repo admin and the GitHub personal access token used in the [GitHub connector's credentials](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/#credentials-settings) must have all `repo`, `user`, and `admin:repo_hook` scopes.
 
@@ -80,9 +83,9 @@ For example, for GitHub, you must be a repo admin and the GitHub personal access
 
 For information about other provider's token scopes, go to:
 
-* [GitLab - Personal access token scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes)
-* [Bitbucket Cloud - Repository access token permissions](https://support.atlassian.com/bitbucket-cloud/docs/repository-access-token-permissions/)
-* [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
+- [GitLab - Personal access token scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes)
+- [Bitbucket Cloud - Repository access token permissions](https://support.atlassian.com/bitbucket-cloud/docs/repository-access-token-permissions/)
+- [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
 
 ### Set trigger conditions
 
@@ -90,15 +93,15 @@ For information about other provider's token scopes, go to:
 
 Here are some examples of trigger conditions:
 
-* Trigger a pipeline when a specific value is passed in the source payload.
-* Trigger a pipeline when there's a change in a specific file or a pull request.
-* Trigger a pipeline based on a specific artifact tag convention.
-* Trigger a pipeline if the source or target branch in the Git event matches a specified pattern.
-* Trigger a pipeline if there are file changes in specific directories in the Git repo (This is useful when working with a mono-repository; it ensures that pipelines only run in response to certain changes, rather than every change).
+- Trigger a pipeline when a specific value is passed in the source payload.
+- Trigger a pipeline when there's a change in a specific file or a pull request.
+- Trigger a pipeline based on a specific artifact tag convention.
+- Trigger a pipeline if the source or target branch in the Git event matches a specified pattern.
+- Trigger a pipeline if there are file changes in specific directories in the Git repo (This is useful when working with a mono-repository; it ensures that pipelines only run in response to certain changes, rather than every change).
 
 :::info Conditions are cumulative
 
-Triggers are like complex filters in which the **Conditions** are `AND`-ed together. To execute a trigger, the event payload must match *all* trigger conditions.
+Triggers are like complex filters in which the **Conditions** are `AND`-ed together. To execute a trigger, the event payload must match _all_ trigger conditions.
 
 For example, the configuration in the following image requires that the event match all conditions for **Source Branch**, **Target Branch**, **Changed Files**, **Header Conditions**, **Payload Conditions**, and **JEXL Condition** to activate the trigger.
 
@@ -152,16 +155,16 @@ You can refer to payload data and headers using [JEXL expressions](https://commo
 
 Be careful when you combine Harness variables and JEXL expressions:
 
-* **Invalid expression format:** `<+pipeline.variables.MAGIC.toLowerCase()>`
-  * This expression is ambiguous. It could be evaluated as a Harness variable (return the value of variable `pipeline.variables.MAGIC.toLowerCase()`) or as a JEXL operation (return the lowercase of literal string `pipeline.variables.MAGIC`).
-* **Valid expression format:** `<+<+pipeline.variables.MAGIC>.toLowerCase()>`
-  * First, this expression gets the value of the variable `pipeline.variables.MAGIC`, and then it returns the value converted to all lowercase.
+- **Invalid expression format:** `<+pipeline.variables.MAGIC.toLowerCase()>`
+  - This expression is ambiguous. It could be evaluated as a Harness variable (return the value of variable `pipeline.variables.MAGIC.toLowerCase()`) or as a JEXL operation (return the lowercase of literal string `pipeline.variables.MAGIC`).
+- **Valid expression format:** `<+<+pipeline.variables.MAGIC>.toLowerCase()>`
+  - First, this expression gets the value of the variable `pipeline.variables.MAGIC`, and then it returns the value converted to all lowercase.
 
 Here are some examples of valid combined JEXL and Harness expressions:
 
-* `<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")`
-* `<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") || <+trigger.payload.repository.owner.name> == "wings-software"`
-* `<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") && (<+trigger.payload.repository.owner.name> == "wings-software" || <+trigger.payload.repository.owner.name> == "harness")`
+- `<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")`
+- `<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") || <+trigger.payload.repository.owner.name> == "wings-software"`
+- `<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") && (<+trigger.payload.repository.owner.name> == "wings-software" || <+trigger.payload.repository.owner.name> == "harness")`
 
 For more information about **Attributes**, **Operators**, **Matching Values**, and **JEXL Conditions**, go to the [Triggers reference](./triggers-reference.md).
 
@@ -232,7 +235,7 @@ On the list of triggers for a pipeline, you can see when each trigger was last a
 
 ![](./static/trigger-pipelines-using-custom-payload-conditions-37.png)
 
-**Activation** means the trigger was able to *request* pipeline execution; it doesn't mean that the webhook didn't work.
+**Activation** means the trigger was able to _request_ pipeline execution; it doesn't mean that the webhook didn't work.
 
 **Failed** usually means the pipeline has a configuration issue that prevented the trigger from initiating a pipeline.
 
@@ -349,15 +352,72 @@ pipeline:
 
 </details>
 
-## Troubleshooting Git event triggers
+## GitHub merge queue triggers
+
+[GitHub's merge queue feature](https://github.blog/2023-07-12-github-merge-queue-is-generally-available/) is compatible with Harness webhook triggers. Use the following settings to configure a merge queue trigger:
+
+- Trigger type: GitHub webhook
+- [Payload Type](/docs/platform/triggers/triggers-reference/#payload-type): GitHub.
+- [Connector](/docs/platform/triggers/triggers-reference/#connector): Your Harness GitHub connector.
+- [Event](/docs/platform/triggers/triggers-reference#event-and-actions): Push.
+- [Conditions](/docs/platform/triggers/triggers-reference/#conditions-settings): Configure conditions that detect branches with the GitHub temporary merge queue branch name prefix (`gh-readonly-queue`) and a non-empty commit SHA for that branch. The [Harness expression](/docs/platform/triggers/triggers-reference/#reference-payload-fields) `<+trigger.payload.head_commit>` gets the commit SHA from the webhook payload for the temporary merge queue branch push event.
+  - [Branch Condition](/docs/platform/triggers/triggers-reference/#branch-and-changed-files-conditions): **Branch Name** **Starts With** `gh-readonly-queue`.
+  - [Payload Condition](/docs/platform/triggers/triggers-reference/#payload-conditions): `<+trigger.payload.head_commit>` **Not Equals** `null`.
+
+Here is a YAML example of a webhook trigger configured for the GitHub merge queue:
+
+```yaml
+trigger:
+  name: merge queue trigger
+  identifier: merge_queue_trigger
+  enabled: true
+  stagesToExecute: []
+  description: ""
+  tags: {}
+  encryptedWebhookSecretIdentifier: ""
+  orgIdentifier: default
+  projectIdentifier: YOUR_HARNESS_PROJECT
+  pipelineIdentifier: YOUR_PIPELINE_TO_TRIGGER
+  source:
+    type: Webhook
+    spec:
+      type: Github
+      spec:
+        type: Push
+        spec:
+          connectorRef: YOUR_GITHUB_CONNECTOR
+          autoAbortPreviousExecutions: false
+          payloadConditions:
+            - key: targetBranch
+              operator: StartsWith
+              value: gh-readonly-queue
+            - key: <+trigger.payload.head_commit>
+              operator: NotEquals
+              value: "null"
+          headerConditions: []
+          repoName: YOUR_GITHUB_REPO
+          actions: []
+  inputYaml: |
+    pipeline:
+      identifier: YOUR_PIPELINE_TO_TRIGGER
+      properties:
+        ci:
+          codebase:
+            build:
+              type: branch
+              spec:
+                branch: <+trigger.branch>
+```
+
+## Troubleshoot Git event triggers
 
 ### Pipelines don't start after trigger events
 
 If a pipeline doesn't start in response to an incoming event, do the following:
 
-* Check the execution history (select **Execution History** in the top right of the Pipeline Studio).
-* Verify that the runtime inputs are correct.
-* Check the payloads sent from the Git provider and compare the relevant fields with your trigger conditions. For example, in GitHub you can view the full payload of each event sent from a specific webhook.
+- Check the execution history (select **Execution History** in the top right of the Pipeline Studio).
+- Verify that the runtime inputs are correct.
+- Check the payloads sent from the Git provider and compare the relevant fields with your trigger conditions. For example, in GitHub you can view the full payload of each event sent from a specific webhook.
 
 ### Common causes of Webhook registration failure
 
@@ -372,3 +432,24 @@ If you see **Webhook registration failed**, here are the common causes:
 After addressing one or more of the above issues, edit the trigger in Harness, select **Continue** to navigate through the settings, and then select **Update Trigger** to reattempt webhook registration. Then, refresh the **Triggers** page again to verify that the webhook was registered.
 
 If registration fails and none of the above conditions apply, try [manually registering the webhook](#register-the-webhook-in-the-git-provider).
+
+### Pipeline fails with "couldn't find remote ref" when triggered from a Bitbucket forked repo PR
+
+<!-- this section is referenced on triggers-reference.md -->
+
+Currently, CI pipeline webhook triggers don't support PRs that are attempting to merge changes from a Bitbucket forked repo into the original, base repo. This applies only to Bitbucket repos when attempting to merge a fork back into the base repo and the base repo is set as the pipeline's codebase. Although the trigger initiates, the pipeline fails with `couldn't find remote ref`. This issue occurs due to the Bitbucket PR reference URL format.
+
+### Pipeline with a PR Event Trigger and an On Push Trigger fires the pipeline execution twice
+
+You can configure multiple triggers for the same pipeline. By scoping the action events, you can ensure that the pipeline only runs for a particular trigger scenario. The Push trigger and PR trigger can overlap because they listen on similar events. Below are the required events for the PR to ensure there is no overlap with the Push trigger.
+
+**Pull Request Actions**
+
+- Edit
+- Open
+- ReOpen
+- Label
+- Unlabel
+- Ready for Review
+
+Leave out by the `synchronize` and `close` events from the event selection. These events cause both triggers to execute the pipeline.

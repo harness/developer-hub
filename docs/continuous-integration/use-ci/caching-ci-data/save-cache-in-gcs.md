@@ -40,15 +40,15 @@ You need a [GCP connector](/docs/platform/connectors/cloud-providers/ref-cloud-p
 
 ## Add save and restore cache steps
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. Go to the pipeline and stage where you want to add the **Save Cache to GCS** step.
 2. Select **Add Step**, select **Add Step** again, and then select **Save Cache to GCS** in the Step Library.
@@ -59,10 +59,10 @@ import TabItem from '@theme/TabItem';
 7. Configure the [Restore Cache from GCS step settings](#gcs-save-and-restore-cache-step-settings). The bucket and key must correspond with the bucket and key settings in the **Save Cache to GCS** step.
 8. Select **Apply changes** to save the step, and then select **Save** to save the pipeline.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 To add a **Save Cache to GCS** step in the YAML editor, add a `type: SaveCacheGCS` step, then define the [Save Cache to GCS step settings](#gcs-save-and-restore-cache-step-settings). The following are required:
 
@@ -110,10 +110,10 @@ Here is an example of the YAML for a **Restore Cache from GCS** step.
                     archiveFormat: Tar
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### GCS save and restore cache step settings
 
@@ -200,10 +200,10 @@ Steps in the same stage share the same [workspace](/docs/continuous-integration/
 
 There are specific requirements for cache keys and paths for Go, Node.js, and Maven.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="Go">
-```
+
 
 [Go](https://go.dev/) pipelines must reference `go.sum` for `spec.key` in **Save Cache to GCS** and **Restore Cache From GCS** steps, for example:
 
@@ -221,11 +221,11 @@ There are specific requirements for cache keys and paths for Go, Node.js, and Ma
                       - /root/.cache/go-build
 ```
 
-```mdx-code-block
+
 </TabItem>
 
 <TabItem value="Node.js">
-```
+
 
 [npm](https://www.npmjs.com/) pipelines must reference `package-lock.json` for `spec.key` in **Save Cache to GCS** and **Restore Cache From GCS** steps, for example:
 
@@ -249,11 +249,11 @@ There are specific requirements for cache keys and paths for Go, Node.js, and Ma
                       - node_modules
 ```
 
-```mdx-code-block
+
 </TabItem>
 
 <TabItem value="Maven">
-```
+
 
 [Maven](https://maven.apache.org/) pipelines must reference `pom.xml` for `spec.key` in **Save Cache to GCS** and **Restore Cache From GCS** steps, for example:
 
@@ -270,10 +270,10 @@ There are specific requirements for cache keys and paths for Go, Node.js, and Ma
                       - /root/.m2
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Cache step placement in single or multiple stages
 
@@ -427,10 +427,10 @@ This is necessary for any [looping strategy](/docs/platform/pipelines/looping-st
 
 To do skip the **Save Cache** step in all except one parallel stage, add the following [conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings) to the **Save Cache** step(s):
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual editor">
-```
+
 
 1. Edit the **Save Cache** step, and select the **Advanced** tab.
 2. Expand the **Conditional Execution** section.
@@ -438,10 +438,10 @@ To do skip the **Save Cache** step in all except one parallel stage, add the fol
 4. Select **And execute this step only if the following JEXL condition evaluates to True**.
 5. For the JEXL condition, enter `<+strategy.iteration> == 0`.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML editor" default>
-```
+
 
 Add the following `when` definition to the end of your **Save Cache** step.
 
@@ -458,10 +458,10 @@ This `when` definition causes the step to run only if *both* of the following co
 * `stageStatus: Success`: Execute this step if the stage execution is successful thus far.
 * `condition: <+strategy.iteration> == 0`: Execution this step if the JEXL expression evaluates to true.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 The JEXL expression `<+strategy.iteration> == 0` references the looping strategy's iteration index value assigned to each stage. The iteration index value is a zero-indexed value appended to a step or stage's identifier when it runs in a [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md). Although the stages run concurrently, each concurrent instance has a different index value, starting from `0`. By limiting the **Save Cache** step to run on the `0` stage, it only runs in one of the concurrent instances.
 

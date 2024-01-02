@@ -31,15 +31,15 @@ In the following YAML example, a Harness **Bitrise** step runs the [Android Buil
 
 ## Bitrise step settings and specifications
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="YAML" label="YAML editor" default>
-```
+
 
 Add a `Bitrise` step to your pipeline, for example:
 
@@ -69,17 +69,17 @@ You can use [expressions](/docs/platform/variables-and-expressions/runtime-input
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="visual" label="Visual editor">
-```
+
 
 In the Visual editor, add the **Bitrise plugin** step to your pipeline's **Build** stage, and then populate the settings. **Name** and **Uses** are required. Refer to each Bitrise Integration's documentation for information about **Settings** and **Environment Variables**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Name
 

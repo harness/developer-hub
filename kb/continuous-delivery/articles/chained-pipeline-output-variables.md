@@ -19,7 +19,7 @@ At the parent pipeline level in the output section, the User can provide the exp
  
 In the below-shared pipeline yaml the first stage is the pipeline stage, In the output section We have defined the expression of the child pipeline which we want to use in the parent pipeline. 
  
-The same variable defined in the output section can be used by the further stage with the expression - <+pipeline.[pipeline_stage_identifier].[output_variable_defined_under_output_section]>.
+The same variable defined in the output section can be used by the further stage with the expression - \<+pipeline.[pipeline_stage_identifier].[output_variable_defined_under_output_section]>.
 
 ```
 pipeline:

@@ -16,30 +16,30 @@ Once your account is set up, you can begin integrating your Terragrunt files. Se
 
 ### Before You Begin
 
-* [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md)
-* Get an overview of how Harness integrates Terragrunt: [Terragrunt Provisioning with Harness](../concepts-cd/deployment-types/terragrunt-provisioning-with-harness.md).
-* [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md)
-* [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md)
-* [Add Source Repo Providers](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md)
+- [Harness Key Concepts](../../starthere-firstgen/harness-key-concepts.md)
+- Get an overview of how Harness integrates Terragrunt: [Terragrunt Provisioning with Harness](../concepts-cd/deployment-types/terragrunt-provisioning-with-harness.md).
+- [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md)
+- [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md)
+- [Add Source Repo Providers](../../firstgen-platform/account/manage-connectors/add-source-repo-providers.md)
 
 ### Visual Summary
 
 Here's a 6 minute video walkthrough of Harness-Terragrunt integration that shows how each component is used:
 
-
-<docvideo src="https://www.youtube.com/embed/HYSi2LAaYdc?feature=oembed" />
+<DocVideo src="https://www.youtube.com/embed/HYSi2LAaYdc?feature=oembed" />
 
 ### Step 1: Set Up Harness Delegates
 
 A Harness Delegate performs the Terragrunt provisioning in your Terragrunt files. When installing the Delegate for Terragrunt provisioning, consider the following:
 
-* The Delegate should be installed where it can connect to the target infrastructure. Ideally, this is the same subnet.
-* The Delegate should have Terragrunt and Terraform installed on its host. For details on supported versions, see [Terragrunt Provisioning with Harness](../concepts-cd/deployment-types/terragrunt-provisioning-with-harness.md).
-* If you are provisioning the subnet dynamically, then you can put the Delegate in the same VPC and ensure that it can connect to the provisioned subnet using security groups.
-* The Delegate must also be able to connect to your file repo. The Delegate will pull the files and related scripts at deployment runtime.
-* While all Harness Delegates can use Terragrunt, you might want to select a Delegate type (Shell Script, Kubernetes, ECS, etc) similar to the type of infrastructure you are provisioning.
-	+ If you are provisioning AWS AMIs and ASGs, you'll likely use Shell Script Delegates on EC2 instances or ECS Delegates.
-	+ If you are provisioning Kubernetes clusters, you will likely use Kubernetes Delegates.
+- The Delegate should be installed where it can connect to the target infrastructure. Ideally, this is the same subnet.
+- The Delegate should have Terragrunt and Terraform installed on its host. For details on supported versions, see [Terragrunt Provisioning with Harness](../concepts-cd/deployment-types/terragrunt-provisioning-with-harness.md).
+- If you are provisioning the subnet dynamically, then you can put the Delegate in the same VPC and ensure that it can connect to the provisioned subnet using security groups.
+- The Delegate must also be able to connect to your file repo. The Delegate will pull the files and related scripts at deployment runtime.
+- While all Harness Delegates can use Terragrunt, you might want to select a Delegate type (Shell Script, Kubernetes, ECS, etc) similar to the type of infrastructure you are provisioning.
+  - If you are provisioning AWS AMIs and ASGs, you'll likely use Shell Script Delegates on EC2 instances or ECS Delegates.
+  - If you are provisioning Kubernetes clusters, you will likely use Kubernetes Delegates.
+
 1. To install a Delegate, follow the steps in [Delegate Installation and Management](../../firstgen-platform/account/manage-delegates/delegate-installation.md). Once the Delegate is installed, it will be listed on the Harness Delegates page.
 
 #### Delegate Selectors
@@ -68,24 +68,24 @@ You can install Terragrunt and Terraform on the Delegate using Delegate Profiles
 
 For example, here is a Delegate Profile script to install Terragrunt and Terraform:
 
-
 ```
-##terraform update  
-set +x  
-apt-get update  
-apt-get install wget  
-apt-get -y install git  
-wget https://releases.hashicorp.com/terraform/0.13.3/terraform_0.13.3_linux_amd64.zip apt-get install unzip  
-unzip terraform_0.13.3_linux_amd64.zip  
-cp terraform /usr/bin/  
-terraform --version  
-  
-wget https://github.com/gruntwork-io/terragrunt/releases/download/v0.28.0/terragrunt_linux_amd64  
-mv terragrunt_linux_amd64 terragrunt  
-chmod u+x terragrunt  
-mv terragrunt /usr/local/bin/terragrunt  
+##terraform update
+set +x
+apt-get update
+apt-get install wget
+apt-get -y install git
+wget https://releases.hashicorp.com/terraform/0.13.3/terraform_0.13.3_linux_amd64.zip apt-get install unzip
+unzip terraform_0.13.3_linux_amd64.zip
+cp terraform /usr/bin/
+terraform --version
+
+wget https://github.com/gruntwork-io/terragrunt/releases/download/v0.28.0/terragrunt_linux_amd64
+mv terragrunt_linux_amd64 terragrunt
+chmod u+x terragrunt
+mv terragrunt /usr/local/bin/terragrunt
 terragrunt --version
 ```
+
 See [Run Scripts on Delegates using Profiles](../../firstgen-platform/account/manage-delegates/run-scripts-on-the-delegate-using-profiles.md).
 
 The Delegate needs to be able to obtain any providers you specify in modules. For example, `provider "acme"`. On the Delegate, Terraform will download and initialize any providers that are not already initialized.
@@ -112,5 +112,4 @@ Here is an example of a Source Repo Provider and the GitHub repo for Terragrunt.
 
 ### Next Steps
 
-* [Add Terragrunt Configuration Files](add-terragrunt-configuration-files.md)
-
+- [Add Terragrunt Configuration Files](add-terragrunt-configuration-files.md)

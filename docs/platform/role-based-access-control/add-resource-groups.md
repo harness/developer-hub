@@ -42,7 +42,7 @@ The scope at which you create a resource group determines which **Resource Scope
 
 <!-- ![](./static/rbac-in-harness-03.png) -->
 
-<docimage path={require('./static/rbac-in-harness-03.png')} />
+<DocImage path={require('./static/rbac-in-harness-03.png')} />
 
 ### Resource scope options
 

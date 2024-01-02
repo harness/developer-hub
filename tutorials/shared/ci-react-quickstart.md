@@ -26,9 +26,9 @@ First, we'll understand how we can build our application locally and push the Do
 1. Build and test the sample react application.
 2. Build the Docker image and publish it on Docker Hub.
 
-```mdx-code-block
+
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
+
 
 <CISignupTip />
 
@@ -76,28 +76,28 @@ You can validate that this has been placed into the Docker Registry.
 
 ## Create your pipeline
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 1. Fork the repository https://github.com/harness-community/react-pipeline-sample into your GitHub account.
 2. Follow the **Get Started** wizard in Harness CI.
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="newaccount" label="New account" default>
-```
+
 3. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started) for a new Harness account. Select the **Continuous Integration** module after your initial sign-in. This brings you to the **Get Started** wizard.
-```mdx-code-block
+
 </TabItem>
 <TabItem value="existingaccount" label="Existing account">
-```
+
 3. [Log in](https://app.harness.io/auth/#/signin) to your Harness account. You can either create a new project or select an existing project, and then select the **Continuous Integration** module. In the **Project** pane, expand the **Project Setup** menu, and then select **Get Started**.
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 4. When you are prompted to select a repository, search for **react-pipeline-sample**, select the repository that you forked in the previous step, and then select **Configure Pipeline**.
 5. Select **Starter Pipeline**, and then select **Create Pipeline**.
@@ -108,12 +108,13 @@ You need a [Docker Hub](https://hub.docker.com/) connector. This connector is us
 
 If you have not created a Docker Hub connector yet, follow these steps.
 
-<details><summary>Create connector</summary>
+<details>
+<summary>Create connector</summary>
 <p>
 
-```mdx-code-block
+
 import DockerHubConnector from '/tutorials/shared/dockerhub-connector-includes.md';
-```
+
 
 <DockerHubConnector />
 

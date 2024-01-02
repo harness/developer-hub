@@ -12,29 +12,29 @@ This topic provides an overview of Authentication in Harness. It describes vario
 
 ### Before you begin
 
-* Make sure you have permissions to **Create/Edit, Delete** Authentication Settings.
+- Make sure you have permissions to **Create/Edit, Delete** Authentication Settings.
 
 ### Review: Authentication Settings
 
 Harness Access control includes:
 
-* Authentication: Checks who the user is.
-* Authorization: Checks what the user can do.
-* Auditing: Logs what the user does.
+- Authentication: Checks who the user is.
+- Authorization: Checks what the user can do.
+- Auditing: Logs what the user does.
 
-This topic focuses on *authentication*. For information about *authorization*, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
+This topic focuses on _authentication_. For information about _authorization_, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 Users in Administrator groups can use Authentication Settings to restrict access to an organization's Harness account. The options you choose will apply to all your account's users. These options include:
 
 - [Before you begin](#before-you-begin)
 - [Review: Authentication Settings](#review-authentication-settings)
 - [Configure Authentication](#configure-authentication)
-	- [Enable Public OAuth Providers](#enable-public-oauth-providers)
-	- [Enable Security Assertion Markup Language (SAML) Providers](#enable-security-assertion-markup-language-saml-providers)
+  - [Enable Public OAuth Providers](#enable-public-oauth-providers)
+  - [Enable Security Assertion Markup Language (SAML) Providers](#enable-security-assertion-markup-language-saml-providers)
 - [Enforce Password Policies](#enforce-password-policies)
-	- [Enforce Password Strength](#enforce-password-strength)
-	- [Enforce Password Expiration](#enforce-password-expiration)
-	- [Enforce Lockout After Failed Logins](#enforce-lockout-after-failed-logins)
+  - [Enforce Password Strength](#enforce-password-strength)
+  - [Enforce Password Expiration](#enforce-password-expiration)
+  - [Enforce Lockout After Failed Logins](#enforce-lockout-after-failed-logins)
 - [Enforce Two Factor Authentication](#enforce-two-factor-authentication)
 - [Set Up Vanity URL](#set-up-vanity-url)
 - [Restrict Email Domains](#restrict-email-domains)
@@ -51,12 +51,13 @@ To configure authentication, do the following:
    ![](./static/authentication-overview-41.png)
 
 2. Select one of the below default Authentication methods:
-	+ Login via a Harness Account or Public OAuth Providers
-	+ SAML Provider
-	+ LDAP Provider
+
+   - Login via a Harness Account or Public OAuth Providers
+   - SAML Provider
+   - LDAP Provider
 
 3. Configure your settings for the selected method.
-	
+
 #### Enable Public OAuth Providers
 
 In the **Use Public OAuth Providers** section, you can enable Harness logins via a range of single sign-on mechanisms. Enable this slider to expose sliders for enabling individual OAuth partners.  
@@ -76,24 +77,26 @@ You'll see specific controls to govern the following password requirements:
 - Enforce password strength
 - Periodically expire passwords
 - Enforce Two Factor Authentication
-	
+
 #### Enforce Password Strength
 
 Select **Enforce password strength** to open the dialog shown below.![](./static/authentication-overview-43.png)
-* Here you can specify and enforce any or all of the below options:
-	+ Minimum password length.
-	+ Include at least one uppercase letter.
-	+ Include at least one lowercase letter.
-	+ Include at least one digit.
-	+ Include at least one special character.
 
-If you enforce **Have at least one special character**, each password must include one (or more) of the following characters: `~!@#$%^&*_-+=`|\(){}[]:;"'&lt;this-tag&gt;,.?/`
+- Here you can specify and enforce any or all of the below options:
+  - Minimum password length.
+  - Include at least one uppercase letter.
+  - Include at least one lowercase letter.
+  - Include at least one digit.
+  - Include at least one special character.
+
+If you enforce **Have at least one special character**, each password must include one (or more) of the following characters: `~!@#$%^&*_-+=`|\()\{}[]:;"'&lt;this-tag&gt;,.?/`
 
 #### Enforce Password Expiration
 
 Select **Periodically expire passwords** to set an interval at which users must refresh their Harness passwords. In the same dialog, you can also set an advance notification interval.
 
 ![](./static/authentication-overview-44.png)
+
 #### Enforce Lockout After Failed Logins
 
 Select **Enforce lockout policy** to open the dialog shown below. It offers independent controls over the lockout trigger (how many failed logins), lockout time (in days), and notifications to locked-out users and to Harness user groups.
@@ -102,6 +105,7 @@ Select **Enforce lockout policy** to open the dialog shown below. It offers inde
 You can see a summary on the main Authentication page:
 
 ![](./static/authentication-overview-46.png)
+
 ### Enforce Two Factor Authentication
 
 Select **Enforce Two Factor Authentication** to enforce 2FA for all users in Harness. This option will govern all logins — whether through SSO providers or Harness username/password combinations. For more information on Two-Factor Authentication, go to [Two-factor authentication](../authentication/two-factor-authentication.md).
@@ -114,7 +118,7 @@ You can access `app.harness.io` using your own unique subdomain URL.
 
 The subdomain URL will be in the following format, with `{company}` being the name of your account:
 
- `https://{company}.harness.io`
+`https://\{company}.harness.io`
 
 Contact [Harness Support](mailto:support@harness.io) to set up your Account's subdomain URL. The subdomain URL cannot be changed later.Harness automatically detects your Account ID from the subdomain URL and redirects you to the Account's login mechanism.
 
@@ -136,7 +140,7 @@ Your resulting allowlist will impose a further filter on logins to Harness via b
 
 Harness logs a user out of their account after a session timeout if there has been no activity.
 
-To configure your account's session inactivity timeout, do the following: 
+To configure your account's session inactivity timeout, do the following:
 
 1. In your Harness account, select **Account Settings**.
 

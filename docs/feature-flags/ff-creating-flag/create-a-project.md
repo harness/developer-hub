@@ -8,11 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import create_project from './static/1-create-a-project-00.png'
 import about_project from './static/1-create-a-project-01.png'
 import invite_collabs from './static/1-create-a-project-02.png'
-```
+
 This topic contains instructions for completing the prerequisites, if you haven't done so already, for creating Feature Flags:
 
 * Create a project
@@ -31,17 +31,17 @@ Before you create a Feature Flag, you must have [created an Organization](/docs/
 
 1. In **Harness**, click **Feature Flags** and click **Create Project**.
 
-	```mdx-code-block
+	
 	<img src={create_project} alt="A screenshot of the Harness Platform that highlights the Create Project button in the Feature Flag module." height="500" width="700" />
-	```
+	
 
 1. In **About the Project**, in **Name**, enter the name for your project and select a color for it.
 2. In the **Organization** drop-down menu, select the Organization for your project. If you need to create a new Organization, go to [Create a Harness Organization](/docs/platform/organizations-and-projects/create-an-organization#create-a-harness-org) and [Organizations and Projects](/docs/platform/organizations-and-projects/projects-and-organizations).
 3. Click **Save and Continue**.
 
-	```mdx-code-block
+	
 	<img src={about_project} alt="A screenshot of the About the Project form." height="500" width="700" />
-	```
+	
 
 1. (Optional) In **Invite Collaborators**, in **Invite People to Collaborate**, add team members to the project.
 2. (Optional) Assign a role to the collaborators and click **Add**. The roles you can select are:
@@ -55,9 +55,9 @@ Before you create a Feature Flag, you must have [created an Organization](/docs/
 
 3. Click **Save and Continue**. Your project is created.
 
-	```mdx-code-block
+	
 	<img src={invite_collabs} alt="A screenshot of the Invite Collaborators form when creating a project." height="500" width="700" />
-	```
+	
 
 4. In your project, click **Feature Flags**.
 

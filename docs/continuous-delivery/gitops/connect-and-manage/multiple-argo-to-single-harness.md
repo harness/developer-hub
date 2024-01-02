@@ -213,4 +213,4 @@ When you have completed [setting up the cluster](/docs/continuous-delivery/gitop
 
 * Harness honors Argo CD project permissions. If the project selected for the Harness application does not have permissions for the repository or cluster, then Harness returns a permissions-related error. You must go to Argo CD and adjust the project's scoped repositories and destinations.
 * A non-BYOA setup does not support mapping multiple Argo CD projects to a single Harness project.
-
+* **Upgrading your Argo CD Version**: If you upgrade your Argo CD version to any version that is >= v2.8.0 with a BYO Argo GitOps agent installed, you will have to restart the agent pods in order for the agent to pickup the required configuration change. You canrestart the deployment or the pods individually.

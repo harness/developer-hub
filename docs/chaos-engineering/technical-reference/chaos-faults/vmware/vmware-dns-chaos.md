@@ -60,7 +60,7 @@ stringData:
       <tr>
         <td> PORT </td>
         <td> DNS Port</td>
-        <td> Defaults to 54. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-DNS-chaos#run-dns-chaos-with-port"> DNS chaos with port.</a> </td>
+        <td> Defaults to 54. For more information, go to <a href="#run-dns-chaos-with-port"> DNS chaos with port.</a> </td>
       </tr>
     </table>
     <h3>Optional fields</h3>
@@ -73,37 +73,37 @@ stringData:
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+        <td> Defaults to 30s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+        <td> Defaults to 30s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).</td>
-        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+        <td> For example, 30s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
       </tr>
       <tr>
         <td> TARGET_HOSTNAMES </td>
         <td> List of the target host names. If it is not provided, all host names (or domains) are targeted. </td>
-        <td> For example, '["litmuschaos","chaosnative.com"]'. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-DNS-chaos#run-dns-chaos-with-target-host-names"> target host names. </a></td>
+        <td> For example, '["litmuschaos","chaosnative.com"]'. For more information, go to <a href="#run-dns-chaos-with-target-host-names"> target host names. </a></td>
       </tr>
       <tr>
         <td> MATCH_SCHEME </td>
         <td> Determines whether the DNS query should exactly match the targets or can be a substring. </td>
-        <td> Defaults to exact. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-DNS-chaos#run-dns-chaos-with-match-scheme"> DNS chaos with match scheme. </a></td>
+        <td> Defaults to exact. For more information, go to <a href="#run-dns-chaos-with-match-scheme"> DNS chaos with match scheme. </a></td>
       </tr>
       <tr>
         <td> UPSTREAM_SERVER </td>
         <td> Custom upstream server to which the intercepted DNS requests will be forwarded. </td>
-        <td> Defaults to the server mentioned in <code>resolv.conf</code> file. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-DNS-chaos#run-dns-chaos-with-upstream-server"> DNS chaos with upstream server. </a></td>
+        <td> Defaults to the server mentioned in <code>resolv.conf</code> file. For more information, go to <a href="#run-dns-chaos-with-upstream-server"> DNS chaos with upstream server. </a></td>
       </tr>
     </table>
     <h3>Secret fields</h3>

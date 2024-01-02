@@ -48,17 +48,17 @@ stringData:
       <tr>
         <td> HOST_NAME </td>
         <td> Name of the target host </td>
-        <td> For example, <code>host-1</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-host-reboot#host-reboot"> host name.</a></td>
+        <td> For example, <code>host-1</code>. For more information, go to <a href="#host-reboot"> host name.</a></td>
       </tr>
       <tr>
         <td> HOST_DATACENTER </td>
         <td> Name of the data center to which the host belongs. </td>
-        <td> For example, <code>datacenter-1</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-host-reboot#host-reboot"> host datacenter. </a></td>
+        <td> For example, <code>datacenter-1</code>. For more information, go to <a href="#host-reboot"> host datacenter. </a></td>
       </tr>
       <tr>
         <td> HIGH_AVAILABILITY_CLUSTER </td>
         <td> Specify whether the host is a part of the high availability cluster. </td>
-        <td> Defaults to disable. Supports enable as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-host-reboot#ha-cluster"> high availablity cluster. </a></td>
+        <td> Defaults to disable. Supports enable as well. For more information, go to <a href="#ha-cluster"> high availablity cluster. </a></td>
       </tr>
     </table>
     <h3>Optional fields</h3>
@@ -71,7 +71,7 @@ stringData:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).</td>
-        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+        <td> For example, 30s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
       </tr>
     </table>
 

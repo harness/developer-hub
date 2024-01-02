@@ -29,7 +29,7 @@ Go to **Account Settings** > **Subscriptions** or enter the following URL using 
 https://app.harness.io/ng/account/ACCOUNT_ID/settings/subscriptions
 ```
 
-<docimage path={require('./static/7998c6375586533d4f1c0192d27bff9d1c82e2311a007a4ad2bf7f7a37dd7da9.png')} width="60%" height="60%" title="Click to view full size image" />  
+<DocImage path={require('./static/7998c6375586533d4f1c0192d27bff9d1c82e2311a007a4ad2bf7f7a37dd7da9.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 
 ## What are Service Instances? 
@@ -89,7 +89,7 @@ HorizontalPodAutoscalers will also impact the instance count. If the HorizontalP
 
 You can see the instance count in the Service Dashboard for your service.
 
-<docimage path={require('./static/ad3c4ad2ace7b18449351ff7c933f05e35adafbbbd1a48a2b56f95bdade420f5.png')} width="60%" height="60%" title="Click to view full size image" />  
+<DocImage path={require('./static/ad3c4ad2ace7b18449351ff7c933f05e35adafbbbd1a48a2b56f95bdade420f5.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 From the Delegate installed on the cluster or that has access to a Kubernetes cluster, We run the instance sync job every 10 minutes.
 
@@ -115,7 +115,7 @@ AWS Auto Scaling will also impact the instance count because if it's attached to
 
 You can see the instance count in the Service Dashboard for your service.
 
-<docimage path={require('./static/97ba19d1c0a5b0cc6c63675c94e7d38162a0f83ab43209643d0d87fe87c7157b.png')} width="60%" height="60%" title="Click to view full size image" />  
+<DocImage path={require('./static/97ba19d1c0a5b0cc6c63675c94e7d38162a0f83ab43209643d0d87fe87c7157b.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 ## Tanzu Application Services (formerly Pivotal Cloud Foundry)
 

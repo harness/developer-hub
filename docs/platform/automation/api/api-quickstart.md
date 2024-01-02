@@ -63,7 +63,7 @@ You need to use API keys to authenticate requests. Create an API key in your Har
 
    <!-- ![](./static/api-quickstart-04.png) -->
 
-   <docimage path={require('./static/api-quickstart-04.png')} />
+   <DocImage path={require('./static/api-quickstart-04.png')} />
 
 ## Get your account ID
 
@@ -233,7 +233,7 @@ curl -i -X POST \
                             spec:
                                 connectorRef: <+input>
                                 namespace: <+input>
-                                releaseName: release-<+INFRA_KEY>
+                                releaseName: release-<+INFRA_KEY_SHORT_ID>
                         allowSimultaneousDeployments: false
                     execution:
                         steps:

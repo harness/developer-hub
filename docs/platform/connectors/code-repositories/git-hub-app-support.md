@@ -16,21 +16,21 @@ The following video uses Harness Continuous Delivery to demonstrate the benefits
 
 <!-- Video:
 https://www.loom.com/share/99767c8527274a2f801045bf73223e71-->
-<docvideo src="https://www.loom.com/share/99767c8527274a2f801045bf73223e71" />
+<DocVideo src="https://www.loom.com/share/99767c8527274a2f801045bf73223e71" />
 
 This topic assumes you have an understanding of:
 
-* [Connecting to code repos with Harness](./connect-to-code-repo.md).
-* [Creating GitHub Apps](https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps/about-creating-github-apps).
-* [Installing GitHub Apps](https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app).
+- [Connecting to code repos with Harness](./connect-to-code-repo.md).
+- [Creating GitHub Apps](https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps/about-creating-github-apps).
+- [Installing GitHub Apps](https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app).
 
 ## Permissions requirements
 
 You must meet one or more of the following criteria:
 
-* You can install GitHub Apps on your personal account or under an organization where you have administrative access.
-* You have admin permissions on a GitHub repo under a GitHub organization, and you can install GitHub Apps in that repo.
-* You will install the GitHub App in a repo that requires an organization's permission, and the organization owner has approved the application, and can provide approvals as needed to proceed with app installation.
+- You can install GitHub Apps on your personal account or under an organization where you have administrative access.
+- You have admin permissions on a GitHub repo under a GitHub organization, and you can install GitHub Apps in that repo.
+- You will install the GitHub App in a repo that requires an organization's permission, and the organization owner has approved the application, and can provide approvals as needed to proceed with app installation.
 
 ## Create the GitHub App
 
@@ -38,21 +38,21 @@ You can create and register GitHub Apps in your personal GitHub account or in an
 
 Follow the instructions in the GitHub documentation on [Creating a GitHub App](https://docs.github.com/en/developers/apps/creating-a-github-app). Populate the settings as follows:
 
-* **GitHub App Name:** Enter a name.
-* **Homepage URL:** Enter `https://harness.io/`.
-* **Webhook:** Deselect **Active**. The app is used for authentication and doesn't need to receive webhook events.
-* **Permissions:** Configure the following **Repository Permissions**.
-	+ **Administration:** Select **Read & write**.
-	+ **Commit statuses**: Select **Read & write**.
-	+ **Contents:** Select **Read & write**.
-	+ **Metadata:** Select **Read-only**.
-	+ **Pull requests**: Select **Read & write**. This is required for the **Issue Comment** [event trigger](/docs/platform/triggers/triggers-reference/#event-and-actions) for Github.
-	+ **Webhooks:** Select **Read & write**.
-* **Where can this GitHub App be installed:** Select **Any account**. The app must be public to use it with a GitHub connector.
+- **GitHub App Name:** Enter a name.
+- **Homepage URL:** Enter `https://harness.io/`.
+- **Webhook:** Deselect **Active**. The app is used for authentication and doesn't need to receive webhook events.
+- **Permissions:** Configure the following **Repository Permissions**.
+  - **Administration:** Select **Read & write**.
+  - **Commit statuses**: Select **Read & write**.
+  - **Contents:** Select **Read & write**.
+  - **Metadata:** Select **Read-only**.
+  - **Pull requests**: Select **Read & write**. This is required for the **Issue Comment** [event trigger](/docs/platform/triggers/triggers-reference/#event-and-actions) for Github.
+  - **Webhooks:** Select **Read & write**.
+- **Where can this GitHub App be installed:** Select **Any account**. The app must be public to use it with a GitHub connector.
 
 :::info Private apps
 
-A private app can only be installed on the account that owns the app. Your app is private if you *didn't* select **Any account** for **Where can this GitHub App be installed**. You must edit your app and make it public. For instructions, go to the GitHub documentation on [Changing the visibility of a GitHub App](https://docs.github.com/en/apps/maintaining-github-apps/modifying-a-github-app-registration#changing-the-visibility-of-a-github-app).
+A private app can only be installed on the account that owns the app. Your app is private if you _didn't_ select **Any account** for **Where can this GitHub App be installed**. You must edit your app and make it public. For instructions, go to the GitHub documentation on [Changing the visibility of a GitHub App](https://docs.github.com/en/apps/maintaining-github-apps/modifying-a-github-app-registration#changing-the-visibility-of-a-github-app).
 
 :::
 
@@ -60,12 +60,12 @@ A private app can only be installed on the account that owns the app. Your app i
 
 Follow the instructions in the GitHub documentation on [Installing your own GitHub App](https://docs.github.com/en/apps/using-github-apps/installing-your-own-github-app), and note the following:
 
-* For **Repository access**, select **Only select repositories**, and then select the repos you want to connect with through your Harness GitHub connector.
-* Configure these **Permissions**:
-   * **Metadata: Read**
-   * **Code: Read & write**
-   * **Commit statuses: Read & write**
-   * **Pull Requests: Read & write**
+- For **Repository access**, select **Only select repositories**, and then select the repos you want to connect with through your Harness GitHub connector.
+- Configure these **Permissions**:
+  - **Metadata: Read**
+  - **Code: Read & write**
+  - **Commit statuses: Read & write**
+  - **Pull Requests: Read & write**
 
 ## Get the Installation ID and App ID
 
@@ -102,15 +102,11 @@ You need a private key for your GitHub app to configure your Harness GitHub conn
 
 You can use your GitHub App as either the [primary authentication method](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#authentication) or the [API access authentication method](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#enable-api-access) for your GitHub connector.
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
 <Tabs>
   <TabItem value="primary" label="Primary authentication">
-```
 
 1. In your Harness project, select **Connectors** under **Project Setup**.
 2. Create a new connector or edit an existing GitHub connector.
@@ -121,10 +117,8 @@ import TabItem from '@theme/TabItem';
 7. Select **Continue**.
 8. If the connection test succeeds, select **Finish** to save the connector.
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
   <TabItem value="api" label="API access authentication" default>
-```
 
 1. In your Harness project, select **Connectors** under **Project Setup**.
 2. Create a new connector or edit an existing GitHub connector.
@@ -136,10 +130,8 @@ import TabItem from '@theme/TabItem';
 8. Select **Continue**.
 9. If the connection test succeeds, select **Finish** to save the connector.
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
 </Tabs>
-```
 
 ## Option: Set up a PR trigger
 

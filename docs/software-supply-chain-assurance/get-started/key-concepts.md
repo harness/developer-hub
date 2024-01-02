@@ -23,9 +23,9 @@ For a detailed explanation of software supply chain security concepts and terms,
 
 ## SBOM generation and management
 
-```mdx-code-block
+
 import SbomAbout from '/docs/software-supply-chain-assurance/shared/sbom-about.md';
-```
+
 
 <SbomAbout />
 

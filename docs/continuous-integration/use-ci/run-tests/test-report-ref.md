@@ -6,10 +6,10 @@ redirect_from:
   - /docs/continuous-integration/use-ci/set-up-test-intelligence/test-report-ref
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 Results on the [Tests tab](./viewing-tests.md) are parsed from test reports specified in the **Report Paths** setting in **Run** and **Run Tests** steps. Test reports must be in [JUnit XML format](https://llg.cubic.org/docs/junit/) to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only.
 
@@ -94,10 +94,10 @@ This example runs Gradle with [Test Intelligence](./test-intelligence/set-up-tes
 
 For Python, use pytest or unittest. You can also [use pytest to run unittest](https://docs.pytest.org/en/latest/how-to/unittest.html).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="run" label="Run step" default>
-```
+
 
 This example runs pytest in a [Run step](../run-ci-scripts/run-step-settings.md).
 
@@ -125,10 +125,10 @@ If you use [test splitting](./speed-up-ci-test-pipelines-using-parallelism) with
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="runtests" label="Run Tests step (Test Intelligence)">
-```
+
 
 This example runs pytest with [Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
 
@@ -155,10 +155,10 @@ This example runs pytest with [Test Intelligence](./test-intelligence/set-up-tes
                           - out_report.xml*
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Ruby - Cucumber
 

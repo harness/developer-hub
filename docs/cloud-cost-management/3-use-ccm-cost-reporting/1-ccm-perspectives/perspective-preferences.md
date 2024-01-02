@@ -18,7 +18,7 @@ You can configure perspective preferences in the **Cloud Costs** > **Setup** > *
 | - | Show costs as:<ul><li>Amortised</li><li>Net-amortised</li><li>Unblended</li><li>Blended</li><li>Effective</li></ul>Default value: Unblended | - |
 
 
-  <docimage path={require('./static/default-preferences-settings.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/default-preferences-settings.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 :::important Note

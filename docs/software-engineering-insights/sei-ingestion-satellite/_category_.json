@@ -1,0 +1,11 @@
+{
+    "label":"Ingestion Satellite",
+    "position": 35,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Ingestion Satellite"
+    }
+ }

@@ -36,3 +36,22 @@ CF app stop injects app stop chaos for a Cloud Foundry app.
 </accordion>
 
 </FaultDetailsCard>
+
+<FaultDetailsCard category="cloud-foundry">
+
+### CF app route unmap
+
+CF app route unmap temporarily unmaps a Cloud Foundry app route and later maps it back to the app.
+
+- Checks resilience against abrupt un-mapping of an app route.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Checks resilience against abrupt un-mapping of an app route.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+</accordion>
+
+</FaultDetailsCard>

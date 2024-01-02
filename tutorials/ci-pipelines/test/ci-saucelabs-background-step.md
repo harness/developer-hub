@@ -8,7 +8,7 @@ slug: /ci-pipelines/test/saucelabs-proxy
 
 # Run Sauce Connect Proxy as a Background Step
 
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
@@ -21,9 +21,7 @@ slug: /ci-pipelines/test/saucelabs-proxy
 
 [Sauce Labs](https://saucelabs.com/) is a web and mobile application automated testing platform. Sauce Connect Proxy can run as a Background step in your Harness CI pipeline, and act as a proxy server between a Sauce Labs infrastructure and your CI pipeline.
 
-```mdx-code-block
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
 
 <CISignupTip />
 
@@ -35,12 +33,11 @@ You need a [Docker Hub](https://hub.docker.com/) connector. In this example, the
 
 If you have not created a Docker Hub connector yet, follow these steps.
 
-<details><summary>Create connector</summary>
+<details>
+<summary>Create connector</summary>
 <p>
 
-```mdx-code-block
 import DockerHubConnector from '/tutorials/shared/dockerhub-connector-includes.md';
-```
 
 <DockerHubConnector />
 
@@ -68,131 +65,127 @@ This connector needs an access token with **Read-only** permissions.
 
 Append the following configuration:
 
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs
-    defaultValue="cloud"
-    values={[
-        {label: 'Cloud', value: 'cloud'},
-        {label: 'Kubernetes', value: 'kubernetes'},
-    ]}>
+defaultValue="cloud"
+values={[
+{label: 'Cloud', value: 'cloud'},
+{label: 'Kubernetes', value: 'kubernetes'},
+]}>
 <TabItem value="cloud">
-```
 
 **Cloud** pipelines run in managed infrastructure provided by Harness.
 
 ```yaml
-  variables:
-    - name: SAUCELABS_USERNAME
-      type: String
-      description: Your Sauce Labs username
-      value: <+input>
-  stages:
-    - stage:
-        name: Sauce Connect
-        identifier: Sauce_Connect
-        description: ""
-        type: CI
-        spec:
-          cloneCodebase: false
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          execution:
-            steps:
-              - step:
-                  type: Background
-                  name: Sauce Connect
-                  identifier: Sauce_Connect
-                  spec:
-                    connectorRef: Docker_Hub
-                    image: saucelabs/sauce-connect
-                    shell: Sh
-                    envVariables:
-                      SAUCE_USERNAME: <+pipeline.variables.SAUCELABS_USERNAME>
-                      SAUCE_ACCESS_KEY: <+secrets.getValue('Sauce_Access_Key')>
-                    portBindings:
-                      "8032": "8032"
-              - step:
-                  type: Run
-                  name: Wait for SC
-                  identifier: Wait_for_SC
-                  spec:
-                    shell: Bash
-                    command: |-
-                      until [ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:8032/readiness)" == "200" ]
-                      do
-                        sleep 2
-                      done
-                      echo "SC ready"
+variables:
+  - name: SAUCELABS_USERNAME
+    type: String
+    description: Your Sauce Labs username
+    value: <+input>
+stages:
+  - stage:
+      name: Sauce Connect
+      identifier: Sauce_Connect
+      description: ""
+      type: CI
+      spec:
+        cloneCodebase: false
+        platform:
+          os: Linux
+          arch: Amd64
+        runtime:
+          type: Cloud
+          spec: {}
+        execution:
+          steps:
+            - step:
+                type: Background
+                name: Sauce Connect
+                identifier: Sauce_Connect
+                spec:
+                  connectorRef: Docker_Hub
+                  image: saucelabs/sauce-connect
+                  shell: Sh
+                  envVariables:
+                    SAUCE_USERNAME: <+pipeline.variables.SAUCELABS_USERNAME>
+                    SAUCE_ACCESS_KEY: <+secrets.getValue('Sauce_Access_Key')>
+                  portBindings:
+                    "8032": "8032"
+            - step:
+                type: Run
+                name: Wait for SC
+                identifier: Wait_for_SC
+                spec:
+                  shell: Bash
+                  command: |-
+                    until [ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:8032/readiness)" == "200" ]
+                    do
+                      sleep 2
+                    done
+                    echo "SC ready"
 ```
 
-```mdx-code-block
 </TabItem>
 
 <TabItem value="kubernetes">
-```
 
 **Kubernetes** pipelines run in a Kubernetes cluster that you manage. Kubernetes pipelines are an enterprise feature.
 
 ```yaml
-  variables:
-    - name: KUBERNETES_NAMESPACE
-      type: String
-      description: Kubernetes namespace where steps will run
-      value: <+input>
-    - name: SAUCELABS_USERNAME
-      type: String
-      description: Your Sauce Labs username
-      value: <+input>
-  stages:
-    - stage:
-        name: Sauce Connect
-        identifier: Sauce_Connect
-        description: ""
-        type: CI
-        spec:
-          cloneCodebase: false
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: Kubernetes_Connector
-              namespace: <+pipeline.variables.KUBERNETES_NAMESPACE>
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
-          execution:
-            steps:
-              - step:
-                  type: Background
-                  name: Sauce Connect
-                  identifier: Sauce_Connect
-                  spec:
-                    connectorRef: Docker_Hub
-                    image: saucelabs/sauce-connect
-                    shell: Sh
-                    envVariables:
-                      SAUCE_USERNAME: <+pipeline.variables.SAUCELABS_USERNAME>
-                      SAUCE_ACCESS_KEY: <+secrets.getValue('Sauce_Access_Key')>
-              - step:
-                  type: Run
-                  name: Wait for SC
-                  identifier: Wait_for_SC
-                  spec:
-                    connectorRef: Docker_Hub
-                    image: curlimages/curl:7.83.1
-                    shell: Sh
-                    command: |-
-                      until [ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:8032/readiness)" == "200" ]
-                      do
-                        sleep 2
-                      done
-                      echo "SC ready"
+variables:
+  - name: KUBERNETES_NAMESPACE
+    type: String
+    description: Kubernetes namespace where steps will run
+    value: <+input>
+  - name: SAUCELABS_USERNAME
+    type: String
+    description: Your Sauce Labs username
+    value: <+input>
+stages:
+  - stage:
+      name: Sauce Connect
+      identifier: Sauce_Connect
+      description: ""
+      type: CI
+      spec:
+        cloneCodebase: false
+        infrastructure:
+          type: KubernetesDirect
+          spec:
+            connectorRef: Kubernetes_Connector
+            namespace: <+pipeline.variables.KUBERNETES_NAMESPACE>
+            automountServiceAccountToken: true
+            nodeSelector: {}
+            os: Linux
+        execution:
+          steps:
+            - step:
+                type: Background
+                name: Sauce Connect
+                identifier: Sauce_Connect
+                spec:
+                  connectorRef: Docker_Hub
+                  image: saucelabs/sauce-connect
+                  shell: Sh
+                  envVariables:
+                    SAUCE_USERNAME: <+pipeline.variables.SAUCELABS_USERNAME>
+                    SAUCE_ACCESS_KEY: <+secrets.getValue('Sauce_Access_Key')>
+            - step:
+                type: Run
+                name: Wait for SC
+                identifier: Wait_for_SC
+                spec:
+                  connectorRef: Docker_Hub
+                  image: curlimages/curl:7.83.1
+                  shell: Sh
+                  command: |-
+                    until [ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:8032/readiness)" == "200" ]
+                    do
+                      sleep 2
+                    done
+                    echo "SC ready"
 ```
 
 :::info
@@ -201,10 +194,8 @@ Replace `Kubernetes_Connector` with your Kubernetes cluster connector ID.
 
 :::
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
 
 :::info
 

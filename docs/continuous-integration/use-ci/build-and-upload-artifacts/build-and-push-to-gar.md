@@ -1,7 +1,7 @@
 ---
 title: Build and Push to GAR
 description: Use a CI pipeline to build and push an image to GAR.
-sidebar_position: 50
+sidebar_position: 23
 ---
 
 This topic explains how to configure the **Build and Push to GAR** step in a Harness CI pipeline. This step is used to build and push to [Google Artifact Registry (GAR)](https://cloud.google.com/artifact-registry).

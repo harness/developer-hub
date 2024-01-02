@@ -11,7 +11,7 @@ This topic walks you through the steps required to set up CCM for AWS in a self-
 
 **Figure: AWS CCM Self-Managed Enterprise Edition architecture diagram**
 
-<docimage path={require('./static/aws-smp-arch.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('./static/aws-smp-arch.png')} width="50%" height="50%" title="Click to view full size image" />
 
 You need to perform the following tasks to set up CCM for AWS: 
 
@@ -26,9 +26,8 @@ You need to perform the following tasks to set up CCM for AWS:
 1. Sign in to your [AWS console](https://console.aws.amazon.com/).
 2. Create a new user. For example, `harness-ccm-service-user`. For more information, go to [Adding a user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html).
 3. Set up programmatic user access keys by using the policy given below.
-   
-<details>
 
+<details>
 <summary> Policy to set up programmatic user access </summary>
 
 ```
@@ -574,7 +573,7 @@ Upload the YAML template to S3 bucket `harness-ccm-service-template-bucket-<acco
 1. Create a folder ‘v1’.
 2. Upload the file.
 
-  <docimage path={require('./static/aws-upload-cf-tempalte.png')} width="50%" height="50%" title="Click to view full size image" />
+  <DocImage path={require('./static/aws-upload-cf-tempalte.png')} width="50%" height="50%" title="Click to view full size image" />
 
 
 :::important note
