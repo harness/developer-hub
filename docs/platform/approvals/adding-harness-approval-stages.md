@@ -184,21 +184,25 @@ You can select one of the following types of expression for user groups:
 
 ### Approval notifications to approvers
 
-Approval notifications are sent to each of the configured **User Groups** in **Approvers** section. User group's notification settings are used while sending notifications. For more information, go to [User Group Notification Preferences](/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences).
+:::info note
+
+Currently, the CD execution metadata feature in notifications is behind the feature flag `CDS_APPROVAL_AND_STAGE_NOTIFICATIONS_WITH_CD_METADATA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Approval notifications are sent to each of the configured **User Groups** in the **Approvers** section. User group's notification settings are used while sending notifications. For more information, go to [Edit notification preferences](/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences).
 
 :::important
-PagerDuty notification channel is not supported currently for approval notifications. This means that even if pagerduty notifiication channel is configured in a user group notification setting, approval notifications will not be sent to that channel.
+THe PagerDuty notification channel is not currently supported for approval notifications. This means that even if the PagerDuty notification channel is configured in a user group notification setting, approval notifications will not be sent to that channel.
 
 These notifications help approvers to make their decision. There are two kinds of approval notifications:
 
-- `Approval Required` notification is sent when approval step starts containing the pipeline name, execution url, user who triggered the pipeline, stage name, approval message, organization and project details, pipeline start time and the time left in approval expiry.
-- `Approved or Rejected` notification is sent when approval step is approved or rejected. The notification contains the pipeline name, execution url, step status, stage name, user who triggered the pipeline, organization and project details, pipeline start time, approval activity details containing approver name, action, and the time of the approval or rejection.  
+- `Approval Required`: Notification is sent when approval step starts containing the pipeline name, execution URL, user who triggered the pipeline, stage name, approval message, organization and project details, pipeline start time and the time left in approval expiry.
+- `Approved or Rejected`: Notification is sent when approval step is approved or rejected. The notification contains the pipeline name, execution URL, step status, stage name, user who triggered the pipeline, organization and project details, pipeline start time, approval activity details containing approver name, action, and the time of the approval or rejection.  
 
-Use **Include stage execution details in approval** option to include stage execution details in approval notifications. A summary of completed, running and upcoming stages is shown. Execution metadata like service, environment and infrastructure details are also present for CD stages in approval notifications.
+Use the **Include stage execution details in approval** option to include stage execution details in approval notifications. A summary of completed, running and upcoming stages is shown. Execution metadata like service, environment and infrastructure details are also present for CD stages in approval notifications.
 
-:::note
-
-Currently, the CD execution metadata feature in notifications is behind the feature flag `CDS_APPROVAL_AND_STAGE_NOTIFICATIONS_WITH_CD_METADATA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 #### Limitations of CD execution metadata feature in notifications
 - In some edge cases, value for some fields might not be resolved for future stages. In these cases notification will contain unresolved expressions for such fields. For example, service configured as expression in a CD stage ahead of the current stage, will have unresolved expression in notification. 
@@ -207,7 +211,6 @@ Currently, the CD execution metadata feature in notifications is behind the feat
 - Environment and infrastructure filters' details are not supported currently.
 - GitOps CD stage metadata is not supported.
 - Custom stage metadata is not supported.
-
 
 ### Advanced settings
 
