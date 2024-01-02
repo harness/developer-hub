@@ -87,7 +87,7 @@ Harness includes Connectors for all the major artifact repositories. In this tut
 7. Click **Continue** to connect with Artifactory by using a Harness Delegate.
 8. In **Delegates Setup**, retain the default selection: **Use any available delegate**.
 9. Click **Save and Continue**.
-10. In **Connection Test**, Harness validates the Artifactory Repository authentication and permissions for the repo. Click **Continue**. If the test fails, that means the Delegate can't connect to **https://harness.jfrog.io/artifactory/**. Make sure that the EC2 instance hosting the Delegate can make outbound connections to **https://harness.jfrog.io/artifactory**/.
+10. In **Connection Test**, Harness validates the Artifactory Repository authentication and permissions for the repo. Click **Continue**. If the test fails, that means the Delegate can't connect to `https://harness.jfrog.io/artifactory/`. Make sure that the EC2 instance hosting the Delegate can make outbound connections to `https://harness.jfrog.io/artifactory/`.
 
 ### Set up Artifact Location and Details
 
