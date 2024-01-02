@@ -205,7 +205,7 @@ Use the **Include stage execution details in approval** option to include stage 
 :::
 
 #### Limitations of CD execution metadata feature in notifications
-- In some edge cases, value for some fields might not be resolved for future stages. In these cases notification will contain unresolved expressions for such fields. For example, service configured as expression in a CD stage ahead of the current stage, will have unresolved expression in notification. 
+- In certain situations, values for certain fields might not be resolved for future stages. In such cases, the notification will contain unresolved expressions for those fields. For instance, if a service is configured as an expression in a CD stage that comes before the current stage, then the notification will have an unresolved expression for that service.
 - Notification currently contain identifiers and not names for CD metadata.
 - Artifact details are not supported currently.
 - Environment and infrastructure filters' details are not supported currently.
