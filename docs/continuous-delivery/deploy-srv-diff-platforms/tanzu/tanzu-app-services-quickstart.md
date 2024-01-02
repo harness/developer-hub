@@ -732,22 +732,22 @@ In the PCF BG App Setup step, we have removed the backend validation for existin
 **Configuration Cases**
 
 **Case 1:** If existing versions to keep is > 0
-Deployment remains exactly the same
+Deployment remains the same
 
 **Case 2:** If existing versions to keep is 0
 In the BG App setup delegate task, we will skip the renaming of the old inactive to app__0 and directly do a cf push keeping the new app name as app__inactive. This will deploy the manifest to the same old application. Ensuring no new versions are maintained. 
 
-Check if this removes old routes from app__inactive, no we should detach all old routes first from the inactive app and then run a cf push
+Check if this removes old routes from app__inactive, no we are detaching all old routes first from the inactive app and then run a cf push
 
-The App Resize & Swap Routes Step would remain the same when the existing versions to keep is 0. 
+The **App Resize** & **Swap Routes Step** would remain the same when the existing versions to keep is 0. 
 
-In the Swap Rollback Step, we will ignore the value of the Upsize inactive service from step params
+In the** Swap Rollback Step**, we will ignore the value of the Upsize inactive service from step params
 
-In the Swap Rollback Step(if happens), we wouldn’t delete the new application created as we previously did, as we are not creating a new application Harness is modifying the old application only, and depending upon if the swap routes step was successful or no.
+In the **Swap Rollback Step** (if it executes), we aren’t deleting the new application created as we previously did, as we are not creating a new application Harness is modifying the old application only, and depending upon if the swap routes step was successful or no.
 
-If the Swap routes step was successful: We only need to switch the name and the routes for the ACTIVE and INACTIVE(new application) applications.
+If the **Swap routes step** was successful: We only need to switch the name and the routes for the ACTIVE and INACTIVE(new application) applications.
 
-If Swap routes weren’t successful: We don’t need to change anything
+If the **Swap routes step** wasn't successful: We don’t need to change anything. 
 
 
 ```YAML
