@@ -23,27 +23,20 @@ You can create a service from your account, organization, or project. This topic
 To create a remote service, do the following:
 
 1. In your Harness Account, go to your project.
-2. To create a service from outside of a pipeline, under **Account-level resources**, select **Services**.
-   To learn more about creating services, go to [Create Services](docs/continuous-delivery/x-platform-cd-features/services/create-services.md).
+2. To create a service from outside of a pipeline, under **Account-level resources**, select **Services**. To learn more about creating services, go to [Create Services](docs/continuous-delivery/x-platform-cd-features/services/create-services.md).
 3. Select **+ New Service**. The **Add Service** settings appear.
-![](./static/Gitex_service.png) 
+    ![](./static/Gitex_service.png) 
 4. In **Name**, enter a name for the service.
 5. Select **Remote**.
 6. In **Git Connector**, select or create a Git connector to the repo for your project.​ For steps, go to [Code Repo Connectors](/docs/category/code-repo-connectors).
 7. In **Repository**, select your repository. If your repository isn't listed, enter its name. Create the repository in Git before entering it in **Select Repository**. Harness does not create the repository for you.
 8. In **Git Branch**, select your branch. If your branch isn't listed, enter its name. Create the branch in your repository before entering it in **Git Branch**. Harness does not create the branch for you.
-
 9. Select the branch where you want to save your Service. You generally want to save it to the default branch on the first save. You can then create different branches in the Harness repo if you want to create different versions of your service.
-
     ![](./static/branch_switching.png)
-
 10. Harness Git Experience auto-populates the **YAML Path**. You can change this path and the file name.
 11. Select **Save**.
-
     ![](./static/save_service_config.png) 
-
 12. Click on the YAML path provided (the one highlighted under the rectangular box), it will take you GitHub file where the service is stored.
-
     ![](./static/service_remote_git.png) 
 
 ### Add services in a pipeline
