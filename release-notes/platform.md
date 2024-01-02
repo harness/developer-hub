@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-12-19:T10:00:30
+date: 2024-01-02:T10:00:30
 sidebar_position: 3
 ---
 
@@ -82,14 +82,25 @@ The following deprecated API endpoints will no longer be supported:
 
 ## December 2023
 
-<!--  
-### Version 1.17.x
+### Version 1.17.8
 
 ### Fixed issues
 
-- Previously, user group names could only contain alphanumeric characters, `.`, `_`, and `-`. User groups created via Okta SCIM integration didn't include validations for this restriction. This issue was resolved by removing special character restrictions for user group names.  (PL-42535, ZD-53830, ZD-55294)
+- For user groups provisioned from Okta SCIM to Harness, for the corresponding user groups created in Harness, the user group `identifier` is derived from the display name of the user group in the SCIM provider. Harness replaces `.` (dots) and `-` (dashes) with an `_` (underscore). All other special characters (`#`, `?`, `%`, and so on) and spaces are removed. Leading digits`0` through `9` and `$` are also removed. (PL-42535, ZD-53830, ZD-55294)
 
-   This item requires Harness Delegate version 23.08.820xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   All special characters except `.`, `-`, and non-leading `$` and digits `0` through `9` are removed. 
+
+   **Example 1:** For a user group in SCIM with the name `Harness.Group?Next#Gen-First`, the user group created in Harness will have the `identifier`: `Harness_GroupNextGen_First`.
+
+   **Example 2:** For a user group in SCIM with the name `123#One.$Two.$Three.123`, the user group created in Harness will have the `identifier`: `One_$Two_$Three_123`.
+
+   The existing behavior of `.` and `-` changed to `_` has been retained.
+
+   The name of the corresponding user group created in Harness will retain the special symbols as present in the user group of the SCIM provider. Example: For a user group in SCIM with the name `Harness.Group?Next#Gen-First`, the user group created in Harness will have the same `name`: `Harness.Group?Next#Gen-First`.
+
+   This item requires Harness Delegate version 23.08.82000. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+<!--  
 
 - When Harness user groups were created during SCIM sync, dots were not converted to underscores in Harness for user group IDs. (PL-43576, ZD-55266)
 
