@@ -421,6 +421,22 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
 ## Troubleshooting
 
+### Check runner status
+
+To confirm that the runner is running, send a cURL request like `curl http://localhost:3000/healthz`.
+
+If the running is running, you should get a valid response, such as:
+
+```json
+{
+ "version": "0.1.2",
+ "docker_installed": true,
+ "git_installed": true,
+ "lite_engine_log": "no log file",
+ "ok": true
+}
+```
+
 ### Check the delegate status
 
 The delegate should connect to your instance after you finish the installation workflow above. If the delegate does not connect after a few minutes, run the following commands to check the status:
