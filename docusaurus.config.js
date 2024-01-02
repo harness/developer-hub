@@ -638,7 +638,6 @@ const config = {
     path.join(__dirname, "/plugins/feedback-plugin"),
     path.join(__dirname, "/plugins/focusOnAnchor-plugin"),
   ],
-  // clientModules: [require.resolve("./client-modules/FocusOnAnchor")],
 };
 
 module.exports = config;
