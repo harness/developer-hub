@@ -67,6 +67,10 @@ Next, click **+ ADD PRINCIPAL** from the **Permissions** tab and type in `allUse
 
 To create a Slack app and incoming webhook, you'll need elevated privilege in that Slack workspace. [Create a new Slack workspace](https://slack.com/help/articles/206845317-Create-a-Slack-workspace) for this tutorial and [an incoming webhook](https://api.slack.com/messaging/webhooks) for a specific channel.
 
+Your newly created slack webhook will look like this: `https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX`
+
+*Treat this as sensitive information*.
+
 ### Harness entity setup
 
 1. Create secrets: 
