@@ -62,7 +62,7 @@ Perform the following steps to raise a ticket to apply recommendations:
 
 1. Select **Create a ticket**. In case you haven't set up your ticketing tool settings on the account level, you will see a prompt guiding you to access the **Default Settings** page to configure both the ticketing tool and the associated connector.
 
-    <docimage path={require('./static/setup-ticketing-tool.png')} width="40%" height="40%" title="Click to view full size image" />
+    <DocImage path={require('./static/setup-ticketing-tool.png')} width="40%" height="40%" title="Click to view full size image" />
 
 
 

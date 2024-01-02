@@ -51,7 +51,7 @@ This calculation is for a pipeline with two sequential steps with no [resource l
 
 <!-- ![Resource calculation example 1.](./static/resource-limit-calc1.png) -->
 
-<docimage path={require('./static/resource-limit-calc1.png')} />
+<DocImage path={require('./static/resource-limit-calc1.png')} />
 
 * The two sequential steps have the default resource request and limit values.
 * The add on (execution-related steps on containers in Kubernetes pods) has the default resource request and limit values.
@@ -68,7 +68,7 @@ This calculation is for a pipeline with two steps that run in parallel and have 
 
 <!-- ![Resource calculation example 2.](./static/resource-limit-calc2.png) -->
 
-<docimage path={require('./static/resource-limit-calc2.png')} />
+<DocImage path={require('./static/resource-limit-calc2.png')} />
 
 * The two parallel steps have the default resource request and limit values.
 * The add on (execution-related steps on containers in Kubernetes pods) has the default resource request and limit values.
@@ -90,7 +90,7 @@ This calculation is for a pipeline with three steps that have no [resource limit
 
 <!-- ![Resource calculation example 3.](./static/resource-limit-calc3.png) -->
 
-<docimage path={require('./static/resource-limit-calc3.png')} />
+<DocImage path={require('./static/resource-limit-calc3.png')} />
 
 * All three steps have the default resource request and limit values.
 * The add on (execution-related steps on containers in Kubernetes pods) has the default resource request and limit values.
@@ -117,7 +117,7 @@ This calculation is for a pipeline that has three steps with [resource limit ove
 
 <!-- ![Resource calculation example 4.](./static/resource-limit-calc4.png) -->
 
-<docimage path={require('./static/resource-limit-calc4.png')} />
+<DocImage path={require('./static/resource-limit-calc4.png')} />
 
 * Steps one and two run in parallel. Step one's container resources are set to 1000m CPU and 500Mi memory. Step two's container resources are set to 2000m CPU and 3000Mi memory.
 * Step three runs sequentially after the two parallel steps. Step three's container resources are set to 3500m CPU and 2000Mi memory.
@@ -256,7 +256,7 @@ You can arrange steps in parallel in the Visual editor by dragging and dropping 
 
 <!-- ![Three steps arranged in parallel in the Pipeline Studio's Visual editor.](./static/parallel-debug-steps.png) -->
 
-<docimage path={require('./static/parallel-debug-steps.png')} />
+<DocImage path={require('./static/parallel-debug-steps.png')} />
 
 :::
 

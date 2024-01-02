@@ -146,7 +146,7 @@ You add an artifact from your ACR repo to the Harness service. For example, we'l
 5. In **Details**, select **Specify credentials here**.
 6. Enter the credentials for the Azure App registration you want to use. Here's an example of how App registration settings map to the connector's **Details**:
 
-  <docimage path={require('./static/azure-cd-quickstart-103.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/azure-cd-quickstart-103.png')} width="60%" height="60%" title="Click to view full size image" />
 
    + **Azure ACR and AKS Permissions:** make sure the Service Principal or Managed Identity has the [required permissions](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector):
      
@@ -165,7 +165,7 @@ You add an artifact from your ACR repo to the Harness service. For example, we'l
 
   Here's an example of how ACR settings map to **Artifact Details**:
 
-  <docimage path={require('./static/azure-cd-quickstart-103.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/azure-cd-quickstart-103.png')} width="60%" height="60%" title="Click to view full size image" />
 
 1.  Select **Submit**. The artifact is added to the service.
 
@@ -304,7 +304,7 @@ In the Harness Infrastructure Definition, you map outputs to their corresponding
 
 <figure>
 
-<docimage path={require('./static/1e16790b00a3b5b126e00a6ffa5cb23f18c3d899b0aa6f345b786cd6ba4631c7.png')} width="50%" height="50%" title="Select to view full size image" />  
+<DocImage path={require('./static/1e16790b00a3b5b126e00a6ffa5cb23f18c3d899b0aa6f345b786cd6ba4631c7.png')} width="50%" height="50%" title="Select to view full size image" />  
 
 <figcaption>Figure: Mapped outputs.</figcaption>
 </figure>

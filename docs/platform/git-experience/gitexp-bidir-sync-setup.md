@@ -34,7 +34,7 @@ To set up bi-directional sync, do the following:
 1. In your Harness account, go to **Account Settings**, select **Account Resources**, and then select **Default Settings**.
 2. Expand **Git Experience**, and then enable the **Enable Bi-Directional Sync** setting.
    
-   <docimage path={require('./static/ecce92a26a5f4f2e902240c10010066d329b54bc0a3515b58a1e5f2d1e8c9b6c.png')} width="60%" height="60%" title="Click to view full size image" />  
+   <DocImage path={require('./static/ecce92a26a5f4f2e902240c10010066d329b54bc0a3515b58a1e5f2d1e8c9b6c.png')} width="60%" height="60%" title="Click to view full size image" />  
 3. Select **Save**.
 
 ### Create the webhook

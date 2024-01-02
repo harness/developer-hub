@@ -8,7 +8,6 @@ import DelegateInstall from '/tutorials/platform/install-delegate.md';
 import InitScript from './install-a-delegate-with-3-rd-party-tool-custom-binaries.md';
 import CustomImage from './build-custom-delegate-images-with-third-party-tools.md';
 
-
 ## Install the default delegate
 
 The inline tutorial below shows you how to install the default delegate for your Harness account. It can be either a Kubernetes delegate installed using a Helm chart, Terraform Helm Provider, and Kubernetes manifest or a Docker delegate using the `docker run` command. You can also review the tutorial directly [here](/tutorials/platform/install-delegate).
@@ -18,7 +17,6 @@ The inline tutorial below shows you how to install the default delegate for your
 <DelegateInstall />
 </details>
 
-
 The default delegate image, denoted by the `yy.mm.xxxxx` image tag, includes a set of pre-installed 3rd-party custom binaries for convenience. You can find the list of these binaries [here](/docs/platform/Delegates/delegate-concepts/delegate-image-types#third-party-tools-included-in-the-delegate-image-type). If you are concerned about the security vulnerabilities that potentially come with these pre-installed binaries, our recommendation is to use the minimal delegate noted below.
 
 import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
@@ -27,7 +25,7 @@ import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
 
 The video below shows how to install a delegate.
 
- <docvideo src="https://www.loom.com/embed/a935f18296ee4156900efcf60f20f224" width="100%" height="600" />
+ <DocVideo src="https://www.loom.com/embed/a935f18296ee4156900efcf60f20f224" width="100%" height="600" />
 
 ## Install minimal delegate with 3rd party custom binaries
 
@@ -67,7 +65,7 @@ For custom certificates, go to [Install delegates with custom certificates](/doc
 
 ### Group names
 
-The legacy delegate used `DELEGATE_GROUP_NAME` for group names. This environment is not valid in NextGen. Use `DELEGATE_NAME` for group names. 
+The legacy delegate used `DELEGATE_GROUP_NAME` for group names. This environment is not valid in NextGen. Use `DELEGATE_NAME` for group names.
 
 ## Additional installation approaches
 
@@ -85,7 +83,7 @@ The legacy Kubernetes delegate, denoted `latest` container image tag, is used pr
 
 ### Install Docker delegate using Podman
 
-You can install the Docker delegate using Podman by adding Podman commands to your Dockerfile. 
+You can install the Docker delegate using Podman by adding Podman commands to your Dockerfile.
 
 To install the Docker delegate using Podman, do the following:
 
@@ -109,8 +107,7 @@ To install the Docker delegate using Podman, do the following:
    -e ACCOUNT_ID=<ACCOUNT_ID_COPIED_FROM_THE_UI_COMMAND> \
    -e DELEGATE_TOKEN=<DELEGATE_TOKEN_COPIED_FROM_THE_UI_COMMAND>= \
    -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
-   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.07.79904 
+   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.07.79904
    ```
 
 7. Run the command.
-

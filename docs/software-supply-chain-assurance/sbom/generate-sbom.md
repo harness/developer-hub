@@ -62,7 +62,7 @@ The **SSCA Orchestration** step has the following settings:
 
 <!-- ![](../static/sbom-ssca-orch-step.png) -->
 
-<docimage path={require('../static/sbom-ssca-orch-step.png')} />
+<DocImage path={require('../static/sbom-ssca-orch-step.png')} />
 
 :::info ECR and GCR repos
 

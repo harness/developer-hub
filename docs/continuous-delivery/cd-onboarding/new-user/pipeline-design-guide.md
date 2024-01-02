@@ -92,7 +92,7 @@ Harness pipelines are already designed to fail fast. When a step execution fails
 
 As you design your pipeline, you need to understand how often a pipeline is failing. You can look at your pipeline execution history to see pipeline failure rate. You might need to add/remove steps to start seeing success.
 
-<docimage path={require('./static/0f681bd509d34ce35bae99ab643dc16c6b9851b216b856ffe0968d2426d9a03a.png')} width="60%" height="60%" title="Click to view full size image" />  
+<DocImage path={require('./static/0f681bd509d34ce35bae99ab643dc16c6b9851b216b856ffe0968d2426d9a03a.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 **Provide instant feedback to developers about the success/failure of pipelines and stages.** When pipelines are executed, developers should be notified in the tools they typically use. Harness integrates with MS Teams, Slack, and Email to send developers notifications of specific pipeline activities.
 

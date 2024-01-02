@@ -2136,3 +2136,11 @@ You can create user in below ways:
 #### We would like to enforce the life time of api token ( My profile -> My API keys -> Token) is 24 hours.
 
 An Api key is created with Minimum of 30 days and you can not set any duration less than that, you can rotate the token if you want at any time
+
+#### How to sync ldap groups manually if linked User group is not getting synced
+
+You can Navigate to Authentication tab and go to ldap setting and try Synchronize User group option.
+
+#### While trying to link sso group, not getting the option for user group
+
+Check and confirm if group authorization is enabled for saml setup configured, than only you will see the sso provide details under drop down

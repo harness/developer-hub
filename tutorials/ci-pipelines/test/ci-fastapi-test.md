@@ -6,12 +6,10 @@ title: Test a FastAPI project
 slug: /ci-pipelines/test/fastapi
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
@@ -26,13 +24,11 @@ import TabItem from '@theme/TabItem';
 
 You need the following for this tutorial:
 
-* Knowledge of Python, FastAPI, Git, and GitHub.
-* [A GitHub account](https://github.com/join).
-* [A Harness account](https://app.harness.io/).
-
+- Knowledge of Python, FastAPI, Git, and GitHub.
+- [A GitHub account](https://github.com/join).
+- [A Harness account](https://app.harness.io/).
 
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-
 
 <CISignupTip />
 
@@ -46,9 +42,9 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
 The sample repo has a simple FastAPI project and unit tests. Notable files include:
 
-* `fastapi-todo-tests/requirements.txt`: Contains a list of project dependencies.
-* `fastapi-todo-tests/app/main.py`: The sample FastAPI project builds a "To Do" list. It has three API endpoints, one that creates tasks, one that deletes tasks, and one that gets the task list.
-* `fastapi-todo-tests/test_main.py`: Defines three test cases.
+- `fastapi-todo-tests/requirements.txt`: Contains a list of project dependencies.
+- `fastapi-todo-tests/app/main.py`: The sample FastAPI project builds a "To Do" list. It has three API endpoints, one that creates tasks, one that deletes tasks, and one that gets the task list.
+- `fastapi-todo-tests/test_main.py`: Defines three test cases.
 
 <details>
 <summary>Optional exercise: Local set up</summary>
@@ -76,13 +72,13 @@ Optionally, you can build the project and test it locally before running tests i
 
 3. Create a virtual environment named `test-env`.
 
-   * Linux or macOS: `python3 -m venv test-env`
-   * Windows: `python -m venv test-env`
+   - Linux or macOS: `python3 -m venv test-env`
+   - Windows: `python -m venv test-env`
 
 4. Activate the virtual environment.
 
-   * Linux or macOS: `source test-env/bin/activate`
-   * Windows: `.\test-env\Scripts\activate`
+   - Linux or macOS: `source test-env/bin/activate`
+   - Windows: `.\test-env\Scripts\activate`
 
 5. Install dependencies.
 
@@ -118,10 +114,8 @@ These steps summarize pipeline creation. For more information, go to [CI pipelin
 
 ### Add the Build stage and infrastructure
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-
 
 1. Select **Add Stage**, and select the **Build** stage.
 2. Enter a **Stage Name**, such as `Test FastAPI`.
@@ -129,10 +123,8 @@ These steps summarize pipeline creation. For more information, go to [CI pipelin
 4. Select **Set Up Stage**.
 5. In the **Build** stage, select the **Infrastructure** tab, and [set up your build infrastructure](/docs/category/set-up-build-infrastructure).
 
-
 </TabItem>
   <TabItem value="YAML" label="YAML">
-
 
 In the Pipeline Studio's YAML editor, add a `CI` stage and [set up your build infrastructure](/docs/category/set-up-build-infrastructure).
 
@@ -178,57 +170,49 @@ And this CI stage uses a Kubernetes cluster build infrastructure:
             ...
 ```
 
-
 </TabItem>
 </Tabs>
-
 
 ### Install dependencies
 
 Add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies for the FastAPI project.
 
-
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
 
-
 ```yaml
-              - step:
-                  type: Run
-                  name: Install Dependencies
-                  identifier: Install_Dependencies
-                  spec:
-                    shell: Sh
-                    command: |-
-                      sudo apt-get update && sudo apt-get install -y python3-dev && sudo apt-get install default-libmysqlclient-dev
-                      pip install --cache-dir .pip_cache -r requirements.txt
-                    envVariables:
-                      PIP_CACHE_DIR: /root/.cache
+- step:
+    type: Run
+    name: Install Dependencies
+    identifier: Install_Dependencies
+    spec:
+      shell: Sh
+      command: |-
+        sudo apt-get update && sudo apt-get install -y python3-dev && sudo apt-get install default-libmysqlclient-dev
+        pip install --cache-dir .pip_cache -r requirements.txt
+      envVariables:
+        PIP_CACHE_DIR: /root/.cache
 ```
-
 
 </TabItem>
   <TabItem value="sh" label="Self-hosted">
 
-
 ```yaml
-              - step:
-                  type: Run
-                  name: Install Dependencies
-                  identifier: Install_Dependencies
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: python:latest
-                    shell: Sh
-                    command: |-
-                      sudo apt-get update && sudo apt-get install -y python3-dev && sudo apt-get install default-libmysqlclient-dev
-                      pip install --cache-dir .pip_cache -r requirements.txt
+- step:
+    type: Run
+    name: Install Dependencies
+    identifier: Install_Dependencies
+    spec:
+      connectorRef: account.harnessImage
+      image: python:latest
+      shell: Sh
+      command: |-
+        sudo apt-get update && sudo apt-get install -y python3-dev && sudo apt-get install default-libmysqlclient-dev
+        pip install --cache-dir .pip_cache -r requirements.txt
 ```
-
 
 </TabItem>
 </Tabs>
-
 
 ### Run tests
 
@@ -236,54 +220,48 @@ Add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-set
 
 This tutorial runs basic unit tests, but you can run all types of tests (integration tests, mutation tests, and so on) in Harness CI. For more information, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
-
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
 
-
 ```yaml
-              - step:
-                  type: Run
-                  name: Pytest
-                  identifier: Pytest
-                  spec:
-                    shell: Sh
-                    command: |-
-                      pytest test_main.py --junit-xml=output-test.xml
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - output-test.xml
+- step:
+    type: Run
+    name: Pytest
+    identifier: Pytest
+    spec:
+      shell: Sh
+      command: |-
+        pytest test_main.py --junit-xml=output-test.xml
+      reports:
+        type: JUnit
+        spec:
+          paths:
+            - output-test.xml
 ```
-
 
 </TabItem>
   <TabItem value="sh" label="Self-hosted">
 
-
 ```yaml
-              - step:
-                  type: Run
-                  name: Pytest
-                  identifier: Pytest
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: python:latest
-                    shell: Sh
-                    command: |-
-                      pytest test_main.py --junit-xml=output-test.xml
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - output-test.xml
+- step:
+    type: Run
+    name: Pytest
+    identifier: Pytest
+    spec:
+      connectorRef: account.harnessImage
+      image: python:latest
+      shell: Sh
+      command: |-
+        pytest test_main.py --junit-xml=output-test.xml
+      reports:
+        type: JUnit
+        spec:
+          paths:
+            - output-test.xml
 ```
-
 
 </TabItem>
 </Tabs>
-
 
 To [view test reports in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests), test results must be in JUnit XML format, and the `reports` specification must be included.
 
@@ -320,10 +298,8 @@ Here are complete YAML examples for this tutorial. If you copy these examples, m
 
 These pipelines include a **Build** (`CI`) stage with two **Run** steps. One step installs dependencies defined in `requirements.txt` and the other runs unit tests.
 
-
 <Tabs>
   <TabItem value="Cloud" label="Harness Cloud" default>
-
 
 This example uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
 
@@ -381,10 +357,8 @@ pipeline:
                           - output-test.xml
 ```
 
-
 </TabItem>
 <TabItem value="selfhosted" label="Self-hosted">
-
 
 This example uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures).
 
@@ -446,10 +420,8 @@ pipeline:
                           - output-test.xml
 ```
 
-
 </TabItem>
 </Tabs>
-
 
 ### Trigger YAML
 

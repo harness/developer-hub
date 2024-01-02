@@ -30,7 +30,7 @@ Here is a flow chart illustrating the use of sprint metrics for performance anal
 
 <!-- ![](../static/diagram-sprint-metrics.png) -->
 
-<docimage path={require('../static/diagram-sprint-metrics.png')} />
+<DocImage path={require('../static/diagram-sprint-metrics.png')} />
 
 ### Analyze sprint performance
 

@@ -191,7 +191,7 @@ import TabItem from '@theme/TabItem';
 
 <!-- ![](../static/ci-stage-settings-vm-infra.png) -->
 
-<docimage path={require('../static/ci-stage-settings-vm-infra.png')} />
+<DocImage path={require('../static/ci-stage-settings-vm-infra.png')} />
 
 
 </TabItem>

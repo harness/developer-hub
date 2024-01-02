@@ -23,12 +23,12 @@ Security chaos is a set of chaos experiments that helps test the security of the
 
 Kube security CIS runs the CIS benchmark on the Kubernetes cluster and checks for the compliance of the cluster with the CIS benchmark. CIS benchmark is a set of security best practices for the Kubernetes cluster.
 
-<accordion color="green">
+<Accordion color="green">
 <summary>Use cases</summary>
 
 - Determines the compliance of the Kubernetes cluster with the CIS benchmark.
 - Find and fix the security issues in the Kubernetes cluster.
 
-</accordion>
+</Accordion>
 
 </FaultDetailsCard>

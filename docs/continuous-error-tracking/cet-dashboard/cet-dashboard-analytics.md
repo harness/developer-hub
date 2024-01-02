@@ -21,7 +21,7 @@ To access the CET Analytics dashboard, do the following:
    
    The CET Analytics dashboard is displayed.
 
-   <docimage path={require('./static/cet-analytics-dashboard.png')} />
+   <DocImage path={require('./static/cet-analytics-dashboard.png')} />
    
 
 ## Explore CET Analytics dashboard

@@ -70,7 +70,7 @@ Harness includes connectors for all the major artifact repositories. In this exa
 1. In **Artifacts**, select **Add Primary Artifact**.
 2. In **Specify Artifact Repository Type**.
 
-   <docimage path={require('./static/911d27b9753c2eee8709a32910a80cf2ce42605db121b3067f2ddc4b2cd0be0e.png')} width="60%" height="60%" title="Select to view full size image" />
+   <DocImage path={require('./static/911d27b9753c2eee8709a32910a80cf2ce42605db121b3067f2ddc4b2cd0be0e.png')} width="60%" height="60%" title="Select to view full size image" />
 
    1. As an example, select **Artifactory** and select **Continue**. You can use another artifact repo if you like.
 3. For the Artifactory Connector, select **New Artifactory Connector**.
@@ -352,7 +352,7 @@ In the Harness Infrastructure Definition, you map outputs to their corresponding
 
 <figure>
 
-<docimage path={require('./static/8722541e819fd752abc35693bd00e38cca2bce5df264afa89cbf61288fbc0604.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/8722541e819fd752abc35693bd00e38cca2bce5df264afa89cbf61288fbc0604.png')} width="60%" height="60%" title="Click to view full size image" />
 
 <figcaption>Figure: Mapped outputs</figcaption>
 </figure>

@@ -20,7 +20,7 @@ Here's how it works: When an incident is announced using FireHydrant, a real-tim
 
 Sample message sent by SRM to the Slack channel
 
-<docimage path={require('./static/firehydrant-slack-message.png')} />
+<DocImage path={require('./static/firehydrant-slack-message.png')} />
 
 Together with the FireHydrant's incident information and SRM's health report, the incident response team can quickly figure out how bad the incident is, see how the rest of the service is doing, and make quick decisions.
 
@@ -60,7 +60,7 @@ To add FireHydrant as a change source to a monitored service:
 6.  Select **Submit**.  
     The custom incident change source gets added to the monitored service. A webhook URL and cURL commands are generated.
 
-    <docimage path={require('./static/add-firehydrant-change-source.png')} />
+    <DocImage path={require('./static/add-firehydrant-change-source.png')} />
 
 
 ### Copy webhook URL
@@ -200,7 +200,7 @@ To add FireHydrant as a change source to a monitored service:
 7.  Select **Submit**.  
     The custom incident change source gets added to the monitored service. A webhook URL and cURL commands are generated.
 
-    <docimage path={require('./static/add-firehydrant-change-source.png')} />
+    <DocImage path={require('./static/add-firehydrant-change-source.png')} />
 
 
 ### Configure FireHydrant runbook to send incident reports

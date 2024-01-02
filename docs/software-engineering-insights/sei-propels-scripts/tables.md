@@ -51,7 +51,7 @@ Rows and columns are added or removed relative to the selected cell. If you want
 
 <!-- ![](../static/customize_table3.png) -->
 
-<docimage path={require('../static/customize_table3.png')} />
+<DocImage path={require('../static/customize_table3.png')} />
 
 To resize rows and columns, select and drag the borders between rows and columns.
 
@@ -63,7 +63,7 @@ To rename a column, select the column header cell, enter the new name, and then 
 
 <!-- ![](../static/customize_table1.png) -->
 
-<docimage path={require('../static/customize_table1.png')} />
+<DocImage path={require('../static/customize_table1.png')} />
 
 ### Set column data types
 
@@ -81,14 +81,14 @@ To set a column's data type:
 
    <!-- ![](../static/customize_table7.png) -->
 
-   <docimage path={require('../static/customize_table7.png')} />
+   <DocImage path={require('../static/customize_table7.png')} />
 
 2. Select the desired data type.
 3. If you selected **Preset**, add preset values.
 
    <!-- ![](../static/customize_table6.png) -->
 
-   <docimage path={require('../static/customize_table6.png')} />
+   <DocImage path={require('../static/customize_table6.png')} />
 
 4. Select **Save**.
 
@@ -102,7 +102,7 @@ To add a default value:
 
    <!-- ![](../static/customize_table2.png) -->
 
-   <docimage path={require('../static/customize_table2.png')} />
+   <DocImage path={require('../static/customize_table2.png')} />
 
 2. Enter the desired default value, and select **Set**.
 3. The next time you save the Table, any empty cells in this column are populated with the default value.
@@ -119,7 +119,7 @@ To specify required or read-only columns, select the **Arrow** in the column hea
 
 <!-- ![](../static/customize_table2.png) -->
 
-<docimage path={require('../static/customize_table2.png')} />
+<DocImage path={require('../static/customize_table2.png')} />
 
 Required columns are indicated by an asterisk (`*`) in the column header.
 
@@ -127,13 +127,13 @@ Read-only columns are indicated by shading. As long as the column is marked read
 
 <!-- ![](../static/customize_table4.png) -->
 
-<docimage path={require('../static/customize_table4.png')} />
+<DocImage path={require('../static/customize_table4.png')} />
 
 If a column is both **Required** or **Read-Only**, you *must* specify a [default value](#set-a-default-value). If you have not already set a default value, you're prompted to provide one upon selecting both **Required** and **Read-Only**.
 
 <!-- ![](../static/customize_table5.png) -->
 
-<docimage path={require('../static/customize_table5.png')} />
+<DocImage path={require('../static/customize_table5.png')} />
 
 ### Apply color coding
 
@@ -141,7 +141,7 @@ You can apply color coding to change how cells look in [Table reports](./table-r
 
 <!-- ![](../static/customize_table10.png) -->
 
-<docimage path={require('../static/customize_table10.png')} />
+<DocImage path={require('../static/customize_table10.png')} />
 
 1. For any column that you want to have color coding, [add a column](#add-or-remove-rows-and-columns) with the same name and the suffix of `_color_code`.
 
@@ -149,13 +149,13 @@ You can apply color coding to change how cells look in [Table reports](./table-r
 
    <!-- ![](../static/customize_table11.png) -->
 
-   <docimage path={require('../static/customize_table11.png')} />
+   <DocImage path={require('../static/customize_table11.png')} />
 
 2. In the `_color_code` column, enter a hexadecimal code in each cell to define the color you want to use for each value.
 
    <!-- ![](../static/customize_table12.png) -->
 
-   <docimage path={require('../static/customize_table12.png')} />
+   <DocImage path={require('../static/customize_table12.png')} />
 
 3. Select **Save**.
 
@@ -171,7 +171,7 @@ To add a filter:
 
    <!-- ![](../static/customize_table8.png) -->
 
-   <docimage path={require('../static/customize_table8.png')} />
+   <DocImage path={require('../static/customize_table8.png')} />
 
 Table filters have a one-to-one relationship between columns and filter values. To apply dynamic and complex filters, use a [Table report](./table-reports.md) on an Insight.
 
@@ -181,10 +181,10 @@ You can use Markdown-formatted hyperlinks (`[value](link)`) in any cell where yo
 
 <!-- ![](../static/customize_table9.png) -->
 
-<docimage path={require('../static/customize_table9.png')} />
+<DocImage path={require('../static/customize_table9.png')} />
 
 The links are rendered as in-line hyperlinks when presented on a [Table report](./table-reports.md).
 
 <!-- ![](../static/customize_table10.png) -->
 
-<docimage path={require('../static/customize_table10.png')} />
+<DocImage path={require('../static/customize_table10.png')} />

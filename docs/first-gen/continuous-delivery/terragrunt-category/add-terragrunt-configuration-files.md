@@ -12,15 +12,14 @@ This topic describes how to set up a Harness Infrastructure Provisioner for Terr
 
 Once the Harness Infrastructure Provisioner is set up, you can use it in two ways:
 
-* Define a deployment target in a Harness Infrastructure Definition. You add that Infrastructure Definition to a Workflow as the deployment target. Next, you add a Terragrunt Provision step to the same Workflow to build the target infrastructure. The Workflow provisions the infrastructure and then deploys to it.
-* Provision non-target infrastructure. You can also simply add the Terragrunt Provision step to a Workflow to provision non-target resources.  
-In this topic, we will cover provisioning the target infrastructure for a deployment, but the steps to provision other resources are similar.
-
+- Define a deployment target in a Harness Infrastructure Definition. You add that Infrastructure Definition to a Workflow as the deployment target. Next, you add a Terragrunt Provision step to the same Workflow to build the target infrastructure. The Workflow provisions the infrastructure and then deploys to it.
+- Provision non-target infrastructure. You can also simply add the Terragrunt Provision step to a Workflow to provision non-target resources.  
+  In this topic, we will cover provisioning the target infrastructure for a deployment, but the steps to provision other resources are similar.
 
 ### Before You Begin
 
-* Get an overview how how Harness supports Terragrunt: [Terragrunt Provisioning with Harness](../concepts-cd/deployment-types/terragrunt-provisioning-with-harness.md).
-* Ensure you have your Harness account settings prepared for Terragrunt: [Set Up Your Harness Account for Terragrunt](set-up-your-harness-account-for-terragrunt.md).
+- Get an overview how how Harness supports Terragrunt: [Terragrunt Provisioning with Harness](../concepts-cd/deployment-types/terragrunt-provisioning-with-harness.md).
+- Ensure you have your Harness account settings prepared for Terragrunt: [Set Up Your Harness Account for Terragrunt](set-up-your-harness-account-for-terragrunt.md).
 
 ### Visual Summary
 
@@ -30,9 +29,7 @@ Here is a visual summary of how you use your and Terragrunt and Terraform files 
 
 Here's a 6 minute video walkthrough of Harness-Terragrunt integration:
 
-
-<docvideo src="https://www.youtube.com/embed/HYSi2LAaYdc?feature=oembed" />
-
+<DocVideo src="https://www.youtube.com/embed/HYSi2LAaYdc?feature=oembed" />
 
 You can use Terragrunt in Harness to provision any infrastructure, not just the target infrastructure for the deployment.
 
@@ -58,8 +55,8 @@ In **Script Repository**, in **Git Repository**, select the [Source Repo Prov
 
 In **Commit**, select **Latest from Branch** or **Specific Commit ID**:
 
-* If you selected **Latest from Branch**, in **Git Repository Branch**, enter the repo branch to use. For example, **master**. For master, you can also use a dot (`.`).
-* If you selected **Specific Commit ID**, in **Commit ID**, enter the Git commit ID to use.
+- If you selected **Latest from Branch**, in **Git Repository Branch**, enter the repo branch to use. For example, **master**. For master, you can also use a dot (`.`).
+- If you selected **Specific Commit ID**, in **Commit ID**, enter the Git commit ID to use.
 
 In **Path to Terragrunt Root Module**, enter the folder where the root module is located. Enter `.` for root.
 
@@ -69,11 +66,11 @@ You can also use expressions in the **Git Repository Branch** and **Path to T
 
 For example, a Workflow can have variables for **branch** and **path**:
 
-![](./static/add-terragrunt-configuration-files-29\.png)
+![](./static/add-terragrunt-configuration-files-29.png)
 
 In **Script Repository**, you can enter variables as `${workflow.variables.branch}` and `${workflow.variables.path}`:
 
-![](./static/add-terragrunt-configuration-files-30\.png)
+![](./static/add-terragrunt-configuration-files-30.png)
 
 When the Workflow is deployed, you are prompted to provide values for the Workflow variables, which are then applied to the **Script Repository** settings.
 
@@ -119,14 +116,13 @@ This setting is available because a Terraform refresh is not always an idempoten
 
 When you are done, the **Terragrunt** **Provisioner** will look something like this:
 
-![](./static/add-terragrunt-configuration-files-31\.png)
+![](./static/add-terragrunt-configuration-files-31.png)
 
 Now you can use this provisioner in both Infrastructure Definitions and Workflows.
 
 ### Next Steps
 
-* **Infrastructure Definitions** — Use the Terragrunt Infrastructure Provisioner to define a Harness Infrastructure Definition. You do this by mapping the script outputs from the Terraform module used by the Terragrunt configuration file to the required Harness Infrastructure Definition settings. Harness supports provisioning for many different platforms.  
-See: [Map Dynamically Provisioned Infrastructure using Terragrunt](map-terragrunt-infrastructure.md).
-* **Workflows** — Once you have created the Infrastructure Definition and added it to a Workflow, you add a Terragrunt Provisioner Step to the Workflow to run your Terragrunt and Terraform files and provision the infra.  
-See: [Provision using the Terragrunt Provision Step](provision-using-the-terragrunt-provision-step.md).
-
+- **Infrastructure Definitions** — Use the Terragrunt Infrastructure Provisioner to define a Harness Infrastructure Definition. You do this by mapping the script outputs from the Terraform module used by the Terragrunt configuration file to the required Harness Infrastructure Definition settings. Harness supports provisioning for many different platforms.  
+  See: [Map Dynamically Provisioned Infrastructure using Terragrunt](map-terragrunt-infrastructure.md).
+- **Workflows** — Once you have created the Infrastructure Definition and added it to a Workflow, you add a Terragrunt Provisioner Step to the Workflow to run your Terragrunt and Terraform files and provision the infra.  
+  See: [Provision using the Terragrunt Provision Step](provision-using-the-terragrunt-provision-step.md).

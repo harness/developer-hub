@@ -6,7 +6,7 @@ keywords: [Feature Flags, FF Tutorial]
 
 # Using Feature Flags For Trunk-Based Development
 
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Feature Flags Certification today!"
@@ -14,7 +14,6 @@ keywords: [Feature Flags, FF Tutorial]
   closable={true}
   target="_self"
 />
-
 
 ## What is trunk-based development?
 

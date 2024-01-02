@@ -23,7 +23,7 @@ For example, in the following figure, Harness Terraform Plan and Apply steps are
 
 <figure>
 
-<docimage path={require('./static/f530119b890406045779f2dbec421ec43fb9a0bfd3739b4f401b6f2c02f3a84f.png')} width="60%" height="60%" title="Click to view full size image" />  
+<DocImage path={require('./static/f530119b890406045779f2dbec421ec43fb9a0bfd3739b4f401b6f2c02f3a84f.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 <figcaption>Figure 1: Ad hoc resource provisioning.</figcaption>
 </figure>
@@ -61,7 +61,7 @@ At deployment runtime, Harness does the following:
 
 <figure>
 
-<docimage path={require('./static/e4a8290505cd2ca85b1f0305b34c92a2aefb23ecec14b36e13baa7231499fa3e.png')} width="80%" height="80%" title="Click to view full size image" />  
+<DocImage path={require('./static/e4a8290505cd2ca85b1f0305b34c92a2aefb23ecec14b36e13baa7231499fa3e.png')} width="80%" height="80%" title="Click to view full size image" />  
 
 <figcaption>Figure 2: CD stage target infrastructure provisioning and mapping.</figcaption>
 </figure>
@@ -118,7 +118,7 @@ Here you can see the expression used to map the output in the infrastructure set
 
 <figure>
 
-<docimage path={require('./static/519f60992faffa19425e1436699a0d3ce27de43a16de9ad1e90b86288122235f.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/519f60992faffa19425e1436699a0d3ce27de43a16de9ad1e90b86288122235f.png')} width="60%" height="60%" title="Click to view full size image" />
 
 <figcaption>Figure: Mapped output</figcaption>
 </figure>

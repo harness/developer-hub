@@ -814,7 +814,7 @@ For ASG, Harness needs the following settings mapped to outputs:
 
 In the Harness Infrastructure Definition, in **Base ASG**, select the ASG to use as the base ASG.
 
-<docimage path={require('./static/8705496ace1f6b040eccc5b1fe4d6dae3b21cedb37ab383680b39ad41510c417.png')} width="60%" height="60%" title="Click to view full size image" />  
+<DocImage path={require('./static/8705496ace1f6b040eccc5b1fe4d6dae3b21cedb37ab383680b39ad41510c417.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 
 ## Harness ASG pipelines

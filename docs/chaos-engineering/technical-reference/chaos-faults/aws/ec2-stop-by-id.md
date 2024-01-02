@@ -14,8 +14,8 @@ EC2 stop by ID:
 - Determines the resilience of an application to unexpected halts in the EC2 instance by validating its failover capabilities.
 
 
-:::info note
-- Kubernetes version 1.17 or later is required to execute the fault.
+## Prerequisites
+- Kubernetes >= 1.17
 - Access to start and stop an EC2 instance in AWS.
 - The EC2 instance should be in a healthy state.
 - The Kubernetes secret should have the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is the sample secret file.
@@ -32,13 +32,9 @@ EC2 stop by ID:
       aws_access_key_id = XXXXXXXXXXXXXXXXXXX
       aws_secret_access_key = XXXXXXXXXXXXXXX
   ```
-- We recommend you use the same secret name, that is, `cloud-secret`. Otherwise, update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template, and you won't be able to use the default health check probes. 
-- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
-- Go to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
-:::
 
-:::warning
-If the target EC2 instance is a part of a managed node group, drain the target node of any application running on it. Isolate the target node before running the fault so that the faulty pods are not scheduled on it.
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -68,7 +64,10 @@ Below is an example AWS policy to execute the fault.
 }
 ```
 
-## Fault tunables
+:::info note
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+- Go to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+:::
 
  <h3>Mandatory tunables</h3>
     <table>
@@ -80,7 +79,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> EC2_INSTANCE_ID </td>
         <td> Instance ID of the target EC2 instance. Multiple IDs can also be provided as a comma(,) separated values.</td>
-        <td> Multiple IDs can be provided as `id1,id2`. </td>
+        <td> Multiple IDs can be provided as `id1,id2`. For more information, go to <a href="#stop-instances-by-id"> EC2 instance ID.</a></td>
       </tr>
       <tr>
         <td> REGION </td>
@@ -98,12 +97,12 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in sec) between successive instance termination.</td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr>
         <td> MANAGED_NODEGROUP </td>
@@ -113,16 +112,20 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance.</td>
-        <td> Defaults to parallel. Supports serial sequence as well. </td>
+        <td> Defaults to parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 
-### Stop Instances By ID
+:::warning
+If the target EC2 instance is a part of a managed node group, drain the target node of any application running on it. Isolate the target node before running the fault so that the faulty pods are not scheduled on it.
+:::
+
+### Stop instances By ID
 
 Comma-separated list of target instance IDs. Tune it by using the `EC2_INSTANCE_ID` environment variable.
 

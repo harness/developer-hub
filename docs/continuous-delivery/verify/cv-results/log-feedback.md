@@ -29,7 +29,7 @@ To the event preference or log feedback:
     - **High risk**: If a log is marked as high risk, any occurrence of that log will cause the verification to fail, regardless of whether it appeared in the previous version or the current version.
     - **Default Harness ML**: Harness ML marks the log based on the analysis of previous verification runs.
 
-   <docimage path={require('./static/add-event-preference.png')} />
+   <DocImage path={require('./static/add-event-preference.png')} />
   
 3. Enter a reason for updating the event preference and then select **Submit**.  
    The updated event preference appears on the Event Details page.
@@ -41,11 +41,11 @@ To view the event feedback history:
 
 1. On the Update event preference page, select **Update event preference**, and expand **Feedback history**. Event feedback details such as event priority, reason, who updated the event priority and the date and timestamp are displayed.
 
-   <docimage path={require('./static/event-preference-history.png')} />
+   <DocImage path={require('./static/event-preference-history.png')} />
 
 The last applied event preference is displayed on the Update event preference page.
 
-<docimage path={require('./static/last-event-preference-history.png')} />
+<DocImage path={require('./static/last-event-preference-history.png')} />
 
 
 
