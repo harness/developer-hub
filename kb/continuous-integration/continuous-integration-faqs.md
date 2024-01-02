@@ -51,7 +51,7 @@ We can calculate the service licenses and instances in following methods for CG 
 - Based on service instances we calculate the number of consumed licenses
 - 1 service license is equal to 20 active service instances
 
-Please find an example [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#example)
+Please find an example [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd-for-cd/#example)
 
 #### What should we do on experiencing OOM on java heap for the delegate?
 
