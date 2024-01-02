@@ -151,7 +151,7 @@ If your pipeline has multiple steps that upload artifacts, use the dropdown menu
 
 <!-- ![](./static/artifacts-tab-with-link.png) -->
 
-<docimage path={require('./static/artifacts-tab-with-link.png')} />
+<DocImage path={require('./static/artifacts-tab-with-link.png')} />
 
 :::
 

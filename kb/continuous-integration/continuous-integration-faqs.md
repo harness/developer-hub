@@ -1,6 +1,7 @@
 ---
 title: Continuous Integration (CI) FAQs
 description: This article addresses some frequently asked questions about Harness Continuous Integration (CI).
+sidebar_position: 2
 ---
 
 #### Can we enable BuildKit support for the native build and push step?

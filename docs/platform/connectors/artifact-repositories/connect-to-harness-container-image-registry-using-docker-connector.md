@@ -108,7 +108,7 @@ You can also [use a private registry for STO scanner images](/docs/security-test
 
 1. Download the images you need from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), perform any tests or validations necessary for your organization's security policies, and then store the images in your private registry.
 
-   :::caution
+   :::warning
 
    Do not change the image names in your private registry. The image names must match the names specified by Harness.
 

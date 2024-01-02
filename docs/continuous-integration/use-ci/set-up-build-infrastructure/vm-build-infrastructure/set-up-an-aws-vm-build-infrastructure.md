@@ -341,7 +341,7 @@ Configure your pipeline's **Build** (`CI`) stage to use your AWS VMs as build in
 
 <!-- ![](../static/ci-stage-settings-vm-infra.png) -->
 
-<docimage path={require('../static/ci-stage-settings-vm-infra.png')} />
+<DocImage path={require('../static/ci-stage-settings-vm-infra.png')} />
 
 
 </TabItem>

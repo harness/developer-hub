@@ -16,7 +16,7 @@ This topic explains how to set up the AWS Cloud Provider, and the IAM roles and 
 **Recommended:** Install and run a Harness Delegate (ECS Delegate in an ECS cluster, Shell Script Delegate on an EC2 instance, etc) in the same VPC as the AWS resources you will use, and then use the Delegate for the AWS Cloud Provider credentials. This is the easiest method to connect to AWS. For more information, see [Delegate Installation and Management](../manage-delegates/delegate-installation.md).
 :::
 
-:::caution
+:::warning
 The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.
 :::
 
@@ -75,7 +75,7 @@ Choose a name for this provider. This is to differentiate AWS providers in Harne
 :::note
 Ensure that the AWS IAM roles applied to the credentials you use (the Harness Delegate or the access key) includes the policies needed by Harness to deploy to the target AWS service. See [Review: AWS Permissions](add-amazon-web-services-cloud-provider.md#review-aws-permissions) below.
 :::
-:::caution
+:::warning
 The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.
 :::
 
@@ -225,7 +225,7 @@ When you install the Delegate in the cluster, the serviceAccount you added is us
 :::note
 Assume STS Role is supported for EC2 and ECS. It is supported for EKS if you use the IRSA option, described above.
 :::
-:::caution
+:::warning
 The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.
 :::
 
@@ -279,7 +279,7 @@ You cannot access AWS GovCloud with standard AWS credentials. Likewise, you cann
 
 ## Review: AWS IAM Roles and Policies
 
-:::caution
+:::warning
 The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.
 :::
 
@@ -297,7 +297,7 @@ As described below, `DescribeRegions` is required for all AWS Cloud Provider con
 
 ## All AWS Cloud Providers: DescribeRegions Required
 
-:::caution
+:::warning
 The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.
 :::
 

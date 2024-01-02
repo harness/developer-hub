@@ -345,6 +345,14 @@ Currently, TAS artifact bundle is behind the feature flag `CDS_ENABLE_TAS_ARTIFA
 
 :::
 
+#### Demo Video
+
+<!-- Video:
+https://www.loom.com/share/5d3f8f987a014a83b8ee8f8061d03381?sid=1ceb3259-c66f-4c5b-be99-76ce8268e928-->
+<DocVideo src="https://www.loom.com/share/5d3f8f987a014a83b8ee8f8061d03381?sid=1ceb3259-c66f-4c5b-be99-76ce8268e928" />
+
+
+
 You can add both the manifest and artifact at the same time as an artifact bundle.
 
 In the Harness service, when you add a manifest, select **Artifact Bundle** in **Specify TAS Manifest Store**.
@@ -523,7 +531,7 @@ In the Harness Infrastructure Definition, you map outputs to their corresponding
 
 <figure>
 
-<docimage path={require('./static/c07a64587172fd582e991bcd53b263860fcba2e0132ce6af88d722581a96c463.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/c07a64587172fd582e991bcd53b263860fcba2e0132ce6af88d722581a96c463.png')} width="60%" height="60%" title="Click to view full size image" />
 
 <figcaption>Figure: Mapped outputs.</figcaption>
 </figure>

@@ -202,7 +202,25 @@ Setup Harness CD & GitOps in a few commands
       --help, -h                show help
    ```
 
-7. `harness gitops-repository apply help`
+7. `harness gitops-cluster link help`
+
+   ```
+   NAME:
+      harness gitops-cluster link - Links a GitOps-cluster with an environment.
+   
+   USAGE:
+      harness gitops-cluster link [command options] [arguments...]
+   
+   OPTIONS:
+      --agent-identifier value  provide GitOps Agent Identifier.
+      --cluster-id value        provide a Cluster Identifier.
+      --environment-id value    provide an Environment Identifier.
+      --org-id value            provide an Organization Identifier.
+      --project-id value        provide a Project Identifier.
+      --help, -h                show help
+   ```
+   
+8. `harness gitops-repository apply help`
    
    ```
    NAME:
@@ -219,7 +237,7 @@ Setup Harness CD & GitOps in a few commands
    
    ```
 
-8. `harness gitops-application apply help`
+9. `harness gitops-application apply help`
 
    ```
    NAME:

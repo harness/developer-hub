@@ -31,7 +31,7 @@ With overrides, you can define your service variable and overrides up front, and
 
 Overrides keep your service, environment, and pipelines generic and clean. They can be reused for any scenario and are flexible enough to handle any deployment with service and environment paring. 
 
-<docimage path={require('./static/e637428de249f033a7cda5a9ce74820db4de6f487c0dc6d2f4a8229eccc420e1.png')} width="60%" height="60%" title="Click to view full size image" />  
+<DocImage path={require('./static/e637428de249f033a7cda5a9ce74820db4de6f487c0dc6d2f4a8229eccc420e1.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 ## Harness Git Experience
 

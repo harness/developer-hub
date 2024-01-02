@@ -191,16 +191,16 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 |                                     |                       |                       |
 | ----------------------------------- | --------------------- | --------------------- |
 | **Manifest Type**                   | **Required Tool/SDK** | **Certified Version** |
-| Kubernetes                          | kubectl               | v1.25.6               |
+| Kubernetes                          | kubectl               | v1.27.0               |
 |                                     | go-template           | v0.4.1                  |
-| Helm                                | kubectl               | v1.25.6               |
-|                                     | helm                  | v3.9.2                |
-| Helm (chart is stored in GCS or S3) | kubectl               | v1.25.6               |
-|                                     | helm                  | v3.9.2                |
+| Helm                                | kubectl               | v1.27.0               |
+|                                     | helm                  | v3.11.0                |
+| Helm (chart is stored in GCS or S3) | kubectl               | v1.27.0               |
+|                                     | helm                  | v3.11               |
 |                                     | chartmuseum           | v0.8.2 and v0.12.0    |
-| Kustomize                           | kubectl               | v1.25.6               |
+| Kustomize                           | kubectl               | v1.27.0               |
 |                                     | kustomize             | v4.5.4                |
-| OpenShift                           | kubectl               | v1.25.6               |
+| OpenShift                           | kubectl               | v1.27.0                |
 |                                     | oc                    | v4                    |
 
 ### Native Helm deployments
@@ -210,8 +210,8 @@ For [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platform
 |                   |                                                 |                       |
 | ----------------- | ----------------------------------------------- | --------------------- |
 | **Manifest Type** | **Required Tool/SDK**                           | **Certified Version** |
-| Helm Chart        | helm                                            | v3.9.2                |
-|                   | kubectlRequired if Kubernetes version is 1.16+. | v1.25.6               |
+| Helm Chart        | helm                                            | v3.11                |
+|                   | kubectlRequired if Kubernetes version is 1.16+. | v1.27.0               |
 
 ### Install a Delegate with custom SDK and 3rd-party tool binaries
 

@@ -68,7 +68,7 @@ Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI
 
    <!-- ![](../static/set-up-test-intelligence-04.png) -->
 
-   <docimage path={require('../static/set-up-test-intelligence-04.png')} />
+   <DocImage path={require('../static/set-up-test-intelligence-04.png')} />
 
 2. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
 

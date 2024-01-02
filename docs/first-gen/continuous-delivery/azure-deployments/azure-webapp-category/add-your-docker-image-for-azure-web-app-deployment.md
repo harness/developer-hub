@@ -16,14 +16,12 @@ This topic covers adding a Docker image. For steps on adding a non-containerized
 
 ### Before You Begin
 
-* [Azure Web App Deployments Overview](azure-web-app-deployments-overview.md)
-* Make sure that you have connected Harness to your Azure subscription as described in [Connect to Azure and Artifact Repo for Your Web App Deployments](connect-to-azure-for-web-app-deployments.md).
+- [Azure Web App Deployments Overview](azure-web-app-deployments-overview.md)
+- Make sure that you have connected Harness to your Azure subscription as described in [Connect to Azure and Artifact Repo for Your Web App Deployments](connect-to-azure-for-web-app-deployments.md).
 
 ### Visual Summary
 
-
-<docvideo src="https://www.youtube.com/embed/psYt_mYKPFY?feature=oembed" />
-
+<DocVideo src="https://www.youtube.com/embed/psYt_mYKPFY?feature=oembed" />
 
 ### Supported Platforms and Technologies
 
@@ -33,11 +31,11 @@ See [Supported Platforms and Technologies](../../../starthere-firstgen/supporte
 
 The Harness Azure Web Application Service type supports the following repos:
 
-* **Docker Registry:** see [Add Docker Registry Artifact Servers](../../../firstgen-platform/account/manage-connectors/add-docker-registry-artifact-servers.md).
-* **Artifactory:** see [Add Artifactory Servers](../../../firstgen-platform/account/manage-connectors/add-artifactory-servers.md).
-* **Azure Container Registry:** see [Add Microsoft Azure Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-microsoft-azure-cloud-provider.md).
-* **Amazon S3:** see [Add Amazon Web Services (AWS) Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-amazon-web-services-cloud-provider.md).
-* **Jenkins:** see [Add Jenkins Artifact Servers](../../../firstgen-platform/account/manage-connectors/add-jenkins-artifact-servers.md).
+- **Docker Registry:** see [Add Docker Registry Artifact Servers](../../../firstgen-platform/account/manage-connectors/add-docker-registry-artifact-servers.md).
+- **Artifactory:** see [Add Artifactory Servers](../../../firstgen-platform/account/manage-connectors/add-artifactory-servers.md).
+- **Azure Container Registry:** see [Add Microsoft Azure Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-microsoft-azure-cloud-provider.md).
+- **Amazon S3:** see [Add Amazon Web Services (AWS) Cloud Provider](../../../firstgen-platform/account/manage-connectors/add-amazon-web-services-cloud-provider.md).
+- **Jenkins:** see [Add Jenkins Artifact Servers](../../../firstgen-platform/account/manage-connectors/add-jenkins-artifact-servers.md).
 
 ### Step 1: Create the Harness Service
 
@@ -99,10 +97,10 @@ See [Configure an App Service app in the Azure portal](https://docs.microsoft.co
 
 You can set these using the Azure CLI:
 
-
 ```
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings DB_HOST="myownserver.mysql.database.azure.com"
 ```
+
 Or via the portal:
 
 ![](./static/add-your-docker-image-for-azure-web-app-deployment-14.png)
@@ -119,8 +117,8 @@ This is the same as setting them in the Azure portal **Advanced edit**.
 
 #### Important Notes
 
-* If you add App Service Configuration settings in the Harness Service, you must include a **name** (`"name":`), and the name must be unique. This is the same requirement in Azure App Services.
-* Do not set Docker settings in the Harness Service **App Service Configuration**. Harness will override these using the Docker settings in the Harness Artifact Server and Artifact Source.
+- If you add App Service Configuration settings in the Harness Service, you must include a **name** (`"name":`), and the name must be unique. This is the same requirement in Azure App Services.
+- Do not set Docker settings in the Harness Service **App Service Configuration**. Harness will override these using the Docker settings in the Harness Artifact Server and Artifact Source.
 
 #### Using Secrets and Variables Settings
 
@@ -128,19 +126,18 @@ You can use Harness secrets and Service or Workflow variables in the **Applicati
 
 These settings use JSON, so ensure that you use quotes around the variable or secret reference:
 
-
 ```
-  {  
-    "name": "PASSWORD",  
-    "value": "${$secret.getValue('secret_key')}",  
-    "slotSetting": false  
+  {
+    "name": "PASSWORD",
+    "value": "${$secret.getValue('secret_key')}",
+    "slotSetting": false
   },
 ```
+
 ### Next Step
 
-* [Define Your Azure Web App Infrastructure](define-your-azure-web-app-infrastructure.md)
+- [Define Your Azure Web App Infrastructure](define-your-azure-web-app-infrastructure.md)
 
 ### Configure As Code
 
 To see how to configure the settings in this topic using YAML, configure the settings in the UI first, and then click the YAML editor button.
-

@@ -40,7 +40,7 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 :::tip
 
-You can use the Background step **Id** to call services started by Background steps in later steps, such as commands in Run steps. For example, a cURL command could call `BackgroundStepId:5000` where it might otherwise call `localhost:5000`.
+If you are using a VM, local runner, or the Harness Cloud build infrastructure where the background step is running a container, you can use the Background step **Id** to call services started by Background steps in later steps, such as commands in Run steps. For example, a cURL command could call `BackgroundStepId:5000` where it might otherwise call `localhost:5000`.
 
 <figure>
 
@@ -50,6 +50,8 @@ You can use the Background step **Id** to call services started by Background st
 </figure>
 
 If the Background step is inside a step group, you must include step group ID, such as `curl StepGroupId_BackgroundStepId:5000`, even if both steps are in the same step group.
+
+If the Background step runs directly on the host or in a Kubernetes cluster build infrastructure, do not use the step ID to reference Background steps. Instead, use `localhost:host_port`. For more information, go to [Port Bindings](#port-bindings).
 
 :::
 
@@ -293,12 +295,10 @@ If the service is running in a container, you can select an option to set the pu
 
 The host port and container port binding are similar to [port mapping in Docker](https://docs.docker.com/config/containers/container-networking/). Usually the ports are the same unless the default host port for the Background step is already in use by another local service or you are [running multiple instances of the same service](./multiple-postgres.md).
 
-Depending on the Build stage's **Infrastructure**, some steps might run directly on VMs while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running.
+Depending on the Build stage's **Infrastructure**, some steps might run directly on VMs while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running. For example, assume you create a Background step with the [Name and ID](#name-and-id) `myloginservice`. To call this service in later steps in the same stage, you use:
 
-For example, assume you create a Background step with the **Name** and **Id** `myloginservice`. To call this service in later steps in the same stage, you use:
-
-* `myloginservice:container_port` for containerized steps.
-* `localhost:host_post` for steps running directly on the build machine or in a Kubernetes cluster build infrastructure.
+* `myloginservice:container_port` for containerized steps, such as those running in self-hosted VM build infrastructures or running Docker images.
+* `localhost:host_post` for steps running in a Kubernetes cluster build infrastructure or directly on the build machine (such as a service running from a binary already installed on the host machine).
 
 :::info
 

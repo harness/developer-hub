@@ -147,4 +147,4 @@ This default connector can be changed at any time and another connector can be u
 
 You can select the default connector in your project, org, or account **Default Settings**:
 
-<docimage path={require('./static/78f49fd6d5d64ecd1b877cf3f76767ae04cce53bffccbb67b20447c64ccca5cf.png')} width="60%" height="60%" title="Click to view full size image" />  
+<DocImage path={require('./static/78f49fd6d5d64ecd1b877cf3f76767ae04cce53bffccbb67b20447c64ccca5cf.png')} width="60%" height="60%" title="Click to view full size image" />  

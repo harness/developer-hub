@@ -4,14 +4,12 @@ description: Harness uses Open Policy Agent (OPA) to store and enforce policies 
 sidebar_position: 1
 ---
 
-
 :::note
 Currently, this feature is behind the feature flag, `OPA_PIPELINE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
 This topic provides an overview of how Harness Policy As Code implemented governance.
-
 
 :::note
 Looking for the quickstart? Go to [Harness Policy As Code quickstart](/docs/platform/governance/Policy-as-code/harness-governance-quickstart).
@@ -22,7 +20,7 @@ Looking for the quickstart? Go to [Harness Policy As Code quickstart](/docs/plat
 
 Before learning about Harness Policy As Code, you should have an understanding of the following:
 
-* [Learn Harness' key concepts](/docs/get-started/key-concepts)
+- [Learn Harness' key concepts](/docs/get-started/key-concepts)
 
 ### How does Harness use OPA?
 
@@ -38,20 +36,18 @@ Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible reg
 
 #### Example A: Pipeline > On Save
 
-
 > When a Pipeline is saved, there needs to be an Approval step before deploying to a production environment.
 
-* **Success:** you configure an Approval Step in the Pipeline and then proceed to configure a prod stage. When you save the Pipeline, the policy rule is evaluated and returns `success`.
-* **Warning:** a warning message appears: `You need an Approval step. If you save the Pipeline and deploy, Harness will throw an error.`
-* **Failure:** you configure a Pipeline with a Deploy stage that deploys to a prod environment without an Approval stage before it. When you save the Pipeline, Harness throws an error message indicating the rule was enforced and the Pipeline fails validation.
+- **Success:** you configure an Approval Step in the Pipeline and then proceed to configure a prod stage. When you save the Pipeline, the policy rule is evaluated and returns `success`.
+- **Warning:** a warning message appears: `You need an Approval step. If you save the Pipeline and deploy, Harness will throw an error.`
+- **Failure:** you configure a Pipeline with a Deploy stage that deploys to a prod environment without an Approval stage before it. When you save the Pipeline, Harness throws an error message indicating the rule was enforced and the Pipeline fails validation.
 
 #### Example B: Pipeline > On Run
 
-
 > On deployment, I need my pod CPU and memory to be pre-defined.
 
-* **Success:** you deploy the Pipeline and during the dry run the pod CPU and memory have been defined and populated in the deployment manifest. As a result, the dry run progresses. Harness indicates that the rule was evaluated and the action was valid.
-* **Failure:** pod CPU and memory were not defined in the deployment manifest. As a result, the dry run fails. Harness indicates that a rule was enforced and the deployment is prevented.
+- **Success:** you deploy the Pipeline and during the dry run the pod CPU and memory have been defined and populated in the deployment manifest. As a result, the dry run progresses. Harness indicates that the rule was evaluated and the action was valid.
+- **Failure:** pod CPU and memory were not defined in the deployment manifest. As a result, the dry run fails. Harness indicates that a rule was enforced and the deployment is prevented.
 
 ### Harness OPA Server
 
@@ -79,8 +75,8 @@ Policies are written in the OPA policy language, Rego.
 
 **New to OPA Policy Authoring?** Use the following resources to learn Rego:
 
-* **Highly recommend:** Free online course on Rego from Styra founder and OPA co-creator Tim Hendricks: [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).
-* See [Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language/) from OPA. The [Rego Cheatsheet](https://dboles-opa-docs.netlify.app/docs/v0.10.7/rego-cheatsheet/) is also helpful to have on hand.
+- **Highly recommend:** Free online course on Rego from Styra founder and OPA co-creator Tim Hendricks: [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).
+- See [Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language/) from OPA. The [Rego Cheatsheet](https://dboles-opa-docs.netlify.app/docs/v0.10.7/rego-cheatsheet/) is also helpful to have on hand.
 
 #### Policy Editor
 
@@ -105,6 +101,7 @@ You can simply use the library policies to quickly generate the policy you want 
 In the Policy Editor, you can select sample entities to test your policy on. For example, Pipelines.
 
 ![](./static/harness-governance-overview-09.png)
+
 #### Testing Terminal
 
 The Testing Terminal lets you test the policy against real inputs while you're developing it. You can select input payloads from previous evaluations to test what will happen when your policy is evaluated.
@@ -115,38 +112,38 @@ The Testing Terminal lets you test the policy against real inputs while you're d
 
 The input payload contains user metadata for the user that initiated the event. Metadata includes roles, groups, etc, and is added to every evaluation automatically. For example:
 
-
 ```
-{  
-  "action": null,  
-  "date": "2022-05-05T20:41:23.538+0000",  
-  "metadata": {  
-    "action": "onsave",  
-    "roleAssignmentMetadata": [  
-      {  
-        "identifier": "role_assignment_NsFQM43RqnfQJmtPWx7s",  
-        "managedRole": true,  
-        "managedRoleAssignment": true,  
-        "resourceGroupIdentifier": "_all_project_level_resources",  
-        "resourceGroupName": "All Project Level Resources",  
-        "roleIdentifier": "_project_viewer",  
-        "roleName": "Project Viewer"  
-      }  
-    ],  
-    "timestamp": 1651783283,  
-    "type": "pipeline",  
-    "user": {  
-      "disabled": false,  
-      "email": "john.doe@harness.io",  
-      "externallyManaged": false,  
-      "locked": false,  
-      "name": "john.doe@harness.io",  
-      "uuid": "U6h_smb9QTGimsYfNdv6VA"  
-    },  
-    "userGroups": []  
-  },  
+{
+  "action": null,
+  "date": "2022-05-05T20:41:23.538+0000",
+  "metadata": {
+    "action": "onsave",
+    "roleAssignmentMetadata": [
+      {
+        "identifier": "role_assignment_NsFQM43RqnfQJmtPWx7s",
+        "managedRole": true,
+        "managedRoleAssignment": true,
+        "resourceGroupIdentifier": "_all_project_level_resources",
+        "resourceGroupName": "All Project Level Resources",
+        "roleIdentifier": "_project_viewer",
+        "roleName": "Project Viewer"
+      }
+    ],
+    "timestamp": 1651783283,
+    "type": "pipeline",
+    "user": {
+      "disabled": false,
+      "email": "john.doe@harness.io",
+      "externallyManaged": false,
+      "locked": false,
+      "name": "john.doe@harness.io",
+      "uuid": "U6h_smb9QTGimsYfNdv6VA"
+    },
+    "userGroups": []
+  },
 ...
 ```
+
 This enables enforcing policies with advanced and attribute-based access control use cases.
 
 For more information, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
@@ -181,29 +178,29 @@ Soon, policies can be applied to more entities, such as Connectors, Services, En
 
 #### Pipelines
 
-Policies are evaluated against Harness Pipelines. The input payload is an expanded version of the Pipeline YAML, including expanded references and parameters at runtime. 
+Policies are evaluated against Harness Pipelines. The input payload is an expanded version of the Pipeline YAML, including expanded references and parameters at runtime.
 
 Policy Sets can be configured to be enforced automatically on these Pipeline events:
 
-* **On Save:** Policies are evaluated when the Pipeline is saved.
-* **On Run:** Policy sets are evaluated after the preflight checks.
+- **On Save:** Policies are evaluated when the Pipeline is saved.
+- **On Run:** Policy sets are evaluated after the preflight checks.
 
 Severities:
 
-* **On error (Error and Exit):** a message is shown and the action does not complete.
-* **On warning (Warn and Continue):** a message is shown and the action is completed.
+- **On error (Error and Exit):** a message is shown and the action does not complete.
+- **On warning (Warn and Continue):** a message is shown and the action is completed.
 
 The Policy step in a Pipeline also enables evaluating policies during Pipeline execution. Go to [add a Governance Policy step to a pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline) for more information.
 
 #### Feature Flags
 
-Policies are evaluated against Harness [Feature Flags](/docs/feature-flags/get-started/overview).  
+Policies are evaluated against Harness [Feature Flags](/docs/feature-flags/get-started/overview).
 
 Policy Sets can be configured to evaluate policies on these Feature Flag events:
 
-* Feature Flag is saved.
-* Flag is created.
-* Flag is toggled on or off.
+- Feature Flag is saved.
+- Flag is created.
+- Flag is toggled on or off.
 
 See [Use Harness Policy As Code for Feature Flags](/docs/platform/governance/Policy-as-code/using-harness-policy-engine-for-feature-flags).
 
@@ -215,18 +212,17 @@ You can configure a Policy Set to evaluate policies when you save a container.
 
 Go to [Use Harness Policy As Code for Connectors](/docs/platform/governance/Policy-as-code/sample-policy-use-case#connector-policy-samples).
 
-
 #### Template
 
-<docvideo src="https://www.loom.com/share/e50a46ee85184c859aa2012d628e3ffe?sid=f5b08537-bee8-4107-b3e1-81178966e08f" />
+<DocVideo src="https://www.loom.com/share/e50a46ee85184c859aa2012d628e3ffe?sid=f5b08537-bee8-4107-b3e1-81178966e08f" />
 
 You can configure template policies during the creation of the template. This ensures that you follow your organization's established best practices without the need to manage each template directly. By setting guardrails at creation time, you can reduce the number of checks required at runtime to enforce standards.
 
 You can now manage template configuration by running policies on Template Save. During Pipeline Save, you can enforce the use of a specific template. On Pipeline Run, you can ensure that the resolved contents of the pipeline meet execution standards.
 
-* On Template Save
-* On Pipeline Save
-* On Pipeline Run
+- On Template Save
+- On Pipeline Save
+- On Pipeline Run
 
 #### Custom
 
@@ -238,13 +234,10 @@ Custom entity types are open ended. There is no pre-set JSON schema that is used
 
 ### Policy and Policy Set Hierarchy and Inheritance
 
-Policies and Policy Sets are saved at the Harness Account, Organization, or Project level in the Harness. Where the Policy or Policy set is saved determines its scope. 
+Policies and Policy Sets are saved at the Harness Account, Organization, or Project level in the Harness. Where the Policy or Policy set is saved determines its scope.
 
-* Policies saved at the Account level can be added to Policy Sets in the Account, or Orgs and Projects within that Account.
-* A policy at the Org level can only be added to Policy Sets in that Org and its Project.
-* A policy at the Project level can only be added to Policy Sets in that Project.
+- Policies saved at the Account level can be added to Policy Sets in the Account, or Orgs and Projects within that Account.
+- A policy at the Org level can only be added to Policy Sets in that Org and its Project.
+- A policy at the Project level can only be added to Policy Sets in that Project.
 
 ![](./static/harness-governance-overview-13.png)
-
-
-

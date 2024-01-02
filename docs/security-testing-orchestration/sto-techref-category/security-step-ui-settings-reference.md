@@ -1,7 +1,7 @@
 ---
-title: Scanner template settings reference for STO
+title: STO scanner template UI reference
 description: All available UI settings for scanner templates.
-sidebar_label: Security step settings reference
+sidebar_label: Scanner template UI reference
 sidebar_position: 600
 ---
 
@@ -18,7 +18,7 @@ Some Security steps include a scanner template UI for setting up a scan. This to
 <!-- ============================================================================= -->
 
 ## Configuring an STO scanner template 
-To set up a scan using the scanner template, add a SecurityTests stage to your pipeline. Then add a Security step for the scanner of interest and configure the step using the available options.
+To set up a scan using the scanner template, add a SecurityTests or a CI Build stage to your pipeline. Then add a step for the scanner of interest and configure the step using the available options.
 
 <details>
 <summary>Scanner Template example</summary>

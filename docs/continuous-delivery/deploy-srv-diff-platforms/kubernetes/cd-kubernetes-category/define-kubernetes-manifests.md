@@ -30,8 +30,7 @@ Here's a quick video that show how to add Kubernetes manifests and Values YAML f
 
 <!-- Video:
 https://www.youtube.com/watch?v=dVk6-8tfwJc-->
-<docvideo src="https://www.youtube.com/watch?v=dVk6-8tfwJc" />
-
+<DocVideo src="https://www.youtube.com/watch?v=dVk6-8tfwJc" />
 
 ## Artifacts and Kubernetes manifests in Harness
 
@@ -43,10 +42,10 @@ Alternatively, you can also add the image to Harness as an Artifact in the **Ser
 
 Your values YAML file refers to the Artifact using the Harness variable expression `<+artifact.image>`:
 
-
 ```yaml
 image: <+artifact.image>
 ```
+
 When you deploy, Harness connects to your repo and you select which image version/tag to deploy.
 
 ![](./static/define-kubernetes-manifests-28.png)
@@ -62,56 +61,54 @@ You cannot use Harness variables in Kubernetes manifests. You can only use Harne
 <details>
 <summary>Values YAML using Harness variables for name, image, dockercfg, and namespace</summary>
 
-
 ```yaml
-name: <+stage.variables.name>  
-replicas: 2  
-  
-image: <+artifact.image>  
-dockercfg: <+artifact.imagePullSecret>  
-  
-createNamespace: true  
-namespace: <+infra.namespace>  
-...
+name: <+stage.variables.name>
+replicas: 2
+
+image: <+artifact.image>
+dockercfg: <+artifact.imagePullSecret>
+
+createNamespace: true
+namespace: <+infra.namespace>
 ```
+
 </details>
 
 <details>
 <summary>Deployment object that references the values.yaml using Go templating</summary>
 
-
 ```yaml
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
-  name: {{.Values.name}}-deployment  
-spec:  
-  replicas: {{int .Values.replicas}}  
-  selector:  
-    matchLabels:  
-      app: {{.Values.name}}  
-  template:  
-    metadata:  
-      labels:  
-        app: {{.Values.name}}  
-    spec:  
-      {{- if .Values.dockercfg}}  
-      imagePullSecrets:  
-      - name: {{.Values.name}}-dockercfg  
-      {{- end}}  
-      containers:  
-      - name: {{.Values.name}}  
-        image: {{.Values.image}}  
-        {{- if or .Values.env.config .Values.env.secrets}}  
-        envFrom:  
-        {{- if .Values.env.config}}  
-        - configMapRef:  
-            name: {{.Values.name}}  
-        {{- end}}  
-        {{- if .Values.env.secrets}}  
-        - secretRef:  
-            name: {{.Values.name}}  
-        {{- end}}  
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.name}}-deployment
+spec:
+  replicas: {{int .Values.replicas}}
+  selector:
+    matchLabels:
+      app: {{.Values.name}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.name}}
+    spec:
+      {{- if .Values.dockercfg}}
+      imagePullSecrets:
+      - name: {{.Values.name}}-dockercfg
+      {{- end}}
+      containers:
+      - name: {{.Values.name}}
+        image: {{.Values.image}}
+        {{- if or .Values.env.config .Values.env.secrets}}
+        envFrom:
+        {{- if .Values.env.config}}
+        - configMapRef:
+            name: {{.Values.name}}
+        {{- end}}
+        {{- if .Values.env.secrets}}
+        - secretRef:
+            name: {{.Values.name}}
+        {{- end}}
         {{- end}}
 ```
 
@@ -145,13 +142,12 @@ For steps on adding a stage, see [Add a Stage](/docs/platform/Pipelines/add-a-st
 ## Create the Harness Kubernetes service
 
 1. In **Service**, you can define/select the Service and Service Definition.
-  
-  Let's take a moment and review Harness Services and Service Definitions (which are explained below). Harness Services represent your microservices/apps logically.  
-  
-  You can add the same Service to as many stages are you need. Service Definitions represent your artifacts, manifests, and variables physically. They are the actual files and variable values.  
-  
-  By separating Services and Service Definitions, you can propagate the same Service across stages and change artifacts, manifests, and variables with each stage.Select or create the Service.
-2. To add your manifests, go to **Manifests** in the Service Definition.
+
+Let's take a moment and review Harness Services and Service Definitions (which are explained below). Harness Services represent your microservices/apps logically.
+
+You can add the same Service to as many stages are you need. Service Definitions represent your artifacts, manifests, and variables physically. They are the actual files and variable values.
+
+By separating Services and Service Definitions, you can propagate the same Service across stages and change artifacts, manifests, and variables with each stage.Select or create the Service. 2. To add your manifests, go to **Manifests** in the Service Definition.
 
 ## Add Kubernetes manifests to a service
 
@@ -163,13 +159,13 @@ If you are adding the image location to Harness as an Artifact in the Service De
 2. In **Specify Manifest Type**, select **K8s Manifest**, and then click **Next**.
 3. In **Specify K8s Manifest Store**, select the Git provider. In this example, click GitHub, and then select or create a new GitHub Connector. See [Connect to Code Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
 4. Click **Continue**. **Manifest Details** appears.
-   
+
    ![](./static/define-kubernetes-manifests-30.png)
 
 5. In **Manifest Identifier**, enter an Id for the manifest. It must be unique. It can be used in Harness expressions to reference this manifests settings.
-   
+
    For example, if the Pipeline is named **MyPipeline** and **Manifest Identifier** were **myapp**, you could reference the **Branch** setting using this expression:
-   
+
    `<+pipeline.stages.MyPipeline.spec.serviceConfig.serviceDefinition.spec.manifests.myapp.spec.store.spec.branch>`
 
 6. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**, and then enter the branch or commit ID for the repo.
@@ -211,4 +207,3 @@ You cannot use [Harness variables](/docs/platform/Variables-and-Expressions/harn
 import HelmMultiManifests from '/docs/continuous-delivery/shared/multiple-helm-charts.md';
 
 <HelmMultiManifests name="helmmultimanifests" />
-

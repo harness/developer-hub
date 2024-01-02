@@ -3995,3 +3995,38 @@ Resource constraints has account level scoping by default, so if same infrastruc
 #### Harness is not waiting for workload to reach steady state
 
 Check if Skip Steady state check is enabled for that step as by default Harness perform steady state check
+
+#### On Harness approval steps, when using expressions for the description, how can we add line breaks ?
+
+One can try using the expression `\\` or `\u000a` to make an expression work.
+
+#### Is it required to have the delegate installed on a ECS cluster ?
+
+Delegate can be installed anywhere as long as it has access to the target Ecs cluster. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#install-and-register-the-harness-delegate)
+
+#### How can one add custom certs using with custom truststore for delegate version later than `23.10.81202` ?
+
+To add custom certificates for a Docker, Kubernetes, or Helm delegate with an immutable image type version later than 23.10.81202, you can follow these steps:
+
+- Prepare the custom cert file(s). Certificates must be in PEM format
+- Mount the file(s) to the /opt/harness-delegate/ca-bundle/ directory inside the delegate container
+- Start the delegate with the root user
+
+Please read more on this in the follwing [Documenatation](https://developer.harness.io/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/#install-with-custom-certificates)
+
+#### Do we not show a Service summary for services created at the account level and org level ?
+
+Yes, the support for Service summary is only present for a project level service currently by design.
+
+#### Is it part of the design that in the webhook trigger, an API URL for status is provided without the need for authorization ?
+
+Yes, this is kept by design. For more on this please go through the provided [Documentation](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/#enforcing-authorization-for-custom-triggers) 
+
+#### What could be the reason for getting following error for Jenkins : `Invalid request: Failed to collect environment variables from Jenkins` ?
+
+It is possible that the EnvInject plugin is not properly configured or enabled in Jenkins. You can check if the plugin is installed and enabled by going to `Jenkins > Manage Jenkins > Manage Plugins` and searching for `EnvInject`. If it is not installed, you can install it from the `Available` tab. If it is installed but not enabled, you can enable it from the Installed tab. Additionally, make sure that the job has the necessary permissions to access the environment variables.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/jenkins)
+
+#### For an HTTP step communicating with an mTLS endpoint, if there is no certificate configuration, does it ignore SSL validation like it does for a single TLS handshake ?
+
+In the context of mTLS, it is expected that the client (delegate) always needs to present a certificate; otherwise, the server will not accept the request. In contrast, with TLS, setting SSL ignore will instruct the client not to validate the server. It's important to note that this behavior aligns with the expected security practices for mutual TLS communication.

@@ -8,7 +8,7 @@
 
    <!-- ![](/docs/continuous-integration/get-started/static/ci_subscribe_compare_plans.png) -->
 
-   <docimage path={require('/docs/continuous-integration/get-started/static/ci_subscribe_compare_plans.png')} />
+   <DocImage path={require('/docs/continuous-integration/get-started/static/ci_subscribe_compare_plans.png')} />
 
    :::
 
@@ -22,13 +22,13 @@
 
    <!-- ![](/docs/continuous-integration/get-started/static/ci_subscribe_devs.png) -->
 
-   <docimage path={require('/docs/continuous-integration/get-started/static/ci_subscribe_devs.png')} />
+   <DocImage path={require('/docs/continuous-integration/get-started/static/ci_subscribe_devs.png')} />
 
 6. If you would like to subscribe to the 24/7 support package, select **Add Premier Support**. If you already have premier support for another module subscription, your CI subscription must also include premier support.
 
    <!-- ![](/docs/continuous-integration/get-started/static/ci_subscribe_premier.png) -->
 
-   <docimage path={require('/docs/continuous-integration/get-started/static/ci_subscribe_premier.png')} />
+   <DocImage path={require('/docs/continuous-integration/get-started/static/ci_subscribe_premier.png')} />
 
 7. Select **Next: Billing Information** and enter your billing information.
 
@@ -48,6 +48,6 @@ If you have an existing subscription for another module, your new subscription i
 
 <!-- ![](/docs/continuous-integration/get-started/static/ci_subscribe_prorate_billing.png) -->
 
-<docimage path={require('/docs/continuous-integration/get-started/static/ci_subscribe_prorate_billing.png')} />
+<DocImage path={require('/docs/continuous-integration/get-started/static/ci_subscribe_prorate_billing.png')} />
 
 :::
