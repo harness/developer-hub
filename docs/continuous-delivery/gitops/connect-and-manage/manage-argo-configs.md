@@ -20,7 +20,7 @@ To add the GitOps application for your Argo CD configuration, do the following:
 
    <figure>
    
-   <docimage path={require('./static/29bfc8656433c153505e52fd3db231902c0a4a8837b9e7dd49c436349d72aec1.png')} width="60%" height="60%" title="Click to view full size image" />  
+   <DocImage path={require('./static/29bfc8656433c153505e52fd3db231902c0a4a8837b9e7dd49c436349d72aec1.png')} width="60%" height="60%" title="Click to view full size image" />  
    
    <figcaption>Figure 1: GitOps repository.</figcaption>
    </figure>
@@ -29,7 +29,7 @@ To add the GitOps application for your Argo CD configuration, do the following:
    
    <figure>
    
-   <docimage path={require('./static/f844b3ba739e1acbab93784f9ac33945a0e820a9b15e8c958aeba5bbed9cbe26.png')} width="60%" height="60%" title="Click to view full size image" />  
+   <DocImage path={require('./static/f844b3ba739e1acbab93784f9ac33945a0e820a9b15e8c958aeba5bbed9cbe26.png')} width="60%" height="60%" title="Click to view full size image" />  
    
    <figcaption>Figure 2: GitOps cluster.</figcaption>
    </figure>
@@ -40,7 +40,7 @@ To add the GitOps application for your Argo CD configuration, do the following:
    
    <figure>
    
-   <docimage path={require('./static/c42483d43b3d2464994cb0085125ba7b3b0ed10f0b5f5b901e9d31a9b66e1157.png')} width="60%" height="60%" title="Click to view full size image" />  
+   <DocImage path={require('./static/c42483d43b3d2464994cb0085125ba7b3b0ed10f0b5f5b901e9d31a9b66e1157.png')} width="60%" height="60%" title="Click to view full size image" />  
    
    <figcaption>Figure 3: Path to Argo CD configs in GitOps application.</figcaption>
    </figure>
@@ -51,7 +51,7 @@ To add the GitOps application for your Argo CD configuration, do the following:
 
    <figure>
    
-   <docimage path={require('./static/33cab4c8688ebf13b142bdd87f826916afced3e1fd9120566fa2118eb2e2f43c.png')} width="60%" height="60%" title="Click to view full size image" />  
+   <DocImage path={require('./static/33cab4c8688ebf13b142bdd87f826916afced3e1fd9120566fa2118eb2e2f43c.png')} width="60%" height="60%" title="Click to view full size image" />  
    
    <figcaption>Figure 4: Directory Recurse option.</figcaption>
    </figure>

@@ -17,11 +17,6 @@ For certain settings, the values in the Free plan also apply to the trial period
 
 ### Concurrent Active Pipeline Executions
 
-:::info note
-This feature is available at the account scope. Currently, this feature is behind the feature flag `PIE_PIPELINE_SETTINGS_ENFORCEMENT_LIMIT`.
-
-:::
-
 Number of concurrent pipeline executions per execution API request. The setting considers only those executions that are in progress (including those that are paused temporarily in steps such as the wait step or approval step), not those that have executed to completion.
 
 Any executions that are triggered when the limit is reached are added to the execution queue. **These executions and their deployments are not failed by Harness.**

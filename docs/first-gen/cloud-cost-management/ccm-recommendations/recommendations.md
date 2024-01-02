@@ -185,7 +185,7 @@ The Overview page lists the recommendations only if the monthly cost-saving is g
   
   ![](./static/recommendations-10.png)
 
-4. Click on the **Workload** to view further granular details. Alternatively, click **<-** arrow to go back.
+4. Click on the **Workload** to view further granular details. Alternatively, click **\<-** arrow to go back.
    
      ![](./static/recommendations-11.png)
    

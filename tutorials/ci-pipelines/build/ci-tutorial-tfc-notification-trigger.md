@@ -9,7 +9,7 @@ redirect_from:
   - /tutorials/ci-pipelines/tfc-notification
 ---
 
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
@@ -18,7 +18,7 @@ redirect_from:
   target="_self"
 />
 
-Continuous Integration (CI) pipelines deploy CI artifacts to a *target infrastructure*. Deployments handled by CI or Continuous Deployment (CD) pipelines. Modern day architecture uses automation tools, like [Terraform](https://terraform.io) or [Ansible](https://www.ansible.com/) to provision the target infrastructure. This type of provisioning is called [infrastructure-as-code (IaC)](https://en.wikipedia.org/wiki/Infrastructure_as_code).
+Continuous Integration (CI) pipelines deploy CI artifacts to a _target infrastructure_. Deployments handled by CI or Continuous Deployment (CD) pipelines. Modern day architecture uses automation tools, like [Terraform](https://terraform.io) or [Ansible](https://www.ansible.com/) to provision the target infrastructure. This type of provisioning is called [infrastructure-as-code (IaC)](https://en.wikipedia.org/wiki/Infrastructure_as_code).
 
 Usually CI/CD and IaC don't run in tandem. Often, the CI pipeline is triggered only when the target infrastructure is ready to bootstrap with software components that are required by CI/CD pipelines.
 
@@ -28,19 +28,17 @@ As CI/CD user, I want to provision a Kubernetes cluster on Google Cloud Platform
 
 <!-- ![Tutorial architecture diagram](../static/ci-tfc-notif-trigger/tfc-trigger-arch.png) -->
 
-<docimage path={require('../static/ci-tfc-notif-trigger/tfc-trigger-arch.png')} />
+<DocImage path={require('../static/ci-tfc-notif-trigger/tfc-trigger-arch.png')} />
 
 ## Prerequisites
 
 In addition to a Harness account, you need the following accounts for this tutorial:
 
-* A **GitHub account** where you can fork the tutorial repos.
-* A [Terraform Cloud account](https://app.terraform.io/public/signup/account).
-* A [Google Cloud account](https://cloud.google.com) where you can create a Google Kubernetes Engine (GKE) cluster.
+- A **GitHub account** where you can fork the tutorial repos.
+- A [Terraform Cloud account](https://app.terraform.io/public/signup/account).
+- A [Google Cloud account](https://cloud.google.com) where you can create a Google Kubernetes Engine (GKE) cluster.
 
-```mdx-code-block
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
 
 <CISignupTip />
 
@@ -99,9 +97,9 @@ Fork these repos, and then clone them to your local machine.
 
 Code samples in this tutorial will refer to these repos as follows:
 
-* `vanilla-gke`: `$TFC_GKE_REPO`
-* `bootstrap-argocd`: `$ARGOCD_BOOTSTRAP_REPO`
-* `tfc-notification-demo`: `$TFC_NOTIFICATION_DEMO`
+- `vanilla-gke`: `$TFC_GKE_REPO`
+- `bootstrap-argocd`: `$ARGOCD_BOOTSTRAP_REPO`
+- `tfc-notification-demo`: `$TFC_NOTIFICATION_DEMO`
 
 ## Create a Harness project
 
@@ -124,7 +122,7 @@ If the CI pipeline wizard starts after you select **Go to Module**, you'll need 
 
 ## Create a GitHub connector
 
-Harness uses a *connector* to connect to your Git repositories.
+Harness uses a _connector_ to connect to your Git repositories.
 
 1. In the GitHub account where you forked the tutorial repos, [create a GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with the `repo`, `admin:repo_hook`, and `user` scopes.
 
@@ -136,24 +134,24 @@ Harness uses a *connector* to connect to your Git repositories.
 4. Enter a **Name** and select **Continue**.
 5. Configure the **Details** as follows, and then select **Continue**.
 
-   * **URL Type:** Select **Account**.
-   * **Connection Type:** Select **HTTP**.
-   * **GitHub Account URL:** Enter the URL for the GitHub account where you forked the tutorial repos, such as `https://github.com/my-account`.
-   * **Test Repository:** Enter the repo name for any repo in your GitHub account, such as `tfc-notification-demos`. This is only used to verify connectivity.
+   - **URL Type:** Select **Account**.
+   - **Connection Type:** Select **HTTP**.
+   - **GitHub Account URL:** Enter the URL for the GitHub account where you forked the tutorial repos, such as `https://github.com/my-account`.
+   - **Test Repository:** Enter the repo name for any repo in your GitHub account, such as `tfc-notification-demos`. This is only used to verify connectivity.
 
    <!-- ![GitHub Connector Details](../static/ci-tfc-notif-trigger/tfc-notif-trigger-1.png) -->
 
-   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-1.png')} />
+   <DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-1.png')} />
 
 6. Configure the **Credentials** as follows, and then select **Continue**.
 
-   * **Username:** Enter the username for the GitHub account where you forked the tutorial repos.
-   * **Personal Access Token:** Select your `GITHUB_PAT` text secret.
-   * **Enable API access:** Select this option and select the same personal access token secret.
+   - **Username:** Enter the username for the GitHub account where you forked the tutorial repos.
+   - **Personal Access Token:** Select your `GITHUB_PAT` text secret.
+   - **Enable API access:** Select this option and select the same personal access token secret.
 
    <!-- ![GitHub Connector Credentials](../static/ci-tfc-notif-trigger/tfc-notif-trigger-2.png) -->
 
-   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-2.png')} />
+   <DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-2.png')} />
 
 7. For **Select Connectivity Mode**, select **Connect through the Harness Platform**, and then select **Save and Continue**.
 8. Wait while Harness tests the connection, and then select **Finish**.
@@ -203,19 +201,19 @@ You need Google Service Account (GSA) credentials (as a JSON key) to query your 
 
    <!-- ![TFC workspace VCS](../static/ci-tfc-notif-trigger/tfc-notif-trigger-3.png) -->
 
-   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-3.png')} />
+   <DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-3.png')} />
 
 3. Configure the workspace with the following variables:
 
-   | Key | Value | Category |
-   | --- | ----- | -------- |
-   | `gcp_project`| Sensitive - write only | terraform |
-   | `gcp_region` | Select a region | terraform |
-   | `GOOGLE_CREDENTIALS` | Sensitive - write only | env |
+   | Key                  | Value                  | Category  |
+   | -------------------- | ---------------------- | --------- |
+   | `gcp_project`        | Sensitive - write only | terraform |
+   | `gcp_region`         | Select a region        | terraform |
+   | `GOOGLE_CREDENTIALS` | Sensitive - write only | env       |
 
    <!-- ![TFC workspace variables](../static/ci-tfc-notif-trigger/tfc-notif-trigger-4.png) -->
 
-   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-4.png')} />
+   <DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-4.png')} />
 
    For more details on available variables, go to [Terraform Inputs](https://github.com/harness-apps/vanilla-gke#inputs) in the `vanilla-gke` tutorial repo documentation.
 
@@ -235,13 +233,13 @@ cat YOUR_GOOGLE_CREDENTIALS_KEY_FILE | tr -d \\n
 
    <!-- ![TFC cloud organization](../static/ci-tfc-notif-trigger/tfc-notif-trigger-5.png) -->
 
-   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-5.png')} />
+   <DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-5.png')} />
 
 5. In your Terraform Cloud user settings, **Create an API token**. This token is used to pull outputs from Terraform runs.
 
    <!-- ![Terraform API token](../static/ci-tfc-notif-trigger/tfc-notif-trigger-6.png) -->
 
-   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-6.png')} />
+   <DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-6.png')} />
 
 6. Save the API token to a variable named `$TF_TOKEN_app_terraform_io`. You will refer to this token in your Harness CI pipeline later in this tutorial.
 
@@ -253,15 +251,15 @@ Create a pipeline by importing a premade pipeline from one of the tutorial repos
 2. Select **Create a Pipeline**, and then select **Import From Git**.
 3. Configure the **Import Pipeline From Git** fields as follows:
 
-   * **Name:** `bootstrap argocd pipeline`
-   * **Git Connector:** Your GitHub connector
-   * **Repository:** `tfc-notificaiton-demo`
-   * **Git Branch:** `main`
-   * **YAML Path:** `.harness/bootstrap_argocd_pipeline.yaml`
+   - **Name:** `bootstrap argocd pipeline`
+   - **Git Connector:** Your GitHub connector
+   - **Repository:** `tfc-notificaiton-demo`
+   - **Git Branch:** `main`
+   - **YAML Path:** `.harness/bootstrap_argocd_pipeline.yaml`
 
    <!-- ![Import pipeline fields](../static/ci-tfc-notif-trigger/tfc-notif-trigger-7.png) -->
 
-   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-7.png')} />
+   <DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-7.png')} />
 
 4. Select **Import**.
 
@@ -277,7 +275,7 @@ This pipeline pulls public images from Docker Hub. If you do not want to use the
 
    <!-- ![Pipeline steps](../static/ci-tfc-notif-trigger/tfc-notif-trigger-8.png) -->
 
-   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-8.png')} />
+   <DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-8.png')} />
 
 2. Select each step to examine its configuration. Notice that the pipeline uses the following secrets:
 
@@ -290,7 +288,7 @@ This pipeline pulls public images from Docker Hub. If you do not want to use the
 
    <!-- ![Secrets list](../static/ci-tfc-notif-trigger/tfc-notif-trigger-9.png) -->
 
-   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-9.png')} />
+   <DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-9.png')} />
 
 :::tip
 
@@ -307,51 +305,51 @@ For the Harness CI pipeline to listen for Terraform Cloud events, you must [add 
 
    <!-- ![Custom webhook trigger option](../static/ci-tfc-notif-trigger/tfc-notif-trigger-10.png) -->
 
-   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-10.png')} />
+   <DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-10.png')} />
 
 3. For **Name**, enter `tfc notification`, and select **Continue**.
 
    <!-- ![TFC notification configuration](./static/ci-tfc-notif-trigger/tfc-notif-trigger-11.png) -->
 
-   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-11.png')} />
+   <DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-11.png')} />
 
 4. Do not change the **Conditions**. Select **Continue**.
 5. For **Pipeline Input**, enter `main` for the **Pipeline Reference Branch**. Note that you must set this field, but it doesn't have any relevance in this tutorial, since this pipeline manually clones code repos.
 
    <!-- ![Pipeline input configuration](../static/ci-tfc-notif-trigger/tfc-notif-trigger-12.png) -->
 
-   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-12.png')} />
+   <DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-12.png')} />
 
 6. Select **Create Trigger**.
 7. On the list of triggers, select the icon in the **Webhook** column, and then select **Copy as Webhook URL**. This value will be referred to as `$TRIGGER_WEBHOOK_URL` in the rest of this tutorial.
 
    <!-- ![Copy webhook URL](../static/ci-tfc-notif-trigger/tfc-notif-trigger-13.png) -->
 
-   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-13.png')} />
+   <DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-13.png')} />
 
 8. Go to the notification settings for your Terraform Cloud workspace.
 
    <!-- ![TFC notifications](../static/ci-tfc-notif-trigger/tfc-notif-trigger-14.png) -->
 
-   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-14.png')} />
+   <DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-14.png')} />
 
 9. Select **Create Notification**, and select **Webhook** as the **Destination**.
 
    <!-- ![Webhook destination](../static/ci-tfc-notif-trigger/tfc-notif-trigger-15.png) -->
 
-   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-15.png')} />
+   <DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-15.png')} />
 
 10. For **Name**, enter `ArgoCD Bootstrap Notifier`, and enter your pipeline trigger webhook URL in **Webhook URL**.
 
    <!-- ![TFC webhook details](../static/ci-tfc-notif-trigger/tfc-notif-trigger-16.png) -->
 
-   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-16.png')} />
+<DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-16.png')} />
 
 11. For **Triggers**, select **Only certain events** and **Completed** to that the `bootstrap argo CD` pipeline only runs on create events.
 
    <!-- ![Terraform notification trigger events](../static/ci-tfc-notif-trigger/tfc-notif-trigger-17.png) -->
 
-   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-17.png')} />
+<DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-17.png')} />
 
 12. Select **Create Notification**.
 
@@ -359,14 +357,14 @@ Creating the notification triggers a notification. If the cluster is not ready y
 
 <!-- ![TFC Webhook creation success message](../static/ci-tfc-notif-trigger/tfc-notif-trigger-18.png) -->
 
-<docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-18.png')} />
+<DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-18.png')} />
 
 ## Summary
 
-Now, your pipeline listens for notifications of IaC events from Terraform, and the pipeline only runs when it's necessary. Specifically in this pipeline, any changes to the `$TFC_GKE_REPO` trigger a *plan and apply* on Terraform Cloud. A **Completed** plan triggers the `bootstrap argocd pipline` to run and apply the manifests from `$BOOTSTRAP_ARGOCD_REPO` on the GKE cluster.
+Now, your pipeline listens for notifications of IaC events from Terraform, and the pipeline only runs when it's necessary. Specifically in this pipeline, any changes to the `$TFC_GKE_REPO` trigger a _plan and apply_ on Terraform Cloud. A **Completed** plan triggers the `bootstrap argocd pipline` to run and apply the manifests from `$BOOTSTRAP_ARGOCD_REPO` on the GKE cluster.
 
 Here is an example of the logs from a successful run:
 
 <!-- ![Successful build logs with Terraform webhook notification](../static/ci-tfc-notif-trigger/tfc-notif-trigger-19.png) -->
 
-<docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-19.png')} />
+<DocImage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-19.png')} />

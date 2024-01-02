@@ -75,6 +75,27 @@ export const ServerlessList: CardItem[] = [
   },
 ];
 
+export const UnifiedCICDList: CardItem[] = [
+  {
+    title: "End-To-End CI/CD Pipeline",
+    module: MODULES.cd,
+    icon: "img/icon_cd.svg",
+    description: <>Set up CI/CD with a GitOps pipeline</>,
+    type: [docType.Documentation],
+    time: "20min",
+    link: "/tutorials/cd-pipelines/unified-cicd/e2e-pipeline",
+  },
+  {
+    title: "GAR GKE CI/CD Pipeline",
+    module: MODULES.cd,
+    icon: "img/icon_cd.svg",
+    description: <>Build and push to GAR and deploy to GKE.</>,
+    type: [docType.Documentation],
+    time: "30min",
+    link: "/tutorials/cd-pipelines/unified-cicd/gar-gke-pipeline",
+  },
+];
+
 export const VMList: CardItem[] = [
   {
     title: "AWS",
@@ -182,15 +203,6 @@ export const AdvList: CardItem[] = [
     time: "20min",
     link: "/tutorials/cd-pipelines/continuous-verification/prometheus",
   },
-  {
-    title: "Unified CI/CD in a Single Pipeline",
-    module: MODULES.cd,
-    icon: "img/icon_cd.svg",
-    description: <>Setup CI and CD as two stages of the same pipeline</>,
-    type: [docType.Documentation],
-    time: "20min",
-    link: "/tutorials/cd-pipelines/unified-cicd",
-  },
 ];
 
 export const CDList: CardSections = [
@@ -204,6 +216,13 @@ export const CDList: CardSections = [
   {
     name: "Automate Serverless deployments with a CD Pipeline",
     list: ServerlessList,
+    // description: "optional",
+    // module: MODULES.cd, // optional
+    // icon: "path/to/img/optional",
+  },
+  {
+    name: "Unified CI/CD Pipelines",
+    list: UnifiedCICDList,
     // description: "optional",
     // module: MODULES.cd, // optional
     // icon: "path/to/img/optional",

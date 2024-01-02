@@ -7,9 +7,9 @@ redirect_from:
   - /docs/software-supply-chain-assurance/generate-sbom
 ---
 
-```mdx-code-block
+
 import SbomAbout from '/docs/software-supply-chain-assurance/shared/sbom-about.md';
-```
+
 
 <SbomAbout />
 
@@ -44,7 +44,7 @@ Use the **SSCA Orchestration** step to generate an SBOM in either the **Build** 
 
 :::info 
 
-SSCA Orchestration and Enforcement steps in deploy stage can only be used in the container step group
+SSCA Orchestration and Enforcement steps in deploy stage can only be used in the [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md)
 
 :::
 
@@ -62,7 +62,7 @@ The **SSCA Orchestration** step has the following settings:
 
 <!-- ![](../static/sbom-ssca-orch-step.png) -->
 
-<docimage path={require('../static/sbom-ssca-orch-step.png')} />
+<DocImage path={require('../static/sbom-ssca-orch-step.png')} />
 
 :::info ECR and GCR repos
 

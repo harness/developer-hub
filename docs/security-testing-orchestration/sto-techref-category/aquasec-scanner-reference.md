@@ -9,24 +9,32 @@ You can ingest container-image scan results from [Aqua Security Entrerprise](htt
 
 ## Important notes for running Aqua Security scans in STO
 
+
 ### Docker-in-Docker requirements
 
 <!-- -->
 
-```mdx-code-block
+
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
+
 
 <StoDinDRequirements />
 
 ### Root access requirements 
 
-```mdx-code-block
+
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-```
+
 
 <StoRootRequirements />
 
+### For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
 
 ## Aqua Security step settings for STO scans
 
@@ -41,19 +49,19 @@ The recommended workflow is add an Aqua Security step to a Security Tests or CI 
 #### Scan Mode
 
 
-```mdx-code-block
+
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-```
+
 
 <StoSettingScanMode />
 <StoSettingScanModeIngest />
 
 #### Scan Configuration
 
-```mdx-code-block
+
 import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-```
+
 
 <StoSettingProductConfigName />
 
@@ -64,9 +72,9 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 #### Type
 
-```mdx-code-block
+
 import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
-```
+
 
 <a name="scan-type"></a>
 <StoSettingScanTypeCont />
@@ -75,9 +83,9 @@ import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-t
 
 #### Name 
 
-```mdx-code-block
+
 import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-```
+
 
 <StoSettingProductID />
 
@@ -85,9 +93,9 @@ import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 
 #### Variant
 
-```mdx-code-block
+
 import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-```
+
 
 <StoSettingTargetVariant  />
 
@@ -99,9 +107,9 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 
 #### Type  (_orchestration_)
 
-```mdx-code-block
+
 import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md';
-```
+
 
 <StoSettingImageType />
 
@@ -113,9 +121,9 @@ import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md
 #### Domain (_extraction_)
 
 
-```mdx-code-block
+
 import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domain.md';
-```
+
 
 <StoSettingImageDomain />
 
@@ -124,9 +132,9 @@ import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domai
 
 #### Name
 
-```mdx-code-block
+
 import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md';
-```
+
 
 <StoSettingImageName />
 
@@ -137,18 +145,18 @@ import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md
 
 #### Tag
 
-```mdx-code-block
+
 import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
-```
+
 
 <StoSettingImageTag />
 
 
 #### Region  
 
-```mdx-code-block
+
 import StoSettingImageRegion from './shared/step_palette/_sto-ref-ui-image-region.md';
-```
+
 
 <StoSettingImageRegion />
 
@@ -160,17 +168,17 @@ import StoSettingImageRegion from './shared/step_palette/_sto-ref-ui-image-regio
 
 #### Access ID (_orchestration_)
 
-```mdx-code-block
+
 import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
-```
+
 
 <StoSettingAuthAccessID />
 
 #### Access Token
 
-```mdx-code-block
+
 import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
-```
+
 
 <StoSettingAuthAccessToken />
 
@@ -189,9 +197,9 @@ The AWS region of the image to scan.
 
 #### Ingestion File
 
-```mdx-code-block
+
 import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-```
+
 
 <StoSettingIngestionFile  />
 
@@ -202,9 +210,9 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 #### Log Level
 
-```mdx-code-block
+
 import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-```
+
 
 <StoSettingLogLevel />
 
@@ -214,9 +222,9 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Fail on Severity
 
-```mdx-code-block
+
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
 <StoSettingFailOnSeverity />
 
 <!-- 
@@ -263,9 +271,9 @@ In the **Advanced** settings, you can use the following options:
 
 ### Target and variant
 
-```mdx-code-block
+
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-```
+
 
 <StoLegacyTargetAndVariant />
 
@@ -273,18 +281,18 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 ### Container settings
 
 
-```mdx-code-block
+
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
-```
+
 
 
 <StoLegacyContainer />
 
 ### Ingestion file
 
-```mdx-code-block
+
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
+
 
 
 <StoLegacyIngest />
@@ -292,9 +300,9 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ###  Fail on Severity
 
 <!--
-```mdx-code-block
+
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
 
 
 <StoSettingFailOnSeverity />

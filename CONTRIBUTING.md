@@ -110,7 +110,7 @@ Videos are great tools to embed. You can embed a video in your Markdown as the f
 
 <!-- Video:
 https://youtu.be/apSyBZCz5QA-->
-<docvideo src="https://youtu.be/apSyBZCz5QA" />
+<DocVideo src="https://youtu.be/apSyBZCz5QA" />
 
 
 ```
@@ -152,17 +152,18 @@ When PRs are filed, a preview environment is created for the Harness approvers t
 Please raise a Jira issue for non-content changes, such as infrastructure or UX ideas/changes before submitting a PR.
 
 ## Archived Information
-Additional info that might not be prudent to your first contribution. 
+
+Additional info that might not be prudent to your first contribution.
 
 ### Style guide
 
-Harness Documentation follows the Microsoft Style Guide. We would recommend this. 
+Harness Documentation follows the Microsoft Style Guide. We would recommend this.
 
 - [https://learn.microsoft.com/en-us/style-guide/welcome/](https://learn.microsoft.com/en-us/style-guide/welcome/)
 
 Since the final document is in Markdown, feel free to author in a tool of your choice and port to Markdown.
 
-Vale is an excellent tool for validating spelling and style in Markdown **locally**. You can run [Vale](https://vale.sh/) aganist a specific file or project structure prior to submitting if you would like, locally. This is not required. 
+Vale is an excellent tool for validating spelling and style in Markdown **locally**. You can run [Vale](https://vale.sh/) aganist a specific file or project structure prior to submitting if you would like, locally. This is not required.
 
 > :information_source:
 > Part of the PR checks, we are currently not using Vale. If you would like to check locally/programatically, Vale is a good tool.

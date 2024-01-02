@@ -8,10 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
-import Ssc from '/docs/continuous-integration/shared/scm-status-checks.md';
-```
-
 You can optimize your CI pipelines to make them faster, more efficient, and more versatile.
 
 ## Background services, caches, and shared volumes
@@ -51,7 +47,7 @@ In addition to reducing build times, excluding unnecessary files and packages ma
 
 * Sort multi-line arguments in your Dockerfile alphabetically. This makes it easier to update and avoid duplicate packages.
 * Review [Docker's best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/).
-* [Enable Docker layer caching.](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#docker-layer-caching)
+* Enable [Docker layer caching](../caching-ci-data/docker-layer-caching.md) or use a [remote Docker cache](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#remote-docker-cache).
 
 </details>
 
@@ -104,10 +100,7 @@ There are many ways you can incorporate third party tools and services in your C
 * [Bring-your-own Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager)
 * [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support)
 * [Send notifications](/docs/category/notifications)
-
-### Branch protection and checks
-
-<Ssc />
+* [Branch protection and status checks](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks.md)
 
 ## Increase step resources
 

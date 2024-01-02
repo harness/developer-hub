@@ -11,41 +11,50 @@ You can run Nexus scans on your repositories using a Security step: create a CI 
 
 ### Docker-in-Docker requirements
 
-```mdx-code-block
+
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
+
 
 <StoDinDRequirements />
 
 ### Root access requirements
 
-```mdx-code-block
+
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-```
+
 
 <StoRootRequirements />
+
+### For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
 
 ## Security step settings for Nexus scans in STO
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
-<details><summary>Nexus configuration in a Security step</summary>
+<details>
+<summary>Nexus configuration in a Security step</summary>
 
-```mdx-code-block
+
 import security_step_nexus from './static/security-step-nexus.png'
-```
 
-```mdx-code-block
+
+
 <img src={security_step_nexus} alt="Configuring a Nexus scan in a Security step" height="50%" width="50%" />
-```
+
 
 </details>
 
 ### Target and variant
 
-```mdx-code-block
+
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-```
+
 
 <StoLegacyTargetAndVariant />
 
@@ -72,15 +81,15 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 ### Ingestion file
 
-```mdx-code-block
+
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
+
 
 <StoLegacyIngest />
 
 ### Fail on Severity
 
-```mdx-code-block
+
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
 <StoSettingFailOnSeverity />

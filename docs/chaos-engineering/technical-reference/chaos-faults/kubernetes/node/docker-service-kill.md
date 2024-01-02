@@ -58,13 +58,23 @@ Docker service kill fault determines the resilience of an application when a nod
         <td> Default: <code>containerd</code>. For more information, go to <a href="#kill-target-service">service name</a></td>
       </tr>
       <tr>
+        <td> LIB_IMAGE </td>
+        <td> Image used to inject chaos. </td>
+        <td> Default: <code>ubuntu:16.04</code>. For more information, go to <a href = "../../common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+      </tr>
+      <tr>
+        <td> MASK </td>
+        <td> Mask the docker systemd service.  </td>
+        <td> Supports 'enable' and 'disable'.</td>
+      </tr>
+      <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injecting chaos (in seconds). </td>
         <td> For example, 30 s. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults/#ramp-time">ramp time.</a></td>
       </tr>
     </table>
 
-### Target Node
+### Target node
 
 Name of the target node. Tune it by using the `TARGET_NODE` environment variable.
 

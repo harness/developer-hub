@@ -55,8 +55,8 @@ In the JEXL expression, you could use any of the Pipeline variables, including t
 
 Examples:
 
-* `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "SUCCEEDED"`
-* `<+environment.name> != "QA"`
+- `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "SUCCEEDED"`
+- `<+environment.name> != "QA"`
 
 For more information, go to [Built-in Harness variables reference](../../variables-and-expressions/harness-variables.md).
 
@@ -90,8 +90,8 @@ In the JEXL expression, you could use any of the Pipeline variables, including t
 
 Example:
 
-* `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "SUCCEEDED"`
-* `<+environment.name> != “QA”`
+- `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "SUCCEEDED"`
+- `<+environment.name> != “QA”`
 
 For more information on variable expressions, go to [Built-in and Custom Harness Variables Reference](../../variables-and-expressions/harness-variables.md).
 
@@ -125,8 +125,8 @@ You must use the expression after the step in execution.
 
 ### Conditional execution as a runtime input
 
-Conditional execution settings can be defined as runtime inputs in pipelines and templates at stage, step, and step group levels. 
+Conditional execution settings can be defined as runtime inputs in pipelines and templates at stage, step, and step group levels.
 
 Here's a video that explains how to define conditional execution as a runtime input:
 
-<docvideo src="https://harness-24.wistia.com/medias/5w053wtla8" />
+<DocVideo src="https://harness-24.wistia.com/medias/5w053wtla8" />

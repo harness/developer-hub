@@ -2,13 +2,13 @@
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-11-11T10:00
+date: 2023-12-08T10:00
 sidebar_position: 5
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/chaos-engineering/rss.xml" />
 
@@ -22,7 +22,127 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## December 2023
+
+### Version 1.27.1
+
+#### New features and enhancements
+
+* Adds a filter to the **listWorkflow** API so that data can be filtered based on whether it is CRON-enabled or not. (CHAOS-3424)
+
+* While selecting a chaos infrastructure to create an experiment, you can list the active infrastructures by clicking the checkbox **Show active only**. (CHAOS-3350)
+
+* Metrics for Dynatrace Probe (Metrics Selector and Entity Selector) were both optional previously and now have been termed as required, this change ensures that these properties are always passed while creating a dynatrace probe. (CHAOS-3330)
+
+* Experiment creation is now supported against inactive chaos infrastructure(s). This has been done to aid preparatory actions in environments which require agents to be scaled down (K8s) / stopped (Linux) except during the chaos execution window. (CHAOS-3241)
+
+* With this release, ACCESS_KEY invalidation after a chaos infrastructure is successfully connected is now deprecated. Now onwards users can use same manifest to connect same chaos infrastructures. (CHAOS-3164)
+
+* Added UI support for searching conditions for selection while creating a Chaos Guard Rule. (CHAOS-2982)
+
+* Adds support for using secretRef & configMapRef with tunables for VMWare Chaos Faults. (CHAOS-2750)
+
+* Adds support for encoding metrics queries which are constructed and executed via the metrics/data explorer before the API call [POST] incase of Dynatrace Probes. (CHAOS-2852)
+
+#### Fixed issues
+
+* For timedout experiment runs, The execution nodes used to still remain in running state. This has been fixed & shows timeout status for nodes also. (CHAOS-3094)
+
+* While adding a probe without the `description` key, it was breaking the `addProbe` API. The API is now fixed to take a blank string if no value is provided in the description or the key in missing in the API request. (CHAOS-3224)
+
+* Incase of Probe failures, Probe success Iteration ratio used to come 2 times in logs. This has been fixed now. (CHAOS-3421)
+
 ## November 2023
+
+### Version 1.26.0
+
+#### New features and enhancements
+
+* Renamed three keys in the Dynatrace probe:
+    - **dynatrace_endpoint** is now **endpoint**
+    - **dynatrace_metrics_selector** is now **metrics_selector** and is present inside metrics
+    - **dynatrace_entity_selector** is now **entity_selector** and is present inside metrics. (CHAOS-3177)
+
+* When an SSH experiment is executed inside a VM using the SSH credentials, the experiment uses parameters to allow the chaos logic scripts to receive dynamic inputs. (CHAOS-3049)
+
+* Field token name lengths have been reduced by modifying the Dynatrace probe schema for Kubernetes. (CHAOS-3043)
+
+* Linux infrastructure version is displayed on the landing page that lists all the Linux infrastructure. (CHAOS-2845)
+
+#### Fixed issues
+
+* While editing probes, the name validation check resulted in the error "probe name not available". This has been fixed. (CHAOS-3216)
+
+* When a user creates an experiment by selecting the predefined experiments, the dropdown menu shows experiment type instead of Chaoshubs. This has been fixed. (CHAOS-3193)
+
+* HTTP Linux OnChaos probe usage halted the fault execution because the probe finished executing before the fault thread could begin the evaluation of probes, which resulted in a deadlock. This issue has been fixed. (CHAOS-3180)
+
+* Erroneous timestamps were displayed in the UI, which led to wrong values and headings being shown in the UI. This has been fixed. (CHAOS-3178)
+
+* Previously configured SLO probe property fields appeared empty when the user tried to edit them. This has been fixed. (CHAOS-3176)
+
+* The node selector attribute in ChaosEngine added two fields, namely key and value, instead of **key:value**. This has been fixed. (CHAOS-3173)
+
+* With changes in the image registry, the LIB_IMAGE environment variable was being overwritten by chaos-go-runner. This has been fixed. (CHAOS-3172)
+
+* Probes whose execution time exceeded 180 seconds would error out with N/A status, regardless of probeTimeout settings. This has been fixed. (CHAOS-3169)
+
+* When a gameday was deleted, the name of a deleted gameday would not show up in the audit event. It has been fixed. (CHAOS-3158)
+
+* Probe details, such as verdict, status and mode were not retrieved for the correct runID and notifyID. This has been fixed. (CHAOS-3144)
+
+* An experiment would keep running in the pipeline even if it transitioned to an error status. This has been fixed. (CHAOS-1985)
+
+### Version 1.25.5
+
+#### New features and enhancements
+
+* Added a "Run now" button to the three-dot menu on the experiment dashboard. You can run cron experiments manually now. (CHAOS-3110)
+
+* Until an experiment is saved, the "run experiment" or "enable cron" buttons are hidden. (CHAOS-3099)
+
+* A cron enable/disable button is added to the dashboard table menu so that you can enable or disable the cron experiments from the dashboard itself. (CHAOS-3027)
+
+* A new field, "last_executed_at", is added to the chaos experiments. This new field is updated whenever an event is received during the course of an experiment run. (CHAOS-3018)
+
+* While creating an experiment, if a YAML file is uploaded that can't be parsed, a warning is displayed on the user interface. (CHAOS-3016)
+
+* You can now sort experiments based on the "recently executed" and "last modified" filters in ascending and descending order. (CHAOS-2895)
+
+* Dynatrace probes are now available on the Linux chaos infrastructure. (CHAOS-2879)
+
+* Custom arguments/flags are added to the command for VMware stress and network faults. (CHAOS-2846)
+
+* The pod memory hog chaos experiment provides distinction between experiments that failed (as an expected result) versus experiments that actually failed. (CHAOS-2515)
+
+* Cron and non-cron experiment types can be identified manually or using the tooltip by hovering over individual run boxes in **resilience probes**. (CHAOS-3010)
+
+* Added a new Cloud Foundry fault, "CF app route unbind". (CHAOS-2912)
+
+* If a previous CRON experiment is not running or is in a queued state, such a CRON experiment can be executed on-demand. This is done by clicking **Run Experiment** button on the vertical three-dot menu on the experiment page. (CHAOS-2896)
+
+* The pipeline manifest will be stored in the Harness repository. (CHAOS-2040)
+
+
+#### Fixed issues
+
+* The sandbox API was being called when the corresponding flag was off. This has been fixed. (CHAOS-3126)
+
+* SLO probe properties in the fault selection and probe details in the runs view UI were not being displayed. This has been fixed. (CHAOS-3119)
+
+* Added support for **SKIP_SSL_VERIFY** in readiness probes for the execution plane components. (CHAOS-3115)
+
+* Mongo queries resulted in fetching results for deleted gamedays. This has been fixed by adding a field "is_removed" to the Mongo queries. (CHAOS-3091)
+
+* Linux chaos infrastructure did not provide JSON log output. This issue has been fixed. (CHAOS-2989)
+
+* The probe mode would be pre-selected as SOT by default. Now, it will be empty, and no value will be present by default. (CHAOS-2455)
+
+* CRIO runtime would give an unknown service runtime.v1alpha2.RuntimeService error. This issue has been fixed. (CHAOS-3019)
+
+* When a user who does not have view access in one of the scopes (Project/Organization/Account) tried to run an experiment, they encountered a permission error. This issue has been fixed. (CHAOS-2810)
+
+* When no tunables were selected for a fault, the **Learn more** link did not redirect to a destination. This issue has been fixed. (CHAOS-2973)
 
 ### Version 1.24.5
 
@@ -39,6 +159,8 @@ The release notes describe recent changes to Harness Chaos Engineering.
     - Parsing arguments. (CHAOS-2809)
 
 * This release adds a validation check to the template name and entry point in the YAML to match at least one template name with the entry point name. The check ensures that the visual builder shows the faults correctly. (CHAOS-2933)
+
+* This release adds support for chaos dashboards in SMP. (CHAOS-3100)
 
 * This release adds support for source and destination ports, isolating the ports as well as excluding them for VMware network faults. (CHAOS-2892)
 
@@ -115,7 +237,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * Added support for specifying securityContext for chaos experiment related resources via user interface under advanced configuration. As part of supporting OCP4.11+ we have also stopped appending default security context attributes runAsUser & runAsGroup into the experiment/infrastructure manifest, and instead given the users the ability to add them optionally via the UI. (CHAOS-2614)
 
-* Added support for <,>,<=,>= operators as part of the comparator in HTTP Probe via User Interface. (CHAOS-2611)
+* Added support for \<,>,\<=,>= operators as part of the comparator in HTTP Probe via User Interface. (CHAOS-2611)
 
 * Added a download button in the Logs Tab allowing users to download the logs for the node in ".log" format for further debugging/reporting purposes. (CHAOS-2462)
 
@@ -447,7 +569,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### New features and enhancements
 
-:::caution
+:::warning
 This release breaks backward compatibility with older chaos infrastructures. You must update chaos infrastructures and the chaosnative/go-runner image in experiment definitions. If you don't upgrade, then chaos experiments will start to fail.
 
 To upgrade chaos infrastructures and experiments:

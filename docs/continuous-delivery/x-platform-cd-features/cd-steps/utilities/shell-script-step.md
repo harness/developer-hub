@@ -144,6 +144,11 @@ print = functools.partial(print, flush=True)
 
 You might have to make similar changes to your script depending on its contents.
 
+:::note
+The color codes that Harness uses for shell script logs is aligned with the I/O stream from the executed command. Typically, stdout is used for logging successful commands, with its logs color-coded to represent informational data. Conversely, stderr is generally used for error logging, with logs color-coded accordingly. However, note that some commands also output successful executions to stderr, and that Harness cannot control this variance in I/O stream usage.
+:::
+
+
 ### Shell Script steps and failures
 
 A failed Shell Script step does not prevent a stage deployment from succeeding.
@@ -376,7 +381,7 @@ Here's an example showing how the **Script Output Variables** references the exp
 
 <!-- ![](./static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png) -->
 
-<docimage path={require('./static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png')} />
+<DocImage path={require('./static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png')} />
 
 
 So now the result of `<+execution.steps.ShellScript_1.output.outputVariables.newname>` is `123`.
@@ -576,7 +581,7 @@ If your deployment type is Kubernetes and you want to use a Delegate installed o
 
 Typically, the primary deployment operations are handled by the default Harness deployment steps, such as the [Kubernetes Rollout step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollout-step).
 
-The Shell Script step can be used for secondary options. There are several secondary scripts that DevOps teams commonly run in a Kubernetes container as part of a CD pipeline. These scripts can be used to perform various tasks such as configuration, data migration, database schema updates, and more. 
+The Shell Script step can be used for secondary options. There are several secondary scripts that DevOps teams commonly run in a Kubernetes container as part of a CD pipeline. These scripts can be used to perform various tasks such as configuration, data migration, database schema updates, and more.
 
 <details>
 <summary>Common secondary script examples</summary>

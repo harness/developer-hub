@@ -34,14 +34,14 @@ Select the protocol, **HTTP** or **SSH**, to use for cloning and authentication.
 
 Enter the URL for the GitHub account or repository that you want to connect to. The required value is determined by the **URL Type** and **Connection Type**.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="account" label="URL Type: Account" default>
-```
+
 
 In the **GitHub Account URL** field, provide only the account-identifying portion of the GitHub URL, such as `https://github.com/YOUR_ACCOUNT_NAME/`. Do not include a repo name. The URL format depends on the **Connection Type**:
 
@@ -52,20 +52,20 @@ In the **GitHub Account URL** field, provide only the account-identifying portio
 
 This field is only required if the **URL Type** is **Account**. Provide the name of a repo in your GitHub account that Harness can use to test the connector. Harness uses this repo to validate the connection only. When you use this connector in a pipeline, you'll specify a true code repo in your pipeline configuration or at runtime.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="repo" label="URL Type: Repository">
-```
+
 
 In the **GitHub Repository URL** field, provide the complete URL to the GitHub repository that you want this connector to point to. The URL format depends on the **Connection Type**:
 
 * **HTTP:** `https://github.com/YOUR_ACCOUNT_NAME/YOUR_REPO_NAME.git`
 * **SSH:** `git@github.com:YOUR_ACCOUNT_NAME/YOUR_REPO_NAME.git`
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 :::info GitHub Enterprise URLs
 
@@ -84,10 +84,10 @@ Authentication is required for all accounts and repos, including read-only repos
 * For **HTTP** connections, you can use **Username and Token**, **OAuth**, or **GitHub App** authentication.
 * For **SSH** connections, you must use **SSH Key** authentication.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="usertoken" label="Username and Token" default>
-```
+
 
 1. For **Authentication**, select **Username and Token**.
 2. In the **Username** field, enter your personal GitHub account name. You can use either plaintext or a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
@@ -113,10 +113,10 @@ You can validate your token from the command line before using it in Harness. Fo
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="oauth" label="OAuth">
-```
+
 
 :::note
 
@@ -127,10 +127,10 @@ Currently, OAuth for GitHub connectors is behind a feature flag. Contact [Harnes
 1. For **Authentication**, select **OAuth**.
 2. Select **Link to GitHub** to open a new browser tab and authorize access to your GitHub organization/account.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="ssh" label="SSH Key">
-```
+
 
 SSH connections require an SSH key or a GitHub deploy key.
 
@@ -158,18 +158,12 @@ For more information about GitHub's deprecation of RSA support, go to the GitHub
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="ghapp" label="GitHub App">
-```
+
 
 You can use a GitHub App to authenticate a Harness GitHub connector. To use this authentication method, you need to create and install a GitHub App, get the app's **installation ID** and **app ID**, and create a private key for the app. For instructions, go to [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support).
-
-:::note
-
-Currently, the option to use a GitHub App as the primary authentication method for a GitHub connector is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 1. For **Authentication**, select **GitHub App**.
 2. Enter the **GitHub Installation Id**. You can find the installation ID in the URL of your installed GitHub App, such as:
@@ -186,10 +180,10 @@ Currently, the option to use a GitHub App as the primary authentication method f
 
 4. For **GitHub Private Key**, provide your GitHub App's PEM key file as a [Harness encrypted file secret](/docs/platform/secrets/add-file-secrets).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Enable API access
 
@@ -199,10 +193,10 @@ API access is required for any operations that require Harness to call GitHub AP
 
 Enabling API access requires configuring an API authentication method, either a personal access token or a GitHub App.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="pat" label="Personal Access Token" default>
-```
+
 
 1. For **API Authentication**, select **Personal Access Token**.
 2. In the **Personal Access Token** field, provide a GitHub [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) as a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
@@ -222,10 +216,10 @@ Enabling API access requires configuring an API authentication method, either a 
 
 </details>
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="ghapp" label="GitHub App">
-```
+
 
 To use this authentication method, you need to create and install a GitHub App, get the app's **installation ID** and **app ID**, and create a private key for the app. For instructions, go to [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support).
 
@@ -244,10 +238,10 @@ To use this authentication method, you need to create and install a GitHub App, 
 
 4. For **GitHub Private Key**, provide your GitHub App's PEM key file as a [Harness encrypted file secret](/docs/platform/secrets/add-file-secrets).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Connectivity Mode settings
 

@@ -25,38 +25,28 @@ Cloud policies use a declarative vocabulary of resources, filters, and actions t
 
 <table>
   <tr>
-   <td><strong>YAML Key</strong>
+   <td>
+    <strong>YAML Key</strong>
    </td>
-   <td><strong>Description</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>policy
-   </td>
-   <td>A Cloud Custodian policy is defined in YAML format and consists of a set of filters and actions that are applied to a specific type of AWS resource.
+   <td>
+    <strong>Description</strong>
    </td>
   </tr>
   <tr>
-   <td>resource
-   </td>
-   <td>In Cloud Custodian, a cloud resource or service (such as ASG, S3, EC2, ELBs, RDS, etc.) is referred to as a "key" in a policy file. This key specifies the type of cloud resource or service that the following actions and filters act upon. Go to <a href="https://cloudcustodian.io/docs/filters.html">Cloud Custodian documentation</a> for more information. 
-   </td>
+   <td>policy</td>
+   <td>A Cloud Custodian policy is defined in YAML format and consists of a set of filters and actions that are applied to a specific type of AWS resource.   </td>
   </tr>
   <tr>
-   <td>filters
-   </td>
-   <td>In Cloud Custodian, filters are criteria that are used to narrow down resources based on their attributes. These attributes include tags, metadata, or other resource properties. The result of a filter is an output of resources that meet the criteria specified in the filter. This output is then used as the input for the actions defined in the policy.
-<p>
-Filters in Cloud Custodian are essentially key-value pairs that can also be used more generically. They allow users to specify conditions that must be met for a resource to be included in the output. Go to <a href="https://cloudcustodian.io/docs/filters.html"> Cloud Custodian documentation</a> for more information.</p>
-   </td>
+   <td>resource   </td>
+    <td>In Cloud Custodian, a cloud resource or service (such as ASG, S3, EC2, ELBs, RDS, etc.) is referred to as a "key" in a policy file. This key specifies the type of cloud resource or service that the following actions and filters act upon. Go to <a href="https://cloudcustodian.io/docs/filters.html">Cloud Custodian documentation</a> for more information.    </td>
   </tr>
   <tr>
-   <td>actions
-   </td>
-   <td>In Cloud Custodian, actions are operations that can be performed on a resource and are applied to the output of the filters specified in the policy. Actions can include things like terminating an EC2 instance, deleting an S3 bucket, or sending an email notification.
-<p>
-Actions in Cloud Custodian are essentially webhooks that are executed when the criteria specified in the policy are met. These webhooks can also be used more generically, allowing the automation of a wide range of tasks. </p>
-   </td>
+   <td>filters   </td>
+   <td>In Cloud Custodian, filters are criteria that are used to narrow down resources based on their attributes. These attributes include tags, metadata, or other resource properties. The result of a filter is an output of resources that meet the criteria specified in the filter. This output is then used as the input for the actions defined in the policy.<p>Filters in Cloud Custodian are essentially key-value pairs that can also be used more generically. They allow users to specify conditions that must be met for a resource to be included in the output. Go to <a href="https://cloudcustodian.io/docs/filters.html"> Cloud Custodian documentation</a> for more information.</p>   </td>
+  </tr>
+  <tr>
+   <td>actions   </td>
+   <td>In Cloud Custodian, actions are operations that can be performed on a resource and are applied to the output of the filters specified in the policy. Actions can include things like terminating an EC2 instance, deleting an S3 bucket, or sending an email notification.<p>Actions in Cloud Custodian are essentially webhooks that are executed when the criteria specified in the policy are met. These webhooks can also be used more generically, allowing the automation of a wide range of tasks. </p>   </td>
   </tr>
 </table>
 

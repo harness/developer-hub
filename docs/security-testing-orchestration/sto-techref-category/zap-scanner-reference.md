@@ -11,6 +11,8 @@ helpdocs_is_published: true
 
 [Zed Attack Proxy (ZAP)](https://www.zaproxy.org) is a free, open-source penetration tool for testing web applications. ZAP runs as a “man-in-the-middle proxy” between the tester’s browser and the web app. You can use ZAP to run penetration testing to simulate a malicious external attack and use the results to protect your app from unauthorized access and denial-of-service attacks.
 
+For a detailed example workflow, go to the [DAST app scans using Zed Attack Proxy (ZAP)](/tutorials/security-tests/dast-scan-zap) tutorial.
+
 ## Important notes for running ZAP scans in STO
 
  If you're running a ZAP scan that uses context files such as auth scripts, context files, or URL files, specify the following shared folders and make sure that your Run step copies in the required files. 
@@ -20,25 +22,33 @@ helpdocs_is_published: true
   * **/shared/customer_artifacts/urlFile/`<artifact_file_name>`**
   * **/shared/customer_artifacts/hosts/`<artifact_file_name>`**
 
+### For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
+
 ### Docker-in-Docker requirements
 
-```mdx-code-block
+
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
+
 
 <StoDinDRequirements />
 
 ### Root access requirements
 
-```mdx-code-block
+
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-```
+
 
 <StoRootRequirements />
 
 ## ZAP step settings for STO scans
 
-The recommended workflow is add a ZAP step to a Security Tests or CI Build stage and then configure it as described below. You can also configure ZAP scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is add a ZAP step to a Security Tests or CI Build stage and then configure it as described below. You can also configure ZAP scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration).
 
 
 
@@ -46,9 +56,9 @@ The recommended workflow is add a ZAP step to a Security Tests or CI Build stage
 
 
 <details>
-    <summary>Scanner Template example</summary>
+<summary>Scanner Template example</summary>
 
-![](static/step-palette-00.png) 
+![](static/step-palette-00.png)
 
 </details>
 
@@ -58,11 +68,11 @@ The recommended workflow is add a ZAP step to a Security Tests or CI Build stage
 
 #### Scan Mode
 
-```mdx-code-block
+
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-```
+
 
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
@@ -71,9 +81,9 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 
 #### Scan Configuration
 
-```mdx-code-block
+
 import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-```
+
 
 <StoSettingProductConfigName />
 
@@ -93,18 +103,18 @@ The following options are supported for Zap scans:
 
 #### Type
 
-```mdx-code-block
+
 import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-type-02-instance.md';
-```
+
 
 <StoSettingScanTypeInst />
 
 
 #### Name 
 
-```mdx-code-block
+
 import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-```
+
 
 <StoSettingProductID />
 
@@ -112,26 +122,26 @@ import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 
 #### Variant
 
-```mdx-code-block
+
 import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-```
+
 
 <StoSettingTargetVariant  />
 
 #### Workspace
 
-```mdx-code-block
+
 import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
-```
+
 
 <StoSettingTargetWorkspace  />
 
 
 ### Ingestion File
 
-```mdx-code-block
+
 import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-```
+
 
 <StoSettingIngestionFile  />
 
@@ -143,9 +153,9 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 #### Domain
 
-```mdx-code-block
+
 import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance-domain.md';
-```
+
 <StoSettingInstanceDomain />
 
 <!-- ============================================================================= -->
@@ -153,9 +163,9 @@ import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance
 
 #### Protocol
 
-```mdx-code-block
+
 import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instance-protocol.md';
-```
+
 
 <StoSettingInstanceProtocol />
 
@@ -164,9 +174,9 @@ import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instan
 
 #### Port
 
-```mdx-code-block
+
 import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-port.md';
-```
+
 
 <StoSettingInstancePort />
 
@@ -175,9 +185,9 @@ import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-p
 
 #### Path
 
-```mdx-code-block
+
 import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-path.md';
-```
+
 
 <StoSettingInstancePath />
 
@@ -187,9 +197,9 @@ import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-p
 
 #### Log Level
 
-```mdx-code-block
+
 import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-```
+
 
 <StoSettingLogLevel />
 
@@ -197,9 +207,9 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-```mdx-code-block
+
 import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
-```
+
 
 <StoSettingCliFlags />
 
@@ -208,9 +218,9 @@ import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
 
 #### Fail on Severity
 
-```mdx-code-block
+
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
 <StoSettingFailOnSeverity />
 
 
@@ -245,9 +255,9 @@ STO supports the following scan policy types for ZAP:
 
 #### Target and variant
 
-```mdx-code-block
+
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-```
+
 
 <StoLegacyTargetAndVariant />
 
@@ -273,8 +283,8 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 #### Ingestion settings
 
-```mdx-code-block
+
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
+
 
 <StoLegacyIngest />

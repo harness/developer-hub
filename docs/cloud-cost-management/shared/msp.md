@@ -65,11 +65,11 @@ The markup details of each customer:
 
   The managed account name, the CSP accounts, the markup percentage, the markup amount, and the total spend are displayed. Expand to view all the markups for a customer. 
   
-<docimage path={require('./static/msp-home.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('./static/msp-home.png')} width="50%" height="50%" title="Click to view full size image" />
 
 To view details of individual markups, select the customer.
 
-  <docimage path={require('./static/markup-details.png')} width="50%" height="50%" title="Click to view full size image" />
+  <DocImage path={require('./static/markup-details.png')} width="50%" height="50%" title="Click to view full size image" />
 
 On this page, you can view the total markup amount and total spend associated with a specific customer. The Markup Vs Spend graph visually presents the markup amount and total spend based on the selected time filter.
 ## Edit Markups

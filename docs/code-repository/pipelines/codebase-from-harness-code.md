@@ -4,10 +4,10 @@ description: Configure your Harness pipelines to build, test, and deploy code fr
 sidebar_position: 10
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 You can configure your Harness pipelines to build, test, and deploy code from your Harness Code repositories.
 
@@ -15,19 +15,19 @@ You can configure your Harness pipelines to build, test, and deploy code from yo
 
 When creating or editing a pipeline, you can set the default codebase to a Harness Code repository.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="visual" label="Visual editor">
-```
+
 
 1. Edit the pipeline's **Codebase** settings.
 2. For **Select Git Provider**, select **Harness**.
 3. Enter your **Repository Name**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="yaml" label="YAML editor">
-```
+
 
 In the YAML editor, use `codebase.repoName` to specify a Harness Code repo, for example:
 
@@ -61,10 +61,10 @@ pipeline:
         build: <+input>
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Build and test code from a Harness Code repo
 

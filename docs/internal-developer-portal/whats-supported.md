@@ -1,7 +1,7 @@
 ---
 title: What's supported in Harness IDP
 description: Lists the plugins, git providers, and third-party integrations supported in IDP.
-sidebar_label: What's supported
+sidebar_label: What's Supported
 sidebar_position: 1
 ---
 
@@ -20,7 +20,7 @@ Any software component can be registered in the catalog by using a YAML file sto
 * Bitbucket
 * Azure Repos
 
-:::caution
+:::warning
 
 Backstage doesn't support SSH auth type for integrations, hence only HTTP connection is supported for all the git provider based connectors in IDP 
 
