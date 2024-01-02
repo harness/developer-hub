@@ -1,8 +1,8 @@
 Harness STO can automatically ingest, aggregate, normalize, and deduplicate data from the following scanners and formats. 
 
 - **Anchore Enterprise** — JSON
-- **Aqua Trivy** — JSON
 - **Aqua Security** — JSON
+- **Aqua Trivy** — JSON
 - **AWS ECR** — JSON
 - **AWS Security Hub** — JSON
 - **Bandit** — JSON
@@ -19,22 +19,21 @@ Harness STO can automatically ingest, aggregate, normalize, and deduplicate data
 - **Fossa** — JSON
 - **Gitleaks** — JSON, SARIF
 - **Grype** — JSON
-- **Mend (_formerly Whitesource_)** — JSON  <!-- - **Anchore Enterprise** — TBD -->
+- **Mend (_formerly Whitesource_)** — JSON  
 - **Nessus** — XML
 - **Nexus** — JSON
 - **Nikto** — XML
 - **Nmap** — XML
 - **OWASP Dependency Check** — JSON
 - **Prisma Cloud** — JSON  
-- **Prowler** — JSON, CSV
+- **Prowler** — CSV
 - **Qualys** — XML
 - **Qwiet** — JSON
-- **Reapsaw** — JSON
-- **Scoutsuite** — JSON
+- **Reapsaw** — JSON <!-- - **Scoutsuite** — JSON -->
 - **Semgrep** — SARIF
 - **Snyk** — SARIF
 - **SonarQube** — JSON
 - **Tenable** — JSON
-- **Veracode** — JSON
+- **Veracode** — XML
 - **JFrog Xray** — JSON
 - **Zed Attack Proxy (ZAP)** — JSON
