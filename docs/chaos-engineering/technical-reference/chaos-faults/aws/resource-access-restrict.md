@@ -109,12 +109,12 @@ Below is an example AWS policy to execute the fault.
       <tr> 
         <td> RULE_TYPE </td>
         <td> Provide the rule type to be blocked. Supported value <code>inbound</code> and <code>outbound</code>.</td>
-        <td> Defaults to <code>inbound</code>.</td>
+        <td> Defaults to <code>inbound</code>. For more information, go to <a href="#rule-type#"> rule type. </a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds)  </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 

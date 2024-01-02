@@ -119,41 +119,41 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-spe
       <tr> 
         <td> IP_ADDRESS </td>
         <td> Provide the IP address/CIRD range. If no IP/CIRD range is provided then it will remove all the rules from the security group for a specified chaos interval.</td>
-        <td> Defaults to '' </td>
+        <td> Default: ''. For more information, go to <a href="#ip-address-or-cidr-range"> IP address.</a></td>
       </tr>
       <tr> 
         <td> RULE_TYPE </td>
         <td> Provide the rule type either <code>outbound</code> or <code>inbound</code> rule </td>
-        <td> Default to 'outbound' </td>
+        <td> Default: outbound. For more information, go to <a href="#rule-type"> rule type.</a> </td>
       </tr>
       <tr> 
         <td> RULE_MODE </td>
         <td> Provide the mode to modify, <code>add</code> means add a new rule and <code>remove</code> means removing the existing rule. To remove a rule please provide the exact rule details. </td>
-        <td> Defaults to <code>remove</code>. </td>
+        <td> Defaults: remove. For more information, go to <a href="#rule-mode"> rule mode.</a></td>
       </tr>
       <tr> 
         <td> PROTOCOL </td>
         <td> Provide the protocol of the rule. </td>
-        <td> Default to 'tcp' </td>
+        <td> Default: tcp. For more information, go to <a href="#protocol"> protocol.</a></td>
       </tr>
       <tr> 
         <td> FROM_PORT </td>
         <td> Provide the from port of the rule.</td>
-        <td> Defaults to <code>80</code>. </td>
+        <td> Default: 80. For more information, go to <a href="#from-port-and-to-port"> from port.</a></td>
       </tr>
       <tr> 
         <td> TO_PORT </td>
         <td> Provide the to port of the rule. </td>
-        <td> Default to '80' </td>
+        <td> Default: 80. For more information, go to <a href="#from-port-and-to-port"> to port.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 
-### IP Address or CIDR range
+### IP address or CIDR range
 
 IP address or the CIDR range. Tune it by using the `IP_ADDRESS` environment variable. If no IP address or CIDR range is provided, the fault detaches all the available rules from inbound or outbound traffic from the target security group.
 

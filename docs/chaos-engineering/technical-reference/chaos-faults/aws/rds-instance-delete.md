@@ -6,7 +6,6 @@ title: RDS instance delete
 
 RDS instance delete removes an instances from AWS RDS cluster. This makes the cluster unavailable for a specific duration.
 
-
 ![RDS Instance Delete](./static/images/rds-instance-delete.png)
 
 ## Use cases
@@ -72,12 +71,12 @@ Below is an example AWS policy to execute the fault.
         <tr> 
         <td> CLUSTER_NAME </td>
         <td> Name of the target RDS cluster</td>
-        <td> For example, rds-cluster-1 </td>
+        <td> For example, rds-cluster-1. For more information, go to <a href="#rds-cluster-name"> RDS cluster name.</a> </td>
         </tr>
         <tr> 
         <td> RDS_INSTANCE_IDENTIFIER </td>
         <td> Name of the target RDS Instances</td>
-        <td> For example, rds-cluster-1-instance </td>
+        <td> For example, rds-cluster-1-instance. For more information, go to <a href="#rds-instance-identifier"> RDS instance identifier.</a></td>
         </tr>
         <tr>
         <td> REGION </td>
@@ -115,7 +114,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> For example, 30 s </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a> </td>
       </tr>
     </table>
 

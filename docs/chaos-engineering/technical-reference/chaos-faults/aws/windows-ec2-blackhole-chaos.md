@@ -134,12 +134,12 @@ Below is an example AWS policy to execute the fault.
         <tr>
             <td> IP_ADDRESSES </td>
             <td> IP addresses of the services whose accessibility is impacted. </td>
-            <td> Comma-separated IP(s) can be provided. </td>
+            <td> Comma-separated IP(s) can be provided. For more information, go to <a href="#run-with-destination-ips"> destination IPs.</a></td>
         </tr>
         <tr>
             <td> DESTINATION_HOSTS </td>
             <td> DNS Names of the services whose accessibility is impacted. </td>
-            <td> If this value is not provided, the fault induces network chaos for all IPs or destinations or IP_ADDRESSES if already defined. </td>
+            <td> If this value is not provided, the fault induces network chaos for all IPs or destinations or IP_ADDRESSES if already defined. For more information, go to <a href="#run-with-destination-hosts"> destination hosts.</a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>

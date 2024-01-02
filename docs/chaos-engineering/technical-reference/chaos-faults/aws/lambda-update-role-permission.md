@@ -101,12 +101,12 @@ Below is an example AWS policy to execute the fault when `POLICY_ARN` environmen
       <tr>
         <td> POLICY_ARN </td>
         <td> Provide the policy ARN that you want to detach from the role attached</td>
-        <td> </td>
+        <td> For more information, go to <a href="#policy-arn"> policy ARN.</a></td>
       </tr>
       <tr>
         <td> ROLE_ARN </td>
         <td> Provide the role arn that you want to update in the lambda function</td>
-        <td> ROLE_ARN and POLICY_ARN are mutually exclusive. If both are provided, ROLE_ARN is prioritized</td>
+        <td> ROLE_ARN and POLICY_ARN are mutually exclusive. If both are provided, ROLE_ARN takes precedence. For more information, go to <a href="#role-arn"> role ARN.</a></td>
       </tr>
       <tr>
         <td> REGION </td>
@@ -139,7 +139,7 @@ Below is an example AWS policy to execute the fault when `POLICY_ARN` environmen
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in seconds </td>
-        <td> For example, 30 s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 

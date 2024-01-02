@@ -80,7 +80,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> MEMORY_IN_MEGABYTES </td>
         <td> Provide the value of the memory limit of a function in megabytes.</td>
-        <td> Minimum memory limit on a Lambda function is 128Mb and the maximum is 10240 Mb. </td>
+        <td> Minimum (128MB) and the maximum (10240 MB) memory limit on a Lambda function. For more information, go to <a href="#memory-limit"> memory limit.</a></td>
       </tr>
       <tr>
         <td> REGION </td>
@@ -113,7 +113,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in seconds </td>
-        <td> For example, 30 s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 

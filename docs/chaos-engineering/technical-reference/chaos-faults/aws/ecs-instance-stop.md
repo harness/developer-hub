@@ -135,16 +135,16 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30 </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a> </td>
       </tr>
     </table>
 
 
-### ECS Instance Stop
+### ECS instance stop
 
-It stops the instance of an ECS cluster for a certain chaos duration. We can provide the EC2 instance ID using `EC2_INSTANCE_ID` ENVs as well. If not provided it will select randomly.
+ECS cluster instance that is to be stopped for a chaos duration. Tune it by using `EC2_INSTANCE_ID` environment variable. If not provided, it is selected at random.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-instance-stop/instance-stop.yaml yaml)
 ```yaml

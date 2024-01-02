@@ -85,12 +85,12 @@ Below is an example AWS policy to help execute the fault.
         <tr>
         <td> SERVICE_NAME </td>
         <td> Target ECS service name. </td>
-        <td> For example, <code>app-svc</code>. </td>
+        <td> For example, <code>app-svc</code>. For more information, go to <a href="#ecs-service-name"> ECS service name.</a></td>
         </tr>
         <tr>
         <td> TASK_REPLICA_ID </td>
         <td> Comma-separated target task replica IDs. </td>
-        <td> `SERVICE_NAME` and `TASK_REPLICA_ID` are mutually exclusive. If both the values are provided, `SERVICE_NAME` takes precedence. </td>
+        <td> `SERVICE_NAME` and `TASK_REPLICA_ID` are mutually exclusive. If both the values are provided, `SERVICE_NAME` takes precedence. For more information, go to <a href="#ecs-task-replica-ids"> ECS task replica ID.</a></td>
         </tr>
     </table>
     <h3>Optional tunables</h3>
@@ -113,17 +113,17 @@ Below is an example AWS policy to help execute the fault.
       <tr>
         <td> TASK_REPLICA_AFFECTED_PERC </td>
         <td> Percentage of total tasks that are targeted. </td>
-        <td> Defaults to 100. </td>
+        <td> Default: 100. For more information, go to <a href="#ecs-task-replica-affected-percentage"> ECS task replica affected percentage.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. </td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).</td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
       <tr> 
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -135,9 +135,9 @@ Below is an example AWS policy to help execute the fault.
 
 ### ECS service name
 
-It stops the tasks that are a part of the particular service using the `SERVICE_NAME` environment variable. 
+Service name whose tasks are stopped. Tune it by using the `SERVICE_NAME` environment variable. 
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-task-stop/task-stop-svc.yaml yaml)
 ```yaml
@@ -168,9 +168,9 @@ spec:
 
 ### ECS task replica IDs
 
-It stops all the tasks that are set using the `TASK_REPLICA_ID` environment variable.
+Task replicas that have a specific ID which are to be stoppee. Tune it by using the `TASK_REPLICA_ID` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-task-stop/task-stop-task.yaml yaml)
 ```yaml
@@ -201,9 +201,9 @@ spec:
 
 ### ECS task replica affected percentage
 
-It selects the number of tasks to be targeted (in percentage) using the `TASK_REPLICA_AFFECTED_PERC` environment variable.
+Number of tasks to target (in percentage). Tune it by using the `TASK_REPLICA_AFFECTED_PERC` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-task-stop/task-stop-task-affected.yaml yaml)
 ```yaml

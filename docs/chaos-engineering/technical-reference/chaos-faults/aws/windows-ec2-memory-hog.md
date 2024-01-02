@@ -104,7 +104,7 @@ Below is an example AWS policy to execute the fault.
     <tr>
         <td> EC2_INSTANCE_ID </td>
         <td> ID of the target EC2 instance. </td>
-        <td> For example, <code>i-044d3cb4b03b8af1f</code>. </td>
+        <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="#multiple-ec2-instances"> EC2 instances.</a></td>
     </tr>
     <tr>
         <td> REGION </td>
@@ -137,12 +137,12 @@ Below is an example AWS policy to execute the fault.
     <tr>
         <td> MEMORY_CONSUMPTION </td>
         <td> Amount of memory to be consumed by the EC2 instance (in megabytes). </td>
-        <td> Default: 0 MB. </td>
+        <td> Default: 0 MB. For more information, go to <a href="#memory-consumption-in-megabytes"> memory consumption in MB.</a></td>
     </tr>
     <tr>
         <td> MEMORY_PERCENTAGE </td>
         <td> Amount of memory to be consumed by the EC2 instance (in percentage).</td>
-        <td> Default: 50. </td>
+        <td> Default: 50. For more information, go to <a href="#memory-consumption-by-percentage"> memory consumption by percentage.</a></td>
     </tr>
     <tr>
         <td> SEQUENCE </td>
@@ -152,7 +152,7 @@ Below is an example AWS policy to execute the fault.
     <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30 s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
     </tr>
 </table>
 

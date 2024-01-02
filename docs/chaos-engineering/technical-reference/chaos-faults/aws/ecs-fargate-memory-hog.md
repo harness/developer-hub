@@ -122,17 +122,17 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-spe
       <tr> 
         <td> MEMORY_IN_MEGABYTE </td>
         <td> Provide the memory in Megabytes to stress the ECS task. </td>
-        <td> Default to '500' </td>
+        <td> Default: 500. For more information, go to <a href="#memory-consumed-in-megabytes"> memory consumed in MB.</a> </td>
       </tr>
       <tr> 
         <td> CONTAINER_IMAGE </td>
         <td> Provide stress image for the sidecar container. </td>
-        <td> Default to 'nginx' </td>
+        <td> Default: nginx. For more information, go to <a href="#stress-container-image"> stress container image.</a> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds)  </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 
@@ -167,7 +167,7 @@ spec:
           VALUE: '60'
 ```
 
-### Stress Container Image
+### Stress container image
 
 ECS Fargate memory hog chaos with custom stress container image for sidecar container to inject chaos. Tune it by using the `CONTAINER_IMAGE` environment variable.
 

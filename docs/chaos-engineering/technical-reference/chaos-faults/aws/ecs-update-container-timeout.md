@@ -125,18 +125,18 @@ Below is an example AWS policy to execute the fault.
       </tr>
       <tr> 
         <td> START_TIMEOUT </td>
-        <td> This is the maximum amount of time that ECS allows for a container to start successfully. If the container fails to start within this timeout period, ECS marks the task as failed and may trigger a restart or rescheduling of the task.</td>
-        <td> It is specified in seconds, and its default value is set to 3,600 seconds if not provided.  </td>
+        <td> Maximum amount of time that ECS allows for a container to start successfully. If the container fails to start within this timeout period, ECS marks the task as failed and may trigger a restart or rescheduling of the task.</td>
+        <td> Specified in seconds. Default: 3,600 s. For more information, go to <a href="#start-and-stop-timeout"> start timeout.</a> </td>
       </tr>
       <tr> 
         <td> STOP_TIMEOUT </td>
-        <td> This is the maximum amount of time that ECS allows for a container to stop gracefully. If the container does not stop within the <code>STOP_TIMEOUT</code> period, ECS forcefully terminates the container, which may result in data loss or other undesirable consequen</td>
-        <td> It is specified in seconds, and its default value is set to 3,600 seconds if not provided.  </td>
+        <td> Maximum amount of time that ECS allows for a container to stop gracefully. If the container does not stop within the <code>STOP_TIMEOUT</code> period, ECS forcefully terminates the container, which may result in data loss or other undesirable consequen</td>
+        <td> Specified in seconds. Default: 3,600. For more information, go to <a href="#start-and-stop-timeout"> stop timeout.</a> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 

@@ -75,13 +75,13 @@ Below is an example AWS policy to execute the fault.
       </tr>
       <tr>
         <td> FUNCTION_NAME </td>
-        <td> Function name of the target lambda function. It support single function name.</td>
+        <td> Function name of the target Lambda function. It support single function name.</td>
         <td> For example, <code>test-function</code> </td>
       </tr>
       <tr>
         <td> FUNCTION_TIMEOUT </td>
         <td> Value of function timeout in seconds.</td>
-        <td> Minimum value is 1 s and maximum is 900 s (15 minutes) </td>
+        <td> Minimum value: 1 s and maximum: 900 s (15 minutes). For more information, go to <a href="#timeout-value"> timeout value.</a></td>
       </tr>
       <tr>
         <td> REGION </td>
@@ -114,7 +114,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in seconds </td>
-        <td> For example, 30 s </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a> </td>
       </tr>
     </table>
 

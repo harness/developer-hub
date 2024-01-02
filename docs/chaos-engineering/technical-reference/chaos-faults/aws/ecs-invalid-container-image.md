@@ -124,12 +124,12 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-spe
       <tr> 
         <td> IMAGE </td>
         <td> Provide the invalid image to be updated in the ECS container. </td>
-        <td> Default to 'nginx' </td>
+        <td> Default: nginx. For more information, go to <a href="#invalid-ecs-container-image"> invalid ECS container image.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 

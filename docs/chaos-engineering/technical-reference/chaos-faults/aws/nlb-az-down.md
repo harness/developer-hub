@@ -73,7 +73,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> ZONES </td>
         <td> Target zones that should be detached from the NLB </td>
-        <td> For example, <code>us-east-1a</code>. </td>
+        <td> For example, <code>us-east-1a</code>. For more information, go to <a href="#target-zones"> target zones.</a></td>
       </tr>
       <tr>
         <td> REGION </td>

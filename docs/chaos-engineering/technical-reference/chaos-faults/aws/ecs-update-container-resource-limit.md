@@ -130,25 +130,25 @@ Below is an example AWS policy to execute the fault.
       </tr>
       <tr> 
         <td> CPU </td>
-        <td> This is the CPU resouce set of the target ECS container. </td>
-        <td> Default to 256 </td>
+        <td> CPU resouce set of the target ECS container. </td>
+        <td> Default: 256. For more information, go to <a href="#cpu-and-memory-resource-limit"> CPU limit.</a> </td>
       </tr>
       <tr> 
         <td> Memory </td>
-        <td>  This is the Memory resouce set of the target ECS container</td>
-        <td> Default to 256 </td>
+        <td> Memory resouce set of the target ECS container</td>
+        <td> Default: 256. For more information, go to <a href="#cpu-and-memory-resource-limit"> memory limit.</a> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 
 
 ### CPU and memory resource limit
 
-It specifies the CPU and Memory limit for the task containers. You can tune it using the `CPU` and `MEMORY` environment variable.
+CPU and memory limit for the task containers. Tune it by using the `CPU` and `MEMORY` environment variables.
 
 The following YAML snippet illustrates the use of this environment variable:
 

@@ -113,7 +113,7 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-spe
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Interval between successive instance terminations (in seconds)</td>
-        <td> Default: 30s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr> 
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -128,12 +128,12 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-spe
       <tr> 
         <td> CONTAINER_IMAGE </td>
         <td> Provide stress image for the sidecar container. </td>
-        <td> Default: 'nginx'. For more information, go to <a href="#strss-container-image"> container image.</a> </td>
+        <td> Default: 'nginx'. For more information, go to <a href="#stress-container-image"> container image.</a> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds)  </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 
