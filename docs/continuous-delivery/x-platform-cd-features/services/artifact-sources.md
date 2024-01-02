@@ -3508,7 +3508,7 @@ The following table lists how many artifact versions Harness displays in its UI 
 | Nexus3(Docker)                   | No Limit      | Descending order of last modified at (3.46.0 and newer). Alphabetically descending for older versions. |
 | Nexus3(non-Docker)               | 2,147,483,647 | Descending order of last modified at (3.46.0 and newer). Alphabetically descending for older versions. |
 | Nexus2                           | No Limit      | Lexical (descending)                                                                                   |
-| Amazon S3                        | No Limit      | Descending order of last modified.                                                                     |
+| Amazon S3                        | 500           | Descending order of last modified.                                                                     |
 | Amazon Machine Image             | No Limit      | Descending order of image creation time.                                                               |
 | Azure Artifacts                  | No Limit      |                                                                                                        |
 | Jenkins                          | 25            | Lexical (descending)                                                                                   |
