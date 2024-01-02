@@ -197,10 +197,10 @@ THe PagerDuty notification channel is not currently supported for approval notif
 
 These notifications help approvers to make their decision. There are two kinds of approval notifications:
 
-- `Approval Required`: Notification is sent when approval step starts containing the pipeline name, execution URL, user who triggered the pipeline, stage name, approval message, organization and project details, pipeline start time and the time left in approval expiry.
-- `Approved or Rejected`: Notification is sent when approval step is approved or rejected. The notification contains the pipeline name, execution URL, step status, stage name, user who triggered the pipeline, organization and project details, pipeline start time, approval activity details containing approver name, action, and the time of the approval or rejection.  
+- `Approval Required`: A notification is sent when the approval step starts containing the pipeline name, execution URL, user who triggered the pipeline, stage name, approval message, organization and project details, pipeline start time, and the time left in approval expiry.
+- `Approved or Rejected`: A notification is sent when the approval step is approved or rejected. The notification contains the pipeline name, execution URL, step status, stage name, the user who triggered the pipeline, organization, and project details, pipeline start time, approval activity details containing approver name, action, and the time of the approval or rejection.  
 
-Use the **Include stage execution details in approval** option to include stage execution details in approval notifications. A summary of completed, running and upcoming stages is shown. Execution metadata like service, environment and infrastructure details are also present for CD stages in approval notifications.
+Use the **Include stage execution details in approval** option to include stage execution details in approval notifications. A summary of completed, running, and upcoming stages is shown. Execution metadata like service, environment, and infrastructure details are also present for CD stages in approval notifications.
 
 :::
 
