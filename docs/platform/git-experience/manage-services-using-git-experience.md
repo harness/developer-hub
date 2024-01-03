@@ -4,7 +4,7 @@ description: Git Experience allows you to manage and store your services in Git
 sidebar_position: 11
 ---
 :::note
-Currently Git Experience support for services is behind feature flag ``CDS_SERVICE_GITX``. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, Git Experience support for services is behind the feature flag `CDS_SERVICE_GITX`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 Harness lets you create a service in the following ways:
