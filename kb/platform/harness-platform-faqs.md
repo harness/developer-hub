@@ -1935,6 +1935,18 @@ You can go to delegate page and on right side check under AUTO UPGRADE Column if
 
 No currently its not possible as if we try to disable the roles for account nobody will be able to see managed roles even including account admin.
 
+#### What are Harness built-in and Custom Variables? 
+
+They are a way to refer to something in Harness such as an entity name or a configuration setting. 
+
+#### What is the correct syntax for the Regex Extract build-in variable?
+
+'''regex.extract("v[0-9]+.[0-9]+", artifact.fileName)''' is the correct syntax
+
+#### What are the statuses of nodes using the Harness looping Strategy?
+
+Running, Failed, and Success
+
 #### Not able to resume pipeline for some time post delegate release
 
 For optimizations we keep a local cache of all connected delegates to execute tasks. The cache is refreshed every 3 minutes currently and hence it takes upto 3 mins for a new delegate to be eligible to execute a task once its connected. Since the delegate rollout is not a very frequent operation the 3 mins window was chosen and is in production for few years.
