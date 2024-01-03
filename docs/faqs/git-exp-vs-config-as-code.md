@@ -49,7 +49,7 @@ Here is the comparison matrix for Harness FirstGen Continuous Deployment vs Harn
 | **Service**                    | Yes                       | Yes                |
 | **Service Definition**         | Yes                       | Yes                |
 | **Environment**                | Yes                       | Yes                |
-| **Infrastructure Definition**  | Yes                       | No                 |
+| **Infrastructure Definition**  | Yes                       | Yes                |
 | **Trigger**                    | Yes                       | No                 |
 | **Pipeline**                   | Yes                       | Yes                |
 | **Input Set**                  | N/A                       | Yes                |
