@@ -103,7 +103,7 @@ Setup Harness CD & GitOps in a few commands
    
    OPTIONS:
       --token value        specify your secret token
-      --secret-name        provide the secret name
+      --secret-name value  provide the secret name
       --secret-type value  provide the secret type
       --port value         port number for the ssh secret
       --username value     username for the ssh secret
