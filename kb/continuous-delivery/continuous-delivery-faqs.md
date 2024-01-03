@@ -2643,7 +2643,6 @@ An example expression will be below:
 
 ```
 <+<+pipeline.variables.someinput>+"secret">
-
 ```
 Here someinput variable can be runtime input and if we need to access a secret with name "devsecret" the input to variable "someinput" should be "dev".
 
@@ -2665,8 +2664,11 @@ The kubernetes cofiguration can be accessed in the same stage the kubernetes dep
 ```
 export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}
 kubectl get configmaps
-
 ```
+
+#### Can we skip manually creating the kubeconfig when using the native EKS deployment method in AWS, since we provide connection details in the AWS connector?
+
+Yes, we do not need to create the kubeconfig file manually. We just need to have this binary installed on the delegate `aws-iam-authenticator`. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-eks)
 
 #### Do we have a inline values override in next gen? 
 
@@ -3762,13 +3764,16 @@ Now, the value of the stage variable myvar will be set to 123 after the Shell Sc
 
 `<+execution.stages.[stage_id].output.outputVariables.myvar>`
 
-#### Every time when I run kubernetes deployment, harness create new version of configmap even of there were no changes which force pods redeployment. Is there a way to specify for harness to create new configmap only when changes detected?
+#### How can we calculate the instance of a service where number of pods change?
 
-You can skip the versioning, it can be skipped by using these two ways:
- 
-Annotate the manifest provided in the Harness service's Manifests section with harness.io/skip-versioning: "true".
- 
-In the Harness service's Manifest Configuration page, select Manifests > Advanced, and then select the Skip Versioning checkbox.
+We can calculate the service licenses and instances in following methods for CG and NG both.
+
+- List services deployed in the last 30 days. Service is considered in calculation even if it was part of any failed deployments
+- For every found service we find the 95th Percentile of the number of its service instances across a period of 30 days and it represents active service instances
+- Based on service instances we calculate the number of consumed licenses
+- 1 service license is equal to 20 active service instances
+
+Please find an example [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#example)
  
 #### Does dashboards loads based on the volume of the data
 
@@ -4233,3 +4238,7 @@ Yes, you can run pipeline stages in parallel, deploying different services simul
 
 #### What's the benefit of using step groups? 
 Step groups simplify managing related steps, allowing you to apply common settings like skipping and failure strategies to all members.
+
+#### Does Harness encrypt the image tag for the container during rollout deployment output?
+
+No, we don't. Try checking SHA of the tag and find image ID from the output of the service step with the `<+artifact.tag>` expression.

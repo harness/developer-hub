@@ -22,6 +22,8 @@ Free monthly credits for up to 2,000 build minutes.
 
 Upto 2,000 build minutes are possible with the Harness free version. 
 
+## Rate and queue limits
+
 #### Harness Platform Rate limits
 
 Please note that harness does limit accessive API and execution limitations. Harness does reserve the right to change these limits. 
@@ -590,7 +592,6 @@ For information about how TI works and how to enable it, go to [Test Intelligenc
 
 You can speed up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. Test Intelligence 
 
-
 #### What are some of the other benefits of Test intelligence?
 
 Test Intelligence also identifies negative trends and provides actionable insights to improve quality. 
@@ -679,19 +680,11 @@ DinD cannot be used on platforms that do not support privileged mode. For exampl
 
 The error "Pod not supported on Fargate: invalid SecurityContext fields: Privileged" occurs because AWS Fargate does not support the use of privileged containers.
 
-## Plugins and integrations
-
-#### Why is the PATH Variable Overwritten in Parallel GitHub Actions Steps?
-
-The PATH variable can be overwritten when running parallel steps in GitHub Actions because these steps could modify the PATH variable depens on which step ran last. When these steps run in parallel, a race condition occurs, and only one of them will be able to set the PATH variable correctly. To avoid this, consider running these steps sequentially in your workflow.
+## Plugins
 
 #### Which Drone plugins are supported in Harness CI?
 You can build your own plugins or use one of the many preexisting plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/), [GitHub Actions Marketplace](https://github.com/marketplace?type=actions), or the [Bitrise Integrations library](https://bitrise.io/integrations/steps).
 Yes, for details, go to [Use plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins).
-
-#### Is it possible to integrate our CI builds with the Datadog Pipeline Visibility feature?
-
-We do not have OOTB support for Datadog Pipeline Visibility. However, I can suggest the following approach to push the pipeline event to a webhook endpoint: Link to documentation on webhook notifications.
 
 #### How do we add a custom plugin to my CI pipeline in Harness?
 
@@ -705,27 +698,12 @@ Plugins are regular containers which would execute a predefined task. We can tes
 1. Create your plugin to perform a specific task, written in any programming language.
 2. Integrate the plugin into your CI pipeline using a Plugin step.
 
-## Caching, dependencies, and sharing data between steps and stages
+## Shared volumes and shared paths
 
 #### How do I share data between steps in a CI stage?
 
 We could use shared paths to allow steps within a stage to share data with each other. You can specify custom paths for data sharing or cache purposes. For more information, go to [Share data across steps and stages](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages).
 For example, you can [save and restore a cache from an Amazon S3 bucket.](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache)
-
-#### Cache Intelligence on Harness Cloud Infrastructure
-
-Harness only currently supports cache intelligence on the Harness Cloud infrastructure. 
-See [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/)
-
-####  How can I download files from an S3 bucket in Harness?
-
-You have two common options to download files from an S3 bucket in Harness:
-1. **Using the "Save and Restore Cache from S3" Step:** You can achieve this by utilizing the [Save and Restore Cache from S3 step](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/). This step is specifically designed for downloading files from S3 and simplifies the process.
-2. **Custom Shell Script:** Alternatively, you can create a custom shell script by following the guidelines outlined in the [shell script documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/). This approach offers more flexibility, allowing you to tailor the download operation to your specific needs and preferences.
-
-#### Why is background step is always marked as succeess even if there are failures executing the entrypoint?
-
-This is expected behaviour as we start background step and will immedeatly move on to next step by marking the step status as success. We should be having a subsequent run step to check if the services being started as part of the background step is accessible before trying to use them in the pipeline.
 
 #### What volume will be created when we add a shared path in a CI pipeline?
 
@@ -735,65 +713,25 @@ When a shared path is added in the CI pipeline, we will create an empty director
 
 Yes, you can share additional volumes between steps in a stage by adding Shared Paths in the Build stage settings. This will allows you to specify specific directories or locations for all steps in the stage can access and share data from, in addition to the default workspace.
 
-#### What is Harness Cloud's cache storage limit per account?
+#### Does shared path in SAM Build Manifest shows where the download happens ?
 
-Harness Cloud provides up to 2GB of cache storage per account. 
+No , shared paths does not dictate where the download happens. There could be multiple shared paths provided , but it does not mean our manifests would be downloaded in that shared path. More details on shared path can be read in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/)
 
+## Caching
 
-#### What is the cache retention window in Harness Cloud?
+####  How can I download files from an S3 bucket in Harness?
 
-Cache retention window in Harness Cloud is set at 15 days after it is initially stored. Also, the retention window resets whenever the cache is updated or modified.
-
-
-#### Can different pipelines within the same account access and use the same cache storage?
-The cache storage is shared among all pipelines within the account.
-
-
-#### What is the default cache storage location in Cache Intelligence?
-By default, Cache Intelligence stores data to be cached in the /harness directory.
-
-#### How do I specify custom cache paths in Cache Intelligence?
-To specify custom cache paths in Cache Intelligence, you can provide a list of locations that you want to be cached. For the detailed process you can refer to this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-paths).
-
-
-#### Can I use custom cache paths on a Windows platform with Cache Intelligence?
-
-Yes, you can use custom cache paths, including on Windows platforms, with Cache Intelligence. 
-
-
-#### How does Harness generate cache keys for caching build artifacts?
-
-Harness generates cache keys by creating a hash of the build lock file(s) detected during the build process. Examples of lock files include pom.xml, build.gradle, or package.json. The contents of these files are used to compute a unique hash, which serves as the cache key.
-
-
-#### Can I manually set or customize cache keys in Harness?
-Yes, we have a option to manually set or customize cache keys if your project has specific requirements. For the process you refer to this [doc.](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-keys)
-
-
-#### Is there any API available for the Cache Intelligence?
-Yes, you can check the cache info and delete through the API. You can refer to this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#cache-intelligence-api) for the API.
+You have two common options to download files from an S3 bucket in Harness:
+1. **Using the "Save and Restore Cache from S3" Step:** You can achieve this by utilizing the [Save and Restore Cache from S3 step](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/). This step is specifically designed for downloading files from S3 and simplifies the process.
+2. **Custom Shell Script:** Alternatively, you can create a custom shell script by following the guidelines outlined in the [shell script documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/). This approach offers more flexibility, allowing you to tailor the download operation to your specific needs and preferences.
 
 #### Using GCS to cache and restore between Steps?
 
 Yes, for details, go to [Save and Restore Cache from GCS](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs).
 
-#### How to use Background step settings?
-
-Use Background steps to manage dependent services that need to run for the entire lifetime of a Build stage. 
-For details, go to  [Background step settings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings).
-
 #### Does Harness CI support Multilayer caching?
 
 Yes, for details, go to [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching).
-
-#### Does shared path in SAM Build Manifest shows where the download happens ?
-
-No , shared paths does not dictate where the download happens. There could be multiple shared paths provided , but it does not mean our manifests would be downloaded in that shared path. More details on shared path can be read in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/)
-
-#### Why I can't toggle cache intelligence in my CI pipeline?
-
-Currently, Cache Intelligence is only available for Linux and Windows platforms on Harness Cloud, the Harness-hosted build environment.
-For other build infrastructures, you can use Save and Restore Cache steps, such as Save and Restore Cache from S3, to include caching in your CI pipelines. For more information: [Supported Build Infra](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/#supported-build-infrastructures)
 
 #### How to use an artifact generated on a different stage?
 
@@ -811,6 +749,85 @@ Yes, you can also save and restore cached data from other sources like S3 or use
 
 This option determines whether the step should fail if the specified cache key doesn't exist in the GCS bucket. If selected, the step fails when the key is not found
 
+#### Is remote caching supported in Build and Push steps?
+
+Harness supports multiple Docker layer caching methods depending on what infrastructure is used. Go to [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) to learn more.
+
+#### Does harness override the cache when using the save cache to S3 step?
+
+By default ```save cache to s3``` step will not override the cache however there is an optional configuration which will overrode the cache with the same key if enabled
+
+#### How user can configure the Restore Cache step to check if a cache was restored?
+
+In the configuration of the Restore Cache step:
+
+1. Set it to fail if the target cache key isn't found.
+2. Enable a failure strategy that allows the pipeline to continue despite the step failure.
+
+### Cache Intelligence
+
+#### Cache Intelligence on Harness Cloud Infrastructure
+
+Harness only currently supports cache intelligence on the Harness Cloud infrastructure. 
+See [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/)
+
+#### What is Harness Cloud's cache storage limit per account?
+
+Harness Cloud provides up to 2GB of cache storage per account. 
+
+#### What is the cache retention window in Harness Cloud?
+
+Cache retention window in Harness Cloud is set at 15 days after it is initially stored. Also, the retention window resets whenever the cache is updated or modified.
+
+#### Can different pipelines within the same account access and use the same cache storage?
+The cache storage is shared among all pipelines within the account.
+
+#### What is the default cache storage location in Cache Intelligence?
+By default, Cache Intelligence stores data to be cached in the /harness directory.
+
+#### How do I specify custom cache paths in Cache Intelligence?
+To specify custom cache paths in Cache Intelligence, you can provide a list of locations that you want to be cached. For the detailed process you can refer to this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-paths).
+
+#### Can I use custom cache paths on a Windows platform with Cache Intelligence?
+
+Yes, you can use custom cache paths, including on Windows platforms, with Cache Intelligence. 
+
+#### How does Harness generate cache keys for caching build artifacts?
+
+Harness generates cache keys by creating a hash of the build lock file(s) detected during the build process. Examples of lock files include pom.xml, build.gradle, or package.json. The contents of these files are used to compute a unique hash, which serves as the cache key.
+
+#### Can I manually set or customize cache keys in Harness?
+
+Yes, we have a option to manually set or customize cache keys if your project has specific requirements. For the process you refer to this [doc.](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-keys)
+
+#### Is there any API available for the Cache Intelligence?
+
+Yes, you can check the cache info and delete through the API. You can refer to this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#cache-intelligence-api) for the API.
+
+#### Why I can't toggle cache intelligence in my CI pipeline?
+
+Currently, Cache Intelligence is only available for Linux and Windows platforms on Harness Cloud, the Harness-hosted build environment.
+For other build infrastructures, you can use Save and Restore Cache steps, such as Save and Restore Cache from S3, to include caching in your CI pipelines. For more information: [Supported Build Infra](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/#supported-build-infrastructures)
+
+#### Why is the ```Enable Cache Intelligence``` option is greyed out in the CI pipeline?
+
+Harness cache intelligence is currently supported when you run the build in Harness cloud on Linux and Windows platforms. For all the other build infra, this option would be greyed out.
+
+#### Does Cache Intelligence have the capability to expire the cache?"
+
+Yes, The cache will be expired every 15 days
+
+## Background steps and service dependencies
+
+#### Why is background step is always marked as succeess even if there are failures executing the entrypoint?
+
+This is expected behaviour as we start background step and will immedeatly move on to next step by marking the step status as success. We should be having a subsequent run step to check if the services being started as part of the background step is accessible before trying to use them in the pipeline.
+
+#### How to use Background step settings?
+
+Use Background steps to manage dependent services that need to run for the entire lifetime of a Build stage. 
+For details, go to  [Background step settings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings).
+
 #### What options are available for running health checks on background services in Harness CI?
 
 You can add a run step to your pipeline to run health checks on background services to ensure they are up and running as expected. These checks help validate the service's readiness
@@ -822,14 +839,6 @@ Background steps are used to manage dependent services that need to run for the 
 #### Can Background steps run multiple services simultaneously?
 
 Yes, you can set up your pipeline to run multiple background services, creating a local, multi-service application
-
-#### What are the limitations of Background steps?
-
-Background steps do not support failure strategies or output variables
-
-#### Is remote caching supported in Build and Push steps?
-
-Harness supports multiple Docker layer caching methods depending on what infrastructure is used. Go to [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) to learn more.
 
 #### Do Background steps have limitations?
 
@@ -843,38 +852,33 @@ Yes. Background steps have these limitations:
 
 Yes, you can configure service dependencies in Gradle builds.
 
-#### Why is the ```Enable Cache Intelligence``` option is greyed out in the CI pipeline?
-
-Harness cache intelligence is currently supported when you run the build in Harness cloud on Linux and Windows platforms. For all the other build infra, this option would be greyed out.
-
-#### Does Cache Intelligence have the capability to expire the cache?"
-
-Yes, The cache will be expired every 15 days
-
-#### Does harness override the cache when using the save cache to S3 step?
-
-By default ```save cache to s3``` step will not override the cache however there is an optional configuration which will overrode the cache with the same key if enabled
-
 #### What prerequisites are there for running Background steps?
+
 The build environment must have the necessary binaries for PostgreSQL. Depending on the build infrastructure, Background steps can use existing binaries in the environment or pull an image, such as a Docker image, containing the required binaries.
 
 #### Can Background steps use external images for PostgreSQL services?
-Yes, depending on the build infrastructure, Background steps can either use existing binaries in the build environment or pull an image from public or private Docker image, that contains the required PostgreSQL binaries.
 
+Yes, depending on the build infrastructure, Background steps can either use existing binaries in the build environment or pull an image from public or private Docker image, that contains the required PostgreSQL binaries.
 
 #### How do I add a Run step to test PostgreSQL services?
 
 In the same CI stage where you added the Background steps, include a Run step after the Background steps. Ensure that the Run step is not in the parallel group to avoid conflicts.
 
-
 #### What is the use of the Run step for psql commands?
+
 A4: The Run step for psql commands serves as a validation step before proceeding with subsequent actions.
 
-#### How user can configure the Restore Cache step to check if a cache was restored?
-In the configuration of the Restore Cache step:
+#### How can I check that a LocalStack service running in a Background step is healthy?
 
-1. Set it to fail if the target cache key isn't found.
-2. Enable a failure strategy that allows the pipeline to continue despite the step failure.
+1. In the "Run" step
+2. Enter "localstack health" in the Name field.
+3. Enter a cURL command in the Command field to ping the LocalStack service running in a Background step.
+
+   Depending on your build infrastructure, you might reference the service by the Background step ID, localhost, or IP address and the container port or host port. For more information go to [Background step settings - Name and ID](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#name-and-id) and [Background step settings - Port Bindings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#port-bindings).
+
+4. Expand the Optional Configuration section, configure the Container Registry field, and select your Docker Hub connector.
+5. Enter "curlimages/curl:7.83.1" in the Images field.
+
 
 
 ## Conditional executions, parallelism, looping, and failure strategies
@@ -1037,6 +1041,10 @@ The \<+codebase.commitSha> variable will not work in the CD Stage without the CI
 #### If user can again define clone step in the CD and will they can able to get the commidID there again without CI stage in the pipeline?
 No, user can't able to get commit id in that case.
 
+#### What is Harness Rollback in the CI pipeline
+
+Harness Rollback deployments initiate a rollback of the most recent successful execution. Note that this feature is behind a feature flag `POST_PROD_ROLLBACK`. Rollback deployments are currently supported by the following deployment types only (Kubernetes, Tanzu Application Services, Amazon ECS).
+
 ### CI with STO
 
 #### Where and how to add the sonar.projectVersion in our harness pipelines
@@ -1083,17 +1091,33 @@ No, this feature is already requested and should be onboarded soon.
 
 The expression ```<+eventPayload.repository.name>``` can be used to reference the repository name from the incoming trigger payload
 
+## Default user, root access, rootless, non-root
 
-## Additional CI FAQs
+#### Can I enable root access for a single step?
 
-#### Can I use Harness CI for mobile app development?
+If your build runs as non-root (meaning you have set `runAsNonRoot: true`), you can run a specific step as root by setting **Run as User** to `0` in the step's settings. This setting uses the root user for this specific step while preserving the non-root user configuration for the rest of the build. This setting is not available for all build infrastructures, as it is not applicable to those build infrastructures.
 
-Yes. [Harness CI offers many options for mobile app development.](https://developer.harness.io/docs/continuous-integration/use-ci/mobile-dev-with-ci)
+#### Which user does Harness uses to run steps like Git clone, Run, and so on?
+
+Harness uses user 1000 by default.
+
+#### What is the default user set on the windows lite-engine and addon image?
+
+The default user set on the windows lite-engine and addon image is `ContainerAdministrator`
+
+#### Can the default user in Windows LE/Addon images be changed?
+
+No, the default user in Windows LE/Addon images needs to be `ContainerAdministrator` because specific path and tool installations require it, and Windows does not allow setting the path otherwise.
+
+#### How does `ContainerAdministrator` differ from other user identities in Windows LE/Addon images?
+
+`ContainerAdministrator` is assigned elevated privileges similar to the root user on Linux, allowing for system-level configurations and installations within the Windows container
+
+## Performance, optimization, build time
 
 #### How can we improve the build process duration apart from cache layer?
 
 You can increase the Memory and CPU of the Build and Push step to improve the build process duration.
-
 
 #### Is there any best practices to follow while implementing the pipeline for build time?
 
@@ -1103,10 +1127,15 @@ Yes, you can refer to our [documentation](https://developer.harness.io/docs/cont
 
 You can pre-build Docker images that include all required dependencies and periodically update these images with the latest dependencies. This approach minimizes download time during the build process.
 
-
 #### What are the benefits of excluding unnecessary files and packages from Docker images?
 
 Excluding unnecessary files and packages not only reduces build times but also results in smaller, more efficient, and portable Docker images.
+
+## Additional CI FAQs
+
+#### Can I use Harness CI for mobile app development?
+
+Yes. [Harness CI offers many options for mobile app development.](https://developer.harness.io/docs/continuous-integration/use-ci/mobile-dev-with-ci)
 
 #### What is a workspace in a pipeline, and how does it work?
 
@@ -1130,18 +1159,9 @@ To share it between stages, use `sharedpath`.
 You can achieve this by storing the XML as a secret and referring to it within a step. For example:
 `echo '<+secrets.getValue("account.[settingsXMLSecretID]")>' > settings.xml`
 
-#### Can I enable root access for a single step?
-
-If your build runs as non-root (meaning you have set `runAsNonRoot: true`), you can run a specific step as root by setting **Run as User** to `0` in the step's settings. This setting uses the root user for this specific step while preserving the non-root user configuration for the rest of the build. This setting is not available for all build infrastructures, as it is not applicable to those build infrastructures.
-
-#### Which user does Harness uses to run steps like Git clone, Run, and so on?
-
-Harness uses user 1000 by default.
-
 #### How can user enable the Gradle Daemon in builds?
 
 To enable the Gradle Daemon in your Harness CI builds, you can include the `--daemon` option when running Gradle commands in your build scripts. This option instructs Gradle to use the daemon process.
-
 
 #### How can I configure and use images from multiple Azure Container Registries (ACRs)?
 
@@ -1151,55 +1171,14 @@ To configure and use images from multiple ACRs in Harness, you need to set up in
 
 Yes, By configuring each service with the appropriate image repository and tag details, you can seamlessly deploy applications using images from different registries in the same deployment.
 
-#### What is the default user set on the windows lite-engine and addon image?
-
-The default user set on the windows lite-engine and addon image is `ContainerAdministrator`
-
-#### Can the default user in Windows LE/Addon images be changed?
-
-No, the default user in Windows LE/Addon images needs to be `ContainerAdministrator` because specific path and tool installations require it, and Windows does not allow setting the path otherwise.
-
-#### How does `ContainerAdministrator` differ from other user identities in Windows LE/Addon images?
-
-`ContainerAdministrator` is assigned elevated privileges similar to the root user on Linux, allowing for system-level configurations and installations within the Windows container
-
 #### Is there a way to abort a running pipeline from a step in that pipeline?
 
 We could use the ```putHandleInterrupt``` API to abort a running pipeline from a step in that pipeline. More details about this pipeline can be reffered in the [doc](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/putHandleInterrupt)
 
-#### How can user check the LocalStack service is healthy?
-1. In the "Run" step
-1. Enter "localstack health" in the Name field.
-1. Enter the provided cURL command in the Command field.
-1. Expand the Optional Configuration section, configure the Container Registry field, and select your Docker Hub connector.
-1. Enter "curlimages/curl:7.83.1" in the Images field.
+#### Why is the PATH Variable Overwritten in Parallel GitHub Actions Steps?
 
+The PATH variable can be overwritten when running parallel steps in GitHub Actions because these steps could modify the PATH variable depens on which step ran last. When these steps run in parallel, a race condition occurs, and only one of them will be able to set the PATH variable correctly. To avoid this, consider running these steps sequentially in your workflow.
 
-#### Why does the cURL command reference "localstack:4566"?
-cURL command references "localstack:4566" because both the LocalStack service and the cURL step share the same Docker network. This allows the cURL command to reach the LocalStack service during the health check.
+#### Is it possible to integrate our CI builds with the Datadog Pipeline Visibility feature?
 
-## Possibly in the wrong section?
-
-#### How can we calculate the instance of a service where number of pods change?
-
-We can calculate the service licenses and instances in following methods for CG and NG both.
-
-- List services deployed in the last 30 days. Service is considered in calculation even if it was part of any failed deployments
-- For every found service we find the 95th Percentile of the number of its service instances across a period of 30 days and it represents active service instances
-- Based on service instances we calculate the number of consumed licenses
-- 1 service license is equal to 20 active service instances
-
-Please find an example [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#example)
-
-#### Does Harness encrypt the image tag for the container during rollout deployment output?
-
-No, we don't. Try checking SHA of the tag and find image ID from the output of the service step with the `<+artifact.tag>` expression.
-
-#### Can we skip manually creating the kubeconfig when using the native EKS deployment method in AWS, since we provide connection details in the AWS connector?
-
-Yes, we do not need to create the kubeconfig file manually. We just need to have this binary installed on the delegate `aws-iam-authenticator`. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-eks)
-
-
-#### What is Harness Rollback in the CI pipeline
-
-Harness Rollback deployments initiate a rollback of the most recent successful execution. Note that this feature is behind a feature flag '''POST_PROD_ROLLBACK'''. Rollback deployments are currently supported by the following deployment types only (Kubernetes, Tanzu Application Services, Amazon ECS)
+We do not have OOTB support for Datadog Pipeline Visibility. However, I can suggest the following approach to push the pipeline event to a webhook endpoint: Link to documentation on webhook notifications.
