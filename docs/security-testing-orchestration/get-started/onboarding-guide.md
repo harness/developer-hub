@@ -95,7 +95,7 @@ You need a Harness build infrastructure to run scans in STO. First, review the s
 
   This is the simplest option. Not initial setup is required. Run your pipelines on Harness-hosted VMs preconfigured with tools, packages, and settings commonly used in CI pipelines. 
 
-- [Local Kubernetes build infrastructure](docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) 
+- [Local Kubernetes build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) 
 
    Recommended when you want to run ephemeral builds-at-scale in your own infrastructure.
 
