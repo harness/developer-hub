@@ -23,11 +23,11 @@ The topic explains how you can store your environment and infrastructure definit
 ## Create remote environment
 You can create an environment from your account, organization, or project. This topic explains the steps to create an environment from the project scope.
 1. In your Harness Account, go to your project.
-2. To create a environment from outside of a pipeline, under *Project Settings**, select **Envrionment**. To learn more about creating senvironments, go to [Create Environment](docs/continuous-delivery/x-platform-cd-features/environments/create-environments.md).
+2. To create a environment from outside of a pipeline, under **Project Settings**, select **Envrionment**. To learn more about creating senvironments, go to [Create Environment](docs/continuous-delivery/x-platform-cd-features/environments/create-environments.md).
 
 ![](./static/envrionment.png)
 
-3. Select **+ New Environment**. The **Add Environment** settings appear.
+3. Select **+ New Environment**.
 ![](./static/environment-settings.png)
 4. In **Name**, enter a name for the environment.
 5. Select **Remote**.
@@ -42,13 +42,43 @@ You can create an environment from your account, organization, or project. This 
 ![](./static/yaml_path.png)
 
 ##  Create Remote infrastructure definition
-1. On saving, environment configuration will open up, click on **Infrastructure Definition**.
-2. Select **+ New Infrastructure Definition**, to know more about Infrastructure Definition refer [Infrastructure Definition](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments.md) .
+1. After saving the above settings, environment configuration will open up, click on **Infrastructure Definition**.
+2. Select **+ New Infrastructure Definition**.
 ![](./static/infra_Def1.png)
 (You can select either of the two options to create an Infrastructure Definition)
 3. In **Name** enter name for the infrastructure definition.
 4. Select **Remote**
-5. It will auto populate the connector, repository as well as the YAML Path. The auto-population of the connector, repository, and YAML Path is based on your environment configuration, specifically extracted from the Git repository where you've stored your environment details.
+5. It will auto populate the connector, repository and branch as well as the YAML Path. The auto-population of the connector,branch and repository is based on your environment configuration, specifically extracted from the Git repository where you've stored your environment details.You can change the connector as well as the branch.
+6. Select the **Deployment Type**, **Infrastructure Type** and provide **Cluster Details**.To know more about Infrastructure Definition refer [Infrastructure Definition](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments.md) .
+7. Click on **Save**.
+8. Select **More Options** (&vellip;) as shown in the image below and click on **Edit**.
+![](./static/infra_def_edit.png)
+8. By clicking on the **Edit** Infrastructure Details option, you can view the relevant information by following the link highlighted in the image below, contained within a rectangular box. This link will direct you to the GitHub file where the infrastructure definition is stored.
+![](./static/infra_def_2.png)
 
+### Add remote environment in a CD pipeline
+After creating the environment, you have the option to utilize it in your Continuous Delivery (CD) pipeline directly. Alternatively, you also have the flexibility to establish a remote environment within your pipeline as needed.
+1. Go to stage settings, and then select **Environment**.
+![](./static/env_pipeline_remote.png)
+2. Under **Specify Environment** select the environment if already created. If the environment doesn't exist, create it by selecting **+ New Environment** and following the steps to [Create Remote Environment](#create-remote-environment).
+![](./static/specify_env_remote.png)
+3. When setting up your pipeline, you have the ability to choose a specific branch to determine the version of the environment you wish to utilize in your pipeline.
+![](./static/env_branch_switching_remote.png)
+:::note
+By default it will pick up the branch of the pipeline where the environment is getting added.
+:::
+4. Click **Apply Selected**.
 
- 
+## Moving inline environment configuration to Git
+1. Select **Environment**.
+2. Select **More Options** (&vellip;) as shown in the image below.
+![](./static/env_move_to_git.png)
+3. Select **Move to Git**.
+It will pop up the similar settings as shown above in [Create Remote Environment](#create-remote-environment) section for storing environment configuration in Git.
+
+## Moving inline infrastructure definition to Git.
+1. Select **Environment** and select the specific environment for which you want to migrate the infrastructure definition to Git.
+2. Select **Infrastructure Definition** and click **More Options** (&vellip;) as shown in the image below.
+![](./static/infra_move_git.png)
+3. Select **Move to Git**.
+It will pop up the similar settings as shown above in [Create Remote Infrastructure Definition](#create-remote-infrastructure-definition) section for storing infrasturcture definition configuration in Git.
