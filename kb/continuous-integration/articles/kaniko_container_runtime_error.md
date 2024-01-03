@@ -16,9 +16,8 @@ title: Kaniko container runtime error
 While building and pushing an image to a Docker registry, you get a `kaniko container runtime error`, such as:
 
 ```
-1 info 01/11/2022 13:06:02 + /kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=**************/pythonsample:latest --snapshotMode=redo --digest-file=/kaniko/digest-file
-2 info 01/11/2022 13:06:02 kaniko should only be run inside of a container, run with the --force flag if you are sure you want to continue 
-3 info 01/11/2022 13:06:02 exit status 1
+kaniko should only be run inside of a container, run with the --force flag if you are sure you want to continue
+exit status 1
 ```
 
 ![](../static/kb1_img1.png)
