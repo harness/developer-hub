@@ -45,7 +45,7 @@ In this initial step, we'll use the Harness HTTP step to create a Linear issue. 
 Authorization should be kept secret to prevent unauthorized access. Revealing it exposes sensitive information, risking data breaches and compromising system security, making it a critical element to safeguard. 
 
 5. **Assertion:** Ensure that the HTTP response code is 200 for a successful response.
-* <+httpResponseCode>==200
+* Assertion: <+httpResponseCode>==200
 
 6. **Output Variable:** Capture the newly created issue's ID for use in subsequent steps.
 * issueId = <+json.select("data.issueCreate.issue.id", httpResponseBody)>
