@@ -26,7 +26,7 @@ In this initial step, we'll use the Harness HTTP step to create a Linear issue. 
 
 **HTTP Step Configuration:**
 
-1. **URL:** Set the URL to <https://api.linear.app/graphql> the endpoint for Linear's GraphQL API.
+1. **URL:** Set the URL to (https://api.linear.app/graphql) the endpoint for Linear's GraphQL API.
 
 2. **Method:** Choose POST as the HTTP method, as we are creating a new issue.
 
@@ -40,15 +40,15 @@ In this initial step, we'll use the Harness HTTP step to create a Linear issue. 
 
 4. **Headers:** Configure necessary headers for proper communication with Linear's API.
 * Content-Type: application/json
-* Authorization: <+secrets.getValue("authorization")> 
+* Authorization: `<+secrets.getValue("authorization")>`
 
 Authorization should be kept secret to prevent unauthorized access. Revealing it exposes sensitive information, risking data breaches and compromising system security, making it a critical element to safeguard. 
 
 5. **Assertion:** Ensure that the HTTP response code is 200 for a successful response.
-* Assertion: <+httpResponseCode>==200
+* Assertion: `<+httpResponseCode>==200`
 
 6. **Output Variable:** Capture the newly created issue's ID for use in subsequent steps.
-* issueId = <+json.select("data.issueCreate.issue.id", httpResponseBody)>
+* issueId = `<+json.select("data.issueCreate.issue.id", httpResponseBody)>`
 
 ## Step 2: Custom Approval Shell Script Approval
 
