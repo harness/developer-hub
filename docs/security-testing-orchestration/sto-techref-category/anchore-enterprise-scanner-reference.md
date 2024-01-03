@@ -208,7 +208,7 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 #### Domain
 
-The fully-qualified URL to the scanner API, for example `https://anchore.company.io/api` or `http://192.0.2.1:8228`
+The fully-qualified URL to the scanner API, for example `https://anchore.company.io/api` or `http://192.0.2.1:8228`.
 
 
 
@@ -258,7 +258,9 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/current/docs/using/cli_usage/images/) with specific command-line arguments. For example, specify `tool_args` : `--force`.  
+You can use this field to run the Anchore Enterprise CLI with specific command-line arguments. For example, specify `tool_args` : `--force`. 
+
+For specific information, go to the [Anchor Enterprise documentation](https://docs.anchore.com).
 
 
 <a name="fail-on-severity"></a>
