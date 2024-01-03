@@ -49,4 +49,9 @@ You can create an environment from your account, organization, or project. This 
 3. In **Name** enter name for the infrastructure definition.
 4. Select **Remote**
 5. It will auto populate the connector, repository as well as the YAML Path. The auto-population of the connector, repository, and YAML Path is based on your environment configuration, specifically extracted from the Git repository where you've stored your environment details.
+
+
+https://github.com/krishi0408/developer-hub/assets/109092049/2a244594-a2bc-4dc8-a3a0-6d6a1a38a8cd
+
+
  
