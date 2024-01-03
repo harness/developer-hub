@@ -99,7 +99,7 @@ You can store the following configurations in Git using the Git Experience:
 - Input sets
 - Services
 - Environment 
-- Infrastructure definitions
+- Infrastructure Definitions
 
 Implementing pipelines as code is an industry standard. The most recommended practice for Continuous Integration and Continuous Deployment is to manage the pipeline state in Git. 
 
@@ -111,7 +111,7 @@ Following are some benefits of implementing pipelines as code:
 
 The above benefits apply to both Continuous Integration and Continuous Deployment. Harness extends these benefits to entities like templates and input sets because they are part of the pipeline. They would benefit from similar capabilities as pipeline as code.
 
-## What is an alternative to manage other entities in Git?
+## What is an alternative to managing other entities in Git?
 
 Harness recommends leveraging the Harness Terraform Provider or APIs to automate the management of your configurations like services, environments, and infrastructure definitions. Terraform is the industry standard for managing and updating configurations. You can manage your Harness resources as code via corresponding Terraform configuration files through the Terraform Provider. Modules that generate and update services may use a `tfvars` file to pass in the proper and configurable parameters. Harness orchestrates the process to make the change reliably without conflict using pipelines. While the Harness database remains the source of truth, you can vet and publish changes through automation.
 
