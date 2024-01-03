@@ -288,8 +288,8 @@ It is [good practice](/docs/security-testing-orchestration/get-started/key-conce
 pipeline:
   name: semgrep-simple-scan
   identifier: semgrepsimplescan
-  projectIdentifier: MY_PROJECT
-  orgIdentifier: MY_HARNESS_ORG
+  projectIdentifier: MY_HARNESS_PROJECT_ID
+  orgIdentifier: MY_HARNESS_ORGANIZATION_ID
   tags: {}
   stages:
     - stage:
@@ -338,7 +338,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: MY_GIT_CONNECTOR
+        connectorRef: MY_CODEBASE_CONNECTOR
         repoName: <+input>
         build: <+input>
 ```

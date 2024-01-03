@@ -412,7 +412,7 @@ Here's an example:
     name: build_local_image
     identifier: build_local_image
     spec:
-      connectorRef: mydockerhubconnector
+      connectorRef: MY_DOCKERHUB_CONNECTOR
       image: docker
       shell: Sh
       command: |-
@@ -593,7 +593,7 @@ Here's an example:
     name: push_image
     identifier: push_image
     spec:
-      connectorRef: mydockerhubconnector
+      connectorRef: MY_DOCKERHUB_CONNECTOR
       image: docker
       shell: Sh
       command: |-
@@ -610,7 +610,7 @@ Here's an example:
 
 ```yaml
 pipeline:
-  projectIdentifier: STO
+  projectIdentifier: MY_HARNESS_PROJECT_ID
   orgIdentifier: default
   tags: {}
   stages:
@@ -668,7 +668,7 @@ pipeline:
                   name: build_local_image
                   identifier: build_local_image
                   spec:
-                    connectorRef: mydockerhubconnector
+                    connectorRef: MY_DOCKERHUB_CONNECTOR
                     image: docker
                     shell: Sh
                     command: |-
@@ -715,7 +715,7 @@ pipeline:
                   name: push_image
                   identifier: push_image
                   spec:
-                    connectorRef: mydockerhubconnector
+                    connectorRef: MY_DOCKERHUB_CONNECTOR
                     image: docker
                     shell: Sh
                     command: |-

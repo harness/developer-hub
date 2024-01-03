@@ -208,8 +208,8 @@ It is [good practice](/docs/security-testing-orchestration/get-started/key-conce
 pipeline:
   name: tutorial-test-container-image-scan-v1
   identifier: tutorialtestcontainerimagescanv1
-  projectIdentifier: mytosandbox
-  orgIdentifier: default
+  projectIdentifier: MY_HARNESS_PROJECT_ID
+  orgIdentifier: MY_HARNESS_ORGANIZATION_ID
   tags: {}
   stages:
     - stage:

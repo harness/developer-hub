@@ -187,7 +187,7 @@ It is [good practice](/docs/security-testing-orchestration/get-started/key-conce
 pipeline:
   name: v1-dast-zap-scan-gruyere-test
   identifier: v1dastzapscangruyeretest
-  projectIdentifier: mystosandbox
+  projectIdentifier: MY_HARNESS_PROJECT_ID
   orgIdentifier: default
   tags: {}
   stages:

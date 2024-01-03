@@ -255,7 +255,7 @@ Here's an example:
     name: build_push_test_image
     identifier: build_push_test_image
     spec:
-    connectorRef: mydockerhubconnector
+    connectorRef: MY_DOCKERHUB_CONNECTOR
     repo: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
     tags:
       - <+stage.variables.DOCKER_IMAGE_TAG>-scantest-DONOTUSE
@@ -410,7 +410,7 @@ Here's an example:
     name: build_push_test_image
     identifier: BuildAndPushDockerRegistry_1
     spec:
-    connectorRef: mydockerhubconnector
+    connectorRef: MY_DOCKERHUB_CONNECTOR
     repo: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
     tags:
       - <+sequenceID>
@@ -425,13 +425,13 @@ Here's an example:
 pipeline:
   name: v3-sto-ci-tutorial-test
   identifier: v3stocitutorialtest
-  projectIdentifier: mystosandbox
-  orgIdentifier: default
+  projectIdentifier: MY_HARNESS_PROJECT_ID
+  orgIdentifier: MY_HARNESS_ORGANIZATION_ID
   tags: {}
   properties:
     ci:
       codebase:
-        connectorRef: mygithubconnector
+        connectorRef: MY_CODEBASE_CONNECTOR
         repoName: <+input>
         build: <+input>
   stages:
@@ -469,7 +469,7 @@ pipeline:
                   name: build_push_test_image
                   identifier: build_push_test_image
                   spec:
-                    connectorRef: dbothwelldockerhubhc
+                    connectorRef: MY_DOCKERHUB_CONNECTOR
                     repo: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
                     tags:
                       - <+stage.variables.DOCKER_IMAGE_TAG><+pipeline.sequenceId>-scantest-DONOTUSE
@@ -501,7 +501,7 @@ pipeline:
                   name: build_push_prod_image
                   identifier: build_push_prod_image
                   spec:
-                    connectorRef: mydockerhubconnector
+                    connectorRef: MY_DOCKERHUB_CONNECTOR
                     repo: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
                     tags:
                       - <+stage.variables.DOCKER_IMAGE_TAG><+pipeline.sequenceId>
