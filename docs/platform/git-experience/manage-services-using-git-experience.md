@@ -51,7 +51,7 @@ To add services in a pipeline, do the following:
 3. You can select the branch for selecting the version of service you want to use in your pipeline.
     ![](./static/branches_adding_services.png)
 :::note
-By default it will pick up the branch of the pipeline, suppose you are creating a service at a branch named `remote-services`, it will pick up the service version created at branch `remote-services`.
+By default it will pick up the branch of the pipeline where the service is getting added.
 :::
 4. Click **Apply Selected**.
 
