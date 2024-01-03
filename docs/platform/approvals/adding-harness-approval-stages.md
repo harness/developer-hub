@@ -205,13 +205,12 @@ These notifications help approvers to make their decision. There are two kinds o
 Use the **Include stage execution details in approval** option to include stage execution details in approval notifications. A summary of completed, running, and upcoming stages is shown. 
 
 #### CD execution metadata feature in notifications
-- Execution metadata like service, environment, and infrastructure details are present for CD stages in approval notifications.
-- For upcoming CD stages with multiple services and(or) multiple environments, approval notifications support services, environments, infrastructures and environment groups' details.
+- Execution metadata like service, environment, and infrastructure identifiers are present for CD stages in approval notifications.
+- For upcoming CD stages with multiple services and(or) multiple environments, approval notifications support services, environments, infrastructures and environment groups' identifiers.
 
 
 #### Limitations of CD execution metadata feature in notifications
 - In certain situations, values for certain fields might not be resolved for future stages. In such cases, the notification will contain unresolved expressions for those fields. For instance, if a service is configured as an expression in a CD stage that comes before the current stage, then the notification will have an unresolved expression for that service.
-- Notification currently contain identifiers and not names for CD metadata.
 - Artifact details are not supported currently.
 - Environment and infrastructure filters' details are not supported currently.
 - GitOps CD stage metadata is not supported.
