@@ -55,9 +55,6 @@ const getCategoryDetails = (category: string): Record<string, string> => {
     case FaultCategory.Windows:
       setDetails(FaultCategory.Windows);
       break;
-    case FaultCategory.SSH:
-      setDetails(FaultCategory.SSH);
-      break;
     default:
       details.icon = `${path}/default.svg`;
       details.link = `#`;
@@ -123,9 +120,6 @@ const getFaultDetails = (
       break;
     case FaultCategory.Windows:
       setDetails(FaultCategory.Windows);
-      break;
-    case FaultCategory.SSH:
-      setDetails(FaultCategory.SSH);
       break;
     default:
       details.icon = `${path}/default.svg`;
