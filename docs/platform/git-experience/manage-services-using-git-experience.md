@@ -14,7 +14,7 @@ When you create a new Harness service, you can store the service in one of the f
 
 You can set the service as Inline or Remote when the service is created, and then change the service storage method after it is created. Changing the storage method is described in this topic.
 
-The topic explains how you can store your services in Git.
+The topic explains how to use the Remote option to store your services in your Git platform account.
 
 ## Before you begin
 
