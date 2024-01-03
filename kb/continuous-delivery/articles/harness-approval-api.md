@@ -166,7 +166,7 @@ template:
                 value: application/json
             inputVariables: []
             outputVariables: []
-            requestBody: "{\"executionId\": \"<+pipeline.executionId>\",\"callback_id\": \"<+execution.steps.<step_group_id>.steps.generate_random_uuid.output.outputVariables.callback_id>\"}"
+            requestBody: "{\"executionId\": \"<+pipeline.executionId>\",\"callback_id\": \"<+execution.steps.STEP_GROUP_ID.steps.generate_random_uuid.output.outputVariables.callback_id>\"}"
           timeout: 1m
       - step:
           type: HarnessApproval
@@ -188,7 +188,7 @@ template:
 
 :::note
 
-Replace the <step_group_id> by the identifier of the stepgroup when it gets used in a pipeline
+Replace the STEP_GROUP_ID by the identifier of the stepgroup when it gets used in a pipeline
 
 :::
 
