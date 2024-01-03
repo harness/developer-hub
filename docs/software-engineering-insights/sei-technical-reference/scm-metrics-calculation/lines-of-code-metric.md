@@ -71,7 +71,7 @@ For SCM reports, the values for lines of code added and deleted are the same as 
 
 ### Azure DevOps
 
-There are currently some known issues with all SCM reports for the Azure DevOps integrations. As a result, the data for SCM metrics such as Lines of Code and Files Changed may be displayed as either zero or incorrect. This issue will be fixed in future releases.
+There are currently some known issues with all SCM reports for the Azure DevOps integrations. As a result, the data for SCM metrics such as `Lines of Code` and `Files Changed` may be displayed as either zero or incorrect. This issue will be fixed in future releases.
 
 <!---
 * **Lines of Code Metric for PRs:** For all types of PRs, the Lines of Code metrics are determined by summing the lines of code added, and changed across all associated commits for a particular Pull Request. This method provides a comprehensive view of the changes made in each individual commit and their overall impact on the codebase.
