@@ -212,7 +212,7 @@ You can find the integration\_id in the mock Jenkins integration created during 
 
 ### Step 3: Import Propel from GitHub Repository
 
-SEI provides templates for CI/CD integrations, which can be imported from this [GitHub repository](https://github.com/harness/sei-propels-templates). You can customize these templates to suit your specific CI/CD tool, such as Jenkins.
+SEI provides templates for CI/CD integrations, which can be imported from this [GitHub repository](https://github.com/harness/harness-sei-propels-templates). You can customize these templates to suit your specific CI/CD tool, such as Jenkins.
 
 ### Step 4: Update the UUID on Propel&#x20;
 
