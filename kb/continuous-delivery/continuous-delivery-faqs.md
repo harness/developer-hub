@@ -4030,3 +4030,57 @@ Please read more on this in the following [Documentation](https://developer.harn
 #### For an HTTP step communicating with an mTLS endpoint, if there is no certificate configuration, does it ignore SSL validation like it does for a single TLS handshake ?
 
 In the context of mTLS, it is expected that the client (delegate) always needs to present a certificate; otherwise, the server will not accept the request. In contrast, with TLS, setting SSL ignore will instruct the client not to validate the server. It's important to note that this behavior aligns with the expected security practices for mutual TLS communication.
+
+#### What is the purpose of merging values YAML files?
+Merging values YAML files allows for:
+
+* Overriding default values with environment-specific settings.
+* Combining configuration from multiple sources (e.g., Service Definition and Service Overrides).
+* Adapting deployments to different environments without modifying the base configuration.
+
+#### What happens if a key exists in both files (Service Overrides and Service Definition) but with different values?
+
+The value from the Service Overrides file takes priority, overriding the value from the Service Definition.
+
+#### Are rolling deployments suitable for all applications?
+
+Rolling deployments are not suitable for all applications, especially those that:
+
+* Cannot tolerate any downtime at all.
+* Require complex configurations or dependencies that are difficult to update in a rolling fashion.
+* Have highly stateful data that cannot be easily migrated between nodes.
+
+#### Are there any limitations with Overrides V2?
+
+Runtime inputs are not supported for Infrastructure Specific and Service & Infrastructure Specific variables.
+
+#### What types of settings can be overridden?
+
+* Manifests
+* Config Files
+* Variables
+* Application Settings and Connection Strings (Global Environment only)
+
+#### Can I combine different strategies in my pipeline? 
+Yes, you can combine strategies, like using a canary deployment within a blue-green approach for further gradual rollout within the separate environment.
+
+#### Why is Harness migrating to Overrides V2?
+
+* To provide more flexibility and control over overrides.
+* To enable infrastructure variable management and service-specific infrastructure overrides.
+* To streamline override management using YAML objects.
+* To allow configuration at account and organizational levels.
+
+#### How does the merging process work in Harness?
+
+Harness merges values of YAML files at runtime based on the following rules:
+
+* Key-value pairs from Service Overrides precede those in the Service Definition.
+* Pairs with unique keys are combined into a single file.\
+* Conflicting keys (same name, different values) result in the Service Overrides value being used.
+
+#### Can I run deployments for multiple stages at once? 
+Yes, you can run pipeline stages in parallel, deploying different services simultaneously.
+
+#### What's the benefit of using step groups? 
+Step groups simplify managing related steps, allowing you to apply common settings like skipping and failure strategies to all members.
