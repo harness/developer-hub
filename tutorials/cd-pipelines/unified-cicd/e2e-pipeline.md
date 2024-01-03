@@ -27,7 +27,7 @@ The diagram below shows a GitOps-driven CI/CD pipeline. The process involves bui
 ## Pre-requisites
 
 - A Harness free plan. If you don't have one, [sign up for free](https://app.harness.io/auth/#/signup/?&utm_campaign=cd-devrel).
-- A GitHub account. For [the Harness GitOps Workshop repo](https://github.com/harness-community/harness-gitops-workshop/fork) to your own GitHub account.
+- A GitHub account. [Fork the Harness GitOps Workshop repo](https://github.com/harness-community/harness-gitops-workshop/fork) to your own GitHub account.
 - A Docker Hub account.
 - A Kubernetes cluster. A setup like [k3d](https://k3d.io/) will be suitable.
 - [Install the Harness CLI](/docs/platform/automation/cli/install/) and [log in](/docs/platform/automation/cli/install/#configure-harness-cli).
@@ -36,17 +36,18 @@ The diagram below shows a GitOps-driven CI/CD pipeline. The process involves bui
 
 In order to interact with your code repository (GitHub) and image registry (Docker Hub), the Harness platform needs to authenticate to these providers on your behalf. [Connectors](/docs/category/connectors/) in Harness help you pull in artifacts, sync with repos, integrate verification and analytics tools, and leverage collaboration channels.
 
-In this section, you'll create two secrets and two connectors for GitHub and Docker Hub. But before that, you'll need to create two personal access tokens (PAT) for GitHub and Docker Hub. Check out [the GitHub docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) and [the Docker Hub Docs](https://docs.docker.com/security/for-developers/access-tokens/) on how to create personal access tokens. For GitHub, you need to ensure that the token has read/write access to the content, pull requests (PRs), and webhooks for your forked repository.
+In this section, you'll create two [secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/) and two connectors for GitHub and Docker Hub. But before that, you'll need to create two personal access tokens (PAT) for GitHub and Docker Hub. Check out [the GitHub docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) and [the Docker Hub Docs](https://docs.docker.com/security/for-developers/access-tokens/) on how to create personal access tokens. For GitHub, you need to ensure that the token has read/write access to the content, pull requests (PRs), and webhooks for your forked repository.
 
-From your project setup, click on **Secrets**, then **+ New Secret**, and select **Text**. Use the Harness Built-in Secrets Manager. Give this secret a name `github_pat` and paste in the Personal Access Token (PAT) for GitHub. Similarly, create an access token for Docker Hub and name it `docker_secret`.
-
-Now, let's create connectors for GitHub and Docker Hub. Navigate to **cli-manifests** directory. Open [github-connector.yaml](https://github.com/harness-community/harness-gitops-workshop/blob/main/cli-manifests/github-connector.yaml) on your local machine and replace **YOUR_HARNESS_ACCOUNT_ID** and **YOUR_GITHUB_USERNAME** with actual values.
-
-You can find your Harness account ID in any Harness URL, for example:
+Once you're authenticated using the Harness CLI, navigate to the **cli-manifests** directory. Let's create two secrets - one for GitHub PAT and another for Docker Hub PAT. Be sure to replace the placeholder values (GITHUB_PAT and DOCKERHUB_PAT) with the actual secret values. 
 
 ```shell
-https://app.harness.io/ng/#/account/ACCOUNT_ID/home/get-started
+harness secret apply --token GITHUB_PAT --secret-name "github_pat"
+harness secret apply --token DOCKERHUB_PAT --secret-name "docker_secret"
 ```
+
+From your project setup, click on **Secrets**, and you should see the newly created secrets added to the Harness Built-in Secrets Manager. 
+
+Now, let's create connectors for GitHub and Docker Hub.  Open [github-connector.yaml](https://github.com/harness-community/harness-gitops-workshop/blob/main/cli-manifests/github-connector.yaml) on your local machine and replace **YOUR_GITHUB_USERNAME** with actual value.
 
 To create a GitHub connector, execute the following:
 
@@ -56,7 +57,7 @@ harness connector --file github-connector.yaml apply
 
 Enter your GitHub username and press **Enter**.
 
-Similarly, in the [docker-connector.yaml](https://github.com/harness-community/harness-gitops-workshop/blob/main/cli-manifests/docker-connector.yaml) file on your local machine, replace the placeholder values for **YOUR_HARNESS_ACCOUNT_ID** and **YOUR_DOCKER_USERNAME**.
+Similarly, in the [docker-connector.yaml](https://github.com/harness-community/harness-gitops-workshop/blob/main/cli-manifests/docker-connector.yaml) file on your local machine, replace the placeholder values for **YOUR_DOCKER_USERNAME**.
 
 Run the following to create a Docker Hub Connector:
 
@@ -232,6 +233,12 @@ Harness Pipelines define steps needed to built, test and deploy your application
 - Creates and merges a GitHub Pull Request of any configuration changes to the prod environment
 
 Harness pipelines require a [delegate](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/) to execute pipeline tasks. You'll need a delegate token as well. You can [reuse the default delegate token or create a new token](https://developer.harness.io/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/).
+
+You can find your Harness account ID in any Harness URL, for example:
+
+```shell
+https://app.harness.io/ng/#/account/ACCOUNT_ID/home/get-started
+```
 
 Export Harness account ID and delegate token values as environment variables:
 
