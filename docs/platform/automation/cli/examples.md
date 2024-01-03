@@ -102,7 +102,7 @@ In this segment, we'll guide you through a example demonstrating how to utilize 
     - Obtain GitHub personal access token with repo permissions. For steps, go to the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
     - Create a Harness Secret to store GitHub PAT. This will be used in the next step to create GitHub connector.
         ```bash
-        harness secret  apply --secret-name "harness_gitpat" --token GITHUB_PAT apply 
+        harness secret apply --secret-name "harness_gitpat" --token GITHUB_PAT apply 
         ```
         > Note: Replace `GITHUB_PAT` with GitHub PAT that you obtained in the previous step.
 
