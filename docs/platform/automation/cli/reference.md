@@ -54,7 +54,7 @@ Setup Harness CD & GitOps in a few commands
 
 `harness update`             - Updates the CLI.
 
-`harness secret`             - Creates or deletes a Harness Secret.
+`harness secret`             - Creates, deletes, or update a Harness Secret.
 
 `harness connector`          - Creates, deletes or update a Harness Connector.
 
@@ -102,7 +102,9 @@ Setup Harness CD & GitOps in a few commands
       harness secret apply [command options] [arguments...]
    
    OPTIONS:
-      --secret-type value  provide the secret type.
+      --token value        specify your secret token
+      --secret-name        provide the secret name
+      --secret-type value  provide the secret type
       --port value         port number for the ssh secret
       --username value     username for the ssh secret
       --passphrase value   passphrase for the ssh secret
