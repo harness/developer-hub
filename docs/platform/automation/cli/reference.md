@@ -54,23 +54,23 @@ Setup Harness CD & GitOps in a few commands
 
 `harness update`             - Updates the CLI.
 
-`harness secret`             - Creates, deletes or update a Harness Secret.
+`harness secret`             - Creates, deletes, or updates a Harness Secret.
 
-`harness connector`          - Creates, deletes or update a Harness Connector.
+`harness connector`          - Creates, deletes, or updates a Harness Connector.
 
-`harness gitops-repository`  - Creates, deletes or update a GitOps Repository.
+`harness gitops-repository`  - Creates, deletes, or updates a GitOps Repository.
 
-`harness gitops-cluster`     - Creates, deletes or update a GitOps Cluster.
+`harness gitops-cluster`     - Creates, deletes, or updates a GitOps Cluster.
 
-`harness gitops-application` - Creates, deletes or update a GitOps Application.
+`harness gitops-application` - Creates, deletes, or updates a GitOps Application.
 
-`harness environment`        - Creates, deletes or update a Harness Environment.
+`harness environment`        - Creates, deletes, or updates a Harness Environment.
 
-`harness infrastructure`     - Creates, deletes or update a Harness Infeastructure.
+`harness infrastructure`     - Creates, deletes, or updates a Harness Infeastructure.
 
-`harness service`            - Creates, delete or update a Harness Service.
+`harness service`            - Creates, deletes, or updates a Harness Service.
 
-`harness pipeline`           - Creates, delete or update a Harness Pipeline.
+`harness pipeline`           - Creates, deletes, or updates a Harness Pipeline.
 
 ## Global options
 
