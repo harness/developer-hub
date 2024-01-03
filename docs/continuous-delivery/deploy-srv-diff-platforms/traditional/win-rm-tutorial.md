@@ -79,7 +79,7 @@ Harness includes Connectors for all the major artifact repositories. In this tut
 2. In **Specify Artifact Repository Type**, select **Artifactory** and click **Continue**.
 3. For the Artifactory Connector, select **New Artifactory Connector**.
 4. In **Name**, enter a name for the connector: **artifactory-connector** and click **Continue**.
-5. In **Details**, enter the following URL path for **Artifactory Repository URL** or click the tooltip and copy the URL: **https://harness.jfrog.io/artifactory**. In this tutorial, we will use the artifacts stored in that repository.
+5. In **Details**, enter the following URL path for **Artifactory Repository URL** or click the tooltip and copy the URL: `https://harness.jfrog.io/artifactory`. In this tutorial, we will use the artifacts stored in that repository.
 6. For **Authentication**, click the down-drop arrow for **Username and Password**. Then, select **Anonymous (no credentials required)**. Click **Continue**.
    	
 	![](static/win-rm-tutorial-129.png)

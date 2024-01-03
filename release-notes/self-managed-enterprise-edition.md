@@ -3511,7 +3511,7 @@ gsutil -m cp \
 
 - CD license utilization data was not reported for some accounts. (CDS-69101)
 
-  [License usage](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
+  [License usage](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
 
   This issue has been resolved. The license usage now retrieves the required information in batches to avoid read timeout.
 
