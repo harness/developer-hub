@@ -193,7 +193,9 @@ Currently, the CD execution metadata feature in notifications is behind the feat
 Approval notifications are sent to each of the configured **User Groups** in the **Approvers** section. User group's notification settings are used while sending notifications. For more information, go to [Edit notification preferences](/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences).
 
 :::important
-THe PagerDuty notification channel is not currently supported for approval notifications. This means that even if the PagerDuty notification channel is configured in a user group notification setting, approval notifications will not be sent to that channel.
+The PagerDuty notification channel is not currently supported for approval notifications. This means that even if the PagerDuty notification channel is configured in a user group notification setting, approval notifications will not be sent to that channel.
+
+:::
 
 These notifications help approvers to make their decision. There are two kinds of approval notifications:
 
