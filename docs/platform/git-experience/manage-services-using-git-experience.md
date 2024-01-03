@@ -26,7 +26,7 @@ You can create a service from your account, organization, or project. This topic
 To create a remote service, do the following:
 
 1. In your Harness Account, go to your project.
-2. To create a service from outside of a pipeline, under **Account-level resources**, select **Services**. To learn more about creating services, go to [Create Services](docs/continuous-delivery/x-platform-cd-features/services/create-services.md).
+2. To create a service from outside of a pipeline, under **Project Settings**, select **Services**. To learn more about creating services, go to [Create Services](docs/continuous-delivery/x-platform-cd-features/services/create-services.md).
 3. Select **+ New Service**. The **Add Service** settings appear.
     ![](./static/Gitex_service.png) 
 4. In **Name**, enter a name for the service.
