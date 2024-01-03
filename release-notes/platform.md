@@ -82,9 +82,37 @@ The following deprecated API endpoints will no longer be supported:
 
 ## January 2024
 
-<!--  January 2, 2024 -->
+### Version 1.19.x <!--  January x, 2024 -->
 
-### Version 1.17.8
+#### New features and enhancements
+
+- Upgraded MinIO to `bitnami/minio:2023.10.7-debian-11-r2`.
+
+#### Fixed issues
+
+-  Pipeline failures occurred when the delegate was unable to acquire tasks and HPA didn't scale pods. (PL-42600, ZD-54025, ZD-54324)
+
+   This issue has been resolved with improved logic to calculate CPU and memory usage for dynamic task request handling.
+   
+   This item is available with Harness Platform version 1.19.x and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- In the **Add new Encrypted Text** dialog, the **Regions** list for Google Secrets Manager integration included unsupported values.(PL-43575, ZD-55268)
+
+   This issue has been resolved and the **Regions** list has been updated with the correct GCP regions.
+
+- When Harness user groups were created during SCIM sync, dots were not converted to underscores in Harness for user group IDs. (PL-43576, ZD-55266)
+
+   This issue has been resolved. Now, SCIM group names that contain dots are converted to underscores in Harness for group identifiers. For example, a SCIM group named "abc.xyz" is created as follows:
+   
+   `UserGroupIdentifier: "abc_xyz"`
+   
+   `UserGroupName: "abc.xyz"`
+
+- Perpetual tasks weren't assigned after a delegate restart. (PL-43646, ZD-55426, ZD-55572)
+
+   Fixed race condition where a perpetual task was assigned at the same time as the delegate abruptly shutting down due to a pod restart.
+
+### Version 1.17.8 <!--  January 2, 2024 -->
 
 #### Fixed issues
 
@@ -112,6 +140,13 @@ The following deprecated API endpoints will no longer be supported:
    
    `UserGroupName: "abc.xyz"` 
 -->
+
+## Previous releases
+
+### 2023 releases
+
+<details>
+<summary>2023 releases</summary>
 
 ## December 2023
 
@@ -1771,6 +1806,10 @@ For more information, see [Built-in user groups](/docs/platform/role-based-acces
 - Changed the behavior of the delegate dropdown menu. The UI core library was updated to add a parameter that prevents the reset of expanded states when new data loads in a table. This resolved an issue with the dropdown menu collapsing automatically. (DEL-5541)
 
 - Fixed a problem that was causing the `kryo` component to fail. The problem was caused when nested `java.lang.RuntimeException` errors occurred during manager response. (DEL-5609)
+
+</details>
+
+### 2022 releases
 
 <details>
 <summary>2022 releases</summary>
