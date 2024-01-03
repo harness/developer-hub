@@ -1,0 +1,15 @@
+# generate load on the target host
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: load-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: locust-loadgen-chaos
+    spec:
+      components:
+        env:
+        - name: HOST
+          value: 'https://www.google.com'

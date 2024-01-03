@@ -1,0 +1,17 @@
+# provide number of users for loadgen
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: load-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: locust-loadgen-chaos
+    spec:
+      components:
+        env:
+        - name: USERS
+          value: '100'
+        - name: HOST
+          value: 'https://www.google.com'

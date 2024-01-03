@@ -176,11 +176,4 @@ export const experiments: ExperimentDetails[] = [
     tags: ["time"],
     category: "vmware",
   },
-  {
-    name: "SSH chaos on VMware",
-    description:
-      "SSH chaos injects chaos on the target host using SSH connections by passing custom chaos logic through a configmap.",
-    tags: ["ssh"],
-    category: "vmware",
-  },
 ];

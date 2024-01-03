@@ -1,12 +1,10 @@
 ---
-id: ssh-chaos-on-vmware
-title: SSH chaos on VMware
+id: ssh-chaos
+title: SSH chaos
 ---
-import Prerequisites from './shared/prerequisites.md'
-
 SSH chaos injects chaos on the target host using SSH connections by passing custom chaos logic through a ConfigMap. These scripts are executed using SSH credentials, which are securely referenced in the ConfigMap. This enables direct fault injection on the target host. This experiment offers customisation for the chaos injection logic, providing flexibility and control over chaos experiments.
 
-![SSH chaos](./static/images/ssh-chaos-on-vmware.png)
+![SSH chaos](./static/images/ssh-chaos/ssh-chaos.png)
 
 ## Use cases
 
@@ -14,15 +12,8 @@ SSH chaos can be used with custom chaos logic and transferred to a target VM (to
 - This serves as a framework which can be customised to perform other chaos experiments, such as network stress, HTTP, DNS, restart service and so on.
 - This framework can be used to rollback to the orignal state of an abort event.
 
-## Prerequisites
-<accordion color="blue">
-<summary>Follow these steps before executing the SSH chaos experiment</summary>
-
-<Prerequisites />
-
-</accordion>
-
-Following the steps in the prerequisites section generates two experiment YAML files, namely `ssh-chaos-with-key.yaml` and `ssh-chaos-with-pass.yaml`. You can use one of them based on the authentication method you choose.
+## Executing the SSH chaos experiment
+Before executing the SSH chaos experiment, ensure that you follow the steps in [prerequisites](./prerequisites) section. This will generate two experiment YAML files. namely `ssh-chaos-with-key.yaml` and `ssh-chaos-with-pass.yaml`. You can use one of them based on the authentication method you choose.
 
 * Use `ssh-chaos-with-key.yaml` for private key authentication. This file references secrets in its YAML view. The `PASSWORD` environment variable should be empty.
 
@@ -32,7 +23,9 @@ Following the steps in the prerequisites section generates two experiment YAML f
 If you use the default names for ConfigMap and secrets, you won't need to modify the experiment. If you use different names, update the respective environment variables with the names. For example, if your script file is `test.sh` instead of `script.sh`, update the `CHAOS SCRIPT PATH` environment variable with the correct value.
 :::
 
-  <h3>Mandatory tunables</h3>
+## Fault tunables
+
+  <h3>Mandatory fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -96,7 +89,7 @@ Parameter for the chaos script. Tune it by using the `CHAOS_PARAMETER` environme
 
 Use the following example to tune the chaos parameter:
 
-[embedmd]:# (./static/manifests/ssh-chaos-on-vmware/chaos-parameter.yaml yaml)
+[embedmd]:# (./static/manifests/ssh-chaos/chaos-parameter.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -120,7 +113,7 @@ Parameter for the abort script. Tune it by using the `ABORT_PARAMETER` environme
 
 Use the following example to tune the number of users:
 
-[embedmd]:# (./static/manifests/ssh-chaos-on-vmware/abort-parameter.yaml yaml)
+[embedmd]:# (./static/manifests/ssh-chaos/abort-parameter.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -173,7 +166,7 @@ Following are examples of default and customied formats:
 
 To implement a customized format, set the `INDICATOR_TYPES` to `string,environment,&`. This setting allows modifying the indicators for `raw`, `environment`, and `$` values, thereby providing a tailored approach to parameter passing.
 
-![chaos parameters](./static/images/prerequisites/chaos-parameter.png)
+![chaos parameters](./static/images/ssh-chaos/chaos-parameter.png)
 
 ## Customizing ConfigMap and secret names
 SSH chaos is equipped to support custom names to ConfigMap and secrets by making a minor modification to the corresponding YAML file.
@@ -202,4 +195,4 @@ After you make the above changes, **Save** the updated file and **Run** the upda
 
 If you wish to use the default ConfigMap and secret names but the script has a different name, you can update the environment variables (ENV) to align with the correct script, by updating the script name in the chaos-script path or abort-script path.
 
-![customizing env var](./static/images/prerequisites/customize-env.png)
+![customizing env var](./static/images/ssh-chaos/customize-env.png)
