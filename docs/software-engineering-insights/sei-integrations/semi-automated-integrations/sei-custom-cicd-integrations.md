@@ -24,14 +24,14 @@ Configure the webhook API call according to the following webhook specifications
 
 **Header**
 
-* Authorization: Bearer \<BEARER_TOKEN>
-* Content-Type: application/json
+* Authorization: Bearer `<BEARER_TOKEN>`
+* Content-Type: `application/json`
 
 **Body**
 
-* Data: 
+* Data:
 
-```bash
+```yaml
 "{"pipeline":"Node.js CI","user_id":"SCMTrigger","repo_url":"https://api.github.com/users/rajpropelo","start_time":1679467494000,"result":"success","duration":77000,"build_number":4487150517,"instance_guid":"89d2491c-764a-4f77-93d9-18e8e372b795","instance_name":"Jenkins Instance","instance_url":"https://jenkins.dev.levelops.io/","job_run":{"stages":[{"displayName":"Build_Stage","displayDescription":"Build_Stage","result":"succeeded","state":"completed","durationInMillis":5000,"steps":[{"displayName":"BUILD_STEP","displayDescription":"BUILD_STEP","result":"succeeded","state":"completed","durationInMillis":5000}]}]},"job_full_name":"Node.js CI--readme updated","qualified_name":"Node.js CI--readme updated","branch_name":"master","module_name":null,"scm_commit_ids":["64be72b2c1f7d2a33082f98a40a848880fcdcd5e"],"job_run_params":[{"type":"StringParameterValue","name":"version","value":1},{"type":"StringParameterValue","name":"revision","value":1}],"ci":true,"cd":false,"artifacts":[{"input":false,"output":true,"type":"container","location":"http://generated/image/location","name":"image1","qualifier":"1"}],"trigger_chain":[{"id":"SCMTrigger","type":"SCMTriggerCause"}]}"
 ```
 
@@ -72,31 +72,35 @@ curl --location 'https://testapi1.propelo.ai/v1/custom-cicd' \
 
 Payload is an object with required and optional fields.
 
-### Required Fields:
+#### Required Fields:
 
-* **pipeline (string):** The name of the CI/CD job.
-* **job\_full\_name (string):** A human-readable identifier for the job, often the same as the pipeline name.
-* **qualified\_name (string):** A qualified name for the job, typically the same as the pipeline name.
-* **instance\_name (string):** The identifier for the CI/CD instance (not the UUID).
-* **instance\_guid (string):** UUID (Universally Unique Identifier) for the CI/CD instance. To generate a UUID for the integration you can use the API `https://testapi1.propelo.ai/v1/custom-cicd`.
-* **start\_time (integer):** Job start time in epoch milliseconds.
-* **duration (integer):** Job duration in milliseconds.
-* **result (string):** The result of the job, either "success" or "failure."
+| Field | Description |
+| - | - |
+| pipeline (string) | The name of the CI/CD job. |
+| job_full_name (string) | A human-readable identifier for the job, often the same as the pipeline name. |
+| qualified_name (string) | A qualified name for the job, typically the same as the pipeline name. |
+| instance_name (string) | The identifier for the CI/CD instance (not the UUID). |
+| instance_guid (string) | UUID (Universally Unique Identifier) for the CI/CD instance. To generate a UUID for the integration you can use the API `https://testapi1.propelo.ai/v1/custom-cicd`. |
+| start_time (integer) | Job start time in epoch milliseconds. |
+| duration (integer) | Job duration in milliseconds. |
+| result (string) | The result of the job, either "success" or "failure." |
 
-### Optional Fields:
+#### Optional Fields:
 
-* **user\_id (string):**
-* **job\_run\_params (array):** An array of parameters associated with the job run.
-* **scm\_commit\_ids (array of strings):** An array of commit ids related to the deployment
-* **repo\_url (string):** The URL of the repository related to the job.
-* **build\_number (integer):** The build number associated with the job.
-* **instance\_url (string):** URL of the CI/CD instance.
-* **job\_run (object):** Information about the job run, including stages, steps, and their results.
-* **module\_name (string):** The name of the module related to the job
-* **ci and cd (boolean):** One is true and the other is false, depending on whether this is for a CI job or a CD job.
-* **artifacts (array of objects):** An array of information about the job run, including input, output, type, location, name, qualifier, hash, and metadata.
-* **trigger\_chain (array of objects):** Information about the chain of triggers.
-* **branch\_name (string):** The name of the branch related to the job.
+| Field | Description |
+| - | - |
+| user_id (string) | User identifier in string |
+| job_run_params (array) | An array of parameters associated with the job run. |
+| scm_commit_ids (array of strings) | An array of commit ids related to the deployment |
+| repo_url (string) | The URL of the repository related to the job. |
+| build_number (integer) | The build number associated with the job. |
+| instance_url (string) | URL of the CI/CD instance. |
+| job_run (object) | Information about the job run, including stages, steps, and their results. |
+| module_name (string) | The name of the module related to the job |
+| ci and cd (boolean): | One is true and the other is false, depending on whether this is for a CI job or a CD job. |
+| artifacts (array of objects) | An array of information about the job run, including input, output, type, location, name, qualifier, hash, and metadata. |
+| trigger_chain (array of objects): | Information about the chain of triggers. |
+| branch_name (string): | The name of the branch related to the job. |
 
 Here is an example payload:
 
@@ -184,7 +188,7 @@ Follow the steps to generate a Universally Unique Identifier (UUID) for custom C
 * Access to Propel API with a valid access token. 
 * A CI/CD integration (e.g., Jenkins) that you want to associate with a UUID.
 
-### Step 1: Create a Mock Jenkins Integration&#x20;
+### Step 1: Create a Mock Jenkins Integration
 
 To create a mock Jenkins integration go to the Integrations under Settings and select the Jenkins CI/CD integration and click install. Fill in the following details and save the integration:
 
@@ -200,27 +204,26 @@ To generate a UUID for the Jenkins integration you can use the Propel API. Here'
 
 ```shell
 curl --location 'https://api.propelo.ai/v1/cicd/instances' \
---header 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+--header 'Authorization: Bearer <BEARER_TOKEN>' \
 --header 'Content-Type: application/json' \
 --data '{
-    "integration_id": "4620",
+    "integration_id": "<INTEGRATION_ID>",
     "name": "Custom CICD Integration",
 }' 
 ```
 
-You can find the integration\_id in the mock Jenkins integration created during Step 1 in SEI. This will generate the UUID for the integration named "Custom CICD Integration".
+You can find the `INTEGRATION_ID` in the mock Jenkins integration created during Step 1 in SEI. This will generate the UUID for the integration named "Custom CICD Integration".
 
 ### Step 3: Import Propel from GitHub Repository
 
 SEI provides templates for CI/CD integrations, which can be imported from this [GitHub repository](https://github.com/harness/harness-sei-propels-templates). You can customize these templates to suit your specific CI/CD tool, such as Jenkins.
 
-### Step 4: Update the UUID on Propel&#x20;
+### Step 4: Update the UUID on Propel
 
 Once you have generated the UUID in step 2, make sure to update it in Propel. This helps identify and link your custom Jenkins integration within Propel's environment.
 
-### Step 5: Schedule Propel Automation&#x20;
+### Step 5: Schedule Propel Automation
 
-Utilize the first node in Propel to schedule automation tasks for your custom CI/CD integration. You can use automation to trigger Jenkins jobs, manage deployments, and monitor the integration's performance.\
-
+Utilize the first node in Propel to schedule automation tasks for your custom CI/CD integration. You can use automation to trigger Jenkins jobs, manage deployments, and monitor the integration's performance.
 
 Generating a UUID and associating it with your integration ensures that Propel can uniquely identify and interact with your custom CI/CD setup.
