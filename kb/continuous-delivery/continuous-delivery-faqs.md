@@ -349,7 +349,7 @@ No, the calculation method remains the same for both CG (Continuous Delivery) an
 
 #### Can you provide an example of how service licenses are calculated based on service instances?
 
-Sure! An example of the calculation can be found in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#example). This example illustrates how the number of service instances corresponds to the consumed service licenses.
+Sure! An example of the calculation can be found in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd-for-cd/#example). This example illustrates how the number of service instances corresponds to the consumed service licenses.
 
 #### Is on-demand token generation valid for both Vault's Kubernetes auth type and app role-based auth?
 
@@ -833,7 +833,7 @@ The pipelines will run just fine, as you used the template and specified differe
 
 #### Service showing as active but hasn't been part of a deployment in over 30 days
 
-Harness shows the Active instances is say you had a deployment and the VM got deployed from a Harness deployment. No matter if we deploy anything else on the VM , until the VM is up and running as it is linked with the service. It will show as active instance. The 30 days mentioned [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#active-services) , is for service based licence calculation and usage for CD. 
+Harness shows the Active instances is say you had a deployment and the VM got deployed from a Harness deployment. No matter if we deploy anything else on the VM , until the VM is up and running as it is linked with the service. It will show as active instance. The 30 days mentioned [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd-for-cd/#active-services) , is for service based licence calculation and usage for CD. 
 
 #### Can we access the file from Harness file store as a file ?
 
@@ -1585,7 +1585,7 @@ Harness uses a Service-based license model to charge Harness customers using its
 
 The CD License calculation uses the Active Services count and the number of Service Instances each active Service deployment creates.
 
-Please see the link for more details [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing)
+Please see the link for more details [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd)
 
 #### Is there a way to tag the pipeline executions with specific values like release name in NG?
 
@@ -2838,7 +2838,7 @@ We calculate the total number of instances that the task spawns, including sidec
 
 #### How do we detect service licenses for SSH deployments ?
 
-Please consider the following [Documentation](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#ssh-and-winrm).
+Please consider the following [Documentation](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd-for-cd/#ssh-and-winrm).
 Feel free to reach out to us in case of issues.
 
 #### Does creating a CD stage with cleanup scripts cost usage of license ?
