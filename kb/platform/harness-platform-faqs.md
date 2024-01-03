@@ -915,12 +915,13 @@ This is not supported. The immutable delegate image should be run with delegate 
 Here is an example manifest file for NextGen:
 https://developer.harness.io/docs/platform/delegates/install-delegates/overview/#example-manifest-file
 
-#### When creating a connector via the API (https://apidocs.harness.io/tag/Connectors#operation/createConnector)
+#### 400 error when creating a connector via the Create Connector API.
 
-We receive the following error
-`requests.exceptions.HTTPError: 400 Client Error: Bad Request for url https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=\<ACCOUNT_IDENTIFIER>?`
+When using the [Create Connector API](https://apidocs.harness.io/tag/Connectors/#operation/createConnector), invalid characters (such as parenthesis) in the name can cause Bad Request (400) errors, such as:
 
-This could be due to using invalid characters in the name such as `()`
+```
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=\<ACCOUNT_IDENTIFIER>?
+```
 
 #### Is TLS 1.3 supported ?
 
@@ -1908,12 +1909,7 @@ Our priorities are configured as follows: [Step > Step Group > Stage > Pipeline 
 
 #### How do I setup SMTP with AWS SES?
 
-Follow this AWS documentation to create SMTP crredentials using the SES console.
-https://docs.aws.amazon.com/ses/latest/dg/smtp-credentials.html
-
-Then feed those SMTP credentials in Harness SMTP connector
-
-See [SMTP Configuration](docs/platform/notifications/add-smtp-configuration/)
+Go to the [AWS documentation on SMTP credentials](https://docs.aws.amazon.com/ses/latest/dg/smtp-credentials.html) to create SMTP credentials using the SES console. Then, supply those SMTP credentials in your [Harness SMTP connector configuration](/docs/platform/notifications/add-smtp-configuration).
 
 #### How to increase the concurrent pipeline execution limit
 
@@ -1964,10 +1960,7 @@ But ocne the 2FA is enabled by the user it also needs to be disabled by that par
 
 #### Vanity URL issues
 
-Once you have got the vanity url enabled for your account , in case you are using the SAML login , you will need to update ACS URL with the updated vanity url.
-
-Ex: Current ACS URL is https://app.harness.io/gateway/api/users/saml-login?accountId=xxxxxxxxxxxxxxxx
-after enabling vanity it should be updated to : https://vanity-url.harness.io/gateway/api/users/saml-login?accountId=xxxxxxxxxxxxxx
+When a vanity URL is enabled for an account using SAML login, you must update your ACS URL with your vanity URL. For example, if your original ACS URL is `https://app.harness.io/gateway/api/users/saml-login?accountId=xxxxxxxxxxxxxxxx`, after enabling a vanity URL, you must update it to something like `https://VANITYURL.harness.io/gateway/api/users/saml-login?accountId=xxxxxxxxxxxxxx`.
 
 #### Restoring accidently deleted User Groups
 

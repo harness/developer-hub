@@ -95,17 +95,17 @@ You need a Harness build infrastructure to run scans in STO. First, review the s
 
   This is the simplest option. Not initial setup is required. Run your pipelines on Harness-hosted VMs preconfigured with tools, packages, and settings commonly used in CI pipelines. 
 
-- [Local Kubernetes build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) 
+- [Self-hosted Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) 
 
    Recommended when you want to run ephemeral builds-at-scale in your own infrastructure.
 
-- [Local Docker build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) 
+- [Local Docker runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) 
 
    Recommended for small, limited builds, such as a one-off build on your local machine.
 
 :::note
 
-Kubernetes and Docker infrastructures might also require a Docker-in-Docker background step in your pipeline. For more information, go to [Docker-in-Docker requirements for STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto).
+Kubernetes cluster and local runner infrastructures might also require a Docker-in-Docker background step in your pipeline. For more information, go to [Docker-in-Docker requirements for STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto).
 
 :::
 

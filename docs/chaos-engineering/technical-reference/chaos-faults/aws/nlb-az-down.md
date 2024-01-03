@@ -96,7 +96,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Duration between the attachment and detachment of the volumes (in seconds) </td>
-        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+        <td> Default: 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
