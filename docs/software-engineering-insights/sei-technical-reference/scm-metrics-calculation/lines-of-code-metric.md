@@ -71,9 +71,14 @@ For SCM reports, the values for lines of code added and deleted are the same as 
 
 ### Azure DevOps
 
+There are currently some known issues with all SCM reports for the Azure DevOps integrations. As a result, the data for SCM metrics such as Lines of Code and Files Changed may be displayed as either zero or incorrect. This issue will be fixed in future releases.
+
+<!---
 * **Lines of Code Metric for PRs:** For all types of PRs, the Lines of Code metrics are determined by summing the lines of code added, and changed across all associated commits for a particular Pull Request. This method provides a comprehensive view of the changes made in each individual commit and their overall impact on the codebase.
 * **SCM PRs reports:** Here the values for Lines Added and Lines Deleted are calculated as the sum of the respective values from each commit associated with a pull request. The Lines Changed field is calculated as the number of lines changed or modified, which is the summation of Lines added and Lines deleted fields as calculated for the associated pull request.
 * **SCM Commits reports:** Here the values for Lines Added are represent the lines added as part of the associated commit. The Total Lines field is calculated as the total number of lines changed, which is the summation of lines added and lines deleted as part of the associated commit.
+
+-->
 
 :::info
 
@@ -101,61 +106,36 @@ Let's consider a scenario with multiple PRs and commits:
 | PR #2 | Open | Commit #4 | +80 | -60 | 140 |
 | PR #3 | Closed | Commit #1 | +20 | -10 | 30 |
 
-
-The calculations for Developer A in the SCM reports are:
-
-#### SCM PR Reports
-
-| Metric | Associated PR | Value |
-| --- | --- | --- |
-| Lines Added | PR #1 | 100 |
-| Lines Deleted | PR #1 | 50 |
-| Lines Changed | PR #1 | 150 |
-| Files Changed | PR #1 | 4 |
-| Lines Added | PR #2 | 150 |
-| Lines Deleted | PR #2 | 75 |
-| Lines Changed | PR #2 | 225 |
-| Files Changed | PR #2 | 6 |
-| Lines Added | PR #3 | 20 |
-| Lines Deleted | PR #3 | 10 |
-| Lines Changed | PR #3 | 30 |
-| Files Changed | PR #3 | 3 |
-
-#### SCM Commits Report
-
-| Metric | Associated Commit | Value |
-| --- | --- | --- |
-| Lines Added | Commit #1 (PR #1) | 100 |
-| Lines Deleted | Commit #1 (PR #1) | 50 |
-| Total Lines | Commit #1 (PR #1) | 150 |
-| Files Changed | Commit #1 (PR #1) | 4 |
-| Lines Added | Commit #1 (PR #2) | 30 |
-| Lines Deleted | Commit #1 (PR #2) | 10 |
-| Total Lines | Commit #1 (PR #2) | 40 |
-| Files Changed | Commit #1 (PR #2) | 2 |
-| Lines Added | Commit #2 (PR #2) | 25 |
-| Lines Deleted | Commit #2 (PR #2) | 0 |
-| Total Lines | Commit #2 (PR #2) | 25 |
-| Files Changed | Commit #2 (PR #2) | 1 |
-| Lines Added | Commit #3 (PR #2) | 15 |
-| Lines Deleted | Commit #3 (PR #2) | 5 |
-| Total Lines | Commit #3 (PR #2) | 20 |
-| Files Changed | Commit #3 (PR #2) | 1 |
-| Lines Added | Commit #4 (PR #2) | 80 |
-| Lines Deleted | Commit #4 (PR #2) | 60 |
-| Total Lines | Commit #4 (PR #2) | 140 |
-| Files Changed | Commit #4 (PR #2) | 5 |
-| Lines Added | Commit #1 (PR #3) | 15 |
-| Lines Deleted | Commit #1 (PR #3) | 5 |
-| Total Lines | Commit #1 (PR #3) | 20 |
-| Files Changed | Commit #1 (PR #3) | 2 |
-
-
 :::info
 
 For SCM reports, the values for lines of code added and deleted are the same as those received from the SCM tool for the associated Pull Request or Commit. These values are not calculated by SEI.
 
 :::
+
+
+The calculations for Developer A in the SCM reports are:
+
+#### SCM PR Reports
+
+| Associated PR | Lines Added | Lines Deleted | Lines Changed | Files Changed |
+| - | - | - | - | - |
+| PR #1         | 100         | 50            | 150           | 4             |
+| PR #2         | 150         | 75            | 225           | 6             |
+| PR #3         | 20          | 10            | 30            | 3             |
+
+#### SCM Commits Report
+
+| Associated Commit | Lines Added | Lines Deleted | Lines Changed | Files Changed |
+| - | - |- | - | - |
+| Commit #1 (PR #1) | 100         | 50            | 150           | 4             |
+| Commit #1 (PR #2) | 30          | 10            | 40            | 2             |
+| Commit #2 (PR #2) | 25          | 0             | 25            | 1             |
+| Commit #3 (PR #2) | 15          | 5             | 20            | 1             |
+| Commit #4 (PR #2) | 80          | 60            | 140           | 5             |
+| Commit #1 (PR #3) | 15          | 5             | 20            | 2             |
+
+<!---
+
 
 ### Developer B worked on 3 PRs last month on Azure Repos
 
@@ -230,3 +210,5 @@ The calculations for Developer C in the SCM reports are:
 The values for Lines Added in the SCM commits report are the same as lines added as part of the associated commit. The Total Lines field is calculated as the total number of lines changed or modified i.e sum of lines added and deleted as part of the associated commit.
 
 This example demonstrates how each commit within an open PR contributes to the total LoC for Azure Repos.
+
+-->
