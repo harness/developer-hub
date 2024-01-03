@@ -128,11 +128,11 @@ This error indicates that the GitOps entity you are trying to create exists. It 
 
 ### Issue: "rpc error: code = Unknown desc = error testing repository connectivity: authorization failed"
 
-This error occured when attempted to connect a repo with installed agent and it's unable to connect repository in Github:
+This error occurs when an agent is unable to connect to a repo:
 
-- Make sure to monitor rate limitations on github account before attempting to connect repo.
+- Ensure to review Github account rate limitations before attempting to connect to a repo.
 
-- Manage 'Rate Limiting' in Git by 'Enable Git Rate Limiting' to True.
+- To manage rate limiting in GitHub, see [Enabling rate limits for Git](https://docs.github.com/en/enterprise-server@3.10/admin/configuration/configuring-user-applications-for-your-enterprise/configuring-rate-limits#enabling-rate-limits-for-git).
 
 
  
