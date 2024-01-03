@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The Harness Template Library enables you to standardize and create templates that you can use across Harness Pipelines and teams.
+The Harness Template Library enables you to standardize and create templates that you can use across Harness pipelines and teams.
 
 A stage template is a Harness CD, CI, or approval stage template that you can use in any pipeline in any project.
 
@@ -44,16 +44,15 @@ To create a stage template, do the following:
 
 1. In Harness, go to your project.
 2. Select **Project Settings**, then, under **Project-level resources**, select **Templates**.
-3. Select **+ New Template**, and then select **Pipeline**. The **Create New Pipeline Template** settings appear.
-4. Select **Stage** to create a stage template. The **Create New Stage Template** settings appear.
-5. In **Name**, enter a name for the stage template, for example `Quickstart`.
-6. (Optional) Select the pencil icon to enter a **Description**.
-7. (Optional) Select the pencil icon to add **Tags**.
-8. In **Version Label**, enter the version of the stage template, for example `v1`.
-9. (Optional) Select the **Logo** icon to upload a logo image file.
-10. From the **Save To** list, select the scope where you want to save the template: Project, Organization, or Account. For this example, select Project.
-11. Under **How do you want to set up your template?**, select **Inline**.
-16. Select **Start**. **Select stage type** settings appear.
+3. Select **Stage** to create a stage template. The **Create New Stage Template** settings open.
+4. In **Name**, enter a name for the stage template, for example `Quickstart`.
+5. (Optional) Select the pencil icon to enter a **Description**.
+6. (Optional) Select the pencil icon to add **Tags**.
+7. In **Version Label**, enter the version of the stage, for example, `v1`. Versioning a template enables you to create a new template without modifying the existing one. For more information, go to [Versioning](template.md).
+8. (Optional) Select the **Logo** icon to upload a logo image file.
+9. From the **Save To** list, select the scope where you want to save the template: Project, Organization, or Account. For this example, select **Project**.
+10. Under **How do you want to set up your template?**, you can select **Inline** to store your pipeline configuration in Harness, or select **Remote** to store your pipeline as code in a Git repository. For this example, select **Inline**.
+11. Select **Start**. **Select stage type** settings open.
 
     ![](./static/add-a-stage-template-51.png)
 
@@ -61,30 +60,32 @@ To create a stage template, do the following:
 
 ### Step 2: Add stage parameters
 
-To add stage parameters, do the following:
+This example uses the Deploy stage. The Deploy stage type is a CD stage that enables you to deploy any service to your target environment. 
 
-1. Follow the steps above to create your template.
-
-2. In **Select stage type**, select **Deploy**. The **About Your Stage** settings appear.
-
-   ![](./static/add-a-stage-template-52.png)
-
-   The deploy stage type is a CD stage that enables you to deploy any service to your target environment. Other options include:
+Other options include:
 
    - **Build:** Use CI to build, test, and push artifacts to repositories.
    - **Approval:** Manual and Jira approval stages.
    - **Feature Flag:** Enable or disable functionality remotely without redeploying code.
    - **Custom Stage:** Set up a stage configurable to your needs.
 
-3. Select the type of deployment this stage must perform. The deployment type is how your service will be deployed. For example, using Kubernetes, Native Helm, Serverless, etc. Select the platform for your deployment. When you select a platform, its specific settings appear.
+To add stage parameters, do the following:
 
-:::info note
+1. Follow the steps above to create your template.
 
-If you change the deployment type (for example, from Kubernetes to Native Helm) there might be some conflicting resources in the target environment. As a result, Stage execution can fail. If this happens, delete all the conflicting resources and try again. You will also lose any deployment type-specific steps in this stage's Execution.
+2. In **Select stage type**, select **Deploy**. The **About Your Stage** settings open.
 
-:::
+   ![](./static/add-a-stage-template-52.png)
 
-4. Select **Set Up Stage**. The Template Studio page appears.
+3. Select the type of deployment this stage must perform. For this example, select **Kubernetes**. The deployment type is how your service will be deployed. For example, using Kubernetes, Native Helm, Serverless, etc. Select the platform for your deployment. When you select a platform, its specific settings open.
+
+      :::info note
+
+      If you change the deployment type (for example, from Kubernetes to Native Helm) there might be some conflicting resources in the target environment. As a result, Stage execution can fail. If this happens, delete all the conflicting resources and try again. You will also lose any deployment type-specific steps in this stage's Execution.
+
+      :::
+
+4. Select **Set Up Stage**. The Template Studio page opens.
 
 5. In **Select Service**, select **Runtime input**.
 
@@ -92,27 +93,23 @@ If you change the deployment type (for example, from Kubernetes to Native Helm) 
 
    Harness Services represent your microservices or applications logically. You can propagate the same service to as many stages as you need.
 
-   **Use Runtime Inputs instead of variable expressions:** when you want to template settings in a stage or step template, use [Runtime Inputs](../variables-and-expressions/runtime-inputs.md) instead of variable expressions. When Harness tries to resolve variable expressions to specific stage-level settings using fully-qualified names, it can cause issues at runtime. Every pipeline where the stage or step template is inserted must use the same names for fully-qualified name references to operate. With runtime inputs, you can supply values for a setting at deployment runtime. In **Deployment Type**, Kubernetes is selected by default. **Deployment Type** defines how your Service will be deployed.
+   **Use Runtime Inputs instead of variable expressions:** when you want to template settings in a stage or step template, use [Runtime inputs](../variables-and-expressions/runtime-inputs.md) instead of variable expressions. When Harness tries to resolve variable expressions to specific stage-level settings using fully-qualified names, it can cause issues at runtime. Every pipeline where the stage or step template is inserted must use the same names for fully-qualified name references to operate. With runtime inputs, you can supply values for a setting at deployment runtime.
 
 6. Select **Continue**.
 
 7. In **Specify Environment**, select **Runtime input**. Environments represent your deployment targets logically (QA, Prod, etc). You can add the same environment to as many stages are you need.
 
-8. In **Infrastructure Definition**, select **Kubernetes**. **Infrastructure Definition** represents your target infrastructure physically. They are the actual clusters, hosts, etc. By separating environments and infrastructure definitions, you can use the same environment in multiple stages, while changing the target infrastructure settings with each stage.
-
-9. Under **Cluster Details**, select **Runtime input** in both **Connector** and **Namespace** fields. The namespace must already exist during deployment. Harness will not create a new namespace if you enter one here.
-
-10. Select **Next**. The **Execution Strategies** dialog appears.
+8. Select **Continue**. The **Execution Strategies** dialog opens.
 
     ![](./static/add-a-stage-template-54.png)
 
-11. Select **Rolling**, and then select **Use Strategy**.
+9. Select **Rolling**, and then select **Use Strategy**.
 
     In **Execution**, you can see the **Rollout Deployment** step is added automatically.
 
     Your template is now ready.
 
-12. Select **Save**, add a comment, and then select **Save** again.
+10. Select **Save**, add a comment, and then select **Save** again.
 
     The template is published successfully.
 
@@ -135,7 +132,7 @@ You can use the CD stage template in any pipeline in your project.
 
 To add a stage template to a pipeline, do the following:
 
-1. In Harness, open the pipeline, and then select **Add Stage**. The **Select Stage Type** settings appear.
+1. In Harness, open the pipeline, and then select **Add Stage**. The **Select Stage Type** settings open.
 
    ![](./static/add-a-stage-template-56.png)
 
@@ -167,7 +164,7 @@ To add a stage template to a pipeline, do the following:
 
    If you had used **Copy to Pipeline**, this icon would not be there, and you could change settings in the stage.
 
-   You can now enter all the Runtime Inputs for this Pipeline execution.
+   You can now enter all the Runtime Inputs for this pipeline execution.
 
    ![](./static/add-a-stage-template-61.png)
 
