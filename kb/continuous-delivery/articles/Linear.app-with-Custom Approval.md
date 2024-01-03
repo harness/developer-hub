@@ -26,7 +26,7 @@ In this initial step, we'll use the Harness HTTP step to create a Linear issue. 
 
 **HTTP Step Configuration:**
 
-1. **URL:** Set the URL to <https://api.linear.app/graphql> the endpoint for Linear's GraphQL API.
+1. **URL:** Set the URL to (https://api.linear.app/graphql) the endpoint for Linear's GraphQL API.
 
 2. **Method:** Choose POST as the HTTP method, as we are creating a new issue.
 
