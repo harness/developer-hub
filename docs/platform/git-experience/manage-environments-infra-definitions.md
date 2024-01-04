@@ -11,8 +11,9 @@ Currently, Git Experience support for environments and infrastructure definition
 
 When you create a new Harness environment or infrastructure definition, you can store it in one of the following ways:
 
-Inline: Harness stores the entity in its platform.
-Remote: the Harness entity is stored in Git.
+- Inline: Harness stores the entity in its platform.
+- Remote: The Harness entity is stored in Git.
+
 You can set the entity as Inline or Remote when you create it, and then change the storage method after it is created. Changing the storage method is described in this topic.
 
 The topic explains how to use the Remote option to store a Harness environment or infrastructure definition in your Git platform account.
