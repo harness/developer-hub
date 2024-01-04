@@ -6,18 +6,8 @@ sidebar_position: 10
 
 With Harness SSCA, you can define and enforce policies governing the use of open-source components within your software artifacts. This policy management and enforcement capability helps you ensure compliance with your security, legal, and operational requirements.
 
-You must create a policy file containing the rules ([policy definitions](./define-ssca-policies.md)) that you want Harness SSCA to enforce. Create SSCA policy files in the Harness File Store.
+You must create a [OPA policy](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/) set containing rules that you want Harness SSCA to enforce.  When you enforce SSCA policies in a Harness pipeline, the policy rules are evaluated against each component in the artifact's SBOM.
 
-1. In your Harness Project, go to **File Store** under **Project Setup**. You can also create policies at the Account and Org scopes.
-2. Select **New**, and then select **New File**.
-3. Enter a **Name**, and then select **Manifest** for **File Usage**.
-4. Enter the [policy definitions](./define-ssca-policies.md) in the text editor, and then select **Save**.
-
-<!-- ![](./static/ssca-policy-file-store.png) -->
-
-<docimage path={require('./static/ssca-policy-file-store.png')} />
-
-When you [enforce SSCA policies](./enforce-ssca-policies.md) in a Harness pipeline, the [policy definitions](./define-ssca-policies.md) are evaluated against each component in the artifact's [SBOM](../sbom/generate-sbom.md).
 
 :::tip Tutorial
 
