@@ -2021,28 +2021,32 @@ Helm 3 is deprecated so there is limited support for Helm 2. Helm 3 is now the d
 
 #### What are some of the Manifest source locations that Harness can fetch the Helm Chart from?
 
-Github
-Gitlab
-Bitbucket
-Generic Git Provider
-Custom Remote Source Repository
-Google Cloud Storage
-Amazon S3 Storage
-Helm OCI Repository (ACR, ECR, GAR, Artifactory)
-Helm HTTP Server Repository (Nexus, Artifactory)
-Harness Local File Store
+* Github
+* Gitlab
+* Bitbucket
+* Generic Git Provider
+* Custom Remote Source Repository
+* Google Cloud Storage
+* Amazon S3 Storage
+* Helm OCI Repository (ACR, ECR, GAR, Artifactory)
+* Helm HTTP Server Repository (Nexus, Artifactory)
+* Harness Local File Store
 
 #### What are some of the Artifact Repository for Container images to deploy with Chart?
 
-DockerHub
-Amazon Elastic Container Registry
-Google Container Registry
-Azure Container Registry
-Custom Artifact Source
-Google Artifact Registry
-GitHub Package Registry
-Nexus 3
-Artifactory
+* DockerHub
+* Amazon Elastic Container Registry
+* Google Container Registry
+* Azure Container Registry
+* Custom Artifact Source
+* Google Artifact Registry
+* GitHub Package Registry
+* Nexus 3
+* Artifactory
+
+#### Can user mix and match images from different container registries within a single deployment?
+
+Yes, By configuring each service with the appropriate image repository and tag details, you can seamlessly deploy applications using images from different registries in the same deployment.
 
 #### Limitations of Helm Chart dependencies on Git Source Repositories
 
@@ -4236,3 +4240,15 @@ Step groups simplify managing related steps, allowing you to apply common settin
 #### Does Harness encrypt the image tag for the container during rollout deployment output?
 
 No, we don't. Try checking SHA of the tag and find image ID from the output of the service step with the `<+artifact.tag>` expression.
+
+#### Is there a way to pass the branchname in update git metadata api ?
+
+No, we dont have branch name as a input to the git metadata api, we can update only the connector, file path and the repository.
+
+#### How can I change the path of the YAML file for the current pipeline to a non-default branch in another repository in git metadata api ?
+
+As per the API, our objective is to modify the Git metadata that we have stored. GitX does not store the branch as metadata.
+To change the YAML file path for an existing pipeline to a non-default branch in a different repository, you can follow these steps:
+- Copy the YAML file to the target repository's non-default branch.
+- Import the YAML file from the Git repository.
+By following these steps, you can effectively change the path of the YAML file for your pipeline to a non-default branch in another repository.
