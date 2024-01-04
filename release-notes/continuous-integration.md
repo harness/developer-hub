@@ -3,7 +3,7 @@ title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
 date: 2023-12-20T10:00
-sidebar_position: 9
+sidebar_position: 10
 ---
 
 import Tabs from '@theme/Tabs';

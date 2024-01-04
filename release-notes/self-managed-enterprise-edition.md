@@ -3,7 +3,7 @@ title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
 date: 2023-12-07T10:00
-sidebar_position: 15
+sidebar_position: 16
 ---
 
 import Tabs from '@theme/Tabs';

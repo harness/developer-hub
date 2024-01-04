@@ -3,7 +3,7 @@ title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
 tags: [NextGen, "Internal Developer Portal", "IDP"]
 date: 2023-08-09T10:00:15
-sidebar_position: 11
+sidebar_position: 12
 ---
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/internal-developer-portal/rss.xml" />
