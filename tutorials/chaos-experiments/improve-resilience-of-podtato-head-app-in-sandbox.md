@@ -88,7 +88,7 @@ You can start executing the sandbox again if you run out of time by click **Run*
 
 ### Developer certification exam
 
-1. Once you are done, you can attempt the Harness Chaos Engineering Developer certification exam. Navigate to [Harness university](https://university.harness.io/chaos-engineering-developer) or click **Go to Harness University**.
+1. Once you are done, you can attempt the Harness Chaos Engineering Developer certification exam. Navigate to [Harness developer hub](https://developer.harness.io/certifications/chaos-engineering?lvl=developer) or click **Go to Harness University**.
 
 ![finish](./static/sandbox/finish.png)
 
