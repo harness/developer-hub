@@ -86,13 +86,13 @@ The following deprecated API endpoints will no longer be supported:
 
 #### New features and enhancements
 
-- Upgraded MinIO to `bitnami/minio:2023.10.7-debian-11-r2`.
+- Upgraded MinIO to `bitnami/minio:2023.10.7-debian-11-r2`. (PL-42019)
 
 #### Fixed issues
 
--  Pipeline failures occurred when the delegate was unable to acquire tasks and HPA didn't scale pods. (PL-42600, ZD-54025, ZD-54324)
+-  The delegate was rejecting tasks due to an issue where the CPU and memory calculation wasn't showing the latest usage value. This was caused by the dynamic request handling feature that rejects tasks if the CPU and memory usage exceeds a certain threshold. The pods weren't scaled by HPA because the CPU and memory usage within the pods was within the limit. (PL-42600, ZD-54025, ZD-54324)
 
-   This issue has been resolved with improved logic to calculate CPU and memory usage for dynamic task request handling.
+   Harness improved the  CPU/Memory calculation algorithm, resolving the issue.
    
    This item is available with Harness Platform version 1.19.x and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
@@ -111,6 +111,8 @@ The following deprecated API endpoints will no longer be supported:
 - Perpetual tasks weren't assigned after a delegate restart. (PL-43646, ZD-55426, ZD-55572)
 
    Fixed race condition where a perpetual task was assigned at the same time as the delegate abruptly shutting down due to a pod restart.
+
+   This item is available with Harness Platform version 1.19.x and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ### Version 1.17.8 <!--  January 2, 2024 -->
 
