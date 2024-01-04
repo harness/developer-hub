@@ -52,6 +52,12 @@ To store a new service in a remote Git repo, do the following:
 Once the remote Harness service is created, you can use it in your CD pipeline. You can add a remote service to a pipeline regardless of whether the pipeline is inline or remote.
 
 The **Deployment Type** of the remote service (Kubernetes, ECS, etc.) must match the **Deployment Type** of the stage where you are adding the service.
+
+:::note
+
+If you are adding a remote service, environment, or infrastructure definition to a remote pipeline, by default the remote service, environment, or infrastructure definition will pick up the same branch as the remote pipeline.
+
+:::
  
 To add a remote service to a pipeline, do the following:
 
