@@ -468,14 +468,14 @@ You can implement [Failure Strategies](/docs/platform/pipelines/define-a-failure
 
 ## YAML pipeline example
 
-Here's an example of the pipeline you created in this tutorial.
+Here's an example of the pipeline you created in this tutorial. If you copy this example, replace the placeholder values with appropriate values for your project, organization, and connectors.
 
 ```yaml
 pipeline:
   name: your-first-pipeline-v2
   identifier: yourfirstpipelinev2
-  projectIdentifier: MY_HARNESS_PROJECT_ID
-  orgIdentifier: MY_HARNESS_ORGANIZATION_ID
+  projectIdentifier: YOUR_HARNESS_PROJECT_ID
+  orgIdentifier: YOUR_HARNESS_ORGANIZATION_ID
   tags: {}
   stages:
     - stage:
@@ -511,7 +511,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: MY_CODEBASE_CONNECTOR
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
         repoName: <+input>
         build: <+input>
 ```
@@ -554,13 +554,13 @@ Here's the YAML of the integrated workflow example we examined in this tutorial.
 
 ``` yaml
 pipeline:
-  projectIdentifier: MY_HARNESS_PROJECT_ID
+  projectIdentifier: YOUR_HARNESS_PROJECT_ID
   orgIdentifier: foobar
   tags: {}
   properties:
     ci:
       codebase:
-        connectorRef: MY_CODEBASE_CONNECTOR
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
         repoName: dvpwa
         build: <+input>
   stages:
@@ -618,7 +618,7 @@ pipeline:
                   name: buildAndPush_PRIVATE
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
-                    connectorRef: MY_DOCKERHUB_CONNECTOR
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     repo: foobar/sto-tutorial-test-private
                     tags:
                       - <+pipeline.sequenceId>
@@ -647,7 +647,7 @@ pipeline:
                   name: buildAndPush_PUBLIC
                   identifier: buildAndPush_PUBLIC
                   spec:
-                    connectorRef: MY_DOCKERHUB_CONNECTOR
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     repo: foobar/sto-tutorial-test
                     tags:
                       - <+pipeline.sequenceId>

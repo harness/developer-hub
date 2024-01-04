@@ -203,13 +203,15 @@ It is [good practice](/docs/security-testing-orchestration/get-started/key-conce
 
 ### YAML pipeline example
 
+Here's an example of the pipeline you created in this tutorial. If you copy this example, replace the placeholder values with appropriate values for your project, organization, and connectors.
+
 ```yaml
 
 pipeline:
   name: tutorial-test-container-image-scan-v1
   identifier: tutorialtestcontainerimagescanv1
-  projectIdentifier: MY_HARNESS_PROJECT_ID
-  orgIdentifier: MY_HARNESS_ORGANIZATION_ID
+  projectIdentifier: YOUR_HARNESS_PROJECT_ID
+  orgIdentifier: YOUR_HARNESS_ORGANIZATION_ID
   tags: {}
   stages:
     - stage:
@@ -232,7 +234,7 @@ pipeline:
                   name: background_dind
                   identifier: background_dind
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
                     image: docker:dind
                     shell: Sh
                     entrypoint:
