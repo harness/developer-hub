@@ -846,9 +846,9 @@ If you need auto upgrade to be disabled they can perform operations: First run t
 
 Dashboard is a licensed functionality. To enable it you need to get a license.
 
-#### How are Harness secrets tied to connectors.
+#### Connector error causing pipeline failure
 
-Customers should be mindful of the fact that connectors are often tied to a secret (password or sshkey) that may expire. This is often a common cause of execution failures with connector errors.
+Connectors are often tied to a secret, such as a password or SSH key, that can expire. Expired credentials are a common cause of execution failures with connector errors. If your build fails due to a connector error, check your connector's configuration to confirm that the credentials aren't expired.
 
 #### How to avoid pulling Harness delegate images from a public repo?
 

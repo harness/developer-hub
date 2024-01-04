@@ -4,6 +4,14 @@ description: This article addresses some frequently asked questions about Harnes
 sidebar_position: 2
 ---
 
+#### Can I use Harness CI for mobile app development?
+
+Yes. [Harness CI offers many options for mobile app development.](https://developer.harness.io/docs/continuous-integration/use-ci/mobile-dev-with-ci)
+
+#### I'm getting `Error: ErrImagePull`. What does this mean?
+
+This means that target image is not available in the repository it's being pulled from or there are networking issues.
+
 ## Licenses and build credits
 
 #### Account verification error for CI Builds (Free Trial account with hosted builds)
@@ -142,6 +150,10 @@ To [use Harness Cloud build infrastructure](https://developer.harness.io/docs/co
 
 For AWS connectors, only access key authentication is supported with Harness Cloud build infrastructure.
 
+#### How can we update the CPU/memory allocation of a step container running in Harness cloud?
+
+In a Kubernetes cluster build infrastructure, you can specify resource allocation for individual step containers. However, you can't change the CPU/memory allocation for steps running in Harness Cloud, because step containers running on Harness Cloud build VMs automatically use as much as CPU/memory as required up to the available resource limit in the build VM.
+
 ### Kubernetes cluster build infrastructure
 
 #### What is the difference between a Kubernetes cluster build infrastructure and other build infrastructures?
@@ -233,6 +245,23 @@ Step containers are named in sequential numbers, starting with 'step-1'
 #### When I run a build, Harness creates a new pod and doesn't run the build on the delegate.
 
 This is the expected behavior. When you run a CI (Build) stage, the steps create build farm pods that are connected to the delegate.
+
+### Delegates
+
+#### How the build pod communicates with delegate?
+The delegate will communicate to the temp pod which is created by the container step through the build pod IP. The build pod have a lite engine running with port 20001.
+
+#### What's the purpose of adding SCM_SKIP_SSL=true in the delegate YAML?
+
+It skips SSL verification for SCM connections
+
+#### What should we do on experiencing OOM on java heap for the delegate?
+
+Try increasing the CPU request and limit both. Check CPU utilization in-case.
+
+#### We have Kubernetes delegates with multiple instances and have noticed that during some executions, the same instance in each step and causes the pipeline to fail, as one delegate may have a file and the other instance does not. How can we ensure the same instance is used for each step?
+
+The workaround here is to use single replica delegates for these types of tasks and use a delegate name selector (this might compromise on delegate's high availability although)
 
 ## Certificates
 
@@ -391,7 +420,7 @@ The build status message format is ```<pipeline_identifier>-<stage_identifier> â
 
 
 
-## Initialize step and Harness CI images
+## Pipeline initialization and Harness CI images
 
 #### How can I list the internal images that CI uses?
 
@@ -511,6 +540,34 @@ Use the [Base Image Connector setting](https://developer.harness.io/docs/continu
 #### How can I configure and use images from multiple Azure Container Registries (ACRs)?
 
 To configure and use images from multiple ACRs in Harness, you need to set up individual Harness service configurations for each ACR you want to use. Within each service configuration, specify the image repository and tag from the respective ACR.
+
+## Upload artifacts
+
+#### How can we send mail from the CI pipeline with an attachement?
+
+You could send mail from the CI pipeline by using the drone plugin [https://plugins.drone.io/plugins/email](https://plugins.drone.io/plugins/email). More details about how the drone plugin can be used in Harness CI pipeline can be reffered in the below doc
+[https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/)
+
+#### What is PLUGIN_USERNAME & PLUGIN_PASSWORD used in the jfrog command executing as part of `Upload Artifacts to JFrog Artifactory` ?
+
+This is the creds used to upload the artifact to the jfrog artifactory and this is taken from the artifactory connector
+
+#### Can we run `Upload Artifacts to JFrog Artifactory` step with non root user?
+
+No, jfrog command execution will be creating a folder `.jfrog` under / which will fail if the plugin is running with non root user
+
+#### Is it possible to publish custom data, such as outputs from variables or custom messages, strings, or any other information, in the Artifacts tab?
+
+Currently, the only way to publish data in the Artifacts tab is by providing a URL to a publicly accessible location where the artifact is stored. If you do not have any public buckets, you can consider using a private bucket and generating a pre-signed URL to access the artifact.
+This URL can be used in the "file_urls" setting of the Artifact Metadata Publisher plugin to publish the artifact in the Artifacts tab. Another option is to use a different cloud storage provider that allows you to generate temporary URLs for private objects, such as Google Cloud Storage signed URLs or AWS S3 pre-signed URLs.
+
+#### Is there a way to store artifact URLs and display them in the Harness platform?
+
+Yes, you can use the Artifact Metadata Publisher plugin to store artifact URLs and display them on the Artifacts tab in the Harness
+
+#### Does the Upload Artifacts to S3 step compress files before uploading them?
+
+No. If you want to upload a compressed file, you must use a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to compress the artifact before uploading it.
 
 
 ## Tests
@@ -633,7 +690,7 @@ DinD cannot be used on platforms that do not support privileged mode. For exampl
 
 The error "Pod not supported on Fargate: invalid SecurityContext fields: Privileged" occurs because AWS Fargate does not support the use of privileged containers.
 
-## Plugins
+## Plugins and integrations
 
 #### Which Drone plugins are supported in Harness CI?
 You can build your own plugins or use one of the many preexisting plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/), [GitHub Actions Marketplace](https://github.com/marketplace?type=actions), or the [Bitrise Integrations library](https://bitrise.io/integrations/steps).
@@ -651,7 +708,18 @@ Plugins are regular containers which would execute a predefined task. We can tes
 1. Create your plugin to perform a specific task, written in any programming language.
 2. Integrate the plugin into your CI pipeline using a Plugin step.
 
-## Workspaces
+#### Why is the PATH Variable Overwritten in Parallel GitHub Actions Steps?
+
+The PATH variable can be overwritten when running parallel steps in GitHub Actions because these steps could modify the PATH variable depens on which step ran last. When these steps run in parallel, a race condition occurs, and only one of them will be able to set the PATH variable correctly. To avoid this, consider running these steps sequentially in your workflow.
+
+#### Is it possible to integrate our CI builds with the Datadog Pipeline Visibility feature?
+
+We do not have OOTB support for Datadog Pipeline Visibility. However, I can suggest the following approach to push the pipeline event to a webhook endpoint: Link to documentation on webhook notifications.
+
+
+
+
+## Workspaces, shared volumes, and shared paths
 
 #### What is a workspace in a pipeline, and how does it work?
 
@@ -659,9 +727,6 @@ Workspace is a temporary volume that is created when the pipeline runs. It serve
 
 #### Is workspace persists after the stage completion?
 No, the workspace is destroyed when the stage ends.
-
-
-## Shared volumes and shared paths
 
 #### How do I share data between steps in a CI stage?
 
@@ -871,33 +936,19 @@ Second: Actions to take when the specified error conditions occur.
 
 This could happen when you use an expression for an output variable from a previous step under the repeat looping strategy in the subsequent step. In CI stages, the execution happens on separate build pods, and all the expressions needs to be available before we start the initialize step.
 
-## Upload artifacts
+#### Can pipeline execution be aborted when the referenced branch is deleted?
 
-#### How can we send mail from the CI pipeline with an attachement?
+This is not natively supported however we could have a pipeline listening on delete webhook event and abort all the running pipelines referencing the deleted branch via API.
 
-You could send mail from the CI pipeline by using the drone plugin [https://plugins.drone.io/plugins/email](https://plugins.drone.io/plugins/email). More details about how the drone plugin can be used in Harness CI pipeline can be reffered in the below doc
-[https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/)
+#### Is there a way to abort a running pipeline from a step in that pipeline?
 
-#### What is PLUGIN_USERNAME & PLUGIN_PASSWORD used in the jfrog command executing as part of `Upload Artifacts to JFrog Artifactory` ?
+We could use the ```putHandleInterrupt``` API to abort a running pipeline from a step in that pipeline. More details about this pipeline can be reffered in the [doc](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/putHandleInterrupt)
 
-This is the creds used to upload the artifact to the jfrog artifactory and this is taken from the artifactory connector
+#### Can I assert an environment variable within JEXL conditions?
 
-#### Can we run `Upload Artifacts to JFrog Artifactory` step with non root user?
+While we support output variables that can point to an environment variable, we do not support the direct referencing of environment variables in JEXL conditions, even when using the feature flag `CI_OUTPUT_VARIABLES_AS_ENV` (which automatically makes environment variables available for other steps in the same build stage).
 
-No, jfrog command execution will be creating a folder `.jfrog` under / which will fail if the plugin is running with non root user
-
-#### Is it possible to publish custom data, such as outputs from variables or custom messages, strings, or any other information, in the Artifacts tab?
-
-Currently, the only way to publish data in the Artifacts tab is by providing a URL to a publicly accessible location where the artifact is stored. If you do not have any public buckets, you can consider using a private bucket and generating a pre-signed URL to access the artifact.
-This URL can be used in the "file_urls" setting of the Artifact Metadata Publisher plugin to publish the artifact in the Artifacts tab. Another option is to use a different cloud storage provider that allows you to generate temporary URLs for private objects, such as Google Cloud Storage signed URLs or AWS S3 pre-signed URLs.
-
-#### Is there a way to store artifact URLs and display them in the Harness platform?
-
-Yes, you can use the Artifact Metadata Publisher plugin to store artifact URLs and display them on the Artifacts tab in the Harness
-
-#### Does the Upload Artifacts to S3 step compress files before uploading them?
-
-No. If you want to upload a compressed file, you must use a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to compress the artifact before uploading it.
+The conditions in JEXL only allow the use of variable expressions that can be resolved before the stage is executed. Since environment variables are resolved during runtime, it is not possible to utilize variable expressions that cannot be resolved until the stage is run.
 
 ## Logs and execution history
 
@@ -946,25 +997,7 @@ Remote debug session will only be presented if there is a failure in the pipelin
 
 Debug mode is not available for the first build of the pipeline. We should run the pipeline atleast once to be able to run it in debug mode.
 
-
-## Delegates
-
-#### How the build pod communicates with delegate?
-The delegate will communicate to the temp pod which is created by the container step through the build pod IP. The build pod have a lite engine running with port 20001.
-
-#### What's the purpose of adding SCM_SKIP_SSL=true in the delegate YAML?
-
-It skips SSL verification for SCM connections
-
-#### What should we do on experiencing OOM on java heap for the delegate?
-
-Try increasing the CPU request and limit both. Check CPU utilization in-case.
-
-#### We have Kubernetes delegates with multiple instances and have noticed that during some executions, the same instance in each step and causes the pipeline to fail, as one delegate may have a file and the other instance does not. How can we ensure the same instance is used for each step?
-
-The workaround here is to use single replica delegates for these types of tasks and use a delegate name selector (this might compromise on delegate's high availability although)
-
-## Templates
+## Templates and input sets
 
 #### Can we change the Git Connector of a template and keep the version, repo, etc?
 
@@ -978,25 +1011,11 @@ The absence of the 'Notify' option in the Stage template is expected behavior as
 
 While notifications are a pipeline-level setting and not available at the stage level, you can still set up notifications for failures in your Stage templates. You can achieve this by adding a plugin step in a CI stage that sends notifications. Harness supports drone plugins like email and Slack, which can be used to notify about failures.
 
+#### How can Harness input sets help automate a CI pipeline?
+
+Input sets are a collection of runtime inputs for a Pipeline execution. With input sets, you can use the same pipeline for multiple scenarios. You can define each scenario in an input set or overlay, and then select the appropriate scenario when you execute the pipeline. 
+
 ## CI with CD
-
-#### Is there a way to pass the branchname in update git metadata api ?
-
-No, we dont have branch name as a input to the git metadata api, we can update only the connector, file path and the repository.
-
-#### How can I change the path of the YAML file for the current pipeline to a non-default branch in another repository in git metadata api ?
-
-As per the API, our objective is to modify the Git metadata that we have stored. GitX does not store the branch as metadata.
-To change the YAML file path for an existing pipeline to a non-default branch in a different repository, you can follow these steps:
-- Copy the YAML file to the target repository's non-default branch.
-- Import the YAML file from the Git repository.
-By following these steps, you can effectively change the path of the YAML file for your pipeline to a non-default branch in another repository.
-
-#### How can we update the CPU/memory allocation of a container step running in Harness cloud?
-
-<!-- container step is CD. -->
-
-There is no option available in UI to update the CPU/memory allocation of a container step running in Harness Cloud as the step container can use as much as CPU/memory required up to the available resources in the build VM.
 
 #### Why did the CI stage still go through despite setting a freeze window?
 
@@ -1015,46 +1034,17 @@ The \<+codebase.commitSha> variable will not work in the CD Stage without the CI
 #### If user can again define clone step in the CD and will they can able to get the commidID there again without CI stage in the pipeline?
 No, user can't able to get commit id in that case.
 
-#### What is Harness Rollback in the CI pipeline
+#### How can we reference the secret type output variable exported from CD/custome stage in CI stage?
 
-Harness Rollback deployments initiate a rollback of the most recent successful execution. Note that this feature is behind a feature flag `POST_PROD_ROLLBACK`. Rollback deployments are currently supported by the following deployment types only (Kubernetes, Tanzu Application Services, Amazon ECS).
-
-#### Can user mix and match images from different container registries within a single deployment?
-
-Yes, By configuring each service with the appropriate image repository and tag details, you can seamlessly deploy applications using images from different registries in the same deployment.
-
-## CI with STO
-
-#### Where and how to add the sonar.projectVersion in our harness pipelines
-
-It is necessary to add the step with the name "Configure Sonarqube" and in the field "Additional CLI Flags" add the following item as described below:
-
-```
-Additional CLI Flags:
--Dsonar.projectVersion=
-```
-
-Security step UI settings reference | Harness Developer Hub - https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference/#project-version
-
-#### My pod is evicted during an Aqua scan, and I receive the signal "terminated." Could this be due to the image size (around 4GB)?
-
-Yes, pod eviction during an Aqua scan, especially with a large image size (around 4GB), could be attributed to resource constraints
-
-#### How can I address pod eviction during an Aqua scan?
-
-To address pod eviction during an Aqua scan, it's recommended to increase the container resources limit. This can be achieved by adjusting the resource requests and limits for the container.
-
-#### Can the size of the container image impact pod eviction during a scan?
-
-Yes, the size of the container image, especially if it's large (e.g., 4GB), can contribute to resource utilization. Ensuring that the container has sufficient resources allocated is crucial to prevent eviction during resource-intensive tasks like an Aqua scan.
+Currently, the secret-type output variable exported from a step in a CD/custom stage is not supported in CI stage
 
 ## Triggers
 
 #### Is it possible to trigger a CI stage by a trigger of type artifact ?
 
-No, this feature is already requested and should be onboarded soon.
+While it is possible to [trigger deployments with artifact triggers](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/), there are currently no CI-specific triggers for artifacts.
 
-#### What expression can I use to refer to the repository name configured for a trigger from the incoming payload?
+#### What expression can I use to refer to the repository name from the incoming payload for a trigger?
 
 The expression ```<+eventPayload.repository.name>``` can be used to reference the repository name from the incoming trigger payload
 
@@ -1131,48 +1121,8 @@ To share it between stages, use `sharedpath`.
 You can achieve this by storing the XML as a secret and referring to it within a step. For example:
 `echo '<+secrets.getValue("account.[settingsXMLSecretID]")>' > settings.xml`
 
-## Additional CI FAQs
-
-#### Can pipeline execution be aborted when the referenced branch is deleted?
-
-This is not natively supported however we could have a pipeline listening on delete webhook event and abort all the running pipelines referencing the deleted branch via API.
-
-#### How are Harness secrets tied to connector. 
-
-Customers should be mindful of the fact that connectors are often tied to a secret (password or sshkey) that may expire. This is often a common cause of execution failures with connector errors. 
-
-#### How can we reference the secret type output variable exported from CD/custome stage in CI stage?
-
-Currently, the secret-type output variable exported from a step in a CD/custom stage is not supported in CI stage
-
-#### How can Harness input sets help automate a CI pipeline?
-
-Input sets are a collection of runtime inputs for a Pipeline execution. With input sets, you can use the same pipeline for multiple scenarios. You can define each scenario in an input set or overlay, and then select the appropriate scenario when you execute the pipeline. 
-
-#### I'm getting `Error: ErrImagePull`. What does this mean?
-
-This means that target image is not available in the repository it's being pulled from or there are networking issues.
-
-#### Can I use Harness CI for mobile app development?
-
-Yes. [Harness CI offers many options for mobile app development.](https://developer.harness.io/docs/continuous-integration/use-ci/mobile-dev-with-ci)
+## Gradle
 
 #### How can user enable the Gradle Daemon in builds?
 
 To enable the Gradle Daemon in your Harness CI builds, you can include the `--daemon` option when running Gradle commands in your build scripts. This option instructs Gradle to use the daemon process.
-
-#### Is there a way to abort a running pipeline from a step in that pipeline?
-
-We could use the ```putHandleInterrupt``` API to abort a running pipeline from a step in that pipeline. More details about this pipeline can be reffered in the [doc](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/putHandleInterrupt)
-
-#### Why is the PATH Variable Overwritten in Parallel GitHub Actions Steps?
-
-The PATH variable can be overwritten when running parallel steps in GitHub Actions because these steps could modify the PATH variable depens on which step ran last. When these steps run in parallel, a race condition occurs, and only one of them will be able to set the PATH variable correctly. To avoid this, consider running these steps sequentially in your workflow.
-
-#### Is it possible to integrate our CI builds with the Datadog Pipeline Visibility feature?
-
-We do not have OOTB support for Datadog Pipeline Visibility. However, I can suggest the following approach to push the pipeline event to a webhook endpoint: Link to documentation on webhook notifications.
-
-#### How to assert an environment variable within JEXL conditions?
-
-While we support output variables that can point to an environment variable, we do not support the direct referencing of environment variables in JEXL conditions, even when using the feature flag `CI_OUTPUT_VARIABLES_AS_ENV`, which automatically makes environment variables available for other steps in the same Build (CI) stage.
