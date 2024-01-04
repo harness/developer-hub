@@ -24,7 +24,7 @@ Your deny list rules can use any combination of the following attributes, in add
 
 ## Allow list policies
 
-Use allow list policies to define a list of approved licenses, suppliers, and PURLs. The allow list ensures that your artifacts only include components that meet your specifications, which can help mitigate security and compliance risks. When you enforce policies in your pipelines, if an artifact includes a component that is not included in the allow list, the attribute's policy evaluation fails. 
+Use allow list policies to define a list of approved licenses, suppliers, and PURLs. The allow list ensures that your artifacts only include components that meet your specifications, which can help mitigate security and compliance risks. When you enforce policies in your pipelines, if an artifact includes a component that is not included in the allow list, the attribute's policy evaluation fails. Policy evaluation will also fail if the attribute on which the policy is enforced is not present in the corresponding SBOM.
 
 
 ## Using OPA policies 
@@ -106,6 +106,66 @@ does_match_license(license, rules) if {
 	str_compare(license, rule.license.operator, rule.license.value)
 }
 ...........
+
+```
+
+## Supported Operators
+
+In this section you can find the opreators supported by SBOM OPA policies
+
+### String Operators
+```
+- ==: Equal to
+- !=: Not equal to
+- ~: Pattern match
+
+Examples:
+- {"name":{"value":"abc","operator":"=="}}
+  Explanation: The package name is equal to abc.
+- {"name":{"value":"abc","operator":"!="}}
+  Explanation: The package name is not equal to abc.
+- {"name":{"value":"regex","operator":"~"}}
+  Explanation: The package name matches the regex pattern.
+
+```
+
+### Version Operators
+```
+- ==: Equal to
+- !=: Not equal to
+- >: Greater than
+- <: Less than
+- >=: Greater than or equal to
+- <=: Less than or equal to
+- ><: In between
+- >=<: In between (start inclusive)
+- ><=: In between (end inclusive)
+- >=<=: In between (start and end inclusive)
+- ~: Pattern match
+
+Examples:
+- {"version":{"value":"1.2.3","operator":"=="}}
+  Explanation: The version is equal to 1.2.3.
+- {"version":{"value":"1.2.3","operator":"!="}}
+  Explanation: The version is not equal to 1.2.3.
+- {"version":{"value":"1.2.3","operator":">"}}
+  Explanation: The version is greater than 1.2.3.
+- {"version":{"value":"1.2.3","operator":"<"}}
+  Explanation: The version is less than 1.2.3.
+- {"version":{"value":"1.2.3","operator":">="}}
+  Explanation: The version is greater than or equal to 1.2.3.
+- {"version":{"value":"1.2.3","operator":"<="}}
+  Explanation: The version is less than or equal to 1.2.3.
+- {"version":{"value":"1.2,2.3.4","operator":"><"}}
+  Explanation: The version is greater than 1.2.3 and less than 2.3.4.
+- {"version":{"value":"1.2,2.3.4","operator":">=<"}}
+  Explanation: The version is greater than or equal to 1.2.3 and less than 2.3.4.
+- {"version":{"value":"1.2,2.3.4","operator":">=<="}}
+  Explanation: The version is greater than 1.2.3 and less than or equal to 2.3.4.
+- {"version":{"value":"1.2,2.3.4","operator":">=<="}}
+  Explanation: The version is greater than or equal to 1.2.3 and less than or equal to 2.3.4.
+- {"version":{"value":"1.2.3","operator":"~"}}
+  Explanation: The version matches the regex pattern.
 
 ```
 
