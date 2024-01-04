@@ -273,6 +273,10 @@ const config = {
                 label: "API Reference",
                 to: "https://apidocs.harness.io/",
               },
+              {
+                label: "Roadmap",
+                to: "roadmap",
+              },
             ],
           },
           {
@@ -637,7 +641,7 @@ const config = {
     path.join(__dirname, "/plugins/utmcookie-plugin"),
     path.join(__dirname, "/plugins/feedback-plugin"),
     path.join(__dirname, "/plugins/focusOnAnchor-plugin"),
-    path.join(__dirname, '/plugins/scarf-plugin'),
+    path.join(__dirname, "/plugins/scarf-plugin"),
   ],
 };
 
