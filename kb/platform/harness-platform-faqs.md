@@ -2204,3 +2204,60 @@ You can Navigate to Authentication tab and go to ldap setting and try Synchroniz
 #### While trying to link sso group, not getting the option for user group
 
 Check and confirm if group authorization is enabled for saml setup configured, than only you will see the sso provide details under drop down
+
+#### How to capture SAML Tracer
+
+You can install SAML Tracer extension in your browser its available for all browsers. 
+With the SAML-tracer extension running one needs to do the following:
+
+1. At the login page hit "X Clear" in SAML tracer(top left) and then perform a login attempt.
+2. When the login session is captured hit "Export" and attach this export to the ticket.
+
+#### In case multiple Harness instances and setup with SAML App redirecting to a different Harness instance instead of one expected.
+
+In case you have say Sandbox and production Harness instances and you are using the Azure SAML APP which also has multiple Harness apps. 
+It is important to specify the Entity ID below the Authorisation in Harness UI while creating the SAML App integration. 
+
+#### How to inspect your certificates for delegate certificate issue. 
+
+The below commands will hep you inspect your certificates. 
+
+Inspect a certificate chain - x509 PEM file
+```
+Keytool -printcert -file /path/to/cert
+```
+
+```
+openssl x509 -text -noout -in certificate.pem
+```
+
+Inspect a truststore file
+
+```
+keytool -list -v -keystore /path/to/truststore
+```
+
+#### Delegate fails to register with handshake exceptions. 
+
+While creating a delegate it might start to register and then fail with SSLHandshakeException. 
+
+To resolve the handshake exception, do the following:
+
+Run to the command below to test the certificate chain you used to install Harness Manager.
+```
+curl -cacerts path/to/ca-certs/file https://<MANAGER_HOST>/api/account/<ACCOUNT_ID>/status
+```
+Then Install the certificate on the delegate
+
+Reference : https://developer.harness.io/docs/platform/delegates/troubleshooting/certificate-issues#handshake-exception
+
+#### Delegate connectivity issues because of proxy IP.
+
+While configuring the delegate proxy , many times we specify the Proxy Host IP and not the PROXY_HOST. 
+We always recommend to have the PROXY_HOST and not IP as in case your IP changes to a new IP , your delegate will start to fail causing issues. 
+
+
+
+ 
+
+
