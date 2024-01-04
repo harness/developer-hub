@@ -4,11 +4,21 @@ description: Frequently asked questions about Harness Security Testing Orchestra
 sidebar_position: 2
 ---
 
-## How to prevent the user who requested the exemption from approving it?
+## Can I prevent the user who requested an exemption from approving it?
 
 To approve exemptions, users must have the **Approve/Reject** permission. Currently, Harness STO doesn't have a setting to prevent the user who requested the exemption from also approving it.
 
-## Why is the STO Grype step throwing the exception `db could not be loaded: the vulnerability database was built n weeks ago (max allowed age is 5 days)`?
+## Can the size of the container image impact pod eviction during a scan?
+
+Yes, the size of the container image contributes to resource utilization, especially large images (around 4GB). Make sure the container has sufficient resources allocated to prevent eviction during resource-intensive tasks, such as Aqua scans.
+
+## Pod evicted during an Aqua scan
+
+Pod eviction during an Aqua scan can be attributed to resource constraints, especially with a large image size (around 4GB).
+
+To address pod eviction during an Aqua scan, increase container resource limits by adjusting the resource requests and limits for the container.
+
+## Why is the STO Grype step throwing the exception "db could not be loaded: the vulnerability database was built n weeks ago (max allowed age is 5 days)"?
 
 This exception, indicates that the Grype step in the STO process is unable to load the vulnerability database due to its age exceeding the maximum allowed age of 5 days. If the environment where you're running these scans has restricted internet connectivity (firewalled), you must set up a local database for Grype to update itself. For comprehensive documentation for the initial setup, configuring the local database, and final configuration, go to [Set up Grype in air-gapped environments](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/grype/grype-setup-in-airgapped/).
 
@@ -19,3 +29,14 @@ While Harness updates the database every time it rebuilds the Grype image, this 
 * Error message: `Shallow clone detected, no blame information will be provided. You can convert to non-shallow with 'git fetch --unshallow`
 * Cause: If the [depth setting](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) in your pipeline's codebase configuration is shallow, SonarQube can't generate a report. This is a [known SonarQube issue](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scm-integration/#known-issues).
 * Solution: Change the `depth` to `0`.
+
+## How do I add the sonar.projectVersion in a Harness pipeline?
+
+In your Configure SonarQube step, declare `sonar.projectVersion` under Additional CLI Flags, for example:
+
+```yaml
+Additional CLI Flags:
+-Dsonar.projectVersion=
+```
+
+For more information, go to the [Security step UI settings reference](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference/#project-version)
