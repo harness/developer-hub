@@ -4,7 +4,7 @@ description: This article addresses some frequently asked questions about Harnes
 sidebar_position: 2
 ---
 
-## Licensing and build credits
+## Licenses and build credits
 
 #### Account verification error for CI Builds (Free Trial account with hosted builds)
 
@@ -33,6 +33,10 @@ See site fore more details [https://developer.harness.io/docs/platform/rate-limi
 
 The 'Queued license limit reached' message in the build UI signifies that the maximum concurrency limit has been reached, and new builds are queued for execution
 
+#### Additional considerations when running concurrent builds
+
+While running concurrent builds, customers may want to consider the [Queue Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence) feature of Harness CI. This feature is behind a feature flag.
+
 ## Build infrastructure
 
 <!-- some infra-specific questions might be better in a different category like "rootless/non-root/root user" -->
@@ -51,136 +55,13 @@ Yes, you can configure different build infrastructures for each stage within a p
 
 #### I want to develop a build built for MacOS, do I have to use homebrew as the installer?
 
-No, Harness also supports multiple versions of xcode. Please see our document on iOS and macOS applications for more details [https://developer.harness.io/tutorials/ci-pipelines/build/ios/]
+No. Your build machines can be configured to use whichever tools you like. With Harness Cloud build infrastructure, the Harness Cloud runners include preinstalled versions of xcode and other tools, and you can install other tools or versions of tools that you prefer to use. For more information, go to the [CI macOS and iOS guide](https://developer.harness.io/tutorials/ci-pipelines/build/ios).
 
 #### Why am I getting an error when trying to run a docker command on a Windows build server? 
 
 Please make sure that the build server has 'Windows Subsystem for Linux' installed. It is possible that the failure is due to the container not being able to start on the build system. 
 
-### Harness Cloud
-
-#### How to Use Harness Cloud build infrastructure?
-
-With Harness Cloud, you can run builds in isolation on Harness-hosted VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines
-For details, go to [Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
-
-#### Can I use xcode on a MacOS build system as part of Harness Cloud?
-
-Yes, several different versions of xcode as well as homebrew are installed on the default MacOS image.
-
-#### Can I use my own secrets manager with Harness Cloud build infrastructure?
-
-No. To [use Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets), you must use the built-in Harness secrets manager.
-
-#### With Harness Cloud build infrastructure, can GCP and Azure connectors inherit credentials from the delegate?
-
-No. To [use Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets), all connectors must connect through the Harness Platform.
-
-#### AWS connectors with IRSA, AssumeRole, and delegate connectivity mode don't work with Harness Cloud build infrastructure.
-
-To [use Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets), all connectors must connect through the Harness Platform, and AWS connectors can't use IRSA or AssumeRole.
-
-For AWS connectors, only access key authentication is supported with Harness Cloud build infrastructure.
-
-#### Is rootless configuration supported for Windows build infrastructures?
-
-No, currently this is not supported for Windows builds.
-
-### Kubernetes
-
-#### Can we mount our internal CA certs in the CI build pod?
-
-Yes.
-
-With a Kubernetes cluster build infrastructure, you can make the certs available to the delegate pod, and then set `DESTINATION_CA_PATH`. For `DESTINATION_CA_PATH`, provide a list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`. For more information, go to [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
-
-With a local runner build infrastructure, you can use `CI_MOUNT_VOLUMES` to use self-signed certificates. For more information, go to [Set up a local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
-
-#### How can we include the internal CA certs available in the delegate pod?
-
-There are multiple ways we could achive this. We could either build the delegate image with the certs baked into it if we are custom building the delegate image or we could create a secret/configmap with the certs data and mount it on the delegate pod. We could also run some custom commands in the INIT_SCRIPT to download the certs while the delegate gets started and make them available to the delegate pod file system.
-
-#### Where should we mount the internal certs on the build pod?
-
-The usage of the mounted CA certificates depends on the specific container image used for the step. The default certificate location may vary depending on the base image employed. The location where the certs need to be mounted should be decided based on the container image being used for the steps.
-
-#### Resource allocations for Kubernetes
-
-Running a CI build on Kubernetes build infrastructure. Customers can utilize CPU and Memory resource allocations per Run Step and Run Test Step.
-
-#### How can we configure the build pod to communicate with the k8s API server?
-
-By default, default service account of the namespace will be auto mounted on the build pod through which it can communicate with API server. If we want another service account to be mounted on the build pod, it can be configured as advanced infra configuration.
-
-#### Do we always need to mount a k8s service account in the build pod?
-
-It is not needed if the build pod does not neded to comunicate with the k8s API as part of the pipeline execution.
-
-#### What types of volumes can be mounted on a CI build pod?
-
-We have the option to mount various volume types, such as empty directory, host path, and persistent volume, onto the build pod. This configuration is available under the advanced section of the infrastructure settings.
-
-#### How can we configure the build pod to run on a specific k8s node as part of troubleshooting?
-
-We could set up the node selector for the build pod within the advanced section of the infrastructure configuration.
-
-#### What is the difference between a Kubernetes cluster build infrastructure and other build infrastructures?
-
-One of the primary differences is that the Kubernetes cluster build infrastructures uses kaniko for Build and Push steps, whereas other build infrastructures use drone-docker. For more information, go to:
-
-* [Build and push artifacts and images - Kubernetes cluster build infrastructures require root access](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#kubernetes-cluster-build-infrastructures-require-root-access)
-* [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me)
-
-#### How can I run Docker commands on a Kubernetes cluster build infrastructure?
-
-If you want to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#privileged-mode-is-required-for-docker-in-docker) is necessary when using a Kubernetes cluster build infrastructure.
-
-#### What should I do if my Kubernetes cluster does not support Privileged Mode?
-
-You'll need to consider Harness Cloud or a VM (Virtual Machine) build infrastructure. These infrastructure options allow you to run Docker commands directly on the host, without the need for Privileged Mode.
-
-#### How do I configure my pipeline to use EKS build infrastructure with an AWS connector that uses IRSA?
-
-You need to set the [Service Account Name in the Kubernetes cluster build infrastructure settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#service-account-name).
-
-#### Why are build pods being evicted?
-
-Build pods can be evicted due to CPU or memory issues in the pod or using spot instances as worker nodes. Harness CI pods shouldn't be evicted due to autoscaling.
-
-See also: [CI pods appear to be evicted by Kubernetes autoscaling](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#ci-pods-appear-to-be-evicted-by-kubernetes-autoscaling)
-
-#### When should I specify the Priority Class for the Build stage pod in Kubernetes?
-
-Set the priority class when you want to ensure that the Build stage pod is prioritized in cases of resource shortages on the host node.
-
-#### How do I configure the Priority Class for a Kubernetes cluster build infrastructure?
-
-For information about configuring the priority class for a Kubernetes cluster build infrastructure, go to [CI Build stage settings - Priority Class](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#priority-class).
-
-#### What's the default priority class level?
-
-If you leave the **Priority Class** field blank, the `PriorityClass` is set to the `globalDefault`, if your infrastructure has one defined, or `0`, which is the lowest priority.
-
-#### What happens if the Priority Class field is blank in the Build stage settings?
-
-If you leave the **Priority Class** field blank, the `PriorityClass` is set to the `globalDefault`, if your infrastructure has one defined, or `0`, which is the lowest priority.
-
-#### How user can copy a file into a pod in kubernetes cluster in build stage?
-For this, you can add the script in run step and achieve your requirement through that.
-
-
-#### What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?
-This error suggests that there is an issue accessing the entrypoint of the Docker image, commonly encountered in a Kubernetes cluster build infrastructure when working with PostgreSQL services.
-
-
-#### How can I resolve the "Failed to get image entrypoint" error in a Kubernetes cluster?
-To resolve this error, you may need to mount volumes for the PostgreSQL data in the build infrastructure settings and reference those volumes in the Background steps.
-
-
-#### How do user add volumes for PostgreSQL data in the build infrastructure settings?
-In the build infrastructure settings, configure one empty directory volume for each PostgreSQL service. This can typically be done through the Kubernetes configuration or deployment files.
-
-### Local runner
+### Local runner build infrastructure
 
 #### What all operatig systems can we set up a local runner build infrastructure in CI?
 
@@ -190,7 +71,7 @@ We could set up a local runner build infrastructure on any Linux, macOS, or Wind
 
 After configuring delegate and runner, you need to set the pipeline's build infrastructure. You can do this in the pipeline's "Build" stage. You can specify the operating system and architecture for your build infrastructure
 
-### Self-hosted VM
+### Self-hosted VM build infrastructure
 
 #### Can we reuse the same build VM between different CI stages execution?
 
@@ -236,128 +117,173 @@ instances:
         type: "pd-balanced"
 ```
 
+### Harness Cloud build infrastructure
 
-### Step containers
+#### How to Use Harness Cloud build infrastructure?
 
-#### When we pull artifact/images do we store them on delegate?
+With Harness Cloud, you can run builds in isolation on Harness-hosted VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines
+For details, go to [Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
 
-CI step build runs on separate build pod which will be cleaned automatically after the execution and we don't store any images locally on the delegate as part of the execution.
+#### Can I use xcode on a MacOS build system as part of Harness Cloud?
 
-#### The container that execute the Run command step, it must have docker and docker CLI installed right in order for this to work?
+Yes, several different versions of xcode as well as homebrew are installed on the default MacOS image.
 
-Yes, user need to install docker and docker CLI in order to work.
+#### Can I use my own secrets manager with Harness Cloud build infrastructure?
 
-#### Why the changes made on the container image filesystem in a CI step is not available in the subseqent step where the same container image is used?
+No. To [use Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets), you must use the built-in Harness secrets manager.
 
-When we pick a container image for a step, any changes we make there will only affect that step. The next step won't notice these changes even we use the same image unless we edit the `/harness` directory, which is automatically shared among all steps.
+#### With Harness Cloud build infrastructure, can GCP and Azure connectors inherit credentials from the delegate?
+
+No. To [use Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets), all connectors must connect through the Harness Platform.
+
+#### AWS connectors with IRSA, AssumeRole, and delegate connectivity mode don't work with Harness Cloud build infrastructure.
+
+To [use Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets), all connectors must connect through the Harness Platform, and AWS connectors can't use IRSA or AssumeRole.
+
+For AWS connectors, only access key authentication is supported with Harness Cloud build infrastructure.
+
+### Kubernetes cluster build infrastructure
+
+#### What is the difference between a Kubernetes cluster build infrastructure and other build infrastructures?
+
+One of the primary differences is that the Kubernetes cluster build infrastructures uses kaniko for Build and Push steps, whereas other build infrastructures use drone-docker. For more information, go to:
+
+* [Build and push artifacts and images - Kubernetes cluster build infrastructures require root access](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#kubernetes-cluster-build-infrastructures-require-root-access)
+* [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me)
+
+#### How can I run Docker commands on a Kubernetes cluster build infrastructure?
+
+If you want to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#privileged-mode-is-required-for-docker-in-docker) is necessary when using a Kubernetes cluster build infrastructure.
+
+What should I do if my Kubernetes cluster does not support Privileged Mode? You'll need to consider Harness Cloud or a VM (Virtual Machine) build infrastructure. These infrastructure options allow you to run Docker commands directly on the host, without the need for Privileged Mode.
+
+#### Resource allocations for Kubernetes
+
+Running a CI build on Kubernetes build infrastructure. Customers can utilize CPU and Memory resource allocations per Run Step and Run Test Step.
 
 #### What is the default cpu and memory limit for a step container?
 
 The default CPU limit is 400m and the memory limit is 500Mi
 
-#### How can we update the CPU/memory allocation of a container step running in Harness cloud?
+#### Why is the step container's have a very less memory and CPU value configured as requests?
 
-<!-- container step is CD. -->
+Step container's requests are always set to minimum so that only in case of need the additional resources are requested during execution.
 
-There is no option available in UI to update the CPU/memory allocation of a container step running in Harness Cloud as the step container can use as much as CPU/memory required up to the available resources in the build VM.
+#### How can we configure the build pod to communicate with the k8s API server?
 
-#### Why is the execution failing with the error `Error: container has runAsNonRoot and image has non-numeric user (harness), cannot verify user is non-root`, when we enable "Run as Non-Root"?
+By default, default service account of the namespace will be auto mounted on the build pod through which it can communicate with API server. If we want another service account to be mounted on the build pod, it can be configured as advanced infra configuration.
 
-This happens when you enable the option "Run as Non-Root" but not configured the default USRID. When we enable the option "Run as Non-Root", we need to configure a default user ID for all step containers in the Run as User field.
+#### Do we always need to mount a k8s service account in the build pod?
 
-#### What is the default user ID assigned to a step container?
+It is not needed if the build pod does not neded to comunicate with the k8s API as part of the pipeline execution.
 
-By default, the step containers will be running with USERID 1000 and this can be configured in the step's optional configuration
+#### What types of volumes can be mounted on a CI build pod?
+
+We have the option to mount various volume types, such as empty directory, host path, and persistent volume, onto the build pod. This configuration is available under the advanced section of the infrastructure settings.
+
+#### How can we configure the build pod to run on a specific k8s node as part of troubleshooting?
+
+We could set up the node selector for the build pod within the advanced section of the infrastructure configuration.
+
+#### How do I configure my pipeline to use EKS build infrastructure with an AWS connector that uses IRSA?
+
+You need to set the [Service Account Name in the Kubernetes cluster build infrastructure settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#service-account-name).
+
+#### Why are build pods being evicted?
+
+Build pods can be evicted due to CPU or memory issues in the pod or using spot instances as worker nodes. Harness CI pods shouldn't be evicted due to autoscaling.
+
+See also: [CI pods appear to be evicted by Kubernetes autoscaling](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#ci-pods-appear-to-be-evicted-by-kubernetes-autoscaling)
+
+#### When should I specify the Priority Class for the Build stage pod in Kubernetes?
+
+Set the priority class when you want to ensure that the Build stage pod is prioritized in cases of resource shortages on the host node.
+
+#### How do I configure the Priority Class for a Kubernetes cluster build infrastructure?
+
+For information about configuring the priority class for a Kubernetes cluster build infrastructure, go to [CI Build stage settings - Priority Class](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#priority-class).
+
+#### What's the default priority class level?
+
+If you leave the **Priority Class** field blank, the `PriorityClass` is set to the `globalDefault`, if your infrastructure has one defined, or `0`, which is the lowest priority.
+
+#### What happens if the Priority Class field is blank in the Build stage settings?
+
+If you leave the **Priority Class** field blank, the `PriorityClass` is set to the `globalDefault`, if your infrastructure has one defined, or `0`, which is the lowest priority.
+
+#### How user can copy a file into a pod in kubernetes cluster in build stage?
+
+For this, you can add the script in run step and achieve your requirement through that.
+
+#### What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?
+
+This error suggests that there is an issue accessing the entrypoint of the Docker image, commonly encountered in a Kubernetes cluster build infrastructure when working with PostgreSQL services.
+
+How can I resolve the "Failed to get image entrypoint" error in a Kubernetes cluster?
+To resolve this error, you may need to mount volumes for the PostgreSQL data in the build infrastructure settings and reference those volumes in the Background steps. <!-- reference PostgreSQL questions in the background steps section -->
+
+#### When we pull artifact/images do we store them on delegate?
+
+CI step build runs on separate build pod which will be cleaned automatically after the execution and we don't store any images locally on the delegate as part of the execution.
 
 #### How is the step containers named within the build pod?
 
 Step containers are named in sequential numbers, starting with 'step-1'
 
-#### Why is the step container's have a very less memory and CPU value configured as requests?
-
-Step container's requests are always set to minimum so that only in case of need the additional resources are requested during execution.
-
 #### When I run a build, Harness creates a new pod and doesn't run the build on the delegate.
 
 This is the expected behavior. When you run a CI (Build) stage, the steps create build farm pods that are connected to the delegate.
 
-#### How the build pod communicates with delegate?
-The delegate will communicate to the temp pod which is created by the container step through the build pod IP. The build pod have a lite engine running with port 20001.
+## Certificates
+
+#### Can we mount our internal CA certs in the CI build pod?
+
+Yes.
+
+With a Kubernetes cluster build infrastructure, you can make the certs available to the delegate pod, and then set `DESTINATION_CA_PATH`. For `DESTINATION_CA_PATH`, provide a list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`. For more information, go to [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
+
+With a local runner build infrastructure, you can use `CI_MOUNT_VOLUMES` to use self-signed certificates. For more information, go to [Set up a local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
+
+#### How can we include the internal CA certs available in the delegate pod?
+
+There are multiple ways we could achive this. We could either build the delegate image with the certs baked into it if we are custom building the delegate image or we could create a secret/configmap with the certs data and mount it on the delegate pod. We could also run some custom commands in the INIT_SCRIPT to download the certs while the delegate gets started and make them available to the delegate pod file system.
+
+#### Where should we mount the internal certs on the build pod?
+
+The usage of the mounted CA certificates depends on the specific container image used for the step. The default certificate location may vary depending on the base image employed. The location where the certs need to be mounted should be decided based on the container image being used for the steps.
 
 
-## Codebases and SCM
+## Codebases
 
-#### Can we change the Git Connector of a template and keep the version, repo, etc?
+#### What is a codebase in a Harness pipeline?
 
-There's direct option to change such things. Go to template listing page, click on 3 dots on any template for further options and you will see "edit git metadata" option over there.
+When adding a Build stage to a CI pipeline, specify the Git account and repository where your code is stored. 
 
-#### Can pipeline execution be aborted when the referenced branch is deleted?
+#### Which Codebase is utilized during a build deployment? 
 
-This is not natively supported however we could have a pipeline listening on delete webhook event and abort all the running pipelines referencing the deleted branch via API.
-
-#### How can we configure the CI codebase step to clone the repo recursively? 
-
-Currently, the clone codebase step doesn't support the flag recursive However you could use the git credentials from Codebase Connector in Run Step and run the git command with the required flags. More details about this can be reffered in the below doc 
-[https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/](https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/)
-
-#### How can we configure the failure strategy for the clone codebase step in a CI pipeline?
-
-We wouldn't be able to cofigure failure strategy for the defalt implicit clone codebase step. However you can add a git clone step in the pipeline for which the failure strategy configuration will be available.
-
-#### How can we clone the codebase to a different folder other than `/harness`?
-
-The implicit clone codebase step will always clone the repo to `/harness`. If we want to choose a different folder as the target folder, we could you the git clone step which will allow us to use a custom path as the clone directory
-
-#### Is there a way to skip the default clone codebase step in CI pipeline as it seems to be added with all the execution automatically?
-
-Yes, We can disable the implicit clone codebase step under pipeline overview tab
+The codebase declared in the first stage of a pipeline becomes the pipeline's default codebase
 
 #### How to create and configure a codebase?
 
 CI pipelines build and test code that is pulled from a Git code repository. When you add a Build stage to a CI pipeline, you can select a code repo connector that connects to the Git account or repository where your code is stored.
 For details, go to [Create and configure a codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase).
 
-#### CI codebase variables reference
+#### Is there a way to skip the default clone codebase step in CI pipeline as it seems to be added with all the execution automatically?
 
-In Harness CI, you set up a codebase by creating a Harness connector that connects to a Git repo.
-For details, go to [CI codebase variables reference](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
+Yes, We can disable the implicit clone codebase step under pipeline overview tab
 
-#### How is a Codebase utilized?
+#### How can we configure the failure strategy for the clone codebase step in a CI pipeline?
 
-When adding a Build stage to a CI pipeline, specify the Git account and repository where your code is stored. 
+We wouldn't be able to cofigure failure strategy for the defalt implicit clone codebase step. However you can add a git clone step in the pipeline for which the failure strategy configuration will be available.
 
+#### How can we configure the CI codebase step to clone the repo recursively? 
 
-#### Which Codebase is utilized during a build deployment? 
+Currently, the clone codebase step doesn't support the flag recursive However you could use the git credentials from Codebase Connector in Run Step and run the git command with the required flags. More details about this can be reffered in the below doc 
+[https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/](https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/)
 
-The codebase declared in the first stage of a pipeline becomes the pipeline's default codebase
+#### How can we clone the codebase to a different folder other than `/harness`?
 
-####  Is there a way to pass the branchname in update git metadata api ?
-
-No, we dont have branch name as a input to the git metadata api, we can update only the connector, file path and the repository.
-
-#### How can I change the path of the YAML file for the current pipeline to a non-default branch in another repository in git metadata api ?
-
-As per the API, our objective is to modify the Git metadata that we have stored. GitX does not store the branch as metadata.
-To change the YAML file path for an existing pipeline to a non-default branch in a different repository, you can follow these steps:
-- Copy the YAML file to the target repository's non-default branch.
-- Import the YAML file from the Git repository.
-By following these steps, you can effectively change the path of the YAML file for your pipeline to a non-default branch in another repository.
-
-#### Where can I find all the listed Codebase options for CI ?
-
-Please find available `<+codebase.*>` listed for CI in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/)
-
-#### What is the "Clone directory" setting for in the Git Clone step?
-
-The "Clone directory" is an optional target path in the stage workspace where you want to clone the repository
-
-#### What does the "Depth" setting control in the Git Clone step?
-
-The "Depth" setting controls the number of commits to fetch when the step clones the repository. A depth of 0 fetches all commits from the relevant branch
-
-#### Is it achieveable If user disable the option clone codebase, instead user want to use the git clone step to get the Git statuses?
-
-No, User need to enable the clone code base configurution in the CI stage.
+The implicit clone codebase step will always clone the repo to `/harness`. If we want to choose a different folder as the target folder, we could you the git clone step which will allow us to use a custom path as the clone directory
 
 #### What is the default clone depth setting for CI builds?
 
@@ -372,6 +298,23 @@ Yes. Use the [Depth](https://developer.harness.io/docs/continuous-integration/us
 #### How can I reduce clone codebase time?
 
 For builds triggered by pull requests, set the [Pull Request Clone Strategy](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#pull-request-clone-strategy) to `Source Branch` and set [Depth](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) to `1`.
+
+#### CI codebase variables reference
+
+In Harness CI, you set up a codebase by creating a Harness connector that connects to a Git repo.
+For details, go to [CI codebase variables reference](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
+
+Where can I find all the listed Codebase options for CI ?
+
+Please find available `<+codebase.*>` listed for CI in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/)
+
+#### What is the "Clone directory" setting for in the Git Clone step?
+
+The "Clone directory" is an optional target path in the stage workspace where you want to clone the repository
+
+#### What does the "Depth" setting control in the Git Clone step?
+
+The "Depth" setting controls the number of commits to fetch when the step clones the repository. A depth of 0 fetches all commits from the relevant branch
 
 #### Can I clone a specific sub-directory, rather than an entire repo?
 
@@ -395,8 +338,11 @@ By using the `.netrc` file, you can execute Git commands within the run step wit
 
 You could try the expression ```<+trigger.payload.repository.project.key>/<+trigger.payload.repository.name>``` to get the repo name including the project name from the payload
 
+## SCM status updates and PR checks
 
-### Status checks and pull requests
+#### Is it achieveable If user disable the option clone codebase, instead user want to use the git clone step to get the Git statuses?
+
+No, User need to enable the clone code base configurution in the CI stage.
 
 #### How can we share a failed step's output in a pull request comment as part of a CI pipeline execution?
 Below given one of the methods with which we could achieve this.
@@ -443,38 +389,15 @@ One option would be to remove the API access from the cdebase connector so that 
 
 The build status message format is ```<pipeline_identifier>-<stage_identifier> — Execution status of Pipeline - <pipeline_identifier> (execution_ID) Stage - <stage_identifier> was SUCCEEDED```
 
-## Pipeline initialization and Harness-required images
+
+
+## Initialize step and Harness CI images
 
 #### How can I list the internal images that CI uses?
 
 For information about images that Harness CI uses to execute builds, including how to find a list of images, go to [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci).
 
-#### I'm getting `Error: ErrImagePull`. What does this mean?
-
-This means that target image is not available in the repository it's being pulled from or there are networking issues.
-
-#### I'm seeing `Failed to pull image "artifactory.domain.com/harness/ci-addon:1.16.22": rpc error: code = Unknown desc = Error response from daemon: unknown: Not Found`. What does this mean?
-
-It means the harness internal image, in this case `ci-addon:1.16.22`, is not present in your artifact repository and you are using the `account.harnessImage` connector for your artifact repository in Harness. You can use this connector to pull your own images, but it is also used to pull Harness CI images. Modifying this connector can cause it to fail to pull necessary CI images.
-
-You can [proxy and pull Harness CI images from your own repository](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#specify-the-harness-ci-images-used-in-your-pipelines) and configure the `account.harnessImage` connector (or another connector) to [connect to the Harness container image registry or pull images from your own registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
-
-
-#### You have security concerns with pulling Harness delegate images from a public repo?
-
-You can add special Harness Container Image Registry connector to your Harness account. With this connector, the Delegate pulls these images from the Harness Container Image Registry only. 
-
-See link for more details [https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/]
-
-#### What access Harness uses by default to pull the harness internal images from the public repo?
-
-Harness uses anonymous access to Docker Hub to pull Harness images by default. This can be updated if required.
-
-#### Why is the initialize step is occusionally timeout at 8 minutes?
-
-Eight minutes is the default time out of the initialization step however if the build pod is expected to pull any large images, we could increase this init timeout in the advanced section of the infrastructure configuration.
-
-#### Where can I find the list of available Harness CI images?
+Where can I find the list of available Harness CI images?
 
 You can find the list of available Harness CI images [here](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness)
 
@@ -482,13 +405,31 @@ You can find the list of available Harness CI images [here](https://console.clou
 
 Harness publishes updates for all CI images on the second and fourth Monday of each month. New versions of images are released every two weeks
 
+#### How to list the tags available for an image which is being listed when hitting the endpoint ```https://app.harness.io/registry/_catalog```?
+
+We could hit the endpoint ```https://app.harness.io/registry/harness/<image_name>/tags/list``` to list all the available tags for an image in the registry ```app.harness.io/registry```
+
+#### What access Harness uses by default to pull the harness internal images from the public repo?
+
+Harness uses anonymous access to Docker Hub to pull Harness images by default. This can be updated if required.
+
+You have security concerns with pulling Harness delegate images from a public repo? You can add special Harness Container Image Registry connector to your Harness account. With this connector, the Delegate pulls these images from the Harness Container Image Registry only. See link for more details [https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/]
+
 #### Can I use my own private registry to store Harness CI images?
 
 Yes, you can pull Harness CI images from your own private registry if you don't want to use the public container registry
 
-#### How to list the tags available for an image which is being listed when hitting the endpoint ```https://app.harness.io/registry/_catalog```?
+You have security concerns with pulling Harness delegate images from a public repo? You can add special Harness Container Image Registry connector to your Harness account. With this connector, the Delegate pulls these images from the Harness Container Image Registry only. See link for more details [https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/]
 
-We could hit the endpoint ```https://app.harness.io/registry/harness/<image_name>/tags/list``` to list all the available tags for an image in the registry ```app.harness.io/registry```
+#### I'm seeing `Failed to pull image "artifactory.domain.com/harness/ci-addon:1.16.22": rpc error: code = Unknown desc = Error response from daemon: unknown: Not Found`. What does this mean?
+
+It means the harness internal image, in this case `ci-addon:1.16.22`, is not present in your artifact repository and you are using the `account.harnessImage` connector for your artifact repository in Harness. You can use this connector to pull your own images, but it is also used to pull Harness CI images. Modifying this connector can cause it to fail to pull necessary CI images.
+
+You can [proxy and pull Harness CI images from your own repository](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#specify-the-harness-ci-images-used-in-your-pipelines) and configure the `account.harnessImage` connector (or another connector) to [connect to the Harness container image registry or pull images from your own registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
+
+#### Why is the initialize step is occusionally timeout at 8 minutes?
+
+Eight minutes is the default time out of the initialization step however if the build pod is expected to pull any large images, we could increase this init timeout in the advanced section of the infrastructure configuration.
 
 
 ## Build and push images
@@ -498,47 +439,9 @@ We could hit the endpoint ```https://app.harness.io/registry/harness/<image_name
 You can use Harness CI to upload artifacts, such as Docker images or test results.
 For details, go to [Build and push artifacts and images](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
 
-#### Can we enable BuildKit support for the native build and push step?
+#### What drives the Build and Push steps? What is Kaniko?
 
-Currently, our OOTB build and push step utilize Kaniko for building Docker images. To incorporate BuildKit support we would need to use dind build in a run step and more details about dind build can be reffered [here](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage/)
-
-#### Is there a way to use the newer version of kaniko?
-
-Yes, you can update the kaniko image as suggested in this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/).
-
-#### Does Kaniko build use images cached locally on the node?
-
-By default Kaniko does not use the node cache. it performs a full container image build from scratch, so it will always pull the base image. If we want to use cache then specify `Remote Cache Repository` option in the build step. If not specified it will always be executed with caching disabled
-
-#### Can I enable caching in Kaniko builds which is being used by the CI build and push step?
-
-Yes, you can enable caching in Kaniko builds by utilizing the Remote Cache Repository option in the build step settings. This option allows Kaniko to leverage previously built layers that haven't changed, which can significantly speed up the image building process.
-
-#### How can I retrieve the Maven project version from the pom.xml file and pass it to the subsequent Docker build step as the build argument?
-
-You could assign the version value to a variable in a run step with a command something similar to `version=$(cat pom.xml | grep -oP '(?<=<version>)[^<]+')` and then this variable can be configured as the output variable in the run step. In the subsequent build step you could use this output variable from the previous run step as the build argument using an expression similar to `<+pipeline.stages.test.spec.execution.steps.Run_2.output.outputVariables.version>` (In this example, stage name=test, step name=Run_2 and the output variable name is version)
-
-#### How can we reduce the high execution time in build and push step because the pipeline is not able to cache a remote repo?
-
-You can reconfigure the docker file to create the cache layer and install the dependencies before moving other files to improve the execution time.
-
-#### Can I push images without building?
-
-Harness CI provides several options to [upload artifacts](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts). The **Upload Artifact** steps don't include a "build" component.
-
-You can also [build without pushing](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push).
-
-#### From where does the "Build and Push to ECR" step pull the base images specified in the Dockerfile?
-
-By default, "Build and Push to ECR" step downloads base images from the public contaier registry 
-
-#### How can we configure the "Build and Push to ECR" step to pull the base images from our internal container registry with authentication?
-
-You could create a authenticated doccker connector and use that as the base image connector in "Build and Push to ECR" step
-
-#### where does the build and push step expect the dockerfile to be present by default?
-
-The Dockerfile is assumed to be in the root folder of the codebase
+With Kubernetes cluster build infrastructures, Build and Push steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md). Kaniko requires root access to build the Docker image.
 
 #### Does kaniko support non-root users?
 
@@ -558,9 +461,57 @@ In your build stage settings, you must use a Kubernetes cluster build infrastruc
 
 For information about the buildah plugin, go to [Build and push with non-root users](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
 
+#### Can I enable BuildKit support with Build and Push steps?
+
+The [Build and Push steps use kaniko or drone-docker](#what-drives-the-build-and-push-steps-what-is-kaniko) to build images. If you need to use BuildKit, you can't use the built-in Build and Push steps. Instead, you need to run Docker-in-Docker in a Background step, and then run your `docker build` and `docker push` in a Run step. For instructions, go to [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage).
+
+#### Is there a way to use the newer version of kaniko?
+
+Yes, you can update the kaniko image as suggested in this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/).
+
+#### Does Kaniko build use images cached locally on the node?
+
+By default Kaniko does not use the node cache. it performs a full container image build from scratch, so it will always pull the base image. If we want to use cache, then specify the **Remote Cache Repository** option in the build step. If not specified it will always be executed with caching disabled
+
+#### Can I enable caching in Kaniko builds which is being used by the CI build and push step?
+
+Yes, you can enable caching in Kaniko builds by utilizing the Remote Cache Repository option in the build step settings. This option allows Kaniko to leverage previously built layers that haven't changed, which can significantly speed up the image building process.
+
+#### How can we reduce the high execution time in build and push step because the pipeline is not able to cache a remote repo?
+
+You can reconfigure the docker file to create the cache layer and install the dependencies before moving other files to improve the execution time.
+
+#### Can I push without building?
+
+Harness CI provides several options to [upload artifacts](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts). The **Upload Artifact** steps don't include a "build" component.
+
+#### Can I build without pushing?
+
+You can [build without pushing](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push).
+
+#### From where does the "Build and Push to ECR" step pull the base images specified in the Dockerfile?
+
+By default, "Build and Push to ECR" step downloads base images from the public container registry 
+
+<!-- dockerfile is from the codebase. The AWS connector in build and push to ECR step is your target container registry to upload the built image. Base image connector setting can use a differnet connector, such as a Docker connector, to pull the base images. -->
+
+#### How can we configure the "Build and Push to ECR" step to pull the base images from our internal container registry with authentication?
+
+<!-- Base image connector setting -->
+You could create a authenticated doccker connector and use that as the base image connector in "Build and Push to ECR" step
+
+#### where does the build and push step expect the dockerfile to be present by default?
+
+The Dockerfile is assumed to be in the root folder of the codebase. <!-- use Dockerfile settings to specify a different path -->
+
 #### How do I build a Docker image in a Build and Push step from a base image from a specific registry?
 
-Use the [Base Image Connector setting](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings#base-image-connector) to do this.
+Use the [Base Image Connector setting](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings#base-image-connector) to do this. <!-- only available for build and push to ECR -->
+
+#### How can I configure and use images from multiple Azure Container Registries (ACRs)?
+
+To configure and use images from multiple ACRs in Harness, you need to set up individual Harness service configurations for each ACR you want to use. Within each service configuration, specify the image repository and tag from the respective ACR.
+
 
 ## Tests
 
@@ -575,8 +526,6 @@ The Tests tab may display content truncated if a field in your test report XML f
 #### Why the run step within the container step group is unable to publish the test report with the error ```Unable to collect test reports``` even after the report path is correctly configured?
 
 Currently publishing the test report via run step within the containerized step group is not supported. However the team is working on supporting this in the future release.
-
-### Test Intelligence
 
 #### If the "Run test" steps fails the Post-Command script will run or not?
 
@@ -620,11 +569,11 @@ The callgraph would be huge and is not shown when all tests are run (full-run or
 
 In the `Tests` tab, the visualization graph provides insights into why each test was selected. It visually represents the relationship between the selected tests and the specific code changes in the PR
 
-## Scripts/commands (Use CI Run steps)
+## Script execution
 
-#### Does Harness "run container" overwrites the container entrypoint?
+#### Does Harness CI support script execution?
 
-Yes, it is an expected behavior. The entrypoint in the base image should be overwritten as we have to run the commands specified in the run step.
+Yes, for details, go to [Run scripts](https://developer.harness.io/docs/category/run-scripts).
 
 #### Using \<+codebase.gitUser> results in "None" when using Python as Shell for a Run step
 
@@ -632,9 +581,27 @@ Yes, it is an expected behavior. The entrypoint in the base image should be over
 
 The problem here is that none of the 'codebase' variables are being populated when push triggers fires. The solution is to populate the 'codebase' variables to clone the codebase.
 
-#### Does Harness CI support script execution?
+#### Is it possible to use an image in the run step that does not include a shell?
 
-Yes, for details, go to [Run scripts](https://developer.harness.io/docs/category/run-scripts).
+In run step, the command is a required field and any shell should be available in the image used to be able to run the commands
+
+#### Is a Docker image is required to run scripts in CI builds with a local runner build infrastructure?
+
+Yes. Container registry and image are always required for Run steps with a local runner build infrastructure.
+
+#### The container that execute the Run command step, it must have docker and docker CLI installed right in order for this to work?
+
+Yes, user need to install docker and docker CLI in order to work.
+
+#### Why the run step is failing with the error ```1 error occurred: * stat /tmp/engine/Zko3loXHTre2vfh-output.env: no such file or directory``` while trying to export the output variable from the run step which uses python shell?
+
+This could happen if you are exiting the python script manually by calling ```exit(0)```. If you configure output variable in the run step that uses python shell, we add few lines of code at the end of your custom script which will add the variable to be exported to a temp file. When you are calling exit(0) at the end of the script, these codes responsible for exporting variable will not be run which causes this issue. 
+
+## Container entrypoint
+
+#### Does Harness "run container" overwrites the container entrypoint?
+
+Yes, it is an expected behavior. The entrypoint in the base image should be overwritten as we have to run the commands specified in the run step.
 
 #### Why is the default entry point is not running for the container image used in the run step?
 
@@ -648,25 +615,11 @@ You would need to use the background step in this usecase where we would execute
 
 The commands specified in the command section of the run step will override the default entry point. You will need to manually run the default entry point by explicitly calling the script configured as the default entry point
 
-#### Is it possible to use an image in the run step that does not include a shell?
-
-In run step, the command is a required field and any shell should be available in the image used to be able to run the commands
-
-#### Is a Docker image is required to run scripts in CI builds with a local runner build infrastructure?
-
-Yes. Container registry and image are always required for Run steps with a local runner build infrastructure.
-
-#### Why the run step is failing with the error ```1 error occurred: * stat /tmp/engine/Zko3loXHTre2vfh-output.env: no such file or directory``` while trying to export the output variable from the run step which uses python shell?
-
-This could happen if you are exiting the python script manually by calling ```exit(0)```. If you configure output variable in the run step that uses python shell, we add few lines of code at the end of your custom script which will add the variable to be exported to a temp file. When you are calling exit(0) at the end of the script, these codes responsible for exporting variable will not be run which causes this issue. 
-
 ## Docker in Docker
 
-#### Is it supported to run docker-compose from the docker in docker step?
+#### Is it supported to run docker-compose from docker in docker in a Background step?
 
-<!-- There is no such thing as a "docker in docker step" -->
-
-Yes, it's supported to run the docker-compose from the docker in docker step.
+Yes, it's supported to run the docker-compose from docker in docker running in a Background step.
 
 #### Is privileged mode necessary for running DinD in Harness CI?
 
@@ -698,6 +651,16 @@ Plugins are regular containers which would execute a predefined task. We can tes
 1. Create your plugin to perform a specific task, written in any programming language.
 2. Integrate the plugin into your CI pipeline using a Plugin step.
 
+## Workspaces
+
+#### What is a workspace in a pipeline, and how does it work?
+
+Workspace is a temporary volume that is created when the pipeline runs. It serves as the current working directory for all the steps within a stage. During initialization, the pipeline clones your codebase to the root of this workspace. The workspace persists for the entire duration of the stage, allowing steps to communicate and share state information. 
+
+#### Is workspace persists after the stage completion?
+No, the workspace is destroyed when the stage ends.
+
+
 ## Shared volumes and shared paths
 
 #### How do I share data between steps in a CI stage?
@@ -716,6 +679,10 @@ Yes, you can share additional volumes between steps in a stage by adding Shared 
 #### Does shared path in SAM Build Manifest shows where the download happens ?
 
 No , shared paths does not dictate where the download happens. There could be multiple shared paths provided , but it does not mean our manifests would be downloaded in that shared path. More details on shared path can be read in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/)
+
+#### Why the changes made on the container image filesystem in a CI step is not available in the subseqent step where the same container image is used?
+
+When we pick a container image for a step, any changes we make there will only affect that step. The next step won't notice these changes even we use the same image unless we edit the `/harness` directory, which is automatically shared among all steps.
 
 ## Caching
 
@@ -860,6 +827,9 @@ The build environment must have the necessary binaries for PostgreSQL. Depending
 
 Yes, depending on the build infrastructure, Background steps can either use existing binaries in the build environment or pull an image from public or private Docker image, that contains the required PostgreSQL binaries.
 
+#### How do user add volumes for PostgreSQL data in the build infrastructure settings?
+In the build infrastructure settings, configure one empty directory volume for each PostgreSQL service. This can typically be done through the Kubernetes configuration or deployment files.
+
 #### How do I add a Run step to test PostgreSQL services?
 
 In the same CI stage where you added the Background steps, include a Run step after the Background steps. Ensure that the Run step is not in the parallel group to avoid conflicts.
@@ -881,19 +851,11 @@ A4: The Run step for psql commands serves as a validation step before proceeding
 
 
 
-## Conditional executions, parallelism, looping, and failure strategies
+## Conditional executions, looping, parallelism, and failure strategies
 
 #### How can we configure a specific step to only run when a certain file, like a .toml configuration file, has changed in the repository?
 
 To achieve conditional step execution based on changes to a specific file, you can set up webhook triggers with file-based conditions. Configure the trigger to activate the step only when the targeted file (e.g., config.toml) has been modified in the repository.
-
-#### Why is the CI Initialize step failing with a Null Value Error when a step is configured with looping Strategy?
-
-This could happen when you use an expression for an output variable from a previous step under the repeat looping strategy in the subsequent step. In CI stages, the execution happens on separate build pods, and all the expressions needs to be available before we start the initialize step.
-
-#### Additional considerations when running concurrent builds
-
-While running concurrent builds, customers may want to consider the [Queue Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence) feature of Harness CI. This feature is behind a feature flag.
 
 #### How can we configure a step/stage/pipeline to fail/pass based on the % of test cases failure/success?
 
@@ -905,15 +867,11 @@ First: Error conditions that trigger the failure strategy.
 
 Second: Actions to take when the specified error conditions occur.
 
+#### Why is the CI Initialize step failing with a Null Value Error when a step is configured with looping Strategy?
 
-## Variables and expressions
+This could happen when you use an expression for an output variable from a previous step under the repeat looping strategy in the subsequent step. In CI stages, the execution happens on separate build pods, and all the expressions needs to be available before we start the initialize step.
 
-#### How to assert an environment variable within JEXL conditions?
-
-While we support output variables that can point to an environment variable, we do not support the direct referencing of environment variables in JEXL conditions, even when using the feature flag `CI_OUTPUT_VARIABLES_AS_ENV`, which automatically makes environment variables available for other steps in the same Build (CI) stage.
-
-
-## Outputs and artifacts
+## Upload artifacts
 
 #### How can we send mail from the CI pipeline with an attachement?
 
@@ -961,7 +919,6 @@ Yes. We could add a parallel step to the run step and tail the service specific 
 
 Often overlooked, you can check the timescale for the overview page. By default, it is set to 30 days. 
 
-
 #### Builds dashboard is not showing a previous deployment, why? 
 
 Please check the timescale control on the dashboard. This is set to 30 days by default. You can adjust this scale to display older builds. 
@@ -971,7 +928,7 @@ Please check the timescale control on the dashboard. This is set to 30 days by d
 Harness allows users to compare changes to a pipeline YAML. This is often a useful tool to determine why a pipeline has changed behavior. 
 See the site for more details [https://developer.harness.io/docs/platform/pipelines/view-and-compare-pipeline-executions/]
 
-### Debug mode
+## Debug mode
 
 #### Why the debug mode ssh session is getting closed after sometime?
 
@@ -990,10 +947,10 @@ Remote debug session will only be presented if there is a failure in the pipelin
 Debug mode is not available for the first build of the pipeline. We should run the pipeline atleast once to be able to run it in debug mode.
 
 
+## Delegates
 
-## Platform and other modules
-
-### Delegates
+#### How the build pod communicates with delegate?
+The delegate will communicate to the temp pod which is created by the container step through the build pod IP. The build pod have a lite engine running with port 20001.
 
 #### What's the purpose of adding SCM_SKIP_SSL=true in the delegate YAML?
 
@@ -1007,7 +964,11 @@ Try increasing the CPU request and limit both. Check CPU utilization in-case.
 
 The workaround here is to use single replica delegates for these types of tasks and use a delegate name selector (this might compromise on delegate's high availability although)
 
-### Templates
+## Templates
+
+#### Can we change the Git Connector of a template and keep the version, repo, etc?
+
+There's direct option to change such things. Go to template listing page, click on 3 dots on any template for further options and you will see "edit git metadata" option over there.
 
 #### Why can't we find the Notify Option in my Stage Template?
 
@@ -1017,11 +978,25 @@ The absence of the 'Notify' option in the Stage template is expected behavior as
 
 While notifications are a pipeline-level setting and not available at the stage level, you can still set up notifications for failures in your Stage templates. You can achieve this by adding a plugin step in a CI stage that sends notifications. Harness supports drone plugins like email and Slack, which can be used to notify about failures.
 
-#### How can Harness input sets help automate a CI pipeline?
+## CI with CD
 
-Input sets are a collection of runtime inputs for a Pipeline execution. With input sets, you can use the same pipeline for multiple scenarios. You can define each scenario in an input set or overlay, and then select the appropriate scenario when you execute the pipeline. 
+#### Is there a way to pass the branchname in update git metadata api ?
 
-### CI with CD
+No, we dont have branch name as a input to the git metadata api, we can update only the connector, file path and the repository.
+
+#### How can I change the path of the YAML file for the current pipeline to a non-default branch in another repository in git metadata api ?
+
+As per the API, our objective is to modify the Git metadata that we have stored. GitX does not store the branch as metadata.
+To change the YAML file path for an existing pipeline to a non-default branch in a different repository, you can follow these steps:
+- Copy the YAML file to the target repository's non-default branch.
+- Import the YAML file from the Git repository.
+By following these steps, you can effectively change the path of the YAML file for your pipeline to a non-default branch in another repository.
+
+#### How can we update the CPU/memory allocation of a container step running in Harness cloud?
+
+<!-- container step is CD. -->
+
+There is no option available in UI to update the CPU/memory allocation of a container step running in Harness Cloud as the step container can use as much as CPU/memory required up to the available resources in the build VM.
 
 #### Why did the CI stage still go through despite setting a freeze window?
 
@@ -1030,7 +1005,6 @@ Input sets are a collection of runtime inputs for a Pipeline execution. With inp
 #### Why the build status is not getting updated for approval stage?
 
 Build status is updated at the stage level and happens only for the CI stage
-
 
 #### Can we use \<+codebase.commitSha> variable in CD Stage to get commit id?
 Yes you can able to get the commit id by using \<+codebase.commitSha> variable, you can use the same variable in the CD stage to get the commit id in same pipeline after CI stage.
@@ -1045,11 +1019,16 @@ No, user can't able to get commit id in that case.
 
 Harness Rollback deployments initiate a rollback of the most recent successful execution. Note that this feature is behind a feature flag `POST_PROD_ROLLBACK`. Rollback deployments are currently supported by the following deployment types only (Kubernetes, Tanzu Application Services, Amazon ECS).
 
-### CI with STO
+#### Can user mix and match images from different container registries within a single deployment?
+
+Yes, By configuring each service with the appropriate image repository and tag details, you can seamlessly deploy applications using images from different registries in the same deployment.
+
+## CI with STO
 
 #### Where and how to add the sonar.projectVersion in our harness pipelines
 
 It is necessary to add the step with the name "Configure Sonarqube" and in the field "Additional CLI Flags" add the following item as described below:
+
 ```
 Additional CLI Flags:
 -Dsonar.projectVersion=
@@ -1069,19 +1048,7 @@ To address pod eviction during an Aqua scan, it's recommended to increase the co
 
 Yes, the size of the container image, especially if it's large (e.g., 4GB), can contribute to resource utilization. Ensuring that the container has sufficient resources allocated is crucial to prevent eviction during resource-intensive tasks like an Aqua scan.
 
-### Secrets
-
-#### How are Harness secrets tied to connector. 
-
-Customers should be mindful of the fact that connectors are often tied to a secret (password or sshkey) that may expire. This is often a common cause of execution failures with connector errors. 
-
-#### How can we reference the secret type output variable exported from CD/custome stage in CI stage?
-
-Currently, the secret-type output variable exported from a step in a CD/custom stage is not supported in CI stage
-
-### Connectors
-
-### Triggers
+## Triggers
 
 #### Is it possible to trigger a CI stage by a trigger of type artifact ?
 
@@ -1092,6 +1059,10 @@ No, this feature is already requested and should be onboarded soon.
 The expression ```<+eventPayload.repository.name>``` can be used to reference the repository name from the incoming trigger payload
 
 ## Default user, root access, rootless, non-root
+
+#### Is rootless configuration supported for Windows build infrastructures?
+
+No, currently this is not supported for Windows builds.
 
 #### Can I enable root access for a single step?
 
@@ -1113,6 +1084,14 @@ No, the default user in Windows LE/Addon images needs to be `ContainerAdministra
 
 `ContainerAdministrator` is assigned elevated privileges similar to the root user on Linux, allowing for system-level configurations and installations within the Windows container
 
+#### Why is the execution failing with the error `Error: container has runAsNonRoot and image has non-numeric user (harness), cannot verify user is non-root`, when we enable "Run as Non-Root"?
+
+This happens when you enable the option "Run as Non-Root" but not configured the default USRID. When we enable the option "Run as Non-Root", we need to configure a default user ID for all step containers in the Run as User field.
+
+#### What is the default user ID assigned to a step container?
+
+By default, the step containers will be running with USERID 1000 and this can be configured in the step's optional configuration
+
 ## Performance, optimization, build time
 
 #### How can we improve the build process duration apart from cache layer?
@@ -1131,18 +1110,11 @@ You can pre-build Docker images that include all required dependencies and perio
 
 Excluding unnecessary files and packages not only reduces build times but also results in smaller, more efficient, and portable Docker images.
 
-## Additional CI FAQs
+## Maven
 
-#### Can I use Harness CI for mobile app development?
+#### How can I retrieve the Maven project version from the pom.xml file and pass it to the subsequent Docker build step as the build argument?
 
-Yes. [Harness CI offers many options for mobile app development.](https://developer.harness.io/docs/continuous-integration/use-ci/mobile-dev-with-ci)
-
-#### What is a workspace in a pipeline, and how does it work?
-
-Workspace is a temporary volume that is created when the pipeline runs. It serves as the current working directory for all the steps within a stage. During initialization, the pipeline clones your codebase to the root of this workspace. The workspace persists for the entire duration of the stage, allowing steps to communicate and share state information. 
-
-#### Is workspace persists after the stage completion?
-No, the workspace is destroyed when the stage ends.
+You could assign the version value to a variable in a run step with a command something similar to `version=$(cat pom.xml | grep -oP '(?<=<version>)[^<]+')` and then this variable can be configured as the output variable in the run step. In the subsequent build step you could use this output variable from the previous run step as the build argument using an expression similar to `<+pipeline.stages.test.spec.execution.steps.Run_2.output.outputVariables.version>` (In this example, stage name=test, step name=Run_2 and the output variable name is version)
 
 #### Where to store mvn project settings.xml in harness ci
 
@@ -1159,17 +1131,35 @@ To share it between stages, use `sharedpath`.
 You can achieve this by storing the XML as a secret and referring to it within a step. For example:
 `echo '<+secrets.getValue("account.[settingsXMLSecretID]")>' > settings.xml`
 
+## Additional CI FAQs
+
+#### Can pipeline execution be aborted when the referenced branch is deleted?
+
+This is not natively supported however we could have a pipeline listening on delete webhook event and abort all the running pipelines referencing the deleted branch via API.
+
+#### How are Harness secrets tied to connector. 
+
+Customers should be mindful of the fact that connectors are often tied to a secret (password or sshkey) that may expire. This is often a common cause of execution failures with connector errors. 
+
+#### How can we reference the secret type output variable exported from CD/custome stage in CI stage?
+
+Currently, the secret-type output variable exported from a step in a CD/custom stage is not supported in CI stage
+
+#### How can Harness input sets help automate a CI pipeline?
+
+Input sets are a collection of runtime inputs for a Pipeline execution. With input sets, you can use the same pipeline for multiple scenarios. You can define each scenario in an input set or overlay, and then select the appropriate scenario when you execute the pipeline. 
+
+#### I'm getting `Error: ErrImagePull`. What does this mean?
+
+This means that target image is not available in the repository it's being pulled from or there are networking issues.
+
+#### Can I use Harness CI for mobile app development?
+
+Yes. [Harness CI offers many options for mobile app development.](https://developer.harness.io/docs/continuous-integration/use-ci/mobile-dev-with-ci)
+
 #### How can user enable the Gradle Daemon in builds?
 
 To enable the Gradle Daemon in your Harness CI builds, you can include the `--daemon` option when running Gradle commands in your build scripts. This option instructs Gradle to use the daemon process.
-
-#### How can I configure and use images from multiple Azure Container Registries (ACRs)?
-
-To configure and use images from multiple ACRs in Harness, you need to set up individual Harness service configurations for each ACR you want to use. Within each service configuration, specify the image repository and tag from the respective ACR.
-
-#### Can user mix and match images from different container registries within a single deployment?
-
-Yes, By configuring each service with the appropriate image repository and tag details, you can seamlessly deploy applications using images from different registries in the same deployment.
 
 #### Is there a way to abort a running pipeline from a step in that pipeline?
 
@@ -1182,3 +1172,7 @@ The PATH variable can be overwritten when running parallel steps in GitHub Actio
 #### Is it possible to integrate our CI builds with the Datadog Pipeline Visibility feature?
 
 We do not have OOTB support for Datadog Pipeline Visibility. However, I can suggest the following approach to push the pipeline event to a webhook endpoint: Link to documentation on webhook notifications.
+
+#### How to assert an environment variable within JEXL conditions?
+
+While we support output variables that can point to an environment variable, we do not support the direct referencing of environment variables in JEXL conditions, even when using the feature flag `CI_OUTPUT_VARIABLES_AS_ENV`, which automatically makes environment variables available for other steps in the same Build (CI) stage.
