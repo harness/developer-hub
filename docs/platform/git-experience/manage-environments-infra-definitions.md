@@ -3,9 +3,9 @@ title: Manage Harness environments and infrastructures from Git
 description: Store and share environments and infrastructures in your Git repos.
 sidebar_position: 11
 ---
-:::note
-Currently, Git Experience support for environments and infrastructure definition is behind the feature flag ``CDS_ENV_GITX`` and 
-``CDS_INFRA_GITX``. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::info note
+Currently, Git Experience support for environments and infrastructure definition is behind the feature flags `CDS_ENV_GITX` and 
+`CDS_INFRA_GITX`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 
@@ -37,7 +37,8 @@ In **Project Settings**, select **Environments**. To learn more about creating e
 8. Harness Git Experience auto-populates the **YAML Path**. You can change this path and the file name.
 9. Select **Save**.
 10. In the new environment, click on the YAML path provided to view your new environment in your Git repo.
-![](./static/yaml_path.png)
+
+    ![](./static/yaml-path.png)
 
 ##  Create a remote infrastructure definition
 
@@ -45,13 +46,15 @@ In **Project Settings**, select **Environments**. To learn more about creating e
 2. Select **New Infrastructure Definition**. 
 3. In **Name** enter name for the infrastructure definition.
 4. In **How do you want to set up your infrastructure**, select **Remote**.
-5. Harness will automatically populate the connector, repository, branch, and YAML path. The autopopulation of the connector, branch, and repository is based on the environment configuration, specifically extracted from the Git repository where you've stored your environment details. You can change the connector as well as the branch.
-6. Select the **Deployment Type**, **Infrastructure Type**, and then provide infra details. For more information, go to [Create environments](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments) .
+5. Harness will automatically populate the connector, repository, branch, and YAML path. The auto-population of the connector, branch, and repository is based on the environment configuration, specifically extracted from the Git repository where you've stored your environment details. You can change the connector as well as the branch.
+6. Select the **Deployment Type**, **Infrastructure Type**, and then provide infra details. For more information, go to [Create environments](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments).
 7. Select **Save**.
 8. For the new infrastructure definition, select **More Options** (&vellip;) and then select **Edit**.
-![](./static/infra_def_edit.png)
-8. Click the YAML path to view your Infrastructure Definition YAML file in your Git repo.
-![](./static/infra_def_2.png)
+
+    ![](./static/infra-def-edit.png)
+9. Click the YAML path to view your Infrastructure Definition YAML file in your Git repo.
+
+    ![](./static/infra-def-2.png)
 
 ### Add a remote environment in a CD pipeline
 
@@ -59,7 +62,7 @@ Adding a remote environment in a CD pipeline stage is no different than adding a
 
 When adding a remote environment to the stage, you have the ability to choose a specific branch to determine the version of the environment you wish to utilize in your pipeline.
 
-![](./static/env_branch_switching_remote.png)
+![](./static/env-branch-switching-remote.png)
 
 
 ## Change an inline environment to a remote environment
@@ -74,7 +77,9 @@ The same settings used when creating a remote environment appear. Configure the 
 
 1. Select an environment, and then select the infrastructure definition you want to store in your Git repo.
 2. Select **More Options** (&vellip;).
-![](./static/infra_move_git.png)
+
+    ![](./static/infra-move-git.png)
+
 3. Select **Move to Git**.
 
 The same settings used when creating a remote infrastructure definition appear. Configure the settings just as you would for a new remote infrastructure definition.
