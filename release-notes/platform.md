@@ -80,7 +80,9 @@ The following deprecated API endpoints will no longer be supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## December 2023
+## January 2024
+
+<!--  January 2, 2024 -->
 
 ### Version 1.17.8
 
@@ -110,6 +112,8 @@ The following deprecated API endpoints will no longer be supported:
    
    `UserGroupName: "abc.xyz"` 
 -->
+
+## December 2023
 
 ### Version 1.16.6
 

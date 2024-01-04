@@ -1,7 +1,7 @@
 ---
 title: Passing data in Custom triggers
 description: You can pass data in the cURL command used to initiate a Custom trigger.
-sidebar_position: 8
+sidebar_position: 9
 ---
 
 Various stages of a pipeline might require input data or parameters to function properly. You can set runtime inputs in your Harness pipelines and provide their values when executing the pipeline manually or you can pass in this data when the pipeline execution is triggered automatically. 

@@ -284,12 +284,14 @@ It is [good practice](/docs/security-testing-orchestration/get-started/key-conce
 
 ### YAML pipeline example
 
+Here's an example of the pipeline you created in this tutorial. If you copy this example, replace the placeholder values with appropriate values for your project, organization, connectors, and access token.
+
 ```yaml
 pipeline:
   name: semgrep-simple-scan
   identifier: semgrepsimplescan
-  projectIdentifier: MY_PROJECT
-  orgIdentifier: MY_HARNESS_ORG
+  projectIdentifier: YOUR_HARNESS_PROJECT_ID
+  orgIdentifier: YOUR_HARNESS_ORGANIZATION_ID
   tags: {}
   stages:
     - stage:
@@ -338,7 +340,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: MY_GIT_CONNECTOR
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
         repoName: <+input>
         build: <+input>
 ```
