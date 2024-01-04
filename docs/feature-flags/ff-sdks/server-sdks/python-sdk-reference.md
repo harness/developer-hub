@@ -16,7 +16,7 @@ import Closeclient from '../shared/close-sdk-client.md'
 
 <Smpno />
 
-This topic describes how to use the Harness Feature Flags Java SDK for your Java application.
+This topic describes how to use the Harness Feature Flags Python SDK for your Python application.
 
 For getting started quickly, you can use our [sample code from the Python SDK README](https://github.com/harness/ff-python-server-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [Python SDK GitHub Repository.](https://github.com/harness/ff-python-server-sdk)
 
@@ -96,8 +96,8 @@ cf = CfClient(api_key);
 
 <details>
 <summary>What is a Target?</summary> 
-Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
-  </details>
+Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.
+</details>
 
 For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 

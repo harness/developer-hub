@@ -11,10 +11,10 @@ You must [enable AIDA in your Harness account](/docs/platform/Harness-AIDA/aida-
 
 ## Create a rule by using Harness AIDA
 
-```mdx-code-block
+
 import Create from '/docs/cloud-cost-management/shared/ccm-aida-create-rule-partial.md';
 import View from '/docs/cloud-cost-management/shared/ccm-aida-view-rule-partial.md';
-```
+
 
 <Create />
 

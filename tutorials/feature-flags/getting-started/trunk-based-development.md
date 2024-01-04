@@ -7,7 +7,7 @@ title: Demystifying trunk-based development
 
 # Demystifying Trunk-Based Development
 
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Feature Flags Certification today!"

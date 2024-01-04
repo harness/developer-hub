@@ -330,7 +330,7 @@ spec:
   </tr>
   <tr>
     <th>Range</th>
-    <td><i>user-defined</i> (type:map[string]string)</td>
+    <td><i>user-defined</i> (type\:map[string]string)</td>
   </tr>
   <tr>
     <th>Default</th>

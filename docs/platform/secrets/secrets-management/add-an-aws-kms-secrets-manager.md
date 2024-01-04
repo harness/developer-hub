@@ -10,12 +10,18 @@ helpdocs_is_published: true
 
 To store and use encrypted secrets (such as access keys) and files, you can add an AWS KMS Secret Manager.
 
+import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
+
+<Storeauth />
+
 This topic describes how to add an AWS KMS Secret Manager in Harness.
 
 ### Before you begin
 
 * [Learn Harness' Key Concepts](../../../get-started/key-concepts.md).
 * [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
+* [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials).
+
 
 ### Step 1: Add a Secret Manager
 
@@ -23,22 +29,23 @@ This topic assumes you have a Harness Project set up. If not, go to [Create Org
 
 You can add a Connector from any module in your Project in Project setup, or in your Organization, or Account Resources.
 
-In **Connectors**, click **Connector**.
+In **Connectors**, select **Connector**.
 
-In **Secret Managers**, click **AWS KMS**. The **AWS Key Management Service** settings appear.
+In **Secret Managers**, select **AWS KMS**. The **AWS Key Management Service** settings appear.
 
 ![](../../secrets/static/add-an-aws-kms-secrets-manager-53.png)
+
 ### Step 2: Overview
 
-Enter **Name** for your secret manager.
+Enter a **Name** for your secret manager.
 
 You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, go to [Entity Identifier Reference](../../references/entity-identifier-reference.md).
 
-Enter **Description** for your secret manager.
+Enter a **Description** for your secret manager.
 
 Enter **Tags** for your secret manager.
 
-Click **Continue**.
+Select **Continue**.
 
 ### Option: Credential Type
 
@@ -59,21 +66,21 @@ For more information, go to [Finding the Key ID and ARN](https://docs.aws.amazo
 
 #### AWS Access Key ID
 
-Click **Create or Select a Secret**.
+Select **Create or Select a Secret**.
 
 In the secret settings dialog, you can create/select a [Secret](/docs/platform/secrets/add-use-text-secrets) and enter your AWS Access Key as it's value.
 
-The AWS Access Key is the AWS Access Key ID for the IAM user you want to use to connect to Secret Manager.
+The AWS Access Key is the AWS Access Key ID for the IAM user you want to use to connect to secret manager.
 
 #### AWS Secret Access Key
 
-Click **Create or Select a Secret**.
+Select **Create or Select a Secret**.
 
 You can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your Access Key ID's secret key as the **Secret Value**, or use an existing secret.
 
 #### AWS ARN
 
-Click **Create or Select a Secret**.
+Select **Create or Select a Secret**.
 
 As explained above, you can create a new [Secret](/docs/platform/secrets/add-use-text-secrets) with your ARN as the **Secret Value**, or use an existing secret.
 
@@ -101,9 +108,8 @@ This is the AssumeRole Session Duration. Go to Session Duration in the [AssumeR
 
 ### Step 3: Setup Delegates
 
-In **Delegates** **Setup**, enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Save and Continue**.
+In **Delegates** **Setup**, enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Select **Save and Continue**.
 
 ### Step 4: Test Connection
 
-In **Connection** **Test**, click **Finish** after your connection is successful**.**
-
+In **Connection** **Test**, select **Finish** after your connection is successful.

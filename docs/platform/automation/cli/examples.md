@@ -4,19 +4,19 @@ description: Examples of various use cases of Harness CLI.
 sidebar_position: 2
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 In this segment, we'll guide you through a example demonstrating how to utilize the Harness CLI tool. You have the option to either establish a Harness GitOps workflow or configure a pipeline along with all necessary components to deploy a test guestbook application to your Kubernetes setup.
 
 ## Let's Begin
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="GitOps Example">
-```
+
 
 1. Refer [Install and Configure Harness CLI](./install.md) doc to setup and configure Harness CLI.
 
@@ -76,10 +76,10 @@ In this segment, we'll guide you through a example demonstrating how to utilize 
 
 10. Congratulations! You successfully used `harness` CLI utility tool to create and execute a GitOps workflow.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="CD Pipeline Example">
-```
+
 
 1. Refer [Install and Configure Harness CLI](./install.md) doc to setup and configure Harness CLI.
 
@@ -102,7 +102,7 @@ In this segment, we'll guide you through a example demonstrating how to utilize 
     - Obtain GitHub personal access token with repo permissions. For steps, go to the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
     - Create a Harness Secret to store GitHub PAT. This will be used in the next step to create GitHub connector.
         ```bash
-        harness secret  --token GITHUB_PAT apply 
+        harness secret apply --secret-name "harness_gitpat" --token GITHUB_PAT apply 
         ```
         > Note: Replace `GITHUB_PAT` with GitHub PAT that you obtained in the previous step.
 
@@ -154,7 +154,6 @@ In this segment, we'll guide you through a example demonstrating how to utilize 
 
 13. Congratulations! You successfully used `harness` CLI utility tool to create and execute a pipeline.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```

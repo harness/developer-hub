@@ -7,25 +7,19 @@ ECS container network latency disrupts the state of infrastructure resources. It
 - It causes network stress on the containers of the ECS task using the given `CLUSTER_NAME` environment variable for a specific duration.
 - To select the Task Under Chaos (TUC), use the service name associated with the task. If you provide the service name along with the cluster name, all the tasks associated with the given service will be selected as chaos targets.
 - It tests the ECS task sanity (service availability) and recovery of the task containers subject to network stress.
+- This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](./ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
 
 ![ECS Container Network Latency](./static/images/ecs-container-network-latency.png)
 
-:::tip
-This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](./ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
-:::
 
-## Usage
+## Use cases
 
-<details>
-<summary>View fault usage</summary>
-<div>
 This fault degrades the network of the task container without the container being marked as unhealthy/ (or unworthy) of traffic. It simulates issues within the ECS task network or communication across services in different availability zones (or regions).
 This can be resolved using middleware that switches traffic based on certain SLOs (or performance parameters).
 This can also be resolved by highlighting the degradation using notifications (or alerts).
 It also determines the impact of the fault on the microservice. 
 The task may stall or get corrupted while waiting endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you wish to test by specifying the service to find TUC (Task Under Chaos). This fault helps improve the resilience of the services over time.
-</div>
-</details>
+
 
 ## Prerequisites
 - Kubernetes >= 1.17
@@ -46,16 +40,11 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
+:::
 
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -117,19 +106,15 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
 
-Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+:::info note
+- The ECS container instance should be in a healthy state.
+- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
+- Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+:::
 
-## Default validations
-The ECS container instance should be in a healthy state.
-
-
-## Fault tunables
-
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+   <h3>Mandatory tunables</h3>
     <table>
         <tr>
         <th> Variables </th>
@@ -147,7 +132,7 @@ The ECS container instance should be in a healthy state.
         <td> For example, <code>us-east-1</code>. </td>
         </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional tunables</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -157,12 +142,12 @@ The ECS container instance should be in a healthy state.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Interval between successive instance terminations (in seconds).</td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr> 
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -172,52 +157,45 @@ The ECS container instance should be in a healthy state.
       <tr> 
         <td> NETWORK_LATENCY </td>
         <td> Latency you wish to induce within the service (in milliseconds). </td>
-        <td> Defaults to 2000 ms. </td>
+        <td> Default: 2000 ms. For more information, go to <a href="#network-latency"> latency.</a></td>
       </tr>
       <tr> 
           <td> DESTINATION_IPS </td>
           <td> IP addresses of the services or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
-          <td> comma-separated IP(S) or CIDR(S) can be provided. if not provided, it will induce network chaos for all ips/destinations </td>
+          <td> Comma-separated IP(S) or CIDR(S) can be provided. if not provided, it will induce network chaos for all ips/destinations. For more information, go to <a href="#destination-ips-and-destination-hosts"> destination IPs.</a></td>
       </tr>
       <tr> 
           <td> DESTINATION_HOSTS </td>
           <td> DNS Names of the services, the accessibility to which, is impacted </td>
-          <td> if not provided, it will induce network chaos for all ips/destinations or DESTINATION_IPS if already defined </td>
+          <td> If not provided, it will induce network chaos for all ips/destinations or DESTINATION_IPS if already defined. For more information, go to <a href="#destination-ips-and-destination-hosts"> destination hosts.</a></td>
       </tr>
       <tr>
           <td> NETWORK_INTERFACE  </td>
           <td> Name of ethernet interface considered for shaping traffic </td>
-          <td> Defaults to <code>eth0</code> </td>
+          <td> Default: <code>eth0</code>. For more information, go to <a href="#network-interface"> network interface.</a></td>
       </tr>
       <tr> 
         <td> JITTER </td>
         <td> Specify the value of jitter.</td>
-        <td> Defaults to 0. </td>
+        <td> Default: 0. For more information, go to <a href="#jitter"> jitter.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance</td>
-        <td> Defaults to parallel. Supports serial sequence as well. </td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30 </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common and AWS-specific tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Network latency
 
-It defines the network latency(in ms) to be injected in the targeted container. You can tune it using the `NETWORK_LATENCY` ENV.
+Delay (in ms) to be injected in the target container. Tune it by using the `NETWORK_LATENCY` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-network-chaos/network-latency.yaml yaml)
 ```yaml
@@ -244,9 +222,9 @@ spec:
 
 ### Network interface
 
-The defined name of the ethernet interface, which is considered for shaping traffic. You can tune it using the `NETWORK_INTERFACE` ENV. Its default value is `eth0`.
+Name of the ethernet interface considered for shaping traffic. Tune it by using the `NETWORK_INTERFACE` environment variable. Its default value is `eth0`.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-network-chaos/latency-network-interface.yaml yaml)
 ```yaml
@@ -273,8 +251,9 @@ spec:
 
 ### Jitter
 
-It defines the jitter (in ms), a parameter that allows introducing a network delay variation. You can tune it using the `JITTER` ENV. Its default value is `0`.
-Use the following example to tune it:
+Jitter (in ms), a parameter that allows introducing a network delay variation. Tune it by using the `JITTER` environment variable. Its default value is `0`.
+
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-network-chaos/jitter.yaml yaml)
 ```yaml
@@ -299,12 +278,12 @@ spec:
 
 ### Destination IPs and destination hosts
 
-The network faults interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
+The network faults interrupt traffic for all the IPs/hosts by default. Tune the interruption of specific IPs/Hosts using `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables.
 
 - `DESTINATION_IPS`: It contains the IP addresses of the services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted.
 - `DESTINATION_HOSTS`: It contains the DNS Names/FQDN names of the services, the accessibility to which, is impacted.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-network-chaos/latency-destination-ip-and-hosts.yaml yaml)
 ```yaml
@@ -331,4 +310,3 @@ spec:
         - name: TOTAL_CHAOS_DURATION
           value: '60'
 ```
-

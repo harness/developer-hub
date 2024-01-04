@@ -14,8 +14,8 @@ EC2 HTTP reset peer:
 - Simulates connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
 - Determines the application's resilience to a lossy (or flaky) HTTP connection.
 
-:::info note
-- Kubernetes version 1.17 or later is required to execute this fault.
+## Prerequisites
+- Kubernetes >= 1.17
 - The EC2 instance should be in a healthy state.
 - SSM agent is installed and running in the target EC2 instance.
 - You can pass the VM credentials as secrets or as an chaosengine environment variable.
@@ -33,8 +33,9 @@ EC2 HTTP reset peer:
       aws_access_key_id = XXXXXXXXXXXXXXXXXXX
       aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   ```
-- We recommend that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
-- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -86,7 +87,10 @@ Below is an example AWS policy to execute the fault.
 }
 ```
 
-## Fault tunables
+:::info note
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+:::
+
 
   <h3>Mandatory tunables</h3>
     <table>
@@ -98,7 +102,7 @@ Below is an example AWS policy to execute the fault.
         <tr>
           <td> EC2_INSTANCE_ID </td>
           <td> ID of the target EC2 instance. </td>
-          <td> For example, <code>i-044d3cb4b03b8af1f</code>. </td>
+          <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-cpu-hog#multiple-ec2-instances"> EC2 instance ID.</a></td>
         </tr>
         <tr>
           <td> REGION </td>
@@ -108,12 +112,12 @@ Below is an example AWS policy to execute the fault.
         <tr>
             <td> RESET_TIMEOUT </td>
             <td> Duration after which the connection is reset.</td>
-            <td> Default: 0. </td>
+            <td> Default: 0. For more information, go to <a href="#reset-timeout"> reset timeout.</a></td>
         </tr>
         <tr>
             <td> TARGET_SERVICE_PORT </td>
             <td> Port of the service to target. </td>
-            <td> Default: port 80. </td>
+            <td> Default: port 80. For more information, go to <a href="#target-service-port"> target service port.</a></td>
         </tr>
     </table>
     <h3>Optional tunable</h3>
@@ -126,12 +130,12 @@ Below is an example AWS policy to execute the fault.
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-            <td> Default: 30 s. </td>
+            <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Default: 30 s. </td>
+            <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -141,12 +145,12 @@ Below is an example AWS policy to execute the fault.
         <tr>
             <td> SEQUENCE </td>
             <td> It defines the sequence of chaos execution for multiple instances. </td>
-            <td> Default: parallel. Supports serial sequence. </td>
+            <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injection of chaos (in seconds). </td>
-            <td> For example, 30. </td>
+            <td> For example, 30. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
@@ -156,17 +160,17 @@ Below is an example AWS policy to execute the fault.
         <tr>
             <td> PROXY_PORT </td>
             <td> Port where the proxy will be listening to requests.</td>
-            <td> Default: 20000. </td>
+            <td> Default: 20000. For more information, go to <a href="#proxy-port"> proxy port.</a></td>
         </tr>
         <tr>
             <td> TOXICITY </td>
             <td> Percentage of HTTP requests to be affected. </td>
-            <td> Default: 100. </td>
+            <td> Default: 100. For more information, go to <a href="#toxicity"> toxicity.</a></td>
         </tr>
         <tr>
           <td> NETWORK_INTERFACE </td>
           <td> Network interface to be used for the proxy.</td>
-          <td> Default: `eth0`. </td>
+          <td> Default: `eth0`. For more information, go to <a href="#network-interface"> network interface.</a></td>
         </tr>
     </table>
 

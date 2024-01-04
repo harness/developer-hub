@@ -16,12 +16,12 @@ For example, in a [CI pipeline](../../continuous-integration/get-started/overvie
 
 Other approval methods are:
 
-* [Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/): add Approval steps to a stage for manual intervention.
-* [Adding Jira Approval Stages and Steps](adding-jira-approval-stages.md): add Jira Approval stages and steps.
+- [Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/): add Approval steps to a stage for manual intervention.
+- [Adding Jira Approval Stages and Steps](adding-jira-approval-stages.md): add Jira Approval stages and steps.
 
 ### Before you begin
 
-* [Add a Stage](../pipelines/add-a-stage.md)
+- [Add a Stage](../pipelines/add-a-stage.md)
 
 ### Visual summary
 
@@ -34,41 +34,42 @@ Here's a quick video that walks you through setting up and running the step:
 
 <!-- Video:
 https://www.youtube.com/watch?v=V-d6kaMBf-w-->
-<docvideo src="https://www.youtube.com/watch?v=V-d6kaMBf-w" />
+<DocVideo src="https://www.youtube.com/watch?v=V-d6kaMBf-w" />
 
 Here's what a Manual Approval Stage and step looks like in YAML:
 
 #### YAML Example
 
 ```yaml
-- stage:  
-      name: Manual Stage  
-      identifier: Manual_Stage  
-      description: ""  
-      type: Approval  
-      spec:  
-          execution:  
-              steps:  
-                  - step:  
-                        name: Approval  
-                        identifier: approval  
-                        type: HarnessApproval  
-                        timeout: 1d  
-                        spec:  
-                            approvalMessage: |-  
-                                Please review the following information  
-                                and approve the pipeline progression  
-                            includePipelineExecutionHistory: true  
-                            approvers:  
-                                minimumCount: 1  
-                                disallowPipelineExecutor: false  
-                                userGroups:  
-                                    - docs  
-                            approverInputs:  
-                                - name: myvar  
-                                  defaultValue: myvalue  
-      failureStrategies: []
+- stage:
+    name: Manual Stage
+    identifier: Manual_Stage
+    description: ""
+    type: Approval
+    spec:
+      execution:
+        steps:
+          - step:
+              name: Approval
+              identifier: approval
+              type: HarnessApproval
+              timeout: 1d
+              spec:
+                approvalMessage: |-
+                  Please review the following information  
+                  and approve the pipeline progression
+                includePipelineExecutionHistory: true
+                approvers:
+                  minimumCount: 1
+                  disallowPipelineExecutor: false
+                  userGroups:
+                    - docs
+                approverInputs:
+                  - name: myvar
+                    defaultValue: myvalue
+    failureStrategies: []
 ```
+
 ### Add the Approval stage
 
 In a CD Pipeline, click **Add Stage**.
@@ -99,7 +100,7 @@ Enable this option to provide approvers with the execution history for this Pipe
 
 ### Auto-reject previous deployments in approval
 
-Enable this option to reject old executions waiting for approval when a latest step is approved. 
+Enable this option to reject old executions waiting for approval when a latest step is approved.
 
 :::info
 
@@ -135,7 +136,7 @@ You can reference input variables using the `approverInputs` expression:
 
 `<+pipeline.stages.[stage_name].spec.execution.steps.[step_name].output.approverInputs.[variable_name]>`
 
-These variables can serve as inputs to later stages of the same Pipeline, where they support conditional execution or user overrides. 
+These variables can serve as inputs to later stages of the same Pipeline, where they support conditional execution or user overrides.
 
 For example, in a subsequent step's **Conditional Execution** settings, you could use an expression that only runs the step if the expression evaluates to 1.
 
@@ -148,47 +149,48 @@ In **User Groups**, select **Expression** as the type of value.
 ![](./static/adding-harness-approval-stages-20.png)
 
 You can select one of the following types of expression for user groups:
-* **Individual**: Specify individual expressions for each user group that needs to be configured as an approver. Select **Add** to add more user groups. 
+
+- **Individual**: Specify individual expressions for each user group that needs to be configured as an approver. Select **Add** to add more user groups.
 
   ![](./static/adding-harness-approval-stages-18.png)
 
-* **Combined**: Specify a combined expression for all user groups that need to be configured as Approvers. This expression must resolve to a list of strings.
+- **Combined**: Specify a combined expression for all user groups that need to be configured as Approvers. This expression must resolve to a list of strings.
 
   Following example shows a combined expression:
 
   `<+ <+pipeline.variables.grouplist1> + "," + <+pipeline.variables.grouplist2> >.split(",")`
 
   The expression `<+pipeline.variables.grouplist1>` resolves to `_project_all_users,testUserGroup`
-  and the expression `<+pipeline.variables.grouplist2>` resolves to `org._organization_all_users,account._account_all_users`. 
+  and the expression `<+pipeline.variables.grouplist2>` resolves to `org._organization_all_users,account._account_all_users`.
   The above two expressions resolve to a string of comma-separated user groups. The combined expression resolves to a list of the following user groups:
-  - _project_all_users
-  -  testUserGroup
-  -  org._organization_all_users
-  -  account._account_all_users
+
+  - \_project_all_users
+  - testUserGroup
+  - org.\_organization_all_users
+  - account.\_account_all_users
 
   :::important
   Make sure no spaces are present in the expression values. In the above example, the format must be `_project_all_users,testUserGroup` to match the split criteria `,` .
 
-  Make sure to use user group identifiers and not names in these expressions. 
+  Make sure to use user group identifiers and not names in these expressions.
 
   You must prefix scope indicators for account and organization user groups, for example:
+
   - `account` for account level user group. For example: `account._account_all_users`
   - `org` for organization level user group. For example: `org._organization_all_users`
-  :::
+    :::
 
-
-   ![](./static/adding-harness-approval-stages-19.png)
+  ![](./static/adding-harness-approval-stages-19.png)
 
 ### Advanced settings
 
 Go to:
 
-* [Step Skip Condition Settings](../pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Use delegate selectors](../delegates/manage-delegates/select-delegates-with-selectors.md)
+- [Step Skip Condition Settings](../pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+- [Step Failure Strategy Settings](../pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+- [Use delegate selectors](../delegates/manage-delegates/select-delegates-with-selectors.md)
 
 ### See also
 
-* [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/)
-* [Update Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages)
-
+- [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/)
+- [Update Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages)

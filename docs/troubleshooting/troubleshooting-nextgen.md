@@ -274,6 +274,32 @@ Some naming conventions in repositories and other artifact sources, or in target
 
 Character support in Harness environment and infrastructure definition entity names is restricted to alphanumeric characters, underlines, and hyphens. The restriction is due to compatibility issues with Harness backend components, database keys, and the YAML flow where Harness creates files with entity names on file systems.
 
+## Pipelines
+
+### Pipeline execution failures
+
+At times, you might encounter pipeline execution failures. You can troubleshoot the issues using validation logs available at runtime.
+
+If the `executeOnDelegate` property is set to true, a **View Delegate Tasks Logs** option is available.
+
+![](./static/troubleshooting-nextgen-08.png)
+
+Selecting this option opens the **Delegate Task Logs** dialog that displays Google StackDriver logs for the `taskId`.
+
+![](./static/troubleshooting-nextgen-09.png)
+
+:::info note
+Some steps, such as the CI init step, do not return delegate information in the format required by the API schema, and logs are not available for these steps.
+
+:::
+
+Harness displays the complete error message, enabling you to troubleshoot the connector issue effectively.
+
+:::info note
+This feature is not available for Harness Self-Managed Enterprise Edition.
+
+:::
+
 ## Secrets
 
 The following issues can occur when using Harness secrets.
@@ -634,7 +660,7 @@ Some steps, such as the CI init step, do not return delegate information in the 
 
 :::
 
-You can expand the rows to view the complete JSON object, and you can also scroll horizontally to view the complete error message. This way, you can see the full error log and troubleshoot the connector issue effectively.
+Harness displays the complete error message, enabling you to troubleshoot the connector issue effectively.
 
 :::info note
 This feature is not available for Harness Self-Managed Enterprise Edition.

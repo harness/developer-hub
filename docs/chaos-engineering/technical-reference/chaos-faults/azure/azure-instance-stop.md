@@ -54,12 +54,12 @@ stringData:
       <tr>
         <td> AZURE_INSTANCE_NAMES </td>
         <td> Name of the target Azure instance. </td>
-        <td> For AKS nodes, the instance name is from the Scale Set in Azure and not the node name from AKS node pool. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-instances-by-name"> stop instance by name. </a></td>
+        <td> For AKS nodes, the instance name is from the Scale Set in Azure and not the node name from AKS node pool. For more information, go to <a href="#stop-instances-by-name"> stop instance by name. </a></td>
       </tr>
       <tr>
         <td> RESOURCE_GROUP </td>
         <td> The name of the resource group for the target instance.</td>
-        <td> For example, <code>TeamDevops</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-instances-by-name"> resource group field in the YAML file. </a></td>
+        <td> For example, <code>TeamDevops</code>. For more information, go to <a href="#stop-instances-by-name"> resource group field in the YAML file. </a></td>
       </tr>
     </table>
     <h3>Optional fields</h3>
@@ -72,27 +72,27 @@ stringData:
       <tr>
         <td> SCALE_SET </td>
         <td> Whether instance is part of Scale set</td>
-        <td> Accepts "enable"/"disable". Default is "disable" For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-scale-set-instances"> scale set instances. </a></td>
+        <td> Accepts "enable"/"disable". Default is "disable" For more information, go to <a href="#stop-scale-set-instances"> scale set instances. </a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
+        <td> Defaults to 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance power offs (in seconds).</td>
-        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+        <td> Defaults to 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target instances. </td>
-        <td> Defaults to parallel. Also supports <code>serial</code> sequence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Defaults to parallel. Also supports <code>serial</code> sequence. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+        <td> For example, 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
       </tr>
     </table>
 

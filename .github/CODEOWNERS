@@ -27,7 +27,7 @@
 # Documentation
 
 # Continuous Delivery Docs
-/docs/continuous-delivery/ @michaelcretzman @deepakbolangady @roshnisarangadharan 
+/docs/continuous-delivery/ @michaelcretzman @roshnisarangadharan 
 
 # Continuous Integration Docs
 /docs/continuous-integration/ @aimurphy
@@ -39,10 +39,10 @@
 /docs/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki 
 
 # CET Docs
-/docs/continuous-error-tracking/ @SudheendraKatte
+/docs/continuous-error-tracking/ @M-Tsur
 
 # SRM Docs
-/docs/service-reliability-management/ @SudheendraKatte
+/docs/service-reliability-management/ @sunilgupta-harness
 
 # Chaos Docs
 /docs/chaos-engineering/ @neelanjan00 @SmritiSatya
@@ -60,7 +60,7 @@
 /docs/infra-as-code-management/ @RickCraig
 
 # FF Docs
-/docs/feature-flags/ @ethangj
+/docs/feature-flags/ @ethangj @HarnessTheChaos
 
 # FirstGen Docs
 /docs/first-gen/ @michaelcretzman
@@ -74,7 +74,7 @@
 # Release Notes
 
 #CD Release Notes
-release-notes/continuous-delivery.md @michaelcretzman @deepakbolangady @roshnisarangadharan 
+release-notes/continuous-delivery.md @michaelcretzman @roshnisarangadharan 
 
 #CCM Release Notes
 release-notes/cloud-cost-management.md @rdsoze
@@ -83,7 +83,7 @@ release-notes/cloud-cost-management.md @rdsoze
 release-notes/chaos-engineering.md @neelanjan00 @SmritiSatya
 
 #CET Release Notes
-release-notes/continuous-error-tracking.md @SudheendraKatte
+release-notes/continuous-error-tracking.md @M-Tsur
 
 #CI Release Notes
 release-notes/continuous-integration.md @aimurphy
@@ -92,7 +92,7 @@ release-notes/continuous-integration.md @aimurphy
 release-notes/delegate.md @brian-f-harness @harishkammanahalli
 
 #FF Release Notes
-release-notes/feature-flags.md @ethangj
+release-notes/feature-flags.md @ethangj @HarnessTheChaos
 
 #IDP Release Notes
 release-notes/internal-developer-portal.md @Debanitrkl
@@ -107,7 +107,7 @@ release-notes/security-testing-orchestration.md @douglas-j-bothwell
 release-notes/self-managed-enterprise-edition.md @brian-f-harness @harishkammanahalli
 
 #SRM Release Notes
-release-notes/service-reliability-management.md @SudheendraKatte
+release-notes/service-reliability-management.md @sunilgupta-harness
 
 #SSCA Release Notes
 release-notes/service-reliability-management.md @sunilgupta-harness
@@ -127,10 +127,10 @@ release-notes/service-reliability-management.md @sunilgupta-harness
 /tutorials/cloud-costs/ @rdsoze 
 
 # CET Tutorials
-/tutorials/error-tracking/ @SudheendraKatte 
+/tutorials/error-tracking/ @M-Tsur
 
 # FF Tutorials
-/tutorials/feature-flags/ @ethangj 
+/tutorials/feature-flags/ @ethangj @HarnessTheChaos 
 
 # HDH Tutorials
 /tutorials/hdh/ @ravilach
@@ -151,6 +151,6 @@ release-notes/service-reliability-management.md @sunilgupta-harness
 /tutorials/self-managed-enterprise-edition/ @brian-f-harness
 
 # SRM Tutorials
-/tutorials/service-reliability/ @SudheendraKatte
+/tutorials/service-reliability/ @sunilgupta-harness
 
 

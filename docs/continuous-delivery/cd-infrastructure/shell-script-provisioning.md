@@ -36,12 +36,6 @@ Harness provisioning is categorized into the following use cases:
 
 For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
 
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 ### Dynamic provisioning steps for different deployment types
 
 Each of the deployment types Harness supports (Kubernetes, AWS ECS, etc.) require that you map different script outputs to the Harness infrastructure settings in the pipeline stage.
@@ -250,7 +244,7 @@ When you run this pipeline, the **Shell Script Provision** step show that the `$
 When you select the Output tab of the executed **Shell Script Provision** step, you can see all of the outputs from the JSON. To reference an output, you simply copy its **Output Name**:
 
 
-<docimage path={require('./static/022c39d944a9829d9b73ef453a979ab64a510e71bdb9378844d3a687d369b177.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/022c39d944a9829d9b73ef453a979ab64a510e71bdb9378844d3a687d369b177.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 For example:
@@ -295,12 +289,12 @@ You can also use expressions in **Value**. For example, if you have an output va
 
 To use an expression, in **Script Input Variables**, select **Expression** and paste the expression in **Value**:
 
-<docimage path={require('./static/c5ff60a733dfa1801e34139a940b279ea0f3d0df1f9b7873a7ca58085066f695.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/c5ff60a733dfa1801e34139a940b279ea0f3d0df1f9b7873a7ca58085066f695.png')} width="60%" height="60%" title="Click to view full size image" />
 
 In the **Script**, you declare the variable using the **Name** from **Script Input Variables** (in this example, `foo`).
 
 
-<docimage path={require('./static/f06e24abdcd1f20681d0ff4f223409f1789bd210ed9ddb254675965a6d5ed090.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/f06e24abdcd1f20681d0ff4f223409f1789bd210ed9ddb254675965a6d5ed090.png')} width="60%" height="60%" title="Click to view full size image" />
 
 ## Rollback
 
@@ -317,12 +311,6 @@ If you want to use the outputs from your script, you need to use the Harness `$P
 For details on `$PROVISIONER_OUTPUT_PATH`, go to [$PROVISIONER_OUTPUT_PATH](#provisioner_output_path) in the current topic.
 
 ## Dynamic infrastructure provisioning
-
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 For dynamically provisioning the target deployment environment, you add the Shell Script Provision step to the **Environment** section of the CD Deploy stage.
 

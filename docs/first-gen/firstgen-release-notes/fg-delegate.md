@@ -3,10 +3,10 @@ title: Delegate Release Notes (FirstGen)
 description: These release notes document changes to Harness Delegate in Harness FirstGen.
 sidebar_position: 30
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 These release notes document changes to Harness Delegate in Harness FirstGen.
 
@@ -19,6 +19,10 @@ To identify the cluster that hosts your account, open Harness FirstGen, go to **
 :::
 
 For FirstGen SaaS release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, go to [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
+
+import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
+
+<Deleos />
 
 ## Important notice - action required
 
@@ -54,6 +58,14 @@ To resolve this issue, do the following:
 import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-notice.md'
 
 <Kustomizedep />
+
+## December 2023
+
+### Harness version 81812, Harness Delegate version 23.12.81803
+
+#### Fixed issues
+
+- Fixed the `java.io.InterruptedIOException` message in delegate logs by adding the source URL and removing duplicate error logs. (PL-40118)
 
 ## November 2023
 
@@ -199,7 +211,7 @@ Currently, this feature is behind the feature flag, `GCB_CI_SYSTEM`.
 
   This issue is fixed by modifying the delegate's Kubernetes API client timeout. 
 
-  Harness Delegate uses Kubernetes Java client to make programmatic API calls to the Kubernetes server. The API client uses an OkHttp client whose default [read timeout](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/read-timeout/) and [connect timeout](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/connect-timeout/) values are set to 120 and 60 seconds respectively. These values can be configured by using environment variables, modifying the delegate's container environment. The values must be specified in seconds. 
+  Harness Delegate uses Kubernetes Java client to make programmatic API calls to the Kubernetes server. The API client uses an OkHttp client whose default [read timeout](https://square.github.io/okhttp/recipes/#timeouts-kt-java) and [connect timeout](https://square.github.io/okhttp/recipes/#timeouts-kt-java) values are set to 120 and 60 seconds respectively. These values can be configured by using environment variables, modifying the delegate's container environment. The values must be specified in seconds. 
 
   The environment variables for these timeouts are:
 

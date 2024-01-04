@@ -30,9 +30,9 @@ This topic explains how to add a verification provider Connector at the Project 
 4. In **Name**, enter a name for this connector. You will use this name when selecting the Verification Provider in Harness Environments and Workflows. If you plan to use multiple providers of the same type, ensure that you give each provider a different name.
 5. Click **Continue**.
 6. In the **Controller URL** field, enter the URL of the AppDynamic controller in the format:  
-   **http://<Controller\_Host>:<port>/controller </port>**  
+ `  **http://<Controller\_Host>:<port>/controller </port>**  `
    For example:  
-   **https://xxxx.saas.appdynamics.com/controller**
+ `  **https://xxxx.saas.appdynamics.com/controller**`
 
    ![](../static/connect-to-monitoring-and-logging-systems-12.png)
 
@@ -123,7 +123,7 @@ Usage scope is inherited from the secrets used in the settings. Pro or higher su
    
 4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
 5. Click **Continue**.
-6. In the **URL** field, enter the URL for accessing the REST API on the Splunk server. Include the port number in the format **https://<deployment-name>.cloud.splunk.com:8089.</deployment-name> ** The default port number is 8089, which is required for hosted Splunk, also. For example: **https://mycompany.splunkcloud.com:8089**.
+6. In the **URL** field, enter the URL for accessing the REST API on the Splunk server. Include the port number in the format `https://deployment-name.cloud.splunk.com:8089`. The default port number is 8089. The port number is required for hosted Splunk, such as `https://mycompany.splunkcloud.com:8089`.
    
    ![](../static/connect-to-monitoring-and-logging-systems-20.png)
    

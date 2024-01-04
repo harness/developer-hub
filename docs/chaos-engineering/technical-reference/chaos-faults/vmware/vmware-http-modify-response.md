@@ -62,12 +62,12 @@ stringData:
         <tr>
             <td> TARGET_SERVICE_PORT </td>
             <td> Service port to target. </td>
-            <td> Defaults to port 80. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#target-service-port"> target service port.</a></td>
+            <td> Defaults to port 80. For more information, go to <a href="#target-service-port"> target service port.</a></td>
         </tr>
         <tr>
             <td> HTTP_CHAOS_TYPE </td>
             <td> Type of the HTTP modify response chaos that is injected. </td>
-            <td> Defaults to 'status_code'. It accepts 'body', and 'header' as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#modifying-the-response-status-code"> modifying status code of the response.</a></td>
+            <td> Defaults to 'status_code'. It accepts 'body', and 'header' as well. For more information, go to <a href="#modifying-the-response-status-code"> modifying status code of the response.</a></td>
         </tr>
     </table>
     <h3> Status code modification fields </h3>
@@ -77,12 +77,12 @@ stringData:
         <td> Modified the status code for the HTTP response. </td>
         <td> If no value has been provided, a random value is selected from the list of supported values.
         Multiple values can be provided as comma-separated values, and a random value from the list is selected.
-        Supported values include 200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504. Defaults to a random status code. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#modifying-the-response-status-code"> modify status code of response. </a></td>
+        Supported values include 200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504. Defaults to a random status code. For more information, go to <a href="#modifying-the-response-status-code"> modify status code of response. </a></td>
     </tr>
     <tr>
         <td> MODIFY_RESPONSE_BODY </td>
         <td> Specify if the body should be modified according to the status code provided. </td>
-        <td> Defaults to true, wherein the body is replaced by a default template for the status code. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#modifying-the-response-status-code"> modify response body field. </a></td>
+        <td> Defaults to true, wherein the body is replaced by a default template for the status code. For more information, go to <a href="#modifying-the-response-status-code"> modify response body field. </a></td>
     </tr>
     </table>
     <h3> Body modification fields </h3>
@@ -90,7 +90,7 @@ stringData:
         <tr>
             <td> RESPONSE_BODY </td>
             <td> Body string used to overwrite the HTTP response body. </td>
-            <td> If no value has been provided, the response will be an empty body. Defaults to empty body. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#modifying-the-response-body"> response body field. </a></td>
+            <td> If no value has been provided, the response will be an empty body. Defaults to empty body. For more information, go to <a href="#modifying-the-response-body"> response body field. </a></td>
         </tr>
     </table>
     <h3> Header modification fields</h3>
@@ -98,12 +98,12 @@ stringData:
         <tr>
             <td> HEADERS_MAP </td>
             <td> Map of the headers to modify (or add). </td>
-            <td> For example, &#123;"X-Litmus-Test-Header":"X-Litmus-Test-Value"&#125;. To remove a header, set the value to "". For example, &#123;"X-Litmus-Test-Header": ""&#125;. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#modifying-the-request-headers"> </a> header map field. </td>
+            <td> For example, &#123;"X-Litmus-Test-Header":"X-Litmus-Test-Value"&#125;. To remove a header, set the value to "". For example, &#123;"X-Litmus-Test-Header": ""&#125;. For more information, go to <a href="#modifying-the-request-headers"> </a> header map field. </td>
         </tr>
         <tr>
             <td> HEADER_MODE </td>
             <td> Specify whether the response headers (or request headers) should be modified. </td>
-            <td> Defaults to response. Supports request as well.  For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#modifying-the-request-headers"> header mode field. </a></td>
+            <td> Defaults to response. Supports request as well.  For more information, go to <a href="#modifying-the-request-headers"> header mode field. </a></td>
         </tr>
     </table>
     <h3>Optional fields</h3>
@@ -116,22 +116,22 @@ stringData:
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+            <td> Defaults to 30s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+            <td> Defaults to 30s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple instances. </td>
-            <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+            <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-            <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+            <td> For example, 30s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
@@ -141,17 +141,17 @@ stringData:
         <tr>
             <td> PROXY_PORT  </td>
             <td> Port where the proxy listens for requests. </td>
-            <td> Defaults to 20000. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#proxy-port"> proxy port.</a></td>
+            <td> Defaults to 20000. For more information, go to <a href="#proxy-port"> proxy port.</a></td>
         </tr>
         <tr>
             <td> TOXICITY </td>
             <td> Percentage of HTTP requests that are affected. </td>
-            <td> Defaults to 100. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#toxicity"> toxicity.</a></td>
+            <td> Defaults to 100. For more information, go to <a href="#toxicity"> toxicity.</a></td>
         </tr>
         <tr>
           <td> NETWORK_INTERFACE  </td>
           <td> Network interface used for the proxy. </td>
-          <td> Defaults to eth0. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#network-interface"> network interface.</a></td>
+          <td> Defaults to eth0. For more information, go to <a href="#network-interface"> network interface.</a></td>
         </tr>
     </table>
 

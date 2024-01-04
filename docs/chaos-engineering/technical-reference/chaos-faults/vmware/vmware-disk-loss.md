@@ -46,12 +46,12 @@ stringData:
       <tr>
         <td> APP_VM_MOIDS </td>
         <td> MOIDs of the VMware instance. After you open the VM in VCenter WebClient, you can find the MOID in the address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. </td>
-        <td> For example, <code>vm-5365</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-vm-power-off/#stoppoweroff-the-vm-by-moid"> MOIDs of the VMware instance.</a></td>
+        <td> For example, <code>vm-5365</code>. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-vm-power-off#stoppoweroff-the-vm-by-moid"> MOIDs of the VMware instance.</a></td>
       </tr>
       <tr>
         <td> VIRTUAL_DISK_NAMES </td>
         <td> Name of the target disks provided as comma-separated values. </td>
-        <td> For example, <code>disk-1.vmdk,disk-2.vmdk</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-disk-loss#virtual-disk-names"> virtual disk names. </a></td>
+        <td> For example, <code>disk-1.vmdk,disk-2.vmdk</code>. For more information, go to <a href="#virtual-disk-names"> virtual disk names. </a></td>
       </tr>
     </table>
     <h3>Optional fields</h3>
@@ -64,22 +64,22 @@ stringData:
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+        <td> Defaults to 30s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+        <td> Defaults to 30s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).</td>
-        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+        <td> For example, 30s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
       </tr>
     </table>
 

@@ -294,10 +294,6 @@ The **Release name** setting in the stage **Infrastructure** is used as the Helm
 
 ### Autodetecting Helm Charts without configuring release names
 
-:::note
-This feature is currently behind the feature flag, `CDS_IMPROVED_HELM_DEPLOYMENT_TRACKING`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
-:::
-
 When you want to deploy a commodity Helm Chart (ElasticSearch, Prometheus, etc.) or a pre-packaged Helm Chart, Harness now automatically applies tracking labels to the deployed Helm service. You do not need to add `{{Release.Name}}` to your Helm Chart. 
 
 Harness is able to track the deployed Helm Chart in the Services dashboard. All chart information is also available to view in the Services dashboard. 
@@ -337,11 +333,29 @@ The options avialable to you to specify a Helm chart store depend on whether or 
     - **Direct Connection**. Contains the OCI Helm Registry Connector option (shortened to **OCI Helm**), which you can use with any OCI-based registry.
     - **Via Cloud Provider**. Contains the ECR connector option. This connector is specifically designed for AWS ECR to help you overcome the limitation of having to regenerate the ECR registry authentication token every 12 hours. The ECR connector option uses an AWS connector and regenerates the required authentication token if the token has expired.
 
-    :::note
-    This feature is behind the feature flag `CDS_OCI_HELM_ECR_CONFIG_SUPPORT_NG`. Contact Harness Support to enable the feature. 
-    :::
-
     For the steps and settings of each option, go to [Connectors](/docs/category/connectors).
+
+### Helm commands performance analysis
+Harness interacts with helm charts and repositories by using various helm commands. When these commands are run in parallel along with a large helm repository, they can leave a  significant CPU footprint on the Harness delegate.
+Below is the summary of a few vulnerable helm commands which Harness uses:
+1. `helm repo add`: Avoids redundant additions by checking if the repository already exists and employs locking to prevent conflicts during parallel deployments.
+2. `helm repo update`: Asynchronously fetches index.yaml for all repos, unmarshals and sorts them. Parallel commands do not perform locking, but still manage to run without any failures.
+3. `helm pull`: Involves pulling and locally dumping a chart, where it unmarshalls repository config, iterates through repositories, loads index.yaml file, and matches the requested chart entry for downloading.
+
+#### Harness improvements
+To improve performance of concurrent helm commands, 'N' parallel helm commands on the same helm repository will not always spawn an equivalent number of processes. This is achieved by trying to re-use the output from one command by other concurrent commands. 
+This reduces both CPU and memory usage of the Harness delegate, since concurrently running processes are reduced. These improvements are available from `81803` version of Harness delegate.
+
+#### Harness Certified Limits
+Delegate used for benchmarking: 2 vCPUs, 8 GB memory K8s delegate (1 replica, version 81803)
+
+| Index.yaml size | Concurrent deployments |
+| --------------- | ---------------------- |
+| 20 MB           | 15                     |
+| 75 MB           | 5                      |
+| 150 MB          | 3                      |
+
+
 
 ## Next Steps
 

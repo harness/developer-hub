@@ -41,27 +41,27 @@ Kube security CIS:
     <tr>
         <td> CONFIG_FILE_PATH </td>
         <td> Provide the path to the config file to tune the benchmark</td>
-        <td> Default: /tmp/cis-bench/config.yaml. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/security-chaos/kube-security-cis#tune-benchmark-using-config-file"> tune benchmark using config file.</a></td>
+        <td> Default: /tmp/cis-bench/config.yaml. For more information, go to <a href="#sample-config-file"> tune benchmark using config file.</a></td>
     </tr>
     <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
+        <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
     </tr>
     <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance poweroffs (in seconds). </td>
-        <td> Default: 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+        <td> Default: 30 s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
     </tr>
     <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods.</td>
-        <td> Default: parallel. Supports <code>serial</code> sequence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Default: parallel. Supports <code>serial</code> sequence. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
     </tr>
     <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+        <td> For example, 30 s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
     </tr>
 </table>
 

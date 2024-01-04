@@ -36,14 +36,14 @@ Select the protocol, **HTTP** or **SSH**, to use for cloning and authentication.
 
 Enter the URL for the GitLab account or repository that you want to connect to. The required value is determined by the **URL Type** and **Connection Type**.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="account" label="URL Type: Account" default>
-```
+
 
 In the **GitLab Account URL** field, provide only the account-identifying portion of the GitLab URL, such as `https://gitlab.com/YOUR_ACCOUNT_NAME/`. Do not include a repo name. The URL format depends on the **Connection Type**:
 
@@ -54,20 +54,20 @@ In the **GitLab Account URL** field, provide only the account-identifying portio
 
 This field is only required if the **URL Type** is **Account**. Provide the name of a repo in your GitLab account that Harness can use to test the connector. Harness uses this repo to validate the connection only. When you use this connector in a pipeline, you'll specify a true code repo in your pipeline configuration or at runtime.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="repo" label="URL Type: Repository">
-```
+
 
 In the **GitLab Repository URL** field, provide the complete URL to the GitLab repository that you want this connector to point to. The URL format depends on the **Connection Type**:
 
 * **HTTP:** `https://gitlab.com/YOUR_ACCOUNT_NAME/YOUR_REPO_NAME`
 * **SSH:** `git@gitlab.com:YOUR_ACCOUNT_NAME/YOUR_REPO_NAME`
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Credentials settings
 
@@ -80,10 +80,10 @@ Authentication is required for all accounts and repos, including read-only repos
 * For **HTTP** connections, you can use **OAuth**, **Username and Password**, or **Username and Token** authentication.
 * For **SSH** connections, you must use **SSH Key** authentication.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="userpass" label="Username and Password">
-```
+
 
 **Username and Password** authentication is not valid for GitLab accounts with two-factor authentication. Instead, use **Username and Token**, **OAuth**, or **SSH Key** authentication.
 
@@ -91,10 +91,10 @@ Authentication is required for all accounts and repos, including read-only repos
 2. In the **Username** field, enter `git`. Do not enter any other value besides `git`.
 3. In the **Password** field, provide your GitLab account password as a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="usertoken" label="Username and Token" default>
-```
+
 
 1. For **Authentication**, select **Username and Token**.
 2. In the **Username** field, enter `git`. Do not enter any other value besides `git`.
@@ -108,10 +108,10 @@ Make sure your personal access token has the following permissions: `api`, `read
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="oauth" label="OAuth">
-```
+
 
 :::note
 
@@ -122,10 +122,10 @@ Currently, OAuth for GitLab connectors is behind a feature flag. Contact [Harnes
 1. For **Authentication**, select **OAuth**.
 2. Select **Link to GitLab** to open a new browser tab and authorize access to your GitLab account.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="ssh" label="SSH Key">
-```
+
 
 SSH connections require an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
 
@@ -141,14 +141,14 @@ ssh-keygen -t rsa -m PEM
 
 Make sure to follow the prompts to finish creating the key. For more information, go to the Linux [ssh-keygen man page](https://linux.die.net/man/1/ssh-keygen).
 
-To sync with GitLab, you must generate an SSH key pair and add the SSH key to your GitLab account. For more information, go to the GitLab documentation on [Generating a new SSH key pair](https://gitlab.com/help/ssh/README#generating-a-new-ssh-key-pair).
+To sync with GitLab, you must generate an SSH key pair and add the SSH key to your GitLab account. For more information, go to the GitLab documentation on [Using SSH keys to communicate with GitLab](https://docs.gitlab.com/ee/user/ssh.html).
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Enable API access
 

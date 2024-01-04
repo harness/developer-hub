@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::caution
+:::warning
 
 The Configure Service Dependency step is deprecated. Instead, use the [Background step](./background-step-settings.md).
 
