@@ -2,7 +2,7 @@
 title: Code Repository release notes
 sidebar_label: Code Repository
 tags: [NextGen, "code repository"]
-date: 2024-01-01T10:00
+date: 2024-01-04T10:00
 sidebar_position: 7
 ---
 
@@ -25,12 +25,22 @@ These release notes describe recent changes to Harness Code Repository.
 
 ## January 2024
 
-### Initial release
+### Initial GA release
 
 <!-- Version xxxx -->
 
-<!-- 01 Jan 2024 -->
+<!-- 04 Jan 2024 -->
 
 #### New features and enhancements
 
 We are excited to announce that the [Harness Code Repository module](/docs/code-repository) is now generally available.
+
+This initial GA release includes the following enhancements:
+
+* Integration with Harness Git Experience.
+* Configure triggers for Harness Code repos in the Visual editor in addition to existing support for the YAML editor.
+* First-class support for Harness Code repos in pipeline codebase configuration.
+* Status checks on PRs provide more detail about pipeline executions.
+* Advanced keyword search for querying your codebase.
+
+For information about all Harness Code functionality and features, go to the [Harness Code Repository documentation](/docs/code-repository).
