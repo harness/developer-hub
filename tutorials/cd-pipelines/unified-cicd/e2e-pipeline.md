@@ -292,7 +292,7 @@ Finally, [create a trigger](https://developer.harness.io/docs/platform/triggers/
 
 You can run the pipeline in one of two ways.
 
-1. Commit a change any non-`configs` file (e.g. **README.md**) in the **main** branch of [Harness GitOps Workshop repo](https://github.com/GITHUB_USERNAME/harness-gitops-workshop) and this will trigger the PR pipeline. Observe that the codebase commit SHA is tracked throughout the pipeline - from the image SHA to the **config.json** of the deployed applications.
+1. Commit a change any non-`configs` file (e.g. **README.md**) in the **main** branch of https://github.com/GITHUB_USERNAME/harness-gitops-workshop (be sure to replace **GITHUB_USERNAME**) and this will trigger the PR pipeline. Observe that the codebase commit SHA is tracked throughout the pipeline - from the image SHA to the **config.json** of the deployed applications.
 2. Click **Run Pipeline** from the Harness UI and optionally provide any updates to environment config variables.
 
 A successful pipeline execution should look as follows:
