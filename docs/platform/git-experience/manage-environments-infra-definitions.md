@@ -65,6 +65,11 @@ When adding a remote environment to the stage, you have the ability to choose a 
 
 ![](./static/env-branch-switching-remote.png)
 
+:::note
+
+If you are adding a remote service, environment, or infrastructure definition to a remote pipeline, by default the remote service, environment, or infrastructure definition will pick up the same branch as the remote pipeline.
+
+:::
 
 ## Change an inline environment to a remote environment
 
