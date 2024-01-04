@@ -1,7 +1,7 @@
 ---
 title: Trigger pipelines using Git events
 description: Trigger pipelines in response to Git events.
-sidebar_position: 4
+sidebar_position: 5
 helpdocs_topic_id: hndnde8usz
 helpdocs_category_id: oya6qhmmaw
 helpdocs_is_private: false

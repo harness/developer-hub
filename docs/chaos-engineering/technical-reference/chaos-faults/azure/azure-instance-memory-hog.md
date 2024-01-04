@@ -62,7 +62,7 @@ stringData:
     <tr>
         <td> AZURE_INSTANCE_NAMES </td>
         <td> Names of the target Azure instances. </td>
-        <td> Multiple values can be provided as a comma-separated string. For example, <code>instance-1,instance-2. </code> For more information, go to <a href="./azure-instance-stop#stop-instances-by-name"> stop instance by name.</a></td>
+        <td> Multiple values can be provided as a comma-separated string. For example, <code>instance-1,instance-2. </code> For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-stop#stop-instances-by-name"> stop instance by name.</a></td>
     </tr>
     <tr>
         <td> RESOURCE_GROUP </td>

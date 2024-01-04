@@ -89,7 +89,7 @@ Since last release, we have released some interesting docs and video tutorials t
 
 - **Video Tutorial:** [How to use self-service-onboarding](https://youtu.be/0GoK3SD1rxs?si=1Z28hvZ9nihYtdmL), [How to register your software components in Software Catalog](https://youtu.be/YgtIMDGMzJE?si=wiFzozj8Zo9dEEOF)
 - **Tutorial:** [How to add API docs in Harness IDP](https://developer.harness.io/docs/internal-developer-portal/get-started/add-api-docs)
-- **Docs:** [Software System Model](https://developer.harness.io/docs/internal-developer-portal/get-started/system-model), [API Spec Reference](https://developer.harness.io/docs/internal-developer-portal/features/api-reference)
+- **Docs:** [Software System Model](/docs/internal-developer-portal/catalog/system-model), [API Spec Reference](https://developer.harness.io/docs/internal-developer-portal/features/api-reference)
 
 #### New features and enhancements
 

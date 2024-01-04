@@ -49,7 +49,7 @@ If you are using a VM, local runner, or the Harness Cloud build infrastructure w
 
 If the Background step is inside a step group, you must include step group ID, such as `curl StepGroupId_BackgroundStepId:5000`, even if both steps are in the same step group.
 
-If the Background step runs directly on the host or in a Kubernetes cluster build infrastructure, do not use the step ID to reference Background steps. Instead, use `localhost:host_port`. For more information, go to [Port Bindings](#port-bindings).
+If the Background step runs directly on the host or in a Kubernetes cluster build infrastructure, do not use the step ID to reference Background steps. Instead, use `localhost:host_port`. For Background steps running MySQL in a Kubernetes cluster build infrastructure, you must use the IP and host port, such as `127.0.0.1:7001`. For more information, go to [Port Bindings](#port-bindings).
 
 :::
 
@@ -132,10 +132,8 @@ In a Kubernetes cluster build infrastructure, you can use **Entry Point** to ove
 
 Enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script commands (beyond the image `ENTRYPOINT`) for this step. If the step runs in a container, the commands are executed inside the container.
 
-
 <Tabs>
   <TabItem value="bash" label="Bash" default>
-
 
 This Bash script example checks the Java version.
 
@@ -152,7 +150,6 @@ This Bash script example checks the Java version.
                         exit 1
                       fi
 ```
-
 
 </TabItem>
   <TabItem value="powershell" label="PowerShell">
@@ -173,11 +170,8 @@ You can run PowerShell commands on Windows VMs running in AWS build farms.
 
 :::
 
-
-
 </TabItem>
   <TabItem value="pwsh" label="Pwsh">
-
 
 This PowerShell Core example runs `ForEach-Object` over a list of events.
 
@@ -197,10 +191,8 @@ You can run PowerShell Core commands in pods or containers that have `pwsh` inst
 
 :::
 
-
 </TabItem>
   <TabItem value="sh" label="Sh">
-
 
 In this example, the pulls a `python` image and executes a shell script (`Sh`) that runs `pytest` with code coverage.
 
@@ -221,10 +213,8 @@ In this example, the pulls a `python` image and executes a shell script (`Sh`) t
                       pytest -v --cov --junitxml="result.xml" test_api.py test_api_2.py test_api_3.py
 ```
 
-
 </TabItem>
   <TabItem value="python" label="Python">
-
 
 If the `shell` is `Python`, supply Python commands directly in `command`.
 
@@ -239,10 +229,8 @@ This example uses a basic `print` command.
                     command: print('Hello, world!')
 ```
 
-
 </TabItem>
 </Tabs>
-
 
 :::tip
 
@@ -296,7 +284,7 @@ The host port and container port binding are similar to [port mapping in Docker]
 Depending on the Build stage's **Infrastructure**, some steps might run directly on VMs while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running. For example, assume you create a Background step with the [Name and ID](#name-and-id) `myloginservice`. To call this service in later steps in the same stage, you use:
 
 * `myloginservice:container_port` for containerized steps, such as those running in self-hosted VM build infrastructures or running Docker images.
-* `localhost:host_post` for steps running in a Kubernetes cluster build infrastructure or directly on the build machine (such as a service running from a binary already installed on the host machine).
+* `localhost:host_post` for steps running in a Kubernetes cluster build infrastructure or directly on the build machine (such as a service running from a binary already installed on the host machine). For steps running MySQL in a Kubernetes cluster build infrastructure, you must use `127.0.0.1:host_port`.
 
 :::info
 

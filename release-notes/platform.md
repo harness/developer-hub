@@ -80,11 +80,13 @@ The following deprecated API endpoints will no longer be supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## December 2023
+## January 2024
+
+<!--  January 2, 2024 -->
 
 ### Version 1.17.8
 
-### Fixed issues
+#### Fixed issues
 
 - For user groups provisioned from SCIM to Harness, for the corresponding user groups created in Harness, the user group `identifier` is derived from the display name of the user group in the SCIM provider. Harness replaces `.` (dots) and `-` (dashes) with an `_` (underscore). All other special characters (`#`, `?`, `%`, and so on) and spaces are removed. Leading digits`0` through `9` and `$` are also removed. (PL-42535, ZD-53830, ZD-55294)
 
@@ -110,6 +112,8 @@ The following deprecated API endpoints will no longer be supported:
    
    `UserGroupName: "abc.xyz"` 
 -->
+
+## December 2023
 
 ### Version 1.16.6
 

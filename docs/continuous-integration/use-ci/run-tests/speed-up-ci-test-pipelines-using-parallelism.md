@@ -18,7 +18,15 @@ import TabItem from '@theme/TabItem';
 
 With Harness CI, you can split tests for any language or test tool. This uses test splitting and the parallelism [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) to improve test times.
 
-When you [run tests in Harness CI](./run-tests-in-ci.md), you use **Run** and **Run Tests** steps. You can enable test splitting on either of these steps. To do this, you need to:
+When you [run tests in Harness CI](./run-tests-in-ci.md), you use **Run** and **Run Tests** steps. You can enable test splitting on either of these steps.
+
+:::warning
+
+This topic explains how to set up parallelism and test splitting in **Run** steps. For information about test splitting with Test Intelligence (in **Run Tests** steps), go to [Split tests (parallelism) with TI](./test-intelligence/ti-test-splitting.md).
+
+:::
+
+To split tests in a **Run** step, you need to:
 
 <!-- no toc -->
 1. [Define a parallelism strategy.](#define-a-parallelism-strategy)
@@ -56,14 +64,10 @@ When using parallelism, it's important to take into account resource limitations
 
 </details>
 
-This topic focuses on parallelism and test splitting in **Run** steps. For information about test splitting with Test Intelligence (in **Run Tests** steps), go to [Split tests (parallelism) with TI](./test-intelligence/ti-test-splitting.md).
-
 Here are examples of test splitting and parallelism applied to Run steps. For more YAML examples of test splitting, go to [YAML Examples: Test splitting](#yaml-examples-test-splitting).
-
 
 <Tabs>
   <TabItem value="hc" label="Harness Cloud build infrastructure" default>
-
 
 This example uses [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
 
@@ -115,10 +119,8 @@ This example uses [Harness Cloud build infrastructure](../set-up-build-infrastru
                           - "**/result_<+strategy.iteration>.xml" ## Using the expression '<+strategy.iteration>' in the file name ensures that the results of parallel runs don't overwrite each other.
 ```
 
-
 </TabItem>
   <TabItem value="oth" label="Other build infrastructures">
-
 
 This example uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures).
 
@@ -174,10 +176,8 @@ This example uses a [Kubernetes cluster build infrastructure](/docs/category/set
               os: Linux
 ```
 
-
 </TabItem>
 </Tabs>
-
 
 ## Define a parallelism strategy
 
@@ -203,10 +203,8 @@ The four instances run concurrently, but they might finish at different times de
 
 </details>
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual editor">
-
 
 Define the parallelism strategy on either the step or stage where your tests run.
 
@@ -241,10 +239,8 @@ Define the parallelism strategy on either the step or stage where your tests run
 
    You can also use them to create helpful step logs to help you differentiate parallel instances, such as `echo "${HARNESS_NODE_INDEX} of ${HARNESS_NODE_TOTAL}"`.
 
-
 </TabItem>
   <TabItem value="YAML" label="YAML editor" default>
-
 
 1. Use `strategy.parallelism` to define a parallelism strategy on either the step or stage where your tests run.
 
@@ -297,10 +293,8 @@ Define the parallelism strategy on either the step or stage where your tests run
 
    You can also use them to create helpful step logs to help you differentiate parallel instances, such as `echo "${HARNESS_NODE_INDEX} of ${HARNESS_NODE_TOTAL}"`.
 
-
 </TabItem>
 </Tabs>
-
 
 ### Optimize parallelism
 
@@ -412,10 +406,8 @@ If you [define a parallelism strategy](#define-a-parallelism-strategy) on a **Ru
 
 ## Produce test reports
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual editor">
-
 
 1. Edit the step where your tests run.
 2. Make sure your test tool's commands produce test results. The specific commands required to produce test results files depends on the specific language, test runner, and formatter you use.
@@ -436,10 +428,8 @@ If you [define a parallelism strategy](#define-a-parallelism-strategy) on a **Ru
 
 ![Define Report Paths in a Run step](./static/speed-up-ci-test-pipelines-using-parallelism-54.png)
 
-
 </TabItem>
   <TabItem value="YAML" label="YAML editor" default>
-
 
 1. Edit the step where your tests run.
 2. Make sure your test tool's commands produce test results. The specific commands required to produce test results files depends on the specific language, test runner, and formatter you use.
@@ -470,10 +460,8 @@ If you [define a parallelism strategy](#define-a-parallelism-strategy) on a **Ru
                                 paths: - "**/result_${HARNESS_NODE_INDEX}.xml" ## Specify the results file path. Use a variable or expression to generate uniquely-named results files for each parallel instance. Without a differentiating identifier, the results files can overwrite each other.
    ```
 
-
 </TabItem>
 </Tabs>
-
 
 ## Logs and results
 
