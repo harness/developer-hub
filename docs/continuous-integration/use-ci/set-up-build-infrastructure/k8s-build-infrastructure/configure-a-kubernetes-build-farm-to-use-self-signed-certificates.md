@@ -134,7 +134,7 @@ If you have STO scan steps in your pipeline, do the following:
 
    `docker login my-registry.local.org:799`
 
-   You would then need to configure the `DESTINATION_CA_PATH` on the delegate as follows. Note the `value` path:
+   You would then need to configure or extend the `DESTINATION_CA_PATH` on the delegate as follows. Note the `value` path:
 
    ```yaml
    env:
