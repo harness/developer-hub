@@ -11,7 +11,7 @@ Before you begin the tutorial, you need to have a Harness account. To create one
 
 ### Create a Harness account
 
-1. Navigate to [app.harness.io](app.harness.io) and **Sign up**.
+1. Navigate to [app.harness.io](https://app.harness.io/auth/#/signin) and **Sign up**.
 
 ![navigate](./static/sandbox/sign-up.png)
 
