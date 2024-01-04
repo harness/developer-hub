@@ -8,9 +8,9 @@ sidebar_position: 2
 
 Yes. [Harness CI offers many options for mobile app development.](https://developer.harness.io/docs/continuous-integration/use-ci/mobile-dev-with-ci)
 
-#### I'm getting `Error: ErrImagePull`. What does this mean?
+#### What does "ErrImagePull" mean?
 
-This means that target image is not available in the repository it's being pulled from or there are networking issues.
+This means that Harness couldn't pull an image necessary to run the pipeline. This can happen if there are networking issues or if the target image is not available in the specified repository.
 
 ## Licenses and build credits
 
@@ -1082,7 +1082,7 @@ This happens when you enable the option "Run as Non-Root" but not configured the
 
 By default, the step containers will be running with USERID 1000 and this can be configured in the step's optional configuration
 
-## Performance, optimization, build time
+## Performance and build time
 
 #### How can we improve the build process duration apart from cache layer?
 
