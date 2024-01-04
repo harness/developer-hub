@@ -75,6 +75,34 @@ page:
                   children:
                     - component: ReportIssue
 ```
+#### Overview Tab
+
+```YAML
+Path: /
+Title: Overview
+Components:
+    EntityAboutCard: Provides a brief about the entity.
+    EntityOrphanWarning: Displays warnings for orphan entities.
+    EntityProcessingErrorsPanel: Shows processing errors in a panel layout.
+Props: 
+  variant: gridItem
+GridProps: 
+  md: 6
+EntityScoreCard: Displays scores and metrics related to the entity.
+GridProps: 
+  md: 6
+```
+### CI/CD Tab
+
+```YAML
+Path: /ci-cd
+Title: CI/CD
+Components:
+EntitySwitch: Dynamically displays CI/CD information based on service availability.
+```
+#### Additional Tabs
+API, Deps, Scorecard, TechDocs, EntityGithubPullRequestsContent, EntityKubernetesContent, DynatraceTab: Each of these tabs follows a similar structure, containing components specific to their functionality.
+
 ### Side Nav Layout
 
 The Side Nav Layout configuration file also follows a hierarchical structure, starting with the **"page"** key.
@@ -112,9 +140,8 @@ You can find all the layout configurations in the IDP Admin layout section. Here
 | default                           | Default                                   |
 
 ## Understanding md Units in Grid Layouts
-- Grid System: Most web frameworks use a 12-column grid system for responsive layouts.
-- md (Medium): Used for medium-sized screens (e.g., small laptops, larger tablets). A setting of md: 6 means the component occupies half the width on medium screens.
-- Optimal Sizes: For medium devices, common sizes are md: 4, md: 6, or md: 8. 
+- Grid System: We use a 12-column grid system for responsive layouts. Where md is the recommended unit, and `md: 1` stands for 1/12th of the grid. Alos you can used lg as well. 
+- Optimal Sizes: For medium devices, common sizes are md: 4, md: 6(half of the page), or md: 8. 
 
 ## Best Practices
 - Use md to ensure components are appropriately sized on different devices.
