@@ -103,33 +103,44 @@ SSCA Orchestration and Enforcement steps in deploy stage can only be used in the
 
 ## Create policies
 
-You must [create SSCA policies](/docs/software-supply-chain-assurance/ssca-policies/create-ssca-policies) that you want Harness SSCA to enforce. Create SSCA policy files in the Harness File Store.
+You need to define [SBOM policies](/docs/software-supply-chain-assurance/ssca-policies/create-ssca-policies)  using OPA at project, org and account level and include them in the pipeline for enforcement. A typical SBOM policy consist of following sections:
 
-1. In your Harness Project, go to **File Store** under **Project Setup**. You can also create policies at the Account and Org scopes.
-2. Select **New**, and then select **New File**.
-3. Enter a **Name**, and then select **Manifest** for **File Usage**.
-4. Enter the [policy definitions](/docs/software-supply-chain-assurance/ssca-policies/define-ssca-policies) in the text editor, and then select **Save**.
+1. deny_list - here you will add all the rules for denying the use of components based on specified criteria.
+2. allow_list - here you will add the rules for allowed licenses, suppliers and PURLs
+3. Enforcement Logic - you don’t need to touch this part and use it as is from the sample policies provided
+
+
+:::info Important
+
+To create a SBOM OPA policy, select one of the existing sample policies present in the policy library and ONLY change the deny_list and allow_list sections to include rules that you want to enforce. DO NOT change anything below the comment line "#### DO NOT CHANGE THE FOLLOWING SCRIPT ####". This is needed for consistently enforcing the rules that you will define.
+
+:::
+
+
+While creating policy set, you need to select SBOM as entity type:
+
 
 <!-- ![](./static/ssca-policy-file-store.png) -->
 
-<docimage path={require('./static/ssca-policy-file-store.png')} />
+<docimage path={require('./static/sbom-opa-policy-set.png')} />
+
 
 ## Enforce policies
 
-The **SSCA Enforcement** step does the following:
+The **SBOM Enforcement** step does the following:
 
 * Verifies the authenticity of the attestation.
 * Applies policies defined in the specified policy file.
 * Records policy violations and shows them on the **Artifacts** tab on the **Execution details** page.
 
-1. Add the **SSCA Enforcement** step to either the **Build** or **Deploy** stage.
+1. Add the **SBOM Enforcement** step to either the **Build** or **Deploy** stage.
 
    * In a **Build** stage, add the **SSCA Enforcement** step after the artifact (image) has been pushed to an artifact repository.
    * In a **Deploy** stage, add the **SSCA Enforcement** step before the deployment step.
   
 :::info
 
-SSCA Orchestration and Enforcement steps in deploy stage can only be used in the container step group
+SBOM Orchestration and Enforcement steps in deploy stage can only be used in the container step group
 
 :::
 
@@ -146,7 +157,7 @@ SSCA Orchestration and Enforcement steps in deploy stage can only be used in the
    For Docker-compliant ECR or GRC repositories, provide the full URI for the image, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`.
 
 6. For **Public Key**, select the [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key to use to verify the authenticity of the attestation.
-7. For **File Path**, provide the path to your [SSCA policy file](#create-policies).
+7. For **SBOM Policies**, select the [SBOM Policy Set](#create-policies) that you want to enforce.
 
 <!-- ![](./static/policy-ssca-enforce-step.png) -->
 
