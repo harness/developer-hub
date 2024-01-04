@@ -111,7 +111,7 @@ You can find all the layout configurations in the IDP Admin layout section. Here
 | kind: domain                      | Domain                                    |
 | default                           | Default                                   |
 
-## Understanding md and xs Units in Grid Layouts
+## Understanding md Units in Grid Layouts
 - Grid System: Most web frameworks use a 12-column grid system for responsive layouts.
 - md (Medium): Used for medium-sized screens (e.g., small laptops, larger tablets). A setting of md: 6 means the component occupies half the width on medium screens.
 - Optimal Sizes: For medium devices, common sizes are md: 4, md: 6, or md: 8. 
