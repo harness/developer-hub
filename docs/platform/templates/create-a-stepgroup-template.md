@@ -30,10 +30,10 @@ To create a template, do the following:
 
    ![](./static/step-group-template-option.png)
 
-   The **Create New Step Group Template** settings appear.
+   The **Create New Step Group Template** settings open.
 
 6. In **Name**, enter a name for the template.
-7. In **Version Label**, enter the version of the stage, for example `v1`.
+7. In **Version Label**, enter the version of the stage, for example, `v1`. Versioning a template enables you to create a new template without modifying the existing one. For more information, go to [Versioning](template.md).
 8. In **Save To**, select the scope at which you want save the template.
 9. To set up your template, select one of the following:
    - **Inline**: Save the template in Harness.
@@ -46,16 +46,16 @@ To create a remote template, do the following:
 1. In **Git Connector**, select or create a Git Connector to the repo for your project.​ For more information, go to [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
 2. In **Repository**, select your repository.
 
-   :::note
-   If your repository is not listed, enter the repository name to search and select it. Create the repository in Git before entering it in **Select Repository**. Harness does not create the repository for you.
+     :::info note
+     If your repository is not listed, enter the repository name to search and select it. Create the repository in Git before entering it in **Select Repository**. Harness does not create the repository for you.
 
-   :::
+     :::
 
 3. In **Git Branch**, select your branch.​
 
-   :::note
-   If your branch is not listed, enter the branch name to search and select it. Create the branch in your repository before entering it in **Git Branch**. ​Harness does not create the branch for you​​
-   :::
+     :::note
+     If your branch is not listed, enter the branch name to search and select it. Create the branch in your repository before entering it in **Git Branch**. ​Harness does not create the branch for you​​
+     :::
 
 4. ​Harness auto-populates the **YAML Path**.​ You can change this path and the file name.
 5. Select **Start**.
@@ -158,15 +158,9 @@ If you do not use step group conditional execution settings, then the stage's co
 
 ## Add a failure strategy
 
-A step group can have its own **Failure Strategy** separate from the failure strategy for the stage.
+A step group can have its own **Failure Strategy** separate from the failure strategy for the stage. The failure strategy can execute the rollback steps for the step group. For more information, go to [Step and stage failure strategy references](../pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
-The failure strategy can execute the rollback steps for the step group.
-
-For more information, go to [Step and stage failure strategy references](../pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
-
-The failure strategy of any step in a step group overrides the failure strategy of the step group.
-
-If you do not use a step group failure strategy, then the stage's failure strategy is applied.
+The failure strategy of any step in a step group overrides the failure strategy of the step group. If you do not use a step group failure strategy, then the stage's failure strategy is applied.
 
 ## Add looping strategy
 
