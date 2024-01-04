@@ -31,20 +31,20 @@ To store a new service in a remote Git repo, do the following:
 2. In **Project Settings**, select **Services**. To learn more about creating services, go to [Create Services](docs/continuous-delivery/x-platform-cd-features/services/create-services.md).
 3. Select **New Service**. The **Add Service** settings appear.
     
-    ![](./static/Gitex_service.png) 
+    ![](./static/Gitex-service.png) 
 4. In **Name**, enter a name for the service.
 5. In **How do you want to set up your service**, select **Remote**.
 6. In **Git Connector**, select or create a Harness Git connector to the repo where you will store the service.​ For more information, go to [Code Repo Connectors](/docs/category/code-repo-connectors).
 7. In **Repository**, select a repository. If your repository isn't listed, enter its name. Create the repository in Git before entering it in **Select Repository**. Harness does not create the repository for you.
 8. In **Git Branch**, select a branch. If your branch isn't listed, enter its name. Create the branch in your repository before entering it in **Git Branch**. Harness does not create the branch for you. Save the service to the default branch on the first save. You can then create different branches in the Harness repo if you want to create different versions of your service.
     
-    ![](./static/branch_switching.png)
+    ![](./static/branch-switching.png)
     
     Harness Git Experience auto-populates the **YAML Path**. You can change this path and the file name.
 11. Select **Save**. You can see the repo details in the new service.
-    ![](./static/save_service_config.png) 
+    ![](./static/save-service-config.png) 
 12. Click the YAML path to view your service YAML file in your Git repo.
-    ![](./static/service_remote_git.png) 
+    ![](./static/service-remote-git.png) 
 
 
 ## Add remote services to a pipeline
@@ -56,10 +56,10 @@ The **Deployment Type** of the remote service (Kubernetes, ECS, etc.) must match
 To add a remote service to a pipeline, do the following:
 
 1. In your pipeline, go to the CD stage **Service** settings.
-    ![](./static/stage_service_settings.png)
+    ![](./static/stage-service-settings.png)
 2. In **Select Service**, select the remote service.
 3. Select the branch for the version of the service you want to use in your pipeline.
-    ![](./static/branches_adding_services.png)
+    ![](./static/branches-adding-services.png)
 4. Select **Apply Selected**.
 
 ## Change an inline service to a remote service
@@ -72,4 +72,4 @@ You change a service stored from **Inline** to **Remote** and save it in a Git a
 
 The same settings used when creating a remote service appear. Configure the settings just as you would for a new remote service.
 
-![](./static/inline_to_remote.png) 
+![](./static/inline-to-remote.png) 
