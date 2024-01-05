@@ -107,7 +107,7 @@ You can declare the variable using Name and Value in Script Input Variables and 
 
 ![](../static/script-input-variable.png)
 
-# Yaml Step Group Template Example 
+## YAML example: Step group template 
 Here's the YAML for a Step Group Template that demonstrates the use of Custom Approval with Linear.app.
 
 ```
