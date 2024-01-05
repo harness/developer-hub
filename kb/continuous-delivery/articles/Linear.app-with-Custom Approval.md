@@ -51,7 +51,7 @@ Authorization should be kept secret to prevent unauthorized access. Revealing it
 6. **Output Variable:** Capture the newly created issue's ID for use in subsequent steps.
 * issueId = `<+json.select("data.issueCreate.issue.id", httpResponseBody)>`
 
-## Step 2: Custom Approval Shell Script Approval
+### Add the Custom Approval shell script
 
 The second step involves setting up a custom approval process using a Bash script. This script queries the Linear API to check the status of the created issue. Here's a detailed breakdown:
 
