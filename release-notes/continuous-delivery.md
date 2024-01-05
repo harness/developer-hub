@@ -3,7 +3,7 @@ title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
 date: 2023-12-12T10:00:15
 tags: [NextGen, "continuous delivery"]
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 import Tabs from '@theme/Tabs';

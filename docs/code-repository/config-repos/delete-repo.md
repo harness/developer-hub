@@ -19,11 +19,3 @@ To delete a repository in Harness Code:
 3. Select the repository you want to delete.
 4. Go to **Settings** and select **Delete**.
 5. Follow the prompts to confirm deletion.
-
-:::warning
-
-Deleting a repository permanently deletes the entire repository and all contents, including files, commits, branches, and so on.
-
-Deletion is permanent. You can't recover deleted repositories.
-
-:::

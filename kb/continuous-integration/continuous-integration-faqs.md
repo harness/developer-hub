@@ -839,6 +839,10 @@ Yes, The cache will be expired every 15 days
 
 ## Background steps and service dependencies
 
+#### Why am I unable to connect to the hostname using the step identifier in a background step, resulting in the error "Unknown server host xxxx"?
+
+The utilization of Step Id is restricted to VM flows exclusively. To address this issue, consider using `localhost` or `127.0.0.1` instead.
+
 #### Why is background step is always marked as succeess even if there are failures executing the entrypoint?
 
 This is expected behaviour as we start background step and will immedeatly move on to next step by marking the step status as success. We should be having a subsequent run step to check if the services being started as part of the background step is accessible before trying to use them in the pipeline.
