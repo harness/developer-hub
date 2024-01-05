@@ -1420,11 +1420,11 @@ The following new features were added to the Harness platform components:
 
 ##### Platform
 
-* Add Azure Active Directory users that belong to more than the 150 group limit (PL-21670) via SAML.
-	+ When Azure AD users have large numbers of group memberships, the number of groups listed in the token can grow the token size. Azure Active Directory limits the number of groups it will emit in a token to 150 for SAML assertions.
+* Add Microsoft Entra ID (formerly Active Directory) users that belong to more than the 150 group limit (PL-21670) via SAML.
+	+ When Azure AD users have large numbers of group memberships, the number of groups listed in the token can grow the token size. Microsoft Entra ID (formerly Active Directory) limits the number of groups it will emit in a token to 150 for SAML assertions.
 	+ To add users that belong to more than 150 groups, you simply add the Client ID and secret for your registered app to Harness.
 	+ This feature is behind the feature flag `AZURE_SAML_150_GROUPS_SUPPORT`.
-	+ See [SAML SSO with Azure Active Directory](../firstgen-platform/security/access-management-howtos/single-sign-on-sso-with-saml.md#saml-sso-with-azure-active-directory).
+	+ See [SAML SSO with Microsoft Entra ID (formerly Active Directory)](../firstgen-platform/security/access-management-howtos/single-sign-on-sso-with-saml.md#saml-sso-with-azure-active-directory).
 
 ##### CD
 
