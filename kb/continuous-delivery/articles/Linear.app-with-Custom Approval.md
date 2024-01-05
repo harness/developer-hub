@@ -93,9 +93,9 @@ Next, use a Bash script to set up a custom approval process. This script queries
 
 4. **Rejection Criteria:** Rejection criteria is optional field either you can define or not. If you do not define the rejection criteria pipeline will retry until the timeout is achieved. After the timeout reached the pipeline will expire.
 
-![](../static/rejection-criteria.png)
+   ![](../static/rejection-criteria.png)
 
-This script queries the Linear API to retrieve the current status of the created issue. The obtained status is stored in a variable (status) for subsequent use in approval or rejection criteria.
+   This script queries the Linear API to retrieve the current status of the created issue. The obtained status is stored in a variable (status) for subsequent use in approval or rejection criteria.
 
 5. **Script Input Variable:**
 While you can simply declare a variable in your script using a Harness expression or string for its value, using Input Variables provides some additional benefits:
