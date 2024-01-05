@@ -270,6 +270,10 @@ const config = {
                 to: "docs/harness-cloud-operations",
               },
               {
+                label: "Roadmap",
+                to: "/roadmap",
+              },
+              {
                 label: "API Reference",
                 to: "https://apidocs.harness.io/",
               },
@@ -313,6 +317,7 @@ const config = {
                 label: "Instructions",
                 to: "certifications/instructions",
               },
+
               {
                 label: "FAQs",
                 to: "certifications/faqs",
@@ -361,8 +366,8 @@ const config = {
                 to: "https://harness.io/products/platform",
               },
               {
-                label: 'Code Repository',
-                to: 'https://harness.io/products/code-repository',
+                label: "Code Repository",
+                to: "https://harness.io/products/code-repository",
               },
               {
                 label: "Continuous Integration",
@@ -632,12 +637,24 @@ const config = {
         routeBasePath: "docs", //CHANGE HERE
       },
     ],
+    [
+      path.resolve(__dirname, "./plugins/redirect-plugin"),
+      {
+        id: "roadmap",
+        path: "roadmap",
+        // sidebarPath: require.resolve("./sidebars-roadmap.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main", // /tree/main/packages/create-docusaurus/templates/shared/
+        // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
+        exclude: ["**/shared/**", "**/static/**"],
+        routeBasePath: "roadmap", //CHANGE HERE
+      },
+    ],
 
     "docusaurus-plugin-sass",
     path.join(__dirname, "/plugins/utmcookie-plugin"),
     path.join(__dirname, "/plugins/feedback-plugin"),
     path.join(__dirname, "/plugins/focusOnAnchor-plugin"),
-    path.join(__dirname, '/plugins/scarf-plugin'),
+    path.join(__dirname, "/plugins/scarf-plugin"),
   ],
 };
 
