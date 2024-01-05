@@ -8,7 +8,7 @@ Linear.app is a powerful project management tool designed to streamline collabor
 
 Despite the absence of a native integration, Harness excels in seamlessly integrating with Linear, showcasing its adaptability and customisation capabilities. A standout feature is Harness's ability to create custom approval steps, leveraging the robust functionality of Linear's GraphQL API. This allows for tailored checks on the status of created issues, enabling the smooth and automated orchestration of workflows. By harnessing these customisable capabilities, teams can enhance collaboration and efficiency, underscoring that even without a pre-built connection, Harness excels in crafting bespoke integrations with Linear.
 
-#  Prerequisites
+##  Prerequisites
 
 Before diving into the setup process, ensure that you have the following prerequisites in place:
 
