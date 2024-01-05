@@ -4328,4 +4328,4 @@ If you are using looping strategies on steps or step groups in a pipeline, and n
 #### How many versions of Terraform does Harness support ?
 
 Harness supports the following Terraform versions: `v1.3.5, v1.1.9, v1.0.0, v0.15.5, v0.15.0 and v0.14.0`
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-integrations#terraform-version-support
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-integrations#terraform-version-support)
