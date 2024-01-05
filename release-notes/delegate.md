@@ -55,6 +55,13 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
    The name of the corresponding user group created in Harness will retain the special symbols as present in the user group of the SCIM provider. Example: For a user group in SCIM with the name `Harness.Group?Next#Gen-First`, the user group created in Harness will have the same `name`: `Harness.Group?Next#Gen-First`.
 
+### Version 23.12.81811
+
+#### Hotfix
+
+- Provided support for client id & secret id through Env variables in Delegate. User can set these parameters TAS_REFRESH_TOKEN_CLIENT_ID, TAS_REFRESH_TOKEN_CLIENT_SECRET, ENABLE_TAS_REFRESH_TOKEN_CLIENT_ID along with Refresh token in Tanzu connector to create a connector where refresh token is generated using client_id & secret_id
+
+
 ## December 2023
 
 ### Versions 23.12.81411, 23.12.81604, 23.12.81806
