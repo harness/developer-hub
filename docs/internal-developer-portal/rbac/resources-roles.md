@@ -26,7 +26,7 @@ In Harness, RBAC policies are defined using:
 
     2. **Named Resources** – Groups together a specific set of individual resources.
 
-When a **User** or a **User Group** is associated with a **Role** and a **Resource Group**, it provides them the permission as defined in the role to the resources as grouped together in the resource group.
+When a **User** or a **User Group** is associated with a **Role** and a **Resource Group**, it provides them the permission as defined in the role to the resources as grouped together in the resource group. You need [these permissions](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#required-permissions) to setup RBAC in IDP. 
 
 ![](./static/resource-group.png)
 
