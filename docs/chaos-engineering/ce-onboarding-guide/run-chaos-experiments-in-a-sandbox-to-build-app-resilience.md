@@ -131,4 +131,4 @@ You can start executing the sandbox again if you run out of time by click **Run*
 That's it! The screen will determine and display your results. All the best!
 
 ## Conclusion
-With that, you have successfully executed a chaos experiment in the sandbox as well as registered for the developer certification. Check [this tutorial](../../../tutorials/chaos-experiments/first-chaos-engineering) to execute your first chaos experiment and the [documentation](../../docs/chaos-engineering) to learn about various kinds of [faults](../../docs/chaos-engineering/technical-reference/chaos-faults). 
+With that, you have successfully executed a chaos experiment in the sandbox as well as registered for the developer certification. Check [this tutorial](../../../tutorials/chaos-experiments/first-chaos-engineering) to execute your first chaos experiment and the [documentation](../get-started/overview) to learn about various kinds of [faults](../technical-reference/chaos-faults). 
