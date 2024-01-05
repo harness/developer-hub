@@ -992,7 +992,7 @@ If you are using with in the loop you can denote the same as `<+pipeline.stages.
 
 See [Iteration Counts](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#iteration-counts)
 
-#### How do I get the output variables from pieeline execution using Harness NG API?
+#### How do I get the output variables from pipeline execution using Harness NG API?
 
 We have an api to get the pipeline summary:
  
