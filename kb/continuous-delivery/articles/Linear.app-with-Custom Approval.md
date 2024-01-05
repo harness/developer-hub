@@ -33,11 +33,11 @@ First, use the Harness HTTP step to create a Linear issue. Configure the HTTP st
 
 3. **Request Body:** Craft a GraphQL mutation for issue creation with placeholders for dynamic inputs.
 
-```
-{ 
-    "query": "mutation IssueCreate { issueCreate(input: { title: \"<+spec.inputVariables.title>\", description: \"<+spec.inputVariables.description>\", teamId: \"<+spec.inputVariables.teamId>\", priority: <+spec.inputVariables.priority> }) { success issue { id number title priority priorityLabel identifier url description descriptionData state { name } } } }" 
-}
-```
+   ```
+   { 
+       "query": "mutation IssueCreate { issueCreate(input: { title: \"<+spec.inputVariables.title>\", description: \"<+spec.inputVariables.description>\", teamId: \"<+spec.inputVariables.teamId>\", priority: <+spec.inputVariables.priority> }) { success issue { id number title priority priorityLabel identifier url description descriptionData state { name } } } }" 
+   }
+   ```
 
 4. **Headers:** Configure necessary headers for proper communication with Linear's API.
 * Content-Type: application/json
