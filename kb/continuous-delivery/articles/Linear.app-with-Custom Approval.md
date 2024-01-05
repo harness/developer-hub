@@ -57,27 +57,29 @@ Next, use a Bash script to set up a custom approval process. This script queries
 
 
 1.  **Script:** Create a Bash script to:
-* Install necessary packages.
-* Execute a curl command to query the Linear API for the issue status.
-* Extract and export the issue status as the variable status.
-* Print the status for visibility purpose.
+   * Install necessary packages.
+   * Execute a curl command to query the Linear API for the issue status.
+   * Extract and export the issue status as the variable status.
+   * Print the status for visibility purpose.
 
-```
-#!/bin/bash
-# Update and install necessary packages
-sudo yum install -y microdnf
-microdnf update
-microdnf install jq
+   For example:
 
-# Make the curl request
- response=$(curl --location 'https://api.linear.app/graphql' \
---header 'Content-Type: application/json' \
---header "Authorization: $authorization" \
---data "{ \"query\": \"query Issue { issue(id: \\\"$issue_id\\\") { id number priority priorityLabel identifier url description descriptionData title state { name } } }\" }")
+   ```
+   #!/bin/bash
+   # Update and install necessary packages
+   sudo yum install -y microdnf
+   microdnf update
+   microdnf install jq
 
-export status=$(echo "$response" | jq -r '.data.issue.state.name')
-echo "Status: $status"
-```
+   # Make the curl request
+    response=$(curl --location 'https://api.linear.app/graphql' \
+   --header 'Content-Type: application/json' \
+   --header "Authorization: $authorization" \
+   --data "{ \"query\": \"query Issue { issue(id: \\\"$issue_id\\\") { id number priority priorityLabel identifier url description descriptionData title state { name } } }\" }")
+
+   export status=$(echo "$response" | jq -r '.data.issue.state.name')
+   echo "Status: $status"
+   ```
 
 2. **Custom Approval Parameters:**
 * Timeout: How long you want Harness to try to complete the step before failing (and initiating the stage or step Failure Strategy) [1d].
