@@ -18,8 +18,11 @@ Before diving into the setup process, ensure that you have the following prerequ
 
 3. **Knowledge of GraphQL and Bash Scripting:** A foundational knowledge of GraphQL and Bash scripting is essential for customising workflows seamlessly. Understanding GraphQL enables users to tailor interactions with Linear's API, while Bash scripting empowers them to automate tasks and enhance efficiency in the workflow customisation process. With these skills, users can unlock the full potential of integrating Harness with Linear, ensuring a personalised and optimised project management experience.
 
-# Steps to achieve this usecase
-## Step1: Create a Linear Issue with HTTP Step
+## Configure Linear.app with custom approval
+
+To use Linear.app with a custom approval, you need to use an HTTP step to create a Linear issue and then create a custom approval shell script.
+
+### Create a Linear issue with HTTP step
 
 In this initial step, we'll use the Harness HTTP step to create a Linear issue. Here's a detailed breakdown:
 
