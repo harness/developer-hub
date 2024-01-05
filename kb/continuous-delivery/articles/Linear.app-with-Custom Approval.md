@@ -26,7 +26,6 @@ To use Linear.app with a custom approval, you need to use an HTTP step to create
 
 First, use the Harness HTTP step to create a Linear issue. Configure the HTTP step as follows:
 
-**HTTP Step Configuration:**
 
 1. **URL:** Set the URL to `https://api.linear.app/graphql` the endpoint for Linear's GraphQL API.
 
