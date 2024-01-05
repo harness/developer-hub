@@ -82,17 +82,16 @@ Next, use a Bash script to set up a custom approval process. This script queries
    ```
 
 2. **Custom Approval Parameters:**
-* Timeout: How long you want Harness to try to complete the step before failing (and initiating the stage or step Failure Strategy) [1d].
-* Script Type: Choose Bash as the script type.
-* Retry Interval: Set how long the step should wait to run the script again if the Approval or Rejection criteria evaluate to false.The number of times a script executes depends on the Retry Interval, Script Timeout, and how fast the script executes [30s].
-* Script Timeout: Set how long the step should wait for the script to complete before timing out [5m].
-3. **Approval Criteria:**
-Define approval criteria based on the extracted status variable, or you can establish criteria using any other variable.
+   * Timeout: How long you want Harness to try to complete the step before failing (and initiating the stage or step Failure Strategy) [1d].
+   * Script Type: Choose Bash as the script type.
+   * Retry Interval: Set how long the step should wait to run the script again if the Approval or Rejection criteria evaluate to false.The number of times a script executes depends on the Retry Interval, Script Timeout, and how fast the script executes [30s].
+   * Script Timeout: Set how long the step should wait for the script to complete before timing out [5m].
 
-![](../static/approval-criteria.png)
+3. **Approval Criteria:** Define approval criteria based on the extracted status variable, or you can establish criteria using any other variable.
 
-4. **Rejection Criteria:**
-Rejection criteria is optional field either you can define or not. If you do not define the rejection criteria pipeline will retry until the timeout is achieved. After the timeout reached the pipeline will expire.
+   ![](../static/approval-criteria.png)
+
+4. **Rejection Criteria:** Rejection criteria is optional field either you can define or not. If you do not define the rejection criteria pipeline will retry until the timeout is achieved. After the timeout reached the pipeline will expire.
 
 ![](../static/rejection-criteria.png)
 
