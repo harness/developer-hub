@@ -8,6 +8,10 @@ sidebar_position: 2
 
 Yes. [Harness CI offers many options for mobile app development.](https://developer.harness.io/docs/continuous-integration/use-ci/mobile-dev-with-ci)
 
+## I have a MacOS build, do I have to use homebrew as the installer?
+
+No. Your build infrastructure can be configured to use whichever tools you like. For example, Harness Cloud build infrastructure includes preinstalled versions of xcode and other tools, and you can install other tools or versions of tools that you prefer to use. For more information, go to the [CI macOS and iOS guide](https://developer.harness.io/tutorials/ci-pipelines/build/ios).
+
 ## Build infrastructure
 
 ### What is build infrastructure and why do I need it for Harness CI?
@@ -18,7 +22,7 @@ A build stage's infrastructure definition, the *build infrastructure*, defines "
 * [CI pipeline creation overview](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
 * [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me)
 
-#### What kind of build infrastructure can I use? Which operating systems are supported?
+### What kind of build infrastructure can I use? Which operating systems are supported?
 
 Harness has several build infrastructure options that support multiple types of operating systems, architectures, and cloud providers. For more information, go to [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
 
@@ -26,43 +30,41 @@ Harness has several build infrastructure options that support multiple types of 
 
 Yes, each stage can have a different build infrastructure. Additionally, depending on your stage's build infrastructure, you can also run individual steps on containers rather than the host. This flexibility allows you to choose the most suitable infrastructure for each part of your CI pipeline.
 
-#### I have a MacOS build, do I have to use homebrew as the installer?
-
-No. Your build infrastructure can be configured to use whichever tools you like. For example, Harness Cloud build infrastructure includes preinstalled versions of xcode and other tools, and you can install other tools or versions of tools that you prefer to use. For more information, go to the [CI macOS and iOS guide](https://developer.harness.io/tutorials/ci-pipelines/build/ios).
-
 ### Error when running Docker commands on Windows build servers
 
 Make sure that the build server has the [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/about) installed. This error can occur if the container can't start on the build system.
 
-### How do I use my local machine to run builds? 
+### Can I run builds locally? Can I run builds directly on my computer?
 
-<!-- some infra-specific questions might be better in a different category like "rootless/non-root/root user" -->
+Yes. For instructions, go to [Set up a local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
 
-### Local runner build infrastructure
+## Self-hosted VMs
 
-#### How can I define the build infrastructure for a local runner in the pipeline?
+### Can I use the same build VM for multiple CI stages?
 
-After configuring delegate and runner, you need to set the pipeline's build infrastructure. You can do this in the pipeline's "Build" stage. You can specify the operating system and architecture for your build infrastructure
+No. The build VM terminates at the end of the stage and a new VM is used for the next stage.
 
-### Self-hosted VM build infrastructure
+### Why are build VMs running when there are no active builds?
 
-#### Can we reuse the same build VM between different CI stages execution?
+With [self-hosted VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures), the `pool` value in your `pool.yml` specifies the number of "warm" VMs. These VMs are kept in a ready state so they can pick up build requests immediately.
 
-No, We will terminate the VM right after a stage execution and a new VM will be used for the nect CI stage execution.
+If there are no warm VMs available, the runner can launch additional VMs up to the `limit` in your `pool.yml`.
 
-#### Why do we have mulitple build VMs in running state even if there is no active builds?
+If you don't want any VMs to sit in a ready state, set your `pool` to `0`. Note that having no ready VMs can increase build time.
 
-We could have configured the value for the pool size in pool.yaml with a value more than 1 which will make sure that the configured number of VMs are in ready state and these VMs will be used when the new build request comes.
+For AWS VMs, you can set `hibernate` in your `pool.yml` to hibernate warm VMs when there are no active builds. For more information, go to [Configure the Drone pool on the AWS VM](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure#configure-the-drone-pool-on-the-aws-vm).
 
-#### Do we need to have docker installed on the VM where we would perform VM build via Harness CIE?
+### Do I need to install Docker on the VM that runs the Harness Delegate and Runner?
 
-Yes, We should have docker installed on the VM
+Yes. Docker is required for [self-hosted VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures).
 
-#### How can user specify the size of the disk for the windows instance in the pool.yml file?
+### How do I specify the disk size for a Windows instance in pool.yml?
 
-Here's an example:
+With [self-hosted VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures), the `disk` configuration in your `pool.yml` specifies the disk size (in GB) and type.
 
-```
+For example, here is a Windows pool configuration for an [AWS VM build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure):
+
+```yaml
 version: "1"
 instances:
   - name: windows-ci-pool
@@ -80,19 +82,27 @@ instances:
         access_key_secret: 
         key_pair_name: XXXXX
       ami: ami-088d5094c0da312c0
-      size: t3.large
+      size: t3.large ## VM machine size.
       hibernate: true
       network:
         security_groups:
           - sg-XXXXXXXXXXXXXX
       disk:
-        size: 100
+        size: 100 ## Disk size in GB.
         type: "pd-balanced"
 ```
 
-### Harness Cloud build infrastructure
+## Harness Cloud
 
-#### Account verification error with Harness Cloud on Free plan
+### What is Harness Cloud?
+
+Harness Cloud lets you run builds on Harness-hosted runners that are preconfigured with tools, packages, and settings commonly used in CI pipelines. It is one of several build infrastructure options offered by Harness. For more information, go to [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
+
+### How do I use Harness Cloud build infrastructure?
+
+Configuring your pipeline to use Harness Cloud takes just a few minutes. Make sure you meet the [requirements for connectors and secrets](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets), then follow the quick steps to [use Harness Cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#use-harness-cloud).
+
+### Account verification error with Harness Cloud on Free plan
 
 Recently Harness has been the victim of several Crypto attacks that use our Harness-hosted build infrastructure (Harness Cloud) to mine cryptocurrencies. Harness Cloud is available to accounts on the Free tier of Harness CI. Unfortunately, to protect our infrastructure, Harness now limits the use of the Harness Cloud build infrastructure to business domains and block general-use domains, like Gmail, Hotmail, Yahoo, and other unverified domains.
 
@@ -101,128 +111,111 @@ To address these issues, you can do one of the following:
 * Use the local runner build infrastructure option, or upgrade to a paid plan to use the self-hosted VM or Kubernetes cluster build infrastructure options. There are no limitations on builds using your own infrastructure.
 * Create a Harness account with your work email and not a generic email address, like a Gmail address.
 
-#### What is the Harness Cloud build credit limit for the Free plan?
+### What is the Harness Cloud build credit limit for the Free plan?
 
 The Free plan allows 2,000 build minutes per month. For more information, go to [Harness Cloud billing and build credits](https://developer.harness.io/docs/continuous-integration/get-started/ci-subscription-mgmt#harness-cloud-billing-and-build-credits).
 
-#### How to Use Harness Cloud build infrastructure?
+### Can I use xcode for a MacOS build with Harness Cloud?
 
-With Harness Cloud, you can run builds in isolation on Harness-hosted VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines
-For details, go to [Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
+Yes. Harness Cloud macOS runners include several versions of xcode as well as homebrew. For details, go to the [Harness Cloud image specifications](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). You can also [install additional tools at runtime](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#lock-versions-or-install-additional-tools).
 
-#### Can I use xcode on a MacOS build system as part of Harness Cloud?
-
-Yes, several different versions of xcode as well as homebrew are installed on the default MacOS image.
-
-#### Can I use my own secrets manager with Harness Cloud build infrastructure?
+### Can I use my own secrets manager with Harness Cloud build infrastructure?
 
 No. To [use Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets), you must use the built-in Harness secrets manager.
 
-#### With Harness Cloud build infrastructure, can GCP and Azure connectors inherit credentials from the delegate?
+### Connector errors with Harness Cloud build infrastructure
 
-No. To [use Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets), all connectors must connect through the Harness Platform.
+To use Harness Cloud build infrastructure, all connectors must connect through the Harness Platform. This means that:
 
-#### AWS connectors with IRSA, AssumeRole, and delegate connectivity mode don't work with Harness Cloud build infrastructure.
+* GCP connectors can't inherit credentials from the delegate. They must be configured to connect through the Harness Platform.
+* Azure connectors can't inherit credentials from the delegate. They must be configured to connect through the Harness Platform.
+* AWS connectors can't use IRSA, AssumeRole, or delegate connectivity mode. They must connect through the Harness Platform with access key authentication.
 
-To [use Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets), all connectors must connect through the Harness Platform, and AWS connectors can't use IRSA or AssumeRole.
+For more information, go to [Use Harness Cloud build infrastructure - Requirements for connectors and secrets](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#requirements-for-connectors-and-secrets).
 
-For AWS connectors, only access key authentication is supported with Harness Cloud build infrastructure.
+### Can I change the CPU/memory allocation for steps running on Harness cloud?
 
-#### How can we update the CPU/memory allocation of a step container running in Harness cloud?
+Unlike with other build infrastructures, you can't change the CPU/memory allocation for steps running on Harness Cloud. Step containers running on Harness Cloud build VMs automatically use as much as CPU/memory as required up to the available resource limit in the build VM.
 
-In a Kubernetes cluster build infrastructure, you can specify resource allocation for individual step containers. However, you can't change the CPU/memory allocation for steps running in Harness Cloud, because step containers running on Harness Cloud build VMs automatically use as much as CPU/memory as required up to the available resource limit in the build VM.
+## Kubernetes clusters
 
-### Kubernetes cluster build infrastructure
+### What is the difference between a Kubernetes cluster build infrastructure and other build infrastructures?
 
-#### What is the difference between a Kubernetes cluster build infrastructure and other build infrastructures?
+For a comparison of build infrastructures go to [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
 
-One of the primary differences is that the Kubernetes cluster build infrastructures uses kaniko for Build and Push steps, whereas other build infrastructures use drone-docker. For more information, go to:
+For requirements, recommendations, and settings for using a Kubernetes cluster build infrastructure, go to:
 
+* [Set up a Kubernetes cluster build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure)
 * [Build and push artifacts and images - Kubernetes cluster build infrastructures require root access](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#kubernetes-cluster-build-infrastructures-require-root-access)
-* [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me)
+* [CI Build stage settings - Infrastructure - Kubernetes tab](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#infrastructure)
 
-#### How can I run Docker commands on a Kubernetes cluster build infrastructure?
+### Can I run Docker commands on a Kubernetes cluster build infrastructure?
 
-If you want to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#privileged-mode-is-required-for-docker-in-docker) is necessary when using a Kubernetes cluster build infrastructure.
+If you want to run Docker commands when using a Kubernetes cluster build infrastructure, Docker-in-Docker (DinD) with privileged mode is required. For instructions, go to [Run DinD in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage).
 
-What should I do if my Kubernetes cluster does not support Privileged Mode? You'll need to consider Harness Cloud or a VM (Virtual Machine) build infrastructure. These infrastructure options allow you to run Docker commands directly on the host, without the need for Privileged Mode.
+If your cluster doesn't support privileged mode, you must use a different build infrastructure option, such as Harness Cloud, where you can run Docker commands directly on the host without the need for Privileged mode. For more information, go to [Set up a Kubernetes cluster build infrastructure - Privileged mode is required for Docker-in-Docker](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#privileged-mode-is-required-for-docker-in-docker).
 
-#### Resource allocations for Kubernetes
+### Resource allocation for Kubernetes cluster build infrastructure
 
-Running a CI build on Kubernetes build infrastructure. Customers can utilize CPU and Memory resource allocations per Run Step and Run Test Step.
+You can adjust CPU and memory allocation for individual steps running on a Kubernetes cluster build infrastructure or container. For information about how resource allocation is calculated, go to [Resource allocation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits).
 
-#### What is the default cpu and memory limit for a step container?
+### What is the default CPU and memory limit for a step container?
 
-The default CPU limit is 400m and the memory limit is 500Mi
+For default resource request and limit values, go to [Build pod resource allocation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits#build-pod-resource-allocation).
 
-#### Why is the step container's have a very less memory and CPU value configured as requests?
+### Why do steps request less memory and CPU than the maximum limit?
 
-Step container's requests are always set to minimum so that only in case of need the additional resources are requested during execution.
+By default, resource requests are always set to the minimum, and additional resources (up to the specified maximum limit) are requested only as needed during build execution. For more information, go to [Build pod resource allocation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits#build-pod-resource-allocation).
 
-#### How can we configure the build pod to communicate with the k8s API server?
+### How do I configure the build pod to communicate with the Kubernetes API server?
 
-By default, default service account of the namespace will be auto mounted on the build pod through which it can communicate with API server. If we want another service account to be mounted on the build pod, it can be configured as advanced infra configuration.
+By default, the namespace's default service account is auto-mounted on the build pod, through which it can communicate with API server. To use a non-default service account, specify the [Service Account Name](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#service-account-name) in the Kubernetes cluster build infrastructure settings.
 
-#### Do we always need to mount a k8s service account in the build pod?
+### Do I have to mount a service account on the build pod?
 
-It is not needed if the build pod does not neded to comunicate with the k8s API as part of the pipeline execution.
+No. Mounting a service account isn't required if the pod doesn't need to communicate with the Kubernetes API server during pipeline execution. To disable service account mounting, deselect [Automount Service Account Token](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#automount-service-account-token) in the Kubernetes cluster build infrastructure settings.
 
-#### What types of volumes can be mounted on a CI build pod?
+### What types of volumes can be mounted on a CI build pod?
 
-We have the option to mount various volume types, such as empty directory, host path, and persistent volume, onto the build pod. This configuration is available under the advanced section of the infrastructure settings.
+You can mount many types of volumes, such as empty directories, host paths, and persistent volumes, onto the build pod. Use the [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#volumes) in the Kubernetes cluster build infrastructure settings to do this.
 
-#### How can we configure the build pod to run on a specific k8s node as part of troubleshooting?
+### How can I run the build pod on a specific node?
 
-We could set up the node selector for the build pod within the advanced section of the infrastructure configuration.
+Use the [Node Selector](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#node-selector) setting to do this.
 
-#### How do I configure my pipeline to use EKS build infrastructure with an AWS connector that uses IRSA?
+### I want to use an EKS build infrastructure with an AWS connector that uses IRSA
 
-You need to set the [Service Account Name in the Kubernetes cluster build infrastructure settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#service-account-name).
+You need to set the [Service Account Name](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#service-account-name) in the Kubernetes cluster build infrastructure settings.
 
-#### Why are build pods being evicted?
+### Why are build pods being evicted?
 
-Build pods can be evicted due to CPU or memory issues in the pod or using spot instances as worker nodes. Harness CI pods shouldn't be evicted due to autoscaling.
+Harness CI pods shouldn't be evicted due to autoscaling of Kubernetes nodes because [Kubernetes doesn't evict pods that aren't backed by a controller object](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node). However, build pods can be evicted due to CPU or memory issues in the pod or using spot instances as worker nodes.
 
-See also: [CI pods appear to be evicted by Kubernetes autoscaling](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#ci-pods-appear-to-be-evicted-by-kubernetes-autoscaling)
+If you notice either sporadic pod evictions or failures in the Initialize step in your [Build logs](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds.md), add the following [Annotation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#annotations) to your [Kubernetes cluster build infrastructure settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings.md#infrastructure):
 
-#### When should I specify the Priority Class for the Build stage pod in Kubernetes?
+```
+"cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
+```
 
-Set the priority class when you want to ensure that the Build stage pod is prioritized in cases of resource shortages on the host node.
+### How do I set the priority class level? Can I prioritize my build pod if there are resource shortages on the host node?
 
-#### How do I configure the Priority Class for a Kubernetes cluster build infrastructure?
+Use the [Priority Class](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#priority-class) setting to ensure that the build pod is prioritized in cases of resource shortages on the host node.
 
-For information about configuring the priority class for a Kubernetes cluster build infrastructure, go to [CI Build stage settings - Priority Class](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#priority-class).
-
-#### What's the default priority class level?
-
-If you leave the **Priority Class** field blank, the `PriorityClass` is set to the `globalDefault`, if your infrastructure has one defined, or `0`, which is the lowest priority.
-
-#### What happens if the Priority Class field is blank in the Build stage settings?
+### What's the default priority class level?
 
 If you leave the **Priority Class** field blank, the `PriorityClass` is set to the `globalDefault`, if your infrastructure has one defined, or `0`, which is the lowest priority.
 
-#### How user can copy a file into a pod in kubernetes cluster in build stage?
+### Can I transfer files into my build pod?
 
-For this, you can add the script in run step and achieve your requirement through that.
+To do this, [use a script in a Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
 
-#### What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?
+### How are step containers named within the build pod?
 
-This error suggests that there is an issue accessing the entrypoint of the Docker image, commonly encountered in a Kubernetes cluster build infrastructure when working with PostgreSQL services.
+Step containers are named sequentially starting with `step-1`.
 
-How can I resolve the "Failed to get image entrypoint" error in a Kubernetes cluster?
-To resolve this error, you may need to mount volumes for the PostgreSQL data in the build infrastructure settings and reference those volumes in the Background steps. <!-- reference PostgreSQL questions in the background steps section -->
+### When I run a build, Harness creates a new pod and doesn't run the build on the delegate.
 
-#### When we pull artifact/images do we store them on delegate?
-
-CI step build runs on separate build pod which will be cleaned automatically after the execution and we don't store any images locally on the delegate as part of the execution.
-
-#### How is the step containers named within the build pod?
-
-Step containers are named in sequential numbers, starting with 'step-1'
-
-#### When I run a build, Harness creates a new pod and doesn't run the build on the delegate.
-
-This is the expected behavior. When you run a CI (Build) stage, the steps create build farm pods that are connected to the delegate.
+This is the expected behavior. When you run a Build (CI) stage, each step runs on a new build farm pod that isn't connected to the delegate.
 
 ### Delegates
 
@@ -241,9 +234,9 @@ Try increasing the CPU request and limit both. Check CPU utilization in-case.
 
 The workaround here is to use single replica delegates for these types of tasks and use a delegate name selector (this might compromise on delegate's high availability although)
 
-## Certificates
+## Self-signed certificates
 
-#### Can we mount our internal CA certs in the CI build pod?
+### Can I mount internal CA certs on the CI build pod?
 
 Yes.
 
@@ -251,14 +244,17 @@ With a Kubernetes cluster build infrastructure, you can make the certs available
 
 With a local runner build infrastructure, you can use `CI_MOUNT_VOLUMES` to use self-signed certificates. For more information, go to [Set up a local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
 
-#### How can we include the internal CA certs available in the delegate pod?
+### How do I make internal CA certs available to the delegate pod?
 
-There are multiple ways we could achive this. We could either build the delegate image with the certs baked into it if we are custom building the delegate image or we could create a secret/configmap with the certs data and mount it on the delegate pod. We could also run some custom commands in the INIT_SCRIPT to download the certs while the delegate gets started and make them available to the delegate pod file system.
+There are multiple ways you can do this:
 
-#### Where should we mount the internal certs on the build pod?
+* Build the delegate image with the certs baked into it, if you are custom building the delegate image.
+* Create a secret/configmap with the certs data, and then mount it on the delegate pod.
+* Run commands in the `INIT_SCRIPT` to download the certs while the delegate launches and make them available to the delegate pod file system.
 
-The usage of the mounted CA certificates depends on the specific container image used for the step. The default certificate location may vary depending on the base image employed. The location where the certs need to be mounted should be decided based on the container image being used for the steps.
+### Where should I mount internal CA certs on the build pod?
 
+The usage of the mounted CA certificates depends on the specific container image used for the step. The default certificate location depends on the base image you use. The location where the certs need to be mounted depends on the container image being used for the steps that you intend to run on the build pod.
 
 ## Codebases
 
@@ -441,6 +437,10 @@ Eight minutes is the default time out of the initialization step however if the 
 ### What does "ErrImagePull" mean?
 
 This means that Harness couldn't pull an image necessary to run the pipeline. This can happen if there are networking issues or if the target image is not available in the specified repository.
+
+### When a pipeline pulls artifacts or images, are they stored on the delegate?
+
+Artifacts and images are pulled into the [stage workspace](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components#shared-paths), which is a temporary volume that exists during pipeline execution. Images are not stored on the delegate during pipeline execution. In a Kubernetes cluster build infrastructure, build stages run on build pods that are cleaned automatically after the execution.
 
 
 ## Build and push images
@@ -636,7 +636,13 @@ Yes, user need to install docker and docker CLI in order to work.
 
 This could happen if you are exiting the python script manually by calling ```exit(0)```. If you configure output variable in the run step that uses python shell, we add few lines of code at the end of your custom script which will add the variable to be exported to a temp file. When you are calling exit(0) at the end of the script, these codes responsible for exporting variable will not be run which causes this issue. 
 
-## Container entrypoint
+## Entrypoint
+
+### What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?
+
+This error suggests that there is an issue accessing the entrypoint of the Docker image. It can occur in a Kubernetes cluster build infrastructure when running PostgreSQL services in Background steps.
+
+To resolve this error, you might need to mount volumes for the PostgreSQL data in the build infrastructure's [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#volumes) setting, and then reference those volumes in the Background step running your PostgreSQL instance. For instructions, go to [Troubleshooting: Failed to get image entrypoint](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/multiple-postgres#troubleshooting-failed-to-get-image-entrypoint).
 
 #### Does Harness "run container" overwrites the container entrypoint?
 
