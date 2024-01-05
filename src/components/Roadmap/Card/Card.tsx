@@ -44,7 +44,7 @@ function CardContainer({
   };
 
   return (
-    <Link to={`/roadmap/#${module}`}>
+    <Link to={`roadmap/#${module}`}>
       <div
         id={module}
         ref={element}
