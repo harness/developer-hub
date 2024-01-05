@@ -2256,8 +2256,22 @@ Reference : https://developer.harness.io/docs/platform/delegates/troubleshooting
 While configuring the delegate proxy , many times we specify the Proxy Host IP and not the PROXY_HOST. 
 We always recommend to have the PROXY_HOST and not IP as in case your IP changes to a new IP , your delegate will start to fail causing issues. 
 
+#### How to Avoid Hitting the GitHub API Rate Limit When Using Multiple Templates and Git-Stored Pipelines?
 
+To minimize GitHub calls from Harness, enabling the bi-directional git experience may significantly reduce the number of requests.
 
- 
+#### Why am I getting an error while creating a template using a service account token generated under a project?
 
+You are likely using a token scoped to a project when creating a resource at the account level, the same applies to a project token while creating a resource at the organization level. To create resources across different levels (account/organization/project), your token must be at a higher level or at the same level as the scope.
 
+#### Why is my Terraform plugin crashing when using the Harness provider?
+
+Generally, this issue is related to a bug in our provider. Before opening a ticket, please try using the latest provider version. Run your script again to see if the problem persists. If the issue continues, please proceed to open a support ticket for further assistance.
+
+#### How should complex expressions be correctly utilized?
+
+When using a complex expression, ensure the expression is wrapped within `<+ >`. For example: `<+<+org.name>.toLowerCase()>/<+<+project.name>.toLowerCase()>>`.
+
+#### How can I retrieve a specific type of connector across multiple accounts, organizations, and projects using the API?
+
+Unfortunately, it's only possible to retrieve all connectors within a specific scope, the following attribute `includeAllConnectorsAvailableAtScope` allows you to retrieve easily all connectors above the project scope using the API Method `Fetches the list of Connectors corresponding to the request's filter criteria`.
