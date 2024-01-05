@@ -4302,7 +4302,7 @@ The Output Variable of the shell script is a string, which you are trying to pas
 
 Please read more on this in the following [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/repeat-strategy)
 
-#### Can a trigger for a CD pipeline be configured to automatically pick up the tag value <+trigger.payload.tag> when the pipeline is executed via the trigger, and alternatively pick up <+pipeline.variables.tag> when the pipeline is executed manually ?
+#### Can a trigger for a CD pipeline be configured to automatically pick up the tag value `<+trigger.payload.tag>` when the pipeline is executed via the trigger, and alternatively pick up `<+pipeline.variables.tag>` when the pipeline is executed manually ?
 
 For the above usecase we should use Ternary operators , refer the [docs](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#ternary-operators) for more on this.
 You can give a condition :
