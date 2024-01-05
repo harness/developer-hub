@@ -266,75 +266,76 @@ The codebase is the Git repository where your code is stored. Pipelines usually 
 
 For instructions on configuring your pipeline's codebase, go to [Configure codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase).
 
-#### Is there a way to skip the default clone codebase step in CI pipeline as it seems to be added with all the execution automatically?
+### Can I skip the built-in clone codebase step in my CI pipeline?
 
-Yes, We can disable the implicit clone codebase step under pipeline overview tab
+Yes, you can disable the built-in clone codebase step for any Build stage. For instructions, go to [Disable Clone Codebase for specific stages](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages).
 
-#### How can we configure the failure strategy for the clone codebase step in a CI pipeline?
+### Can I configure a failure strategy for a built-in clone codebase step?
 
-We wouldn't be able to cofigure failure strategy for the defalt implicit clone codebase step. However you can add a git clone step in the pipeline for which the failure strategy configuration will be available.
+No, you can't configure a [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) for the built-in clone codebase step. If you have concerns about clone failures, you can [disable Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages), and then add a [Git Clone step](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#add-a-git-clone-or-run-step) with a [step failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps#add-a-step-failure-strategy) at the beginning of each stage where you need to clone your codebase.
 
-#### How can we configure the CI codebase step to clone the repo recursively? 
+### Can I recursively clone a repo?
 
-Currently, the clone codebase step doesn't support the flag recursive However you could use the git credentials from Codebase Connector in Run Step and run the git command with the required flags. More details about this can be reffered in the below doc 
-[https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/](https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/)
+Currently, the built-in clone codebase step doesn't support recursive cloning. However, you can [disable Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages), and then add a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) with `git clone --recursive`. This is similar to the process you would follow to [clone a subdirectory instead of the entire repo](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory).
 
-#### How can we clone the codebase to a different folder other than `/harness`?
+If you want to recursively clone a repo in addition to your default codebase, you can [pull the Git credentials from your code repo connector to use in your Run step](./articles/Using_Git_Credentials_from_Codebase_Connector_in_CI_Pipelines_Run_Step.md).
 
-The implicit clone codebase step will always clone the repo to `/harness`. If we want to choose a different folder as the target folder, we could you the git clone step which will allow us to use a custom path as the clone directory
+### Can I clone a specific subdirectory rather than an entire repo?
 
-#### What is the default clone depth setting for CI builds?
+Yes. For instructions, go to [Clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory).
 
-For manual builds, the default depth is 50. The git clone operation fetches the 50 most recent commits from the repository.
+### Can I clone the default codebase to a different folder than the root?
 
-For automatic or scheduled triggers, the default depth is 0. The git clone operation fetches all commits from the relevant branch, providing the complete commit history.
+The built-in clone codebase step always clones your repo to the root of the workspace, `/harness`. If you need to clone elsewhere, you can [disable Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages) and use a [Git Clone or Run step](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#add-a-git-clone-or-run-step) to clone your codebase to a specific subdirectory.
 
-#### Can I configure the codebase depth to fetch a specific number of commits?
+### What is the default clone depth setting for CI builds?
+
+The built-in clone codebase step has the following depth settings:
+
+* For manual builds, the default depth is `50`.
+* For webhook or cron triggers, the default depth is `0`.
+
+For more information, go to [Configure codebase - Depth](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth).
+
+### Can I change the depth of the built-in clone codebase step?
 
 Yes. Use the [Depth](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) setting to do this.
 
-#### How can I reduce clone codebase time?
+### How can I reduce clone codebase time?
 
-For builds triggered by pull requests, set the [Pull Request Clone Strategy](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#pull-request-clone-strategy) to `Source Branch` and set [Depth](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) to `1`.
+There are several strategies you can use to improve codebase clone time:
 
-#### CI codebase variables reference
+* Depending on your build infrastructure, you can set [Limit Memory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#set-container-resources) to 1Gi in your codebase configuration.
+* For builds triggered by PRs, set the [Pull Request Clone Strategy](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#pull-request-clone-strategy) to **Source Branch** and set [Depth](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) to `1`.
+* If you don't need the entire repo contents for your build, you can disable the built-in clone codebase step and use a Run step to execute specific git clone arguments, as explained in [Clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory).
 
-In Harness CI, you set up a codebase by creating a Harness connector that connects to a Git repo.
-For details, go to [CI codebase variables reference](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
+### What codebase environment variables are available to use in triggers, commands, output variables, or otherwise?
 
-Where can I find all the listed Codebase options for CI ?
+For a list of `<+codebase.*>` and similar expressions you can use in your build triggers and otherwise, go to the [CI codebase variables reference](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-referencee).
 
-Please find available `<+codebase.*>` listed for CI in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/)
+### How do I configure the Git Clone step? What is the Clone Directory setting?
 
-#### What is the "Clone directory" setting for in the Git Clone step?
+For details about Git Clone step settings, go to:
 
-The "Clone directory" is an optional target path in the stage workspace where you want to clone the repository
+* [Git Clone step - Depth](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#depth)
+* [Git Clone step - Clone Directory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#clone-directory)
+* [All Git Clone step settings](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#add-a-git-clone-or-run-step)
 
-#### What does the "Depth" setting control in the Git Clone step?
+### Does Harness CI support Git Large File Storage?
 
-The "Depth" setting controls the number of commits to fetch when the step clones the repository. A depth of 0 fetches all commits from the relevant branch
+Yes. For more information, go to the Harness CI documentation on [Git Large File Storage](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs).
 
-#### Can I clone a specific sub-directory, rather than an entire repo?
+### Can I run git commands in a CI Run step?
 
-Yes. For more information, go to [Clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory).
+Yes. You can run any commands in a Run step. With respect to Git, for example, you can use a Run step to [clone multiple code repos in one pipeline](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline), [clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory), or use [Git LFS](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs).
 
-#### Does Harness CI support cloning Git Large File Storage?
+### What expression can I use to get the repository name and the project/organization name for a trigger?
 
-Yes. For more information, go to [Git Large File Storage](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs).
+If your Git provider's webhook payload doesn't include a single payload value with both the project and repo name, you can concatenate two expressions together, such as `<+trigger.payload.repository.project.key>/<+trigger.payload.repository.name>`.
 
-#### Can I run Git commands in a CI Run step?
+### The expression `<+eventPayload.repository.name>` causes the clone step to fail when used with a Bitbucket account connector.
 
-If you need to run authenticated Git commands in a CI Run step, you must provide credentials in the Run step's script. You can also [use a `.netrc` file to store and recall these credentials](./articles/Using_Git_Credentials_from_Codebase_Connector_in_CI_Pipelines_Run_Step.md), instead of providing them for each command.
-
-#### How does a `.netrc` file help execute Git commands in a CI Run step?
-
-Creating a `.netrc` file in a CI Run step provides a mechanism for storing Git credentials required for manual Git operations. It ensures that the necessary authentication information is readily available when executing Git commands in the Run step.
-
-By using the `.netrc` file, you can execute Git commands within the run step without having to provide credentials each time. Git automatically references the `.netrc` file to retrieve the necessary credentials.
-
-#### The expression ```<+eventPayload.repository.name>``` is giving only the repo name but not the project name and the clone step fails when we use this expression for the codebase repo if we are using account type bitbucket connector. What expression can be used to get the repository name including the project name?
-
-You could try the expression ```<+trigger.payload.repository.project.key>/<+trigger.payload.repository.name>``` to get the repo name including the project name from the payload
+Try using the expression `<+trigger.payload.repository.name>` instead.
 
 ## SCM status updates and PR checks
 

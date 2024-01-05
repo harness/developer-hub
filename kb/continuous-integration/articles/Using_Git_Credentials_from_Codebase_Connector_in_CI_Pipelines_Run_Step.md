@@ -6,6 +6,14 @@ Harness CI supports seamless integration with version control systems through [c
 
 To facilitate this process, you can use a `.netrc` file to pull Git credentials from your pipeline's codebase connector and use those credentials in your Run step's commands.
 
+:::info What does the .netrc file do?
+
+Creating a `.netrc` file in a CI Run step provides a mechanism for storing Git credentials required for manual Git operations. It ensures that the necessary authentication information is readily available when executing Git commands in the Run step.
+
+By using the `.netrc` file, you can execute Git commands within the run step without having to provide credentials each time. Git automatically references the `.netrc` file to retrieve the necessary credentials.
+
+:::
+
 1. [Configure your CI pipeline's codebase.](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase)
 
    Make sure to select the code repo connector with the credentials that you want to use in the Run step.
