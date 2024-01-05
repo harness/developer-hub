@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 An Explore is a starting point for a query that is designed to explore a particular subject area. This topic describes the various explores available for monitoring CD deployments, and the data the provide. The following image shows the list of explores available for visualizing CD data.
 
-<docimage path={require('./static/using-cd-custom-dashboards-1.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-1.png')} width="60%" height="60%" title="Click to view full size image" />
 
 It is recommended to refer [this](../../platform/dashboards/create-dashboards.md) documentation first to get a basic overview on how to create dashboards.
 
@@ -18,7 +18,7 @@ It is recommended to refer [this](../../platform/dashboards/create-dashboards.md
 
 This explore can be used to visualize CD data related to pipeline executions. Each explore has a set of views. The views present in this explore are:
 
-<docimage path={require('./static/using-cd-custom-dashboards-20.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-20.png')} width="60%" height="60%" title="Click to view full size image" />
 
 Let's go through each of the views listed above and describe its fields and usages.
 
@@ -27,7 +27,7 @@ Let's go through each of the views listed above and describe its fields and usag
 
 This view contains the data related to the Helm manifest info that is used in CD stage executions. The data is recorded per CD stage execution. For example, if there are 10 executions of a single service with a Helm manifest linked to it, this view will have 10 records.
 
-<docimage path={require('./static/using-cd-custom-dashboards-21.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-21.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 Filter-only Field:
@@ -46,7 +46,7 @@ List of measures:
 ### Deployments
 This view contains the data related to pipeline executions. The data is recorded per pipeline execution, meaning if there are 10 pipeline executions, then this view will also have 10 records.
 
-<docimage path={require('./static/using-cd-custom-dashboards-6.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-6.png')} width="60%" height="60%" title="Click to view full size image" />
 
 Filter-only Field:
 1. Current Aggregation Period: 
@@ -78,7 +78,7 @@ List of measures:
 ### Execution Tags
 This view contains the data related to pipeline execution tags. It will contain the tags that were present in the pipeline at the start of the execution.
 
-<docimage path={require('./static/using-cd-custom-dashboards-7.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-7.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -87,7 +87,7 @@ List of dimensions:
 ### Organization Tags
 This view contains the data related to the organization tags. It will contain the real-time tags of the organization.
 
-<docimage path={require('./static/using-cd-custom-dashboards-10.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-10.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -103,7 +103,7 @@ This will only show the organizations that had at least 1 pipeline execution (in
 
 :::
 
-<docimage path={require('./static/using-cd-custom-dashboards-11.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-11.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -119,7 +119,7 @@ This will only show the pipelines that had at least 1 pipeline execution. It won
 
 :::
 
-<docimage path={require('./static/using-cd-custom-dashboards-12.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-12.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -135,7 +135,7 @@ This will only show pipelines that had at least 1 execution. It won't display th
 
 :::
 
-<docimage path={require('./static/using-cd-custom-dashboards-13.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-13.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -153,7 +153,7 @@ This will only show projects with at least 1 pipeline execution. It won't displa
 
 :::
 
-<docimage path={require('./static/using-cd-custom-dashboards-14.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-14.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -165,7 +165,7 @@ List of dimensions:
 ### Reverted Deployments
 This view contains the data related to reverted pipeline executions.
 
-<docimage path={require('./static/using-cd-custom-dashboards-15.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-15.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 Filter-only Field:
@@ -207,7 +207,7 @@ This view contains the data related to the runtime inputs provided at the time o
 
 :::
 
-<docimage path={require('./static/using-cd-custom-dashboards-16.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-16.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -218,7 +218,7 @@ List of dimensions:
 ### Services
 This view contains the data related to the service and environment configurations.
 
-<docimage path={require('./static/using-cd-custom-dashboards-22.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-22.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 Filter-only Field:
@@ -254,7 +254,7 @@ This will only show the users that have triggered at least 1 pipeline execution.
 
 :::
 
-<docimage path={require('./static/using-cd-custom-dashboards-19.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-19.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -269,7 +269,7 @@ List of dimensions:
 
 This explore can be used to visualize CD data related to pipeline, stage, and step executions. Each explore has a set of views. The views present in this explore are:
 
-<docimage path={require('./static/using-cd-custom-dashboards-2.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-2.png')} width="60%" height="60%" title="Click to view full size image" />
 
 Let us go through each of the view listed in the above image, and describe the fields and it's usages.
 
@@ -277,7 +277,7 @@ Let us go through each of the view listed in the above image, and describe the f
 ### CD Stage Execution Helm Manifest Info
 This view contains the data related to the Helm manifest info that is used in CD Stage executions. The data is recorded per CD stage execution, meaning if there are 10 executions of a single service that has a Helm manifest linked to it this view will also have 10 records.
 
-<docimage path={require('./static/using-cd-custom-dashboards-3.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-3.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -290,7 +290,7 @@ List of dimensions:
 ### CD Stage Executions
 This view contains data related to the CD stage executions. The data is recorded per CD stage execution, meaning if there are 10 pipeline executions that contain a single CD stage, then this view will also have 10 records.
 
-<docimage path={require('./static/using-cd-custom-dashboards-4.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-4.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -316,7 +316,7 @@ List of measures:
 ### Custom Stage Executions
 This view contains the data related to the Custom Stage executions. The data is recorded per Custom Stage Execution, meaning if there are 10 pipeline executions, which contain a single Custom stage, then this view will also have 10 records.
 
-<docimage path={require('./static/using-cd-custom-dashboards-5.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-5.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -329,7 +329,7 @@ List of dimensions:
 ### Deployments
 This view contains the data related to the pipeline executions. The data is recorded per pipeline execution, meaning if there are 10 pipeline executions, then this view will also have 10 records.
 
-<docimage path={require('./static/using-cd-custom-dashboards-6.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-6.png')} width="60%" height="60%" title="Click to view full size image" />
 
 Filter-only Field:
 1. Current Aggregation Period: 
@@ -361,7 +361,7 @@ List of measures:
 ### Execution Tags
 This view contains the data related to the pipeline execution tags. It will contain the tags that were present in the pipeline at the start of the execution.
 
-<docimage path={require('./static/using-cd-custom-dashboards-7.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-7.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -371,7 +371,7 @@ List of dimensions:
 ### Harness Approval Step Execution
 This view contains the data related to the Harness Approval Step Executions. If any field from this view is selected it will only show the data related to the executions which have a harness approval step. For e.g. if their are Jira approval and Harness Approval steps in a single pipeline execution, then selecting fields from this view, will only show Harness approval data.
 
-<docimage path={require('./static/using-cd-custom-dashboards-8.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-8.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -389,7 +389,7 @@ List of measures:
 ### Jira Step Execution
 This view contains the data related to the Jira Step Executions. If any field from this view is selected it will only show the data related to the executions which have a Jira steps(JIRA CREATE/UPDATE/APPROVAL). For e.g. if their are some Jira steps and Harness Approval steps in a single pipeline execution, then selecting fields from this view, will only show Jira steps data.
 
-<docimage path={require('./static/using-cd-custom-dashboards-9.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-9.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -406,7 +406,7 @@ List of measures:
 ### Organization Tags
 This view contains the data related to the organization tags. It will contain the real-time tags of the organization.
 
-<docimage path={require('./static/using-cd-custom-dashboards-10.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-10.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -422,7 +422,7 @@ This will only show the organizations, which had atleast 1 pipeline execution(in
 
 :::
 
-<docimage path={require('./static/using-cd-custom-dashboards-11.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-11.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -438,7 +438,7 @@ This will only show the pipelines, which had atleast 1 pipeline execution. It wo
 
 :::
 
-<docimage path={require('./static/using-cd-custom-dashboards-12.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-12.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -454,7 +454,7 @@ This will only show the pipelines, which had atleast 1 execution. It won't displ
 
 :::
 
-<docimage path={require('./static/using-cd-custom-dashboards-13.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-13.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -472,7 +472,7 @@ This will only show the projects, which had atleast 1 pipeline execution. It won
 
 :::
 
-<docimage path={require('./static/using-cd-custom-dashboards-14.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-14.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -484,7 +484,7 @@ List of dimensions:
 ### Reverted Deployments
 This view contains the data related to the pipeline executions which have been reverted.
 
-<docimage path={require('./static/using-cd-custom-dashboards-15.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-15.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 Filter-only Field:
@@ -526,7 +526,7 @@ This view contains the data related to the runtime inputs provided at the time o
 
 :::
 
-<docimage path={require('./static/using-cd-custom-dashboards-16.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-16.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:
@@ -537,7 +537,7 @@ List of dimensions:
 ### Stage Executions (Approvals/CD/Custom)
 This view contains the data related to the stage executions. Currently, it only shows data for Approvals/CD and Custom stages.
 
-<docimage path={require('./static/using-cd-custom-dashboards-17.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-17.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 Filter-only Field:
@@ -562,7 +562,7 @@ This view contains the data related to the step executions. Currently, it only s
 - ServiceNow Approval
 - Harness Approval
 
-<docimage path={require('./static/using-cd-custom-dashboards-18.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-18.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 Filter-only Field:
@@ -590,7 +590,7 @@ This will only show the users, which have triggered atleast 1 pipeline execution
 
 :::
 
-<docimage path={require('./static/using-cd-custom-dashboards-19.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/using-cd-custom-dashboards-19.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 List of dimensions:

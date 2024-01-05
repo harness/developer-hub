@@ -19,7 +19,7 @@ Harness includes some [built-in resource groups](#built-in-resource-groups), and
 * You can assign the **Organization Admin** role with a resource group that is limited to specific projects or specific organizations.
 * You can assign the **Pipeline Executor** role with a resource group that only allows access to specific pipelines, rather than all pipelines in the project.
 
-:::caution Least privilege
+:::warning Least privilege
 
 RBAC is additive. The total expanse of a user/service account's permissions and access is the sum of all the roles and resource groups from all user groups they belong to, as well as any roles and resource groups assigned directly to them as an individual user/service account.
 
@@ -42,7 +42,7 @@ The scope at which you create a resource group determines which **Resource Scope
 
 <!-- ![](./static/rbac-in-harness-03.png) -->
 
-<docimage path={require('./static/rbac-in-harness-03.png')} />
+<DocImage path={require('./static/rbac-in-harness-03.png')} />
 
 ### Resource scope options
 

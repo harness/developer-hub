@@ -30,7 +30,7 @@ To generate Agent configuration settings, do the following:
 
 3. Enter a name for the configuration and select **Next**.
    
-   <docimage path={require('./static/cet-agent-onboarding-wizard.png')} />
+   <DocImage path={require('./static/cet-agent-onboarding-wizard.png')} />
 
 4. Select a token from the dropdown and select **Next**.
 
@@ -40,7 +40,7 @@ To generate Agent configuration settings, do the following:
    
    Once you have entered your programming language and OS information, CET displays the Agent configuration information and usage instructions.
 
-   <docimage path={require('./static/cet-agent-onboarding-wizard-final-step.png')} />
+   <DocImage path={require('./static/cet-agent-onboarding-wizard-final-step.png')} />
  
 7. Select **Save**.  
    
@@ -55,7 +55,7 @@ To view and use a configuration, do the following:
   
 Use the instructions on the **Configure error tracking agent for monitored service** page to download the Agent, add JVM arguments, and set environment variables.
 
-<docimage path={require('./static/cet-agent-onboarding-wizard-use-config.png')} />
+<DocImage path={require('./static/cet-agent-onboarding-wizard-use-config.png')} />
 
 
 ## Clone an Agent configuration

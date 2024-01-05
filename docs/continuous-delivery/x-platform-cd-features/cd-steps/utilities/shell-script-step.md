@@ -198,6 +198,46 @@ In case of PowerShell, if the script executes on Delegate it requires the powers
 
 The Bash or Powershell script.
 
+### Script Location
+
+**Inline** - The user can define the script inline the step yaml. This means the script body will be defined directly as part of the step.
+
+```YAML
+              - step:
+                  type: ShellScript
+                  name: Echo Welcome Message
+                  identifier: shell_ID
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo "Hello"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+```
+
+**Harness File Store** - User can reference the Shell Script from the Harness File Store. Harness will fetch the script from the file store and execute it. The Shell script YAML will show a reference via the file path in the File Store to the shell script. The Script needs to be as file usage type: `script`. The script extension supported is `.sh` for bash. For the shell type, powershell, Harness supports `.ps1`  file extensions in the file store.
+
+```YAML
+              - step:
+                  type: ShellScript
+                  name: Echo Welcome Message
+                  identifier: shell_ID
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Harness
+                      spec:
+                        file: /message.sh
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+```
+
 ### Script input variables
 
 While you can simply declare a variable in your script using a Harness expression or string for its value, using Input Variables provides some additional benefits:
@@ -381,7 +421,7 @@ Here's an example showing how the **Script Output Variables** references the exp
 
 <!-- ![](./static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png) -->
 
-<docimage path={require('./static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png')} />
+<DocImage path={require('./static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png')} />
 
 
 So now the result of `<+execution.steps.ShellScript_1.output.outputVariables.newname>` is `123`.

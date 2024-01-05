@@ -22,6 +22,36 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## December 2023
+
+### Version 1.27.1
+
+#### New features and enhancements
+
+* Adds a filter to the **listWorkflow** API so that data can be filtered based on whether it is CRON-enabled or not. (CHAOS-3424)
+
+* While selecting a chaos infrastructure to create an experiment, users can list the active infrastructures by clicking the checkbox **Show active only**. (CHAOS-3350)
+
+* Metrics for the Dynatrace probe (**Metrics Selector** and **Entity Selector**) have been made compulsory. This ensures that the required properties are always passed while creating a Dynatrace probe. (CHAOS-3330)
+
+* An experiment can be created against inactive chaos infrastructure(s). This was done to complement the preparatory actions in environments that require agents to be scaled down (K8s) or stopped (Linux) except during the chaos execution window. (CHAOS-3241)
+
+* This release deprecates the `ACCESS_KEY` invalidation after a chaos infrastructure is successfully connected. Users can use the same manifest to connect to the infrastructures. (CHAOS-3164)
+
+* Adds UI support to search conditions for selection while creating a [ChaosGuard rule](../docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts/#2-rule). (CHAOS-2982)
+
+* Adds support to incorporate `secretRef` and `configMapRef` with the tunables for [VMWare faults](../docs/chaos-engineering/technical-reference/chaos-faults/vmware). (CHAOS-2750)
+
+* Adds support for encoding metrics queries in Dynatrace probes. These metrics are constructed and executed using the metrics (or data) explorer before the API call [POST]. (CHAOS-2852)
+
+#### Fixed issues
+
+* After an experiment timed out, the execution nodes would remain in the **running** state. This has been fixed. (CHAOS-3094)
+
+* Adding a probe without the `description` key broke the `addProbe` API. The API is now fixed to accept a blank string if no value is provided in the `description` or the key is missing in the API request. (CHAOS-3224)
+
+* For probe failures, the probe success iteration ratio would show up twice in the experiment logs. This has been fixed. (CHAOS-3421)
+
 ## November 2023
 
 ### Version 1.26.0
@@ -539,7 +569,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### New features and enhancements
 
-:::caution
+:::warning
 This release breaks backward compatibility with older chaos infrastructures. You must update chaos infrastructures and the chaosnative/go-runner image in experiment definitions. If you don't upgrade, then chaos experiments will start to fail.
 
 To upgrade chaos infrastructures and experiments:

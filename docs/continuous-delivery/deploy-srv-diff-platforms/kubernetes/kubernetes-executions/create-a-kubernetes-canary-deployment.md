@@ -16,8 +16,7 @@ Harness Canary and [Blue Green](create-a-kubernetes-blue-green-deployment.md) st
 
 <!-- Video:
 https://www.youtube.com/watch?v=tM1OaofCpyg-->
-<docvideo src="https://www.youtube.com/watch?v=tM1OaofCpyg" />
-
+<DocVideo src="https://www.youtube.com/watch?v=tM1OaofCpyg" />
 
 ## What workloads can I deploy?
 
@@ -56,7 +55,7 @@ This typical method isn't needed for Kubernetes because Kubernetes includes Roll
 A Harness Kubernetes Canary deployment uses two phases, a Canary and a Primary Deployment group:
 
 1. **Group 1:** Harness creates a Canary version of the Kubernetes Deployment object defined in your Service Definition **Manifests** section. Once that Deployment is verified, the Canary Delete step deletes it by default.  
-Harness provides a Canary group as a way to test the new build, run your verification, then rollout to the following Primary Deployment group.
+   Harness provides a Canary group as a way to test the new build, run your verification, then rollout to the following Primary Deployment group.
 2. **Group 2:** run the actual deployment using a Kubernetes Rolling Update with the number of pods you specify in the **Manifests** files (for example, `replicas: 3`).
 
 When you add a Canary Strategy to a stage, Harness automatically generates the steps for Canary and Primary Deployment groups.
@@ -69,7 +68,7 @@ Here's a short video walking through a simple Canary deployment:
 
 <!-- Video:
 https://www.youtube.com/watch?v=UL0ie46c9No-->
-<docvideo src="https://www.youtube.com/watch?v=UL0ie46c9No" />
+<DocVideo src="https://www.youtube.com/watch?v=UL0ie46c9No" />
 
 This video uses a publicly available manifest on Kubernetes GitHub account: `https://github.com/kubernetes/website/blob/master/content/en/examples/application/nginx-app.yaml`.
 
@@ -79,8 +78,8 @@ Create your CD Pipeline stage.
 
 To set up your Service and Infrastructure in the stage, follow the steps in these topics:
 
-* [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests)
-* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure)
+- [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests)
+- [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure)
 
 Once the Service and Infrastructure are set up, you can add the execution steps.
 
@@ -106,8 +105,8 @@ In this step, you define how many pods are deployed for a Canary test of the con
 
 ![](./static/create-a-kubernetes-canary-deployment-03.png)
 
-* If you selected **Instance Count**, this is simply the number of pods.
-* If you selected **Percentage**, enter a percentage of the pods defined in your Service Definition **Manifests** files to deploy.
+- If you selected **Instance Count**, this is simply the number of pods.
+- If you selected **Percentage**, enter a percentage of the pods defined in your Service Definition **Manifests** files to deploy.
 
 For example, if you have `replicas: 4` in a manifest and you enter **50** for **Percentage**, then 2 pods are deployed in this step.
 
@@ -155,7 +154,7 @@ Here is the log from the Prepare section:
 
 ![](./static/create-a-kubernetes-canary-deployment-06.png)
 
-The name of the Deployment workload in the Service Definition **Manifests** file is **my-nginx****.**
+The name of the Deployment workload in the Service Definition **Manifests** file is **my-nginx\*\***.\*\*
 
 As you can see, Harness appends the name with **-canary**, **my-nginx-canary**. This is to identify Canary Deployment step workloads in your cluster.
 
@@ -179,7 +178,6 @@ Harness displays the status of each pod deployed and confirms steady state.
 
 The Wrap Up log is long and describes all of the container and pod information for the step, using the kubectl command:
 
-
 ```
 kubectl --kubeconfig=config describe --filename=manifests.yaml
 ```
@@ -194,25 +192,22 @@ Before we look at the logs, let's look at the Service Definition **Manifests**�
 
 Here is the Deployment object YAML from our Service **Manifests** section:
 
-
 ```yaml
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
-  name: my-nginx  
-  labels:  
-    app: nginx  
-spec:  
-  replicas: 3  
-...
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nginx
+  labels:
+    app: nginx
+spec:
+  replicas: 3
 ```
 
 Let's look at the **Initialize**, **Prepare**, and **Apply** stages of the **Rollout Deployment**.
 
 #### Initialize
 
-In the **Initialize** section of the **Rollout Deployment** step, you can see the same object descriptions as the Service Definition **Manifests** section:  
-
+In the **Initialize** section of the **Rollout Deployment** step, you can see the same object descriptions as the Service Definition **Manifests** section:
 
 ![](./static/create-a-kubernetes-canary-deployment-10.png)
 
@@ -245,15 +240,15 @@ kubectl --kubeconfig=config get events --namespace=default --output=custom-colum
 Here is a sample from the output that displays the Kubernetes RollingUpdate:
 
 ```
-kubectl --kubeconfig=config rollout status Deployment/my-nginx --namespace=default --watch=true  
-  
+kubectl --kubeconfig=config rollout status Deployment/my-nginx --namespace=default --watch=true
+
 Status : my-nginx deployment "my-nginx" successfully rolled out
 ```
 
 As you look through the description in **Wrap Up** you can see label added:
 
 ```
-add label: harness.io/track=stable 
+add label: harness.io/track=stable
 ```
 
 You can use the `harness.io/track=stable` label with the values `canary` or `stable` as a selector for managing traffic to these pods, or for testing the pods. For more information, see  [Kubernetes Releases and Versioning](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning).
@@ -265,8 +260,8 @@ Now that you have successfully deployed your artifact to your Kubernetes cluster
 Or you can simply connect to your cluster in a terminal and see the pod(s) deployed:
 
 ```
-john_doe@cloudshell:~ (project-15454)$ kubectl get pods  
-NAME                                                        READY     STATUS    RESTARTS   AGE  
+john_doe@cloudshell:~ (project-15454)$ kubectl get pods
+NAME                                                        READY     STATUS    RESTARTS   AGE
 my-nginx-7df7559456-xdwg5                 1/1       Running   0          9h
 ```
 
@@ -284,22 +279,23 @@ Currently, this functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB
 
 The Horizontal Pod Autoscaler (HPA) automatically scales ReplicationControllers, Deployments, ReplicaSets, or StatefulSets based on CPU utilization. Scaling is horizontal, as it affects the number of instances rather than the resources allocated to one container. Upon initial configuration, HPA can make scaling decisions based on custom or external metrics. All you need to do is define the minimum and maximum number of replicas and a trigger limit.
 
-Here's a sample HPA resource: 
+Here's a sample HPA resource:
 
 ```yaml
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
- name: hpa
+  name: hpa
 spec:
- scaleTargetRef:
-   apiVersion: apps/v1
-   kind: Deployment
-   name: nginx-deployment
- minReplicas: 1
- maxReplicas: 10
- targetCPUUtilizationPercentage: 50
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: nginx-deployment
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 50
 ```
+
 Once configured, the HPA controller checks the metrics and scales your replicas accordingly. HPA checks metrics every 15 seconds by default.
 
 Here is a sample Kubernetes resource with stage color `blue`:
@@ -320,27 +316,27 @@ spec:
         app: test-deployment
     spec:
       containers:
-      - name: nginx
-        image: nginx:latest
-        ports:
-        - containerPort: 80
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
 ```
 
-HPA references its target using `kind` and `name`. After the initial rolling deployment, Harness creates a `test-deployment` deployment and a `test-hpa` HPA resource. For any subsequent Canary deployment, Harness creates a `test-deployment-canary` deployment and a `test-hpa-canary` HPA resource which updates the reference for the `test-deployment-canary` deployment. 
+HPA references its target using `kind` and `name`. After the initial rolling deployment, Harness creates a `test-deployment` deployment and a `test-hpa` HPA resource. For any subsequent Canary deployment, Harness creates a `test-deployment-canary` deployment and a `test-hpa-canary` HPA resource which updates the reference for the `test-deployment-canary` deployment.
 
 ```yaml
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
- name: test-hpa-canary
+  name: test-hpa-canary
 spec:
- scaleTargetRef:
-   apiVersion: apps/v1
-   kind: Deployment
-   name: test-deployment-canary
- minReplicas: 1
- maxReplicas: 10
- targetCPUUtilizationPercentage: 50
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: test-deployment-canary
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 50
 ```
 
 The release history contains the name of the HPA resource as part of list of resources.
@@ -359,12 +355,12 @@ A Pod Disruption Budget (PDB) defines the budget for voluntary disruptions. To e
 
 PDB can be applied for the following types of controllers:
 
-* Deployment
-* ReplicationController
-* ReplicaSet
-* StatefulSet
+- Deployment
+- ReplicationController
+- ReplicaSet
+- StatefulSet
 
-Here's a sample PBD resource: 
+Here's a sample PBD resource:
 
 ```yaml
 apiVersion: apps/v1
@@ -382,13 +378,13 @@ spec:
         app: test-deployment
     spec:
       containers:
-      - name: nginx
-        image: nginx:latest
-        ports:
-        - containerPort: 80
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
 ```
 
-After the initial rolling deployment, Harness creates a `test-deployment` deployment and a `test-pdb` PDB resource. For any subsequent Canary deployment, Harness creates a `test-deployment-canary` deployment and a `test-pdb-canary` PDB resource which updates the reference for the `test-deployment-canary` deployment. 
+After the initial rolling deployment, Harness creates a `test-deployment` deployment and a `test-pdb` PDB resource. For any subsequent Canary deployment, Harness creates a `test-deployment-canary` deployment and a `test-pdb-canary` PDB resource which updates the reference for the `test-deployment-canary` deployment.
 
 ```yaml
 apiVersion: policy/v1
@@ -402,7 +398,7 @@ spec:
       app: test-deployment-canary
 ```
 
-Additionally, PDB updates selectors (`.spec.selectors`) to match the selectors of the deployment. 
+Additionally, PDB updates selectors (`.spec.selectors`) to match the selectors of the deployment.
 
 ```yaml
 app=test-deployment
@@ -415,10 +411,9 @@ In the Canary Delete step, Harness deletes the resources based on the release hi
 
 ## Important notes
 
-* Harness does not roll back Canary deployments because your production is not affected during Canary. Canary catches issues before moving to production. Also, you might want to analyze the Canary deployment. The Canary Delete step is useful to perform cleanup when required.
+- Harness does not roll back Canary deployments because your production is not affected during Canary. Canary catches issues before moving to production. Also, you might want to analyze the Canary deployment. The Canary Delete step is useful to perform cleanup when required.
 
 ## Next steps
 
-* [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment)
-* [Create a Kubernetes Blue Green Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment)
-
+- [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment)
+- [Create a Kubernetes Blue Green Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment)

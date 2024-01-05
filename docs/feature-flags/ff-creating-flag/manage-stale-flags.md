@@ -12,19 +12,19 @@ Stale flag management and cleanup automation is a beta feature.
 
 Harness Feature Flags helps to identify stale flags and automates the process of removing them from your code.
 
-Stale flags are flags that are no longer needed as the change behind them has been widely rolled out and no longer needs any control in production. 
+Stale flags are flags that are no longer needed as the change behind them has been widely rolled out and no longer needs any control in production.
 
 ### Find potentially stale flags
 
-- At the top of your Feature Flags overview screen, you will find a list of filters. 
-- One of those filters is labeled **Potentially Stale Flags**. 
+- At the top of your Feature Flags overview screen, you will find a list of filters.
+- One of those filters is labeled **Potentially Stale Flags**.
 - Click this list to see which flags have been highlighted by Harness as potentially stale.
 
 By seeing which flags are potentially stale, your team can choose to either manually clean them up, mark them for automated cleanup via Harness, or mark them as not being stale.
 
 ### Definition of potentially stale
 
-Harness defines _potentially stale_ flags as follows 
+Harness defines _potentially stale_ flags as follows
 
 - Flag has not had evaluations in the last 60 days.
 
@@ -48,7 +48,7 @@ Note that once a flag has been marked as _ready for cleanup_, you can still undo
 
 ![A view of the Harness Feature Flags dashboard with the potentially stale flags filter selectd](./static/stale-flags-filter.png)
 
-## Flag cleanup automation 
+## Flag cleanup automation
 
 ### What’s needed
 
@@ -64,7 +64,7 @@ In order to leverage Harness’ flag cleanup automation pipeline, you will need 
 
 At this time, the following languages are supported for flag cleanup automation:
 
-- Java	
+- Java
 - Kotlin
 - Go
 
@@ -75,13 +75,13 @@ In order to use flag cleanup automation during the beta phase, you will need to 
 - The URL to import from is https://github.com/harness/flag_cleanup/blob/unscripted/docs/pipelines/flag_cleanup_pipeline.yaml
 - Note that the identifier and the name must match
 
-<docvideo src="https://www.youtube.com/embed/sSP1nxrBwxo?si=dGI7vBmio6pfhWnX" />
+<DocVideo src="https://www.youtube.com/embed/sSP1nxrBwxo?si=dGI7vBmio6pfhWnX" />
 
-### Training your cleanup configuration file 
+### Training your cleanup configuration file
 
 You will need update the rules file with the correct tree-sitter query.
 
-<docvideo src="https://www.youtube.com/embed/Y22vmMNwPYU?si=W-SHEQlHV-3cNYOg" />
+<DocVideo src="https://www.youtube.com/embed/Y22vmMNwPYU?si=W-SHEQlHV-3cNYOg" />
 
 ### Secrets configuration for Gitub
 

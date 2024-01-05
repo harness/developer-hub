@@ -30,12 +30,12 @@ Fault execution is triggered when the chaosengine resource is created. Chaosengi
 
 It disrupts the state of GCP persistent disk volume filtered using a label by detaching the disk volume from its VM instance for a specific duration.
 
-<!-- <accordion color='green'/> has same usage as details but green in color -->
+<!-- <Accordion color='green'/> has same usage as details but green in color -->
 
-<accordion color="green">
+<Accordion color="green">
 <summary>Use cases</summary>
     This fault can be used to determine the resilience of the GKE infrastructure. It helps determine how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
-</accordion>
+</Accordion>
 
 <!-- ensure to enclose all markdown inside the <FaultDetailsCard/> tag-->
 
@@ -53,12 +53,12 @@ It disrupts the state of GCP persistent disk volume filtered using a label by de
 
 It disrupts the state of GCP persistent disk volume by detaching the disk volume from its VM instance using the disk name for a specific duration.
 
-<!-- <accordion color='green'/> has same usage as details but green in color -->
+<!-- <Accordion color='green'/> has same usage as details but green in color -->
 
-<accordion color="green">
+<Accordion color="green">
 <summary>Use cases</summary>
     This fault can be used to determine the resilience of the GKE infrastructure. It helps determine how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
-</accordion>
+</Accordion>
 
 <!-- ensure to enclose all markdown inside the <FaultDetailsCard/> tag-->
 
@@ -74,12 +74,12 @@ It disrupts the state of GCP persistent disk volume by detaching the disk volume
 
 It powers off GCP VM instances (that are filtered by a label) for a specific duration.
 
-<!-- <accordion color='green'/> has same usage as details but green in color -->
+<!-- <Accordion color='green'/> has same usage as details but green in color -->
 
-<accordion color="green">
+<Accordion color="green">
 <summary>Use cases</summary>
     This fault determines the resilience of an application that runs on a VM instance when a VM instance unexpectedly stops (or fails).
-</accordion>
+</Accordion>
 
 <!-- ensure to enclose all markdown inside the <FaultDetailsCard/> tag-->
 
@@ -95,12 +95,12 @@ It powers off GCP VM instances (that are filtered by a label) for a specific dur
 
 It powers off a GCP VM instance based on the instance name (or list of instance names) for a specific duration.
 
-<!-- <accordion color='green'/> has same usage as details but green in color -->
+<!-- <Accordion color='green'/> has same usage as details but green in color -->
 
-<accordion color="green">
+<Accordion color="green">
 <summary>Use cases</summary>
 This fault determines the resilience of an application that runs on a VM instance when a VM instance unexpectedly stops (or fails).
-</accordion>
+</Accordion>
 
 <!-- ensure to enclose all markdown inside the <FaultDetailsCard/> tag-->
 

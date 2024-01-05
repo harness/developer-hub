@@ -8,17 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You have likely heard terms like *blue/green* and *canary* when it comes to deploying code and applications into production. These are common deployment strategies, available in Harness CD as stage strategies, along with others.
+You have likely heard terms like _blue/green_ and _canary_ when it comes to deploying code and applications into production. These are common deployment strategies, available in Harness CD as stage strategies, along with others.
 
 This topic will explain these strategies to give you an idea of how to approach deployments in Harness, and to help you decide what strategy is best for you.
 
 ## Deployment strategies video
 
-<docvideo src="https://www.youtube.com/watch?v=VJjDbwoxLfM" />
+<DocVideo src="https://www.youtube.com/watch?v=VJjDbwoxLfM" />
 
 ## Deploy with or without gates
 
-CD deployments are typically performed using manual approvals before deploying changes to production. These approvals are often called approval gates or release gates. 
+CD deployments are typically performed using manual approvals before deploying changes to production. These approvals are often called approval gates or release gates.
 
 Gates are checkpoints in the deployment process that can provide several benefits, including increased control, improved quality, compliance and security, stakeholder involvement, and better risk management.
 
@@ -28,7 +28,7 @@ CD deployments without gates, also known as "no-gate CD," refers to a CD process
 
 This approach has several advantages, including faster time to market and increased collaboration.
 
-Of course, no-gate CD is not appropriate for all organizations and situations, and it may require significant investment in automation and testing to ensure that changes are deployed safely and reliably. 
+Of course, no-gate CD is not appropriate for all organizations and situations, and it may require significant investment in automation and testing to ensure that changes are deployed safely and reliably.
 
 Harness supports gated and no-gate CD by default. You can use several approval stages or steps in your pipelines, or simply deploy without gates.
 
@@ -46,21 +46,21 @@ With a rolling deployment, all nodes within a single environment are replaced on
 
 ### When to use rolling deployments
 
-* Balancing speed and safety. Nodes are replaced in an immediate series. 
-* Ramping load balancing scenarios that require reduced downtime.
+- Balancing speed and safety. Nodes are replaced in an immediate series.
+- Ramping load balancing scenarios that require reduced downtime.
 
 One use of rolling deployments is as the stage preceeding a canary deployment in a deployment pipeline. For example, in the first stage you can perform a rolling deployment to a QA environment, once successful, you perform a canary deployment to production incrementally.
 
 #### Pros
 
-* Introduces an automatic incremental deployment; less risk than Basic deployment.
-* Does not require additional infrastructure such as a Blue Green deployment.
+- Introduces an automatic incremental deployment; less risk than Basic deployment.
+- Does not require additional infrastructure such as a Blue Green deployment.
 
 #### Cons
 
-* Verification gates between nodes difficult since a rolling deployment is designed to be executed in a series. 
-* App/DB needs to support both new and old artifacts. Manual checks/verification at each increment could take a long time.
-* Draining / lost transactions and logged-off users are also something to take into consideration which is a risk with any deployment type for stateful apps.
+- Verification gates between nodes difficult since a rolling deployment is designed to be executed in a series.
+- App/DB needs to support both new and old artifacts. Manual checks/verification at each increment could take a long time.
+- Draining / lost transactions and logged-off users are also something to take into consideration which is a risk with any deployment type for stateful apps.
 
 See [Create a Kubernetes Rolling Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md).
 
@@ -78,26 +78,26 @@ Some vendors call this a red/black deployment.
 
 ### When to use Blue Green deployments
 
-* When you want to perform verification in a full production environment.
-* When you want zero downtime.
+- When you want to perform verification in a full production environment.
+- When you want zero downtime.
 
 #### Pros
 
-* Simple, fast, well understood, and easy to implement: the switch is almost instantaneous.
-* Less risk relative to other deployment strategies.
-* Rapid rollback (flip traffic back to old environment)
+- Simple, fast, well understood, and easy to implement: the switch is almost instantaneous.
+- Less risk relative to other deployment strategies.
+- Rapid rollback (flip traffic back to old environment)
 
 #### Cons
 
-* Replicating a production environment can be complex and expensive (i.e. microservice downstream dependencies and infrastructure).
-* QA/UAT test coverage may not identify all anomalies & regressions in blue environment.
-* An outage or SPOF could have wide-scale business impact before rollback kicks in.
-* Current transactions and sessions will be lost due to the physical switch from one machine serving the traffic to another one.
-* Database compatibility (schema changes, backward compatibility) which is a risk with any deployment type for stateful apps.
+- Replicating a production environment can be complex and expensive (i.e. microservice downstream dependencies and infrastructure).
+- QA/UAT test coverage may not identify all anomalies & regressions in blue environment.
+- An outage or SPOF could have wide-scale business impact before rollback kicks in.
+- Current transactions and sessions will be lost due to the physical switch from one machine serving the traffic to another one.
+- Database compatibility (schema changes, backward compatibility) which is a risk with any deployment type for stateful apps.
 
 See:
 
-* [Create a Kubernetes Blue Green Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md)
+- [Create a Kubernetes Blue Green Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md)
 
 ## Canary deployment
 
@@ -113,19 +113,19 @@ This is currently the most common way to deploy apps/services into production.
 
 #### Pros
 
-* Deploy in small phases (e.g. 2%, 10%, 25%, 50,%, 75%, 100%).
-* Lowest risk relative to all other deployment strategies (reduce business exposure).
-* Test in production with real users & use cases.
-* Run & compare two service versions side-by-side.
-* Cheaper than blue/green, because there is no need to have two production environments.
-* Fast and safe rollback.
+- Deploy in small phases (e.g. 2%, 10%, 25%, 50,%, 75%, 100%).
+- Lowest risk relative to all other deployment strategies (reduce business exposure).
+- Test in production with real users & use cases.
+- Run & compare two service versions side-by-side.
+- Cheaper than blue/green, because there is no need to have two production environments.
+- Fast and safe rollback.
 
 #### Cons
 
-* Scripting canary deployments can be complex (Harness automates this process).
-* Manual verification can take time (Harness automates this process with Continuous Verification).
-* Required monitoring and instrumentation for testing in production (APM, Log, Infra, End User, etc).
-* Database compatibility (schema changes, backward compatibility) which is a risk with any deployment type for stateful apps.
+- Scripting canary deployments can be complex (Harness automates this process).
+- Manual verification can take time (Harness automates this process with Continuous Verification).
+- Required monitoring and instrumentation for testing in production (APM, Log, Infra, End User, etc).
+- Database compatibility (schema changes, backward compatibility) which is a risk with any deployment type for stateful apps.
 
 For Kubernetes, Harness does this a little differently.
 
@@ -137,7 +137,7 @@ In Phase 2 we do a rolling deployment with the production version and scale down
 
 See:
 
-* [Create a Kubernetes Canary Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
+- [Create a Kubernetes Canary Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
 
 ### Build deployments
 
@@ -173,18 +173,18 @@ Basic deployments are supported in Harness for a number of platforms as a way fo
 
 ### When to use basic deployments
 
-* Your app/service is not business, mission, or revenue-critical.
-* You’re deploying off-hours and no one is using the app/service.
-* You're experimenting with deployments and it's okay if the app/service fails.
+- Your app/service is not business, mission, or revenue-critical.
+- You’re deploying off-hours and no one is using the app/service.
+- You're experimenting with deployments and it's okay if the app/service fails.
 
 #### Pros
 
-* Simple and fast
-* Useful for learning Harness
+- Simple and fast
+- Useful for learning Harness
 
 #### Cons
 
-* Risk, outages, slower rollback
+- Risk, outages, slower rollback
 
 Not too long ago, basic deployments were how developers rolled out applications. Typically, someone in Ops updated the servers at midnight and then you hoped all goes well.
 
@@ -197,16 +197,16 @@ For a detailed explanation of multi-service and multi-environment deployents, go
 
 ### When to use multi-service deployments
 
-* When your app has service/version dependencies.
+- When your app has service/version dependencies.
 
 #### Pros
 
-* Simple, fast, and with less risk than Basic deployment.
+- Simple, fast, and with less risk than Basic deployment.
 
 #### Cons
 
-* Risk
-* Difficult to test/verify all service dependencies, outages, slow rollback.
+- Risk
+- Difficult to test/verify all service dependencies, outages, slow rollback.
 
 ## Which deployment strategy should I use?
 
@@ -215,4 +215,3 @@ It depends entirely on the type of application/service and environment. Most Har
 In many cases, customers are migrating from blue/green to canary so they can test in production with minimal business impact.
 
 You can also combine many of the above deployment strategies into a single strategy.
-

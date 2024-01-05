@@ -41,7 +41,7 @@ Use these steps to create an API key and personal access token (PAT) for your pe
 7. If you want to set an expiration date for the token, select **Set Expiration Date** and enter an expiration date in `mm/dd/yyyy` format.
 8. Select **Generate Token** and copy the token.
 
-   :::caution
+   :::warning
 
    The token is only displayed once. Store the token somewhere secure that you can access when you make API requests.
 
@@ -53,7 +53,7 @@ Use these steps to create an API key and personal access token (PAT) for your pe
 
    <!-- ![](./static/api-quickstart-04.png) -->
 
-   <docimage path={require('./static/api-quickstart-04.png')} />
+   <DocImage path={require('./static/api-quickstart-04.png')} />
 
 ## Create service account API keys and tokens
 
@@ -70,7 +70,7 @@ Use these steps to create an API key and service account token (SAT) for a servi
 9. If you want to set an expiration date for the token, select **Set Expiration Date** and enter an expiration date in `mm/dd/yyyy` format.
 10. Select **Generate Token** and copy the token.
 
-   :::caution
+   :::warning
 
    The token is only displayed once. Store the token somewhere secure that you can access when you make API requests.
 
@@ -172,7 +172,7 @@ As a security best practice, rotate tokens periodically. You can rotate tokens i
 </Tabs>
 
 
-:::caution
+:::warning
 
 The token is only displayed once. Store the token somewhere secure that you can access when you make API requests.
 

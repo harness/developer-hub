@@ -9,7 +9,7 @@ keywords: [STO, security, DAST, security, codebase, Zed Attack Proxy, ZAP]
 
 # DAST app scans using Zed Attack Proxy (ZAP)
 
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Security Testing Orchestration certification today!"
@@ -18,10 +18,9 @@ keywords: [STO, security, DAST, security, codebase, Zed Attack Proxy, ZAP]
   target="_self"
 />
 
-
 [Zed Attack Proxy (ZAP)](https://www.zaproxy.org) is a free, open-source penetration tool for testing web applications. ZAP runs as a “man-in-the-middle proxy” between the tester’s browser and the web app. You can use ZAP to run penetration testing to simulate a malicious external attack and use the results to protect your app from unauthorized access and denial-of-service attacks.
 
-In this tutorial, you'll set up a simple pipeline with a Zap step that scans the app and ingests the results into STO. 
+In this tutorial, you'll set up a simple pipeline with a Zap step that scans the app and ingests the results into STO.
 
 ![](./static/dast-scans-zap/dast-scan-pipeline.png)
 
@@ -30,12 +29,12 @@ In this tutorial, you'll set up a simple pipeline with a Zap step that scans the
 - This tutorial has the following prerequisites:
 
   - A Harness account and STO module license.
-  - A basic understanding of key STO concepts and good practices. 
+  - A basic understanding of key STO concepts and good practices.
   - A working instance of the web app you want to scan. Your app must be accessible from your Harness pipeline.
   - Docker requirements:
-      - A Docker Hub account and access token. 
-      - A [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/) is required to push the image. 
-      - Your Docker Hub access token must be stored as a [Harness secret](/docs/platform/secrets/add-use-text-secrets).
+    - A Docker Hub account and access token.
+    - A [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/) is required to push the image.
+    - Your Docker Hub access token must be stored as a [Harness secret](/docs/platform/secrets/add-use-text-secrets).
 
 :::
 
@@ -45,43 +44,35 @@ If you don't have your web app running yet, you can go through this tutorial by 
 
 To create an instance of this app for scanning, go to [Start Gruyere](https://google-gruyere.appspot.com/start).
 
-
 ### Set up your pipeline
 
 Do the following:
 
-1. Select **Security Testing Orchestration** (left menu, top) > **Pipelines** > **Create a Pipeline**. Enter a name and click **Start**. 
+1. Select **Security Testing Orchestration** (left menu, top) > **Pipelines** > **Create a Pipeline**. Enter a name and click **Start**.
 
-2. In the new pipeline, select **Add stage** > **Security Tests**. 
+2. In the new pipeline, select **Add stage** > **Security Tests**.
 
 3. Set up your stage as follows:
 
    1. Enter a **Stage Name**.
-   
+
    2. Unselect **Clone Codebase**.
 
-3. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** or **ARM64** for the infrastructure, OS, and architecture.  
-   
+4. Go to **Infrastructure** and select **Cloud**, **Linux**, and **AMD64** or **ARM64** for the infrastructure, OS, and architecture.
+
    You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
- 
 
 ### Add the Zap scan/ingest step
 
-Now that you've added a step to run the scan, it's a simple matter to ingest it into your pipeline. Harness provides a set of customized steps for popular scanners such as Semgrep. 
-
+Now that you've added a step to run the scan, it's a simple matter to ingest it into your pipeline. Harness provides a set of customized steps for popular scanners such as Semgrep.
 
 import config_zap from './static/dast-scans-zap/config-zap-step-palette.png'
-
-
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-
 
 1. In **Execution**, add a [**Zap**](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#scan-configuration) step.
 
@@ -93,64 +84,58 @@ import TabItem from '@theme/TabItem';
 
    3. [Scan Configuration](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#scan-configuration)
 
-   4. Set the following fields based on the app you're scanning. 
-   
+   4. Set the following fields based on the app you're scanning.
+
       For example, suppose you're scanning version 8.1.2 of `https://myorg.org:9090/welcome`. You could then set the fields like this:
 
-        - Target Name = `myorg.org/welcome`
+      - Target Name = `myorg.org/welcome`
 
-        - Target Variant = `8.1.2`
+      - Target Variant = `8.1.2`
 
-        - Instance Domain = `myorg.org/welcome`
+      - Instance Domain = `myorg.org/welcome`
 
-        - Instance Protocol = **https**
-        
-        - Instance Port = `9090`
+      - Instance Protocol = **https**
+
+      - Instance Port = `9090`
 
       If you're scanning a [Google Gruyere instance](#set-up-your-app-instance), set the fields like this:
 
-        - Target Name = `https://google-gruyere.appspot.com/`
+      - Target Name = `https://google-gruyere.appspot.com/`
 
-        - Target Variant = MY_APP_INSTANCE_ID
+      - Target Variant = MY_APP_INSTANCE_ID
 
-        - Instance Domain = `https://google-gruyere.appspot.com/`MY_APP_INSTANCE_ID
+      - Instance Domain = `https://google-gruyere.appspot.com/`MY_APP_INSTANCE_ID
 
-        - Instance Protocol = **https** 
+      - Instance Protocol = **https**
 
    5. [Fail on Severity](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference#fail-on-severity) = **Critical**
 
-      
       <img src={config_zap} alt="Zap step palette example" height="50%" width="50%" />
-
-
 
 </TabItem>
   <TabItem value="YAML" label="YAML">
 
-
 Add a [**Zap**](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#scan-configuration) step and set the following fields based on the web app you want to scan. For example, suppose you're scanning version 8.1.2 of `https://myorg.org/welcome:9090`. You could then set the fields like this:
 
-*  `type:` [`Zap`](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference)
-   *  `name:` A name for the step.
-   *  `identifier:` A unique step ID.
-   *  `spec :`
-      -  `mode :` [`orchestration`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview)
-      -  [`config`](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#scan-configuration) `: default # | standard | attack | quick`
-         - `target : ` 
-            - `name : https://myorg.org/welcome` 
-            - `type : instance`
-            - `variant : 8.1.2` 
-            - `port : 9090`
-         - `advanced : ` 
-            - `log :` 
-              - `level : info`
-            - [`fail_on_severity`](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) ` : critical`
-
+- `type:` [`Zap`](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference)
+  - `name:` A name for the step.
+  - `identifier:` A unique step ID.
+  - `spec :`
+    - `mode :` [`orchestration`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview)
+    - [`config`](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference#scan-configuration) `: default # | standard | attack | quick`
+      - `target : `
+        - `name : https://myorg.org/welcome`
+        - `type : instance`
+        - `variant : 8.1.2`
+        - `port : 9090`
+      - `advanced : `
+        - `log :`
+          - `level : info`
+        - [`fail_on_severity`](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) ` : critical`
 
 Here's a YAML example for scanning a [Google Gruyere instance](#set-up-your-app-instance):
 
 ```yaml
-
 - step:
     type: Zap
     name: dast_scan_my_web_app
@@ -169,20 +154,16 @@ Here's a YAML example for scanning a [Google Gruyere instance](#set-up-your-app-
       instance:
         domain: https://google-gruyere.appspot.com/MY_APP_INSTANCE_ID
         protocol: https
-
 ```
-
 
 </TabItem>
 </Tabs>
-
-
 
 ### Run the pipeline and check your results
 
 1. Run the pipeline and then wait for the execution to finish.
 
-3. Select [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) and examine any issues detected by your scan.
+2. Select [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) and examine any issues detected by your scan.
 
    ![view scan results](./static/dast-scans-zap/view-dast-scan-results.png)
 
@@ -196,20 +177,20 @@ It is [good practice](/docs/security-testing-orchestration/get-started/key-conce
 
 1. Select **Test Targets** (left menu).
 
-2. Select the baseline you want for your target. 
+2. Select the baseline you want for your target.
 
 ![set the baseline](./static/dast-scans-zap/dast-scan-set-baseline.png)
 
-
 ### YAML pipeline example
 
-```yaml
+Here's an example of the pipeline you created in this tutorial.  If you copy this example, replace the placeholder values with appropriate values for your project, organization, and app instance ID.
 
+```yaml
 pipeline:
   name: v1-dast-zap-scan-gruyere-test
   identifier: v1dastzapscangruyeretest
-  projectIdentifier: mystosandbox
-  orgIdentifier: default
+  projectIdentifier: YOUR_HARNESS_PROJECT_ID
+  orgIdentifier: YOUR_HARNESS_ORGANIZATION_ID
   tags: {}
   stages:
     - stage:
@@ -237,13 +218,12 @@ pipeline:
                     target:
                       name: https://google-gruyere.appspot.com
                       type: instance
-                      variant: MY_APP_INSTANCE_ID
+                      variant: YOUR_APP_INSTANCE_ID
                     advanced:
                       log:
                         level: info
                       fail_on_severity: critical
                     instance:
-                      domain: https://google-gruyere.appspot.com/MY_APP_INSTANCE_ID
+                      domain: https://google-gruyere.appspot.com/YOUR_APP_INSTANCE_ID
                       protocol: https
-
 ```

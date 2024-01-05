@@ -59,7 +59,7 @@ If a Harness Cloud image has multiple versions of a tool pre-installed, you can 
 sudo xcode-select -switch /Applications/Xcode_14.1.0.app
 ```
 
-:::caution
+:::warning
 
 Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions in [Lock versions or install additional tools](#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
 
@@ -241,6 +241,10 @@ Harness Cloud machine images can change. If your pipeline relies on a specific v
 :::
 
 ## Troubleshooting Harness Cloud build infrastructure
+
+### Can't use STO steps with Harness Cloud macOS runners
+
+Currently, [STO scan steps](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference) aren't compatible with Harness Cloud macOS runners, because Apple's M1 CPU doesn't support nested virtualization. You can use STO scan steps with Harness Cloud Linux and Windows runners.
 
 ### Don't use tools that only run on a specific cloud environment (such as gsutil)
 

@@ -104,7 +104,7 @@ After the build runs, you can see updates to **Build** and **Deployment** fields
 
 <!-- ![](./static/ci-jira-int-ticket-details.png) -->
 
-<docimage path={require('./static/ci-jira-int-ticket-details.png')} />
+<DocImage path={require('./static/ci-jira-int-ticket-details.png')} />
 
 :::info How does Harness determine which Jira issue and field to update?
 

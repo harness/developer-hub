@@ -101,7 +101,7 @@ The **Support Escalation Report** helps you understand how many engineering issu
 
 <!-- ![](./static/support-escalation-report.png) -->
 
-<docimage path={require('./static/support-escalation-report.png')} />
+<DocImage path={require('./static/support-escalation-report.png')} />
 
 ### Support Time Across Stages
 
@@ -113,4 +113,4 @@ The **Support Time Across Stages** widget helps you understand the full lifecycl
 
 <!-- ![](./static/support-time-across-stages.png) -->
 
-<docimage path={require('./static/support-time-across-stages.png')} />
+<DocImage path={require('./static/support-time-across-stages.png')} />

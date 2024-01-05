@@ -48,7 +48,7 @@ This guide describes the steps a Harness account admin can take to set up the ID
 
 7. Connector setup 
 
-:::caution
+:::warning
 ### Limitations
 - Only the following set of connectors are supported  
   - GitHub

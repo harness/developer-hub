@@ -17,35 +17,34 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
 
 - To get started with the Harness provider, Harness recommends installing a delegate with Terraform CLI. You need the delegate to build out the automation pipelines to create the various resources.
 - Harness recommends making changes using Git when using the Terraform Provider.
-- Defining your resources like service, environment, infrastructure definition, etc. via Terraform is a one-way sync. By using Terraform, you define the object in Git. After you commit the change, a Harness pipeline provisions the resource to your account. 
+- Defining your resources like service, environment, infrastructure definition, etc. via Terraform is a one-way sync. By using Terraform, you define the object in Git. After you commit the change, a Harness pipeline provisions the resource to your account.
 - Any changes you make via Git are propagated to the UI via this pipeline, which fetches the Terraform file definition for the resource.
 - To avoid configuration mismatches, any changes you make in the UI must be reconciled and updated in the YAML.
 - To prevent the editing and creation of resources in the Harness UI, use [RBAC](/docs/platform/role-based-access-control/rbac-in-harness).
 
 ## Product Demo
 
-
-<docvideo src="https://youtu.be/KSRzy9CnSkA" />
+<DocVideo src="https://youtu.be/KSRzy9CnSkA" />
 
 ## Install a delegate
 
 1. Install a Kubernetes delegate. For steps to install a Kubernetes delegate, go to [Delegate YAML Quickstart](/docs/first-gen/firstgen-platform/account/manage-delegates/install-kubernetes-delegate/).
 2. Download the YAML.
 3. Modify the `INIT_SCRIPT` section in the YAML to include the following value:
-   
+
    ```
    - name: INIT_SCRIPT
           value: | ## Install Terraform Here, You can use the latest version, of Terraform.
-                curl -O -L  https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_amd64.zip  
-                unzip terraform_0.12.25_linux_amd64.zip  
-                mv ./terraform /usr/bin/          
-                terraform --version 
+                curl -O -L  https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_amd64.zip
+                unzip terraform_0.12.25_linux_amd64.zip
+                mv ./terraform /usr/bin/
+                terraform --version
    ```
 
 <details>
 <summary>
     YAML sample
-    </summary> 
+    </summary>
 
     ```
     apiVersion: v1
@@ -150,10 +149,10 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
                 fieldPath: metadata.namespace
             - name: INIT_SCRIPT
             value: | ## Install Terraform Here, You can use the latest version, of Terraform.
-                    curl -O -L  https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_amd64.zip  
-                    unzip terraform_0.12.25_linux_amd64.zip  
-                    mv ./terraform /usr/bin/          
-                    terraform --version  
+                    curl -O -L  https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_amd64.zip
+                    unzip terraform_0.12.25_linux_amd64.zip
+                    mv ./terraform /usr/bin/
+                    terraform --version
             - name: DELEGATE_DESCRIPTION
             value: ""
             - name: DELEGATE_TAGS
@@ -217,30 +216,33 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
         restartPolicy: Always
 
     ```
-</details>  
+
+</details>
 
 3. After you modify the delegate YAML, connect to the Kubernetes cluster to install.
-   To do this, run the following command: 
-   
+   To do this, run the following command:
+
    ```
    kubectl apply -f harness-delegate.yaml
    ```
+
 4. Run the following command to verify if the Terraform CLI is successfully installed:
-   
+
    ```
    kubectl logs <HARNESS_DELEGATE_POD_NAME> -n harness-delegate-ng
    ```
+
    To see if the CLI is installed successfully, search `Terraform`.
 
 ## Set up a GitHub repo
 
 1. You can use an existing repo to manage the Harness configuration or create a new one.
-   For more information on creating a GitHub Repo, go to [Adding a local repository to GitHub using Git](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git). 
+   For more information on creating a GitHub Repo, go to [Adding a local repository to GitHub using Git](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git).
 
-   Harness recommends creating a GitHub Repo to store and manage the Harness configuration. 
-2. Harness recommends the following folder structure to manage your configurations: 
-   
-   
+   Harness recommends creating a GitHub Repo to store and manage the Harness configuration.
+
+2. Harness recommends the following folder structure to manage your configurations:
+
    ```
     service/
     -- backend-service.tf
@@ -250,21 +252,20 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
     environments/
     -- dev.tf
     -- qa.tf
-    -- prod.tf 
+    -- prod.tf
 
     infrastructure/
     -- dev_k8s.tf
     -- qa_k8s.tf
-    -- prod_k8s.tf 
+    -- prod_k8s.tf
 
    ```
 
-
 ## Manage the automation pipeline
 
-   Harness recommends storing the automation pipeline to create and manage resources in a common project that many teams can access. You can create a project called `Onboarding` and users can leverage this to run the pipeline to create a service, environment, infrastructure definition, secret, etc. Harness lets you manage pipelines in Git via the Git experience. This lets you maintain all your pipeline configurations in Git.
+Harness recommends storing the automation pipeline to create and manage resources in a common project that many teams can access. You can create a project called `Onboarding` and users can leverage this to run the pipeline to create a service, environment, infrastructure definition, secret, etc. Harness lets you manage pipelines in Git via the Git experience. This lets you maintain all your pipeline configurations in Git.
 
-   Alternatively you can create pipeline templates that teams can use in their projects. This lets a central team manage the onboarding processes and distribute them to the application teams to leverage and onboard.
+Alternatively you can create pipeline templates that teams can use in their projects. This lets a central team manage the onboarding processes and distribute them to the application teams to leverage and onboard.
 
 ### Set up pipeline
 
@@ -288,21 +289,21 @@ For detailed steps to build the pipeline, go to [Kubernetes deployment tutorial]
 
 ### Configure pipeline stages
 
-To configure the stages for your pipeline, go to the following: 
+To configure the stages for your pipeline, go to the following:
+
 - [Custom stage](/docs/platform/pipelines/add-a-stage.md#add-a-custom-stage)
 - [Terraform Plan step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
 - [Terraform Apply step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
-   
 
 The **Terraform Plan** step fetches the terraform resource from Git. Harness then initiates a terraform plan on the files collected.
 
 ![Terraform Plan](./static/terraformplan.png)
 
-Harness passes the terraform plan that was generated based on the Harness Terraform resource file and then to the **Terraform Apply** step. The **Terraform Apply** step can inherit the plan and create or update the service resource by selecting **Inherit from Plan**. 
+Harness passes the terraform plan that was generated based on the Harness Terraform resource file and then to the **Terraform Apply** step. The **Terraform Apply** step can inherit the plan and create or update the service resource by selecting **Inherit from Plan**.
 
 ![](./static/terraformapply.png)
 
-:::caution
+:::warning
 Ensure the **Terraform Plan** step is configured before the apply step.
 :::
 
@@ -312,7 +313,8 @@ This section explains the steps to set up a sample trigger.
 
 Harness recommends using the [GitHub Webhook](/docs/platform/triggers/triggers-reference) trigger because you can make changes in GitHub and based of a branch condition, push, pull request, issue comment, etc. you can fire off the pipeline to make changes. The trigger doesn't need to be GitHub.
 
-Harness supports the following: 
+Harness supports the following:
+
 - GitHub
 - GitLab
 - Bitbucket
@@ -362,7 +364,7 @@ Your will need to create this YAML and store it in your Github Repository.
 resource "harness_platform_service" "service" {
   identifier  = "nginx" ## Service Identifier
   name        = "nginx" ## Service Name to appear in Harness
-  description = "sample nginx app created via Harness terraform Provider"  
+  description = "sample nginx app created via Harness terraform Provider"
   org_id      = "default" ## Replace with Harness Org Identifier for the resource, optional if creating at account level
   project_id  = "cdproduct" ## Replace with your Harness Project Identifier, optional if creating at org or account level. This project is where the service will be created
   yaml = <<-EOT
@@ -414,7 +416,7 @@ When you run an automation pipeline to create service, you will see the service 
 
 ### Set up pipeline for Service Creation
 
-Here is a sample pipeline to create the nginx service and manage it via Git automation. 
+Here is a sample pipeline to create the nginx service and manage it via Git automation.
 
 You also need to configure a Github Webhook Trigger to initiate updates to the service and automate the pipeline execution to update and create services.
 
@@ -467,13 +469,14 @@ pipeline:
         tags: {}
   description: This Pipeline is dedicated to onboarding services in Harness
 ```
+
 The pipeline looks like this:
 
 ![](./static/service-pipeline.png)
 
 ## Onboard an environment
 
-For onboarding an environment, Harness recommends using the environment resource in the [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment). 
+For onboarding an environment, Harness recommends using the environment resource in the [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment).
 In Harness, you can create an [environment](/docs/continuous-delivery/get-started/services-and-environments-overview/) at the project, organization, and account scope.
 
 Your need to create this YAML and store it in your GitHub Repository.
@@ -490,7 +493,7 @@ resource "harness_platform_environment" "environment" {
     environment:
          name: dev ## Name of the environment, similar to above
          identifier: dev ## Name of the environment
-         orgIdentifier: default  
+         orgIdentifier: default
          projectIdentifier: cdproduct ## optional if your creating at Org or Acount, this is where the environment will be created
          type: PreProduction
          tags:
@@ -591,7 +594,7 @@ pipeline:
 
 ## Onboard an infrastructure definition
 
-For onboarding an Environment, we recommend using the infrastructure definition in our [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment). 
+For onboarding an Environment, we recommend using the infrastructure definition in our [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment).
 In Harness, you can create an [Infrastructure Definition](/docs/continuous-delivery/get-started/services-and-environments-overview/) at the project, organization and account scope.
 
 ```YAML
@@ -697,7 +700,7 @@ We recommend two approaches:
 
 1. Creating a centralized project that you can give your end user developers access to onboard their own services and resources
 
-2. Create 1 Project that has a centralized platform team manage and onboard the app team services, environments and  other configurations.
+2. Create 1 Project that has a centralized platform team manage and onboard the app team services, environments and other configurations.
 
 You should get started by creating a centralized project like this:
 
@@ -730,10 +733,9 @@ Tooling you should install:
 
 These options are all available in the [Harness Docs](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools)
 
-
 ### Create the connectors and secrets first
 
- Make sure the [connectors](/docs/first-gen/firstgen-platform/account/manage-connectors/harness-connectors/) are created in Harness. You can create them and manage them via the [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_github) or in the UI.
+Make sure the [connectors](/docs/first-gen/firstgen-platform/account/manage-connectors/harness-connectors/) are created in Harness. You can create them and manage them via the [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_github) or in the UI.
 
 ![Connector](https://github.com/thisrohangupta/changelog/blob/master/terraform-provider/assets/connector.png)
 
@@ -750,7 +752,7 @@ resource "harness_platform_connector_helm" "helm" {
 }
 ```
 
- These connectors will require [secrets](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to be configured because connectors are access objects that provide the Harness delegate access to a particular resource. You can create the connectors via the [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_secret_text) or in the Harness UI.
+These connectors will require [secrets](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to be configured because connectors are access objects that provide the Harness delegate access to a particular resource. You can create the connectors via the [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_secret_text) or in the Harness UI.
 
 ![Secret](https://github.com/thisrohangupta/changelog/blob/master/terraform-provider/assets/secret.png)
 
@@ -767,7 +769,3 @@ resource "harness_platform_secret_text" "secret" {
   value                     = "secret"
 }
 ```
-
-
-
-

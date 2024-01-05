@@ -8,7 +8,7 @@ slug: /ci-pipelines/test/localstack
 
 # Run LocalStack as a Background Step
 
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
@@ -19,9 +19,7 @@ slug: /ci-pipelines/test/localstack
 
 [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) are useful for running services that need to run for the entire lifetime of a Build stage. This tutorial shows how to run [LocalStack](https://localstack.cloud/) as a Background step in a Harness CI pipeline. LocalStack is software that emulates cloud services (such as AWS) when developing locally, or for testing in continuous integration pipelines.
 
-
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-
 
 <CISignupTip />
 

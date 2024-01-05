@@ -330,7 +330,7 @@ To automatically use the default value during such timeouts:
 
 <!-- ![](./static/execution-time-error-configuration.png) -->
 
-<docimage path={require('./static/execution-time-error-configuration.png')} />
+<DocImage path={require('./static/execution-time-error-configuration.png')} />
 
 #### Use execution input in a script
 

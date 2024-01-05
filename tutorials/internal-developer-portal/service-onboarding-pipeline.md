@@ -4,7 +4,7 @@ description: Create a basic service onboarding pipeline in Harness IDP
 sidebar_position: 1
 ---
 
-<docvideo src="https://www.youtube.com/embed/0GoK3SD1rxs?si=RCMDhlPhoC5qZh3J" />
+<DocVideo src="https://www.youtube.com/embed/0GoK3SD1rxs?si=RCMDhlPhoC5qZh3J" />
 
 This tutorial is designed to help a platform engineer to get started with Harness IDP. We will create a basic service onboarding pipeline that uses a software template and provisions a Next.js application for a developer. After you create the software template, developers can choose the template on the **Create** page and enter details such as a name for the application and the path to their Git repository. The service onboarding pipeline creates a hello world repository for storing code.
 
@@ -71,136 +71,129 @@ In the CI or Build stage type, container step is named Run, and it has the same 
    Depending upon our operation, we might have to adjust the memory limit of the container. If required, you can change Limit Memory from `500Mi` to `4000Mi`.
    :::
 
-
 ### Cookiecutter Scripts Based on your SCM
-
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-
 <Tabs>
 <TabItem value="GitHub">
 
+5. Paste the following cookiecutter-based script into **Command**.
 
-  5. Paste the following cookiecutter-based script into **Command**.
+   The script performs the following tasks:
 
-      The script performs the following tasks:
+   1. Generates a basic Next.js app.
 
-      1. Generates a basic Next.js app.
+   2. Creates a repository with the contents. The sample code used in the command is available [here](https://github.com/harness-community/idp-samples/tree/main/idp-pipelines/cookiecutter-react-app), whichand it's essentially is a [cookiecutter project](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html). You can choose from available [cookiecutter projects](https://www.cookiecutter.io/templates) or create your own project from scratch.
 
-      2. Creates a repository with the contents. The sample code used in the command is available [here](https://github.com/harness-community/idp-samples/tree/main/idp-pipelines/cookiecutter-react-app), whichand it's essentially is a [cookiecutter project](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html). You can choose from available [cookiecutter projects](https://www.cookiecutter.io/templates) or create your own project from scratch.
+   ```sh
+   # Testing path
+   pwd
 
-      ```sh
-      # Testing path
-      pwd
+   # Pre-cleanup in case pipeline fails
 
-      # Pre-cleanup in case pipeline fails
+   rm -rf idp-samples/
+   rm -rf "<+pipeline.variables.project_name>"
 
-      rm -rf idp-samples/
-      rm -rf "<+pipeline.variables.project_name>"
+   # Clone skeleton
+   git clone https://github.com/harness-community/idp-samples
 
-      # Clone skeleton
-      git clone https://github.com/harness-community/idp-samples
+   # Generate code to be pushed
+   pip install cookiecutter
+   cookiecutter idp-samples/idp-pipelines/cookiecutter-react-app/ app_name="<+pipeline.variables.project_name>" --no-input
 
-      # Generate code to be pushed
-      pip install cookiecutter
-      cookiecutter idp-samples/idp-pipelines/cookiecutter-react-app/ app_name="<+pipeline.variables.project_name>" --no-input
+   # Create repository
+   curl -L -i -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer <+pipeline.variables.github_token>" https://api.github.com/orgs/<+pipeline.variables.github_org>/repos -d "{\"name\":\"<+pipeline.variables.github_repo>\",\"description\":\"<+pipeline.variables.project_name> - A Next.js app\",\"private\":false}"
 
-      # Create repository
-      curl -L -i -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer <+pipeline.variables.github_token>" https://api.github.com/orgs/<+pipeline.variables.github_org>/repos -d "{\"name\":\"<+pipeline.variables.github_repo>\",\"description\":\"<+pipeline.variables.project_name> - A Next.js app\",\"private\":false}"
+   # Push the code
+   cd <+pipeline.variables.project_name>/
+   git init -b main
+   git config --global user.email "support@harness.io"
+   git config --global user.name "Harness Support"
+   git add .
+   git commit -m "Project init"
+   git remote add origin https://github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
+   git push https://<+pipeline.variables.github_token>@github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
+   ```
 
-      # Push the code
-      cd <+pipeline.variables.project_name>/
-      git init -b main
-      git config --global user.email "support@harness.io"
-      git config --global user.name "Harness Support"
-      git add .
-      git commit -m "Project init"
-      git remote add origin https://github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
-      git push https://<+pipeline.variables.github_token>@github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
-      ```
+6. Click **Apply Changes**.
 
-    9. Click **Apply Changes**.
 
     ### Manage variables in the pipeline
 
     The script uses several pipeline variables. The variables are as follows:
 
-  - `<+pipeline.variables.project_name>`
-  - `<+pipeline.variables.github_username>`
-  - `<+pipeline.variables.github_token>`
-  - `<+pipeline.variables.github_org>`
-  - `<+pipeline.variables.github_repo>`
+- `<+pipeline.variables.project_name>`
+- `<+pipeline.variables.github_username>`
+- `<+pipeline.variables.github_token>`
+- `<+pipeline.variables.github_org>`
+- `<+pipeline.variables.github_repo>`
 
-Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name shoule match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template. 
+Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name shoule match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template.
 
 For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template.
-
 
 </TabItem>
 <TabItem value="GitLab">
 
+5. Paste the following cookiecutter-based script into **Command**.
 
-  5. Paste the following cookiecutter-based script into **Command**.
+   The script performs the following tasks:
 
-      The script performs the following tasks:
+   1. Generates a basic Next.js app.
 
-      1. Generates a basic Next.js app.
+   2. Creates a repository with the contents. The sample code used in the command is available [here](https://github.com/harness-community/idp-samples/tree/main/idp-pipelines/cookiecutter-react-app), whichand it's essentially is a [cookiecutter project](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html). You can choose from available [cookiecutter projects](https://www.cookiecutter.io/templates) or create your own project from scratch.
 
-      2. Creates a repository with the contents. The sample code used in the command is available [here](https://github.com/harness-community/idp-samples/tree/main/idp-pipelines/cookiecutter-react-app), whichand it's essentially is a [cookiecutter project](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html). You can choose from available [cookiecutter projects](https://www.cookiecutter.io/templates) or create your own project from scratch.
+   ```sh
+   # Testing path
+   pwd
 
-      ```sh
-      # Testing path
-      pwd
+   # Pre-cleanup in case pipeline fails
 
-      # Pre-cleanup in case pipeline fails
+   rm -rf idp-samples/
+   rm -rf "<+pipeline.variables.project_name>"
 
-      rm -rf idp-samples/
-      rm -rf "<+pipeline.variables.project_name>"
+   # Clone skeleton
+   git clone https://github.com/harness-community/idp-samples
 
-      # Clone skeleton
-      git clone https://github.com/harness-community/idp-samples
+   # Generate code to be pushed
+   pip install cookiecutter
+   cookiecutter idp-samples/idp-pipelines/cookiecutter-react-app/ app_name="<+pipeline.variables.project_name>" --no-input
 
-      # Generate code to be pushed
-      pip install cookiecutter
-      cookiecutter idp-samples/idp-pipelines/cookiecutter-react-app/ app_name="<+pipeline.variables.project_name>" --no-input
+   # Create repository
+   curl --request POST --header "PRIVATE-TOKEN: <+pipeline.variables.gitlab_token>" "https://gitlab.com/api/v4/projects" --form "name=<+pipeline.variables.gitlab_repo>" --form "description=<+pipeline.variables.project_name> - A Next.js app" --form "visibility=public"
 
-      # Create repository
-      curl --request POST --header "PRIVATE-TOKEN: <+pipeline.variables.gitlab_token>" "https://gitlab.com/api/v4/projects" --form "name=<+pipeline.variables.gitlab_repo>" --form "description=<+pipeline.variables.project_name> - A Next.js app" --form "visibility=public"
+   # Push the code
+   cd <+pipeline.variables.project_name>/
+   git init -b main
+   git config --global user.email "support@harness.io"
+   git config --global user.name "Harness Support"
+   git add .
+   git commit -m "Project init"
+   git remote add origin https://gitlab.com/<+pipeline.variables.gitlab_org>/<+pipeline.variables.gitlab_repo>.git
+   git push --set-upstream https://oauth2:<+pipeline.variables.gitlab_token>@gitlab.com/<+pipeline.variables.gitlab_org>/<+pipeline.variables.gitlab_repo>.git main
+   ```
 
-      # Push the code
-      cd <+pipeline.variables.project_name>/
-      git init -b main
-      git config --global user.email "support@harness.io"
-      git config --global user.name "Harness Support"
-      git add .
-      git commit -m "Project init"
-      git remote add origin https://gitlab.com/<+pipeline.variables.gitlab_org>/<+pipeline.variables.gitlab_repo>.git
-      git push --set-upstream https://oauth2:<+pipeline.variables.gitlab_token>@gitlab.com/<+pipeline.variables.gitlab_org>/<+pipeline.variables.gitlab_repo>.git main
-      ```
+6. Click **Apply Changes**.
 
-    9. Click **Apply Changes**.
 
     ### Manage variables in the pipeline
 
     The script uses several pipeline variables. The variables are as follows:
-  
-  - `<+pipeline.variables.project_name>`
-  - `<+pipeline.variables.gitlab_username>`
-  - `<+pipeline.variables.gitlab_token>`
-  - `<+pipeline.variables.gitlab_org>`
-  - `<+pipeline.variables.gitlab_repo>`
 
-  Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name shoule match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template. 
+- `<+pipeline.variables.project_name>`
+- `<+pipeline.variables.gitlab_username>`
+- `<+pipeline.variables.gitlab_token>`
+- `<+pipeline.variables.gitlab_org>`
+- `<+pipeline.variables.gitlab_repo>`
 
-  For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template.
+Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name shoule match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template.
 
+For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template.
 
 </TabItem>
 </Tabs>
-
 
 You can use the **Variables** button on the floating sidebar on the right-hand side to open the Variables page for the pipeline.
 
@@ -338,13 +331,14 @@ Also the token input is used as a paremeter under `steps` as `apikey`
           ...
         apikey: ${{ parameters.token }}
 ```
+
 This is a custom component we created to authenticate the call to execute the pipeline on the basis of the logged-in user's credentials.
 
 ### Action to trigger the pipeline
 
 :::info
 
-The template actions currently supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#add-the-run-step), also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values). 
+The template actions currently supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#add-the-run-step), also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
 
 :::
 
@@ -358,7 +352,7 @@ Now navigate to the **Create** page in IDP. You will see the newly created templ
 
 ### Unregister/Delete Template
 
-1. Navigate to the **Catalog** page, and select **Template** under Kind. 
+1. Navigate to the **Catalog** page, and select **Template** under Kind.
 
 ![](./static/catalog-navigation.png)
 
@@ -367,8 +361,8 @@ Now navigate to the **Create** page in IDP. You will see the newly created templ
 
 ![](./static/unregister-entity.png)
 
-4. Now on the Dialog box select **Unregister Location**. 
+4. Now on the Dialog box select **Unregister Location**.
 
 ![](./static/Unregister-location.png)
 
-5. This will delete the Template. 
+5. This will delete the Template.

@@ -22,7 +22,7 @@ import git_6 from './static/4-git-blue-circle.png'
 import git_7 from './static/5-manage-featureflags-in-git-repos-09.png' 
 import git_8 from './static/8-git-off.png' 
 
-:::caution
+:::warning
  There is a known issue with this feature. When you turn on a Feature Flag, some target rules may be reordered in your Git repo. This doesn't affect the functionality of your Feature Flag or targets and we are working to fix this issue as soon as possible.
 :::
 
@@ -58,7 +58,7 @@ The synchronization between the Harness Platform and the `flags.yaml` file works
 
 If you don’t see the changes you made in Git reflected on the Harness Platform after approxymately 5 min, refresh the page.
 
-:::caution
+:::warning
  Syncing changes between a remote file and the Harness Platform can take up to 5 mins. During this window the changes are commited to the remote file but not yet pulled and synced by the Harness Platform. Any changes made to the Harness Platform within that window trigger remote file updates, which overwrite the content of the remote file.
 :::
 
@@ -93,7 +93,7 @@ You can create the connector beforehand in Harness, or you can create it while s
 
 You must set up Git Experience before you can turn on syncing with Git in your Feature Flags project. 
 
-:::caution
+:::warning
 Do not use **Git Management** in Project Setup. This is an older version of Git Experience that does not work with Feature Flags.
 :::
 
@@ -129,7 +129,7 @@ To set up Git Experience:
 
 You can turn the synchronization between the Harness Platform and Git on or off. The Git Experience icon is displayed on many pages, and you can toggle it on or off from any page where it appears.
 
-:::caution
+:::warning
  Turning sync on triggers an immediate attempt to sync Harness content to the remote file.
  Any changes you made to the remote file before syncing are overwritten. This can result in losing content or configurations that are not yet synced to Harness.
 :::

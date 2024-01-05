@@ -41,7 +41,7 @@ The type of API (e.g., openapi, grpc), the current set of well-known and support
 
 **openapi** - An API definition in YAML or JSON format based on the [OpenAPI](https://swagger.io/specification/) version 2 or version 3 spec.
 
-**asyncapi** - An API definition based on the [AsyncAPI](https://www.asyncapi.com/docs/specifications/latest/) spec.
+**asyncapi** - An API definition based on the [AsyncAPI specification](https://www.asyncapi.com/docs/reference/specification/latest).
 
 **graphql** - An API definition based on [GraphQL schemas](https://spec.graphql.org/) for consuming [GraphQL](https://spec.graphql.org/) based APIs.
 
