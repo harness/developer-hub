@@ -13,7 +13,7 @@ import { experiments } from "./experiments"
 
 ## Introduction
 
-SSH chaos injects chaos on the target host using SSH connections by passing custom chaos logic through a configmap.
+SSH chaos injects chaos on the target host using SSH connections by passing custom chaos logic through a ConfigMap.
 
 <ExperimentListSection experiments={experiments} />
 
@@ -21,15 +21,15 @@ SSH chaos injects chaos on the target host using SSH connections by passing cust
 
 ### SSH chaos
 
-SSH chaos injects chaos on the target host using SSH connections by passing custom chaos logic through a configmap. These scripts are executed using SSH credentials, which are securely referenced in the configmap. This enables direct fault injection on the target host. This experiment offers customisation for the chaos injection logic, providing flexibility and control over chaos experiments.
+SSH chaos injects chaos on the target host using SSH connections by passing custom chaos logic through a ConfigMap. These scripts are executed using SSH credentials, which are securely referenced in the ConfigMap. This enables direct fault injection on the target host. This experiment offers customisation for the chaos injection logic, providing flexibility and control over chaos experiments.
 
-<accordion color="green">
+<Accordion color="green">
     <summary>Use cases</summary>
 
 - SSH chaos can be used with custom chaos logic and transferred to a target VM (to execute network chaos experiments, power off, and so on).
 - This serves as a framework which can be customised to perform other chaos experiments, such as network stress, HTTP, DNS, restart service and so on.
 - This framework can be used to rollback to the orignal state of an abort event.
 
-</accordion>
+</Accordion>
 
 </FaultDetailsCard>
