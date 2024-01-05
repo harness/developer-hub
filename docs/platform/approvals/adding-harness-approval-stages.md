@@ -217,7 +217,8 @@ Use the **Include stage execution details in approval** option to include stage 
 #### Limitations of CD execution metadata feature in notifications
 - In certain situations, values for certain fields might not be resolved for future stages. In such cases, the notification will contain unresolved expressions for those fields. For instance, if a service is configured as an expression in a CD stage that comes after the current stage, then the notification will have an unresolved expression for that service.
 
-For such cases, wherein an approval step is meant for approval of a future CD stage, and the CD stage configuration contains expressions, then we recommend having appropriate expressions as a part of **Approval Message** field. Approval notification will include approval message with expressions resolved till approval step.
+  For such cases, wherein an approval step is meant for approval of a future CD stage, and the CD stage configuration contains expressions, then we recommend having appropriate expressions as a part of **Approval Message** field. Approval notification will include the approval message with expressions resolved till the approval step.
+
 - Artifact details are not supported currently.
 - Environment and infrastructure filters' details are not supported currently.
 - GitOps CD stage metadata is not supported.
