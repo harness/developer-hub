@@ -59,10 +59,9 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Hotfix
 
-- Added support for Client ID and Secret ID via env variables in delegate. (CDS-88086)
+- Added support for Client ID and Secret ID via env variables in the delegate. (CDS-88086)
 
-   You can create a Tanzu connector by setting the `AS_REFRESH_TOKEN_CLIENT_ID`, `TAS_REFRESH_TOKEN_CLIENT_SECRET`, `ENABLE_TAS_REFRESH_TOKEN_CLIENT_ID` parameters, and providing the Refresh token. The connector will generate a refresh token using the Client ID and Secret ID.
-
+   You can now create a Tanzu connector by setting the `AS_REFRESH_TOKEN_CLIENT_ID`, `TAS_REFRESH_TOKEN_CLIENT_SECRET`, `ENABLE_TAS_REFRESH_TOKEN_CLIENT_ID` parameters, and providing the Refresh token. The connector will generate a Refresh token using the Client ID and Secret ID.
 
 ## December 2023
 
