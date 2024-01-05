@@ -1,7 +1,6 @@
 ---
-title: Create and configure a codebase
+title: Configure codebase
 description: CI pipelines build and test code that is pulled from Git code repositories.
-
 sidebar_position: 10
 helpdocs_topic_id: mozd8b49td
 helpdocs_category_id: ojaa8v6fwz
@@ -114,14 +113,11 @@ For more information about Build stage settings, go to [CI Build stage settings]
 
 ## Edit the default codebase configuration
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual">
-
 
 To edit a pipeline's default codebase configuration, select **Codebase** on the right side panel of the Pipeline Studio's Visual editor.
 
@@ -129,10 +125,8 @@ To edit a pipeline's default codebase configuration, select **Codebase** on the 
 
 <DocImage path={require('./static/create-and-configure-a-codebase-03.png')} />
 
-
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
-
 
 To edit a pipeline's default codebase configuration in the YAML editor, edit the `codebase` section. For example:
 
@@ -157,10 +151,8 @@ pipeline:
             cpu: 400m
 ```
 
-
 </TabItem>
 </Tabs>
-
 
 In addition to changing the **Connector** (`connectorRef`) or **Repository Name** (`repoName`), you can edit the following advanced settings.
 

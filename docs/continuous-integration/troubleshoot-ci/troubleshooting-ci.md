@@ -80,7 +80,7 @@ For more information about self-signed certificates, delegates, and delegate env
 
 ## Clone codebase errors
 
-For troubleshooting information related to cloning codebases, go to [Create and configure a codebase - Troubleshooting](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#troubleshooting).
+For troubleshooting information related to cloning codebases, go to [Configure codebase - Troubleshooting](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#troubleshooting).
 
 ## Logging issues
 

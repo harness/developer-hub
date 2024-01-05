@@ -28,7 +28,7 @@ If you need to clone LFS-enabled repositories or run `git lfs` commands (such as
 
 When you add a **Build** stage to a CI pipeline, you specify the Git account or repository where your code is stored. The codebase declared in a pipeline's first stage becomes the pipeline's default codebase, and this repo is cloned into the workspace automatically when the pipeline runs.
 
-For more information about creating pipelines, configuring the **Build** stage, and specifying the default codebase, go to [CI pipeline creation overview](../prep-ci-pipeline-components.md), [Create and configure a codebase](./create-and-configure-a-codebase.md), and [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
+For more information about creating pipelines, configuring the **Build** stage, and specifying the default codebase, go to [CI pipeline creation overview](../prep-ci-pipeline-components.md), [Configure codebase](./create-and-configure-a-codebase.md), and [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
 
 ## Add a Git Clone or Run step
 

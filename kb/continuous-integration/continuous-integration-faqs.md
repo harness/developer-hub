@@ -10,7 +10,7 @@ Yes. [Harness CI offers many options for mobile app development.](https://develo
 
 ## I have a MacOS build, do I have to use homebrew as the installer?
 
-No. Your build infrastructure can be configured to use whichever tools you like. For example, Harness Cloud build infrastructure includes preinstalled versions of xcode and other tools, and you can install other tools or versions of tools that you prefer to use. For more information, go to the [CI macOS and iOS guide](https://developer.harness.io/tutorials/ci-pipelines/build/ios).
+No. Your build infrastructure can be configured to use whichever tools you like. For example, Harness Cloud build infrastructure includes p-reinstalled versions of xcode and other tools, and you can install other tools or versions of tools that you prefer to use. For more information, go to the [CI macOS and iOS guide](https://developer.harness.io/tutorials/ci-pipelines/build/ios).
 
 ## Build infrastructure
 
@@ -238,9 +238,9 @@ The workaround here is to use single replica delegates for these types of tasks 
 
 ### Can I mount internal CA certs on the CI build pod?
 
-Yes.
+Yes. With a Kubernetes cluster build infrastructure, you can make the certs available to the delegate pod, and then set `DESTINATION_CA_PATH`. For `DESTINATION_CA_PATH`, provide a list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`. For more information, go to [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
 
-With a Kubernetes cluster build infrastructure, you can make the certs available to the delegate pod, and then set `DESTINATION_CA_PATH`. For `DESTINATION_CA_PATH`, provide a list of paths in the build pod where you want the certs to be mounted, and mount your certificate files to `opt/harness-delegate/ca-bundle`. For more information, go to [Configure a Kubernetes build farm to use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
+### Can I use self-signed certs with local runner build infrastructure?
 
 With a local runner build infrastructure, you can use `CI_MOUNT_VOLUMES` to use self-signed certificates. For more information, go to [Set up a local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
 
@@ -258,18 +258,13 @@ The usage of the mounted CA certificates depends on the specific container image
 
 ## Codebases
 
-#### What is a codebase in a Harness pipeline?
+### What is a codebase in a Harness pipeline?
 
-When adding a Build stage to a CI pipeline, specify the Git account and repository where your code is stored. 
+The codebase is the Git repository where your code is stored. Pipelines usually have one [primary or default codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase). If you need files from multiple repos, you can [clone additional repos](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
 
-#### Which Codebase is utilized during a build deployment? 
+### How do I connect my code repo to my Harness pipeline?
 
-The codebase declared in the first stage of a pipeline becomes the pipeline's default codebase
-
-#### How to create and configure a codebase?
-
-CI pipelines build and test code that is pulled from a Git code repository. When you add a Build stage to a CI pipeline, you can select a code repo connector that connects to the Git account or repository where your code is stored.
-For details, go to [Create and configure a codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase).
+For instructions on configuring your pipeline's codebase, go to [Configure codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase).
 
 #### Is there a way to skip the default clone codebase step in CI pipeline as it seems to be added with all the execution automatically?
 
@@ -444,6 +439,10 @@ Artifacts and images are pulled into the [stage workspace](https://developer.har
 
 
 ## Build and push images
+
+### Where does the pipeline get code for a build?
+
+The codebase declared in the first stage of a pipeline becomes the pipeline's [default codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase). If your build requires files from multiple repos, you can [clone additional repos](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
 
 #### How to build and push artifacts and images?
 

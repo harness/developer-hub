@@ -15,7 +15,7 @@
 | Describe and configure Artifact Repositories like cont registry, object store, jfrog, nexus, etc | [Connect to an Artifact repository](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo/) |
 | Delve into Harness Connectors: configuration of Git, DockerHub, and more | [Connectors](/docs/category/connectors) |
 | **4. Harness CI Pipelines and Advanced Features** ||
-| Master Codebase configuration, shared paths, and step library, including plugin configurations | [Create and configure a codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) |
+| Master Codebase configuration, shared paths, and step library, including plugin configurations | [Configure codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) |
 | Understand and set up advanced features like caching intelligence, test intelligence, and flow control | [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/) |
 | Configure pipeline features, including triggers, input sets, failure strategies, looping, and notifications | [Input sets and overlays](/docs/platform/pipelines/input-sets) |
 | **5. Pipeline Execution Strategies** ||

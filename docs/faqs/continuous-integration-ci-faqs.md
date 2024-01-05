@@ -96,6 +96,7 @@ See community PR for more details: [https://github.com/harness/drone/commit/d50e
 If a Run Test Step is part of a Kubernetes infrastructure, then the resources (CPU and Memory) can be configured as part of the step. This is not the case if the Run Test Step has a VM or Cloud Infra assigned. In this case the entire memory allocation of the VM is allocated to the step. 
 
 ## Which Drone plugins are supported in Harness CI?
+
 You can build your own plugins or use one of the many preexisting plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/), [GitHub Actions Marketplace](https://github.com/marketplace?type=actions), or the [Bitrise Integrations library](https://bitrise.io/integrations/steps).
 Yes, for details, go to [Use plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins).
 
@@ -122,10 +123,9 @@ For details, go to [Build and push artifacts and images](https://developer.harne
 With Harness Cloud, you can run builds in isolation on Harness-hosted VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines
 For details, go to [Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
 
-## How to create and configure a codebase?
+## How do I connect my pipeline to my code repo?
 
-CI pipelines build and test code that is pulled from a Git code repository. When you add a Build stage to a CI pipeline, you can select a code repo connector that connects to the Git account or repository where your code is stored.
-For details, go to [Create and configure a codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase).
+For instructions on connecting your code repo to your pipeline, go to [Configure codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase).
 
 ## CI codebase variables reference
 
