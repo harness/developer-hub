@@ -81,6 +81,8 @@ Execute the following command to create the `cicd-gitops-pipeline` with the CI s
 harness pipeline --file cipipeline.yaml apply
 ```
 
+Click **Run** and then **Run Pipeline** to start the pipeline execution. A successful pipeline execution will produce a new image with the **latest** tag under the **harness-gitops-workshop** repository on your docker image registry.
+
 ## Create the ApplicationSet
 
 For this section, you will need to have a Kubernetes cluster. Execute the following command to verify if you are connected to a Kubernetes cluster:
