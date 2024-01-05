@@ -30,15 +30,9 @@ Harness has several build infrastructure options that support multiple types of 
 
 Yes, each stage can have a different build infrastructure. Additionally, depending on your stage's build infrastructure, you can also run individual steps on containers rather than the host. This flexibility allows you to choose the most suitable infrastructure for each part of your CI pipeline.
 
-### Error when running Docker commands on Windows build servers
-
-Make sure that the build server has the [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/about) installed. This error can occur if the container can't start on the build system.
-
 ### Can I run builds locally? Can I run builds directly on my computer?
 
 Yes. For instructions, go to [Set up a local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
-
-## Self-hosted VMs
 
 ### Can I use the same build VM for multiple CI stages?
 
@@ -57,40 +51,6 @@ For AWS VMs, you can set `hibernate` in your `pool.yml` to hibernate warm VMs wh
 ### Do I need to install Docker on the VM that runs the Harness Delegate and Runner?
 
 Yes. Docker is required for [self-hosted VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures).
-
-### How do I specify the disk size for a Windows instance in pool.yml?
-
-With [self-hosted VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures), the `disk` configuration in your `pool.yml` specifies the disk size (in GB) and type.
-
-For example, here is a Windows pool configuration for an [AWS VM build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure):
-
-```yaml
-version: "1"
-instances:
-  - name: windows-ci-pool
-    default: true
-    type: amazon
-    pool: 1
-    limit: 4
-    platform:
-      os: windows
-    spec:
-      account:
-        region: us-east-2
-        availability_zone: us-east-2c
-        access_key_id: 
-        access_key_secret: 
-        key_pair_name: XXXXX
-      ami: ami-088d5094c0da312c0
-      size: t3.large ## VM machine size.
-      hibernate: true
-      network:
-        security_groups:
-          - sg-XXXXXXXXXXXXXX
-      disk:
-        size: 100 ## Disk size in GB.
-        type: "pd-balanced"
-```
 
 ## Harness Cloud
 
@@ -256,6 +216,80 @@ There are multiple ways you can do this:
 
 The usage of the mounted CA certificates depends on the specific container image used for the step. The default certificate location depends on the base image you use. The location where the certs need to be mounted depends on the container image being used for the steps that you intend to run on the build pod.
 
+## Windows builds
+
+### Error when running Docker commands on Windows build servers
+
+Make sure that the build server has the [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/about) installed. This error can occur if the container can't start on the build system.
+
+### Is rootless configuration supported for builds on Windows-based build infrastructures?
+
+No, currently this is not supported for Windows builds.
+
+### What is the default user set on the Windows Lite-Engine and Addon image?
+
+The default user for these images is `ContainerAdministrator`.
+
+### Can I change the default user in the Windows LE/Addon images?
+
+No. The default user for these images must be `ContainerAdministrator` because specific path and tool installations require it, and Windows doesn't allow setting the path otherwise.
+
+### How does `ContainerAdministrator` differ from other user identities in the Windows LE/Addon images?
+
+`ContainerAdministrator` is assigned elevated privileges similar to the root user on Linux, allowing for system-level configurations and installations within the Windows container.
+
+### Can I use custom cache paths on a Windows platform with Cache Intelligence?
+
+Yes, you can use [custom cache paths](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-paths) with Cache Intelligence on Windows platforms.
+
+### How do I specify the disk size for a Windows instance in pool.yml?
+
+With [self-hosted VM build infrastructure](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures), the `disk` configuration in your `pool.yml` specifies the disk size (in GB) and type.
+
+For example, here is a Windows pool configuration for an [AWS VM build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure):
+
+```yaml
+version: "1"
+instances:
+  - name: windows-ci-pool
+    default: true
+    type: amazon
+    pool: 1
+    limit: 4
+    platform:
+      os: windows
+    spec:
+      account:
+        region: us-east-2
+        availability_zone: us-east-2c
+        access_key_id: 
+        access_key_secret: 
+        key_pair_name: XXXXX
+      ami: ami-088d5094c0da312c0
+      size: t3.large ## VM machine size.
+      hibernate: true
+      network:
+        security_groups:
+          - sg-XXXXXXXXXXXXXX
+      disk:
+        size: 100 ## Disk size in GB.
+        type: "pd-balanced"
+```
+
+## Default user, root access, and run as non-root
+
+### Which user does Harness use to run steps like Git Clone, Run, and so on? What is the default user ID for step containers?
+
+Harness uses user `1000` by default. You can use a step's **Run as User** setting to use a different user for a specific step.
+
+### Can I enable root access for a single step?
+
+If your build runs as non-root (meaning you have set `runAsNonRoot: true` in your build infrastructure settings), you can run a specific step as root by setting **Run as User** to `0` in the step's settings. This setting uses the root user for this specific step while preserving the non-root user configuration for the rest of the build. This setting is not available for all build infrastructures, as it is not applicable to all build infrastructures.
+
+### When I try to run as non-root, the build fails with "container has runAsNonRoot and image has non-numeric user (harness), cannot verify user is non-root"
+
+This error occurs if you enable **Run as Non-Root** without configuring the default user ID in **Run as User**. For more information, go to [CI Build stage settings - Run as non-root or a specific user](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#run-as-non-root-or-a-specific-user).
+
 ## Codebases
 
 ### What is a codebase in a Harness pipeline?
@@ -331,7 +365,9 @@ Yes. You can run any commands in a Run step. With respect to Git, for example, y
 
 ### What expression can I use to get the repository name and the project/organization name for a trigger?
 
-If your Git provider's webhook payload doesn't include a single payload value with both the project and repo name, you can concatenate two expressions together, such as `<+trigger.payload.repository.project.key>/<+trigger.payload.repository.name>`.
+You can use the expressions `<+eventPayload.repository.name>` or `<+trigger.payload.repository.name>` to reference the repository name from the incoming trigger payload.
+
+If you want both the repo and project name, and your Git provider's webhook payload doesn't include a single payload value with both names, you can concatenate two expressions together, such as `<+trigger.payload.repository.project.key>/<+trigger.payload.repository.name>`.
 
 ### The expression `<+eventPayload.repository.name>` causes the clone step to fail when used with a Bitbucket account connector.
 
@@ -339,56 +375,71 @@ Try using the expression `<+trigger.payload.repository.name>` instead.
 
 ## SCM status updates and PR checks
 
-#### Is it achieveable If user disable the option clone codebase, instead user want to use the git clone step to get the Git statuses?
+### Does Harness supports Pull Request status updates?
 
-No, User need to enable the clone code base configurution in the CI stage.
+Yes. Your PRs can use the build status as a PR status check. For more information, go to [SCM status checks](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks).
 
-#### How can we share a failed step's output in a pull request comment as part of a CI pipeline execution?
-Below given one of the methods with which we could achieve this.
+### How do I configure my pipelines to send PR build validations?
 
-- Modify the failed step's command to save output to a file: `your_command 2>&1 | tee output_file.log`
-- Read the file's content in a subsequent step which is configured to run always
-- Use the GitHub API to add a comment to the pull request, including details from the file.
+Harness uses the pipeline's codebase connector to send status updates to PRs in your Git provider. To get status updates in your PRs, you must:
 
-#### Why the build status is not reflecting on the PR if the repository is in a github orginisation despite having full permission for the token used in the git connector?
+1. [Configure a default codebase for your pipeline.](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase)
+2. Make sure you enable API access in your [code repo connector](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#code-repo-connectors) settings.
+3. Run PR builds. Branch and tag builds don't send PR status updates. You can use [webhook triggers](https://developer.harness.io/docs/platform/triggers/triggering-pipelines) to automatically run builds when PRs are created or updated.
 
-This could be due to the fact that the user/account that is added to the organization using a repository role which doesnt have enough permission to write to the repository. If the repository role doesnt have enough permission, the PAT user account used in the git connector will not be able to update the PR even if the token has full permission.
+### Can I use the Git Clone step, instead of the built-in clone codebase step, to get build statues on my PRs?
 
-#### Does harness supports pull request git statuses?
-Yes harness supports pull request build validation.
+No. You must use the built-in clone codebase step (meaning, you must [configure a default codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase)) to get [pipeline links in PRs](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks#pipeline-links-in-prs).
 
-#### For pull request build validation is there any specfic configurution need to done?
-Yes, The Git connector should enabled with API access to get the git statuses and also need to enable the clone code base configurution.
+### Can I export a failed step's output to a pull request comment?
 
-#### In case of multi stage pipeline, will the CI stage execution update the build status in PR even if the clone codebase option is disabled in that stage?
+To do this, you could:
 
-Yes, currently the CI stage execution updates the build status on PR even if the clone codebase option is disabled for that specific stage however there are some work in progres to improve this experience
+1. Modify the failed step's command to save output to a file, such as `your_command 2>&1 | tee output_file.log`.
+2. After the failed step, add a Run step that reads the file's content and uses your Git provider's API to export the file's contents to a pull request comment.
+3. Configure the subsequent step's [conditional execution settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings) to **Always execute this step**.
 
-#### Do we need to have a CI stage in the pipeline to get the PR updated with the build status?
+### Build statuses don't show on my PRs, even though the code base connector's token has all repo permissions.
 
-Yes, the build status is updated on the PR only when a CI stage is executed.
+If the user account used to generate the token doesn't have repository write permissions, the resulting token won't have sufficient permissions to post the build status update to the PR. Specific permissions vary by connector. For example, [GitHub connector credentials](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings) require that personal access tokens have all `repo`, `user`, and `admin:repo_hook` scopes, and the user account used to generate the token must have admin permissions on the repo.
 
-#### When multiple CI stages exist in a pipeline, will the build status be updated on the pull request for each individual stage or for the entire pipeline?
+For repos under organizations or projects, check the role/permissions assigned to the user in the target repository. For example, a user in a GitHub organization can have some permissions at the organization level, but they might not have those permissions at the individual repository level.
 
-The build status will be updated for the individual CI stages
+### Does my pipeline have to have a Build stage to get the build status on the PR?
 
-#### Is there any character limit for the build status message updated on PR?
+Yes, the build status is updated on a PR only if a Build (CI) stage runs.
 
-Yes. Github has a limit of 140 characters for the message that can be updated on the PR post which the call will fail with an error ```description is too long (maximum is 140 characters)```
+### My pipeline has multiple Build stages. Is the build status updated for each stage or for the entire pipeline?
 
-#### What identifiers will be included in the build status message which is updated on PR during the CI stage execution?
+The build status on the PR is updated for each individual Build stage.
 
-Pipeline identifier and stage identifier will be included in the build status message.
+### My pipeline has multiple Build stages, and I disabled Clone Codebase for some of them. Why is the PR status being updated for the stages that don't clone my codebase?
 
-#### How to configure the git connector to not update the PR with the build status?
+Currently, Harness CI updates the build status on a PR even if you [disabled Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages) for a specific build stage. We are investigating enhancements that could change this behavior.
 
-One option would be to remove the API access from the cdebase connector so that the build status will not be updated on the PR
+### Is there any character limit for the PR build status message?
 
-#### What is the complete format used in the build status messages which is updated on PR during the CI stage execution?
+Yes. For GitHub, the limit is 140 characters. If the message is too long, the request fails with `description is too long (maximum is 140 characters)`.
 
-The build status message format is ```<pipeline_identifier>-<stage_identifier> — Execution status of Pipeline - <pipeline_identifier> (execution_ID) Stage - <stage_identifier> was SUCCEEDED```
+### What identifiers are included in the PR build status message?
 
+The pipeline identifier and stage identifier are included in the build status message.
 
+### I don't want to send build statuses to my PRs.
+
+Because the build status updates operate through the default codebase connector, the easiest way to prevent sending PR status updates would be to [disable Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages) for all Build stages in your pipeline, and then use a [Git Clone or Run step](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#add-a-git-clone-or-run-step) to clone your codebase.
+
+You could try modifying the permissions of the code repo connector's token so that it can't write to the repo, but this could interfere with other connector functionality.
+
+Removing API access from the connector is not recommended because API access is required for other connector functions, such as cloning the codebase.
+
+### What is the format of the content in the PR build status message?
+
+The PR build status message format is `PIPELINE_IDENTIFIER-STAGE_IDENTIFIER — Execution status of Pipeline - PIPELINE_IDENTIFIER (EXECUTION_ID) Stage - STAGE_IDENTIFIER was STATUS`
+
+### Why was the PR build status not updated for Approval stage?
+
+Build status updates occur for Build stages only.
 
 ## Pipeline initialization and Harness CI images
 
@@ -440,6 +491,10 @@ Artifacts and images are pulled into the [stage workspace](https://developer.har
 
 
 ## Build and push images
+
+### How can I improve build time, aside from caching?
+
+You can increase the Memory and CPU of the Build and Push step to improve the build process duration.
 
 ### Where does the pipeline get code for a build?
 
@@ -678,6 +733,33 @@ DinD cannot be used on platforms that do not support privileged mode. For exampl
 
 The error "Pod not supported on Fargate: invalid SecurityContext fields: Privileged" occurs because AWS Fargate does not support the use of privileged containers.
 
+## Gradle
+
+#### How can user enable the Gradle Daemon in builds?
+
+To enable the Gradle Daemon in your Harness CI builds, you can include the `--daemon` option when running Gradle commands in your build scripts. This option instructs Gradle to use the daemon process.
+
+## Maven
+
+#### How can I retrieve the Maven project version from the pom.xml file and pass it to the subsequent Docker build step as the build argument?
+
+You could assign the version value to a variable in a run step with a command something similar to `version=$(cat pom.xml | grep -oP '(?<=<version>)[^<]+')` and then this variable can be configured as the output variable in the run step. In the subsequent build step you could use this output variable from the previous run step as the build argument using an expression similar to `<+pipeline.stages.test.spec.execution.steps.Run_2.output.outputVariables.version>` (In this example, stage name=test, step name=Run_2 and the output variable name is version)
+
+#### Where to store mvn project settings.xml in harness ci
+
+You can add this settings.xml as a secret file in Harness and then configure a shell script so that this file goes to the desired directory in the build.
+
+[Override secrets in settings.xml at runtime](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/modify-and-override-build-settings-before-a-build)
+
+To share it between stages, use `sharedpath`.
+
+[Share CI data across steps and stages](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages)
+
+#### How to store mvn project settings.xml in Harness CI?
+
+You can achieve this by storing the XML as a secret and referring to it within a step. For example:
+`echo '<+secrets.getValue("account.[settingsXMLSecretID]")>' > settings.xml`
+
 ## Plugins and integrations
 
 #### Which Drone plugins are supported in Harness CI?
@@ -807,10 +889,6 @@ By default, Cache Intelligence stores data to be cached in the /harness director
 
 #### How do I specify custom cache paths in Cache Intelligence?
 To specify custom cache paths in Cache Intelligence, you can provide a list of locations that you want to be cached. For the detailed process you can refer to this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-paths).
-
-#### Can I use custom cache paths on a Windows platform with Cache Intelligence?
-
-Yes, you can use custom cache paths, including on Windows platforms, with Cache Intelligence. 
 
 #### How does Harness generate cache keys for caching build artifacts?
 
@@ -942,15 +1020,19 @@ While we support output variables that can point to an environment variable, we 
 
 The conditions in JEXL only allow the use of variable expressions that can be resolved before the stage is executed. Since environment variables are resolved during runtime, it is not possible to utilize variable expressions that cannot be resolved until the stage is run.
 
+### Can I add notifications, such as failure notifications, to stage templates?
+
+While notifications are a pipeline-level setting that is not explicitly available at the stage level, you can use Plugin steps to add notifications in your stage templates. Configure the Plugin step to use a [use a Drone plugin](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci) or a [custom plugin](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins) to send an [email notification](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin), [Slack notification](https://plugins.drone.io/plugins/slack), or otherwise.
+
 ## Logs and execution history
 
-#### Does Harness limit the length of a log line?
+### Does Harness limit log line length?
 
 Yes, there is a single-line limit of 25KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`. Furthermore, there is an overall log limit of 5MB per step. Harness truncates logs larger than 5MB.
 
-If you need to extract long log lines or logs larger than 5MB, include a Run step in your pipeline that writes the logs to a file and uploads the file as an artifact. For more information, go to [Troubleshoot CI: Truncated execution logs](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#truncated-execution-logs).
+If you need to extract long log lines or logs larger than 5MB, include a Run step in your pipeline that writes the logs to a file and uploads the file as an artifact. For more information, go to [Troubleshoot CI - Truncated execution logs](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#truncated-execution-logs).
 
-#### Why does the Harness step continue to show success even after executing exit 1 inside a bash function that is running in background in the script?
+### Why does a step show success even after executing exit 1 inside a bash function that is running in background in the script?
 
 The step in Harness determines its status based on the exit status received from the script execution. When you call a function in the background within your script, it doesn't directly impact the exit status of the main script. Therefore, if you manually call exit 1 within the function, it won't cause the step to fail. This behavior is consistent with how scripts operate both inside and outside of Harness.
 
@@ -973,124 +1055,57 @@ See the site for more details [https://developer.harness.io/docs/platform/pipeli
 
 ## Debug mode
 
-#### Why the debug mode ssh session is getting closed after sometime?
+### Why does the debug mode SSH session close after some time?
 
-SSH debug session will automatically terminate after one hour or at the step timeout limit, whichever occurs first
+Sessions automatically terminate after one hour or at the step timeout limit, whichever occurs first.
 
-#### When we run the pipeline in debug mode, do we need to have a step failure in order to be able to remotely connect to the build pod/VM?
+### Why can't I launch a remote debug session? Can I debug a pipeline that doesn't have an obvious failure?
 
-Yes. The remote debug ssh session details will only be shown after a step failure when you run the pipeline in debug mode
+There are several [debug mode requirements](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/debug-mode#debug-mode-requirements), namely that the pipeline must have a failed step in order to generate the debug session details. If your build doesn't have any failed steps, you won't be able to access a remote debug session. However, you can force a build to fail if you need to troubleshoot pipelines that appear to build successfully but still need remote troubleshooting. To do this, add a Run step with the command exit 1. This forces the build to fail so you can re-run it in debug mode.
 
-#### How can we get the remote rebug session of a pipeline running without any failure for troubleshooting purpose?
+### Re-run in debug mode isn't available for a new pipeline
 
-Remote debug session will only be presented if there is a failure in the pipeline. If the pipeline is executing successfully but we still want to have the debug session for troubleshooting purpose, we could add a run step with command ```exit 1```   which will fail the build and you can then rerun it in debug mode
-
-#### Why can we not see the option `Re-run in debug mode` for a new pipeline?
-
-Debug mode is not available for the first build of the pipeline. We should run the pipeline atleast once to be able to run it in debug mode.
-
-## Templates and input sets
-
-#### Can we change the Git Connector of a template and keep the version, repo, etc?
-
-There's direct option to change such things. Go to template listing page, click on 3 dots on any template for further options and you will see "edit git metadata" option over there.
-
-#### Why can't we find the Notify Option in my Stage Template?
-
-The absence of the 'Notify' option in the Stage template is expected behavior as the notifications are configured at the pipeline level and it is not available at the individual stage level. Therefore, you won't find the 'Notify' option when creating a stage-level template.
-
-#### How Can I Set Up Notifications for Failures in Stage Templates?
-
-While notifications are a pipeline-level setting and not available at the stage level, you can still set up notifications for failures in your Stage templates. You can achieve this by adding a plugin step in a CI stage that sends notifications. Harness supports drone plugins like email and Slack, which can be used to notify about failures.
-
-#### How can Harness input sets help automate a CI pipeline?
-
-Input sets are a collection of runtime inputs for a Pipeline execution. With input sets, you can use the same pipeline for multiple scenarios. You can define each scenario in an input set or overlay, and then select the appropriate scenario when you execute the pipeline. 
+Debug mode is not available for a pipeline's first build. Run the pipeline again and, if it meets the [debug mode requirements](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/debug-mode#debug-mode-requirements), you should be able to trigger re-run in debug mode.
 
 ## CI with CD
 
-#### Why did the CI stage still go through despite setting a freeze window?
+### Why did the CI stage still go through despite setting a freeze window?
 
 [Freeze windows only apply to CD stages.](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/#freeze-windows-only-apply-to-cd-stages)
 
-#### Why the build status is not getting updated for approval stage?
+### Can I use the expression \<+codebase.commitSha> in a CD stage to get the commit ID?
 
-Build status is updated at the stage level and happens only for the CI stage
+Yes, you can use `<+codebase.commitSha>` to get the commit ID if the CD stage is after the Build (CI) stage in your pipeline.
 
-#### Can we use \<+codebase.commitSha> variable in CD Stage to get commit id?
-Yes you can able to get the commit id by using \<+codebase.commitSha> variable, you can use the same variable in the CD stage to get the commit id in same pipeline after CI stage.
+This expression doesn't work if there is no CI stage in your pipeline, or if the CD stage runs before the CI stage.
 
-#### Will \<+codebase.commitSha> variable will work in CD stage if CI stage is not present in the pipeline?
-The \<+codebase.commitSha> variable will not work in the CD Stage without the CI stage in the pipeline.
+Additionally, including a clone step in your CD stage won't populate the `<+codebase.commitSha>` expression. This expression is dependent on the CI stage's built-in clone codebase step.
 
-#### If user can again define clone step in the CD and will they can able to get the commidID there again without CI stage in the pipeline?
-No, user can't able to get commit id in that case.
+### Can I reference a secret type output variable exported from a CD or custom stage in CI stage?
 
-#### How can we reference the secret type output variable exported from CD/custome stage in CI stage?
+No. Currently CI stages don't support secret type output variables from CD or custom stages.
 
-Currently, the secret-type output variable exported from a step in a CD/custom stage is not supported in CI stage
-
-## Triggers
-
-#### Is it possible to trigger a CI stage by a trigger of type artifact ?
+### Can I trigger a Build stage with an artifact trigger?
 
 While it is possible to [trigger deployments with artifact triggers](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/), there are currently no CI-specific triggers for artifacts.
 
-#### What expression can I use to refer to the repository name from the incoming payload for a trigger?
-
-The expression ```<+eventPayload.repository.name>``` can be used to reference the repository name from the incoming trigger payload
-
-## Default user, root access, rootless, non-root
-
-#### Is rootless configuration supported for Windows build infrastructures?
-
-No, currently this is not supported for Windows builds.
-
-#### Can I enable root access for a single step?
-
-If your build runs as non-root (meaning you have set `runAsNonRoot: true`), you can run a specific step as root by setting **Run as User** to `0` in the step's settings. This setting uses the root user for this specific step while preserving the non-root user configuration for the rest of the build. This setting is not available for all build infrastructures, as it is not applicable to those build infrastructures.
-
-#### Which user does Harness uses to run steps like Git clone, Run, and so on?
-
-Harness uses user 1000 by default.
-
-#### What is the default user set on the windows lite-engine and addon image?
-
-The default user set on the windows lite-engine and addon image is `ContainerAdministrator`
-
-#### Can the default user in Windows LE/Addon images be changed?
-
-No, the default user in Windows LE/Addon images needs to be `ContainerAdministrator` because specific path and tool installations require it, and Windows does not allow setting the path otherwise.
-
-#### How does `ContainerAdministrator` differ from other user identities in Windows LE/Addon images?
-
-`ContainerAdministrator` is assigned elevated privileges similar to the root user on Linux, allowing for system-level configurations and installations within the Windows container
-
-#### Why is the execution failing with the error `Error: container has runAsNonRoot and image has non-numeric user (harness), cannot verify user is non-root`, when we enable "Run as Non-Root"?
-
-This happens when you enable the option "Run as Non-Root" but not configured the default USRID. When we enable the option "Run as Non-Root", we need to configure a default user ID for all step containers in the Run as User field.
-
-#### What is the default user ID assigned to a step container?
-
-By default, the step containers will be running with USERID 1000 and this can be configured in the step's optional configuration
-
 ## Performance and build time
 
-#### How can we improve the build process duration apart from cache layer?
+### What are the best practices to improve build time?
 
-You can increase the Memory and CPU of the Build and Push step to improve the build process duration.
+For information about making your pipelines faster and more efficient, go to [Optimize and enhance CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).
 
-#### Is there any best practices to follow while implementing the pipeline for build time?
+### How do I reduce the time spent downloading dependencies for CI builds?
 
-Yes, you can refer to our [documentation](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/#optimize-docker-images) to optimize and enhance the build process.
+You can create pre-built Docker images that have all required dependencies, and then periodically update these images with the latest dependencies. This approach minimizes dependency download time during the build process by packaging your dependencies into one image. Harness offers [pre-build public images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/public-docker-images) that contain common and useful tools for CI pipelines.
 
-#### How can I reduce the time spent on downloading dependencies during CI builds?
+### What are the benefits of excluding unnecessary files and packages from Docker images?
 
-You can pre-build Docker images that include all required dependencies and periodically update these images with the latest dependencies. This approach minimizes download time during the build process.
+Excluding unnecessary files and packages reduces build times and creates in smaller, more efficient, and more portable Docker images.
 
-#### What are the benefits of excluding unnecessary files and packages from Docker images?
+### How can Harness input sets help automate a CI pipeline?
 
-Excluding unnecessary files and packages not only reduces build times but also results in smaller, more efficient, and portable Docker images.
+[Input sets](https://developer.harness.io/docs/platform/pipelines/input-sets/) are collections of runtime inputs for a pipeline executions. With input sets, you can use the same pipeline for multiple scenarios. You can define each scenario in an input set or overlay, and then select the appropriate scenario when you execute the pipeline.
 
 ### Harness Platform rate limits
 
@@ -1101,30 +1116,3 @@ For stability, Harness applies limits to prevent excessive API usage. Harness re
 Queued license limit reached means that your account has reached the maximum build concurrency limit. The concurrency limit is the number of builds that can run at the same time. Any builds triggered after hitting the concurrency limit either fail or are queued.
 
 If you frequently run many concurrent builds, consider enabling [Queue Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence) for Harness CI, which queues additional builds rather than failing them.
-
-## Maven
-
-#### How can I retrieve the Maven project version from the pom.xml file and pass it to the subsequent Docker build step as the build argument?
-
-You could assign the version value to a variable in a run step with a command something similar to `version=$(cat pom.xml | grep -oP '(?<=<version>)[^<]+')` and then this variable can be configured as the output variable in the run step. In the subsequent build step you could use this output variable from the previous run step as the build argument using an expression similar to `<+pipeline.stages.test.spec.execution.steps.Run_2.output.outputVariables.version>` (In this example, stage name=test, step name=Run_2 and the output variable name is version)
-
-#### Where to store mvn project settings.xml in harness ci
-
-You can add this settings.xml as a secret file in Harness and then configure a shell script so that this file goes to the desired directory in the build.
-
-[Override secrets in settings.xml at runtime](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/modify-and-override-build-settings-before-a-build)
-
-To share it between stages, use `sharedpath`.
-
-[Share CI data across steps and stages](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages)
-
-#### How to store mvn project settings.xml in Harness CI?
-
-You can achieve this by storing the XML as a secret and referring to it within a step. For example:
-`echo '<+secrets.getValue("account.[settingsXMLSecretID]")>' > settings.xml`
-
-## Gradle
-
-#### How can user enable the Gradle Daemon in builds?
-
-To enable the Gradle Daemon in your Harness CI builds, you can include the `--daemon` option when running Gradle commands in your build scripts. This option instructs Gradle to use the daemon process.

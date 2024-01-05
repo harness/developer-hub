@@ -4253,6 +4253,10 @@ To change the YAML file path for an existing pipeline to a non-default branch in
 - Import the YAML file from the Git repository.
 By following these steps, you can effectively change the path of the YAML file for your pipeline to a non-default branch in another repository.
 
+### Can I change a template's Git connector but keep the same version, repo, and so on?
+
+Go to the list of templates, select **More Options** (&vellip;), and then select **Edit Git Metadata**. From there, you can change the Git connector while maintaining the other settings.
+
 #### Can the `[beta]` endpoint for "account connectors" on the Harness API return CCM connectors ?
 
 No, the endpoint may not directly provide CCM connectors. Please ensure that the correct values are used for the "Harness-Account" header and "x-api-key" header.
