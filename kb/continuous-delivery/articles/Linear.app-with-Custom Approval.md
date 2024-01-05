@@ -40,10 +40,10 @@ First, use the Harness HTTP step to create a Linear issue. Configure the HTTP st
    ```
 
 4. **Headers:** Configure necessary headers for proper communication with Linear's API.
-* Content-Type: application/json
-* Authorization: `<+secrets.getValue("authorization")>`
+   * Content-Type: application/json
+   * Authorization: `<+secrets.getValue("authorization")>`
 
-Authorization should be kept secret to prevent unauthorized access. Revealing it exposes sensitive information, risking data breaches and compromising system security, making it a critical element to safeguard. 
+   Authorization should be kept secret to prevent unauthorized access. Revealing it exposes sensitive information, risking data breaches and compromising system security, making it a critical element to safeguard. 
 
 5. **Assertion:** Ensure that the HTTP response code is 200 for a successful response.
    * Assertion: `<+httpResponseCode>==200`
