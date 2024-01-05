@@ -49,7 +49,7 @@ Authorization should be kept secret to prevent unauthorized access. Revealing it
 * Assertion: `<+httpResponseCode>==200`
 
 6. **Output Variable:** Capture the newly created issue's ID for use in subsequent steps.
-* issueId = `<+json.select("data.issueCreate.issue.id", httpResponseBody)>`
+   * issueId = `<+json.select("data.issueCreate.issue.id", httpResponseBody)>`
 
 ### Add the Custom Approval shell script
 
