@@ -26,8 +26,13 @@ function CardContainer({
   children: ReactNode;
   module: string;
 }): JSX.Element {
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>, element: any) => {
+  const handleClick = (
+    e: React.MouseEvent<HTMLDivElement>,
+    element: any,
+    module: string
+  ) => {
     focusInput(element);
+    localStorage.setItem("roadmap", module);
   };
   useEffect(() => {
     const element = document.getElementById("cd");
@@ -46,7 +51,7 @@ function CardContainer({
       <div
         id={module}
         ref={element}
-        onClick={(e) => handleClick(e, element)}
+        onClick={(e) => handleClick(e, element, module)}
         className={clsx(
           "card padding--lg",
           styles.cardContainer,

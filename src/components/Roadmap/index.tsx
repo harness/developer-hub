@@ -5,17 +5,24 @@ import { CardData } from "./data/carddata";
 const Roadmap = () => {
   const [horizon, setHorizon] = useState<Horizon>(null);
   const [key, setKey] = useState({});
+  const [target, setTarget] = useState("");
+  console.log(target);
 
-  const target = document.URL.split("#")[1] ? document.URL.split("#")[1] : "cd";
   useEffect(() => {
     const foundCard = CardData.find((card) => card.module === target);
     setHorizon(null);
-    if (foundCard.horizon) {
+    if (foundCard && foundCard.horizon) {
       setHorizon(foundCard.horizon);
       const keys = Object.keys(foundCard.horizon);
       setKey(keys);
     }
   }, [target]);
+  useEffect(() => {
+    setTarget(localStorage.getItem("roadmap"));
+  }, [localStorage.getItem("roadmap")]);
+  useEffect(() => {
+    localStorage.setItem("roadmap", "cd");
+  }, []);
 
   return (
     <>

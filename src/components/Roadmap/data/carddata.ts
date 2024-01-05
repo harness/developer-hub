@@ -2,6 +2,7 @@ import { Props as CardItems } from "../Card/Card";
 import { MODULES } from "../../../constants";
 import { CdData } from "./cdData";
 import { CiData } from "./ciData";
+import { FfData } from "./ffData";
 
 export const CardData: CardItems[] = [
   {
@@ -20,7 +21,7 @@ export const CardData: CardItems[] = [
     title: "Feature Flags",
     description: "Allowing for String List in a Repeat Startegy",
     module: MODULES.ff,
-    // horizon: "ROADMAP.threemonths",
+    horizon: FfData,
   },
   {
     title: "Cloud Cost Management",
