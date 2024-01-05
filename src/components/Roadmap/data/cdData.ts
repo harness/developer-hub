@@ -1,7 +1,7 @@
 import { Horizon } from "../Card/Card";
 
 export const CdData: Horizon = {
-  timeone: [
+  "time one": [
     {
       title: "ci title 1",
       description: "description 1",

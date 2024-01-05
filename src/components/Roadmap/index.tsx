@@ -5,9 +5,8 @@ import { CardData } from "./data/carddata";
 const Roadmap = () => {
   const [horizon, setHorizon] = useState<Horizon>(null);
   const [key, setKey] = useState({});
-  const currentURL = window.location.href;
-  const url = new URL(currentURL);
-  const target = url.hash ? url.hash.slice(1) : "cd";
+
+  const target = document.URL.split("#")[1] ? document.URL.split("#")[1] : "cd";
   useEffect(() => {
     const foundCard = CardData.find((card) => card.module === target);
     setHorizon(null);
