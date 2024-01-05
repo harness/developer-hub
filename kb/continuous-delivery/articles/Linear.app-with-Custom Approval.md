@@ -53,7 +53,7 @@ Authorization should be kept secret to prevent unauthorized access. Revealing it
 
 ### Add the Custom Approval shell script
 
-The second step involves setting up a custom approval process using a Bash script. This script queries the Linear API to check the status of the created issue. Here's a detailed breakdown:
+Next, use a Bash script to set up a custom approval process. This script queries the Linear API to check the status of the created issue. Configure the Bash script as follows:
 
 **Bash Script Configuration:**
 
