@@ -4233,3 +4233,99 @@ Yes, you can run pipeline stages in parallel, deploying different services simul
 
 #### What's the benefit of using step groups? 
 Step groups simplify managing related steps, allowing you to apply common settings like skipping and failure strategies to all members.
+
+#### Can the `[beta]` endpoint for "account connectors" on the Harness API return CCM connectors ?
+
+No, the endpoint may not directly provide CCM connectors. Please ensure that the correct values are used for the "Harness-Account" header and "x-api-key" header.
+example :
+
+```sh
+➜ curl -i -X GET \
+  'https://app.harness.io/v1/connectors/_lab_ccm' \
+  -H "Harness-Account: $HARNESS_ACCOUNT_ID" \
+  -H "x-api-key: $HARNESS_PLATFORM_API_KEY"
+```
+
+Expected Response : 
+
+```sh
+{"message":"Invalid request: Connector type [CEK8sCluster] is not supported","code":null,"errors":[],"error_metadata":null}
+```
+
+Instead please try using a non [beta] endpoint : 
+example :
+```sh
+➜ curl -i -X GET \
+  "https://app.harness.io/ng/api/connectors/_lab_ccm?accountIdentifier=$HARNESS_ACCOUNT_ID" \
+  -H "x-api-key: $HARNESS_PLATFORM_API_KEY"
+```
+
+#### Does Harness support SSH deployments using the GCP connector like AWS and Azure ?
+
+No, this feature is yet to be supported. We suggest to use ssh key or user and password as datacenter as an alternative at the moment.
+
+#### Is the design of Basic intended to incorporate that behavior, similar to what is done in first Gen, where Ecs revisions are not utilized in the same manner as Ecs ?
+
+Yes, the design of Basic includes that behavior because we manage the versions through the task name and handle versioning specifically for rollback purposes in first Gen, distinguishing it from the way Ecs revisions are managed. One needs to use rolling if they want harness to not perform the naming convention changes. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/)
+
+#### Can one configure how many versions of the tanzu apps required to be maintained for Blue-Green Deployments ?
+
+Yes, Users can now configure how many versions of the tanzu apps that they want Harness to maintain for Blue Green Deployments with enabling Feature Flag: `CDS_PCF_SUPPORT_BG_WITH_2_APPS_NG`. Currently we maintain 3 (Active, Inactive, and Most recent Successful deployment). With this feature we now manage Active and Inactive more inline with the industry standard Blue Green Deployment. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart/#blue-green-deployment-support-with-a-configurable-amount-of-tanzu-applications-to-maintain)
+
+#### Is it considered an error when using helm template `--show-only` `templates/secret.yaml my-chart` results in an empty manifest, even though the template exists, and how can one prevent or handle this error message ?
+
+It will be feasible for them to consider adding a line at the top of their manifests to prevent rendering to be empty when using helm template `--show-only`. This approach would not only address the error but also provide the advantage of skipping these objects during deployment. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/ignore-a-manifest-file-during-deployment/#ignore-a-manifest)
+
+
+#### Do we support expressions in tags for pipeline level ?
+
+Yes, we support pipeline expression tags to feteh details. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/references/tags-reference/)
+
+#### Is there a way to use the `<+stage>` output as json in our functors ?
+
+Yes, you can use the JSON format function to format the output of a stage as JSON and then use it in your functors. 
+Here's an example expression that formats the output of a stage named "myStage" as JSON:
+`<+json.format(<+pipeline.stages.myStage.output>)>`
+You can then use this expression in your functors to select specific values from the JSON output of the stage.
+
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/expression-v2)
+
+#### Is there a hardcoded timeout in the Custom Secrets Manager template when receiving passwords from a remote source ?
+
+Yes, currently, 20 sec is the timeout configured for the custom Secret Manager’s fetch secret task.
+
+#### How do we pass the output list of first step to next step looping strategy "repeat", the output can be a list or array which needs to be parsed ?
+
+The Output Variable of the shell script is a string, which you are trying to pass as a list of strings, to avoid this :
+- First you need to convert your array list into a string and then pass it as an output variable.
+- Then convert this string into a list of string again before passing it to the repeat strategy.
+
+Please read more on this in the following [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/repeat-strategy)
+
+#### Can a trigger for a CD pipeline be configured to automatically pick up the tag value `<+trigger.payload.tag>` when the pipeline is executed via the trigger, and alternatively pick up `<+pipeline.variables.tag>` when the pipeline is executed manually ?
+
+For the above usecase we should use Ternary operators , refer the [docs](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#ternary-operators) for more on this.
+You can give a condition :
+`<+condition?<value_if_true>:<value_if_false>>`
+
+For the true condition `<+pipeline.triggerType>` should be WEHOOK_CUSTOM, please refer [docs](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#ternary-operators) and for the false condition you can put a runtime input `<+input>` or a pipeline variable
+
+Finally the ternary operator condition should look like:
+`<+<+pipeline.triggerType>=="MANUAL"?<+pipeline.variables.tag>:<+trigger.payload.tag>>`
+
+Please read more on this in the following [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/)
+
+
+#### Does the Azure connector support service principles ?
+
+Yes. We support System Assigned Managed Identity and User Assigned Managed Identity in the Azure Global and Government environments.
+The service principal maps to a managed identity.
+
+#### How to carry forward the output variable when looping steps ?
+
+If you are using looping strategies on steps or step groups in a pipeline, and need to carry forward the output variables to consequtive steps or with in the loop, you can use `<+strategy.iteration>` to denote the iteration count.
+
+#### How many versions of Terraform does Harness support ?
+
+Harness supports the following Terraform versions: `v1.3.5, v1.1.9, v1.0.0, v0.15.5, v0.15.0 and v0.14.0`
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-integrations#terraform-version-support)
