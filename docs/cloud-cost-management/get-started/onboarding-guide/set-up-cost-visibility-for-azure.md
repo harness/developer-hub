@@ -73,7 +73,7 @@ import TabItem from '@theme/TabItem';
 1. In the **Azure Connector** wizard, in the **Overview** section, enter the following details:
 	1. **Connector name**: Enter a name for the connector.
 	2. **Azure Tenant ID**: Enter the Tenant ID of your Azure AD account. A tenant represents an organization. It's a dedicated instance of Azure AD that an organization or app developer receives at the beginning of a relationship with Microsoft. Each Azure AD tenant is distinct and separate from other Azure AD tenants. To find your tenant ID, do the following:
-		1. Launch Azure Active Directory.
+		1. Launch Microsoft Entra ID (formerly Active Directory).
 		2. Copy the tenant ID from the Tenant information.
 		
 	<img src={tenant_info} alt="A screenshot." height="400" width="400" />
