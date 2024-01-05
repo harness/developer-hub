@@ -4323,7 +4323,7 @@ The service principal maps to a managed identity.
 
 #### How to carry forward the output variable when looping steps ?
 
-If you are using looping strategies on steps or step groups in a pipeline, and need to carry forward the output variables to consequtive steps or with in the loop, you can use <+strategy.iteration> to denote the iteration count.
+If you are using looping strategies on steps or step groups in a pipeline, and need to carry forward the output variables to consequtive steps or with in the loop, you can use `<+strategy.iteration>` to denote the iteration count.
 
 #### How many versions of Terraform does Harness support ?
 
