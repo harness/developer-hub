@@ -4,76 +4,41 @@ description: This article addresses some frequently asked questions about Harnes
 sidebar_position: 2
 ---
 
-#### Can I use Harness CI for mobile app development?
+## Can I use Harness CI for mobile app development?
 
 Yes. [Harness CI offers many options for mobile app development.](https://developer.harness.io/docs/continuous-integration/use-ci/mobile-dev-with-ci)
 
-#### What does "ErrImagePull" mean?
-
-This means that Harness couldn't pull an image necessary to run the pipeline. This can happen if there are networking issues or if the target image is not available in the specified repository.
-
-## Licenses and build credits
-
-#### Account verification error for CI Builds (Free Trial account with hosted builds)
-
-Recently Harness has been the victim of several Crypto attacks that use our freely hosted build to mine cryptocurrencies. Unfortunately, to protect our infrastructure, we now block the use of the cloud-hosted-builds infrastructure only to business domains and block it for general-use domains like Gmail, Hotmail, and Yahoo and other untrusted emails. 
- 
-To address these issues, you can do one of the following:
-Provide your own build infrastructure (like a VM with docker or a Kubernetes cluster). We have no limitations on building using your own infrastructure.
-Creating the Harness account with your work email and not a Gmail address will solve this problem.
-
-#### How many build credits are we allowed to use with Harness free version
-
-Free monthly credits for up to 2,000 build minutes.
-
-#### What is the build credit limit for Harness Free version?
-
-Upto 2,000 build minutes are possible with the Harness free version. 
-
-## Rate and queue limits
-
-#### Harness Platform Rate limits
-
-Please note that harness does limit accessive API and execution limitations. Harness does reserve the right to change these limits. 
-See site fore more details [https://developer.harness.io/docs/platform/rate-limits/]
-
-#### What does the 'Queued license limit reached' message indicate in the build UI?
-
-The 'Queued license limit reached' message in the build UI signifies that the maximum concurrency limit has been reached, and new builds are queued for execution
-
-#### Additional considerations when running concurrent builds
-
-While running concurrent builds, customers may want to consider the [Queue Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence) feature of Harness CI. This feature is behind a feature flag.
-
 ## Build infrastructure
+
+### What is build infrastructure and why do I need it for Harness CI?
+
+A build stage's infrastructure definition, the *build infrastructure*, defines "where" your stage runs. It can be a Kubernetes cluster, a VM, or even your own local machine. While individual steps can run in their own containers, your stage itself requires a build infrastructure to define a common workspace for the entire stage. For more information about build infrastructure and CI pipeline components go to:
+
+* [CI key concepts](https://developer.harness.io/docs/continuous-integration/get-started/key-concepts/)
+* [CI pipeline creation overview](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
+* [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me)
+
+#### What kind of build infrastructure can I use? Which operating systems are supported?
+
+Harness has several build infrastructure options that support multiple types of operating systems, architectures, and cloud providers. For more information, go to [Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
+
+### Can I use multiple build infrastructures in one pipeline?
+
+Yes, each stage can have a different build infrastructure. Additionally, depending on your stage's build infrastructure, you can also run individual steps on containers rather than the host. This flexibility allows you to choose the most suitable infrastructure for each part of your CI pipeline.
+
+#### I have a MacOS build, do I have to use homebrew as the installer?
+
+No. Your build infrastructure can be configured to use whichever tools you like. For example, Harness Cloud build infrastructure includes preinstalled versions of xcode and other tools, and you can install other tools or versions of tools that you prefer to use. For more information, go to the [CI macOS and iOS guide](https://developer.harness.io/tutorials/ci-pipelines/build/ios).
+
+### Error when running Docker commands on Windows build servers
+
+Make sure that the build server has the [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/about) installed. This error can occur if the container can't start on the build system.
+
+### How do I use my local machine to run builds? 
 
 <!-- some infra-specific questions might be better in a different category like "rootless/non-root/root user" -->
 
-#### What is a build infrastructure and why is it needed for a CI Stage?
-
-All stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose.
-
-#### What kind of build infrastructure can I use?
-
-Harness supports multiple types of operating systems and architecture. Including Linux, MacOS, and Windows. For more details please check out our documentation on this capability: [https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/]
-
-#### Is it possible to use different build infrastructures within a pipeline?
-
-Yes, you can configure different build infrastructures for each stage within a pipeline. This flexibility allows you to use the most suitable infrastructure for each part of your CI workflow.
-
-#### I want to develop a build built for MacOS, do I have to use homebrew as the installer?
-
-No. Your build machines can be configured to use whichever tools you like. With Harness Cloud build infrastructure, the Harness Cloud runners include preinstalled versions of xcode and other tools, and you can install other tools or versions of tools that you prefer to use. For more information, go to the [CI macOS and iOS guide](https://developer.harness.io/tutorials/ci-pipelines/build/ios).
-
-#### Why am I getting an error when trying to run a docker command on a Windows build server? 
-
-Please make sure that the build server has 'Windows Subsystem for Linux' installed. It is possible that the failure is due to the container not being able to start on the build system. 
-
 ### Local runner build infrastructure
-
-#### What all operatig systems can we set up a local runner build infrastructure in CI?
-
-We could set up a local runner build infrastructure on any Linux, macOS, or Windows host
 
 #### How can I define the build infrastructure for a local runner in the pipeline?
 
@@ -126,6 +91,19 @@ instances:
 ```
 
 ### Harness Cloud build infrastructure
+
+#### Account verification error with Harness Cloud on Free plan
+
+Recently Harness has been the victim of several Crypto attacks that use our Harness-hosted build infrastructure (Harness Cloud) to mine cryptocurrencies. Harness Cloud is available to accounts on the Free tier of Harness CI. Unfortunately, to protect our infrastructure, Harness now limits the use of the Harness Cloud build infrastructure to business domains and block general-use domains, like Gmail, Hotmail, Yahoo, and other unverified domains.
+
+To address these issues, you can do one of the following:
+
+* Use the local runner build infrastructure option, or upgrade to a paid plan to use the self-hosted VM or Kubernetes cluster build infrastructure options. There are no limitations on builds using your own infrastructure.
+* Create a Harness account with your work email and not a generic email address, like a Gmail address.
+
+#### What is the Harness Cloud build credit limit for the Free plan?
+
+The Free plan allows 2,000 build minutes per month. For more information, go to [Harness Cloud billing and build credits](https://developer.harness.io/docs/continuous-integration/get-started/ci-subscription-mgmt#harness-cloud-billing-and-build-credits).
 
 #### How to Use Harness Cloud build infrastructure?
 
@@ -459,6 +437,10 @@ You can [proxy and pull Harness CI images from your own repository](https://deve
 #### Why is the initialize step is occusionally timeout at 8 minutes?
 
 Eight minutes is the default time out of the initialization step however if the build pod is expected to pull any large images, we could increase this init timeout in the advanced section of the infrastructure configuration.
+
+### What does "ErrImagePull" mean?
+
+This means that Harness couldn't pull an image necessary to run the pipeline. This can happen if there are networking issues or if the target image is not available in the specified repository.
 
 
 ## Build and push images
@@ -1099,6 +1081,16 @@ You can pre-build Docker images that include all required dependencies and perio
 #### What are the benefits of excluding unnecessary files and packages from Docker images?
 
 Excluding unnecessary files and packages not only reduces build times but also results in smaller, more efficient, and portable Docker images.
+
+### Harness Platform rate limits
+
+For stability, Harness applies limits to prevent excessive API usage. Harness reserves the right to change these limits at any time. For more information, go to [Platform rate limits](https://developer.harness.io/docs/platform/rate-limits/).
+
+### Running concurrent builds shows "queued license limit reached"
+
+Queued license limit reached means that your account has reached the maximum build concurrency limit. The concurrency limit is the number of builds that can run at the same time. Any builds triggered after hitting the concurrency limit either fail or are queued.
+
+If you frequently run many concurrent builds, consider enabling [Queue Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence) for Harness CI, which queues additional builds rather than failing them.
 
 ## Maven
 
