@@ -29,7 +29,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### New features and enhancements
 
-* The Get Started workflow can now auto-generate starter pipelines from [Harness Code repositories](docs/code-repository). (CI-10780)
+* The Get Started workflow can now auto-generate starter pipelines from [Harness Code repositories](/docs/code-repository). (CI-10780)
 * Enhanced log retention for custom approval steps. (CI-10273, ZD-53345, ZD-53410)
 
 #### Deprecations
