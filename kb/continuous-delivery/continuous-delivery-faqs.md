@@ -4329,3 +4329,19 @@ If you are using looping strategies on steps or step groups in a pipeline, and n
 
 Harness supports the following Terraform versions: `v1.3.5, v1.1.9, v1.0.0, v0.15.5, v0.15.0 and v0.14.0`
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-integrations#terraform-version-support)
+
+#### Why Does the Expression `<+artifacts.primary.identifier>` Return "primary" Instead of the Actual Identifier?
+
+To obtain the actual identifier instead, please open a support ticket to enable the feature flag `CDS_ARTIFACTS_PRIMARY_IDENTIFIER`.
+
+#### How to Generate a Clickable Link in Harness Approval Message?
+
+While we do not officially support it, a clickable link is accessible in the Input tab of the Harness Approval step.
+
+#### How Can I Leverage the Uninstall Helm Flag Within a Custom Script?
+
+While it's not officially supported, you can obtain all Helm flags used in the Service step. Here's an example of how to retrieve them: `<+pipeline.stages.deploy.spec.manifests.helm_hello_world.commandFlags>`
+
+#### Why doesn't the pipeline roll back when the Container Step times out?
+
+The Container Step is being deprecated, and support for it will no longer be provided. Instead, we recommend incorporating a step group that is container-based in your pipeline and proceeding to create a Run step. This step will function similarly to the container step, but the rollback will operate as expected.
