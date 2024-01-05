@@ -3,7 +3,6 @@ description: KB - How to use Custom Approval with Linear.app
 title: Use Linear.app with Custom Approval
 ---
 
-# Introduction
 
 Linear.app is a powerful project management tool designed to streamline collaboration and enhance productivity. Offering a sleek and intuitive interface, Linear.app empowers teams to organize tasks, track progress, and prioritise projects seamlessly. With its emphasis on simplicity and flexibility, Linear.app provides a centralised hub for teams to coordinate efforts, making it an ideal solution for harnessing the full potential of linear workflows.
 
