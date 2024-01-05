@@ -3,7 +3,7 @@ title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
 date: 2023-12-12T10:00:15
 tags: [NextGen, "continuous delivery"]
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 import Tabs from '@theme/Tabs';
@@ -47,6 +47,47 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 </details>
 
 ## December 2023
+
+### Version 1.17.8
+
+#### Fixed issues
+
+
+- Run step missing from CD stage if used in the provision infrastructure section of **Environment**. (CDS-86994, ZD-55259)
+- Deploy CDK Error. (CDS-86930, ZD-55227)
+  - This was caused by user error, but it describes an important configuration consideration. The user used a common image (`https://gallery.ecr.aws/amazonlinux/amazonlinux`) for the step that did not include the AWS CDK requirements. This resulted in a CDK error. 
+  - The image used in CDK steps should be created based on the Harness `aws-cdk-plugin` image available at `https://hub.docker.com/r/harness/aws-cdk-plugin`, documented [here](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/aws-cdk/#docker-image-registry-connector-and-image-for-all-steps). The Harness image contains the Harness logic around the AWS CDK. You can a custom image built from `harness/aws-cdk-plugin:1.0.0` by adding support for different programming languages. See the tags at `https://hub.docker.com/r/harness/aws-cdk-plugin`tags.
+- Null AWS ASG name in logs for blue green Traffic Shift step. (CDS-86744)
+  - Harness has fixed the logs for the ASG blue green Traffic Shift step. It no longer displays null ASG names.
+- Deleting a template navigated the user to the deleted template’s details page. (CDS-86640, ZD-55063)
+  - Now a generic message is displayed when the template has been deleted.
+- Git Experience org policies not enforced. (CDS-86541, ZD-54808).
+  - Now when the Enforce Git Experience setting is enabled Harness selects the remote store type and the inline store option (storing the pipeline in Harness) is disabled.
+- Helm deployment fails to fetch the manifest when using native AWS connector for ECR. (CDS-86418, ZD-54707)
+  - The OCI Helm ECR store configuration feature did not work when IRSA and IAM were configured in the AWS connector. This resulted in null pointer exception, failing the deployment.
+  - The OCI Helm ECR store now supports IRSA and IAM configured in the AWS connector.
+- Pipeline failure at service phase. (CDS-85942, ZD-54701)
+  - Harness has improved error handling when users are not passing the manifest Id in the service input. This is required when file and folder paths are used as a runtime input.
+- A deployment was failing with Terraform errors.	(CDS-85684)
+  - The Terraform tasks working directory was created based on account, org, project and provisioner identifier. This might cause issues if two steps with same account, org, project, and provisioner identifier are running simultaneously on the same delegate.
+  - Now, every Terraform step execution will run in a unique working directory.
+- Harness asking for chart version for multiple manifest files instead of the primary manifest.	(CDS-85660, ZD-54364).
+  - Now Harness follows this process:
+    - Call service API to returns the whole service yaml.
+    - Use service YAML to create an FQN of with the primary manifest that the user selected.
+    - Return the list of chart versions corresponding to primary manifest.
+- UI was removing explicit null values in YAML. (CDS-83555)
+  - For the Shell Script step and Shell Script step template, users can now make the **Execution Target** setting a runtime input.
+- The console view for Deployment Verification (CV) not showing errors.	(CDS-81291, ZD-52005)
+  - A discrepancy existed in the information displayed between the pipeline view and console view of the Verify step in a deployment. The console view displayed `No analysis` while the pipeline view displayed a more verbose output.
+  - This issue is now fixed. If an error occurs, the message is displayed at the top of the view.
+- Error connecting to Git Sync service. (CDS-81261, ZD-51238)
+  - The pipeline had 66 remote templates for which the template request made a single GRPC request. This delayed the response from the Git side and timed out the thread.
+  - Now Harness makes GRPC requests in batches of 20 to get remote templates.
+- Creating the Terraform resource `harness_platform_file_store_file` without content crashes.	(CDS-77833)
+  - Now Harness provides an empty file when content is null.
+- Changes in input set fixed value for Environment caused Save button to be disabled. (CDS-74710)
+  - Now, in the input set, an `Unsaved changes` link appears when users make changes.
 
 ### Version 1.16.6
 

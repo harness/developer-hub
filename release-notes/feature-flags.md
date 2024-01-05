@@ -3,7 +3,7 @@ title: Feature Flags release notes
 sidebar_label: Feature Flags
 date: 2023-11-24T16:19:25
 tags: [NextGen, "feature flags"]
-sidebar_position: 10
+sidebar_position: 11
 ---
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/feature-flags/rss.xml" />

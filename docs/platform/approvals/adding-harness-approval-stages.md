@@ -182,6 +182,48 @@ You can select one of the following types of expression for user groups:
 
   ![](./static/adding-harness-approval-stages-19.png)
 
+### Approval notifications to approvers
+
+:::info note
+
+Currently, details of service, environment and infrastructure definition for CD stages in approval notifications is behind the feature flag `CDS_APPROVAL_AND_STAGE_NOTIFICATIONS_WITH_CD_METADATA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Approval notifications are sent to each of the configured **User Groups** in the **Approvers** section. User group's notification settings are used while sending notifications. For more information, go to [Edit notification preferences](/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences).
+
+:::important
+The PagerDuty notification channel is not currently supported for approval notifications. This means that even if the PagerDuty notification channel is configured in a user group notification setting, approval notifications will not be sent to that channel.
+
+:::
+
+These notifications help approvers to make their decision. There are two kinds of approval notifications:
+
+1. `Approval Required`: A notification is sent when the approval step starts containing the pipeline name, execution URL, user who triggered the pipeline, stage name, approval message, organization and project details, pipeline start time, and the time left in approval expiry.
+
+![](./static/adding-harness-approval-stages-21.png)
+
+2. `Approved or Rejected`: A notification is sent when the approval step is approved or rejected. The notification contains the pipeline name, execution URL, step status, stage name, the user who triggered the pipeline, organization, and project details, pipeline start time, approval activity details containing approver name, action, and the time of the approval or rejection.  
+
+![](./static/adding-harness-approval-stages-22.png)
+
+Use the **Include stage execution details in approval** option to include stage execution details in approval notifications. A summary of completed, running, and upcoming stages is shown. 
+
+#### CD execution metadata feature in notifications
+- Execution metadata like service, environment, and infrastructure identifiers are present for CD stages in approval notifications.
+- For upcoming CD stages with multiple services and(or) multiple environments, approval notifications support services, environments, infrastructures and environment groups' identifiers.
+
+
+#### Limitations of CD execution metadata feature in notifications
+- In certain situations, values for certain fields might not be resolved for future stages. In such cases, the notification will contain unresolved expressions for those fields. For instance, if a service is configured as an expression in a CD stage that comes after the current stage, then the notification will have an unresolved expression for that service.
+
+  For such cases, wherein an approval step is meant for approval of a future CD stage, and the CD stage configuration contains expressions, then we recommend having appropriate expressions as a part of **Approval Message** field. Approval notification will include the approval message with expressions resolved till the approval step.
+
+- Artifact details are not supported currently.
+- Environment and infrastructure filters' details are not supported currently.
+- GitOps CD stage metadata is not supported.
+- Custom stage metadata is not supported.
+
 ### Advanced settings
 
 Go to:

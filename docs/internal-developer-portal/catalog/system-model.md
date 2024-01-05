@@ -3,10 +3,8 @@ title: System Model
 description: Organize the various software components, services, and tools
 sidebar_position: 90
 sidebar_label: System Model
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
+redirect_from:
+  - /docs/internal-developer-portal/get-started/system-model
 ---
 
 The systems model of IDP, as inspired by the [Backstage System Model](https://backstage.io/docs/features/software-catalog/system-model), is an approach to managing and understanding complex software ecosystems. This model is particularly relevant in the context of DevOps and microservices architectures, where the large number of interdependent components can be overwhelming.

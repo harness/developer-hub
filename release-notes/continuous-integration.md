@@ -3,7 +3,7 @@ title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
 date: 2024-01-09T10:00
-sidebar_position: 9
+sidebar_position: 10
 ---
 
 import Tabs from '@theme/Tabs';
@@ -23,9 +23,9 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## January 2024
 
-### Version 1.7.0
+### Version 1.6.3
 
-<!-- Jan 09, 2024 -->
+<!-- Jan 05, 2024 -->
 
 #### New features and enhancements
 

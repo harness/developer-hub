@@ -1142,3 +1142,7 @@ To address pod eviction during an Aqua scan, it's recommended to increase the co
 #### Can the size of the container image impact pod eviction during a scan?
 
 Yes, the size of the container image, especially if it's large (e.g., 4GB), can contribute to resource utilization. Ensuring that the container has sufficient resources allocated is crucial to prevent eviction during resource-intensive tasks like an Aqua scan.
+
+#### Why am I unable to connect to the hostname using the step identifier in a background step, resulting in the error "Unknown server host xxxx"?
+
+The utilization of Step Id is restricted to VM flows exclusively. To address this issue, consider using `localhost` or `127.0.0.1` instead.

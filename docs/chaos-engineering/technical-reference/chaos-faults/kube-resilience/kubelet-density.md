@@ -36,7 +36,7 @@ Kubelet density determines the resilience of the kubelet by creating pods on a s
       <tr>
         <td> TARGET_NODE </td>
         <td> Name of the target node. </td>
-        <td> If this environment variable isn't set, a random target node is selected. For more information, go to <a href = "../../chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-single-node"> target node. </a></td>
+        <td> If this environment variable isn't set, a random target node is selected. For more information, go to <a href = "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-single-node">target node</a>.</td>
       </tr>
     </table>
     <h3>Optional fields</h3>
