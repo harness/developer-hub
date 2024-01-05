@@ -188,7 +188,7 @@ You can also use matrix values as variable values. For example, this [Action ste
 If a stage and step both have matrix strategies with the same tag labels, you need to use specific expressions to reference matrix values in the step or stage.
 
 - `<+stage.matrix.TAG>`: Use this expression to reference a value in a stage level matrix strategy.
-- `<+matrix.TAG`: Use this expression to reference a value in a step level matrix strategy.
+- `<+matrix.TAG>`: Use this expression to reference a value in a step level matrix strategy.
 
 For example:
 

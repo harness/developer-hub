@@ -443,6 +443,10 @@ Build status updates occur for Build stages only.
 
 ## Pipeline initialization and Harness CI images
 
+### Initialize step to fails with a "Null value" error
+
+This can occur if an expression or variable is called before it's value is resolved. In Build (CI) stages, steps run in separate containers/build pods, and you can only [use expressions after they are resolved](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#only-use-expressions-after-they-can-be-resolved). For example, if you use an expression for an output variable from a step in a [repeat looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism#repeat-strategies) in step that runs before the repeat loop completes, then the expression's value isn't available to the step that requested it.
+
 #### How can I list the internal images that CI uses?
 
 For information about images that Harness CI uses to execute builds, including how to find a list of images, go to [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci).
@@ -988,37 +992,35 @@ A4: The Run step for psql commands serves as a validation step before proceeding
 
 ## Conditional executions, looping, parallelism, and failure strategies
 
-#### How can we configure a specific step to only run when a certain file, like a .toml configuration file, has changed in the repository?
+### Run a step only run if a certain file, like a .toml configuration file, changes in my repo
 
-To achieve conditional step execution based on changes to a specific file, you can set up webhook triggers with file-based conditions. Configure the trigger to activate the step only when the targeted file (e.g., config.toml) has been modified in the repository.
+To run a step only when a certain file changes, you can configure a [conditional execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#step-conditions) based on a JEXL condition that evaluates to true for the specific file. For example, you might use a [payload expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#git-trigger-and-payload-expressions) to get details from a Git event payload, such as a PR event that triggers a build.
 
-#### How can we configure a step/stage/pipeline to fail/pass based on the % of test cases failure/success?
+Alternately, you could isolate the step in a stage by itself, configure a [Git webhook trigger](https://developer.harness.io/docs/platform/triggers/triggering-pipelines) with a Changed File [trigger condition](https://developer.harness.io/docs/platform/triggers/triggering-pipelines#set-trigger-conditions) that listens for changes to the target file, and then configure the trigger to run [selective stage execution](https://developer.harness.io/docs/platform/triggers/selective-stage-execution-using-triggers) and run all stages that you want to run when that file changes, including the stage with your isolated step.
 
-We wouldn't be able to natively configure a stage/pipeline to fail/pass depending the % of test cases failure/success. To achieve this use case, we would need to manually parse the test result which will be created after the test step execution and have few variables exported from the test step which will have the  % of test cases failure/success and then the value of this variable can decide the status of the stage/pipeline.
-
-#### What does a failure strategy consist of?
-
-First: Error conditions that trigger the failure strategy.
-
-Second: Actions to take when the specified error conditions occur.
-
-#### Why is the CI Initialize step failing with a Null Value Error when a step is configured with looping Strategy?
-
-This could happen when you use an expression for an output variable from a previous step under the repeat looping strategy in the subsequent step. In CI stages, the execution happens on separate build pods, and all the expressions needs to be available before we start the initialize step.
-
-#### Can pipeline execution be aborted when the referenced branch is deleted?
-
-This is not natively supported however we could have a pipeline listening on delete webhook event and abort all the running pipelines referencing the deleted branch via API.
-
-#### Is there a way to abort a running pipeline from a step in that pipeline?
-
-We could use the ```putHandleInterrupt``` API to abort a running pipeline from a step in that pipeline. More details about this pipeline can be reffered in the [doc](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/putHandleInterrupt)
-
-#### Can I assert an environment variable within JEXL conditions?
+### Can I assert an environment variable within a JEXL conditions?
 
 While we support output variables that can point to an environment variable, we do not support the direct referencing of environment variables in JEXL conditions, even when using the feature flag `CI_OUTPUT_VARIABLES_AS_ENV` (which automatically makes environment variables available for other steps in the same build stage).
 
 The conditions in JEXL only allow the use of variable expressions that can be resolved before the stage is executed. Since environment variables are resolved during runtime, it is not possible to utilize variable expressions that cannot be resolved until the stage is run.
+
+### What does a failure strategy consist of?
+
+[Failure strategies](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) include error conditions that trigger the failure and actions to take when the specified failure occurs.
+
+### Can I make a step, stage, or pipeline fail based on the percentage of test cases that fail or succeed?
+
+Currently, Harness can't fail a step/stage/pipeline based on a percentage of test results. To achieve this, you would need to manually parse the test results (which are created after the test step execution) and export some variables containing the percentages you want to track. You could then have a step throw an error code based on the variable values to trigger a [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps), or you could manually review the outputs and manually [mark the stage as failed](https://developer.harness.io/docs/platform/pipelines/mark-as-failed).
+
+Due to potential subjectivity of test results, it would probably be better to handle this case with an [Approval stage or step](https://developer.harness.io/tutorials/cd-pipelines/approvals/) where the approver [reviews the test results](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/viewing-tests).
+
+### Can I abort a pipeline if the referenced branch is deleted?
+
+This is not natively supported; however you could create a [Git webhook trigger](https://developer.harness.io/docs/platform/triggers/triggering-pipelines) that listens for a specific delete event with [auto-abort previous execution](https://developer.harness.io/docs/platform/triggers/triggers-reference/#auto-abort-previous-execution). This trigger would only go off on the specified delete event and, therefore, it would only cancel the ongoing executions if the delete event occurred.
+
+### Is there a way to abort a running pipeline from a step in that pipeline?
+
+You can use the [putHandleInterrupt API](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/putHandleInterrupt) to abort a running pipeline from a step in the pipeline.
 
 ### Can I add notifications, such as failure notifications, to stage templates?
 
@@ -1032,26 +1034,29 @@ Yes, there is a single-line limit of 25KB. If an individual line exceeds this li
 
 If you need to extract long log lines or logs larger than 5MB, include a Run step in your pipeline that writes the logs to a file and uploads the file as an artifact. For more information, go to [Troubleshoot CI - Truncated execution logs](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#truncated-execution-logs).
 
-### Why does a step show success even after executing exit 1 inside a bash function that is running in background in the script?
+### Step succeeds even when explicitly executing exit 1 in a Bash script that is runs in script's background
 
-The step in Harness determines its status based on the exit status received from the script execution. When you call a function in the background within your script, it doesn't directly impact the exit status of the main script. Therefore, if you manually call exit 1 within the function, it won't cause the step to fail. This behavior is consistent with how scripts operate both inside and outside of Harness.
+The step in Harness determines its status based on the exit status received from the primary script execution. When you call a function in the background of a script, it doesn't directly impact the exit status of the main script. Therefore, if you manually call exit 1 within a background function, it won't cause the step to fail. This behavior is consistent with how scripts operate both inside and outside of Harness.
 
-#### Is it possible to get the logs of a service running in Harness cloud VM when a specific run step is executing?
+### Can I get logs for a service running on Harness Cloud when a specific Run step is executing?
 
-Yes. We could add a parallel step to the run step and tail the service specific logs to get all the logs while the build is running. A similar use case is documented [here](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#use-a-parallel-step-to-monitor-failures)
+Yes. To do this, you can add a step that runs in parallel step to the Run step, and have that parallel step get the service's logs while the build runs. For an example, go to [Resource allocation - Use a parallel step to monitor failures](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits#use-a-parallel-step-to-monitor-failures).
 
-#### Why are my builds from over 30 days ago not appearing on the Project Overview page?
+### Builds older than 30 days aren't on the Project Overview page.
 
-Often overlooked, you can check the timescale for the overview page. By default, it is set to 30 days. 
+The default timescale setting for the overview page is 30 days. You can change this setting.
 
-#### Builds dashboard is not showing a previous deployment, why? 
+### A previous execution is missing from my Builds dashboard.
 
-Please check the timescale control on the dashboard. This is set to 30 days by default. You can adjust this scale to display older builds. 
+First, check the timescale setting on the dashboard. The default is 30 days, which hides builds older than 30 days. 
 
-#### How to view changes in a Harness Pipeline between deployments
+Then, make sure you are in the correct project and that you have permission to view that particular pipeline.
 
-Harness allows users to compare changes to a pipeline YAML. This is often a useful tool to determine why a pipeline has changed behavior. 
-See the site for more details [https://developer.harness.io/docs/platform/pipelines/view-and-compare-pipeline-executions/]
+Finally, if your build is older than six months, it is outside the data retention window. For more information, go to [data retention](https://developer.harness.io/docs/platform/references/data-retention/).
+
+### Can I compare pipeline changes between builds?
+
+Yes. Go to [view and compare pipeline executions](https://developer.harness.io/docs/platform/pipelines/view-and-compare-pipeline-executions/).
 
 ## Debug mode
 
