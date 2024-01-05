@@ -1,10 +1,10 @@
 ---
-sidebar_position: 7
-title: Improve resilience of the podtato head app
-description: Improve the resilience of the Podtato head app in a sandbox.
+sidebar_position: 2
+title: Run chaos experiments in sandbox to build resilience 
+description: Execute chaos experiments to improve the resilience of the Podtato head app in a sandbox.
 ---
 ## Introduction
-This tutorial guides you through an interactive tutorial that uses a sample application (**Podtato head**) to execute a chaos experiment and build resilience.
+This tutorial guides you through an interactive tutorial that uses a sample application (**Podtato head**) to execute a chaos experiment and improve the resilience of the application.
 
 ## Prerequisites
 Before you begin the tutorial, you need to have a Harness account. To create one, follow the below-mentioned steps.
@@ -131,4 +131,4 @@ You can start executing the sandbox again if you run out of time by click **Run*
 That's it! The screen will determine and display your results. All the best!
 
 ## Conclusion
-With that, you have successfully executed a chaos experiment in the sandbox as well as registered for the developer certification. Check [this tutorial](./first-chaos-engineering) to execute your first chaos experiment and the [documentation](../../docs/chaos-engineering) to learn about various kinds of [faults](../../docs/chaos-engineering/technical-reference/chaos-faults). 
+With that, you have successfully executed a chaos experiment in the sandbox as well as registered for the developer certification. Check [this tutorial](../../../tutorials/chaos-experiments/first-chaos-engineering) to execute your first chaos experiment and the [documentation](../../docs/chaos-engineering) to learn about various kinds of [faults](../../docs/chaos-engineering/technical-reference/chaos-faults). 

@@ -103,18 +103,4 @@ export const CEList: CardItem[] = [
     time: "15min",
     link: "/tutorials/chaos-experiments/integration-with-harness-cd",
   },
-  {
-    title: "Improve resilience of Podtato head application in sandbox",
-    module: MODULES.ce,
-    icon: "img/icon_ce.svg",
-    description: (
-      <>
-        Guide to an interactive tutorial that uses a sample application, Podtato head, to verify and build resilience.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "30min",
-    link: "/tutorials/chaos-experiments/improve-resilience-of-podtato-head-app-in-sandbox",
-  },
 ];
