@@ -97,14 +97,13 @@ Next, use a Bash script to set up a custom approval process. This script queries
 
    This script queries the Linear API to retrieve the current status of the created issue. The obtained status is stored in a variable (status) for subsequent use in approval or rejection criteria.
 
-5. **Script Input Variable:**
-While you can simply declare a variable in your script using a Harness expression or string for its value, using Input Variables provides some additional benefits:
-* You can easily identify and manage the Harness expressions used in your script.
-* You can template your script.
+5. **Script Input Variable:** While you can simply declare a variable in your script using a Harness expression or string for its value, using Input Variables provides some additional benefits:
+   * You can easily identify and manage the Harness expressions used in your script.
+   * You can template your script.
 
-You can declare the variable using Name and Value in Script Input Variables and then reference the variable in the script just as you would any other variable: $var_name.
+   You can declare the variable using Name and Value in Script Input Variables and then reference the variable in the script just as you would any other variable: `$var_name`.
 
-![](../static/script-input-variable.png)
+   ![](../static/script-input-variable.png)
 
 ## YAML example: Step group template 
 Here's the YAML for a Step Group Template that demonstrates the use of Custom Approval with Linear.app.
