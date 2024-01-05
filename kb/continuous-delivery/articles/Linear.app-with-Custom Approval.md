@@ -24,7 +24,7 @@ To use Linear.app with a custom approval, you need to use an HTTP step to create
 
 ### Create a Linear issue with HTTP step
 
-In this initial step, we'll use the Harness HTTP step to create a Linear issue. Here's a detailed breakdown:
+First, use the Harness HTTP step to create a Linear issue. Configure the HTTP step as follows:
 
 **HTTP Step Configuration:**
 
