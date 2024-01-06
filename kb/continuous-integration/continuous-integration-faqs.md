@@ -447,52 +447,54 @@ Build status updates occur for Build stages only.
 
 This can occur if an expression or variable is called before it's value is resolved. In Build (CI) stages, steps run in separate containers/build pods, and you can only [use expressions after they are resolved](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#only-use-expressions-after-they-can-be-resolved). For example, if you use an expression for an output variable from a step in a [repeat looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism#repeat-strategies) in step that runs before the repeat loop completes, then the expression's value isn't available to the step that requested it.
 
-#### How can I list the internal images that CI uses?
+### Initialize step occasionally times out at 8 minutes
 
-For information about images that Harness CI uses to execute builds, including how to find a list of images, go to [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci).
-
-Where can I find the list of available Harness CI images?
-
-You can find the list of available Harness CI images [here](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness)
-
-#### How often are Harness CI images updated?
-
-Harness publishes updates for all CI images on the second and fourth Monday of each month. New versions of images are released every two weeks
-
-#### How to list the tags available for an image which is being listed when hitting the endpoint ```https://app.harness.io/registry/_catalog```?
-
-We could hit the endpoint ```https://app.harness.io/registry/harness/<image_name>/tags/list``` to list all the available tags for an image in the registry ```app.harness.io/registry```
-
-#### What access Harness uses by default to pull the harness internal images from the public repo?
-
-Harness uses anonymous access to Docker Hub to pull Harness images by default. This can be updated if required.
-
-You have security concerns with pulling Harness delegate images from a public repo? You can add special Harness Container Image Registry connector to your Harness account. With this connector, the Delegate pulls these images from the Harness Container Image Registry only. See link for more details [https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/]
-
-#### Can I use my own private registry to store Harness CI images?
-
-Yes, you can pull Harness CI images from your own private registry if you don't want to use the public container registry
-
-You have security concerns with pulling Harness delegate images from a public repo? You can add special Harness Container Image Registry connector to your Harness account. With this connector, the Delegate pulls these images from the Harness Container Image Registry only. See link for more details [https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/]
-
-#### I'm seeing `Failed to pull image "artifactory.domain.com/harness/ci-addon:1.16.22": rpc error: code = Unknown desc = Error response from daemon: unknown: Not Found`. What does this mean?
-
-It means the harness internal image, in this case `ci-addon:1.16.22`, is not present in your artifact repository and you are using the `account.harnessImage` connector for your artifact repository in Harness. You can use this connector to pull your own images, but it is also used to pull Harness CI images. Modifying this connector can cause it to fail to pull necessary CI images.
-
-You can [proxy and pull Harness CI images from your own repository](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#specify-the-harness-ci-images-used-in-your-pipelines) and configure the `account.harnessImage` connector (or another connector) to [connect to the Harness container image registry or pull images from your own registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
-
-#### Why is the initialize step is occusionally timeout at 8 minutes?
-
-Eight minutes is the default time out of the initialization step however if the build pod is expected to pull any large images, we could increase this init timeout in the advanced section of the infrastructure configuration.
-
-### What does "ErrImagePull" mean?
-
-This means that Harness couldn't pull an image necessary to run the pipeline. This can happen if there are networking issues or if the target image is not available in the specified repository.
+Eight minutes is the default time out limit for the Initialize step. If your build is hitting the timeout limit due to resource constraints, such as pulling large images, you can increase the [Init Timeout](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#init-timeout) in the stage Infrastructure settings.
 
 ### When a pipeline pulls artifacts or images, are they stored on the delegate?
 
-Artifacts and images are pulled into the [stage workspace](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components#shared-paths), which is a temporary volume that exists during pipeline execution. Images are not stored on the delegate during pipeline execution. In a Kubernetes cluster build infrastructure, build stages run on build pods that are cleaned automatically after the execution.
+Artifacts and images are pulled into the [stage workspace](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components#shared-paths), which is a temporary volume that exists during stage execution. Images are not stored on the delegate during pipeline execution. In a Kubernetes cluster build infrastructure, build stages run on build pods that are cleaned automatically after the execution.
 
+### Can I get a list of internal Harness-specific images that CI uses?
+
+For information about the backend/Harness-specific images that Harness CI uses to execute builds, including how to get a list of images and tags that your builds use, go to [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci).
+
+Harness CI images are stored in the [Harness GCR project](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness)
+
+### How often are Harness CI images updated?
+
+Harness publishes updates for all CI images on the second and fourth Monday of each month. For more information, go to [Harness CI images - Harness CI image updates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#harness-ci-image-updates).
+
+### How do I get a list of tags available for an image in the Harness image registry?
+
+To list all available tags for an image in `app.harness.io/regstry`, call the following endpoint and replace `IMAGE_NAME` with the name of the image you want to query.
+
+```
+https://app.harness.io/registry/harness/IMAGE_NAME/tags/list
+```
+
+### What access does Harness use to pull the Harness internal images from the public image repo?
+
+By default, Harness uses anonymous access to to pull Harness images.
+
+If you have security concerns about using anonymous access or pulling Harness-specific images from a public repo, you can [change how your builds connect to the Harness container image registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/).
+
+### Can I use my own private registry to store Harness CI images?
+
+Yes, you can [pull Harness CI images from a private registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#pull-harness-images-from-a-private-registry).
+
+### Build failed with "failed to pull image" or "ErrImagePull"
+
+* **Error messages:** `ErrImagePull` or some variation of the following, which may have a different image name, tag, or registry: `Failed to pull image "artifactory.domain.com/harness/ci-addon:1.16.22": rpc error: code = Unknown desc = Error response from daemon: unknown: Not Found.`
+* **Causes:**
+   * Harness couldn't pull an image that is needed to run the pipeline.
+   * `ErrImagePull` can be caused by networking issues or if the specified image doesn't exist in the specified repository.
+   * `Failed to pull image - Not Found` means that a Harness-specific image or tag, in this case `ci-addon:1.16.22`, isn't present in the specified artifact repository, and you are using the `account.harnessImage` connector to pull Harness images. You can use this connector to pull from your own registry or to pull images from any Docker registry, but it is also used to pull Harness-required CI images. Modifying this connector can cause it to fail to pull the necessary Harness CI images.
+* **Solutions:**
+   * If you modified the built-in Harness Docker connector, check the connector's configuration to make sure it uses one of the compatible methods for pull Harness-required images, as described in [Connect to the Harness container image registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
+   * If you are trying to pull images from your own registry, check your configuration for [pulling Harness images from a private registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#pull-harness-images-from-a-private-registry). You might need to use a different connecter than the built-in Harness Docker connector.
+   * If you [modified tags for some images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#specify-the-harness-ci-images-used-in-your-pipelines), check that your configuration uses valid tags that are present in the repository from which Harness is attempting to pull the tags.
+   * If you believe the issue is due to networking issues, try again later if you think the issue is transient, or check your connector or network configuration to make sure Harness is able to connect to the given registry.
 
 ## Build and push images
 
@@ -739,89 +741,94 @@ The error "Pod not supported on Fargate: invalid SecurityContext fields: Privile
 
 ## Gradle
 
-#### How can user enable the Gradle Daemon in builds?
+### How do I enable the Gradle daemon in builds?
 
-To enable the Gradle Daemon in your Harness CI builds, you can include the `--daemon` option when running Gradle commands in your build scripts. This option instructs Gradle to use the daemon process.
+To enable the Gradle daemon in your Harness CI builds, include the `--daemon` option when running Gradle commands in your build scripts (such as in Run steps). This option instructs Gradle to use the daemon process.
+
+Optionally, you can [use Background steps to optimize daemon performance](./articles/leverage-service-dependencies-in-gradel-daemon-to-improve-build-performance.md).
 
 ## Maven
 
-#### How can I retrieve the Maven project version from the pom.xml file and pass it to the subsequent Docker build step as the build argument?
+### I need to get the Maven project version from pom.xml and pass it as a Docker build argument
 
-You could assign the version value to a variable in a run step with a command something similar to `version=$(cat pom.xml | grep -oP '(?<=<version>)[^<]+')` and then this variable can be configured as the output variable in the run step. In the subsequent build step you could use this output variable from the previous run step as the build argument using an expression similar to `<+pipeline.stages.test.spec.execution.steps.Run_2.output.outputVariables.version>` (In this example, stage name=test, step name=Run_2 and the output variable name is version)
+To do this, you can:
 
-#### Where to store mvn project settings.xml in harness ci
+1. Use a Run step to get the version and assign it to a variable. For example, you could use a command like:
 
-You can add this settings.xml as a secret file in Harness and then configure a shell script so that this file goes to the desired directory in the build.
+   ```
+   version=$(cat pom.xml | grep -oP '(?<=<version>)[^<]+')
+   ```
 
-[Override secrets in settings.xml at runtime](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/modify-and-override-build-settings-before-a-build)
+2. Specify this variable as an [output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables) from the Run step.
+3. Use an expression to [reference the output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#reference-an-output-variable) in your build arguments, such as in the Build and Push to Docker step's [Build Arguments](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#build-arguments) or `docker build` commands executed in a Run step.
 
-To share it between stages, use `sharedpath`.
+### Where do I store Maven project settings.xml in Harness CI?
 
-[Share CI data across steps and stages](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages)
+There are several options for handling settings.xml in Harness CI:
 
-#### How to store mvn project settings.xml in Harness CI?
+* Store settings.xml externally from Harness, such as in a version control repo, and then [use a Git Clone or Run step to clone that repo (or subdirectory of a repo) into your pipeline](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#add-a-git-clone-or-run-step).
+* Store settings.xml as a file secret in Harness and then use a shell script in a Run step to copy the file to the relevant directory when your build runs.
+* Store values for settings.xml as text secrets, and then add those values to a new settings.xml file that is created when your build runs. An example of this is shown in [Override secrets in settings.xml at runtime](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/modify-and-override-build-settings-before-a-build).
 
-You can achieve this by storing the XML as a secret and referring to it within a step. For example:
-`echo '<+secrets.getValue("account.[settingsXMLSecretID]")>' > settings.xml`
+You can use expressions to reference secrets in step commands, such as:
+
+```
+echo '<+secrets.getValue("account.[settingsXMLSecretID]")>' > settings.xml
+```
+
+If you need to share `settings.xml` with multiple steps in the same stage, declare it in **Shared Paths**. For more information, go to [Share data between steps in a stage](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/).
 
 ## Plugins and integrations
 
-#### Which Drone plugins are supported in Harness CI?
-You can build your own plugins or use one of the many preexisting plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/), [GitHub Actions Marketplace](https://github.com/marketplace?type=actions), or the [Bitrise Integrations library](https://bitrise.io/integrations/steps).
-Yes, for details, go to [Use plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins).
+### Which Drone plugins are supported in Harness CI?
 
-#### How do we add a custom plugin to my CI pipeline in Harness?
+You can build your own plugins or use one of the many preexisting plugins from the Drone Plugins Marketplace. For more information, go to [Explore plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins).
 
-We can add a custom plugin to the CI pipeline using a Plugin step in your Build stage
+### How do I add a custom plugin to my Harness CI pipeline?
 
-#### How can we run the custom plugin locally for testing?
+For instructions on writing and using custom plugins, go to [Write custom plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins).
 
-Plugins are regular containers which would execute a predefined task. We can test the custom plugin in a local environment by running it as a Docker container with the required inputs
+### Can I test my custom plugin before using it in a pipeline?
 
-#### How user use own plugins in Harness CI pipelines?
-1. Create your plugin to perform a specific task, written in any programming language.
-2. Integrate the plugin into your CI pipeline using a Plugin step.
+Yes, you can [test plugins locally](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins#test-plugins-locally).
 
-#### Why is the PATH Variable Overwritten in Parallel GitHub Actions Steps?
+### Why is the PATH variable overwritten in parallel GitHub Actions steps?
 
-The PATH variable can be overwritten when running parallel steps in GitHub Actions because these steps could modify the PATH variable depens on which step ran last. When these steps run in parallel, a race condition occurs, and only one of them will be able to set the PATH variable correctly. To avoid this, consider running these steps sequentially in your workflow.
+When steps run in parallel and modify the same variables, the resulting value of that common variable depends on the step that modified it last. This can be different with each build, depending on how fast each parallel step executes. This is true for any parallel steps.
 
-#### Is it possible to integrate our CI builds with the Datadog Pipeline Visibility feature?
+When running multiple instances of the same GitHub Action, you must set `XDG_CACHE_HOME`, as explained in [Duplicate Actions](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie#duplicate-actions).
 
-We do not have OOTB support for Datadog Pipeline Visibility. However, I can suggest the following approach to push the pipeline event to a webhook endpoint: Link to documentation on webhook notifications.
+If you need a variable's value to remain distinct, either run the steps sequentially (rather than in parallel), or find a way to differentiate the variable that each step is modifying, such as by exporting each value as an output variable where you use [looping strategy expressions](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#looping-strategy-expressions) to assign unique identifiers to each variable name.
 
+### Can I integrate my CI builds with the Datadog Pipeline Visibility feature?
 
-
+Harness doesn't have OOTB support for Datadog Pipeline Visibility, but you can use the [Datadog Drone plugin](https://plugins.drone.io/plugins/datadog) in a [Plugin step](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci).
 
 ## Workspaces, shared volumes, and shared paths
 
-#### What is a workspace in a pipeline, and how does it work?
+### What is a workspace in a CI pipeline?
 
-Workspace is a temporary volume that is created when the pipeline runs. It serves as the current working directory for all the steps within a stage. During initialization, the pipeline clones your codebase to the root of this workspace. The workspace persists for the entire duration of the stage, allowing steps to communicate and share state information. 
+Workspace is a temporary volume that is created when a pipeline runs. It serves as the current working directory for all the steps within a stage. You can use **Shared Paths** to share additional volumes to the workspace. For more information about the workspace and shared paths go to [CI pipeline creation overview - Shared Paths](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 
-#### Is workspace persists after the stage completion?
-No, the workspace is destroyed when the stage ends.
+### Does the workspace persist after a stage ends?
 
-#### How do I share data between steps in a CI stage?
+No, the workspace is destroyed when the stage ends. If you need to shared data across stages, use [caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-across-stages).
 
-We could use shared paths to allow steps within a stage to share data with each other. You can specify custom paths for data sharing or cache purposes. For more information, go to [Share data across steps and stages](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages).
-For example, you can [save and restore a cache from an Amazon S3 bucket.](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache)
+### How do I share data and volumes between steps in a CI stage?
 
-#### What volume will be created when we add a shared path in a CI pipeline?
+The workspace is the current working directory for all steps in a stage. Any data stored to the workspace is available to other steps in the stage. If you need to share additional volumes, decare them as **Shared Paths**. For more information, go to [CI pipeline creation overview - Shared Paths](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components) and [Share data across steps and stages](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages).
 
-When a shared path is added in the CI pipeline, we will create an empty directory type volume and this volume will be mounted on all the step containers. 
+### What volume is created when I add a shared path?
 
-#### Can I share additional volumes between steps in a stage?
+When you add a [shared path](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components), Harness creates an empty directory type volume and mounts it on each step container.
 
-Yes, you can share additional volumes between steps in a stage by adding Shared Paths in the Build stage settings. This will allows you to specify specific directories or locations for all steps in the stage can access and share data from, in addition to the default workspace.
+### Does a shared path determine where a file is downloaded?
 
-#### Does shared path in SAM Build Manifest shows where the download happens ?
+No, declaring a shared path doesn't dictate where a download happens. Your stage must include steps or commands that load files to volumes declared in your shared paths, otherwise the volumes remain empty. For example, depending on your pipeline configuration, cache steps might automatically interact with a shared path volume, or you might have a Git Clone step that clones a repo to a shared path volume.
 
-No , shared paths does not dictate where the download happens. There could be multiple shared paths provided , but it does not mean our manifests would be downloaded in that shared path. More details on shared path can be read in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/)
+### Why are changes made to a container image filesystem in a CI step is not available in the subsequent step that uses the same container image?
 
-#### Why the changes made on the container image filesystem in a CI step is not available in the subseqent step where the same container image is used?
-
-When we pick a container image for a step, any changes we make there will only affect that step. The next step won't notice these changes even we use the same image unless we edit the `/harness` directory, which is automatically shared among all steps.
+Changes to a container image are isolated to the current step. While a subsequent step might use the same base container image, it is not the literal same container as the previous step. To permanently modify workspace data, you need to interact with the `/harness` directory (which is the base workspace directory for all steps in the stage), use shared paths, or use caching to [share data between steps and stages](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages).
 
 ## Caching
 

@@ -1912,6 +1912,10 @@ You can create a dashboard for the services deployed which can then be exported 
 
 The image harnessdev/sam-deploy:1.82.0-1.0.0 supports IRSA and assume role on delegate.
 
+### Does a shared path in a SAM Build Manifest show where the download happens?
+
+No, shared paths does not dictate where the download happens. There could be multiple shared paths provided , but it does not mean our manifests would be downloaded in that shared path.
+
 #### How are pipeline tags passed in filters using list pipeline API
 
 piepline tags are passed as key-value pair : 
