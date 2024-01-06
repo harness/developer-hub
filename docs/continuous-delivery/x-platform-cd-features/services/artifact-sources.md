@@ -3501,7 +3501,7 @@ The following table lists how many artifact versions Harness displays in its UI 
 | Google Container Registry        | No Limit      | Lexical (descending)                                                                                   |
 | AWS ECR                          | No Limit      | Lexical (descending)                                                                                   |
 | Azure Container Registry         | 500           | Lexical (descending)                                                                                   |
-| Google Artifact Registry(Docker) | 2,147,483,647 | Lexical (descending)                                                                                   |
+| Google Artifact Registry(Docker) | 2,147,483,647 | Descending order of created at.                                                                                   |
 | Artifactory(Docker)              | No Limit      | Lexical (descending)                                                                                   |
 | Artifactory(Generic)             | 10000         | Descending order of created at.                                                                        |
 | Github Packages                  | No Limit      | Descending order of created at.                                                                        |
