@@ -498,176 +498,154 @@ Yes, you can [pull Harness CI images from a private registry](https://developer.
 
 ## Build and push images
 
-### How can I improve build time, aside from caching?
-
-You can increase the Memory and CPU of the Build and Push step to improve the build process duration.
-
-### Where does the pipeline get code for a build?
+### Where does a pipeline get code for a build?
 
 The codebase declared in the first stage of a pipeline becomes the pipeline's [default codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase). If your build requires files from multiple repos, you can [clone additional repos](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
 
-#### How to build and push artifacts and images?
+### How do I use a Harness CI pipeline to build and push artifacts and images?
 
-You can use Harness CI to upload artifacts, such as Docker images or test results.
-For details, go to [Build and push artifacts and images](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
+For information about this go to [Build and push artifacts and images](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
 
-#### What drives the Build and Push steps? What is Kaniko?
+### What drives the Build and Push steps? What is Kaniko?
 
 With Kubernetes cluster build infrastructures, Build and Push steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md). Kaniko requires root access to build the Docker image.
 
-#### Does kaniko support non-root users?
+For more information, go to:
 
-With a Kubernetes cluster build infrastructure, **Build and Push** steps use the kaniko plugin. Kaniko requires root access to build Docker images, and it does not support non-root users. However, you can [build and push with non-root users](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
+* [Build and push artifacts and images - Kubernetes clusters require root access](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#kubernetes-cluster-build-infrastructures-require-root-access)
+* [Harness CI images - Images list](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#harness-ci-images-list)
 
-#### How can I run Build and Push steps as root if my build infrastructure runs as non-root?
+### Does kaniko support non-root users?
 
-If your build is configured to run as a non-root user (meaning you have set `runAsNonRoot: true`), you can run a specific step as root by setting **Run as User** to `0` in the step's settings. This setting uses the root user for this specific step while preserving the non-root user configuration for the rest of the build. This setting is not available for all build infrastructures, as it is not applicable to those build infrastructures.
+With a Kubernetes cluster build infrastructure, **Build and Push** steps use the kaniko plugin. Kaniko requires root access to build Docker images, and it does not support non-root users. However, you can use the buildah plugin to [build and push with non-root users](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
 
-#### What if my security policy doesn't allow running as root?
+### Can I run Build and Push steps as root if my build infrastructure runs as non-root?
+
+If your build infrastructure is configured to run as a non-root user (meaning you have set `runAsNonRoot: true`), you can run a specific step as root by setting **Run as User** to `0` in the step's settings. This setting uses the root user for this specific step while preserving the non-root user configuration for the rest of the build. This setting is not available for all build infrastructures, as it is not applicable to all build infrastructures.
+
+### What if my security policy doesn't allow running as root?
 
 If your security policy strictly forbids running any step as root, you can use the buildah plugin to [build and push with non-root users](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
 
-#### How do I configure the buildah plugin?
+The buildah plugin requires that you use a Kubernetes cluster build infrastructure that is configured to run as non-root with `anyuid SCC` (Security Context Constraints) enabled. For information about the buildah plugin, go to [Build and push with non-root users](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
 
-In your build stage settings, you must use a Kubernetes cluster build infrastructure that is configured to run as non-root with `anyuid SCC` (Security Context Constraints) enabled.
+### Can I enable BuildKit support with Build and Push steps?
 
-For information about the buildah plugin, go to [Build and push with non-root users](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
+The [Build and Push steps use kaniko or drone-docker](#what-drives-the-build-and-push-steps-what-is-kaniko) to build images. If you need to use BuildKit, you can't use the built-in Build and Push steps. Instead, you need to [run Docker-in-Docker in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage), and then run `docker build` and `docker push` in a Run step.
 
-#### Can I enable BuildKit support with Build and Push steps?
+### Is there a way to use the newer version of kaniko?
 
-The [Build and Push steps use kaniko or drone-docker](#what-drives-the-build-and-push-steps-what-is-kaniko) to build images. If you need to use BuildKit, you can't use the built-in Build and Push steps. Instead, you need to run Docker-in-Docker in a Background step, and then run your `docker build` and `docker push` in a Run step. For instructions, go to [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage).
+Yes, you can update the tag for the kaniko image that Harness uses, as explained in [Harness CI images - Specify the Harness CI images used in your pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#specify-the-harness-ci-images-used-in-your-pipelines).
 
-#### Is there a way to use the newer version of kaniko?
+### Does a kaniko build use images cached locally on the node? Can I enable caching for kaniko?
 
-Yes, you can update the kaniko image as suggested in this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/).
+By default, kaniko does not use the node cache. It performs a full container image build from scratch, so it always pulls the base image. If you want kaniko to cache images and use previously-built layers that haven't changed, specify the **Remote Cache Repository** setting in the Build and Push step. If not specified, caching isn't used. Layer caching can significantly speed up the image building process.
 
-#### Does Kaniko build use images cached locally on the node?
+### How can I improve build time when a Build and Push step isn't able to apply remote caching or doesn't cache effectively?
 
-By default Kaniko does not use the node cache. it performs a full container image build from scratch, so it will always pull the base image. If we want to use cache, then specify the **Remote Cache Repository** option in the build step. If not specified it will always be executed with caching disabled
+Make sure your Docker file is configured in least- to most-often changed. Make sure it installs dependencies before moving other files. Docker Layer Caching depends on the order that layers are loaded in your Dockerfile. As soon as it detects a changed layer, it reloads all subsequent layers. Therefore, may sure your Dockerfile is structured for optimum caching efficiency.
 
-#### Can I enable caching in Kaniko builds which is being used by the CI build and push step?
-
-Yes, you can enable caching in Kaniko builds by utilizing the Remote Cache Repository option in the build step settings. This option allows Kaniko to leverage previously built layers that haven't changed, which can significantly speed up the image building process.
-
-#### How can we reduce the high execution time in build and push step because the pipeline is not able to cache a remote repo?
-
-You can reconfigure the docker file to create the cache layer and install the dependencies before moving other files to improve the execution time.
-
-#### Can I push without building?
+### Can I push without building?
 
 Harness CI provides several options to [upload artifacts](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts). The **Upload Artifact** steps don't include a "build" component.
 
-#### Can I build without pushing?
+### Can I build without pushing?
 
 You can [build without pushing](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push).
 
-#### From where does the "Build and Push to ECR" step pull the base images specified in the Dockerfile?
+### Where does the Build and Push to ECR step pull the base images specified in the Dockerfile?
 
-By default, "Build and Push to ECR" step downloads base images from the public container registry 
+By default, the [Build and Push to ECR step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings) downloads base images from the public container registry. You can use the [Base Image Connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings#base-image-connector) setting to specify an authenticated connector to use. This can prevent rate limiting issues.
 
-<!-- dockerfile is from the codebase. The AWS connector in build and push to ECR step is your target container registry to upload the built image. Base image connector setting can use a differnet connector, such as a Docker connector, to pull the base images. -->
+### How can I configure the Build and Push to EC" step to pull base images from a different container registry or my internal container registry?
 
-#### How can we configure the "Build and Push to ECR" step to pull the base images from our internal container registry with authentication?
+Create a Docker connector for your desired container registry and use it in the [Base Image Connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings#base-image-connector) setting.
 
-<!-- Base image connector setting -->
-You could create a authenticated doccker connector and use that as the base image connector in "Build and Push to ECR" step
+### Where does the Build and Push step expect the Dockerfile to be?
 
-#### where does the build and push step expect the dockerfile to be present by default?
+The Dockerfile is assumed to be in the root folder of the codebase. You can use the **Dockerfile** setting in a Build and Push step to specify a different path to your Dockerfile.
 
-The Dockerfile is assumed to be in the root folder of the codebase. <!-- use Dockerfile settings to specify a different path -->
+### Can I use images from multiple Azure Container Registries (ACRs)?
 
-#### How do I build a Docker image in a Build and Push step from a base image from a specific registry?
-
-Use the [Base Image Connector setting](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings#base-image-connector) to do this. <!-- only available for build and push to ECR -->
-
-#### How can I configure and use images from multiple Azure Container Registries (ACRs)?
-
-To configure and use images from multiple ACRs in Harness, you need to set up individual Harness service configurations for each ACR you want to use. Within each service configuration, specify the image repository and tag from the respective ACR.
+Yes. Go to [Use images from multiple ACRs](./articles/using-images-from-multiple-ACRs.md).
 
 ## Upload artifacts
 
-#### How can we send mail from the CI pipeline with an attachement?
+### Can I send emails from CI pipelines?
 
-You could send mail from the CI pipeline by using the drone plugin [https://plugins.drone.io/plugins/email](https://plugins.drone.io/plugins/email). More details about how the drone plugin can be used in Harness CI pipeline can be reffered in the below doc
-[https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/)
+You can [use the Drone Email plugin to send emails and attachments from CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin).
 
-#### What is PLUGIN_USERNAME & PLUGIN_PASSWORD used in the jfrog command executing as part of `Upload Artifacts to JFrog Artifactory` ?
+### What is PLUGIN_USERNAME and PLUGIN_PASSWORD used in the Upload Artifacts to JFrog Artifactory step?
 
-This is the creds used to upload the artifact to the jfrog artifactory and this is taken from the artifactory connector
+These are derived from your [Artifactory connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog#artifactory-connector).
 
-#### Can we run `Upload Artifacts to JFrog Artifactory` step with non root user?
+### Can I run the Upload Artifacts to JFrog Artifactory step with a non-root user?
 
-No, jfrog command execution will be creating a folder `.jfrog` under / which will fail if the plugin is running with non root user
+No. The jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog) step create a `.jfrog` folder at the root level of the stage workspace, which fails if you use a non-root user.
 
-#### Is it possible to publish custom data, such as outputs from variables or custom messages, strings, or any other information, in the Artifacts tab?
+### How do I show content on the Artifacts tab?
 
-Currently, the only way to publish data in the Artifacts tab is by providing a URL to a publicly accessible location where the artifact is stored. If you do not have any public buckets, you can consider using a private bucket and generating a pre-signed URL to access the artifact.
-This URL can be used in the "file_urls" setting of the Artifact Metadata Publisher plugin to publish the artifact in the Artifacts tab. Another option is to use a different cloud storage provider that allows you to generate temporary URLs for private objects, such as Google Cloud Storage signed URLs or AWS S3 pre-signed URLs.
+You can use the [Artifact Metadata Publisher plugin](https://developer.harness.io/tutorials/ci-pipelines/publish/artifacts-tab) to store artifact URLs and display them on the Artifacts tab.
 
-#### Is there a way to store artifact URLs and display them in the Harness platform?
+### Is it possible to publish custom data, such as outputs from variables or custom messages, to the Artifacts tab?
 
-Yes, you can use the Artifact Metadata Publisher plugin to store artifact URLs and display them on the Artifacts tab in the Harness
+Currently, the Artifacts tab contains only links. Therefore, any content you want to make available on the Artifacts tab must be uploaded to cloud storage and then queried. You can [use the Artifacts Metadata Publisher plugin](https://developer.harness.io/tutorials/ci-pipelines/publish/artifacts-tab) for this.
 
-#### Does the Upload Artifacts to S3 step compress files before uploading them?
+You can provide one or more URLs to artifacts. For example, to reference artifacts stored in S3 buckets, you can provide the URL to the target artifact, such as `https://BUCKET.s3.REGION.amazonaws.com/TARGET/ARTIFACT_NAME_WITH_EXTENSION`. If you uploaded multiple artifacts, you can provide a list of URLs. If your S3 bucket is private, use the console view URL, such as `https://s3.console.aws.amazon.com/s3/object/BUCKET?region=REGION&prefix=TARGET/ARTIFACT_NAME_WITH_EXTENSION`.
+
+In addition to the console view URL, you can reference privately-stored artifact by generating pre-signed URLs or temporary URLs, such as Google Cloud Storage signed URLs or AWS S3 pre-signed URLs.
+
+### Does the Upload Artifacts to S3 step compress files before uploading them?
 
 No. If you want to upload a compressed file, you must use a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to compress the artifact before uploading it.
-
 
 ## Tests
 
 #### Can I specify multiple paths for test reports in a Run step?
 
-Yes, you can specify multiple paths for test reports. Ensure that the reports do not contain duplicate tests when specifying multiple paths
+Yes, you can specify multiple paths for test reports. Ensure that the reports do not contain duplicate tests when specifying multiple paths.
 
-#### why is the test report is gettinng truncated in tests tab UI? 
+### Why is the test report truncated in Tests tab?
 
-The Tests tab may display content truncated if a field in your test report XML file surpasses 8,000 characters, as there is an 8,000-character limit per field
+The Tests tab truncates content if a field in your test report XML file surpasses 8,000 characters.
 
-#### Why the run step within the container step group is unable to publish the test report with the error ```Unable to collect test reports``` even after the report path is correctly configured?
+### Run step in a containerized step group can't publish test reports, and it throws "Unable to collect test reports" though the report path is correctly
 
-Currently publishing the test report via run step within the containerized step group is not supported. However the team is working on supporting this in the future release.
+Currently, publishing test reports from a Run step in a CD containerized step group is not supported. Try running your tests in a Build (CI) stage.
 
-#### If the "Run test" steps fails the Post-Command script will run or not?
+### Is the Tests tab only for Test Intelligence?
 
-No, the Post-Command script will only run if the "Run test" step pass.
+No. Test reports from tests run in Run steps also appear there if they are [correctly formatted](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-report-ref).
 
-#### How do I use Test Intelligence?
+### If the Run Tests step fails, does the Post-Command script run?
 
-Harness Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build
+No. The Post-Command script runs only if the Run Tests step succeeds.
 
-For information about how TI works and how to enable it, go to [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
+### How do I use Test Intelligence?
 
-#### Can Test Intelligence speed up my build times? 
+For instructions, go to [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
 
-You can speed up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. Test Intelligence 
+### Can Test Intelligence speed up my build times? What are the benefits of Test Intelligence?
 
-#### What are some of the other benefits of Test intelligence?
+Test Intelligence improves test time by running only the unit tests required to confirm the quality of the code changes that triggered a build. It can identify negative trends and help you gain insight into unit test quality. For more information, go to [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
 
-Test Intelligence also identifies negative trends and provides actionable insights to improve quality. 
+### What criteria does Test Intelligence use to select tests?
 
-#### Control memory on "Run Tests" step using Harness Cloud
+For information about how Test Selection selects tests, go to [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
 
-In the Harness Cloud this resource editing possibility is not available. Hence there is no way to control the memory like we can do for other infrastructure.
+### Can I limit memory and CPU for Run Tests steps running on Harness?
 
-####  Is the "Tests" tab in CI Build execution tied to Test Intelligence?
+No. Resource limits are not customizable when using Harness Cloud.
 
-No. You could add the test report path in runstep, background step etc and the test results will be appeared in tests tab of the execution if the test report is in junit format.
+### How can I understand the relationship between code changes and the selected tests?
 
-#### What criteria does Test Intelligence use to select tests for execution in a pull request scenario?
+On the Tests tab, the visualization call graph provides insights into why each test was selected. It visually represents the relationship between the selected tests and the specific code changes in the PR. For more information, go to [View tests - Results from Run Tests steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/viewing-tests#results-from-run-tests-steps-test-intelligence).
 
-In a pull request, TI uses the following criteria to select tests:
+### On the Tests tab, the Test Intelligence call graph is empty and says "No call graph is created when all tests are run"
 
-1) Changed code
-2) Changed tests
-3) New tests
+No call graph is generated if Test Intelligence selects to run all tests because the call graph would be huge and not useful (no test selection logic to demonstrate).
 
-#### On navigating to the tests tab, why the call graph shows up as empty with a message stating that `No call graph is created when all tests are run`?
-
-The callgraph would be huge and is not shown when all tests are run (full-run or bootstrap run) because it is not useful as no test-selection was done in this case
-
-#### How can I understand the relationship between code changes and the selected tests in a PR?
-
-In the `Tests` tab, the visualization graph provides insights into why each test was selected. It visually represents the relationship between the selected tests and the specific code changes in the PR
+For information about when TI might select all tests, go to [How does Test Intelligence work?](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence#how-does-test-intelligence-work)
 
 ## Script execution
 
@@ -697,47 +675,45 @@ Yes, user need to install docker and docker CLI in order to work.
 
 This could happen if you are exiting the python script manually by calling ```exit(0)```. If you configure output variable in the run step that uses python shell, we add few lines of code at the end of your custom script which will add the variable to be exported to a temp file. When you are calling exit(0) at the end of the script, these codes responsible for exporting variable will not be run which causes this issue. 
 
-## Entrypoint
+## Entry point
 
-### What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?
+### What does the "Failed to get image entry point" error indicate in a Kubernetes cluster build?
 
 This error suggests that there is an issue accessing the entrypoint of the Docker image. It can occur in a Kubernetes cluster build infrastructure when running PostgreSQL services in Background steps.
 
-To resolve this error, you might need to mount volumes for the PostgreSQL data in the build infrastructure's [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#volumes) setting, and then reference those volumes in the Background step running your PostgreSQL instance. For instructions, go to [Troubleshooting: Failed to get image entrypoint](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/multiple-postgres#troubleshooting-failed-to-get-image-entrypoint).
+To resolve this error, you might need to mount volumes for the PostgreSQL data in the build infrastructure's [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#volumes) setting, and then reference those volumes in the Background step running your PostgreSQL instance. For instructions, go to [Troubleshooting: Failed to get image entry point](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/multiple-postgres#troubleshooting-failed-to-get-image-entrypoint).
 
-#### Does Harness "run container" overwrites the container entrypoint?
+### Does the Harness Run step overwrite the base image container entry point?
 
-Yes, it is an expected behavior. The entrypoint in the base image should be overwritten as we have to run the commands specified in the run step.
+Yes, this is the expected behavior. The entry point in the base image is overwritten so Harness can run the commands specified in the Run step.
 
-#### Why is the default entry point is not running for the container image used in the run step?
+### Why is the default entry point is not running for the container image used in the Run step?
 
-The default entry point would be overriden by the commands you specified in the command section of the run step
+The default entry point is overwritten by the commands you specified in the Run step's commands.
 
-#### If the the default entry point is not executed for the container image used in the run step, how can we get the service started within a container which would usually be started as part of the default entry point?
+### Since the default entry point isn't executed for the container image used in the Run step, how do I start a service started in a container that would usually be started by the default entry point?
 
-You would need to use the background step in this usecase where we would execute the default entry point and run the container in dettached mode
+You can run the service in a [Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings), which can execute the default entry point.
 
-#### How can we run the default entry point of the image used in the run step?
+### How do I run the default entry point of the image used in the Run step?
 
-The commands specified in the command section of the run step will override the default entry point. You will need to manually run the default entry point by explicitly calling the script configured as the default entry point
+The commands specified in the Run step's commands override the default entry point. If you want to run those commands in the Run step, you nee dto include them in the Run step's commands.
 
 ## Docker in Docker
 
-#### Is it supported to run docker-compose from docker in docker in a Background step?
+### Can I run docker-compose from Docker-in-Docker in a Background step?
 
-Yes, it's supported to run the docker-compose from docker in docker running in a Background step.
+Yes.
 
-#### Is privileged mode necessary for running DinD in Harness CI?
+### Is privileged mode necessary for running DinD in Harness CI?
 
-Yes, Docker-in-Docker (DinD) must run in privileged mode to function correctly
+Yes, Docker-in-Docker (DinD) must run in privileged mode to function correctly.
 
-#### Are there any limitations to using DinD on platforms that do not support privileged mode?
+Generally, you can use DinD on platforms that don't support privileged mode, such as platforms that run containers on Windows or fargate nodes that don't support privileged mode.
 
-DinD cannot be used on platforms that do not support privileged mode. For example, platforms that run containers on Windows or fargate nodes do not support privileged mode
+### Why is my DinD Background step failing with "Pod not supported on Fargate: invalid SecurityContext fields: Privileged"?
 
-#### why is the dind background step is failing with the error "Pod not supported on Fargate: invalid SecurityContext fields: Privileged"?
-
-The error "Pod not supported on Fargate: invalid SecurityContext fields: Privileged" occurs because AWS Fargate does not support the use of privileged containers.
+This error occurs because AWS Fargate doesn't support the use of privileged containers. Privileged mode is required for DinD.
 
 ## Gradle
 

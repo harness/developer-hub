@@ -21,7 +21,7 @@ When you run a Harness CI pipeline, Harness pulls [required CI images](https://d
 
 ### Pull your own images from multiple ACRs
 
-To pull your own images to multiple ACRs, you can create one or more [Microsoft Azure connectors](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector) or [Docker connectors](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) for your ACRs.
+To pull your own images from multiple ACRs, you can create one or more [Microsoft Azure connectors](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector) or [Docker connectors](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) for your ACRs.
 
 If your ACRs are under the same app registration or Azure subscription, then you can use one connector. If you need to pull images from ACRs in multiple app registrations or subscriptions, you need to create a separate connector for each app/subscription. For more information, go to [Add a Microsoft Azure connector - Configure credentials](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector/#configure-credentials).
 
