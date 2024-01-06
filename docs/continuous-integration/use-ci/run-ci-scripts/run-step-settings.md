@@ -455,7 +455,7 @@ For Python, set the `shell` to `python` and enter your Python commands in `comma
 
 #### Reference background services
 
-You can reference services started in [Background steps](../manage-dependencies/background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a cURL command could call `BackgroundStepId:5000` where it might otherwise call `localhost:5000`.
+You can reference services started in [Background steps](../manage-dependencies/background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a cURL command could call `BackgroundStepId:5000` where it might otherwise call `localhost:5000`. The exact format depends on your build infrastructure. For more information, go to [Background step settings - Name and ID](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/#name-and-id) and [Background step settings - Port Bindings](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/#port-bindings).
 
 <figure>
 

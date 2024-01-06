@@ -569,6 +569,10 @@ The Dockerfile is assumed to be in the root folder of the codebase. You can use 
 
 Yes. Go to [Use images from multiple ACRs](./articles/using-images-from-multiple-ACRs.md).
 
+### Is remote caching supported in Build and Push steps?
+
+Harness supports multiple Docker layer caching methods depending on what infrastructure is used. Go to [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) to learn more.
+
 ## Upload artifacts
 
 ### Can I send emails from CI pipelines?
@@ -647,37 +651,35 @@ No call graph is generated if Test Intelligence selects to run all tests because
 
 For information about when TI might select all tests, go to [How does Test Intelligence work?](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence#how-does-test-intelligence-work)
 
-## Script execution
+## Script execution - Run steps
 
-#### Does Harness CI support script execution?
+### Does Harness CI support script execution?
 
-Yes, for details, go to [Run scripts](https://developer.harness.io/docs/category/run-scripts).
+Yes. Go to [Run scripts](https://developer.harness.io/docs/category/run-scripts).
 
-#### Using \<+codebase.gitUser> results in "None" when using Python as Shell for a Run step
+### Running a Python shell in a Run step, the expression \<+codebase.gitUser> resolves to "None"
 
-<!-- This is not a solution. -->
+This means the codebase variable wasn't resolved or resolved to `None`. [Codebase expression](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) values depend on the build trigger type, among other factors.
 
-The problem here is that none of the 'codebase' variables are being populated when push triggers fires. The solution is to populate the 'codebase' variables to clone the codebase.
+### Can I use an image that doesn't have a shell in a Run step?
 
-#### Is it possible to use an image in the run step that does not include a shell?
+The Run step requires the **Command** and **Shell** fields. Some shell must be available on the specified image to be able to run commands.
 
-In run step, the command is a required field and any shell should be available in the image used to be able to run the commands
+### Is a Docker image required to use the Run step on local runner build infrastructure?
 
-#### Is a Docker image is required to run scripts in CI builds with a local runner build infrastructure?
+Yes. Container Registry and Image are always required for Run steps on a local runner build infrastructure. For more information about when Container Registry and Image are required, go to [Use Run steps - Container Registry and Image](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#container-registry-and-image).
 
-Yes. Container registry and image are always required for Run steps with a local runner build infrastructure.
+### Is it required for a Run step's image to have Docker and Docker CLI installed?
 
-#### The container that execute the Run command step, it must have docker and docker CLI installed right in order for this to work?
+If your step needs to execute Docker commands, then the image needs to have Docker and the Docker CLI.
 
-Yes, user need to install docker and docker CLI in order to work.
+### When attempting to export an output variable from a Run step using a Python shell, the step fails with "no such file or directory"
 
-#### Why the run step is failing with the error ```1 error occurred: * stat /tmp/engine/Zko3loXHTre2vfh-output.env: no such file or directory``` while trying to export the output variable from the run step which uses python shell?
-
-This could happen if you are exiting the python script manually by calling ```exit(0)```. If you configure output variable in the run step that uses python shell, we add few lines of code at the end of your custom script which will add the variable to be exported to a temp file. When you are calling exit(0) at the end of the script, these codes responsible for exporting variable will not be run which causes this issue. 
+This can happen if you manually exit the Python script by calling `exit(0)`. When you declare an [output variable in a Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables), Harness runs some additional code at the end of your script to export the variable. If you exit the script manually in your Run step's command, then Harness can't run those additional lines of code.
 
 ## Entry point
 
-### What does the "Failed to get image entry point" error indicate in a Kubernetes cluster build?
+### What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?
 
 This error suggests that there is an issue accessing the entrypoint of the Docker image. It can occur in a Kubernetes cluster build infrastructure when running PostgreSQL services in Background steps.
 
@@ -722,6 +724,10 @@ This error occurs because AWS Fargate doesn't support the use of privileged cont
 To enable the Gradle daemon in your Harness CI builds, include the `--daemon` option when running Gradle commands in your build scripts (such as in Run steps). This option instructs Gradle to use the daemon process.
 
 Optionally, you can [use Background steps to optimize daemon performance](./articles/leverage-service-dependencies-in-gradel-daemon-to-improve-build-performance.md).
+
+### Can I configure service dependencies in Gradle builds?
+
+Yes, you can use [Background steps](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to configure service dependencies in Gradle builds.
 
 ## Maven
 
@@ -808,170 +814,128 @@ Changes to a container image are isolated to the current step. While a subsequen
 
 ## Caching
 
-####  How can I download files from an S3 bucket in Harness?
+### What does caching do in Harness CI?
 
-You have two common options to download files from an S3 bucket in Harness:
-1. **Using the "Save and Restore Cache from S3" Step:** You can achieve this by utilizing the [Save and Restore Cache from S3 step](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/). This step is specifically designed for downloading files from S3 and simplifies the process.
-2. **Custom Shell Script:** Alternatively, you can create a custom shell script by following the guidelines outlined in the [shell script documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/). This approach offers more flexibility, allowing you to tailor the download operation to your specific needs and preferences.
+[Caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) improves build times and lets you share data across stages.
 
-#### Using GCS to cache and restore between Steps?
+### What caching options does Harness CI offer?
 
-Yes, for details, go to [Save and Restore Cache from GCS](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs).
+Harness CI offers a variety of [caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) options, including S3, GCS, and Harness-hosted Cache Intelligence.
 
-#### Does Harness CI support Multilayer caching?
+###  How can I download files from an S3 bucket in Harness CI?
 
-Yes, for details, go to [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching).
+There are two options to download files from an S3 bucket in Harness:
 
-#### How to use an artifact generated on a different stage?
+* Use the [Save and Restore Cache from S3 steps](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/). This step is specifically designed for downloading files from S3 and simplifies the process.
+* Use a custom shell script in a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
 
-You could use the save/restore cache step or Harness cache intelligence to achieve this use case depending on where your build is running.
+### Can I use GCS for caching with Harness CI?
 
-#### What is the purpose of saving and restoring cache from GCS/S3 in Harness CI?
+Yes. Go to [Save and Restore Cache from GCS](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs).
 
-The purpose of saving and restoring cache from GCS/S3 in Harness CI is to improve build times and enable the sharing of data across different stages in your CI pipelines
+### Does Harness CI support multilayer caching?
 
-#### Are there alternatives to saving and restoring cached data from GCS in Harness CI pipelines?
+Yes. Go to [Multilayer caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching).
 
-Yes, you can also save and restore cached data from other sources like S3 or use Harness Cache Intelligence for data management
+### How can I use an artifact in a different stage from where it was created?
 
-#### What is the purpose of the "Fail if Key Doesn't Exist" option in the "Restore Cache from GCS" step?
+Use caching to [share data across stages](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-across-stages).
 
-This option determines whether the step should fail if the specified cache key doesn't exist in the GCS bucket. If selected, the step fails when the key is not found
+### What does the Fail if Key Doesn't Exist setting do?
 
-#### Is remote caching supported in Build and Push steps?
+The Fail if Key Doesn't Exist setting causes the [Restore Cache from GCS](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs#gcs-save-and-restore-cache-step-settings) or [Restore Cache from S3](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache#restore-cache-from-s3-step-settings) step to fail if the defined cache key isn't found.
 
-Harness supports multiple Docker layer caching methods depending on what infrastructure is used. Go to [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) to learn more.
+### Does Harness override the cache when using the Save Cache to S3 step?
 
-#### Does harness override the cache when using the save cache to S3 step?
+By default, the Save Cache to S3 step doesn't override the cache. You can use the [Override Cache](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache#override-cache) setting if you want to override the cache if a cache with a matching key already exists.
 
-By default ```save cache to s3``` step will not override the cache however there is an optional configuration which will overrode the cache with the same key if enabled
+### How can I check if the cache was restored?
 
-#### How user can configure the Restore Cache step to check if a cache was restored?
+You can use conditional executions and failure strategies to [check if a cache was downloaded and, if it wasn't, install the dependencies that would be provided by the cache](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/run-if-no-cache).
 
-In the configuration of the Restore Cache step:
+## Cache Intelligence
 
-1. Set it to fail if the target cache key isn't found.
-2. Enable a failure strategy that allows the pipeline to continue despite the step failure.
+### Cache Intelligence on Harness Cloud Infrastructure
 
-### Cache Intelligence
+[Cache Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) is available on Linux and Windows platforms on Harness Cloud build infrastructure only.
 
-#### Cache Intelligence on Harness Cloud Infrastructure
+### Why can't I enable Cache Intelligence in my CI pipeline?
 
-Harness only currently supports cache intelligence on the Harness Cloud infrastructure. 
-See [https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/)
+Currently, [Cache Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) is only available for Linux and Windows platforms on Harness Cloud build infrastructure. For more information, go to [Cache Intelligence - Supported build infrastructures](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#supported-build-infrastructures).
 
-#### What is Harness Cloud's cache storage limit per account?
+### What is the Cache Intelligence cache storage limit?
 
-Harness Cloud provides up to 2GB of cache storage per account. 
+Harness Cloud provides up to 2GB of [cache storage](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#cache-storage) per account.
 
-#### What is the cache retention window in Harness Cloud?
+### What is the cache retention window for Cache Intelligence? Can the cache expire?
 
-Cache retention window in Harness Cloud is set at 15 days after it is initially stored. Also, the retention window resets whenever the cache is updated or modified.
+[Cache storage](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#cache-storage) is retained for 15 days. This limit resets whenever the cache is updated.
 
-#### Can different pipelines within the same account access and use the same cache storage?
-The cache storage is shared among all pipelines within the account.
+### Can different pipelines within the same account access and use the same cache storage for Cache Intelligence?
 
-#### What is the default cache storage location in Cache Intelligence?
-By default, Cache Intelligence stores data to be cached in the /harness directory.
+All pipelines in the account use the same [cache storage](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#cache-storage), and each build tool has a unique cache key that is used to restore the appropriate cache data at runtime.
 
-#### How do I specify custom cache paths in Cache Intelligence?
-To specify custom cache paths in Cache Intelligence, you can provide a list of locations that you want to be cached. For the detailed process you can refer to this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-paths).
+### What is the cache storage location for Cache Intelligence?
 
-#### How does Harness generate cache keys for caching build artifacts?
+By default, Cache Intelligence stores data to be cached in the `/harness` directory. You can [specify custom cache paths](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-paths).
 
-Harness generates cache keys by creating a hash of the build lock file(s) detected during the build process. Examples of lock files include pom.xml, build.gradle, or package.json. The contents of these files are used to compute a unique hash, which serves as the cache key.
+### How does Harness generate cache keys for caching build artifacts?
 
-#### Can I manually set or customize cache keys in Harness?
+Harness generates a cache key from a hash of the build lock file (such as` pom.xml`, `build.gradle`, or `package.json`) that Harness detects. If Harness detects multiple tools or multiple lock files, Harness combines the hashes to create the cache key. You can also [set custom cache keys](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-keys).
 
-Yes, we have a option to manually set or customize cache keys if your project has specific requirements. For the process you refer to this [doc.](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#customize-cache-keys)
+### Is there any API available for Cache Intelligence?
 
-#### Is there any API available for the Cache Intelligence?
-
-Yes, you can check the cache info and delete through the API. You can refer to this [doc](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#cache-intelligence-api) for the API.
-
-#### Why I can't toggle cache intelligence in my CI pipeline?
-
-Currently, Cache Intelligence is only available for Linux and Windows platforms on Harness Cloud, the Harness-hosted build environment.
-For other build infrastructures, you can use Save and Restore Cache steps, such as Save and Restore Cache from S3, to include caching in your CI pipelines. For more information: [Supported Build Infra](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/#supported-build-infrastructures)
-
-#### Why is the ```Enable Cache Intelligence``` option is greyed out in the CI pipeline?
-
-Harness cache intelligence is currently supported when you run the build in Harness cloud on Linux and Windows platforms. For all the other build infra, this option would be greyed out.
-
-#### Does Cache Intelligence have the capability to expire the cache?"
-
-Yes, The cache will be expired every 15 days
+Yes. Go to [Cache Intelligence API](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#cache-intelligence-api).
 
 ## Background steps and service dependencies
 
-#### Why am I unable to connect to the hostname using the step identifier in a background step, resulting in the error "Unknown server host xxxx"?
+### What is the purpose of Background steps in a CI stage?
 
-The utilization of Step Id is restricted to VM flows exclusively. To address this issue, consider using `localhost` or `127.0.0.1` instead.
+[Background steps](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) are used to [manage dependent services](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies) that need to run for the entire lifetime of a Build stage.
 
-#### Why is background step is always marked as succeess even if there are failures executing the entrypoint?
+### How do I configure the Background step settings?
 
-This is expected behaviour as we start background step and will immedeatly move on to next step by marking the step status as success. We should be having a subsequent run step to check if the services being started as part of the background step is accessible before trying to use them in the pipeline.
+For instructions on configuring Background steps, go to [Background step settings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings).
 
-#### How to use Background step settings?
+### Can Background steps run multiple services simultaneously?
 
-Use Background steps to manage dependent services that need to run for the entire lifetime of a Build stage. 
-For details, go to  [Background step settings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings).
+Yes, you can use multiple background steps to run multiple background services, creating a local, multi-service application.
 
-#### What options are available for running health checks on background services in Harness CI?
-
-You can add a run step to your pipeline to run health checks on background services to ensure they are up and running as expected. These checks help validate the service's readiness
-
-#### What is the purpose of Background steps in CI stage?
-
-Background steps are used to manage dependent services that need to run for the entire lifetime of a Build stage
-
-#### Can Background steps run multiple services simultaneously?
-
-Yes, you can set up your pipeline to run multiple background services, creating a local, multi-service application
-
-#### Do Background steps have limitations?
+### Do Background steps have limitations?
 
 Yes. Background steps have these limitations:
 
 * Background steps don't support failure strategies or output variables.
-* Steps running in containers can't communicate with Background steps running on [Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) because they don't have a common host.
+* Other steps running in containers can't communicate with Background steps running on [Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) because they don't have a common host.
 * If your build stage uses Harness Cloud build infrastructure and you are running a Docker image in a Background step, you must specify [Port Bindings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#port-bindings) if you want to reference the Background step in a later step in the pipeline (such as in a cURL command in a Run step).
 
-#### Can user configure service dependencies in Gradle builds?
+### I can't connect to the hostname using the step ID from my Background step, and I get an "Unknown server host" error
 
-Yes, you can configure service dependencies in Gradle builds.
+Not all build infrastructures use the step ID when referencing services running in Background steps. For more information, go to [Background step settings - Name and ID](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#name-and-id) and [Background step settings - Port Bindings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#port-bindings).
 
-#### What prerequisites are there for running Background steps?
+### Why is Background step always marked as successful even if there are failures executing the entry point?
 
-The build environment must have the necessary binaries for PostgreSQL. Depending on the build infrastructure, Background steps can use existing binaries in the environment or pull an image, such as a Docker image, containing the required binaries.
+This is the expected behavior. Once a Background step initializes, Harness proceeds to the next step in the stage and marks the Background step successful. If your services in Background steps aren't starting, or your subsequent steps are running too soon, [add a Run step after the Background step as a health check](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/health-check-services/).
 
-#### Can Background steps use external images for PostgreSQL services?
+### How can I make sure my background service is healthy before running the rest of my pipeline? How can I test that my background service is running?
 
-Yes, depending on the build infrastructure, Background steps can either use existing binaries in the build environment or pull an image from public or private Docker image, that contains the required PostgreSQL binaries.
+[Add a Run step after the Background step as a health check.](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/health-check-services/)
 
-#### How do user add volumes for PostgreSQL data in the build infrastructure settings?
-In the build infrastructure settings, configure one empty directory volume for each PostgreSQL service. This can typically be done through the Kubernetes configuration or deployment files.
+### What are the prerequisites for running Background steps?
 
-#### How do I add a Run step to test PostgreSQL services?
+The build infrastructure or environment must have the necessary binaries to run your service. Depending on the build infrastructure, Background steps can use existing binaries in the environment (such as those that are preinstalled on Harness Cloud runners) or pull an image, such as a Docker image, containing the required binaries. For more information, go to [Background step settings - Container Registry and Image](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#container-registry-and-image).
 
-In the same CI stage where you added the Background steps, include a Run step after the Background steps. Ensure that the Run step is not in the parallel group to avoid conflicts.
+### Can Background steps use an external image for PostgreSQL services?
 
-#### What is the use of the Run step for psql commands?
+Yes. Depending on the build infrastructure, Background steps can either use existing binaries in the build environment or pull an image containing the required PostgreSQL binaries. For more information, go to [Background step settings - Container Registry and Image](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#container-registry-and-image).
 
-A4: The Run step for psql commands serves as a validation step before proceeding with subsequent actions.
+### How do I add volumes for PostgreSQL data in the build workspace?
 
-#### How can I check that a LocalStack service running in a Background step is healthy?
+With a Kubernetes cluster build infrastructure, use the [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#volumes) setting to add one empty directory volume for each PostgreSQL service you plan to run. For moe information, go to [Troubleshooting: Failed to get image entry point](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/multiple-postgres#troubleshooting-failed-to-get-image-entrypoint).
 
-1. In the "Run" step
-2. Enter "localstack health" in the Name field.
-3. Enter a cURL command in the Command field to ping the LocalStack service running in a Background step.
+### Can I run a LocalStack service in a Background step?
 
-   Depending on your build infrastructure, you might reference the service by the Background step ID, localhost, or IP address and the container port or host port. For more information go to [Background step settings - Name and ID](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#name-and-id) and [Background step settings - Port Bindings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#port-bindings).
-
-4. Expand the Optional Configuration section, configure the Container Registry field, and select your Docker Hub connector.
-5. Enter "curlimages/curl:7.83.1" in the Images field.
-
-
+Yes. Go to [Tutorial: Run LocalStack as a Background step](https://developer.harness.io/tutorials/ci-pipelines/test/localstack/).
 
 ## Conditional executions, looping, parallelism, and failure strategies
 
