@@ -3495,24 +3495,24 @@ For steps on adding a Custom Artifact source, go to [Add a custom artifact sourc
 
 The following table lists how many artifact versions Harness displays in its UI drop-downs, and how Harness sorts the versions.
 
-| **Artifact Source Type**         | **Limit**     | **Order**                                                                                              |
-|----------------------------------|---------------|--------------------------------------------------------------------------------------------------------|
-| DockerRegistry                   | 10000         | Lexical (descending)                                                                                   |
-| Google Container Registry        | No Limit      | Lexical (descending)                                                                                   |
-| AWS ECR                          | No Limit      | Lexical (descending)                                                                                   |
-| Azure Container Registry         | 500           | Lexical (descending)                                                                                   |
-| Google Artifact Registry(Docker) | 2,147,483,647 | Lexical (descending)                                                                                   |
-| Artifactory(Docker)              | No Limit      | Lexical (descending)                                                                                   |
-| Artifactory(Generic)             | 10000         | Descending order of created at.                                                                        |
-| Github Packages                  | No Limit      | Descending order of created at.                                                                                                       |
+| **Artifact Source Type**         | **Limit**     | **Order**                                                                          |
+|----------------------------------|---------------|------------------------------------------------------------------------------------|
+| DockerRegistry                   | 10000         | Lexical (descending)                                                               |
+| Google Container Registry        | No Limit      | Lexical (descending)                                                               |
+| AWS ECR                          | No Limit      | Lexical (descending)                                                               |
+| Azure Container Registry         | 500           | Lexical (descending)                                                               |
+| Google Artifact Registry(Docker) | 2,147,483,647 | Descending order of created at.                                                                                   |
+| Artifactory(Docker)              | No Limit      | Lexical (descending)                                                               |
+| Artifactory(Generic)             | 10000         | Descending order of created at.                                                    |
+| Github Packages                  | No Limit      | Descending order of created at.                                                                                   |
 | Nexus3(Docker)                   | No Limit      | Descending order of last modified at (3.46.0 and newer). Alphabetically descending for older versions. |
 | Nexus3(non-Docker)               | 2,147,483,647 | Descending order of last modified at (3.46.0 and newer). Alphabetically descending for older versions. |
-| Nexus2                           | No Limit      | Lexical (descending)                                                                                   |
-| Amazon S3                        | 500           | Descending order of last modified.                                                                     |
-| Amazon Machine Image             | No Limit      | Descending order of image creation time.                                                               |
-| Azure Artifacts                  | No Limit      |                                                                                                        |
-| Jenkins                          | 25            | Lexical (descending)                                                                                   |
-| Custom                           | No Limit      | The same as the custom script used.                                                                    |
+| Nexus2                           | No Limit      | Lexical (descending)                                                               |
+| Amazon S3                        | 500           | Descending order of last modified.                                                 |
+| Amazon Machine Image             | No Limit      | Descending order of image creation time.                                           |
+| Azure Artifacts                  | No Limit      |                                                                                    |
+| Jenkins                          | 25            | Lexical (descending)                                                               |
+| Custom                           | No Limit      | The same as the custom script used.                                                |
 
 
 ## Pull an image from a private registry
