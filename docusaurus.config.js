@@ -23,6 +23,7 @@ const config = {
   baseUrl: BASE_URL,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
+  onBrokenAnchors: "ignore",
   favicon: "img/hdh_fav_icon_grey.ico",
 
   //Mermaid Diagram Functionality
