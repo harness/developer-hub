@@ -2,7 +2,6 @@ import React, { useState, type ReactNode, useRef, useEffect } from "react";
 import clsx from "clsx";
 import styles from "./styles.module.scss";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Link from "@docusaurus/Link";
 
 type Feature = {
   title: string;
@@ -17,6 +16,7 @@ export interface Props {
   description?: string;
   horizon?: Horizon;
   module: string;
+  isActive: boolean;
 }
 
 function CardContainer({
@@ -26,13 +26,8 @@ function CardContainer({
   children: ReactNode;
   module: string;
 }): JSX.Element {
-  const handleClick = (
-    e: React.MouseEvent<HTMLDivElement>,
-    element: any,
-    module: string
-  ) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>, element: any) => {
     focusInput(element);
-    localStorage.setItem("roadmap", module);
   };
   useEffect(() => {
     const element = document.getElementById("cd");
@@ -47,21 +42,17 @@ function CardContainer({
   };
 
   return (
-    <Link to={`/roadmap/#${module}`}>
-      <div
-        id={module}
-        ref={element}
-        onClick={(e) => handleClick(e, element, module)}
-        className={clsx(
-          "card padding--lg",
-          styles.cardContainer,
-          styles[module]
-        )}
-        tabIndex={0} // Allow the div to receive focus
-      >
-        {children}
-      </div>
-    </Link>
+    // <Link to={`/roadmap/#${module}`}>
+    <div
+      id={module}
+      ref={element}
+      onClick={(e) => handleClick(e, element)}
+      className={clsx("card padding--lg", styles.cardContainer, styles[module])}
+      tabIndex={0} // Allow the div to receive focus
+    >
+      {children}
+    </div>
+    // </Link>
   );
 }
 
@@ -86,10 +77,12 @@ export default function DocCard({
   description,
   horizon,
   module,
+  isActive,
 }: // handleClick,
 Props): JSX.Element {
   return (
     <CardLayout
+      isActive={isActive}
       title={title}
       description={description}
       horizon={horizon}

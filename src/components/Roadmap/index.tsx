@@ -1,27 +1,50 @@
 import React, { useEffect, useState } from "react";
-import DocCard, { Horizon } from "./Card/Card";
+import DocCard, { Horizon, Props } from "./Card/Card";
 import styles from "./index.module.scss";
 import { CardData } from "./data/carddata";
+
 const Roadmap = () => {
   const [horizon, setHorizon] = useState<Horizon>(null);
+  const [cards, setCards] = useState(CardData);
   const [key, setKey] = useState({});
-  const [target, setTarget] = useState("");
-  console.log(target);
+  const handleCardClick = (index: number) => {
+    setHorizon(null);
+    setKey(null);
+    const updatedCards = cards.map((card, i) => {
+      if (i === index) {
+        return {
+          ...card,
+          isActive: true,
+        };
+      }
+      return {
+        ...card,
+        isActive: false,
+      };
+    });
+    setCards(updatedCards);
+  };
 
   useEffect(() => {
-    const foundCard = CardData.find((card) => card.module === target);
-    setHorizon(null);
-    if (foundCard && foundCard.horizon) {
-      setHorizon(foundCard.horizon);
-      const keys = Object.keys(foundCard.horizon);
-      setKey(keys);
-    }
-  }, [target]);
+    cards.map((card) => {
+      console.log({ card: card.title, isActive: card.isActive });
+
+      if (card.isActive && card.horizon) {
+        setHorizon(card.horizon);
+        const keys = Object.keys(card.horizon);
+        setKey(keys);
+      }
+    });
+  }, [cards]);
+
   useEffect(() => {
-    setTarget(localStorage.getItem("roadmap"));
-  }, [localStorage.getItem("roadmap")]);
-  useEffect(() => {
-    localStorage.setItem("roadmap", "cd");
+    cards.map((card) => {
+      if (card.module == "cd") {
+        setHorizon(card.horizon);
+        const keys = Object.keys(card.horizon);
+        setKey(keys);
+      }
+    });
   }, []);
 
   return (
@@ -29,12 +52,14 @@ const Roadmap = () => {
       <div className={styles.main}>
         {CardData.map((card, index) => {
           return (
-            <DocCard
-              key={index}
-              title={card.title}
-              horizon={card.horizon}
-              module={card.module}
-            />
+            <div key={index} onClick={() => handleCardClick(index)}>
+              <DocCard
+                isActive={card.isActive}
+                title={card.title}
+                horizon={card.horizon}
+                module={card.module}
+              />
+            </div>
           );
         })}
       </div>
