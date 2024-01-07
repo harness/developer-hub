@@ -53,11 +53,6 @@ Once the remote Harness service is created, you can use it in your CD pipeline. 
 
 The **Deployment Type** of the remote service (Kubernetes, ECS, etc.) must match the **Deployment Type** of the stage where you are adding the service.
 
-:::note
-
-If you are adding a remote service, environment, or infrastructure definition to a remote pipeline, by default the remote service, environment, or infrastructure definition will pick up the same branch as the remote pipeline.
-
-:::
  
 To add a remote service to a pipeline, do the following:
 
@@ -67,6 +62,14 @@ To add a remote service to a pipeline, do the following:
 3. Select the branch for the version of the service you want to use in your pipeline.
     ![](./static/branches-adding-services.png)
 4. Select **Apply Selected**.
+
+:::note
+
+1. When the remote Service is linked to the pipeline , branch of the Service gets displayed as ``__DEFAULT__``.
+``__DEFAULT__`` resolves to same branch as pipeline when both the pipeline where it is linked are in the same branch or the main branch of the repository where the Service resides when it is different.
+2. When a remote stage template containing Remote service is linked in a Remote Pipeline, the Stage template branch is defaulted when both the entities are in the same repository. If the service is in a different repository , that repository is taken. Read more about creating [remote stage template](/docs/platform/templates/create-a-remote-stage-template.md).
+
+:::
 
 ## Change an inline service to a remote service
 
