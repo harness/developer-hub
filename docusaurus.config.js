@@ -269,10 +269,10 @@ const config = {
                 label: "Harness Cloud Operations",
                 to: "docs/harness-cloud-operations",
               },
-              {
-                label: "Roadmap",
-                to: "/roadmap",
-              },
+             // {
+             //   label: "Roadmap",
+             //   to: "/roadmap",
+             // },
               {
                 label: "API Reference",
                 to: "https://apidocs.harness.io/",
