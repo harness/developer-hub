@@ -26,29 +26,12 @@ function CardContainer({
   children: ReactNode;
   module: string;
 }): JSX.Element {
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>, element: any) => {
-    focusInput(element);
-  };
-  useEffect(() => {
-    const element = document.getElementById("cd");
-    if (element) {
-      element.focus();
-    }
-  }, []);
-  const element = useRef<HTMLDivElement>(null);
-
-  const focusInput = (element: any) => {
-    element.current.focus();
-  };
-
   return (
     // <Link to={`/roadmap/#${module}`}>
     <div
       id={module}
-      ref={element}
-      onClick={(e) => handleClick(e, element)}
       className={clsx("card padding--lg", styles.cardContainer, styles[module])}
-      tabIndex={0} // Allow the div to receive focus
+      tabIndex={0}
     >
       {children}
     </div>
@@ -58,8 +41,6 @@ function CardContainer({
 
 function CardLayout({
   title,
-  description,
-  horizon,
   module,
 }: // hadleClick,
 Props): JSX.Element {

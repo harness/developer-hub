@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DocCard, { Horizon, Props } from "./Card/Card";
 import styles from "./index.module.scss";
 import { CardData } from "./data/carddata";
@@ -7,7 +7,12 @@ const Roadmap = () => {
   const [horizon, setHorizon] = useState<Horizon>(null);
   const [cards, setCards] = useState(CardData);
   const [key, setKey] = useState({});
-  const handleCardClick = (index: number) => {
+  const handleCardClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    index: number
+  ) => {
+    e.currentTarget.focus();
+
     setHorizon(null);
     setKey(null);
     const updatedCards = cards.map((card, i) => {
@@ -27,8 +32,6 @@ const Roadmap = () => {
 
   useEffect(() => {
     cards.map((card) => {
-      console.log({ card: card.title, isActive: card.isActive });
-
       if (card.isActive && card.horizon) {
         setHorizon(card.horizon);
         const keys = Object.keys(card.horizon);
@@ -45,6 +48,10 @@ const Roadmap = () => {
         setKey(keys);
       }
     });
+    const cd = document.getElementById("cd");
+    console.log(cd);
+
+    cd.focus();
   }, []);
 
   return (
@@ -52,7 +59,7 @@ const Roadmap = () => {
       <div className={styles.main}>
         {CardData.map((card, index) => {
           return (
-            <div key={index} onClick={() => handleCardClick(index)}>
+            <div key={index} onClick={(e) => handleCardClick(e, index)}>
               <DocCard
                 isActive={card.isActive}
                 title={card.title}
