@@ -124,14 +124,14 @@ Setup Harness CD & GitOps in a few commands
       harness connector apply [command options] [arguments...]
 
    OPTIONS:
-     --delegate-name value               delegate name for the k8s connector
-     --docker-user value                 docker username for the docker connector
-     --git-user value                    git username for the github connector
-     --aws-cross-account-role-arn value  cross account role arn for the aws connector
-     --aws-access-key value              access key for the aws connector
-     --aws-secret-Key value              access secret for the aws connector
+     --delegate-name value               delegate name for the Kubernetes connector
+     --docker-user value                 docker username for the Docker connector
+     --git-user value                    git username for the GitHub connector
+     --aws-cross-account-role-arn value  cross-account role ARN for the AWS connector
+     --aws-access-key value              access key for the AWS connector
+     --aws-secret-Key value              access secret for the AWS connector
      --cloud-region value                region for the cloud connector
-     --host-ip value                     host ip or fqdn for the physical data center connector
+     --host-ip value                     host IP or FQDN for the physical data center connector
      --port value                        port for the physical data center connector
      --org-id value                      provide an Organization Identifier
      --project-id value                  provide a Project Identifier
@@ -251,7 +251,7 @@ Setup Harness CD & GitOps in a few commands
    
    OPTIONS:
       --agent-identifier value  provide GitOps Agent Identifier.
-      --git-user value          provide your Github username
+      --git-user value          provide your GitHub username
       --org-id value            provide an Organization Identifier
       --project-id value        provide a Project Identifier
       --help, -h                show help
