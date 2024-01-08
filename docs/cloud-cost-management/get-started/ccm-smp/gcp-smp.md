@@ -125,7 +125,9 @@ On installing/upgrading charts you will see K8s secrets created with default val
 
 Command: ```echo -n "accessKey" | base64```
 
-The -n option with echo prevents the trailing newline character from being included in the output
+The -n option with echo prevents the trailing newline character from being included in the output. To encode service account credential JSON file, use below command:
+
+```base64 -i service-account.json -o service-account-base64-encoded.txt```
 
 Following are the secrets specific to CCM services:
 
