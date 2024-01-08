@@ -99,6 +99,10 @@ For more information, go to [Use Harness Cloud build infrastructure - Requiremen
 
 Unlike with other build infrastructures, you can't change the CPU/memory allocation for steps running on Harness Cloud. Step containers running on Harness Cloud build VMs automatically use as much as CPU/memory as required up to the available resource limit in the build VM.
 
+### Does gsutil work with Harness Cloud?
+
+No, gsutil is deprecated and can't be used with Harness Cloud. Please use gcloud-equivalent commands instead, such as `gcloud storage cp` instead of `gsutil cp`.
+
 ## Kubernetes clusters
 
 ### What is the difference between a Kubernetes cluster build infrastructure and other build infrastructures?
@@ -665,9 +669,9 @@ Test Intelligence improves test time by running only the unit tests required to 
 
 For information about how Test Selection selects tests, go to [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
 
-### Can I limit memory and CPU for Run Tests steps running on Harness?
+### Can I limit memory and CPU for Run Tests steps running on Harness Cloud?
 
-No. Resource limits are not customizable when using Harness Cloud.
+No. Resource limits are not customizable when using Harness Cloud or self-hosted VM build infrastructures. In these cases, the step can consume the entire memory allocation of the VM.
 
 ### How can I understand the relationship between code changes and the selected tests?
 
