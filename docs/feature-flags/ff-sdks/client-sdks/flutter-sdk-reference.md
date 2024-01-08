@@ -32,7 +32,7 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **2.1.0.**
+The current version of this SDK is **2.1.1.**
 
 ## Flutter and Dart requirements
 
