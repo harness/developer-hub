@@ -62,6 +62,8 @@ gsutil -m cp \
 
 #### Self-Managed Enterprise Edition
 
+- You can now use an Amazon ElastiCache Redis database with your installation. (SMP-2165, ZD-52249)
+
 - You can now use Kubernetes-based external secrets for Harness license values in Helm charts. (SMP-1839, ZD-49341, ZD-52283)
 
    Harness has added the following values to `global.license.secrets.kubernetesSecrets`.
