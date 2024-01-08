@@ -270,10 +270,10 @@ const config = {
                 label: "Harness Cloud Operations",
                 to: "docs/harness-cloud-operations",
               },
-             // {
-             //   label: "Roadmap",
-             //   to: "/roadmap",
-             // },
+              // {
+              //   label: "Roadmap",
+              //   to: "/roadmap",
+              // },
               {
                 label: "API Reference",
                 to: "https://apidocs.harness.io/",
@@ -368,7 +368,7 @@ const config = {
               },
               {
                 label: "Code Repository",
-                to: "https://harness.io/products/code-repository",
+                to: "https://gitness.com/",
               },
               {
                 label: "Continuous Integration",
