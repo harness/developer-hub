@@ -331,6 +331,7 @@ The options avialable to you to specify a Helm chart store depend on whether or 
 
 - **Direct Connection**. Contains the OCI Helm Registry Connector option (shortened to **OCI Helm**), which you can use with any OCI-based registry.
 - **Via Cloud Provider**. Contains the ECR connector option. This connector is specifically designed for AWS ECR to help you overcome the limitation of having to regenerate the ECR registry authentication token every 12 hours. The ECR connector option uses an AWS connector and regenerates the required authentication token if the token has expired.
+  - For details on using different authentication types (access key, delegate IAM, and IRSA), go to [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector).
 
 ### Helm commands performance analysis
 Harness interacts with helm charts and repositories by using various helm commands. When these commands are run in parallel along with a large helm repository, they can leave a  significant CPU footprint on the Harness delegate.
