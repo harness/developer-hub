@@ -86,15 +86,25 @@ The following deprecated API endpoints will no longer be supported:
 
 #### New features and enhancements
 
-- The allowlist feature is now available for delegates with immutable image types. (PL-42471)
+- Upgraded MinIO to `bitnami/minio:2023.10.7-debian-11-r2`. (PL-42019)
 
-   Delegates with an immutable image type can register if their IP/CIDR address is included in the allowed list received by Harness Manager.
+#### Early access
+
+##### Allowlist verification for delegate registration (PL-42471)
+
+:::info note
+
+Currently, allowlist verification for delegate registration is behind the feature flag `PL_ENFORCE_DELEGATE_REGISTRATION_ALLOWLIST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+   Without this feature flag enabled, delegates with an immutable image type can register without allowlist verification.
+
+   With this feature flag enabled, delegates with an immutable image type can register if their IP/CIDR address is included in the allowed list received by Harness Manager.
 
    The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
 
    Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](/docs/platform/security/add-manage-ip-allowlist/).
-
-- Upgraded MinIO to `bitnami/minio:2023.10.7-debian-11-r2`. (PL-42019)
 
 #### Fixed issues
 
