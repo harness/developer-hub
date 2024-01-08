@@ -1,0 +1,11 @@
+{
+  "label": "CCM onboarding guide",
+  "position": "3",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "CCM onboarding guide"
+  }
+}
