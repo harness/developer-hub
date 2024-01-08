@@ -46,7 +46,7 @@ If the pod isn't up, you might see the following error in your cluster:
 ```
 CrashLoopBackOff: Kubernetes Cluster Resources are not available.
 ```
-Make sure the Kubernetes Cluster Resources (CPU, Memory) are enough.
+Make sure the Kubernetes Cluster Resources (CPU, memory) are sufficient.
 
 If the delegate didn’t reach a healthy state, try this:
 
@@ -62,9 +62,9 @@ Currently, allowlist verification for delegate registration is behind the featur
 
 :::
 
-Without this feature flag enabled, delegates with an immutable image type can register without allowlist verification.
-
 With this feature flag enabled, delegates with an immutable image type can register if their IP/CIDR address is included in the allowed list received by Harness Manager.
+
+Without this feature flag enabled, delegates with an immutable image type can register without allowlist verification.
 
 The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
 
