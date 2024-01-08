@@ -1187,7 +1187,7 @@ Create a service with an artifact source that uses the connector using the [Crea
    5. **Version:** Select the artifact version to use or set the option as a runtime input or expression.
 7. Select **Submit**.
 
-<docimage path={require('./static/c5a9e07628ab8f1c79c71ba7f19750797af1321378f1008563e8d58595c70d74.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/c5a9e07628ab8f1c79c71ba7f19750797af1321378f1008563e8d58595c70d74.png')} width="60%" height="60%" title="Click to view full size image" />
 
 </details>
 
@@ -1260,7 +1260,7 @@ Next, copy the token and paste it in the Harness Encrypted Text secret you use f
 
 The PAT must have the **Read** permission in **Packaging**.
 
-<docimage path={require('./static/ee464a7fb77650d47cc1c64d752f917cda4343824ba02ce64885894b5d506739.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/ee464a7fb77650d47cc1c64d752f917cda4343824ba02ce64885894b5d506739.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 ### Azure DevOps artifacts expressions
@@ -1647,21 +1647,21 @@ To use the Docker Registry connector to connect to ACR, do the following:
 
 1. In Azure ACR, in **Repository permissions**, select **Tokens**.
    
-  <docimage path={require('./static/cfe33a0df139ae4c13d3b191c3fe1b160a0d79dd337fc16dac88be1cbdf582a4.png')} width="30%" height="30%" title="Click to view full size image" />  
+  <DocImage path={require('./static/cfe33a0df139ae4c13d3b191c3fe1b160a0d79dd337fc16dac88be1cbdf582a4.png')} width="30%" height="30%" title="Click to view full size image" />  
 
 2. Create a new token and scope map.
    
-  <docimage path={require('./static/6eacbefee02319d23d749a69a7adcd66666c6e7036efb267bfc37454cea6c6a6.png')} width="60%" height="60%" title="Click to view full size image" />  
+  <DocImage path={require('./static/6eacbefee02319d23d749a69a7adcd66666c6e7036efb267bfc37454cea6c6a6.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 3.  Generate the password for the token.
    
-  <docimage path={require('./static/feacb89196f0649e37019b63020dc2faab70f04b135a872f21599b07b42b7cf5.png')} width="60%" height="60%" title="Click to view full size image" />  
+  <DocImage path={require('./static/feacb89196f0649e37019b63020dc2faab70f04b135a872f21599b07b42b7cf5.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 3.  In Harness, create a new Docker Registry connector. 
 4.  For **Provider Type**, select **Other**.
 5.  Select **Username and Password** for **Authentication**, and use the username and password for the ACR token.
    
-  <docimage path={require('./static/f9b3efd13ddb3f9bd25f1686d4154bfc281501be9b9c75e5c8660858a64284ed.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/f9b3efd13ddb3f9bd25f1686d4154bfc281501be9b9c75e5c8660858a64284ed.png')} width="60%" height="60%" title="Click to view full size image" />
 
 </details>
 
@@ -2918,7 +2918,7 @@ To add an artifact from Artifactory, do the following:
 
 <figure>
 
-<docimage path={require('./static/kubernetes-services-16-generic.png')} width="100%" height="100%" title="Click to view full size image" />  
+<DocImage path={require('./static/kubernetes-services-16-generic.png')} width="100%" height="100%" title="Click to view full size image" />  
 
 <figcaption>Figure 1: Elements in the Artifactory UI and their equivalents in the <b>Artifact Details</b> dialog box.</figcaption>
 
@@ -3501,14 +3501,14 @@ The following table lists how many artifact versions Harness displays in its UI 
 | Google Container Registry        | No Limit      | Lexical (descending)                                                                                   |
 | AWS ECR                          | No Limit      | Lexical (descending)                                                                                   |
 | Azure Container Registry         | 500           | Lexical (descending)                                                                                   |
-| Google Artifact Registry(Docker) | 2,147,483,647 | Lexical (descending)                                                                                   |
+| Google Artifact Registry(Docker) | 2,147,483,647 | Descending order of created at.                                                                                   |
 | Artifactory(Docker)              | No Limit      | Lexical (descending)                                                                                   |
 | Artifactory(Generic)             | 10000         | Descending order of created at.                                                                        |
-| Github Packages                  | No Limit      |                                                                                                        |
+| Github Packages                  | No Limit      | Descending order of created at.                                                                        |
 | Nexus3(Docker)                   | No Limit      | Descending order of last modified at (3.46.0 and newer). Alphabetically descending for older versions. |
 | Nexus3(non-Docker)               | 2,147,483,647 | Descending order of last modified at (3.46.0 and newer). Alphabetically descending for older versions. |
 | Nexus2                           | No Limit      | Lexical (descending)                                                                                   |
-| Amazon S3                        | No Limit      | Descending order of last modified.                                                                     |
+| Amazon S3                        | 500           | Descending order of last modified.                                                                     |
 | Amazon Machine Image             | No Limit      | Descending order of image creation time.                                                               |
 | Azure Artifacts                  | No Limit      |                                                                                                        |
 | Jenkins                          | 25            | Lexical (descending)                                                                                   |
@@ -3635,7 +3635,7 @@ Harness provides expressions you can use to output the SHA values and labels of 
 
 SHA values and labels for the artifact are now visible in the Harness service **Output** section of a pipeline execution.
 
-<docimage path={require('./static/726cd79347c2dabba5bd47f2264f91b0b2618f872663c90048453719e87ff634.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/726cd79347c2dabba5bd47f2264f91b0b2618f872663c90048453719e87ff634.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 Labels are visible if the artifact manifest supports `schemaVersion1`.

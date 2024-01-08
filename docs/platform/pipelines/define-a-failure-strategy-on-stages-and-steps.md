@@ -16,15 +16,15 @@ Failure strategies are a critical pipeline design component that determine what 
 
 You can apply a failure strategy to the following:
 
-* Step
-* Step Group
-* Stage
+- Step
+- Step Group
+- Stage
 
 For details on strategy options and how strategies work, go to [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
 ### Before you begin
 
-* [Add a Stage](add-a-stage.md)
+- [Add a Stage](add-a-stage.md)
 
 ### Visual summary
 
@@ -32,7 +32,7 @@ Here's a quick video of how to set up failure strategies:
 
 <!-- Video:
 https://www.youtube.com/watch?v=4KYGllvJ42U-->
-<docvideo src="https://www.youtube.com/watch?v=4KYGllvJ42U" />
+<DocVideo src="https://www.youtube.com/watch?v=4KYGllvJ42U" />
 
 Here is what a Manual Intervention action looks like when a failure occurs:
 
@@ -48,7 +48,7 @@ Harness Pipeline stages and steps both include **Conditional Execution** and **F
 
 Using these settings together in multiple stages requires some consideration.
 
-Let's say you have a Pipeline with two stages: **stage 1** followed by **stage 2**. 
+Let's say you have a Pipeline with two stages: **stage 1** followed by **stage 2**.
 
 Stage 2's **Conditional Execution** is set to **Execute this step only if prior stage or step failed**. Stage 1's **Failure Strategy** is set to **Rollback Stage on All Errors**.
 
@@ -74,9 +74,9 @@ To add an additional stage failure strategy, click **Add**.
 
 Select the following:
 
-* **On failure of type:** select one or more of the error types. See [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
-* **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
-* **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
+- **On failure of type:** select one or more of the error types. See [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
+- **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
+- **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
 
 ### Add a step failure strategy
 
@@ -90,13 +90,13 @@ Click **Failure Strategy** and click **Add**.
 
 Select the following:
 
-* **On failure of type:** select one or more of the error types. See [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
-* **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
-* **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
+- **On failure of type:** select one or more of the error types. See [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
+- **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
+- **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
 
 ### Rollback pipeline steps or stages
 
-The Rollback Pipeline failure strategy applies to all steps and stages in a pipeline. 
+The Rollback Pipeline failure strategy applies to all steps and stages in a pipeline.
 
 :::info
 
@@ -105,9 +105,10 @@ If a pipeline includes a child pipeline as a stage ([Pipeline chaining](/docs/pl
 :::
 
 Currently, the Rollback Pipeline failure strategy applies to the following deployments only:
-* Kubernetes
-* Native Helm
-* Amazon Elastic Container Service (ECS)
+
+- Kubernetes
+- Native Helm
+- Amazon Elastic Container Service (ECS)
 
 In a pipeline's step or stage, select **Advanced**.
 
@@ -121,19 +122,17 @@ In **On failure of type**, select one or more of the error types, or select **Al
 
 In **Perform Action**, select **Rollback Pipeline**
 
-
 ### Failure strategy as a runtime input
 
-Failure strategies can be defined as runtime inputs in pipelines and templates at stage, step, and step group levels. 
+Failure strategies can be defined as runtime inputs in pipelines and templates at stage, step, and step group levels.
 
 Here's a video that explains how to define failure strategy as a runtime input:
 
 <!-- Video:
 https://harness-24.wistia.com/medias/bj2kzkgw8a-->
-<docvideo src="https://harness-24.wistia.com/medias/bj2kzkgw8a" />
+<DocVideo src="https://harness-24.wistia.com/medias/bj2kzkgw8a" />
 
 ### See also
 
-* [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Stage and Step Execution Condition Settings](w_pipeline-steps-reference/step-skip-condition-settings.md)
-
+- [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md)
+- [Stage and Step Execution Condition Settings](w_pipeline-steps-reference/step-skip-condition-settings.md)

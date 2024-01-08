@@ -85,7 +85,7 @@ Later, you can apply a skipped manifest using the **Apply** step. Here's an exam
 
 <!-- ![](./static/5ec2523eac5fa7169bf2101a9b4920cfe7aa2efe688075fea0ee57f775c0b05b.png) -->
 
-<docimage path={require('./static/5ec2523eac5fa7169bf2101a9b4920cfe7aa2efe688075fea0ee57f775c0b05b.png')} />
+<DocImage path={require('./static/5ec2523eac5fa7169bf2101a9b4920cfe7aa2efe688075fea0ee57f775c0b05b.png')} />
 
 ### Important
 
@@ -134,7 +134,7 @@ In the following example, the path used in the **Manifests** section of the Serv
 
 <!-- ![](./static/bded796afd9394b571b7c2229ac96ad99ff608558bfa4aa2daf5ab670f886578.png) -->
 
-<docimage path={require('./static/bded796afd9394b571b7c2229ac96ad99ff608558bfa4aa2daf5ab670f886578.png')} />
+<DocImage path={require('./static/bded796afd9394b571b7c2229ac96ad99ff608558bfa4aa2daf5ab670f886578.png')} />
 
 
 You can enter multiple file paths in **File Path**. Simply click **Add File**.

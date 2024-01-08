@@ -305,7 +305,7 @@ function MyComponent({ flags, loading }) {
 }
 const MyComponentWithFlags = withFeatureFlags(MyComponent)
 ```
-:::caution
+:::warning
 When using async mode, the default value is returned until the flags are retrieved. If you use the `useFeatureFlag` or `useFeatureFlags` hooks, the default value is undefined unless you change it when evaluating the flag. If you are using `withFeatureFlags`, you will receive an empty object. 
 :::
 

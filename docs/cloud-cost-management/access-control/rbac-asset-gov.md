@@ -18,11 +18,11 @@ Perform the following steps to restrict rule execution access:
 3. Select **Roles**.
 4. Select **+ New Role** to create a custom role with restricted permissions as shown in the following screenshot.
    
- <docimage path={require('./static/restricted-role-asset-gov.png')} width="50%" height="50%" title="Click to view full size image" />
+ <DocImage path={require('./static/restricted-role-asset-gov.png')} width="50%" height="50%" title="Click to view full size image" />
 
 5. Create another role with `Execute` permissions to enable the execution of the governance rules.
 
- <docimage path={require('./static/admin-role-asset-gov.png')} width="50%" height="50%" title="Click to view full size image" />
+ <DocImage path={require('./static/admin-role-asset-gov.png')} width="50%" height="50%" title="Click to view full size image" />
 
 ## Create resource groups
 
@@ -37,7 +37,7 @@ Perform the following steps to restrict rule execution access:
   
     The following screenshot is an example of a resource group with limited number of rules and accounts:
 
- <docimage path={require('./static/asset-gov-resource-grp-specified.png')} width="50%" height="50%" title="Click to view full size image" />
+ <DocImage path={require('./static/asset-gov-resource-grp-specified.png')} width="50%" height="50%" title="Click to view full size image" />
 
 ## Bind the roles with the resource groups
 
@@ -48,7 +48,7 @@ Perform the following steps to restrict rule execution access:
 5. Select the **Role** with permissions to execute rules, and the newly created resource group (RBAC GOV) to allow access only to certain rules and accounts.
 6. Add another role binding. Select the role without permission to execute rules, and then select `All resources including child scopes` from the **Resource Groups** dropdown.
  
- <docimage path={require('./static/add-role-bindings-asset-gov.png')} width="50%" height="50%" title="Click to view full size image" />
+ <DocImage path={require('./static/add-role-bindings-asset-gov.png')} width="50%" height="50%" title="Click to view full size image" />
 
  In the given example, the `ccm-execute` role allows the user to execute governance rules on the `RBAC GOV` resource group (specific resources), and the `ccm-gov-restricted` role restricts the user from executing the governance rules.
 
@@ -56,10 +56,10 @@ Perform the following steps to restrict rule execution access:
 
 * On the **Asset Governance Rules** page, you can see that the **Enforce rule** option is enabled only for those rules included in the resource group. The rest are disabled. When you hover over a rule for which you have no `Execute` permission, a message appears as shown in the following screenshot: 
 
-  <docimage path={require('./static/missing-permission-asset-gov.png')} width="50%" height="50%" title="Click to view full size image" />
+  <DocImage path={require('./static/missing-permission-asset-gov.png')} width="50%" height="50%" title="Click to view full size image" />
 * You are not allowed to edit or delete the rules without the `Execute` permission. However, you can clone these rules.
 
 * You can create a rule set only with the rules for which you have permissions. 
 * When editing an enforcement, you must have the necessary permissions for all the rules and target accounts that you want to include in the enforcement.
 
-    <docimage path={require('./static/rbac-enforcements-asset-gov.png')} width="50%" height="50%" title="Click to view full size image" />
+    <DocImage path={require('./static/rbac-enforcements-asset-gov.png')} width="50%" height="50%" title="Click to view full size image" />

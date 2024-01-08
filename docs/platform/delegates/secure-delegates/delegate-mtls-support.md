@@ -22,7 +22,7 @@ mTLS is an advanced feature. Contact [Harness Support](mailto:support@harness.io
 
 Harness does not create or distribute the CA and client certificates that are used for mTLS. You must set up the certificates and explicitly provide them to the delegate by mounting a Kubernetes secret.
 
-:::caution Important note
+:::warning Important note
 Project-level certificates are not supported for mTLS delegates.
 
 :::

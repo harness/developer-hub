@@ -54,23 +54,23 @@ Setup Harness CD & GitOps in a few commands
 
 `harness update`             - Updates the CLI.
 
-`harness secret`             - Creates or deletes a Harness Secret.
+`harness secret`             - Creates, deletes, or updates a Harness Secret.
 
-`harness connector`          - Creates, deletes or update a Harness Connector.
+`harness connector`          - Creates, deletes, or updates a Harness Connector.
 
-`harness gitops-repository`  - Creates, deletes or update a GitOps Repository.
+`harness gitops-repository`  - Creates, deletes, or updates a GitOps Repository.
 
-`harness gitops-cluster`     - Creates, deletes or update a GitOps Cluster.
+`harness gitops-cluster`     - Creates, deletes, or updates a GitOps Cluster.
 
-`harness gitops-application` - Creates, deletes or update a GitOps Application.
+`harness gitops-application` - Creates, deletes, or updates a GitOps Application.
 
-`harness environment`        - Creates, deletes or update a Harness Environment.
+`harness environment`        - Creates, deletes, or updates a Harness Environment.
 
-`harness infrastructure`     - Creates, deletes or update a Harness Infeastructure.
+`harness infrastructure`     - Creates, deletes, or updates a Harness Infeastructure.
 
-`harness service`            - Creates, delete or update a Harness Service.
+`harness service`            - Creates, deletes, or updates a Harness Service.
 
-`harness pipeline`           - Creates, delete or update a Harness Pipeline.
+`harness pipeline`           - Creates, deletes, or updates a Harness Pipeline.
 
 ## Global options
 
@@ -102,7 +102,9 @@ Setup Harness CD & GitOps in a few commands
       harness secret apply [command options] [arguments...]
    
    OPTIONS:
-      --secret-type value  provide the secret type.
+      --token value        specify your secret token
+      --secret-name value  provide the secret name
+      --secret-type value  provide the secret type
       --port value         port number for the ssh secret
       --username value     username for the ssh secret
       --passphrase value   passphrase for the ssh secret
@@ -202,7 +204,25 @@ Setup Harness CD & GitOps in a few commands
       --help, -h                show help
    ```
 
-7. `harness gitops-repository apply help`
+7. `harness gitops-cluster link help`
+
+   ```
+   NAME:
+      harness gitops-cluster link - Links a GitOps-cluster with an environment.
+   
+   USAGE:
+      harness gitops-cluster link [command options] [arguments...]
+   
+   OPTIONS:
+      --agent-identifier value  provide GitOps Agent Identifier.
+      --cluster-id value        provide a Cluster Identifier.
+      --environment-id value    provide an Environment Identifier.
+      --org-id value            provide an Organization Identifier.
+      --project-id value        provide a Project Identifier.
+      --help, -h                show help
+   ```
+   
+8. `harness gitops-repository apply help`
    
    ```
    NAME:
@@ -219,7 +239,7 @@ Setup Harness CD & GitOps in a few commands
    
    ```
 
-8. `harness gitops-application apply help`
+9. `harness gitops-application apply help`
 
    ```
    NAME:

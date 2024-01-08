@@ -6,13 +6,11 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/c
 ---
 
-
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
@@ -25,9 +23,9 @@ You can build and test C and C++ applications on [Harness Cloud](/docs/continuou
 
 This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
 
-* [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
-* [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
-* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
+- [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
+- [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
+- [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 <CISignupTip />
 
@@ -39,74 +37,68 @@ You can run any commands in Run steps as long as the necessary binaries are avai
 
 In the following YAML example, the Run step runs a Python script to get dependencies for a C++ project. It uses a [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) to cycle through each dependency.
 
-
 <Tabs>
   <TabItem value="hc" label="Harness Cloud" default>
 
-
 ```yaml
-             - step:
-                  type: Run
-                  name: Fetch Deps
-                  identifier: Fetch_Deps
-                  spec:
-                    shell: Sh
-                    command: python3 build/getdeps.py fetch --no-tests <+matrix.deps>
-                  failureStrategies: []
-                  strategy:
-                    matrix:
-                      deps:
-                        - ninja
-                        - cmake
-                        - zlib
-                        - zstd
-                        - boost
-                        - double-conversion
-                        - fmt
-                        - gflags
-                        - glog
-                        - googletest
-                        - libevent
-                      maxConcurrency: 1
+- step:
+    type: Run
+    name: Fetch Deps
+    identifier: Fetch_Deps
+    spec:
+      shell: Sh
+      command: python3 build/getdeps.py fetch --no-tests <+matrix.deps>
+    failureStrategies: []
+    strategy:
+      matrix:
+        deps:
+          - ninja
+          - cmake
+          - zlib
+          - zstd
+          - boost
+          - double-conversion
+          - fmt
+          - gflags
+          - glog
+          - googletest
+          - libevent
+        maxConcurrency: 1
 ```
-
 
 </TabItem>
   <TabItem value="sh" label="Self-hosted">
 
-
 ```yaml
-             - step:
-                  type: Run
-                  name: Fetch Deps
-                  identifier: Fetch_Deps
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: python:latest
-                    shell: Sh
-                    command: python3 build/getdeps.py fetch --no-tests <+matrix.deps>
-                  failureStrategies: []
-                  strategy:
-                    matrix:
-                      deps:
-                        - ninja
-                        - cmake
-                        - zlib
-                        - zstd
-                        - boost
-                        - double-conversion
-                        - fmt
-                        - gflags
-                        - glog
-                        - googletest
-                        - libevent
-                      maxConcurrency: 1
+- step:
+    type: Run
+    name: Fetch Deps
+    identifier: Fetch_Deps
+    spec:
+      connectorRef: account.harnessImage
+      image: python:latest
+      shell: Sh
+      command: python3 build/getdeps.py fetch --no-tests <+matrix.deps>
+    failureStrategies: []
+    strategy:
+      matrix:
+        deps:
+          - ninja
+          - cmake
+          - zlib
+          - zstd
+          - boost
+          - double-conversion
+          - fmt
+          - gflags
+          - glog
+          - googletest
+          - libevent
+        maxConcurrency: 1
 ```
-
 
 </TabItem>
 </Tabs>
-
 
 :::tip
 
@@ -118,29 +110,25 @@ You can use [Background steps](/docs/continuous-integration/use-ci/manage-depend
 
 ## Cache dependencies
 
-
 <Tabs>
 <TabItem value="Harness Cloud" default>
-
 
 Cache your C and C++ dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec`.
 
 ```yaml
-    - stage:
-        spec:
-          caching:
-            enabled: true
+- stage:
+    spec:
+      caching:
+        enabled: true
 ```
-
 
 </TabItem>
 <TabItem value="Self-hosted">
 
-
 With self-hosted build infrastructures, you can:
 
-* [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
-* [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
+- [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
+- [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
 
 Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache from S3** steps.
 
@@ -176,66 +164,58 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     archiveFormat: Tar
 ```
 
-
 </TabItem>
 </Tabs>
-
 
 ## Build and run tests
 
 You can use **Run** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
-
 <Tabs>
 <TabItem value="hosted" label="Harness cloud" default>
 
-
 ```yaml
-              - step:
-                  type: Run
-                  name: build and test
-                  identifier: build and test
-                  spec:
-                    shell: Sh
-                    command: |-
-                      cmake -S . -B build
-                      ctest --test-dir $FILES --output-junit /target/reports/test_output.xml
+- step:
+    type: Run
+    name: build and test
+    identifier: build and test
+    spec:
+      shell: Sh
+      command: |-
+        cmake -S . -B build
+        ctest --test-dir $FILES --output-junit /target/reports/test_output.xml
 ```
-
 
 </TabItem>
 <TabItem value="selfhosted" label="Self-hosted">
 
-
 ```yaml
-              - step:
-                   type: Run
-                   name: build and test
-                   identifier: build and test
-                   spec:
-                     connectorRef: account.harnessImage
-                     image: gradle:alpine
-                     shell: Sh
-                     command: |
-                      cmake -S . -B build
-                      ctest --test-dir $FILES --output-junit /target/reports/test_output.xml
+- step:
+    type: Run
+    name: build and test
+    identifier: build and test
+    spec:
+      connectorRef: account.harnessImage
+      image: gradle:alpine
+      shell: Sh
+      command: |
+        cmake -S . -B build
+        ctest --test-dir $FILES --output-junit /target/reports/test_output.xml
 ```
-
 
 </TabItem>
 </Tabs>
-
 
 ### Visualize test results
 
 If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
 
 ```yaml
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - target/reports/*.xml
+reports:
+  type: JUnit
+  spec:
+    paths:
+      - target/reports/*.xml
 ```
 
 ### Test splitting
@@ -244,52 +224,46 @@ Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/
 
 ## Specify version
 
-
 <Tabs>
 <TabItem value="Harness Cloud">
-
 
 CLang and GNU C++ are pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
 If you want to use a different compiler or a specific version of a compiler, you can use a **Run** step to install it, for example:
 
 ```yaml
-              - step:
-                   type: Run
-                   name: install
-                   identifier: install
-                   spec:
-                     shell: Sh
-                     command: |
-                       sudo apt update
-                       sudo apt install g++-12
+- step:
+    type: Run
+    name: install
+    identifier: install
+    spec:
+      shell: Sh
+      command: |
+        sudo apt update
+        sudo apt install g++-12
 ```
-
 
 </TabItem>
 <TabItem value="Self-hosted">
 
-
 You can use a **Run** step to install compilers, such as CLang or GNU C++, if they are not already installed on your host machine, for example:
 
 ```yaml
-              - step:
-                   type: Run
-                   name: install
-                   identifier: install
-                   spec:
-                     connectorRef:
-                     image:
-                     shell: Sh
-                     command: |
-                       sudo apt update
-                       sudo apt install g++
+- step:
+    type: Run
+    name: install
+    identifier: install
+    spec:
+      connectorRef:
+      image:
+      shell: Sh
+      command: |
+        sudo apt update
+        sudo apt install g++
 ```
-
 
 </TabItem>
 </Tabs>
-
 
 ## Full pipeline examples
 
@@ -356,7 +330,7 @@ pipeline:
 
 Now that you have created a pipeline that builds and tests a C or C++ app, you could:
 
-* Create [triggers](/docs/category/triggers) to automatically run your pipeline.
-* Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
-* Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
-* Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).
+- Create [triggers](/docs/category/triggers) to automatically run your pipeline.
+- Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
+- Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
+- Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).

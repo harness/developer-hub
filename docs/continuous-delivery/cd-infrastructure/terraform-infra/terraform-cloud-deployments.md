@@ -114,7 +114,7 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
    1. If you selected to connect using a delegate, select one or more delegates.
 7. Select **Finish**. Harness verifies the connection.
 
-<docimage path={require('./static/af1a2b13d480a67fa332fcbb06883622c35bfef4f1e0a00ab6a7ce98f05b5a2b.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/af1a2b13d480a67fa332fcbb06883622c35bfef4f1e0a00ab6a7ce98f05b5a2b.png')} width="60%" height="60%" title="Click to view full size image" />
 
 </details>
 
@@ -153,7 +153,7 @@ The most common use of **Provisioner Identifier** is between Terraform Cloud Run
 
 For the Terraform Cloud Run **Apply** run type to apply the provisioning from the Terraform Cloud Run **Plan** run type, you use the same **Provisioner Identifier** in both steps.
 
-<docimage path={require('./static/0c1b468853ed90c4ddb0b2e6960dd3a53b669989fef863ff87b22e67815e01dc.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/0c1b468853ed90c4ddb0b2e6960dd3a53b669989fef863ff87b22e67815e01dc.png')} width="60%" height="60%" title="Click to view full size image" />
 
 To rollback the provisioning done by that Terraform Cloud Run **Apply** run type, you would use the same **Provisioner Identifier** in the Terraform Cloud Rollback step.
 
@@ -253,7 +253,7 @@ You can use Harness expressions to display the plan JSON and policy checks.
 
 The expressions can be copied from the Terraform Cloud Run step's **Output** tab when the Run Type is **Plan** or **Plan Only**.
 
-<docimage path={require('./static/8eeaa5d08460c36408d12085e63dde0858a99927e88314d40ea3e51516cafb16.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/8eeaa5d08460c36408d12085e63dde0858a99927e88314d40ea3e51516cafb16.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 ### Print plan expression

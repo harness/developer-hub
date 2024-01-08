@@ -5,7 +5,7 @@ sidebar_position: 25
 
 If a Harness CE release is not backward compatible, you must upgrade your chaos infrastructure. This applies only to releases that have breaking changes, which will be clearly indicated in [release notes](/release-notes/chaos-engineering). 
 
-:::caution
+:::warning
 If you don't upgrade your infrastructure for these types of releases, chaos experiments will start to fail.
 :::
 

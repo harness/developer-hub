@@ -22,16 +22,14 @@ Before learning about Harness IIS (.NET) deployments, you should have an underst
 
 Here is a quick primer on deploying Microsoft IIS .NET applications and Microsoft .NET Core container applications using Harness Continuous Delivery.
 
-
-<docvideo src="https://www.youtube.com/embed/udWD4LoG_R4" />
-
+<DocVideo src="https://www.youtube.com/embed/udWD4LoG_R4" />
 
 ### What Does Harness Need Before You Start?
 
 A Harness IIS (.NET) deployment requires the following:
 
-* Templates: IIS website, application, or virtual directory. Harness automatically creates the Deployment Specifications for these templates, which you can customize.
-* Target infrastructure: For example, an AWS region and load balancer or an Azure subscription and resource group.
+- Templates: IIS website, application, or virtual directory. Harness automatically creates the Deployment Specifications for these templates, which you can customize.
+- Target infrastructure: For example, an AWS region and load balancer or an Azure subscription and resource group.
 
 It is important to note that a site contains one or more applications, an application contains one or more virtual directories, and a virtual directory maps to a physical directory on a computer. To use Harness to deploy IIS sites, applications, and virtual directories, the IIS structural requirements (site > application > virtual directory) must be established on the Windows instances.
 
@@ -45,24 +43,21 @@ You can create a Harness Pipeline that runs three Workflows to deploy the IIS we
 
 The following list describes the major steps of a Harness IIS (.NET) deployment:
 
-
-
-|  |  |  |
-| --- | --- | --- |
-| **Step** | **Name** | **Description and Links** |
-| 1 | Install the Harness **Delegate** in your target infrastructure, such as an EC2 subnet. | Typically, the Shell Script or ECS Delegate is installed in the same subnet where you will deploy your application(s).For Azure deployments, you can run the Delegate on a Linux VM in your Azure VPC (such as Ubuntu) or simply ensure that the Delegate has network access to resources in your Azure VPC |
-| 2 | Add a Harness **Artifact Server**. | Add a connection to the Artifact Server where Harness can pull the IIS website, application, or virtual directory template.If you are using the same Cloud Provider as artifact server, then you can skip this step. |
-| 3 | Add a **Cloud Provider**. | A Cloud Provider is a connection to your cloud platform account, such as AWS or Azure. You can also connect to a physical server.For example, an AWS Cloud Provider can be used to connect to S3 and obtain the IIS templates Harness will use to create new website, application, or virtual directory templates. |
-| 4 | Create the Harness **Application** for your IIS (.NET) CD Pipeline. | The Harness Application represents a group of microservices/apps, their deployment pipelines, and all the building blocks for those pipelines. Harness represents your release process using a logical group of one or more entities: Services, Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners. Applications organize all of the entities and configurations in Harness CD. |
-| 5 | Create the Harness **Service** using the **Windows Remote Management (WinRM)** Deployment Type. | Add an IIS website, application, or virtual directory template in a Harness Service, revise the Deployment Specification, and any config variables and files. |
-| 6 | Create the Harness **Environment** and Infrastructure Definition for your deployment, and any overrides. | Using the Harness Cloud Provider you set up, you can select the target environment for your deployment.You can also override any Service settings. This enables you to use a single Service with multiple Harness Environments. |
-| 7 | Create the Website, Application, and Virtual Directory deployments in Harness Basic **Workflows**. | The Workflow deploys the Website, Application, and Virtual Directory templates defined in the Harness Service to the environment in the Harness Infrastructure Definition. |
-| 8 | Deploy the Workflow. | Once you've deployed a Workflow, learn how to improve your IIS (.NET) CD: <br />&bull;&nbsp; [Workflows](../../model-cd-pipeline/workflows/workflow-configuration.md) <br />&bull;&nbsp; [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md) <br />&bull;&nbsp; [Infrastructure Provisioners Overview](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md) |
+|          |                                                                                                          |                                                                                                                                                                                                                                                                                                                                                                                                            |
+| -------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Step** | **Name**                                                                                                 | **Description and Links**                                                                                                                                                                                                                                                                                                                                                                                  |
+| 1        | Install the Harness **Delegate** in your target infrastructure, such as an EC2 subnet.                   | Typically, the Shell Script or ECS Delegate is installed in the same subnet where you will deploy your application(s).For Azure deployments, you can run the Delegate on a Linux VM in your Azure VPC (such as Ubuntu) or simply ensure that the Delegate has network access to resources in your Azure VPC                                                                                                |
+| 2        | Add a Harness **Artifact Server**.                                                                       | Add a connection to the Artifact Server where Harness can pull the IIS website, application, or virtual directory template.If you are using the same Cloud Provider as artifact server, then you can skip this step.                                                                                                                                                                                       |
+| 3        | Add a **Cloud Provider**.                                                                                | A Cloud Provider is a connection to your cloud platform account, such as AWS or Azure. You can also connect to a physical server.For example, an AWS Cloud Provider can be used to connect to S3 and obtain the IIS templates Harness will use to create new website, application, or virtual directory templates.                                                                                         |
+| 4        | Create the Harness **Application** for your IIS (.NET) CD Pipeline.                                      | The Harness Application represents a group of microservices/apps, their deployment pipelines, and all the building blocks for those pipelines. Harness represents your release process using a logical group of one or more entities: Services, Environments, Workflows, Pipelines, Triggers, and Infrastructure Provisioners. Applications organize all of the entities and configurations in Harness CD. |
+| 5        | Create the Harness **Service** using the **Windows Remote Management (WinRM)** Deployment Type.          | Add an IIS website, application, or virtual directory template in a Harness Service, revise the Deployment Specification, and any config variables and files.                                                                                                                                                                                                                                              |
+| 6        | Create the Harness **Environment** and Infrastructure Definition for your deployment, and any overrides. | Using the Harness Cloud Provider you set up, you can select the target environment for your deployment.You can also override any Service settings. This enables you to use a single Service with multiple Harness Environments.                                                                                                                                                                            |
+| 7        | Create the Website, Application, and Virtual Directory deployments in Harness Basic **Workflows**.       | The Workflow deploys the Website, Application, and Virtual Directory templates defined in the Harness Service to the environment in the Harness Infrastructure Definition.                                                                                                                                                                                                                                 |
+| 8        | Deploy the Workflow.                                                                                     | Once you've deployed a Workflow, learn how to improve your IIS (.NET) CD: <br />&bull;&nbsp; [Workflows](../../model-cd-pipeline/workflows/workflow-configuration.md) <br />&bull;&nbsp; [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md) <br />&bull;&nbsp; [Infrastructure Provisioners Overview](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md)         |
 
 ### Next Steps
 
 Read the following topics to build on what you've learned:
 
-* [IIS (.NET) Quickstart](../../../first-gen-quickstarts/iis-net-quickstart.md)
-* [IIS (.NET)](/docs/category/iis-net-deployments) How-tos
-
+- [IIS (.NET) Quickstart](../../../first-gen-quickstarts/iis-net-quickstart.md)
+- [IIS (.NET)](/docs/category/iis-net-deployments) How-tos

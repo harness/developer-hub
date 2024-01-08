@@ -67,14 +67,14 @@ The Logs tab displays the following details:
 
 - Event list
 
-<docimage path={require('./static/log-verification.png')} />
+<DocImage path={require('./static/log-verification.png')} />
 
 
 ## Radar Chart
 
 The Radar chart presents a comprehensive bird's-eye view of all the log clusters detected during log verification. This visual representation allows you to quickly understand the distribution and magnitude of each type of cluster. 
 
-<docimage path={require('./static/radar-chart.png')} />
+<DocImage path={require('./static/radar-chart.png')} />
 
 The radar chart visually organizes log clusters into three concentric circles. The outermost circle represents all the **Unknown** event clusters, while the middle circle contains both **Known** and **Unexpected Frequency** clusters.
 
@@ -139,7 +139,7 @@ You can go to the Event Details page of a cluster in the following ways:
 
 - Clicking on a cluster on the Event list.
 
-<docimage path={require('./static/event-details.png')} />
+<DocImage path={require('./static/event-details.png')} />
 
 The Event Details page displays the following information:
 

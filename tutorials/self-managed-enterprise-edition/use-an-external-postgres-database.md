@@ -74,7 +74,7 @@ You can update the DNS record dynamically using a script or use the service disc
 
 ## Set up PostgreSQL VMs
 
-:::caution
+:::warning
 If you installed PostgreSQL through a method other than the apt package manager maintained by Debian or Ubuntu archive, you may receive errors when following these instructions. Harness recommends that you uninstall existing PostgreSQL installations before you continue.
 :::
 

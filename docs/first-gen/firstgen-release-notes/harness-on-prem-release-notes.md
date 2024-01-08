@@ -151,7 +151,7 @@ This release does not include any early access features.
 
   This issue is fixed by modifying the delegate's Kubernetes API client timeout. 
 
-  Harness Delegate uses Kubernetes Java client to make programmatic API calls to the Kubernetes server. The API client uses an OkHttp client whose default [read timeout](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/read-timeout/) and [connect timeout](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/connect-timeout/) values are set to 120 and 60 seconds respectively. These values can be configured by using environment variables, modifying the delegate's container environment. The values must be specified in seconds. 
+  Harness Delegate uses Kubernetes Java client to make programmatic API calls to the Kubernetes server. The API client uses an OkHttp client whose default [read timeout](https://square.github.io/okhttp/recipes/#timeouts-kt-java) and [connect timeout](https://square.github.io/okhttp/recipes/#timeouts-kt-java) values are set to 120 and 60 seconds respectively. These values can be configured by using environment variables, modifying the delegate's container environment. The values must be specified in seconds. 
 
   The environment variables for these timeouts are:
 
@@ -1420,11 +1420,11 @@ The following new features were added to the Harness platform components:
 
 ##### Platform
 
-* Add Azure Active Directory users that belong to more than the 150 group limit (PL-21670) via SAML.
-	+ When Azure AD users have large numbers of group memberships, the number of groups listed in the token can grow the token size. Azure Active Directory limits the number of groups it will emit in a token to 150 for SAML assertions.
+* Add Microsoft Entra ID (formerly Active Directory) users that belong to more than the 150 group limit (PL-21670) via SAML.
+	+ When Azure AD users have large numbers of group memberships, the number of groups listed in the token can grow the token size. Microsoft Entra ID (formerly Active Directory) limits the number of groups it will emit in a token to 150 for SAML assertions.
 	+ To add users that belong to more than 150 groups, you simply add the Client ID and secret for your registered app to Harness.
 	+ This feature is behind the feature flag `AZURE_SAML_150_GROUPS_SUPPORT`.
-	+ See [SAML SSO with Azure Active Directory](../firstgen-platform/security/access-management-howtos/single-sign-on-sso-with-saml.md#saml-sso-with-azure-active-directory).
+	+ See [SAML SSO with Microsoft Entra ID (formerly Active Directory)](../firstgen-platform/security/access-management-howtos/single-sign-on-sso-with-saml.md#saml-sso-with-azure-active-directory).
 
 ##### CD
 

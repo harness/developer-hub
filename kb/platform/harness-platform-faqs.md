@@ -915,12 +915,13 @@ This is not supported. The immutable delegate image should be run with delegate 
 Here is an example manifest file for NextGen:
 https://developer.harness.io/docs/platform/delegates/install-delegates/overview/#example-manifest-file
 
-#### When creating a connector via the API (https://apidocs.harness.io/tag/Connectors#operation/createConnector)
+#### 400 error when creating a connector via the Create Connector API.
 
-We receive the following error
-`requests.exceptions.HTTPError: 400 Client Error: Bad Request for url https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=\<ACCOUNT_IDENTIFIER>?`
+When using the [Create Connector API](https://apidocs.harness.io/tag/Connectors/#operation/createConnector), invalid characters (such as parenthesis) in the name can cause Bad Request (400) errors, such as:
 
-This could be due to using invalid characters in the name such as `()`
+```
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=\<ACCOUNT_IDENTIFIER>?
+```
 
 #### Is TLS 1.3 supported ?
 
@@ -1908,12 +1909,7 @@ Our priorities are configured as follows: [Step > Step Group > Stage > Pipeline 
 
 #### How do I setup SMTP with AWS SES?
 
-Follow this AWS documentation to create SMTP crredentials using the SES console.
-https://docs.aws.amazon.com/ses/latest/dg/smtp-credentials.html
-
-Then feed those SMTP credentials in Harness SMTP connector
-
-See [SMTP Configuration](docs/platform/notifications/add-smtp-configuration/)
+Go to the [AWS documentation on SMTP credentials](https://docs.aws.amazon.com/ses/latest/dg/smtp-credentials.html) to create SMTP credentials using the SES console. Then, supply those SMTP credentials in your [Harness SMTP connector configuration](/docs/platform/notifications/add-smtp-configuration).
 
 #### How to increase the concurrent pipeline execution limit
 
@@ -1935,6 +1931,18 @@ You can go to delegate page and on right side check under AUTO UPGRADE Column if
 
 No currently its not possible as if we try to disable the roles for account nobody will be able to see managed roles even including account admin.
 
+#### What are Harness built-in and Custom Variables? 
+
+They are a way to refer to something in Harness such as an entity name or a configuration setting. 
+
+#### What is the correct syntax for the Regex Extract build-in variable?
+
+'''regex.extract("v[0-9]+.[0-9]+", artifact.fileName)''' is the correct syntax
+
+#### What are the statuses of nodes using the Harness looping Strategy?
+
+Running, Failed, and Success
+
 #### Not able to resume pipeline for some time post delegate release
 
 For optimizations we keep a local cache of all connected delegates to execute tasks. The cache is refreshed every 3 minutes currently and hence it takes upto 3 mins for a new delegate to be eligible to execute a task once its connected. Since the delegate rollout is not a very frequent operation the 3 mins window was chosen and is in production for few years.
@@ -1952,10 +1960,7 @@ But ocne the 2FA is enabled by the user it also needs to be disabled by that par
 
 #### Vanity URL issues
 
-Once you have got the vanity url enabled for your account , in case you are using the SAML login , you will need to update ACS URL with the updated vanity url.
-
-Ex: Current ACS URL is https://app.harness.io/gateway/api/users/saml-login?accountId=xxxxxxxxxxxxxxxx
-after enabling vanity it should be updated to : https://vanity-url.harness.io/gateway/api/users/saml-login?accountId=xxxxxxxxxxxxxx
+When a vanity URL is enabled for an account using SAML login, you must update your ACS URL with your vanity URL. For example, if your original ACS URL is `https://app.harness.io/gateway/api/users/saml-login?accountId=xxxxxxxxxxxxxxxx`, after enabling a vanity URL, you must update it to something like `https://VANITYURL.harness.io/gateway/api/users/saml-login?accountId=xxxxxxxxxxxxxx`.
 
 #### Restoring accidently deleted User Groups
 
@@ -2136,3 +2141,208 @@ You can create user in below ways:
 #### We would like to enforce the life time of api token ( My profile -> My API keys -> Token) is 24 hours.
 
 An Api key is created with Minimum of 30 days and you can not set any duration less than that, you can rotate the token if you want at any time
+
+#### Can we add Custom Selector in the harness delegate chart for legacy delegates?
+
+For legacy delegates we do not have a way to specify delegate selector or delegate tags in the delegate helm chart. We do have an api to get the selectors as well as update it for the delegates. More details can be found here:
+
+https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-delegate-selector-api/
+
+
+#### Can a service account created at project level be assigned permissions to access account level resource ?
+
+We can not create a project level service account and provide permission for account level resources. Hence this will not have access to any account level resources.
+
+If you would like to use service account only you can create a account level service account and then give project level role bindings to it corresponding to the project as well as role binding for account level templates.
+
+#### How to run harness docker delegate in detatched mode ?
+
+Docker provides a -d flag option for running the containers in detatched mode. So when we are running the harness delegate docler run command we can add the option to get the console back and the contianer will continue to run in detatch mode. For example below is a sample delegate run command:
+
+```
+docker run  --cpus=1 --memory=2g \
+  -e DELEGATE_NAME=docker-delegate \
+  -e NEXT_GEN="true" \
+  -e DELEGATE_TYPE="DOCKER" \
+  -e ACCOUNT_ID=xxx \
+  -e DELEGATE_TOKEN=xxx= \
+  -e DELEGATE_TAGS="" \
+  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.11.81406 -d
+```
+
+#### Why the task_failed_total metric for delegate is not repporting data despite step failure ?
+
+
+The task failed is when something unhandled happens, like a NPE in a task or issue at framework level. A valid failure like shell script exited with error code is not a task failure. Prometheus only shows the metric which are at least once recorded.
+
+
+#### Why do we need core_delegate_delete permission for revoking delegate token?
+
+The api call that we make for  revoking the delegate token makes the delegate which are using it not register anymore and hence delete delegate permission is required for revoking the token as well.
+
+#### Do we provide customized docker images for delegate?
+
+We do not provide any customized docker images for delegates however we do have our delegate docker file in the public repo below. This can be used as a sample reference to add any utility to the image:
+```
+https://github.com/harness/delegate-dockerfile/tree/main
+```
+
+
+#### Can we use immuatable delegate image in the statefulset deployment yaml for delegates ? 
+
+We can not use immutable delegate image in the statefulset deployment yaml that we had for legacy delegates. Both the delegates are architecturally different. The immutable delegates must be used with their own deployment yaml.
+
+
+#### Is there a way to enable more granular level for delegate logs?
+
+We do not have additional log level settings for delegate than what it logs by default. 
+#### How to sync ldap groups manually if linked User group is not getting synced
+
+You can Navigate to Authentication tab and go to ldap setting and try Synchronize User group option.
+
+#### While trying to link sso group, not getting the option for user group
+
+Check and confirm if group authorization is enabled for saml setup configured, than only you will see the sso provide details under drop down
+
+#### How to capture SAML Tracer
+
+You can install SAML Tracer extension in your browser its available for all browsers. 
+With the SAML-tracer extension running one needs to do the following:
+
+1. At the login page hit "X Clear" in SAML tracer(top left) and then perform a login attempt.
+2. When the login session is captured hit "Export" and attach this export to the ticket.
+
+#### In case multiple Harness instances and setup with SAML App redirecting to a different Harness instance instead of one expected.
+
+In case you have say Sandbox and production Harness instances and you are using the Azure SAML APP which also has multiple Harness apps. 
+It is important to specify the Entity ID below the Authorisation in Harness UI while creating the SAML App integration. 
+
+#### How to inspect your certificates for delegate certificate issue. 
+
+The below commands will hep you inspect your certificates. 
+
+Inspect a certificate chain - x509 PEM file
+```
+Keytool -printcert -file /path/to/cert
+```
+
+```
+openssl x509 -text -noout -in certificate.pem
+```
+
+Inspect a truststore file
+
+```
+keytool -list -v -keystore /path/to/truststore
+```
+
+#### Delegate fails to register with handshake exceptions. 
+
+While creating a delegate it might start to register and then fail with SSLHandshakeException. 
+
+To resolve the handshake exception, do the following:
+
+Run to the command below to test the certificate chain you used to install Harness Manager.
+```
+curl -cacerts path/to/ca-certs/file https://<MANAGER_HOST>/api/account/<ACCOUNT_ID>/status
+```
+Then Install the certificate on the delegate
+
+Reference : https://developer.harness.io/docs/platform/delegates/troubleshooting/certificate-issues#handshake-exception
+
+#### Delegate connectivity issues because of proxy IP.
+
+While configuring the delegate proxy , many times we specify the Proxy Host IP and not the PROXY_HOST. 
+We always recommend to have the PROXY_HOST and not IP as in case your IP changes to a new IP , your delegate will start to fail causing issues. 
+
+#### How to Avoid Hitting the GitHub API Rate Limit When Using Multiple Templates and Git-Stored Pipelines?
+
+To minimize GitHub calls from Harness, enabling the bi-directional git experience may significantly reduce the number of requests.
+
+#### Why am I getting an error while creating a template using a service account token generated under a project?
+
+You are likely using a token scoped to a project when creating a resource at the account level, the same applies to a project token while creating a resource at the organization level. To create resources across different levels (account/organization/project), your token must be at a higher level or at the same level as the scope.
+
+#### Why is my Terraform plugin crashing when using the Harness provider?
+
+Generally, this issue is related to a bug in our provider. Before opening a ticket, please try using the latest provider version. Run your script again to see if the problem persists. If the issue continues, please proceed to open a support ticket for further assistance.
+
+#### How should complex expressions be correctly utilized?
+
+When using a complex expression, ensure the expression is wrapped within `<+ >`. For example: `<+<+org.name>.toLowerCase()>/<+<+project.name>.toLowerCase()>>`.
+
+#### How can I retrieve a specific type of connector across multiple accounts, organizations, and projects using the API?
+
+Unfortunately, it's only possible to retrieve all connectors within a specific scope, the following attribute `includeAllConnectorsAvailableAtScope` allows you to retrieve easily all connectors above the project scope using the API Method `Fetches the list of Connectors corresponding to the request's filter criteria`.
+
+#### How can user build debug delegate image ?
+
+You can build and push from local to gcr-play or any other place you want.
+ - Copy delegate.jar from local machine (change Dockerfile-minimal in harness core)
+
+``` 
+COPY delegate.jar delegate.jar 
+```
+
+- Build image:
+```./scripts/bazel/build_bazel_delegate.sh immutable
+cd dockerization/delegate/
+docker build -t us.gcr.io/gcr-play/delegate:<give your tag> -f Dockerfile-minimal .
+docker push us.gcr.io/gcr-play/delegate:<your-tag>
+```
+
+If you want to publish this in dockerhub, then in place of gcr use your private dockerhub, do a docker login before pushing image.
+Also there is a GitHub PR trigger to publish immutable delegate from your changes: `trigger publish-delegate`
+
+#### What do we need to backup to recover quickly when Harness infrastructure is lost ?
+
+Harness recommends that you perform a full backup of the Harness namespace at least once a week, preferably every 24 hours. Back up recommendation is to use Velero tool. You can refer to mentioned doc for fuurther info [docs](https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-restore-helm).
+
+#### If the infrastructure is lost, how should it be restored?
+
+Back up and restore covers Harness specific things only, it does not cover infrastructure loss. If that happens expectation is to have a working k8s cluster ready to restore harness namespace.
+
+#### Do user permissions in Harness with JIT provisioning and SAML authentication inherit from the SAML provider, or do they require separate configuration in the Harness Account?
+
+No, user permissions in Harness with JIT provisioning and SAML authentication do not inherit from the SAML provider. Permissions need to be explicitly configured in the Harness Account. The JIT provisioning process ensures that users are dynamically created in Harness based on SAML authentication, but their permissions within Harness need to be set up independently.
+
+####  Does Harness support permission mapping or inheritance from external systems in any Single Sign-On (SSO) model?
+
+No, Harness does not support permission mapping or inheritance from external systems, including in various Single Sign-On (SSO) models. User permissions must be explicitly configured within the Harness Account, and as of now, there is no support for permission discovery or synchronization from external systems. All permissions need to be manually configured within the Harness Account.
+
+#### How does SCIM work in Harness, and what are its limitations?
+
+SCIM in Harness is primarily used for user provisioning and de-provisioning. It simplifies user management but has limitations. SCIM does not handle role bindings or permissions directly. Admins must manage role bindings and permissions within Harness separately, even when using SCIM for user provisioning.
+
+#### Does Role-Based Access Control (RBAC) apply to Git Bi-Directional Sync in Harness?
+
+ No, RBAC settings specific to Git Bi-Directional Sync are not available. The RBAC of the entity is used, and there are no individual role bindings for fine-grained control over bi-directional sync. As of now, the options for controlling bi-directional sync are limited to enabling or disabling it.
+
+#### What is the default timeout for custom secret manager script timeout? Can the timeout be configurable?
+
+It defaults to 60 seconds. Timeout is not configurable.
+
+#### Why is kinit (from the krb5-workstation package) not included in our immutable image for non-root users, leading customers to bake it in themselves?
+
+The decision to exclude kinit from our immutable image is primarily driven by concerns related to image bloat. We maintain a specific set of binaries, including Delegate-required SDKs, in the Delegate to address the specific use cases of our Continuous Delivery (CD) customers. By excluding non-essential binaries, we aim to optimize image size and streamline the image for CD workflows. You can refer the [docs](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-required-sdks).
+
+####  Can customers enable root privileges to add the kinit binary to the image?
+
+Enabling root privileges to add the kinit binary is an option, but it may pose security concerns for some customers. The exclusion of kinit in the immutable image aligns with security considerations and is designed to provide a minimal and secure image for CD use cases. If customers have specific security requirements, they may consider installing the required binaries, such as kinit from the krb5-workstation package, manually, even in an air-gapped environment.
+You can refer the [docs](https://developer.harness.io/docs/platform/delegates/install-delegates/enable-root-user-privileges-to-add-custom-binaries).
+
+#### Are metrics for the Docker Delegate published, and how can Prometheus scraping be configured?
+
+Yes, metrics for the Docker Delegate are published. To enable Prometheus scraping, you would likely need to open a port on the container and bind it to the Delegate metric port. This allows Prometheus, running separately, to scrape and collect metrics from the Docker Delegate.
+
+#### How can user only edit existing pipeline but should not be able to create any new pipeline?
+
+You can create the Roles and Resource Group like below..
+- Roles : Create/Edit,
+- RG : Select the specific pipelines within RG that the user should be able to edit.
+This will allow them to edit the pipelines that exists and can not create any new one. They need to select all the pipelines.
+
+
+
+

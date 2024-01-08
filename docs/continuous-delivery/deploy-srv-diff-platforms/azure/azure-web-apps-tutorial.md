@@ -101,13 +101,13 @@ Here are some common examples.
 
 | **ACR** | **Artifactory** | **Docker Registry** |
 | --- | --- | --- |
-| <docimage path={require('./static/acr.png')} width="60%" height="60%" title="Click to view full size image" /> | <docimage path={require('./static/artifactory.png')} width="60%" height="60%" title="Click to view full size image" /> | <docimage path={require('./static/docker.png')} width="60%" height="60%" title="Click to view full size image" /> |
+| <DocImage path={require('./static/acr.png')} width="60%" height="60%" title="Click to view full size image" /> | <DocImage path={require('./static/artifactory.png')} width="60%" height="60%" title="Click to view full size image" /> | <DocImage path={require('./static/docker.png')} width="60%" height="60%" title="Click to view full size image" /> |
 
 The settings for the Harness connector and artifact details are a combination of the container settings in your Azure Web App.
 
 For example, here are the Docker Hub settings in Harness and an Azure Web App:
 
-<docimage path={require('./static/azure-web-apps-tutorial-159.png')} width="80%" height="80%" title="Click to view full size image" />  
+<DocImage path={require('./static/azure-web-apps-tutorial-159.png')} width="80%" height="80%" title="Click to view full size image" />  
 
 The above example uses a [publicly available Docker image from Harness](https://hub.docker.com/r/harness/todolist-sample/tags?page=1&ordering=last_updated). 
 
@@ -161,7 +161,7 @@ Within the same resource group, you can't mix Windows and Linux apps in the same
 
 When you're done, infrastructure will look something like this:
 
-<docimage path={require('./static/azure-web-apps-tutorial-162.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/azure-web-apps-tutorial-162.png')} width="60%" height="60%" title="Click to view full size image" />
 
 ### Dynamically provisioned Web App infrastructure
 
@@ -265,7 +265,7 @@ In the Harness infrastructure definition, you map outputs to their corresponding
 
 <figure>
 
-<docimage path={require('./static/9e097690ae78c37f7f15c619f8c1952133f8a5806d02227ebd337d45299dab6b.png')} width="50%" height="50%" title="Select to view full size image" />  
+<DocImage path={require('./static/9e097690ae78c37f7f15c619f8c1952133f8a5806d02227ebd337d45299dab6b.png')} width="50%" height="50%" title="Select to view full size image" />  
 
 <figcaption>Figure: Mapped outputs.</figcaption>
 </figure>
@@ -356,7 +356,7 @@ To set up the canary deployment, you need to collect the existing Deployment slo
 1. In the Azure portal, select your Web App, and then select **Deployment slots**. You can see the Deployment slots for your Web App.
 2. Select **Swap**. You can see the Source and Target slots.
 
-<docimage path={require('./static/azure-web-apps-tutorial-164.png')} width="80%" height="80%" title="Click to view full size image" />  
+<DocImage path={require('./static/azure-web-apps-tutorial-164.png')} width="80%" height="80%" title="Click to view full size image" />  
 
 You'll use these slot names in your Harness steps.
 
@@ -377,7 +377,7 @@ The **Slot Deployment** step has the following settings:
 
 Here's an example.
 
-<docimage path={require('./static/azure-web-apps-tutorial-165.png')} width="80%" height="80%" title="Click to view full size image" />  
+<DocImage path={require('./static/azure-web-apps-tutorial-165.png')} width="80%" height="80%" title="Click to view full size image" />  
 
 ### Add a health check after slot deployment
 

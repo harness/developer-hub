@@ -70,7 +70,7 @@ In your **Build** stage, select the **Execution** tab, and add a [Background ste
 
 <!-- ![](./static/dind-background-step-entry-point.png) -->
 
-<docimage path={require('./static/dind-background-step-entry-point.png')} />
+<DocImage path={require('./static/dind-background-step-entry-point.png')} />
 
 
 </TabItem>

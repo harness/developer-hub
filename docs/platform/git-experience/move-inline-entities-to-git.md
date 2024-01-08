@@ -20,7 +20,7 @@ Moving inline entities like pipelines to a Git repository can provide several be
   
 - Security: Only authorized users can access them.
 
-:::caution
+:::warning
 When you move an inline pipeline to Git, the pipeline's associated entities aren't automatically moved to a Git repository. You must also move the corresponding input sets to the remote repository.
 
 If your pipeline has a trigger, you must modify the YAML of the trigger to add a new field `pipelineBranchName`. This will ensure that your trigger works seamlessly with your pipeline.

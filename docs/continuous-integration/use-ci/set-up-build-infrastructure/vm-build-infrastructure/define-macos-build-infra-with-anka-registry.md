@@ -244,7 +244,7 @@ Configure your pipeline's **Build** (`CI`) stage to use your Anka VMs as build i
 
 <!-- ![](../static/ci-stage-settings-vm-infra.png) -->
 
-<docimage path={require('../static/ci-stage-settings-vm-infra.png')} />
+<DocImage path={require('../static/ci-stage-settings-vm-infra.png')} />
 
 
 </TabItem>

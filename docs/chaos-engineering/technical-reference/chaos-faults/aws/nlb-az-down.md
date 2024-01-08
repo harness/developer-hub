@@ -13,7 +13,6 @@ The NLB (Network Load Balancer) AZ (Availability Zone) down fault triggers the u
 - It conducts an application test by deliberately blocking traffic originating from a specific AZ on the network load balancer. This experiment involves intentionally preventing incoming and outgoing traffic from the designated AZ from reaching the application through the load balancer.
 
 ## Prerequisites
-
 - Kubernetes >= 1.17
 - ECS cluster running with the desired tasks and containers and familiarity with ECS service update and deployment concepts.
 - Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
@@ -33,12 +32,10 @@ stringData:
 ```
 
 :::tip
-It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -61,8 +58,6 @@ Here is an example AWS policy to execute the fault.
 }
 ```
 
-## Fault tunables
-
    <h3>Mandatory tunables</h3>
     <table>
       <tr>
@@ -78,7 +73,7 @@ Here is an example AWS policy to execute the fault.
       <tr>
         <td> ZONES </td>
         <td> Target zones that should be detached from the NLB </td>
-        <td> For example, <code>us-east-1a</code>. </td>
+        <td> For example, <code>us-east-1a</code>. For more information, go to <a href="#target-zones"> target zones.</a></td>
       </tr>
       <tr>
         <td> REGION </td>

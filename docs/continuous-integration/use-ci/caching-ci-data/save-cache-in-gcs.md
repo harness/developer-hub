@@ -14,7 +14,7 @@ In addition to loading dependencies faster, you can also use caching to share da
 
 This topic explains how you can use the **Save Cache to GCS** and **Restore Cache from GCS** steps in your CI pipelines to save and retrieve cached data from Google Cloud Storage (GCS) buckets. For more information about caching in GCS, go to the Google Cloud documentation on [caching](https://cloud.google.com/storage/docs/caching). In your pipelines, you can also [save and restore cached data from S3](saving-cache.md) or use Harness [Cache Intelligence](./cache-intelligence.md).
 
-:::caution
+:::warning
 
 You can't share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across stages.
 

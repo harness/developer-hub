@@ -6,13 +6,11 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/go
 ---
 
-
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
@@ -25,9 +23,9 @@ You can build and test a [Go](https://go.dev/) application using a Linux platfor
 
 This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
 
-* [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
-* [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
-* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
+- [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
+- [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
+- [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 <CISignupTip />
 
@@ -35,90 +33,79 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 If necessary, add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install any dependencies.
 
-
 <Tabs>
 <TabItem value="Harness Cloud">
 
-
 ```yaml
-              - step:
-                  type: Run
-                  identifier: dependencies
-                  name: Dependencies
-                  spec:
-                    shell: Sh
-                    command: |-
-                      go get example.com/my-go-module
+- step:
+    type: Run
+    identifier: dependencies
+    name: Dependencies
+    spec:
+      shell: Sh
+      command: |-
+        go get example.com/my-go-module
 ```
-
 
 </TabItem>
 
 <TabItem value="Self-hosted">
 
-
 ```yaml
-              - step:
-                  type: Run
-                  identifier: dependencies
-                  name: Dependencies
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: golang:latest
-                    command: |-
-                      go get example.com/my-go-module
+- step:
+    type: Run
+    identifier: dependencies
+    name: Dependencies
+    spec:
+      connectorRef: account.harnessImage
+      image: golang:latest
+      command: |-
+        go get example.com/my-go-module
 ```
-
 
 </TabItem>
 </Tabs>
-
 
 ## Cache dependencies
 
 Add caching to your stage.
 
-
 <Tabs>
 <TabItem value="Harness Cloud">
-
 
 Cache your Go module dependencies with [**Cache Intelligence**](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec`.
 
 ```yaml
-    - stage:
-        spec:
-          caching:
-            enabled: true
+- stage:
+    spec:
+      caching:
+        enabled: true
 ```
-
 
 </TabItem>
 <TabItem value="Self-hosted">
 
-
 With self-hosted build infrastructures, you can:
 
- * [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
- * [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
-
+- [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
+- [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
 
 :::info Go cache key and path requirements
 
 Go pipelines must reference `go.sum` for `spec.key` in **Save Cache** and **Restore Cache** steps, for example:
 
 ```yaml
-                  spec:
-                    key: cache-{{ checksum "go.sum" }}
+spec:
+  key: cache-{{ checksum "go.sum" }}
 ```
 
 Additionally, `spec.sourcePaths` must include `/go/pkg/mod` and `/root/.cache/go-build` in the **Save Cache** step, for example:
 
 ```yaml
-                  spec:
-                    sourcePaths:
-                      - /go/pkg/mod
-                      - /root/.cache/go-build
+spec:
+  sourcePaths:
+    - /go/pkg/mod
+    - /root/.cache/go-build
 ```
 
 :::
@@ -163,70 +150,61 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 </details>
 
-
-
 </TabItem>
 </Tabs>
-
 
 ## Build and run tests
 
 Add [**Run**](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) steps to build and run your tests.
 
-
 <Tabs>
 <TabItem value="Harness Cloud">
 
-
 ```yaml
-              - step:
-                  type: Run
-                  identifier: build
-                  name: Build
-                  spec:
-                    shell: Sh
-                    command: |-
-                      go build
-              - step:
-                  type: Run
-                  identifier: test
-                  name: Test
-                  spec:
-                    shell: Sh
-                    command: |-
-                      go test -v ./...
+- step:
+    type: Run
+    identifier: build
+    name: Build
+    spec:
+      shell: Sh
+      command: |-
+        go build
+- step:
+    type: Run
+    identifier: test
+    name: Test
+    spec:
+      shell: Sh
+      command: |-
+        go test -v ./...
 ```
-
 
 </TabItem>
 <TabItem value="Self-hosted">
 
-
 ```yaml
-              - step:
-                  type: Run
-                  identifier: build
-                  name: Build
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: golang:latest
-                    command: |-
-                      go build
-              - step:
-                  type: Run
-                  identifier: test
-                  name: Test
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: golang:latest
-                    command: |-
-                      go test -v ./...
+- step:
+    type: Run
+    identifier: build
+    name: Build
+    spec:
+      connectorRef: account.harnessImage
+      image: golang:latest
+      command: |-
+        go build
+- step:
+    type: Run
+    identifier: test
+    name: Test
+    spec:
+      connectorRef: account.harnessImage
+      image: golang:latest
+      command: |-
+        go test -v ./...
 ```
-
 
 </TabItem>
 </Tabs>
-
 
 ### Visualize test results
 
@@ -236,58 +214,52 @@ You can use [go-junit-report](https://github.com/jstemmer/go-junit-report) to ou
 
 For your pipeline to produce test reports, you need to modify the **Run** step that runs your tests. Make sure the `command` generates JUnit XML reports and add the `reports` specification.
 
-
 <Tabs>
 <TabItem value="Harness Cloud">
 
-
 ```yaml
-              - step:
-                  type: Run
-                  identifier: test
-                  name: Test
-                  spec:
-                    shell: Sh
-                    command: |-
-                      export PATH=$(go env GOPATH)/bin:$PATH
-                      go install github.com/jstemmer/go-junit-report/v2@latest
-                      go test -v ./... | tee report.out
-                      cat report.out | go-junit-report -set-exit-code > report.xml
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - report.xml
+- step:
+    type: Run
+    identifier: test
+    name: Test
+    spec:
+      shell: Sh
+      command: |-
+        export PATH=$(go env GOPATH)/bin:$PATH
+        go install github.com/jstemmer/go-junit-report/v2@latest
+        go test -v ./... | tee report.out
+        cat report.out | go-junit-report -set-exit-code > report.xml
+      reports:
+        type: JUnit
+        spec:
+          paths:
+            - report.xml
 ```
-
 
 </TabItem>
 <TabItem value="Self-hosted">
 
-
 ```yaml
-              - step:
-                  type: Run
-                  identifier: test
-                  name: Test
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: golang
-                    command: |-
-                      go install github.com/jstemmer/go-junit-report/v2@latest
-                      go test -v ./... | tee report.out
-                      cat report.out | go-junit-report -set-exit-code > report.xml
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - report.xml
+- step:
+    type: Run
+    identifier: test
+    name: Test
+    spec:
+      connectorRef: account.harnessImage
+      image: golang
+      command: |-
+        go install github.com/jstemmer/go-junit-report/v2@latest
+        go test -v ./... | tee report.out
+        cat report.out | go-junit-report -set-exit-code > report.xml
+      reports:
+        type: JUnit
+        spec:
+          paths:
+            - report.xml
 ```
-
 
 </TabItem>
 </Tabs>
-
 
 ### Test splitting
 
@@ -295,10 +267,8 @@ You can use [test splitting (parallelism)](/docs/continuous-integration/use-ci/r
 
 ## Specify version
 
-
 <Tabs>
 <TabItem value="Harness Cloud">
-
 
 Go is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
@@ -308,17 +278,17 @@ If your application requires a specific version of Go, add a **Run** step to ins
 <summary>Install a specific version of Go</summary>
 
 ```yaml
-              - step:
-                  type: Run
-                  identifier: installgo
-                  name: Install Go
-                  spec:
-                    shell: Sh
-                    # install version 1.20 of Go
-                    command: |-
-                      export PATH=$(go env GOPATH)/bin:$PATH
-                      go install golang.org/dl/go1.20@latest
-                      go1.20 download
+- step:
+    type: Run
+    identifier: installgo
+    name: Install Go
+    spec:
+      shell: Sh
+      # install version 1.20 of Go
+      command: |-
+        export PATH=$(go env GOPATH)/bin:$PATH
+        go install golang.org/dl/go1.20@latest
+        go1.20 download
 ```
 
 </details>
@@ -329,35 +299,33 @@ If your application requires a specific version of Go, add a **Run** step to ins
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
-        strategy:
-          matrix:
-            # matrix strategy with Go versions 1.19 and 1.20
-            goVersion:
-              - "1.19"
-              - "1.20"
+strategy:
+  matrix:
+    # matrix strategy with Go versions 1.19 and 1.20
+    goVersion:
+      - "1.19"
+      - "1.20"
 ```
 
 2. Reference the matrix variable in your steps.
 
 ```yaml
-              - step:
-                  type: Run
-                  identifier: installgo
-                  name: Install Go
-                  spec:
-                    shell: Sh
-                    command: |-
-                      export PATH=$(go env GOPATH)/bin:$PATH
-                      go install golang.org/dl/go<+matrix.goVersion>@latest
-                      go<+matrix.goVersion> download
+- step:
+    type: Run
+    identifier: installgo
+    name: Install Go
+    spec:
+      shell: Sh
+      command: |-
+        export PATH=$(go env GOPATH)/bin:$PATH
+        go install golang.org/dl/go<+matrix.goVersion>@latest
+        go<+matrix.goVersion> download
 ```
 
 </details>
 
-
 </TabItem>
 <TabItem value="Self-hosted">
-
 
 Specify the desired [Golang Docker image](https://hub.docker.com/_/golang) tag in your steps. There is no need for a separate install step when using Docker.
 
@@ -365,20 +333,19 @@ Specify the desired [Golang Docker image](https://hub.docker.com/_/golang) tag i
 <summary>Build using a specific version of Go</summary>
 
 ```yaml
-              - step:
-                  type: Run
-                  identifier: build
-                  name: Build
-                  spec:
-                    connectorRef: account.harnessImage
-                    # use version 1.20 of Go
-                    image: golang:1.20
-                    command: |-
-                      go build
+- step:
+    type: Run
+    identifier: build
+    name: Build
+    spec:
+      connectorRef: account.harnessImage
+      # use version 1.20 of Go
+      image: golang:1.20
+      command: |-
+        go build
 ```
 
 </details>
-
 
 <details>
 <summary>Build using multiple versions of Go</summary>
@@ -386,43 +353,39 @@ Specify the desired [Golang Docker image](https://hub.docker.com/_/golang) tag i
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
 
 ```yaml
-        strategy:
-          matrix:
-            # matrix strategy with Go versions 1.19 and 1.20
-            goVersion:
-              - "1.19"
-              - "1.20"
+strategy:
+  matrix:
+    # matrix strategy with Go versions 1.19 and 1.20
+    goVersion:
+      - "1.19"
+      - "1.20"
 ```
 
 2. Reference the matrix variable in the `image` field of your steps.
 
 ```yaml
-              - step:
-                  type: Run
-                  identifier: build
-                  name: Build
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: golang:<+matrix.goVersion>
-                    command: |-
-                      go build
+- step:
+    type: Run
+    identifier: build
+    name: Build
+    spec:
+      connectorRef: account.harnessImage
+      image: golang:<+matrix.goVersion>
+      command: |-
+        go build
 ```
 
 </details>
 
-
 </TabItem>
 </Tabs>
-
 
 ## Full pipeline examples
 
 The following full pipeline examples are based on the partial examples above.
 
-
 <Tabs>
 <TabItem value="Harness Cloud">
-
 
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
@@ -577,10 +540,8 @@ pipeline:
 
 </details>
 
-
 </TabItem>
 <TabItem value="Self-hosted">
-
 
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector), Kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
@@ -715,15 +676,13 @@ pipeline:
 
 </details>
 
-
 </TabItem>
 </Tabs>
-
 
 ## Next steps
 
 Now that you have created a pipeline that builds and tests a Go app, you could:
 
-* Create [triggers](/docs/category/triggers) to automatically run your pipeline.
-* Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
-* Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
+- Create [triggers](/docs/category/triggers) to automatically run your pipeline.
+- Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
+- Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
