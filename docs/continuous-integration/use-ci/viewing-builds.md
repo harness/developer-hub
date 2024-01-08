@@ -34,7 +34,13 @@ Select a step to investigate logs, inputs, outputs, and errors (if any) for that
 
 When troubleshooting failed builds, you can switch to **Console View** to allocate more screen space to logs. Once you've identified a potential cause, select **Edit Pipeline** to go directly to the Pipeline Studio.
 
-CI step logs are limited to 5MB, and there is an individual line limit of 25KB. If necessary, you can [export full logs](../troubleshoot-ci/troubleshooting-ci.md#export-full-logs).
+#### Troubleshoot build log issues
+
+These are common issues related to build logs:
+
+* [Truncated execution logs](../troubleshoot-ci/troubleshooting-ci.md#truncated-execution-logs)
+* [CI step logs don't load in real time](/kb/continuous-integration/articles/CI-step-logs-dont-load-in-real-time)
+* [Step logs disappear](../troubleshoot-ci/troubleshooting-ci.md#step-logs-disappear)
 
 ### Inputs tab
 
@@ -72,7 +78,7 @@ If you [enabled error tracking in the Run Tests step](./run-tests/test-intellige
 
 <!-- ![](./static/ci-builds-et.png) -->
 
-<docimage path={require('./static/ci-builds-et.png')} />
+<DocImage path={require('./static/ci-builds-et.png')} />
 
 The following event types are reported:
 
@@ -89,6 +95,6 @@ Select the event's **Location** to open the [Automated Root Cause Analysis (ARC)
 
 <!-- ![](./static/ci-builds-et-arc.png) -->
 
-<docimage path={require('./static/ci-builds-et-arc.png')} />
+<DocImage path={require('./static/ci-builds-et-arc.png')} />
 
 :::

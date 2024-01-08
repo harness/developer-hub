@@ -46,15 +46,15 @@ If you selected **Git Repository** for **URL Type**, enter the full URL for the 
 
 If you selected **Git Account** for **URL Type**, enter the URL without the repo name. When you use this Connector in a Harness setting you will be prompted to provide a repo name.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="account" label="URL Type: Account" default>
-```
+
 
 In the **Git Account URL** field, provide only the account-identifying portion of the Git URL, such as `https://github.com/my-account`. Do not include a repo name in the URL.
 
@@ -67,10 +67,10 @@ The URL format depends on the Git provider and **Connection Type**:
 
 This field is only required if the **URL Type** is **Account**. Provide the name of a repo in your Git account that Harness can use to test the connector. Harness uses this repo path to validate the connection only. When you use this connector in a pipeline, you'll specify a true code repo in your pipeline configuration or at runtime.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="repo" label="URL Type: Repository">
-```
+
 
 In the **Git Repository URL** field, provide the complete URL to the Git repository that you want this connector to point to.
 
@@ -79,19 +79,19 @@ The URL format depends on the Git provider and **Connection Type**:
 * HTTP format: `https://<git-provider>.com/USERNAME/REPO_NAME`
 * SSH format: `git@<git-provider>.com:USERNAME/REPO_NAME`
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Credentials settings
 
 Provide authentication credentials for the connector. The **Connection Type** you chose in the [Details settings](#details-settings) determines the authentication method.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="http" label="Username and Password" default>
-```
+
 
 The **HTTP** Connection Type requires **Username** and **Password** authentication for all accounts and repos, including read-only repos.
 
@@ -101,10 +101,10 @@ In the **Password** field, provide the account password or a personal access tok
 
 If your Git account uses two-factor authentication, you must provide a personal access token for the **Password**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="ssh" label="SSH Key">
-```
+
 
 The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
 
@@ -128,10 +128,10 @@ For more information about GitHub's deprecation of RSA support, go to the GitHub
 
 :::
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Connectivity Mode settings
 

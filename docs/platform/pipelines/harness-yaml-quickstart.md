@@ -86,7 +86,7 @@ In addition to the YAML schema available at [github.com/harness/harness-schema](
 
 <!-- ![](./static/yaml-reference-cd-pipeline-00.png) -->
 
-<docimage path={require('./static/yaml-reference-cd-pipeline-00.png')} />
+<DocImage path={require('./static/yaml-reference-cd-pipeline-00.png')} />
 
 ### Schema conventions
 

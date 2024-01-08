@@ -2,18 +2,18 @@ To create a rule by using the Harness AIDA, perform the following steps:
 
 1. In the Harness application, go to **Cloud Costs**.
 2. Select **Asset Governance**. You can create a new rule from either of the following pages: 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-```mdx-code-block
+
+
 <Tabs queryString="tab-number">
 <TabItem value="4" label="Overview">
-```
+
 3. Select **Create a new rule with AIDA**.
 
-    <docimage path={require('./static/aida-overview.png')} width="60%" height="60%" title="Click to view full size image" />
+    <DocImage path={require('./static/aida-overview.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
  A new rule editor is presented, and it displays an AI-generated name for the rule. To customize the rule name, select the edit icon, and then modify the generated name according to your preference.
@@ -29,13 +29,13 @@ import TabItem from '@theme/TabItem';
 8.   Select **Validate Rule**.
 9.   The system performs a validation process to ensure rule accuracy. If errors are detected within the rule, a notification banner is displayed. To access more information regarding these errors, select the **More Details** option. You can view a comprehensive breakdown of the specific error details to identify and address any issues effectively. 
 
-    <docimage path={require('./static/ai-validation-error-banner.png')} width="60%" height="60%" title="Click to view full size image" />
-10.  If you are satisfied with the rule, select **Save**. 
+    <DocImage path={require('./static/ai-validation-error-banner.png')} width="60%" height="60%" title="Click to view full size image" />
+10.  If you are satisfied with the rule, select **Save**.
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="5" label="Rules">
-```
+
    
 3. Select **+New Rule**. 
 4. Enter a name for the rule.
@@ -55,10 +55,9 @@ import TabItem from '@theme/TabItem';
 12. Select **Validate Rule**.
 13. The system performs a validation process to ensure rule accuracy. If any errors are detected within the rule, a notification banner is displayed. To access more information regarding these errors, select the **More Details** option. You can view a comprehensive breakdown of the specific error details to identify and address any issues effectively. 
 
-    <docimage path={require('./static/ai-validation-error-banner.png')} width="60%" height="60%" title="Click to view full size image" />
-14.  If you are satisfied with the rule, select **Save**. 
+    <DocImage path={require('./static/ai-validation-error-banner.png')} width="60%" height="60%" title="Click to view full size image" />
+14.  If you are satisfied with the rule, select **Save**.
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```

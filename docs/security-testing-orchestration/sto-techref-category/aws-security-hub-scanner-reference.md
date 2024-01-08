@@ -12,26 +12,26 @@ You can scan your configurations using [AWS Security Hub](https://docs.aws.amazo
 ### Docker-in-Docker requirements
 
 
-```mdx-code-block
+
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
+
 
 <StoDinDRequirements />
 
 
 ### Root access requirements 
 
-```mdx-code-block
+
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-```
+
 
 <StoRootRequirements />
 
 ### For more information
 
-```mdx-code-block
+
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-```
+
 
 <StoMoreInfo />
 
@@ -41,11 +41,11 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 #### Scan Mode
 
-```mdx-code-block
+
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-```
+
 
 <StoSettingScanMode />
 <StoSettingScanModeData />
@@ -57,9 +57,9 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 
 #### Scan Configuration
 
-```mdx-code-block
+
 import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-```
+
 
 <StoSettingProductConfigName />
 
@@ -69,13 +69,13 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 #### Type
 
-```mdx-code-block
+
 import StoSettingScanType from './shared/step_palette/_sto-ref-ui-scan-type.md';
 import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
 import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
 import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-type-02-instance.md';
 import StoSettingScanTypeConfig  from './shared/step_palette/_sto-ref-ui-scan-type-03-config.md';
-```
+
 <a name="scan-type"></a>
 <StoSettingScanType />
 <StoSettingScanTypeRepo />
@@ -89,9 +89,9 @@ import StoSettingScanTypeConfig  from './shared/step_palette/_sto-ref-ui-scan-ty
 
 #### Name 
 
-```mdx-code-block
+
 import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-```
+
 
 <StoSettingProductID />
 
@@ -102,18 +102,18 @@ import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 
 #### Variant
 
-```mdx-code-block
+
 import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-```
+
 
 <StoSettingTargetVariant  />
 
 ### Ingestion File 
 
 
-```mdx-code-block
+
 import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-```
+
 
 <StoSettingIngestionFile  />
 
@@ -121,9 +121,9 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 #### Access ID 
 
-```mdx-code-block
+
 import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
-```
+
 
 <StoSettingAuthAccessID />
 
@@ -133,9 +133,9 @@ import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-acces
 
 #### Access Token
 
-```mdx-code-block
+
 import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
-```
+
 
 <StoSettingAuthAccessToken />
 
@@ -143,9 +143,9 @@ import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-ac
 #### Access Region
 
 
-```mdx-code-block
+
 import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
-```
+
 
 <StoSettingAuthDomain />
 
@@ -158,9 +158,9 @@ import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.
 
 #### Log Level
 
-```mdx-code-block
+
 import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-```
+
 
 <StoSettingLogLevel />
 
@@ -170,9 +170,9 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-```mdx-code-block
+
 import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
-```
+
 
 <StoSettingCliFlags />
 
@@ -182,9 +182,9 @@ import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
 #### Fail on Severity
 
 
-```mdx-code-block
+
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
 
 <StoSettingFailOnSeverity />
 
@@ -206,25 +206,25 @@ You can set up an AWS Security Hub scan using a Security step: create a CI Build
 
 #### Target and variant
 
-```mdx-code-block
+
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-```
+
 
 <StoLegacyTargetAndVariant />
 
 #### Configuration settings
 
-```mdx-code-block
+
 import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
-```
+
 
 <StoLegacyConfig  />
 
 #### Ingestion file
 
-```mdx-code-block
+
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
+
 
 <StoLegacyIngest />
 

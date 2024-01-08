@@ -10,16 +10,15 @@ redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto
 ---
 
-```mdx-code-block
-import set_up_harness_19 from './static/set-up-harness-for-sto-19.png'
+
 import set_up_harness_20 from './static/set-up-harness-for-sto-20.png'
-import set_up_harness_20_NEW from './static/setup-tutorial-create-base-pipeline-select-module.png'
+import set_up_harness_20_NEW from './static/set_up_harness_20_NEW.png'
 import set_up_harness_21 from './static/set-up-harness-for-sto-21.png'
 import set_up_harness_22 from './static/set-up-harness-for-sto-22.png'
 import set_up_harness_23 from './static/set-up-harness-for-sto-23.png'
 import set_up_harness_24 from './static/set-up-harness-for-sto-23_NEW.png'
 import set_up_harness_25 from './static/set-up-harness-for-sto-25.png'
-```
+
 
 This topic describes the steps you need to do to set up STO in your pipeline.
 
@@ -76,7 +75,7 @@ You need Administrative privileges at the Account level (Account Admin role) to 
 :::
 
 <details>
-  <summary>Assign Security Testing Roles: Default Workflow</summary>
+<summary>Assign Security Testing Roles: Default Workflow</summary>
 
 
 1. Select **Account Settings** (left menu) > **Access Control**.
@@ -92,23 +91,32 @@ You need Administrative privileges at the Account level (Account Admin role) to 
 
 You need a Harness build infrastructure to run scans in STO. First, review the supported build infrastructures in [What's supported in Harness STO](/docs/security-testing-orchestration/whats-supported). Then select the infrastructure you want to use: 
 
-- [Harness Cloud build infrastructure](#use-harness-cloud-build-infrastructure-for-sto) This is the simplest option. No initial setup is required. 
-- [Local Kubernetes build infrastructure](#install-a-kubernetes-delegate-for-sto) Recommended when you want to run ephemeral builds-at-scale in your own infrastructure.
-- [Local Docker build infrastructure](#install-a-local-docker-delegate-for-sto) Recommended for small, limited builds, such as a one-off build on your local machine.
+- [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) 
 
-#### Use Harness Cloud build infrastructure for STO
+  This is the simplest option. Not initial setup is required. Run your pipelines on Harness-hosted VMs preconfigured with tools, packages, and settings commonly used in CI pipelines. 
 
-With Harness Cloud, you can run builds in isolation on Harness-hosted VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines. Harness hosts, maintains, and upgrades these machines so that you can focus on building software instead of maintaining build infrastructure. No initial setup is required.
+- [Self-hosted Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) 
 
-For more information, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
+   Recommended when you want to run ephemeral builds-at-scale in your own infrastructure.
 
+- [Local Docker runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) 
+
+   Recommended for small, limited builds, such as a one-off build on your local machine.
+
+:::note
+
+Kubernetes cluster and local runner infrastructures might also require a Docker-in-Docker background step in your pipeline. For more information, go to [Docker-in-Docker requirements for STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto).
+
+:::
+
+<!-- 
 
 #### Install a Kubernetes delegate for STO
 
 Executing builds in a Kubernetes cluster is useful when you want to run ephemeral builds-at-scale in your own infrastructure. When running builds in a Kubernetes cluster, each stage executes in a pod, and the stage's steps share the pod's resources.
 
 <details>
-  <summary>Kubernetes Delegate Requirements</summary>
+<summary>Kubernetes Delegate Requirements</summary>
 
 * Number of pods: 3 (two pods for the Harness Delegate, the remaining pod for scanning infrastructure).
 * Machine type: 4vCPU.
@@ -126,7 +134,7 @@ Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-e
 To set up the build infrastructure, you add a connector to your Kubernetes cluster and then install a Harness delegate.
 
 <details>
-  <summary>Install a Kubernetes Delegate: Default Workflow</summary>
+<summary>Install a Kubernetes Delegate: Default Workflow</summary>
 
 <ol>
 	<li>Select <strong>Account Settings</strong> &gt; <strong>Account Resources</strong> &gt; <strong>Connector</strong>, then <strong>New Connector</strong>.</li>
@@ -156,7 +164,7 @@ To set up the build infrastructure, you add a connector to your Kubernetes clust
 	<li>In <strong>Connection Test</strong>, wait for &#34;Verification successful&#34; and then select <strong>Finish</strong>.</li>
 </ol>
 
-  
+
 </details>
 
 #### Install a local Docker delegate for STO
@@ -164,6 +172,8 @@ To set up the build infrastructure, you add a connector to your Kubernetes clust
 A local runner build infrastructure is recommended for small, limited builds, such as a one-off build on your local machine. 
 
 For more information, go to [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) in the CI documentation. 
+
+-->
 
 
 ### Create secrets for your Git and DockerHub access credentials
@@ -173,7 +183,7 @@ Harness includes a built-in Secrets Manager that enables you to store encrypted 
 In this step, you'll create a secret for your GitHub and DockerHub access tokens. Then you'll use the secret when you set up the connector to your GitHub repo.
 
 <details>
-  <summary>Create a Secret for your GitHub access token: Default Workflow</summary>
+<summary>Create a Secret for your GitHub access token: Default Workflow</summary>
 
 1. In your Github account, a [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has the following scopes:
 	* repo
@@ -198,11 +208,11 @@ In this step, you'll create a secret for your GitHub and DockerHub access tokens
 A Docker Hub connector is required to run a Docker-in-Docker service as described in [Set up the Security Tests stage](#set-up-security-tests-stage) below. It is also required for any pipeline that scans or uploads a built image.
 
 <details>
-  <summary>Create a Docker Hub Connector: Default Workflow</summary>
+<summary>Create a Docker Hub Connector: Default Workflow</summary>
 
 
 1. If you want to upload images to your Docker Hub repo, you'll need an access token. To do this:
-	1. Create a token: log in to your Docker Hub account and go to <https://hub.docker.com/settings/security>.
+	1. Create a token: log in to your Docker Hub account and go to [https://hub.docker.com/settings/security](https://hub.docker.com/settings/security).
 	2. [Create a secret](#create-a-secret) for your token.
 2. Go to the **Account Settings** > **Account Resources** page and select **Connectors**.
 3. Select **New Connector**. Under Artifact Repositories, select **Docker Registry**.
@@ -227,10 +237,10 @@ You also need a Git repo connector for any STO pipeline that scans a codebase. Y
  - [GitHub](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
  - [GitLab](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 
-To do the STO tutorials, point the connector at the following repo: <https://github.com/williamwissemann/dvpwa>
+To do the STO tutorials, point the connector at the following repo: [https://github.com/williamwissemann/dvpwa](https://github.com/williamwissemann/dvpwa)
 
 <details>
-  <summary>Create a Codebase Connector: Default Workflow</summary>
+<summary>Create a Codebase Connector: Default Workflow</summary>
 
 1. Go to the **Account Settings** > **Account Resources** page and select **Connectors**.
 2. Under Code Repositories, choose **GitHub**.
@@ -251,65 +261,69 @@ To do the STO tutorials, point the connector at the following repo: <https://git
 
 </details>
 
+## Next steps
+
+Now that you've set up Harness, you're ready to start using STO.
+
+A good next step is to go through [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline). This tutorial covers the basic concepts of STO. You'll set up a standalone pipeline with one scanner, run scans, analyze the results, and learn how to investigate and fix detected vulnerabilities.
+
+The [STO tutorials](/tutorials/security-tests) also include a set of quickstarts and end-to-end workflows that show you how to create pipelines that you can apply to a wide variety of security-related use cases. 
+
+Happy scanning! 
+
+<!-- 
+
 ## Create a base pipeline for STO
 
-The following procedure creates a pipeline with the STO functionality required to run scans on your repos, images, and instances. Once you set up this pipeline, you can clone it to a new pipeline and update the pipeline to set up your scans. 
+The following procedure creates a pipeline with the STO functionality required to run scans on your repos, images, and instances. This pipeline uses [Bandit](https://github.com/PyCQA/bandit), an open-source tool designed to find common security issues in Python code.  Once you set up this pipeline, you can clone it to a new pipeline and update the pipeline to set up your scans. 
 
 This workflow is covered in [Your first STO pipeline](/tutorials/security-tests/your-first-sto-pipeline).
 
 ### Add a Security Test stage
 
-1. In the Pipeline Studio, select **Home** > **Projects** and choose the project where you want to create the pipeline.
-
-  <!-- import set-up-harness-19 from './static/set-up-harness-for-sto-19.png' -->
-
-  ```mdx-code-block
-  <img src={set_up_harness_19} alt="Choose the project" height="50%" width="75%" />
-  ```
-
-  <!--  ![](./static/set-up-harness-for-sto-19.png) -->
+1. In the Pipeline Studio, go to the project where you want to create the pipeline.
 	 
-2. Select **Select Modules** (left menu) and then select **Security Tests**.
+2. Select **Security Testing Orchestration** (top left) > **Pipelines** > **Create a Pipeline**.
 
-<!-- 
-  ```mdx-code-block
+  
    <img src={set_up_harness_20_NEW} alt="Choose the STO module" height="50%" width="50%" />
-  ```
-  -->
+  
+
 	 
 3. In Create New Pipeline:
-	1. Select **Pipelines** > **Create a Pipeline**. 
-	2. In Create new Pipeline > Name, enter **sto-pipeline-base**.
+	1. For Name, enter **sto-pipeline-base**.
 	3. Select **Start**.
 	
-  ```mdx-code-block
+  
    <img src={set_up_harness_21} alt="Create the pipeline" height="75%" width="75%" />
-  ```
+  
 		 
 4. In About your Stage:
 	1. Select **Add Stage** and then **Security Tests**.
 	2. Stage Name = **securityTestStage**
-	3. Connector = The connector you created in [Create a Codebase Connector](#create-a-codebase-connector).
-	4. Select **Set Up Stage**.
+	3. Configure Codebase:
+	   1. Select **Third-party Git provider** (if this option is available)
+	   2. Connector = The connector you created in [Create a Codebase Connector](#create-a-codebase-connector) 
+	   3. Repository Name = **dvpwa**
 	
-  ```mdx-code-block
+  
    <img src={set_up_harness_22} alt="Set up the stage" height="50%" width="50%" />
-  ```
+  
 
 
 ### Set up the Security Tests stage
 
 1. In the **Overview** tab, under **Shared Paths**, select **Add** and enter the path `/var/run`.
 
-  ```mdx-code-block
+  
    <img src={set_up_harness_23} alt="Enter the shared path" height="75%" width="75%" />
-  ```
+  
 	 
 2. In the **Infrastructure** tab, select the infrastructure and specify the options based on the infrastructure type. 
 	
-  ```mdx-code-block
+  
    <img src={set_up_harness_24} alt="Define the build infrastructure" height="50%" width="50%" />
-  ```
+  
 
 <!-- 		 
 #### Add a Docker-in-Docker background service		 
@@ -323,20 +337,20 @@ In the **Execution** tab, do the following:
 4. Image = `docker:dind`
 5. Under Optional Configuration, select the **Privileged** checkbox.
    
-    ```mdx-code-block
+    
      <img src={set_up_harness_25} alt="Configure the background step" height="75%" width="75%" />
-    ```
--->
+    
+
 
 ### Add a Bandit scanner step
 
-```mdx-code-block
+
 import set_up_harness_tut_select_variant_field_type from './static/sto-basics-tut-select-variant-field-type.png'
 import set_up_harness_26 from './static/configure-bandit-step.png'
-```
 
 
-1. In the Execution tab, select **Add Step** and then **Bandit**.
+
+1. In the Execution tab, select **Add Step** > **Security Tests** > **Bandit**.
 2. Configure the step as follows:
 	1. Scan Mode = **`Orchestration`**
 	2. Target Name = `**dvpwa**`
@@ -344,15 +358,15 @@ import set_up_harness_26 from './static/configure-bandit-step.png'
 	
 	   With this setting, you will specify the variant — in this case, the branch name — when you execute the pipeline. 
 
-	   ```mdx-code-block
+	   
 	   <img src={set_up_harness_tut_select_variant_field_type} alt="Configure the background step" height="75%" width="75%" />
-	   ```
+	   
 	
 3. Apply your changes, return to the Stage, and **Save** the pipeline.
     
-	  ```mdx-code-block
+	  
 	   <img src={set_up_harness_26} alt="Configure the background step" height="50%" width="50%" />
-	   ```
+	   
 
 
 ## Run the pipeline (optional)
@@ -361,8 +375,12 @@ import set_up_harness_26 from './static/configure-bandit-step.png'
 2. Select Git Branch, enter **master** for the branch name, and then select **Run Pipeline**.
 3. When the pipeline finishes, select the **Security Tests** tab to see the dashboard.
 
+
+
 # Congratulations!
 
 You now have the build infrastructure, connectors, and pipeline required to build a pipeline and run security scans. You can simply clone the pipeline you just created and configure new pipelines based on your security requirements.
 
 ![](./static/set-up-harness-for-sto-27.png)
+
+-->

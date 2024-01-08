@@ -10,7 +10,7 @@ Harness Cloud Asset Governance provides tools to optimize your cloud spend and a
 
 You can view the recommendations for all of your AWS accounts on the recommendations page.
 
-   <docimage path={require('./static/governance.png')} width="50%" height="50%" title="Click to view full size image" />
+   <DocImage path={require('./static/governance.png')} width="50%" height="50%" title="Click to view full size image" />
 
 The following resource types can be utilized optimally by creating governance rules to rightsize the resources:
 
@@ -61,7 +61,7 @@ Harness CCM provides two types of recommendations to optimize utilization of you
 
 1. On the **Recommendations** page, select the recommendation row that you want to enforce. The following page appears.
 
-    <docimage path={require('./static/enforce-governance-recom.png')} width="50%" height="50%" title="Click to view full size image" />
+    <DocImage path={require('./static/enforce-governance-recom.png')} width="50%" height="50%" title="Click to view full size image" />
 
     * **Potential Monthly Savings** — Monthly cost savings that can be realized if the recommendations are applied.
     * **Total Accounts** — The total number of AWS accounts on which the rules can be enforced.

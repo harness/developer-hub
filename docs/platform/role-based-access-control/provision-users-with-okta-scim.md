@@ -149,7 +149,7 @@ These users are also listed in your Harness account.
 
 <!-- ![](./static/provision-users-with-okta-scim-14.png) -->
 
-<docimage path={require('./static/provision-users-with-okta-scim-14.png')} />
+<DocImage path={require('./static/provision-users-with-okta-scim-14.png')} />
 
 You can use Okta to provision individual users or groups containing sets of users. If you use Okta to provision individual users directly to Harness, these users initially have no user group assignment in Harness. You must assign them to a group, either in Okta or in Harness. Directly provisioning individual users is the *only* way that you can change an Okta user's group membership in Harness. When provisioned as part of an Okta group, the user's group membership must always be managed through Okta.
 
@@ -195,7 +195,7 @@ Active and successfully pushed groups are listed in your Harness account. The gr
 
 <!-- ![](./static/provision-users-with-okta-scim-18.png) -->
 
-<docimage path={require('./static/provision-users-with-okta-scim-18.png')} />
+<DocImage path={require('./static/provision-users-with-okta-scim-18.png')} />
 
 :::tip
 
@@ -242,7 +242,7 @@ To delete a user provisioned through a group, remove them from the group in Okta
 
 To delete a user from Harness and all other provisioned apps, deactivate the user's Okta profile.
 
-:::caution
+:::warning
 
 Deactivating a user removes them from *all provisioned apps*, including Harness. While a user account is deactivated, you can't change it.
 

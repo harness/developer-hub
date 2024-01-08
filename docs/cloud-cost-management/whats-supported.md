@@ -6,9 +6,9 @@ sidebar_position: 1
 ---
 
 
-```mdx-code-block
+
 import Ccm from '/docs/cloud-cost-management/shared/ccm-supported-platforms.md';
-```
+
 
 <Ccm />
 

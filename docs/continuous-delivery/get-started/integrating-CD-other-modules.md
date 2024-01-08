@@ -105,31 +105,31 @@ pipeline:
 
 Here's what the pipeline looks like in pipeline studio:
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="CI stage" label="CI stage" default>
-```
+
 
 Here's the push step from the CI stage:
 
-<docimage path={require('./static/f2f3a47b93bed917ba2df30fc996ee9a859119c2ce7288eebbf0c8e9d81d8f0d.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/f2f3a47b93bed917ba2df30fc996ee9a859119c2ce7288eebbf0c8e9d81d8f0d.png')} width="60%" height="60%" title="Click to view full size image" />
 
 Note the `<+pipeline.sequenceId>` expression. This is used to tag the artifact pushed to Docker Hub. You can tag your artifact versions in a number of ways. The expression `<+pipeline.sequenceId>` is incremented each time the pipeline is run.
 
 The expression `<+pipeline.sequenceId>` will be used in the subsequent CD stage to fetch the app version.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="CD stage" label="CD stage">
-```
+
 
 Here's the Kubernetes Rollout Deployment step from the CD stage.
 
-<docimage path={require('./static/d3f2a764bed2a191ddb13ae8c4f2a607da97c7aa22e94f433eeac946da54cb15.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/d3f2a764bed2a191ddb13ae8c4f2a607da97c7aa22e94f433eeac946da54cb15.png')} width="60%" height="60%" title="Click to view full size image" />
 
 In the stage's service, the expression `<+pipeline.sequenceId>` is used pull the the app version.
 
@@ -137,16 +137,16 @@ In the stage's service, the expression `<+pipeline.sequenceId>` is used pull the
 
 It's that simple to integrate Harness CI and CD.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### Learn more
 
 This was just a simple introduction to the integration.
 
-For a longer tutorial of Harness CI and CD integration, go to [Build and Deploy a NodeJS App to Kubernetes](/tutorials/cd-pipelines/unified-cicd).
+For a longer tutorial of Harness CI and CD integration, go to [End-To-End CI/CD Pipeline](/tutorials/cd-pipelines/unified-cicd/e2e-pipeline).
 
 ## Harness Chaos Engineering
 

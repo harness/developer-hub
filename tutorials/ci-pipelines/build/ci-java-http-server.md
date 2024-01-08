@@ -6,13 +6,11 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/java
 ---
 
-```mdx-code-block
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
 
-<ctabanner
+<CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
@@ -25,15 +23,16 @@ You can build and test a Java application using a Linux platform on [Harness Clo
 
 This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
 
-* [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
-* [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
-* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
+- [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
+- [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
+- [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 <CISignupTip />
 
 ## Install dependencies
 
 Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
+
 ```yaml
               - step:
                    type: Run
@@ -72,45 +71,41 @@ You can use [Background steps](/docs/continuous-integration/use-ci/manage-depend
 
 ## Cache dependencies
 
-```mdx-code-block
 <Tabs>
 <TabItem value="Harness Cloud" default>
-```
 
 Cache your Java dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec`.
 
 ```yaml
-    - stage:
-        spec:
-          caching:
-            enabled: true
+- stage:
+    spec:
+      caching:
+        enabled: true
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="Self-hosted">
-```
 
 With self-hosted build infrastructures, you can:
 
-* [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
-* [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
+- [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
+- [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
 
 :::info Maven cache key and path requirements
 
 If you're using Maven, you must reference `pom.xml` in the `key` value for your **Save Cache** and **Restore Cache** steps, for example:
 
 ```yaml
-                  spec:
-                    key: cache-{{ checksum "pom.xml" }}
+spec:
+  key: cache-{{ checksum "pom.xml" }}
 ```
 
 Additionally, you must include `/root/.m2` in the `sourcePaths` for your **Save Cache** step, for example:
 
 ```yaml
-                  spec:
-                    sourcePaths:
-                      - /root/.m2
+spec:
+  sourcePaths:
+    - /root/.m2
 ```
 
 :::
@@ -149,55 +144,47 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     archiveFormat: Tar
 ```
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
 
 ## Build and run tests
 
-```mdx-code-block
 <Tabs>
 <TabItem value="hosted" label="Harness cloud" default>
-```
 
 You can use **Run** or **Run Tests** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
-```mdx-code-block
 <Tabs>
 <TabItem value="run" label="Run step" default>
-```
 
 This example uses two [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build and test with Maven.
 
 ```yaml
-              - step:
-                   type: Run
-                   name: build
-                   identifier: build
-                   spec:
-                     shell: Sh
-                     command: |
-                       mvn clean package dependency:copy-dependencies
-              - step:
-                  type: Run
-                  name: run test
-                  identifier: run_test
-                  spec:
-                    shell: Sh
-                    command: |-
-                      mvn test
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - target/surefire-reports/*.xml
+- step:
+    type: Run
+    name: build
+    identifier: build
+    spec:
+      shell: Sh
+      command: |
+        mvn clean package dependency:copy-dependencies
+- step:
+    type: Run
+    name: run test
+    identifier: run_test
+    spec:
+      shell: Sh
+      command: |-
+        mvn test
+      reports:
+        type: JUnit
+        spec:
+          paths:
+            - target/surefire-reports/*.xml
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="runtests" label="Run Tests step (Test Intelligence)">
-```
 
 You must use the **Run Tests** step for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) feature.
 
@@ -206,73 +193,65 @@ Where Run steps use the `command` field for all commands, the Run Tests step use
 The following example runs `mvn test` (declared in `args`), and then runs `mvn package -DskipTests` as a `postCommand`.
 
 ```yaml
-              - step:
-                  type: RunTests
-                  name: Run Tests
-                  identifier: Run_Tests
-                  spec:
-                    language: Java
-                    buildTool: Maven
-                    args: test
-                    packages: io.harness.
-                    runOnlySelectedTests: true
-                    postCommand: mvn package -DskipTests
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - "target/surefire-reports/*.xml"
+- step:
+    type: RunTests
+    name: Run Tests
+    identifier: Run_Tests
+    spec:
+      language: Java
+      buildTool: Maven
+      args: test
+      packages: io.harness.
+      runOnlySelectedTests: true
+      postCommand: mvn package -DskipTests
+      reports:
+        type: JUnit
+        spec:
+          paths:
+            - "target/surefire-reports/*.xml"
 ```
 
-```mdx-code-block
-  </TabItem>
+</TabItem>
 </Tabs>
-```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="selfhosted" label="Self-hosted">
-```
 
 You can use **Run** or **Run Tests** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
-```mdx-code-block
 <Tabs>
 <TabItem value="run" label="Run step" default>
-```
 
 This example uses two [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build and test with Maven.
 
 ```yaml
-              - step:
-                   type: Run
-                   name: build
-                   identifier: build
-                   spec:
-                     connectorRef: account.harnessImage
-                     image: maven:3.8-jdk-11
-                     shell: Sh
-                     command: |
-                       mvn clean package dependency:copy-dependencies
-              - step:
-                  type: Run
-                  name: run test
-                  identifier: run_test
-                  spec:
-                    shell: Sh
-                    command: |-
-                      mvn test
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - target/surefire-reports/*.xml
+- step:
+    type: Run
+    name: build
+    identifier: build
+    spec:
+      connectorRef: account.harnessImage
+      image: maven:3.8-jdk-11
+      shell: Sh
+      command: |
+        mvn clean package dependency:copy-dependencies
+- step:
+    type: Run
+    name: run test
+    identifier: run_test
+    spec:
+      shell: Sh
+      command: |-
+        mvn test
+      reports:
+        type: JUnit
+        spec:
+          paths:
+            - target/surefire-reports/*.xml
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="runtests" label="Run Tests step (Test Intelligence)">
-```
 
 You must use the **Run Tests** step for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) feature.
 
@@ -281,46 +260,42 @@ Where Run steps use the `command` field for all commands, the Run Tests step use
 The following example runs `mvn test` (declared in `args`), and then runs `mvn package -DskipTests` as a `postCommand`.
 
 ```yaml
-              - step:
-                  type: RunTests
-                  name: Run Tests
-                  identifier: Run_Tests
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: maven:3.8-jdk-11
-                    language: Java
-                    buildTool: Maven
-                    args: test
-                    packages: io.harness.
-                    runOnlySelectedTests: true
-                    postCommand: mvn package -DskipTests
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - "target/surefire-reports/*.xml"
+- step:
+    type: RunTests
+    name: Run Tests
+    identifier: Run_Tests
+    spec:
+      connectorRef: account.harnessImage
+      image: maven:3.8-jdk-11
+      language: Java
+      buildTool: Maven
+      args: test
+      packages: io.harness.
+      runOnlySelectedTests: true
+      postCommand: mvn package -DskipTests
+      reports:
+        type: JUnit
+        spec:
+          paths:
+            - "target/surefire-reports/*.xml"
 ```
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
 
 ### Visualize test results
 
 If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
 
 ```yaml
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - target/surefire-reports/*.xml
+reports:
+  type: JUnit
+  spec:
+    paths:
+      - target/surefire-reports/*.xml
 ```
 
 ### Test splitting
@@ -329,10 +304,8 @@ Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/
 
 ## Specify version
 
-```mdx-code-block
 <Tabs>
 <TabItem value="Harness Cloud">
-```
 
 Java is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
@@ -341,46 +314,42 @@ If your application requires a specific version of Java, you can use a **Run**, 
 This example uses the [GitHub Action step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) to run the `setup-java` action.
 
 ```yaml
-              - step:
-                  type: Action
-                  name: setup java
-                  identifier: setup_java
-                  spec:
-                    uses: actions/setup-java@v3
-                    with:
-                      distribution: 'temurin'
-                      java-version: '16'
+- step:
+    type: Action
+    name: setup java
+    identifier: setup_java
+    spec:
+      uses: actions/setup-java@v3
+      with:
+        distribution: "temurin"
+        java-version: "16"
 ```
 
-```mdx-code-block
 </TabItem>
 <TabItem value="Self-hosted">
-```
 
 You can use a **Run** or **Plugin** step to install Java versions that are not already installed on your host machine.
 
 This example uses the [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie) to run the GitHub Actions Drone plugin and run the `setup-java` action.
 
 ```yaml
-              - step:
-                  identifier: setup_java
-                  name: setup java
-                  type: Plugin
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: plugins/github-actions
-                    privileged: true
-                    settings:
-                      uses: actions/setup-java@v3
-                      with:
-                        distribution: 'temurin'
-                        java-version: '17'
+- step:
+    identifier: setup_java
+    name: setup java
+    type: Plugin
+    spec:
+      connectorRef: account.harnessImage
+      image: plugins/github-actions
+      privileged: true
+      settings:
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "17"
 ```
 
-```mdx-code-block
 </TabItem>
 </Tabs>
-```
 
 ## Full pipeline examples
 
@@ -459,7 +428,7 @@ pipeline:
 
 Now that you have created a pipeline that builds and tests a Java app, you could:
 
-* Create [triggers](/docs/category/triggers) to automatically run your pipeline.
-* Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
-* Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
-* Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).
+- Create [triggers](/docs/category/triggers) to automatically run your pipeline.
+- Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
+- Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
+- Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).

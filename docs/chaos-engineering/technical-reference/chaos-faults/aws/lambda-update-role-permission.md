@@ -14,8 +14,8 @@ Lambda updated role permission:
 - Updates the role attached to a Lambda function.
 - Determines the performance of the running Lambda application when it does not have enough permissions.
 
-:::info note
-- Kubernetes version 1.17 or later is required to execute this fault.
+## Prerequisites
+- Kubernetes >= 1.17
 - The Lambda function must be up and running.
 - Kubernetes secret must have the AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
   ```yaml
@@ -31,10 +31,9 @@ Lambda updated role permission:
       aws_access_key_id = XXXXXXXXXXXXXXXXXXX
       aws_secret_access_key = XXXXXXXXXXXXXXX
   ```
-- Harness recommends using the same secret name, that is, `cloud-secret`. Otherwise, you must update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
-- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
-- Go to [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-- Go to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+
+:::tip
+HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes. 
 :::
 
 Below is an example AWS policy to execute the fault when `ROLE_ARN` environment variable is set.
@@ -81,7 +80,11 @@ Below is an example AWS policy to execute the fault when `POLICY_ARN` environmen
 }
 ```
 
-## Fault tunables
+:::info note
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+- Go to [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Go to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+:::
 
    <h3>Mandatory tunables</h3>
     <table>
@@ -98,12 +101,12 @@ Below is an example AWS policy to execute the fault when `POLICY_ARN` environmen
       <tr>
         <td> POLICY_ARN </td>
         <td> Provide the policy ARN that you want to detach from the role attached</td>
-        <td> </td>
+        <td> For more information, go to <a href="#policy-arn"> policy ARN.</a></td>
       </tr>
       <tr>
         <td> ROLE_ARN </td>
         <td> Provide the role arn that you want to update in the lambda function</td>
-        <td> ROLE_ARN and POLICY_ARN are mutually exclusive. If both are provided, ROLE_ARN is prioritized</td>
+        <td> ROLE_ARN and POLICY_ARN are mutually exclusive. If both are provided, ROLE_ARN takes precedence. For more information, go to <a href="#role-arn"> role ARN.</a></td>
       </tr>
       <tr>
         <td> REGION </td>
@@ -121,22 +124,22 @@ Below is an example AWS policy to execute the fault when `POLICY_ARN` environmen
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Default: 30 s </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in seconds) between successive policy/role detach/update.</td>
-        <td> Default: 30 s </td>
+        <td> Default: 30 s. For more information, go to <a href="../common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="../common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in seconds </td>
-        <td> For example, 30 s. </td>
+        <td> For example, 30 s. For more information, go to <a href="../common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
 

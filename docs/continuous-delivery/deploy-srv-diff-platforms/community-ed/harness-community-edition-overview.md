@@ -4,11 +4,7 @@ description: Try Harness CD Community Edition (CE) on your laptop or any VM.
 sidebar_position: 1
 ---
 
-This topic describes Harness CD Community Edition (CE).
-
-Harness CD Community Edition is a lightweight version of Harness that you can download and run on your laptop or any VM.
-
-Harness CD Community Edition is intended to get devs started with Harness quickly without having to sign up for a Harness SaaS account.
+As of Dec 2023, the Harness CD Community Edition (CE) is retired in favor of [Gitness](https://gitness.com/). More details are available on this [blog post](https://www.harness.io/blog/retiring-harness-cd-community-edition-in-favor-of-gitness). Follow the instructions below if you are still using the Harness CD CE.
 
 :::note
 
