@@ -31,7 +31,7 @@ Harness STO can automatically ingest, aggregate, normalize, and deduplicate data
 - **Qwiet** — JSON
 - **Reapsaw** — JSON    <!-- - **Scoutsuite** — JSON -->
 - **Semgrep** — SARIF
-- **Snyk** — SARIF
+- **Snyk** — JSON, SARIF
 - **SonarQube** — JSON
 - **Tenable** — JSON
 - **Veracode** — XML
