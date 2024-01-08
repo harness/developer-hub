@@ -16,6 +16,28 @@ For Harness SaaS release notes, go to [Harness SaaS Release Notes](/docs/first-g
 
 Release notes are displayed with the most recent release first.
 
+## January 8, 2024, version 81720
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 81720 |
+| Delegate | 81604 |
+| Watcher | 80505 |
+| Verification Service | 81708 |
+| UI | 81701 |
+| Learning Engine | 67903 | 
+| Gateway | 1.15.0 |
+
+### Fixed issues
+
+- Audit trails were missing for deleted SCIM user groups. Added audits for Delete user group from SCIM to resolve the issue. (PL-38401)
+
+- Fixed the `java.io.InterruptedIOException` message in delegate logs by adding the source URL and removing duplicate error logs. (PL-40118)
+
+      This item requires Harness Delegate version 23.12.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate). 
+
 
 ## November 30, 2023, version 81310
 
