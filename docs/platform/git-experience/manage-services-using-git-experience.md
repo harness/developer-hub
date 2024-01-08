@@ -21,6 +21,14 @@ The topic explains how to use the Remote option to store your services in your G
 * Ensure you have a Git repo with at least one branch.​
 * Ensure you have a set up a [Harness Git connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) with a Personal Access Token (PAT) for your Git account.​
 
+## Visual Summary
+
+Here's a quick video of how you can manage services, environment and infrastructue definition through Git Experience.
+
+<!-- Video:
+https://www.youtube.com/watch?v=ZvtyLxmtHTo-->
+<DocVideo src="https://www.youtube.com/watch?v=ZvtyLxmtHTo" />
+
 ## Create a remote service
 
 You can create a service at the Harness account, organization, or project level. This topic explains the steps to create a service at the project level. The process is the same for the other levels.
