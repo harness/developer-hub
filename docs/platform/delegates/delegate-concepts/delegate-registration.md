@@ -12,7 +12,7 @@ To set up a Harness Delegate, you install the delegate in your environment and t
 
 The delegate config file (for example, Kubernetes delegate YAML file) contains your Harness account Id. That's how the delegate knows where to register.
 
-### Installing and registering delegates
+### Install and register delegates
 
 To install a delegate, follow the steps in the relevant delegate installation topic, such as [Install a Kubernetes delegate](/docs/platform/delegates/install-delegates/install-a-kubernetes-delegate.md) or [Install a Docker delegate](/docs/platform/delegates/install-delegates/overview.md).
 
@@ -25,7 +25,7 @@ Registration can take a few minutes.
 
 Once the delegate registers, the **Verify** screen will indicate that the delegate is running.
 
-### Verifying delegate registration manually
+### Verify delegate registration manually
 
 The Verify screen also includes troubleshooting steps.
 
@@ -53,3 +53,19 @@ If the delegate didn’t reach a healthy state, try this:
 ```
 kubectl describe pod <your-delegate-pod> -n harness-delegate-ng
 ```
+
+### Allowlist verification for delegate registration
+
+:::info note
+
+Currently, allowlist verification for delegate registration is behind the feature flag `PL_ENFORCE_DELEGATE_REGISTRATION_ALLOWLIST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Without this feature flag enabled, delegates with an immutable image type can register without allowlist verification.
+
+With this feature flag enabled, delegates with an immutable image type can register if their IP/CIDR address is included in the allowed list received by Harness Manager.
+
+The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
+
+Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](/docs/platform/security/add-manage-ip-allowlist/).
