@@ -581,9 +581,9 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 <details>
 <summary>2023 releases</summary>
 
-## November 30, 2023, version 81308
+#### November 30, 2023, version 81308
 
-### New features and enhancements
+##### New features and enhancements
 
 This release includes the following Harness module and component versions.
 
@@ -619,7 +619,7 @@ gsutil -m cp \
   .
 ```
 
-#### Self-Managed Enterprise Edition
+##### Self-Managed Enterprise Edition
 
 :::info Caution
 Harness updated the Nginx ingress controller to version 1.3.0. With this upgrade, the watch ingress is now scoped to the Kubernetes namespace. The upgrade version 1.3.0 uses `--watch-ingress-without-class=true`, which is incompatible with version 1.0.0-alpha. You must remove any image override fields in your `values.yaml` and `override.yaml` files if you reuse existing files. (SMP-1811, SMP-2326)
@@ -628,7 +628,7 @@ Harness updated the Nginx ingress controller to version 1.3.0. With this upgrade
 
 - The project and account Overview pages are now available. (SMP-2191)
 
-#### Continuous Delivery & GitOps
+##### Continuous Delivery & GitOps
 
 - Improvements to the user experience with forms (CDS-74220, ZD-47456, ZD-50077)
 
@@ -700,7 +700,7 @@ Harness updated the Nginx ingress controller to version 1.3.0. With this upgrade
 
   When opened in the context of a custom stage, the **Templates** side panel in Pipeline Studio lists step group templates created from deployment stages. The **Type** dropdown field in the panel also includes entries for filtering step groups created from custom and deployment stages.
 
-#### Continuous Integration
+##### Continuous Integration
 
 - You can now [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting) in the Visual editor as well as the YAML editor. (CI-9618)
 
@@ -710,7 +710,7 @@ Harness updated the Nginx ingress controller to version 1.3.0. With this upgrade
   - You can use either method (`DESTINATION_CA_PATH` or both `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`). If you specify both, `DESTINATION_CA_PATH` takes precedence. If Harness can't resolve `DESTINATION_CA_PATH`, it falls back to `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH`.
   - This item requires Harness Delegate version 23.10.81202. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-##### Harness Cloud Windows image update (CI-9750)
+###### Harness Cloud Windows image update (CI-9750)
 
 The Harness Cloud Windows image has been upgraded to Windows Server 2022. This includes major and minor version upgrades for many components. For a complete list of component versions, go to the [Harness Cloud image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#platforms-and-image-specifications).
 
@@ -722,7 +722,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 - Upgraded built-in steps to support Windows 2022. (CI-9755)
 
-##### Build and Push to GAR (CI-9926)
+###### Build and Push to GAR (CI-9926)
 
 This release includes a new [Build and Push to GAR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar) offering first-class support for build and pushing artifacts to Google Artifact Registry (GAR). Previously, you could use Run steps to build and push to GAR. This new step combines the build and push steps into one streamlined step.
 
@@ -732,7 +732,7 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
 - The individual log line limit is now 25KB. Log lines longer than 25BK are truncated. (CI-9927, ZD-52005, ZD-52079, ZD-52134, ZD-52356)
 
-#### Harness Platform
+##### Harness Platform
 
 - The HPA configuration setting is now included in the default Kubernetes delegate YAML file. (PL-36021)
 
@@ -795,13 +795,13 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
 - Upgraded Redis to 6.2.14-alpine to address potential vulnerabilities. (PL-42228, ZD-53919)
 
-#### Security Testing Orchestration
+##### Security Testing Orchestration
 
 - You can now scan your repositories and other components used in your code with [Anchore Enterprise](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. (STO-6382)
 
-### Fixed issues
+##### Fixed issues
 
-#### Self-Managed Enterprise Edition
+##### Self-Managed Enterprise Edition
 
 - Self-Managed Enterprise Edition CDNs were missing required binaries. Added 0.4.4 to Go template and libraries for delegates with the legacy image type. (SMP-2010)
 
@@ -809,13 +809,13 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
 - Added dashboard aggregator support with Istio and fixed virtual service route rules. (SMP-2192)
 
-#### Cloud Cost Management
+##### Cloud Cost Management
 
 - When attempting to create a new CCM connector, such as Azure, GCP, and so on, the test connection would sometimes fail. This required you to go back to previous steps, make adjustments, and attempt the connection again. However, on trying again, the connection step would fail with an error message indicating that a connector with the same ID already existed. (CCM-12558)
 
   To address this issue, the system was updated to track connector creation and error scenarios. The connector creation API call was replaced with an update connector API call when the connector ID already exists to resolve the issue.
 
-#### Continuous Delivery & GitOps
+###### Continuous Delivery & GitOps
 
 - When a step fails, you expect pipeline execution to stall. However, failed steps are sometimes marked as being successful, and pipeline execution continues. This behavior is observed when the step's failure strategy is set to wait for manual intervention, and a user selects **Mark as Success** in response to the step's failure. This behavior is by design. For more information, go to [Failure strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/#failure-strategy-settings). (CDS-72904, ZD-46414, ZD-47050, ZD-47743)
 
@@ -1057,7 +1057,7 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
 - Added a validation to check that codebase configuration details (connector, repo, and so on) are provided if at least one stage in pipeline has [**Clone Codebase** enabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase). (CI-10055)
 
-#### Feature Flags
+###### Feature Flags
 
 - The feature flag module did not ship with an OOTB role that could toggle flags. (FFM-9542)
 
@@ -1069,7 +1069,7 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
 - Fixed an issue where on feature flag Pipeline steps, RBAC permissions for specific environments (or environment types) returned a no permissions error when the user had the required permission. (FFM-9672)
 
-#### Harness Platform
+###### Harness Platform
 
 - Previously, there was an issue where users who were initially invited through email and later through SCIM were not being added. This issue has now been resolved. Harness has implemented a fix to automatically delete the initial email invite and ensure that SCIM invites are valid even if an email invite was already sent. (PL-41114)
 
