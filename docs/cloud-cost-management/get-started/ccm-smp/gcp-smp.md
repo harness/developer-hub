@@ -2,8 +2,8 @@
 title: GCP 
 description: The procedure to set up CCM for GCP by using Harness Self-Managed Enterprise Edition.
 # sidebar_position: 2
-redirect_from:
-  - /docs/cloud-cost-management/getting-started-ccm/ccm-smp/aws-smp
+redirect_from: 
+- /docs/cloud-cost-management/getting-started-ccm/ccm-smp/gcp-smp
 ---
 
 # Manage GCP costs by using CCM on Harness Self-Managed Enterprise Edition
@@ -18,23 +18,22 @@ This topic walks you through the steps required to set up CCM for GCP in a self-
 - **BigQuery:** The GCP project's billing data resides in a BigQuery table.
 - **Google Cloud Storage (GCS):** Billing data is stored in the parquet format in GCS bucket. Parquet, as a column-oriented format, represents a better interchange format since it is inherently compressed and faster for BigQuery to export and ClickHouse to query.
 - **ClickHouse:** Serves as the datastore where GCP billing data is finally ingested.
-Service Account Key: It is a JSON file that contains the information needed to authenticate and authorize requests made by an application or a service.
-- **HMAC Key** HMAC (Hash-based Message Authentication Code) keys are used for authentication and ensuring the integrity of requests made to GCS.
+- **Service Account Key:** It is a JSON file that contains the information needed to authenticate and authorize requests made by an application or a service.
+- **HMAC Key:** HMAC (Hash-based Message Authentication Code) keys are used for authentication and ensuring the integrity of requests made to GCS.
 
 ## Data Flow
 
 **Steps**
-1. Authenticate and initialize clients for BigQuery, GCS and ClickHouse using SA and HMAC keys.
-2. Create a dedicated GCS bucket to store billing data in Parquet format. The sub-folders will be organized based on timestamps or dates to precisely track when each bucket was created.
-3. Initiate an export query to transfer data from BigQuery to the GCS bucket in Parquet format with GZIP compression. The export query employs a **SELECT** statement, resulting in charges based solely on the data scan.
+1. Authenticate and initialize clients for BigQuery, GCS and ClickHouse using **SA and HMAC** keys.
+2. Create a dedicated **GCS** bucket to store billing data in **Parquet** format. The sub-folders will be organized based on timestamps or dates to precisely track when each bucket was created.
+3. Initiate an export query to transfer data from **BigQuery** to the **GCS** bucket in **Parquet** format with GZIP compression. The export query employs a **SELECT** statement, resulting in charges based solely on the data scan.
 4. Check if the billing table exists in **ClickHouse**; create it if not.
-5. Initiate an insert query to efficiently move data from the GCS bucket to the **ClickHouse table** in batch.
-
+5. Initiate an insert query to efficiently move data from the **GCS** bucket to the **ClickHouse table** in batch.
 
 You need to perform the following tasks to set up CCM for GCP: 
 
-1. [Create Service Account](#create-service-account).
-2. [Create HMAC Key](#Create-HMAC-Key).
+1. [Create Service Account](#step-1-create-service-account)
+2. [Create HMAC Key](#step-2-create-hmac-key)
 3. [Deploying workloads via Helm Charts](#deploying-workloads-via-helm-charts)
 4. [Handling Kubernetes Secrets](#step-3-handling-kubernetes-secrets)
 
@@ -42,7 +41,7 @@ You need to perform the following tasks to set up CCM for GCP:
    
 ### Step 1: Create Service Account
 
-A GCP service account is needed to be able to authenticate and perform operations on the customer’s BQ and GCS buckets.You will need one SA and its json key during onboarding.
+A GCP service account is needed to be able to authenticate and perform operations on the customer’s BQ and GCS buckets.You will need one SA and its JSON key during onboarding.
 1. Before creating a Service Account, you have to create Custom Role and provide necessary permissions to it. Follow [these](https://cloud.google.com/iam/docs/creating-custom-roles#creating) steps to create Custom Role and add below permissions:
 
 ```
@@ -86,11 +85,12 @@ cd main/src/harness
 
 ```
 helm get values <chart-name> -n <namespace> > override.yaml
+
 # update override.yaml with ccm specific configuration provided below
 helm upgrade <chart-name> <chart-directory> -n <namespace> -f override.yaml
 
 ```
-ex: ```helm upgrade ccm . -n harness -f old_values.yaml```
+Example: ```helm upgrade ccm . -n harness -f old_values.yaml```
 
 ```
 global:
@@ -121,11 +121,15 @@ ccm:
 
 ### Step 3: Handling Kubernetes Secrets
 
-On installing/upgrading charts you will see K8s secrets created with default value in the cluster. You need to update these secrets with the above noted values. Before updating the secrets you need to convert the secret into base64 encoded, let say the `HMAC_ACCESS_KEY` value is: `accessKey`, then it would it be stored as `YWNjZXNzS2V5``
+On installing/upgrading charts you will see K8s secrets created with default value in the cluster. You need to update these secrets with the above noted values. Before updating the secrets you need to convert the secret into base64 encoded, let say the `HMAC_ACCESS_KEY` value is: `accessKey`, then it would it be stored as ``YWNjZXNzS2V5``
+
+Command: ```echo -n "accessKey" | base64```
+
+The -n option with echo prevents the trailing newline character from being included in the output
 
 Following are the secrets specific to CCM services:
 
-1. batch-processing
+**1. batch-processing**
     ```kubectl edit secret batch-processing -n <namespace>```
 
     ```
@@ -133,7 +137,7 @@ Following are the secrets specific to CCM services:
     HMAC_SECRET_KEY: <hmacSecretKey>
     ```
 
-2. batch-processing-secret-mount
+**2. batch-processing-secret-mount**
     ```kubectl edit secret batch-processing-secret-mount -n <namespace>```
 
     ```
@@ -141,42 +145,55 @@ Following are the secrets specific to CCM services:
     ce-batch-gcp-credentials: <gcpServiceAccountCredentials>
     ```
     
-3. cloud-info-secret-mount [config-file]
-    ```kubectl edit secret cloud-info-secret-mount -n <namespace>```
-    <details>
-    <summary>config.toml.dist</summary>
+**3. cloud-info-secret-mount [config-file]**
+    ```
+    kubectl edit secret cloud-info-secret-mount -n <namespace>
+    ```
 
-    environment = "production"
+<details>
+<summary>config.toml.dist</summary>
+
+```
+environment = "production"
 debug = false
 shutdownTimeout = "5s"
+
 [config.vault]
 enabled = false
 address = ""
 token = ""
 secretPath = ""
+
 [log]
 format = "json"
 level = "info"
+
 [metrics]
 enabled = false
 address = ":9090"
+
 [jaeger]
 enabled = false
+
 # Configure either collectorEndpoint or agentEndpoint.
-# When both are configured collectorEndpoint will take precedence and the exporter
-will report directly to the collector.
+# When both are configured collectorEndpoint will take precedence and the exporter will report directly to the collector.
+
 collectorEndpoint = "http://localhost:14268/api/traces?format=jaeger.thrift"
 agentEndpoint = "localhost:6831"
 # username = ""
 # password = ""
+
 [app]
 address = ":8000"
 basePath = "/"
+
 [scrape]
 enabled = true
 interval = "24h"
+
 [provider.amazon]
 enabled = false
+
 # See available regions in the documentation:
 # https://aws.amazon.com/about-aws/global-infrastructure/regions_az
 # region = "us-east-1"
@@ -196,10 +213,13 @@ the AWS API.
 prometheusAddress = ""
 # advanced configuration: change the query used to query spot price info from
 Prometheus.
+
 prometheusQuery = "avg_over_time(aws_spot_current_price{region=\"%s\",
 product_description=\"Linux/UNIX\"}[1w])"
+
 # Amazon pricing API credentials (optional)
 # Falls back to the primary credentials.
+
 [provider.amazon.pricing]
 # See available regions in the documentation:
 # https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/using-pelong.html
@@ -212,6 +232,7 @@ product_description=\"Linux/UNIX\"}[1w])"
 # profile = ""
 # IAM Role ARN to assume
 # assumeRoleARN = ""
+
 [provider.google]
 enabled = false
 # base64 encoded credentials in json format (base64 encoded content of the
@@ -219,11 +240,13 @@ credential file)
 # credentials = ""
 # credentialsFile = ""
 # project = ""
+
 [provider.alibaba]
 enabled = false
 # region = ""
 # accessKey = ""
 # secretKey = ""
+
 [provider.oracle]
 enabled = false
 # tenancy = ""
@@ -234,6 +257,7 @@ enabled = false
 # privateKeyPassphrase = ""
 # configFilePath = ""
 # profile = ""
+
 [provider.azure]
 enabled = true
 
@@ -244,31 +268,39 @@ clientSecret = "<clientSecret>"
 tenantId = "<tenantId>"
 [provider.digitalocean]
 enabled = false
+
 [provider.vsphere]
 enabled = false
 # accessToken = ""
+
 [management]
 enabled = true
 address = ":8001"
+
 [serviceloader]
 serviceConfigLocation = "./configs"
 serviceConfigName = "services"
 format = "yaml"
+
 [store.redis]
 enabled = false
 host = "localhost"
 port = 6379
+
 [store.cassandra]
 enabled = false
 hosts = "localhost"
 port = 9042
 keyspace = "cloudinfo"
 table = "products"
+
 [store.gocache]
 expiration = 0
 cleanupInterval = 0
+```
 
 </details>
+
 ```
 config-file: <config-file>
 gcp-creds: <gcpServiceAccountCredentials>
@@ -287,13 +319,14 @@ project = "<gcpServiceAccountProjectId>"
 ```
 
 
-4. ceng-secret-mount
+**4. ceng-secret-mount**
+
     ```kubectl edit secret ceng-secret-mount -n <namespace>```
 
     ```ceng-gcp-credentials: <gcpServiceAccountCredentials>```
 
 Following are some secrets from platform-service that you will need to update:
-1. smtp-secret [Required to support budget alerts E-mail]
+1. **smtp-secret** [Required to support budget alerts E-mail]
     
     ```kubectl edit secret smtp-secret -n <namespace>```
 
@@ -306,7 +339,7 @@ Following are some secrets from platform-service that you will need to update:
     ```
 
 :::important note
-Note: kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace> and increase to 100Gi. It is used by recommendations and anomalies features within CCM services.
+Note: ```kubectl edit pvc wal-volume-harness-timescaledb-0 -n \<namespace\>``` and increase to 100Gi. It is used by recommendations and anomalies features within CCM services.
 :::
 
 ## GCP Connector Setup
@@ -321,8 +354,7 @@ In the **Grant Permissions** step of GCP Connector flow, follow below steps:
 Please refer [this](https://www.cloudquery.io/blog/creating-cross-project-service-accounts-in-gcp#how-do-we-grant-it-access-to-other-projects?) doc if you encounter any difficulties understanding the process. It provides a comprehensive explanation of all steps accompanied by screenshots.
 
 :::important note
-Note: Not supporting GCP Inventory management in the Choose Requirements step of GCP Connector flow.
+Note: Not supporting **GCP Inventory management** in the **Choose Requirements** step of GCP Connector flow.
 :::
-
 
 
