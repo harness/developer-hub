@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-01-02:T10:00:30
+date: 2024-01-08:T10:00:30
 sidebar_position: 3
 ---
 
@@ -82,9 +82,17 @@ The following deprecated API endpoints will no longer be supported:
 
 ## January 2024
 
-### Version 1.19.x <!--  January x, 2024 -->
+### Version 1.19.6 <!--  January 8, 2024 -->
 
 #### New features and enhancements
+
+- The allowlist feature is now available for delegates with immutable image types. (PL-42471)
+
+   Delegates with an immutable image type can register if their IP/CIDR address is included in the allowed list received by Harness Manager.
+
+   The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
+
+   Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](/docs/platform/security/add-manage-ip-allowlist/).
 
 - Upgraded MinIO to `bitnami/minio:2023.10.7-debian-11-r2`. (PL-42019)
 
