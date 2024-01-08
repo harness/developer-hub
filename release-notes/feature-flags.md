@@ -19,6 +19,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## January 2024
 
+### Apex SDK
+
+#### Version 0.1.3 Beta
+
+ - It now re-authenticates using the `FFPoller`, to ensure that scheduled jobs continue to run after the auth token has expired.
+ - It now includes a synchronous initialization option.
+
 ### Flutter SDK
 
 #### Version 2.1.1
