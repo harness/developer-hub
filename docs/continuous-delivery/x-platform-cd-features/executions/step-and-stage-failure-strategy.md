@@ -30,8 +30,7 @@ A failure strategy is always required in a CD stage. Currently, all CD stage typ
 2. In the stage, select **Advanced** in the stage settings. 
 3. In **Failure Strategy**, review the default **All Errors** failure type and **Rollback Stage** as action.
 ![](./static/failure_strategy_all_errors_1.png)
-
-5. Select a new failure type by selecting **Select Failure Type**.
+4. Select a new failure type by selecting **Select Failure Type**.
 
 To learn more about failure types, go to [Step and stage failure strategy references](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings).
 ## Visual Summary
