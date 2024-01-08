@@ -22,6 +22,13 @@ The topic explains how to use the Remote option to store a Harness environment o
 
 * Make sure you have a Git repo with at least one branch.​
 * Make sure you have a [Harness Git connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) with a Personal Access Token (PAT) for your Git account.​
+## Visual Summary
+
+Here's a quick video of how you can manage services, environment and infrastructue definition through Git Experience.
+
+<!-- Video:
+https://www.youtube.com/watch?v=ZvtyLxmtHTo-->
+<DocVideo src="https://www.youtube.com/watch?v=ZvtyLxmtHTo" />
 
 ## Create a remote environment
 
@@ -40,6 +47,7 @@ In **Project Settings**, select **Environments**. To learn more about creating e
 10. In the new environment, click on the YAML path provided to view your new environment in your Git repo.
 
     ![](./static/yaml-path.png)
+
 
 ##  Create a remote infrastructure definition
 
