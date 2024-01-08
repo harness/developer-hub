@@ -19,6 +19,7 @@ The following table lists Harness support for CI platforms, repos, registries, a
           <li>GitHub</li>
           <li>GitLab</li>
           <li>AWS CodeCommit</li>
+          <li>Harness Code Repository</li>
           <li>Other (platform-agnostic Git connector)</li>
         </ul>
       </td>
@@ -47,6 +48,7 @@ The following table lists Harness support for CI platforms, repos, registries, a
           <li>Google Kubernetes Engine (GKE)</li>
           <li>AWS Linux and Windows VMs</li>
           <li>Red Hat OpenShift 4</li>
+          <li>Other</li>
         </ul>
       </td>
       <td>
