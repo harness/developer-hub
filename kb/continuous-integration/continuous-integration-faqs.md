@@ -2,6 +2,8 @@
 title: Continuous Integration (CI) FAQs
 description: This article addresses some frequently asked questions about Harness Continuous Integration (CI).
 sidebar_position: 2
+redirect_from:
+  - /docs/faqs/continuous-integration-ci-faqs
 ---
 
 ## Can I use Harness CI for mobile app development?
@@ -115,6 +117,14 @@ If you want to run Docker commands when using a Kubernetes cluster build infrast
 
 If your cluster doesn't support privileged mode, you must use a different build infrastructure option, such as Harness Cloud, where you can run Docker commands directly on the host without the need for Privileged mode. For more information, go to [Set up a Kubernetes cluster build infrastructure - Privileged mode is required for Docker-in-Docker](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#privileged-mode-is-required-for-docker-in-docker).
 
+### How can you execute Docker commands in a CI pipeline that runs on a Kubernetes cluster that lacks a Docker runtime?
+
+You can run Docker-in-Docker (DinD) as a service with the `sharedPaths` set to `/var/run`. Following that, the steps can be executed as Docker commands. This works regardless of the Kubernetes container runtime.
+
+The DinD service does not connect to the Kubernetes node daemon. It launches a new Docker daemon on the pod, and then other containers use that Docker daemon to run their commands.
+
+For details, go to [Run Docker-in-Docker in a Build stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md).
+
 ### Resource allocation for Kubernetes cluster build infrastructure
 
 You can adjust CPU and memory allocation for individual steps running on a Kubernetes cluster build infrastructure or container. For information about how resource allocation is calculated, go to [Resource allocation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits).
@@ -176,6 +186,14 @@ Step containers are named sequentially starting with `step-1`.
 ### When I run a build, Harness creates a new pod and doesn't run the build on the delegate.
 
 This is the expected behavior. When you run a Build (CI) stage, each step runs on a new build farm pod that isn't connected to the delegate.
+
+### What permissions are required to run CI builds in an OpenShift cluster?
+
+For information about building on OpenShift clusters, go to **Permissions Required** and **OpenShift Support** in the [Kubernetes Cluster Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference).
+
+### What are the minimum permissions required for the service account role for a Kubernetes Cluster connector?
+
+For information about permissions required to build on Kubernetes clusters, go to **Permissions Required** in the [Kubernetes Cluster Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference).
 
 ### Delegates
 
@@ -300,6 +318,10 @@ The codebase is the Git repository where your code is stored. Pipelines usually 
 
 For instructions on configuring your pipeline's codebase, go to [Configure codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase).
 
+### What permissions are required for GitHub Personal Access Tokens in Harness GitHub connectors?
+
+For information about configuring GitHub connectors, including required permissions for personal access tokens, go to the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
+
 ### Can I skip the built-in clone codebase step in my CI pipeline?
 
 Yes, you can disable the built-in clone codebase step for any Build stage. For instructions, go to [Disable Clone Codebase for specific stages](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages).
@@ -372,6 +394,12 @@ If you want both the repo and project name, and your Git provider's webhook payl
 ### The expression `<+eventPayload.repository.name>` causes the clone step to fail when used with a Bitbucket account connector.
 
 Try using the expression `<+trigger.payload.repository.name>` instead.
+
+### How can I share the codebase configuration between stages in a CI pipeline?
+
+The pipeline's [default codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) is automatically available to each subsequent Build stage in the pipeline. When you add additional Build stages to a pipeline, **Clone Codebase** is enabled by default, which means the stage clones the default codebase declared in the first Build stage.
+
+If you don't want a stage to clone the default codebase, you can [disable Clone Codebase for specific stages](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages).
 
 ## SCM status updates and PR checks
 
@@ -703,6 +731,10 @@ The commands specified in the Run step's commands override the default entry poi
 
 ## Docker in Docker
 
+### Does CI support running Docker-in-Docker images?
+
+Yes. For details, go to [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md).
+
 ### Can I run docker-compose from Docker-in-Docker in a Background step?
 
 Yes.
@@ -765,6 +797,10 @@ If you need to share `settings.xml` with multiple steps in the same stage, decla
 ### Which Drone plugins are supported in Harness CI?
 
 You can build your own plugins or use one of the many preexisting plugins from the Drone Plugins Marketplace. For more information, go to [Explore plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins).
+
+### How do I convert Drone plugin settings to Harness CI?
+
+For information about using Drone plugins in Harness CI, including converting Drone YAML to Harness YAML, go to [Use Drone plugins](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md).
 
 ### How do I add a custom plugin to my Harness CI pipeline?
 
@@ -1072,3 +1108,11 @@ For stability, Harness applies limits to prevent excessive API usage. Harness re
 Queued license limit reached means that your account has reached the maximum build concurrency limit. The concurrency limit is the number of builds that can run at the same time. Any builds triggered after hitting the concurrency limit either fail or are queued.
 
 If you frequently run many concurrent builds, consider enabling [Queue Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/queue-intelligence) for Harness CI, which queues additional builds rather than failing them.
+
+### What is the timeout limit for a CI pipeline?
+
+By default, a stage can run for a maximum of 24 hours on a Kubernetes cluster build infrastructure and a maximum of 30 minutes on Harness Cloud build infrastructure.
+
+For pipelines, the default timeout limit is, generally, the product of the stage limit multiplied by the number of stages. For example, a pipeline with three stages that use a Kubernetes cluster build infrastructure could run for a maximum of 72 hours. However, you can also set an overall pipeline timeout limit in each pipeline's **Advanced Options**.
+
+For steps, you can set a custom timeout limit in each step's **Optional Configuration** settings. In stages that use a Kubernetes cluster build infrastructure, the default timeout for steps is 10 hours. However, this is constrained by the stage timeout limit of 24 hours. For example, if a stage has three steps, the total run time for the three steps can't exceed 24 hours or the stage fails due to the stage timeout limit.

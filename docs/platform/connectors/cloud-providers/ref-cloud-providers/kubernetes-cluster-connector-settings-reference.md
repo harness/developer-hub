@@ -49,17 +49,45 @@ The IAM roles and policies needed by the account used in the connector depend on
 
 You can use different methods for authenticating with the Kubernetes cluster, but all of them use a Kubernetes role.
 
-The Role used must have either the `cluster-admin` permission in the target cluster or admin permissions in the target namespace.
+The Role used must have either the `cluster-admin` permission in the target cluster or admin permissions in the target namespace. For more information, go to the Kubernetes documentation on [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles).
 
-For a detailed list of roles and policies, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
+### Deployments (CD)
 
-### Harness CI Permission Requirements
+A Kubernetes service account with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, `watch` (to fetch the pod events), and `delete` permissions for each of the entity types Harness uses. In general, cluster admin permission or namespace admin permission is sufficient.
 
-If you are only using the Kubernetes Cluster Connector for Harness Continuous Integration (CI), you can use a reduced set of permissions.
+If you don't want to use `resources: ["*"]` for the Role, you can list out the resources you want to grant. Harness needs `configMap`, `secret`, `event`, `deployment`, and `pod` at a minimum for deployments, as stated above. Beyond that, it depends on the resources you are deploying via Harness.
+
+If you don't want to use `verbs: ["*"]` for the Role, you can list out all of the verbs (`create`, `delete`, `get`, `list`, `patch`, `update`, `watch`).
+
+The YAML provided for the Harness Delegate defaults to `cluster-admin` because that ensures anything could be applied. Any restriction must take into account the actual manifests to be deployed.
+
+### Builds (CI)
+
+Clusters used for Harness CI builds require a Kubernetes service account with CRUD permissions on Secret, Service, Pod, and PersistentVolumeClaim (PVC). You need the following permissions for a service account role for a Kubernetes Cluster connector.
+
+* Pods and secrets:
+  * `create`
+  * `get`
+  * `list`
+  * `watch`
+  * `update`
+  * `delete`
+* Events:
+  * `list`
+  * `watch`
 
 For Harness CI, the delegate requires CRUD permissions on Secret and Pod.
 
-Here is a same Service Account and RoleBinding that lists the minimum permissions:
+For more information, go to [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) in the Kubernetes documentation.
+
+If you are using the Kubernetes Cluster Connector with Harness CD, make sure the cluster also meets the [Deployments (CD) permissions requirements](#deployments-cd).
+
+For information about building on OpenShift clusters, go to [OpenShift Support](#openshift-support)
+
+<details>
+<summary>Example Service Account and RoleBinding for CI</summary>
+
+Here is a Service Account and RoleBinding that lists the minimum permissions:
 
 ```yaml
 apiVersion: v1
@@ -101,21 +129,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-### Builds (CI)
-
-A Kubernetes service account with CRUD permissions on Secret, Service, Pod, and PersistentVolumeClaim (PVC).
-
-For more information, go to [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) in the Kubernetes documentation.
-
-### Deployments (CD)
-
-A Kubernetes service account with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, `watch` (to fetch the pod events), and `delete` permissions for each of the entity types Harness uses. In general, cluster admin permission or namespace admin permission is sufficient.
-
-If you don't want to use `resources: ["*"]` for the Role, you can list out the resources you want to grant. Harness needs `configMap`, `secret`, `event`, `deployment`, and `pod` at a minimum for deployments, as stated above. Beyond that, it depends on the resources you are deploying via Harness.
-
-If you don't want to use `verbs: ["*"]` for the Role, you can list out all of the verbs (`create`, `delete`, `get`, `list`, `patch`, `update`, `watch`).
-
-The YAML provided for the Harness Delegate defaults to `cluster-admin` because that ensures anything could be applied. Any restriction must take into account the actual manifests to be deployed.
+</details>
 
 ## Harness CI Cluster Requirements
 
@@ -338,6 +352,7 @@ Once configured, OpenShift is used by Harness as a typical Kubernetes cluster.
 - The token does not need to have global read permissions. The token can be scoped to the namespace.
 - The Kubernetes containers must be OpenShift-compatible containers. If you are already using OpenShift, then this is already configured. But be aware that OpenShift cannot simply deploy any Kubernetes container. You can get OpenShift images from the following public repos: [https://hub.docker.com/u/openshift](https://hub.docker.com/u/openshift) and [https://access.redhat.com/containers](https://access.redhat.com/containers).
 - Useful articles for setting up a local OpenShift cluster for testing: [How To Setup Local OpenShift Origin (OKD) Cluster on CentOS 7](https://computingforgeeks.com/setup-openshift-origin-local-cluster-on-centos/), [OpenShift Console redirects to 127.0.0.1](https://chrisphillips-cminion.github.io/kubernetes/2019/07/08/OpenShift-Redirect.html).
+- You need the following permissions on Secret, Pod, and Event to run Harness CI builds in an OpenShift cluster: `create`, `get`, `list`, `watch`, `update`, `delete`
 
 ## YAML Example
 
