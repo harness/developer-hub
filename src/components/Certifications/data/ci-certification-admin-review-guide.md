@@ -21,7 +21,7 @@
 | **5. Pipeline Execution Strategies** ||
 | Get to grips with execution environments: running steps on host vs. containers | [Stage and step conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings/) |
 | Manage outputs, PR status updates, and understand chained pipelines | [Output variables with chained pipeline](https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables/) |
-| Delve into advanced options like timeouts, selective stage executions, and stage context sharing | [Continuous Integration (CI) FAQs](/docs/faqs/continuous-integration-ci-faqs/#what-is-the-timeout-limit-for-a-ci-pipeline) |
+| Delve into advanced options like timeouts, selective stage executions, and stage context sharing | [Pipeline and steps reference](/docs/category/pipeline-and-steps-reference) |
 | **6. Security and Access Control** ||
 | Understand RBAC with user groups, roles, role bindings, and service account considerations | [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) |
 | Configure access and permissions, including tags and resource groups | [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference) |
