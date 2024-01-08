@@ -66,9 +66,10 @@ When adding a remote environment to the stage, you have the ability to choose a 
 ![](./static/env-branch-switching-remote.png)
 
 :::note
-
-If you are adding a remote service, environment, or infrastructure definition to a remote pipeline, by default the remote service, environment, or infrastructure definition will pick up the same branch as the remote pipeline.
-
+1. When the remote environment is linked to the pipeline , branch of the environment gets displayed as ``__DEFAULT__``.
+`__DEFAULT__` resolves to same branch as pipeline ,when both the environment and pipeline where it is linked are in the same repository or the main branch of the repository where the environment resides when it is different.
+2. Infrastructure definition takes the branch of the environment when both reside in the same repository.
+3. When a remote stage template containing Remote environment is linked in a Remote Pipeline, the Stage template branch is defaulted when both the entities are in the same repository. If the environment is in a different repository , that repository is taken. Read more about creating [remote stage template](/docs/platform/templates/create-a-remote-stage-template.md).
 :::
 
 ## Change an inline environment to a remote environment
@@ -89,3 +90,4 @@ The same settings used when creating a remote environment appear. Configure the 
 3. Select **Move to Git**.
 
 The same settings used when creating a remote infrastructure definition appear. Configure the settings just as you would for a new remote infrastructure definition.
+
