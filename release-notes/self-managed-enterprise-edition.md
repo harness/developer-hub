@@ -1113,7 +1113,7 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
 - An alignment issue with the **Change Event** card has been fixed to ensure consistent information display. (SRM-15793)
 
-### Patches
+#### Patches
 
 #### December 7, 2023, 0.11.2
 
