@@ -54,7 +54,7 @@ If the delegate didn’t reach a healthy state, try this:
 kubectl describe pod <your-delegate-pod> -n harness-delegate-ng
 ```
 
-### Allowlist verification for delegate registration
+### Allowlist verification
 
 :::info note
 
