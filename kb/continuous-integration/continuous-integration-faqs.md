@@ -1019,6 +1019,13 @@ While notifications are a pipeline-level setting that is not explicitly availabl
 
 ## Logs and execution history
 
+### How do I access build logs?
+
+For information about viewing build and build logs, go to:
+
+* [View builds](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds)
+* [Troubleshooting - Pipeline execution failures](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen#pipeline-execution-failures)
+
 ### Does Harness limit log line length?
 
 Yes, there is a single-line limit of 25KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`. Furthermore, there is an overall log limit of 5MB per step. Harness truncates logs larger than 5MB.
@@ -1120,3 +1127,7 @@ By default, a stage can run for a maximum of 24 hours on a Kubernetes cluster bu
 For pipelines, the default timeout limit is, generally, the product of the stage limit multiplied by the number of stages. For example, a pipeline with three stages that use a Kubernetes cluster build infrastructure could run for a maximum of 72 hours. However, you can also set an overall pipeline timeout limit in each pipeline's **Advanced Options**.
 
 For steps, you can set a custom timeout limit in each step's **Optional Configuration** settings. In stages that use a Kubernetes cluster build infrastructure, the default timeout for steps is 10 hours. However, this is constrained by the stage timeout limit of 24 hours. For example, if a stage has three steps, the total run time for the three steps can't exceed 24 hours or the stage fails due to the stage timeout limit.
+
+## General issues with connectors, secrets, delegates, and other Platform components
+
+For troubleshooting and FAQs for Platform components that aren't specific to CI, such as RBAC, secrets, secrets managers, connectors, delegates, and otherwise, go to the [Harness Platform Knowledge Base](https://developer.harness.io/kb/platform) or [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
