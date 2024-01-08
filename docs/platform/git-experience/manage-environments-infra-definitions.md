@@ -3,6 +3,7 @@ title: Manage Harness environments and infrastructures from Git
 description: Store and share environments and infrastructures in your Git repos.
 sidebar_position: 11
 ---
+
 :::info note
 Currently, Git Experience support for environments and infrastructure definition is behind the feature flags `CDS_ENV_GITX` and 
 `CDS_INFRA_GITX`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -22,9 +23,10 @@ The topic explains how to use the Remote option to store a Harness environment o
 
 * Make sure you have a Git repo with at least one branch.​
 * Make sure you have a [Harness Git connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) with a Personal Access Token (PAT) for your Git account.​
-## Visual Summary
 
-Here's a quick video of how you can manage services, environment and infrastructue definition through Git Experience.
+## Visual summary
+
+Here's a quick video of how you can manage services, environments, and infrastructue definitions through Git Experience.
 
 <!-- Video:
 https://www.youtube.com/watch?v=ZvtyLxmtHTo-->
@@ -61,7 +63,8 @@ In **Project Settings**, select **Environments**. To learn more about creating e
 8. For the new infrastructure definition, select **More Options** (&vellip;) and then select **Edit**.
 
     ![](./static/infra-def-edit.png)
-9. Click the YAML path to view your Infrastructure Definition YAML file in your Git repo.
+   
+10. Click the YAML path to view your Infrastructure Definition YAML file in your Git repo.
 
     ![](./static/infra-def-2.png)
 
@@ -73,11 +76,11 @@ When adding a remote environment to the stage, you have the ability to choose a 
 
 ![](./static/env-branch-switching-remote.png)
 
-:::note
-1. When the remote environment is linked to the pipeline , branch of the environment gets displayed as ``__DEFAULT__``.
-`__DEFAULT__` resolves to same branch as pipeline ,when both the environment and pipeline where it is linked are in the same repository or the main branch of the repository where the environment resides when it is different.
+:::info note
+1. When the remote environment is linked to the pipeline, the environment branch is displayed as `__DEFAULT__`.
+`__DEFAULT__` resolves to the same branch as the pipeline, when both the environment and pipeline where it is linked are in the same repository or the main branch of the repository where the environment resides when it is different.
 2. Infrastructure definition takes the branch of the environment when both reside in the same repository.
-3. When a remote stage template containing Remote environment is linked in a Remote Pipeline, the Stage template branch is defaulted when both the entities are in the same repository. If the environment is in a different repository , that repository is taken. Read more about creating [remote stage template](/docs/platform/templates/create-a-remote-stage-template.md).
+3. When a remote stage template containing a remote environment is linked in a Remote Pipeline, the Stage template branch is defaulted when both entities are in the same repository. If the environment is in a different repository, that repository is taken. Read more about creating [remote stage template](/docs/platform/templates/create-a-remote-stage-template.md).
 :::
 
 ## Change an inline environment to a remote environment
