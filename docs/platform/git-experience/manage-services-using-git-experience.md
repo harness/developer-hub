@@ -24,7 +24,7 @@ The topic explains how to use the Remote option to store your services in your G
 
 ## Visual summary
 
-Here's a quick video of how you can manage services, environments, and infrastructue definition through Git Experience.
+Here's a quick video of how you can manage services, environments, and infrastructure definitions through Git Experience.
 
 <!-- Video:
 https://www.youtube.com/watch?v=ZvtyLxmtHTo-->
