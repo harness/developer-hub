@@ -35,11 +35,12 @@ You need to perform the following tasks to set up CCM for GCP:
 
 1. [Create Service Account](#create-service-account).
 2. [Create HMAC Key](#Create-HMAC-Key).
-3. [Handling Kubernetes Secrets](#handling-kubernetes-secrets).
-4. [Upload the CF template to S3 bucket](#upload-cf-template-to-s3-bucket).
-5. [Deploy workloads via Helm charts](#deploy-workloads-via-helm-charts).
+3. [Deploying workloads via Helm Charts](#deploying-workloads-via-helm-charts)
+4. [Handling Kubernetes Secrets](#step-3-handling-kubernetes-secrets)
+
+## GCP Setup
    
-## Create Service Account
+### Step 1: Create Service Account
 
 A GCP service account is needed to be able to authenticate and perform operations on the customer’s BQ and GCS buckets.You will need one SA and its json key during onboarding.
 1. Before creating a Service Account, you have to create Custom Role and provide necessary permissions to it. Follow [these](https://cloud.google.com/iam/docs/creating-custom-roles#creating) steps to create Custom Role and add below permissions:
@@ -67,25 +68,27 @@ storage.objects.get
 
 Please refer [this](https://www.cloudquery.io/blog/creating-cross-project-service-accounts-in-gcp#how-do-you-set-up-a-service-account-in-gcp?) doc if you encounter any difficulties understanding the process. It provides a comprehensive explanation of all steps accompanied by screenshots.
 
-## Step 2: Create HMAC Key
+### Step 2: Create HMAC Key
 To be able to make use of ClickHouse methods to ingest data from GCS, you will need HMAC key.
+
 1. Follow [these](https://cloud.google.com/storage/docs/authentication/managing-hmackeys#create) steps to create HMAC key for the Service Account created above.
 
-Deploying workloads via Helm charts
-Step 1: Clone chart repository
+## Deploying workloads via Helm charts
+
+### Step 1: Clone chart repository
 
 ```
 git clone git@github.com:harness/helm-charts.git
 cd main/src/harness
 ```
 
-Step 2: Already using harness services OnPrem? Upgrade charts
+### Step 2: Already using harness services OnPrem? Upgrade charts
 
 ```
 helm get values <chart-name> -n <namespace> > override.yaml
 # update override.yaml with ccm specific configuration provided below
 helm upgrade <chart-name> <chart-directory> -n <namespace> -f override.yaml
-# Example: helm upgrade harness . -n harness -f override-prod.yaml 
+
 ```
 ex: ```helm upgrade ccm . -n harness -f old_values.yaml```
 
@@ -116,7 +119,7 @@ ccm:
       bucketNamePrefix: "harness-ccm-%s-%s" # Update the bucket name prefix if you want, but keep double %s for project and region
 ```
 
-## Step 3: Handling Kubernetes Secrets
+### Step 3: Handling Kubernetes Secrets
 
 On installing/upgrading charts you will see K8s secrets created with default value in the cluster. You need to update these secrets with the above noted values. Before updating the secrets you need to convert the secret into base64 encoded, let say the `HMAC_ACCESS_KEY` value is: `accessKey`, then it would it be stored as `YWNjZXNzS2V5``
 
@@ -142,23 +145,147 @@ Following are the secrets specific to CCM services:
     ```kubectl edit secret cloud-info-secret-mount -n <namespace>```
     <details>
     <summary>config.toml.dist</summary>
-    ```
-    config-file: <config-file>
-    gcp-creds: <gcpServiceAccountCredentials>
-    ```
 
-    ```
-    # In config.toml.dist provided below:
-    [provider.google]
-    enabled = true
+    environment = "production"
+debug = false
+shutdownTimeout = "5s"
+[config.vault]
+enabled = false
+address = ""
+token = ""
+secretPath = ""
+[log]
+format = "json"
+level = "info"
+[metrics]
+enabled = false
+address = ":9090"
+[jaeger]
+enabled = false
+# Configure either collectorEndpoint or agentEndpoint.
+# When both are configured collectorEndpoint will take precedence and the exporter
+will report directly to the collector.
+collectorEndpoint = "http://localhost:14268/api/traces?format=jaeger.thrift"
+agentEndpoint = "localhost:6831"
+# username = ""
+# password = ""
+[app]
+address = ":8000"
+basePath = "/"
+[scrape]
+enabled = true
+interval = "24h"
+[provider.amazon]
+enabled = false
+# See available regions in the documentation:
+# https://aws.amazon.com/about-aws/global-infrastructure/regions_az
+# region = "us-east-1"
+# Static credentials
+# accessKey = ""
+# secretKey = ""
+# Shared credentials
+# sharedCredentialsFile = ""
+# profile = ""
+# IAM Role ARN to assume
+# assumeRoleARN = ""
+# http address of a Prometheus instance that has AWS spot price metrics via
+banzaicloud/spot-price-exporter.
+# If empty, the cloudinfo app will use current spot prices queried directly from
+the AWS API.
 
-    # base64 encoded credentials in json format (base64 encoded content of the credential file)
-    # credentials = ""
+prometheusAddress = ""
+# advanced configuration: change the query used to query spot price info from
+Prometheus.
+prometheusQuery = "avg_over_time(aws_spot_current_price{region=\"%s\",
+product_description=\"Linux/UNIX\"}[1w])"
+# Amazon pricing API credentials (optional)
+# Falls back to the primary credentials.
+[provider.amazon.pricing]
+# See available regions in the documentation:
+# https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/using-pelong.html
+# region = "us-east-1"
+# Static credentials
+# accessKey = ""
+# secretKey = ""
+# Shared credentials
+# sharedCredentialsFile = ""
+# profile = ""
+# IAM Role ARN to assume
+# assumeRoleARN = ""
+[provider.google]
+enabled = false
+# base64 encoded credentials in json format (base64 encoded content of the
+credential file)
+# credentials = ""
+# credentialsFile = ""
+# project = ""
+[provider.alibaba]
+enabled = false
+# region = ""
+# accessKey = ""
+# secretKey = ""
+[provider.oracle]
+enabled = false
+# tenancy = ""
+# user = ""
+# region = ""
+# fingerprint = ""
+# privateKey = ""
+# privateKeyPassphrase = ""
+# configFilePath = ""
+# profile = ""
+[provider.azure]
+enabled = true
 
-    credentialsFile = "/config/gcp-creds.json"
-    project = "<gcpServiceAccountProjectId>"
-    ```
-    </details>
+# subscriptionId = ""
+# Client credentials
+clientId = "<clientId>"
+clientSecret = "<clientSecret>"
+tenantId = "<tenantId>"
+[provider.digitalocean]
+enabled = false
+[provider.vsphere]
+enabled = false
+# accessToken = ""
+[management]
+enabled = true
+address = ":8001"
+[serviceloader]
+serviceConfigLocation = "./configs"
+serviceConfigName = "services"
+format = "yaml"
+[store.redis]
+enabled = false
+host = "localhost"
+port = 6379
+[store.cassandra]
+enabled = false
+hosts = "localhost"
+port = 9042
+keyspace = "cloudinfo"
+table = "products"
+[store.gocache]
+expiration = 0
+cleanupInterval = 0
+
+</details>
+```
+config-file: <config-file>
+gcp-creds: <gcpServiceAccountCredentials>
+```
+
+```
+# In config.toml.dist provided below:
+[provider.google]
+enabled = true
+
+# base64 encoded credentials in json format (base64 encoded content of the credential file)
+# credentials = ""
+
+credentialsFile = "/config/gcp-creds.json"
+project = "<gcpServiceAccountProjectId>"
+```
+
 
 4. ceng-secret-mount
     ```kubectl edit secret ceng-secret-mount -n <namespace>```
@@ -184,7 +311,7 @@ Note: kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace> and incre
 
 ## GCP Connector Setup
 
-## Authorize Service Account to access BigQuery and GCS buckets in other projects
+### Authorize Service Account to access BigQuery and GCS buckets in other projects
 
 In the **Grant Permissions** step of GCP Connector flow, follow below steps:
 1. Create same Custom Role with different name in the project for which you are setting up the billing report (refer Step 1 of GCP Setup for creating Custom Role).
