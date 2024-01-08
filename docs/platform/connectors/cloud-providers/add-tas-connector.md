@@ -195,6 +195,8 @@ Harness provides the option to use a Refresh token to authenticate with the Tanz
 
 You can retrieve the Refresh token via the `config.json` file you receive when authenticating with the CF client. You can pass the Refresh token as a secret stored in the Harness Secrets Manager or your secrets manager of choice.
 
+For Harness Delegate version 23.12.81811 and later, you can create a Tanzu connector by setting the `AS_REFRESH_TOKEN_CLIENT_ID`, `TAS_REFRESH_TOKEN_CLIENT_SECRET`, `ENABLE_TAS_REFRESH_TOKEN_CLIENT_ID` parameters, and providing the Refresh token. The connector will generate a Refresh token using the Client ID and Secret ID env variables.
+
 #### Demo Video
 
 <!-- Video:

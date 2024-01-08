@@ -47,7 +47,7 @@ harness secret apply --token DOCKERHUB_PAT --secret-name "docker_secret"
 
 From your project setup, click on **Secrets**, and you should see the newly created secrets added to the Harness Built-in Secrets Manager. 
 
-Now, let's create connectors for GitHub and Docker Hub.  Open [github-connector.yaml](https://github.com/harness-community/harness-gitops-workshop/blob/main/cli-manifests/github-connector.yaml) on your local machine and replace **GITHUB_USERNAME** with actual value.
+Now, let's create connectors for GitHub and Docker Hub.
 
 To create a GitHub connector, execute the following:
 
@@ -57,7 +57,7 @@ harness connector --file github-connector.yaml apply
 
 Enter your GitHub username and press **Enter**.
 
-Similarly, in the [docker-connector.yaml](https://github.com/harness-community/harness-gitops-workshop/blob/main/cli-manifests/docker-connector.yaml) file on your local machine, replace the placeholder values for **DOCKER_USERNAME**.
+In the [docker-connector.yaml](https://github.com/harness-community/harness-gitops-workshop/blob/main/cli-manifests/docker-connector.yaml) file on your local machine, replace the placeholder values for **DOCKER_USERNAME**.
 
 Run the following to create a Docker Hub Connector:
 
@@ -80,6 +80,8 @@ Execute the following command to create the `cicd-gitops-pipeline` with the CI s
 ```bash
 harness pipeline --file cipipeline.yaml apply
 ```
+
+Click **Run** and then **Run Pipeline** to start the pipeline execution. A successful pipeline execution will produce a new image with the **latest** tag under the **harness-gitops-workshop** repository on your docker image registry.
 
 ## Create the ApplicationSet
 

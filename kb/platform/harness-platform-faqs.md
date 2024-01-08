@@ -2275,3 +2275,74 @@ When using a complex expression, ensure the expression is wrapped within `<+ >`.
 #### How can I retrieve a specific type of connector across multiple accounts, organizations, and projects using the API?
 
 Unfortunately, it's only possible to retrieve all connectors within a specific scope, the following attribute `includeAllConnectorsAvailableAtScope` allows you to retrieve easily all connectors above the project scope using the API Method `Fetches the list of Connectors corresponding to the request's filter criteria`.
+
+#### How can user build debug delegate image ?
+
+You can build and push from local to gcr-play or any other place you want.
+ - Copy delegate.jar from local machine (change Dockerfile-minimal in harness core)
+
+``` 
+COPY delegate.jar delegate.jar 
+```
+
+- Build image:
+```./scripts/bazel/build_bazel_delegate.sh immutable
+cd dockerization/delegate/
+docker build -t us.gcr.io/gcr-play/delegate:<give your tag> -f Dockerfile-minimal .
+docker push us.gcr.io/gcr-play/delegate:<your-tag>
+```
+
+If you want to publish this in dockerhub, then in place of gcr use your private dockerhub, do a docker login before pushing image.
+Also there is a GitHub PR trigger to publish immutable delegate from your changes: `trigger publish-delegate`
+
+#### What do we need to backup to recover quickly when Harness infrastructure is lost ?
+
+Harness recommends that you perform a full backup of the Harness namespace at least once a week, preferably every 24 hours. Back up recommendation is to use Velero tool. You can refer to mentioned doc for fuurther info [docs](https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-restore-helm).
+
+#### If the infrastructure is lost, how should it be restored?
+
+Back up and restore covers Harness specific things only, it does not cover infrastructure loss. If that happens expectation is to have a working k8s cluster ready to restore harness namespace.
+
+#### Do user permissions in Harness with JIT provisioning and SAML authentication inherit from the SAML provider, or do they require separate configuration in the Harness Account?
+
+No, user permissions in Harness with JIT provisioning and SAML authentication do not inherit from the SAML provider. Permissions need to be explicitly configured in the Harness Account. The JIT provisioning process ensures that users are dynamically created in Harness based on SAML authentication, but their permissions within Harness need to be set up independently.
+
+####  Does Harness support permission mapping or inheritance from external systems in any Single Sign-On (SSO) model?
+
+No, Harness does not support permission mapping or inheritance from external systems, including in various Single Sign-On (SSO) models. User permissions must be explicitly configured within the Harness Account, and as of now, there is no support for permission discovery or synchronization from external systems. All permissions need to be manually configured within the Harness Account.
+
+#### How does SCIM work in Harness, and what are its limitations?
+
+SCIM in Harness is primarily used for user provisioning and de-provisioning. It simplifies user management but has limitations. SCIM does not handle role bindings or permissions directly. Admins must manage role bindings and permissions within Harness separately, even when using SCIM for user provisioning.
+
+#### Does Role-Based Access Control (RBAC) apply to Git Bi-Directional Sync in Harness?
+
+ No, RBAC settings specific to Git Bi-Directional Sync are not available. The RBAC of the entity is used, and there are no individual role bindings for fine-grained control over bi-directional sync. As of now, the options for controlling bi-directional sync are limited to enabling or disabling it.
+
+#### What is the default timeout for custom secret manager script timeout? Can the timeout be configurable?
+
+It defaults to 60 seconds. Timeout is not configurable.
+
+#### Why is kinit (from the krb5-workstation package) not included in our immutable image for non-root users, leading customers to bake it in themselves?
+
+The decision to exclude kinit from our immutable image is primarily driven by concerns related to image bloat. We maintain a specific set of binaries, including Delegate-required SDKs, in the Delegate to address the specific use cases of our Continuous Delivery (CD) customers. By excluding non-essential binaries, we aim to optimize image size and streamline the image for CD workflows. You can refer the [docs](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-required-sdks).
+
+####  Can customers enable root privileges to add the kinit binary to the image?
+
+Enabling root privileges to add the kinit binary is an option, but it may pose security concerns for some customers. The exclusion of kinit in the immutable image aligns with security considerations and is designed to provide a minimal and secure image for CD use cases. If customers have specific security requirements, they may consider installing the required binaries, such as kinit from the krb5-workstation package, manually, even in an air-gapped environment.
+You can refer the [docs](https://developer.harness.io/docs/platform/delegates/install-delegates/enable-root-user-privileges-to-add-custom-binaries).
+
+#### Are metrics for the Docker Delegate published, and how can Prometheus scraping be configured?
+
+Yes, metrics for the Docker Delegate are published. To enable Prometheus scraping, you would likely need to open a port on the container and bind it to the Delegate metric port. This allows Prometheus, running separately, to scrape and collect metrics from the Docker Delegate.
+
+#### How can user only edit existing pipeline but should not be able to create any new pipeline?
+
+You can create the Roles and Resource Group like below..
+- Roles : Create/Edit,
+- RG : Select the specific pipelines within RG that the user should be able to edit.
+This will allow them to edit the pipelines that exists and can not create any new one. They need to select all the pipelines.
+
+
+
+

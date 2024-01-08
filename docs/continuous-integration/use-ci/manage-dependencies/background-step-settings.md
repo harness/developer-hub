@@ -6,6 +6,8 @@ helpdocs_topic_id: kddyd0f33o
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/continuous-integration/use-ci/manage-dependencies/configure-service-dependency-step-settings
 ---
 
 
