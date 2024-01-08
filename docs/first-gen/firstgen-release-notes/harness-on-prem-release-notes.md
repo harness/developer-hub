@@ -16,7 +16,7 @@ For Harness SaaS release notes, go to [Harness SaaS Release Notes](/docs/first-g
 
 Release notes are displayed with the most recent release first.
 
-## January 3, 2024, version 81720
+## January 8, 2024, version 81720
 
 This release includes the following module and component versions.
 

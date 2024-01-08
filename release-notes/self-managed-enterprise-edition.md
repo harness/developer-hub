@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2024-01-05T10:00
+date: 2024-01-08T10:00
 sidebar_position: 16
 ---
 
@@ -22,7 +22,7 @@ These release notes describe recent changes to Harness Harness Self-Managed Ente
 
 :::
 
-## January 3, 2024, version 81720
+## January 8, 2024, version 81720
 
 ### New features and enhancements
 
