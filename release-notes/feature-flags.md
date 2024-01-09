@@ -19,6 +19,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## January 2024
 
+### Android SDK
+
+#### Version 1.2.3
+
+ - Fixed uncaught exception error that occurs if initialization fails.
+
 ### Flutter SDK
 
 #### Version 2.1.1
