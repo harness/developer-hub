@@ -64,7 +64,7 @@ For more information, go to [Root cost analysis](docs/cloud-cost-management/3-us
 
 #### Cost anomalies
 
-TODO
+Detecting strange spending patterns in cloud computing is really important. It helps save money by spotting where resources are wasted and stops budgets from being used up unexpectedly. It also helps prevent security problems by catching unusual activities early, like someone getting into an account they shouldn't. Finding these odd spending habits also helps make sure everything runs smoothly, avoids wasting resources, and lets companies follow the rules about data security and money management. Overall, keeping an eye on weird spending in the cloud is key for saving money, staying secure, and running things efficiently.
 
 For more information, go to [Cost anomalies](docs/first-gen/cloud-cost-management/ccm-anomaly-detection/detect-cost-anomalies-with-ce.md)
 
@@ -80,12 +80,8 @@ TODO
 #### Stop idle resources
 
 
-jlkjlj
-
 - TODO: Terraform
 - Sample application
-
-
 
 
 ### <a href="#phase-2-deploy-to-qa"> Phase 4: Cost governance</a>
