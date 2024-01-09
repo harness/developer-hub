@@ -23,7 +23,7 @@ const config = {
   baseUrl: BASE_URL,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  onBrokenAnchors: "ignore",
+  //onBrokenAnchors: "ignore", #DS 3.1+
   favicon: "img/hdh_fav_icon_grey.ico",
 
   //Mermaid Diagram Functionality

@@ -15,7 +15,34 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: December 19th 2023
+### Latest Updated: January 8th 2024
+
+## January 2024
+
+### Apex SDK
+
+#### Version 0.1.3 Beta
+
+ - It now re-authenticates using the `FFPoller`, to ensure that scheduled jobs continue to run after the auth token has expired.
+ - It now includes a synchronous initialization option.
+
+### Android SDK
+
+#### Version 1.2.3
+
+ - Fixed uncaught exception error that occurs if initialization fails.
+
+### Flutter SDK
+
+#### Version 2.1.1
+
+ - We've added support for Kotlin version 1.7.x for Android projects. Previously, the compilation would fail due to Kotlin compilation issues.
+ - We've upgraded Feature Flags' Android SDK to 1.2.3, which ensures the SDK will not crash the application should initialization fails. For full details of all Feature Flags Android SDK relases, please see the: [Feature Flags' Android Client SDK Changelog](https://github.com/harness/ff-android-client-sdk/releases).
+
+# Previous releases
+
+<details>
+<summary>2023 releases</summary>
 
 ## December 2023
 
@@ -979,7 +1006,7 @@ This includes the following:
 
  - This fixes a bug that caused the SDK to not wait for initialization when using the `wait_for_initialization` method.
 
-## Previous releases
+</details>
 
 <details>
 <summary>2022 releases</summary>

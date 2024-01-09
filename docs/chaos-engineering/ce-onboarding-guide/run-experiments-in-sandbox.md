@@ -43,6 +43,14 @@ Once you have created an account with Harness, click **Get started** of the **Ch
 
 ![start](./static/sandbox/pod-delete-start.png)
 
+:::note
+* A sandbox once created can't be deleted.
+* All users within a sandbox can share the same sandbox.
+The first time you create a sandbox, the session starts automatically. After that, you will need to explicitly **Start** the session.
+You will have total of 20 sessions (each session is 60 minutes) valid for 30 days from the day of creation of the sandbox.
+You can **Stop** anytime and restart the session. The remaining part of the time will be added to the unused quota.
+:::
+
 ### Execute pod delete experiment
 
 1. This starts by creating the necessary clusters in the environment you previously created. Once the clusters are ready, the pod delete experiment is created. Click **Next**.
@@ -107,6 +115,16 @@ You can start executing the sandbox again if you run out of time by click **Run*
 3. You have successfully completed the Chaos hands-on lab, by executing two experiments in the sandbox and improving the resilience of the Podtato head application. 
 
 ![pod network done](./static/sandbox/go-to-cert.png)
+
+<Accordion color="green">
+<summary> Important </summary>
+* You can re-run the experiment.
+* You can scale up the Podtato head app only once.
+* You can delete the Podtato head left arm only once.
+* You can execute pod network loss only after completing the pod delete experiment.
+* You can re-run the experiment.
+* You can't roll back to the previous step/experiment at any point.
+</Accordion>
 
 ## Next steps
 [Harness Chaos Engineering Developer Certification](./developer-certification) 

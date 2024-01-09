@@ -1980,6 +1980,20 @@ Ensure that the AWS IAM user you use has the correct policies for pulling from E
 </details>
 </details>
 
+<details>
+<summary>AWS roles for IRSA auth</summary>
+
+If you are using IRSA for authentication in the Harness AWS connector that pulls from ECR, ensure the following AWS roles are mapped to the Kubernetes service account.
+
+- `ecr:DescribeImages`
+- `ecr:DescribeRepository`
+- `ecr:GetAuthorizationToken`
+- `ecr:BatchGetImage`
+- `ecr:GetDownloadUrlForLayer`
+
+</details>
+
+
 ### ECR artifact expressions
 
 You can reference artifact properties using the following expressions in a values YAML file or in any Harness setting that supports [Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
