@@ -55,11 +55,9 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Resource | Permissions |
 | ---  | ----------- |
 | Templates | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Access: Can access referenced templates at runtime</li><li>Copy</li></ul> |
-| Governance Policies | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
 | Deployment Freeze | <ul><li>Manage</li><li>Override</li><li>Global</li></ul> |
 | Secrets | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Access: Can access referenced secrets at runtime</li></ul> |
 | Connectors | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Access: Can access referenced connectors at runtime</li></ul> |
-| Governance Policy Sets | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Evaluate: Can evaluate governance policy sets</li></ul> |
 | Variables | <ul><li>View</li><li>Create/Edit</li><li>Delete</li></ul> |
 | Files | <ul><li>View</li><li>Create/Edit</li><li>Delete</li><li>Access</li></ul> |
 | Dashboards | <ul><li>View</li><li>Manage</li></ul> |
