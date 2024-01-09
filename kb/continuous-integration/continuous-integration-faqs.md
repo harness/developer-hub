@@ -581,6 +581,10 @@ Yes, you can [pull Harness CI images from a private registry](https://developer.
    * If you [modified tags for some images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#specify-the-harness-ci-images-used-in-your-pipelines), check that your configuration uses valid tags that are present in the repository from which Harness is attempting to pull the tags.
    * If you believe the issue is due to networking issues, try again later if you think the issue is transient, or check your connector or network configuration to make sure Harness is able to connect to the given registry.
 
+### What pipeline environment variables are there for CI pipelines?
+
+Go to [CI environment variables reference](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var).
+
 ## Build and push images
 
 ### Where does a pipeline get code for a build?
@@ -591,18 +595,22 @@ The codebase declared in the first stage of a pipeline becomes the pipeline's [d
 
 For information about this go to [Build and push artifacts and images](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
 
-### What drives the Build and Push steps? What is Kaniko?
+### What drives the Build and Push steps? What is kaniko?
 
-With Kubernetes cluster build infrastructures, Build and Push steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md). Kaniko requires root access to build the Docker image.
+With Kubernetes cluster build infrastructures, Build and Push steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md). kaniko requires root access to build the Docker image.
 
 For more information, go to:
 
 * [Build and push artifacts and images - Kubernetes clusters require root access](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#kubernetes-cluster-build-infrastructures-require-root-access)
 * [Harness CI images - Images list](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#harness-ci-images-list)
 
+### Can I set kaniko and drone-docker runtime flags, such as skip-tls-verify or custom-dns?
+
+Yes, you can [set plugin runtime flags](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#set-plugin-runtime-flags) on any Build and Push step.
+
 ### Does kaniko support non-root users?
 
-With a Kubernetes cluster build infrastructure, **Build and Push** steps use the kaniko plugin. Kaniko requires root access to build Docker images, and it does not support non-root users. However, you can use the buildah plugin to [build and push with non-root users](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
+With a Kubernetes cluster build infrastructure, **Build and Push** steps use the kaniko plugin. kaniko requires root access to build Docker images, and it does not support non-root users. However, you can use the buildah plugin to [build and push with non-root users](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
 
 ### Can I run Build and Push steps as root if my build infrastructure runs as non-root?
 
@@ -642,9 +650,15 @@ You can [build without pushing](https://developer.harness.io/docs/continuous-int
 
 By default, the [Build and Push to ECR step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings) downloads base images from the public container registry. You can use the [Base Image Connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings#base-image-connector) setting to specify an authenticated connector to use. This can prevent rate limiting issues.
 
-### How can I configure the Build and Push to EC" step to pull base images from a different container registry or my internal container registry?
+### How can I configure the Build and Push to ECR step to pull base images from a different container registry or my internal container registry?
 
 Create a Docker connector for your desired container registry and use it in the [Base Image Connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings#base-image-connector) setting.
+
+### Build and Push to ECR step fails with error building image, failed to execute command, exec format error
+
+* Error: `Error building image: error building stage: failed to execute command: starting command: ...: exec format error`
+* Cause: This error can occur if you're running an ARM node pool instead of AMD.
+* Solution: Change your node pool to AMD and retry the build.
 
 ### Where does the Build and Push step expect the Dockerfile to be?
 
@@ -664,14 +678,6 @@ Harness supports multiple Docker layer caching methods depending on what infrast
 
 You can [use the Drone Email plugin to send emails and attachments from CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/drone-email-plugin).
 
-### What is PLUGIN_USERNAME and PLUGIN_PASSWORD used in the Upload Artifacts to JFrog Artifactory step?
-
-These are derived from your [Artifactory connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog#artifactory-connector).
-
-### Can I run the Upload Artifacts to JFrog Artifactory step with a non-root user?
-
-No. The jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog) step create a `.jfrog` folder at the root level of the stage workspace, which fails if you use a non-root user.
-
 ### How do I show content on the Artifacts tab?
 
 You can use the [Artifact Metadata Publisher plugin](https://developer.harness.io/tutorials/ci-pipelines/publish/artifacts-tab) to store artifact URLs and display them on the Artifacts tab.
@@ -687,6 +693,30 @@ In addition to the console view URL, you can reference privately-stored artifact
 ### Does the Upload Artifacts to S3 step compress files before uploading them?
 
 No. If you want to upload a compressed file, you must use a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to compress the artifact before uploading it.
+
+### Connector errors with Upload Artifacts to S3 step.
+
+There are a variety of potential causes for AWS connector errors due to specific requirements for the [AWS connector in the Upload Artifacts to S3 step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings#aws-connector).
+
+### Can I use non-default ACLs, IAM roles, or ARNs with the Upload Artifacts to S3 step?
+
+Yes, but there are specific requirements for the [AWS connector in the Upload Artifacts to S3 step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings#aws-connector).
+
+### Upload Artifacts to JFrog step throws certificate signed by unknown authority
+
+If you get a `certificate signed by unknown authority` error with the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog), make sure the correct server certificates are uploaded to the correct container path. For example, the container path for Windows is `C:/Users/ContainerAdministrator/.jfrog/security/certs`.
+
+### Can I run the Upload Artifacts to JFrog Artifactory step with a non-root user?
+
+No. The jfrog commands in the [Upload Artifacts to JFrog Artifactory](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog) step create a `.jfrog` folder at the root level of the stage workspace, which fails if you use a non-root user.
+
+### mkdir permission denied when running Upload Artifacts to JFrog as non-root
+
+With a Kubernetes cluster build infrastructure, the [Upload Artifacts to JFrog step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog) must run as root. If you set **Run as User** to anything other than `1000`, the step fails with `mkdir /.jfrog: permission denied`.
+
+### What is PLUGIN_USERNAME and PLUGIN_PASSWORD used in the Upload Artifacts to JFrog Artifactory step?
+
+These are derived from your [Artifactory connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog#artifactory-connector).
 
 ## Tests
 
