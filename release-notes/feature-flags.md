@@ -26,6 +26,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - It now re-authenticates using the `FFPoller`, to ensure that scheduled jobs continue to run after the auth token has expired.
  - It now includes a synchronous initialization option.
 
+### Android SDK
+
+#### Version 1.2.3
+
+ - Fixed uncaught exception error that occurs if initialization fails.
+
 ### Flutter SDK
 
 #### Version 2.1.1
