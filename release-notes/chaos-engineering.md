@@ -28,19 +28,19 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### New features and enhancements
 
-* Adds optimzation to utilise memory efficiently, reduce latency and enhance server performance. (CHAOS-3581)
+* Adds optimisation to utilise memory efficiently, reduce latency, and enhance server performance. (CHAOS-3581)
 
 * Linux infrastructure is automatically versioned with the help of the API. Previously, the versions were hardcoded for every release. (CHAOS-3580)
 
-* Adds a condition to the experiment such that a resilience probe can't be added more than once in a single fault within an experiment. The same resilience probe can be used in another fault within the same experiment though. (CHAOS-3520)
+* Adds a condition to the experiment such that a resilience probe can't be added more than once in a single fault within an experiment. The same resilience probe can be used in another fault within the same experiment, though. (CHAOS-3520)
 
-* Adds a generic audit function that is used to generate all audit trails thereby reducing redundancy. This generic function is customized based on the type of audit (Chaos experiment, Gameday, Chaos infrastructure, and so on). (CHAOS-3484)
+* Adds a generic audit function that is used to generate all audit trails, thereby reducing redundancy. This generic function is customized based on the type of audit (Chaos experiment, Gameday, Chaos infrastructure, and so on). (CHAOS-3484)
 
-* With this release, Linux chaos infrastructure binary uses static linking instead of dynamic linking. This removes any dependency on the OS built-in programs including `glibc`. (CHAOS-3334)
+* With this release, the Linux chaos infrastructure binary uses static linking instead of dynamic linking. This removes any dependency on the OS built-in programs including `glibc`. (CHAOS-3334)
 
-* Enhanced the performance of the API (GetExperiment) that was used to fetch details of Kubernetes and Linux experiment. An optional field is added that fetches rhe average resilience score. (CHAOS-3218)
+* Enhanced the performance of the API (GetExperiment) that was used to fetch details of Kubernetes and Linux experiments. An optional field is added that fetches the average resilience score. (CHAOS-3218)
 
-* Adds support for bulk-disable (disable all enabled CRON schedules) and bulk-enable (enable all disabled CRON schedules) CRON-scheduled experiments. (CHAOS-3174)
+* Adds support for bulk-disable (disable enabled CRON schedules selected by user) and bulk-enable (enable disabled CRON schedules selected by user) CRON-scheduled experiments, with a limit of 20 experiments for every operation. (CHAOS-3174)
 
 #### Fixed issues
 
@@ -48,7 +48,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * Editing a Linux experiment to change the infrastructure would not update the infrastructure. This has been fixed. (CHAOS-3536)
 
-* When multiple faults are executed in parallel, faults that transitioned into **errored** state did not reflect in the logs whereas faults in **success** state reflected in the logs with **errored** status. This has been fixed. (CHAOS-3363)
+* When multiple faults are executed in parallel, faults that transitioned into an "errored" state would not reflect in the logs, whereas faults in **success** state reflected in the logs with an "errored" status. This has been fixed. (CHAOS-3363)
 
 
 ## December 2023
