@@ -587,3 +587,18 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 During and after pipeline runs, you can find step logs on the [Build details page](../viewing-builds.md).
 
 If your pipeline runs tests, you can [view test reports](../run-tests/viewing-tests.md) on the Build details page.
+
+## Troubleshoot script execution (Run steps)
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to script execution and using Run steps, such as:
+
+* [Can I use an image that doesn't have a shell in a Run step?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-an-image-that-doesnt-have-a-shell-in-a-run-step)
+* [Is a Docker image required to use the Run step on local runner build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#is-a-docker-image-required-to-use-the-run-step-on-local-runner-build-infrastructure)
+* [When attempting to export an output variable from a Run step using a Python shell, the step fails with "no such file or directory"](/kb/continuous-integration/continuous-integration-faqs/#when-attempting-to-export-an-output-variable-from-a-run-step-using-a-python-shell-the-step-fails-with-no-such-file-or-directory)
+* [What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?](/kb/continuous-integration/continuous-integration-faqs/#what-does-the-failed-to-get-image-entrypoint-error-indicate-in-a-kubernetes-cluster-build)
+* [Does the Harness Run step overwrite the base image container entry point?](/kb/continuous-integration/continuous-integration-faqs/#does-the-harness-run-step-overwrite-the-base-image-container-entry-point)
+* [Why is the default entry point not running for the container image used in the Run step?](/kb/continuous-integration/continuous-integration-faqs/#why-is-the-default-entry-point-not-running-for-the-container-image-used-in-the-run-step)
+* [How do I start a service started in a container that would usually be started by the default entry point?](/kb/continuous-integration/continuous-integration-faqs/#since-the-default-entry-point-isnt-executed-for-the-container-image-used-in-the-run-step-how-do-i-start-a-service-started-in-a-container-that-would-usually-be-started-by-the-default-entry-point)
+* [How do I run the default entry point of the image used in the Run step?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-run-the-default-entry-point-of-the-image-used-in-the-run-step)
+* [Does CI support running Docker-in-Docker images?](/kb/continuous-integration/continuous-integration-faqs/#does-ci-support-running-docker-in-docker-images)
+* [Can't connect to Docker daemon with Docker-in-Docker Background step.](/kb/continuous-integration/continuous-integration-faqs/#cant-connect-to-docker-daemon)

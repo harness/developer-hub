@@ -804,7 +804,7 @@ To resolve this error, you might need to mount volumes for the PostgreSQL data i
 
 Yes, this is the expected behavior. The entry point in the base image is overwritten so Harness can run the commands specified in the Run step.
 
-### Why is the default entry point is not running for the container image used in the Run step?
+### Why is the default entry point not running for the container image used in the Run step?
 
 The default entry point is overwritten by the commands you specified in the Run step's commands.
 

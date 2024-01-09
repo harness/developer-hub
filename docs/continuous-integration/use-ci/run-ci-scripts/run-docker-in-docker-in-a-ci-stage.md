@@ -237,3 +237,13 @@ pipeline:
             description: ""
             value: dind-bg-step
 ```
+
+## Troubleshoot Docker-in-Docker in Harness CI
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to script execution, using Run steps, and Docker-in-Docker, such as:
+
+* [Does CI support running Docker-in-Docker images?](/kb/continuous-integration/continuous-integration-faqs/#does-ci-support-running-docker-in-docker-images)
+* [Can't connect to Docker daemon with Docker-in-Docker Background step.](/kb/continuous-integration/continuous-integration-faqs/#cant-connect-to-docker-daemon)
+* [Can I use an image that doesn't have a shell in a Run step?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-an-image-that-doesnt-have-a-shell-in-a-run-step)
+* [What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?](/kb/continuous-integration/continuous-integration-faqs/#what-does-the-failed-to-get-image-entrypoint-error-indicate-in-a-kubernetes-cluster-build)
+* [How do I start a service started in a container that would usually be started by the default entry point?](/kb/continuous-integration/continuous-integration-faqs/#since-the-default-entry-point-isnt-executed-for-the-container-image-used-in-the-run-step-how-do-i-start-a-service-started-in-a-container-that-would-usually-be-started-by-the-default-entry-point)
