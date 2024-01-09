@@ -31,13 +31,13 @@ To reset the error budget of an SLO:
 
    The **Reset Error Budget** dialog appears. It displays the total error budget and the remaining error budget values. Expand the **Previous Error Budget reset history** section to review the reset history.
 
-   <docimage path={require('./static/reset-error-budget.png')} />
+   <DocImage path={require('./static/reset-error-budget.png')} />
 
 3. Specify the number of minutes by which you want to extend the error budget, and provide a reason for this adjustment. The updated error budget and the remaining budget are displayed.
 
 4. Select **Save**.  
    The error budget will be successfully reset. A marker appears on the SLO performance trend chart indicating the time when the error budget was reset. When you hover over the icon, error budget details are displayed. It may take up to 30 minutes for the reset icon to appear on the SLO performance trend chart.
 
-   <docimage path={require('./static/reset-error-budget-marker.png')} />
+   <DocImage path={require('./static/reset-error-budget-marker.png')} />
 
    

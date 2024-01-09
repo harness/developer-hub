@@ -10,10 +10,10 @@ redirect_from:
   - /docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 Your CI pipelines can run tests in [Run steps](../run-ci-scripts/run-step-settings.md) and [Run Tests steps](./test-intelligence/set-up-test-intelligence.md). In Harness, test results can be published to the [Build details page](../viewing-builds.md) on either the **Tests** tab or the **Artifacts** tab.
 
@@ -60,7 +60,7 @@ Your first TI run won't report selected tests. Subsequent runs can report select
 
 <!-- ![](./static/set-up-test-intelligence-03.png) -->
 
-<docimage path={require('./static/set-up-test-intelligence-03.png')} />
+<DocImage path={require('./static/set-up-test-intelligence-03.png')} />
 
 Expand the sections below to learn more about the information available on the **Tests** tab for Test Intelligence.
 
@@ -117,10 +117,10 @@ Select **Expand graph** to view the TI Visualization, which shows why a specific
 
 For reports that can't be published to the **Tests** tab, you can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish reports to the **Artifacts** tab on the [Build details page](../viewing-builds.md). You can [publish any URL to the Artifacts tab](/tutorials/ci-pipelines/publish/artifacts-tab).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 To publish a test report to the **Artifacts** tab, you must:
 
@@ -138,10 +138,10 @@ To publish a test report to the **Artifacts** tab, you must:
       * `file_urls`: Provide the URL to the artifact that was uploaded in the **Upload Artifacts** step. If you uploaded multiple artifacts, you can provide a list of URLs.
       * `artifact_file`: Provide any `.txt` file name, such as `artifact.txt` or `url.txt`. This is a required setting that Harness uses to store the artifact URL and display it on the **Artifacts** tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 1. Include steps in your pipeline that run tests and produce test reports.
 2. Add a step to upload the report artifact to cloud storage, such as:
@@ -164,10 +164,10 @@ To publish a test report to the **Artifacts** tab, you must:
                          artifact_file: artifact.txt ## Provide any '.txt' file name. Harness uses this to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
    ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Test report dashboard
 

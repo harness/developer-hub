@@ -7,11 +7,6 @@ sidebar_position: 10
 
 # SLO downtime overview
 
-:::info note
-Currently, this feature is behind the feature flag `SRM_DOWNTIME`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
-
 SLO downtime lets you schedule a maintenance window during which your service can undergo updates without impacting the SLO.
 
 ## Benefits

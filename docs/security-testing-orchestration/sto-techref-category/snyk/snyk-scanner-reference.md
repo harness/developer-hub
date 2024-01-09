@@ -16,27 +16,37 @@ For complete end-to-end workflow descriptions, go to [Run Snyk scans and ingest 
 
 ## Important notes for running Snyk scans in STO
 
+
 ### Docker-in-Docker requirements
 
-```mdx-code-block
+
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
+
 
 <StoDinDRequirements />
 
 ### Root access requirements
 
-```mdx-code-block
+
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-```
+
 
 <StoRootRequirements />
+
+### For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
+
 
 ## Snyk step configuration
 
 The recommended workflow is add a Snyk step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
-<!-- 
+<!--
 
 
 
@@ -44,9 +54,9 @@ The recommended workflow is add a Snyk step to a Security Tests or CI Build stag
 
 
 <details>
-    <summary>Scanner Template</summary>
+<summary>Scanner Template</summary>
 
-![](static/step-palette-00.png) 
+![](static/step-palette-00.png)
 
 </details>
 
@@ -59,11 +69,11 @@ The recommended workflow is add a Snyk step to a Security Tests or CI Build stag
 
 #### Scan Mode
 
-```mdx-code-block
+
 import StoSettingScanMode from '../shared/step_palette/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeOrch from '../shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
 import StoSettingScanModeIngest from '../shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-```
+
 
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
@@ -71,9 +81,9 @@ import StoSettingScanModeIngest from '../shared/step_palette/_sto-ref-ui-scan-mo
 
 #### Scan Configuration
 
-```mdx-code-block
+
 import StoSettingProductConfigName from '../shared/step_palette/_sto-ref-ui-product-config-name.md';
-```
+
 
 <StoSettingProductConfigName />
 
@@ -84,12 +94,12 @@ import StoSettingProductConfigName from '../shared/step_palette/_sto-ref-ui-prod
 
 #### Type
 
-```mdx-code-block
+
 import StoSettingScanType from '../shared/step_palette/_sto-ref-ui-scan-type.md';
 import StoSettingScanTypeRepo     from '../shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
 import StoSettingScanTypeCont     from '../shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
 
-```
+
 <a name="scan-type"></a>
 <StoSettingScanType />
 <StoSettingScanTypeRepo />
@@ -98,9 +108,9 @@ import StoSettingScanTypeCont     from '../shared/step_palette/_sto-ref-ui-scan-
 
 #### Name 
 
-```mdx-code-block
+
 import StoSettingProductID from '../shared/step_palette/_sto-ref-ui-prod-id.md';
-```
+
 
 <StoSettingProductID />
 
@@ -108,17 +118,17 @@ import StoSettingProductID from '../shared/step_palette/_sto-ref-ui-prod-id.md';
 
 #### Variant
 
-```mdx-code-block
+
 import StoSettingTargetVariant from '../shared/step_palette/_sto-ref-ui-target-variant.md';
-```
+
 
 <StoSettingTargetVariant  />
 
 #### Workspace (_repository_)
 
-```mdx-code-block
+
 import StoSettingTargetWorkspace from '../shared/step_palette/_sto-ref-ui-target-workspace.md';
-```
+
 
 <StoSettingTargetWorkspace  />
 
@@ -126,9 +136,9 @@ import StoSettingTargetWorkspace from '../shared/step_palette/_sto-ref-ui-target
 
 ### Ingestion File
 
-```mdx-code-block
+
 import StoSettingIngestionFile from '../shared/step_palette/_sto-ref-ui-ingestion-file.md';
-```
+
 
 <StoSettingIngestionFile  />
 
@@ -137,9 +147,9 @@ import StoSettingIngestionFile from '../shared/step_palette/_sto-ref-ui-ingestio
 
 #### Access Token (_Orchestration scans_)
 
-```mdx-code-block
+
 import StoSettingAuthAccessToken from '../shared/step_palette/_sto-ref-ui-auth-access-token.md';
-```
+
 
 <StoSettingAuthAccessToken />
 
@@ -150,9 +160,9 @@ import StoSettingAuthAccessToken from '../shared/step_palette/_sto-ref-ui-auth-a
 
 #### Log Level
 
-```mdx-code-block
+
 import StoSettingLogLevel from '../shared/step_palette/_sto-ref-ui-log-level.md';
-```
+
 
 <StoSettingLogLevel />
 
@@ -160,9 +170,9 @@ import StoSettingLogLevel from '../shared/step_palette/_sto-ref-ui-log-level.md'
 
 #### Fail on Severity
 
-```mdx-code-block
+
 import StoSettingFailOnSeverity from '../shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
 <StoSettingFailOnSeverity />
 
 
@@ -194,9 +204,9 @@ You can set up Snyk scans using a Security step: create a CI Build or Security T
 
 #### Target and variant
 
-```mdx-code-block
+
 import StoLegacyTargetAndVariant  from '../shared/legacy/_sto-ref-legacy-target-and-variant.md';
-```
+
 
 <StoLegacyTargetAndVariant />
 
@@ -214,17 +224,17 @@ import StoLegacyTargetAndVariant  from '../shared/legacy/_sto-ref-legacy-target-
 
 #### Container scan settings
 
-```mdx-code-block
+
 import StoLegacyContainer from '../shared/legacy/_sto-ref-legacy-container.md';
-```
+
 
 <StoLegacyContainer />
 
 #### Ingestion file
 
-```mdx-code-block
+
 import StoLegacyIngest from '../shared/legacy/_sto-ref-legacy-ingest.md';
-```
+
 
 <StoLegacyIngest />
 

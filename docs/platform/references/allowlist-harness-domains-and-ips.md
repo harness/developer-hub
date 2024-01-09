@@ -35,9 +35,11 @@ The following list is optional. You can allowlist these IPs if needed.
 34.110.203.189
 34.149.33.161
 34.160.153.7
+34.82.155.149
+34.168.179.66
 ```
 
-:::caution
+:::warning
 Harness will not change IPs without 30 days notice to all customers. If a security emergency requires a change, all customers are notified.
 :::
 

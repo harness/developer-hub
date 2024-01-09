@@ -9,7 +9,7 @@
 | Implement secure deployment practices in varied environments | [Deployment concepts and strategies](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts)|
 | Manage and mitigate security concerns related to Delegate access and use | [Role-based access control (RBAC) in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/)|
 | **3. Designing and Implementing CD Pipelines in Harness** | |
-| Develop and optimize pipelines using Harness| [Developer day to day guide](https://developer.harness.io/docs/continuous-delivery/ramp-up/developer-role/rampup-dev/)|
+| Develop and optimize pipelines using Harness| [Developer day to day guide](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/new-user/rampup-dev)|
 | Implement and manage pipeline templates using GitOps practices | [Best practices and guidelines for templates](https://developer.harness.io/docs/platform/templates/templates-best-practices/)|
 | Manage artifacts and dependencies in pipeline stages| [CD artifact sources](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/)|
 | **4. Infrastructure as Code and Configuration Management**||
@@ -19,10 +19,10 @@
 | **5. Continuous Verification (CV) and Observability in Harness**  |  |
 | Utilize various tools for logs and APM in CV strategies | [APM and logging tools](https://developer.harness.io/docs/continuous-delivery/verify/cv-results/apm-logs/)|
 | Implement effective observability and monitoring of Harness components| [Monitor deployments and services in CD dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/) |
-| Understand and optimize feedback loops within CD pipelines | [Pipeline design guide](https://developer.harness.io/docs/continuous-delivery/ramp-up/pipeline-designer-role/pipeline-design-guide/)|
+| Understand and optimize feedback loops within CD pipelines | [Pipeline design guide](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/new-user/pipeline-design-guide) |
 | **6. Utilizing and Managing Secrets and Configurations in Harness**  | |
 | Efficiently manage secrets within Harness | [Use secrets managers](https://developer.harness.io/tutorials/platform/secrets-management/) |
-| Ensure secure and optimal handling of configurations | [Keep your pipelines DRY](https://developer.harness.io/docs/continuous-delivery/ramp-up/platform-eng-role/rampup-dry/)|
+| Ensure secure and optimal handling of configurations | [Keep your pipelines DRY](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/new-user/rampup-dry) |
 | **7. Deployment Strategies and Rollbacks in Harness**  | |
 | Implement different deployment strategies (e.g., Canary, Blue-Green) using Harness | [Blue Green deployment](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts/#blue-green-deployment)|
 | Design and troubleshoot rollback strategies for failed deployments| [Deployment concepts and strategies](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts) |

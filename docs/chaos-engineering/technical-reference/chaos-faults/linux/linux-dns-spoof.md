@@ -53,19 +53,19 @@ Linux DNS spoof injects chaos to mimic DNS resolution on a Linux machine.
   </tr>
   <tr>
     <td> duration </td>
-    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30s </td>
+    <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
+    <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
   </tr>
   <tr>
     <td> rampTime </td>
-    <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Default: 0s </td>
+    <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
+    <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
   </tr>
 </table>
 
 ### SpoofMap
 
-The `spoofMap` input variable maps the domain names to the target host names. For example, '{"abc.com":"spoofabc.com"}' where the key is the host name to be spoofed and the value is the host name to which the key is spoofed (or redirected).
+The `spoofMap` input variable maps the domain names to the target host names. For example, `{"abc.com":"spoofabc.com"}` where the key is the host name to be spoofed and the value is the host name to which the key is spoofed (or redirected).
 
 The following YAML snippet illustrates the use of this environment variable:
 

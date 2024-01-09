@@ -18,12 +18,6 @@ Harness provisioning is categorized into the following use cases:
 
 For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
 
-:::note
-
-Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Harness can provision any resource that is supported by Terragrunt and the related Terraform Provider or plugin.
 
 If you want to use Terraform without Terragrunt, Harness supports that, too. For more information, go to [Terraform how-tos](./terraform-infra/terraform-how-tos).
@@ -118,14 +112,14 @@ You add the Terragrunt Rollback step in the stage **Rollback** section.
 
 The following sections describe how to set up each of the Terragrunt steps in your CD stage.
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Terragrunt Plan" label="Terragrunt Plan" default>
-```
+
 
 To add a Terragrunt Plan step, do the following:
 
@@ -188,7 +182,7 @@ Here's an example of how the **Provisioner Identifier** is used across steps:
 
 <!-- ![](./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
-<docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
+<DocImage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
 ##### Provisioner Identifier scope
 
@@ -220,10 +214,10 @@ Your Terragrunt Plan step is now ready.
 
 You can now configure a Terragrunt Apply, Destroy, or Rollback step to use the Terragrunt script from this Terragrunt Plan step.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Terragrunt Apply" label="Terragrunt Apply">
-```
+
 
 
 To add a Terragrunt Apply step, do the following:
@@ -297,7 +291,7 @@ Here's an example of how the **Provisioner Identifier** is used across steps:
 
 <!-- ![](../static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
-<docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
+<DocImage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
 ##### Provisioner Identifier Scope
 
@@ -331,10 +325,10 @@ Your Terragrunt Apply step is now ready.
 
 You can now configure a Terragrunt Destroy or Rollback step to use the Terragrunt provisioning from this Terragrunt Apply step.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Terragrunt Destroy" label="Terragrunt Destroy">
-```
+
 
 To add a Terragrunt Destroy step, do the following:
 
@@ -393,7 +387,7 @@ Here's an example of how the **Provisioner Identifier** is used across steps:
 
 <!-- ![](./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
-<docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
+<DocImage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
 ##### Provisioner Identifier scope
 
@@ -401,10 +395,10 @@ The **Provisioner Identifier** is a project-wide setting. You can reference it a
 
 For this reason, it's important that all your project members know the provisioner identifiers. Sharing this information will prevent one member building a pipeline from accidentally impacting the provisioning of another member's pipeline.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Terragrunt Rollback" label="Terragrunt Rollback">
-```
+
 
 To add a Terragrunt Rollback step, do the following:
 1. Do the following if you haven't yet done so:
@@ -444,7 +438,7 @@ Here's an example of how the **Provisioner Identifier** is used across steps:
 
 <!-- ![](./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
-<docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
+<DocImage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
 ##### Provisioner Identifier scope
 
@@ -463,10 +457,10 @@ The following notes discuss Terragrunt rollback scenarios.
   - If you deployed two modules successfully already, module1 and module2, and then attempted to deploy module3, but failed, Harness will roll back to the successful state of module1 and module2.
   - However, let's look at the situation where module3 succeeds and now you have module1, module2, and module3 deployed. If the next deployment fails, the rollback will only roll back to the Terraform state with module3 deployed. Module1 and module2 were not in the previous Terraform state, so the rollback excludes them.
 
-```mdx-code-block
-  </TabItem>    
+
+</TabItem>    
 </Tabs>
-```
+
 ## Settings common to all steps
 
 The following settings are common to the Terragrunt Plan, Apply, and Destroy steps.
@@ -734,7 +728,7 @@ Here's how to use all the steps together:
 
 <!-- ![](../static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
-<docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
+<DocImage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
 Each of these steps is described in [Terragrunt steps](#terragrunt-steps).
 
@@ -779,26 +773,20 @@ In **Advanced**, you can use the following options:
 
 ## Command line options
 
-:::note
-
-Currently, Terragrunt command line options are behind the feature flag `CDS_TERRAGRUNT_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 This setting allows you to set the Terragrunt CLI options for Terragrunt commands depending on the Terragrunt step type. For example: `-lock=false`, `-lock-timeout=0s`.
 
 ## YAML examples
 
 The following YAML examples shows you how to quickly add Terragrunt steps into your CD stages.
 
-```mdx-code-block
+
 import Tabs2 from '@theme/Tabs';
 import TabItem2 from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs2>
   <TabItem2 value="Terragrunt Plan" label="Terragrunt Plan" default>
-```
+
 
 Here is an example of the YAML for a Terragrunt Plan step:
 
@@ -851,10 +839,10 @@ Here is an example of the YAML for a Terragrunt Plan step:
                   timeout: 10m
 ```
 
-```mdx-code-block
+
   </TabItem2>
   <TabItem2 value="Terragrunt Apply" label="Terragrunt Apply">
-```
+
 
 Here is an example of the YAML for a Terragrunt Apply step that inherits from the previous Terragrunt Plan step:
 
@@ -870,10 +858,10 @@ Here is an example of the YAML for a Terragrunt Apply step that inherits from th
                   timeout: 10m
 ```
 
-```mdx-code-block
+
   </TabItem2>
   <TabItem2 value="Terragrunt Destroy" label="Terragrunt Destroy">
-```
+
 
 Here is an example of the YAML for a Terragrunt Destroy step that inherits from the previous Terragrunt Apply step:
 
@@ -889,10 +877,10 @@ Here is an example of the YAML for a Terragrunt Destroy step that inherits from 
                   timeout: 10m
 ```
 
-```mdx-code-block
+
   </TabItem2>
   <TabItem2 value="Terragrunt Rollback" label="Terragrunt Rollback">
-```
+
 
 Here is an example of the YAML for a Terragrunt Rollback step:
 
@@ -909,11 +897,11 @@ Here is an example of the YAML for a Terragrunt Rollback step:
 ```
 
 
-```mdx-code-block
+
   </TabItem2>
 
 </Tabs2>
-```
+
 
 ## Terraform logs
 

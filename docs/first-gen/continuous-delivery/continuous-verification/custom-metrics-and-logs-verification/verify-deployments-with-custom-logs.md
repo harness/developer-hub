@@ -97,7 +97,7 @@ Click **Add**. The Log Collection is added.
 
 ### Step 11: Expression for Host/Container
 
-The expression entered here should resolve to a host/container name in your deployment environment. By default, the expression is **${instance.host.hostName}**.
+The expression entered here should resolve to a host/container name in your deployment environment. By default, the expression is **$\{instance.host.hostName}**.
 
 ### Step 12: Analysis Time Duration
 

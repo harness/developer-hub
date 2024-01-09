@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This article introduces Harness 24/7 Service Guard. 
+This article introduces Harness 24/7 Service Guard.
 
 Most enterprises use multiple monitoring and verification tools for each stage of their microservice deployment, and multiple tools for monitoring the live microservice in production. Detecting and investigating regressions and anomalies across these tools consumes a lot of time. For those of you tasked with monitoring microservices, the following image will be familiar.
 
@@ -20,9 +20,9 @@ Harness solves this problem with Harness 24/7 Service Guard.
 
 Harness 24/7 Service Guard:
 
-* Collects all of your monitoring and verification tools into a single dashboard.
-* Applies Harness Continuous Verification unsupervised machine-learning to detect regressions and anomalies across transactions and events.
-* Lets you drill down to the individual issue and open it in the related tool.
+- Collects all of your monitoring and verification tools into a single dashboard.
+- Applies Harness Continuous Verification unsupervised machine-learning to detect regressions and anomalies across transactions and events.
+- Lets you drill down to the individual issue and open it in the related tool.
 
 Harness 24/7 Service Guard gives DevOps operational visibility across all your monitoring tools in all your production environments.
 
@@ -47,23 +47,20 @@ For 24/7 Service Guard, the queries you define to collect logs are specific to t
 
 24/7 Service Guard sits on top of all your Application Performance Monitoring (APM), verification, and logging tools. 24/7 Service Guard applies:
 
-* Predictive machine learning models for short-term behavior:
-	+ Applies deep neural nets to short-term history.
-	+ Detects unusual patterns due to spikes.
-	+ Adapts to drift over deployments.
-* Applies memory models for long term behavior:
-	+ Learns historical/cyclical trends.
-	+ Quantifies app reliability over Web and business transactions, based on the history of anomalous behavior.
-	+ Quantifies the importance of different Web and business transactions, based on app usage over short- and long-term periods.
+- Predictive machine learning models for short-term behavior:
+  - Applies deep neural nets to short-term history.
+  - Detects unusual patterns due to spikes.
+  - Adapts to drift over deployments.
+- Applies memory models for long term behavior:
+  - Learns historical/cyclical trends.
+  - Quantifies app reliability over Web and business transactions, based on the history of anomalous behavior.
+  - Quantifies the importance of different Web and business transactions, based on app usage over short- and long-term periods.
 
 ### Video Demonstration
 
 Here's a 2-minute video that explains Harness 24/7 Service Guard:
 
-
-<docvideo src="https://fast.wistia.net/embed/iframe/izo4qehiuu" />
-
-
+<DocVideo src="https://youtu.be/JjgqceHSYBw" />
 
 ### Using the Dashboard
 
@@ -88,5 +85,4 @@ Let's look at the dashboard in detail. The following image describes the 24/7 Se
 
 ### Next Step
 
-* [Set Up 24/7 Service Guard](../../24-7-service-guard/set-up-service-guard.md)
-
+- [Set Up 24/7 Service Guard](../../24-7-service-guard/set-up-service-guard.md)

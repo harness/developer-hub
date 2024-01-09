@@ -9,7 +9,13 @@ A [Software Bill of Materials (SBOM)](https://cyclonedx.org/capabilities/sbom/) 
 
 :::info
 
-Use this configuration for scanners that don't have built-in support in SSCA. For scanners with built-in support, [use the SSCA Orchestration step to generate SBOM](./generate-sbom.md) or [configure your pipeline to ingest results from an STO scanner step](./generate-sbom-blackduck.md). For a list of all SSCA-supported scanners, go to [What's supported for STO](/docs/security-testing-orchestration/whats-supported).
+Use this configuration for scanners that don't have built-in support in SSCA. For scanners with built-in support you can: 
+
+* [Use the SSCA Orchestration step to generate SBOM.](./generate-sbom.md) 
+* [Ingest results from a Blackduck STO scan step.](./generate-sbom-blackduck.md)
+* [Ingest results from an Aqua Trivy STO scan step.](./generate-sbom-aqua-trivy.md)
+
+For a list of all SSCA-supported scanners, go to [What's supported for STO](/docs/security-testing-orchestration/whats-supported).
 
 :::
 
@@ -32,14 +38,14 @@ Keys are used to sign and verify attestations.
 
    For example, this **Run** step uses [Aqua Trivy](https://aquasecurity.github.io/trivy/dev/docs/supply-chain/sbom/) to generate an SBOM.
 
-   ![](../static/ingesting-sbom-from-other-scanners-01.png)
-
    ```
     trivy image \
      --format spdx-json \
      --output /shared/customer_artifacts/result.spdx.json \
      ubuntu:22.04
    ```
+
+   ![](../static/ingesting-sbom-from-other-scanners-01.png)
 
    :::tip
 

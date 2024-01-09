@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 Harness Default Settings lets you configure parameters in your Account, Org, or Project scope for specific Harness modules.
 
@@ -32,10 +32,10 @@ Make sure you have the **view** and **edit** permissions for Default Settings.
 Default Settings include configurable module-specific parameters that you can customize based on your needs, such as enabling or disabling features at specific scopes.
 
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="accountscope" label="Account scope" default>
-```
+
 
 To access the Default Settings at the Account scope, do the following:
 
@@ -45,10 +45,10 @@ To access the Default Settings at the Account scope, do the following:
 
 2. Select **Default Settings**. The **Account Default Settings** appear.
 
-```mdx-code-block
+
 </TabItem>
   <TabItem value="orgscope" label="Org scope" default>
-```
+
 
 To access the Default Settings at the Org scope, do the following:
 
@@ -56,10 +56,10 @@ To access the Default Settings at the Org scope, do the following:
 
 2. Select **Default Settings**. The **Account Default Settings** appear.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="projscope" label="Project scope" default>
-```
+
 
 To access the Default Settings at the Project scope, do the following:
 
@@ -67,10 +67,10 @@ To access the Default Settings at the Project scope, do the following:
 
 2. Under **PROJECT SETUP**, select **Default Settings**. The **Account Default Settings** appear.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ### View and Edit Default Settings
 
@@ -150,6 +150,8 @@ The following settings are available for pipelines.
 - **Mandate Authorization for Custom Webhook Triggers:** Enable this setting to require that all custom triggers in this Harness account use API key tokens. For more information, go to [Enforcing authorization for custom triggers](/docs/platform/triggers/trigger-deployments-using-custom-triggers/#enforcing-authorization-for-custom-triggers).
 
 - **Enable Pipeline Execution Audit Events:** By default, the pipeline execution audit events such as Pipeline Start, Pipeline End, Stage Start, and Stage End are not displayed in Audit Trail. Enable this setting to display these events. For more information, go to [View an Audit Trail](/docs/platform/governance/audit-trail/#step-view-an-audit-trail).
+
+- **Run RBAC Validation before executing Inline Pipelines:** By default, before running any pipeline, Harness checks whether the user has access to all of the environments and other resources that the pipeline accesses. This check is run only for inline pipelines, not those stored in Git or other repositories. Turn off this setting if the check isn't required. Turning it off may cause pipelines to fail partway through execution (since later stages could have permission issues that haven't been checked beforehand).
 
 - **Do Not Delete Pipeline Execution Details:** When this is set to true, older pipeline executions remain in the system even when the corresponding pipelines are deleted. You can view these executions in the Pipeline Executions list and open them to view details, but you cannot re-run them. When this is set to false, Harness deletes all executions of a pipeline when that pipeline is deleted.
 

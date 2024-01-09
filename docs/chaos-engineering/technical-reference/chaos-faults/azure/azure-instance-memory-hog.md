@@ -62,12 +62,12 @@ stringData:
     <tr>
         <td> AZURE_INSTANCE_NAMES </td>
         <td> Names of the target Azure instances. </td>
-        <td> Multiple values can be provided as a comma-separated string. For example, <code>instance-1,instance-2. </code> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-instances-by-name"> stop instance by name.</a></td>
+        <td> Multiple values can be provided as a comma-separated string. For example, <code>instance-1,instance-2. </code> For more information, go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-stop#stop-instances-by-name"> stop instance by name.</a></td>
     </tr>
     <tr>
         <td> RESOURCE_GROUP </td>
         <td> The Azure Resource Group name where the instances will be created. </td>
-        <td> All the instances must be from the same resource group. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-memory-hog#multiple-workers"> resource group field in the YAML file. </a></td>
+        <td> All the instances must be from the same resource group. For more information, go to <a href="#multiple-workers"> resource group field in the YAML file. </a></td>
     </tr>
 </table>
 <h3>Optional fields</h3>
@@ -80,12 +80,12 @@ stringData:
     <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
+        <td> Defaults to 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
     </tr>
     <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive container kills (in seconds).</td>
-        <td> Defaults to 60s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+        <td> Defaults to 60s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
     </tr>
     <tr>
         <td> AZURE_AUTH_LOCATION </td>
@@ -95,32 +95,32 @@ stringData:
     <tr>
         <td> SCALE_SET </td>
         <td> Check if the instance is a part of Scale Set.</td>
-        <td> Defaults to <code>disable</code>. Also supports <code>enable</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-scale-set-instances"> scale set instances. </a></td>
+        <td> Defaults to <code>disable</code>. Also supports <code>enable</code>. For more information, go to <a href="./azure-instance-stop#stop-scale-set-instances"> scale set instances. </a></td>
     </tr>
     <tr>
         <td> MEMORY_CONSUMPTION </td>
         <td> Amount of memory to be consumed in the Azure instance (in megabytes). </td>
-        <td> Defaults to 500 MB. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-memory-hog#memory-consumption-in-megabytes"> memory consumption in megabytes. </a></td>
+        <td> Defaults to 500 MB. For more information, go to <a href="#memory-consumption-in-megabytes"> memory consumption in megabytes. </a></td>
     </tr>
     <tr>
         <td> MEMORY_PERCENTAGE </td>
         <td> Amount of memory to be consumed in the Azure instance (in percentage). </td>
-        <td> Defaults to 0. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-memory-hog#memory-consumption-in-percentage"> memory consumption in percentage. </a></td>
+        <td> Defaults to 0. For more information, go to <a href="#memory-consumption-in-percentage"> memory consumption in percentage. </a></td>
     </tr>
     <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> Number of workers used to run the stress process. </td>
-        <td> Defaults to 1. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-memory-hog#multiple-workers"> multiple workers. </a></td>
+        <td> Defaults to 1. For more information, go to <a href="#multiple-workers"> multiple workers. </a></td>
     </tr>
     <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target instances. </td>
-        <td> Defaults to parallel. Also supports <code>serial</code> sequence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Defaults to parallel. Also supports <code>serial</code> sequence. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
     </tr>
     <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+        <td> For example, 30s. For more information, go to <a href="../../chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
     </tr>
 </table>
 

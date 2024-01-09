@@ -8,10 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 In addition to the pipeline's default [codebase](./create-and-configure-a-codebase.md), you can use **Git Clone** or **Run** steps to clone additional code repos into the pipeline's workspace. For example, you can use this to:
 
@@ -36,10 +36,10 @@ You can use a **Git Clone** or **Run** step to clone an additional repo into a p
 
 For example, assume the [default codebase](#configure-the-default-codebase) is a repo that contains app code files, and the Dockerfile necessary to build the app image is in a different repo. You can use a **Git Clone** or **Run** step to clone the second repo into the workspace. Then, you can use a **Build and Push** step to build and push an image using files from both repos.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="gitclone" label="Add a Git Clone step" default>
-```
+
 
 Add a **Git Clone** step to clone a second repo into the pipeline's workspace.
 
@@ -146,10 +146,10 @@ If your [connector](#connector) uses SSH authentication, you can add a `PLUGIN_S
 
 Stage variables are configured in stage settings, not step settings.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 1. In your CI pipeline, select the stage with the **Git Clone** step, and then select the **Overview** tab.
 2. Under **Advanced**, select **New Variable**.
@@ -157,10 +157,10 @@ Stage variables are configured in stage settings, not step settings.
 4. Set the **Type** to **String**, and then select **Save**.
 5. Enter the desired timeout limit for the **Value**. This is an integer representing a number of seconds, such as `90`.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```yaml
     - stage:
@@ -172,17 +172,17 @@ Stage variables are configured in stage settings, not step settings.
             value: 90
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 Add this variable to all stages where you need to override the `SSH-keyscan` timeout limit.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="run" label="Add a Run step">
-```
+
 
 You can use scripts in [Run steps](../run-ci-scripts/run-step-settings.md) to clone multiple repos into a stage.
 
@@ -207,10 +207,10 @@ To use this command, you would replace:
 
 For information about **Run** step settings, go to [Use Run steps](../run-ci-scripts/run-step-settings.md).
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Build an artifact from both code repos
 
@@ -222,10 +222,10 @@ Depending on the default codebase, you might need to specify a non-root path for
 
 ## YAML examples
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="clone" label="Example with Git Clone step" default>
-```
+
 
 The following YAML example describes a pipeline that clones two code repos, one as the default codebase (`cloneCodebase: true`) and the second in the `GitClone` step.
 
@@ -280,10 +280,10 @@ pipeline:
                     dockerfile: /path/to/dockerfile
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="run" label="Example with Run step">
-```
+
 
 This example clones app code as the [default codebase](#configure-the-default-codebase) and then uses a **Run** step to clone a separate repo that has the Dockerfile necessary to build the app.
 
@@ -362,7 +362,7 @@ This example also uses [stage variables](../set-up-build-infrastructure/ci-stage
               failureStrategies: []
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+

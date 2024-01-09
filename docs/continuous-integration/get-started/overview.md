@@ -20,11 +20,7 @@ CI executes pipeline steps in containers, isolating code and dependencies from o
 
 The following video introduces Harness CI and walks through a basic Harness CI pipeline.
 
-<docvideo src="https://youtu.be/yQRwVjPTQ5E" />
-
-<!-- div class="hd--embed" data-provider="Wistia" data-thumbnail="">
-   <iframe src="//fast.wistia.net/embed/iframe/fsc2b05uxz" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" oallowfullscreen="" msallowfullscreen="" width="620" height="349"></iframe><script src="//fast.wistia.net/assets/external/E-v1.js" async=""></script>
-</div -->
+<DocVideo src="https://youtu.be/yQRwVjPTQ5E" />
 
 </details>
 
@@ -50,9 +46,8 @@ When a CI pipeline build finishes successfully, the build infrastructure then se
 
 The following video demonstrates how to set up a CI pipeline and run a build.
 
-<docvideo src="https://www.youtube.com/embed/r1GLYtOmJmM?feature=oembed" />
+<DocVideo src="https://www.youtube.com/embed/r1GLYtOmJmM?feature=oembed" />
 
-<!--div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/kZmOCLCpvmk/hqdefault.jpg"><iframe width=" 480" height="270" src="https://www.youtube.com/embed/r1GLYtOmJmM?feature=oembed" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
 </details>
 
 If you want to try creating a pipeline for yourself, these tutorials walk through the pipeline creation process:

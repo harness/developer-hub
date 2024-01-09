@@ -4,10 +4,10 @@ description: Use step groups to run health checks on separate background service
 sidebar_position: 40
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 In a CI pipeline, health checks confirm that services are running before the build runs other steps that need to interact with those services. This topic explains how to run a health check on services running in **Background** steps before running the rest of the steps in the stage. This example uses [step groups](../optimize-and-more/group-ci-steps-using-step-groups.md) to run health checks on multiple background services.
 
@@ -48,10 +48,10 @@ Add a **Background** step to each step group. A **Background** step runs a servi
 
 For a **Background** step to run a service, the build environment must have the necessary binaries. Depending on the stage's build infrastructure, **Background** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Background step Container Registry and Image settings](./background-step-settings.md#container-registry-and-image).
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 ```yaml
     - stage:
@@ -99,10 +99,10 @@ For a **Background** step to run a service, the build environment must have the 
                                 - "-p 5434"
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="selfhosted" label="Self-hosted Kubernetes cluster">
-```
+
 
 ```yaml
     - stage:
@@ -158,10 +158,10 @@ For a **Background** step to run a service, the build environment must have the 
                                 - "-p 5434"
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Add health checks
 
@@ -170,10 +170,10 @@ In each step group, after the **Background** step, add a [Run step](../run-ci-sc
 For the **Run** step to run the health check commands, the build environment must have the necessary binaries. Depending on the stage's build infrastructure, **Run** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Run step Container Registry and Image settings](../run-ci-scripts/run-step-settings.md#container-registry-and-image).
 
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 ```yaml
     - stage:
@@ -239,10 +239,10 @@ For the **Run** step to run the health check commands, the build environment mus
                                 psql -U postgres -d test2 -h Background_2 -p 5434
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="selfhosted" label="Self-hosted Kubernetes cluster">
-```
+
 
 ```yaml
     - stage:
@@ -320,10 +320,10 @@ For the **Run** step to run the health check commands, the build environment mus
                                 psql -U postgres -d test2 -h localhost -p 5434
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Test and finalize the pipeline
 
@@ -341,10 +341,10 @@ Once you've confirmed that the background services and health checks are functio
 
 These pipeline YAML examples use two step groups to run health checks on two PostgreSQL services.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
+
 
 ```yaml
 pipeline:
@@ -429,10 +429,10 @@ pipeline:
             spec: {}
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="selfhosted" label="Self-hosted Kubernetes cluster">
-```
+
 
 ```yaml
 pipeline:
@@ -538,7 +538,7 @@ pipeline:
                    ...
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+

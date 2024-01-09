@@ -59,7 +59,7 @@ The following permissions are required:
 * [Infrastructure monitoring](/docs/self-managed-enterprise-edition/monitor-harness-on-prem)
 * [Backup and restore](/docs/self-managed-enterprise-edition/back-up-and-restore-helm)
 * [External Database](/tutorials/self-managed-enterprise-edition)
-* Disaster Recovery (coming soon)
+* [Disaster Recovery](/tutorials/self-managed-enterprise-edition/set-up-disaster-recovery)
 
 ## What's not supported
 * Self-Managed Enterprise Edition is not validated with the FIPS-enabled K8S environment.

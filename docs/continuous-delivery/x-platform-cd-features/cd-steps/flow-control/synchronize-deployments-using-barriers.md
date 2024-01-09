@@ -14,6 +14,12 @@ Harness provides multiple options for controlling resource usage and protecting 
 
 ## Barriers and synchronization
 
+:::note
+
+Barrier steps are only supported inside Deploy and Custom stage types.
+
+:::
+
 When deploying interdependent services, such as microservices or a large and complicated application, there might be a need to coordinate the timing of the different components' deployments. A common example is the need to verify a group of services only after *all the services* are deployed successfully.
 
 Harness address this scenario using Barriers. Barriers allow you to synchronize different stages and step groups in your Pipeline, and control the flow of your deployment systematically.
@@ -59,12 +65,6 @@ To apply a barrier, do the following:
 You cannot use a Harness variable expression in **Barrier Reference**.Now you can add another Barrier step using the same name to another stage at the point where you want to synchronize execution.
 
 ## Using Barriers with Looping strategies
-
-:::note
-
-Barrier support in looping strategies is behind the feature flag `CDS_NG_BARRIER_STEPS_WITHIN_LOOPING_STRATEGIES`. If this flag is turned off, synchronization might not work correctly in looping strategies. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-::: 
 
 There are a few behaviors to note when using Barriers within a looping strategy (for example, when setting up a matrix that creates multiple stages that run in parallel, and the stages contain a Barrier step):
 

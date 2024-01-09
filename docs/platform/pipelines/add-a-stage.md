@@ -10,10 +10,10 @@ redirect_from:
   - /docs/platform/pipelines/add-a-custom-stage
 ---
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 A stage is a part of a pipeline that contains the logic to perform a major segment of a larger workflow defined in a pipeline. Stages are often based on the different workflow milestones, such as building, approving, and delivering.
 
@@ -63,10 +63,10 @@ Stage variables are variables that you add to a stage and then reference in the 
 
 You can add stage variables in the Pipeline Studio's Visual Editor or YAML Editor.
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual">
-```
+
 
 To add stage variables, go to a stage's **Overview** tab, expand the **Advanced** section, and then select **Add Variable**.
 
@@ -77,10 +77,10 @@ To add stage variables, go to a stage's **Overview** tab, expand the **Advanced*
 <figcaption>The <b>Overview</b> tab for a <b>Deploy</b> stage.</figcaption>
 </figure>
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML" default>
-```
+
 
 ```yaml
     - stage:
@@ -92,10 +92,10 @@ To add stage variables, go to a stage's **Overview** tab, expand the **Advanced*
             value: 90
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 Variable values can be [fixed values, runtime inputs, or expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
@@ -150,9 +150,11 @@ Custom stages *don't* support [rollback](./define-a-failure-strategy-for-pipelin
 
 ### Environments and Infrastructure Definitions in Custom stages
 
-:::note
+:::info note
 
-Currently, the Environments and Infrastructure Definitions in Custom stages feature is behind the feature flag `CDS_CUSTOM_STAGE_WITH_ENV_INFRA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+This feature will be included an in upcoming release.
+
+The Environments and Infrastructure Definitions in the Custom stages feature will be behind the feature flag `CDS_CUSTOM_STAGE_WITH_ENV_INFRA`. Contact [Harness Support](mailto:support@harness.io) to inquire about the feature.
 
 :::
 

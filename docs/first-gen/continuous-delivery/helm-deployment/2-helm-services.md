@@ -208,9 +208,9 @@ In the **Values YAML Override** section, you can enter the YAML for your values.
 
 The **Values YAML** dialog has the following placeholders that save you from having to enter in some variables:
 
-* **${NAMESPACE}** - Replaced with the Kubernetes namespace, such as **default**. You will specify the namespace of the cluster in the **Namespace** setting when adding the Harness Environment infrastructure details later, and the placeholder will be replaced with that namespace.
-* **${DOCKER\_IMAGE\_NAME}** - Replaced with the Docker image name.
-* **${DOCKER\_IMAGE\_TAG}** - Replaced with the Docker image tag.
+* **$\{NAMESPACE}** - Replaced with the Kubernetes namespace, such as **default**. You will specify the namespace of the cluster in the **Namespace** setting when adding the Harness Environment infrastructure details later, and the placeholder will be replaced with that namespace.
+* **$\{DOCKER\_IMAGE\_NAME}** - Replaced with the Docker image name.
+* **$\{DOCKER\_IMAGE\_TAG}** - Replaced with the Docker image tag.
 
 For information about how values from different source are compiled at runtime, see [Helm Values Priority](4-helm-workflows.md#helm-values-priority).
 

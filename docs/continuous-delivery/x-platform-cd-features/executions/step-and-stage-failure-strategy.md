@@ -12,13 +12,35 @@ Failure strategies are a critical pipeline design component that determine what 
 
 You can apply a failure strategy to the following:
 
-* Step
-* Step Group
-* Stage
+- Step
+- Step Group
+- Stage
 
 For details on strategy options and how strategies work, see [step and stage failure strategy settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings).
 
-[Add a stage](/docs/platform/Pipelines/add-a-stage) before you define a failure strategy for stages and steps.
+[Add a stage](/docs/platform/pipelines/add-a-stage.md) before you define a failure strategy for stages and steps.
+
+## Set up a failure strategy in CD Stage
+
+## Set up Failure straetgy.
+:::note
+1. CD stage need a failure strategy for **AllErrors** failure type. Even if you set up lots of error still the pipeline will ask for defining an **ALLError** failure strategy. 
+2. Users don't have to go and set up failure strategy, it's already there by default when CD stage is created. 
+3. You only have to update the strategy :-
+    - If you want **AllErrors** failure type to be something else other than default.
+    - If you want a specific failure strategy for specific type of errors.
+:::
+
+To learn more about [Failure type as well as actions needed to be performed post failure.](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings.md)
+
+1. Set up a [CD stage](/docs/platform/pipelines/add-a-stage.md).
+2. In the stage, select **Advanced** in the stage settings. 
+![](./static/failure_strategy_all_errors.png)
+3. In **Failure Strategy**, review the default **All Errors** failure type and **Rollback Stage** as action.
+4. The default should be fine for most of the cases. If you want, you can change to handle different failure type with a different failure strategy.
+![](./static/failure_strategy_all_errors_1.png)
+5. If you want to change, or add a new Strategy for a specific type of failure, click on **Select Failure Type**.
+
 
 ## Visual Summary
 
@@ -26,13 +48,13 @@ Here's a quick video of how to set up failure strategies:
 
 <!-- Video:
 https://www.youtube.com/watch?v=4KYGllvJ42U-->
-<docvideo src="https://www.youtube.com/watch?v=4KYGllvJ42U" />
+<DocVideo src="https://www.youtube.com/watch?v=4KYGllvJ42U" />
 
 Here is what a Manual Intervention action looks like when a failure occurs:
 
 <figure>
 
-![](./static/define-a-failure-strategy-on-stages-and-steps-11.png)  
+![](./static/define-a-failure-strategy-on-stages-and-steps-11.png)
 
 <figcaption>Figure 1: Manual intervention.</figcaption>
 </figure>
@@ -45,15 +67,14 @@ Harness pipeline stages and steps both include **Conditional Execution** and **F
 
 <figure>
 
-<docimage path={require('./static/define-a-failure-strategy-on-stages-and-steps-12.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/define-a-failure-strategy-on-stages-and-steps-12.png')} width="80%" height="80%" title="Click to view full size image" />
 
 <figcaption>Figure 2: Conditional execution and failure strategy settings.</figcaption>
 </figure>
 
-
 Using these settings together in multiple stages requires some consideration.
 
-Let's say you have a Pipeline with two stages: **stage 1** followed by **stage 2**. 
+Let's say you have a Pipeline with two stages: **stage 1** followed by **stage 2**.
 
 Stage 2's **Conditional Execution** is set to **Execute this step only if prior stage or step failed**. Stage 1's **Failure Strategy** is set to **Rollback Stage on All Errors**.
 
@@ -79,11 +100,12 @@ To add an additional stage failure strategy, click **Add**.
 
 Select the following:
 
-* **On failure of type:** select one or more of the error types. For more information, go to [step and stage failure strategy settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings).
+- **On failure of type:** select one or more of the error types. For more information, go to [step and stage failure strategy settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings).
 
 Currently, only **All Errors** is supported. **Action:** select one of the available actions.
-* **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
-* **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
+
+- **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
+- **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
 
 ## Add a step failure strategy
 
@@ -97,11 +119,12 @@ Click **Failure Strategy** and click **Add**.
 
 Select the following:
 
-* **On failure of type:** select one or more of the error types. For more information, go to [step and stage failure strategy settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings).
+- **On failure of type:** select one or more of the error types. For more information, go to [step and stage failure strategy settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings).
 
-Currently, only **All Errors** is supported.* **Action:** select one of the available actions.
-* **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
-* **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
+Currently, only **All Errors** is supported.\* **Action:** select one of the available actions.
+
+- **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
+- **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
 
 ## Retry count expression
 
@@ -109,7 +132,7 @@ When you set the failure strategy to **Retry Step**, you can specify the retry c
 
 <figure>
 
-![picture 0](static/3815dc19071beaa86061a1b4f82fe42cc4d6b97a2ea6c5eb688649884453437a.png)  
+![picture 0](static/3815dc19071beaa86061a1b4f82fe42cc4d6b97a2ea6c5eb688649884453437a.png)
 
 <figcaption>Figure 3: Retry count.</figcaption>
 </figure>
@@ -120,7 +143,7 @@ Harness includes a `retryCount` built-in expression that resolves to the total n
 <+execution.steps.STEP_ID.retryCount>
 ```
 
-You can use this expression in a Shell Script step script anywhere after the step that you identify in the expression. 
+You can use this expression in a Shell Script step script anywhere after the step that you identify in the expression.
 
 For example, here is a script that resolves the retry count for the step with the Id `ShellScript_1`:
 
@@ -134,8 +157,6 @@ During pipeline execution, the expression would resolve to something like this:
 retry count of ShellScript_1: 2
 ```
 
-
 ## Reference material
 
-* [Stage and step conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings)
-
+- [Stage and step conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings)

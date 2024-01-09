@@ -1,9 +1,9 @@
 # Continuous Error Tracking Agent compatibility
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 
 This article provides a list of technologies that can be used with the Continuous Error Tracking (CET) Agent. These technologies include operating systems (OS), programming languages, third-party software, and tools, along with their respective versions.
@@ -32,6 +32,7 @@ The CET Agent can be installed on a variety of operating systems. The Agent requ
 | Amazon Linux (Arm) | 2 (Graviton 2) |
 | Amazon Linux | 2+ |
 | AIX | 6.1+, 7.1, 7.2, 8+ |
+| Mac | 10.15+ (Catalina) |
 
 </TabItem>
 
@@ -44,7 +45,7 @@ The CET Agent supports Java as well as other languages that run on top of the Ja
 <details>
 <summary><b>Supported languages</b></summary>
 
-| **Language ** | **Minimum Version** | **Comments** |
+| **Language** | **Minimum Version** | **Comments** |
 | --- | --- | --- |
 | Java | 6 | - |
 | Kotlin | 1.5 | Requires source attach |
@@ -130,6 +131,24 @@ The IBM JVM(J9) is supported only on AIX., and include the following:
 When attaching the CET Agent to an IBM JVM, include the VM flag `-Xshareclasses:none` to ensure proper functionality. This flag disables class sharing, which could otherwise hinder the Agent's performance.
 
 :::
+
+</details>
+
+
+<details>
+<summary><b>Supported logging frameworks</b></summary>
+
+| **Framework** | **Minimum Version** | **Maximum Supported Version** |
+| --- | --- | --- |
+| Akka | 2.4.0 | 2.8.5 |
+| ACL Simplelog | 1.0 | 1.2 |
+| JBoss | 3.0.0.GA | 3.5.3.Final |
+| Log4j2 | 2.0.0 | 2.20.0 |
+| Log4j2 async | 2.0.0 | 2.20.0 |
+| Logback | 0.9.26 | 1.4.11 |
+| SLF4J | 1.6.6 | 1.7.36 |
+| Tinylog | Not applicable | Not applicable |
+| JUL | Not applicable | Not applicable |
 
 </details>
 

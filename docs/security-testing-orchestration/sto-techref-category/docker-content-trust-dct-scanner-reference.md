@@ -9,29 +9,38 @@ You can run Docker Content Trust (DCT) scans on your container images using a Se
 
 ## Important notes for running Docker Content Trust scans in STO
 
+
 ### Docker-in-Docker requirements
 
-```mdx-code-block
+
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
+
 
 <StoDinDRequirements />
 
 ### Root access requirements
 
-```mdx-code-block
+
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-```
+
 
 <StoRootRequirements />
+
+### For more information
+
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+
+<StoMoreInfo />
 
 ## Security step settings for Docker Content Trust scans in STO
 
 ### Target and variant
 
-```mdx-code-block
+
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-```
+
 
 <StoLegacyTargetAndVariant />
 
@@ -45,25 +54,25 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 ### Container image scan settings
 
-```mdx-code-block
+
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
-```
+
 
 <StoLegacyContainer />
 
 ### Ingestion file
 
-```mdx-code-block
+
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
+
 
 <StoLegacyIngest />
 
 ### Fail on Severity
 
-```mdx-code-block
+
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
+
 <StoSettingFailOnSeverity />
 
 

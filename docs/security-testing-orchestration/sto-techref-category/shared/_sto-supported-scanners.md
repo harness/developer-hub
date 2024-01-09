@@ -21,7 +21,9 @@ If you use a scanner that isn't listed in the following table, you can still ing
         </td>
         <td valign="top">
         	<ul>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference">Checkmarx</a>  — The following workflows are supported:
+          		<li>
+                <a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference">Checkmarx</a> 
+                 — The following workflows are supported:
                 <ul>
                   <li>Ingestion workflows for all Checkmarx One services (including SAST and SCA) that can publish scan results in SARIF format</li>
                   <li>Orchestration, Extraction, and Ingestion workflows for Checkmarx SAST and Checkmarx SCA scans</li>

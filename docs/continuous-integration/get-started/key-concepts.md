@@ -46,11 +46,21 @@ For example, the maven `m2` repo is stored in `/root/.m2` by default. If your Bu
 
 ### Steps
 
-A stage contains one or more steps. Each step is a series of commands that perform a task. For example, A **Build and Push** step builds an image and pushes it to a cloud repo, a **Run** step runs a series of shell commands, and so on.
+A stage contains one or more steps. Each step is a series of commands that perform a task. For example, A **Build and Push** step builds an image and pushes it to an artifact repo, a **Run** step runs a series of shell commands, and so on.
 
-Harness CI includes an extensive Step Library for common CI tasks: building artifacts, uploading to cloud repos, running tests, and so on. For more information, go to [CI pipeline creation overview](../use-ci/prep-ci-pipeline-components.md).
+Harness CI includes an extensive **Step Library** for common CI tasks: building artifacts, uploading to cloud repos, running tests, and so on. For more information, go to [CI pipeline creation overview](../use-ci/prep-ci-pipeline-components.md).
 
 ![](./static/ci-pipeline-basics-510.png)
+
+:::info Root and non-root users
+
+Steps run as the root user, generally. For example, with Harness Cloud build infrastructure, steps run directly on the host and, therefore, run as the root user.
+
+For services running on containers (which are steps where you specify a **Container Registry** and **Image** to use to execute the step's commands), you can use the **Run as User** setting to specify a user to use for that container.
+
+With Kubernetes cluster build infrastructure, you can use the **Run as User** setting to specify a user to use for individual steps, or you can [set a default user for all steps](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#run-as-user-or-run-as-non-root) and then override the default user as needed for individual steps.
+
+:::
 
 ## Tests
 
@@ -78,9 +88,9 @@ If you decide to split your pipeline into multiple stages, you need to make sure
 
 Caching expedites job execution by reusing data from expensive fetch operations that ran in previous jobs. You can also use caching to share data across stages. For example, you can use **Save Cache** and **Restore Cache** steps to save a cache to a cloud storage bucket and restore it later. For more information, go to [Share and cache CI data](/docs/category/share-and-cache-ci-data).
 
-### Remote Docker layer caching
+### Docker layer caching
 
-Harness enables remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling them to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
+[Docker layer caching](../../../docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) can dramatically improve build time by sharing layers across pipelines and stages.
 
 ### Artifact repos
 

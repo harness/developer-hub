@@ -14,7 +14,7 @@ You can use the Dry Run step to check your manifests before deployment. You can 
 You can reference the resolved manifest from the Dry Run step in subsequent steps using a Harness variable expression.
 
 ```
-<+pipeline.stages.[Stage_Id].spec.execution.steps.[Step_Id].k8s.ManifestDryRun>
+<+pipeline.stages.[Stage_Id].spec.execution.steps.[Step_Id].k8s.manifestDryRun>
 ```
 
 :::note
@@ -40,14 +40,14 @@ For example, here is a stage with a Dry Run step followed by an Approval step an
 
 To add the Dry Run step, do the following:
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. In the CD stage **Execution**, select **Add Step**.
 2. Select the **Dry Run** step.
@@ -70,10 +70,10 @@ import TabItem from '@theme/TabItem';
 
 The Dry Run step is ready.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 1. In **Pipeline Studio**, select **YAML**.
 2. Paste the following YAML example and select **Save**:
@@ -87,10 +87,10 @@ The Dry Run step is ready.
                   timeout: 10m
 ```
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Step output example
 
@@ -112,7 +112,7 @@ Done.
 You can reference the resolved dry run manifest from the Dry Run step using this Harness expression:
 
 ```
-<+pipeline.stages.[Stage_Id].spec.execution.steps.[Step_Id].k8s.ManifestDryRun>
+<+pipeline.stages.[Stage_Id].spec.execution.steps.[Step_Id].k8s.manifestDryRun>
 ```
 
 For example, if the stage Id is `Deploy` and the Dry Run step Id is `Dry_Run` the expression would be:

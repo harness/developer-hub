@@ -113,14 +113,14 @@ Now you can define the rules for the freeze window.
 
 Let's look at an account-level example that applies a freeze to all orgs and projects from July 3rd to 5th and notifies users by email (`john.doe@harness.io`) and Harness user group (All Account Users).
 
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
+
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 1. In **Overview**, click **Continue**.
 2. In **Coverage**, click **Add rule**.
 3. In **Name**, enter a name for the rule. 
@@ -186,10 +186,10 @@ import TabItem from '@theme/TabItem';
 
 15. Click **Save**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 1. Click **YAML**.
 2. Paste the following YAML example:
@@ -234,10 +234,10 @@ freeze:
             - john.doe@harness.io
       enabled: true
 ```
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 ## Notify users of freeze window events
 
@@ -245,7 +245,8 @@ You can notify Harness users and people outside of your Harness account using fr
 
 You can notify users of the following freeze window events:
 
-- Freeze window is enabled.
+- Freeze window is enabled. The notification is sent when you enable the freeze window.
+- Freeze window is enabled and active. The notification is sent at the deployment freeze's configured start time provided that the freeze window is enabled.
 - Deployments are rejected due to freeze window. This includes any trigger invocations that are rejected due to a freeze window.
   
 In **Freeze Notification Message**, you can add a custom notification message.
@@ -260,10 +261,10 @@ You can use the following notification methods:
 
 To enable notifications, do the following:
 
-```mdx-code-block
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-```
+
 
 1. In a freeze window, click **Notify**.
 2. Click **Notifications**.
@@ -274,10 +275,10 @@ To enable notifications, do the following:
 7. Click **Finish**.
 8. Click **Apply Changes**.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="YAML" label="YAML">
-```
+
 
 1. In the freeze window, click **YAML**.
 2. Enter the freeze window YAML notification events and method. For example, this YAML uses all events and the Email and User Group methods:
@@ -288,6 +289,7 @@ To enable notifications, do the following:
       identifier: example
       events:
         - type: FreezeWindowEnabled
+        - type: OnEnableFreezeWindow
         - type: DeploymentRejectedDueToFreeze
         - type: TriggerInvocationRejectedDueToFreeze
       notificationMethod:
@@ -301,10 +303,10 @@ To enable notifications, do the following:
 ```
 For examples of all methods, see [Add a Pipeline Notification Strategy](../x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+
 
 
 ## Enabling and disabling freeze windows

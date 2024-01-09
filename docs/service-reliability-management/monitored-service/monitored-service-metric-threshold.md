@@ -7,10 +7,6 @@ sidebar_position: 2
 
 # Custom thresholds for service health analysis
 
-:::info note
-Currently, this feature is behind the feature flag `CVNG_METRIC_THRESHOLD`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 In addition to utilizing AI/ML for service health analysis of monitored services, you use the custom threshold feature to set up rules that can change how service health behaves. You can create the following rules:
 
 - **Ignore Threshold**: Instructs Harness to skip analyzing service health for specific metric or value combinations.
@@ -30,7 +26,7 @@ Before you begin setting up custom thresholds for service health, ensure you've 
    
 4. When adding metrics, choose the **Service Health** option to view the threshold settings.
 
-   <docimage path={require('./static/monitored-service-threshold.png')} />
+   <DocImage path={require('./static/monitored-service-threshold.png')} />
 
 
 ## Define threshold rules
@@ -60,7 +56,7 @@ To set the Ignore Thresholds rule:
    - **Absolute Value**: Select this option and enter either the **Greater than** value or the **Lesser than** value, depending on your preference.
    - **Percentage Deviation**: Select this option and enter the **Lesser than** value.
 
-<docimage path={require('./static/monitored-service-ignore-threshold.png')} />
+<DocImage path={require('./static/monitored-service-ignore-threshold.png')} />
 
 
 ### Fail-Fast Threshold
@@ -92,7 +88,7 @@ To set Fail-Fast Thresholds rule:
    -  **Percentage Deviation**: Select this option and enter the **Lesser than** value.
   
 
-<docimage path={require('./static/monitored-service-failfast-threshold.png')} />
+<DocImage path={require('./static/monitored-service-failfast-threshold.png')} />
 
 
 ## Impact of Fail-Fast Threshold breach on the Service Health dashboard
@@ -107,14 +103,14 @@ The screenshots below show a monitored service's threshold rule and the events o
 
 #### Fail-Fast Threshold Rule implementation in a monitored service
 
-<docimage path={require('./static/monitored-service-failfast-example.png')} />
+<DocImage path={require('./static/monitored-service-failfast-example.png')} />
 
 
 #### Impact of Fail-Fast Threshold Breach: Service Health score drops to zero
 
-<docimage path={require('./static/monitored-service-failfast-graph-example.png')} />
+<DocImage path={require('./static/monitored-service-failfast-graph-example.png')} />
 
 
 #### Impact of Fail-Fast Threshold breach: Metrics Graph transforms to "Anomalous" state and turns deep red
 
-<docimage path={require('./static/monitored-service-failfast-metric-example.png')} />
+<DocImage path={require('./static/monitored-service-failfast-metric-example.png')} />

@@ -1,0 +1,20 @@
+# it injects the chaos into the egress traffic for specific IPs/hosts
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: windows-ec2-blackhole-chaos
+    spec:
+      components:
+        env:
+        # supports comma-separated destination ips
+        - name: IP_ADDRESSES
+          value: '8.8.8.8,192.168.5.6'
+        - name: EC2_INSTANCE_ID
+          value: 'instance-1'
+        - name: REGION
+          value: 'us-west-2'

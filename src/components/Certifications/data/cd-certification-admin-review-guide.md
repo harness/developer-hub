@@ -20,7 +20,7 @@
 | Understanding and implementing values overrides| [Add and override values YAML files](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files/) |
 | Handling Helm Chart parameter control| [Deploy using Helm Chart](https://developer.harness.io/tutorials/cd-pipelines/kubernetes/helm-chart/) |
 | **6. Secure and Efficient Artifact Management**  | |
-| Onboarding new applications using Harness CD  | [Onboarding guide](https://developer.harness.io/docs/continuous-delivery/get-started/onboarding-guide/)|
+| Onboarding new applications using Harness CD  | [Onboarding guide](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/new-user/onboarding-path/)|
 | Integrating Harness with artifact repositories | [Connect to an Artifact repository](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo/)|
 | **7. Implementing and Utilizing GitOps with Harness** | |
 | Understanding and addressing drift between Git and deployed workloads  | [Monitor deployments and services in CD dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/)|

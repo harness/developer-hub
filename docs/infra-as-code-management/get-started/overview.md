@@ -7,10 +7,6 @@ redirect_from:
   - /docs/infra-as-code-management/get-started-with-iacm/iacm
 ---
 
-:::note
-This module is currently available in Beta for selected customers. Contact Harness for details about how to join the Beta program. 
-:::
-
 Infrastructure as Code (IaC) is the ability to define resources as code definitions. It allows for repeatable infrastructure configuration. Examples of IaC tools are HashiCorp Terraform and Amazon CloudFormation.
 
 Harness Infrastructure as Code Management (IaCM) provides a way to avoid the following common issues:

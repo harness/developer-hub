@@ -4,40 +4,40 @@ description: Technologies supported by Harness Platform
 sidebar_label: What's supported
 sidebar_position: 1
 ---
-```mdx-code-block
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-```
+
 
 This topic lists the supported Harness Platform features and integrations you can use for deploying and verifying your apps.
 
 For a comprehensive list that includes all Harness modules, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
 
-```mdx-code-block
+
   <Tabs>
   
 
 
   <TabItem value="Git Experience" label="Git Experience">
-```
+
 
 import Gitxsup from '/docs/get-started/shared/gitx-whats-supported.md'
 
 <Gitxsup />
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="AuthN" label="AuthN">
-```
+
 
 import Authsup from '/docs/get-started/shared/auth-supported.md'
 
 <Authsup />
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Accounts/Orgs/Projects/Other resources" label="Accounts Orgs Projects">
-```
+
 
 The Harness Platform is structured hierarchically with three levels of access: Account, Organization (Org), and Project. Each level can have its own set of permissions configured, allowing for delegation of responsibilities to various teams. This approach facilitates efficient organization and management of resources, enabling granular access control that is both scalable and easy to manage.
 
@@ -73,10 +73,10 @@ The following table lists the resources that are available at various scopes in 
 | **Governance** | Yes | Yes | Yes |
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Delegates" label="Delegates">
-```
+
 
 import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-table.md'
 
@@ -91,10 +91,10 @@ import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-tabl
 - [Install delegate maximal image without certified SDKs](/docs/get-started/supported-platforms-and-technologies/#sdks-installed-with-harness-delegate)
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Notifications" label="Notifications">
-```
+
 
 Notifications are used to alert your team of new, resurfaced, or critical events. With notifications, you can ensure your team is aware of important events that require action.
 
@@ -107,20 +107,20 @@ Harness Platform supports the following notification methods.
 - Webhook
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Secret management" label="Secrets Mgmt">
-```
+
 
 import Secretmgmtsup from '/docs/get-started/shared/secret-management-supported.md'
 
 <Secretmgmtsup />
 
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Access Control" label="Access Control">
-```
+
 
 
 Role-based access control (RBAC) lets you control who can access your resources and what actions they can perform on the resources. To do this, a Harness account administrator assigns resource-related permissions to members of user groups.
@@ -157,16 +157,16 @@ Using RBAC helps you:
 
    JIT provisioning in Harness lets you provision users automatically when they first sign-in to Harness through SAML SSO. Harness supports JIT provisioning only for new users logging in through an IdP, such as Okta.
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
   <TabItem value="Self-Managed Enterprise Edition" label="Self-Managed EE">
-```
+
 
 import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-platforms.md';
 
 <Smp />
 
-```mdx-code-block
-  </TabItem>
+
+</TabItem>
 </Tabs>
-```
+

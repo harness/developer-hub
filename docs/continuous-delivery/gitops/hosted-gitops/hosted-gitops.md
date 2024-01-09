@@ -21,7 +21,7 @@ To use a Harness Hosted GitOps agent, do the following:
 3. Select **GitOps Agents**.
 4. Select **New GitOps Agent**, and select **Hosted Agent**.
 
-  <docimage path={require('./static/76450d7cf9497677c96fb1f5d788cf80736e70b62228317f53197df7a3e9cbff.png')} width="60%" height="60%" title="Click to view full size image" />  
+  <DocImage path={require('./static/76450d7cf9497677c96fb1f5d788cf80736e70b62228317f53197df7a3e9cbff.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 5. In **Agent Name**, enter a name for the agent and Harness will create a unique identifier.
 6. Select **Provision Now**.

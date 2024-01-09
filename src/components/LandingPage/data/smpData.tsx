@@ -84,7 +84,19 @@ export const SMPList: CardItem[] = [
     ),
     newDoc: true,
     type: [docType.Documentation],
-    time: "10 min",
+    time: "15 min",
     link: "/tutorials/self-managed-enterprise-edition/use-aws-elasticache",
+  },
+  {
+    title: "Set up disaster recovery",
+    module: MODULES.smp,
+    icon: "img/logo.svg",
+    description: (
+      <>Learn how to set up disaster recovery for Harness Self-Managed Enterprise Edition installations.</>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "20 min",
+    link: "/tutorials/self-managed-enterprise-edition/set-up-disaster-recovery",
   },
 ];
