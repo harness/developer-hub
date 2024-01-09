@@ -135,6 +135,8 @@ For more information about configuring connectivity, go to:
 
 ## Can't connect to Docker daemon
 
+<!-- transferred with Plugins revision -->
+
 <DindTrbs />
 
 ## Out of memory errors with Gradle

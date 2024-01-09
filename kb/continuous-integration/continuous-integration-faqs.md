@@ -836,6 +836,10 @@ Generally, you can use DinD on platforms that don't support privileged mode, suc
 
 This error occurs because AWS Fargate doesn't support the use of privileged containers. Privileged mode is required for DinD.
 
+### Can't connect to Docker daemon
+
+Go to [GitHub Action step can't connect to Docker daemon](#github-action-step-cant-connect-to-docker-daemon).
+
 ## Gradle
 
 ### How do I enable the Gradle daemon in builds?
@@ -905,6 +909,31 @@ When running multiple instances of the same GitHub Action, you must set `XDG_CAC
 
 If you need a variable's value to remain distinct, either run the steps sequentially (rather than in parallel), or find a way to differentiate the variable that each step is modifying, such as by exporting each value as an output variable where you use [looping strategy expressions](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#looping-strategy-expressions) to assign unique identifiers to each variable name.
 
+### GitHub Action step can't connect to Docker daemon
+
+Error messages like `cannot connect to the Docker daemon` indicate that you might have multiple steps attempting to run Docker at the same time. This can occur when running GitHub Actions in stages that have [Docker-in-Docker (DinD) Background steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md).
+
+**Actions that launch DinD:** You can't use GitHub Actions that launch DinD in the same stage where DinD is already running in a Background step. If possible, run the GitHub Action in a separate stage or try to find a GitHub Action that doesn't use DinD.
+
+**Actions that launch the Docker daemon:** If your Action attempts to launch the Docker daemon, and you have a DinD Background step in the same stage, you must add `PLUGIN_DAEMON_OFF: true` as a [stage variable](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#stage-variables). For example:
+
+```yaml
+        variables:
+          - name: PLUGIN_DAEMON_OFF
+            type: String
+            description: ""
+            required: false
+            value: "true"
+```
+
+**Harness Cloud:** You don't need DinD Background steps with Harness Cloud build infrastructure, and you can run GitHub Actions in [Action steps](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step.md) instead of Plugin steps.
+
+### GitHub Action step fails with "not a git repository or any of the parent directories"
+
+This error occurs if the GitHub Action you're using requires a codebase to be present, such as the [GraphQL Inspector](https://github.com/marketplace/actions/graphql-inspector) or [DevCycle Feature Flag Code Usages](https://github.com/marketplace/actions/devcycle-feature-flag-code-usages) Actions. The Action step isn't compatible with such Actions at this time.
+
+If the Action allows you to override the `working-directory`, such as with the [CodeCov Action](https://github.com/codecov/codecov-action/blob/e1dd05cde2ed37d100f658b34ea423728ba1812e/action.yml#L107), you can use this setting to specify the correct working directory. If no such setting is available, then the Action is not compatible with Harness CI at this time.
+
 ### Can I integrate my CI builds with the Datadog Pipeline Visibility feature?
 
 Harness doesn't have OOTB support for Datadog Pipeline Visibility, but you can use the [Datadog Drone plugin](https://plugins.drone.io/plugins/datadog) in a [Plugin step](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci).
@@ -945,7 +974,7 @@ Changes to a container image are isolated to the current step. While a subsequen
 
 Harness CI offers a variety of [caching](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) options, including S3, GCS, and Harness-hosted Cache Intelligence.
 
-###  How can I download files from an S3 bucket in Harness CI?
+### How can I download files from an S3 bucket in Harness CI?
 
 There are two options to download files from an S3 bucket in Harness:
 

@@ -235,3 +235,13 @@ curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache?accoun
 --header 'Accept: application/json' \
 --header 'X-API-KEY: $API_KEY'
 ```
+
+## Troubleshoot caching
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs.md) for questions and issues related to caching, data sharing, dependency management, workspaces, shared paths, and more. For example:
+
+* [Why are changes made to a container image filesystem in a CI step is not available in the subsequent step that uses the same container image?](/kb/continuous-integration/continuous-integration-faqs/#why-are-changes-made-to-a-container-image-filesystem-in-a-ci-step-is-not-available-in-the-subsequent-step-that-uses-the-same-container-image)
+* [How can I use an artifact in a different stage from where it was created?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-use-an-artifact-in-a-different-stage-from-where-it-was-created)
+* [How can I check if the cache was restored?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-check-if-the-cache-was-restored)
+* [Why can't I enable Cache Intelligence in my CI pipeline?](/kb/continuous-integration/continuous-integration-faqs/#why-cant-i-enable-cache-intelligence-in-my-ci-pipeline)
+* [What is the Cache Intelligence cache storage limit?](/kb/continuous-integration/continuous-integration-faqs/#what-is-the-cache-intelligence-cache-storage-limit)
