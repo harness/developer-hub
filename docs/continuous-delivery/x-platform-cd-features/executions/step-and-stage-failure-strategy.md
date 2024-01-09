@@ -35,7 +35,7 @@ To learn more about [Failure type as well as actions needed to be performed post
 1. Set up a [CD stage](docs/platform/pipelines/add-a-stage).
 2. In the stage, select **Advanced** in the stage settings. 
 3. In **Failure Strategy**, review the default **All Errors** failure type and **Rollback Stage** as action.
-4. The default should be fine but you can change to handle different failure type with a different failure failure strategy.
+4. The default should be fine for most of the cases. If you want, you can change to handle different failure type with a different failure strategy.
 ![](./static/failure_strategy_all_errors_1.png)
 5. If you want to change, or add a new Strategy for a specific type of failure, click on **Select Failure Type**.
 
