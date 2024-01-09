@@ -63,13 +63,12 @@ After you've set up ElastiCache, you're ready to configure your Harness environm
 
 To configure your Harness environment and Helm chart, do the following:
 
-1. If you enabled authentication during setup, create a Kubernetes secret in the namespace where Harness Self-Managed Enterprise Edition is installed with the following data.
+1. If you enabled authentication during setup, create a Kubernetes secret in the namespace where Harness Self-Managed Enterprise Edition is installed with the following command.
 
-   ```yaml
-   data:
-     root-password: <AUTH_TOKEN>
-     root-username: ""
-   ```
+   ```sh
+   kubectl create secret generic redis-user-pass \
+    --from-literal=root-username="" \
+    --from-literal=roo-password='<AUTH_TOKEN>'
 
 2. Update the following entries in your `override.yaml` file and then upgrade Harness.
 
@@ -80,7 +79,8 @@ To configure your Harness environment and Helm chart, do the following:
          installed: false
          hosts:
          - <ELASTICACHE_PRIMARY_ENDPOINT_AND_PORT>
-         secretName: "REDIS_SECRET_NAME_CREATED_IN_FIRST_STEP" #leave empty if auth is disabled
+         # keep the following 3 values empty if auth is disabled
+         secretName: "redis-user-pass" 
          userKey: "root-username"
          passwordKey: "root-password"
    ```
