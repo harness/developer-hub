@@ -1,6 +1,6 @@
 ---
 title: Continuous Integration (CI) FAQs
-description: This article addresses some frequently asked questions about Harness Continuous Integration (CI).
+description: Common questions and troubleshooting issues related to Harness CI.
 sidebar_position: 2
 redirect_from:
   - /docs/faqs/continuous-integration-ci-faqs
@@ -365,13 +365,70 @@ Yes. Use the [Depth](https://developer.harness.io/docs/continuous-integration/us
 
 There are several strategies you can use to improve codebase clone time:
 
-* Depending on your build infrastructure, you can set [Limit Memory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#set-container-resources) to 1Gi in your codebase configuration.
+* Depending on your build infrastructure, you can set [Limit Memory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#set-container-resources) to `1Gi` in your codebase configuration.
 * For builds triggered by PRs, set the [Pull Request Clone Strategy](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#pull-request-clone-strategy) to **Source Branch** and set [Depth](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) to `1`.
-* If you don't need the entire repo contents for your build, you can disable the built-in clone codebase step and use a Run step to execute specific git clone arguments, as explained in [Clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory).
+* If you don't need the entire repo contents for your build, you can disable the built-in clone codebase step and use a Run step to execute specific `git clone` arguments, such as to [clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory).
 
 ### What codebase environment variables are available to use in triggers, commands, output variables, or otherwise?
 
 For a list of `<+codebase.*>` and similar expressions you can use in your build triggers and otherwise, go to the [CI codebase variables reference](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-referencee).
+
+### What expression can I use to get the repository name and the project/organization name for a trigger?
+
+You can use the expressions `<+eventPayload.repository.name>` or `<+trigger.payload.repository.name>` to reference the repository name from the incoming trigger payload.
+
+If you want both the repo and project name, and your Git provider's webhook payload doesn't include a single payload value with both names, you can concatenate two expressions together, such as `<+trigger.payload.repository.project.key>/<+trigger.payload.repository.name>`.
+
+### The expression `<+eventPayload.repository.name>` causes the clone step to fail when used with a Bitbucket account connector.
+
+Try using the expression `<+trigger.payload.repository.name>` instead.
+
+### Codebase expressions aren't resolved.
+
+For information about when codebase expressions are resolved, go to [CI codebase variables reference - Variable resolution](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference#variable-resolution).
+
+### How can I share the codebase configuration between stages in a CI pipeline?
+
+The pipeline's [default codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) is automatically available to each subsequent Build stage in the pipeline. When you add additional Build stages to a pipeline, **Clone Codebase** is enabled by default, which means the stage clones the default codebase declared in the first Build stage.
+
+If you don't want a stage to clone the default codebase, you can [disable Clone Codebase for specific stages](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages).
+
+### The same Git commit is not used in all stages
+
+If your pipeline has multiple stages, each stage that has **Clone Codebase** enabled clones the codebase during stage initialization. If your pipeline uses the generic [Git connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference) and a commit is made to the codebase after a pipeline run has started, it is possible for later stages to clone the newer commit, rather than the same commit that the pipeline started with.
+
+If you want to force all stages to use the same commit ID, even if there are changes in the repository while the pipeline is running, you must use a [code repo connector](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#code-repo-connectors) for a specific SCM provider, rather than the generic Git connector.
+
+### Git fetch fails with invalid index-pack output when cloning large repos
+
+* Error: During the **Initialize** step, when cloning the default codebase, `git fetch` throws `fetch-pack: invalid index-pack output`.
+* Cause: This can occur with large code repos and indicates that the build machine might have insufficient resources to clone the repo.
+* Soltuion: To resolve this, edit the pipeline's YAML and allocate `memory` and `cpu` resources in the `codebase` configuration. For example:
+
+```yaml
+properties:
+  ci:
+    codebase:
+      connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+      repoName: YOUR_CODE_REPO_NAME
+      build:
+        type: branch
+        spec:
+          branch: <+input>
+      sslVerify: false
+      resources:
+        limits:
+          memory: 4G ## Set the maximum memory to use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
+          cpu: "2" ## Set the maximum number of cores to use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`.
+```
+
+### Initial Git clone fails due to missing plugin
+
+* Error: Git clone fails during the **Initialize** step, and the runner's logs contain `Error response from daemon: plugin \"<plugin>\" not found`
+* Platform: This error can occur in build infrastructures that use a Harness Docker Runner, such as the [local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md) or the [VM build infrastructures](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures).
+* Cause: A required plugin is missing from your build infrastructure container's Docker installation. The plugin is required to configure Docker networks.
+* Solution: On the machine where the runner is running, stop the runner, set the `NETWORK_DRIVER` environment variable to your preferred network driver plugin (such as `export NETWORK_DRIVER="nat"` or `export NETWORK_DRIVER="bridge"`), and restart the runner.
+   * For Windows, use [PowerShell variable syntax](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-5.1#using-the-variable-syntax), such as `$Env:NETWORK_DRIVER="nat"` or `$Env:NETWORK_DRIVER="bridge"`.
 
 ### How do I configure the Git Clone step? What is the Clone Directory setting?
 
@@ -389,22 +446,6 @@ Yes. For more information, go to the Harness CI documentation on [Git Large File
 
 Yes. You can run any commands in a Run step. With respect to Git, for example, you can use a Run step to [clone multiple code repos in one pipeline](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline), [clone a subdirectory](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-subdirectory), or use [Git LFS](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/gitlfs).
 
-### What expression can I use to get the repository name and the project/organization name for a trigger?
-
-You can use the expressions `<+eventPayload.repository.name>` or `<+trigger.payload.repository.name>` to reference the repository name from the incoming trigger payload.
-
-If you want both the repo and project name, and your Git provider's webhook payload doesn't include a single payload value with both names, you can concatenate two expressions together, such as `<+trigger.payload.repository.project.key>/<+trigger.payload.repository.name>`.
-
-### The expression `<+eventPayload.repository.name>` causes the clone step to fail when used with a Bitbucket account connector.
-
-Try using the expression `<+trigger.payload.repository.name>` instead.
-
-### How can I share the codebase configuration between stages in a CI pipeline?
-
-The pipeline's [default codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) is automatically available to each subsequent Build stage in the pipeline. When you add additional Build stages to a pipeline, **Clone Codebase** is enabled by default, which means the stage clones the default codebase declared in the first Build stage.
-
-If you don't want a stage to clone the default codebase, you can [disable Clone Codebase for specific stages](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages).
-
 ## SCM status updates and PR checks
 
 ### Does Harness supports Pull Request status updates?
@@ -413,15 +454,21 @@ Yes. Your PRs can use the build status as a PR status check. For more informatio
 
 ### How do I configure my pipelines to send PR build validations?
 
-Harness uses the pipeline's codebase connector to send status updates to PRs in your Git provider. To get status updates in your PRs, you must:
-
-1. [Configure a default codebase for your pipeline.](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase)
-2. Make sure you enable API access in your [code repo connector](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#code-repo-connectors) settings.
-3. Run PR builds. Branch and tag builds don't send PR status updates. You can use [webhook triggers](https://developer.harness.io/docs/platform/triggers/triggering-pipelines) to automatically run builds when PRs are created or updated.
+For instructions, go to [SCM status checks - Pipeline links in PRs](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks#pipeline-links-in-prs).
 
 ### Can I use the Git Clone step, instead of the built-in clone codebase step, to get build statues on my PRs?
 
 No. You must use the built-in clone codebase step (meaning, you must [configure a default codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#configure-the-default-codebase)) to get [pipeline links in PRs](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks#pipeline-links-in-prs).
+
+### Pipeline status updates aren't sent to PRs
+
+Harness uses the pipeline's codebase connector to send status updates to PRs in your Git provider. If status updates aren't being sent, make sure that you have [configured a default codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#edit-the-default-codebase-configuration) and that it is using the correct code repo connector. Also make sure the build that ran was a PR build and not a branch or tag build.
+
+### Build statuses don't show on my PRs, even though the code base connector's token has all repo permissions.
+
+If the user account used to generate the token doesn't have repository write permissions, the resulting token won't have sufficient permissions to post the build status update to the PR. Specific permissions vary by connector. For example, [GitHub connector credentials](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings) require that personal access tokens have all `repo`, `user`, and `admin:repo_hook` scopes, and the user account used to generate the token must have admin permissions on the repo.
+
+For repos under organizations or projects, check the role/permissions assigned to the user in the target repository. For example, a user in a GitHub organization can have some permissions at the organization level, but they might not have those permissions at the individual repository level.
 
 ### Can I export a failed step's output to a pull request comment?
 
@@ -430,12 +477,6 @@ To do this, you could:
 1. Modify the failed step's command to save output to a file, such as `your_command 2>&1 | tee output_file.log`.
 2. After the failed step, add a Run step that reads the file's content and uses your Git provider's API to export the file's contents to a pull request comment.
 3. Configure the subsequent step's [conditional execution settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings) to **Always execute this step**.
-
-### Build statuses don't show on my PRs, even though the code base connector's token has all repo permissions.
-
-If the user account used to generate the token doesn't have repository write permissions, the resulting token won't have sufficient permissions to post the build status update to the PR. Specific permissions vary by connector. For example, [GitHub connector credentials](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings) require that personal access tokens have all `repo`, `user`, and `admin:repo_hook` scopes, and the user account used to generate the token must have admin permissions on the repo.
-
-For repos under organizations or projects, check the role/permissions assigned to the user in the target repository. For example, a user in a GitHub organization can have some permissions at the organization level, but they might not have those permissions at the individual repository level.
 
 ### Does my pipeline have to have a Build stage to get the build status on the PR?
 
@@ -457,6 +498,10 @@ Yes. For GitHub, the limit is 140 characters. If the message is too long, the re
 
 The pipeline identifier and stage identifier are included in the build status message.
 
+### What is the format of the content in the PR build status message?
+
+The PR build status message format is `PIPELINE_IDENTIFIER-STAGE_IDENTIFIER — Execution status of Pipeline - PIPELINE_IDENTIFIER (EXECUTION_ID) Stage - STAGE_IDENTIFIER was STATUS`
+
 ### I don't want to send build statuses to my PRs.
 
 Because the build status updates operate through the default codebase connector, the easiest way to prevent sending PR status updates would be to [disable Clone Codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#disable-clone-codebase-for-specific-stages) for all Build stages in your pipeline, and then use a [Git Clone or Run step](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#add-a-git-clone-or-run-step) to clone your codebase.
@@ -465,13 +510,17 @@ You could try modifying the permissions of the code repo connector's token so th
 
 Removing API access from the connector is not recommended because API access is required for other connector functions, such as cloning the codebase.
 
-### What is the format of the content in the PR build status message?
-
-The PR build status message format is `PIPELINE_IDENTIFIER-STAGE_IDENTIFIER — Execution status of Pipeline - PIPELINE_IDENTIFIER (EXECUTION_ID) Stage - STAGE_IDENTIFIER was STATUS`
-
-### Why was the PR build status not updated for Approval stage?
+### Why was the PR build status not updated for an Approval stage?
 
 Build status updates occur for Build stages only.
+
+### Failed pipelines don't block PR merges
+
+Although Harness can send pipeline statuses to your PRs, you must configure branch protection rules and other checks in your SCM provider.
+
+### Troubleshoot Git event (webhook) triggers
+
+For troubleshooting information for Git event (webhook) triggers, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers).
 
 ## Pipeline initialization and Harness CI images
 
@@ -482,6 +531,10 @@ This can occur if an expression or variable is called before it's value is resol
 ### Initialize step occasionally times out at 8 minutes
 
 Eight minutes is the default time out limit for the Initialize step. If your build is hitting the timeout limit due to resource constraints, such as pulling large images, you can increase the [Init Timeout](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#init-timeout) in the stage Infrastructure settings.
+
+### Problems cloning code repo during Initialize step
+
+For codebase issues, go to [Codebases](#codebases).
 
 ### When a pipeline pulls artifacts or images, are they stored on the delegate?
 

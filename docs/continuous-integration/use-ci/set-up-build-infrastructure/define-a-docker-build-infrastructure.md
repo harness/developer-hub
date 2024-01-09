@@ -452,6 +452,8 @@ Successful setup is indicated by a message such as `Finished downloading delegat
 
 ### Clone codebase fails due to missing plugin
 
+<!-- in KB under Codebases -->
+
 If [clone codebase](../codebase-configuration/create-and-configure-a-codebase.md) fails during stage setup (the **Initialize** step in build logs) and the runner's logs contain `Error response from daemon: plugin \"<plugin>\" not found`, this means a required plugin is missing from your build infrastructure container's Docker installation. The plugin is required to configure Docker networks.
 
 To resolve this issue:

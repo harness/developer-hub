@@ -184,7 +184,7 @@ Add this variable to all stages where you need to override the `SSH-keyscan` tim
   <TabItem value="run" label="Add a Run step">
 
 
-You can use scripts in [Run steps](../run-ci-scripts/run-step-settings.md) to clone multiple repos into a stage.
+You can use `git` commands in [Run steps](../run-ci-scripts/run-step-settings.md) to clone multiple repos into a stage. You can also provide arguments to clone subdirectories, clone recursively, and so on.
 
 For example, this step clones a GitHub repository.
 
