@@ -96,7 +96,7 @@ This is a newly added file.
 
 ### Calculation for File 2
 
-This is an existing file that was last modified on December 3rd, 2023.
+This is an existing file that was last modified before the set condition for Legacy Code. This means that the file was updated prior to the last 30 days, which is the set condition for considering code as Legacy Code in this example.
 
    1. It has 10 lines of code added and 1 line deleted.
    2. This gives a total of 11 lines changed. Since this file was last modified before the set condition for Legacy Code all 11 lines are count as "Legacy Rework."
@@ -112,7 +112,7 @@ New Lines: 0 lines (no new lines, only modifications).
 
 ### Calculation for File 3
 
-This is another existing file, but it was last modified on January 2nd, 2024.
+This is another existing file. This file has been updated within the last 30 days and therefore does not meet the condition for Legacy Code for this example. (The last modification date falls within the acceptable range.)
 
 1. It includes 3 lines of code added and 1 line deleted.
 2. This makes a total of 4 lines changed. As this modification happened after the set condition for the Legacy Code, these 4 lines are considered as "Refactored."
