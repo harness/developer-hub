@@ -36,29 +36,63 @@ After the connectors are created, it will take atleast 24hrs for the cost data t
 
 #### Explore cost using perspectives
 
-Perspectives is one of many ways in exploring cost data in CCM. A perspective 
+A perspective can be used to visualize data from multiple cloud providers. 
+
+CCM generates default perspectives based on cloud connectors, allowing users to explore cost data for each cloud provider. These default perspectives offer a solid foundation for understanding the concept of perspectives. Additionally, when Kubernetes connectors are available, CCM generates a `Cluster`` perspective. This cluster perspective displays cost data for all clusters such as k8s, ECS, and more.
 
 For more information, go to [Create perspectives](docs/cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
 
 
 #### Explore cost using dashboards
 
-TODO
+CCM leverages comprehensive BI dashboards, offering powerful capabilities. While both perspectives and dashboards enable exploration of cost data similarly, dashboards leverage a complete Business Intelligence platform for advanced scenarios. CCM utilizes Google's Looker to empower its dashboards, enabling diverse data visualizations and report creation.
+
+Furthermore, dashboards facilitate common use cases such as scheduled report delivery, alerting, and customization of metrics and measures. CCM comes equipped with pre-built, commonly used dashboards for easier initial setup and utilization.
 
 For more information, go to [Create Dashboards](docs/cloud-cost-management/3-use-ccm-cost-reporting/6-use-ccm-dashboards/access-ccm-dashboards.md)
 
 
-### Performing root cost analysis
+#### Performing root cost analysis
 
-TODO
+
+In the realm of cloud computing, root cost analysis takes on a crucial role in understanding and optimizing the expenses associated with utilizing cloud services. Cloud computing offers scalability, flexibility, and cost-effectiveness, but without proper management, it can lead to unexpected expenses. Root cost analysis in this context involves dissecting the various components contributing to the overall cloud expenditure, including compute, storage, network usage, data transfer, and additional services like databases or specialized tools.
+
+By conducting root cost analysis in cloud computing, businesses can gain insights into the primary drivers behind their cloud expenses. This involves scrutinizing usage patterns, understanding the costs associated with different types of services or instances, and identifying inefficiencies or unnecessary spending. With this detailed understanding, organizations can implement cost optimization strategies, such as rightsizing instances, utilizing long term commitments like reserved instances or spot instances and leveraging [AutoStopping](TODO) to align resources with actual demand. This approach enables businesses to make informed decisions about resource allocation, effectively manage their cloud budgets, and ensure cost efficiency while leveraging the benefits of cloud technology.
 
 For more information, go to [Root cost analysis](docs/cloud-cost-management/3-use-ccm-cost-reporting/3-root-cost-analysis/perform-root-cost-analysis.md)
 
 
-### Cost anomalies
+#### Cost anomalies
 
 TODO
 
 For more information, go to [Cost anomalies](docs/first-gen/cloud-cost-management/ccm-anomaly-detection/detect-cost-anomalies-with-ce.md)
 
 
+### <a href="#phase-2-deploy-to-qa"> Phase 3: Cost optimization</a>
+
+#### Recommendations
+
+
+TODO
+
+
+#### Stop idle resources
+
+
+jlkjlj
+
+- TODO: Terraform
+- Sample application
+
+
+
+
+### <a href="#phase-2-deploy-to-qa"> Phase 4: Cost governance</a>
+
+#### Setup budgets
+
+TODO
+
+
+#### Asset governance
