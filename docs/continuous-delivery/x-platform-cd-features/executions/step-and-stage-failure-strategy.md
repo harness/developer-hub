@@ -36,7 +36,7 @@ To learn more about [Failure type as well as actions needed to be performed post
 2. In the stage, select **Advanced** in the stage settings. 
 3. In **Failure Strategy**, review the default **All Errors** failure type and **Rollback Stage** as action, ,this should be fine if you want you can change the default failure strategy to handle errors differently.
 ![](./static/failure_strategy_all_errors_1.png)
-4. Select a new failure type by selecting **Select Failure Type**.
+4. If you want to change, or add a new Strategy for a specific type of failure, click on **Select Failure Type**.
 
 ## Visual Summary
 
