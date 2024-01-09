@@ -22,20 +22,16 @@ For details on strategy options and how strategies work, see [step and stage fai
 
 ## Set up a failure strategy in CD Stage
 
+## Set up Failure straetgy.
 :::note
-1. CD stage need a failure strategy for **AllErrors** failure type. Even if you set up lots of error still the pipeline will ask for defining an **ALLError** failure strategy. 
-2. Users don't have to go and set up failure strategy, it's already there by default when CD stage is created. 
-3. You only have to update the strategy :-
-    - If you want **AllErrors** failure type to be something else other than default.
-    - If you want a specific failure strategy for specific type of errors.
+Please note that failure strategy is always required in a CD stage. Currently all CD stage is deafulted to use **AllErrors** fauliure type with action **Rollback Stage**, this is to ensure that no CD stage is getting executed without failure strategy.
 :::
 
-To learn more about [Failure type as well as actions needed to be performed post failure.](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings.md)
-
-1. Set up a [CD stage](docs/platform/pipelines/add-a-stage).
-2. In the stage, select **Advanced** in the stage settings. 
-3. In **Failure Strategy**, review the default **All Errors** failure type and **Rollback Stage** as action.
-4. The default should be fine for most of the cases. If you want, you can change to handle different failure type with a different failure strategy.
+1. Set up [CD Stage](docs/platform/pipelines/add-a-stage.md).
+2. Click on **Advanced** under stage settings. 
+![](./static/failure_strategy_all_errors.png)
+3. Move down to **Failure Strategy**.
+4. You can notice that by default **AllErrors** is selected as **Failure Type** and **Rollback Stage** as **Perform Action**.
 ![](./static/failure_strategy_all_errors_1.png)
 5. If you want to change, or add a new Strategy for a specific type of failure, click on **Select Failure Type**.
 
