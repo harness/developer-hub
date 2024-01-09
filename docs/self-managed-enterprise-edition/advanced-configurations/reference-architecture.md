@@ -24,7 +24,9 @@ Recognizing that each organization has unique requirements, this reference archi
 
 ## Customer reference architectures
 
-Reference architectures enables organizations to fully utilize Harness Self-Managed Enterprise Edition for a customized, secure, and scalable continuous delivery process.
+Reference architectures enable organizations to fully utilize Harness Self-Managed Enterprise Edition for a customized, secure, and scalable continuous delivery process.
+
+These architectures aim to simplify the process of setting up Harness Self-Managed Enterprise Edition. However, the determination of the architecture that best suits your organization's specific requirements can be difficult. Careful consideration and evaluation of the requirements are necessary to determine the optimal reference architecture for the intended setup.
 
 ![](./static/smp-ref-arch-dt.png)
 
@@ -57,6 +59,36 @@ Prod 3 replica mode w/self-managed external DB is designed for organizations tha
 - Require HA
 - Have the need and ability to manage external DBs
 
+## Database options
+
+You can configure any of the following external databases with Harness Self-Managed Enterprise Edition:
+
+- MongoDB
+- PostgreSQL
+- Redis
+- TimescaleDB
+
+Tutorials are available for each installation option.
+
+### MongoDB
+
+- [Cloud-based tutorial](/tutorials/self-managed-enterprise-edition/use-an-external-mongodb-database)
+
+- [Self-managed tutorial](/tutorials/self-managed-enterprise-edition/use-an-external-self-managed-mongodb)
+
+### PostgreSQL
+
+- [Self-managed tutorial](/tutorials/self-managed-enterprise-edition/use-an-external-postgres-database)
+
+### Redis
+
+- [Self-managed tutorial](/tutorials/self-managed-enterprise-edition/use-an-external-redis-database)
+
+### TimescaleDB
+
+- [Self-managed tutorial](/tutorials/self-managed-enterprise-edition/use-an-external-sm-timescaledb)
+
+
 </TabItem>
   <TabItem value="Prod 3 replica mode w/external cloud-based DBs" label="Prod 3 replica mode w/external cloud-based DBs">
 
@@ -64,7 +96,7 @@ Prod 3 replica mode w/external cloud-based DBs is designed for organizations tha
 
 - Use Harness Self-Managed Enterprise Edition in production
 - Require HA
-- don't need self-managed external DBs.
+- Don't need self-managed external DBs.
 
 </TabItem>
   <TabItem value="Disaster recovery w/warm standby" label="Disaster recovery w/warm standby">
@@ -76,6 +108,8 @@ Disaster recovery w/warm standby is designed for organizations that:
 - Have the expertise to manage external DBs
 - Require self-managed external DBs
 - Require DR when a Kubernetes cluster or cloud region fails
+
+For more information, go to [Set up disaster recovery](/tutorials/self-managed-enterprise-edition/set-up-disaster-recovery).
 
 </TabItem>
 </Tabs>
