@@ -211,6 +211,11 @@ For information about **Run** step settings, go to [Use Run steps](../run-ci-scr
 </TabItem>
 </Tabs>
 
+:::tip
+
+When cloning additional codebases that use the same credentials as your default codebase, you can [use your default codebase connector's credentials in your Run step](/kb/continuous-integration/articles/Using_Git_Credentials_from_Codebase_Connector_in_CI_Pipelines_Run_Step).
+
+:::
 
 ## Build an artifact from both code repos
 

@@ -1081,9 +1081,40 @@ For information about viewing build and build logs, go to:
 
 ### Does Harness limit log line length?
 
-Yes, there is a single-line limit of 25KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`. Furthermore, there is an overall log limit of 5MB per step. Harness truncates logs larger than 5MB.
+Yes, there is a single-line limit of 25KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`. If you need to extract long log lines, you can [export full logs](#export-full-logs).
 
-If you need to extract long log lines or logs larger than 5MB, include a Run step in your pipeline that writes the logs to a file and uploads the file as an artifact. For more information, go to [Troubleshoot CI - Truncated execution logs](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci#truncated-execution-logs).
+### Truncated execution logs
+
+Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB. If necessary, you can [export full logs](#export-full-logs).
+
+Furthermore, there is a single-line limit of 25KB. If an individual line exceeds this limit, it is truncated and ends with `(log line truncated)`.
+
+Note that the CI log limit is different from the [Harness CD log limit](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations).
+
+#### Export full logs
+
+If your log files are larger than 5MB, you can export execution logs to an external cache and examine the full logs there.
+
+1. Add a step to your pipeline that records each step's complete logs into one or more files.
+2. If you have a lot of log files or your logs are large, add a step to compress the log files into an archive.
+3. Use an [Upload Artifact step](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/#upload-artifacts) to upload the log files to cloud storage.
+4. Repeat the above process for each stage in your pipeline for which you want to export the full logs.
+5. Examine the log files in your cloud storage. If you used the **S3 Upload and Publish** or **Artifact Metadata Publisher** plugins, you can find direct links to your uploaded files on the **Artifacts** tab on the [Build detail page](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds).
+
+:::tip Log forwarding
+
+You can also use a service, such as [env0](https://docs.env0.com/docs/logs-forwarding), to forward logs to platforms suited for ingesting large logs.
+
+:::
+
+### Step logs disappear
+
+If step logs disappear from pipelines that are using a Kubernetes cluster build infrastructure, you must either allow outbound communication with `storage.googleapis.com` or contact [Harness Support](mailto:support@harness.io) to enable the `CI_INDIRECT_LOG_UPLOAD` feature flag.
+
+For more information about configuring connectivity, go to:
+
+* [Delegate system requirements - Network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements/#network-requirements)
+* [Allowlist Harness Domains and IPs](/docs/platform/References/allowlist-harness-domains-and-ips)
 
 ### Step succeeds even when explicitly executing exit 1 in a Bash script that is runs in script's background
 

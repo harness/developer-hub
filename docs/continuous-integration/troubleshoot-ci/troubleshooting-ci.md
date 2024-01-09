@@ -79,14 +79,17 @@ For more information about self-signed certificates, delegates, and delegate env
 * [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
 ## Clone codebase errors
+<!-- transferred with Clone Codebase revision -->
 
 For troubleshooting information related to cloning codebases, go to [Configure codebase - Troubleshooting](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#troubleshooting).
 
 ## Logging issues
+<!-- transferred with View Builds revision -->
 
 These are common issues encountered with build logs.
 
 ### Truncated execution logs
+<!-- transferred with View Builds revision -->
 
 Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB. If necessary, you can [export full logs](#export-full-logs).
 
@@ -95,6 +98,7 @@ Furthermore, there is a single-line limit of 25KB. If an individual line exceeds
 Note that the CI log limit is different from the [Harness CD log limit](/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations.md).
 
 #### Export full logs
+<!-- transferred with View Builds revision -->
 
 If your log files are larger than 5MB, you can export execution logs to an external cache and examine the full logs there.
 
@@ -111,6 +115,7 @@ You can also use a service, such as [env0](https://docs.env0.com/docs/logs-forwa
 :::
 
 ### Step logs disappear
+<!-- transferred with View Builds revision -->
 
 If step logs disappear from pipelines that are using a Kubernetes cluster build infrastructure, you must either allow outbound communication with `storage.googleapis.com` or contact [Harness Support](mailto:support@harness.io) to enable the `CI_INDIRECT_LOG_UPLOAD` feature flag.
 
@@ -120,6 +125,7 @@ For more information about configuring connectivity, go to:
 * [Allowlist Harness Domains an IPs](/docs/platform/References/allowlist-harness-domains-and-ips)
 
 ### Logs don't load in real time
+<!-- transferred with View Builds revision -->
 
 [Network restrictions can prevent build logs from loading in real time.](/kb/continuous-integration/articles/CI-step-logs-dont-load-in-real-time)
 
