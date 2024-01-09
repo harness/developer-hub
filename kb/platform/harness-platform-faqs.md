@@ -2343,6 +2343,68 @@ You can create the Roles and Resource Group like below..
 - RG : Select the specific pipelines within RG that the user should be able to edit.
 This will allow them to edit the pipelines that exists and can not create any new one. They need to select all the pipelines.
 
+#### Why am I receiving a 400 status code error with a message about an "Unsuccessful HTTP call: status code = 400, message = {"errorMessages": [,"errors": {"customfield_16184":"Invalid format. Expected an array of objects with either an Option ID or an existing value."))" when using a Jira step in Harness?
 
+ The 400 status code error with the "Invalid format" message typically occurs when using a Jira step in Harness, and it is often related to the configuration of a custom field. In this specific case, the custom field `customfield_54321` is an array field of a custom type called `com.sourcesense.jira.plugin.cascadingselect:multi-level-cascading-select`, which is a Multi-level cascading select Jira plugin.
 
+The error arises because the value being passed to Jira doesn't match the expected format. Jira expects the value to be in the format of an array of objects, and in the following example it has a String as its value:
+
+```json
+"customfield_54321": [
+    {
+        "id": "12345",
+        "value": "Test Operations"
+    }
+]
+```
+
+The error message indicates that Harness doesn't support this specific Jira plugin, leading to the formatting issue.
+
+If you encounter a similar problem with this Jira plugin or any other plugin, it is recommended to reach out to your Jira support team to explore potential solutions. They can provide the necessary guidance and support to ensure the smooth and efficient operation of your Jira instance.
+
+#### What steps can we take to prevent encountering 429 errors when utilizing DockerHub connectors in Harness?
+
+ If you are facing 429 rate limiting errors when attempting to pull Docker images from DockerHub using Harness, you can mitigate this issue by adjusting your authentication settings:
+
+1. **Authentication Method:** By default, Harness utilizes anonymous access to the Harness Docker Hub for image pulls.
+
+2. **Switch to Username and Password Authentication:** To overcome rate limiting issues, select "Username and Password" as your authentication method in your Docker connector configuration.
+
+3. **Provide Login Details:** Once you've selected "Username and Password" authentication, enter your DockerHub login credentials (username and password) in the connector settings.
+
+By configuring Harness to use your DockerHub credentials, you ensure that you have the necessary access privileges to pull images without encountering rate limiting issues.
+
+These adjustments will help you avoid 429 errors and ensure a smoother experience when working with DockerHub connectors in Harness.
+
+#### How Do Delegates Share Information Like Helm Chart Contents Within the Same Stage?
+
+The process of sharing information between delegates within the same stage in Harness follows this flow:
+
+1. **Task T1 - Downloading values.yaml File:**
+   - Harness Manager creates Task T1, instructing it to download the `values.yaml` file.
+   - Delegate1 is assigned Task T1, and it retrieves the `values.yaml` file from the designated source (e.g., Git/Remote).
+   - Delegate1 then sends the contents of the `values.yaml` file back to Harness Manager.
+
+2. **Task T2 - Downloading and Applying Manifest Files:**
+   - After receiving the `values.yaml` file content, Harness Manager creates Task T2.
+   - Task T2 includes the content of the `values.yaml` file.
+   - Delegate2 is assigned Task T2.
+
+3. **Delegate2's Actions:**
+   - Delegate2 executes the following actions:
+     - Downloads the manifest files from the specified source (e.g., Git, Remote, Helm Artifact Source).
+     - Utilizes the content of the `values.yaml` file to render the manifest files, customizing them as needed.
+     - Applies the rendered manifest files to the target cluster.
+
+**Important Note:** The output of Task T1 (values Fetch task) is the content of the `values.yaml` file. This content is then passed to Task T2, enabling Delegate2 to use it in rendering and applying the manifest files.
+
+This process ensures that delegates effectively share information and utilize it as required for the deployment process within the same stage.
+
+#### What should we put (if anything) in the "JIT Validation Key" and "JIT Validation Value" fields when JIT provisioning is enabled in SAML?
+
+This can either be left blank, as it is not required, or you can add a Key (aka saml attribute) to expect, along with the value of the attribute/key to expect, in this way you can have some users that send this defined attribute and others that do not which allows you to selectively provision users via JIT
+
+#### What is the default entityID (audience restriction) the Service Provider endpoint(ACS URL) uses when not defined?
+
+The Deafult entityID is `app.harness.io` unless otherwise specified.
 
