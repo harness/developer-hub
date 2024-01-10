@@ -123,7 +123,7 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
    </td>
    <td>N/A <code>type: map[string]string</code>
    </td>
-   <td>The <code>headers</code> contains flag to hold the http request headers.
+   <td>The <code>headers</code> Contains flag to hold the HTTP request headers.
    </td>
   </tr>
 </table>
@@ -154,31 +154,31 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
    </td>
    <td><code>==, !=, oneOf</code>
    </td>
-   <td>The <code>criteria</code> contains criteria to match the http get request's response code or body with the expected responseCode or responseBody, which need to be fulfill as part of httpProbe run
+   <td>The <code>criteria</code> contains criteria to match the HTTP GET request's response code or body with the expected responseCode or responseBody, which need to be fulfill as part of httpProbe run.
    </td>
   </tr>
   <tr>
    <td>responseCode
    </td>
-   <td>Flag to hold the expected response code for the get request
+   <td>Flag to hold the expected response code for the GET request
    </td>
    <td>Mandatory
    </td>
    <td>HTTP_RESPONSE_CODE
    </td>
-   <td>The <code>responseCode</code> contains the expected response code for the http get request as part of httpProbe run. It is mutually exclusive with the responseBody field.
+   <td>The <code>responseCode</code> contains the expected response code for the HTTP GET request as part of httpProbe run. It is mutually exclusive with the responseBody field.
    </td>
   </tr>
   <tr>
    <td>responseBody
    </td>
-   <td>Flag to hold the expected response body for the get request
+   <td>Flag to hold the expected response body for the GET request
    </td>
    <td>Mandatory
    </td>
    <td>string
    </td>
-   <td>The <code>responseBody</code> contains the expected response body for the http get request as part of httpProbe run. It is mutually exclusive with the responseCode field.
+   <td>The <code>responseBody</code> contains the expected response body for the HTTP GET request as part of httpProbe run. It is mutually exclusive with the responseCode field.
    </td>
   </tr>
 </table>
@@ -207,19 +207,19 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
    </td>
    <td><code>==, !=, oneOf</code>
    </td>
-   <td>The <code>criteria</code> contains criteria to match the http post request's response code with the expected responseCode, which need to be fulfill as part of httpProbe run
+   <td>The <code>criteria</code> contains criteria to match the HTTP POST request's response code with the expected responseCode, which need to be fulfill as part of httpProbe run.
    </td>
   </tr>
   <tr>
    <td>responseCode
    </td>
-   <td>Flag to hold the expected response code for the post request
+   <td>Flag to hold the expected response code for the POST request
    </td>
    <td>Mandatory
    </td>
    <td>HTTP_RESPONSE_CODE
    </td>
-   <td>The <code>responseCode</code> contains the expected response code for the http post request as part of httpProbe run. It is mutually exclusive with the responseBody field.
+   <td>The <code>responseCode</code> contains the expected response code for the HTTP POST request as part of httpProbe run. It is mutually exclusive with the responseBody field.
    </td>
   </tr>
   <tr>
@@ -231,37 +231,37 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
    </td>
    <td>string
    </td>
-   <td>The <code>responseBody</code> contains the expected response body for the http post request as part of httpProbe run. It is mutually exclusive with the responseCode field.
+   <td>The <code>responseBody</code> contains the expected response body for the HTTP POST request as part of httpProbe run. It is mutually exclusive with the responseCode field.
    </td>
   </tr>
   <tr>
    <td>contentType
    </td>
-   <td>Flag to hold the content type of the post request
+   <td>Flag to hold the content type of the POST request
    </td>
    <td>Mandatory
    </td>
    <td>N/A <code>type: string</code>
    </td>
-   <td>The <code>contentType</code> contains the content type of the http body data, which need to be passed for the http post request
+   <td>The <code>contentType</code> contains the content type of the HTTP body data, which need to be passed for the HTTP POST request
    </td>
   </tr>
   <tr>
    <td>body
    </td>
-   <td>Flag to hold the body of the http post request
+   <td>Flag to hold the body of the HTTP POST request
    </td>
    <td>Mandatory
    </td>
    <td>N/A <code>type: string</code>
    </td>
-   <td>The <code>body</code> contains the http body, which is required for the http post request. It is used for the simple http body. If the http body is complex then use <code>bodyPath</code> field.
+   <td>The <code>body</code> contains the HTTP body, which is required for the HTTP post request. It is used for the simple HTTP body. If the HTTP body is complex then use <code>bodyPath</code> field.
    </td>
   </tr>
   <tr>
    <td>bodyPath
    </td>
-   <td>Flag to hold the path of the http body, required for the http post request
+   <td>Flag to hold the path of the HTTP body, required for the HTTP POST request
    </td>
    <td>Optional
    </td>
@@ -296,7 +296,7 @@ Listed below is the probe schema for HTTP Probe with common properties shared ac
    </td>
    <td>N/A <code>type: string</code>
    </td>
-   <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data
+   <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data.
    </td>
   </tr>
   <tr>
@@ -419,7 +419,7 @@ It's important to note that `credentials` and `credentialsFile` are two options 
 
 ### TLS
 
-It offers the mechanism to validate TLS certifications for the http endpoint. You can supply the `cacert` or the client certificate and client key, to perform the validation.
+It offers the mechanism to validate TLS certifications for the HTTP endpoint. You can supply the `cacert` or the client certificate and client key, to perform the validation.
 Alternatively, you have the option to enable the `insecureSkipVerify` check to bypass certificate validation.
 
 <table>
@@ -592,9 +592,9 @@ spec:
           probePollingInterval: 2s
 ```
 
-### HTTP Post Request(validate response code)
+### HTTP Post Request (validate response code)
 
-This section holds the HTTP body necessary for making an HTTP POST request then assessing the response code against specified criteria, particularly suited for simple requests. The HTTP body content can be supplied in the 'body' field, and this can be initiated by configuring the `httpProbe/inputs.method.post.body` field.
+This section holds the HTTP body necessary for making an HTTP POST request and then assessing the response code against specified criteria, particularly for simple requests. The HTTP body content can be supplied in the 'body' field, and this can be initiated by configuring the `httpProbe/inputs.method.post.body` field.
 
 Use the following example to tune this:
 
@@ -638,9 +638,9 @@ spec:
           probePollingInterval: 2s
 ```
 
-### HTTP Post Request(validate response body)
+### HTTP Post Request (validate response body)
 
-This section holds the HTTP body necessary for making an HTTP POST request then assessing the response body against specified criteria, particularly suited for simple requests. The HTTP body content can be supplied in the 'body' field, and this can be initiated by configuring the `httpProbe/inputs.method.post.body` field.
+This section holds the HTTP body necessary for making an HTTP POST request and then assessing the response body against specified criteria, particularly for simple requests. The HTTP body content can be supplied in the 'body' field, and this can be initiated by configuring the `httpProbe/inputs.method.post.body` field.
 
 Use the following example to tune this:
 
@@ -684,7 +684,7 @@ spec:
           probePollingInterval: 2s
 ```
 
-### HTTP Post Request(http body is a complex)
+### HTTP Post Request (when the HTTP body is complex)
 
 For complex POST requests with multi-line bodies, the 'bodyPath' attribute comes into play. It allows you to specify the path to a file containing the required body content. This file can be accessed by the experiment pod through a ConfigMap resource, with the ConfigMap name defined in either the ChaosEngine or the ChaosExperiment CR. To set this up, configure the `httpProbe/inputs.method.post.body` field.
 
@@ -735,9 +735,11 @@ spec:
 
 ### Authentication
 
-This establishes a fundamental authentication mechanism for the http endpoint. The username:password, encoded in base64 or bearer token should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
+This establishes a fundamental authentication mechanism for the HTTP endpoint. The username:password, encoded in base64 or bearer token should be placed either within the `credentials` field or as a file path in the `credentialsFile` field.
 
-It's important to note that `credentials` and `credentialsFile` are two options that cannot be used simultaneously.
+:::tip
+The `credentials` and `credentialsFile` are two options that cannot be used simultaneously.
+:::
 
 Use the following example to tune this:
 
@@ -835,11 +837,13 @@ spec:
           probePollingInterval: 2s
 ```
 
-### TLS With Custom Certificates
+### TLS With custom certificates
 
 It offers the mechanism to validate TLS certifications for the http endpoint. You can supply the cacert or the client certificate and client key, to perform the validation.
 
-Please take note that the CA certificate file must be incorporated into the experiment pod as either a configMap or secret. The volume name (configMap or secret) and mountPath should be specified within the chaosengine at the `spec.components.secrets` path.
+:::tip
+The CA certificate file must be incorporated into the experiment pod either as a configMap or a secret. The volume name (configMap or secret) and mountPath should be specified within the chaosengine at the `spec.components.secrets` path.
+:::
 
 Use the following example to tune this:
 
@@ -889,7 +893,7 @@ spec:
           probePollingInterval: 2s
 ```
 
-### TLS Skip Certificate Verification
+### TLS skip certificate verification
 
 You can bypass the tls certificate checks by enabling the `insecureSkipVerify` option.
 
