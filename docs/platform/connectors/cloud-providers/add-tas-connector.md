@@ -209,20 +209,16 @@ To configure the delegate YAML, do the following:
 2. Under `spec.template.spec.containers.env`, add the following environment variables. 
 
 ```YAML
-- name: ENABLE_TAS_REFRESH_TOKEN_CLIENT_ID
-   value: "true"
-- name: TAS_REFRESH_TOKEN_CLIENT_ID
-   value: gam
-- name: TAS_REFRESH_TOKEN_CLIENT_SECRET
-   value: public
+   - name: ENABLE_TAS_REFRESH_TOKEN_CLIENT_ID
+      value: "true"
+   - name: TAS_REFRESH_TOKEN_CLIENT_ID
+      value: gam
+   - name: TAS_REFRESH_TOKEN_CLIENT_SECRET
+      value: public
 ```
-
 
 #### Demo Video
 
 <!-- Video:
 https://www.loom.com/share/f0231a6142324d8e8b780d332d04bb78?sid=c2f2c774-8262-449b-bdc4-fd79a3938b34-->
 <DocVideo src="https://www.loom.com/share/f0231a6142324d8e8b780d332d04bb78?sid=c2f2c774-8262-449b-bdc4-fd79a3938b34" />
-
-
-
