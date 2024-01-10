@@ -2343,7 +2343,7 @@ You can create the Roles and Resource Group like below..
 - RG : Select the specific pipelines within RG that the user should be able to edit.
 This will allow them to edit the pipelines that exists and can not create any new one. They need to select all the pipelines.
 
-#### Why am I receiving a 400 status code error with a message about an "Unsuccessful HTTP call: status code = 400, message = {"errorMessages": [,"errors": {"customfield_16184":"Invalid format. Expected an array of objects with either an Option ID or an existing value."))" when using a Jira step in Harness?
+#### Why am I receiving a 400 status code error with a message about an "Unsuccessful HTTP call: status code = 400, message = {"errorMessages": [,"errors": {"customfield_16184":"Invalid format. Expected an array of objects with either an Option ID or an existing value."}]}" when using a Jira step in Harness?
 
  The 400 status code error with the "Invalid format" message typically occurs when using a Jira step in Harness, and it is often related to the configuration of a custom field. In this specific case, the custom field `customfield_54321` is an array field of a custom type called `com.sourcesense.jira.plugin.cascadingselect:multi-level-cascading-select`, which is a Multi-level cascading select Jira plugin.
 
