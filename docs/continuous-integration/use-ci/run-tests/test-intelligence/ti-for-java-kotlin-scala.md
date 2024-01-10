@@ -226,6 +226,15 @@ You can use any Docker image from any Docker registry, including Docker images f
 
 </details>
 
+<details>
+<summary>Bazel container images</summary>
+
+If your [build tool](#build-tool) is Bazel, and you use a Bazel container image to provide the Bazel binary to the **Run Tests** step, your build will fail if Bazel isn't already installed in your build infrastructure. This is because the **Run Tests** step calls `bazel query` before pulling the container image.
+
+Bazel is already installed on Harness Cloud runners. For other build infrastructures, you must manually confirm that Bazel is already installed. If Bazel isn't already installed on your build infrastructure, you need to install Bazel in a [**Run** step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) prior to the **Run Tests** step.
+
+</details>
+
 ### Language
 
 Select the source code language to build: **Java**, **Kotlin**, or **Scala**.
@@ -237,9 +246,9 @@ Select the build automation tool: [Bazel](https://bazel.build/), [Maven](https:/
 <details>
 <summary>Bazel container images</summary>
 
-If you use a Bazel [container image](#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](../../run-ci-scripts/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
+If your build tool is Bazel, and you use a [container image](#container-registry-and-image) to provide the Bazel binary to the **Run Tests** step, your build will fail if Bazel isn't already installed in your build infrastructure. This is because the **Run Tests** step calls `bazel query` before pulling the container image.
 
-Bazel is already installed on Harness Cloud runners, and you don't need to specify a container image. For other build infrastructures, you must manually confirm that Bazel is already installed.
+Bazel is already installed on Harness Cloud runners. For other build infrastructures, you must manually confirm that Bazel is already installed. If Bazel isn't already installed on your build infrastructure, you need to install Bazel in a [**Run** step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) prior to the **Run Tests** step.
 
 </details>
 
@@ -477,6 +486,13 @@ These settings specify the maximum resources used by the container at runtime. T
 
 You can set the step's timeout limit. Once the timeout is reached, the step fails and pipeline execution proceeds according to any [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md) or [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
-## Troubleshooting Test Intelligence
+## Troubleshoot Test Intelligence
 
-For troubleshooting guidance related to Test Intelligence, go to [Troubleshoot CI - Test Intelligence issues](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md#test-intelligence-issues).
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
+
+* [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
+* [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
+* [If the Run Tests step fails, does the Post-Command script run?](/kb/continuous-integration/continuous-integration-faqs/#if-the-run-tests-step-fails-does-the-post-command-script-run)
+* [Test Intelligence fails due to Bazel not installed, but the container image has Bazel.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-due-to-bazel-not-installed-but-the-container-image-has-bazel)
+* [Errors when running TI with Maven.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-errors-with-maven)
+* [Gradle version not compatible with Test Intelligence.](/kb/continuous-integration/continuous-integration-faqs/#gradle-version-not-compatible-with-test-intelligence)

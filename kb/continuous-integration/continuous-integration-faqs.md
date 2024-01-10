@@ -593,7 +593,34 @@ The codebase declared in the first stage of a pipeline becomes the pipeline's [d
 
 ### How do I use a Harness CI pipeline to build and push artifacts and images?
 
-For information about this go to [Build and push artifacts and images](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
+You can use Build and Push steps or Run steps. For information about this go to [Build and push artifacts and images](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
+
+### I need to get the Maven project version from pom.xml and pass it as a Docker build argument
+
+To do this, you can:
+
+1. Use a Run step to get the version and assign it to a variable. For example, you could use a command like:
+
+   ```
+   version=$(cat pom.xml | grep -oP '(?<=<version>)[^<]+')
+   ```
+
+2. Specify this variable as an [output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables) from the Run step.
+3. Use an expression to [reference the output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#reference-an-output-variable) in your build arguments, such as in the Build and Push to Docker step's [Build Arguments](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#build-arguments) or `docker build` commands executed in a Run step.
+
+### How do I enable the Gradle daemon in builds?
+
+To enable the Gradle daemon in your Harness CI builds, include the `--daemon` option when running Gradle commands in your build scripts (such as in Run steps or in build arguments for a Build and Push step). This option instructs Gradle to use the daemon process.
+
+Optionally, you can [use Background steps to optimize daemon performance](./articles/leverage-service-dependencies-in-gradel-daemon-to-improve-build-performance.md).
+
+### Can I push without building?
+
+Harness CI provides several options to [upload artifacts](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts). The **Upload Artifact** steps don't include a "build" component.
+
+### Can I build without pushing?
+
+You can [build without pushing](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push).
 
 ### What drives the Build and Push steps? What is kaniko?
 
@@ -637,14 +664,6 @@ By default, kaniko does not use the node cache. It performs a full container ima
 ### How can I improve build time when a Build and Push step isn't able to apply remote caching or doesn't cache effectively?
 
 Make sure your Docker file is configured in least- to most-often changed. Make sure it installs dependencies before moving other files. Docker Layer Caching depends on the order that layers are loaded in your Dockerfile. As soon as it detects a changed layer, it reloads all subsequent layers. Therefore, may sure your Dockerfile is structured for optimum caching efficiency.
-
-### Can I push without building?
-
-Harness CI provides several options to [upload artifacts](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts). The **Upload Artifact** steps don't include a "build" component.
-
-### Can I build without pushing?
-
-You can [build without pushing](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push).
 
 ### Where does the Build and Push to ECR step pull the base images specified in the Dockerfile?
 
@@ -718,9 +737,13 @@ With a Kubernetes cluster build infrastructure, the [Upload Artifacts to JFrog s
 
 These are derived from your [Artifactory connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog#artifactory-connector).
 
-## Tests
+## Test reports
 
-#### Can I specify multiple paths for test reports in a Run step?
+### Test reports missing or test suites incorrectly parsed
+
+The parsed test report in the **Tests** tab comes strictly from the provided test reports (declared in the step's **Report Paths**). Test reports must be in JUnit XML format to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only. It is important to adhere to the standard [JUnit format](https://llg.cubic.org/docs/junit/) to improve test suite parsing. For more information, go to [Format test reports](./test-report-ref.md).
+
+### Can I specify multiple paths for test reports in a Run step?
 
 Yes, you can specify multiple paths for test reports. Ensure that the reports do not contain duplicate tests when specifying multiple paths.
 
@@ -736,9 +759,16 @@ Currently, publishing test reports from a Run step in a CD containerized step gr
 
 No. Test reports from tests run in Run steps also appear there if they are [correctly formatted](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-report-ref).
 
-### If the Run Tests step fails, does the Post-Command script run?
+## Test splitting (parallelism)
 
-No. The Post-Command script runs only if the Run Tests step succeeds.
+### Does Harness support test splitting (parallelism)?
+
+Yes. How you do this depends on whether your tests run in a **Run** step or a **Run Tests** step. For instructions, go to:
+
+* [Split tests for tests in Run steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
+* [split tests for tests in Run Tests steps (Test Intelligence plus test splitting)](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting/)
+
+## Test Intelligence (Run Tests steps)
 
 ### How do I use Test Intelligence?
 
@@ -752,6 +782,16 @@ Test Intelligence improves test time by running only the unit tests required to 
 
 For information about how Test Selection selects tests, go to [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
 
+### Does Test Intelligence split tests? Why would I use test splitting with Test Intelligence?
+
+Test Intelligence doesn't split tests. Instead, Test Intelligence selects specific tests to run based on the changes made to your code. It can reduce the overall number of tests that run each time you make changes to your code.
+
+For additional time savings, you can [apply test splitting in addition to Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting). This can further reduce your test time by splitting the selected tests into parallel workloads.
+
+### If the Run Tests step fails, does the Post-Command script run?
+
+No. The Post-Command script runs only if the Run Tests step succeeds.
+
 ### Can I limit memory and CPU for Run Tests steps running on Harness Cloud?
 
 No. Resource limits are not customizable when using Harness Cloud or self-hosted VM build infrastructures. In these cases, the step can consume the entire memory allocation of the VM.
@@ -764,9 +804,77 @@ On the Tests tab, the visualization call graph provides insights into why each t
 
 No call graph is generated if Test Intelligence selects to run all tests because the call graph would be huge and not useful (no test selection logic to demonstrate).
 
-For information about when TI might select all tests, go to [How does Test Intelligence work?](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence#how-does-test-intelligence-work)
+Additionally, the first run with TI *doesn't* include test selection, because Harness must establish a baseline for comparison in future runs. On subsequent runs, Harness can use the baseline to select relevant tests based on the content of the code changes.
 
-## Script execution - Run steps
+For information about how and when TI selects tests, go to [How does Test Intelligence work?](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence#how-does-test-intelligence-work)
+
+### Ruby Test Intelligence can't find rspec helper file
+
+The following log line indicates that Test Intelligence can't locate an rspec helper file in your code repo:
+
+```
+Unable to write rspec helper file automatically cannot find rspec helper file. Please make change manually to enable TI.
+```
+
+This usually occurs if the helper file has a name other than `spec_helper.rb`.
+
+To resolve this, add the following line to your rspec helper file:
+
+```
+set -e; echo "require_relative '/tmp/engine/ruby/harness/ruby-agent/test_intelligence.rb'" >> lib/vagrant/shared_helpers.rb
+```
+
+### Can I use Test Intelligence for Ruby on Rails?
+
+You can, however, Harness doesn't recommend using Test Intelligence with Rails apps using [Spring](https://github.com/rails/spring).
+
+### Test Intelligence fails due to Bazel not installed, but the container image has Bazel
+
+If your [build tool](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala/#build-tool) is Bazel, and you use a [container image](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala/#container-registry-and-image) to provide the Bazel binary to the **Run Tests** step, your build will fail if Bazel isn't already installed in your build infrastructure. This is because the **Run Tests** step calls `bazel query` before pulling the container image.
+
+Bazel is already installed on Harness Cloud runners. For other build infrastructures, you must manually confirm that Bazel is already installed. If Bazel isn't already installed on your build infrastructure, you need to install Bazel in a [**Run** step](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) prior to the **Run Tests** step.
+
+### Gradle version not compatible with Test Intelligence.
+
+For information about Gradle compatibility with TI and how to modify `build.gradle` for TI, go to [Enable TI for Java, Kotlin, or Scala - Build Tool - Java Gradle compatibility](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala/#build-tool).
+
+### Test Intelligence errors with Maven
+
+If you encounter issues with Test Intelligence when using Maven as your build tool, check the following configurations:
+
+* If your `pom.xml` contains `<argLine>`, you might need to modify your argLine setup as explained in [Enable TI for Java, Kotlin, Scala - Build tool - Java Maven argLine setup](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala/#build-tool).
+* If you attach Jacoco or any agent while running unit tests, then you must modify your argLine setup as explained in [Enable TI for Java, Kotlin, Scala - Build tool - Java Maven argLine setup](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala/#build-tool).
+* If you use Jacoco, Surefire, or Failsafe, make sure that `forkCount` is not set to `0`. For example, the following configuration in `pom.xml` removes `forkCount` and applies `useSystemClassLoader` as a workaround:
+
+   ```xml
+   <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-surefire-plugin</artifactId>
+       <version>2.22.1</version>
+       <configuration>
+           <!--  <forkCount>0</forkCount> -->
+           <useSystemClassLoader>false</useSystemClassLoader>
+       </configuration>
+   </plugin>
+   ```
+
+### Python Test Intelligence errors
+
+If you encounter errors with Python TI, make sure that:
+
+* Your project is written in Python 3, and your repo is a pure Python 3 repo.
+* You don't use resource file relationships. TI for Python doesn't support resource file relationships.
+* You don't use dynamic loading and metaclasses. TI for Python might miss tests or changes in repos that use dynamic loading or metaclasses.
+* Your build tool is pytest or unittest.
+* The Python 3 binary is present. This means it is preinstalled on the build machine, available in the step's [Container Registry and Image](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-python/#container-registry-and-image), or installed at runtime in the step's [Pre-Command](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-python/#pre-command-post-command-and-shell).
+* If you use another command to invoke Python 3, such as `python`, you have added an alias, such as `python3 = "python"`.
+* If you get code coverage errors, your [Build Arguments](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-python/#build-arguments) don't need coverage flags (`--cov` or `coverage`), and you don't need to install coverage tools in [Pre-Command](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-python/#pre-command-post-command-and-shell).
+
+### Does Test Intelligence support dynamic code?
+
+Harness doesn't recommend using TI with Ruby projects using dynamically generated code or Python projects using dynamic loading or metaclasses.
+
+## Script execution (CI Run steps)
 
 ### Does Harness CI support script execution?
 
@@ -840,32 +948,7 @@ This error occurs because AWS Fargate doesn't support the use of privileged cont
 
 Go to [GitHub Action step can't connect to Docker daemon](#github-action-step-cant-connect-to-docker-daemon).
 
-## Gradle
-
-### How do I enable the Gradle daemon in builds?
-
-To enable the Gradle daemon in your Harness CI builds, include the `--daemon` option when running Gradle commands in your build scripts (such as in Run steps). This option instructs Gradle to use the daemon process.
-
-Optionally, you can [use Background steps to optimize daemon performance](./articles/leverage-service-dependencies-in-gradel-daemon-to-improve-build-performance.md).
-
-### Can I configure service dependencies in Gradle builds?
-
-Yes, you can use [Background steps](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to configure service dependencies in Gradle builds.
-
 ## Maven
-
-### I need to get the Maven project version from pom.xml and pass it as a Docker build argument
-
-To do this, you can:
-
-1. Use a Run step to get the version and assign it to a variable. For example, you could use a command like:
-
-   ```
-   version=$(cat pom.xml | grep -oP '(?<=<version>)[^<]+')
-   ```
-
-2. Specify this variable as an [output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables) from the Run step.
-3. Use an expression to [reference the output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#reference-an-output-variable) in your build arguments, such as in the Build and Push to Docker step's [Build Arguments](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#build-arguments) or `docker build` commands executed in a Run step.
 
 ### Where do I store Maven project settings.xml in Harness CI?
 
@@ -1092,6 +1175,10 @@ With a Kubernetes cluster build infrastructure, use the [Volumes](https://develo
 ### Can I run a LocalStack service in a Background step?
 
 Yes. Go to [Tutorial: Run LocalStack as a Background step](https://developer.harness.io/tutorials/ci-pipelines/test/localstack/).
+
+### Can I configure service dependencies in Gradle builds?
+
+Yes, you can use [Background steps](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to configure service dependencies in Gradle builds.
 
 ## Conditional executions, looping, parallelism, and failure strategies
 

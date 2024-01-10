@@ -217,6 +217,8 @@ pipeline:
 
 ## Can't generate SonarQube report due to shallow clone
 
+<!-- already in STO KB FAQs -->
+
 * Error message: `Shallow clone detected, no blame information will be provided. You can convert to non-shallow with 'git fetch --unshallow`
 * Cause: If the [depth setting](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#depth) in your pipeline's codebase configuration is shallow, SonarQube can't generate a report. This is a [known SonarQube issue](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scm-integration/#known-issues).
 * Solution: Change the `depth` to `0`.
@@ -259,9 +261,13 @@ For troubleshooting information for local runner build infrastructures, go to [S
 
 ## Test Intelligence issues
 
+<!-- migrated with Run Tests in CI unification -->
+
 You might encounter these issues when using Test Intelligence.
 
 ### TI with Maven
+
+<!-- migrated with Run Tests in CI unification -->
 
 If you encounter issues with Test Intelligence when using Maven as your build tool, check the following configurations:
 
@@ -283,15 +289,21 @@ If you encounter issues with Test Intelligence when using Maven as your build to
 
 ### TI with Bazel
 
+<!-- migrated with Run Tests in CI unification -->
+
 If you encounter issues with Test Intelligence when using Bazel as your build tool, and you use a Bazel [container image](../use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala.md#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must install Bazel in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) prior to the Run Tests step. This is because `bazel query` is called before the container image is pulled.
 
 Bazel is already installed on Harness Cloud runners, and you don't need to specify a container image. For other build infrastructures, you must manually confirm that Bazel is already installed.
 
 ### TI with Gradle
 
+<!-- migrated with Run Tests in CI unification -->
+
 If you encounter issues with Test Intelligence when using Gradle as your build tool, check your configuration's Gradle compatibility, as explained in [Enable TI for Java, Kotlin, Scala - Build tool setting](../use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala.md#build-tool).
 
 ### TI for Python
+
+<!-- migrated with Run Tests in CI unification -->
 
 If you encounter errors with TI for Python, make sure you have met the following requirements:
 
@@ -309,7 +321,11 @@ If you get errors related to code coverage for Python:
 
 ### TI for Ruby
 
+<!-- migrated with Run Tests in CI unification -->
+
 #### Cannot find rspec helper file
+
+<!-- migrated with Run Tests in CI unification -->
 
 The following log line indicates that Test Intelligence can't locate an rspec helper file in your code repo:
 
@@ -327,8 +343,12 @@ set -e; echo "require_relative '/tmp/engine/ruby/harness/ruby-agent/test_intelli
 
 #### Dynamically generated code
 
+<!-- migrated with Run Tests in CI unification -->
+
 Test Intelligence results can be inaccurate for Ruby repos using dynamically generated code.
 
 #### Rails apps using Spring
+
+<!-- migrated with Run Tests in CI unification -->
 
 Test Intelligence results can be inaccurate for Rails apps using [Spring](https://github.com/rails/spring).
