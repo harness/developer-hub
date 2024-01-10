@@ -78,7 +78,7 @@ The following artifact providers are supported behind the feature flag `CD_TRIGG
 
   :::note
 
-  In a Docker repository linked to a trigger, the trigger initially stays 'pending' since there are no available tags. Upon the first artifact push, the trigger status changes to 'success' because of new tags, yet this alone won't activate the pipeline. **The pipeline is triggered only after a second push to Docker.**
+  When you link a Docker repository to a trigger, the trigger status will remain `pending` until there are available tags. After the first artifact push, the trigger status changes to `success` because of new tags, but this alone will not activate the pipeline. **The pipeline will only be triggered after a second push to Docker.**
 
   :::
   
