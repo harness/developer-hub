@@ -608,6 +608,10 @@ To do this, you can:
 2. Specify this variable as an [output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables) from the Run step.
 3. Use an expression to [reference the output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#reference-an-output-variable) in your build arguments, such as in the Build and Push to Docker step's [Build Arguments](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#build-arguments) or `docker build` commands executed in a Run step.
 
+### Where do I store Maven project settings.xml in Harness CI?
+
+For information about this, go to [Maven settings.xml](./articles/maven-settings-xml).
+
 ### How do I enable the Gradle daemon in builds?
 
 To enable the Gradle daemon in your Harness CI builds, include the `--daemon` option when running Gradle commands in your build scripts (such as in Run steps or in build arguments for a Build and Push step). This option instructs Gradle to use the daemon process.
@@ -947,24 +951,6 @@ This error occurs because AWS Fargate doesn't support the use of privileged cont
 ### Can't connect to Docker daemon
 
 Go to [GitHub Action step can't connect to Docker daemon](#github-action-step-cant-connect-to-docker-daemon).
-
-## Maven
-
-### Where do I store Maven project settings.xml in Harness CI?
-
-There are several options for handling settings.xml in Harness CI:
-
-* Store settings.xml externally from Harness, such as in a version control repo, and then [use a Git Clone or Run step to clone that repo (or subdirectory of a repo) into your pipeline](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#add-a-git-clone-or-run-step).
-* Store settings.xml as a file secret in Harness and then use a shell script in a Run step to copy the file to the relevant directory when your build runs.
-* Store values for settings.xml as text secrets, and then add those values to a new settings.xml file that is created when your build runs. An example of this is shown in [Override secrets in settings.xml at runtime](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/modify-and-override-build-settings-before-a-build).
-
-You can use expressions to reference secrets in step commands, such as:
-
-```
-echo '<+secrets.getValue("account.[settingsXMLSecretID]")>' > settings.xml
-```
-
-If you need to share `settings.xml` with multiple steps in the same stage, declare it in **Shared Paths**. For more information, go to [Share data between steps in a stage](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/).
 
 ## Plugins and integrations
 
