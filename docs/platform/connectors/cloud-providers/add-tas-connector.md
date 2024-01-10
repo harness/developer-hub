@@ -195,16 +195,18 @@ Harness provides the option to use a Refresh token to authenticate with the Tanz
 
 You can retrieve the Refresh token via the `config.json` file you receive when authenticating with the CF client. You can pass the Refresh token as a secret stored in the Harness Secrets Manager or your secrets manager of choice.
 
-### Custom Configuration for extensible authentication
+### Custom configuration for extensible authentication
 For Harness Delegate version 23.12.81811 and later, you can create a Tanzu connector by setting the `AS_REFRESH_TOKEN_CLIENT_ID`, `TAS_REFRESH_TOKEN_CLIENT_SECRET`, `ENABLE_TAS_REFRESH_TOKEN_CLIENT_ID` parameters, and providing the Refresh token. The connector will generate a Refresh token using the Client ID and Secret ID env variables.
 
 - **ENABLE_TAS_REFRESH_TOKEN_CLIENT_ID**: This is the setting to configure the alternative authentication mode on the Harness Delegate for Tanzu.
 - **TAS_REFRESH_TOKEN_CLIENT_ID**: This is the Client ID parameter for Tanzu Authentication.
 - **TAS_REFRESH_TOKEN_CLIENT_SECRET**: This is the Client Secret parameter for Tanzu Authentication. 
 
-#### To Configure in Delegate YAML
-Go to the K8s Delegate Yaml (Deployment) or the actual deployed resource.
-Add following Environment variables to the YAML. It will under `spec.template.spec.containers.env`
+#### Configure the delegate YAML
+
+To configure the delegate YAML, do the following:
+1. Go to the Kubernetes delegate YAML (deployment) or the actual deployed resource.
+2. Under `spec.template.spec.containers.env`, add the following environment variables. 
 
 ```YAML
 - name: ENABLE_TAS_REFRESH_TOKEN_CLIENT_ID
