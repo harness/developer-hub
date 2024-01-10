@@ -142,7 +142,7 @@ Public access to resources allows you to grant public access to view Harness res
 
 :::info note
 
-Currently, with this features, you can allow public access to your pipelines. For more information, go to [Allow public access to executions](/docs/platform/pipelines/allow-public-access-to-executions).
+Currently, with this feature, you can allow public access to your pipelines. For more information, go to [Allow public access to executions](/docs/platform/pipelines/allow-public-access-to-executions).
 
 :::
 
