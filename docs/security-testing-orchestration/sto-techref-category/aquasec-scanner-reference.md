@@ -2,7 +2,7 @@
 title: Aqua Security scanner reference for STO
 description: Image scans with Aqua Security
 sidebar_label: Aqua Security scanner reference
-sidebar_position: 35
+sidebar_position: 25
 ---
 
 You can ingest container-image scan results from [Aqua Security Enterprise](https://www.aquasec.com/solutions/docker-container-security/). 
