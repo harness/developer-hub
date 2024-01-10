@@ -50,7 +50,7 @@ You can toggle branch rules on and off.
 
 ## CODEOWNERS
 
-A CODEOWNERS file declares the users and groups responsible for a repository or part of a repository.
+A CODEOWNERS file declares the users <!--and groups-->responsible for a repository or part of a repository.
 
 Harness Code associates CODEOWNERS with PRs if a CODEOWNERS file is present in the repo, but Harness doesn't automatically add them as reviewers. This is intended to prevent reviewer spam when a change impacts files that don't necessarily need review from all CODEOWNERS. You can request reviews from individual CODEOWNERS, if desired. If a CODEOWNER independently chooses to review a PR, Harness adds them as a reviewer for record keeping purposes, as is the case with any independent review. If you enabled the CODEOWNER branch rule (**Require review from code owners**), then CODEOWNERS are handled as a policy checked against PR reviewers; if none of the reviewers are CODEOWNERS, then merging is blocked.
 
@@ -58,7 +58,7 @@ Store your CODEOWNERS file in the root of your code repo, at `docs/CODEOWNERS`, 
 
 ### CODEOWNERS syntax
 
-In your Harness Code CODEOWNERS file, you can assign code ownership to users <!--and user groups--> within your Harness account<!--, organizations, or projects:-->.
+In your Harness Code CODEOWNERS file, you can assign code ownership to users <!--and user groups-->within your Harness account<!--, organizations, or projects:-->.
 
 <!--
 * Account: `@accountIdentifier/userOrGroupName`
