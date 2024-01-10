@@ -29,9 +29,9 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 <!-- 2024-01-09 -->
 
-#### Fixed issues
+#### Feature enhancements
 
-- Added the .NET binary to the OWASP scan step to ensure that it can scan .NET code successfully. (STO-6852, ZD-55558)
+- You can now scan .exe and .net files using the OWASP scan step. (STO-6852, ZD-55558)
 
 - OWASP scans now display the package name and version for all issues. (STO-6725)
 
