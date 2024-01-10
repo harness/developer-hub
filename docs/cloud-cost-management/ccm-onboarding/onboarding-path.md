@@ -25,10 +25,10 @@ First step in setting up Harness CCM is to create the cloud connector for respec
 
 Connector setup varies based on the cloud provider.
 
-- [Connector creation for AWS](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws)
-- [Connector creation for Azure](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure)
-- [Connector creation for GCP](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp)
-- [Connector creation for Kubernetes](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes)
+- [Setup cost visibiltiy for AWS](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws.md)
+- [Setup cost visibiltiy for Azure](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure.md)
+- [Setup cost visibiltiy for GCP](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md)
+- [Setup cost visibiltiy for Kubernetes](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
 
 After the connectors are created, it will take atleast 24hrs for the cost data to be visible in CCM.
 
